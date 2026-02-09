@@ -278,8 +278,12 @@
             <div class="flex items-center gap-3">
               <span class="status-dot" :class="builderProgress.status === 'running' ? 'bg-cyan-500 animate-pulse' : builderProgress.status === 'complete' ? 'bg-emerald-500' : 'bg-slate-500'"></span>
               <div>
-                <div class="text-xs text-slate-500 uppercase tracking-wide">Single Agent</div>
-                <div class="text-sm font-medium text-slate-200">Sequential LEGO Network</div>
+                <div class="text-xs text-slate-500 uppercase tracking-wide">
+                  {{ parallelPhase !== 'none' ? (parallelPhase === 'drafting' ? '10 Parallel Agents' : 'Finalizing') : 'Single Agent' }}
+                </div>
+                <div class="text-sm font-medium text-slate-200">
+                  {{ parallelPhase !== 'none' ? (parallelPhase === 'drafting' ? 'Drafting Seeds' : 'Merging to Live') : 'Sequential LEGO Network' }}
+                </div>
               </div>
             </div>
             <span
@@ -291,15 +295,53 @@
           </div>
 
           <!-- Progress Bar -->
-          <div class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3">
+          <div v-if="parallelPhase !== 'none'" class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3 flex">
+            <!-- Draft progress (cyan) -->
+            <div class="h-full bg-cyan-500 transition-all duration-500"
+              :style="{ width: `${draftsExpected > 0 ? Math.min(100, draftsSubmitted / draftsExpected * 100) : 0}%` }">
+            </div>
+            <!-- Finalize progress (emerald, overlaid on top of drafts) -->
+            <div v-if="parallelPhase === 'finalizing'" class="h-full bg-emerald-500 transition-all duration-500"
+              :style="{ width: `${builderProgress.totalSeeds > 0 ? (builderProgress.currentSeed / builderProgress.totalSeeds * 100) : 0}%` }">
+            </div>
+          </div>
+          <div v-else class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3">
             <div
               class="h-full transition-all duration-500 rounded-full bg-cyan-500"
               :style="{ width: `${builderProgress.totalSeeds > 0 ? (builderProgress.currentSeed / builderProgress.totalSeeds * 100) : 0}%` }"
             ></div>
           </div>
 
-          <!-- Stats Row -->
-          <div class="grid grid-cols-4 gap-4 text-center">
+          <!-- Stats Row (parallel mode) -->
+          <div v-if="parallelPhase !== 'none'" class="grid grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-2xl font-mono font-semibold text-cyan-400">
+                {{ draftsSubmitted }}
+              </div>
+              <div class="text-xs text-slate-500">/ {{ draftsExpected }} drafted</div>
+            </div>
+            <div>
+              <div class="text-2xl font-mono font-semibold text-emerald-400">
+                {{ builderProgress.currentSeed }}
+              </div>
+              <div class="text-xs text-slate-500">/ {{ builderProgress.totalSeeds || seedCount }} finalized</div>
+            </div>
+            <div>
+              <div class="text-2xl font-mono font-semibold text-slate-200">
+                {{ builderProgress.legosInserted }}
+              </div>
+              <div class="text-xs text-slate-500 uppercase tracking-wide">LEGOs</div>
+            </div>
+            <div>
+              <div class="text-2xl font-mono font-semibold text-slate-200">
+                {{ builderProgress.phrasesInserted }}
+              </div>
+              <div class="text-xs text-slate-500 uppercase tracking-wide">Phrases</div>
+            </div>
+          </div>
+
+          <!-- Stats Row (sequential mode) -->
+          <div v-else class="grid grid-cols-4 gap-4 text-center">
             <div>
               <div class="text-2xl font-mono font-semibold text-slate-200">
                 {{ builderProgress.currentSeed }}
@@ -534,6 +576,93 @@
         </div>
       </section>
 
+      <!-- Seed Grid (Rebuild Visualization) -->
+      <section v-if="seedGrid.length > 0" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+        <button
+          @click="seedGridExpanded = !seedGridExpanded"
+          class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 transition-colors"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Seed Grid</span>
+            <span class="text-xs text-slate-500">
+              {{ seedGridComplete }}/{{ seedGrid.length }} complete
+            </span>
+            <span v-if="seedGridBuilding > 0" class="text-xs text-amber-400">
+              {{ seedGridBuilding }} building
+            </span>
+          </div>
+          <svg
+            class="w-5 h-5 text-slate-400 transition-transform duration-200"
+            :class="{ 'rotate-180': seedGridExpanded }"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
+          <!-- Rebuild Controls -->
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex items-center gap-2">
+              <label class="text-xs text-slate-400">From</label>
+              <input
+                v-model.number="rebuildFrom"
+                type="number" min="1" :max="rebuildTo"
+                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
+              />
+              <label class="text-xs text-slate-400">To</label>
+              <input
+                v-model.number="rebuildTo"
+                type="number" :min="rebuildFrom" max="999"
+                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
+              />
+            </div>
+            <button
+              v-if="!rebuildConfirming"
+              @click="rebuildConfirming = true"
+              :disabled="rebuildRunning"
+              class="px-4 py-1.5 bg-red-600/80 hover:bg-red-600 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Rebuild
+            </button>
+            <template v-if="rebuildConfirming">
+              <span class="text-xs text-red-400">Delete LEGOs + phrases for seeds {{ rebuildFrom }}-{{ rebuildTo }}?</span>
+              <button
+                @click="executeRebuild"
+                :disabled="rebuildRunning"
+                class="px-4 py-1.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                {{ rebuildRunning ? 'Wiping...' : 'Confirm' }}
+              </button>
+              <button
+                @click="rebuildConfirming = false"
+                class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+            </template>
+          </div>
+
+          <!-- Grid -->
+          <div class="flex flex-wrap gap-1">
+            <div
+              v-for="cell in seedGrid"
+              :key="cell.seed"
+              class="w-5 h-5 rounded-sm cursor-default transition-colors"
+              :class="seedCellClass(cell)"
+              :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
+            ></div>
+          </div>
+
+          <!-- Legend -->
+          <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80 animate-pulse"></span> Building</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/80"></span> Empty</span>
+          </div>
+        </div>
+      </section>
+
       <!-- Event Log (Collapsible) -->
       <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
         <button
@@ -645,6 +774,71 @@ const previewError = ref(null)
 // Stale job clearing
 const clearingStale = ref(false)
 
+// Seed grid state
+const seedGrid = ref([])
+const seedGridExpanded = ref(true)
+const rebuildFrom = ref(11)
+const rebuildTo = ref(300)
+const rebuildConfirming = ref(false)
+const rebuildRunning = ref(false)
+
+const seedGridComplete = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
+const seedGridBuilding = computed(() => seedGrid.value.filter(s => s.status === 'building').length)
+
+function seedCellClass(cell) {
+  if (cell.status === 'complete') return 'bg-emerald-500/80'
+  if (cell.status === 'building') return 'bg-amber-500/80 animate-pulse'
+  return 'bg-slate-700/80'
+}
+
+async function fetchSeedGrid() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const response = await fetch(`${builderApiUrl}/api/build/seed-grid/${code}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      seedGrid.value = data.seeds || []
+    }
+  } catch (err) {
+    console.error('Failed to fetch seed grid:', err)
+  }
+}
+
+async function executeRebuild() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+
+  rebuildRunning.value = true
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const response = await fetch(`${builderApiUrl}/api/build/rebuild/${code}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value })
+    })
+
+    const data = await response.json()
+    if (data.ok) {
+      addEvent(`Rebuild started: wiped ${data.legos_deleted} LEGOs + ${data.phrases_deleted} phrases for seeds ${rebuildFrom.value}-${rebuildTo.value}`)
+      rebuildConfirming.value = false
+      await fetchSeedGrid()
+    } else {
+      addEvent(`Rebuild failed: ${data.error}`)
+    }
+  } catch (err) {
+    addEvent(`Rebuild error: ${err.message}`)
+  } finally {
+    rebuildRunning.value = false
+  }
+}
+
 // ETA tracking
 const etaHistory = ref([])
 const MAX_HISTORY = 30
@@ -704,6 +898,11 @@ const builderProgress = ref({
   legosInserted: 0,
   phrasesInserted: 0
 })
+
+// Parallel build state
+const parallelPhase = ref('none')  // 'none' | 'drafting' | 'finalizing' | 'complete'
+const draftsSubmitted = ref(0)
+const draftsExpected = ref(0)
 
 // Computed
 const isNewCourse = computed(() => !props.courseCode && !route.params.courseCode)
@@ -995,9 +1194,45 @@ async function fetchProgress() {
 
         lastProgressAt.value = new Date().toISOString()
       }
+
+      // Also poll build status for parallel build info
+      const statusResp = await fetch(`${builderApiUrl}/api/build/status/${code}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      if (statusResp.ok) {
+        const statusData = await statusResp.json()
+
+        // Update current seed from DB source of truth
+        if (statusData.progress) {
+          builderProgress.value.currentSeed = statusData.progress.completed || 0
+          builderProgress.value.totalSeeds = statusData.build?.total_seeds || statusData.last_job_target || seedCount.value
+        }
+
+        // Update job status
+        if (statusData.active) {
+          jobStatus.value = statusData.build?.status === 'stalled' ? 'stuck' : 'running'
+          builderProgress.value.status = 'running'
+        } else if (statusData.progress?.isComplete) {
+          jobStatus.value = 'idle'
+          builderProgress.value.status = 'complete'
+        }
+
+        // Parallel build phase tracking
+        if (statusData.parallel) {
+          parallelPhase.value = statusData.parallel.phase
+          draftsSubmitted.value = statusData.parallel.drafts_submitted
+          draftsExpected.value = statusData.parallel.drafts_expected
+        } else if (statusData.build_mode === 'sequential') {
+          parallelPhase.value = 'none'
+        }
+      }
     } catch (error) {
       console.error('Failed to fetch builder progress:', error)
     }
+
+    // Also fetch seed grid for rebuild visualization
+    fetchSeedGrid()
+
     return
   }
 
@@ -1220,36 +1455,39 @@ async function startCourseBuilder() {
   if (!code) return
 
   try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/courses/generate`, {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const response = await fetch(`${builderApiUrl}/api/build/start/${code}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
-        courseCode: code,
-        buildMode: 'course-builder',
-        spawnerMode: agentEngine.value,
-        machineProfile: selectedMachineProfile.value,
-        seedCount: seedCount.value,
-        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 300 ? 'mvp_course' : 'full_course'
+        terminal: agentEngine.value === 'cli' ? 'iTerm2' : agentEngine.value === 'terminal' ? 'Terminal' : 'iTerm2',
+        targetSeeds: seedCount.value,
+        parallel: true
       })
     })
 
-    if (!response.ok) throw new Error('Failed to start course builder')
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}))
+      throw new Error(errData.error || 'Failed to start course builder')
+    }
+
+    const result = await response.json()
 
     builderProgress.value = {
       status: 'running',
-      currentSeed: 0,
+      currentSeed: result.progress?.completed || 0,
       totalSeeds: seedCount.value,
       legosInserted: 0,
       phrasesInserted: 0
     }
     jobStatus.value = 'running'
     jobStartTime.value = Date.now()
+    parallelPhase.value = result.build_mode === 'parallel' ? 'drafting' : 'none'
 
-    addEvent(`Started Course Builder for ${code} (${seedCount.value} seeds)`)
+    addEvent(`Started ${result.build_mode === 'parallel' ? 'Parallel' : 'Sequential'} Build for ${code} (${seedCount.value} seeds)`)
 
   } catch (error) {
     console.error('Failed to start course builder:', error)

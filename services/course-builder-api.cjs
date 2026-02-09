@@ -1057,8 +1057,8 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   // S6-10:  1 BUILD, 4 USE  (moderate vocab)
   // S11+:   1 BUILD, 5 USE  (full requirements - min 5 USE)
 
-  let minBuild = 1;  // Flexible - just need at least 1
-  let minUse = 5;    // Minimum 5 USE phrases
+  let minBuild = 3;  // Minimum 3 BUILD phrases
+  let minUse = 8;    // Minimum 8 USE phrases
   let minAvgSyllables = 12;  // Average syllables for USE phrases
 
   if (seedNumber === 1 && lego.idx === 1) {
@@ -1070,16 +1070,16 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     minUse = 0;  // No USE required - limited vocab
     minAvgSyllables = 0;
   } else if (seedNumber <= 3) {
-    minBuild = 1;
-    minUse = 2;
+    minBuild = 2;
+    minUse = 3;
     minAvgSyllables = 6;
   } else if (seedNumber <= 5) {
-    minBuild = 1;
-    minUse = 3;
+    minBuild = 2;
+    minUse = 5;
     minAvgSyllables = 8;
   } else if (seedNumber <= 10) {
-    minBuild = 1;
-    minUse = 4;
+    minBuild = 3;
+    minUse = 6;
     minAvgSyllables = 10;
   }
 
@@ -1103,30 +1103,7 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     };
   }
 
-  // USE phrase score validation - optional (scores validated if provided, but not required)
-  const scoredPhrases = use.filter(p => typeof p.score === 'number');
-
-  const lowScores = scoredPhrases.filter(p => p.score < 5);
-  if (lowScores.length > 0) {
-    return {
-      valid: false,
-      error: `USE phrases must score 5-9. Scores <5 should be REWRITTEN, not submitted. Low: ${lowScores.map(p => `"${p.target?.substring(0, 20)}..." (${p.score})`).join(', ')}`,
-      hint: 'USE phrases are eternal-eligible. Learners hear them hundreds of times. Only submit quality phrases.',
-      details: { lowScores: lowScores.map(p => ({ known: p.known?.substring(0, 30), score: p.score })) }
-    };
-  }
-
-  const invalidScores = scoredPhrases.filter(p => p.score > 9);
-  if (invalidScores.length > 0) {
-    return {
-      valid: false,
-      error: `USE phrase scores must be 5-9. Invalid: ${invalidScores.map(p => p.score).join(', ')}`,
-      details: { invalidScores: invalidScores.map(p => ({ known: p.known?.substring(0, 30), score: p.score })) }
-    };
-  }
-
-  // Calculate average score for reporting (only from scored phrases)
-  const avgScore = scoredPhrases.length > 0 ? (scoredPhrases.reduce((sum, p) => sum + p.score, 0) / scoredPhrases.length).toFixed(1) : 0;
+  // Score validation removed - not needed for course building
 
   // USE phrases: estimate syllable count for reporting (no hard gate — Haiku QA pass handles quality)
   let avgSyllables = 0;
@@ -1143,7 +1120,6 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     details: {
       build: build.length,
       use: use.length,
-      avgScore: parseFloat(avgScore),
       avgSyllables: use.length > 0 ? (use.reduce((sum, p) => sum + Math.round((p.target || '').length / charsPerSyllable), 0) / use.length).toFixed(1) : 0
     }
   };
@@ -1948,6 +1924,330 @@ end tell`;
 }
 
 /**
+ * Generate the coordinator brief for parallel builds.
+ * The coordinator is a lightweight haiku agent that uses Claude Code's Task tool
+ * to spawn ~10 background sub-agents, each decomposing a batch of seeds as drafts.
+ */
+function generateParallelBrief({ courseCode, batches, goldenExamples, lessons, courseInfo, targetSeeds }) {
+  const batchList = batches.map((b, i) =>
+    `Batch ${i + 1}: seeds ${b.start}-${b.end} (${b.end - b.start + 1} seeds)`
+  ).join('\n');
+
+  const goldenSection = goldenExamples && goldenExamples.length > 0
+    ? `\n## Golden Decomposition Examples (from calibration)\n\n${goldenExamples.map(g => {
+        const legoLines = g.legos.map(l =>
+          `  ${l.type}-LEGO: "${l.known}" → "${l.target}"${l.components ? ` (components: ${l.components.map(c => `${c.known}→${c.target}`).join(', ')})` : ''}`
+        ).join('\n');
+        return `### Seed ${g.seed_number}: "${g.known_text}" → "${g.target_text}"\n${legoLines}${g.key_insight ? `\n  Key insight: ${g.key_insight}` : ''}`;
+      }).join('\n\n')}`
+    : '';
+
+  const lessonsSection = lessons && lessons.length > 0
+    ? `\n## Lessons Learned\n\n${lessons.map(l =>
+        `- **${l.lesson_type}**: ${l.lesson}${l.example_wrong ? `\n  Wrong: ${l.example_wrong}` : ''}${l.example_right ? `\n  Right: ${l.example_right}` : ''}`
+      ).join('\n')}`
+    : '';
+
+  const langCode = courseCode.split('_')[0];
+
+  return `# Parallel Course Builder — Coordinator Agent
+
+You are coordinating a parallel build for course **${courseCode}**.
+
+## CRITICAL: You are an ORCHESTRATOR, not a builder
+- You do NOT build seeds yourself
+- You spawn sub-agents using the Task tool and monitor their progress
+- You call finalize when all drafts are submitted
+
+## Architecture
+- Each sub-agent submits seeds as DRAFTS via POST /api/seed/complete?course=${courseCode}&draft=true
+- Drafts go to a staging table, NOT live tables
+- When all drafts are in, you call POST /api/course/${courseCode}/finalize to merge them
+
+## Batch Assignments
+Seeds 1-10 are golden (already done). Remaining seeds split into batches:
+
+${batchList}
+
+## Step 1: Spawn Sub-Agents
+
+Use the Task tool to spawn one background sub-agent per batch. Launch ALL batches in parallel (send all Task tool calls in a single message).
+
+For each batch, use this prompt template (customize start/end for each):
+
+---BEGIN SUB-AGENT PROMPT---
+You are a world-class language teacher building course content for SSi (SaySomethingin) — the most effective methodology for learning to speak a new language. You are decomposing seeds {START} to {END} for course ${courseCode}.
+
+## API Endpoints
+- Vocab: GET http://localhost:3471/api/vocab/${courseCode} — returns COMMA-SEPARATED STRING, parse with split(",")
+- Seeds: GET http://localhost:3471/api/seeds/${courseCode} — returns {seeds: [...]} with seed_number, known_text, target_text
+- Submit: POST http://localhost:3471/api/seed/complete?course=${courseCode}&draft=true (Content-Type: text/markdown, send body as raw markdown)
+
+## Core Methodology
+
+### LEGO Types
+- **A-LEGO (Atomic)**: Single meaningful word (e.g., "parlare" = "to speak")
+- **M-LEGO (Molecular)**: Multi-word phrase with components (e.g., "poter parlare" = "to be able to speak")
+- **Overlapping LEGOs**: A-LEGOs appear inside M-LEGOs. Learner sees word alone, then inside phrase — infers the pattern.
+
+### Decomposition
+Seeds are vehicles for LEGOs. Decompose by asking "What LEGOs does this seed let me teach?"
+- Every word in the seed target must be covered by at least one LEGO (tiling)
+- Introduce A-LEGOs before their containing M-LEGOs (non-greedy: learner recognises the part)
+- Order LEGOs to maximise combinability with existing vocabulary
+
+### BUILD Phrases (minimum 3 per LEGO)
+Show the new LEGO combining with PREVIOUSLY-INTRODUCED vocabulary.
+- LEGO + 1-3 extra syllables from prior LEGOs
+- Fragments OK (don't need to be complete sentences)
+- BUILD is NOT the LEGO by itself, NOT random extensions
+- Example: for new LEGO "cymraeg" (Welsh), BUILD = "siarad cymraeg" (speak Welsh) because "siarad" is already known
+
+### USE Phrases (minimum 8 per LEGO)
+Natural complete sentences for eternal spaced repetition.
+- Mix of lengths: 3-4 MEDIUM (LEGO + 4-6 syl), 4-5 LONG (LEGO + 7-10 syl)
+- Must be complete, natural sentences a learner would ACTUALLY SAY
+- Must contain the LEGO target as an EXACT substring (containment)
+- All words must exist in vocabulary (prior seed translations)
+
+### ZUT (Zero Uncertainty Test)
+Same English known → same target. Always. If "speak" already maps to "parlare", you cannot map "speak" to "dire" elsewhere. Upchunk to disambiguate: "speak to" vs "speak about".
+
+### Vocabulary Constraint
+All words in phrases must come from prior seed translations (seeds 1 through N-1) plus the current seed's LEGOs (1 through current). Check vocab with the API before writing phrases.
+
+CRITICAL: The /api/vocab endpoint returns a COMMA-SEPARATED STRING. You MUST split on comma to get individual words. Do NOT use substring matching.
+${goldenSection}
+${lessonsSection}
+
+## Submission Format (markdown)
+
+Write each seed to /tmp/seed{N}.md then submit with:
+curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&draft=true" -H "Content-Type: text/markdown" --data-binary @/tmp/seed{N}.md
+
+Markdown format:
+\\\`\\\`\\\`
+# Seed N
+Known: English sentence
+Target: Target language sentence
+
+## L1 [A] "known" → "target"
+BUILD:
+- known phrase → target phrase
+- known phrase → target phrase
+- known phrase → target phrase
+USE:
+- known sentence → target sentence [7]
+- known sentence → target sentence [8]
+... (8+ USE phrases)
+
+## L2 [M] "known phrase" → "target phrase"
+Components: comp1_known → comp1_target, comp2_known → comp2_target
+BUILD:
+- known phrase → target phrase
+- known phrase → target phrase
+- known phrase → target phrase
+USE:
+- known sentence → target sentence [8]
+... (8+ USE phrases)
+\\\`\\\`\\\`
+
+## Workflow
+For each seed in your range ({START} to {END}):
+1. Fetch your seeds: curl -s "http://localhost:3471/api/seeds/${courseCode}" and find seeds in your range
+2. Fetch vocab: curl -s "http://localhost:3471/api/vocab/${courseCode}" — parse comma-separated string
+3. Study the seed's known/target text
+4. Decompose into overlapping LEGOs (A-LEGOs inside M-LEGOs)
+5. Write BUILD phrases (min 3): new LEGO + prior vocabulary
+6. Write USE phrases (min 8): complete natural sentences containing exact LEGO target
+7. Verify all phrase targets contain the LEGO target as exact substring
+8. Write to /tmp/seed{N}.md and POST as draft
+9. If rejected, read the error carefully, fix, and retry (max 3 attempts)
+10. Move to next seed
+
+## AUTONOMY: You are running unattended. NEVER ask questions. Fix errors and continue.
+---END SUB-AGENT PROMPT---
+
+IMPORTANT: When spawning sub-agents via the Task tool:
+- Use subagent_type: "general-purpose"
+- Set run_in_background: true for each
+- Use model: "sonnet" (Sonnet for quality decomposition)
+- Keep the description short: "Build seeds {start}-{end} for ${courseCode}"
+
+## Step 2: Monitor Progress
+
+After spawning all sub-agents, poll progress every 60 seconds:
+
+curl -s http://localhost:3471/api/course/${courseCode}/drafts
+
+This returns { total_drafts, valid_drafts, invalid_drafts, drafts: [...] }.
+
+Expected total drafts: ${targetSeeds - 10} (seeds 11 to ${targetSeeds}).
+
+Use the Bash tool with curl to poll. Wait 60 seconds between polls (use sleep 60).
+
+When total_drafts >= ${targetSeeds - 10}, proceed to Step 3.
+
+If progress stalls (no new drafts for 10 minutes), check sub-agent output files and report the issue.
+
+## Step 3: Finalize
+
+curl -X POST http://localhost:3471/api/course/${courseCode}/finalize
+
+### If finalize succeeds (status: "FINALIZED"):
+Report success and exit.
+
+### If collisions detected (status: "COLLISIONS_DETECTED"):
+The response includes a list of colliding seeds and LEGO details.
+For each colliding seed:
+1. Spawn a new Task sub-agent to re-decompose that seed with bigger M-LEGOs to avoid the collision
+2. The sub-agent submits via POST /api/seed/complete?course=${courseCode}&draft=true (upsert replaces old draft)
+3. When all collision seeds are re-drafted, call finalize again
+
+## AUTONOMY
+You are running overnight. The human is asleep. NEVER ask questions.
+- Make decisions yourself
+- Fix errors and continue
+- If a sub-agent fails, spawn a replacement
+- Keep going until finalize succeeds
+`;
+}
+
+/**
+ * Spawn the parallel build coordinator agent.
+ * This is a lightweight haiku agent that orchestrates ~10 sub-agents via Task tool.
+ */
+async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
+  // Fetch golden decompositions from courses.quality_rules
+  const { data: courseInfo } = await supabase
+    .from('courses')
+    .select('display_name, quality_rules, seed_count')
+    .eq('course_code', courseCode)
+    .single();
+
+  const goldenExamples = courseInfo?.quality_rules?.golden_decompositions || [];
+  const targetSeeds = courseInfo?.seed_count || 300;
+
+  // Fetch build lessons
+  const langCode = courseCode.split('_')[0];
+  const langFamilyMap = {
+    jpn: 'japanese', kor: 'korean', zho: 'cjk', cmn: 'cjk',
+    deu: 'germanic', nld: 'germanic', swe: 'germanic',
+    spa: 'romance', fra: 'romance', ita: 'romance', por: 'romance'
+  };
+  const langFamily = langFamilyMap[langCode] || 'other';
+
+  let lessons = [];
+  try {
+    const { data } = await supabase
+      .from('build_lessons')
+      .select('lesson_type, lesson, example_wrong, example_right')
+      .or(`language_family.eq.${langFamily},language_family.eq.*`)
+      .eq('active', true);
+    lessons = data || [];
+  } catch (e) {
+    console.log(`[BUILD] Could not load lessons for parallel brief: ${e.message}`);
+  }
+
+  // Calculate batch ranges: seeds 11..targetSeeds split into ~10 batches
+  const firstSeed = 11; // Seeds 1-10 are golden
+  const totalToBuild = targetSeeds - firstSeed + 1;
+  const NUM_BATCHES = Math.min(10, Math.ceil(totalToBuild / 20)); // At least 20 seeds per batch
+  const batchSize = Math.ceil(totalToBuild / NUM_BATCHES);
+
+  const batches = [];
+  for (let i = 0; i < NUM_BATCHES; i++) {
+    const start = firstSeed + (i * batchSize);
+    const end = Math.min(start + batchSize - 1, targetSeeds);
+    if (start <= targetSeeds) {
+      batches.push({ start, end });
+    }
+  }
+
+  console.log(`[BUILD] Parallel build for ${courseCode}: ${batches.length} batches, ${totalToBuild} seeds`);
+
+  const prompt = generateParallelBrief({
+    courseCode, batches, goldenExamples, lessons, courseInfo, targetSeeds
+  });
+
+  // Write prompt to temp file
+  const tmpFile = `/tmp/claude_parallel_${courseCode}_${Date.now()}.txt`;
+  require('fs').writeFileSync(tmpFile, prompt);
+
+  const projectDir = __dirname.replace('/services', '');
+  const claudeCmd = `cd "${projectDir}" && claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+
+  const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+  console.log(`[BUILD] Spawning Parallel Coordinator for ${courseCode} in ${effectiveTerminal}`);
+
+  let agent;
+
+  if (effectiveTerminal === 'headless') {
+    const fs = require('fs');
+    const logsDir = require('path').join(projectDir, 'logs');
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+
+    const logFile = `${logsDir}/parallel-coordinator-${courseCode}.log`;
+    const out = fs.openSync(logFile, 'a');
+    const err = fs.openSync(logFile, 'a');
+
+    agent = spawn('bash', ['-c', claudeCmd], {
+      stdio: ['ignore', out, err],
+      detached: true
+    });
+    agent.unref();
+
+    console.log(`[BUILD] Parallel coordinator launched headless (pid: ${agent.pid}, log: ${logFile})`);
+
+    agent.on('error', (spawnErr) => {
+      console.error(`[BUILD] Parallel coordinator error:`, spawnErr.message);
+    });
+
+    agent.on('exit', (code) => {
+      console.log(`[BUILD] Parallel coordinator exited (code: ${code})`);
+    });
+  } else {
+    const escapedCmd = claudeCmd.replace(/"/g, '\\"');
+
+    let osascript;
+    if (effectiveTerminal === 'iTerm2') {
+      osascript = `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    write text "${escapedCmd}"
+  end tell
+end tell`;
+    } else {
+      osascript = `tell application "Terminal"
+  activate
+  do script "${escapedCmd}"
+end tell`;
+    }
+
+    agent = spawn('osascript', ['-e', osascript], {
+      stdio: 'pipe',
+      detached: true
+    });
+
+    agent.on('error', (spawnErr) => {
+      console.error(`[BUILD] Parallel coordinator osascript error:`, spawnErr.message);
+    });
+
+    agent.on('exit', (code) => {
+      console.log(`[BUILD] Parallel coordinator terminal launched (osascript exit: ${code})`);
+      const build = activeBuilds.get(courseCode);
+      if (build) {
+        build.status = 'agent_running';
+      }
+    });
+  }
+
+  return agent;
+}
+
+/**
  * Check build progress and spawn new agents as needed
  */
 // Helper to update build_jobs table (fire-and-forget, never crashes)
@@ -2007,10 +2307,45 @@ async function checkBuilds() {
       const batchStartSeed = job.batch_start_seed || 0;
 
       // [BUILD-DEBUG] Log state from DB
-      console.log(`[BUILD-DEBUG] === CHECK ${courseCode} (from DB) ===`);
+      const buildMode = job.build_mode || 'sequential';
+      console.log(`[BUILD-DEBUG] === CHECK ${courseCode} (from DB, mode=${buildMode}) ===`);
       console.log(`[BUILD-DEBUG] DB job: id=${job.id}, agentCount=${agentCount}, respawnCount=${respawnCount}`);
       console.log(`[BUILD-DEBUG] Progress: completed=${progress.completed}, target=${targetSeeds}`);
       console.log(`[BUILD-DEBUG] Heartbeat age: ${(heartbeatAge/1000).toFixed(0)}s`);
+
+      // PARALLEL MODE: Track draft progress, skip sequential stall detection
+      // The coordinator agent manages sub-agents itself — we just update progress
+      if (buildMode === 'parallel') {
+        try {
+          const { count: draftCount } = await supabase
+            .from('course_seed_drafts')
+            .select('*', { count: 'exact', head: true })
+            .eq('course_code', courseCode);
+
+          console.log(`[BUILD-DEBUG] Parallel drafts: ${draftCount || 0}`);
+
+          // Update progress in build_jobs based on draft count
+          await supabase.from('build_jobs').update({
+            current_seed: draftCount || 0,
+            last_heartbeat: new Date().toISOString()
+          }).eq('id', job.id);
+        } catch (e) {
+          console.log(`[BUILD] Could not check parallel drafts: ${e.message}`);
+        }
+
+        // Check if course is complete (finalized seeds, not just drafts)
+        if (progress.completed >= targetSeeds) {
+          console.log(`[BUILD] ✓ PARALLEL COMPLETE: ${courseCode} (${progress.completed}/${targetSeeds} seeds)`);
+          await supabase.from('build_jobs').update({
+            status: 'complete',
+            current_seed: progress.completed,
+            seeds_completed: progress.completed,
+            completed_at: new Date().toISOString()
+          }).eq('id', job.id);
+        }
+
+        continue; // Don't run sequential stall detection for parallel builds
+      }
 
       // Course complete?
       if (progress.completed >= targetSeeds) {
@@ -2154,7 +2489,7 @@ function stopBuildManager() {
  * @param {string} courseCode
  * @param {string} terminal - 'iTerm2' or 'Terminal'
  */
-async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
+async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668, parallel = false) {
   const progress = await getBuildProgress(courseCode);
   const effectiveTarget = Math.min(targetSeeds, progress.total);
 
@@ -2217,7 +2552,8 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
           terminal: terminal,
           agent_count: 0,
           respawn_count: 0,
-          machine_name: MACHINE_NAME
+          machine_name: MACHINE_NAME,
+          build_mode: parallel ? 'parallel' : 'sequential'
         })
         .select('id')
         .single();
@@ -2240,20 +2576,29 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
   // Spawn agent immediately
   const newAgentCount = agentCount + 1;
   try {
-    console.log(`[BUILD] Spawning agent #${newAgentCount} for ${courseCode}...`);
-    await spawnBuildAgent(courseCode, newAgentCount, terminal);
-    console.log(`[BUILD] ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
+    if (parallel) {
+      // PARALLEL MODE: Spawn coordinator agent (haiku) which orchestrates sub-agents
+      console.log(`[BUILD] Spawning parallel coordinator for ${courseCode}...`);
+      await spawnParallelBuildAgent(courseCode, newAgentCount, terminal);
+      console.log(`[BUILD] ✓ Parallel coordinator spawned for ${courseCode}`);
+      // No phrase monitor needed — sub-agents handle their own work
+    } else {
+      // SEQUENTIAL MODE: Spawn single builder agent
+      console.log(`[BUILD] Spawning agent #${newAgentCount} for ${courseCode}...`);
+      await spawnBuildAgent(courseCode, newAgentCount, terminal);
+      console.log(`[BUILD] ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
 
-    // Also spawn Sonnet phrase monitor in second tab (USE phrases only)
-    console.log(`[BUILD] Spawning Phrase Monitor (Sonnet) for ${courseCode}...`);
-    try {
-      const { spawnPhraseMonitor } = require('./shared/spawn-course-builder.cjs');
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for builder window
-      await spawnPhraseMonitor({ courseCode, terminal: terminal.toLowerCase().includes('iterm') ? 'iterm' : 'terminal' }, 2);
-      console.log(`[BUILD] ✓ Phrase Monitor spawned for ${courseCode}`);
-    } catch (monitorErr) {
-      console.warn(`[BUILD] ⚠ Phrase Monitor spawn failed: ${monitorErr.message}`);
-      // Don't fail the whole build - builder is more important
+      // Also spawn Sonnet phrase monitor in second tab (USE phrases only)
+      console.log(`[BUILD] Spawning Phrase Monitor (Sonnet) for ${courseCode}...`);
+      try {
+        const { spawnPhraseMonitor } = require('./shared/spawn-course-builder.cjs');
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for builder window
+        await spawnPhraseMonitor({ courseCode, terminal: terminal.toLowerCase().includes('iterm') ? 'iterm' : 'terminal' }, 2);
+        console.log(`[BUILD] ✓ Phrase Monitor spawned for ${courseCode}`);
+      } catch (monitorErr) {
+        console.warn(`[BUILD] ⚠ Phrase Monitor spawn failed: ${monitorErr.message}`);
+        // Don't fail the whole build - builder is more important
+      }
     }
 
     // Update DB with agent count
@@ -2273,7 +2618,10 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
     course_code: courseCode,
     job_id: jobId,
     progress: progress,
-    message: `Build started - agent #${newAgentCount} spawned`
+    build_mode: parallel ? 'parallel' : 'sequential',
+    message: parallel
+      ? `Parallel build started - coordinator agent spawned`
+      : `Build started - agent #${newAgentCount} spawned`
   };
 }
 
@@ -2397,6 +2745,29 @@ async function getBuildStatus(courseCode) {
   const heartbeat = agentHeartbeats.get(courseCode);
   const heartbeatAlive = heartbeat && (Date.now() - heartbeat.lastHeartbeat) < HEARTBEAT_TIMEOUT_MS;
 
+  // For parallel builds, fetch draft progress
+  let parallelInfo = null;
+  const buildMode = dbJob?.build_mode || 'sequential';
+  if (isActive && buildMode === 'parallel') {
+    try {
+      const { count: draftCount } = await supabase
+        .from('course_seed_drafts')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode);
+
+      const targetSeeds = dbJob?.total_seeds || progress.total;
+      const draftsExpected = Math.max(0, targetSeeds - 10); // Seeds 11+ (golden seeds already done)
+
+      parallelInfo = {
+        phase: (draftCount || 0) < draftsExpected ? 'drafting' : 'finalizing',
+        drafts_submitted: draftCount || 0,
+        drafts_expected: draftsExpected
+      };
+    } catch (e) {
+      // Draft table may not exist yet
+    }
+  }
+
   return {
     course_code: courseCode,
     active: isActive,
@@ -2404,14 +2775,17 @@ async function getBuildStatus(courseCode) {
     source: isActive ? 'database' : null,
     heartbeat_alive: heartbeatAlive,
     last_job_target: lastJobTarget || progress.total,  // For UI when no active job
+    build_mode: buildMode,
     build: isActive ? {
       status: dbJob?.status || 'running',
+      build_mode: buildMode,
       agent_count: build?.agentCount || 1,
       current_batch_seeds: progress.completed - (build?.batchStartSeed || 0),
       batch_size: BATCH_SIZE,
       job_id: dbJob?.id || null,
       total_seeds: dbJob?.total_seeds || progress.total  // Job target for UI sync
-    } : null
+    } : null,
+    parallel: parallelInfo
   };
 }
 
@@ -2739,6 +3113,60 @@ function addToCourseVocab(courseCode, lego) {
 
   // Update cache (this refreshes the access time and handles LRU)
   setCacheEntry(courseCode, vocabSet);
+}
+
+/**
+ * Load vocabulary from seed translations (for parallel draft validation).
+ * Instead of reading LEGOs (which don't exist yet for parallel seeds),
+ * derives vocab from the target_text of all prior seeds.
+ * Word-level vocab from translations === word-level vocab from LEGOs
+ * because LEGOs must tile their seed translation.
+ *
+ * Also includes vocab from existing LEGOs in live tables (golden seeds 1-10).
+ */
+async function loadTranslationVocab(courseCode, upToSeedNumber) {
+  const chinese = isChinese(courseCode);
+  const vocabSet = new Set();
+
+  // 1. Load vocab from all prior seed translations
+  const { data: seeds } = await supabase
+    .from('course_seeds')
+    .select('target_text')
+    .eq('course_code', courseCode)
+    .lt('seed_number', upToSeedNumber)
+    .not('target_text', 'is', null);
+
+  for (const seed of seeds || []) {
+    extractVocab(seed.target_text, chinese).forEach(v => vocabSet.add(v));
+  }
+
+  // 2. Also load vocab from existing LEGOs for seeds BEFORE this one
+  // (limited to prior seeds so parallel agents don't depend on each other)
+  const { data: legos } = await supabase
+    .from('course_legos')
+    .select('target_text, type, components')
+    .eq('course_code', courseCode)
+    .lt('seed_number', upToSeedNumber)
+    .order('seed_number')
+    .order('lego_index');
+
+  for (const lego of legos || []) {
+    extractVocab(lego.target_text, chinese).forEach(v => vocabSet.add(v));
+    if (lego.type === 'M' && lego.components) {
+      for (const comp of lego.components) {
+        extractVocab(comp.target, chinese).forEach(v => vocabSet.add(v));
+      }
+    }
+  }
+
+  // 3. Add elision particles (same as loadCourseVocab)
+  if (!chinese) {
+    for (const p of ['j', 'l', 'm', 't', 's', 'd', 'n', 'qu', 'c']) {
+      vocabSet.add(p);
+    }
+  }
+
+  return vocabSet;
 }
 
 /**
@@ -3552,6 +3980,23 @@ app.post('/api/lego', async (req, res) => {
 
     // Check phrases for vocab violations (only if not skipping baskets)
     if (phrases && phrases.length > 0 && !skipBaskets && !allowValidationBypass(req.body)) {
+      // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target as exact substring
+      const legoTargetLower = target.toLowerCase().trim();
+      const containmentFails = phrases.filter(p =>
+        !p.target.toLowerCase().trim().includes(legoTargetLower)
+      );
+      if (containmentFails.length > 0) {
+        console.log(`✗ ${legoId}: REJECTED - ${containmentFails.length} phrases missing LEGO target "${target}"`);
+        return res.status(400).json({
+          error: 'LEGO containment violation',
+          lego_id: legoId,
+          lego_target: target,
+          failing_phrases: containmentFails.slice(0, 5).map(p => p.target),
+          total_failures: containmentFails.length,
+          hint: 'Every phrase MUST contain the exact LEGO target text as a substring. No conjugation changes, no substitutions, no omissions.'
+        });
+      }
+
       const violations = checkVocabViolations(phrases, vocabSet, course_code);
       if (violations.length > 0) {
         // Remove the vocab we just added since we're rejecting
@@ -3572,30 +4017,7 @@ app.post('/api/lego', async (req, res) => {
       }
     }
 
-    // SCORE VALIDATION: USE phrases (position 8+) must have scores 5-9
-    if (phrases && phrases.length > 0 && seed >= 6 && !allowValidationBypass(req.body)) {
-      const usePhrases = phrases.filter((p, idx) => idx >= 7);  // position 8+ (0-indexed: 7+)
-      const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
-      if (missingScores.length > 0) {
-        console.log(`✗ ${legoId}: REJECTED - ${missingScores.length} USE phrases missing scores`);
-        return res.status(400).json({
-          error: 'USE phrases must have scores',
-          lego_id: legoId,
-          missing_count: missingScores.length,
-          hint: 'Add "score": 7 (or 5-9) to each USE phrase (position 8+) for QA tracking'
-        });
-      }
-      const lowScores = usePhrases.filter(p => typeof p.score === 'number' && p.score < 5);
-      if (lowScores.length > 0) {
-        console.log(`✗ ${legoId}: REJECTED - ${lowScores.length} USE phrases with score < 5`);
-        return res.status(400).json({
-          error: 'USE phrases scored < 5 should be rewritten',
-          lego_id: legoId,
-          low_count: lowScores.length,
-          hint: 'Rewrite low-scoring phrases. Only submit USE phrases you would score 5+'
-        });
-      }
-    }
+    // Score validation removed - not needed for course building
 
     // Insert LEGO
     const { error: legoError } = await supabase
@@ -3985,10 +4407,15 @@ app.post('/api/seed/complete', async (req, res) => {
     } else {
       // Traditional JSON format
       parsedData = req.body;
+      // Carry over skip_validation from query param for JSON too
+      if (req.query.skip_validation) {
+        parsedData.SKIP_VALIDATION = true;
+      }
     }
 
     const { course_code, seed_number, known_text: agent_known_text, target_text: agent_target_text, legos, SKIP_VALIDATION } = parsedData;
     const seedId = `S${String(seed_number).padStart(4, '0')}`;
+    const isDraft = req.query.draft === 'true';
 
     // Parse course to determine which texts agent must provide
     const courseParts = course_code?.split('_for_') || [];
@@ -4013,35 +4440,8 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // =========================================================================
-    // SEMANTIC ATTESTATION GATE (January 2026)
-    // Agent must explicitly confirm that all phrase pairs are semantically equivalent.
-    // This catches the failure mode where English phrases get "padded" with extra
-    // vocabulary that doesn't exist in the known language text.
-    // NOTE: Attestation is IMPLICIT for markdown submissions (always true)
-    // =========================================================================
-    const { attestation } = parsedData;
-    if (!isMarkdown && !attestation?.semantic_match_verified) {
-      return res.status(400).json({
-        error: 'SEMANTIC_ATTESTATION_REQUIRED',
-        message: 'You must confirm that all phrase pairs are semantically equivalent',
-        hint_markdown: 'TIP: Use markdown format instead - attestation is implicit and you save tokens!',
-        required: {
-          attestation: {
-            semantic_match_verified: true
-          }
-        },
-        hint: 'Before submitting, verify that EVERY phrase known_text means EXACTLY the same as its target_text. No additions, no omissions. Add attestation.semantic_match_verified: true to confirm.',
-        example: {
-          course_code: 'eng_for_jpn',
-          seed_number: 42,
-          attestation: {
-            semantic_match_verified: true
-          },
-          legos: ['...']
-        }
-      });
-    }
+    // SEMANTIC ATTESTATION: removed (February 2026)
+    // QA pass handles quality checking instead of self-attestation
 
     // AUTO-HEARTBEAT: Update heartbeat on every submission (agents may not send manual heartbeats)
     const now = Date.now();
@@ -4053,8 +4453,8 @@ app.post('/api/seed/complete', async (req, res) => {
       startedAt: agentHeartbeats.get(course_code)?.startedAt || now
     });
 
-    // CHECKPOINT GATE: Block seeds past checkpoint until approved
-    if (await isBlockedByCheckpoint(course_code, seed_number)) {
+    // CHECKPOINT GATE: Block seeds past checkpoint until approved (skip for drafts)
+    if (!isDraft && await isBlockedByCheckpoint(course_code, seed_number)) {
       const checkpoint = await getCheckpointStatus(course_code);
       return res.status(403).json({
         error: 'CHECKPOINT_REQUIRED',
@@ -4130,12 +4530,11 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // Check if seed already fully built (translation + LEGOs)
-    // For target-first courses, seeds may have translations but no LEGOs yet
+    // Check if seed already fully built (translation + LEGOs) — skip for drafts
     const hasTranslation = canonicalSeed.known_text && canonicalSeed.known_text.length > 0 &&
                            canonicalSeed.target_text && canonicalSeed.target_text.length > 0;
 
-    if (hasTranslation) {
+    if (!isDraft && hasTranslation) {
       // Check if LEGOs already exist for this seed
       const { data: existingLegos, error: legoCheckError } = await supabase
         .from('course_legos')
@@ -4203,31 +4602,34 @@ app.post('/api/seed/complete', async (req, res) => {
     const warnings = [];
 
     // 1. ZUT VALIDATION: Check for conflicts with existing LEGOs
+    //    SKIP for drafts — can't know what other parallel agents created
     const zutViolations = [];
     const duplicateLegos = [];
 
-    for (const lego of legos) {
-      const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+    if (!isDraft) {
+      for (const lego of legos) {
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
 
-      if (!SKIP_VALIDATION) {
-        const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target);
+        if (!SKIP_VALIDATION) {
+          const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target);
 
-        if (conflictResult.conflict === 'zut') {
-          zutViolations.push({
-            lego_id: legoId,
-            known: lego.known,
-            new_target: lego.target,
-            existing: conflictResult.existing,
-            suggestions: conflictResult.suggestions
-          });
-        } else if (conflictResult.conflict === 'duplicate') {
-          duplicateLegos.push({
-            lego_id: legoId,
-            known: lego.known,
-            target: lego.target,
-            original: conflictResult.legoId
-          });
-          console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} (will skip baskets)`);
+          if (conflictResult.conflict === 'zut') {
+            zutViolations.push({
+              lego_id: legoId,
+              known: lego.known,
+              new_target: lego.target,
+              existing: conflictResult.existing,
+              suggestions: conflictResult.suggestions
+            });
+          } else if (conflictResult.conflict === 'duplicate') {
+            duplicateLegos.push({
+              lego_id: legoId,
+              known: lego.known,
+              target: lego.target,
+              original: conflictResult.legoId
+            });
+            console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} (will skip baskets)`);
+          }
         }
       }
     }
@@ -4241,8 +4643,9 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // Load existing vocabulary from prior seeds (used by both tiling and vocab validation)
-    const vocabSet = await loadCourseVocab(course_code);
+    // Load existing vocabulary from prior seed translations (enables parallel builds)
+    // Translation vocab is deterministic: seed N only needs translations 1..N-1
+    const vocabSet = await loadTranslationVocab(course_code, seed_number);
 
     // 2. TILING VALIDATION: Seed target must be constructable from submitted LEGOs + prior vocabulary
     if (!SKIP_VALIDATION) {
@@ -4266,12 +4669,23 @@ app.post('/api/seed/complete', async (req, res) => {
     // Rule: LEGO N can use vocab from seeds 1..S-1 plus LEGOs 1..N of current seed (including itself)
 
     const vocabViolations = [];
+    const chinese = isChinese(course_code);
     for (const lego of legos) {
       const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
       const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
 
       // Add THIS LEGO's vocab first (so its phrases can use it)
-      addToCourseVocab(course_code, { target: lego.target, type: lego.type, components: lego.components });
+      // For drafts: add directly to local vocabSet (don't pollute global cache)
+      if (isDraft) {
+        extractVocab(lego.target, chinese).forEach(v => vocabSet.add(v));
+        if (lego.type === 'M' && lego.components) {
+          for (const comp of lego.components) {
+            extractVocab(comp.target, chinese).forEach(v => vocabSet.add(v));
+          }
+        }
+      } else {
+        addToCourseVocab(course_code, { target: lego.target, type: lego.type, components: lego.components });
+      }
 
       // THEN check phrases (can use this LEGO + all prior vocab)
       if (!isDuplicate) {
@@ -4290,6 +4704,26 @@ app.post('/api/seed/complete', async (req, res) => {
               lego_id: legoId,
               violations: violations.slice(0, 3)  // First 3
             });
+          }
+
+          // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target as exact substring
+          // The learning app uses this for character matching/highlighting
+          if (!SKIP_VALIDATION) {
+            const legoTargetLower = lego.target.toLowerCase().trim();
+            const containmentFails = allPhrases.filter(p =>
+              !p.target.toLowerCase().trim().includes(legoTargetLower)
+            );
+            if (containmentFails.length > 0) {
+              errors.push({
+                type: 'lego_containment',
+                message: `${legoId}: ${containmentFails.length} phrase(s) do not contain the LEGO target text "${lego.target}" as a substring`,
+                lego_id: legoId,
+                lego_target: lego.target,
+                failing_phrases: containmentFails.slice(0, 3).map(p => p.target),
+                hint: 'Every BUILD and USE phrase MUST contain the exact LEGO target text. No conjugation changes, no substitutions, no omissions.'
+              });
+              console.log(`✗ ${legoId}: CONTAINMENT - ${containmentFails.length} phrases missing LEGO target "${lego.target}"`);
+            }
           }
         }
       }
@@ -4407,35 +4841,7 @@ app.post('/api/seed/complete', async (req, res) => {
           });
         }
 
-        // Validate scores on USE phrases (position 8+ = 'use' role)
-        // USE phrases need scores 5-9 for QA drift calculation
-        if (!SKIP_VALIDATION && seed_number >= 6) {
-          const usePhrases = lego.phrases.filter((p, idx) => idx >= 7);  // position 8+ (0-indexed: 7+)
-          const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
-          if (missingScores.length > 0) {
-            errors.push({
-              type: 'missing_scores',
-              message: `${legoId}: USE phrases (position 8+) must have scores 5-9. Missing: ${missingScores.length}`,
-              lego_id: legoId,
-              hint: 'Add "score": 7 (or 5-9) to each USE phrase for QA tracking',
-              methodology: 'USE phrases are eternal-eligible and need quality scores for drift analysis'
-            });
-            console.log(`✗ ${legoId}: MISSING SCORES - ${missingScores.length} USE phrases without scores`);
-          }
-
-          // Reject low-quality USE phrases - if agent scores <5, rewrite don't submit
-          const lowScores = usePhrases.filter(p => typeof p.score === 'number' && p.score < 5);
-          if (lowScores.length > 0) {
-            errors.push({
-              type: 'low_scores',
-              message: `${legoId}: USE phrases scored <5 should be rewritten, not submitted. Found: ${lowScores.length}`,
-              lego_id: legoId,
-              hint: 'Rewrite low-scoring phrases to improve quality. Only submit USE phrases you\'d score 5+',
-              details: lowScores.map(p => ({ known: p.known?.substring(0, 30), score: p.score }))
-            });
-            console.log(`✗ ${legoId}: LOW SCORES - ${lowScores.length} USE phrases scored <5`);
-          }
-        }
+        // Score validation removed - not needed for course building
       } else if (!SKIP_VALIDATION) {
         // NO PHRASES AT ALL - HARD REJECT
         // Agent submitted LEGO with no build[], no use[], and no phrases[]
@@ -4481,7 +4887,8 @@ app.post('/api/seed/complete', async (req, res) => {
     // 6. LEGO BALANCE VALIDATION (three-strike escalation)
     // NOTE: M-LEGO component validation removed - methodology now uses overlapping LEGOs instead
     // Ensure phrases don't over-rely on common vocabulary while neglecting underused LEGOs
-    if (!SKIP_VALIDATION && seed_number > 20) {  // Only check after enough vocabulary exists
+    // SKIP for drafts — depends on cross-seed LEGO usage
+    if (!SKIP_VALIDATION && !isDraft && seed_number > 20) {  // Only check after enough vocabulary exists
       // Gather all phrases from this submission (supports both BUILD/USE and legacy format)
       const allNewPhrases = [];
       for (const lego of legos) {
@@ -4559,7 +4966,48 @@ app.post('/api/seed/complete', async (req, res) => {
     }
 
     // =========================================================================
-    // INSERT PHASE (all validations passed)
+    // DRAFT PATH: Upsert into course_seed_drafts and return early
+    // =========================================================================
+    if (isDraft) {
+      const { error: draftError } = await supabase
+        .from('course_seed_drafts')
+        .upsert({
+          course_code,
+          seed_number,
+          known_text,
+          target_text,
+          submission_data: { legos: legos },
+          validation_status: 'valid',
+          validation_notes: {
+            validated_at: new Date().toISOString(),
+            validations_passed: ['tiling', 'vocab', 'build_use', 'phrase_counts', 'complexity', 'length_ratio'],
+            validations_skipped: ['zut', 'balance']
+          },
+          updated_at: new Date().toISOString()
+        }, { onConflict: 'course_code,seed_number' });
+
+      if (draftError) throw new Error(`Draft upsert failed: ${draftError.message}`);
+
+      console.log(`✓ ${seedId} DRAFTED (parallel mode)`);
+      console.log(`  LEGOs: ${legos.length}`);
+      console.log(`${'='.repeat(60)}\n`);
+
+      return res.json({
+        ok: true,
+        seed: seedId,
+        status: 'DRAFTED',
+        action: 'PROCEED TO NEXT SEED',
+        known_text,
+        target_text,
+        legos: legos.length,
+        phrases: legos.reduce((sum, l) => sum + (l.build?.length || 0) + (l.use?.length || 0) + (l.phrases?.length || 0), 0),
+        warnings: warnings.length > 0 ? { note: 'Warnings for next seed', items: warnings } : undefined,
+        hint: 'Draft saved. Run POST /api/course/:code/finalize when all seeds are drafted.'
+      });
+    }
+
+    // =========================================================================
+    // INSERT PHASE (all validations passed — non-draft path)
     // =========================================================================
 
     console.log(`\nInserting ${seedId}...`);
@@ -5150,6 +5598,26 @@ app.get('/api/stats/:courseCode', async (req, res) => {
   const vocabSet = await loadCourseVocab(courseCode);
   const chinese = isChinese(courseCode);
 
+  // Draft counts (for parallel builds)
+  let draftCount = 0;
+  let validDrafts = 0;
+  try {
+    const { count: dc } = await supabase
+      .from('course_seed_drafts')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode);
+    draftCount = dc || 0;
+
+    const { count: vd } = await supabase
+      .from('course_seed_drafts')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('validation_status', 'valid');
+    validDrafts = vd || 0;
+  } catch (e) {
+    // Draft table may not exist yet — ignore
+  }
+
   res.json({
     course_code: courseCode,
     total_seeds: totalSeeds,
@@ -5163,6 +5631,8 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     vocab_size: vocabSet.size,
     vocab_mode: chinese ? 'characters' : 'words',
     quality,
+    drafts_total: draftCount,
+    drafts_valid: validDrafts,
     thresholds: {
       min: MIN_PHRASES_PER_LEGO,
       target: TARGET_PHRASES_PER_LEGO,
@@ -5407,17 +5877,19 @@ app.delete('/api/agents/:pid', (req, res) => {
 // =============================================================================
 
 /**
- * POST /api/build/start/:courseCode - Start a build with batch agent spawning
+ * POST /api/build/start/:courseCode - Start a build with agent spawning
  *
- * This spawns Claude agents in sequential 30-seed batches.
- * Each agent exits after its batch, and a fresh agent picks up from there.
+ * Supports two modes:
+ * - sequential (default): Single agent builds seeds one by one
+ * - parallel (?parallel=true or body.parallel=true): Coordinator spawns ~10 sub-agents via Task tool
  */
 app.post('/api/build/start/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const { terminal = 'iTerm2', targetSeeds = 668 } = req.body || {};
+  const { terminal = 'iTerm2', targetSeeds = 668, parallel = false } = req.body || {};
+  const isParallel = parallel || req.query.parallel === 'true';
 
   try {
-    const result = await startBuild(courseCode, terminal, targetSeeds);
+    const result = await startBuild(courseCode, terminal, targetSeeds, isParallel);
     res.json(result);
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });
@@ -5522,6 +5994,191 @@ app.get('/api/build/active', async (req, res) => {
     active_builds: builds.length,
     builds
   });
+});
+
+/**
+ * POST /api/build/rebuild/:courseCode - Wipe and rebuild a seed range
+ *
+ * Deletes phrases + LEGOs in range, NULLs decomposed_at, creates build_jobs record.
+ * Used for pass-2 rebuilds where seed translations already exist.
+ */
+app.post('/api/build/rebuild/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { from_seed = 11, to_seed = 300 } = req.body || {};
+
+  try {
+    // Validate range
+    if (from_seed < 1 || to_seed < from_seed) {
+      return res.status(400).json({ ok: false, error: `Invalid range: ${from_seed}-${to_seed}` });
+    }
+
+    // Check for active build
+    const { data: activeJob } = await supabase
+      .from('build_jobs')
+      .select('id, status')
+      .eq('course_code', courseCode)
+      .in('status', ['running'])
+      .limit(1)
+      .maybeSingle();
+
+    if (activeJob) {
+      return res.status(409).json({ ok: false, error: 'Build already running - stop it first' });
+    }
+
+    console.log(`[REBUILD] Starting rebuild of ${courseCode} seeds ${from_seed}-${to_seed}...`);
+
+    // 1. Delete phrases in range
+    const { count: phrasesDeleted } = await supabase
+      .from('course_practice_phrases')
+      .delete({ count: 'exact' })
+      .eq('course_code', courseCode)
+      .gte('seed_number', from_seed)
+      .lte('seed_number', to_seed);
+
+    console.log(`[REBUILD] Deleted ${phrasesDeleted || 0} phrases`);
+
+    // 2. Delete LEGOs in range
+    const { count: legosDeleted } = await supabase
+      .from('course_legos')
+      .delete({ count: 'exact' })
+      .eq('course_code', courseCode)
+      .gte('seed_number', from_seed)
+      .lte('seed_number', to_seed);
+
+    console.log(`[REBUILD] Deleted ${legosDeleted || 0} LEGOs`);
+
+    // 3. NULL decomposed_at in range
+    const { count: seedsReset } = await supabase
+      .from('course_seeds')
+      .update({ decomposed_at: null }, { count: 'exact' })
+      .eq('course_code', courseCode)
+      .gte('seed_number', from_seed)
+      .lte('seed_number', to_seed);
+
+    console.log(`[REBUILD] Reset ${seedsReset || 0} seeds (decomposed_at → null)`);
+
+    // 4. Clear vocab cache
+    courseVocabCache.delete(courseCode);
+
+    // 5. Create build_jobs record
+    const { data: jobData, error: jobError } = await supabase
+      .from('build_jobs')
+      .insert({
+        course_code: courseCode,
+        pass: 'pass_2',
+        status: 'running',
+        current_seed: from_seed,
+        seeds_completed: from_seed - 1,
+        total_seeds: to_seed,
+        started_at: new Date().toISOString(),
+        last_heartbeat: new Date().toISOString(),
+        requested_by: 'dashboard_rebuild',
+        terminal: 'headless',
+        agent_count: 0,
+        respawn_count: 0,
+        machine_name: MACHINE_NAME,
+        build_mode: 'parallel'
+      })
+      .select('id')
+      .single();
+
+    if (jobError) {
+      console.error('[REBUILD] Failed to create job:', jobError.message);
+      return res.status(500).json({ ok: false, error: 'Failed to create build job' });
+    }
+
+    console.log(`[REBUILD] Created job ${jobData.id} for ${courseCode} seeds ${from_seed}-${to_seed}`);
+
+    res.json({
+      ok: true,
+      job_id: jobData.id,
+      seeds_to_build: to_seed - from_seed + 1,
+      phrases_deleted: phrasesDeleted || 0,
+      legos_deleted: legosDeleted || 0,
+      seeds_reset: seedsReset || 0
+    });
+
+  } catch (err) {
+    console.error('[REBUILD] Error:', err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/build/seed-grid/:courseCode - Seed status grid for visualization
+ *
+ * Returns status of every seed: complete, building, or empty.
+ * Polled by dashboard to show real-time build progress.
+ */
+app.get('/api/build/seed-grid/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    // Get all seeds with their decomposed_at status
+    const { data: seeds, error: seedError } = await supabase
+      .from('course_seeds')
+      .select('seed_number, decomposed_at')
+      .eq('course_code', courseCode)
+      .order('seed_number');
+
+    if (seedError) {
+      return res.status(500).json({ ok: false, error: seedError.message });
+    }
+
+    // Get LEGO counts per seed
+    const { data: legoCounts, error: legoError } = await supabase
+      .from('course_legos')
+      .select('seed_number')
+      .eq('course_code', courseCode);
+
+    // Get phrase counts per seed
+    const { data: phraseCounts, error: phraseError } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number')
+      .eq('course_code', courseCode);
+
+    // Aggregate counts
+    const legosBySeed = {};
+    for (const l of legoCounts || []) {
+      legosBySeed[l.seed_number] = (legosBySeed[l.seed_number] || 0) + 1;
+    }
+
+    const phrasesBySeed = {};
+    for (const p of phraseCounts || []) {
+      phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1;
+    }
+
+    // Build grid
+    let complete = 0, building = 0, empty = 0;
+    const grid = (seeds || []).map(s => {
+      const legos = legosBySeed[s.seed_number] || 0;
+      const phrases = phrasesBySeed[s.seed_number] || 0;
+      let status;
+      if (s.decomposed_at) {
+        status = 'complete';
+        complete++;
+      } else if (legos > 0) {
+        status = 'building';
+        building++;
+      } else {
+        status = 'empty';
+        empty++;
+      }
+      return { seed: s.seed_number, status, legos, phrases };
+    });
+
+    res.json({
+      seeds: grid,
+      total: grid.length,
+      complete,
+      building,
+      empty
+    });
+
+  } catch (err) {
+    console.error('[SEED-GRID] Error:', err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
 });
 
 /**
@@ -5904,21 +6561,75 @@ USE:
  * GET /api/next/:courseCode - API-guided builder endpoint
  * Returns everything an LLM agent needs to build the next seed:
  * - The seed to build (known + target text)
- * - Available vocabulary (all prior LEGOs)
- * - One golden example showing exact submission format
- * - A pre-formatted markdown template to fill in
- * - Exact curl command to submit
+ * - Available vocabulary with recency bias
+ * - 3 completed example seeds from the DB (seed 1, seed 10, and N-1)
+ * - A JSON template to fill in
  *
- * Designed for fast/cheap models (Haiku) that need maximum guidance.
+ * Designed for fast/cheap models (Haiku) that learn from examples.
  */
+
+// Helper: fetch a completed seed from DB as JSON (LEGOs + phrases)
+async function fetchCompletedSeed(courseCode, seedNumber) {
+  const { data: seed } = await supabase
+    .from('course_seeds')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode)
+    .eq('seed_number', seedNumber)
+    .single();
+
+  if (!seed) return null;
+
+  const { data: legos } = await supabase
+    .from('course_legos')
+    .select('lego_index, known_text, target_text, type, components')
+    .eq('course_code', courseCode)
+    .eq('seed_number', seedNumber)
+    .order('lego_index');
+
+  if (!legos || legos.length === 0) return null;
+
+  const { data: phrases } = await supabase
+    .from('course_practice_phrases')
+    .select('lego_index, known_text, target_text, phrase_role, position')
+    .eq('course_code', courseCode)
+    .eq('seed_number', seedNumber)
+    .order('lego_index')
+    .order('position');
+
+  return {
+    course_code: courseCode,
+    seed_number: seed.seed_number,
+    known_text: seed.known_text,
+    target_text: seed.target_text,
+    legos: legos.map(l => {
+      const obj = {
+        idx: l.lego_index,
+        type: l.type,
+        known: l.known_text,
+        target: l.target_text
+      };
+      if (l.type === 'M' && l.components) {
+        obj.components = l.components;
+      }
+      const legoPhrases = (phrases || []).filter(p => p.lego_index === l.lego_index);
+      obj.build = legoPhrases
+        .filter(p => p.phrase_role === 'build')
+        .map(p => ({ known: p.known_text, target: p.target_text }));
+      obj.use = legoPhrases
+        .filter(p => p.phrase_role === 'use')
+        .map(p => ({ known: p.known_text, target: p.target_text }));
+      return obj;
+    })
+  };
+}
+
 app.get('/api/next/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const targetLangName = getLanguageName(courseCode);
 
   // Get course info
   const { data: courseInfo } = await supabase
     .from('courses')
-    .select('display_name, quality_rules, seed_count')
+    .select('display_name, seed_count')
     .eq('course_code', courseCode)
     .single();
 
@@ -5948,79 +6659,39 @@ app.get('/api/next/:courseCode', async (req, res) => {
     });
   }
 
-  // Get all existing LEGOs (vocabulary available for phrases)
+  // Get all existing LEGOs for vocabulary display (with recency)
   const { data: allLegos } = await supabase
     .from('course_legos')
-    .select('seed_number, lego_index, known_text, target_text, type, components, is_new')
+    .select('seed_number, lego_index, known_text, target_text, type, is_new')
     .eq('course_code', courseCode)
     .eq('is_new', true)
-    .order('seed_number')
-    .order('lego_index');
+    .order('seed_number', { ascending: false })
+    .order('lego_index', { ascending: false });
 
-  // Format vocabulary as compact list
-  const vocabList = (allLegos || []).map(l =>
-    `${l.type === 'M' ? '[M]' : '[A]'} "${l.known_text}" → "${l.target_text}"`
-  );
+  // Format vocabulary with recency: group by seed, newest first, / separated
+  const vocabBySeed = {};
+  for (const l of (allLegos || [])) {
+    if (!vocabBySeed[l.seed_number]) vocabBySeed[l.seed_number] = [];
+    vocabBySeed[l.seed_number].push(`${l.known_text} → ${l.target_text}`);
+  }
+  const seedNums = Object.keys(vocabBySeed).map(Number).sort((a, b) => b - a);
+  const vocabLines = seedNums.map(sn => {
+    const items = vocabBySeed[sn].reverse(); // restore lego_index order within seed
+    const marker = sn >= nextSeed.seed_number - 3 ? '★' : ' ';
+    return `${marker} ${items.join(' / ')}`;
+  });
 
-  // Pick a golden example (rotate based on seed number for variety)
-  const golden = courseInfo?.quality_rules?.golden_decompositions || [];
-  const goldenIdx = golden.length > 0 ? (nextSeed.seed_number % golden.length) : 0;
-  const example = golden[goldenIdx];
-
-  // Format the golden example as JSON (matching /api/seed/complete JSON format)
-  let exampleJson = null;
-  if (example) {
-    exampleJson = {
-      course_code: courseCode,
-      seed_number: example.seed_number,
-      known_text: example.known_text,
-      target_text: example.target_text,
-      attestation: { semantic_match_verified: true },
-      legos: example.legos.map((lego, i) => {
-        const obj = {
-          idx: i + 1,
-          type: lego.type,
-          known: lego.known,
-          target: lego.target
-        };
-        if (lego.type === 'M' && lego.components) {
-          obj.components = lego.components.map(c => ({ known: c.known, target: c.target }));
-        }
-        obj.build = (lego.build_phrases || []).map(bp => ({ known: bp.known, target: bp.target }));
-        obj.use = (lego.use_phrases || []).map(up => ({ known: up.known, target: up.target }));
-        return obj;
-      })
-    };
+  // Fetch 3 example seeds: seed 1, seed 10, and N-1
+  const prevSeedNum = nextSeed.seed_number - 1;
+  const exampleNums = [1, 10, prevSeedNum].filter((n, i, a) => n > 0 && n < nextSeed.seed_number && a.indexOf(n) === i);
+  const examples = [];
+  for (const sn of exampleNums) {
+    const ex = await fetchCompletedSeed(courseCode, sn);
+    if (ex) examples.push(ex);
   }
 
   // Count completed seeds for progress
   const completedCount = allSeeds?.filter(s => s.decomposed_at).length || 0;
-
-  // Build the JSON template for this seed (pre-filled with seed info, blanks for LEGOs)
-  const jsonTemplate = {
-    course_code: courseCode,
-    seed_number: nextSeed.seed_number,
-    known_text: nextSeed.known_text,
-    target_text: nextSeed.target_text,
-    attestation: { semantic_match_verified: true },
-    legos: [
-      {
-        idx: 1,
-        type: 'A or M',
-        known: 'english meaning',
-        target: 'target translation',
-        components: [{ known: 'word1', target: 'mot1' }, { known: 'word2', target: 'mot2' }],
-        build: [
-          { known: 'short fragment', target: 'traduction courte' },
-          { known: 'another fragment', target: 'autre traduction' }
-        ],
-        use: [
-          { known: 'Complete sentence a person would say.', target: 'Traduction complète.' },
-          { known: 'Another varied sentence.', target: 'Autre phrase variée.' }
-        ]
-      }
-    ]
-  };
 
   res.json({
     seed: {
@@ -6029,30 +6700,38 @@ app.get('/api/next/:courseCode', async (req, res) => {
       target: nextSeed.target_text
     },
     progress: `${completedCount}/${targetSeedCount} seeds done`,
-    vocabulary: vocabList,
-    vocab_count: vocabList.length,
+    vocabulary: vocabLines,
+    vocab_count: (allLegos || []).length,
     rules: {
-      decomposition: [
-        'Break the seed into 2-4 LEGOs in PEDAGOGICAL order (most combinable first, temporal markers last)',
-        'A-type = single word (e.g., "to speak" → "parler")',
-        'M-type = multi-word chunk (e.g., "I want" → "je veux") — MUST have a components array',
-        'A-type LEGOs: omit the components field entirely',
-        'LEGOs that already exist in vocabulary above will be auto-detected as duplicates — still include them',
-        'The LEGO targets must TILE (cover) the seed target text'
-      ],
-      build_phrases: '3-5 per LEGO. Short-medium fragments. New LEGO + prior vocabulary. Show how it plugs in.',
-      use_phrases: '8-10 per LEGO. Medium-long COMPLETE sentences. Consummate variety — don\'t repeat patterns. Things a real person would say.',
-      critical: 'Phrases can ONLY use vocabulary from the list above + the current seed\'s LEGOs. The API will reject unknown words.'
+      legos: 'Break seed into LEGOs. A-type = single word. M-type = multi-word chunk (MUST have components array). Use overlapping LEGOs when target language does something the learner can\'t infer from the known language (e.g. essayer d\'expliquer shows the d\' connector). LEGOs can overlap but must cover the full seed with no gaps.',
+      build: '3-4 per LEGO. Short fragments. LEGO + prior vocabulary.',
+      use: '8-12 per LEGO. Complete natural sentences a real person would say. Variety of vocab, patterns, LEGO position.',
+      constraints: 'Every phrase MUST contain its LEGO. Phrases can ONLY use vocabulary listed above + current seed LEGOs. Never conjugate or inflect a LEGO — use exact forms only.'
     },
-    golden_example: {
-      note: 'This is EXACTLY the JSON format to submit. Follow this structure.',
-      json: exampleJson
+    examples: examples,
+    template: {
+      _note: 'Each LEGO follows this shape. See examples above for real data.',
+      lego: {
+        idx: '1, 2, 3...',
+        type: 'A (single word) or M (multi-word, MUST have components)',
+        known: 'English LEGO text',
+        target: 'Target language LEGO text',
+        components: [{ known: '...', target: '...' }],
+        build: '3-4 fragments: LEGO + prior vocab. Fragments OK.',
+        use: '8-12 complete sentences a real person would say.'
+      }
     },
     submit: {
       method: 'POST',
       url: `http://localhost:3471/api/seed/complete`,
       content_type: 'application/json',
-      template: jsonTemplate
+      body: {
+        course_code: courseCode,
+        seed_number: nextSeed.seed_number,
+        known_text: nextSeed.known_text,
+        target_text: nextSeed.target_text,
+        legos: '[ ... your LEGOs here, same shape as template ... ]'
+      }
     },
     next_action: `After submitting, call GET /api/next/${courseCode} for the next seed.`
   });
@@ -7222,14 +7901,23 @@ app.post('/api/phrases', async (req, res) => {
   const violations = [];
   const validPhrases = [];
 
+  const legoTargetLower = lego.target_text.toLowerCase().trim();
+
   for (const phrase of phrases) {
     const { known, target } = phrase;
     if (!known || !target) continue;
 
-    // Check vocab
-    const phraseChars = chinese
-      ? [...target].filter(c => c.trim() && !/[\s\u3000。，！？、：；""'']/.test(c))
-      : target.toLowerCase().split(/\s+/);
+    // LEGO CONTAINMENT: phrase target MUST contain LEGO target as exact substring
+    if (!target.toLowerCase().trim().includes(legoTargetLower)) {
+      violations.push({
+        phrase: target,
+        unknown: `LEGO target "${lego.target_text}" not found as substring`
+      });
+      continue;
+    }
+
+    // Check vocab - use extractVocab for consistent tokenization with loadCourseVocab
+    const phraseChars = extractVocab(target, chinese);
 
     const unknown = phraseChars.filter(c => !vocabSet.has(c));
 
@@ -7257,18 +7945,7 @@ app.post('/api/phrases', async (req, res) => {
     }
   }
 
-  // SCORE VALIDATION: Phrases at position 8+ must have scores
-  if (seed_number >= 6) {
-    const usePhrases = phrases.filter((p, idx) => (nextPosition - phrases.length + idx) >= 8);
-    const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
-    if (missingScores.length > 0) {
-      return res.status(400).json({
-        error: 'USE phrases (position 8+) must have scores 5-9',
-        missing_count: missingScores.length,
-        hint: 'Add "score": 7 (or 5-9) to each phrase that will be at position 8+'
-      });
-    }
-  }
+  // Score validation removed - not needed for course building
 
   if (violations.length > 0) {
     return res.status(400).json({
@@ -8715,6 +9392,512 @@ app.get('/api/qa/flagged-phrases/:courseCode', async (req, res) => {
     });
   } catch (err) {
     console.error('[QA] Error getting flagged phrases:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// =============================================================================
+// PARALLEL DRAFT ENDPOINTS
+// =============================================================================
+
+/**
+ * GET /api/course/:code/drafts - List draft status summary
+ */
+app.get('/api/course/:code/drafts', async (req, res) => {
+  try {
+    const courseCode = req.params.code;
+    const statusFilter = req.query.status; // optional: 'valid', 'collision', 'rework'
+
+    let query = supabase
+      .from('course_seed_drafts')
+      .select('seed_number, validation_status, validation_notes, created_at, updated_at')
+      .eq('course_code', courseCode)
+      .order('seed_number');
+
+    if (statusFilter) {
+      query = query.eq('validation_status', statusFilter);
+    }
+
+    const { data: drafts, error } = await query;
+    if (error) throw error;
+
+    const statusCounts = { valid: 0, collision: 0, rework: 0 };
+    for (const d of drafts || []) {
+      statusCounts[d.validation_status] = (statusCounts[d.validation_status] || 0) + 1;
+    }
+
+    res.json({
+      course_code: courseCode,
+      total_drafts: drafts?.length || 0,
+      ...statusCounts,
+      drafts: drafts || []
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/course/:code/finalize - Process all drafts into live tables
+ *
+ * Steps:
+ * 1. Load baseline LEGOs from live tables (golden seeds)
+ * 2. Load all drafts in seed order
+ * 3. Process: dedup (same known+target), detect collisions (same known, diff target)
+ * 4. If collisions → report, don't write
+ * 5. If clean → write to live tables, cleanup drafts
+ */
+app.post('/api/course/:code/finalize', async (req, res) => {
+  try {
+    const courseCode = req.params.code;
+    console.log(`\n${'='.repeat(60)}`);
+    console.log(`FINALIZE: ${courseCode}`);
+    console.log(`${'='.repeat(60)}`);
+
+    // =========================================================================
+    // STEP 1: Load baseline — existing LEGOs from live tables (golden seeds)
+    // =========================================================================
+    const { data: existingLegos, error: legoErr } = await supabase
+      .from('course_legos')
+      .select('known_text, target_text, seed_number, lego_index, is_new')
+      .eq('course_code', courseCode)
+      .order('seed_number')
+      .order('lego_index');
+
+    if (legoErr) throw new Error(`Failed to load existing LEGOs: ${legoErr.message}`);
+
+    // Build known→target map from existing is_new LEGOs
+    const knownLegoMap = new Map(); // known_text → { target_text, seed_number, lego_index }
+    for (const lego of existingLegos || []) {
+      if (lego.is_new && !knownLegoMap.has(lego.known_text)) {
+        knownLegoMap.set(lego.known_text, {
+          target_text: lego.target_text,
+          seed_number: lego.seed_number,
+          lego_index: lego.lego_index
+        });
+      }
+    }
+    console.log(`  Baseline: ${knownLegoMap.size} unique LEGOs from live tables`);
+
+    // =========================================================================
+    // STEP 2: Load all drafts in seed order
+    // =========================================================================
+    const { data: drafts, error: draftErr } = await supabase
+      .from('course_seed_drafts')
+      .select('*')
+      .eq('course_code', courseCode)
+      .order('seed_number');
+
+    if (draftErr) throw new Error(`Failed to load drafts: ${draftErr.message}`);
+
+    if (!drafts || drafts.length === 0) {
+      return res.status(400).json({
+        error: 'No drafts found',
+        course_code: courseCode,
+        hint: 'Submit seeds with ?draft=true first, then finalize.'
+      });
+    }
+    console.log(`  Drafts loaded: ${drafts.length}`);
+
+    // =========================================================================
+    // STEP 3: Process drafts in seed order — dedup + collision detection
+    // =========================================================================
+    const collisions = [];
+    const dedupResults = new Map(); // seed_number → Map<lego_idx, 'new'|'duplicate'>
+    const emptySeedNumbers = [];
+    let totalDeduplicated = 0;
+
+    for (const draft of drafts) {
+      const draftLegos = draft.submission_data?.legos || [];
+      const legoStatuses = new Map();
+      let newCount = 0;
+
+      for (const lego of draftLegos) {
+        const existing = knownLegoMap.get(lego.known);
+
+        if (existing) {
+          // Same known text exists
+          const existingTarget = existing.target_text.trim().toLowerCase();
+          const newTarget = lego.target.trim().toLowerCase();
+
+          if (existingTarget === newTarget) {
+            // DUPLICATE: Same known + same target → mark for dedup
+            legoStatuses.set(lego.idx, 'duplicate');
+            totalDeduplicated++;
+          } else {
+            // COLLISION: Same known + different target
+            collisions.push({
+              seed_number: draft.seed_number,
+              lego_known: lego.known,
+              lego_target: lego.target,
+              lego_idx: lego.idx,
+              conflicts_with: {
+                target_text: existing.target_text,
+                seed_number: existing.seed_number,
+                lego_index: existing.lego_index
+              }
+            });
+            legoStatuses.set(lego.idx, 'collision');
+          }
+        } else {
+          // NEW LEGO: No match found
+          legoStatuses.set(lego.idx, 'new');
+          knownLegoMap.set(lego.known, {
+            target_text: lego.target,
+            seed_number: draft.seed_number,
+            lego_index: lego.idx
+          });
+          newCount++;
+        }
+      }
+
+      dedupResults.set(draft.seed_number, legoStatuses);
+
+      // Empty seed: all LEGOs are duplicates
+      if (newCount === 0 && draftLegos.length > 0 && collisions.filter(c => c.seed_number === draft.seed_number).length === 0) {
+        emptySeedNumbers.push(draft.seed_number);
+      }
+    }
+
+    console.log(`  Dedup: ${totalDeduplicated} duplicate LEGOs`);
+    console.log(`  Collisions: ${collisions.length}`);
+    console.log(`  Empty seeds: ${emptySeedNumbers.length}`);
+
+    // =========================================================================
+    // STEP 4: Collision check — abort if any
+    // =========================================================================
+    if (collisions.length > 0) {
+      // Update colliding drafts in DB
+      const collidingSeeds = [...new Set(collisions.map(c => c.seed_number))];
+      for (const seedNum of collidingSeeds) {
+        const seedCollisions = collisions.filter(c => c.seed_number === seedNum);
+        await supabase
+          .from('course_seed_drafts')
+          .update({
+            validation_status: 'collision',
+            validation_notes: {
+              collisions: seedCollisions,
+              detected_at: new Date().toISOString()
+            },
+            updated_at: new Date().toISOString()
+          })
+          .eq('course_code', courseCode)
+          .eq('seed_number', seedNum);
+      }
+
+      console.log(`✗ FINALIZE ABORTED: ${collisions.length} collision(s) in ${collidingSeeds.length} seed(s)`);
+
+      return res.status(409).json({
+        error: 'COLLISIONS_DETECTED',
+        message: `${collisions.length} LEGO collision(s) found — cannot finalize until resolved`,
+        collisions,
+        colliding_seeds: collidingSeeds,
+        resolution: {
+          steps: [
+            '1. Query GET /api/course/:code/drafts?status=collision to see affected seeds',
+            '2. Redecompose colliding seeds with bigger chunks (M-LEGOs) to avoid collision',
+            '3. Resubmit via POST /api/seed/complete?draft=true (upsert replaces old draft)',
+            '4. Run POST /api/course/:code/finalize again'
+          ]
+        }
+      });
+    }
+
+    // =========================================================================
+    // STEP 5: Write to live tables (zero collisions confirmed)
+    // =========================================================================
+    let seedsWritten = 0;
+    let legosIntroduced = 0;
+    let phrasesWritten = 0;
+
+    for (const draft of drafts) {
+      const draftLegos = draft.submission_data?.legos || [];
+      const legoStatuses = dedupResults.get(draft.seed_number);
+      const isEmptySeed = emptySeedNumbers.includes(draft.seed_number);
+      const seedId = `S${String(draft.seed_number).padStart(4, '0')}`;
+
+      // 5a. Upsert course_seeds with decomposed_at
+      const { error: seedError } = await supabase
+        .from('course_seeds')
+        .upsert({
+          course_code: courseCode,
+          seed_number: draft.seed_number,
+          known_text: draft.known_text,
+          target_text: draft.target_text,
+          status: 'released',
+          decomposed_at: new Date().toISOString(),
+          version: 1
+        }, { onConflict: 'course_code,seed_number' });
+
+      if (seedError) throw new Error(`Seed ${draft.seed_number} insert failed: ${seedError.message}`);
+
+      // 5b. Insert LEGOs and phrases
+      let seedPhraseCount = 0;
+      let skippedDuplicates = 0;
+
+      for (const lego of draftLegos) {
+        const legoStatus = legoStatuses?.get(lego.idx) || 'new';
+        const isDuplicate = legoStatus === 'duplicate';
+
+        // Upsert LEGO
+        const { error: legoError } = await supabase
+          .from('course_legos')
+          .upsert({
+            course_code: courseCode,
+            seed_number: draft.seed_number,
+            lego_index: lego.idx,
+            type: lego.type || 'A',
+            is_new: !isDuplicate,
+            known_text: lego.known,
+            target_text: lego.target,
+            components: lego.components || null,
+            status: 'draft',
+            version: 1
+          }, { onConflict: 'course_code,seed_number,lego_index' });
+
+        if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
+
+        if (isDuplicate) {
+          skippedDuplicates++;
+          continue;
+        }
+
+        legosIntroduced++;
+
+        // Generate phrases (same logic as INSERT PHASE in seed/complete)
+        let allPhraseRows = [];
+        let practiceStartPosition = 1;
+
+        // M-TYPE BUILD-UP
+        if (lego.type === 'M' && lego.components && lego.components.length > 0) {
+          const { buildupPhrases, startPosition } = generateBuildupPhrases(
+            { seed: draft.seed_number, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
+            courseCode
+          );
+          allPhraseRows = [...buildupPhrases];
+          practiceStartPosition = startPosition;
+        }
+
+        // BUILD/USE format
+        if (usesBuildUseFormat(lego)) {
+          const buildPhrases = lego.build || [];
+          const usePhrases = lego.use || [];
+
+          const buildRows = buildPhrases.map((p, i) => ({
+            course_code: courseCode,
+            seed_number: draft.seed_number,
+            lego_index: lego.idx,
+            position: practiceStartPosition + i,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            phrase_role: 'build',
+            connected_lego_ids: [],
+            lego_position: computeLegoPosition(p.target, lego.target),
+            metadata: { format: 'build_use' },
+            status: 'draft',
+            version: 1
+          }));
+
+          const useRows = usePhrases.map((p, i) => ({
+            course_code: courseCode,
+            seed_number: draft.seed_number,
+            lego_index: lego.idx,
+            position: practiceStartPosition + buildPhrases.length + i,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            phrase_role: 'use',
+            connected_lego_ids: [],
+            lego_position: computeLegoPosition(p.target, lego.target),
+            metadata: {
+              format: 'build_use',
+              score: p.score,
+              scored_at: new Date().toISOString()
+            },
+            status: 'draft',
+            version: 1
+          }));
+
+          allPhraseRows = [...allPhraseRows, ...buildRows, ...useRows];
+
+        } else if (lego.phrases && lego.phrases.length > 0) {
+          // Legacy format
+          const buildupNormalized = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
+          const seenNormalized = new Set();
+          const dedupedPhrases = lego.phrases.filter(p => {
+            const norm = normalizePhrase(p.target);
+            if (buildupNormalized.has(norm) || seenNormalized.has(norm)) return false;
+            seenNormalized.add(norm);
+            return true;
+          });
+
+          const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
+          const practicePhrases = sorted.map((p, i) => {
+            const position = practiceStartPosition + i;
+            return {
+              course_code: courseCode,
+              seed_number: draft.seed_number,
+              lego_index: lego.idx,
+              position,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              phrase_role: computePhraseRole(position),
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(p.target, lego.target),
+              metadata: p.score ? { score: p.score } : {},
+              status: 'draft',
+              version: 1
+            };
+          });
+
+          allPhraseRows = [...allPhraseRows, ...practicePhrases];
+        }
+
+        // Insert phrases
+        if (allPhraseRows.length > 0) {
+          const { error: phraseError } = await supabase
+            .from('course_practice_phrases')
+            .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
+
+          if (phraseError) throw new Error(`Phrase insert failed: ${phraseError.message}`);
+          seedPhraseCount += allPhraseRows.length;
+        }
+      }
+
+      // 5c. Handle empty seeds (all LEGOs are duplicates)
+      if (isEmptySeed) {
+        // Get all is_new=true LEGOs from earlier seeds to build word→LEGO map
+        const { data: allNewLegos } = await supabase
+          .from('course_legos')
+          .select('seed_number, lego_index, target_text')
+          .eq('course_code', courseCode)
+          .eq('is_new', true)
+          .lt('seed_number', draft.seed_number)
+          .order('seed_number');
+
+        const wordIntroducedBy = {};
+        for (const l of (allNewLegos || [])) {
+          const words = l.target_text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').split(/\s+/).filter(Boolean);
+          for (const w of words) {
+            if (!wordIntroducedBy[w]) {
+              wordIntroducedBy[w] = { seed_number: l.seed_number, lego_index: l.lego_index, target_text: l.target_text };
+            }
+          }
+        }
+
+        const seedWords = draft.target_text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').split(/\s+/).filter(Boolean);
+        let bestSeedNum = -1;
+        let bestLegoIdx = -1;
+        let bestLegoTarget = null;
+
+        for (const w of seedWords) {
+          const intro = wordIntroducedBy[w];
+          if (!intro) continue;
+          if (intro.seed_number > bestSeedNum ||
+              (intro.seed_number === bestSeedNum && intro.lego_index > bestLegoIdx)) {
+            bestSeedNum = intro.seed_number;
+            bestLegoIdx = intro.lego_index;
+            bestLegoTarget = intro.target_text;
+          }
+        }
+
+        if (bestSeedNum >= 0) {
+          const { data: existingPhrases } = await supabase
+            .from('course_practice_phrases')
+            .select('position')
+            .eq('course_code', courseCode)
+            .eq('seed_number', bestSeedNum)
+            .eq('lego_index', bestLegoIdx)
+            .order('position', { ascending: false })
+            .limit(1);
+
+          const maxPos = existingPhrases?.[0]?.position || 0;
+
+          const { error: seedPhraseError } = await supabase
+            .from('course_practice_phrases')
+            .insert({
+              course_code: courseCode,
+              seed_number: bestSeedNum,
+              lego_index: bestLegoIdx,
+              position: maxPos + 1,
+              known_text: draft.known_text,
+              target_text: draft.target_text,
+              word_count: draft.target_text.length,
+              lego_count: (draft.known_text.match(/\s+/g) || []).length + 1,
+              phrase_role: 'use',
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(draft.target_text, bestLegoTarget),
+              metadata: {
+                format: 'build_use',
+                source: 'seed_sentence',
+                source_seed: draft.seed_number,
+                score: 8
+              },
+              status: 'draft',
+              version: 1
+            });
+
+          if (seedPhraseError) {
+            console.warn(`  ⚠ Empty seed ${draft.seed_number}: Could not add USE phrase: ${seedPhraseError.message}`);
+          } else {
+            seedPhraseCount++;
+            console.log(`  ✓ Empty seed ${draft.seed_number} → USE phrase for S${String(bestSeedNum).padStart(4,'0')}L${String(bestLegoIdx).padStart(2,'0')}`);
+          }
+        }
+      }
+
+      phrasesWritten += seedPhraseCount;
+      seedsWritten++;
+
+      if (seedsWritten % 50 === 0) {
+        console.log(`  Progress: ${seedsWritten}/${drafts.length} seeds written`);
+      }
+    }
+
+    // =========================================================================
+    // STEP 6: Cleanup drafts + report
+    // =========================================================================
+    const { error: deleteError } = await supabase
+      .from('course_seed_drafts')
+      .delete()
+      .eq('course_code', courseCode);
+
+    if (deleteError) {
+      console.warn(`  ⚠ Draft cleanup failed: ${deleteError.message}`);
+    }
+
+    // Invalidate vocab cache since we just wrote a bunch of LEGOs
+    courseVocabCache.delete(courseCode);
+
+    console.log(`\n${'='.repeat(60)}`);
+    console.log(`✓ FINALIZE COMPLETE: ${courseCode}`);
+    console.log(`  Seeds: ${seedsWritten}`);
+    console.log(`  LEGOs introduced: ${legosIntroduced}`);
+    console.log(`  LEGOs deduplicated: ${totalDeduplicated}`);
+    console.log(`  Empty seeds: ${emptySeedNumbers.length}`);
+    console.log(`  Phrases: ${phrasesWritten}`);
+    console.log(`${'='.repeat(60)}\n`);
+
+    res.json({
+      ok: true,
+      status: 'FINALIZED',
+      course_code: courseCode,
+      seeds_written: seedsWritten,
+      legos_introduced: legosIntroduced,
+      legos_deduplicated: totalDeduplicated,
+      empty_seeds: emptySeedNumbers.length,
+      empty_seed_numbers: emptySeedNumbers.length > 0 ? emptySeedNumbers : undefined,
+      phrases_written: phrasesWritten,
+      collisions: 0
+    });
+
+  } catch (err) {
+    console.error('Finalize error:', err);
     res.status(500).json({ error: err.message });
   }
 });

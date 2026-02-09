@@ -40,26 +40,18 @@ const MAX_SPACED_REP_PHRASES = 12 // Cap spaced rep at 12 total
 const N1_PHRASE_COUNT = 3         // N-1 gets 3 phrases in review
 
 /**
- * Check if a phrase contains ALL characters from the LEGO target.
- * This validates that the phrase actually uses the LEGO being taught.
+ * Check if a phrase contains the LEGO target as a contiguous substring.
+ * Case-insensitive, punctuation-stripped comparison.
  *
  * @param {string} phraseTarget - The phrase's target text
  * @param {string} legoTarget - The LEGO's target text
- * @returns {boolean} - True if phrase contains all LEGO characters
+ * @returns {boolean} - True if phrase contains LEGO as substring
  */
 function phraseContainsLegoChars(phraseTarget, legoTarget) {
   if (!phraseTarget || !legoTarget) return false
 
-  // Get unique characters from LEGO target (excluding spaces/punctuation)
-  const legoChars = new Set(legoTarget.replace(/[\s\p{P}]/gu, '').split(''))
-
-  // Check if phrase contains each LEGO character
-  for (const char of legoChars) {
-    if (!phraseTarget.includes(char)) {
-      return false
-    }
-  }
-  return true
+  const normalize = (t) => t.toLowerCase().replace(/[.,!?;:¡¿'"()\-–—]/g, '').replace(/\s+/g, ' ').trim()
+  return normalize(phraseTarget).includes(normalize(legoTarget))
 }
 
 /**
