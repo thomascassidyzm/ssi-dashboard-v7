@@ -361,6 +361,93 @@
         </div>
       </section>
 
+      <!-- Seed Grid -->
+      <section v-if="seedGrid.length > 0" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+        <button
+          @click="seedGridExpanded = !seedGridExpanded"
+          class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 transition-colors"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Seed Grid</span>
+            <span class="text-xs text-slate-500">
+              {{ seedGridComplete }}/{{ seedGrid.length }} complete
+            </span>
+            <span v-if="seedGridBuilding > 0" class="text-xs text-amber-400">
+              {{ seedGridBuilding }} building
+            </span>
+          </div>
+          <svg
+            class="w-5 h-5 text-slate-400 transition-transform duration-200"
+            :class="{ 'rotate-180': seedGridExpanded }"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
+          <!-- Rebuild Controls -->
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex items-center gap-2">
+              <label class="text-xs text-slate-400">From</label>
+              <input
+                v-model.number="rebuildFrom"
+                type="number" min="1" :max="rebuildTo"
+                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
+              />
+              <label class="text-xs text-slate-400">To</label>
+              <input
+                v-model.number="rebuildTo"
+                type="number" :min="rebuildFrom" max="999"
+                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
+              />
+            </div>
+            <button
+              v-if="!rebuildConfirming"
+              @click="rebuildConfirming = true"
+              :disabled="rebuildRunning"
+              class="px-4 py-1.5 bg-red-600/80 hover:bg-red-600 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Rebuild
+            </button>
+            <template v-if="rebuildConfirming">
+              <span class="text-xs text-red-400">Delete LEGOs + phrases for seeds {{ rebuildFrom }}-{{ rebuildTo }}?</span>
+              <button
+                @click="executeRebuild"
+                :disabled="rebuildRunning"
+                class="px-4 py-1.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                {{ rebuildRunning ? 'Wiping...' : 'Confirm' }}
+              </button>
+              <button
+                @click="rebuildConfirming = false"
+                class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+            </template>
+          </div>
+
+          <!-- Grid -->
+          <div class="flex flex-wrap gap-1">
+            <div
+              v-for="cell in seedGrid"
+              :key="cell.seed"
+              class="w-5 h-5 rounded-sm cursor-default transition-colors"
+              :class="seedCellClass(cell)"
+              :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
+            ></div>
+          </div>
+
+          <!-- Legend -->
+          <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80 animate-pulse"></span> Building</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/80"></span> Empty</span>
+          </div>
+        </div>
+      </section>
+
       <!-- Controls -->
       <section class="flex justify-end gap-3">
         <button
@@ -531,6 +618,73 @@ const agents = ref({
 const logExpanded = ref(false)
 const isPolling = ref(false)
 const events = ref([])
+
+// Seed grid state
+const seedGrid = ref([])
+const seedGridExpanded = ref(true)
+const rebuildFrom = ref(11)
+const rebuildTo = ref(300)
+const rebuildConfirming = ref(false)
+const rebuildRunning = ref(false)
+
+const seedGridComplete = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
+const seedGridBuilding = computed(() => seedGrid.value.filter(s => s.status === 'building').length)
+
+function seedCellClass(cell) {
+  if (cell.status === 'complete') return 'bg-emerald-500/80'
+  if (cell.status === 'building') return 'bg-amber-500/80 animate-pulse'
+  return 'bg-slate-700/80'
+}
+
+async function fetchSeedGrid() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
+    const response = await fetch(`${apiBase}/api/build/seed-grid/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      seedGrid.value = data.seeds || []
+    }
+  } catch (err) {
+    console.error('Failed to fetch seed grid:', err)
+  }
+}
+
+async function executeRebuild() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  rebuildRunning.value = true
+  try {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
+    const response = await fetch(`${apiBase}/api/build/rebuild/${courseCode}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value })
+    })
+
+    const data = await response.json()
+    if (data.ok) {
+      addEvent(`Rebuild started: wiped ${data.legos_deleted} LEGOs + ${data.phrases_deleted} phrases for seeds ${rebuildFrom.value}-${rebuildTo.value}`)
+      rebuildConfirming.value = false
+      await fetchSeedGrid()
+    } else {
+      addEvent(`Rebuild failed: ${data.error}`)
+    }
+  } catch (err) {
+    addEvent(`Rebuild error: ${err.message}`)
+  } finally {
+    rebuildRunning.value = false
+  }
+}
 
 // Computed
 const progressPercent = computed(() => {
@@ -954,8 +1108,9 @@ async function fetchProgress() {
       }
     }
 
-    // Also fetch checkpoint status
+    // Also fetch checkpoint status and seed grid
     await fetchCheckpoints()
+    fetchSeedGrid()
   } catch (error) {
     console.error('Failed to fetch progress:', error)
   }
