@@ -1083,23 +1083,34 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     minAvgSyllables = 10;
   }
 
-  const build = lego.build || [];
-  const use = lego.use || [];
+  const buildRaw = lego.build || [];
+  const useRaw = lego.use || [];
+  const legoTarget = (lego.target || '').trim();
+
+  // Filter out component phrases — real BUILD/USE phrases must contain the entire LEGO target
+  const build = buildRaw.filter(p => (p.target || '').includes(legoTarget));
+  const use = useRaw.filter(p => (p.target || '').includes(legoTarget));
+  const buildComponents = buildRaw.length - build.length;
+  const useComponents = useRaw.length - use.length;
+  const componentCount = buildComponents + useComponents;
+  if (componentCount > 0) {
+    console.log(`  ⚠ ${componentCount} component phrase(s) excluded (don't contain full LEGO target): ${buildComponents} from build[], ${useComponents} from use[]`);
+  }
 
   // Count validation
   if (build.length < minBuild) {
     return {
       valid: false,
-      error: `BUILD: need ${minBuild}+, got ${build.length}`,
-      details: { build: build.length, use: use.length, minBuild, minUse }
+      error: `BUILD: need ${minBuild}+, got ${build.length}${componentCount > 0 ? ` (${componentCount} component phrases excluded)` : ''}`,
+      details: { build: build.length, use: use.length, components: componentCount, minBuild, minUse }
     };
   }
 
   if (use.length < minUse) {
     return {
       valid: false,
-      error: `USE: need ${minUse}+, got ${use.length}`,
-      details: { build: build.length, use: use.length, minBuild, minUse }
+      error: `USE: need ${minUse}+, got ${use.length}${useComponents > 0 ? ` (${useComponents} component phrases excluded)` : ''}`,
+      details: { build: build.length, use: use.length, components: componentCount, minBuild, minUse }
     };
   }
 
@@ -1120,6 +1131,7 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     details: {
       build: build.length,
       use: use.length,
+      components: componentCount,
       avgSyllables: use.length > 0 ? (use.reduce((sum, p) => sum + Math.round((p.target || '').length / charsPerSyllable), 0) / use.length).toFixed(1) : 0
     }
   };
@@ -2307,47 +2319,30 @@ async function checkBuilds() {
       const batchStartSeed = job.batch_start_seed || 0;
 
       // [BUILD-DEBUG] Log state from DB
-      const buildMode = job.build_mode || 'sequential';
-      console.log(`[BUILD-DEBUG] === CHECK ${courseCode} (from DB, mode=${buildMode}) ===`);
+      console.log(`[BUILD-DEBUG] === CHECK ${courseCode} ===`);
       console.log(`[BUILD-DEBUG] DB job: id=${job.id}, agentCount=${agentCount}, respawnCount=${respawnCount}`);
       console.log(`[BUILD-DEBUG] Progress: completed=${progress.completed}, target=${targetSeeds}`);
       console.log(`[BUILD-DEBUG] Heartbeat age: ${(heartbeatAge/1000).toFixed(0)}s`);
 
-      // PARALLEL MODE: Track draft progress, skip sequential stall detection
-      // The coordinator agent manages sub-agents itself — we just update progress
-      if (buildMode === 'parallel') {
-        try {
-          const { count: draftCount } = await supabase
-            .from('course_seed_drafts')
-            .select('*', { count: 'exact', head: true })
-            .eq('course_code', courseCode);
+      // Track draft progress — coordinator agent manages sub-agents itself
+      try {
+        const { count: draftCount } = await supabase
+          .from('course_seed_drafts')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', courseCode);
 
-          console.log(`[BUILD-DEBUG] Parallel drafts: ${draftCount || 0}`);
+        console.log(`[BUILD-DEBUG] Parallel drafts: ${draftCount || 0}`);
 
-          // Update progress in build_jobs based on draft count
-          await supabase.from('build_jobs').update({
-            current_seed: draftCount || 0,
-            last_heartbeat: new Date().toISOString()
-          }).eq('id', job.id);
-        } catch (e) {
-          console.log(`[BUILD] Could not check parallel drafts: ${e.message}`);
-        }
-
-        // Check if course is complete (finalized seeds, not just drafts)
-        if (progress.completed >= targetSeeds) {
-          console.log(`[BUILD] ✓ PARALLEL COMPLETE: ${courseCode} (${progress.completed}/${targetSeeds} seeds)`);
-          await supabase.from('build_jobs').update({
-            status: 'complete',
-            current_seed: progress.completed,
-            seeds_completed: progress.completed,
-            completed_at: new Date().toISOString()
-          }).eq('id', job.id);
-        }
-
-        continue; // Don't run sequential stall detection for parallel builds
+        // Update progress in build_jobs based on draft count
+        await supabase.from('build_jobs').update({
+          current_seed: draftCount || 0,
+          last_heartbeat: new Date().toISOString()
+        }).eq('id', job.id);
+      } catch (e) {
+        console.log(`[BUILD] Could not check parallel drafts: ${e.message}`);
       }
 
-      // Course complete?
+      // Check if course is complete (finalized seeds, not just drafts)
       if (progress.completed >= targetSeeds) {
         console.log(`[BUILD] ✓ COMPLETE: ${courseCode} (${progress.completed}/${targetSeeds} seeds)`);
         await supabase.from('build_jobs').update({
@@ -2356,106 +2351,6 @@ async function checkBuilds() {
           seeds_completed: progress.completed,
           completed_at: new Date().toISOString()
         }).eq('id', job.id);
-        continue;
-      }
-
-      // STUCK DETECTION: Check both heartbeat AND last_progress_at
-      // - Heartbeat fresh + progress fresh = agent is working normally
-      // - Heartbeat stale = agent is dead
-      // - Heartbeat fresh + progress stale = agent is STUCK waiting for input (asking questions)
-      const STUCK_THRESHOLD_MS = 5 * 60 * 1000; // 5 minutes without progress = stuck
-      const FIRST_SEED_GRACE_MS = 10 * 60 * 1000; // 10 minutes grace for first seed
-
-      // If last_progress_at is null (no seeds submitted yet), use started_at/last_spawn_at as baseline
-      // with a longer grace period for the first seed (agent needs time to load context, read instructions)
-      let progressAge;
-      if (job.last_progress_at) {
-        progressAge = now - new Date(job.last_progress_at).getTime();
-      } else {
-        // No progress yet - use job start time with extended grace period
-        const baseline = job.last_spawn_at || job.started_at || job.last_heartbeat;
-        const baselineTime = baseline ? new Date(baseline).getTime() : now;
-        progressAge = now - baselineTime;
-        // For first seed, use longer threshold (agent needs to warm up)
-        if (progressAge < FIRST_SEED_GRACE_MS) {
-          progressAge = 0; // Not stuck yet, still in grace period
-        }
-      }
-
-      // Agent alive AND making progress?
-      if (heartbeatAge < HEARTBEAT_TIMEOUT_MS && progressAge < STUCK_THRESHOLD_MS) {
-        // Agent is alive and working - just update progress if changed
-        if (progress.completed > (job.current_seed || 0)) {
-          console.log(`[BUILD] ${courseCode}: ${progress.completed}/${targetSeeds} (+${progress.completed - (job.current_seed || 0)})`);
-          await supabase.from('build_jobs').update({
-            current_seed: progress.completed,
-            seeds_completed: progress.completed,
-            respawn_count: 0  // Reset respawn count on progress
-          }).eq('id', job.id);
-        }
-        continue;  // Agent alive and working, no spawn needed
-      }
-
-      // Determine why we need to respawn
-      let respawnReason = '';
-      if (heartbeatAge >= HEARTBEAT_TIMEOUT_MS) {
-        respawnReason = `Heartbeat stale (${(heartbeatAge/1000).toFixed(0)}s) - agent may be dead`;
-      } else if (progressAge >= STUCK_THRESHOLD_MS) {
-        respawnReason = `Progress stale (${(progressAge/1000).toFixed(0)}s) but heartbeat alive - agent stuck waiting for input`;
-      }
-
-      console.log(`[BUILD] ${courseCode}: ${respawnReason}`);
-
-      // Check respawn limit
-      if (respawnCount >= MAX_RESPAWNS) {
-        console.log(`[BUILD]   ⚠️ MAX RESPAWNS (${MAX_RESPAWNS}) reached - marking stalled`);
-        await supabase.from('build_jobs').update({
-          status: 'stalled',
-          current_seed: progress.completed
-        }).eq('id', job.id);
-        continue;
-      }
-
-      // SPAWN LOCK: Check last_spawn_at to prevent double-spawn
-      // Don't spawn if we spawned within the last 2 minutes
-      const lastSpawn = job.last_spawn_at ? new Date(job.last_spawn_at).getTime() : 0;
-      const spawnAge = now - lastSpawn;
-      const SPAWN_COOLDOWN_MS = 2 * 60 * 1000; // 2 minutes
-
-      if (spawnAge < SPAWN_COOLDOWN_MS) {
-        console.log(`[BUILD]   Spawn cooldown active (${(spawnAge/1000).toFixed(0)}s ago) - waiting`);
-        continue;
-      }
-
-      // Claim the spawn by updating last_spawn_at FIRST (atomic lock)
-      const newAgentCount = agentCount + 1;
-      const newRespawnCount = respawnCount + 1;
-
-      const { error: lockError } = await supabase.from('build_jobs').update({
-        last_spawn_at: new Date().toISOString(),
-        agent_count: newAgentCount,
-        respawn_count: newRespawnCount
-      }).eq('id', job.id).eq('agent_count', agentCount); // Only update if agent_count hasn't changed
-
-      if (lockError) {
-        console.log(`[BUILD]   Could not acquire spawn lock - another spawn in progress`);
-        continue;
-      }
-
-      console.log(`[BUILD]   🔄 Auto-respawning (attempt ${newRespawnCount}/${MAX_RESPAWNS})...`);
-
-      try {
-        const terminal = job.terminal || 'iTerm2';
-        await spawnBuildAgent(courseCode, newAgentCount, terminal);
-        console.log(`[BUILD]   ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
-
-        // Update heartbeat after successful spawn
-        await supabase.from('build_jobs').update({
-          last_heartbeat: new Date().toISOString()
-        }).eq('id', job.id);
-      } catch (spawnErr) {
-        console.error(`[BUILD]   ✗ Spawn failed: ${spawnErr.message}`);
-        await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', job.id);
       }
 
     } catch (err) {
@@ -2489,7 +2384,7 @@ function stopBuildManager() {
  * @param {string} courseCode
  * @param {string} terminal - 'iTerm2' or 'Terminal'
  */
-async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668, parallel = false) {
+async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
   const progress = await getBuildProgress(courseCode);
   const effectiveTarget = Math.min(targetSeeds, progress.total);
 
@@ -2553,7 +2448,7 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668, pa
           agent_count: 0,
           respawn_count: 0,
           machine_name: MACHINE_NAME,
-          build_mode: parallel ? 'parallel' : 'sequential'
+          build_mode: 'parallel'
         })
         .select('id')
         .single();
@@ -2576,30 +2471,10 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668, pa
   // Spawn agent immediately
   const newAgentCount = agentCount + 1;
   try {
-    if (parallel) {
-      // PARALLEL MODE: Spawn coordinator agent (haiku) which orchestrates sub-agents
-      console.log(`[BUILD] Spawning parallel coordinator for ${courseCode}...`);
-      await spawnParallelBuildAgent(courseCode, newAgentCount, terminal);
-      console.log(`[BUILD] ✓ Parallel coordinator spawned for ${courseCode}`);
-      // No phrase monitor needed — sub-agents handle their own work
-    } else {
-      // SEQUENTIAL MODE: Spawn single builder agent
-      console.log(`[BUILD] Spawning agent #${newAgentCount} for ${courseCode}...`);
-      await spawnBuildAgent(courseCode, newAgentCount, terminal);
-      console.log(`[BUILD] ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
-
-      // Also spawn Sonnet phrase monitor in second tab (USE phrases only)
-      console.log(`[BUILD] Spawning Phrase Monitor (Sonnet) for ${courseCode}...`);
-      try {
-        const { spawnPhraseMonitor } = require('./shared/spawn-course-builder.cjs');
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for builder window
-        await spawnPhraseMonitor({ courseCode, terminal: terminal.toLowerCase().includes('iterm') ? 'iterm' : 'terminal' }, 2);
-        console.log(`[BUILD] ✓ Phrase Monitor spawned for ${courseCode}`);
-      } catch (monitorErr) {
-        console.warn(`[BUILD] ⚠ Phrase Monitor spawn failed: ${monitorErr.message}`);
-        // Don't fail the whole build - builder is more important
-      }
-    }
+    // Spawn parallel coordinator agent which orchestrates sub-agents
+    console.log(`[BUILD] Spawning parallel coordinator for ${courseCode}...`);
+    await spawnParallelBuildAgent(courseCode, newAgentCount, terminal);
+    console.log(`[BUILD] ✓ Parallel coordinator spawned for ${courseCode}`);
 
     // Update DB with agent count
     await supabase.from('build_jobs').update({
@@ -2618,10 +2493,8 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668, pa
     course_code: courseCode,
     job_id: jobId,
     progress: progress,
-    build_mode: parallel ? 'parallel' : 'sequential',
-    message: parallel
-      ? `Parallel build started - coordinator agent spawned`
-      : `Build started - agent #${newAgentCount} spawned`
+    build_mode: 'parallel',
+    message: `Parallel build started - coordinator agent spawned`
   };
 }
 
@@ -2747,8 +2620,8 @@ async function getBuildStatus(courseCode) {
 
   // For parallel builds, fetch draft progress
   let parallelInfo = null;
-  const buildMode = dbJob?.build_mode || 'sequential';
-  if (isActive && buildMode === 'parallel') {
+  const buildMode = 'parallel';
+  if (isActive) {
     try {
       const { count: draftCount } = await supabase
         .from('course_seed_drafts')
@@ -5884,19 +5757,16 @@ app.delete('/api/agents/:pid', (req, res) => {
 // =============================================================================
 
 /**
- * POST /api/build/start/:courseCode - Start a build with agent spawning
+ * POST /api/build/start/:courseCode - Start a parallel build with agent spawning
  *
- * Supports two modes:
- * - sequential (default): Single agent builds seeds one by one
- * - parallel (?parallel=true or body.parallel=true): Coordinator spawns ~10 sub-agents via Task tool
+ * Spawns a coordinator agent which orchestrates ~10 sub-agents via Task tool.
  */
 app.post('/api/build/start/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const { terminal = 'iTerm2', targetSeeds = 668, parallel = false } = req.body || {};
-  const isParallel = parallel || req.query.parallel === 'true';
+  const { terminal = 'iTerm2', targetSeeds = 668 } = req.body || {};
 
   try {
-    const result = await startBuild(courseCode, terminal, targetSeeds, isParallel);
+    const result = await startBuild(courseCode, terminal, targetSeeds);
     res.json(result);
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });
@@ -9122,31 +8992,7 @@ app.get('/api/qa/summary/:courseCode', async (req, res) => {
   }
 });
 
-/**
- * POST /api/qa/spawn-monitor/:courseCode - Spawn Sonnet phrase monitor agent
- */
-app.post('/api/qa/spawn-monitor/:courseCode', async (req, res) => {
-  try {
-    const { courseCode } = req.params;
-    const { spawnPhraseMonitor } = require('./shared/spawn-course-builder.cjs');
-
-    console.log(`[QA] Spawning phrase monitor for ${courseCode}...`);
-
-    // Spawn in background - don't wait for completion
-    spawnPhraseMonitor({ courseCode, terminal: 'iterm' }, 1)
-      .then(() => console.log(`[QA] Monitor spawned for ${courseCode}`))
-      .catch(err => console.error(`[QA] Monitor spawn failed: ${err.message}`));
-
-    res.json({
-      success: true,
-      message: `Phrase monitor spawning for ${courseCode}`,
-      course_code: courseCode
-    });
-  } catch (err) {
-    console.error('[QA] Error spawning monitor:', err);
-    res.status(500).json({ error: err.message });
-  }
-});
+// QA spawn-monitor endpoint removed — phrase monitors were sequential-only
 
 /**
  * POST /api/qa/spawn-fixer/:courseCode - Spawn Opus phrase fixer agent

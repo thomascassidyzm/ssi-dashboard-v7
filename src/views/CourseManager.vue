@@ -279,10 +279,10 @@
               <span class="status-dot" :class="builderProgress.status === 'running' ? 'bg-cyan-500 animate-pulse' : builderProgress.status === 'complete' ? 'bg-emerald-500' : 'bg-slate-500'"></span>
               <div>
                 <div class="text-xs text-slate-500 uppercase tracking-wide">
-                  {{ parallelPhase !== 'none' ? (parallelPhase === 'drafting' ? '10 Parallel Agents' : 'Finalizing') : 'Single Agent' }}
+                  {{ parallelPhase === 'finalizing' ? 'Finalizing' : '10 Parallel Agents' }}
                 </div>
                 <div class="text-sm font-medium text-slate-200">
-                  {{ parallelPhase !== 'none' ? (parallelPhase === 'drafting' ? 'Drafting Seeds' : 'Merging to Live') : 'Sequential LEGO Network' }}
+                  {{ parallelPhase === 'finalizing' ? 'Merging to Live' : 'Drafting Seeds' }}
                 </div>
               </div>
             </div>
@@ -295,7 +295,7 @@
           </div>
 
           <!-- Progress Bar -->
-          <div v-if="parallelPhase !== 'none'" class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3 flex">
+          <div class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3 flex">
             <!-- Draft progress (cyan) -->
             <div class="h-full bg-cyan-500 transition-all duration-500"
               :style="{ width: `${draftsExpected > 0 ? Math.min(100, draftsSubmitted / draftsExpected * 100) : 0}%` }">
@@ -305,15 +305,9 @@
               :style="{ width: `${builderProgress.totalSeeds > 0 ? (builderProgress.currentSeed / builderProgress.totalSeeds * 100) : 0}%` }">
             </div>
           </div>
-          <div v-else class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3">
-            <div
-              class="h-full transition-all duration-500 rounded-full bg-cyan-500"
-              :style="{ width: `${builderProgress.totalSeeds > 0 ? (builderProgress.currentSeed / builderProgress.totalSeeds * 100) : 0}%` }"
-            ></div>
-          </div>
 
-          <!-- Stats Row (parallel mode) -->
-          <div v-if="parallelPhase !== 'none'" class="grid grid-cols-4 gap-4 text-center">
+          <!-- Stats Row -->
+          <div class="grid grid-cols-4 gap-4 text-center">
             <div>
               <div class="text-2xl font-mono font-semibold text-cyan-400">
                 {{ draftsSubmitted }}
@@ -337,34 +331,6 @@
                 {{ builderProgress.phrasesInserted }}
               </div>
               <div class="text-xs text-slate-500 uppercase tracking-wide">Phrases</div>
-            </div>
-          </div>
-
-          <!-- Stats Row (sequential mode) -->
-          <div v-else class="grid grid-cols-4 gap-4 text-center">
-            <div>
-              <div class="text-2xl font-mono font-semibold text-slate-200">
-                {{ builderProgress.currentSeed }}
-              </div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">/ {{ builderProgress.totalSeeds || seedCount }} seeds</div>
-            </div>
-            <div>
-              <div class="text-2xl font-mono font-semibold text-slate-200">
-                {{ builderProgress.legosInserted }}
-              </div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">LEGOs</div>
-            </div>
-            <div>
-              <div class="text-2xl font-mono font-semibold text-slate-200">
-                {{ builderProgress.phrasesInserted }}
-              </div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">Phrases</div>
-            </div>
-            <div>
-              <div class="text-2xl font-mono font-semibold text-slate-200">
-                {{ builderProgress.legosInserted > 0 ? (builderProgress.phrasesInserted / builderProgress.legosInserted).toFixed(1) : '0.0' }}
-              </div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">Ratio</div>
             </div>
           </div>
         </div>
@@ -1222,8 +1188,6 @@ async function fetchProgress() {
           parallelPhase.value = statusData.parallel.phase
           draftsSubmitted.value = statusData.parallel.drafts_submitted
           draftsExpected.value = statusData.parallel.drafts_expected
-        } else if (statusData.build_mode === 'sequential') {
-          parallelPhase.value = 'none'
         }
       }
     } catch (error) {
@@ -1485,9 +1449,9 @@ async function startCourseBuilder() {
     }
     jobStatus.value = 'running'
     jobStartTime.value = Date.now()
-    parallelPhase.value = result.build_mode === 'parallel' ? 'drafting' : 'none'
+    parallelPhase.value = 'drafting'
 
-    addEvent(`Started ${result.build_mode === 'parallel' ? 'Parallel' : 'Sequential'} Build for ${code} (${seedCount.value} seeds)`)
+    addEvent(`Started Parallel Build for ${code} (${seedCount.value} seeds)`)
 
   } catch (error) {
     console.error('Failed to start course builder:', error)
