@@ -553,7 +553,13 @@
             <span class="text-xs text-slate-500">
               {{ seedGridComplete }}/{{ seedGrid.length }} complete
             </span>
-            <span v-if="seedGridBuilding > 0" class="text-xs text-amber-400">
+            <span v-if="seedGridDrafted > 0" class="text-xs text-amber-400">
+              {{ seedGridDrafted }} drafted
+            </span>
+            <span v-if="seedGridCollision > 0" class="text-xs text-red-400">
+              {{ seedGridCollision }} collision
+            </span>
+            <span v-if="seedGridBuilding > 0" class="text-xs text-cyan-400">
               {{ seedGridBuilding }} building
             </span>
           </div>
@@ -623,7 +629,9 @@
           <!-- Legend -->
           <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80 animate-pulse"></span> Building</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80"></span> Drafted</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-red-500/80"></span> Collision</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/80 animate-pulse"></span> Building</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/80"></span> Empty</span>
           </div>
         </div>
@@ -749,11 +757,15 @@ const rebuildConfirming = ref(false)
 const rebuildRunning = ref(false)
 
 const seedGridComplete = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
+const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
+const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
 const seedGridBuilding = computed(() => seedGrid.value.filter(s => s.status === 'building').length)
 
 function seedCellClass(cell) {
   if (cell.status === 'complete') return 'bg-emerald-500/80'
-  if (cell.status === 'building') return 'bg-amber-500/80 animate-pulse'
+  if (cell.status === 'drafted') return 'bg-amber-500/80'
+  if (cell.status === 'collision' || cell.status === 'rework') return 'bg-red-500/80'
+  if (cell.status === 'building') return 'bg-cyan-500/80 animate-pulse'
   return 'bg-slate-700/80'
 }
 

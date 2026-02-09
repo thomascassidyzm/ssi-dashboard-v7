@@ -2126,6 +2126,233 @@ You are running overnight. The human is asleep. NEVER ask questions.
 }
 
 /**
+ * Generate the coordinator brief for parallel QA pass.
+ * The coordinator spawns ~10 sub-agents, each checking a batch of seeds for grammar/naturalness.
+ */
+function generateQABrief({ courseCode, batches, courseInfo }) {
+  const batchList = batches.map((b, i) =>
+    `Batch ${i + 1}: seeds ${b.start}-${b.end} (${b.end - b.start + 1} seeds)`
+  ).join('\n');
+
+  const langCode = courseCode.split('_')[0];
+  const langName = courseInfo?.display_name || courseCode;
+
+  return `# Parallel QA Pass — Coordinator Agent
+
+You are coordinating a parallel grammar/naturalness QA pass for course **${courseCode}** (${langName}).
+
+## CRITICAL: You are an ORCHESTRATOR, not a checker
+- You do NOT check phrases yourself
+- You spawn sub-agents using the Task tool and monitor their progress
+- You report completion when all batches are checked
+
+## Batch Assignments
+Seeds 1-10 are golden (skip). Remaining seeds split into batches:
+
+${batchList}
+
+## Step 1: Spawn Sub-Agents
+
+Use the Task tool to spawn one background sub-agent per batch. Launch ALL batches in parallel (send all Task tool calls in a single message).
+
+For each batch, use this prompt template (customize start/end for each):
+
+---BEGIN SUB-AGENT PROMPT---
+You are a grammar and naturalness QA checker for course ${courseCode} (${langName}). You are checking phrases for seeds {START} to {END}.
+
+## Your Job
+Check every USE phrase for:
+1. **Grammar** (both known/English and target language) — Is the sentence grammatically correct?
+2. **Naturalness** — Would a native speaker actually say this? Is it stilted or awkward?
+3. **Speakability** — Can a beginner pronounce and remember this?
+4. **Semantic accuracy** — Does the target translation accurately match the known text?
+
+You do NOT fix phrases. You only FLAG bad ones.
+
+## Workflow
+
+### Step 1: Fetch phrases for your seed range
+Use curl to paginate through all USE phrases:
+
+offset=0
+while true; do
+  curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min={START}&seed_max={END}&role=use&limit=500&offset=$offset"
+  # If count < 500, you've got them all
+  offset=$((offset + 500))
+done
+
+Parse the JSON response. Each phrase has: id, known_text, target_text, seed_number, lego_index, phrase_role.
+
+### Step 2: Evaluate each phrase
+For each phrase, check grammar, naturalness, speakability, and semantic accuracy.
+
+Flag types and severities:
+- \`grammar\` + \`error\`: Grammatical mistake in either language
+- \`naturalness\` + \`warning\`: Unnatural/stilted but technically correct
+- \`semantic\` + \`error\`: Translation doesn't match meaning
+
+Only flag genuinely bad phrases. Minor style preferences are NOT flags.
+
+### Step 3: Submit flags (if any)
+Collect all flags and submit in one bulk call:
+
+curl -s -X POST "http://localhost:3471/api/qa/bulk-flag" \\
+  -H "Content-Type: application/json" \\
+  -d '{"flags": [
+    {"course_code": "${courseCode}", "phrase_id": "uuid-here", "seed_number": 42, "check_type": "grammar", "severity": "error", "issue": "Missing article", "details": {"known": "...", "target": "..."}},
+    ...
+  ]}'
+
+### Step 4: Mark range as checked
+After checking all phrases (whether or not you found flags), mark the entire range:
+
+curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
+  -H "Content-Type: application/json" \\
+  -d '{"course_code": "${courseCode}", "seed_min": {START}, "seed_max": {END}}'
+
+## AUTONOMY: You are running unattended. NEVER ask questions. Process all phrases and submit results.
+---END SUB-AGENT PROMPT---
+
+IMPORTANT: When spawning sub-agents via the Task tool:
+- Use subagent_type: "general-purpose"
+- Set run_in_background: true for each
+- Use model: "sonnet" (Sonnet for quality evaluation)
+- Keep the description short: "QA seeds {start}-{end} for ${courseCode}"
+
+## Step 2: Monitor Progress
+
+After spawning all sub-agents, poll progress every 60 seconds:
+
+curl -s http://localhost:3471/api/qa/summary/${courseCode}
+
+This returns { phrases: { total, checked, unchecked, progress_percent }, flags: { total, open, errors, warnings } }.
+
+Use the Bash tool with curl to poll. Wait 60 seconds between polls (use sleep 60).
+
+When progress_percent reaches 100 (or unchecked reaches 0), the QA pass is complete.
+
+If progress stalls (no change for 10 minutes), check sub-agent output files and report the issue.
+
+## Step 3: Report
+
+When all batches are checked, summarise:
+- Total phrases checked
+- Flags raised (by type and severity)
+- Any batches that failed
+
+## AUTONOMY
+You are running overnight. The human is asleep. NEVER ask questions.
+- Make decisions yourself
+- If a sub-agent fails, spawn a replacement
+- Keep going until all batches are checked
+`;
+}
+
+/**
+ * Spawn the parallel QA coordinator agent.
+ * Mirrors spawnParallelBuildAgent() — spawns a coordinator that orchestrates ~10 sub-agents.
+ */
+async function spawnParallelQAAgent(courseCode, terminal = 'iTerm2') {
+  const { data: courseInfo } = await supabase
+    .from('courses')
+    .select('display_name, seed_count')
+    .eq('course_code', courseCode)
+    .single();
+
+  const targetSeeds = courseInfo?.seed_count || 300;
+
+  // Calculate batch ranges: seeds 11..targetSeeds split into ~10 batches
+  const firstSeed = 11;
+  const totalToCheck = targetSeeds - firstSeed + 1;
+  const NUM_BATCHES = Math.min(10, Math.ceil(totalToCheck / 20));
+  const batchSize = Math.ceil(totalToCheck / NUM_BATCHES);
+
+  const batches = [];
+  for (let i = 0; i < NUM_BATCHES; i++) {
+    const start = firstSeed + (i * batchSize);
+    const end = Math.min(start + batchSize - 1, targetSeeds);
+    if (start <= targetSeeds) {
+      batches.push({ start, end });
+    }
+  }
+
+  console.log(`[QA] Parallel QA for ${courseCode}: ${batches.length} batches, ${totalToCheck} seeds`);
+
+  const prompt = generateQABrief({ courseCode, batches, courseInfo });
+
+  const tmpFile = `/tmp/claude_qa_${courseCode}_${Date.now()}.txt`;
+  require('fs').writeFileSync(tmpFile, prompt);
+
+  const projectDir = __dirname.replace('/services', '');
+  const claudeCmd = `cd "${projectDir}" && claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+
+  const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+  console.log(`[QA] Spawning QA Coordinator for ${courseCode} in ${effectiveTerminal}`);
+
+  let agent;
+
+  if (effectiveTerminal === 'headless') {
+    const fs = require('fs');
+    const logsDir = require('path').join(projectDir, 'logs');
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+
+    const logFile = `${logsDir}/qa-coordinator-${courseCode}.log`;
+    const out = fs.openSync(logFile, 'a');
+    const err = fs.openSync(logFile, 'a');
+
+    agent = spawn('bash', ['-c', claudeCmd], {
+      stdio: ['ignore', out, err],
+      detached: true
+    });
+    agent.unref();
+
+    console.log(`[QA] QA coordinator launched headless (pid: ${agent.pid}, log: ${logFile})`);
+
+    agent.on('error', (spawnErr) => {
+      console.error(`[QA] QA coordinator error:`, spawnErr.message);
+    });
+
+    agent.on('exit', (code) => {
+      console.log(`[QA] QA coordinator exited (code: ${code})`);
+    });
+  } else {
+    const escapedCmd = claudeCmd.replace(/"/g, '\\"');
+
+    let osascript;
+    if (effectiveTerminal === 'iTerm2') {
+      osascript = `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    write text "${escapedCmd}"
+  end tell
+end tell`;
+    } else {
+      osascript = `tell application "Terminal"
+  activate
+  do script "${escapedCmd}"
+end tell`;
+    }
+
+    agent = spawn('osascript', ['-e', osascript], {
+      stdio: 'pipe',
+      detached: true
+    });
+
+    agent.on('error', (spawnErr) => {
+      console.error(`[QA] QA coordinator osascript error:`, spawnErr.message);
+    });
+
+    agent.on('exit', (code) => {
+      console.log(`[QA] QA coordinator terminal launched (osascript exit: ${code})`);
+    });
+  }
+
+  return { agent, batches: batches.length };
+}
+
+/**
  * Spawn the parallel build coordinator agent.
  * This is a lightweight haiku agent that orchestrates ~10 sub-agents via Task tool.
  */
@@ -5797,6 +6024,68 @@ app.get('/api/build/status/:courseCode', async (req, res) => {
 });
 
 /**
+ * POST /api/qa/start/:courseCode - Start a parallel QA pass
+ *
+ * Spawns a coordinator agent which orchestrates ~10 sub-agents to check grammar/naturalness.
+ */
+app.post('/api/qa/start/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { terminal = 'iTerm2' } = req.body || {};
+
+  try {
+    // Verify course exists
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('course_code, display_name, seed_count')
+      .eq('course_code', courseCode)
+      .single();
+
+    if (courseError || !course) {
+      return res.status(404).json({ ok: false, error: `Course ${courseCode} not found` });
+    }
+
+    // Check current QA progress
+    const { count: totalPhrases } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode);
+
+    if (!totalPhrases || totalPhrases === 0) {
+      return res.status(400).json({ ok: false, error: `No phrases found for ${courseCode} — build course first` });
+    }
+
+    const { count: uncheckedPhrases } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .is('qa_checked', null);
+
+    if (uncheckedPhrases === 0) {
+      return res.json({ ok: false, error: `All ${totalPhrases} phrases already QA checked` });
+    }
+
+    console.log(`[QA] Starting parallel QA for ${courseCode}: ${uncheckedPhrases}/${totalPhrases} unchecked phrases`);
+
+    const { agent, batches } = await spawnParallelQAAgent(courseCode, terminal);
+
+    res.json({
+      ok: true,
+      mode: 'parallel_qa',
+      course_code: courseCode,
+      batches,
+      phrases: {
+        total: totalPhrases,
+        unchecked: uncheckedPhrases
+      },
+      message: `Parallel QA started — coordinator agent spawned with ${batches} batches`
+    });
+  } catch (err) {
+    console.error(`[QA] Error starting QA for ${courseCode}:`, err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/**
  * GET /api/build/active - List all active builds
  *
  * Returns builds from two sources:
@@ -5997,6 +6286,18 @@ app.get('/api/build/seed-grid/:courseCode', async (req, res) => {
       .eq('course_code', courseCode)
       .lte('seed_number', maxSeed);
 
+    // Get draft seeds with validation status (parallel builds stage here before finalization)
+    const { data: draftSeeds } = await supabase
+      .from('course_seed_drafts')
+      .select('seed_number, validation_status')
+      .eq('course_code', courseCode)
+      .lte('seed_number', maxSeed);
+
+    const draftStatusMap = {};
+    for (const d of draftSeeds || []) {
+      draftStatusMap[d.seed_number] = d.validation_status || 'valid';
+    }
+
     // Aggregate counts
     const legosBySeed = {};
     for (const l of legoCounts || []) {
@@ -6008,15 +6309,22 @@ app.get('/api/build/seed-grid/:courseCode', async (req, res) => {
       phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1;
     }
 
-    // Build grid
-    let complete = 0, building = 0, empty = 0;
+    // Build grid — statuses: complete, drafted, collision, rework, building, empty
+    let complete = 0, building = 0, empty = 0, drafted = 0, collision = 0;
     const grid = (seeds || []).map(s => {
       const legos = legosBySeed[s.seed_number] || 0;
       const phrases = phrasesBySeed[s.seed_number] || 0;
+      const draftStatus = draftStatusMap[s.seed_number];
       let status;
       if (s.decomposed_at) {
         status = 'complete';
         complete++;
+      } else if (draftStatus === 'collision' || draftStatus === 'rework') {
+        status = draftStatus;
+        collision++;
+      } else if (draftStatus === 'valid') {
+        status = 'drafted';
+        drafted++;
       } else if (legos > 0) {
         status = 'building';
         building++;
@@ -6031,6 +6339,8 @@ app.get('/api/build/seed-grid/:courseCode', async (req, res) => {
       seeds: grid,
       total: grid.length,
       complete,
+      drafted,
+      collision,
       building,
       empty
     });
@@ -8673,6 +8983,163 @@ app.post('/api/qa/flag', async (req, res) => {
     });
   } catch (err) {
     console.error('[QA] Error inserting flag:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/bulk-flag - Insert/upsert multiple QA flags at once
+ * Accepts { flags: [{ course_code, phrase_id, seed_number, lego_id, check_type, severity, issue, details }] }
+ * Also marks flagged phrase_ids as qa_checked.
+ */
+app.post('/api/qa/bulk-flag', async (req, res) => {
+  try {
+    const { flags } = req.body;
+
+    if (!flags || !Array.isArray(flags) || flags.length === 0) {
+      return res.status(400).json({ error: 'flags must be a non-empty array' });
+    }
+
+    const validTypes = ['grammar', 'semantic', 'naturalness', 'lego_frequency', 'lego_spread', 'variety', 'vocabulary'];
+    const validSeverities = ['error', 'warning', 'info'];
+
+    // Validate all flags first
+    for (let i = 0; i < flags.length; i++) {
+      const f = flags[i];
+      if (!f.course_code || !f.check_type || !f.issue) {
+        return res.status(400).json({ error: `Flag ${i}: missing required fields (course_code, check_type, issue)` });
+      }
+      if (!validTypes.includes(f.check_type)) {
+        return res.status(400).json({ error: `Flag ${i}: invalid check_type '${f.check_type}'` });
+      }
+      if (f.severity && !validSeverities.includes(f.severity)) {
+        return res.status(400).json({ error: `Flag ${i}: invalid severity '${f.severity}'` });
+      }
+    }
+
+    let created = 0;
+    let updated = 0;
+    const phraseIdsToMark = new Set();
+
+    for (const f of flags) {
+      // Check for existing flag (dedup by phrase_id + check_type)
+      let existingFlag = null;
+      if (f.phrase_id) {
+        const { data: existing } = await supabase
+          .from('course_qa_flags')
+          .select('id')
+          .eq('phrase_id', f.phrase_id)
+          .eq('check_type', f.check_type)
+          .eq('status', 'open')
+          .maybeSingle();
+        existingFlag = existing;
+      }
+
+      if (existingFlag) {
+        const { error } = await supabase
+          .from('course_qa_flags')
+          .update({
+            severity: f.severity || 'warning',
+            issue: f.issue,
+            details: f.details || {},
+            flagged_at: new Date().toISOString()
+          })
+          .eq('id', existingFlag.id);
+        if (error) throw error;
+        updated++;
+      } else {
+        const { error } = await supabase
+          .from('course_qa_flags')
+          .insert({
+            course_code: f.course_code,
+            phrase_id: f.phrase_id || null,
+            seed_number: f.seed_number || null,
+            lego_id: f.lego_id || null,
+            check_type: f.check_type,
+            severity: f.severity || 'warning',
+            issue: f.issue,
+            details: f.details || {},
+            status: 'open',
+            flagged_at: new Date().toISOString()
+          });
+        if (error) throw error;
+        created++;
+      }
+
+      if (f.phrase_id) phraseIdsToMark.add(f.phrase_id);
+    }
+
+    // Mark all flagged phrases as qa_checked
+    if (phraseIdsToMark.size > 0) {
+      const { error: markError } = await supabase
+        .from('course_practice_phrases')
+        .update({ qa_checked: new Date().toISOString() })
+        .in('id', [...phraseIdsToMark]);
+      if (markError) console.error('[QA] Error marking flagged phrases as checked:', markError.message);
+    }
+
+    console.log(`[QA] Bulk flag: ${created} created, ${updated} updated, ${phraseIdsToMark.size} phrases marked checked`);
+
+    res.json({
+      success: true,
+      created,
+      updated,
+      total: created + updated,
+      phrases_marked_checked: phraseIdsToMark.size
+    });
+  } catch (err) {
+    console.error('[QA] Error in bulk flag:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/bulk-mark-checked - Mark all phrases in a seed range as QA checked
+ * Accepts { course_code, seed_min, seed_max }
+ * More efficient than sending individual phrase IDs when agent finishes a batch with no flags.
+ */
+app.post('/api/qa/bulk-mark-checked', async (req, res) => {
+  try {
+    const { course_code, seed_min, seed_max } = req.body;
+
+    if (!course_code || !seed_min || !seed_max) {
+      return res.status(400).json({ error: 'Missing required fields: course_code, seed_min, seed_max' });
+    }
+    if (seed_min > seed_max) {
+      return res.status(400).json({ error: 'seed_min must be <= seed_max' });
+    }
+
+    const { data, error } = await supabase
+      .from('course_practice_phrases')
+      .update({ qa_checked: new Date().toISOString() })
+      .eq('course_code', course_code)
+      .gte('seed_number', seed_min)
+      .lte('seed_number', seed_max)
+      .is('qa_checked', null)
+      .select('id', { count: 'exact', head: true });
+
+    // Supabase update doesn't return count directly, so count separately
+    const { count } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', course_code)
+      .gte('seed_number', seed_min)
+      .lte('seed_number', seed_max)
+      .not('qa_checked', 'is', null);
+
+    if (error) throw error;
+
+    console.log(`[QA] Bulk mark-checked: seeds ${seed_min}-${seed_max} for ${course_code} (${count} phrases)`);
+
+    res.json({
+      success: true,
+      course_code,
+      seed_min,
+      seed_max,
+      phrases_checked: count || 0
+    });
+  } catch (err) {
+    console.error('[QA] Error in bulk mark-checked:', err);
     res.status(500).json({ error: err.message });
   }
 });
