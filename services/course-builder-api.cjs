@@ -4684,6 +4684,13 @@ app.post('/api/seed/complete', async (req, res) => {
           }
         }
       } else {
+        // Update both local vocabSet (for validation) and global cache (for future seeds)
+        extractVocab(lego.target, chinese).forEach(v => vocabSet.add(v));
+        if (lego.type === 'M' && lego.components) {
+          for (const comp of lego.components) {
+            extractVocab(comp.target, chinese).forEach(v => vocabSet.add(v));
+          }
+        }
         addToCourseVocab(course_code, { target: lego.target, type: lego.type, components: lego.components });
       }
 
@@ -6114,28 +6121,39 @@ app.get('/api/build/seed-grid/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
 
   try {
-    // Get all seeds with their decomposed_at status
+    // Get course seed_count to limit grid
+    const { data: courseData } = await supabase
+      .from('courses')
+      .select('seed_count')
+      .eq('course_code', courseCode)
+      .single();
+    const maxSeed = courseData?.seed_count || 300;
+
+    // Get seeds up to seed_count with their decomposed_at status
     const { data: seeds, error: seedError } = await supabase
       .from('course_seeds')
       .select('seed_number, decomposed_at')
       .eq('course_code', courseCode)
+      .lte('seed_number', maxSeed)
       .order('seed_number');
 
     if (seedError) {
       return res.status(500).json({ ok: false, error: seedError.message });
     }
 
-    // Get LEGO counts per seed
+    // Get LEGO counts per seed (within range)
     const { data: legoCounts, error: legoError } = await supabase
       .from('course_legos')
       .select('seed_number')
-      .eq('course_code', courseCode);
+      .eq('course_code', courseCode)
+      .lte('seed_number', maxSeed);
 
-    // Get phrase counts per seed
+    // Get phrase counts per seed (within range)
     const { data: phraseCounts, error: phraseError } = await supabase
       .from('course_practice_phrases')
       .select('seed_number')
-      .eq('course_code', courseCode);
+      .eq('course_code', courseCode)
+      .lte('seed_number', maxSeed);
 
     // Aggregate counts
     const legosBySeed = {};
