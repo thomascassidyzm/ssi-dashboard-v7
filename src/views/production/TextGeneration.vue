@@ -302,6 +302,66 @@
         </div>
       </section>
 
+      <!-- QA Review -->
+      <section v-if="progress.currentSeed > 0" class="bg-slate-800/30 border rounded-lg p-6"
+        :class="qaRunning ? 'border-violet-500/30' : 'border-slate-700/50'"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span
+              class="w-2 h-2 rounded-full"
+              :class="qaRunning ? 'bg-violet-500 animate-pulse' : qa.progress >= 100 ? 'bg-emerald-500' : 'bg-slate-500'"
+            ></span>
+            <div>
+              <div class="text-xs text-slate-500 uppercase tracking-wide">QA Review</div>
+              <div class="text-sm font-medium text-slate-200">Speakability Check</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span v-if="qa.flags > 0" class="text-xs text-red-400">
+              {{ qa.flags }} flagged
+            </span>
+            <button
+              v-if="!qaRunning && qa.progress < 100"
+              @click="startQA"
+              class="px-4 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Start QA
+            </button>
+            <span v-if="qaRunning" class="text-xs text-violet-400 animate-pulse">Running...</span>
+            <span v-if="qa.progress >= 100" class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded uppercase">Complete</span>
+          </div>
+        </div>
+
+        <!-- QA Progress Bar -->
+        <div class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3">
+          <div
+            class="h-full transition-all duration-500 rounded-full bg-violet-500"
+            :style="{ width: `${qa.progress}%` }"
+          ></div>
+        </div>
+
+        <!-- QA Stats -->
+        <div class="grid grid-cols-4 gap-4 text-center">
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold text-slate-200">{{ qa.checked.toLocaleString() }}</div>
+            <div class="text-xs text-slate-500">/ {{ qa.total.toLocaleString() }} checked</div>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold text-slate-200">{{ qa.progress }}%</div>
+            <div class="text-xs text-slate-500">progress</div>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold" :class="qa.errors > 0 ? 'text-red-400' : 'text-slate-200'">{{ qa.errors }}</div>
+            <div class="text-xs text-slate-500">errors</div>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold" :class="qa.warnings > 0 ? 'text-amber-400' : 'text-slate-200'">{{ qa.warnings }}</div>
+            <div class="text-xs text-slate-500">warnings</div>
+          </div>
+        </div>
+      </section>
+
       <!-- Controls -->
       <section class="flex justify-end gap-3">
         <button
@@ -332,14 +392,6 @@
           class="px-6 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium rounded-lg transition-colors"
         >
           Reset
-        </button>
-        <button
-          v-if="progress.status === 'complete' || progress.status === 'idle'"
-          @click="startQA"
-          :disabled="qaRunning"
-          class="px-6 py-2.5 bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white font-medium rounded-lg transition-colors"
-        >
-          {{ qaRunning ? 'QA Running...' : 'Run QA' }}
         </button>
       </section>
 
@@ -412,6 +464,17 @@ const agents = ref({
   running: [],
   running_count: 0,
   total_tracked: 0
+})
+
+// QA state
+const qaRunning = ref(false)
+const qa = ref({
+  total: 0,
+  checked: 0,
+  progress: 0,
+  flags: 0,
+  errors: 0,
+  warnings: 0
 })
 
 // UI state
@@ -590,8 +653,9 @@ async function fetchProgress() {
       }
     }
 
-    // Also fetch seed grid
+    // Also fetch seed grid and QA summary
     fetchSeedGrid()
+    fetchQASummary()
   } catch (error) {
     console.error('Failed to fetch progress:', error)
   }
@@ -729,6 +793,67 @@ async function forceResetBuilder() {
 
   // Restart polling to sync state
   startPolling()
+}
+
+async function startQA() {
+  const courseCode = effectiveCourseCode.value
+  console.log('[QA] startQA called, courseCode:', courseCode)
+  if (!courseCode) {
+    console.warn('[QA] No course code — aborting')
+    return
+  }
+
+  qaRunning.value = true
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    console.log('[QA] Calling:', `${apiBase}/api/qa/start/${courseCode}`)
+    const response = await fetch(`${apiBase}/api/qa/start/${courseCode}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+    const result = await response.json()
+    console.log('[QA] Response:', result)
+    if (!result.ok) {
+      console.error('[QA] Start failed:', result.error)
+      qaRunning.value = false
+    }
+  } catch (error) {
+    console.error('[QA] Failed to start QA:', error)
+    qaRunning.value = false
+  }
+}
+
+async function fetchQASummary() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const response = await fetch(`${apiBase}/api/qa/summary/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      qa.value = {
+        total: data.phrases?.total || 0,
+        checked: data.phrases?.checked || 0,
+        progress: data.phrases?.progress_percent || 0,
+        flags: data.flags?.total || 0,
+        errors: data.flags?.errors || 0,
+        warnings: data.flags?.warnings || 0
+      }
+      // Auto-detect QA running state
+      if (qa.value.progress > 0 && qa.value.progress < 100) {
+        qaRunning.value = true
+      } else if (qa.value.progress >= 100) {
+        qaRunning.value = false
+      }
+    }
+  } catch (err) {
+    // QA summary endpoint may not exist yet for this course
+  }
 }
 
 async function killAgent(pid) {
