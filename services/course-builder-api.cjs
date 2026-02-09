@@ -2064,17 +2064,18 @@ This is an AUDIO program - only phonetic differences matter for TTS:
 
 ### BUILD Phrases (minimum 3 per LEGO)
 Show the new LEGO combining with PREVIOUSLY-INTRODUCED vocabulary.
-- LEGO + 1-3 extra syllables from prior LEGOs
+- LEGO + 1-5 extra syllables from prior LEGOs
 - Fragments OK (don't need to be complete sentences)
 - BUILD is NOT the LEGO by itself, NOT random extensions
 - Example: for new LEGO "cymraeg" (Welsh), BUILD = "siarad cymraeg" (speak Welsh) because "siarad" is already known
 
 ### USE Phrases (minimum 8 per LEGO)
 Natural complete sentences for eternal spaced repetition.
-- Mix of lengths: 3-4 MEDIUM (LEGO + 4-6 syl), 4-5 LONG (LEGO + 7-10 syl)
+- LEGO + 6-10 extra syllables — these are full sentences
 - Must be complete, natural sentences a learner would ACTUALLY SAY
 - Must contain the LEGO target as an EXACT substring (containment)
 - All words must exist in vocabulary (prior seed translations)
+- The LEGO size does NOT affect phrase length — a long M-LEGO can still have short USE phrases if only a few syllables are added around it
 
 ### ZUT (Zero Uncertainty Test)
 Same English known → same target. Always. If "speak" already maps to "parlare", you cannot map "speak" to "dire" elsewhere. Upchunk to disambiguate: "speak to" vs "speak about".
