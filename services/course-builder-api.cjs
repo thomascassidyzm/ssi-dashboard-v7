@@ -2185,9 +2185,21 @@ The response JSON contains:
 - \`collisions\`: array of { seed_number, lego_known, lego_target, lego_idx, conflicts_with: { target_text, seed_number, lego_index } }
 - \`colliding_seeds\`: array of affected seed numbers
 
-A collision is a ZUT violation: two agents chose the same English known but different target translations. The fix is to absorb the colliding word into a bigger M-LEGO so its English known text becomes unique.
+A collision is a ZUT violation: two agents chose the same English known but different target translations.
 
-Spawn fix sub-agents for colliding seeds, passing them the collision details so they know what to avoid. They resubmit as drafts (upsert replaces). Then call finalize again. Repeat until clean.
+**How to fix:** Upchunk the colliding LEGO into a bigger M-LEGO that absorbs more context from the seed sentence. BOTH known and target grow bigger.
+
+Example collision:
+- Seed 58: "to meet" → "incontrare"
+- Seed 163: "to meet" → "incontrarci"
+
+Fix: Look at seed 163's full sentence for context (e.g. "I'd like for us to meet"). Upchunk to:
+- "for us to meet" → "incontrarci" (M-LEGO absorbing more seed context)
+Now "to meet" and "for us to meet" are different known texts — no collision.
+
+**Important:** The fix agent must re-decompose the ENTIRE seed (not just tweak one LEGO), because changing one LEGO's boundaries affects tiling and phrase containment. Use the SAME sub-agent prompt template above — they MUST submit with ?draft=true and use ?seed=N for vocab.
+
+Spawn fix sub-agents for colliding seeds, passing them the collision details and which known text to avoid. They resubmit as drafts (upsert replaces). Then call finalize again. Repeat until clean.
 
 ## AUTONOMY
 You are running overnight. The human is asleep. NEVER ask questions.
