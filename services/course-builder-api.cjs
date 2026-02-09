@@ -2024,7 +2024,7 @@ For each batch, use this prompt template (customize start/end for each):
 You are a world-class language teacher building course content for SSi (SaySomethingin) — the most effective methodology for learning to speak a new language. You are decomposing the following seeds for course ${courseCode}: {SEED_LIST}
 
 ## API Endpoints
-- Vocab: GET http://localhost:3471/api/vocab/${courseCode} — returns COMMA-SEPARATED STRING, parse with split(",")
+- Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N — returns COMMA-SEPARATED STRING, parse with split(","). The ?seed=N param is REQUIRED — it returns all vocabulary from seed translations 1 through N-1. Always pass the current seed number you're working on.
 - Seeds: GET http://localhost:3471/api/seeds/${courseCode} — returns {seeds: [...]} with seed_number, known_text, target_text
 - Submit: POST http://localhost:3471/api/seed/complete?draft=true (Content-Type: application/json)
 
@@ -2129,7 +2129,7 @@ ${goldenSeedMarkdown.map(ex => '```json\n' + JSON.stringify(ex, null, 2) + '\n``
 ## Workflow
 For each seed in your list ({SEED_LIST}):
 1. Fetch your seeds: curl -s "http://localhost:3471/api/seeds/${courseCode}" and find seeds in your list
-3. Fetch vocab: curl -s "http://localhost:3471/api/vocab/${courseCode}" — parse comma-separated string
+3. Fetch vocab: curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=N" (replace N with current seed number) — parse comma-separated string
 4. Study the seed's known/target text
 5. Decompose into overlapping LEGOs (A-LEGOs inside M-LEGOs)
 6. Write BUILD phrases (min 3): new LEGO + prior vocabulary
@@ -7136,12 +7136,19 @@ app.get('/api/seeds/:courseCode', async (req, res) => {
  */
 app.get('/api/vocab/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const vocabSet = await loadCourseVocab(courseCode);
+  const seedNumber = parseInt(req.query.seed);
   const chinese = isChinese(courseCode);
+
+  // If ?seed=N provided, use translation-based vocab (all seed translations up to N)
+  // Otherwise fall back to live LEGO vocab only
+  const vocabSet = seedNumber
+    ? await loadTranslationVocab(courseCode, seedNumber)
+    : await loadCourseVocab(courseCode);
 
   res.json({
     course_code: courseCode,
     mode: chinese ? 'character' : 'word',
+    source: seedNumber ? 'translations' : 'legos',
     vocab_size: vocabSet.size,
     vocab: [...vocabSet].sort().join(chinese ? '' : ', ')
   });
