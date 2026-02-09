@@ -1941,9 +1941,12 @@ end tell`;
  * to spawn ~10 background sub-agents, each decomposing a batch of seeds as drafts.
  */
 function generateParallelBrief({ courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds }) {
-  const batchList = batches.map((b, i) =>
-    `Batch ${i + 1}: seeds ${b.start}-${b.end} (${b.end - b.start + 1} seeds)`
-  ).join('\n');
+  const batchList = batches.map((b, i) => {
+    if (b.seeds && b.seeds.length <= 40) {
+      return `Batch ${i + 1}: seeds [${b.seeds.join(', ')}] (${b.seeds.length} seeds)`;
+    }
+    return `Batch ${i + 1}: seeds ${b.start}-${b.end} (${b.end - b.start + 1} seeds)`;
+  }).join('\n');
 
   const goldenSection = goldenExamples && goldenExamples.length > 0
     ? `\n## Golden Decomposition Examples (from calibration)\n\n${goldenExamples.map(g => {
@@ -1988,7 +1991,7 @@ Use the Task tool to spawn one background sub-agent per batch. Launch ALL batche
 For each batch, use this prompt template (customize start/end for each):
 
 ---BEGIN SUB-AGENT PROMPT---
-You are a world-class language teacher building course content for SSi (SaySomethingin) — the most effective methodology for learning to speak a new language. You are decomposing seeds {START} to {END} for course ${courseCode}.
+You are a world-class language teacher building course content for SSi (SaySomethingin) — the most effective methodology for learning to speak a new language. You are decomposing the following seeds for course ${courseCode}: {SEED_LIST}
 
 ## API Endpoints
 - Vocab: GET http://localhost:3471/api/vocab/${courseCode} — returns COMMA-SEPARATED STRING, parse with split(",")
@@ -2082,9 +2085,8 @@ These are real, verified submissions from seeds 1-10. Your output must match thi
 ${goldenSeedMarkdown.map(ex => '```json\n' + JSON.stringify(ex, null, 2) + '\n```').join('\n\n')}` : ''}
 
 ## Workflow
-For each seed in your range ({START} to {END}):
-1. Check if seed already has a valid draft: curl -s "http://localhost:3471/api/course/${courseCode}/drafts" — if this seed_number appears with validation_status "valid", SKIP IT and move to the next seed
-2. Fetch your seeds: curl -s "http://localhost:3471/api/seeds/${courseCode}" and find seeds in your range
+For each seed in your list ({SEED_LIST}):
+1. Fetch your seeds: curl -s "http://localhost:3471/api/seeds/${courseCode}" and find seeds in your list
 3. Fetch vocab: curl -s "http://localhost:3471/api/vocab/${courseCode}" — parse comma-separated string
 4. Study the seed's known/target text
 5. Decompose into overlapping LEGOs (A-LEGOs inside M-LEGOs)
@@ -2095,14 +2097,15 @@ For each seed in your range ({START} to {END}):
 10. If rejected, read the error carefully, fix, and retry. There is NO retry limit — keep fixing until it passes.
 11. Move to next seed
 
-## AUTONOMY: You are running unattended. NEVER ask questions. NEVER give up on a seed. NEVER write reports asking the human what to do. Fix errors and continue until every seed in your range is submitted.
+## AUTONOMY: You are running unattended. NEVER ask questions. NEVER give up on a seed. NEVER write reports asking the human what to do. Fix errors and continue until every seed in your list is submitted.
 ---END SUB-AGENT PROMPT---
 
 IMPORTANT: When spawning sub-agents via the Task tool:
 - Use subagent_type: "general-purpose"
 - Set run_in_background: true for each
 - Use model: "sonnet" (Sonnet for quality decomposition)
-- Keep the description short: "Build seeds {start}-{end} for ${courseCode}"
+- Replace {SEED_LIST} in the prompt with the actual seed numbers from the batch assignment above
+- Keep the description short: "Build seeds [first]-[last] for ${courseCode}"
 
 ## Step 2: Monitor Progress
 
@@ -2110,9 +2113,9 @@ After spawning all sub-agents, poll progress every 60 seconds:
 
 curl -s http://localhost:3471/api/course/${courseCode}/drafts
 
-This returns { total_drafts, valid_drafts, invalid_drafts, drafts: [...] }.
+This returns { total_drafts, valid, collision, rework, drafts: [...] }.
 
-Expected total drafts: ${targetSeeds - 10} (seeds 11 to ${targetSeeds}).
+Expected total drafts when complete: ${targetSeeds - 10} (seeds 11 to ${targetSeeds}). Some may already be drafted — check the batch assignments above for how many are new.
 
 Use the Bash tool with curl to poll. Wait 60 seconds between polls (use sleep 60).
 
@@ -2478,22 +2481,47 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
     console.log(`[BUILD] Could not load lessons for parallel brief: ${e.message}`);
   }
 
-  // Calculate batch ranges: seeds 11..targetSeeds split into ~10 batches
+  // Query existing valid drafts + finalized seeds to skip
   const firstSeed = 11; // Seeds 1-10 are golden
-  const totalToBuild = targetSeeds - firstSeed + 1;
-  const NUM_BATCHES = Math.min(10, Math.ceil(totalToBuild / 20)); // At least 20 seeds per batch
-  const batchSize = Math.ceil(totalToBuild / NUM_BATCHES);
+  const draftedSet = new Set();
+  const finalizedSet = new Set();
 
-  const batches = [];
-  for (let i = 0; i < NUM_BATCHES; i++) {
-    const start = firstSeed + (i * batchSize);
-    const end = Math.min(start + batchSize - 1, targetSeeds);
-    if (start <= targetSeeds) {
-      batches.push({ start, end });
+  const { data: existingDrafts } = await supabase
+    .from('course_seed_drafts')
+    .select('seed_number')
+    .eq('course_code', courseCode)
+    .eq('validation_status', 'valid');
+  for (const d of existingDrafts || []) draftedSet.add(d.seed_number);
+
+  const { data: finalizedSeeds } = await supabase
+    .from('course_seeds')
+    .select('seed_number')
+    .eq('course_code', courseCode)
+    .not('decomposed_at', 'is', null)
+    .gte('seed_number', firstSeed);
+  for (const s of finalizedSeeds || []) finalizedSet.add(s.seed_number);
+
+  // Build list of seeds that still need work
+  const seedsNeeded = [];
+  for (let i = firstSeed; i <= targetSeeds; i++) {
+    if (!draftedSet.has(i) && !finalizedSet.has(i)) {
+      seedsNeeded.push(i);
     }
   }
 
-  console.log(`[BUILD] Parallel build for ${courseCode}: ${batches.length} batches, ${totalToBuild} seeds`);
+  // Distribute evenly across agents
+  const NUM_BATCHES = Math.min(10, Math.max(1, Math.ceil(seedsNeeded.length / 20)));
+  const batchSize = Math.ceil(seedsNeeded.length / NUM_BATCHES);
+
+  const batches = [];
+  for (let i = 0; i < NUM_BATCHES; i++) {
+    const batchSeeds = seedsNeeded.slice(i * batchSize, (i + 1) * batchSize);
+    if (batchSeeds.length > 0) {
+      batches.push({ start: batchSeeds[0], end: batchSeeds[batchSeeds.length - 1], seeds: batchSeeds });
+    }
+  }
+
+  console.log(`[BUILD] Parallel build for ${courseCode}: ${seedsNeeded.length} seeds needed (${draftedSet.size} drafted, ${finalizedSet.size} finalized already), ${batches.length} batches`);
 
   const prompt = generateParallelBrief({
     courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds
