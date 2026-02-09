@@ -333,6 +333,14 @@
         >
           Reset
         </button>
+        <button
+          v-if="progress.status === 'complete' || progress.status === 'idle'"
+          @click="startQA"
+          :disabled="qaRunning"
+          class="px-6 py-2.5 bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white font-medium rounded-lg transition-colors"
+        >
+          {{ qaRunning ? 'QA Running...' : 'Run QA' }}
+        </button>
       </section>
 
     </div>

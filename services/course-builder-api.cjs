@@ -2225,7 +2225,7 @@ function generateQABrief({ courseCode, batches, courseInfo }) {
 
   return `# Parallel QA Pass — Coordinator Agent
 
-You are coordinating a parallel grammar/naturalness QA pass for course **${courseCode}** (${langName}).
+You are coordinating a parallel speakability QA pass for course **${courseCode}** (${langName}).
 
 ## CRITICAL: You are an ORCHESTRATOR, not a checker
 - You do NOT check phrases yourself
@@ -2244,72 +2244,89 @@ Use the Task tool to spawn one background sub-agent per batch. Launch ALL batche
 For each batch, use this prompt template (customize start/end for each):
 
 ---BEGIN SUB-AGENT PROMPT---
-You are a grammar and naturalness QA checker for course ${courseCode} (${langName}). You are checking phrases for seeds {START} to {END}.
+You are a speakability QA checker for course ${courseCode} (${langName}). You are checking USE phrases only for seeds {START} to {END}.
 
-## Your Job
-Check every USE phrase for:
-1. **Grammar** (both known/English and target language) — Is the sentence grammatically correct?
-2. **Naturalness** — Would a native speaker actually say this? Is it stilted or awkward?
-3. **Speakability** — Can a beginner pronounce and remember this?
-4. **Semantic accuracy** — Does the target translation accurately match the known text?
+## Your Single Question
 
-You do NOT fix phrases. You only FLAG bad ones.
+For each USE phrase pair (known_text + target_text), ask ONE question:
+
+**"Is this a speakable unit in BOTH languages?"**
+
+- Could a real person say the known_text (English) out loud as a complete sentence?
+- Could a real person say the target_text (${langName}) out loud as a complete sentence?
+
+USE phrases MUST be complete sentences that a learner would actually say. Flag if:
+- Either side is a fragment (e.g. just "Italian" or "to speak") — not a sentence
+- Either side has a grammar error that makes it unspeakable
+- The two sides don't match in meaning
+- It's not something a person would ever actually say
+
+You do NOT fix phrases. You only FLAG unspeakable ones for deletion.
 
 ## Workflow
 
-### Step 1: Fetch phrases for your seed range
-Use curl to paginate through all USE phrases:
+### Step 1: Fetch USE phrases for your seed range
+Use the Bash tool with curl to paginate through USE phrases:
 
-offset=0
+\`\`\`
+OFFSET=0
 while true; do
-  curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min={START}&seed_max={END}&role=use&limit=500&offset=$offset"
-  # If count < 500, you've got them all
-  offset=$((offset + 500))
+  RESULT=$(curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min={START}&seed_max={END}&role=use&limit=500&offset=$OFFSET")
+  COUNT=$(echo "$RESULT" | jq '.count')
+  echo "$RESULT"
+  if [ "$COUNT" -lt 500 ]; then break; fi
+  OFFSET=$((OFFSET + 500))
 done
+\`\`\`
 
-Parse the JSON response. Each phrase has: id, known_text, target_text, seed_number, lego_index, phrase_role.
+Each phrase has: id, known_text, target_text, seed_number, lego_index, phrase_role.
 
 ### Step 2: Evaluate each phrase
-For each phrase, check grammar, naturalness, speakability, and semantic accuracy.
+For each phrase, ask: "Is this speakable in both languages?"
 
-Flag types and severities:
-- \`grammar\` + \`error\`: Grammatical mistake in either language
-- \`naturalness\` + \`warning\`: Unnatural/stilted but technically correct
-- \`semantic\` + \`error\`: Translation doesn't match meaning
-
-Only flag genuinely bad phrases. Minor style preferences are NOT flags.
+- If YES → move on, no flag needed
+- If NO → add to your flags list
 
 ### Step 3: Submit flags (if any)
 Collect all flags and submit in one bulk call:
 
+\`\`\`
 curl -s -X POST "http://localhost:3471/api/qa/bulk-flag" \\
   -H "Content-Type: application/json" \\
   -d '{"flags": [
-    {"course_code": "${courseCode}", "phrase_id": "uuid-here", "seed_number": 42, "check_type": "grammar", "severity": "error", "issue": "Missing article", "details": {"known": "...", "target": "..."}},
+    {"course_code": "${courseCode}", "phrase_id": "<the phrase uuid>", "seed_number": <N>, "check_type": "grammar", "severity": "error", "issue": "Not speakable: <brief reason>", "details": {"known": "<known_text>", "target": "<target_text>", "phrase_role": "<build/use>"}},
     ...
   ]}'
+\`\`\`
 
 ### Step 4: Mark range as checked
-After checking all phrases (whether or not you found flags), mark the entire range:
+After checking ALL phrases (whether or not you found flags), mark the entire range:
 
+\`\`\`
 curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
   -H "Content-Type: application/json" \\
   -d '{"course_code": "${courseCode}", "seed_min": {START}, "seed_max": {END}}'
+\`\`\`
 
-## AUTONOMY: You are running unattended. NEVER ask questions. Process all phrases and submit results.
+## IMPORTANT
+- Check EVERY phrase. Do not skip any.
+- Do NOT be overly strict. Most phrases will be fine. Only flag things that are genuinely broken or unspeakable.
+- You are running unattended. NEVER ask questions. Process all phrases and submit results.
 ---END SUB-AGENT PROMPT---
 
 IMPORTANT: When spawning sub-agents via the Task tool:
 - Use subagent_type: "general-purpose"
 - Set run_in_background: true for each
-- Use model: "sonnet" (Sonnet for quality evaluation)
+- Use model: "sonnet" (Sonnet for language evaluation)
 - Keep the description short: "QA seeds {start}-{end} for ${courseCode}"
 
 ## Step 2: Monitor Progress
 
 After spawning all sub-agents, poll progress every 60 seconds:
 
+\`\`\`
 curl -s http://localhost:3471/api/qa/summary/${courseCode}
+\`\`\`
 
 This returns { phrases: { total, checked, unchecked, progress_percent }, flags: { total, open, errors, warnings } }.
 
@@ -2317,17 +2334,17 @@ Use the Bash tool with curl to poll. Wait 60 seconds between polls (use sleep 60
 
 When progress_percent reaches 100 (or unchecked reaches 0), the QA pass is complete.
 
-If progress stalls (no change for 10 minutes), check sub-agent output files and report the issue.
+If progress stalls (no change for 5 minutes), check sub-agent output files and report the issue. If a sub-agent failed, spawn a replacement for its seed range.
 
 ## Step 3: Report
 
 When all batches are checked, summarise:
 - Total phrases checked
-- Flags raised (by type and severity)
+- Flags raised (count)
 - Any batches that failed
 
 ## AUTONOMY
-You are running overnight. The human is asleep. NEVER ask questions.
+You are running unattended. NEVER ask questions.
 - Make decisions yourself
 - If a sub-agent fails, spawn a replacement
 - Keep going until all batches are checked
@@ -5877,9 +5894,9 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     .eq('course_code', courseCode)
     .not('decomposed_at', 'is', null);
 
-  // Ratio based on NEW legos only (the meaningful metric)
-  const effectiveLegos = newLegos || 0;
-  const ratio = effectiveLegos > 0 ? (phrases/effectiveLegos) : 0;
+  // Ratio based on total legos (phrases per LEGO)
+  const totalLegos = legos || 0;
+  const ratio = totalLegos > 0 ? (phrases/totalLegos) : 0;
   const quality = ratio >= MIN_BATCH_PHRASE_RATIO ? 'PASS' : 'FAIL';
 
   // Get vocab size
@@ -5912,8 +5929,8 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     completed_seeds: completedSeeds || 0,
     seeds_with_legos: seedsWithLegos || 0,
     seeds: seedsWithLegos || 0,  // Legacy field, same as seeds_with_legos
-    legos: effectiveLegos,       // Now shows NEW legos only (the useful metric)
-    legos_total: legos || 0,     // Total including duplicates (for reference)
+    legos: totalLegos,           // Total LEGOs (all records)
+    legos_new: newLegos || 0,    // Unique introductions (is_new=true)
     phrases: phrases || 0,
     ratio: ratio.toFixed(1),
     vocab_size: vocabSet.size,
