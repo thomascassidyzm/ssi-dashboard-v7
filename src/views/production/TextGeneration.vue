@@ -579,10 +579,7 @@ async function fetchProgress() {
   if (!courseCode) return  // Skip if no course selected yet
 
   try {
-    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    // Default to popty.ngrok.app for remote access (NOT env var - Vercel may have old value)
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
+    const apiBase = getApiUrl()
 
     // Fetch stats, build status, and agent activity in parallel
     const [statsResponse, buildResponse, activityResponse] = await Promise.all([
