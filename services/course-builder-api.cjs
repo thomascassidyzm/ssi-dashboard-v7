@@ -2255,13 +2255,20 @@ For each USE phrase pair (known_text + target_text), ask ONE question:
 - Could a real person say the known_text (English) out loud as a complete sentence?
 - Could a real person say the target_text (${langName}) out loud as a complete sentence?
 
-USE phrases MUST be complete sentences that a learner would actually say. Flag if:
-- Either side is a fragment (e.g. just "Italian" or "to speak") — not a sentence
-- Either side has a grammar error that makes it unspeakable
+USE phrases MUST be things a learner would actually say out loud. Flag ONLY if:
+- Either side is a meaningless fragment (e.g. just a single word "Italian" or an infinitive "to speak") — not something you'd say
+- Either side has a grammar error that makes it nonsensical when spoken aloud
 - The two sides don't match in meaning
-- It's not something a person would ever actually say
+- It's not something a person would ever actually say in conversation
 
-You do NOT fix phrases. You only FLAG unspeakable ones for deletion.
+**CRITICAL — IGNORE ALL FORMATTING:**
+- Do NOT flag missing capitalization (e.g. "i want to speak italian" is perfectly fine)
+- Do NOT flag missing punctuation (no periods, question marks, or commas needed — these are SPOKEN phrases, not written text)
+- Do NOT flag inconsistent casing
+- Punctuation and capitalisation are IRRELEVANT. Only the spoken meaning matters.
+
+You do NOT fix phrases. You only FLAG genuinely unspeakable ones for deletion.
+Be conservative — most phrases will be fine. Only flag things that are truly broken.
 
 ## Workflow
 
