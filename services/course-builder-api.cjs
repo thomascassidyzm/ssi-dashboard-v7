@@ -2008,6 +2008,15 @@ Seeds are vehicles for LEGOs. Decompose by asking "What LEGOs does this seed let
 - Introduce A-LEGOs before their containing M-LEGOs (non-greedy: learner recognises the part)
 - Order LEGOs to maximise combinability with existing vocabulary
 
+### CRITICAL: LEGO Form Is Fixed
+The LEGO target must be the EXACT form that appears in the seed — NEVER the dictionary/infinitive form.
+- If the seed contains "vederti", the LEGO target is "vederti", NOT "vedere"
+- If the seed contains "volevo", the LEGO target is "volevo", NOT "volere"
+- If the seed contains "parlando", the LEGO target is "parlando", NOT "parlare"
+- All BUILD and USE phrases for that LEGO must contain the LEGO target as an EXACT substring
+- You choose phrases where the exact LEGO form works naturally — do NOT conjugate or inflect it
+- If a form doesn't fit a phrase context, don't write that phrase — find one where it does fit
+
 ### BUILD Phrases (minimum 3 per LEGO)
 Show the new LEGO combining with PREVIOUSLY-INTRODUCED vocabulary.
 - LEGO + 1-3 extra syllables from prior LEGOs
@@ -2082,10 +2091,10 @@ For each seed in your range ({START} to {END}):
 6. Write USE phrases (min 8): complete natural sentences containing exact LEGO target
 7. Verify all phrase targets contain the LEGO target as exact substring
 8. Write JSON to /tmp/seed{N}.json and POST as draft
-9. If rejected, read the error carefully, fix, and retry (max 3 attempts)
+9. If rejected, read the error carefully, fix, and retry. There is NO retry limit — keep fixing until it passes.
 10. Move to next seed
 
-## AUTONOMY: You are running unattended. NEVER ask questions. Fix errors and continue.
+## AUTONOMY: You are running unattended. NEVER ask questions. NEVER give up on a seed. NEVER write reports asking the human what to do. Fix errors and continue until every seed in your range is submitted.
 ---END SUB-AGENT PROMPT---
 
 IMPORTANT: When spawning sub-agents via the Task tool:
