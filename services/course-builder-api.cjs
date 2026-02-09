@@ -1969,7 +1969,7 @@ end tell`;
  * The coordinator is a lightweight haiku agent that uses Claude Code's Task tool
  * to spawn ~10 background sub-agents, each decomposing a batch of seeds as drafts.
  */
-function generateParallelBrief({ courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds }) {
+function generateParallelBrief({ courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds, seedsNeededCount }) {
   const batchList = batches.map((b, i) => {
     if (b.seeds && b.seeds.length <= 40) {
       return `Batch ${i + 1}: seeds [${b.seeds.join(', ')}] (${b.seeds.length} seeds)`;
@@ -2157,20 +2157,21 @@ curl -s http://localhost:3471/api/course/${courseCode}/drafts
 
 This returns { total_drafts, valid, collision, rework, drafts: [...] }.
 
-Expected total drafts when complete: ${targetSeeds - 10} (seeds 11 to ${targetSeeds}). Some may already be drafted — check the batch assignments above for how many are new.
+Expected NEW drafts when complete: ${seedsNeededCount || '(see batch assignments)'} seeds. Some seeds are already finalized from earlier builds and will NOT appear as drafts — that's correct.
 
 Use the Bash tool with curl to poll. Wait 60 seconds between polls (use sleep 60).
 
-When total_drafts >= ${targetSeeds - 10}, proceed to Step 3.
+Count the drafted seeds that match your batch assignments. When all batch-assigned seeds have drafts, proceed to Step 3.
 
 ### Stall Detection & Recovery
 If no new drafts arrive for 5 minutes:
-1. Query the drafts endpoint to get the list of submitted seed numbers
-2. Compare against the full expected range (11-${targetSeeds}) to find MISSING seed numbers
-3. Group missing seeds into contiguous ranges
-4. Spawn NEW sub-agents for the missing seeds (one agent per range, or split large ranges). Use the SAME sub-agent prompt template above — they MUST submit with ?draft=true.
-5. Continue monitoring — repeat stall detection if needed
-6. NEVER give up. Keep respawning until every seed is drafted.
+1. Query the drafts endpoint to get the list of DRAFTED seed numbers
+2. Compare ONLY against the batch assignments listed above — those are the seeds that actually need drafting. Seeds outside the batch assignments are already finalized from earlier builds and must NOT be re-drafted.
+3. Any seed in the batch assignments that is NOT in the drafts list is MISSING
+4. Group missing seeds into contiguous ranges
+5. Spawn NEW sub-agents for the missing seeds (one agent per range, or split large ranges). Use the SAME sub-agent prompt template above — they MUST submit with ?draft=true.
+6. Continue monitoring — repeat stall detection if needed
+7. NEVER give up. Keep respawning until every seed in the batch assignments is drafted.
 
 ## Step 3: Finalize
 
@@ -2573,7 +2574,7 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
   console.log(`[BUILD] Parallel build for ${courseCode}: ${seedsNeeded.length} seeds needed (${draftedSet.size} drafted, ${finalizedSet.size} finalized already), ${batches.length} batches`);
 
   const prompt = generateParallelBrief({
-    courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds
+    courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds, seedsNeededCount: seedsNeeded.length
   });
 
   // Write prompt to temp file
