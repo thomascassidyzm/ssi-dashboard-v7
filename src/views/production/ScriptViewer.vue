@@ -776,6 +776,34 @@ const getApiBaseUrl = (): string => {
 const totalSeeds = computed(() => totalSeedsInCourse.value || seeds.value.length);
 const loadedSeeds = computed(() => seeds.value.length);
 
+// Seed View pagination (server-side via filter range)
+const seedPageSize = 50;
+const seedPageStart = computed(() => {
+  const n = parseInt(filterSeedStart.value.replace(/\D/g, ''));
+  return isNaN(n) ? 1 : n;
+});
+const seedPageEnd = computed(() => {
+  const n = parseInt(filterSeedEnd.value.replace(/\D/g, ''));
+  return isNaN(n) ? seedPageSize : Math.min(n, totalSeeds.value);
+});
+const formatSeedNum = (n: number) => 'S' + String(n).padStart(4, '0');
+const prevSeedPage = () => {
+  const newStart = Math.max(1, seedPageStart.value - seedPageSize);
+  const newEnd = newStart + seedPageSize - 1;
+  filterSeedStart.value = formatSeedNum(newStart);
+  filterSeedEnd.value = formatSeedNum(newEnd);
+  loadCourseData(filterSeedStart.value, filterSeedEnd.value);
+};
+const nextSeedPage = () => {
+  const newStart = seedPageEnd.value + 1;
+  const newEnd = Math.min(newStart + seedPageSize - 1, totalSeeds.value);
+  if (newStart <= totalSeeds.value) {
+    filterSeedStart.value = formatSeedNum(newStart);
+    filterSeedEnd.value = formatSeedNum(newEnd);
+    loadCourseData(filterSeedStart.value, filterSeedEnd.value);
+  }
+};
+
 const totalPhrases = computed(() => {
   return seeds.value.reduce((total, seed) => {
     const introCount = seed.introduction_phrases.length;
