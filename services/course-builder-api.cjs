@@ -394,18 +394,28 @@ function parseMarkdownSeed(markdown, courseCode) {
       }
     }
 
-    // Parse USE phrases (with optional score)
+    // Parse USE phrases (with optional score - supports [score] or [known/target] format)
     if (useMatch) {
       const useLines = useMatch[1].split('\n');
       for (const line of useLines) {
-        const phraseMatch = line.match(/^[-*]\s*(.+?)\s*(?:→|->|:)\s*(.+?)(?:\s*\[(\d+)\])?\s*$/);
+        const phraseMatch = line.match(/^[-*]\s*(.+?)\s*(?:→|->|:)\s*(.+?)(?:\s*\[(\d+)(?:\/(\d+))?\])?\s*$/);
         if (phraseMatch) {
           const phrase = {
             known: phraseMatch[1].trim(),
             target: phraseMatch[2].trim()
           };
           if (phraseMatch[3]) {
-            phrase.score = parseInt(phraseMatch[3]);
+            if (phraseMatch[4]) {
+              // Dual score format: [known/target]
+              phrase.known_score = parseInt(phraseMatch[3]);
+              phrase.target_score = parseInt(phraseMatch[4]);
+              phrase.score = Math.round((phrase.known_score + phrase.target_score) / 2);
+            } else {
+              // Legacy single score format: [score]
+              phrase.score = parseInt(phraseMatch[3]);
+              phrase.known_score = phrase.score;
+              phrase.target_score = phrase.score;
+            }
           }
           usePhrases.push(phrase);
         }
@@ -423,13 +433,24 @@ function parseMarkdownSeed(markdown, courseCode) {
         const phraseLines = phrasesMatch[1].split('\n');
         const flatPhrases = [];
         for (const line of phraseLines) {
-          const phraseMatch = line.match(/^[-*]\s*(.+?)\s*(?:→|->|:)\s*(.+?)(?:\s*\[(\d+)\])?\s*$/);
+          const phraseMatch = line.match(/^[-*]\s*(.+?)\s*(?:→|->|:)\s*(.+?)(?:\s*\[(\d+)(?:\/(\d+))?\])?\s*$/);
           if (phraseMatch) {
-            flatPhrases.push({
+            const phrase = {
               known: phraseMatch[1].trim(),
-              target: phraseMatch[2].trim(),
-              score: phraseMatch[3] ? parseInt(phraseMatch[3]) : undefined
-            });
+              target: phraseMatch[2].trim()
+            };
+            if (phraseMatch[3]) {
+              if (phraseMatch[4]) {
+                phrase.known_score = parseInt(phraseMatch[3]);
+                phrase.target_score = parseInt(phraseMatch[4]);
+                phrase.score = Math.round((phrase.known_score + phrase.target_score) / 2);
+              } else {
+                phrase.score = parseInt(phraseMatch[3]);
+                phrase.known_score = phrase.score;
+                phrase.target_score = phrase.score;
+              }
+            }
+            flatPhrases.push(phrase);
           }
         }
         lego.phrases = flatPhrases;
@@ -1143,7 +1164,31 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     };
   }
 
-  // Score validation removed - not needed for course building
+  // Reject USE phrases with known_score < 5 (broken English protection)
+  const lowKnownScores = use.filter(p => p.known_score && p.known_score < 5);
+  if (lowKnownScores.length > 0) {
+    return {
+      valid: false,
+      error: `${lowKnownScores.length} USE phrase(s) have known_score < 5 (broken English). Remove or rewrite them.`,
+      details: {
+        build: build.length, use: use.length,
+        low_known_score_phrases: lowKnownScores.map(p => p.known)
+      }
+    };
+  }
+
+  // Reject USE phrases with target_score < 5
+  const lowTargetScores = use.filter(p => p.target_score && p.target_score < 5);
+  if (lowTargetScores.length > 0) {
+    return {
+      valid: false,
+      error: `${lowTargetScores.length} USE phrase(s) have target_score < 5. Remove or rewrite them.`,
+      details: {
+        build: build.length, use: use.length,
+        low_target_score_phrases: lowTargetScores.map(p => p.target)
+      }
+    };
+  }
 
   // USE phrases: estimate syllable count for reporting (no hard gate — Haiku QA pass handles quality)
   let avgSyllables = 0;
@@ -1704,8 +1749,8 @@ BUILD:
 - speak Chinese → 说中文
 
 USE:
-- I want to speak Chinese → 我想说中文 [7]
-- I want to learn to speak Chinese → 我想学说中文 [8]
+- I want to speak Chinese → 我想说中文 [7/7]
+- I want to learn to speak Chinese → 我想学说中文 [8/8]
 
 ## L3 [A] "Chinese" → "中文"
 
@@ -1714,8 +1759,8 @@ BUILD:
 - learn Chinese → 学中文
 
 USE:
-- I want to speak Chinese → 我想说中文 [7]
-- I want to learn Chinese → 我想学中文 [7]
+- I want to speak Chinese → 我想说中文 [7/7]
+- I want to learn Chinese → 我想学中文 [7/7]
 
 ## L4 [M] "with you" → "和你"
 Components: with → 和, you → 你
@@ -1726,10 +1771,10 @@ BUILD:
 - speak Chinese with you → 和你说中文
 
 USE:
-- I want to speak with you → 我想和你说 [7]
-- I want to speak Chinese with you → 我想和你说中文 [8]
-- I want to learn Chinese with you → 我想和你学中文 [8]
-- Do you want to speak Chinese with me? → 你想和我说中文吗? [9]
+- I want to speak with you → 我想和你说 [7/7]
+- I want to speak Chinese with you → 我想和你说中文 [8/8]
+- I want to learn Chinese with you → 我想和你学中文 [8/8]
+- Do you want to speak Chinese with me? → 你想和我说中文吗? [9/9]
 
 ## L5 [A] "now" → "现在"
 
@@ -1738,8 +1783,8 @@ BUILD:
 - now with you → 现在和你
 
 USE:
-- I want to speak Chinese with you now → 我现在想和你说中文 [8]
-- I want to learn Chinese now → 我现在想学中文 [7]
+- I want to speak Chinese with you now → 我现在想和你说中文 [8/8]
+- I want to learn Chinese now → 我现在想学中文 [7/7]
 \`\`\`
 
 **Notice:** Each LEGO's phrases combine it with ALL previous LEGOs. L4's USE phrases use L1 (我想), L2 (说), L3 (中文).
@@ -1749,12 +1794,30 @@ USE:
 # SCORING USE PHRASES (5-9 ONLY)
 
 USE phrases go into eternal spaced repetition. Quality matters enormously.
-**Only submit phrases scoring 5-9. Scores <5 = REWRITE, don't submit.**
+**Score EACH phrase in TWO dimensions: known language [K] and target language [T].**
+**Submit format: [K/T] where K = known quality, T = target quality. Both must be 5-9.**
 
-- **9**: Native-natural in BOTH languages, high pedagogical value, flows beautifully
-- **7-8**: Strong phrase, minor stylistic preferences possible
-- **5-6**: Functional, correct but unremarkable - MINIMUM for submission
-- **<5**: REWRITE THIS. Do NOT submit. Awkward, textbook-ish, or low value phrases hurt learners.
+- **9**: Native-natural, idiomatic, something a real person would actually say
+- **7-8**: Strong, natural phrase — minor stylistic preferences possible
+- **5-6**: Correct and natural, but unremarkable — MINIMUM for submission
+- **<5**: DO NOT SUBMIT. Rewrite or skip entirely.
+
+## KNOWN LANGUAGE (English) — THE LEARNER SEES THIS
+
+The known language is what learners read. It must be **flawless, natural English** that any native speaker would say without hesitation. This is NOT negotiable.
+
+**AUTOMATIC FAILURE (score 0, never submit):**
+- "I want going" / "I'd like going" / "she wants going" — WRONG. Use infinitive: "I want to go"
+- "I feel tomorrow" / "I feel next week" — MISSING ADJECTIVE. "I feel good about tomorrow"
+- "try how do you feel" / "learn how is the weather" — EMBEDDED QUESTION in statement frame
+- "I speak with me" / "she helps with her" — SUBJECT-OBJECT conflict
+- "today or yesterday" / "now or at the moment" — MECHANICAL time-swaps that make no sense
+- ANY sentence that would make a native English speaker pause or wince
+
+**The API validates target language quality. YOU validate known language quality.**
+If you cannot write natural English with the available vocabulary, SKIP that phrase and write a different one. Never submit broken English to meet phrase count minimums.
+
+## TARGET LANGUAGE — scored normally per rubric above
 
 ---
 
@@ -1781,7 +1844,7 @@ BUILD:
 - known fragment → target fragment
 
 USE:
-- known sentence → target sentence [score]
+- known sentence → target sentence [K/T]
 
 ## L2 [A] "known word" → "target word"
 
@@ -1789,7 +1852,8 @@ BUILD:
 - known fragment → target fragment
 
 USE:
-- known sentence → target sentence [score]
+- known sentence → target sentence [K/T]
+(K = known language score, T = target language score, both 5-9)
 SEED
 \`\`\`
 
@@ -1826,6 +1890,11 @@ ${checkpointInstructions}
 
 **YOUR ONLY JOB:** Submit seeds via the API. Nothing else.
 
+**QUALITY OVER QUANTITY:**
+→ If you cannot make natural English with available vocabulary, submit FEWER phrases.
+→ 6 excellent phrases beats 10 phrases where 4 are garbage.
+→ The human will delete bad English. Don't make them.
+
 ---
 
 # WORKFLOW: ONE SEED AT A TIME, CONTINUOUSLY
@@ -1848,15 +1917,16 @@ Keep going until you finish or get blocked.
 1. LEGOs are SMALL (2-4 words) - never whole sentences
 2. Each LEGO's phrases use ONLY that LEGO + ALL PREVIOUS vocabulary
 3. BUILD = flexible quantity (LEGO + 1-5 syllables), fragments OK, debut only
-4. USE = minimum 5 phrases (LEGO + 5-10 syllables), complete sentences, scored 5-9
-5. Learners will hear USE phrases HUNDREDS of times - quality matters!
-6. **TILING**: EVERY character/word in the seed target MUST appear in at least one LEGO target!
+4. USE = minimum 5 phrases (LEGO + 5-10 syllables), complete sentences, scored [K/T] both 5-9
+5. **ENGLISH QUALITY IS SACRED**: The known (English) text must be flawless. If a LEGO chunk doesn't fit naturally into English (e.g., a gerund-form chunk where English needs infinitive), restructure the sentence or skip it. NEVER submit unnatural English.
+6. Learners will hear USE phrases HUNDREDS of times - quality matters!
+7. **TILING**: EVERY character/word in the seed target MUST appear in at least one LEGO target!
    - If tiling fails, you're missing a word/particle - add it to a LEGO!
-7. **OVERLAPPING LEGOs**: When word order differs, use BOTH atomic AND chunk LEGOs!
+8. **OVERLAPPING LEGOs**: When word order differs, use BOTH atomic AND chunk LEGOs!
    - Example: "blue thing" → "cosa azul" (Spanish reverses order)
    - Create: "blue"→"azul", "thing"→"cosa", AND "blue thing"→"cosa azul"
    - The chunk M-LEGO handles the transformation when words combine
-8. See ralph-methodology.md for the complete methodology reference
+9. See ralph-methodology.md for the complete methodology reference
 ${lessonsSection}`;
 
   // Write prompt to temp file to avoid escaping nightmares
@@ -8512,7 +8582,11 @@ app.post('/api/phrases', async (req, res) => {
         phrase_role: phrase.role || 'practice',  // Allow specifying role, default to practice
         connected_lego_ids: [],
         lego_position: null,  // Will be computed if needed
-        metadata: phrase.score ? { score: phrase.score } : {}
+        metadata: phrase.score ? {
+          score: phrase.score,
+          ...(phrase.known_score !== undefined && { known_score: phrase.known_score }),
+          ...(phrase.target_score !== undefined && { target_score: phrase.target_score })
+        } : {}
       });
     }
   }
