@@ -2,17 +2,8 @@
   <div class="audio-pipeline text-slate-100">
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-6 py-6">
-      <!-- Loading State -->
-      <div v-if="loading" class="flex flex-col items-center justify-center py-20">
-        <div class="relative">
-          <div class="w-16 h-16 border-4 border-slate-700 rounded-full"></div>
-          <div class="absolute top-0 left-0 w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-        </div>
-        <p class="mt-6 text-slate-400">Loading pipeline data...</p>
-      </div>
-
       <!-- Error State -->
-      <div v-else-if="error" class="bg-red-900/20 border border-red-500/30 rounded-xl p-6">
+      <div v-if="error" class="bg-red-900/20 border border-red-500/30 rounded-xl p-6">
         <div class="flex items-center gap-3 mb-2">
           <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
             <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -475,6 +466,7 @@
             :failed="progressStats.failed"
             :estimated-cost="estimatedCost"
             :estimated-time="estimatedTime"
+            :loading="!statsLoaded"
           />
 
           <!-- Concurrency Control -->
@@ -681,6 +673,7 @@ const allFlaggedResult = ref<any>(null)
 const planResult = ref<any>(null)
 const showingPlan = ref(false)
 const loadingPlan = ref(false)
+const statsLoaded = ref(false)  // Track if pipeline stats have loaded
 
 // Generation state for immediate button feedback
 const startingGeneration = ref(false)
@@ -750,11 +743,16 @@ const stopProgressPolling = () => {
 // Load data on mount
 onMounted(async () => {
   try {
-    loading.value = true
     error.value = null
-    await productionStore.loadCourse(courseCode.value)
+    // Load course data progressively (non-blocking)
+    productionStore.loadCourse(courseCode.value)
     // Start polling for audio progress
     startProgressPolling()
+
+    // Fetch pipeline stats in background (for Progress Dashboard)
+    refreshPlanStats().then(() => {
+      statsLoaded.value = true
+    })
 
     // Check for mode=flagged query param (from Script Viewer link)
     if (route.query.mode === 'flagged') {

@@ -11,25 +11,37 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
       <!-- Total Phrases -->
       <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-slate-700">
-        <div class="text-3xl font-bold text-slate-100">{{ total }}</div>
+        <div class="text-3xl font-bold text-slate-100">
+          <span v-if="loading" class="inline-block w-6 h-6 border-2 border-slate-600 border-t-slate-300 rounded-full animate-spin"></span>
+          <span v-else>{{ total }}</span>
+        </div>
         <div class="text-sm text-slate-400 mt-1">Total Phrases</div>
       </div>
 
       <!-- Generated -->
       <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-emerald-500/30">
-        <div class="text-3xl font-bold text-emerald-400">{{ generated }}</div>
+        <div class="text-3xl font-bold text-emerald-400">
+          <span v-if="loading" class="inline-block w-6 h-6 border-2 border-emerald-900 border-t-emerald-400 rounded-full animate-spin"></span>
+          <span v-else>{{ generated }}</span>
+        </div>
         <div class="text-sm text-slate-400 mt-1">Generated</div>
       </div>
 
       <!-- Pending -->
       <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-yellow-500/30">
-        <div class="text-3xl font-bold text-yellow-400">{{ pending }}</div>
+        <div class="text-3xl font-bold text-yellow-400">
+          <span v-if="loading" class="inline-block w-6 h-6 border-2 border-yellow-900 border-t-yellow-400 rounded-full animate-spin"></span>
+          <span v-else>{{ pending }}</span>
+        </div>
         <div class="text-sm text-slate-400 mt-1">Pending</div>
       </div>
 
       <!-- Failed -->
       <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-red-500/30">
-        <div class="text-3xl font-bold text-red-400">{{ failed }}</div>
+        <div class="text-3xl font-bold text-red-400">
+          <span v-if="loading" class="inline-block w-6 h-6 border-2 border-red-900 border-t-red-400 rounded-full animate-spin"></span>
+          <span v-else>{{ failed }}</span>
+        </div>
         <div class="text-sm text-slate-400 mt-1">Failed</div>
       </div>
     </div>
@@ -38,10 +50,13 @@
     <div class="mb-6">
       <div class="flex items-center justify-between mb-2">
         <span class="text-sm text-slate-400">Overall Progress</span>
-        <span class="text-sm font-semibold text-slate-100">{{ progressPercent }}%</span>
+        <span v-if="loading" class="text-sm text-slate-500">--</span>
+        <span v-else class="text-sm font-semibold text-slate-100">{{ progressPercent }}%</span>
       </div>
       <div class="w-full bg-slate-700 rounded-full h-4 overflow-hidden">
+        <div v-if="loading" class="h-full w-full bg-slate-600 animate-pulse"></div>
         <div
+          v-else
           class="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-500"
           :style="{ width: progressPercent + '%' }"
         ></div>
@@ -104,6 +119,7 @@ interface Props {
   failed: number
   estimatedCost: string | null
   estimatedTime: string | null
+  loading?: boolean
 }
 
 const props = defineProps<Props>()

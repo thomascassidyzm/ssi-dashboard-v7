@@ -9,33 +9,51 @@
           @click="setStatus(status.value)"
           class="status-pill"
           :class="{ active: currentStatus === status.value, [status.value]: true }"
-          :disabled="isUpdating"
+          :disabled="isUpdating || store.isLoadingInfo"
         >
+          <span v-if="store.isLoadingInfo && status.value === 'testing'" class="loading-dot"></span>
           {{ status.label }}
         </button>
       </div>
 
       <div class="header-stats">
         <div class="mini-stat primary">
-          <span class="mini-value">{{ stats.completeSeeds }}</span>
-          <span class="mini-total">/{{ stats.totalSeeds }}</span>
+          <template v-if="isLoadingStats">
+            <span class="mini-value loading-placeholder">--</span>
+            <span class="mini-total">/--</span>
+          </template>
+          <template v-else>
+            <span class="mini-value">{{ stats.completeSeeds }}</span>
+            <span class="mini-total">/{{ stats.totalSeeds }}</span>
+          </template>
           <span class="mini-label">seeds</span>
         </div>
         <div class="mini-stat">
-          <span class="mini-value">{{ stats.legos.toLocaleString() }}</span>
+          <span class="mini-value" :class="{ 'loading-placeholder': isLoadingStats }">
+            {{ isLoadingStats ? '--' : stats.legos.toLocaleString() }}
+          </span>
           <span class="mini-label">LEGOs</span>
         </div>
         <div class="mini-stat">
-          <span class="mini-value">{{ stats.phrases.toLocaleString() }}</span>
+          <span class="mini-value" :class="{ 'loading-placeholder': isLoadingStats }">
+            {{ isLoadingStats ? '--' : stats.phrases.toLocaleString() }}
+          </span>
           <span class="mini-label">phrases</span>
         </div>
         <div class="mini-stat" :class="ratioClass">
-          <span class="mini-value">{{ stats.ratio }}</span>
+          <span class="mini-value" :class="{ 'loading-placeholder': isLoadingStats }">
+            {{ isLoadingStats ? '--' : stats.ratio }}
+          </span>
           <span class="mini-label">ratio</span>
         </div>
         <div class="mini-stat accent">
-          <span class="mini-value">{{ audioStats.existing.toLocaleString() }}</span>
-          <span class="mini-total">/{{ audioStats.total.toLocaleString() }}</span>
+          <template v-if="audioStats.total === 0 && !audioStatsLoaded">
+            <span class="mini-spinner"></span>
+          </template>
+          <template v-else>
+            <span class="mini-value">{{ audioStats.existing.toLocaleString() }}</span>
+            <span class="mini-total">/{{ audioStats.total.toLocaleString() }}</span>
+          </template>
           <span class="mini-label">audio</span>
         </div>
       </div>
@@ -195,6 +213,8 @@ const statuses = [
 
 const localStats = ref({ completeSeeds: 0, totalSeeds: 668, legos: 0, phrases: 0 })
 const qaStats = ref({ flags: 0, checked: 0 })
+const isLoadingStats = ref(true)  // Start true, set false when loaded
+const audioStatsLoaded = ref(false)  // Track if audio stats have been fetched
 
 const stats = computed(() => {
   const legos = localStats.value.legos || 0
@@ -209,6 +229,11 @@ const stats = computed(() => {
 })
 
 const audioStats = computed(() => store.audioCourseStats || { existing: 0, total: 0 })
+
+// Mark audio stats as loaded once we get real data
+watch(() => store.audioCourseStats?.total, (total) => {
+  if (total > 0) audioStatsLoaded.value = true
+}, { immediate: true })
 
 const ratioClass = computed(() => {
   const r = parseFloat(stats.value.ratio)
@@ -225,6 +250,7 @@ const currentStatus = computed(() => {
 })
 
 async function loadStats() {
+  isLoadingStats.value = true
   try {
     const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_URL || 'http://localhost:3470'
     const res = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
@@ -241,6 +267,8 @@ async function loadStats() {
     }
   } catch (err) {
     console.warn('Could not load stats:', err.message)
+  } finally {
+    isLoadingStats.value = false
   }
 }
 
@@ -309,6 +337,7 @@ onMounted(() => {
 })
 
 watch(() => props.courseCode, () => {
+  audioStatsLoaded.value = false  // Reset for new course
   store.loadCourseInfo(props.courseCode)
   loadStats()
   loadQAStats()
@@ -644,5 +673,40 @@ watch(() => props.courseCode, () => {
 @media (max-width: 500px) {
   .workflow-grid { grid-template-columns: 1fr; }
   .header-stats { flex-wrap: wrap; }
+}
+
+/* Loading states */
+.loading-placeholder {
+  opacity: 0.4;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  margin-right: 4px;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.mini-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 166, 48, 0.3);
+  border-top-color: var(--color-tungsten, #ffa630);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 </style>
