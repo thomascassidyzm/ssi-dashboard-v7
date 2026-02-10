@@ -28,48 +28,78 @@ function generateGoldenExamplesSection(goldenDecompositions) {
     return '';
   }
 
-  let section = `## ⭐ GOLDEN EXAMPLES FOR THIS COURSE (FOLLOW THESE PATTERNS!)
+  let section = `## GOLDEN EXAMPLES FOR THIS COURSE (FOLLOW THESE PATTERNS!)
 
 **This course has been calibrated.** The following ${goldenDecompositions.length} decompositions were created through human+agent collaboration and represent the CORRECT approach for this language pair.
 
-**CRITICAL:** Your decompositions for seeds ${goldenDecompositions.length + 1}+ MUST follow these patterns.
+**CRITICAL:** Your decompositions for seeds ${goldenDecompositions.length + 1}+ MUST follow these patterns exactly — same LEGO sizing, same phrase style, same level of detail.
+
+### Methodology Notes
+
+**BUILD phrases** = new LEGO + previously introduced LEGOs. Shows how the new piece "plugs in" to what the learner already knows. Fragments OK. NOT the LEGO by itself, NOT component build-up.
+
+**USE phrases** = complete sentences for eternal spaced repetition. Must be natural things a learner would say.
+
+**LEGO form is FIXED** — never conjugate or inflect a LEGO. Choose phrases where the exact LEGO form works naturally.
+
+**Component pre-teaching:** For M-LEGOs of 4+ words in seeds 1-20, consider whether a useful component word deserves its own A-LEGO first — but ONLY if it makes 2+ natural BUILD phrases with existing vocab. This gives the learner a foothold before the full M-LEGO. USE phrases are optional for these preview A-LEGOs.
+
+**Vocabulary constraint:** Phrases can ONLY use vocabulary from prior seeds + earlier LEGOs in current seed. M-LEGO components count as available vocab at seed level.
 
 `;
 
-  // Add each golden example
+  // Add each golden example with full BUILD/USE phrases
   for (const example of goldenDecompositions) {
     section += `### Seed ${example.seed_number}: "${example.known_text}"
 **Translation:** ${example.target_text}
 
-**LEGOs:**
 `;
 
     for (const lego of example.legos) {
-      const typeLabel = lego.type === 'M' ? 'M-LEGO' : 'A-LEGO';
-      section += `- **${typeLabel}:** "${lego.known}" → "${lego.target}"`;
+      const typeLabel = lego.type === 'M' ? 'M' : 'A';
+      section += `**L${example.legos.indexOf(lego) + 1} [${typeLabel}] "${lego.known}" → "${lego.target}"**`;
       if (lego.reasoning) {
         section += ` — *${lego.reasoning}*`;
       }
       section += '\n';
       if (lego.type === 'M' && lego.components && lego.components.length > 0) {
-        section += `  Components: ${lego.components.map(c => `[${c.known} → ${c.target}]`).join(', ')}\n`;
+        section += `Components: ${lego.components.map(c => `"${c.known}" → "${c.target}"`).join(', ')}\n`;
       }
+
+      // BUILD phrases
+      if (lego.build_phrases && lego.build_phrases.length > 0) {
+        section += 'BUILD:\n';
+        for (const p of lego.build_phrases) {
+          section += `- "${p.known}" → "${p.target}"\n`;
+        }
+      }
+
+      // USE phrases
+      if (lego.use_phrases && lego.use_phrases.length > 0) {
+        section += 'USE:\n';
+        for (const p of lego.use_phrases) {
+          section += `- "${p.known}" → "${p.target}"\n`;
+        }
+      }
+
+      section += '\n';
     }
 
     // Add contrastive notes if present
     if (example.contrastive_notes && example.contrastive_notes.length > 0) {
-      section += '\n**Contrastive Notes:**\n';
+      section += '**Contrastive Notes:**\n';
       for (const note of example.contrastive_notes) {
         section += `- ${note}\n`;
       }
+      section += '\n';
     }
 
     // Add key insight if present
     if (example.key_insight) {
-      section += `\n**Key Insight:** ${example.key_insight}\n`;
+      section += `**Key Insight:** ${example.key_insight}\n\n`;
     }
 
-    section += '\n---\n\n';
+    section += '---\n\n';
   }
 
   // Add summary of patterns
@@ -80,8 +110,9 @@ function generateGoldenExamplesSection(goldenDecompositions) {
 - M-LEGOs (multi-word chunks): ${mLegoCount}
 - A-LEGOs (atomic words): ${aLegoCount}
 - M/A Ratio: ${(mLegoCount / (mLegoCount + aLegoCount) * 100).toFixed(0)}% multi-word chunks
+- Total phrases: ${goldenDecompositions.reduce((sum, d) => sum + d.legos.reduce((s, l) => s + (l.build_phrases?.length || 0) + (l.use_phrases?.length || 0), 0), 0)}
 
-**Remember:** M-LEGOs are PRIMARY for this course. Use A-LEGOs only for truly unambiguous standalone words.
+**Your job:** Build decompositions for the remaining seeds following EXACTLY this pattern. Same LEGO sizing, same phrase quality, same natural language feel.
 
 `;
 
