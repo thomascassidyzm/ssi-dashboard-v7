@@ -366,6 +366,53 @@
             <div class="text-xs text-slate-500">warnings</div>
           </div>
         </div>
+
+        <!-- Unchecked Phrases Panel -->
+        <div v-if="qa.progress > 0 && qa.progress < 100 && uncheckedPhrases.length > 0" class="mt-4 bg-slate-700/20 border border-amber-500/20 rounded-lg p-4">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-amber-400">
+              {{ uncheckedPhrases.length }} unchecked phrases from {{ uncheckedGrouped.length }} seeds
+            </span>
+            <button
+              @click="showUnchecked = !showUnchecked"
+              class="text-xs text-slate-400 hover:text-slate-200 transition-colors"
+            >
+              {{ showUnchecked ? '▲ Hide' : '▼ Show' }}
+            </button>
+          </div>
+
+          <div v-if="showUnchecked" class="mt-3 space-y-3 max-h-80 overflow-y-auto">
+            <div v-for="group in uncheckedGrouped" :key="group.seed">
+              <div class="text-xs font-medium text-slate-400 mb-1">Seed {{ group.seed }} ({{ group.phrases.length }} phrases)</div>
+              <div class="space-y-1">
+                <div
+                  v-for="phrase in group.phrases"
+                  :key="phrase.id"
+                  class="text-xs text-slate-300 bg-slate-700/30 rounded px-2 py-1 font-mono"
+                >
+                  "{{ phrase.known_text }}" → "{{ phrase.target_text }}"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-2 mt-3">
+            <button
+              @click="markAllChecked"
+              :disabled="markingChecked"
+              class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors"
+            >
+              {{ markingChecked ? 'Marking...' : '✓ Mark All Checked' }}
+            </button>
+            <button
+              @click="startQA"
+              :disabled="qaRunning"
+              class="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors"
+            >
+              Run QA Agent
+            </button>
+          </div>
+        </div>
       </section>
 
       <!-- Controls -->
@@ -481,6 +528,20 @@ const qa = ref({
   flags: 0,
   errors: 0,
   warnings: 0
+})
+
+// Unchecked phrases state
+const uncheckedPhrases = ref([])
+const showUnchecked = ref(false)
+const markingChecked = ref(false)
+
+const uncheckedGrouped = computed(() => {
+  const groups = {}
+  for (const p of uncheckedPhrases.value) {
+    if (!groups[p.seed_number]) groups[p.seed_number] = { seed: p.seed_number, phrases: [] }
+    groups[p.seed_number].phrases.push(p)
+  }
+  return Object.values(groups).sort((a, b) => a.seed - b.seed)
 })
 
 // UI state
@@ -881,9 +942,63 @@ async function fetchQASummary() {
       } else if (qa.value.progress >= 100) {
         qaRunning.value = false
       }
+      // Fetch unchecked phrases if not at 100%
+      if (qa.value.progress > 0 && qa.value.progress < 100) {
+        fetchUncheckedPhrases()
+      } else {
+        uncheckedPhrases.value = []
+      }
     }
   } catch (err) {
     // QA summary endpoint may not exist yet for this course
+  }
+}
+
+async function fetchUncheckedPhrases() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const response = await fetch(`${apiBase}/api/qa/unchecked/${courseCode}?limit=500`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      uncheckedPhrases.value = data.phrases || data || []
+    }
+  } catch (err) {
+    console.error('Failed to fetch unchecked phrases:', err)
+  }
+}
+
+async function markAllChecked() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || uncheckedPhrases.value.length === 0) return
+
+  markingChecked.value = true
+  try {
+    const seeds = uncheckedPhrases.value.map(p => p.seed_number)
+    const seedMin = Math.min(...seeds)
+    const seedMax = Math.max(...seeds)
+
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const response = await fetch(`${apiBase}/api/qa/bulk-mark-checked`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({ course_code: courseCode, seed_min: seedMin, seed_max: seedMax })
+    })
+    if (response.ok) {
+      uncheckedPhrases.value = []
+      showUnchecked.value = false
+      fetchQASummary()
+    }
+  } catch (err) {
+    console.error('Failed to mark all checked:', err)
+  } finally {
+    markingChecked.value = false
   }
 }
 
