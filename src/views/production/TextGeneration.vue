@@ -329,7 +329,6 @@
               Start QA
             </button>
             <button
-              v-if="!qaRunning"
               @click="startStrictQA"
               class="px-4 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-sm font-medium rounded-lg transition-colors"
             >
