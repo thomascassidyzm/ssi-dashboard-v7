@@ -2349,8 +2349,37 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
       }
     }
 
-    const totalNeeded = neededSet.size + newLegos.length
-    existingCount += presentationsExisting
+    // Shared audio (ElevenLabs): encouragements, instructions, welcome
+    // Must match /audio-pipeline/missing endpoint's counting
+    const SHARED_AUDIO_REQUIREMENTS = { encouragement: 26, instruction: 48 }
+    const [encRes, instrRes] = await Promise.all([
+      supabase
+        .from('shared_audio')
+        .select('*', { count: 'exact', head: true })
+        .eq('language', course.known_lang)
+        .eq('audio_type', 'encouragement'),
+      supabase
+        .from('shared_audio')
+        .select('*', { count: 'exact', head: true })
+        .eq('language', course.known_lang)
+        .eq('audio_type', 'instruction')
+    ])
+    const sharedNeeded = SHARED_AUDIO_REQUIREMENTS.encouragement + SHARED_AUDIO_REQUIREMENTS.instruction
+    const sharedExisting = (encRes.count || 0) + (instrRes.count || 0)
+
+    // Welcome audio check
+    let welcomeExists = false
+    try {
+      const welcomesPath = require('path').join(__dirname, '../public/vfs/canonical/welcomes.json')
+      if (require('fs').existsSync(welcomesPath)) {
+        const welcomes = JSON.parse(require('fs').readFileSync(welcomesPath, 'utf8'))
+        const welcome = welcomes.welcomes?.[courseCode]
+        welcomeExists = !!(welcome?.id)
+      }
+    } catch (e) { /* ignore */ }
+
+    const totalNeeded = neededSet.size + newLegos.length + sharedNeeded + 1 // +1 for welcome
+    existingCount += presentationsExisting + sharedExisting + (welcomeExists ? 1 : 0)
     const missing = totalNeeded - existingCount
 
     res.json({
@@ -2363,7 +2392,10 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
         seeds: seeds.length,
         uniquePhraseAudio: neededSet.size,
         newLegos: newLegos.length,
-        presentationsExisting
+        presentationsExisting,
+        sharedNeeded,
+        sharedExisting,
+        welcomeExists
       }
     })
   } catch (error) {
