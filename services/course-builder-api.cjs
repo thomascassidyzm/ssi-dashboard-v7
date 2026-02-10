@@ -1071,15 +1071,30 @@ function extractNgrams(text, n = 3) {
 
 /**
  * Compute phrase_role from position value
- * @param {number} position - The phrase position (0 = component, 1-7 = practice, 8+ = use)
- * @returns {'component' | 'practice' | 'use'}
- * BUILD = component + practice (heard once during build-up)
+ * @param {number} position - The phrase position (0 = component, 1-7 = build, 8+ = use)
+ * @returns {'component' | 'build' | 'use'}
+ * BUILD = component + build (heard once during build-up)
  * USE = position 8+ (spaced repetition, consolidation)
  */
 function computePhraseRole(position) {
   if (position === 0) return 'component';
   if (position >= 8) return 'use';
-  return 'practice';
+  return 'build';
+}
+
+/**
+ * Deterministic phrase ID: {course_code}:S{NNNN}L{NN}{R}{NN}
+ * R = C (component), B (build), U (use)
+ * rolePosition = 1-based index within that role for this LEGO
+ */
+const ROLE_PREFIX = { component: 'C', build: 'B', use: 'U' };
+
+function makePhraseId(course_code, seed_number, lego_index, phrase_role, rolePosition) {
+  const s = String(seed_number).padStart(4, '0');
+  const l = String(lego_index).padStart(2, '0');
+  const r = ROLE_PREFIX[phrase_role] || 'X';
+  const p = String(rolePosition).padStart(2, '0');
+  return `${course_code}:S${s}L${l}${r}${p}`;
 }
 
 /**
@@ -1105,15 +1120,15 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const charsPerSyllable = getCharsPerSyllable(courseCode);
 
   // Graduated requirements - vocabulary grows with each seed
-  // BUILD is flexible (based on LEGO complexity)
-  // USE has minimum 5 (full requirements)
+  // First 5 seeds have very limited vocab, so counts are relaxed.
+  // Target: 3+ BUILD, 8+ USE — but settle for less early on.
   //
-  // S1 L1:  0 BUILD, 0 USE  (nothing to combine yet)
-  // S1 L2+: 1 BUILD, 0 USE  (limited vocab)
-  // S2-3:   1 BUILD, 2 USE  (small vocab pool)
-  // S4-5:   1 BUILD, 3 USE  (growing vocab)
-  // S6-10:  1 BUILD, 4 USE  (moderate vocab)
-  // S11+:   1 BUILD, 5 USE  (full requirements - min 5 USE)
+  // S1 L1:  0 BUILD, 0 USE  (nothing to combine yet — first LEGO ever)
+  // S1 L2+: 1 BUILD, 1 USE  (limited vocab, sparse is honest)
+  // S2-3:   1 BUILD, 1 USE  (small vocab pool)
+  // S4-5:   2 BUILD, 2 USE  (growing vocab)
+  // S6-10:  2 BUILD, 2 USE  (moderate vocab, quality over quantity)
+  // S11+:   3 BUILD, 8 USE  (full requirements)
 
   let minBuild = 3;  // Minimum 3 BUILD phrases
   let minUse = 8;    // Minimum 8 USE phrases
@@ -1125,20 +1140,20 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     minAvgSyllables = 0;
   } else if (seedNumber === 1) {
     minBuild = 1;
-    minUse = 0;  // No USE required - limited vocab
+    minUse = 1;
     minAvgSyllables = 0;
   } else if (seedNumber <= 3) {
-    minBuild = 2;
-    minUse = 3;
-    minAvgSyllables = 6;
+    minBuild = 1;
+    minUse = 1;
+    minAvgSyllables = 0;
   } else if (seedNumber <= 5) {
     minBuild = 2;
-    minUse = 5;
-    minAvgSyllables = 8;
+    minUse = 2;
+    minAvgSyllables = 0;
   } else if (seedNumber <= 10) {
-    minBuild = 3;
-    minUse = 6;
-    minAvgSyllables = 10;
+    minBuild = 2;
+    minUse = 2;
+    minAvgSyllables = 0;
   }
 
   const buildRaw = lego.build || [];
@@ -2050,235 +2065,96 @@ end tell`;
  * to spawn ~10 background sub-agents, each decomposing a batch of seeds as drafts.
  */
 function generateParallelBrief({ courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds, seedsNeededCount }) {
-  const batchList = batches.map((b, i) => {
-    if (b.seeds && b.seeds.length <= 40) {
-      return `Batch ${i + 1}: seeds [${b.seeds.join(', ')}] (${b.seeds.length} seeds)`;
-    }
-    return `Batch ${i + 1}: seeds ${b.start}-${b.end} (${b.end - b.start + 1} seeds)`;
-  }).join('\n');
+  // Generate decomposition pattern examples from golden seeds
+  const patternsSection = formatDecompositionPatterns(goldenSeedMarkdown || []);
 
-  const goldenSection = goldenExamples && goldenExamples.length > 0
-    ? `\n## Golden Decomposition Examples (from calibration)\n\n${goldenExamples.map(g => {
-        const legoLines = g.legos.map(l =>
-          `  ${l.type}-LEGO: "${l.known}" → "${l.target}"${l.components ? ` (components: ${l.components.map(c => `${c.known}→${c.target}`).join(', ')})` : ''}`
-        ).join('\n');
-        return `### Seed ${g.seed_number}: "${g.known_text}" → "${g.target_text}"\n${legoLines}${g.key_insight ? `\n  Key insight: ${g.key_insight}` : ''}`;
-      }).join('\n\n')}`
-    : '';
+  // Compact JSON example from first golden seed (truncate phrases for brevity)
+  const jsonExample = (() => {
+    if (!goldenSeedMarkdown || goldenSeedMarkdown.length === 0) return '';
+    const seed = goldenSeedMarkdown[0];
+    const compact = {
+      course_code: seed.course_code,
+      seed_number: seed.seed_number,
+      target_text: seed.target_text,
+      legos: seed.legos.map(l => {
+        const entry = {
+          idx: l.idx, type: l.type,
+          known: l.known, target: l.target,
+          build: (l.build || []).slice(1, 3).map(p => ({ known: p.known, target: p.target })),
+          use: (l.use || []).slice(0, 2).map(p => ({ known: p.known, target: p.target, score: p.score || 7 }))
+        };
+        if (l.components) entry.components = l.components;
+        return entry;
+      })
+    };
+    return '\n```json\n' + JSON.stringify(compact, null, 2) + '\n```\n(Truncated — BUILD needs 3+, USE needs 8+ per LEGO)';
+  })();
 
   const lessonsSection = lessons && lessons.length > 0
-    ? `\n## Lessons Learned\n\n${lessons.map(l =>
-        `- **${l.lesson_type}**: ${l.lesson}${l.example_wrong ? `\n  Wrong: ${l.example_wrong}` : ''}${l.example_right ? `\n  Right: ${l.example_right}` : ''}`
+    ? `\n## Lessons from QA\n${lessons.map(l =>
+        `- ${l.lesson}${l.example_wrong ? ` (wrong: ${l.example_wrong})` : ''}${l.example_right ? ` (right: ${l.example_right})` : ''}`
       ).join('\n')}`
     : '';
 
-  const langCode = courseCode.split('_')[0];
+  const goldenCount = getGoldenSeedCount(courseInfo);
+  const seedList = batches.flatMap(b => b.seeds || []);
+  const firstSeed = seedList.length > 0 ? seedList[0] : goldenCount + 1;
+  const lastSeed = seedList.length > 0 ? seedList[seedList.length - 1] : targetSeeds;
 
-  return `# Parallel Course Builder — Coordinator Agent
+  return `# Parallel Course Builder — ${courseCode}
 
-You are coordinating a parallel build for course **${courseCode}**.
-
-## CRITICAL: You are an ORCHESTRATOR, not a builder
-- You do NOT build seeds yourself
-- You spawn sub-agents using the Task tool and monitor their progress
-- You call finalize when all drafts are submitted
+You are the coordinator. Build seeds ${firstSeed}-${lastSeed} (${seedsNeededCount} seeds needed).
 
 ## Architecture
-- Each sub-agent submits seeds as DRAFTS via POST /api/seed/complete?draft=true (with ?draft=true query param)
-- Drafts go to a staging table, NOT live tables
-- When all drafts are in, YOU call POST /api/course/${courseCode}/finalize to merge them
-- **CRITICAL: ALL sub-agents MUST use ?draft=true — this includes initial batch agents, fixer agents, recovery agents, collision-fix agents. NEVER spawn a sub-agent that submits without ?draft=true. Submitting without it writes directly to live tables and breaks the finalization flow.**
+- Spawn sub-agents (~10 seeds each) via Task tool. ALL in a SINGLE message for parallel execution.
+- Sub-agents submit as DRAFTS: POST /api/seed/complete?draft=true (?draft=true is CRITICAL — always)
+- Monitor: GET http://localhost:3471/api/course/${courseCode}/drafts (poll every 60s)
+- When all ${seedsNeededCount} drafts are in: POST http://localhost:3471/api/course/${courseCode}/finalize
+- If finalize returns collisions: spawn fix agents using the prompts from the response, then finalize again
+- If stalled: check which seeds are missing, respawn agents for gaps. Never give up.
+- subagent_type: "general-purpose", model: "sonnet", run_in_background: true
 
-## Batch Assignments
-Seeds 1-${getGoldenSeedCount(courseInfo)} are golden (already done). Remaining seeds split into batches:
+## Sub-Agent Prompt Template
 
-${batchList}
-
-## Step 1: Spawn ALL Sub-Agents In One Message
-
-**CRITICAL: You MUST send ALL ${batches.length} Task tool calls in a SINGLE message.** Do NOT spawn one, wait, then spawn the next. Send one message containing ${batches.length} Task tool calls — one per batch — all at once. This is how parallel execution works. If you spawn them sequentially the build will take 10x longer.
-
-For each batch, use this prompt template (customize start/end for each):
+Give each sub-agent this prompt (replace {SEED_LIST} with their seed numbers):
 
 ---BEGIN SUB-AGENT PROMPT---
-You are a world-class language teacher building course content for SSi (SaySomethingin) — the most effective methodology for learning to speak a new language. You are decomposing the following seeds for course ${courseCode}: {SEED_LIST}
+You are building course content for ${courseCode}. Your seeds: {SEED_LIST}
 
-## API Endpoints
-- Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N — returns COMMA-SEPARATED STRING, parse with split(","). The ?seed=N param is REQUIRED — it returns all vocabulary from seed translations 1 through N-1. Always pass the current seed number you're working on.
-- Seeds: GET http://localhost:3471/api/seeds/${courseCode} — returns {seeds: [...]} with seed_number, known_text, target_text
-- Submit: POST http://localhost:3471/api/seed/complete?draft=true (Content-Type: application/json)
+## API
+- Seeds: GET http://localhost:3471/api/seeds/${courseCode}
+- Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N (comma-separated — split on commas, NOT substring match)
+- Submit: POST http://localhost:3471/api/seed/complete?draft=true (JSON)
 
-## Core Methodology
+## Your Job
 
-### LEGO Types
-- **A-LEGO (Atomic)**: Single meaningful word (e.g., "parlare" = "to speak")
-- **M-LEGO (Molecular)**: Multi-word phrase with components (e.g., "poter parlare" = "to be able to speak")
-- **Overlapping LEGOs**: A-LEGOs appear inside M-LEGOs. Learner sees word alone, then inside phrase — infers the pattern.
+Break each seed into LEGOs (teaching chunks) + BUILD/USE phrases. The API validates tiling, vocabulary, containment, phrase counts. If rejected, read the error and fix.
 
-### Decomposition
-Seeds are vehicles for LEGOs. Decompose by asking "What LEGOs does this seed let me teach?"
-- Every word in the seed target must be covered by at least one LEGO (tiling)
-- Introduce A-LEGOs before their containing M-LEGOs (non-greedy: learner recognises the part)
-- Order LEGOs to maximise combinability with existing vocabulary
+**A-LEGO** = single word, zero ambiguity. Learner hears English → produces target with no hesitation.
+**M-LEGO** = multi-word bundle. Groups words that would be ambiguous alone. If there's ANY doubt → M-LEGO.
+**BUILD** (3+): new LEGO + prior vocabulary. Fragments OK.
+**USE** (8+): natural complete sentences a real person would say. Scored 5-9.
 
-### CRITICAL: LEGO Form Is Fixed
-The LEGO target must be the EXACT form that appears in the seed — NEVER the dictionary/infinitive form.
-- If the seed contains "vederti", the LEGO target is "vederti", NOT "vedere"
-- If the seed contains "volevo", the LEGO target is "volevo", NOT "volere"
-- If the seed contains "parlando", the LEGO target is "parlando", NOT "parlare"
-- All BUILD and USE phrases for that LEGO must contain the LEGO target as a substring
-- You choose phrases where the exact LEGO form works naturally — do NOT conjugate or inflect it
-- If a form doesn't fit a phrase context, don't write that phrase — find one where it does fit
+LEGO target = exact form from the seed (never dictionary form). All lowercase, no punctuation (keep apostrophes and accents).
 
-### CRITICAL: No Capitals, No Punctuation (Except Contractions)
-This is an AUDIO program - only phonetic differences matter for TTS:
-- **NEVER use capital letters** in LEGO targets or phrase targets (all lowercase)
-- **NEVER use punctuation** (commas, periods, question marks, etc.) in LEGO targets or phrase targets
-- **EXCEPT apostrophes** for contractions/elisions: "it's", "l'homme", "c'est" (these are phonetically significant)
-- **KEEP accents** - they ARE phonetically significant: "sì" ≠ "si", "è" ≠ "e" (different words!)
-- Examples:
-  - ✅ CORRECT: "sì è italiano" (lowercase, no punctuation except contractive apostrophes)
-  - ❌ WRONG: "Sì, è italiano." (capitals and commas)
-  - ✅ CORRECT: "it's good" (apostrophe marks contraction)
-  - ❌ WRONG: "its good" (missing apostrophe changes meaning)
+## LEGO Decomposition Patterns — Study These
 
-### BUILD Phrases (minimum 3 per LEGO)
-Show the new LEGO combining with PREVIOUSLY-INTRODUCED vocabulary.
-- LEGO + 1-5 extra syllables from prior LEGOs
-- Fragments OK (don't need to be complete sentences)
-- BUILD is NOT the LEGO by itself, NOT random extensions
-- Example: for new LEGO "cymraeg" (Welsh), BUILD = "siarad cymraeg" (speak Welsh) because "siarad" is already known
-
-### USE Phrases (minimum 8 per LEGO)
-Natural complete sentences for eternal spaced repetition.
-- LEGO + 6-10 extra syllables — these are full sentences
-- Must be complete, natural sentences a learner would ACTUALLY SAY
-- Must contain the LEGO target as an EXACT substring (containment)
-- All words must exist in vocabulary (prior seed translations)
-- The LEGO size does NOT affect phrase length — a long M-LEGO can still have short USE phrases if only a few syllables are added around it
-
-### ZUT (Zero Uncertainty Test)
-Same English known → same target. Always. If "speak" already maps to "parlare", you cannot map "speak" to "dire" elsewhere. Upchunk to disambiguate: "speak to" vs "speak about".
-
-### Vocabulary Constraint
-All words in phrases must come from prior seed translations (seeds 1 through N-1) plus the current seed's LEGOs (1 through current). Check vocab with the API before writing phrases.
-
-CRITICAL: The /api/vocab endpoint returns a COMMA-SEPARATED STRING. You MUST split on comma to get individual words. Do NOT use substring matching.
-${goldenSection}
+${patternsSection}
 ${lessonsSection}
 
-## Submission Format (JSON)
+## JSON Format
 
-Write each seed to /tmp/seed{N}.json then submit with:
+Write to /tmp/seed{N}.json, submit with:
 curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H "Content-Type: application/json" --data-binary @/tmp/seed{N}.json
-
-JSON structure:
-{
-  "course_code": "${courseCode}",
-  "seed_number": N,
-  "target_text": "target language sentence",
-  "legos": [
-    {
-      "idx": 1, "type": "A",
-      "known": "english word", "target": "target word",
-      "build": [
-        {"known": "english phrase", "target": "target phrase"},
-        {"known": "english phrase", "target": "target phrase"},
-        {"known": "english phrase", "target": "target phrase"}
-      ],
-      "use": [
-        {"known": "complete english sentence", "target": "complete target sentence", "score": 7},
-        ... (8+ USE phrases, scores 5-9)
-      ]
-    },
-    {
-      "idx": 2, "type": "M",
-      "known": "english phrase", "target": "target phrase",
-      "components": [{"known": "word1", "target": "mot1"}, {"known": "word2", "target": "mot2"}],
-      "build": [...],
-      "use": [...]
-    }
-  ]
-}
-
-${goldenSeedMarkdown && goldenSeedMarkdown.length > 0 ? `## GOLDEN EXAMPLES — Study These Carefully
-
-These are real, verified submissions from golden seeds. Your output must match this exact JSON structure.
-
-${goldenSeedMarkdown.map(ex => '```json\n' + JSON.stringify(ex, null, 2) + '\n```').join('\n\n')}` : ''}
+${jsonExample}
 
 ## Workflow
-For each seed in your list ({SEED_LIST}):
-1. Fetch your seeds: curl -s "http://localhost:3471/api/seeds/${courseCode}" and find seeds in your list
-3. Fetch vocab: curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=N" (replace N with current seed number) — parse comma-separated string
-4. Study the seed's known/target text
-5. Decompose into overlapping LEGOs (A-LEGOs inside M-LEGOs)
-6. Write BUILD phrases (min 3): new LEGO + prior vocabulary
-7. Write USE phrases (min 8): complete natural sentences containing exact LEGO target
-8. Verify all phrase targets contain the LEGO target as exact substring
-9. Write JSON to /tmp/seed{N}.json and POST as draft
-10. If rejected, read the error carefully, fix, and retry. There is NO retry limit — keep fixing until it passes.
-11. Move to next seed
-
-## AUTONOMY: You are running unattended. NEVER ask questions. NEVER give up on a seed. NEVER write reports asking the human what to do. Fix errors and continue until every seed in your list is submitted.
+For each seed: fetch vocab (seed=N) → decompose into LEGOs → write BUILD/USE phrases → submit.
+If rejected, read the error, fix, retry. No limit. Never ask questions. Never give up.
 ---END SUB-AGENT PROMPT---
 
-IMPORTANT: When spawning sub-agents via the Task tool:
-- Use subagent_type: "general-purpose"
-- Set run_in_background: true for each
-- Use model: "sonnet" (Sonnet for quality decomposition)
-- Replace {SEED_LIST} in the prompt with the actual seed numbers from the batch assignment above
-- Keep the description short: "Build seeds [first]-[last] for ${courseCode}"
-
-## Step 2: Monitor Progress
-
-After spawning all sub-agents, poll progress every 60 seconds:
-
-curl -s http://localhost:3471/api/course/${courseCode}/drafts
-
-This returns { total_drafts, valid, collision, rework, drafts: [...] }.
-
-Expected NEW drafts when complete: ${seedsNeededCount || '(see batch assignments)'} seeds. Some seeds are already finalized from earlier builds and will NOT appear as drafts — that's correct.
-
-Use the Bash tool with curl to poll. Wait 60 seconds between polls (use sleep 60).
-
-Count the drafted seeds that match your batch assignments. When all batch-assigned seeds have drafts, proceed to Step 3.
-
-### Stall Detection & Recovery
-If no new drafts arrive for 5 minutes:
-1. Query the drafts endpoint to get the list of DRAFTED seed numbers
-2. Compare ONLY against the batch assignments listed above — those are the seeds that actually need drafting. Seeds outside the batch assignments are already finalized from earlier builds and must NOT be re-drafted.
-3. Any seed in the batch assignments that is NOT in the drafts list is MISSING
-4. Group missing seeds into contiguous ranges
-5. Spawn NEW sub-agents for the missing seeds (one agent per range, or split large ranges). Use the SAME sub-agent prompt template above — they MUST submit with ?draft=true.
-6. Continue monitoring — repeat stall detection if needed
-7. NEVER give up. Keep respawning until every seed in the batch assignments is drafted.
-
-## Step 3: Finalize
-
-curl -X POST http://localhost:3471/api/course/${courseCode}/finalize
-
-### If finalize succeeds (status: "FINALIZED"):
-Report success and exit.
-
-### If collisions detected (status: "COLLISIONS_DETECTED"):
-The response JSON contains:
-- \`collisions\`: array of collision details
-- \`colliding_seeds\`: array of affected seed numbers
-- \`fix_agents\`: array of { seeds, prompt } — READY-TO-USE fix agent prompts
-
-The finalize endpoint has already built complete fix agent prompts with the collision details embedded. You do NOT need to construct prompts yourself.
-
-**Spawn one sub-agent per entry in fix_agents[], using the prompt field directly.** Use subagent_type "general-purpose", model "sonnet", run_in_background true. Send ALL Task tool calls in a SINGLE message for parallel execution.
-
-After all fix agents finish, call finalize again. Repeat until clean.
-
 ## AUTONOMY
-You are running overnight. The human is asleep. NEVER ask questions.
-- Make decisions yourself
-- Fix errors and continue
-- If a sub-agent fails, spawn a replacement
-- Keep going until finalize succeeds
+You are running overnight. The human is asleep. NEVER ask questions. Fix errors. Respawn failed agents. Keep going until finalize succeeds.
 `;
 }
 
@@ -2717,11 +2593,77 @@ async function fetchGoldenSeedExamples(courseCode, seedNumbers = [2, 5, 8]) {
     examples.push({
       course_code: courseCode,
       seed_number: seedNum,
+      known_text: seed.known_text,
       target_text: seed.target_text,
       legos: legoArray
     });
   }
   return examples;
+}
+
+/**
+ * Generate a readable "good example + bad example" teaching pair from a golden seed.
+ * Used in the lean sub-agent brief to teach by showing, not by rules.
+ */
+/**
+ * Format 5 golden seed decompositions as compact pattern examples.
+ * Each seed shows the LEGO choices (not phrases) — that's where agents need guidance.
+ * Detects which pattern each seed best demonstrates and annotates it.
+ */
+function formatDecompositionPatterns(goldenSeeds) {
+  if (!goldenSeeds || goldenSeeds.length === 0) return '';
+
+  const lines = [];
+
+  for (const seed of goldenSeeds) {
+    if (!seed.legos || seed.legos.length === 0) continue;
+
+    const mLegos = seed.legos.filter(l => l.type === 'M');
+    const aLegos = seed.legos.filter(l => l.type === 'A');
+
+    // Detect if any A-LEGO target appears inside an M-LEGO target (overlapping)
+    const hasOverlap = aLegos.some(a =>
+      mLegos.some(m => m.target.includes(a.target) && m.target !== a.target)
+    );
+
+    // Detect if any M-LEGO wraps a preposition (preposition not at edges of target)
+    const prepositions = ['à', 'de', 'du', 'des', 'en', 'au', 'aux', 'avec', 'pour', 'dans', 'sur', 'von', 'mit', 'zu', 'für', 'auf', 'の', 'に', 'で', 'を', 'と'];
+    const hasWrappedPrep = mLegos.some(m => {
+      const words = m.target.split(/[\s']/);
+      return words.length >= 3 && words.slice(1, -1).some(w => prepositions.includes(w));
+    });
+
+    // Pick the best pattern label
+    let pattern;
+    if (hasOverlap) {
+      pattern = 'Overlapping — atoms introduced before their containing molecules';
+    } else if (hasWrappedPrep) {
+      pattern = 'Preposition wrapping — preposition absorbed inside M-LEGO, not at edge';
+    } else if (mLegos.length === 0) {
+      pattern = 'Simple tiling — all clear atoms';
+    } else if (aLegos.length > 0 && mLegos.length > 0) {
+      pattern = 'Mixed — some atoms, some bundles';
+    } else {
+      pattern = 'All bundled — every piece needs context';
+    }
+
+    lines.push(`**${pattern}**`);
+    lines.push(`${seed.known_text}`);
+
+    if (hasOverlap) {
+      // Show as ordered list to reveal the layering
+      for (const lego of seed.legos) {
+        const label = lego.type === 'M' ? 'M' : 'A';
+        lines.push(`  ${label}: ${lego.target}`);
+      }
+    } else {
+      // Show as pipe-separated targets
+      lines.push(seed.legos.map(l => l.target).join(' | '));
+    }
+    lines.push('');
+  }
+
+  return lines.join('\n');
 }
 
 /**
@@ -2740,15 +2682,13 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
   const targetSeeds = courseInfo?.seed_count || 300;
   const goldenCount = getGoldenSeedCount(courseInfo);
 
-  // Fetch complete golden seed examples (with BUILD/USE phrases) from live DB
-  // Pick 3 evenly-spaced examples from 1..goldenCount
-  const exampleSeeds = [
-    Math.max(1, Math.round(goldenCount * 0.2)),
-    Math.max(2, Math.round(goldenCount * 0.5)),
-    Math.max(3, Math.round(goldenCount * 0.8))
-  ];
+  // Fetch 5 evenly-spaced golden seeds for decomposition pattern examples
+  const exampleSeeds = [];
+  for (let i = 0; i < 5; i++) {
+    exampleSeeds.push(Math.max(1 + i, Math.round(1 + i * (goldenCount - 1) / 4)));
+  }
   const goldenSeedMarkdown = await fetchGoldenSeedExamples(courseCode, exampleSeeds);
-  console.log(`[BUILD] Fetched ${goldenSeedMarkdown.length} golden seed examples for sub-agent brief`);
+  console.log(`[BUILD] Fetched ${goldenSeedMarkdown.length} golden seeds as decomposition examples (seeds ${exampleSeeds.join(', ')})`);
 
   // Fetch build lessons
   const langCode = courseCode.split('_')[0];
@@ -3784,11 +3724,14 @@ function generateBuildupPhrases(lego, courseCode) {
   const meaningful = getMeaningfulComponents(components, target);
 
   const buildupPhrases = [];
+  const roleCounts = { component: 0, build: 0, use: 0 };
 
   // Add component build-up phrases (P1, P2, ... PN)
   for (let i = 0; i < meaningful.length; i++) {
     const comp = meaningful[i];
+    roleCounts.component++;
     buildupPhrases.push({
+      id: makePhraseId(courseCode, seed, idx, 'component', roleCounts.component),
       course_code: courseCode,
       seed_number: seed,
       lego_index: idx,
@@ -3797,19 +3740,20 @@ function generateBuildupPhrases(lego, courseCode) {
       target_text: comp.target,
       word_count: comp.target.length,
       lego_count: 1,
-      // New coverage columns (January 2026)
       phrase_role: 'component',
-      connected_lego_ids: [],  // Components don't connect to other LEGOs
-      lego_position: computeLegoPosition(comp.target, comp.target),  // Component is the whole phrase
+      connected_lego_ids: [],
+      lego_position: computeLegoPosition(comp.target, comp.target),
       metadata: { buildup: 'component', component_index: i },
       status: 'draft',
       version: 1
     });
   }
 
-  // Add LEGO itself at P(N+1)
+  // Add LEGO itself at P(N+1) — role is 'build' (LEGO debut)
   const legoPosition = meaningful.length + 1;
+  roleCounts.build++;
   buildupPhrases.push({
+    id: makePhraseId(courseCode, seed, idx, 'build', roleCounts.build),
     course_code: courseCode,
     seed_number: seed,
     lego_index: idx,
@@ -3818,16 +3762,15 @@ function generateBuildupPhrases(lego, courseCode) {
     target_text: target,
     word_count: target.length,
     lego_count: 1,
-    // New coverage columns (January 2026)
-    phrase_role: 'practice',  // LEGO debut is a practice phrase
-    connected_lego_ids: [],   // LEGO debut doesn't connect to others
-    lego_position: computeLegoPosition(target, target),  // LEGO is the whole phrase
+    phrase_role: 'build',
+    connected_lego_ids: [],
+    lego_position: computeLegoPosition(target, target),
     metadata: { buildup: 'lego' },
     status: 'draft',
     version: 1
   });
 
-  return { buildupPhrases, startPosition: legoPosition + 1 };
+  return { buildupPhrases, startPosition: legoPosition + 1, roleCounts };
 }
 
 // =============================================================================
@@ -4039,7 +3982,9 @@ const BALANCE_MAX_STRIKES = 3;            // Hard reject after 3 consecutive vio
 // In-memory tracking for balance violations (resets on service restart)
 const balanceViolations = {};  // { course_code: consecutive_strike_count }
 
-// Allow bypass for testing (set SKIP_VALIDATION=true in request body)
+// SKIP_VALIDATION now only skips phrase COUNT requirements (BUILD/USE minimums).
+// ZUT, tiling, vocab, containment, and length checks ALWAYS run — they catch real errors.
+// Use skip_validation=true for golden seeds with limited vocab that can't hit count targets.
 const allowValidationBypass = (body) => body.SKIP_VALIDATION === true;
 
 // =============================================================================
@@ -4595,18 +4540,22 @@ app.post('/api/lego', async (req, res) => {
     const practiceCount = phrases?.length || 0;
 
     if (!skipBaskets) {
+      // Role counters for deterministic phrase IDs
+      let roleCounts = { component: 0, build: 0, use: 0 };
+
       // M-TYPE BUILD-UP: Auto-generate build-up phrases for M-type LEGOs
       // NEVER trust agent to provide build-up - always generate it ourselves
       if (type === 'M' && components && components.length > 0) {
-        const { buildupPhrases, startPosition } = generateBuildupPhrases(
+        const buildupResult = generateBuildupPhrases(
           { seed, idx, known, target, components },
           course_code
         );
-        allPhraseRows = [...buildupPhrases];
-        buildupCount = buildupPhrases.length;
-        practiceStartPosition = startPosition;
+        allPhraseRows = [...buildupResult.buildupPhrases];
+        buildupCount = buildupResult.buildupPhrases.length;
+        practiceStartPosition = buildupResult.startPosition;
+        roleCounts = { ...buildupResult.roleCounts };
 
-        console.log(`  M-LEGO build-up: ${buildupCount} phrases (${buildupPhrases.length - 1} components + LEGO)`);
+        console.log(`  M-LEGO build-up: ${buildupCount} phrases (${buildupResult.buildupPhrases.length - 1} components + LEGO)`);
       }
 
       // Add agent's practice phrases after build-up
@@ -4633,7 +4582,10 @@ app.post('/api/lego', async (req, res) => {
 
         const practicePhrases = sorted.map((p, i) => {
           const position = practiceStartPosition + i;  // Start after build-up
+          const role = computePhraseRole(position);
+          roleCounts[role] = (roleCounts[role] || 0) + 1;
           return {
+            id: makePhraseId(course_code, seed, idx, role, roleCounts[role]),
             course_code,
             seed_number: seed,
             lego_index: idx,
@@ -4642,9 +4594,8 @@ app.post('/api/lego', async (req, res) => {
             target_text: p.target,
             word_count: p.target.length,
             lego_count: (p.known.match(/\s+/g) || []).length + 1,
-            // New coverage columns (January 2026)
-            phrase_role: computePhraseRole(position),
-            connected_lego_ids: [],  // Populated by backfill for single-LEGO endpoint
+            phrase_role: role,
+            connected_lego_ids: [],
             lego_position: computeLegoPosition(p.target, target),
             metadata: p.score ? { score: p.score } : {},
             status: 'draft',
@@ -4793,15 +4744,19 @@ app.post('/api/batch', async (req, res) => {
       let practiceStartPosition = 1;
 
       if (!skipBaskets) {
+        // Role counters for deterministic phrase IDs
+        let roleCounts = { component: 0, build: 0, use: 0 };
+
         // M-TYPE BUILD-UP: Auto-generate build-up phrases for M-type LEGOs
         if (lego.type === 'M' && lego.components && lego.components.length > 0) {
-          const { buildupPhrases, startPosition } = generateBuildupPhrases(
+          const buildupResult = generateBuildupPhrases(
             { seed: lego.seed, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
             course_code
           );
-          allPhraseRows = [...buildupPhrases];
-          buildupCount = buildupPhrases.length;
-          practiceStartPosition = startPosition;
+          allPhraseRows = [...buildupResult.buildupPhrases];
+          buildupCount = buildupResult.buildupPhrases.length;
+          practiceStartPosition = buildupResult.startPosition;
+          roleCounts = { ...buildupResult.roleCounts };
           totalBuildupPhrases += buildupCount;
         }
 
@@ -4811,7 +4766,10 @@ app.post('/api/batch', async (req, res) => {
 
           const practicePhrases = sorted.map((p, i) => {
             const position = practiceStartPosition + i;
+            const role = computePhraseRole(position);
+            roleCounts[role] = (roleCounts[role] || 0) + 1;
             return {
+              id: makePhraseId(course_code, lego.seed, lego.idx, role, roleCounts[role]),
               course_code,
               seed_number: lego.seed,
               lego_index: lego.idx,
@@ -4820,9 +4778,8 @@ app.post('/api/batch', async (req, res) => {
               target_text: p.target,
               word_count: p.target.length,
               lego_count: (p.known.match(/\s+/g) || []).length + 1,
-              // New coverage columns (January 2026)
-              phrase_role: computePhraseRole(position),
-              connected_lego_ids: [],  // Populated by backfill for batch endpoint
+              phrase_role: role,
+              connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, lego.target),
               metadata: p.score ? { score: p.score } : {},
               status: 'draft',
@@ -5191,8 +5148,8 @@ app.post('/api/seed/complete', async (req, res) => {
 
         const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target, seed_number);
 
-        if (conflictResult.conflict === 'zut' && !SKIP_VALIDATION) {
-          // ZUT violation — only enforce when validation is on
+        if (conflictResult.conflict === 'zut') {
+          // ZUT violation — always enforce (catches real mapping errors)
           zutViolations.push({
             lego_id: legoId,
             known: lego.known,
@@ -5228,7 +5185,8 @@ app.post('/api/seed/complete', async (req, res) => {
     const vocabSet = await loadTranslationVocab(course_code, seed_number);
 
     // 2. TILING VALIDATION: Seed target must be constructable from submitted LEGOs + prior vocabulary
-    if (!SKIP_VALIDATION) {
+    //    Always runs — catches real decomposition errors
+    {
       const tilingResult = checkTiling(target_text, legos, course_code, vocabSet);
       if (!tilingResult.valid) {
         errors.push({
@@ -5286,7 +5244,7 @@ app.post('/api/seed/complete', async (req, res) => {
 
         if (allPhrases.length > 0) {
           const violations = checkVocabViolations(allPhrases, vocabSet, course_code);
-          if (violations.length > 0 && !SKIP_VALIDATION) {
+          if (violations.length > 0) {
             vocabViolations.push({
               lego_id: legoId,
               violations: violations.slice(0, 3)  // First 3
@@ -5295,7 +5253,8 @@ app.post('/api/seed/complete', async (req, res) => {
 
           // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target (phonetic matching)
           // The learning app uses this for character matching/highlighting
-          if (!SKIP_VALIDATION) {
+          // Always runs — catches conjugation/clitic form violations
+          {
             const legoTargetNorm = normalizeForContainment(lego.target);
             const containmentFails = allPhrases.filter(p =>
               !normalizeForContainment(p.target).includes(legoTargetNorm)
@@ -5369,7 +5328,7 @@ app.post('/api/seed/complete', async (req, res) => {
       }
     }
 
-    if (lengthMismatches.length > 0 && !SKIP_VALIDATION && !isLogographic) {
+    if (lengthMismatches.length > 0 && !isLogographic) {
       errors.push({
         type: 'length_mismatch',
         message: `Phrase length mismatch - known and target should express same content (ratio > ${LENGTH_RATIO_THRESHOLD}x)`,
@@ -5429,8 +5388,8 @@ app.post('/api/seed/complete', async (req, res) => {
         }
 
         // Score validation removed - not needed for course building
-      } else if (!SKIP_VALIDATION) {
-        // NO PHRASES AT ALL - HARD REJECT
+      } else {
+        // NO PHRASES AT ALL - HARD REJECT (always enforced)
         // Agent submitted LEGO with no build[], no use[], and no phrases[]
         errors.push({
           type: 'no_phrases',
@@ -5446,7 +5405,7 @@ app.post('/api/seed/complete', async (req, res) => {
     // 5. PHRASE COMPLEXITY VALIDATION — DISABLED (warning only)
     // Tier distribution is no longer a hard gate. Agents naturally produce good distributions.
     // Keeping as a log warning for monitoring only.
-    if (!SKIP_VALIDATION) {
+    {
       for (const lego of legos) {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
         const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
@@ -5467,7 +5426,7 @@ app.post('/api/seed/complete', async (req, res) => {
     // NOTE: M-LEGO component validation removed - methodology now uses overlapping LEGOs instead
     // Ensure phrases don't over-rely on common vocabulary while neglecting underused LEGOs
     // SKIP for drafts — depends on cross-seed LEGO usage
-    if (!SKIP_VALIDATION && !isDraft && seed_number > 20) {  // Only check after enough vocabulary exists
+    if (!isDraft && seed_number > 20) {  // Only check after enough vocabulary exists
       // Gather all phrases from this submission (supports both BUILD/USE and legacy format)
       const allNewPhrases = [];
       for (const lego of legos) {
@@ -5646,16 +5605,20 @@ app.post('/api/seed/complete', async (req, res) => {
       let buildupCount = 0;
       let practiceStartPosition = 1;
 
+      // Role counters for deterministic phrase IDs
+      let roleCounts = { component: 0, build: 0, use: 0 };
+
       // M-TYPE BUILD-UP (components for display)
       // Components are ALWAYS generated for M-LEGOs, regardless of format
       if (lego.type === 'M' && lego.components && lego.components.length > 0) {
-        const { buildupPhrases, startPosition } = generateBuildupPhrases(
+        const buildupResult = generateBuildupPhrases(
           { seed: seed_number, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
           course_code
         );
-        allPhraseRows = [...buildupPhrases];
-        buildupCount = buildupPhrases.length;
-        practiceStartPosition = startPosition;
+        allPhraseRows = [...buildupResult.buildupPhrases];
+        buildupCount = buildupResult.buildupPhrases.length;
+        practiceStartPosition = buildupResult.startPosition;
+        roleCounts = { ...buildupResult.roleCounts };
         totalBuildupPhrases += buildupCount;
       }
 
@@ -5666,44 +5629,52 @@ app.post('/api/seed/complete', async (req, res) => {
         const usePhrases = lego.use || [];
 
         // BUILD phrases (role='build', NOT eternal-eligible)
-        const buildRows = buildPhrases.map((p, i) => ({
-          course_code,
-          seed_number,
-          lego_index: lego.idx,
-          position: practiceStartPosition + i,
-          known_text: p.known,
-          target_text: p.target,
-          word_count: p.target.length,
-          lego_count: (p.known.match(/\s+/g) || []).length + 1,
-          phrase_role: 'build',  // BUILD phrases - pattern drilling, not eternal
-          connected_lego_ids: [],
-          lego_position: computeLegoPosition(p.target, lego.target),
-          metadata: { format: 'build_use' },
-          status: 'draft',
-          version: 1
-        }));
+        const buildRows = buildPhrases.map((p, i) => {
+          roleCounts.build++;
+          return {
+            id: makePhraseId(course_code, seed_number, lego.idx, 'build', roleCounts.build),
+            course_code,
+            seed_number,
+            lego_index: lego.idx,
+            position: practiceStartPosition + i,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            phrase_role: 'build',
+            connected_lego_ids: [],
+            lego_position: computeLegoPosition(p.target, lego.target),
+            metadata: { format: 'build_use' },
+            status: 'draft',
+            version: 1
+          };
+        });
 
         // USE phrases (role='use', ALL eternal-eligible, with quality score)
-        const useRows = usePhrases.map((p, i) => ({
-          course_code,
-          seed_number,
-          lego_index: lego.idx,
-          position: practiceStartPosition + buildPhrases.length + i,
-          known_text: p.known,
-          target_text: p.target,
-          word_count: p.target.length,
-          lego_count: (p.known.match(/\s+/g) || []).length + 1,
-          phrase_role: 'use',  // USE phrases - eternal eligible, spaced repetition
-          connected_lego_ids: [],
-          lego_position: computeLegoPosition(p.target, lego.target),
-          metadata: {
-            format: 'build_use',
-            score: p.score,  // Agent self-assessed quality (5-9)
-            scored_at: new Date().toISOString()
-          },
-          status: 'draft',
-          version: 1
-        }));
+        const useRows = usePhrases.map((p, i) => {
+          roleCounts.use++;
+          return {
+            id: makePhraseId(course_code, seed_number, lego.idx, 'use', roleCounts.use),
+            course_code,
+            seed_number,
+            lego_index: lego.idx,
+            position: practiceStartPosition + buildPhrases.length + i,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            phrase_role: 'use',
+            connected_lego_ids: [],
+            lego_position: computeLegoPosition(p.target, lego.target),
+            metadata: {
+              format: 'build_use',
+              score: p.score,
+              scored_at: new Date().toISOString()
+            },
+            status: 'draft',
+            version: 1
+          };
+        });
 
         // Calculate average score for logging
         const avgScore = usePhrases.length > 0
@@ -5736,7 +5707,10 @@ app.post('/api/seed/complete', async (req, res) => {
 
         const practicePhrases = sorted.map((p, i) => {
           const position = practiceStartPosition + i;
+          const role = computePhraseRole(position);
+          roleCounts[role] = (roleCounts[role] || 0) + 1;
           return {
+            id: makePhraseId(course_code, seed_number, lego.idx, role, roleCounts[role]),
             course_code,
             seed_number,
             lego_index: lego.idx,
@@ -5745,8 +5719,7 @@ app.post('/api/seed/complete', async (req, res) => {
             target_text: p.target,
             word_count: p.target.length,
             lego_count: (p.known.match(/\s+/g) || []).length + 1,
-            // Legacy: compute role from position
-            phrase_role: computePhraseRole(position),
+            phrase_role: role,
             connected_lego_ids: [],
             lego_position: computeLegoPosition(p.target, lego.target),
             metadata: p.score ? { score: p.score } : {},
@@ -5816,21 +5789,21 @@ app.post('/api/seed/complete', async (req, res) => {
       if (bestSeedNum >= 0) {
         const bestLegoId = `S${String(bestSeedNum).padStart(4,'0')}L${String(bestLegoIdx).padStart(2,'0')}`;
 
-        // Find max position in that LEGO's basket to append after
+        // Find max position and existing USE count for deterministic ID
         const { data: existingPhrases } = await supabase
           .from('course_practice_phrases')
-          .select('position')
+          .select('position, phrase_role')
           .eq('course_code', course_code)
           .eq('seed_number', bestSeedNum)
-          .eq('lego_index', bestLegoIdx)
-          .order('position', { ascending: false })
-          .limit(1);
+          .eq('lego_index', bestLegoIdx);
 
-        const maxPos = existingPhrases?.[0]?.position || 0;
+        const maxPos = existingPhrases?.reduce((max, p) => Math.max(max, p.position), 0) || 0;
+        const existingUseCount = existingPhrases?.filter(p => p.phrase_role === 'use').length || 0;
 
         const { error: seedPhraseError } = await supabase
           .from('course_practice_phrases')
           .insert({
+            id: makePhraseId(course_code, bestSeedNum, bestLegoIdx, 'use', existingUseCount + 1),
             course_code,
             seed_number: bestSeedNum,
             lego_index: bestLegoIdx,
@@ -7137,14 +7110,29 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     })(),
 
     // GOLDEN DECOMPOSITIONS - Human-verified examples from calibration (FOLLOW THESE PATTERNS!)
+    // Cap at ~5 evenly-spaced examples to keep prompt size manageable (50 golden seeds = ~35KB otherwise)
     GOLDEN_DECOMPOSITIONS: (() => {
       const golden = courseInfo?.quality_rules?.golden_decompositions;
       if (!golden || golden.length === 0) return null;
 
+      const MAX_EXAMPLES = 5;
+      let sampled;
+      if (golden.length <= MAX_EXAMPLES) {
+        sampled = golden;
+      } else {
+        // Pick evenly-spaced examples: first, last, and evenly distributed between
+        const indices = [];
+        for (let i = 0; i < MAX_EXAMPLES; i++) {
+          indices.push(Math.round(i * (golden.length - 1) / (MAX_EXAMPLES - 1)));
+        }
+        sampled = indices.map(i => golden[i]);
+      }
+
       return {
-        _INSTRUCTION: `FOLLOW THESE ${golden.length} CALIBRATED EXAMPLES - they show the correct M vs A LEGO decisions for this language pair`,
+        _INSTRUCTION: `FOLLOW THESE ${sampled.length} CALIBRATED EXAMPLES (sampled from ${golden.length} total) - they show the correct M vs A LEGO decisions for this language pair`,
         calibrated_at: courseInfo?.quality_rules?.calibrated_at,
-        examples: golden.map(g => ({
+        total_golden_count: golden.length,
+        examples: sampled.map(g => ({
           seed: g.seed_number,
           known: g.known_text,
           target: g.target_text,
@@ -8613,17 +8601,20 @@ app.post('/api/phrases', async (req, res) => {
     });
   }
 
-  // Get current max position
+  // Get current max position and role counts for deterministic IDs
   const { data: existing } = await supabase
     .from('course_practice_phrases')
-    .select('position')
+    .select('position, phrase_role')
     .eq('course_code', course_code)
     .eq('seed_number', seed_number)
-    .eq('lego_index', lego_index)
-    .order('position', { ascending: false })
-    .limit(1);
+    .eq('lego_index', lego_index);
 
-  let nextPosition = (existing?.[0]?.position || 0) + 1;
+  let nextPosition = (existing?.reduce((max, p) => Math.max(max, p.position), 0) || 0) + 1;
+  const roleCounts = { component: 0, build: 0, use: 0 };
+  for (const p of (existing || [])) {
+    const r = p.phrase_role === 'practice' ? 'build' : p.phrase_role;
+    roleCounts[r] = (roleCounts[r] || 0) + 1;
+  }
 
   // VOCABULARY VALIDATION
   const chinese = isChinese(course_code);
@@ -8659,7 +8650,10 @@ app.post('/api/phrases', async (req, res) => {
       });
     } else {
       const position = nextPosition++;
+      const role = phrase.role === 'practice' ? 'build' : (phrase.role || 'build');
+      roleCounts[role] = (roleCounts[role] || 0) + 1;
       validPhrases.push({
+        id: makePhraseId(course_code, seed_number, lego_index, role, roleCounts[role]),
         course_code,
         seed_number,
         lego_index,
@@ -8668,9 +8662,9 @@ app.post('/api/phrases', async (req, res) => {
         target_text: target,
         word_count: target.length,
         lego_count: (known.match(/\s+/g) || []).length + 1,
-        phrase_role: phrase.role || 'practice',  // Allow specifying role, default to practice
+        phrase_role: role,
         connected_lego_ids: [],
-        lego_position: null,  // Will be computed if needed
+        lego_position: null,
         metadata: phrase.score ? {
           score: phrase.score,
           ...(phrase.known_score !== undefined && { known_score: phrase.known_score }),
@@ -8768,7 +8762,7 @@ app.get('/api/checkpoint/summary/:courseCode', async (req, res) => {
     .eq('course_code', courseCode);
 
   // Get USE phrases with scores (sample ~50 for QA)
-  // phrase_role: 'component'/'practice' = BUILD, 'use' = USE (spaced repetition)
+  // phrase_role: 'component'/'build' = BUILD, 'use' = USE (spaced repetition)
   const { data: usePhrases } = await supabase
     .from('course_practice_phrases')
     .select('id, seed_number, lego_index, known_text, target_text, phrase_role, metadata')
@@ -10628,15 +10622,17 @@ Submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H 
         // Generate phrases (same logic as INSERT PHASE in seed/complete)
         let allPhraseRows = [];
         let practiceStartPosition = 1;
+        let roleCounts = { component: 0, build: 0, use: 0 };
 
         // M-TYPE BUILD-UP
         if (lego.type === 'M' && lego.components && lego.components.length > 0) {
-          const { buildupPhrases, startPosition } = generateBuildupPhrases(
+          const buildupResult = generateBuildupPhrases(
             { seed: draft.seed_number, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
             courseCode
           );
-          allPhraseRows = [...buildupPhrases];
-          practiceStartPosition = startPosition;
+          allPhraseRows = [...buildupResult.buildupPhrases];
+          practiceStartPosition = buildupResult.startPosition;
+          roleCounts = { ...buildupResult.roleCounts };
         }
 
         // BUILD/USE format
@@ -10644,43 +10640,51 @@ Submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H 
           const buildPhrases = lego.build || [];
           const usePhrases = lego.use || [];
 
-          const buildRows = buildPhrases.map((p, i) => ({
-            course_code: courseCode,
-            seed_number: draft.seed_number,
-            lego_index: lego.idx,
-            position: practiceStartPosition + i,
-            known_text: p.known,
-            target_text: p.target,
-            word_count: p.target.length,
-            lego_count: (p.known.match(/\s+/g) || []).length + 1,
-            phrase_role: 'build',
-            connected_lego_ids: [],
-            lego_position: computeLegoPosition(p.target, lego.target),
-            metadata: { format: 'build_use' },
-            status: 'draft',
-            version: 1
-          }));
+          const buildRows = buildPhrases.map((p, i) => {
+            roleCounts.build++;
+            return {
+              id: makePhraseId(courseCode, draft.seed_number, lego.idx, 'build', roleCounts.build),
+              course_code: courseCode,
+              seed_number: draft.seed_number,
+              lego_index: lego.idx,
+              position: practiceStartPosition + i,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              phrase_role: 'build',
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(p.target, lego.target),
+              metadata: { format: 'build_use' },
+              status: 'draft',
+              version: 1
+            };
+          });
 
-          const useRows = usePhrases.map((p, i) => ({
-            course_code: courseCode,
-            seed_number: draft.seed_number,
-            lego_index: lego.idx,
-            position: practiceStartPosition + buildPhrases.length + i,
-            known_text: p.known,
-            target_text: p.target,
-            word_count: p.target.length,
-            lego_count: (p.known.match(/\s+/g) || []).length + 1,
-            phrase_role: 'use',
-            connected_lego_ids: [],
-            lego_position: computeLegoPosition(p.target, lego.target),
-            metadata: {
-              format: 'build_use',
-              score: p.score,
-              scored_at: new Date().toISOString()
-            },
-            status: 'draft',
-            version: 1
-          }));
+          const useRows = usePhrases.map((p, i) => {
+            roleCounts.use++;
+            return {
+              id: makePhraseId(courseCode, draft.seed_number, lego.idx, 'use', roleCounts.use),
+              course_code: courseCode,
+              seed_number: draft.seed_number,
+              lego_index: lego.idx,
+              position: practiceStartPosition + buildPhrases.length + i,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              phrase_role: 'use',
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(p.target, lego.target),
+              metadata: {
+                format: 'build_use',
+                score: p.score,
+                scored_at: new Date().toISOString()
+              },
+              status: 'draft',
+              version: 1
+            };
+          });
 
           allPhraseRows = [...allPhraseRows, ...buildRows, ...useRows];
 
@@ -10698,7 +10702,10 @@ Submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H 
           const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
           const practicePhrases = sorted.map((p, i) => {
             const position = practiceStartPosition + i;
+            const role = computePhraseRole(position);
+            roleCounts[role] = (roleCounts[role] || 0) + 1;
             return {
+              id: makePhraseId(courseCode, draft.seed_number, lego.idx, role, roleCounts[role]),
               course_code: courseCode,
               seed_number: draft.seed_number,
               lego_index: lego.idx,
@@ -10707,7 +10714,7 @@ Submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H 
               target_text: p.target,
               word_count: p.target.length,
               lego_count: (p.known.match(/\s+/g) || []).length + 1,
-              phrase_role: computePhraseRole(position),
+              phrase_role: role,
               connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, lego.target),
               metadata: p.score ? { score: p.score } : {},
@@ -10768,20 +10775,21 @@ Submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H 
         }
 
         if (bestSeedNum >= 0) {
+          // Find max position and existing USE count for deterministic ID
           const { data: existingPhrases } = await supabase
             .from('course_practice_phrases')
-            .select('position')
+            .select('position, phrase_role')
             .eq('course_code', courseCode)
             .eq('seed_number', bestSeedNum)
-            .eq('lego_index', bestLegoIdx)
-            .order('position', { ascending: false })
-            .limit(1);
+            .eq('lego_index', bestLegoIdx);
 
-          const maxPos = existingPhrases?.[0]?.position || 0;
+          const maxPos = existingPhrases?.reduce((max, p) => Math.max(max, p.position), 0) || 0;
+          const existingUseCount = existingPhrases?.filter(p => p.phrase_role === 'use').length || 0;
 
           const { error: seedPhraseError } = await supabase
             .from('course_practice_phrases')
             .insert({
+              id: makePhraseId(courseCode, bestSeedNum, bestLegoIdx, 'use', existingUseCount + 1),
               course_code: courseCode,
               seed_number: bestSeedNum,
               lego_index: bestLegoIdx,
