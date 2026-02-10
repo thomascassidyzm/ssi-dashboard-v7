@@ -2014,9 +2014,9 @@ Seeds 1-10 are golden (already done). Remaining seeds split into batches:
 
 ${batchList}
 
-## Step 1: Spawn Sub-Agents
+## Step 1: Spawn ALL Sub-Agents In One Message
 
-Use the Task tool to spawn one background sub-agent per batch. Launch ALL batches in parallel (send all Task tool calls in a single message).
+**CRITICAL: You MUST send ALL ${batches.length} Task tool calls in a SINGLE message.** Do NOT spawn one, wait, then spawn the next. Send one message containing ${batches.length} Task tool calls — one per batch — all at once. This is how parallel execution works. If you spawn them sequentially the build will take 10x longer.
 
 For each batch, use this prompt template (customize start/end for each):
 
@@ -2237,9 +2237,9 @@ Seeds 1-10 are golden (skip). Remaining seeds split into batches:
 
 ${batchList}
 
-## Step 1: Spawn Sub-Agents
+## Step 1: Spawn ALL Sub-Agents In One Message
 
-Use the Task tool to spawn one background sub-agent per batch. Launch ALL batches in parallel (send all Task tool calls in a single message).
+**CRITICAL: You MUST send ALL Task tool calls in a SINGLE message.** Do NOT spawn one, wait, then spawn the next. Send one message containing one Task tool call per batch — all at once. This is how parallel execution works. If you spawn them sequentially the QA will take 10x longer.
 
 For each batch, use this prompt template (customize start/end for each):
 
@@ -2359,6 +2359,102 @@ You are running unattended. NEVER ask questions.
 }
 
 /**
+ * Generate a STRICT QA brief for seeds 1-50.
+ * Seeds 1-10 are known-good calibration — if the agent flags them, it's miscalibrated.
+ * Seeds 11-50 get the higher bar: naturalness, variety, BUILD phrase quality.
+ */
+function generateStrictQABrief({ courseCode, courseInfo }) {
+  const langName = courseInfo?.display_name || courseCode;
+
+  return `# Strict QA Pass — Seeds 1-50 (${courseCode})
+
+You are running a HIGH-STANDARD quality review of the first 50 seeds of course **${courseCode}** (${langName}).
+
+## Calibration: Seeds 1-10
+
+Seeds 1-10 were hand-crafted by expert course designers. They are intentionally perfect examples of the SSi methodology. You MUST review them first.
+
+**If you flag ANY phrase from seeds 1-10, your calibration is wrong.** Seeds 1-10 set the quality bar — study them to understand what GOOD looks like before reviewing 11-50.
+
+Characteristics of good phrases (learn from seeds 1-10):
+- BUILD phrases show genuine recombination: the new LEGO combined with previously introduced LEGOs in a way that demonstrates how pieces "plug in"
+- USE phrases are complete sentences a real learner would actually say out loud in conversation
+- Each USE phrase for a LEGO shows a genuinely DIFFERENT context — not slight rewordings
+- Fragments and partial sentences are fine for BUILD (they're building blocks), but they should still show an interesting combination
+
+## Your Three Checks (seeds 11-50 only)
+
+After calibrating on 1-10, review ALL phrases (BUILD and USE) for seeds 11-50. Flag for DELETION if:
+
+### 1. NATURALNESS
+Would a real person say this in conversation? Not just "is it grammatical" but "would someone actually say this?"
+- Flag: stilted, textbook-sounding, or contrived phrases
+- Flag: phrases that are technically correct but nobody would ever say out loud
+- Keep: everyday speech, things learners are dying to say, natural conversation
+
+### 2. VARIETY
+Are the phrases for each LEGO showing genuinely different contexts?
+- Flag: near-duplicates (same sentence with one word swapped, e.g. "I want to speak now" / "I want to speak today")
+- Flag: phrases that all follow the exact same pattern (e.g. all "I want to X" with different X)
+- Keep: phrases that show the LEGO in surprising or varied contexts
+
+### 3. BUILD PHRASE QUALITY
+Do BUILD phrases demonstrate meaningful recombination?
+- Flag: BUILD phrases that are just the LEGO by itself with no combination
+- Flag: BUILD phrases that add meaningless filler (e.g. LEGO + "here" or LEGO + "please")
+- Keep: BUILD phrases that combine the new LEGO with previously introduced LEGOs in a way that clicks
+
+## CRITICAL RULES
+- **IGNORE punctuation and capitalisation entirely** — these are spoken phrases
+- **Do NOT flag grammar errors** — that's already been done in previous QA passes
+- **Seeds 1-10: review but DO NOT flag** — they calibrate your judgment
+- **Seeds 11-50: flag for deletion** anything that fails naturalness, variety, or BUILD quality
+- Be honest but not brutal — if a phrase is "fine but not great", keep it. Only flag things that are clearly below the bar set by seeds 1-10.
+
+## Workflow
+
+### Step 1: Fetch ALL phrases for seeds 1-50
+\`\`\`
+curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min=1&seed_max=50&limit=2000"
+\`\`\`
+
+### Step 2: Study seeds 1-10 carefully
+Read every phrase. Understand what good BUILD and USE phrases look like. Note patterns.
+
+### Step 3: Review seeds 11-50
+For each phrase, apply the three checks. Collect flags.
+
+### Step 4: Submit flags
+\`\`\`
+curl -s -X POST "http://localhost:3471/api/qa/bulk-flag" \\
+  -H "Content-Type: application/json" \\
+  -d '{"flags": [
+    {"course_code": "${courseCode}", "phrase_id": "<uuid>", "seed_number": <N>, "check_type": "<naturalness|variety|build_quality>", "severity": "warning", "issue": "<brief reason>", "details": {"known": "<known_text>", "target": "<target_text>", "phrase_role": "<build/use>"}},
+    ...
+  ]}'
+\`\`\`
+
+### Step 5: Mark seeds 1-50 as checked
+\`\`\`
+curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
+  -H "Content-Type: application/json" \\
+  -d '{"course_code": "${courseCode}", "seed_min": 1, "seed_max": 50}'
+\`\`\`
+
+### Step 6: Report
+Summarise:
+- How many phrases you reviewed
+- How seeds 1-10 calibrated your judgment (what you learned about the quality bar)
+- Flags raised for seeds 11-50 by category (naturalness / variety / build quality)
+- Any seeds that are particularly weak overall
+
+## AUTONOMY
+You are running unattended. NEVER ask questions. Process everything and submit results.
+Do NOT spawn sub-agents — this is a single focused review of ~500-700 phrases. Do it yourself.
+`;
+}
+
+/**
  * Spawn the parallel QA coordinator agent.
  * Mirrors spawnParallelBuildAgent() — spawns a coordinator that orchestrates ~10 sub-agents.
  */
@@ -2394,7 +2490,7 @@ async function spawnParallelQAAgent(courseCode, terminal = 'iTerm2') {
   require('fs').writeFileSync(tmpFile, prompt);
 
   const projectDir = __dirname.replace('/services', '');
-  const claudeCmd = `cd "${projectDir}" && claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+  const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
 
   const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
@@ -2619,7 +2715,7 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
   require('fs').writeFileSync(tmpFile, prompt);
 
   const projectDir = __dirname.replace('/services', '');
-  const claudeCmd = `cd "${projectDir}" && claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+  const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
 
   const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
@@ -3313,15 +3409,17 @@ async function initializeCourseSeeds(courseCode) {
 }
 
 /**
- * Normalize text for vocab comparison
+ * Normalize text for ZUT comparison (strips diacritics for collision detection)
+ * Used ONLY for comparing whether two words are "the same" for ZUT purposes.
+ * Example: "José" and "Jose" should be treated as the same word.
  */
-function normalizeText(text, chinese = false) {
+function normalizeForZUT(text, chinese = false) {
   if (!text) return '';
   let normalized = text
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')  // Remove diacritics
-    .replace(/[¿¡.,;:!?«»""。，！？、：；""]/g, '')  // Punctuation (preserves apostrophes)
+    .replace(/[\u0300-\u036f]/g, '')  // Remove diacritics for comparison
+    .replace(/[¿¡.,;:!?«»""。，！？、：；""]/g, '')  // Remove punctuation
     .trim();
   if (!chinese) {
     normalized = normalized.replace(/\s+/g, ' ');
@@ -3330,10 +3428,38 @@ function normalizeText(text, chinese = false) {
 }
 
 /**
+ * Normalize text for vocab storage (PRESERVES diacritics)
+ * Used for extracting and storing vocabulary.
+ * CRITICAL: Diacritics are essential orthography in Romance languages.
+ * Example: Italian "può" (can) ≠ "puo" (not a word)
+ */
+function normalizeForStorage(text, chinese = false) {
+  if (!text) return '';
+  let normalized = text
+    .toLowerCase()
+    // NOTE: NO diacritic stripping - preserve accents/apostrophes!
+    .replace(/[¿¡.,;:!?«»""。，！？、：；""]/g, '')  // Remove punctuation only
+    .trim();
+  if (!chinese) {
+    normalized = normalized.replace(/\s+/g, ' ');
+  }
+  return normalized;
+}
+
+/**
+ * Legacy function - now delegates to normalizeForZUT
+ * @deprecated Use normalizeForZUT or normalizeForStorage explicitly
+ */
+function normalizeText(text, chinese = false) {
+  return normalizeForZUT(text, chinese);
+}
+
+/**
  * Extract vocab units from text (characters for Chinese, words for European)
+ * FIXED (2026-02-09): Now preserves diacritics when storing vocabulary
  */
 function extractVocab(text, chinese = false) {
-  const normalized = normalizeText(text, chinese);
+  const normalized = normalizeForStorage(text, chinese);  // Changed from normalizeText
   if (chinese) {
     return [...normalized].filter(c => c.trim() && !c.match(/\s/));
   } else {
@@ -4251,7 +4377,7 @@ app.post('/api/lego', async (req, res) => {
     let skipBaskets = false;
 
     if (!allowValidationBypass(req.body)) {
-      const conflictResult = await checkLegoConflict(course_code, known, target);
+      const conflictResult = await checkLegoConflict(course_code, known, target, seed);
 
       if (conflictResult.conflict === 'zut') {
         // ZUT violation - same known, different target = REJECT
@@ -4502,7 +4628,7 @@ app.post('/api/batch', async (req, res) => {
       let skipBaskets = false;
 
       if (!allowValidationBypass(req.body)) {
-        const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target);
+        const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target, lego.seed);
 
         if (conflictResult.conflict === 'zut') {
           // Collect ZUT violations but continue processing (report all at end)
@@ -4916,7 +5042,7 @@ app.post('/api/seed/complete', async (req, res) => {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
 
         if (!SKIP_VALIDATION) {
-          const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target);
+          const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target, seed_number);
 
           if (conflictResult.conflict === 'zut') {
             zutViolations.push({
@@ -6233,6 +6359,70 @@ app.get('/api/build/status/:courseCode', async (req, res) => {
  *
  * Spawns a coordinator agent which orchestrates ~10 sub-agents to check grammar/naturalness.
  */
+app.post('/api/qa/strict/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { terminal = 'iTerm2' } = req.body || {};
+
+  try {
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('course_code, display_name, seed_count')
+      .eq('course_code', courseCode)
+      .single();
+
+    if (courseError || !course) {
+      return res.status(404).json({ ok: false, error: `Course ${courseCode} not found` });
+    }
+
+    const prompt = generateStrictQABrief({ courseCode, courseInfo: course });
+    const tmpFile = `/tmp/claude_qa_strict_${courseCode}_${Date.now()}.txt`;
+    require('fs').writeFileSync(tmpFile, prompt);
+
+    const projectDir = __dirname.replace('/services', '');
+    const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+    const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+    console.log(`[QA-STRICT] Spawning strict QA for ${courseCode} seeds 1-50 in ${effectiveTerminal}`);
+
+    let agent;
+    if (effectiveTerminal === 'headless') {
+      const fs = require('fs');
+      const logsDir = require('path').join(projectDir, 'logs');
+      if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+      const logFile = `${logsDir}/qa-strict-${courseCode}.log`;
+      const out = fs.openSync(logFile, 'a');
+      const err = fs.openSync(logFile, 'a');
+      agent = spawn('bash', ['-c', claudeCmd], { detached: true, stdio: ['ignore', out, err] });
+      agent.unref();
+    } else {
+      const osascript = `
+tell application "iTerm"
+    activate
+    set newWindow to (create window with default profile)
+    set targetSession to current session of newWindow
+    tell targetSession
+        set name to "QA Strict: ${courseCode}"
+        write text "${claudeCmd.replace(/"/g, '\\"')}"
+    end tell
+end tell
+return "spawned"`;
+      const { execSync } = require('child_process');
+      execSync(`osascript -e '${osascript.replace(/'/g, "'\\''")}'`);
+    }
+
+    res.json({
+      ok: true,
+      mode: 'strict_qa',
+      course_code: courseCode,
+      seed_range: '1-50',
+      message: `Strict QA agent spawned for seeds 1-50 (single Opus agent, no sub-agents)`
+    });
+  } catch (err) {
+    console.error(`[QA-STRICT] Error:`, err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 app.post('/api/qa/start/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
   const { terminal = 'iTerm2' } = req.body || {};
@@ -9631,16 +9821,18 @@ app.get('/api/qa/summary/:courseCode', async (req, res) => {
 
     if (flagError) throw flagError;
 
-    // Get phrase check progress
+    // Get phrase check progress (exclude golden seeds 1-10 — they aren't QA-checked)
     const { count: totalPhrases } = await supabase
       .from('course_practice_phrases')
       .select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode);
+      .eq('course_code', courseCode)
+      .gt('seed_number', 10);
 
     const { count: checkedPhrases } = await supabase
       .from('course_practice_phrases')
       .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
+      .gt('seed_number', 10)
       .not('qa_checked', 'is', null);
 
     const openFlags = flags.filter(f => f.status === 'open');
@@ -9762,19 +9954,19 @@ app.delete('/api/qa/phrase/:phraseId', async (req, res) => {
   try {
     const { phraseId } = req.params;
 
-    // Delete the phrase
+    // Remove flags first (FK constraint: flags reference phrases)
+    await supabase
+      .from('course_qa_flags')
+      .delete()
+      .eq('phrase_id', phraseId);
+
+    // Then delete the phrase
     const { error: phraseError } = await supabase
       .from('course_practice_phrases')
       .delete()
       .eq('id', phraseId);
 
     if (phraseError) throw phraseError;
-
-    // Also resolve any flags for this phrase
-    await supabase
-      .from('course_qa_flags')
-      .update({ status: 'resolved', resolved_at: new Date().toISOString(), resolution_notes: 'Phrase deleted' })
-      .eq('phrase_id', phraseId);
 
     console.log(`[QA] Deleted phrase ${phraseId}`);
 
