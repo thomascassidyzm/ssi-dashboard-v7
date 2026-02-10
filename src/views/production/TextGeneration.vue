@@ -304,13 +304,13 @@
 
       <!-- QA Review -->
       <section v-if="progress.currentSeed > 0" class="bg-slate-800/30 border rounded-lg p-6"
-        :class="qaRunning ? 'border-violet-500/30' : 'border-slate-700/50'"
+        :class="qaRunning ? 'border-cyan-500/30' : 'border-slate-700/50'"
       >
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-3">
             <span
               class="w-2 h-2 rounded-full"
-              :class="qaRunning ? 'bg-violet-500 animate-pulse' : qa.progress >= 100 ? 'bg-emerald-500' : 'bg-slate-500'"
+              :class="qaRunning ? 'bg-cyan-500 animate-pulse' : qa.progress >= 100 ? 'bg-emerald-500' : 'bg-slate-500'"
             ></span>
             <div>
               <div class="text-xs text-slate-500 uppercase tracking-wide">QA Review</div>
@@ -324,17 +324,17 @@
             <button
               v-if="!qaRunning && qa.progress < 100"
               @click="startQA"
-              class="px-4 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium rounded-lg transition-colors"
+              class="px-4 py-2 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-sm font-medium rounded-lg transition-all"
             >
               Start QA
             </button>
             <button
               @click="startStrictQA"
-              class="px-4 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-sm font-medium rounded-lg transition-colors"
+              class="px-4 py-2 bg-slate-700/30 border border-slate-600/50 text-slate-400 hover:border-slate-500/50 text-sm font-medium rounded-lg transition-all"
             >
               1-50 Final Check
             </button>
-            <span v-if="qaRunning" class="text-xs text-violet-400 animate-pulse">Running...</span>
+            <span v-if="qaRunning" class="text-xs text-cyan-400 animate-pulse">Running...</span>
             <span v-if="qa.progress >= 100" class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded uppercase">Complete</span>
           </div>
         </div>
@@ -342,7 +342,7 @@
         <!-- QA Progress Bar -->
         <div class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3">
           <div
-            class="h-full transition-all duration-500 rounded-full bg-violet-500"
+            class="h-full transition-all duration-500 rounded-full bg-cyan-500"
             :style="{ width: `${qa.progress}%` }"
           ></div>
         </div>
