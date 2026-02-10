@@ -400,18 +400,18 @@
             <button
               @click="markAllChecked"
               :disabled="markingChecked"
-              class="px-3 py-1.5 bg-slate-600 hover:bg-slate-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors"
+              class="px-4 py-2 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 disabled:opacity-50 text-sm font-medium rounded-lg transition-all"
             >
               {{ markingChecked ? 'Marking...' : 'Mark All Checked' }}
             </button>
             <button
               @click="startQA"
               :disabled="qaRunning"
-              class="px-3 py-1.5 bg-slate-600 hover:bg-slate-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors"
+              class="px-4 py-2 bg-slate-700/30 border border-slate-600/50 text-slate-400 hover:border-slate-500/50 disabled:opacity-50 text-sm font-medium rounded-lg transition-all"
             >
               Run QA Agent
             </button>
-            <span v-if="uncheckedStatus" class="text-xs" :class="uncheckedStatus.ok ? 'text-slate-400' : 'text-red-400'">
+            <span v-if="uncheckedStatus" class="text-xs" :class="uncheckedStatus.ok ? 'text-cyan-400/70' : 'text-red-400'">
               {{ uncheckedStatus.message }}
             </span>
           </div>
