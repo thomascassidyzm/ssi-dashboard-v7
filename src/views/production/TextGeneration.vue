@@ -328,6 +328,13 @@
             >
               Start QA
             </button>
+            <button
+              v-if="!qaRunning && qa.progress < 100"
+              @click="startStrictQA"
+              class="px-4 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              1-50 Final Check
+            </button>
             <span v-if="qaRunning" class="text-xs text-violet-400 animate-pulse">Running...</span>
             <span v-if="qa.progress >= 100" class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded uppercase">Complete</span>
           </div>
@@ -822,6 +829,31 @@ async function startQA() {
     }
   } catch (error) {
     console.error('[QA] Failed to start QA:', error)
+    qaRunning.value = false
+  }
+}
+
+async function startStrictQA() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  qaRunning.value = true
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const response = await fetch(`${apiBase}/api/qa/strict/${courseCode}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+    const result = await response.json()
+    if (!result.ok) {
+      console.error('[StrictQA] Start failed:', result.error)
+      qaRunning.value = false
+    }
+  } catch (error) {
+    console.error('[StrictQA] Failed to start strict QA:', error)
     qaRunning.value = false
   }
 }
