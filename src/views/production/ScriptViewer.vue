@@ -178,7 +178,7 @@
     />
 
     <!-- Main Content Area -->
-    <div class="script-content flex-1 overflow-y-auto p-6">
+    <div ref="scriptContentRef" class="script-content flex-1 overflow-y-auto p-6">
       <!-- Loading State -->
       <div v-if="isLoading" class="loading-state flex items-center justify-center h-64">
         <div class="text-center">
@@ -538,6 +538,28 @@
         </div>
       </Transition>
     </Teleport>
+
+    <!-- Scroll buttons (fixed bottom-right) -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
+      <button
+        @click="scrollUp"
+        class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white shadow-lg flex items-center justify-center transition-colors"
+        title="Scroll up"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+        </svg>
+      </button>
+      <button
+        @click="scrollDown"
+        class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white shadow-lg flex items-center justify-center transition-colors"
+        title="Scroll down"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -566,6 +588,11 @@ import type {
 // Route
 const route = useRoute();
 const courseCode = computed(() => route.params.courseCode as string || 'spa_for_eng');
+
+// Scroll refs
+const scriptContentRef = ref<HTMLElement | null>(null);
+const scrollUp = () => scriptContentRef.value?.scrollBy({ top: -400, behavior: 'smooth' });
+const scrollDown = () => scriptContentRef.value?.scrollBy({ top: 400, behavior: 'smooth' });
 
 // State
 const isLoading = ref(false);
