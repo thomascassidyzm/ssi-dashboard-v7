@@ -44,9 +44,24 @@ Before writing any code that touches the database, you MUST read:
 - `courses` - Course metadata with `voice_config` JSONB
 - `course_seeds` - Canonical seeds per course
 - `course_legos` - LEGOs extracted from seeds
-- `course_practice_phrases` - Practice phrases per LEGO
+- `course_practice_phrases` - Practice phrases per LEGO (deterministic text IDs)
 - `course_audio` - Audio owned by courses (flat, no joins)
 - `shared_audio` - Encouragements/instructions only
+
+**Deterministic Phrase IDs (February 2026):**
+
+Phrase primary keys encode full provenance — no more UUIDs:
+```
+{course_code}:S{NNNN}L{NN}{R}{NN}
+fra_for_eng:S0001L01C01   ← 1st component, LEGO 1, seed 1
+fra_for_eng:S0001L01B02   ← 2nd BUILD phrase
+fra_for_eng:S0042L03U05   ← 5th USE phrase, LEGO 3, seed 42
+```
+
+Three phrase roles: **C** (component), **B** (build), **U** (use).
+`practice` no longer exists — it was renamed to `build`.
+
+Agents do NOT generate phrase IDs — the API assigns them automatically via `makePhraseId()`. Always use `phrase_role: 'build'`, never `'practice'`.
 
 **Database Principles:**
 - Course owns its audio directly (no texts/audio_files indirection)
@@ -371,9 +386,10 @@ APML is our custom format for language learning content. Key concepts:
 
 ### **Basket Cycle Sequence (v13)**
 For M-type LEGOs, baskets follow this order:
-1. **Components** (is_component: true) - Building blocks
-2. **LEGO Debut** (is_debut: true) - The complete LEGO
-3. **Practice sentences** - LEGO used in context
+1. **Components** (phrase_role: `component`) - Building blocks
+2. **LEGO Debut** (phrase_role: `build`) - The complete LEGO
+3. **BUILD phrases** (phrase_role: `build`) - LEGO used in context
+4. **USE phrases** (phrase_role: `use`) - Eternal spaced repetition sentences
 
 ### **LEGO Components**
 Language is broken into reusable "LEGO" pieces:
@@ -649,6 +665,7 @@ POST /api/seed/complete
 - **Phrase Count**: Minimum phrases per LEGO based on position
 
 **Automatic Features:**
+- **Deterministic Phrase IDs**: All phrases get auto-assigned IDs (e.g. `zho_for_eng:S0042L02B01`) — agents never set phrase IDs
 - **M-LEGO Build-up**: Auto-generates component→LEGO→phrases structure
 - **Duplicate Detection**: Same known+target = `is_new: false`, skip baskets
 - **Particle Handling**: Chinese particles (了, 着, 过) skipped in build-up

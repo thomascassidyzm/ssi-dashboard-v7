@@ -2068,26 +2068,28 @@ function generateParallelBrief({ courseCode, batches, goldenExamples, goldenSeed
   // Generate decomposition pattern examples from golden seeds
   const patternsSection = formatDecompositionPatterns(goldenSeedMarkdown || []);
 
-  // Compact JSON example from first golden seed (truncate phrases for brevity)
+  // Compact JSON example: one M-LEGO + one A-LEGO, 2 BUILD + 2 USE each (format reference only)
   const jsonExample = (() => {
     if (!goldenSeedMarkdown || goldenSeedMarkdown.length === 0) return '';
-    const seed = goldenSeedMarkdown[0];
+    const seed = goldenSeedMarkdown[goldenSeedMarkdown.length - 1];
+    const mLego = seed.legos.find(l => l.type === 'M');
+    const aLego = seed.legos.find(l => l.type === 'A');
+    const sampleLegos = [mLego, aLego].filter(Boolean).slice(0, 2);
     const compact = {
-      course_code: seed.course_code,
-      seed_number: seed.seed_number,
-      target_text: seed.target_text,
-      legos: seed.legos.map(l => {
-        const entry = {
-          idx: l.idx, type: l.type,
-          known: l.known, target: l.target,
-          build: (l.build || []).slice(1, 3).map(p => ({ known: p.known, target: p.target })),
+      course_code: seed.course_code, seed_number: seed.seed_number, target_text: seed.target_text,
+      legos: sampleLegos.map(l => {
+        const entry = { idx: l.idx, type: l.type, known: l.known, target: l.target,
+          build: (l.build || []).slice(0, 2).map(p => ({ known: p.known, target: p.target })),
           use: (l.use || []).slice(0, 2).map(p => ({ known: p.known, target: p.target, score: p.score || 7 }))
         };
-        if (l.components) entry.components = l.components;
+        // Components: strip the redundant final entry (full LEGO target) — keep only meaningful chunks
+        if (l.components) {
+          entry.components = l.components.filter(c => c.target !== l.target);
+        }
         return entry;
       })
     };
-    return '\n```json\n' + JSON.stringify(compact, null, 2) + '\n```\n(Truncated — BUILD needs 3+, USE needs 8+ per LEGO)';
+    return '\n```json\n' + JSON.stringify(compact, null, 2) + '\n```\nThis shows 2 of ' + seed.legos.length + ' LEGOs, 2 BUILD + 2 USE each. Submit ALL LEGOs with 3+ BUILD and 8+ USE per LEGO.\nComponents = meaningful chunks that hint at internal structure (visual only, never spoken). Don\'t over-decompose.';
   })();
 
   const lessonsSection = lessons && lessons.length > 0
@@ -2132,10 +2134,11 @@ Break each seed into LEGOs (teaching chunks) + BUILD/USE phrases. The API valida
 
 **A-LEGO** = single word, zero ambiguity. Learner hears English → produces target with no hesitation.
 **M-LEGO** = multi-word bundle. Groups words that would be ambiguous alone. If there's ANY doubt → M-LEGO.
-**BUILD** (3+): new LEGO + prior vocabulary. Fragments OK.
-**USE** (8+): natural complete sentences a real person would say. Scored 5-9.
+**BUILD** (3+): new LEGO + prior vocabulary. Fragments OK. Use phrase_role: "build".
+**USE** (8+): natural complete sentences a real person would say. Scored 5-9. Use phrase_role: "use".
 
 LEGO target = exact form from the seed (never dictionary form). All lowercase, no punctuation (keep apostrophes and accents).
+The API auto-assigns deterministic phrase IDs — never set phrase IDs yourself. Never use phrase_role "practice" (renamed to "build").
 
 ## LEGO Decomposition Patterns — Study These
 
@@ -2610,6 +2613,26 @@ async function fetchGoldenSeedExamples(courseCode, seedNumbers = [2, 5, 8]) {
  * Each seed shows the LEGO choices (not phrases) — that's where agents need guidance.
  * Detects which pattern each seed best demonstrates and annotates it.
  */
+const PREPOSITIONS = ['à', 'de', 'du', 'des', 'en', 'au', 'aux', 'avec', 'pour', 'dans', 'sur', 'von', 'mit', 'zu', 'für', 'auf', 'の', 'に', 'で', 'を', 'と', 'com', 'em', 'por', 'para', 'con', 'di', 'da', 'del'];
+
+function classifySeedPattern(seed) {
+  if (!seed.legos || seed.legos.length === 0) return 'unknown';
+  const mLegos = seed.legos.filter(l => l.type === 'M');
+  const aLegos = seed.legos.filter(l => l.type === 'A');
+  const hasOverlap = seed.legos.some(l =>
+    seed.legos.some(other => other.target !== l.target && other.target.includes(l.target))
+  );
+  const hasWrappedPrep = mLegos.some(m => {
+    const words = m.target.split(/[\s']/);
+    return words.length >= 3 && words.slice(1, -1).some(w => PREPOSITIONS.includes(w));
+  });
+  if (hasOverlap) return 'overlapping';
+  if (hasWrappedPrep) return 'preposition_wrapping';
+  if (mLegos.length === 0) return 'simple_tiling';
+  if (aLegos.length > 0 && mLegos.length > 0) return 'mixed';
+  return 'all_bundled';
+}
+
 function formatDecompositionPatterns(goldenSeeds) {
   if (!goldenSeeds || goldenSeeds.length === 0) return '';
 
@@ -2618,34 +2641,17 @@ function formatDecompositionPatterns(goldenSeeds) {
   for (const seed of goldenSeeds) {
     if (!seed.legos || seed.legos.length === 0) continue;
 
-    const mLegos = seed.legos.filter(l => l.type === 'M');
-    const aLegos = seed.legos.filter(l => l.type === 'A');
+    const patternType = classifySeedPattern(seed);
+    const hasOverlap = patternType === 'overlapping';
 
-    // Detect if any A-LEGO target appears inside an M-LEGO target (overlapping)
-    const hasOverlap = aLegos.some(a =>
-      mLegos.some(m => m.target.includes(a.target) && m.target !== a.target)
-    );
-
-    // Detect if any M-LEGO wraps a preposition (preposition not at edges of target)
-    const prepositions = ['à', 'de', 'du', 'des', 'en', 'au', 'aux', 'avec', 'pour', 'dans', 'sur', 'von', 'mit', 'zu', 'für', 'auf', 'の', 'に', 'で', 'を', 'と'];
-    const hasWrappedPrep = mLegos.some(m => {
-      const words = m.target.split(/[\s']/);
-      return words.length >= 3 && words.slice(1, -1).some(w => prepositions.includes(w));
-    });
-
-    // Pick the best pattern label
-    let pattern;
-    if (hasOverlap) {
-      pattern = 'Overlapping — atoms introduced before their containing molecules';
-    } else if (hasWrappedPrep) {
-      pattern = 'Preposition wrapping — preposition absorbed inside M-LEGO, not at edge';
-    } else if (mLegos.length === 0) {
-      pattern = 'Simple tiling — all clear atoms';
-    } else if (aLegos.length > 0 && mLegos.length > 0) {
-      pattern = 'Mixed — some atoms, some bundles';
-    } else {
-      pattern = 'All bundled — every piece needs context';
-    }
+    const patternLabels = {
+      overlapping: 'Overlapping — smaller LEGO introduced before its containing molecule',
+      preposition_wrapping: 'Preposition wrapping — preposition absorbed inside M-LEGO, not at edge',
+      simple_tiling: 'Simple tiling — all clear atoms',
+      mixed: 'Mixed — some atoms, some bundles',
+      all_bundled: 'All bundled — every piece needs context'
+    };
+    const pattern = patternLabels[patternType] || patternType;
 
     lines.push(`**${pattern}**`);
     lines.push(`${seed.known_text}`);
@@ -2682,13 +2688,42 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
   const targetSeeds = courseInfo?.seed_count || 300;
   const goldenCount = getGoldenSeedCount(courseInfo);
 
-  // Fetch 5 evenly-spaced golden seeds for decomposition pattern examples
-  const exampleSeeds = [];
-  for (let i = 0; i < 5; i++) {
-    exampleSeeds.push(Math.max(1 + i, Math.round(1 + i * (goldenCount - 1) / 4)));
+  // Fetch golden seeds that maximize pattern diversity (not evenly-spaced)
+  // First fetch ALL golden seeds, classify each, pick one per pattern type
+  const allGoldenNums = [];
+  for (let i = 1; i <= goldenCount; i++) allGoldenNums.push(i);
+  const allGoldenSeeds = await fetchGoldenSeedExamples(courseCode, allGoldenNums);
+
+  const patternBuckets = {};
+  for (const seed of allGoldenSeeds) {
+    const pat = classifySeedPattern(seed);
+    if (!patternBuckets[pat]) patternBuckets[pat] = [];
+    patternBuckets[pat].push(seed);
   }
-  const goldenSeedMarkdown = await fetchGoldenSeedExamples(courseCode, exampleSeeds);
-  console.log(`[BUILD] Fetched ${goldenSeedMarkdown.length} golden seeds as decomposition examples (seeds ${exampleSeeds.join(', ')})`);
+
+  // Pick one seed per pattern, preferring higher seed numbers (richer vocab)
+  const desiredPatterns = ['overlapping', 'preposition_wrapping', 'all_bundled', 'mixed', 'simple_tiling'];
+  const goldenSeedMarkdown = [];
+  const usedSeeds = new Set();
+  for (const pat of desiredPatterns) {
+    if (patternBuckets[pat] && patternBuckets[pat].length > 0) {
+      // Pick the highest-numbered seed in this bucket (richest vocab context)
+      const best = patternBuckets[pat][patternBuckets[pat].length - 1];
+      goldenSeedMarkdown.push(best);
+      usedSeeds.add(best.seed_number);
+    }
+  }
+  // Fill remaining slots up to 5 from unused seeds (prefer high seed numbers)
+  for (let i = allGoldenSeeds.length - 1; i >= 0 && goldenSeedMarkdown.length < 5; i--) {
+    if (!usedSeeds.has(allGoldenSeeds[i].seed_number)) {
+      goldenSeedMarkdown.push(allGoldenSeeds[i]);
+      usedSeeds.add(allGoldenSeeds[i].seed_number);
+    }
+  }
+  // Sort by seed number for consistent ordering
+  goldenSeedMarkdown.sort((a, b) => a.seed_number - b.seed_number);
+
+  console.log(`[BUILD] Selected ${goldenSeedMarkdown.length} pattern-diverse golden seeds: ${goldenSeedMarkdown.map(s => `S${s.seed_number}(${classifySeedPattern(s)})`).join(', ')}`);
 
   // Fetch build lessons
   const langCode = courseCode.split('_')[0];
@@ -7141,7 +7176,9 @@ app.get('/api/resume/:courseCode', async (req, res) => {
             known: l.known,
             target: l.target,
             reasoning: l.reasoning || null,
-            components: l.components || null
+            components: l.components || null,
+            build_phrases: l.build_phrases || [],
+            use_phrases: l.use_phrases || []
           })),
           key_insight: g.key_insight || null,
           dont_do: g.contrastive_notes?.filter(n => n.includes("DON'T") || n.includes("DON'T")) || [],
