@@ -1,10 +1,10 @@
 # Calibrate - Create Golden Decompositions for a Language Pair
 
-Create **golden decompositions** for seeds 1-10 through human+agent collaboration (~10 mins). These become canonical examples that all future build agents follow.
+Create **golden decompositions** for golden seeds (configurable per course, default 10) through human+agent collaboration. These become canonical examples that all future build agents follow.
 
 ## Prerequisites
 
-1. **Pass 1 complete** - Seeds 1-10 must have translations (target_text)
+1. **Pass 1 complete** - Golden seeds must have translations (target_text)
 2. **Human present** - This is interactive, not autonomous
 
 ---
@@ -129,7 +129,7 @@ USE for "with you" → "avec toi":
 
 ## Workflow Overview
 
-For each seed 1-10:
+For each golden seed:
 1. Agent proposes decomposition
 2. Human reviews, corrects if needed
 3. Agent generates BUILD + USE phrases
@@ -152,10 +152,16 @@ Patterns often transfer across language pairs.
 
 ---
 
-## Step 2: Fetch Seeds 1-10
+## Step 2: Fetch Golden Seeds
 
+First check the golden seed count (default 10, configurable per course):
 ```bash
-curl -s "http://localhost:3471/api/seeds/{course_code}?start=1&end=10" | jq '.seeds[] | "\(.seed_number): \(.known_text) → \(.target_text)"'
+curl -s "http://localhost:3471/api/course/{course_code}/calibration" | jq '.golden_seed_count // 10'
+```
+
+Then fetch:
+```bash
+curl -s "http://localhost:3471/api/seeds/{course_code}?start=1&end={golden_seed_count}" | jq '.seeds[] | "\(.seed_number): \(.known_text) → \(.target_text)"'
 ```
 
 ---
@@ -166,7 +172,7 @@ curl -s "http://localhost:3471/api/seeds/{course_code}?start=1&end=10" | jq '.se
 
 ```
 ═══════════════════════════════════════════════════════════
-SEED 1 of 10
+SEED 1 of N
 ═══════════════════════════════════════════════════════════
 Known:  I want to speak French with you now.
 Target: Je veux parler français avec toi maintenant.
@@ -247,7 +253,7 @@ KEY INSIGHT: French pronouns change form by position. Bundle with context.
 
 ## Step 4: Save Calibration
 
-After all 10 seeds:
+After all golden seeds:
 
 ```bash
 curl -X POST "http://localhost:3471/api/course/{course_code}/calibration" \

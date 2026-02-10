@@ -176,6 +176,14 @@ const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp
 const agentHeartbeats = new Map();  // course_code -> { lastHeartbeat: timestamp, agentId: string, status: string }
 const HEARTBEAT_TIMEOUT_MS = 3 * 60 * 1000;  // 3 minutes - agent considered dead if no heartbeat
 
+/**
+ * Get the golden seed count for a course (how many seeds are manually calibrated).
+ * Stored in courses.quality_rules.golden_seed_count, defaults to 10.
+ */
+function getGoldenSeedCount(courseInfo) {
+  return courseInfo?.quality_rules?.golden_seed_count || 10;
+}
+
 // =============================================================================
 // AGENT TRACKING - Track spawned agents and their submissions
 // =============================================================================
@@ -2082,7 +2090,7 @@ You are coordinating a parallel build for course **${courseCode}**.
 - **CRITICAL: ALL sub-agents MUST use ?draft=true — this includes initial batch agents, fixer agents, recovery agents, collision-fix agents. NEVER spawn a sub-agent that submits without ?draft=true. Submitting without it writes directly to live tables and breaks the finalization flow.**
 
 ## Batch Assignments
-Seeds 1-10 are golden (already done). Remaining seeds split into batches:
+Seeds 1-${getGoldenSeedCount(courseInfo)} are golden (already done). Remaining seeds split into batches:
 
 ${batchList}
 
@@ -2195,7 +2203,7 @@ JSON structure:
 
 ${goldenSeedMarkdown && goldenSeedMarkdown.length > 0 ? `## GOLDEN EXAMPLES — Study These Carefully
 
-These are real, verified submissions from seeds 1-10. Your output must match this exact JSON structure.
+These are real, verified submissions from golden seeds. Your output must match this exact JSON structure.
 
 ${goldenSeedMarkdown.map(ex => '```json\n' + JSON.stringify(ex, null, 2) + '\n```').join('\n\n')}` : ''}
 
@@ -2255,24 +2263,15 @@ Report success and exit.
 
 ### If collisions detected (status: "COLLISIONS_DETECTED"):
 The response JSON contains:
-- \`collisions\`: array of { seed_number, lego_known, lego_target, lego_idx, conflicts_with: { target_text, seed_number, lego_index } }
+- \`collisions\`: array of collision details
 - \`colliding_seeds\`: array of affected seed numbers
+- \`fix_agents\`: array of { seeds, prompt } — READY-TO-USE fix agent prompts
 
-A collision is a ZUT violation: two agents chose the same English known but different target translations.
+The finalize endpoint has already built complete fix agent prompts with the collision details embedded. You do NOT need to construct prompts yourself.
 
-**How to fix:** Upchunk the colliding LEGO into a bigger M-LEGO that absorbs more context from the seed sentence. BOTH known and target grow bigger.
+**Spawn one sub-agent per entry in fix_agents[], using the prompt field directly.** Use subagent_type "general-purpose", model "sonnet", run_in_background true. Send ALL Task tool calls in a SINGLE message for parallel execution.
 
-Example collision:
-- Seed 58: "to meet" → "incontrare"
-- Seed 163: "to meet" → "incontrarci"
-
-Fix: Look at seed 163's full sentence for context (e.g. "I'd like for us to meet"). Upchunk to:
-- "for us to meet" → "incontrarci" (M-LEGO absorbing more seed context)
-Now "to meet" and "for us to meet" are different known texts — no collision.
-
-**Important:** The fix agent must re-decompose the ENTIRE seed (not just tweak one LEGO), because changing one LEGO's boundaries affects tiling and phrase containment. Use the SAME sub-agent prompt template above — they MUST submit with ?draft=true and use ?seed=N for vocab.
-
-Spawn fix sub-agents for colliding seeds, passing them the collision details and which known text to avoid. They resubmit as drafts (upsert replaces). Then call finalize again. Repeat until clean.
+After all fix agents finish, call finalize again. Repeat until clean.
 
 ## AUTONOMY
 You are running overnight. The human is asleep. NEVER ask questions.
@@ -2305,7 +2304,7 @@ You are coordinating a parallel naturalness & grammar QA pass for course **${cou
 - You report completion when all batches are checked
 
 ## Batch Assignments
-Seeds 1-10 are golden (skip). Remaining seeds split into batches:
+Seeds 1-${getGoldenSeedCount(courseInfo)} are golden (skip). Remaining seeds split into batches:
 
 ${batchList}
 
@@ -2449,31 +2448,32 @@ You are running unattended. NEVER ask questions.
 
 /**
  * Generate a STRICT QA brief for seeds 1-50.
- * Seeds 1-10 are known-good calibration — if the agent flags them, it's miscalibrated.
- * Seeds 11-50 get the higher bar: naturalness, variety, BUILD phrase quality.
+ * Golden seeds are known-good calibration — if the agent flags them, it's miscalibrated.
+ * Seeds after golden range get the higher bar: naturalness, variety, BUILD phrase quality.
  */
 function generateStrictQABrief({ courseCode, courseInfo }) {
   const langName = courseInfo?.display_name || courseCode;
+  const goldenCount = getGoldenSeedCount(courseInfo);
 
   return `# Strict QA Pass — Seeds 1-50 (${courseCode})
 
 You are running a HIGH-STANDARD quality review of the first 50 seeds of course **${courseCode}** (${langName}).
 
-## Calibration: Seeds 1-10
+## Calibration: Seeds 1-${goldenCount}
 
-Seeds 1-10 were hand-crafted by expert course designers. They are intentionally perfect examples of the SSi methodology. You MUST review them first.
+Seeds 1-${goldenCount} were hand-crafted by expert course designers. They are intentionally perfect examples of the SSi methodology. You MUST review them first.
 
-**If you flag ANY phrase from seeds 1-10, your calibration is wrong.** Seeds 1-10 set the quality bar — study them to understand what GOOD looks like before reviewing 11-50.
+**If you flag ANY phrase from seeds 1-${goldenCount}, your calibration is wrong.** Seeds 1-${goldenCount} set the quality bar — study them to understand what GOOD looks like before reviewing ${goldenCount + 1}-50.
 
-Characteristics of good phrases (learn from seeds 1-10):
+Characteristics of good phrases (learn from seeds 1-${goldenCount}):
 - BUILD phrases show genuine recombination: the new LEGO combined with previously introduced LEGOs in a way that demonstrates how pieces "plug in"
 - USE phrases are complete sentences a real learner would actually say out loud in conversation
 - Each USE phrase for a LEGO shows a genuinely DIFFERENT context — not slight rewordings
 - Fragments and partial sentences are fine for BUILD (they're building blocks), but they should still show an interesting combination
 
-## Your Four Checks (seeds 11-50 only)
+## Your Four Checks (seeds ${goldenCount + 1}-50 only)
 
-After calibrating on 1-10, review ALL phrases (BUILD and USE) for seeds 11-50. Flag for DELETION if:
+After calibrating on 1-${goldenCount}, review ALL phrases (BUILD and USE) for seeds ${goldenCount + 1}-50. Flag for DELETION if:
 
 ### 1. GRAMMAR (BOTH LANGUAGES)
 Is the phrase grammatically correct in BOTH the known language (English) and the target language (${langName})?
@@ -2505,8 +2505,8 @@ Do BUILD phrases demonstrate meaningful recombination?
 - **IGNORE punctuation and capitalisation entirely** — these are spoken phrases
 - **IGNORE missing accents/diacritics** — these are a known normalization issue, not content errors
 - **Grammar errors in EITHER language MUST be flagged** — this is the primary quality gate
-- **Seeds 1-10: review but DO NOT flag** — they calibrate your judgment
-- **Seeds 11-50: flag for deletion** anything that fails grammar, naturalness, variety, or BUILD quality
+- **Seeds 1-${goldenCount}: review but DO NOT flag** — they calibrate your judgment
+- **Seeds ${goldenCount + 1}-50: flag for deletion** anything that fails grammar, naturalness, variety, or BUILD quality
 - If a phrase has a grammar error, it MUST be flagged regardless of how natural it sounds otherwise
 
 ## Workflow
@@ -2516,10 +2516,10 @@ Do BUILD phrases demonstrate meaningful recombination?
 curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min=1&seed_max=50&limit=2000"
 \`\`\`
 
-### Step 2: Study seeds 1-10 carefully
+### Step 2: Study seeds 1-${goldenCount} carefully
 Read every phrase. Understand what good BUILD and USE phrases look like. Note patterns.
 
-### Step 3: Review seeds 11-50
+### Step 3: Review seeds ${goldenCount + 1}-50
 For each phrase, apply the four checks. Collect flags.
 
 ### Step 4: Submit flags
@@ -2542,8 +2542,8 @@ curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
 ### Step 6: Report
 Summarise:
 - How many phrases you reviewed
-- How seeds 1-10 calibrated your judgment (what you learned about the quality bar)
-- Flags raised for seeds 11-50 by category (grammar / naturalness / variety / build quality)
+- How golden seeds calibrated your judgment (what you learned about the quality bar)
+- Flags raised for non-golden seeds by category (grammar / naturalness / variety / build quality)
 - Grammar flags broken down by language (English errors vs ${langName} errors)
 - Any seeds that are particularly weak overall
 
@@ -2560,14 +2560,15 @@ Do NOT spawn sub-agents — this is a single focused review of ~500-700 phrases.
 async function spawnParallelQAAgent(courseCode, terminal = 'iTerm2') {
   const { data: courseInfo } = await supabase
     .from('courses')
-    .select('display_name, seed_count')
+    .select('display_name, seed_count, quality_rules')
     .eq('course_code', courseCode)
     .single();
 
   const targetSeeds = courseInfo?.seed_count || 300;
+  const goldenCount = getGoldenSeedCount(courseInfo);
 
-  // Calculate batch ranges: seeds 11..targetSeeds split into batches
-  const firstSeed = 11;
+  // Calculate batch ranges: seeds after golden range split into batches
+  const firstSeed = goldenCount + 1;
   const totalToCheck = targetSeeds - firstSeed + 1;
   const NUM_BATCHES = Math.min(MAX_PARALLEL_AGENTS, Math.ceil(totalToCheck / SEEDS_PER_AGENT));
   const batchSize = Math.ceil(totalToCheck / NUM_BATCHES);
@@ -2737,9 +2738,16 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
 
   const goldenExamples = courseInfo?.quality_rules?.golden_decompositions || [];
   const targetSeeds = courseInfo?.seed_count || 300;
+  const goldenCount = getGoldenSeedCount(courseInfo);
 
   // Fetch complete golden seed examples (with BUILD/USE phrases) from live DB
-  const goldenSeedMarkdown = await fetchGoldenSeedExamples(courseCode, [2, 5, 8]);
+  // Pick 3 evenly-spaced examples from 1..goldenCount
+  const exampleSeeds = [
+    Math.max(1, Math.round(goldenCount * 0.2)),
+    Math.max(2, Math.round(goldenCount * 0.5)),
+    Math.max(3, Math.round(goldenCount * 0.8))
+  ];
+  const goldenSeedMarkdown = await fetchGoldenSeedExamples(courseCode, exampleSeeds);
   console.log(`[BUILD] Fetched ${goldenSeedMarkdown.length} golden seed examples for sub-agent brief`);
 
   // Fetch build lessons
@@ -2764,7 +2772,7 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
   }
 
   // Query existing valid drafts + finalized seeds to skip
-  const firstSeed = 11; // Seeds 1-10 are golden
+  const firstSeed = goldenCount + 1; // Seeds 1-goldenCount are golden
   const draftedSet = new Set();
   const finalizedSet = new Set();
 
@@ -3256,7 +3264,19 @@ async function getBuildStatus(courseCode) {
         .eq('course_code', courseCode);
 
       const targetSeeds = dbJob?.total_seeds || progress.total;
-      const draftsExpected = Math.max(0, targetSeeds - 10); // Seeds 11+ (golden seeds already done)
+
+      // Look up golden seed count for this course
+      let goldenCount = 10;
+      try {
+        const { data: courseData } = await supabase
+          .from('courses')
+          .select('quality_rules')
+          .eq('course_code', courseCode)
+          .single();
+        goldenCount = getGoldenSeedCount(courseData);
+      } catch (e) { /* default to 10 */ }
+
+      const draftsExpected = Math.max(0, targetSeeds - goldenCount); // Seeds after golden range
 
       parallelInfo = {
         phase: (draftCount || 0) < draftsExpected ? 'drafting' : 'finalizing',
@@ -3652,7 +3672,7 @@ function addToCourseVocab(courseCode, lego) {
  * Word-level vocab from translations === word-level vocab from LEGOs
  * because LEGOs must tile their seed translation.
  *
- * Also includes vocab from existing LEGOs in live tables (golden seeds 1-10).
+ * Also includes vocab from existing LEGOs in live tables (golden seeds).
  */
 async function loadTranslationVocab(courseCode, upToSeedNumber) {
   const chinese = isChinese(courseCode);
@@ -4945,7 +4965,34 @@ app.post('/api/seed/complete', async (req, res) => {
 
     const { course_code, seed_number, known_text: agent_known_text, target_text: agent_target_text, legos, SKIP_VALIDATION } = parsedData;
     const seedId = `S${String(seed_number).padStart(4, '0')}`;
-    const isDraft = req.query.draft === 'true';
+    let isDraft = req.query.draft === 'true';
+
+    // Auto-convert legacy phrases[] format to build/use format
+    if (legos) {
+      for (const lego of legos) {
+        if (lego.phrases && !lego.build && !lego.use) {
+          const phrases = lego.phrases;
+          console.log(`[FORMAT] ${seedId}L${String(lego.idx).padStart(2, '0')}: Auto-converting legacy phrases[] → build/use (${phrases.length} phrases)`);
+          // Split: shortest 3 phrases become build, rest become use
+          const sorted = [...phrases].sort((a, b) => (a.target || '').length - (b.target || '').length);
+          lego.build = sorted.slice(0, Math.min(3, sorted.length));
+          lego.use = sorted.slice(Math.min(3, sorted.length));
+          delete lego.phrases;
+        }
+      }
+    }
+
+    // Force draft mode if there are existing drafts for this course (parallel build in progress)
+    if (!isDraft && course_code) {
+      const { count: draftCount } = await supabase
+        .from('course_seed_drafts')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', course_code);
+      if (draftCount > 0) {
+        console.log(`[SAFETY] Forcing draft mode for ${seedId} — ${draftCount} drafts exist for ${course_code}`);
+        isDraft = true;
+      }
+    }
 
     // Parse course to determine which texts agent must provide
     const courseParts = course_code?.split('_for_') || [];
@@ -5131,8 +5178,10 @@ app.post('/api/seed/complete', async (req, res) => {
     const errors = [];
     const warnings = [];
 
-    // 1. ZUT VALIDATION: Check for conflicts with existing LEGOs
+    // 1. ZUT VALIDATION + DUPLICATE DETECTION
     //    SKIP for drafts — can't know what other parallel agents created
+    //    For non-drafts: ALWAYS detect duplicates (even with skip_validation)
+    //    but only reject ZUT violations when validation is enabled
     const zutViolations = [];
     const duplicateLegos = [];
 
@@ -5140,26 +5189,27 @@ app.post('/api/seed/complete', async (req, res) => {
       for (const lego of legos) {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
 
-        if (!SKIP_VALIDATION) {
-          const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target, seed_number);
+        const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target, seed_number);
 
-          if (conflictResult.conflict === 'zut') {
-            zutViolations.push({
-              lego_id: legoId,
-              known: lego.known,
-              new_target: lego.target,
-              existing: conflictResult.existing,
-              suggestions: conflictResult.suggestions
-            });
-          } else if (conflictResult.conflict === 'duplicate') {
-            duplicateLegos.push({
-              lego_id: legoId,
-              known: lego.known,
-              target: lego.target,
-              original: conflictResult.legoId
-            });
-            console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} (will skip baskets)`);
-          }
+        if (conflictResult.conflict === 'zut' && !SKIP_VALIDATION) {
+          // ZUT violation — only enforce when validation is on
+          zutViolations.push({
+            lego_id: legoId,
+            known: lego.known,
+            new_target: lego.target,
+            existing: conflictResult.existing,
+            suggestions: conflictResult.suggestions
+          });
+        } else if (conflictResult.conflict === 'duplicate') {
+          // Duplicate detection — always active (even with skip_validation)
+          // Golden seeds should correctly mark reused LEGOs as is_new=false
+          duplicateLegos.push({
+            lego_id: legoId,
+            known: lego.known,
+            target: lego.target,
+            original: conflictResult.legoId
+          });
+          console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} (will skip baskets)`);
         }
       }
     }
@@ -5393,29 +5443,21 @@ app.post('/api/seed/complete', async (req, res) => {
       }
     }
 
-    // 5. PHRASE COMPLEXITY VALIDATION (only for legacy format)
-    // BUILD/USE format already validates tiers in step 4
+    // 5. PHRASE COMPLEXITY VALIDATION — DISABLED (warning only)
+    // Tier distribution is no longer a hard gate. Agents naturally produce good distributions.
+    // Keeping as a log warning for monitoring only.
     if (!SKIP_VALIDATION) {
       for (const lego of legos) {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
         const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
         if (isDuplicate) continue;
-
-        // Skip if using BUILD/USE format (already validated)
         if (usesBuildUseFormat(lego)) continue;
 
         if (lego.phrases && lego.phrases.length > 0) {
           const complexityResult = checkPhraseComplexity(lego.phrases, course_code, seed_number);
           if (!complexityResult.valid) {
-            errors.push({
-              type: 'phrase_complexity',
-              message: complexityResult.error,
-              lego_id: legoId,
-              tiers: complexityResult.tiers,
-              mode: complexityResult.mode,
-              methodology: METHODOLOGY_HINTS.phrases
-            });
-            console.log(`✗ ${legoId}: PHRASE TIERS (${complexityResult.mode}) - ${complexityResult.error}`);
+            // Warning only — do NOT add to errors
+            console.log(`⚠ ${legoId}: PHRASE TIERS (warning, not blocking) - ${complexityResult.error}`);
           }
         }
       }
@@ -5982,8 +6024,15 @@ app.post('/api/seed/complete', async (req, res) => {
     }
 
     // Get recency hints for next iteration (avoid pattern fatigue)
+    // Skip for golden seeds (hand-crafted, don't need recency analysis)
     let recencyHints = null;
-    if (nextSeed && seed_number > 10) {
+    let goldenCountForRecency = 10;
+    try {
+      const { data: courseForRecency } = await supabase
+        .from('courses').select('quality_rules').eq('course_code', course_code).single();
+      goldenCountForRecency = getGoldenSeedCount(courseForRecency);
+    } catch (e) { /* default to 10 */ }
+    if (nextSeed && seed_number > goldenCountForRecency) {
       try {
         const { overusedPatterns } = await analyzePatternRecency(course_code, 30);  // Smaller window for quick check
         if (overusedPatterns.length > 0) {
@@ -8069,7 +8118,7 @@ function parseCalibrationMarkdown(text) {
 /**
  * POST /api/course/:courseCode/calibration - Save golden decompositions from calibration session
  *
- * Golden decompositions are human-verified LEGO decompositions for seeds 1-10 that serve as
+ * Golden decompositions are human-verified LEGO decompositions for golden seeds that serve as
  * canonical examples for future build agents. They include reasoning and contrastive notes
  * explaining WHY each decomposition choice was made.
  *
@@ -8140,11 +8189,12 @@ app.post('/api/course/:courseCode/calibration', async (req, res) => {
     });
   }
 
-  // Validation: Must have at least one seed
-  if (golden_decompositions.length < 1) {
+  // Validation: Must have at least one seed (unless just setting golden_seed_count)
+  const justSettingCount = golden_decompositions.length === 0 && typeof req.body === 'object' && req.body.golden_seed_count != null;
+  if (golden_decompositions.length < 1 && !justSettingCount) {
     return res.status(400).json({
       error: 'golden_decompositions array is empty',
-      hint: 'Include at least seeds 1-10 for effective calibration'
+      hint: 'Include at least one seed for effective calibration, or set golden_seed_count to update just the count'
     });
   }
 
@@ -8211,6 +8261,15 @@ app.post('/api/course/:courseCode/calibration', async (req, res) => {
   }
   merged.sort((a, b) => a.seed_number - b.seed_number);
 
+  // Accept optional golden_seed_count from JSON body
+  if (typeof req.body === 'object' && req.body.golden_seed_count != null) {
+    const count = parseInt(req.body.golden_seed_count);
+    if (isNaN(count) || count < 1 || count > 50) {
+      return res.status(400).json({ error: 'golden_seed_count must be between 1 and 50' });
+    }
+    existingRules.golden_seed_count = count;
+  }
+
   const updatedRules = {
     ...existingRules,
     golden_decompositions: merged,
@@ -8254,7 +8313,7 @@ app.post('/api/course/:courseCode/calibration', async (req, res) => {
     next_steps: [
       'Build agents spawned via /api/spawn will receive golden examples in initial brief',
       'GET /api/resume will include golden_decompositions for context recovery',
-      'Seeds 11+ should follow the patterns established in seeds 1-10'
+      `Seeds ${(updatedRules.golden_seed_count || 10) + 1}+ should follow the patterns established in seeds 1-${updatedRules.golden_seed_count || 10}`
     ]
   });
 });
@@ -8289,6 +8348,7 @@ app.get('/api/course/:courseCode/calibration', async (req, res) => {
   res.json({
     course_code: courseCode,
     display_name: course.display_name,
+    golden_seed_count: getGoldenSeedCount(course),
     calibrated_at: calibratedAt,
     calibrated_by: course.quality_rules?.calibrated_by || 'unknown',
     golden_decompositions: goldenDecompositions,
@@ -8426,9 +8486,9 @@ app.get('/api/calibrations/patterns', async (req, res) => {
 app.get('/api/calibrations/seed/:seedNumber', async (req, res) => {
   const seedNum = parseInt(req.params.seedNumber);
 
-  if (isNaN(seedNum) || seedNum < 1 || seedNum > 10) {
+  if (isNaN(seedNum) || seedNum < 1 || seedNum > 50) {
     return res.status(400).json({
-      error: 'Seed number must be 1-10 (calibration range)',
+      error: 'Seed number must be 1-50 (calibration range)',
       provided: req.params.seedNumber
     });
   }
@@ -9924,18 +9984,29 @@ app.get('/api/qa/summary/:courseCode', async (req, res) => {
 
     if (flagError) throw flagError;
 
-    // Get phrase check progress (exclude golden seeds 1-10 — they aren't QA-checked)
+    // Look up golden seed count for this course
+    let goldenCount = 10;
+    try {
+      const { data: courseData } = await supabase
+        .from('courses')
+        .select('quality_rules')
+        .eq('course_code', courseCode)
+        .single();
+      goldenCount = getGoldenSeedCount(courseData);
+    } catch (e) { /* default to 10 */ }
+
+    // Get phrase check progress (exclude golden seeds — they aren't QA-checked)
     const { count: totalPhrases } = await supabase
       .from('course_practice_phrases')
       .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
-      .gt('seed_number', 10);
+      .gt('seed_number', goldenCount);
 
     const { count: checkedPhrases } = await supabase
       .from('course_practice_phrases')
       .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
-      .gt('seed_number', 10)
+      .gt('seed_number', goldenCount)
       .not('qa_checked', 'is', null);
 
     const openFlags = flags.filter(f => f.status === 'open');
@@ -10251,11 +10322,11 @@ app.get('/api/course/:code/drafts', async (req, res) => {
  * POST /api/course/:code/finalize - Process all drafts into live tables
  *
  * Steps:
- * 1. Load baseline LEGOs from live tables (golden seeds)
- * 2. Load all drafts in seed order
+ * 1. Load all drafts in seed order
+ * 2. Load baseline LEGOs ONLY from non-drafted seeds (avoids stale dedup matches)
  * 3. Process: dedup (same known+target), detect collisions (same known, diff target)
  * 4. If collisions → report, don't write
- * 5. If clean → write to live tables, cleanup drafts
+ * 5. Clean old LEGOs/phrases for drafted seeds, then write fresh + cleanup drafts
  */
 app.post('/api/course/:code/finalize', async (req, res) => {
   try {
@@ -10265,32 +10336,7 @@ app.post('/api/course/:code/finalize', async (req, res) => {
     console.log(`${'='.repeat(60)}`);
 
     // =========================================================================
-    // STEP 1: Load baseline — existing LEGOs from live tables (golden seeds)
-    // =========================================================================
-    const { data: existingLegos, error: legoErr } = await supabase
-      .from('course_legos')
-      .select('known_text, target_text, seed_number, lego_index, is_new')
-      .eq('course_code', courseCode)
-      .order('seed_number')
-      .order('lego_index');
-
-    if (legoErr) throw new Error(`Failed to load existing LEGOs: ${legoErr.message}`);
-
-    // Build known→target map from existing is_new LEGOs
-    const knownLegoMap = new Map(); // known_text → { target_text, seed_number, lego_index }
-    for (const lego of existingLegos || []) {
-      if (lego.is_new && !knownLegoMap.has(lego.known_text)) {
-        knownLegoMap.set(lego.known_text, {
-          target_text: lego.target_text,
-          seed_number: lego.seed_number,
-          lego_index: lego.lego_index
-        });
-      }
-    }
-    console.log(`  Baseline: ${knownLegoMap.size} unique LEGOs from live tables`);
-
-    // =========================================================================
-    // STEP 2: Load all drafts in seed order
+    // STEP 1: Load all drafts in seed order
     // =========================================================================
     const { data: drafts, error: draftErr } = await supabase
       .from('course_seed_drafts')
@@ -10309,6 +10355,40 @@ app.post('/api/course/:code/finalize', async (req, res) => {
     }
     console.log(`  Drafts loaded: ${drafts.length}`);
 
+    // Build set of seed numbers that have drafts (these will be replaced)
+    const draftedSeedNumbers = new Set(drafts.map(d => d.seed_number));
+
+    // =========================================================================
+    // STEP 2: Load baseline — existing LEGOs ONLY from seeds without drafts
+    //         (Seeds with drafts will be overwritten, so their old LEGOs
+    //          must not pollute the baseline or inflate dedup counts)
+    // =========================================================================
+    const { data: existingLegos, error: legoErr } = await supabase
+      .from('course_legos')
+      .select('known_text, target_text, seed_number, lego_index, is_new')
+      .eq('course_code', courseCode)
+      .order('seed_number')
+      .order('lego_index');
+
+    if (legoErr) throw new Error(`Failed to load existing LEGOs: ${legoErr.message}`);
+
+    // Build known→target map from existing is_new LEGOs (normalized for ZUT comparison)
+    // IMPORTANT: Skip LEGOs from seeds that have drafts — those are stale and will be replaced
+    const knownLegoMap = new Map(); // normalizeForZUT(known_text) → { target_text, known_text, seed_number, lego_index }
+    for (const lego of existingLegos || []) {
+      if (draftedSeedNumbers.has(lego.seed_number)) continue; // Skip — draft will replace this
+      const normKey = normalizeForZUT(lego.known_text);
+      if (lego.is_new && !knownLegoMap.has(normKey)) {
+        knownLegoMap.set(normKey, {
+          target_text: lego.target_text,
+          known_text: lego.known_text,
+          seed_number: lego.seed_number,
+          lego_index: lego.lego_index
+        });
+      }
+    }
+    console.log(`  Baseline: ${knownLegoMap.size} unique LEGOs from non-drafted seeds`);
+
     // =========================================================================
     // STEP 3: Process drafts in seed order — dedup + collision detection
     // =========================================================================
@@ -10323,12 +10403,16 @@ app.post('/api/course/:code/finalize', async (req, res) => {
       let newCount = 0;
 
       for (const lego of draftLegos) {
-        const existing = knownLegoMap.get(lego.known);
+        const normKey = normalizeForZUT(lego.known);
+        const existing = knownLegoMap.get(normKey);
 
         if (existing) {
-          // Same known text exists
-          const existingTarget = existing.target_text.trim().toLowerCase();
-          const newTarget = lego.target.trim().toLowerCase();
+          // Same known text exists (ZUT-normalized match)
+          // IMPORTANT: Compare targets with normalizeForStorage (preserves diacritics)
+          // normalizeForZUT strips diacritics, which would merge genuinely different words:
+          // e.g., French "à" (to) vs "a" (has), Italian "è" (is) vs "e" (and)
+          const existingTarget = normalizeForStorage(existing.target_text);
+          const newTarget = normalizeForStorage(lego.target);
 
           if (existingTarget === newTarget) {
             // DUPLICATE: Same known + same target → mark for dedup
@@ -10352,8 +10436,9 @@ app.post('/api/course/:code/finalize', async (req, res) => {
         } else {
           // NEW LEGO: No match found
           legoStatuses.set(lego.idx, 'new');
-          knownLegoMap.set(lego.known, {
+          knownLegoMap.set(normKey, {
             target_text: lego.target,
+            known_text: lego.known,
             seed_number: draft.seed_number,
             lego_index: lego.idx
           });
@@ -10397,25 +10482,91 @@ app.post('/api/course/:code/finalize', async (req, res) => {
 
       console.log(`✗ FINALIZE ABORTED: ${collisions.length} collision(s) in ${collidingSeeds.length} seed(s)`);
 
+      // Build ready-to-use fix agent prompts, grouped into batches of ~5 seeds
+      const draftMap = new Map(drafts.map(d => [d.seed_number, d]));
+      const fixBatches = [];
+      for (let i = 0; i < collidingSeeds.length; i += 5) {
+        const batchSeeds = collidingSeeds.slice(i, i + 5);
+
+        const seedSections = batchSeeds.map(seedNum => {
+          const draft = draftMap.get(seedNum);
+          const seedCollisions = collisions.filter(c => c.seed_number === seedNum);
+          const draftJson = JSON.stringify(draft.submission_data, null, 2);
+
+          const collisionNotes = seedCollisions.map(c =>
+            `- LEGO L${c.lego_idx} "${c.lego_known}" → "${c.lego_target}" COLLIDES with seed ${c.conflicts_with.seed_number} which already has "${c.lego_known}" → "${c.conflicts_with.target_text}"\n  FIX: Merge L${c.lego_idx} with an adjacent LEGO to create a bigger M-LEGO whose English known text is different.`
+          ).join('\n');
+
+          return `### Seed ${seedNum}
+
+**Collisions:**
+${collisionNotes}
+
+**Current draft (your starting point):**
+\`\`\`json
+${draftJson}
+\`\`\``;
+        }).join('\n\n');
+
+        fixBatches.push({
+          seeds: batchSeeds,
+          prompt: `You are fixing ZUT collisions for course ${courseCode}. Each seed below has a LEGO whose English "known" text clashes with another seed's LEGO (same known, different target). The fix is mechanical: merge the colliding LEGO with an adjacent LEGO from the same seed to create a bigger M-LEGO with a different (longer) English known text. Leave all other LEGOs and their phrases exactly as they are.
+
+## The fix in 4 steps
+1. Find the colliding LEGO (marked below)
+2. Pick an adjacent LEGO from the same seed to merge with — choose whichever makes a natural phrase
+3. Replace the two LEGOs with one M-LEGO: known = combined English, target = combined target, components = the two original LEGOs
+4. Write BUILD phrases (min 3: merged LEGO + prior vocab, fragments OK) and USE phrases (min 8: complete natural sentences containing the merged LEGO target as exact substring) for the new M-LEGO
+
+Re-index the remaining LEGOs so idx values are sequential (1, 2, 3...). Do NOT touch other LEGOs or their phrases.
+
+## Seeds to fix
+
+${seedSections}
+
+## Submitting
+For each fixed seed, fetch vocab first: curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=N" (returns comma-separated string — split on comma).
+
+Submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H "Content-Type: application/json" --data-binary @/tmp/seed{N}.json
+
+## AUTONOMY: You are running unattended. NEVER ask questions. Fix every seed. If rejected, read the error, fix, retry.`
+        });
+      }
+
       return res.status(409).json({
         error: 'COLLISIONS_DETECTED',
         message: `${collisions.length} LEGO collision(s) found — cannot finalize until resolved`,
         collisions,
         colliding_seeds: collidingSeeds,
-        resolution: {
-          steps: [
-            '1. Query GET /api/course/:code/drafts?status=collision to see affected seeds',
-            '2. Redecompose colliding seeds with bigger chunks (M-LEGOs) to avoid collision',
-            '3. Resubmit via POST /api/seed/complete?draft=true (upsert replaces old draft)',
-            '4. Run POST /api/course/:code/finalize again'
-          ]
-        }
+        fix_agents: fixBatches
       });
     }
 
     // =========================================================================
-    // STEP 5: Write to live tables (zero collisions confirmed)
+    // STEP 5: Clean up old LEGOs/phrases for drafted seeds, then write fresh
     // =========================================================================
+    // Delete old LEGOs and phrases for ALL drafted seeds before writing.
+    // This prevents orphan LEGOs from prior builds with different decompositions.
+    const draftSeedList = [...draftedSeedNumbers];
+    if (draftSeedList.length > 0) {
+      // Delete phrases first (FK dependency)
+      const { error: delPhraseErr } = await supabase
+        .from('course_practice_phrases')
+        .delete()
+        .eq('course_code', courseCode)
+        .in('seed_number', draftSeedList);
+      if (delPhraseErr) console.warn(`  Warning: phrase cleanup: ${delPhraseErr.message}`);
+
+      const { error: delLegoErr } = await supabase
+        .from('course_legos')
+        .delete()
+        .eq('course_code', courseCode)
+        .in('seed_number', draftSeedList);
+      if (delLegoErr) console.warn(`  Warning: LEGO cleanup: ${delLegoErr.message}`);
+
+      console.log(`  Cleaned old LEGOs/phrases for ${draftSeedList.length} drafted seeds`);
+    }
+
     let seedsWritten = 0;
     let legosIntroduced = 0;
     let phrasesWritten = 0;
