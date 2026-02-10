@@ -170,6 +170,8 @@ const courseVocabCache = new Map();  // course_code -> { vocab: Set, lastAccess:
 // =============================================================================
 const STALL_THRESHOLD_MS = 5 * 60 * 1000;  // 5 minutes without submission = stalled
 const BATCH_SIZE = 300;  // Full course in one window (1M context on Pro Max)
+const MAX_PARALLEL_AGENTS = parseInt(process.env.MAX_PARALLEL_AGENTS) || 29;  // Max sub-agents for parallel build/QA
+const SEEDS_PER_AGENT = parseInt(process.env.SEEDS_PER_AGENT) || 10;  // Target seeds per sub-agent
 const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp, lastSeed: number, seedsThisSession: number, sessionStartSeed: number }
 const agentHeartbeats = new Map();  // course_code -> { lastHeartbeat: timestamp, agentId: string, status: string }
 const HEARTBEAT_TIMEOUT_MS = 3 * 60 * 1000;  // 3 minutes - agent considered dead if no heartbeat
@@ -2295,7 +2297,7 @@ function generateQABrief({ courseCode, batches, courseInfo }) {
 
   return `# Parallel QA Pass — Coordinator Agent
 
-You are coordinating a parallel speakability QA pass for course **${courseCode}** (${langName}).
+You are coordinating a parallel naturalness & grammar QA pass for course **${courseCode}** (${langName}).
 
 ## CRITICAL: You are an ORCHESTRATOR, not a checker
 - You do NOT check phrases yourself
@@ -2314,31 +2316,47 @@ ${batchList}
 For each batch, use this prompt template (customize start/end for each):
 
 ---BEGIN SUB-AGENT PROMPT---
-You are a speakability QA checker for course ${courseCode} (${langName}). You are checking USE phrases only for seeds {START} to {END}.
+You are a naturalness QA checker for course ${courseCode} (${langName}). You are checking USE phrases only for seeds {START} to {END}.
 
-## Your Single Question
+## Your Job
 
-For each USE phrase pair (known_text + target_text), ask ONE question:
+For each USE phrase pair (known_text + target_text), check BOTH sides independently:
 
-**"Is this a speakable unit in BOTH languages?"**
+**Known text (English):** Is this grammatically correct, natural English that a real person would say?
+**Target text (${langName}):** Is this grammatically correct, natural ${langName} that a native speaker would say?
 
-- Could a real person say the known_text (English) out loud as a complete sentence?
-- Could a real person say the target_text (${langName}) out loud as a complete sentence?
+Flag the phrase if EITHER side fails ANY of these checks:
 
-USE phrases MUST be things a learner would actually say out loud. Flag ONLY if:
-- Either side is a meaningless fragment (e.g. just a single word "Italian" or an infinitive "to speak") — not something you'd say
-- Either side has a grammar error that makes it nonsensical when spoken aloud
+### Grammar Errors (EITHER language) — flag ALL of these:
+- Wrong verb form: "I want going" (should be "I want to go"), "de comprends" (should be "de comprendre")
+- Wrong reflexive pronoun: "je veux s'occuper" (should be "m'occuper"), "I speak with me" (should be "with you")
+- Missing elision: "de essayer" (should be "d'essayer"), "je ai" (should be "j'ai")
+- Wrong mood: "je veux que tu comprends" (should be subjunctive "comprennes")
+- Missing negation word: "je ne sais" without "pas" when "pas" is needed
+- Wrong preposition: "j'essaie à comprendre" (should be "de comprendre")
+- Wrong pronoun placement: "comprendre toi" (should be "te comprendre")
+- Gender/number agreement errors: "des choses différents" (should be "différentes")
+- ANY other grammar error in either language — if a native speaker would notice it, flag it
+
+### Naturalness — flag if:
+- Nobody would actually say this in conversation (stilted, textbook, contrived)
+- Semantic nonsense: "I'm starting to finish", "today or yesterday", "I want to feel tired"
+- Subject-object conflict: "I like speaking French with me"
+- Time contradictions: "I don't worry yesterday" (present + past)
+- Incomplete thoughts that trail off without meaning
+
+### Meaning Match — flag if:
 - The two sides don't match in meaning
-- It's not something a person would ever actually say in conversation
+- One side says something significantly different from the other
 
-**CRITICAL — IGNORE ALL FORMATTING:**
+**IGNORE ALL FORMATTING:**
 - Do NOT flag missing capitalization (e.g. "i want to speak italian" is perfectly fine)
 - Do NOT flag missing punctuation (no periods, question marks, or commas needed — these are SPOKEN phrases, not written text)
-- Do NOT flag inconsistent casing
-- Punctuation and capitalisation are IRRELEVANT. Only the spoken meaning matters.
+- Do NOT flag missing accents/diacritics — these are a known normalization issue, not content errors
+- Punctuation, capitalisation, and diacritics are IRRELEVANT. Only the spoken content matters.
 
-You do NOT fix phrases. You only FLAG genuinely unspeakable ones for deletion.
-Be conservative — most phrases will be fine. Only flag things that are truly broken.
+You do NOT fix phrases. You FLAG every phrase that has a problem for deletion.
+**Do NOT be conservative.** If a phrase has a grammar error, flag it. If a native speaker would wince, flag it. The cost of missing a bad phrase is far higher than the cost of flagging one that's borderline.
 
 ## Workflow
 
@@ -2359,10 +2377,10 @@ done
 Each phrase has: id, known_text, target_text, seed_number, lego_index, phrase_role.
 
 ### Step 2: Evaluate each phrase
-For each phrase, ask: "Is this speakable in both languages?"
+For each phrase, check both the known (English) and target (${langName}) text:
 
-- If YES → move on, no flag needed
-- If NO → add to your flags list
+- If BOTH sides are grammatically correct, natural, and match in meaning → move on
+- If EITHER side has a grammar error, is unnatural, or the meanings don't match → add to your flags list
 
 ### Step 3: Submit flags (if any)
 Collect all flags and submit in one bulk call:
@@ -2371,7 +2389,7 @@ Collect all flags and submit in one bulk call:
 curl -s -X POST "http://localhost:3471/api/qa/bulk-flag" \\
   -H "Content-Type: application/json" \\
   -d '{"flags": [
-    {"course_code": "${courseCode}", "phrase_id": "<the phrase uuid>", "seed_number": <N>, "check_type": "grammar", "severity": "error", "issue": "Not speakable: <brief reason>", "details": {"known": "<known_text>", "target": "<target_text>", "phrase_role": "<build/use>"}},
+    {"course_code": "${courseCode}", "phrase_id": "<the phrase uuid>", "seed_number": <N>, "check_type": "<grammar|naturalness|meaning_mismatch>", "severity": "error", "issue": "<brief reason — say which language and what's wrong>", "details": {"known": "<known_text>", "target": "<target_text>", "phrase_role": "<build/use>"}},
     ...
   ]}'
 \`\`\`
@@ -2387,7 +2405,8 @@ curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
 
 ## IMPORTANT
 - Check EVERY phrase. Do not skip any.
-- Do NOT be overly strict. Most phrases will be fine. Only flag things that are genuinely broken or unspeakable.
+- Check BOTH languages independently. A phrase with perfect English but broken ${langName} grammar MUST be flagged. A phrase with perfect ${langName} but broken English MUST be flagged.
+- Do NOT be lenient. If a native speaker of either language would notice an error, flag it. The cost of a bad phrase reaching learners is far higher than the cost of over-flagging.
 - You are running unattended. NEVER ask questions. Process all phrases and submit results.
 ---END SUB-AGENT PROMPT---
 
@@ -2452,23 +2471,31 @@ Characteristics of good phrases (learn from seeds 1-10):
 - Each USE phrase for a LEGO shows a genuinely DIFFERENT context — not slight rewordings
 - Fragments and partial sentences are fine for BUILD (they're building blocks), but they should still show an interesting combination
 
-## Your Three Checks (seeds 11-50 only)
+## Your Four Checks (seeds 11-50 only)
 
 After calibrating on 1-10, review ALL phrases (BUILD and USE) for seeds 11-50. Flag for DELETION if:
 
-### 1. NATURALNESS
+### 1. GRAMMAR (BOTH LANGUAGES)
+Is the phrase grammatically correct in BOTH the known language (English) and the target language (${langName})?
+- Flag: ANY grammar error in either language — wrong verb form, wrong pronoun, missing elision, wrong mood, agreement errors, etc.
+- Flag: "I want going" (should be "I want to go"), "je veux s'occuper" (should be "m'occuper")
+- Flag: wrong preposition, missing negation word, wrong pronoun placement
+- This is the MOST IMPORTANT check. Grammar errors teach learners wrong patterns.
+
+### 2. NATURALNESS
 Would a real person say this in conversation? Not just "is it grammatical" but "would someone actually say this?"
 - Flag: stilted, textbook-sounding, or contrived phrases
-- Flag: phrases that are technically correct but nobody would ever say out loud
+- Flag: semantic nonsense ("I'm starting to finish", "I want to feel tired", "today or yesterday")
+- Flag: subject-object conflicts ("I like speaking with me"), time contradictions ("I don't worry yesterday")
 - Keep: everyday speech, things learners are dying to say, natural conversation
 
-### 2. VARIETY
+### 3. VARIETY
 Are the phrases for each LEGO showing genuinely different contexts?
 - Flag: near-duplicates (same sentence with one word swapped, e.g. "I want to speak now" / "I want to speak today")
 - Flag: phrases that all follow the exact same pattern (e.g. all "I want to X" with different X)
 - Keep: phrases that show the LEGO in surprising or varied contexts
 
-### 3. BUILD PHRASE QUALITY
+### 4. BUILD PHRASE QUALITY
 Do BUILD phrases demonstrate meaningful recombination?
 - Flag: BUILD phrases that are just the LEGO by itself with no combination
 - Flag: BUILD phrases that add meaningless filler (e.g. LEGO + "here" or LEGO + "please")
@@ -2476,10 +2503,11 @@ Do BUILD phrases demonstrate meaningful recombination?
 
 ## CRITICAL RULES
 - **IGNORE punctuation and capitalisation entirely** — these are spoken phrases
-- **Do NOT flag grammar errors** — that's already been done in previous QA passes
+- **IGNORE missing accents/diacritics** — these are a known normalization issue, not content errors
+- **Grammar errors in EITHER language MUST be flagged** — this is the primary quality gate
 - **Seeds 1-10: review but DO NOT flag** — they calibrate your judgment
-- **Seeds 11-50: flag for deletion** anything that fails naturalness, variety, or BUILD quality
-- Be honest but not brutal — if a phrase is "fine but not great", keep it. Only flag things that are clearly below the bar set by seeds 1-10.
+- **Seeds 11-50: flag for deletion** anything that fails grammar, naturalness, variety, or BUILD quality
+- If a phrase has a grammar error, it MUST be flagged regardless of how natural it sounds otherwise
 
 ## Workflow
 
@@ -2492,14 +2520,14 @@ curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min=1&seed_max=50&
 Read every phrase. Understand what good BUILD and USE phrases look like. Note patterns.
 
 ### Step 3: Review seeds 11-50
-For each phrase, apply the three checks. Collect flags.
+For each phrase, apply the four checks. Collect flags.
 
 ### Step 4: Submit flags
 \`\`\`
 curl -s -X POST "http://localhost:3471/api/qa/bulk-flag" \\
   -H "Content-Type: application/json" \\
   -d '{"flags": [
-    {"course_code": "${courseCode}", "phrase_id": "<uuid>", "seed_number": <N>, "check_type": "<naturalness|variety|build_quality>", "severity": "warning", "issue": "<brief reason>", "details": {"known": "<known_text>", "target": "<target_text>", "phrase_role": "<build/use>"}},
+    {"course_code": "${courseCode}", "phrase_id": "<uuid>", "seed_number": <N>, "check_type": "<grammar|naturalness|variety|build_quality>", "severity": "<error for grammar, warning for others>", "issue": "<brief reason — say which language and what's wrong>", "details": {"known": "<known_text>", "target": "<target_text>", "phrase_role": "<build/use>"}},
     ...
   ]}'
 \`\`\`
@@ -2515,7 +2543,8 @@ curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
 Summarise:
 - How many phrases you reviewed
 - How seeds 1-10 calibrated your judgment (what you learned about the quality bar)
-- Flags raised for seeds 11-50 by category (naturalness / variety / build quality)
+- Flags raised for seeds 11-50 by category (grammar / naturalness / variety / build quality)
+- Grammar flags broken down by language (English errors vs ${langName} errors)
 - Any seeds that are particularly weak overall
 
 ## AUTONOMY
@@ -2526,7 +2555,7 @@ Do NOT spawn sub-agents — this is a single focused review of ~500-700 phrases.
 
 /**
  * Spawn the parallel QA coordinator agent.
- * Mirrors spawnParallelBuildAgent() — spawns a coordinator that orchestrates ~10 sub-agents.
+ * Mirrors spawnParallelBuildAgent() — spawns a coordinator that orchestrates sub-agents.
  */
 async function spawnParallelQAAgent(courseCode, terminal = 'iTerm2') {
   const { data: courseInfo } = await supabase
@@ -2537,10 +2566,10 @@ async function spawnParallelQAAgent(courseCode, terminal = 'iTerm2') {
 
   const targetSeeds = courseInfo?.seed_count || 300;
 
-  // Calculate batch ranges: seeds 11..targetSeeds split into ~10 batches
+  // Calculate batch ranges: seeds 11..targetSeeds split into batches
   const firstSeed = 11;
   const totalToCheck = targetSeeds - firstSeed + 1;
-  const NUM_BATCHES = Math.min(10, Math.ceil(totalToCheck / 20));
+  const NUM_BATCHES = Math.min(MAX_PARALLEL_AGENTS, Math.ceil(totalToCheck / SEEDS_PER_AGENT));
   const batchSize = Math.ceil(totalToCheck / NUM_BATCHES);
 
   const batches = [];
@@ -2763,7 +2792,7 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
   }
 
   // Distribute evenly across agents
-  const NUM_BATCHES = Math.min(10, Math.max(1, Math.ceil(seedsNeeded.length / 20)));
+  const NUM_BATCHES = Math.min(MAX_PARALLEL_AGENTS, Math.max(1, Math.ceil(seedsNeeded.length / SEEDS_PER_AGENT)));
   const batchSize = Math.ceil(seedsNeeded.length / NUM_BATCHES);
 
   const batches = [];
