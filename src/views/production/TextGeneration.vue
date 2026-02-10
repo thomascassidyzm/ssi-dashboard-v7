@@ -368,9 +368,9 @@
         </div>
 
         <!-- Unchecked Phrases Panel -->
-        <div v-if="qa.progress > 0 && qa.progress < 100 && uncheckedPhrases.length > 0" class="mt-4 bg-slate-700/20 border border-amber-500/20 rounded-lg p-4">
+        <div v-if="qa.progress > 0 && qa.progress < 100 && uncheckedPhrases.length > 0" class="mt-4 bg-slate-700/20 border border-slate-600/50 rounded-lg p-4">
           <div class="flex items-center justify-between">
-            <span class="text-sm text-amber-400">
+            <span class="text-sm text-slate-300">
               {{ uncheckedPhrases.length }} unchecked phrases from {{ uncheckedGrouped.length }} seeds
             </span>
             <button
@@ -396,21 +396,24 @@
             </div>
           </div>
 
-          <div class="flex gap-2 mt-3">
+          <div class="flex items-center gap-3 mt-3">
             <button
               @click="markAllChecked"
               :disabled="markingChecked"
-              class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors"
+              class="px-3 py-1.5 bg-slate-600 hover:bg-slate-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors"
             >
-              {{ markingChecked ? 'Marking...' : '✓ Mark All Checked' }}
+              {{ markingChecked ? 'Marking...' : 'Mark All Checked' }}
             </button>
             <button
               @click="startQA"
               :disabled="qaRunning"
-              class="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors"
+              class="px-3 py-1.5 bg-slate-600 hover:bg-slate-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors"
             >
               Run QA Agent
             </button>
+            <span v-if="uncheckedStatus" class="text-xs" :class="uncheckedStatus.ok ? 'text-slate-400' : 'text-red-400'">
+              {{ uncheckedStatus.message }}
+            </span>
           </div>
         </div>
       </section>
@@ -534,6 +537,7 @@ const qa = ref({
 const uncheckedPhrases = ref([])
 const showUnchecked = ref(false)
 const markingChecked = ref(false)
+const uncheckedStatus = ref(null)
 
 const uncheckedGrouped = computed(() => {
   const groups = {}
@@ -976,7 +980,9 @@ async function markAllChecked() {
   if (!courseCode || uncheckedPhrases.value.length === 0) return
 
   markingChecked.value = true
+  uncheckedStatus.value = null
   try {
+    const count = uncheckedPhrases.value.length
     const seeds = uncheckedPhrases.value.map(p => p.seed_number)
     const seedMin = Math.min(...seeds)
     const seedMax = Math.max(...seeds)
@@ -991,12 +997,16 @@ async function markAllChecked() {
       body: JSON.stringify({ course_code: courseCode, seed_min: seedMin, seed_max: seedMax })
     })
     if (response.ok) {
+      uncheckedStatus.value = { ok: true, message: `Marked ${count} phrases as checked` }
       uncheckedPhrases.value = []
       showUnchecked.value = false
       fetchQASummary()
+    } else {
+      const err = await response.json().catch(() => ({}))
+      uncheckedStatus.value = { ok: false, message: err.error || `Failed (${response.status})` }
     }
   } catch (err) {
-    console.error('Failed to mark all checked:', err)
+    uncheckedStatus.value = { ok: false, message: err.message }
   } finally {
     markingChecked.value = false
   }
