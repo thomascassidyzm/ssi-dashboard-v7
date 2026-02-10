@@ -498,6 +498,44 @@ USE for 하고 싶어요:
 
 ---
 
+## Audio-First Doctrine
+
+> *We minimise early variation and maximise perceptual clarity so learners can speak immediately. Once speaking begins, interaction itself supplies the variation and refinement. Grammar is a rudder, not an engine.*
+
+### The Distinction Ladder
+
+Language learning is the progressive reduction of perceptual uncertainty. The learner's real task is **to stabilise sound-based distinctions under uncertainty**. Each layer has different failure modes:
+
+| Layer | Learner's Question | Design Response |
+|-------|-------------------|-----------------|
+| 0. Sound vs nothing | "Is this language?" | Rhythm, repetition, predictable prosody |
+| 1. Target vs other languages | "Is this Chinese, not English?" | Phonotactics, tonal contour, stable timing |
+| 2. Words vs other words | "Where does one thing end?" | Multi-syllable anchors, rhythmic verbs, sentence frames |
+| 3. Similar sounds (non-native ears) | "q vs ch vs zh?" | Over-distinctness, redundancy, doubling |
+| 4. Similar sounds (native ears) | "These sound different to natives?" | Delay minimal pairs, delay register contrasts |
+| 5. Homophones | "Same sound, different meaning?" | Context networks must exist first — postpone |
+
+**Every design choice is evaluated by how much uncertainty it removes at the learner's current perceptual layer.**
+
+### Operational Principles
+
+- Choose **one form per intention** (no variation until speaking begins)
+- Choose the **most audible form** (longer > shorter early on)
+- Accept **provisional meaning** early (refine through conversation later)
+- Attach confidence to **being understood**, not to correctness
+- **Move first, steer later** — grammar is a rudder, not an engine
+
+### Chinese-Specific Application
+
+- **Doubles as perceptual anchors**: 试试, 看看, 说说 — two beats, rhythmically distinct, easy to parse
+- **Longer connectors**: 但是, 所以, 然后 — audible discourse markers that manufacture edges
+- **Multi-syllable M-LEGOs by default**: 我想, 和你, 我在试试 — not isolated monosyllables
+- **Boring syntax is cognitive mercy**: predictable sentence frames reduce layer-2 uncertainty
+- **Delayed compression**: full forms early (一起 not bare verbs), compressed forms much later
+- **No homophone disambiguation early**: context networks must exist first
+
+---
+
 ## Error Handling
 
 ### Errors Are Data, Not Failures
