@@ -780,8 +780,8 @@ const hasFailed = computed(() => progressStats.value.failed > 0)
 const canStartGeneration = computed(() =>
   !isGenerating.value && progressStats.value.pending > 0
 )
-const estimatedCost = computed(() => productionStore.costEstimate.estimated)
-const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime)
+const estimatedCost = computed(() => productionStore.costEstimate.estimated || null)
+const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime || null)
 
 // Concurrency update (save to localStorage)
 const updateConcurrency = (value: number) => {

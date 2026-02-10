@@ -73,9 +73,9 @@ export const useProductionStore = defineStore('production', () => {
   const generationQueue = ref([])
   const jobStatus = ref('idle') // 'idle' | 'running' | 'complete' | 'failed'
   const costEstimate = ref({
-    estimated: '$0.00',
-    actual: '$0.00',
-    estimatedTime: '0 min',
+    estimated: null,
+    actual: null,
+    estimatedTime: null,
     breakdown: []
   })
 

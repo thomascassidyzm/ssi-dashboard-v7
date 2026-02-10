@@ -343,17 +343,16 @@ async function proxyCourseBuilder(req, res) {
     const targetUrl = `${COURSE_BUILDER_URL}${req.originalUrl}`
     logger.info(`[Proxy] ${req.method} ${req.originalUrl} -> ${targetUrl}`)
 
+    const body = ['POST', 'PUT', 'PATCH'].includes(req.method) && req.body
+      ? JSON.stringify(req.body)
+      : undefined
+
     const fetchOptions = {
       method: req.method,
       headers: {
-        'Content-Type': 'application/json',
-        ...req.headers
-      }
-    }
-
-    // Forward body for POST/PUT/PATCH
-    if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body) {
-      fetchOptions.body = JSON.stringify(req.body)
+        'Content-Type': req.headers['content-type'] || 'application/json'
+      },
+      body
     }
 
     const response = await fetch(targetUrl, fetchOptions)
@@ -2224,6 +2223,14 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
     // Same normalization as the plan endpoint in phase8: lowercase + trim
     const norm = (t) => (t || '').toLowerCase().trim()
 
+    // Punctuation-only filter (matches Phase 8 — TTS can't generate these)
+    const isPunctuationOnly = (text) => {
+      if (!text) return true
+      const trimmed = text.trim()
+      if (!trimmed) return true
+      return /^[.,;:!?。、？！；：…—–\-()[\]{}「」『』（）【】؟،؛־]+$/.test(trimmed)
+    }
+
     // Get course info (release target + languages)
     const { data: course } = await supabase
       .from('courses')
@@ -2233,8 +2240,8 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
     const releaseTarget = course?.seed_count || 260
 
     // Fetch current course content in parallel (filtered to release target)
-    // Matches the plan endpoint: phrases + ALL LEGOs (debut audio) + new LEGOs (presentation)
-    const [phrasesRes, allLegosRes, newLegosRes, audioRes] = await Promise.all([
+    // Matches Phase 8: phrases + ALL LEGOs (debut) + new LEGOs (presentation) + seeds
+    const [phrasesRes, allLegosRes, newLegosRes, seedsRes, audioRes, presentationAudioRes] = await Promise.all([
       supabase
         .from('course_practice_phrases')
         .select('known_text, target_text')
@@ -2253,22 +2260,39 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
         .eq('course_code', courseCode)
         .eq('is_new', true)
         .lte('seed_number', releaseTarget),
+      // Seeds need audio too (same as Phase 8)
+      supabase
+        .from('course_seeds')
+        .select('known_text, target_text')
+        .eq('course_code', courseCode)
+        .eq('status', 'released')
+        .lte('seed_number', releaseTarget),
       supabase
         .from('course_audio')
         .select('text_normalized, language, role')
         .eq('course_code', courseCode)
         .in('role', ['known', 'target1', 'target2'])
+        .not('s3_key', 'like', 'pending/%'),
+      // Presentation audio in course_audio (may not be bound to LEGO yet)
+      supabase
+        .from('course_audio')
+        .select('lego_id')
+        .eq('course_code', courseCode)
+        .eq('role', 'presentation')
         .not('s3_key', 'like', 'pending/%')
     ])
 
     if (phrasesRes.error) throw phrasesRes.error
     if (allLegosRes.error) throw allLegosRes.error
     if (newLegosRes.error) throw newLegosRes.error
+    if (seedsRes.error) throw seedsRes.error
     if (audioRes.error) throw audioRes.error
+    if (presentationAudioRes.error) throw presentationAudioRes.error
 
     const phrases = phrasesRes.data || []
     const allLegos = allLegosRes.data || []
     const newLegos = newLegosRes.data || []
+    const seeds = seedsRes.data || []
     const existingAudio = audioRes.data || []
 
     // Build existing set (same as plan)
@@ -2276,17 +2300,40 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
       existingAudio.map(a => `${norm(a.text_normalized)}|${a.language}|${a.role}`)
     )
 
-    // Build unique needed set — phrases + LEGO debut audio (same as plan)
+    // Build set of lego_ids that have presentation audio in course_audio
+    const legoIdsWithPresentation = new Set(
+      (presentationAudioRes.data || []).map(p => p.lego_id).filter(Boolean)
+    )
+
+    // Build unique needed set — phrases + LEGO debut + seed audio (same as plan)
+    // Skip punctuation-only items (TTS can't generate these)
     const neededSet = new Set()
     for (const phrase of phrases) {
-      neededSet.add(`${norm(phrase.known_text)}|${course.known_lang}|known`)
-      neededSet.add(`${norm(phrase.target_text)}|${course.target_lang}|target1`)
-      neededSet.add(`${norm(phrase.target_text)}|${course.target_lang}|target2`)
+      if (!isPunctuationOnly(phrase.known_text)) {
+        neededSet.add(`${norm(phrase.known_text)}|${course.known_lang}|known`)
+      }
+      if (!isPunctuationOnly(phrase.target_text)) {
+        neededSet.add(`${norm(phrase.target_text)}|${course.target_lang}|target1`)
+        neededSet.add(`${norm(phrase.target_text)}|${course.target_lang}|target2`)
+      }
     }
     for (const lego of allLegos) {
-      neededSet.add(`${norm(lego.known_text)}|${course.known_lang}|known`)
-      neededSet.add(`${norm(lego.target_text)}|${course.target_lang}|target1`)
-      neededSet.add(`${norm(lego.target_text)}|${course.target_lang}|target2`)
+      if (!isPunctuationOnly(lego.known_text)) {
+        neededSet.add(`${norm(lego.known_text)}|${course.known_lang}|known`)
+      }
+      if (!isPunctuationOnly(lego.target_text)) {
+        neededSet.add(`${norm(lego.target_text)}|${course.target_lang}|target1`)
+        neededSet.add(`${norm(lego.target_text)}|${course.target_lang}|target2`)
+      }
+    }
+    for (const seed of seeds) {
+      if (!isPunctuationOnly(seed.known_text)) {
+        neededSet.add(`${norm(seed.known_text)}|${course.known_lang}|known`)
+      }
+      if (!isPunctuationOnly(seed.target_text)) {
+        neededSet.add(`${norm(seed.target_text)}|${course.target_lang}|target1`)
+        neededSet.add(`${norm(seed.target_text)}|${course.target_lang}|target2`)
+      }
     }
 
     let existingCount = 0
@@ -2294,10 +2341,12 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
       if (existingSet.has(key)) existingCount++
     }
 
-    // Presentation audio — check directly on the LEGO
+    // Presentation audio — check LEGO field OR course_audio (matching Phase 8)
     let presentationsExisting = 0
     for (const lego of newLegos) {
-      if (lego.presentation_audio_id) presentationsExisting++
+      if (lego.presentation_audio_id || legoIdsWithPresentation.has(lego.lego_id)) {
+        presentationsExisting++
+      }
     }
 
     const totalNeeded = neededSet.size + newLegos.length
@@ -2311,6 +2360,7 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
       missing,
       breakdown: {
         phrases: phrases.length,
+        seeds: seeds.length,
         uniquePhraseAudio: neededSet.size,
         newLegos: newLegos.length,
         presentationsExisting
@@ -3360,41 +3410,8 @@ app.post('/api/production/internal/emit', (req, res) => {
 const PHASE8_URL = process.env.PHASE8_URL || 'http://localhost:3465'
 const axios = require('axios')
 
-// GET /api/production/:courseCode/audio-stats (alias for audio-pipeline/stats)
-app.get('/api/production/:courseCode/audio-stats', (req, res) => {
-  res.redirect(307, `/api/production/${req.params.courseCode}/audio-pipeline/stats`)
-})
-
-// GET /api/production/:courseCode/audio-pipeline/stats
-// Fast stats using plan endpoint - use this for dashboard loading
-app.get('/api/production/:courseCode/audio-pipeline/stats', async (req, res) => {
-  const { courseCode } = req.params
-  try {
-    // Use the plan endpoint which exists
-    const response = await axios.get(`${PHASE8_URL}/plan/${courseCode}`)
-    const data = response.data || {}
-
-    // Calculate estimates
-    const toGenerate = data.missing || 0
-    const estimatedCostUSD = (toGenerate * 0.004).toFixed(2)
-
-    res.json({
-      success: true,
-      estimatedCost: `$${estimatedCostUSD}`,
-      estimatedTime: `${Math.ceil(toGenerate / 60)} min`,
-      total: data.existing + toGenerate,
-      existing: data.existing || 0,
-      missing: toGenerate,
-      dataSource: 'database'
-    })
-  } catch (error) {
-    logger.error(`Audio stats error for ${courseCode}:`, error.message)
-    if (error.code === 'ECONNREFUSED') {
-      return res.status(503).json({ error: 'Phase 8 audio service not running' })
-    }
-    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
-  }
-})
+// NOTE: Dead duplicate audio-stats route removed — the fast endpoint at line ~2214
+// handles /api/production/:courseCode/audio-stats directly without needing Phase 8
 
 // GET /api/production/:courseCode/audio-pipeline/plan
 // Get generation plan with cost estimates
@@ -3876,16 +3893,17 @@ app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (r
 
     // Create debut phrases for orphan LEGOs
     // Position 0 is the debut phrase (shows the LEGO itself)
-    // word_count is required by database schema - count words in target_text
+    // word_count and lego_count are required by database schema
     const debutPhrases = orphanLegos.map(lego => ({
       course_code: courseCode,
       seed_number: lego.seed_number,
       lego_index: lego.lego_index,
+      lego_id: lego.lego_id,
       position: 0,
       known_text: lego.known_text,
       target_text: lego.target_text,
       word_count: (lego.target_text || '').split(/\s+/).filter(w => w.length > 0).length || 1,
-      is_debut: true
+      lego_count: 1  // Debut phrase shows 1 LEGO
     }))
 
     const { error: insertError } = await supabase
