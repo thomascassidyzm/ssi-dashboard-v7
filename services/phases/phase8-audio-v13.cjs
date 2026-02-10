@@ -637,11 +637,11 @@ async function planHandler(req, res) {
     const uniqueTargetTexts = [...uniqueTextsForAudio].filter(k => k.startsWith('target|')).length
     const totalPresentationsNeeded = newLegos?.length || 0
 
-    // Total required audio files = known + target1 + target2 + presentations
-    const totalRequired = uniqueKnownTexts + (uniqueTargetTexts * 2) + totalPresentationsNeeded
-
-    // Existing that match requirements = totalRequired - missing
-    const existingMatched = totalRequired - uniqueNeeded.length
+    // Total required = missing + existing (derived consistently from the same source)
+    // Use uniqueNeeded as the authoritative missing count, and derive total from it
+    const totalMissing = uniqueNeeded.length
+    const totalExisting = existingByRole.known + existingByRole.target1 + existingByRole.target2 + existingByRole.presentation
+    const totalRequired = totalMissing + totalExisting
 
     res.json({
       courseCode,
@@ -652,9 +652,9 @@ async function planHandler(req, res) {
         targetLang: course.target_lang,
         voiceConfig: course.voice_config
       },
-      existing: existingMatched,  // Only count audio that matches current requirements
-      missing: uniqueNeeded.length,
-      total: totalRequired,  // Total based on current course content
+      existing: totalExisting,  // Audio that matches current requirements
+      missing: totalMissing,
+      total: totalRequired,  // existing + missing
       totalPhrases: phrases.length,
       totalPresentationsNeeded,
       uniqueKnownTexts,
