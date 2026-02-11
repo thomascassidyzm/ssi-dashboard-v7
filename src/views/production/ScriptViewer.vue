@@ -808,7 +808,7 @@ const exportLearnerScript = () => {
       else if (item.type === 'debut') label = 'LEGO';
       else if (item.type === 'build') label = `BUILD-${item.phrasePosition || '?'}`;
       else if (item.type === 'use') label = `USE-${item.phrasePosition || '?'}`;
-      else if (item.type === 'review') label = `REVIEW R${item.reviewOfRound || '?'}`;
+      else if (item.type === 'review') label = `REVIEW R${item.reviewOf || '?'}`;
       else if (item.type === 'consolidate') label = `CONSOLIDATE-${item.consolidateIndex || '?'}`;
 
       const pad = Math.max(1, 18 - label.length);
