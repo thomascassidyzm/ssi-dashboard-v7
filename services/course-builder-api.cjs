@@ -5859,7 +5859,7 @@ app.post('/api/seed/complete', async (req, res) => {
       // Build word→introducing LEGO map (first LEGO to contain the word wins)
       const wordIntroducedBy = {};
       for (const l of (allNewLegos || [])) {
-        const words = l.target_text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').split(/\s+/).filter(Boolean);
+        const words = extractVocab(l.target_text, chinese);
         for (const w of words) {
           if (!wordIntroducedBy[w]) {
             wordIntroducedBy[w] = { seed_number: l.seed_number, lego_index: l.lego_index, target_text: l.target_text };
@@ -5868,7 +5868,7 @@ app.post('/api/seed/complete', async (req, res) => {
       }
 
       // For each word in the seed target, find its introducing LEGO, pick the highest
-      const seedWords = target_text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').split(/\s+/).filter(Boolean);
+      const seedWords = extractVocab(target_text, chinese);
       let bestSeedNum = -1;
       let bestLegoIdx = -1;
       let bestLegoTarget = null;
@@ -10246,6 +10246,82 @@ app.delete('/api/qa/phrase/:phraseId', async (req, res) => {
 });
 
 /**
+ * DELETE /api/qa/flagged-phrases/:courseCode - Delete all phrases that have open QA flags
+ * Query params:
+ *   ?severity=error - Only delete phrases flagged at this severity (default: all open flags)
+ *   ?seed_min=293&seed_max=300 - Restrict to seed range
+ *   ?dry_run=true - Preview what would be deleted without actually deleting
+ */
+app.delete('/api/qa/flagged-phrases/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const severity = req.query.severity;
+    const seedMin = parseInt(req.query.seed_min) || null;
+    const seedMax = parseInt(req.query.seed_max) || null;
+    const dryRun = req.query.dry_run === 'true';
+
+    // Get all open flags for this course
+    let flagQuery = supabase
+      .from('course_qa_flags')
+      .select('id, phrase_id, seed_number, check_type, severity, issue')
+      .eq('course_code', courseCode)
+      .eq('status', 'open')
+      .not('phrase_id', 'is', null);
+
+    if (severity) flagQuery = flagQuery.eq('severity', severity);
+    if (seedMin) flagQuery = flagQuery.gte('seed_number', seedMin);
+    if (seedMax) flagQuery = flagQuery.lte('seed_number', seedMax);
+
+    const { data: flags, error: flagError } = await flagQuery;
+    if (flagError) throw flagError;
+
+    if (!flags || flags.length === 0) {
+      return res.json({ success: true, deleted: 0, phrases: [], message: 'No flagged phrases found' });
+    }
+
+    // Deduplicate phrase IDs (multiple flags can reference same phrase)
+    const phraseIds = [...new Set(flags.map(f => f.phrase_id))];
+
+    if (dryRun) {
+      return res.json({
+        dry_run: true,
+        would_delete: phraseIds.length,
+        flags_count: flags.length,
+        phrases: phraseIds,
+        flags: flags
+      });
+    }
+
+    // Delete flags first (FK constraint)
+    const flagIds = flags.map(f => f.id);
+    const { error: delFlagError } = await supabase
+      .from('course_qa_flags')
+      .delete()
+      .in('id', flagIds);
+    if (delFlagError) throw delFlagError;
+
+    // Delete the phrases
+    const { error: delPhraseError, count } = await supabase
+      .from('course_practice_phrases')
+      .delete()
+      .in('id', phraseIds);
+    if (delPhraseError) throw delPhraseError;
+
+    console.log(`[QA] Bulk deleted ${phraseIds.length} flagged phrases (${flags.length} flags) for ${courseCode}`);
+
+    res.json({
+      success: true,
+      deleted: phraseIds.length,
+      flags_removed: flags.length,
+      phrases: phraseIds
+    });
+  } catch (err) {
+    console.error('[QA] Error bulk-deleting flagged phrases:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * PATCH /api/qa/flag/:flagId - Update a flag (resolve, dismiss, etc.)
  */
 app.patch('/api/qa/flag/:flagId', async (req, res) => {
@@ -10860,7 +10936,7 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
 
         const wordIntroducedBy = {};
         for (const l of (allNewLegos || [])) {
-          const words = l.target_text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').split(/\s+/).filter(Boolean);
+          const words = extractVocab(l.target_text, chinese);
           for (const w of words) {
             if (!wordIntroducedBy[w]) {
               wordIntroducedBy[w] = { seed_number: l.seed_number, lego_index: l.lego_index, target_text: l.target_text };
@@ -10868,7 +10944,7 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
           }
         }
 
-        const seedWords = draft.target_text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').split(/\s+/).filter(Boolean);
+        const seedWords = extractVocab(draft.target_text, chinese);
         let bestSeedNum = -1;
         let bestLegoIdx = -1;
         let bestLegoTarget = null;
