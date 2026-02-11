@@ -32,11 +32,18 @@
           </div>
         </div>
 
-        <div v-if="computedCourseCode" class="mt-4 bg-emerald-900/20 border border-emerald-500/20 rounded-lg p-3">
+        <div v-if="computedCourseCode" class="mt-4 flex items-center justify-between bg-emerald-900/20 border border-emerald-500/20 rounded-lg p-3">
           <p class="text-sm">
             <span class="text-slate-400">Course code:</span>
             <span class="text-emerald-400 font-mono ml-2">{{ computedCourseCode }}</span>
           </p>
+          <button
+            @click="createCourse"
+            :disabled="creatingCourse"
+            class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-all"
+          >
+            {{ creatingCourse ? 'Creating...' : 'Create Course' }}
+          </button>
         </div>
       </section>
 
@@ -647,6 +654,7 @@ const knownLanguage = ref('')
 const targetLanguage = ref('')
 const languages = ref([])
 const languagesLoading = ref(true)
+const creatingCourse = ref(false)
 
 // Computed course code from language selection
 const computedCourseCode = computed(() => {
@@ -1052,6 +1060,39 @@ async function executeRebuild() {
     console.error('Rebuild error:', err.message)
   } finally {
     rebuildRunning.value = false
+  }
+}
+
+async function createCourse() {
+  const courseCode = computedCourseCode.value
+  if (!courseCode) return
+
+  creatingCourse.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/courses/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        courseCode,
+        knownLanguage: knownLanguage.value,
+        targetLanguage: targetLanguage.value,
+        seedStart: 1,
+        seedEnd: seedCount.value,
+        seedCount: seedCount.value
+      })
+    })
+    const result = await response.json()
+    if (!response.ok) throw new Error(result.error || 'Failed to create course')
+    router.push(`/production/${courseCode}/text`)
+  } catch (error) {
+    console.error('Failed to create course:', error)
+    alert(`Failed to create course: ${error.message}`)
+  } finally {
+    creatingCourse.value = false
   }
 }
 
