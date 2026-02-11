@@ -1,17 +1,11 @@
 <template>
   <div class="text-generation">
     <div class="max-w-4xl mx-auto px-6 py-8 space-y-6">
-      <!-- Subtitle -->
-      <p class="text-sm text-slate-400">
-        Build course content using the Course Builder agent
-      </p>
-
       <!-- Language Selection (Create Mode) -->
       <section v-if="isCreateMode" class="bg-slate-800/30 border border-emerald-500/30 rounded-lg p-6">
         <h2 class="text-sm font-medium text-emerald-400 uppercase tracking-wide mb-4">New Course</h2>
 
         <div class="grid grid-cols-2 gap-6">
-          <!-- Source Language (Known) -->
           <div>
             <label class="block text-xs text-slate-500 mb-2">Known Language (Learning FROM)</label>
             <select
@@ -24,8 +18,6 @@
               </option>
             </select>
           </div>
-
-          <!-- Target Language -->
           <div>
             <label class="block text-xs text-slate-500 mb-2">Target Language (Learning TO)</label>
             <select
@@ -40,7 +32,6 @@
           </div>
         </div>
 
-        <!-- Course Code Preview -->
         <div v-if="computedCourseCode" class="mt-4 bg-emerald-900/20 border border-emerald-500/20 rounded-lg p-3">
           <p class="text-sm">
             <span class="text-slate-400">Course code:</span>
@@ -49,59 +40,42 @@
         </div>
       </section>
 
-      <!-- Configuration -->
-      <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6">
-        <h2 class="text-sm font-medium text-slate-400 uppercase tracking-wide mb-4">Configuration</h2>
-
-        <div class="grid grid-cols-2 gap-6">
-          <!-- Job Target -->
-          <div>
-            <label class="block text-xs text-slate-500 mb-2">Job Target</label>
-            <div class="flex gap-2 items-center">
-              <button
-                v-for="size in courseSizes"
-                :key="size.seeds"
-                @click="seedCount = size.seeds"
-                class="px-3 py-2 rounded-lg border transition-all text-sm"
-                :class="seedCount === size.seeds
-                  ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
-                  : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
-              >
-                <div class="font-medium">{{ size.label }}</div>
-                <div class="text-xs opacity-70">{{ size.seeds }}</div>
-              </button>
-              <div class="flex items-center gap-2 ml-2">
-                <span class="text-xs text-slate-500">Run to:</span>
-                <input
-                  v-model.number="seedCount"
-                  type="number"
-                  min="1"
-                  max="1000"
-                  class="w-20 px-2 py-2 rounded-lg border bg-slate-700/50 border-slate-600/50 text-slate-200 text-sm text-center"
-                />
-              </div>
-            </div>
+      <!-- Config toolbar: target + engine in one compact row -->
+      <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg px-4 py-2">
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-2">
+            <button
+              v-for="size in courseSizes"
+              :key="size.seeds"
+              @click="seedCount = size.seeds"
+              class="px-2.5 py-1 rounded border transition-all text-xs font-medium"
+              :class="seedCount === size.seeds
+                ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
+                : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+            >
+              {{ size.label }}
+            </button>
+            <input
+              v-model.number="seedCount"
+              type="number"
+              min="1"
+              max="1000"
+              class="w-16 px-2 py-1 rounded border bg-slate-700/50 border-slate-600/50 text-slate-200 text-xs text-center font-mono"
+            />
           </div>
-
-          <!-- Agent Engine -->
-          <div>
-            <label class="block text-xs text-slate-500 mb-2">Agent Engine</label>
-            <div class="flex gap-2">
-              <button
-                v-for="engine in engines"
-                :key="engine.id"
-                @click="agentEngine = engine.id"
-                class="flex-1 px-3 py-2 rounded-lg border transition-all text-sm"
-                :class="agentEngine === engine.id
-                  ? 'bg-cyan-600/20 border-cyan-500/50 text-cyan-400'
-                  : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
-              >
-                <div class="font-medium">{{ engine.label }}</div>
-                <div class="text-xs opacity-70">{{ engine.description }}</div>
-              </button>
-            </div>
+          <div class="flex items-center gap-1.5">
+            <button
+              v-for="engine in engines"
+              :key="engine.id"
+              @click="agentEngine = engine.id"
+              class="px-2.5 py-1 rounded border transition-all text-xs font-medium"
+              :class="agentEngine === engine.id
+                ? 'bg-cyan-600/20 border-cyan-500/50 text-cyan-400'
+                : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+            >
+              {{ engine.label }}
+            </button>
           </div>
-
         </div>
       </section>
 
