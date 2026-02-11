@@ -2552,6 +2552,16 @@ With the M-LEGO, the learner hears "cosa azul" and infers the pattern without ex
 
 This applies to any word-order difference: verb position, adjective placement, particle order, prepositional phrases. **Especially early in the course**, front-load M-LEGOs that demonstrate the target language's ordering patterns. The learner needs to hear the correct assembly before they can produce it.
 
+**Example (German subordinate clause verb-final):**
+German subordinate clauses (\`weil\`, \`ob\`, \`bevor\`, \`dass\`, \`wenn\`) push the verb to the END. English keeps the verb near the subject. This is a major word-order difference that REQUIRES M-LEGOs:
+\`\`\`
+Already known: A "because" → "weil", M "I want" → "ich will", A "to speak" → "sprechen"
+M-LEGO: "because I want to speak" → "weil ich sprechen will"  ← REQUIRED
+\`\`\`
+Without the M-LEGO, the learner would say "weil ich will sprechen" (English order = wrong).
+The M-LEGO teaches NO new vocabulary — all parts are already known. It teaches the **reordering pattern**.
+Introduce the component A-LEGOs and smaller M-LEGOs FIRST, then use the larger M-LEGO to show how they reassemble. This keeps cognitive load manageable.
+
 ### ZUT (Zero Uncertainty Test)
 Same KNOWN text → same TARGET text. Always. Use different natural phrases to disambiguate.
 
@@ -2647,6 +2657,134 @@ curl -s -X POST "http://localhost:3471/api/golden/finalize/${courseCode}" \\
 }
 
 /**
+ * Generate a Creator brief for human-collaboration calibration mode.
+ * Same methodology as generateGoldenCreatorBrief() but the human is the checker.
+ * No polling/flag handling — the agent presents each seed and waits for human approval.
+ */
+function generateGoldenCreatorHumanBrief({ courseCode, courseInfo, targetSeeds, crossCourseSummaries, translationDoctrine }) {
+  const langName = courseInfo?.display_name || courseCode;
+
+  return `# Calibration Creator — ${courseCode} (${langName})
+
+You are building the first ${targetSeeds} calibration seed decompositions for **${courseCode}** (${langName}).
+These seeds will calibrate all future autonomous agents for this course. Quality is paramount — every phrase will be heard by thousands of learners.
+
+**You are working WITH a human language expert.** Present each seed clearly and wait for their approval before submitting.
+
+## Your Role
+
+You are a world-class language teacher and course designer applying the SSi methodology. You build LEGO decompositions: choosing A vs M types, ordering LEGOs for maximum combination richness, and writing BUILD + USE phrases that are grammatically perfect and natural in both languages.
+
+## SSi Methodology — Key Rules
+
+### LEGO Types
+- **A-LEGO (Atomic)**: Single meaningful word. Often appears inside M-LEGOs to create overlaps.
+- **M-LEGO (Molecular)**: Multi-word phrase. Has \`components\` array showing its building blocks.
+- **Overlapping LEGOs**: A-LEGOs that also appear inside M-LEGOs — this IS the teaching mechanism.
+
+### BUILD Phrases
+- Combine the **new LEGO** with **previously introduced LEGOs**
+- Show how the new piece "plugs in" to what the learner already knows
+- Fragments OK — don't need to be complete sentences
+- Must contain the **exact LEGO target** (case-insensitive match)
+- NOT the LEGO by itself, NOT component build-up
+
+### USE Phrases
+- **Complete, natural sentences** a real learner would say — NEVER fragments
+- Minimum 5 per LEGO, scored 5-9
+- Mix of MEDIUM (LEGO + 4-6 syllables) and LONG (LEGO + 7-10 syllables)
+- Must contain the **exact LEGO target** (case-insensitive match)
+
+### LEGO Form Is Fixed
+LEGOs must be used **exactly as-is** in all phrases — never conjugated or inflected.
+Your job is to **choose phrases where the exact LEGO form works naturally**, not to conjugate.
+
+### Decomposition Strategy
+- Order LEGOs by combination richness — high-utility items that combine well come first
+- Non-greedy: introduce A-LEGOs before their containing M-LEGOs when possible
+- Structural mismatches between languages get absorbed into M-LEGOs
+- Tiling: the seed CAN be recomposed from its LEGO targets (overlaps allowed)
+
+### Word Order Differences → M-LEGOs Are Required
+When the target language orders words differently from the known language, you MUST use M-LEGOs to show the correct order.
+
+### ZUT (Zero Uncertainty Test)
+Same KNOWN text → same TARGET text. Always.
+
+${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
+## Cross-Course Reference
+
+${crossCourseSummaries || '(No cross-course calibrations available yet — you are pioneering!)'}
+
+## Protocol — For Each Seed N (1 → ${targetSeeds})
+
+### Step 1: Fetch cross-course examples
+\`\`\`bash
+curl -s "http://localhost:3471/api/calibrations/seed/$N"
+\`\`\`
+
+### Step 2: Fetch current vocabulary
+\`\`\`bash
+curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
+\`\`\`
+
+### Step 3: Fetch the seed translation
+\`\`\`bash
+curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq '.seeds[] | select(.seed_number == '$N')'
+\`\`\`
+
+### Step 4: Build the decomposition
+Design LEGOs (A/M types, ordering) and write BUILD + USE phrases.
+
+### Step 5: Present to human for review
+**BEFORE submitting**, present your decomposition clearly:
+
+\`\`\`
+=== SEED $N ===
+Known: "..."
+Target: "..."
+
+L1 [A] "known" → "target"
+  BUILD: ...
+  USE: ...
+
+L2 [M] "known" → "target"
+  Components: ...
+  BUILD: ...
+  USE: ...
+
+Ready to submit? (waiting for approval)
+\`\`\`
+
+**Wait for the human to say "approved", "yes", "go", or similar** before submitting.
+If they give feedback, revise and present again.
+
+### Step 6: Submit (only after human approval)
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&skip_validation=true" \\
+  -H "Content-Type: application/json" \\
+  -d '{...}'
+\`\`\`
+
+### Step 7: Move to next seed
+No polling needed — the human is your checker. After submission, move to seed N+1.
+
+## AUTONOMY
+
+You are working WITH a human. Present each seed clearly. Wait for approval before submitting.
+Do NOT spawn sub-agents. Work through seeds one at a time, carefully and thoroughly.
+Work SLOWLY AND STEADILY — quality over speed. Each phrase will be heard by thousands of learners.
+
+When you finish all ${targetSeeds} seeds, submit them as calibration data:
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/golden/finalize/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"target_seeds": ${targetSeeds}}'
+\`\`\`
+`;
+}
+
+/**
  * Generate the Checker agent brief for golden seed quality review.
  * The Checker reviews each seed for grammar, naturalness, and pedagogical quality.
  */
@@ -2655,13 +2793,16 @@ function generateGoldenCheckerBrief({ courseCode, courseInfo, targetSeeds, cross
 
   return `# Golden Seed Checker — ${courseCode} (${langName})
 
-You are the quality reviewer for golden seed decompositions of **${courseCode}** (${langName}).
+You are the quality reviewer AND fixer for golden seed decompositions of **${courseCode}** (${langName}).
 Your job is to ensure every seed is grammatically correct, natural in both languages, and pedagogically powerful.
 These ${targetSeeds} golden seeds will calibrate ALL future autonomous agents — your review determines the quality bar.
 
 ## Your Role
 
-You are a meticulous linguist and pedagogy expert. You review each seed's LEGO decomposition and every BUILD/USE phrase against strict criteria. You flag issues with detailed, actionable feedback. You approve seeds that meet the bar.
+You are a meticulous linguist and pedagogy expert. You review each seed's LEGO decomposition and every BUILD/USE phrase against strict criteria.
+
+**When you find issues, YOU fix them directly** — do not flag and wait. You wipe the seed, rebuild it with corrections, and resubmit. You are both reviewer and editor.
+The Creator agent does the first draft. You polish it to perfection.
 
 ## SSi Methodology — Key Rules
 
@@ -2686,6 +2827,8 @@ When the target language orders words differently from English, the decompositio
 Example: Spanish "blue thing" = "cosa azul" (reversed). Needs 3 LEGOs: A "blue"→"azul", A "thing"→"cosa", M "blue thing"→"cosa azul". Without the M-LEGO, the learner would say "azul cosa".
 
 Flag decompositions that rely on A-LEGOs alone when word order differs between English and ${langName}. Especially critical in early seeds.
+
+**German subordinate clause example:** \`weil\`/\`ob\`/\`bevor\`/\`dass\`/\`wenn\` push verbs to the END. If the learner knows "weil", "ich will", "sprechen" as separate LEGOs, they need an M-LEGO "because I want to speak" → "weil ich sprechen will" to see the reordering. Without it, they'd say "weil ich will sprechen" (English order = wrong). The M-LEGO teaches no new vocab — just the assembly pattern. Components should be introduced as A-LEGOs first to keep cognitive load manageable.
 
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
 ## Cross-Course Reference
@@ -2722,7 +2865,7 @@ ${crossCourseSummaries || '(No cross-course calibrations available yet)'}
 - Are A vs M decisions optimal? Would different choices produce richer phrases?
 - Does LEGO ordering maximize combination richness?
 - Is tiling valid (seed reconstructable from LEGOs)?
-- **Word order**: Where ${langName} orders words differently from English (verb position, adjective placement, etc.), are there M-LEGOs showing the correct order? A-LEGOs alone for reordered elements is a flag — the learner would assemble them in English order.
+- **Word order**: Where ${langName} orders words differently from English (verb position, adjective placement, subordinate clause verb-final, etc.), are there M-LEGOs showing the correct order? A-LEGOs alone for reordered elements is a flag — the learner would assemble them in English order. Check that component A-LEGOs are introduced BEFORE the larger M-LEGO to keep cognitive load manageable.
 
 ### 7. REGISTER/DIALECT
 - If translation doctrine exists, check compliance (formal vs casual, regional variants)
@@ -2735,7 +2878,7 @@ Poll every 20 seconds starting from seed 1:
 curl -s "http://localhost:3471/api/golden/seed-status/${courseCode}/$N"
 \`\`\`
 
-### When status = "submitted" or "submitted" with unchecked phrases:
+### When status = "submitted" with unchecked phrases:
 
 #### Step 1: Fetch the seed's phrases
 \`\`\`bash
@@ -2747,57 +2890,91 @@ curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min=$N&seed_max=$N
 curl -s "http://localhost:3471/api/calibrations/seed/$N"
 \`\`\`
 
-#### Step 3: Review every phrase against criteria
-Go through each BUILD and USE phrase. Check grammar in both languages, naturalness, LEGO form containment, pedagogical value.
-
-#### Step 4a: If issues found → Flag
+#### Step 3: Fetch the seed translation
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/qa/bulk-flag" \\
-  -H "Content-Type: application/json" \\
-  -d '{"flags": [
-    {
-      "course_code": "${courseCode}",
-      "phrase_id": "<phrase_id or null for seed-level>",
-      "seed_number": '$N',
-      "check_type": "<grammar|naturalness|decomposition|pedagogy>",
-      "severity": "<error|warning>",
-      "issue": "S'$N' L<NN> <B/U><NN>: <brief description of issue>",
-      "details": {
-        "phrase_id": "<id>",
-        "current_known": "<current known text>",
-        "current_target": "<current target text>",
-        "suggestion": "<what it should be>",
-        "reason": "<why this is wrong>"
-      }
-    }
-  ]}'
+curl -s "http://localhost:3471/api/seeds/${courseCode}" | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{const j=JSON.parse(Buffer.concat(d));const s=j.seeds.find(x=>x.seed_number===$N);console.log(JSON.stringify(s,null,2))})"
 \`\`\`
 
-Use \`error\` severity for grammar issues, \`warning\` for naturalness/pedagogy.
-For seed-level issues (LEGO ordering, A vs M decisions), set \`phrase_id\` to null and use check_type \`decomposition\` or \`pedagogy\`.
+#### Step 4: Review every phrase against criteria
+Go through each BUILD and USE phrase. Check grammar in both languages, naturalness, LEGO form containment, pedagogical value, decomposition strategy.
 
-#### Step 4b: If clean → Approve
+#### Step 5a: If ALL clean → Approve
 \`\`\`bash
 curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
   -H "Content-Type: application/json" \\
   -d '{"course_code": "${courseCode}", "seed_min": '$N', "seed_max": '$N'}'
 \`\`\`
 
-### After flagging or approving: Move to next seed
-The Creator handles rebuilds on any flag. After flagging, continue monitoring:
-- The Creator will wipe the seed (status → "empty") then resubmit (status → "submitted")
-- When you see "submitted" again, re-review the rebuilt version
+#### Step 5b: If issues found → FIX AND RESUBMIT (do NOT just flag)
 
-### Track revision rounds
-If a seed has been through 3 rounds of flags and the Creator still can't fix it, status will show "escalated". Skip it — a human will handle it.
+You are the fixer. When you find issues (grammar errors, unnatural phrases, wrong A/M decisions, missing M-LEGOs for word order, weak BUILD/USE phrases), YOU fix them:
+
+1. **Wipe the seed**:
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/build/rebuild/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"from_seed": '$N', "to_seed": '$N'}'
+\`\`\`
+
+2. **Fetch current vocabulary** (what's available from prior seeds):
+\`\`\`bash
+curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
+\`\`\`
+
+3. **Rebuild the decomposition** with your corrections applied. You may:
+   - Fix individual phrase grammar/naturalness
+   - Change LEGO ordering for better combination richness
+   - Change A→M or M→A decisions
+   - Add M-LEGOs for word order patterns
+   - Rewrite BUILD/USE phrases entirely
+   - Keep whatever was good from the Creator's draft
+
+4. **Resubmit the corrected seed**:
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&skip_validation=true" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "course_code": "${courseCode}",
+    "seed_number": '$N',
+    "known_text": "<seed known text>",
+    "target_text": "<seed target text>",
+    "legos": [
+      {
+        "idx": 1, "type": "A", "known": "...", "target": "...",
+        "build": [{"known": "...", "target": "..."}],
+        "use": [{"known": "...", "target": "...", "score": 7}]
+      }
+    ]
+  }'
+\`\`\`
+
+5. **Approve** your corrected version:
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
+  -H "Content-Type: application/json" \\
+  -d '{"course_code": "${courseCode}", "seed_min": '$N', "seed_max": '$N'}'
+\`\`\`
+
+### After approving (or fixing + approving): Move to next seed
+
+### Maximum 1 fix round per seed
+If a seed needs more than one rewrite, approve what you have and move on. A human can revisit later. Do NOT get stuck perfecting one seed.
 
 ## AUTONOMY
 
-You are running unattended. NEVER ask questions. Monitor and review every seed from 1 to ${targetSeeds}.
+You are running unattended. NEVER ask questions. NEVER ask for confirmation. Monitor and review every seed from 1 to ${targetSeeds}.
 Do NOT spawn sub-agents. Work through seeds one at a time with meticulous attention to grammar and naturalness.
 Work SLOWLY AND STEADILY — your review determines whether thousands of learners get correct phrases.
 
-Be STRICT but FAIR. Flag genuine issues with clear, actionable feedback. Don't flag style preferences — focus on correctness and naturalness.
+**CRITICAL: You are a CHECKER with fix capability, not a chatbot.** Your workflow is:
+1. Poll the API for submitted seeds
+2. Fetch phrases from the API
+3. Review them
+4. Approve or fix+resubmit via the API
+5. Move to next seed
+You NEVER discuss plans, ask questions, or wait for human input. You execute the protocol above, seed by seed, autonomously.
+
+Be STRICT but FAIR. Fix genuine issues. Don't rewrite for style preferences — focus on correctness and naturalness.
 `;
 }
 
@@ -2859,7 +3036,7 @@ async function buildCrossCourseSummaries(maxSeed = 5) {
  * Spawn two golden seed builder agents (Creator + Checker) for a course.
  * Returns job info. Supports dry_run mode to preview briefs without spawning.
  */
-async function spawnGoldenBuildAgents(courseCode, targetSeeds = 50, terminal = 'iTerm2', dryRun = false) {
+async function spawnGoldenBuildAgents(courseCode, targetSeeds = 50, terminal = 'iTerm2', dryRun = false, phase = 'golden') {
   // Fetch course info
   const { data: courseInfo, error: courseErr } = await supabase
     .from('courses')
@@ -2878,20 +3055,34 @@ async function spawnGoldenBuildAgents(courseCode, targetSeeds = 50, terminal = '
 
   const briefParams = { courseCode, courseInfo, targetSeeds, crossCourseSummaries, translationDoctrine };
 
-  const creatorBrief = generateGoldenCreatorBrief(briefParams);
-  const checkerBrief = generateGoldenCheckerBrief(briefParams);
+  const isCalibration = phase === 'calibration';
+  const creatorBrief = isCalibration
+    ? generateGoldenCreatorHumanBrief(briefParams)
+    : generateGoldenCreatorBrief(briefParams);
+  const checkerBrief = isCalibration ? null : generateGoldenCheckerBrief(briefParams);
+  const buildMode = isCalibration ? 'calibration' : 'golden';
 
   if (dryRun) {
-    return { dry_run: true, creator_brief: creatorBrief, checker_brief: checkerBrief, target_seeds: targetSeeds };
+    return {
+      dry_run: true,
+      phase,
+      creator_brief: creatorBrief,
+      checker_brief: checkerBrief,
+      target_seeds: targetSeeds
+    };
   }
 
   // Write briefs to temp files
   const fs = require('fs');
   const ts = Date.now();
   const creatorFile = `/tmp/golden_creator_${courseCode}_${ts}.md`;
-  const checkerFile = `/tmp/golden_checker_${courseCode}_${ts}.md`;
   fs.writeFileSync(creatorFile, creatorBrief);
-  fs.writeFileSync(checkerFile, checkerBrief);
+
+  let checkerFile = null;
+  if (checkerBrief) {
+    checkerFile = `/tmp/golden_checker_${courseCode}_${ts}.md`;
+    fs.writeFileSync(checkerFile, checkerBrief);
+  }
 
   const projectDir = __dirname.replace('/services', '');
   const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
@@ -2912,10 +3103,10 @@ async function spawnGoldenBuildAgents(courseCode, targetSeeds = 50, terminal = '
         last_heartbeat: new Date().toISOString(),
         requested_by: 'dashboard',
         terminal: effectiveTerminal,
-        agent_count: 2,
+        agent_count: isCalibration ? 1 : 2,
         respawn_count: 0,
         machine_name: MACHINE_NAME,
-        build_mode: 'golden'
+        build_mode: buildMode
       })
       .select('id')
       .single();
@@ -2926,8 +3117,9 @@ async function spawnGoldenBuildAgents(courseCode, targetSeeds = 50, terminal = '
 
   // Spawn Creator agent
   const creatorCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+  const creatorLabel = isCalibration ? 'Calibration Creator' : 'Golden Creator';
 
-  console.log(`[GOLDEN] Spawning Creator for ${courseCode} in ${effectiveTerminal}`);
+  console.log(`[GOLDEN] Spawning ${creatorLabel} for ${courseCode} in ${effectiveTerminal} (phase: ${phase})`);
 
   if (effectiveTerminal === 'headless') {
     const logsDir = require('path').join(projectDir, 'logs');
@@ -2947,7 +3139,7 @@ async function spawnGoldenBuildAgents(courseCode, targetSeeds = 50, terminal = '
   activate
   set newWindow to (create window with default profile)
   tell current session of newWindow
-    set name to "Golden Creator: ${courseCode}"
+    set name to "${creatorLabel}: ${courseCode}"
     write text "${escapedCreatorCmd}"
   end tell
 end tell`
@@ -2961,28 +3153,29 @@ end tell`;
     creatorAgent.on('exit', (code) => console.log(`[GOLDEN] Creator terminal launched (osascript exit: ${code})`));
   }
 
-  // Wait 5 seconds before spawning Checker
-  await new Promise(resolve => setTimeout(resolve, 5000));
+  // Only spawn Checker for golden phase (not calibration — human is the checker)
+  if (!isCalibration) {
+    // Wait 5 seconds before spawning Checker
+    await new Promise(resolve => setTimeout(resolve, 5000));
 
-  // Spawn Checker agent
-  const checkerCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
+    const checkerCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
 
-  console.log(`[GOLDEN] Spawning Checker for ${courseCode} in ${effectiveTerminal}`);
+    console.log(`[GOLDEN] Spawning Checker for ${courseCode} in ${effectiveTerminal}`);
 
-  if (effectiveTerminal === 'headless') {
-    const logsDir = require('path').join(projectDir, 'logs');
+    if (effectiveTerminal === 'headless') {
+      const logsDir = require('path').join(projectDir, 'logs');
 
-    const logFile = `${logsDir}/golden-checker-${courseCode}.log`;
-    const out = fs.openSync(logFile, 'a');
-    const err = fs.openSync(logFile, 'a');
+      const logFile = `${logsDir}/golden-checker-${courseCode}.log`;
+      const out = fs.openSync(logFile, 'a');
+      const err = fs.openSync(logFile, 'a');
 
-    const agent = spawn('bash', ['-c', checkerCmd], { stdio: ['ignore', out, err], detached: true });
-    agent.unref();
-    console.log(`[GOLDEN] Checker launched headless (pid: ${agent.pid}, log: ${logFile})`);
-  } else {
-    const escapedCheckerCmd = checkerCmd.replace(/"/g, '\\"');
-    const osascriptChecker = effectiveTerminal === 'iTerm2'
-      ? `tell application "iTerm"
+      const agent = spawn('bash', ['-c', checkerCmd], { stdio: ['ignore', out, err], detached: true });
+      agent.unref();
+      console.log(`[GOLDEN] Checker launched headless (pid: ${agent.pid}, log: ${logFile})`);
+    } else {
+      const escapedCheckerCmd = checkerCmd.replace(/"/g, '\\"');
+      const osascriptChecker = effectiveTerminal === 'iTerm2'
+        ? `tell application "iTerm"
   activate
   set newWindow to (create window with default profile)
   tell current session of newWindow
@@ -2990,24 +3183,27 @@ end tell`;
     write text "${escapedCheckerCmd}"
   end tell
 end tell`
-      : `tell application "Terminal"
+        : `tell application "Terminal"
   activate
   do script "${escapedCheckerCmd}"
 end tell`;
 
-    const checkerAgent = spawn('osascript', ['-e', osascriptChecker], { stdio: 'pipe', detached: true });
-    checkerAgent.on('error', (e) => console.error('[GOLDEN] Checker osascript error:', e.message));
-    checkerAgent.on('exit', (code) => console.log(`[GOLDEN] Checker terminal launched (osascript exit: ${code})`));
+      const checkerAgent = spawn('osascript', ['-e', osascriptChecker], { stdio: 'pipe', detached: true });
+      checkerAgent.on('error', (e) => console.error('[GOLDEN] Checker osascript error:', e.message));
+      checkerAgent.on('exit', (code) => console.log(`[GOLDEN] Checker terminal launched (osascript exit: ${code})`));
+    }
   }
 
+  const agentDesc = isCalibration ? 'Creator agent (human-collaboration)' : 'Creator + Checker agents';
   return {
     ok: true,
     course_code: courseCode,
     job_id: jobId,
+    phase,
     target_seeds: targetSeeds,
     creator_brief_file: creatorFile,
     checker_brief_file: checkerFile,
-    message: `Golden build started — Creator + Checker agents spawned for seeds 1-${targetSeeds}`
+    message: `${isCalibration ? 'Calibration' : 'Golden'} build started — ${agentDesc} spawned for seeds 1-${targetSeeds}`
   };
 }
 
@@ -11172,6 +11368,11 @@ app.post('/api/build/golden/:courseCode', async (req, res) => {
     const targetSeeds = parseInt(req.query.target) || 50;
     const dryRun = req.query.dry_run === 'true';
     const terminal = req.query.terminal || 'iTerm2';
+    const phase = req.query.phase || 'golden'; // 'calibration' or 'golden'
+
+    if (!['calibration', 'golden'].includes(phase)) {
+      return res.status(400).json({ error: 'phase must be "calibration" or "golden"' });
+    }
 
     if (targetSeeds < 1 || targetSeeds > 50) {
       return res.status(400).json({ error: 'target must be between 1 and 50' });
@@ -11190,7 +11391,7 @@ app.post('/api/build/golden/:courseCode', async (req, res) => {
       return res.status(409).json({ error: 'Golden build already running', job_id: activeJob.id });
     }
 
-    const result = await spawnGoldenBuildAgents(courseCode, targetSeeds, terminal, dryRun);
+    const result = await spawnGoldenBuildAgents(courseCode, targetSeeds, terminal, dryRun, phase);
     res.json(result);
   } catch (err) {
     console.error('[GOLDEN] Error starting golden build:', err);
