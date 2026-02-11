@@ -264,6 +264,33 @@ function normalizeForContainment(text) {
     .trim();
 }
 
+/**
+ * Word-based containment check for languages with bracket structures (e.g. German).
+ * Instead of requiring LEGO target as a contiguous substring, checks that ALL words
+ * from the LEGO target appear in the phrase (in any position).
+ *
+ * Example: LEGO "versuche mich an ein Wort zu erinnern"
+ *   "Ich versuche jetzt, mich an ein Wort zu erinnern." → PASS (all words present)
+ *   "Ich versuche Deutsch zu lernen." → FAIL (missing mich, an, ein, Wort, erinnern)
+ */
+function checkWordContainment(legoTarget, phraseTarget) {
+  const legoWords = normalizeForContainment(legoTarget).split(/\s+/);
+  const phraseWords = normalizeForContainment(phraseTarget).split(/\s+/);
+  // Every word in the LEGO must appear at least once in the phrase
+  const phraseWordCounts = {};
+  for (const w of phraseWords) {
+    phraseWordCounts[w] = (phraseWordCounts[w] || 0) + 1;
+  }
+  const legoWordCounts = {};
+  for (const w of legoWords) {
+    legoWordCounts[w] = (legoWordCounts[w] || 0) + 1;
+  }
+  for (const [word, count] of Object.entries(legoWordCounts)) {
+    if ((phraseWordCounts[word] || 0) < count) return false;
+  }
+  return true;
+}
+
 // =============================================================================
 // MARKDOWN PARSER FOR SEED SUBMISSIONS
 // Agents can submit in markdown format instead of JSON - fewer tokens, more natural
@@ -2112,8 +2139,36 @@ You are the coordinator. Build seeds ${firstSeed}-${lastSeed} (${seedsNeededCoun
 - Sub-agents submit as DRAFTS: POST /api/seed/complete?draft=true (?draft=true is CRITICAL — always)
 - Monitor: GET http://localhost:3471/api/course/${courseCode}/drafts (poll every 60s)
 - When all ${seedsNeededCount} drafts are in: POST http://localhost:3471/api/course/${courseCode}/finalize
-- If finalize returns collisions: spawn fix agents using the prompts from the response, then finalize again
+- If finalize returns 409 with collisions: fix them yourself (do NOT spawn separate agents). Details below.
 - If stalled: check which seeds are missing, respawn agents for gaps. Never give up.
+
+## Fixing Collisions Inline
+
+**STOP. READ THIS.** When finalize returns 409, the response body ALREADY CONTAINS the full draft JSON, collision details, AND available vocab for every colliding seed. You have EVERYTHING. Do NOT query Supabase. Do NOT call any other API endpoints. Do NOT search the codebase. Just parse the 409 response JSON you already have.
+
+Save the 409 response to a file, then work through it:
+
+\`\`\`bash
+# Step 1: Call finalize, save full response
+curl -s -X POST "http://localhost:3471/api/course/${courseCode}/finalize" -o /tmp/finalize_response.json
+
+# Step 2: Check if collisions (status 409 means collisions)
+# The response contains fix_instructions[].prompt with EVERYTHING per seed:
+#   - Collision notes (which LEGO collides with what)
+#   - Available vocab (all words the learner knows)
+#   - Full draft JSON (your starting point)
+\`\`\`
+
+For EACH colliding seed (all info is in fix_instructions[].prompt):
+1. Find the colliding LEGO (marked in collision notes)
+2. Pick an adjacent LEGO to merge with — whichever makes a more natural combined phrase
+3. Replace those two LEGOs with one M-LEGO: known = combined English, target = combined target, components = the two originals
+4. Write BUILD phrases (min 3) and USE phrases (min 8) using ONLY words from the "Available vocab" listed for that seed
+5. Drop all phrases from the merged-away LEGO. Keep all other LEGOs untouched.
+6. Re-index remaining LEGOs so idx values are sequential (1, 2, 3...)
+7. Write to /tmp/seed{N}.json and submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H "Content-Type: application/json" --data-binary @/tmp/seed{N}.json
+
+After ALL collisions are fixed, call finalize again. If new collisions emerge, repeat.
 - subagent_type: "general-purpose", model: "sonnet", run_in_background: true
 
 ## Sub-Agent Prompt Template
@@ -5286,24 +5341,32 @@ app.post('/api/seed/complete', async (req, res) => {
             });
           }
 
-          // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target (phonetic matching)
-          // The learning app uses this for character matching/highlighting
+          // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target
+          // german_validation=true: word-based (all LEGO words must appear in phrase)
+          // default: substring-based (LEGO target as contiguous substring)
           // Always runs — catches conjugation/clitic form violations
           {
+            const useWordContainment = req.query.german_validation === 'true';
             const legoTargetNorm = normalizeForContainment(lego.target);
-            const containmentFails = allPhrases.filter(p =>
-              !normalizeForContainment(p.target).includes(legoTargetNorm)
-            );
+            const containmentFails = allPhrases.filter(p => {
+              if (useWordContainment) {
+                return !checkWordContainment(lego.target, p.target);
+              }
+              return !normalizeForContainment(p.target).includes(legoTargetNorm);
+            });
             if (containmentFails.length > 0) {
+              const mode = useWordContainment ? 'word-based' : 'substring';
               errors.push({
                 type: 'lego_containment',
-                message: `${legoId}: ${containmentFails.length} phrase(s) do not contain the LEGO target text "${lego.target}" as a substring`,
+                message: `${legoId}: ${containmentFails.length} phrase(s) fail ${mode} containment for LEGO target "${lego.target}"`,
                 lego_id: legoId,
                 lego_target: lego.target,
                 failing_phrases: containmentFails.slice(0, 3).map(p => p.target),
-                hint: 'Every BUILD and USE phrase MUST contain the exact LEGO target text. No conjugation changes, no substitutions, no omissions.'
+                hint: useWordContainment
+                  ? 'Every BUILD and USE phrase must contain ALL words from the LEGO target (German word-order mode).'
+                  : 'Every BUILD and USE phrase MUST contain the exact LEGO target text. No conjugation changes, no substitutions, no omissions.'
               });
-              console.log(`✗ ${legoId}: CONTAINMENT - ${containmentFails.length} phrases missing LEGO target "${lego.target}"`);
+              console.log(`✗ ${legoId}: CONTAINMENT (${mode}) - ${containmentFails.length} phrases missing LEGO target "${lego.target}"`);
             }
           }
         }
@@ -10513,16 +10576,21 @@ app.post('/api/course/:code/finalize', async (req, res) => {
 
       console.log(`✗ FINALIZE ABORTED: ${collisions.length} collision(s) in ${collidingSeeds.length} seed(s)`);
 
-      // Build ready-to-use fix agent prompts, grouped into batches of ~5 seeds
+      // Build ready-to-use fix instructions, grouped into batches of ~5 seeds
       const draftMap = new Map(drafts.map(d => [d.seed_number, d]));
+      const chinese = isChinese(courseCode);
       const fixBatches = [];
       for (let i = 0; i < collidingSeeds.length; i += 5) {
         const batchSeeds = collidingSeeds.slice(i, i + 5);
 
-        const seedSections = batchSeeds.map(seedNum => {
+        const seedSections = await Promise.all(batchSeeds.map(async seedNum => {
           const draft = draftMap.get(seedNum);
           const seedCollisions = collisions.filter(c => c.seed_number === seedNum);
           const draftJson = JSON.stringify(draft.submission_data, null, 2);
+
+          // Fetch available vocab for this seed so the coordinator doesn't need to
+          const vocabSet = await loadTranslationVocab(courseCode, seedNum);
+          const vocabStr = [...vocabSet].sort().join(chinese ? '' : ', ');
 
           const collisionNotes = seedCollisions.map(c =>
             `- LEGO L${c.lego_idx} "${c.lego_known}" → "${c.lego_target}" COLLIDES with seed ${c.conflicts_with.seed_number} which already has "${c.lego_known}" → "${c.conflicts_with.target_text}"\n  FIX: Merge L${c.lego_idx} with an adjacent LEGO to create a bigger M-LEGO whose English known text is different.`
@@ -10533,32 +10601,37 @@ app.post('/api/course/:code/finalize', async (req, res) => {
 **Collisions:**
 ${collisionNotes}
 
+**Available vocab (all words the learner knows by this seed):**
+${vocabStr}
+
 **Current draft (your starting point):**
 \`\`\`json
 ${draftJson}
 \`\`\``;
-        }).join('\n\n');
+        }));
 
         fixBatches.push({
           seeds: batchSeeds,
-          prompt: `You are fixing ZUT collisions for course ${courseCode}. Each seed below has a LEGO whose English "known" text clashes with another seed's LEGO (same known, different target). The fix is mechanical: merge the colliding LEGO with an adjacent LEGO from the same seed to create a bigger M-LEGO with a different (longer) English known text. Leave all other LEGOs and their phrases exactly as they are.
+          prompt: `You are fixing ZUT collisions for course ${courseCode}.
+
+**IMPORTANT: Everything you need is below — the draft JSON, collision notes, and available vocab for each seed. Do NOT query Supabase, call other endpoints, or search for anything. Just read this data and fix the seeds.**
+
+Each seed below has a LEGO whose English "known" text clashes with another seed's LEGO (same known, different target). The fix is mechanical: merge the colliding LEGO with an adjacent LEGO from the same seed to create a bigger M-LEGO with a different (longer) English known text. Leave all other LEGOs and their phrases exactly as they are.
 
 ## The fix in 4 steps
 1. Find the colliding LEGO (marked below)
 2. Pick an adjacent LEGO from the same seed to merge with — choose whichever makes a natural phrase
 3. Replace the two LEGOs with one M-LEGO: known = combined English, target = combined target, components = the two original LEGOs
-4. Write BUILD phrases (min 3: merged LEGO + prior vocab, fragments OK) and USE phrases (min 8: complete natural sentences containing the merged LEGO target as exact substring) for the new M-LEGO
+4. Write BUILD phrases (min 3: merged LEGO + prior vocab, fragments OK) and USE phrases (min 8: complete natural sentences containing the merged LEGO target as exact substring) for the new M-LEGO. The available vocab is listed per seed below — use ONLY these words in phrases.
 
 Re-index the remaining LEGOs so idx values are sequential (1, 2, 3...). Do NOT touch other LEGOs or their phrases.
 
 ## Seeds to fix
 
-${seedSections}
+${seedSections.join('\n\n')}
 
 ## Submitting
-For each fixed seed, fetch vocab first: curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=N" (returns comma-separated string — split on comma).
-
-Submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H "Content-Type: application/json" --data-binary @/tmp/seed{N}.json
+Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H "Content-Type: application/json" --data-binary @/tmp/seed{N}.json
 
 ## AUTONOMY: You are running unattended. NEVER ask questions. Fix every seed. If rejected, read the error, fix, retry.`
         });
@@ -10569,7 +10642,7 @@ Submit: curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H 
         message: `${collisions.length} LEGO collision(s) found — cannot finalize until resolved`,
         collisions,
         colliding_seeds: collidingSeeds,
-        fix_agents: fixBatches
+        fix_instructions: fixBatches
       });
     }
 

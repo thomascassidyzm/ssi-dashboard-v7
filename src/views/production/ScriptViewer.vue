@@ -126,6 +126,18 @@
               >
                 Expand All
               </button>
+              <button
+                @click="exportLearnerScript"
+                :disabled="!learningJourneyData"
+                class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
+                :class="{ 'opacity-50 cursor-not-allowed': !learningJourneyData }"
+                title="Export learner script as markdown"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Export
+              </button>
             </div>
 
             <!-- Pagination Controls (only show when data is loaded) -->
@@ -763,6 +775,56 @@ const collapseAllJourney = () => {
 
 const expandAllJourney = () => {
   learningJourneyRef.value?.expandAll();
+};
+
+// Export learner script as markdown download
+const exportLearnerScript = () => {
+  if (!learningJourneyData.value?.rounds) return;
+
+  const rounds = learningJourneyData.value.rounds;
+  const stats = learningJourneyData.value.stats;
+  const lines: string[] = [];
+
+  lines.push(`# ${courseCode.value} — Learner Script`);
+  lines.push('');
+  lines.push(`> ${stats.roundsGenerated} rounds | ${stats.totalItems} items | ${stats.legosLoaded} LEGOs`);
+  lines.push('');
+  lines.push('---');
+  lines.push('');
+
+  for (const round of rounds) {
+    const intro = round.items.find((i: any) => i.type === 'intro');
+    const known = intro?.known_text || '';
+    const target = intro?.target_text || '';
+    const reviews = round.spacedRepReviews || [];
+    const reviewStr = reviews.length > 0 ? `  [reviews: ${reviews.map((r: number) => 'R' + r).join(', ')}]` : '';
+
+    lines.push(`## R${round.roundNumber}  ${round.legoId}  "${known}" = **${target}**${reviewStr}`);
+    lines.push('');
+
+    for (const item of round.items) {
+      let label = item.type.toUpperCase();
+      if (item.type === 'intro') label = 'INTRO';
+      else if (item.type === 'debut') label = 'LEGO';
+      else if (item.type === 'build') label = `BUILD-${item.phrasePosition || '?'}`;
+      else if (item.type === 'use') label = `USE-${item.phrasePosition || '?'}`;
+      else if (item.type === 'review') label = `REVIEW R${item.reviewOfRound || '?'}`;
+      else if (item.type === 'consolidate') label = `CONSOLIDATE-${item.consolidateIndex || '?'}`;
+
+      const pad = Math.max(1, 18 - label.length);
+      lines.push(`  ${label}${' '.repeat(pad)}${item.known_text || ''}  →  ${item.target_text || ''}`);
+    }
+
+    lines.push('');
+  }
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${courseCode.value}-learner-script.md`;
+  a.click();
+  URL.revokeObjectURL(url);
 };
 
 // API Base URL - use localStorage (set by EnvironmentSwitcher), then env, then localhost orchestrator
