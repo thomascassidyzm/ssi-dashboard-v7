@@ -287,6 +287,31 @@
             <span>{{ qa.checked.toLocaleString() }}/{{ qa.total.toLocaleString() }} checked</span>
             <span v-if="qa.errors > 0" class="text-red-400">{{ qa.errors }} errors</span>
             <span v-if="qa.warnings > 0" class="text-amber-400">{{ qa.warnings }} warnings</span>
+            <template v-if="qa.flags > 0">
+              <button
+                v-if="!deleteFlaggedConfirming"
+                @click="deleteFlaggedConfirming = true"
+                class="text-red-400 hover:text-red-300 transition-colors ml-auto"
+              >
+                Delete flagged phrases
+              </button>
+              <template v-if="deleteFlaggedConfirming">
+                <span class="text-red-400 ml-auto">Delete {{ qa.flags }} flagged phrases?</span>
+                <button
+                  @click="deleteFlaggedPhrases"
+                  :disabled="deletingFlagged"
+                  class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white rounded transition-colors"
+                >
+                  {{ deletingFlagged ? 'Deleting...' : 'Confirm' }}
+                </button>
+                <button
+                  @click="deleteFlaggedConfirming = false"
+                  class="text-slate-400 hover:text-slate-200 transition-colors"
+                >
+                  Cancel
+                </button>
+              </template>
+            </template>
           </div>
           <!-- Unchecked Phrases -->
           <div v-if="qa.progress > 0 && qa.progress < 100 && uncheckedPhrases.length > 0" class="mt-2 bg-slate-700/20 border border-slate-600/50 rounded-lg p-3">
@@ -618,6 +643,10 @@ const uncheckedPhrases = ref([])
 const showUnchecked = ref(false)
 const markingChecked = ref(false)
 const uncheckedStatus = ref(null)
+
+// Delete flagged phrases state
+const deleteFlaggedConfirming = ref(false)
+const deletingFlagged = ref(false)
 
 const uncheckedGrouped = computed(() => {
   const groups = {}
@@ -1198,6 +1227,31 @@ async function markAllChecked() {
     uncheckedStatus.value = { ok: false, message: err.message }
   } finally {
     markingChecked.value = false
+  }
+}
+
+async function deleteFlaggedPhrases() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  deletingFlagged.value = true
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const response = await fetch(`${apiBase}/api/qa/flagged-phrases/${courseCode}`, {
+      method: 'DELETE',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.success) {
+      deleteFlaggedConfirming.value = false
+      fetchQASummary()
+      fetchSeedGrid()
+      fetchProgress()
+    }
+  } catch (err) {
+    console.error('Failed to delete flagged phrases:', err)
+  } finally {
+    deletingFlagged.value = false
   }
 }
 
