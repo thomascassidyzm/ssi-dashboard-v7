@@ -147,7 +147,7 @@
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ calibrationApproved }}/{{ goldenSeedCount }}</span>
+              <span class="text-xs font-mono text-slate-300">{{ calibrationDone }}/{{ goldenSeedCount }}</span>
               <span v-if="stageComplete('calibrate')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('calibrate')" class="stage-badge-locked">Locked</span>
               <button
@@ -189,7 +189,7 @@
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ goldenRangeApproved }}/{{ goldenRangeTotal }}</span>
+              <span class="text-xs font-mono text-slate-300">{{ goldenRangeDone }}/{{ goldenRangeTotal }}</span>
               <span v-if="stageComplete('golden')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('golden')" class="stage-badge-locked">Locked</span>
               <button
@@ -685,21 +685,32 @@ const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status ===
 
 // --- Pipeline computeds ---
 
+// Seed grid helpers: count finalized seeds in a range (ground truth from actual DB data)
+function seedGridFinalizedInRange(from, to) {
+  return seedGrid.value.filter(s => s.seed >= from && s.seed <= to && s.status === 'complete').length
+}
+
 const calibrationSeeds = computed(() => {
   return goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value)
 })
 
-const calibrationApproved = computed(() => {
-  return goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value && s.status === 'approved').length
+// Calibration done = either golden workflow approved OR seeds actually built (finalized in grid)
+const calibrationDone = computed(() => {
+  const goldenApproved = goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value && s.status === 'approved').length
+  const gridFinalized = seedGridFinalizedInRange(1, goldenSeedCount.value)
+  return Math.max(goldenApproved, gridFinalized)
 })
 
 const calibrationPercent = computed(() => {
   if (goldenSeedCount.value === 0) return 0
-  return Math.round((calibrationApproved.value / goldenSeedCount.value) * 100)
+  return Math.round((calibrationDone.value / goldenSeedCount.value) * 100)
 })
 
-const goldenRangeApproved = computed(() => {
-  return goldenSeeds.value.filter(s => s.seed_number > goldenSeedCount.value && s.seed_number <= 50 && s.status === 'approved').length
+// Golden range done = either golden workflow approved OR seeds actually built
+const goldenRangeDone = computed(() => {
+  const goldenApproved = goldenSeeds.value.filter(s => s.seed_number > goldenSeedCount.value && s.seed_number <= 50 && s.status === 'approved').length
+  const gridFinalized = seedGridFinalizedInRange(goldenSeedCount.value + 1, 50)
+  return Math.max(goldenApproved, gridFinalized)
 })
 
 const goldenRangeTotal = computed(() => {
@@ -708,7 +719,7 @@ const goldenRangeTotal = computed(() => {
 
 const goldenRangePercent = computed(() => {
   if (goldenRangeTotal.value === 0) return 0
-  return Math.round((goldenRangeApproved.value / goldenRangeTotal.value) * 100)
+  return Math.round((goldenRangeDone.value / goldenRangeTotal.value) * 100)
 })
 
 const translatePercent = computed(() => {
@@ -729,16 +740,13 @@ const fullBuildDecomposed = computed(() => Math.max(0, progress.value.currentSee
 const pipelinePhase = computed(() => {
   const translated = progress.value.seedsTranslated || 0
   const totalSeeds = progress.value.totalSeeds || 668
-  const calApproved = calibrationApproved.value
-  const goldApproved = goldenRangeApproved.value
-  const goldTotal = goldenRangeTotal.value
   const decomposed = progress.value.currentSeed || 0
   const qaProgress = qa.value?.progress || 0
   const mvpTarget = seedCount.value
 
   if (translated < totalSeeds) return 'translate'
-  if (calApproved < goldenSeedCount.value) return 'calibrate'
-  if (goldApproved < goldTotal) return 'golden'
+  if (calibrationDone.value < goldenSeedCount.value) return 'calibrate'
+  if (goldenRangeDone.value < goldenRangeTotal.value) return 'golden'
   if (decomposed < mvpTarget) return 'mvp'
   if (qaProgress < 100) return 'qa'
   return 'golden-qa'
@@ -747,11 +755,11 @@ const pipelinePhase = computed(() => {
 function stageComplete(stage) {
   switch (stage) {
     case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
-    case 'calibrate': return calibrationApproved.value >= goldenSeedCount.value
-    case 'golden': return goldenRangeApproved.value >= goldenRangeTotal.value && goldenRangeTotal.value > 0
+    case 'calibrate': return calibrationDone.value >= goldenSeedCount.value
+    case 'golden': return goldenRangeDone.value >= goldenRangeTotal.value && goldenRangeTotal.value > 0
     case 'mvp': return progress.value.currentSeed >= seedCount.value
     case 'qa': return qa.value.progress >= 100
-    case 'golden-qa': return false // manual check
+    case 'golden-qa': return false
     default: return false
   }
 }
