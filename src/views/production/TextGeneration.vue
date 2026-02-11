@@ -418,6 +418,112 @@
         </div>
       </section>
 
+      <!-- Golden Seed Builder -->
+      <section v-if="!isCreateMode" class="bg-slate-800/30 border rounded-lg p-6"
+        :class="goldenStatus.running ? 'border-amber-500/30' : 'border-slate-700/50'"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span
+              class="w-2 h-2 rounded-full"
+              :class="goldenStatus.running ? 'bg-amber-500 animate-pulse' : goldenStatus.allApproved ? 'bg-emerald-500' : 'bg-slate-500'"
+            ></span>
+            <div>
+              <div class="text-xs text-slate-500 uppercase tracking-wide">Golden Seeds</div>
+              <div class="text-sm font-medium text-slate-200">Creator + Checker (Two-Agent)</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2" v-if="!goldenStatus.running">
+              <label class="text-xs text-slate-400">Seeds:</label>
+              <input
+                v-model.number="goldenTargetSeeds"
+                type="number" min="1" max="50"
+                class="w-16 px-2 py-1 rounded border bg-slate-700/50 border-slate-600/50 text-slate-200 text-sm text-center"
+              />
+            </div>
+            <button
+              v-if="!goldenStatus.running && !goldenStatus.allApproved"
+              @click="startGoldenBuild"
+              :disabled="goldenStarting"
+              class="px-4 py-2 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-sm font-medium rounded-lg transition-all"
+            >
+              {{ goldenStarting ? 'Spawning...' : 'Build Golden Seeds' }}
+            </button>
+            <button
+              v-if="goldenStatus.allApproved && !goldenStatus.finalized"
+              @click="finalizeGoldenSeeds"
+              :disabled="goldenFinalizing"
+              class="px-4 py-2 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-sm font-medium rounded-lg transition-all"
+            >
+              {{ goldenFinalizing ? 'Finalizing...' : 'Approve & Save Calibration' }}
+            </button>
+            <span v-if="goldenStatus.running" class="text-xs text-amber-400 animate-pulse">Running...</span>
+            <span v-if="goldenStatus.allApproved" class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded uppercase">All Approved</span>
+          </div>
+        </div>
+
+        <!-- Golden Progress Bar -->
+        <div v-if="goldenSeeds.length > 0" class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3">
+          <div
+            class="h-full transition-all duration-500 rounded-full bg-amber-500"
+            :style="{ width: `${goldenProgressPercent}%` }"
+          ></div>
+        </div>
+
+        <!-- Golden Stats -->
+        <div v-if="goldenSeeds.length > 0" class="grid grid-cols-5 gap-4 text-center mb-4">
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold text-emerald-400">{{ goldenSummary.approved }}</div>
+            <div class="text-xs text-slate-500">approved</div>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold text-amber-400">{{ goldenSummary.submitted + goldenSummary.checking }}</div>
+            <div class="text-xs text-slate-500">in review</div>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold text-red-400">{{ goldenSummary.flagged }}</div>
+            <div class="text-xs text-slate-500">flagged</div>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold text-orange-400">{{ goldenSummary.escalated }}</div>
+            <div class="text-xs text-slate-500">escalated</div>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold text-slate-400">{{ goldenSummary.empty }}</div>
+            <div class="text-xs text-slate-500">pending</div>
+          </div>
+        </div>
+
+        <!-- Golden Seed Grid -->
+        <div v-if="goldenSeeds.length > 0" class="flex flex-wrap gap-1">
+          <div
+            v-for="cell in goldenSeeds"
+            :key="cell.seed_number"
+            class="w-6 h-6 rounded-sm cursor-default transition-colors flex items-center justify-center text-xs font-mono"
+            :class="goldenCellClass(cell)"
+            :title="`S${cell.seed_number}: ${cell.status} (${cell.phrases}P, ${cell.flags} flags, round ${cell.round})`"
+          >
+            {{ cell.seed_number }}
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div v-if="goldenSeeds.length > 0" class="flex items-center gap-4 mt-3 text-xs text-slate-500">
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/80"></span> Empty</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/80"></span> Submitted</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80"></span> Checking</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-red-500/80"></span> Flagged</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Approved</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-orange-500/80"></span> Escalated</span>
+        </div>
+
+        <!-- Golden Status Message -->
+        <div v-if="goldenStatusMessage" class="mt-3 text-xs" :class="goldenStatusMessage.ok ? 'text-emerald-400' : 'text-red-400'">
+          {{ goldenStatusMessage.text }}
+        </div>
+      </section>
+
       <!-- Controls -->
       <section class="flex justify-end gap-3">
         <button
@@ -547,6 +653,50 @@ const uncheckedGrouped = computed(() => {
   }
   return Object.values(groups).sort((a, b) => a.seed - b.seed)
 })
+
+// Golden seed builder state
+const goldenSeeds = ref([])
+const goldenTargetSeeds = ref(50)
+const goldenStarting = ref(false)
+const goldenFinalizing = ref(false)
+const goldenStatusMessage = ref(null)
+
+const goldenStatus = computed(() => {
+  const seeds = goldenSeeds.value
+  const approved = seeds.filter(s => s.status === 'approved').length
+  const allApproved = seeds.length > 0 && approved === seeds.length
+  const running = seeds.length > 0 && seeds.some(s => ['submitted', 'checking', 'flagged'].includes(s.status))
+  return { running, allApproved, finalized: false, approved }
+})
+
+const goldenSummary = computed(() => {
+  const seeds = goldenSeeds.value
+  return {
+    approved: seeds.filter(s => s.status === 'approved').length,
+    submitted: seeds.filter(s => s.status === 'submitted').length,
+    checking: seeds.filter(s => s.status === 'checking').length,
+    flagged: seeds.filter(s => s.status === 'flagged').length,
+    escalated: seeds.filter(s => s.status === 'escalated').length,
+    empty: seeds.filter(s => s.status === 'empty').length
+  }
+})
+
+const goldenProgressPercent = computed(() => {
+  if (goldenSeeds.value.length === 0) return 0
+  const approved = goldenSeeds.value.filter(s => s.status === 'approved').length
+  return Math.round((approved / goldenSeeds.value.length) * 100)
+})
+
+function goldenCellClass(cell) {
+  switch (cell.status) {
+    case 'approved': return 'bg-emerald-500/80 text-emerald-100'
+    case 'submitted': return 'bg-cyan-500/80 text-cyan-100'
+    case 'checking': return 'bg-amber-500/80 text-amber-100'
+    case 'flagged': return 'bg-red-500/80 text-red-100'
+    case 'escalated': return 'bg-orange-500/80 text-orange-100'
+    default: return 'bg-slate-700/80 text-slate-500'
+  }
+}
 
 // UI state
 const isPolling = ref(false)
@@ -724,9 +874,10 @@ async function fetchProgress() {
       }
     }
 
-    // Also fetch seed grid and QA summary
+    // Also fetch seed grid, QA summary, and golden status
     fetchSeedGrid()
     fetchQASummary()
+    fetchGoldenStatus()
   } catch (error) {
     console.error('Failed to fetch progress:', error)
   }
@@ -1028,6 +1179,79 @@ async function killAgent(pid) {
   } catch (error) {
     console.error('Failed to kill agent:', error)
     console.error('Failed to kill agent:', error)
+  }
+}
+
+// Golden seed builder methods
+async function fetchGoldenStatus() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || isCreateMode.value) return
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/golden/status/${courseCode}?target=${goldenTargetSeeds.value}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      goldenSeeds.value = data.seeds || []
+    }
+  } catch (err) {
+    // Golden endpoints may not exist yet
+  }
+}
+
+async function startGoldenBuild() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  goldenStarting.value = true
+  goldenStatusMessage.value = null
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
+    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
+
+    const response = await fetch(`${apiBase}/api/build/golden/${courseCode}?target=${goldenTargetSeeds.value}&terminal=${terminal}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      goldenStatusMessage.value = { ok: true, text: result.message }
+      fetchGoldenStatus()
+    } else {
+      goldenStatusMessage.value = { ok: false, text: result.error || 'Failed to start golden build' }
+    }
+  } catch (err) {
+    goldenStatusMessage.value = { ok: false, text: err.message }
+  } finally {
+    goldenStarting.value = false
+  }
+}
+
+async function finalizeGoldenSeeds() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  goldenFinalizing.value = true
+  goldenStatusMessage.value = null
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const response = await fetch(`${apiBase}/api/golden/finalize/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ target_seeds: goldenTargetSeeds.value })
+    })
+    const result = await response.json()
+    if (result.success) {
+      goldenStatusMessage.value = { ok: true, text: result.message }
+    } else {
+      goldenStatusMessage.value = { ok: false, text: result.error || 'Failed to finalize' }
+    }
+  } catch (err) {
+    goldenStatusMessage.value = { ok: false, text: err.message }
+  } finally {
+    goldenFinalizing.value = false
   }
 }
 

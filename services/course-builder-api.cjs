@@ -2488,6 +2488,530 @@ Do NOT spawn sub-agents — this is a single focused review of ~500-700 phrases.
 }
 
 /**
+ * Generate the Creator agent brief for golden seed building.
+ * The Creator builds decompositions for seeds 1-N, submits them, and handles revision cycles.
+ */
+function generateGoldenCreatorBrief({ courseCode, courseInfo, targetSeeds, crossCourseSummaries, translationDoctrine }) {
+  const langName = courseInfo?.display_name || courseCode;
+  const targetLang = courseCode.split('_')[0];
+
+  return `# Golden Seed Creator — ${courseCode} (${langName})
+
+You are building the first ${targetSeeds} golden seed decompositions for **${courseCode}** (${langName}).
+These golden seeds will calibrate all future autonomous agents for this course. Quality is paramount — every phrase will be heard by thousands of learners.
+
+## Your Role
+
+You are a world-class language teacher and course designer applying the SSi methodology. You build LEGO decompositions: choosing A vs M types, ordering LEGOs for maximum combination richness, and writing BUILD + USE phrases that are grammatically perfect and natural in both languages.
+
+## SSi Methodology — Key Rules
+
+### LEGO Types
+- **A-LEGO (Atomic)**: Single meaningful word. Often appears inside M-LEGOs to create overlaps.
+- **M-LEGO (Molecular)**: Multi-word phrase. Has \`components\` array showing its building blocks.
+- **Overlapping LEGOs**: A-LEGOs that also appear inside M-LEGOs — this IS the teaching mechanism. The learner sees a word alone, then sees it inside a phrase, inferring the pattern without explanation.
+
+### BUILD Phrases
+- Combine the **new LEGO** with **previously introduced LEGOs**
+- Show how the new piece "plugs in" to what the learner already knows
+- Fragments OK — don't need to be complete sentences
+- Must contain the **exact LEGO target** (case-insensitive match)
+- NOT the LEGO by itself, NOT component build-up
+- Flexible quantity based on LEGO length (cognitive load)
+
+### USE Phrases
+- **Complete, natural sentences** a real learner would say — NEVER fragments
+- Minimum 5 per LEGO, scored 5-9
+- Mix of MEDIUM (LEGO + 4-6 syllables) and LONG (LEGO + 7-10 syllables)
+- Go into eternal spaced repetition — quality matters enormously
+- Must contain the **exact LEGO target** (case-insensitive match)
+- Score 4 or below = rewrite, don't submit
+
+### LEGO Form Is Fixed
+LEGOs must be used **exactly as-is** in all phrases — never conjugated or inflected.
+If a LEGO is "ga" (ik ga), only write phrases where "ga" is the correct form.
+Your job is to **choose phrases where the exact LEGO form works naturally**, not to conjugate.
+
+### Decomposition Strategy
+- Order LEGOs by combination richness — high-utility items that combine well come first
+- Non-greedy: introduce A-LEGOs before their containing M-LEGOs when possible
+- Structural mismatches between languages get absorbed into M-LEGOs
+- Tiling: the seed CAN be recomposed from its LEGO targets (sanity check, overlaps allowed)
+
+### Word Order Differences → M-LEGOs Are Required
+When the target language orders words differently from the known language, you MUST use M-LEGOs to show the correct order. A-LEGOs alone would leave the learner guessing (and they'd guess English order, which is wrong).
+
+**Example (Spanish adjective placement):**
+\`\`\`
+A-LEGO: "blue" → "azul"
+A-LEGO: "thing" → "cosa"
+M-LEGO: "blue thing" → "cosa azul"  ← REQUIRED — shows reversed order
+\`\`\`
+Without the M-LEGO, a learner with "azul" and "cosa" would say "azul cosa" (English order = wrong).
+With the M-LEGO, the learner hears "cosa azul" and infers the pattern without explanation.
+
+This applies to any word-order difference: verb position, adjective placement, particle order, prepositional phrases. **Especially early in the course**, front-load M-LEGOs that demonstrate the target language's ordering patterns. The learner needs to hear the correct assembly before they can produce it.
+
+### ZUT (Zero Uncertainty Test)
+Same KNOWN text → same TARGET text. Always. Use different natural phrases to disambiguate.
+
+${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
+## Cross-Course Reference (How Other Languages Decomposed These Seeds)
+
+Study these summaries to understand decomposition patterns. For full detail on any seed, fetch from the API.
+
+${crossCourseSummaries || '(No cross-course calibrations available yet — you are pioneering!)'}
+
+## Protocol — For Each Seed N (1 → ${targetSeeds})
+
+### Step 1: Fetch cross-course examples
+\`\`\`bash
+curl -s "http://localhost:3471/api/calibrations/seed/$N"
+\`\`\`
+Study how other languages decomposed this seed. Look for patterns in A vs M decisions, LEGO ordering, and key insights.
+
+### Step 2: Fetch current vocabulary
+\`\`\`bash
+curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
+\`\`\`
+This shows all LEGOs introduced in seeds before N. Your BUILD/USE phrases can ONLY use this vocabulary plus the new LEGOs you introduce.
+
+### Step 3: Fetch the seed translation
+\`\`\`bash
+curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq '.seeds[] | select(.seed_number == '$N')'
+\`\`\`
+
+### Step 4: Build the decomposition
+Design LEGOs (A/M types, ordering) and write BUILD + USE phrases. Consider:
+- What LEGOs maximize combination richness with existing vocabulary?
+- Would overlapping LEGOs help teach a pattern?
+- Are BUILD phrases showing genuine "plug-in" value?
+- Are USE phrases things a real learner would say?
+
+### Step 5: Submit
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&skip_validation=true" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "course_code": "${courseCode}",
+    "seed_number": '$N',
+    "known_text": "<from step 3>",
+    "target_text": "<from step 3>",
+    "legos": [
+      {
+        "idx": 1, "type": "A", "known": "...", "target": "...",
+        "build": [{"known": "...", "target": "..."}],
+        "use": [{"known": "...", "target": "...", "score": 7}]
+      }
+    ]
+  }'
+\`\`\`
+
+### Step 6: Poll for review
+\`\`\`bash
+curl -s "http://localhost:3471/api/golden/seed-status/${courseCode}/$N"
+\`\`\`
+Poll every 30 seconds. Wait for the Checker agent to review.
+
+### Step 7: Handle result
+- **status = "approved"** → Move to seed N+1
+- **status = "flagged"** → Read the flags carefully. **Full rebuild**: wipe the seed and resubmit from scratch.
+  \`\`\`bash
+  # Wipe the seed (delete phrases + LEGOs)
+  curl -s -X POST "http://localhost:3471/api/build/rebuild/${courseCode}" \\
+    -H "Content-Type: application/json" \\
+    -d '{"from_seed": '$N', "to_seed": '$N'}'
+  # Then rebuild and resubmit (go back to Step 4)
+  \`\`\`
+- **status = "escalated"** (round >= 3) → Log it and move to seed N+1. A human will handle it.
+
+## Rebuild Rule
+
+**ANY flag triggers a full rebuild of the seed.** No patching individual phrases.
+When you rebuild, you may change LEGO structure, ordering, A/M decisions — whatever the flags suggest.
+A full rebuild ensures consistency after structural changes.
+
+## AUTONOMY
+
+You are running unattended. NEVER ask questions. Process every seed sequentially from 1 to ${targetSeeds}.
+Do NOT spawn sub-agents. Work through seeds one at a time, carefully and thoroughly.
+Work SLOWLY AND STEADILY — quality over speed. Each phrase will be heard by thousands of learners.
+
+When you finish all ${targetSeeds} seeds, submit them as calibration data:
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/golden/finalize/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"target_seeds": ${targetSeeds}}'
+\`\`\`
+`;
+}
+
+/**
+ * Generate the Checker agent brief for golden seed quality review.
+ * The Checker reviews each seed for grammar, naturalness, and pedagogical quality.
+ */
+function generateGoldenCheckerBrief({ courseCode, courseInfo, targetSeeds, crossCourseSummaries, translationDoctrine }) {
+  const langName = courseInfo?.display_name || courseCode;
+
+  return `# Golden Seed Checker — ${courseCode} (${langName})
+
+You are the quality reviewer for golden seed decompositions of **${courseCode}** (${langName}).
+Your job is to ensure every seed is grammatically correct, natural in both languages, and pedagogically powerful.
+These ${targetSeeds} golden seeds will calibrate ALL future autonomous agents — your review determines the quality bar.
+
+## Your Role
+
+You are a meticulous linguist and pedagogy expert. You review each seed's LEGO decomposition and every BUILD/USE phrase against strict criteria. You flag issues with detailed, actionable feedback. You approve seeds that meet the bar.
+
+## SSi Methodology — Key Rules
+
+### BUILD Phrases
+- Combine the **new LEGO** with **previously introduced LEGOs**
+- Show how the new piece "plugs in" — NOT the LEGO by itself, NOT component build-up
+- Fragments OK, must contain exact LEGO target
+
+### USE Phrases
+- Complete, natural sentences for eternal spaced repetition
+- Must be things a real learner would say
+- Scored 5-9 (4 or below = reject)
+- Must contain exact LEGO target
+
+### LEGO Form Is Fixed
+LEGOs are used exactly as-is — never conjugated or inflected.
+If a phrase forces wrong conjugation, it's an error.
+
+### Word Order Differences → M-LEGOs Are Required
+When the target language orders words differently from English, the decomposition MUST include M-LEGOs that show the correct order. A-LEGOs alone would leave the learner assembling words in English order (wrong).
+
+Example: Spanish "blue thing" = "cosa azul" (reversed). Needs 3 LEGOs: A "blue"→"azul", A "thing"→"cosa", M "blue thing"→"cosa azul". Without the M-LEGO, the learner would say "azul cosa".
+
+Flag decompositions that rely on A-LEGOs alone when word order differs between English and ${langName}. Especially critical in early seeds.
+
+${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
+## Cross-Course Reference
+
+${crossCourseSummaries || '(No cross-course calibrations available yet)'}
+
+## QA Criteria (Priority Order)
+
+### 1. GRAMMAR (BOTH LANGUAGES) — Most Critical
+- Is every phrase grammatically correct in BOTH English AND ${langName}?
+- Check: verb conjugation, agreement, case, word order, prepositions, pronouns, articles
+- Grammar errors teach learners wrong patterns — this is the primary quality gate
+
+### 2. NATURALNESS
+- "Would a real speaker say this?" in both languages
+- Flag: stilted, textbook-sounding, contrived, semantically nonsensical
+- Keep: everyday speech, things learners want to say
+
+### 3. LEGO FORM CHECK
+- Does every BUILD/USE phrase contain the **exact** LEGO target text? (case-insensitive)
+- Is the LEGO form used in a context where it's grammatically correct?
+
+### 4. PEDAGOGY — BUILD Phrase Quality
+- Do BUILD phrases show genuine recombination (new LEGO + known vocabulary)?
+- Are they NOT just the LEGO by itself or with meaningless filler?
+- Do they demonstrate how pieces "plug in"?
+
+### 5. PEDAGOGY — USE Phrase Quality
+- Are USE phrases complete sentences (not fragments)?
+- Do they show genuinely different contexts (not near-duplicates)?
+- Are they things a learner would actually want to say?
+
+### 6. DECOMPOSITION STRATEGY
+- Are A vs M decisions optimal? Would different choices produce richer phrases?
+- Does LEGO ordering maximize combination richness?
+- Is tiling valid (seed reconstructable from LEGOs)?
+- **Word order**: Where ${langName} orders words differently from English (verb position, adjective placement, etc.), are there M-LEGOs showing the correct order? A-LEGOs alone for reordered elements is a flag — the learner would assemble them in English order.
+
+### 7. REGISTER/DIALECT
+- If translation doctrine exists, check compliance (formal vs casual, regional variants)
+
+## Protocol
+
+### Monitor for submitted seeds
+Poll every 20 seconds starting from seed 1:
+\`\`\`bash
+curl -s "http://localhost:3471/api/golden/seed-status/${courseCode}/$N"
+\`\`\`
+
+### When status = "submitted" or "submitted" with unchecked phrases:
+
+#### Step 1: Fetch the seed's phrases
+\`\`\`bash
+curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min=$N&seed_max=$N&limit=500"
+\`\`\`
+
+#### Step 2: Fetch cross-course comparison
+\`\`\`bash
+curl -s "http://localhost:3471/api/calibrations/seed/$N"
+\`\`\`
+
+#### Step 3: Review every phrase against criteria
+Go through each BUILD and USE phrase. Check grammar in both languages, naturalness, LEGO form containment, pedagogical value.
+
+#### Step 4a: If issues found → Flag
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/qa/bulk-flag" \\
+  -H "Content-Type: application/json" \\
+  -d '{"flags": [
+    {
+      "course_code": "${courseCode}",
+      "phrase_id": "<phrase_id or null for seed-level>",
+      "seed_number": '$N',
+      "check_type": "<grammar|naturalness|decomposition|pedagogy>",
+      "severity": "<error|warning>",
+      "issue": "S'$N' L<NN> <B/U><NN>: <brief description of issue>",
+      "details": {
+        "phrase_id": "<id>",
+        "current_known": "<current known text>",
+        "current_target": "<current target text>",
+        "suggestion": "<what it should be>",
+        "reason": "<why this is wrong>"
+      }
+    }
+  ]}'
+\`\`\`
+
+Use \`error\` severity for grammar issues, \`warning\` for naturalness/pedagogy.
+For seed-level issues (LEGO ordering, A vs M decisions), set \`phrase_id\` to null and use check_type \`decomposition\` or \`pedagogy\`.
+
+#### Step 4b: If clean → Approve
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
+  -H "Content-Type: application/json" \\
+  -d '{"course_code": "${courseCode}", "seed_min": '$N', "seed_max": '$N'}'
+\`\`\`
+
+### After flagging or approving: Move to next seed
+The Creator handles rebuilds on any flag. After flagging, continue monitoring:
+- The Creator will wipe the seed (status → "empty") then resubmit (status → "submitted")
+- When you see "submitted" again, re-review the rebuilt version
+
+### Track revision rounds
+If a seed has been through 3 rounds of flags and the Creator still can't fix it, status will show "escalated". Skip it — a human will handle it.
+
+## AUTONOMY
+
+You are running unattended. NEVER ask questions. Monitor and review every seed from 1 to ${targetSeeds}.
+Do NOT spawn sub-agents. Work through seeds one at a time with meticulous attention to grammar and naturalness.
+Work SLOWLY AND STEADILY — your review determines whether thousands of learners get correct phrases.
+
+Be STRICT but FAIR. Flag genuine issues with clear, actionable feedback. Don't flag style preferences — focus on correctness and naturalness.
+`;
+}
+
+/**
+ * Build cross-course summaries for seeds 1-5 (compact format for briefs).
+ * Fetches from GET /api/calibrations/seed/:num for each seed.
+ */
+async function buildCrossCourseSummaries(maxSeed = 5) {
+  const lines = [];
+  for (let n = 1; n <= maxSeed; n++) {
+    // Query calibrations directly from DB
+    const { data: courses } = await supabase
+      .from('courses')
+      .select('course_code, display_name, quality_rules')
+      .not('quality_rules', 'is', null);
+
+    if (!courses || courses.length === 0) continue;
+
+    const comparisons = [];
+    for (const course of courses) {
+      // Only include Golden 50 courses (built with the two-agent standard)
+      const goldenCount = course.quality_rules?.golden_seed_count || 10;
+      if (goldenCount < 50) continue;
+
+      const golden = course.quality_rules?.golden_decompositions || [];
+      const seed = golden.find(g => g.seed_number === n);
+      if (!seed) continue;
+
+      const legoSummary = (seed.legos || []).map(l => {
+        const label = l.type === 'M' ? 'M' : 'A';
+        return `${label}: "${l.known}" → "${l.target}"`;
+      });
+
+      comparisons.push({
+        course: course.course_code,
+        name: course.display_name,
+        known: seed.known_text,
+        target: seed.target_text,
+        legos: legoSummary,
+        insight: seed.key_insight || ''
+      });
+    }
+
+    if (comparisons.length === 0) continue;
+
+    lines.push(`### Seed ${n}: "${comparisons[0].known}"`);
+    for (const c of comparisons) {
+      lines.push(`**${c.course}** (${c.name}): ${c.target}`);
+      lines.push(`  LEGOs: ${c.legos.join(' | ')}`);
+      if (c.insight) lines.push(`  Insight: ${c.insight}`);
+    }
+    lines.push('');
+  }
+
+  return lines.length > 0 ? lines.join('\n') : null;
+}
+
+/**
+ * Spawn two golden seed builder agents (Creator + Checker) for a course.
+ * Returns job info. Supports dry_run mode to preview briefs without spawning.
+ */
+async function spawnGoldenBuildAgents(courseCode, targetSeeds = 50, terminal = 'iTerm2', dryRun = false) {
+  // Fetch course info
+  const { data: courseInfo, error: courseErr } = await supabase
+    .from('courses')
+    .select('display_name, seed_count, quality_rules, translation_analysis')
+    .eq('course_code', courseCode)
+    .single();
+  if (courseErr) throw new Error(`Course not found: ${courseCode}`);
+
+  // Build cross-course summaries for seeds 1-5
+  const crossCourseSummaries = await buildCrossCourseSummaries(5);
+
+  // Extract translation doctrine if available
+  const translationDoctrine = courseInfo.quality_rules?.target_language_guidance
+    ? JSON.stringify(courseInfo.quality_rules.target_language_guidance, null, 2)
+    : null;
+
+  const briefParams = { courseCode, courseInfo, targetSeeds, crossCourseSummaries, translationDoctrine };
+
+  const creatorBrief = generateGoldenCreatorBrief(briefParams);
+  const checkerBrief = generateGoldenCheckerBrief(briefParams);
+
+  if (dryRun) {
+    return { dry_run: true, creator_brief: creatorBrief, checker_brief: checkerBrief, target_seeds: targetSeeds };
+  }
+
+  // Write briefs to temp files
+  const fs = require('fs');
+  const ts = Date.now();
+  const creatorFile = `/tmp/golden_creator_${courseCode}_${ts}.md`;
+  const checkerFile = `/tmp/golden_checker_${courseCode}_${ts}.md`;
+  fs.writeFileSync(creatorFile, creatorBrief);
+  fs.writeFileSync(checkerFile, checkerBrief);
+
+  const projectDir = __dirname.replace('/services', '');
+  const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+  // Create build_jobs record
+  let jobId = null;
+  try {
+    const { data: jobData, error: jobError } = await supabase
+      .from('build_jobs')
+      .insert({
+        course_code: courseCode,
+        pass: 'golden',
+        status: 'running',
+        current_seed: 0,
+        seeds_completed: 0,
+        total_seeds: targetSeeds,
+        started_at: new Date().toISOString(),
+        last_heartbeat: new Date().toISOString(),
+        requested_by: 'dashboard',
+        terminal: effectiveTerminal,
+        agent_count: 2,
+        respawn_count: 0,
+        machine_name: MACHINE_NAME,
+        build_mode: 'golden'
+      })
+      .select('id')
+      .single();
+    if (!jobError && jobData) jobId = jobData.id;
+  } catch (e) {
+    console.error('[GOLDEN] Failed to create build_jobs record:', e.message);
+  }
+
+  // Spawn Creator agent
+  const creatorCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+
+  console.log(`[GOLDEN] Spawning Creator for ${courseCode} in ${effectiveTerminal}`);
+
+  if (effectiveTerminal === 'headless') {
+    const logsDir = require('path').join(projectDir, 'logs');
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+
+    const logFile = `${logsDir}/golden-creator-${courseCode}.log`;
+    const out = fs.openSync(logFile, 'a');
+    const err = fs.openSync(logFile, 'a');
+
+    const agent = spawn('bash', ['-c', creatorCmd], { stdio: ['ignore', out, err], detached: true });
+    agent.unref();
+    console.log(`[GOLDEN] Creator launched headless (pid: ${agent.pid}, log: ${logFile})`);
+  } else {
+    const escapedCreatorCmd = creatorCmd.replace(/"/g, '\\"');
+    const osascriptCreator = effectiveTerminal === 'iTerm2'
+      ? `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    set name to "Golden Creator: ${courseCode}"
+    write text "${escapedCreatorCmd}"
+  end tell
+end tell`
+      : `tell application "Terminal"
+  activate
+  do script "${escapedCreatorCmd}"
+end tell`;
+
+    const creatorAgent = spawn('osascript', ['-e', osascriptCreator], { stdio: 'pipe', detached: true });
+    creatorAgent.on('error', (e) => console.error('[GOLDEN] Creator osascript error:', e.message));
+    creatorAgent.on('exit', (code) => console.log(`[GOLDEN] Creator terminal launched (osascript exit: ${code})`));
+  }
+
+  // Wait 5 seconds before spawning Checker
+  await new Promise(resolve => setTimeout(resolve, 5000));
+
+  // Spawn Checker agent
+  const checkerCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
+
+  console.log(`[GOLDEN] Spawning Checker for ${courseCode} in ${effectiveTerminal}`);
+
+  if (effectiveTerminal === 'headless') {
+    const logsDir = require('path').join(projectDir, 'logs');
+
+    const logFile = `${logsDir}/golden-checker-${courseCode}.log`;
+    const out = fs.openSync(logFile, 'a');
+    const err = fs.openSync(logFile, 'a');
+
+    const agent = spawn('bash', ['-c', checkerCmd], { stdio: ['ignore', out, err], detached: true });
+    agent.unref();
+    console.log(`[GOLDEN] Checker launched headless (pid: ${agent.pid}, log: ${logFile})`);
+  } else {
+    const escapedCheckerCmd = checkerCmd.replace(/"/g, '\\"');
+    const osascriptChecker = effectiveTerminal === 'iTerm2'
+      ? `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    set name to "Golden Checker: ${courseCode}"
+    write text "${escapedCheckerCmd}"
+  end tell
+end tell`
+      : `tell application "Terminal"
+  activate
+  do script "${escapedCheckerCmd}"
+end tell`;
+
+    const checkerAgent = spawn('osascript', ['-e', osascriptChecker], { stdio: 'pipe', detached: true });
+    checkerAgent.on('error', (e) => console.error('[GOLDEN] Checker osascript error:', e.message));
+    checkerAgent.on('exit', (code) => console.log(`[GOLDEN] Checker terminal launched (osascript exit: ${code})`));
+  }
+
+  return {
+    ok: true,
+    course_code: courseCode,
+    job_id: jobId,
+    target_seeds: targetSeeds,
+    creator_brief_file: creatorFile,
+    checker_brief_file: checkerFile,
+    message: `Golden build started — Creator + Checker agents spawned for seeds 1-${targetSeeds}`
+  };
+}
+
+/**
  * Spawn the parallel QA coordinator agent.
  * Mirrors spawnParallelBuildAgent() — spawns a coordinator that orchestrates sub-agents.
  */
@@ -9569,7 +10093,7 @@ app.post('/api/qa/flag', async (req, res) => {
     }
 
     // Valid check types from migration
-    const validTypes = ['grammar', 'semantic', 'naturalness', 'lego_frequency', 'lego_spread', 'variety', 'vocabulary'];
+    const validTypes = ['grammar', 'semantic', 'naturalness', 'lego_frequency', 'lego_spread', 'variety', 'vocabulary', 'decomposition', 'pedagogy'];
     if (!validTypes.includes(check_type)) {
       return res.status(400).json({
         error: `Invalid check_type. Must be one of: ${validTypes.join(', ')}`
@@ -9659,7 +10183,7 @@ app.post('/api/qa/bulk-flag', async (req, res) => {
       return res.status(400).json({ error: 'flags must be a non-empty array' });
     }
 
-    const validTypes = ['grammar', 'semantic', 'naturalness', 'lego_frequency', 'lego_spread', 'variety', 'vocabulary'];
+    const validTypes = ['grammar', 'semantic', 'naturalness', 'lego_frequency', 'lego_spread', 'variety', 'vocabulary', 'decomposition', 'pedagogy'];
     const validSeverities = ['error', 'warning', 'info'];
 
     // Validate all flags first
@@ -10448,6 +10972,351 @@ app.get('/api/qa/flagged-phrases/:courseCode', async (req, res) => {
 });
 
 // =============================================================================
+// GOLDEN SEED BUILDER ENDPOINTS
+// =============================================================================
+
+/**
+ * GET /api/golden/seed-status/:courseCode/:seedNumber - Coordination primitive for golden seed builder
+ * Both Creator and Checker agents poll this to know the current state of a seed.
+ * Returns status: "empty" | "submitted" | "checking" | "flagged" | "approved" | "escalated"
+ */
+app.get('/api/golden/seed-status/:courseCode/:seedNumber', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const seedNumber = parseInt(req.params.seedNumber);
+    if (!seedNumber || seedNumber < 1) {
+      return res.status(400).json({ error: 'Invalid seed number' });
+    }
+
+    // Count phrases for this seed
+    const { count: phrasesCount, error: phrasesErr } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNumber);
+    if (phrasesErr) throw phrasesErr;
+
+    // Count checked phrases
+    const { count: checkedCount, error: checkedErr } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNumber)
+      .eq('qa_checked', true);
+    if (checkedErr) throw checkedErr;
+
+    // Get open flags for this seed
+    const { data: openFlags, error: flagErr } = await supabase
+      .from('course_qa_flags')
+      .select('id, check_type, severity, issue, details, phrase_id')
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNumber)
+      .eq('status', 'open');
+    if (flagErr) throw flagErr;
+
+    // Count resolved flags to derive round number
+    const { count: resolvedFlagCount, error: resolvedErr } = await supabase
+      .from('course_qa_flags')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNumber)
+      .in('status', ['resolved', 'ignored', 'false_positive']);
+    if (resolvedErr) throw resolvedErr;
+
+    // Derive round: each revision cycle creates flags then resolves them
+    // Round 1 = initial submission, round increments with each flag+rebuild cycle
+    const totalFlagCycles = openFlags.length > 0
+      ? Math.ceil((resolvedFlagCount + 1) / Math.max(1, openFlags.length))
+      : (resolvedFlagCount > 0 ? Math.ceil(resolvedFlagCount / 3) + 1 : 1);
+    const round = Math.max(1, totalFlagCycles);
+
+    const uncheckedCount = (phrasesCount || 0) - (checkedCount || 0);
+
+    // Derive status
+    let status;
+    if (!phrasesCount || phrasesCount === 0) {
+      status = 'empty';
+    } else if (openFlags && openFlags.length > 0) {
+      status = round >= 3 ? 'escalated' : 'flagged';
+    } else if (checkedCount === phrasesCount) {
+      status = 'approved';
+    } else if (checkedCount > 0) {
+      status = 'checking';
+    } else {
+      status = 'submitted';
+    }
+
+    res.json({
+      seed_number: seedNumber,
+      status,
+      round,
+      phrases_count: phrasesCount || 0,
+      flags: (openFlags || []).map(f => ({
+        id: f.id,
+        check_type: f.check_type,
+        severity: f.severity,
+        issue: f.issue,
+        details: f.details,
+        phrase_id: f.phrase_id
+      })),
+      checked_count: checkedCount || 0,
+      unchecked_count: uncheckedCount
+    });
+  } catch (err) {
+    console.error('[GOLDEN] Error getting seed status:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/golden/status/:courseCode - Batch status for all golden seeds
+ * Returns status array for seeds 1-N (where N = golden_seed_count or targetSeeds param)
+ */
+app.get('/api/golden/status/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const targetSeeds = parseInt(req.query.target) || 50;
+
+    // Fetch course info for golden seed count
+    const { data: courseInfo } = await supabase
+      .from('courses')
+      .select('quality_rules')
+      .eq('course_code', courseCode)
+      .single();
+
+    const goldenCount = getGoldenSeedCount(courseInfo);
+    const effectiveTarget = Math.min(targetSeeds, goldenCount);
+
+    // Batch fetch: all phrases counts grouped by seed
+    const { data: phraseCounts, error: pcErr } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, qa_checked')
+      .eq('course_code', courseCode)
+      .gte('seed_number', 1)
+      .lte('seed_number', effectiveTarget);
+    if (pcErr) throw pcErr;
+
+    // Batch fetch: all open flags for these seeds
+    const { data: allFlags, error: afErr } = await supabase
+      .from('course_qa_flags')
+      .select('seed_number, status')
+      .eq('course_code', courseCode)
+      .gte('seed_number', 1)
+      .lte('seed_number', effectiveTarget);
+    if (afErr) throw afErr;
+
+    // Aggregate per seed
+    const seedMap = {};
+    for (let i = 1; i <= effectiveTarget; i++) {
+      seedMap[i] = { total: 0, checked: 0, open_flags: 0, resolved_flags: 0 };
+    }
+
+    for (const p of (phraseCounts || [])) {
+      if (!seedMap[p.seed_number]) seedMap[p.seed_number] = { total: 0, checked: 0, open_flags: 0, resolved_flags: 0 };
+      seedMap[p.seed_number].total++;
+      if (p.qa_checked) seedMap[p.seed_number].checked++;
+    }
+
+    for (const f of (allFlags || [])) {
+      if (!seedMap[f.seed_number]) continue;
+      if (f.status === 'open') seedMap[f.seed_number].open_flags++;
+      else seedMap[f.seed_number].resolved_flags++;
+    }
+
+    const seeds = [];
+    let approvedCount = 0;
+    let flaggedCount = 0;
+    let escalatedCount = 0;
+
+    for (let i = 1; i <= effectiveTarget; i++) {
+      const s = seedMap[i];
+      const round = s.resolved_flags > 0 ? Math.ceil(s.resolved_flags / 3) + 1 : 1;
+
+      let status;
+      if (s.total === 0) status = 'empty';
+      else if (s.open_flags > 0) status = round >= 3 ? 'escalated' : 'flagged';
+      else if (s.checked === s.total) status = 'approved';
+      else if (s.checked > 0) status = 'checking';
+      else status = 'submitted';
+
+      if (status === 'approved') approvedCount++;
+      if (status === 'flagged') flaggedCount++;
+      if (status === 'escalated') escalatedCount++;
+
+      seeds.push({ seed_number: i, status, phrases: s.total, checked: s.checked, flags: s.open_flags, round });
+    }
+
+    res.json({
+      course_code: courseCode,
+      target_seeds: effectiveTarget,
+      golden_seed_count: goldenCount,
+      summary: { approved: approvedCount, flagged: flaggedCount, escalated: escalatedCount, total: effectiveTarget },
+      seeds
+    });
+  } catch (err) {
+    console.error('[GOLDEN] Error getting batch status:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/build/golden/:courseCode - Spawn Creator + Checker agents for golden seed building
+ * Query params:
+ *   ?target=50 - Number of golden seeds to build (default: 50)
+ *   ?dry_run=true - Preview briefs without spawning agents
+ *   ?terminal=iTerm2 - Terminal to use (iTerm2 or Terminal)
+ */
+app.post('/api/build/golden/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const targetSeeds = parseInt(req.query.target) || 50;
+    const dryRun = req.query.dry_run === 'true';
+    const terminal = req.query.terminal || 'iTerm2';
+
+    if (targetSeeds < 1 || targetSeeds > 50) {
+      return res.status(400).json({ error: 'target must be between 1 and 50' });
+    }
+
+    // Check for active golden build
+    const { data: activeJob } = await supabase
+      .from('build_jobs')
+      .select('id, status')
+      .eq('course_code', courseCode)
+      .eq('pass', 'golden')
+      .in('status', ['running'])
+      .maybeSingle();
+
+    if (activeJob && !dryRun) {
+      return res.status(409).json({ error: 'Golden build already running', job_id: activeJob.id });
+    }
+
+    const result = await spawnGoldenBuildAgents(courseCode, targetSeeds, terminal, dryRun);
+    res.json(result);
+  } catch (err) {
+    console.error('[GOLDEN] Error starting golden build:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/golden/finalize/:courseCode - Auto-submit approved golden seeds as calibration data
+ * Called by Creator agent after all seeds approved, or by dashboard "Approve" button.
+ * Query params:
+ *   ?target_seeds=50 - Number of seeds to finalize (default: 50)
+ */
+app.post('/api/golden/finalize/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const targetSeeds = parseInt(req.body?.target_seeds || req.query.target_seeds) || 50;
+
+    // Fetch all LEGOs and phrases for seeds 1-targetSeeds
+    const { data: legos, error: legoErr } = await supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, type, known_text, target_text, components')
+      .eq('course_code', courseCode)
+      .gte('seed_number', 1)
+      .lte('seed_number', targetSeeds)
+      .order('seed_number')
+      .order('lego_index');
+    if (legoErr) throw legoErr;
+
+    const { data: seeds, error: seedErr } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .gte('seed_number', 1)
+      .lte('seed_number', targetSeeds)
+      .order('seed_number');
+    if (seedErr) throw seedErr;
+
+    if (!legos || legos.length === 0) {
+      return res.status(400).json({ error: 'No LEGOs found for golden seeds' });
+    }
+
+    // Build calibration format
+    const goldenDecompositions = [];
+    const seedMap = new Map();
+    for (const s of (seeds || [])) seedMap.set(s.seed_number, s);
+
+    const legosBySeed = {};
+    for (const l of legos) {
+      if (!legosBySeed[l.seed_number]) legosBySeed[l.seed_number] = [];
+      legosBySeed[l.seed_number].push(l);
+    }
+
+    for (let n = 1; n <= targetSeeds; n++) {
+      const seed = seedMap.get(n);
+      const seedLegos = legosBySeed[n];
+      if (!seed || !seedLegos) continue;
+
+      goldenDecompositions.push({
+        seed_number: n,
+        known_text: seed.known_text,
+        target_text: seed.target_text,
+        legos: seedLegos.map(l => {
+          const entry = { type: l.type, known: l.known_text, target: l.target_text };
+          if (l.components && l.components.length > 0) entry.components = l.components;
+          return entry;
+        })
+      });
+    }
+
+    // Submit to calibration endpoint logic (inline to avoid circular HTTP call)
+    const { data: courseData, error: courseErr } = await supabase
+      .from('courses')
+      .select('quality_rules')
+      .eq('course_code', courseCode)
+      .single();
+    if (courseErr) throw courseErr;
+
+    const existingRules = courseData.quality_rules || {};
+    const existingGolden = existingRules.golden_decompositions || [];
+
+    // Merge by seed_number
+    const mergedMap = new Map();
+    for (const g of existingGolden) mergedMap.set(g.seed_number, g);
+    for (const g of goldenDecompositions) mergedMap.set(g.seed_number, g);
+    const merged = [...mergedMap.values()].sort((a, b) => a.seed_number - b.seed_number);
+
+    const updatedRules = {
+      ...existingRules,
+      golden_decompositions: merged,
+      golden_seed_count: targetSeeds,
+      calibrated_at: new Date().toISOString(),
+      calibrated_by: 'golden_builder'
+    };
+
+    const { error: updateErr } = await supabase
+      .from('courses')
+      .update({ quality_rules: updatedRules })
+      .eq('course_code', courseCode);
+    if (updateErr) throw updateErr;
+
+    // Mark golden build job as complete
+    await supabase
+      .from('build_jobs')
+      .update({ status: 'complete', completed_at: new Date().toISOString() })
+      .eq('course_code', courseCode)
+      .eq('pass', 'golden')
+      .eq('status', 'running');
+
+    console.log(`[GOLDEN] Finalized ${goldenDecompositions.length} golden seeds as calibration for ${courseCode}`);
+
+    res.json({
+      success: true,
+      course_code: courseCode,
+      seeds_finalized: goldenDecompositions.length,
+      golden_seed_count: targetSeeds,
+      total_legos: legos.length,
+      message: `${goldenDecompositions.length} golden seeds saved as calibration data. Course is ready for Pass 2.`
+    });
+  } catch (err) {
+    console.error('[GOLDEN] Error finalizing golden seeds:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// =============================================================================
 // PARALLEL DRAFT ENDPOINTS
 // =============================================================================
 
@@ -10631,6 +11500,8 @@ app.post('/api/course/:code/finalize', async (req, res) => {
     // =========================================================================
     // STEP 4: Collision check — abort if any
     // =========================================================================
+    const chinese = isChinese(courseCode);
+
     if (collisions.length > 0) {
       // Update colliding drafts in DB
       const collidingSeeds = [...new Set(collisions.map(c => c.seed_number))];
@@ -10654,7 +11525,6 @@ app.post('/api/course/:code/finalize', async (req, res) => {
 
       // Build ready-to-use fix instructions, grouped into batches of ~5 seeds
       const draftMap = new Map(drafts.map(d => [d.seed_number, d]));
-      const chinese = isChinese(courseCode);
       const fixBatches = [];
       for (let i = 0; i < collidingSeeds.length; i += 5) {
         const batchSeeds = collidingSeeds.slice(i, i + 5);
