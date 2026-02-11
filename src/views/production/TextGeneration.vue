@@ -1026,8 +1026,10 @@ async function fetchProgress() {
 
     fetchSeedGrid()
     fetchQASummary()
-    fetchGoldenStatus()
-    fetchV2Status()
+    // Only poll golden/v2 when in relevant phases to avoid 404 console spam
+    const phase = pipelinePhase.value
+    if (['calibrate', 'golden', 'golden-qa'].includes(phase)) fetchGoldenStatus()
+    if (phase === 'mvp') fetchV2Status()
   } catch (error) {
     console.error('Failed to fetch progress:', error)
   }
