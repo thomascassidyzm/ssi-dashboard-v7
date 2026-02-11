@@ -3033,6 +3033,203 @@ async function buildCrossCourseSummaries(maxSeed = 5) {
 }
 
 /**
+ * Generate the translation agent brief for a course.
+ * Embeds the SEED Translation Doctrine and Agent Prompt inline with API workflow instructions.
+ */
+function generateTranslationBrief(courseCode, courseInfo, seedCount) {
+  const targetLanguageName = getLanguageName(courseCode);
+  const knownLangCode = courseCode.split('_for_')[1] || 'eng';
+  const knownLanguageName = getLanguageName(knownLangCode + '_placeholder') || 'English';
+  // getLanguageName extracts first 3 chars, so we need a direct lookup for known language
+  const knownLangMap = {
+    'eng': 'English', 'fra': 'French', 'spa': 'Spanish', 'deu': 'German',
+    'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'jpn': 'Japanese',
+    'kor': 'Korean', 'ara': 'Arabic', 'rus': 'Russian', 'cym': 'Welsh', 'zho': 'Chinese'
+  };
+  const knownName = knownLangMap[knownLangCode] || knownLangCode;
+  const displayName = courseInfo?.display_name || courseCode;
+
+  return `# Seed Translation Agent — ${courseCode}
+
+You are translating ${seedCount} seed sentences into ${targetLanguageName}.
+Your goal is learner confidence, not native perfection.
+
+## Translation Doctrine
+
+# SEED Translation Doctrine v1.0
+## Confidence-First, Hardest-Working Vocabulary Method
+
+### Purpose
+This document defines the canonical method for translating the **668 SEED sentences**
+into any target language in a way that:
+
+- maximises learner confidence
+- minimises decision paralysis
+- enables early spoken production
+- stays portable across unrelated language families
+- supports audio-first, grammar-implicit learning
+
+This doctrine is language-agnostic and has been validated across:
+- Italian
+- Spanish
+- French (full 668)
+- Arabic (MSA)
+- Mandarin Chinese
+
+---
+
+## Core Principle
+At any given stage, each English intention should map to the fewest possible
+target-language forms that remain natural and understandable.
+
+**Clarity beats nuance.**
+**Predictability beats elegance.**
+**Confidence beats completeness.**
+
+---
+
+## Structural Phases
+
+### Phase 1 — Stabilisation (SEEDs 1–150)
+**Goal:** Enable learners to *say things* without hesitation.
+
+Rules:
+- Aggressively minimise variation.
+- Prefer a single "hardest-working" verb/structure per function.
+- Avoid synonym drift.
+- Prefer transparent, spoken constructions over idioms.
+- Grammar appears only when structurally unavoidable, never explained.
+
+Avoid:
+- register switching
+- stylistic upgrades
+- native-speaker optimisation
+
+---
+
+### Phase 2 — Controlled Flexibility (SEEDs 151–300)
+**Goal:** Expand expressive range *without introducing uncertainty*.
+
+Rules:
+- Phase 1 mappings remain valid.
+- Limited variation is allowed **only when it does not create choice anxiety**.
+- New forms may appear if high-frequency and non-competing.
+- Variation is additive, not substitutive.
+
+---
+
+### Phase 3 — Natural Range (SEEDs 301–668)
+**Goal:** Support real-world conversational range.
+
+Rules:
+- Natural variation and idioms may appear.
+- Earlier mappings are never contradicted or invalidated.
+- The learner's mental model **expands**, not fragments.
+
+---
+
+## Language-Agnostic Design Rules
+- Choose **hardest-working vocabulary** (broad, reusable, forgiving).
+- Prefer predictable syntax over clever idiomatic choices.
+- Avoid early register/politeness/stylistic decisions.
+- Grammar remains implicit and experiential.
+- Output must work spoken, even when imperfectly produced.
+
+---
+
+## Success Criteria
+A translation is correct **if and only if** it:
+- enables productive reuse by a beginner
+- reduces hesitation
+- avoids forcing early "which one should I use?" decisions
+
+Native-speaker perfection is not the metric.
+Learner momentum is.
+
+---
+
+## Agent Prompt
+
+SEED TRANSLATION AGENT PROMPT v1.0
+
+You are translating a fixed set of ${seedCount} SEED sentences for language learning.
+Your goal is learner confidence, not native perfection.
+
+CORE RULE
+At any given stage, each English intention must map to the fewest possible
+target-language forms that remain natural and understandable.
+
+Clarity > nuance
+Predictability > elegance
+Confidence > completeness
+
+PHASES
+
+Phase 1 (1–150): Stabilisation
+- Aggressively minimise variation
+- One "hardest-working" form per function
+- No synonym drift
+- Spoken, transparent constructions
+- Grammar only when unavoidable (never explained)
+
+Phase 2 (151–300): Controlled Flexibility
+- Phase-1 mappings remain valid
+- Limited variation only if it does not create choice anxiety
+- Variation is additive, never substitutive
+
+Phase 3 (301–668): Natural Range
+- Natural variation/idioms allowed
+- Earlier forms never invalidated
+
+GLOBAL RULES
+- Hardest-working vocabulary
+- Predictable syntax
+- Avoid early register/politeness decisions
+- Audio-first robustness
+
+SUCCESS TEST
+A translation is correct if it reduces hesitation and enables reuse.
+
+## API Workflow
+
+1. Fetch seeds needing translation:
+   curl -s "http://localhost:3471/api/course/${courseCode}/translate"
+
+2. Translate in batches of 50. Submit each batch:
+   curl -X POST "http://localhost:3471/api/course/${courseCode}/translate" \\
+     -H "Content-Type: application/json" \\
+     -d '{ "translations": [{ "seed_number": 1, "target_text": "..." }, ...] }'
+
+3. Repeat until all ${seedCount} seeds have target translations.
+
+4. Write a translation analysis and submit:
+   curl -X POST "http://localhost:3471/api/course/${courseCode}/analysis" \\
+     -H "Content-Type: application/json" \\
+     -d '{ "analysis": {
+       "generated_at": "<ISO timestamp>",
+       "seeds_analyzed": ${seedCount},
+       "register": { "choice": "...", "markers": ["..."] },
+       "problem_verbs": ["..."],
+       "golden_keys": ["..."],
+       "zut_concerns": ["..."]
+     }}'
+
+## Key Context
+- Course: ${courseCode} (${displayName})
+- Known language: ${knownName} (already populated in course_seeds)
+- Target language: ${targetLanguageName} (you provide these translations)
+- Work through ALL phases: 1-150 (Stabilisation), 151-300 (Controlled Flexibility), 301-${seedCount} (Natural Range)
+- Same concept = same word throughout. Build a glossary as you go.
+- The analysis at the end captures register decisions, tricky verbs, and ZUT concerns for Pass 2 agents.
+
+## IMPORTANT
+You are running unattended. NEVER ask questions. Process everything and submit results.
+Do NOT spawn sub-agents — translate all seeds yourself sequentially.
+Work SLOWLY AND STEADILY — quality over speed.
+`;
+}
+
+/**
  * Spawn two golden seed builder agents (Creator + Checker) for a course.
  * Returns job info. Supports dry_run mode to preview briefs without spawning.
  */
@@ -3204,6 +3401,114 @@ end tell`;
     creator_brief_file: creatorFile,
     checker_brief_file: checkerFile,
     message: `${isCalibration ? 'Calibration' : 'Golden'} build started — ${agentDesc} spawned for seeds 1-${targetSeeds}`
+  };
+}
+
+/**
+ * Spawn a translation agent for a course.
+ * Spawns a single Opus agent to translate all seeds using the confidence-first methodology.
+ */
+async function spawnTranslationAgent(courseCode, terminal = 'iTerm2', dryRun = false) {
+  // Fetch course info
+  const { data: courseInfo, error: courseErr } = await supabase
+    .from('courses')
+    .select('display_name, seed_count, quality_rules')
+    .eq('course_code', courseCode)
+    .single();
+  if (courseErr) throw new Error(`Course not found: ${courseCode}`);
+
+  const seedCountVal = courseInfo.seed_count || 668;
+  const brief = generateTranslationBrief(courseCode, courseInfo, seedCountVal);
+
+  if (dryRun) {
+    return {
+      dry_run: true,
+      brief,
+      seed_count: seedCountVal
+    };
+  }
+
+  // Write brief to temp file
+  const fs = require('fs');
+  const ts = Date.now();
+  const briefFile = `/tmp/translate_${courseCode}_${ts}.md`;
+  fs.writeFileSync(briefFile, brief);
+
+  const projectDir = __dirname.replace('/services', '');
+  const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+  // Create build_jobs record
+  let jobId = null;
+  try {
+    const { data: jobData, error: jobError } = await supabase
+      .from('build_jobs')
+      .insert({
+        course_code: courseCode,
+        pass: 'translate',
+        status: 'running',
+        current_seed: 0,
+        seeds_completed: 0,
+        total_seeds: seedCountVal,
+        started_at: new Date().toISOString(),
+        last_heartbeat: new Date().toISOString(),
+        requested_by: 'dashboard',
+        terminal: effectiveTerminal,
+        agent_count: 1,
+        respawn_count: 0,
+        machine_name: MACHINE_NAME,
+        build_mode: 'translate'
+      })
+      .select('id')
+      .single();
+    if (!jobError && jobData) jobId = jobData.id;
+  } catch (e) {
+    console.error('[TRANSLATE] Failed to create build_jobs record:', e.message);
+  }
+
+  // Spawn translation agent
+  const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${briefFile})"`;
+
+  console.log(`[TRANSLATE] Spawning translation agent for ${courseCode} in ${effectiveTerminal}`);
+
+  if (effectiveTerminal === 'headless') {
+    const logsDir = require('path').join(projectDir, 'logs');
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+
+    const logFile = `${logsDir}/translate-${courseCode}.log`;
+    const out = fs.openSync(logFile, 'a');
+    const err = fs.openSync(logFile, 'a');
+
+    const agent = spawn('bash', ['-c', claudeCmd], { stdio: ['ignore', out, err], detached: true });
+    agent.unref();
+    console.log(`[TRANSLATE] Agent launched headless (pid: ${agent.pid}, log: ${logFile})`);
+  } else {
+    const escapedCmd = claudeCmd.replace(/"/g, '\\"');
+    const osascriptCmd = effectiveTerminal === 'iTerm2'
+      ? `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    set name to "Translate: ${courseCode}"
+    write text "${escapedCmd}"
+  end tell
+end tell`
+      : `tell application "Terminal"
+  activate
+  do script "${escapedCmd}"
+end tell`;
+
+    const agentProc = spawn('osascript', ['-e', osascriptCmd], { stdio: 'pipe', detached: true });
+    agentProc.on('error', (e) => console.error('[TRANSLATE] osascript error:', e.message));
+    agentProc.on('exit', (code) => console.log(`[TRANSLATE] Terminal launched (osascript exit: ${code})`));
+  }
+
+  return {
+    ok: true,
+    course_code: courseCode,
+    job_id: jobId,
+    brief_file: briefFile,
+    seed_count: seedCountVal,
+    message: `Translation agent spawned for ${courseCode} — translating ${seedCountVal} seeds`
   };
 }
 
@@ -11351,6 +11656,39 @@ app.get('/api/golden/status/:courseCode', async (req, res) => {
     });
   } catch (err) {
     console.error('[GOLDEN] Error getting batch status:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/build/translate/:courseCode - Spawn a translation agent for a course
+ * Query params:
+ *   ?dry_run=true - Preview brief without spawning agent
+ *   ?terminal=iTerm2 - Terminal to use (iTerm2 or Terminal)
+ */
+app.post('/api/build/translate/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const terminal = req.query.terminal || 'iTerm2';
+    const dryRun = req.query.dry_run === 'true';
+
+    // Check for active translate job
+    const { data: activeJob } = await supabase
+      .from('build_jobs')
+      .select('id, status')
+      .eq('course_code', courseCode)
+      .eq('pass', 'translate')
+      .in('status', ['running'])
+      .maybeSingle();
+
+    if (activeJob && !dryRun) {
+      return res.status(409).json({ error: 'Translation already running', job_id: activeJob.id });
+    }
+
+    const result = await spawnTranslationAgent(courseCode, terminal, dryRun);
+    res.json(result);
+  } catch (err) {
+    console.error('[TRANSLATE] Error starting translation:', err);
     res.status(500).json({ error: err.message });
   }
 });

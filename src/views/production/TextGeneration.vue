@@ -136,6 +136,15 @@
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/{{ progress.totalSeeds || 668 }}</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
+              <button
+                v-else-if="!translateRunning"
+                @click="startTranslation"
+                :disabled="translateStarting"
+                class="px-3 py-1 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ translateStarting ? 'Spawning...' : 'Start Translate' }}
+              </button>
+              <span v-if="translateRunning" class="text-xs text-blue-400 animate-pulse">Running...</span>
             </div>
           </div>
           <div class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
@@ -728,6 +737,10 @@ const uncheckedGrouped = computed(() => {
   return Object.values(groups).sort((a, b) => a.seed - b.seed)
 })
 
+// Translation agent state
+const translateStarting = ref(false)
+const translateRunning = ref(false)
+
 // Golden seed builder state
 const goldenSeeds = ref([])
 const goldenTargetSeeds = ref(50)
@@ -986,14 +999,18 @@ async function fetchProgress() {
 
       if (buildResponse.ok) {
         const buildData = await buildResponse.json()
+        // Detect translate job running
+        translateRunning.value = buildData.active && buildData.build?.pass === 'translate'
         if (buildData.active) {
           progress.value.status = 'running'
           progress.value.agentCount = buildData.build?.agent_count || 0
           progress.value.batchSeeds = buildData.build?.current_batch_seeds || 0
+          progress.value.buildPass = buildData.build?.pass || null
           if (buildData.build?.total_seeds) {
             seedCount.value = buildData.build.total_seeds
           }
         } else {
+          translateRunning.value = false
           if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
             progress.value.status = 'complete'
           } else if (progress.value.status === 'running') {
@@ -1455,6 +1472,33 @@ async function fetchGoldenStatus() {
     }
   } catch (err) {
     // Golden endpoints may not exist yet
+  }
+}
+
+async function startTranslation() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  translateStarting.value = true
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
+    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
+
+    const response = await fetch(`${apiBase}/api/build/translate/${courseCode}?terminal=${terminal}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      translateRunning.value = true
+    } else {
+      console.error('Failed to start translation:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to start translation:', err)
+  } finally {
+    translateStarting.value = false
   }
 }
 
