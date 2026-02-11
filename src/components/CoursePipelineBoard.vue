@@ -1,76 +1,19 @@
 <template>
   <div class="pipeline-board">
-    <!-- Header Stats -->
+    <!-- Header -->
     <div class="board-header">
-      <div class="header-title">
+      <div class="header-left">
         <h2>Course Pipeline</h2>
         <span class="course-count">{{ courses.length }} courses</span>
       </div>
-      <div class="header-actions">
-        <!-- Not started indicator -->
-        <div v-if="notStartedCount > 0" class="not-started-indicator" title="Courses with no content yet (visible in search)">
-          <span class="indicator-dot"></span>
-          <span>{{ notStartedCount }} not started</span>
-        </div>
-
-        <!-- Compact mode toggle -->
-        <button
-          class="compact-toggle"
-          :class="{ active: compactMode }"
-          @click="compactMode = !compactMode"
-          title="Toggle compact view"
-        >
-          <svg v-if="!compactMode" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="7"/>
-            <rect x="14" y="3" width="7" height="7"/>
-            <rect x="3" y="14" width="7" height="7"/>
-            <rect x="14" y="14" width="7" height="7"/>
-          </svg>
-          <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-        </button>
-
-        <!-- Hidden courses toggle -->
-        <div v-if="hiddenCourses.length > 0" class="hidden-toggle-group">
-          <button
-            class="hidden-toggle"
-            :class="{ active: showHidden }"
-            @click="showHidden = !showHidden"
-            :title="'Hidden: ' + hiddenCourses.join(', ')"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path v-if="showHidden" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle v-if="showHidden" cx="12" cy="12" r="3"/>
-              <path v-if="!showHidden" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-              <line v-if="!showHidden" x1="1" y1="1" x2="23" y2="23"/>
-            </svg>
-            <span>{{ showHidden ? 'Hide' : 'Show' }} {{ hiddenCourses.length }} hidden</span>
-          </button>
-          <!-- Unhide all button -->
-          <button
-            v-if="!showHidden"
-            class="unhide-all-btn"
-            @click="unhideAll"
-            title="Unhide all courses"
-          >
-            Unhide all
-          </button>
-        </div>
-
-        <!-- Sort selector -->
-        <div class="sort-selector">
-          <select v-model="sortBy" class="sort-select">
-            <option value="alpha">A-Z</option>
-            <option value="progress">Progress</option>
-            <option value="seeds">Seeds</option>
-            <option value="audio">Audio</option>
-          </select>
-          <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
+      <div class="header-right">
+        <!-- Stage legend -->
+        <div class="stage-legend">
+          <span class="legend-item" v-for="s in stageLegend" :key="s.key">
+            <span class="legend-dot" :style="{ background: s.color }"></span>
+            <span class="legend-label">{{ s.label }}</span>
+            <span class="legend-count">{{ stageCounts[s.key] || 0 }}</span>
+          </span>
         </div>
 
         <div class="search-box" :class="{ focused: searchFocused }">
@@ -89,224 +32,135 @@
       </div>
     </div>
 
-    <!-- Pipeline Lanes -->
-    <div class="lanes-container">
-      <div
-        v-for="lane in pipelineLanes"
-        :key="lane.key"
-        class="pipeline-lane"
-        :class="[`lane-${lane.key}`, { empty: lane.courses.length === 0 }]"
-      >
-        <!-- Lane Header -->
-        <div class="lane-header">
-          <div class="lane-title-row">
-            <span class="lane-indicator" :style="{ background: lane.color }"></span>
-            <h3 class="lane-title">{{ lane.title }}</h3>
-            <span class="lane-count" :style="{ background: lane.color + '25', color: lane.color }">
-              {{ lane.courses.length }}
+    <!-- Column Headers -->
+    <div class="table-header">
+      <span class="th th-status"></span>
+      <span class="th th-course" @click="toggleSort('alpha')">
+        Course
+        <svg v-if="sortBy === 'alpha'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </span>
+      <span class="th th-seeds" @click="toggleSort('seeds')">
+        Seeds
+        <svg v-if="sortBy === 'seeds'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </span>
+      <span class="th th-legos" @click="toggleSort('legos')">
+        LEGOs
+        <svg v-if="sortBy === 'legos'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </span>
+      <span class="th th-phrases" @click="toggleSort('phrases')">
+        Phrases
+        <svg v-if="sortBy === 'phrases'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </span>
+      <span class="th th-audio" @click="toggleSort('audio')">
+        Audio
+        <svg v-if="sortBy === 'audio'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </span>
+      <span class="th th-apps">Apps</span>
+    </div>
+
+    <!-- Course Rows -->
+    <div class="table-body">
+      <TransitionGroup name="row" tag="div">
+        <div
+          v-for="course in sortedCourses"
+          :key="course.code"
+          class="course-row"
+          :class="{ active: activeCourse === course.code }"
+          @click="handleCourseClick(course)"
+          @mouseenter="activeCourse = course.code"
+          @mouseleave="activeCourse = null"
+        >
+          <!-- Stage indicator -->
+          <span class="cell cell-status">
+            <span class="stage-dot" :style="{ background: getStageColor(course) }" :title="getStageLabel(course)"></span>
+          </span>
+
+          <!-- Course name -->
+          <span class="cell cell-course">
+            <span class="course-name">
+              <span class="lang-target">{{ getTargetLanguage(course.code) }}</span>
+              <span class="lang-for">for</span>
+              <span class="lang-known">{{ getKnownLanguage(course.code) }}</span>
             </span>
-          </div>
-          <p class="lane-description">{{ lane.description }}</p>
-        </div>
+            <span class="course-code">{{ course.code }}</span>
+          </span>
 
-        <!-- Lane Content -->
-        <div class="lane-content" v-if="lane.courses.length > 0">
-          <TransitionGroup name="card" tag="div" class="lane-cards">
-            <div
-              v-for="course in lane.courses"
-              :key="course.code"
-              class="course-card"
-              :class="{
-                active: activeCourse === course.code,
-                hidden: isHidden(course.code),
-                compact: compactMode
-              }"
-              @click="handleCourseClick(course)"
-              @mouseenter="activeCourse = course.code"
-              @mouseleave="activeCourse = null"
+          <!-- Seeds with progress bar -->
+          <span class="cell cell-seeds">
+            <span class="seeds-text">
+              <span class="seeds-count">{{ getCompletedSeeds(course) }}</span>
+              <span class="seeds-sep">/</span>
+              <span class="seeds-target">{{ course.targetSeeds || 300 }}</span>
+            </span>
+            <span class="progress-bar-container">
+              <span class="progress-bar-bg"></span>
+              <span
+                class="progress-bar-fill"
+                :style="{
+                  width: getProgress(course) + '%',
+                  background: getProgressColor(course)
+                }"
+              ></span>
+            </span>
+          </span>
+
+          <!-- LEGOs -->
+          <span class="cell cell-legos mono">{{ formatNumber(course.stats?.legos || 0) }}</span>
+
+          <!-- Phrases -->
+          <span class="cell cell-phrases mono">{{ formatNumber(course.stats?.phrases || 0) }}</span>
+
+          <!-- Audio -->
+          <span class="cell cell-audio mono">{{ formatNumber(course.stats?.audio || 0) }}</span>
+
+          <!-- App status badges -->
+          <span class="cell cell-apps">
+            <button
+              class="app-badge"
+              :class="[
+                getNormalizedNewAppStatus(course) !== 'not_available' ? 'active' : 'inactive',
+                'status-' + getNormalizedNewAppStatus(course)
+              ]"
+              @click.stop="cycleNewAppStatus(course)"
+              title="Click to change New App status"
             >
-              <!-- Compact Mode: Just the name -->
-              <template v-if="compactMode">
-                <div class="compact-content">
-                  <span class="compact-language">{{ getTargetLanguage(course.code) }}</span>
-                  <span class="compact-for">for</span>
-                  <span class="compact-speakers">{{ getKnownLanguage(course.code) }}</span>
-                  <!-- Dual app status badges in compact mode for Production -->
-                  <template v-if="lane.isProductionColumn">
-                    <span v-if="course.inNewApp" class="compact-status-badge" :class="course.newAppStatus">
-                      New: {{ course.newAppStatus }}
-                    </span>
-                    <span v-if="course.inLegacyApp" class="compact-status-badge legacy" :class="course.legacyAppStatus">
-                      Legacy: {{ course.legacyAppStatus }}
-                    </span>
-                  </template>
-                </div>
-              </template>
-
-              <!-- Full Card Mode -->
-              <template v-else>
-                <!-- Card Header -->
-                <div class="card-header">
-                  <div class="card-title">
-                    <span class="card-language">{{ getTargetLanguage(course.code) }}</span>
-                    <span class="card-arrow">for</span>
-                    <span class="card-speakers">{{ getKnownLanguage(course.code) }}</span>
-                  </div>
-                  <div class="card-header-row">
-                    <span class="card-code">{{ course.code }}</span>
-                    <button
-                      v-if="!isHidden(course.code)"
-                      class="hide-btn"
-                      @click.stop="hideCourse(course.code)"
-                      title="Hide this course"
-                    >
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 6 6 18M6 6l12 12"/>
-                      </svg>
-                    </button>
-                    <button
-                      v-else
-                      class="unhide-btn"
-                      @click.stop="unhideCourse(course.code)"
-                      title="Show this course"
-                    >
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Progress Ring -->
-                <div class="card-progress">
-                  <svg class="progress-ring" viewBox="0 0 36 36">
-                    <circle
-                      class="ring-bg"
-                      cx="18" cy="18" r="15.5"
-                      fill="none"
-                      stroke-width="3"
-                    />
-                    <circle
-                      class="ring-fill"
-                      :style="{
-                        stroke: lane.color,
-                        strokeDasharray: `${getProgress(course)} 100`
-                      }"
-                      cx="18" cy="18" r="15.5"
-                      fill="none"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                  <div class="progress-value">
-                    <span class="progress-number">{{ getCompletedSeeds(course) }}</span>
-                    <span class="progress-label">seeds</span>
-                  </div>
-                </div>
-
-                <!-- Card Stats -->
-                <div class="card-stats">
-                  <div class="stat">
-                    <span class="stat-value">{{ formatNumber(course.stats?.legos || 0) }}</span>
-                    <span class="stat-label">LEGOs</span>
-                  </div>
-                  <div class="stat">
-                    <span class="stat-value">{{ formatNumber(course.stats?.phrases || 0) }}</span>
-                    <span class="stat-label">Phrases</span>
-                  </div>
-                  <div class="stat">
-                    <span class="stat-value">{{ formatNumber(course.stats?.audio || 0) }}</span>
-                    <span class="stat-label">Audio</span>
-                  </div>
-                </div>
-
-                <!-- Card Action -->
-                <div class="card-action" v-if="lane.action">
-                  <button class="action-btn" :style="{ background: lane.color + '20', color: lane.color }" @click.stop="handleAction(course, lane.action)">
-                    {{ lane.action.label }}
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                  </button>
-                </div>
-
-                <!-- Deploy to Production (Polishing lane only) -->
-                <div class="card-deploy-actions" v-if="lane.key === 'polishing'">
-                  <span class="deploy-label-text">Deploy to:</span>
-                  <button
-                    class="deploy-action-btn new-app"
-                    @click.stop="handleDeploy(course, 'new_app')"
-                    title="Deploy to New App (testing)"
-                  >
-                    New App
-                  </button>
-                  <button
-                    class="deploy-action-btn legacy-app"
-                    @click.stop="handleDeploy(course, 'legacy_app')"
-                    title="Deploy to Legacy App (testing)"
-                  >
-                    Legacy
-                  </button>
-                </div>
-
-                <!-- Production: Dual App Status Badges (both clickable) -->
-                <div class="card-deploy-status" v-if="lane.isProductionColumn">
-                  <button
-                    class="deploy-badge new-app clickable"
-                    :class="{ active: course.inNewApp }"
-                    @click.stop="cycleNewAppStatus(course)"
-                    title="Click to change New App status"
-                  >
-                    <span class="deploy-label">New App</span>
-                    <span class="deploy-status" :class="course.newAppStatus">
-                      {{ course.newAppStatus !== 'not_available' ? course.newAppStatus : '—' }}
-                    </span>
-                  </button>
-                  <button
-                    class="deploy-badge legacy-app clickable"
-                    :class="{ active: course.inLegacyApp }"
-                    @click.stop="cycleLegacyStatus(course)"
-                    title="Click to change Legacy App status"
-                  >
-                    <span class="deploy-label">Legacy</span>
-                    <span class="deploy-status" :class="course.legacyAppStatus">
-                      {{ course.legacyAppStatus !== 'not_available' ? course.legacyAppStatus : '—' }}
-                    </span>
-                  </button>
-                </div>
-              </template>
-            </div>
-          </TransitionGroup>
+              N
+            </button>
+            <button
+              class="app-badge legacy"
+              :class="[
+                getNormalizedLegacyStatus(course) !== 'not_available' ? 'active' : 'inactive',
+                'status-' + getNormalizedLegacyStatus(course)
+              ]"
+              @click.stop="cycleLegacyStatus(course)"
+              title="Click to change Legacy App status"
+            >
+              L
+            </button>
+          </span>
         </div>
+      </TransitionGroup>
 
-        <!-- Empty State -->
-        <div class="lane-empty" v-else>
-          <div class="empty-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M8 12h8"/>
-            </svg>
-          </div>
-          <span class="empty-text">{{ lane.emptyText }}</span>
-        </div>
+      <!-- Empty state -->
+      <div v-if="sortedCourses.length === 0" class="empty-state">
+        <span class="empty-text">{{ searchQuery ? 'No courses match your search' : 'No courses yet' }}</span>
       </div>
     </div>
 
     <!-- Summary Footer -->
     <div class="board-footer">
       <div class="footer-stat">
-        <span class="footer-value">{{ totalSeeds }}</span>
-        <span class="footer-label">Total Seeds Built</span>
+        <span class="footer-value">{{ totalSeeds.toLocaleString() }}</span>
+        <span class="footer-label">Seeds Built</span>
       </div>
       <div class="footer-divider"></div>
       <div class="footer-stat">
-        <span class="footer-value">{{ totalPhrases }}</span>
-        <span class="footer-label">Practice Phrases</span>
+        <span class="footer-value">{{ totalPhrases.toLocaleString() }}</span>
+        <span class="footer-label">Phrases</span>
       </div>
       <div class="footer-divider"></div>
       <div class="footer-stat">
-        <span class="footer-value">{{ totalAudio }}</span>
+        <span class="footer-value">{{ totalAudio.toLocaleString() }}</span>
         <span class="footer-label">Audio Files</span>
       </div>
       <div class="footer-divider"></div>
@@ -350,76 +204,37 @@ const router = useRouter()
 const searchQuery = ref('')
 const searchFocused = ref(false)
 const activeCourse = ref(null)
-const showHidden = ref(false)
-const compactMode = ref(false)
-// Sort preference - persisted in localStorage
-const SORT_STORAGE_KEY = 'ssi-pipeline-sort'
-const sortBy = ref(localStorage.getItem(SORT_STORAGE_KEY) || 'alpha')  // Default to alphabetical
 
-// Persist sort preference when changed
-watch(sortBy, (newValue) => {
-  localStorage.setItem(SORT_STORAGE_KEY, newValue)
+// Sort state
+const SORT_STORAGE_KEY = 'ssi-pipeline-sort'
+const sortBy = ref(localStorage.getItem(SORT_STORAGE_KEY) || 'alpha')
+const sortDesc = ref(localStorage.getItem(SORT_STORAGE_KEY + '-desc') === 'true')
+
+watch([sortBy, sortDesc], ([newSort, newDesc]) => {
+  localStorage.setItem(SORT_STORAGE_KEY, newSort)
+  localStorage.setItem(SORT_STORAGE_KEY + '-desc', String(newDesc))
 })
 
+function toggleSort(field) {
+  if (sortBy.value === field) {
+    sortDesc.value = !sortDesc.value
+  } else {
+    sortBy.value = field
+    sortDesc.value = field !== 'alpha' // default desc for numeric, asc for alpha
+  }
+}
+
+// Toast
 const toastMessage = ref('')
 const toastVisible = ref(false)
 
 function showToast(message) {
   toastMessage.value = message
   toastVisible.value = true
-  setTimeout(() => {
-    toastVisible.value = false
-  }, 2500)
+  setTimeout(() => { toastVisible.value = false }, 2500)
 }
 
-// Count of not-started courses (shown in header, not in lanes)
-const notStartedCount = computed(() => {
-  return props.courses.filter(c => {
-    const status = getBuildStatus(c)
-    return status === 'not_started' && !isHidden(c.code)
-  }).length
-})
-
-// Hidden courses - persisted in localStorage
-const HIDDEN_STORAGE_KEY = 'ssi-pipeline-hidden-courses'
-const hiddenCourses = ref(loadHiddenCourses())
-
-function loadHiddenCourses() {
-  try {
-    const stored = localStorage.getItem(HIDDEN_STORAGE_KEY)
-    return stored ? JSON.parse(stored) : []
-  } catch {
-    return []
-  }
-}
-
-function saveHiddenCourses() {
-  localStorage.setItem(HIDDEN_STORAGE_KEY, JSON.stringify(hiddenCourses.value))
-}
-
-function hideCourse(code) {
-  if (!hiddenCourses.value.includes(code)) {
-    hiddenCourses.value.push(code)
-    saveHiddenCourses()
-  }
-}
-
-function unhideCourse(code) {
-  hiddenCourses.value = hiddenCourses.value.filter(c => c !== code)
-  saveHiddenCourses()
-}
-
-function unhideAll() {
-  hiddenCourses.value = []
-  saveHiddenCourses()
-  showHidden.value = false
-}
-
-function isHidden(code) {
-  return hiddenCourses.value.includes(code)
-}
-
-// Language name mapping
+// Language names
 const languageNames = {
   eng: 'English', spa: 'Spanish', fra: 'French', deu: 'German',
   ita: 'Italian', por: 'Portuguese', nld: 'Dutch', pol: 'Polish',
@@ -427,7 +242,7 @@ const languageNames = {
   hun: 'Hungarian', ron: 'Romanian', bul: 'Bulgarian', hrv: 'Croatian',
   srp: 'Serbian', slv: 'Slovenian', ell: 'Greek', tur: 'Turkish',
   swe: 'Swedish', nor: 'Norwegian', dan: 'Danish', fin: 'Finnish',
-  cym: 'Welsh', gle: 'Irish', gla: 'Scottish Gaelic',
+  cym: 'Welsh', gle: 'Irish', gla: 'Scottish Gaelic', bre: 'Breton',
   zho: 'Chinese', cmn: 'Mandarin', yue: 'Cantonese',
   jpn: 'Japanese', kor: 'Korean', vie: 'Vietnamese',
   tha: 'Thai', ind: 'Indonesian', msa: 'Malay', tgl: 'Tagalog',
@@ -461,10 +276,35 @@ function getProgress(course) {
   return Math.min(100, Math.round((completed / target) * 100))
 }
 
+function getProgressColor(course) {
+  const pct = getProgress(course)
+  if (pct >= 100) return '#10b981'
+  if (pct >= 50) return '#3b82f6'
+  if (pct > 0) return '#f59e0b'
+  return 'rgba(255,255,255,0.08)'
+}
+
 function formatNumber(n) {
   if (n >= 1000) return (n / 1000).toFixed(1) + 'k'
   return n.toString()
 }
+
+// Stage logic
+const stageConfig = {
+  production: { color: '#10b981', label: 'Production' },
+  polishing:  { color: '#f97316', label: 'Polishing' },
+  audio:      { color: '#8b5cf6', label: 'Audio' },
+  building:   { color: '#f59e0b', label: 'Building' },
+  not_started:{ color: '#334155', label: 'Not Started' }
+}
+
+const stageLegend = [
+  { key: 'production', color: '#10b981', label: 'Production' },
+  { key: 'polishing',  color: '#f97316', label: 'Polishing' },
+  { key: 'audio',      color: '#8b5cf6', label: 'Audio' },
+  { key: 'building',   color: '#f59e0b', label: 'Building' },
+  { key: 'not_started',color: '#334155', label: 'Not Started' }
+]
 
 function getBuildStatus(course) {
   const stats = course.stats || {}
@@ -483,225 +323,136 @@ function getBuildStatus(course) {
   return 'not_started'
 }
 
-// Filter courses (exclude hidden unless showHidden is true)
-const filteredCourses = computed(() => {
-  let courses = props.courses
+function normalizeAppStatus(s) {
+  if (!s || s === 'not_available') return 'not_available'
+  if (s === 'draft') return 'testing'
+  if (s === 'released') return 'live'
+  return s
+}
 
-  // Filter out hidden courses unless showing them
-  if (!showHidden.value) {
-    courses = courses.filter(c => !isHidden(c.code))
-  }
+function getNormalizedNewAppStatus(course) {
+  return normalizeAppStatus(course.newAppStatus)
+}
 
-  // Apply search filter
+function getNormalizedLegacyStatus(course) {
+  return normalizeAppStatus(course.legacyAppStatus)
+}
+
+function getStage(course) {
+  const newApp = getNormalizedNewAppStatus(course)
+  const legacy = getNormalizedLegacyStatus(course)
+  const inProduction = (newApp !== 'not_available') || (legacy !== 'not_available')
+  if (inProduction) return 'production'
+
+  const status = getBuildStatus(course)
+  if (status === 'needs_export' || status === 'ready') return 'polishing'
+  if (status === 'needs_audio') return 'audio'
+  if (status === 'building') return 'building'
+  return 'not_started'
+}
+
+function getStageColor(course) {
+  return stageConfig[getStage(course)]?.color || '#334155'
+}
+
+function getStageLabel(course) {
+  return stageConfig[getStage(course)]?.label || 'Not Started'
+}
+
+// Stage counts for legend
+const stageCounts = computed(() => {
+  const counts = {}
+  props.courses.forEach(c => {
+    const stage = getStage(c)
+    counts[stage] = (counts[stage] || 0) + 1
+  })
+  return counts
+})
+
+// Filter + sort
+const sortedCourses = computed(() => {
+  let list = props.courses
+
+  // Search filter
   if (searchQuery.value.trim()) {
     const q = searchQuery.value.toLowerCase()
-    courses = courses.filter(c => {
-      const name = (c.name || '').toLowerCase()
+    list = list.filter(c => {
+      const name = getFullCourseName(c.code).toLowerCase()
       const code = (c.code || '').toLowerCase()
       return name.includes(q) || code.includes(q)
     })
   }
 
-  return courses
-})
-
-// Pipeline lanes
-const pipelineLanes = computed(() => {
-  const courses = filteredCourses.value
-
-  const lanes = [
-    {
-      key: 'building',
-      title: 'Building',
-      description: 'Translations, LEGOs, phrases',
-      color: '#f59e0b',
-      emptyText: 'No active builds',
-      action: { label: 'View Progress', type: 'view' },
-      courses: []
-    },
-    {
-      key: 'audio',
-      title: 'Audio',
-      description: 'TTS generation pipeline',
-      color: '#8b5cf6',
-      emptyText: 'None generating',
-      action: { label: 'Generate Audio', type: 'audio' },
-      courses: []
-    },
-    {
-      key: 'polishing',
-      title: 'Polishing',
-      description: 'Validation & QA',
-      color: '#f97316',
-      emptyText: 'None in QA',
-      action: { label: 'Review', type: 'review' },
-      courses: []
-    },
-    {
-      key: 'production',
-      title: 'Production',
-      description: 'Deployed to apps',
-      color: '#10b981',
-      emptyText: 'None deployed',
-      isProductionColumn: true,
-      courses: []
+  // Sort
+  const sorted = [...list]
+  sorted.sort((a, b) => {
+    let cmp = 0
+    switch (sortBy.value) {
+      case 'alpha':
+        cmp = getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
+        break
+      case 'seeds':
+        cmp = getCompletedSeeds(a) - getCompletedSeeds(b)
+        break
+      case 'legos':
+        cmp = (a.stats?.legos || 0) - (b.stats?.legos || 0)
+        break
+      case 'phrases':
+        cmp = (a.stats?.phrases || 0) - (b.stats?.phrases || 0)
+        break
+      case 'audio':
+        cmp = (a.stats?.audio || 0) - (b.stats?.audio || 0)
+        break
+      default:
+        cmp = getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
     }
-  ]
-
-  courses.forEach(course => {
-    const status = getBuildStatus(course)
-    // Normalize status values (backwards compatibility: draft→testing, released→live)
-    let newAppStatus = course.newAppStatus || 'not_available'
-    let legacyAppStatus = course.legacyAppStatus || 'not_available'
-    if (newAppStatus === 'draft') newAppStatus = 'testing'
-    if (newAppStatus === 'released') newAppStatus = 'live'
-    if (legacyAppStatus === 'draft') legacyAppStatus = 'testing'
-    if (legacyAppStatus === 'released') legacyAppStatus = 'live'
-
-    // Check if deployed to either app
-    const inNewApp = newAppStatus === 'testing' || newAppStatus === 'beta' || newAppStatus === 'live'
-    const inLegacyApp = legacyAppStatus === 'testing' || legacyAppStatus === 'beta' || legacyAppStatus === 'live'
-    const inProduction = inNewApp || inLegacyApp
-
-    // Skip not_started courses (they show in header count and search)
-    if (status === 'not_started') return
-
-    if (inProduction) {
-      // Production column - show both app statuses as badges
-      lanes[3].courses.push({
-        ...course,
-        newAppStatus,
-        legacyAppStatus,
-        inNewApp,
-        inLegacyApp
-      })
-    } else {
-      // Pipeline columns based on build status
-      if (status === 'building') {
-        lanes[0].courses.push(course)
-      } else if (status === 'needs_audio') {
-        lanes[1].courses.push(course)
-      } else if (status === 'needs_export' || status === 'ready') {
-        lanes[2].courses.push(course)
-      }
-    }
+    return sortDesc.value ? -cmp : cmp
   })
 
-  // Sort courses in each lane based on selected sort option
-  lanes.forEach(lane => {
-    lane.courses.sort((a, b) => {
-      switch (sortBy.value) {
-        case 'alpha':
-          // Alphabetical by full course name (e.g., "English for Portuguese")
-          return getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
-        case 'progress':
-          // By progress percentage (descending)
-          return getProgress(b) - getProgress(a)
-        case 'seeds':
-          // By completed seeds (descending)
-          return getCompletedSeeds(b) - getCompletedSeeds(a)
-        case 'audio':
-          // By audio count (descending)
-          return (b.stats?.audio || 0) - (a.stats?.audio || 0)
-        default:
-          return getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
-      }
-    })
-  })
-
-  return lanes
+  return sorted
 })
 
 // Summary stats
-const totalSeeds = computed(() => {
-  return props.courses.reduce((sum, c) => sum + getCompletedSeeds(c), 0)
-})
+const totalSeeds = computed(() => props.courses.reduce((sum, c) => sum + getCompletedSeeds(c), 0))
+const totalPhrases = computed(() => props.courses.reduce((sum, c) => sum + (c.stats?.phrases || 0), 0))
+const totalAudio = computed(() => props.courses.reduce((sum, c) => sum + (c.stats?.audio || 0), 0))
+const productionCount = computed(() => props.courses.filter(c => getStage(c) === 'production').length)
 
-const totalPhrases = computed(() => {
-  return props.courses.reduce((sum, c) => sum + (c.stats?.phrases || 0), 0)
-})
-
-const totalAudio = computed(() => {
-  return props.courses.reduce((sum, c) => sum + (c.stats?.audio || 0), 0)
-})
-
-const productionCount = computed(() => {
-  // Count courses in production (deployed to any app)
-  return pipelineLanes.value.find(l => l.key === 'production')?.courses.length || 0
-})
-
+// Actions
 function handleCourseClick(course) {
   router.push(`/production/${course.code}`)
 }
 
-function handleAction(course, action) {
-  emit('action', { course, action: action.type })
-  if (action.type === 'view') {
-    router.push(`/production/${course.code}`)
-  } else if (action.type === 'audio') {
-    router.push(`/production/${course.code}/audio`)
-  }
-}
-
-// Cycle app statuses: — → testing → beta → live → —
+// Cycle app statuses
 const statusCycle = ['not_available', 'testing', 'beta', 'live']
 
-async function cycleNewAppStatus(course) {
-  // Normalize current status (handle case variations and 'released' → 'live')
-  let currentStatus = (course.newAppStatus || 'not_available').toLowerCase()
-  if (currentStatus === 'released') currentStatus = 'live'
-  if (!statusCycle.includes(currentStatus)) currentStatus = 'not_available'
-
-  const currentIndex = statusCycle.indexOf(currentStatus)
-  const nextIndex = (currentIndex + 1) % statusCycle.length
-  const nextStatus = statusCycle[nextIndex]
-
-  console.log(`[New App Status] ${course.code}: ${currentStatus} → ${nextStatus}`)
-  showToast(`New App: ${getTargetLanguage(course.code)} → ${nextStatus === 'not_available' ? 'removed' : nextStatus}`)
-
-  // Emit event for parent to handle API call and refresh
-  emit('updateNewAppStatus', { courseCode: course.code, status: nextStatus })
+function cycleNewAppStatus(course) {
+  let current = getNormalizedNewAppStatus(course)
+  if (!statusCycle.includes(current)) current = 'not_available'
+  const nextIndex = (statusCycle.indexOf(current) + 1) % statusCycle.length
+  const next = statusCycle[nextIndex]
+  showToast(`New App: ${getTargetLanguage(course.code)} → ${next === 'not_available' ? 'removed' : next}`)
+  emit('updateNewAppStatus', { courseCode: course.code, status: next })
 }
 
-async function cycleLegacyStatus(course) {
-  // Normalize current status (handle case variations and 'released' → 'live')
-  let currentStatus = (course.legacyAppStatus || 'not_available').toLowerCase()
-  if (currentStatus === 'released') currentStatus = 'live'
-  if (!statusCycle.includes(currentStatus)) currentStatus = 'not_available'
-
-  const currentIndex = statusCycle.indexOf(currentStatus)
-  const nextIndex = (currentIndex + 1) % statusCycle.length
-  const nextStatus = statusCycle[nextIndex]
-
-  console.log(`[Legacy Status] ${course.code}: ${currentStatus} → ${nextStatus}`)
-  showToast(`Legacy App: ${getTargetLanguage(course.code)} → ${nextStatus === 'not_available' ? 'removed' : nextStatus}`)
-
-  // Emit event for parent to handle API call and refresh
-  emit('updateLegacyStatus', { courseCode: course.code, status: nextStatus })
-}
-
-// Deploy course from Polishing to Production (starts at 'testing' status)
-function handleDeploy(course, platform) {
-  const platformLabel = platform === 'new_app' ? 'New App' : 'Legacy App'
-  console.log(`[Deploy] ${course.code} to ${platform} with status: testing`)
-  showToast(`Deploying ${getTargetLanguage(course.code)} to ${platformLabel}...`)
-  emit('deployToProduction', { courseCode: course.code, platform, status: 'testing' })
+function cycleLegacyStatus(course) {
+  let current = getNormalizedLegacyStatus(course)
+  if (!statusCycle.includes(current)) current = 'not_available'
+  const nextIndex = (statusCycle.indexOf(current) + 1) % statusCycle.length
+  const next = statusCycle[nextIndex]
+  showToast(`Legacy App: ${getTargetLanguage(course.code)} → ${next === 'not_available' ? 'removed' : next}`)
+  emit('updateLegacyStatus', { courseCode: course.code, status: next })
 }
 </script>
 
 <style scoped>
-/* ============================================
-   COURSE PIPELINE BOARD
-   Kanban-style flow visualization
-   ============================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .pipeline-board {
   --pb-bg: #0a0e17;
   --pb-surface: #111827;
   --pb-card: #1a2234;
-  --pb-card-hover: #222d42;
+  --pb-card-hover: #1e2a3f;
   --pb-border: rgba(255, 255, 255, 0.06);
   --pb-text: #f1f5f9;
   --pb-text-dim: #94a3b8;
@@ -709,29 +460,28 @@ function handleDeploy(course, platform) {
 
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--pb-bg);
-  min-height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Board Header */
+/* Header */
 .board-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid var(--pb-border);
-  background: linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, transparent 100%);
+  background: var(--pb-surface);
 }
 
-.header-title {
+.header-left {
   display: flex;
   align-items: baseline;
   gap: 0.75rem;
 }
 
-.header-title h2 {
-  font-size: 1.125rem;
+.header-left h2 {
+  font-size: 1rem;
   font-weight: 600;
   color: var(--pb-text);
   margin: 0;
@@ -744,165 +494,62 @@ function handleDeploy(course, platform) {
   font-weight: 500;
 }
 
-.header-actions {
+.header-right {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-/* Hidden toggle group */
-.hidden-toggle-group {
+/* Stage legend */
+.stage-legend {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 0.875rem;
 }
 
-.unhide-all-btn {
-  padding: 0.5rem 0.75rem;
-  background: transparent;
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: #8b5cf6;
-  transition: all 0.2s;
-}
-
-.unhide-all-btn:hover {
-  background: rgba(139, 92, 246, 0.15);
-  border-color: #8b5cf6;
-}
-
-/* Hidden toggle button */
-.hidden-toggle {
+.legend-item {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--pb-surface);
-  border: 1px solid var(--pb-border);
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 500;
+  gap: 0.3rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  font-size: 0.6875rem;
   color: var(--pb-text-muted);
-  transition: all 0.2s;
+  font-weight: 500;
 }
 
-.hidden-toggle:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+.legend-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
   color: var(--pb-text-dim);
+  font-weight: 600;
+  min-width: 1rem;
+  text-align: center;
 }
 
-.hidden-toggle.active {
-  background: rgba(139, 92, 246, 0.15);
-  border-color: #8b5cf6;
-  color: #8b5cf6;
-}
-
-/* Not started indicator */
-.not-started-indicator {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--pb-surface);
-  border: 1px solid var(--pb-border);
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--pb-text-muted);
-}
-
-.indicator-dot {
-  width: 6px;
-  height: 6px;
-  background: #64748b;
-  border-radius: 50%;
-}
-
-/* Compact mode toggle */
-.compact-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  background: var(--pb-surface);
-  border: 1px solid var(--pb-border);
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--pb-text-muted);
-  transition: all 0.2s;
-}
-
-.compact-toggle:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  color: var(--pb-text-dim);
-}
-
-.compact-toggle.active {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: #3b82f6;
-  color: #3b82f6;
-}
-
-/* Sort selector */
-.sort-selector {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.sort-select {
-  appearance: none;
-  background: var(--pb-surface);
-  border: 1px solid var(--pb-border);
-  border-radius: 8px;
-  padding: 0.5rem 2rem 0.5rem 0.75rem;
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--pb-text-dim);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.sort-select:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  color: var(--pb-text);
-}
-
-.sort-select:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-}
-
-.sort-icon {
-  position: absolute;
-  right: 0.625rem;
-  pointer-events: none;
-  color: var(--pb-text-muted);
-}
-
+/* Search */
 .search-box {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--pb-surface);
+  padding: 0.375rem 0.625rem;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--pb-border);
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s;
 }
 
 .search-box.focused {
   border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.12);
 }
 
 .search-icon {
@@ -917,609 +564,306 @@ function handleDeploy(course, platform) {
   color: var(--pb-text);
   font-size: 0.8125rem;
   font-family: inherit;
-  width: 120px;
+  width: 140px;
 }
 
 .search-box input::placeholder {
   color: var(--pb-text-muted);
 }
 
-/* Lanes Container */
-.lanes-container {
+/* Table header */
+.table-header {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  flex: 1;
-  background: var(--pb-border);
-  overflow-x: auto;
-}
-
-@media (max-width: 1200px) {
-  .lanes-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .lanes-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Pipeline Lane */
-.pipeline-lane {
-  background: var(--pb-bg);
-  display: flex;
-  flex-direction: column;
-  min-width: 200px;
-}
-
-.pipeline-lane.empty {
-  opacity: 0.6;
-}
-
-.lane-header {
-  padding: 1rem;
+  grid-template-columns: 28px 1fr 140px 72px 72px 72px 64px;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
   border-bottom: 1px solid var(--pb-border);
-  background: var(--pb-surface);
+  background: rgba(17, 24, 39, 0.6);
 }
 
-.lane-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.375rem;
-}
-
-.lane-indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-}
-
-.lane-title {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--pb-text);
-  margin: 0;
-  flex: 1;
-}
-
-.lane-count {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  padding: 0.125rem 0.5rem;
-  border-radius: 10px;
-  font-variant-numeric: tabular-nums;
-}
-
-.lane-description {
-  font-size: 0.6875rem;
-  color: var(--pb-text-muted);
-  margin: 0;
-}
-
-/* Lane Content */
-.lane-content {
-  flex: 1;
-  padding: 0.75rem;
-  overflow-y: auto;
-  max-height: 520px;
-}
-
-.lane-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-}
-
-/* Course Card */
-.course-card {
-  background: var(--pb-card);
-  border: 1px solid var(--pb-border);
-  border-radius: 10px;
-  padding: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.course-card:hover,
-.course-card.active {
-  background: var(--pb-card-hover);
-  border-color: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.course-card.hidden {
-  opacity: 0.5;
-  border-style: dashed;
-}
-
-/* Compact Card Mode */
-.course-card.compact {
-  padding: 0.5rem 0.75rem;
-}
-
-.compact-content {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  flex-wrap: wrap;
-}
-
-.compact-language {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--pb-text);
-}
-
-.compact-for {
+.th {
   font-size: 0.625rem;
+  font-weight: 600;
   color: var(--pb-text-muted);
-  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.15s;
 }
 
-.compact-speakers {
-  font-size: 0.75rem;
-  font-weight: 500;
+.th:hover {
   color: var(--pb-text-dim);
 }
 
-.compact-status-badge {
-  margin-left: auto;
-  font-size: 0.5625rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 0.125rem 0.375rem;
-  border-radius: 4px;
+.th-status {
+  cursor: default;
 }
 
-.compact-status-badge.testing {
-  background: rgba(148, 163, 184, 0.2);
-  color: #94a3b8;
+.th-legos,
+.th-phrases,
+.th-audio {
+  justify-content: flex-end;
 }
 
-.compact-status-badge.beta {
-  background: rgba(251, 191, 36, 0.2);
-  color: #fbbf24;
-}
-
-.compact-status-badge.live {
-  background: rgba(16, 185, 129, 0.2);
-  color: #10b981;
-}
-
-/* App Status Badge (full card mode) */
-.app-status-badge {
-  font-size: 0.5625rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 0.1875rem 0.5rem;
-  border-radius: 4px;
-}
-
-.app-status-badge.testing {
-  background: rgba(148, 163, 184, 0.2);
-  color: #94a3b8;
-}
-
-.app-status-badge.beta {
-  background: rgba(251, 191, 36, 0.2);
-  color: #fbbf24;
-}
-
-.app-status-badge.live {
-  background: rgba(16, 185, 129, 0.2);
-  color: #10b981;
-}
-
-/* Production Column: Dual Deploy Status */
-.card-deploy-status {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--pb-border);
-}
-
-.deploy-badge {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem;
-  background: var(--pb-surface);
-  border-radius: 6px;
-  opacity: 0.4;
-  transition: opacity 0.2s;
-}
-
-.deploy-badge.active {
-  opacity: 1;
-}
-
-.deploy-badge.new-app {
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.deploy-badge.new-app.active {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.5);
-}
-
-.deploy-badge.legacy-app {
-  border: 1px solid rgba(6, 182, 212, 0.3);
-}
-
-.deploy-badge.legacy-app.active {
-  background: rgba(6, 182, 212, 0.1);
-  border-color: rgba(6, 182, 212, 0.5);
-}
-
-.deploy-badge.clickable {
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.deploy-badge.new-app.clickable:hover {
-  transform: scale(1.02);
-  border-color: rgba(59, 130, 246, 0.8);
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
-}
-
-.deploy-badge.legacy-app.clickable:hover {
-  transform: scale(1.02);
-  border-color: rgba(6, 182, 212, 0.8);
-  box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
-}
-
-.deploy-label {
-  font-size: 0.5625rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--pb-text-muted);
-}
-
-.deploy-status {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: var(--pb-text-muted);
-}
-
-.deploy-status.testing {
-  color: #94a3b8;
-}
-
-.deploy-status.beta {
-  color: #fbbf24;
-}
-
-.deploy-status.live {
-  color: #10b981;
-}
-
-/* Deploy Actions (Polishing lane) */
-.card-deploy-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.625rem;
-  padding-top: 0.625rem;
-  border-top: 1px solid var(--pb-border);
-}
-
-.deploy-label-text {
-  font-size: 0.625rem;
-  font-weight: 500;
-  color: var(--pb-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.deploy-action-btn {
-  flex: 1;
-  padding: 0.375rem 0.5rem;
-  border: 1px solid var(--pb-border);
-  border-radius: 5px;
-  background: var(--pb-surface);
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.625rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  transition: all 0.15s;
-}
-
-.deploy-action-btn.new-app {
-  color: #3b82f6;
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-.deploy-action-btn.new-app:hover {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: #3b82f6;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
-}
-
-.deploy-action-btn.legacy-app {
-  color: #06b6d4;
-  border-color: rgba(6, 182, 212, 0.3);
-}
-
-.deploy-action-btn.legacy-app:hover {
-  background: rgba(6, 182, 212, 0.15);
-  border-color: #06b6d4;
-  box-shadow: 0 0 8px rgba(6, 182, 212, 0.2);
-}
-
-/* Compact mode legacy badge */
-.compact-status-badge.legacy {
-  background: rgba(6, 182, 212, 0.2);
-  border-left: 2px solid #06b6d4;
-}
-
-.card-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.card-title {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  flex-wrap: wrap;
-}
-
-.card-language {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--pb-text);
-}
-
-.card-arrow {
-  font-size: 0.6875rem;
-  color: var(--pb-text-muted);
-  font-style: italic;
-}
-
-.card-speakers {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--pb-text-dim);
-}
-
-.card-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.card-code {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.625rem;
-  color: var(--pb-text-muted);
-  letter-spacing: 0.02em;
-}
-
-.hide-btn,
-.unhide-btn {
-  display: flex;
-  align-items: center;
+.th-apps {
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: var(--pb-text-muted);
-  opacity: 0;
-  transition: all 0.15s;
+  cursor: default;
 }
 
-.course-card:hover .hide-btn,
-.course-card:hover .unhide-btn {
-  opacity: 1;
-}
-
-.hide-btn:hover {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
-}
-
-.unhide-btn {
-  opacity: 1;
-  color: #8b5cf6;
-}
-
-.unhide-btn:hover {
-  background: rgba(139, 92, 246, 0.2);
-}
-
-/* Progress Ring */
-.card-progress {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.progress-ring {
-  width: 44px;
-  height: 44px;
-  transform: rotate(-90deg);
+.sort-arrow {
   flex-shrink: 0;
+  transition: transform 0.2s;
 }
 
-.ring-bg {
-  stroke: var(--pb-border);
+.sort-arrow.desc {
+  transform: rotate(180deg);
 }
 
-.ring-fill {
-  stroke-dashoffset: 0;
-  transition: stroke-dasharray 0.5s ease;
+/* Table body */
+.table-body {
+  flex: 1;
+  overflow-y: auto;
 }
 
-.progress-value {
-  display: flex;
-  flex-direction: column;
-}
-
-.progress-number {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--pb-text);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-
-.progress-label {
-  font-size: 0.625rem;
-  color: var(--pb-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Card Stats */
-.card-stats {
+/* Course row */
+.course-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding-top: 0.625rem;
-  border-top: 1px solid var(--pb-border);
+  grid-template-columns: 28px 1fr 140px 72px 72px 72px 64px;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: background 0.12s;
 }
 
-.stat {
-  text-align: center;
+.course-row:hover,
+.course-row.active {
+  background: var(--pb-card-hover);
 }
 
-.stat-value {
-  display: block;
+.course-row:last-child {
+  border-bottom: none;
+}
+
+/* Cells */
+.cell {
+  display: flex;
+  align-items: center;
+}
+
+.cell.mono {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--pb-text-dim);
+  font-variant-numeric: tabular-nums;
+  justify-content: flex-end;
+}
+
+/* Stage dot */
+.cell-status {
+  justify-content: center;
+}
+
+.stage-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+/* Course name */
+.cell-course {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-right: 1rem;
+}
+
+.course-name {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.lang-target {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--pb-text);
+}
+
+.lang-for {
+  font-size: 0.625rem;
+  color: var(--pb-text-muted);
+  font-style: italic;
+}
+
+.lang-known {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--pb-text-dim);
+}
+
+.course-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5625rem;
+  color: var(--pb-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Seeds + progress bar */
+.cell-seeds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.seeds-text {
+  display: flex;
+  align-items: baseline;
+  gap: 0.125rem;
+  font-family: 'JetBrains Mono', monospace;
   font-variant-numeric: tabular-nums;
 }
 
-.stat-label {
-  font-size: 0.5625rem;
-  color: var(--pb-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-/* Card Action */
-.card-action {
-  margin-top: 0.625rem;
-}
-
-.action-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.375rem;
-  width: 100%;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.6875rem;
+.seeds-count {
+  font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  transition: all 0.15s;
+  color: var(--pb-text);
 }
 
-.action-btn:hover {
-  filter: brightness(1.2);
-}
-
-/* Deploy Status */
-.card-deploy {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 0.625rem;
-  padding-top: 0.625rem;
-  border-top: 1px solid var(--pb-border);
-}
-
-.deploy-item {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  opacity: 0.4;
-}
-
-.deploy-item.active {
-  opacity: 1;
-}
-
-.deploy-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--pb-text-muted);
-}
-
-.deploy-item.active .deploy-dot {
-  background: #10b981;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-}
-
-.deploy-label {
+.seeds-sep {
   font-size: 0.625rem;
-  font-weight: 500;
   color: var(--pb-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
-.deploy-item.active .deploy-label {
-  color: var(--pb-text-dim);
+.seeds-target {
+  font-size: 0.625rem;
+  color: var(--pb-text-muted);
 }
 
-/* Empty State */
-.lane-empty {
-  flex: 1;
+.progress-bar-container {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+/* App badges */
+.cell-apps {
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.app-badge {
+  width: 22px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5625rem;
+  font-weight: 700;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 2rem 1rem;
+  transition: all 0.15s;
+  padding: 0;
+}
+
+.app-badge.inactive {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.12);
+}
+
+.app-badge.inactive:hover {
+  border-color: rgba(255, 255, 255, 0.15);
   color: var(--pb-text-muted);
 }
 
-.empty-icon {
-  opacity: 0.3;
+/* New App colors */
+.app-badge.status-testing {
+  background: rgba(148, 163, 184, 0.15);
+  border-color: rgba(148, 163, 184, 0.3);
+  color: #94a3b8;
+}
+
+.app-badge.status-beta {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+}
+
+.app-badge.status-live {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+/* Legacy App — slight cyan tint */
+.app-badge.legacy.status-testing {
+  background: rgba(148, 163, 184, 0.1);
+  border-color: rgba(6, 182, 212, 0.25);
+  color: #94a3b8;
+}
+
+.app-badge.legacy.status-beta {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.35);
+  color: #06b6d4;
+}
+
+.app-badge.legacy.status-live {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.4);
+  color: #06b6d4;
+}
+
+.app-badge:hover {
+  transform: scale(1.1);
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--pb-text-muted);
 }
 
 .empty-text {
-  font-size: 0.75rem;
-  text-align: center;
+  font-size: 0.8125rem;
 }
 
-/* Board Footer */
+/* Footer */
 .board-footer {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   background: var(--pb-surface);
   border-top: 1px solid var(--pb-border);
 }
@@ -1528,19 +872,19 @@ function handleDeploy(course, platform) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.125rem;
+  gap: 0.0625rem;
 }
 
 .footer-value {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--pb-text);
   font-variant-numeric: tabular-nums;
 }
 
 .footer-label {
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
   color: var(--pb-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1552,47 +896,31 @@ function handleDeploy(course, platform) {
 
 .footer-divider {
   width: 1px;
-  height: 28px;
+  height: 24px;
   background: var(--pb-border);
 }
 
-/* Transitions */
-.card-enter-active,
-.card-leave-active {
-  transition: all 0.3s ease;
+/* Row transitions */
+.row-enter-active,
+.row-leave-active {
+  transition: all 0.25s ease;
 }
 
-.card-enter-from {
+.row-enter-from {
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translateX(-8px);
 }
 
-.card-leave-to {
+.row-leave-to {
   opacity: 0;
-  transform: scale(0.95);
+  transform: translateX(8px);
 }
 
-.card-move {
-  transition: transform 0.3s ease;
+.row-move {
+  transition: transform 0.25s ease;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .board-footer {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-divider {
-    display: none;
-  }
-
-  .footer-stat {
-    flex: 1 1 45%;
-  }
-}
-
-/* Toast Notification */
+/* Toast */
 .toast-notification {
   position: fixed;
   bottom: 2rem;
@@ -1601,11 +929,11 @@ function handleDeploy(course, platform) {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.625rem 1rem;
   background: rgba(16, 185, 129, 0.95);
   color: white;
-  border-radius: 8px;
-  font-size: 0.875rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
   font-weight: 500;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   z-index: 9999;
@@ -1624,5 +952,39 @@ function handleDeploy(course, platform) {
 .toast-leave-to {
   opacity: 0;
   transform: translateX(-50%) translateY(-10px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .table-header,
+  .course-row {
+    grid-template-columns: 28px 1fr 100px 60px 60px 64px;
+  }
+  .th-audio,
+  .cell-audio {
+    display: none;
+  }
+  .stage-legend {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .table-header,
+  .course-row {
+    grid-template-columns: 24px 1fr 64px;
+  }
+  .th-legos, .th-phrases, .th-audio, .th-apps,
+  .cell-legos, .cell-phrases, .cell-audio, .cell-apps {
+    display: none;
+  }
+  .board-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  .header-right {
+    justify-content: space-between;
+  }
 }
 </style>
