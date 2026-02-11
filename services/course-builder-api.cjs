@@ -10996,13 +10996,13 @@ app.get('/api/golden/seed-status/:courseCode/:seedNumber', async (req, res) => {
       .eq('seed_number', seedNumber);
     if (phrasesErr) throw phrasesErr;
 
-    // Count checked phrases
+    // Count checked phrases (qa_checked is TIMESTAMPTZ, not boolean)
     const { count: checkedCount, error: checkedErr } = await supabase
       .from('course_practice_phrases')
       .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
       .eq('seed_number', seedNumber)
-      .eq('qa_checked', true);
+      .not('qa_checked', 'is', null);
     if (checkedErr) throw checkedErr;
 
     // Get open flags for this seed
