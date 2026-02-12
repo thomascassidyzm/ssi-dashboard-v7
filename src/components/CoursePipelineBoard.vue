@@ -75,14 +75,9 @@
             <span class="stage-dot" :style="{ background: getStageColor(course) }" :title="getStageLabel(course)"></span>
           </span>
 
-          <!-- Course name -->
+          <!-- Course code -->
           <span class="cell cell-course">
-            <span class="course-name">
-              <span class="lang-target">{{ getTargetLanguage(course.code) }}</span>
-              <span class="lang-for">for</span>
-              <span class="lang-known">{{ getKnownLanguage(course.code) }}</span>
-            </span>
-            <span class="course-code">{{ course.code }}</span>
+            <span class="course-code-label">{{ course.code }}</span>
           </span>
 
           <!-- Seeds with progress bar -->
@@ -634,7 +629,7 @@ function cycleLegacyStatus(course) {
   display: grid;
   grid-template-columns: 28px 1fr 140px 72px 72px 72px 64px;
   align-items: center;
-  padding: 0.5rem 1.5rem;
+  padding: 0.3125rem 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   cursor: pointer;
   transition: background 0.12s;
@@ -675,43 +670,17 @@ function cycleLegacyStatus(course) {
   border-radius: 2px;
 }
 
-/* Course name */
+/* Course code */
 .cell-course {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
   padding-right: 1rem;
 }
 
-.course-name {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.lang-target {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--pb-text);
-}
-
-.lang-for {
-  font-size: 0.625rem;
-  color: var(--pb-text-muted);
-  font-style: italic;
-}
-
-.lang-known {
+.course-code-label {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--pb-text-dim);
-}
-
-.course-code {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.5625rem;
-  color: var(--pb-text-muted);
-  letter-spacing: 0.02em;
+  color: var(--pb-text);
+  letter-spacing: 0.01em;
 }
 
 /* Seeds + progress bar */

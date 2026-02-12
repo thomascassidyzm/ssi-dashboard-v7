@@ -458,9 +458,7 @@ onUnmounted(() => {
 
 /* Content */
 .page-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.25rem 1.5rem 2rem;
+  padding: 1rem 1.5rem 2rem;
 }
 
 .pipeline-container {

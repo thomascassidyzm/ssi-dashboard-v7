@@ -443,8 +443,6 @@ onUnmounted(() => {
 }
 
 .header-inner {
-  max-width: 1400px;
-  margin: 0 auto;
   padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
@@ -697,9 +695,7 @@ onUnmounted(() => {
 .mc-main {
   position: relative;
   z-index: 10;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.25rem 1.5rem 2rem;
+  padding: 1rem 1.5rem 2rem;
 }
 
 .pipeline-container {
