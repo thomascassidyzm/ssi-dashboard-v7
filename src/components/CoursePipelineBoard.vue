@@ -83,22 +83,23 @@
             <span class="course-code-label">{{ course.code }}</span>
           </span>
 
-          <!-- Seeds with inline progress bar -->
+          <!-- Seeds count + pipeline journey -->
           <span class="cell cell-seeds">
             <span class="seeds-text">
               <span class="seeds-count">{{ getCompletedSeeds(course) }}</span>
               <span class="seeds-sep">/</span>
               <span class="seeds-target">{{ course.targetSeeds || 300 }}</span>
             </span>
-            <span class="progress-bar-container">
-              <span class="progress-bar-bg"></span>
+            <span class="pipeline-track">
               <span
-                class="progress-bar-fill"
-                :style="{
-                  width: getProgress(course) + '%',
-                  background: getProgressColor(course)
-                }"
-              ></span>
+                v-for="(seg, i) in getPipelineSegments(course)"
+                :key="i"
+                class="pipeline-segment"
+                :title="seg.label + ' ' + seg.fill + '%'"
+              >
+                <span class="segment-bg"></span>
+                <span class="segment-fill" :style="{ width: seg.fill + '%', background: seg.color }"></span>
+              </span>
             </span>
           </span>
 
@@ -279,12 +280,44 @@ function getProgress(course) {
   return Math.min(100, Math.round((completed / target) * 100))
 }
 
-function getProgressColor(course) {
-  const pct = getProgress(course)
-  if (pct >= 100) return '#10b981'
-  if (pct >= 50) return '#3b82f6'
-  if (pct > 0) return '#f59e0b'
-  return 'rgba(255,255,255,0.08)'
+function getPipelineSegments(course) {
+  const stage = getStage(course)
+  const seedPct = getProgress(course)
+  const phrases = course.stats?.phrases || 0
+  const audio = course.stats?.audio || 0
+
+  const stageOrder = ['building', 'audio', 'polishing', 'production']
+  const stageIdx = stageOrder.indexOf(stage) // -1 for not_started
+
+  const segDefs = [
+    { key: 'building',   label: 'Seeds',   color: '#f59e0b' },
+    { key: 'audio',      label: 'Audio',   color: '#8b5cf6' },
+    { key: 'polishing',  label: 'Polish',  color: '#f97316' },
+    { key: 'production', label: 'Live',    color: '#10b981' }
+  ]
+
+  return segDefs.map((def, i) => {
+    let fill = 0
+    if (stageIdx < 0) {
+      // not_started — everything empty
+      fill = 0
+    } else if (i < stageIdx) {
+      // Past stage — fully complete
+      fill = 100
+    } else if (i === stageIdx) {
+      // Current stage — proportional
+      if (def.key === 'building') {
+        fill = seedPct
+      } else if (def.key === 'audio') {
+        fill = phrases > 0 ? Math.min(100, Math.round((audio / (phrases * 2)) * 100)) : 0
+      } else if (def.key === 'polishing') {
+        fill = course.exportReady ? 100 : 50
+      } else if (def.key === 'production') {
+        fill = 100
+      }
+    }
+    return { label: def.label, fill, color: def.color }
+  })
 }
 
 function formatNumber(n) {
@@ -745,24 +778,31 @@ function cycleLegacyStatus(course) {
   color: var(--color-paper-dim, #c1c1bb);
 }
 
-.progress-bar-container {
-  position: relative;
+/* Pipeline journey track */
+.pipeline-track {
+  display: flex;
+  gap: 3px;
   flex: 1;
-  max-width: 200px;
-  height: 5px;
-  border-radius: 3px;
-  overflow: hidden;
-  min-width: 40px;
+  max-width: 240px;
+  min-width: 80px;
 }
 
-.progress-bar-bg {
+.pipeline-segment {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.segment-bg {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.06);
   border-radius: 3px;
 }
 
-.progress-bar-fill {
+.segment-fill {
   position: absolute;
   top: 0;
   left: 0;
