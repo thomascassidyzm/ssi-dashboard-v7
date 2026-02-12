@@ -480,7 +480,7 @@ function cycleLegacyStatus(course) {
 }
 
 .course-count {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--color-paper-dim, #c1c1bb);
   font-weight: 500;
   display: flex;
@@ -555,14 +555,14 @@ function cycleLegacyStatus(course) {
 }
 
 .legend-label {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--color-paper-dim, #c1c1bb);
   font-weight: 500;
 }
 
 .legend-count {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--color-paper, #f7f7f2);
   font-weight: 600;
   min-width: 1rem;
@@ -608,7 +608,7 @@ function cycleLegacyStatus(course) {
 /* Table header */
 .table-header {
   display: grid;
-  grid-template-columns: 160px 1fr 72px 72px 72px 64px;
+  grid-template-columns: 200px 1fr 80px 80px 80px 72px;
   align-items: center;
   padding: 0.5rem 1.25rem;
   padding-left: calc(1.25rem + 3px); /* account for row left-border */
@@ -617,7 +617,7 @@ function cycleLegacyStatus(course) {
 }
 
 .th {
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: var(--color-paper-dim, #c1c1bb);
   text-transform: uppercase;
@@ -663,9 +663,9 @@ function cycleLegacyStatus(course) {
 /* Course row */
 .course-row {
   display: grid;
-  grid-template-columns: 160px 1fr 72px 72px 72px 64px;
+  grid-template-columns: 200px 1fr 80px 80px 80px 72px;
   align-items: center;
-  padding: 0.5rem 1.25rem;
+  padding: 0.6875rem 1.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   border-left: 3px solid transparent;
   cursor: pointer;
@@ -693,7 +693,7 @@ function cycleLegacyStatus(course) {
 
 .cell.mono {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-paper-dim, #c1c1bb);
   font-variant-numeric: tabular-nums;
@@ -707,7 +707,7 @@ function cycleLegacyStatus(course) {
 
 .course-code-label {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-paper, #f7f7f2);
   letter-spacing: 0.01em;
@@ -730,26 +730,27 @@ function cycleLegacyStatus(course) {
 }
 
 .seeds-count {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-paper, #f7f7f2);
 }
 
 .seeds-sep {
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--color-paper-dim, #c1c1bb);
 }
 
 .seeds-target {
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--color-paper-dim, #c1c1bb);
 }
 
 .progress-bar-container {
   position: relative;
   flex: 1;
-  height: 4px;
-  border-radius: 2px;
+  max-width: 200px;
+  height: 5px;
+  border-radius: 3px;
   overflow: hidden;
   min-width: 40px;
 }
@@ -758,7 +759,7 @@ function cycleLegacyStatus(course) {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .progress-bar-fill {
@@ -766,7 +767,7 @@ function cycleLegacyStatus(course) {
   top: 0;
   left: 0;
   height: 100%;
-  border-radius: 2px;
+  border-radius: 3px;
   transition: width 0.4s ease;
 }
 
@@ -777,13 +778,13 @@ function cycleLegacyStatus(course) {
 }
 
 .app-badge {
-  width: 22px;
-  height: 18px;
+  width: 24px;
+  height: 20px;
   border-radius: 3px;
   border: 1px solid;
   cursor: pointer;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.5625rem;
+  font-size: 0.625rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -864,7 +865,7 @@ function cycleLegacyStatus(course) {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 0.5rem 1.25rem;
+  padding: 0.625rem 1.25rem;
   background: var(--color-slate, #334155);
   border-top: 1px solid var(--color-graphite, #475569);
 }
@@ -878,14 +879,14 @@ function cycleLegacyStatus(course) {
 
 .footer-value {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-paper, #f7f7f2);
   font-variant-numeric: tabular-nums;
 }
 
 .footer-label {
-  font-size: 0.5625rem;
+  font-size: 0.625rem;
   color: var(--color-paper-dim, #c1c1bb);
   text-transform: uppercase;
   letter-spacing: 0.05em;
