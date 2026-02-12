@@ -90,16 +90,14 @@
               <span class="seeds-sep">/</span>
               <span class="seeds-target">{{ course.targetSeeds || 300 }}</span>
             </span>
-            <span class="pipeline-track">
+            <span class="pipeline-grid">
               <span
-                v-for="(seg, i) in getPipelineSegments(course)"
+                v-for="(block, i) in getPipelineBlocks(course)"
                 :key="i"
-                class="pipeline-segment"
-                :title="seg.label + ' ' + seg.fill + '%'"
-              >
-                <span class="segment-bg"></span>
-                <span class="segment-fill" :style="{ width: seg.fill + '%', background: seg.color }"></span>
-              </span>
+                class="grid-block"
+                :class="{ filled: block.filled, 'stage-start': block.isStageStart }"
+                :style="{ background: block.filled ? block.color : undefined }"
+              ></span>
             </span>
           </span>
 
@@ -320,6 +318,22 @@ function getPipelineSegments(course) {
   })
 }
 
+function getPipelineBlocks(course) {
+  const segments = getPipelineSegments(course)
+  const blocks = []
+  for (const seg of segments) {
+    const filledCount = Math.round(seg.fill / 10)
+    for (let i = 0; i < 10; i++) {
+      blocks.push({
+        color: seg.color,
+        filled: i < filledCount,
+        isStageStart: i === 0
+      })
+    }
+  }
+  return blocks
+}
+
 function formatNumber(n) {
   if (n >= 1000) return (n / 1000).toFixed(1) + 'k'
   return n.toString()
@@ -335,10 +349,10 @@ const stageConfig = {
 }
 
 const stageLegend = [
-  { key: 'production', color: '#10b981', label: 'Production' },
-  { key: 'polishing',  color: '#f97316', label: 'Polishing' },
-  { key: 'audio',      color: '#3b82f6', label: 'Audio' },
   { key: 'building',   color: '#f59e0b', label: 'Building' },
+  { key: 'audio',      color: '#3b82f6', label: 'Audio' },
+  { key: 'polishing',  color: '#f97316', label: 'Polishing' },
+  { key: 'production', color: '#10b981', label: 'Production' },
   { key: 'not_started',color: '#334155', label: 'Not Started' }
 ]
 
@@ -778,36 +792,32 @@ function cycleLegacyStatus(course) {
   color: var(--color-paper-dim, #c1c1bb);
 }
 
-/* Pipeline journey track */
-.pipeline-track {
+/* Pipeline grid blocks */
+.pipeline-grid {
   display: flex;
-  gap: 3px;
+  gap: 2px;
   flex: 1;
   min-width: 120px;
 }
 
-.pipeline-segment {
-  position: relative;
+.grid-block {
   flex: 1;
   height: 10px;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.segment-bg {
-  position: absolute;
-  inset: 0;
+  border-radius: 2px;
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 3px;
+  transition: background 0.3s ease;
 }
 
-.segment-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  border-radius: 3px;
-  transition: width 0.4s ease;
+.grid-block.stage-start {
+  margin-left: 3px;
+}
+
+.grid-block.stage-start:first-child {
+  margin-left: 0;
+}
+
+.grid-block.filled {
+  opacity: 0.9;
 }
 
 /* App badges */
