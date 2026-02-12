@@ -175,6 +175,19 @@
                 {{ goldenStarting ? 'Spawning...' : 'Spawn Creator' }}
               </button>
               <span v-if="goldenStatus.running && pipelinePhase === 'calibrate'" class="text-xs text-amber-400 animate-pulse">Running...</span>
+              <!-- Reset -->
+              <template v-if="stageResetConfirm === 'calibrate'">
+                <span class="text-xs text-red-400">Wipe seeds 1-10?</span>
+                <button @click="resetStage('calibrate')" :disabled="stageResetting === 'calibrate'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
+                  {{ stageResetting === 'calibrate' ? 'Wiping...' : 'Confirm' }}
+                </button>
+                <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
+              </template>
+              <button
+                v-else-if="!stageLocked('calibrate') && calibrationDone > 0 && !goldenStatus.running"
+                @click="stageResetConfirm = 'calibrate'"
+                class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
+              >Reset</button>
             </div>
           </div>
           <div v-if="!stageLocked('calibrate')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
@@ -217,6 +230,19 @@
                 {{ goldenStarting ? 'Spawning...' : 'Launch Creator + Checker' }}
               </button>
               <span v-if="goldenStatus.running && pipelinePhase === 'golden'" class="text-xs text-amber-400 animate-pulse">Running...</span>
+              <!-- Reset -->
+              <template v-if="stageResetConfirm === 'golden'">
+                <span class="text-xs text-red-400">Wipe seeds 11-50?</span>
+                <button @click="resetStage('golden')" :disabled="stageResetting === 'golden'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
+                  {{ stageResetting === 'golden' ? 'Wiping...' : 'Confirm' }}
+                </button>
+                <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
+              </template>
+              <button
+                v-else-if="!stageLocked('golden') && goldenRangeDone > 0 && !goldenStatus.running"
+                @click="stageResetConfirm = 'golden'"
+                class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
+              >Reset</button>
             </div>
           </div>
           <div v-if="!stageLocked('golden')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
@@ -263,6 +289,19 @@
                 Stop
               </button>
               <span v-if="progress.status === 'running'" class="text-xs text-cyan-400 animate-pulse">Running...</span>
+              <!-- Reset -->
+              <template v-if="stageResetConfirm === 'mvp'">
+                <span class="text-xs text-red-400">Wipe seeds 51-{{ seedCount }}?</span>
+                <button @click="resetStage('mvp')" :disabled="stageResetting === 'mvp'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
+                  {{ stageResetting === 'mvp' ? 'Wiping...' : 'Confirm' }}
+                </button>
+                <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
+              </template>
+              <button
+                v-else-if="!stageLocked('mvp') && mvpDecomposed > 0 && progress.status !== 'running'"
+                @click="stageResetConfirm = 'mvp'"
+                class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
+              >Reset</button>
             </div>
           </div>
           <div v-if="!stageLocked('mvp')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
@@ -792,6 +831,10 @@ const rebuildTo = ref(300)
 const rebuildConfirming = ref(false)
 const rebuildRunning = ref(false)
 
+// Stage reset state
+const stageResetConfirm = ref(null) // 'calibrate' | 'golden' | 'mvp' | null
+const stageResetting = ref(null)    // which stage is currently wiping
+
 const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
 const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
@@ -1079,6 +1122,42 @@ async function executeRebuild() {
     console.error('Rebuild error:', err.message)
   } finally {
     rebuildRunning.value = false
+  }
+}
+
+async function resetStage(stage) {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  const ranges = {
+    calibrate: { from: 1, to: 10 },
+    golden: { from: 11, to: 50 },
+    mvp: { from: 51, to: seedCount.value }
+  }
+  const range = ranges[stage]
+  if (!range) return
+
+  stageResetting.value = stage
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/rebuild/${courseCode}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({ from_seed: range.from, to_seed: range.to })
+    })
+
+    const data = await response.json()
+    if (data.ok) {
+      stageResetConfirm.value = null
+      await Promise.all([fetchProgress(), fetchSeedGrid(), fetchGoldenStatus()])
+    }
+  } catch (err) {
+    console.error(`Reset stage ${stage} error:`, err.message)
+  } finally {
+    stageResetting.value = null
   }
 }
 
