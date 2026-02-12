@@ -2252,13 +2252,6 @@ async function getDirectAudioStats(courseCode) {
     return cached.data
   }
   const supabase = supabaseClient.getClient()
-  const norm = (t) => (t || '').toLowerCase().trim()
-  const isPunctuationOnly = (text) => {
-    if (!text) return true
-    const trimmed = text.trim()
-    if (!trimmed) return true
-    return /^[.,;:!?。、？！；：…—–\-()[\]{}「」『』（）【】؟،؛־]+$/.test(trimmed)
-  }
 
   const { data: course } = await supabase
     .from('courses')
@@ -2267,115 +2260,78 @@ async function getDirectAudioStats(courseCode) {
     .single()
   const releaseTarget = course?.seed_count || 260
 
-  const [phrasesRes, allLegosRes, newLegosRes, seedsRes, audioRes, presentationAudioRes] = await Promise.all([
-    supabase
-      .from('course_practice_phrases')
-      .select('known_text, target_text')
-      .eq('course_code', courseCode)
-      .lte('seed_number', releaseTarget),
-    supabase
-      .from('course_legos')
-      .select('known_text, target_text')
-      .eq('course_code', courseCode)
-      .lte('seed_number', releaseTarget),
-    supabase
-      .from('course_legos')
-      .select('lego_id, presentation_audio_id')
-      .eq('course_code', courseCode)
-      .eq('is_new', true)
-      .lte('seed_number', releaseTarget),
-    supabase
-      .from('course_seeds')
-      .select('known_text, target_text')
-      .eq('course_code', courseCode)
-      .eq('status', 'released')
-      .lte('seed_number', releaseTarget),
-    fetchAllRows(supabase, 'course_audio', 'text_normalized, language, role', [
-      ['eq', 'course_code', courseCode],
-      ['in', 'role', ['known', 'target1', 'target2']],
-      ['not', 's3_key', 'like', 'pending/%']
-    ]),
-    fetchAllRows(supabase, 'course_audio', 'lego_id', [
-      ['eq', 'course_code', courseCode],
-      ['eq', 'role', 'presentation'],
-      ['not', 's3_key', 'like', 'pending/%']
-    ])
+  // Count audio bindings directly via ID columns — no text matching needed
+  // Phrases: known_audio_id, target1_audio_id, target2_audio_id
+  // LEGOs: known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id
+  // Seeds: known_audio_id, target1_audio_id, target2_audio_id
+  const [
+    phraseTotal, phraseKnownBound, phraseT1Bound, phraseT2Bound,
+    legoTotal, legoKnownBound, legoT1Bound, legoT2Bound,
+    newLegoTotal, newLegoPresentationBound,
+    seedTotal, seedKnownBound, seedT1Bound, seedT2Bound,
+    encRes, instrRes
+  ] = await Promise.all([
+    // Phrase counts
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
+    // LEGO counts
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
+    // New LEGO presentation counts
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', releaseTarget),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', releaseTarget).not('presentation_audio_id', 'is', null),
+    // Seed counts
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget),
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
+    // Shared audio
+    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
+      .eq('language', course.known_lang).eq('audio_type', 'encouragement'),
+    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
+      .eq('language', course.known_lang).eq('audio_type', 'instruction')
   ])
 
-  if (phrasesRes.error) throw phrasesRes.error
-  if (allLegosRes.error) throw allLegosRes.error
-  if (newLegosRes.error) throw newLegosRes.error
-  if (seedsRes.error) throw seedsRes.error
-  // audioRes and presentationAudioRes are direct arrays from fetchAllRows (errors thrown internally)
+  const phrases = phraseTotal.count || 0
+  const legos = legoTotal.count || 0
+  const newLegos = newLegoTotal.count || 0
+  const seeds = seedTotal.count || 0
 
-  const phrases = phrasesRes.data || []
-  const allLegos = allLegosRes.data || []
-  const newLegos = newLegosRes.data || []
-  const seeds = seedsRes.data || []
-  const existingAudio = audioRes || []
+  // Total needed: each phrase/LEGO/seed needs known + target1 + target2, new LEGOs also need presentation
+  const totalKnownNeeded = phrases + legos + seeds
+  const totalT1Needed = phrases + legos + seeds
+  const totalT2Needed = phrases + legos + seeds
+  const totalPresNeeded = newLegos
 
-  // Build existing sets per role
-  const existingByRoleSet = { known: new Set(), target1: new Set(), target2: new Set() }
-  for (const a of existingAudio) {
-    if (existingByRoleSet[a.role]) {
-      existingByRoleSet[a.role].add(`${norm(a.text_normalized)}|${a.language}`)
-    }
-  }
+  const knownBound = (phraseKnownBound.count || 0) + (legoKnownBound.count || 0) + (seedKnownBound.count || 0)
+  const t1Bound = (phraseT1Bound.count || 0) + (legoT1Bound.count || 0) + (seedT1Bound.count || 0)
+  const t2Bound = (phraseT2Bound.count || 0) + (legoT2Bound.count || 0) + (seedT2Bound.count || 0)
+  const presBound = newLegoPresentationBound.count || 0
 
-  // Build needed sets per role
-  const neededByRole = { known: new Set(), target1: new Set(), target2: new Set() }
-  const addToNeeded = (knownText, targetText) => {
-    if (!isPunctuationOnly(knownText)) {
-      neededByRole.known.add(`${norm(knownText)}|${course.known_lang}`)
-    }
-    if (!isPunctuationOnly(targetText)) {
-      neededByRole.target1.add(`${norm(targetText)}|${course.target_lang}`)
-      neededByRole.target2.add(`${norm(targetText)}|${course.target_lang}`)
-    }
-  }
-  for (const p of phrases) addToNeeded(p.known_text, p.target_text)
-  for (const l of allLegos) addToNeeded(l.known_text, l.target_text)
-  for (const s of seeds) addToNeeded(s.known_text, s.target_text)
+  const knownMissing = totalKnownNeeded - knownBound
+  const t1Missing = totalT1Needed - t1Bound
+  const t2Missing = totalT2Needed - t2Bound
+  const presMissing = totalPresNeeded - presBound
 
-  // Calculate per-role missing
-  const missingByRole = {}
-  const existingByRoleCount = {}
-  for (const role of ['known', 'target1', 'target2']) {
-    let roleExisting = 0
-    for (const key of neededByRole[role]) {
-      if (existingByRoleSet[role].has(key)) roleExisting++
-    }
-    existingByRoleCount[role] = roleExisting
-    missingByRole[role] = neededByRole[role].size - roleExisting
-  }
-
-  // Presentation audio
-  const legoIdsWithPresentation = new Set(
-    (presentationAudioRes || []).map(p => p.lego_id).filter(Boolean)
-  )
-  let presentationsExisting = 0
-  for (const lego of newLegos) {
-    if (lego.presentation_audio_id || legoIdsWithPresentation.has(lego.lego_id)) {
-      presentationsExisting++
-    }
-  }
-  existingByRoleCount.presentation = presentationsExisting
-  missingByRole.presentation = newLegos.length - presentationsExisting
-
-  // Shared audio
   const SHARED_AUDIO_REQUIREMENTS = { encouragement: 26, instruction: 48 }
-  const [encRes, instrRes] = await Promise.all([
-    supabase
-      .from('shared_audio')
-      .select('*', { count: 'exact', head: true })
-      .eq('language', course.known_lang)
-      .eq('audio_type', 'encouragement'),
-    supabase
-      .from('shared_audio')
-      .select('*', { count: 'exact', head: true })
-      .eq('language', course.known_lang)
-      .eq('audio_type', 'instruction')
-  ])
   const sharedNeeded = SHARED_AUDIO_REQUIREMENTS.encouragement + SHARED_AUDIO_REQUIREMENTS.instruction
   const sharedExisting = (encRes.count || 0) + (instrRes.count || 0)
 
@@ -2389,9 +2345,8 @@ async function getDirectAudioStats(courseCode) {
     }
   } catch (e) { /* ignore */ }
 
-  // Totals
-  const azureNeeded = neededByRole.known.size + neededByRole.target1.size + neededByRole.target2.size + newLegos.length
-  const azureExisting = existingByRoleCount.known + existingByRoleCount.target1 + existingByRoleCount.target2 + presentationsExisting
+  const azureNeeded = totalKnownNeeded + totalT1Needed + totalT2Needed + totalPresNeeded
+  const azureExisting = knownBound + t1Bound + t2Bound + presBound
   const totalNeeded = azureNeeded + sharedNeeded + 1 // +1 for welcome
   const totalExisting = azureExisting + sharedExisting + (welcomeExists ? 1 : 0)
   const missing = totalNeeded - totalExisting
@@ -2402,15 +2357,12 @@ async function getDirectAudioStats(courseCode) {
     missing,
     course,
     releaseTarget,
-    // Per-role breakdown (missing counts)
-    breakdown: missingByRole,
-    existingByRole: existingByRoleCount,
-    // Content counts
-    totalPhrases: phrases.length,
-    totalLegos: allLegos.length,
-    totalNewLegos: newLegos.length,
-    uniquePhraseAudio: neededByRole.known.size + neededByRole.target1.size + neededByRole.target2.size,
-    // Shared audio
+    breakdown: { known: knownMissing, target1: t1Missing, target2: t2Missing, presentation: presMissing },
+    existingByRole: { known: knownBound, target1: t1Bound, target2: t2Bound, presentation: presBound },
+    totalPhrases: phrases,
+    totalLegos: legos,
+    totalNewLegos: newLegos,
+    uniquePhraseAudio: totalKnownNeeded + totalT1Needed + totalT2Needed,
     sharedNeeded,
     sharedExisting,
     welcomeExists
