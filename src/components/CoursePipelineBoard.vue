@@ -3,16 +3,25 @@
     <!-- Header -->
     <div class="board-header">
       <div class="header-left">
-        <span class="course-count">{{ courses.length }} courses</span>
+        <span class="course-count">
+          <template v-if="stageFilter || searchQuery.trim()">{{ sortedCourses.length }} of </template>{{ courses.length }} courses
+          <button v-if="stageFilter" class="clear-filter" @click="stageFilter = null" title="Clear filter">&times;</button>
+        </span>
       </div>
       <div class="header-right">
-        <!-- Stage legend -->
+        <!-- Stage legend (clickable filters) -->
         <div class="stage-legend">
-          <span class="legend-item" v-for="s in stageLegend" :key="s.key">
+          <button
+            class="legend-item"
+            :class="{ active: stageFilter === s.key }"
+            v-for="s in stageLegend"
+            :key="s.key"
+            @click="toggleStageFilter(s.key)"
+          >
             <span class="legend-dot" :style="{ background: s.color }"></span>
             <span class="legend-label">{{ s.label }}</span>
             <span class="legend-count">{{ stageCounts[s.key] || 0 }}</span>
-          </span>
+          </button>
         </div>
 
         <div class="search-box" :class="{ focused: searchFocused }">
@@ -60,10 +69,10 @@
     <div class="table-body">
       <TransitionGroup name="row" tag="div">
         <div
-          v-for="course in sortedCourses"
+          v-for="(course, idx) in sortedCourses"
           :key="course.code"
           class="course-row"
-          :class="{ active: activeCourse === course.code }"
+          :class="{ active: activeCourse === course.code, 'row-even': idx % 2 === 1 }"
           :style="{ borderLeftColor: getStageColor(course) }"
           @click="handleCourseClick(course)"
           @mouseenter="activeCourse = course.code"
@@ -193,6 +202,11 @@ const router = useRouter()
 const searchQuery = ref('')
 const searchFocused = ref(false)
 const activeCourse = ref(null)
+const stageFilter = ref(null)
+
+function toggleStageFilter(key) {
+  stageFilter.value = stageFilter.value === key ? null : key
+}
 
 // Sort state
 const SORT_STORAGE_KEY = 'ssi-pipeline-sort'
@@ -362,6 +376,11 @@ const stageCounts = computed(() => {
 const sortedCourses = computed(() => {
   let list = props.courses
 
+  // Stage filter
+  if (stageFilter.value) {
+    list = list.filter(c => getStage(c) === stageFilter.value)
+  }
+
   // Search filter
   if (searchQuery.value.trim()) {
     const q = searchQuery.value.toLowerCase()
@@ -464,6 +483,31 @@ function cycleLegacyStatus(course) {
   font-size: 0.75rem;
   color: var(--color-paper-dim, #c1c1bb);
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.clear-filter {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--color-paper-dim, #c1c1bb);
+  font-size: 0.875rem;
+  line-height: 1;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  padding: 0;
+}
+
+.clear-filter:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-paper, #f7f7f2);
 }
 
 .header-right {
@@ -483,6 +527,24 @@ function cycleLegacyStatus(course) {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.1875rem 0.375rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  color: inherit;
+}
+
+.legend-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.legend-item.active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .legend-dot {
@@ -603,16 +665,20 @@ function cycleLegacyStatus(course) {
   display: grid;
   grid-template-columns: 160px 1fr 72px 72px 72px 64px;
   align-items: center;
-  padding: 0.25rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 0.5rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   border-left: 3px solid transparent;
   cursor: pointer;
   transition: background 0.12s;
 }
 
+.course-row.row-even {
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .course-row:hover,
 .course-row.active {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .course-row:last-child {
