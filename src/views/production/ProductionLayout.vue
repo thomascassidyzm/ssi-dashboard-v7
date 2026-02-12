@@ -3,11 +3,18 @@
     <!-- Single Header Row with Tabs -->
     <header class="production-header">
       <div class="header-content">
-        <router-link to="/" class="back-link">← Mission Control</router-link>
+        <router-link to="/production/courses" class="back-link">Courses</router-link>
         <h1 class="page-title">Production Suite</h1>
 
         <!-- Tabs inline in header -->
         <nav class="header-tabs">
+          <router-link
+            to="/production/courses"
+            class="tab-item"
+            :class="{ active: $route.name === 'ProductionCourses' }"
+          >
+            Courses
+          </router-link>
           <router-link
             v-if="!isCreateMode"
             :to="`/production/${courseCode}`"

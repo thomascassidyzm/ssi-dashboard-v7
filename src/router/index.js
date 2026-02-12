@@ -361,8 +361,8 @@ const routes = [
   {
     path: '/production/courses',
     name: 'ProductionCourses',
-    component: () => import('@/components/production/CourseSelector.vue'),
-    meta: { title: 'Course Selection - Production Suite' }
+    component: () => import('@/views/production/AllCoursesPage.vue'),
+    meta: { title: 'All Courses - Production Suite' }
   },
   // Nested routes under ProductionLayout - keeps layout mounted while switching tabs
   {

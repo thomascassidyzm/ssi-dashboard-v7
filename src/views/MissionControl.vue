@@ -5,27 +5,59 @@
       <div class="grid-overlay"></div>
       <div class="glow-orb glow-orb-1"></div>
       <div class="glow-orb glow-orb-2"></div>
-      <div class="glow-orb glow-orb-3"></div>
     </div>
 
-    <!-- Header -->
+    <!-- Compact Header -->
     <header class="mc-header">
       <div class="header-inner">
         <div class="header-left">
-          <div class="logo-mark">
-            <svg viewBox="0 0 40 40" class="logo-icon">
-              <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-              <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
-              <circle cx="20" cy="20" r="6" fill="currentColor" opacity="0.8"/>
-              <circle cx="20" cy="20" r="3" fill="currentColor"/>
-            </svg>
-          </div>
-          <div class="header-titles">
-            <h1 class="page-title">Mission Control</h1>
-            <p class="page-subtitle">SSi Course Production System</p>
-          </div>
+          <h1 class="page-title">Mission Control</h1>
         </div>
+
+        <!-- Compact Action Chips -->
+        <div class="action-chips">
+          <router-link to="/jobs" class="chip chip-jobs">
+            <span class="chip-pulse" v-if="activeJobCount > 0"></span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+            <span class="chip-label">Jobs</span>
+            <span class="chip-count" v-if="activeJobCount > 0">{{ activeJobCount }}</span>
+          </router-link>
+
+          <router-link to="/production/new/text" class="chip chip-new">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v8M8 12h8"/>
+            </svg>
+            <span class="chip-label">New Course</span>
+          </router-link>
+
+          <button @click="showImportModal = true" class="chip chip-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17,8 12,3 7,8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <span class="chip-label">Import</span>
+          </button>
+
+          <router-link to="/docs" class="chip chip-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14,2 14,8 20,8"/>
+            </svg>
+            <span class="chip-label">Docs</span>
+          </router-link>
+        </div>
+
         <div class="header-right">
+          <span class="course-summary" v-if="!loadingCourses">
+            <span class="summary-value">{{ courseCount }}</span> courses
+            <span class="summary-sep">&middot;</span>
+            <span class="summary-value">{{ inProductionCount }}</span> in production
+          </span>
           <EnvironmentSwitcher />
 
           <!-- Course Switcher Dropdown -->
@@ -48,7 +80,6 @@
                 @keydown.escape="closeDropdown"
               />
               <div class="course-list">
-                <!-- New Course Option -->
                 <button class="course-option new-course-option" @click="createNewCourse">
                   <span class="option-code text-emerald-400">+ New</span>
                   <span class="option-name text-emerald-400">Create Course</span>
@@ -73,178 +104,18 @@
       </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Content — Pipeline Board first -->
     <main class="mc-main">
-      <!-- Primary Actions Grid -->
-      <section class="actions-section">
-        <div class="section-header">
-          <span class="section-label">PRIMARY OPERATIONS</span>
-          <div class="section-line"></div>
-        </div>
-
-        <div class="actions-grid">
-          <!-- Active Jobs Card -->
-          <router-link to="/jobs" class="action-card card-jobs">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                    <path d="M3 9h18M9 21V9"/>
-                    <path d="M13 13h4M13 17h2"/>
-                  </svg>
-                </div>
-                <div class="card-badge jobs">
-                  <span class="badge-pulse"></span>
-                  <span class="badge-label">live</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <h2 class="card-title">Active Jobs</h2>
-                <p class="card-description">Monitor running builds, audio generation, and pipelines</p>
-              </div>
-              <div class="card-footer">
-                <span class="card-action">View Jobs</span>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-          </router-link>
-
-          <!-- Import Course Card -->
-          <button @click="showImportModal = true" class="action-card card-import">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="17,8 12,3 7,8"/>
-                    <line x1="12" y1="3" x2="12" y2="15"/>
-                  </svg>
-                </div>
-                <div class="card-badge import">
-                  <span class="badge-label">legacy</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <h2 class="card-title">Import Course</h2>
-                <p class="card-description">Upload a legacy course manifest JSON to migrate existing content</p>
-              </div>
-              <div class="card-footer">
-                <span class="card-action">Start Import</span>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-          </button>
-
-          <!-- New Course Card -->
-          <router-link to="/production/new/text" class="action-card card-create">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 8v8M8 12h8"/>
-                  </svg>
-                </div>
-                <div class="card-badge new">
-                  <span class="badge-pulse"></span>
-                  <span class="badge-label">wizard</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <h2 class="card-title">New Course</h2>
-                <p class="card-description">Initialize a new language course with guided configuration</p>
-              </div>
-              <div class="card-footer">
-                <span class="card-action">Start Wizard</span>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-          </router-link>
-
-          <!-- Documentation Card -->
-          <router-link to="/docs" class="action-card card-docs">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14,2 14,8 20,8"/>
-                    <path d="M9 13h6M9 17h4"/>
-                  </svg>
-                </div>
-                <div class="card-badge docs">
-                  <span class="badge-label">reference</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <h2 class="card-title">Documentation</h2>
-                <p class="card-description">APML specification, methodology guides, and system architecture</p>
-              </div>
-              <div class="card-footer">
-                <span class="card-action">Browse Docs</span>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-          </router-link>
-        </div>
-      </section>
-
-      <!-- Quick Stats Bar -->
-      <section class="stats-section">
-        <div class="stats-bar">
-          <div class="stat-item">
-            <span class="stat-value">{{ courseCount }}</span>
-            <span class="stat-label">Total Courses</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-value">668</span>
-            <span class="stat-label">Seeds per Course</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-value">v2.1</span>
-            <span class="stat-label">APML Version</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-value status-online">●</span>
-            <span class="stat-label">Pipeline Ready</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Course Pipeline Board -->
-      <section class="courses-section">
-        <div class="section-header">
-          <span class="section-label">COURSE PIPELINE</span>
-          <div class="section-line"></div>
-        </div>
-
-        <div class="pipeline-container">
-          <CoursePipelineBoard
-            :courses="coursesWithStatus"
-            :loading="loadingCourses"
-            @action="handlePipelineAction"
-            @updateLegacyStatus="handleLegacyStatusUpdate"
-            @updateNewAppStatus="handleNewAppStatusUpdate"
-            @deployToProduction="handleDeployToProduction"
-          />
-        </div>
-      </section>
+      <div class="pipeline-container">
+        <CoursePipelineBoard
+          :courses="coursesWithStatus"
+          :loading="loadingCourses"
+          @action="handlePipelineAction"
+          @updateLegacyStatus="handleLegacyStatusUpdate"
+          @updateNewAppStatus="handleNewAppStatusUpdate"
+          @deployToProduction="handleDeployToProduction"
+        />
+      </div>
     </main>
 
     <!-- Import Course Modal -->
@@ -260,7 +131,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
-import api from '../services/api'
+import api, { getApiUrl } from '../services/api'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 import ImportCourseModal from '../components/ImportCourseModal.vue'
 import CoursePipelineBoard from '../components/CoursePipelineBoard.vue'
@@ -272,6 +143,9 @@ const courseCount = ref(0)
 const courses = ref([])
 const loadingCourses = ref(true)
 const selectedCourse = ref(null)
+
+// Active jobs
+const activeJobCount = ref(0)
 
 // Dropdown state
 const dropdownOpen = ref(false)
@@ -312,7 +186,6 @@ function getCourseName(code) {
   const [target, , known] = code.split('_')
   const targetName = languageNames[target] || target.toUpperCase()
   const knownName = languageNames[known] || known.toUpperCase()
-  // Format: "Spanish for English Speakers"
   return `${targetName} for ${knownName} Speakers`
 }
 
@@ -326,10 +199,17 @@ const filteredCourses = computed(() => {
   )
 })
 
-// Courses with full status info for CourseStatusTable
+// Count courses "in production" (have content but not fully live)
+const inProductionCount = computed(() => {
+  return courses.value.filter(c => {
+    const hasContent = c.stats?.seeds > 0 || c.stats?.completedSeeds > 0
+    return hasContent
+  }).length
+})
+
+// Courses with full status info for CoursePipelineBoard
 const coursesWithStatus = computed(() => {
   return courses.value.map(c => {
-    // Normalize statuses: draft→testing, released→live
     const normalize = (s) => {
       if (!s || s === 'not_available') return 'not_available'
       if (s === 'draft') return 'testing'
@@ -389,57 +269,33 @@ function handleImportComplete() {
   loadCourseCount()
 }
 
-// Handle platform status update from CourseStatusTable
-async function handlePlatformStatusUpdate({ courseCode, platform, status }) {
-  try {
-    await api.course.updatePlatformStatus(courseCode, platform, status)
-    // Refresh courses to get updated data
-    await loadCourseCount()
-  } catch (err) {
-    console.error('Failed to update platform status:', err)
-  }
-}
-
-// Handle pipeline board actions
 function handlePipelineAction({ course, action }) {
-  console.log('Pipeline action:', action, 'for course:', course.code)
   // Actions are handled by the board component via router navigation
 }
 
-// Handle legacy app status update from pipeline board
 async function handleLegacyStatusUpdate({ courseCode, status }) {
   try {
-    console.log(`Updating legacy app status for ${courseCode} to ${status}`)
     await api.course.updatePlatformStatus(courseCode, 'legacy_app', status)
-    // Refresh to get updated data from DB
     await loadCourseCount()
   } catch (err) {
     console.error('Failed to update legacy app status:', err)
-    // Refresh to revert optimistic update
     await loadCourseCount()
   }
 }
 
-// Handle new app status update from pipeline board
 async function handleNewAppStatusUpdate({ courseCode, status }) {
   try {
-    console.log(`Updating new app status for ${courseCode} to ${status}`)
     await api.course.updatePlatformStatus(courseCode, 'new_app', status)
-    // Refresh to get updated data from DB
     await loadCourseCount()
   } catch (err) {
     console.error('Failed to update new app status:', err)
-    // Refresh to revert optimistic update
     await loadCourseCount()
   }
 }
 
-// Handle deploy to production from polishing lane
 async function handleDeployToProduction({ courseCode, platform, status }) {
   try {
-    console.log(`Deploying ${courseCode} to ${platform} with status ${status}`)
     await api.course.updatePlatformStatus(courseCode, platform, status)
-    // Refresh to get updated data from DB
     await loadCourseCount()
   } catch (err) {
     console.error('Failed to deploy to production:', err)
@@ -457,7 +313,6 @@ async function loadCourseCount() {
     courses.value = courseList.map(c => ({
       code: c.code || c.course_code || c.id,
       name: c.display_name || getCourseName(c.code || c.course_code || c.id),
-      // Platform status fields (from DB)
       new_app_status: c.new_app_status,
       legacy_app_status: c.legacy_app_status,
       new_app_beta_days: c.new_app_beta_days,
@@ -465,7 +320,6 @@ async function loadCourseCount() {
       content_status: c.content_status,
       export_ready: c.export_ready || false,
       seed_count: c.seed_count,
-      // Stats from API - completedSeeds = seeds with LEGOs (fully decomposed)
       stats: c.stats || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
     }))
   } catch (err) {
@@ -477,8 +331,27 @@ async function loadCourseCount() {
   }
 }
 
+// Load active job count
+async function loadJobCount() {
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/mission-control/jobs`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      const jobs = data.jobs || []
+      activeJobCount.value = jobs.filter(j => j.status === 'running' || j.status === 'pending').length
+    }
+  } catch (err) {
+    // Silently fail — jobs chip just shows no count
+    activeJobCount.value = 0
+  }
+}
+
 onMounted(() => {
   loadCourseCount()
+  loadJobCount()
   document.addEventListener('click', handleClickOutside)
 })
 
@@ -488,34 +361,20 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* ============================================
-   MISSION CONTROL - Premium Control Room Design
-   ============================================ */
-
-/* CSS Custom Properties - Harmonized with slate palette */
 .mission-control {
-  --mc-void: #0f172a;        /* slate-900 - matches existing pages */
-  --mc-deep: #1e293b;        /* slate-800 */
-  --mc-surface: #1e293b;     /* slate-800 */
-  --mc-elevated: #334155;    /* slate-700 */
-  --mc-border: #334155;      /* slate-700 */
-  --mc-border-light: #475569; /* slate-600 */
-  --mc-text: #f1f5f9;        /* slate-100 */
-  --mc-text-dim: #94a3b8;    /* slate-400 */
-  --mc-text-muted: #64748b;  /* slate-500 */
+  --mc-void: #0f172a;
+  --mc-deep: #1e293b;
+  --mc-surface: #1e293b;
+  --mc-elevated: #334155;
+  --mc-border: #334155;
+  --mc-border-light: #475569;
+  --mc-text: #f1f5f9;
+  --mc-text-dim: #94a3b8;
+  --mc-text-muted: #64748b;
   --mc-accent: #10b981;
-  --mc-accent-dim: #059669;
   --mc-accent-glow: rgba(16, 185, 129, 0.15);
   --mc-create: #3b82f6;
-  --mc-create-glow: rgba(59, 130, 246, 0.15);
-  --mc-production: #f59e0b;
-  --mc-production-glow: rgba(245, 158, 11, 0.15);
-  --mc-docs: #a855f7;
-  --mc-docs-glow: rgba(168, 85, 247, 0.15);
-  --mc-import: #f97316;
-  --mc-import-glow: rgba(249, 115, 22, 0.15);
   --mc-jobs: #8b5cf6;
-  --mc-jobs-glow: rgba(139, 92, 246, 0.15);
 
   min-height: 100vh;
   background: var(--mc-void);
@@ -525,7 +384,7 @@ onUnmounted(() => {
   overflow-x: hidden;
 }
 
-/* Ambient Background Effects */
+/* Ambient Background */
 .ambient-bg {
   position: fixed;
   inset: 0;
@@ -547,18 +406,16 @@ onUnmounted(() => {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.4;
   animation: float 20s ease-in-out infinite;
 }
 
 .glow-orb-1 {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   background: var(--mc-accent);
   top: -200px;
   right: -100px;
-  opacity: 0.08;
-  animation-delay: 0s;
+  opacity: 0.06;
 }
 
 .glow-orb-2 {
@@ -567,18 +424,8 @@ onUnmounted(() => {
   background: var(--mc-create);
   bottom: -100px;
   left: -100px;
-  opacity: 0.06;
-  animation-delay: -7s;
-}
-
-.glow-orb-3 {
-  width: 300px;
-  height: 300px;
-  background: var(--mc-docs);
-  top: 50%;
-  left: 50%;
   opacity: 0.04;
-  animation-delay: -14s;
+  animation-delay: -7s;
 }
 
 @keyframes float {
@@ -592,63 +439,138 @@ onUnmounted(() => {
   position: relative;
   z-index: 100;
   border-bottom: 1px solid var(--mc-border);
-  background: linear-gradient(180deg, var(--mc-deep) 0%, transparent 100%);
+  background: var(--mc-deep);
 }
 
 .header-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 2.5rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-}
-
-.logo-mark {
-  width: 48px;
-  height: 48px;
-  color: var(--mc-accent);
-}
-
-.logo-icon {
-  width: 100%;
-  height: 100%;
-}
-
-.header-titles {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.75rem;
 }
 
 .page-title {
-  font-size: 1.75rem;
+  font-size: 1.125rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--mc-text);
   margin: 0;
-  line-height: 1.2;
+  white-space: nowrap;
 }
 
-.page-subtitle {
-  font-size: 0.875rem;
+/* Action Chips */
+.action-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--mc-border);
+  background: transparent;
   color: var(--mc-text-dim);
-  margin: 0;
-  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  font-family: inherit;
 }
 
+.chip:hover {
+  background: var(--mc-elevated);
+  color: var(--mc-text);
+  border-color: var(--mc-border-light);
+}
+
+.chip-jobs {
+  position: relative;
+}
+
+.chip-jobs:hover {
+  border-color: var(--mc-jobs);
+  color: var(--mc-jobs);
+}
+
+.chip-pulse {
+  width: 6px;
+  height: 6px;
+  background: var(--mc-jobs);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.chip-count {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--mc-void);
+  background: var(--mc-jobs);
+  border-radius: 9px;
+  padding: 0 0.375rem;
+  min-width: 18px;
+  text-align: center;
+  line-height: 18px;
+}
+
+.chip-new:hover {
+  border-color: var(--mc-create);
+  color: var(--mc-create);
+}
+
+.chip-secondary {
+  border-color: transparent;
+  color: var(--mc-text-muted);
+}
+
+.chip-secondary:hover {
+  border-color: var(--mc-border);
+  color: var(--mc-text-dim);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Header Right */
 .header-right {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 1rem;
   position: relative;
   z-index: 9999;
+}
+
+.course-summary {
+  font-size: 0.75rem;
+  color: var(--mc-text-muted);
+  white-space: nowrap;
+}
+
+.summary-value {
+  font-weight: 700;
+  color: var(--mc-text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-sep {
+  margin: 0 0.25rem;
+  opacity: 0.5;
 }
 
 /* Course Switcher */
@@ -771,452 +693,13 @@ onUnmounted(() => {
   background: rgba(16, 185, 129, 0.1);
 }
 
-.system-status {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--mc-surface);
-  border: 1px solid var(--mc-border);
-  border-radius: 100px;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--mc-accent);
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--mc-accent-glow); }
-  50% { opacity: 0.7; box-shadow: 0 0 0 8px transparent; }
-}
-
-.status-text {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--mc-text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
 /* Main Content */
 .mc-main {
   position: relative;
   z-index: 10;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 3rem 2.5rem 4rem;
-}
-
-/* Section Headers */
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.section-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: var(--mc-text-muted);
-  white-space: nowrap;
-}
-
-.section-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--mc-border) 0%, transparent 100%);
-}
-
-/* Actions Grid */
-.actions-section {
-  margin-bottom: 3rem;
-}
-
-.actions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-@media (min-width: 1400px) {
-  .actions-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 1280px) {
-  .actions-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .actions-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Action Cards */
-.action-card {
-  position: relative;
-  display: block;
-  background: var(--mc-surface);
-  border: 1px solid var(--mc-border);
-  border-radius: 16px;
-  padding: 1.75rem;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-
-/* Button reset for action cards */
-button.action-card {
-  width: 100%;
-  text-align: left;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.action-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--mc-border-light);
-}
-
-.card-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.card-library .card-glow {
-  background: linear-gradient(180deg, var(--mc-accent-glow) 0%, transparent 100%);
-}
-
-.card-create .card-glow {
-  background: linear-gradient(180deg, var(--mc-create-glow) 0%, transparent 100%);
-}
-
-.card-production .card-glow {
-  background: linear-gradient(180deg, var(--mc-production-glow) 0%, transparent 100%);
-}
-
-.card-docs .card-glow {
-  background: linear-gradient(180deg, var(--mc-docs-glow) 0%, transparent 100%);
-}
-
-.card-import .card-glow {
-  background: linear-gradient(180deg, var(--mc-import-glow) 0%, transparent 100%);
-}
-
-.card-jobs .card-glow {
-  background: linear-gradient(180deg, var(--mc-jobs-glow) 0%, transparent 100%);
-}
-
-.action-card:hover .card-glow {
-  opacity: 1;
-}
-
-.card-library:hover {
-  border-color: var(--mc-accent);
-  box-shadow: 0 20px 40px -20px var(--mc-accent-glow);
-}
-
-.card-create:hover {
-  border-color: var(--mc-create);
-  box-shadow: 0 20px 40px -20px var(--mc-create-glow);
-}
-
-.card-production:hover {
-  border-color: var(--mc-production);
-  box-shadow: 0 20px 40px -20px var(--mc-production-glow);
-}
-
-.card-docs:hover {
-  border-color: var(--mc-docs);
-  box-shadow: 0 20px 40px -20px var(--mc-docs-glow);
-}
-
-.card-import:hover {
-  border-color: var(--mc-import);
-  box-shadow: 0 20px 40px -20px var(--mc-import-glow);
-}
-
-.card-jobs:hover {
-  border-color: var(--mc-jobs);
-  box-shadow: 0 20px 40px -20px var(--mc-jobs-glow);
-}
-
-.card-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 200px;
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-}
-
-.card-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--mc-elevated);
-  border: 1px solid var(--mc-border);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-
-.card-icon svg {
-  width: 24px;
-  height: 24px;
-}
-
-.card-library .card-icon {
-  color: var(--mc-accent);
-}
-
-.card-create .card-icon {
-  color: var(--mc-create);
-}
-
-.card-production .card-icon {
-  color: var(--mc-production);
-}
-
-.card-docs .card-icon {
-  color: var(--mc-docs);
-}
-
-.card-import .card-icon {
-  color: var(--mc-import);
-}
-
-.card-jobs .card-icon {
-  color: var(--mc-jobs);
-}
-
-.card-library:hover .card-icon {
-  background: var(--mc-accent);
-  border-color: var(--mc-accent);
-  color: white;
-}
-
-.card-create:hover .card-icon {
-  background: var(--mc-create);
-  border-color: var(--mc-create);
-  color: white;
-}
-
-.card-production:hover .card-icon {
-  background: var(--mc-production);
-  border-color: var(--mc-production);
-  color: white;
-}
-
-.card-docs:hover .card-icon {
-  background: var(--mc-docs);
-  border-color: var(--mc-docs);
-  color: white;
-}
-
-.card-import:hover .card-icon {
-  background: var(--mc-import);
-  border-color: var(--mc-import);
-  color: white;
-}
-
-.card-jobs:hover .card-icon {
-  background: var(--mc-jobs);
-  border-color: var(--mc-jobs);
-  color: white;
-}
-
-.card-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.375rem 0.75rem;
-  background: var(--mc-elevated);
-  border: 1px solid var(--mc-border);
-  border-radius: 100px;
-  font-size: 0.75rem;
-}
-
-.badge-value {
-  font-weight: 700;
-  color: var(--mc-accent);
-  font-variant-numeric: tabular-nums;
-}
-
-.badge-label {
-  color: var(--mc-text-muted);
-  font-weight: 500;
-}
-
-.card-badge.new {
-  background: var(--mc-create-glow);
-  border-color: var(--mc-create);
-}
-
-.card-badge.new .badge-label {
-  color: var(--mc-create);
-}
-
-.badge-pulse {
-  width: 6px;
-  height: 6px;
-  background: var(--mc-create);
-  border-radius: 50%;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-.card-badge.docs {
-  background: var(--mc-docs-glow);
-  border-color: var(--mc-docs);
-}
-
-.card-badge.docs .badge-label {
-  color: var(--mc-docs);
-}
-
-.card-badge.production {
-  background: var(--mc-production-glow);
-  border-color: var(--mc-production);
-}
-
-.card-badge.production .badge-label {
-  color: var(--mc-production);
-}
-
-.card-badge.import {
-  background: var(--mc-import-glow);
-  border-color: var(--mc-import);
-}
-
-.card-badge.import .badge-label {
-  color: var(--mc-import);
-}
-
-.card-badge.jobs {
-  background: var(--mc-jobs-glow);
-  border-color: var(--mc-jobs);
-}
-
-.card-badge.jobs .badge-label {
-  color: var(--mc-jobs);
-}
-
-.card-badge.jobs .badge-pulse {
-  background: var(--mc-jobs);
-}
-
-.card-badge.loading {
-  min-width: 60px;
-}
-
-.badge-skeleton {
-  width: 40px;
-  height: 14px;
-  background: var(--mc-border);
-  border-radius: 4px;
-  animation: shimmer 1.5s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-.card-body {
-  flex: 1;
-}
-
-.card-title {
-  font-size: 1.375rem;
-  font-weight: 700;
-  color: var(--mc-text);
-  margin: 0 0 0.75rem 0;
-  letter-spacing: -0.01em;
-}
-
-.card-description {
-  font-size: 0.875rem;
-  color: var(--mc-text-dim);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--mc-border);
-}
-
-.card-action {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--mc-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 0.2s ease;
-}
-
-.card-library:hover .card-action { color: var(--mc-accent); }
-.card-create:hover .card-action { color: var(--mc-create); }
-.card-production:hover .card-action { color: var(--mc-production); }
-.card-docs:hover .card-action { color: var(--mc-docs); }
-.card-import:hover .card-action { color: var(--mc-import); }
-.card-jobs:hover .card-action { color: var(--mc-jobs); }
-
-.card-arrow {
-  width: 20px;
-  height: 20px;
-  color: var(--mc-text-muted);
-  transition: all 0.2s ease;
-}
-
-.action-card:hover .card-arrow {
-  transform: translateX(4px);
-}
-
-.card-library:hover .card-arrow { color: var(--mc-accent); }
-.card-create:hover .card-arrow { color: var(--mc-create); }
-.card-production:hover .card-arrow { color: var(--mc-production); }
-.card-docs:hover .card-arrow { color: var(--mc-docs); }
-.card-import:hover .card-arrow { color: var(--mc-import); }
-.card-jobs:hover .card-arrow { color: var(--mc-jobs); }
-
-/* Stats Bar */
-.stats-section {
-  margin-top: 2rem;
-}
-
-/* Courses Section */
-.courses-section {
-  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem 2rem;
 }
 
 .pipeline-container {
@@ -1226,78 +709,28 @@ button.action-card {
   overflow: hidden;
 }
 
-.stats-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1.25rem 2rem;
-  background: var(--mc-surface);
-  border: 1px solid var(--mc-border);
-  border-radius: 12px;
-}
-
-@media (max-width: 768px) {
-  .stats-bar {
-    flex-wrap: wrap;
-    gap: 1.5rem;
+/* Responsive */
+@media (max-width: 900px) {
+  .action-chips {
+    display: none;
   }
 
-  .stat-divider {
+  .course-summary {
+    display: none;
+  }
+
+  .course-name {
     display: none;
   }
 }
 
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.stat-value {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--mc-text);
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-value.status-online {
-  color: var(--mc-accent);
-  font-size: 0.875rem;
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  color: var(--mc-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.stat-divider {
-  width: 1px;
-  height: 24px;
-  background: var(--mc-border);
-}
-
-/* Responsive */
 @media (max-width: 640px) {
   .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem;
+    padding: 0.75rem 1rem;
   }
 
   .mc-main {
-    padding: 2rem 1.5rem;
-  }
-
-  .card-content {
-    min-height: 180px;
-  }
-
-  .card-title {
-    font-size: 1.25rem;
+    padding: 1rem;
   }
 }
 </style>
