@@ -1,12 +1,5 @@
 <template>
   <div class="mission-control">
-    <!-- Ambient Background -->
-    <div class="ambient-bg">
-      <div class="grid-overlay"></div>
-      <div class="glow-orb glow-orb-1"></div>
-      <div class="glow-orb glow-orb-2"></div>
-    </div>
-
     <!-- Compact Header -->
     <header class="mc-header">
       <div class="header-inner">
@@ -106,16 +99,14 @@
 
     <!-- Main Content — Pipeline Board first -->
     <main class="mc-main">
-      <div class="pipeline-container">
-        <CoursePipelineBoard
-          :courses="coursesWithStatus"
-          :loading="loadingCourses"
-          @action="handlePipelineAction"
-          @updateLegacyStatus="handleLegacyStatusUpdate"
-          @updateNewAppStatus="handleNewAppStatusUpdate"
-          @deployToProduction="handleDeployToProduction"
-        />
-      </div>
+      <CoursePipelineBoard
+        :courses="coursesWithStatus"
+        :loading="loadingCourses"
+        @action="handlePipelineAction"
+        @updateLegacyStatus="handleLegacyStatusUpdate"
+        @updateNewAppStatus="handleNewAppStatusUpdate"
+        @deployToProduction="handleDeployToProduction"
+      />
     </main>
 
     <!-- Import Course Modal -->
@@ -379,59 +370,9 @@ onUnmounted(() => {
   min-height: 100vh;
   background: var(--mc-void);
   color: var(--mc-text);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   position: relative;
   overflow-x: hidden;
-}
-
-/* Ambient Background */
-.ambient-bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--mc-border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--mc-border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.03;
-}
-
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  animation: float 20s ease-in-out infinite;
-}
-
-.glow-orb-1 {
-  width: 500px;
-  height: 500px;
-  background: var(--mc-accent);
-  top: -200px;
-  right: -100px;
-  opacity: 0.06;
-}
-
-.glow-orb-2 {
-  width: 400px;
-  height: 400px;
-  background: var(--mc-create);
-  bottom: -100px;
-  left: -100px;
-  opacity: 0.04;
-  animation-delay: -7s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
 }
 
 /* Header */
@@ -696,13 +637,6 @@ onUnmounted(() => {
   position: relative;
   z-index: 10;
   padding: 1rem 1.5rem 2rem;
-}
-
-.pipeline-container {
-  background: var(--mc-surface);
-  border: 1px solid var(--mc-border);
-  border-radius: 12px;
-  overflow: hidden;
 }
 
 /* Responsive */

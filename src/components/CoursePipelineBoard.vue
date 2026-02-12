@@ -3,7 +3,6 @@
     <!-- Header -->
     <div class="board-header">
       <div class="header-left">
-        <h2>Course Pipeline</h2>
         <span class="course-count">{{ courses.length }} courses</span>
       </div>
       <div class="header-right">
@@ -34,7 +33,6 @@
 
     <!-- Column Headers -->
     <div class="table-header">
-      <span class="th th-status"></span>
       <span class="th th-course" @click="toggleSort('alpha')">
         Course
         <svg v-if="sortBy === 'alpha'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -66,21 +64,17 @@
           :key="course.code"
           class="course-row"
           :class="{ active: activeCourse === course.code }"
+          :style="{ borderLeftColor: getStageColor(course) }"
           @click="handleCourseClick(course)"
           @mouseenter="activeCourse = course.code"
           @mouseleave="activeCourse = null"
         >
-          <!-- Stage indicator -->
-          <span class="cell cell-status">
-            <span class="stage-dot" :style="{ background: getStageColor(course) }" :title="getStageLabel(course)"></span>
-          </span>
-
           <!-- Course code -->
           <span class="cell cell-course">
             <span class="course-code-label">{{ course.code }}</span>
           </span>
 
-          <!-- Seeds with progress bar -->
+          <!-- Seeds with inline progress bar -->
           <span class="cell cell-seeds">
             <span class="seeds-text">
               <span class="seeds-count">{{ getCompletedSeeds(course) }}</span>
@@ -441,22 +435,13 @@ function cycleLegacyStatus(course) {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap');
-
 .pipeline-board {
-  --pb-bg: #0a0e17;
-  --pb-surface: #111827;
-  --pb-card: #1a2234;
-  --pb-card-hover: #1e2a3f;
-  --pb-border: rgba(255, 255, 255, 0.06);
-  --pb-text: #f1f5f9;
-  --pb-text-dim: #94a3b8;
-  --pb-text-muted: #64748b;
-
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--pb-bg);
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  background: var(--color-shadow, #1e293b);
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 /* Header */
@@ -464,9 +449,9 @@ function cycleLegacyStatus(course) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--pb-border);
-  background: var(--pb-surface);
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, #334155);
 }
 
 .header-left {
@@ -475,17 +460,9 @@ function cycleLegacyStatus(course) {
   gap: 0.75rem;
 }
 
-.header-left h2 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--pb-text);
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
 .course-count {
   font-size: 0.75rem;
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
   font-weight: 500;
 }
 
@@ -517,14 +494,14 @@ function cycleLegacyStatus(course) {
 
 .legend-label {
   font-size: 0.6875rem;
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
   font-weight: 500;
 }
 
 .legend-count {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.625rem;
-  color: var(--pb-text-dim);
+  color: var(--color-paper, #f7f7f2);
   font-weight: 600;
   min-width: 1rem;
   text-align: center;
@@ -537,18 +514,18 @@ function cycleLegacyStatus(course) {
   gap: 0.5rem;
   padding: 0.375rem 0.625rem;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--pb-border);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 6px;
   transition: all 0.2s;
 }
 
 .search-box.focused {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.12);
+  border-color: var(--color-tungsten, #ffa630);
+  box-shadow: 0 0 0 2px rgba(255, 166, 48, 0.15);
 }
 
 .search-icon {
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
   flex-shrink: 0;
 }
 
@@ -556,30 +533,31 @@ function cycleLegacyStatus(course) {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--pb-text);
+  color: var(--color-paper, #f7f7f2);
   font-size: 0.8125rem;
   font-family: inherit;
   width: 140px;
 }
 
 .search-box input::placeholder {
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
 }
 
 /* Table header */
 .table-header {
   display: grid;
-  grid-template-columns: 28px 1fr 140px 72px 72px 72px 64px;
+  grid-template-columns: 160px 1fr 72px 72px 72px 64px;
   align-items: center;
-  padding: 0.5rem 1.5rem;
-  border-bottom: 1px solid var(--pb-border);
-  background: rgba(17, 24, 39, 0.6);
+  padding: 0.5rem 1.25rem;
+  padding-left: calc(1.25rem + 3px); /* account for row left-border */
+  border-bottom: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, #334155);
 }
 
 .th {
   font-size: 0.625rem;
   font-weight: 600;
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -591,11 +569,7 @@ function cycleLegacyStatus(course) {
 }
 
 .th:hover {
-  color: var(--pb-text-dim);
-}
-
-.th-status {
-  cursor: default;
+  color: var(--color-paper, #f7f7f2);
 }
 
 .th-legos,
@@ -627,17 +601,18 @@ function cycleLegacyStatus(course) {
 /* Course row */
 .course-row {
   display: grid;
-  grid-template-columns: 28px 1fr 140px 72px 72px 72px 64px;
+  grid-template-columns: 160px 1fr 72px 72px 72px 64px;
   align-items: center;
-  padding: 0.3125rem 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 0.25rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-left: 3px solid transparent;
   cursor: pointer;
   transition: background 0.12s;
 }
 
 .course-row:hover,
 .course-row.active {
-  background: var(--pb-card-hover);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .course-row:last-child {
@@ -651,23 +626,12 @@ function cycleLegacyStatus(course) {
 }
 
 .cell.mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--pb-text-dim);
+  color: var(--color-paper-dim, #c1c1bb);
   font-variant-numeric: tabular-nums;
   justify-content: flex-end;
-}
-
-/* Stage dot */
-.cell-status {
-  justify-content: center;
-}
-
-.stage-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
 }
 
 /* Course code */
@@ -676,50 +640,52 @@ function cycleLegacyStatus(course) {
 }
 
 .course-code-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--pb-text);
+  color: var(--color-paper, #f7f7f2);
   letter-spacing: 0.01em;
 }
 
-/* Seeds + progress bar */
+/* Seeds + progress bar — inline single row */
 .cell-seeds {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 0.625rem;
 }
 
 .seeds-text {
   display: flex;
   align-items: baseline;
   gap: 0.125rem;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
 }
 
 .seeds-count {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--pb-text);
+  color: var(--color-paper, #f7f7f2);
 }
 
 .seeds-sep {
   font-size: 0.625rem;
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
 }
 
 .seeds-target {
   font-size: 0.625rem;
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
 }
 
 .progress-bar-container {
   position: relative;
-  width: 100%;
-  height: 3px;
+  flex: 1;
+  height: 4px;
   border-radius: 2px;
   overflow: hidden;
+  min-width: 40px;
 }
 
 .progress-bar-bg {
@@ -750,7 +716,7 @@ function cycleLegacyStatus(course) {
   border-radius: 3px;
   border: 1px solid;
   cursor: pointer;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.5625rem;
   font-weight: 700;
   display: flex;
@@ -768,7 +734,7 @@ function cycleLegacyStatus(course) {
 
 .app-badge.inactive:hover {
   border-color: rgba(255, 255, 255, 0.15);
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
 }
 
 /* New App colors */
@@ -819,7 +785,7 @@ function cycleLegacyStatus(course) {
   align-items: center;
   justify-content: center;
   padding: 3rem 1rem;
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
 }
 
 .empty-text {
@@ -832,9 +798,9 @@ function cycleLegacyStatus(course) {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--pb-surface);
-  border-top: 1px solid var(--pb-border);
+  padding: 0.5rem 1.25rem;
+  background: var(--color-slate, #334155);
+  border-top: 1px solid var(--color-graphite, #475569);
 }
 
 .footer-stat {
@@ -845,16 +811,16 @@ function cycleLegacyStatus(course) {
 }
 
 .footer-value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--pb-text);
+  color: var(--color-paper, #f7f7f2);
   font-variant-numeric: tabular-nums;
 }
 
 .footer-label {
   font-size: 0.5625rem;
-  color: var(--pb-text-muted);
+  color: var(--color-paper-dim, #c1c1bb);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -866,7 +832,7 @@ function cycleLegacyStatus(course) {
 .footer-divider {
   width: 1px;
   height: 24px;
-  background: var(--pb-border);
+  background: var(--color-graphite, #475569);
 }
 
 /* Row transitions */
@@ -927,7 +893,7 @@ function cycleLegacyStatus(course) {
 @media (max-width: 900px) {
   .table-header,
   .course-row {
-    grid-template-columns: 28px 1fr 100px 60px 60px 64px;
+    grid-template-columns: 1fr 100px 60px 60px 64px;
   }
   .th-audio,
   .cell-audio {
@@ -941,7 +907,7 @@ function cycleLegacyStatus(course) {
 @media (max-width: 600px) {
   .table-header,
   .course-row {
-    grid-template-columns: 24px 1fr 64px;
+    grid-template-columns: 1fr 64px;
   }
   .th-legos, .th-phrases, .th-audio, .th-apps,
   .cell-legos, .cell-phrases, .cell-audio, .cell-apps {

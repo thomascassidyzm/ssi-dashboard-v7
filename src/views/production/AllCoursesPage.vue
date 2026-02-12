@@ -66,16 +66,14 @@
 
     <!-- Pipeline Board -->
     <main class="page-content">
-      <div class="pipeline-container">
-        <CoursePipelineBoard
-          :courses="coursesWithStatus"
-          :loading="loading"
-          @action="handlePipelineAction"
-          @updateLegacyStatus="handleLegacyStatusUpdate"
-          @updateNewAppStatus="handleNewAppStatusUpdate"
-          @deployToProduction="handleDeployToProduction"
-        />
-      </div>
+      <CoursePipelineBoard
+        :courses="coursesWithStatus"
+        :loading="loading"
+        @action="handlePipelineAction"
+        @updateLegacyStatus="handleLegacyStatusUpdate"
+        @updateNewAppStatus="handleNewAppStatusUpdate"
+        @deployToProduction="handleDeployToProduction"
+      />
     </main>
   </div>
 </template>
@@ -459,13 +457,6 @@ onUnmounted(() => {
 /* Content */
 .page-content {
   padding: 1rem 1.5rem 2rem;
-}
-
-.pipeline-container {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
-  border-radius: 12px;
-  overflow: hidden;
 }
 
 /* Responsive */
