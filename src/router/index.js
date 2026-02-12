@@ -236,10 +236,10 @@ const routes = [
     meta: { title: 'Course Compilation' }
   },
   {
-    // DEPRECATED: Redirect to Production Suite (need to select course first)
+    // DEPRECATED: Redirect to home (need to select course first)
     path: '/audio',
     name: 'AudioGeneration',
-    redirect: '/production/courses'
+    redirect: '/'
   },
   {
     // DEPRECATED: Redirect to Production Suite audio pipeline
@@ -355,14 +355,11 @@ const routes = [
   // ===========================================
   {
     path: '/production',
-    name: 'ProductionHome',
-    redirect: '/production/courses'
+    redirect: '/'
   },
   {
     path: '/production/courses',
-    name: 'ProductionCourses',
-    component: () => import('@/views/production/AllCoursesPage.vue'),
-    meta: { title: 'All Courses - Production Suite' }
+    redirect: '/'
   },
   // Nested routes under ProductionLayout - keeps layout mounted while switching tabs
   {
