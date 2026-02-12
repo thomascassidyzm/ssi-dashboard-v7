@@ -2225,6 +2225,26 @@ function invalidateAudioStatsCache(courseCode) {
   }
 }
 
+// Paginated Supabase fetch — prevents silent row truncation on large tables
+async function fetchAllRows(supabase, table, selectCols, filters) {
+  const PAGE_SIZE = 50000
+  let allData = []
+  let offset = 0
+  while (true) {
+    let query = supabase.from(table).select(selectCols)
+    for (const [method, ...args] of filters) {
+      query = query[method](...args)
+    }
+    query = query.range(offset, offset + PAGE_SIZE - 1)
+    const { data, error } = await query
+    if (error) throw error
+    allData = allData.concat(data)
+    if (data.length < PAGE_SIZE) break
+    offset += PAGE_SIZE
+  }
+  return allData
+}
+
 async function getDirectAudioStats(courseCode) {
   // Check cache
   const cached = _audioStatsCache.get(courseCode)
@@ -2270,32 +2290,29 @@ async function getDirectAudioStats(courseCode) {
       .eq('course_code', courseCode)
       .eq('status', 'released')
       .lte('seed_number', releaseTarget),
-    supabase
-      .from('course_audio')
-      .select('text_normalized, language, role')
-      .eq('course_code', courseCode)
-      .in('role', ['known', 'target1', 'target2'])
-      .not('s3_key', 'like', 'pending/%'),
-    supabase
-      .from('course_audio')
-      .select('lego_id')
-      .eq('course_code', courseCode)
-      .eq('role', 'presentation')
-      .not('s3_key', 'like', 'pending/%')
+    fetchAllRows(supabase, 'course_audio', 'text_normalized, language, role', [
+      ['eq', 'course_code', courseCode],
+      ['in', 'role', ['known', 'target1', 'target2']],
+      ['not', 's3_key', 'like', 'pending/%']
+    ]),
+    fetchAllRows(supabase, 'course_audio', 'lego_id', [
+      ['eq', 'course_code', courseCode],
+      ['eq', 'role', 'presentation'],
+      ['not', 's3_key', 'like', 'pending/%']
+    ])
   ])
 
   if (phrasesRes.error) throw phrasesRes.error
   if (allLegosRes.error) throw allLegosRes.error
   if (newLegosRes.error) throw newLegosRes.error
   if (seedsRes.error) throw seedsRes.error
-  if (audioRes.error) throw audioRes.error
-  if (presentationAudioRes.error) throw presentationAudioRes.error
+  // audioRes and presentationAudioRes are direct arrays from fetchAllRows (errors thrown internally)
 
   const phrases = phrasesRes.data || []
   const allLegos = allLegosRes.data || []
   const newLegos = newLegosRes.data || []
   const seeds = seedsRes.data || []
-  const existingAudio = audioRes.data || []
+  const existingAudio = audioRes || []
 
   // Build existing sets per role
   const existingByRoleSet = { known: new Set(), target1: new Set(), target2: new Set() }
@@ -2334,7 +2351,7 @@ async function getDirectAudioStats(courseCode) {
 
   // Presentation audio
   const legoIdsWithPresentation = new Set(
-    (presentationAudioRes.data || []).map(p => p.lego_id).filter(Boolean)
+    (presentationAudioRes || []).map(p => p.lego_id).filter(Boolean)
   )
   let presentationsExisting = 0
   for (const lego of newLegos) {
