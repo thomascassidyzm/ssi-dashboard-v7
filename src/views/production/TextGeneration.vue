@@ -184,7 +184,7 @@
                 <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
               </template>
               <button
-                v-else-if="!stageLocked('calibrate') && calibrationDone > 0 && !goldenStatus.running"
+                v-else-if="!stageLocked('calibrate')"
                 @click="stageResetConfirm = 'calibrate'"
                 class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
               >Reset</button>
@@ -239,7 +239,7 @@
                 <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
               </template>
               <button
-                v-else-if="!stageLocked('golden') && goldenRangeDone > 0 && !goldenStatus.running"
+                v-else-if="!stageLocked('golden')"
                 @click="stageResetConfirm = 'golden'"
                 class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
               >Reset</button>
@@ -298,7 +298,7 @@
                 <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
               </template>
               <button
-                v-else-if="!stageLocked('mvp') && mvpDecomposed > 0 && progress.status !== 'running'"
+                v-else-if="!stageLocked('mvp')"
                 @click="stageResetConfirm = 'mvp'"
                 class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
               >Reset</button>
