@@ -2389,101 +2389,151 @@ function generateStrictQABrief({ courseCode, courseInfo }) {
   const langName = courseInfo?.display_name || courseCode;
   const goldenCount = getGoldenSeedCount(courseInfo);
 
-  return `# Strict QA Pass — Seeds 1-50 (${courseCode})
+  // 8 sub-agents × 5 seeds each = seeds 11-50
+  const batches = [];
+  for (let start = goldenCount + 1; start <= 50; start += 5) {
+    batches.push({ start, end: Math.min(start + 4, 50) });
+  }
+  const batchList = batches.map((b, i) =>
+    `Batch ${i + 1}: seeds ${b.start}-${b.end} (${b.end - b.start + 1} seeds)`
+  ).join('\n');
 
-You are running a HIGH-STANDARD quality review of the first 50 seeds of course **${courseCode}** (${langName}).
+  return `# Parallel Golden QA — Seeds ${goldenCount + 1}-50 (${courseCode})
 
-## Calibration: Seeds 1-${goldenCount}
+You are coordinating a parallel HIGH-STANDARD quality review of the golden seeds (${goldenCount + 1}-50) for course **${courseCode}** (${langName}).
 
-Seeds 1-${goldenCount} were hand-crafted by expert course designers. They are intentionally perfect examples of the SSi methodology. You MUST review them first.
+Seeds 1-${goldenCount} are hand-calibrated by the course creator — do NOT QA those.
 
-**If you flag ANY phrase from seeds 1-${goldenCount}, your calibration is wrong.** Seeds 1-${goldenCount} set the quality bar — study them to understand what GOOD looks like before reviewing ${goldenCount + 1}-50.
+## CRITICAL: You are an ORCHESTRATOR, not a checker
+- You do NOT check phrases yourself
+- You spawn sub-agents using the Task tool and monitor their progress
+- You report completion when all batches are checked
 
-Characteristics of good phrases (learn from seeds 1-${goldenCount}):
-- BUILD phrases show genuine recombination: the new LEGO combined with previously introduced LEGOs in a way that demonstrates how pieces "plug in"
-- USE phrases are complete sentences a real learner would actually say out loud in conversation
-- Each USE phrase for a LEGO shows a genuinely DIFFERENT context — not slight rewordings
-- Fragments and partial sentences are fine for BUILD (they're building blocks), but they should still show an interesting combination
+## Batch Assignments
 
-## Your Four Checks (seeds ${goldenCount + 1}-50 only)
+${batchList}
 
-After calibrating on 1-${goldenCount}, review ALL phrases (BUILD and USE) for seeds ${goldenCount + 1}-50. Flag for DELETION if:
+## Step 1: Spawn ALL Sub-Agents In One Message
 
-### 1. GRAMMAR (BOTH LANGUAGES)
-Is the phrase grammatically correct in BOTH the known language (English) and the target language (${langName})?
-- Flag: ANY grammar error in either language — wrong verb form, wrong pronoun, missing elision, wrong mood, agreement errors, etc.
-- Flag: "I want going" (should be "I want to go"), "je veux s'occuper" (should be "m'occuper")
-- Flag: wrong preposition, missing negation word, wrong pronoun placement
-- This is the MOST IMPORTANT check. Grammar errors teach learners wrong patterns.
+**CRITICAL: You MUST send ALL Task tool calls in a SINGLE message.** Do NOT spawn one, wait, then spawn the next. Send one message containing one Task tool call per batch — all at once. This is how parallel execution works. If you spawn them sequentially the QA will take 10x longer.
+
+For each batch, use this prompt template (customize START/END for each):
+
+---BEGIN SUB-AGENT PROMPT---
+You are a HIGH-STANDARD quality reviewer for course ${courseCode} (${langName}). You are checking ALL phrases (BUILD and USE) for seeds {START} to {END}.
+
+## Your Four Checks
+
+For each phrase pair (known_text + target_text), apply ALL four checks:
+
+### 1. GRAMMAR (BOTH LANGUAGES) — MOST IMPORTANT
+Is the phrase grammatically correct in BOTH English and ${langName}?
+- Flag: ANY grammar error in either language — wrong verb form, wrong pronoun, missing elision, wrong mood, agreement errors
+- Flag: wrong preposition, missing negation word, wrong pronoun placement, gender/number agreement
+- If a native speaker of either language would notice an error, flag it
+- Grammar errors teach learners wrong patterns — this is the #1 quality gate
 
 ### 2. NATURALNESS
-Would a real person say this in conversation? Not just "is it grammatical" but "would someone actually say this?"
+Would a real person say this in conversation?
 - Flag: stilted, textbook-sounding, or contrived phrases
-- Flag: semantic nonsense ("I'm starting to finish", "I want to feel tired", "today or yesterday")
-- Flag: subject-object conflicts ("I like speaking with me"), time contradictions ("I don't worry yesterday")
-- Keep: everyday speech, things learners are dying to say, natural conversation
+- Flag: semantic nonsense ("I'm starting to finish", "I want to feel tired")
+- Flag: subject-object conflicts ("I like speaking with me"), time contradictions
+- Keep: everyday speech, things learners would actually say
 
 ### 3. VARIETY
-Are the phrases for each LEGO showing genuinely different contexts?
-- Flag: near-duplicates (same sentence with one word swapped, e.g. "I want to speak now" / "I want to speak today")
-- Flag: phrases that all follow the exact same pattern (e.g. all "I want to X" with different X)
-- Keep: phrases that show the LEGO in surprising or varied contexts
+Are the phrases for each LEGO genuinely different?
+- Flag: near-duplicates (same sentence with one word swapped)
+- Flag: phrases that all follow the exact same template pattern
+- Keep: phrases showing the LEGO in varied, surprising contexts
 
 ### 4. BUILD PHRASE QUALITY
 Do BUILD phrases demonstrate meaningful recombination?
 - Flag: BUILD phrases that are just the LEGO by itself with no combination
-- Flag: BUILD phrases that add meaningless filler (e.g. LEGO + "here" or LEGO + "please")
-- Keep: BUILD phrases that combine the new LEGO with previously introduced LEGOs in a way that clicks
+- Flag: BUILD phrases with meaningless filler (LEGO + "here" or LEGO + "please")
+- Keep: BUILD phrases combining the new LEGO with previously introduced LEGOs
 
 ## CRITICAL RULES
 - **IGNORE punctuation and capitalisation entirely** — these are spoken phrases
-- **IGNORE missing accents/diacritics** — these are a known normalization issue, not content errors
-- **Grammar errors in EITHER language MUST be flagged** — this is the primary quality gate
-- **Seeds 1-${goldenCount}: review but DO NOT flag** — they calibrate your judgment
-- **Seeds ${goldenCount + 1}-50: flag for deletion** anything that fails grammar, naturalness, variety, or BUILD quality
-- If a phrase has a grammar error, it MUST be flagged regardless of how natural it sounds otherwise
+- **IGNORE missing accents/diacritics** — known normalization issue, not content errors
+- **Grammar errors in EITHER language MUST be flagged** — primary quality gate
+- **Do NOT be conservative.** The cost of a bad phrase reaching learners is far higher than over-flagging.
 
 ## Workflow
 
-### Step 1: Fetch ALL phrases for seeds 1-50
+### Step 1: Fetch ALL phrases for your seed range
 \`\`\`
-curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min=1&seed_max=50&limit=2000"
+OFFSET=0
+while true; do
+  RESULT=$(curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min={START}&seed_max={END}&limit=500&offset=$OFFSET")
+  COUNT=$(echo "$RESULT" | jq '.count')
+  echo "$RESULT"
+  if [ "$COUNT" -lt 500 ]; then break; fi
+  OFFSET=$((OFFSET + 500))
+done
 \`\`\`
 
-### Step 2: Study seeds 1-${goldenCount} carefully
-Read every phrase. Understand what good BUILD and USE phrases look like. Note patterns.
+### Step 2: Review every phrase
+For each phrase, apply all four checks. If EITHER language fails ANY check, add to flags.
 
-### Step 3: Review seeds ${goldenCount + 1}-50
-For each phrase, apply the four checks. Collect flags.
-
-### Step 4: Submit flags
+### Step 3: Submit flags (if any)
 \`\`\`
 curl -s -X POST "http://localhost:3471/api/qa/bulk-flag" \\
   -H "Content-Type: application/json" \\
   -d '{"flags": [
-    {"course_code": "${courseCode}", "phrase_id": "<uuid>", "seed_number": <N>, "check_type": "<grammar|naturalness|variety|build_quality>", "severity": "<error for grammar, warning for others>", "issue": "<brief reason — say which language and what's wrong>", "details": {"known": "<known_text>", "target": "<target_text>", "phrase_role": "<build/use>"}},
+    {"course_code": "${courseCode}", "phrase_id": "<the phrase uuid>", "seed_number": <N>, "check_type": "<grammar|naturalness|variety|build_quality>", "severity": "<error for grammar, warning for others>", "issue": "<brief reason — say which language and what's wrong>", "details": {"known": "<known_text>", "target": "<target_text>", "phrase_role": "<build/use>"}},
     ...
   ]}'
 \`\`\`
 
-### Step 5: Mark seeds 1-50 as checked
+### Step 4: Mark range as checked
 \`\`\`
 curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
   -H "Content-Type: application/json" \\
-  -d '{"course_code": "${courseCode}", "seed_min": 1, "seed_max": 50}'
+  -d '{"course_code": "${courseCode}", "seed_min": {START}, "seed_max": {END}}'
 \`\`\`
 
-### Step 6: Report
-Summarise:
-- How many phrases you reviewed
-- How golden seeds calibrated your judgment (what you learned about the quality bar)
-- Flags raised for non-golden seeds by category (grammar / naturalness / variety / build quality)
+## IMPORTANT
+- Check EVERY phrase (BUILD and USE). Do not skip any.
+- Check BOTH languages independently for every phrase.
+- NEVER ask questions. Process all phrases and submit results.
+---END SUB-AGENT PROMPT---
+
+IMPORTANT: When spawning sub-agents via the Task tool:
+- Use subagent_type: "general-purpose"
+- Set run_in_background: true for each
+- Use model: "sonnet" (Sonnet for language evaluation)
+- Keep the description short: "QA seeds {start}-{end} for ${courseCode}"
+
+## Step 2: Monitor Progress
+
+After spawning all sub-agents, poll progress every 60 seconds:
+
+\`\`\`
+curl -s http://localhost:3471/api/qa/summary/${courseCode}
+\`\`\`
+
+This returns { phrases: { total, checked, unchecked, progress_percent }, flags: { total, open, errors, warnings } }.
+
+Use the Bash tool with curl to poll. Wait 60 seconds between polls (use sleep 60).
+
+When all 8 sub-agents have completed (check their output files), the QA pass is complete.
+
+If progress stalls (no change for 5 minutes), check sub-agent output files and report the issue. If a sub-agent failed, spawn a replacement for its seed range.
+
+## Step 3: Report
+
+When all batches are checked, summarise:
+- Total phrases checked across all sub-agents
+- Flags raised (count) by category (grammar / naturalness / variety / build_quality)
 - Grammar flags broken down by language (English errors vs ${langName} errors)
 - Any seeds that are particularly weak overall
+- Any batches that failed
 
 ## AUTONOMY
-You are running unattended. NEVER ask questions. Process everything and submit results.
-Do NOT spawn sub-agents — this is a single focused review of ~500-700 phrases. Do it yourself.
+You are running unattended. NEVER ask questions.
+- Make decisions yourself
+- If a sub-agent fails, spawn a replacement
+- Keep going until all batches are checked
 `;
 }
 
@@ -2565,6 +2615,9 @@ Introduce the component A-LEGOs and smaller M-LEGOs FIRST, then use the larger M
 ### ZUT (Zero Uncertainty Test)
 Same KNOWN text → same TARGET text. Always. Use different natural phrases to disambiguate.
 
+### The Inference Rule — MORE LEGOs Than You Think
+If a learner CANNOT infer a target form from LEGOs they already know, it MUST have its own LEGO. Every uninferred form is a ZUT violation waiting to happen. In morphologically rich languages this means conjugated forms, case-marked articles, agreement forms, and separable verb particles all need explicit LEGOs. Don't assume the learner can generalise — if it's not taught, it's not known.
+
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
 ## Cross-Course Reference (How Other Languages Decomposed These Seeds)
 
@@ -2600,7 +2653,7 @@ Design LEGOs (A/M types, ordering) and write BUILD + USE phrases. Consider:
 
 ### Step 5: Submit
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&skip_validation=true" \\
+curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" \\
   -H "Content-Type: application/json" \\
   -d '{
     "course_code": "${courseCode}",
@@ -2710,6 +2763,9 @@ When the target language orders words differently from the known language, you M
 
 ### ZUT (Zero Uncertainty Test)
 Same KNOWN text → same TARGET text. Always.
+
+### The Inference Rule — MORE LEGOs Than You Think
+If a learner CANNOT infer a target form from LEGOs they already know, it MUST have its own LEGO. Every uninferred form is a ZUT violation waiting to happen. In morphologically rich languages this means conjugated forms, case-marked articles, agreement forms, and separable verb particles all need explicit LEGOs. Don't assume the learner can generalise — if it's not taught, it's not known.
 
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
 ## Cross-Course Reference
@@ -2830,6 +2886,9 @@ Flag decompositions that rely on A-LEGOs alone when word order differs between E
 
 **German subordinate clause example:** \`weil\`/\`ob\`/\`bevor\`/\`dass\`/\`wenn\` push verbs to the END. If the learner knows "weil", "ich will", "sprechen" as separate LEGOs, they need an M-LEGO "because I want to speak" → "weil ich sprechen will" to see the reordering. Without it, they'd say "weil ich will sprechen" (English order = wrong). The M-LEGO teaches no new vocab — just the assembly pattern. Components should be introduced as A-LEGOs first to keep cognitive load manageable.
 
+### The Inference Rule — Flag Under-Decomposition
+If a learner CANNOT infer a target form from LEGOs they already know, it MUST have its own LEGO. Every uninferred form is a ZUT violation waiting to happen. Flag decompositions that have too few LEGOs — in morphologically rich languages, conjugated forms, case-marked articles, and agreement patterns all need explicit LEGOs. If it's not taught, it's not known.
+
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
 ## Cross-Course Reference
 
@@ -2931,7 +2990,7 @@ curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
 
 4. **Resubmit the corrected seed**:
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&skip_validation=true" \\
+curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" \\
   -H "Content-Type: application/json" \\
   -d '{
     "course_code": "${courseCode}",
@@ -4678,16 +4737,7 @@ async function loadCourseVocab(courseCode) {
     }
   }
 
-  // French/European elision particles — these single-letter forms appear before
-  // apostrophes (j', l', m', t', s', d', n', qu') and are structural, not vocab.
-  // Like Chinese particles, they shouldn't need explicit LEGOs.
-  // e.g., "s'entraîner" is a LEGO but "m'entraîner" uses "m" which is just
-  // the first-person form of the same reflexive pronoun.
-  if (!chinese) {
-    for (const p of ['j', 'l', 'm', 't', 's', 'd', 'n', 'qu', 'c']) {
-      vocabSet.add(p);
-    }
-  }
+  // Elision particles (j', l', m', etc.) removed — rethinking approach
 
   // Store in cache (handles LRU eviction)
   setCacheEntry(courseCode, vocabSet);
@@ -4764,12 +4814,7 @@ async function loadTranslationVocab(courseCode, upToSeedNumber) {
     }
   }
 
-  // 3. Add elision particles (same as loadCourseVocab)
-  if (!chinese) {
-    for (const p of ['j', 'l', 'm', 't', 's', 'd', 'n', 'qu', 'c']) {
-      vocabSet.add(p);
-    }
-  }
+  // Elision particles removed — rethinking approach
 
   return vocabSet;
 }
@@ -7626,7 +7671,7 @@ app.post('/api/qa/strict/:courseCode', async (req, res) => {
     const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
     const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-    console.log(`[QA-STRICT] Spawning strict QA for ${courseCode} seeds 1-50 in ${effectiveTerminal}`);
+    console.log(`[QA-STRICT] Spawning parallel golden QA coordinator for ${courseCode} seeds 11-50 (8 sub-agents) in ${effectiveTerminal}`);
 
     let agent;
     if (effectiveTerminal === 'headless') {
@@ -7645,7 +7690,7 @@ tell application "iTerm"
     set newWindow to (create window with default profile)
     set targetSession to current session of newWindow
     tell targetSession
-        set name to "QA Strict: ${courseCode}"
+        set name to "Golden QA: ${courseCode}"
         write text "${claudeCmd.replace(/"/g, '\\"')}"
     end tell
 end tell
@@ -7656,10 +7701,11 @@ return "spawned"`;
 
     res.json({
       ok: true,
-      mode: 'strict_qa',
+      mode: 'strict_qa_parallel',
       course_code: courseCode,
-      seed_range: '1-50',
-      message: `Strict QA agent spawned for seeds 1-50 (single Opus agent, no sub-agents)`
+      seed_range: '11-50',
+      agents: 8,
+      message: `Golden QA coordinator spawned for seeds 11-50 (Opus coordinator + 8 Sonnet sub-agents)`
     });
   } catch (err) {
     console.error(`[QA-STRICT] Error:`, err);
@@ -13274,12 +13320,6 @@ app.post('/api/v2/validate/:courseCode', async (req, res) => {
 
     // Build cumulative vocab as we walk seeds in order
     const cumulativeVocab = new Set();
-    // Add elision particles
-    if (!chinese) {
-      for (const p of ['j', 'l', 'm', 't', 's', 'd', 'n', 'qu', 'c']) {
-        cumulativeVocab.add(p);
-      }
-    }
 
     const failures = [];
     let seedsPassed = 0;
