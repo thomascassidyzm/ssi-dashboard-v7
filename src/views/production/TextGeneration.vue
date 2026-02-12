@@ -505,6 +505,36 @@
           </div>
         </div>
 
+        <!-- Stage 7: Gender Prep (only for gendered languages) -->
+        <div v-if="genderPrep.isGendered" class="pipeline-card" :class="stageCardClass('gender-prep')">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="stageNumberClass('gender-prep')">7</span>
+              <div>
+                <div class="text-sm font-medium text-slate-200">Gender Prep</div>
+                <div class="text-xs text-slate-500">Expand text for gendered TTS voices</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span v-if="genderPrep.processed" class="text-xs font-mono text-slate-300">{{ genderPrep.totalExpansions }} texts expanded</span>
+              <span v-if="genderPrep.flagged > 0" class="text-xs text-amber-400">{{ genderPrep.flagged }} audio flagged</span>
+              <span v-if="genderPrep.processed" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageLocked('gender-prep')" class="stage-badge-locked">Locked</span>
+              <button
+                v-else-if="!genderPrepRunning"
+                @click="startGenderPrep"
+                class="px-3 py-1 bg-purple-600/20 border border-purple-500/50 text-purple-400 hover:border-purple-400/70 text-xs font-medium rounded-lg transition-all"
+              >
+                Process
+              </button>
+              <span v-if="genderPrepRunning" class="text-xs text-purple-400 animate-pulse">Running...</span>
+            </div>
+          </div>
+          <div v-if="genderPrepResult" class="mt-2 text-xs" :class="genderPrepResult.ok ? 'text-emerald-400' : 'text-red-400'">
+            {{ genderPrepResult.text }}
+          </div>
+        </div>
+
         <!-- Optional: Full Build -->
         <div v-if="stageComplete('mvp')" class="pipeline-card border-slate-700/30">
           <div class="flex items-center justify-between">
@@ -768,6 +798,11 @@ const uncheckedStatus = ref(null)
 const deleteFlaggedConfirming = ref(false)
 const deletingFlagged = ref(false)
 
+// Gender prep state
+const genderPrep = ref({ isGendered: false, processed: false, totalExpansions: 0, processedAt: null, flagged: 0 })
+const genderPrepRunning = ref(false)
+const genderPrepResult = ref(null)
+
 const uncheckedGrouped = computed(() => {
   const groups = {}
   for (const p of uncheckedPhrases.value) {
@@ -789,6 +824,9 @@ const goldenFinalizing = ref(false)
 const goldenStatusMessage = ref(null)
 const goldenFinalized = ref(false)
 const goldenSeedCount = ref(10) // Calibrate = seeds 1-10, Golden = seeds 11-50
+
+// Golden QA state
+const goldenQaStatus = ref({ status: 'not_started', complete: false, running: false })
 
 const goldenStatus = computed(() => {
   const seeds = goldenSeeds.value
@@ -926,7 +964,8 @@ function stageComplete(stage) {
     case 'golden': return goldenRangeDone.value >= goldenRangeTotal.value && goldenRangeTotal.value > 0
     case 'mvp': return progress.value.currentSeed >= seedCount.value
     case 'qa': return qa.value.progress >= 100
-    case 'golden-qa': return false
+    case 'golden-qa': return goldenQaStatus.value.complete
+    case 'gender-prep': return genderPrep.value.processed
     default: return false
   }
 }
@@ -939,6 +978,7 @@ function stageLocked(stage) {
     case 'golden-qa': return !stageComplete('golden') // unlocks after golden
     case 'mvp': return !stageComplete('golden')        // also unlocks after golden (parallel with golden-qa)
     case 'qa': return !stageComplete('mvp')
+    case 'gender-prep': return !stageComplete('mvp')   // unlocks after MVP complete
     default: return false
   }
 }
@@ -1534,6 +1574,78 @@ async function deleteFlaggedPhrases() {
   }
 }
 
+// Gender prep methods
+async function fetchGenderPrepStatus() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || isCreateMode.value) return
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/status`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      genderPrep.value = { ...genderPrep.value, ...data }
+      // Also fetch flag count if processed
+      if (data.isGendered && data.processed) {
+        fetchGenderPrepFlagCount()
+      }
+    }
+  } catch (err) {
+    // Gender prep endpoint may not exist yet
+  }
+}
+
+async function fetchGenderPrepFlagCount() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/flag-count`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      genderPrep.value.flagged = data.flagged || 0
+    }
+  } catch (err) {
+    // Silently fail
+  }
+}
+
+async function startGenderPrep() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  genderPrepRunning.value = true
+  genderPrepResult.value = null
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/start`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+    const data = await response.json()
+    if (response.ok) {
+      genderPrepResult.value = {
+        ok: true,
+        text: `${data.modified} texts expanded in ${(data.elapsed / 1000).toFixed(1)}s, ${data.flagged} audio flagged for regen`
+      }
+      // Refresh status
+      await fetchGenderPrepStatus()
+    } else {
+      genderPrepResult.value = { ok: false, text: data.error || 'Failed to process' }
+    }
+  } catch (err) {
+    genderPrepResult.value = { ok: false, text: err.message }
+  } finally {
+    genderPrepRunning.value = false
+  }
+}
+
 async function killAgent(pid) {
   try {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
@@ -1731,6 +1843,8 @@ onMounted(() => {
   startPolling()
   if (isCreateMode.value) {
     loadLanguages()
+  } else {
+    fetchGenderPrepStatus()
   }
 })
 

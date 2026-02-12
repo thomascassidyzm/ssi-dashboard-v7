@@ -18,6 +18,36 @@
       <!-- Pipeline View -->
       <div v-else class="space-y-8">
 
+        <!-- GENDER PREP STATUS BANNER -->
+        <div v-if="genderPrepStatus.isGendered" class="rounded-xl p-4 flex items-center gap-4"
+          :class="genderPrepStatus.processed
+            ? 'bg-emerald-900/20 border border-emerald-500/20'
+            : 'bg-amber-900/20 border border-amber-500/30'"
+        >
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            :class="genderPrepStatus.processed
+              ? 'bg-emerald-500/10 border border-emerald-500/20'
+              : 'bg-amber-500/10 border border-amber-500/20'"
+          >
+            <svg class="w-5 h-5" :class="genderPrepStatus.processed ? 'text-emerald-400' : 'text-amber-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <div class="text-sm font-medium" :class="genderPrepStatus.processed ? 'text-emerald-300' : 'text-amber-300'">
+              {{ genderPrepStatus.processed ? 'Gender Prep' : 'Gender Prep not run' }}
+            </div>
+            <div class="text-xs" :class="genderPrepStatus.processed ? 'text-emerald-400/70' : 'text-amber-400/70'">
+              <template v-if="genderPrepStatus.processed">
+                {{ genderPrepStatus.totalExpansions }} expansions ready<template v-if="genderPrepFlagCount > 0">, {{ genderPrepFlagCount }} audio flagged for regen</template>
+              </template>
+              <template v-else>
+                Audio will use masculine defaults. Run Gender Prep on the Text tab first.
+              </template>
+            </div>
+          </div>
+        </div>
+
         <!-- LIVE PROGRESS (when active) -->
         <div v-if="audioProgress.active" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-emerald-500/30 rounded-xl p-6">
           <div class="flex items-center gap-6">
@@ -644,6 +674,10 @@ const courseCode = computed(() => route.params.courseCode as string)
 const loading = ref(true)
 const error = ref<string | null>(null)
 
+// Gender prep status state
+const genderPrepStatus = ref<any>({ isGendered: false, processed: false, totalExpansions: 0 })
+const genderPrepFlagCount = ref(0)
+
 // Voice configuration state
 const showVoiceConfig = ref(false)
 const voicesConfigured = ref(false)
@@ -740,6 +774,29 @@ const stopProgressPolling = () => {
   }
 }
 
+// Gender prep status fetch
+const fetchGenderPrepStatus = async () => {
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/gender-prep/status`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      genderPrepStatus.value = await response.json()
+      if (genderPrepStatus.value.isGendered && genderPrepStatus.value.processed) {
+        const flagResponse = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/gender-prep/flag-count`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' }
+        })
+        if (flagResponse.ok) {
+          const flagData = await flagResponse.json()
+          genderPrepFlagCount.value = flagData.flagged || 0
+        }
+      }
+    }
+  } catch (err) {
+    // Silently fail - endpoint may not exist
+  }
+}
+
 // Load data on mount
 onMounted(async () => {
   try {
@@ -748,6 +805,8 @@ onMounted(async () => {
     productionStore.loadCourse(courseCode.value)
     // Start polling for audio progress
     startProgressPolling()
+    // Fetch gender prep status
+    fetchGenderPrepStatus()
 
     // Stats come from the fast /audio-stats endpoint (via loadCourse).
     // The slow /audio-pipeline/plan endpoint is only needed for cost/time estimates

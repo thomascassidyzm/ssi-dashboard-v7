@@ -3592,7 +3592,7 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
 
 // GET /api/production/:courseCode/audio-pipeline/missing
 // Get detailed list of missing audio with sample playback URLs for voice matching
-// AZURE COUNTS: Delegated to Phase8 /plan (single source of truth)
+// AZURE COUNTS: Direct Supabase via getDirectAudioStats() — fast, cached
 // ELEVENLABS COUNTS: Handled locally (shared audio, welcomes)
 app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) => {
   const { courseCode } = req.params
@@ -3600,38 +3600,15 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
   try {
     // =========================================================================
-    // AZURE TTS COUNTS: Try Phase8 first, fall back to direct Supabase
+    // AZURE TTS COUNTS: Direct Supabase via getDirectAudioStats() — fast, cached
     // =========================================================================
-    let phase8Plan
-    try {
-      const response = await axios.get(`${PHASE8_URL}/plan/${courseCode}`)
-      phase8Plan = response.data
-    } catch (e) {
-      logger.info(`Phase8 unavailable for ${courseCode}, using Supabase fallback for missing audio`)
-      // Fall back to direct Supabase stats
-      const stats = await getDirectAudioStats(courseCode)
-      phase8Plan = {
-        breakdown: stats.breakdown,
-        missing: stats.missing,
-        totalPhrases: stats.totalPhrases,
-        totalPresentationsNeeded: stats.totalNewLegos,
-        existingByRole: stats.existingByRole
-      }
-    }
+    const stats = await getDirectAudioStats(courseCode)
+    const breakdown = stats.breakdown
+    const azureMissing = stats.missing
 
     const supabase = supabaseClient.getClient()
-
-    // Get course info for ElevenLabs checks
-    const { data: course, error: courseErr } = await supabase
-      .from('courses')
-      .select('known_lang, target_lang, seed_count')
-      .eq('course_code', courseCode)
-      .single()
-
-    if (courseErr) throw courseErr
-
-    const knownLang = course?.known_lang || 'eng'
-    const releaseTarget = course?.seed_count || 260
+    const knownLang = stats.course?.known_lang || 'eng'
+    const releaseTarget = stats.releaseTarget || 260
 
     // =========================================================================
     // SAMPLE AUDIO: Get one sample per role for voice matching UI
@@ -3723,10 +3700,8 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     }
 
     // =========================================================================
-    // BUILD RESPONSE: Phase8 data for Azure, local data for ElevenLabs
+    // BUILD RESPONSE: Supabase data for Azure, local data for ElevenLabs
     // =========================================================================
-    const breakdown = phase8Plan.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 }
-    const azureMissing = phase8Plan.missing || 0
     const sharedMissing = sharedAudio.encouragements.missing + sharedAudio.instructions.missing
     const welcomeMissing = welcomeStatus.hasAudio ? 0 : 1
     const totalMissing = azureMissing + sharedMissing + welcomeMissing
@@ -3739,16 +3714,16 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       courseCode,
       releaseTarget,
       totalMissing,
-      totalPhrases: phase8Plan.totalPhrases || 0,
-      totalLegos: phase8Plan.totalPresentationsNeeded || 0,
-      existingCounts: phase8Plan.existingByRole || { known: 0, target1: 0, target2: 0, presentation: 0 },
+      totalPhrases: stats.totalPhrases || 0,
+      totalLegos: stats.totalNewLegos || 0,
+      existingCounts: stats.existingByRole || { known: 0, target1: 0, target2: 0, presentation: 0 },
 
-      // Phase8 breakdown for Azure (UI reads .length but we provide counts via byProcess)
+      // Breakdown for Azure (UI reads counts via byProcess)
       missing: missingByRole,
       missingCounts: breakdown,  // Direct counts for UI
       samples: samplesByRole,
 
-      // Seeds/LEGOs included in phase8 counts (no separate tracking needed)
+      // Seeds/LEGOs included in deduped counts (no separate tracking needed)
       seeds: { counts: {}, missing: { known: [], target1: [], target2: [] }, totalMissing: 0 },
       legos: { counts: {}, missing: { known: [], target1: [], target2: [] }, totalMissing: 0 },
 
@@ -3765,7 +3740,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
         },
         azureSeeds: {
           label: 'Azure TTS (Seeds)',
-          missing: 0,  // Included in phase8 deduped counts
+          missing: 0,  // Included in deduped counts
           categories: []
         },
         azureLegos: {
@@ -3910,18 +3885,32 @@ app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (r
     }
 
     // Create debut phrases for orphan LEGOs
-    // Position 0 is the debut phrase (shows the LEGO itself)
-    // word_count and lego_count are required by database schema
+    // The debut phrase shows the LEGO itself — role 'build', position 1
+    // Uses deterministic phrase IDs matching course-builder-api.cjs makePhraseId format
+    const ROLE_PREFIX = { component: 'C', build: 'B', use: 'U' }
+    function makePhraseId(cc, seedNum, legoIdx, phraseRole, rolePos) {
+      const s = String(seedNum).padStart(4, '0')
+      const l = String(legoIdx).padStart(2, '0')
+      const r = ROLE_PREFIX[phraseRole] || 'X'
+      const p = String(rolePos).padStart(2, '0')
+      return `${cc}:S${s}L${l}${r}${p}`
+    }
+
     const debutPhrases = orphanLegos.map(lego => ({
+      id: makePhraseId(courseCode, lego.seed_number, lego.lego_index, 'build', 1),
       course_code: courseCode,
       seed_number: lego.seed_number,
       lego_index: lego.lego_index,
       lego_id: lego.lego_id,
-      position: 0,
+      position: 1,
       known_text: lego.known_text,
       target_text: lego.target_text,
+      phrase_role: 'build',
       word_count: (lego.target_text || '').split(/\s+/).filter(w => w.length > 0).length || 1,
-      lego_count: 1  // Debut phrase shows 1 LEGO
+      lego_count: 1,
+      connected_lego_ids: [],
+      status: 'draft',
+      version: 1
     }))
 
     const { error: insertError } = await supabase
@@ -5922,6 +5911,214 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
     res.json(result)
   } catch (error) {
     logger.error(`Deploy missing error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// GENDER PREP ROUTES
+// =============================================================================
+
+const genderHaikuService = require('./gender-haiku-service.cjs')
+
+// GET /api/production/:courseCode/gender-prep/status
+// Check gender expansion status for a course
+app.get('/api/production/:courseCode/gender-prep/status', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // Get course target language
+    const { data: course, error: courseErr } = await supabase
+      .from('courses')
+      .select('target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseErr || !course) {
+      return res.status(404).json({ error: 'Course not found' })
+    }
+
+    const isGendered = genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)
+
+    if (!isGendered) {
+      return res.json({ isGendered: false, processed: false, totalExpansions: 0, processedAt: null })
+    }
+
+    // Count existing expansions
+    const { count, error: countErr } = await supabase
+      .from('course_gender_expansions')
+      .select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    // Get most recent processed_at
+    const { data: latest } = await supabase
+      .from('course_gender_expansions')
+      .select('processed_at')
+      .eq('course_code', courseCode)
+      .order('processed_at', { ascending: false })
+      .limit(1)
+
+    const totalExpansions = count || 0
+    const processedAt = latest?.[0]?.processed_at || null
+
+    res.json({
+      isGendered: true,
+      processed: totalExpansions > 0,
+      totalExpansions,
+      processedAt
+    })
+  } catch (error) {
+    logger.error('Error fetching gender-prep status:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/gender-prep/start
+// Run gender expansion processing and flag affected audio for regen
+app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // Run gender expansion
+    const result = await genderHaikuService.processAndStore(courseCode, supabase)
+
+    // Auto-flag affected audio for regeneration (same logic as scripts/flag-gender-regen.cjs)
+    let flagged = 0
+    if (result.modified > 0) {
+      // Get all gender-expanded texts
+      const { data: expansions } = await supabase
+        .from('course_gender_expansions')
+        .select('original_text, expanded_f, expanded_m')
+        .eq('course_code', courseCode)
+
+      const t1Texts = new Set(expansions.filter(r => r.expanded_f).map(r => r.original_text.toLowerCase().trim()))
+      const t2Texts = new Set(expansions.filter(r => r.expanded_m).map(r => r.original_text.toLowerCase().trim()))
+
+      // Get all target1 + target2 audio (paginated)
+      async function getAllAudio(role) {
+        const all = []
+        let offset = 0
+        while (true) {
+          const { data } = await supabase
+            .from('course_audio')
+            .select('id, text_normalized')
+            .eq('course_code', courseCode)
+            .eq('role', role)
+            .not('s3_key', 'like', 'pending/%')
+            .order('id')
+            .range(offset, offset + 999)
+          if (!data || data.length === 0) break
+          all.push(...data)
+          offset += 1000
+        }
+        return all
+      }
+
+      const allT1 = await getAllAudio('target1')
+      const allT2 = await getAllAudio('target2')
+
+      const toFlag = [
+        ...allT1.filter(a => t1Texts.has(a.text_normalized)).map(a => a.id),
+        ...allT2.filter(a => t2Texts.has(a.text_normalized)).map(a => a.id)
+      ]
+
+      if (toFlag.length > 0) {
+        // Clear existing gender flags
+        await supabase
+          .from('audio_flags')
+          .delete()
+          .eq('course_code', courseCode)
+          .eq('reason', 'gender-expansion-regen')
+
+        // Insert flags in batches
+        const BATCH = 100
+        for (let i = 0; i < toFlag.length; i += BATCH) {
+          const batch = toFlag.slice(i, i + BATCH).map(id => ({
+            audio_uuid: id,
+            course_code: courseCode,
+            status: 'flagged',
+            reason: 'gender-expansion-regen',
+            flagged_by: 'gender-prep'
+          }))
+          const { error } = await supabase
+            .from('audio_flags')
+            .upsert(batch, { onConflict: 'audio_uuid,course_code' })
+          if (error) { logger.warn('Flag batch error:', error.message); continue }
+          flagged += batch.length
+        }
+      }
+    }
+
+    res.json({
+      total: result.total,
+      modified: result.modified,
+      elapsed: result.elapsed,
+      flagged
+    })
+  } catch (error) {
+    logger.error('Error running gender-prep:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/gender-prep/flag-count
+// Count audio flags with reason 'gender-expansion-regen'
+app.get('/api/production/:courseCode/gender-prep/flag-count', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // Get flags with audio details for role breakdown
+    const { data: flags, error } = await supabase
+      .from('audio_flags')
+      .select('audio_uuid')
+      .eq('course_code', courseCode)
+      .eq('reason', 'gender-expansion-regen')
+
+    if (error) throw error
+
+    const flaggedCount = flags?.length || 0
+
+    // Get role breakdown if there are flags
+    let roleBreakdown = { target1: 0, target2: 0 }
+    if (flaggedCount > 0) {
+      const uuids = flags.map(f => f.audio_uuid)
+      // Query audio to get roles (in batches of 500)
+      for (let i = 0; i < uuids.length; i += 500) {
+        const batch = uuids.slice(i, i + 500)
+        const { data: audioRows } = await supabase
+          .from('course_audio')
+          .select('id, role')
+          .in('id', batch)
+        if (audioRows) {
+          for (const row of audioRows) {
+            if (row.role === 'target1') roleBreakdown.target1++
+            else if (row.role === 'target2') roleBreakdown.target2++
+          }
+        }
+      }
+    }
+
+    res.json({
+      flagged: flaggedCount,
+      role_breakdown: roleBreakdown
+    })
+  } catch (error) {
+    logger.error('Error fetching gender-prep flag count:', error)
     res.status(500).json({ error: error.message })
   }
 })
