@@ -2529,11 +2529,24 @@ When all batches are checked, summarise:
 - Any seeds that are particularly weak overall
 - Any batches that failed
 
+## Step 4: Signal Completion
+
+**CRITICAL**: After all sub-agents finish and you've summarised the results, you MUST call the completion endpoint so the dashboard knows Golden QA is done:
+
+\`\`\`
+curl -s -X POST "http://localhost:3471/api/qa/golden/complete/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"flags_total": <total_flags>, "phrases_checked": <total_phrases>}'
+\`\`\`
+
+This marks the golden_qa build_jobs record as complete. Without this call, the dashboard will not know QA finished.
+
 ## AUTONOMY
 You are running unattended. NEVER ask questions.
 - Make decisions yourself
 - If a sub-agent fails, spawn a replacement
 - Keep going until all batches are checked
+- ALWAYS call the completion endpoint when done (Step 4)
 `;
 }
 
@@ -7663,6 +7676,41 @@ app.post('/api/qa/strict/:courseCode', async (req, res) => {
       return res.status(404).json({ ok: false, error: `Course ${courseCode} not found` });
     }
 
+    // Create build_jobs record for golden_qa tracking
+    let jobId = null;
+    try {
+      // Cancel any existing running golden_qa job first
+      await supabase
+        .from('build_jobs')
+        .update({ status: 'stopped', completed_at: new Date().toISOString() })
+        .eq('course_code', courseCode)
+        .eq('pass', 'golden_qa')
+        .in('status', ['pending', 'running']);
+
+      const { data: job, error: jobError } = await supabase
+        .from('build_jobs')
+        .insert({
+          course_code: courseCode,
+          pass: 'golden_qa',
+          status: 'running',
+          total_seeds: 40,
+          seeds_completed: 0,
+          started_at: new Date().toISOString(),
+          last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard'
+        })
+        .select()
+        .single();
+      if (jobError) {
+        console.warn(`[QA-STRICT] Could not create build_jobs record: ${jobError.message}`);
+      } else {
+        jobId = job.id;
+        console.log(`[QA-STRICT] Created build_jobs record ${jobId} for golden_qa`);
+      }
+    } catch (e) {
+      console.warn(`[QA-STRICT] build_jobs insert failed (constraint may need updating): ${e.message}`);
+    }
+
     const prompt = generateStrictQABrief({ courseCode, courseInfo: course });
     const tmpFile = `/tmp/claude_qa_strict_${courseCode}_${Date.now()}.txt`;
     require('fs').writeFileSync(tmpFile, prompt);
@@ -7705,11 +7753,118 @@ return "spawned"`;
       course_code: courseCode,
       seed_range: '11-50',
       agents: 8,
+      job_id: jobId,
       message: `Golden QA coordinator spawned for seeds 11-50 (Opus coordinator + 8 Sonnet sub-agents)`
     });
   } catch (err) {
     console.error(`[QA-STRICT] Error:`, err);
     res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/golden/complete/:courseCode - Mark golden QA as complete
+ * Called by the orchestrator when all sub-agents finish checking seeds 11-50.
+ */
+app.post('/api/qa/golden/complete/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { flags_total, phrases_checked } = req.body || {};
+
+  try {
+    // Find the active golden_qa job
+    const { data: job, error: findError } = await supabase
+      .from('build_jobs')
+      .select('id')
+      .eq('course_code', courseCode)
+      .eq('pass', 'golden_qa')
+      .in('status', ['running', 'pending'])
+      .order('started_at', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (findError || !job) {
+      // No running job found — mark complete anyway by inserting a completed record
+      const { error: insertErr } = await supabase
+        .from('build_jobs')
+        .insert({
+          course_code: courseCode,
+          pass: 'golden_qa',
+          status: 'complete',
+          total_seeds: 40,
+          seeds_completed: 40,
+          started_at: new Date().toISOString(),
+          completed_at: new Date().toISOString(),
+          requested_by: 'agent'
+        });
+      if (insertErr) {
+        console.warn(`[QA-GOLDEN-COMPLETE] Insert fallback failed: ${insertErr.message}`);
+      }
+      console.log(`[QA-GOLDEN-COMPLETE] No running job found for ${courseCode}, created completed record`);
+    } else {
+      // Update existing job
+      const { error: updateErr } = await supabase
+        .from('build_jobs')
+        .update({
+          status: 'complete',
+          seeds_completed: 40,
+          completed_at: new Date().toISOString()
+        })
+        .eq('id', job.id);
+
+      if (updateErr) {
+        console.error(`[QA-GOLDEN-COMPLETE] Update failed: ${updateErr.message}`);
+        return res.status(500).json({ ok: false, error: updateErr.message });
+      }
+      console.log(`[QA-GOLDEN-COMPLETE] Marked job ${job.id} as complete for ${courseCode}`);
+    }
+
+    res.json({
+      ok: true,
+      course_code: courseCode,
+      flags_total: flags_total || null,
+      phrases_checked: phrases_checked || null,
+      message: `Golden QA marked as complete for ${courseCode}`
+    });
+  } catch (err) {
+    console.error(`[QA-GOLDEN-COMPLETE] Error:`, err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/qa/golden/status/:courseCode - Check golden QA job status
+ * Returns whether golden QA is running, complete, or not started.
+ */
+app.get('/api/qa/golden/status/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    // Check for any golden_qa job (most recent)
+    const { data: job } = await supabase
+      .from('build_jobs')
+      .select('id, status, started_at, completed_at, seeds_completed')
+      .eq('course_code', courseCode)
+      .eq('pass', 'golden_qa')
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (!job) {
+      return res.json({ ok: true, status: 'not_started', complete: false });
+    }
+
+    res.json({
+      ok: true,
+      status: job.status,
+      complete: job.status === 'complete',
+      running: ['running', 'pending'].includes(job.status),
+      job_id: job.id,
+      started_at: job.started_at,
+      completed_at: job.completed_at,
+      seeds_checked: job.seeds_completed || 0
+    });
+  } catch (err) {
+    res.json({ ok: true, status: 'not_started', complete: false });
   }
 });
 

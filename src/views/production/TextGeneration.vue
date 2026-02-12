@@ -271,16 +271,18 @@
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span v-if="stageLocked('golden-qa')" class="stage-badge-locked">Locked</span>
-              <button
-                v-else
-                @click="startStrictQA"
-                :disabled="qaRunning"
-                class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                1-50 QA Check
-              </button>
-              <span v-if="qaRunning && !stageLocked('golden-qa') && stageLocked('qa')" class="text-xs text-amber-400 animate-pulse">Running...</span>
+              <span v-if="stageComplete('golden-qa')" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageLocked('golden-qa')" class="stage-badge-locked">Locked</span>
+              <template v-else>
+                <button
+                  @click="startStrictQA"
+                  :disabled="goldenQaStatus.running"
+                  class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >
+                  1-50 QA Check
+                </button>
+                <span v-if="goldenQaStatus.running" class="text-xs text-amber-400 animate-pulse">Running...</span>
+              </template>
             </div>
           </div>
         </div>
@@ -1120,6 +1122,7 @@ async function fetchProgress() {
     // Only poll golden/v2 when in relevant phases to avoid 404 console spam
     const phase = pipelinePhase.value
     if (['calibrate', 'golden', 'golden-qa'].includes(phase)) fetchGoldenStatus()
+    if (['golden-qa'].includes(phase) || !goldenQaStatus.value.complete) fetchGoldenQAStatus()
     if (phase === 'mvp') fetchV2Status()
   } catch (error) {
     console.error('Failed to fetch progress:', error)
@@ -1679,6 +1682,23 @@ async function fetchGoldenStatus() {
     }
   } catch (err) {
     // Golden endpoints may not exist yet
+  }
+}
+
+async function fetchGoldenQAStatus() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || isCreateMode.value) return
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/qa/golden/status/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      goldenQaStatus.value = data
+    }
+  } catch (err) {
+    // Endpoint may not exist yet
   }
 }
 
