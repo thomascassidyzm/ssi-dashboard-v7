@@ -793,7 +793,9 @@ const goldenStatus = computed(() => {
   const seeds = goldenSeeds.value
   const approved = seeds.filter(s => s.status === 'approved').length
   const allApproved = seeds.length > 0 && approved === seeds.length
-  const running = seeds.length > 0 && seeds.some(s => ['submitted', 'checking', 'flagged'].includes(s.status))
+  // "running" = actual build job active, not just seeds awaiting QA
+  const running = progress.value.status === 'running' &&
+    ['golden', 'calibration'].includes(progress.value.buildPass)
   return { running, allApproved, finalized: goldenFinalized.value, approved }
 })
 
@@ -1054,6 +1056,7 @@ async function fetchProgress() {
           }
         } else {
           translateRunning.value = false
+          progress.value.buildPass = null
           if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
             progress.value.status = 'complete'
           } else if (progress.value.status === 'running') {
