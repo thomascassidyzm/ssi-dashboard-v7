@@ -749,10 +749,11 @@ onMounted(async () => {
     // Start polling for audio progress
     startProgressPolling()
 
-    // Fetch pipeline stats in background (for Progress Dashboard)
-    refreshPlanStats().then(() => {
-      statsLoaded.value = true
-    })
+    // Stats come from the fast /audio-stats endpoint (via loadCourse).
+    // The slow /audio-pipeline/plan endpoint is only needed for cost/time estimates
+    // and is called on-demand when user clicks "Start Generation".
+    // Mark stats as loaded once the store has audio data (watch below handles it).
+    statsLoaded.value = true
 
     // Check for mode=flagged query param (from Script Viewer link)
     if (route.query.mode === 'flagged') {
