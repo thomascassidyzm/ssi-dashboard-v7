@@ -159,11 +159,11 @@
               <span class="stage-number" :class="stageNumberClass('calibrate')">2</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Calibrate</div>
-                <div class="text-xs text-slate-500">Seeds 1-{{ goldenSeedCount }}: Human + Creator agent</div>
+                <div class="text-xs text-slate-500">Seeds 1-10: Human + Creator collaboration</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ calibrationDone }}/{{ goldenSeedCount }}</span>
+              <span class="text-xs font-mono text-slate-300">{{ calibrationDone }}/10</span>
               <span v-if="stageComplete('calibrate')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('calibrate')" class="stage-badge-locked">Locked</span>
               <button
@@ -201,7 +201,7 @@
               <span class="stage-number" :class="stageNumberClass('golden')">3</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Golden</div>
-                <div class="text-xs text-slate-500">Seeds {{ goldenSeedCount + 1 }}-50: Creator + Checker agents</div>
+                <div class="text-xs text-slate-500">Seeds 11-50: Creator + Checker agents</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
@@ -604,8 +604,8 @@
 
           <!-- Legend -->
           <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-orange-400/80 border border-orange-300/40"></span> Calibration (1-{{ goldenSeedCount }})</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80 border border-amber-400/40"></span> Golden ({{ goldenSeedCount + 1 }}-50)</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-orange-400/80 border border-orange-300/40"></span> Calibration (1-10)</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80 border border-amber-400/40"></span> Golden (11-50)</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/80 border border-cyan-400/40"></span> MVP (51-{{ seedCount }})</span>
             <span v-if="seedCount < 668" class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-600/80 border border-slate-500/40"></span> Full ({{ seedCount + 1 }}-668)</span>
           </div>
@@ -748,7 +748,7 @@ const goldenStarting = ref(false)
 const goldenFinalizing = ref(false)
 const goldenStatusMessage = ref(null)
 const goldenFinalized = ref(false)
-const goldenSeedCount = ref(10) // dynamic from course quality_rules
+const goldenSeedCount = ref(10) // Calibrate = seeds 1-10, Golden = seeds 11-50
 
 const goldenStatus = computed(() => {
   const seeds = goldenSeeds.value
@@ -1467,10 +1467,8 @@ async function fetchGoldenStatus() {
     if (response.ok) {
       const data = await response.json()
       goldenSeeds.value = data.seeds || []
-      // Read golden seed count from course config if available
-      if (data.golden_seed_count) {
-        goldenSeedCount.value = data.golden_seed_count
-      }
+      // Calibration count is always 10 (human-reviewed seeds)
+      // golden_seed_count from API represents total golden range, not calibration boundary
     }
   } catch (err) {
     // Golden endpoints may not exist yet
