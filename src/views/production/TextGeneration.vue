@@ -1140,6 +1140,14 @@ async function resetStage(stage) {
   stageResetting.value = stage
   try {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+
+    // Stop any active build job first (clears "Running..." state)
+    await fetch(`${apiBase}/api/build/stop/${courseCode}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    }).catch(() => {}) // ignore if no active build
+
+    // Wipe seeds/LEGOs/phrases in the range
     const response = await fetch(`${apiBase}/api/build/rebuild/${courseCode}`, {
       method: 'POST',
       headers: {
