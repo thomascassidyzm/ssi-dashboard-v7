@@ -260,11 +260,36 @@
           </div>
         </div>
 
-        <!-- Stage 4: Build MVP (V2 Pipeline — 4 sub-stages) -->
+        <!-- Stage 4: Golden QA -->
+        <div class="pipeline-card" :class="stageCardClass('golden-qa')">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="stageNumberClass('golden-qa')">4</span>
+              <div>
+                <div class="text-sm font-medium text-slate-200">Golden QA</div>
+                <div class="text-xs text-slate-500">Seeds 1-50: Speakability + grammar check</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span v-if="stageLocked('golden-qa')" class="stage-badge-locked">Locked</span>
+              <button
+                v-else
+                @click="startStrictQA"
+                :disabled="qaRunning"
+                class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                1-50 QA Check
+              </button>
+              <span v-if="qaRunning && !stageLocked('golden-qa') && stageLocked('qa')" class="text-xs text-amber-400 animate-pulse">Running...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 5: Build MVP (V2 Pipeline — 4 sub-stages) -->
         <div class="pipeline-card" :class="stageCardClass('mvp')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('mvp')">4</span>
+              <span class="stage-number" :class="stageNumberClass('mvp')">5</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Build MVP</div>
                 <div class="text-xs text-slate-500">Seeds 51-{{ seedCount }}: V2 staged pipeline</div>
@@ -372,11 +397,11 @@
           </div>
         </div>
 
-        <!-- Stage 5: QA Review -->
+        <!-- Stage 6: QA Review -->
         <div class="pipeline-card" :class="stageCardClass('qa')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('qa')">5</span>
+              <span class="stage-number" :class="stageNumberClass('qa')">6</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">QA Review</div>
                 <div class="text-xs text-slate-500">Full-course speakability check</div>
@@ -476,30 +501,6 @@
               <span v-if="uncheckedStatus" class="text-xs" :class="uncheckedStatus.ok ? 'text-cyan-400/70' : 'text-red-400'">
                 {{ uncheckedStatus.message }}
               </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stage 6: Golden QA -->
-        <div class="pipeline-card" :class="stageCardClass('golden-qa')">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('golden-qa')">6</span>
-              <div>
-                <div class="text-sm font-medium text-slate-200">Golden QA</div>
-                <div class="text-xs text-slate-500">1-50 Final Check (targeted)</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span v-if="stageLocked('golden-qa')" class="stage-badge-locked">Locked</span>
-              <button
-                v-else
-                @click="startStrictQA"
-                :disabled="qaRunning"
-                class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                1-50 Final Check
-              </button>
             </div>
           </div>
         </div>
@@ -931,11 +932,15 @@ function stageComplete(stage) {
 }
 
 function stageLocked(stage) {
-  const phases = ['translate', 'calibrate', 'golden', 'mvp', 'qa', 'golden-qa']
-  const idx = phases.indexOf(stage)
-  if (idx <= 0) return false
-  // Each stage unlocks when prior stage is complete
-  return !stageComplete(phases[idx - 1])
+  switch (stage) {
+    case 'translate': return false
+    case 'calibrate': return !stageComplete('translate')
+    case 'golden': return !stageComplete('calibrate')
+    case 'golden-qa': return !stageComplete('golden') // unlocks after golden
+    case 'mvp': return !stageComplete('golden')        // also unlocks after golden (parallel with golden-qa)
+    case 'qa': return !stageComplete('mvp')
+    default: return false
+  }
 }
 
 function stageCardClass(stage) {
