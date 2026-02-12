@@ -291,7 +291,7 @@ function getPipelineSegments(course) {
 
   const segDefs = [
     { key: 'building',   label: 'Seeds',   color: '#f59e0b' },
-    { key: 'audio',      label: 'Audio',   color: '#8b5cf6' },
+    { key: 'audio',      label: 'Audio',   color: '#3b82f6' },
     { key: 'polishing',  label: 'Polish',  color: '#f97316' },
     { key: 'production', label: 'Live',    color: '#10b981' }
   ]
@@ -329,7 +329,7 @@ function formatNumber(n) {
 const stageConfig = {
   production: { color: '#10b981', label: 'Production' },
   polishing:  { color: '#f97316', label: 'Polishing' },
-  audio:      { color: '#8b5cf6', label: 'Audio' },
+  audio:      { color: '#3b82f6', label: 'Audio' },
   building:   { color: '#f59e0b', label: 'Building' },
   not_started:{ color: '#334155', label: 'Not Started' }
 }
@@ -337,7 +337,7 @@ const stageConfig = {
 const stageLegend = [
   { key: 'production', color: '#10b981', label: 'Production' },
   { key: 'polishing',  color: '#f97316', label: 'Polishing' },
-  { key: 'audio',      color: '#8b5cf6', label: 'Audio' },
+  { key: 'audio',      color: '#3b82f6', label: 'Audio' },
   { key: 'building',   color: '#f59e0b', label: 'Building' },
   { key: 'not_started',color: '#334155', label: 'Not Started' }
 ]
@@ -513,7 +513,7 @@ function cycleLegacyStatus(course) {
 }
 
 .course-count {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--color-paper-dim, #c1c1bb);
   font-weight: 500;
   display: flex;
@@ -588,14 +588,14 @@ function cycleLegacyStatus(course) {
 }
 
 .legend-label {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--color-paper-dim, #c1c1bb);
   font-weight: 500;
 }
 
 .legend-count {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--color-paper, #f7f7f2);
   font-weight: 600;
   min-width: 1rem;
@@ -629,7 +629,7 @@ function cycleLegacyStatus(course) {
   border: none;
   outline: none;
   color: var(--color-paper, #f7f7f2);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-family: inherit;
   width: 140px;
 }
@@ -641,7 +641,7 @@ function cycleLegacyStatus(course) {
 /* Table header */
 .table-header {
   display: grid;
-  grid-template-columns: 200px 1fr 80px 80px 80px 72px;
+  grid-template-columns: 200px 1fr 88px 88px 88px 80px;
   align-items: center;
   padding: 0.5rem 1.25rem;
   padding-left: calc(1.25rem + 3px); /* account for row left-border */
@@ -650,7 +650,7 @@ function cycleLegacyStatus(course) {
 }
 
 .th {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--color-paper-dim, #c1c1bb);
   text-transform: uppercase;
@@ -696,9 +696,9 @@ function cycleLegacyStatus(course) {
 /* Course row */
 .course-row {
   display: grid;
-  grid-template-columns: 200px 1fr 80px 80px 80px 72px;
+  grid-template-columns: 200px 1fr 88px 88px 88px 80px;
   align-items: center;
-  padding: 0.6875rem 1.25rem;
+  padding: 0.8125rem 1.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   border-left: 3px solid transparent;
   cursor: pointer;
@@ -726,7 +726,7 @@ function cycleLegacyStatus(course) {
 
 .cell.mono {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--color-paper-dim, #c1c1bb);
   font-variant-numeric: tabular-nums;
@@ -740,7 +740,7 @@ function cycleLegacyStatus(course) {
 
 .course-code-label {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--color-paper, #f7f7f2);
   letter-spacing: 0.01em;
@@ -763,18 +763,18 @@ function cycleLegacyStatus(course) {
 }
 
 .seeds-count {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--color-paper, #f7f7f2);
 }
 
 .seeds-sep {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--color-paper-dim, #c1c1bb);
 }
 
 .seeds-target {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--color-paper-dim, #c1c1bb);
 }
 
@@ -783,14 +783,13 @@ function cycleLegacyStatus(course) {
   display: flex;
   gap: 3px;
   flex: 1;
-  max-width: 240px;
-  min-width: 80px;
+  min-width: 120px;
 }
 
 .pipeline-segment {
   position: relative;
   flex: 1;
-  height: 6px;
+  height: 10px;
   border-radius: 3px;
   overflow: hidden;
 }
@@ -818,13 +817,13 @@ function cycleLegacyStatus(course) {
 }
 
 .app-badge {
-  width: 24px;
-  height: 20px;
+  width: 26px;
+  height: 22px;
   border-radius: 3px;
   border: 1px solid;
   cursor: pointer;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -896,7 +895,7 @@ function cycleLegacyStatus(course) {
 }
 
 .empty-text {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
 }
 
 /* Footer */
@@ -919,14 +918,14 @@ function cycleLegacyStatus(course) {
 
 .footer-value {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-paper, #f7f7f2);
   font-variant-numeric: tabular-nums;
 }
 
 .footer-label {
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--color-paper-dim, #c1c1bb);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -975,7 +974,7 @@ function cycleLegacyStatus(course) {
   background: rgba(16, 185, 129, 0.95);
   color: white;
   border-radius: 6px;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   z-index: 9999;
