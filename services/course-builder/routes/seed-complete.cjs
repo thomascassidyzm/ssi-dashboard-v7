@@ -1,0 +1,1799 @@
+/**
+ * Seed completion routes — the golden path + individual LEGO/batch endpoints.
+ *
+ * POST /api/seed/complete  — Submit a complete seed atomically (golden path)
+ * POST /api/lego           — Insert a single LEGO with phrases
+ * POST /api/batch          — Insert multiple LEGOs at once
+ */
+
+const { Router } = require('express');
+
+// Lib imports
+const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily } = require('../lib/language-config.cjs');
+const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment } = require('../lib/text-normalization.cjs');
+const {
+  makePhraseId, computePhraseRole, computeLegoPosition,
+  extractNgrams, usesBuildUseFormat, checkBuildUsePhrases,
+  generateBuildupPhrases,
+} = require('../lib/phrase-structure.cjs');
+const {
+  METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
+  checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
+  checkLegoConflict,
+} = require('../lib/validation.cjs');
+const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
+const { recordActivity } = require('../lib/activity-tracker.cjs');
+const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
+const {
+  isBlockedByCheckpoint, getCheckpointStatus, getCheckpointConfig,
+  isCheckpointRequired, approveCheckpoint, isQAPending,
+  CHECKPOINT_SEEDS, QA_DRIFT_THRESHOLD,
+} = require('../lib/checkpoint.cjs');
+
+// ─── Local helpers (only used by these routes) ────────────────────────
+
+const allowValidationBypass = (body) => body.SKIP_VALIDATION === true;
+
+/**
+ * Record a lesson in build_lessons table when a validation error occurs.
+ * Fire-and-forget — never blocks the response.
+ */
+async function recordLessonFromError(ctx, courseCode, errorType, errorDetails) {
+  try {
+    const langCode = courseCode.split('_')[0];
+    const langFamilyMap = {
+      jpn: 'japanese', kor: 'korean', zho: 'cjk', cmn: 'cjk',
+      deu: 'germanic', nld: 'germanic', swe: 'germanic',
+      spa: 'romance', fra: 'romance', ita: 'romance', por: 'romance',
+      ara: 'semitic', heb: 'semitic',
+      cym: 'celtic', gle: 'celtic', gla: 'celtic',
+    };
+    const langFamily = langFamilyMap[langCode] || '*';
+
+    let lesson = '';
+    let exampleWrong = '';
+    let exampleRight = '';
+
+    switch (errorType) {
+      case 'zut':
+        lesson = `ZUT conflict: Same known text "${errorDetails.known}" already maps to "${errorDetails.existing}". Use consistent translations.`;
+        exampleWrong = `known: "${errorDetails.known}" → target: "${errorDetails.new_target}"`;
+        exampleRight = `known: "${errorDetails.known}" → target: "${errorDetails.existing}" (existing)`;
+        break;
+      case 'tiling':
+        lesson = `Tiling error: Seed target must be constructable from LEGO targets. Missing: [${errorDetails.untiled}]`;
+        exampleWrong = `seed_target not covered by LEGO targets`;
+        exampleRight = `Every character in seed target appears in at least one LEGO target`;
+        break;
+      case 'vocab':
+        lesson = `Vocabulary violation: Phrases used unknown words. Only use vocabulary from prior seeds and current LEGOs.`;
+        exampleWrong = errorDetails.violations?.[0]?.phrase?.substring(0, 50) || 'phrase with unknown vocab';
+        exampleRight = `Use only introduced vocabulary in phrases`;
+        break;
+      case 'phrases':
+      case 'no_phrases':
+        lesson = `Phrase count error: Each LEGO needs sufficient phrases. Use build[] (flexible) + use[] (min 5 phrases with scores).`;
+        exampleWrong = `phrases: [] or missing build/use arrays`;
+        exampleRight = `build: [{known, target}, ...], use: [{known, target, score}, ...]`;
+        break;
+      case 'build_use':
+        lesson = `BUILD/USE format error: ${errorDetails.error || 'Invalid structure'}`;
+        exampleWrong = errorDetails.details || 'malformed build/use arrays';
+        exampleRight = `build: [flexible], use: [min 5 phrases with score 5-9]`;
+        break;
+      case 'overlap':
+        lesson = `Use overlapping LEGOs when word order differs between languages.`;
+        exampleWrong = `Single M-LEGO without atomic components`;
+        exampleRight = `Both A-LEGOs for atoms AND M-LEGO for the combined chunk`;
+        break;
+      case 'balance':
+        lesson = `Balance violation: Phrases over-rely on common vocabulary. Include underused LEGOs in practice phrases.`;
+        exampleWrong = `Overused: ${errorDetails.overused_in_phrases?.join(', ') || 'common words'}`;
+        exampleRight = `Include underused LEGOs: ${errorDetails.underused_available?.slice(0, 3).join(', ') || 'varied vocabulary'}`;
+        break;
+      default:
+        lesson = `Validation error (${errorType}): ${errorDetails.message || JSON.stringify(errorDetails).substring(0, 100)}`;
+        exampleWrong = errorDetails.message || 'See error details';
+        exampleRight = 'Fix the validation error and resubmit';
+    }
+
+    const { data: existing } = await ctx.supabase
+      .from('build_lessons')
+      .select('id')
+      .eq('lesson_type', errorType)
+      .eq('language_family', langFamily)
+      .ilike('lesson', `%${errorDetails.known || errorDetails.untiled || errorType}%`)
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      console.log(`[RALPH] Lesson already exists for ${errorType} in ${langFamily}`);
+      return;
+    }
+
+    const { error: insertError } = await ctx.supabase
+      .from('build_lessons')
+      .insert({
+        lesson_type: errorType,
+        lesson,
+        example_wrong: exampleWrong.substring(0, 500),
+        example_right: exampleRight.substring(0, 500),
+        language_family: langFamily,
+        active: true,
+        created_at: new Date().toISOString(),
+        source_course: courseCode,
+      });
+
+    if (insertError) {
+      console.log(`[RALPH] Failed to record lesson: ${insertError.message}`);
+    } else {
+      console.log(`[RALPH] ✓ Recorded lesson: ${errorType} for ${langFamily}`);
+    }
+  } catch (e) {
+    console.log(`[RALPH] Error recording lesson: ${e.message}`);
+  }
+}
+
+/**
+ * Analyze pattern recency for a course — returns over-used patterns to avoid.
+ */
+async function analyzePatternRecency(ctx, courseCode, windowSize) {
+  const RECENCY_WINDOW = windowSize || ctx.config.RECENCY_WINDOW;
+  const PATTERN_FATIGUE_THRESHOLD = ctx.config.PATTERN_FATIGUE_THRESHOLD;
+
+  const { data: recentPhrases } = await ctx.supabase
+    .from('course_practice_phrases')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode)
+    .order('seed_number', { ascending: false })
+    .limit(RECENCY_WINDOW * 50);
+
+  if (!recentPhrases || recentPhrases.length === 0) {
+    return { overusedPatterns: [], patternCounts: {} };
+  }
+
+  const seedNumbers = [...new Set(recentPhrases.map(p => p.seed_number))].sort((a, b) => b - a);
+  const windowSeeds = new Set(seedNumbers.slice(0, RECENCY_WINDOW));
+
+  const patternCounts = {};
+  for (const phrase of recentPhrases) {
+    if (!windowSeeds.has(phrase.seed_number)) continue;
+    const knownNgrams = extractNgrams(phrase.known_text, 3);
+    for (const ngram of knownNgrams) {
+      if (!patternCounts[ngram]) {
+        patternCounts[ngram] = { count: 0, seeds: new Set() };
+      }
+      patternCounts[ngram].count++;
+      patternCounts[ngram].seeds.add(phrase.seed_number);
+    }
+  }
+
+  const overusedPatterns = Object.entries(patternCounts)
+    .filter(([_, data]) => data.seeds.size >= PATTERN_FATIGUE_THRESHOLD)
+    .map(([pattern, data]) => ({
+      pattern,
+      seedCount: data.seeds.size,
+      totalCount: data.count,
+    }))
+    .sort((a, b) => b.seedCount - a.seedCount)
+    .slice(0, 20);
+
+  return { overusedPatterns, patternCounts };
+}
+
+/**
+ * Initialize course_seeds from canonical_seeds for a new course.
+ */
+async function initializeCourseSeeds(ctx, courseCode) {
+  const parts = courseCode.split('_for_');
+  const targetLang = parts[0] || '';
+  const knownLang = parts[1] || '';
+  const knownIsEng = knownLang === 'eng';
+  const targetIsEng = targetLang === 'eng';
+
+  const { count: existingCount } = await ctx.supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode);
+
+  if (existingCount > 0) {
+    console.log(`Course ${courseCode} already has ${existingCount} seeds`);
+    return { initialized: false, count: existingCount };
+  }
+
+  const { data: canonical, error: canonicalError } = await ctx.supabase
+    .from('canonical_seeds')
+    .select('seed_number, source_text')
+    .order('seed_number');
+
+  if (canonicalError || !canonical || canonical.length === 0) {
+    throw new Error('Failed to fetch canonical seeds: ' + (canonicalError?.message || 'no data'));
+  }
+
+  const targetLangName = getLanguageName(courseCode);
+
+  let knownTranslations = new Map();
+  if (!knownIsEng) {
+    const { data: translations } = await ctx.supabase
+      .from('canonical_seed_translations')
+      .select('seed_number, translated_text')
+      .eq('language_code', knownLang);
+    if (translations && translations.length > 0) {
+      translations.forEach(t => knownTranslations.set(t.seed_number, t.translated_text));
+      console.log(`Found ${translations.length} canonical translations for ${knownLang}`);
+    }
+  }
+
+  let targetTranslations = new Map();
+  if (!targetIsEng) {
+    const { data: translations } = await ctx.supabase
+      .from('canonical_seed_translations')
+      .select('seed_number, translated_text')
+      .eq('language_code', targetLang);
+    if (translations && translations.length > 0) {
+      translations.forEach(t => targetTranslations.set(t.seed_number, t.translated_text));
+      console.log(`Found ${translations.length} canonical translations for ${targetLang}`);
+    }
+  }
+
+  const courseSeeds = canonical.map(c => {
+    const canonicalText = c.source_text.replace(/\{target\}/g, targetLangName);
+    let knownText = '';
+    let targetText = '';
+
+    if (knownIsEng) knownText = canonicalText;
+    if (targetIsEng) targetText = canonicalText;
+    if (!knownIsEng && knownTranslations.has(c.seed_number)) {
+      knownText = knownTranslations.get(c.seed_number).replace(/\{target\}/g, targetLangName);
+    }
+    if (!targetIsEng && targetTranslations.has(c.seed_number)) {
+      targetText = targetTranslations.get(c.seed_number).replace(/\{target\}/g, targetLangName);
+    }
+
+    return {
+      course_code: courseCode,
+      seed_number: c.seed_number,
+      known_text: knownText,
+      target_text: targetText,
+    };
+  });
+
+  const { error: insertError } = await ctx.supabase
+    .from('course_seeds')
+    .insert(courseSeeds);
+
+  if (insertError) {
+    throw new Error('Failed to initialize course seeds: ' + insertError.message);
+  }
+
+  const modeParts = [];
+  if (knownIsEng) modeParts.push('known=eng (instant)');
+  if (targetIsEng) modeParts.push('target=eng (instant)');
+  if (!knownIsEng && knownTranslations.size > 0) modeParts.push(`known=${knownLang} (${knownTranslations.size} from translations)`);
+  if (!knownIsEng && knownTranslations.size === 0) modeParts.push(`known=${knownLang} (agent translates)`);
+  if (!targetIsEng && targetTranslations.size > 0) modeParts.push(`target=${targetLang} (${targetTranslations.size} from translations)`);
+  if (!targetIsEng && targetTranslations.size === 0) modeParts.push(`target=${targetLang} (agent translates)`);
+  const mode = modeParts.join(', ');
+  console.log(`Initialized ${courseCode} with ${courseSeeds.length} seeds [${mode}]`);
+  return { initialized: true, count: courseSeeds.length, mode, targetLangName, knownTranslations: knownTranslations.size, targetTranslations: targetTranslations.size };
+}
+
+// ─── Route factory ────────────────────────────────────────────────────
+
+module.exports = function seedCompleteRoutes(ctx) {
+  const router = Router();
+
+  // ───────────────────────────────────────────────────────────────────
+  // POST /lego — Insert a single LEGO with phrases
+  // ───────────────────────────────────────────────────────────────────
+  router.post('/lego', async (req, res) => {
+    try {
+      const { course_code, seed, idx, type, known, target, components, phrases } = req.body;
+
+      if (!course_code || !seed || !idx || !known || !target) {
+        return res.status(400).json({ error: 'Missing required fields' });
+      }
+
+      const phraseCount = phrases?.length || 0;
+      const legoId = `S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}`;
+      const { MIN_PHRASES_PER_LEGO, MAX_PHRASES_PER_LEGO } = ctx.config;
+
+      let minRequired = MIN_PHRASES_PER_LEGO;
+      if (seed === 1 && idx === 1) minRequired = 0;
+      else if (seed === 1) minRequired = 1;
+      else if (seed <= 3) minRequired = 3;
+      else if (seed <= 5) minRequired = 4;
+      else if (seed <= 10) minRequired = 5;
+
+      const globalPosition = (seed - 1) * 3;
+
+      if (phraseCount < minRequired && !allowValidationBypass(req.body)) {
+        console.log(`✗ ${legoId}: REJECTED - Only ${phraseCount} phrases (need ${minRequired}+ at position ~${globalPosition})`);
+        return res.status(400).json({
+          error: 'Insufficient phrases',
+          lego_id: legoId,
+          got: phraseCount,
+          required: minRequired,
+          global_position: globalPosition,
+          skills: ['ralph-methodology.md'],
+          hint: `LEGO at position ~${globalPosition} needs at least ${minRequired} phrases. Review ralph-methodology.md for phrase generation guidance.`,
+        });
+      }
+
+      if (phraseCount > MAX_PHRASES_PER_LEGO) {
+        console.log(`⚠ ${legoId}: ${phraseCount} phrases exceeds max ${MAX_PHRASES_PER_LEGO} (will use first ${MAX_PHRASES_PER_LEGO})`);
+      }
+
+      let isNew = true;
+      let skipBaskets = false;
+
+      if (!allowValidationBypass(req.body)) {
+        const conflictResult = await checkLegoConflict(ctx.supabase, course_code, known, target, seed);
+
+        if (conflictResult.conflict === 'zut') {
+          console.log(`✗ ${legoId}: REJECTED - ${conflictResult.error}`);
+          return res.status(400).json({
+            error: 'ZUT violation: ambiguous prompt',
+            lego_id: legoId,
+            known_text: known,
+            new_target: target,
+            existing: conflictResult.existing,
+            suggestions: conflictResult.suggestions,
+            skills: ['ralph-methodology.md'],
+            hint: 'Same known text cannot map to different targets. Upchunk with context or use synonym. See ralph-methodology.md for overlap patterns.',
+          });
+        }
+
+        if (conflictResult.conflict === 'duplicate') {
+          isNew = false;
+          skipBaskets = true;
+          console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} - marking is_new=false, skipping baskets`);
+        }
+      }
+
+      const vocabSet = await loadCourseVocab(ctx, course_code);
+      const newLego = { target, type, components };
+      addToCourseVocab(ctx, course_code, newLego);
+
+      if (phrases && phrases.length > 0 && !skipBaskets && !allowValidationBypass(req.body)) {
+        const legoTargetNorm = normalizeForContainment(target);
+        const containmentFails = phrases.filter(p =>
+          !normalizeForContainment(p.target).includes(legoTargetNorm)
+        );
+        if (containmentFails.length > 0) {
+          console.log(`✗ ${legoId}: REJECTED - ${containmentFails.length} phrases missing LEGO target "${target}"`);
+          return res.status(400).json({
+            error: 'LEGO containment violation',
+            lego_id: legoId,
+            lego_target: target,
+            failing_phrases: containmentFails.slice(0, 5).map(p => p.target),
+            total_failures: containmentFails.length,
+            hint: 'Every phrase MUST contain the exact LEGO target text as a substring. No conjugation changes, no substitutions, no omissions.',
+          });
+        }
+
+        const violations = checkVocabViolations(phrases, vocabSet, course_code);
+        if (violations.length > 0) {
+          ctx.courseVocabCache.delete(course_code);
+
+          console.log(`✗ ${legoId}: REJECTED - Vocabulary violations:`);
+          violations.forEach(v => console.log(`   "${v.phrase}" uses unknown: [${v.unknown}]`));
+
+          return res.status(400).json({
+            error: 'Vocabulary violation',
+            lego_id: legoId,
+            violations: violations.slice(0, 5),
+            total_violations: violations.length,
+            vocab_size: vocabSet.size,
+            skills: ['ralph-methodology.md'],
+            hint: `Phrases must only use vocabulary already introduced. Unknown: ${violations[0].unknown}. Review ralph-methodology.md for vocabulary rules.`,
+          });
+        }
+      }
+
+      const { error: legoError } = await ctx.supabase
+        .from('course_legos')
+        .upsert({
+          course_code,
+          seed_number: seed,
+          lego_index: idx,
+          type: type || 'A',
+          is_new: isNew,
+          known_text: known,
+          target_text: target,
+          components: components || null,
+          status: 'draft',
+          version: 1,
+        }, { onConflict: 'course_code,seed_number,lego_index' });
+
+      if (legoError) throw legoError;
+
+      let allPhraseRows = [];
+      let buildupCount = 0;
+      let practiceStartPosition = 1;
+      const practiceCount = phrases?.length || 0;
+
+      if (!skipBaskets) {
+        let roleCounts = { component: 0, build: 0, use: 0 };
+
+        if (type === 'M' && components && components.length > 0) {
+          const buildupResult = generateBuildupPhrases(
+            { seed, idx, known, target, components },
+            course_code
+          );
+          allPhraseRows = [...buildupResult.buildupPhrases];
+          buildupCount = buildupResult.buildupPhrases.length;
+          practiceStartPosition = buildupResult.startPosition;
+          roleCounts = { ...buildupResult.roleCounts };
+          console.log(`  M-LEGO build-up: ${buildupCount} phrases (${buildupResult.buildupPhrases.length - 1} components + LEGO)`);
+        }
+
+        if (phrases && phrases.length > 0) {
+          const buildupNormalized = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
+          const seenNormalized = new Set();
+          const dedupedPhrases = phrases.filter(p => {
+            const norm = normalizePhrase(p.target);
+            if (buildupNormalized.has(norm) || seenNormalized.has(norm)) return false;
+            seenNormalized.add(norm);
+            return true;
+          });
+          const dedupedCount = phrases.length - dedupedPhrases.length;
+          if (dedupedCount > 0) {
+            console.log(`    Deduped ${dedupedCount} phrases (normalized: case/punctuation insensitive)`);
+          }
+
+          const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
+
+          const practicePhrases = sorted.map((p, i) => {
+            const position = practiceStartPosition + i;
+            const role = computePhraseRole(position);
+            roleCounts[role] = (roleCounts[role] || 0) + 1;
+            return {
+              id: makePhraseId(course_code, seed, idx, role, roleCounts[role]),
+              course_code,
+              seed_number: seed,
+              lego_index: idx,
+              position,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              phrase_role: role,
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(p.target, target),
+              metadata: p.score ? { score: p.score } : {},
+              status: 'draft',
+              version: 1,
+            };
+          });
+
+          allPhraseRows = [...allPhraseRows, ...practicePhrases];
+        }
+
+        if (allPhraseRows.length > 0) {
+          const { error: phraseError } = await ctx.supabase
+            .from('course_practice_phrases')
+            .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
+          if (phraseError) throw phraseError;
+        }
+      }
+
+      const totalPhrases = allPhraseRows.length;
+      const buildupInfo = buildupCount > 0 ? ` [${buildupCount} buildup + ${practiceCount} practice]` : '';
+      const dupInfo = skipBaskets ? ' (duplicate, no baskets)' : '';
+      console.log(`✓ S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}: ${known} → ${target} (${totalPhrases} phrases${buildupInfo})${dupInfo}`);
+
+      res.json({
+        ok: true,
+        lego_id: `S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}`,
+        is_new: isNew,
+        skipped_baskets: skipBaskets,
+        phrases: totalPhrases,
+        buildup_phrases: buildupCount,
+        practice_phrases: practiceCount,
+      });
+
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ───────────────────────────────────────────────────────────────────
+  // POST /batch — Insert multiple LEGOs at once
+  // ───────────────────────────────────────────────────────────────────
+  router.post('/batch', async (req, res) => {
+    try {
+      const { course_code, legos } = req.body;
+      const { MIN_PHRASES_PER_LEGO, MIN_BATCH_PHRASE_RATIO } = ctx.config;
+
+      let totalPhrases = 0;
+      const underperformers = [];
+
+      for (const lego of legos) {
+        const phraseCount = lego.phrases?.length || 0;
+        totalPhrases += phraseCount;
+        if (phraseCount < MIN_PHRASES_PER_LEGO) {
+          underperformers.push({
+            lego_id: `S${String(lego.seed).padStart(4,'0')}L${String(lego.idx).padStart(2,'0')}`,
+            known: lego.known,
+            phrases: phraseCount,
+          });
+        }
+      }
+
+      const ratio = legos.length > 0 ? totalPhrases / legos.length : 0;
+
+      if (ratio < MIN_BATCH_PHRASE_RATIO && !allowValidationBypass(req.body)) {
+        console.log(`✗ Batch REJECTED - Ratio ${ratio.toFixed(1)} < ${MIN_BATCH_PHRASE_RATIO} required`);
+        return res.status(400).json({
+          error: 'Insufficient phrase coverage',
+          got_ratio: ratio.toFixed(1),
+          required_ratio: MIN_BATCH_PHRASE_RATIO,
+          legos: legos.length,
+          total_phrases: totalPhrases,
+          underperformers: underperformers.slice(0, 10),
+          hint: `Batch rejected. Each LEGO should have ~10 practice phrases combining it with previous LEGOs. Current ratio: ${ratio.toFixed(1)}, need: ${MIN_BATCH_PHRASE_RATIO}+`,
+        });
+      }
+
+      if (underperformers.length > 0) {
+        console.log(`⚠ Batch has ${underperformers.length} LEGOs with <${MIN_PHRASES_PER_LEGO} phrases (ratio ${ratio.toFixed(1)} OK)`);
+      }
+
+      totalPhrases = 0;
+      let totalBuildupPhrases = 0;
+      let totalPracticePhrases = 0;
+      let zutViolations = [];
+      let duplicates = 0;
+
+      for (const lego of legos) {
+        const legoId = `S${String(lego.seed).padStart(4,'0')}L${String(lego.idx).padStart(2,'0')}`;
+
+        let isNew = true;
+        let skipBaskets = false;
+
+        if (!allowValidationBypass(req.body)) {
+          const conflictResult = await checkLegoConflict(ctx.supabase, course_code, lego.known, lego.target, lego.seed);
+
+          if (conflictResult.conflict === 'zut') {
+            zutViolations.push({
+              lego_id: legoId,
+              known: lego.known,
+              new_target: lego.target,
+              existing: conflictResult.existing,
+            });
+            continue;
+          }
+
+          if (conflictResult.conflict === 'duplicate') {
+            isNew = false;
+            skipBaskets = true;
+            duplicates++;
+            console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} - is_new=false, skipping baskets`);
+          }
+        }
+
+        const { error: legoError } = await ctx.supabase
+          .from('course_legos')
+          .upsert({
+            course_code,
+            seed_number: lego.seed,
+            lego_index: lego.idx,
+            type: lego.type || 'A',
+            is_new: isNew,
+            known_text: lego.known,
+            target_text: lego.target,
+            components: lego.components || null,
+            status: 'draft',
+            version: 1,
+          }, { onConflict: 'course_code,seed_number,lego_index' });
+
+        if (legoError) throw legoError;
+
+        let allPhraseRows = [];
+        let buildupCount = 0;
+        let practiceStartPosition = 1;
+
+        if (!skipBaskets) {
+          let roleCounts = { component: 0, build: 0, use: 0 };
+
+          if (lego.type === 'M' && lego.components && lego.components.length > 0) {
+            const buildupResult = generateBuildupPhrases(
+              { seed: lego.seed, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
+              course_code
+            );
+            allPhraseRows = [...buildupResult.buildupPhrases];
+            buildupCount = buildupResult.buildupPhrases.length;
+            practiceStartPosition = buildupResult.startPosition;
+            roleCounts = { ...buildupResult.roleCounts };
+            totalBuildupPhrases += buildupCount;
+          }
+
+          if (lego.phrases && lego.phrases.length > 0) {
+            const sorted = [...lego.phrases].sort((a, b) => a.target.length - b.target.length);
+
+            const practicePhrases = sorted.map((p, i) => {
+              const position = practiceStartPosition + i;
+              const role = computePhraseRole(position);
+              roleCounts[role] = (roleCounts[role] || 0) + 1;
+              return {
+                id: makePhraseId(course_code, lego.seed, lego.idx, role, roleCounts[role]),
+                course_code,
+                seed_number: lego.seed,
+                lego_index: lego.idx,
+                position,
+                known_text: p.known,
+                target_text: p.target,
+                word_count: p.target.length,
+                lego_count: (p.known.match(/\s+/g) || []).length + 1,
+                phrase_role: role,
+                connected_lego_ids: [],
+                lego_position: computeLegoPosition(p.target, lego.target),
+                metadata: p.score ? { score: p.score } : {},
+                status: 'draft',
+                version: 1,
+              };
+            });
+
+            allPhraseRows = [...allPhraseRows, ...practicePhrases];
+            totalPracticePhrases += lego.phrases.length;
+          }
+
+          if (allPhraseRows.length > 0) {
+            const { error: phraseError } = await ctx.supabase
+              .from('course_practice_phrases')
+              .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
+            if (phraseError) throw phraseError;
+            totalPhrases += allPhraseRows.length;
+          }
+        }
+
+        const buildupInfo = buildupCount > 0 ? ` [${buildupCount} buildup]` : '';
+        const dupInfo = skipBaskets ? ' (dup)' : '';
+        console.log(`✓ ${legoId}: ${lego.known} → ${lego.target}${buildupInfo}${dupInfo}`);
+      }
+
+      if (zutViolations.length > 0) {
+        console.log(`✗ Batch had ${zutViolations.length} ZUT violations (skipped)`);
+        return res.status(400).json({
+          error: 'ZUT violations detected',
+          zut_violations: zutViolations,
+          processed_before_error: totalPhrases,
+          skills: ['ralph-methodology.md'],
+          hint: 'Some LEGOs have same known text mapping to different targets. Upchunk or use synonyms. See ralph-methodology.md for overlap patterns.',
+        });
+      }
+
+      res.json({
+        ok: true,
+        legos: legos.length,
+        duplicates_skipped: duplicates,
+        phrases: totalPhrases,
+        buildup_phrases: totalBuildupPhrases,
+        practice_phrases: totalPracticePhrases,
+      });
+
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ───────────────────────────────────────────────────────────────────
+  // POST /seed/complete — The golden path (atomic seed submission)
+  // ───────────────────────────────────────────────────────────────────
+  router.post('/seed/complete', async (req, res) => {
+    try {
+      // ── Markdown detection & parsing ──
+      let parsedData;
+      const isMarkdown = isMarkdownSubmission(req);
+
+      if (isMarkdown) {
+        const markdown = extractMarkdown(req);
+        if (!markdown) {
+          return res.status(400).json({
+            error: 'Could not extract markdown content',
+            hint: 'Send markdown as request body with Content-Type: text/markdown or text/plain',
+          });
+        }
+
+        const courseCodeFromQuery = req.query.course || req.query.course_code;
+        const courseCodeFromBody = req.body?.course_code;
+        const courseCode = courseCodeFromQuery || courseCodeFromBody;
+
+        if (!courseCode) {
+          return res.status(400).json({
+            error: 'course_code required for markdown submissions',
+            hint: 'Add ?course=xxx query param or wrap: {"course_code": "xxx", "markdown": "..."}',
+          });
+        }
+
+        parsedData = parseMarkdownSeed(markdown, courseCode);
+        if (req.body?.SKIP_VALIDATION || req.query.skip_validation) {
+          parsedData.SKIP_VALIDATION = true;
+        }
+        console.log(`[MARKDOWN] Parsed seed ${parsedData.seed_number} with ${parsedData.legos.length} LEGOs`);
+      } else {
+        parsedData = req.body;
+        if (req.query.skip_validation) {
+          parsedData.SKIP_VALIDATION = true;
+        }
+      }
+
+      const { course_code, seed_number, known_text: agent_known_text, target_text: agent_target_text, legos, SKIP_VALIDATION } = parsedData;
+      const seedId = `S${String(seed_number).padStart(4, '0')}`;
+      let isDraft = req.query.draft === 'true';
+
+      // Auto-convert legacy phrases[] to build/use
+      if (legos) {
+        for (const lego of legos) {
+          if (lego.phrases && !lego.build && !lego.use) {
+            const phrases = lego.phrases;
+            console.log(`[FORMAT] ${seedId}L${String(lego.idx).padStart(2, '0')}: Auto-converting legacy phrases[] → build/use (${phrases.length} phrases)`);
+            const sorted = [...phrases].sort((a, b) => (a.target || '').length - (b.target || '').length);
+            lego.build = sorted.slice(0, Math.min(3, sorted.length));
+            lego.use = sorted.slice(Math.min(3, sorted.length));
+            delete lego.phrases;
+          }
+        }
+      }
+
+      // Force draft mode if parallel build in progress
+      if (!isDraft && course_code) {
+        const { count: draftCount } = await ctx.supabase
+          .from('course_seed_drafts')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', course_code);
+        if (draftCount > 0) {
+          console.log(`[SAFETY] Forcing draft mode for ${seedId} — ${draftCount} drafts exist for ${course_code}`);
+          isDraft = true;
+        }
+      }
+
+      const courseParts = course_code?.split('_for_') || [];
+      const targetLang = courseParts[0] || '';
+      const knownLang = courseParts[1] || '';
+      const knownIsEng = knownLang === 'eng';
+      const targetIsEng = targetLang === 'eng';
+
+      if (!course_code || !seed_number || !legos) {
+        return res.status(400).json({
+          error: 'Missing required fields',
+          required: ['course_code', 'seed_number', 'legos'],
+          note: 'known_text/target_text requirements depend on course: X_for_eng needs target_text, eng_for_X needs known_text, X_for_Y needs both',
+        });
+      }
+
+      if (!Array.isArray(legos) || legos.length === 0) {
+        return res.status(400).json({
+          error: 'legos must be a non-empty array',
+          seed: seedId,
+        });
+      }
+
+      // Auto-heartbeat
+      const now = Date.now();
+      ctx.agentHeartbeats.set(course_code, {
+        lastHeartbeat: now,
+        agentId: 'submission',
+        status: 'submitting',
+        currentSeed: seed_number,
+        startedAt: ctx.agentHeartbeats.get(course_code)?.startedAt || now,
+      });
+
+      // Checkpoint gate (skip for drafts)
+      if (!isDraft && await isBlockedByCheckpoint(ctx, course_code, seed_number)) {
+        const checkpoint = await getCheckpointStatus(ctx, course_code);
+        return res.status(403).json({
+          error: 'CHECKPOINT_REQUIRED',
+          message: `Seed ${seed_number} blocked - checkpoint at seed ${checkpoint.checkpointSeed} requires approval`,
+          seed: seedId,
+          checkpoint: {
+            checkpoint_seed: checkpoint.checkpointSeed,
+            approved: false,
+            action: 'Run QA agent, then POST /api/checkpoint/approve/' + course_code,
+          },
+        });
+      }
+
+      // Canonical seed lookup
+      let { data: canonicalSeed, error: seedLookupError } = await ctx.supabase
+        .from('course_seeds')
+        .select('known_text, target_text')
+        .eq('course_code', course_code)
+        .eq('seed_number', seed_number)
+        .single();
+
+      if (seedLookupError || !canonicalSeed) {
+        console.log(`Seed ${seedId} not found for ${course_code}, attempting auto-initialization...`);
+        try {
+          const initResult = await initializeCourseSeeds(ctx, course_code);
+          if (initResult.initialized) {
+            console.log(`Auto-initialized ${course_code}: ${initResult.count} seeds (${initResult.language})`);
+            const retry = await ctx.supabase
+              .from('course_seeds')
+              .select('known_text, target_text')
+              .eq('course_code', course_code)
+              .eq('seed_number', seed_number)
+              .single();
+            canonicalSeed = retry.data;
+            seedLookupError = retry.error;
+          }
+        } catch (initError) {
+          console.error('Auto-initialization failed:', initError.message);
+        }
+      }
+
+      if (seedLookupError || !canonicalSeed) {
+        return res.status(400).json({
+          error: 'Canonical seed not found',
+          seed: seedId,
+          course_code,
+          hint: 'Seeds must be pre-populated in the database. Check /api/seeds/:courseCode for available seeds.',
+        });
+      }
+
+      // Translation validation
+      const needsKnownFromAgent = !knownIsEng && !canonicalSeed.known_text;
+      const needsTargetFromAgent = !targetIsEng && !canonicalSeed.target_text;
+
+      if (needsKnownFromAgent && !agent_known_text) {
+        return res.status(400).json({
+          error: 'known_text required',
+          seed: seedId,
+          course_code,
+          hint: `For ${course_code} (known=${knownLang}), agent must provide known_text translation from English canonical.`,
+        });
+      }
+      if (needsTargetFromAgent && !agent_target_text) {
+        return res.status(400).json({
+          error: 'target_text required',
+          seed: seedId,
+          course_code,
+          hint: `For ${course_code} (target=${targetLang}), agent must provide target_text translation.`,
+        });
+      }
+
+      // Check if seed already fully built (skip for drafts)
+      const hasTranslation = canonicalSeed.known_text && canonicalSeed.known_text.length > 0 &&
+                             canonicalSeed.target_text && canonicalSeed.target_text.length > 0;
+
+      if (!isDraft && hasTranslation) {
+        const { data: existingLegos, error: legoCheckError } = await ctx.supabase
+          .from('course_legos')
+          .select('id')
+          .eq('course_code', course_code)
+          .eq('seed_number', seed_number)
+          .limit(1);
+
+        if (!legoCheckError && existingLegos && existingLegos.length > 0) {
+          return res.status(400).json({
+            error: 'Seed already fully built',
+            seed: seedId,
+            existing_known: canonicalSeed.known_text,
+            existing_target: canonicalSeed.target_text,
+            has_legos: true,
+            hint: 'This seed has translation and LEGOs. Use a different seed number.',
+          });
+        }
+        console.log(`  Seed has translation but no LEGOs - proceeding with LEGO addition`);
+      }
+
+      // Canonical validation
+      if (agent_known_text && canonicalSeed.known_text) {
+        const normalize = (s) => s.trim().replace(/\s+/g, ' ').toLowerCase();
+        const agentNorm = normalize(agent_known_text);
+        const canonicalNorm = normalize(canonicalSeed.known_text);
+
+        if (agentNorm !== canonicalNorm) {
+          return res.status(400).json({
+            error: 'CANONICAL MISMATCH: Your known_text does not match the canonical seed',
+            seed: seedId,
+            you_sent: agent_known_text,
+            canonical: canonicalSeed.known_text,
+            action_required: `GET /api/resume/${course_code} to get the correct next seed and context`,
+            skills: ['/course-resume'],
+            hint: 'After context compaction, ALWAYS call /api/resume first. Do NOT guess seed text. Review /course-resume for recovery guidance.',
+          });
+        }
+      }
+
+      const known_text = canonicalSeed.known_text || agent_known_text;
+      const target_text = canonicalSeed.target_text || agent_target_text;
+
+      const knownSource = canonicalSeed.known_text ? 'canonical (eng)' : 'agent';
+      const targetSource = canonicalSeed.target_text ? 'canonical (eng)' : 'agent';
+
+      console.log(`\n${'='.repeat(60)}`);
+      console.log(`SEED COMPLETE: ${seedId}`);
+      console.log(`  known:  "${known_text}" [${knownSource}]`);
+      console.log(`  target: "${target_text}" [${targetSource}]`);
+      console.log(`${'='.repeat(60)}`);
+
+      // ── VALIDATION PHASE ──
+
+      const errors = [];
+      const warnings = [];
+
+      // 1. ZUT + DUPLICATE DETECTION (skip for drafts)
+      const zutViolations = [];
+      const duplicateLegos = [];
+
+      if (!isDraft) {
+        for (const lego of legos) {
+          const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+          const conflictResult = await checkLegoConflict(ctx.supabase, course_code, lego.known, lego.target, seed_number);
+
+          if (conflictResult.conflict === 'zut') {
+            zutViolations.push({
+              lego_id: legoId,
+              known: lego.known,
+              new_target: lego.target,
+              existing: conflictResult.existing,
+              suggestions: conflictResult.suggestions,
+            });
+          } else if (conflictResult.conflict === 'duplicate') {
+            duplicateLegos.push({
+              lego_id: legoId,
+              known: lego.known,
+              target: lego.target,
+              original: conflictResult.legoId,
+            });
+            console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} (will skip baskets)`);
+          }
+        }
+      }
+
+      if (zutViolations.length > 0) {
+        errors.push({
+          type: 'zut',
+          message: `${zutViolations.length} ZUT violation(s) - same known text maps to different targets`,
+          violations: zutViolations,
+          methodology: METHODOLOGY_HINTS.zut,
+        });
+      }
+
+      // Load vocab from prior seeds
+      const vocabSet = await loadTranslationVocab(ctx, course_code, seed_number);
+
+      // 2. TILING VALIDATION
+      {
+        const tilingResult = checkTiling(target_text, legos, course_code, vocabSet);
+        if (!tilingResult.valid) {
+          errors.push({
+            type: 'tiling',
+            message: tilingResult.message,
+            untiled: tilingResult.untiled,
+            seed_target: target_text,
+            legos_provided: legos.map(l => ({ idx: l.idx, target: l.target })),
+            methodology: METHODOLOGY_HINTS.tiling,
+          });
+          console.log(`✗ ${seedId}: TILING FAILED - untiled: [${tilingResult.untiled}]`);
+        } else {
+          console.log(`✓ ${seedId}: Tiling valid (${tilingResult.seed_vocab || 'ok'} → ${legos.length} LEGOs)`);
+        }
+      }
+
+      // 3. VOCAB VALIDATION
+      const vocabViolations = [];
+      const chinese = isChinese(course_code);
+      for (const lego of legos) {
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+        const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+
+        // Add this LEGO's vocab
+        if (isDraft) {
+          extractVocab(lego.target, chinese).forEach(v => vocabSet.add(v));
+          if (lego.type === 'M' && lego.components) {
+            for (const comp of lego.components) {
+              extractVocab(comp.target, chinese).forEach(v => vocabSet.add(v));
+            }
+          }
+        } else {
+          extractVocab(lego.target, chinese).forEach(v => vocabSet.add(v));
+          if (lego.type === 'M' && lego.components) {
+            for (const comp of lego.components) {
+              extractVocab(comp.target, chinese).forEach(v => vocabSet.add(v));
+            }
+          }
+          addToCourseVocab(ctx, course_code, { target: lego.target, type: lego.type, components: lego.components });
+        }
+
+        // Check phrases for violations
+        if (!isDuplicate) {
+          let allPhrases = [];
+          if (usesBuildUseFormat(lego)) {
+            allPhrases = [...(lego.build || []), ...(lego.use || [])];
+          } else if (lego.phrases) {
+            allPhrases = lego.phrases;
+          }
+
+          if (allPhrases.length > 0) {
+            const violations = checkVocabViolations(allPhrases, vocabSet, course_code);
+            if (violations.length > 0) {
+              vocabViolations.push({
+                lego_id: legoId,
+                violations: violations.slice(0, 3),
+              });
+            }
+
+            // LEGO CONTAINMENT
+            {
+              const useWordContainment = req.query.german_validation === 'true';
+              const legoTargetNorm = normalizeForContainment(lego.target);
+              const containmentFails = allPhrases.filter(p => {
+                if (useWordContainment) {
+                  return !checkWordContainment(lego.target, p.target);
+                }
+                return !normalizeForContainment(p.target).includes(legoTargetNorm);
+              });
+              if (containmentFails.length > 0) {
+                const mode = useWordContainment ? 'word-based' : 'substring';
+                errors.push({
+                  type: 'lego_containment',
+                  message: `${legoId}: ${containmentFails.length} phrase(s) fail ${mode} containment for LEGO target "${lego.target}"`,
+                  lego_id: legoId,
+                  lego_target: lego.target,
+                  failing_phrases: containmentFails.slice(0, 3).map(p => p.target),
+                  hint: useWordContainment
+                    ? 'Every BUILD and USE phrase must contain ALL words from the LEGO target (German word-order mode).'
+                    : 'Every BUILD and USE phrase MUST contain the exact LEGO target text. No conjugation changes, no substitutions, no omissions.',
+                });
+                console.log(`✗ ${legoId}: CONTAINMENT (${mode}) - ${containmentFails.length} phrases missing LEGO target "${lego.target}"`);
+              }
+            }
+          }
+        }
+      }
+
+      if (vocabViolations.length > 0) {
+        ctx.courseVocabCache.delete(course_code);
+        errors.push({
+          type: 'vocab',
+          message: 'Vocabulary violations - phrases use unknown vocabulary',
+          legos_with_violations: vocabViolations,
+          methodology: METHODOLOGY_HINTS.vocab,
+        });
+      }
+
+      // 3b. PHRASE LENGTH RATIO VALIDATION
+      const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'jpn', 'kor'];
+      const isLogographic = LOGOGRAPHIC_LANGS.includes(targetLang) || LOGOGRAPHIC_LANGS.includes(knownLang);
+      const LENGTH_RATIO_THRESHOLD = 2.5;
+      const lengthMismatches = [];
+
+      for (const lego of legos) {
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+        const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+        if (isDuplicate) continue;
+
+        let allPhrases = [];
+        if (usesBuildUseFormat(lego)) {
+          allPhrases = [...(lego.build || []), ...(lego.use || [])];
+        } else if (lego.phrases) {
+          allPhrases = lego.phrases;
+        }
+
+        for (const phrase of allPhrases) {
+          if (!phrase.known || !phrase.target) continue;
+          const knownLen = phrase.known.length;
+          const targetLen = phrase.target.length;
+          if (knownLen === 0 || targetLen === 0) continue;
+
+          const ratio = Math.max(knownLen, targetLen) / Math.min(knownLen, targetLen);
+          if (ratio > LENGTH_RATIO_THRESHOLD) {
+            lengthMismatches.push({
+              lego_id: legoId,
+              known: phrase.known.substring(0, 50),
+              target: phrase.target.substring(0, 50),
+              known_len: knownLen,
+              target_len: targetLen,
+              ratio: Math.round(ratio * 10) / 10,
+            });
+          }
+        }
+      }
+
+      if (lengthMismatches.length > 0 && !isLogographic) {
+        errors.push({
+          type: 'length_mismatch',
+          message: `Phrase length mismatch - known and target should express same content (ratio > ${LENGTH_RATIO_THRESHOLD}x)`,
+          mismatches: lengthMismatches.slice(0, 5),
+          total_mismatches: lengthMismatches.length,
+          hint: 'If target is much longer than known (or vice versa), you may have added extra content. Both languages must express the SAME meaning.',
+          methodology: 'Each phrase pair is a translation. known_text and target_text must be semantically equivalent - no additions, no omissions.',
+        });
+        console.log(`✗ ${seedId}: LENGTH MISMATCH - ${lengthMismatches.length} phrases with ratio > ${LENGTH_RATIO_THRESHOLD}x`);
+      } else if (isLogographic && lengthMismatches.length > 0) {
+        console.log(`ℹ ${seedId}: Skipping length check for logographic language (${lengthMismatches.length} would have flagged)`);
+      }
+
+      // 4. PHRASE VALIDATION
+      const globalPosition = (seed_number - 1) * 3;
+      const { MIN_PHRASES_PER_LEGO } = ctx.config;
+
+      for (const lego of legos) {
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+        const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+        if (isDuplicate) continue;
+
+        if (usesBuildUseFormat(lego)) {
+          const buildUseResult = checkBuildUsePhrases(lego, course_code, seed_number);
+          if (!buildUseResult.valid && !SKIP_VALIDATION) {
+            errors.push({
+              type: 'build_use',
+              message: `${legoId}: ${buildUseResult.error}`,
+              lego_id: legoId,
+              details: buildUseResult.details,
+              methodology: METHODOLOGY_HINTS.build_use,
+            });
+            console.log(`✗ ${legoId}: BUILD/USE - ${buildUseResult.error}`);
+          }
+        } else if (lego.phrases) {
+          const phraseCount = lego.phrases.length;
+          let minRequired = MIN_PHRASES_PER_LEGO;
+          if (seed_number === 1 && lego.idx === 1) minRequired = 0;
+          else if (seed_number === 1) minRequired = 1;
+          else if (seed_number <= 3) minRequired = 3;
+          else if (seed_number <= 5) minRequired = 4;
+          else if (seed_number <= 10) minRequired = 5;
+
+          if (phraseCount < minRequired && !SKIP_VALIDATION) {
+            errors.push({
+              type: 'phrases',
+              message: `${legoId}: Only ${phraseCount} phrases (need ${minRequired}+ for seed ${seed_number})`,
+              lego_id: legoId,
+              methodology: METHODOLOGY_HINTS.phrases,
+            });
+          }
+        } else {
+          errors.push({
+            type: 'no_phrases',
+            message: `${legoId}: LEGO has NO PHRASES! Must include build[] + use[] arrays (see ralph-methodology.md)`,
+            lego_id: legoId,
+            hint: 'Each LEGO needs: build (flexible) + use (min 5 phrases with scores 5-9)',
+            methodology: METHODOLOGY_HINTS.build_use,
+          });
+          console.log(`✗ ${legoId}: NO PHRASES - LEGO submitted without build/use/phrases arrays`);
+        }
+      }
+
+      // 5. PHRASE COMPLEXITY (warning only)
+      {
+        for (const lego of legos) {
+          const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+          const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+          if (isDuplicate) continue;
+          if (usesBuildUseFormat(lego)) continue;
+
+          if (lego.phrases && lego.phrases.length > 0) {
+            const complexityResult = checkPhraseComplexity(lego.phrases, course_code, seed_number);
+            if (!complexityResult.valid) {
+              console.log(`⚠ ${legoId}: PHRASE TIERS (warning, not blocking) - ${complexityResult.error}`);
+            }
+          }
+        }
+      }
+
+      // 6. LEGO BALANCE VALIDATION (three-strike escalation)
+      const { BALANCE_MAX_STRIKES } = ctx.config;
+      if (!isDraft && seed_number > 20) {
+        const allNewPhrases = [];
+        for (const lego of legos) {
+          const isDuplicate = duplicateLegos.some(d => d.lego_id === `${seedId}L${String(lego.idx).padStart(2, '0')}`);
+          if (!isDuplicate) {
+            if (usesBuildUseFormat(lego)) {
+              allNewPhrases.push(...(lego.build || []), ...(lego.use || []));
+            } else if (lego.phrases) {
+              allNewPhrases.push(...lego.phrases);
+            }
+          }
+        }
+
+        if (allNewPhrases.length > 0) {
+          const balanceData = await calculateLegoBalanceScores(ctx.supabase, course_code, seed_number);
+          const balanceResult = checkPhraseBalance(allNewPhrases, balanceData, course_code);
+
+          if (!balanceResult.balanced) {
+            ctx.balanceViolations[course_code] = (ctx.balanceViolations[course_code] || 0) + 1;
+            const strikes = ctx.balanceViolations[course_code];
+
+            if (strikes >= BALANCE_MAX_STRIKES) {
+              errors.push({
+                type: 'balance',
+                message: `Balance violation #${strikes} - REJECTED. Phrases over-rely on overused vocabulary.`,
+                strikes,
+                overused_in_phrases: balanceResult.overusedInPhrases,
+                underused_available: balanceResult.underusedAvailable,
+                hint: `Include underused LEGOs in your phrases. Strike counter resets on compliant submission.`,
+                methodology: METHODOLOGY_HINTS.balance,
+              });
+              console.log(`✗ ${seedId}: BALANCE STRIKE ${strikes}/${BALANCE_MAX_STRIKES} - REJECTED`);
+            } else {
+              warnings.push({
+                type: 'balance',
+                message: `Balance warning ${strikes}/${BALANCE_MAX_STRIKES} - next violation will reject`,
+                strikes,
+                overused_ratio: balanceResult.overusedRatio + '%',
+                overused_in_phrases: balanceResult.overusedInPhrases,
+                underused_available: balanceResult.underusedAvailable,
+                methodology: METHODOLOGY_HINTS.balance,
+              });
+              console.log(`⚠️ ${seedId}: BALANCE STRIKE ${strikes}/${BALANCE_MAX_STRIKES} - warned`);
+            }
+          } else {
+            if (ctx.balanceViolations[course_code] > 0) {
+              console.log(`✓ ${seedId}: Balance OK - strike counter reset`);
+            }
+            ctx.balanceViolations[course_code] = 0;
+          }
+        }
+      }
+
+      // Reject if any errors
+      if (errors.length > 0) {
+        console.log(`✗ ${seedId}: REJECTED - ${errors.length} validation error(s)`);
+        for (const err of errors) {
+          recordLessonFromError(ctx, course_code, err.type, err).catch(() => {});
+        }
+
+        return res.status(400).json({
+          error: 'Validation failed',
+          seed: seedId,
+          errors,
+          warnings,
+          skills: ['ralph-methodology.md'],
+          hint: 'Fix all errors and resubmit. Nothing was inserted. Review ralph-methodology.md for methodology guidance.',
+        });
+      }
+
+      // ── DRAFT PATH ──
+      if (isDraft) {
+        const { error: draftError } = await ctx.supabase
+          .from('course_seed_drafts')
+          .upsert({
+            course_code,
+            seed_number,
+            known_text,
+            target_text,
+            submission_data: { legos },
+            validation_status: 'valid',
+            validation_notes: {
+              validated_at: new Date().toISOString(),
+              validations_passed: ['tiling', 'vocab', 'build_use', 'phrase_counts', 'complexity', 'length_ratio'],
+              validations_skipped: ['zut', 'balance'],
+            },
+            updated_at: new Date().toISOString(),
+          }, { onConflict: 'course_code,seed_number' });
+
+        if (draftError) throw new Error(`Draft upsert failed: ${draftError.message}`);
+
+        console.log(`✓ ${seedId} DRAFTED (parallel mode)`);
+        console.log(`  LEGOs: ${legos.length}`);
+        console.log(`${'='.repeat(60)}\n`);
+
+        return res.json({
+          ok: true,
+          seed: seedId,
+          status: 'DRAFTED',
+          action: 'PROCEED TO NEXT SEED',
+          known_text,
+          target_text,
+          legos: legos.length,
+          phrases: legos.reduce((sum, l) => sum + (l.build?.length || 0) + (l.use?.length || 0) + (l.phrases?.length || 0), 0),
+          warnings: warnings.length > 0 ? { note: 'Warnings for next seed', items: warnings } : undefined,
+          hint: 'Draft saved. Run POST /api/course/:code/finalize when all seeds are drafted.',
+        });
+      }
+
+      // ── INSERT PHASE ──
+      console.log(`\nInserting ${seedId}...`);
+
+      const { error: seedError } = await ctx.supabase
+        .from('course_seeds')
+        .upsert({
+          course_code,
+          seed_number,
+          known_text,
+          target_text,
+          status: 'released',
+          decomposed_at: new Date().toISOString(),
+          version: 1,
+        }, { onConflict: 'course_code,seed_number' });
+
+      if (seedError) throw new Error(`Seed insert failed: ${seedError.message}`);
+      console.log(`✓ Seed: "${known_text}" → "${target_text}"`);
+
+      let totalPhrases = 0;
+      let totalBuildupPhrases = 0;
+      let skippedDuplicates = 0;
+
+      for (const lego of legos) {
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+        const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+
+        const { error: legoError } = await ctx.supabase
+          .from('course_legos')
+          .upsert({
+            course_code,
+            seed_number,
+            lego_index: lego.idx,
+            type: lego.type || 'A',
+            is_new: !isDuplicate,
+            known_text: lego.known,
+            target_text: lego.target,
+            components: lego.components || null,
+            status: 'draft',
+            version: 1,
+          }, { onConflict: 'course_code,seed_number,lego_index' });
+
+        if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
+
+        if (isDuplicate) {
+          skippedDuplicates++;
+          console.log(`  ${legoId}: ${lego.known} → ${lego.target} (duplicate, no baskets)`);
+          continue;
+        }
+
+        let allPhraseRows = [];
+        let buildupCount = 0;
+        let practiceStartPosition = 1;
+        let roleCounts = { component: 0, build: 0, use: 0 };
+
+        // M-TYPE BUILD-UP
+        if (lego.type === 'M' && lego.components && lego.components.length > 0) {
+          const buildupResult = generateBuildupPhrases(
+            { seed: seed_number, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
+            course_code
+          );
+          allPhraseRows = [...buildupResult.buildupPhrases];
+          buildupCount = buildupResult.buildupPhrases.length;
+          practiceStartPosition = buildupResult.startPosition;
+          roleCounts = { ...buildupResult.roleCounts };
+          totalBuildupPhrases += buildupCount;
+        }
+
+        // BUILD/USE format
+        if (usesBuildUseFormat(lego)) {
+          const buildPhrases = lego.build || [];
+          const usePhrases = lego.use || [];
+
+          const buildRows = buildPhrases.map((p, i) => {
+            roleCounts.build++;
+            return {
+              id: makePhraseId(course_code, seed_number, lego.idx, 'build', roleCounts.build),
+              course_code,
+              seed_number,
+              lego_index: lego.idx,
+              position: practiceStartPosition + i,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              phrase_role: 'build',
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(p.target, lego.target),
+              metadata: { format: 'build_use' },
+              status: 'draft',
+              version: 1,
+            };
+          });
+
+          const useRows = usePhrases.map((p, i) => {
+            roleCounts.use++;
+            return {
+              id: makePhraseId(course_code, seed_number, lego.idx, 'use', roleCounts.use),
+              course_code,
+              seed_number,
+              lego_index: lego.idx,
+              position: practiceStartPosition + buildPhrases.length + i,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              phrase_role: 'use',
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(p.target, lego.target),
+              metadata: {
+                format: 'build_use',
+                score: p.score,
+                scored_at: new Date().toISOString(),
+              },
+              status: 'draft',
+              version: 1,
+            };
+          });
+
+          const avgScore = usePhrases.length > 0
+            ? (usePhrases.reduce((sum, p) => sum + p.score, 0) / usePhrases.length).toFixed(1)
+            : 0;
+
+          allPhraseRows = [...allPhraseRows, ...buildRows, ...useRows];
+          console.log(`    BUILD/USE format: ${buildRows.length} build + ${useRows.length} use phrases (avg score: ${avgScore})`);
+
+        } else if (lego.phrases && lego.phrases.length > 0) {
+          // Legacy format
+          const buildupNormalized = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
+          const seenNormalized = new Set();
+          const dedupedPhrases = lego.phrases.filter(p => {
+            const norm = normalizePhrase(p.target);
+            if (buildupNormalized.has(norm) || seenNormalized.has(norm)) return false;
+            seenNormalized.add(norm);
+            return true;
+          });
+          const dedupedCount = lego.phrases.length - dedupedPhrases.length;
+          if (dedupedCount > 0) {
+            console.log(`    Deduped ${dedupedCount} phrases (normalized: case/punctuation insensitive)`);
+          }
+
+          const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
+
+          const practicePhrases = sorted.map((p, i) => {
+            const position = practiceStartPosition + i;
+            const role = computePhraseRole(position);
+            roleCounts[role] = (roleCounts[role] || 0) + 1;
+            return {
+              id: makePhraseId(course_code, seed_number, lego.idx, role, roleCounts[role]),
+              course_code,
+              seed_number,
+              lego_index: lego.idx,
+              position,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              phrase_role: role,
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(p.target, lego.target),
+              metadata: p.score ? { score: p.score } : {},
+              status: 'draft',
+              version: 1,
+            };
+          });
+
+          allPhraseRows = [...allPhraseRows, ...practicePhrases];
+        }
+
+        // Insert all phrases
+        if (allPhraseRows.length > 0) {
+          const { error: phraseError } = await ctx.supabase
+            .from('course_practice_phrases')
+            .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
+          if (phraseError) throw new Error(`Phrase insert failed: ${phraseError.message}`);
+          totalPhrases += allPhraseRows.length;
+        }
+
+        const buildupInfo = buildupCount > 0 ? ` [${buildupCount} buildup + ${lego.phrases?.length || 0} practice]` : '';
+        console.log(`  ${legoId}: ${lego.known} → ${lego.target} (${allPhraseRows.length} phrases${buildupInfo})`);
+      }
+
+      // EMPTY SEED HANDLING: add seed sentence as USE phrase for newest-word LEGO
+      if (skippedDuplicates === legos.length && skippedDuplicates > 0) {
+        const { data: allNewLegos } = await ctx.supabase
+          .from('course_legos')
+          .select('seed_number, lego_index, target_text')
+          .eq('course_code', course_code)
+          .eq('is_new', true)
+          .lt('seed_number', seed_number)
+          .order('seed_number');
+
+        const wordIntroducedBy = {};
+        for (const l of (allNewLegos || [])) {
+          const words = extractVocab(l.target_text, chinese);
+          for (const w of words) {
+            if (!wordIntroducedBy[w]) {
+              wordIntroducedBy[w] = { seed_number: l.seed_number, lego_index: l.lego_index, target_text: l.target_text };
+            }
+          }
+        }
+
+        const seedWords = extractVocab(target_text, chinese);
+        let bestSeedNum = -1;
+        let bestLegoIdx = -1;
+        let bestLegoTarget = null;
+
+        for (const w of seedWords) {
+          const intro = wordIntroducedBy[w];
+          if (!intro) continue;
+          if (intro.seed_number > bestSeedNum ||
+              (intro.seed_number === bestSeedNum && intro.lego_index > bestLegoIdx)) {
+            bestSeedNum = intro.seed_number;
+            bestLegoIdx = intro.lego_index;
+            bestLegoTarget = intro.target_text;
+          }
+        }
+
+        if (bestSeedNum >= 0) {
+          const bestLegoId = `S${String(bestSeedNum).padStart(4,'0')}L${String(bestLegoIdx).padStart(2,'0')}`;
+
+          const { data: existingPhrases } = await ctx.supabase
+            .from('course_practice_phrases')
+            .select('position, phrase_role')
+            .eq('course_code', course_code)
+            .eq('seed_number', bestSeedNum)
+            .eq('lego_index', bestLegoIdx);
+
+          const maxPos = existingPhrases?.reduce((max, p) => Math.max(max, p.position), 0) || 0;
+          const existingUseCount = existingPhrases?.filter(p => p.phrase_role === 'use').length || 0;
+
+          const { error: seedPhraseError } = await ctx.supabase
+            .from('course_practice_phrases')
+            .insert({
+              id: makePhraseId(course_code, bestSeedNum, bestLegoIdx, 'use', existingUseCount + 1),
+              course_code,
+              seed_number: bestSeedNum,
+              lego_index: bestLegoIdx,
+              position: maxPos + 1,
+              known_text: known_text,
+              target_text: target_text,
+              word_count: target_text.length,
+              lego_count: (known_text.match(/\s+/g) || []).length + 1,
+              phrase_role: 'use',
+              connected_lego_ids: [],
+              lego_position: computeLegoPosition(target_text, bestLegoTarget),
+              metadata: {
+                format: 'build_use',
+                source: 'seed_sentence',
+                source_seed: seed_number,
+                score: 8,
+              },
+              status: 'draft',
+              version: 1,
+            });
+
+          if (seedPhraseError) {
+            console.warn(`  ⚠ Could not add seed as USE phrase: ${seedPhraseError.message}`);
+          } else {
+            totalPhrases++;
+            console.log(`  ✓ Empty seed → USE phrase for ${bestLegoId} (${bestLegoTarget})`);
+          }
+        } else {
+          console.log(`  ⚠ Empty seed but no introducing LEGO found for any word`);
+        }
+      }
+
+      console.log(`\n✓ ${seedId} COMPLETE`);
+      console.log(`  LEGOs: ${legos.length} (${skippedDuplicates} duplicates)`);
+      console.log(`  Phrases: ${totalPhrases} (${totalBuildupPhrases} buildup)`);
+      console.log(`${'='.repeat(60)}\n`);
+
+      // Find next incomplete seed
+      const { data: allSeeds } = await ctx.supabase
+        .from('course_seeds')
+        .select('seed_number, known_text, decomposed_at')
+        .eq('course_code', course_code)
+        .gt('seed_number', seed_number)
+        .order('seed_number')
+        .limit(50);
+
+      const nextSeed = allSeeds?.find(s => !s.decomposed_at && s.known_text);
+
+      // Record activity for stall detection
+      recordActivity(ctx, course_code, seed_number);
+
+      // CHECK FOR CHECKPOINT
+      if (await isCheckpointRequired(ctx, course_code, seed_number)) {
+        const checkpointNum = CHECKPOINT_SEEDS.indexOf(seed_number) + 1;
+        const checkpointConfig = await getCheckpointConfig(ctx, course_code, seed_number);
+
+        console.log(`\n${'='.repeat(60)}`);
+        console.log(`CHECKPOINT ${checkpointNum} REACHED: Seed ${seed_number} complete`);
+        console.log(`Review mode: ${checkpointConfig.review_mode} (from database config)`);
+        console.log(`${'='.repeat(60)}\n`);
+
+        if (checkpointConfig.review_mode === 'auto' || checkpointConfig.review_mode === 'auto_with_flag') {
+          console.log(`Spawning automated QA agent for checkpoint ${seed_number}...`);
+
+          await approveCheckpoint(ctx, course_code, seed_number, null, {
+            review_mode_used: checkpointConfig.review_mode,
+            awaiting_qa: true,
+          }, 'pending_qa');
+
+          console.log(`[CHECKPOINT] ${course_code}: Checkpoint ${seed_number} awaiting QA (spawn from dashboard)`);
+          res.locals.checkpointAwaitingQA = {
+            checkpoint_seed: seed_number,
+            checkpoint_number: checkpointNum,
+            status: 'AWAITING_QA',
+            message: 'Checkpoint reached. Dashboard will spawn QA agent when ready.',
+          };
+
+          if (isQAPending(ctx, course_code)) {
+            return res.json({
+              ok: true,
+              seed: seedId,
+              status: 'CHECKPOINT_QA_PENDING',
+              action: 'WAIT_FOR_QA',
+              known_text,
+              target_text,
+              legos: legos.length,
+              phrases: totalPhrases,
+              checkpoint: {
+                checkpoint_seed: seed_number,
+                checkpoint_number: checkpointNum,
+                review_mode: checkpointConfig.review_mode,
+                message: 'QA agent spawned in separate terminal. WAIT for QA to complete.',
+                qa_status_url: `/api/checkpoint/qa-status/${course_code}`,
+                expected_duration: '1-2 minutes',
+                instructions: [
+                  'QA agent is independently scoring sample phrases',
+                  `Will auto-approve if drift <= ${QA_DRIFT_THRESHOLD} points`,
+                  'Check QA status, then continue when approved',
+                  'DO NOT resubmit this seed - it is saved',
+                ],
+              },
+              next_action: {
+                wait: 'Poll /api/checkpoint/qa-status/' + course_code + ' until qa_pending=false',
+                then: 'Check /api/checkpoint/status/' + course_code + ' for approval',
+                continue_url: `/api/resume/${course_code}`,
+              },
+            });
+          }
+        } else {
+          // Human review required
+          console.log(`Human review required - agent must wait for approval`);
+
+          const { count: legoCount } = await ctx.supabase
+            .from('course_legos')
+            .select('*', { count: 'exact', head: true })
+            .eq('course_code', course_code);
+
+          const { count: phraseCount } = await ctx.supabase
+            .from('course_practice_phrases')
+            .select('*', { count: 'exact', head: true })
+            .eq('course_code', course_code);
+
+          const { data: usePhrases } = await ctx.supabase
+            .from('course_practice_phrases')
+            .select('metadata')
+            .eq('course_code', course_code)
+            .eq('phrase_role', 'use');
+
+          const scores = (usePhrases || [])
+            .map(p => p.metadata?.score)
+            .filter(s => typeof s === 'number');
+          const avgScore = scores.length > 0
+            ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1)
+            : 'N/A';
+
+          await approveCheckpoint(ctx, course_code, seed_number, null, {
+            review_mode_used: 'human',
+            awaiting_approval: true,
+          }, 'pending_human');
+
+          return res.json({
+            ok: true,
+            seed: seedId,
+            status: 'CHECKPOINT_REACHED',
+            action: 'AWAIT_QA_APPROVAL',
+            known_text,
+            target_text,
+            legos: legos.length,
+            phrases: totalPhrases,
+            checkpoint: {
+              checkpoint_seed: seed_number,
+              checkpoint_number: checkpointNum,
+              all_checkpoints: CHECKPOINT_SEEDS,
+              review_mode: checkpointConfig.review_mode,
+              message: 'Human QA review required before continuing',
+              summary: {
+                seeds_complete: seed_number,
+                total_legos: legoCount,
+                total_phrases: phraseCount,
+                use_phrase_avg_score: avgScore,
+                scores_distribution: scores.length > 0 ? {
+                  count: scores.length,
+                  high_9: scores.filter(s => s === 9).length,
+                  good_7_8: scores.filter(s => s >= 7 && s < 9).length,
+                  ok_5_6: scores.filter(s => s >= 5 && s < 7).length,
+                  low_1_4: scores.filter(s => s < 5).length,
+                } : null,
+              },
+              next_steps: [
+                '1. Run QA agent: GET /api/checkpoint/summary/' + course_code,
+                '2. QA agent samples and re-scores USE phrases',
+                '3. If alignment good: POST /api/checkpoint/approve/' + course_code,
+                '4. Build agent resumes with seed ' + (seed_number + 1),
+              ],
+            },
+          });
+        }
+      }
+
+      // Recency hints for next iteration
+      let recencyHints = null;
+      let goldenCountForRecency = 10;
+      try {
+        const { data: courseForRecency } = await ctx.supabase
+          .from('courses').select('quality_rules').eq('course_code', course_code).single();
+        goldenCountForRecency = getGoldenSeedCount(courseForRecency);
+      } catch (e) { /* default to 10 */ }
+      if (nextSeed && seed_number > goldenCountForRecency) {
+        try {
+          const { overusedPatterns } = await analyzePatternRecency(ctx, course_code, 30);
+          if (overusedPatterns.length > 0) {
+            recencyHints = {
+              patterns_to_avoid: overusedPatterns.slice(0, 5).map(p => p.pattern),
+              warning: `These ${overusedPatterns.length} patterns are overused - use different sentence structures`,
+            };
+          }
+        } catch (e) {
+          // Non-critical
+        }
+      }
+
+      const checkpointAutoApproved = res.locals.checkpointAutoApproved;
+
+      // Update build_jobs with progress (fire-and-forget)
+      const progressTimestamp = new Date().toISOString();
+      ctx.supabase.from('build_jobs')
+        .update({
+          current_seed: seed_number,
+          seeds_completed: seed_number,
+          last_heartbeat: progressTimestamp,
+          last_progress_at: progressTimestamp,
+          machine_name: ctx.MACHINE_NAME,
+        })
+        .eq('course_code', course_code)
+        .eq('status', 'running')
+        .then(({ error }) => {
+          if (error) console.error(`[BUILD] build_jobs update failed:`, error.message);
+        });
+
+      res.json({
+        ok: true,
+        seed: seedId,
+        status: 'INSERTED',
+        action: 'PROCEED TO NEXT SEED',
+        known_text,
+        target_text,
+        legos: legos.length,
+        duplicates_skipped: skippedDuplicates,
+        phrases: totalPhrases,
+        buildup_phrases: totalBuildupPhrases,
+
+        checkpoint_auto_approved: checkpointAutoApproved || undefined,
+
+        warnings: warnings.length > 0 ? {
+          note: 'THESE ARE FOR YOUR NEXT SEED - this seed is already saved. Do NOT resubmit.',
+          items: warnings,
+        } : undefined,
+
+        quality_reminder: {
+          role: 'You are a world-class language teacher creating speakable phrases.',
+          goal: 'Maximum VARIETY in sentence structures, within vocabulary constraints.',
+          anti_pattern: 'Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.',
+          examples: [
+            'GOOD: "I think we should go tomorrow" → "Maybe she wants to come too" → "The weather looks nice today"',
+            'BAD: "I don\'t know if..." → "I\'m not sure if..." → "I don\'t know if..." (formulaic, lazy)',
+          ],
+          mantra: 'If you catch yourself repeating a pattern, STOP and create something different.',
+        },
+
+        session: (() => {
+          const activity = ctx.courseActivity.get(course_code);
+          const seedsThisSession = activity?.seedsThisSession || 1;
+          return {
+            seeds_this_session: seedsThisSession,
+            suggestion: 'CONTINUE',
+            message: 'Keep building. Full course in one context window.',
+          };
+        })(),
+
+        next_seed: nextSeed ? {
+          instruction: 'BUILD THIS SEED NOW - do not resubmit the previous one',
+          seed_number: nextSeed.seed_number,
+          known_text: nextSeed.known_text,
+          recency_hints: recencyHints,
+        } : {
+          instruction: 'ALL SEEDS COMPLETE - say BATCH COMPLETE and exit',
+        },
+      });
+
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  return router;
+};

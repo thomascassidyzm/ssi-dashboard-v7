@@ -75,7 +75,12 @@ const io = new Server(httpServer, {
   }
 })
 
-app.use(cors())
+app.use(cors({
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'ngrok-skip-browser-warning'],
+  credentials: true
+}))
 app.use(express.json())
 
 // Disable ALL caching on API responses during development
@@ -5979,97 +5984,181 @@ app.get('/api/production/:courseCode/gender-prep/status', async (req, res) => {
 })
 
 // POST /api/production/:courseCode/gender-prep/start
-// Run gender expansion processing and flag affected audio for regen
+// Spawn a Claude Code agent to run gender expansion processing
 app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
   try {
     const { courseCode } = req.params
+    const { spawn } = require('child_process')
+    const fs = require('fs')
 
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
     const supabase = supabaseClient.getClient()
 
-    // Run gender expansion
-    const result = await genderHaikuService.processAndStore(courseCode, supabase)
+    // Verify course exists and is gendered
+    const { data: course, error: courseErr } = await supabase
+      .from('courses')
+      .select('target_lang, display_name')
+      .eq('course_code', courseCode)
+      .single()
 
-    // Auto-flag affected audio for regeneration (same logic as scripts/flag-gender-regen.cjs)
-    let flagged = 0
-    if (result.modified > 0) {
-      // Get all gender-expanded texts
-      const { data: expansions } = await supabase
-        .from('course_gender_expansions')
-        .select('original_text, expanded_f, expanded_m')
-        .eq('course_code', courseCode)
-
-      const t1Texts = new Set(expansions.filter(r => r.expanded_f).map(r => r.original_text.toLowerCase().trim()))
-      const t2Texts = new Set(expansions.filter(r => r.expanded_m).map(r => r.original_text.toLowerCase().trim()))
-
-      // Get all target1 + target2 audio (paginated)
-      async function getAllAudio(role) {
-        const all = []
-        let offset = 0
-        while (true) {
-          const { data } = await supabase
-            .from('course_audio')
-            .select('id, text_normalized')
-            .eq('course_code', courseCode)
-            .eq('role', role)
-            .not('s3_key', 'like', 'pending/%')
-            .order('id')
-            .range(offset, offset + 999)
-          if (!data || data.length === 0) break
-          all.push(...data)
-          offset += 1000
-        }
-        return all
-      }
-
-      const allT1 = await getAllAudio('target1')
-      const allT2 = await getAllAudio('target2')
-
-      const toFlag = [
-        ...allT1.filter(a => t1Texts.has(a.text_normalized)).map(a => a.id),
-        ...allT2.filter(a => t2Texts.has(a.text_normalized)).map(a => a.id)
-      ]
-
-      if (toFlag.length > 0) {
-        // Clear existing gender flags
-        await supabase
-          .from('audio_flags')
-          .delete()
-          .eq('course_code', courseCode)
-          .eq('reason', 'gender-expansion-regen')
-
-        // Insert flags in batches
-        const BATCH = 100
-        for (let i = 0; i < toFlag.length; i += BATCH) {
-          const batch = toFlag.slice(i, i + BATCH).map(id => ({
-            audio_uuid: id,
-            course_code: courseCode,
-            status: 'flagged',
-            reason: 'gender-expansion-regen',
-            flagged_by: 'gender-prep'
-          }))
-          const { error } = await supabase
-            .from('audio_flags')
-            .upsert(batch, { onConflict: 'audio_uuid,course_code' })
-          if (error) { logger.warn('Flag batch error:', error.message); continue }
-          flagged += batch.length
-        }
-      }
+    if (courseErr || !course) {
+      return res.status(404).json({ error: 'Course not found' })
     }
 
+    if (!genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)) {
+      return res.status(400).json({ error: `Language ${course.target_lang} does not have grammatical gender` })
+    }
+
+    // Build the agent brief
+    const brief = generateGenderPrepBrief(courseCode, course)
+
+    const tmpFile = `/tmp/claude_gender_prep_${courseCode}_${Date.now()}.txt`
+    fs.writeFileSync(tmpFile, brief)
+
+    const projectDir = path.resolve(__dirname, '..')
+    const claudeCmd = `cd "${projectDir}" && claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`
+
+    // Spawn via osascript (iTerm)
+    const escapedCmd = claudeCmd.replace(/"/g, '\\"')
+    const osascript = `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    set name to "Gender Prep: ${courseCode}"
+    write text "${escapedCmd}"
+  end tell
+end tell`
+
+    const agent = spawn('osascript', ['-e', osascript], { stdio: 'pipe', detached: true })
+    agent.unref()
+    agent.on('error', (e) => logger.error(`[GENDER-PREP] osascript error: ${e.message}`))
+    agent.on('exit', (code) => logger.info(`[GENDER-PREP] iTerm launched for ${courseCode} (osascript exit: ${code})`))
+
     res.json({
-      total: result.total,
-      modified: result.modified,
-      elapsed: result.elapsed,
-      flagged
+      ok: true,
+      spawned: true,
+      course_code: courseCode,
+      language: course.target_lang,
+      message: `Gender prep agent spawned in iTerm for ${courseCode}`
     })
   } catch (error) {
-    logger.error('Error running gender-prep:', error)
+    logger.error('Error spawning gender-prep agent:', error)
     res.status(500).json({ error: error.message })
   }
 })
+
+/**
+ * Generate the brief for the gender-prep Claude Code agent.
+ */
+function generateGenderPrepBrief(courseCode, course) {
+  const langNames = { spa: 'Spanish', ita: 'Italian', por: 'Portuguese', fra: 'French', ara: 'Arabic' }
+  const langName = langNames[course.target_lang] || course.target_lang
+
+  return `# Gender Prep Agent — ${courseCode} (${langName})
+
+You are processing gender expansions for TTS audio generation.
+
+## What you do
+
+For gendered languages, TTS needs two versions of each phrase:
+- **target1** (female speaker): adjectives/participles agree with female first person
+- **target2** (male speaker): adjectives/participles agree with male first person
+
+## Steps
+
+### Step 1: Collect all unique target texts
+
+Run this script to get all unique target texts from the database:
+
+\`\`\`javascript
+const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config();
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+
+const textSet = new Set();
+
+const { data: phrases } = await supabase.from('course_practice_phrases').select('target_text').eq('course_code', '${courseCode}');
+if (phrases) phrases.forEach(p => { if (p.target_text) textSet.add(p.target_text) });
+
+const { data: legos } = await supabase.from('course_legos').select('target_text').eq('course_code', '${courseCode}');
+if (legos) legos.forEach(l => { if (l.target_text) textSet.add(l.target_text) });
+
+const { data: seeds } = await supabase.from('course_seeds').select('target_text').eq('course_code', '${courseCode}');
+if (seeds) seeds.forEach(s => { if (s.target_text) textSet.add(s.target_text) });
+
+console.log(\`Found \${textSet.size} unique target texts\`);
+\`\`\`
+
+### Step 2: For each text, produce female and male variants
+
+For each unique target text, determine if it needs gender adjustment:
+
+**Rules for ${langName}:**
+${course.target_lang === 'ara' ? `- Predicate adjectives about the speaker: أنا سعيد→أنا سعيدة (female)
+- Active/passive participles as predicates about the speaker
+- Standalone adjective fragments where speaker is implied
+- Do NOT change verb conjugations (Arabic 1st person past/present don't change for gender)
+- Do NOT change 3rd person references or 2nd person forms` : `- Adjectives describing the speaker: content→contente, prêt→prête (for female)
+- Past participles with être where subject is the speaker: allé→allée (for female)
+- Fragments where speaker is implied: "fatigué"→"fatiguée" (for female)
+- Do NOT change past participles with avoir (they don't agree with speaker)
+- Do NOT change 3rd person references, grammar errors, meaning, or word order`}
+
+If NO change is needed, skip that text (don't store it).
+
+### Step 3: Store results in course_gender_expansions
+
+First clear existing rows:
+\`\`\`javascript
+await supabase.from('course_gender_expansions').delete().eq('course_code', '${courseCode}');
+\`\`\`
+
+Then insert rows for texts that have at least one gender variant:
+\`\`\`javascript
+await supabase.from('course_gender_expansions').insert({
+  course_code: '${courseCode}',
+  original_text: '<the original text>',
+  language: '${course.target_lang}',
+  expanded_f: '<female version or null if unchanged>',
+  expanded_m: '<male version or null if unchanged>'
+});
+\`\`\`
+
+Insert in batches of 500 to avoid payload limits.
+
+### Step 4: Flag affected audio for regeneration
+
+After storing expansions, flag existing audio that needs regeneration:
+
+\`\`\`javascript
+// Get all expanded texts
+const { data: expansions } = await supabase.from('course_gender_expansions')
+  .select('original_text, expanded_f, expanded_m').eq('course_code', '${courseCode}');
+
+const t1Texts = new Set(expansions.filter(r => r.expanded_f).map(r => r.original_text.toLowerCase().trim()));
+const t2Texts = new Set(expansions.filter(r => r.expanded_m).map(r => r.original_text.toLowerCase().trim()));
+
+// Find audio records that match expanded texts
+// Query course_audio for role target1 and target2, check text_normalized against the sets
+// Flag matches in audio_flags table with reason 'gender-expansion-regen'
+\`\`\`
+
+Clear old gender flags first, then insert new ones:
+\`\`\`javascript
+await supabase.from('audio_flags').delete().eq('course_code', '${courseCode}').eq('reason', 'gender-expansion-regen');
+// Then upsert new flags with { audio_uuid, course_code, status: 'flagged', reason: 'gender-expansion-regen', flagged_by: 'gender-prep' }
+\`\`\`
+
+## Important
+
+- Work through ALL texts systematically. There may be hundreds.
+- Only store rows where at least one gender variant differs from the original.
+- This is linguistic work — apply your knowledge of ${langName} grammar carefully.
+- When done, print a summary: total texts processed, how many had gender variants, how many audio flagged.
+`
+}
 
 // GET /api/production/:courseCode/gender-prep/flag-count
 // Count audio flags with reason 'gender-expansion-regen'
