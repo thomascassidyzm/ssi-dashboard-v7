@@ -155,17 +155,19 @@ module.exports = function (ctx) {
         return res.status(400).json({ ok: false, error: `Invalid range: ${from_seed}-${to_seed}` });
       }
 
-      // Check for active build
-      const { data: activeJob } = await ctx.supabase
-        .from('build_jobs')
-        .select('id, status')
-        .eq('course_code', courseCode)
-        .in('status', ['running'])
-        .limit(1)
-        .maybeSingle();
+      // Check for active build — block bulk wipes but allow single-seed rebuilds (Checker workflow)
+      if (from_seed !== to_seed) {
+        const { data: activeJob } = await ctx.supabase
+          .from('build_jobs')
+          .select('id, status')
+          .eq('course_code', courseCode)
+          .in('status', ['running'])
+          .limit(1)
+          .maybeSingle();
 
-      if (activeJob) {
-        return res.status(409).json({ ok: false, error: 'Build already running - stop it first' });
+        if (activeJob) {
+          return res.status(409).json({ ok: false, error: 'Build already running - stop it first (single-seed rebuilds are allowed)' });
+        }
       }
 
       console.log(`[REBUILD] Starting rebuild of ${courseCode} seeds ${from_seed}-${to_seed}...`);
