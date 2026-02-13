@@ -537,7 +537,7 @@ module.exports = function (ctx) {
         fs.writeFileSync(creatorFile, brief);
         creatorFiles.push(creatorFile);
 
-        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --no-project-context --dangerously-skip-permissions "$(cat ${creatorFile})"`;
         console.log(`[GOLDEN] Spawning Sonnet Creator ${i + 1}/${batches.length} for ${courseCode} — seeds ${batch[0]}-${batch[batch.length - 1]}`);
         spawnInTerminal(ctx, creatorCmd, `Creator ${i + 1}/${batches.length}`, courseCode);
 
@@ -555,7 +555,7 @@ module.exports = function (ctx) {
       const checkerFile = `/tmp/golden_checker_${courseCode}_${ts}.md`;
       fs.writeFileSync(checkerFile, checkerBrief);
 
-      const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
+      const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${checkerFile})"`;
       console.log(`[GOLDEN] Spawning Opus Checker for ${courseCode}`);
       spawnInTerminal(ctx, checkerCmd, 'Golden Checker', courseCode);
 
