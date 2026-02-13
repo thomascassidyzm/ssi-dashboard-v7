@@ -280,10 +280,10 @@ async function loadWelcomeAndEncouragements(courseCode, knownLang) {
   if (PAID_COURSE_CODES.includes(courseCode)) {
     const { data } = await client
       .from('shared_audio')
-      .select('id, text, s3_key, duration_ms')
+      .select('id, text, s3_key, duration_ms, sequence')
       .eq('language', knownLang)
       .eq('audio_type', 'paywall')
-      .order('text')  // Consistent ordering
+      .order('sequence', { ascending: true })  // Order by sequence number
     paywallData = data || []
   }
 
@@ -1275,7 +1275,17 @@ async function generateLegacyManifest(courseCode, options = {}) {
       }]
     }
   }
-  console.error(`  Added ${instructions.length + encouragementsList.length} encouragement samples`)
+  for (const item of paywallList) {
+    if (item.text && item.s3_key) {
+      samples[item.text] = [{
+        id: uuidFromS3Key(item.s3_key),
+        cadence: 'natural',
+        role: 'presentation',
+        duration: item.duration_ms ? item.duration_ms / 1000 : 0
+      }]
+    }
+  }
+  console.error(`  Added ${instructions.length + encouragementsList.length + paywallList.length} encouragement samples`)
 
   // 8.2. Add placeholder presentation samples BEFORE validation
   // Uses deterministic UUIDs so they match what will be generated later

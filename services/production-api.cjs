@@ -5448,6 +5448,9 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     for (const enc of pendingManifest.slices[0]?.pooledEncouragements || []) {
       if (enc.id) uuids.push(enc.id)
     }
+    for (const enc of pendingManifest.slices[0]?.paywallEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
 
     // Samples
     const samples = pendingManifest.slices[0]?.samples || {}
@@ -5580,6 +5583,9 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
           for (const enc of fixedManifest.slices[0]?.pooledEncouragements || []) {
             if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
           }
+          for (const enc of fixedManifest.slices[0]?.paywallEncouragements || []) {
+            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
+          }
 
           // Check samples
           for (const audioArray of Object.values(fixedManifest.slices[0]?.samples || {})) {
@@ -5705,6 +5711,9 @@ app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
     for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
       if (enc.id) uuids.push(enc.id)
     }
+    for (const enc of publishedManifest.slices[0]?.paywallEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
     const samples = publishedManifest.slices[0]?.samples || {}
     for (const [text, audioArray] of Object.entries(samples)) {
       for (const audio of audioArray) {
@@ -5767,6 +5776,9 @@ app.post('/api/production/:courseCode/deploy-audio/execute', async (req, res) =>
       if (enc.id) uuids.push(enc.id)
     }
     for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.paywallEncouragements || []) {
       if (enc.id) uuids.push(enc.id)
     }
     const samples = publishedManifest.slices[0]?.samples || {}
@@ -5833,6 +5845,9 @@ app.post('/api/production/:courseCode/deploy-audio/new-only', async (req, res) =
       if (enc.id) uuids.push(enc.id)
     }
     for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.paywallEncouragements || []) {
       if (enc.id) uuids.push(enc.id)
     }
     const samples = publishedManifest.slices[0]?.samples || {}
@@ -6018,6 +6033,9 @@ app.post('/api/production/:courseCode/verify-production-durations', async (req, 
     for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
       if (enc.id) uuids.push(enc.id)
     }
+    for (const enc of publishedManifest.slices[0]?.paywallEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
     const samples = publishedManifest.slices[0]?.samples || {}
     for (const [text, audioArray] of Object.entries(samples)) {
       for (const audio of audioArray) {
@@ -6070,6 +6088,9 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
       if (enc.id) uuids.push(enc.id)
     }
     for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.paywallEncouragements || []) {
       if (enc.id) uuids.push(enc.id)
     }
     const samples = publishedManifest.slices[0]?.samples || {}
