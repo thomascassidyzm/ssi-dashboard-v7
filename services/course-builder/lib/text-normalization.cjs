@@ -12,7 +12,7 @@ const { isChinese } = require('./language-config.cjs');
  */
 function normalizePhrase(text) {
   if (!text) return '';
-  return text.replace(/[.,!?;:؟]+$/, '').toLowerCase().trim();
+  return text.replace(/[.,!?;:؟،؛]+$/, '').toLowerCase().trim();
 }
 
 /**
@@ -30,7 +30,8 @@ function normalizeForContainment(text) {
   if (!text) return '';
   return text
     .toLowerCase()
-    .replace(/[.,!?;:¿¡«»""''。，！？؟、：；]/g, '')
+    .replace(/[\u064B-\u0652]/g, '')     // Strip Arabic tashkeel (vowel marks, tanwin, shadda, sukun)
+    .replace(/[.,!?;:¿¡«»""''。，！？؟،؛、：；]/g, '')  // Strip all punctuation incl. Arabic comma/semicolon
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -65,8 +66,9 @@ function normalizeForZUT(text, chinese = false) {
   let normalized = text
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[¿¡.,;:!?؟«»""。，！？、：；""]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')     // Strip Latin combining diacritics
+    .replace(/[\u064B-\u0652]/g, '')     // Strip Arabic tashkeel
+    .replace(/[¿¡.,;:!?؟،؛«»""。，！？、：；""]/g, '')
     .trim();
   if (!chinese) {
     normalized = normalized.replace(/\s+/g, ' ');
@@ -83,7 +85,8 @@ function normalizeForStorage(text, chinese = false) {
   if (!text) return '';
   let normalized = text
     .toLowerCase()
-    .replace(/[¿¡.,;:!?؟«»""。，！？、：；""]/g, '')
+    .replace(/[\u064B-\u0652]/g, '')     // Strip Arabic tashkeel
+    .replace(/[¿¡.,;:!?؟،؛«»""。，！？、：；""]/g, '')
     .trim();
   if (!chinese) {
     normalized = normalized.replace(/\s+/g, ' ');
