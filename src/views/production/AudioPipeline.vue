@@ -882,8 +882,7 @@ const previewRegenerate = async () => {
       body: JSON.stringify({
         role: regenerateRole.value,
         dryRun: true,
-        flaggedOnly: flaggedOnly.value,
-        limit: 1000
+        flaggedOnly: flaggedOnly.value
       })
     })
 
@@ -911,8 +910,10 @@ const executeRegenerate = async () => {
   if (!regenerateRole.value) return
 
   const scope = flaggedOnly.value ? 'flagged' : 'all'
+  const count = regenerateResult.value?.count || 'unknown number of'
   const confirmed = confirm(
-    `This will regenerate ${scope} ${regenerateRole.value} audio for ${courseCode.value}.\n\n` +
+    `This will regenerate ${count} ${regenerateRole.value} audio files for ${courseCode.value}.\n\n` +
+    `Scope: ${scope}\n` +
     `Existing audio files will be replaced.\n\n` +
     `Continue?`
   )
@@ -931,8 +932,7 @@ const executeRegenerate = async () => {
       body: JSON.stringify({
         role: regenerateRole.value,
         dryRun: false,
-        flaggedOnly: flaggedOnly.value,
-        limit: 1000
+        flaggedOnly: flaggedOnly.value
       })
     })
 

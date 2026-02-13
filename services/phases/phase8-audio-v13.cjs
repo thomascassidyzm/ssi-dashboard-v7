@@ -1215,7 +1215,7 @@ app.post('/generate/:courseCode', async (req, res) => {
 app.post('/regenerate-role/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { role, dryRun = false, limit = 1000, flaggedOnly = false } = req.body
+    const { role, dryRun = false, limit, flaggedOnly = false } = req.body
 
     if (!role) {
       return res.status(400).json({ error: 'Role is required' })
@@ -1277,24 +1277,30 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       }
 
       // Get audio that matches both role AND is flagged
-      const { data: existingAudio, error: audioError } = await supabase
+      let flaggedQuery = supabase
         .from('course_audio')
         .select('id, text, text_normalized, language, role, voice_id, s3_key')
         .eq('course_code', courseCode)
         .eq('role', role)
         .in('id', flaggedIds)
-        .limit(limit)
+
+      if (limit) flaggedQuery = flaggedQuery.limit(limit)
+
+      const { data: existingAudio, error: audioError } = await flaggedQuery
 
       if (audioError) throw audioError
       audioToRegenerate = existingAudio || []
     } else {
       // Get all audio for this role
-      const { data: existingAudio, error: audioError } = await supabase
+      let allQuery = supabase
         .from('course_audio')
         .select('id, text, text_normalized, language, role, voice_id, s3_key')
         .eq('course_code', courseCode)
         .eq('role', role)
-        .limit(limit)
+
+      if (limit) allQuery = allQuery.limit(limit)
+
+      const { data: existingAudio, error: audioError } = await allQuery
 
       if (audioError) throw audioError
       audioToRegenerate = existingAudio || []
