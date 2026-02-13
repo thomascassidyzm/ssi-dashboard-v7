@@ -975,7 +975,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1039,7 +1039,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1084,6 +1084,7 @@ module.exports = function(ctx) {
     try {
       const courseCode = req.params.courseCode;
       const { terminal = 'iTerm2', targetSeeds } = req.body || {};
+      const fromStage = req.query.from_stage || req.body?.from_stage || null;
 
       const { data: course } = await ctx.supabase
         .from('courses')
@@ -1096,10 +1097,10 @@ module.exports = function(ctx) {
       const goldenCount = getGoldenSeedCount(course);
       const effectiveTarget = targetSeeds || course.seed_count || 300;
 
-      // Check build progress
+      // Check build progress — skip if resuming from a specific stage
       const progress = await getBuildProgress(ctx, courseCode);
-      if (progress.completed >= effectiveTarget) {
-        return res.json({ ok: false, error: `Target reached (${progress.completed}/${effectiveTarget} seeds)` });
+      if (!fromStage && progress.completed >= effectiveTarget) {
+        return res.json({ ok: false, error: `Target reached (${progress.completed}/${effectiveTarget} seeds). Use ?from_stage=phrases to resume phrase generation.` });
       }
 
       // Check for existing running build
@@ -1145,14 +1146,14 @@ module.exports = function(ctx) {
       );
 
       const brief = generateV2CoordinatorBrief({
-        courseCode, course, goldenCount, effectiveTarget, goldenSeedMarkdown
+        courseCode, course, goldenCount, effectiveTarget, goldenSeedMarkdown, fromStage
       });
 
       const tmpFile = `/tmp/claude_v2_coordinator_${courseCode}_${Date.now()}.txt`;
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1573,43 +1574,52 @@ You are running unattended. Never ask questions. Fix every flag.
   /**
    * Generate v2 coordinator brief — orchestrates the full pipeline.
    */
-  function generateV2CoordinatorBrief({ courseCode, course, goldenCount, effectiveTarget, goldenSeedMarkdown }) {
+  function generateV2CoordinatorBrief({ courseCode, course, goldenCount, effectiveTarget, goldenSeedMarkdown, fromStage }) {
     const seedRange = `${goldenCount + 1}-${effectiveTarget}`;
     const seedsNeeded = effectiveTarget - goldenCount;
 
     // Get pattern-diverse golden seed examples for brief
     const patternsSection = formatDecompositionPatterns(goldenSeedMarkdown || []);
 
+    const stageOrder = ['decompose', 'finalize', 'phrases', 'validate', 'qa'];
+    const startIdx = fromStage ? stageOrder.indexOf(fromStage) : 0;
+    const resumeNote = fromStage ? `\n**RESUMING from stage: ${fromStage.toUpperCase()}** — Stages 1-${startIdx} are already complete. Skip straight to Stage ${startIdx + 1}.\n` : '';
+
     return `# V2 Pipeline Coordinator — ${courseCode}
 
-You orchestrate the full v2 staged pipeline for seeds ${seedRange} (${seedsNeeded} seeds).
-
+You orchestrate the v2 staged pipeline for seeds ${seedRange} (${seedsNeeded} seeds).
+${resumeNote}
 ## Pipeline Stages
-
+${startIdx <= 0 ? `
 ### Stage 1: DECOMPOSE (Sonnet sub-agents)
 Spawn ~${Math.ceil(seedsNeeded / ctx.config.SEEDS_PER_AGENT)} Sonnet sub-agents, ~${ctx.config.SEEDS_PER_AGENT} seeds each.
 Each submits LEGOs only: POST http://localhost:3471/api/v2/decompose
 Monitor: GET http://localhost:3471/api/course/${courseCode}/drafts
-
+` : '### Stage 1: DECOMPOSE — ✅ ALREADY COMPLETE'}
+${startIdx <= 1 ? `
 ### Stage 2: FINALIZE
 When all drafts in: POST http://localhost:3471/api/v2/decompose/finalize/${courseCode}
 If 409 (collisions): fix them (merge colliding LEGOs into bigger M-LEGOs), resubmit, re-finalize.
 Loop until clean (200).
-
+` : '### Stage 2: FINALIZE — ✅ ALREADY COMPLETE'}
+${startIdx <= 2 ? `
 ### Stage 3: GENERATE PHRASES (Haiku sub-agents)
 Fetch finalized LEGOs: query course_legos where is_new=true and seed_number >= ${goldenCount + 1}
 Spawn ~${Math.ceil(seedsNeeded / 5)} Haiku sub-agents, ~10 LEGOs each.
 Each submits phrases: POST http://localhost:3471/api/v2/phrases/${courseCode}
 Monitor: GET http://localhost:3471/api/v2/phrases/progress/${courseCode}
-
+` : '### Stage 3: GENERATE PHRASES — ✅ ALREADY COMPLETE'}
+${startIdx <= 3 ? `
 ### Stage 4: VALIDATE
 POST http://localhost:3471/api/v2/validate/${courseCode}
 If failures: spawn targeted fix agents to repair, then re-validate.
-
+` : '### Stage 4: VALIDATE — ✅ ALREADY COMPLETE'}
+${startIdx <= 4 ? `
 ### Stage 5: QA
 POST http://localhost:3471/api/v2/qa/scan/${courseCode} — Haiku flags
 Wait for scan to complete (poll /api/qa/summary/${courseCode})
 If flags > 0: POST http://localhost:3471/api/v2/qa/fix/${courseCode} — Opus repairs
+` : '### Stage 5: QA — ✅ ALREADY COMPLETE'}
 
 ## LEGO Decomposition Patterns
 ${patternsSection}
