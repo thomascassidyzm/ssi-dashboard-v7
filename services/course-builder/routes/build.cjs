@@ -6,8 +6,12 @@
  */
 
 const { Router } = require('express');
+const { spawn } = require('child_process');
+const fs = require('fs');
+const path = require('path');
 const { getBuildProgress, startBuild, stopBuild, getBuildStatus } = require('../lib/build-manager.cjs');
-const { spawnTranslationAgent, spawnGoldenBuildAgents, spawnParallelBuildAgent } = require('../lib/agent-spawner.cjs');
+const { spawnInTerminal, fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
+const { getGoldenSeedCount } = require('../lib/language-config.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -20,8 +24,20 @@ module.exports = function (ctx) {
     const { terminal = 'iTerm2', targetSeeds = 668 } = req.body || {};
 
     try {
-      const spawnCallback = (cc, agentCount, term) =>
-        spawnParallelBuildAgent(ctx, cc, agentCount, term);
+      const spawnCallback = async (cc, agentCount, term) => {
+        // Fetch V2 coordinator brief and spawn via iTerm
+        const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${cc}/stage/decompose`);
+        if (!briefResp.ok) throw new Error(`Failed to fetch build brief: ${briefResp.status}`);
+        const brief = await briefResp.text();
+
+        const tmpFile = `/tmp/claude_parallel_${cc}_${Date.now()}.txt`;
+        fs.writeFileSync(tmpFile, brief);
+
+        const projectDir = path.resolve(__dirname, '..', '..', '..');
+        const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+        console.log(`[BUILD] Spawning parallel coordinator #${agentCount} for ${cc}`);
+        spawnInTerminal(ctx, claudeCmd, `Parallel Build #${agentCount}`, cc);
+      };
 
       const result = await startBuild(ctx, courseCode, terminal, targetSeeds, spawnCallback);
       res.json(result);
@@ -331,8 +347,62 @@ module.exports = function (ctx) {
         return res.status(409).json({ error: 'Translation already running', job_id: activeJob.id });
       }
 
-      const result = await spawnTranslationAgent(ctx, courseCode, terminal, dryRun);
-      res.json(result);
+      // Fetch brief from briefs API
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/translate`);
+      if (!briefResp.ok) throw new Error(`Failed to fetch translate brief: ${briefResp.status}`);
+      const brief = await briefResp.text();
+
+      if (dryRun) {
+        return res.json({ dry_run: true, brief });
+      }
+
+      // Write brief to temp file
+      const tmpFile = `/tmp/translate_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      // Create build_jobs record
+      let jobId = null;
+      try {
+        const { data: jobData, error: jobError } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode,
+            pass: 'translate',
+            status: 'running',
+            current_seed: 0,
+            seeds_completed: 0,
+            total_seeds: 668,
+            started_at: new Date().toISOString(),
+            last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard',
+            terminal: effectiveTerminal,
+            agent_count: 1,
+            respawn_count: 0,
+            machine_name: ctx.MACHINE_NAME,
+            build_mode: 'translate'
+          })
+          .select('id')
+          .single();
+        if (!jobError && jobData) jobId = jobData.id;
+      } catch (e) {
+        console.error('[TRANSLATE] Failed to create build_jobs record:', e.message);
+      }
+
+      // Spawn translation agent
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      console.log(`[TRANSLATE] Spawning translation agent for ${courseCode} in ${effectiveTerminal}`);
+      spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode);
+
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        job_id: jobId,
+        brief_file: tmpFile,
+        message: `Translation agent spawned for ${courseCode}`
+      });
     } catch (err) {
       console.error('[TRANSLATE] Error starting translation:', err);
       res.status(500).json({ error: err.message });
@@ -371,8 +441,101 @@ module.exports = function (ctx) {
         return res.status(409).json({ error: 'Golden build already running', job_id: activeJob.id });
       }
 
-      const result = await spawnGoldenBuildAgents(ctx, courseCode, targetSeeds, terminal, dryRun, phase);
-      res.json(result);
+      // Fetch briefs from the briefs API (same process, localhost)
+      const isCalibration = phase === 'calibration';
+      const briefEndpoint = isCalibration ? 'calibrate' : 'golden-creator';
+      const creatorResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/${briefEndpoint}`);
+      if (!creatorResp.ok) throw new Error(`Failed to fetch creator brief: ${creatorResp.status}`);
+      const creatorBrief = await creatorResp.text();
+
+      let checkerBrief = null;
+      if (!isCalibration) {
+        const checkerResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/golden-checker`);
+        if (!checkerResp.ok) throw new Error(`Failed to fetch checker brief: ${checkerResp.status}`);
+        checkerBrief = await checkerResp.text();
+      }
+
+      if (dryRun) {
+        return res.json({
+          dry_run: true,
+          phase,
+          creator_brief: creatorBrief,
+          checker_brief: checkerBrief,
+          target_seeds: targetSeeds
+        });
+      }
+
+      // Write briefs to temp files
+      const ts = Date.now();
+      const creatorFile = `/tmp/golden_creator_${courseCode}_${ts}.md`;
+      fs.writeFileSync(creatorFile, creatorBrief);
+
+      let checkerFile = null;
+      if (checkerBrief) {
+        checkerFile = `/tmp/golden_checker_${courseCode}_${ts}.md`;
+        fs.writeFileSync(checkerFile, checkerBrief);
+      }
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+      const buildMode = isCalibration ? 'calibration' : 'golden';
+
+      // Create build_jobs record
+      let jobId = null;
+      try {
+        const { data: jobData, error: jobError } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode,
+            pass: 'golden',
+            status: 'running',
+            current_seed: 0,
+            seeds_completed: 0,
+            total_seeds: targetSeeds,
+            started_at: new Date().toISOString(),
+            last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard',
+            terminal: effectiveTerminal,
+            agent_count: isCalibration ? 1 : 2,
+            respawn_count: 0,
+            machine_name: ctx.MACHINE_NAME,
+            build_mode: buildMode
+          })
+          .select('id')
+          .single();
+        if (!jobError && jobData) jobId = jobData.id;
+      } catch (e) {
+        console.error('[GOLDEN] Failed to create build_jobs record:', e.message);
+      }
+
+      // Spawn Creator agent
+      const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+      const creatorLabel = isCalibration ? 'Calibration Creator' : 'Golden Creator';
+
+      console.log(`[GOLDEN] Spawning ${creatorLabel} for ${courseCode} in ${effectiveTerminal} (phase: ${phase})`);
+      spawnInTerminal(ctx, creatorCmd, creatorLabel, courseCode);
+
+      // Only spawn Checker for golden phase (not calibration — human is the checker)
+      if (!isCalibration && checkerFile) {
+        // Wait 5 seconds before spawning Checker
+        await new Promise(resolve => setTimeout(resolve, 5000));
+
+        const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
+        console.log(`[GOLDEN] Spawning Checker for ${courseCode} in ${effectiveTerminal}`);
+        spawnInTerminal(ctx, checkerCmd, 'Golden Checker', courseCode);
+      }
+
+      const agentDesc = isCalibration ? 'Creator agent (human-collaboration)' : 'Creator + Checker agents';
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        job_id: jobId,
+        phase,
+        target_seeds: targetSeeds,
+        creator_brief_file: creatorFile,
+        checker_brief_file: checkerFile,
+        message: `${isCalibration ? 'Calibration' : 'Golden'} build started — ${agentDesc} spawned for seeds 1-${targetSeeds}`
+      });
     } catch (err) {
       console.error('[GOLDEN] Error starting golden build:', err);
       res.status(500).json({ error: err.message });
