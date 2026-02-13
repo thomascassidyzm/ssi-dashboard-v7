@@ -444,13 +444,13 @@ module.exports = function (ctx) {
       // Fetch briefs from the briefs API (same process, localhost)
       const isCalibration = phase === 'calibration';
       const briefEndpoint = isCalibration ? 'calibrate' : 'golden-creator';
-      const creatorResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/${briefEndpoint}`);
+      const creatorResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/${briefEndpoint}?target=${targetSeeds}`);
       if (!creatorResp.ok) throw new Error(`Failed to fetch creator brief: ${creatorResp.status}`);
       const creatorBrief = await creatorResp.text();
 
       let checkerBrief = null;
       if (!isCalibration) {
-        const checkerResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/golden-checker`);
+        const checkerResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/golden-checker?target=${targetSeeds}`);
         if (!checkerResp.ok) throw new Error(`Failed to fetch checker brief: ${checkerResp.status}`);
         checkerBrief = await checkerResp.text();
       }
