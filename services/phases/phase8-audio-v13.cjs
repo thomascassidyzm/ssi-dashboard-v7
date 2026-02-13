@@ -32,6 +32,7 @@ const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
 const genderService = require('../gender-expansion-service.cjs')
+const genderHaikuService = require('../gender-haiku-service.cjs')
 
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
@@ -637,11 +638,54 @@ async function planHandler(req, res) {
     const uniqueTargetTexts = [...uniqueTextsForAudio].filter(k => k.startsWith('target|')).length
     const totalPresentationsNeeded = newLegos?.length || 0
 
-    // Total required = missing + existing (derived consistently from the same source)
-    // Use uniqueNeeded as the authoritative missing count, and derive total from it
+    // Total required = unique audio needs from current content (phrases + legos + seeds + presentations)
+    // Count existing by checking which needed items have matching audio (not ALL audio records)
     const totalMissing = uniqueNeeded.length
-    const totalExisting = existingByRole.known + existingByRole.target1 + existingByRole.target2 + existingByRole.presentation
-    const totalRequired = totalMissing + totalExisting
+
+    // Count existing audio that matches CURRENT content only (not orphaned audio from deleted phrases)
+    // Build the full needed set (including items that already have audio) and count matches
+    const fullNeededSet = new Set()
+    for (const phrase of phrases || []) {
+      if (!isPunctuationOnly(phrase.known_text)) {
+        fullNeededSet.add(`${normalizeText(phrase.known_text)}|${course.known_lang}|known`)
+      }
+      if (!isPunctuationOnly(phrase.target_text)) {
+        fullNeededSet.add(`${normalizeText(phrase.target_text)}|${course.target_lang}|target1`)
+        fullNeededSet.add(`${normalizeText(phrase.target_text)}|${course.target_lang}|target2`)
+      }
+    }
+    for (const lego of allLegos || []) {
+      if (!isPunctuationOnly(lego.known_text)) {
+        fullNeededSet.add(`${normalizeText(lego.known_text)}|${course.known_lang}|known`)
+      }
+      if (!isPunctuationOnly(lego.target_text)) {
+        fullNeededSet.add(`${normalizeText(lego.target_text)}|${course.target_lang}|target1`)
+        fullNeededSet.add(`${normalizeText(lego.target_text)}|${course.target_lang}|target2`)
+      }
+    }
+    for (const seed of allSeeds || []) {
+      if (!isPunctuationOnly(seed.known_text)) {
+        fullNeededSet.add(`${normalizeText(seed.known_text)}|${course.known_lang}|known`)
+      }
+      if (!isPunctuationOnly(seed.target_text)) {
+        fullNeededSet.add(`${normalizeText(seed.target_text)}|${course.target_lang}|target1`)
+        fullNeededSet.add(`${normalizeText(seed.target_text)}|${course.target_lang}|target2`)
+      }
+    }
+
+    let matchedExisting = 0
+    for (const key of fullNeededSet) {
+      if (existingSet.has(key)) matchedExisting++
+    }
+    // Add presentation audio that matches current LEGOs
+    let presentationsExisting = 0
+    for (const lego of newLegos || []) {
+      if (lego.presentation_audio_id || legoIdsWithPresentation.has(lego.lego_id)) {
+        presentationsExisting++
+      }
+    }
+    const totalExisting = matchedExisting + presentationsExisting
+    const totalRequired = fullNeededSet.size + totalPresentationsNeeded
 
     res.json({
       courseCode,
@@ -1055,6 +1099,13 @@ app.post('/generate/:courseCode', async (req, res) => {
       needed.map(n => [`${n.text}|${n.language}|${n.role}`, n])
     ).values()].slice(0, limit)
 
+    // Load pre-computed gender expansions from DB
+    let genderMap = new Map()
+    if (genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang) && !dryRun) {
+      genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
+      logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
+    }
+
     if (dryRun) {
       return res.json({
         dryRun: true,
@@ -1081,14 +1132,19 @@ app.post('/generate/:courseCode', async (req, res) => {
       const speed = item.speed || 1.0
 
       // Gender expansion for target language audio
-      // Analyzes unmarked text and expands to appropriate gender based on role
-      // target1 = female voice = feminine forms, target2 = male voice = masculine forms
+      // Pre-computed by Haiku (or regex fallback for marker-based text)
       let textForTTS = item.text
-      if (item.role === 'target1' || item.role === 'target2') {
-        const genderResult = genderService.analyzeAndExpand(item.text, item.language, item.role)
-        if (genderResult.wasModified) {
-          textForTTS = genderResult.expandedText
-          logger.info(`Gender expansion: "${item.text}" → "${textForTTS}" (${item.role})`)
+      const genderKey = `${item.text}|${item.language}|${item.role}`
+      const genderResult = genderMap.get(genderKey)
+      if (genderResult?.wasModified) {
+        textForTTS = genderResult.expandedText
+        logger.info(`Gender: "${item.text}" → "${textForTTS}" (${item.role})`)
+      } else if ((item.role === 'target1' || item.role === 'target2') && genderService.hasGenderMarker(item.text)) {
+        // Fallback: text with explicit markers like "cansado(a)" — use regex expander
+        const markerResult = genderService.analyzeAndExpand(item.text, item.language, item.role)
+        if (markerResult.wasModified) {
+          textForTTS = markerResult.expandedText
+          logger.info(`Gender (marker): "${item.text}" → "${textForTTS}" (${item.role})`)
         }
       }
 
@@ -1356,6 +1412,15 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       ? course.known_lang
       : course.target_lang
 
+    // Load pre-computed gender expansions from DB
+    let genderMap = new Map()
+    if ((role === 'target1' || role === 'target2') &&
+        genderHaikuService.GENDERED_LANGUAGES.includes(language) &&
+        !dryRun) {
+      genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
+      logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
+    }
+
     if (dryRun) {
       return res.json({
         dryRun: true,
@@ -1406,14 +1471,19 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       const regenerationAttempt = regenerationCounts[item.id] || 0
 
       // Gender expansion for target language audio
-      // Analyzes unmarked text and expands to appropriate gender based on role
-      // target1 = female voice = feminine forms, target2 = male voice = masculine forms
+      // Pre-computed by Haiku (or regex fallback for marker-based text)
       let textForTTS = item.text
-      if (role === 'target1' || role === 'target2') {
-        const genderResult = genderService.analyzeAndExpand(item.text, language, role)
-        if (genderResult.wasModified) {
-          textForTTS = genderResult.expandedText
-          logger.info(`Gender expansion: "${item.text}" → "${textForTTS}" (${role})`)
+      const genderKey = `${item.text}|${language}|${role}`
+      const genderResult = genderMap.get(genderKey)
+      if (genderResult?.wasModified) {
+        textForTTS = genderResult.expandedText
+        logger.info(`Gender: "${item.text}" → "${textForTTS}" (${role})`)
+      } else if ((role === 'target1' || role === 'target2') && genderService.hasGenderMarker(item.text)) {
+        // Fallback: text with explicit markers like "cansado(a)" — use regex expander
+        const markerResult = genderService.analyzeAndExpand(item.text, language, role)
+        if (markerResult.wasModified) {
+          textForTTS = markerResult.expandedText
+          logger.info(`Gender (marker): "${item.text}" → "${textForTTS}" (${role})`)
         }
       }
 
