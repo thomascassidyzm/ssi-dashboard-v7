@@ -56,7 +56,9 @@
           >
             Run Gender Prep
           </button>
-          <span v-if="genderPrepRunning" class="text-sm text-purple-400 animate-pulse flex-shrink-0">Running...</span>
+          <span v-if="genderPrepRunning" class="text-sm text-purple-400 animate-pulse flex-shrink-0">
+            {{ genderPrepStatus.totalExpansions || 0 }} expansions...
+          </span>
         </div>
 
         <!-- LIVE PROGRESS (when active) -->
@@ -810,7 +812,9 @@ const fetchGenderPrepStatus = async () => {
   }
 }
 
-// Gender prep action
+// Gender prep action + polling
+let genderPrepPollTimer: ReturnType<typeof setInterval> | null = null
+
 const startGenderPrep = async () => {
   genderPrepRunning.value = true
   genderPrepResult.value = null
@@ -826,17 +830,44 @@ const startGenderPrep = async () => {
     if (response.ok) {
       genderPrepResult.value = {
         ok: true,
-        text: `${data.modified} texts expanded in ${(data.elapsed / 1000).toFixed(1)}s, ${data.flagged} audio flagged for regen`
+        text: `Spawned ${data.agents} Haiku agents (${data.totalTexts} texts, ${data.batchSize}/batch)`
       }
-      await fetchGenderPrepStatus()
+      // Start polling to track progress as agents insert rows
+      startGenderPrepPolling()
     } else {
-      genderPrepResult.value = { ok: false, text: data.error || 'Failed to process' }
+      genderPrepResult.value = { ok: false, text: data.error || 'Failed to spawn' }
+      genderPrepRunning.value = false
     }
   } catch (err: any) {
     genderPrepResult.value = { ok: false, text: err.message }
-  } finally {
     genderPrepRunning.value = false
   }
+}
+
+function startGenderPrepPolling() {
+  if (genderPrepPollTimer) clearInterval(genderPrepPollTimer)
+  let stableCount = 0
+  let lastCount = 0
+  genderPrepPollTimer = setInterval(async () => {
+    await fetchGenderPrepStatus()
+    const current = genderPrepStatus.value.totalExpansions || 0
+    if (current > 0 && current === lastCount) {
+      stableCount++
+    } else {
+      stableCount = 0
+    }
+    lastCount = current
+    // If count hasn't changed for 4 polls (20s), agents are likely done
+    if (stableCount >= 4 && current > 0) {
+      clearInterval(genderPrepPollTimer!)
+      genderPrepPollTimer = null
+      genderPrepRunning.value = false
+      genderPrepResult.value = {
+        ok: true,
+        text: `Done — ${current} gender expansions from ${genderPrepStatus.value.totalExpansions} texts`
+      }
+    }
+  }, 5000)
 }
 
 // Load data on mount
@@ -871,6 +902,7 @@ onMounted(async () => {
 // Cleanup on unmount
 onUnmounted(() => {
   stopProgressPolling()
+  if (genderPrepPollTimer) clearInterval(genderPrepPollTimer)
 })
 
 // Computed properties
