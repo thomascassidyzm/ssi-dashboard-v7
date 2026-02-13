@@ -441,100 +441,135 @@ module.exports = function (ctx) {
         return res.status(409).json({ error: 'Golden build already running', job_id: activeJob.id });
       }
 
-      // Fetch briefs from the briefs API (same process, localhost)
       const isCalibration = phase === 'calibration';
-      const briefEndpoint = isCalibration ? 'calibrate' : 'golden-creator';
-      const creatorResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/${briefEndpoint}?target=${targetSeeds}`);
-      if (!creatorResp.ok) throw new Error(`Failed to fetch creator brief: ${creatorResp.status}`);
-      const creatorBrief = await creatorResp.text();
-
-      let checkerBrief = null;
-      if (!isCalibration) {
-        const checkerResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/golden-checker?target=${targetSeeds}`);
-        if (!checkerResp.ok) throw new Error(`Failed to fetch checker brief: ${checkerResp.status}`);
-        checkerBrief = await checkerResp.text();
-      }
-
-      if (dryRun) {
-        return res.json({
-          dry_run: true,
-          phase,
-          creator_brief: creatorBrief,
-          checker_brief: checkerBrief,
-          target_seeds: targetSeeds
-        });
-      }
-
-      // Write briefs to temp files
-      const ts = Date.now();
-      const creatorFile = `/tmp/golden_creator_${courseCode}_${ts}.md`;
-      fs.writeFileSync(creatorFile, creatorBrief);
-
-      let checkerFile = null;
-      if (checkerBrief) {
-        checkerFile = `/tmp/golden_checker_${courseCode}_${ts}.md`;
-        fs.writeFileSync(checkerFile, checkerBrief);
-      }
-
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
       const buildMode = isCalibration ? 'calibration' : 'golden';
+      const port = ctx.config.PORT || 3471;
+      const ts = Date.now();
+
+      if (isCalibration) {
+        // ── CALIBRATION: single Opus Creator (human-in-loop) ──
+        const creatorResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/calibrate?target=${targetSeeds}`);
+        if (!creatorResp.ok) throw new Error(`Failed to fetch calibrate brief: ${creatorResp.status}`);
+        const creatorBrief = await creatorResp.text();
+
+        if (dryRun) return res.json({ dry_run: true, phase, creator_brief: creatorBrief, target_seeds: targetSeeds });
+
+        const creatorFile = `/tmp/golden_creator_${courseCode}_${ts}.md`;
+        fs.writeFileSync(creatorFile, creatorBrief);
+
+        let jobId = null;
+        try {
+          const { data: jobData, error: jobError } = await ctx.supabase.from('build_jobs').insert({
+            course_code: courseCode, pass: 'golden', status: 'running',
+            current_seed: 0, seeds_completed: 0, total_seeds: targetSeeds,
+            started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard', terminal: effectiveTerminal,
+            agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'calibration'
+          }).select('id').single();
+          if (!jobError && jobData) jobId = jobData.id;
+        } catch (e) { console.error('[GOLDEN] Failed to create build_jobs record:', e.message); }
+
+        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+        console.log(`[GOLDEN] Spawning Calibration Creator for ${courseCode}`);
+        spawnInTerminal(ctx, creatorCmd, 'Calibration Creator', courseCode);
+
+        return res.json({ ok: true, course_code: courseCode, job_id: jobId, phase, target_seeds: targetSeeds,
+          message: `Calibration build started — Creator agent (human-collaboration) spawned` });
+      }
+
+      // ── GOLDEN PHASE: parallel Sonnet Creators + 1 Opus Checker ──
+
+      // Find remaining seeds
+      const { data: completedSeeds } = await ctx.supabase
+        .from('course_seeds').select('seed_number')
+        .eq('course_code', courseCode).not('decomposed_at', 'is', null)
+        .lte('seed_number', targetSeeds).order('seed_number');
+
+      const completedSet = new Set((completedSeeds || []).map(s => s.seed_number));
+      const remaining = [];
+      for (let i = 1; i <= targetSeeds; i++) {
+        if (!completedSet.has(i)) remaining.push(i);
+      }
+
+      if (remaining.length === 0) {
+        return res.json({ ok: false, error: `All ${targetSeeds} seeds already complete` });
+      }
+
+      // Split remaining seeds into batches of ~5 for parallel Creators
+      const SEEDS_PER_CREATOR = 5;
+      const batches = [];
+      for (let i = 0; i < remaining.length; i += SEEDS_PER_CREATOR) {
+        batches.push(remaining.slice(i, i + SEEDS_PER_CREATOR));
+      }
+
+      if (dryRun) {
+        return res.json({ dry_run: true, phase, remaining_seeds: remaining,
+          creator_batches: batches.length, seeds_per_creator: SEEDS_PER_CREATOR,
+          creator_model: 'sonnet', checker_model: 'opus', target_seeds: targetSeeds });
+      }
 
       // Create build_jobs record
       let jobId = null;
       try {
-        const { data: jobData, error: jobError } = await ctx.supabase
-          .from('build_jobs')
-          .insert({
-            course_code: courseCode,
-            pass: 'golden',
-            status: 'running',
-            current_seed: 0,
-            seeds_completed: 0,
-            total_seeds: targetSeeds,
-            started_at: new Date().toISOString(),
-            last_heartbeat: new Date().toISOString(),
-            requested_by: 'dashboard',
-            terminal: effectiveTerminal,
-            agent_count: isCalibration ? 1 : 2,
-            respawn_count: 0,
-            machine_name: ctx.MACHINE_NAME,
-            build_mode: buildMode
-          })
-          .select('id')
-          .single();
+        const { data: jobData, error: jobError } = await ctx.supabase.from('build_jobs').insert({
+          course_code: courseCode, pass: 'golden', status: 'running',
+          current_seed: remaining[0], seeds_completed: completedSet.size, total_seeds: targetSeeds,
+          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard', terminal: effectiveTerminal,
+          agent_count: batches.length + 1, respawn_count: 0,
+          machine_name: ctx.MACHINE_NAME, build_mode: 'golden_parallel'
+        }).select('id').single();
         if (!jobError && jobData) jobId = jobData.id;
-      } catch (e) {
-        console.error('[GOLDEN] Failed to create build_jobs record:', e.message);
+      } catch (e) { console.error('[GOLDEN] Failed to create build_jobs record:', e.message); }
+
+      // Spawn parallel Sonnet Creators — one per batch
+      const creatorFiles = [];
+      for (let i = 0; i < batches.length; i++) {
+        const batch = batches[i];
+        const seedList = batch.join(',');
+        const briefResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/golden-creator?target=${targetSeeds}&seeds=${seedList}`);
+        if (!briefResp.ok) throw new Error(`Failed to fetch creator brief for batch ${i + 1}: ${briefResp.status}`);
+        const brief = await briefResp.text();
+
+        const creatorFile = `/tmp/golden_creator_${courseCode}_batch${i + 1}_${ts}.md`;
+        fs.writeFileSync(creatorFile, brief);
+        creatorFiles.push(creatorFile);
+
+        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+        console.log(`[GOLDEN] Spawning Sonnet Creator ${i + 1}/${batches.length} for ${courseCode} — seeds ${batch[0]}-${batch[batch.length - 1]}`);
+        spawnInTerminal(ctx, creatorCmd, `Creator ${i + 1}/${batches.length}`, courseCode);
+
+        // Stagger spawns by 2 seconds to avoid iTerm race conditions
+        if (i < batches.length - 1) await new Promise(resolve => setTimeout(resolve, 2000));
       }
 
-      // Spawn Creator agent
-      const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
-      const creatorLabel = isCalibration ? 'Calibration Creator' : 'Golden Creator';
+      // Spawn 1 Opus Checker after a short delay
+      await new Promise(resolve => setTimeout(resolve, 5000));
 
-      console.log(`[GOLDEN] Spawning ${creatorLabel} for ${courseCode} in ${effectiveTerminal} (phase: ${phase})`);
-      spawnInTerminal(ctx, creatorCmd, creatorLabel, courseCode);
+      const checkerResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/golden-checker?target=${targetSeeds}`);
+      if (!checkerResp.ok) throw new Error(`Failed to fetch checker brief: ${checkerResp.status}`);
+      const checkerBrief = await checkerResp.text();
 
-      // Only spawn Checker for golden phase (not calibration — human is the checker)
-      if (!isCalibration && checkerFile) {
-        // Wait 5 seconds before spawning Checker
-        await new Promise(resolve => setTimeout(resolve, 5000));
+      const checkerFile = `/tmp/golden_checker_${courseCode}_${ts}.md`;
+      fs.writeFileSync(checkerFile, checkerBrief);
 
-        const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
-        console.log(`[GOLDEN] Spawning Checker for ${courseCode} in ${effectiveTerminal}`);
-        spawnInTerminal(ctx, checkerCmd, 'Golden Checker', courseCode);
-      }
+      const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
+      console.log(`[GOLDEN] Spawning Opus Checker for ${courseCode}`);
+      spawnInTerminal(ctx, checkerCmd, 'Golden Checker', courseCode);
 
-      const agentDesc = isCalibration ? 'Creator agent (human-collaboration)' : 'Creator + Checker agents';
       res.json({
         ok: true,
         course_code: courseCode,
         job_id: jobId,
         phase,
         target_seeds: targetSeeds,
-        creator_brief_file: creatorFile,
-        checker_brief_file: checkerFile,
-        message: `${isCalibration ? 'Calibration' : 'Golden'} build started — ${agentDesc} spawned for seeds 1-${targetSeeds}`
+        remaining_seeds: remaining.length,
+        creator_batches: batches.length,
+        creator_model: 'sonnet',
+        checker_model: 'opus',
+        message: `Golden build started — ${batches.length} Sonnet Creators + 1 Opus Checker spawned for ${remaining.length} remaining seeds`
       });
     } catch (err) {
       console.error('[GOLDEN] Error starting golden build:', err);

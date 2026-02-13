@@ -21,27 +21,33 @@ async function generateGoldenCreatorBrief(courseCode, query = {}) {
     ? JSON.stringify(courseInfo.quality_rules.target_language_guidance, null, 2)
     : null;
 
-  // Find which seeds are already complete (have LEGOs)
-  const { data: completedSeeds } = await supabase
-    .from('course_seeds')
-    .select('seed_number')
-    .eq('course_code', courseCode)
-    .not('decomposed_at', 'is', null)
-    .lte('seed_number', targetSeeds)
-    .order('seed_number');
+  // If specific seeds are assigned (parallel batch mode), use those
+  // Otherwise, find remaining seeds from the database
+  let remainingSeeds;
+  if (query.seeds) {
+    remainingSeeds = query.seeds.split(',').map(Number).filter(n => n > 0);
+  } else {
+    const { data: completedSeeds } = await supabase
+      .from('course_seeds')
+      .select('seed_number')
+      .eq('course_code', courseCode)
+      .not('decomposed_at', 'is', null)
+      .lte('seed_number', targetSeeds)
+      .order('seed_number');
 
-  const completedSet = new Set((completedSeeds || []).map(s => s.seed_number));
-  const remainingSeeds = [];
-  for (let i = 1; i <= targetSeeds; i++) {
-    if (!completedSet.has(i)) remainingSeeds.push(i);
+    const completedSet = new Set((completedSeeds || []).map(s => s.seed_number));
+    remainingSeeds = [];
+    for (let i = 1; i <= targetSeeds; i++) {
+      if (!completedSet.has(i)) remainingSeeds.push(i);
+    }
   }
   const firstSeed = remainingSeeds.length > 0 ? remainingSeeds[0] : 1;
-  const completedCount = completedSet.size;
+  const completedCount = targetSeeds - remainingSeeds.length;
 
   return `# Golden Seed Creator — ${courseCode} (${langName})
 
 You are building golden seed decompositions for **${courseCode}** (${langName}).
-${completedCount > 0 ? `**Progress: ${completedCount}/${targetSeeds} seeds already complete.** Start from seed ${firstSeed}. Seeds remaining: ${remainingSeeds.join(', ')}.` : `Build seeds 1 through ${targetSeeds}.`}
+${query.seeds ? `**You are one of several parallel Creator agents.** Your assigned seeds: **${remainingSeeds.join(', ')}** (${remainingSeeds.length} seeds).` : completedCount > 0 ? `**Progress: ${completedCount}/${targetSeeds} seeds already complete.** Start from seed ${firstSeed}. Seeds remaining: ${remainingSeeds.join(', ')}.` : `Build seeds 1 through ${targetSeeds}.`}
 These golden seeds will calibrate all future autonomous agents for this course. Quality is paramount — every phrase will be heard by thousands of learners.
 
 ## Your Role
@@ -119,7 +125,7 @@ Study these summaries to understand decomposition patterns. For full detail on a
 
 ${crossCourseSummaries || '(No cross-course calibrations available yet — you are pioneering!)'}
 
-## Protocol — For Each Seed N (1 → ${targetSeeds})
+## Protocol — For Each Seed N${query.seeds ? ` (your assigned seeds: ${remainingSeeds.join(', ')})` : ` (1 → ${targetSeeds})`}
 
 ### Step 1: Fetch cross-course examples
 \`\`\`bash
@@ -191,16 +197,16 @@ A full rebuild ensures consistency after structural changes.
 ## AUTONOMY
 
 You are running unattended. NEVER ask questions.
-${completedCount > 0 ? `Seeds 1-${completedCount} are ALREADY DONE. Start from seed ${firstSeed} and work through: ${remainingSeeds.join(', ')}.` : `Process every seed sequentially from 1 to ${targetSeeds}.`}
-Do NOT spawn sub-agents. Work through seeds one at a time, carefully and thoroughly.
+**Your seeds: ${remainingSeeds.join(', ')}.** Process ONLY these seeds, in order. Do NOT work on any other seeds.
+Do NOT spawn sub-agents. Work through your assigned seeds one at a time, carefully and thoroughly.
 Work SLOWLY AND STEADILY — quality over speed. Each phrase will be heard by thousands of learners.
 
-When you finish all ${targetSeeds} seeds, submit them as calibration data:
+${query.seeds ? `When you finish all your assigned seeds (${remainingSeeds.join(', ')}), you are DONE. Do NOT call finalize — the system handles that separately.` : `When you finish all ${targetSeeds} seeds, submit them as calibration data:
 \`\`\`bash
 curl -s -X POST "http://localhost:3471/api/golden/finalize/${courseCode}" \\
   -H "Content-Type: application/json" \\
   -d '{"target_seeds": ${targetSeeds}}'
-\`\`\`
+\`\`\``}
 `;
 }
 
