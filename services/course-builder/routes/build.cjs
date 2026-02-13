@@ -471,7 +471,7 @@ module.exports = function (ctx) {
           if (!jobError && jobData) jobId = jobData.id;
         } catch (e) { console.error('[GOLDEN] Failed to create build_jobs record:', e.message); }
 
-        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${creatorFile})"`;
         console.log(`[GOLDEN] Spawning Calibration Creator for ${courseCode}`);
         spawnInTerminal(ctx, creatorCmd, 'Calibration Creator', courseCode);
 
