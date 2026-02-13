@@ -3097,7 +3097,7 @@ app.get('/api/audio/status', async (req, res) => {
 app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { role, dryRun = true, flaggedOnly = false, limit = 1000 } = req.body
+    const { role, dryRun = true, flaggedOnly = false, limit } = req.body
 
     if (!role || !['known', 'target1', 'target2', 'presentation'].includes(role)) {
       return res.status(400).json({ error: 'Invalid role. Must be known, target1, target2, or presentation' })
@@ -3125,7 +3125,11 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
       .select('id, text, text_normalized, language, role, voice_id, duration_ms')
       .eq('course_code', courseCode)
       .eq('role', role)
-      .limit(limit)
+
+    // Apply limit only if explicitly provided
+    if (limit) {
+      audioQuery = audioQuery.limit(limit)
+    }
 
     const { data: audioSamples, error: audioError } = await audioQuery
 
@@ -3182,7 +3186,7 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
       role,
       dryRun: false,
       flaggedOnly,
-      limit
+      ...(limit ? { limit } : {})
     })
 
     // Emit WebSocket event
