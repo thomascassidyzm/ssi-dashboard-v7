@@ -21,28 +21,34 @@ async function generateGoldenCheckerBrief(courseCode, query = {}) {
     ? JSON.stringify(courseInfo.quality_rules.target_language_guidance, null, 2)
     : null;
 
-  // Find which seeds are already complete (have checked phrases)
+  // If specific seed range assigned (parallel checker mode), use those
+  const seedsMin = parseInt(query.seeds_min) || 1;
+  const seedsMax = parseInt(query.seeds_max) || targetSeeds;
+  const isParallel = query.seeds_min && query.seeds_max;
+
+  // Find which seeds in range are already complete
   const { data: completedSeeds } = await supabase
     .from('course_seeds')
     .select('seed_number')
     .eq('course_code', courseCode)
     .not('decomposed_at', 'is', null)
-    .lte('seed_number', targetSeeds)
+    .gte('seed_number', seedsMin)
+    .lte('seed_number', seedsMax)
     .order('seed_number');
 
   const completedSet = new Set((completedSeeds || []).map(s => s.seed_number));
   const remainingSeeds = [];
-  for (let i = 1; i <= targetSeeds; i++) {
+  for (let i = seedsMin; i <= seedsMax; i++) {
     if (!completedSet.has(i)) remainingSeeds.push(i);
   }
-  const firstSeed = remainingSeeds.length > 0 ? remainingSeeds[0] : 1;
+  const firstSeed = remainingSeeds.length > 0 ? remainingSeeds[0] : seedsMin;
   const completedCount = completedSet.size;
 
-  return `# Golden Seed Checker — ${courseCode} (${langName})
+  return `# Golden Seed Checker — ${courseCode} (${langName})${isParallel ? ` — Seeds ${seedsMin}-${seedsMax}` : ''}
 
 You are the quality reviewer AND fixer for golden seed decompositions of **${courseCode}** (${langName}).
-Your job is to ensure every seed is grammatically correct, natural in both languages, and pedagogically powerful.
-These ${targetSeeds} golden seeds will calibrate ALL future autonomous agents — your review determines the quality bar.
+${isParallel ? `**You are one of several parallel Checker agents.** Your assigned range: **seeds ${seedsMin}-${seedsMax}** (${seedsMax - seedsMin + 1} seeds). Review ONLY these seeds.` : `Your job is to ensure every seed is grammatically correct, natural in both languages, and pedagogically powerful.`}
+These golden seeds will calibrate ALL future autonomous agents — your review determines the quality bar.
 
 ## Your Role
 
@@ -213,7 +219,7 @@ If a seed needs more than one rewrite, approve what you have and move on. A huma
 ## AUTONOMY
 
 You are running unattended. NEVER ask questions. NEVER ask for confirmation.
-${completedCount > 0 ? `Seeds 1-${completedCount} are ALREADY DONE. Start monitoring from seed ${firstSeed}. Seeds remaining: ${remainingSeeds.join(', ')}.` : `Monitor and review every seed from 1 to ${targetSeeds}.`}
+${isParallel ? `**Your seeds: ${seedsMin}-${seedsMax}.** Monitor and review ONLY seeds in this range.${completedCount > 0 ? ` Seeds already done: ${[...completedSet].join(', ')}. Remaining: ${remainingSeeds.join(', ')}.` : ''}` : completedCount > 0 ? `Seeds already done in range. Start monitoring from seed ${firstSeed}. Seeds remaining: ${remainingSeeds.join(', ')}.` : `Monitor and review every seed from ${seedsMin} to ${seedsMax}.`}
 Do NOT spawn sub-agents. Work through seeds one at a time with meticulous attention to grammar and naturalness.
 Work SLOWLY AND STEADILY — your review determines whether thousands of learners get correct phrases.
 

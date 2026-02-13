@@ -505,8 +505,16 @@ module.exports = function (ctx) {
       }
 
       if (dryRun) {
+        const SEEDS_PER_CHECKER = 10;
+        const dryCheckerRanges = [];
+        const dryMin = remaining[0];
+        const dryMax = remaining[remaining.length - 1];
+        for (let start = Math.floor((dryMin - 1) / SEEDS_PER_CHECKER) * SEEDS_PER_CHECKER + 1; start <= dryMax; start += SEEDS_PER_CHECKER) {
+          dryCheckerRanges.push({ min: start, max: Math.min(start + SEEDS_PER_CHECKER - 1, targetSeeds) });
+        }
         return res.json({ dry_run: true, phase, remaining_seeds: remaining,
           creator_batches: batches.length, seeds_per_creator: SEEDS_PER_CREATOR,
+          checker_count: dryCheckerRanges.length, checker_ranges: dryCheckerRanges,
           creator_model: 'sonnet', checker_model: 'opus', target_seeds: targetSeeds });
       }
 
@@ -545,19 +553,33 @@ module.exports = function (ctx) {
         if (i < batches.length - 1) await new Promise(resolve => setTimeout(resolve, 2000));
       }
 
-      // Spawn 1 Opus Checker after a short delay
+      // Spawn parallel Opus Checkers — one per 10-seed range, after a short delay
       await new Promise(resolve => setTimeout(resolve, 5000));
 
-      const checkerResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/golden-checker?target=${targetSeeds}`);
-      if (!checkerResp.ok) throw new Error(`Failed to fetch checker brief: ${checkerResp.status}`);
-      const checkerBrief = await checkerResp.text();
+      const SEEDS_PER_CHECKER = 10;
+      const checkerRanges = [];
+      const minSeed = remaining[0];
+      const maxSeed = remaining[remaining.length - 1];
+      for (let start = Math.floor((minSeed - 1) / SEEDS_PER_CHECKER) * SEEDS_PER_CHECKER + 1; start <= maxSeed; start += SEEDS_PER_CHECKER) {
+        const end = Math.min(start + SEEDS_PER_CHECKER - 1, targetSeeds);
+        checkerRanges.push({ min: start, max: end });
+      }
 
-      const checkerFile = `/tmp/golden_checker_${courseCode}_${ts}.md`;
-      fs.writeFileSync(checkerFile, checkerBrief);
+      for (let i = 0; i < checkerRanges.length; i++) {
+        const range = checkerRanges[i];
+        const checkerResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/golden-checker?target=${targetSeeds}&seeds_min=${range.min}&seeds_max=${range.max}`);
+        if (!checkerResp.ok) throw new Error(`Failed to fetch checker brief for range ${range.min}-${range.max}: ${checkerResp.status}`);
+        const checkerBrief = await checkerResp.text();
 
-      const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${checkerFile})"`;
-      console.log(`[GOLDEN] Spawning Opus Checker for ${courseCode}`);
-      spawnInTerminal(ctx, checkerCmd, 'Golden Checker', courseCode);
+        const checkerFile = `/tmp/golden_checker_${courseCode}_${range.min}-${range.max}_${ts}.md`;
+        fs.writeFileSync(checkerFile, checkerBrief);
+
+        const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${checkerFile})"`;
+        console.log(`[GOLDEN] Spawning Opus Checker ${i + 1}/${checkerRanges.length} for ${courseCode} — seeds ${range.min}-${range.max}`);
+        spawnInTerminal(ctx, checkerCmd, `Checker ${range.min}-${range.max}`, courseCode);
+
+        if (i < checkerRanges.length - 1) await new Promise(resolve => setTimeout(resolve, 2000));
+      }
 
       res.json({
         ok: true,
@@ -567,9 +589,11 @@ module.exports = function (ctx) {
         target_seeds: targetSeeds,
         remaining_seeds: remaining.length,
         creator_batches: batches.length,
+        checker_count: checkerRanges.length,
+        checker_ranges: checkerRanges,
         creator_model: 'sonnet',
         checker_model: 'opus',
-        message: `Golden build started — ${batches.length} Sonnet Creators + 1 Opus Checker spawned for ${remaining.length} remaining seeds`
+        message: `Golden build started — ${batches.length} Sonnet Creators + ${checkerRanges.length} Opus Checkers spawned for ${remaining.length} remaining seeds`
       });
     } catch (err) {
       console.error('[GOLDEN] Error starting golden build:', err);
