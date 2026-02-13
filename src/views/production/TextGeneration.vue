@@ -522,18 +522,8 @@
               <span v-if="genderPrep.flagged > 0" class="text-xs text-amber-400">{{ genderPrep.flagged }} audio flagged</span>
               <span v-if="genderPrep.processed" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('gender-prep')" class="stage-badge-locked">Locked</span>
-              <button
-                v-else-if="!genderPrepRunning"
-                @click="startGenderPrep"
-                class="px-3 py-1 bg-purple-600/20 border border-purple-500/50 text-purple-400 hover:border-purple-400/70 text-xs font-medium rounded-lg transition-all"
-              >
-                Process
-              </button>
-              <span v-if="genderPrepRunning" class="text-xs text-purple-400 animate-pulse">Running...</span>
+              <span v-else class="text-xs text-slate-500">Run from Audio tab</span>
             </div>
-          </div>
-          <div v-if="genderPrepResult" class="mt-2 text-xs" :class="genderPrepResult.ok ? 'text-emerald-400' : 'text-red-400'">
-            {{ genderPrepResult.text }}
           </div>
         </div>
 
@@ -803,8 +793,6 @@ const deletingFlagged = ref(false)
 
 // Gender prep state
 const genderPrep = ref({ isGendered: false, processed: false, totalExpansions: 0, processedAt: null, flagged: 0 })
-const genderPrepRunning = ref(false)
-const genderPrepResult = ref(null)
 
 const uncheckedGrouped = computed(() => {
   const groups = {}
@@ -1614,39 +1602,6 @@ async function fetchGenderPrepFlagCount() {
     }
   } catch (err) {
     // Silently fail
-  }
-}
-
-async function startGenderPrep() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  genderPrepRunning.value = true
-  genderPrepResult.value = null
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/start`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-    const data = await response.json()
-    if (response.ok) {
-      genderPrepResult.value = {
-        ok: true,
-        text: `${data.modified} texts expanded in ${(data.elapsed / 1000).toFixed(1)}s, ${data.flagged} audio flagged for regen`
-      }
-      // Refresh status
-      await fetchGenderPrepStatus()
-    } else {
-      genderPrepResult.value = { ok: false, text: data.error || 'Failed to process' }
-    }
-  } catch (err) {
-    genderPrepResult.value = { ok: false, text: err.message }
-  } finally {
-    genderPrepRunning.value = false
   }
 }
 

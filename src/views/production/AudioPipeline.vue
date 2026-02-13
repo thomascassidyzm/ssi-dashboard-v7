@@ -18,7 +18,7 @@
       <!-- Pipeline View -->
       <div v-else class="space-y-8">
 
-        <!-- GENDER PREP STATUS BANNER -->
+        <!-- GENDER PREP BANNER -->
         <div v-if="genderPrepStatus.isGendered" class="rounded-xl p-4 flex items-center gap-4"
           :class="genderPrepStatus.processed
             ? 'bg-emerald-900/20 border border-emerald-500/20'
@@ -42,10 +42,21 @@
                 {{ genderPrepStatus.totalExpansions }} expansions ready<template v-if="genderPrepFlagCount > 0">, {{ genderPrepFlagCount }} audio flagged for regen</template>
               </template>
               <template v-else>
-                Audio will use masculine defaults. Run Gender Prep on the Text tab first.
+                Audio will use masculine defaults until gender prep is run.
               </template>
             </div>
+            <div v-if="genderPrepResult" class="text-xs mt-1" :class="genderPrepResult.ok ? 'text-emerald-400' : 'text-red-400'">
+              {{ genderPrepResult.text }}
+            </div>
           </div>
+          <button
+            v-if="!genderPrepStatus.processed && !genderPrepRunning"
+            @click="startGenderPrep"
+            class="px-4 py-2 bg-purple-600/20 border border-purple-500/50 text-purple-300 hover:border-purple-400/70 hover:text-purple-200 text-sm font-medium rounded-lg transition-all flex-shrink-0"
+          >
+            Run Gender Prep
+          </button>
+          <span v-if="genderPrepRunning" class="text-sm text-purple-400 animate-pulse flex-shrink-0">Running...</span>
         </div>
 
         <!-- LIVE PROGRESS (when active) -->
@@ -677,6 +688,8 @@ const error = ref<string | null>(null)
 // Gender prep status state
 const genderPrepStatus = ref<any>({ isGendered: false, processed: false, totalExpansions: 0 })
 const genderPrepFlagCount = ref(0)
+const genderPrepRunning = ref(false)
+const genderPrepResult = ref<any>(null)
 
 // Voice configuration state
 const showVoiceConfig = ref(false)
@@ -794,6 +807,35 @@ const fetchGenderPrepStatus = async () => {
     }
   } catch (err) {
     // Silently fail - endpoint may not exist
+  }
+}
+
+// Gender prep action
+const startGenderPrep = async () => {
+  genderPrepRunning.value = true
+  genderPrepResult.value = null
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/gender-prep/start`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+    const data = await response.json()
+    if (response.ok) {
+      genderPrepResult.value = {
+        ok: true,
+        text: `${data.modified} texts expanded in ${(data.elapsed / 1000).toFixed(1)}s, ${data.flagged} audio flagged for regen`
+      }
+      await fetchGenderPrepStatus()
+    } else {
+      genderPrepResult.value = { ok: false, text: data.error || 'Failed to process' }
+    }
+  } catch (err: any) {
+    genderPrepResult.value = { ok: false, text: err.message }
+  } finally {
+    genderPrepRunning.value = false
   }
 }
 
