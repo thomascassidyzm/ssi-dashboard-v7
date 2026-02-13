@@ -429,6 +429,13 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
   }
 })
 
+// Load version info when Step 3 becomes active
+watch(activeStep, async (step) => {
+  if (step === 3) {
+    await handleLoadVersionInfo()
+  }
+})
+
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
   if (props.visible) {

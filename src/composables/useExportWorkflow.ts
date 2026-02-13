@@ -205,6 +205,7 @@ export function useExportWorkflow(courseCode: string) {
 
   // WebSocket for real-time updates
   let socket: Socket | null = null
+  let socketConnected = false
 
   // Computed
   const currentStep = computed(() => {
@@ -262,6 +263,19 @@ export function useExportWorkflow(courseCode: string) {
 
   // Connect WebSocket for real-time progress updates
   function connectWebSocket() {
+    // If already connected, don't create a new socket
+    if (socket && socketConnected) {
+      console.log('[ExportWorkflow] WebSocket already connected, reusing existing connection')
+      return
+    }
+
+    // If socket exists but not connected, disconnect first
+    if (socket) {
+      socket.disconnect()
+      socket = null
+      socketConnected = false
+    }
+
     const apiBase = getApiBaseUrl()
     const wsUrl = apiBase || window.location.origin
 
@@ -273,9 +287,10 @@ export function useExportWorkflow(courseCode: string) {
     socket.on('connect', () => {
       console.log('[ExportWorkflow] WebSocket connected to:', wsUrl)
       console.log('[ExportWorkflow] Socket ID:', socket?.id)
+      socketConnected = true
 
       // Join course-specific room
-      socket.emit('join_course', { courseCode })
+      socket?.emit('join_course', { courseCode })
       console.log('[ExportWorkflow] Joined course room:', courseCode)
     })
 
@@ -285,6 +300,7 @@ export function useExportWorkflow(courseCode: string) {
 
     socket.on('disconnect', (reason) => {
       console.log('[ExportWorkflow] WebSocket disconnected:', reason)
+      socketConnected = false
     })
 
     // Legacy audio generation progress
@@ -359,6 +375,15 @@ export function useExportWorkflow(courseCode: string) {
     socket.on('s3Verify:completed', (data: { courseCode: string }) => {
       if (data.courseCode === courseCode) {
         s3VerifyProgress.value = { checked: 0, total: 0 }
+        isLoading.value = false
+      }
+    })
+
+    socket.on('s3Verify:error', (data: { courseCode: string; error: string }) => {
+      if (data.courseCode === courseCode) {
+        error.value = data.error
+        s3VerifyProgress.value = { checked: 0, total: 0 }
+        isLoading.value = false
       }
     })
 
@@ -500,6 +525,7 @@ export function useExportWorkflow(courseCode: string) {
       socket.emit('unsubscribe', courseCode)
       socket.disconnect()
       socket = null
+      socketConnected = false
     }
   }
 
@@ -507,6 +533,9 @@ export function useExportWorkflow(courseCode: string) {
   async function loadState() {
     isLoading.value = true
     error.value = null
+
+    // Connect WebSocket early so it's ready for progress updates
+    connectWebSocket()
 
     try {
       const data = await fetchApi(`/api/production/${courseCode}/export-state`)
@@ -604,15 +633,43 @@ export function useExportWorkflow(courseCode: string) {
     isLoading.value = true
     error.value = null
     s3VerifyProgress.value = { checked: 0, total: 0 }
+    let alreadyRunning = false
 
     try {
       connectWebSocket()
 
       // Use 20-minute timeout for verify-s3 (large courses need more time)
-      const data = await fetchApi(`/api/production/${courseCode}/verify-s3`, {
+      const apiBase = getApiBaseUrl()
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 1200000) // 20 minutes
+
+      const response = await fetch(`${apiBase}/api/production/${courseCode}/verify-s3`, {
         method: 'POST',
+        signal: controller.signal,
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
+        },
         body: JSON.stringify({ fixDurations: true })
-      }, 1200000) // 20 minutes
+      })
+
+      clearTimeout(timeoutId)
+
+      // Handle 409 gracefully - verification already running, just continue listening
+      if (response.status === 409) {
+        const data = await response.json()
+        console.log(`[ExportWorkflow] Verification already in progress (${data.elapsedSeconds}s elapsed)`)
+        // Keep loading state, WebSocket will still receive updates from the running job
+        alreadyRunning = true
+        return null
+      }
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Request failed' }))
+        throw new Error(errorData.error || 'Request failed')
+      }
+
+      const data = await response.json()
 
       // Update local state
       state.value.s3Verified = data.missing === 0
@@ -621,11 +678,18 @@ export function useExportWorkflow(courseCode: string) {
 
       return data
     } catch (err: any) {
-      error.value = err.message
+      if (err.name === 'AbortError') {
+        error.value = 'Request timeout after 1200s'
+      } else {
+        error.value = err.message
+      }
       throw err
     } finally {
-      isLoading.value = false
-      s3VerifyProgress.value = { checked: 0, total: 0 }
+      // Only reset loading state if we're not piggybacking on an existing job
+      if (!alreadyRunning) {
+        isLoading.value = false
+        s3VerifyProgress.value = { checked: 0, total: 0 }
+      }
     }
   }
 

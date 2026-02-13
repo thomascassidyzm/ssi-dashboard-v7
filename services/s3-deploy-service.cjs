@@ -513,6 +513,7 @@ async function deployToProduction(uuids, options = {}) {
   // Deploy files (5 at a time for rate limiting)
   const concurrency = 5
   let deployed = 0
+  logger.info(`[S3Deploy] Starting S3 copy of ${uuids.length} files...`)
 
   for (let i = 0; i < uuids.length; i += concurrency) {
     const batch = uuids.slice(i, i + concurrency)
@@ -529,6 +530,10 @@ async function deployToProduction(uuids, options = {}) {
 
     await Promise.all(copies)
     deployed += batch.length
+
+    if (deployed % 500 === 0 || deployed === uuids.length) {
+      logger.info(`[S3Deploy] Copy progress: ${deployed}/${uuids.length} files deployed`)
+    }
 
     if (onProgress) {
       onProgress(deployed, uuids.length)

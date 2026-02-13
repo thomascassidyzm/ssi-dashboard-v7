@@ -30,6 +30,10 @@ const languageCodeService = require('./language-code-service.cjs')
 const manifestCache = new Map()
 const MANIFEST_CACHE_TTL_MS = 0 // DISABLED - caching causes issues during testing
 
+// Track running S3 verifications to prevent duplicate jobs
+// Maps courseCode -> { startedAt }
+const runningVerifications = new Map()
+
 async function getCachedManifest(courseCode) {
   const cached = manifestCache.get(courseCode)
   if (cached && (Date.now() - cached.timestamp) < MANIFEST_CACHE_TTL_MS) {
@@ -76,7 +80,7 @@ const io = new Server(httpServer, {
 })
 
 app.use(cors())
-app.use(express.json())
+app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
 
 // Disable ALL caching on API responses during development
 app.use((req, res, next) => {
@@ -5425,9 +5429,25 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
+    // Check if verification is already running for this course
+    const running = runningVerifications.get(courseCode)
+    if (running) {
+      const elapsed = Math.round((Date.now() - running.startedAt) / 1000)
+      logger.info(`[VERIFY-S3] Verification already running for ${courseCode} (${elapsed}s elapsed), skipping duplicate request`)
+      return res.status(409).json({
+        error: 'Verification already in progress',
+        alreadyRunning: true,
+        elapsedSeconds: elapsed
+      })
+    }
+
+    // Mark verification as running
+    runningVerifications.set(courseCode, { startedAt: Date.now() })
+
     // Load manifest from temp/course_export_states
     const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
     if (!fs.existsSync(manifestPath)) {
+      runningVerifications.delete(courseCode)
       return res.status(404).json({ error: 'No pending manifest found. Generate manifest first.' })
     }
 
@@ -5627,10 +5647,12 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
           // Notify completion
           logger.info(`[VERIFY-S3] All stages complete for ${courseCode}`)
           io.emit('s3Verify:completed', { courseCode, ...results })
+          runningVerifications.delete(courseCode)
 
         } catch (err) {
           logger.error(`[AUTO-FIX] Background error for ${courseCode}:`, err)
           io.emit('s3Verify:error', { courseCode, error: err.message })
+          runningVerifications.delete(courseCode)
         }
       })
     } else {
@@ -5647,10 +5669,12 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
         .eq('course_code', courseCode)
 
       io.emit('s3Verify:completed', { courseCode, ...results })
+      runningVerifications.delete(courseCode)
     }
 
   } catch (error) {
     logger.error(`Verify S3 error for ${courseCode}:`, error)
+    runningVerifications.delete(courseCode)
     res.status(500).json({ error: error.message })
   }
 })
@@ -5932,7 +5956,7 @@ app.post('/api/production/:courseCode/deploy-audio/new-and-mismatched', async (r
     const result = await s3DeployService.deployToProduction(uuidsToDeploy, {
       confirmOverwrite: true, // Trust our plan - these are the files we want to deploy
       onProgress: (deployed, total) => {
-        io.emit('deploy:progress', { courseCode, deployed, total })
+        io.emit('audioDeploy:progress', { courseCode, deployed, total })
       }
     })
 

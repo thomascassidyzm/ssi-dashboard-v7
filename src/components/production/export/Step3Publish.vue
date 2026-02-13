@@ -179,12 +179,12 @@
       <!-- Publish button -->
       <button
         @click="handlePublish"
-        :disabled="isLoading || !version || !durationsVerified"
+        :disabled="isPublishing || !version || !durationsVerified"
         class="w-full px-4 py-3 text-sm font-medium bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
-        <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+        <span v-if="isPublishing" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
         <span v-if="!durationsVerified">Blocked: Verify Durations First</span>
-        <span v-else>{{ isLoading ? 'Publishing...' : 'Publish Manifest' }}</span>
+        <span v-else>{{ isPublishing ? 'Publishing...' : 'Publish Manifest' }}</span>
       </button>
     </div>
 
@@ -373,12 +373,12 @@
           </button>
           <button
             @click="handleRepublish"
-            :disabled="isLoading || !republishVersion || !durationsVerified"
+            :disabled="isPublishing || !republishVersion || !durationsVerified"
             class="flex-1 px-4 py-3 text-sm font-medium bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>
+            <span v-if="isPublishing" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>
             <span v-if="!durationsVerified">Blocked: Verify Durations First</span>
-            <span v-else>{{ isLoading ? 'Publishing...' : 'Publish New Version' }}</span>
+            <span v-else>{{ isPublishing ? 'Publishing...' : 'Publish New Version' }}</span>
           </button>
         </div>
       </div>
@@ -429,6 +429,9 @@ const emit = defineEmits<{
   downloadManifest: []
   pushToRemote: []
 }>()
+
+// Local publishing state - don't rely on global isLoading which may be from other operations
+const isPublishing = ref(false)
 
 const version = ref('')
 const status = ref('beta')
@@ -495,6 +498,7 @@ watch(showRepublish, (isShowing) => {
 })
 
 function handlePublish() {
+  isPublishing.value = true
   emit('publish', {
     version: version.value,
     status: status.value,
@@ -504,6 +508,7 @@ function handlePublish() {
 }
 
 function handleRepublish() {
+  isPublishing.value = true
   emit('publish', {
     version: republishVersion.value,
     status: republishStatus.value,
@@ -514,6 +519,20 @@ function handleRepublish() {
   // Reset form after publish starts
   showRepublish.value = false
 }
+
+// Reset publishing state when manifest is published (or on error)
+watch(() => props.state.manifestPublished, (published) => {
+  if (published) {
+    isPublishing.value = false
+  }
+})
+
+// Also reset on isLoading becoming false (catches error cases)
+watch(() => props.isLoading, (loading) => {
+  if (!loading && isPublishing.value) {
+    isPublishing.value = false
+  }
+})
 
 function handleDownloadManifest() {
   emit('downloadManifest')

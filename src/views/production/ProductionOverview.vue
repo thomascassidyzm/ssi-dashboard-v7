@@ -63,7 +63,7 @@
     <section v-if="store.blockers.length > 0" class="blockers-section">
       <div v-for="blocker in store.blockers" :key="blocker.id" class="blocker-card">
         <span class="blocker-icon">!</span>
-        <span class="blocker-text">{{ blocker.title }}</span>
+        <span class="blocker-text">{{ blocker.message || blocker.title }}</span>
         <button @click="handleBlocker(blocker)" class="btn-resolve">Fix</button>
       </div>
     </section>
