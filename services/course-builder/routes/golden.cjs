@@ -304,13 +304,26 @@ module.exports = function(ctx) {
 
       console.log(`[GOLDEN] Finalized ${goldenDecompositions.length} golden seeds as calibration for ${courseCode}`);
 
+      // AUTO-CHAIN: If this was Calibration (seeds 1-10), trigger Golden (Phase 3, seeds 11-50)
+      if (targetSeeds <= 10) {
+        const port = ctx.config.PORT || 3471;
+        try {
+          console.log(`[AUTO-CHAIN] Calibration complete for ${courseCode} — triggering Golden phase (seeds 11-50)`);
+          const chainResp = await fetch(`http://localhost:${port}/api/build/golden/${courseCode}?target=50&phase=golden`, { method: 'POST' });
+          const chainResult = await chainResp.json();
+          console.log(`[AUTO-CHAIN] Golden trigger result:`, chainResult.ok ? `started — ${chainResult.creator_batches} Creators + 1 Checker` : chainResult.error);
+        } catch (chainErr) {
+          console.error(`[AUTO-CHAIN] Failed to trigger golden for ${courseCode}:`, chainErr.message);
+        }
+      }
+
       res.json({
         success: true,
         course_code: courseCode,
         seeds_finalized: goldenDecompositions.length,
         golden_seed_count: targetSeeds,
         total_legos: legos.length,
-        message: `${goldenDecompositions.length} golden seeds saved as calibration data. Course is ready for Pass 2.`
+        message: `${goldenDecompositions.length} golden seeds saved as calibration data.${targetSeeds <= 10 ? ' Golden phase (11-50) auto-triggered.' : ''}`
       });
     } catch (err) {
       console.error('[GOLDEN] Error finalizing golden seeds:', err);

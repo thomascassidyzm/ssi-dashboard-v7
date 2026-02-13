@@ -443,6 +443,17 @@ module.exports = function (ctx) {
 
     console.log(`[QUALITY_RULES] Saved methodology guidance for ${courseCode}`);
 
+    // AUTO-CHAIN: Translate complete → start Calibration (Phase 2)
+    const port = ctx.config.PORT || 3471;
+    try {
+      console.log(`[AUTO-CHAIN] Translate complete for ${courseCode} — triggering Calibration phase`);
+      const chainResp = await fetch(`http://localhost:${port}/api/build/golden/${courseCode}?target=10&phase=calibration`, { method: 'POST' });
+      const chainResult = await chainResp.json();
+      console.log(`[AUTO-CHAIN] Calibration trigger result:`, chainResult.ok ? 'started' : chainResult.error);
+    } catch (chainErr) {
+      console.error(`[AUTO-CHAIN] Failed to trigger calibration for ${courseCode}:`, chainErr.message);
+    }
+
     res.json({
       success: true,
       course_code: courseCode,
