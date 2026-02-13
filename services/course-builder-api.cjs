@@ -3120,10 +3120,12 @@ function generateTranslationBrief(courseCode, courseInfo, seedCount) {
   };
   const knownName = knownLangMap[knownLangCode] || knownLangCode;
   const displayName = courseInfo?.display_name || courseCode;
+  // Always translate all 668 canonical seeds, regardless of course_size
+  const translateCount = 668;
 
   return `# Seed Translation Agent — ${courseCode}
 
-You are translating ${seedCount} seed sentences into ${targetLanguageName}.
+You are translating ALL ${translateCount} canonical seed sentences into ${targetLanguageName}.
 Your goal is learner confidence, not native perfection.
 
 ## Translation Doctrine
@@ -3224,7 +3226,7 @@ Learner momentum is.
 
 SEED TRANSLATION AGENT PROMPT v1.0
 
-You are translating a fixed set of ${seedCount} SEED sentences for language learning.
+You are translating a fixed set of ${translateCount} SEED sentences for language learning.
 Your goal is learner confidence, not native perfection.
 
 CORE RULE
@@ -3264,22 +3266,24 @@ A translation is correct if it reduces hesitation and enables reuse.
 
 ## API Workflow
 
-1. Fetch seeds needing translation:
-   curl -s "http://localhost:3471/api/course/${courseCode}/translate"
+1. Fetch seeds needing translation in batches of 50 (NOT all at once):
+   curl -s "http://localhost:3471/api/course/${courseCode}/translate?limit=50&offset=0"
+   Increment offset by 50 each time: offset=0, offset=50, offset=100, etc.
 
-2. Translate in batches of 50. Submit each batch:
+2. Translate each batch of 50 and submit:
    curl -X POST "http://localhost:3471/api/course/${courseCode}/translate" \\
      -H "Content-Type: application/json" \\
      -d '{ "translations": [{ "seed_number": 1, "target_text": "..." }, ...] }'
 
-3. Repeat until all ${seedCount} seeds have target translations.
+3. Fetch the next batch (offset += 50) and repeat until all ${translateCount} seeds are translated.
+   Keep your output concise — do NOT print every seed back. Just translate, submit, move on.
 
 4. Write a translation analysis and submit:
    curl -X POST "http://localhost:3471/api/course/${courseCode}/analysis" \\
      -H "Content-Type: application/json" \\
      -d '{ "analysis": {
        "generated_at": "<ISO timestamp>",
-       "seeds_analyzed": ${seedCount},
+       "seeds_analyzed": ${translateCount},
        "register": { "choice": "...", "markers": ["..."] },
        "problem_verbs": ["..."],
        "golden_keys": ["..."],
@@ -3290,7 +3294,7 @@ A translation is correct if it reduces hesitation and enables reuse.
 - Course: ${courseCode} (${displayName})
 - Known language: ${knownName} (already populated in course_seeds)
 - Target language: ${targetLanguageName} (you provide these translations)
-- Work through ALL phases: 1-150 (Stabilisation), 151-300 (Controlled Flexibility), 301-${seedCount} (Natural Range)
+- Work through ALL phases: 1-150 (Stabilisation), 151-300 (Controlled Flexibility), 301-${translateCount} (Natural Range)
 - Same concept = same word throughout. Build a glossary as you go.
 - The analysis at the end captures register decisions, tricky verbs, and ZUT concerns for Pass 2 agents.
 
@@ -3385,7 +3389,7 @@ async function spawnGoldenBuildAgents(courseCode, targetSeeds = 50, terminal = '
   }
 
   // Spawn Creator agent
-  const creatorCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+  const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
   const creatorLabel = isCalibration ? 'Calibration Creator' : 'Golden Creator';
 
   console.log(`[GOLDEN] Spawning ${creatorLabel} for ${courseCode} in ${effectiveTerminal} (phase: ${phase})`);
@@ -3427,7 +3431,7 @@ end tell`;
     // Wait 5 seconds before spawning Checker
     await new Promise(resolve => setTimeout(resolve, 5000));
 
-    const checkerCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
+    const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
 
     console.log(`[GOLDEN] Spawning Checker for ${courseCode} in ${effectiveTerminal}`);
 
@@ -3489,7 +3493,7 @@ async function spawnTranslationAgent(courseCode, terminal = 'iTerm2', dryRun = f
     .single();
   if (courseErr) throw new Error(`Course not found: ${courseCode}`);
 
-  const seedCountVal = courseInfo.seed_count || 668;
+  const seedCountVal = 668; // Always translate all 668 canonical seeds
   const brief = generateTranslationBrief(courseCode, courseInfo, seedCountVal);
 
   if (dryRun) {
@@ -3538,7 +3542,7 @@ async function spawnTranslationAgent(courseCode, terminal = 'iTerm2', dryRun = f
   }
 
   // Spawn translation agent
-  const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${briefFile})"`;
+  const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${briefFile})"`;
 
   console.log(`[TRANSLATE] Spawning translation agent for ${courseCode} in ${effectiveTerminal}`);
 
@@ -3621,7 +3625,7 @@ async function spawnParallelQAAgent(courseCode, terminal = 'iTerm2') {
   require('fs').writeFileSync(tmpFile, prompt);
 
   const projectDir = __dirname.replace('/services', '');
-  const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+  const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
 
   const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
@@ -3949,7 +3953,7 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
   require('fs').writeFileSync(tmpFile, prompt);
 
   const projectDir = __dirname.replace('/services', '');
-  const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+  const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
 
   const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
@@ -7716,7 +7720,7 @@ app.post('/api/qa/strict/:courseCode', async (req, res) => {
     require('fs').writeFileSync(tmpFile, prompt);
 
     const projectDir = __dirname.replace('/services', '');
-    const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+    const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
     const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
     console.log(`[QA-STRICT] Spawning parallel golden QA coordinator for ${courseCode} seeds 11-50 (8 sub-agents) in ${effectiveTerminal}`);
@@ -8078,6 +8082,75 @@ app.post('/api/build/rebuild/:courseCode', async (req, res) => {
 
   } catch (err) {
     console.error('[REBUILD] Error:', err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/**
+ * DELETE /api/course/:courseCode - Completely delete a course and all its data
+ * Deletes in FK-safe order with batching for large tables.
+ */
+app.delete('/api/course/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { confirm } = req.query;
+
+  if (confirm !== 'yes') {
+    return res.status(400).json({ ok: false, error: 'Add ?confirm=yes to confirm deletion' });
+  }
+
+  try {
+    const results = {};
+    const tables = [
+      'course_qa_flags',
+      'build_jobs',
+      'course_practice_phrases',
+      'course_legos',
+      'course_seed_drafts',
+      'course_seeds',
+      'course_audio',
+      'course_gender_expansions',
+      'course_export_states'
+    ];
+
+    for (const table of tables) {
+      let totalDeleted = 0;
+      let batch;
+      do {
+        const { count, error } = await supabase
+          .from(table)
+          .delete({ count: 'exact' })
+          .eq('course_code', courseCode)
+          .limit(3000);
+        batch = count || 0;
+        totalDeleted += batch;
+        if (error) {
+          console.warn(`[DELETE-COURSE] ${table}: ${error.message}`);
+          break;
+        }
+        if (batch > 0) console.log(`[DELETE-COURSE] ${table}: deleted batch of ${batch}`);
+      } while (batch >= 3000);
+      results[table] = totalDeleted;
+      console.log(`[DELETE-COURSE] ${table}: ${totalDeleted} total deleted`);
+    }
+
+    // Finally delete the course itself
+    const { error: courseErr } = await supabase
+      .from('courses')
+      .delete()
+      .eq('course_code', courseCode);
+
+    if (courseErr) {
+      return res.status(500).json({ ok: false, error: `Course row delete failed: ${courseErr.message}`, results });
+    }
+
+    // Clear caches
+    courseVocabCache.delete(courseCode);
+    activeBuilds.delete(courseCode);
+
+    console.log(`[DELETE-COURSE] ${courseCode} completely deleted`);
+    res.json({ ok: true, course_code: courseCode, deleted: results });
+  } catch (err) {
+    console.error('[DELETE-COURSE] Error:', err.message);
     res.status(500).json({ ok: false, error: err.message });
   }
 });
@@ -13620,7 +13693,7 @@ app.post('/api/v2/qa/scan/:courseCode', async (req, res) => {
     require('fs').writeFileSync(tmpFile, brief);
 
     const projectDir = __dirname.replace('/services', '');
-    const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+    const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
     const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
     if (effectiveTerminal === 'headless') {
@@ -13685,7 +13758,7 @@ app.post('/api/v2/qa/fix/:courseCode', async (req, res) => {
     require('fs').writeFileSync(tmpFile, brief);
 
     const projectDir = __dirname.replace('/services', '');
-    const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+    const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
     const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
     if (effectiveTerminal === 'headless') {
@@ -13799,7 +13872,7 @@ app.post('/api/v2/build/start/:courseCode', async (req, res) => {
     require('fs').writeFileSync(tmpFile, brief);
 
     const projectDir = __dirname.replace('/services', '');
-    const claudeCmd = `cd "${projectDir}" && claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+    const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
     const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
     if (effectiveTerminal === 'headless') {
