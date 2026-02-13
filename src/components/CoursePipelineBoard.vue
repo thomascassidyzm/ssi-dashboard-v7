@@ -163,7 +163,7 @@
       <div class="footer-divider"></div>
       <div class="footer-stat highlight">
         <span class="footer-value">{{ productionCount }}</span>
-        <span class="footer-label">In Production</span>
+        <span class="footer-label">Live</span>
       </div>
     </div>
 
@@ -280,41 +280,40 @@ function getProgress(course) {
 
 function getPipelineSegments(course) {
   const stage = getStage(course)
-  const seedPct = getProgress(course)
-  const phrases = course.stats?.phrases || 0
-  const audio = course.stats?.audio || 0
-
-  const stageOrder = ['building', 'audio', 'polishing', 'production']
-  const stageIdx = stageOrder.indexOf(stage) // -1 for not_started
+  const stats = course.stats || {}
+  const targetSeeds = course.targetSeeds || 300
+  const completedSeeds = getCompletedSeeds(course)
+  const phrases = stats.phrases || 0
+  const audio = stats.audio || 0
 
   const segDefs = [
-    { key: 'building',   label: 'Seeds',   color: '#f59e0b' },
-    { key: 'audio',      label: 'Audio',   color: '#3b82f6' },
-    { key: 'polishing',  label: 'Polish',  color: '#f97316' },
-    { key: 'production', label: 'Live',    color: '#10b981' }
+    { key: 'building', color: '#f59e0b' },
+    { key: 'review',   color: '#a855f7' },
+    { key: 'audio',    color: '#3b82f6' },
+    { key: 'staging',  color: '#f97316' },
+    { key: 'live',     color: '#10b981' }
   ]
+
+  const stageIdx = segDefs.findIndex(d => d.key === stage) // -1 for not_started
 
   return segDefs.map((def, i) => {
     let fill = 0
     if (stageIdx < 0) {
-      // not_started — everything empty
       fill = 0
     } else if (i < stageIdx) {
-      // Past stage — fully complete
       fill = 100
     } else if (i === stageIdx) {
-      // Current stage — proportional
       if (def.key === 'building') {
-        fill = seedPct
+        fill = Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
       } else if (def.key === 'audio') {
         fill = phrases > 0 ? Math.min(100, Math.round((audio / (phrases * 2)) * 100)) : 0
-      } else if (def.key === 'polishing') {
+      } else if (def.key === 'staging') {
         fill = course.exportReady ? 100 : 50
-      } else if (def.key === 'production') {
+      } else {
         fill = 100
       }
     }
-    return { label: def.label, fill, color: def.color }
+    return { fill, color: def.color }
   })
 }
 
@@ -322,8 +321,8 @@ function getPipelineBlocks(course) {
   const segments = getPipelineSegments(course)
   const blocks = []
   for (const seg of segments) {
-    const filledCount = Math.round(seg.fill / 10)
-    for (let i = 0; i < 10; i++) {
+    const filledCount = Math.round((seg.fill / 100) * 6)
+    for (let i = 0; i < 6; i++) {
       blocks.push({
         color: seg.color,
         filled: i < filledCount,
@@ -341,37 +340,22 @@ function formatNumber(n) {
 
 // Stage logic
 const stageConfig = {
-  production: { color: '#10b981', label: 'Production' },
-  polishing:  { color: '#f97316', label: 'Polishing' },
-  audio:      { color: '#3b82f6', label: 'Audio' },
+  not_started:{ color: '#475569', label: 'Not Started' },
   building:   { color: '#f59e0b', label: 'Building' },
-  not_started:{ color: '#334155', label: 'Not Started' }
+  review:     { color: '#a855f7', label: 'Review' },
+  audio:      { color: '#3b82f6', label: 'Audio' },
+  staging:    { color: '#f97316', label: 'Staging' },
+  live:       { color: '#10b981', label: 'Live' }
 }
 
 const stageLegend = [
+  { key: 'not_started',color: '#475569', label: 'Not Started' },
   { key: 'building',   color: '#f59e0b', label: 'Building' },
+  { key: 'review',     color: '#a855f7', label: 'Review' },
   { key: 'audio',      color: '#3b82f6', label: 'Audio' },
-  { key: 'polishing',  color: '#f97316', label: 'Polishing' },
-  { key: 'production', color: '#10b981', label: 'Production' },
-  { key: 'not_started',color: '#334155', label: 'Not Started' }
+  { key: 'staging',    color: '#f97316', label: 'Staging' },
+  { key: 'live',       color: '#10b981', label: 'Live' }
 ]
-
-function getBuildStatus(course) {
-  const stats = course.stats || {}
-  const targetSeeds = course.targetSeeds || 300
-  const legos = stats.legos || 0
-  const phrases = stats.phrases || 0
-  const audio = stats.audio || 0
-  const exportReady = course.exportReady || false
-  const meaningfulAudio = audio > 100
-  const completedSeeds = getCompletedSeeds(course)
-
-  if (exportReady) return 'ready'
-  if (meaningfulAudio && phrases > 0 && audio >= phrases * 2) return 'needs_export'
-  if (completedSeeds >= targetSeeds && phrases > 0) return 'needs_audio'
-  if (legos > 0 || (completedSeeds > 0 && completedSeeds < targetSeeds)) return 'building'
-  return 'not_started'
-}
 
 function normalizeAppStatus(s) {
   if (!s || s === 'not_available') return 'not_available'
@@ -389,20 +373,34 @@ function getNormalizedLegacyStatus(course) {
 }
 
 function getStage(course) {
+  // Live — any app deployed
   const newApp = getNormalizedNewAppStatus(course)
   const legacy = getNormalizedLegacyStatus(course)
-  const inProduction = (newApp !== 'not_available') || (legacy !== 'not_available')
-  if (inProduction) return 'production'
+  if (newApp !== 'not_available' || legacy !== 'not_available') return 'live'
 
-  const status = getBuildStatus(course)
-  if (status === 'needs_export' || status === 'ready') return 'polishing'
-  if (status === 'needs_audio') return 'audio'
-  if (status === 'building') return 'building'
+  const stats = course.stats || {}
+  const targetSeeds = course.targetSeeds || 300
+  const completedSeeds = getCompletedSeeds(course)
+  const phrases = stats.phrases || 0
+  const audio = stats.audio || 0
+
+  // Staging — export-ready or audio substantially complete
+  if (course.exportReady || (audio >= phrases * 2 && audio > 100)) return 'staging'
+
+  // Audio — seeds done, audio generation started
+  if (completedSeeds >= targetSeeds && audio > 0) return 'audio'
+
+  // Review — seeds done, phrases exist, no meaningful audio yet
+  if (completedSeeds >= targetSeeds && phrases > 0) return 'review'
+
+  // Building — any content exists
+  if ((stats.seeds || 0) > 0 || (stats.legos || 0) > 0 || completedSeeds > 0) return 'building'
+
   return 'not_started'
 }
 
 function getStageColor(course) {
-  return stageConfig[getStage(course)]?.color || '#334155'
+  return stageConfig[getStage(course)]?.color || '#475569'
 }
 
 function getStageLabel(course) {
@@ -471,7 +469,7 @@ const sortedCourses = computed(() => {
 const totalSeeds = computed(() => props.courses.reduce((sum, c) => sum + getCompletedSeeds(c), 0))
 const totalPhrases = computed(() => props.courses.reduce((sum, c) => sum + (c.stats?.phrases || 0), 0))
 const totalAudio = computed(() => props.courses.reduce((sum, c) => sum + (c.stats?.audio || 0), 0))
-const productionCount = computed(() => props.courses.filter(c => getStage(c) === 'production').length)
+const productionCount = computed(() => props.courses.filter(c => getStage(c) === 'live').length)
 
 // Actions
 function handleCourseClick(course) {

@@ -674,18 +674,19 @@
             ></div>
           </div>
 
-          <!-- Legend -->
+          <!-- Legend: build progress (primary) -->
           <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-orange-400/80 border border-orange-300/40"></span> Calibration (1-10)</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80 border border-amber-400/40"></span> Golden (11-50)</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/80 border border-cyan-400/40"></span> MVP (51-{{ seedCount }})</span>
-            <span v-if="seedCount < 668" class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-600/80 border border-slate-500/40"></span> Full ({{ seedCount + 1 }}-668)</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30"></span> Empty</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Decomposed</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/60 ring-1 ring-inset ring-rose-400"></span> Collision</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
           </div>
+          <!-- Legend: range accents (secondary) -->
           <div class="flex items-center gap-4 mt-1 text-xs text-slate-500">
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/80"></span> Empty</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm border-2 border-dashed border-slate-400/50"></span> Drafted</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm border-2 border-red-500/80 bg-red-500/30"></span> Collision</span>
-            <span class="flex items-center gap-1.5">Filled = Finalized</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30 border-t-2 border-t-orange-400"></span> Calibration (1-{{ goldenSeedCount }})</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30 border-t-2 border-t-yellow-300/80"></span> Golden ({{ goldenSeedCount + 1 }}-50)</span>
+            <span class="text-slate-600">No accent = MVP/Full</span>
           </div>
         </div>
       </section>
@@ -999,29 +1000,29 @@ function stageNumberClass(stage) {
   return 'bg-slate-700/50 text-slate-400'
 }
 
-// Stage-color-coded seed grid
+// Build-progress seed grid — primary: build status, secondary: range accent
+function seedRangeAccent(seed) {
+  if (seed <= goldenSeedCount.value) return 'border-t-2 border-t-orange-400'
+  if (seed <= 50) return 'border-t-2 border-t-yellow-300/80'
+  return ''
+}
+
 function seedCellClass(cell) {
-  const s = cell.seed
-  const isCollision = cell.status === 'collision' || cell.status === 'rework'
-  const isDrafted = cell.status === 'drafted'
-  const isFinalized = cell.status === 'complete'
+  const accent = seedRangeAccent(cell.seed)
 
-  if (isCollision) return 'border-2 border-red-500/80 bg-red-500/30'
-  if (isDrafted) return 'border-2 border-dashed border-slate-400/50'
-
-  // Stage-based coloring for finalized/empty
-  if (s <= goldenSeedCount.value) {
-    // Calibration range: warm orange
-    return isFinalized ? 'bg-orange-400/80' : 'bg-orange-900/30'
-  } else if (s <= 50) {
-    // Golden range: amber
-    return isFinalized ? 'bg-amber-500/80' : 'bg-amber-900/30'
-  } else if (s <= seedCount.value) {
-    // MVP range: cyan
-    return isFinalized ? 'bg-cyan-500/80' : 'bg-cyan-900/20'
-  } else {
-    // Full range: slate
-    return isFinalized ? 'bg-slate-500/80' : 'bg-slate-700/80'
+  // Build status is the primary visual encoding
+  switch (cell.status) {
+    case 'collision':
+    case 'rework':
+      return `${accent} bg-rose-500/60 ring-1 ring-inset ring-rose-400`
+    case 'complete':
+      return `${accent} bg-emerald-500/80`
+    case 'drafted':
+      return `${accent} bg-amber-400/70`
+    case 'building':
+      return `${accent} bg-indigo-400/60`
+    default: // empty
+      return `${accent} bg-slate-700/30`
   }
 }
 
