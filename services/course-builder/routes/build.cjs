@@ -34,7 +34,7 @@ module.exports = function (ctx) {
         fs.writeFileSync(tmpFile, brief);
 
         const projectDir = path.resolve(__dirname, '..', '..', '..');
-        const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+        const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
         console.log(`[BUILD] Spawning parallel coordinator #${agentCount} for ${cc}`);
         spawnInTerminal(ctx, claudeCmd, `Parallel Build #${agentCount}`, cc);
       };
@@ -392,7 +392,7 @@ module.exports = function (ctx) {
       }
 
       // Spawn translation agent
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       console.log(`[TRANSLATE] Spawning translation agent for ${courseCode} in ${effectiveTerminal}`);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode);
 
