@@ -499,6 +499,17 @@
           <div class="flex items-center gap-4 mb-4">
             <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pipeline Status</h2>
             <div class="flex-1 h-px bg-slate-700/50"></div>
+            <button
+              @click="refreshAudioStats"
+              class="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1"
+              :disabled="refreshingStats"
+              title="Refresh stats"
+            >
+              <svg class="w-3.5 h-3.5" :class="{ 'animate-spin': refreshingStats }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Refresh
+            </button>
           </div>
 
           <!-- Progress Dashboard -->
@@ -726,6 +737,7 @@ const statsLoaded = ref(false)  // Track if pipeline stats have loaded
 
 // Generation state for immediate button feedback
 const startingGeneration = ref(false)
+const refreshingStats = ref(false)
 const linkResult = ref<{ linked: number } | null>(null)
 
 // Concurrency control (1-20, stored in localStorage, default 20 for paid Azure tier)
@@ -742,16 +754,47 @@ let progressPollInterval: ReturnType<typeof setInterval> | null = null
 const apiBaseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3470'
 
 // Poll for audio generation progress
+let wasGenerating = false
 const pollAudioProgress = async () => {
   try {
     const response = await fetch(`${apiBaseUrl}/api/audio/status`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     if (response.ok) {
+      const prev = audioProgress.value
       audioProgress.value = await response.json()
+
+      // Detect generation completion: was active, now inactive
+      const isActive = audioProgress.value?.active === true
+      if (wasGenerating && !isActive) {
+        // Generation just finished — refresh everything
+        refreshAudioStats()
+      }
+      wasGenerating = isActive
     }
   } catch (err) {
     // Silently fail - server might not be running
+  }
+}
+
+// Refresh audio stats from the fast /audio-stats endpoint + missing audio
+const refreshAudioStats = async () => {
+  refreshingStats.value = true
+  try {
+    const headers = { 'ngrok-skip-browser-warning': 'true' }
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
+    if (response.ok) {
+      const stats = await response.json()
+      if (stats.total !== undefined) {
+        productionStore.updatePipelineStats(stats.total, stats.existing, stats.missing || 0)
+      }
+    }
+    // Also refresh MissingAudio component
+    missingAudioKey.value++
+  } catch (err) {
+    // Silently fail
+  } finally {
+    refreshingStats.value = false
   }
 }
 
@@ -940,6 +983,8 @@ const startGeneration = async () => {
       linkResult.value = { linked: result.linked }
       setTimeout(() => { linkResult.value = null }, 10000)
     }
+    // Refresh stats after generation starts (linking may have changed counts)
+    refreshAudioStats()
   } catch (err: any) {
     error.value = err.message || 'Failed to start generation'
   } finally {

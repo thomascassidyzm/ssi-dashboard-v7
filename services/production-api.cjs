@@ -2389,6 +2389,8 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
+    // Allow cache-bust via ?fresh=1
+    if (req.query.fresh) invalidateAudioStatsCache(courseCode)
     const stats = await getDirectAudioStats(courseCode)
 
     res.json({

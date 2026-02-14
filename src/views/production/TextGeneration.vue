@@ -299,7 +299,14 @@
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ mvpDecomposed }}/{{ mvpTotal }}</span>
-              <span v-if="stageComplete('mvp')" class="stage-badge-complete">Done</span>
+              <span v-if="stageComplete('mvp') && v2Status.phrases.percent >= 100" class="stage-badge-complete">Done</span>
+              <button
+                v-else-if="stageComplete('mvp') && v2Status.phrases.percent < 100 && progress.status !== 'running'"
+                @click="startV2PhraseResume"
+                class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 text-xs font-medium rounded-lg transition-all"
+              >
+                Resume Phrases
+              </button>
               <span v-else-if="stageLocked('mvp')" class="stage-badge-locked">Locked</span>
               <button
                 v-else-if="progress.status !== 'running'"
@@ -1402,6 +1409,34 @@ async function startV2Build() {
     fetchV2Status()
   } catch (error) {
     console.error('Failed to start V2 build:', error)
+  }
+}
+
+async function startV2PhraseResume() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
+    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
+
+    const response = await fetch(`${apiBase}/api/v2/build/start/${courseCode}?from_stage=phrases`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({ terminal, targetSeeds: seedCount.value })
+    })
+
+    const result = await response.json()
+    if (!result.ok) throw new Error(result.error || 'Failed to resume phrases')
+
+    progress.value.status = 'running'
+    fetchV2Status()
+  } catch (error) {
+    console.error('Failed to resume phrases:', error)
   }
 }
 

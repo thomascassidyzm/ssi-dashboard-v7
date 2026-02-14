@@ -15,7 +15,7 @@
           <span v-if="loading" class="inline-block w-6 h-6 border-2 border-slate-600 border-t-slate-300 rounded-full animate-spin"></span>
           <span v-else>{{ total }}</span>
         </div>
-        <div class="text-sm text-slate-400 mt-1">Total Phrases</div>
+        <div class="text-sm text-slate-400 mt-1">Total Audio</div>
       </div>
 
       <!-- Generated -->
