@@ -5986,12 +5986,11 @@ app.get('/api/production/:courseCode/gender-prep/status', async (req, res) => {
 })
 
 // POST /api/production/:courseCode/gender-prep/start
-// Spawn a Claude Code agent to run gender expansion processing
+// Spawn a single coordinator in one iTerm window that runs parallel Haiku --print calls
 app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { spawn } = require('child_process')
-    const fs = require('fs')
+    const { spawn: spawnProc } = require('child_process')
 
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
@@ -6013,183 +6012,53 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
       return res.status(400).json({ error: `Language ${course.target_lang} does not have grammatical gender` })
     }
 
-    // Collect all unique target texts
-    const textSet = new Set()
-    const { data: phrases } = await supabase.from('course_practice_phrases').select('target_text').eq('course_code', courseCode)
-    if (phrases) phrases.forEach(p => { if (p.target_text) textSet.add(p.target_text) })
-    const { data: legos } = await supabase.from('course_legos').select('target_text').eq('course_code', courseCode)
-    if (legos) legos.forEach(l => { if (l.target_text) textSet.add(l.target_text) })
-    const { data: seeds } = await supabase.from('course_seeds').select('target_text').eq('course_code', courseCode)
-    if (seeds) seeds.forEach(s => { if (s.target_text) textSet.add(s.target_text) })
+    // Quick count of texts (coordinator does the actual querying)
+    const { count: phraseCount } = await supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+    const { count: legoCount } = await supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+    const { count: seedCount } = await supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+    const estimatedTexts = (phraseCount || 0) + (legoCount || 0) + (seedCount || 0)
 
-    const allTexts = [...textSet].sort()
-    if (allTexts.length === 0) {
-      return res.status(400).json({ error: 'No target texts found for this course' })
-    }
-
-    // Clear existing expansions before spawning
-    await supabase.from('course_gender_expansions').delete().eq('course_code', courseCode)
-
-    // Split into batches for parallel Haiku agents
-    const BATCH_SIZE = 200
-    const batches = []
-    for (let i = 0; i < allTexts.length; i += BATCH_SIZE) {
-      batches.push(allTexts.slice(i, i + BATCH_SIZE))
-    }
-
+    // Spawn a single iTerm window running the coordinator script
     const projectDir = path.resolve(__dirname, '..')
-    const timestamp = Date.now()
-
-    // Spawn one Haiku agent per batch with 3s stagger
-    for (let b = 0; b < batches.length; b++) {
-      const batchTexts = batches[b]
-      const batchNum = b + 1
-      const textsFile = `/tmp/gender_batch_${courseCode}_${batchNum}_${timestamp}.json`
-      const briefFile = `/tmp/gender_brief_${courseCode}_${batchNum}_${timestamp}.txt`
-
-      fs.writeFileSync(textsFile, JSON.stringify(batchTexts, null, 2))
-      const brief = generateGenderPrepBrief(courseCode, course, batchNum, batches.length, textsFile)
-      fs.writeFileSync(briefFile, brief)
-
-      const claudeCmd = `cd "${projectDir}" && claude --model haiku --dangerously-skip-permissions "$(cat ${briefFile})"`
-      const escapedCmd = claudeCmd.replace(/"/g, '\\"')
-      const osascript = `tell application "iTerm"
+    const coordinatorPath = path.resolve(__dirname, 'gender-prep-coordinator.cjs')
+    const cmd = `cd "${projectDir}" && node "${coordinatorPath}" ${courseCode} --concurrency 5 --batch-size 200`
+    const escapedCmd = cmd.replace(/"/g, '\\"')
+    const osascript = `tell application "iTerm"
   activate
   set newWindow to (create window with default profile)
   tell current session of newWindow
-    set name to "Gender ${batchNum}/${batches.length}: ${courseCode}"
+    set name to "Gender Prep: ${courseCode}"
     write text "${escapedCmd}"
   end tell
 end tell`
 
-      // Stagger spawns by 3s to avoid overwhelming iTerm
-      setTimeout(() => {
-        const agent = spawn('osascript', ['-e', osascript], { stdio: 'pipe', detached: true })
-        agent.unref()
-        agent.on('error', (e) => logger.error(`[GENDER-PREP] osascript error batch ${batchNum}: ${e.message}`))
-        agent.on('exit', (code) => logger.info(`[GENDER-PREP] iTerm launched batch ${batchNum}/${batches.length} for ${courseCode} (exit: ${code})`))
-      }, b * 3000)
-    }
+    const agent = spawnProc('osascript', ['-e', osascript], { stdio: 'pipe', detached: true })
+    agent.unref()
+    agent.on('error', (e) => logger.error(`[GENDER-PREP] osascript error: ${e.message}`))
+    agent.on('exit', (code) => logger.info(`[GENDER-PREP] iTerm coordinator launched for ${courseCode} (exit: ${code})`))
+
+    const BATCH_SIZE = 200
+    const estimatedBatches = Math.ceil(estimatedTexts / BATCH_SIZE)
 
     res.json({
       ok: true,
       spawned: true,
       course_code: courseCode,
       language: course.target_lang,
-      totalTexts: allTexts.length,
-      agents: batches.length,
+      totalTexts: estimatedTexts,
+      agents: 1,
+      batches: estimatedBatches,
+      concurrency: 5,
       batchSize: BATCH_SIZE,
-      message: `Spawning ${batches.length} Haiku agents (${allTexts.length} texts, ${BATCH_SIZE}/batch) for ${courseCode}`
+      message: `Coordinator spawned in 1 iTerm window (${estimatedTexts} texts, ${estimatedBatches} batches, concurrency 5)`
     })
   } catch (error) {
-    logger.error('Error spawning gender-prep agent:', error)
+    logger.error('Error spawning gender-prep coordinator:', error)
     res.status(500).json({ error: error.message })
   }
 })
 
-/**
- * Generate the brief for a single gender-prep Haiku agent.
- * Each agent gets a batch of texts via a JSON file.
- */
-function generateGenderPrepBrief(courseCode, course, batchNum, totalBatches, textsFile) {
-  const langNames = { spa: 'Spanish', ita: 'Italian', por: 'Portuguese', fra: 'French', ara: 'Arabic', deu: 'German', ron: 'Romanian', pol: 'Polish', rus: 'Russian', ukr: 'Ukrainian', cat: 'Catalan', hrv: 'Croatian', ces: 'Czech', slk: 'Slovak' }
-  const langName = langNames[course.target_lang] || course.target_lang
-
-  const genderRules = course.target_lang === 'ara'
-    ? `- Predicate adjectives about the speaker: أنا سعيد→أنا سعيدة (female)
-- Active/passive participles as predicates about the speaker
-- Standalone adjective fragments where speaker is implied
-- Do NOT change verb conjugations (Arabic 1st person past/present don't change for gender)
-- Do NOT change 3rd person references or 2nd person forms`
-    : `- Adjectives/participles describing "I" (the speaker): stanco→stanca, content→contente, prêt→prête
-- Past participles where subject is the speaker (être/essere verbs): allé→allée, andato→andata
-- Fragments where speaker is implied: "stanco"→"stanca" (female), "stanco" stays (male)
-- Do NOT change: verbs, nouns, prepositions, articles, 3rd person references, 2nd person forms
-- Do NOT change past participles with avoir/avere (they don't agree with speaker)
-- Do NOT change meaning, word order, or "fix" anything — only adjust gender agreement`
-
-  return `# Gender Prep — ${courseCode} batch ${batchNum}/${totalBatches}
-
-You are a ${langName} linguistics expert. Batch ${batchNum} of ${totalBatches}.
-
-## YOUR JOB
-
-Read each text in your batch. For each one, decide if it needs female/male variants for first-person speaker agreement. YOU do the linguistic analysis — do NOT write code that calls an API or spawns another process. You ARE the language expert.
-
-## Context
-
-Two TTS voices read every phrase:
-- **target1** = female voice → adjectives/participles must agree feminine
-- **target2** = male voice → adjectives/participles must agree masculine
-
-The original text is usually the masculine default. You produce the feminine variant (expanded_f) and confirm or adjust the masculine (expanded_m).
-
-## ${langName} Gender Rules
-
-${genderRules}
-
-## Steps
-
-### 1. Read your batch
-
-\`\`\`javascript
-const texts = JSON.parse(require('fs').readFileSync('${textsFile}', 'utf8'));
-console.log(texts.length + ' texts to process');
-\`\`\`
-
-### 2. Analyse each text and build the results array
-
-Go through ALL ${langName} texts. For each one, decide:
-- Does it contain any adjective/participle that refers to the speaker?
-- If yes: what is the female form? What is the male form?
-- If no: skip it entirely
-
-Build a JavaScript array of ONLY the texts that need gender variants:
-\`\`\`javascript
-const results = [
-  // Example: { original: "Sono stanco", expanded_f: "Sono stanca", expanded_m: "Sono stanco" },
-  // ... only texts that differ
-];
-\`\`\`
-
-### 3. Insert results into DB
-
-Write and run a script to insert your results:
-\`\`\`javascript
-require('dotenv').config();
-const { createClient } = require('@supabase/supabase-js');
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-
-const rows = results.map(r => ({
-  course_code: '${courseCode}',
-  original_text: r.original,
-  language: '${course.target_lang}',
-  expanded_f: r.expanded_f,
-  expanded_m: r.expanded_m
-}));
-
-// Insert in batches of 500
-for (let i = 0; i < rows.length; i += 500) {
-  const { error } = await supabase.from('course_gender_expansions').upsert(
-    rows.slice(i, i + 500),
-    { onConflict: 'course_code,original_text' }
-  );
-  if (error) console.error('Insert error:', error.message);
-}
-console.log('Inserted ' + rows.length + ' gender expansions');
-\`\`\`
-
-Use UPSERT so parallel agents don't conflict.
-
-## Rules
-
-- Do NOT skip texts. Process every text in your batch file.
-- Do NOT write scripts that call LLM APIs. YOU are the linguist.
-- Only store rows where at least one variant differs from the original.
-- Most texts will NOT need changes. Be selective — only adjectives/participles about the speaker.
-- Print a summary when done: total processed, how many had variants.
-`
-}
+// generateGenderPrepBrief removed — brief generation now lives in gender-prep-coordinator.cjs
 
 // GET /api/production/:courseCode/gender-prep/flag-count
 // Count audio flags with reason 'gender-expansion-regen'
