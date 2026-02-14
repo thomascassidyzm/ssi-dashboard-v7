@@ -268,10 +268,46 @@ async function main() {
       }
     }
     console.log(`Inserted ${inserted} gender expansions into DB`)
+
+    // 9. Flag affected audio for regeneration
+    //    Find target1 + target2 audio matching the expanded texts and flag them
+    console.log(`\nFlagging affected audio for regeneration...`)
+    const expandedOriginals = allResults.map(r => r.original)
+    let flagged = 0
+
+    for (const text of expandedOriginals) {
+      for (const role of ['target1', 'target2']) {
+        const { data: audio } = await supabase
+          .from('course_audio')
+          .select('id')
+          .eq('course_code', courseCode)
+          .eq('text', text)
+          .eq('role', role)
+          .limit(1)
+
+        if (audio && audio.length > 0) {
+          const { error: flagErr } = await supabase
+            .from('audio_flags')
+            .upsert({
+              audio_uuid: audio[0].id,
+              course_code: courseCode,
+              status: 'flagged',
+              reason: 'gender-expansion',
+              flagged_by: 'gender-prep',
+              created_at: new Date().toISOString()
+            }, { onConflict: 'audio_uuid,course_code' })
+          if (!flagErr) flagged++
+        }
+      }
+    }
+    console.log(`Flagged ${flagged} audio records (${expandedOriginals.length} texts × 2 roles)`)
   }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(0)
   console.log(`\n✓ Done in ${elapsed}s — ${allResults.length} gender expansions for ${courseCode}`)
+  if (allResults.length > 0) {
+    console.log(`→ Use "Regenerate All Flagged" on the Audio page to regenerate affected audio`)
+  }
 }
 
 main().catch(e => {
