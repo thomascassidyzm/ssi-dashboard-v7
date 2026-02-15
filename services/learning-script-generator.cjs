@@ -437,10 +437,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // Phase 3: BUILD ×7 - up to 7 practice phrases for current LEGO
     // v3.2: Combine BOTH build AND use phrases (both are practice for current LEGO)
     // Must contain ALL LEGO characters, sorted by length (shortest first)
+    // v3.3: Skip BUILD for Round 1 — no prior vocabulary to recombine with
     const legoTarget = currentLego.lego.target_text
 
     // Combine build + use phrases, filter for LEGO char validation
-    const allCurrentPhrases = [...currentBuildPhrases, ...currentUsePhrases]
+    const allCurrentPhrases = n === 1 ? [] : [...currentBuildPhrases, ...currentUsePhrases]
     const validPracticePhrases = allCurrentPhrases.filter(p =>
       phraseContainsLegoChars(p.target_text, legoTarget)
     )
@@ -540,10 +541,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // Phase 5: CONSOLIDATE ×2 - Practice phrases for current LEGO
     // v3.2: CAN reuse BUILD phrases (REVIEW gap makes this OK)
     // Only avoid duplicates within CONSOLIDATE itself and avoid the LEGO debut
+    // v3.3: Skip CONSOLIDATE for Round 1 — no prior vocabulary to recombine with
     const usedInConsolidation = new Set()
     const legoNormalized = normalizePhrase(currentLego.lego.target_text)
 
-    for (let c = 0; c < CONSOLIDATE_COUNT; c++) {
+    for (let c = 0; c < (n === 1 ? 0 : CONSOLIDATE_COUNT); c++) {
       // Can reuse BUILD phrases, just avoid: CONSOLIDATE duplicates, LEGO itself
       const availableForConsolidation = validPracticePhrases.filter(
         p => normalizePhrase(p.target_text) !== legoNormalized &&

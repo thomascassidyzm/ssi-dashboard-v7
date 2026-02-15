@@ -281,7 +281,11 @@ export function useScriptPlayer(options = {}) {
         }
 
         if (isPlaying.value && !isPaused.value) {
-          startPausePhase()
+          // Skip pause — go straight to voice1 (QA preview mode)
+          currentPhase.value = 'pause'
+          emitPhaseChange('pause')
+          progress.value = 25
+          moveToNextPhase()
         }
         break
 
