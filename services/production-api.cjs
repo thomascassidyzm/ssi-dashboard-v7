@@ -2421,9 +2421,11 @@ app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
   try {
     const { courseCode, uuid } = req.params
 
-    // Try to get audio record from database for s3_key
-    let s3Key = null
-    if (supabaseClient.isInitialized()) {
+    // Accept s3Key from query param (e.g. for intro audio where we already know the path)
+    let s3Key = req.query.s3Key || null
+
+    // If no s3Key provided, try to look it up from course_audio
+    if (!s3Key && supabaseClient.isInitialized()) {
       const supabase = supabaseClient.getClient()
       const { data: audioData } = await supabase
         .from('course_audio')

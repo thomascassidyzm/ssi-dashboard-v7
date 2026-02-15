@@ -340,12 +340,27 @@ const emit = defineEmits<{
 // Resolve audio UUIDs to signed URLs via the production API
 const apiBaseUrl = localStorage.getItem('api_base_url') || getApiUrl()
 
+// Build a map of UUID -> s3_key from intro items (presentation_audio has both)
+// This lets the resolver pass the s3_key directly, bypassing the course_audio lookup
+const introS3KeyMap = computed(() => {
+  const map = new Map<string, string>()
+  for (const item of props.allItems) {
+    const pa = (item as any).presentation_audio
+    if (pa?.id && pa?.s3_key) {
+      map.set(pa.id, pa.s3_key)
+    }
+  }
+  return map
+})
+
 const player = useScriptPlayer({
   audioUrlResolver: async (uuid: string) => {
-    const resp = await fetch(
-      `${apiBaseUrl}/api/production/${props.courseCode}/audio/${uuid}/url`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
-    )
+    let url = `${apiBaseUrl}/api/production/${props.courseCode}/audio/${uuid}/url`
+    const s3Key = introS3KeyMap.value.get(uuid)
+    if (s3Key) {
+      url += `?s3Key=${encodeURIComponent(s3Key)}`
+    }
+    const resp = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
     if (!resp.ok) return null
     const data = await resp.json()
     return data.url
@@ -353,14 +368,26 @@ const player = useScriptPlayer({
 })
 
 // Build player-compatible items from allItems
-// Intro items use presentation_audio.id instead of known/target UUIDs
+// Intro cycle: presentation audio (PROMPT) → pause → LEGO target1 → LEGO target2
 const playerItems = computed(() => {
   return props.allItems.map(item => {
-    const introAudioId = (item as any).presentation_audio?.id || null
+    if (item.type === 'intro') {
+      const presId = (item as any).presentation_audio?.id || null
+      return {
+        sourceId: presId,
+        target1Id: item.target1_audio_uuid || null,
+        target2Id: item.target2_audio_uuid || null,
+        known_text: item.known_text,
+        target_text: item.target_text,
+        type: item.type,
+        roundNumber: item.roundNumber,
+        legoId: item.legoId,
+      }
+    }
     return {
-      sourceId: item.type === 'intro' ? introAudioId : (item.known_audio_uuid || null),
-      target1Id: item.type === 'intro' ? introAudioId : (item.target1_audio_uuid || null),
-      target2Id: item.type === 'intro' ? null : (item.target2_audio_uuid || null),
+      sourceId: item.known_audio_uuid || null,
+      target1Id: item.target1_audio_uuid || null,
+      target2Id: item.target2_audio_uuid || null,
       known_text: item.known_text,
       target_text: item.target_text,
       type: item.type,

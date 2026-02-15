@@ -405,7 +405,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       isNew: currentLego.lego.new,
     }
 
-    // Phase 1: INTRO - Introduction Audio
+    // Phase 1: INTRO - Presentation audio + LEGO target audio
+    // Cycle: presentation ("The X for 'Y' is:") → pause → target1 → target2
     const introAudio = introAudioMap.get(currentLego.lego.id)
     roundItems.push({
       ...baseItem,
@@ -413,7 +414,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       known_text: currentLego.lego.known_text,
       target_text: currentLego.lego.target_text,
       presentation_audio: introAudio || null,
-      hasAudio: !!introAudio,
+      target1_audio_uuid: currentLego.lego.target1_audio_uuid,
+      target2_audio_uuid: currentLego.lego.target2_audio_uuid,
+      hasAudio: !!(introAudio && currentLego.lego.target1_audio_uuid),
     })
 
     // v3.1: Components removed - they're internal build-up, not played to learner
