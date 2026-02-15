@@ -246,6 +246,8 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
 
 /**
  * Load introduction/presentation audio for all LEGOs
+ * Primary source: course_legos.presentation_audio_id (v13+)
+ * Fallback: lego_introductions table (legacy, Welsh only)
  */
 async function loadIntroductionAudio(supabase, courseCode, legoIds) {
   const introAudioMap = new Map()
@@ -253,67 +255,67 @@ async function loadIntroductionAudio(supabase, courseCode, legoIds) {
   if (!supabase || legoIds.length === 0) return introAudioMap
 
   try {
-    // Batch queries in chunks of 100
     const BATCH_SIZE = 100
-    let allIntroData = []
 
+    // Primary: read presentation_audio_id directly from course_legos
+    let allLegoData = []
     for (let i = 0; i < legoIds.length; i += BATCH_SIZE) {
       const batchLegoIds = legoIds.slice(i, i + BATCH_SIZE)
-      const { data: batchIntroData } = await supabase
-        .from('lego_introductions')
-        .select('lego_id, audio_uuid, presentation_audio_id')
+      const { data } = await supabase
+        .from('course_legos')
+        .select('lego_id, presentation_audio_id')
         .eq('course_code', courseCode)
         .in('lego_id', batchLegoIds)
+        .not('presentation_audio_id', 'is', null)
 
-      if (batchIntroData) {
-        allIntroData = allIntroData.concat(batchIntroData)
-      }
+      if (data) allLegoData = allLegoData.concat(data)
     }
 
-    if (allIntroData.length > 0) {
-      // Separate v13 (presentation_audio_id) from legacy (audio_uuid)
-      const v13Entries = allIntroData.filter(i => i.presentation_audio_id)
-      const legacyEntries = allIntroData.filter(i => !i.presentation_audio_id && i.audio_uuid)
-
-      // v13: lookup s3_keys from course_audio
-      if (v13Entries.length > 0) {
-        const audioIds = v13Entries.map(i => i.presentation_audio_id)
-        const s3KeyMap = new Map()
-
-        for (let i = 0; i < audioIds.length; i += BATCH_SIZE) {
-          const batchIds = audioIds.slice(i, i + BATCH_SIZE)
-          const { data: audioData } = await supabase
-            .from('course_audio')
-            .select('id, s3_key')
-            .in('id', batchIds)
-
-          for (const audio of (audioData || [])) {
-            if (audio.id && audio.s3_key) {
-              s3KeyMap.set(audio.id, audio.s3_key)
-            }
-          }
-        }
-
-        for (const intro of v13Entries) {
-          const s3Key = s3KeyMap.get(intro.presentation_audio_id)
-          if (s3Key) {
-            introAudioMap.set(intro.lego_id, {
-              id: intro.presentation_audio_id,
-              s3_key: s3Key
-            })
-          }
-        }
-      }
-
-      // Legacy: use audio_uuid directly
-      for (const intro of legacyEntries) {
-        introAudioMap.set(intro.lego_id, {
-          id: intro.audio_uuid,
-          s3_key: `mastered/${intro.audio_uuid.toUpperCase()}.mp3`
+    if (allLegoData.length > 0) {
+      // Map presentation_audio_id directly (used by /audio/:uuid/url endpoint)
+      for (const lego of allLegoData) {
+        introAudioMap.set(lego.lego_id, {
+          id: lego.presentation_audio_id,
+          s3_key: null // signed URL resolved at playback time
         })
       }
+      logger.info(`Loaded ${introAudioMap.size} intro audio from course_legos`)
+    }
 
-      logger.info(`Loaded ${introAudioMap.size} intro audio entries`)
+    // Fallback: lego_introductions table (legacy courses like Welsh)
+    if (introAudioMap.size === 0) {
+      let allIntroData = []
+      for (let i = 0; i < legoIds.length; i += BATCH_SIZE) {
+        const batchLegoIds = legoIds.slice(i, i + BATCH_SIZE)
+        const { data: batchIntroData } = await supabase
+          .from('lego_introductions')
+          .select('lego_id, audio_uuid, presentation_audio_id')
+          .eq('course_code', courseCode)
+          .in('lego_id', batchLegoIds)
+
+        if (batchIntroData) allIntroData = allIntroData.concat(batchIntroData)
+      }
+
+      if (allIntroData.length > 0) {
+        const v13Entries = allIntroData.filter(i => i.presentation_audio_id)
+        const legacyEntries = allIntroData.filter(i => !i.presentation_audio_id && i.audio_uuid)
+
+        for (const intro of v13Entries) {
+          introAudioMap.set(intro.lego_id, {
+            id: intro.presentation_audio_id,
+            s3_key: null
+          })
+        }
+
+        for (const intro of legacyEntries) {
+          introAudioMap.set(intro.lego_id, {
+            id: intro.audio_uuid,
+            s3_key: `mastered/${intro.audio_uuid.toUpperCase()}.mp3`
+          })
+        }
+
+        logger.info(`Loaded ${introAudioMap.size} intro audio from lego_introductions (legacy)`)
+      }
     }
   } catch (err) {
     logger.warn('Failed to load intro audio:', err)
