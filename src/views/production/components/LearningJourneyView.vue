@@ -231,7 +231,7 @@
                   </svg>
                 </span>
                 <span
-                  v-else-if="item.type !== 'intro'"
+                  v-else
                   class="text-amber-400"
                   title="Audio missing"
                 >
