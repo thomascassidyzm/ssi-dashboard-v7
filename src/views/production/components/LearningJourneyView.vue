@@ -358,15 +358,16 @@ const playerItems = computed(() => {
   return props.allItems.map(item => {
     const introAudioId = (item as any).presentation_audio?.id || null
     return {
-    sourceId: item.type === 'intro' ? introAudioId : (item.known_audio_uuid || null),
-    target1Id: item.type === 'intro' ? introAudioId : (item.target1_audio_uuid || null),
-    target2Id: item.type === 'intro' ? null : (item.target2_audio_uuid || null),
-    known_text: item.known_text,
-    target_text: item.target_text,
-    type: item.type,
-    roundNumber: item.roundNumber,
-    legoId: item.legoId,
-  }}))
+      sourceId: item.type === 'intro' ? introAudioId : (item.known_audio_uuid || null),
+      target1Id: item.type === 'intro' ? introAudioId : (item.target1_audio_uuid || null),
+      target2Id: item.type === 'intro' ? null : (item.target2_audio_uuid || null),
+      known_text: item.known_text,
+      target_text: item.target_text,
+      type: item.type,
+      roundNumber: item.roundNumber,
+      legoId: item.legoId,
+    }
+  })
 })
 
 // Build a lookup: for each round+itemIdx, what's the global index in allItems?
