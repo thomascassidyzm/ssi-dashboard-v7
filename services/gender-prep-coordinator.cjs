@@ -21,6 +21,11 @@ const fs = require('fs')
 const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') })
 
+// Terminal spawning mode - set via env or default to headless
+// Headless is better for batch processing (coordinator itself provides visibility)
+// Use TERMINAL_MODE=iTerm2 to debug individual batches in separate windows
+const TERMINAL_MODE = process.env.TERMINAL_MODE || 'headless' // 'iTerm2', 'Terminal', or 'headless'
+
 const LANG_NAMES = {
   spa: 'Spanish', ita: 'Italian', por: 'Portuguese', fra: 'French',
   ara: 'Arabic', deu: 'German', ron: 'Romanian', pol: 'Polish',
@@ -88,17 +93,19 @@ ${textList}
 
 ## Output
 
-Output ONLY a JSON array of texts that need gender variants. No explanation, no markdown fences, ONLY the raw JSON array:
+Output ONLY a JSON array. No explanation, no markdown fences, ONLY the raw JSON array.
 
-[{"original":"Sono stanco","expanded_f":"Sono stanca","expanded_m":"Sono stanco"}]
+Format: [{"original":"original text","expanded_f":"feminine form","expanded_m":"masculine form"}]
 
 If NO texts need variants, output: []
 
 Rules:
+- CRITICAL: Output ONLY valid JSON - no explanations, no questions, no commentary
 - Only include texts where expanded_f OR expanded_m differs from original
-- Do NOT skip any text — analyse every single one
+- If a text cannot be analyzed (single word, no speaker context), skip it - do NOT explain why
 - Most texts will NOT need changes. Be selective.
-- Output raw JSON only — no markdown, no commentary`
+- For items that need changes, provide both feminine and masculine forms
+- Output raw JSON only — not even markdown code fences`
 }
 
 // ─── Run a single Haiku batch ─────────────────────────────────────────
@@ -106,58 +113,151 @@ Rules:
 function runHaikuBatch(brief, batchNum, totalBatches) {
   return new Promise((resolve) => {
     const startTime = Date.now()
-    const proc = spawn('claude', ['--print', '--model', 'haiku', brief], {
-      cwd: path.resolve(__dirname, '..'),
-      stdio: ['pipe', 'pipe', 'pipe'],
-      env: { ...process.env, HOME: process.env.HOME }
-    })
+    const tempDir = path.resolve(__dirname, '..', 'temp', 'gender-batches')
+    if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true })
 
-    let stdout = ''
-    let stderr = ''
+    const batchId = `batch-${batchNum}-${Date.now()}`
+    const briefFile = path.join(tempDir, `${batchId}-brief.txt`)
+    const outputFile = path.join(tempDir, `${batchId}-output.json`)
+    const doneFile = path.join(tempDir, `${batchId}-done.flag`)
 
-    proc.stdout.on('data', (d) => { stdout += d.toString() })
-    proc.stderr.on('data', (d) => { stderr += d.toString() })
+    // Write brief to file
+    fs.writeFileSync(briefFile, brief, 'utf8')
 
-    proc.on('close', (code) => {
-      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
-      if (code !== 0) {
-        console.error(`  [${batchNum}/${totalBatches}] FAILED (exit ${code}, ${elapsed}s)`)
-        if (stderr) console.error(`  stderr: ${stderr.substring(0, 200)}`)
-        return resolve([])
-      }
+    // Build the command that Claude will run
+    // Use stdin instead of command-line args to avoid length limits
+    // Explicitly unset CLAUDECODE to allow nested Claude CLI calls
+    const claudeCmd = `unset CLAUDECODE && cat '${briefFile}' | claude --print --model haiku > '${outputFile}' 2>&1 && touch '${doneFile}'`
 
-      // Parse JSON from stdout — strip any markdown fences if present
-      let cleaned = stdout.trim()
-      // Remove markdown code fences
-      cleaned = cleaned.replace(/^```json?\s*/i, '').replace(/\s*```\s*$/i, '')
-      // Find the JSON array
-      const arrayMatch = cleaned.match(/\[[\s\S]*\]/)
-      if (!arrayMatch) {
-        if (cleaned === '[]' || cleaned === '') {
-          console.log(`  [${batchNum}/${totalBatches}] 0 variants (${elapsed}s)`)
+    if (TERMINAL_MODE === 'headless') {
+      // Headless mode: direct spawn (original behavior)
+      // Unset CLAUDECODE to allow nested Claude CLI calls
+      const env = { ...process.env, HOME: process.env.HOME }
+      delete env.CLAUDECODE
+
+      const proc = spawn('bash', ['-c', claudeCmd], {
+        cwd: path.resolve(__dirname, '..'),
+        stdio: 'pipe',
+        env
+      })
+
+      let stderr = ''
+      proc.stderr.on('data', (d) => { stderr += d.toString() })
+
+      proc.on('close', (code) => {
+        const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
+        if (code !== 0 || !fs.existsSync(outputFile)) {
+          console.error(`  [${batchNum}/${totalBatches}] FAILED (exit ${code}, ${elapsed}s)`)
+          if (stderr) console.error(`  stderr: ${stderr.substring(0, 500)}`)
+          if (fs.existsSync(outputFile)) {
+            const output = fs.readFileSync(outputFile, 'utf8')
+            if (output) console.error(`  output: ${output.substring(0, 500)}`)
+          }
+          cleanup()
           return resolve([])
         }
-        console.error(`  [${batchNum}/${totalBatches}] No JSON array found (${elapsed}s)`)
-        console.error(`  Output: ${cleaned.substring(0, 300)}`)
-        return resolve([])
-      }
 
-      try {
-        const results = JSON.parse(arrayMatch[0])
-        console.log(`  [${batchNum}/${totalBatches}] ${results.length} variants (${elapsed}s)`)
+        const results = parseOutputFile(outputFile, batchNum, totalBatches, elapsed)
+        cleanup()
         resolve(results)
-      } catch (e) {
-        console.error(`  [${batchNum}/${totalBatches}] JSON parse error (${elapsed}s): ${e.message}`)
-        console.error(`  Output: ${arrayMatch[0].substring(0, 300)}`)
-        resolve([])
-      }
-    })
+      })
 
-    proc.on('error', (e) => {
-      console.error(`  [${batchNum}/${totalBatches}] spawn error: ${e.message}`)
-      resolve([])
-    })
+      proc.on('error', (e) => {
+        console.error(`  [${batchNum}/${totalBatches}] spawn error: ${e.message}`)
+        cleanup()
+        resolve([])
+      })
+    } else {
+      // iTerm2/Terminal mode: spawn in visible window
+      const label = `Gender Batch ${batchNum}/${totalBatches}`
+      const escapedCmd = claudeCmd.replace(/"/g, '\\"')
+
+      const osascript = TERMINAL_MODE === 'iTerm2'
+        ? `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    set name to "${label}"
+    write text "${escapedCmd}"
+  end tell
+end tell`
+        : `tell application "Terminal"
+  activate
+  do script "${escapedCmd}"
+end tell`
+
+      spawn('osascript', ['-e', osascript], { stdio: 'pipe', detached: true })
+
+      // Poll for completion (file-based communication)
+      pollForCompletion(doneFile, outputFile, batchNum, totalBatches, startTime, resolve, cleanup)
+    }
+
+    function cleanup() {
+      try {
+        if (fs.existsSync(briefFile)) fs.unlinkSync(briefFile)
+        if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile)
+        if (fs.existsSync(doneFile)) fs.unlinkSync(doneFile)
+      } catch (e) {
+        // Ignore cleanup errors
+      }
+    }
   })
+}
+
+// ─── Parse output file ────────────────────────────────────────────────
+
+function parseOutputFile(outputFile, batchNum, totalBatches, elapsed) {
+  try {
+    const content = fs.readFileSync(outputFile, 'utf8').trim()
+
+    // Remove markdown code fences
+    let cleaned = content.replace(/^```json?\s*/i, '').replace(/\s*```\s*$/i, '')
+
+    // Find the JSON array
+    const arrayMatch = cleaned.match(/\[[\s\S]*\]/)
+    if (!arrayMatch) {
+      if (cleaned === '[]' || cleaned === '') {
+        console.log(`  [${batchNum}/${totalBatches}] 0 variants (${elapsed}s)`)
+        return []
+      }
+      console.error(`  [${batchNum}/${totalBatches}] No JSON array found (${elapsed}s)`)
+      console.error(`  Output: ${cleaned.substring(0, 300)}`)
+      return []
+    }
+
+    const results = JSON.parse(arrayMatch[0])
+    console.log(`  [${batchNum}/${totalBatches}] ${results.length} variants (${elapsed}s)`)
+    return results
+  } catch (e) {
+    console.error(`  [${batchNum}/${totalBatches}] Parse error: ${e.message}`)
+    return []
+  }
+}
+
+// ─── Poll for completion ──────────────────────────────────────────────
+
+function pollForCompletion(doneFile, outputFile, batchNum, totalBatches, startTime, resolve, cleanup) {
+  const maxWait = 300000 // 5 minutes max
+  const pollInterval = 1000 // Check every second
+
+  const checkDone = () => {
+    const elapsed = Date.now() - startTime
+
+    if (fs.existsSync(doneFile)) {
+      const elapsedSeconds = (elapsed / 1000).toFixed(1)
+      const results = parseOutputFile(outputFile, batchNum, totalBatches, elapsedSeconds)
+      cleanup()
+      resolve(results)
+    } else if (elapsed > maxWait) {
+      console.error(`  [${batchNum}/${totalBatches}] TIMEOUT after ${(elapsed/1000).toFixed(0)}s`)
+      cleanup()
+      resolve([])
+    } else {
+      setTimeout(checkDone, pollInterval)
+    }
+  }
+
+  setTimeout(checkDone, pollInterval)
 }
 
 // ─── Concurrency-limited batch runner ─────────────────────────────────
@@ -211,11 +311,24 @@ async function main() {
   const { data: seeds } = await supabase.from('course_seeds').select('target_text').eq('course_code', courseCode)
   if (seeds) seeds.forEach(s => { if (s.target_text) textSet.add(s.target_text) })
 
-  const allTexts = [...textSet].sort()
-  console.log(`Total unique texts: ${allTexts.length}`)
+  // Filter out invalid texts before gender analysis
+  const allTexts = [...textSet]
+    .filter(text => {
+      if (!text || text.trim().length === 0) return false
+      // Skip standalone punctuation
+      if (/^[.,;:!?،؛؟\s]+$/.test(text)) return false
+      // Skip single characters
+      if (text.trim().length < 2) return false
+      // Skip metadata artifacts
+      if (text.includes('(perfect tense)') || text.includes('(imperfect)')) return false
+      return true
+    })
+    .sort()
+
+  console.log(`Total unique texts: ${allTexts.length} (filtered from ${textSet.size})`)
 
   if (allTexts.length === 0) {
-    console.error('No target texts found')
+    console.error('No valid target texts found')
     process.exit(1)
   }
 

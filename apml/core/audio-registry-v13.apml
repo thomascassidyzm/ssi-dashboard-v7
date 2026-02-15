@@ -1,7 +1,8 @@
 # APML: Audio Registry Architecture
-# Version: 13.5.0 (2026-02-09)
+# Version: 13.6.0 (2026-02-15)
 # Status: CANONICAL - This is the source of truth
 # Type: CORE ARCHITECTURE SPECIFICATION
+# Changelog: Added course_gender_expansions table and gender services documentation
 
 architecture AudioRegistry:
   name: "Course-Owned Audio Architecture"
@@ -487,6 +488,139 @@ architecture AudioRegistry:
         normalize_text:
           timing: "BEFORE INSERT OR UPDATE"
           action: "SET text_normalized = LOWER(TRIM(text))"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_GENDER_EXPANSIONS TABLE - Gender-appropriate TTS variants
+    ## ------------------------------------------------------------------------
+
+    table course_gender_expansions:
+      description: "Pre-computed gender-appropriate text variants for TTS generation"
+
+      purpose: |
+        Romance languages and Arabic require gender agreement with the speaker.
+        Example: Spanish "Estoy cansado" (male) → "Estoy cansada" (female)
+
+        This table stores Haiku-analyzed variants for target1 (female) and
+        target2 (male) voices, enabling TTS to generate grammatically correct audio.
+
+        Replaces regex-based gender-analyzer which failed for French avoir verbs
+        and irregular forms.
+
+      gendered_languages:
+        - spa: "Spanish"
+        - ita: "Italian"
+        - por: "Portuguese"
+        - fra: "French"
+        - ara: "Arabic"
+
+      workflow: |
+        1. Run gender-prep-coordinator before TTS generation:
+           node services/gender-prep-coordinator.cjs <course_code>
+
+        2. Coordinator spawns Claude Haiku batches to analyze all unique texts
+        3. Stores only texts that need gender variants (not all texts)
+        4. TTS generation queries this table before generating audio
+        5. If no variant found, uses original text (no gender change needed)
+
+      coordinator_features:
+        spawning: "Uses osascript/iTerm2 pattern (same as agent-spawner.cjs)"
+        concurrency: "Default 5 concurrent Haiku batches"
+        batch_size: "Default 200 texts per batch"
+        performance: "2-7 seconds per batch via stdin pipe (not command-line args)"
+        filtering: "Removes punctuation, single chars, metadata artifacts"
+        idempotency: "Clears existing rows before reprocessing"
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          references: "courses(code)"
+          on_delete: "CASCADE"
+
+        original_text:
+          type: "TEXT"
+          nullable: false
+          description: "The original text (usually masculine default)"
+
+        language:
+          type: "TEXT"
+          nullable: false
+          description: "ISO 639-3 language code"
+
+        expanded_f:
+          type: "TEXT"
+          nullable: true
+          description: |
+            Feminine variant for target1 voice (female speaker).
+            NULL if no gender change needed.
+            Example: "Estoy cansada" (Spanish), "Je suis fatiguée" (French)
+
+        expanded_m:
+          type: "TEXT"
+          nullable: true
+          description: |
+            Masculine variant for target2 voice (male speaker).
+            Usually same as original, but stored for symmetry.
+            NULL if no gender change needed.
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_course_text:
+          type: "UNIQUE"
+          columns: ["course_code", "original_text"]
+          description: "One expansion per course+text (enables idempotent upserts)"
+
+      indexes:
+        idx_gender_expansions_course_lookup:
+          columns: ["course_code", "language"]
+          description: "Fast lookup by course for TTS generation"
+
+      usage_pattern: |
+        TTS generation (phase8-audio-v13):
+
+        1. Query for text variant:
+           SELECT expanded_f, expanded_m
+           FROM course_gender_expansions
+           WHERE course_code = $1 AND original_text = $2
+
+        2. If row exists:
+           - Use expanded_f for target1 (female voice)
+           - Use expanded_m for target2 (male voice)
+
+        3. If no row exists:
+           - Use original text (no gender change needed)
+
+      example_variants:
+        spanish:
+          original: "Estoy cansado"
+          expanded_f: "Estoy cansada"
+          expanded_m: "Estoy cansado"
+
+        french:
+          original: "Je suis fatigué"
+          expanded_f: "Je suis fatiguée"
+          expanded_m: "Je suis fatigué"
+
+        arabic:
+          original: "أنا سعيد"
+          expanded_f: "أنا سعيدة"
+          expanded_m: "أنا سعيد"
+
+      cost: |
+        ~$0.03 per 300-seed course (Claude Haiku batch analysis)
+        Latency: 5-10 minutes pre-processing before TTS generation
+
+      migration: |
+        Added: 2026-02-15
+        Migration: database/migrations/20260215_add_gender_expansions_constraint.sql
 
     ## ------------------------------------------------------------------------
     ## LEGO_INTRODUCTIONS TABLE - Links LEGOs to their presentation audio
