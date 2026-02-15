@@ -144,9 +144,9 @@
             <div v-if="totalJourneyRounds > 0" class="flex items-center gap-2">
               <button
                 @click="prevPage"
-                :disabled="journeyPage === 1"
+                :disabled="journeyOffset === 0"
                 class="px-2 py-1 text-sm rounded transition-colors"
-                :class="journeyPage === 1
+                :class="journeyOffset === 0
                   ? 'text-slate-500 cursor-not-allowed'
                   : 'text-slate-300 hover:text-white hover:bg-slate-600'"
               >
@@ -156,14 +156,13 @@
               </button>
               <span class="text-sm text-slate-300">
                 <span class="font-medium text-white">{{ journeyPageStart }}-{{ journeyPageEnd }}</span>
-                <span class="text-slate-500"> of </span>
-                <span class="text-white">{{ totalJourneyRounds }}</span>
+                <span class="text-slate-500"> rounds</span>
               </span>
               <button
                 @click="nextPage"
-                :disabled="journeyPageEnd >= totalJourneyRounds"
+                :disabled="!journeyHasMore"
                 class="px-2 py-1 text-sm rounded transition-colors"
-                :class="journeyPageEnd >= totalJourneyRounds
+                :class="!journeyHasMore
                   ? 'text-slate-500 cursor-not-allowed'
                   : 'text-slate-300 hover:text-white hover:bg-slate-600'"
               >
@@ -299,7 +298,7 @@
         <LearningJourneyView
           v-else-if="learningJourneyData"
           ref="learningJourneyRef"
-          :rounds="paginatedJourneyRounds"
+          :rounds="learningJourneyData.rounds"
           :all-items="learningJourneyData?.allItems || []"
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
@@ -774,9 +773,10 @@ const learningJourneyData = ref<{
 const isLoadingJourney = ref(false);
 const journeyError = ref<string | null>(null);
 
-// Pagination for journey view (50 rounds per page)
-const journeyPage = ref(1);
+// Server-side pagination for journey view (50 LEGOs per page)
 const journeyPageSize = 50;
+const journeyOffset = ref(0);
+const journeyHasMore = ref(true);
 
 // Batch Selection State
 const selectionMode = ref(false);
@@ -913,27 +913,24 @@ const journeyPlayerPause = () => learningJourneyRef.value?.player?.pause();
 const journeyPlayerSkip = () => learningJourneyRef.value?.player?.skip();
 const journeyPlayerStop = () => learningJourneyRef.value?.player?.stop();
 
-// Computed for pagination
+// Computed for pagination (server-side)
 const totalJourneyRounds = computed(() => learningJourneyData.value?.rounds?.length || 0);
-const journeyPageStart = computed(() => (journeyPage.value - 1) * journeyPageSize + 1);
-const journeyPageEnd = computed(() => Math.min(journeyPage.value * journeyPageSize, totalJourneyRounds.value));
-const paginatedJourneyRounds = computed(() => {
-  if (!learningJourneyData.value?.rounds) return [];
-  const start = (journeyPage.value - 1) * journeyPageSize;
-  const end = start + journeyPageSize;
-  return learningJourneyData.value.rounds.slice(start, end);
-});
+const journeyPageStart = computed(() => journeyOffset.value + 1);
+const journeyPageEnd = computed(() => journeyOffset.value + totalJourneyRounds.value);
 
-// Pagination methods
+// Pagination methods (server-side — reload from API)
 const prevPage = () => {
-  if (journeyPage.value > 1) {
-    journeyPage.value--;
+  const newOffset = Math.max(0, journeyOffset.value - journeyPageSize);
+  if (newOffset !== journeyOffset.value) {
+    journeyOffset.value = newOffset;
+    loadLearningJourney();
   }
 };
 
 const nextPage = () => {
-  if (journeyPageEnd.value < totalJourneyRounds.value) {
-    journeyPage.value++;
+  if (journeyHasMore.value) {
+    journeyOffset.value += journeyPageSize;
+    loadLearningJourney();
   }
 };
 
@@ -1229,16 +1226,14 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   }
 };
 
-// Load learning journey data (load all LEGOs, pagination done client-side)
+// Load learning journey data (server-side pagination, 50 LEGOs per page)
 const loadLearningJourney = async () => {
   isLoadingJourney.value = true;
   journeyError.value = null;
-  journeyPage.value = 1; // Reset to first page
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-    // Load up to 5000 LEGOs to support full course viewing
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=5000`;
+    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}`;
 
     const response = await fetch(url, {
       headers: {
@@ -1254,6 +1249,9 @@ const loadLearningJourney = async () => {
       allItems: data.allItems || [],
       stats: data.stats || null,
     };
+
+    // Detect if there are more pages
+    journeyHasMore.value = (data.pagination?.returned || 0) >= journeyPageSize;
   } catch (err) {
     journeyError.value = err instanceof Error ? err.message : 'Unknown error occurred';
     console.error('Error loading learning journey:', err);
@@ -1266,8 +1264,8 @@ const loadLearningJourney = async () => {
 const toggleViewMode = () => {
   if (viewMode.value === 'script') {
     viewMode.value = 'journey';
-    // Load learning journey data if not already loaded
     if (!learningJourneyData.value) {
+      journeyOffset.value = 0;
       loadLearningJourney();
     }
   } else {
