@@ -352,17 +352,16 @@ const playerItems = computed(() => {
 })
 
 // Build a lookup: for each round+itemIdx, what's the global index in allItems?
+// Uses a per-round counter instead of indexOf (allItems are separate object references)
 const globalIndexMap = computed(() => {
   const map = new Map<string, number>()
+  const roundCounters = new Map<number, number>()
+
   props.allItems.forEach((item, globalIdx) => {
-    // Find which local index this item is within its round
-    const round = props.rounds.find(r => r.roundNumber === item.roundNumber)
-    if (round) {
-      const localIdx = round.items.indexOf(item)
-      if (localIdx !== -1) {
-        map.set(`${item.roundNumber}-${localIdx}`, globalIdx)
-      }
-    }
+    const roundNum = item.roundNumber
+    const localIdx = roundCounters.get(roundNum) || 0
+    map.set(`${roundNum}-${localIdx}`, globalIdx)
+    roundCounters.set(roundNum, localIdx + 1)
   })
   return map
 })
@@ -375,9 +374,11 @@ const currentPlayingLocation = computed(() => {
   const item = props.allItems[idx]
   if (!item) return null
 
-  const round = props.rounds.find(r => r.roundNumber === item.roundNumber)
-  if (!round) return null
-  const localIdx = round.items.indexOf(item)
+  // Count how many allItems with the same roundNumber come before this one
+  let localIdx = 0
+  for (let i = 0; i < idx; i++) {
+    if (props.allItems[i].roundNumber === item.roundNumber) localIdx++
+  }
   return { roundNumber: item.roundNumber, localIdx }
 })
 
