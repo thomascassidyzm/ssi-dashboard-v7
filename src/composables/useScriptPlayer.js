@@ -428,6 +428,51 @@ export function useScriptPlayer() {
   }
 
   /**
+   * Go to previous item
+   */
+  function previous() {
+    if (!hasPrevItem.value) return
+
+    // Stop current playback
+    if (audioElement.value) {
+      audioElement.value.pause()
+      audioElement.value.currentTime = 0
+    }
+
+    if (pauseTimer) {
+      clearTimeout(pauseTimer)
+      pauseTimer = null
+    }
+    if (pauseProgressInterval) {
+      clearInterval(pauseProgressInterval)
+      pauseProgressInterval = null
+    }
+
+    stopProgressTracking()
+
+    // Move to previous item
+    currentIndex.value--
+    currentItem.value = items.value[currentIndex.value]
+    currentPhase.value = null
+    progress.value = 0
+
+    emitItemChange(currentItem.value)
+
+    // Preload target audio
+    if (currentItem.value.target1Id) {
+      preloadTargetAudio(currentItem.value.target1Id)
+    }
+
+    // Continue playback if playing
+    if (isPlaying.value && !isPaused.value) {
+      moveToNextPhase()
+    }
+
+    // Preload next item
+    preloadNextItem()
+  }
+
+  /**
    * Skip to next item
    */
   function skip() {
@@ -599,6 +644,7 @@ export function useScriptPlayer() {
     pause,
     stop,
     skip,
+    previous,
     seekTo,
 
     // Event registration

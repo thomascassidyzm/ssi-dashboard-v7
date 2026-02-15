@@ -23,7 +23,7 @@
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
               </svg>
-              Script View
+              Course Preview
             </button>
             <button
               @click="viewMode = 'script'"
@@ -300,9 +300,11 @@
           v-else-if="learningJourneyData"
           ref="learningJourneyRef"
           :rounds="paginatedJourneyRounds"
+          :all-items="learningJourneyData?.allItems || []"
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
           :hide-controls="true"
+          @playback-state="onJourneyPlaybackState"
         />
       </template>
 
@@ -435,6 +437,119 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
+        </div>
+      </div>
+    </Transition>
+
+    <!-- Journey Playback Bar (4-Phase) -->
+    <Transition name="slide-up">
+      <div v-if="journeyPlayerActive" class="journey-playback-bar bg-slate-800 border-t border-slate-700 px-6 py-3">
+        <div class="flex items-center gap-4">
+          <!-- Position Info -->
+          <div v-if="journeyPlayingRoundInfo" class="position-info text-xs text-slate-400 font-mono min-w-24">
+            R{{ journeyPlayingRoundInfo.roundNumber }}, {{ journeyPlayingRoundInfo.itemIndex }}/{{ journeyPlayingRoundInfo.itemCount }}
+          </div>
+
+          <!-- Type Badge -->
+          <div
+            v-if="journeyPlayback?.currentItem?.type"
+            class="type-badge px-2 py-0.5 rounded text-xs font-medium uppercase"
+            :class="{
+              'bg-purple-500 bg-opacity-30 text-purple-300': journeyPlayback.currentItem.type === 'intro',
+              'bg-emerald-500 bg-opacity-30 text-emerald-300': journeyPlayback.currentItem.type === 'debut',
+              'bg-blue-500 bg-opacity-30 text-blue-300': journeyPlayback.currentItem.type === 'build',
+              'bg-amber-500 bg-opacity-30 text-amber-300': journeyPlayback.currentItem.type === 'review',
+              'bg-cyan-500 bg-opacity-30 text-cyan-300': journeyPlayback.currentItem.type === 'consolidate',
+            }"
+          >
+            {{ journeyPlayback.currentItem.type }}
+          </div>
+
+          <!-- Current Item Text -->
+          <div class="item-text flex-1 min-w-0">
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-slate-400 truncate">{{ journeyPlayback?.currentItem?.known_text || '' }}</span>
+              <span class="text-slate-600 flex-shrink-0">&rarr;</span>
+              <span class="text-white truncate">{{ journeyPlayback?.currentItem?.target_text || '' }}</span>
+            </div>
+          </div>
+
+          <!-- 4-Phase Indicator -->
+          <div class="phase-indicator flex gap-1 items-center">
+            <div
+              v-for="phase in ['prompt', 'pause', 'voice1', 'voice2']"
+              :key="phase"
+              class="phase-segment px-2 py-0.5 rounded text-xs font-mono transition-colors"
+              :class="journeyPlayback?.currentPhase === phase
+                ? 'bg-emerald-500 text-white'
+                : 'bg-slate-700 text-slate-500'"
+            >
+              {{ journeyPhaseLabel(phase) }}
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar w-24 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+            <div
+              class="h-full bg-emerald-500 rounded-full transition-all duration-100"
+              :style="{ width: (journeyPlayback?.progress || 0) + '%' }"
+            ></div>
+          </div>
+
+          <!-- Controls -->
+          <div class="controls flex items-center gap-1">
+            <!-- Previous -->
+            <button
+              @click="journeyPlayerPrevious"
+              class="p-2 text-slate-400 hover:text-white transition-colors"
+              title="Previous"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+              </svg>
+            </button>
+
+            <!-- Play/Pause -->
+            <button
+              @click="journeyPlayback?.isPlaying ? journeyPlayerPause() : journeyPlayerPlay()"
+              class="p-2 text-white hover:text-emerald-400 transition-colors"
+              :title="journeyPlayback?.isPlaying ? 'Pause' : 'Play'"
+            >
+              <svg v-if="journeyPlayback?.isPlaying" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+              <svg v-else class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+
+            <!-- Next -->
+            <button
+              @click="journeyPlayerSkip"
+              class="p-2 text-slate-400 hover:text-white transition-colors"
+              title="Next"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+              </svg>
+            </button>
+
+            <!-- Stop -->
+            <button
+              @click="journeyPlayerStop"
+              class="p-2 text-slate-400 hover:text-red-400 transition-colors"
+              title="Stop"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 6h12v12H6z"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Item Counter -->
+          <div class="text-xs text-slate-500 font-mono">
+            {{ (journeyPlayback?.currentIndex || 0) + 1 }}/{{ journeyPlayback?.totalItems || 0 }}
+          </div>
         </div>
       </div>
     </Transition>
@@ -650,7 +765,7 @@ const phraseToEdit = ref<{
 const showShortcutsHelp = ref(false);
 
 // Learning Journey View Mode
-const viewMode = ref<'script' | 'journey'>('script');
+const viewMode = ref<'script' | 'journey'>('journey');
 const learningJourneyData = ref<{
   rounds: any[];
   allItems: any[];
@@ -743,6 +858,60 @@ const handleBatchDelete = async () => {
 
 const selectedCount = computed(() => selectedPhraseIds.value.size);
 const learningJourneyRef = ref<any>(null);
+
+// Journey playback state (emitted by LearningJourneyView)
+const journeyPlayback = ref<{
+  isPlaying: boolean
+  isPaused: boolean
+  currentItem: any
+  currentPhase: string | null
+  currentIndex: number
+  progress: number
+  totalItems: number
+} | null>(null);
+
+const onJourneyPlaybackState = (state: any) => {
+  journeyPlayback.value = state;
+};
+
+const journeyPlayerActive = computed(() => {
+  return journeyPlayback.value && (journeyPlayback.value.isPlaying || journeyPlayback.value.isPaused);
+});
+
+const journeyPhaseLabel = (phase: string | null): string => {
+  switch (phase) {
+    case 'prompt': return 'PROMPT';
+    case 'pause': return 'PAUSE';
+    case 'voice1': return 'VOICE 1';
+    case 'voice2': return 'VOICE 2';
+    default: return '';
+  }
+};
+
+// Find which round the current playing item belongs to
+const journeyPlayingRoundInfo = computed(() => {
+  if (!journeyPlayback.value || !learningJourneyData.value?.allItems) return null;
+  const idx = journeyPlayback.value.currentIndex;
+  const item = learningJourneyData.value.allItems[idx];
+  if (!item) return null;
+
+  // Find the round
+  const round = learningJourneyData.value.rounds.find((r: any) => r.roundNumber === item.roundNumber);
+  if (!round) return null;
+  const localIdx = round.items.indexOf(item);
+  return {
+    roundNumber: item.roundNumber,
+    itemIndex: localIdx + 1,
+    itemCount: round.items.length,
+  };
+});
+
+// Journey player controls (proxied through the ref)
+const journeyPlayerPrevious = () => learningJourneyRef.value?.player?.previous();
+const journeyPlayerPlay = () => learningJourneyRef.value?.player?.play();
+const journeyPlayerPause = () => learningJourneyRef.value?.player?.pause();
+const journeyPlayerSkip = () => learningJourneyRef.value?.player?.skip();
+const journeyPlayerStop = () => learningJourneyRef.value?.player?.stop();
 
 // Computed for pagination
 const totalJourneyRounds = computed(() => learningJourneyData.value?.rounds?.length || 0);
@@ -1703,12 +1872,15 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 // Lifecycle
 onMounted(() => {
-  // Check for view query param (journey = Script View, seed = Seed View)
-  if (route.query.view === 'journey' || route.query.view === 'script-view') {
-    viewMode.value = 'journey';
-    loadLearningJourney();
-  } else if (route.query.view === 'seed' || route.query.view === 'seed-view') {
+  // Check for view query param
+  if (route.query.view === 'seed' || route.query.view === 'seed-view') {
     viewMode.value = 'script';
+  } else if (route.query.view === 'journey' || route.query.view === 'script-view') {
+    viewMode.value = 'journey';
+  }
+  // Default is 'journey' — always load journey data when in journey mode
+  if (viewMode.value === 'journey') {
+    loadLearningJourney();
   }
   // Check for filter query param (from QA link)
   if (route.query.filter === 'flagged') {
