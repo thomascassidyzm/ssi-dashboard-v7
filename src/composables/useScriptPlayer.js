@@ -281,11 +281,14 @@ export function useScriptPlayer(options = {}) {
         }
 
         if (isPlaying.value && !isPaused.value) {
-          // Skip pause — go straight to voice1 (QA preview mode)
+          // Brief 1s pause before target audio (QA preview mode)
           currentPhase.value = 'pause'
           emitPhaseChange('pause')
           progress.value = 25
-          moveToNextPhase()
+          await new Promise(resolve => setTimeout(resolve, 1000))
+          if (isPlaying.value && !isPaused.value) {
+            moveToNextPhase()
+          }
         }
         break
 
