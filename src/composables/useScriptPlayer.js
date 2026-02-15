@@ -12,7 +12,12 @@ import { getApiUrl } from '@/services/api'
  *
  * @returns {Object} Player state and control methods
  */
-export function useScriptPlayer() {
+/**
+ * @param {Object} [options]
+ * @param {(uuid: string) => Promise<string>} [options.audioUrlResolver] - Async function to resolve a UUID to a playable URL.
+ *   When omitted, falls back to direct S3 URL construction.
+ */
+export function useScriptPlayer(options = {}) {
   // ============================================================================
   // STATE
   // ============================================================================
@@ -44,6 +49,12 @@ export function useScriptPlayer() {
   // Audio API base URL
   const API_BASE_URL = getApiUrl()
 
+  // Optional custom URL resolver (e.g. for signed S3 URLs via API)
+  const audioUrlResolver = options.audioUrlResolver || null
+
+  // Cache for resolved URLs to avoid repeated API calls
+  const resolvedUrlCache = new Map()
+
   // ============================================================================
   // COMPUTED
   // ============================================================================
@@ -57,11 +68,27 @@ export function useScriptPlayer() {
   // ============================================================================
 
   /**
-   * Get audio URL from UUID - direct S3 access (like learning app)
+   * Get audio URL from UUID.
+   * If an audioUrlResolver was provided, returns a cached/resolved signed URL.
+   * Otherwise falls back to direct S3 URL construction (learning app).
    */
-  function getAudioUrl(uuid) {
+  async function getAudioUrl(uuid) {
     if (!uuid) return null
-    // S3 bucket: ssi-audio-stage, prefix: mastered/, UUID must be uppercase
+
+    // Use resolver if provided (dashboard — needs signed URLs)
+    if (audioUrlResolver) {
+      if (resolvedUrlCache.has(uuid)) return resolvedUrlCache.get(uuid)
+      try {
+        const url = await audioUrlResolver(uuid)
+        if (url) resolvedUrlCache.set(uuid, url)
+        return url
+      } catch (err) {
+        console.warn('[ScriptPlayer] URL resolver failed for', uuid, err)
+        return null
+      }
+    }
+
+    // Direct S3 access (learning app)
     return `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${uuid.toUpperCase()}.mp3`
   }
 
@@ -118,7 +145,7 @@ export function useScriptPlayer() {
   async function preloadTargetAudio(uuid) {
     if (!uuid) return
 
-    const url = getAudioUrl(uuid)
+    const url = await getAudioUrl(uuid)
     if (!url) return
 
     try {
@@ -249,7 +276,7 @@ export function useScriptPlayer() {
 
         if (hasAudio(item.sourceId)) {
           startProgressTracking()
-          await playAudio(getAudioUrl(item.sourceId))
+          await playAudio(await getAudioUrl(item.sourceId))
           stopProgressTracking()
         }
 
@@ -270,7 +297,7 @@ export function useScriptPlayer() {
 
         if (hasAudio(item.target1Id)) {
           startProgressTracking()
-          await playAudio(getAudioUrl(item.target1Id))
+          await playAudio(await getAudioUrl(item.target1Id))
           stopProgressTracking()
         }
 
@@ -289,7 +316,7 @@ export function useScriptPlayer() {
 
         if (hasAudio(target2Id)) {
           startProgressTracking()
-          await playAudio(getAudioUrl(target2Id))
+          await playAudio(await getAudioUrl(target2Id))
           stopProgressTracking()
         }
 

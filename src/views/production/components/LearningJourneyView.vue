@@ -268,6 +268,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick } from 'vue'
 import { useScriptPlayer } from '@/composables/useScriptPlayer'
+import { getApiUrl } from '@/services/api'
 
 interface ScriptItem {
   roundNumber: number
@@ -315,6 +316,7 @@ const props = defineProps<{
   rounds: RoundData[]
   allItems: ScriptItem[]
   stats: Stats | null
+  courseCode: string
   isLoading?: boolean
   hideControls?: boolean
 }>()
@@ -335,7 +337,20 @@ const emit = defineEmits<{
 // PLAYER SETUP
 // ============================================================================
 
-const player = useScriptPlayer()
+// Resolve audio UUIDs to signed URLs via the production API
+const apiBaseUrl = localStorage.getItem('api_base_url') || getApiUrl()
+
+const player = useScriptPlayer({
+  audioUrlResolver: async (uuid: string) => {
+    const resp = await fetch(
+      `${apiBaseUrl}/api/production/${props.courseCode}/audio/${uuid}/url`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    )
+    if (!resp.ok) return null
+    const data = await resp.json()
+    return data.url
+  }
+})
 
 // Build player-compatible items from allItems
 const playerItems = computed(() => {

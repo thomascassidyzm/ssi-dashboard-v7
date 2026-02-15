@@ -300,6 +300,7 @@
           ref="learningJourneyRef"
           :rounds="learningJourneyData.rounds"
           :all-items="learningJourneyData?.allItems || []"
+          :course-code="courseCode"
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
           :hide-controls="true"
