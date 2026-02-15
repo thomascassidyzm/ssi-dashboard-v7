@@ -441,10 +441,10 @@
       </div>
     </Transition>
 
-    <!-- Journey Playback Bar (4-Phase) -->
-    <Transition name="slide-up">
-      <div v-if="journeyPlayerActive" class="journey-playback-bar bg-slate-800 border-t border-slate-700 px-6 py-3">
-        <div class="flex items-center gap-4">
+    <!-- Journey Playback Bar (4-Phase) — always visible in journey mode -->
+    <div v-if="journeyPlayerActive" class="journey-playback-bar bg-slate-800 border-t border-slate-700 px-6 py-3">
+      <div class="flex items-center gap-4">
+        <template v-if="journeyPlayback?.currentItem">
           <!-- Position Info -->
           <div v-if="journeyPlayingRoundInfo" class="position-info text-xs text-slate-400 font-mono min-w-24">
             R{{ journeyPlayingRoundInfo.roundNumber }}, {{ journeyPlayingRoundInfo.itemIndex }}/{{ journeyPlayingRoundInfo.itemCount }}
@@ -452,7 +452,6 @@
 
           <!-- Type Badge -->
           <div
-            v-if="journeyPlayback?.currentItem?.type"
             class="type-badge px-2 py-0.5 rounded text-xs font-medium uppercase"
             :class="{
               'bg-purple-500 bg-opacity-30 text-purple-300': journeyPlayback.currentItem.type === 'intro',
@@ -468,9 +467,9 @@
           <!-- Current Item Text -->
           <div class="item-text flex-1 min-w-0">
             <div class="flex items-center gap-2 text-sm">
-              <span class="text-slate-400 truncate">{{ journeyPlayback?.currentItem?.known_text || '' }}</span>
+              <span class="text-slate-400 truncate">{{ journeyPlayback.currentItem.known_text || '' }}</span>
               <span class="text-slate-600 flex-shrink-0">&rarr;</span>
-              <span class="text-white truncate">{{ journeyPlayback?.currentItem?.target_text || '' }}</span>
+              <span class="text-white truncate">{{ journeyPlayback.currentItem.target_text || '' }}</span>
             </div>
           </div>
 
@@ -550,9 +549,23 @@
           <div class="text-xs text-slate-500 font-mono">
             {{ (journeyPlayback?.currentIndex || 0) + 1 }}/{{ journeyPlayback?.totalItems || 0 }}
           </div>
-        </div>
+        </template>
+
+        <!-- Idle state — nothing playing yet -->
+        <template v-else>
+          <div class="text-sm text-slate-500 flex-1">Click play on any item or round to start preview</div>
+          <div class="phase-indicator flex gap-1 items-center">
+            <div
+              v-for="phase in ['prompt', 'pause', 'voice1', 'voice2']"
+              :key="phase"
+              class="phase-segment px-2 py-0.5 rounded text-xs font-mono bg-slate-700 text-slate-500"
+            >
+              {{ journeyPhaseLabel(phase) }}
+            </div>
+          </div>
+        </template>
       </div>
-    </Transition>
+    </div>
 
     <!-- Flag Modal -->
     <FlagModal
@@ -876,7 +889,7 @@ const onJourneyPlaybackState = (state: any) => {
 };
 
 const journeyPlayerActive = computed(() => {
-  return journeyPlayback.value && (journeyPlayback.value.isPlaying || journeyPlayback.value.isPaused);
+  return viewMode.value === 'journey';
 });
 
 const journeyPhaseLabel = (phase: string | null): string => {
