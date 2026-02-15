@@ -237,7 +237,7 @@ export function useScriptPlayer(options = {}) {
     currentPhase.value = 'pause'
     emitPhaseChange('pause')
 
-    const pauseDuration = targetAudioDuration.value * 2 // 2x target audio duration
+    const pauseDuration = 1000 // Fixed 1s for QA preview
     const startTime = Date.now()
 
     // Base progress at 25% (after prompt phase)
@@ -281,14 +281,7 @@ export function useScriptPlayer(options = {}) {
         }
 
         if (isPlaying.value && !isPaused.value) {
-          // Brief 1s pause before target audio (QA preview mode)
-          currentPhase.value = 'pause'
-          emitPhaseChange('pause')
-          progress.value = 25
-          await new Promise(resolve => setTimeout(resolve, 1000))
-          if (isPlaying.value && !isPaused.value) {
-            moveToNextPhase()
-          }
+          startPausePhase()
         }
         break
 
