@@ -1149,20 +1149,20 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
 
       // Generate TTS audio using gender-expanded text
-      let rawAudioBuffer
+      let rawAudioBuffer, visemes
       if (provider === 'azure') {
-        rawAudioBuffer = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'azure', {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceName,
           speed
-        })
+        }))
       } else if (provider === 'elevenlabs') {
-        rawAudioBuffer = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceName,
           speed
-        })
+        }))
       } else {
         throw new Error(`Unknown TTS provider: ${provider}`)
       }
@@ -1197,7 +1197,8 @@ app.post('/generate/:courseCode', async (req, res) => {
           origin: 'tts',
           s3_key: s3Key,
           duration_ms: durationMs,
-          lego_id: item.lego_id || null
+          lego_id: item.lego_id || null,
+          viseme_data: visemes || null
         }, {
           onConflict: 'course_code,text_normalized,language,role'
         })
@@ -1488,21 +1489,21 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       }
 
       // Generate TTS audio using provider from voice config
-      let rawAudioBuffer
+      let rawAudioBuffer, visemes
       if (voiceProvider === 'azure') {
-        rawAudioBuffer = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'azure', {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
           speed,
           regenerationAttempt  // Pass to TTS for variation
-        })
+        }))
       } else if (voiceProvider === 'elevenlabs') {
-        rawAudioBuffer = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
-        })
+        }))
       } else {
         throw new Error(`Unknown TTS provider: ${voiceProvider}`)
       }
@@ -1529,7 +1530,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           voice_id: voiceId,
           origin: 'tts',
           s3_key: s3Key,
-          duration_ms: durationMs
+          duration_ms: durationMs,
+          viseme_data: visemes || null
         })
         .eq('id', item.id)
 

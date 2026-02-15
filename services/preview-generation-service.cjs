@@ -94,7 +94,7 @@ async function generatePreviewSample(options) {
   console.log(`[Preview] Generating: "${text.substring(0, 30)}..." with ${ttsConfig.provider}`);
 
   const startTime = Date.now();
-  const audioBuffer = await ttsService.generate(text, ttsConfig.provider, ttsConfig);
+  const { audioBuffer } = await ttsService.generate(text, ttsConfig.provider, ttsConfig);
   const generationTime = Date.now() - startTime;
 
   // Upload to staging
