@@ -1898,7 +1898,36 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // Short template (no "as in" context) for alternating in early seeds
     const shortTemplate = template.replace(/, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
 
+    // Load USE phrases for context fallback when seed sentence doesn't contain the known_text
+    // Group by seed_number + lego_index for efficient lookup
+    const usePhraseMap = {}  // "seed_number:lego_index" -> [known_text, ...]
+    let usePhraseOffset = 0
+    let hasMoreUsePhrases = true
+    while (hasMoreUsePhrases) {
+      const { data: useBatch, error: useError } = await supabase
+        .from('course_practice_phrases')
+        .select('seed_number, lego_index, known_text')
+        .eq('course_code', courseCode)
+        .eq('phrase_role', 'use')
+        .order('id')
+        .range(usePhraseOffset, usePhraseOffset + PAGE_SIZE - 1)
+
+      if (useError) { logger.warn('Failed to fetch USE phrases:', useError.message); break }
+      if (useBatch && useBatch.length > 0) {
+        for (const p of useBatch) {
+          const key = `${p.seed_number}:${p.lego_index}`
+          if (!usePhraseMap[key]) usePhraseMap[key] = []
+          usePhraseMap[key].push(p.known_text)
+        }
+        hasMoreUsePhrases = useBatch.length === PAGE_SIZE
+        usePhraseOffset += PAGE_SIZE
+      } else {
+        hasMoreUsePhrases = false
+      }
+    }
+
     const presentations = []
+    let contextFromSeed = 0, contextFromUse = 0, contextMissing = 0
     for (const lego of legos) {
       const seedText = seedMap[lego.seed_number] || lego.known_text
 
@@ -1910,23 +1939,63 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const useShortTemplate = lego.seed_number <= 2 && legoIndex % 2 === 0
       const activeTemplate = useShortTemplate ? shortTemplate : template
 
+      // Choose context sentence: seed if it contains known_text, otherwise a USE phrase
+      let contextText = seedText
+      const knownLower = lego.known_text.toLowerCase()
+      // For compound known_text like "to listen / to hear", also try each part
+      const knownVariants = [knownLower]
+      if (knownLower.includes(' / ')) {
+        knownVariants.push(...knownLower.split(' / ').map(s => s.trim()))
+      }
+      const textContainsKnown = (text) => {
+        const t = text.toLowerCase()
+        return knownVariants.some(v => t.includes(v))
+      }
+      if (!textContainsKnown(seedText)) {
+        // Seed doesn't contain the known_text — find a USE phrase that does
+        const key = `${lego.seed_number}:${legoIndex}`
+        const usePhrases = usePhraseMap[key] || []
+        const match = usePhrases.find(p => textContainsKnown(p))
+        if (match) {
+          contextText = match
+          contextFromUse++
+        } else {
+          // No USE phrase contains it either — use short template (no "as in")
+          contextMissing++
+        }
+      } else {
+        contextFromSeed++
+      }
+
+      // If no good context found, use short template to avoid misleading "as in"
+      const hasGoodContext = textContainsKnown(contextText)
+      const finalTemplate = useShortTemplate || !hasGoodContext ? shortTemplate : activeTemplate
+
+      // For slash-compound known_text like "to listen / to hear", use first option only
+      const knownForPresentation = lego.known_text.includes(' / ')
+        ? lego.known_text.split(' / ')[0].trim()
+        : lego.known_text
+
       // Fill in template
-      let presText = activeTemplate
+      let presText = finalTemplate
         .replace('{target_lang_name}', targetLangName)
-        .replace('{known}', lego.known_text)
-        .replace('{seed}', seedText)
+        .replace('{known}', knownForPresentation)
+        .replace('{seed}', contextText)
 
       presentations.push({
         lego_id: lego.lego_id,
         known: lego.known_text,
         target: lego.target_text,
-        seed: seedText,
+        seed: contextText,
         seed_number: lego.seed_number,
         lego_index: legoIndex,
-        uses_short_template: useShortTemplate,
+        uses_short_template: useShortTemplate || !hasGoodContext,
+        context_source: hasGoodContext ? (contextText === seedText ? 'seed' : 'use_phrase') : 'none',
         presentation_text: presText
       })
     }
+
+    logger.info(`Context sources: ${contextFromSeed} from seed, ${contextFromUse} from USE phrase, ${contextMissing} no context (short template)`)
 
     if (dryRun) {
       return res.json({

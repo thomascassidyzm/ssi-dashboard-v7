@@ -1,64 +1,39 @@
 import { ref, computed, onUnmounted } from 'vue'
-import { getApiUrl } from '@/services/api'
 
 /**
- * Script Player Composable
+ * Script Player Composable - Event-Driven Pattern (v2.0)
  *
- * Manages continuous playback of script items through a 4-phase cycle:
- * 1. PROMPT - Play source audio (known language)
- * 2. PAUSE - Wait for learner response (2x target duration or 3s default)
- * 3. VOICE_1 - Play target1 audio
- * 4. VOICE_2 - Play target2 audio
+ * Ported from SimplePlayer.ts in ssi-learning-app.
+ * Key improvements over v1:
+ * - Single 'ended' listener attached once (no per-play listeners)
+ * - onAudioEnded() callback drives all transitions (no async/await chains)
+ * - isPlaying guard at start of every onAudioEnded() prevents race conditions
+ * - Clean stop(): pause audio, clear src, clear timers — done
  *
- * @returns {Object} Player state and control methods
- */
-/**
- * @param {Object} [options]
- * @param {(uuid: string) => Promise<string>} [options.audioUrlResolver] - Async function to resolve a UUID to a playable URL.
- *   When omitted, falls back to direct S3 URL construction.
+ * 4-phase cycle: PROMPT → PAUSE → VOICE_1 → VOICE_2 → next item
  */
 export function useScriptPlayer(options = {}) {
-  // ============================================================================
-  // STATE
-  // ============================================================================
-
+  // State
   const isPlaying = ref(false)
   const isPaused = ref(false)
   const currentItem = ref(null)
   const currentPhase = ref(null) // 'prompt' | 'pause' | 'voice1' | 'voice2'
   const currentIndex = ref(0)
-  const progress = ref(0) // 0-100 through current item
+  const progress = ref(0)
 
-  // Internal state
+  // Internal
   const items = ref([])
-  const audioElement = ref(null)
-  const targetAudioDuration = ref(3000) // Default 3s, updated when target audio loads
-
-  // Timers
+  let audio = null
   let pauseTimer = null
-  let pauseProgressInterval = null
-  let progressUpdateInterval = null
 
   // Event callbacks
-  const callbacks = {
-    onItemChange: [],
-    onPhaseChange: [],
-    onComplete: []
-  }
+  const callbacks = { onItemChange: [], onPhaseChange: [], onComplete: [] }
 
-  // Audio API base URL
-  const API_BASE_URL = getApiUrl()
-
-  // Optional custom URL resolver (e.g. for signed S3 URLs via API)
+  // URL resolver + cache
   const audioUrlResolver = options.audioUrlResolver || null
-
-  // Cache for resolved URLs to avoid repeated API calls
   const resolvedUrlCache = new Map()
 
-  // ============================================================================
-  // COMPUTED
-  // ============================================================================
-
+  // Computed
   const totalItems = computed(() => items.value.length)
   const hasNextItem = computed(() => currentIndex.value < items.value.length - 1)
   const hasPrevItem = computed(() => currentIndex.value > 0)
@@ -67,15 +42,18 @@ export function useScriptPlayer(options = {}) {
   // AUDIO HELPERS
   // ============================================================================
 
-  /**
-   * Get audio URL from UUID.
-   * If an audioUrlResolver was provided, returns a cached/resolved signed URL.
-   * Otherwise falls back to direct S3 URL construction (learning app).
-   */
+  function ensureAudio() {
+    if (audio) return
+    audio = new Audio()
+    audio.addEventListener('ended', onAudioEnded)
+    audio.addEventListener('error', (e) => {
+      console.error('[ScriptPlayer] Audio error:', e)
+      onAudioEnded() // Continue despite errors
+    })
+  }
+
   async function getAudioUrl(uuid) {
     if (!uuid) return null
-
-    // Use resolver if provided (dashboard — needs signed URLs)
     if (audioUrlResolver) {
       if (resolvedUrlCache.has(uuid)) return resolvedUrlCache.get(uuid)
       try {
@@ -87,270 +65,126 @@ export function useScriptPlayer(options = {}) {
         return null
       }
     }
-
-    // Direct S3 access (learning app)
     return `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${uuid.toUpperCase()}.mp3`
   }
 
-  /**
-   * Check if audio URL exists
-   */
-  function hasAudio(uuid) {
-    return !!uuid && uuid.trim() !== ''
-  }
-
-  /**
-   * Play audio and return a Promise that resolves when done
-   */
-  function playAudio(url) {
-    return new Promise((resolve) => {
-      if (!audioElement.value || !url) {
-        console.warn('[ScriptPlayer] No audio element or URL')
-        resolve()
-        return
-      }
-
-      const el = audioElement.value
-
-      const onEnded = () => {
-        cleanup()
-        resolve()
-      }
-
-      const onError = (e) => {
-        console.error('[ScriptPlayer] Audio playback error:', e)
-        cleanup()
-        resolve() // Resolve anyway to continue playback
-      }
-
-      const cleanup = () => {
-        el.removeEventListener('ended', onEnded)
-        el.removeEventListener('error', onError)
-      }
-
-      el.addEventListener('ended', onEnded)
-      el.addEventListener('error', onError)
-
-      el.src = url
-      el.load()
-      el.play().catch(err => {
-        console.error('[ScriptPlayer] Play failed:', err)
-        cleanup()
-        resolve()
-      })
-    })
-  }
-
-  /**
-   * Preload audio to get duration
-   */
-  async function preloadTargetAudio(uuid) {
-    if (!uuid) return
-
-    const url = await getAudioUrl(uuid)
-    if (!url) return
-
-    try {
-      const tempAudio = new Audio()
-      tempAudio.src = url
-
-      await new Promise((resolve, reject) => {
-        tempAudio.addEventListener('loadedmetadata', () => {
-          if (tempAudio.duration && !isNaN(tempAudio.duration)) {
-            targetAudioDuration.value = tempAudio.duration * 1000 // Convert to ms
-          }
-          resolve()
-        })
-        tempAudio.addEventListener('error', reject)
-        tempAudio.load()
-
-        // Timeout after 5 seconds
-        setTimeout(() => resolve(), 5000)
-      })
-    } catch (err) {
-      console.warn('[ScriptPlayer] Failed to preload target audio:', err)
-    }
-  }
-
-  /**
-   * Preload next item's audio in background
-   */
-  function preloadNextItem() {
-    if (!hasNextItem.value) return
-
-    const nextItem = items.value[currentIndex.value + 1]
-    if (!nextItem) return
-
-    // Preload target1 to get duration for pause calculation
-    if (nextItem.target1Id) {
-      preloadTargetAudio(nextItem.target1Id)
-    }
-  }
-
   // ============================================================================
-  // PHASE PROGRESSION
+  // PHASE TRANSITIONS (event-driven, no async chains)
   // ============================================================================
 
-  /**
-   * Update progress during audio playback
-   */
-  function startProgressTracking() {
-    stopProgressTracking()
-
-    progressUpdateInterval = setInterval(() => {
-      if (!audioElement.value || audioElement.value.paused) return
-
-      const duration = audioElement.value.duration
-      const current = audioElement.value.currentTime
-
-      if (!duration || isNaN(duration)) return
-
-      // Calculate progress for current phase
-      // Each phase is 25% of total item progress
-      let phaseProgress = 0
-
-      switch (currentPhase.value) {
-        case 'prompt':
-          phaseProgress = (current / duration) * 25
-          break
-        case 'voice1':
-          phaseProgress = 50 + (current / duration) * 25
-          break
-        case 'voice2':
-          phaseProgress = 75 + (current / duration) * 25
-          break
-      }
-
-      progress.value = Math.min(phaseProgress, 100)
-    }, 50)
+  function getNextPhase() {
+    const transitions = {
+      prompt: 'pause',
+      pause: 'voice1',
+      voice1: 'voice2',
+      voice2: null, // End of cycle
+    }
+    return transitions[currentPhase.value] || null
   }
 
-  function stopProgressTracking() {
-    if (progressUpdateInterval) {
-      clearInterval(progressUpdateInterval)
-      progressUpdateInterval = null
+  function onAudioEnded() {
+    // Abort guard — if stopped mid-playback, do nothing
+    if (!isPlaying.value) return
+
+    const nextPhase = getNextPhase()
+    if (nextPhase) {
+      startPhase(nextPhase)
+    } else {
+      // Cycle complete — advance to next item
+      advanceItem()
     }
   }
 
-  /**
-   * Start pause timer with progress updates
-   */
-  function startPausePhase() {
-    currentPhase.value = 'pause'
-    emitPhaseChange('pause')
+  async function startPhase(phase) {
+    currentPhase.value = phase
+    emitPhaseChange(phase)
 
-    const pauseDuration = 1000 // Fixed 1s for QA preview
-    const startTime = Date.now()
-
-    // Base progress at 25% (after prompt phase)
-    const baseProgress = 25
-
-    pauseProgressInterval = setInterval(() => {
-      const elapsed = Date.now() - startTime
-      const pausePercent = Math.min(elapsed / pauseDuration, 1)
-      progress.value = baseProgress + (pausePercent * 25) // Pause is 25% of total
-    }, 50)
-
-    pauseTimer = setTimeout(() => {
-      clearInterval(pauseProgressInterval)
-      pauseProgressInterval = null
-
-      if (isPlaying.value && !isPaused.value) {
-        moveToNextPhase()
-      }
-    }, pauseDuration)
-  }
-
-  /**
-   * Move to the next phase in the cycle
-   */
-  async function moveToNextPhase() {
     const item = currentItem.value
     if (!item) return
 
-    console.log('[ScriptPlayer] moveToNextPhase:', currentPhase.value, '→', {
-      type: item.type, sourceId: item.sourceId, target1Id: item.target1Id, target2Id: item.target2Id
-    })
-
-    switch (currentPhase.value) {
-      case null:
-      case 'voice2': // Coming from previous item
-        // Start PROMPT phase
-        currentPhase.value = 'prompt'
-        emitPhaseChange('prompt')
+    switch (phase) {
+      case 'prompt': {
         progress.value = 0
-
-        if (hasAudio(item.sourceId)) {
+        if (item.sourceId) {
           const url = await getAudioUrl(item.sourceId)
-          console.log('[ScriptPlayer] PROMPT playing:', item.sourceId, '→', url?.substring(0, 80))
-          startProgressTracking()
-          await playAudio(url)
-          stopProgressTracking()
-        } else {
-          console.log('[ScriptPlayer] PROMPT: no audio for sourceId', item.sourceId)
-        }
-
-        if (isPlaying.value && !isPaused.value) {
-          startPausePhase()
-        }
-        break
-
-      case 'prompt':
-        // Already handled by startPausePhase
-        break
-
-      case 'pause':
-        // Move to VOICE_1 phase
-        currentPhase.value = 'voice1'
-        emitPhaseChange('voice1')
-        progress.value = 50
-
-        if (hasAudio(item.target1Id)) {
-          const url = await getAudioUrl(item.target1Id)
-          console.log('[ScriptPlayer] VOICE1 playing:', item.target1Id, '→', url?.substring(0, 80))
-          startProgressTracking()
-          await playAudio(url)
-          stopProgressTracking()
-        } else {
-          console.log('[ScriptPlayer] VOICE1: no audio for target1Id', item.target1Id)
-        }
-
-        if (isPlaying.value && !isPaused.value) {
-          moveToNextPhase()
-        }
-        break
-
-      case 'voice1':
-        // Move to VOICE_2 phase
-        currentPhase.value = 'voice2'
-        emitPhaseChange('voice2')
-        progress.value = 75
-
-        const target2Id = item.target2Id || item.target1Id // Fallback to target1 if no target2
-
-        if (hasAudio(target2Id)) {
-          const url = await getAudioUrl(target2Id)
-          console.log('[ScriptPlayer] VOICE2 playing:', target2Id, '→', url?.substring(0, 80))
-          startProgressTracking()
-          await playAudio(url)
-          stopProgressTracking()
-        } else {
-          console.log('[ScriptPlayer] VOICE2: no audio for target2Id', target2Id)
-        }
-
-        progress.value = 100
-
-        if (isPlaying.value && !isPaused.value) {
-          // Item complete, move to next item
-          if (hasNextItem.value) {
-            skip() // Move to next item
+          if (!isPlaying.value) return // Guard after await
+          if (url) {
+            playAudioSrc(url)
           } else {
-            // Course complete
-            stop()
-            emitComplete()
+            onAudioEnded()
           }
+        } else {
+          onAudioEnded()
         }
         break
+      }
+
+      case 'pause': {
+        progress.value = 25
+        clearPauseTimer()
+        pauseTimer = setTimeout(() => {
+          if (isPlaying.value && !isPaused.value) {
+            onAudioEnded()
+          }
+        }, 1000) // Fixed 1s for QA preview
+        break
+      }
+
+      case 'voice1': {
+        progress.value = 50
+        if (item.target1Id) {
+          const url = await getAudioUrl(item.target1Id)
+          if (!isPlaying.value) return // Guard after await
+          if (url) {
+            playAudioSrc(url)
+          } else {
+            onAudioEnded()
+          }
+        } else {
+          onAudioEnded()
+        }
+        break
+      }
+
+      case 'voice2': {
+        progress.value = 75
+        const target2Id = item.target2Id || item.target1Id
+        if (target2Id) {
+          const url = await getAudioUrl(target2Id)
+          if (!isPlaying.value) return // Guard after await
+          if (url) {
+            playAudioSrc(url)
+          } else {
+            onAudioEnded()
+          }
+        } else {
+          onAudioEnded()
+        }
+        break
+      }
+    }
+  }
+
+  function playAudioSrc(url) {
+    if (!audio) return
+    audio.src = url
+    audio.play().catch((err) => {
+      console.error('[ScriptPlayer] Play failed:', err)
+      onAudioEnded()
+    })
+  }
+
+  function advanceItem() {
+    if (hasNextItem.value) {
+      currentIndex.value++
+      currentItem.value = items.value[currentIndex.value]
+      progress.value = 0
+      emitItemChange(currentItem.value)
+      startPhase('prompt')
+    } else {
+      progress.value = 100
+      stop()
+      emitComplete()
     }
   }
 
@@ -358,22 +192,11 @@ export function useScriptPlayer(options = {}) {
   // PLAYBACK CONTROL
   // ============================================================================
 
-  /**
-   * Start playback from a specific index
-   */
-  async function playFrom(scriptItems, startIndex = 0) {
-    if (!scriptItems || scriptItems.length === 0) {
-      console.warn('[ScriptPlayer] No items to play')
-      return
-    }
+  function playFrom(scriptItems, startIndex = 0) {
+    if (!scriptItems || scriptItems.length === 0) return
 
-    // Stop any existing playback first (clears timers, pauses audio)
     stop()
-
-    // Initialize audio element if needed
-    if (!audioElement.value) {
-      audioElement.value = new Audio()
-    }
+    ensureAudio()
 
     items.value = scriptItems
     currentIndex.value = Math.max(0, Math.min(startIndex, scriptItems.length - 1))
@@ -384,145 +207,52 @@ export function useScriptPlayer(options = {}) {
     isPaused.value = false
 
     emitItemChange(currentItem.value)
-
-    // Preload target audio to get duration
-    if (currentItem.value.target1Id) {
-      await preloadTargetAudio(currentItem.value.target1Id)
-    }
-
-    // Start playback from PROMPT phase
-    moveToNextPhase()
-
-    // Preload next item
-    preloadNextItem()
+    startPhase('prompt')
   }
 
-  /**
-   * Resume playback if paused
-   */
   function play() {
-    if (!isPaused.value) {
-      console.warn('[ScriptPlayer] Already playing')
-      return
-    }
+    if (!isPaused.value) return
 
     isPaused.value = false
     isPlaying.value = true
 
-    // Resume from current phase
-    if (audioElement.value && audioElement.value.paused) {
-      audioElement.value.play().catch(err => {
+    if (currentPhase.value === 'pause') {
+      // Restart the pause timer
+      startPhase('pause')
+    } else if (audio && audio.paused && audio.src) {
+      audio.play().catch(err => {
         console.error('[ScriptPlayer] Resume failed:', err)
       })
     } else {
-      // Restart current phase if not in audio playback
-      moveToNextPhase()
+      startPhase(currentPhase.value || 'prompt')
     }
   }
 
-  /**
-   * Pause playback
-   */
   function pause() {
     if (!isPlaying.value) return
 
     isPaused.value = true
     isPlaying.value = false
 
-    // Pause audio
-    if (audioElement.value && !audioElement.value.paused) {
-      audioElement.value.pause()
+    if (audio && !audio.paused) {
+      audio.pause()
     }
-
-    // Pause timers
-    if (pauseTimer) {
-      clearTimeout(pauseTimer)
-      pauseTimer = null
-    }
-    if (pauseProgressInterval) {
-      clearInterval(pauseProgressInterval)
-      pauseProgressInterval = null
-    }
-
-    stopProgressTracking()
+    clearPauseTimer()
   }
 
-  /**
-   * Stop playback completely
-   */
   function stop() {
     isPlaying.value = false
     isPaused.value = false
     currentPhase.value = null
     progress.value = 0
 
-    // Stop audio
-    if (audioElement.value) {
-      audioElement.value.pause()
-      audioElement.value.currentTime = 0
+    if (audio) {
+      audio.pause()
+      audio.src = ''
     }
-
-    // Clear timers
-    if (pauseTimer) {
-      clearTimeout(pauseTimer)
-      pauseTimer = null
-    }
-    if (pauseProgressInterval) {
-      clearInterval(pauseProgressInterval)
-      pauseProgressInterval = null
-    }
-
-    stopProgressTracking()
+    clearPauseTimer()
   }
 
-  /**
-   * Go to previous item
-   */
-  function previous() {
-    if (!hasPrevItem.value) return
-
-    // Stop current playback
-    if (audioElement.value) {
-      audioElement.value.pause()
-      audioElement.value.currentTime = 0
-    }
-
-    if (pauseTimer) {
-      clearTimeout(pauseTimer)
-      pauseTimer = null
-    }
-    if (pauseProgressInterval) {
-      clearInterval(pauseProgressInterval)
-      pauseProgressInterval = null
-    }
-
-    stopProgressTracking()
-
-    // Move to previous item
-    currentIndex.value--
-    currentItem.value = items.value[currentIndex.value]
-    currentPhase.value = null
-    progress.value = 0
-
-    emitItemChange(currentItem.value)
-
-    // Preload target audio
-    if (currentItem.value.target1Id) {
-      preloadTargetAudio(currentItem.value.target1Id)
-    }
-
-    // Continue playback if playing
-    if (isPlaying.value && !isPaused.value) {
-      moveToNextPhase()
-    }
-
-    // Preload next item
-    preloadNextItem()
-  }
-
-  /**
-   * Skip to next item
-   */
   function skip() {
     if (!hasNextItem.value) {
       stop()
@@ -530,24 +260,13 @@ export function useScriptPlayer(options = {}) {
       return
     }
 
-    // Stop current playback
-    if (audioElement.value) {
-      audioElement.value.pause()
-      audioElement.value.currentTime = 0
+    // Stop current audio/timer without clearing playing state
+    if (audio) {
+      audio.pause()
+      audio.src = ''
     }
+    clearPauseTimer()
 
-    if (pauseTimer) {
-      clearTimeout(pauseTimer)
-      pauseTimer = null
-    }
-    if (pauseProgressInterval) {
-      clearInterval(pauseProgressInterval)
-      pauseProgressInterval = null
-    }
-
-    stopProgressTracking()
-
-    // Move to next item
     currentIndex.value++
     currentItem.value = items.value[currentIndex.value]
     currentPhase.value = null
@@ -555,59 +274,60 @@ export function useScriptPlayer(options = {}) {
 
     emitItemChange(currentItem.value)
 
-    // Preload target audio
-    if (currentItem.value.target1Id) {
-      preloadTargetAudio(currentItem.value.target1Id)
-    }
-
-    // Continue playback if playing
     if (isPlaying.value && !isPaused.value) {
-      moveToNextPhase()
+      startPhase('prompt')
     }
-
-    // Preload next item
-    preloadNextItem()
   }
 
-  /**
-   * Jump to specific item index
-   */
-  async function seekTo(index) {
-    if (index < 0 || index >= items.value.length) {
-      console.warn('[ScriptPlayer] Invalid index:', index)
-      return
+  function previous() {
+    if (!hasPrevItem.value) return
+
+    if (audio) {
+      audio.pause()
+      audio.src = ''
     }
+    clearPauseTimer()
 
-    const wasPlaying = isPlaying.value && !isPaused.value
-
-    // Stop current playback
-    stop()
-
-    // Update position
-    currentIndex.value = index
-    currentItem.value = items.value[index]
+    currentIndex.value--
+    currentItem.value = items.value[currentIndex.value]
+    currentPhase.value = null
+    progress.value = 0
 
     emitItemChange(currentItem.value)
 
-    // Preload target audio
-    if (currentItem.value.target1Id) {
-      await preloadTargetAudio(currentItem.value.target1Id)
+    if (isPlaying.value && !isPaused.value) {
+      startPhase('prompt')
     }
+  }
 
-    // Resume if was playing
+  function seekTo(index) {
+    if (index < 0 || index >= items.value.length) return
+
+    const wasPlaying = isPlaying.value && !isPaused.value
+    stop()
+
+    currentIndex.value = index
+    currentItem.value = items.value[index]
+    emitItemChange(currentItem.value)
+
     if (wasPlaying) {
+      ensureAudio()
       isPlaying.value = true
       isPaused.value = false
-      moveToNextPhase()
+      startPhase('prompt')
     }
-
-    // Preload next item
-    preloadNextItem()
   }
 
   // ============================================================================
-  // EVENT EMITTERS
+  // HELPERS
   // ============================================================================
+
+  function clearPauseTimer() {
+    if (pauseTimer) {
+      clearTimeout(pauseTimer)
+      pauseTimer = null
+    }
+  }
 
   function emitItemChange(item) {
     callbacks.onItemChange.forEach(cb => cb(item))
@@ -621,61 +341,43 @@ export function useScriptPlayer(options = {}) {
     callbacks.onComplete.forEach(cb => cb())
   }
 
-  // ============================================================================
-  // EVENT REGISTRATION
-  // ============================================================================
-
   function onItemChange(callback) {
     callbacks.onItemChange.push(callback)
-    // Return unregister function
     return () => {
-      const index = callbacks.onItemChange.indexOf(callback)
-      if (index > -1) {
-        callbacks.onItemChange.splice(index, 1)
-      }
+      const idx = callbacks.onItemChange.indexOf(callback)
+      if (idx > -1) callbacks.onItemChange.splice(idx, 1)
     }
   }
 
   function onPhaseChange(callback) {
     callbacks.onPhaseChange.push(callback)
     return () => {
-      const index = callbacks.onPhaseChange.indexOf(callback)
-      if (index > -1) {
-        callbacks.onPhaseChange.splice(index, 1)
-      }
+      const idx = callbacks.onPhaseChange.indexOf(callback)
+      if (idx > -1) callbacks.onPhaseChange.splice(idx, 1)
     }
   }
 
   function onComplete(callback) {
     callbacks.onComplete.push(callback)
     return () => {
-      const index = callbacks.onComplete.indexOf(callback)
-      if (index > -1) {
-        callbacks.onComplete.splice(index, 1)
-      }
+      const idx = callbacks.onComplete.indexOf(callback)
+      if (idx > -1) callbacks.onComplete.splice(idx, 1)
     }
   }
 
-  // ============================================================================
-  // CLEANUP
-  // ============================================================================
-
+  // Cleanup
   onUnmounted(() => {
     stop()
-
-    if (audioElement.value) {
-      audioElement.value.pause()
-      audioElement.value.src = ''
-      audioElement.value = null
+    if (audio) {
+      audio.removeEventListener('ended', onAudioEnded)
+      audio.pause()
+      audio.src = ''
+      audio = null
     }
   })
 
-  // ============================================================================
-  // PUBLIC API
-  // ============================================================================
-
   return {
-    // State (reactive refs)
+    // State
     isPlaying,
     isPaused,
     currentItem,
@@ -698,6 +400,6 @@ export function useScriptPlayer(options = {}) {
     // Event registration
     onItemChange,
     onPhaseChange,
-    onComplete
+    onComplete,
   }
 }

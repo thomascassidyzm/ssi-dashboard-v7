@@ -5,7 +5,7 @@
  */
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
-const { extractVocab, normalizeForZUT } = require('./text-normalization.cjs');
+const { extractVocab, normalizeForZUT, normalizeForStorage } = require('./text-normalization.cjs');
 
 // ─── Methodology command hints (guide agents on rejection) ─────────────
 
@@ -93,31 +93,58 @@ const METHODOLOGY_HINTS = {
 /**
  * Check if seed target_text can be "tiled" from LEGO targets.
  * Returns: { valid: true } or { valid: false, untiled, message }
+ *
+ * Collects complete LEGO targets (and component targets) as vocab units.
+ * Non-Chinese: derives words from those units, checks each seed word is covered.
+ * Chinese: DP segmentation to check the seed can be composed from LEGO targets.
  */
 function checkTiling(seedTarget, legos, courseCode, existingVocab) {
   const chinese = isChinese(courseCode);
-  const availableVocab = existingVocab ? new Set(existingVocab) : new Set();
+  const legoTargets = existingVocab ? new Set(existingVocab) : new Set();
 
   for (const lego of legos) {
-    extractVocab(lego.target, chinese).forEach(v => availableVocab.add(v));
+    extractVocab(lego.target, chinese).forEach(v => legoTargets.add(v));
     if (lego.type === 'M' && lego.components) {
       for (const comp of lego.components) {
-        extractVocab(comp.target, chinese).forEach(v => availableVocab.add(v));
+        extractVocab(comp.target, chinese).forEach(v => legoTargets.add(v));
       }
     }
   }
 
-  const seedVocab = extractVocab(seedTarget, chinese);
-  const untiled = seedVocab.filter(v => !availableVocab.has(v));
+  if (chinese) {
+    const normalized = normalizeForStorage(seedTarget, true);
+    const uncovered = findUncoveredChinese(normalized, legoTargets);
+    if (uncovered) {
+      return {
+        valid: false,
+        untiled: uncovered,
+        seed_vocab: normalized.length,
+        lego_vocab: legoTargets.size,
+        message: `Seed target contains vocabulary not covered by LEGOs: [${uncovered}]`,
+      };
+    }
+  } else {
+    // Derive word set from LEGO targets
+    const wordSet = new Set();
+    for (const entry of legoTargets) {
+      for (const word of entry.split(' ')) {
+        if (word) wordSet.add(word);
+      }
+    }
 
-  if (untiled.length > 0) {
-    return {
-      valid: false,
-      untiled: chinese ? untiled.join('') : untiled.join(', '),
-      seed_vocab: seedVocab.length,
-      lego_vocab: availableVocab.size,
-      message: `Seed target contains vocabulary not covered by LEGOs: [${chinese ? untiled.join('') : untiled.join(', ')}]`,
-    };
+    const seedNorm = normalizeForStorage(seedTarget, false);
+    const seedWords = seedNorm.split(' ').filter(w => w);
+    const untiled = seedWords.filter(w => !wordSet.has(w));
+
+    if (untiled.length > 0) {
+      return {
+        valid: false,
+        untiled: untiled.join(', '),
+        seed_vocab: seedWords.length,
+        lego_vocab: wordSet.size,
+        message: `Seed target contains vocabulary not covered by LEGOs: [${untiled.join(', ')}]`,
+      };
+    }
   }
 
   return { valid: true };
@@ -211,23 +238,87 @@ function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
 /**
  * Check phrases for vocabulary violations.
  * Returns array of violations: [{ phrase, unknown: [...] }]
+ *
+ * vocabSet contains complete LEGO targets and component targets.
+ * A LEGO target IS the vocabulary unit — no character or sub-word decomposition.
+ *
+ * For space-delimited languages: derive a word set from LEGO targets, check each
+ * word in the phrase belongs to at least one known LEGO.
+ *
+ * For Chinese/Japanese (no spaces): check the phrase can be segmented entirely
+ * from known LEGO targets (DP segmentation).
  */
 function checkVocabViolations(phrases, vocabSet, courseCode) {
   const chinese = isChinese(courseCode);
   const violations = [];
 
-  for (const phrase of phrases) {
-    const phraseVocab = extractVocab(phrase.target, chinese);
-    const unknown = phraseVocab.filter(v => !vocabSet.has(v));
-    if (unknown.length > 0) {
-      violations.push({
-        phrase: phrase.target,
-        unknown: chinese ? unknown.join('') : unknown.join(', '),
-      });
+  if (chinese) {
+    for (const phrase of phrases) {
+      const normalized = normalizeForStorage(phrase.target, true);
+      if (!normalized) continue;
+      const uncovered = findUncoveredChinese(normalized, vocabSet);
+      if (uncovered) {
+        violations.push({
+          phrase: phrase.target,
+          unknown: uncovered,
+        });
+      }
+    }
+  } else {
+    // Build a word set from complete LEGO targets
+    const wordSet = new Set();
+    for (const legoTarget of vocabSet) {
+      for (const word of legoTarget.split(' ')) {
+        if (word) wordSet.add(word);
+      }
+    }
+
+    for (const phrase of phrases) {
+      const normalized = normalizeForStorage(phrase.target, false);
+      const phraseWords = normalized.split(' ').filter(w => w);
+      const unknown = phraseWords.filter(w => !wordSet.has(w));
+      if (unknown.length > 0) {
+        violations.push({
+          phrase: phrase.target,
+          unknown: unknown.join(', '),
+        });
+      }
     }
   }
 
   return violations;
+}
+
+/**
+ * Check if a Chinese phrase can be fully segmented from known LEGO targets.
+ * Returns null if OK, or the uncovered substring if not.
+ */
+function findUncoveredChinese(phrase, vocabSet) {
+  const n = phrase.length;
+  if (n === 0) return null;
+
+  // dp[i] = true means phrase[0..i-1] can be covered by known LEGOs
+  const dp = new Array(n + 1).fill(false);
+  dp[0] = true;
+
+  for (let i = 1; i <= n; i++) {
+    for (const entry of vocabSet) {
+      const len = entry.length;
+      if (len <= i && dp[i - len] && phrase.substring(i - len, i) === entry) {
+        dp[i] = true;
+        break;
+      }
+    }
+  }
+
+  if (dp[n]) return null;
+
+  // Find the first position we can't get past
+  let lastReachable = 0;
+  for (let i = 0; i <= n; i++) {
+    if (dp[i]) lastReachable = i;
+  }
+  return phrase.substring(lastReachable);
 }
 
 // ─── LEGO balance scoring (DB-dependent) ───────────────────────────────
@@ -450,7 +541,7 @@ function classifySeedPattern(seed) {
     seed.legos.some(other => other.target !== l.target && other.target.includes(l.target))
   );
   const hasWrappedPrep = mLegos.some(m => {
-    const words = m.target.split(/[\s']/);
+    const words = m.target.split(' ');
     return words.length >= 3 && words.slice(1, -1).some(w => PREPOSITIONS.includes(w));
   });
   if (hasOverlap) return 'overlapping';

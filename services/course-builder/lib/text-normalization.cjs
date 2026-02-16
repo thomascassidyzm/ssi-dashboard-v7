@@ -103,17 +103,14 @@ function normalizeText(text, chinese = false) {
 }
 
 /**
- * Extract vocab units from text (characters for Chinese, words for European).
- * Preserves diacritics when storing vocabulary.
+ * Extract vocab units from text.
+ * Returns the complete normalized text as a single unit.
+ * The LEGO target IS the vocabulary — no splitting, no character decomposition.
  */
 function extractVocab(text, chinese = false) {
   const normalized = normalizeForStorage(text, chinese);
-  if (chinese) {
-    return [...normalized].filter(c => c.trim() && !c.match(/\s/));
-  } else {
-    // Split on whitespace AND apostrophes so reflexive/elided forms decompose
-    return normalized.split(/[\s']+/).filter(w => w);
-  }
+  if (!normalized) return [];
+  return [normalized];
 }
 
 module.exports = {

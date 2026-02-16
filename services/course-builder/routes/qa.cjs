@@ -131,7 +131,7 @@ curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
 IMPORTANT: When spawning sub-agents via the Task tool:
 - Use subagent_type: "general-purpose"
 - Set run_in_background: true for each
-- Use model: "sonnet" (Sonnet for language evaluation)
+- Choose model based on language difficulty: use "opus" for languages with complex grammar (e.g. German case system, Japanese honorifics, Welsh mutations, Arabic morphology), "sonnet" for moderately complex languages, "haiku" for well-resourced straightforward languages. Use your own knowledge of the target language to decide.
 - Keep the description short: "QA seeds {start}-{end} for ${courseCode}"
 
 ## Step 2: Monitor Progress
@@ -307,7 +307,7 @@ curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
 IMPORTANT: When spawning sub-agents via the Task tool:
 - Use subagent_type: "general-purpose"
 - Set run_in_background: true for each
-- Use model: "sonnet" (Sonnet for language evaluation)
+- Choose model based on language difficulty: use "opus" for languages with complex grammar (e.g. German case system, Japanese honorifics, Welsh mutations, Arabic morphology), "sonnet" for moderately complex languages, "haiku" for well-resourced straightforward languages. Use your own knowledge of the target language to decide.
 - Keep the description short: "QA seeds {start}-{end} for ${courseCode}"
 
 ## Step 2: Monitor Progress
@@ -715,6 +715,8 @@ end tell`;
       const { courseCode } = req.params;
       const limit = parseInt(req.query.limit) || 50;
       const role = req.query.role; // Optional: 'use', 'practice', 'component'
+      const seedMin = parseInt(req.query.seed_min) || null;
+      const seedMax = parseInt(req.query.seed_max) || null;
 
       let query = supabase
         .from('course_practice_phrases')
@@ -726,8 +728,15 @@ end tell`;
       if (role) {
         query = query.eq('phrase_role', role);
       }
+      if (seedMin) {
+        query = query.gte('seed_number', seedMin);
+      }
+      if (seedMax) {
+        query = query.lte('seed_number', seedMax);
+      }
 
       const { data, error } = await query
+        .order('seed_number', { ascending: true })
         .order('created_at', { ascending: true })
         .limit(limit);
 

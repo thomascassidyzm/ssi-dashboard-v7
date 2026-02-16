@@ -10172,7 +10172,7 @@ async function generateAudioInBackground(jobId, courseCode, samples, config, man
             };
 
             // Generate audio with retry
-            const audioBuffer = await ttsService.generateWithRetry(
+            const { audioBuffer } = await ttsService.generateWithRetry(
               sample.text,
               ttsProvider,
               ttsConfig,

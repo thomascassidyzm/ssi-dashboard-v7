@@ -34,7 +34,7 @@ module.exports = function (ctx) {
         fs.writeFileSync(tmpFile, brief);
 
         const projectDir = path.resolve(__dirname, '..', '..', '..');
-        const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+        const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
         console.log(`[BUILD] Spawning parallel coordinator #${agentCount} for ${cc}`);
         spawnInTerminal(ctx, claudeCmd, `Parallel Build #${agentCount}`, cc);
       };
@@ -394,7 +394,7 @@ module.exports = function (ctx) {
       }
 
       // Spawn translation agent
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       console.log(`[TRANSLATE] Spawning translation agent for ${courseCode} in ${effectiveTerminal}`);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode);
 
@@ -473,7 +473,7 @@ module.exports = function (ctx) {
           if (!jobError && jobData) jobId = jobData.id;
         } catch (e) { console.error('[GOLDEN] Failed to create build_jobs record:', e.message); }
 
-        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
         console.log(`[GOLDEN] Spawning Calibration Creator for ${courseCode}`);
         spawnInTerminal(ctx, creatorCmd, 'Calibration Creator', courseCode);
 
@@ -547,7 +547,7 @@ module.exports = function (ctx) {
         fs.writeFileSync(creatorFile, brief);
         creatorFiles.push(creatorFile);
 
-        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --no-project-context --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${creatorFile})"`;
         console.log(`[GOLDEN] Spawning Sonnet Creator ${i + 1}/${batches.length} for ${courseCode} — seeds ${batch[0]}-${batch[batch.length - 1]}`);
         spawnInTerminal(ctx, creatorCmd, `Creator ${i + 1}/${batches.length}`, courseCode);
 
@@ -576,7 +576,7 @@ module.exports = function (ctx) {
         const checkerFile = `/tmp/golden_checker_${courseCode}_${range.min}-${range.max}_${ts}.md`;
         fs.writeFileSync(checkerFile, checkerBrief);
 
-        const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${checkerFile})"`;
+        const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
         console.log(`[GOLDEN] Spawning Opus Checker ${i + 1}/${checkerRanges.length} for ${courseCode} — seeds ${range.min}-${range.max}`);
         spawnInTerminal(ctx, checkerCmd, `Checker ${range.min}-${range.max}`, courseCode);
 

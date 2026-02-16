@@ -30,7 +30,7 @@ module.exports = function(ctx) {
   // Accepts JSON with seed_number, known_text, target_text, and legos array.
   // Validates: canonical seed lookup, tiling, duplicate seed detection.
   // Skips: ZUT (checked globally at finalize), phrase counts, vocab violations.
-  // Stores in course_seed_drafts with validation_status: 'decomposed'.
+  // Stores in course_seed_drafts with validation_status: 'valid' (stage: 'decomposed' in notes).
   // ---------------------------------------------------------------------------
   router.post('/v2/decompose', async (req, res) => {
     try {
@@ -121,7 +121,7 @@ module.exports = function(ctx) {
         }
       }
 
-      // 6. Store as draft with validation_status: 'decomposed'
+      // 6. Store as draft with validation_status: 'valid' (stage: 'decomposed' in notes)
       const submissionData = {
         legos: legos.map((l, i) => ({
           idx: l.idx || i + 1,
@@ -140,8 +140,8 @@ module.exports = function(ctx) {
           known_text: knownText,
           target_text: targetText,
           submission_data: submissionData,
-          validation_status: 'decomposed',
-          validation_notes: { submitted_at: new Date().toISOString(), lego_count: legos.length },
+          validation_status: 'valid',
+          validation_notes: { submitted_at: new Date().toISOString(), lego_count: legos.length, stage: 'decomposed' },
           updated_at: new Date().toISOString()
         }, { onConflict: 'course_code,seed_number' });
 
@@ -184,7 +184,7 @@ module.exports = function(ctx) {
         .from('course_seed_drafts')
         .select('*')
         .eq('course_code', courseCode)
-        .in('validation_status', ['decomposed', 'valid'])
+        .eq('validation_status', 'valid')
         .order('seed_number');
 
       if (draftErr) throw new Error(`Failed to load drafts: ${draftErr.message}`);
@@ -975,7 +975,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1039,7 +1039,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1153,7 +1153,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --no-project-context --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1213,12 +1213,12 @@ module.exports = function(ctx) {
       const seedRange = { from: goldenCount + 1, to: totalSeeds };
       const totalInRange = seedRange.to - seedRange.from + 1;
 
-      // Decompose progress: drafts with status 'decomposed' or 'valid'
+      // Decompose progress: drafts with status 'valid'
       const { count: draftCount } = await ctx.supabase
         .from('course_seed_drafts')
         .select('*', { count: 'exact', head: true })
         .eq('course_code', courseCode)
-        .in('validation_status', ['decomposed', 'valid']);
+        .eq('validation_status', 'valid');
 
       // Collision count
       const { count: collisionCount } = await ctx.supabase
@@ -1638,7 +1638,7 @@ Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
 \`\`\`
 subagent_type: "general-purpose", model: "haiku", run_in_background: true
 \`\`\`
-Prompt: Generate BUILD (3+) and USE (8+) phrases for LEGOs {LEGO_LIST}. POST /api/v2/phrases/${courseCode}.
+Prompt: Generate BUILD (5+) and USE (12+) phrases for LEGOs {LEGO_LIST}. Overgenerate — aim for 6 BUILD and 15 USE per LEGO. POST /api/v2/phrases/${courseCode}.
 Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
 
 ## Heartbeat

@@ -1,11 +1,11 @@
 # APML Service: Course Builder API
-# Version: 4.0.0 (2026-02-09)
+# Version: 5.0.0 (2026-02-14)
 # Status: Production-ready
 # Server Port: 3471
 
 service CourseBuilderAPI:
   name: "Course Builder API"
-  version: "4.0.0"
+  version: "5.0.0"
   port: 3471
   purpose: "Bulletproof API for LLM agents to insert course content"
 
@@ -20,6 +20,9 @@ service CourseBuilderAPI:
     All content is validated BEFORE insertion using multiple quality gates.
     The API enforces functional determinism (ZUT principle) and proper M-LEGO structure.
 
+    v5.0 adds comprehensive pipeline documentation for all course-building stages,
+    clarifies model assignments and agent orchestration patterns.
+
     v4.0 adds parallel draft builds (multi-agent seed decomposition with finalization),
     a full QA workflow (flag/resolve/dismiss lifecycle), QA agent spawning, and
     cross-course calibration endpoints.
@@ -30,6 +33,397 @@ service CourseBuilderAPI:
     atomicity: "Golden path endpoint is all-or-nothing"
 
   endpoint_count: 71
+
+  ## ==========================================================================
+  ## COURSE BUILDING PIPELINE — ALL STAGES
+  ## ==========================================================================
+  ##
+  ## This section documents every stage in the course production pipeline:
+  ## what it does, which model runs it, how agents are orchestrated, and
+  ## what the inputs/outputs are.
+  ##
+  ## Model strategy:
+  ##   Opus   — quality-critical: translation, calibration, golden checking, collision resolution
+  ##   Sonnet — parallel decomposition: golden creation, MVP decompose
+  ##   Haiku  — high-volume generation: phrase writing, QA scanning
+  ##
+  ## ==========================================================================
+
+  pipeline:
+
+    ## ------------------------------------------------------------------------
+    ## STAGE 1: TRANSLATE
+    ## ------------------------------------------------------------------------
+
+    stage_1_translate:
+      name: "Translate"
+      scope: "All 668 seed sentences"
+      model: "Opus (single agent)"
+      human_involvement: "None"
+      description: |
+        Translates all 668 canonical English seed sentences into the target language.
+        Follows a phased doctrine for register consistency:
+          Phase 1 (seeds 1-150): Stabilization — conservative, minimal variation
+          Phase 2 (seeds 151-300): Controlled Flexibility — gradual expansion
+          Phase 3 (seeds 301-668): Natural Range — full natural expression
+      inputs:
+        - "668 canonical English seeds from database"
+        - "Translation doctrine (hardest-working vocabulary, confidence-first)"
+      outputs:
+        - "Translated seeds in course_seeds table (target_text field)"
+        - "Translation analysis document (register choices, problem verbs, ZUT concerns)"
+      endpoints:
+        fetch: "GET /api/course/:courseCode/translate"
+        submit: "POST /api/course/:courseCode/translate (batches of 50)"
+        analysis: "POST /api/course/:courseCode/analysis"
+
+    ## ------------------------------------------------------------------------
+    ## STAGE 2: CALIBRATE
+    ## ------------------------------------------------------------------------
+
+    stage_2_calibrate:
+      name: "Calibrate"
+      scope: "Seeds 1-10 (or up to golden_seed_count, default 10, max 50)"
+      model: "Opus (single agent, human collaboration)"
+      human_involvement: "Human approves every seed"
+      description: |
+        Human + agent collaborate to build the first golden seed decompositions.
+        These serve as both course content AND calibration metadata that guides
+        all future autonomous agents. The human reviews LEGO choices, BUILD/USE
+        phrase quality, and approves each seed before submission.
+      inputs:
+        - "Translated seeds from Stage 1"
+        - "Cross-course calibration examples from other languages"
+        - "Target language doctrine (if available)"
+      outputs:
+        - "Course content: seeds/LEGOs/phrases in course_seeds, course_legos, course_practice_phrases"
+        - "Calibration metadata: golden decompositions in courses.quality_rules.golden_decompositions"
+      endpoints:
+        submit_content: "POST /api/seed/complete?skip_validation=true"
+        submit_calibration: "POST /api/course/:courseCode/calibration"
+        cross_course: "GET /api/calibrations/seed/:seedNumber"
+      note: |
+        Golden seed count is configurable per course via courses.quality_rules.golden_seed_count.
+        Helper: getGoldenSeedCount(courseInfo) in course-builder-api.cjs.
+
+    ## ------------------------------------------------------------------------
+    ## STAGE 3: GOLDEN (seeds 11-50)
+    ## ------------------------------------------------------------------------
+
+    stage_3_golden:
+      name: "Golden"
+      scope: "Seeds golden_seed_count+1 to 50"
+      description: |
+        Autonomous seed building with quality checking. Two agent roles work
+        in parallel: Creators build decompositions, Checkers review them.
+        Flagged seeds get fully rebuilt (no patching). After 3 rounds of
+        flags on the same seed, it escalates to human review.
+
+      sub_stage_3a_creator:
+        name: "Golden Creator"
+        model: "Sonnet (parallel batch agents, ~5 seeds each)"
+        human_involvement: "None (unless escalated)"
+        description: |
+          Builds seed decompositions autonomously using calibration examples
+          as guidance. Submits complete seeds, then polls for Checker review.
+          If flagged, wipes and fully rebuilds the seed.
+        inputs:
+          - "Translated seeds"
+          - "Cross-course calibration examples"
+          - "Existing vocabulary from previous seeds"
+        outputs:
+          - "Complete seed decompositions (LEGOs + BUILD/USE phrases) in database"
+        endpoints:
+          submit: "POST /api/seed/complete"
+          vocab: "GET /api/vocab/:courseCode"
+
+      sub_stage_3b_checker:
+        name: "Golden Checker"
+        model: "Opus (parallel agents, ~10 seeds each)"
+        human_involvement: "None (unless escalating)"
+        description: |
+          Reviews Creator submissions for quality: LEGO choices (A vs M decisions,
+          ordering), BUILD phrases (proper combination, not echoes), USE phrases
+          (grammar, naturalness, scoring), tiling and ZUT compliance.
+          Approves clean seeds, flags issues on others.
+        inputs:
+          - "Newly submitted seeds from Creators"
+          - "Golden decomposition quality criteria"
+        outputs:
+          - "Seed status: approved, flagged, or escalated"
+          - "Quality flags with specific issues"
+
+    ## ------------------------------------------------------------------------
+    ## STAGE 4: GOLDEN QA
+    ## ------------------------------------------------------------------------
+
+    stage_4_golden_qa:
+      name: "Golden QA"
+      scope: "Seeds 1-50"
+      model: "Haiku (scan, parallel agents)"
+      human_involvement: "Delete only — human clicks 'Delete flagged phrases'"
+      description: |
+        Speakability and grammar scan across all golden seeds (1-50).
+        Parallel Haiku agents scan for grammar, naturalness, LEGO form compliance.
+        Flagged phrases are bulk-deleted by the human via the dashboard.
+        No auto-fix agent — phrase overbuilding provides headroom for ~10-15% loss.
+      inputs:
+        - "All phrases from seeds 1-50"
+      outputs:
+        - "QA flags in course_qa_flags table"
+        - "Flagged phrases deleted via dashboard button"
+      endpoints:
+        scan: "POST /api/qa/start/:courseCode"
+        flags: "GET /api/qa/flags/:courseCode"
+        delete: "DELETE /api/qa/flagged-phrases/:courseCode"
+
+    ## ------------------------------------------------------------------------
+    ## STAGE 5: BUILD MVP (seeds 51-300)
+    ## V2 Staged Pipeline — four sub-stages
+    ## ------------------------------------------------------------------------
+
+    stage_5_build_mvp:
+      name: "Build MVP"
+      scope: "Seeds 51-300 (250 seeds, producing 300 total for MVP)"
+      description: |
+        Automated course building using golden seeds as calibration.
+        Four sub-stages run sequentially. An Opus coordinator orchestrates
+        the entire pipeline, spawning parallel sub-agents where needed.
+
+      ## -- 5a: Decompose --
+
+      sub_stage_5a_decompose:
+        name: "Decompose"
+        model: "Sonnet (~30 parallel sub-agents, ~10 seeds each)"
+        human_involvement: "None"
+        description: |
+          Breaks each seed into A-LEGOs (single words) and M-LEGOs (multi-word
+          bundles). No phrases at this stage — just the teaching chunks.
+          Golden decomposition patterns guide LEGO choices.
+        inputs:
+          - "Translated seeds from database"
+          - "Existing vocabulary from previous seeds"
+          - "Golden decomposition patterns for guidance"
+        outputs:
+          - "Draft LEGOs in course_seed_drafts table (idx, type, known_text, target_text, components)"
+        endpoints:
+          brief: "GET /api/brief/:courseCode/stage/decompose"
+          submit: "POST /api/v2/decompose"
+          progress: "GET /api/course/:courseCode/drafts"
+        orchestration: |
+          Coordinator fetches brief, spawns ~30 Sonnet sub-agents via Task tool.
+          Monitors progress by polling /api/course/:courseCode/drafts every 60s.
+          Stall detection: if no progress for 4.5 min, spawns replacement agents.
+
+      ## -- 5b: Collisions --
+
+      sub_stage_5b_collisions:
+        name: "Collisions"
+        model: "Opus (coordinator handles directly, no sub-agents)"
+        human_involvement: "None"
+        description: |
+          Finalizes draft LEGOs. Server detects ZUT collisions (same known text
+          mapping to different targets). If collisions found (HTTP 409), the Opus
+          coordinator reads the collision details, decides which LEGOs to upchunk
+          (merge into bigger M-LEGOs), re-indexes remaining LEGOs, resubmits the
+          fixed decomposition, and generates phrases for any new merged LEGOs.
+          Loops until finalize returns clean (HTTP 200). Most courses need 0-2 rounds.
+        inputs:
+          - "Draft LEGOs from Stage 5a"
+          - "Existing baseline LEGOs from golden seeds"
+        outputs:
+          - "Finalized LEGOs in course_legos table"
+          - "is_new field marks new vs reused LEGOs"
+        endpoints:
+          finalize: "POST /api/v2/decompose/finalize/:courseCode"
+          resubmit: "POST /api/v2/decompose"
+        collision_response: |
+          HTTP 409 returns:
+          - Collision details (which LEGOs, which seeds, what conflicts)
+          - Fix instructions with vocab context and current draft JSON
+          - Affected seed numbers (batched 5 at a time)
+        resolution: |
+          Coordinator autonomy — no sub-agents spawned for collision fixes.
+          Intelligence required: choosing WHICH adjacent LEGO to merge with
+          (whichever makes a natural combined chunk), then writing BUILD/USE
+          phrases for the resulting M-LEGO that didn't exist before.
+          Uses normalizeForStorage() (preserves diacritics) for target comparison.
+
+      ## -- 5c: Phrases --
+
+      sub_stage_5c_phrases:
+        name: "Phrases"
+        model: "Haiku (~30 parallel sub-agents, ~10 LEGOs each)"
+        human_involvement: "None"
+        description: |
+          Generates BUILD and USE phrases for each new LEGO (is_new = true).
+          Overbuilds to provide headroom for later QA deletions (~10-15% loss).
+          Validation happens inline at submission time — each POST is checked for
+          containment, vocabulary compliance, and phrase counts before insertion.
+        inputs:
+          - "Finalized LEGOs with is_new = true"
+          - "Vocabulary from previous seeds"
+          - "Golden phrase examples for pattern guidance"
+        outputs:
+          - "BUILD phrases (aim 6 per LEGO): short fragments combining LEGO + known vocab"
+          - "USE phrases (aim 15 per LEGO): complete natural sentences, scored 5-9"
+        endpoints:
+          brief: "GET /api/brief/:courseCode/stage/phrases"
+          vocab: "GET /api/vocab/:courseCode?seed=N"
+          submit: "POST /api/v2/phrases/:courseCode"
+          progress: "GET /api/v2/phrases/progress/:courseCode"
+        phrase_minimums: |
+          Graduated minimums by seed position:
+            Seed 1, LEGO 1: 0 BUILD, 0 USE
+            Seed 1, later LEGOs: 1 BUILD, 1 USE
+            Seeds 2-3: 1 BUILD, 1 USE
+            Seeds 4-5: 2 BUILD, 2 USE
+            Seeds 6-10: 2 BUILD, 2 USE
+            Seeds 11+: 3 BUILD, 8 USE
+          Overgeneration targets: 6 BUILD, 15 USE per LEGO
+        inline_validation: |
+          Each submission is validated BEFORE insertion:
+            1. LEGO exists check
+            2. Phrase count check (checkBuildUsePhrases)
+            3. Vocabulary violations (checkVocabViolations)
+            4. Containment check (phrase target must contain LEGO target)
+          Rejected entries return errors; agent fixes and resubmits.
+
+      ## -- 5d: Validate --
+
+      sub_stage_5d_validate:
+        name: "Validate"
+        model: "None (deterministic code validation)"
+        human_involvement: "None"
+        description: |
+          Final validation sweep after all phrase agents finish. Checks tiling,
+          cumulative vocabulary, phrase counts, and containment across the whole
+          course. This is a safety net — most validation already happened inline
+          during Stage 5c at submission time.
+        inputs:
+          - "All LEGOs and phrases from Stage 5c"
+        outputs:
+          - "Validation report (pass/fail per LEGO with specific issues)"
+        endpoints:
+          validate: "POST /api/v2/validate/:courseCode"
+        note: |
+          If failures found, coordinator spawns targeted Haiku agents for
+          failing LEGOs to generate replacement phrases. Loops until clean.
+
+    ## ------------------------------------------------------------------------
+    ## STAGE 6: QA REVIEW
+    ## ------------------------------------------------------------------------
+
+    stage_6_qa_review:
+      name: "QA Review"
+      scope: "Full course — all phrases"
+      model: "Haiku (scan, ~30 parallel agents, ~10 seed ranges each)"
+      human_involvement: "Delete only — human clicks 'Delete flagged phrases'"
+      description: |
+        Full-course speakability, grammar, and LEGO-form scan. Parallel Haiku
+        agents check every phrase for grammar correctness, naturalness, and
+        exact LEGO form compliance (no conjugation/inflection). Issues are
+        flagged in course_qa_flags table. Human reviews flagged count and
+        bulk-deletes via dashboard button. NO auto-fix agent — phrase
+        overbuilding in Stage 5c provides headroom to absorb ~10-15% loss
+        while staying above minimums (>=3 BUILD, >=5 USE per LEGO).
+      inputs:
+        - "All unchecked phrases from the course"
+      outputs:
+        - "QA flags in course_qa_flags table (errors + warnings)"
+        - "qa_checked_at timestamp on all scanned phrases"
+        - "Flagged phrases deleted via dashboard button"
+      endpoints:
+        start: "POST /api/qa/start/:courseCode"
+        unchecked: "GET /api/qa/unchecked/:courseCode?seed_min=X&seed_max=Y"
+        bulk_flag: "POST /api/qa/bulk-flag"
+        bulk_mark_checked: "POST /api/qa/bulk-mark-checked"
+        summary: "GET /api/qa/summary/:courseCode"
+        delete_flagged: "DELETE /api/qa/flagged-phrases/:courseCode"
+      scan_checks: |
+        Each phrase checked for:
+          - Grammar (target + known both correct)
+          - Naturalness (native speaker would say this)
+          - LEGO form (exact form match, no conjugation)
+          - Speakability (learner can produce without reading)
+
+    ## ------------------------------------------------------------------------
+    ## STAGE 7: GENDER PREP (language-specific)
+    ## ------------------------------------------------------------------------
+
+    stage_7_gender_prep:
+      name: "Gender Prep"
+      scope: "Full course text"
+      model: "TBD"
+      human_involvement: "None"
+      description: |
+        Expands text for gendered TTS voices. Relevant for languages with
+        grammatical gender (e.g., Arabic) where male and female speakers
+        need different phrase forms. Run from the Audio tab.
+
+    ## ------------------------------------------------------------------------
+    ## OPTIONAL: FULL BUILD (seeds 301-668)
+    ## ------------------------------------------------------------------------
+
+    stage_full_build:
+      name: "Full Build"
+      scope: "Seeds 301-668"
+      model: "Same as Build MVP (Stages 5a-5d)"
+      human_involvement: "None"
+      description: |
+        Optional extension beyond the 300-seed MVP. Uses the same four
+        sub-stages as Build MVP (Decompose, Collisions, Phrases, Validate)
+        followed by another QA Review pass.
+
+    ## ------------------------------------------------------------------------
+    ## POST-TEXT: AUDIO
+    ## ------------------------------------------------------------------------
+
+    stage_audio:
+      name: "Audio"
+      scope: "All practice phrases"
+      model: "None (Azure TTS / ElevenLabs API)"
+      human_involvement: "Requires cost approval"
+      description: |
+        TTS audio generation for all phrase roles (known, target1, target2,
+        presentation). Audio files uploaded to S3, records inserted into
+        course_audio table. Deduplication across courses (same text+role =
+        shared UUID). Requires explicit human approval due to TTS API costs.
+      endpoints:
+        plan: "POST /plan (port 3465)"
+        generate: "POST /generate (port 3465)"
+        status: "GET /status/:courseCode (port 3465)"
+
+    ## ------------------------------------------------------------------------
+    ## POST-TEXT: STAGING
+    ## ------------------------------------------------------------------------
+
+    stage_staging:
+      name: "Staging"
+      scope: "Complete course"
+      model: "None (manifest compiler)"
+      human_involvement: "None"
+      description: |
+        Validates 100% audio coverage, then compiles course_manifest.json
+        from Supabase. Manifest includes all seeds with LEGO sequences,
+        all phrases with audio UUID mappings, and learning parameters.
+        Sets courses.export_ready = true.
+      endpoints:
+        validate: "GET /validate/:courseCode (port 3466)"
+        compile: "POST /compile (port 3466)"
+
+    ## ------------------------------------------------------------------------
+    ## POST-TEXT: LIVE
+    ## ------------------------------------------------------------------------
+
+    stage_live:
+      name: "Live"
+      scope: "Deployment"
+      model: "None"
+      human_involvement: "Manual deployment"
+      description: |
+        Course deployed to learning apps (PWA / legacy). Manifest published
+        to course-configs repo, app status updated via production API.
 
   ## ==========================================================================
   ## GOLDEN PATH: POST /api/seed/complete
@@ -2020,6 +2414,18 @@ service CourseBuilderAPI:
   ## ==========================================================================
 
   version_history:
+    v5_0_0:
+      date: "2026-02-14"
+      changes:
+        - "Added comprehensive pipeline documentation (all stages, models, orchestration patterns)"
+        - "Documented model strategy: Opus (quality-critical), Sonnet (parallel decompose), Haiku (high-volume generation/scanning)"
+        - "Clarified Stage 5b (Collisions): Opus coordinator handles upchunking directly, no sub-agents"
+        - "Clarified Stage 5c/5d: validation happens inline at submission time, 5d is a safety-net sweep"
+        - "Clarified Stage 6 (QA Review): scan-only with manual delete, no auto-fix agent"
+        - "Documented phrase overbuilding strategy: aim 6 BUILD + 15 USE to absorb ~10-15% QA loss"
+        - "Documented post-text stages: Audio (TTS), Staging (manifest), Live (deployment)"
+        - "Added Gender Prep stage (language-specific gendered TTS expansion)"
+
     v4_0_0:
       date: "2026-02-09"
       changes:

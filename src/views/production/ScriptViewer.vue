@@ -189,7 +189,7 @@
     />
 
     <!-- Main Content Area -->
-    <div ref="scriptContentRef" class="script-content flex-1 overflow-y-auto p-6">
+    <div ref="scriptContentRef" class="script-content flex-1 overflow-y-auto p-6" :class="{ 'pb-24': journeyPlayerActive }">
       <!-- Loading State -->
       <div v-if="isLoading" class="loading-state flex items-center justify-center h-64">
         <div class="text-center">
@@ -441,8 +441,8 @@
       </div>
     </Transition>
 
-    <!-- Journey Playback Bar (4-Phase) — always visible in journey mode -->
-    <div v-if="journeyPlayerActive" class="journey-playback-bar bg-slate-800 border-t border-slate-700 px-6 py-3">
+    <!-- Journey Playback Bar (4-Phase) — fixed bottom of viewport in journey mode -->
+    <div v-if="journeyPlayerActive" class="journey-playback-bar fixed bottom-0 left-0 right-0 z-40 bg-slate-800 border-t border-slate-700 px-6 py-3">
       <div class="flex items-center gap-4">
         <template v-if="journeyPlayback?.currentItem">
           <!-- Position Info -->

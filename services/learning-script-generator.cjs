@@ -1,30 +1,26 @@
 /**
- * Learning Script Generator v3.2 - Learner Experience View
+ * Learning Script Generator v4.0 - SSoT with Learning App
  *
- * Generates exactly what the learner will experience on their journey.
- * Components are NOT shown (they're internal build-up, not played).
+ * Algorithm matches generateLearningScript.ts in ssi-learning-app exactly.
+ * Both implementations produce identical, deterministic round sequences.
  *
- * ROUND Structure (v3.2):
+ * ROUND Structure:
  * 1. INTRO - Introduction audio ("The Japanese for X is...")
- * 2. LEGO - The LEGO itself (debut)
- * 3. BUILD ×7 - Up to 7 practice phrases from CURRENT LEGO
- *    - Draws from BOTH build AND use roles (both are practice for current LEGO)
- *    - Must contain ALL LEGO characters
- *    - Sorted by length (shortest first)
- * 4. REVIEW - Fibonacci-based reviews using USE phrases from OLDER LEGOs
- *    - N-1 gets 3× phrases, others get 1×
- *    - Maximum 12 review phrases per round
- *    - Each REVIEW item shows R## badge for which round being reviewed
- * 5. CONSOLIDATE ×2 - 2 USE phrases for CURRENT LEGO (not used in BUILD)
+ * 2. DEBUT - The LEGO itself (debut)
+ * 3. BUILD ×7 - BUILD phrases first (sorted by syllable count),
+ *    then fill remaining slots with USE phrases (excluding 2 reserved for CONSOLIDATE)
+ * 4. REVIEW - Fibonacci-based reviews using USE phrases from older LEGOs
+ *    Round-robin selection via useIndex (deterministic, no randomness)
+ * 5. CONSOLIDATE ×2 - The 2 reserved USE phrases (deterministic)
  *
- * Display labels (for QA view):
- * - 'build' → BUILD-1, BUILD-2... (practice phrases)
- * - 'review' → REVIEW + R## badge (spaced rep from older LEGOs)
- * - 'consolidate' → CONSOLIDATE-1, CONSOLIDATE-2
- *
- * Validation:
- * - All practice phrases MUST contain all characters from LEGO target
- * - Phrases missing LEGO characters are filtered out
+ * Key differences from v3.x:
+ * - No Math.random() anywhere — fully deterministic
+ * - BUILD sorted by syllable count, not text length
+ * - 2 USE phrases reserved for CONSOLIDATE before BUILD fill
+ * - REVIEW uses round-robin (useIndex % length), not random
+ * - No Round 1 special-casing (runs normally, just no REVIEW)
+ * - Legacy 'practice' role: if USE exists → build, else → use
+ * - legoState map tracks lastRound + useIndex per LEGO for REVIEW
  */
 
 const createLogger = require('./shared/logger.cjs')
@@ -33,23 +29,32 @@ const logger = createLogger('LearningScriptGenerator')
 // Fibonacci-based skip numbers for spaced repetition
 const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
-// v3.1 Constants
-const MAX_BUILD_PHRASES = 7       // Maximum BUILD phrases per round
-const CONSOLIDATE_COUNT = 2       // Exactly 2 CONSOLIDATE phrases at end
-const MAX_SPACED_REP_PHRASES = 12 // Cap spaced rep at 12 total
-const N1_PHRASE_COUNT = 3         // N-1 gets 3 phrases in review
+// Constants (matching learning app)
+const MAX_BUILD_PHRASES = 7
+const CONSOLIDATE_COUNT = 2
+const MAX_SPACED_REP_PHRASES = 12
+const N1_PHRASE_COUNT = 3
+
+/**
+ * Count syllables in target text.
+ * CJK characters count as 1 syllable each.
+ * Latin text uses vowel cluster heuristic.
+ */
+function countTargetSyllables(targetText) {
+  if (!targetText) return 0
+  const cjkRegex = /[\u4e00-\u9fff\u3400-\u4dbf\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/g
+  const cjkChars = targetText.match(cjkRegex)
+  if (cjkChars && cjkChars.length > 0) return cjkChars.length
+  const vowelClusters = targetText.toLowerCase().match(/[aeiouyáéíóúàèìòùâêîôûäëïöü]+/gi)
+  return vowelClusters ? vowelClusters.length : 1
+}
 
 /**
  * Check if a phrase contains the LEGO target as a contiguous substring.
  * Case-insensitive, punctuation-stripped comparison.
- *
- * @param {string} phraseTarget - The phrase's target text
- * @param {string} legoTarget - The LEGO's target text
- * @returns {boolean} - True if phrase contains LEGO as substring
  */
 function phraseContainsLegoChars(phraseTarget, legoTarget) {
   if (!phraseTarget || !legoTarget) return false
-
   const normalize = (t) => t.toLowerCase().replace(/[.,!?;:¡¿'"()\-–—]/g, '').replace(/\s+/g, ' ').trim()
   return normalize(phraseTarget).includes(normalize(legoTarget))
 }
@@ -65,16 +70,10 @@ function calculateSpacedRepReviews(roundNumber) {
   for (let i = 0; i < FIBONACCI.length; i++) {
     const skip = FIBONACCI[i]
     const reviewLego = roundNumber - skip
-
     if (reviewLego < 1) break
-
     if (seenLegos.has(reviewLego)) continue
-
     seenLegos.add(reviewLego)
-    reviews.push({
-      legoIndex: reviewLego,
-      fibPosition: i
-    })
+    reviews.push({ legoIndex: reviewLego, fibPosition: i })
   }
 
   return reviews
@@ -88,7 +87,6 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
   if (!supabase) return []
 
   try {
-    // Query lego_cycles view - has audio UUIDs joined
     const { data, error } = await supabase
       .from('lego_cycles')
       .select('*')
@@ -116,10 +114,8 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
 
     logger.info(`Loaded ${uniqueRecords.length} unique LEGOs for ${courseCode}`)
 
-    // Transform to LearningItem format with pagination
     return uniqueRecords.slice(offset, offset + maxLegos).map(record => {
       const seedId = `S${String(record.seed_number).padStart(4, '0')}`
-
       return {
         lego: {
           id: record.lego_id,
@@ -149,19 +145,16 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
 
 /**
  * Load ALL practice phrases grouped by LEGO
- * Returns buildMap (phrase_role='build'), useMap (phrase_role='use'), and componentMap
- *
- * v3.0: Uses phrase_role column instead of position-based logic
+ * Returns buildMap, useMap, and componentMap
  */
 async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
-  const buildMap = new Map()      // lego_id -> BUILD phrases (drilling)
-  const useMap = new Map()        // lego_id -> USE phrases (spaced rep eligible)
-  const componentMap = new Map()  // lego_id -> component phrases (M-LEGO build-up)
+  const buildMap = new Map()
+  const useMap = new Map()
+  const componentMap = new Map()
 
   if (!supabase) return { buildMap, useMap, componentMap }
 
   try {
-    // Paginate to handle large courses
     let allData = []
     let offset = 0
     const pageSize = 1000
@@ -173,7 +166,7 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         .eq('course_code', courseCode)
         .gte('position', 1)
         .order('lego_id', { ascending: true })
-        .order('position', { ascending: true })  // Sort by position for consistent ordering
+        .order('position', { ascending: true })
         .range(offset, offset + pageSize - 1)
 
       if (error) {
@@ -182,7 +175,6 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
       }
 
       if (!page || page.length === 0) break
-
       allData = allData.concat(page)
       if (page.length < pageSize) break
       offset += pageSize
@@ -207,7 +199,8 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         known_text: row.known_text,
         target_text: row.target_text,
         position: row.position,
-        phrase_role: row.phrase_role,  // v3.0: use phrase_role
+        phrase_role: row.phrase_role,
+        target_syllable_count: row.target_syllable_count,
         known_audio_uuid: row.known_audio_uuid,
         target1_audio_uuid: row.target1_audio_uuid,
         target2_audio_uuid: row.target2_audio_uuid,
@@ -216,24 +209,27 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         target2_duration_ms: row.target2_duration_ms,
       }))
 
-      // Components = phrase_role 'component' (for M-type LEGO build-up)
       const componentPhrases = allPhrases.filter(p => p.phrase_role === 'component')
-      if (componentPhrases.length > 0) {
-        componentMap.set(legoId, componentPhrases)
+      if (componentPhrases.length > 0) componentMap.set(legoId, componentPhrases)
+
+      // Separate build, use, and practice (legacy)
+      const rawBuild = allPhrases.filter(p => p.phrase_role === 'build')
+      const rawUse = allPhrases.filter(p => p.phrase_role === 'use')
+      const rawPractice = allPhrases.filter(p => p.phrase_role === 'practice')
+
+      // Reclassify legacy 'practice' phrases (matching learning app logic):
+      // If USE exists → practice becomes BUILD (fragments, drill once)
+      // If no USE → practice becomes USE (spaced rep material)
+      if (rawPractice.length > 0) {
+        if (rawUse.length > 0) {
+          rawBuild.push(...rawPractice)
+        } else {
+          rawUse.push(...rawPractice)
+        }
       }
 
-      // BUILD phrases = phrase_role 'build' or 'practice' (drilling, up to 7 used)
-      // Note: Legacy courses use 'practice', newer courses use 'build'
-      const buildPhrases = allPhrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'practice')
-      if (buildPhrases.length > 0) {
-        buildMap.set(legoId, buildPhrases)
-      }
-
-      // USE phrases = phrase_role 'use' (spaced rep & consolidation)
-      const usePhrases = allPhrases.filter(p => p.phrase_role === 'use')
-      if (usePhrases.length > 0) {
-        useMap.set(legoId, usePhrases)
-      }
+      if (rawBuild.length > 0) buildMap.set(legoId, rawBuild)
+      if (rawUse.length > 0) useMap.set(legoId, rawUse)
     }
 
     logger.info(`Grouped into ${buildMap.size} LEGOs with BUILD phrases, ${useMap.size} with USE phrases, ${componentMap.size} with components`)
@@ -246,18 +242,15 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
 
 /**
  * Load introduction/presentation audio for all LEGOs
- * Primary source: course_legos.presentation_audio_id (v13+)
- * Fallback: lego_introductions table (legacy, Welsh only)
  */
 async function loadIntroductionAudio(supabase, courseCode, legoIds) {
   const introAudioMap = new Map()
-
   if (!supabase || legoIds.length === 0) return introAudioMap
 
   try {
     const BATCH_SIZE = 100
 
-    // Primary: read presentation_audio_id directly from course_legos
+    // Primary: read presentation_audio_id from course_legos
     let allLegoData = []
     for (let i = 0; i < legoIds.length; i += BATCH_SIZE) {
       const batchLegoIds = legoIds.slice(i, i + BATCH_SIZE)
@@ -272,11 +265,10 @@ async function loadIntroductionAudio(supabase, courseCode, legoIds) {
     }
 
     if (allLegoData.length > 0) {
-      // Map presentation_audio_id directly (used by /audio/:uuid/url endpoint)
       for (const lego of allLegoData) {
         introAudioMap.set(lego.lego_id, {
           id: lego.presentation_audio_id,
-          s3_key: null // signed URL resolved at playback time
+          s3_key: null
         })
       }
       logger.info(`Loaded ${introAudioMap.size} intro audio from course_legos`)
@@ -325,13 +317,13 @@ async function loadIntroductionAudio(supabase, courseCode, legoIds) {
 }
 
 /**
- * Generate the complete learning script with ROUNDs and spaced repetition
+ * Generate the complete learning script with ROUNDs and spaced repetition.
  *
- * @param {SupabaseClient} supabase - Supabase client
- * @param {string} courseCode - Course code (e.g., 'spa_for_eng')
- * @param {number} maxLegos - Maximum LEGOs to include
- * @param {number} offset - Start offset for pagination
- * @returns {Promise<{rounds: RoundData[], allItems: ScriptItem[], stats: object}>}
+ * Algorithm matches generateLearningScript.ts in ssi-learning-app exactly:
+ * - Deterministic (no randomness)
+ * - BUILD first, then USE fill (with 2 reserved for consolidation)
+ * - Round-robin REVIEW selection
+ * - legoState map for REVIEW lookups
  */
 async function generateLearningScript(supabase, courseCode, maxLegos = 50, offset = 0) {
   if (!supabase) {
@@ -341,72 +333,55 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
   const startTime = Date.now()
 
-  // Load unique LEGOs with pagination
   const legos = await loadAllUniqueLegos(supabase, courseCode, maxLegos, offset)
-
   if (legos.length === 0) {
     return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
   }
 
-  // Load ALL practice phrases split by phrase_role: build, use, component
   const { buildMap, useMap, componentMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
 
-  // Load introduction audio for all LEGOs
   const legoIds = legos.map(l => l.lego.id)
   const introAudioMap = await loadIntroductionAudio(supabase, courseCode, legoIds)
 
   const rounds = []
   const allItems = []
 
-  // Create lookup map for LEGOs by index (1-based)
-  const legoMap = new Map()
-  legos.forEach((lego, idx) => {
-    legoMap.set(idx + 1, lego)
-  })
-
-  // Normalization helpers
+  // Normalization helpers (matching learning app)
   const normalizePhrase = (text) => text?.toLowerCase().trim().replace(/[.,!?;:¡¿'"]+/g, '') || ''
+  const getPhraseId = (knownText, targetText) => `${normalizePhrase(knownText)}|${normalizePhrase(targetText)}`
 
-  // Build a map from round number to LEGO for spaced rep lookups
-  // Only NEW LEGOs get rounds - duplicates are skipped entirely
-  const roundToLegoMap = new Map()
+  // legoState map: tracks lastRound and useIndex per LEGO for deterministic REVIEW
+  const legoState = new Map()
   let roundCounter = 0
 
-  // Generate each ROUND (only for NEW LEGOs)
   for (let legoIdx = 0; legoIdx < legos.length; legoIdx++) {
     const currentLego = legos[legoIdx]
 
-    // Skip duplicate LEGOs - they don't need their own round
+    // Skip duplicate LEGOs
     if (!currentLego.lego.new) {
       logger.debug(`Skipping duplicate LEGO: ${currentLego.lego.id}`)
       continue
     }
 
     roundCounter++
-    const n = roundCounter  // Current round number
-
-    // Map this round to its LEGO for spaced rep
-    roundToLegoMap.set(n, currentLego)
+    const n = roundCounter
 
     const currentBuildPhrases = buildMap.get(currentLego.lego.id) || []
     const currentUsePhrases = useMap.get(currentLego.lego.id) || []
     const roundItems = []
-
-    // Track phrases used in this round (no duplicates)
     const usedPhrasesInRound = new Set()
 
     const baseItem = {
       roundNumber: n,
       legoId: currentLego.lego.id,
-      legoIndex: legoIdx + 1,  // Original LEGO index (1-based)
+      legoIndex: legoIdx + 1,
       seedId: currentLego.seed.seed_id,
       seedNumber: currentLego.seed.seed_number,
       legoType: currentLego.lego.type,
       isNew: currentLego.lego.new,
     }
 
-    // Phase 1: INTRO - Presentation audio + LEGO target audio
-    // Cycle: presentation ("The X for 'Y' is:") → pause → target1 → target2
+    // Phase 1: INTRO
     const introAudio = introAudioMap.get(currentLego.lego.id)
     roundItems.push({
       ...baseItem,
@@ -419,9 +394,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       hasAudio: !!(introAudio && currentLego.lego.target1_audio_uuid),
     })
 
-    // v3.1: Components removed - they're internal build-up, not played to learner
-
-    // Phase 2: LEGO (debut)
+    // Phase 2: DEBUT
     roundItems.push({
       ...baseItem,
       type: 'debut',
@@ -432,34 +405,32 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       target2_audio_uuid: currentLego.lego.target2_audio_uuid,
       hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
     })
-    usedPhrasesInRound.add(normalizePhrase(currentLego.lego.target_text))
+    usedPhrasesInRound.add(getPhraseId(currentLego.lego.known_text, currentLego.lego.target_text))
 
-    // Phase 3: BUILD ×7 - up to 7 practice phrases for current LEGO
-    // v3.2: Combine BOTH build AND use phrases (both are practice for current LEGO)
-    // Must contain ALL LEGO characters, sorted by length (shortest first)
-    // v3.3: Skip BUILD for Round 1 — no prior vocabulary to recombine with
+    // Phase 3: BUILD ×7
+    // Step 1: BUILD phrases first, sorted by syllable count
     const legoTarget = currentLego.lego.target_text
 
-    // Combine build + use phrases, filter for LEGO char validation
-    const allCurrentPhrases = n === 1 ? [] : [...currentBuildPhrases, ...currentUsePhrases]
-    const validPracticePhrases = allCurrentPhrases.filter(p =>
+    // Filter BUILD phrases for LEGO char validation
+    const validBuildPhrases = currentBuildPhrases.filter(p =>
       phraseContainsLegoChars(p.target_text, legoTarget)
     )
-    const sortedPracticePhrases = [...validPracticePhrases].sort((a, b) =>
-      (a.target_text?.length || 0) - (b.target_text?.length || 0)
+    const sortedBuildPhrases = [...validBuildPhrases].sort((a, b) =>
+      (a.target_syllable_count || countTargetSyllables(a.target_text)) -
+      (b.target_syllable_count || countTargetSyllables(b.target_text))
     )
 
-    let buildCount = 0
-    const usedInBuildPhase = new Set()  // Track phrases used in BUILD to exclude from CONSOLIDATE
+    let practiceCount = 0
 
-    for (let i = 0; i < sortedPracticePhrases.length && buildCount < MAX_BUILD_PHRASES; i++) {
-      const phrase = sortedPracticePhrases[i]
-      if (usedPhrasesInRound.has(normalizePhrase(phrase.target_text))) continue
+    for (const phrase of sortedBuildPhrases) {
+      if (practiceCount >= MAX_BUILD_PHRASES) break
+      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+      if (usedPhrasesInRound.has(phraseId)) continue
 
       roundItems.push({
         ...baseItem,
         type: 'build',
-        phrasePosition: buildCount + 1,
+        phrasePosition: practiceCount + 1,
         known_text: phrase.known_text,
         target_text: phrase.target_text,
         known_audio_uuid: phrase.known_audio_uuid,
@@ -467,125 +438,147 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
       })
-      usedPhrasesInRound.add(normalizePhrase(phrase.target_text))
-      usedInBuildPhase.add(normalizePhrase(phrase.target_text))
-      buildCount++
+      usedPhrasesInRound.add(phraseId)
+      practiceCount++
     }
 
-    // Phase 4: REVIEW - Spaced repetition using USE phrases from older LEGOs
-    // v3.1: Display as "REVIEW", max 12 total, N-1 gets 3×, others get 1×
-    // v3.1: Must contain all characters from the LEGO being reviewed
+    // Step 2: Reserve 2 USE phrases for consolidation BEFORE using them for BUILD padding
+    const sortedUsePhrases = [...currentUsePhrases]
+      .filter(p => phraseContainsLegoChars(p.target_text, legoTarget))
+      .sort((a, b) =>
+        (a.target_syllable_count || countTargetSyllables(a.target_text)) -
+        (b.target_syllable_count || countTargetSyllables(b.target_text))
+      )
+
+    const reservedForConsolidation = new Set()
+    let reservedCount = 0
+    for (const phrase of sortedUsePhrases) {
+      if (reservedCount >= CONSOLIDATE_COUNT) break
+      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+      if (usedPhrasesInRound.has(phraseId)) continue
+      reservedForConsolidation.add(phraseId)
+      reservedCount++
+    }
+
+    // Step 3: Fill remaining BUILD slots with non-reserved USE phrases
+    for (const phrase of sortedUsePhrases) {
+      if (practiceCount >= MAX_BUILD_PHRASES) break
+      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+      if (usedPhrasesInRound.has(phraseId)) continue
+      if (reservedForConsolidation.has(phraseId)) continue
+
+      roundItems.push({
+        ...baseItem,
+        type: 'build',
+        phrasePosition: practiceCount + 1,
+        known_text: phrase.known_text,
+        target_text: phrase.target_text,
+        known_audio_uuid: phrase.known_audio_uuid,
+        target1_audio_uuid: phrase.target1_audio_uuid,
+        target2_audio_uuid: phrase.target2_audio_uuid,
+        hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
+      })
+      usedPhrasesInRound.add(phraseId)
+      practiceCount++
+    }
+
+    // Initialize legoState for this LEGO (before REVIEW so it's available for future rounds)
+    legoState.set(currentLego.lego.id, {
+      lastRound: n,
+      usePhrases: [...currentUsePhrases],
+      useIndex: 0,
+      legoId: currentLego.lego.id,
+      lego: currentLego,
+    })
+
+    // Phase 4: REVIEW - Fibonacci spaced repetition using legoState
     const reviews = calculateSpacedRepReviews(n)
     const reviewIndices = []
     let reviewCount = 0
+    const seenReviewLegos = new Set()
 
     for (const review of reviews) {
       if (reviewCount >= MAX_SPACED_REP_PHRASES) break
 
-      const reviewLego = roundToLegoMap.get(review.legoIndex)
-      if (!reviewLego) continue
+      const reviewRound = review.legoIndex
 
-      const reviewLegoTarget = reviewLego.lego.target_text
-      const reviewUsePhrases = useMap.get(reviewLego.lego.id) || []
+      // Find which LEGO was introduced at that round via legoState
+      let reviewLegoState = null
+      for (const [, state] of legoState.entries()) {
+        if (state.lastRound === reviewRound) {
+          reviewLegoState = state
+          break
+        }
+      }
 
-      // Filter to phrases that contain all LEGO characters
-      const validReviewPhrases = reviewUsePhrases.filter(p =>
-        phraseContainsLegoChars(p.target_text, reviewLegoTarget)
+      if (!reviewLegoState) continue
+      if (seenReviewLegos.has(reviewLegoState.legoId)) continue
+      seenReviewLegos.add(reviewLegoState.legoId)
+
+      if (reviewLegoState.usePhrases.length === 0) continue
+
+      const isN1 = review.legoIndex === n - 1
+      const targetPhraseCount = isN1 ? N1_PHRASE_COUNT : 1
+      const phrasesToAdd = Math.min(
+        targetPhraseCount,
+        MAX_SPACED_REP_PHRASES - reviewCount,
+        reviewLegoState.usePhrases.length
       )
 
-      // N-1 gets 3× phrases, others get 1×
-      const isFirstRevisit = review.legoIndex === n - 1
-      const targetPhraseCount = isFirstRevisit ? N1_PHRASE_COUNT : 1
-      const remainingSlots = MAX_SPACED_REP_PHRASES - reviewCount
-
-      const availablePhrases = validReviewPhrases.filter(
-        p => !usedPhrasesInRound.has(normalizePhrase(p.target_text))
-      )
-
-      if (availablePhrases.length === 0) continue
       reviewIndices.push(review.legoIndex)
 
-      const phrasesToAdd = Math.min(targetPhraseCount, availablePhrases.length, remainingSlots)
-
       for (let p = 0; p < phrasesToAdd; p++) {
-        const remainingAvailable = availablePhrases.filter(
-          ph => !usedPhrasesInRound.has(normalizePhrase(ph.target_text))
-        )
-        if (remainingAvailable.length === 0) break
+        // Round-robin selection (deterministic)
+        const phrase = reviewLegoState.usePhrases[reviewLegoState.useIndex % reviewLegoState.usePhrases.length]
+        reviewLegoState.useIndex++
 
-        const idx = Math.floor(Math.random() * remainingAvailable.length)
-        const selectedPhrase = remainingAvailable[idx]
+        const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+        if (usedPhrasesInRound.has(phraseId)) continue
+        usedPhrasesInRound.add(phraseId)
 
+        const reviewLego = reviewLegoState.lego
         roundItems.push({
           roundNumber: n,
-          legoId: reviewLego.lego.id,
+          legoId: reviewLegoState.legoId,
           legoIndex: review.legoIndex,
           seedId: reviewLego.seed.seed_id,
           seedNumber: reviewLego.seed.seed_number,
-          type: 'review',  // v3.1: Changed from 'spaced_rep' for display clarity
+          type: 'review',
           reviewOf: review.legoIndex,
           fibonacciPosition: review.fibPosition,
-          isFirstRevisit,
-          known_text: selectedPhrase.known_text,
-          target_text: selectedPhrase.target_text,
-          known_audio_uuid: selectedPhrase.known_audio_uuid,
-          target1_audio_uuid: selectedPhrase.target1_audio_uuid,
-          target2_audio_uuid: selectedPhrase.target2_audio_uuid,
-          hasAudio: !!(selectedPhrase.known_audio_uuid && selectedPhrase.target1_audio_uuid),
+          isFirstRevisit: isN1,
+          known_text: phrase.known_text,
+          target_text: phrase.target_text,
+          known_audio_uuid: phrase.known_audio_uuid,
+          target1_audio_uuid: phrase.target1_audio_uuid,
+          target2_audio_uuid: phrase.target2_audio_uuid,
+          hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
         })
-        usedPhrasesInRound.add(normalizePhrase(selectedPhrase.target_text))
         reviewCount++
       }
     }
 
-    // Phase 5: CONSOLIDATE ×2 - Practice phrases for current LEGO
-    // v3.2: CAN reuse BUILD phrases (REVIEW gap makes this OK)
-    // Only avoid duplicates within CONSOLIDATE itself and avoid the LEGO debut
-    // v3.3: Skip CONSOLIDATE for Round 1 — no prior vocabulary to recombine with
-    const usedInConsolidation = new Set()
-    const legoNormalized = normalizePhrase(currentLego.lego.target_text)
-
-    for (let c = 0; c < (n === 1 ? 0 : CONSOLIDATE_COUNT); c++) {
-      // Can reuse BUILD phrases, just avoid: CONSOLIDATE duplicates, LEGO itself
-      const availableForConsolidation = validPracticePhrases.filter(
-        p => normalizePhrase(p.target_text) !== legoNormalized &&
-             !usedInConsolidation.has(normalizePhrase(p.target_text))
-      )
-
-      if (availableForConsolidation.length === 0) {
-        // Fall back to LEGO if no phrases available
-        if (!usedInConsolidation.has(legoNormalized)) {
-          roundItems.push({
-            ...baseItem,
-            type: 'consolidate',
-            consolidateIndex: c + 1,
-            known_text: currentLego.lego.known_text,
-            target_text: currentLego.lego.target_text,
-            known_audio_uuid: currentLego.lego.known_audio_uuid,
-            target1_audio_uuid: currentLego.lego.target1_audio_uuid,
-            target2_audio_uuid: currentLego.lego.target2_audio_uuid,
-            hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
-          })
-          usedInConsolidation.add(legoNormalized)
-        }
-        continue
-      }
-
-      const idx = Math.floor(Math.random() * availableForConsolidation.length)
-      const consolidatePhrase = availableForConsolidation[idx]
+    // Phase 5: CONSOLIDATE ×2 - use the reserved phrases (deterministic)
+    let consolidateCount = 0
+    for (const phrase of sortedUsePhrases) {
+      if (consolidateCount >= CONSOLIDATE_COUNT) break
+      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+      if (!reservedForConsolidation.has(phraseId)) continue
+      if (usedPhrasesInRound.has(phraseId)) continue
+      consolidateCount++
+      usedPhrasesInRound.add(phraseId)
 
       roundItems.push({
         ...baseItem,
         type: 'consolidate',
-        consolidateIndex: c + 1,
-        known_text: consolidatePhrase.known_text,
-        target_text: consolidatePhrase.target_text,
-        known_audio_uuid: consolidatePhrase.known_audio_uuid,
-        target1_audio_uuid: consolidatePhrase.target1_audio_uuid,
-        target2_audio_uuid: consolidatePhrase.target2_audio_uuid,
-        hasAudio: !!(consolidatePhrase.known_audio_uuid && consolidatePhrase.target1_audio_uuid),
+        consolidateIndex: consolidateCount,
+        known_text: phrase.known_text,
+        target_text: phrase.target_text,
+        known_audio_uuid: phrase.known_audio_uuid,
+        target1_audio_uuid: phrase.target1_audio_uuid,
+        target2_audio_uuid: phrase.target2_audio_uuid,
+        hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
       })
-      usedInConsolidation.add(normalizePhrase(consolidatePhrase.target_text))
     }
 
     // Remove consecutive duplicates
@@ -626,7 +619,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const elapsed = Date.now() - startTime
   logger.info(`Generated ${rounds.length} rounds with ${allItems.length} total items in ${elapsed}ms`)
 
-  // Calculate stats
   const stats = {
     legosLoaded: legos.length,
     roundsGenerated: rounds.length,
