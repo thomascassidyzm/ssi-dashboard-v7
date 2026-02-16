@@ -110,6 +110,8 @@ export function useScriptPlayer(options = {}) {
         return
       }
 
+      const el = audioElement.value
+
       const onEnded = () => {
         cleanup()
         resolve()
@@ -122,16 +124,16 @@ export function useScriptPlayer(options = {}) {
       }
 
       const cleanup = () => {
-        audioElement.value.removeEventListener('ended', onEnded)
-        audioElement.value.removeEventListener('error', onError)
+        el.removeEventListener('ended', onEnded)
+        el.removeEventListener('error', onError)
       }
 
-      audioElement.value.addEventListener('ended', onEnded)
-      audioElement.value.addEventListener('error', onError)
+      el.addEventListener('ended', onEnded)
+      el.addEventListener('error', onError)
 
-      audioElement.value.src = url
-      audioElement.value.load()
-      audioElement.value.play().catch(err => {
+      el.src = url
+      el.load()
+      el.play().catch(err => {
         console.error('[ScriptPlayer] Play failed:', err)
         cleanup()
         resolve()
@@ -266,6 +268,10 @@ export function useScriptPlayer(options = {}) {
     const item = currentItem.value
     if (!item) return
 
+    console.log('[ScriptPlayer] moveToNextPhase:', currentPhase.value, '→', {
+      type: item.type, sourceId: item.sourceId, target1Id: item.target1Id, target2Id: item.target2Id
+    })
+
     switch (currentPhase.value) {
       case null:
       case 'voice2': // Coming from previous item
@@ -275,9 +281,13 @@ export function useScriptPlayer(options = {}) {
         progress.value = 0
 
         if (hasAudio(item.sourceId)) {
+          const url = await getAudioUrl(item.sourceId)
+          console.log('[ScriptPlayer] PROMPT playing:', item.sourceId, '→', url?.substring(0, 80))
           startProgressTracking()
-          await playAudio(await getAudioUrl(item.sourceId))
+          await playAudio(url)
           stopProgressTracking()
+        } else {
+          console.log('[ScriptPlayer] PROMPT: no audio for sourceId', item.sourceId)
         }
 
         if (isPlaying.value && !isPaused.value) {
@@ -296,9 +306,13 @@ export function useScriptPlayer(options = {}) {
         progress.value = 50
 
         if (hasAudio(item.target1Id)) {
+          const url = await getAudioUrl(item.target1Id)
+          console.log('[ScriptPlayer] VOICE1 playing:', item.target1Id, '→', url?.substring(0, 80))
           startProgressTracking()
-          await playAudio(await getAudioUrl(item.target1Id))
+          await playAudio(url)
           stopProgressTracking()
+        } else {
+          console.log('[ScriptPlayer] VOICE1: no audio for target1Id', item.target1Id)
         }
 
         if (isPlaying.value && !isPaused.value) {
@@ -315,9 +329,13 @@ export function useScriptPlayer(options = {}) {
         const target2Id = item.target2Id || item.target1Id // Fallback to target1 if no target2
 
         if (hasAudio(target2Id)) {
+          const url = await getAudioUrl(target2Id)
+          console.log('[ScriptPlayer] VOICE2 playing:', target2Id, '→', url?.substring(0, 80))
           startProgressTracking()
-          await playAudio(await getAudioUrl(target2Id))
+          await playAudio(url)
           stopProgressTracking()
+        } else {
+          console.log('[ScriptPlayer] VOICE2: no audio for target2Id', target2Id)
         }
 
         progress.value = 100
@@ -348,6 +366,9 @@ export function useScriptPlayer(options = {}) {
       console.warn('[ScriptPlayer] No items to play')
       return
     }
+
+    // Stop any existing playback first (clears timers, pauses audio)
+    stop()
 
     // Initialize audio element if needed
     if (!audioElement.value) {
