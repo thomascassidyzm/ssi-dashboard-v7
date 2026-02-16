@@ -5317,6 +5317,25 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
 
     const manifest = await fs.readJson(manifestPath)
 
+    // Block publishing if any samples have duration 0 (combined presentations not yet fixed)
+    const zeroDurationSamples = []
+    const manifestSamples = manifest.slices?.[0]?.samples || {}
+    for (const [text, variants] of Object.entries(manifestSamples)) {
+      for (const variant of variants) {
+        if (variant.id && (!variant.duration || variant.duration === 0)) {
+          zeroDurationSamples.push({ id: variant.id, text: text.substring(0, 80) })
+        }
+      }
+    }
+    if (zeroDurationSamples.length > 0) {
+      logger.warn(`[PUBLISH] Blocked: ${zeroDurationSamples.length} samples have duration 0`)
+      return res.status(400).json({
+        error: `Cannot publish: ${zeroDurationSamples.length} samples have duration 0. Run "Verify S3" to fix durations first.`,
+        zeroDurationCount: zeroDurationSamples.length,
+        examples: zeroDurationSamples.slice(0, 5)
+      })
+    }
+
     logger.info(`Publishing manifest for ${courseCode}: v${version}, status=${status}`)
 
     // Use publish manifest service
