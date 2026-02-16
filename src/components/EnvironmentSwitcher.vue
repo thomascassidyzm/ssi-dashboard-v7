@@ -24,11 +24,22 @@
         :title="connectionStatus.connected ? 'Connected' : 'Disconnected'"
       ></div>
     </div>
+
+    <!-- Deploy button for remote machines -->
+    <button
+      v-if="isRemote && connectionStatus.connected"
+      @click="deploy"
+      :disabled="deploying"
+      class="deploy-btn"
+      :title="deployMessage || 'Pull latest code and restart services'"
+    >
+      {{ deploying ? 'Deploying...' : 'Deploy' }}
+    </button>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const ENVIRONMENTS = {
   tom: {
@@ -76,6 +87,13 @@ if (localStorage.getItem('ssi_machine_profile') !== expectedProfile) {
 const selectedEnv = ref(initialEnv)
 const connectionStatus = ref({ connected: false, message: 'Checking...' })
 const showDebug = ref(false)
+const deploying = ref(false)
+const deployMessage = ref('')
+
+const isRemote = computed(() => {
+  const url = ENVIRONMENTS[selectedEnv.value]?.url || ''
+  return url.includes('ngrok')
+})
 
 const currentApiUrl = computed(() => {
   return ENVIRONMENTS[selectedEnv.value]?.url || ENVIRONMENTS.tom.url
@@ -159,6 +177,41 @@ async function checkConnection() {
   }
 }
 
+async function deploy() {
+  if (deploying.value) return
+  deploying.value = true
+  deployMessage.value = ''
+
+  try {
+    const url = currentApiUrl.value
+    const response = await fetch(`${url}/api/deploy`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' },
+      signal: AbortSignal.timeout(120000)
+    })
+
+    const data = await response.json()
+    if (data.success) {
+      const parts = []
+      if (data.already_up_to_date) parts.push('Already up to date')
+      else parts.push(`Pulled new code`)
+      if (data.npm_installed) parts.push('npm installed')
+      parts.push(`${data.services_restarted?.length || 0} services restarted`)
+      parts.push(`${data.elapsed_seconds}s`)
+      deployMessage.value = parts.join(' | ')
+
+      // Brief delay then re-check connection (services are restarting)
+      setTimeout(() => checkConnection(), 3000)
+    } else {
+      deployMessage.value = `Deploy failed: ${data.error}`
+    }
+  } catch (err) {
+    deployMessage.value = `Deploy error: ${err.message}`
+  } finally {
+    deploying.value = false
+  }
+}
+
 // Expose current URL for parent components
 defineExpose({
   currentApiUrl
@@ -217,5 +270,29 @@ defineExpose({
 .status-dot.disconnected {
   background: #ef4444;
   box-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+}
+
+.deploy-btn {
+  margin-left: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  background: #1e40af;
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.deploy-btn:hover {
+  background: #2563eb;
+  border-color: #3b82f6;
+}
+
+.deploy-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 </style>
