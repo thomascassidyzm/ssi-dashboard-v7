@@ -365,10 +365,79 @@ async function linkAudioIds(courseCode, knownLang, targetLang) {
   const { data: sT2 } = await supabase.rpc('link_seed_target2_audio', { p_course_code: courseCode, p_target_lang: targetLang })
   r.seeds.target2 = sT2 || 0
 
+  // Also link presentation audio (belt-and-suspenders)
+  const presResult = await linkPresentationAudio(courseCode)
+  r.presentations = presResult.linked || 0
   r.total = Object.values(r).reduce((sum, cat) =>
-    typeof cat === 'object' ? sum + Object.values(cat).reduce((s, v) => s + v, 0) : sum, 0)
+    typeof cat === 'object' ? sum + Object.values(cat).reduce((s, v) => s + v, 0) : sum
+  , 0) + (r.presentations || 0)
 
   return r
+}
+
+// =============================================================================
+// HELPER: Link presentation audio to course_legos
+// =============================================================================
+// Belt-and-suspenders approach: matches course_audio (role=presentation, lego_id set)
+// to course_legos.presentation_audio_id. Runs after any presentation generation.
+// =============================================================================
+async function linkPresentationAudio(courseCode) {
+  // Get all presentation audio that has lego_id set and is not pending
+  const { data: presentations, error: presError } = await supabase
+    .from('course_audio')
+    .select('id, lego_id')
+    .eq('course_code', courseCode)
+    .eq('role', 'presentation')
+    .not('lego_id', 'is', null)
+    .not('s3_key', 'like', 'pending/%')
+
+  if (presError || !presentations?.length) {
+    return { linked: 0, error: presError?.message || null }
+  }
+
+  // Get all LEGOs missing presentation_audio_id
+  const { data: legosNeedingLink } = await supabase
+    .from('course_legos')
+    .select('lego_id, presentation_audio_id')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+
+  if (!legosNeedingLink?.length) return { linked: 0 }
+
+  // Build map: lego_id -> presentation course_audio.id
+  const presMap = new Map()
+  for (const p of presentations) {
+    presMap.set(p.lego_id, p.id)
+  }
+
+  // Update LEGOs where presentation_audio_id is NULL or doesn't match
+  let linked = 0
+  for (const lego of legosNeedingLink) {
+    const presId = presMap.get(lego.lego_id)
+    if (!presId) continue
+    if (lego.presentation_audio_id === presId) continue // already correct
+
+    const legoMatch = lego.lego_id.match(/S(\d+)L(\d+)/)
+    if (!legoMatch) continue
+
+    const seedNumber = parseInt(legoMatch[1], 10)
+    const legoIndex = parseInt(legoMatch[2], 10)
+
+    const { error } = await supabase
+      .from('course_legos')
+      .update({ presentation_audio_id: presId })
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNumber)
+      .eq('lego_index', legoIndex)
+
+    if (!error) linked++
+  }
+
+  if (linked > 0) {
+    logger.info(`linkPresentationAudio: linked ${linked} presentation audio IDs for ${courseCode}`)
+  }
+
+  return { linked }
 }
 
 // POST /plan - for production-api compatibility (takes courseCode in body)
@@ -991,7 +1060,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Also include presentation audio that needs generation (pending/ s3_key)
     const { data: pendingPresentations } = await supabase
       .from('course_audio')
-      .select('id, text, language, voice_id')
+      .select('id, text, language, voice_id, lego_id')
       .eq('course_code', courseCode)
       .eq('role', 'presentation')
       .like('s3_key', 'pending/%')
@@ -1006,7 +1075,8 @@ app.post('/generate/:courseCode', async (req, res) => {
           language: pres.language || course.known_lang,
           role: 'presentation',
           voiceId: presVoice,
-          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0
+          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0,
+          lego_id: pres.lego_id || null  // Preserve lego_id for linking after generation
         })
       }
     }
@@ -2069,6 +2139,20 @@ app.post('/link-audio-ids/:courseCode', async (req, res) => {
 
   } catch (error) {
     logger.error('Link audio IDs error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// POST LINK-PRESENTATION-AUDIO - Standalone endpoint to fix presentation linking
+// =============================================================================
+app.post('/link-presentation-audio/:courseCode', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const result = await linkPresentationAudio(courseCode)
+    res.json({ success: true, courseCode, ...result })
+  } catch (error) {
+    logger.error('Link presentation audio error:', error)
     res.status(500).json({ error: error.message })
   }
 })

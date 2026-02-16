@@ -3257,6 +3257,19 @@ app.post('/api/audio/regenerate-presentations/:courseCode', async (req, res) => 
   }
 })
 
+// POST /api/audio/link-presentation-audio/:courseCode
+// Fix presentation audio linking for a course
+app.post('/api/audio/link-presentation-audio/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const response = await proxyToPhase8('POST', `/link-presentation-audio/${courseCode}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Error linking presentation audio:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // =============================================================================
 // VOICE MANAGEMENT ENDPOINTS
 // =============================================================================
