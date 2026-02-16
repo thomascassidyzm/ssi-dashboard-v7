@@ -1449,14 +1449,19 @@ async function getAudioFlagsWithDetails(courseCode) {
   if (flagsError) throw flagsError
   if (!flags || flags.length === 0) return []
 
-  // Get audio details for flagged items
+  // Get audio details for flagged items (batch to avoid header overflow with many UUIDs)
   const audioUuids = flags.map(f => f.audio_uuid)
-  const { data: audioDetails, error: audioError } = await supabase
-    .from('course_audio')
-    .select('id, text, language, role, duration_ms, voice_id')
-    .in('id', audioUuids)
-
-  if (audioError) throw audioError
+  const BATCH_SIZE = 100
+  let audioDetails = []
+  for (let i = 0; i < audioUuids.length; i += BATCH_SIZE) {
+    const batch = audioUuids.slice(i, i + BATCH_SIZE)
+    const { data, error: audioError } = await supabase
+      .from('course_audio')
+      .select('id, text, language, role, duration_ms, voice_id')
+      .in('id', batch)
+    if (audioError) throw audioError
+    if (data) audioDetails = audioDetails.concat(data)
+  }
 
   // Build lookup map
   const audioMap = {}
