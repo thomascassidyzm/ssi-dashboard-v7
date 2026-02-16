@@ -307,10 +307,9 @@ async function handleVerify() {
   }
 }
 
-function handleStopVerify() {
-  // Reset UI state (backend will continue but UI is unblocked)
+async function handleStopVerify() {
+  await workflow.cancelVerifyS3()
   isVerifying.value = false
-  workflow.s3VerifyProgress.value = { checked: 0, total: 0 }
 }
 
 // Step 3 handlers

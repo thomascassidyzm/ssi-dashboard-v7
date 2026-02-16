@@ -1310,7 +1310,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
 
   // 8.3. Validate and clean manifest
   // All samples (content + encouragements + presentations) are now in the dict
-  const allEncouragements = [...instructions, ...encouragementsList]
+  const allEncouragements = [...instructions, ...encouragementsList, ...paywallList]
   validateAndCleanManifest(seeds, samples, allEncouragements)
 
   // 8.4. Filter introItems to only include items from remaining seeds

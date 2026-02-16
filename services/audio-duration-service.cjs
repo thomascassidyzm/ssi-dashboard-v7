@@ -83,7 +83,7 @@ async function extractS3Duration(uuid, bucket, expectedDuration, tolerance = DUR
  * @param {Function} onProgress - Progress callback (checked, matched, mismatched, errors)
  * @returns {Promise<Object>} { checked, matched, mismatched, errors, mismatchDetails, errorDetails }
  */
-async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgress = null) {
+async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgress = null, signal = null) {
   const results = {
     checked: 0,
     matched: 0,
@@ -101,6 +101,7 @@ async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgres
   // Worker function
   const runWorker = async () => {
     while (queue.length > 0) {
+      if (signal?.aborted) break
       const sample = queue.shift()
       if (!sample) break
 

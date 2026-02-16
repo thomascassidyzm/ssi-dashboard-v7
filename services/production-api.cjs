@@ -34,6 +34,9 @@ const MANIFEST_CACHE_TTL_MS = 0 // DISABLED - caching causes issues during testi
 // Maps courseCode -> { startedAt }
 const runningVerifications = new Map()
 
+// Track running deploy plans to prevent duplicate jobs
+const runningDeployPlans = new Map()
+
 async function getCachedManifest(courseCode) {
   const cached = manifestCache.get(courseCode)
   if (cached && (Date.now() - cached.timestamp) < MANIFEST_CACHE_TTL_MS) {
@@ -5460,8 +5463,9 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
       })
     }
 
-    // Mark verification as running
-    runningVerifications.set(courseCode, { startedAt: Date.now() })
+    // Mark verification as running with abort controller
+    const abortController = new AbortController()
+    runningVerifications.set(courseCode, { startedAt: Date.now(), abortController })
 
     // Load manifest from temp/course_export_states
     const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
@@ -5515,8 +5519,14 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
           })
         }
       },
-      { checkDurations: true, durationTolerance: 0 }
+      { checkDurations: true, durationTolerance: 0, signal: abortController.signal }
     )
+
+    // Check if cancelled
+    if (verifyResults.cancelled) {
+      runningVerifications.delete(courseCode)
+      return res.json({ cancelled: true, message: 'Verification cancelled' })
+    }
 
     const results = { ...verifyResults }
 
@@ -5539,6 +5549,11 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     if (results.durationMismatched > 0) {
       setImmediate(async () => {
         try {
+          if (abortController.signal.aborted) {
+            logger.info(`[AUTO-FIX] Skipped - verification was cancelled`)
+            runningVerifications.delete(courseCode)
+            return
+          }
           logger.info(`[AUTO-FIX] Starting background auto-fix for ${results.durationMismatched} duration mismatches`)
           io.emit('s3Verify:progress', { courseCode, phase: 'fixing', checked: 0, total: results.durationMismatched })
 
@@ -5692,10 +5707,32 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     }
 
   } catch (error) {
+    if (abortController.signal.aborted) {
+      logger.info(`[VERIFY-S3] Cancelled for ${courseCode}`)
+      runningVerifications.delete(courseCode)
+      return res.json({ cancelled: true, message: 'Verification cancelled' })
+    }
     logger.error(`Verify S3 error for ${courseCode}:`, error)
     runningVerifications.delete(courseCode)
     res.status(500).json({ error: error.message })
   }
+})
+
+// DELETE /api/production/:courseCode/verify-s3
+// Cancel a running S3 verification
+app.delete('/api/production/:courseCode/verify-s3', (req, res) => {
+  const { courseCode } = req.params
+  const running = runningVerifications.get(courseCode)
+
+  if (!running) {
+    return res.status(404).json({ error: 'No verification running for this course' })
+  }
+
+  logger.info(`[VERIFY-S3] Cancelling verification for ${courseCode}`)
+  running.abortController.abort()
+  runningVerifications.delete(courseCode)
+  io.emit('s3Verify:cancelled', { courseCode })
+  res.json({ cancelled: true, message: `Verification cancelled for ${courseCode}` })
 })
 
 /**
@@ -5738,66 +5775,93 @@ async function loadPublishedManifest(courseCode) {
 
 // POST /api/production/:courseCode/deploy-audio/plan
 // Get deployment plan with automatic duration checking for overwrites
+// Returns immediately with {started: true}, sends result via WebSocket
 app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
   const { courseCode } = req.params
   try {
-    // Load published manifest from course-configs or local
-    const { manifest: publishedManifest, source } = await loadPublishedManifest(courseCode)
-    logger.info(`[Deploy Plan] Loaded manifest for ${courseCode} from ${source}`)
+    // Prevent duplicate runs
+    const running = runningDeployPlans.get(courseCode)
+    if (running) {
+      const elapsed = Math.round((Date.now() - running.startedAt) / 1000)
+      logger.info(`[Deploy Plan] Already running for ${courseCode} (${elapsed}s elapsed)`)
+      return res.status(409).json({
+        error: 'Deploy plan already in progress',
+        alreadyRunning: true,
+        elapsedSeconds: elapsed
+      })
+    }
 
-    // Collect all UUIDs
-    const uuids = []
-    if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
-    for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
-      if (enc.id) uuids.push(enc.id)
-    }
-    for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
-      if (enc.id) uuids.push(enc.id)
-    }
-    for (const enc of publishedManifest.slices[0]?.paywallEncouragements || []) {
-      if (enc.id) uuids.push(enc.id)
-    }
-    const samples = publishedManifest.slices[0]?.samples || {}
-    for (const [text, audioArray] of Object.entries(samples)) {
-      for (const audio of audioArray) {
-        if (audio.id) uuids.push(audio.id)
+    runningDeployPlans.set(courseCode, { startedAt: Date.now() })
+
+    // Respond immediately so the frontend doesn't time out
+    res.json({ started: true, message: 'Deploy plan started, results via WebSocket' })
+
+    // Run the heavy work in background
+    setImmediate(async () => {
+      try {
+        const { manifest: publishedManifest, source } = await loadPublishedManifest(courseCode)
+        logger.info(`[Deploy Plan] Loaded manifest for ${courseCode} from ${source}`)
+
+        // Collect all UUIDs
+        const uuids = []
+        if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
+        for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
+          if (enc.id) uuids.push(enc.id)
+        }
+        for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+          if (enc.id) uuids.push(enc.id)
+        }
+        for (const enc of publishedManifest.slices[0]?.paywallEncouragements || []) {
+          if (enc.id) uuids.push(enc.id)
+        }
+        const samples = publishedManifest.slices[0]?.samples || {}
+        for (const [text, audioArray] of Object.entries(samples)) {
+          for (const audio of audioArray) {
+            if (audio.id) uuids.push(audio.id)
+          }
+        }
+        logger.info(`[Deploy Plan] Collected ${uuids.length} UUIDs for ${courseCode}`)
+
+        const plan = await s3DeployService.generateDeployPlanWithDurations(
+          uuids,
+          publishedManifest,
+          (phase, checked, total, matched, mismatched, errors) => {
+            io.emit('deployPlan:progress', {
+              courseCode,
+              phase,
+              checked,
+              total,
+              matched,
+              mismatched,
+              errors
+            })
+          }
+        )
+        logger.info(`[Deploy Plan] Complete for ${courseCode}: ${plan.newFiles} new, ${plan.overwrites} overwrites, scenario: ${plan.scenario}`)
+
+        // Save to state (database-first)
+        if (supabaseClient.isInitialized()) {
+          const supabase = supabaseClient.getClient()
+          await supabase
+            .from('course_export_states')
+            .update({
+              deploy_plan: plan,
+              updated_at: new Date().toISOString()
+            })
+            .eq('course_code', courseCode)
+        }
+
+        io.emit('deployPlan:completed', { courseCode, plan })
+        runningDeployPlans.delete(courseCode)
+      } catch (error) {
+        logger.error(`[Deploy Plan] Background error for ${courseCode}:`, error)
+        io.emit('deployPlan:error', { courseCode, error: error.message })
+        runningDeployPlans.delete(courseCode)
       }
-    }
-    logger.info(`[Deploy Plan] Collected ${uuids.length} UUIDs for ${courseCode}`)
-
-    // Use enhanced plan that automatically checks durations for overwrites
-    const plan = await s3DeployService.generateDeployPlanWithDurations(
-      uuids,
-      publishedManifest,
-      (phase, checked, total, matched, mismatched, errors) => {
-        io.emit('deployPlan:progress', {
-          courseCode,
-          phase,
-          checked,
-          total,
-          matched,
-          mismatched,
-          errors
-        })
-      }
-    )
-    logger.info(`[Deploy Plan] Complete for ${courseCode}: ${plan.newFiles} new, ${plan.overwrites} overwrites, scenario: ${plan.scenario}`)
-
-    // Save to state (database-first)
-    if (supabaseClient.isInitialized()) {
-      const supabase = supabaseClient.getClient()
-      await supabase
-        .from('course_export_states')
-        .update({
-          deploy_plan: plan,
-          updated_at: new Date().toISOString()
-        })
-        .eq('course_code', courseCode)
-    }
-
-    res.json(plan)
+    })
   } catch (error) {
     logger.error(`[Deploy Plan] Error for ${courseCode}:`, error)
+    runningDeployPlans.delete(courseCode)
     res.status(500).json({ error: error.message })
   }
 })

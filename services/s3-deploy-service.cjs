@@ -93,15 +93,25 @@ function buildUuidToTextMap(manifest) {
     })
   }
 
-  // 2. Encouragements in slices[0]
+  // 2. Encouragements in slices[0] (ordered, pooled, and paywall)
   const orderedEnc = manifest.slices?.[0]?.orderedEncouragements || []
   const pooledEnc = manifest.slices?.[0]?.pooledEncouragements || []
+  const paywallEnc = manifest.slices?.[0]?.paywallEncouragements || []
   for (const enc of [...orderedEnc, ...pooledEnc]) {
     if (enc.id) {
       uuidToText.set(enc.id, {
         text: enc.text || '[encouragement]',
         role: 'encouragement',
         type: 'encouragement'
+      })
+    }
+  }
+  for (const enc of paywallEnc) {
+    if (enc.id) {
+      uuidToText.set(enc.id, {
+        text: enc.text || '[paywall]',
+        role: 'paywall',
+        type: 'paywall'
       })
     }
   }
@@ -152,15 +162,16 @@ function buildSampleList(uuids, manifest, missingUuids = []) {
   const uuidToDuration = new Map()
 
   // 1. Introduction/welcome
-  if (manifest.introduction?.id && manifest.introduction?.duration) {
+  if (manifest.introduction?.id && manifest.introduction?.duration != null) {
     uuidToDuration.set(manifest.introduction.id, manifest.introduction.duration)
   }
 
-  // 2. Encouragements in slices[0]
+  // 2. Encouragements in slices[0] (ordered, pooled, and paywall)
   const orderedEnc = manifest.slices?.[0]?.orderedEncouragements || []
   const pooledEnc = manifest.slices?.[0]?.pooledEncouragements || []
-  for (const enc of [...orderedEnc, ...pooledEnc]) {
-    if (enc.id && enc.duration) {
+  const paywallEnc = manifest.slices?.[0]?.paywallEncouragements || []
+  for (const enc of [...orderedEnc, ...pooledEnc, ...paywallEnc]) {
+    if (enc.id && enc.duration != null) {
       uuidToDuration.set(enc.id, enc.duration)
     }
   }
@@ -169,7 +180,7 @@ function buildSampleList(uuids, manifest, missingUuids = []) {
   if (manifest.encouragements) {
     for (const enc of manifest.encouragements) {
       const id = enc.id || enc.uuid
-      if (id && enc.duration) {
+      if (id && enc.duration != null) {
         uuidToDuration.set(id, enc.duration)
       }
     }
@@ -179,19 +190,19 @@ function buildSampleList(uuids, manifest, missingUuids = []) {
   const manifestSamples = manifest.slices?.[0]?.samples || {}
   for (const variants of Object.values(manifestSamples)) {
     for (const variant of variants) {
-      if (variant.id && variant.duration) {
+      if (variant.id && variant.duration != null) {
         uuidToDuration.set(variant.id, variant.duration)
       }
     }
   }
 
-  logger.info(`[buildSampleList] Found ${uuidToDuration.size} samples with durations in manifest`)
+  logger.info(`[buildSampleList] Found ${uuidToDuration.size} samples with durations in manifest (including duration:0 entries)`)
 
   // Build sample list - use 0 as placeholder if duration missing
   for (const uuid of uuids) {
     if (missingSet.has(uuid)) continue // Skip missing files
 
-    const expectedDuration = uuidToDuration.get(uuid) || 0 // Default to 0 if no duration
+    const expectedDuration = uuidToDuration.has(uuid) ? uuidToDuration.get(uuid) : 0
     samples.push({ uuid, expectedDuration })
   }
 
@@ -209,7 +220,7 @@ function buildSampleList(uuids, manifest, missingUuids = []) {
  * @returns {Promise<Object>} { total, existing, missing, missingUuids, durationChecked?, durationMatched?, ... }
  */
 async function verifyStageAudio(uuids, manifest = null, onProgress = null, options = {}) {
-  const { checkDurations = true, durationTolerance = 0.001 } = options
+  const { checkDurations = true, durationTolerance = 0.001, signal = null } = options
 
   const results = {
     total: uuids.length,
@@ -224,6 +235,11 @@ async function verifyStageAudio(uuids, manifest = null, onProgress = null, optio
   let checked = 0
 
   for (let i = 0; i < uuids.length; i += batchSize) {
+    if (signal?.aborted) {
+      logger.info(`[VERIFY] Cancelled during existence check at ${checked}/${uuids.length}`)
+      results.cancelled = true
+      return results
+    }
     const batch = uuids.slice(i, i + batchSize)
 
     const checks = batch.map(async (uuid) => {
@@ -263,8 +279,15 @@ async function verifyStageAudio(uuids, manifest = null, onProgress = null, optio
           if (onProgress) {
             onProgress('duration', checked, samples.length, matched, mismatched, errors)
           }
-        }
+        },
+        signal
       )
+
+      if (signal?.aborted) {
+        logger.info(`[VERIFY] Cancelled during duration check`)
+        results.cancelled = true
+        return results
+      }
 
       // Merge duration results
       Object.assign(results, {

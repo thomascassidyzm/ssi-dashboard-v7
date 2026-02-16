@@ -693,6 +693,21 @@ export function useExportWorkflow(courseCode: string) {
     }
   }
 
+  async function cancelVerifyS3() {
+    try {
+      const apiBase = getApiBaseUrl()
+      await fetch(`${apiBase}/api/production/${courseCode}/verify-s3`, {
+        method: 'DELETE',
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    } catch (err) {
+      console.warn('[ExportWorkflow] Cancel verify failed:', err)
+    } finally {
+      isLoading.value = false
+      s3VerifyProgress.value = { checked: 0, total: 0 }
+    }
+  }
+
   // Get version suggestion for Step 3
   async function getVersionSuggestion() {
     try {
@@ -804,12 +819,56 @@ export function useExportWorkflow(courseCode: string) {
     try {
       connectWebSocket()
 
-      const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/plan`, {
-        method: 'POST'
-      }, 1200000) // 20 minutes for large courses
+      // Set up WebSocket listener BEFORE making the HTTP request to avoid race condition
+      const planPromise = new Promise<any>((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          socket.value?.off('deployPlan:completed', onCompleted)
+          socket.value?.off('deployPlan:error', onError)
+          reject(new Error('Deploy plan timed out after 20 minutes'))
+        }, 1200000)
 
-      state.value.deployPlan = data
-      return data
+        const onCompleted = (data: { courseCode: string; plan: any }) => {
+          if (data.courseCode === courseCode) {
+            clearTimeout(timeout)
+            socket.value?.off('deployPlan:completed', onCompleted)
+            socket.value?.off('deployPlan:error', onError)
+            resolve(data.plan)
+          }
+        }
+        const onError = (data: { courseCode: string; error: string }) => {
+          if (data.courseCode === courseCode) {
+            clearTimeout(timeout)
+            socket.value?.off('deployPlan:completed', onCompleted)
+            socket.value?.off('deployPlan:error', onError)
+            reject(new Error(data.error))
+          }
+        }
+        socket.value?.on('deployPlan:completed', onCompleted)
+        socket.value?.on('deployPlan:error', onError)
+      })
+
+      // Now trigger the backend — response is immediate
+      const apiBase = getApiBaseUrl()
+      const response = await fetch(`${apiBase}/api/production/${courseCode}/deploy-audio/plan`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
+        }
+      })
+
+      if (response.status === 409) {
+        console.log('[ExportWorkflow] Deploy plan already in progress, waiting for result')
+      } else if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Request failed' }))
+        throw new Error(errorData.error || 'Request failed')
+      }
+
+      // Wait for result via WebSocket
+      const plan = await planPromise
+
+      state.value.deployPlan = plan
+      return plan
     } catch (err: any) {
       error.value = err.message
       throw err
@@ -1127,6 +1186,7 @@ export function useExportWorkflow(courseCode: string) {
     generateManifest,
     getCachedManifest,
     verifyS3,
+    cancelVerifyS3,
     getVersionSuggestion,
     publishManifest,
     downloadPendingManifest,
