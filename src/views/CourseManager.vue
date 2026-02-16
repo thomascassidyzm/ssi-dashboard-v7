@@ -633,6 +633,46 @@
         </div>
       </section>
 
+      <!-- Wipe Course -->
+      <section class="bg-slate-800/30 border border-red-900/30 rounded-lg overflow-hidden">
+        <div class="px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="text-sm font-medium text-red-400 uppercase tracking-wide">Wipe Course</span>
+            <span class="text-xs text-slate-500">Delete all content, keep course shell</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer">
+              <input type="checkbox" v-model="wipeKeepAudio" class="rounded border-slate-600 bg-slate-700" />
+              Keep audio
+            </label>
+            <button
+              v-if="!wipeConfirming"
+              @click="wipeConfirming = true"
+              :disabled="wipeRunning"
+              class="px-4 py-1.5 bg-red-600/80 hover:bg-red-600 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Wipe
+            </button>
+            <template v-if="wipeConfirming">
+              <span class="text-xs text-red-400">Delete all seeds, LEGOs, phrases{{ wipeKeepAudio ? '' : ', audio' }}?</span>
+              <button
+                @click="executeWipe"
+                :disabled="wipeRunning"
+                class="px-4 py-1.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                {{ wipeRunning ? 'Wiping...' : 'Confirm Wipe' }}
+              </button>
+              <button
+                @click="wipeConfirming = false"
+                class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+            </template>
+          </div>
+        </div>
+      </section>
+
       <!-- Event Log (Collapsible) -->
       <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
         <button
@@ -751,6 +791,11 @@ const rebuildFrom = ref(11)
 const rebuildTo = ref(seedCount.value)
 const rebuildConfirming = ref(false)
 const rebuildRunning = ref(false)
+
+// Wipe state
+const wipeConfirming = ref(false)
+const wipeRunning = ref(false)
+const wipeKeepAudio = ref(true)
 watch(seedCount, (val) => { rebuildTo.value = val })
 
 const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
@@ -762,6 +807,36 @@ function seedCellClass(cell) {
   if (cell.status === 'drafted') return 'bg-amber-500/80'
   if (cell.status === 'collision' || cell.status === 'rework') return 'bg-red-500/80'
   return 'bg-slate-700/80'
+}
+
+async function executeWipe() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+
+  wipeRunning.value = true
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const keepAudioParam = wipeKeepAudio.value ? '&keep_audio=true' : ''
+    const response = await fetch(`${builderApiUrl}/api/course/${code}/wipe?confirm=yes${keepAudioParam}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    const data = await response.json()
+    if (data.ok) {
+      const parts = Object.entries(data.deleted || {}).filter(([, v]) => v > 0).map(([k, v]) => `${v} ${k}`).join(', ')
+      addEvent(`Wiped course: ${parts || 'nothing to delete'}. Re-created ${data.seeds_created} empty seeds.${data.audio_kept ? ' Audio kept.' : ''}`)
+      wipeConfirming.value = false
+      await fetchSeedGrid()
+      await fetchStats()
+    } else {
+      addEvent(`Wipe failed: ${data.error}`)
+    }
+  } catch (err) {
+    addEvent(`Wipe error: ${err.message}`)
+  } finally {
+    wipeRunning.value = false
+  }
 }
 
 async function fetchSeedGrid() {

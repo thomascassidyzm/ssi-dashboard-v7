@@ -1011,6 +1011,136 @@ USE:
     }
   });
 
+  // ─── POST /course/:courseCode/wipe ──────────────────────────────────
+  // Wipe all content but keep the course shell (code, name, languages).
+  // Re-creates 668 empty seed rows with only the English side filled in.
+  // Query params: ?confirm=yes (required), ?keep_audio=true (optional)
+  router.post('/course/:courseCode/wipe', async (req, res) => {
+    const { courseCode } = req.params;
+    const { confirm, keep_audio } = req.query;
+
+    if (confirm !== 'yes') {
+      return res.status(400).json({ ok: false, error: 'Add ?confirm=yes to confirm wipe' });
+    }
+
+    try {
+      // Verify course exists
+      const { data: course, error: courseErr } = await ctx.supabase
+        .from('courses')
+        .select('course_code, display_name, known_lang, target_lang')
+        .eq('course_code', courseCode)
+        .single();
+
+      if (courseErr || !course) {
+        return res.status(404).json({ ok: false, error: `Course "${courseCode}" not found` });
+      }
+
+      const results = {};
+      const tables = [
+        'course_qa_flags',
+        'build_jobs',
+        'course_seed_drafts',
+        'course_export_states',
+      ];
+      if (keep_audio !== 'true') tables.push('course_audio');
+
+      // Delete side tables
+      for (const table of tables) {
+        let totalDeleted = 0;
+        let batch;
+        do {
+          const { count, error } = await ctx.supabase
+            .from(table)
+            .delete({ count: 'exact' })
+            .eq('course_code', courseCode)
+            .limit(3000);
+          batch = count || 0;
+          totalDeleted += batch;
+          if (error) {
+            console.warn(`[WIPE] ${table}: ${error.message}`);
+            break;
+          }
+        } while (batch >= 3000);
+        results[table] = totalDeleted;
+      }
+
+      // Delete seeds (cascades to legos + phrases)
+      let seedsDeleted = 0;
+      let batch;
+      do {
+        const { count, error } = await ctx.supabase
+          .from('course_seeds')
+          .delete({ count: 'exact' })
+          .eq('course_code', courseCode)
+          .limit(3000);
+        batch = count || 0;
+        seedsDeleted += batch;
+        if (error) {
+          console.warn(`[WIPE] course_seeds: ${error.message}`);
+          break;
+        }
+      } while (batch >= 3000);
+      results.course_seeds = seedsDeleted;
+
+      // Clear calibration metadata
+      await ctx.supabase
+        .from('courses')
+        .update({ quality_rules: null, translation_analysis: null })
+        .eq('course_code', courseCode);
+
+      // Clear caches
+      ctx.courseVocabCache.delete(courseCode);
+      ctx.activeBuilds.delete(courseCode);
+
+      // Re-create 668 seed shells with only English side filled in
+      const parts = courseCode.split('_for_');
+      const targetLang = parts[0] || '';
+      const knownLang = parts[1] || '';
+
+      const { data: canonical, error: canonicalErr } = await ctx.supabase
+        .from('canonical_seeds')
+        .select('seed_number, source_text')
+        .order('seed_number');
+
+      let seedsCreated = 0;
+      if (canonical && canonical.length > 0 && !canonicalErr) {
+        const targetLangName = getLanguageName(courseCode);
+
+        const seedRows = canonical.map(c => {
+          const engText = c.source_text.replace(/\{target\}/g, targetLangName);
+          return {
+            course_code: courseCode,
+            seed_number: c.seed_number,
+            known_text: knownLang === 'eng' ? engText : '',
+            target_text: targetLang === 'eng' ? engText : '',
+          };
+        });
+
+        const { error: insertErr } = await ctx.supabase
+          .from('course_seeds')
+          .insert(seedRows);
+
+        if (insertErr) {
+          console.error('[WIPE] Failed to re-create seeds:', insertErr.message);
+        } else {
+          seedsCreated = seedRows.length;
+        }
+      }
+
+      console.log(`[WIPE] ${courseCode}: wiped content, re-created ${seedsCreated} empty seeds`);
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        deleted: results,
+        seeds_created: seedsCreated,
+        audio_kept: keep_audio === 'true',
+      });
+    } catch (err) {
+      console.error('[WIPE] Error:', err.message);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
   // ─── GET /phrases/:courseCode ────────────────────────────────────────
   router.get('/phrases/:courseCode', async (req, res) => {
     try {

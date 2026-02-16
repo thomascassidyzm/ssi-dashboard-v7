@@ -5,6 +5,7 @@
 
 // Language name mapping
 const LANG_MAP = {
+  'eng': 'English',
   'zho': 'Chinese',
   'ita': 'Italian',
   'spa': 'Spanish',

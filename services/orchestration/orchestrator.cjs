@@ -10976,6 +10976,113 @@ app.get('/api/services/:name/logs', async (req, res) => {
 });
 
 /**
+ * POST /api/deploy
+ *
+ * Pulls latest code from git and restarts all PM2 services.
+ * Designed for remote deployment to 24/7 machines via ngrok.
+ *
+ * Steps: git pull → npm install (if package.json changed) → pm2 restart all
+ * Returns immediately with status, streams progress via WebSocket events.
+ */
+app.post('/api/deploy', async (req, res) => {
+  const projectDir = path.resolve(__dirname, '..', '..');
+  const startTime = Date.now();
+  const log = [];
+
+  function addLog(msg) {
+    const entry = `[${new Date().toISOString()}] ${msg}`;
+    log.push(entry);
+    console.log(`[Deploy] ${msg}`);
+  }
+
+  try {
+    // 1. Check for uncommitted changes
+    addLog('Checking git status...');
+    const gitStatus = execSync('git status --porcelain', { cwd: projectDir, encoding: 'utf-8', timeout: 10000 }).trim();
+    if (gitStatus) {
+      addLog(`WARNING: ${gitStatus.split('\n').length} uncommitted changes detected`);
+    }
+
+    // 2. Git pull
+    addLog('Running git pull...');
+    const pullOutput = execSync('git pull --ff-only 2>&1', { cwd: projectDir, encoding: 'utf-8', timeout: 30000 }).trim();
+    addLog(`git pull: ${pullOutput}`);
+
+    const alreadyUpToDate = pullOutput.includes('Already up to date');
+
+    // 3. Check if package.json changed (npm install needed)
+    let npmInstalled = false;
+    if (!alreadyUpToDate) {
+      try {
+        const diffOutput = execSync('git diff HEAD~1 --name-only', { cwd: projectDir, encoding: 'utf-8', timeout: 10000 });
+        if (diffOutput.includes('package.json') || diffOutput.includes('package-lock.json')) {
+          addLog('package.json changed — running npm install...');
+          execSync('npm install --production 2>&1', { cwd: projectDir, encoding: 'utf-8', timeout: 120000 });
+          npmInstalled = true;
+          addLog('npm install complete');
+        }
+      } catch (diffErr) {
+        addLog(`Skipping npm check: ${diffErr.message}`);
+      }
+    }
+
+    // 4. Restart services (skip self — orchestrator restarts last)
+    addLog('Restarting PM2 services...');
+    const pm2Output = execSync('pm2 jlist', { encoding: 'utf-8', timeout: 5000 });
+    const pm2Processes = JSON.parse(pm2Output);
+    const serviceNames = pm2Processes
+      .map(p => p.name)
+      .filter(n => n !== 'orchestrator' && n !== 'ngrok' && n !== 'keep-awake');
+
+    for (const name of serviceNames) {
+      try {
+        execSync(`pm2 restart ${name}`, { encoding: 'utf-8', timeout: 10000 });
+        addLog(`Restarted: ${name}`);
+      } catch (restartErr) {
+        addLog(`Failed to restart ${name}: ${restartErr.message}`);
+      }
+    }
+
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    addLog(`Deploy complete in ${elapsed}s`);
+
+    // Send response before restarting self
+    res.json({
+      success: true,
+      already_up_to_date: alreadyUpToDate,
+      npm_installed: npmInstalled,
+      services_restarted: serviceNames,
+      elapsed_seconds: parseFloat(elapsed),
+      log,
+      machine: process.env.MACHINE_NAME || os.hostname(),
+      timestamp: new Date().toISOString()
+    });
+
+    // 5. Restart orchestrator last (after response is sent)
+    setTimeout(() => {
+      console.log('[Deploy] Restarting orchestrator...');
+      spawn('pm2', ['restart', 'orchestrator'], {
+        detached: true,
+        stdio: 'ignore'
+      }).unref();
+    }, 1000);
+
+  } catch (err) {
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    addLog(`Deploy FAILED: ${err.message}`);
+    console.error('[Deploy] Error:', err.message);
+    res.status(500).json({
+      success: false,
+      error: err.message,
+      elapsed_seconds: parseFloat(elapsed),
+      log,
+      machine: process.env.MACHINE_NAME || os.hostname(),
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+/**
  * Start server
  */
 httpServer.listen(PORT, () => {

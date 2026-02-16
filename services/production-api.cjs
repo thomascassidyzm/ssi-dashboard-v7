@@ -1023,6 +1023,7 @@ app.post('/api/mission-control/jobs/:jobId/clear', async (req, res) => {
 app.get('/api/services', proxyOrchestrator)
 app.post('/api/services/:name/restart', proxyOrchestrator)
 app.get('/api/services/:name/logs', proxyOrchestrator)
+app.post('/api/deploy', proxyOrchestrator)
 
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
