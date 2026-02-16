@@ -1442,20 +1442,24 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         })
       }
 
-      // Get audio that matches both role AND is flagged
-      let flaggedQuery = supabase
-        .from('course_audio')
-        .select('id, text, text_normalized, language, role, voice_id, s3_key')
-        .eq('course_code', courseCode)
-        .eq('role', role)
-        .in('id', flaggedIds)
+      // Get audio that matches both role AND is flagged (batch to avoid header overflow)
+      const BATCH_SIZE = 100
+      let existingAudio = []
+      for (let i = 0; i < flaggedIds.length; i += BATCH_SIZE) {
+        const batch = flaggedIds.slice(i, i + BATCH_SIZE)
+        let flaggedQuery = supabase
+          .from('course_audio')
+          .select('id, text, text_normalized, language, role, voice_id, s3_key')
+          .eq('course_code', courseCode)
+          .eq('role', role)
+          .in('id', batch)
 
-      if (limit) flaggedQuery = flaggedQuery.limit(limit)
-
-      const { data: existingAudio, error: audioError } = await flaggedQuery
-
-      if (audioError) throw audioError
-      audioToRegenerate = existingAudio || []
+        const { data, error: audioError } = await flaggedQuery
+        if (audioError) throw audioError
+        if (data) existingAudio = existingAudio.concat(data)
+      }
+      if (limit) existingAudio = existingAudio.slice(0, limit)
+      audioToRegenerate = existingAudio
     } else {
       // Get all audio for this role
       let allQuery = supabase
@@ -1683,12 +1687,17 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     if (role === 'presentation' && regeneratedItems.length > 0) {
       logger.info(`Binding presentation_audio_id for ${regeneratedItems.length} LEGOs...`)
 
-      // Get the lego_id for each regenerated audio
+      // Get the lego_id for each regenerated audio (batch to avoid header overflow)
       const audioIds = regeneratedItems.map(r => r.id)
-      const { data: audioRecords } = await supabase
-        .from('course_audio')
-        .select('id, lego_id')
-        .in('id', audioIds)
+      let audioRecords = []
+      for (let i = 0; i < audioIds.length; i += 100) {
+        const batch = audioIds.slice(i, i + 100)
+        const { data } = await supabase
+          .from('course_audio')
+          .select('id, lego_id')
+          .in('id', batch)
+        if (data) audioRecords = audioRecords.concat(data)
+      }
 
       let boundCount = 0
       for (const audio of audioRecords || []) {
