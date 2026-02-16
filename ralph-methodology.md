@@ -788,4 +788,106 @@ This section captures hard-won insights from QA checkpoints and production issue
 
 ---
 
+### 2026-02-16: Two-Mode Build Workflow (Collaborative → Parallel)
+
+**Issue:** Building 300 seeds sequentially with one agent is slow. But parallel agents from seed 1 produce poor foundations because the first 10 seeds establish every pattern the rest of the course depends on.
+
+**Root Cause:** Seeds 1-10 are qualitatively different from seeds 11+. They bootstrap the core vocabulary and grammatical patterns that all subsequent seeds recombine. Getting these wrong cascades through the entire course.
+
+**Fix — Two-mode workflow:**
+
+**Mode 1: Human + Single Agent (Seeds 1-10)**
+- One seed at a time, human reviews each before submission
+- Human watches for: natural target language, useful LEGOs, good pedagogical ordering
+- These seeds establish the "golden keys" (highest-ROI patterns like desire forms, progressive, intention)
+- Stop at seed 10 checkpoint for QA before proceeding
+
+**Mode 2: Parallel Agents (Seeds 11-50+)**
+- After checkpoint 10 approved, launch 4-8 parallel Sonnet agents
+- Each agent gets a batch (e.g., 11-15, 16-20, 21-25...)
+- Each agent MUST pull vocab before EVERY seed (`GET /api/vocab/{course}`) — other agents may have added words since last check
+- Agents work sequentially within their batch (S11 before S12)
+- API validates atomically — agents fix and retry on failure
+- Human spot-checks periodically
+- Stop at seed 50 for checkpoint QA
+
+**Why this works:** Mode 1 ensures the foundation is solid. Mode 2 leverages the fact that by seed 11+, there's enough vocabulary that decomposition becomes more mechanical and quality is easier to maintain.
+
+---
+
+### 2026-02-16: Vocab Bootstrapping Curve
+
+**Issue:** Early seeds have sparse USE phrases because there's almost no prior vocabulary to recombine with. Agents sometimes force low-quality phrases to hit minimum counts.
+
+**Root Cause:** The vocab constraint means L1 of S1 has ZERO prior vocabulary. L1 can only produce the LEGO itself as a BUILD phrase and maybe 1 USE phrase. This is fundamentally different from S10+ where rich recombination is possible.
+
+**Fix — Accept the bootstrapping curve:**
+
+| Seed | Typical vocab available | USE phrases per LEGO |
+|------|------------------------|---------------------|
+| S1 | 0 prior words | 1-3 (sparse is OK) |
+| S2-3 | 5-15 prior words | 3-5 |
+| S4-5 | 15-30 prior words | 5-8 |
+| S6-10 | 30-60 prior words | 5-8 (standard) |
+| S11+ | 60+ prior words | 8+ (rich recombination) |
+
+**Never sacrifice quality for quantity.** If you can only make 3 good USE phrases for L1 of S2, submit 3 good ones — don't pad with garbage.
+
+---
+
+### 2026-02-16: Markdown Submission Format
+
+**Issue:** Agents using JSON submission format produce more validation errors than agents using markdown format. The markdown format is more natural for linguistic content and easier to review.
+
+**Fix — Prefer markdown submission:**
+
+```markdown
+# Seed N
+Known: [source language sentence]
+Target: [target language sentence]
+
+## L1 [A] "known_chunk" → "target_chunk"
+
+BUILD:
+- known_chunk → target_chunk
+- known_chunk + prior_vocab → target phrase fragment
+
+USE:
+- Full known sentence。 → Full target sentence. [score]
+- Another sentence。 → Another sentence. [score]
+
+## L2 [M] "known_chunk" → "target_chunk"
+Components: comp1_known → comp1_target, comp2_known → comp2_target
+
+BUILD:
+- known_chunk → target_chunk
+- Combination → Combination
+
+USE:
+- Sentence。 → Sentence. [score]
+```
+
+**Format rules:**
+- BUILD: `- known → target` (no periods, no scores, fragments OK)
+- USE: `- known。 → target. [score]` (periods, scores 5-9, complete sentences)
+- Components line for M-LEGOs only
+- Submit: `curl -s -X POST "http://localhost:3471/api/seed/complete?course={code}" -H "Content-Type: text/markdown" --data-binary @/tmp/seedN.md`
+
+---
+
+### 2026-02-16: Parallel Agent Coordination
+
+**Issue:** When multiple agents build seeds in parallel, they can create ZUT collisions if they don't see each other's vocab additions.
+
+**Root Cause:** Agent A submits S15 with "tomorrow" → "morgen" while Agent B simultaneously submits S18 with "tomorrow" → "morgens". Both pass individual validation but create a ZUT conflict.
+
+**Fix — Coordination protocol for parallel agents:**
+1. **Pull vocab before EVERY seed** — not just at batch start. The API is the single source of truth.
+2. **Heartbeat** — `POST /api/heartbeat/{course}` with `{"status":"working","current_seed":N}` so other agents (and humans) know what's in flight
+3. **Sequential within batch** — each agent works its assigned range in order (S11→S12→S13)
+4. **Retry on ZUT** — if another agent's submission created a collision, upchunk the conflicting piece into a larger M-LEGO and retry
+5. **Don't guess vocab** — always check the API, never assume you know what's been introduced
+
+---
+
 *Add new lessons above this line. Format: Date, Issue, Root Cause, Fix.*

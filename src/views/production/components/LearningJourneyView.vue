@@ -208,6 +208,36 @@
                 </div>
               </div>
 
+              <!-- Edit & Flag Buttons -->
+              <div class="edit-flags flex items-center gap-1 flex-shrink-0">
+                <!-- Pencil edit button -->
+                <button
+                  class="w-6 h-6 flex items-center justify-center rounded text-slate-500 hover:text-white hover:bg-slate-600 transition-colors"
+                  title="Edit text"
+                  @click.stop="emit('item-edit', item)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                  </svg>
+                </button>
+                <!-- F (target1) quick-flag -->
+                <button
+                  v-if="item.target1_audio_uuid"
+                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
+                  :class="'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
+                  title="Flag target1 (F) audio"
+                  @click.stop="emit('audio-flag', item, 'target1')"
+                >F</button>
+                <!-- M (target2) quick-flag -->
+                <button
+                  v-if="item.target2_audio_uuid"
+                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
+                  :class="'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
+                  title="Flag target2 (M) audio"
+                  @click.stop="emit('audio-flag', item, 'target2')"
+                >M</button>
+              </div>
+
               <!-- Phase indicator when this item is playing -->
               <div v-if="isItemPlaying(round.roundNumber, idx)" class="phase-indicator flex gap-1">
                 <span
@@ -276,6 +306,7 @@ interface ScriptItem {
   legoIndex: number
   seedId: string
   type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate'
+  phrase_id?: string
   known_text: string
   target_text: string
   hasAudio: boolean
@@ -331,6 +362,8 @@ const emit = defineEmits<{
     progress: number
     totalItems: number
   }]
+  'item-edit': [item: ScriptItem]
+  'audio-flag': [item: ScriptItem, track: 'target1' | 'target2']
 }>()
 
 // ============================================================================

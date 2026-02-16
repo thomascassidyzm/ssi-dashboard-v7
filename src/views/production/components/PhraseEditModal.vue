@@ -9,7 +9,7 @@
         <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
           <!-- Header -->
           <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700">
-            <h3 class="text-lg font-semibold text-white">Edit Phrase</h3>
+            <h3 class="text-lg font-semibold text-white">{{ mode === 'lego' ? 'Edit LEGO' : 'Edit Phrase' }}</h3>
             <button
               @click="close"
               class="text-slate-400 hover:text-white transition-colors"
@@ -195,10 +195,13 @@ interface RegenFlags {
 }
 
 // Props
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   visible: boolean;
   phrase: PhraseData | null;
-}>();
+  mode?: 'phrase' | 'lego';
+}>(), {
+  mode: 'phrase',
+});
 
 // Emits
 const emit = defineEmits<{

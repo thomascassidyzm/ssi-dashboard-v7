@@ -305,6 +305,8 @@
           :is-loading="isLoadingJourney"
           :hide-controls="true"
           @playback-state="onJourneyPlaybackState"
+          @item-edit="onJourneyItemEdit"
+          @audio-flag="onJourneyAudioFlag"
         />
       </template>
 
@@ -579,6 +581,7 @@
     <PhraseEditModal
       :visible="phraseEditModalVisible"
       :phrase="phraseToEdit"
+      :mode="phraseEditMode"
       @close="closePhraseEditModal"
       @save="savePhraseEdit"
     />
@@ -772,6 +775,7 @@ const phraseToEdit = ref<{
   target1_audio_uuid?: string;
   target2_audio_uuid?: string;
 } | null>(null);
+const phraseEditMode = ref<'phrase' | 'lego'>('phrase');
 
 
 // Shortcuts Help
@@ -1679,6 +1683,7 @@ const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: s
 
 // Phrase Edit Modal Methods
 const openPhraseEditModal = (phrase: PhraseRowData) => {
+  phraseEditMode.value = 'phrase';
   phraseToEdit.value = {
     id: phrase.phrase_id,
     known_text: phrase.known_text,
@@ -1737,8 +1742,12 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
   try {
     const apiBaseUrl = getApiBaseUrl();
 
-    // Save text changes
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/phrase/${phraseToEdit.value.id}`, {
+    // Save text changes — route to correct endpoint based on mode
+    const endpoint = phraseEditMode.value === 'lego'
+      ? `${apiBaseUrl}/api/production/${courseCode.value}/lego/${phraseToEdit.value.id}`
+      : `${apiBaseUrl}/api/production/${courseCode.value}/phrase/${phraseToEdit.value.id}`;
+
+    const response = await fetch(endpoint, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -1750,7 +1759,7 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
       })
     });
 
-    if (!response.ok) throw new Error('Failed to save phrase');
+    if (!response.ok) throw new Error(`Failed to save ${phraseEditMode.value}`);
 
     // Flag individual audio files for regeneration
     const flagPromises: Promise<Response>[] = [];
@@ -1819,10 +1828,51 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     });
 
     closePhraseEditModal();
-    // TODO: Show success toast
+
+    // Reload journey data if we edited from journey view
+    if (phraseEditMode.value === 'lego' || viewMode.value === 'journey') {
+      reloadLearningJourney();
+    }
   } catch (err) {
-    console.error('Error saving phrase:', err);
-    // TODO: Show error toast
+    console.error(`Error saving ${phraseEditMode.value}:`, err);
+  }
+};
+
+// Journey view: item edit handler
+const onJourneyItemEdit = (item: any) => {
+  const isLego = item.type === 'intro' || item.type === 'debut';
+  phraseEditMode.value = isLego ? 'lego' : 'phrase';
+  phraseToEdit.value = {
+    id: isLego ? item.legoId : item.phrase_id,
+    known_text: item.known_text,
+    target_text: item.target_text,
+    known_audio_uuid: item.known_audio_uuid,
+    target1_audio_uuid: item.target1_audio_uuid,
+    target2_audio_uuid: item.target2_audio_uuid,
+  };
+  phraseEditModalVisible.value = true;
+};
+
+// Journey view: quick audio flag handler
+const onJourneyAudioFlag = async (item: any, track: 'target1' | 'target2') => {
+  const uuid = track === 'target1' ? item.target1_audio_uuid : item.target2_audio_uuid;
+  if (!uuid) return;
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({
+        audio_uuid: uuid,
+        status: 'flagged',
+        reason: `Quick-flagged ${track} from journey view`,
+        flagged_by: 'dashboard_user'
+      })
+    });
+    console.log(`Flagged ${track} audio ${uuid}`);
+  } catch (err) {
+    console.error('Error flagging audio:', err);
   }
 };
 
