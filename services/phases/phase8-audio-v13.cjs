@@ -1669,7 +1669,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     // Generate presentation text for each LEGO
     // Short template (no "as in" context) for alternating in early seeds
-    const shortTemplate = template.replace(/, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
+    const shortTemplate = template.replace(/(?:\s*—\s*|\s*,\s*)\s*as in\s*(?:—\s*)?'\{seed\}'(?:\s*—)?|，如"\{seed\}"|(?:\s*—\s*|\s*,\s*)\s*fel yn\s*(?:—\s*)?'\{seed\}'(?:\s*—)?|(?:\s*—\s*|\s*,\s*)\s*como en\s*(?:—\s*)?'\{seed\}'(?:\s*—)?/g, '')
 
     const presentations = []
     for (const lego of legos) {
@@ -1679,8 +1679,11 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const legoIndexMatch = lego.lego_id.match(/L(\d+)$/)
       const legoIndex = legoIndexMatch ? parseInt(legoIndexMatch[1], 10) : 1
 
-      // For first 2 seeds, alternate: odd LEGOs get full template, even get short
-      const useShortTemplate = lego.seed_number <= 2 && legoIndex % 2 === 0
+      // Use short template (no "as in" context) when:
+      // 1. First 2 seeds, alternating on even LEGO indices, OR
+      // 2. The known text doesn't appear in the seed text (context would be misleading)
+      const knownAppearsInSeed = seedText.toLowerCase().includes(lego.known_text.toLowerCase())
+      const useShortTemplate = (lego.seed_number <= 2 && legoIndex % 2 === 0) || !knownAppearsInSeed
       const activeTemplate = useShortTemplate ? shortTemplate : template
 
       // Fill in template
@@ -1697,6 +1700,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         seed_number: lego.seed_number,
         lego_index: legoIndex,
         uses_short_template: useShortTemplate,
+        short_reason: useShortTemplate ? (!knownAppearsInSeed ? 'known_not_in_seed' : 'early_seed_alternation') : null,
         presentation_text: presText
       })
     }
