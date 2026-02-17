@@ -162,9 +162,19 @@
               <button
                 v-if="finding.action"
                 @click="executeDetectiveAction(finding.action)"
-                class="px-2 py-0.5 bg-cyan-600/20 border border-cyan-500/40 text-cyan-400 text-xs rounded hover:bg-cyan-600/30 transition-all"
+                :disabled="detectiveActionStates[finding.action.path] === 'loading'"
+                class="px-2 py-0.5 border text-xs rounded transition-all min-w-[100px] text-center"
+                :class="{
+                  'bg-cyan-600/20 border-cyan-500/40 text-cyan-400 hover:bg-cyan-600/30': !detectiveActionStates[finding.action.path],
+                  'bg-amber-600/20 border-amber-500/40 text-amber-400 animate-pulse cursor-wait': detectiveActionStates[finding.action.path] === 'loading',
+                  'bg-emerald-600/20 border-emerald-500/40 text-emerald-400': detectiveActionStates[finding.action.path] === 'ok',
+                  'bg-red-600/20 border-red-500/40 text-red-400': detectiveActionStates[finding.action.path] === 'error',
+                }"
               >
-                {{ finding.action.label }}
+                {{ detectiveActionStates[finding.action.path] === 'loading' ? 'Starting...'
+                   : detectiveActionStates[finding.action.path] === 'ok' ? 'Spawned'
+                   : detectiveActionStates[finding.action.path] === 'error' ? 'Failed'
+                   : finding.action.label }}
               </button>
             </div>
           </div>
@@ -2020,17 +2030,23 @@ watch(() => socket.detectiveFindings.value, (findings) => {
   if (findings) diagnosing.value = false
 })
 
+const detectiveActionStates = ref({})  // path -> 'loading' | 'ok' | 'error'
+
 async function executeDetectiveAction(action) {
+  detectiveActionStates.value[action.path] = 'loading'
   try {
     const apiBase = getApiUrl()
-    await fetch(`${apiBase}${action.path}`, {
+    const resp = await fetch(`${apiBase}${action.path}`, {
       method: action.method || 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
       body: action.body ? JSON.stringify(action.body) : undefined
     })
+    detectiveActionStates.value[action.path] = resp.ok ? 'ok' : 'error'
   } catch (err) {
     console.error('Detective action failed:', err)
+    detectiveActionStates.value[action.path] = 'error'
   }
+  setTimeout(() => { detectiveActionStates.value[action.path] = null }, 5000)
 }
 
 // Lifecycle
