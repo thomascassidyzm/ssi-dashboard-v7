@@ -150,7 +150,7 @@
                   <div class="progress-metric">
                     <span class="metric-value">{{ getCompletedSeeds(course) }}</span>
                     <span class="metric-separator">/</span>
-                    <span class="metric-target">{{ course.targetSeeds || 260 }}</span>
+                    <span class="metric-target">{{ course.targetSeeds || 300 }}</span>
                     <span class="metric-label">seeds</span>
                   </div>
                   <div class="progress-track">
@@ -228,7 +228,7 @@
               <div class="progress-metric">
                 <span class="metric-value">{{ getCompletedSeeds(course) }}</span>
                 <span class="metric-separator">/</span>
-                <span class="metric-target">{{ course.targetSeeds || 260 }}</span>
+                <span class="metric-target">{{ course.targetSeeds || 300 }}</span>
                 <span class="metric-label">seeds</span>
               </div>
               <div class="progress-track">
@@ -354,7 +354,7 @@ const sortColumn = ref('priority') // Smart default: priority sort
 // Pipeline: Empty → Decomposing → Needs Audio → Needs Export → Ready
 function getBuildStatus(course) {
   const stats = course.stats || {}
-  const targetSeeds = course.targetSeeds || 260
+  const targetSeeds = course.targetSeeds || 300
   const legos = stats.legos || 0
   const phrases = stats.phrases || 0
   const audio = stats.audio || 0
@@ -405,7 +405,7 @@ function getCompletedSeeds(course) {
 
 // Get seed progress percentage
 function getSeedProgress(course) {
-  const targetSeeds = course.targetSeeds || 260
+  const targetSeeds = course.targetSeeds || 300
   const completedSeeds = getCompletedSeeds(course)
   return Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
 }

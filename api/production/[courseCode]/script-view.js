@@ -13,9 +13,12 @@ import { isSupabaseConfigured, getSupabase } from '../../lib/supabase.js';
  */
 async function batchLookupAudioUuids(db, courseCode, knownTexts, targetTexts) {
   const audioMap = new Map();
+  const PUNCT_REGEX = /[。？！、，.!?,;:()（）「」『』\[\]…—–\-]+/g;
 
-  // Normalize all texts
-  const allTexts = [...new Set([...knownTexts, ...targetTexts].map(t => t?.toLowerCase().trim()).filter(Boolean))];
+  // Normalize all texts (include both with and without punctuation for fallback)
+  const rawNormalized = [...knownTexts, ...targetTexts].map(t => t?.toLowerCase().trim()).filter(Boolean);
+  const stripped = rawNormalized.map(t => t.replace(PUNCT_REGEX, '').trim()).filter(Boolean);
+  const allTexts = [...new Set([...rawNormalized, ...stripped])];
 
   if (allTexts.length === 0) return audioMap;
 
@@ -152,11 +155,13 @@ export default async function handler(req, res) {
               else if (phrase.position === 2) phraseType = 'lego';
               else if (phrase.position === 3) phraseType = 'debut';
 
-              // Look up audio UUIDs
+              // Look up audio UUIDs (try exact then punctuation-stripped fallback)
               const knownNorm = phrase.known_text?.toLowerCase().trim();
               const targetNorm = phrase.target_text?.toLowerCase().trim();
-              const knownAudio = knownNorm ? audioMap.get(knownNorm) : null;
-              const targetAudio = targetNorm ? audioMap.get(targetNorm) : null;
+              const knownStripped = knownNorm?.replace(PUNCT_REGEX, '').trim();
+              const targetStripped = targetNorm?.replace(PUNCT_REGEX, '').trim();
+              const knownAudio = knownNorm ? (audioMap.get(knownNorm) || audioMap.get(knownStripped)) : null;
+              const targetAudio = targetNorm ? (audioMap.get(targetNorm) || audioMap.get(targetStripped)) : null;
 
               return {
                 id: phrase.id,

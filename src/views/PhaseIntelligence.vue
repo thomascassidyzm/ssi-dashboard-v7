@@ -142,16 +142,17 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-// Import methodology skills (v14 Course Builder approach)
-import ssiLearnerPattern from '../../.claude/commands/ssi-learner-pattern.md?raw'
-import ssiDecomposeSeed from '../../.claude/commands/ssi-decompose-seed.md?raw'
-import ssiBuildPhrases from '../../.claude/commands/ssi-build-phrases.md?raw'
+// Audio pipeline prompts (still active in v14)
+// Note: Phase 8/9 PROMPT.md files may not exist on Vercel - using inline content
+const phase8Raw = `# Phase 8: Audio Generation
+Generates TTS audio for all phrases using Azure/ElevenLabs.
+See services/phases/phase8-audio-v13.cjs for implementation.`
 
-// Import audio pipeline prompts (still active in v14)
-import phase8Raw from '../../services/phases/phase8-audio-generation/PROMPT.md?raw'
-import phase9Raw from '../../services/phases/phase9-manifest-compilation/PROMPT.md?raw'
+const phase9Raw = `# Phase 9: Manifest Compilation
+Compiles final course manifest from Supabase data.
+See services/phases/phase9-manifest-supabase.cjs for implementation.`
 
-// Combined Course Builder methodology
+// Combined Course Builder methodology (inline - skills files are local-only)
 const courseBuilderContent = `# Course Builder Methodology (v14)
 
 The Course Builder API (\`POST /api/seed/complete\`) handles all content creation.
@@ -159,28 +160,35 @@ Agent learns methodology from example patterns, then submits seeds directly.
 
 ## Core Skills
 
-The following skills define the SSi methodology:
+The methodology is defined in local \`.claude/commands/\` skill files:
 
 ---
 
 ## 1. SSi Learner Pattern
 What the learner experiences - understand this to build courses correctly.
 
-${ssiLearnerPattern}
+- LEGOs are introduced with ~7 phrases on debut
+- N-1 review uses 3 phrases
+- Subsequent reviews use 1 phrase each
+- Components taught before compounds
 
 ---
 
 ## 2. SSi Decompose Seed
 How to break seeds into LEGOs (pedagogical order, not sentence order).
 
-${ssiDecomposeSeed}
+- Identify atomic (A-type) and molecular (M-type) pieces
+- Order by dependency, not sentence order
+- Mark vocabulary reuse with is_new flag
 
 ---
 
 ## 3. SSi Build Phrases
 How to generate practice phrases with build-up progression.
 
-${ssiBuildPhrases}
+- Component → Partial → Full LEGO → Contextual use
+- Vary length, context, and LEGO position
+- Minimum counts based on LEGO position in seed
 `
 
 // Placeholder for deprecated phases

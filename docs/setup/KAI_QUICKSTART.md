@@ -67,13 +67,13 @@ All enforced automatically - rejection includes methodology hints:
 
 | Gate | What | On Fail |
 |------|------|---------|
-| 1. TILING | Seed tiles from LEGOs | `/ssi-decompose-seed` |
-| 2. ZUT | Same known = same target | `/ssi-decompose-seed` |
-| 3. VOCAB | Phrases use known vocab only | `/ssi-learner-pattern` |
-| 4. COUNT | Min 7 phrases per LEGO | `/ssi-build-phrases` |
-| 5. TIERS | 2+ SHORT, 2+ MEDIUM, 4+ LONG | `/ssi-build-phrases` |
-| 6. COMPONENTS | M-LEGOs need breakdowns | `/ssi-decompose-seed` |
-| 7. BALANCE | Vocabulary variety (3-strike) | `/ssi-phrase-variety` |
+| 1. TILING | Seed tiles from LEGOs | `ralph-methodology.md` |
+| 2. ZUT | Same known = same target | `ralph-methodology.md` |
+| 3. VOCAB | Phrases use known vocab only | `ralph-methodology.md` |
+| 4. COUNT | Min 7 phrases per LEGO | `ralph-methodology.md` |
+| 5. TIERS | 2+ SHORT, 2+ MEDIUM, 4+ LONG | `ralph-methodology.md` |
+| 6. COMPONENTS | M-LEGOs need breakdowns | `ralph-methodology.md` |
+| 7. BALANCE | Vocabulary variety (3-strike) | `ralph-methodology.md` |
 
 ### Phrase Length Tiers (Gate 5)
 

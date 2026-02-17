@@ -516,7 +516,7 @@ async function loadModes() {
     // Fallback modes if API fails (must match course-modes.json)
     generationModes.value = [
       { id: 'quick_test', name: 'Quick Test', icon: '⚡', description: 'Fast validation - fewer browsers, more agents', seedCount: 10, patternNums: '2 × 5 × 1' },
-      { id: 'mvp_course', name: 'MVP Course', icon: '🎯', description: 'Big 10 language pairs - 10x13x2 pattern', seedCount: 260, patternNums: '10 × 13 × 2' },
+      { id: 'mvp_course', name: 'MVP Course', icon: '🎯', description: 'Big 10 language pairs - 10x13x2 pattern', seedCount: 300, patternNums: '10 × 15 × 2' },
       { id: 'full_course', name: 'Full Course', icon: '🚀', description: 'Complete legacy-scale course - extends MVP', seedCount: 668, patternNums: '17 × 13 × 2' }
     ]
   } finally {

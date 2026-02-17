@@ -18,6 +18,49 @@
       <!-- Pipeline View -->
       <div v-else class="space-y-8">
 
+        <!-- GENDER PREP BANNER -->
+        <div v-if="genderPrepStatus.isGendered" class="rounded-xl p-4 flex items-center gap-4"
+          :class="genderPrepStatus.processed
+            ? 'bg-emerald-900/20 border border-emerald-500/20'
+            : 'bg-amber-900/20 border border-amber-500/30'"
+        >
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            :class="genderPrepStatus.processed
+              ? 'bg-emerald-500/10 border border-emerald-500/20'
+              : 'bg-amber-500/10 border border-amber-500/20'"
+          >
+            <svg class="w-5 h-5" :class="genderPrepStatus.processed ? 'text-emerald-400' : 'text-amber-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <div class="text-sm font-medium" :class="genderPrepStatus.processed ? 'text-emerald-300' : 'text-amber-300'">
+              {{ genderPrepStatus.processed ? 'Gender Prep' : 'Gender Prep not run' }}
+            </div>
+            <div class="text-xs" :class="genderPrepStatus.processed ? 'text-emerald-400/70' : 'text-amber-400/70'">
+              <template v-if="genderPrepStatus.processed">
+                {{ genderPrepStatus.totalExpansions }} expansions ready<template v-if="genderPrepFlagCount > 0">, {{ genderPrepFlagCount }} audio flagged for regen</template>
+              </template>
+              <template v-else>
+                Audio will use masculine defaults until gender prep is run.
+              </template>
+            </div>
+            <div v-if="genderPrepResult" class="text-xs mt-1" :class="genderPrepResult.ok ? 'text-emerald-400' : 'text-red-400'">
+              {{ genderPrepResult.text }}
+            </div>
+          </div>
+          <button
+            v-if="!genderPrepStatus.processed && !genderPrepRunning"
+            @click="startGenderPrep"
+            class="px-4 py-2 bg-purple-600/20 border border-purple-500/50 text-purple-300 hover:border-purple-400/70 hover:text-purple-200 text-sm font-medium rounded-lg transition-all flex-shrink-0"
+          >
+            Run Gender Prep
+          </button>
+          <span v-if="genderPrepRunning" class="text-sm text-purple-400 animate-pulse flex-shrink-0">
+            {{ genderPrepStatus.totalExpansions || 0 }} expansions...
+          </span>
+        </div>
+
         <!-- LIVE PROGRESS (when active) -->
         <div v-if="audioProgress.active" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-emerald-500/30 rounded-xl p-6">
           <div class="flex items-center gap-6">
@@ -311,7 +354,7 @@
               </div>
 
               <p class="text-sm text-slate-400 mb-4">
-                Creates "The [language] for '[known]' is:" pattern for all LEGOs. Target words are played separately.
+                Creates "The [language] for — '[known]' — is:" pattern for all LEGOs. Target words are played separately.
               </p>
 
               <!-- Action Buttons -->
@@ -456,6 +499,17 @@
           <div class="flex items-center gap-4 mb-4">
             <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pipeline Status</h2>
             <div class="flex-1 h-px bg-slate-700/50"></div>
+            <button
+              @click="refreshAudioStats"
+              class="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1"
+              :disabled="refreshingStats"
+              title="Refresh stats"
+            >
+              <svg class="w-3.5 h-3.5" :class="{ 'animate-spin': refreshingStats }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Refresh
+            </button>
           </div>
 
           <!-- Progress Dashboard -->
@@ -535,6 +589,14 @@
               </svg>
               Retry Failed
             </button>
+          </div>
+
+          <!-- Audio Linking Result -->
+          <div v-if="linkResult" class="mt-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-teal-500/30 rounded-xl p-4 flex items-center gap-3">
+            <svg class="w-5 h-5 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+            </svg>
+            <span class="text-teal-300 text-sm">Linked {{ linkResult.linked }} audio IDs to phrases, LEGOs and seeds</span>
           </div>
 
           <!-- Plan Results Display -->
@@ -636,6 +698,12 @@ const courseCode = computed(() => route.params.courseCode as string)
 const loading = ref(true)
 const error = ref<string | null>(null)
 
+// Gender prep status state
+const genderPrepStatus = ref<any>({ isGendered: false, processed: false, totalExpansions: 0 })
+const genderPrepFlagCount = ref(0)
+const genderPrepRunning = ref(false)
+const genderPrepResult = ref<any>(null)
+
 // Voice configuration state
 const showVoiceConfig = ref(false)
 const voicesConfigured = ref(false)
@@ -669,6 +737,8 @@ const statsLoaded = ref(false)  // Track if pipeline stats have loaded
 
 // Generation state for immediate button feedback
 const startingGeneration = ref(false)
+const refreshingStats = ref(false)
+const linkResult = ref<{ linked: number } | null>(null)
 
 // Concurrency control (1-20, stored in localStorage, default 20 for paid Azure tier)
 const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '20', 10))
@@ -684,16 +754,47 @@ let progressPollInterval: ReturnType<typeof setInterval> | null = null
 const apiBaseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3470'
 
 // Poll for audio generation progress
+let wasGenerating = false
 const pollAudioProgress = async () => {
   try {
     const response = await fetch(`${apiBaseUrl}/api/audio/status`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     if (response.ok) {
+      const prev = audioProgress.value
       audioProgress.value = await response.json()
+
+      // Detect generation completion: was active, now inactive
+      const isActive = audioProgress.value?.active === true
+      if (wasGenerating && !isActive) {
+        // Generation just finished — refresh everything
+        refreshAudioStats()
+      }
+      wasGenerating = isActive
     }
   } catch (err) {
     // Silently fail - server might not be running
+  }
+}
+
+// Refresh audio stats from the fast /audio-stats endpoint + missing audio
+const refreshAudioStats = async () => {
+  refreshingStats.value = true
+  try {
+    const headers = { 'ngrok-skip-browser-warning': 'true' }
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
+    if (response.ok) {
+      const stats = await response.json()
+      if (stats.total !== undefined) {
+        productionStore.updatePipelineStats(stats.total, stats.existing, stats.missing || 0)
+      }
+    }
+    // Also refresh MissingAudio component
+    missingAudioKey.value++
+  } catch (err) {
+    // Silently fail
+  } finally {
+    refreshingStats.value = false
   }
 }
 
@@ -731,6 +832,87 @@ const stopProgressPolling = () => {
   }
 }
 
+// Gender prep status fetch
+const fetchGenderPrepStatus = async () => {
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/gender-prep/status`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      genderPrepStatus.value = await response.json()
+      if (genderPrepStatus.value.isGendered && genderPrepStatus.value.processed) {
+        const flagResponse = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/gender-prep/flag-count`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' }
+        })
+        if (flagResponse.ok) {
+          const flagData = await flagResponse.json()
+          genderPrepFlagCount.value = flagData.flagged || 0
+        }
+      }
+    }
+  } catch (err) {
+    // Silently fail - endpoint may not exist
+  }
+}
+
+// Gender prep action + polling
+let genderPrepPollTimer: ReturnType<typeof setInterval> | null = null
+
+const startGenderPrep = async () => {
+  genderPrepRunning.value = true
+  genderPrepResult.value = null
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/gender-prep/start`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+    const data = await response.json()
+    if (response.ok) {
+      genderPrepResult.value = {
+        ok: true,
+        text: `Spawned ${data.agents} Haiku agents (${data.totalTexts} texts, ${data.batchSize}/batch)`
+      }
+      // Start polling to track progress as agents insert rows
+      startGenderPrepPolling()
+    } else {
+      genderPrepResult.value = { ok: false, text: data.error || 'Failed to spawn' }
+      genderPrepRunning.value = false
+    }
+  } catch (err: any) {
+    genderPrepResult.value = { ok: false, text: err.message }
+    genderPrepRunning.value = false
+  }
+}
+
+function startGenderPrepPolling() {
+  if (genderPrepPollTimer) clearInterval(genderPrepPollTimer)
+  let stableCount = 0
+  let lastCount = 0
+  genderPrepPollTimer = setInterval(async () => {
+    await fetchGenderPrepStatus()
+    const current = genderPrepStatus.value.totalExpansions || 0
+    if (current > 0 && current === lastCount) {
+      stableCount++
+    } else {
+      stableCount = 0
+    }
+    lastCount = current
+    // If count hasn't changed for 4 polls (20s), agents are likely done
+    if (stableCount >= 4 && current > 0) {
+      clearInterval(genderPrepPollTimer!)
+      genderPrepPollTimer = null
+      genderPrepRunning.value = false
+      genderPrepResult.value = {
+        ok: true,
+        text: `Done — ${current} gender expansions from ${genderPrepStatus.value.totalExpansions} texts`
+      }
+    }
+  }, 5000)
+}
+
 // Load data on mount
 onMounted(async () => {
   try {
@@ -739,6 +921,14 @@ onMounted(async () => {
     productionStore.loadCourse(courseCode.value)
     // Start polling for audio progress
     startProgressPolling()
+    // Fetch gender prep status
+    fetchGenderPrepStatus()
+
+    // Stats come from the fast /audio-stats endpoint (via loadCourse).
+    // The slow /audio-pipeline/plan endpoint is only needed for cost/time estimates
+    // and is called on-demand when user clicks "Start Generation".
+    // Mark stats as loaded once the store has audio data (watch below handles it).
+    statsLoaded.value = true
 
     // Fetch pipeline stats in background (for Progress Dashboard)
     refreshPlanStats().then(() => {
@@ -760,6 +950,7 @@ onMounted(async () => {
 // Cleanup on unmount
 onUnmounted(() => {
   stopProgressPolling()
+  if (genderPrepPollTimer) clearInterval(genderPrepPollTimer)
 })
 
 // Computed properties
@@ -769,8 +960,8 @@ const hasFailed = computed(() => progressStats.value.failed > 0)
 const canStartGeneration = computed(() =>
   !isGenerating.value && progressStats.value.pending > 0
 )
-const estimatedCost = computed(() => productionStore.costEstimate.estimated)
-const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime)
+const estimatedCost = computed(() => productionStore.costEstimate.estimated || null)
+const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime || null)
 
 // Concurrency update (save to localStorage)
 const updateConcurrency = (value: number) => {
@@ -791,17 +982,14 @@ const startGeneration = async () => {
       productionStore.updatePipelineStats(planData.total, planData.existing, planData.missing || 0)
     }
 
-    // Check if there's actually work to do
-    if (!planData.missing || planData.missing === 0) {
-      console.log('[AudioPipeline] No audio to generate - all complete')
-      // Show a message to the user
-      planResult.value = planData
-      showingPlan.value = true
-      return
+    // Always call generate - even with 0 missing, it links audio IDs to phrases
+    const result = await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
+    if (result?.linked > 0) {
+      linkResult.value = { linked: result.linked }
+      setTimeout(() => { linkResult.value = null }, 10000)
     }
-
-    // Proceed with generation
-    await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
+    // Refresh stats after generation starts (linking may have changed counts)
+    refreshAudioStats()
   } catch (err: any) {
     error.value = err.message || 'Failed to start generation'
   } finally {
@@ -1026,14 +1214,15 @@ const markAllDone = async () => {
   if (!regenerateResult.value?.regeneratedItems?.length) return
 
   try {
-    // Delete all flags using new audio-flags endpoint - user is happy with all audio
-    for (const item of regenerateResult.value.regeneratedItems) {
-      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${item.id}`, {
-        method: 'DELETE',
+    const uuids = regenerateResult.value.regeneratedItems.map((item: any) => item.id).filter(Boolean)
+    if (uuids.length > 0) {
+      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/bulk-delete`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'ngrok-skip-browser-warning': 'true'
-        }
+        },
+        body: JSON.stringify({ audio_uuids: uuids })
       })
     }
     // Clear review list

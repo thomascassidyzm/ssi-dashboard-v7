@@ -1,0 +1,279 @@
+/**
+ * Phrase structure — deterministic phrase IDs, role computation, n-grams, LEGO position.
+ * Pure functions (no DB, no state).
+ */
+
+const { normalizeForContainment } = require('./text-normalization.cjs');
+const { getTargetLang, getCharsPerSyllable, isParticle } = require('./language-config.cjs');
+
+// Phrase role prefixes for deterministic IDs
+const ROLE_PREFIX = { component: 'C', build: 'B', use: 'U' };
+
+/**
+ * Compute phrase_role from position value.
+ * 0 = component, 1-7 = build, 8+ = use
+ */
+function computePhraseRole(position) {
+  if (position === 0) return 'component';
+  if (position >= 8) return 'use';
+  return 'build';
+}
+
+/**
+ * Deterministic phrase ID: {course_code}:S{NNNN}L{NN}{R}{NN}
+ * R = C (component), B (build), U (use)
+ * rolePosition = 1-based index within that role for this LEGO
+ */
+function makePhraseId(course_code, seed_number, lego_index, phrase_role, rolePosition) {
+  const s = String(seed_number).padStart(4, '0');
+  const l = String(lego_index).padStart(2, '0');
+  const r = ROLE_PREFIX[phrase_role] || 'X';
+  const p = String(rolePosition).padStart(2, '0');
+  return `${course_code}:S${s}L${l}${r}${p}`;
+}
+
+/**
+ * Extract n-grams from text (for pattern detection).
+ */
+function extractNgrams(text, n = 3) {
+  const words = text.toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, '')
+    .split(/\s+/)
+    .filter(w => w.length > 0);
+
+  const ngrams = [];
+  for (let i = 0; i <= words.length - n; i++) {
+    ngrams.push(words.slice(i, i + n).join(' '));
+  }
+  return ngrams;
+}
+
+/**
+ * Compute where the LEGO appears in the phrase (start/middle/end).
+ */
+function computeLegoPosition(phraseTargetText, legoTargetText) {
+  if (!phraseTargetText || !legoTargetText) return null;
+
+  const phrase = phraseTargetText.trim();
+  const lego = legoTargetText.trim();
+  const index = phrase.indexOf(lego);
+  if (index === -1) return null;
+
+  const phraseLength = phrase.length;
+  const legoLength = lego.length;
+  const legoEndIndex = index + legoLength;
+  const startPercent = index / phraseLength;
+  const endPercent = legoEndIndex / phraseLength;
+  const centerPercent = (startPercent + endPercent) / 2;
+
+  if (centerPercent < 0.33) return 'start';
+  if (centerPercent > 0.67) return 'end';
+  return 'middle';
+}
+
+/**
+ * Compute which other LEGOs appear in a phrase (for coverage-based selection).
+ */
+function computeConnectedLegoIds(phraseTargetText, primaryLegoTarget, introducedLegos) {
+  if (!introducedLegos || !Array.isArray(introducedLegos)) return [];
+
+  const connectedIds = [];
+  const normalizedPhrase = phraseTargetText.toLowerCase().trim();
+  const normalizedPrimary = primaryLegoTarget.toLowerCase().trim();
+
+  for (const lego of introducedLegos) {
+    const legoTarget = (lego.target_text || lego.target || '').toLowerCase().trim();
+    if (legoTarget === normalizedPrimary) continue;
+    if (legoTarget.length < 2) continue;
+    if (normalizedPhrase.includes(legoTarget)) {
+      connectedIds.push(lego.lego_id || `S${String(lego.seed_number).padStart(4,'0')}L${String(lego.lego_index).padStart(2,'0')}`);
+    }
+  }
+
+  return connectedIds;
+}
+
+/**
+ * Check if LEGO uses BUILD/USE format.
+ */
+function usesBuildUseFormat(lego) {
+  return Array.isArray(lego.build) || Array.isArray(lego.use);
+}
+
+/**
+ * Validate BUILD/USE phrase structure per ralph-methodology.md.
+ */
+function checkBuildUsePhrases(lego, courseCode, seedNumber) {
+  const charsPerSyllable = getCharsPerSyllable(courseCode);
+
+  // Graduated requirements
+  let minBuild = 3;
+  let minUse = 8;
+
+  if (seedNumber === 1 && lego.idx === 1) {
+    minBuild = 0;
+    minUse = 0;
+  } else if (seedNumber === 1) {
+    minBuild = 1;
+    minUse = 1;
+  } else if (seedNumber <= 3) {
+    minBuild = 1;
+    minUse = 1;
+  } else if (seedNumber <= 5) {
+    minBuild = 2;
+    minUse = 2;
+  } else if (seedNumber <= 10) {
+    minBuild = 2;
+    minUse = 2;
+  }
+
+  const buildRaw = lego.build || [];
+  const useRaw = lego.use || [];
+  const legoTarget = (lego.target || '').trim();
+  const legoTargetNorm = normalizeForContainment(legoTarget);
+
+  // Filter out component phrases — real BUILD/USE phrases must contain the entire LEGO target
+  const build = buildRaw.filter(p => normalizeForContainment(p.target || '').includes(legoTargetNorm));
+  const use = useRaw.filter(p => normalizeForContainment(p.target || '').includes(legoTargetNorm));
+  const buildComponents = buildRaw.length - build.length;
+  const useComponents = useRaw.length - use.length;
+  const componentCount = buildComponents + useComponents;
+  if (componentCount > 0) {
+    console.log(`  ⚠ ${componentCount} component phrase(s) excluded (don't contain full LEGO target): ${buildComponents} from build[], ${useComponents} from use[]`);
+  }
+
+  // Count validation
+  if (build.length < minBuild) {
+    return {
+      valid: false,
+      error: `BUILD: need ${minBuild}+, got ${build.length}${componentCount > 0 ? ` (${componentCount} component phrases excluded)` : ''}`,
+      details: { build: build.length, use: use.length, components: componentCount, minBuild, minUse },
+    };
+  }
+
+  if (use.length < minUse) {
+    return {
+      valid: false,
+      error: `USE: need ${minUse}+, got ${use.length}${useComponents > 0 ? ` (${useComponents} component phrases excluded)` : ''}`,
+      details: { build: build.length, use: use.length, components: componentCount, minBuild, minUse },
+    };
+  }
+
+  // Reject USE phrases with known_score < 5
+  const lowKnownScores = use.filter(p => p.known_score && p.known_score < 5);
+  if (lowKnownScores.length > 0) {
+    return {
+      valid: false,
+      error: `${lowKnownScores.length} USE phrase(s) have known_score < 5 (broken English). Remove or rewrite them.`,
+      details: {
+        build: build.length, use: use.length,
+        low_known_score_phrases: lowKnownScores.map(p => p.known),
+      },
+    };
+  }
+
+  // Reject USE phrases with target_score < 5
+  const lowTargetScores = use.filter(p => p.target_score && p.target_score < 5);
+  if (lowTargetScores.length > 0) {
+    return {
+      valid: false,
+      error: `${lowTargetScores.length} USE phrase(s) have target_score < 5. Remove or rewrite them.`,
+      details: {
+        build: build.length, use: use.length,
+        low_target_score_phrases: lowTargetScores.map(p => p.target),
+      },
+    };
+  }
+
+  return {
+    valid: true,
+    details: {
+      build: build.length,
+      use: use.length,
+      components: componentCount,
+      avgSyllables: use.length > 0 ? (use.reduce((sum, p) => sum + Math.round((p.target || '').length / charsPerSyllable), 0) / use.length).toFixed(1) : 0,
+    },
+  };
+}
+
+/**
+ * Get meaningful components for M-LEGO build-up.
+ * Filters out particles and self-references.
+ */
+function getMeaningfulComponents(components, legoTarget) {
+  if (!components || !Array.isArray(components)) return [];
+  return components.filter(c =>
+    c && c.target && !isParticle(c.target) && c.target !== legoTarget
+  );
+}
+
+/**
+ * Generate build-up phrases for M-type LEGO.
+ * Returns array of phrase objects ready for insertion.
+ */
+function generateBuildupPhrases(lego, courseCode) {
+  const { seed, idx, known, target, components } = lego;
+  const meaningful = getMeaningfulComponents(components, target);
+
+  const buildupPhrases = [];
+  const roleCounts = { component: 0, build: 0, use: 0 };
+
+  // Add component build-up phrases
+  for (let i = 0; i < meaningful.length; i++) {
+    const comp = meaningful[i];
+    roleCounts.component++;
+    buildupPhrases.push({
+      id: makePhraseId(courseCode, seed, idx, 'component', roleCounts.component),
+      course_code: courseCode,
+      seed_number: seed,
+      lego_index: idx,
+      position: i + 1,
+      known_text: comp.known,
+      target_text: comp.target,
+      word_count: comp.target.length,
+      lego_count: 1,
+      phrase_role: 'component',
+      connected_lego_ids: [],
+      lego_position: computeLegoPosition(comp.target, comp.target),
+      metadata: { buildup: 'component', component_index: i },
+      status: 'draft',
+      version: 1,
+    });
+  }
+
+  // Add LEGO itself at P(N+1) — role is 'build' (LEGO debut)
+  const legoPosition = meaningful.length + 1;
+  roleCounts.build++;
+  buildupPhrases.push({
+    id: makePhraseId(courseCode, seed, idx, 'build', roleCounts.build),
+    course_code: courseCode,
+    seed_number: seed,
+    lego_index: idx,
+    position: legoPosition,
+    known_text: known,
+    target_text: target,
+    word_count: target.length,
+    lego_count: 1,
+    phrase_role: 'build',
+    connected_lego_ids: [],
+    lego_position: computeLegoPosition(target, target),
+    metadata: { buildup: 'lego' },
+    status: 'draft',
+    version: 1,
+  });
+
+  return { buildupPhrases, startPosition: legoPosition + 1, roleCounts };
+}
+
+module.exports = {
+  ROLE_PREFIX,
+  computePhraseRole,
+  makePhraseId,
+  extractNgrams,
+  computeLegoPosition,
+  computeConnectedLegoIds,
+  usesBuildUseFormat,
+  checkBuildUsePhrases,
+  getMeaningfulComponents,
+  generateBuildupPhrases,
+};

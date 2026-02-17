@@ -6,37 +6,41 @@
         <div class="header-left flex items-center gap-4">
           <h1 class="text-xl font-bold text-white">Script Viewer</h1>
           <div v-if="totalSeeds > 0" class="stats text-sm text-slate-400">
-            {{ loadedSeeds }} of {{ totalSeeds }} seeds, {{ totalPhrases.toLocaleString() }} phrases
+            <template v-if="viewMode === 'journey'">
+              {{ filteredJourneyRounds.length }} rounds, {{ learningJourneyData?.stats?.totalItems || 0 }} items
+            </template>
+            <template v-else>
+              {{ loadedSeeds }} of {{ totalSeeds }} seeds, {{ totalPhrases.toLocaleString() }} phrases
+            </template>
+          </div>
+          <!-- Search box -->
+          <div class="relative">
+            <input
+              v-model="journeySearch"
+              type="text"
+              placeholder="Search text, seed, LEGO..."
+              class="w-56 px-3 py-1.5 pl-8 text-sm bg-slate-700 text-white placeholder-slate-400 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              @keydown.escape="journeySearch = ''"
+            />
+            <svg class="absolute left-2.5 top-2 w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <button
+              v-if="journeySearch"
+              @click="journeySearch = ''"
+              class="absolute right-2 top-1.5 text-slate-400 hover:text-white"
+            >&times;</button>
           </div>
         </div>
 
         <div class="header-right flex items-center gap-3">
           <!-- View Mode Toggle Buttons -->
-          <div class="view-mode-toggle flex rounded-lg overflow-hidden">
-            <button
-              @click="viewMode = 'journey'; if (!learningJourneyData) loadLearningJourney()"
-              class="px-4 py-2 text-sm transition-colors flex items-center gap-2"
-              :class="viewMode === 'journey'
-                ? 'bg-emerald-500 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white'"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-              </svg>
-              Script View
-            </button>
-            <button
-              @click="viewMode = 'script'"
-              class="px-4 py-2 text-sm transition-colors flex items-center gap-2"
-              :class="viewMode === 'script'
-                ? 'bg-emerald-500 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white'"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-              </svg>
-              Seed View
-            </button>
+          <!-- Script View title badge -->
+          <div class="px-4 py-2 text-sm bg-emerald-500 text-white rounded-lg flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+            Course Preview
           </div>
 
           <!-- Collapse/Expand All (only in seed mode) -->
@@ -126,15 +130,27 @@
               >
                 Expand All
               </button>
+              <button
+                @click="exportLearnerScript"
+                :disabled="!learningJourneyData"
+                class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
+                :class="{ 'opacity-50 cursor-not-allowed': !learningJourneyData }"
+                title="Export learner script as markdown"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Export
+              </button>
             </div>
 
             <!-- Pagination Controls (only show when data is loaded) -->
             <div v-if="totalJourneyRounds > 0" class="flex items-center gap-2">
               <button
                 @click="prevPage"
-                :disabled="journeyPage === 1"
+                :disabled="journeyOffset === 0"
                 class="px-2 py-1 text-sm rounded transition-colors"
-                :class="journeyPage === 1
+                :class="journeyOffset === 0
                   ? 'text-slate-500 cursor-not-allowed'
                   : 'text-slate-300 hover:text-white hover:bg-slate-600'"
               >
@@ -144,14 +160,13 @@
               </button>
               <span class="text-sm text-slate-300">
                 <span class="font-medium text-white">{{ journeyPageStart }}-{{ journeyPageEnd }}</span>
-                <span class="text-slate-500"> of </span>
-                <span class="text-white">{{ totalJourneyRounds }}</span>
+                <span class="text-slate-500"> rounds</span>
               </span>
               <button
                 @click="nextPage"
-                :disabled="journeyPageEnd >= totalJourneyRounds"
+                :disabled="!journeyHasMore"
                 class="px-2 py-1 text-sm rounded transition-colors"
-                :class="journeyPageEnd >= totalJourneyRounds
+                :class="!journeyHasMore
                   ? 'text-slate-500 cursor-not-allowed'
                   : 'text-slate-300 hover:text-white hover:bg-slate-600'"
               >
@@ -178,7 +193,7 @@
     />
 
     <!-- Main Content Area -->
-    <div class="script-content flex-1 overflow-y-auto p-6">
+    <div ref="scriptContentRef" class="script-content flex-1 overflow-y-auto p-6" :class="{ 'pb-24': journeyPlayerActive }">
       <!-- Loading State -->
       <div v-if="isLoading" class="loading-state flex items-center justify-center h-64">
         <div class="text-center">
@@ -287,10 +302,18 @@
         <LearningJourneyView
           v-else-if="learningJourneyData"
           ref="learningJourneyRef"
-          :rounds="paginatedJourneyRounds"
+          :rounds="filteredJourneyRounds"
+          :all-items="learningJourneyData?.allItems || []"
+          :course-code="courseCode"
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
           :hide-controls="true"
+          :flagged-audio-uuids="flaggedAudioUuids"
+          :regenerating-uuids="regeneratingAudioUuids"
+          @playback-state="onJourneyPlaybackState"
+          @item-edit="onJourneyItemEdit"
+          @audio-flag="onJourneyAudioFlag"
+          @audio-regen="onJourneyAudioRegen"
         />
       </template>
 
@@ -427,6 +450,132 @@
       </div>
     </Transition>
 
+    <!-- Journey Playback Bar (4-Phase) — fixed bottom of viewport in journey mode -->
+    <div v-if="journeyPlayerActive" class="journey-playback-bar fixed bottom-0 left-0 right-0 z-40 bg-slate-800 border-t border-slate-700 px-6 py-3">
+      <div class="flex items-center gap-4">
+        <template v-if="journeyPlayback?.currentItem">
+          <!-- Position Info -->
+          <div v-if="journeyPlayingRoundInfo" class="position-info text-xs text-slate-400 font-mono min-w-24">
+            R{{ journeyPlayingRoundInfo.roundNumber }}, {{ journeyPlayingRoundInfo.itemIndex }}/{{ journeyPlayingRoundInfo.itemCount }}
+          </div>
+
+          <!-- Type Badge -->
+          <div
+            class="type-badge px-2 py-0.5 rounded text-xs font-medium uppercase"
+            :class="{
+              'bg-purple-500 bg-opacity-30 text-purple-300': journeyPlayback.currentItem.type === 'intro',
+              'bg-emerald-500 bg-opacity-30 text-emerald-300': journeyPlayback.currentItem.type === 'debut',
+              'bg-blue-500 bg-opacity-30 text-blue-300': journeyPlayback.currentItem.type === 'build',
+              'bg-amber-500 bg-opacity-30 text-amber-300': journeyPlayback.currentItem.type === 'review',
+              'bg-cyan-500 bg-opacity-30 text-cyan-300': journeyPlayback.currentItem.type === 'consolidate',
+            }"
+          >
+            {{ journeyPlayback.currentItem.type }}
+          </div>
+
+          <!-- Current Item Text -->
+          <div class="item-text flex-1 min-w-0">
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-slate-400 truncate">{{ journeyPlayback.currentItem.known_text || '' }}</span>
+              <span class="text-slate-600 flex-shrink-0">&rarr;</span>
+              <span class="text-white truncate">{{ journeyPlayback.currentItem.target_text || '' }}</span>
+            </div>
+          </div>
+
+          <!-- 4-Phase Indicator -->
+          <div class="phase-indicator flex gap-1 items-center">
+            <div
+              v-for="phase in ['prompt', 'pause', 'voice1', 'voice2']"
+              :key="phase"
+              class="phase-segment px-2 py-0.5 rounded text-xs font-mono transition-colors"
+              :class="journeyPlayback?.currentPhase === phase
+                ? 'bg-emerald-500 text-white'
+                : 'bg-slate-700 text-slate-500'"
+            >
+              {{ journeyPhaseLabel(phase) }}
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar w-24 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+            <div
+              class="h-full bg-emerald-500 rounded-full transition-all duration-100"
+              :style="{ width: (journeyPlayback?.progress || 0) + '%' }"
+            ></div>
+          </div>
+
+          <!-- Controls -->
+          <div class="controls flex items-center gap-1">
+            <!-- Previous -->
+            <button
+              @click="journeyPlayerPrevious"
+              class="p-2 text-slate-400 hover:text-white transition-colors"
+              title="Previous"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+              </svg>
+            </button>
+
+            <!-- Play/Pause -->
+            <button
+              @click="journeyPlayback?.isPlaying ? journeyPlayerPause() : journeyPlayerPlay()"
+              class="p-2 text-white hover:text-emerald-400 transition-colors"
+              :title="journeyPlayback?.isPlaying ? 'Pause' : 'Play'"
+            >
+              <svg v-if="journeyPlayback?.isPlaying" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+              <svg v-else class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+
+            <!-- Next -->
+            <button
+              @click="journeyPlayerSkip"
+              class="p-2 text-slate-400 hover:text-white transition-colors"
+              title="Next"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+              </svg>
+            </button>
+
+            <!-- Stop -->
+            <button
+              @click="journeyPlayerStop"
+              class="p-2 text-slate-400 hover:text-red-400 transition-colors"
+              title="Stop"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 6h12v12H6z"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Item Counter -->
+          <div class="text-xs text-slate-500 font-mono">
+            {{ (journeyPlayback?.currentIndex || 0) + 1 }}/{{ journeyPlayback?.totalItems || 0 }}
+          </div>
+        </template>
+
+        <!-- Idle state — nothing playing yet -->
+        <template v-else>
+          <div class="text-sm text-slate-500 flex-1">Click play on any item or round to start preview</div>
+          <div class="phase-indicator flex gap-1 items-center">
+            <div
+              v-for="phase in ['prompt', 'pause', 'voice1', 'voice2']"
+              :key="phase"
+              class="phase-segment px-2 py-0.5 rounded text-xs font-mono bg-slate-700 text-slate-500"
+            >
+              {{ journeyPhaseLabel(phase) }}
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+
     <!-- Flag Modal -->
     <FlagModal
       :visible="flagModalVisible"
@@ -439,6 +588,7 @@
     <PhraseEditModal
       :visible="phraseEditModalVisible"
       :phrase="phraseToEdit"
+      :mode="phraseEditMode"
       @close="closePhraseEditModal"
       @save="savePhraseEdit"
     />
@@ -538,11 +688,33 @@
         </div>
       </Transition>
     </Teleport>
+
+    <!-- Scroll buttons (fixed bottom-right) -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
+      <button
+        @click="scrollUp"
+        class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white shadow-lg flex items-center justify-center transition-colors"
+        title="Scroll up"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+        </svg>
+      </button>
+      <button
+        @click="scrollDown"
+        class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white shadow-lg flex items-center justify-center transition-colors"
+        title="Scroll down"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import FilterBar from './components/FilterBar.vue';
 import SeedRow from './components/SeedRow.vue';
@@ -566,6 +738,11 @@ import type {
 // Route
 const route = useRoute();
 const courseCode = computed(() => route.params.courseCode as string || 'spa_for_eng');
+
+// Scroll refs
+const scriptContentRef = ref<HTMLElement | null>(null);
+const scrollUp = () => scriptContentRef.value?.scrollBy({ top: -400, behavior: 'smooth' });
+const scrollDown = () => scriptContentRef.value?.scrollBy({ top: 400, behavior: 'smooth' });
 
 // State
 const isLoading = ref(false);
@@ -605,13 +782,14 @@ const phraseToEdit = ref<{
   target1_audio_uuid?: string;
   target2_audio_uuid?: string;
 } | null>(null);
+const phraseEditMode = ref<'phrase' | 'lego'>('phrase');
 
 
 // Shortcuts Help
 const showShortcutsHelp = ref(false);
 
 // Learning Journey View Mode
-const viewMode = ref<'script' | 'journey'>('script');
+const viewMode = ref<'script' | 'journey'>('journey');
 const learningJourneyData = ref<{
   rounds: any[];
   allItems: any[];
@@ -620,9 +798,58 @@ const learningJourneyData = ref<{
 const isLoadingJourney = ref(false);
 const journeyError = ref<string | null>(null);
 
-// Pagination for journey view (50 rounds per page)
-const journeyPage = ref(1);
+// Server-side pagination for journey view (50 LEGOs per page)
 const journeyPageSize = 50;
+const journeyOffset = ref(0);
+const journeyHasMore = ref(true);
+
+// Journey search (server-side across all content)
+const journeySearch = ref('');
+const journeySearchResults = ref<any[] | null>(null);
+const journeySearching = ref(false);
+let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
+
+// Watch search input and debounce server-side search
+watch(journeySearch, (q) => {
+  if (searchDebounceTimer) clearTimeout(searchDebounceTimer);
+  const trimmed = q.trim();
+  if (!trimmed) {
+    journeySearchResults.value = null;
+    journeySearching.value = false;
+    return;
+  }
+  journeySearching.value = true;
+  searchDebounceTimer = setTimeout(() => searchJourney(trimmed), 400);
+});
+
+async function searchJourney(query: string) {
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(
+      `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey/search?q=${encodeURIComponent(query)}`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    );
+    if (!response.ok) throw new Error('Search failed');
+    const data = await response.json();
+    // Only update if search query hasn't changed during fetch
+    if (journeySearch.value.trim() === query) {
+      journeySearchResults.value = data.rounds || [];
+    }
+  } catch (err) {
+    console.error('Journey search error:', err);
+    journeySearchResults.value = [];
+  } finally {
+    journeySearching.value = false;
+  }
+}
+
+// Use search results when searching, otherwise current page rounds
+const filteredJourneyRounds = computed(() => {
+  if (journeySearch.value.trim() && journeySearchResults.value !== null) {
+    return journeySearchResults.value;
+  }
+  return learningJourneyData.value?.rounds || [];
+});
 
 // Batch Selection State
 const selectionMode = ref(false);
@@ -705,27 +932,78 @@ const handleBatchDelete = async () => {
 const selectedCount = computed(() => selectedPhraseIds.value.size);
 const learningJourneyRef = ref<any>(null);
 
-// Computed for pagination
-const totalJourneyRounds = computed(() => learningJourneyData.value?.rounds?.length || 0);
-const journeyPageStart = computed(() => (journeyPage.value - 1) * journeyPageSize + 1);
-const journeyPageEnd = computed(() => Math.min(journeyPage.value * journeyPageSize, totalJourneyRounds.value));
-const paginatedJourneyRounds = computed(() => {
-  if (!learningJourneyData.value?.rounds) return [];
-  const start = (journeyPage.value - 1) * journeyPageSize;
-  const end = start + journeyPageSize;
-  return learningJourneyData.value.rounds.slice(start, end);
+// Journey playback state (emitted by LearningJourneyView)
+const journeyPlayback = ref<{
+  isPlaying: boolean
+  isPaused: boolean
+  currentItem: any
+  currentPhase: string | null
+  currentIndex: number
+  progress: number
+  totalItems: number
+} | null>(null);
+
+const onJourneyPlaybackState = (state: any) => {
+  journeyPlayback.value = state;
+};
+
+const journeyPlayerActive = computed(() => {
+  return viewMode.value === 'journey';
 });
 
-// Pagination methods
+const journeyPhaseLabel = (phase: string | null): string => {
+  switch (phase) {
+    case 'prompt': return 'PROMPT';
+    case 'pause': return 'PAUSE';
+    case 'voice1': return 'VOICE 1';
+    case 'voice2': return 'VOICE 2';
+    default: return '';
+  }
+};
+
+// Find which round the current playing item belongs to
+const journeyPlayingRoundInfo = computed(() => {
+  if (!journeyPlayback.value || !learningJourneyData.value?.allItems) return null;
+  const idx = journeyPlayback.value.currentIndex;
+  const item = learningJourneyData.value.allItems[idx];
+  if (!item) return null;
+
+  // Find the round
+  const round = learningJourneyData.value.rounds.find((r: any) => r.roundNumber === item.roundNumber);
+  if (!round) return null;
+  const localIdx = round.items.indexOf(item);
+  return {
+    roundNumber: item.roundNumber,
+    itemIndex: localIdx + 1,
+    itemCount: round.items.length,
+  };
+});
+
+// Journey player controls (proxied through the ref)
+const journeyPlayerPrevious = () => learningJourneyRef.value?.player?.previous();
+const journeyPlayerPlay = () => learningJourneyRef.value?.player?.play();
+const journeyPlayerPause = () => learningJourneyRef.value?.player?.pause();
+const journeyPlayerSkip = () => learningJourneyRef.value?.player?.skip();
+const journeyPlayerStop = () => learningJourneyRef.value?.player?.stop();
+
+// Computed for pagination (server-side)
+const totalJourneyRounds = computed(() => learningJourneyData.value?.rounds?.length || 0);
+const journeyPageStart = computed(() => journeyOffset.value + 1);
+const journeyPageEnd = computed(() => journeyOffset.value + totalJourneyRounds.value);
+
+// Pagination methods (server-side — reload from API)
 const prevPage = () => {
-  if (journeyPage.value > 1) {
-    journeyPage.value--;
+  const newOffset = Math.max(0, journeyOffset.value - journeyPageSize);
+  if (newOffset !== journeyOffset.value) {
+    journeyOffset.value = newOffset;
+    loadLearningJourney();
   }
 };
 
 const nextPage = () => {
-  if (journeyPageEnd.value < totalJourneyRounds.value) {
-    journeyPage.value++;
+  if (journeyHasMore.value) {
+    journeyOffset.value += journeyPageSize;
+    loadLearningJourney();
   }
 };
 
@@ -738,6 +1016,56 @@ const expandAllJourney = () => {
   learningJourneyRef.value?.expandAll();
 };
 
+// Export learner script as markdown download
+const exportLearnerScript = () => {
+  if (!learningJourneyData.value?.rounds) return;
+
+  const rounds = learningJourneyData.value.rounds;
+  const stats = learningJourneyData.value.stats;
+  const lines: string[] = [];
+
+  lines.push(`# ${courseCode.value} — Learner Script`);
+  lines.push('');
+  lines.push(`> ${stats.roundsGenerated} rounds | ${stats.totalItems} items | ${stats.legosLoaded} LEGOs`);
+  lines.push('');
+  lines.push('---');
+  lines.push('');
+
+  for (const round of rounds) {
+    const intro = round.items.find((i: any) => i.type === 'intro');
+    const known = intro?.known_text || '';
+    const target = intro?.target_text || '';
+    const reviews = round.spacedRepReviews || [];
+    const reviewStr = reviews.length > 0 ? `  [reviews: ${reviews.map((r: number) => 'R' + r).join(', ')}]` : '';
+
+    lines.push(`## R${round.roundNumber}  ${round.legoId}  "${known}" = **${target}**${reviewStr}`);
+    lines.push('');
+
+    for (const item of round.items) {
+      let label = item.type.toUpperCase();
+      if (item.type === 'intro') label = 'INTRO';
+      else if (item.type === 'debut') label = 'LEGO';
+      else if (item.type === 'build') label = `BUILD-${item.phrasePosition || '?'}`;
+      else if (item.type === 'use') label = `USE-${item.phrasePosition || '?'}`;
+      else if (item.type === 'review') label = `REVIEW R${item.reviewOf || '?'}`;
+      else if (item.type === 'consolidate') label = `CONSOLIDATE-${item.consolidateIndex || '?'}`;
+
+      const pad = Math.max(1, 18 - label.length);
+      lines.push(`  ${label}${' '.repeat(pad)}${item.known_text || ''}  →  ${item.target_text || ''}`);
+    }
+
+    lines.push('');
+  }
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${courseCode.value}-learner-script.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
 // API Base URL - use localStorage (set by EnvironmentSwitcher), then env, then localhost orchestrator
 const getApiBaseUrl = (): string => {
   const storedUrl = localStorage.getItem('api_base_url');
@@ -748,6 +1076,34 @@ const getApiBaseUrl = (): string => {
 // Computed
 const totalSeeds = computed(() => totalSeedsInCourse.value || seeds.value.length);
 const loadedSeeds = computed(() => seeds.value.length);
+
+// Seed View pagination (server-side via filter range)
+const seedPageSize = 50;
+const seedPageStart = computed(() => {
+  const n = parseInt(filterSeedStart.value.replace(/\D/g, ''));
+  return isNaN(n) ? 1 : n;
+});
+const seedPageEnd = computed(() => {
+  const n = parseInt(filterSeedEnd.value.replace(/\D/g, ''));
+  return isNaN(n) ? seedPageSize : Math.min(n, totalSeeds.value);
+});
+const formatSeedNum = (n: number) => 'S' + String(n).padStart(4, '0');
+const prevSeedPage = () => {
+  const newStart = Math.max(1, seedPageStart.value - seedPageSize);
+  const newEnd = newStart + seedPageSize - 1;
+  filterSeedStart.value = formatSeedNum(newStart);
+  filterSeedEnd.value = formatSeedNum(newEnd);
+  loadCourseData(filterSeedStart.value, filterSeedEnd.value);
+};
+const nextSeedPage = () => {
+  const newStart = seedPageEnd.value + 1;
+  const newEnd = Math.min(newStart + seedPageSize - 1, totalSeeds.value);
+  if (newStart <= totalSeeds.value) {
+    filterSeedStart.value = formatSeedNum(newStart);
+    filterSeedEnd.value = formatSeedNum(newEnd);
+    loadCourseData(filterSeedStart.value, filterSeedEnd.value);
+  }
+};
 
 const totalPhrases = computed(() => {
   return seeds.value.reduce((total, seed) => {
@@ -943,16 +1299,14 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   }
 };
 
-// Load learning journey data (load all LEGOs, pagination done client-side)
+// Load learning journey data (server-side pagination, 50 LEGOs per page)
 const loadLearningJourney = async () => {
   isLoadingJourney.value = true;
   journeyError.value = null;
-  journeyPage.value = 1; // Reset to first page
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-    // Load up to 5000 LEGOs to support full course viewing
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=5000`;
+    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}`;
 
     const response = await fetch(url, {
       headers: {
@@ -968,6 +1322,12 @@ const loadLearningJourney = async () => {
       allItems: data.allItems || [],
       stats: data.stats || null,
     };
+
+    // Detect if there are more pages
+    journeyHasMore.value = (data.pagination?.returned || 0) >= journeyPageSize;
+
+    // Load existing audio flags to show flagged state in journey view
+    loadAudioFlags();
   } catch (err) {
     journeyError.value = err instanceof Error ? err.message : 'Unknown error occurred';
     console.error('Error loading learning journey:', err);
@@ -980,9 +1340,12 @@ const loadLearningJourney = async () => {
 const toggleViewMode = () => {
   if (viewMode.value === 'script') {
     viewMode.value = 'journey';
-    // Load learning journey data if not already loaded
     if (!learningJourneyData.value) {
+      journeyOffset.value = 0;
       loadLearningJourney();
+    } else {
+      // Refresh flags in case they changed while in script view
+      loadAudioFlags();
     }
   } else {
     viewMode.value = 'script';
@@ -1381,6 +1744,7 @@ const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: s
 
 // Phrase Edit Modal Methods
 const openPhraseEditModal = (phrase: PhraseRowData) => {
+  phraseEditMode.value = 'phrase';
   phraseToEdit.value = {
     id: phrase.phrase_id,
     known_text: phrase.known_text,
@@ -1439,8 +1803,12 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
   try {
     const apiBaseUrl = getApiBaseUrl();
 
-    // Save text changes
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/phrase/${phraseToEdit.value.id}`, {
+    // Save text changes — route to correct endpoint based on mode
+    const endpoint = phraseEditMode.value === 'lego'
+      ? `${apiBaseUrl}/api/production/${courseCode.value}/lego/${phraseToEdit.value.id}`
+      : `${apiBaseUrl}/api/production/${courseCode.value}/phrase/${phraseToEdit.value.id}`;
+
+    const response = await fetch(endpoint, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -1452,7 +1820,7 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
       })
     });
 
-    if (!response.ok) throw new Error('Failed to save phrase');
+    if (!response.ok) throw new Error(`Failed to save ${phraseEditMode.value}`);
 
     // Flag individual audio files for regeneration
     const flagPromises: Promise<Response>[] = [];
@@ -1521,10 +1889,123 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     });
 
     closePhraseEditModal();
-    // TODO: Show success toast
+
+    // Reload journey data if we edited from journey view
+    if (phraseEditMode.value === 'lego' || viewMode.value === 'journey') {
+      reloadLearningJourney();
+    }
   } catch (err) {
-    console.error('Error saving phrase:', err);
-    // TODO: Show error toast
+    console.error(`Error saving ${phraseEditMode.value}:`, err);
+  }
+};
+
+// Journey view: item edit handler
+const onJourneyItemEdit = (item: any) => {
+  const isLego = item.type === 'intro' || item.type === 'debut';
+  phraseEditMode.value = isLego ? 'lego' : 'phrase';
+  phraseToEdit.value = {
+    id: isLego ? item.legoId : item.phrase_id,
+    known_text: item.known_text,
+    target_text: item.target_text,
+    known_audio_uuid: item.known_audio_uuid,
+    target1_audio_uuid: item.target1_audio_uuid,
+    target2_audio_uuid: item.target2_audio_uuid,
+  };
+  phraseEditModalVisible.value = true;
+};
+
+// Flagged audio UUID tracking for journey view
+const flaggedAudioUuids = ref<Set<string>>(new Set());
+
+// Load existing audio flags from server
+const loadAudioFlags = async () => {
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' },
+    });
+    if (!response.ok) return;
+    const data = await response.json();
+    const uuids = (data.flags || [])
+      .filter((f: any) => f.status === 'flagged')
+      .map((f: any) => f.audio_uuid);
+    flaggedAudioUuids.value = new Set(uuids);
+  } catch (err) {
+    console.error('Error loading audio flags:', err);
+  }
+};
+const regeneratingAudioUuids = ref<Set<string>>(new Set());
+
+// Journey view: toggle audio flag handler (flag if not flagged, unflag if flagged)
+const onJourneyAudioFlag = async (item: any, track: 'target1' | 'target2') => {
+  const uuid = track === 'target1' ? item.target1_audio_uuid : item.target2_audio_uuid;
+  if (!uuid) return;
+
+  const isCurrentlyFlagged = flaggedAudioUuids.value.has(uuid);
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+
+    if (isCurrentlyFlagged) {
+      // Unflag: DELETE the flag
+      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${uuid}`, {
+        method: 'DELETE',
+        headers: { 'ngrok-skip-browser-warning': 'true' },
+      });
+      flaggedAudioUuids.value = new Set([...flaggedAudioUuids.value].filter(id => id !== uuid));
+      console.log(`Unflagged ${track} audio ${uuid}`);
+    } else {
+      // Flag: POST new flag
+      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({
+          audio_uuid: uuid,
+          status: 'flagged',
+          reason: `Quick-flagged ${track} from journey view`,
+          flagged_by: 'dashboard_user'
+        })
+      });
+      flaggedAudioUuids.value = new Set([...flaggedAudioUuids.value, uuid]);
+      console.log(`Flagged ${track} audio ${uuid}`);
+    }
+  } catch (err) {
+    console.error('Error toggling audio flag:', err);
+  }
+};
+
+// Journey view: inline regenerate single audio
+const onJourneyAudioRegen = async (item: any, track: 'target1' | 'target2', audioUuid: string) => {
+  if (!audioUuid || regeneratingAudioUuids.value.has(audioUuid)) return;
+
+  // Mark as regenerating
+  regeneratingAudioUuids.value = new Set([...regeneratingAudioUuids.value, audioUuid]);
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-single/${courseCode.value}/${audioUuid}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+    });
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error || 'Regeneration failed');
+    }
+
+    const result = await response.json();
+    console.log(`Regenerated ${track} audio ${audioUuid} → ${result.newS3Key} (${result.durationMs}ms, attempt #${result.regenCount})`);
+
+    // Invalidate the audio URL cache so the player fetches the new S3 key
+    // The signed URL endpoint will now resolve the updated s3_key from course_audio
+    // Force a cache-bust by updating the item's duration (triggers reactivity)
+    const durationKey = track === 'target1' ? 'target1_duration_ms' : 'target2_duration_ms';
+    item[durationKey] = result.durationMs;
+
+  } catch (err) {
+    console.error('Error regenerating audio:', err);
+  } finally {
+    regeneratingAudioUuids.value = new Set([...regeneratingAudioUuids.value].filter(id => id !== audioUuid));
   }
 };
 
@@ -1586,6 +2067,16 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 // Lifecycle
 onMounted(() => {
+  // Check for view query param
+  if (route.query.view === 'seed' || route.query.view === 'seed-view') {
+    viewMode.value = 'script';
+  } else if (route.query.view === 'journey' || route.query.view === 'script-view') {
+    viewMode.value = 'journey';
+  }
+  // Default is 'journey' — always load journey data when in journey mode
+  if (viewMode.value === 'journey') {
+    loadLearningJourney();
+  }
   // Check for filter query param (from QA link)
   if (route.query.filter === 'flagged') {
     filterFlaggedOnly.value = true;

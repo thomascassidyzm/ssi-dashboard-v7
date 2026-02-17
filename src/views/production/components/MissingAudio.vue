@@ -99,6 +99,23 @@
               {{ totalMissing }}
             </span>
           </div>
+
+          <!-- Orphan LEGOs Warning -->
+          <div v-if="orphanLegos.length > 0" class="flex items-center justify-between bg-amber-900/20 rounded-lg px-4 py-3 border border-amber-500/30">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              </svg>
+              <span class="text-sm text-amber-300">{{ orphanLegos.length }} orphan LEGO{{ orphanLegos.length === 1 ? '' : 's' }} missing debut phrases</span>
+            </div>
+            <button
+              @click="fixOrphanLegos"
+              :disabled="fixingOrphans"
+              class="px-3 py-1.5 text-xs font-medium rounded bg-amber-600 text-white hover:bg-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              {{ fixingOrphans ? 'Fixing...' : `Fix ${orphanLegos.length} orphan${orphanLegos.length === 1 ? '' : 's'}` }}
+            </button>
+          </div>
         </div>
 
         <!-- Category Tabs -->
@@ -328,9 +345,9 @@ const loading = ref(false)
 const error = ref(null)
 const data = ref(null)
 
-// Orphan LEGO state - Added 2026-01-20
-// Auto-fixes happen silently, these are just for internal tracking
+// Orphan LEGO state
 const fixingOrphans = ref(false)
+const orphanLegos = ref([])
 
 // Category and role selection
 const selectedCategory = ref('phrase')  // 'phrase', 'seed', 'lego', 'shared'
@@ -364,7 +381,7 @@ const isPlaying = ref({
 
 // Computed properties
 const totalMissing = computed(() => data.value?.totalMissing || 0)
-const releaseTarget = computed(() => data.value?.releaseTarget || 260)
+const releaseTarget = computed(() => data.value?.releaseTarget || 300)
 
 // Phrase missing counts - from phase8 /plan (single source of truth)
 const missingCounts = computed(() => data.value?.missingCounts || {
@@ -469,9 +486,8 @@ function playSample(role) {
   }
 }
 
-// Orphan LEGO functions - Added 2026-01-20
-// Auto-fixes orphan LEGOs by adding debut phrases, then refreshes missing audio data
-async function fetchAndFixOrphanLegos() {
+// Orphan LEGO functions - detect orphans, let user decide when to fix
+async function fetchOrphanLegos() {
   if (!props.courseCode) return
 
   try {
@@ -491,12 +507,7 @@ async function fetchAndFixOrphanLegos() {
     }
 
     const result = await response.json()
-
-    // Auto-fix if orphans found
-    if (result.orphanLegos && result.orphanLegos.length > 0) {
-      console.log(`Auto-fixing ${result.orphanLegos.length} orphan LEGOs...`)
-      await fixOrphanLegos()
-    }
+    orphanLegos.value = result.orphanLegos || []
   } catch (err) {
     console.warn('Error fetching orphan LEGOs:', err)
   }
@@ -529,6 +540,7 @@ async function fixOrphanLegos() {
 
     if (result.success && result.addedCount > 0) {
       console.log(`Added ${result.addedCount} debut phrases for orphan LEGOs`)
+      orphanLegos.value = []
       // Refresh missing audio data to show the new items
       data.value = null
       await fetchMissingAudio()
@@ -545,7 +557,7 @@ async function fixOrphanLegos() {
 watch(expanded, (isExpanded) => {
   if (isExpanded && !data.value) {
     fetchMissingAudio()
-    fetchAndFixOrphanLegos()
+    fetchOrphanLegos()
   }
 })
 
@@ -555,7 +567,7 @@ watch(() => props.refreshTrigger, () => {
     // Clear existing data and refetch with new voice config
     data.value = null
     fetchMissingAudio()
-    fetchAndFixOrphanLegos()
+    fetchOrphanLegos()
   }
 })
 
@@ -563,7 +575,7 @@ watch(() => props.refreshTrigger, () => {
 onMounted(() => {
   if (expanded.value) {
     fetchMissingAudio()
-    fetchAndFixOrphanLegos()
+    fetchOrphanLegos()
   }
 })
 </script>

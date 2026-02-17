@@ -6,7 +6,7 @@ ach,Acoli,,,,
 ada,Adangme,,,,
 ady,Adyghe,,,,
 ae,Avestan,,,,
-af,Afrikaans,af-ZA,af,,af-ZA
+af,Afrikaans,af-ZA,af,afr,af-ZA
 afa,Afro-Asiatic languages,,,,
 afh,Afrihili,,,,
 ain,Ainu,,,,
@@ -15,7 +15,7 @@ akk,Akkadian,,,,
 ale,Aleut,,,,
 alg,Algonquian languages,,,,
 alt,Southern Altai,,,,
-am,Amharic,am-ET,,,
+am,Amharic,am-ET,,amh,
 an,Aragonese,,,,
 ang,English, Old (ca.450-1100),,,,
 anp,Angika,,,,
@@ -26,14 +26,14 @@ arn,Mapudungun,,,,
 arp,Arapaho,,,,
 art,Artificial languages,,,,
 arw,Arawak,,,,
-as,Assamese,,as,,as-IN
+as,Assamese,,as,asm,as-IN
 ast,Asturian,,,,
 ath,Athapascan languages,,,,
 aus,Australian languages,,,,
 av,Avaric,,,,
 awa,Awadhi,,,,
 ay,Aymara,,,,
-az,Azerbaijani,az-AZ,az,,az-AZ
+az,Azerbaijani,az-AZ,az,aze,az-AZ
 ba,Bashkir,,,,
 bad,Banda languages,,,,
 bai,Bamileke languages,,,,
@@ -41,7 +41,7 @@ bal,Baluchi,,,,
 ban,Balinese,,,,
 bas,Basa,,,,
 bat,Baltic languages,,,,
-be,Belarusian,,be,,be-BY
+be,Belarusian,,be,bel,be-BY
 bej,Beja,,,,
 bem,Bemba,,,,
 ber,Berber languages,,,,
@@ -53,12 +53,12 @@ bik,Bikol,,,,
 bin,Bini,,,,
 bla,Siksika,,,,
 bm,Bambara,,,,
-bn,Bengali,bn-IN,bn,,bn-IN
+bn,Bengali,bn-IN,bn,ben,bn-IN
 bnt,Bantu (Other),,,,
 bo,Tibetan,,,,
 br,Breton,,,,
 bra,Braj,,,,
-bs,Bosnian,bs-BA,bs,,bs-BA
+bs,Bosnian,bs-BA,bs,bos,bs-BA
 btk,Batak languages,,,,
 bua,Buriat,,,,
 bug,Buginese,,,,
@@ -68,7 +68,7 @@ cad,Caddo,,,,
 cai,Central American Indian languages,,,,
 car,Galibi Carib,,,,
 ce,Chechen,,,,
-ceb,Cebuano,,ceb,,ceb-PH
+ceb,Cebuano,,ceb,ceb,ceb-PH
 ch,Chamorro,,,,
 chb,Chibcha,,,,
 chg,Chagatai,,,,
@@ -126,14 +126,14 @@ enm,English, Middle (1100-1500),,,,
 eo,Esperanto,,,,
 es,Spanish,es-ES,es,spa,es-ES
 et,Estonian,et-EE,et,est,et-EE
-eu,Basque,eu-ES,,,
+eu,Basque,eu-ES,,eus,
 ewo,Ewondo,,,,
-fa,Persian,fa-IR,fa,,fa-IR
+fa,Persian,fa-IR,fa,fas,fa-IR
 fan,Fang,,,,
 fat,Fanti,,,,
 ff,Fulah,,,,
 fi,Finnish,fi-FI,fi,fin,fi-FI
-fil,Filipino,fil-PH,fil,,fil-PH
+fil,Filipino,fil-PH,fil,fil,fil-PH
 fiu,Finno-Ugrian languages,,,,
 fj,Fijian,,,,
 fo,Faroese,,,,
@@ -148,11 +148,11 @@ fy,Western Frisian,,,,
 ga,Irish,ga-IE,ga,gle,ga-IE
 gay,Gayo,,,,
 gba,Gbaya,,,,
-gd,Scottish Gaelic,gd-GB,,,
+gd,Scottish Gaelic,gd-GB,,gla,
 gem,Germanic languages,,,,
 gez,Geez,,,,
 gil,Gilbertese,,,,
-gl,Galician,gl-ES,gl,,gl-ES
+gl,Galician,gl-ES,gl,glg,gl-ES
 gmh,German, Middle High (ca.1050-1500),,,,
 gn,Guarani,,,,
 goh,German, Old High (ca.750-1050),,,,
@@ -162,10 +162,10 @@ got,Gothic,,,,
 grb,Grebo,,,,
 grc,Greek, Ancient (to 1453),,,,
 gsw,Swiss German,,,,
-gu,Gujarati,gu-IN,gu,,gu-IN
-gv,Manx,,,,
+gu,Gujarati,gu-IN,gu,guj,gu-IN
+gv,Manx,,,glv,
 gwi,Gwich'in,,,,
-ha,Hausa,,ha,,ha-NG
+ha,Hausa,,ha,hau,ha-NG
 hai,Haida,,,,
 haw,Hawaiian,,,,
 he,Hebrew,he-IL,he,heb,he-IL
@@ -180,7 +180,7 @@ hsb,Upper Sorbian,,,,
 ht,Haitian Creole,,,,
 hu,Hungarian,hu-HU,hu,hun,hu-HU
 hup,Hupa,,,,
-hy,Armenian,hy-AM,hy,,hy-AM
+hy,Armenian,hy-AM,hy,hye,hy-AM
 hz,Herero,,,,
 ia,Interlingua (International Auxiliary Language Association),,,,
 iba,Iban,,,,
@@ -197,15 +197,15 @@ inh,Ingush,,,,
 io,Ido,,,,
 ira,Iranian languages,,,,
 iro,Iroquoian languages,,,,
-is,Icelandic,is-IS,is,,is-IS
+is,Icelandic,is-IS,is,isl,is-IS
 it,Italian,it-IT,it,ita,it-IT
 iu,Inuktitut,,,,
 ja,Japanese,ja-JP,ja,jpn,ja-JP
 jbo,Lojban,,,,
 jpr,Judeo-Persian,,,,
 jrb,Judeo-Arabic,,,,
-jv,Javanese,,jv,,jv-ID
-ka,Georgian,ka-GE,ka,,ka-GE
+jv,Javanese,,jv,jav,jv-ID
+ka,Georgian,ka-GE,ka,kat,ka-GE
 kaa,Kara-Kalpak,,,,
 kab,Kabyle,,,,
 kac,Kachin,,,,
@@ -219,11 +219,11 @@ khi,Khoisan languages,,,,
 kho,Khotanese,,,,
 ki,Kikuyu,,,,
 kj,Kuanyama,,,,
-kk,Kazakh,kk-KZ,kk,,kk-KZ
+kk,Kazakh,kk-KZ,kk,kaz,kk-KZ
 kl,Kalaallisut,,,,
-km,Central Khmer,km-KH,,,
+km,Central Khmer,km-KH,,khm,
 kmb,Kimbundu,,,,
-kn,Kannada,kn-IN,kn,,kn-IN
+kn,Kannada,kn-IN,kn,kan,kn-IN
 ko,Korean,ko-KR,ko,kor,ko-KR
 kok,Konkani,,,,
 kos,Kosraean,,,,
@@ -239,17 +239,17 @@ kum,Kumyk,,,,
 kut,Kutenai,,,,
 kv,Komi,,,,
 kw,Cornish,,,,
-ky,Kirghiz,,ky,,ky-KG
+ky,Kirghiz,,ky,kir,ky-KG
 la,Latin,,,,
 lad,Ladino,,,,
 lah,Lahnda,,,,
 lam,Lamba,,,,
-lb,Luxembourgish,lb-LU,lb,,lb-LU
+lb,Luxembourgish,lb-LU,lb,ltz,lb-LU
 lez,Lezghian,,,,
 lg,Ganda,,,,
 li,Limburgan,,,,
-ln,Lingala,,ln,,ln-CD
-lo,Lao,lo-LA,,,
+ln,Lingala,,ln,lin,ln-CD
+lo,Lao,lo-LA,,lao,
 lol,Mongo,,,,
 loz,Lozi,,,,
 lt,Lithuanian,lt-LT,lt,lit,lt-LT
@@ -279,22 +279,22 @@ min,Minangkabau,,,,
 mis,Uncoded languages,,,,
 mk,Macedonian,mk-MK,mk,mkd,mk-MK
 mkh,Mon-Khmer languages,,,,
-ml,Malayalam,ml-IN,ml,,ml-IN
+ml,Malayalam,ml-IN,ml,mal,ml-IN
 mn,Mongolian,,,,
 mnc,Manchu,,,,
 mni,Manipuri,,,,
 mno,Manobo languages,,,,
 moh,Mohawk,,,,
 mos,Mossi,,,,
-mr,Marathi,mr-IN,mr,,mr-IN
+mr,Marathi,mr-IN,mr,mar,mr-IN
 ms,Malay,ms-MY,ms,msa,ms-MY
-mt,Maltese,mt-MT,,,
+mt,Maltese,mt-MT,,mlt,
 mul,Multiple languages,,,,
 mun,Munda languages,,,,
 mus,Creek,,,,
 mwl,Mirandese,,,,
 mwr,Marwari,,,,
-my,Burmese,my-MM,,,
+my,Burmese,my-MM,,mya,
 myn,Mayan languages,,,,
 myv,Erzya,,,,
 na,Nauru,,,,
@@ -304,14 +304,14 @@ nap,Neapolitan,,,,
 nb,Norwegian Bokmål,nb-NO,nb,nor,nb-NO
 nd,Ndebele, North,,,,
 nds,Low German,,,,
-ne,Nepali,ne-NP,ne,,ne-NP
+ne,Nepali,ne-NP,ne,nep,ne-NP
 new,Nepal Bhasa,,,,
 ng,Ndonga,,,,
 nia,Nias,,,,
 nic,Niger-Kordofanian languages,,,,
 niu,Niuean,,,,
 nl,Dutch,nl-NL,nl,nld,nl-NL
-nn,Norwegian Nynorsk,nn-NO,,,
+nn,Norwegian Nynorsk,nn-NO,,nno,
 no,Norwegian,nb-NO,nb,nor,nb-NO
 nog,Nogai,,,,
 non,Norse, Old,,,,
@@ -321,7 +321,7 @@ nso,Pedi,,,,
 nub,Nubian languages,,,,
 nv,Navajo,,,,
 nwc,Classical Newari,,,,
-ny,Chichewa,,ny,,ny-MW
+ny,Chichewa,,ny,nya,ny-MW
 nym,Nyamwezi,,,,
 nyn,Nyankole,,,,
 nyo,Nyoro,,,,
@@ -334,7 +334,7 @@ os,Ossetian,,,,
 osa,Osage,,,,
 ota,Turkish, Ottoman (1500-1928),,,,
 oto,Otomian languages,,,,
-pa,Punjabi,pa-IN,pa,,pa-IN
+pa,Punjabi,pa-IN,pa,pan,pa-IN
 paa,Papuan languages,,,,
 pag,Pangasinan,,,,
 pal,Pahlavi,,,,
@@ -349,7 +349,7 @@ pl,Polish,pl-PL,pl,pol,pl-PL
 pon,Pohnpeian,,,,
 pra,Prakrit languages,,,,
 pro,Provençal, Old (to 1500),,,,
-ps,Pushto,ps-AF,ps,,ps-AF
+ps,Pushto,ps-AF,ps,pus,ps-AF
 pt,Portuguese,pt-PT,pt,por,pt-PT
 qaa-qtz,Reserved for local use,,,,
 qu,Quechua,,,,
@@ -375,7 +375,7 @@ sat,Santali,,,,
 sc,Sardinian,,,,
 scn,Sicilian,,,,
 sco,Scots,,,,
-sd,Sindhi,,sd,,sd-PK
+sd,Sindhi,,sd,snd,sd-PK
 se,Northern Sami,,,,
 sel,Selkup,,,,
 sem,Semitic languages,,,,
@@ -383,7 +383,7 @@ sg,Sango,,,,
 sga,Irish, Old (to 900),,,,
 sgn,Sign Languages,,,,
 shn,Shan,,,,
-si,Sinhala,si-LK,,,
+si,Sinhala,si-LK,,sin,
 sid,Sidamo,,,,
 sio,Siouan languages,,,,
 sit,Sino-Tibetan languages,,,,
@@ -398,11 +398,11 @@ smn,Inari Sami,,,,
 sms,Skolt Sami,,,,
 sn,Shona,,,,
 snk,Soninke,,,,
-so,Somali,,so,,so-SO
+so,Somali,,so,som,so-SO
 sog,Sogdian,,,,
 son,Songhai languages,,,,
-sq,Albanian,sq-AL,,,
-sr,Serbian,sr-RS,sr,,sr-RS
+sq,Albanian,sq-AL,,sqi,
+sr,Serbian,sr-RS,sr,srp,sr-RS
 srn,Sranan Tongo,,,,
 srr,Serer,,,,
 ss,Swati,,,,
@@ -413,12 +413,12 @@ suk,Sukuma,,,,
 sus,Susu,,,,
 sux,Sumerian,,,,
 sv,Swedish,sv-SE,sv,swe,sv-SE
-sw,Swahili,sw-KE,sw,,sw-KE
+sw,Swahili,sw-KE,sw,swa,sw-KE
 syc,Classical Syriac,,,,
 syr,Syriac,,,,
-ta,Tamil,ta-IN,ta,,ta-IN
+ta,Tamil,ta-IN,ta,tam,ta-IN
 tai,Tai languages,,,,
-te,Telugu,te-IN,te,,te-IN
+te,Telugu,te-IN,te,tel,te-IN
 tem,Timne,,,,
 ter,Tereno,,,,
 tet,Tetum,,,,
@@ -454,8 +454,8 @@ uga,Ugaritic,,,,
 uk,Ukrainian,uk-UA,uk,ukr,uk-UA
 umb,Umbundu,,,,
 und,Undetermined,,,,
-ur,Urdu,ur-PK,ur,,ur-PK
-uz,Uzbek,uz-UZ,,,
+ur,Urdu,ur-PK,ur,urd,ur-PK
+uz,Uzbek,uz-UZ,,uzb,
 vai,Vai,,,,
 ve,Venda,,,,
 vi,Vietnamese,vi-VN,vi,vie,vi-VN
@@ -469,7 +469,7 @@ was,Washo,,,,
 wen,Sorbian languages,,,,
 wo,Wolof,,,,
 xal,Kalmyk,,,,
-xh,Xhosa,xh-ZA,,,
+xh,Xhosa,xh-ZA,,xho,
 yao,Yao,,,,
 yap,Yapese,,,,
 yi,Yiddish,,,,
@@ -481,6 +481,6 @@ zbl,Blissymbols,,,,
 zen,Zenaga,,,,
 zgh,Standard Moroccan Tamazight,,,,
 znd,Zande languages,,,,
-zu,Zulu,zu-ZA,,,
+zu,Zulu,zu-ZA,,zul,
 zun,Zuni,,,,
 zza,Zaza,,,,

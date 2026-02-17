@@ -119,3 +119,45 @@ public/vfs/courses_backup_*
 # --------------------------
 scripts/bulk-audio/data/
 scripts/bulk-audio/generated/
+
+# --------------------------
+# Scripts directory (workspace, gitignored)
+# --------------------------
+scripts/
+
+# --------------------------
+# Root-level junk (temp scripts, reports, data)
+# --------------------------
+/*.cjs
+!start-automation.cjs
+/*.js
+!vite.config.js
+!tailwind.config.js
+!postcss.config.js
+/*.mjs
+/*.md
+!README.md
+!SYSTEM.md
+!CLAUDE.md
+!ralph-methodology.md
+/*.txt
+/*.csv
+/*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!tsconfig.*.json
+!vercel.json
+!automation.config.json
+/*.db
+seed*.json
+
+# --------------------------
+# Backup files
+# --------------------------
+*.bak
+
+# --------------------------
+# Supabase temp
+# --------------------------
+supabase/.temp/

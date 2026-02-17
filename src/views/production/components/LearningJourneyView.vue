@@ -82,6 +82,24 @@
           @click="toggleRound(round.roundNumber)"
         >
           <div class="flex items-center gap-4">
+            <!-- Play Round Button -->
+            <button
+              v-if="hasPlayableItems(round)"
+              class="play-round-btn w-8 h-8 flex items-center justify-center rounded-full transition-colors"
+              :class="isRoundPlaying(round.roundNumber)
+                ? 'bg-emerald-500 text-white'
+                : 'bg-slate-500 bg-opacity-50 text-slate-300 hover:bg-emerald-500 hover:text-white'"
+              :title="`Play Round ${round.roundNumber}`"
+              @click.stop="playRound(round)"
+            >
+              <svg v-if="isRoundPlaying(round.roundNumber) && player.isPlaying.value" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+              <svg v-else class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+
             <div class="round-number bg-slate-600 text-white px-3 py-1 rounded-full text-sm font-mono">
               R{{ round.roundNumber }}
             </div>
@@ -137,9 +155,33 @@
             <div
               v-for="(item, idx) in round.items"
               :key="`${round.roundNumber}-${idx}`"
-              class="item-row flex items-center gap-3 p-3 rounded-lg hover:bg-slate-700 transition-colors"
-              :class="getItemBgClass(item)"
+              :ref="el => setItemRef(round.roundNumber, idx, el)"
+              class="item-row flex items-center gap-3 p-3 rounded-lg transition-all"
+              :class="[
+                getItemBgClass(item),
+                isItemPlaying(round.roundNumber, idx) ? 'ring-2 ring-emerald-400 bg-emerald-900 bg-opacity-20' : 'hover:bg-slate-700'
+              ]"
             >
+              <!-- Play Item Button -->
+              <button
+                v-if="item.hasAudio"
+                class="play-item-btn w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full transition-colors"
+                :class="isItemPlaying(round.roundNumber, idx)
+                  ? 'bg-emerald-500 text-white'
+                  : 'bg-slate-600 text-slate-400 hover:bg-emerald-500 hover:text-white'"
+                :title="isItemPlaying(round.roundNumber, idx) ? 'Playing...' : 'Play from here'"
+                @click="playFromItem(round, idx)"
+              >
+                <svg v-if="isItemPlaying(round.roundNumber, idx) && player.isPlaying.value" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                </svg>
+                <svg v-else class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+              <!-- No-audio placeholder to keep alignment -->
+              <div v-else class="w-7 h-7 flex-shrink-0"></div>
+
               <!-- Item Type Badge -->
               <div
                 class="type-badge px-2 py-1 rounded text-xs font-medium uppercase min-w-20 text-center"
@@ -166,8 +208,67 @@
                 </div>
               </div>
 
-              <!-- Audio Status -->
-              <div class="audio-status flex gap-2">
+              <!-- Edit & Flag Buttons -->
+              <div class="edit-flags flex items-center gap-1 flex-shrink-0">
+                <!-- Pencil edit button -->
+                <button
+                  class="w-6 h-6 flex items-center justify-center rounded text-slate-500 hover:text-white hover:bg-slate-600 transition-colors"
+                  title="Edit text"
+                  @click.stop="emit('item-edit', item)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                  </svg>
+                </button>
+                <!-- F (target1) quick-flag -->
+                <button
+                  v-if="item.target1_audio_uuid"
+                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
+                  :class="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'bg-pink-500 text-white' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
+                  :title="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'Unflag target1 (F) audio' : 'Flag target1 (F) audio'"
+                  @click.stop="emit('audio-flag', item, 'target1')"
+                >F</button>
+                <!-- F regen button -->
+                <button
+                  v-if="item.target1_audio_uuid && flaggedAudioUuids.has(item.target1_audio_uuid!)"
+                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
+                  :class="regeneratingUuids.has(item.target1_audio_uuid!) ? 'text-pink-300 animate-spin' : 'text-pink-400 hover:bg-pink-500 hover:bg-opacity-20'"
+                  :disabled="regeneratingUuids.has(item.target1_audio_uuid!)"
+                  title="Regenerate target1 audio"
+                  @click.stop="emit('audio-regen', item, 'target1', item.target1_audio_uuid!)"
+                >↻</button>
+                <!-- M (target2) quick-flag -->
+                <button
+                  v-if="item.target2_audio_uuid"
+                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
+                  :class="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
+                  :title="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'Unflag target2 (M) audio' : 'Flag target2 (M) audio'"
+                  @click.stop="emit('audio-flag', item, 'target2')"
+                >M</button>
+                <!-- M regen button -->
+                <button
+                  v-if="item.target2_audio_uuid && flaggedAudioUuids.has(item.target2_audio_uuid!)"
+                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
+                  :class="regeneratingUuids.has(item.target2_audio_uuid!) ? 'text-blue-300 animate-spin' : 'text-blue-400 hover:bg-blue-500 hover:bg-opacity-20'"
+                  :disabled="regeneratingUuids.has(item.target2_audio_uuid!)"
+                  title="Regenerate target2 audio"
+                  @click.stop="emit('audio-regen', item, 'target2', item.target2_audio_uuid!)"
+                >↻</button>
+              </div>
+
+              <!-- Phase indicator when this item is playing -->
+              <div v-if="isItemPlaying(round.roundNumber, idx)" class="phase-indicator flex gap-1">
+                <span
+                  v-for="phase in ['prompt', 'pause', 'voice1', 'voice2']"
+                  :key="phase"
+                  class="w-2 h-2 rounded-full transition-colors"
+                  :class="player.currentPhase.value === phase ? 'bg-emerald-400' : 'bg-slate-600'"
+                  :title="phase"
+                ></span>
+              </div>
+
+              <!-- Audio Status (only show when NOT playing this item) -->
+              <div v-else class="audio-status flex gap-2">
                 <span
                   v-if="item.hasAudio"
                   class="text-emerald-400"
@@ -178,7 +279,7 @@
                   </svg>
                 </span>
                 <span
-                  v-else-if="item.type !== 'intro'"
+                  v-else
                   class="text-amber-400"
                   title="Audio missing"
                 >
@@ -213,7 +314,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
+import { useScriptPlayer } from '@/composables/useScriptPlayer'
+import { getApiUrl } from '@/services/api'
 
 interface ScriptItem {
   roundNumber: number
@@ -221,6 +324,7 @@ interface ScriptItem {
   legoIndex: number
   seedId: string
   type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate'
+  phrase_id?: string
   known_text: string
   target_text: string
   hasAudio: boolean
@@ -229,6 +333,12 @@ interface ScriptItem {
   fibonacciPosition?: number
   phrasePosition?: number
   consolidateIndex?: number
+  known_audio_uuid?: string
+  target1_audio_uuid?: string
+  target2_audio_uuid?: string
+  known_duration_ms?: number
+  target1_duration_ms?: number
+  target2_duration_ms?: number
 }
 
 interface RoundData {
@@ -253,10 +363,237 @@ interface Stats {
 
 const props = defineProps<{
   rounds: RoundData[]
+  allItems: ScriptItem[]
   stats: Stats | null
+  courseCode: string
   isLoading?: boolean
   hideControls?: boolean
+  flaggedAudioUuids?: Set<string>
+  regeneratingUuids?: Set<string>
 }>()
+
+const emit = defineEmits<{
+  'playback-state': [state: {
+    isPlaying: boolean
+    isPaused: boolean
+    currentItem: any
+    currentPhase: string | null
+    currentIndex: number
+    progress: number
+    totalItems: number
+  }]
+  'item-edit': [item: ScriptItem]
+  'audio-flag': [item: ScriptItem, track: 'target1' | 'target2']
+  'audio-regen': [item: ScriptItem, track: 'target1' | 'target2', audioUuid: string]
+}>()
+
+// Default empty sets for optional props
+const emptySet = new Set<string>()
+const flaggedAudioUuids = computed(() => props.flaggedAudioUuids || emptySet)
+const regeneratingUuids = computed(() => props.regeneratingUuids || emptySet)
+
+// ============================================================================
+// PLAYER SETUP
+// ============================================================================
+
+// Resolve audio UUIDs to signed URLs via the production API
+const apiBaseUrl = localStorage.getItem('api_base_url') || getApiUrl()
+
+// Build a map of UUID -> s3_key from intro items (presentation_audio has both)
+// This lets the resolver pass the s3_key directly, bypassing the course_audio lookup
+const introS3KeyMap = computed(() => {
+  const map = new Map<string, string>()
+  for (const item of props.allItems) {
+    const pa = (item as any).presentation_audio
+    if (pa?.id && pa?.s3_key) {
+      map.set(pa.id, pa.s3_key)
+    }
+  }
+  return map
+})
+
+const player = useScriptPlayer({
+  audioUrlResolver: async (uuid: string) => {
+    let url = `${apiBaseUrl}/api/production/${props.courseCode}/audio/${uuid}/url`
+    const s3Key = introS3KeyMap.value.get(uuid)
+    if (s3Key) {
+      url += `?s3Key=${encodeURIComponent(s3Key)}`
+    }
+    const resp = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    if (!resp.ok) return null
+    const data = await resp.json()
+    return data.url
+  }
+})
+
+// Build player-compatible items from allItems
+// Intro cycle: presentation audio (PROMPT) → pause → LEGO target1 → LEGO target2
+const playerItems = computed(() => {
+  return props.allItems.map(item => {
+    if (item.type === 'intro') {
+      const presId = (item as any).presentation_audio?.id || null
+      return {
+        sourceId: presId,
+        target1Id: item.target1_audio_uuid || null,
+        target2Id: item.target2_audio_uuid || null,
+        known_text: item.known_text,
+        target_text: item.target_text,
+        type: item.type,
+        roundNumber: item.roundNumber,
+        legoId: item.legoId,
+      }
+    }
+    return {
+      sourceId: item.known_audio_uuid || null,
+      target1Id: item.target1_audio_uuid || null,
+      target2Id: item.target2_audio_uuid || null,
+      known_text: item.known_text,
+      target_text: item.target_text,
+      type: item.type,
+      roundNumber: item.roundNumber,
+      legoId: item.legoId,
+    }
+  })
+})
+
+// Build a lookup: for each round+itemIdx, what's the global index in allItems?
+// Uses a per-round counter instead of indexOf (allItems are separate object references)
+const globalIndexMap = computed(() => {
+  const map = new Map<string, number>()
+  const roundCounters = new Map<number, number>()
+
+  props.allItems.forEach((item, globalIdx) => {
+    const roundNum = item.roundNumber
+    const localIdx = roundCounters.get(roundNum) || 0
+    map.set(`${roundNum}-${localIdx}`, globalIdx)
+    roundCounters.set(roundNum, localIdx + 1)
+  })
+  return map
+})
+
+// Reverse lookup: global index -> round number + local index
+const currentPlayingLocation = computed(() => {
+  if (!player.isPlaying.value && !player.isPaused.value) return null
+  const idx = player.currentIndex.value
+  if (idx < 0 || idx >= props.allItems.length) return null
+  const item = props.allItems[idx]
+  if (!item) return null
+
+  // Count how many allItems with the same roundNumber come before this one
+  let localIdx = 0
+  for (let i = 0; i < idx; i++) {
+    if (props.allItems[i].roundNumber === item.roundNumber) localIdx++
+  }
+  return { roundNumber: item.roundNumber, localIdx }
+})
+
+// ============================================================================
+// PLAYBACK ACTIONS
+// ============================================================================
+
+const playFromItem = (round: RoundData, localIdx: number) => {
+  const key = `${round.roundNumber}-${localIdx}`
+  const globalIdx = globalIndexMap.value.get(key)
+  if (globalIdx === undefined) return
+
+  // If already playing this item, toggle pause
+  if (isItemPlaying(round.roundNumber, localIdx)) {
+    if (player.isPlaying.value) {
+      player.pause()
+    } else {
+      player.play()
+    }
+    return
+  }
+
+  player.playFrom(playerItems.value, globalIdx)
+}
+
+const playRound = (round: RoundData) => {
+  // If this round is already playing, toggle pause
+  if (isRoundPlaying(round.roundNumber)) {
+    if (player.isPlaying.value) {
+      player.pause()
+    } else {
+      player.play()
+    }
+    return
+  }
+
+  // Find global index of first item in this round
+  const key = `${round.roundNumber}-0`
+  const globalIdx = globalIndexMap.value.get(key)
+  if (globalIdx === undefined) return
+  player.playFrom(playerItems.value, globalIdx)
+}
+
+const isItemPlaying = (roundNumber: number, localIdx: number): boolean => {
+  const loc = currentPlayingLocation.value
+  if (!loc) return false
+  return loc.roundNumber === roundNumber && loc.localIdx === localIdx
+}
+
+const isRoundPlaying = (roundNumber: number): boolean => {
+  const loc = currentPlayingLocation.value
+  if (!loc) return false
+  return loc.roundNumber === roundNumber
+}
+
+const hasPlayableItems = (round: RoundData): boolean => {
+  return round.items.some(item => item.hasAudio)
+}
+
+// ============================================================================
+// AUTO-EXPAND & AUTO-SCROLL
+// ============================================================================
+
+// Store refs to item DOM elements
+const itemRefs = new Map<string, HTMLElement>()
+
+const setItemRef = (roundNumber: number, idx: number, el: any) => {
+  if (el) {
+    itemRefs.set(`${roundNumber}-${idx}`, el as HTMLElement)
+  }
+}
+
+// Watch for playing item changes to auto-expand round and scroll into view
+watch(currentPlayingLocation, async (loc) => {
+  if (!loc) return
+
+  // Auto-expand the round containing the current item
+  if (!expandedRounds.value.has(loc.roundNumber)) {
+    expandedRounds.value.add(loc.roundNumber)
+  }
+
+  // Wait for DOM update after expand
+  await nextTick()
+
+  // Scroll the item into view
+  const el = itemRefs.get(`${loc.roundNumber}-${loc.localIdx}`)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  }
+})
+
+// Emit playback state to parent whenever it changes
+watch(
+  [player.isPlaying, player.isPaused, player.currentIndex, player.currentPhase, player.progress],
+  () => {
+    emit('playback-state', {
+      isPlaying: player.isPlaying.value,
+      isPaused: player.isPaused.value,
+      currentItem: player.currentItem.value,
+      currentPhase: player.currentPhase.value,
+      currentIndex: player.currentIndex.value,
+      progress: player.progress.value,
+      totalItems: player.totalItems.value,
+    })
+  }
+)
+
+// ============================================================================
+// ROUND EXPAND/COLLAPSE
+// ============================================================================
 
 // Track which rounds are expanded
 const expandedRounds = ref<Set<number>>(new Set())
@@ -286,15 +623,19 @@ const collapseAll = () => {
   expandedRounds.value.clear()
 }
 
-// Expose methods for parent component to call
+// Expose methods + player for parent component
 defineExpose({
   expandAll,
-  collapseAll
+  collapseAll,
+  player
 })
+
+// ============================================================================
+// HELPERS
+// ============================================================================
 
 // Get LEGO text from the debut or intro item in the round
 const getLegoKnownText = (round: RoundData): string => {
-  // Look for debut or intro item which has the LEGO's text
   const debutItem = round.items.find(item => item.type === 'debut' || item.type === 'intro')
   return debutItem?.known_text || ''
 }
@@ -320,8 +661,8 @@ const getTypeBadgeClass = (type: string): string => {
     case 'intro': return 'bg-purple-500 bg-opacity-30 text-purple-300'
     case 'debut': return 'bg-emerald-500 bg-opacity-30 text-emerald-300'
     case 'build': return 'bg-blue-500 bg-opacity-30 text-blue-300'
-    case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'  // Orange/amber for REVIEW
-    case 'consolidate': return 'bg-cyan-500 bg-opacity-40 text-cyan-300'  // Cyan for CONSOLIDATE
+    case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'
+    case 'consolidate': return 'bg-cyan-500 bg-opacity-40 text-cyan-300'
     default: return 'bg-slate-600 text-slate-400'
   }
 }

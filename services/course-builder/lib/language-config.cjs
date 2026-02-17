@@ -1,0 +1,174 @@
+/**
+ * Language configuration — pure functions and constants.
+ * No state, no DB access.
+ */
+
+// Language name mapping
+const LANG_MAP = {
+  'eng': 'English',
+  'zho': 'Chinese',
+  'ita': 'Italian',
+  'spa': 'Spanish',
+  'fra': 'French',
+  'deu': 'German',
+  'por': 'Portuguese',
+  'jpn': 'Japanese',
+  'kor': 'Korean',
+  'ara': 'Arabic',
+  'rus': 'Russian',
+  'cym': 'Welsh',
+  'nld': 'Dutch',
+};
+
+// Known language lookup (for non-English known languages)
+const KNOWN_LANG_MAP = {
+  'eng': 'English', 'fra': 'French', 'spa': 'Spanish', 'deu': 'German',
+  'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'jpn': 'Japanese',
+  'kor': 'Korean', 'ara': 'Arabic', 'rus': 'Russian', 'cym': 'Welsh', 'zho': 'Chinese',
+};
+
+// Language family mapping (for Ralph lesson lookup)
+const LANG_FAMILY_MAP = {
+  jpn: 'japanese', kor: 'korean', zho: 'cjk', cmn: 'cjk',
+  deu: 'germanic', nld: 'germanic', swe: 'germanic',
+  spa: 'romance', fra: 'romance', ita: 'romance', por: 'romance',
+  ara: 'semitic', heb: 'semitic',
+  cym: 'celtic', gle: 'celtic', gla: 'celtic',
+};
+
+// Chinese particles that don't get their own build-up phrase
+const PARTICLES = ['了', '着', '过', '的', '地', '得', '吗', '呢', '吧', '啊', '把', '被'];
+
+// Multi-language preposition list (for pattern classification)
+const PREPOSITIONS = ['à', 'de', 'du', 'des', 'en', 'au', 'aux', 'avec', 'pour', 'dans', 'sur', 'von', 'mit', 'zu', 'für', 'auf', 'の', 'に', 'で', 'を', 'と', 'com', 'em', 'por', 'para', 'con', 'di', 'da', 'del'];
+
+// Syllable tiers for phrase complexity
+const SYLLABLE_TIERS = {
+  SHORT: { min: 3, max: 5 },
+  MEDIUM: { min: 6, max: 11 },
+  LONG: { min: 12, max: 20 },
+};
+
+// Average characters per syllable by target language
+const CHARS_PER_SYLLABLE = {
+  zho: 1.0,
+  jpn: 1.5,
+  kor: 1.0,
+  fra: 3.5,
+  spa: 3.2,
+  deu: 3.0,
+  eng: 3.8,
+  ita: 3.0,
+  por: 3.3,
+  nld: 3.0,
+  swe: 3.0,
+  cym: 2.8,
+  DEFAULT: 3.5,
+};
+
+/**
+ * Extract target language code from course_code (e.g., "fra_for_eng" → "fra")
+ */
+function getTargetLang(courseCode) {
+  const match = courseCode.match(/^([a-z]{3})_for_/);
+  return match ? match[1] : 'DEFAULT';
+}
+
+/**
+ * Extract known language code from course_code (e.g., "fra_for_eng" → "eng")
+ */
+function getKnownLang(courseCode) {
+  const parts = courseCode.split('_for_');
+  return parts[1] || 'eng';
+}
+
+/**
+ * Get language name from course code (target language)
+ */
+function getLanguageName(courseCode) {
+  const targetLang = courseCode.split('_')[0];
+  return LANG_MAP[targetLang] || targetLang;
+}
+
+/**
+ * Get language family from course code (for Ralph lesson lookup)
+ */
+function getLangFamily(courseCode) {
+  const langCode = courseCode.split('_')[0];
+  return LANG_FAMILY_MAP[langCode] || 'other';
+}
+
+/**
+ * Detect if course uses character-level vocab (Chinese, Japanese, Korean target)
+ */
+function isChinese(courseCode) {
+  const parts = courseCode.split('_for_');
+  const targetLang = parts[0] || '';
+  const characterBasedLangs = ['zho', 'jpn', 'kor'];
+  return characterBasedLangs.includes(targetLang);
+}
+
+/**
+ * Get chars-per-syllable ratio for a language
+ */
+function getCharsPerSyllable(courseCode) {
+  const targetLang = getTargetLang(courseCode);
+  return CHARS_PER_SYLLABLE[targetLang] || CHARS_PER_SYLLABLE.DEFAULT;
+}
+
+/**
+ * Get character thresholds for phrase complexity tiers
+ */
+function getCharThresholds(courseCode) {
+  const targetLang = getTargetLang(courseCode);
+  const charsPerSyl = CHARS_PER_SYLLABLE[targetLang] || CHARS_PER_SYLLABLE.DEFAULT;
+
+  return {
+    SHORT: {
+      min: Math.round(SYLLABLE_TIERS.SHORT.min * charsPerSyl),
+      max: Math.round(SYLLABLE_TIERS.SHORT.max * charsPerSyl),
+    },
+    MEDIUM: {
+      min: Math.round(SYLLABLE_TIERS.MEDIUM.min * charsPerSyl),
+      max: Math.round(SYLLABLE_TIERS.MEDIUM.max * charsPerSyl),
+    },
+    LONG: {
+      min: Math.round(SYLLABLE_TIERS.LONG.min * charsPerSyl),
+      max: 999,
+    },
+  };
+}
+
+/**
+ * Check if a target text is a particle (should skip in build-up)
+ */
+function isParticle(target) {
+  if (!target) return false;
+  return PARTICLES.includes(target.trim());
+}
+
+/**
+ * Get golden seed count from course info
+ */
+function getGoldenSeedCount(courseInfo) {
+  return courseInfo?.quality_rules?.golden_seed_count || 10;
+}
+
+module.exports = {
+  LANG_MAP,
+  KNOWN_LANG_MAP,
+  LANG_FAMILY_MAP,
+  PARTICLES,
+  PREPOSITIONS,
+  SYLLABLE_TIERS,
+  CHARS_PER_SYLLABLE,
+  getTargetLang,
+  getKnownLang,
+  getLanguageName,
+  getLangFamily,
+  isChinese,
+  getCharsPerSyllable,
+  getCharThresholds,
+  isParticle,
+  getGoldenSeedCount,
+};

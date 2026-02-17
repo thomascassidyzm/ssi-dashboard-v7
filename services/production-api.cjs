@@ -86,7 +86,12 @@ const io = new Server(httpServer, {
   }
 })
 
-app.use(cors())
+app.use(cors({
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'ngrok-skip-browser-warning'],
+  credentials: true
+}))
 app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
 
 // Disable ALL caching on API responses during development
@@ -301,12 +306,13 @@ app.get('/api/stats/:courseCode', async (req, res) => {
       .eq('course_code', courseCode)
       .neq('target_text', '')
 
-    // Count DISTINCT seed numbers from LEGOs (seeds with decomposition done)
-    const { data: seedData } = await supabase
-      .from('course_legos')
-      .select('seed_number')
+    // Count seeds with decomposition done (decomposed_at IS NOT NULL)
+    // This includes empty seeds (all vocab already known) which have no LEGO rows
+    const { count: seedsWithLegos } = await supabase
+      .from('course_seeds')
+      .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
-    const seedsWithLegos = new Set(seedData?.map(r => r.seed_number)).size
+      .not('decomposed_at', 'is', null)
 
     // Ratio based on NEW legos only
     const effectiveLegos = newLegos || 0
@@ -353,17 +359,16 @@ async function proxyCourseBuilder(req, res) {
     const targetUrl = `${COURSE_BUILDER_URL}${req.originalUrl}`
     logger.info(`[Proxy] ${req.method} ${req.originalUrl} -> ${targetUrl}`)
 
+    const body = ['POST', 'PUT', 'PATCH'].includes(req.method) && req.body
+      ? JSON.stringify(req.body)
+      : undefined
+
     const fetchOptions = {
       method: req.method,
       headers: {
-        'Content-Type': 'application/json',
-        ...req.headers
-      }
-    }
-
-    // Forward body for POST/PUT/PATCH
-    if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body) {
-      fetchOptions.body = JSON.stringify(req.body)
+        'Content-Type': req.headers['content-type'] || 'application/json'
+      },
+      body
     }
 
     const response = await fetch(targetUrl, fetchOptions)
@@ -377,10 +382,13 @@ async function proxyCourseBuilder(req, res) {
 }
 
 app.all('/api/build/*', proxyCourseBuilder)
+app.all('/api/v2/*', proxyCourseBuilder)
+app.all('/api/golden/*', proxyCourseBuilder)
 app.all('/api/activity', proxyCourseBuilder)
 app.all('/api/activity/*', proxyCourseBuilder)
 app.all('/api/agents', proxyCourseBuilder)
 app.all('/api/agents/*', proxyCourseBuilder)
+app.all('/api/qa/*', proxyCourseBuilder)
 
 // Proxy to orchestrator (port 3456) for mission-control and health endpoints
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'
@@ -437,32 +445,31 @@ app.get('/health', (req, res) => {
   })
 })
 
-// Languages endpoint - ISO 639 language codes
+// Languages endpoint - ISO 639 language codes from CSV
+// Query params:
+//   ?tts=true - Only languages with TTS configured (Azure, ElevenLabs, or Google)
+//   ?format=legacy - Return legacy 3-letter codes (spa, fra) instead of ISO standard (es, fr)
 app.get('/api/languages', async (req, res) => {
   try {
-    // Common languages for course creation
-    const languages = [
-      { code: 'eng', name: 'English' },
-      { code: 'spa', name: 'Spanish' },
-      { code: 'fra', name: 'French' },
-      { code: 'deu', name: 'German' },
-      { code: 'ita', name: 'Italian' },
-      { code: 'por', name: 'Portuguese' },
-      { code: 'zho', name: 'Chinese' },
-      { code: 'jpn', name: 'Japanese' },
-      { code: 'kor', name: 'Korean' },
-      { code: 'ara', name: 'Arabic' },
-      { code: 'rus', name: 'Russian' },
-      { code: 'hin', name: 'Hindi' },
-      { code: 'cym', name: 'Welsh' },
-      { code: 'gle', name: 'Irish' },
-      { code: 'nld', name: 'Dutch' },
-      { code: 'swe', name: 'Swedish' },
-      { code: 'pol', name: 'Polish' },
-      { code: 'tur', name: 'Turkish' },
-      { code: 'vie', name: 'Vietnamese' },
-      { code: 'tha', name: 'Thai' }
-    ]
+    const ttsOnly = req.query.tts === 'true'
+    const useLegacy = req.query.format === 'legacy'
+
+    // Get all languages from the CSV via language-code-service
+    const allLanguages = languageCodeService.getAllLanguages({ ttsOnly, withLegacy: true })
+
+    // Format response based on requested format
+    const languages = allLanguages.map(lang => ({
+      code: useLegacy && lang.legacyCode ? lang.legacyCode : lang.code,
+      name: lang.name,
+      native: lang.native || '',
+      tts: {
+        azure: lang.hasAzure,
+        elevenlabs: lang.hasElevenLabs,
+        google: lang.hasGoogle
+      }
+    }))
+
+    logger.info(`[Languages] Returning ${languages.length} languages (ttsOnly=${ttsOnly}, format=${useLegacy ? 'legacy' : 'standard'})`)
     res.json(languages)
   } catch (error) {
     logger.error('Error serving languages:', error)
@@ -514,14 +521,17 @@ app.get('/api/courses', async (req, res) => {
 
 // Create new course - DATABASE-FIRST (APML v14)
 app.post('/api/courses/create', async (req, res) => {
-  const { courseCode, displayName, sourceLanguage, targetLanguage, seedStart, seedEnd } = req.body
+  const { courseCode, displayName, knownLanguage, sourceLanguage, targetLanguage, seedStart, seedEnd } = req.body
+
+  // Accept both knownLanguage (new) and sourceLanguage (legacy)
+  const known = knownLanguage || sourceLanguage
 
   logger.info(`Creating course: ${courseCode}`)
 
-  if (!courseCode || !sourceLanguage || !targetLanguage) {
+  if (!courseCode || !known || !targetLanguage) {
     return res.status(400).json({
       error: 'Missing required fields',
-      required: ['courseCode', 'sourceLanguage', 'targetLanguage']
+      required: ['courseCode', 'knownLanguage', 'targetLanguage']
     })
   }
 
@@ -554,9 +564,9 @@ app.post('/api/courses/create', async (req, res) => {
       .from('courses')
       .insert({
         course_code: courseCode,
-        known_lang: sourceLanguage,
+        known_lang: known,
         target_lang: targetLanguage,
-        display_name: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+        display_name: displayName || `${targetLanguage} for ${known} speakers`,
         status: 'draft'
       })
 
@@ -789,8 +799,30 @@ app.get('/api/mission-control/jobs', async (req, res) => {
       logger.warn('[Mission Control] Could not fetch build_jobs:', error.message)
     } else if (buildJobs && buildJobs.length > 0) {
       for (const row of buildJobs) {
-        const totalSeeds = row.total_seeds || 1
-        const seedsCompleted = row.seeds_completed || 0
+        const totalSeeds = row.total_seeds || 300
+        const seedsDecomposed = row.seeds_completed || 0  // Pass 2: seeds with LEGOs
+
+        // Query Pass 1 progress: count seeds with target_text (translated)
+        let seedsTranslated = 0
+        try {
+          const { count, error: countError } = await supabase
+            .from('course_seeds')
+            .select('*', { count: 'exact', head: true })
+            .eq('course_code', row.course_code)
+            .not('target_text', 'is', null)
+            .neq('target_text', '')
+
+          if (!countError && count !== null) {
+            seedsTranslated = count
+          }
+        } catch (err) {
+          logger.warn(`[Mission Control] Could not count translated seeds for ${row.course_code}:`, err.message)
+        }
+
+        // Determine current pass and appropriate progress to show
+        const currentPass = row.pass || (seedsTranslated < totalSeeds ? 1 : 2)
+        const currentProgress = currentPass === 1 ? seedsTranslated : seedsDecomposed
+        const percentage = Math.round((currentProgress / totalSeeds) * 100)
 
         jobs.push({
           id: `${row.course_code}-build`,
@@ -800,13 +832,18 @@ app.get('/api/mission-control/jobs', async (req, res) => {
           status: row.status,
           startedAt: row.started_at,
           canStop: row.status === 'running',
+          machine: row.machine_name || null,
           progress: {
-            current: seedsCompleted,
+            current: currentProgress,
             total: totalSeeds,
-            percentage: Math.round((seedsCompleted / totalSeeds) * 100)
+            percentage,
+            // Include both pass metrics for detailed display
+            seedsTranslated,      // Pass 1: seeds with target_text
+            seedsDecomposed,      // Pass 2: seeds with LEGOs
+            currentPass
           },
           metadata: {
-            pass: row.pass,
+            pass: currentPass,
             currentSeed: row.current_seed,
             requestedBy: row.requested_by,
             lastHeartbeat: row.last_heartbeat,
@@ -997,6 +1034,7 @@ app.post('/api/mission-control/jobs/:jobId/clear', async (req, res) => {
 app.get('/api/services', proxyOrchestrator)
 app.post('/api/services/:name/restart', proxyOrchestrator)
 app.get('/api/services/:name/logs', proxyOrchestrator)
+app.post('/api/deploy', proxyOrchestrator)
 
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
@@ -1064,6 +1102,9 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
 
     logger.info(`Returning info for ${courseCode}: status=${course.status}, completedSeeds=${stats.completedSeeds}`)
 
+    // Extract learnings from quality_rules for easy frontend access
+    const learnings = course.quality_rules?.learnings || []
+
     res.json({
       success: true,
       course: {
@@ -1084,7 +1125,10 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
           legos: stats.legos,
           phrases: stats.phrases,
           audio: stats.audio
-        }
+        },
+        // Language-pair learnings from QA and course building
+        learnings: learnings,
+        learningsCount: learnings.length
       }
     })
   } catch (err) {
@@ -1413,7 +1457,7 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
     knownText: lego.known_text,
     targetText: lego.target_text,
     // Presentation text isn't needed for lookup since we use lego_id
-    presentation: `The ... for '${lego.known_text}', is: ... '${lego.target_text}' ... '${lego.target_text}'`
+    presentation: `The ... for — '${lego.known_text}' — is: ... '${lego.target_text}' ... '${lego.target_text}'`
   }))
 
   logger.info(`[LegacyAudio] Built ${introItems.length} intro items from database LEGOs`)
@@ -1741,6 +1785,42 @@ app.delete('/api/production/:courseCode/audio-flags/:audioUuid', async (req, res
     res.json({ success: true })
   } catch (error) {
     logger.error('Error deleting audio flag:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Bulk delete audio flags (resolve all at once)
+app.post('/api/production/:courseCode/audio-flags/bulk-delete', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { audio_uuids } = req.body
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    if (!audio_uuids || !Array.isArray(audio_uuids) || audio_uuids.length === 0) {
+      return res.status(400).json({ error: 'audio_uuids array required' })
+    }
+
+    // Delete in batches of 100 to avoid query size limits
+    const BATCH = 100
+    let deleted = 0
+    for (let i = 0; i < audio_uuids.length; i += BATCH) {
+      const batch = audio_uuids.slice(i, i + BATCH)
+      const { error } = await supabaseClient.getClient()
+        .from('audio_flags')
+        .delete()
+        .eq('course_code', courseCode)
+        .in('audio_uuid', batch)
+      if (error) throw error
+      deleted += batch.length
+    }
+
+    logger.info(`Bulk deleted ${deleted} audio flags for ${courseCode}`)
+    res.json({ success: true, deleted })
+  } catch (error) {
+    logger.error('Error bulk deleting audio flags:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -2182,8 +2262,206 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
   }
 })
 
+// =============================================================================
+// Shared helper: Calculate audio stats directly from Supabase (no Phase 8 needed)
+// Used by /audio-stats, /audio-pipeline/plan, and /audio-pipeline/missing
+// Cached in-memory for 60s per course — invalidated on audio generation events
+// =============================================================================
+const _audioStatsCache = new Map() // courseCode → { data, expiry }
+const AUDIO_STATS_CACHE_TTL = 60_000 // 60 seconds
+
+function invalidateAudioStatsCache(courseCode) {
+  if (courseCode) {
+    _audioStatsCache.delete(courseCode)
+  } else {
+    _audioStatsCache.clear()
+  }
+}
+
+// Paginated Supabase fetch — prevents silent row truncation on large tables
+async function fetchAllRows(supabase, table, selectCols, filters) {
+  const PAGE_SIZE = 50000
+  let allData = []
+  let offset = 0
+  while (true) {
+    let query = supabase.from(table).select(selectCols)
+    for (const [method, ...args] of filters) {
+      query = query[method](...args)
+    }
+    query = query.range(offset, offset + PAGE_SIZE - 1)
+    const { data, error } = await query
+    if (error) throw error
+    allData = allData.concat(data)
+    if (data.length < PAGE_SIZE) break
+    offset += PAGE_SIZE
+  }
+  return allData
+}
+
+async function getDirectAudioStats(courseCode) {
+  // Check cache
+  const cached = _audioStatsCache.get(courseCode)
+  if (cached && Date.now() < cached.expiry) {
+    return cached.data
+  }
+  const supabase = supabaseClient.getClient()
+
+  const { data: course } = await supabase
+    .from('courses')
+    .select('seed_count, known_lang, target_lang')
+    .eq('course_code', courseCode)
+    .single()
+  const releaseTarget = course?.seed_count || 260
+
+  // Count audio bindings directly via ID columns — no text matching needed
+  // Phrases: known_audio_id, target1_audio_id, target2_audio_id
+  // LEGOs: known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id
+  // Seeds: known_audio_id, target1_audio_id, target2_audio_id
+  const [
+    phraseTotal, phraseKnownBound, phraseT1Bound, phraseT2Bound,
+    legoTotal, legoKnownBound, legoT1Bound, legoT2Bound,
+    newLegoTotal, newLegoPresentationBound,
+    seedTotal, seedKnownBound, seedT1Bound, seedT2Bound,
+    encRes, instrRes
+  ] = await Promise.all([
+    // Phrase counts
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
+    // LEGO counts
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
+    // New LEGO presentation counts
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', releaseTarget),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', releaseTarget).not('presentation_audio_id', 'is', null),
+    // Seed counts
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget),
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
+    // Shared audio
+    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
+      .eq('language', course.known_lang).eq('audio_type', 'encouragement'),
+    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
+      .eq('language', course.known_lang).eq('audio_type', 'instruction')
+  ])
+
+  const phrases = phraseTotal.count || 0
+  const legos = legoTotal.count || 0
+  const newLegos = newLegoTotal.count || 0
+  const seeds = seedTotal.count || 0
+
+  // Total needed: each phrase/LEGO/seed needs known + target1 + target2, new LEGOs also need presentation
+  const totalKnownNeeded = phrases + legos + seeds
+  const totalT1Needed = phrases + legos + seeds
+  const totalT2Needed = phrases + legos + seeds
+  const totalPresNeeded = newLegos
+
+  const knownBound = (phraseKnownBound.count || 0) + (legoKnownBound.count || 0) + (seedKnownBound.count || 0)
+  const t1Bound = (phraseT1Bound.count || 0) + (legoT1Bound.count || 0) + (seedT1Bound.count || 0)
+  const t2Bound = (phraseT2Bound.count || 0) + (legoT2Bound.count || 0) + (seedT2Bound.count || 0)
+  const presBound = newLegoPresentationBound.count || 0
+
+  const knownMissing = totalKnownNeeded - knownBound
+  const t1Missing = totalT1Needed - t1Bound
+  const t2Missing = totalT2Needed - t2Bound
+  const presMissing = totalPresNeeded - presBound
+
+  const SHARED_AUDIO_REQUIREMENTS = { encouragement: 26, instruction: 48 }
+  const sharedNeeded = SHARED_AUDIO_REQUIREMENTS.encouragement + SHARED_AUDIO_REQUIREMENTS.instruction
+  const sharedExisting = (encRes.count || 0) + (instrRes.count || 0)
+
+  // Welcome audio
+  let welcomeExists = false
+  try {
+    const welcomesPath = require('path').join(__dirname, '../public/vfs/canonical/welcomes.json')
+    if (require('fs').existsSync(welcomesPath)) {
+      const welcomes = JSON.parse(require('fs').readFileSync(welcomesPath, 'utf8'))
+      welcomeExists = !!(welcomes.welcomes?.[courseCode]?.id)
+    }
+  } catch (e) { /* ignore */ }
+
+  const azureNeeded = totalKnownNeeded + totalT1Needed + totalT2Needed + totalPresNeeded
+  const azureExisting = knownBound + t1Bound + t2Bound + presBound
+  const totalNeeded = azureNeeded + sharedNeeded + 1 // +1 for welcome
+  const totalExisting = azureExisting + sharedExisting + (welcomeExists ? 1 : 0)
+  const missing = totalNeeded - totalExisting
+
+  const result = {
+    total: totalNeeded,
+    existing: totalExisting,
+    missing,
+    course,
+    releaseTarget,
+    breakdown: { known: knownMissing, target1: t1Missing, target2: t2Missing, presentation: presMissing },
+    existingByRole: { known: knownBound, target1: t1Bound, target2: t2Bound, presentation: presBound },
+    totalPhrases: phrases,
+    totalLegos: legos,
+    totalNewLegos: newLegos,
+    uniquePhraseAudio: totalKnownNeeded + totalT1Needed + totalT2Needed,
+    sharedNeeded,
+    sharedExisting,
+    welcomeExists
+  }
+
+  // Cache result
+  _audioStatsCache.set(courseCode, { data: result, expiry: Date.now() + AUDIO_STATS_CACHE_TTL })
+  return result
+}
+
 // FAST audio stats endpoint - counts audio matching CURRENT course content
 // Returns total needed vs existing audio for Progress Dashboard
+// Uses same normalizeText logic as the /plan endpoint for consistent counts
+app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Allow cache-bust via ?fresh=1
+    if (req.query.fresh) invalidateAudioStatsCache(courseCode)
+    const stats = await getDirectAudioStats(courseCode)
+
+    res.json({
+      success: true,
+      total: stats.total,
+      existing: stats.existing,
+      missing: stats.missing,
+      breakdown: {
+        phrases: stats.totalPhrases,
+        seeds: 0,
+        uniquePhraseAudio: stats.uniquePhraseAudio,
+        newLegos: stats.totalNewLegos,
+        presentationsExisting: stats.existingByRole.presentation,
+        sharedNeeded: stats.sharedNeeded,
+        sharedExisting: stats.sharedExisting,
+        welcomeExists: stats.welcomeExists
+      }
+    })
+  } catch (error) {
+    logger.error('Error fetching audio stats:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
 
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
@@ -2191,9 +2469,11 @@ app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
   try {
     const { courseCode, uuid } = req.params
 
-    // Try to get audio record from database for s3_key
-    let s3Key = null
-    if (supabaseClient.isInitialized()) {
+    // Accept s3Key from query param (e.g. for intro audio where we already know the path)
+    let s3Key = req.query.s3Key || null
+
+    // If no s3Key provided, try to look it up from course_audio
+    if (!s3Key && supabaseClient.isInitialized()) {
       const supabase = supabaseClient.getClient()
       const { data: audioData } = await supabase
         .from('course_audio')
@@ -2245,7 +2525,10 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
     }
 
     // v13: Query course_audio directly (flat table, no joins needed)
+    // Strip punctuation to match Phase 8's normalizeText() which strips before TTS generation
+    const PUNCT_REGEX = /[。？！、，.!?,;:()（）「」『』\[\]…—–\-]+/g
     const normalizedText = text.toString().toLowerCase().trim()
+    const strippedText = normalizedText.replace(PUNCT_REGEX, '').trim()
 
     const { data: audioData, error: audioError } = await supabase
       .from('course_audio')
@@ -2264,6 +2547,36 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
         .eq('text_normalized', normalizedText)
         .limit(1)
         .single()
+
+      if (!anyAudio && strippedText !== normalizedText) {
+        // Fallback: try punctuation-stripped text (handles 你想。 → 你想 mismatch)
+        const { data: strippedAudio } = await supabase
+          .from('course_audio')
+          .select('id, s3_key, voice_id, role')
+          .eq('course_code', courseCode)
+          .eq('text_normalized', strippedText)
+          .eq('role', role)
+          .single()
+
+        if (strippedAudio) {
+          const url = await s3Service.getAudioSignedUrl(strippedAudio.id, 3600, { s3Key: strippedAudio.s3_key })
+          return res.json({ url, uuid: strippedAudio.id, role: strippedAudio.role })
+        }
+
+        // Try stripped text without role filter
+        const { data: strippedAny } = await supabase
+          .from('course_audio')
+          .select('id, s3_key, voice_id, role')
+          .eq('course_code', courseCode)
+          .eq('text_normalized', strippedText)
+          .limit(1)
+          .single()
+
+        if (strippedAny) {
+          const url = await s3Service.getAudioSignedUrl(strippedAny.id, 3600, { s3Key: strippedAny.s3_key })
+          return res.json({ url, uuid: strippedAny.id, role: strippedAny.role })
+        }
+      }
 
       if (!anyAudio) {
         return res.status(404).json({ error: `Audio not found for text in course ${courseCode}` })
@@ -2833,8 +3146,8 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
     const { courseCode } = req.params
     const { role, dryRun = true, flaggedOnly = false, limit } = req.body
 
-    if (!role || !['known', 'target1', 'target2'].includes(role)) {
-      return res.status(400).json({ error: 'Invalid role. Must be known, target1, or target2' })
+    if (!role || !['known', 'target1', 'target2', 'presentation'].includes(role)) {
+      return res.status(400).json({ error: 'Invalid role. Must be known, target1, target2, or presentation' })
     }
 
     if (!supabaseClient.isInitialized()) {
@@ -2959,96 +3272,66 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
   }
 })
 
+// Regenerate a single audio file by UUID (inline from journey view)
+// POST /api/audio/regenerate-single/:courseCode/:audioUuid
+app.post('/api/audio/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
+  try {
+    const { courseCode, audioUuid } = req.params
+    logger.log(`[Regenerate Single] ${courseCode} / ${audioUuid}`)
+    const response = await proxyToPhase8('POST', `/regenerate-single/${courseCode}/${audioUuid}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Regenerate single proxy error:', error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
 // Regenerate presentation audio
 // POST /api/audio/regenerate-presentations/:courseCode
-// Body: { dryRun, limit }
+// Body: { dryRun, regenerateAudio }
+// This endpoint generates presentation TEXT for all LEGOs (e.g., "The Chinese for 'hello' is:")
+// It proxies to phase8's /regenerate-presentations which handles the actual logic
 app.post('/api/audio/regenerate-presentations/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = true, limit = 1000 } = req.body
-
-    if (!supabaseClient.isInitialized()) {
-      return res.status(503).json({ error: 'Supabase not initialized' })
-    }
+    const { dryRun = true, regenerateAudio = false } = req.body
 
     logger.log(`[Regenerate Presentations] ${dryRun ? 'Preview' : 'Execute'} for ${courseCode}`)
 
-    // Get course info
-    const course = await supabaseClient.getCourse(courseCode)
-    if (!course) {
-      return res.status(404).json({ error: `Course not found: ${courseCode}` })
-    }
-
-    // Query presentation audio
-    const { data: presentations, error } = await supabaseClient.getClient()
-      .from('course_audio')
-      .select('id, text, text_normalized, language, role, voice_id, duration_ms')
-      .eq('course_code', courseCode)
-      .eq('role', 'presentation')
-      .limit(limit)
-
-    if (error) {
-      return res.status(500).json({ error: error.message })
-    }
-
-    const samplesToRegenerate = presentations || []
-
-    if (dryRun) {
-      return res.json({
-        dryRun: true,
-        count: samplesToRegenerate.length,
-        sample: samplesToRegenerate[0] || null
-      })
-    }
-
-    if (samplesToRegenerate.length === 0) {
-      return res.json({
-        dryRun: false,
-        total: 0,
-        success: 0,
-        failed: 0,
-        regeneratedItems: [],
-        message: 'No presentation audio to regenerate'
-      })
-    }
-
-    const uuids = samplesToRegenerate.map(s => s.id)
-
-    // Call Phase 8 to regenerate presentation audio
-    const response = await proxyToPhase8('POST', `/regenerate-role/${courseCode}`, {
-      role: 'presentation',
-      dryRun: false,
-      limit
+    // Proxy to phase8's /regenerate-presentations endpoint which:
+    // 1. Gets all LEGOs for the course
+    // 2. Generates presentation text using template
+    // 3. Upserts to course_audio
+    // 4. Updates lego_introductions and course_legos.presentation_audio_id
+    const response = await proxyToPhase8('POST', `/regenerate-presentations/${courseCode}`, {
+      dryRun,
+      regenerateAudio
     })
 
-    io.to(`course:${courseCode}`).emit('regeneration_started', {
-      courseCode,
-      uuids,
-      role: 'presentation',
-      count: uuids.length,
-      timestamp: new Date().toISOString()
-    })
-
-    if (response.status === 200) {
-      res.json({
-        dryRun: false,
-        total: uuids.length,
-        success: response.data.success || uuids.length,
-        failed: response.data.failed || 0,
-        regeneratedItems: samplesToRegenerate.map(s => ({
-          id: s.id,
-          text: s.text.substring(0, 50) + '...'
-        })),
-        jobId: response.data.jobId
-      })
-    } else {
-      res.status(response.status).json({
-        error: response.data.error || 'Regeneration failed',
-        ...response.data
+    if (!dryRun && response.status === 200) {
+      io.to(`course:${courseCode}`).emit('presentations_generated', {
+        courseCode,
+        count: response.data.total || response.data.count || 0,
+        timestamp: new Date().toISOString()
       })
     }
+
+    res.status(response.status).json(response.data)
   } catch (error) {
     logger.error('Error in regenerate-presentations:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/audio/link-presentation-audio/:courseCode
+// Fix presentation audio linking for a course
+app.post('/api/audio/link-presentation-audio/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const response = await proxyToPhase8('POST', `/link-presentation-audio/${courseCode}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Error linking presentation audio:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -3251,97 +3534,40 @@ app.post('/api/production/internal/emit', (req, res) => {
 const PHASE8_URL = process.env.PHASE8_URL || 'http://localhost:3465'
 const axios = require('axios')
 
-// GET /api/production/:courseCode/audio-stats (alias for audio-pipeline/stats)
-app.get('/api/production/:courseCode/audio-stats', (req, res) => {
-  res.redirect(307, `/api/production/${req.params.courseCode}/audio-pipeline/stats`)
-})
-
-// GET /api/production/:courseCode/audio-pipeline/stats
-// Fast stats using plan endpoint - use this for dashboard loading
-app.get('/api/production/:courseCode/audio-pipeline/stats', async (req, res) => {
-  const { courseCode } = req.params
-  try {
-    // Use the plan endpoint which exists
-    const response = await axios.get(`${PHASE8_URL}/plan/${courseCode}`)
-    const data = response.data || {}
-
-    // Calculate estimates
-    const toGenerate = data.missing || 0
-    const estimatedCostUSD = (toGenerate * 0.004).toFixed(2)
-
-    res.json({
-      success: true,
-      estimatedCost: `$${estimatedCostUSD}`,
-      estimatedTime: `${Math.ceil(toGenerate / 60)} min`,
-      total: data.existing + toGenerate,
-      existing: data.existing || 0,
-      missing: toGenerate,
-      dataSource: 'database'
-    })
-  } catch (error) {
-    logger.error(`Audio stats error for ${courseCode}:`, error.message)
-    if (error.code === 'ECONNREFUSED') {
-      return res.status(503).json({ error: 'Phase 8 audio service not running' })
-    }
-    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
-  }
-})
+// NOTE: Dead duplicate audio-stats route removed — the fast endpoint at line ~2214
+// handles /api/production/:courseCode/audio-stats directly without needing Phase 8
 
 // GET /api/production/:courseCode/audio-pipeline/plan
 // Get generation plan with cost estimates
+// Uses fast Supabase query (cached). Phase 8 is only needed for actual generation.
 app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
   const { courseCode } = req.params
   try {
-    const response = await axios.post(`${PHASE8_URL}/plan`, { courseCode })
-    // Transform Phase 8 response for frontend
-    // Phase 8 v13 returns data at root level (not nested under .plan)
-    const plan = response.data.plan || response.data || {}
-    const voices = response.data.voices || plan.course?.voiceConfig || {}
+    const stats = await getDirectAudioStats(courseCode)
+    const estimatedCostUSD = (stats.missing * 0.004).toFixed(2)
 
-    // Calculate breakdown by role from Phase 8 response
-    const samples = plan.samples || []
-    const breakdownFromPlan = plan.breakdown || {}
-    const breakdown = {
-      known: breakdownFromPlan.known || samples.filter(s => s.role === 'known').length,
-      target1: breakdownFromPlan.target1 || samples.filter(s => s.role === 'target1').length,
-      target2: breakdownFromPlan.target2 || samples.filter(s => s.role === 'target2').length,
-      // Phase 8 v13 returns presentation count in breakdown.presentation
-      introduction: breakdownFromPlan.presentation || plan.introNeeds || 0
-    }
-
-    // Estimate cost: ~$0.004 per TTS request (Azure average)
-    const toGenerate = plan.missing || plan.toGenerate || 0
-    const estimatedCostUSD = (toGenerate * 0.004).toFixed(2)
-
-    // Use total from Phase 8 (based on current course content, not orphaned audio)
-    // Fallback to existing + missing for backwards compatibility
-    const total = plan.total || ((plan.existing || 0) + toGenerate)
-
-    res.json({
+    return res.json({
       success: true,
-      estimatedCost: plan.estimatedCost || `$${estimatedCostUSD}`,
-      estimatedTime: `${Math.ceil(toGenerate / 60)} min`,
-      total: total,
-      existing: plan.existing || 0,
-      missing: toGenerate,
-      phraseNeeds: plan.totalPhrases || plan.phraseNeeds || 0,
-      introNeeds: plan.introNeeds || 0,
+      estimatedCost: `$${estimatedCostUSD}`,
+      estimatedTime: `${Math.ceil(stats.missing / 60)} min`,
+      total: stats.total,
+      existing: stats.existing,
+      missing: stats.missing,
+      phraseNeeds: stats.totalPhrases,
+      introNeeds: stats.totalNewLegos,
       breakdown: [
-        { role: 'known', count: breakdown.known },
-        { role: 'target1', count: breakdown.target1 },
-        { role: 'target2', count: breakdown.target2 },
-        { role: 'introduction', count: breakdown.introduction }
+        { role: 'known', count: stats.breakdown.known },
+        { role: 'target1', count: stats.breakdown.target1 },
+        { role: 'target2', count: stats.breakdown.target2 },
+        { role: 'introduction', count: stats.breakdown.presentation }
       ],
-      assembly: response.data.assembly || null,
-      voices: voices,
-      dataSource: plan.course ? 'database' : 'unknown'
+      assembly: null,
+      voices: {},
+      dataSource: 'database'
     })
   } catch (error) {
     logger.error(`Audio plan error for ${courseCode}:`, error.message)
-    if (error.code === 'ECONNREFUSED') {
-      return res.status(503).json({ error: 'Phase 8 audio service not running' })
-    }
-    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+    return res.status(500).json({ error: error.message })
   }
 })
 
@@ -3351,9 +3577,11 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
   const { courseCode } = req.params
   const { options } = req.body
   try {
+    invalidateAudioStatsCache(courseCode)
     const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, options || {}, {
       timeout: 3600000 // 1 hour - audio generation can take a very long time for large courses
     })
+    invalidateAudioStatsCache(courseCode)
     res.json(response.data)
   } catch (error) {
     logger.error(`Audio start error for ${courseCode}:`, error.message)
@@ -3452,7 +3680,7 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
 
 // GET /api/production/:courseCode/audio-pipeline/missing
 // Get detailed list of missing audio with sample playback URLs for voice matching
-// AZURE COUNTS: Delegated to Phase8 /plan (single source of truth)
+// AZURE COUNTS: Direct Supabase via getDirectAudioStats() — fast, cached
 // ELEVENLABS COUNTS: Handled locally (shared audio, welcomes)
 app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) => {
   const { courseCode } = req.params
@@ -3460,34 +3688,15 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
   try {
     // =========================================================================
-    // AZURE TTS COUNTS: Get from Phase8 /plan (single source of truth)
+    // AZURE TTS COUNTS: Direct Supabase via getDirectAudioStats() — fast, cached
     // =========================================================================
-    let phase8Plan
-    try {
-      const response = await axios.get(`${PHASE8_URL}/plan/${courseCode}`)
-      phase8Plan = response.data
-    } catch (e) {
-      logger.error(`Phase8 /plan failed for ${courseCode}: ${e.message}`)
-      return res.status(503).json({
-        error: 'Phase 8 audio service not available',
-        details: e.message,
-        hint: 'Ensure phase8-audio-v13.cjs is running on port 3465'
-      })
-    }
+    const stats = await getDirectAudioStats(courseCode)
+    const breakdown = stats.breakdown
+    const azureMissing = stats.missing
 
     const supabase = supabaseClient.getClient()
-
-    // Get course info for ElevenLabs checks
-    const { data: course, error: courseErr } = await supabase
-      .from('courses')
-      .select('known_lang, target_lang, seed_count')
-      .eq('course_code', courseCode)
-      .single()
-
-    if (courseErr) throw courseErr
-
-    const knownLang = course?.known_lang || 'eng'
-    const releaseTarget = course?.seed_count || 260
+    const knownLang = stats.course?.known_lang || 'eng'
+    const releaseTarget = stats.releaseTarget || 260
 
     // =========================================================================
     // SAMPLE AUDIO: Get one sample per role for voice matching UI
@@ -3579,10 +3788,8 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     }
 
     // =========================================================================
-    // BUILD RESPONSE: Phase8 data for Azure, local data for ElevenLabs
+    // BUILD RESPONSE: Supabase data for Azure, local data for ElevenLabs
     // =========================================================================
-    const breakdown = phase8Plan.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 }
-    const azureMissing = phase8Plan.missing || 0
     const sharedMissing = sharedAudio.encouragements.missing + sharedAudio.instructions.missing
     const welcomeMissing = welcomeStatus.hasAudio ? 0 : 1
     const totalMissing = azureMissing + sharedMissing + welcomeMissing
@@ -3595,16 +3802,16 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       courseCode,
       releaseTarget,
       totalMissing,
-      totalPhrases: phase8Plan.totalPhrases || 0,
-      totalLegos: phase8Plan.totalPresentationsNeeded || 0,
-      existingCounts: phase8Plan.existingByRole || { known: 0, target1: 0, target2: 0, presentation: 0 },
+      totalPhrases: stats.totalPhrases || 0,
+      totalLegos: stats.totalNewLegos || 0,
+      existingCounts: stats.existingByRole || { known: 0, target1: 0, target2: 0, presentation: 0 },
 
-      // Phase8 breakdown for Azure (UI reads .length but we provide counts via byProcess)
+      // Breakdown for Azure (UI reads counts via byProcess)
       missing: missingByRole,
       missingCounts: breakdown,  // Direct counts for UI
       samples: samplesByRole,
 
-      // Seeds/LEGOs included in phase8 counts (no separate tracking needed)
+      // Seeds/LEGOs included in deduped counts (no separate tracking needed)
       seeds: { counts: {}, missing: { known: [], target1: [], target2: [] }, totalMissing: 0 },
       legos: { counts: {}, missing: { known: [], target1: [], target2: [] }, totalMissing: 0 },
 
@@ -3621,7 +3828,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
         },
         azureSeeds: {
           label: 'Azure TTS (Seeds)',
-          missing: 0,  // Included in phase8 deduped counts
+          missing: 0,  // Included in deduped counts
           categories: []
         },
         azureLegos: {
@@ -3766,17 +3973,32 @@ app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (r
     }
 
     // Create debut phrases for orphan LEGOs
-    // Position 0 is the debut phrase (shows the LEGO itself)
-    // word_count is required by database schema - count words in target_text
+    // The debut phrase shows the LEGO itself — role 'build', position 1
+    // Uses deterministic phrase IDs matching course-builder-api.cjs makePhraseId format
+    const ROLE_PREFIX = { component: 'C', build: 'B', use: 'U' }
+    function makePhraseId(cc, seedNum, legoIdx, phraseRole, rolePos) {
+      const s = String(seedNum).padStart(4, '0')
+      const l = String(legoIdx).padStart(2, '0')
+      const r = ROLE_PREFIX[phraseRole] || 'X'
+      const p = String(rolePos).padStart(2, '0')
+      return `${cc}:S${s}L${l}${r}${p}`
+    }
+
     const debutPhrases = orphanLegos.map(lego => ({
+      id: makePhraseId(courseCode, lego.seed_number, lego.lego_index, 'build', 1),
       course_code: courseCode,
       seed_number: lego.seed_number,
       lego_index: lego.lego_index,
-      position: 0,
+      lego_id: lego.lego_id,
+      position: 1,
       known_text: lego.known_text,
       target_text: lego.target_text,
+      phrase_role: 'build',
       word_count: (lego.target_text || '').split(/\s+/).filter(w => w.length > 0).length || 1,
-      is_debut: true
+      lego_count: 1,
+      connected_lego_ids: [],
+      status: 'draft',
+      version: 1
     }))
 
     const { error: insertError } = await supabase
@@ -4579,14 +4801,14 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
 
     const supabase = supabaseClient.getClient()
 
-    const { rounds, allItems, stats } = await learningScriptGenerator.generateLearningScript(
+    const { rounds, allItems, stats, legosLoaded } = await learningScriptGenerator.generateLearningScript(
       supabase,
       courseCode,
       maxLegosNum,
       offsetNum
     )
 
-    logger.info(`Returning learning journey for ${courseCode}: ${rounds.length} rounds, ${allItems.length} items`)
+    logger.info(`Returning learning journey for ${courseCode}: ${rounds.length} rounds, ${allItems.length} items (${legosLoaded} LEGOs loaded)`)
 
     res.json({
       courseCode,
@@ -4596,11 +4818,100 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
       pagination: {
         maxLegos: maxLegosNum,
         offset: offsetNum,
-        returned: rounds.length,
+        returned: legosLoaded || rounds.length,
       }
     })
   } catch (err) {
     logger.error(`Failed to generate learning journey for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// Search learning journey across ALL content (not paginated)
+app.get('/api/production/:courseCode/learning-journey/search', async (req, res) => {
+  const { courseCode } = req.params
+  const { q } = req.query
+
+  if (!q || q.trim().length === 0) {
+    return res.json({ courseCode, rounds: [], allItems: [], stats: null, query: '' })
+  }
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+    const query = q.trim().toLowerCase()
+
+    // Search lego_cycles for matching LEGOs (by known/target text or seed number)
+    let matchingLegoIds = new Set()
+
+    // 1. Search LEGOs by text
+    const { data: legoMatches } = await supabase
+      .from('lego_cycles')
+      .select('lego_id, seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .or(`known_text.ilike.%${query}%,target_text.ilike.%${query}%`)
+
+    if (legoMatches) {
+      for (const m of legoMatches) matchingLegoIds.add(m.lego_id)
+    }
+
+    // 2. Search by seed number (e.g. "42" matches seed 42)
+    if (/^\d+$/.test(query)) {
+      const seedNum = parseInt(query, 10)
+      const { data: seedMatches } = await supabase
+        .from('lego_cycles')
+        .select('lego_id')
+        .eq('course_code', courseCode)
+        .eq('seed_number', seedNum)
+      if (seedMatches) {
+        for (const m of seedMatches) matchingLegoIds.add(m.lego_id)
+      }
+    }
+
+    // 3. Search practice phrases by text
+    const { data: phraseMatches } = await supabase
+      .from('course_practice_phrases')
+      .select('lego_id')
+      .eq('course_code', courseCode)
+      .or(`known_text.ilike.%${query}%,target_text.ilike.%${query}%`)
+      .limit(500)
+
+    if (phraseMatches) {
+      for (const m of phraseMatches) matchingLegoIds.add(m.lego_id)
+    }
+
+    if (matchingLegoIds.size === 0) {
+      return res.json({ courseCode, rounds: [], allItems: [], stats: null, query: q })
+    }
+
+    // Generate full journey (all LEGOs) then filter to matching rounds
+    const { rounds, allItems, stats } = await learningScriptGenerator.generateLearningScript(
+      supabase,
+      courseCode,
+      9999, // Load all
+      0
+    )
+
+    const filteredRounds = rounds.filter(r => matchingLegoIds.has(r.legoId))
+    const filteredItems = []
+    for (const r of filteredRounds) {
+      filteredItems.push(...r.items)
+    }
+
+    logger.info(`Journey search "${query}" for ${courseCode}: ${matchingLegoIds.size} LEGOs, ${filteredRounds.length} rounds`)
+
+    res.json({
+      courseCode,
+      rounds: filteredRounds,
+      allItems: filteredItems,
+      stats: { ...stats, roundsGenerated: filteredRounds.length, totalItems: filteredItems.length },
+      query: q
+    })
+  } catch (err) {
+    logger.error(`Failed to search learning journey for ${courseCode}:`, err)
     res.status(500).json({ error: err.message })
   }
 })
@@ -6258,6 +6569,196 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
     res.json(result)
   } catch (error) {
     logger.error(`Deploy missing error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// GENDER PREP ROUTES
+// =============================================================================
+
+const genderHaikuService = require('./gender-haiku-service.cjs')
+
+// GET /api/production/:courseCode/gender-prep/status
+// Check gender expansion status for a course
+app.get('/api/production/:courseCode/gender-prep/status', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // Get course target language
+    const { data: course, error: courseErr } = await supabase
+      .from('courses')
+      .select('target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseErr || !course) {
+      return res.status(404).json({ error: 'Course not found' })
+    }
+
+    const isGendered = genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)
+
+    if (!isGendered) {
+      return res.json({ isGendered: false, processed: false, totalExpansions: 0, processedAt: null })
+    }
+
+    // Count existing expansions
+    const { count, error: countErr } = await supabase
+      .from('course_gender_expansions')
+      .select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    // Get most recent processed_at
+    const { data: latest } = await supabase
+      .from('course_gender_expansions')
+      .select('processed_at')
+      .eq('course_code', courseCode)
+      .order('processed_at', { ascending: false })
+      .limit(1)
+
+    const totalExpansions = count || 0
+    const processedAt = latest?.[0]?.processed_at || null
+
+    res.json({
+      isGendered: true,
+      processed: totalExpansions > 0,
+      totalExpansions,
+      processedAt
+    })
+  } catch (error) {
+    logger.error('Error fetching gender-prep status:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/gender-prep/start
+// Spawn a single coordinator in one iTerm window that runs parallel Haiku --print calls
+app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { spawn: spawnProc } = require('child_process')
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // Verify course exists and is gendered
+    const { data: course, error: courseErr } = await supabase
+      .from('courses')
+      .select('target_lang, display_name')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseErr || !course) {
+      return res.status(404).json({ error: 'Course not found' })
+    }
+
+    if (!genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)) {
+      return res.status(400).json({ error: `Language ${course.target_lang} does not have grammatical gender` })
+    }
+
+    // Quick count of texts (coordinator does the actual querying)
+    const { count: phraseCount } = await supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+    const { count: legoCount } = await supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+    const { count: seedCount } = await supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+    const estimatedTexts = (phraseCount || 0) + (legoCount || 0) + (seedCount || 0)
+
+    // Spawn a single iTerm window running the coordinator script
+    const projectDir = path.resolve(__dirname, '..')
+    const coordinatorPath = path.resolve(__dirname, 'gender-prep-coordinator.cjs')
+    const cmd = `cd "${projectDir}" && node "${coordinatorPath}" ${courseCode} --concurrency 5 --batch-size 200`
+    const escapedCmd = cmd.replace(/"/g, '\\"')
+    const osascript = `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    set name to "Gender Prep: ${courseCode}"
+    write text "${escapedCmd}"
+  end tell
+end tell`
+
+    const agent = spawnProc('osascript', ['-e', osascript], { stdio: 'pipe', detached: true })
+    agent.unref()
+    agent.on('error', (e) => logger.error(`[GENDER-PREP] osascript error: ${e.message}`))
+    agent.on('exit', (code) => logger.info(`[GENDER-PREP] iTerm coordinator launched for ${courseCode} (exit: ${code})`))
+
+    const BATCH_SIZE = 200
+    const estimatedBatches = Math.ceil(estimatedTexts / BATCH_SIZE)
+
+    res.json({
+      ok: true,
+      spawned: true,
+      course_code: courseCode,
+      language: course.target_lang,
+      totalTexts: estimatedTexts,
+      agents: 1,
+      batches: estimatedBatches,
+      concurrency: 5,
+      batchSize: BATCH_SIZE,
+      message: `Coordinator spawned in 1 iTerm window (${estimatedTexts} texts, ${estimatedBatches} batches, concurrency 5)`
+    })
+  } catch (error) {
+    logger.error('Error spawning gender-prep coordinator:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// generateGenderPrepBrief removed — brief generation now lives in gender-prep-coordinator.cjs
+
+// GET /api/production/:courseCode/gender-prep/flag-count
+// Count audio flags with reason 'gender-expansion-regen'
+app.get('/api/production/:courseCode/gender-prep/flag-count', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // Get flags with audio details for role breakdown
+    const { data: flags, error } = await supabase
+      .from('audio_flags')
+      .select('audio_uuid')
+      .eq('course_code', courseCode)
+      .eq('reason', 'gender-expansion-regen')
+
+    if (error) throw error
+
+    const flaggedCount = flags?.length || 0
+
+    // Get role breakdown if there are flags
+    let roleBreakdown = { target1: 0, target2: 0 }
+    if (flaggedCount > 0) {
+      const uuids = flags.map(f => f.audio_uuid)
+      // Query audio to get roles (in batches of 500)
+      for (let i = 0; i < uuids.length; i += 500) {
+        const batch = uuids.slice(i, i + 500)
+        const { data: audioRows } = await supabase
+          .from('course_audio')
+          .select('id, role')
+          .in('id', batch)
+        if (audioRows) {
+          for (const row of audioRows) {
+            if (row.role === 'target1') roleBreakdown.target1++
+            else if (row.role === 'target2') roleBreakdown.target2++
+          }
+        }
+      }
+    }
+
+    res.json({
+      flagged: flaggedCount,
+      role_breakdown: roleBreakdown
+    })
+  } catch (error) {
+    logger.error('Error fetching gender-prep flag count:', error)
     res.status(500).json({ error: error.message })
   }
 })

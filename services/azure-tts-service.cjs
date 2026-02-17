@@ -158,7 +158,11 @@ function buildSSML(text, voiceName, speed = 1.0) {
   const speedPercent = Math.round((speed - 1.0) * 100);
   const speedStr = speedPercent === 0 ? '0%' : `${speedPercent > 0 ? '+' : ''}${speedPercent}%`;
 
-  return `<speak version='1.0' xml:lang='en-US' xmlns='http://www.w3.org/2001/10/synthesis'>
+  // Extract locale from voice name (e.g. "de-DE-ConradNeural" → "de-DE")
+  const localeMatch = voiceName.match(/^([a-z]{2}-[A-Z]{2})/);
+  const xmlLang = localeMatch ? localeMatch[1] : 'en-US';
+
+  return `<speak version='1.0' xml:lang='${xmlLang}' xmlns='http://www.w3.org/2001/10/synthesis'>
     <voice name='${voiceName}'>
         <prosody rate='${speedStr}'>${escapeXML(text)}</prosody>
     </voice>

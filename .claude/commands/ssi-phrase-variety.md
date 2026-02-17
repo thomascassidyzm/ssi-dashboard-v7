@@ -2,7 +2,38 @@
 
 How to ensure balanced vocabulary practice across all LEGOs.
 
-## Core Principle
+## Core Principles
+
+1. **Vocabulary Balance**: Every LEGO needs balanced practice exposure
+2. **Length Distribution**: Phrases must progress smoothly from SHORT → MEDIUM → LONG
+
+---
+
+## ⚠️ Phrase Length Distribution (CRITICAL)
+
+**Common failure:** Jumping from SHORT to LONG, skipping MEDIUM entirely.
+
+| Tier | Syllables | Chinese chars | Purpose |
+|------|-----------|---------------|---------|
+| SHORT | 3-5 | 3-5 | Initial practice with LEGO |
+| **MEDIUM** | **6-9** | **6-9** | **Bridge to complex sentences** |
+| LONG | 10+ | 10+ | Full context, spaced repetition |
+
+**Why MEDIUM matters:**
+- Learners need gradual complexity increases
+- Jumping SHORT→LONG feels jarring and demotivating
+- MEDIUM phrases reinforce the LEGO before full sentences
+
+**Distribution targets (seeds 6+):**
+- **BUILD phrases**: Flexible count - whatever is needed to teach the LEGO
+- **USE phrases**: Minimum 5 per LEGO (spread across SHORT/MEDIUM/LONG tiers)
+- See `ralph-methodology.md` for complete BUILD/USE mechanics
+
+**Seeds 1-5:** Flexible - at least 1 phrase, as many as meaningful with limited vocabulary.
+
+---
+
+## Vocabulary Balance
 
 Every LEGO needs balanced practice exposure. Avoid over-relying on common vocabulary while neglecting recently introduced words.
 

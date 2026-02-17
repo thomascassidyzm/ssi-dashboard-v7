@@ -49,6 +49,12 @@ configuration SSiDashboard:
         status: "ACTIVE"
 
       ## ACTIVE SERVICES
+      network_builder:
+        port: 3463
+        offset: 7
+        description: "Network Builder API: Real-time LEGO network visualization and construction"
+        status: "ACTIVE"
+
       phase8_audio:
         port: 3465
         offset: 9
@@ -221,6 +227,11 @@ configuration SSiDashboard:
       COURSE_BUILDER_URL:
         default: "http://localhost:3471"
         description: "Course Builder API - content creation via POST /api/seed/complete"
+        status: "ACTIVE"
+
+      NETWORK_BUILDER_URL:
+        default: "http://localhost:3463"
+        description: "Network Builder API - LEGO network visualization and construction"
         status: "ACTIVE"
 
       PHASE8_URL:
@@ -406,6 +417,11 @@ configuration SSiDashboard:
         script: "services/course-builder-api.cjs"
         port: 3471
         status: "REQUIRED - Content creation"
+
+      - name: "ssi-network-builder"
+        script: "services/network-builder-api.cjs"
+        port: 3463
+        status: "ACTIVE - LEGO network visualization"
 
       - name: "ssi-phase8-audio"
         script: "services/phases/phase8-audio-generator.cjs"

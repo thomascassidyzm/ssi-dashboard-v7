@@ -278,8 +278,12 @@
             <div class="flex items-center gap-3">
               <span class="status-dot" :class="builderProgress.status === 'running' ? 'bg-cyan-500 animate-pulse' : builderProgress.status === 'complete' ? 'bg-emerald-500' : 'bg-slate-500'"></span>
               <div>
-                <div class="text-xs text-slate-500 uppercase tracking-wide">Single Agent</div>
-                <div class="text-sm font-medium text-slate-200">Sequential LEGO Network</div>
+                <div class="text-xs text-slate-500 uppercase tracking-wide">
+                  {{ parallelPhase === 'finalizing' ? 'Finalizing' : '10 Parallel Agents' }}
+                </div>
+                <div class="text-sm font-medium text-slate-200">
+                  {{ parallelPhase === 'finalizing' ? 'Merging to Live' : 'Drafting Seeds' }}
+                </div>
               </div>
             </div>
             <span
@@ -291,20 +295,30 @@
           </div>
 
           <!-- Progress Bar -->
-          <div class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3">
-            <div
-              class="h-full transition-all duration-500 rounded-full bg-cyan-500"
-              :style="{ width: `${builderProgress.totalSeeds > 0 ? (builderProgress.currentSeed / builderProgress.totalSeeds * 100) : 0}%` }"
-            ></div>
+          <div class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3 flex">
+            <!-- Draft progress (cyan) -->
+            <div class="h-full bg-cyan-500 transition-all duration-500"
+              :style="{ width: `${draftsExpected > 0 ? Math.min(100, draftsSubmitted / draftsExpected * 100) : 0}%` }">
+            </div>
+            <!-- Finalize progress (emerald, overlaid on top of drafts) -->
+            <div v-if="parallelPhase === 'finalizing'" class="h-full bg-emerald-500 transition-all duration-500"
+              :style="{ width: `${builderProgress.totalSeeds > 0 ? (builderProgress.currentSeed / builderProgress.totalSeeds * 100) : 0}%` }">
+            </div>
           </div>
 
           <!-- Stats Row -->
           <div class="grid grid-cols-4 gap-4 text-center">
             <div>
-              <div class="text-2xl font-mono font-semibold text-slate-200">
+              <div class="text-2xl font-mono font-semibold text-cyan-400">
+                {{ draftsSubmitted }}
+              </div>
+              <div class="text-xs text-slate-500">/ {{ draftsExpected }} drafted</div>
+            </div>
+            <div>
+              <div class="text-2xl font-mono font-semibold text-emerald-400">
                 {{ builderProgress.currentSeed }}
               </div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">/ {{ builderProgress.totalSeeds || seedCount }} seeds</div>
+              <div class="text-xs text-slate-500">/ {{ builderProgress.totalSeeds || seedCount }} finalized</div>
             </div>
             <div>
               <div class="text-2xl font-mono font-semibold text-slate-200">
@@ -318,13 +332,31 @@
               </div>
               <div class="text-xs text-slate-500 uppercase tracking-wide">Phrases</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Calibration Review Queue -->
+      <section v-if="calibrationReview.pending > 0 || calibrationReview.approved > 0" class="bg-slate-800/30 border border-amber-500/30 rounded-lg p-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="status-dot bg-amber-500 animate-pulse"></span>
             <div>
-              <div class="text-2xl font-mono font-semibold text-slate-200">
-                {{ builderProgress.legosInserted > 0 ? (builderProgress.phrasesInserted / builderProgress.legosInserted).toFixed(1) : '0.0' }}
+              <div class="text-sm font-medium text-slate-200">Calibration Review Queue</div>
+              <div class="text-xs text-slate-500">
+                {{ calibrationReview.approved }}/{{ calibrationReview.total }} approved
+                <span v-if="calibrationReview.pending > 0" class="text-amber-400 ml-1">
+                  &middot; {{ calibrationReview.pending }} awaiting review
+                </span>
               </div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">Ratio</div>
             </div>
           </div>
+          <router-link
+            :to="`/production/${courseCode}/calibration-review`"
+            class="px-4 py-2 bg-amber-600/20 border border-amber-500/50 text-amber-400 rounded-lg hover:bg-amber-600/30 transition-colors text-sm font-medium"
+          >
+            Review Seeds
+          </router-link>
         </div>
       </section>
 
@@ -534,6 +566,180 @@
         </div>
       </section>
 
+      <!-- Pipeline Stepper -->
+      <section v-if="courseCode && pipelineStatus" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden px-6 py-5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Pipeline</span>
+          <div class="flex items-center gap-3">
+            <span v-if="pipelineStatus.is_running" class="flex items-center gap-1.5 text-xs text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Running
+            </span>
+            <span v-else-if="pipelineStatus.human_gate" class="text-xs text-amber-400">Awaiting Review</span>
+            <button
+              v-if="!pipelineStatus.is_running && pipelineStatus.stage !== 'complete'"
+              @click="startPipeline"
+              :disabled="pipelineStarting"
+              class="px-4 py-1.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 rounded text-xs font-medium hover:bg-emerald-600/30 transition-colors disabled:opacity-50"
+            >
+              {{ pipelineStarting ? 'Starting...' : (pipelineStatus.stage === 'not_started' ? 'Build Course' : 'Resume Pipeline') }}
+            </button>
+            <button
+              v-if="pipelineStatus.human_gate"
+              @click="$router.push(`/production/${courseCode}/${pipelineStatus.stage === 'calibrate' ? 'calibration-review' : 'qa-review'}`)"
+              class="px-4 py-1.5 bg-amber-600/20 border border-amber-500/50 text-amber-400 rounded text-xs font-medium hover:bg-amber-600/30 transition-colors"
+            >
+              Open Review
+            </button>
+          </div>
+        </div>
+
+        <!-- Stage steps -->
+        <div class="flex items-center gap-1">
+          <template v-for="(stage, idx) in pipelineStages" :key="stage.id">
+            <div
+              class="flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-medium transition-all"
+              :class="stageClass(stage, idx)"
+            >
+              <span v-if="stageComplete(stage, idx)" class="text-emerald-400">&#10003;</span>
+              <span v-else-if="stageCurrent(stage)" class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
+              <span>{{ stage.label }}</span>
+            </div>
+            <span v-if="idx < pipelineStages.length - 1" class="text-slate-700">&rarr;</span>
+          </template>
+        </div>
+      </section>
+
+      <!-- Seed Grid (Rebuild Visualization) -->
+      <section v-if="seedGrid.length > 0" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+        <button
+          @click="seedGridExpanded = !seedGridExpanded"
+          class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 transition-colors"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Seed Grid</span>
+            <span class="text-xs text-slate-500">
+              {{ seedGridFinalized }}/{{ seedGrid.length }} finalized
+            </span>
+            <span v-if="seedGridDrafted > 0" class="text-xs text-amber-400">
+              {{ seedGridDrafted }} drafted
+            </span>
+            <span v-if="seedGridCollision > 0" class="text-xs text-red-400">
+              {{ seedGridCollision }} collision
+            </span>
+          </div>
+          <svg
+            class="w-5 h-5 text-slate-400 transition-transform duration-200"
+            :class="{ 'rotate-180': seedGridExpanded }"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
+          <!-- Rebuild Controls -->
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex items-center gap-2">
+              <label class="text-xs text-slate-400">From</label>
+              <input
+                v-model.number="rebuildFrom"
+                type="number" min="1" :max="rebuildTo"
+                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
+              />
+              <label class="text-xs text-slate-400">To</label>
+              <input
+                v-model.number="rebuildTo"
+                type="number" :min="rebuildFrom" max="999"
+                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
+              />
+            </div>
+            <button
+              v-if="!rebuildConfirming"
+              @click="rebuildConfirming = true"
+              :disabled="rebuildRunning"
+              class="px-4 py-1.5 bg-red-600/80 hover:bg-red-600 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Rebuild
+            </button>
+            <template v-if="rebuildConfirming">
+              <span class="text-xs text-red-400">Delete LEGOs + phrases for seeds {{ rebuildFrom }}-{{ rebuildTo }}?</span>
+              <button
+                @click="executeRebuild"
+                :disabled="rebuildRunning"
+                class="px-4 py-1.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                {{ rebuildRunning ? 'Wiping...' : 'Confirm' }}
+              </button>
+              <button
+                @click="rebuildConfirming = false"
+                class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+            </template>
+          </div>
+
+          <!-- Grid -->
+          <div class="flex flex-wrap gap-1">
+            <div
+              v-for="cell in seedGrid"
+              :key="cell.seed"
+              class="w-5 h-5 rounded-sm cursor-default transition-colors"
+              :class="seedCellClass(cell)"
+              :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
+            ></div>
+          </div>
+
+          <!-- Legend -->
+          <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/80"></span> Empty</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80"></span> Drafted</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-red-500/80"></span> Collision</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Finalized</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wipe Course -->
+      <section class="bg-slate-800/30 border border-red-900/30 rounded-lg overflow-hidden">
+        <div class="px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="text-sm font-medium text-red-400 uppercase tracking-wide">Wipe Course</span>
+            <span class="text-xs text-slate-500">Delete all content, keep course shell</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer">
+              <input type="checkbox" v-model="wipeKeepAudio" class="rounded border-slate-600 bg-slate-700" />
+              Keep audio
+            </label>
+            <button
+              v-if="!wipeConfirming"
+              @click="wipeConfirming = true"
+              :disabled="wipeRunning"
+              class="px-4 py-1.5 bg-red-600/80 hover:bg-red-600 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Wipe
+            </button>
+            <template v-if="wipeConfirming">
+              <span class="text-xs text-red-400">Delete all seeds, LEGOs, phrases{{ wipeKeepAudio ? '' : ', audio' }}?</span>
+              <button
+                @click="executeWipe"
+                :disabled="wipeRunning"
+                class="px-4 py-1.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                {{ wipeRunning ? 'Wiping...' : 'Confirm Wipe' }}
+              </button>
+              <button
+                @click="wipeConfirming = false"
+                class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+            </template>
+          </div>
+        </div>
+      </section>
+
       <!-- Event Log (Collapsible) -->
       <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
         <button
@@ -612,7 +818,7 @@ const isPolling = ref(false)
 // Config state
 const knownLang = ref('')
 const targetLang = ref('')
-const seedCount = ref(260)
+const seedCount = ref(300)
 const agentEngine = ref('browser')
 
 // Progress state
@@ -645,6 +851,176 @@ const previewError = ref(null)
 // Stale job clearing
 const clearingStale = ref(false)
 
+// Seed grid state
+const seedGrid = ref([])
+const seedGridExpanded = ref(true)
+const rebuildFrom = ref(11)
+const rebuildTo = ref(seedCount.value)
+const rebuildConfirming = ref(false)
+const rebuildRunning = ref(false)
+
+// Calibration review queue state
+const calibrationReview = ref({ pending: 0, approved: 0, redo: 0, total: 0 })
+
+// Pipeline state
+const pipelineStatus = ref(null)
+const pipelineStarting = ref(false)
+const pipelineStages = [
+  { id: 'translate', label: 'Translate' },
+  { id: 'calibrate', label: 'Calibrate' },
+  { id: 'golden', label: 'Golden' },
+  { id: 'build_mvp', label: 'Build MVP' },
+  { id: 'qa_review', label: 'QA Review' },
+  { id: 'gender_prep', label: 'Gender Prep' },
+  { id: 'complete', label: 'Complete' },
+]
+
+function stageClass(stage, idx) {
+  if (!pipelineStatus.value) return 'bg-slate-800/50 text-slate-600'
+  if (stageComplete(stage, idx)) return 'bg-emerald-500/10 text-emerald-400'
+  if (stageCurrent(stage)) return 'bg-cyan-500/15 text-cyan-400 ring-1 ring-cyan-500/30'
+  return 'bg-slate-800/50 text-slate-600'
+}
+
+function stageComplete(stage, idx) {
+  if (!pipelineStatus.value) return false
+  if (pipelineStatus.value.stage === 'complete') return true
+  return idx < pipelineStatus.value.stage_index
+}
+
+function stageCurrent(stage) {
+  return pipelineStatus.value?.stage === stage.id
+}
+
+async function fetchPipelineStatus() {
+  if (!props.courseCode) return
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const resp = await fetch(`${builderApiUrl}/api/build/pipeline/${props.courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      pipelineStatus.value = await resp.json()
+    }
+  } catch (e) {
+    console.error('[CourseManager] pipeline status error:', e)
+  }
+}
+
+async function startPipeline() {
+  if (!props.courseCode) return
+  pipelineStarting.value = true
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const resp = await fetch(`${builderApiUrl}/api/build/pipeline/${props.courseCode}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      await fetchPipelineStatus()
+    }
+  } catch (e) {
+    console.error('[CourseManager] pipeline start error:', e)
+  } finally {
+    pipelineStarting.value = false
+  }
+}
+
+// Wipe state
+const wipeConfirming = ref(false)
+const wipeRunning = ref(false)
+const wipeKeepAudio = ref(true)
+watch(seedCount, (val) => { rebuildTo.value = val })
+
+const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
+const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
+const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
+
+function seedCellClass(cell) {
+  if (cell.status === 'complete') return 'bg-emerald-500/80'
+  if (cell.status === 'drafted') return 'bg-amber-500/80'
+  if (cell.status === 'collision' || cell.status === 'rework') return 'bg-red-500/80'
+  return 'bg-slate-700/80'
+}
+
+async function executeWipe() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+
+  wipeRunning.value = true
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const keepAudioParam = wipeKeepAudio.value ? '&keep_audio=true' : ''
+    const response = await fetch(`${builderApiUrl}/api/course/${code}/wipe?confirm=yes${keepAudioParam}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    const data = await response.json()
+    if (data.ok) {
+      const parts = Object.entries(data.deleted || {}).filter(([, v]) => v > 0).map(([k, v]) => `${v} ${k}`).join(', ')
+      addEvent(`Wiped course: ${parts || 'nothing to delete'}. Re-created ${data.seeds_created} empty seeds.${data.audio_kept ? ' Audio kept.' : ''}`)
+      wipeConfirming.value = false
+      await fetchSeedGrid()
+      await fetchStats()
+    } else {
+      addEvent(`Wipe failed: ${data.error}`)
+    }
+  } catch (err) {
+    addEvent(`Wipe error: ${err.message}`)
+  } finally {
+    wipeRunning.value = false
+  }
+}
+
+async function fetchSeedGrid() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const response = await fetch(`${builderApiUrl}/api/build/seed-grid/${code}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      seedGrid.value = data.seeds || []
+    }
+  } catch (err) {
+    console.error('Failed to fetch seed grid:', err)
+  }
+}
+
+async function executeRebuild() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+
+  rebuildRunning.value = true
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const response = await fetch(`${builderApiUrl}/api/build/rebuild/${code}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value })
+    })
+
+    const data = await response.json()
+    if (data.ok) {
+      addEvent(`Rebuild started: wiped ${data.legos_deleted} LEGOs + ${data.phrases_deleted} phrases for seeds ${rebuildFrom.value}-${rebuildTo.value}`)
+      rebuildConfirming.value = false
+      await fetchSeedGrid()
+    } else {
+      addEvent(`Rebuild failed: ${data.error}`)
+    }
+  } catch (err) {
+    addEvent(`Rebuild error: ${err.message}`)
+  } finally {
+    rebuildRunning.value = false
+  }
+}
+
 // ETA tracking
 const etaHistory = ref([])
 const MAX_HISTORY = 30
@@ -668,7 +1044,7 @@ const languages = ref([
 
 const courseSizes = [
   { seeds: 30, label: 'Test' },
-  { seeds: 260, label: 'MVP' },
+  { seeds: 300, label: 'MVP' },
   { seeds: 668, label: 'Full' }
 ]
 
@@ -704,6 +1080,11 @@ const builderProgress = ref({
   legosInserted: 0,
   phrasesInserted: 0
 })
+
+// Parallel build state
+const parallelPhase = ref('none')  // 'none' | 'drafting' | 'finalizing' | 'complete'
+const draftsSubmitted = ref(0)
+const draftsExpected = ref(0)
 
 // Computed
 const isNewCourse = computed(() => !props.courseCode && !route.params.courseCode)
@@ -995,9 +1376,43 @@ async function fetchProgress() {
 
         lastProgressAt.value = new Date().toISOString()
       }
+
+      // Also poll build status for parallel build info
+      const statusResp = await fetch(`${builderApiUrl}/api/build/status/${code}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      if (statusResp.ok) {
+        const statusData = await statusResp.json()
+
+        // Update current seed from DB source of truth
+        if (statusData.progress) {
+          builderProgress.value.currentSeed = statusData.progress.completed || 0
+          builderProgress.value.totalSeeds = statusData.build?.total_seeds || statusData.last_job_target || seedCount.value
+        }
+
+        // Update job status
+        if (statusData.active) {
+          jobStatus.value = statusData.build?.status === 'stalled' ? 'stuck' : 'running'
+          builderProgress.value.status = 'running'
+        } else if (statusData.progress?.isComplete) {
+          jobStatus.value = 'idle'
+          builderProgress.value.status = 'complete'
+        }
+
+        // Parallel build phase tracking
+        if (statusData.parallel) {
+          parallelPhase.value = statusData.parallel.phase
+          draftsSubmitted.value = statusData.parallel.drafts_submitted
+          draftsExpected.value = statusData.parallel.drafts_expected
+        }
+      }
     } catch (error) {
       console.error('Failed to fetch builder progress:', error)
     }
+
+    // Also fetch seed grid for rebuild visualization
+    fetchSeedGrid()
+
     return
   }
 
@@ -1141,7 +1556,7 @@ async function fetchPreview() {
 
   try {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const mode = seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+    const mode = seedCount.value === 30 ? 'quick_test' : seedCount.value === 300 ? 'mvp_course' : 'full_course'
     const response = await fetch(`${apiBase}/api/preview/${code}/${targetPhase.number}?mode=${mode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -1197,7 +1612,7 @@ async function startPhase() {
         phaseSelection: `phase${targetPhase.number}`,
         spawnerMode: agentEngine.value,
         machineProfile: selectedMachineProfile.value,
-        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 300 ? 'mvp_course' : 'full_course'
       })
     })
 
@@ -1220,36 +1635,39 @@ async function startCourseBuilder() {
   if (!code) return
 
   try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/courses/generate`, {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const response = await fetch(`${builderApiUrl}/api/build/start/${code}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
-        courseCode: code,
-        buildMode: 'course-builder',
-        spawnerMode: agentEngine.value,
-        machineProfile: selectedMachineProfile.value,
-        seedCount: seedCount.value,
-        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+        terminal: agentEngine.value === 'cli' ? 'iTerm2' : agentEngine.value === 'terminal' ? 'Terminal' : 'iTerm2',
+        targetSeeds: seedCount.value,
+        parallel: true
       })
     })
 
-    if (!response.ok) throw new Error('Failed to start course builder')
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}))
+      throw new Error(errData.error || 'Failed to start course builder')
+    }
+
+    const result = await response.json()
 
     builderProgress.value = {
       status: 'running',
-      currentSeed: 0,
+      currentSeed: result.progress?.completed || 0,
       totalSeeds: seedCount.value,
       legosInserted: 0,
       phrasesInserted: 0
     }
     jobStatus.value = 'running'
     jobStartTime.value = Date.now()
+    parallelPhase.value = 'drafting'
 
-    addEvent(`Started Course Builder for ${code} (${seedCount.value} seeds)`)
+    addEvent(`Started Parallel Build for ${code} (${seedCount.value} seeds)`)
 
   } catch (error) {
     console.error('Failed to start course builder:', error)
@@ -1382,9 +1800,11 @@ function startPolling() {
 
   isPolling.value = true
   fetchProgress()
+  fetchPipelineStatus()
 
   pollInterval = setInterval(() => {
     fetchProgress()
+    fetchPipelineStatus()
   }, 3000)
 
   addEvent('Started polling database')
@@ -1492,6 +1912,23 @@ function disconnectWebSocket() {
   }
 }
 
+async function fetchCalibrationReview() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const resp = await fetch(`${builderApiUrl}/api/golden/review-queue/${code}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      const data = await resp.json()
+      calibrationReview.value = data.summary || { pending: 0, approved: 0, redo: 0, total: 0 }
+    }
+  } catch (err) {
+    // Silently ignore — calibration review is optional
+  }
+}
+
 // Lifecycle
 onMounted(() => {
   const code = props.courseCode || route.params.courseCode
@@ -1501,6 +1938,7 @@ onMounted(() => {
     configExpanded.value = false
     startPolling()
     connectWebSocket()
+    fetchCalibrationReview()
   } else {
     // Creation mode - expand config
     configExpanded.value = true

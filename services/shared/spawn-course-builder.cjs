@@ -20,6 +20,106 @@ const COURSE_BUILDER_API = process.env.COURSE_BUILDER_API_URL || 'http://localho
 const DASHBOARD_ROOT = path.resolve(__dirname, '../..');
 
 /**
+ * Generate the GOLDEN EXAMPLES section from calibration data
+ * These are human-verified decompositions that show the correct approach for this language pair
+ */
+function generateGoldenExamplesSection(goldenDecompositions) {
+  if (!goldenDecompositions || goldenDecompositions.length === 0) {
+    return '';
+  }
+
+  let section = `## GOLDEN EXAMPLES FOR THIS COURSE (FOLLOW THESE PATTERNS!)
+
+**This course has been calibrated.** The following ${goldenDecompositions.length} decompositions were created through human+agent collaboration and represent the CORRECT approach for this language pair.
+
+**CRITICAL:** Your decompositions for seeds ${goldenDecompositions.length + 1}+ MUST follow these patterns exactly — same LEGO sizing, same phrase style, same level of detail.
+
+### Methodology Notes
+
+**BUILD phrases** = new LEGO + previously introduced LEGOs. Shows how the new piece "plugs in" to what the learner already knows. Fragments OK. NOT the LEGO by itself, NOT component build-up.
+
+**USE phrases** = complete sentences for eternal spaced repetition. Must be natural things a learner would say.
+
+**LEGO form is FIXED** — never conjugate or inflect a LEGO. Choose phrases where the exact LEGO form works naturally.
+
+**Component pre-teaching:** For M-LEGOs of 4+ words in seeds 1-20, consider whether a useful component word deserves its own A-LEGO first — but ONLY if it makes 2+ natural BUILD phrases with existing vocab. This gives the learner a foothold before the full M-LEGO. USE phrases are optional for these preview A-LEGOs.
+
+**Vocabulary constraint:** Phrases can ONLY use vocabulary from prior seeds + earlier LEGOs in current seed. M-LEGO components count as available vocab at seed level.
+
+`;
+
+  // Add each golden example with full BUILD/USE phrases
+  for (const example of goldenDecompositions) {
+    section += `### Seed ${example.seed_number}: "${example.known_text}"
+**Translation:** ${example.target_text}
+
+`;
+
+    for (const lego of example.legos) {
+      const typeLabel = lego.type === 'M' ? 'M' : 'A';
+      section += `**L${example.legos.indexOf(lego) + 1} [${typeLabel}] "${lego.known}" → "${lego.target}"**`;
+      if (lego.reasoning) {
+        section += ` — *${lego.reasoning}*`;
+      }
+      section += '\n';
+      if (lego.type === 'M' && lego.components && lego.components.length > 0) {
+        section += `Components: ${lego.components.map(c => `"${c.known}" → "${c.target}"`).join(', ')}\n`;
+      }
+
+      // BUILD phrases
+      if (lego.build_phrases && lego.build_phrases.length > 0) {
+        section += 'BUILD:\n';
+        for (const p of lego.build_phrases) {
+          section += `- "${p.known}" → "${p.target}"\n`;
+        }
+      }
+
+      // USE phrases
+      if (lego.use_phrases && lego.use_phrases.length > 0) {
+        section += 'USE:\n';
+        for (const p of lego.use_phrases) {
+          section += `- "${p.known}" → "${p.target}"\n`;
+        }
+      }
+
+      section += '\n';
+    }
+
+    // Add contrastive notes if present
+    if (example.contrastive_notes && example.contrastive_notes.length > 0) {
+      section += '**Contrastive Notes:**\n';
+      for (const note of example.contrastive_notes) {
+        section += `- ${note}\n`;
+      }
+      section += '\n';
+    }
+
+    // Add key insight if present
+    if (example.key_insight) {
+      section += `**Key Insight:** ${example.key_insight}\n\n`;
+    }
+
+    section += '---\n\n';
+  }
+
+  // Add summary of patterns
+  const mLegoCount = goldenDecompositions.reduce((sum, d) => sum + d.legos.filter(l => l.type === 'M').length, 0);
+  const aLegoCount = goldenDecompositions.reduce((sum, d) => sum + d.legos.filter(l => l.type === 'A').length, 0);
+
+  section += `**Pattern Summary from Calibration:**
+- M-LEGOs (multi-word chunks): ${mLegoCount}
+- A-LEGOs (atomic words): ${aLegoCount}
+- M/A Ratio: ${(mLegoCount / (mLegoCount + aLegoCount) * 100).toFixed(0)}% multi-word chunks
+- Total phrases: ${goldenDecompositions.reduce((sum, d) => sum + d.legos.reduce((s, l) => s + (l.build_phrases?.length || 0) + (l.use_phrases?.length || 0), 0), 0)}
+
+**Your job:** Build decompositions for the remaining seeds following EXACTLY this pattern. Same LEGO sizing, same phrase quality, same natural language feel.
+
+`;
+
+  return section;
+}
+
+/**
  * Generate the Course Builder prompt/brief
  */
 function generateCourseBuilderBrief(options) {
@@ -29,6 +129,7 @@ function generateCourseBuilderBrief(options) {
     knownLang = 'English',
     targetLang,
     languageBrief = null,
+    goldenDecompositions = null,  // Human-verified decompositions from /calibrate
     builderApiUrl = COURSE_BUILDER_API
   } = options;
 
@@ -160,6 +261,7 @@ R6 - S0002L01: "I'm trying" → "estoy intentando"
   CONSOLIDATE: I'm trying to speak Spanish with you now → Estoy intentando hablar español contigo ahora
 \`\`\`
 
+${goldenDecompositions ? generateGoldenExamplesSection(goldenDecompositions) : ''}
 ## M-LEGOs WITH COMPONENT BUILD-UP
 
 When a LEGO is multi-word (M-type), break it into components. The API auto-generates build-up:
@@ -273,96 +375,105 @@ Use your linguistic expertise to:
 - All LEGOs from seeds 1 through S-1
 - LEGOs 1 through N-1 from current seed
 
-**Phrase progression for each LEGO:**
-- Start with 2-3 word combinations
-- Build to 4-5 word combinations
-- Include 2-3 ETERNAL phrases (10+ syllables in target language)
+**Two types of phrases per LEGO:**
 
-## API: POST /api/seed/complete
+**BUILD phrases** — show how the new LEGO "plugs in" to previously introduced LEGOs:
+- The **entire new LEGO** combined with **LEGOs the learner already knows**
+- Fragments OK — the point is showing connections
+- Used ONCE at debut, never revisited
+- Flexible count (more when vocab is rich, fewer when sparse)
 
-Submit each seed via curl:
+**USE phrases** — complete sentences the learner will practise for weeks:
+- Must be **complete, natural sentences** a learner would actually say
+- Go into eternal spaced repetition
+- Aim for ~12 per LEGO (fewer for early seeds when vocab is sparse)
+- Start with shorter, simpler phrases and build up to longer, more complex ones
+- They don't all have to be long — they just have to be good, natural phrases
+- A separate QA pass will check grammar — focus on writing natural content
+
+## API: POST /api/seed/complete (MARKDOWN FORMAT)
+
+**Submit seeds in MARKDOWN format** - it's cleaner and uses fewer tokens.
 
 \`\`\`bash
-curl -X POST ${builderApiUrl}/api/seed/complete \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "course_code": "${courseCode}",
-    "seed_number": 1,
-    "known_text": "I want to speak Chinese with you now.",
-    "target_text": "我现在想和你说中文。",
-    "legos": [
-      {
-        "idx": 1,
-        "type": "M",
-        "known": "I want",
-        "target": "我想",
-        "components": [{"known": "I", "target": "我"}, {"known": "want", "target": "想"}],
-        "phrases": []
-      },
-      {
-        "idx": 2,
-        "type": "A",
-        "known": "to speak",
-        "target": "说",
-        "phrases": [
-          {"known": "I want to speak", "target": "我想说"}
-        ]
-      },
-      {
-        "idx": 3,
-        "type": "A",
-        "known": "Chinese",
-        "target": "中文",
-        "phrases": [
-          {"known": "speak Chinese", "target": "说中文"},
-          {"known": "I want to speak Chinese", "target": "我想说中文"}
-        ]
-      },
-      {
-        "idx": 4,
-        "type": "M",
-        "known": "with you",
-        "target": "和你",
-        "components": [{"known": "with", "target": "和"}, {"known": "you", "target": "你"}],
-        "phrases": [
-          {"known": "speak with you", "target": "和你说"},
-          {"known": "speak Chinese with you", "target": "和你说中文"},
-          {"known": "I want to speak with you", "target": "我想和你说"},
-          {"known": "I want to speak Chinese with you", "target": "我想和你说中文"}
-        ]
-      },
-      {
-        "idx": 5,
-        "type": "A",
-        "known": "now",
-        "target": "现在",
-        "phrases": [
-          {"known": "speak now", "target": "现在说"},
-          {"known": "I now want", "target": "我现在想"},
-          {"known": "I now want to speak", "target": "我现在想说"},
-          {"known": "now speak Chinese", "target": "现在说中文"},
-          {"known": "I now want to speak Chinese", "target": "我现在想说中文"},
-          {"known": "I now want to speak with you", "target": "我现在想和你说"},
-          {"known": "I now want to speak Chinese with you", "target": "我现在想和你说中文"}
-        ]
-      }
-    ]
-  }'
+curl -X POST "${builderApiUrl}/api/seed/complete?course=${courseCode}" \\
+  -H "Content-Type: text/markdown" \\
+  -d '# Seed 1
+Known: I want to speak Chinese with you now.
+Target: 我现在想和你说中文。
+
+## L1 [M] "I want" → "我想"
+Components: I → 我, want → 想
+
+BUILD:
+- (nothing to combine with yet - first LEGO in the course)
+
+USE:
+- (no complete sentences possible yet)
+
+## L2 [A] "to speak" → "说"
+
+BUILD:
+- I want to speak → 我想说               ← plugs into known L1 "我想"
+
+USE:
+- (not enough vocab for complete sentences yet)
+
+## L3 [A] "Chinese" → "中文"
+
+BUILD:
+- speak Chinese → 说中文                  ← plugs into known L2 "说"
+- I want to speak Chinese → 我想说中文     ← plugs into L1 + L2
+
+USE:
+- (not enough vocab for complete sentences yet)
+
+## L4 [M] "with you" → "和你"
+Components: with → 和, you → 你
+
+BUILD:
+- speak with you → 和你说                 ← plugs into known L2
+- speak Chinese with you → 和你说中文      ← plugs into L2 + L3
+
+USE:
+- I want to speak with you → 我想和你说 [7]
+- I want to speak Chinese with you → 我想和你说中文 [8]
+
+## L5 [A] "now" → "现在"
+
+BUILD:
+- speak now → 现在说                      ← plugs into L2
+- speak Chinese now → 现在说中文           ← plugs into L2 + L3
+
+USE:
+- I want to speak now → 我现在想说 [7]
+- I want to speak Chinese now → 我现在想说中文 [8]
+- I want to speak with you now → 我现在想和你说 [7]
+- I want to speak Chinese with you now → 我现在想和你说中文 [9]
+'
 \`\`\`
 
-**Note how phrases build up and "now" (现在) comes LAST so learner sees it goes AFTER subject, BEFORE verb!**
+**Key points:**
+- Headers define LEGOs: \`## L1 [M] "known" → "target"\`
+- M-type LEGOs have Components line
+- **BUILD = new LEGO + previously introduced LEGOs** (shows how the new piece connects)
+- **USE = complete natural sentences** (goes into eternal spaced repetition)
+- Early LEGOs have sparse phrases — that's normal, vocabulary builds over time
+- "now" (现在) comes LAST so learner sees word order through many examples
 
 ## Particles Are Learned In Context
 
 For Chinese particles (吗, 呢, 了, etc.), include them in M-LEGOs:
 
-\`\`\`json
-{
-  "type": "M",
-  "known": "Is it good?",
-  "target": "好吗",
-  "components": [{"known": "good", "target": "好"}]
-}
+\`\`\`
+## L3 [M] "Is it good?" → "好吗"
+Components: good → 好
+
+BUILD:
+- good → 好
+
+USE:
+- Is it good? → 好吗 [8]
 \`\`\`
 
 Build-up teaches: "good" → "好", then "Is it good?" → "好吗". Learner infers 吗 from context.
@@ -415,9 +526,7 @@ Fix errors and resubmit. The database is the state - check /api/stats to see pro
 
 You have access to these commands for guidance. **USE THEM** when unsure or after errors:
 
-- \`/ssi-decompose-seed\` - How to break a seed into LEGOs (tiling, ordering, M-LEGOs)
-- \`/ssi-build-phrases\` - How to generate phrases (progression, counts, ETERNAL)
-- \`/ssi-learner-pattern\` - What the learner experiences (the full pedagogical pattern)
+- \`ralph-methodology.md\` - Complete course building methodology (decomposition, phrases, learner pattern)
 
 **Invoke these commands:**
 - Before starting if you need a refresher
@@ -433,7 +542,7 @@ If interrupted or context compacts:
 1. \`GET ${builderApiUrl}/api/resume/${courseCode}\` - Check pass_status
 2. If \`pass1_complete: false\` → Continue translating (Pass 1)
 3. If \`pass1_complete: true, pass2_complete: false\` → Continue decomposing (Pass 2)
-4. Invoke \`/translation-analysis\` or \`/ssi-learner-pattern\` for methodology refresh
+4. Read \`ralph-methodology.md\` for methodology refresh
 5. **Database is the state** - no external tracking needed
 
 ---
@@ -484,6 +593,7 @@ async function spawnCourseBuilder(options) {
     knownLang,
     targetLang,
     languageBrief,
+    goldenDecompositions = null,  // Human-verified calibration examples
     workingDir = DASHBOARD_ROOT
   } = options;
 
@@ -492,6 +602,9 @@ async function spawnCourseBuilder(options) {
   console.log(`   Seeds: ${seedCount}`);
   console.log(`   Terminal: ${terminal}`);
   console.log(`   Model: ${model}`);
+  if (goldenDecompositions) {
+    console.log(`   Calibrated: Yes (${goldenDecompositions.length} golden examples)`);
+  }
 
   // Generate the brief
   const brief = generateCourseBuilderBrief({
@@ -499,7 +612,8 @@ async function spawnCourseBuilder(options) {
     seedCount,
     knownLang,
     targetLang,
-    languageBrief
+    languageBrief,
+    goldenDecompositions
   });
 
   // Save brief to file for reference
@@ -1325,6 +1439,7 @@ async function spawnPhrasePolisher(options, agentId = 1) {
 module.exports = {
   spawnCourseBuilder,
   generateCourseBuilderBrief,
+  generateGoldenExamplesSection,  // Export for testing
   spawnPhraseMonitor,
   generatePhraseMonitorBrief,
   spawnBuildWithMonitor,

@@ -88,7 +88,7 @@ function createNode(nodeId, knownText, targetText) {
  * Generate presentation text for a LEGO
  */
 function generatePresentation(knownText, targetText, langName) {
-  return `The ${langName} for '${knownText.toLowerCase()}', is: ... '${targetText}' ... '${targetText}'`;
+  return `The ${langName} for — '${knownText.toLowerCase()}' — is: ... '${targetText}' ... '${targetText}'`;
 }
 
 /**

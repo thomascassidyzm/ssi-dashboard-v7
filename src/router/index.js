@@ -236,10 +236,10 @@ const routes = [
     meta: { title: 'Course Compilation' }
   },
   {
-    // DEPRECATED: Redirect to Production Suite (need to select course first)
+    // DEPRECATED: Redirect to home (need to select course first)
     path: '/audio',
     name: 'AudioGeneration',
-    redirect: '/production/courses'
+    redirect: '/'
   },
   {
     // DEPRECATED: Redirect to Production Suite audio pipeline
@@ -355,14 +355,11 @@ const routes = [
   // ===========================================
   {
     path: '/production',
-    name: 'ProductionHome',
-    redirect: '/production/courses'
+    redirect: '/'
   },
   {
     path: '/production/courses',
-    name: 'ProductionCourses',
-    component: () => import('@/components/production/CourseSelector.vue'),
-    meta: { title: 'Course Selection - Production Suite' }
+    redirect: '/'
   },
   // Nested routes under ProductionLayout - keeps layout mounted while switching tabs
   {
@@ -441,6 +438,20 @@ const routes = [
         component: () => import('../views/RecordingOptimizer.vue'),
         props: true,
         meta: { title: 'Recording Optimizer - Production Suite' }
+      },
+      {
+        path: 'calibration-review',
+        name: 'CalibrationReview',
+        component: () => import('../views/production/CalibrationReview.vue'),
+        props: true,
+        meta: { title: 'Calibration Review - Production Suite' }
+      },
+      {
+        path: 'qa-review',
+        name: 'QAReview',
+        component: () => import('../views/production/QAReview.vue'),
+        props: true,
+        meta: { title: 'QA Review - Production Suite' }
       }
     ]
   },

@@ -86,7 +86,7 @@
                   :class="{ 'border-red-500': errors.sourceLanguage }"
                   @change="onLanguageChange"
                 >
-                  <option value="" disabled>{{ languagesLoading ? 'Loading languages...' : 'Select known language' }}</option>
+                  <option value="" disabled selected>{{ languagesLoading ? 'Loading languages...' : 'Select known language' }}</option>
                   <option
                     v-for="lang in languages"
                     :key="lang.code"
@@ -115,7 +115,7 @@
                   :class="{ 'border-red-500': errors.targetLanguage }"
                   @change="onLanguageChange"
                 >
-                  <option value="" disabled>{{ languagesLoading ? 'Loading languages...' : 'Select target language' }}</option>
+                  <option value="" disabled selected>{{ languagesLoading ? 'Loading languages...' : 'Select target language' }}</option>
                   <option
                     v-for="lang in languages"
                     :key="lang.code"
@@ -471,7 +471,9 @@ onMounted(async () => {
 async function loadLanguages() {
   languagesLoading.value = true
   try {
-    const response = await apiClient.get('/api/languages')
+    // Request TTS-capable languages with legacy 3-letter codes (spa, fra, deu)
+    // to match existing course code conventions (spa_for_eng)
+    const response = await apiClient.get('/api/languages?tts=true&format=legacy')
     languages.value = response.data
   } catch (error) {
     console.error('Failed to load languages:', error)

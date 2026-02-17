@@ -1,0 +1,305 @@
+# APML: Gender Services
+# Version: 1.0.0 (2026-02-15)
+# Status: PRODUCTION
+# Type: SERVICE SPECIFICATION
+
+service_group GenderServices:
+  name: "Gender-Appropriate TTS Text Generation"
+  purpose: "Pre-compute gender-appropriate text variants for Romance languages and Arabic"
+
+  problem_solved: |
+    Romance languages and Arabic require gender agreement with the speaker:
+    - Spanish: "Estoy cansado" (male) → "Estoy cansada" (female)
+    - French: "Je suis fatigué" (male) → "Je suis fatiguée" (female)
+    - Arabic: "أنا سعيد" (male) → "أنا سعيدة" (female)
+
+    Regex-based approaches fail for:
+    - French avoir verbs (past participles don't agree)
+    - Irregular forms (content→contente, actif→active)
+    - Syntax-aware agreement (predicate vs attributive adjectives)
+
+  solution: |
+    Use Claude Haiku to linguistically analyze all course texts and generate
+    gender-appropriate variants. Store in course_gender_expansions table.
+    TTS generation queries this table before generating audio.
+
+  supported_languages:
+    - spa: "Spanish"
+    - ita: "Italian"
+    - por: "Portuguese"
+    - fra: "French"
+    - ara: "Arabic"
+
+  cost: "~$0.03 per 300-seed course (Haiku batch analysis)"
+
+  ## ==========================================================================
+  ## GENDER PREP COORDINATOR
+  ## ==========================================================================
+
+  service gender-prep-coordinator:
+    file: "services/gender-prep-coordinator.cjs"
+    purpose: "Batch analyze course texts for gender variants using Claude Haiku"
+
+    usage: |
+      node services/gender-prep-coordinator.cjs <course_code> [options]
+
+      Options:
+        --concurrency N    Number of concurrent Haiku batches (default: 5)
+        --batch-size N     Texts per batch (default: 200)
+
+      Environment:
+        TERMINAL_MODE      'headless' (default) or 'iTerm2' for visibility
+
+    architecture:
+      spawning_pattern: "osascript/iTerm2 (same as agent-spawner.cjs)"
+      concurrency_control: "Worker pool pattern with configurable limit"
+      io_pattern: "File-based (stdin pipe to Claude, output to temp files)"
+      result_collection: "Polling for done flags, JSON parsing"
+
+    workflow:
+      1_collect_texts: |
+         Query all unique target_text from:
+         - course_practice_phrases
+         - course_legos
+         - course_seeds
+
+      2_filter_texts: |
+         Remove invalid texts:
+         - Punctuation only (".", "؟", "،")
+         - Single characters
+         - Metadata artifacts ("(perfect tense)")
+
+      3_batch_creation: |
+         Split into batches of BATCH_SIZE (default 200)
+         Total batches = ceil(unique_texts / BATCH_SIZE)
+
+      4_spawn_haiku_batches: |
+         For each batch (with concurrency limit):
+         - Write brief to temp/gender-batches/batch-N-{timestamp}-brief.txt
+         - Spawn: cat brief.txt | claude --print --model haiku > output.json
+         - Poll for done flag: batch-N-{timestamp}-done.flag
+         - Parse JSON results
+
+      5_collect_results: |
+         Merge all batch results
+         Only store texts where expanded_f OR expanded_m differs from original
+
+      6_clear_and_insert: |
+         DELETE FROM course_gender_expansions WHERE course_code = $1
+         INSERT INTO course_gender_expansions (rows with variants)
+         Uses UPSERT with ON CONFLICT (course_code, original_text)
+
+      7_flag_audio: |
+         Flag affected course_audio rows for regeneration
+         (target1 and target2 roles matching the expanded texts)
+
+    performance:
+      batch_duration: "2-7 seconds per batch (50-200 texts)"
+      total_duration: "5-10 minutes for 300-seed course (~8000 unique texts)"
+      api_cost: "$0.03 per course (Claude Haiku)"
+
+    spawning_implementation:
+      headless_mode: |
+        const env = { ...process.env }
+        delete env.CLAUDECODE
+
+        const proc = spawn('bash', ['-c', claudeCmd], {
+          cwd: path.resolve(__dirname, '..'),
+          stdio: 'pipe',
+          env
+        })
+
+      iterm2_mode: |
+        const osascript = `tell application "iTerm"
+          activate
+          set newWindow to (create window with default profile)
+          tell current session of newWindow
+            set name to "Gender Batch N/M"
+            write text "${claudeCmd}"
+          end tell
+        end tell`
+
+        spawn('osascript', ['-e', osascript], { stdio: 'pipe', detached: true })
+
+      critical_fix: |
+        ✅ Use stdin pipe: cat file | claude
+        ❌ NOT command-line args: claude "$(cat file)"
+
+        Command-line args with 12-18KB briefs cause 24+ minute hangs.
+        Stdin pipe completes in 2-7 seconds.
+
+    brief_structure: |
+      You are a {language} linguistics expert.
+
+      ## Task
+      Analyse each text for first-person speaker gender agreement.
+      Two TTS voices read every phrase:
+      - target1 = female voice → adjectives/participles agree feminine
+      - target2 = male voice → adjectives/participles agree masculine
+
+      ## {language} Gender Rules
+      [Language-specific rules for Spanish/French/Arabic/etc.]
+
+      ## Texts to analyse
+      1. [text 1]
+      2. [text 2]
+      ...
+      200. [text 200]
+
+      ## Output
+      Output ONLY a JSON array. No explanation, no markdown.
+      Format: [{"original":"...","expanded_f":"...","expanded_m":"..."}]
+
+      Rules:
+      - Only include texts where expanded_f OR expanded_m differs from original
+      - If cannot analyze (single word, no speaker context), skip it
+      - Most texts will NOT need changes
+
+    haiku_response_handling: |
+      Response may include markdown fences:
+      ```json
+      [{"original":"...","expanded_f":"...","expanded_m":"..."}]
+      ```
+
+      Parser strips markdown and extracts JSON array:
+      const cleaned = content.replace(/^```json?\s*/i, '').replace(/\s*```\s*$/i, '')
+      const arrayMatch = cleaned.match(/\[[\s\S]*\]/)
+      const results = JSON.parse(arrayMatch[0])
+
+    database_integration:
+      table: "course_gender_expansions"
+
+      upsert: |
+        const rows = allResults.map(r => ({
+          course_code: courseCode,
+          original_text: r.original,
+          language: course.target_lang,
+          expanded_f: r.expanded_f,
+          expanded_m: r.expanded_m
+        }))
+
+        await supabase
+          .from('course_gender_expansions')
+          .upsert(rows, { onConflict: 'course_code,original_text' })
+
+      requires: "UNIQUE constraint on (course_code, original_text)"
+      migration: "database/migrations/20260215_add_gender_expansions_constraint.sql"
+
+    error_handling:
+      batch_failure: "Log error, return empty array, continue with other batches"
+      json_parse_error: "Log output excerpt, return empty array"
+      spawn_error: "Log message, return empty array"
+      timeout: "5-minute max per batch (configurable)"
+
+    temp_files:
+      directory: "temp/gender-batches/"
+      cleanup: "On completion or error"
+      files:
+        - "batch-N-{timestamp}-brief.txt"     # Input brief
+        - "batch-N-{timestamp}-output.json"   # Haiku response
+        - "batch-N-{timestamp}-done.flag"     # Completion marker
+
+  ## ==========================================================================
+  ## GENDER HAIKU SERVICE (Legacy - not actively used)
+  ## ==========================================================================
+
+  service gender-haiku-service:
+    file: "services/gender-haiku-service.cjs"
+    status: "DEPRECATED - Replaced by gender-prep-coordinator"
+
+    purpose: |
+      Original Anthropic SDK-based gender expansion service.
+      Replaced by gender-prep-coordinator which uses Claude CLI for better
+      process management and visibility.
+
+    deprecation_note: |
+      This service was designed for on-demand gender expansion during TTS.
+      The pre-processing approach (gender-prep-coordinator) is superior:
+      - Faster TTS generation (no inline Haiku calls)
+      - Better error handling (pre-validated variants)
+      - Cost-effective (batch processing)
+      - Auditable (stored in database)
+
+  ## ==========================================================================
+  ## GENDER EXPANSION SERVICE (Regex-based - deprecated)
+  ## ==========================================================================
+
+  service gender-expansion-service:
+    file: "services/gender-expansion-service.cjs"
+    status: "DEPRECATED - Regex approach fundamentally broken for French"
+
+    problems: |
+      Regex-based expansion using markers like "cansado(a)":
+      - Doesn't understand avoir verb rules (past participles don't agree)
+      - Can't handle irregular forms (actif→active, not actif→actife)
+      - Syntax-blind (can't distinguish predicate vs attributive adjectives)
+      - Only works for explicitly marked text
+      - Requires content creators to manually mark every gender variant
+
+    replacement: |
+      Use gender-prep-coordinator + Haiku linguistic analysis instead.
+
+  ## ==========================================================================
+  ## INTEGRATION WITH TTS GENERATION
+  ## ==========================================================================
+
+  integration phase8_audio:
+    workflow: |
+      Before TTS generation for target1/target2 audio:
+
+      1. Query gender expansion:
+         SELECT expanded_f, expanded_m
+         FROM course_gender_expansions
+         WHERE course_code = $1 AND original_text = $2
+
+      2. Use variant if exists:
+         - target1 (female) → use expanded_f
+         - target2 (male) → use expanded_m
+         - If no row → use original text (no gender change needed)
+
+      3. Generate TTS audio with gender-appropriate text
+
+    performance_impact: "Negligible (<1ms per query with index)"
+
+  ## ==========================================================================
+  ## MIGRATION FROM REGEX TO HAIKU
+  ## ==========================================================================
+
+  migration:
+    date: "2026-02-15"
+    trigger: "French gender expansion broken (avoir bug)"
+
+    steps:
+      1: "Create course_gender_expansions table with unique constraint"
+      2: "Build gender-prep-coordinator with Haiku integration"
+      3: "Add file-based I/O and stdin pipe for performance"
+      4: "Add text filtering to remove garbage from database"
+      5: "Run for all gendered language courses"
+      6: "Update phase8-audio to query gender_expansions table"
+      7: "Deprecate regex-based services"
+
+    validation:
+      arabic_course: "878 variants found in 369s (ara_for_eng)"
+      batch_speed: "2-7 seconds per batch (vs 24+ minute hangs before)"
+      success_rate: "100% of batches complete successfully"
+
+  ## ==========================================================================
+  ## MAINTENANCE
+  ## ==========================================================================
+
+  maintenance:
+    when_to_rerun: |
+      Run gender-prep-coordinator when:
+      - Adding new seeds to a course
+      - Fixing translation errors in target texts
+      - Updating LEGO decompositions
+
+    idempotency: |
+      Safe to run multiple times - clears existing rows before inserting.
+      Does NOT regenerate audio - only flags affected audio_uuid rows.
+
+    audio_regeneration: |
+      After running gender-prep-coordinator:
+      1. Check audio_flags table for flagged records
+      2. Use "Regenerate All Flagged" in Production Suite Audio page
+      3. Or run phase8-audio with --flagged-only flag

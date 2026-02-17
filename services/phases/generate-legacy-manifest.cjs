@@ -354,7 +354,7 @@ function buildNode(id, knownText, targetText) {
 }
 
 function buildPresentation(knownLego, targetLego, targetLangName) {
-  return `The ${targetLangName} for '${knownLego}', is: ... '${targetLego}' ... '${targetLego}'`
+  return `The ${targetLangName} for — '${knownLego}' — is: ... '${targetLego}' ... '${targetLego}'`
 }
 
 function getLanguageName(langCode) {

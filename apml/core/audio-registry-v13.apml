@@ -1,12 +1,13 @@
 # APML: Audio Registry Architecture
-# Version: 13.3.0 (2026-01-28)
+# Version: 13.6.0 (2026-02-15)
 # Status: CANONICAL - This is the source of truth
 # Type: CORE ARCHITECTURE SPECIFICATION
+# Changelog: Added course_gender_expansions table and gender services documentation
 
 architecture AudioRegistry:
   name: "Course-Owned Audio Architecture"
   purpose: "Simple, course-centric audio ownership with shared audio for reusables"
-  version: "13.3.0"
+  version: "13.5.0"
 
   ## ==========================================================================
   ## BREAKING CHANGE FROM v12
@@ -168,7 +169,7 @@ architecture AudioRegistry:
   ## ==========================================================================
 
   schema:
-    version: "13.3.0"
+    version: "13.5.0"
     database: "supabase"
     compiler_target: "postgresql"
 
@@ -262,6 +263,39 @@ architecture AudioRegistry:
               "zut_concerns": [
                 {"seed": 45, "original_english": "...", "suggested_reword": "..."}
               ]
+            }
+            Survives context compaction via /api/resume response.
+
+        quality_rules:
+          type: "JSONB"
+          nullable: true
+          description: |
+            Language-pair specific methodology guidance discovered after Pass 1.
+            Populated by /course-methodology-analysis skill.
+            Structure:
+            {
+              "course_code": "ara_for_eng",
+              "known_language": "eng",
+              "target_language": "ara",
+              "analysis_date": "2026-01-29",
+              "known_language_guidance": {
+                "quality_bar": "Natural, idiomatic - learner knows this language",
+                "avoid_patterns": [{"pattern": "...", "use_instead": "...", "reason": "..."}],
+                "trust_test": "Would a native speaker say this naturally?"
+              },
+              "target_language_guidance": {
+                "quality_bar": "Correct, can have learning structure",
+                "structural_notes": ["..."],
+                "common_patterns": [{"english_pattern": "...", "target_form": "...", "frequency_rank": 1}]
+              },
+              "zut_direction": "eng → ara",
+              "zut_note": "Same known must always produce same target",
+              "early_seed_guidance": {
+                "applies_to_seeds": [1, 20],
+                "phrase_tips": ["..."]
+              },
+              "methodology_insights": ["BUILD phrases must be speakable in isolation", "..."],
+              "opus_polish_guidance": ["Priority: fix unnatural known language", "..."]
             }
             Survives context compaction via /api/resume response.
 
@@ -387,11 +421,12 @@ architecture AudioRegistry:
     ## ------------------------------------------------------------------------
 
     table shared_audio:
-      description: "Audio reused across courses (encouragements, instructions)"
+      description: "Audio reused across courses (encouragements, instructions, paywall)"
       purpose: |
         Only for genuinely shared content:
         - Encouragements ("Da iawn!", "Excellent!")
         - Instructions ("Listen and repeat", "Now try saying...")
+        - Paywall messages (subscription prompts, trial limits)
 
         NOT for course content (phrases, LEGOs) - those go in course_audio.
 
@@ -454,6 +489,139 @@ architecture AudioRegistry:
         normalize_text:
           timing: "BEFORE INSERT OR UPDATE"
           action: "SET text_normalized = LOWER(TRIM(text))"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_GENDER_EXPANSIONS TABLE - Gender-appropriate TTS variants
+    ## ------------------------------------------------------------------------
+
+    table course_gender_expansions:
+      description: "Pre-computed gender-appropriate text variants for TTS generation"
+
+      purpose: |
+        Romance languages and Arabic require gender agreement with the speaker.
+        Example: Spanish "Estoy cansado" (male) → "Estoy cansada" (female)
+
+        This table stores Haiku-analyzed variants for target1 (female) and
+        target2 (male) voices, enabling TTS to generate grammatically correct audio.
+
+        Replaces regex-based gender-analyzer which failed for French avoir verbs
+        and irregular forms.
+
+      gendered_languages:
+        - spa: "Spanish"
+        - ita: "Italian"
+        - por: "Portuguese"
+        - fra: "French"
+        - ara: "Arabic"
+
+      workflow: |
+        1. Run gender-prep-coordinator before TTS generation:
+           node services/gender-prep-coordinator.cjs <course_code>
+
+        2. Coordinator spawns Claude Haiku batches to analyze all unique texts
+        3. Stores only texts that need gender variants (not all texts)
+        4. TTS generation queries this table before generating audio
+        5. If no variant found, uses original text (no gender change needed)
+
+      coordinator_features:
+        spawning: "Uses osascript/iTerm2 pattern (same as agent-spawner.cjs)"
+        concurrency: "Default 5 concurrent Haiku batches"
+        batch_size: "Default 200 texts per batch"
+        performance: "2-7 seconds per batch via stdin pipe (not command-line args)"
+        filtering: "Removes punctuation, single chars, metadata artifacts"
+        idempotency: "Clears existing rows before reprocessing"
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          references: "courses(code)"
+          on_delete: "CASCADE"
+
+        original_text:
+          type: "TEXT"
+          nullable: false
+          description: "The original text (usually masculine default)"
+
+        language:
+          type: "TEXT"
+          nullable: false
+          description: "ISO 639-3 language code"
+
+        expanded_f:
+          type: "TEXT"
+          nullable: true
+          description: |
+            Feminine variant for target1 voice (female speaker).
+            NULL if no gender change needed.
+            Example: "Estoy cansada" (Spanish), "Je suis fatiguée" (French)
+
+        expanded_m:
+          type: "TEXT"
+          nullable: true
+          description: |
+            Masculine variant for target2 voice (male speaker).
+            Usually same as original, but stored for symmetry.
+            NULL if no gender change needed.
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_course_text:
+          type: "UNIQUE"
+          columns: ["course_code", "original_text"]
+          description: "One expansion per course+text (enables idempotent upserts)"
+
+      indexes:
+        idx_gender_expansions_course_lookup:
+          columns: ["course_code", "language"]
+          description: "Fast lookup by course for TTS generation"
+
+      usage_pattern: |
+        TTS generation (phase8-audio-v13):
+
+        1. Query for text variant:
+           SELECT expanded_f, expanded_m
+           FROM course_gender_expansions
+           WHERE course_code = $1 AND original_text = $2
+
+        2. If row exists:
+           - Use expanded_f for target1 (female voice)
+           - Use expanded_m for target2 (male voice)
+
+        3. If no row exists:
+           - Use original text (no gender change needed)
+
+      example_variants:
+        spanish:
+          original: "Estoy cansado"
+          expanded_f: "Estoy cansada"
+          expanded_m: "Estoy cansado"
+
+        french:
+          original: "Je suis fatigué"
+          expanded_f: "Je suis fatiguée"
+          expanded_m: "Je suis fatigué"
+
+        arabic:
+          original: "أنا سعيد"
+          expanded_f: "أنا سعيدة"
+          expanded_m: "أنا سعيد"
+
+      cost: |
+        ~$0.03 per 300-seed course (Claude Haiku batch analysis)
+        Latency: 5-10 minutes pre-processing before TTS generation
+
+      migration: |
+        Added: 2026-02-15
+        Migration: database/migrations/20260215_add_gender_expansions_constraint.sql
 
     ## ------------------------------------------------------------------------
     ## LEGO_INTRODUCTIONS TABLE - Links LEGOs to their presentation audio
@@ -661,6 +829,24 @@ architecture AudioRegistry:
           nullable: true
           description: "Error details if failed"
 
+        machine_name:
+          type: "TEXT"
+          nullable: true
+          description: |
+            Hostname of machine currently running this job.
+            Updated on job creation, resume, and each heartbeat/progress update,
+            so it always reflects the CURRENT machine running the job.
+
+        build_mode:
+          type: "TEXT"
+          nullable: true
+          default: "'parallel'"
+          description: |
+            Build strategy:
+            - parallel: Coordinator + sub-agents via course_seed_drafts staging table
+            Parallel builds submit drafts independently; finalize endpoint
+            processes them in order (dedup, collision detection).
+
         resume_from_seed:
           type: "INTEGER"
           nullable: true
@@ -733,6 +919,247 @@ architecture AudioRegistry:
           using: "true"
           with_check: "true"
           description: "Course-Builder (service role) has full access"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_SEED_DRAFTS TABLE - Parallel build staging
+    ## ------------------------------------------------------------------------
+
+    table course_seed_drafts:
+      description: "Staging table for parallel seed decomposition"
+      purpose: |
+        Parallel build workflow: multiple agents submit drafts independently.
+        The finalize endpoint processes them in order (dedup, collision detection)
+        before promoting to the live course_seeds/course_legos/course_practice_phrases tables.
+
+        One draft per seed per course (upsert replaces on resubmission).
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          references: "courses(course_code)"
+
+        seed_number:
+          type: "INTEGER"
+          nullable: false
+
+        known_text:
+          type: "TEXT"
+          nullable: false
+
+        target_text:
+          type: "TEXT"
+          nullable: false
+
+        submission_data:
+          type: "JSONB"
+          nullable: false
+          description: "Full parsed legos array (with build/use phrases)"
+
+        validation_status:
+          type: "TEXT"
+          default: "'valid'"
+          check: "validation_status IN ('valid', 'collision', 'rework')"
+          description: |
+            Draft validation state:
+            - valid: Ready for finalization
+            - collision: LEGO conflict detected with another draft
+            - rework: Agent needs to resubmit with fixes
+
+        validation_notes:
+          type: "JSONB"
+          nullable: true
+          description: "Details about collisions or rework reasons"
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+        updated_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_draft_per_seed:
+          type: "UNIQUE"
+          columns: ["course_code", "seed_number"]
+          description: "One draft per seed, upsert replaces"
+
+      indexes:
+        idx_course_seed_drafts_course:
+          columns: ["course_code"]
+        idx_course_seed_drafts_status:
+          columns: ["course_code", "validation_status"]
+
+      rls_policies:
+        service_role_full:
+          operation: "ALL"
+          role: "service_role"
+          using: "true"
+          with_check: "true"
+          description: "API server (service role) has full access"
+
+        authenticated_read:
+          operation: "SELECT"
+          role: "authenticated"
+          using: "true"
+          description: "Dashboard can read drafts for monitoring"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_QA_FLAGS TABLE - QA monitoring infrastructure
+    ## ------------------------------------------------------------------------
+
+    table course_qa_flags:
+      description: "QA issues flagged by monitor agent for human review"
+      purpose: |
+        Async phrase quality monitoring. Monitor agent flags issues here;
+        human reviews at checkpoints.
+
+        Also adds qa_checked TIMESTAMPTZ column to course_practice_phrases
+        to track when each phrase was last checked by the monitor.
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          references: "courses(course_code)"
+
+        phrase_id:
+          type: "UUID"
+          nullable: true
+          references: "course_practice_phrases(id)"
+          description: "NULL for cross-seed issues like frequency/variety"
+
+        seed_number:
+          type: "INTEGER"
+          nullable: true
+
+        lego_id:
+          type: "TEXT"
+          nullable: true
+
+        check_type:
+          type: "TEXT"
+          nullable: false
+          check: "check_type IN ('grammar', 'semantic', 'naturalness', 'lego_frequency', 'lego_spread', 'variety', 'vocabulary')"
+          description: |
+            Type of check that found the issue:
+            - grammar: Grammar errors (either language)
+            - semantic: Translation meaning issues
+            - naturalness: Unnatural phrasing
+            - lego_frequency: LEGO phrase count issues (per-LEGO)
+            - lego_spread: LEGO usage distribution across course
+            - variety: Pattern repetition issues
+            - vocabulary: Uses words not yet introduced
+
+        severity:
+          type: "TEXT"
+          nullable: false
+          default: "'warning'"
+          check: "severity IN ('error', 'warning', 'info')"
+          description: "error = must fix, warning = should review, info = pattern noticed"
+
+        issue:
+          type: "TEXT"
+          nullable: false
+          description: "Brief description of the problem"
+
+        details:
+          type: "JSONB"
+          default: "'{}'"
+          description: "Additional context (examples, counts, patterns)"
+
+        status:
+          type: "TEXT"
+          nullable: false
+          default: "'open'"
+          check: "status IN ('open', 'resolved', 'ignored', 'false_positive')"
+
+        resolved_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+
+        resolved_by:
+          type: "TEXT"
+          nullable: true
+
+        resolution_notes:
+          type: "TEXT"
+          nullable: true
+
+        flagged_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_phrase_flag:
+          type: "UNIQUE"
+          columns: ["phrase_id", "check_type"]
+          deferrable: "DEFERRABLE INITIALLY DEFERRED"
+          description: "Prevent duplicate flags per phrase/check_type combo"
+
+      indexes:
+        idx_qa_flags_course:
+          columns: ["course_code"]
+        idx_qa_flags_status:
+          columns: ["status"]
+        idx_qa_flags_severity:
+          columns: ["severity"]
+        idx_qa_flags_type:
+          columns: ["check_type"]
+        idx_qa_flags_seed:
+          columns: ["seed_number"]
+        idx_qa_flags_open:
+          columns: ["course_code", "severity"]
+          where: "status = 'open'"
+
+      rls_policies:
+        authenticated_read:
+          operation: "SELECT"
+          role: "authenticated"
+          using: "true"
+          description: "Dashboard can read all flags"
+
+        authenticated_insert:
+          operation: "INSERT"
+          role: "authenticated"
+          with_check: "true"
+          description: "Dashboard can insert flags (manual flagging)"
+
+        authenticated_update:
+          operation: "UPDATE"
+          role: "authenticated"
+          using: "true"
+          with_check: "true"
+          description: "Dashboard can update flags (resolve, ignore, etc.)"
+
+        service_role_full:
+          operation: "ALL"
+          role: "service_role"
+          using: "true"
+          with_check: "true"
+          description: "Monitor agent (service role) has full access"
+
+      helper_functions:
+        get_qa_summary:
+          params: ["p_course_code TEXT"]
+          returns: "TABLE (total_flags, error_count, warning_count, info_count, open_count, resolved_count)"
+          description: "Get QA summary counts for a course"
+
+        get_qa_flags_by_type:
+          params: ["p_course_code TEXT"]
+          returns: "TABLE (check_type, flag_count, open_count)"
+          description: "Get flag counts grouped by check type for a course"
 
     ## ------------------------------------------------------------------------
     ## COURSE_EXPORT_STATES TABLE - 4-step export workflow state
@@ -1085,6 +1512,67 @@ architecture AudioRegistry:
       returns: "TABLE (role, origin, count, voice_count)"
 
   ## ==========================================================================
+  ## AUDIO-NULLING TRIGGERS (Content Tables)
+  ## ==========================================================================
+
+  audio_nulling_triggers:
+    purpose: |
+      When text changes on course_practice_phrases or course_legos, the
+      corresponding audio UUID columns are automatically set to NULL.
+      Phase 8 "Start Generation" then picks up NULLs and regenerates audio.
+
+      This ensures audio always matches the current text without manual
+      intervention. Changed text = stale audio, so NULL it and regenerate.
+
+    trigger course_practice_phrases:
+      name: "trg_null_phrase_audio_on_text_change"
+      timing: "BEFORE UPDATE"
+      for_each: "ROW"
+      function: "null_phrase_audio_on_text_change()"
+      logic: |
+        IF NEW.known_text IS DISTINCT FROM OLD.known_text THEN
+          NEW.known_audio_id := NULL;
+        END IF;
+        IF NEW.target_text IS DISTINCT FROM OLD.target_text THEN
+          NEW.target1_audio_id := NULL;
+          NEW.target2_audio_id := NULL;
+        END IF;
+
+    trigger course_legos:
+      name: "trg_null_lego_audio_on_text_change"
+      timing: "BEFORE UPDATE"
+      for_each: "ROW"
+      function: "null_lego_audio_on_text_change()"
+      logic: |
+        IF NEW.known_text IS DISTINCT FROM OLD.known_text THEN
+          NEW.known_audio_id := NULL;
+          NEW.presentation_audio_id := NULL;
+        END IF;
+        IF NEW.target_text IS DISTINCT FROM OLD.target_text THEN
+          NEW.target1_audio_id := NULL;
+          NEW.target2_audio_id := NULL;
+        END IF;
+
+    related_columns: |
+      These triggers act on the audio ID columns added by migration
+      20260130_add_audio_ids_to_content.sql:
+
+      course_legos:
+        - known_audio_id UUID REFERENCES course_audio(id)
+        - target1_audio_id UUID REFERENCES course_audio(id)
+        - target2_audio_id UUID REFERENCES course_audio(id)
+        - presentation_audio_id (existing column)
+
+      course_practice_phrases:
+        - known_audio_id UUID REFERENCES course_audio(id)
+        - target1_audio_id UUID REFERENCES course_audio(id)
+        - target2_audio_id UUID REFERENCES course_audio(id)
+
+      These columns enable "cycle locking" - storing audio IDs directly
+      instead of text matching at runtime. The nulling triggers ensure
+      stale audio references are cleared when text is edited.
+
+  ## ==========================================================================
   ## MIGRATION FROM v12
   ## ==========================================================================
 
@@ -1118,8 +1606,8 @@ architecture AudioRegistry:
     recording_provenance: "Nice-to-have, add later if needed"
 
 ## ============================================================================
-## GENERATED: 2026-01-28
-## APML v13.3.0 - Course-Owned Audio Architecture
+## GENERATED: 2026-01-29
+## APML v13.5.0 - Course-Owned Audio Architecture
 ## Supersedes: v12.0.0 (texts → audio_files → course_audio)
 ## Changes in v13.1:
 ##   - Added encouragement and instruction roles to course_audio
@@ -1134,4 +1622,14 @@ architecture AudioRegistry:
 ##   - Added course_export_states table for 4-step export workflow
 ##   - Documented RLS policies for new tables
 ##   - Documented trigger functions (check_pass_1_complete, update_timestamp)
+## Changes in v13.4 (2026-01-29):
+##   - Added quality_rules JSONB column to courses table
+##   - Captures language-pair specific methodology guidance
+##   - Populated by /course-methodology-analysis skill
+## Changes in v13.5 (2026-02-09):
+##   - Added course_seed_drafts table for parallel build staging
+##   - Added course_qa_flags table for async QA monitoring
+##   - Added machine_name and build_mode columns to build_jobs table
+##   - Added audio-nulling triggers on course_practice_phrases and course_legos
+##   - Documented audio ID columns (cycle locking) on content tables
 ## ============================================================================

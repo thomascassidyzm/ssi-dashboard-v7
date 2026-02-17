@@ -269,6 +269,15 @@ async function saveVoiceConfig(courseCode, config) {
     updatedAt: new Date().toISOString()
   };
 
+  // Normalize: push top-level provider into per-voice configs if missing
+  if (fullConfig.provider && fullConfig.voices) {
+    for (const role of ['target1', 'target2', 'known', 'presentation']) {
+      if (fullConfig.voices[role]?.voiceId && !fullConfig.voices[role].provider) {
+        fullConfig.voices[role].provider = fullConfig.provider;
+      }
+    }
+  }
+
   // Ensure createdAt is set
   if (!fullConfig.createdAt) {
     fullConfig.createdAt = fullConfig.updatedAt;
@@ -436,8 +445,8 @@ function validateVoiceConfig(config) {
       continue;
     }
 
-    // If voiceId is set, provider should be set too
-    if (!voice.provider) {
+    // If voiceId is set, provider should be set (per-voice or top-level fallback)
+    if (!voice.provider && !config.provider) {
       errors.push(`Provider for ${role} is required when voice ID is set`);
     }
 
