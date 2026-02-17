@@ -120,19 +120,6 @@
         <span class="card-arrow">&rarr;</span>
       </router-link>
 
-      <!-- Seed View (audio QA by seed) -->
-      <router-link
-        :to="{ name: 'ScriptViewer', params: { courseCode }, query: { view: 'seed' } }"
-        class="workflow-card"
-      >
-        <div class="card-icon review">R</div>
-        <div class="card-content">
-          <h3>Seed View</h3>
-          <p>Review audio by seed</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
-
       <!-- Recording (combined) -->
       <router-link :to="`/production/${courseCode}/recording`" class="workflow-card">
         <div class="card-icon record">H</div>
