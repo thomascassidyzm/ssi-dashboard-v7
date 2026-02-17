@@ -286,16 +286,19 @@ module.exports = function (ctx) {
         phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1;
       }
 
-      // Build grid — statuses: complete, drafted, collision, rework, building, empty
-      let complete = 0, building = 0, empty = 0, drafted = 0, collision = 0;
+      // Build grid — statuses: complete, decomposed, drafted, collision, rework, building, empty
+      let complete = 0, decomposed = 0, building = 0, empty = 0, drafted = 0, collision = 0;
       const grid = (seeds || []).map(s => {
         const legos = legosBySeed[s.seed_number] || 0;
         const phrases = phrasesBySeed[s.seed_number] || 0;
         const draftStatus = draftStatusMap[s.seed_number];
         let status;
-        if (s.decomposed_at) {
+        if (s.decomposed_at && phrases > 0) {
           status = 'complete';
           complete++;
+        } else if (s.decomposed_at) {
+          status = 'decomposed';
+          decomposed++;
         } else if (draftStatus === 'collision' || draftStatus === 'rework') {
           status = draftStatus;
           collision++;
@@ -316,6 +319,7 @@ module.exports = function (ctx) {
         seeds: grid,
         total: grid.length,
         complete,
+        decomposed,
         drafted,
         collision,
         building,

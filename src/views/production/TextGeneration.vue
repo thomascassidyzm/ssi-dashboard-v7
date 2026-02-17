@@ -395,6 +395,11 @@
                 <span v-else-if="mvpPhrasesComplete" class="font-mono text-slate-400">{{ progress.legosInserted }} LEGOs</span>
                 <span v-if="mvpPhrasesComplete" class="stage-badge-complete">Done</span>
                 <span v-else-if="v2Status.phase === 'phrases'" class="text-cyan-400 animate-pulse">Active</span>
+                <button
+                  v-else-if="v2Status.phrases.total_legos > 0 && v2Status.phrases.legos_with_phrases < v2Status.phrases.total_legos"
+                  @click="resumeSubStage('phrases')"
+                  class="px-2 py-0.5 bg-cyan-600 hover:bg-cyan-500 text-white text-xs rounded transition-colors"
+                >Resume</button>
               </div>
             </div>
 
@@ -691,7 +696,8 @@
           <!-- Legend: build progress (primary) -->
           <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30"></span> Empty</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Decomposed</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Building</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/60"></span> Decomposed</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/60 ring-1 ring-inset ring-rose-400"></span> Collision</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
@@ -1045,6 +1051,8 @@ function seedCellClass(cell) {
       return `${accent} bg-rose-500/60 ring-1 ring-inset ring-rose-400`
     case 'complete':
       return `${accent} bg-emerald-500/80`
+    case 'decomposed':
+      return `${accent} bg-cyan-500/60`
     case 'drafted':
       return `${accent} bg-amber-400/70`
     case 'building':
@@ -1279,6 +1287,25 @@ async function createCourse() {
     alert(`Failed to create course: ${error.message}`)
   } finally {
     creatingCourse.value = false
+  }
+}
+
+async function resumeSubStage(stage) {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
+    const response = await fetch(`${apiBase}/api/v2/build/start/${courseCode}?from_stage=${stage}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: '{}'
+    })
+    const result = await response.json()
+    if (!response.ok) alert(`Resume failed: ${result.error || 'Unknown error'}`)
+  } catch (err) {
+    console.error('Resume failed:', err)
+    alert(`Resume failed: ${err.message}`)
   }
 }
 
