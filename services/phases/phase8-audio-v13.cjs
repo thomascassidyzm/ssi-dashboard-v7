@@ -1418,7 +1418,12 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
 
-      const batchResults = await Promise.allSettled(batch.map(generateItem))
+      // Wrap each item with a 120s timeout to prevent hung Supabase/TTS calls from blocking the batch
+      const withTimeout = (fn, ms = 120_000) => Promise.race([
+        fn(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms / 1000}s`)), ms))
+      ])
+      const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
 
       for (let j = 0; j < batchResults.length; j++) {
         const result = batchResults[j]
@@ -2155,6 +2160,14 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     logger.info(`Context sources: ${contextFromSeed} seed, ${contextFromUse} USE phrase, ${contextNone} no context`)
 
+    const contextStats = {
+      fromSeed: contextFromSeed,
+      fromUsePhrase: contextFromUse,
+      noContext: contextNone,
+      fullForm: presentations.filter(p => !p.uses_short_template).length,
+      shortForm: presentations.filter(p => p.uses_short_template).length
+    }
+
     if (dryRun) {
       return res.json({
         success: true,
@@ -2164,6 +2177,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         shortTemplate,
         targetLangName,
         count: presentations.length,
+        contextStats,
         sample: presentations.slice(0, 10)  // Show first 10 to see alternation
       })
     }
@@ -2172,18 +2186,80 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     const voiceConfig = course.voice_config || {}
     const presentationVoiceId = voiceConfig.voices?.presentation?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural'
 
-    // Build records for bulk upsert
-    const audioRecords = presentations.map(pres => ({
-      course_code: courseCode,
-      text: pres.presentation_text,
-      text_normalized: pres.presentation_text.toLowerCase().trim(),
-      language: knownLang,
-      role: 'presentation',
-      voice_id: presentationVoiceId,
-      origin: 'tts',
-      s3_key: `pending/${uuidv4().toUpperCase()}.mp3`,
-      lego_id: pres.lego_id  // Store directly - no regex parsing needed later
-    }))
+    const BATCH_SIZE = 200
+    const legoIdList = presentations.map(p => p.lego_id)
+
+    // Fetch existing presentation audio to detect text changes
+    // (If text changed, we must delete the old record so the new one isn't a duplicate)
+    const existingByLegoId = new Map()
+    for (let i = 0; i < legoIdList.length; i += BATCH_SIZE) {
+      const batch = legoIdList.slice(i, i + BATCH_SIZE)
+      const { data: existing } = await supabase
+        .from('course_audio')
+        .select('id, lego_id, text_normalized, s3_key')
+        .eq('course_code', courseCode)
+        .eq('role', 'presentation')
+        .in('lego_id', batch)
+      if (existing) {
+        for (const rec of existing) existingByLegoId.set(rec.lego_id, rec)
+      }
+    }
+
+    // Delete records where text changed (otherwise upsert creates duplicates)
+    const idsToDelete = []
+    const unchangedLegoIds = new Set()
+    for (const pres of presentations) {
+      const existing = existingByLegoId.get(pres.lego_id)
+      if (!existing) continue
+      const newNorm = pres.presentation_text.toLowerCase().trim()
+      if (existing.text_normalized === newNorm) {
+        unchangedLegoIds.add(pres.lego_id)  // text same → keep existing record
+      } else {
+        idsToDelete.push(existing.id)  // text changed → delete old, insert new
+      }
+    }
+
+    if (idsToDelete.length > 0) {
+      // Collect lego_ids of records being deleted
+      const deletedLegoIds = []
+      for (const pres of presentations) {
+        const existing = existingByLegoId.get(pres.lego_id)
+        if (existing && idsToDelete.includes(existing.id)) {
+          deletedLegoIds.push(pres.lego_id)
+        }
+      }
+      for (let i = 0; i < idsToDelete.length; i += BATCH_SIZE) {
+        const batch = idsToDelete.slice(i, i + BATCH_SIZE)
+        await supabase.from('course_audio').delete().in('id', batch)
+      }
+      // Clear presentation_audio_id so plan/generate picks up the new pending records
+      for (const legoId of deletedLegoIds) {
+        const m = legoId.match(/S(\d+)L(\d+)/)
+        if (!m) continue
+        await supabase.from('course_legos')
+          .update({ presentation_audio_id: null })
+          .eq('course_code', courseCode)
+          .eq('seed_number', parseInt(m[1], 10))
+          .eq('lego_index', parseInt(m[2], 10))
+      }
+      logger.info(`Deleted ${idsToDelete.length} stale presentation records, cleared ${deletedLegoIds.length} presentation_audio_id links`)
+    }
+    logger.info(`Keeping ${unchangedLegoIds.size} unchanged presentation records`)
+
+    // Build records for bulk upsert (skip unchanged — their records already exist)
+    const audioRecords = presentations
+      .filter(pres => !unchangedLegoIds.has(pres.lego_id))
+      .map(pres => ({
+        course_code: courseCode,
+        text: pres.presentation_text,
+        text_normalized: pres.presentation_text.toLowerCase().trim(),
+        language: knownLang,
+        role: 'presentation',
+        voice_id: presentationVoiceId,
+        origin: 'tts',
+        s3_key: `pending/${uuidv4().toUpperCase()}.mp3`,
+        lego_id: pres.lego_id  // Store directly - no regex parsing needed later
+      }))
 
     // Bulk upsert - ignore conflicts (existing records stay as-is)
     const { error: audioError } = await supabase
@@ -2201,9 +2277,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     logger.info(`Upserted ${audioRecords.length} presentation texts`)
 
     // Populate course_legos.presentation_audio_id using lego_id (reliable, no query size limits)
-    // Query all presentation audio for this course by lego_id
-    const BATCH_SIZE = 200
-    const legoIdList = presentations.map(p => p.lego_id)
+    // Only link non-pending audio (pending = text placeholder, no actual audio yet)
     let allPresAudio = []
     for (let i = 0; i < legoIdList.length; i += BATCH_SIZE) {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
@@ -2212,6 +2286,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         .select('id, lego_id')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
+        .not('s3_key', 'like', 'pending/%')
         .in('lego_id', batch)
 
       if (batchError) {
@@ -2278,6 +2353,13 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       logger.warn('No presentation audio found to link after upsert')
     }
 
+    // Bust production-api stats cache so dashboard refreshes
+    try {
+      await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    } catch (e) { /* production-api may not be running */ }
+
     res.json({
       success: true,
       dryRun: false,
@@ -2285,7 +2367,11 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       template,
       targetLangName,
       total: presentations.length,
-      message: `${presentations.length} presentation texts created. Run regenerate-role with role=presentation to generate audio.`
+      textChanged: idsToDelete.length,
+      textUnchanged: unchangedLegoIds.size,
+      newRecords: audioRecords.length,
+      contextStats,
+      message: `${presentations.length} presentations processed (${idsToDelete.length} text changed, ${unchangedLegoIds.size} unchanged, ${presentations.length - idsToDelete.length - unchangedLegoIds.size} new). Run regenerate-role with role=presentation to generate audio.`
     })
 
   } catch (error) {

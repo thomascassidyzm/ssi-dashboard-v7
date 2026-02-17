@@ -2388,15 +2388,14 @@ async function getDirectAudioStats(courseCode) {
   const sharedNeeded = SHARED_AUDIO_REQUIREMENTS.encouragement + SHARED_AUDIO_REQUIREMENTS.instruction
   const sharedExisting = (encRes.count || 0) + (instrRes.count || 0)
 
-  // Welcome audio
-  let welcomeExists = false
-  try {
-    const welcomesPath = require('path').join(__dirname, '../public/vfs/canonical/welcomes.json')
-    if (require('fs').existsSync(welcomesPath)) {
-      const welcomes = JSON.parse(require('fs').readFileSync(welcomesPath, 'utf8'))
-      welcomeExists = !!(welcomes.welcomes?.[courseCode]?.id)
-    }
-  } catch (e) { /* ignore */ }
+  // Welcome audio — check course_audio table
+  const { count: welcomeCount } = await supabase
+    .from('course_audio')
+    .select('id', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .eq('role', 'welcome')
+    .not('s3_key', 'like', 'pending/%')
+  const welcomeExists = (welcomeCount || 0) > 0
 
   const azureNeeded = totalKnownNeeded + totalT1Needed + totalT2Needed + totalPresNeeded
   const azureExisting = knownBound + t1Bound + t2Bound + presBound
@@ -3768,24 +3767,26 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     }
 
     // Welcome audio check
+    // Welcome audio — check course_audio table
     let welcomeStatus = { exists: false, hasAudio: false, details: null }
     try {
-      const welcomesPath = require('path').join(__dirname, '../public/vfs/canonical/welcomes.json')
-      if (require('fs').existsSync(welcomesPath)) {
-        const welcomes = JSON.parse(require('fs').readFileSync(welcomesPath, 'utf8'))
-        const welcome = welcomes.welcomes?.[courseCode]
-        if (welcome) {
-          welcomeStatus = {
-            exists: true,
-            hasAudio: !!welcome.id,
-            hasDuration: welcome.duration > 0,
-            details: { id: welcome.id, duration: welcome.duration, voice: welcome.voice }
-          }
+      const { data: welcomeAudio } = await supabase
+        .from('course_audio')
+        .select('id, s3_key, voice_id, duration_ms')
+        .eq('course_code', courseCode)
+        .eq('role', 'welcome')
+        .not('s3_key', 'like', 'pending/%')
+        .limit(1)
+        .single()
+      if (welcomeAudio) {
+        welcomeStatus = {
+          exists: true,
+          hasAudio: true,
+          hasDuration: (welcomeAudio.duration_ms || 0) > 0,
+          details: { id: welcomeAudio.id, duration: welcomeAudio.duration_ms, voice: welcomeAudio.voice_id }
         }
       }
-    } catch (e) {
-      logger.warn(`Could not read welcomes.json: ${e.message}`)
-    }
+    } catch (e) { /* no welcome audio */ }
 
     // =========================================================================
     // BUILD RESPONSE: Supabase data for Azure, local data for ElevenLabs
