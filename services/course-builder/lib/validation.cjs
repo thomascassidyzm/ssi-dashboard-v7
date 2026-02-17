@@ -5,7 +5,7 @@
  */
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
-const { extractVocab, normalizeForZUT, normalizeForStorage } = require('./text-normalization.cjs');
+const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment } = require('./text-normalization.cjs');
 
 // ─── Methodology command hints (guide agents on rejection) ─────────────
 
@@ -240,13 +240,12 @@ function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
  * Returns array of violations: [{ phrase, unknown: [...] }]
  *
  * vocabSet contains complete LEGO targets and component targets.
- * A LEGO target IS the vocabulary unit — no character or sub-word decomposition.
+ * A phrase must be tileable entirely from these chunks — no word-level splitting,
+ * no free recombination. This prevents conjugations, inversions, and contractions
+ * that were never actually taught in any LEGO.
  *
- * For space-delimited languages: derive a word set from LEGO targets, check each
- * word in the phrase belongs to at least one known LEGO.
- *
- * For Chinese/Japanese (no spaces): check the phrase can be segmented entirely
- * from known LEGO targets (DP segmentation).
+ * For space-delimited languages: DP word-sequence tiling against known chunks.
+ * For Chinese/Japanese (no spaces): DP character-sequence tiling.
  */
 function checkVocabViolations(phrases, vocabSet, courseCode) {
   const chinese = isChinese(courseCode);
@@ -265,22 +264,53 @@ function checkVocabViolations(phrases, vocabSet, courseCode) {
       }
     }
   } else {
-    // Build a word set from complete LEGO targets
-    const wordSet = new Set();
+    // Build a set of known chunks as word arrays for DP matching.
+    // Each chunk is a complete LEGO target or component target — never split further.
+    // Index by first word for fast lookup.
+    const chunksByFirstWord = new Map();
     for (const legoTarget of vocabSet) {
-      for (const word of legoTarget.split(' ')) {
-        if (word) wordSet.add(word);
-      }
+      const words = normalizeForContainment(legoTarget).split(' ').filter(w => w);
+      if (words.length === 0) continue;
+      const first = words[0];
+      if (!chunksByFirstWord.has(first)) chunksByFirstWord.set(first, []);
+      chunksByFirstWord.get(first).push(words);
     }
 
     for (const phrase of phrases) {
-      const normalized = normalizeForStorage(phrase.target, false);
+      const normalized = normalizeForContainment(phrase.target);
       const phraseWords = normalized.split(' ').filter(w => w);
-      const unknown = phraseWords.filter(w => !wordSet.has(w));
-      if (unknown.length > 0) {
+      const n = phraseWords.length;
+      if (n === 0) continue;
+
+      // dp[i] = true means phraseWords[0..i-1] can be tiled by known chunks
+      const dp = new Array(n + 1).fill(false);
+      dp[0] = true;
+
+      for (let i = 0; i < n; i++) {
+        if (!dp[i]) continue;
+        const candidates = chunksByFirstWord.get(phraseWords[i]);
+        if (!candidates) continue;
+        for (const chunk of candidates) {
+          const len = chunk.length;
+          if (i + len > n) continue;
+          let match = true;
+          for (let j = 0; j < len; j++) {
+            if (phraseWords[i + j] !== chunk[j]) { match = false; break; }
+          }
+          if (match) dp[i + len] = true;
+        }
+      }
+
+      if (!dp[n]) {
+        // Find the first untileable position for error reporting
+        let lastReachable = 0;
+        for (let i = 0; i <= n; i++) {
+          if (dp[i]) lastReachable = i;
+        }
+        const uncoveredWords = phraseWords.slice(lastReachable);
         violations.push({
           phrase: phrase.target,
-          unknown: unknown.join(', '),
+          unknown: uncoveredWords.join(' '),
         });
       }
     }
