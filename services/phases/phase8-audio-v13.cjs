@@ -2116,6 +2116,17 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         contextNone++
       }
 
+      // Skip context if the known text overlaps too much with it (redundant/verbose)
+      // e.g. known="I'm happy with how much I've done" context="I'm happy with how much I've done in a short time."
+      if (contextText && lego.known_text.length > 0) {
+        const overlapRatio = lego.known_text.length / contextText.length
+        if (overlapRatio > 0.5) {
+          contextText = null
+          contextSource = 'none_overlap'
+          contextNone++
+        }
+      }
+
       const finalTemplate = contextText ? template : shortTemplate
 
       // For slash-compound known_text like "to listen / to hear", use first option only

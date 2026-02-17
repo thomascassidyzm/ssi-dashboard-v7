@@ -1145,6 +1145,22 @@ async function generateLegacyManifest(courseCode, options = {}) {
     }
   }
 
+  // 5b. Build presentation text lookup from database (lego_id -> text)
+  // This uses the actual generated presentation text instead of hardcoded short form
+  const presentationTextByLegoId = new Map()
+  if (dbAudio) {
+    for (const record of dbAudio) {
+      if (record.role === 'presentation' && record.lego_id && record.text) {
+        // Prefer mastered over pending
+        const isPending = record.s3_key?.startsWith('pending/')
+        if (!isPending || !presentationTextByLegoId.has(record.lego_id)) {
+          presentationTextByLegoId.set(record.lego_id, record.text)
+        }
+      }
+    }
+  }
+  console.error(`  Presentation text lookup: ${presentationTextByLegoId.size} LEGOs`)
+
   // 6. Build seed map from DB ONLY (no file fallback)
   const seedMap = new Map() // seed_number -> { known_text, target_text }
 
@@ -1217,7 +1233,11 @@ async function generateLegacyManifest(courseCode, options = {}) {
         nodes.push(buildNode(phraseUUID, phrase.known_text, phrase.target_text))
       }
 
-      const presentationText = buildPresentation(lego.known_text, lego.target_text, targetLangName)
+      // Use presentation text from database if available, fall back to hardcoded short form
+      const dbPresText = presentationTextByLegoId.get(lego.lego_id)
+      const presentationText = dbPresText
+        ? `${dbPresText} ... '${lego.target_text}' ... '${lego.target_text}'`
+        : buildPresentation(lego.known_text, lego.target_text, targetLangName)
 
       const introItem = {
         id: legoUUID,
