@@ -1778,6 +1778,42 @@ app.delete('/api/production/:courseCode/audio-flags/:audioUuid', async (req, res
   }
 })
 
+// Bulk delete audio flags (resolve all at once)
+app.post('/api/production/:courseCode/audio-flags/bulk-delete', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { audio_uuids } = req.body
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    if (!audio_uuids || !Array.isArray(audio_uuids) || audio_uuids.length === 0) {
+      return res.status(400).json({ error: 'audio_uuids array required' })
+    }
+
+    // Delete in batches of 100 to avoid query size limits
+    const BATCH = 100
+    let deleted = 0
+    for (let i = 0; i < audio_uuids.length; i += BATCH) {
+      const batch = audio_uuids.slice(i, i + BATCH)
+      const { error } = await supabaseClient.getClient()
+        .from('audio_flags')
+        .delete()
+        .eq('course_code', courseCode)
+        .in('audio_uuid', batch)
+      if (error) throw error
+      deleted += batch.length
+    }
+
+    logger.info(`Bulk deleted ${deleted} audio flags for ${courseCode}`)
+    res.json({ success: true, deleted })
+  } catch (error) {
+    logger.error('Error bulk deleting audio flags:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // =============================================================================
 // PHRASE MANAGEMENT
 // =============================================================================

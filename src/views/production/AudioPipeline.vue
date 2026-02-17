@@ -1209,14 +1209,15 @@ const markAllDone = async () => {
   if (!regenerateResult.value?.regeneratedItems?.length) return
 
   try {
-    // Delete all flags using new audio-flags endpoint - user is happy with all audio
-    for (const item of regenerateResult.value.regeneratedItems) {
-      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${item.id}`, {
-        method: 'DELETE',
+    const uuids = regenerateResult.value.regeneratedItems.map((item: any) => item.id).filter(Boolean)
+    if (uuids.length > 0) {
+      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/bulk-delete`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'ngrok-skip-browser-warning': 'true'
-        }
+        },
+        body: JSON.stringify({ audio_uuids: uuids })
       })
     }
     // Clear review list
