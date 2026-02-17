@@ -354,6 +354,8 @@ module.exports = function(ctx) {
         }
       }
 
+      ctx.emitPipelineEvent(courseCode, 'golden:update', { seed_number: null, status: 'finalized', seeds_count: goldenDecompositions.length });
+
       res.json({
         success: true,
         course_code: courseCode,
@@ -524,6 +526,7 @@ module.exports = function(ctx) {
         }
       }
 
+      ctx.emitPipelineEvent(courseCode, 'golden:update', { seed_number: seedNumber, status });
       res.json({ success: true, review_status: status, seed_number: seedNumber });
     } catch (err) {
       console.error('[GOLDEN] Error reviewing seed:', err);

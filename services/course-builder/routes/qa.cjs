@@ -974,6 +974,9 @@ end tell`;
 
       console.log(`[QA] Bulk flag: ${created} created, ${updated} updated, ${phraseIdsToMark.size} phrases marked checked`);
 
+      const courseCode = flags[0]?.course_code;
+      if (courseCode) ctx.emitPipelineEvent(courseCode, 'qa:update', { flagged: created + updated, checked: phraseIdsToMark.size });
+
       res.json({
         success: true,
         created,
@@ -1022,6 +1025,8 @@ end tell`;
       if (error) throw error;
 
       console.log(`[QA] Bulk mark-checked: seeds ${seed_min}-${seed_max} for ${course_code} (${count} phrases)`);
+
+      ctx.emitPipelineEvent(course_code, 'qa:update', { checked: count || 0, flagged: 0 });
 
       res.json({
         success: true,
