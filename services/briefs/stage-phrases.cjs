@@ -1,5 +1,5 @@
 /**
- * Stage: PHRASES — Haiku sub-agents generate BUILD + USE phrases for finalized LEGOs.
+ * Stage: PHRASES — Sonnet sub-agents generate BUILD + USE phrases for finalized LEGOs.
  * This is the key fix: provides golden examples, JSON format, scoring rules, and vocab instructions.
  */
 
@@ -63,10 +63,10 @@ async function generatePhraseBrief(courseCode) {
 - Remaining: ${remaining}
 
 ## Action
-Spawn ${agentCount} Haiku sub-agents (~10 LEGOs each) via Task tool.
+Spawn ${agentCount} Sonnet sub-agents (~10 LEGOs each) via Task tool.
 ALL in a SINGLE message for parallel execution.
 
-subagent_type: "general-purpose", model: "haiku", run_in_background: true
+subagent_type: "general-purpose", model: "sonnet", run_in_background: true
 
 ## Batch Assignments
 ${batchAssignments}

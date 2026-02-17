@@ -1410,7 +1410,7 @@ ${fixInstructions.map(batch => batch.prompt).join('\n\n')}
   }
 
   /**
-   * Generate the v2 phrase brief for Haiku sub-agents.
+   * Generate the v2 phrase brief for Sonnet sub-agents.
    */
   function generateV2PhraseBrief({ courseCode, legoBatches, goldenSeedMarkdown, courseInfo }) {
     const goldenCount = getGoldenSeedCount(courseInfo);
@@ -1475,7 +1475,7 @@ Overgenerate — aim for 5 BUILD and 12 USE per LEGO. The server validates vocab
 If rejected, read the error, fix, retry. Never ask questions.
 ---END SUB-AGENT PROMPT---
 
-- subagent_type: "general-purpose", model: "haiku", run_in_background: true
+- subagent_type: "general-purpose", model: "sonnet", run_in_background: true
 
 ## AUTONOMY
 You are running unattended. Fix errors. Respawn failed agents. Keep going until validate passes.
@@ -1603,9 +1603,9 @@ If 409 (collisions): fix them (merge colliding LEGOs into bigger M-LEGOs), resub
 Loop until clean (200).
 ` : '### Stage 2: FINALIZE — ✅ ALREADY COMPLETE'}
 ${startIdx <= 2 ? `
-### Stage 3: GENERATE PHRASES (Haiku sub-agents)
+### Stage 3: GENERATE PHRASES (Sonnet sub-agents)
 Fetch finalized LEGOs: query course_legos where is_new=true and seed_number >= ${goldenCount + 1}
-Spawn ~${Math.ceil(seedsNeeded / 5)} Haiku sub-agents, ~10 LEGOs each.
+Spawn ~${Math.ceil(seedsNeeded / 5)} Sonnet sub-agents, ~10 LEGOs each.
 Each submits phrases: POST http://localhost:3471/api/v2/phrases/${courseCode}
 Monitor: GET http://localhost:3471/api/v2/phrases/progress/${courseCode}
 ` : '### Stage 3: GENERATE PHRASES — ✅ ALREADY COMPLETE'}
@@ -1634,9 +1634,9 @@ Prompt: Decompose seeds {SEED_LIST} into LEGOs only. POST /api/v2/decompose.
 Seeds: GET http://localhost:3471/api/seeds/${courseCode}
 Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
 
-### For PHRASE sub-agents (Haiku):
+### For PHRASE sub-agents (Sonnet):
 \`\`\`
-subagent_type: "general-purpose", model: "haiku", run_in_background: true
+subagent_type: "general-purpose", model: "sonnet", run_in_background: true
 \`\`\`
 Prompt: Generate BUILD (5+) and USE (12+) phrases for LEGOs {LEGO_LIST}. Overgenerate — aim for 6 BUILD and 15 USE per LEGO. POST /api/v2/phrases/${courseCode}.
 Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
