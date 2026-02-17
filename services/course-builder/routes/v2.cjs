@@ -1145,8 +1145,48 @@ module.exports = function(ctx) {
         Array.from({ length: Math.min(5, goldenCount) }, (_, i) => i + 1)
       );
 
+      // Pre-compute LEGO batches for phrase stage so coordinator doesn't have to query
+      let precomputedLegoBatches = null;
+      if (fromStage === 'phrases') {
+        // Fetch all new LEGOs needing phrases
+        const { data: newLegos } = await ctx.supabase
+          .from('course_legos')
+          .select('seed_number, lego_index, type, known_text, target_text')
+          .eq('course_code', courseCode)
+          .eq('is_new', true)
+          .gte('seed_number', goldenCount + 1)
+          .order('seed_number')
+          .order('lego_index');
+
+        // Find which already have phrases
+        const { data: existingPhrases } = await ctx.supabase
+          .from('course_practice_phrases')
+          .select('seed_number, lego_index')
+          .eq('course_code', courseCode)
+          .gte('seed_number', goldenCount + 1);
+
+        const done = new Set((existingPhrases || []).map(p => `${p.seed_number}:${p.lego_index}`));
+        const remaining = (newLegos || []).filter(l => !done.has(`${l.seed_number}:${l.lego_index}`));
+
+        // Build batches of ~10 LEGOs each
+        const batchSize = 10;
+        precomputedLegoBatches = [];
+        for (let i = 0; i < remaining.length; i += batchSize) {
+          const batch = remaining.slice(i, i + batchSize);
+          precomputedLegoBatches.push(batch.map(l => ({
+            seed: l.seed_number,
+            idx: l.lego_index,
+            type: l.type,
+            known: l.known_text,
+            target: l.target_text
+          })));
+        }
+        console.log(`[V2] Pre-computed ${precomputedLegoBatches.length} phrase batches (${remaining.length} LEGOs remaining)`);
+      }
+
       const brief = generateV2CoordinatorBrief({
-        courseCode, course, goldenCount, effectiveTarget, goldenSeedMarkdown, fromStage
+        courseCode, course, goldenCount, effectiveTarget, goldenSeedMarkdown, fromStage,
+        precomputedLegoBatches
       });
 
       const tmpFile = `/tmp/claude_v2_coordinator_${courseCode}_${Date.now()}.txt`;
@@ -1574,7 +1614,7 @@ You are running unattended. Never ask questions. Fix every flag.
   /**
    * Generate v2 coordinator brief — orchestrates the full pipeline.
    */
-  function generateV2CoordinatorBrief({ courseCode, course, goldenCount, effectiveTarget, goldenSeedMarkdown, fromStage }) {
+  function generateV2CoordinatorBrief({ courseCode, course, goldenCount, effectiveTarget, goldenSeedMarkdown, fromStage, precomputedLegoBatches }) {
     const seedRange = `${goldenCount + 1}-${effectiveTarget}`;
     const seedsNeeded = effectiveTarget - goldenCount;
 
@@ -1602,13 +1642,27 @@ When all drafts in: POST http://localhost:3471/api/v2/decompose/finalize/${cours
 If 409 (collisions): fix them (merge colliding LEGOs into bigger M-LEGOs), resubmit, re-finalize.
 Loop until clean (200).
 ` : '### Stage 2: FINALIZE — ✅ ALREADY COMPLETE'}
-${startIdx <= 2 ? `
+${startIdx <= 2 ? (precomputedLegoBatches ? `
+### Stage 3: GENERATE PHRASES (Sonnet sub-agents)
+
+**${precomputedLegoBatches.length} batches pre-computed. Spawn ALL sub-agents in a SINGLE message.**
+
+Each submits phrases: POST http://localhost:3471/api/v2/phrases/${courseCode}
+Monitor: GET http://localhost:3471/api/v2/phrases/progress/${courseCode} (poll every 90s)
+
+## BATCH ASSIGNMENTS (ready to spawn — DO NOT query the database)
+
+${precomputedLegoBatches.map((batch, i) => {
+  const legoList = batch.map(l => `S${l.seed}L${l.idx}(${l.type}): "${l.known}" → "${l.target}"`).join('\n    ');
+  return `**Agent ${i + 1}** (${batch.length} LEGOs):\n    ${legoList}`;
+}).join('\n\n')}
+` : `
 ### Stage 3: GENERATE PHRASES (Sonnet sub-agents)
 Fetch finalized LEGOs: query course_legos where is_new=true and seed_number >= ${goldenCount + 1}
 Spawn ~${Math.ceil(seedsNeeded / 5)} Sonnet sub-agents, ~10 LEGOs each.
 Each submits phrases: POST http://localhost:3471/api/v2/phrases/${courseCode}
 Monitor: GET http://localhost:3471/api/v2/phrases/progress/${courseCode}
-` : '### Stage 3: GENERATE PHRASES — ✅ ALREADY COMPLETE'}
+`) : '### Stage 3: GENERATE PHRASES — ✅ ALREADY COMPLETE'}
 ${startIdx <= 3 ? `
 ### Stage 4: VALIDATE
 POST http://localhost:3471/api/v2/validate/${courseCode}
@@ -1638,14 +1692,66 @@ Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
 \`\`\`
 subagent_type: "general-purpose", model: "sonnet", run_in_background: true
 \`\`\`
-Prompt: Generate BUILD (5+) and USE (12+) phrases for LEGOs {LEGO_LIST}. Overgenerate — aim for 6 BUILD and 15 USE per LEGO. POST /api/v2/phrases/${courseCode}.
-Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
+
+**Sub-agent prompt template** (replace {LEGO_LIST} with the batch assignment above, and {GOLDEN_EXAMPLES} with the golden examples below):
+
+---BEGIN SUB-AGENT PROMPT---
+You are a world-class language teacher generating practice phrases for ${courseCode}.
+
+Your LEGOs:
+{LEGO_LIST}
+
+## What You're Building
+**BUILD phrases (5+):** Short fragments — the new LEGO combined with known vocab. Don't need to be full sentences.
+**USE phrases (15+):** Complete, natural sentences a real person would say. Must average 12+ syllables. Scored 5-9.
+
+## Rules (server enforces — violations = rejection)
+1. **Containment**: Every phrase target MUST contain the LEGO's target text as an exact substring
+2. **Vocabulary**: Every word in the target must be in learner's vocab. Check: GET http://localhost:3471/api/vocab/${courseCode}?seed=N (returns comma-separated — split on commas)
+3. **Grammar**: Must be grammatically correct. No fragments for USE phrases.
+4. **Naturalness**: Would a native speaker actually say this?
+
+## API
+- Check vocab BEFORE writing phrases: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
+- Submit: POST http://localhost:3471/api/v2/phrases/${courseCode} (JSON body)
+
+## JSON Format
+\\\`\\\`\\\`json
+{
+  "phrases": [
+    {
+      "seed_number": N,
+      "lego_index": L,
+      "build": [{ "known": "...", "target": "..." }],
+      "use": [{ "known": "...", "target": "...", "known_score": 7, "target_score": 8 }]
+    }
+  ]
+}
+\\\`\\\`\\\`
+
+## Scoring
+- **known_score**: How common is the known text? 5=everyday, 7=moderate, 9=advanced
+- **target_score**: How complex is the target? 5=short (4-6 words), 7=medium (7-10), 9=long (11+)
+- Aim for a MIX — don't make everything a 7
+
+## Workflow
+1. For EACH LEGO: fetch vocab for that seed number first
+2. Write BUILD phrases (5+)
+3. Write USE phrases (15+) — OVERGENERATE. Full natural sentences only.
+4. Submit the batch
+5. If rejected: read the error, fix the specific issue, resubmit
+
+Never ask questions. Fix errors and retry.
+---END SUB-AGENT PROMPT---
+
+## Golden Phrase Examples (include in each sub-agent prompt as {GOLDEN_EXAMPLES})
+${patternsSection}
 
 ## Heartbeat
 Ping the build job: POST http://localhost:3471/api/activity/${courseCode}/ping every 5 minutes.
 
 ## AUTONOMY
-You are running overnight. The human is asleep. NEVER ask questions. Fix errors. Respawn failed agents. Keep going through ALL 5 stages until the course is fully built and QA-clean.
+You are running unattended. NEVER ask questions. Fix errors. Respawn failed agents. Keep going until all stages complete.
 `;
   }
 
