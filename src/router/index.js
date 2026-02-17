@@ -445,6 +445,13 @@ const routes = [
         component: () => import('../views/production/CalibrationReview.vue'),
         props: true,
         meta: { title: 'Calibration Review - Production Suite' }
+      },
+      {
+        path: 'qa-review',
+        name: 'QAReview',
+        component: () => import('../views/production/QAReview.vue'),
+        props: true,
+        meta: { title: 'QA Review - Production Suite' }
       }
     ]
   },

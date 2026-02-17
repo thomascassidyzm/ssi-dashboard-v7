@@ -12,6 +12,7 @@ const path = require('path');
 const { getBuildProgress, startBuild, stopBuild, getBuildStatus } = require('../lib/build-manager.cjs');
 const { spawnInTerminal, fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { getGoldenSeedCount } = require('../lib/language-config.cjs');
+const { startPipeline, getPipelineStatus, advancePipeline } = require('../lib/pipeline.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -600,6 +601,48 @@ module.exports = function (ctx) {
     } catch (err) {
       console.error('[GOLDEN] Error starting golden build:', err);
       res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // POST /build/pipeline/:courseCode — Start/resume the full automated pipeline
+  // ===========================================================================
+  router.post('/build/pipeline/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const result = await startPipeline(ctx, courseCode);
+      res.json({ ok: true, ...result });
+    } catch (err) {
+      console.error('[PIPELINE] Error:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // GET /build/pipeline/:courseCode — Get pipeline status
+  // ===========================================================================
+  router.get('/build/pipeline/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const status = await getPipelineStatus(ctx.supabase, courseCode);
+      res.json({ ok: true, ...status });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // POST /build/pipeline/:courseCode/advance — Manually advance pipeline (e.g. after human gate)
+  // ===========================================================================
+  router.post('/build/pipeline/:courseCode/advance', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const force = req.query.force === 'true';
+      const newStage = await advancePipeline(ctx, courseCode, { force });
+      res.json({ ok: true, stage: newStage });
+    } catch (err) {
+      console.error('[PIPELINE] Advance error:', err);
+      res.status(500).json({ ok: false, error: err.message });
     }
   });
 

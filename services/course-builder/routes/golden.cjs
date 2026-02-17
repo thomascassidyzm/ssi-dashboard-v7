@@ -13,6 +13,7 @@
 
 const { Router } = require('express');
 const { getGoldenSeedCount } = require('../lib/language-config.cjs');
+const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
 
 module.exports = function(ctx) {
   const router = Router();
@@ -308,16 +309,32 @@ module.exports = function(ctx) {
 
       console.log(`[GOLDEN] Finalized ${goldenDecompositions.length} golden seeds as calibration for ${courseCode}`);
 
-      // AUTO-CHAIN: If this was Calibration (seeds 1-10), trigger Golden (Phase 3, seeds 11-50)
+      // AUTO-CHAIN: If this was Calibration (seeds 1-10), advance pipeline → golden
       if (targetSeeds <= 10) {
-        const port = ctx.config.PORT || 3471;
         try {
-          console.log(`[AUTO-CHAIN] Calibration complete for ${courseCode} — triggering Golden phase (seeds 11-50)`);
-          const chainResp = await fetch(`http://localhost:${port}/api/build/golden/${courseCode}?target=50&phase=golden`, { method: 'POST' });
-          const chainResult = await chainResp.json();
-          console.log(`[AUTO-CHAIN] Golden trigger result:`, chainResult.ok ? `started — ${chainResult.creator_batches} Creators + 1 Checker` : chainResult.error);
+          console.log(`[AUTO-CHAIN] Calibration complete for ${courseCode} — advancing pipeline`);
+          await advancePipeline(ctx, courseCode);
         } catch (chainErr) {
-          console.error(`[AUTO-CHAIN] Failed to trigger golden for ${courseCode}:`, chainErr.message);
+          console.error(`[AUTO-CHAIN] Failed to advance pipeline for ${courseCode}:`, chainErr.message);
+          // Fallback: direct trigger
+          const port = ctx.config.PORT || 3471;
+          try {
+            const chainResp = await fetch(`http://localhost:${port}/api/build/golden/${courseCode}?target=50&phase=golden`, { method: 'POST' });
+            const chainResult = await chainResp.json();
+            console.log(`[AUTO-CHAIN] Golden trigger result:`, chainResult.ok ? 'started' : chainResult.error);
+          } catch (e) {
+            console.error(`[AUTO-CHAIN] Fallback also failed:`, e.message);
+          }
+        }
+      }
+
+      // AUTO-CHAIN: If this was Golden (seeds 11-50), advance pipeline → build_mvp
+      if (targetSeeds > 10) {
+        try {
+          console.log(`[AUTO-CHAIN] Golden complete for ${courseCode} (${goldenDecompositions.length} seeds) — advancing pipeline`);
+          await advancePipeline(ctx, courseCode);
+        } catch (chainErr) {
+          console.error(`[AUTO-CHAIN] Failed to advance pipeline after golden for ${courseCode}:`, chainErr.message);
         }
       }
 

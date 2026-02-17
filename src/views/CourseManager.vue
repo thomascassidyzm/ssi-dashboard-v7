@@ -566,6 +566,49 @@
         </div>
       </section>
 
+      <!-- Pipeline Stepper -->
+      <section v-if="courseCode && pipelineStatus" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden px-6 py-5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Pipeline</span>
+          <div class="flex items-center gap-3">
+            <span v-if="pipelineStatus.is_running" class="flex items-center gap-1.5 text-xs text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Running
+            </span>
+            <span v-else-if="pipelineStatus.human_gate" class="text-xs text-amber-400">Awaiting Review</span>
+            <button
+              v-if="!pipelineStatus.is_running && pipelineStatus.stage !== 'complete'"
+              @click="startPipeline"
+              :disabled="pipelineStarting"
+              class="px-4 py-1.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 rounded text-xs font-medium hover:bg-emerald-600/30 transition-colors disabled:opacity-50"
+            >
+              {{ pipelineStarting ? 'Starting...' : (pipelineStatus.stage === 'not_started' ? 'Build Course' : 'Resume Pipeline') }}
+            </button>
+            <button
+              v-if="pipelineStatus.human_gate"
+              @click="$router.push(`/production/${courseCode}/${pipelineStatus.stage === 'calibrate' ? 'calibration-review' : 'qa-review'}`)"
+              class="px-4 py-1.5 bg-amber-600/20 border border-amber-500/50 text-amber-400 rounded text-xs font-medium hover:bg-amber-600/30 transition-colors"
+            >
+              Open Review
+            </button>
+          </div>
+        </div>
+
+        <!-- Stage steps -->
+        <div class="flex items-center gap-1">
+          <template v-for="(stage, idx) in pipelineStages" :key="stage.id">
+            <div
+              class="flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-medium transition-all"
+              :class="stageClass(stage, idx)"
+            >
+              <span v-if="stageComplete(stage, idx)" class="text-emerald-400">&#10003;</span>
+              <span v-else-if="stageCurrent(stage)" class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
+              <span>{{ stage.label }}</span>
+            </div>
+            <span v-if="idx < pipelineStages.length - 1" class="text-slate-700">&rarr;</span>
+          </template>
+        </div>
+      </section>
+
       <!-- Seed Grid (Rebuild Visualization) -->
       <section v-if="seedGrid.length > 0" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
         <button
@@ -818,6 +861,70 @@ const rebuildRunning = ref(false)
 
 // Calibration review queue state
 const calibrationReview = ref({ pending: 0, approved: 0, redo: 0, total: 0 })
+
+// Pipeline state
+const pipelineStatus = ref(null)
+const pipelineStarting = ref(false)
+const pipelineStages = [
+  { id: 'translate', label: 'Translate' },
+  { id: 'calibrate', label: 'Calibrate' },
+  { id: 'golden', label: 'Golden' },
+  { id: 'build_mvp', label: 'Build MVP' },
+  { id: 'qa_review', label: 'QA Review' },
+  { id: 'gender_prep', label: 'Gender Prep' },
+  { id: 'complete', label: 'Complete' },
+]
+
+function stageClass(stage, idx) {
+  if (!pipelineStatus.value) return 'bg-slate-800/50 text-slate-600'
+  if (stageComplete(stage, idx)) return 'bg-emerald-500/10 text-emerald-400'
+  if (stageCurrent(stage)) return 'bg-cyan-500/15 text-cyan-400 ring-1 ring-cyan-500/30'
+  return 'bg-slate-800/50 text-slate-600'
+}
+
+function stageComplete(stage, idx) {
+  if (!pipelineStatus.value) return false
+  if (pipelineStatus.value.stage === 'complete') return true
+  return idx < pipelineStatus.value.stage_index
+}
+
+function stageCurrent(stage) {
+  return pipelineStatus.value?.stage === stage.id
+}
+
+async function fetchPipelineStatus() {
+  if (!props.courseCode) return
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const resp = await fetch(`${builderApiUrl}/api/build/pipeline/${props.courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      pipelineStatus.value = await resp.json()
+    }
+  } catch (e) {
+    console.error('[CourseManager] pipeline status error:', e)
+  }
+}
+
+async function startPipeline() {
+  if (!props.courseCode) return
+  pipelineStarting.value = true
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const resp = await fetch(`${builderApiUrl}/api/build/pipeline/${props.courseCode}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      await fetchPipelineStatus()
+    }
+  } catch (e) {
+    console.error('[CourseManager] pipeline start error:', e)
+  } finally {
+    pipelineStarting.value = false
+  }
+}
 
 // Wipe state
 const wipeConfirming = ref(false)
@@ -1693,9 +1800,11 @@ function startPolling() {
 
   isPolling.value = true
   fetchProgress()
+  fetchPipelineStatus()
 
   pollInterval = setInterval(() => {
     fetchProgress()
+    fetchPipelineStatus()
   }, 3000)
 
   addEvent('Started polling database')

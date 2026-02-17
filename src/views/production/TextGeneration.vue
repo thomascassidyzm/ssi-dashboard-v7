@@ -175,6 +175,13 @@
                 {{ goldenStarting ? 'Spawning...' : 'Spawn Creator' }}
               </button>
               <span v-if="goldenStatus.running && pipelinePhase === 'calibrate'" class="text-xs text-amber-400 animate-pulse">Running...</span>
+              <router-link
+                v-if="calibrationPendingReview > 0"
+                :to="`/production/${courseCode}/calibration-review`"
+                class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-xs font-medium rounded-lg transition-all"
+              >
+                Review ({{ calibrationPendingReview }})
+              </router-link>
               <!-- Reset -->
               <template v-if="stageResetConfirm === 'calibrate'">
                 <span class="text-xs text-red-400">Wipe seeds 1-10?</span>
@@ -905,6 +912,10 @@ const calibrationDone = computed(() => {
   const goldenApproved = goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value && s.status === 'approved').length
   const gridFinalized = seedGridFinalizedInRange(1, goldenSeedCount.value)
   return Math.max(goldenApproved, gridFinalized)
+})
+
+const calibrationPendingReview = computed(() => {
+  return goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value && s.status === 'pending_review').length
 })
 
 const calibrationPercent = computed(() => {

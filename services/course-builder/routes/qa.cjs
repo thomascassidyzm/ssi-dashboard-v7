@@ -13,6 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.cjs');
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
+const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
 
 // TODO: Extract generateStrictQABrief to briefs module
 function generateStrictQABrief({ courseCode, courseInfo }) {
@@ -1710,6 +1711,66 @@ end tell`;
     } catch (err) {
       console.error('[QA] Error resetting QA:', err);
       res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ---------------------------------------------------------------------------
+  // POST /qa/approve/:courseCode - Human approves QA review, deletes flagged phrases, advances pipeline
+  // ---------------------------------------------------------------------------
+  router.post('/qa/approve/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { dismiss_flag_ids = [] } = req.body || {};
+
+      // 1. Dismiss any false-positive flags the human marked
+      if (dismiss_flag_ids.length > 0) {
+        await supabase
+          .from('course_qa_flags')
+          .update({ status: 'false_positive', resolved_at: new Date().toISOString() })
+          .in('id', dismiss_flag_ids);
+        console.log(`[QA-APPROVE] Dismissed ${dismiss_flag_ids.length} false-positive flags`);
+      }
+
+      // 2. Delete all remaining open-flagged phrases
+      const { data: openFlags } = await supabase
+        .from('course_qa_flags')
+        .select('id, phrase_id')
+        .eq('course_code', courseCode)
+        .eq('status', 'open')
+        .not('phrase_id', 'is', null);
+
+      const phraseIds = [...new Set((openFlags || []).map(f => f.phrase_id).filter(Boolean))];
+      const flagIds = (openFlags || []).map(f => f.id);
+
+      if (flagIds.length > 0) {
+        await supabase.from('course_qa_flags').delete().in('id', flagIds);
+      }
+      if (phraseIds.length > 0) {
+        await supabase.from('course_practice_phrases').delete().in('id', phraseIds);
+      }
+
+      console.log(`[QA-APPROVE] Deleted ${phraseIds.length} flagged phrases, ${flagIds.length} flags for ${courseCode}`);
+
+      // 3. Advance pipeline → gender_prep
+      let nextStage = null;
+      try {
+        nextStage = await advancePipeline(ctx, courseCode);
+        console.log(`[QA-APPROVE] Pipeline advanced to: ${nextStage}`);
+      } catch (pipeErr) {
+        console.error(`[QA-APPROVE] Pipeline advance failed:`, pipeErr.message);
+      }
+
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        dismissed: dismiss_flag_ids.length,
+        phrases_deleted: phraseIds.length,
+        flags_deleted: flagIds.length,
+        next_stage: nextStage
+      });
+    } catch (err) {
+      console.error('[QA-APPROVE] Error:', err);
+      res.status(500).json({ ok: false, error: err.message });
     }
   });
 

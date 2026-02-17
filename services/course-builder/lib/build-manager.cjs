@@ -4,6 +4,7 @@
  */
 
 const { getGoldenSeedCount } = require('./language-config.cjs');
+const { advancePipeline, getPipelineStatus } = require('./pipeline.cjs');
 
 let buildManagerInterval = null;
 
@@ -79,6 +80,40 @@ async function checkBuilds(ctx) {
     const courseCode = job.course_code;
 
     try {
+      // Translate jobs: check if all seeds have target_text
+      if (job.build_mode === 'translate' || job.pass === 'translate') {
+        const { count: translated } = await ctx.supabase
+          .from('course_seeds')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', courseCode)
+          .not('target_text', 'is', null);
+
+        const target = job.total_seeds || 668;
+        console.log(`[BUILD-DEBUG] === CHECK TRANSLATE ${courseCode}: ${translated}/${target} ===`);
+
+        await ctx.supabase.from('build_jobs').update({
+          current_seed: translated || 0,
+          last_heartbeat: new Date().toISOString(),
+        }).eq('id', job.id);
+
+        if ((translated || 0) >= target) {
+          console.log(`[BUILD] ✓ TRANSLATE COMPLETE: ${courseCode} (${translated}/${target} seeds)`);
+          await ctx.supabase.from('build_jobs').update({
+            status: 'complete',
+            current_seed: translated,
+            seeds_completed: translated,
+            completed_at: new Date().toISOString(),
+          }).eq('id', job.id);
+
+          try {
+            await advancePipeline(ctx, courseCode);
+          } catch (chainErr) {
+            console.error(`[BUILD] Pipeline advance failed after translate:`, chainErr.message);
+          }
+        }
+        continue;
+      }
+
       const progress = await getBuildProgress(ctx, courseCode);
       const targetSeeds = job.total_seeds || 300;
 
@@ -111,6 +146,13 @@ async function checkBuilds(ctx) {
           seeds_completed: progress.completed,
           completed_at: new Date().toISOString(),
         }).eq('id', job.id);
+
+        // AUTO-CHAIN: Build complete → advance pipeline (e.g. build_mvp → qa_review)
+        try {
+          await advancePipeline(ctx, courseCode);
+        } catch (chainErr) {
+          console.error(`[BUILD] Pipeline advance failed after completion:`, chainErr.message);
+        }
       }
 
     } catch (err) {
