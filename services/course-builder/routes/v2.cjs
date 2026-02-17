@@ -1215,6 +1215,8 @@ module.exports = function(ctx) {
 
       startBuildManager(ctx);
 
+      ctx.emitPipelineEvent(courseCode, 'pipeline:stage', { stage: fromStage || 'decompose', progress: null });
+
       res.json({
         ok: true,
         course_code: courseCode,

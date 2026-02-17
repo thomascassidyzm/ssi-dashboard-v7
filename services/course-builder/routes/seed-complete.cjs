@@ -482,9 +482,11 @@ module.exports = function seedCompleteRoutes(ctx) {
       const dupInfo = skipBaskets ? ' (duplicate, no baskets)' : '';
       console.log(`✓ S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}: ${known} → ${target} (${totalPhrases} phrases${buildupInfo})${dupInfo}`);
 
+      ctx.emitPipelineEvent(course_code, 'seed:lego_complete', { seed_number: seed, lego_id: legoId, phrases: totalPhrases });
+
       res.json({
         ok: true,
-        lego_id: `S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}`,
+        lego_id: legoId,
         is_new: isNew,
         skipped_baskets: skipBaskets,
         phrases: totalPhrases,
@@ -663,6 +665,8 @@ module.exports = function seedCompleteRoutes(ctx) {
           hint: 'Some LEGOs have same known text mapping to different targets. Upchunk or use synonyms. See ralph-methodology.md for overlap patterns.',
         });
       }
+
+      ctx.emitPipelineEvent(course_code, 'seed:complete', { seed_number: null, legos_count: legos.length, phrases_count: totalPhrases });
 
       res.json({
         ok: true,
@@ -1738,6 +1742,8 @@ module.exports = function seedCompleteRoutes(ctx) {
         .then(({ error }) => {
           if (error) console.error(`[BUILD] build_jobs update failed:`, error.message);
         });
+
+      ctx.emitPipelineEvent(course_code, 'seed:complete', { seed_number: seed_number, legos_count: legos.length, phrases_count: totalPhrases });
 
       res.json({
         ok: true,

@@ -4875,13 +4875,17 @@ app.get('/api/production/:courseCode/learning-journey/search', async (req, res) 
     // 3. Search practice phrases by text
     const { data: phraseMatches } = await supabase
       .from('course_practice_phrases')
-      .select('lego_id')
+      .select('seed_number, lego_index')
       .eq('course_code', courseCode)
       .or(`known_text.ilike.%${query}%,target_text.ilike.%${query}%`)
       .limit(500)
 
     if (phraseMatches) {
-      for (const m of phraseMatches) matchingLegoIds.add(m.lego_id)
+      for (const m of phraseMatches) {
+        // Derive lego_id from seed_number + lego_index (lego_id column may be null)
+        const legoId = `S${String(m.seed_number).padStart(4,'0')}L${String(m.lego_index).padStart(2,'0')}`
+        matchingLegoIds.add(legoId)
+      }
     }
 
     if (matchingLegoIds.size === 0) {

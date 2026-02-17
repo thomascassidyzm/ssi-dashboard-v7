@@ -37,6 +37,15 @@ module.exports = function createContext(supabase) {
     // Balance violation tracking (resets on restart)
     balanceViolations: {},           // courseCode -> consecutive_strike_count
 
+    // Fire-and-forget WebSocket event via production-api
+    emitPipelineEvent(courseCode, event, data) {
+      fetch('http://localhost:3470/api/production/internal/emit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ courseCode, event, data })
+      }).catch(() => {});
+    },
+
     // Machine identity
     MACHINE_NAME: process.env.MACHINE_NAME || os.hostname(),
     SPAWN_MODE: process.env.SPAWN_MODE || 'iTerm2',

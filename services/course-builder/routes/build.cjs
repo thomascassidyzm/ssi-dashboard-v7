@@ -41,6 +41,7 @@ module.exports = function (ctx) {
       };
 
       const result = await startBuild(ctx, courseCode, terminal, targetSeeds, spawnCallback);
+      ctx.emitPipelineEvent(courseCode, 'build:status', { active: true, pass: 'build', agent_count: result.agent_count || 1 });
       res.json(result);
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
@@ -53,6 +54,7 @@ module.exports = function (ctx) {
   router.post('/build/stop/:courseCode', async (req, res) => {
     const { courseCode } = req.params;
     const result = await stopBuild(ctx, courseCode);
+    ctx.emitPipelineEvent(courseCode, 'build:status', { active: false, pass: null, agent_count: 0 });
     res.json(result);
   });
 
@@ -643,9 +645,32 @@ module.exports = function (ctx) {
       const { courseCode } = req.params;
       const force = req.query.force === 'true';
       const newStage = await advancePipeline(ctx, courseCode, { force });
+      ctx.emitPipelineEvent(courseCode, 'pipeline:stage', { stage: newStage, progress: null });
       res.json({ ok: true, stage: newStage });
     } catch (err) {
       console.error('[PIPELINE] Advance error:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // POST /build/detective/:courseCode — Spawn detective agent to diagnose pipeline
+  // ===========================================================================
+  router.post('/build/detective/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { generateDetectiveBrief } = require('../briefs/detective.cjs');
+      const brief = generateDetectiveBrief(courseCode);
+      const tmpFile = `/tmp/detective-${courseCode}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const claudeCmd = `cd "${projectDir}" && claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+
+      spawnInTerminal(ctx, claudeCmd, `Detective ${courseCode}`, courseCode);
+      res.json({ ok: true, message: `Detective agent spawned for ${courseCode}` });
+    } catch (err) {
+      console.error('[DETECTIVE] Error:', err);
       res.status(500).json({ ok: false, error: err.message });
     }
   });

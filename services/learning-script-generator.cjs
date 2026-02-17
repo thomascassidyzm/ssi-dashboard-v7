@@ -353,7 +353,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
   // legoState map: tracks lastRound and useIndex per LEGO for deterministic REVIEW
   const legoState = new Map()
-  let roundCounter = 0
+  let roundCounter = offset
 
   for (let legoIdx = 0; legoIdx < legos.length; legoIdx++) {
     const currentLego = legos[legoIdx]

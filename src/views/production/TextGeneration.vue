@@ -121,7 +121,54 @@
 
       <!-- PIPELINE -->
       <section v-if="!isCreateMode" class="space-y-2">
-        <h2 class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-3">Pipeline</h2>
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-xs font-medium text-slate-500 uppercase tracking-wide">Pipeline</h2>
+          <button
+            @click="runDetective"
+            :disabled="diagnosing"
+            class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
+            :class="diagnosing
+              ? 'bg-amber-600/20 border-amber-500/50 text-amber-400 animate-pulse cursor-wait'
+              : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-400'"
+          >
+            {{ diagnosing ? 'Diagnosing...' : 'Diagnose' }}
+          </button>
+        </div>
+
+        <!-- Detective Findings -->
+        <div v-if="socket.detectiveFindings.value" class="mb-3 bg-slate-800/50 border border-cyan-500/30 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <div class="text-sm font-medium text-cyan-400">Detective Report</div>
+            <button @click="socket.detectiveFindings.value = null" class="text-slate-500 hover:text-slate-300 text-xs">Dismiss</button>
+          </div>
+          <div class="text-xs text-slate-300 mb-3">{{ socket.detectiveFindings.value.summary }}</div>
+          <div v-if="socket.detectiveFindings.value.findings?.length" class="space-y-2">
+            <div
+              v-for="(finding, i) in socket.detectiveFindings.value.findings"
+              :key="i"
+              class="flex items-center justify-between bg-slate-900/50 rounded px-3 py-2"
+            >
+              <div class="flex items-center gap-2">
+                <span
+                  class="w-2 h-2 rounded-full"
+                  :class="{
+                    'bg-red-500': finding.severity === 'error',
+                    'bg-amber-500': finding.severity === 'warning',
+                    'bg-cyan-500': finding.severity === 'info'
+                  }"
+                ></span>
+                <span class="text-xs text-slate-300">{{ finding.message }}</span>
+              </div>
+              <button
+                v-if="finding.action"
+                @click="executeDetectiveAction(finding.action)"
+                class="px-2 py-0.5 bg-cyan-600/20 border border-cyan-500/40 text-cyan-400 text-xs rounded hover:bg-cyan-600/30 transition-all"
+              >
+                {{ finding.action.label }}
+              </button>
+            </div>
+          </div>
+        </div>
 
         <!-- Stage 1: Translate -->
         <div class="pipeline-card" :class="stageCardClass('translate')">
@@ -735,9 +782,10 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
+import { useTextGenSocket } from '@/composables/useTextGenSocket'
 
 const router = useRouter()
 
@@ -833,6 +881,10 @@ const uncheckedGrouped = computed(() => {
   }
   return Object.values(groups).sort((a, b) => a.seed - b.seed)
 })
+
+// WebSocket for real-time updates
+const socket = useTextGenSocket()
+const diagnosing = ref(false)
 
 // Translation agent state
 const translateStarting = ref(false)
@@ -1895,7 +1947,7 @@ function startPolling() {
   if (pollInterval) return
   isPolling.value = true
   fetchProgress()
-  pollInterval = setInterval(fetchProgress, 3000)
+  pollInterval = setInterval(fetchProgress, 30000)
 }
 
 function stopPolling() {
@@ -1932,9 +1984,61 @@ async function loadLanguages() {
   }
 }
 
+// Debounced socket watchers — coalesce rapid events into single refetch
+let socketDebounceTimers = {}
+function debouncedFetch(key, fn, delay = 2000) {
+  if (socketDebounceTimers[key]) clearTimeout(socketDebounceTimers[key])
+  socketDebounceTimers[key] = setTimeout(fn, delay)
+}
+
+watch(() => socket.lastSeedComplete.value, (v) => { if (v) debouncedFetch('seed', () => { fetchSeedGrid(); fetchProgress() }) })
+watch(() => socket.lastBuildStatus.value, (v) => { if (v) debouncedFetch('build', fetchProgress) })
+watch(() => socket.lastQaUpdate.value, (v) => { if (v) debouncedFetch('qa', fetchQASummary) })
+watch(() => socket.lastGoldenUpdate.value, (v) => { if (v) debouncedFetch('golden', fetchGoldenStatus) })
+watch(() => socket.lastPipelineStage.value, (v) => { if (v) debouncedFetch('pipeline', fetchV2Status) })
+
+async function runDetective() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  diagnosing.value = true
+  socket.detectiveFindings.value = null
+  try {
+    const apiBase = getApiUrl()
+    await fetch(`${apiBase}/api/build/detective/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+  } catch (err) {
+    console.error('Failed to spawn detective:', err)
+  } finally {
+    // Keep diagnosing=true until findings arrive via socket
+    setTimeout(() => { diagnosing.value = false }, 60000)
+  }
+}
+
+watch(() => socket.detectiveFindings.value, (findings) => {
+  if (findings) diagnosing.value = false
+})
+
+async function executeDetectiveAction(action) {
+  try {
+    const apiBase = getApiUrl()
+    await fetch(`${apiBase}${action.path}`, {
+      method: action.method || 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: action.body ? JSON.stringify(action.body) : undefined
+    })
+  } catch (err) {
+    console.error('Detective action failed:', err)
+  }
+}
+
 // Lifecycle
 onMounted(() => {
   startPolling()
+  if (!isCreateMode.value) {
+    socket.connect(effectiveCourseCode.value)
+  }
   if (isCreateMode.value) {
     loadLanguages()
   } else {
@@ -1944,6 +2048,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopPolling()
+  socket.disconnect()
 })
 </script>
 
