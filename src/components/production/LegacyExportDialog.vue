@@ -345,8 +345,15 @@ async function handlePushToRemote() {
 }
 
 // Step 4 handlers
+let checkPlanRunning = false
 async function handleCheckPlan() {
-  await workflow.getDeployPlan()
+  if (checkPlanRunning) return
+  checkPlanRunning = true
+  try {
+    await workflow.getDeployPlan()
+  } finally {
+    checkPlanRunning = false
+  }
 }
 
 async function handleDeploy(confirmation: string | undefined) {

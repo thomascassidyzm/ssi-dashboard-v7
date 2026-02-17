@@ -374,6 +374,63 @@
       <span>{{ isLoading ? 'Checking...' : 'Refresh Plan' }}</span>
     </button>
 
+    <!-- Deploy verification FAILED -->
+    <div v-if="!state.audioDeployed && state.deployVerification && !isDeploying && !isLoading"
+         class="failure-box p-4 bg-red-900/30 border border-red-700 rounded-lg space-y-3">
+      <div class="flex items-center gap-2 text-red-400 font-medium">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        <span>Deployment verification failed</span>
+      </div>
+
+      <p v-if="state.deployVerification.message" class="text-sm text-slate-300">
+        {{ state.deployVerification.message }}
+      </p>
+
+      <!-- Stats grid -->
+      <div class="grid grid-cols-4 gap-2 text-sm">
+        <div class="text-center p-2 bg-slate-800 rounded">
+          <div class="text-emerald-400 font-semibold">{{ (state.deployVerification.matched || 0).toLocaleString() }}</div>
+          <div class="text-slate-500 text-xs">OK</div>
+        </div>
+        <div class="text-center p-2 bg-slate-800 rounded">
+          <div :class="(state.deployVerification.mismatched || 0) > 0 ? 'text-amber-400' : 'text-slate-400'" class="font-semibold">{{ (state.deployVerification.mismatched || 0).toLocaleString() }}</div>
+          <div class="text-slate-500 text-xs">Mismatched</div>
+        </div>
+        <div class="text-center p-2 bg-slate-800 rounded">
+          <div :class="(state.deployVerification.errors || 0) > 0 ? 'text-red-400' : 'text-slate-400'" class="font-semibold">{{ (state.deployVerification.errors || 0).toLocaleString() }}</div>
+          <div class="text-slate-500 text-xs">Errors</div>
+        </div>
+        <div class="text-center p-2 bg-slate-800 rounded">
+          <div :class="(state.deployVerification as any).missing > 0 ? 'text-red-400' : 'text-slate-400'" class="font-semibold">{{ ((state.deployVerification as any).missing || 0).toLocaleString() }}</div>
+          <div class="text-slate-500 text-xs">Missing</div>
+        </div>
+      </div>
+
+      <!-- Issue details -->
+      <div v-if="state.deployVerification.details && state.deployVerification.details.length > 0"
+           class="p-3 bg-red-900/20 border border-red-800 rounded text-xs">
+        <p class="text-red-400 font-medium mb-1">Issues ({{ state.deployVerification.details.length }}):</p>
+        <div class="max-h-40 overflow-y-auto space-y-1 text-slate-400 font-mono">
+          <div v-for="detail in state.deployVerification.details.slice(0, 10)" :key="detail.uuid">
+            {{ detail.uuid.substring(0, 8) }}... {{ detail.issue }}
+            <span v-if="detail.expected != null && detail.actual != null">
+              (expected {{ detail.expected.toFixed(3) }}s, got {{ detail.actual.toFixed(3) }}s)
+            </span>
+          </div>
+          <p v-if="state.deployVerification.details.length > 10" class="text-slate-500 italic">
+            ...and {{ state.deployVerification.details.length - 10 }} more
+          </p>
+        </div>
+      </div>
+
+      <button @click="handleCheckPlan"
+        class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors flex items-center justify-center gap-2">
+        Re-check Production Status
+      </button>
+    </div>
+
     <!-- Deployed success -->
     <div v-if="state.audioDeployed" class="success-box p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg space-y-3">
       <div class="flex items-center gap-2 text-emerald-400 font-medium">
@@ -385,7 +442,6 @@
 
       <!-- Deployment summary -->
       <div v-if="state.deployVerification" class="space-y-2">
-        <!-- Message from API -->
         <p v-if="state.deployVerification.message" class="text-sm text-slate-300">
           {{ state.deployVerification.message }}
         </p>
@@ -393,33 +449,16 @@
         <!-- Stats grid -->
         <div class="grid grid-cols-3 gap-2 text-sm">
           <div class="text-center p-2 bg-slate-800 rounded">
-            <div class="text-emerald-400 font-semibold">{{ state.deployVerification.matched?.toLocaleString() || 0 }}</div>
-            <div class="text-slate-500 text-xs">Deployed</div>
+            <div class="text-emerald-400 font-semibold">{{ (state.deployVerification.matched || 0).toLocaleString() }}</div>
+            <div class="text-slate-500 text-xs">Verified</div>
           </div>
-          <div v-if="state.deployVerification.skippedOverwrites" class="text-center p-2 bg-slate-800 rounded">
-            <div class="text-slate-400 font-semibold">{{ state.deployVerification.skippedOverwrites?.toLocaleString() || 0 }}</div>
-            <div class="text-slate-500 text-xs">Skipped</div>
+          <div v-if="state.deployVerification.mismatched > 0" class="text-center p-2 bg-slate-800 rounded">
+            <div class="text-amber-400 font-semibold">{{ (state.deployVerification.mismatched || 0).toLocaleString() }}</div>
+            <div class="text-slate-500 text-xs">Mismatched</div>
           </div>
           <div v-if="state.deployVerification.errors > 0" class="text-center p-2 bg-slate-800 rounded">
-            <div class="text-red-400 font-semibold">{{ state.deployVerification.errors?.toLocaleString() || 0 }}</div>
-            <div class="text-slate-500 text-xs">Failed</div>
-          </div>
-        </div>
-
-        <!-- Duration verification (from full deploy with verification) -->
-        <div v-if="state.deployVerification.details && state.deployVerification.details.length > 0"
-             class="p-3 bg-amber-900/30 border border-amber-700 rounded text-xs">
-          <p class="text-amber-400 font-medium mb-1">Duration issues found:</p>
-          <div class="max-h-32 overflow-y-auto space-y-1 text-slate-400 font-mono">
-            <div v-for="detail in state.deployVerification.details.slice(0, 5)" :key="detail.uuid">
-              {{ detail.uuid }}: {{ detail.issue }}
-              <span v-if="detail.expected && detail.actual">
-                (expected {{ detail.expected.toFixed(3) }}s, actual {{ detail.actual.toFixed(3) }}s)
-              </span>
-            </div>
-            <p v-if="state.deployVerification.details.length > 5" class="text-slate-500 italic">
-              ...and {{ state.deployVerification.details.length - 5 }} more
-            </p>
+            <div class="text-red-400 font-semibold">{{ (state.deployVerification.errors || 0).toLocaleString() }}</div>
+            <div class="text-slate-500 text-xs">Errors</div>
           </div>
         </div>
       </div>
@@ -427,6 +466,15 @@
       <p class="text-xs text-slate-500">
         Deployed: {{ formatDate(state.audioDeployedAt) }}
       </p>
+
+      <button
+        @click="handleCheckPlan"
+        :disabled="isLoading"
+        class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+      >
+        <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-slate-300 border-t-transparent rounded-full animate-spin"></span>
+        <span>{{ isLoading ? 'Checking...' : 'Re-check Production Status' }}</span>
+      </button>
     </div>
   </div>
 </template>
