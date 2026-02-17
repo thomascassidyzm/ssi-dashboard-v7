@@ -817,7 +817,7 @@ app.get('/inventory/:courseCode', async (req, res) => {
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency } = req.body  // High default for bulk generation
+    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles } = req.body  // High default for bulk generation
 
     // Use requested concurrency if provided, clamped to 1-20, otherwise use env/default
     const concurrencyToUse = requestedConcurrency
@@ -1162,6 +1162,16 @@ app.post('/generate/:courseCode', async (req, res) => {
       if (missingPresentationCount > 0) {
         logger.info(`Found ${missingPresentationCount} LEGOs missing presentation audio`)
       }
+    }
+
+    // Filter by requested roles if specified (e.g. roles: ['known', 'presentation'])
+    if (requestedRoles && Array.isArray(requestedRoles) && requestedRoles.length > 0) {
+      const allowedRoles = new Set(requestedRoles)
+      const beforeCount = needed.length
+      const filtered = needed.filter(n => allowedRoles.has(n.role))
+      logger.info(`Role filter [${requestedRoles.join(', ')}]: ${beforeCount} → ${filtered.length} items`)
+      needed.length = 0
+      needed.push(...filtered)
     }
 
     // Deduplicate
@@ -2229,6 +2239,173 @@ app.post('/link-presentation-audio/:courseCode', async (req, res) => {
     res.json({ success: true, courseCode, ...result })
   } catch (error) {
     logger.error('Link presentation audio error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// POST REGENERATE-SINGLE - Regenerate a single audio file by UUID
+// =============================================================================
+
+app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
+  try {
+    const { courseCode, audioUuid } = req.params
+
+    // 1. Lookup the course_audio record
+    const { data: audioRecord, error: audioError } = await supabase
+      .from('course_audio')
+      .select('id, text, role, language, voice_id, s3_key')
+      .eq('id', audioUuid)
+      .eq('course_code', courseCode)
+      .single()
+
+    if (audioError || !audioRecord) {
+      return res.status(404).json({ error: `Audio not found: ${audioUuid} in ${courseCode}` })
+    }
+
+    // 2. Get course voice config
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('voice_config, known_lang, target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: 'Course not found' })
+    }
+
+    const { role, text, language } = audioRecord
+    const voiceConfig = course.voice_config || {}
+    const voiceSettings = voiceConfig.voices?.[role] || {}
+    const voiceId = voiceSettings.voiceId || voiceConfig[role]
+    const voiceProvider = voiceSettings.provider || 'azure'
+    const speed = voiceSettings.settings?.speed || 1.0
+
+    if (!voiceId) {
+      return res.status(400).json({ error: `No voice configured for role: ${role}` })
+    }
+
+    // 3. Get regen_count from audio_flags (default 0 if no flag exists)
+    const { data: flagRecord } = await supabase
+      .from('audio_flags')
+      .select('regen_count')
+      .eq('audio_uuid', audioUuid)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+
+    const regenCount = flagRecord?.regen_count || 0
+
+    // 4. Gender expansion
+    let textForTTS = text
+    const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
+    if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(lang)) {
+      // Try Haiku gender expansion
+      try {
+        const result = await genderHaikuService.expandGender(text, lang, role)
+        if (result?.wasModified) {
+          textForTTS = result.expandedText
+          logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
+        }
+      } catch (e) {
+        logger.warn(`Gender expansion failed, using original text: ${e.message}`)
+      }
+    }
+    // Fallback: marker-based expansion
+    if (textForTTS === text && (role === 'target1' || role === 'target2') && genderService.hasGenderMarker(text)) {
+      const markerResult = genderService.analyzeAndExpand(text, lang, role)
+      if (markerResult.wasModified) {
+        textForTTS = markerResult.expandedText
+        logger.info(`Gender (marker): "${text}" → "${textForTTS}" (${role})`)
+      }
+    }
+
+    // 5. TTS generate
+    logger.info(`[Regen Single] "${text.substring(0, 40)}..." role=${role} voice=${voiceId} attempt=${regenCount}`)
+
+    let rawAudioBuffer, visemes
+    if (voiceProvider === 'azure') {
+      ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        subscriptionKey: process.env.AZURE_SPEECH_KEY,
+        region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+        voiceName: voiceId,
+        speed,
+        regenerationAttempt: regenCount
+      }))
+    } else if (voiceProvider === 'elevenlabs') {
+      ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        apiKey: process.env.ELEVENLABS_API_KEY,
+        voiceId: voiceId,
+        speed
+      }))
+    } else {
+      throw new Error(`Unknown TTS provider: ${voiceProvider}`)
+    }
+
+    // 6. Master audio
+    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+
+    // 7. Upload to S3
+    const newAudioId = uuidv4().toUpperCase()
+    const newS3Key = `mastered/${newAudioId}.mp3`
+
+    await s3.send(new PutObjectCommand({
+      Bucket: S3_BUCKET,
+      Key: newS3Key,
+      Body: masteredBuffer,
+      ContentType: 'audio/mpeg'
+    }))
+
+    // 8. Update course_audio record
+    const { error: updateError } = await supabase
+      .from('course_audio')
+      .update({
+        voice_id: voiceId,
+        origin: 'tts',
+        s3_key: newS3Key,
+        duration_ms: durationMs,
+        viseme_data: visemes || null
+      })
+      .eq('id', audioUuid)
+
+    if (updateError) throw updateError
+
+    // 9. Update or create audio_flags with incremented regen_count
+    if (flagRecord) {
+      // Flag exists — just bump regen_count
+      const { error: flagError } = await supabase
+        .from('audio_flags')
+        .update({ regen_count: regenCount + 1 })
+        .eq('audio_uuid', audioUuid)
+        .eq('course_code', courseCode)
+      if (flagError) logger.warn(`Failed to update regen_count: ${flagError.message}`)
+    } else {
+      // No flag yet — create one
+      const { error: flagError } = await supabase
+        .from('audio_flags')
+        .insert({
+          audio_uuid: audioUuid,
+          course_code: courseCode,
+          status: 'flagged',
+          regen_count: 1,
+          reason: 'Inline regeneration',
+          flagged_by: 'dashboard_user',
+          created_at: new Date().toISOString()
+        })
+      if (flagError) logger.warn(`Failed to create audio flag: ${flagError.message}`)
+    }
+
+    logger.info(`[Regen Single] Done: "${text.substring(0, 30)}..." → ${newS3Key} (${durationMs}ms)`)
+
+    res.json({
+      success: true,
+      audioUuid,
+      newS3Key,
+      durationMs,
+      regenCount: regenCount + 1
+    })
+
+  } catch (error) {
+    logger.error('Regenerate single error:', error)
     res.status(500).json({ error: error.message })
   }
 })

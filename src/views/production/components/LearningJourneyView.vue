@@ -224,18 +224,36 @@
                 <button
                   v-if="item.target1_audio_uuid"
                   class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
-                  title="Flag target1 (F) audio"
+                  :class="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'bg-pink-500 text-white' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
+                  :title="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'Unflag target1 (F) audio' : 'Flag target1 (F) audio'"
                   @click.stop="emit('audio-flag', item, 'target1')"
                 >F</button>
+                <!-- F regen button -->
+                <button
+                  v-if="item.target1_audio_uuid && flaggedAudioUuids.has(item.target1_audio_uuid!)"
+                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
+                  :class="regeneratingUuids.has(item.target1_audio_uuid!) ? 'text-pink-300 animate-spin' : 'text-pink-400 hover:bg-pink-500 hover:bg-opacity-20'"
+                  :disabled="regeneratingUuids.has(item.target1_audio_uuid!)"
+                  title="Regenerate target1 audio"
+                  @click.stop="emit('audio-regen', item, 'target1', item.target1_audio_uuid!)"
+                >↻</button>
                 <!-- M (target2) quick-flag -->
                 <button
                   v-if="item.target2_audio_uuid"
                   class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
-                  title="Flag target2 (M) audio"
+                  :class="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
+                  :title="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'Unflag target2 (M) audio' : 'Flag target2 (M) audio'"
                   @click.stop="emit('audio-flag', item, 'target2')"
                 >M</button>
+                <!-- M regen button -->
+                <button
+                  v-if="item.target2_audio_uuid && flaggedAudioUuids.has(item.target2_audio_uuid!)"
+                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
+                  :class="regeneratingUuids.has(item.target2_audio_uuid!) ? 'text-blue-300 animate-spin' : 'text-blue-400 hover:bg-blue-500 hover:bg-opacity-20'"
+                  :disabled="regeneratingUuids.has(item.target2_audio_uuid!)"
+                  title="Regenerate target2 audio"
+                  @click.stop="emit('audio-regen', item, 'target2', item.target2_audio_uuid!)"
+                >↻</button>
               </div>
 
               <!-- Phase indicator when this item is playing -->
@@ -350,6 +368,8 @@ const props = defineProps<{
   courseCode: string
   isLoading?: boolean
   hideControls?: boolean
+  flaggedAudioUuids?: Set<string>
+  regeneratingUuids?: Set<string>
 }>()
 
 const emit = defineEmits<{
@@ -364,7 +384,13 @@ const emit = defineEmits<{
   }]
   'item-edit': [item: ScriptItem]
   'audio-flag': [item: ScriptItem, track: 'target1' | 'target2']
+  'audio-regen': [item: ScriptItem, track: 'target1' | 'target2', audioUuid: string]
 }>()
+
+// Default empty sets for optional props
+const emptySet = new Set<string>()
+const flaggedAudioUuids = computed(() => props.flaggedAudioUuids || emptySet)
+const regeneratingUuids = computed(() => props.regeneratingUuids || emptySet)
 
 // ============================================================================
 // PLAYER SETUP

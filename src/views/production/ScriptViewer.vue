@@ -7,11 +7,29 @@
           <h1 class="text-xl font-bold text-white">Script Viewer</h1>
           <div v-if="totalSeeds > 0" class="stats text-sm text-slate-400">
             <template v-if="viewMode === 'journey'">
-              {{ learningJourneyData?.rounds?.length || 0 }} rounds, {{ learningJourneyData?.stats?.totalItems || 0 }} items
+              {{ filteredJourneyRounds.length }} rounds, {{ learningJourneyData?.stats?.totalItems || 0 }} items
             </template>
             <template v-else>
               {{ loadedSeeds }} of {{ totalSeeds }} seeds, {{ totalPhrases.toLocaleString() }} phrases
             </template>
+          </div>
+          <!-- Search box -->
+          <div class="relative">
+            <input
+              v-model="journeySearch"
+              type="text"
+              placeholder="Search text, seed, LEGO..."
+              class="w-56 px-3 py-1.5 pl-8 text-sm bg-slate-700 text-white placeholder-slate-400 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              @keydown.escape="journeySearch = ''"
+            />
+            <svg class="absolute left-2.5 top-2 w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <button
+              v-if="journeySearch"
+              @click="journeySearch = ''"
+              class="absolute right-2 top-1.5 text-slate-400 hover:text-white"
+            >&times;</button>
           </div>
         </div>
 
@@ -284,15 +302,18 @@
         <LearningJourneyView
           v-else-if="learningJourneyData"
           ref="learningJourneyRef"
-          :rounds="learningJourneyData.rounds"
+          :rounds="filteredJourneyRounds"
           :all-items="learningJourneyData?.allItems || []"
           :course-code="courseCode"
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
           :hide-controls="true"
+          :flagged-audio-uuids="flaggedAudioUuids"
+          :regenerating-uuids="regeneratingAudioUuids"
           @playback-state="onJourneyPlaybackState"
           @item-edit="onJourneyItemEdit"
           @audio-flag="onJourneyAudioFlag"
+          @audio-regen="onJourneyAudioRegen"
         />
       </template>
 
@@ -782,6 +803,34 @@ const journeyPageSize = 50;
 const journeyOffset = ref(0);
 const journeyHasMore = ref(true);
 
+// Journey search
+const journeySearch = ref('');
+
+// Filtered journey rounds based on search
+const filteredJourneyRounds = computed(() => {
+  const rounds = learningJourneyData.value?.rounds || [];
+  const q = journeySearch.value.trim().toLowerCase();
+  if (!q) return rounds;
+
+  return rounds.filter((round: any) => {
+    // Match round header: legoId, seedId
+    if (round.legoId?.toLowerCase().includes(q)) return true;
+    if (round.seedId?.toLowerCase().includes(q)) return true;
+    // Match seed number (e.g. "42" matches S0042)
+    if (/^\d+$/.test(q)) {
+      const num = parseInt(q, 10);
+      const seedNum = parseInt(round.seedId?.replace(/\D/g, ''), 10);
+      if (seedNum === num) return true;
+      if (round.roundNumber === num) return true;
+    }
+    // Match any item text
+    return round.items?.some((item: any) =>
+      item.known_text?.toLowerCase().includes(q) ||
+      item.target_text?.toLowerCase().includes(q)
+    );
+  });
+});
+
 // Batch Selection State
 const selectionMode = ref(false);
 const selectedPhraseIds = ref<Set<string>>(new Set());
@@ -1256,6 +1305,9 @@ const loadLearningJourney = async () => {
 
     // Detect if there are more pages
     journeyHasMore.value = (data.pagination?.returned || 0) >= journeyPageSize;
+
+    // Load existing audio flags to show flagged state in journey view
+    loadAudioFlags();
   } catch (err) {
     journeyError.value = err instanceof Error ? err.message : 'Unknown error occurred';
     console.error('Error loading learning journey:', err);
@@ -1839,26 +1891,98 @@ const onJourneyItemEdit = (item: any) => {
   phraseEditModalVisible.value = true;
 };
 
-// Journey view: quick audio flag handler
+// Flagged audio UUID tracking for journey view
+const flaggedAudioUuids = ref<Set<string>>(new Set());
+
+// Load existing audio flags from server
+const loadAudioFlags = async () => {
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' },
+    });
+    if (!response.ok) return;
+    const data = await response.json();
+    const uuids = (data.flags || [])
+      .filter((f: any) => f.status === 'flagged')
+      .map((f: any) => f.audio_uuid);
+    flaggedAudioUuids.value = new Set(uuids);
+  } catch (err) {
+    console.error('Error loading audio flags:', err);
+  }
+};
+const regeneratingAudioUuids = ref<Set<string>>(new Set());
+
+// Journey view: toggle audio flag handler (flag if not flagged, unflag if flagged)
 const onJourneyAudioFlag = async (item: any, track: 'target1' | 'target2') => {
   const uuid = track === 'target1' ? item.target1_audio_uuid : item.target2_audio_uuid;
   if (!uuid) return;
 
+  const isCurrentlyFlagged = flaggedAudioUuids.value.has(uuid);
+
   try {
     const apiBaseUrl = getApiBaseUrl();
-    await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
+
+    if (isCurrentlyFlagged) {
+      // Unflag: DELETE the flag
+      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${uuid}`, {
+        method: 'DELETE',
+        headers: { 'ngrok-skip-browser-warning': 'true' },
+      });
+      flaggedAudioUuids.value = new Set([...flaggedAudioUuids.value].filter(id => id !== uuid));
+      console.log(`Unflagged ${track} audio ${uuid}`);
+    } else {
+      // Flag: POST new flag
+      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({
+          audio_uuid: uuid,
+          status: 'flagged',
+          reason: `Quick-flagged ${track} from journey view`,
+          flagged_by: 'dashboard_user'
+        })
+      });
+      flaggedAudioUuids.value = new Set([...flaggedAudioUuids.value, uuid]);
+      console.log(`Flagged ${track} audio ${uuid}`);
+    }
+  } catch (err) {
+    console.error('Error toggling audio flag:', err);
+  }
+};
+
+// Journey view: inline regenerate single audio
+const onJourneyAudioRegen = async (item: any, track: 'target1' | 'target2', audioUuid: string) => {
+  if (!audioUuid || regeneratingAudioUuids.value.has(audioUuid)) return;
+
+  // Mark as regenerating
+  regeneratingAudioUuids.value = new Set([...regeneratingAudioUuids.value, audioUuid]);
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-single/${courseCode.value}/${audioUuid}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({
-        audio_uuid: uuid,
-        status: 'flagged',
-        reason: `Quick-flagged ${track} from journey view`,
-        flagged_by: 'dashboard_user'
-      })
     });
-    console.log(`Flagged ${track} audio ${uuid}`);
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error || 'Regeneration failed');
+    }
+
+    const result = await response.json();
+    console.log(`Regenerated ${track} audio ${audioUuid} → ${result.newS3Key} (${result.durationMs}ms, attempt #${result.regenCount})`);
+
+    // Invalidate the audio URL cache so the player fetches the new S3 key
+    // The signed URL endpoint will now resolve the updated s3_key from course_audio
+    // Force a cache-bust by updating the item's duration (triggers reactivity)
+    const durationKey = track === 'target1' ? 'target1_duration_ms' : 'target2_duration_ms';
+    item[durationKey] = result.durationMs;
+
   } catch (err) {
-    console.error('Error flagging audio:', err);
+    console.error('Error regenerating audio:', err);
+  } finally {
+    regeneratingAudioUuids.value = new Set([...regeneratingAudioUuids.value].filter(id => id !== audioUuid));
   }
 };
 

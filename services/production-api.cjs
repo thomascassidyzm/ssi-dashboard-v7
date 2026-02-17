@@ -3225,6 +3225,20 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
   }
 })
 
+// Regenerate a single audio file by UUID (inline from journey view)
+// POST /api/audio/regenerate-single/:courseCode/:audioUuid
+app.post('/api/audio/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
+  try {
+    const { courseCode, audioUuid } = req.params
+    logger.log(`[Regenerate Single] ${courseCode} / ${audioUuid}`)
+    const response = await proxyToPhase8('POST', `/regenerate-single/${courseCode}/${audioUuid}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Regenerate single proxy error:', error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
 // Regenerate presentation audio
 // POST /api/audio/regenerate-presentations/:courseCode
 // Body: { dryRun, regenerateAudio }
