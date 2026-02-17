@@ -1230,6 +1230,68 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     // Helper to generate a single audio item
     const generateItem = async (item) => {
+      // -----------------------------------------------------------------------
+      // Cross-course audio sharing: reuse S3 files from sibling courses
+      // If another course already has audio for the same text+language+role+voice,
+      // create a new course_audio row pointing to the same S3 file (skip TTS).
+      // -----------------------------------------------------------------------
+      try {
+        const { data: siblingAudio } = await supabase
+          .from('course_audio')
+          .select('s3_key, duration_ms, viseme_data')
+          .neq('course_code', courseCode)
+          .eq('text_normalized', item.text.toLowerCase().trim())
+          .eq('language', item.language)
+          .eq('role', item.role)
+          .eq('voice_id', item.voiceId)
+          .not('s3_key', 'like', 'pending/%')
+          .limit(1)
+          .single()
+
+        if (siblingAudio?.s3_key) {
+          // Reuse existing S3 file — just insert a new course_audio row
+          const { data: insertedAudio, error: insertError } = await supabase
+            .from('course_audio')
+            .upsert({
+              course_code: courseCode,
+              text: item.text,
+              text_normalized: item.text.toLowerCase().trim(),
+              language: item.language,
+              role: item.role,
+              voice_id: item.voiceId,
+              origin: 'tts',
+              s3_key: siblingAudio.s3_key,
+              duration_ms: siblingAudio.duration_ms,
+              lego_id: item.lego_id || null,
+              viseme_data: siblingAudio.viseme_data || null
+            }, {
+              onConflict: 'course_code,text_normalized,language,role'
+            })
+            .select('id')
+            .single()
+
+          if (!insertError && insertedAudio) {
+            // Link presentation audio if needed
+            if (item.role === 'presentation' && item.lego_id && insertedAudio.id) {
+              const legoMatch = item.lego_id.match(/S(\d+)L(\d+)/)
+              if (legoMatch) {
+                await supabase
+                  .from('course_legos')
+                  .update({ presentation_audio_id: insertedAudio.id })
+                  .eq('course_code', courseCode)
+                  .eq('seed_number', parseInt(legoMatch[1], 10))
+                  .eq('lego_index', parseInt(legoMatch[2], 10))
+              }
+            }
+            updateWork(item.text, true)
+            logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (reused from sibling course)`)
+            return { success: true, item, shared: true }
+          }
+        }
+      } catch (e) {
+        // Not found or error — fall through to normal TTS generation
+      }
+
       // Determine TTS provider from voice config
       // Voice format: azure_es-ES-ElviraNeural or elevenlabs_voiceId
       const [provider, voiceName] = item.voiceId.split('_', 2)
@@ -1372,6 +1434,17 @@ app.post('/generate/:courseCode', async (req, res) => {
           })
           updateWork(item.text, false, result.reason?.message)
           logger.error(`Failed: ${item.role} - "${item.text.substring(0, 30)}...": ${result.reason?.message}`)
+        }
+      }
+
+      // Periodically link audio IDs every 10 batches so progress is visible
+      // even if generation is interrupted
+      if (batchNum % 10 === 0) {
+        try {
+          const mid = await linkAudioIds(courseCode, course.known_lang, course.target_lang)
+          if (mid.total > 0) logger.info(`Mid-generation link: bound ${mid.total} audio IDs`)
+        } catch (e) {
+          logger.warn(`Mid-generation link failed: ${e.message}`)
         }
       }
     }
