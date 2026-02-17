@@ -60,23 +60,37 @@ const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 // LANGUAGE NAMES (for presentation templates)
 // =============================================================================
 
+// Language names in English (default / fallback)
 const LANG_NAMES = {
-  'eng': 'English',
-  'spa': 'Spanish',
-  'fra': 'French',
-  'deu': 'German',
-  'ita': 'Italian',
-  'por': 'Portuguese',
-  'cmn': 'Chinese',
-  'zho': 'Chinese',
-  'jpn': 'Japanese',
-  'kor': 'Korean',
-  'ara': 'Arabic',
-  'cym': 'Welsh',
-  'gle': 'Irish',
-  'gla': 'Scottish Gaelic',
-  'nld': 'Dutch',
-  'rus': 'Russian'
+  'eng': 'English', 'spa': 'Spanish', 'fra': 'French', 'deu': 'German',
+  'ita': 'Italian', 'por': 'Portuguese', 'cmn': 'Chinese', 'zho': 'Chinese',
+  'jpn': 'Japanese', 'kor': 'Korean', 'ara': 'Arabic', 'cym': 'Welsh',
+  'gle': 'Irish', 'gla': 'Scottish Gaelic', 'nld': 'Dutch', 'rus': 'Russian',
+  'swe': 'Swedish', 'fin': 'Finnish', 'tur': 'Turkish', 'bre': 'Breton',
+  'eus': 'Basque', 'cat': 'Catalan', 'lit': 'Lithuanian', 'ang': 'Old English',
+}
+
+// Language names localised into each known language (for presentation TTS)
+// Key: known_lang, Value: { target_lang: localised name }
+const LANG_NAMES_LOCALISED = {
+  jpn: { eng: '英語', spa: 'スペイン語', fra: 'フランス語', deu: 'ドイツ語', ita: 'イタリア語', por: 'ポルトガル語', cmn: '中国語', zho: '中国語', kor: '韓国語', ara: 'アラビア語', nld: 'オランダ語', rus: 'ロシア語' },
+  kor: { eng: '영어', spa: '스페인어', fra: '프랑스어', deu: '독일어', ita: '이탈리아어', por: '포르투갈어', cmn: '중국어', zho: '중국어', jpn: '일본어', ara: '아랍어', nld: '네덜란드어', rus: '러시아어' },
+  fra: { eng: 'anglais', spa: 'espagnol', deu: 'allemand', ita: 'italien', por: 'portugais', cmn: 'chinois', zho: 'chinois', jpn: 'japonais', kor: 'coréen', ara: 'arabe', nld: 'néerlandais', rus: 'russe', bre: 'breton' },
+  deu: { eng: 'Englisch', spa: 'Spanisch', fra: 'Französisch', ita: 'Italienisch', por: 'Portugiesisch', cmn: 'Chinesisch', zho: 'Chinesisch', jpn: 'Japanisch', kor: 'Koreanisch', ara: 'Arabisch', nld: 'Niederländisch', rus: 'Russisch' },
+  spa: { eng: 'inglés', fra: 'francés', deu: 'alemán', ita: 'italiano', por: 'portugués', cmn: 'chino', zho: 'chino', jpn: 'japonés', kor: 'coreano', ara: 'árabe', nld: 'neerlandés', rus: 'ruso', cat: 'catalán', eus: 'euskera' },
+  por: { eng: 'inglês', spa: 'espanhol', fra: 'francês', deu: 'alemão', ita: 'italiano', cmn: 'chinês', zho: 'chinês', jpn: 'japonês', kor: 'coreano', ara: 'árabe', nld: 'neerlandês', rus: 'russo' },
+  zho: { eng: '英语', spa: '西班牙语', fra: '法语', deu: '德语', ita: '意大利语', por: '葡萄牙语', jpn: '日语', kor: '韩语', ara: '阿拉伯语', nld: '荷兰语', rus: '俄语' },
+  cmn: { eng: '英语', spa: '西班牙语', fra: '法语', deu: '德语', ita: '意大利语', por: '葡萄牙语', jpn: '日语', kor: '韩语', ara: '阿拉伯语', nld: '荷兰语', rus: '俄语' },
+  ara: { eng: 'الإنجليزية', spa: 'الإسبانية', fra: 'الفرنسية', deu: 'الألمانية', ita: 'الإيطالية', por: 'البرتغالية', cmn: 'الصينية', zho: 'الصينية', jpn: 'اليابانية', kor: 'الكورية', nld: 'الهولندية', rus: 'الروسية' },
+  cym: { eng: 'Saesneg', spa: 'Sbaeneg', fra: 'Ffrangeg', deu: 'Almaeneg', ita: 'Eidaleg', por: 'Portiwgaleg' },
+  lit: { eng: 'angliškai', spa: 'ispaniškai', fra: 'prancūziškai', deu: 'vokiškai', por: 'portugališkai' },
+}
+
+// Get the target language name in the known language
+function getLocalisedLangName(targetLang, knownLang) {
+  const localised = LANG_NAMES_LOCALISED[knownLang]?.[targetLang]
+  if (localised) return localised
+  return LANG_NAMES[targetLang] || targetLang
 }
 
 // =============================================================================
@@ -1110,7 +1124,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       )
 
       // Get presentation template for this course
-      const targetLangName = LANG_NAMES[course.target_lang] || course.target_lang
+      const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
       const { data: templates } = await supabase
         .from('presentation_templates')
         .select('template')
@@ -1126,12 +1140,23 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       // Remove "as in" clause from template BEFORE any replacements
       // This avoids issues with seed text containing quotes
+      // Handles all known languages' context clause patterns
       presentationTemplate = presentationTemplate
-        .replace(/ as in — '\{seed\}' —/g, '')
-        .replace(/, as in '\{seed\}'/g, '')
-        .replace(/，如"\{seed\}"/g, '')
-        .replace(/, fel yn '\{seed\}'/g, '')
-        .replace(/, como en '\{seed\}'/g, '')
+        .replace(/ as in — '\{seed\}' —/g, '')          // eng
+        .replace(/ como en — '\{seed\}' —/g, '')         // spa
+        .replace(/ comme dans — '\{seed\}' —/g, '')      // fra
+        .replace(/ wie in — '\{seed\}' —/g, '')           // deu
+        .replace(/ como em — '\{seed\}' —/g, '')          // por
+        .replace(/ fel yn — '\{seed\}' —/g, '')           // cym
+        .replace(/ — 「\{seed\}」のように —/g, '')          // jpn
+        .replace(/ — '\{seed\}'처럼 —/g, '')               // kor
+        .replace(/ كما في — '\{seed\}' —/g, '')           // ara
+        .replace(/ kaip — '\{seed\}' —/g, '')             // lit
+        .replace(/ 如「\{seed\}」—/g, '')                   // zho/cmn
+        .replace(/, as in '\{seed\}'/g, '')               // eng (legacy)
+        .replace(/，如"\{seed\}"/g, '')                    // zho (legacy)
+        .replace(/, fel yn '\{seed\}'/g, '')              // cym (legacy)
+        .replace(/, como en '\{seed\}'/g, '')             // spa (legacy)
 
       // Find LEGOs missing presentation audio and generate the text
       let missingPresentationCount = 0
@@ -1827,7 +1852,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     const knownLang = course.known_lang
     const targetLang = course.target_lang
-    const targetLangName = LANG_NAMES[targetLang] || targetLang
+    const targetLangName = getLocalisedLangName(targetLang, knownLang)
 
     // Get template for this known language
     const { data: templates, error: templateError } = await supabase
@@ -1907,7 +1932,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     // Generate presentation text for each LEGO
     // Short template (no "as in" context) for alternating in early seeds
-    const shortTemplate = template.replace(/ as in — '\{seed\}' —|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
+    const shortTemplate = template
+      .replace(/ as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
 
     // Load USE phrases for context fallback when seed sentence doesn't contain the known_text
     // Group by seed_number + lego_index for efficient lookup
