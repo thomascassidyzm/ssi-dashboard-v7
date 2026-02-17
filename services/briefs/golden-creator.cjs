@@ -68,13 +68,15 @@ You are a world-class language teacher and course designer applying the SSi meth
 - Must contain the **exact LEGO target** (case-insensitive match)
 - NOT the LEGO by itself, NOT component build-up
 - Flexible quantity based on LEGO length (cognitive load)
+- **No capitalisation, no trailing periods** — these are flexible fragments, not formal sentences
 
 ### USE Phrases
-- **Complete, natural sentences** a real learner would say — NEVER fragments
+- **Natural things a real learner would say** — complete enough to stand alone, but flexible like slogans
 - Minimum 5 per LEGO, scored 5-9
 - Mix of MEDIUM (LEGO + 4-6 syllables) and LONG (LEGO + 7-10 syllables)
 - Go into eternal spaced repetition — quality matters enormously
 - Must contain the **exact LEGO target** (case-insensitive match)
+- **No capitalisation, no trailing periods** — treat these as flexible phrases, not pre-defined sentences
 - Score 4 or below = rewrite, don't submit
 
 ### LEGO Form Is Fixed

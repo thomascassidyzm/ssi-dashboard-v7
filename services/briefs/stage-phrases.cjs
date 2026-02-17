@@ -84,9 +84,9 @@ Your LEGOs: {LEGO_LIST}
 
 You're creating practice material for language learners. Each LEGO is a "teaching chunk" — a word or phrase the learner is about to learn. You create two types of practice:
 
-**BUILD phrases (5+):** Short fragments that let the learner practise the new LEGO with words they already know. These are stepping stones — they don't need to be full sentences. Examples: "want to speak", "speak German", "I want to speak".
+**BUILD phrases (5+):** Short fragments that let the learner practise the new LEGO with words they already know. These are stepping stones — they don't need to be full sentences. Examples: "want to speak", "speak German", "I want to speak". No capitalisation, no trailing periods.
 
-**USE phrases (12+):** Complete, natural sentences a real person would say. These are the payoff — the learner combines everything they've learned into real speech. Must average 12+ syllables. Scored 5-9 for difficulty.
+**USE phrases (12+):** Natural things a real person would say — flexible like slogans, not pre-defined sentences. The learner combines everything they've learned into real speech. Must average 12+ syllables. Scored 5-9 for difficulty. No capitalisation, no trailing periods.
 
 ## Rules (server enforces these — violations = rejection)
 
