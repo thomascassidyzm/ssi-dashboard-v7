@@ -1524,7 +1524,7 @@ async function fetchQASummary() {
         total: data.phrases?.total || 0,
         checked: data.phrases?.checked || 0,
         progress: data.phrases?.progress_percent || 0,
-        flags: data.flags?.total || 0,
+        flags: data.flags?.open || 0,
         errors: data.flags?.errors || 0,
         warnings: data.flags?.warnings || 0
       }

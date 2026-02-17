@@ -1121,12 +1121,13 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       let presentationTemplate = templates?.[0]?.template
       if (!presentationTemplate) {
-        presentationTemplate = "The {target_lang_name} for '{known}' is:"
+        presentationTemplate = "The {target_lang_name} for — '{known}' — is:"
       }
 
       // Remove "as in" clause from template BEFORE any replacements
       // This avoids issues with seed text containing quotes
       presentationTemplate = presentationTemplate
+        .replace(/ as in — '\{seed\}' —/g, '')
         .replace(/, as in '\{seed\}'/g, '')
         .replace(/，如"\{seed\}"/g, '')
         .replace(/, fel yn '\{seed\}'/g, '')
@@ -1842,7 +1843,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // Fall back to default English template if no specific one found
     let template = templates?.[0]?.template
     if (!template) {
-      template = "The {target_lang_name} for '{known}', as in '{seed}', is:"
+      template = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
       logger.warn(`No template found for ${knownLang}, using default English`)
     }
 
@@ -1906,7 +1907,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     // Generate presentation text for each LEGO
     // Short template (no "as in" context) for alternating in early seeds
-    const shortTemplate = template.replace(/, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
+    const shortTemplate = template.replace(/ as in — '\{seed\}' —|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
 
     // Load USE phrases for context fallback when seed sentence doesn't contain the known_text
     // Group by seed_number + lego_index for efficient lookup
@@ -1936,8 +1937,18 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       }
     }
 
+    // Deterministic hash for weighted random context selection
+    // Returns a float 0..1 based on the lego_id string
+    function deterministicRand(legoId) {
+      let h = 0
+      for (let i = 0; i < legoId.length; i++) {
+        h = ((h << 5) - h + legoId.charCodeAt(i)) | 0
+      }
+      return (((h >>> 0) % 10000) / 10000)
+    }
+
     const presentations = []
-    let contextFromSeed = 0, contextFromUse = 0, contextMissing = 0
+    let contextFromSeed = 0, contextFromUse = 0, contextNone = 0
     for (const lego of legos) {
       const seedText = seedMap[lego.seed_number] || lego.known_text
 
@@ -1945,12 +1956,6 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const legoIndexMatch = lego.lego_id.match(/L(\d+)$/)
       const legoIndex = legoIndexMatch ? parseInt(legoIndexMatch[1], 10) : 1
 
-      // For first 2 seeds, alternate: odd LEGOs get full template, even get short
-      const useShortTemplate = lego.seed_number <= 2 && legoIndex % 2 === 0
-      const activeTemplate = useShortTemplate ? shortTemplate : template
-
-      // Choose context sentence: seed if it contains known_text, otherwise a USE phrase
-      let contextText = seedText
       const knownLower = lego.known_text.toLowerCase()
       // For compound known_text like "to listen / to hear", also try each part
       const knownVariants = [knownLower]
@@ -1961,25 +1966,58 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         const t = text.toLowerCase()
         return knownVariants.some(v => t.includes(v))
       }
-      if (!textContainsKnown(seedText)) {
-        // Seed doesn't contain the known_text — find a USE phrase that does
-        const key = `${lego.seed_number}:${legoIndex}`
-        const usePhrases = usePhraseMap[key] || []
-        const match = usePhrases.find(p => textContainsKnown(p))
-        if (match) {
-          contextText = match
+
+      // Build candidate pool: seed sentence + any USE phrases containing the known_text
+      const key = `${lego.seed_number}:${legoIndex}`
+      const usePhrases = (usePhraseMap[key] || []).filter(p => textContainsKnown(p))
+      const seedValid = textContainsKnown(seedText)
+
+      // Weighted random pick: ~60% USE phrase, ~25% seed, ~15% no context
+      // If no USE phrases available, redistribute: ~70% seed, ~30% no context
+      const roll = deterministicRand(lego.lego_id)
+      let contextText = null
+      let contextSource = 'none'
+
+      if (usePhrases.length > 0 && seedValid) {
+        // Full pool available
+        if (roll < 0.60) {
+          // Pick a USE phrase deterministically
+          const useIdx = Math.floor(deterministicRand(lego.lego_id + ':use') * usePhrases.length)
+          contextText = usePhrases[useIdx]
+          contextSource = 'use_phrase'
+          contextFromUse++
+        } else if (roll < 0.85) {
+          contextText = seedText
+          contextSource = 'seed'
+          contextFromSeed++
+        } else {
+          contextNone++
+        }
+      } else if (usePhrases.length > 0) {
+        // Only USE phrases (seed doesn't contain known_text)
+        if (roll < 0.80) {
+          const useIdx = Math.floor(deterministicRand(lego.lego_id + ':use') * usePhrases.length)
+          contextText = usePhrases[useIdx]
+          contextSource = 'use_phrase'
           contextFromUse++
         } else {
-          // No USE phrase contains it either — use short template (no "as in")
-          contextMissing++
+          contextNone++
+        }
+      } else if (seedValid) {
+        // Only seed available
+        if (roll < 0.70) {
+          contextText = seedText
+          contextSource = 'seed'
+          contextFromSeed++
+        } else {
+          contextNone++
         }
       } else {
-        contextFromSeed++
+        // Nothing contains the known_text — no context possible
+        contextNone++
       }
 
-      // If no good context found, use short template to avoid misleading "as in"
-      const hasGoodContext = textContainsKnown(contextText)
-      const finalTemplate = useShortTemplate || !hasGoodContext ? shortTemplate : activeTemplate
+      const finalTemplate = contextText ? template : shortTemplate
 
       // For slash-compound known_text like "to listen / to hear", use first option only
       const knownForPresentation = lego.known_text.includes(' / ')
@@ -1990,22 +2028,22 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       let presText = finalTemplate
         .replace('{target_lang_name}', targetLangName)
         .replace('{known}', knownForPresentation)
-        .replace('{seed}', contextText)
+        .replace('{seed}', contextText || '')
 
       presentations.push({
         lego_id: lego.lego_id,
         known: lego.known_text,
         target: lego.target_text,
-        seed: contextText,
+        seed: contextText || '',
         seed_number: lego.seed_number,
         lego_index: legoIndex,
-        uses_short_template: useShortTemplate || !hasGoodContext,
-        context_source: hasGoodContext ? (contextText === seedText ? 'seed' : 'use_phrase') : 'none',
+        uses_short_template: !contextText,
+        context_source: contextSource,
         presentation_text: presText
       })
     }
 
-    logger.info(`Context sources: ${contextFromSeed} from seed, ${contextFromUse} from USE phrase, ${contextMissing} no context (short template)`)
+    logger.info(`Context sources: ${contextFromSeed} seed, ${contextFromUse} USE phrase, ${contextNone} no context`)
 
     if (dryRun) {
       return res.json({

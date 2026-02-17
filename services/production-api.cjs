@@ -1446,7 +1446,7 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
     knownText: lego.known_text,
     targetText: lego.target_text,
     // Presentation text isn't needed for lookup since we use lego_id
-    presentation: `The ... for '${lego.known_text}', is: ... '${lego.target_text}' ... '${lego.target_text}'`
+    presentation: `The ... for — '${lego.known_text}' — is: ... '${lego.target_text}' ... '${lego.target_text}'`
   }))
 
   logger.info(`[LegacyAudio] Built ${introItems.length} intro items from database LEGOs`)

@@ -50,8 +50,8 @@ async function generatePresentationTexts(courseCode) {
   }
 
   const targetLangName = LANG_NAMES[course.target_lang] || course.target_lang
-  const fullTemplate = "The {target_lang_name} for '{known}', as in '{seed}', is:"
-  const shortTemplate = "The {target_lang_name} for '{known}' is:"
+  const fullTemplate = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
+  const shortTemplate = "The {target_lang_name} for — '{known}' — is:"
   const voiceId = course.voice_config?.presentation || 'azure_en-GB-SoniaNeural'
 
   // Get all NEW LEGOs with their seed context

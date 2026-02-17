@@ -354,7 +354,7 @@
               </div>
 
               <p class="text-sm text-slate-400 mb-4">
-                Creates "The [language] for '[known]' is:" pattern for all LEGOs. Target words are played separately.
+                Creates "The [language] for — '[known]' — is:" pattern for all LEGOs. Target words are played separately.
               </p>
 
               <!-- Action Buttons -->
