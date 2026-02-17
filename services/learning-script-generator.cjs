@@ -105,11 +105,12 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
     }
 
     // Deduplicate by lego_id - keep only first occurrence
+    // Also filter out is_new=false LEGOs since they generate no rounds
     const seenLegos = new Set()
     const uniqueRecords = data.filter(record => {
       if (seenLegos.has(record.lego_id)) return false
       seenLegos.add(record.lego_id)
-      return true
+      return record.is_new !== false
     })
 
     logger.info(`Loaded ${uniqueRecords.length} unique LEGOs for ${courseCode}`)
