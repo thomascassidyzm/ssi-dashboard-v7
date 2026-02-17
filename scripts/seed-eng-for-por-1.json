@@ -1,0 +1,79 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 1,
+  "target_text": "I want to speak English with you now.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Eu quero",
+      "target": "I want",
+      "components": [
+        {"known": "Eu", "target": "I"},
+        {"known": "quero", "target": "want"}
+      ],
+      "build": [],
+      "use": []
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "falar",
+      "target": "to speak",
+      "build": [
+        {"known": "falar", "target": "to speak"},
+        {"known": "Eu quero falar", "target": "I want to speak"}
+      ],
+      "use": [
+        {"known": "Eu quero falar.", "target": "I want to speak.", "score": 6}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "inglês",
+      "target": "English",
+      "build": [
+        {"known": "inglês", "target": "English"},
+        {"known": "falar inglês", "target": "to speak English"}
+      ],
+      "use": [
+        {"known": "Eu quero falar inglês.", "target": "I want to speak English.", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "com você",
+      "target": "with you",
+      "components": [
+        {"known": "com", "target": "with"},
+        {"known": "você", "target": "you"}
+      ],
+      "build": [
+        {"known": "com você", "target": "with you"},
+        {"known": "falar com você", "target": "to speak with you"}
+      ],
+      "use": [
+        {"known": "Eu quero falar com você.", "target": "I want to speak with you.", "score": 7},
+        {"known": "Eu quero falar inglês com você.", "target": "I want to speak English with you.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "agora",
+      "target": "now",
+      "build": [
+        {"known": "agora", "target": "now"},
+        {"known": "falar agora", "target": "to speak now"}
+      ],
+      "use": [
+        {"known": "Eu quero falar agora.", "target": "I want to speak now.", "score": 6},
+        {"known": "Eu quero falar inglês agora.", "target": "I want to speak English now.", "score": 7},
+        {"known": "Eu quero falar com você agora.", "target": "I want to speak with you now.", "score": 7},
+        {"known": "Eu quero falar inglês com você agora.", "target": "I want to speak English with you now.", "score": 8}
+      ]
+    }
+  ]
+}

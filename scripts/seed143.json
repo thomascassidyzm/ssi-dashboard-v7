@@ -1,0 +1,144 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 143,
+  "known_text": "それは前に話していたことと同じです。",
+  "target_text": "It's the same thing as we were talking about earlier.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "同じ",
+      "target": "same",
+      "build": [
+        {"known": "同じ", "target": "same"},
+        {"known": "同じもの", "target": "same thing"},
+        {"known": "同じではない", "target": "not the same"},
+        {"known": "同じだと思う", "target": "think is the same"}
+      ],
+      "use": [
+        {"known": "私はそれは同じだと思いますと彼女に言いました。", "target": "I said to her I think that is the same.", "score": 7},
+        {"known": "もちろんそれは同じだと思いますと私の友達は言いました。", "target": "My friend said of course I think that is the same.", "score": 8},
+        {"known": "彼女はそれは同じではないと言いましたが、私は同じだと思います。", "target": "She said that is not the same, but I think it is the same.", "score": 8},
+        {"known": "私の友達はそれは同じだと頻繁に言っていましたが、私は問題があると思います。", "target": "My friend was often saying that is the same, but I think there is a problem.", "score": 8},
+        {"known": "彼はそれは同じだと言いましたが、難しかったと思います。", "target": "He said that is the same, but I think it was difficult.", "score": 8},
+        {"known": "もちろんそれは同じだと彼女は言いました、私は感謝しています。", "target": "She said of course that is the same, I'm grateful.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "以前に",
+      "target": "earlier",
+      "build": [
+        {"known": "以前に", "target": "earlier"},
+        {"known": "以前に話した", "target": "talked earlier"},
+        {"known": "以前に会いたかった", "target": "wanted to meet earlier"},
+        {"known": "以前にやった", "target": "did earlier"}
+      ],
+      "use": [
+        {"known": "私は以前にそれについて話したいと彼女に言いました。", "target": "I said to her I wanted to talk about that earlier.", "score": 8},
+        {"known": "もちろん私は以前にそれを知りたかったと私の友達は言いました。", "target": "My friend said of course I wanted to know that earlier.", "score": 8},
+        {"known": "彼女は以前に彼女に会いたかったと言いましたが、難しかったと思います。", "target": "She said she wanted to meet her earlier, but I think it was difficult.", "score": 8},
+        {"known": "私の友達は以前にそれについて話したいと頻繁に言っていました。", "target": "My friend was often saying she wanted to talk about that earlier.", "score": 8},
+        {"known": "彼は以前にそれを理解したいと言いましたが、私は問題があると思います。", "target": "He said he wanted to understand that earlier, but I think there is a problem.", "score": 8},
+        {"known": "もちろん私は以前にそれを知りたかったですと彼女は言いました。", "target": "She said of course I wanted to know that earlier.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "話していた",
+      "target": "were talking",
+      "components": [
+        {"known": "話して", "target": "were"},
+        {"known": "いた", "target": "talking"}
+      ],
+      "build": [
+        {"known": "話していた", "target": "were talking"},
+        {"known": "話していたこと", "target": "what we were talking"},
+        {"known": "彼女が話していた", "target": "she was talking"},
+        {"known": "私たちは話していた", "target": "we were talking"}
+      ],
+      "use": [
+        {"known": "私たちは以前に話していたことについて聞きたいですと彼女は言いました。", "target": "She said I want to ask about what we were talking about earlier.", "score": 8},
+        {"known": "もちろん私たちは話していたと私の友達は言いました。", "target": "My friend said of course we were talking.", "score": 7},
+        {"known": "彼女は私たちが話していたことを理解したいと言いましたが、難しかったと思います。", "target": "She said she wanted to understand what we were talking about, but I think it was difficult.", "score": 8},
+        {"known": "私の友達は私たちが話していたことについて頻繁に言っていました。", "target": "My friend was often saying about what we were talking about.", "score": 8},
+        {"known": "彼は私たちが話していたことと同じだと言いましたが、私は問題があると思います。", "target": "He said it is the same as what we were talking about, but I think there is a problem.", "score": 8},
+        {"known": "もちろん私たちは話していたことを知りたいですと彼女は言いました。", "target": "She said of course I want to know what we were talking about.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "ことと同じ",
+      "target": "the same thing as",
+      "components": [
+        {"known": "こと", "target": "the same thing"},
+        {"known": "と同じ", "target": "as"}
+      ],
+      "build": [
+        {"known": "ことと同じ", "target": "the same thing as"},
+        {"known": "話していたことと同じ", "target": "the same thing as we were talking"},
+        {"known": "以前にやったことと同じ", "target": "the same thing as we did earlier"},
+        {"known": "彼女が言ったことと同じ", "target": "the same thing as she said"}
+      ],
+      "use": [
+        {"known": "それは私たちが話していたことと同じですと彼女は言いました。", "target": "She said it's the same thing as we were talking about.", "score": 8},
+        {"known": "もちろんそれは以前にやったことと同じだと私の友達は言いました。", "target": "My friend said of course it's the same thing as we did earlier.", "score": 8},
+        {"known": "彼女はそれは彼女が言ったことと同じだと言いましたが、私は問題があると思います。", "target": "She said it's the same thing as she said, but I think there is a problem.", "score": 8},
+        {"known": "私の友達はそれは以前に話していたことと同じだと頻繁に言っていました。", "target": "My friend was often saying it's the same thing as we were talking about earlier.", "score": 8},
+        {"known": "彼はそれは彼女が言ったことと同じだと言いましたが、難しかったと思います。", "target": "He said it's the same thing as she said, but I think it was difficult.", "score": 8},
+        {"known": "もちろんそれは私たちが話していたことと同じですと彼女は言いました。", "target": "She said of course it's the same thing as we were talking about.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "それは同じことです",
+      "target": "It's the",
+      "components": [
+        {"known": "それは", "target": "It's"},
+        {"known": "同じことです", "target": "the"}
+      ],
+      "build": [
+        {"known": "それは同じことです", "target": "It's the"},
+        {"known": "それは同じです", "target": "It's the same"},
+        {"known": "それは問題です", "target": "It's the problem"},
+        {"known": "それは大切です", "target": "It's the important"}
+      ],
+      "use": [
+        {"known": "それは同じことですと彼女は言いましたが、私は問題があると思います。", "target": "She said it's the same thing, but I think there is a problem.", "score": 8},
+        {"known": "もちろんそれは大切だと私の友達は言いました。", "target": "My friend said of course it's the important thing.", "score": 8},
+        {"known": "彼女はそれは問題だと言いましたが、私は同じだと思います。", "target": "She said it's the problem, but I think it's the same.", "score": 8},
+        {"known": "私の友達はそれは同じだと頻繁に言っていましたが、難しかったと思います。", "target": "My friend was often saying it's the same, but I think it was difficult.", "score": 8},
+        {"known": "彼はそれは大切だと言いましたが、私は問題があると思います。", "target": "He said it's the important thing, but I think there is a problem.", "score": 8},
+        {"known": "もちろんそれは同じことだと彼女は言いました。", "target": "She said of course it's the same thing.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "〜について話していた",
+      "target": "we were talking about",
+      "components": [
+        {"known": "〜について", "target": "we were talking"},
+        {"known": "話していた", "target": "about"}
+      ],
+      "build": [
+        {"known": "〜について話していた", "target": "we were talking about"},
+        {"known": "以前に話していたことについて", "target": "about what we were talking earlier"},
+        {"known": "彼女について話していた", "target": "we were talking about her"},
+        {"known": "問題について話していた", "target": "we were talking about the problem"}
+      ],
+      "use": [
+        {"known": "それは以前に話していたことと同じですと彼女は言いました。", "target": "She said it's the same thing as we were talking about earlier.", "score": 8},
+        {"known": "もちろん私たちは問題について話していましたと私の友達は言いました。", "target": "My friend said of course we were talking about the problem.", "score": 8},
+        {"known": "彼女は私たちが話していたことについて聞きたいと言いましたが、難しかったと思います。", "target": "She said she wanted to ask about what we were talking about, but I think it was difficult.", "score": 8},
+        {"known": "私の友達は私たちが話していたことについて頻繁に言っていました。", "target": "My friend was often saying about what we were talking about.", "score": 8},
+        {"known": "それは前に話していたことと同じです。", "target": "It's the same thing as we were talking about earlier.", "score": 9},
+        {"known": "彼は私たちが話していたことについて聞きたいと言いましたが、私は問題があると思います。", "target": "He said he wanted to ask about what we were talking about, but I think there is a problem.", "score": 8}
+      ]
+    }
+  ]
+}

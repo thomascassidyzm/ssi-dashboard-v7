@@ -1,0 +1,911 @@
+{
+  "course_code": "por_for_eng",
+  "is_eng_for_x": false,
+  "round": 5,
+  "seed_range": "all",
+  "description": "Single-agent consistent scoring - 100 random USE phrases",
+  "total_use_phrases": 5003,
+  "sample_size": 100,
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "d26f2250-cd86-47da-a675-b0ce218ce5d4",
+      "seed": 16,
+      "lego": 2,
+      "english": "I want to come back",
+      "other": "eu quero voltar",
+      "qa_score": null
+    },
+    {
+      "idx": 2,
+      "id": "737ff12f-30d8-4aab-b1fc-7bb63d60c45e",
+      "seed": 236,
+      "lego": 2,
+      "english": "I know someone who was going to try to help me",
+      "other": "eu conheço alguém que ia tentar me ajudar",
+      "qa_score": null
+    },
+    {
+      "idx": 3,
+      "id": "f9a4c77f-8727-4636-9507-c76122d8053a",
+      "seed": 143,
+      "lego": 2,
+      "english": "it's important because we were talking about this now",
+      "other": "é importante porque nós estávamos falando isso agora",
+      "qa_score": null
+    },
+    {
+      "idx": 4,
+      "id": "7b1a214f-2768-41d3-8bed-a1d2032e0e72",
+      "seed": 60,
+      "lego": 1,
+      "english": "because I don't know how to say",
+      "other": "porque eu não sei como dizer",
+      "qa_score": null
+    },
+    {
+      "idx": 5,
+      "id": "7f1b7f2e-f41e-41e7-8b88-d29b1b68022e",
+      "seed": 133,
+      "lego": 3,
+      "english": "you get to know someone when you work together",
+      "other": "você conhece alguém quando vocês trabalham juntos",
+      "qa_score": null
+    },
+    {
+      "idx": 6,
+      "id": "846ca310-36e6-4048-a6e4-3799b7c0c9a7",
+      "seed": 245,
+      "lego": 3,
+      "english": "I want to learn more in a short time",
+      "other": "eu quero aprender mais em pouco tempo",
+      "qa_score": null
+    },
+    {
+      "idx": 7,
+      "id": "d0ca3051-7ca3-448c-8f10-0040f4f0178f",
+      "seed": 52,
+      "lego": 1,
+      "english": "he wanted today",
+      "other": "ele queria hoje",
+      "qa_score": null
+    },
+    {
+      "idx": 8,
+      "id": "7c2b3a53-36a2-46d0-8dca-8b133406c40c",
+      "seed": 208,
+      "lego": 3,
+      "english": "to ask you how to say it",
+      "other": "te perguntar como dizer isso",
+      "qa_score": null
+    },
+    {
+      "idx": 9,
+      "id": "07b8f553-cc9c-47b4-aba6-3f3f88430eba",
+      "seed": 86,
+      "lego": 2,
+      "english": "unfortunately, I can't speak Portuguese yet",
+      "other": "infelizmente, eu ainda não posso falar português",
+      "qa_score": null
+    },
+    {
+      "idx": 10,
+      "id": "4ef3ec14-4c63-4b07-8815-988cc539bfb6",
+      "seed": 98,
+      "lego": 2,
+      "english": "I should consider doing something else",
+      "other": "eu deveria considerar fazer outra coisa",
+      "qa_score": null
+    },
+    {
+      "idx": 11,
+      "id": "67603834-9bb5-4ad4-8dd5-7e4a071ba9ac",
+      "seed": 48,
+      "lego": 2,
+      "english": "I don't care about making mistakes because it's a good thing",
+      "other": "eu não me importo com cometer erros porque é uma coisa boa",
+      "qa_score": null
+    },
+    {
+      "idx": 12,
+      "id": "3d49804d-76a8-4e89-8e83-27cd121b816e",
+      "seed": 113,
+      "lego": 1,
+      "english": "she said why can't I see that",
+      "other": "ela disse por que eu não consigo ver isso",
+      "qa_score": null
+    },
+    {
+      "idx": 13,
+      "id": "adc0413f-cb52-44a9-960d-dfca939a6e75",
+      "seed": 116,
+      "lego": 3,
+      "english": "the best choice I could make",
+      "other": "a melhor escolha que eu poderia fazer",
+      "qa_score": null
+    },
+    {
+      "idx": 14,
+      "id": "ab95ebc0-e036-47d5-996c-ad563a74a981",
+      "seed": 236,
+      "lego": 2,
+      "english": "I am going to try to help",
+      "other": "eu vou tentar ajudar",
+      "qa_score": null
+    },
+    {
+      "idx": 15,
+      "id": "b6a0378f-be25-40ac-9834-314b594461f6",
+      "seed": 52,
+      "lego": 4,
+      "english": "to write a letter last week",
+      "other": "escrever uma carta na semana passada",
+      "qa_score": null
+    },
+    {
+      "idx": 16,
+      "id": "410c9b13-e046-49f4-9e6a-539569be07a4",
+      "seed": 26,
+      "lego": 2,
+      "english": "why do you want to feel?",
+      "other": "por que você quer sentir?",
+      "qa_score": null
+    },
+    {
+      "idx": 17,
+      "id": "76f3cb9f-a046-4e3f-832c-daad1d1bac2e",
+      "seed": 116,
+      "lego": 2,
+      "english": "this is the best choice",
+      "other": "esta é a melhor escolha",
+      "qa_score": null
+    },
+    {
+      "idx": 18,
+      "id": "ff35945b-254e-41ae-a615-a514581997e2",
+      "seed": 252,
+      "lego": 2,
+      "english": "I want to be ready to start learning Portuguese",
+      "other": "eu quero estar pronto para começar a aprender português",
+      "qa_score": null
+    },
+    {
+      "idx": 19,
+      "id": "a2cfca4c-2929-4613-83d6-347998096c11",
+      "seed": 119,
+      "lego": 2,
+      "english": "she said she wanted to ask something new before you leave",
+      "other": "ela disse que ela queria perguntar algo novo antes de você ir embora",
+      "qa_score": null
+    },
+    {
+      "idx": 20,
+      "id": "b11a590f-e707-4c7d-a9af-7a63e9793db1",
+      "seed": 218,
+      "lego": 1,
+      "english": "I didn't do what they wanted",
+      "other": "eu não fiz o que eles queriam",
+      "qa_score": null
+    },
+    {
+      "idx": 21,
+      "id": "2670dc2d-6362-401b-bab3-ab6b3db0d9d8",
+      "seed": 214,
+      "lego": 2,
+      "english": "I enjoy the chance to spend more time meeting as a group at the weekend",
+      "other": "eu gosto da oportunidade de passar mais tempo se reunindo como um grupo no fim de semana",
+      "qa_score": null
+    },
+    {
+      "idx": 22,
+      "id": "fce155c6-1489-49d4-9ed1-a3c2f87e23f3",
+      "seed": 96,
+      "lego": 1,
+      "english": "no, this is not the only way that it will work for us",
+      "other": "não, esta não é a única maneira que vai funcionar para nós",
+      "qa_score": null
+    },
+    {
+      "idx": 23,
+      "id": "a5e96d74-8b28-465b-bd8b-fb82e692b7e4",
+      "seed": 77,
+      "lego": 2,
+      "english": "I'm very happy at how quickly I've learnt Portuguese already",
+      "other": "eu estou muito feliz com quão rápido eu já aprendi português",
+      "qa_score": null
+    },
+    {
+      "idx": 24,
+      "id": "e7164225-72e4-4e2c-8528-7f5f9a68db13",
+      "seed": 71,
+      "lego": 2,
+      "english": "we didn't want to let anyone hear where the young dog was",
+      "other": "nós não queríamos deixar ninguém ouvir onde o cachorro jovem estava",
+      "qa_score": null
+    },
+    {
+      "idx": 25,
+      "id": "18f096fc-bf5d-4d40-bacc-37dbf62a4ee1",
+      "seed": 188,
+      "lego": 2,
+      "english": "change because I'm happy so far",
+      "other": "mudar porque eu estou feliz até agora",
+      "qa_score": null
+    },
+    {
+      "idx": 26,
+      "id": "e5e9d0c7-c1bd-4cba-88b4-6c129f26c67a",
+      "seed": 83,
+      "lego": 1,
+      "english": "I do not agree with you",
+      "other": "eu não concordo com você",
+      "qa_score": null
+    },
+    {
+      "idx": 27,
+      "id": "8bd6f49c-a292-474b-860a-339e831b200c",
+      "seed": 190,
+      "lego": 3,
+      "english": "some questions at work",
+      "other": "algumas perguntas no trabalho",
+      "qa_score": null
+    },
+    {
+      "idx": 28,
+      "id": "bd0c64ec-8d5c-40ed-b5bc-bcd7472b6939",
+      "seed": 86,
+      "lego": 1,
+      "english": "it wasn't possible to try that",
+      "other": "não foi possível tentar isso",
+      "qa_score": null
+    },
+    {
+      "idx": 29,
+      "id": "a01141f6-c205-45c6-9c84-035203de493f",
+      "seed": 106,
+      "lego": 2,
+      "english": "I just need to work hard",
+      "other": "eu só preciso trabalhar duro",
+      "qa_score": null
+    },
+    {
+      "idx": 30,
+      "id": "af544e1b-10fd-4bd7-89ad-6b9e16050c08",
+      "seed": 157,
+      "lego": 2,
+      "english": "I won't be able to be there",
+      "other": "eu não vou poder estar lá",
+      "qa_score": null
+    },
+    {
+      "idx": 31,
+      "id": "7e41c998-8769-463d-bf2a-ba3058ca15ae",
+      "seed": 233,
+      "lego": 1,
+      "english": "I know a young woman who speaks",
+      "other": "eu conheço uma mulher jovem que fala",
+      "qa_score": null
+    },
+    {
+      "idx": 32,
+      "id": "4ea6ba78-6b45-41c4-8f15-f671f84a573a",
+      "seed": 97,
+      "lego": 3,
+      "english": "as soon as you want",
+      "other": "assim que você quiser",
+      "qa_score": null
+    },
+    {
+      "idx": 33,
+      "id": "542344dd-162f-4ec2-a1b4-e64887c863f1",
+      "seed": 133,
+      "lego": 1,
+      "english": "I know someone who is learning Portuguese",
+      "other": "eu conheço alguém que está aprendendo português",
+      "qa_score": null
+    },
+    {
+      "idx": 34,
+      "id": "b3f82a11-ad83-4817-a365-3424fcfca561",
+      "seed": 235,
+      "lego": 1,
+      "english": "he said something",
+      "other": "ele disse algo",
+      "qa_score": null
+    },
+    {
+      "idx": 35,
+      "id": "d457ce6b-d728-4d92-8f78-4cd099299838",
+      "seed": 101,
+      "lego": 1,
+      "english": "I'm enjoying finding out more about this",
+      "other": "eu estou gostando de descobrir mais sobre isso",
+      "qa_score": null
+    },
+    {
+      "idx": 36,
+      "id": "6536937a-2814-4c50-84f6-038ff4185754",
+      "seed": 22,
+      "lego": 1,
+      "english": "because you are learning Portuguese",
+      "other": "porque você está aprendendo português",
+      "qa_score": null
+    },
+    {
+      "idx": 37,
+      "id": "7a4900ef-b83f-483c-ab3c-6871e6bbc921",
+      "seed": 190,
+      "lego": 1,
+      "english": "do you mind helping",
+      "other": "você se importa em ajudar",
+      "qa_score": null
+    },
+    {
+      "idx": 38,
+      "id": "3f52eaa7-928d-4a46-8804-1ada91802374",
+      "seed": 173,
+      "lego": 1,
+      "english": "no thank you I can",
+      "other": "não obrigado eu posso",
+      "qa_score": null
+    },
+    {
+      "idx": 39,
+      "id": "7090040a-0df0-4c4a-8a78-cab0581b732c",
+      "seed": 180,
+      "lego": 1,
+      "english": "I'd like to read something",
+      "other": "eu gostaria de ler algo",
+      "qa_score": null
+    },
+    {
+      "idx": 40,
+      "id": "ebb2acea-8c25-4180-9db9-f8b39818b993",
+      "seed": 209,
+      "lego": 2,
+      "english": "I enjoy the chance to spend more time with you today",
+      "other": "eu gosto da oportunidade de passar mais tempo com você hoje",
+      "qa_score": null
+    },
+    {
+      "idx": 41,
+      "id": "70c79e85-ac90-445c-a707-a73cbcb6a1a8",
+      "seed": 24,
+      "lego": 3,
+      "english": "I'm not going to be able to remember",
+      "other": "eu não vou conseguir lembrar",
+      "qa_score": null
+    },
+    {
+      "idx": 42,
+      "id": "1802fda0-cca1-40ad-b43f-12eda76efe9a",
+      "seed": 86,
+      "lego": 1,
+      "english": "it was possible to understand what you said about that",
+      "other": "foi possível entender o que você disse sobre isso",
+      "qa_score": null
+    },
+    {
+      "idx": 43,
+      "id": "abc321c0-f415-4736-b050-0b04f13fdc1a",
+      "seed": 108,
+      "lego": 2,
+      "english": "in the middle of the night",
+      "other": "no meio da noite",
+      "qa_score": null
+    },
+    {
+      "idx": 44,
+      "id": "260d5a96-6abe-4190-b285-932bc71ea27f",
+      "seed": 101,
+      "lego": 2,
+      "english": "I'd like to find out more about this",
+      "other": "eu gostaria de descobrir mais sobre isso",
+      "qa_score": null
+    },
+    {
+      "idx": 45,
+      "id": "bad346c3-7e6e-41fe-bf91-668533f40758",
+      "seed": 97,
+      "lego": 2,
+      "english": "I'm ready to go home on the next bus now if you are ready",
+      "other": "eu estou pronto para ir para casa no próximo ônibus agora se você está pronto",
+      "qa_score": null
+    },
+    {
+      "idx": 46,
+      "id": "ae70e122-59b2-4cf3-a288-7f7b4410d99f",
+      "seed": 64,
+      "lego": 3,
+      "english": "learning Portuguese isn't easy but it is fun",
+      "other": "aprender português não é fácil mas é divertido",
+      "qa_score": null
+    },
+    {
+      "idx": 47,
+      "id": "4d8c4e60-1ee9-4496-bf05-ee38763f07c9",
+      "seed": 186,
+      "lego": 1,
+      "english": "do you want to talk about what you left at work",
+      "other": "você quer falar sobre o que você deixou no trabalho",
+      "qa_score": null
+    },
+    {
+      "idx": 48,
+      "id": "a3b3c42e-9a0b-4445-b8f4-72ae7fc46ce6",
+      "seed": 16,
+      "lego": 3,
+      "english": "he wants to be able to speak Portuguese with everyone else all day",
+      "other": "ele quer de poder falar português com todos os outros o dia todo",
+      "qa_score": null
+    },
+    {
+      "idx": 49,
+      "id": "dd6ebc99-f77a-4750-bdce-2491abd367de",
+      "seed": 166,
+      "lego": 1,
+      "english": "but I'm not sure if my name is not true because I think it's interesting",
+      "other": "mas eu não tenho certeza se o meu nome não é verdade porque eu acho que é interessante",
+      "qa_score": null
+    },
+    {
+      "idx": 50,
+      "id": "b218a935-9066-4ee6-a6f7-cf5447cd9a60",
+      "seed": 99,
+      "lego": 2,
+      "english": "you should ask yourself",
+      "other": "você deveria perguntar a si mesmo",
+      "qa_score": null
+    },
+    {
+      "idx": 51,
+      "id": "9d0636ed-5e25-4253-904b-5ae3732b0f99",
+      "seed": 68,
+      "lego": 2,
+      "english": "what are you looking for",
+      "other": "o que você está procurando",
+      "qa_score": null
+    },
+    {
+      "idx": 52,
+      "id": "c2e45ea7-c9fa-40a3-aab0-10be08235cb8",
+      "seed": 131,
+      "lego": 1,
+      "english": "there are too many things",
+      "other": "há muitas coisas",
+      "qa_score": null
+    },
+    {
+      "idx": 53,
+      "id": "ff194056-6adc-4424-86d7-f47a4b9e3c6f",
+      "seed": 181,
+      "lego": 2,
+      "english": "my mother wants to understand what he was saying on Sunday afternoon",
+      "other": "a minha mãe quer entender o que ele estava dizendo no domingo à tarde",
+      "qa_score": null
+    },
+    {
+      "idx": 54,
+      "id": "3241f966-96cc-4b01-949c-55a6113833b7",
+      "seed": 216,
+      "lego": 2,
+      "english": "I saw a few friends",
+      "other": "eu vi alguns amigos",
+      "qa_score": null
+    },
+    {
+      "idx": 55,
+      "id": "86274e91-0ab0-41b3-aa4b-e48a13be155d",
+      "seed": 258,
+      "lego": 1,
+      "english": "he asked me what's that thing there on the table",
+      "other": "ele me disse o que é aquela coisa lá na mesa",
+      "qa_score": null
+    },
+    {
+      "idx": 56,
+      "id": "5e237e44-32c1-4f10-8ba5-3b7a2014859e",
+      "seed": 250,
+      "lego": 1,
+      "english": "can you tell me where she wants to go with him",
+      "other": "você pode me dizer onde ela quer ir com ele",
+      "qa_score": null
+    },
+    {
+      "idx": 57,
+      "id": "3e3b15bd-9e1f-41b0-b3d5-1895749f7d76",
+      "seed": 67,
+      "lego": 1,
+      "english": "why do you want now",
+      "other": "por que você quer agora",
+      "qa_score": null
+    },
+    {
+      "idx": 58,
+      "id": "43b5b139-cf8e-4ea6-8736-b06fa577b5e4",
+      "seed": 37,
+      "lego": 2,
+      "english": "to think about it now",
+      "other": "a pensar nisso agora",
+      "qa_score": null
+    },
+    {
+      "idx": 59,
+      "id": "f1e7df31-7384-43b1-bd7c-56678478a687",
+      "seed": 195,
+      "lego": 3,
+      "english": "she left it on the table today",
+      "other": "ela deixou na mesa hoje",
+      "qa_score": null
+    },
+    {
+      "idx": 60,
+      "id": "27fc7c4a-8190-4312-8b5d-2f96f9e7e6d4",
+      "seed": 166,
+      "lego": 2,
+      "english": "very unusual",
+      "other": "muito incomum",
+      "qa_score": null
+    },
+    {
+      "idx": 61,
+      "id": "f1d19b96-ad8e-400b-bf85-b2b50371d780",
+      "seed": 145,
+      "lego": 1,
+      "english": "unfortunately I know why are you here today",
+      "other": "infelizmente eu sei por que você está aqui hoje",
+      "qa_score": null
+    },
+    {
+      "idx": 62,
+      "id": "8f316e12-d96d-4f90-acef-2d92fcea454c",
+      "seed": 139,
+      "lego": 1,
+      "english": "I'm sorry that it is more important to talk often than to be perfect",
+      "other": "eu sinto muito que é mais importante falar frequentemente do que ser perfeito",
+      "qa_score": null
+    },
+    {
+      "idx": 63,
+      "id": "c8915b00-375e-4e94-9b6a-ba6de59bd35e",
+      "seed": 43,
+      "lego": 3,
+      "english": "answer carefully today",
+      "other": "responder com cuidado hoje",
+      "qa_score": null
+    },
+    {
+      "idx": 64,
+      "id": "a5781fb6-b450-4c1b-b667-eed0827b9ffc",
+      "seed": 149,
+      "lego": 1,
+      "english": "this isn't difficult for me",
+      "other": "isso não é difícil para eu",
+      "qa_score": null
+    },
+    {
+      "idx": 65,
+      "id": "a08a7fa3-1a56-4af2-a6da-47e8716d2b61",
+      "seed": 248,
+      "lego": 2,
+      "english": "I thought the film was very good",
+      "other": "eu achei que o filme era muito bom",
+      "qa_score": null
+    },
+    {
+      "idx": 66,
+      "id": "d480bc09-b68d-44be-b7d0-e730bdddf952",
+      "seed": 11,
+      "lego": 4,
+      "english": "to be able to speak after you finish",
+      "other": "de poder falar depois que você terminar",
+      "qa_score": null
+    },
+    {
+      "idx": 67,
+      "id": "71ee1b10-9039-4779-8ab9-a61ca692df68",
+      "seed": 128,
+      "lego": 1,
+      "english": "you're like someone I wanted to know",
+      "other": "você é como alguém que eu queria conhecer",
+      "qa_score": null
+    },
+    {
+      "idx": 68,
+      "id": "99d0d444-842a-452a-8bb3-b631584ecce3",
+      "seed": 1,
+      "lego": 4,
+      "english": "to speak Portuguese with you",
+      "other": "falar português com você",
+      "qa_score": null
+    },
+    {
+      "idx": 69,
+      "id": "6a93810d-dc6e-4b81-aa1b-fef81aadeebd",
+      "seed": 95,
+      "lego": 1,
+      "english": "are you ready to go now or not",
+      "other": "você está pronto para ir agora ou não",
+      "qa_score": null
+    },
+    {
+      "idx": 70,
+      "id": "ac0d2b36-47d4-4615-8978-c2f47aab2455",
+      "seed": 6,
+      "lego": 2,
+      "english": "I want to remember",
+      "other": "eu quero lembrar",
+      "qa_score": null
+    },
+    {
+      "idx": 71,
+      "id": "488ff05b-4674-4f6d-a20e-cfa976bd3d8d",
+      "seed": 234,
+      "lego": 2,
+      "english": "I met someone last night who works with your brother and knows your sister",
+      "other": "eu conheci alguém ontem à noite que trabalha com o seu irmão e conhece a sua irmã",
+      "qa_score": null
+    },
+    {
+      "idx": 72,
+      "id": "6eb598f0-dcef-4a07-bc60-12c90f3a4e5d",
+      "seed": 52,
+      "lego": 2,
+      "english": "to write a letter",
+      "other": "escrever uma carta",
+      "qa_score": null
+    },
+    {
+      "idx": 73,
+      "id": "349d18cd-e35f-4b20-8130-e2b715605ddb",
+      "seed": 69,
+      "lego": 3,
+      "english": "look after the young dog",
+      "other": "cuidar do cachorro jovem",
+      "qa_score": null
+    },
+    {
+      "idx": 74,
+      "id": "6733af8a-a8ec-492b-84b4-9b9e409f6d11",
+      "seed": 122,
+      "lego": 4,
+      "english": "I feel better when I can see how it's going with your car",
+      "other": "eu me sinto melhor quando eu posso ver como está indo com o seu carro",
+      "qa_score": null
+    },
+    {
+      "idx": 75,
+      "id": "8be4af0d-4a82-47df-bb47-1a02fb072f97",
+      "seed": 228,
+      "lego": 2,
+      "english": "started to practise speaking",
+      "other": "começar a praticar falando",
+      "qa_score": null
+    },
+    {
+      "idx": 76,
+      "id": "0334594d-c674-40eb-8243-dca1bda30398",
+      "seed": 15,
+      "lego": 5,
+      "english": "I want you to speak with me",
+      "other": "eu quero que você fale comigo",
+      "qa_score": null
+    },
+    {
+      "idx": 77,
+      "id": "2e112e12-4152-49eb-a784-0b8f23eb7c02",
+      "seed": 151,
+      "lego": 2,
+      "english": "I was hoping yes",
+      "other": "eu estava esperando sim",
+      "qa_score": null
+    },
+    {
+      "idx": 78,
+      "id": "4853b443-9d20-4ecf-99ca-c408aa308890",
+      "seed": 210,
+      "lego": 3,
+      "english": "they think that we need to discuss this as a group",
+      "other": "eles acham que nós precisamos discutir isso como um grupo",
+      "qa_score": null
+    },
+    {
+      "idx": 79,
+      "id": "cef188bb-48c9-47c9-851f-b07e2fba029a",
+      "seed": 120,
+      "lego": 3,
+      "english": "she said you like to go by bus",
+      "other": "ela disse que você gosta de ir de ônibus",
+      "qa_score": null
+    },
+    {
+      "idx": 80,
+      "id": "3c6a35fe-727b-4254-9f4d-c537bc2af49c",
+      "seed": 95,
+      "lego": 1,
+      "english": "are you ready to do this",
+      "other": "você está pronto para fazer isso",
+      "qa_score": null
+    },
+    {
+      "idx": 81,
+      "id": "52a14252-1822-4c17-90e5-47c46cace1e8",
+      "seed": 45,
+      "lego": 3,
+      "english": "I wasn't thinking about how to know everything but I am now",
+      "other": "eu não estava pensando em como saber tudo mas estou agora",
+      "qa_score": null
+    },
+    {
+      "idx": 82,
+      "id": "a47da31e-0705-48e5-8537-39efc1cb06ce",
+      "seed": 229,
+      "lego": 2,
+      "english": "she would help if she could",
+      "other": "ela te ajudaria se ela pudesse",
+      "qa_score": null
+    },
+    {
+      "idx": 83,
+      "id": "31ca64ec-d71b-4113-93e1-16893df0765e",
+      "seed": 225,
+      "lego": 1,
+      "english": "I think he would give you that tomorrow afternoon",
+      "other": "eu acho que ele te daria isso amanhã à tarde",
+      "qa_score": null
+    },
+    {
+      "idx": 84,
+      "id": "14e3ec13-a160-4fe6-ba50-070dbd798884",
+      "seed": 4,
+      "lego": 2,
+      "english": "I want to say something",
+      "other": "eu quero dizer algo",
+      "qa_score": null
+    },
+    {
+      "idx": 85,
+      "id": "0cd032f7-bc52-42a1-b5c7-2462e7d39ee2",
+      "seed": 22,
+      "lego": 2,
+      "english": "because I do not want to stop, I want to meet her",
+      "other": "porque eu não quero parar, eu quero conhecer ela",
+      "qa_score": null
+    },
+    {
+      "idx": 86,
+      "id": "4b6c32ae-592c-4d74-a15b-f777f273c78a",
+      "seed": 176,
+      "lego": 1,
+      "english": "I'll ask him if he can manage to understand what I'm saying",
+      "other": "eu vou perguntar a ele se ele consegue entender o que eu estou dizendo",
+      "qa_score": null
+    },
+    {
+      "idx": 87,
+      "id": "08bdd894-a925-4e59-bc1f-744bff6fba2c",
+      "seed": 119,
+      "lego": 1,
+      "english": "I feel better when I can ask you something about it",
+      "other": "eu me sinto melhor quando eu posso te perguntar algo sobre isso",
+      "qa_score": null
+    },
+    {
+      "idx": 88,
+      "id": "05287d1c-add6-426e-a06f-d49d682b2333",
+      "seed": 208,
+      "lego": 3,
+      "english": "I didn't want to ask you how to say it",
+      "other": "eu não queria te perguntar como dizer isso",
+      "qa_score": null
+    },
+    {
+      "idx": 89,
+      "id": "4d8d9f0a-d903-48a1-a351-3a403df9e69e",
+      "seed": 11,
+      "lego": 2,
+      "english": "I'd like to be able to speak Portuguese",
+      "other": "eu gostaria de poder falar português",
+      "qa_score": null
+    },
+    {
+      "idx": 90,
+      "id": "49f93945-33fc-4668-864f-5cc0ef1416e5",
+      "seed": 58,
+      "lego": 1,
+      "english": "it's interesting this morning",
+      "other": "é interessante esta manhã",
+      "qa_score": null
+    },
+    {
+      "idx": 91,
+      "id": "51dedd56-673b-45e4-8c14-537cb33deaa4",
+      "seed": 232,
+      "lego": 1,
+      "english": "an old woman here",
+      "other": "uma mulher velha aqui",
+      "qa_score": null
+    },
+    {
+      "idx": 92,
+      "id": "bcb69c5f-640a-47a2-9822-de9adb2bf552",
+      "seed": 183,
+      "lego": 1,
+      "english": "no I'm afraid I can't",
+      "other": "não infelizmente eu não posso",
+      "qa_score": null
+    },
+    {
+      "idx": 93,
+      "id": "9e9d3752-7b4b-46a6-8015-fd8979ef2235",
+      "seed": 229,
+      "lego": 1,
+      "english": "I'm happy that that woman would help you tomorrow afternoon",
+      "other": "eu estou feliz que aquela mulher te ajudaria amanhã à tarde",
+      "qa_score": null
+    },
+    {
+      "idx": 94,
+      "id": "97410380-750a-4674-9265-5c4e92b648c7",
+      "seed": 184,
+      "lego": 1,
+      "english": "yes I saw them on Sunday afternoon when I'd like to read my book",
+      "other": "sim eu vi elas no domingo à tarde quando eu gostaria de ler o meu livro",
+      "qa_score": null
+    },
+    {
+      "idx": 95,
+      "id": "78888a85-6119-4045-b9eb-af258dc17b7a",
+      "seed": 170,
+      "lego": 1,
+      "english": "and then I'd like you to tell me what do you want me to do with that book",
+      "other": "e depois eu gostaria que você me dizer o que você quer que eu faça com esse livro",
+      "qa_score": null
+    },
+    {
+      "idx": 96,
+      "id": "871e2230-dd65-4e05-8c35-4b44ee1c4273",
+      "seed": 53,
+      "lego": 3,
+      "english": "his letter this morning",
+      "other": "a carta dele esta manhã",
+      "qa_score": null
+    },
+    {
+      "idx": 97,
+      "id": "5fc5edb8-3d2f-4fa4-8890-6b0226c7bb24",
+      "seed": 157,
+      "lego": 2,
+      "english": "I won't be able to be there tomorrow morning",
+      "other": "eu não vou poder estar lá amanhã de manhã",
+      "qa_score": null
+    },
+    {
+      "idx": 98,
+      "id": "ae22fde8-9c6b-4ee6-96c9-e2b6bd5316d2",
+      "seed": 27,
+      "lego": 4,
+      "english": "I don't like taking too much time to answer",
+      "other": "eu não gosto de levar muito tempo para responder",
+      "qa_score": null
+    },
+    {
+      "idx": 99,
+      "id": "55cbe15e-b230-40aa-a4fe-a75a230e7931",
+      "seed": 21,
+      "lego": 3,
+      "english": "she wants to find out why you are learning her name quickly",
+      "other": "ela quer descobrir por que você está aprendendo o nome dela rapidamente",
+      "qa_score": null
+    },
+    {
+      "idx": 100,
+      "id": "b4b4d0c7-77fe-4a5b-9725-a965c1f9440b",
+      "seed": 224,
+      "lego": 2,
+      "english": "I'm happy that I started to learn Portuguese so far",
+      "other": "eu estou feliz que eu comecei a aprender português até agora",
+      "qa_score": null
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 222,
+  "known_text": "He's trying to tell me what he wants",
+  "target_text": "他在试着告诉我他想要什么。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "he/him",
+      "target": "他",
+      "build": [
+        {"known": "He.", "target": "他。"},
+        {"known": "He is.", "target": "他在。"},
+        {"known": "He wants.", "target": "他想。"},
+        {"known": "He is trying.", "target": "他在试着。"}
+      ],
+      "use": [
+        {"known": "He's trying to tell me something important about work.", "target": "他在试着告诉我工作的一些重要的东西。", "score": 8},
+        {"known": "She asked if he wants to come with us tomorrow evening.", "target": "她问他是不是想明天晚上和我们一起来。", "score": 7},
+        {"known": "If he has time on Sunday, he will watch the football.", "target": "如果他星期天有时间，他会看足球。", "score": 8},
+        {"known": "I hope he can tell me what happened at the meeting.", "target": "我希望他可以告诉我开会发生了什么。", "score": 8},
+        {"known": "Everyone said he wants to watch a film with us later.", "target": "大家都说他以后想和我们看电影。", "score": 7},
+        {"known": "Did anyone tell you what he did on Saturday night?", "target": "有人告诉你他星期六晚上做了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "is (progressive marker)",
+      "target": "在",
+      "build": [
+        {"known": "Is.", "target": "在。"},
+        {"known": "Is doing.", "target": "在做。"},
+        {"known": "He is.", "target": "他在。"},
+        {"known": "Is trying.", "target": "在试着。"}
+      ],
+      "use": [
+        {"known": "He's trying to explain what happened yesterday.", "target": "他在试着解释昨天发生了什么。", "score": 8},
+        {"known": "She is working on something important at the office.", "target": "她在办公室做一些重要的东西。", "score": 7},
+        {"known": "If you are watching television, I can come back later.", "target": "如果你在看电视，我可以以后回来。", "score": 8},
+        {"known": "I am trying to understand what they want us to do.", "target": "我在试着了解他们想让我们做什么。", "score": 8},
+        {"known": "Everyone is asking what we should do about this.", "target": "大家都在问我们要怎么做这个。", "score": 7},
+        {"known": "Did you know he is trying to tell us something?", "target": "你知道他在试着告诉我们东西吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "trying to",
+      "target": "试着",
+      "components": [
+        {"known": "try", "target": "试"},
+        {"known": "action marker", "target": "着"}
+      ],
+      "build": [
+        {"known": "Trying.", "target": "试着。"},
+        {"known": "Trying to.", "target": "试着。"},
+        {"known": "Is trying.", "target": "在试着。"},
+        {"known": "Trying to tell.", "target": "试着告诉。"}
+      ],
+      "use": [
+        {"known": "He's trying to tell me what happened at the meeting.", "target": "他在试着告诉我开会发生了什么。", "score": 8},
+        {"known": "She is trying to understand what we want to do.", "target": "她在试着了解我们想做什么。", "score": 7},
+        {"known": "If you are trying to help, please let me know.", "target": "如果你在试着帮忙，请让我知道。", "score": 8},
+        {"known": "I have been trying to finish this work all week.", "target": "我一整个星期都在试着完成这个工作。", "score": 7},
+        {"known": "Everyone is trying to find a way to solve the problem.", "target": "大家都在试着找办法处理问题。", "score": 8},
+        {"known": "Did you know he was trying to explain it to us?", "target": "你知道他在试着给我们解释吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "tell (someone)",
+      "target": "告诉",
+      "components": [
+        {"known": "announce", "target": "告"},
+        {"known": "inform", "target": "诉"}
+      ],
+      "build": [
+        {"known": "Tell.", "target": "告诉。"},
+        {"known": "Tell me.", "target": "告诉我。"},
+        {"known": "Trying to tell.", "target": "试着告诉。"},
+        {"known": "Tell him.", "target": "告诉他。"}
+      ],
+      "use": [
+        {"known": "He's trying to tell me what he wants us to do.", "target": "他在试着告诉我他想要我们做什么。", "score": 8},
+        {"known": "She told us that the meeting is tomorrow morning.", "target": "她告诉我们开会是明天早上。", "score": 7},
+        {"known": "If you want to tell him something, do it now.", "target": "如果你想告诉他东西，现在做。", "score": 8},
+        {"known": "I didn't want to tell them what happened on Saturday.", "target": "我不想告诉他们星期六发生了什么。", "score": 7},
+        {"known": "Everyone wants to tell him how much we appreciate it.", "target": "大家都想告诉他我们很感激。", "score": 8},
+        {"known": "Did she tell you what time we need to be there?", "target": "她告诉你我们需要什么时候到那里吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "Me.", "target": "我。"},
+        {"known": "Tell me.", "target": "告诉我。"},
+        {"known": "I want.", "target": "我想。"},
+        {"known": "He told me.", "target": "他告诉我。"}
+      ],
+      "use": [
+        {"known": "He's trying to tell me what he thinks about this.", "target": "他在试着告诉我他觉得这个怎么样。", "score": 8},
+        {"known": "She asked me if I want to watch a film this weekend.", "target": "她问我是不是想这个周末看电影。", "score": 7},
+        {"known": "If you want to tell me something, please do it now.", "target": "如果你想告诉我东西，请现在做。", "score": 7},
+        {"known": "I hope he can explain to me what went wrong.", "target": "我希望他可以给我解释出了什么问题。", "score": 8},
+        {"known": "Everyone told me they had a good time on Sunday.", "target": "大家都告诉我他们星期天过得开心。", "score": 8},
+        {"known": "Did anyone tell me what happened at the office?", "target": "有人告诉我办公室发生了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "want/think",
+      "target": "想",
+      "build": [
+        {"known": "Want.", "target": "想。"},
+        {"known": "Think.", "target": "想。"},
+        {"known": "He wants.", "target": "他想。"},
+        {"known": "Want to.", "target": "想要。"}
+      ],
+      "use": [
+        {"known": "He's trying to tell me what he wants to do tomorrow.", "target": "他在试着告诉我他明天想要做什么。", "score": 8},
+        {"known": "She wants to know if we can come to the meeting.", "target": "她想知道我们是不是可以来开会。", "score": 7},
+        {"known": "If you want to watch something, just let me know.", "target": "如果你想看东西，就让我知道。", "score": 8},
+        {"known": "I want to understand what he is trying to say.", "target": "我想了解他在试着说什么。", "score": 8},
+        {"known": "Everyone wants to know what happened at work.", "target": "大家都想知道工作发生了什么。", "score": 7},
+        {"known": "Did you want to tell us what you think about it?", "target": "你想告诉我们你觉得这个怎么样吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "want/need",
+      "target": "要",
+      "build": [
+        {"known": "Want.", "target": "要。"},
+        {"known": "Need.", "target": "要。"},
+        {"known": "Want to.", "target": "想要。"},
+        {"known": "Want what.", "target": "要什么。"}
+      ],
+      "use": [
+        {"known": "He's trying to tell me what he wants us to help with.", "target": "他在试着告诉我他想要我们帮什么忙。", "score": 8},
+        {"known": "She wants to know what we need for the meeting.", "target": "她想知道我们开会要什么。", "score": 7},
+        {"known": "If you want something, you should ask for it now.", "target": "如果你要东西，你现在要问。", "score": 8},
+        {"known": "I need to understand what he is trying to say.", "target": "我要了解他在试着说什么。", "score": 7},
+        {"known": "Everyone wants to know what we need to do next.", "target": "大家都想知道我们下一步要做什么。", "score": 8},
+        {"known": "Did you tell him what you want him to bring?", "target": "你告诉他你要他带什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "M",
+      "known": "what",
+      "target": "什么",
+      "components": [
+        {"known": "what (part)", "target": "什"},
+        {"known": "suffix", "target": "么"}
+      ],
+      "build": [
+        {"known": "What?", "target": "什么？"},
+        {"known": "Want what.", "target": "要什么。"},
+        {"known": "Tell what.", "target": "告诉什么。"},
+        {"known": "What thing.", "target": "什么东西。"}
+      ],
+      "use": [
+        {"known": "He's trying to tell me what he wants us to know.", "target": "他在试着告诉我他想要我们知道什么。", "score": 8},
+        {"known": "She asked what we are planning to do this weekend.", "target": "她问我们这个周末打算做什么。", "score": 7},
+        {"known": "If you don't know what to do, please ask me.", "target": "如果你不知道做什么，请问我。", "score": 7},
+        {"known": "I want to know what happened at the meeting today.", "target": "我想知道今天开会发生了什么。", "score": 8},
+        {"known": "Everyone is asking what went wrong with the work.", "target": "大家都在问工作出了什么问题。", "score": 8},
+        {"known": "Did you understand what he was trying to say to us?", "target": "你了解他在试着和我们说什么吗？", "score": 8}
+      ]
+    }
+  ]
+}

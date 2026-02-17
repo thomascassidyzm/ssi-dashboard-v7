@@ -1,0 +1,132 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 242,
+  "known_text": "I want to give her more time.",
+  "target_text": "我想给她更多时间。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I want.", "target": "我想。"},
+        {"known": "I want to give.", "target": "我想给。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "I want to give her more time to think about it.", "target": "我想给她更多时间来想。", "score": 8},
+        {"known": "That young man asked me if I know your sister.", "target": "那个年轻的男人问我是不是认识你姐姐。", "score": 7},
+        {"known": "If the old woman can tell me, I would be very happy.", "target": "如果那个老女人能告诉我的话，我会很开心。", "score": 8},
+        {"known": "Everyone told me they want to meet your brother too.", "target": "大家都告诉我他们也想见你哥哥。", "score": 7},
+        {"known": "Would that young woman be able to help me with this?", "target": "那个年轻的女人能帮我做这个吗？", "score": 8},
+        {"known": "She hopes I can remember what the old man said.", "target": "她希望我能记住那个老人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "want/wanted",
+      "target": "想",
+      "build": [
+        {"known": "Want.", "target": "想。"},
+        {"known": "I want.", "target": "我想。"},
+        {"known": "Want to give.", "target": "想给。"},
+        {"known": "Want to give her.", "target": "想给她。"}
+      ],
+      "use": [
+        {"known": "I want to give her more time to finish the work.", "target": "我想给她更多时间来做完工作。", "score": 8},
+        {"known": "That young woman wanted to know what happened yesterday.", "target": "那个年轻的女人想知道昨天发生了什么。", "score": 7},
+        {"known": "If you want to give her something, do it now.", "target": "如果你想给她东西的话，现在做。", "score": 8},
+        {"known": "Your father wanted to meet your mother last night.", "target": "你爸爸昨天晚上想见你妈妈。", "score": 7},
+        {"known": "Everyone here wanted to know when the work starts.", "target": "这里的大家都想知道工作什么时候开始。", "score": 8},
+        {"known": "What did that old man want to tell you about?", "target": "那个老人想告诉你什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "give",
+      "target": "给",
+      "build": [
+        {"known": "Give.", "target": "给。"},
+        {"known": "Give her.", "target": "给她。"},
+        {"known": "Want to give.", "target": "想给。"},
+        {"known": "Want to give her.", "target": "想给她。"}
+      ],
+      "use": [
+        {"known": "I want to give her more time before the meeting.", "target": "我想开会以前给她更多时间。", "score": 8},
+        {"known": "That young man wants me to give him the answer.", "target": "那个年轻的男人想我给他答案。", "score": 7},
+        {"known": "If you can give me some time, I will help you.", "target": "如果你能给我一些时间的话，我会帮你。", "score": 8},
+        {"known": "She told me to give your mother this book.", "target": "她告诉我给你妈妈这本书。", "score": 7},
+        {"known": "Everyone is waiting for him to give us the answer.", "target": "大家都在等他给我们答案。", "score": 8},
+        {"known": "When will your father give us something to read?", "target": "你爸爸什么时候会给我们看的书？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "she/her",
+      "target": "她",
+      "build": [
+        {"known": "She.", "target": "她。"},
+        {"known": "Her.", "target": "她。"},
+        {"known": "Give her.", "target": "给她。"},
+        {"known": "Want to give her.", "target": "想给她。"}
+      ],
+      "use": [
+        {"known": "I want to give her more time to learn.", "target": "我想给她更多时间来学。", "score": 8},
+        {"known": "That young man asked if she can come to help tomorrow.", "target": "那个年轻的男人问她是不是明天能来帮忙。", "score": 7},
+        {"known": "If she has time tonight, she will help us with work.", "target": "如果她今天晚上有时间的话，她会帮我们做工作。", "score": 8},
+        {"known": "I want her to tell us what your mother said.", "target": "我想她告诉我们你妈妈说了什么。", "score": 7},
+        {"known": "Everyone is waiting for her to give us the answer.", "target": "大家都在等她给我们答案。", "score": 8},
+        {"known": "Would she be able to remember what happened yesterday?", "target": "她能记住昨天发生了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "even more",
+      "target": "更多",
+      "build": [
+        {"known": "More.", "target": "更多。"},
+        {"known": "More time.", "target": "更多时间。"},
+        {"known": "Give her more.", "target": "给她更多。"},
+        {"known": "Want more.", "target": "想更多。"}
+      ],
+      "use": [
+        {"known": "I want to give her more time to think carefully.", "target": "我想给她更多时间来想好。", "score": 8},
+        {"known": "That young woman wants more people to help us.", "target": "那个年轻的女人想更多人来帮我们。", "score": 7},
+        {"known": "If you need more help, please let us know now.", "target": "如果你需要更多帮忙的话，请现在让我们知道。", "score": 8},
+        {"known": "She told me she wants to learn more about this.", "target": "她告诉我她想学更多这个。", "score": 7},
+        {"known": "Everyone here wants more time to finish the work.", "target": "这里的大家都想更多时间来做完工作。", "score": 8},
+        {"known": "How much more time does your father need?", "target": "你爸爸需要更多多少时间？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "time",
+      "target": "时间",
+      "components": [
+        {"known": "hour", "target": "时"},
+        {"known": "space", "target": "间"}
+      ],
+      "build": [
+        {"known": "Time.", "target": "时间。"},
+        {"known": "More time.", "target": "更多时间。"},
+        {"known": "Give her more time.", "target": "给她更多时间。"},
+        {"known": "Have time.", "target": "有时间。"}
+      ],
+      "use": [
+        {"known": "I want to give her more time because she is busy.", "target": "我想给她更多时间因为她忙。", "score": 8},
+        {"known": "That young man doesn't have time to help us today.", "target": "那个年轻的男人今天没有时间帮我们。", "score": 7},
+        {"known": "If you have time tomorrow, we can meet and talk.", "target": "如果你明天有时间的话，我们可以见面说话。", "score": 8},
+        {"known": "She told me she needs more time to finish the work.", "target": "她告诉我她需要更多时间来做完工作。", "score": 7},
+        {"known": "Everyone here thinks we don't have enough time.", "target": "这里的大家都觉得我们没有够的时间。", "score": 8},
+        {"known": "When will your mother have time to see us?", "target": "你妈妈什么时候有时间见我们？", "score": 8}
+      ]
+    }
+  ]
+}

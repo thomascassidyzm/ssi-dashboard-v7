@@ -1,0 +1,122 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 114,
+  "target_text": "I feel as if I'm doing worse today than yesterday.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "昨日",
+      "target": "yesterday",
+      "build": [
+        {"known": "昨日", "target": "yesterday"},
+        {"known": "昨日は", "target": "yesterday was"},
+        {"known": "昨日より", "target": "than yesterday"},
+        {"known": "昨日と同じ", "target": "like yesterday"}
+      ],
+      "use": [
+        {"known": "昨日は良い日でした。", "target": "Yesterday was a good day for me.", "score": 8},
+        {"known": "昨日何をしましたか？", "target": "What did you do yesterday?", "score": 8},
+        {"known": "昨日のことを思い出せますか？", "target": "Can you remember what you said yesterday?", "score": 8},
+        {"known": "昨日よりも今日の方が難しいです。", "target": "Today is more difficult than yesterday.", "score": 8},
+        {"known": "昨日は友達と話しました。", "target": "I did talk with friends yesterday.", "score": 7},
+        {"known": "昨日は面白いことがありました。", "target": "Something interesting did happen yesterday.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "より悪い",
+      "target": "worse",
+      "build": [
+        {"known": "悪い", "target": "worse"},
+        {"known": "昨日より悪い", "target": "worse than yesterday"},
+        {"known": "もっと悪い", "target": "more worse"},
+        {"known": "悪くなる", "target": "worse now"}
+      ],
+      "use": [
+        {"known": "今日は昨日より悪いように感じます。", "target": "Today I feel worse than yesterday.", "score": 8},
+        {"known": "悪いことが起きました。", "target": "Something worse did happen to me.", "score": 7},
+        {"known": "昨日よりも今日は悪いと思います。", "target": "I think today is worse than yesterday.", "score": 8},
+        {"known": "悪い日でしたが、明日は良いでしょう。", "target": "It was a worse day, but tomorrow will be good.", "score": 8},
+        {"known": "昨日よりも悪いことをしてしまいました。", "target": "I did something worse than yesterday.", "score": 8},
+        {"known": "悪い状況ですが、大丈夫です。", "target": "It is worse now, but it will be all good.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "〜より",
+      "target": "than",
+      "build": [
+        {"known": "〜より", "target": "than"},
+        {"known": "昨日より", "target": "than yesterday"},
+        {"known": "私より", "target": "than me"},
+        {"known": "これより", "target": "than this"}
+      ],
+      "use": [
+        {"known": "今日は昨日より難しいです。", "target": "Today is more difficult than yesterday for me.", "score": 8},
+        {"known": "私より彼の方が良いです。", "target": "He is more good than me at this.", "score": 8},
+        {"known": "これより簡単なものがありますか？", "target": "Is something more easy than this now?", "score": 8},
+        {"known": "昨日より今日の方が悪いです。", "target": "Today is worse than yesterday for me.", "score": 8},
+        {"known": "彼女より私の方がたくさん言いました。", "target": "I said more than she did today.", "score": 8},
+        {"known": "昨日より今日の方が疲れています。", "target": "Today I feel more tired than yesterday.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "私がやっている",
+      "target": "I'm doing",
+      "components": [
+        {"known": "私は", "target": "I'm"},
+        {"known": "やる", "target": "doing"}
+      ],
+      "build": [
+        {"known": "私がやっている", "target": "I'm doing"},
+        {"known": "うまくやっている", "target": "I'm doing well"},
+        {"known": "やっていない", "target": "I'm not doing"},
+        {"known": "悪くやっている", "target": "I'm doing worse"}
+      ],
+      "use": [
+        {"known": "今日は何をやっていますか？", "target": "What are you doing today with me?", "score": 7},
+        {"known": "昨日より悪くやっているように感じます。", "target": "I feel like I'm doing worse than yesterday.", "score": 8},
+        {"known": "うまくやっていると思います。", "target": "I think that I'm doing well now.", "score": 8},
+        {"known": "今やっていることは大切です。", "target": "What I'm doing now is very important.", "score": 8},
+        {"known": "やっていることを変えたいです。", "target": "I want to change what I'm doing now.", "score": 8},
+        {"known": "友達とやっていることが楽しいです。", "target": "What I'm doing with friends is fun.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "〜のように感じます",
+      "target": "I feel as if",
+      "components": [
+        {"known": "私は感じる", "target": "I feel"},
+        {"known": "〜のように", "target": "as if"}
+      ],
+      "build": [
+        {"known": "〜のように感じます", "target": "I feel as if"},
+        {"known": "そうであるように感じます", "target": "I feel as if it is"},
+        {"known": "悪いように感じます", "target": "I feel as if worse"},
+        {"known": "良いように感じます", "target": "I feel as if good"}
+      ],
+      "use": [
+        {"known": "昨日より今日の方がうまくいっていないように感じます。", "target": "I feel as if I'm doing worse today than yesterday.", "score": 9},
+        {"known": "何かが違うように感じます。", "target": "I feel as if something is different today.", "score": 8},
+        {"known": "もっとできるように感じます。", "target": "I feel as if I can do more now.", "score": 8},
+        {"known": "昨日より良いように感じます。", "target": "I feel as if it is more good than yesterday.", "score": 7},
+        {"known": "何か新しいことを学んだように感じます。", "target": "I feel as if I did learn something new.", "score": 8},
+        {"known": "友達といると幸せだと感じます。", "target": "I feel as if I'm happy when with friends.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "今日",
+      "target": "today",
+      "is_duplicate": true
+    }
+  ]
+}

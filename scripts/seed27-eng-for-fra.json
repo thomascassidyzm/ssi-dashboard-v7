@@ -1,0 +1,94 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 27,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je n'aime pas",
+      "target": "I don't like",
+      "components": [
+        {"known": "Je", "target": "I"},
+        {"known": "n'aime pas", "target": "don't like"}
+      ],
+      "build": [
+        {"known": "Je n'aime pas", "target": "I don't like"},
+        {"known": "Je n'aime pas parler", "target": "I don't like to speak"},
+        {"known": "Je n'aime pas apprendre", "target": "I don't like to learn"},
+        {"known": "Je n'aime pas partir", "target": "I don't like to go"}
+      ],
+      "use": [
+        {"known": "Je n'aime pas parler anglais avant d'être presque prêt.", "target": "I don't like to speak English before I'm nearly ready.", "score": 9},
+        {"known": "Parce que je n'aime pas me sentir comme si je ne suis pas prêt.", "target": "Because I don't like feeling as if I'm not ready.", "score": 9},
+        {"known": "Je n'aime pas partir avant que tu sois prêt à parler anglais.", "target": "I don't like to go before you are ready to speak English.", "score": 9},
+        {"known": "Je n'aime pas apprendre anglais avant de me sentir prêt à commencer.", "target": "I don't like to learn English before feeling ready to start.", "score": 9},
+        {"known": "Je n'aime pas rencontrer des gens qui ne parlent pas anglais avec moi.", "target": "I don't like to meet people who don't speak English with me.", "score": 9},
+        {"known": "Je n'aime pas commencer à parler anglais avant d'être presque prêt.", "target": "I don't like to start to speak English before I'm nearly ready.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "trop de temps",
+      "target": "too much time",
+      "components": [
+        {"known": "trop de", "target": "too much"},
+        {"known": "temps", "target": "time"}
+      ],
+      "build": [
+        {"known": "trop de temps", "target": "too much time"},
+        {"known": "trop de temps pour parler", "target": "too much time to speak"},
+        {"known": "Je n'aime pas trop de temps", "target": "I don't like too much time"},
+        {"known": "trop de temps pour commencer", "target": "too much time to start"}
+      ],
+      "use": [
+        {"known": "Je n'aime pas trop de temps avant de parler anglais.", "target": "I don't like too much time before I speak English.", "score": 9},
+        {"known": "Parce que je ne veux pas trop de temps avant de commencer.", "target": "Because I don't want too much time before I start.", "score": 9},
+        {"known": "Trop de temps pour parler anglais n'est pas bien.", "target": "Too much time to speak English is not well.", "score": 8},
+        {"known": "Tu as trop de temps pour parler anglais avec moi maintenant.", "target": "You have too much time to speak English with me now.", "score": 9},
+        {"known": "Je ne veux pas trop de temps avant que tu doives partir.", "target": "I don't want too much time before you have to go.", "score": 9},
+        {"known": "J'aimerais ne pas avoir trop de temps pour apprendre anglais.", "target": "I'd like not to have too much time to learn English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "prendre",
+      "target": "taking",
+      "build": [
+        {"known": "prendre", "target": "taking"},
+        {"known": "je n'aime pas prendre", "target": "I don't like taking"},
+        {"known": "prendre trop de temps", "target": "taking too much time"},
+        {"known": "je n'aime pas prendre trop de temps", "target": "I don't like taking too much time"}
+      ],
+      "use": [
+        {"known": "Je n'aime pas prendre trop de temps pour parler anglais.", "target": "I don't like taking too much time to speak English.", "score": 9},
+        {"known": "Parce que je n'aime pas prendre trop de temps avant de commencer.", "target": "Because I don't like taking too much time before I start.", "score": 9},
+        {"known": "Je n'aime pas prendre trop de temps avant de me sentir prêt à parler.", "target": "I don't like taking too much time before feeling ready to speak.", "score": 9},
+        {"known": "Tu n'aimes pas prendre trop de temps pour parler anglais avec moi.", "target": "You don't like taking too much time to speak English with me.", "score": 9},
+        {"known": "Je n'aime pas prendre trop de temps avant que tu doives partir.", "target": "I don't like taking too much time before you have to go.", "score": 9},
+        {"known": "Nous n'aimons pas prendre trop de temps pour apprendre anglais.", "target": "We don't like taking too much time to learn English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "répondre",
+      "target": "to answer",
+      "build": [
+        {"known": "répondre", "target": "to answer"},
+        {"known": "je n'aime pas prendre trop de temps pour répondre", "target": "I don't like taking too much time to answer"},
+        {"known": "je veux répondre", "target": "I want to answer"},
+        {"known": "répondre en anglais", "target": "to answer in English"}
+      ],
+      "use": [
+        {"known": "Je n'aime pas prendre trop de temps pour répondre en anglais.", "target": "I don't like taking too much time to answer in English.", "score": 9},
+        {"known": "Parce que je veux répondre en anglais le plus souvent possible.", "target": "Because I want to answer in English as often as possible.", "score": 9},
+        {"known": "Je n'aime pas prendre trop de temps pour répondre avant que tu partes.", "target": "I don't like taking too much time to answer before you go.", "score": 9},
+        {"known": "Vas-tu répondre en anglais maintenant?", "target": "Are you going to answer in English now?", "score": 8},
+        {"known": "J'aimerais pouvoir répondre en anglais très bien bientôt.", "target": "I'd like to be able to answer in English very well soon.", "score": 9},
+        {"known": "Je n'aime pas prendre trop de temps pour répondre à des gens qui parlent anglais.", "target": "I don't like taking too much time to answer people who speak English.", "score": 9}
+      ]
+    }
+  ]
+}

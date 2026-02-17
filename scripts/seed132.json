@@ -1,0 +1,120 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 132,
+  "known_text": "それは彼女が言っていたことより面白くないです。",
+  "target_text": "That's less exciting than what she was saying.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "面白い",
+      "target": "exciting",
+      "build": [
+        {"known": "面白い", "target": "exciting"},
+        {"known": "面白いこと", "target": "exciting thing"},
+        {"known": "とても面白い", "target": "very exciting"},
+        {"known": "面白い仕事", "target": "exciting work"}
+      ],
+      "use": [
+        {"known": "私はそれがとても面白いと思います。", "target": "I think that is very exciting.", "score": 7},
+        {"known": "彼女は何か面白いことをしたいと言いました。", "target": "She said that she wanted to do something exciting.", "score": 8},
+        {"known": "私はこの仕事がとても面白いと思います。", "target": "I think that this work is very exciting.", "score": 7},
+        {"known": "彼は面白いことを知りたかったです。", "target": "He wanted to know something exciting.", "score": 7},
+        {"known": "私たちは何か面白いことをやっていると思います。", "target": "I think that we are doing something exciting.", "score": 8},
+        {"known": "私は面白い考えを聞きたいと思っています。", "target": "I think that I want to hear exciting ideas.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "より〜でない",
+      "target": "less... than",
+      "components": [
+        {"known": "より", "target": "than"},
+        {"known": "〜でない", "target": "less"}
+      ],
+      "build": [
+        {"known": "より〜でない", "target": "less... than"},
+        {"known": "より面白くない", "target": "less exciting than"},
+        {"known": "よりも", "target": "less than"},
+        {"known": "私より", "target": "less than me"}
+      ],
+      "use": [
+        {"known": "それは私が思っていたより面白くないです。", "target": "That is less exciting than I thought.", "score": 8},
+        {"known": "この仕事は前の仕事より面白くないと思います。", "target": "I think this work is less exciting than the work before.", "score": 8},
+        {"known": "彼の考えは私の考えより面白くないです。", "target": "His ideas are less exciting than my ideas.", "score": 7},
+        {"known": "私はそれが彼女の考えより面白くないと思います。", "target": "I think that is less exciting than her ideas.", "score": 7},
+        {"known": "これは前より面白くないと彼は言いました。", "target": "He said that this is less exciting than before.", "score": 8},
+        {"known": "それは私が知りたかったことより面白くないです。", "target": "That is less exciting than what I wanted to know.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "彼女が言っていた",
+      "target": "she was saying",
+      "components": [
+        {"known": "彼女が", "target": "she"},
+        {"known": "言っていた", "target": "was saying"}
+      ],
+      "build": [
+        {"known": "彼女が言っていた", "target": "she was saying"},
+        {"known": "彼女が言っていたこと", "target": "what she was saying"},
+        {"known": "彼女が言っていたより", "target": "than she was saying"},
+        {"known": "彼女が言っていたと思う", "target": "I think she was saying"}
+      ],
+      "use": [
+        {"known": "彼女が言っていたことはとても面白かったです。", "target": "What she was saying was very exciting.", "score": 8},
+        {"known": "彼女が言っていたことを理解したいと思います。", "target": "I think I want to understand what she was saying.", "score": 8},
+        {"known": "私は彼女が言っていたことを知りたかったです。", "target": "I wanted to know what she was saying.", "score": 7},
+        {"known": "彼女が言っていたことは私の考えより面白いです。", "target": "What she was saying is more exciting than my ideas.", "score": 8},
+        {"known": "彼女が言っていたことは私が思っていたより面白くないです。", "target": "What she was saying is less exciting than I thought.", "score": 8},
+        {"known": "私たちは彼女が言っていたことについて話したいです。", "target": "We want to talk about what she was saying.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "〜こと",
+      "target": "what",
+      "build": [
+        {"known": "〜こと", "target": "what"},
+        {"known": "言っていたこと", "target": "what was saying"},
+        {"known": "したいこと", "target": "what want to"},
+        {"known": "知りたいこと", "target": "what want to know"}
+      ],
+      "use": [
+        {"known": "私は彼女が言っていたことを聞きたいです。", "target": "I want to hear what she was saying.", "score": 7},
+        {"known": "彼が知りたいことは私の考えより面白いです。", "target": "What he wanted to know is more exciting than my ideas.", "score": 8},
+        {"known": "私は彼女が言っていたことより面白いことをしたいです。", "target": "I want to do something more exciting than what she was saying.", "score": 8},
+        {"known": "彼女が言っていたことを理解するのは難しいと思います。", "target": "I think it is difficult to understand what she was saying.", "score": 8},
+        {"known": "私たちがしたいことは彼女が言っていたことより面白いです。", "target": "What we want to do is more exciting than what she was saying.", "score": 9},
+        {"known": "彼女が言っていたことは私が知りたいことです。", "target": "What she was saying is what I wanted to know.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "それは〜です",
+      "target": "That's",
+      "components": [
+        {"known": "それは", "target": "That"},
+        {"known": "〜です", "target": "'s"}
+      ],
+      "build": [
+        {"known": "それは〜です", "target": "That's"},
+        {"known": "それは面白いです", "target": "That's exciting"},
+        {"known": "それは難しいです", "target": "That's difficult"},
+        {"known": "それは良いです", "target": "That's good"}
+      ],
+      "use": [
+        {"known": "それはとても面白いと思います。", "target": "I think that's very exciting.", "score": 7},
+        {"known": "それは彼女が言っていたことより面白いです。", "target": "That's more exciting than what she was saying.", "score": 8},
+        {"known": "それは私が知りたかったことです。", "target": "That's what I wanted to know.", "score": 7},
+        {"known": "それは彼女が言っていたことより面白くないです。", "target": "That's less exciting than what she was saying.", "score": 9},
+        {"known": "それは私たちがやりたかったことだと思います。", "target": "I think that's what we wanted to do.", "score": 8},
+        {"known": "それは私の頭の中にある考えより面白いです。", "target": "That's more exciting than the ideas in my head.", "score": 8}
+      ]
+    }
+  ]
+}

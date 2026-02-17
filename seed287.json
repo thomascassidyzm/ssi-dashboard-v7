@@ -1,0 +1,50 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 287,
+  "known_text": "テレビを見るのが好きな人を何人知っていますか？",
+  "target_text": "How many people do you know who like watching television?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "何人",
+      "target": "how many",
+      "components": [
+        {"known": "何", "target": "what"},
+        {"known": "人", "target": "people"}
+      ],
+      "phrases": [
+        {"role": "build", "known": "何人？", "target": "How many?", "score": 6},
+        {"role": "build", "known": "何人来ますか？", "target": "How many are coming?", "score": 7},
+        {"role": "build", "known": "何人いますか？", "target": "How many are there?", "score": 7},
+        {"role": "use", "known": "何人知っていますか？", "target": "How many do you know?", "score": 7},
+        {"role": "use", "known": "何人話しますか？", "target": "How many speak?", "score": 7},
+        {"role": "use", "known": "何人あなたの友達ですか？", "target": "How many are your friends?", "score": 7},
+        {"role": "use", "known": "何人ここにいますか？", "target": "How many are here?", "score": 7},
+        {"role": "use", "known": "何人手伝いたいですか？", "target": "How many want to help?", "score": 7},
+        {"role": "use", "known": "何人それを見ましたか？", "target": "How many saw that?", "score": 7},
+        {"role": "use", "known": "何人明日行きますか？", "target": "How many are going tomorrow?", "score": 7},
+        {"role": "use", "known": "何人英語を話しますか？", "target": "How many speak English?", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "テレビ",
+      "target": "television",
+      "phrases": [
+        {"role": "build", "known": "テレビです。", "target": "Television.", "score": 6},
+        {"role": "build", "known": "テレビが好き。", "target": "I like television.", "score": 6},
+        {"role": "build", "known": "テレビを見る。", "target": "I watch television.", "score": 7},
+        {"role": "use", "known": "私はテレビを見たいです。", "target": "I want to watch television.", "score": 7},
+        {"role": "use", "known": "彼はテレビを見ています。", "target": "He's watching television.", "score": 7},
+        {"role": "use", "known": "あなたはテレビが好きですか？", "target": "Do you like television?", "score": 7},
+        {"role": "use", "known": "私の父はテレビを見ません。", "target": "My father doesn't watch television.", "score": 7},
+        {"role": "use", "known": "私たちは昨夜テレビを見ました。", "target": "We watched television last night.", "score": 8},
+        {"role": "use", "known": "彼女はテレビを見たくありません。", "target": "She doesn't want to watch television.", "score": 7},
+        {"role": "use", "known": "テレビを見る時間がありません。", "target": "I don't have time to watch television.", "score": 8},
+        {"role": "use", "known": "あなたは毎日テレビを見ますか？", "target": "Do you watch television every day?", "score": 7}
+      ]
+    }
+  ]
+}

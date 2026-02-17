@@ -1,0 +1,192 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 56,
+  "known_text": "So I can remember how to say a few words.",
+  "target_text": "Zodat ik kan onthouden hoe ik een paar woorden moet zeggen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I",
+      "target": "ik",
+      "build": [
+        {"known": "I", "target": "ik"},
+        {"known": "I want", "target": "ik wil"},
+        {"known": "I can", "target": "ik kan"},
+        {"known": "I enjoy", "target": "ik vind het leuk"}
+      ],
+      "use": [
+        {"known": "I want to do it well with my friends now.", "target": "Ik wil het nu goed doen met mijn vrienden.", "score": 8},
+        {"known": "I can speak Dutch very well with everyone.", "target": "Ik kan heel goed Nederlands spreken met iedereen.", "score": 8},
+        {"known": "I wanted to give you more time last week.", "target": "Ik wilde je vorige week meer tijd geven.", "score": 8},
+        {"known": "I enjoy speaking Dutch when I am with my friends.", "target": "Ik vind het leuk om Nederlands te spreken als ik met mijn vrienden ben.", "score": 8},
+        {"known": "I don't enjoy it when I have not slept well.", "target": "Ik vind het niet leuk als ik niet goed heb geslapen.", "score": 8},
+        {"known": "I wanted to put his letter in her bag last week.", "target": "Ik wilde vorige week zijn brief in haar tas stoppen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "so that",
+      "target": "Zodat",
+      "build": [
+        {"known": "so that", "target": "Zodat"},
+        {"known": "so that I", "target": "zodat ik"},
+        {"known": "so that he", "target": "zodat hij"},
+        {"known": "so that we", "target": "zodat wij"}
+      ],
+      "use": [
+        {"known": "I want to do it so that I can learn Dutch.", "target": "Ik wil het doen zodat ik Nederlands kan leren.", "score": 8},
+        {"known": "She wanted to give you more time so that you can do it.", "target": "Zij wilde je meer tijd geven zodat je het kan doen.", "score": 8},
+        {"known": "We wanted to wake up so that we can do it with everyone.", "target": "Wij wilden wakker worden zodat wij het met iedereen kunnen doen.", "score": 7},
+        {"known": "I enjoy speaking Dutch so that I can learn more.", "target": "Ik vind het leuk om Nederlands te spreken zodat ik meer kan leren.", "score": 8},
+        {"known": "He wanted to write a letter so that she can read it.", "target": "Hij wilde een brief schrijven zodat zij het kan lezen.", "score": 7},
+        {"known": "I don't enjoy waking up so that I can do more work.", "target": "Ik vind het niet leuk om wakker te worden zodat ik meer kan doen.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "can",
+      "target": "kan",
+      "build": [
+        {"known": "can", "target": "kan"},
+        {"known": "I can", "target": "ik kan"},
+        {"known": "can do", "target": "kan doen"},
+        {"known": "can remember", "target": "kan onthouden"}
+      ],
+      "use": [
+        {"known": "I can do it well with my friends now.", "target": "Ik kan het nu goed doen met mijn vrienden.", "score": 8},
+        {"known": "She can speak Dutch very well with everyone.", "target": "Zij kan heel goed Nederlands spreken met iedereen.", "score": 8},
+        {"known": "We can give you more time so that you can do it.", "target": "Wij kunnen je meer tijd geven zodat je het kan doen.", "score": 8},
+        {"known": "I enjoy it when I can speak Dutch with my friends.", "target": "Ik vind het leuk als ik Nederlands kan spreken met mijn vrienden.", "score": 8},
+        {"known": "He can write a letter to her so that she can read it.", "target": "Hij kan een brief aan haar schrijven zodat zij het kan lezen.", "score": 7},
+        {"known": "I don't enjoy it when I can not do it well.", "target": "Ik vind het niet leuk als ik het niet goed kan doen.", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to remember",
+      "target": "onthouden",
+      "build": [
+        {"known": "to remember", "target": "onthouden"},
+        {"known": "I remember", "target": "ik onthoud"},
+        {"known": "can remember", "target": "kan onthouden"},
+        {"known": "to remember it", "target": "het onthouden"}
+      ],
+      "use": [
+        {"known": "I can remember it well with my friends now.", "target": "Ik kan het nu goed onthouden met mijn vrienden.", "score": 7},
+        {"known": "She wanted to remember it so that she can do it.", "target": "Zij wilde het onthouden zodat zij het kan doen.", "score": 8},
+        {"known": "We can remember more when we speak Dutch together.", "target": "Wij kunnen meer onthouden als wij samen Nederlands spreken.", "score": 8},
+        {"known": "I enjoy it when I can remember something interesting.", "target": "Ik vind het leuk als ik interessante dingen kan onthouden.", "score": 8},
+        {"known": "He wanted to remember it so that he can give it to her.", "target": "Hij wilde het onthouden zodat hij het aan haar kan geven.", "score": 7},
+        {"known": "I don't enjoy it when I can not remember it well.", "target": "Ik vind het niet leuk als ik het niet goed kan onthouden.", "score": 7}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "how",
+      "target": "hoe",
+      "build": [
+        {"known": "how", "target": "hoe"},
+        {"known": "how I", "target": "hoe ik"},
+        {"known": "how to do", "target": "hoe te doen"},
+        {"known": "how it is", "target": "hoe het is"}
+      ],
+      "use": [
+        {"known": "I can remember how to do it well now.", "target": "Ik kan nu onthouden hoe ik het goed kan doen.", "score": 8},
+        {"known": "She wanted to remember how to say it in Dutch.", "target": "Zij wilde onthouden hoe zij het in het Nederlands kan zeggen.", "score": 8},
+        {"known": "We can learn how to speak Dutch together.", "target": "Wij kunnen leren hoe wij samen Nederlands kunnen spreken.", "score": 8},
+        {"known": "I enjoy it when I can remember how to do it.", "target": "Ik vind het leuk als ik kan onthouden hoe ik het kan doen.", "score": 7},
+        {"known": "He wanted to remember how to write a letter to her.", "target": "Hij wilde onthouden hoe hij een brief aan haar kan schrijven.", "score": 7},
+        {"known": "I don't enjoy it when I can not remember how to do it.", "target": "Ik vind het niet leuk als ik niet kan onthouden hoe ik het kan doen.", "score": 7}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "a few",
+      "target": "een paar",
+      "components": [
+        {"known": "a", "target": "een"},
+        {"known": "pair/few", "target": "paar"}
+      ],
+      "build": [
+        {"known": "a few", "target": "een paar"},
+        {"known": "a few things", "target": "een paar dingen"},
+        {"known": "a few friends", "target": "een paar vrienden"},
+        {"known": "a few times", "target": "een paar keer"}
+      ],
+      "use": [
+        {"known": "I can remember a few things now.", "target": "Ik kan nu een paar dingen onthouden.", "score": 8},
+        {"known": "She wanted to give you a few more things last week.", "target": "Zij wilde je vorige week een paar dingen meer geven.", "score": 7},
+        {"known": "We can remember how to say a few things in Dutch.", "target": "Wij kunnen onthouden hoe wij een paar dingen in het Nederlands kunnen zeggen.", "score": 8},
+        {"known": "I enjoy speaking Dutch with a few friends now.", "target": "Ik vind het leuk om nu Nederlands te spreken met een paar vrienden.", "score": 8},
+        {"known": "He wanted to do a few things with her last week.", "target": "Hij wilde vorige week een paar dingen met haar doen.", "score": 7},
+        {"known": "I don't enjoy it when I can only remember a few things.", "target": "Ik vind het niet leuk als ik maar een paar dingen kan onthouden.", "score": 7}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "words",
+      "target": "woorden",
+      "build": [
+        {"known": "words", "target": "woorden"},
+        {"known": "a few words", "target": "een paar woorden"},
+        {"known": "the words", "target": "de woorden"},
+        {"known": "interesting words", "target": "interessante woorden"}
+      ],
+      "use": [
+        {"known": "I can remember a few words in Dutch now.", "target": "Ik kan nu een paar woorden in het Nederlands onthouden.", "score": 8},
+        {"known": "She wanted to learn a few interesting words last week.", "target": "Zij wilde vorige week een paar interessante woorden leren.", "score": 8},
+        {"known": "We can remember how to say a few words now.", "target": "Wij kunnen nu onthouden hoe wij een paar woorden kunnen zeggen.", "score": 7},
+        {"known": "I enjoy learning interesting words with my friends.", "target": "Ik vind het leuk om interessante woorden te leren met mijn vrienden.", "score": 8},
+        {"known": "He wanted to remember a few words so that he can speak.", "target": "Hij wilde een paar woorden onthouden zodat hij kan spreken.", "score": 7},
+        {"known": "I don't enjoy it when I can not remember how to say the words.", "target": "Ik vind het niet leuk als ik niet kan onthouden hoe ik de woorden moet zeggen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "must/have to",
+      "target": "moet",
+      "build": [
+        {"known": "must", "target": "moet"},
+        {"known": "I must", "target": "ik moet"},
+        {"known": "must do", "target": "moet doen"},
+        {"known": "must say", "target": "moet zeggen"}
+      ],
+      "use": [
+        {"known": "I must remember how to say it in Dutch.", "target": "Ik moet onthouden hoe ik het in het Nederlands moet zeggen.", "score": 8},
+        {"known": "She must give you more time so that you can do it.", "target": "Zij moet je meer tijd geven zodat je het kan doen.", "score": 8},
+        {"known": "I must learn how to say a few words in Dutch.", "target": "Ik moet leren hoe ik een paar woorden in het Nederlands moet zeggen.", "score": 7},
+        {"known": "I enjoy it when I must speak Dutch with my friends.", "target": "Ik vind het leuk als ik Nederlands moet spreken met mijn vrienden.", "score": 7},
+        {"known": "He must remember how to write a letter to her.", "target": "Hij moet onthouden hoe hij een brief aan haar moet schrijven.", "score": 7},
+        {"known": "I don't enjoy it when I must wake up when I have not slept well.", "target": "Ik vind het niet leuk als ik wakker moet worden als ik niet goed heb geslapen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "to say",
+      "target": "zeggen",
+      "build": [
+        {"known": "to say", "target": "zeggen"},
+        {"known": "must say", "target": "moet zeggen"},
+        {"known": "to say it", "target": "het zeggen"},
+        {"known": "to say something", "target": "iets zeggen"}
+      ],
+      "use": [
+        {"known": "I can remember how to say a few words now.", "target": "Ik kan nu onthouden hoe ik een paar woorden moet zeggen.", "score": 8},
+        {"known": "She wanted to remember how to say it in Dutch.", "target": "Zij wilde onthouden hoe zij het in het Nederlands moet zeggen.", "score": 8},
+        {"known": "So I can remember how to say a few words.", "target": "Zodat ik kan onthouden hoe ik een paar woorden moet zeggen.", "score": 9},
+        {"known": "I enjoy it when I can remember how to say something.", "target": "Ik vind het leuk als ik kan onthouden hoe ik iets moet zeggen.", "score": 8},
+        {"known": "He must remember how to say it so that she can understand.", "target": "Hij moet onthouden hoe hij het moet zeggen zodat zij het kan begrijpen.", "score": 7},
+        {"known": "I don't enjoy it when I can not remember how to say it.", "target": "Ik vind het niet leuk als ik niet kan onthouden hoe ik het moet zeggen.", "score": 8}
+      ]
+    }
+  ]
+}

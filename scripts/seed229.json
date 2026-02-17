@@ -1,0 +1,204 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 229,
+  "known_text": "That woman would help you if she could.",
+  "target_text": "如果她能的话，那个女人会帮你。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "if",
+      "target": "如果",
+      "components": [
+        {"known": "like", "target": "如"},
+        {"known": "result", "target": "果"}
+      ],
+      "build": [
+        {"known": "If.", "target": "如果。"},
+        {"known": "If she.", "target": "如果她。"},
+        {"known": "If can.", "target": "如果能。"},
+        {"known": "If possible.", "target": "如果可以。"}
+      ],
+      "use": [
+        {"known": "If she could, that woman would help you right away.", "target": "如果她能的话，那个女人会马上帮你。", "score": 8},
+        {"known": "He asked if we want to practise together tomorrow.", "target": "他问我们是不是想明天一起练习。", "score": 7},
+        {"known": "If you have time, you should start practising now.", "target": "如果你有时间，你要现在开始练习。", "score": 8},
+        {"known": "I would tell you the answer if I knew what to say.", "target": "如果我知道说什么，我会告诉你答案。", "score": 8},
+        {"known": "Everyone would come to the meeting if they could.", "target": "如果他们能的话，大家都会来开会。", "score": 7},
+        {"known": "What would you do if you had more time this week?", "target": "如果你这个星期有更多时间，你会做什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "she/her",
+      "target": "她",
+      "build": [
+        {"known": "She.", "target": "她。"},
+        {"known": "If she.", "target": "如果她。"},
+        {"known": "She could.", "target": "她能。"},
+        {"known": "She would.", "target": "她会。"}
+      ],
+      "use": [
+        {"known": "That woman would help you if she had more time.", "target": "如果她有更多时间，那个女人会帮你。", "score": 8},
+        {"known": "He hopes she will come to help with the work tomorrow.", "target": "他希望她明天会来帮忙工作。", "score": 7},
+        {"known": "If she started practising earlier, she would do better.", "target": "如果她早一点开始练习，她会做得更好。", "score": 8},
+        {"known": "I want her to tell us what happened at the meeting.", "target": "我想她告诉我们开会发生了什么。", "score": 7},
+        {"known": "Everyone is waiting for her to give us an answer.", "target": "大家都在等她给我们一个答案。", "score": 8},
+        {"known": "Would she be able to help us if we asked her nicely?", "target": "如果我们好好问她，她会帮我们吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "can/able to",
+      "target": "能",
+      "build": [
+        {"known": "Can.", "target": "能。"},
+        {"known": "Able to.", "target": "能。"},
+        {"known": "If can.", "target": "如果能。"},
+        {"known": "She can.", "target": "她能。"}
+      ],
+      "use": [
+        {"known": "That woman would help you if she could find the time.", "target": "如果她能找到时间的话，那个女人会帮你。", "score": 8},
+        {"known": "He asked if we are able to come to practise tomorrow.", "target": "他问我们是不是能来明天练习。", "score": 7},
+        {"known": "If you are able to help, please let us know now.", "target": "如果你能帮忙，请现在让我们知道。", "score": 8},
+        {"known": "I hope we are able to finish the work before tomorrow.", "target": "我希望我们能明天之前完成工作。", "score": 7},
+        {"known": "Everyone can help if they are able to find the time.", "target": "如果他们能找到时间，大家都可以帮忙。", "score": 8},
+        {"known": "Are you able to tell me what happened yesterday?", "target": "你能告诉我昨天发生了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "in that case/if so",
+      "target": "的话",
+      "components": [
+        {"known": "possessive", "target": "的"},
+        {"known": "words", "target": "话"}
+      ],
+      "build": [
+        {"known": "If so.", "target": "的话。"},
+        {"known": "In that case.", "target": "的话。"},
+        {"known": "If she could.", "target": "如果她能的话。"},
+        {"known": "If possible.", "target": "如果可以的话。"}
+      ],
+      "use": [
+        {"known": "That woman would help you if she could manage to.", "target": "如果她能的话，那个女人会帮你。", "score": 8},
+        {"known": "He said if possible, he would come to see us tomorrow.", "target": "他说如果可以的话，他明天会来见我们。", "score": 7},
+        {"known": "If you have time, please tell me about what happened.", "target": "如果你有时间的话，请告诉我发生了什么。", "score": 8},
+        {"known": "I would help you if I could find the time to do it.", "target": "如果我能找到时间的话，我会帮你。", "score": 8},
+        {"known": "Everyone would help if they could manage to come.", "target": "如果他们能来的话，大家都会帮忙。", "score": 7},
+        {"known": "What would you say if he asked you about this work?", "target": "如果他问你这个工作的话，你会说什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "that (specific)",
+      "target": "那个",
+      "components": [
+        {"known": "that", "target": "那"},
+        {"known": "measure word", "target": "个"}
+      ],
+      "build": [
+        {"known": "That.", "target": "那个。"},
+        {"known": "That one.", "target": "那个。"},
+        {"known": "That person.", "target": "那个人。"},
+        {"known": "That woman.", "target": "那个女人。"}
+      ],
+      "use": [
+        {"known": "That woman would help you if she had more time.", "target": "如果她有更多时间的话，那个女人会帮你。", "score": 8},
+        {"known": "He said that person wants to start practising tomorrow.", "target": "他说那个人想明天开始练习。", "score": 7},
+        {"known": "If that person can help, we should ask them now.", "target": "如果那个人能帮忙的话，我们现在要问。", "score": 8},
+        {"known": "I want to know what that person told you yesterday.", "target": "我想知道那个人昨天告诉你什么。", "score": 8},
+        {"known": "Everyone thinks that person did a great job this week.", "target": "大家都觉得那个人这个星期做得很好。", "score": 7},
+        {"known": "What did that person say to you about the work?", "target": "那个人和你说了什么工作的东西？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "woman",
+      "target": "女人",
+      "components": [
+        {"known": "female", "target": "女"},
+        {"known": "person", "target": "人"}
+      ],
+      "build": [
+        {"known": "Woman.", "target": "女人。"},
+        {"known": "That woman.", "target": "那个女人。"},
+        {"known": "The woman.", "target": "那个女人。"},
+        {"known": "A woman.", "target": "一个女人。"}
+      ],
+      "use": [
+        {"known": "That woman would help you if she knew what to do.", "target": "如果她知道做什么的话，那个女人会帮你。", "score": 8},
+        {"known": "He asked if that woman can come to the meeting.", "target": "他问那个女人是不是能来开会。", "score": 7},
+        {"known": "If the woman wants to help, she should come talk to us.", "target": "如果那个女人想帮忙的话，她要来和我们说话。", "score": 8},
+        {"known": "I saw a woman who just started to practise speaking.", "target": "我见了一个女人，她刚开始练习说话。", "score": 8},
+        {"known": "Everyone thinks that woman knows a lot about this work.", "target": "大家都觉得那个女人知道很多这个工作。", "score": 7},
+        {"known": "Why did that woman just start learning this now?", "target": "那个女人为什么现在刚开始学这个？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "will/would",
+      "target": "会",
+      "build": [
+        {"known": "Will.", "target": "会。"},
+        {"known": "Would.", "target": "会。"},
+        {"known": "She would.", "target": "她会。"},
+        {"known": "Would help.", "target": "会帮。"}
+      ],
+      "use": [
+        {"known": "That woman would help you if she had time to do it.", "target": "如果她有时间做的话，那个女人会帮你。", "score": 8},
+        {"known": "He said he will tell us when the meeting starts.", "target": "他说他会告诉我们开会什么时候开始。", "score": 7},
+        {"known": "If I knew the answer, I would tell you right away.", "target": "如果我知道答案的话，我会马上告诉你。", "score": 8},
+        {"known": "I think she will start practising this work soon.", "target": "我觉得她快一点会开始练习这个工作。", "score": 7},
+        {"known": "Everyone would help if they could find the time.", "target": "如果他们能找到时间的话，大家都会帮忙。", "score": 8},
+        {"known": "What would you say if she asked you about this?", "target": "如果她问你这个的话，你会说什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "help",
+      "target": "帮",
+      "build": [
+        {"known": "Help.", "target": "帮。"},
+        {"known": "Help you.", "target": "帮你。"},
+        {"known": "Would help.", "target": "会帮。"},
+        {"known": "Help with.", "target": "帮忙。"}
+      ],
+      "use": [
+        {"known": "That woman would help you if she could manage to.", "target": "如果她能的话，那个女人会帮你。", "score": 8},
+        {"known": "He asked if we can help her finish the work today.", "target": "他问我们是不是能帮她今天完成工作。", "score": 7},
+        {"known": "If you want to help, please come to the meeting.", "target": "如果你想帮忙的话，请来开会。", "score": 8},
+        {"known": "I would like to help you if I have the time to do it.", "target": "如果我有时间的话，我想帮你。", "score": 7},
+        {"known": "Everyone wants to help when they hear about it.", "target": "大家听说的时候都想帮忙。", "score": 8},
+        {"known": "Would that woman be able to help us with this?", "target": "那个女人能帮我们做这个吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "you",
+      "target": "你",
+      "build": [
+        {"known": "You.", "target": "你。"},
+        {"known": "Help you.", "target": "帮你。"},
+        {"known": "For you.", "target": "给你。"},
+        {"known": "Tell you.", "target": "告诉你。"}
+      ],
+      "use": [
+        {"known": "That woman would help you if she had more time.", "target": "如果她有更多时间的话，那个女人会帮你。", "score": 8},
+        {"known": "He wants to ask you about what happened yesterday.", "target": "他想问你昨天发生了什么。", "score": 7},
+        {"known": "If you want, I can give you the answer tomorrow.", "target": "如果你想的话，我明天能给你答案。", "score": 8},
+        {"known": "I hope someone will tell you when the meeting starts.", "target": "我希望有人会告诉你开会什么时候开始。", "score": 7},
+        {"known": "Everyone is waiting for you to give us your answer.", "target": "大家都在等你给我们你的答案。", "score": 8},
+        {"known": "What would you do if she gave you the same answer?", "target": "如果她给你一样的答案的话，你会做什么？", "score": 8}
+      ]
+    }
+  ]
+}

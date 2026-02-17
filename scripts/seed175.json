@@ -1,0 +1,55 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 175,
+  "target_text": "What do you want to do on Sunday morning?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Qu'est-ce que vous voulez faire",
+      "target": "What do you want to do",
+      "components": [
+        {"known": "Qu'est-ce que vous voulez", "target": "What do you want"},
+        {"known": "faire", "target": "to do"}
+      ],
+      "build": [
+        {"known": "Qu'est-ce que vous voulez faire", "target": "What do you want to do"},
+        {"known": "vous voulez faire", "target": "you want to do"},
+        {"known": "Qu'est-ce que tu veux faire", "target": "What do you want to do"},
+        {"known": "je veux faire", "target": "I want to do"}
+      ],
+      "use": [
+        {"known": "Qu'est-ce que vous voulez faire ce soir avec nous?", "target": "What do you want to do this evening with us?", "score": 8},
+        {"known": "Qu'est-ce que tu veux faire demain après-midi si tu as le temps?", "target": "What do you want to do tomorrow afternoon if you have time?", "score": 8},
+        {"known": "Je voudrais savoir ce que vous voulez faire le mois prochain", "target": "I'd like to know what you want to do next month", "score": 8},
+        {"known": "Tu veux faire quelque chose de différent demain matin avec moi?", "target": "Do you want to do something different tomorrow morning with me?", "score": 8},
+        {"known": "Je ne comprends pas ce que vous voulez faire maintenant ici", "target": "I don't understand what you want to do now here", "score": 8},
+        {"known": "Voulez-vous me dire ce que vous voulez faire ce soir?", "target": "Do you want to tell me what you want to do this evening?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "dimanche matin",
+      "target": "on Sunday morning",
+      "components": [
+        {"known": "dimanche", "target": "on Sunday"},
+        {"known": "matin", "target": "morning"}
+      ],
+      "build": [
+        {"known": "dimanche matin", "target": "on Sunday morning"},
+        {"known": "dimanche", "target": "on Sunday"},
+        {"known": "ce dimanche", "target": "this Sunday"},
+        {"known": "dimanche prochain", "target": "next Sunday"}
+      ],
+      "use": [
+        {"known": "Qu'est-ce que vous voulez faire dimanche matin avec nous?", "target": "What do you want to do on Sunday morning with us?", "score": 9},
+        {"known": "Je voudrais venir dimanche matin si tu es là", "target": "I'd like to come on Sunday morning if you're there", "score": 8},
+        {"known": "Tu peux me dire ce que tu veux faire dimanche prochain?", "target": "Can you tell me what you want to do next Sunday?", "score": 8},
+        {"known": "Je vais venir te voir dimanche matin si tu veux", "target": "I'm going to come see you on Sunday morning if you want", "score": 8},
+        {"known": "Dimanche matin je voudrais faire quelque chose de différent", "target": "On Sunday morning I'd like to do something different", "score": 8},
+        {"known": "Tu es là dimanche matin ou tu vas être avec eux?", "target": "Are you there on Sunday morning or are you going to be with them?", "score": 8}
+      ]
+    }
+  ]
+}

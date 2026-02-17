@@ -1,0 +1,143 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 16,
+  "target_text": "He wants to come back with everyone else later on.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "他",
+      "target": "He",
+      "build": [
+        {"known": "他", "target": "He"},
+        {"known": "他能", "target": "He can"},
+        {"known": "他能说英语", "target": "He can speak English today"},
+        {"known": "他能和你说英语", "target": "He can speak English with you"}
+      ],
+      "use": [
+        {"known": "他能说英语。", "target": "He can speak English today.", "score": 8},
+        {"known": "他能学英语学得很好。", "target": "He can learn English very well.", "score": 8},
+        {"known": "他能整天说英语。", "target": "He can speak English all day.", "score": 8},
+        {"known": "他能尽量多和你说英语。", "target": "He can speak English with you as often as possible.", "score": 9},
+        {"known": "他能和别人说英语说得很好。", "target": "He can speak English with someone else very well.", "score": 9},
+        {"known": "他能和别人练习说英语。", "target": "He can practise speaking English with someone else.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "想",
+      "target": "wants to",
+      "components": [
+        {"known": "想", "target": "wants"},
+        {"known": "要", "target": "to"}
+      ],
+      "build": [
+        {"known": "想", "target": "wants to"},
+        {"known": "他想", "target": "He wants to"},
+        {"known": "他想说英语", "target": "He wants to speak English"},
+        {"known": "他想和你说英语", "target": "He wants to speak English with you"}
+      ],
+      "use": [
+        {"known": "他想说英语。", "target": "He wants to speak English.", "score": 8},
+        {"known": "他想学英语。", "target": "He wants to learn English.", "score": 8},
+        {"known": "他想和你说英语。", "target": "He wants to speak English with you.", "score": 8},
+        {"known": "他想尽量多说英语。", "target": "He wants to speak English as often as possible.", "score": 9},
+        {"known": "他想和别人练习说英语。", "target": "He wants to practise speaking English with someone else.", "score": 9},
+        {"known": "他想记住怎么用英语说一些东西。", "target": "He wants to remember how to say something in English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "回来",
+      "target": "to come back",
+      "components": [
+        {"known": "回", "target": "to come"},
+        {"known": "来", "target": "back"}
+      ],
+      "build": [
+        {"known": "回来", "target": "to come back"},
+        {"known": "来", "target": "back"},
+        {"known": "他想回来", "target": "He wants to come back"},
+        {"known": "他想和你回来", "target": "He wants to come back with you"}
+      ],
+      "use": [
+        {"known": "他今天想回来。", "target": "He wants to come back today.", "score": 8},
+        {"known": "他明天想回来。", "target": "He wants to come back tomorrow.", "score": 8},
+        {"known": "他想和你回来。", "target": "He wants to come back with you.", "score": 8},
+        {"known": "他想和别人一起今天回来。", "target": "He wants to come back with someone else today.", "score": 9},
+        {"known": "我不确定他想不想和你回来。", "target": "I'm not sure if he wants to come back with you.", "score": 9},
+        {"known": "他想尽量努力明天和你回来。", "target": "He wants to come back with you tomorrow as hard as he can.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "和",
+      "target": "with",
+      "build": [
+        {"known": "和", "target": "with"},
+        {"known": "和你", "target": "with you"},
+        {"known": "他想和你回来", "target": "He wants to come back with you"},
+        {"known": "他想和别人回来", "target": "He wants to come back with someone else"}
+      ],
+      "use": [
+        {"known": "他想和你回来。", "target": "He wants to come back with you.", "score": 8},
+        {"known": "他想和别人回来。", "target": "He wants to come back with someone else.", "score": 9},
+        {"known": "他想和你说英语。", "target": "He wants to speak English with you.", "score": 8},
+        {"known": "他想和别人练习说英语。", "target": "He wants to practise speaking English with someone else.", "score": 9},
+        {"known": "我不确定他想不想和你回来。", "target": "I'm not sure if he wants to come back with you.", "score": 9},
+        {"known": "他想和别人一起尽量努力学英语。", "target": "He wants to learn English as hard as he can with someone else.", "score": 9}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "别人",
+      "target": "everyone else",
+      "components": [
+        {"known": "别", "target": "everyone"},
+        {"known": "人", "target": "else"}
+      ],
+      "build": [
+        {"known": "别人", "target": "everyone else"},
+        {"known": "人", "target": "else"},
+        {"known": "他想和别人说英语", "target": "He wants to speak with everyone else"},
+        {"known": "他想和别人回来", "target": "He wants to come back with everyone else"}
+      ],
+      "use": [
+        {"known": "他想和别人回来。", "target": "He wants to come back with everyone else.", "score": 9},
+        {"known": "他想和别人说英语。", "target": "He wants to speak with everyone else.", "score": 8},
+        {"known": "他想和别人学英语。", "target": "He wants to learn with everyone else.", "score": 8},
+        {"known": "我不确定他想不想和别人回来。", "target": "I'm not sure if he wants to come back with everyone else.", "score": 9},
+        {"known": "他想和别人一起尽量努力学英语。", "target": "He wants to learn English as hard as he can with everyone else.", "score": 9},
+        {"known": "他想明天和别人一起回来。", "target": "He wants to come back with everyone else tomorrow.", "score": 9}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "之后",
+      "target": "later on",
+      "components": [
+        {"known": "之", "target": "later"},
+        {"known": "后", "target": "on"}
+      ],
+      "build": [
+        {"known": "之后", "target": "later on"},
+        {"known": "后", "target": "on"},
+        {"known": "他想之后回来", "target": "He wants to come back later on"},
+        {"known": "他想之后和你回来", "target": "He wants to come back with you later on"}
+      ],
+      "use": [
+        {"known": "他想之后回来。", "target": "He wants to come back later on.", "score": 9},
+        {"known": "他想之后和你回来。", "target": "He wants to come back with you later on.", "score": 9},
+        {"known": "他想之后和你学英语。", "target": "He wants to learn with you later on.", "score": 8},
+        {"known": "我不确定他想不想之后回来。", "target": "I'm not sure if he wants to come back later on.", "score": 9},
+        {"known": "他想之后和别人一起说英语。", "target": "He wants to speak English with everyone else later on.", "score": 9},
+        {"known": "他想之后和别人一起尽量努力学英语。", "target": "He wants to learn English as hard as he can with everyone else later on.", "score": 9}
+      ]
+    }
+  ]
+}

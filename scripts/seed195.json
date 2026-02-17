@@ -1,0 +1,196 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 195,
+  "known_text": "I'm trying to find the money I left on the table.",
+  "target_text": "我在试着找我留在桌子上的钱。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I am.", "target": "我是。"},
+        {"known": "I'm looking for.", "target": "我在找。"},
+        {"known": "I'm trying.", "target": "我在试。"}
+      ],
+      "use": [
+        {"known": "I am looking for that thing you told me about.", "target": "我在找你告诉我的那个东西。", "score": 7},
+        {"known": "I'm sorry but I'm too busy to help you today.", "target": "对不起，但是我今天太忙了，不能帮你。", "score": 7},
+        {"known": "I don't mind at all if you ask me questions.", "target": "如果你问我问题，我一点都不介意。", "score": 7},
+        {"known": "I told him what he was looking for is not here.", "target": "我告诉他他在找的东西不在这里。", "score": 7},
+        {"known": "I hope you can help me find what I'm looking for.", "target": "我希望你能帮我找到我在找的东西。", "score": 8},
+        {"known": "I need to know what you are doing at that place.", "target": "我需要知道你在那个地方做什么。", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "at (progressive)",
+      "target": "在",
+      "build": [
+        {"known": "At.", "target": "在。"},
+        {"known": "Doing.", "target": "在做。"},
+        {"known": "Looking for.", "target": "在找。"},
+        {"known": "Trying.", "target": "在试。"}
+      ],
+      "use": [
+        {"known": "She is looking for something at that place now.", "target": "她现在在那个地方找东西。", "score": 6},
+        {"known": "He is waiting for you at that place this evening.", "target": "他今天晚上在那个地方等你。", "score": 6},
+        {"known": "Everyone is trying to find a good way to do this.", "target": "大家都在试着找一个好的方法做这个。", "score": 7},
+        {"known": "I'm sorry but I am working at that place right now.", "target": "对不起，但是我现在在那个地方工作。", "score": 7},
+        {"known": "Do you mind telling me what you are looking for?", "target": "你介意告诉我你在找什么吗？", "score": 8},
+        {"known": "He told me he is trying to find her at that place.", "target": "他告诉我他在那个地方试着找她。", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "trying to",
+      "target": "试着",
+      "components": [
+        {"known": "try/test", "target": "试"},
+        {"known": "aspect/manner", "target": "着"}
+      ],
+      "build": [
+        {"known": "Trying.", "target": "试着。"},
+        {"known": "Trying to do.", "target": "试着做。"},
+        {"known": "Trying to find.", "target": "试着找。"},
+        {"known": "I'm trying to.", "target": "我试着。"}
+      ],
+      "use": [
+        {"known": "I'm trying to find what you asked me to look for.", "target": "我试着找你让我找的东西。", "score": 7},
+        {"known": "She is trying to help everyone at that place.", "target": "她在试着帮那个地方的所有人。", "score": 6},
+        {"known": "He told me he is trying to learn Chinese every day.", "target": "他告诉我他每天都在试着学中文。", "score": 7},
+        {"known": "I'm sorry but I'm trying to finish this work first.", "target": "对不起，但是我在试着先做完这个工作。", "score": 7},
+        {"known": "Everyone is trying to find a better way to do this.", "target": "大家都在试着找一个更好的方法做这个。", "score": 8},
+        {"known": "Do you mind if I try to ask her about this tomorrow?", "target": "你介意我明天试着问她关于这个吗？", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "look for/find",
+      "target": "找",
+      "build": [
+        {"known": "Look for.", "target": "找。"},
+        {"known": "Find it.", "target": "找到。"},
+        {"known": "Try to find.", "target": "试着找。"},
+        {"known": "Looking for what?", "target": "找什么？"}
+      ],
+      "use": [
+        {"known": "I'm trying to find the thing I left at that place.", "target": "我在试着找我留在那个地方的东西。", "score": 7},
+        {"known": "She told me she is looking for a good place to go.", "target": "她告诉我她在找一个好的地方去。", "score": 6},
+        {"known": "He can't find what he is looking for right now.", "target": "他现在找不到他在找的东西。", "score": 7},
+        {"known": "I'm sorry but I can't find anyone to help you today.", "target": "对不起，但是我今天找不到人帮你。", "score": 7},
+        {"known": "Everyone is trying to find a better way to solve this.", "target": "大家都在试着找一个更好的方法解决这个。", "score": 8},
+        {"known": "Do you mind helping me find what I'm looking for?", "target": "你介意帮我找我在找的东西吗？", "score": 7}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "leave behind",
+      "target": "留",
+      "build": [
+        {"known": "Leave.", "target": "留。"},
+        {"known": "Leave behind.", "target": "留下。"},
+        {"known": "Left there.", "target": "留在那里。"},
+        {"known": "I left.", "target": "我留了。"}
+      ],
+      "use": [
+        {"known": "I'm trying to find the thing I left at that place.", "target": "我在试着找我留在那个地方的东西。", "score": 7},
+        {"known": "She told me she left something for you here.", "target": "她告诉我她给你留了一个东西在这里。", "score": 7},
+        {"known": "He left his things at that place yesterday.", "target": "他昨天把东西留在那个地方了。", "score": 7},
+        {"known": "I'm sorry I left without telling you about it.", "target": "对不起，我没告诉你就留了。", "score": 6},
+        {"known": "Everyone left their things at that place last time.", "target": "上次大家都把东西留在那个地方了。", "score": 7},
+        {"known": "Do you mind if I leave this here until tomorrow?", "target": "你介意我把这个留在这里到明天吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "table",
+      "target": "桌子",
+      "components": [
+        {"known": "table (root)", "target": "桌"},
+        {"known": "suffix", "target": "子"}
+      ],
+      "build": [
+        {"known": "Table.", "target": "桌子。"},
+        {"known": "On the table.", "target": "桌子上。"},
+        {"known": "This table.", "target": "这个桌子。"},
+        {"known": "That table.", "target": "那个桌子。"}
+      ],
+      "use": [
+        {"known": "I'm trying to find the thing I left on the table.", "target": "我在试着找我留在桌子上的东西。", "score": 7},
+        {"known": "She told me she put something for you on the table.", "target": "她告诉我她给你放了一个东西在桌子上。", "score": 7},
+        {"known": "He left his things on the table yesterday.", "target": "他昨天把东西留在桌子上了。", "score": 7},
+        {"known": "I'm sorry but there is nothing on the table now.", "target": "对不起，但是桌子上现在什么都没有。", "score": 7},
+        {"known": "Everyone put their things on that table over there.", "target": "大家都把东西放在那个桌子上了。", "score": 8},
+        {"known": "Do you mind putting this on the table for me?", "target": "你介意帮我把这个放在桌子上吗？", "score": 7}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "on/up",
+      "target": "上",
+      "build": [
+        {"known": "On.", "target": "上。"},
+        {"known": "On the table.", "target": "桌子上。"},
+        {"known": "On top.", "target": "上面。"},
+        {"known": "Go up.", "target": "上去。"}
+      ],
+      "use": [
+        {"known": "I left that thing on the table this morning.", "target": "我今天早上把那个东西留在桌子上了。", "score": 7},
+        {"known": "She put something on the table for you earlier.", "target": "她之前给你放了一个东西在桌子上。", "score": 6},
+        {"known": "He is looking for what he left on the table yesterday.", "target": "他在找他昨天留在桌子上的东西。", "score": 7},
+        {"known": "I'm sorry but nothing is on that table right now.", "target": "对不起，但是那个桌子上现在什么都没有。", "score": 7},
+        {"known": "Everyone put their names on the list this morning.", "target": "大家今天早上都把名字写在名单上了。", "score": 8},
+        {"known": "Do you mind putting these things on the table for me?", "target": "你介意帮我把这些东西放在桌子上吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "possessive/attributive",
+      "target": "的",
+      "build": [
+        {"known": "My.", "target": "我的。"},
+        {"known": "Your.", "target": "你的。"},
+        {"known": "The one on the table.", "target": "桌子上的。"},
+        {"known": "What I left.", "target": "我留的。"}
+      ],
+      "use": [
+        {"known": "I'm looking for the thing I left on the table.", "target": "我在找我留在桌子上的东西。", "score": 7},
+        {"known": "She told me the one on the table is not hers.", "target": "她告诉我桌子上的那个不是她的。", "score": 7},
+        {"known": "He is trying to find the person who left this here.", "target": "他在试着找把这个留在这里的人。", "score": 7},
+        {"known": "I'm sorry but I don't know whose thing this is.", "target": "对不起，但是我不知道这是什么人的东西。", "score": 6},
+        {"known": "Everyone's things are on that table now.", "target": "大家的东西现在都在那个桌子上。", "score": 7},
+        {"known": "Do you mind telling me what the thing on the table is?", "target": "你介意告诉我桌子上的东西是什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "money",
+      "target": "钱",
+      "build": [
+        {"known": "Money.", "target": "钱。"},
+        {"known": "The money.", "target": "那个钱。"},
+        {"known": "My money.", "target": "我的钱。"},
+        {"known": "How much money?", "target": "多少钱？"}
+      ],
+      "use": [
+        {"known": "I'm trying to find the money I left on the table.", "target": "我在试着找我留在桌子上的钱。", "score": 7},
+        {"known": "She told me she doesn't have enough money right now.", "target": "她告诉我她现在没有够的钱。", "score": 7},
+        {"known": "He is looking for the money he left at that place.", "target": "他在找他留在那个地方的钱。", "score": 7},
+        {"known": "I'm sorry but I don't have money to give you today.", "target": "对不起，但是我今天没有钱给你。", "score": 7},
+        {"known": "Everyone put their money on the table this morning.", "target": "大家今天早上都把钱放在桌子上了。", "score": 7},
+        {"known": "Do you mind if I give you the money tomorrow instead?", "target": "你介意我明天给你钱吗？", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 84,
+  "known_text": "I don't agree with what he said about my friend.",
+  "target_text": "Ik ben het niet eens met wat hij zei over mijn vriend.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I",
+      "target": "ik",
+      "build": [
+        {"known": "I", "target": "ik"},
+        {"known": "I am", "target": "ik ben"},
+        {"known": "I agree", "target": "ik ben het eens"},
+        {"known": "I don't", "target": "ik ben niet"}
+      ],
+      "use": [
+        {"known": "I am not going to wait for you to start.", "target": "Ik ga niet op je wachten om te beginnen.", "score": 8},
+        {"known": "I agree with what she said about her friend.", "target": "Ik ben het eens met wat zij zei over haar vriend.", "score": 8},
+        {"known": "I don't know when he wants to do it with you.", "target": "Ik weet niet wanneer hij het met je wil doen.", "score": 8},
+        {"known": "I am sure that she is ready to start now.", "target": "Ik ben zeker dat zij nu klaar is om te beginnen.", "score": 8},
+        {"known": "I want to do it with my friends when I am ready.", "target": "Ik wil het met mijn vrienden doen wanneer ik klaar ben.", "score": 8},
+        {"known": "I am not sure what he said about waiting for you.", "target": "Ik ben niet zeker wat hij zei over op je wachten.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "am [being]",
+      "target": "ben",
+      "build": [
+        {"known": "am", "target": "ben"},
+        {"known": "I am", "target": "ik ben"},
+        {"known": "am not", "target": "ben niet"},
+        {"known": "am agree", "target": "ben het eens"}
+      ],
+      "use": [
+        {"known": "I am not going to wait for her to be ready.", "target": "Ik ga niet op haar wachten om klaar te zijn.", "score": 8},
+        {"known": "Are you sure about what he said about your friend?", "target": "Ben je zeker over wat hij zei over je vriend?", "score": 8},
+        {"known": "I am ready to start doing it with everyone now.", "target": "Ik ben klaar om nu te beginnen met het met iedereen te doen.", "score": 8},
+        {"known": "I am not sure when she wants to do it with you.", "target": "Ik ben niet zeker wanneer zij het met je wil doen.", "score": 8},
+        {"known": "Are you going to be ready when I am ready?", "target": "Ga je klaar zijn wanneer ik klaar ben?", "score": 8},
+        {"known": "I am not going to agree with what he said.", "target": "Ik ga niet eens zijn met wat hij zei.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "it",
+      "target": "het",
+      "build": [
+        {"known": "it", "target": "het"},
+        {"known": "I agree", "target": "ik ben het eens"},
+        {"known": "do it", "target": "het doen"},
+        {"known": "it is", "target": "het is"}
+      ],
+      "use": [
+        {"known": "Do you agree with what he said about it?", "target": "Ben je het eens met wat hij erover zei?", "score": 8},
+        {"known": "I want to do it with you when you are ready.", "target": "Ik wil het met je doen wanneer je klaar bent.", "score": 8},
+        {"known": "She doesn't agree with what I said about it.", "target": "Zij is het niet eens met wat ik erover zei.", "score": 8},
+        {"known": "It is not sure when he wants to start with it.", "target": "Het is niet zeker wanneer hij ermee wil beginnen.", "score": 8},
+        {"known": "He wants to do it with his friends now.", "target": "Hij wil het nu met zijn vrienden doen.", "score": 8},
+        {"known": "I don't agree with what she said about it.", "target": "Ik ben het niet eens met wat zij erover zei.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "not",
+      "target": "niet",
+      "build": [
+        {"known": "not", "target": "niet"},
+        {"known": "not agree", "target": "niet eens"},
+        {"known": "am not", "target": "ben niet"},
+        {"known": "not sure", "target": "niet zeker"}
+      ],
+      "use": [
+        {"known": "I don't agree with what you said about my friend.", "target": "Ik ben het niet eens met wat je zei over mijn vriend.", "score": 8},
+        {"known": "She is not sure about what he said about her.", "target": "Zij is niet zeker over wat hij over haar zei.", "score": 8},
+        {"known": "He is not ready to start doing it with us.", "target": "Hij is niet klaar om te beginnen met het met iedereen te doen.", "score": 8},
+        {"known": "I am not going to wait for you to agree with me.", "target": "Ik ga niet op je wachten om het met me eens te zijn.", "score": 8},
+        {"known": "We are not sure when she wants to do it.", "target": "Wij zijn niet zeker wanneer zij het wil doen.", "score": 8},
+        {"known": "I don't agree with what he said about my friend.", "target": "Ik ben het niet eens met wat hij zei over mijn vriend.", "score": 9}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "agree",
+      "target": "eens",
+      "build": [
+        {"known": "agree", "target": "eens"},
+        {"known": "I agree", "target": "ik ben het eens"},
+        {"known": "not agree", "target": "niet eens"},
+        {"known": "agree with", "target": "eens met"}
+      ],
+      "use": [
+        {"known": "I don't agree with what you said about waiting.", "target": "Ik ben het niet eens met wat je zei over wachten.", "score": 8},
+        {"known": "She agrees with what he said about your friend.", "target": "Zij is het eens met wat hij zei over je vriend.", "score": 8},
+        {"known": "Do you agree with what I said about starting now?", "target": "Ben je het eens met wat ik zei over nu beginnen?", "score": 8},
+        {"known": "He doesn't agree with what we said about her friend.", "target": "Hij is het niet eens met wat wij zeiden over haar vriend.", "score": 8},
+        {"known": "I agree with what she said about doing it with you.", "target": "Ik ben het eens met wat zij zei over het met je doen.", "score": 8},
+        {"known": "We don't agree with what you said about my friend.", "target": "Wij zijn het niet eens met wat je zei over mijn vriend.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "with",
+      "target": "met",
+      "build": [
+        {"known": "with", "target": "met"},
+        {"known": "agree with", "target": "eens met"},
+        {"known": "with me", "target": "met mij"},
+        {"known": "with you", "target": "met je"}
+      ],
+      "use": [
+        {"known": "I don't agree with what he said about you.", "target": "Ik ben het niet eens met wat hij over je zei.", "score": 8},
+        {"known": "She wants to do it with her friends now.", "target": "Zij wil het nu met haar vrienden doen.", "score": 8},
+        {"known": "Do you agree with what we said about starting?", "target": "Ben je het eens met wat wij zeiden over beginnen?", "score": 8},
+        {"known": "He doesn't want to wait with you for her.", "target": "Hij wil niet met je op haar wachten.", "score": 8},
+        {"known": "I want to do interesting things with my friends.", "target": "Ik wil interessante dingen doen met mijn vrienden.", "score": 8},
+        {"known": "We agree with what she said about waiting with you.", "target": "Wij zijn het eens met wat zij zei over met je wachten.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "what",
+      "target": "wat",
+      "build": [
+        {"known": "what", "target": "wat"},
+        {"known": "what he", "target": "wat hij"},
+        {"known": "what she", "target": "wat zij"},
+        {"known": "with what", "target": "met wat"}
+      ],
+      "use": [
+        {"known": "I don't agree with what he said about your friend.", "target": "Ik ben het niet eens met wat hij zei over je vriend.", "score": 8},
+        {"known": "What did she say about waiting for everyone?", "target": "Wat zei zij over op iedereen wachten?", "score": 8},
+        {"known": "Do you know what he wants to do with her?", "target": "Weet je wat hij met haar wil doen?", "score": 8},
+        {"known": "I am not sure what she said about my friend.", "target": "Ik ben niet zeker wat zij zei over mijn vriend.", "score": 8},
+        {"known": "What do you want to do when you are ready?", "target": "Wat wil je doen wanneer je klaar bent?", "score": 8},
+        {"known": "She doesn't agree with what I said about starting.", "target": "Zij is het niet eens met wat ik zei over beginnen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "he",
+      "target": "hij",
+      "build": [
+        {"known": "he", "target": "hij"},
+        {"known": "he said", "target": "hij zei"},
+        {"known": "he wants", "target": "hij wil"},
+        {"known": "he is", "target": "hij is"}
+      ],
+      "use": [
+        {"known": "I don't agree with what he said about my friend.", "target": "Ik ben het niet eens met wat hij zei over mijn vriend.", "score": 9},
+        {"known": "He wants to wait for her to be ready to start.", "target": "Hij wil op haar wachten om klaar te zijn om te beginnen.", "score": 8},
+        {"known": "Does he agree with what she said about waiting?", "target": "Is hij het eens met wat zij zei over wachten?", "score": 8},
+        {"known": "He is not sure when you want to do it with me.", "target": "Hij is niet zeker wanneer je het met me wil doen.", "score": 8},
+        {"known": "I don't know when he wants to start with it.", "target": "Ik weet niet wanneer hij ermee wil beginnen.", "score": 8},
+        {"known": "He said something about doing it with his friends.", "target": "Hij zei iets over het met zijn vrienden doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "said",
+      "target": "zei",
+      "build": [
+        {"known": "said", "target": "zei"},
+        {"known": "he said", "target": "hij zei"},
+        {"known": "she said", "target": "zij zei"},
+        {"known": "I said", "target": "ik zei"}
+      ],
+      "use": [
+        {"known": "I don't agree with what he said about my friend.", "target": "Ik ben het niet eens met wat hij zei over mijn vriend.", "score": 9},
+        {"known": "She said that she doesn't want to wait for you.", "target": "Zij zei dat zij niet op je wil wachten.", "score": 8},
+        {"known": "What did he say about doing it with your friend?", "target": "Wat zei hij over het met je vriend doen?", "score": 8},
+        {"known": "I said that I am not ready to start now.", "target": "Ik zei dat ik niet klaar ben om nu te beginnen.", "score": 8},
+        {"known": "Did you agree with what she said about waiting?", "target": "Was je het eens met wat zij zei over wachten?", "score": 8},
+        {"known": "He said something interesting about your friend.", "target": "Hij zei iets interessants over je vriend.", "score": 8}
+      ]
+    },
+    {
+      "idx": 10,
+      "type": "A",
+      "known": "about",
+      "target": "over",
+      "build": [
+        {"known": "about", "target": "over"},
+        {"known": "about my", "target": "over mijn"},
+        {"known": "said about", "target": "zei over"},
+        {"known": "about him", "target": "over hem"}
+      ],
+      "use": [
+        {"known": "I don't agree with what he said about my friend.", "target": "Ik ben het niet eens met wat hij zei over mijn vriend.", "score": 9},
+        {"known": "She said something about waiting for everyone.", "target": "Zij zei iets over op iedereen wachten.", "score": 8},
+        {"known": "What do you want to say about starting now?", "target": "Wat wil je zeggen over nu beginnen?", "score": 8},
+        {"known": "He doesn't agree with what I said about your friend.", "target": "Hij is het niet eens met wat ik zei over je vriend.", "score": 8},
+        {"known": "I am not sure about what she said about waiting.", "target": "Ik ben niet zeker over wat zij zei over wachten.", "score": 8},
+        {"known": "Do you agree with what we said about doing it?", "target": "Ben je het eens met wat wij zeiden over het doen?", "score": 8}
+      ]
+    },
+    {
+      "idx": 11,
+      "type": "A",
+      "known": "my",
+      "target": "mijn",
+      "build": [
+        {"known": "my", "target": "mijn"},
+        {"known": "my friend", "target": "mijn vriend"},
+        {"known": "my friends", "target": "mijn vrienden"},
+        {"known": "about my", "target": "over mijn"}
+      ],
+      "use": [
+        {"known": "I don't agree with what he said about my friend.", "target": "Ik ben het niet eens met wat hij zei over mijn vriend.", "score": 9},
+        {"known": "My friend wants to start learning Dutch with me.", "target": "Mijn vriend wil beginnen met Nederlands leren met me.", "score": 8},
+        {"known": "She said something interesting about my friends.", "target": "Zij zei iets interessants over mijn vrienden.", "score": 8},
+        {"known": "Do you agree with what she said about my friend?", "target": "Ben je het eens met wat zij zei over mijn vriend?", "score": 8},
+        {"known": "He doesn't want to wait for my friend to be ready.", "target": "Hij wil niet op mijn vriend wachten om klaar te zijn.", "score": 8},
+        {"known": "I want to do it with my friends when I can.", "target": "Ik wil het met mijn vrienden doen wanneer ik kan.", "score": 8}
+      ]
+    },
+    {
+      "idx": 12,
+      "type": "A",
+      "known": "friend",
+      "target": "vriend",
+      "build": [
+        {"known": "friend", "target": "vriend"},
+        {"known": "my friend", "target": "mijn vriend"},
+        {"known": "your friend", "target": "je vriend"},
+        {"known": "her friend", "target": "haar vriend"}
+      ],
+      "use": [
+        {"known": "I don't agree with what he said about my friend.", "target": "Ik ben het niet eens met wat hij zei over mijn vriend.", "score": 9},
+        {"known": "My friend is ready to start doing it with you.", "target": "Mijn vriend is klaar om te beginnen met het met je te doen.", "score": 8},
+        {"known": "She said something about her friend waiting for us.", "target": "Zij zei iets over haar vriend die op iedereen wacht.", "score": 7},
+        {"known": "Do you agree with what I said about your friend?", "target": "Ben je het eens met wat ik zei over je vriend?", "score": 8},
+        {"known": "His friend doesn't want to wait for everyone.", "target": "Zijn vriend wil niet op iedereen wachten.", "score": 8},
+        {"known": "I want to do interesting things with my friend now.", "target": "Ik wil nu interessante dingen doen met mijn vriend.", "score": 8}
+      ]
+    }
+  ]
+}

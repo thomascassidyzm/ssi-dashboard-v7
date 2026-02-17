@@ -1,0 +1,32 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 285,
+  "known_text": "彼女は英語を話します。",
+  "target_text": "She speaks English.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "彼女は英語を話します",
+      "target": "she speaks English",
+      "components": [
+        {"known": "彼女", "target": "she"},
+        {"known": "英語", "target": "English"},
+        {"known": "話す", "target": "speak"}
+      ],
+      "phrases": [
+        {"role": "build", "known": "彼女は英語を話します。", "target": "She speaks English.", "score": 7},
+        {"role": "build", "known": "彼女は英語を話しますか？", "target": "Does she speak English?", "score": 7},
+        {"role": "build", "known": "彼女は英語を話したいです。", "target": "She wants to speak English.", "score": 7},
+        {"role": "use", "known": "彼女は英語をよく話します。", "target": "She speaks English well.", "score": 7},
+        {"role": "use", "known": "彼女は毎日英語を話します。", "target": "She speaks English every day.", "score": 7},
+        {"role": "use", "known": "彼女は英語を話すのが好きです。", "target": "She likes speaking English.", "score": 8},
+        {"role": "use", "known": "彼女は英語を話しません。", "target": "She doesn't speak English.", "score": 7},
+        {"role": "use", "known": "彼女は英語を話すことができます。", "target": "She can speak English.", "score": 7},
+        {"role": "use", "known": "彼女は英語を話していました。", "target": "She was speaking English.", "score": 7},
+        {"role": "use", "known": "彼女は英語を話し始めました。", "target": "She started speaking English.", "score": 8},
+        {"role": "use", "known": "彼女は英語を話したくありません。", "target": "She doesn't want to speak English.", "score": 7}
+      ]
+    }
+  ]
+}

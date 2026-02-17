@@ -1,0 +1,76 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 119,
+  "target_text": "Can I ask you something before you leave?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "帰る",
+      "target": "leave",
+      "build": [
+        {"known": "帰る", "target": "leave"},
+        {"known": "帰る前に", "target": "before you leave"},
+        {"known": "帰りたい", "target": "want to leave"},
+        {"known": "帰る時", "target": "when you leave"}
+      ],
+      "use": [
+        {"known": "帰りたいと思います。", "target": "I think I want to leave now.", "score": 8},
+        {"known": "帰る時は話しましょう。", "target": "We will talk when you leave today.", "score": 8},
+        {"known": "帰る前に何かしたいです。", "target": "I want to do something before you leave.", "score": 8},
+        {"known": "帰る時より確実に気分がいいです。", "target": "I definitely feel better than when you leave.", "score": 8},
+        {"known": "帰る前に友達と話すのが好きです。", "target": "I like to talk with friends before you leave.", "score": 8},
+        {"known": "帰るのが好きですが、今日は難しいです。", "target": "I like to leave, but today it is difficult.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "〜する前に",
+      "target": "before you",
+      "components": [
+        {"known": "〜する前に", "target": "before"},
+        {"known": "あなたが", "target": "you"}
+      ],
+      "build": [
+        {"known": "〜する前に", "target": "before you"},
+        {"known": "帰る前に", "target": "before you leave"},
+        {"known": "行く前に", "target": "before you go"},
+        {"known": "終わる前に", "target": "before you finish"}
+      ],
+      "use": [
+        {"known": "帰る前に何か聞きたいです。", "target": "I want to ask you something before you leave.", "score": 8},
+        {"known": "行く前に話したいです。", "target": "I want to talk before you go now.", "score": 8},
+        {"known": "帰る前に何かしましょう。", "target": "We will do something before you leave.", "score": 8},
+        {"known": "終わる前に確実に話したいです。", "target": "I definitely want to talk before you finish.", "score": 8},
+        {"known": "行く前に聞いてもいいですか。", "target": "Can I ask you before you go now?", "score": 8},
+        {"known": "帰る前に何か新しいことを学びたいです。", "target": "I want to learn something new before you leave.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "何か聞いてもいいですか",
+      "target": "Can I ask you something",
+      "components": [
+        {"known": "〜してもいいですか", "target": "Can I"},
+        {"known": "聞く", "target": "ask you"},
+        {"known": "何か", "target": "something"}
+      ],
+      "build": [
+        {"known": "聞いてもいいですか", "target": "Can I ask you something"},
+        {"known": "何か聞いても", "target": "Can I ask you"},
+        {"known": "聞いてもいい", "target": "I can ask you something"},
+        {"known": "質問してもいいですか", "target": "Can I ask you now"}
+      ],
+      "use": [
+        {"known": "帰る前に何か聞いてもいいですか？", "target": "Can I ask you something before you leave?", "score": 9},
+        {"known": "何か聞いてもいいですか。大切なことです。", "target": "Can I ask you something? It is important.", "score": 8},
+        {"known": "今何か聞いてもいいですか。", "target": "Can I ask you something now?", "score": 8},
+        {"known": "何か聞いてもいいですか。確実に知りたいです。", "target": "Can I ask you something? I definitely want to know.", "score": 8},
+        {"known": "何か聞いてもいいですか。難しいことです。", "target": "Can I ask you something? It is difficult.", "score": 8},
+        {"known": "行く前に何か聞いてもいいですか。", "target": "Can I ask you something before you go?", "score": 8}
+      ]
+    }
+  ]
+}

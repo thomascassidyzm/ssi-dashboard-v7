@@ -1,0 +1,77 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 120,
+  "target_text": "It's interesting that you like to go by bus.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "バス",
+      "target": "bus",
+      "build": [
+        {"known": "バス", "target": "bus"},
+        {"known": "バスで", "target": "by bus"},
+        {"known": "バスに乗る", "target": "go on the bus"},
+        {"known": "バスが", "target": "the bus"}
+      ],
+      "use": [
+        {"known": "バスで行きたいと思います。", "target": "I think I want to go by bus today.", "score": 8},
+        {"known": "バスで行くのは楽しいです。", "target": "It is fun to go by bus.", "score": 8},
+        {"known": "バスで帰る前に何か話したいです。", "target": "I want to talk before I leave by bus.", "score": 8},
+        {"known": "バスで行くのが確実に良いと思います。", "target": "I think it is definitely good to go by bus.", "score": 8},
+        {"known": "バスで友達と一緒に行きたいです。", "target": "I want to go by bus with friends.", "score": 8},
+        {"known": "バスで行くのが好きですが、今日は難しいです。", "target": "I like to go by bus, but today it is difficult.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "〜で行くのが好き",
+      "target": "you like to go by",
+      "components": [
+        {"known": "あなたは好き", "target": "you like"},
+        {"known": "行く", "target": "to go"},
+        {"known": "〜で", "target": "by"}
+      ],
+      "build": [
+        {"known": "〜で行くのが好き", "target": "you like to go by"},
+        {"known": "バスで行くのが好き", "target": "you like to go by bus"},
+        {"known": "行くのが好き", "target": "you like to go"},
+        {"known": "〜で帰るのが好き", "target": "you like to leave by"}
+      ],
+      "use": [
+        {"known": "バスで行くのが好きなのは面白いですね。", "target": "It is interesting that you like to go by bus.", "score": 9},
+        {"known": "バスで行くのが好きだと思います。", "target": "I think you like to go by bus now.", "score": 8},
+        {"known": "バスで行くのが好きですか？", "target": "Do you like to go by bus today?", "score": 8},
+        {"known": "バスで行くのが好きなのは良いことです。", "target": "It is good that you like to go by bus.", "score": 8},
+        {"known": "バスで行くのが好きなのは確実に面白いです。", "target": "It is definitely interesting that you like to go by bus.", "score": 8},
+        {"known": "バスで行くのが好きなら、一緒に行きましょう。", "target": "If you like to go by bus, we can go now.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "〜なのは面白いですね",
+      "target": "It's interesting that",
+      "components": [
+        {"known": "〜です", "target": "It's"},
+        {"known": "面白い", "target": "interesting"},
+        {"known": "〜ということ", "target": "that"}
+      ],
+      "build": [
+        {"known": "面白いですね", "target": "It's interesting that"},
+        {"known": "面白いことです", "target": "It's interesting"},
+        {"known": "面白いと思う", "target": "I think it's interesting that"},
+        {"known": "面白いですよ", "target": "It's interesting that you"}
+      ],
+      "use": [
+        {"known": "バスで行くのが好きなのは面白いですね。", "target": "It's interesting that you like to go by bus.", "score": 9},
+        {"known": "彼がそれを言ったのは面白いですね。", "target": "It's interesting that he said that.", "score": 8},
+        {"known": "それが変わったのは面白いですね。", "target": "It's interesting that it did change.", "score": 8},
+        {"known": "確実に面白いと思います。", "target": "I think it's definitely interesting that.", "score": 7},
+        {"known": "あなたがそう感じるのは面白いですね。", "target": "It's interesting that you feel that way.", "score": 8},
+        {"known": "今日それが起きたのは面白いですね。", "target": "It's interesting that it did happen today.", "score": 8}
+      ]
+    }
+  ]
+}

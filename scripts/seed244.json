@@ -1,0 +1,116 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 244,
+  "known_text": "I've learnt a lot already",
+  "target_text": "我已经学了很多了。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I've.", "target": "我。"},
+        {"known": "I've learnt.", "target": "我学了。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "I've learnt a lot about this already.", "target": "我已经学了很多这个了。", "score": 8},
+        {"known": "That young man asked me if I know your brother.", "target": "那个年轻的男人问我是不是认识你哥哥。", "score": 7},
+        {"known": "If the old woman can tell me, I would be very happy.", "target": "如果那个老女人能告诉我的话，我会很开心。", "score": 8},
+        {"known": "Everyone told me they want to meet your sister too.", "target": "大家都告诉我他们也想见你姐姐。", "score": 7},
+        {"known": "Would that young man be able to help me with this?", "target": "那个年轻的男人能帮我做这个吗？", "score": 8},
+        {"known": "She hopes I can remember what the old man said.", "target": "她希望我能记住那个老人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "already",
+      "target": "已经",
+      "components": [
+        {"known": "already", "target": "已"},
+        {"known": "pass", "target": "经"}
+      ],
+      "build": [
+        {"known": "Already.", "target": "已经。"},
+        {"known": "Already learnt.", "target": "已经学了。"},
+        {"known": "I've already.", "target": "我已经。"},
+        {"known": "Have already.", "target": "已经...了。"}
+      ],
+      "use": [
+        {"known": "I've already learnt a lot from your father.", "target": "我已经从你爸爸学了很多了。", "score": 8},
+        {"known": "That young man has already finished the work.", "target": "那个年轻的男人已经做完工作了。", "score": 7},
+        {"known": "If you have already eaten, we can go now.", "target": "如果你已经吃了的话，我们现在可以走。", "score": 8},
+        {"known": "She told me she has already met your mother.", "target": "她告诉我她已经见了你妈妈了。", "score": 7},
+        {"known": "Everyone here has already heard about what happened.", "target": "这里的大家已经听说发生了什么了。", "score": 8},
+        {"known": "Has your sister already gone home for the night?", "target": "你姐姐已经回家了吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "learn/study",
+      "target": "学",
+      "build": [
+        {"known": "Learn.", "target": "学。"},
+        {"known": "Study.", "target": "学。"},
+        {"known": "Already learnt.", "target": "已经学了。"},
+        {"known": "Learnt a lot.", "target": "学了很多。"}
+      ],
+      "use": [
+        {"known": "I've learnt a lot since I started working here.", "target": "我在这里开始工作以后学了很多。", "score": 8},
+        {"known": "That young woman wants to learn from your mother.", "target": "那个年轻的女人想从你妈妈学。", "score": 7},
+        {"known": "If you want to learn more, you should read books.", "target": "如果你想学更多的话，你要看书。", "score": 8},
+        {"known": "She told me she is learning to speak with us.", "target": "她告诉我她在学和我们说话。", "score": 7},
+        {"known": "Everyone here wants to learn new things together.", "target": "这里的大家都想一起学新的东西。", "score": 8},
+        {"known": "What has your brother learnt from the old man?", "target": "你哥哥从那个老人学了什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "completed action particle",
+      "target": "了",
+      "build": [
+        {"known": "Done.", "target": "了。"},
+        {"known": "Learnt.", "target": "学了。"},
+        {"known": "Already learnt.", "target": "已经学了。"},
+        {"known": "Learnt a lot.", "target": "学了很多了。"}
+      ],
+      "use": [
+        {"known": "I've already learnt a lot about how things work.", "target": "我已经学了很多东西怎么做了。", "score": 8},
+        {"known": "That young man said he has finished the work.", "target": "那个年轻的男人说他做完工作了。", "score": 7},
+        {"known": "If she has come, please let us know right away.", "target": "如果她来了的话，请让我们知道。", "score": 8},
+        {"known": "He told me he has met your father many times.", "target": "他告诉我他见了你爸爸很多次了。", "score": 7},
+        {"known": "Everyone here has eaten and is ready to go.", "target": "这里的大家都吃了准备好走了。", "score": 8},
+        {"known": "What has your sister done with the book I gave her?", "target": "你姐姐和我给她的书做了什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "a lot/many",
+      "target": "很多",
+      "components": [
+        {"known": "very", "target": "很"},
+        {"known": "many", "target": "多"}
+      ],
+      "build": [
+        {"known": "A lot.", "target": "很多。"},
+        {"known": "Many.", "target": "很多。"},
+        {"known": "Learnt a lot.", "target": "学了很多。"},
+        {"known": "Already learnt a lot.", "target": "已经学了很多了。"}
+      ],
+      "use": [
+        {"known": "I've learnt a lot since I started reading books.", "target": "我开始看书以后学了很多了。", "score": 8},
+        {"known": "That young woman knows a lot about your family.", "target": "那个年轻的女人知道你的家人很多。", "score": 7},
+        {"known": "If you have a lot of time, we can talk more.", "target": "如果你有很多时间的话，我们可以说更多。", "score": 8},
+        {"known": "She told me there are a lot of things to do.", "target": "她告诉我有很多东西要做。", "score": 7},
+        {"known": "Everyone here has a lot of work to finish.", "target": "这里的大家都有很多工作要做完。", "score": 8},
+        {"known": "How many things has your mother already done today?", "target": "你妈妈今天已经做了很多东西吗？", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 191,
+  "known_text": "No I don't mind at all.",
+  "target_text": "没有，我一点都不介意。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "no/don't have",
+      "target": "没有",
+      "components": [
+        {"known": "not (past)", "target": "没"},
+        {"known": "have/exist", "target": "有"}
+      ],
+      "build": [
+        {"known": "No.", "target": "没有。"},
+        {"known": "Don't have.", "target": "没有。"},
+        {"known": "I don't have.", "target": "我没有。"},
+        {"known": "No, I don't.", "target": "没有，我没有。"}
+      ],
+      "use": [
+        {"known": "No, I don't have time to help you with this today.", "target": "没有，我今天没有时间帮你做这个。", "score": 7},
+        {"known": "She said she doesn't have any questions for you.", "target": "她说她没有问题要问你。", "score": 6},
+        {"known": "No, I don't have that thing you were asking about.", "target": "没有，我没有你问的那个东西。", "score": 7},
+        {"known": "He told me he doesn't have a good idea for this.", "target": "他告诉我他没有关于这个的好主意。", "score": 7},
+        {"known": "No, there isn't anyone at that place right now.", "target": "没有，现在那个地方没有人。", "score": 6},
+        {"known": "I don't have any more questions I want to ask you.", "target": "我没有更多的问题想问你了。", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "Me too.", "target": "我也。"},
+        {"known": "I am.", "target": "我是。"},
+        {"known": "I don't have.", "target": "我没有。"}
+      ],
+      "use": [
+        {"known": "I really don't have any problems with this plan.", "target": "我真的没有关于这个计划的问题。", "score": 7},
+        {"known": "I told her I don't mind waiting for you here.", "target": "我告诉她我不介意在这里等你。", "score": 7},
+        {"known": "I want to ask you a few questions about that.", "target": "我想问你几个关于那个的问题。", "score": 6},
+        {"known": "I think we should go to that place tomorrow.", "target": "我觉得我们明天应该去那个地方。", "score": 7},
+        {"known": "I hope you don't mind if I come here with her.", "target": "我希望你不介意我和她一起来这里。", "score": 8},
+        {"known": "I really need to think about this question more.", "target": "我真的需要多想想这个问题。", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "a little/a bit",
+      "target": "一点",
+      "components": [
+        {"known": "one", "target": "一"},
+        {"known": "point/bit", "target": "点"}
+      ],
+      "build": [
+        {"known": "A little.", "target": "一点。"},
+        {"known": "A bit more.", "target": "多一点。"},
+        {"known": "A little less.", "target": "少一点。"},
+        {"known": "Just a little.", "target": "就一点。"}
+      ],
+      "use": [
+        {"known": "I need a little more time to finish this work.", "target": "我需要多一点时间来做完这个工作。", "score": 7},
+        {"known": "She said she wants to learn a little more Chinese.", "target": "她说她想多学一点中文。", "score": 7},
+        {"known": "Can you wait a little longer for me at that place?", "target": "你能在那个地方多等我一点吗？", "score": 7},
+        {"known": "He told me he only has a little time today.", "target": "他告诉我他今天只有一点时间。", "score": 6},
+        {"known": "I know a little about this but not very much.", "target": "我知道一点关于这个，但不是很多。", "score": 7},
+        {"known": "Do you mind if we talk a little more about this?", "target": "你介意我们多聊一点关于这个吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "all/even",
+      "target": "都",
+      "build": [
+        {"known": "All.", "target": "都。"},
+        {"known": "All are.", "target": "都是。"},
+        {"known": "Everyone.", "target": "大家都。"},
+        {"known": "Everything.", "target": "什么都。"}
+      ],
+      "use": [
+        {"known": "We all want to go to that place with you.", "target": "我们都想和你一起去那个地方。", "score": 7},
+        {"known": "Everyone knows this is a very good idea.", "target": "大家都知道这是一个很好的主意。", "score": 7},
+        {"known": "She told me she doesn't mind any of this at all.", "target": "她告诉我她一点都不介意这些。", "score": 8},
+        {"known": "I don't have any questions at all for you now.", "target": "我现在一点问题都没有要问你。", "score": 7},
+        {"known": "He said all the people there want to help us.", "target": "他说那里的人都想帮助我们。", "score": 6},
+        {"known": "All the things he told me about were very interesting.", "target": "他告诉我的事都很有意思。", "score": 7}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "not",
+      "target": "不",
+      "build": [
+        {"known": "Not.", "target": "不。"},
+        {"known": "I don't.", "target": "我不。"},
+        {"known": "Not good.", "target": "不好。"},
+        {"known": "Don't want.", "target": "不想。"}
+      ],
+      "use": [
+        {"known": "I really don't mind waiting for you a little more.", "target": "我真的不介意多等你一点。", "score": 7},
+        {"known": "She said she doesn't want to go there tomorrow.", "target": "她说她明天不想去那里。", "score": 6},
+        {"known": "He told me he doesn't have time to help us today.", "target": "他告诉我他今天没有时间帮我们。", "score": 7},
+        {"known": "I don't think this is a good idea for all of us.", "target": "我不觉得这对我们都是一个好主意。", "score": 7},
+        {"known": "She doesn't mind at all if you ask her questions.", "target": "如果你问她问题，她一点都不介意。", "score": 8},
+        {"known": "We don't have any problems with what you said.", "target": "我们对你说的没有问题。", "score": 6}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "mind/care about",
+      "target": "介意",
+      "components": [
+        {"known": "introduce/between", "target": "介"},
+        {"known": "meaning/intention", "target": "意"}
+      ],
+      "build": [
+        {"known": "Mind.", "target": "介意。"},
+        {"known": "Don't mind.", "target": "不介意。"},
+        {"known": "Do you mind?", "target": "你介意吗？"},
+        {"known": "I don't mind.", "target": "我不介意。"}
+      ],
+      "use": [
+        {"known": "I don't mind at all if you want to ask me questions.", "target": "如果你想问我问题，我一点都不介意。", "score": 8},
+        {"known": "She said she doesn't mind helping us with this work.", "target": "她说她不介意帮我们做这个工作。", "score": 7},
+        {"known": "Do you mind if I come to that place with you tomorrow?", "target": "你介意我明天和你一起去那个地方吗？", "score": 7},
+        {"known": "He told me he doesn't mind waiting a little longer.", "target": "他告诉我他不介意多等一点。", "score": 7},
+        {"known": "We don't mind at all if you need more time for this.", "target": "如果你需要更多时间做这个，我们一点都不介意。", "score": 8},
+        {"known": "I really don't mind at all what you think about this.", "target": "我真的一点都不介意你怎么想这个。", "score": 7}
+      ]
+    }
+  ]
+}

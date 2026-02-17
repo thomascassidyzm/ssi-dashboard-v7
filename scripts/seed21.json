@@ -1,0 +1,91 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 21,
+  "target_text": "Why are you learning her name?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "为什么",
+      "target": "Why",
+      "build": [
+        {"known": "为什么", "target": "Why"},
+        {"known": "为什么今天", "target": "Why today"},
+        {"known": "为什么你能说英语", "target": "Why can you speak English"},
+        {"known": "为什么她能今天回来", "target": "Why can she come back today"}
+      ],
+      "use": [
+        {"known": "为什么你能说英语？", "target": "Why can you speak English?", "score": 8},
+        {"known": "为什么她能学英语？", "target": "Why can she learn English?", "score": 8},
+        {"known": "为什么他能今天回来？", "target": "Why can he come back today?", "score": 8},
+        {"known": "我不确定为什么他想和我说英语。", "target": "I'm not sure why he wants to speak English with me.", "score": 9},
+        {"known": "我想找出为什么她想学一些东西。", "target": "I want to find out why she wants to learn something.", "score": 9},
+        {"known": "为什么他能和别人说英语说得很好？", "target": "Why can he speak English with someone else very well?", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "你在学",
+      "target": "are you learning",
+      "components": [
+        {"known": "你在", "target": "are you"},
+        {"known": "学", "target": "learning"}
+      ],
+      "build": [
+        {"known": "你在学", "target": "are you learning"},
+        {"known": "学", "target": "learning"},
+        {"known": "为什么你在学英语", "target": "Why are you learning English"},
+        {"known": "为什么你在学一些东西", "target": "Why are you learning something"}
+      ],
+      "use": [
+        {"known": "为什么你在学英语？", "target": "Why are you learning English?", "score": 8},
+        {"known": "为什么你在学一些东西？", "target": "Why are you learning something?", "score": 8},
+        {"known": "为什么你在今天学？", "target": "Why are you learning today?", "score": 8},
+        {"known": "我想找出为什么你在今天学英语。", "target": "I want to find out why you are learning English today.", "score": 9},
+        {"known": "我不确定为什么你在和别人学英语。", "target": "I'm not sure why you are learning English with someone else.", "score": 9},
+        {"known": "为什么你在尽量努力今天学英语？", "target": "Why are you learning English as hard as you can today?", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "她的",
+      "target": "her",
+      "build": [
+        {"known": "她的", "target": "her"},
+        {"known": "她的名字", "target": "her name"},
+        {"known": "为什么你在学她的名字", "target": "Why are you learning her name"},
+        {"known": "我想今天学她的名字", "target": "I want to learn her name today"}
+      ],
+      "use": [
+        {"known": "我想今天学她的名字。", "target": "I want to learn her name today.", "score": 8},
+        {"known": "为什么你在学她的名字？", "target": "Why are you learning her name?", "score": 8},
+        {"known": "她想找出她的名字。", "target": "She wants to find out her name.", "score": 8},
+        {"known": "我不确定为什么你在快点今天学她的名字。", "target": "I'm not sure why you are learning her name quickly today.", "score": 9},
+        {"known": "为什么你在尽量努力今天学她的名字？", "target": "Why are you learning her name as hard as you can today?", "score": 9},
+        {"known": "我想找出为什么你在今天学她的名字。", "target": "I want to find out why you are learning her name today.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "名字",
+      "target": "name",
+      "build": [
+        {"known": "名字", "target": "name"},
+        {"known": "她的名字", "target": "her name"},
+        {"known": "为什么你在学她的名字", "target": "Why are you learning her name"},
+        {"known": "我想今天学她的名字", "target": "I want to learn her name today"}
+      ],
+      "use": [
+        {"known": "我想今天学她的名字。", "target": "I want to learn her name today.", "score": 8},
+        {"known": "为什么你在学她的名字？", "target": "Why are you learning her name?", "score": 8},
+        {"known": "她想今天学他的名字。", "target": "She wants to learn his name today.", "score": 8},
+        {"known": "我不确定为什么你在快点今天学她的名字。", "target": "I'm not sure why you are learning her name quickly today.", "score": 9},
+        {"known": "我想找出为什么她在今天学他的名字。", "target": "I want to find out why she is learning his name today.", "score": 9},
+        {"known": "为什么你在尽量努力学她的名字？", "target": "Why are you learning her name as hard as you can?", "score": 9}
+      ]
+    }
+  ]
+}

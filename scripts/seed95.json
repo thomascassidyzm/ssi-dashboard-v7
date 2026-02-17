@@ -1,0 +1,248 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 95,
+  "known_text": "Are you ready to go home on the next bus?",
+  "target_text": "Ben je klaar om met de volgende bus naar huis te gaan?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "are [you]",
+      "target": "ben",
+      "build": [
+        {"known": "are", "target": "ben"},
+        {"known": "you are", "target": "je bent"},
+        {"known": "are you", "target": "ben je"},
+        {"known": "am I", "target": "ben ik"}
+      ],
+      "use": [
+        {"known": "Are you ready to start now?", "target": "Ben je klaar om nu te beginnen?", "score": 8},
+        {"known": "I am not sure if I am ready to go.", "target": "Ik ben niet zeker of ik klaar ben om te gaan.", "score": 8},
+        {"known": "Are you the only one who knows the way?", "target": "Ben je de enige die de manier weet?", "score": 8},
+        {"known": "She said that I am the only one.", "target": "Zij zei dat ik de enige ben.", "score": 8},
+        {"known": "I am ready to do it for a while.", "target": "Ik ben klaar om het een tijdje te doen.", "score": 8},
+        {"known": "Are you ready to speak Dutch now?", "target": "Ben je klaar om nu Nederlands te spreken?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "you",
+      "target": "je",
+      "build": [
+        {"known": "you", "target": "je"},
+        {"known": "are you", "target": "ben je"},
+        {"known": "you can", "target": "je kunt"},
+        {"known": "you want", "target": "je wilt"}
+      ],
+      "use": [
+        {"known": "If you are ready, we can start now.", "target": "Als je klaar bent, kunnen wij nu beginnen.", "score": 8},
+        {"known": "I think that you know the only way to do it.", "target": "Ik denk dat je de enige manier weet om het te doen.", "score": 8},
+        {"known": "She said that you can go if you want.", "target": "Zij zei dat je kunt gaan als je wilt.", "score": 8},
+        {"known": "Are you the only one who can do it?", "target": "Ben je de enige die het kan doen?", "score": 8},
+        {"known": "I would like to know if you are ready.", "target": "Ik zou graag willen weten of je klaar bent.", "score": 8},
+        {"known": "Do you know the way to do it quickly?", "target": "Weet je de manier om het snel te doen?", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "ready",
+      "target": "klaar",
+      "build": [
+        {"known": "ready", "target": "klaar"},
+        {"known": "ready to", "target": "klaar om"},
+        {"known": "not ready", "target": "niet klaar"},
+        {"known": "are you ready", "target": "ben je klaar"}
+      ],
+      "use": [
+        {"known": "I am not ready to go now.", "target": "Ik ben niet klaar om nu te gaan.", "score": 8},
+        {"known": "She is ready to start learning Dutch.", "target": "Zij is klaar om te beginnen met Nederlands leren.", "score": 8},
+        {"known": "Are you ready to do it the only way?", "target": "Ben je klaar om het op de enige manier te doen?", "score": 8},
+        {"known": "I don't know if I am ready to go now.", "target": "Ik weet niet of ik klaar ben om nu te gaan.", "score": 8},
+        {"known": "She said that she is ready to start.", "target": "Zij zei dat zij klaar is om te beginnen.", "score": 8},
+        {"known": "We are not ready yet to do it.", "target": "Wij zijn nog niet klaar om het te doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to [infinitive]",
+      "target": "om",
+      "build": [
+        {"known": "to", "target": "om"},
+        {"known": "to go", "target": "om te gaan"},
+        {"known": "ready to", "target": "klaar om"},
+        {"known": "time to", "target": "tijd om"}
+      ],
+      "use": [
+        {"known": "I am ready to go now.", "target": "Ik ben klaar om nu te gaan.", "score": 8},
+        {"known": "It is time to start learning Dutch.", "target": "Het is tijd om te beginnen met Nederlands leren.", "score": 8},
+        {"known": "She is the only one to know the way.", "target": "Zij is de enige om de manier te weten.", "score": 8},
+        {"known": "I would like to do it for a while.", "target": "Ik zou het graag een tijdje willen doen.", "score": 8},
+        {"known": "Are you ready to speak Dutch now?", "target": "Ben je klaar om nu Nederlands te spreken?", "score": 8},
+        {"known": "It is the only way to make it work.", "target": "Het is de enige manier om het te laten werken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "with",
+      "target": "met",
+      "build": [
+        {"known": "with", "target": "met"},
+        {"known": "with the", "target": "met de"},
+        {"known": "with me", "target": "met me"},
+        {"known": "with you", "target": "met je"}
+      ],
+      "use": [
+        {"known": "I would like to go with you.", "target": "Ik zou graag met je willen gaan.", "score": 8},
+        {"known": "She is ready to start learning Dutch with us.", "target": "Zij is klaar om te beginnen met Nederlands leren met ons.", "score": 8},
+        {"known": "Are you ready to do it with me?", "target": "Ben je klaar om het met me te doen?", "score": 8},
+        {"known": "I don't know if I can go with those people.", "target": "Ik weet niet of ik met die mensen kan gaan.", "score": 8},
+        {"known": "She said that it is the only way to do it with her.", "target": "Zij zei dat het de enige manier is om het met haar te doen.", "score": 8},
+        {"known": "It is time to go with them now.", "target": "Het is tijd om nu met die mensen te gaan.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "the",
+      "target": "de",
+      "build": [
+        {"known": "the", "target": "de"},
+        {"known": "the bus", "target": "de bus"},
+        {"known": "the way", "target": "de manier"},
+        {"known": "the only", "target": "de enige"}
+      ],
+      "use": [
+        {"known": "I am ready to go with the people.", "target": "Ik ben klaar om met de mensen te gaan.", "score": 8},
+        {"known": "She knows the only way to do it.", "target": "Zij weet de enige manier om het te doen.", "score": 8},
+        {"known": "Are you the only one who is ready?", "target": "Ben je de enige die klaar is?", "score": 8},
+        {"known": "I would like to know the way to go.", "target": "Ik zou graag de manier willen weten om te gaan.", "score": 8},
+        {"known": "She said that the only time is now.", "target": "Zij zei dat de enige tijd nu is.", "score": 8},
+        {"known": "It is the only way that will work.", "target": "Het is de enige manier die zal werken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "next/following",
+      "target": "volgende",
+      "build": [
+        {"known": "next", "target": "volgende"},
+        {"known": "the next", "target": "de volgende"},
+        {"known": "next one", "target": "de volgende"},
+        {"known": "the next day", "target": "de volgende dag"}
+      ],
+      "use": [
+        {"known": "I am ready to go on the next one.", "target": "Ik ben klaar om met de volgende te gaan.", "score": 8},
+        {"known": "She said that the next one will be the only way.", "target": "Zij zei dat de volgende de enige manier zal zijn.", "score": 8},
+        {"known": "Are you ready to start on the next one?", "target": "Ben je klaar om met de volgende te beginnen?", "score": 8},
+        {"known": "I would like to do it on the next one.", "target": "Ik zou het graag met de volgende willen doen.", "score": 8},
+        {"known": "The next one will work if we do it now.", "target": "De volgende zal werken als wij het nu doen.", "score": 8},
+        {"known": "I don't know if I am ready for the next one.", "target": "Ik weet niet of ik klaar ben met de volgende.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "bus",
+      "target": "bus",
+      "build": [
+        {"known": "bus", "target": "bus"},
+        {"known": "the bus", "target": "de bus"},
+        {"known": "next bus", "target": "volgende bus"},
+        {"known": "on the bus", "target": "met de bus"}
+      ],
+      "use": [
+        {"known": "I am ready to go on the next bus.", "target": "Ik ben klaar om met de volgende bus te gaan.", "score": 8},
+        {"known": "She said that the bus will be the only way.", "target": "Zij zei dat de bus de enige manier zal zijn.", "score": 8},
+        {"known": "Are you ready to go on the bus now?", "target": "Ben je klaar om nu met de bus te gaan?", "score": 8},
+        {"known": "I would like to go on the next bus.", "target": "Ik zou graag met de volgende bus willen gaan.", "score": 8},
+        {"known": "The bus is the only way to go now.", "target": "De bus is de enige manier om nu te gaan.", "score": 8},
+        {"known": "I don't know if the bus will work for me.", "target": "Ik weet niet of de bus zal werken met me.", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "to/towards",
+      "target": "naar",
+      "build": [
+        {"known": "to", "target": "naar"},
+        {"known": "towards", "target": "naar"},
+        {"known": "go to", "target": "gaan naar"},
+        {"known": "to it", "target": "naar het"}
+      ],
+      "use": [
+        {"known": "I am ready to go to the next one now.", "target": "Ik ben klaar om nu naar de volgende te gaan.", "score": 8},
+        {"known": "She said that we can go to the next bus.", "target": "Zij zei dat wij naar de volgende bus kunnen gaan.", "score": 8},
+        {"known": "Are you ready to go to it on the bus?", "target": "Ben je klaar om met de bus naar het te gaan?", "score": 8},
+        {"known": "I would like to go to the next one for a while.", "target": "Ik zou graag een tijdje naar de volgende willen gaan.", "score": 8},
+        {"known": "The only way is to go to it now.", "target": "De enige manier is om nu naar het te gaan.", "score": 8},
+        {"known": "I don't know if I can go to it on the bus.", "target": "Ik weet niet of ik met de bus naar het kan gaan.", "score": 8}
+      ]
+    },
+    {
+      "idx": 10,
+      "type": "A",
+      "known": "home",
+      "target": "huis",
+      "build": [
+        {"known": "home", "target": "huis"},
+        {"known": "to home", "target": "naar huis"},
+        {"known": "go home", "target": "naar huis gaan"},
+        {"known": "home now", "target": "nu naar huis"}
+      ],
+      "use": [
+        {"known": "I am ready to go home on the bus.", "target": "Ik ben klaar om met de bus naar huis te gaan.", "score": 8},
+        {"known": "She said that she wants to go home now.", "target": "Zij zei dat zij nu naar huis wil gaan.", "score": 8},
+        {"known": "Are you ready to go home on the next bus?", "target": "Ben je klaar om met de volgende bus naar huis te gaan?", "score": 9},
+        {"known": "I would like to go home for a while.", "target": "Ik zou graag een tijdje naar huis willen gaan.", "score": 8},
+        {"known": "The only way to go home is on the bus.", "target": "De enige manier om naar huis te gaan is met de bus.", "score": 8},
+        {"known": "I don't know if I can go home on the next bus.", "target": "Ik weet niet of ik met de volgende bus naar huis kan gaan.", "score": 8}
+      ]
+    },
+    {
+      "idx": 11,
+      "type": "A",
+      "known": "to [part of verb]",
+      "target": "te",
+      "build": [
+        {"known": "to", "target": "te"},
+        {"known": "to go", "target": "te gaan"},
+        {"known": "to do", "target": "te doen"},
+        {"known": "to speak", "target": "te spreken"}
+      ],
+      "use": [
+        {"known": "I am ready to go home on the bus.", "target": "Ik ben klaar om met de bus naar huis te gaan.", "score": 8},
+        {"known": "She said that it is difficult to go now.", "target": "Zij zei dat het moeilijk is om nu te gaan.", "score": 8},
+        {"known": "Are you ready to start doing it?", "target": "Ben je klaar om het te beginnen te doen?", "score": 8},
+        {"known": "I would like to keep on learning Dutch.", "target": "Ik zou graag willen doorgaan met Nederlands te leren.", "score": 8},
+        {"known": "The only way is to do it now.", "target": "De enige manier is om het nu te doen.", "score": 8},
+        {"known": "I don't know if it is possible to go home.", "target": "Ik weet niet of het mogelijk is om naar huis te gaan.", "score": 8}
+      ]
+    },
+    {
+      "idx": 12,
+      "type": "A",
+      "known": "to go",
+      "target": "gaan",
+      "build": [
+        {"known": "to go", "target": "gaan"},
+        {"known": "go home", "target": "naar huis gaan"},
+        {"known": "go now", "target": "nu gaan"},
+        {"known": "want to go", "target": "wil gaan"}
+      ],
+      "use": [
+        {"known": "Are you ready to go home on the next bus?", "target": "Ben je klaar om met de volgende bus naar huis te gaan?", "score": 9},
+        {"known": "I would like to go home now.", "target": "Ik zou graag nu naar huis willen gaan.", "score": 8},
+        {"known": "She said that it is time to go home.", "target": "Zij zei dat het tijd is om naar huis te gaan.", "score": 8},
+        {"known": "The only way to go is on the next bus.", "target": "De enige manier om te gaan is met de volgende bus.", "score": 8},
+        {"known": "I don't know if I can go on the bus.", "target": "Ik weet niet of ik met de bus kan gaan.", "score": 8},
+        {"known": "She wants to go home but it is not possible.", "target": "Zij wil naar huis gaan maar het is niet mogelijk.", "score": 8}
+      ]
+    }
+  ]
+}

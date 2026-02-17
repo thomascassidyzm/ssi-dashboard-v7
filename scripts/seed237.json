@@ -1,0 +1,180 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 237,
+  "known_text": "He wanted me to tell you before the weekend.",
+  "target_text": "他想让我周末以前告诉你。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "he/him",
+      "target": "他",
+      "build": [
+        {"known": "He.", "target": "他。"},
+        {"known": "He wanted.", "target": "他想。"},
+        {"known": "He said.", "target": "他说。"},
+        {"known": "Tell him.", "target": "告诉他。"}
+      ],
+      "use": [
+        {"known": "He wanted me to tell you before the weekend.", "target": "他想让我周末以前告诉你。", "score": 8},
+        {"known": "That young woman asked if he can come to help tomorrow.", "target": "那个年轻的女人问他是不是明天能来帮忙。", "score": 7},
+        {"known": "If he has time tonight, he will help us with the work.", "target": "如果他今天晚上有时间的话，他会帮我们做工作。", "score": 8},
+        {"known": "I want him to tell us what the old woman said.", "target": "我想他告诉我们那个老女人说了什么。", "score": 7},
+        {"known": "Everyone is waiting for him to give us an answer.", "target": "大家都在等他给我们一个答案。", "score": 8},
+        {"known": "Would he be able to remember what happened yesterday?", "target": "他能记住昨天发生了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "want/wanted",
+      "target": "想",
+      "build": [
+        {"known": "Want.", "target": "想。"},
+        {"known": "Wanted.", "target": "想。"},
+        {"known": "He wanted.", "target": "他想。"},
+        {"known": "Wanted me to.", "target": "想让我。"}
+      ],
+      "use": [
+        {"known": "He wanted me to tell you before the weekend.", "target": "他想让我周末以前告诉你。", "score": 8},
+        {"known": "That young woman wanted to know what happened yesterday.", "target": "那个年轻的女人想知道昨天发生了什么。", "score": 7},
+        {"known": "If she wanted to help, she would have said something.", "target": "如果她想帮忙的话，她会说东西。", "score": 8},
+        {"known": "Your brother wanted to meet your sister last night.", "target": "你哥哥昨天晚上想见你姐姐。", "score": 7},
+        {"known": "Everyone here wanted to know when the meeting starts.", "target": "这里的大家都想知道开会什么时候开始。", "score": 8},
+        {"known": "What did that old man want to tell you about?", "target": "那个老人想告诉你什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "let/make",
+      "target": "让",
+      "build": [
+        {"known": "Let.", "target": "让。"},
+        {"known": "Make.", "target": "让。"},
+        {"known": "Let me.", "target": "让我。"},
+        {"known": "Wanted me to.", "target": "想让我。"}
+      ],
+      "use": [
+        {"known": "He wanted me to tell you before the weekend.", "target": "他想让我周末以前告诉你。", "score": 8},
+        {"known": "That young woman asked me to let her know tomorrow.", "target": "那个年轻的女人问我让她明天知道。", "score": 7},
+        {"known": "If you need help, please let us know right away.", "target": "如果你需要帮忙的话，请让我们知道。", "score": 8},
+        {"known": "She let him know what happened at the meeting.", "target": "她让他知道开会发生了什么。", "score": 7},
+        {"known": "Everyone here let me know they want to help.", "target": "这里的大家都让我知道他们想帮忙。", "score": 8},
+        {"known": "Would you let me tell you what the old man said?", "target": "你让我告诉你那个老人说了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "Me.", "target": "我。"},
+        {"known": "Let me.", "target": "让我。"},
+        {"known": "Tell me.", "target": "告诉我。"}
+      ],
+      "use": [
+        {"known": "He wanted me to tell you about what happened.", "target": "他想让我告诉你发生了什么。", "score": 8},
+        {"known": "That young man asked me if I know your brother.", "target": "那个年轻的男人问我是不是认识你哥哥。", "score": 7},
+        {"known": "If the old woman can tell me, I would be very happy.", "target": "如果那个老女人能告诉我的话，我会很开心。", "score": 8},
+        {"known": "Everyone told me they want to meet your sister too.", "target": "大家都告诉我他们也想见你姐姐。", "score": 7},
+        {"known": "Would that young woman be able to help me with this?", "target": "那个年轻的女人能帮我做这个吗？", "score": 8},
+        {"known": "She hopes I can remember what the old man said.", "target": "她希望我能记住那个老人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "weekend",
+      "target": "周末",
+      "components": [
+        {"known": "week", "target": "周"},
+        {"known": "end", "target": "末"}
+      ],
+      "build": [
+        {"known": "Weekend.", "target": "周末。"},
+        {"known": "This weekend.", "target": "这个周末。"},
+        {"known": "Before the weekend.", "target": "周末以前。"},
+        {"known": "Last weekend.", "target": "上个周末。"}
+      ],
+      "use": [
+        {"known": "He wanted me to tell you before the weekend comes.", "target": "他想让我周末来以前告诉你。", "score": 8},
+        {"known": "That young woman wants to finish the work this weekend.", "target": "那个年轻的女人想这个周末完成工作。", "score": 7},
+        {"known": "If you have time this weekend, we can meet.", "target": "如果你这个周末有时间的话，我们可以见。", "score": 8},
+        {"known": "She told me she met your brother last weekend.", "target": "她告诉我她上个周末见了你哥哥。", "score": 7},
+        {"known": "Everyone here wants to know what we will do this weekend.", "target": "这里的大家都想知道我们这个周末会做什么。", "score": 8},
+        {"known": "What did you do last weekend with your sister?", "target": "你上个周末和你姐姐做了什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "before (prior to)",
+      "target": "以前",
+      "components": [
+        {"known": "by/with", "target": "以"},
+        {"known": "front", "target": "前"}
+      ],
+      "build": [
+        {"known": "Before.", "target": "以前。"},
+        {"known": "Before the weekend.", "target": "周末以前。"},
+        {"known": "Before tomorrow.", "target": "明天以前。"},
+        {"known": "Before I go.", "target": "我去以前。"}
+      ],
+      "use": [
+        {"known": "He wanted me to tell you before the weekend.", "target": "他想让我周末以前告诉你。", "score": 8},
+        {"known": "That young woman wants to finish before tonight.", "target": "那个年轻的女人想今天晚上以前完成。", "score": 7},
+        {"known": "If you can come before the meeting, we can talk.", "target": "如果你能开会以前来的话，我们可以说话。", "score": 8},
+        {"known": "She told me what happened before the meeting.", "target": "她告诉我开会以前发生了什么。", "score": 7},
+        {"known": "Everyone here wants to know before tomorrow.", "target": "这里的大家都想明天以前知道。", "score": 8},
+        {"known": "What did you want to tell me before you left?", "target": "你走以前想告诉我什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "M",
+      "known": "tell (someone)",
+      "target": "告诉",
+      "components": [
+        {"known": "announce", "target": "告"},
+        {"known": "inform", "target": "诉"}
+      ],
+      "build": [
+        {"known": "Tell.", "target": "告诉。"},
+        {"known": "Tell you.", "target": "告诉你。"},
+        {"known": "Tell me.", "target": "告诉我。"},
+        {"known": "Let me tell.", "target": "让我告诉。"}
+      ],
+      "use": [
+        {"known": "He wanted me to tell you about the meeting.", "target": "他想让我告诉你开会的东西。", "score": 8},
+        {"known": "That old woman said she wanted to tell us the answer.", "target": "那个老女人说她想告诉我们答案。", "score": 7},
+        {"known": "If you want to tell him something, do it before he goes.", "target": "如果你想告诉他东西的话，他走以前做。", "score": 8},
+        {"known": "She told us what happened when she met your brother.", "target": "她告诉我们她见你哥哥的时候发生了什么。", "score": 7},
+        {"known": "Everyone wants to tell you we appreciate your help.", "target": "大家都想告诉你我们很感激你的帮忙。", "score": 8},
+        {"known": "Who told you about what happened at work yesterday?", "target": "谁告诉你昨天工作发生了什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "you/your",
+      "target": "你",
+      "build": [
+        {"known": "You.", "target": "你。"},
+        {"known": "Your.", "target": "你的。"},
+        {"known": "Tell you.", "target": "告诉你。"},
+        {"known": "Help you.", "target": "帮你。"}
+      ],
+      "use": [
+        {"known": "He wanted me to tell you before the weekend.", "target": "他想让我周末以前告诉你。", "score": 8},
+        {"known": "That old man told me he wants to see you tomorrow.", "target": "那个老人告诉我他想明天见你。", "score": 7},
+        {"known": "If she can help you, I think you should ask her now.", "target": "如果她能帮你的话，我觉得你现在要问她。", "score": 8},
+        {"known": "She hopes you can tell her what happened yesterday.", "target": "她希望你能告诉她昨天发生了什么。", "score": 7},
+        {"known": "Everyone here wants to know what you think about this.", "target": "这里的大家都想知道你觉得这个怎么样。", "score": 8},
+        {"known": "Would that young man be able to work together with you?", "target": "那个年轻的男人能和你一起工作吗？", "score": 8}
+      ]
+    }
+  ]
+}

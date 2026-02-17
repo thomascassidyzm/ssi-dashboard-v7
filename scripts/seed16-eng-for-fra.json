@@ -1,0 +1,108 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 16,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Il veut",
+      "target": "He wants",
+      "components": [
+        {"known": "Il", "target": "He"},
+        {"known": "veut", "target": "wants"}
+      ],
+      "build": [
+        {"known": "Il veut", "target": "He wants"},
+        {"known": "Il veut parler", "target": "He wants to speak"},
+        {"known": "Il veut apprendre", "target": "He wants to learn"},
+        {"known": "Il veut essayer", "target": "He wants to try"}
+      ],
+      "use": [
+        {"known": "Il veut parler anglais avec toi maintenant.", "target": "He wants to speak English with you now.", "score": 8},
+        {"known": "Il veut apprendre comment parler anglais très bien.", "target": "He wants to learn how to speak English very well.", "score": 9},
+        {"known": "Il veut essayer de parler anglais toute la journée.", "target": "He wants to try to speak English all day.", "score": 9},
+        {"known": "Il veut expliquer ce qui va se passer demain.", "target": "He wants to explain what's going to happen tomorrow.", "score": 9},
+        {"known": "Et il veut parler anglais avec moi.", "target": "And he wants to speak English with me.", "score": 8},
+        {"known": "Il veut pouvoir parler anglais le plus souvent possible.", "target": "He wants to be able to speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "revenir",
+      "target": "to come back",
+      "build": [
+        {"known": "revenir", "target": "to come back"},
+        {"known": "Il veut revenir", "target": "He wants to come back"},
+        {"known": "Je veux revenir", "target": "I want to come back"},
+        {"known": "revenir demain", "target": "to come back tomorrow"}
+      ],
+      "use": [
+        {"known": "Il veut revenir demain pour parler anglais.", "target": "He wants to come back tomorrow to speak English.", "score": 9},
+        {"known": "J'aimerais revenir et parler anglais avec toi.", "target": "I'd like to come back and speak English with you.", "score": 9},
+        {"known": "Et il veut revenir toute la journée.", "target": "And he wants to come back all day.", "score": 8},
+        {"known": "Je veux revenir et essayer de parler très bien.", "target": "I want to come back and try to speak very well.", "score": 9},
+        {"known": "Il veut revenir après que tu termines.", "target": "He wants to come back after you finish.", "score": 8},
+        {"known": "J'aimerais pouvoir revenir et parler anglais demain.", "target": "I'd like to be able to come back and speak English tomorrow.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "avec moi",
+      "target": "with me",
+      "components": [
+        {"known": "avec", "target": "with"},
+        {"known": "moi", "target": "me"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "tout le monde",
+      "target": "everyone else",
+      "components": [
+        {"known": "tout le", "target": "everyone"},
+        {"known": "monde", "target": "else"}
+      ],
+      "build": [
+        {"known": "tout le monde", "target": "everyone else"},
+        {"known": "avec tout le monde", "target": "with everyone else"},
+        {"known": "parler avec tout le monde", "target": "to speak with everyone else"},
+        {"known": "Il veut parler avec tout le monde", "target": "He wants to speak with everyone else"}
+      ],
+      "use": [
+        {"known": "Il veut parler anglais avec tout le monde.", "target": "He wants to speak English with everyone else.", "score": 9},
+        {"known": "J'aimerais pouvoir parler anglais avec tout le monde.", "target": "I'd like to be able to speak English with everyone else.", "score": 9},
+        {"known": "Est-ce que tu veux parler anglais avec tout le monde demain?", "target": "Do you want to speak English with everyone else tomorrow?", "score": 9},
+        {"known": "Il veut revenir et parler avec tout le monde.", "target": "He wants to come back and speak with everyone else.", "score": 9},
+        {"known": "Je veux que tu parles anglais avec tout le monde.", "target": "I want you to speak English with everyone else.", "score": 9},
+        {"known": "Tu parles très bien anglais avec tout le monde.", "target": "You speak English very well with everyone else.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "plus tard",
+      "target": "later on",
+      "components": [
+        {"known": "plus", "target": "later"},
+        {"known": "tard", "target": "on"}
+      ],
+      "build": [
+        {"known": "plus tard", "target": "later on"},
+        {"known": "revenir plus tard", "target": "to come back later on"},
+        {"known": "parler plus tard", "target": "to speak later on"},
+        {"known": "Il veut revenir plus tard", "target": "He wants to come back later on"}
+      ],
+      "use": [
+        {"known": "Il veut revenir avec tout le monde plus tard.", "target": "He wants to come back with everyone else later on.", "score": 9},
+        {"known": "J'aimerais parler anglais avec toi plus tard.", "target": "I'd like to speak English with you later on.", "score": 9},
+        {"known": "Et il veut revenir plus tard demain.", "target": "And he wants to come back later on tomorrow.", "score": 8},
+        {"known": "Je veux essayer de parler anglais plus tard.", "target": "I want to try to speak English later on.", "score": 8},
+        {"known": "Tu peux parler anglais avec tout le monde plus tard.", "target": "You can speak English with everyone else later on.", "score": 9},
+        {"known": "Il veut expliquer ce qui va se passer plus tard.", "target": "He wants to explain what's going to happen later on.", "score": 9}
+      ]
+    }
+  ]
+}

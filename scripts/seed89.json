@@ -1,0 +1,188 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 89,
+  "known_text": "I think that I've done a lot in a short time.",
+  "target_text": "Ik denk dat ik veel heb gedaan in korte tijd.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I",
+      "target": "ik",
+      "build": [
+        {"known": "I", "target": "ik"},
+        {"known": "I think", "target": "ik denk"},
+        {"known": "I have", "target": "ik heb"},
+        {"known": "I am", "target": "ik ben"}
+      ],
+      "use": [
+        {"known": "I am not ready yet to talk with those people.", "target": "Ik ben nog niet klaar om met die mensen te praten.", "score": 8},
+        {"known": "I don't agree with what she said about my friend.", "target": "Ik ben het niet eens met wat zij zei over mijn vriend.", "score": 8},
+        {"known": "Unfortunately, I was not ready to do it with them.", "target": "Helaas was ik niet klaar om het met die mensen te doen.", "score": 8},
+        {"known": "I want to find people who want to learn Dutch.", "target": "Ik wil mensen vinden die Nederlands willen leren.", "score": 8},
+        {"known": "I am still not sure when she wants to start.", "target": "Ik ben nog niet zeker wanneer zij wil beginnen.", "score": 8},
+        {"known": "Unfortunately, I don't know many people here.", "target": "Helaas ken ik niet veel mensen hier.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "think",
+      "target": "denk",
+      "build": [
+        {"known": "think", "target": "denk"},
+        {"known": "I think", "target": "ik denk"},
+        {"known": "think that", "target": "denk dat"},
+        {"known": "don't think", "target": "denk niet"}
+      ],
+      "use": [
+        {"known": "I think that she is ready to start learning Dutch.", "target": "Ik denk dat zij klaar is om Nederlands te leren.", "score": 8},
+        {"known": "Do you think that those people want to talk with me?", "target": "Denk je dat die mensen met me willen praten?", "score": 8},
+        {"known": "I don't think that he was ready to do it yet.", "target": "Ik denk niet dat hij klaar was om het te doen.", "score": 8},
+        {"known": "I think that it was unfortunately not possible.", "target": "Ik denk dat het helaas niet mogelijk was.", "score": 8},
+        {"known": "Do you think that she agrees with what I said?", "target": "Denk je dat zij het eens is met wat ik zei?", "score": 8},
+        {"known": "I think that those people are not ready yet.", "target": "Ik denk dat die mensen nog niet klaar zijn.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "that",
+      "target": "dat",
+      "build": [
+        {"known": "that", "target": "dat"},
+        {"known": "think that", "target": "denk dat"},
+        {"known": "that I", "target": "dat ik"},
+        {"known": "that he", "target": "dat hij"}
+      ],
+      "use": [
+        {"known": "I think that I am ready to start now.", "target": "Ik denk dat ik nu klaar ben om te beginnen.", "score": 8},
+        {"known": "She said that she was not ready to do it.", "target": "Zij zei dat zij niet klaar was om het te doen.", "score": 8},
+        {"known": "I know that he was not ready to start yet.", "target": "Ik weet dat hij nog niet klaar was om te beginnen.", "score": 8},
+        {"known": "Do you think that it is possible to do it now?", "target": "Denk je dat het mogelijk is om het nu te doen?", "score": 8},
+        {"known": "Unfortunately, I don't think that she agrees.", "target": "Helaas denk ik niet dat zij het eens is.", "score": 8},
+        {"known": "He said that he wants to talk with my friend.", "target": "Hij zei dat hij met mijn vriend wil praten.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "a lot/much",
+      "target": "veel",
+      "build": [
+        {"known": "a lot", "target": "veel"},
+        {"known": "much", "target": "veel"},
+        {"known": "a lot of", "target": "veel"},
+        {"known": "many people", "target": "veel mensen"}
+      ],
+      "use": [
+        {"known": "I think that I have a lot of time to do it.", "target": "Ik denk dat ik veel tijd heb om het te doen.", "score": 8},
+        {"known": "I know a lot of people who want to learn Dutch.", "target": "Ik ken veel mensen die Nederlands willen leren.", "score": 8},
+        {"known": "Unfortunately, I don't have a lot of time now.", "target": "Helaas heb ik nu niet veel tijd.", "score": 8},
+        {"known": "Do you think that I have a lot of friends here?", "target": "Denk je dat ik veel vrienden hier heb?", "score": 8},
+        {"known": "I want to talk with a lot of people about it.", "target": "Ik wil met veel mensen praten over het.", "score": 8},
+        {"known": "She said that I have a lot to do with them.", "target": "Zij zei dat ik veel te doen heb met die mensen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "have [past]",
+      "target": "heb",
+      "build": [
+        {"known": "have", "target": "heb"},
+        {"known": "I have", "target": "ik heb"},
+        {"known": "have a lot", "target": "heb veel"},
+        {"known": "don't have", "target": "heb niet"}
+      ],
+      "use": [
+        {"known": "I think that I have a lot of time to learn Dutch.", "target": "Ik denk dat ik veel tijd heb om Nederlands te leren.", "score": 8},
+        {"known": "I have a lot of friends who want to learn Dutch.", "target": "Ik heb veel vrienden die Nederlands willen leren.", "score": 8},
+        {"known": "Unfortunately, I don't have a lot of time now.", "target": "Helaas heb ik nu niet veel tijd.", "score": 8},
+        {"known": "Do you think that I have enough time to do it?", "target": "Denk je dat ik genoeg tijd heb om het te doen?", "score": 8},
+        {"known": "She said that I have not a lot of time now.", "target": "Zij zei dat ik nu niet veel tijd heb.", "score": 8},
+        {"known": "I have a lot of things to do with those people.", "target": "Ik heb veel dingen te doen met die mensen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "done",
+      "target": "gedaan",
+      "build": [
+        {"known": "done", "target": "gedaan"},
+        {"known": "have done", "target": "heb gedaan"},
+        {"known": "have not done", "target": "niet gedaan"},
+        {"known": "done a lot", "target": "veel gedaan"}
+      ],
+      "use": [
+        {"known": "I think that I have done a lot with those people.", "target": "Ik denk dat ik veel heb gedaan met die mensen.", "score": 8},
+        {"known": "She said that I have not done a lot yet.", "target": "Zij zei dat ik nog niet veel heb gedaan.", "score": 8},
+        {"known": "Do you think that I have done it well?", "target": "Denk je dat ik het goed heb gedaan?", "score": 8},
+        {"known": "Unfortunately, I have not done a lot yet.", "target": "Helaas heb ik nog niet veel gedaan.", "score": 8},
+        {"known": "I have done interesting things with my friends.", "target": "Ik heb interessante dingen gedaan met mijn vrienden.", "score": 8},
+        {"known": "She said that I have done a lot with everyone.", "target": "Zij zei dat ik veel heb gedaan met iedereen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "in",
+      "target": "in",
+      "build": [
+        {"known": "in", "target": "in"},
+        {"known": "in a", "target": "in een"},
+        {"known": "in time", "target": "in tijd"},
+        {"known": "in Dutch", "target": "in het Nederlands"}
+      ],
+      "use": [
+        {"known": "I think that I have done a lot in that time.", "target": "Ik denk dat ik veel heb gedaan in die tijd.", "score": 8},
+        {"known": "She has done interesting things in Dutch.", "target": "Zij heeft interessante dingen gedaan in het Nederlands.", "score": 8},
+        {"known": "Do you think that I have done a lot in a week?", "target": "Denk je dat ik veel heb gedaan in een week?", "score": 8},
+        {"known": "Unfortunately, I have not done much in that time.", "target": "Helaas heb ik niet veel gedaan in die tijd.", "score": 8},
+        {"known": "I want to do interesting things in Dutch.", "target": "Ik wil interessante dingen doen in het Nederlands.", "score": 8},
+        {"known": "She said that I have done a lot in Dutch.", "target": "Zij zei dat ik veel heb gedaan in het Nederlands.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "short",
+      "target": "korte",
+      "build": [
+        {"known": "short", "target": "korte"},
+        {"known": "short time", "target": "korte tijd"},
+        {"known": "in a short", "target": "in korte"},
+        {"known": "a short while", "target": "korte tijd"}
+      ],
+      "use": [
+        {"known": "I think that I've done a lot in a short time.", "target": "Ik denk dat ik veel heb gedaan in korte tijd.", "score": 9},
+        {"known": "I think that I have done a lot in a short time.", "target": "Ik denk dat ik veel heb gedaan in korte tijd.", "score": 8},
+        {"known": "Do you think that I can do it in a short time?", "target": "Denk je dat ik het kan doen in korte tijd?", "score": 8},
+        {"known": "Unfortunately, I have not done a lot in a short time.", "target": "Helaas heb ik niet veel gedaan in korte tijd.", "score": 8},
+        {"known": "I want to do interesting things in a short time.", "target": "Ik wil interessante dingen doen in korte tijd.", "score": 8},
+        {"known": "She said that I have done a lot in a short time.", "target": "Zij zei dat ik veel heb gedaan in korte tijd.", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "time",
+      "target": "tijd",
+      "build": [
+        {"known": "time", "target": "tijd"},
+        {"known": "short time", "target": "korte tijd"},
+        {"known": "more time", "target": "meer tijd"},
+        {"known": "a lot of time", "target": "veel tijd"}
+      ],
+      "use": [
+        {"known": "I think that I've done a lot in a short time.", "target": "Ik denk dat ik veel heb gedaan in korte tijd.", "score": 9},
+        {"known": "She doesn't have a lot of time to do it.", "target": "Zij heeft niet veel tijd om het te doen.", "score": 8},
+        {"known": "Do you think that I need more time to start?", "target": "Denk je dat ik meer tijd nodig heb om te beginnen?", "score": 8},
+        {"known": "Unfortunately, I don't have a lot of time now.", "target": "Helaas heb ik nu niet veel tijd.", "score": 8},
+        {"known": "I want to give you more time to talk with them.", "target": "Ik wil je meer tijd geven om met die mensen te praten.", "score": 8},
+        {"known": "She said that I have done a lot in a short time.", "target": "Zij zei dat ik veel heb gedaan in korte tijd.", "score": 8}
+      ]
+    }
+  ]
+}

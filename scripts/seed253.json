@@ -1,0 +1,80 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 253,
+  "target_text": "يجب أن أكون جاهزاً في بضع دقائق.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I should",
+      "target": "يجب أن",
+      "components": [
+        {"known": "should", "target": "يجب"},
+        {"known": "to", "target": "أن"}
+      ],
+      "build": [
+        {"known": "I should", "target": "يجب أن"},
+        {"known": "I should be", "target": "يجب أن أكون"},
+        {"known": "you should", "target": "يجب أن"},
+        {"known": "I should do", "target": "يجب أن أفعل"}
+      ],
+      "use": [
+        {"known": "I should learn more Arabic before the weekend.", "target": "يجب أن أتعلم العربية أكثر قبل نهاية الأسبوع.", "score": 8},
+        {"known": "I should speak with you about that this week.", "target": "يجب أن أتكلم معك عن ذلك هذا الأسبوع.", "score": 8},
+        {"known": "I should do that before I go tomorrow night.", "target": "يجب أن أفعل ذلك قبل أن أذهب ليلة الغد.", "score": 9},
+        {"known": "I should try to learn Arabic with you today.", "target": "يجب أن أحاول أن أتعلم العربية معك اليوم.", "score": 8},
+        {"known": "I should tell you what I thought about that.", "target": "يجب أن أخبرك ما اعتقدت عن ذلك.", "score": 8},
+        {"known": "I should read more before the weekend.", "target": "يجب أن أقرأ أكثر قبل نهاية الأسبوع.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I be ready",
+      "target": "أكون جاهزاً",
+      "components": [
+        {"known": "I be", "target": "أكون"},
+        {"known": "ready", "target": "جاهزاً"}
+      ],
+      "build": [
+        {"known": "I be ready", "target": "أكون جاهزاً"},
+        {"known": "I should be ready", "target": "يجب أن أكون جاهزاً"},
+        {"known": "for me to be ready", "target": "أن أكون جاهزاً"},
+        {"known": "I should be ready to", "target": "يجب أن أكون جاهزاً ل"}
+      ],
+      "use": [
+        {"known": "I should be ready to speak Arabic with you today.", "target": "يجب أن أكون جاهزاً أن أتكلم العربية معك اليوم.", "score": 8},
+        {"known": "I should be ready to do that before the weekend.", "target": "يجب أن أكون جاهزاً أن أفعل ذلك قبل نهاية الأسبوع.", "score": 8},
+        {"known": "I wanted to be ready before you told me that.", "target": "أردت أن أكون جاهزاً قبل أن تخبرني ذلك.", "score": 9},
+        {"known": "I should be ready to learn more Arabic this week.", "target": "يجب أن أكون جاهزاً أن أتعلم العربية أكثر هذا الأسبوع.", "score": 9},
+        {"known": "I should be ready to help you tomorrow night.", "target": "يجب أن أكون جاهزاً أن أساعدك ليلة الغد.", "score": 8},
+        {"known": "I want to be ready before you go today.", "target": "أريد أن أكون جاهزاً قبل أن تذهب اليوم.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "in a few minutes.",
+      "target": "في بضع دقائق.",
+      "components": [
+        {"known": "in", "target": "في"},
+        {"known": "a few", "target": "بضع"},
+        {"known": "minutes.", "target": "دقائق."}
+      ],
+      "build": [
+        {"known": "in a few minutes.", "target": "في بضع دقائق."},
+        {"known": "ready in a few minutes.", "target": "جاهزاً في بضع دقائق."},
+        {"known": "I should be ready in a few minutes.", "target": "يجب أن أكون جاهزاً في بضع دقائق."},
+        {"known": "be ready in a few minutes.", "target": "أكون جاهزاً في بضع دقائق."}
+      ],
+      "use": [
+        {"known": "I should be ready to speak Arabic with you in a few minutes.", "target": "يجب أن أكون جاهزاً أن أتكلم العربية معك في بضع دقائق.", "score": 8},
+        {"known": "I think I will be ready to help you in a few minutes.", "target": "أعتقد أنني سأكون جاهزاً أن أساعدك في بضع دقائق.", "score": 9},
+        {"known": "He said he would be ready in a few minutes.", "target": "قال أنه سيكون جاهزاً في بضع دقائق.", "score": 8},
+        {"known": "He wanted to be ready to speak Arabic in a few minutes.", "target": "أراد أن يكون جاهزاً أن يتكلم العربية في بضع دقائق.", "score": 8},
+        {"known": "I should do that for you in a few minutes.", "target": "يجب أن أفعل ذلك لك في بضع دقائق.", "score": 8},
+        {"known": "I will try to be ready to learn Arabic in a few minutes.", "target": "سأحاول أن أكون جاهزاً أن أتعلم العربية في بضع دقائق.", "score": 9}
+      ]
+    }
+  ]
+}

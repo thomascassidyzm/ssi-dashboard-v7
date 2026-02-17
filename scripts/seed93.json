@@ -1,0 +1,148 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 93,
+  "known_text": "It's time to go now.",
+  "target_text": "Het is tijd om nu te gaan.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "it",
+      "target": "het",
+      "build": [
+        {"known": "it", "target": "het"},
+        {"known": "it is", "target": "het is"},
+        {"known": "it was", "target": "het was"},
+        {"known": "it would", "target": "het zou"}
+      ],
+      "use": [
+        {"known": "It would be nice to keep on doing this.", "target": "Het zou leuk zijn om hiermee te doorgaan.", "score": 8},
+        {"known": "It is difficult to think quickly enough.", "target": "Het is moeilijk om snel genoeg te denken.", "score": 8},
+        {"known": "It was not possible to do it in a short time.", "target": "Het was niet mogelijk om het in korte tijd te doen.", "score": 8},
+        {"known": "It is not sure if she can do it now.", "target": "Het is niet zeker of zij het nu kan doen.", "score": 8},
+        {"known": "It would be great if I can speak more slowly.", "target": "Het zou geweldig zijn als ik langzamer kan spreken.", "score": 8},
+        {"known": "It was difficult to answer on time.", "target": "Het was moeilijk om op tijd te antwoorden.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "is",
+      "target": "is",
+      "build": [
+        {"known": "is", "target": "is"},
+        {"known": "it is", "target": "het is"},
+        {"known": "is not", "target": "is niet"},
+        {"known": "that is", "target": "dat is"}
+      ],
+      "use": [
+        {"known": "It is nice to keep on doing this for a while.", "target": "Het is leuk om een tijdje hiermee te doorgaan.", "score": 8},
+        {"known": "That is difficult to do quickly.", "target": "Dat is moeilijk om snel te doen.", "score": 8},
+        {"known": "It is not possible to think quickly enough.", "target": "Het is niet mogelijk om snel genoeg te denken.", "score": 8},
+        {"known": "She is ready to start learning Dutch now.", "target": "Zij is klaar om nu te beginnen met Nederlands leren.", "score": 8},
+        {"known": "It is great if you can speak more slowly.", "target": "Het is geweldig als je langzamer kunt spreken.", "score": 8},
+        {"known": "That is interesting if she can do it.", "target": "Dat is interessant als zij het kan doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "time",
+      "target": "tijd",
+      "build": [
+        {"known": "time", "target": "tijd"},
+        {"known": "it is time", "target": "het is tijd"},
+        {"known": "on time", "target": "op tijd"},
+        {"known": "short time", "target": "korte tijd"}
+      ],
+      "use": [
+        {"known": "It is time to start learning Dutch.", "target": "Het is tijd om te beginnen met Nederlands leren.", "score": 8},
+        {"known": "I don't think that I have enough time.", "target": "Ik denk niet dat ik genoeg tijd heb.", "score": 8},
+        {"known": "She said that it is time to do it now.", "target": "Zij zei dat het tijd is om het nu te doen.", "score": 8},
+        {"known": "It would be nice to have more time.", "target": "Het zou leuk zijn om meer tijd te hebben.", "score": 8},
+        {"known": "I was not able to be on time.", "target": "Ik was niet in staat om op tijd te zijn.", "score": 7},
+        {"known": "It is difficult to do it in a short time.", "target": "Het is moeilijk om het in korte tijd te doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to [infinitive]",
+      "target": "om",
+      "build": [
+        {"known": "to", "target": "om"},
+        {"known": "to go", "target": "om te gaan"},
+        {"known": "to do", "target": "om te doen"},
+        {"known": "time to", "target": "tijd om"}
+      ],
+      "use": [
+        {"known": "It is time to do it now.", "target": "Het is tijd om het nu te doen.", "score": 8},
+        {"known": "I would like to keep on doing this.", "target": "Ik zou graag hiermee willen doorgaan.", "score": 8},
+        {"known": "She is ready to start learning Dutch.", "target": "Zij is klaar om te beginnen met Nederlands leren.", "score": 8},
+        {"known": "It would be nice to speak more slowly.", "target": "Het zou leuk zijn om langzamer te spreken.", "score": 8},
+        {"known": "I don't know if it is possible to do it.", "target": "Ik weet niet of het mogelijk is om het te doen.", "score": 8},
+        {"known": "It is difficult to think quickly enough.", "target": "Het is moeilijk om snel genoeg te denken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "now",
+      "target": "nu",
+      "build": [
+        {"known": "now", "target": "nu"},
+        {"known": "do it now", "target": "het nu doen"},
+        {"known": "start now", "target": "nu beginnen"},
+        {"known": "right now", "target": "nu"}
+      ],
+      "use": [
+        {"known": "I would like to start now.", "target": "Ik zou graag nu willen beginnen.", "score": 8},
+        {"known": "She said that it is time to do it now.", "target": "Zij zei dat het tijd is om het nu te doen.", "score": 8},
+        {"known": "It would be nice to speak Dutch now.", "target": "Het zou leuk zijn om nu Nederlands te spreken.", "score": 8},
+        {"known": "I don't know if I can do it now.", "target": "Ik weet niet of ik het nu kan doen.", "score": 8},
+        {"known": "She is ready to start learning Dutch now.", "target": "Zij is klaar om nu te beginnen met Nederlands leren.", "score": 8},
+        {"known": "It is difficult to think quickly enough now.", "target": "Het is moeilijk om nu snel genoeg te denken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "to [part of verb]",
+      "target": "te",
+      "build": [
+        {"known": "to", "target": "te"},
+        {"known": "to go", "target": "te gaan"},
+        {"known": "to do", "target": "te doen"},
+        {"known": "to speak", "target": "te spreken"}
+      ],
+      "use": [
+        {"known": "It is time to start doing this now.", "target": "Het is tijd om nu hiermee te beginnen.", "score": 8},
+        {"known": "I would like to keep on learning Dutch.", "target": "Ik zou graag willen doorgaan met Nederlands te leren.", "score": 8},
+        {"known": "She said that it is difficult to think quickly.", "target": "Zij zei dat het moeilijk is om snel te denken.", "score": 8},
+        {"known": "It would be nice to do it for a while.", "target": "Het zou leuk zijn om het een tijdje te doen.", "score": 8},
+        {"known": "I don't know if it is possible to speak more slowly.", "target": "Ik weet niet of het mogelijk is om langzamer te spreken.", "score": 8},
+        {"known": "It is great to keep on doing this.", "target": "Het is geweldig om hiermee te doorgaan.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "to go",
+      "target": "gaan",
+      "build": [
+        {"known": "to go", "target": "gaan"},
+        {"known": "go now", "target": "nu gaan"},
+        {"known": "want to go", "target": "wil gaan"},
+        {"known": "time to go", "target": "tijd om te gaan"}
+      ],
+      "use": [
+        {"known": "It's time to go now.", "target": "Het is tijd om nu te gaan.", "score": 9},
+        {"known": "I would like to go now.", "target": "Ik zou graag nu willen gaan.", "score": 8},
+        {"known": "She said that it is time to go.", "target": "Zij zei dat het tijd is om te gaan.", "score": 8},
+        {"known": "It would be nice to go for a while.", "target": "Het zou leuk zijn om een tijdje te gaan.", "score": 8},
+        {"known": "I don't know if I can go now.", "target": "Ik weet niet of ik nu kan gaan.", "score": 8},
+        {"known": "She wants to go but it is not possible.", "target": "Zij wil gaan maar het is niet mogelijk.", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 216,
+  "known_text": "I saw a few friends.",
+  "target_text": "我见了几个朋友。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I saw.", "target": "我见。"},
+        {"known": "I met.", "target": "我见了。"},
+        {"known": "My friends.", "target": "我朋友。"}
+      ],
+      "use": [
+        {"known": "I saw a few friends on Saturday night and we went out.", "target": "我星期六晚上见了几个朋友，我们出去了。", "score": 8},
+        {"known": "She asked if I want to meet some friends this weekend.", "target": "她问我是不是想这个周末见一些朋友。", "score": 7},
+        {"known": "If I have time this evening, I will go see my friends.", "target": "如果我今天晚上有时间，我会去见我朋友。", "score": 8},
+        {"known": "I hope I can see a few friends when I go there tomorrow.", "target": "我希望我明天去那里的时候可以见几个朋友。", "score": 8},
+        {"known": "Everyone said they want to see me before I leave this week.", "target": "大家都说他们想在我这个星期走之前见我。", "score": 8},
+        {"known": "Did anyone tell you I saw some friends yesterday evening?", "target": "有人告诉你我昨天晚上见了一些朋友吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "see/meet",
+      "target": "见",
+      "build": [
+        {"known": "See.", "target": "见。"},
+        {"known": "Meet.", "target": "见。"},
+        {"known": "Saw.", "target": "见了。"},
+        {"known": "I saw.", "target": "我见。"}
+      ],
+      "use": [
+        {"known": "I saw a few friends on Saturday and had a good time.", "target": "我星期六见了几个朋友，过得开心。", "score": 7},
+        {"known": "She said she wants to see her friends this weekend.", "target": "她说她这个周末想见她朋友。", "score": 7},
+        {"known": "If you see him, please tell him I want to talk.", "target": "如果你见他，请告诉他我想说话。", "score": 8},
+        {"known": "I didn't see anyone I know when I went out last night.", "target": "我昨天晚上出去的时候没有见我知道的人。", "score": 8},
+        {"known": "Everyone wants to see each other before the end of the week.", "target": "大家都想在这个星期完之前见一下。", "score": 7},
+        {"known": "Did you see any friends when you went out on Saturday?", "target": "你星期六出去的时候见了朋友吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "completed action marker",
+      "target": "了",
+      "build": [
+        {"known": "Done.", "target": "了。"},
+        {"known": "Saw.", "target": "见了。"},
+        {"known": "Met.", "target": "见了。"},
+        {"known": "I saw.", "target": "我见了。"}
+      ],
+      "use": [
+        {"known": "I saw a few friends and we went out together last night.", "target": "我见了几个朋友，我们昨天晚上一起出去了。", "score": 8},
+        {"known": "She told me she already met with her friends yesterday.", "target": "她告诉我她昨天已经见了她朋友了。", "score": 8},
+        {"known": "If you already saw him, please tell me what he said.", "target": "如果你已经见了他，请告诉我他说了什么。", "score": 8},
+        {"known": "I already finished everything we talked about last time.", "target": "我已经完成了我们上次说的一切。", "score": 7},
+        {"known": "Everyone said they already saw the work you did for us.", "target": "大家都说他们已经见了你给我们做的工作。", "score": 8},
+        {"known": "Did you know I met a few friends on Saturday night?", "target": "你知道我星期六晚上见了几个朋友吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "a few/several",
+      "target": "几",
+      "build": [
+        {"known": "Few.", "target": "几。"},
+        {"known": "Several.", "target": "几个。"},
+        {"known": "A few friends.", "target": "几个朋友。"},
+        {"known": "How many?", "target": "几个？"}
+      ],
+      "use": [
+        {"known": "I saw a few friends and we talked for a while.", "target": "我见了几个朋友，我们说了一会儿话。", "score": 7},
+        {"known": "She asked if we can meet a few people at the office.", "target": "她问我们是不是可以在办公室见几个人。", "score": 8},
+        {"known": "If you have a few minutes, I want to discuss something.", "target": "如果你有几分钟，我想讨论一些东西。", "score": 8},
+        {"known": "I spent a few hours with my friends on Saturday night.", "target": "我星期六晚上和我朋友花了几个小时。", "score": 8},
+        {"known": "Everyone wants to meet a few friends this week to talk.", "target": "大家都想这个星期见几个朋友说话。", "score": 7},
+        {"known": "Did you know they invited a few friends to come with us?", "target": "你知道他们请了几个朋友和我们一起来吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "measure word (general)",
+      "target": "个",
+      "build": [
+        {"known": "One.", "target": "一个。"},
+        {"known": "A few.", "target": "几个。"},
+        {"known": "A few friends.", "target": "几个朋友。"},
+        {"known": "This one.", "target": "这个。"}
+      ],
+      "use": [
+        {"known": "I saw a few friends and we had a good time together.", "target": "我见了几个朋友，我们一起过得开心。", "score": 7},
+        {"known": "She said she wants to meet a few people at the office.", "target": "她说她想在办公室见几个人。", "score": 7},
+        {"known": "If you have a few friends there, please introduce me.", "target": "如果你在那里有几个朋友，请介绍我。", "score": 8},
+        {"known": "I invited a few friends to come out with us on Saturday.", "target": "我请了几个朋友星期六和我们一起出去。", "score": 8},
+        {"known": "Everyone wants to bring a few friends to the meeting.", "target": "大家都想带几个朋友来开会。", "score": 7},
+        {"known": "Did you know we need a few more people to help us?", "target": "你知道我们需要更多几个人帮我们吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "friend",
+      "target": "朋友",
+      "components": [
+        {"known": "friend (part)", "target": "朋"},
+        {"known": "friend (part)", "target": "友"}
+      ],
+      "build": [
+        {"known": "Friend.", "target": "朋友。"},
+        {"known": "Friends.", "target": "朋友。"},
+        {"known": "A few friends.", "target": "几个朋友。"},
+        {"known": "My friends.", "target": "我朋友。"}
+      ],
+      "use": [
+        {"known": "I saw a few friends on Saturday night and went out.", "target": "我星期六晚上见了几个朋友，出去了。", "score": 7},
+        {"known": "She said her friends want to meet us this weekend.", "target": "她说她朋友这个周末想见我们。", "score": 7},
+        {"known": "If you don't have friends there, I can introduce some.", "target": "如果你在那里没有朋友，我可以介绍一些。", "score": 8},
+        {"known": "I like to spend time with my friends in the evening.", "target": "我喜欢晚上和我朋友花时间。", "score": 7},
+        {"known": "Everyone said they want to bring their friends next time.", "target": "大家都说他们下次想带他们朋友。", "score": 8},
+        {"known": "Did your friends tell you what they did last weekend?", "target": "你朋友告诉你他们上周末做了什么吗？", "score": 8}
+      ]
+    }
+  ]
+}

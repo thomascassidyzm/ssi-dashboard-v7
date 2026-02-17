@@ -1,0 +1,80 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 256,
+  "target_text": "أعتقد أنني سأكون جاهزاً في أقل من ساعة.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I think that I",
+      "target": "أعتقد أنني",
+      "components": [
+        {"known": "I think", "target": "أعتقد"},
+        {"known": "that I", "target": "أنني"}
+      ],
+      "build": [
+        {"known": "I think that I", "target": "أعتقد أنني"},
+        {"known": "I think that I will", "target": "أعتقد أنني سأ"},
+        {"known": "I think that I should", "target": "أعتقد أنني يجب أن"},
+        {"known": "I think that I am", "target": "أعتقد أنني أنا"}
+      ],
+      "use": [
+        {"known": "I think that I should learn more Arabic this week.", "target": "أعتقد أنني يجب أن أتعلم العربية أكثر هذا الأسبوع.", "score": 8},
+        {"known": "I think that I wanted to speak with you about that.", "target": "أعتقد أنني أردت أن أتكلم معك عن ذلك.", "score": 8},
+        {"known": "I think that I should be ready before the weekend.", "target": "أعتقد أنني يجب أن أكون جاهزاً قبل نهاية الأسبوع.", "score": 9},
+        {"known": "I think that I can help you with that today.", "target": "أعتقد أنني يمكنني أن أساعدك في ذلك اليوم.", "score": 9},
+        {"known": "I think that I should try to speak Arabic with you.", "target": "أعتقد أنني يجب أن أحاول أن أتكلم العربية معك.", "score": 8},
+        {"known": "I think that I am ready to learn Arabic now.", "target": "أعتقد أنني أنا جاهز أن أتعلم العربية الآن.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I will be ready",
+      "target": "سأكون جاهزاً",
+      "components": [
+        {"known": "I will be", "target": "سأكون"},
+        {"known": "ready", "target": "جاهزاً"}
+      ],
+      "build": [
+        {"known": "I will be ready", "target": "سأكون جاهزاً"},
+        {"known": "I think I will be ready", "target": "أعتقد أنني سأكون جاهزاً"},
+        {"known": "I will be ready to", "target": "سأكون جاهزاً ل"},
+        {"known": "I will be ready in", "target": "سأكون جاهزاً في"}
+      ],
+      "use": [
+        {"known": "I think I will be ready to speak Arabic with you today.", "target": "أعتقد أنني سأكون جاهزاً أن أتكلم العربية معك اليوم.", "score": 8},
+        {"known": "I will be ready to help you before the weekend.", "target": "سأكون جاهزاً أن أساعدك قبل نهاية الأسبوع.", "score": 8},
+        {"known": "I think I will be ready in a few minutes.", "target": "أعتقد أنني سأكون جاهزاً في بضع دقائق.", "score": 9},
+        {"known": "I will be ready to learn more Arabic this week.", "target": "سأكون جاهزاً أن أتعلم العربية أكثر هذا الأسبوع.", "score": 8},
+        {"known": "I think I will be ready to do that tomorrow.", "target": "أعتقد أنني سأكون جاهزاً أن أفعل ذلك غداً.", "score": 9},
+        {"known": "I will be ready to tell you what I think today.", "target": "سأكون جاهزاً أن أخبرك ما أعتقد اليوم.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "in less than an hour.",
+      "target": "في أقل من ساعة.",
+      "components": [
+        {"known": "in", "target": "في"},
+        {"known": "less than", "target": "أقل من"},
+        {"known": "an hour.", "target": "ساعة."}
+      ],
+      "build": [
+        {"known": "in less than an hour.", "target": "في أقل من ساعة."},
+        {"known": "ready in less than an hour.", "target": "جاهزاً في أقل من ساعة."},
+        {"known": "I will be ready in less than an hour.", "target": "سأكون جاهزاً في أقل من ساعة."},
+        {"known": "I think I will be ready in less than an hour.", "target": "أعتقد أنني سأكون جاهزاً في أقل من ساعة."}
+      ],
+      "use": [
+        {"known": "I think I will be ready in less than an hour.", "target": "أعتقد أنني سأكون جاهزاً في أقل من ساعة.", "score": 8},
+        {"known": "I should be ready to speak Arabic with you in less than an hour.", "target": "يجب أن أكون جاهزاً أن أتكلم العربية معك في أقل من ساعة.", "score": 9},
+        {"known": "He said he would be ready in less than an hour.", "target": "قال أنه سيكون جاهزاً في أقل من ساعة.", "score": 8},
+        {"known": "I think you will be ready to help me in less than an hour.", "target": "أعتقد أنك ستكون جاهزاً أن تساعدني في أقل من ساعة.", "score": 9},
+        {"known": "She wanted to know if I would be ready in less than an hour.", "target": "أرادت أن تعرف إذا سأكون جاهزاً في أقل من ساعة.", "score": 8},
+        {"known": "I will try to be ready to learn Arabic in less than an hour.", "target": "سأحاول أن أكون جاهزاً أن أتعلم العربية في أقل من ساعة.", "score": 9}
+      ]
+    }
+  ]
+}

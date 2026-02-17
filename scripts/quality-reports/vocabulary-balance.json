@@ -1,0 +1,1568 @@
+{
+  "generated_at": "2026-02-02T10:24:30.886Z",
+  "analysis_type": "vocabulary_balance",
+  "description": "Analysis of LEGO distribution across practice phrases to ensure balanced vocabulary exposure",
+  "courses_analyzed": 5,
+  "results": [
+    {
+      "course_code": "deu_for_eng",
+      "total_legos": 1194,
+      "total_phrases": 9279,
+      "statistics": {
+        "average_phrases_per_lego": 7.77,
+        "standard_deviation": 5.41,
+        "min_phrases": 0,
+        "max_phrases": 16,
+        "gini_coefficient": 0.374
+      },
+      "distribution": {
+        "underused_count": 365,
+        "underused_percent": 30.57,
+        "overused_count": 3,
+        "overused_percent": 0.25
+      },
+      "most_used": [
+        {
+          "lego": "S0155-L1",
+          "seed_number": 155,
+          "lego_index": 1,
+          "known_text": "it doesn't matter to me",
+          "target_text": "es macht mir nichts aus",
+          "phrase_count": 16
+        },
+        {
+          "lego": "S0191-L4",
+          "seed_number": 191,
+          "lego_index": 4,
+          "known_text": "I don't mind",
+          "target_text": "es macht mir nichts aus",
+          "phrase_count": 16
+        },
+        {
+          "lego": "S0251-L3",
+          "seed_number": 251,
+          "lego_index": 3,
+          "known_text": "until after we finish",
+          "target_text": "bis nachdem wir fertig sind",
+          "phrase_count": 16
+        },
+        {
+          "lego": "S0100-L1",
+          "seed_number": 100,
+          "lego_index": 1,
+          "known_text": "you shouldn't worry",
+          "target_text": "du solltest dir keine Sorgen machen",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0171-L2",
+          "seed_number": 171,
+          "lego_index": 2,
+          "known_text": "that I help you",
+          "target_text": "dass ich dir helfe",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0178-L3",
+          "seed_number": 178,
+          "lego_index": 3,
+          "known_text": "I wanted to see you",
+          "target_text": "ich dich sehen wollte",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0183-L3",
+          "seed_number": 183,
+          "lego_index": 3,
+          "known_text": "I haven't seen them",
+          "target_text": "habe ich sie nicht gesehen",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0195-L6",
+          "seed_number": 195,
+          "lego_index": 6,
+          "known_text": "that I left",
+          "target_text": "das ich gelassen habe",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0200-L5",
+          "seed_number": 200,
+          "lego_index": 5,
+          "known_text": "finish everything in time",
+          "target_text": "alles rechtzeitig fertig machen",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0246-L2",
+          "seed_number": 246,
+          "lego_index": 2,
+          "known_text": "that she helps you",
+          "target_text": "dass sie dir hilft",
+          "phrase_count": 15
+        }
+      ],
+      "least_used": [
+        {
+          "lego": "S0004-L1",
+          "seed_number": 4,
+          "lego_index": 1,
+          "known_text": "how",
+          "target_text": "wie",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0005-L2",
+          "seed_number": 5,
+          "lego_index": 2,
+          "known_text": "to speak",
+          "target_text": "sprechen",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0006-L1",
+          "seed_number": 6,
+          "lego_index": 1,
+          "known_text": "I am trying",
+          "target_text": "ich versuche",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0006-L2",
+          "seed_number": 6,
+          "lego_index": 2,
+          "known_text": "to",
+          "target_text": "zu",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0007-L1",
+          "seed_number": 7,
+          "lego_index": 1,
+          "known_text": "I want",
+          "target_text": "ich will",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L1",
+          "seed_number": 8,
+          "lego_index": 1,
+          "known_text": "I am going to",
+          "target_text": "ich werde",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L2",
+          "seed_number": 8,
+          "lego_index": 2,
+          "known_text": "to try",
+          "target_text": "versuchen",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L3",
+          "seed_number": 8,
+          "lego_index": 3,
+          "known_text": "to",
+          "target_text": "zu",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L2",
+          "seed_number": 9,
+          "lego_index": 2,
+          "known_text": "now",
+          "target_text": "jetzt",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L4",
+          "seed_number": 9,
+          "lego_index": 4,
+          "known_text": "German",
+          "target_text": "Deutsch",
+          "phrase_count": 0
+        }
+      ],
+      "underused_legos": [
+        {
+          "lego": "S0004-L1",
+          "seed_number": 4,
+          "lego_index": 1,
+          "known_text": "how",
+          "target_text": "wie",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0005-L2",
+          "seed_number": 5,
+          "lego_index": 2,
+          "known_text": "to speak",
+          "target_text": "sprechen",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0006-L1",
+          "seed_number": 6,
+          "lego_index": 1,
+          "known_text": "I am trying",
+          "target_text": "ich versuche",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0006-L2",
+          "seed_number": 6,
+          "lego_index": 2,
+          "known_text": "to",
+          "target_text": "zu",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0007-L1",
+          "seed_number": 7,
+          "lego_index": 1,
+          "known_text": "I want",
+          "target_text": "ich will",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L1",
+          "seed_number": 8,
+          "lego_index": 1,
+          "known_text": "I am going to",
+          "target_text": "ich werde",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L2",
+          "seed_number": 8,
+          "lego_index": 2,
+          "known_text": "to try",
+          "target_text": "versuchen",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L3",
+          "seed_number": 8,
+          "lego_index": 3,
+          "known_text": "to",
+          "target_text": "zu",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L2",
+          "seed_number": 9,
+          "lego_index": 2,
+          "known_text": "now",
+          "target_text": "jetzt",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L4",
+          "seed_number": 9,
+          "lego_index": 4,
+          "known_text": "German",
+          "target_text": "Deutsch",
+          "phrase_count": 0
+        }
+      ],
+      "overused_legos": [
+        {
+          "lego": "S0155-L1",
+          "seed_number": 155,
+          "lego_index": 1,
+          "known_text": "it doesn't matter to me",
+          "target_text": "es macht mir nichts aus",
+          "phrase_count": 16
+        },
+        {
+          "lego": "S0191-L4",
+          "seed_number": 191,
+          "lego_index": 4,
+          "known_text": "I don't mind",
+          "target_text": "es macht mir nichts aus",
+          "phrase_count": 16
+        },
+        {
+          "lego": "S0251-L3",
+          "seed_number": 251,
+          "lego_index": 3,
+          "known_text": "until after we finish",
+          "target_text": "bis nachdem wir fertig sind",
+          "phrase_count": 16
+        }
+      ]
+    },
+    {
+      "course_code": "ara_for_eng",
+      "total_legos": 1078,
+      "total_phrases": 9058,
+      "statistics": {
+        "average_phrases_per_lego": 8.4,
+        "standard_deviation": 5.12,
+        "min_phrases": 0,
+        "max_phrases": 15,
+        "gini_coefficient": 0.309
+      },
+      "distribution": {
+        "underused_count": 276,
+        "underused_percent": 25.6,
+        "overused_count": 0,
+        "overused_percent": 0
+      },
+      "most_used": [
+        {
+          "lego": "S0149-L1",
+          "seed_number": 149,
+          "lego_index": 1,
+          "known_text": "This is not very difficult,",
+          "target_text": "هذا ليس صعباً جداً،",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0209-L2",
+          "seed_number": 209,
+          "lego_index": 2,
+          "known_text": "to spend more time",
+          "target_text": "أن يقضوا وقتاً أكثر",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0073-L6",
+          "seed_number": 73,
+          "lego_index": 6,
+          "known_text": "to learn it",
+          "target_text": "لأتعلمه",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0074-L3",
+          "seed_number": 74,
+          "lego_index": 3,
+          "known_text": "for helping me",
+          "target_text": "لمساعدتي",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0075-L4",
+          "seed_number": 75,
+          "lego_index": 4,
+          "known_text": "to learn it?",
+          "target_text": "لتتعلمه؟",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0146-L2",
+          "seed_number": 146,
+          "lego_index": 2,
+          "known_text": "seems to be working",
+          "target_text": "يبدو أنه يعمل",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0146-L3",
+          "seed_number": 146,
+          "lego_index": 3,
+          "known_text": "since we tried",
+          "target_text": "منذ أن حاولنا",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0147-L1",
+          "seed_number": 147,
+          "lego_index": 1,
+          "known_text": "She was very kind",
+          "target_text": "كانت لطيفة جداً",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0148-L1",
+          "seed_number": 148,
+          "lego_index": 1,
+          "known_text": "He was not very patient",
+          "target_text": "لم يكن صبوراً جداً",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0149-L3",
+          "seed_number": 149,
+          "lego_index": 3,
+          "known_text": "you will finish soon.",
+          "target_text": "أن تنتهي قريباً.",
+          "phrase_count": 14
+        }
+      ],
+      "least_used": [
+        {
+          "lego": "S0004-L1",
+          "seed_number": 4,
+          "lego_index": 1,
+          "known_text": "how",
+          "target_text": "كيف",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0006-L1",
+          "seed_number": 6,
+          "lego_index": 1,
+          "known_text": "I'm trying",
+          "target_text": "أحاول",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0007-L1",
+          "seed_number": 7,
+          "lego_index": 1,
+          "known_text": "I want",
+          "target_text": "أريد",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L1",
+          "seed_number": 9,
+          "lego_index": 1,
+          "known_text": "I speak",
+          "target_text": "أتكلم",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L4",
+          "seed_number": 9,
+          "lego_index": 4,
+          "known_text": "Arabic",
+          "target_text": "العربية",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L5",
+          "seed_number": 9,
+          "lego_index": 5,
+          "known_text": "now",
+          "target_text": "الآن",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0010-L4",
+          "seed_number": 10,
+          "lego_index": 4,
+          "known_text": "to remember",
+          "target_text": "أن أتذكر",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0011-L3",
+          "seed_number": 11,
+          "lego_index": 3,
+          "known_text": "speaking",
+          "target_text": "التكلم",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0012-L2",
+          "seed_number": 12,
+          "lego_index": 2,
+          "known_text": "I'd like",
+          "target_text": "أود",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0013-L3",
+          "seed_number": 13,
+          "lego_index": 3,
+          "known_text": "Arabic",
+          "target_text": "العربية",
+          "phrase_count": 0
+        }
+      ],
+      "underused_legos": [
+        {
+          "lego": "S0004-L1",
+          "seed_number": 4,
+          "lego_index": 1,
+          "known_text": "how",
+          "target_text": "كيف",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0006-L1",
+          "seed_number": 6,
+          "lego_index": 1,
+          "known_text": "I'm trying",
+          "target_text": "أحاول",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0007-L1",
+          "seed_number": 7,
+          "lego_index": 1,
+          "known_text": "I want",
+          "target_text": "أريد",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L1",
+          "seed_number": 9,
+          "lego_index": 1,
+          "known_text": "I speak",
+          "target_text": "أتكلم",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L4",
+          "seed_number": 9,
+          "lego_index": 4,
+          "known_text": "Arabic",
+          "target_text": "العربية",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0009-L5",
+          "seed_number": 9,
+          "lego_index": 5,
+          "known_text": "now",
+          "target_text": "الآن",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0010-L4",
+          "seed_number": 10,
+          "lego_index": 4,
+          "known_text": "to remember",
+          "target_text": "أن أتذكر",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0011-L3",
+          "seed_number": 11,
+          "lego_index": 3,
+          "known_text": "speaking",
+          "target_text": "التكلم",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0012-L2",
+          "seed_number": 12,
+          "lego_index": 2,
+          "known_text": "I'd like",
+          "target_text": "أود",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0013-L3",
+          "seed_number": 13,
+          "lego_index": 3,
+          "known_text": "Arabic",
+          "target_text": "العربية",
+          "phrase_count": 0
+        }
+      ],
+      "overused_legos": []
+    },
+    {
+      "course_code": "bre_for_fra",
+      "total_legos": 895,
+      "total_phrases": 8591,
+      "statistics": {
+        "average_phrases_per_lego": 9.6,
+        "standard_deviation": 4.84,
+        "min_phrases": 0,
+        "max_phrases": 17,
+        "gini_coefficient": 0.242
+      },
+      "distribution": {
+        "underused_count": 170,
+        "underused_percent": 18.99,
+        "overused_count": 2,
+        "overused_percent": 0.22
+      },
+      "most_used": [
+        {
+          "lego": "S0083-L1",
+          "seed_number": 83,
+          "lego_index": 1,
+          "known_text": "je suis d'accord",
+          "target_text": "a-du on",
+          "phrase_count": 17
+        },
+        {
+          "lego": "S0083-L4",
+          "seed_number": 83,
+          "lego_index": 4,
+          "known_text": "sur votre ami",
+          "target_text": "war ho mignon",
+          "phrase_count": 17
+        },
+        {
+          "lego": "S0072-L2",
+          "seed_number": 72,
+          "lego_index": 2,
+          "known_text": "vous faites",
+          "target_text": "e rit",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0074-L3",
+          "seed_number": 74,
+          "lego_index": 3,
+          "known_text": "à comprendre",
+          "target_text": "da gompren",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0082-L1",
+          "seed_number": 82,
+          "lego_index": 1,
+          "known_text": "je ne vais pas",
+          "target_text": "ne vin ket",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0147-L2",
+          "seed_number": 147,
+          "lego_index": 2,
+          "known_text": "quand elle m'a vu",
+          "target_text": "pa he deus gwelet ac'hanon",
+          "phrase_count": 15
+        },
+        {
+          "lego": "S0080-L3",
+          "seed_number": 80,
+          "lego_index": 3,
+          "known_text": "je serai prêt",
+          "target_text": "e vin prest",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0128-L1",
+          "seed_number": 128,
+          "lego_index": 1,
+          "known_text": "vous ressemblez à",
+          "target_text": "hañval oc'h ouzh",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0129-L1",
+          "seed_number": 129,
+          "lego_index": 1,
+          "known_text": "je suis tellement content",
+          "target_text": "ken laouen on",
+          "phrase_count": 14
+        },
+        {
+          "lego": "S0130-L1",
+          "seed_number": 130,
+          "lego_index": 1,
+          "known_text": "c'était une surprise",
+          "target_text": "ur souezhadenn e oa",
+          "phrase_count": 14
+        }
+      ],
+      "least_used": [
+        {
+          "lego": "S0003-L2",
+          "seed_number": 3,
+          "lego_index": 2,
+          "known_text": "parler",
+          "target_text": "gomz",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0004-L1",
+          "seed_number": 4,
+          "lego_index": 1,
+          "known_text": "comment",
+          "target_text": "penaos",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0004-L5",
+          "seed_number": 4,
+          "lego_index": 5,
+          "known_text": "français",
+          "target_text": "galleg",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0005-L3",
+          "seed_number": 5,
+          "lego_index": 3,
+          "known_text": "parler",
+          "target_text": "gomz",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0006-L1",
+          "seed_number": 6,
+          "lego_index": 1,
+          "known_text": "j'essaie de",
+          "target_text": "klask a ran",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0007-L1",
+          "seed_number": 7,
+          "lego_index": 1,
+          "known_text": "je veux",
+          "target_text": "c'hoant am eus da",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L1",
+          "seed_number": 8,
+          "lego_index": 1,
+          "known_text": "je vais",
+          "target_text": "ez in da",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L2",
+          "seed_number": 8,
+          "lego_index": 2,
+          "known_text": "essayer",
+          "target_text": "glask",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L5",
+          "seed_number": 8,
+          "lego_index": 5,
+          "known_text": "je veux",
+          "target_text": "c'hoant am eus da",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L6",
+          "seed_number": 8,
+          "lego_index": 6,
+          "known_text": "dire",
+          "target_text": "lavaret",
+          "phrase_count": 0
+        }
+      ],
+      "underused_legos": [
+        {
+          "lego": "S0003-L2",
+          "seed_number": 3,
+          "lego_index": 2,
+          "known_text": "parler",
+          "target_text": "gomz",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0004-L1",
+          "seed_number": 4,
+          "lego_index": 1,
+          "known_text": "comment",
+          "target_text": "penaos",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0004-L5",
+          "seed_number": 4,
+          "lego_index": 5,
+          "known_text": "français",
+          "target_text": "galleg",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0005-L3",
+          "seed_number": 5,
+          "lego_index": 3,
+          "known_text": "parler",
+          "target_text": "gomz",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0006-L1",
+          "seed_number": 6,
+          "lego_index": 1,
+          "known_text": "j'essaie de",
+          "target_text": "klask a ran",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0007-L1",
+          "seed_number": 7,
+          "lego_index": 1,
+          "known_text": "je veux",
+          "target_text": "c'hoant am eus da",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L1",
+          "seed_number": 8,
+          "lego_index": 1,
+          "known_text": "je vais",
+          "target_text": "ez in da",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L2",
+          "seed_number": 8,
+          "lego_index": 2,
+          "known_text": "essayer",
+          "target_text": "glask",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L5",
+          "seed_number": 8,
+          "lego_index": 5,
+          "known_text": "je veux",
+          "target_text": "c'hoant am eus da",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0008-L6",
+          "seed_number": 8,
+          "lego_index": 6,
+          "known_text": "dire",
+          "target_text": "lavaret",
+          "phrase_count": 0
+        }
+      ],
+      "overused_legos": [
+        {
+          "lego": "S0083-L1",
+          "seed_number": 83,
+          "lego_index": 1,
+          "known_text": "je suis d'accord",
+          "target_text": "a-du on",
+          "phrase_count": 17
+        },
+        {
+          "lego": "S0083-L4",
+          "seed_number": 83,
+          "lego_index": 4,
+          "known_text": "sur votre ami",
+          "target_text": "war ho mignon",
+          "phrase_count": 17
+        }
+      ]
+    },
+    {
+      "course_code": "cym_s_for_eng",
+      "total_legos": 679,
+      "total_phrases": 6021,
+      "statistics": {
+        "average_phrases_per_lego": 8.87,
+        "standard_deviation": 5.24,
+        "min_phrases": 0,
+        "max_phrases": 51,
+        "gini_coefficient": 0.255
+      },
+      "distribution": {
+        "underused_count": 8,
+        "underused_percent": 1.18,
+        "overused_count": 52,
+        "overused_percent": 7.66
+      },
+      "most_used": [
+        {
+          "lego": "S0274-L2",
+          "seed_number": 274,
+          "lego_index": 2,
+          "known_text": "you’d help",
+          "target_text": "byddet ti’n helpu",
+          "phrase_count": 51
+        },
+        {
+          "lego": "S0273-L2",
+          "seed_number": 273,
+          "lego_index": 2,
+          "known_text": "if I could",
+          "target_text": "’sen i’n gallu",
+          "phrase_count": 47
+        },
+        {
+          "lego": "S0081-L2",
+          "seed_number": 81,
+          "lego_index": 2,
+          "known_text": "today",
+          "target_text": "heddiw",
+          "phrase_count": 46
+        },
+        {
+          "lego": "S0135-L1",
+          "seed_number": 135,
+          "lego_index": 1,
+          "known_text": "I was going to",
+          "target_text": "o’n i’n mynd i",
+          "phrase_count": 34
+        },
+        {
+          "lego": "S0069-L1",
+          "seed_number": 69,
+          "lego_index": 1,
+          "known_text": "an old woman",
+          "target_text": "hen fenyw",
+          "phrase_count": 32
+        },
+        {
+          "lego": "S0034-L1",
+          "seed_number": 34,
+          "lego_index": 1,
+          "known_text": "you’ve done",
+          "target_text": "ti wedi gwneud",
+          "phrase_count": 30
+        },
+        {
+          "lego": "S0038-L2",
+          "seed_number": 38,
+          "lego_index": 2,
+          "known_text": "how long?",
+          "target_text": "pa mor hir?",
+          "phrase_count": 30
+        },
+        {
+          "lego": "S0137-L1",
+          "seed_number": 137,
+          "lego_index": 1,
+          "known_text": "you didn’t get",
+          "target_text": "chest ti ddim",
+          "phrase_count": 30
+        },
+        {
+          "lego": "S0056-L1",
+          "seed_number": 56,
+          "lego_index": 1,
+          "known_text": "I didn’t want",
+          "target_text": "do’n i ddim yn moyn",
+          "phrase_count": 29
+        },
+        {
+          "lego": "S0087-L2",
+          "seed_number": 87,
+          "lego_index": 2,
+          "known_text": "tonight",
+          "target_text": "heno",
+          "phrase_count": 29
+        }
+      ],
+      "least_used": [
+        {
+          "lego": "S0001-L1",
+          "seed_number": 1,
+          "lego_index": 1,
+          "known_text": "I want",
+          "target_text": "dw i’n moyn",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0058-L1",
+          "seed_number": 58,
+          "lego_index": 1,
+          "known_text": "he is",
+          "target_text": "ma fe",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0001-L2",
+          "seed_number": 1,
+          "lego_index": 2,
+          "known_text": "to speak",
+          "target_text": "siarad",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0001-L3",
+          "seed_number": 1,
+          "lego_index": 3,
+          "known_text": "Welsh",
+          "target_text": "Cymraeg",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0139-L1",
+          "seed_number": 139,
+          "lego_index": 1,
+          "known_text": "they are",
+          "target_text": "maen nhw",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0078-L1",
+          "seed_number": 78,
+          "lego_index": 1,
+          "known_text": "she said",
+          "target_text": "ddwedodd hi",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0117-L1",
+          "seed_number": 117,
+          "lego_index": 1,
+          "known_text": "the same thing",
+          "target_text": "yr un peth",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0140-L1",
+          "seed_number": 140,
+          "lego_index": 1,
+          "known_text": "they look",
+          "target_text": "maen nhw’n dishgwl",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0002-L2",
+          "seed_number": 2,
+          "lego_index": 2,
+          "known_text": "I’m trying",
+          "target_text": "dw i’n trio",
+          "phrase_count": 3
+        },
+        {
+          "lego": "S0079-L1",
+          "seed_number": 79,
+          "lego_index": 1,
+          "known_text": "he said that he",
+          "target_text": "ddwedodd e fod e",
+          "phrase_count": 3
+        }
+      ],
+      "underused_legos": [
+        {
+          "lego": "S0001-L1",
+          "seed_number": 1,
+          "lego_index": 1,
+          "known_text": "I want",
+          "target_text": "dw i’n moyn",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0058-L1",
+          "seed_number": 58,
+          "lego_index": 1,
+          "known_text": "he is",
+          "target_text": "ma fe",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0001-L2",
+          "seed_number": 1,
+          "lego_index": 2,
+          "known_text": "to speak",
+          "target_text": "siarad",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0001-L3",
+          "seed_number": 1,
+          "lego_index": 3,
+          "known_text": "Welsh",
+          "target_text": "Cymraeg",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0139-L1",
+          "seed_number": 139,
+          "lego_index": 1,
+          "known_text": "they are",
+          "target_text": "maen nhw",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0078-L1",
+          "seed_number": 78,
+          "lego_index": 1,
+          "known_text": "she said",
+          "target_text": "ddwedodd hi",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0117-L1",
+          "seed_number": 117,
+          "lego_index": 1,
+          "known_text": "the same thing",
+          "target_text": "yr un peth",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0140-L1",
+          "seed_number": 140,
+          "lego_index": 1,
+          "known_text": "they look",
+          "target_text": "maen nhw’n dishgwl",
+          "phrase_count": 2
+        }
+      ],
+      "overused_legos": [
+        {
+          "lego": "S0274-L2",
+          "seed_number": 274,
+          "lego_index": 2,
+          "known_text": "you’d help",
+          "target_text": "byddet ti’n helpu",
+          "phrase_count": 51
+        },
+        {
+          "lego": "S0273-L2",
+          "seed_number": 273,
+          "lego_index": 2,
+          "known_text": "if I could",
+          "target_text": "’sen i’n gallu",
+          "phrase_count": 47
+        },
+        {
+          "lego": "S0081-L2",
+          "seed_number": 81,
+          "lego_index": 2,
+          "known_text": "today",
+          "target_text": "heddiw",
+          "phrase_count": 46
+        },
+        {
+          "lego": "S0135-L1",
+          "seed_number": 135,
+          "lego_index": 1,
+          "known_text": "I was going to",
+          "target_text": "o’n i’n mynd i",
+          "phrase_count": 34
+        },
+        {
+          "lego": "S0069-L1",
+          "seed_number": 69,
+          "lego_index": 1,
+          "known_text": "an old woman",
+          "target_text": "hen fenyw",
+          "phrase_count": 32
+        },
+        {
+          "lego": "S0034-L1",
+          "seed_number": 34,
+          "lego_index": 1,
+          "known_text": "you’ve done",
+          "target_text": "ti wedi gwneud",
+          "phrase_count": 30
+        },
+        {
+          "lego": "S0038-L2",
+          "seed_number": 38,
+          "lego_index": 2,
+          "known_text": "how long?",
+          "target_text": "pa mor hir?",
+          "phrase_count": 30
+        },
+        {
+          "lego": "S0137-L1",
+          "seed_number": 137,
+          "lego_index": 1,
+          "known_text": "you didn’t get",
+          "target_text": "chest ti ddim",
+          "phrase_count": 30
+        },
+        {
+          "lego": "S0056-L1",
+          "seed_number": 56,
+          "lego_index": 1,
+          "known_text": "I didn’t want",
+          "target_text": "do’n i ddim yn moyn",
+          "phrase_count": 29
+        },
+        {
+          "lego": "S0087-L2",
+          "seed_number": 87,
+          "lego_index": 2,
+          "known_text": "tonight",
+          "target_text": "heno",
+          "phrase_count": 29
+        }
+      ]
+    },
+    {
+      "course_code": "cym_n_for_eng",
+      "total_legos": 635,
+      "total_phrases": 5797,
+      "statistics": {
+        "average_phrases_per_lego": 9.13,
+        "standard_deviation": 6.27,
+        "min_phrases": 0,
+        "max_phrases": 61,
+        "gini_coefficient": 0.294
+      },
+      "distribution": {
+        "underused_count": 9,
+        "underused_percent": 1.42,
+        "overused_count": 57,
+        "overused_percent": 8.98
+      },
+      "most_used": [
+        {
+          "lego": "S0082-L1",
+          "seed_number": 82,
+          "lego_index": 1,
+          "known_text": "someone who said",
+          "target_text": "rhywun ddudodd",
+          "phrase_count": 61
+        },
+        {
+          "lego": "S0070-L1",
+          "seed_number": 70,
+          "lego_index": 1,
+          "known_text": "an old woman",
+          "target_text": "hen ddynas",
+          "phrase_count": 51
+        },
+        {
+          "lego": "S0257-L2",
+          "seed_number": 257,
+          "lego_index": 2,
+          "known_text": "you’d help",
+          "target_text": "byddet ti’n helpu",
+          "phrase_count": 50
+        },
+        {
+          "lego": "S0072-L1",
+          "seed_number": 72,
+          "lego_index": 1,
+          "known_text": "she’d better",
+          "target_text": "well iddi hi",
+          "phrase_count": 47
+        },
+        {
+          "lego": "S0083-L2",
+          "seed_number": 83,
+          "lego_index": 2,
+          "known_text": "today",
+          "target_text": "heddiw",
+          "phrase_count": 46
+        },
+        {
+          "lego": "S0256-L2",
+          "seed_number": 256,
+          "lego_index": 2,
+          "known_text": "if I could",
+          "target_text": "’swn i’n medru",
+          "phrase_count": 44
+        },
+        {
+          "lego": "S0135-L1",
+          "seed_number": 135,
+          "lego_index": 1,
+          "known_text": "I was going to",
+          "target_text": "o’n i’n mynd i",
+          "phrase_count": 35
+        },
+        {
+          "lego": "S0078-L1",
+          "seed_number": 78,
+          "lego_index": 1,
+          "known_text": "yesterday",
+          "target_text": "ddoe",
+          "phrase_count": 32
+        },
+        {
+          "lego": "S0137-L1",
+          "seed_number": 137,
+          "lego_index": 1,
+          "known_text": "you didn’t have",
+          "target_text": "chest ti ddim",
+          "phrase_count": 31
+        },
+        {
+          "lego": "S0041-L2",
+          "seed_number": 41,
+          "lego_index": 2,
+          "known_text": "how long?",
+          "target_text": "pa mor hir?",
+          "phrase_count": 30
+        }
+      ],
+      "least_used": [
+        {
+          "lego": "S0001-L1",
+          "seed_number": 1,
+          "lego_index": 1,
+          "known_text": "I want",
+          "target_text": "dw i isio",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0001-L2",
+          "seed_number": 1,
+          "lego_index": 2,
+          "known_text": "to speak",
+          "target_text": "siarad",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0001-L3",
+          "seed_number": 1,
+          "lego_index": 3,
+          "known_text": "Welsh",
+          "target_text": "Cymraeg",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0139-L1",
+          "seed_number": 139,
+          "lego_index": 1,
+          "known_text": "they are",
+          "target_text": "maen nhw",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0264-L3",
+          "seed_number": 264,
+          "lego_index": 3,
+          "known_text": "that we don’t",
+          "target_text": "nad ydan ni ddim",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0080-L1",
+          "seed_number": 80,
+          "lego_index": 1,
+          "known_text": "she said",
+          "target_text": "ddudodd hi",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0140-L1",
+          "seed_number": 140,
+          "lego_index": 1,
+          "known_text": "they look",
+          "target_text": "maen nhw’n edrych",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0262-L2",
+          "seed_number": 262,
+          "lego_index": 2,
+          "known_text": "that doesn’t",
+          "target_text": "dydy hynna ddim yn",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0291-L3",
+          "seed_number": 291,
+          "lego_index": 3,
+          "known_text": "door",
+          "target_text": "drws",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0002-L2",
+          "seed_number": 2,
+          "lego_index": 2,
+          "known_text": "I’m trying",
+          "target_text": "dw i’n trio",
+          "phrase_count": 3
+        }
+      ],
+      "underused_legos": [
+        {
+          "lego": "S0001-L1",
+          "seed_number": 1,
+          "lego_index": 1,
+          "known_text": "I want",
+          "target_text": "dw i isio",
+          "phrase_count": 0
+        },
+        {
+          "lego": "S0001-L2",
+          "seed_number": 1,
+          "lego_index": 2,
+          "known_text": "to speak",
+          "target_text": "siarad",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0001-L3",
+          "seed_number": 1,
+          "lego_index": 3,
+          "known_text": "Welsh",
+          "target_text": "Cymraeg",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0139-L1",
+          "seed_number": 139,
+          "lego_index": 1,
+          "known_text": "they are",
+          "target_text": "maen nhw",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0264-L3",
+          "seed_number": 264,
+          "lego_index": 3,
+          "known_text": "that we don’t",
+          "target_text": "nad ydan ni ddim",
+          "phrase_count": 1
+        },
+        {
+          "lego": "S0080-L1",
+          "seed_number": 80,
+          "lego_index": 1,
+          "known_text": "she said",
+          "target_text": "ddudodd hi",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0140-L1",
+          "seed_number": 140,
+          "lego_index": 1,
+          "known_text": "they look",
+          "target_text": "maen nhw’n edrych",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0262-L2",
+          "seed_number": 262,
+          "lego_index": 2,
+          "known_text": "that doesn’t",
+          "target_text": "dydy hynna ddim yn",
+          "phrase_count": 2
+        },
+        {
+          "lego": "S0291-L3",
+          "seed_number": 291,
+          "lego_index": 3,
+          "known_text": "door",
+          "target_text": "drws",
+          "phrase_count": 2
+        }
+      ],
+      "overused_legos": [
+        {
+          "lego": "S0082-L1",
+          "seed_number": 82,
+          "lego_index": 1,
+          "known_text": "someone who said",
+          "target_text": "rhywun ddudodd",
+          "phrase_count": 61
+        },
+        {
+          "lego": "S0070-L1",
+          "seed_number": 70,
+          "lego_index": 1,
+          "known_text": "an old woman",
+          "target_text": "hen ddynas",
+          "phrase_count": 51
+        },
+        {
+          "lego": "S0257-L2",
+          "seed_number": 257,
+          "lego_index": 2,
+          "known_text": "you’d help",
+          "target_text": "byddet ti’n helpu",
+          "phrase_count": 50
+        },
+        {
+          "lego": "S0072-L1",
+          "seed_number": 72,
+          "lego_index": 1,
+          "known_text": "she’d better",
+          "target_text": "well iddi hi",
+          "phrase_count": 47
+        },
+        {
+          "lego": "S0083-L2",
+          "seed_number": 83,
+          "lego_index": 2,
+          "known_text": "today",
+          "target_text": "heddiw",
+          "phrase_count": 46
+        },
+        {
+          "lego": "S0256-L2",
+          "seed_number": 256,
+          "lego_index": 2,
+          "known_text": "if I could",
+          "target_text": "’swn i’n medru",
+          "phrase_count": 44
+        },
+        {
+          "lego": "S0135-L1",
+          "seed_number": 135,
+          "lego_index": 1,
+          "known_text": "I was going to",
+          "target_text": "o’n i’n mynd i",
+          "phrase_count": 35
+        },
+        {
+          "lego": "S0078-L1",
+          "seed_number": 78,
+          "lego_index": 1,
+          "known_text": "yesterday",
+          "target_text": "ddoe",
+          "phrase_count": 32
+        },
+        {
+          "lego": "S0137-L1",
+          "seed_number": 137,
+          "lego_index": 1,
+          "known_text": "you didn’t have",
+          "target_text": "chest ti ddim",
+          "phrase_count": 31
+        },
+        {
+          "lego": "S0041-L2",
+          "seed_number": 41,
+          "lego_index": 2,
+          "known_text": "how long?",
+          "target_text": "pa mor hir?",
+          "phrase_count": 30
+        }
+      ]
+    }
+  ],
+  "recommendations": {
+    "overall": [],
+    "per_course": {
+      "deu_for_eng": [
+        {
+          "severity": "warning",
+          "issue": "high_inequality",
+          "message": "High inequality in LEGO usage (Gini: 0.374). Some LEGOs get far more practice than others."
+        },
+        {
+          "severity": "error",
+          "issue": "many_underused",
+          "message": "30.57% of LEGOs appear in fewer than 3 phrases. Learners won't get enough exposure."
+        }
+      ],
+      "ara_for_eng": [
+        {
+          "severity": "warning",
+          "issue": "high_inequality",
+          "message": "High inequality in LEGO usage (Gini: 0.309). Some LEGOs get far more practice than others."
+        },
+        {
+          "severity": "error",
+          "issue": "many_underused",
+          "message": "25.6% of LEGOs appear in fewer than 3 phrases. Learners won't get enough exposure."
+        }
+      ],
+      "bre_for_fra": [
+        {
+          "severity": "warning",
+          "issue": "some_underused",
+          "message": "18.99% of LEGOs appear in fewer than 3 phrases. Consider adding more practice."
+        }
+      ],
+      "cym_s_for_eng": [],
+      "cym_n_for_eng": []
+    }
+  },
+  "interpretation": {
+    "gini_coefficient": {
+      "description": "Measure of inequality (0 = perfect equality, 1 = perfect inequality)",
+      "thresholds": {
+        "excellent": "< 0.2",
+        "good": "0.2 - 0.3",
+        "concerning": "0.3 - 0.4",
+        "poor": "> 0.4"
+      }
+    },
+    "standard_deviation": {
+      "description": "Measure of spread in phrase counts",
+      "interpretation": "Lower is better. High SD means some LEGOs appear much more than others."
+    },
+    "underused_threshold": "< 3 phrase appearances",
+    "overused_threshold": "> 15 phrase appearances"
+  }
+}

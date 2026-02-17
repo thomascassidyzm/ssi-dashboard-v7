@@ -1,0 +1,575 @@
+{
+  "course_code": "eng_for_spa",
+  "is_eng_for_x": true,
+  "round": 2,
+  "total_use_phrases": 5167,
+  "sample_size": 50,
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "ca25931b-27e4-42f6-a2d8-b986d121561e",
+      "seed": 86,
+      "lego": 3,
+      "syllables": 7,
+      "english": "They are people I don't know yet.",
+      "other": "Son personas que no conozco todavía.",
+      "qa_score": 9
+    },
+    {
+      "idx": 2,
+      "id": "0d3b3bbb-5159-4e1b-af5b-d213b008f22f",
+      "seed": 248,
+      "lego": 2,
+      "syllables": 6,
+      "english": "I want you to help me",
+      "other": "quiero que me ayudes",
+      "qa_score": 9
+    },
+    {
+      "idx": 3,
+      "id": "27ff549b-699b-4191-b176-a2d503d36479",
+      "seed": 37,
+      "lego": 4,
+      "syllables": 6,
+      "english": "to read carefully",
+      "other": "leer cuidadosamente",
+      "qa_score": 9
+    },
+    {
+      "idx": 4,
+      "id": "b9ac762d-9ad4-4974-893f-16288b77ed89",
+      "seed": 53,
+      "lego": 3,
+      "syllables": 10,
+      "english": "He wanted to put his letter here now.",
+      "other": "Él quería poner su carta aquí ahora.",
+      "qa_score": 9
+    },
+    {
+      "idx": 5,
+      "id": "2f147369-5184-498c-8375-36f68b04345a",
+      "seed": 44,
+      "lego": 1,
+      "syllables": 10,
+      "english": "I'm not sure if to start now or later.",
+      "other": "No estoy seguro si empezar ahora o después.",
+      "qa_score": 6,
+      "qa_notes": "English is slightly awkward - 'I'm not sure whether to start now or later' would be more natural. The 'if to' construction is non-standard."
+    },
+    {
+      "idx": 6,
+      "id": "1b4c7c9a-e41a-43c0-a4f6-b824ef95b2df",
+      "seed": 24,
+      "lego": 2,
+      "syllables": 15,
+      "english": "I want to be able to speak more English with everyone else.",
+      "other": "Quiero poder hablar más inglés con todos los demás.",
+      "qa_score": 9
+    },
+    {
+      "idx": 7,
+      "id": "72d5f86a-f64b-427c-bf8e-515347e31617",
+      "seed": 235,
+      "lego": 2,
+      "syllables": 6,
+      "english": "she was going to try to",
+      "other": "iba a intentar",
+      "qa_score": 7,
+      "qa_notes": "English has 'she' but Spanish 'iba' could be he/she/you(formal) - missing subject pronoun 'ella'. Minor mismatch."
+    },
+    {
+      "idx": 8,
+      "id": "1a849c24-275f-494b-9db3-32e8a5f1c066",
+      "seed": 43,
+      "lego": 2,
+      "syllables": 13,
+      "english": "I wasn't thinking about anything this afternoon.",
+      "other": "No estaba pensando en nada esta tarde.",
+      "qa_score": 9
+    },
+    {
+      "idx": 9,
+      "id": "cd984910-54c5-4f16-8d0e-7316681aad8d",
+      "seed": 79,
+      "lego": 2,
+      "syllables": 13,
+      "english": "I'm not ready to finish yet but I want to stop.",
+      "other": "No estoy listo para terminar todavía pero quiero parar.",
+      "qa_score": 8,
+      "qa_notes": "Good translation. 'listo' assumes masculine speaker - could note this or use 'listo/a' for inclusivity."
+    },
+    {
+      "idx": 10,
+      "id": "b5246e3c-2b21-41fd-b757-c9b2ca54ae83",
+      "seed": 8,
+      "lego": 3,
+      "syllables": 7,
+      "english": "I want to say what I mean.",
+      "other": "Quiero decir lo que quiero decir.",
+      "qa_score": 8,
+      "qa_notes": "Spanish is literal but works. Alternative: 'Quiero expresar lo que pienso' might be more natural, but current version is acceptable."
+    },
+    {
+      "idx": 11,
+      "id": "9bfe55fd-850d-46fe-b4cf-c9bd96ac7970",
+      "seed": 43,
+      "lego": 4,
+      "syllables": 12,
+      "english": "She wants to find out how to answer in English.",
+      "other": "Ella quiere saber cómo responder en inglés.",
+      "qa_score": 9
+    },
+    {
+      "idx": 12,
+      "id": "a97d7775-32e5-48f5-b7eb-4874b2558609",
+      "seed": 29,
+      "lego": 2,
+      "syllables": 11,
+      "english": "It's useful speaking English very well.",
+      "other": "Es útil hablar inglés muy bien.",
+      "qa_score": 7,
+      "qa_notes": "English is slightly awkward - 'Speaking English very well is useful' or 'It's useful to speak English very well' would be more natural."
+    },
+    {
+      "idx": 13,
+      "id": "48886b69-f34a-49c5-a6f5-79d3544b5118",
+      "seed": 237,
+      "lego": 2,
+      "syllables": 7,
+      "english": "he wanted you to help me",
+      "other": "quería que me ayudaras",
+      "qa_score": 7,
+      "qa_notes": "Spanish 'quería' could be he/she/you(formal) - missing 'él'. Minor pronoun ambiguity."
+    },
+    {
+      "idx": 14,
+      "id": "171a9378-39a3-4d6f-99f7-40b4702f1a60",
+      "seed": 70,
+      "lego": 6,
+      "syllables": 11,
+      "english": "I want to hear the truth before tomorrow.",
+      "other": "Quiero escuchar la verdad antes de mañana.",
+      "qa_score": 9
+    },
+    {
+      "idx": 15,
+      "id": "01e9bc6d-071a-49fe-bdeb-97ea657f6a77",
+      "seed": 39,
+      "lego": 5,
+      "syllables": 9,
+      "english": "She is a little tired this morning.",
+      "other": "Ella está un poco cansada esta mañana.",
+      "qa_score": 9
+    },
+    {
+      "idx": 16,
+      "id": "f19b841d-7396-4697-8b23-be39c7a00561",
+      "seed": 220,
+      "lego": 3,
+      "syllables": 11,
+      "english": "Yes, I want to watch a film with her tonight.",
+      "other": "Sí, quiero ver una película con ella esta noche.",
+      "qa_score": 9
+    },
+    {
+      "idx": 17,
+      "id": "cd4ae32e-bdfd-4943-9461-41c3d28583c4",
+      "seed": 75,
+      "lego": 5,
+      "syllables": 13,
+      "english": "I already understand more than before with help.",
+      "other": "Ya entiendo más que antes con ayuda.",
+      "qa_score": 8,
+      "qa_notes": "Both are acceptable but slightly awkward in both languages. 'I already understand more than before when I have help' or 'Ya entiendo más que antes cuando tengo ayuda' would flow better."
+    },
+    {
+      "idx": 18,
+      "id": "67aea250-f449-4c48-a2b2-bb007a6d410f",
+      "seed": 40,
+      "lego": 1,
+      "syllables": 7,
+      "english": "How are you this morning now?",
+      "other": "¿Cómo estás esta mañana ahora?",
+      "qa_score": 4,
+      "qa_notes": "Awkward in both languages - 'this morning' and 'now' are redundant/conflicting. 'How are you this morning?' or 'How are you now?' would be natural."
+    },
+    {
+      "idx": 19,
+      "id": "952b90f6-bab7-41ad-a4be-211d682bbe43",
+      "seed": 27,
+      "lego": 5,
+      "syllables": 12,
+      "english": "She is often taking too much time to answer.",
+      "other": "Ella a menudo está tomando demasiado tiempo para responder.",
+      "qa_score": 7,
+      "qa_notes": "Progressive with 'often' is unusual in English - 'She often takes too much time to answer' is more natural. Spanish follows the English pattern."
+    },
+    {
+      "idx": 20,
+      "id": "a6de0741-7eb2-4b88-883a-02c5d9501bd0",
+      "seed": 75,
+      "lego": 2,
+      "syllables": 12,
+      "english": "I think that I'm very happy to learn English.",
+      "other": "Creo que estoy muy contento de aprender inglés.",
+      "qa_score": 8,
+      "qa_notes": "'contento' is masculine - assumes male speaker. Otherwise excellent."
+    },
+    {
+      "idx": 21,
+      "id": "8b3b8a8e-94eb-45c6-a35f-2163fca4e1e2",
+      "seed": 221,
+      "lego": 1,
+      "syllables": 12,
+      "english": "Yes, I think that I know what he wants to do now.",
+      "other": "Sí, creo que sé lo que quiere hacer ahora.",
+      "qa_score": 8,
+      "qa_notes": "English has 'he' but Spanish 'quiere' is ambiguous (he/she/you formal). Minor but acceptable."
+    },
+    {
+      "idx": 22,
+      "id": "80183ffc-79b7-43a5-af6e-134c6199cc54",
+      "seed": 83,
+      "lego": 6,
+      "syllables": 8,
+      "english": "My friend wants to learn English too.",
+      "other": "Mi amigo quiere aprender inglés también.",
+      "qa_score": 9
+    },
+    {
+      "idx": 23,
+      "id": "72e5a5ca-3e9a-4bbb-a25e-4f079df050e1",
+      "seed": 18,
+      "lego": 1,
+      "syllables": 5,
+      "english": "we want to come back",
+      "other": "queremos volver",
+      "qa_score": 9
+    },
+    {
+      "idx": 24,
+      "id": "b0f53448-07bf-4400-822a-73caad4e6cb0",
+      "seed": 17,
+      "lego": 1,
+      "syllables": 11,
+      "english": "She wants to practise speaking English all day.",
+      "other": "Ella quiere practicar hablar inglés todo el día.",
+      "qa_score": 9
+    },
+    {
+      "idx": 25,
+      "id": "dad7e1e1-f978-42ad-b59e-f79a98406036",
+      "seed": 50,
+      "lego": 2,
+      "syllables": 12,
+      "english": "I'm not trying to finish as quickly as possible.",
+      "other": "No estoy intentando terminar lo más rápido posible.",
+      "qa_score": 9
+    },
+    {
+      "idx": 26,
+      "id": "411706b6-c30d-47bb-8214-3ba85d6af5fe",
+      "seed": 8,
+      "lego": 2,
+      "syllables": 10,
+      "english": "I want to explain how to speak English.",
+      "other": "Quiero explicar cómo hablar inglés.",
+      "qa_score": 9
+    },
+    {
+      "idx": 27,
+      "id": "99da4788-54db-471c-8467-0315c1d71bb4",
+      "seed": 68,
+      "lego": 3,
+      "syllables": 6,
+      "english": "I need to look after",
+      "other": "necesito cuidar",
+      "qa_score": 8,
+      "qa_notes": "Both are incomplete phrases (missing object), but this may be intentional for a LEGO fragment. Grammatically correct as fragments."
+    },
+    {
+      "idx": 28,
+      "id": "67ac04cd-72f7-4a64-bf26-f62bffae92a0",
+      "seed": 47,
+      "lego": 5,
+      "syllables": 12,
+      "english": "I'm going to make mistakes but I don't worry.",
+      "other": "Voy a cometer errores pero no me preocupo.",
+      "qa_score": 9
+    },
+    {
+      "idx": 29,
+      "id": "806f0037-6d96-4a15-9123-83f6d5b52603",
+      "seed": 67,
+      "lego": 2,
+      "syllables": 9,
+      "english": "Why do you want to learn English now?",
+      "other": "¿Por qué quieres aprender inglés ahora?",
+      "qa_score": 9
+    },
+    {
+      "idx": 30,
+      "id": "1e15e6c1-141a-4ce3-b344-f1a34388a4fc",
+      "seed": 76,
+      "lego": 4,
+      "syllables": 11,
+      "english": "I don't know how quickly I can finish that.",
+      "other": "No sé lo rápido que puedo terminar eso.",
+      "qa_score": 8,
+      "qa_notes": "Spanish 'lo rápido que' is acceptable but 'qué tan rápido' or 'cuán rápido' might be more common in some dialects. Still valid."
+    },
+    {
+      "idx": 31,
+      "id": "283cca96-0bc1-41eb-98de-9b531f0c7b8c",
+      "seed": 52,
+      "lego": 6,
+      "syllables": 12,
+      "english": "I want to speak English with my friend tomorrow.",
+      "other": "Quiero hablar inglés con mi amigo mañana.",
+      "qa_score": 9
+    },
+    {
+      "idx": 32,
+      "id": "2532c79c-0955-4be2-933e-235c1c29e022",
+      "seed": 124,
+      "lego": 1,
+      "syllables": 11,
+      "english": "I think that your idea is interesting.",
+      "other": "Creo que tu idea es interesante.",
+      "qa_score": 9
+    },
+    {
+      "idx": 33,
+      "id": "fef1f6ff-107a-46a1-9146-6b2a7490dcf2",
+      "seed": 103,
+      "lego": 2,
+      "syllables": 9,
+      "english": "I don't want to change what I'm doing now.",
+      "other": "No quiero cambiar lo que estoy haciendo ahora.",
+      "qa_score": 9
+    },
+    {
+      "idx": 34,
+      "id": "c6e8b15e-80a8-4306-92df-eaf810900876",
+      "seed": 24,
+      "lego": 1,
+      "syllables": 5,
+      "english": "I'm not going to speak",
+      "other": "no voy a hablar",
+      "qa_score": 9
+    },
+    {
+      "idx": 35,
+      "id": "9c6b4470-2714-44fa-9b99-bac65e658191",
+      "seed": 66,
+      "lego": 2,
+      "syllables": 12,
+      "english": "It's not difficult to do that at the same time.",
+      "other": "No es difícil hacer eso al mismo tiempo.",
+      "qa_score": 9
+    },
+    {
+      "idx": 36,
+      "id": "1c2a7abe-f1a3-4f4a-8b37-77cc07f2947b",
+      "seed": 99,
+      "lego": 1,
+      "syllables": 11,
+      "english": "You shouldn't keep on doing this if it's not working.",
+      "other": "No deberías seguir haciendo esto si no está funcionando.",
+      "qa_score": 9
+    },
+    {
+      "idx": 37,
+      "id": "374d7280-217e-4e15-a193-7a1868490286",
+      "seed": 110,
+      "lego": 3,
+      "syllables": 11,
+      "english": "I don't know what changes when we learn new things.",
+      "other": "No sé qué cambia cuando aprendemos cosas nuevas.",
+      "qa_score": 9
+    },
+    {
+      "idx": 38,
+      "id": "bbd9140e-12ee-4949-ab40-0f1da8053180",
+      "seed": 148,
+      "lego": 4,
+      "syllables": 11,
+      "english": "I'm happy, so I want to talk to you now.",
+      "other": "Estoy feliz, así que quiero hablar contigo ahora.",
+      "qa_score": 9
+    },
+    {
+      "idx": 39,
+      "id": "6e52d9bd-e38b-4bdc-834d-14ed559c5132",
+      "seed": 139,
+      "lego": 2,
+      "syllables": 6,
+      "english": "When you're trying, it's easier.",
+      "other": "Cuando estás intentando, es más fácil.",
+      "qa_score": 9
+    },
+    {
+      "idx": 40,
+      "id": "6a896a9a-ee1e-45e1-9b8d-ca1dceebb2c5",
+      "seed": 67,
+      "lego": 2,
+      "syllables": 10,
+      "english": "I don't know why she wanted to do that.",
+      "other": "No sé por qué ella quería hacer eso.",
+      "qa_score": 9
+    },
+    {
+      "idx": 41,
+      "id": "0dbcad4e-3b26-469a-9864-ebc815b512a9",
+      "seed": 70,
+      "lego": 5,
+      "syllables": 10,
+      "english": "I want to hear what she wanted to say.",
+      "other": "Quiero escuchar lo que ella quería decir.",
+      "qa_score": 9
+    },
+    {
+      "idx": 42,
+      "id": "b2ce56f1-a2c5-4761-89a9-5305acacaadb",
+      "seed": 100,
+      "lego": 2,
+      "syllables": 10,
+      "english": "I'm finding out things I didn't know before.",
+      "other": "Estoy descubriendo cosas que no sabía antes.",
+      "qa_score": 9
+    },
+    {
+      "idx": 43,
+      "id": "20032353-3d3d-40dd-b797-4532b88baa6f",
+      "seed": 14,
+      "lego": 2,
+      "syllables": 6,
+      "english": "do you speak tomorrow",
+      "other": "¿hablas mañana",
+      "qa_score": 3,
+      "qa_notes": "Both are incomplete and unnatural. English needs context (e.g., 'Will you speak tomorrow?' or 'Are you speaking tomorrow?'). Spanish is missing closing question mark and 'hablas mañana' is odd without more context."
+    },
+    {
+      "idx": 44,
+      "id": "8644d949-8f32-4e80-9a1a-3c568d22305a",
+      "seed": 236,
+      "lego": 1,
+      "syllables": 5,
+      "english": "before the weekend",
+      "other": "antes del fin de semana",
+      "qa_score": 9
+    },
+    {
+      "idx": 45,
+      "id": "449d5941-b5c6-42b7-81f0-b71b8ec62f89",
+      "seed": 8,
+      "lego": 2,
+      "syllables": 8,
+      "english": "I want to explain something.",
+      "other": "Quiero explicar algo.",
+      "qa_score": 9
+    },
+    {
+      "idx": 46,
+      "id": "033512e0-28ac-4f26-8a46-adf20183a943",
+      "seed": 52,
+      "lego": 2,
+      "syllables": 10,
+      "english": "I don't know how to write this in English.",
+      "other": "No sé cómo escribir esto en inglés.",
+      "qa_score": 9
+    },
+    {
+      "idx": 47,
+      "id": "4c572b7a-d8f3-4444-aa58-5c971af93662",
+      "seed": 144,
+      "lego": 1,
+      "syllables": 12,
+      "english": "I'd like to know if you don't want it any more.",
+      "other": "Me gustaría saber si ya no lo quieres.",
+      "qa_score": 9
+    },
+    {
+      "idx": 48,
+      "id": "b411327a-0d61-41b6-a24d-6d9d8207f3aa",
+      "seed": 8,
+      "lego": 2,
+      "syllables": 9,
+      "english": "I want to explain something now.",
+      "other": "Quiero explicar algo ahora.",
+      "qa_score": 9
+    },
+    {
+      "idx": 49,
+      "id": "3da35ab9-af16-4436-8c71-704e92d4b528",
+      "seed": 145,
+      "lego": 2,
+      "syllables": 5,
+      "english": "nothing seems to be",
+      "other": "nada parece estar",
+      "qa_score": 7,
+      "qa_notes": "Both are incomplete fragments. As LEGO components this is acceptable, but 'nada parece estar' could also be 'nada parece ser' depending on context."
+    },
+    {
+      "idx": 50,
+      "id": "5029d310-e656-4462-ad11-7c49e8e5a552",
+      "seed": 109,
+      "lego": 5,
+      "syllables": 11,
+      "english": "I don't know what to do after we finish.",
+      "other": "No sé qué hacer después de que terminemos.",
+      "qa_score": 9
+    }
+  ],
+  "qa_summary": {
+    "average_score": 8.32,
+    "total_phrases": 50,
+    "phrases_below_5": [
+      {
+        "idx": 18,
+        "score": 4,
+        "english": "How are you this morning now?",
+        "other": "¿Cómo estás esta mañana ahora?",
+        "issue": "Redundant/conflicting time references - 'this morning' and 'now' together is awkward in both languages"
+      },
+      {
+        "idx": 43,
+        "score": 3,
+        "english": "do you speak tomorrow",
+        "other": "¿hablas mañana",
+        "issue": "Incomplete and unnatural in both languages - missing context, tense issues, Spanish missing closing punctuation"
+      }
+    ],
+    "worst_3": [
+      {
+        "idx": 43,
+        "score": 3,
+        "english": "do you speak tomorrow",
+        "other": "¿hablas mañana",
+        "issue": "Incomplete and unnatural in both languages"
+      },
+      {
+        "idx": 18,
+        "score": 4,
+        "english": "How are you this morning now?",
+        "other": "¿Cómo estás esta mañana ahora?",
+        "issue": "Redundant time references create awkwardness"
+      },
+      {
+        "idx": 5,
+        "score": 6,
+        "english": "I'm not sure if to start now or later.",
+        "other": "No estoy seguro si empezar ahora o después.",
+        "issue": "English 'if to' construction is non-standard - should be 'whether to'"
+      }
+    ],
+    "score_distribution": {
+      "9": 35,
+      "8": 8,
+      "7": 4,
+      "6": 1,
+      "4": 1,
+      "3": 1
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "course_code": "eng_for_deu",
+  "seed_number": 124,
+  "known_text": "Ich dachte, das war eine gute Idee.",
+  "target_text": "I thought that was a good idea.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "ich dachte",
+      "target": "I thought",
+      "components": [
+        {"known": "ich", "target": "I"},
+        {"known": "dachte", "target": "thought"}
+      ],
+      "build": [
+        {"known": "Ich.", "target": "I."},
+        {"known": "Dachte.", "target": "Thought."},
+        {"known": "Ich dachte.", "target": "I thought."},
+        {"known": "Ich dachte, dass.", "target": "I thought that."}
+      ],
+      "use": [
+        {"known": "Ich dachte, du wolltest mit mir sprechen.", "target": "I thought you wanted to speak with me.", "score": 7},
+        {"known": "Ich dachte, es wäre besser, wenn wir mehr Zeit haben.", "target": "I thought it would be better when we have more time.", "score": 7},
+        {"known": "Ich dachte, das ist interessant, was du gesagt hast.", "target": "I thought that's interesting what you said.", "score": 6},
+        {"known": "Ich dachte nicht, dass es so schwierig sein würde.", "target": "I thought not that it would be so difficult.", "score": 5},
+        {"known": "Ich dachte, wir könnten das mit dir machen.", "target": "I thought we could do that with you.", "score": 6},
+        {"known": "Ich dachte, du bist bereit, etwas Neues zu machen.", "target": "I thought you are ready to do something new.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "das war",
+      "target": "that was",
+      "components": [
+        {"known": "das", "target": "that"},
+        {"known": "war", "target": "was"}
+      ],
+      "build": [
+        {"known": "Das.", "target": "That."},
+        {"known": "War.", "target": "Was."},
+        {"known": "Das war.", "target": "That was."},
+        {"known": "Das war gut.", "target": "That was good."}
+      ],
+      "use": [
+        {"known": "Das war sehr interessant, was du mir gesagt hast.", "target": "That was very interesting what you said to me.", "score": 7},
+        {"known": "Ich denke, das war sehr wichtig für mich und für dich.", "target": "I think that was very important for me and for you.", "score": 7},
+        {"known": "Das war nicht so schwierig, wie ich dachte.", "target": "That was not so difficult as I thought.", "score": 6},
+        {"known": "Das war warum ich hier war mit dir.", "target": "That was why I was here with you.", "score": 6},
+        {"known": "Das war etwas, das ich verstehen wollte.", "target": "That was something that I wanted to understand.", "score": 7},
+        {"known": "Das war besser als es vorher war, und ich bin froh.", "target": "That was better than it was before and I am happy.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "eine gute Idee",
+      "target": "a good idea",
+      "components": [
+        {"known": "eine", "target": "a"},
+        {"known": "gute Idee", "target": "good idea"}
+      ],
+      "build": [
+        {"known": "Eine.", "target": "A."},
+        {"known": "Gute Idee.", "target": "Good idea."},
+        {"known": "Eine Idee.", "target": "A idea."},
+        {"known": "Eine gute Idee.", "target": "A good idea."}
+      ],
+      "use": [
+        {"known": "Ich habe eine gute Idee, die ich dir zeigen möchte.", "target": "I have a good idea that I want to show you.", "score": 8},
+        {"known": "Das war eine gute Idee, und ich bin froh darüber.", "target": "That was a good idea and I am happy about it.", "score": 7},
+        {"known": "Wenn du eine gute Idee hast, kannst du sie mir sagen.", "target": "If you have a good idea you can tell it to me.", "score": 7},
+        {"known": "Es ist eine gute Idee, mehr Zeit damit zu haben.", "target": "It is a good idea to have more time with it.", "score": 7},
+        {"known": "Ich dachte, du hast eine gute Idee mit dem, was du sagst.", "target": "I thought you have a good idea with what you say.", "score": 7},
+        {"known": "Ich denke, das war eine gute Idee, die du gehabt hast.", "target": "I think that was a good idea that you have had.", "score": 6}
+      ]
+    }
+  ]
+}

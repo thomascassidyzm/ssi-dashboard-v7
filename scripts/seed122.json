@@ -1,0 +1,124 @@
+{
+  "course_code": "eng_for_deu",
+  "seed_number": 122,
+  "known_text": "Es fängt an, sich leichter anzufühlen, und ich bin begeistert davon, wie es läuft.",
+  "target_text": "It's starting to feel easier and I'm excited about how it's going.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "und",
+      "target": "and",
+      "build": [
+        {"known": "Und.", "target": "And."},
+        {"known": "Und ich.", "target": "And I."},
+        {"known": "Du und ich.", "target": "You and I."},
+        {"known": "Und das.", "target": "And that."}
+      ],
+      "use": [
+        {"known": "Ich und du können das machen, wenn du willst.", "target": "I and you can do that if you want.", "score": 5},
+        {"known": "Ich möchte das machen, und du kannst mir helfen.", "target": "I want to do that and you can help me.", "score": 7},
+        {"known": "Ich bin bereit, und ich hoffe, du bist es auch.", "target": "I am ready and I hope you are too.", "score": 7},
+        {"known": "Das ist gut, und ich bin glücklich darüber.", "target": "That is good and I am happy about it.", "score": 6},
+        {"known": "Ich verstehe das, und ich denke, es ist wichtig.", "target": "I understand that and I think it is important.", "score": 7},
+        {"known": "Ich möchte mehr wissen, und du kannst mir das sagen.", "target": "I want to know more and you can tell me that.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "es fängt an",
+      "target": "it's starting",
+      "components": [
+        {"known": "es", "target": "it's"},
+        {"known": "fängt an", "target": "starting"}
+      ],
+      "build": [
+        {"known": "Es fängt an.", "target": "It's starting."},
+        {"known": "Fängt an.", "target": "Starting."},
+        {"known": "Es fängt jetzt an.", "target": "It's starting now."},
+        {"known": "Es fängt an zu.", "target": "It's starting to."}
+      ],
+      "use": [
+        {"known": "Es fängt an, interessant zu sein.", "target": "It's starting to be interesting.", "score": 6},
+        {"known": "Ich denke, es fängt an, besser zu werden.", "target": "I think it's starting to be better.", "score": 7},
+        {"known": "Es fängt an, und ich bin bereit dafür.", "target": "It's starting and I am ready for it.", "score": 6},
+        {"known": "Es fängt an, etwas zu ändern für mich.", "target": "It's starting to change something for me.", "score": 7},
+        {"known": "Ich sehe, dass es fängt an, anders zu sein.", "target": "I see that it's starting to be different.", "score": 7},
+        {"known": "Es fängt an, und ich weiß nicht, was passieren wird.", "target": "It's starting and I don't know what will happen.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "sich leichter anzufühlen",
+      "target": "to feel easier",
+      "components": [
+        {"known": "sich anzufühlen", "target": "to feel"},
+        {"known": "leichter", "target": "easier"}
+      ],
+      "build": [
+        {"known": "Leichter.", "target": "Easier."},
+        {"known": "Sich anzufühlen.", "target": "To feel."},
+        {"known": "Es fühlt sich an.", "target": "It's to feel."},
+        {"known": "Sich leichter anzufühlen.", "target": "To feel easier."}
+      ],
+      "use": [
+        {"known": "Es fängt an, sich leichter anzufühlen, wenn ich mehr mache.", "target": "It's starting to feel easier when I do more.", "score": 7},
+        {"known": "Ich hoffe, dass es sich leichter anfühlen wird.", "target": "I hope that it will feel easier.", "score": 7},
+        {"known": "Es sollte sich leichter anfühlen, wenn du mehr weißt.", "target": "It should feel easier when you know more.", "score": 7},
+        {"known": "Ich finde, dass es sich leichter anfühlt als vorher.", "target": "I find that it is easier to feel than before.", "score": 6},
+        {"known": "Es muss sich leichter anfühlen, wenn wir das verstehen.", "target": "It must feel easier when we understand that.", "score": 7},
+        {"known": "Ich denke, es wird sich leichter anfühlen mit der Zeit.", "target": "I think it will feel easier with time.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "ich bin begeistert davon",
+      "target": "I'm excited about",
+      "components": [
+        {"known": "ich bin", "target": "I'm"},
+        {"known": "begeistert davon", "target": "excited about"}
+      ],
+      "build": [
+        {"known": "Ich bin.", "target": "I'm."},
+        {"known": "Begeistert davon.", "target": "Excited about."},
+        {"known": "Ich bin begeistert.", "target": "I'm excited."},
+        {"known": "Ich bin begeistert davon.", "target": "I'm excited about."}
+      ],
+      "use": [
+        {"known": "Ich bin begeistert davon, was du machst.", "target": "I'm excited about what you do.", "score": 6},
+        {"known": "Ich bin begeistert davon, wie gut das ist.", "target": "I'm excited about how good that is.", "score": 7},
+        {"known": "Ich bin begeistert davon, und ich möchte mehr sehen.", "target": "I'm excited about and I want to see more.", "score": 5},
+        {"known": "Ich bin sehr begeistert davon, was ich weiß.", "target": "I am very excited about what I know.", "score": 7},
+        {"known": "Ich bin begeistert davon, dass wir das machen können.", "target": "I'm excited about that we can do that.", "score": 6},
+        {"known": "Ich bin begeistert davon, wie sich das anfühlt.", "target": "I'm excited about how that is to feel.", "score": 5}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "wie es läuft",
+      "target": "how it's going",
+      "components": [
+        {"known": "wie", "target": "how"},
+        {"known": "es läuft", "target": "it's going"}
+      ],
+      "build": [
+        {"known": "Wie.", "target": "How."},
+        {"known": "Es läuft.", "target": "It's going."},
+        {"known": "Wie es läuft.", "target": "How it's going."},
+        {"known": "Sieh wie es läuft.", "target": "See how it's going."}
+      ],
+      "use": [
+        {"known": "Ich möchte wissen, wie es läuft mit deinem Lernen.", "target": "I want to know how it's going with your learning.", "score": 7},
+        {"known": "Kannst du mir sagen, wie es läuft?", "target": "Can you tell me how it's going?", "score": 6},
+        {"known": "Ich bin begeistert davon, wie es läuft.", "target": "I'm excited about how it's going.", "score": 6},
+        {"known": "Es ist interessant zu sehen, wie es läuft.", "target": "It's interesting to see how it's going.", "score": 7},
+        {"known": "Ich frage mich, wie es läuft für dich.", "target": "I ask me how it's going for you.", "score": 5},
+        {"known": "Du kannst mir sagen, wie es läuft, wenn du willst.", "target": "You can tell me how it's going if you want.", "score": 7}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 188,
+  "target_text": "So I don't need to change.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "Donc",
+      "target": "So",
+      "build": [
+        {"known": "Donc", "target": "So"},
+        {"known": "Donc je", "target": "So I"},
+        {"known": "Donc tu", "target": "So you"},
+        {"known": "Donc nous", "target": "So we"}
+      ],
+      "use": [
+        {"known": "Donc je suis content de ce que j'ai fait cette semaine", "target": "So I'm happy with what I did this week", "score": 8},
+        {"known": "Donc tu veux parler de ça maintenant au bureau?", "target": "So do you want to talk about that now in the office?", "score": 8},
+        {"known": "Donc je pense que tu les as laissés au travail ce matin", "target": "So I think you left them at work this morning", "score": 8},
+        {"known": "Donc nous allons faire quelque chose de différent la semaine prochaine", "target": "So we're going to do something different next week", "score": 8},
+        {"known": "Donc tu as vu mes clés quelque part ici il y a un moment?", "target": "So did you see my keys anywhere here a while ago?", "score": 8},
+        {"known": "Donc je dois emmener ma mère chez le médecin demain matin", "target": "So I have to take my mother to the doctor tomorrow morning", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "je n'ai pas besoin de",
+      "target": "I don't need to",
+      "components": [
+        {"known": "je n'ai pas", "target": "I don't"},
+        {"known": "besoin de", "target": "need to"}
+      ],
+      "build": [
+        {"known": "je n'ai pas besoin de", "target": "I don't need to"},
+        {"known": "besoin de", "target": "need to"},
+        {"known": "tu n'as pas besoin de", "target": "you don't need to"},
+        {"known": "j'ai besoin de", "target": "I need to"}
+      ],
+      "use": [
+        {"known": "Donc je n'ai pas besoin de faire ça maintenant si tu veux", "target": "So I don't need to do that now if you want", "score": 8},
+        {"known": "Tu n'as pas besoin de venir au bureau la semaine prochaine", "target": "You don't need to come to the office next week", "score": 8},
+        {"known": "Je n'ai pas besoin de parler de ça avec lui ce soir", "target": "I don't need to talk about that with him this evening", "score": 8},
+        {"known": "Donc je n'ai pas besoin de le chercher quelque part ici?", "target": "So I don't need to look for it anywhere here?", "score": 8},
+        {"known": "J'ai besoin de lui demander ce qu'il veut faire demain", "target": "I need to ask him what he wants to do tomorrow", "score": 8},
+        {"known": "Tu n'as pas besoin de venir m'aider, je peux me débrouiller", "target": "You don't need to come and help me, I can manage", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "changer",
+      "target": "change",
+      "build": [
+        {"known": "changer", "target": "change"},
+        {"known": "besoin de changer", "target": "need to change"},
+        {"known": "vouloir changer", "target": "want to change"},
+        {"known": "changer quelque chose", "target": "change something"}
+      ],
+      "use": [
+        {"known": "Donc je n'ai pas besoin de changer ce que j'ai fait", "target": "So I don't need to change what I did", "score": 9},
+        {"known": "Je veux changer quelque chose de différent cette semaine", "target": "I want to change something different this week", "score": 8},
+        {"known": "Tu n'as pas besoin de changer ça maintenant si tu ne veux pas", "target": "You don't need to change that now if you don't want to", "score": 8},
+        {"known": "Je pense que tu devrais changer ce que tu as laissé au bureau", "target": "I think you should change what you left in the office", "score": 8},
+        {"known": "Je suis content jusqu'ici, donc je ne veux pas changer", "target": "I'm happy so far, so I don't want to change", "score": 8},
+        {"known": "Malheureusement je dois changer ce que j'avais fait la semaine dernière", "target": "I'm afraid I have to change what I had done last week", "score": 8}
+      ]
+    }
+  ]
+}

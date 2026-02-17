@@ -1,0 +1,79 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 180,
+  "target_text": "I'd like to read my book for a while.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je voudrais lire",
+      "target": "I'd like to read",
+      "components": [
+        {"known": "Je voudrais", "target": "I'd like to"},
+        {"known": "lire", "target": "read"}
+      ],
+      "build": [
+        {"known": "Je voudrais lire", "target": "I'd like to read"},
+        {"known": "lire", "target": "read"},
+        {"known": "je vais lire", "target": "I'm going to read"},
+        {"known": "je veux lire", "target": "I want to read"}
+      ],
+      "use": [
+        {"known": "Je voudrais lire quelque chose de différent ce soir", "target": "I'd like to read something different this evening", "score": 8},
+        {"known": "Je veux lire ce livre que tu m'as dit de lire", "target": "I want to read that book that you said to me to read", "score": 8},
+        {"known": "Tu veux lire ça avec moi dimanche après-midi?", "target": "Do you want to read that with me on Sunday afternoon?", "score": 8},
+        {"known": "Je voudrais avoir le temps de lire plus cette année", "target": "I'd like to have time to read more this year", "score": 8},
+        {"known": "Je n'ai pas eu le temps de lire ce que tu voulais que je lise", "target": "I didn't have time to read what you wanted me to read", "score": 8},
+        {"known": "Tu peux lire ça et me dire ce que tu penses?", "target": "Can you read that and tell me what you think?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "mon livre",
+      "target": "my book",
+      "components": [
+        {"known": "mon", "target": "my"},
+        {"known": "livre", "target": "book"}
+      ],
+      "build": [
+        {"known": "mon livre", "target": "my book"},
+        {"known": "livre", "target": "book"},
+        {"known": "ton livre", "target": "your book"},
+        {"known": "ce livre", "target": "this book"}
+      ],
+      "use": [
+        {"known": "Je voudrais lire mon livre ce soir si j'ai le temps", "target": "I'd like to read my book this evening if I have time", "score": 8},
+        {"known": "Tu peux me donner ton livre? Je voudrais le lire", "target": "Can you give me your book? I'd like to read it", "score": 8},
+        {"known": "Ce livre est très intéressant, tu devrais le lire", "target": "This book is very interesting, you should read it", "score": 8},
+        {"known": "Mon livre est à la maison, je peux aller le chercher", "target": "My book is at home, I can go look for it", "score": 8},
+        {"known": "Tu as eu le temps de lire ce livre que je voulais que tu lises?", "target": "Did you have time to read that book that I wanted you to read?", "score": 8},
+        {"known": "Je veux lire ton livre, bien que je n'ai pas beaucoup de temps", "target": "I want to read your book, although I don't have much time", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "pendant un moment",
+      "target": "for a while",
+      "components": [
+        {"known": "pendant", "target": "for"},
+        {"known": "un moment", "target": "a while"}
+      ],
+      "build": [
+        {"known": "pendant un moment", "target": "for a while"},
+        {"known": "un moment", "target": "a while"},
+        {"known": "pendant ce temps", "target": "for this time"},
+        {"known": "pendant quelques minutes", "target": "for a few minutes"}
+      ],
+      "use": [
+        {"known": "Je voudrais lire mon livre pendant un moment ce soir", "target": "I'd like to read my book for a while this evening", "score": 9},
+        {"known": "Tu peux m'attendre pendant un moment? Je vais revenir", "target": "Can you wait for me for a while? I'm going to come back", "score": 8},
+        {"known": "Je vais rester ici pendant un moment si tu veux", "target": "I'm going to stay here for a while if you want", "score": 8},
+        {"known": "Je voudrais me débrouiller tout seul pendant un moment", "target": "I'd like to manage on my own for a while", "score": 8},
+        {"known": "On peut parler pendant un moment si tu as le temps?", "target": "Can we talk for a while if you have time?", "score": 8},
+        {"known": "Je n'ai pas pu lui parler pendant un moment parce que j'étais occupé", "target": "I couldn't talk to him for a while because I was busy", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 42,
+  "target_text": "I was starting to feel better than last night.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "eu estava começando",
+      "target": "I was starting",
+      "components": [
+        {"known": "eu estava", "target": "I was"},
+        {"known": "começando", "target": "starting"}
+      ],
+      "build": [
+        {"known": "eu estava começando", "target": "I was starting"},
+        {"known": "eu estava começando a aprender", "target": "I was starting to learn"},
+        {"known": "eu estava começando a falar", "target": "I was starting to speak"},
+        {"known": "eu estava começando a pensar", "target": "I was starting to think"}
+      ],
+      "use": [
+        {"known": "Eu estava começando a aprender inglês no mês passado.", "target": "I was starting to learn English last month.", "score": 8},
+        {"known": "Eu estava começando a falar inglês com outras pessoas ontem.", "target": "I was starting to speak English with other people yesterday.", "score": 8},
+        {"known": "Eu estava começando a pensar nisso com cuidado esta manhã.", "target": "I was starting to think about it carefully this morning.", "score": 8},
+        {"known": "Eu estava começando a aprender quando você queria falar comigo.", "target": "I was starting to learn when you wanted to speak with me.", "score": 8},
+        {"known": "Eu estava começando a falar inglês mas eu me sinto cansado.", "target": "I was starting to speak English but I feel tired.", "score": 7},
+        {"known": "Eu estava começando a aprender um pouco mais esta manhã.", "target": "I was starting to learn a little more this morning.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "a me sentir",
+      "target": "to feel",
+      "components": [
+        {"known": "a", "target": "to"},
+        {"known": "me sentir", "target": "feel"}
+      ],
+      "build": [
+        {"known": "a me sentir", "target": "to feel"},
+        {"known": "estava começando a me sentir", "target": "was starting to feel"},
+        {"known": "começando a me sentir cansado", "target": "starting to feel tired"},
+        {"known": "quero me sentir bem", "target": "want to feel okay"}
+      ],
+      "use": [
+        {"known": "Eu estava começando a me sentir cansado ontem.", "target": "I was starting to feel tired yesterday.", "score": 8},
+        {"known": "Eu estava começando a me sentir bem esta manhã.", "target": "I was starting to feel okay this morning.", "score": 8},
+        {"known": "Estou começando a me sentir cansado no momento.", "target": "I'm starting to feel tired at the moment.", "score": 8},
+        {"known": "Eu quero me sentir bem quando eu estou aprendendo inglês.", "target": "I want to feel okay when I'm learning English.", "score": 8},
+        {"known": "Eu estava começando a me sentir um pouco cansado.", "target": "I was starting to feel a little tired.", "score": 7},
+        {"known": "Estou começando a me sentir cansado mas eu quero falar com você.", "target": "I'm starting to feel tired but I want to speak with you.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "melhor",
+      "target": "better",
+      "build": [
+        {"known": "melhor", "target": "better"},
+        {"known": "me sentir melhor", "target": "feel better"},
+        {"known": "começando a me sentir melhor", "target": "starting to feel better"},
+        {"known": "eu estava me sentindo melhor", "target": "I was feeling better"}
+      ],
+      "use": [
+        {"known": "Eu estava começando a me sentir melhor esta manhã.", "target": "I was starting to feel better this morning.", "score": 8},
+        {"known": "Eu me sinto melhor agora e eu quero falar inglês com você.", "target": "I feel better now and I want to speak English with you.", "score": 8},
+        {"known": "Estou começando a me sentir melhor no momento.", "target": "I'm starting to feel better at the moment.", "score": 8},
+        {"known": "Eu quero me sentir melhor e eu quero aprender um pouco mais.", "target": "I want to feel better and I want to learn a little more.", "score": 7},
+        {"known": "Eu estava me sentindo melhor ontem mas eu estou cansado agora.", "target": "I was feeling better yesterday but I'm tired now.", "score": 8},
+        {"known": "Você se sente melhor esta manhã?", "target": "Do you feel better this morning?", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "do que",
+      "target": "than",
+      "build": [
+        {"known": "do que", "target": "than"},
+        {"known": "melhor do que", "target": "better than"},
+        {"known": "mais do que", "target": "more than"},
+        {"known": "melhor do que ontem", "target": "better than yesterday"}
+      ],
+      "use": [
+        {"known": "Eu me sinto melhor do que ontem e eu quero falar inglês.", "target": "I feel better than yesterday and I want to speak English.", "score": 8},
+        {"known": "Estou começando a me sentir melhor do que esta manhã.", "target": "I'm starting to feel better than this morning.", "score": 8},
+        {"known": "Eu quero aprender mais do que no mês passado.", "target": "I want to learn more than last month.", "score": 7},
+        {"known": "Eu estava me sentindo melhor do que ontem esta manhã.", "target": "I was feeling better than yesterday this morning.", "score": 8},
+        {"known": "Você se sente melhor do que ontem?", "target": "Do you feel better than yesterday?", "score": 8},
+        {"known": "Eu me sinto melhor do que esta manhã e eu quero falar com você.", "target": "I feel better than this morning and I want to speak with you.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "ontem à noite",
+      "target": "last night",
+      "components": [
+        {"known": "ontem", "target": "last"},
+        {"known": "à noite", "target": "night"}
+      ],
+      "build": [
+        {"known": "ontem à noite", "target": "last night"},
+        {"known": "melhor do que ontem à noite", "target": "better than last night"},
+        {"known": "eu estava cansado ontem à noite", "target": "I was tired last night"},
+        {"known": "eu estava aprendendo ontem à noite", "target": "I was learning last night"}
+      ],
+      "use": [
+        {"known": "Eu estava começando a me sentir melhor do que ontem à noite.", "target": "I was starting to feel better than last night.", "score": 9},
+        {"known": "Eu estava cansado ontem à noite mas eu me sinto melhor agora.", "target": "I was tired last night but I feel better now.", "score": 8},
+        {"known": "Ontem à noite eu estava aprendendo inglês com outras pessoas.", "target": "Last night I was learning English with other people.", "score": 8},
+        {"known": "Eu me sinto melhor do que ontem à noite.", "target": "I feel better than last night.", "score": 8},
+        {"known": "Ontem à noite eu estava tentando aprender inglês.", "target": "Last night I was trying to learn English.", "score": 8},
+        {"known": "Eu estava começando a me sentir cansado ontem à noite.", "target": "I was starting to feel tired last night.", "score": 8}
+      ]
+    }
+  ]
+}

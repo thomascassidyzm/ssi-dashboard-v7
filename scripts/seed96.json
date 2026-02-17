@@ -1,0 +1,228 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 96,
+  "known_text": "No I'm not ready yet, I need a little more time.",
+  "target_text": "Nee, ik ben nog niet klaar, ik heb nog wat meer tijd nodig.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "no [answer]",
+      "target": "nee",
+      "build": [
+        {"known": "no", "target": "nee"},
+        {"known": "no I", "target": "nee ik"},
+        {"known": "no not", "target": "nee niet"},
+        {"known": "no I am not", "target": "nee ik ben niet"}
+      ],
+      "use": [
+        {"known": "No I am not ready to go home on the bus.", "target": "Nee ik ben niet klaar om met de bus naar huis te gaan.", "score": 8},
+        {"known": "She said no it is not possible to do it now.", "target": "Zij zei nee het is niet mogelijk om het nu te doen.", "score": 8},
+        {"known": "No I don't know if I can go on the next bus.", "target": "Nee ik weet niet of ik met de volgende bus kan gaan.", "score": 8},
+        {"known": "No that is not the only way to do it.", "target": "Nee dat is niet de enige manier om het te doen.", "score": 8},
+        {"known": "She said no it will not work that way.", "target": "Nee zij zei dat het niet zal werken op die manier.", "score": 8},
+        {"known": "No I am not the only one who knows.", "target": "Nee ik ben niet de enige die het weet.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "I",
+      "target": "ik",
+      "build": [
+        {"known": "I", "target": "ik"},
+        {"known": "I am", "target": "ik ben"},
+        {"known": "I have", "target": "ik heb"},
+        {"known": "I need", "target": "ik heb nodig"}
+      ],
+      "use": [
+        {"known": "I am not ready to go home yet.", "target": "Ik ben nog niet klaar om naar huis te gaan.", "score": 8},
+        {"known": "I don't know if I can do it on the next bus.", "target": "Ik weet niet of ik het met de volgende bus kan doen.", "score": 8},
+        {"known": "I would like to go home for a while.", "target": "Ik zou graag een tijdje naar huis willen gaan.", "score": 8},
+        {"known": "I think that it is the only way to do it.", "target": "Ik denk dat het de enige manier is om het te doen.", "score": 8},
+        {"known": "I am the only one who is ready to go now.", "target": "Ik ben de enige die klaar is om nu te gaan.", "score": 8},
+        {"known": "I said that I am not ready to start yet.", "target": "Ik zei dat ik nog niet klaar ben om te beginnen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "am",
+      "target": "ben",
+      "build": [
+        {"known": "am", "target": "ben"},
+        {"known": "I am", "target": "ik ben"},
+        {"known": "am not", "target": "ben niet"},
+        {"known": "am ready", "target": "ben klaar"}
+      ],
+      "use": [
+        {"known": "I am not ready to go home on the next bus.", "target": "Ik ben niet klaar om met de volgende bus naar huis te gaan.", "score": 8},
+        {"known": "No I am the only one who can do it.", "target": "Nee ik ben de enige die het kan doen.", "score": 8},
+        {"known": "I am not sure if I can go now.", "target": "Ik ben niet zeker of ik nu kan gaan.", "score": 8},
+        {"known": "She said that I am ready to start.", "target": "Zij zei dat ik klaar ben om te beginnen.", "score": 8},
+        {"known": "I am the only one who knows the way.", "target": "Ik ben de enige die de manier weet.", "score": 8},
+        {"known": "No I am not ready yet to speak Dutch.", "target": "Nee ik ben nog niet klaar om Nederlands te spreken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "yet/still",
+      "target": "nog",
+      "build": [
+        {"known": "yet", "target": "nog"},
+        {"known": "still", "target": "nog"},
+        {"known": "not yet", "target": "nog niet"},
+        {"known": "still not", "target": "nog niet"}
+      ],
+      "use": [
+        {"known": "I am not ready yet to go home on the bus.", "target": "Ik ben nog niet klaar om met de bus naar huis te gaan.", "score": 8},
+        {"known": "No she is still not ready to do it.", "target": "Nee zij is nog niet klaar om het te doen.", "score": 8},
+        {"known": "I am still not sure if it will work.", "target": "Ik ben nog niet zeker of het zal werken.", "score": 8},
+        {"known": "She said that I am not ready yet.", "target": "Zij zei dat ik nog niet klaar ben.", "score": 8},
+        {"known": "We are still not the only ones who know.", "target": "Wij zijn nog niet de enigen die het weten.", "score": 8},
+        {"known": "No I am not yet sure about the way to go.", "target": "Nee ik ben nog niet zeker over de manier om te gaan.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "not",
+      "target": "niet",
+      "build": [
+        {"known": "not", "target": "niet"},
+        {"known": "not ready", "target": "niet klaar"},
+        {"known": "not yet", "target": "nog niet"},
+        {"known": "do not", "target": "niet doen"}
+      ],
+      "use": [
+        {"known": "I am not ready to go home on the next bus.", "target": "Ik ben niet klaar om met de volgende bus naar huis te gaan.", "score": 8},
+        {"known": "No she is not the only one who knows.", "target": "Nee zij is niet de enige die het weet.", "score": 8},
+        {"known": "I do not know if I can do it now.", "target": "Ik weet niet of ik het nu kan doen.", "score": 8},
+        {"known": "She said that it is not possible to go.", "target": "Zij zei dat het niet mogelijk is om te gaan.", "score": 8},
+        {"known": "It is not the only way to make it work.", "target": "Het is niet de enige manier om het te laten werken.", "score": 8},
+        {"known": "No I am not yet ready to start learning.", "target": "Nee ik ben nog niet klaar om te beginnen met leren.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "ready",
+      "target": "klaar",
+      "build": [
+        {"known": "ready", "target": "klaar"},
+        {"known": "not ready", "target": "niet klaar"},
+        {"known": "ready to go", "target": "klaar om te gaan"},
+        {"known": "are you ready", "target": "ben je klaar"}
+      ],
+      "use": [
+        {"known": "No I am not ready yet to go home.", "target": "Nee ik ben nog niet klaar om naar huis te gaan.", "score": 8},
+        {"known": "She is ready to go on the next bus.", "target": "Zij is klaar om met de volgende bus te gaan.", "score": 8},
+        {"known": "I am not ready to do it the only way.", "target": "Ik ben niet klaar om het op de enige manier te doen.", "score": 8},
+        {"known": "Are you ready to go home now?", "target": "Ben je klaar om nu naar huis te gaan?", "score": 8},
+        {"known": "She said that she is not ready yet.", "target": "Zij zei dat zij nog niet klaar is.", "score": 8},
+        {"known": "No we are not ready to start now.", "target": "Nee wij zijn niet klaar om nu te beginnen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "have",
+      "target": "heb",
+      "build": [
+        {"known": "have", "target": "heb"},
+        {"known": "I have", "target": "ik heb"},
+        {"known": "have time", "target": "heb tijd"},
+        {"known": "have to", "target": "heb te"}
+      ],
+      "use": [
+        {"known": "I have time to go home on the next bus.", "target": "Ik heb tijd om met de volgende bus naar huis te gaan.", "score": 8},
+        {"known": "No I have not done it yet.", "target": "Nee ik heb het nog niet gedaan.", "score": 8},
+        {"known": "I have the only way to make it work.", "target": "Ik heb de enige manier om het te laten werken.", "score": 8},
+        {"known": "She said that I have time to do it.", "target": "Zij zei dat ik tijd heb om het te doen.", "score": 8},
+        {"known": "I have not yet done it.", "target": "Ik heb het nog niet gedaan.", "score": 8},
+        {"known": "No I have not enough time to go.", "target": "Nee ik heb niet genoeg tijd om te gaan.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "some/a little",
+      "target": "wat",
+      "build": [
+        {"known": "some", "target": "wat"},
+        {"known": "a little", "target": "wat"},
+        {"known": "a little more", "target": "wat meer"},
+        {"known": "some time", "target": "wat tijd"}
+      ],
+      "use": [
+        {"known": "I would like a little more time to go home.", "target": "Ik zou graag wat meer tijd willen om naar huis te gaan.", "score": 8},
+        {"known": "No I have only some time to do it.", "target": "Nee ik heb maar wat tijd om het te doen.", "score": 8},
+        {"known": "She said that I have a little more time.", "target": "Zij zei dat ik wat meer tijd heb.", "score": 8},
+        {"known": "I would like some more time to start.", "target": "Ik zou graag wat meer tijd willen om te beginnen.", "score": 8},
+        {"known": "No I have only a little time to go.", "target": "Nee ik heb maar wat tijd om te gaan.", "score": 8},
+        {"known": "I have a little more time to be ready.", "target": "Ik heb wat meer tijd om klaar te zijn.", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "more",
+      "target": "meer",
+      "build": [
+        {"known": "more", "target": "meer"},
+        {"known": "more time", "target": "meer tijd"},
+        {"known": "a little more", "target": "wat meer"},
+        {"known": "no more", "target": "niet meer"}
+      ],
+      "use": [
+        {"known": "I need more time to go home on the bus.", "target": "Ik heb meer tijd nodig om met de bus naar huis te gaan.", "score": 8},
+        {"known": "No I need a little more time to do it.", "target": "Nee ik heb wat meer tijd nodig om het te doen.", "score": 8},
+        {"known": "She said that I need more time.", "target": "Zij zei dat ik meer tijd nodig heb.", "score": 8},
+        {"known": "I would like more time to start now.", "target": "Ik zou graag meer tijd willen om nu te beginnen.", "score": 8},
+        {"known": "No I have no more time to do it.", "target": "Nee ik heb niet meer tijd om het te doen.", "score": 8},
+        {"known": "She needs more time to be ready to go.", "target": "Zij heeft meer tijd nodig om klaar te zijn om te gaan.", "score": 7}
+      ]
+    },
+    {
+      "idx": 10,
+      "type": "A",
+      "known": "time",
+      "target": "tijd",
+      "build": [
+        {"known": "time", "target": "tijd"},
+        {"known": "more time", "target": "meer tijd"},
+        {"known": "enough time", "target": "genoeg tijd"},
+        {"known": "short time", "target": "korte tijd"}
+      ],
+      "use": [
+        {"known": "I need more time to go home on the next bus.", "target": "Ik heb meer tijd nodig om met de volgende bus naar huis te gaan.", "score": 8},
+        {"known": "No I don't have enough time to do it.", "target": "Nee ik heb niet genoeg tijd om het te doen.", "score": 8},
+        {"known": "She said that I have time to go home.", "target": "Zij zei dat ik tijd heb om naar huis te gaan.", "score": 8},
+        {"known": "I would like a little more time to start.", "target": "Ik zou graag wat meer tijd willen om te beginnen.", "score": 8},
+        {"known": "No I have not enough time to be ready.", "target": "Nee ik heb niet genoeg tijd om klaar te zijn.", "score": 8},
+        {"known": "She needs more time to make it work.", "target": "Zij heeft meer tijd nodig om het te laten werken.", "score": 7}
+      ]
+    },
+    {
+      "idx": 11,
+      "type": "A",
+      "known": "need",
+      "target": "nodig",
+      "build": [
+        {"known": "need", "target": "nodig"},
+        {"known": "I need", "target": "ik heb nodig"},
+        {"known": "need time", "target": "tijd nodig"},
+        {"known": "need more", "target": "meer nodig"}
+      ],
+      "use": [
+        {"known": "No I'm not ready yet, I need a little more time.", "target": "Nee, ik ben nog niet klaar, ik heb nog wat meer tijd nodig.", "score": 9},
+        {"known": "I need more time to go home on the bus.", "target": "Ik heb meer tijd nodig om met de bus naar huis te gaan.", "score": 8},
+        {"known": "She said that she needs a little more time.", "target": "Zij zei dat zij wat meer tijd nodig heeft.", "score": 7},
+        {"known": "I need the only way to make it work.", "target": "Ik heb de enige manier nodig om het te laten werken.", "score": 8},
+        {"known": "No I need more time to be ready to go.", "target": "Nee ik heb meer tijd nodig om klaar te zijn om te gaan.", "score": 8},
+        {"known": "She needs time to do it on the next bus.", "target": "Zij heeft tijd nodig om het met de volgende bus te doen.", "score": 7}
+      ]
+    }
+  ]
+}

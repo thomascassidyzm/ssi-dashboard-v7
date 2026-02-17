@@ -1,0 +1,123 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 111,
+  "target_text": "When we learn something new it changes our brain.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "脳",
+      "target": "brain",
+      "build": [
+        {"known": "脳", "target": "brain"},
+        {"known": "あなたの脳", "target": "your brain"},
+        {"known": "私の脳", "target": "my brain"},
+        {"known": "脳が", "target": "the brain"}
+      ],
+      "use": [
+        {"known": "あなたの脳は一生懸命働いています。", "target": "Your brain is working hard all the time.", "score": 8},
+        {"known": "私の脳は今日たくさんのことを学んでいます。", "target": "My brain is learning a lot of things today.", "score": 8},
+        {"known": "脳は大切なものです。", "target": "The brain is something important to have.", "score": 7},
+        {"known": "あなたの脳はとても良いです。", "target": "Your brain is very good for learning.", "score": 7},
+        {"known": "脳があることは大切です。", "target": "It is important to have a brain.", "score": 8},
+        {"known": "私の脳は疲れているかもしれません。", "target": "I think that my brain is tired now.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "私たちの",
+      "target": "our",
+      "components": [
+        {"known": "私たち", "target": "we"},
+        {"known": "の", "target": "-'s"}
+      ],
+      "build": [
+        {"known": "私たちの", "target": "our"},
+        {"known": "私たちの脳", "target": "our brain"},
+        {"known": "私たちの友達", "target": "our friends"},
+        {"known": "私たちの言葉", "target": "our words"}
+      ],
+      "use": [
+        {"known": "私たちの脳は一生懸命働いていると思います。", "target": "I think that our brain is working hard all the time.", "score": 8},
+        {"known": "私たちの友達は英語を学んでいると思います。", "target": "I think that our friends are learning English now.", "score": 8},
+        {"known": "私たちの言葉を練習したいと思います。", "target": "I think I want to work on our words today.", "score": 7},
+        {"known": "これは私たちの時間です、何かしましょう。", "target": "This is our time to do something, I think.", "score": 8},
+        {"known": "私たちの脳は新しいことを学びたいと思っています。", "target": "I think that our brain wants to learn new things.", "score": 8},
+        {"known": "私たちの友達と一緒にやりたいと思います。", "target": "I think I want to do it with our friends.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "それは〜を変える",
+      "target": "it changes",
+      "components": [
+        {"known": "それ", "target": "it"},
+        {"known": "変える", "target": "changes"}
+      ],
+      "build": [
+        {"known": "それは変える", "target": "it changes"},
+        {"known": "それは脳を変える", "target": "it changes the brain"},
+        {"known": "それは私たちを変える", "target": "it changes our"},
+        {"known": "それは全てを変える", "target": "it changes all"}
+      ],
+      "use": [
+        {"known": "学ぶと、それは私たちの脳を変えます。", "target": "When we learn, it changes our brain.", "score": 8},
+        {"known": "それは私たちがやっていることを変えます。", "target": "It changes what we are doing now.", "score": 8},
+        {"known": "それは私たちの考え方を変えます。", "target": "It changes what we think about things.", "score": 8},
+        {"known": "新しいことを学ぶと、それは全てを変えます。", "target": "When we learn new things, it changes all.", "score": 8},
+        {"known": "それは私たちの時間の使い方を変えます。", "target": "It changes how we have time for things.", "score": 8},
+        {"known": "一生懸命働くと、それは私たちの人生を変えます。", "target": "When we work hard, it changes what we do.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "〜すると",
+      "target": "When we",
+      "components": [
+        {"known": "〜する時", "target": "When"},
+        {"known": "私たちが", "target": "we"}
+      ],
+      "build": [
+        {"known": "〜すると", "target": "When we"},
+        {"known": "学ぶと", "target": "When we learn"},
+        {"known": "話すと", "target": "When we speak"},
+        {"known": "働くと", "target": "When we work"}
+      ],
+      "use": [
+        {"known": "学ぶと、私たちの脳が変わります。", "target": "When we learn, it changes our brain.", "score": 8},
+        {"known": "話すと、もっと上手になります。", "target": "When we speak, we are more good at it.", "score": 7},
+        {"known": "一生懸命働くと、良いことが起きます。", "target": "When we work hard, good things happen.", "score": 8},
+        {"known": "友達と話すと、楽しいです。", "target": "When we talk with friends, it is fun.", "score": 8},
+        {"known": "新しいことを試すと、私たちの脳は幸せです。", "target": "When we try something new, our brain is happy.", "score": 8},
+        {"known": "毎日続けると、もっと上手になります。", "target": "When we do it all the time, we are more good.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "新しいことを学ぶ",
+      "target": "learn something new",
+      "components": [
+        {"known": "学ぶ", "target": "learn"},
+        {"known": "新しいこと", "target": "something new"}
+      ],
+      "build": [
+        {"known": "新しいことを学ぶ", "target": "learn something new"},
+        {"known": "新しいことを学びたい", "target": "want to learn something new"},
+        {"known": "毎日新しいことを学ぶ", "target": "learn something new all the time"},
+        {"known": "新しいことを学ぶのが好き", "target": "like to learn something new"}
+      ],
+      "use": [
+        {"known": "新しいことを学ぶのは楽しいです。", "target": "It is fun to learn something new.", "score": 8},
+        {"known": "新しいことを学ぶと、私たちの脳が変わります。", "target": "When we learn something new it changes our brain.", "score": 9},
+        {"known": "毎日新しいことを学びたいです。", "target": "I want to learn something new all the time.", "score": 8},
+        {"known": "友達と新しいことを学ぶのが好きです。", "target": "I like to learn something new with friends.", "score": 8},
+        {"known": "新しいことを学ぶことは難しいですが、大切です。", "target": "It is difficult to learn something new, but it is important.", "score": 8},
+        {"known": "一生懸命働いて新しいことを学ぶことが好きです。", "target": "I like to work hard and learn something new.", "score": 8}
+      ]
+    }
+  ]
+}

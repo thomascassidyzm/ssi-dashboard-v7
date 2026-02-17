@@ -1,0 +1,60 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 13,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Tu parles",
+      "target": "You speak",
+      "components": [
+        {"known": "Tu", "target": "You"},
+        {"known": "parles", "target": "speak"}
+      ],
+      "build": [
+        {"known": "Tu parles", "target": "You speak"},
+        {"known": "Tu parles anglais", "target": "You speak English"},
+        {"known": "Tu parles maintenant", "target": "You speak now"},
+        {"known": "Tu parles un peu", "target": "You speak a little"}
+      ],
+      "use": [
+        {"known": "Tu parles un peu anglais aujourd'hui.", "target": "You speak a little English today.", "score": 8},
+        {"known": "Tu parles anglais après que je termine de parler.", "target": "You speak English after I finish speaking.", "score": 8},
+        {"known": "Je ne suis pas sûr si tu parles anglais demain.", "target": "I'm not sure if you speak English tomorrow.", "score": 8},
+        {"known": "Tu parles anglais le plus souvent possible maintenant.", "target": "You speak English as often as possible now.", "score": 8},
+        {"known": "J'aimerais que tu parles anglais avec quelqu'un d'autre.", "target": "I'd like you to speak English with someone else.", "score": 9},
+        {"known": "Tu parles anglais aussi fort que possible aujourd'hui.", "target": "You speak English as hard as you can today.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "anglais",
+      "target": "English"
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "très bien",
+      "target": "very well",
+      "components": [
+        {"known": "très", "target": "very"},
+        {"known": "bien", "target": "well"}
+      ],
+      "build": [
+        {"known": "très bien", "target": "very well"},
+        {"known": "parler très bien", "target": "to speak very well"},
+        {"known": "Tu parles très bien", "target": "You speak very well"},
+        {"known": "Je parle très bien", "target": "I speak very well"}
+      ],
+      "use": [
+        {"known": "Tu parles anglais très bien.", "target": "You speak English very well.", "score": 9},
+        {"known": "Je parle un peu anglais très bien maintenant.", "target": "I speak a little English very well now.", "score": 7},
+        {"known": "J'aimerais pouvoir parler anglais très bien.", "target": "I'd like to be able to speak English very well.", "score": 9},
+        {"known": "Tu parles très bien après que tu termines.", "target": "You speak very well after you finish.", "score": 8},
+        {"known": "J'essaie de parler anglais très bien aujourd'hui.", "target": "I'm trying to speak English very well today.", "score": 8},
+        {"known": "Je vais essayer de parler très bien demain.", "target": "I'm going to try to speak very well tomorrow.", "score": 8}
+      ]
+    }
+  ]
+}

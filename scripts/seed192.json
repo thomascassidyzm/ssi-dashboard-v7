@@ -1,0 +1,116 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 192,
+  "known_text": "I'm busy tomorrow night.",
+  "target_text": "我明天晚上很忙。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I am.", "target": "我是。"},
+        {"known": "I am busy.", "target": "我很忙。"},
+        {"known": "And me.", "target": "还有我。"}
+      ],
+      "use": [
+        {"known": "I don't mind at all if you ask me questions.", "target": "如果你问我问题，我一点都不介意。", "score": 7},
+        {"known": "I told him I don't have time to help today.", "target": "我告诉他我今天没有时间帮忙。", "score": 7},
+        {"known": "I think this is a good idea for all of us.", "target": "我觉得这对我们都是一个好主意。", "score": 7},
+        {"known": "I need a little more time to finish this work.", "target": "我需要多一点时间来做完这个工作。", "score": 8},
+        {"known": "I want to learn more about this interesting thing.", "target": "我想多了解一下这个有意思的事。", "score": 7},
+        {"known": "I hope you can come to that place with us tomorrow.", "target": "我希望你明天能和我们一起去那个地方。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "tomorrow",
+      "target": "明天",
+      "components": [
+        {"known": "bright/clear", "target": "明"},
+        {"known": "day/sky", "target": "天"}
+      ],
+      "build": [
+        {"known": "Tomorrow.", "target": "明天。"},
+        {"known": "Tomorrow morning.", "target": "明天早上。"},
+        {"known": "See you tomorrow.", "target": "明天见。"},
+        {"known": "Come tomorrow.", "target": "明天来。"}
+      ],
+      "use": [
+        {"known": "She said she will come here with us tomorrow.", "target": "她说她明天会和我们一起来这里。", "score": 6},
+        {"known": "Do you mind if I ask you about this tomorrow?", "target": "你介意我明天问你关于这个吗？", "score": 7},
+        {"known": "He told me he doesn't have time to help tomorrow.", "target": "他告诉我他明天没有时间帮忙。", "score": 7},
+        {"known": "I think we should all go to that place tomorrow.", "target": "我觉得我们明天都应该去那个地方。", "score": 7},
+        {"known": "Everyone wants to know what will happen tomorrow.", "target": "大家都想知道明天会怎么样。", "score": 8},
+        {"known": "I don't mind at all if you can't come tomorrow.", "target": "如果你明天不能来，我一点都不介意。", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "evening/night",
+      "target": "晚上",
+      "components": [
+        {"known": "late/evening", "target": "晚"},
+        {"known": "up/on", "target": "上"}
+      ],
+      "build": [
+        {"known": "Evening.", "target": "晚上。"},
+        {"known": "This evening.", "target": "今天晚上。"},
+        {"known": "Tomorrow evening.", "target": "明天晚上。"},
+        {"known": "Every evening.", "target": "每天晚上。"}
+      ],
+      "use": [
+        {"known": "I am busy this evening so I cannot help you.", "target": "我今天晚上很忙，所以不能帮你。", "score": 7},
+        {"known": "She said she wants to come here tomorrow evening.", "target": "她说她明天晚上想来这里。", "score": 6},
+        {"known": "Do you have time to talk with me this evening?", "target": "你今天晚上有时间和我聊吗？", "score": 7},
+        {"known": "He told me he will be at that place every evening.", "target": "他告诉我他每天晚上都会在那个地方。", "score": 7},
+        {"known": "We don't mind at all meeting you tomorrow evening.", "target": "我们一点都不介意明天晚上和你见面。", "score": 8},
+        {"known": "I need to ask her if she is busy this evening.", "target": "我需要问她今天晚上忙不忙。", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "very",
+      "target": "很",
+      "build": [
+        {"known": "Very.", "target": "很。"},
+        {"known": "Very good.", "target": "很好。"},
+        {"known": "Very busy.", "target": "很忙。"},
+        {"known": "Very much.", "target": "很多。"}
+      ],
+      "use": [
+        {"known": "This question is very interesting and important.", "target": "这个问题很有意思也很重要。", "score": 7},
+        {"known": "She told me the work today was very difficult.", "target": "她告诉我今天的工作很难。", "score": 6},
+        {"known": "He said he is very happy to help us with this.", "target": "他说他很高兴帮我们做这个。", "score": 7},
+        {"known": "I am very busy this evening and tomorrow evening too.", "target": "我今天晚上和明天晚上都很忙。", "score": 7},
+        {"known": "Everyone thinks this is a very good idea for all.", "target": "大家都觉得这对所有人是一个很好的主意。", "score": 8},
+        {"known": "We are all very interested in learning more about this.", "target": "我们都对多了解这个很有兴趣。", "score": 7}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "busy",
+      "target": "忙",
+      "build": [
+        {"known": "Busy.", "target": "忙。"},
+        {"known": "Very busy.", "target": "很忙。"},
+        {"known": "Are you busy?", "target": "你忙吗？"},
+        {"known": "I'm busy.", "target": "我很忙。"}
+      ],
+      "use": [
+        {"known": "I am very busy this evening and cannot help you.", "target": "我今天晚上很忙，不能帮你。", "score": 7},
+        {"known": "She told me she will be busy all day tomorrow.", "target": "她告诉我她明天一整天都会很忙。", "score": 7},
+        {"known": "Do you mind if we meet next week when I'm not busy?", "target": "你介意我们下个星期我不忙的时候见面吗？", "score": 8},
+        {"known": "He said everyone at that place is very busy now.", "target": "他说那个地方的人现在都很忙。", "score": 6},
+        {"known": "I don't mind at all if you are too busy to help.", "target": "如果你太忙不能帮忙，我一点都不介意。", "score": 8},
+        {"known": "We are all too busy this evening to go there.", "target": "我们今天晚上都太忙了，去不了那里。", "score": 7}
+      ]
+    }
+  ]
+}

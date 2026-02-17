@@ -1,0 +1,102 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 118,
+  "target_text": "I feel better than I felt when we were in the pub.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "パブ",
+      "target": "pub",
+      "build": [
+        {"known": "パブ", "target": "pub"},
+        {"known": "パブで", "target": "in the pub"},
+        {"known": "パブに行く", "target": "go to the pub"},
+        {"known": "パブにいた", "target": "in the pub"}
+      ],
+      "use": [
+        {"known": "パブに行きたいと思います。", "target": "I think I want to go to the pub now.", "score": 8},
+        {"known": "パブにいた時は楽しかったです。", "target": "It was fun when we were in the pub.", "score": 8},
+        {"known": "パブで友達と話すのが好きです。", "target": "I like to talk with friends in the pub.", "score": 8},
+        {"known": "パブにいた時より確実に良い気分です。", "target": "I definitely feel more good than in the pub.", "score": 8},
+        {"known": "パブは楽しい所だと思います。", "target": "I think the pub is a fun thing to do.", "score": 7},
+        {"known": "パブに行くのが好きですが、今日は行きません。", "target": "I like to go to the pub, but I will not go today.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "私たちがいた時",
+      "target": "when we were in the",
+      "components": [
+        {"known": "〜した時", "target": "when"},
+        {"known": "私たちが", "target": "we"},
+        {"known": "いた", "target": "were in the"}
+      ],
+      "build": [
+        {"known": "私たちがいた時", "target": "when we were in the"},
+        {"known": "パブにいた時", "target": "when we were in the pub"},
+        {"known": "そこにいた時", "target": "when we were in the"},
+        {"known": "家にいた時", "target": "when we were in the home"}
+      ],
+      "use": [
+        {"known": "パブにいた時は楽しかったです。", "target": "It was fun when we were in the pub.", "score": 8},
+        {"known": "パブにいた時より良い気分です。", "target": "I feel more good than when we were in the pub.", "score": 8},
+        {"known": "そこにいた時は難しかったです。", "target": "It was difficult when we were in the pub.", "score": 8},
+        {"known": "パブにいた時、たくさん話しました。", "target": "I did talk a lot when we were in the pub.", "score": 8},
+        {"known": "そこにいた時より確実に良いです。", "target": "It is definitely more good than when we were in the pub.", "score": 8},
+        {"known": "パブにいた時、何か新しいことを学びました。", "target": "I did learn something new when we were in the pub.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "感じていたより",
+      "target": "than I felt",
+      "components": [
+        {"known": "〜より", "target": "than"},
+        {"known": "私が", "target": "I"},
+        {"known": "感じていた", "target": "felt"}
+      ],
+      "build": [
+        {"known": "感じていたより", "target": "than I felt"},
+        {"known": "感じていたよりも良い", "target": "than I felt before"},
+        {"known": "感じていたよりも悪い", "target": "than I felt worse"},
+        {"known": "感じていたよりも", "target": "than I felt at that time"}
+      ],
+      "use": [
+        {"known": "感じていたよりも良い気分です。", "target": "I feel more good than I felt before.", "score": 8},
+        {"known": "パブにいた時に感じていたよりも良いです。", "target": "I feel more good than I felt when we were in the pub.", "score": 8},
+        {"known": "昨日感じていたよりも確実に良いです。", "target": "I definitely feel more good than I felt yesterday.", "score": 8},
+        {"known": "感じていたよりも難しいと思います。", "target": "I think it is more difficult than I felt.", "score": 8},
+        {"known": "感じていたよりも良くなっています。", "target": "I'm doing more good than I felt before.", "score": 8},
+        {"known": "感じていたよりも確実に違います。", "target": "It is definitely different than I felt before.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "気分がいい",
+      "target": "I feel better",
+      "components": [
+        {"known": "私は", "target": "I"},
+        {"known": "感じる", "target": "feel"},
+        {"known": "良い", "target": "better"}
+      ],
+      "build": [
+        {"known": "気分がいい", "target": "I feel better"},
+        {"known": "もっと気分がいい", "target": "I feel more better"},
+        {"known": "気分が良くなった", "target": "I feel better now"},
+        {"known": "気分がいいと思う", "target": "I feel better than"}
+      ],
+      "use": [
+        {"known": "パブにいた時より気分がいいです。", "target": "I feel better than I felt when we were in the pub.", "score": 9},
+        {"known": "昨日より気分がいいと思います。", "target": "I think I feel better than I felt yesterday.", "score": 8},
+        {"known": "今日は気分がいいです。", "target": "I feel better today than I felt before.", "score": 8},
+        {"known": "友達と話した後、気分がいいです。", "target": "I feel better after I did talk with friends.", "score": 8},
+        {"known": "確実に気分がいいと思います。", "target": "I think I definitely feel better now.", "score": 8},
+        {"known": "パブにいた時より確実に気分がいいです。", "target": "I definitely feel better than I felt in the pub.", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "course_code": "eng_for_spa",
+  "seed_number": 23,
+  "known_text": "Voy a empezar a hablar más pronto.",
+  "target_text": "I'm going to start talking more soon.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "voy a",
+      "target": "I'm going to",
+      "components": [
+        {"known": "voy", "target": "I'm going"},
+        {"known": "a", "target": "to"}
+      ],
+      "build": [
+        {"known": "voy a", "target": "I'm going to"},
+        {"known": "voy a hablar", "target": "I'm going to speak"},
+        {"known": "voy a aprender", "target": "I'm going to learn"},
+        {"known": "voy a conocer", "target": "I'm going to meet"}
+      ],
+      "use": [
+        {"known": "Voy a hablar inglés con todos esta noche.", "target": "I'm going to speak English with everyone this evening.", "score": 8},
+        {"known": "Voy a aprender inglés porque quiero conocer a personas.", "target": "I'm going to learn English because I want to meet people.", "score": 8},
+        {"known": "Voy a conocer a personas que hablan inglés muy bien.", "target": "I'm going to meet people who speak English very well.", "score": 8},
+        {"known": "Voy a aprender su nombre porque quiero hablar con ella.", "target": "I'm going to learn her name because I want to speak with her.", "score": 8},
+        {"known": "Voy a hablar inglés con todos los demás más tarde.", "target": "I'm going to speak English with everyone else later on.", "score": 8},
+        {"known": "Voy a hablar inglés con personas que hablan inglés conmigo.", "target": "I'm going to speak English with people who speak English with me.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "empezar",
+      "target": "start",
+      "build": [
+        {"known": "empezar", "target": "start"},
+        {"known": "empezar a hablar", "target": "start speaking"},
+        {"known": "voy a empezar", "target": "I'm going to start"},
+        {"known": "quiero empezar", "target": "I want to start"}
+      ],
+      "use": [
+        {"known": "Voy a empezar a hablar inglés con todos esta noche.", "target": "I'm going to start speaking English with everyone this evening.", "score": 8},
+        {"known": "Quiero empezar a aprender inglés porque quiero conocer a personas.", "target": "I want to start learning English because I want to meet people.", "score": 8},
+        {"known": "¿Por qué quieres empezar a hablar inglés conmigo?", "target": "Why do you want to start speaking English with me?", "score": 8},
+        {"known": "Ella quiere empezar a hablar inglés muy rápidamente.", "target": "She wants to start speaking English very quickly.", "score": 8},
+        {"known": "Voy a empezar a aprender inglés más tarde esta noche.", "target": "I'm going to start learning English later on this evening.", "score": 8},
+        {"known": "¿Vas a empezar a hablar inglés con ella esta noche?", "target": "Are you going to start speaking English with her this evening?", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "hablando",
+      "target": "talking",
+      "build": [
+        {"known": "hablando", "target": "talking"},
+        {"known": "empezar hablando", "target": "start talking"},
+        {"known": "hablando inglés", "target": "talking English"},
+        {"known": "hablando conmigo", "target": "talking with me"}
+      ],
+      "use": [
+        {"known": "Voy a empezar hablando inglés con todos esta noche.", "target": "I'm going to start talking English with everyone this evening.", "score": 7},
+        {"known": "¿Por qué estás hablando inglés con ella?", "target": "Why are you talking English with her?", "score": 7},
+        {"known": "Ella quiere empezar hablando inglés muy rápidamente.", "target": "She wants to start talking English very quickly.", "score": 7},
+        {"known": "Voy a empezar hablando inglés con personas que hablan inglés.", "target": "I'm going to start talking English with people who speak English.", "score": 8},
+        {"known": "¿Vas a empezar hablando inglés conmigo esta noche?", "target": "Are you going to start talking English with me this evening?", "score": 8},
+        {"known": "Quiero empezar hablando inglés con todos los demás más tarde.", "target": "I want to start talking English with everyone else later on.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "más",
+      "target": "more",
+      "build": [
+        {"known": "más", "target": "more"},
+        {"known": "hablar más", "target": "speak more"},
+        {"known": "aprender más", "target": "learn more"},
+        {"known": "más inglés", "target": "more English"}
+      ],
+      "use": [
+        {"known": "Voy a hablar más inglés con todos esta noche.", "target": "I'm going to speak more English with everyone this evening.", "score": 8},
+        {"known": "Quiero aprender más inglés porque quiero conocer a personas.", "target": "I want to learn more English because I want to meet people.", "score": 8},
+        {"known": "¿Por qué quieres hablar más inglés conmigo?", "target": "Why do you want to speak more English with me?", "score": 8},
+        {"known": "Ella quiere empezar a hablar más inglés muy rápidamente.", "target": "She wants to start speaking more English very quickly.", "score": 8},
+        {"known": "Voy a empezar a aprender más inglés más tarde esta noche.", "target": "I'm going to start learning more English later on this evening.", "score": 8},
+        {"known": "Quiero hablar más inglés con personas que hablan inglés.", "target": "I want to speak more English with people who speak English.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "pronto",
+      "target": "soon",
+      "build": [
+        {"known": "pronto", "target": "soon"},
+        {"known": "muy pronto", "target": "very soon"},
+        {"known": "hablar pronto", "target": "speak soon"},
+        {"known": "empezar pronto", "target": "start soon"}
+      ],
+      "use": [
+        {"known": "Voy a hablar inglés pronto con todos esta noche.", "target": "I'm going to speak English soon with everyone this evening.", "score": 7},
+        {"known": "Quiero empezar a aprender inglés muy pronto porque quiero conocer a personas.", "target": "I want to start learning English very soon because I want to meet people.", "score": 8},
+        {"known": "¿Vas a empezar a hablar inglés conmigo muy pronto?", "target": "Are you going to start speaking English with me very soon?", "score": 8},
+        {"known": "Ella quiere empezar a hablar más inglés muy pronto.", "target": "She wants to start speaking more English very soon.", "score": 8},
+        {"known": "Voy a conocer a personas que hablan inglés muy pronto.", "target": "I'm going to meet people who speak English very soon.", "score": 8},
+        {"known": "Quiero empezar a hablar más inglés con ella muy pronto.", "target": "I want to start speaking more English with her very soon.", "score": 8}
+      ]
+    }
+  ]
+}

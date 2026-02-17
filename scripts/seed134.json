@@ -1,0 +1,144 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 134,
+  "known_text": "彼らと難しいことに取り組んでも問題ありません。",
+  "target_text": "It's not a problem when you work at something difficult with them.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "難しい",
+      "target": "difficult",
+      "build": [
+        {"known": "難しい", "target": "difficult"},
+        {"known": "難しいこと", "target": "something difficult"},
+        {"known": "難しい問題", "target": "difficult thing"},
+        {"known": "とても難しい", "target": "very difficult"}
+      ],
+      "use": [
+        {"known": "私はそれがとても難しいと思います。", "target": "I think that is very difficult.", "score": 7},
+        {"known": "彼女は難しいことをしたいと言いました。", "target": "She said she wanted to do something difficult.", "score": 8},
+        {"known": "それは難しいと彼は言っていました。", "target": "He was saying that it is difficult.", "score": 7},
+        {"known": "難しいことを理解するのはとても面白いと思います。", "target": "I think it is very exciting to understand something difficult.", "score": 8},
+        {"known": "私たちは難しいことをやりたいと思っています。", "target": "We think we want to do something difficult.", "score": 7},
+        {"known": "彼女は難しいことを知るようになりたいと言いました。", "target": "She said she wanted to get to know something difficult.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "問題",
+      "target": "problem",
+      "build": [
+        {"known": "問題", "target": "problem"},
+        {"known": "問題がある", "target": "have a problem"},
+        {"known": "問題ない", "target": "no problem"},
+        {"known": "難しい問題", "target": "difficult problem"}
+      ],
+      "use": [
+        {"known": "私は問題があると思います。", "target": "I think I have a problem.", "score": 7},
+        {"known": "彼女は問題がないと言いました。", "target": "She said there is no problem.", "score": 7},
+        {"known": "それは難しい問題だと思います。", "target": "I think that is a difficult problem.", "score": 7},
+        {"known": "私たちは問題を理解したいと思っています。", "target": "We think we want to understand the problem.", "score": 8},
+        {"known": "彼は問題があると言っていました。", "target": "He was saying that there is a problem.", "score": 7},
+        {"known": "問題を理解するのはとても難しいと思います。", "target": "I think it is very difficult to understand the problem.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "彼らと",
+      "target": "with them",
+      "components": [
+        {"known": "彼ら", "target": "them"},
+        {"known": "と", "target": "with"}
+      ],
+      "build": [
+        {"known": "彼らと", "target": "with them"},
+        {"known": "彼らと一緒に", "target": "together with them"},
+        {"known": "彼らと話す", "target": "talk with them"},
+        {"known": "彼らと働く", "target": "work with them"}
+      ],
+      "use": [
+        {"known": "私は彼らと一緒に働きたいと思います。", "target": "I think I want to work together with them.", "score": 7},
+        {"known": "彼女は彼らと話したいと言いました。", "target": "She said she wanted to talk with them.", "score": 8},
+        {"known": "彼らと一緒に働くと誰かをとてもよく知るようになります。", "target": "When you work together with them you get to know someone very well.", "score": 8},
+        {"known": "私たちは彼らと問題について話したいです。", "target": "We want to talk with them about the problem.", "score": 8},
+        {"known": "彼らと一緒にやるのはとても面白いと思います。", "target": "I think it is very exciting to do it together with them.", "score": 8},
+        {"known": "彼は彼らと何か難しいことをしたいと言いました。", "target": "He said he wanted to do something difficult with them.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "〜に取り組む",
+      "target": "work at something",
+      "components": [
+        {"known": "取り組む", "target": "work at"},
+        {"known": "〜に", "target": "something"}
+      ],
+      "build": [
+        {"known": "〜に取り組む", "target": "work at something"},
+        {"known": "難しいことに取り組む", "target": "work at something difficult"},
+        {"known": "問題に取り組む", "target": "work at the problem"},
+        {"known": "一緒に取り組む", "target": "work at together"}
+      ],
+      "use": [
+        {"known": "私は難しいことに取り組みたいと思います。", "target": "I think I want to work at something difficult.", "score": 7},
+        {"known": "彼女は問題に取り組みたいと言いました。", "target": "She said she wanted to work at the problem.", "score": 8},
+        {"known": "彼らと一緒に難しいことに取り組むのはとても面白いです。", "target": "It is very exciting to work at something difficult together with them.", "score": 8},
+        {"known": "私たちは問題に取り組むと誰かをとてもよく知るようになります。", "target": "When we work at the problem we get to know someone very well.", "score": 8},
+        {"known": "彼は難しいことに取り組みたくないと言いました。", "target": "He said he didn't want to work at something difficult.", "score": 8},
+        {"known": "難しいことに取り組むのは問題ではないと思います。", "target": "I think it is not a problem to work at something difficult.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "問題ではない",
+      "target": "It's not a problem",
+      "components": [
+        {"known": "問題", "target": "problem"},
+        {"known": "ではない", "target": "It's not a"}
+      ],
+      "build": [
+        {"known": "問題ではない", "target": "It's not a problem"},
+        {"known": "問題ではありません", "target": "It's not a problem"},
+        {"known": "それは問題ではない", "target": "That's not a problem"},
+        {"known": "難しいのは問題ではない", "target": "It's not a problem to be difficult"}
+      ],
+      "use": [
+        {"known": "彼らと一緒に働くのは問題ではないと思います。", "target": "I think it's not a problem to work together with them.", "score": 8},
+        {"known": "難しいことに取り組むのは問題ではありません。", "target": "It's not a problem to work at something difficult.", "score": 8},
+        {"known": "彼女は問題ではないと言いました。", "target": "She said it's not a problem.", "score": 7},
+        {"known": "彼らと難しいことをするのは問題ではないと思います。", "target": "I think it's not a problem to do something difficult with them.", "score": 8},
+        {"known": "一緒に取り組むのは問題ではありません。", "target": "It's not a problem to work at it together.", "score": 7},
+        {"known": "彼は問題ではないと言っていましたが、私は難しいと思います。", "target": "He was saying it's not a problem, but I think it is difficult.", "score": 9}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "〜しても",
+      "target": "when you",
+      "components": [
+        {"known": "〜して", "target": "you"},
+        {"known": "も", "target": "when"}
+      ],
+      "build": [
+        {"known": "〜しても", "target": "when you"},
+        {"known": "取り組んでも", "target": "when you work at"},
+        {"known": "やっても", "target": "when you do"},
+        {"known": "一緒にやっても", "target": "when you do together"}
+      ],
+      "use": [
+        {"known": "難しいことに取り組んでも問題ではありません。", "target": "It's not a problem when you work at something difficult.", "score": 8},
+        {"known": "彼らと一緒にやっても問題ではないと思います。", "target": "I think it's not a problem when you do it together with them.", "score": 8},
+        {"known": "難しいことをやっても誰かをとてもよく知るようになります。", "target": "When you do something difficult you get to know someone very well.", "score": 8},
+        {"known": "彼らと取り組んでも面白いと思います。", "target": "I think it is exciting when you work at it with them.", "score": 7},
+        {"known": "彼らと難しいことに取り組んでも問題ありません。", "target": "It's not a problem when you work at something difficult with them.", "score": 9},
+        {"known": "一緒にやっても問題ではないと彼女は言いました。", "target": "She said it's not a problem when you do it together.", "score": 8}
+      ]
+    }
+  ]
+}

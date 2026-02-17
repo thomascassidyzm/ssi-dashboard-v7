@@ -1,0 +1,172 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 52,
+  "known_text": "He wanted to write a letter to his friend last week.",
+  "target_text": "Hij wilde vorige week een brief aan zijn vriend schrijven.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "he",
+      "target": "hij",
+      "build": [
+        {"known": "he", "target": "hij"},
+        {"known": "he wants", "target": "hij wil"},
+        {"known": "he is", "target": "hij is"},
+        {"known": "he speaks", "target": "hij spreekt"}
+      ],
+      "use": [
+        {"known": "He wants to speak Dutch.", "target": "Hij wil Nederlands spreken.", "score": 8},
+        {"known": "He is learning Dutch now.", "target": "Hij leert nu Nederlands.", "score": 8},
+        {"known": "I think that he wants to do it.", "target": "Ik denk dat hij het wil doen.", "score": 7},
+        {"known": "He wants to do interesting things with everyone.", "target": "Hij wil interessante dingen doen met iedereen.", "score": 8},
+        {"known": "I enjoy speaking Dutch when he is here.", "target": "Ik vind het leuk om Nederlands te spreken als hij hier is.", "score": 7},
+        {"known": "He wants to speak Dutch with my friends.", "target": "Hij wil Nederlands spreken met mijn vrienden.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "wanted",
+      "target": "wilde",
+      "build": [
+        {"known": "wanted", "target": "wilde"},
+        {"known": "he wanted", "target": "hij wilde"},
+        {"known": "wanted to do", "target": "wilde doen"},
+        {"known": "wanted to speak", "target": "wilde spreken"}
+      ],
+      "use": [
+        {"known": "He wanted to speak Dutch.", "target": "Hij wilde Nederlands spreken.", "score": 8},
+        {"known": "He wanted to do it with someone else.", "target": "Hij wilde het met iemand anders doen.", "score": 8},
+        {"known": "He wanted to learn something now.", "target": "Hij wilde nu iets leren.", "score": 8},
+        {"known": "I think that he wanted to do it.", "target": "Ik denk dat hij het wilde doen.", "score": 7},
+        {"known": "He wanted to try to speak Dutch with everyone.", "target": "Hij wilde proberen om Nederlands te spreken met iedereen.", "score": 8},
+        {"known": "He wanted to do interesting things with my friends.", "target": "Hij wilde interessante dingen doen met mijn vrienden.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "to write",
+      "target": "schrijven",
+      "build": [
+        {"known": "to write", "target": "schrijven"},
+        {"known": "to write it", "target": "het schrijven"},
+        {"known": "I want to write", "target": "ik wil schrijven"},
+        {"known": "to write something", "target": "iets schrijven"}
+      ],
+      "use": [
+        {"known": "I want to write something now.", "target": "Ik wil nu iets schrijven.", "score": 8},
+        {"known": "He wanted to write something.", "target": "Hij wilde iets schrijven.", "score": 8},
+        {"known": "I enjoy writing in Dutch.", "target": "Ik vind het leuk om in het Nederlands te schrijven.", "score": 8},
+        {"known": "I try to write something good.", "target": "Ik probeer om iets goed te schrijven.", "score": 7},
+        {"known": "He wanted to write it now.", "target": "Hij wilde het nu schrijven.", "score": 7},
+        {"known": "I would like to write something with my friends.", "target": "Ik zou graag iets willen schrijven met mijn vrienden.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "a letter",
+      "target": "een brief",
+      "build": [
+        {"known": "a letter", "target": "een brief"},
+        {"known": "the letter", "target": "de brief"},
+        {"known": "to write a letter", "target": "een brief schrijven"},
+        {"known": "my letter", "target": "mijn brief"}
+      ],
+      "use": [
+        {"known": "I want to write a letter now.", "target": "Ik wil nu een brief schrijven.", "score": 8},
+        {"known": "He wanted to write a letter.", "target": "Hij wilde een brief schrijven.", "score": 8},
+        {"known": "I enjoy writing a letter.", "target": "Ik vind het leuk om een brief te schrijven.", "score": 8},
+        {"known": "He wanted to write a letter now.", "target": "Hij wilde nu een brief schrijven.", "score": 7},
+        {"known": "I think that I want to write a letter.", "target": "Ik denk dat ik een brief wil schrijven.", "score": 7},
+        {"known": "I would like to write a letter.", "target": "Ik zou graag een brief willen schrijven.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "to [recipient]",
+      "target": "aan",
+      "build": [
+        {"known": "to someone", "target": "aan iemand"},
+        {"known": "to everyone", "target": "aan iedereen"},
+        {"known": "to my friends", "target": "aan mijn vrienden"},
+        {"known": "to write to someone", "target": "aan iemand schrijven"}
+      ],
+      "use": [
+        {"known": "I want to write a letter to someone.", "target": "Ik wil een brief aan iemand schrijven.", "score": 8},
+        {"known": "He wanted to write something to my friends.", "target": "Hij wilde iets aan mijn vrienden schrijven.", "score": 7},
+        {"known": "I enjoy writing a letter to everyone.", "target": "Ik vind het leuk om een brief aan iedereen te schrijven.", "score": 7},
+        {"known": "I would like to write a letter to someone else.", "target": "Ik zou graag een brief aan iemand anders willen schrijven.", "score": 8},
+        {"known": "He wanted to write a letter to my friends.", "target": "Hij wilde een brief aan mijn vrienden schrijven.", "score": 8},
+        {"known": "I try to write something to someone.", "target": "Ik probeer om iets aan iemand te schrijven.", "score": 7}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "his",
+      "target": "zijn",
+      "build": [
+        {"known": "his", "target": "zijn"},
+        {"known": "his friend", "target": "zijn vriend"},
+        {"known": "his letter", "target": "zijn brief"},
+        {"known": "with his friends", "target": "met zijn vrienden"}
+      ],
+      "use": [
+        {"known": "He wanted to do it with his friends.", "target": "Hij wilde het doen met zijn vrienden.", "score": 8},
+        {"known": "I think that his Dutch is good.", "target": "Ik denk dat zijn Nederlands goed is.", "score": 8},
+        {"known": "He wanted to write a letter to his friend.", "target": "Hij wilde een brief aan zijn vriend schrijven.", "score": 8},
+        {"known": "I enjoy speaking Dutch with his friends.", "target": "Ik vind het leuk om Nederlands te spreken met zijn vrienden.", "score": 7},
+        {"known": "He wanted to do interesting things with his friends.", "target": "Hij wilde interessante dingen doen met zijn vrienden.", "score": 8},
+        {"known": "His friend wanted to write something.", "target": "Zijn vriend wilde iets schrijven.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "friend",
+      "target": "vriend",
+      "build": [
+        {"known": "friend", "target": "vriend"},
+        {"known": "a friend", "target": "een vriend"},
+        {"known": "his friend", "target": "zijn vriend"},
+        {"known": "my friend", "target": "mijn vriend"}
+      ],
+      "use": [
+        {"known": "I want to do it with my friend.", "target": "Ik wil het doen met mijn vriend.", "score": 8},
+        {"known": "He wanted to write a letter to his friend.", "target": "Hij wilde een brief aan zijn vriend schrijven.", "score": 8},
+        {"known": "My friend wants to learn Dutch.", "target": "Mijn vriend wil Nederlands leren.", "score": 8},
+        {"known": "I enjoy speaking Dutch with my friend.", "target": "Ik vind het leuk om Nederlands te spreken met mijn vriend.", "score": 8},
+        {"known": "His friend wanted to do something interesting.", "target": "Zijn vriend wilde interessante dingen doen.", "score": 7},
+        {"known": "I would like to write a letter to my friend.", "target": "Ik zou graag een brief aan mijn vriend willen schrijven.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "M",
+      "known": "last week",
+      "target": "vorige week",
+      "components": [
+        {"known": "last/previous", "target": "vorige"},
+        {"known": "week", "target": "week"}
+      ],
+      "build": [
+        {"known": "last week", "target": "vorige week"},
+        {"known": "the previous week", "target": "de vorige week"},
+        {"known": "one week", "target": "een week"},
+        {"known": "a week", "target": "een week"}
+      ],
+      "use": [
+        {"known": "He wanted to do it last week.", "target": "Hij wilde het vorige week doen.", "score": 8},
+        {"known": "I wanted to write a letter last week.", "target": "Ik wilde vorige week een brief schrijven.", "score": 8},
+        {"known": "He wanted to write a letter to his friend last week.", "target": "Hij wilde vorige week een brief aan zijn vriend schrijven.", "score": 9},
+        {"known": "Last week he wanted to do something interesting.", "target": "Vorige week wilde hij interessante dingen doen.", "score": 7},
+        {"known": "I tried to speak Dutch with my friends last week.", "target": "Vorige week wilde ik Nederlands spreken met mijn vrienden.", "score": 7},
+        {"known": "His friend wanted to learn Dutch last week.", "target": "Zijn vriend wilde vorige week Nederlands leren.", "score": 8}
+      ]
+    }
+  ]
+}

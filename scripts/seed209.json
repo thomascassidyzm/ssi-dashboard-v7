@@ -1,0 +1,168 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 209,
+  "known_text": "They want to spend more time meeting as a group.",
+  "target_text": "他们想花更多时间一起开会。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "they",
+      "target": "他们",
+      "components": [
+        {"known": "he/him", "target": "他"},
+        {"known": "(plural)", "target": "们"}
+      ],
+      "build": [
+        {"known": "They.", "target": "他们。"},
+        {"known": "They want.", "target": "他们想。"},
+        {"known": "They have.", "target": "他们有。"},
+        {"known": "They said.", "target": "他们说。"}
+      ],
+      "use": [
+        {"known": "They want to spend more time practicing together.", "target": "他们想花更多时间一起练习。", "score": 7},
+        {"known": "Did you know they finished the work yesterday?", "target": "你知道他们昨天完成了工作吗？", "score": 7},
+        {"known": "I heard they like having meetings in the morning.", "target": "我听说他们喜欢早上开会。", "score": 8},
+        {"known": "Nobody told me they were coming to the office.", "target": "没有人告诉我他们要来办公室。", "score": 7},
+        {"known": "If they have time, they can help us finish today.", "target": "如果他们有时间，他们可以帮我们今天完成。", "score": 8},
+        {"known": "She asked when they want to meet with us.", "target": "她问他们什么时候想和我们开会。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "want/think",
+      "target": "想",
+      "build": [
+        {"known": "Want.", "target": "想。"},
+        {"known": "They want.", "target": "他们想。"},
+        {"known": "Want to spend.", "target": "想花。"},
+        {"known": "I want.", "target": "我想。"}
+      ],
+      "use": [
+        {"known": "They want to spend more time together as a team.", "target": "他们想作为团队花更多时间一起。", "score": 8},
+        {"known": "She said she wants to meet with us next week.", "target": "她说她下星期想和我们开会。", "score": 7},
+        {"known": "If you want to know more, you can ask them.", "target": "如果你想知道更多，你可以问他们。", "score": 7},
+        {"known": "I didn't want to spend too much time on this.", "target": "我不想在这个上花太多时间。", "score": 8},
+        {"known": "Everyone wants to have more chances to practice.", "target": "大家都想有更多机会练习。", "score": 7},
+        {"known": "Did anyone tell you what they want to do?", "target": "有人告诉你他们想做什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "spend (time/money)",
+      "target": "花",
+      "build": [
+        {"known": "Spend.", "target": "花。"},
+        {"known": "Spend time.", "target": "花时间。"},
+        {"known": "Want to spend.", "target": "想花。"},
+        {"known": "Spend more.", "target": "花更多。"}
+      ],
+      "use": [
+        {"known": "They want to spend more time working together.", "target": "他们想花更多时间一起工作。", "score": 7},
+        {"known": "She doesn't want to spend too much on this.", "target": "她不想在这个上花太多。", "score": 7},
+        {"known": "If we spend more time practicing, we will improve.", "target": "如果我们花更多时间练习，我们会变好。", "score": 8},
+        {"known": "I like to spend time talking with my friends.", "target": "我喜欢花时间和我朋友说话。", "score": 8},
+        {"known": "Nobody wants to spend all day in meetings.", "target": "没有人想花一天开会。", "score": 7},
+        {"known": "Did you spend a lot of time finishing that work?", "target": "你花了很多时间完成那个工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "more (quantity)",
+      "target": "更多",
+      "components": [
+        {"known": "even more", "target": "更"},
+        {"known": "much/many", "target": "多"}
+      ],
+      "build": [
+        {"known": "More.", "target": "更多。"},
+        {"known": "More time.", "target": "更多时间。"},
+        {"known": "Spend more.", "target": "花更多。"},
+        {"known": "Want more.", "target": "想更多。"}
+      ],
+      "use": [
+        {"known": "They want to spend more time meeting together.", "target": "他们想花更多时间一起开会。", "score": 7},
+        {"known": "She needs more time to finish this work properly.", "target": "她需要更多时间好好完成这个工作。", "score": 8},
+        {"known": "If you want to learn more, you should practice.", "target": "如果你想学更多，你要练习。", "score": 7},
+        {"known": "I think we need to have more meetings this week.", "target": "我想我们这星期需要开更多会。", "score": 8},
+        {"known": "Everyone said they want more chances to speak.", "target": "大家都说他们想要更多机会说话。", "score": 7},
+        {"known": "Did you know we need more people to help us?", "target": "你知道我们需要更多人帮我们吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "time",
+      "target": "时间",
+      "components": [
+        {"known": "time/hour", "target": "时"},
+        {"known": "between/space", "target": "间"}
+      ],
+      "build": [
+        {"known": "Time.", "target": "时间。"},
+        {"known": "More time.", "target": "更多时间。"},
+        {"known": "Spend time.", "target": "花时间。"},
+        {"known": "Have time.", "target": "有时间。"}
+      ],
+      "use": [
+        {"known": "They want to spend more time working as a group.", "target": "他们想花更多时间一起工作。", "score": 7},
+        {"known": "She said she doesn't have time to meet today.", "target": "她说她今天没有时间开会。", "score": 7},
+        {"known": "If you have time, please help us finish this.", "target": "如果你有时间，请帮我们完成这个。", "score": 7},
+        {"known": "I didn't have enough time to practice yesterday.", "target": "我昨天没有足够时间练习。", "score": 8},
+        {"known": "Everyone needs more time to finish the work.", "target": "大家都需要更多时间完成工作。", "score": 7},
+        {"known": "Did you know he spent all his time on this?", "target": "你知道他花了他所有的时间在这个上吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "together",
+      "target": "一起",
+      "components": [
+        {"known": "one", "target": "一"},
+        {"known": "rise/together", "target": "起"}
+      ],
+      "build": [
+        {"known": "Together.", "target": "一起。"},
+        {"known": "Work together.", "target": "一起工作。"},
+        {"known": "Meet together.", "target": "一起开会。"},
+        {"known": "Practice together.", "target": "一起练习。"}
+      ],
+      "use": [
+        {"known": "They want to spend more time meeting together.", "target": "他们想花更多时间一起开会。", "score": 7},
+        {"known": "She likes working together with the whole team.", "target": "她喜欢和全部团队一起工作。", "score": 8},
+        {"known": "If we work together, we can finish faster.", "target": "如果我们一起工作，我们可以更快完成。", "score": 8},
+        {"known": "I want to practice speaking together with you.", "target": "我想和你一起练习说话。", "score": 7},
+        {"known": "Everyone likes coming together for the meeting.", "target": "大家都喜欢一起来开会。", "score": 7},
+        {"known": "Did you know they went there together yesterday?", "target": "你知道他们昨天一起去那里了吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "M",
+      "known": "have a meeting",
+      "target": "开会",
+      "components": [
+        {"known": "open/start", "target": "开"},
+        {"known": "meeting/can", "target": "会"}
+      ],
+      "build": [
+        {"known": "Meet.", "target": "开会。"},
+        {"known": "Have a meeting.", "target": "开会。"},
+        {"known": "Meet together.", "target": "一起开会。"},
+        {"known": "Want to meet.", "target": "想开会。"}
+      ],
+      "use": [
+        {"known": "They want to spend more time meeting as a group.", "target": "他们想花更多时间一起开会。", "score": 7},
+        {"known": "She said we need to meet before we go tomorrow.", "target": "她说我们明天去之前需要开会。", "score": 8},
+        {"known": "If you want to meet, please let me know today.", "target": "如果你想开会，请今天让我知道。", "score": 7},
+        {"known": "I don't like having meetings that take too much time.", "target": "我不喜欢开会花太多时间。", "score": 8},
+        {"known": "Everyone is busy so we have to meet tomorrow.", "target": "大家都很忙所以我们明天要开会。", "score": 8},
+        {"known": "Did you know they had a meeting about this?", "target": "你知道他们开会说这个了吗？", "score": 8}
+      ]
+    }
+  ]
+}

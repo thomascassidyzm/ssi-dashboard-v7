@@ -1,0 +1,249 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 230,
+  "known_text": "I know a young man who wants to work with you.",
+  "target_text": "我认识一个年轻的男人，他想和你一起工作。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I know.", "target": "我认识。"},
+        {"known": "I want.", "target": "我想。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "I know a young man who just started practising.", "target": "我认识一个年轻的男人，他刚开始练习。", "score": 8},
+        {"known": "That woman asked me if I want to help tomorrow.", "target": "那个女人问我是不是明天想帮忙。", "score": 7},
+        {"known": "If she could help me, I would finish the work sooner.", "target": "如果她能帮我的话，我会快一点完成工作。", "score": 8},
+        {"known": "Everyone told me they had a good time at the meeting.", "target": "大家都告诉我他们开会过得开心。", "score": 7},
+        {"known": "Would that man be able to give me his answer today?", "target": "那个男人今天能给我他的答案吗？", "score": 8},
+        {"known": "She hopes I can tell her what happened yesterday.", "target": "她希望我能告诉她昨天发生了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "know (be acquainted with)",
+      "target": "认识",
+      "components": [
+        {"known": "recognize", "target": "认"},
+        {"known": "know", "target": "识"}
+      ],
+      "build": [
+        {"known": "Know.", "target": "认识。"},
+        {"known": "I know.", "target": "我认识。"},
+        {"known": "Know someone.", "target": "认识人。"},
+        {"known": "Know a man.", "target": "认识一个男人。"}
+      ],
+      "use": [
+        {"known": "I know a man who wants to help with this work.", "target": "我认识一个男人，他想帮忙做这个工作。", "score": 8},
+        {"known": "That woman knows everyone at the meeting.", "target": "那个女人认识开会的大家。", "score": 7},
+        {"known": "If you know someone who can help, please tell me.", "target": "如果你认识能帮忙的人的话，请告诉我。", "score": 8},
+        {"known": "He just started to know people at the office.", "target": "他刚开始认识办公室的人。", "score": 7},
+        {"known": "Everyone here knows that man from the meeting.", "target": "这里的大家都认识那个开会的男人。", "score": 8},
+        {"known": "Do you know the woman who spoke at the meeting?", "target": "你认识在开会说话的那个女人吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "one (measure)",
+      "target": "一个",
+      "components": [
+        {"known": "one", "target": "一"},
+        {"known": "measure word", "target": "个"}
+      ],
+      "build": [
+        {"known": "One.", "target": "一个。"},
+        {"known": "A (thing).", "target": "一个。"},
+        {"known": "A man.", "target": "一个男人。"},
+        {"known": "Know a man.", "target": "认识一个男人。"}
+      ],
+      "use": [
+        {"known": "I know a young man who can help us with this.", "target": "我认识一个年轻的男人，他能帮我们做这个。", "score": 8},
+        {"known": "That woman is waiting for us to give her an answer.", "target": "那个女人在等我们给她一个答案。", "score": 7},
+        {"known": "If you need an answer now, I can try to help you.", "target": "如果你现在需要一个答案的话，我能试着帮你。", "score": 8},
+        {"known": "He will give her an answer when he sees her tomorrow.", "target": "他明天见她的时候会给她一个答案。", "score": 7},
+        {"known": "Everyone is waiting to hear an answer to the question.", "target": "大家都在等听问题的一个答案。", "score": 8},
+        {"known": "What kind of answer do you think she will give us?", "target": "你觉得她会给我们什么样的一个答案？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "young",
+      "target": "年轻的",
+      "components": [
+        {"known": "year", "target": "年"},
+        {"known": "light", "target": "轻"},
+        {"known": "possessive", "target": "的"}
+      ],
+      "build": [
+        {"known": "Young.", "target": "年轻的。"},
+        {"known": "Young man.", "target": "年轻的男人。"},
+        {"known": "A young man.", "target": "一个年轻的男人。"},
+        {"known": "Young woman.", "target": "年轻的女人。"}
+      ],
+      "use": [
+        {"known": "I know a young man who just started working here.", "target": "我认识一个年轻的男人，他刚开始在这里工作。", "score": 8},
+        {"known": "That young woman wants to practise speaking more.", "target": "那个年轻的女人想更多练习说话。", "score": 7},
+        {"known": "If the young man can help, we should ask him now.", "target": "如果那个年轻的男人能帮忙的话，我们现在要问他。", "score": 8},
+        {"known": "He saw a young woman at the meeting yesterday.", "target": "他昨天在开会见了一个年轻的女人。", "score": 7},
+        {"known": "Everyone thinks that young man did a great job.", "target": "大家都觉得那个年轻的男人做得很好。", "score": 8},
+        {"known": "Which young man do you think will be able to help?", "target": "你觉得哪个年轻的男人能帮忙？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "man",
+      "target": "男人",
+      "components": [
+        {"known": "male", "target": "男"},
+        {"known": "person", "target": "人"}
+      ],
+      "build": [
+        {"known": "Man.", "target": "男人。"},
+        {"known": "That man.", "target": "那个男人。"},
+        {"known": "A young man.", "target": "一个年轻的男人。"},
+        {"known": "The man.", "target": "那个男人。"}
+      ],
+      "use": [
+        {"known": "I know a young man who wants to help with the meeting.", "target": "我认识一个年轻的男人，他想帮忙开会。", "score": 8},
+        {"known": "That man asked if the young woman can come tomorrow.", "target": "那个男人问那个年轻的女人是不是明天能来。", "score": 7},
+        {"known": "If the man wants to work here, he should talk to us.", "target": "如果那个男人想在这里工作的话，他要和我们说话。", "score": 8},
+        {"known": "She saw a man who just started to practise speaking.", "target": "她见了一个男人，他刚开始练习说话。", "score": 8},
+        {"known": "Everyone thinks that young man knows a lot about this.", "target": "大家都觉得那个年轻的男人知道很多这个。", "score": 7},
+        {"known": "Why did that man want to talk to you yesterday?", "target": "那个男人为什么昨天想和你说话？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "he/him",
+      "target": "他",
+      "build": [
+        {"known": "He.", "target": "他。"},
+        {"known": "He wants.", "target": "他想。"},
+        {"known": "He works.", "target": "他工作。"},
+        {"known": "With him.", "target": "和他。"}
+      ],
+      "use": [
+        {"known": "I know a young man, he wants to work with us.", "target": "我认识一个年轻的男人，他想和我们一起工作。", "score": 8},
+        {"known": "That woman asked if he can come to the meeting.", "target": "那个女人问他是不是能来开会。", "score": 7},
+        {"known": "If he has time tomorrow, he will help us with the work.", "target": "如果他明天有时间的话，他会帮我们做工作。", "score": 8},
+        {"known": "I want him to tell us what happened at the office.", "target": "我想他告诉我们办公室发生了什么。", "score": 7},
+        {"known": "Everyone is waiting for him to give us an answer.", "target": "大家都在等他给我们一个答案。", "score": 8},
+        {"known": "Would he be able to help us if we asked him nicely?", "target": "如果我们好好问他，他会帮我们吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "want",
+      "target": "想",
+      "build": [
+        {"known": "Want.", "target": "想。"},
+        {"known": "He wants.", "target": "他想。"},
+        {"known": "Want to work.", "target": "想工作。"},
+        {"known": "Want to help.", "target": "想帮。"}
+      ],
+      "use": [
+        {"known": "I know a young man who wants to start working soon.", "target": "我认识一个年轻的男人，他想快一点开始工作。", "score": 8},
+        {"known": "That young woman wants to know what happened.", "target": "那个年轻的女人想知道发生了什么。", "score": 7},
+        {"known": "If he wants to help, he should come to the meeting.", "target": "如果他想帮忙的话，他要来开会。", "score": 8},
+        {"known": "She just said she wants to practise speaking more.", "target": "她刚说她想更多练习说话。", "score": 7},
+        {"known": "Everyone here wants to know when the meeting starts.", "target": "这里的大家都想知道开会什么时候开始。", "score": 8},
+        {"known": "What does that young man want to tell us about?", "target": "那个年轻的男人想告诉我们什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "and/with",
+      "target": "和",
+      "build": [
+        {"known": "And.", "target": "和。"},
+        {"known": "With.", "target": "和。"},
+        {"known": "With you.", "target": "和你。"},
+        {"known": "Work with.", "target": "和...工作。"}
+      ],
+      "use": [
+        {"known": "I know a young man who wants to work with us.", "target": "我认识一个年轻的男人，他想和我们一起工作。", "score": 8},
+        {"known": "That woman wants to practise speaking with him.", "target": "那个女人想和他练习说话。", "score": 7},
+        {"known": "If you can come with me, we can go to the meeting.", "target": "如果你能和我来的话，我们可以去开会。", "score": 8},
+        {"known": "He wants to talk with her about what happened.", "target": "他想和她说发生了什么。", "score": 7},
+        {"known": "Everyone wants to work with that young man.", "target": "大家都想和那个年轻的男人一起工作。", "score": 8},
+        {"known": "Would the young woman like to come with us tomorrow?", "target": "那个年轻的女人想明天和我们一起来吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "you",
+      "target": "你",
+      "build": [
+        {"known": "You.", "target": "你。"},
+        {"known": "With you.", "target": "和你。"},
+        {"known": "Help you.", "target": "帮你。"},
+        {"known": "Work with you.", "target": "和你工作。"}
+      ],
+      "use": [
+        {"known": "I know a young man who wants to work with you.", "target": "我认识一个年轻的男人，他想和你一起工作。", "score": 8},
+        {"known": "That young woman told me she wants to see you.", "target": "那个年轻的女人告诉我她想见你。", "score": 7},
+        {"known": "If he can help you, I think you should ask him now.", "target": "如果他能帮你的话，我觉得你现在要问他。", "score": 8},
+        {"known": "She hopes you can tell her what happened yesterday.", "target": "她希望你能告诉她昨天发生了什么。", "score": 7},
+        {"known": "Everyone here wants to know what you think about this.", "target": "这里的大家都想知道你觉得这个怎么样。", "score": 8},
+        {"known": "Would that man be able to come and work with you?", "target": "那个男人能来和你一起工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 10,
+      "type": "A",
+      "known": "together",
+      "target": "一起",
+      "build": [
+        {"known": "Together.", "target": "一起。"},
+        {"known": "Together with.", "target": "一起。"},
+        {"known": "Work together.", "target": "一起工作。"},
+        {"known": "With you together.", "target": "和你一起。"}
+      ],
+      "use": [
+        {"known": "I know a young man who wants to work together with you.", "target": "我认识一个年轻的男人，他想和你一起工作。", "score": 8},
+        {"known": "That woman asked if we can practise together tomorrow.", "target": "那个女人问我们是不是明天能一起练习。", "score": 7},
+        {"known": "If we work together, we can finish the work sooner.", "target": "如果我们一起工作的话，我们可以快一点完成。", "score": 8},
+        {"known": "He just started working together with the young woman.", "target": "他刚开始和那个年轻的女人一起工作。", "score": 7},
+        {"known": "Everyone wants to come together to help with this.", "target": "大家都想一起来帮忙做这个。", "score": 8},
+        {"known": "Would the young man like to practise together with us?", "target": "那个年轻的男人想和我们一起练习吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 11,
+      "type": "M",
+      "known": "work (employment)",
+      "target": "工作",
+      "components": [
+        {"known": "work", "target": "工"},
+        {"known": "do", "target": "作"}
+      ],
+      "build": [
+        {"known": "Work.", "target": "工作。"},
+        {"known": "Work together.", "target": "一起工作。"},
+        {"known": "Work with you.", "target": "和你一起工作。"},
+        {"known": "He works.", "target": "他工作。"}
+      ],
+      "use": [
+        {"known": "I know a young man who wants to work with you.", "target": "我认识一个年轻的男人，他想和你一起工作。", "score": 8},
+        {"known": "That young woman just started working at the office.", "target": "那个年轻的女人刚开始在办公室工作。", "score": 7},
+        {"known": "If he wants to work here, he should talk to us now.", "target": "如果他想在这里工作的话，他现在要和我们说话。", "score": 8},
+        {"known": "She has been working together with him for a while.", "target": "她和他一起工作一会儿了。", "score": 7},
+        {"known": "Everyone here wants to work together on this.", "target": "这里的大家都想一起做这个工作。", "score": 8},
+        {"known": "When did that young man start working at this place?", "target": "那个年轻的男人什么时候开始在这里工作？", "score": 8}
+      ]
+    }
+  ]
+}

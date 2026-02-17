@@ -714,7 +714,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import FilterBar from './components/FilterBar.vue';
 import SeedRow from './components/SeedRow.vue';
@@ -803,32 +803,52 @@ const journeyPageSize = 50;
 const journeyOffset = ref(0);
 const journeyHasMore = ref(true);
 
-// Journey search
+// Journey search (server-side across all content)
 const journeySearch = ref('');
+const journeySearchResults = ref<any[] | null>(null);
+const journeySearching = ref(false);
+let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
 
-// Filtered journey rounds based on search
-const filteredJourneyRounds = computed(() => {
-  const rounds = learningJourneyData.value?.rounds || [];
-  const q = journeySearch.value.trim().toLowerCase();
-  if (!q) return rounds;
+// Watch search input and debounce server-side search
+watch(journeySearch, (q) => {
+  if (searchDebounceTimer) clearTimeout(searchDebounceTimer);
+  const trimmed = q.trim();
+  if (!trimmed) {
+    journeySearchResults.value = null;
+    journeySearching.value = false;
+    return;
+  }
+  journeySearching.value = true;
+  searchDebounceTimer = setTimeout(() => searchJourney(trimmed), 400);
+});
 
-  return rounds.filter((round: any) => {
-    // Match round header: legoId, seedId
-    if (round.legoId?.toLowerCase().includes(q)) return true;
-    if (round.seedId?.toLowerCase().includes(q)) return true;
-    // Match seed number (e.g. "42" matches S0042)
-    if (/^\d+$/.test(q)) {
-      const num = parseInt(q, 10);
-      const seedNum = parseInt(round.seedId?.replace(/\D/g, ''), 10);
-      if (seedNum === num) return true;
-      if (round.roundNumber === num) return true;
-    }
-    // Match any item text
-    return round.items?.some((item: any) =>
-      item.known_text?.toLowerCase().includes(q) ||
-      item.target_text?.toLowerCase().includes(q)
+async function searchJourney(query: string) {
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(
+      `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey/search?q=${encodeURIComponent(query)}`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
     );
-  });
+    if (!response.ok) throw new Error('Search failed');
+    const data = await response.json();
+    // Only update if search query hasn't changed during fetch
+    if (journeySearch.value.trim() === query) {
+      journeySearchResults.value = data.rounds || [];
+    }
+  } catch (err) {
+    console.error('Journey search error:', err);
+    journeySearchResults.value = [];
+  } finally {
+    journeySearching.value = false;
+  }
+}
+
+// Use search results when searching, otherwise current page rounds
+const filteredJourneyRounds = computed(() => {
+  if (journeySearch.value.trim() && journeySearchResults.value !== null) {
+    return journeySearchResults.value;
+  }
+  return learningJourneyData.value?.rounds || [];
 });
 
 // Batch Selection State
@@ -1323,6 +1343,9 @@ const toggleViewMode = () => {
     if (!learningJourneyData.value) {
       journeyOffset.value = 0;
       loadLearningJourney();
+    } else {
+      // Refresh flags in case they changed while in script view
+      loadAudioFlags();
     }
   } else {
     viewMode.value = 'script';

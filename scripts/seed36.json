@@ -1,0 +1,75 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 36,
+  "target_text": "We don't want to interrupt the story.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "nós não queremos",
+      "target": "we don't want",
+      "components": [
+        {"known": "nós", "target": "we"},
+        {"known": "não queremos", "target": "don't want"}
+      ],
+      "build": [
+        {"known": "nós não queremos", "target": "we don't want"},
+        {"known": "nós não queremos falar", "target": "we don't want to speak"},
+        {"known": "nós não queremos aprender", "target": "we don't want to learn"},
+        {"known": "nós não queremos tentar", "target": "we don't want to try"}
+      ],
+      "use": [
+        {"known": "Nós não queremos falar inglês com outras pessoas agora.", "target": "We don't want to speak English with other people now.", "score": 8},
+        {"known": "Nós não queremos aprender inglês com você esta tarde.", "target": "We don't want to learn English with you this afternoon.", "score": 7},
+        {"known": "Nós não queremos tentar explicar algo para você aqui.", "target": "We don't want to try to explain something to you here.", "score": 8},
+        {"known": "Nós não queremos ficar quietos quando você quer falar.", "target": "We don't want to be quiet when you want to speak.", "score": 7},
+        {"known": "Nós não queremos ler nada esta tarde com você.", "target": "We don't want to read anything this afternoon with you.", "score": 7},
+        {"known": "Nós não queremos falar inglês o máximo possível hoje.", "target": "We don't want to speak English as often as possible today.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "interromper",
+      "target": "to interrupt",
+      "build": [
+        {"known": "interromper", "target": "to interrupt"},
+        {"known": "quero interromper", "target": "want to interrupt"},
+        {"known": "não quero interromper", "target": "don't want to interrupt"},
+        {"known": "nós não queremos interromper", "target": "we don't want to interrupt"}
+      ],
+      "use": [
+        {"known": "Eu quero interromper você agora e eu quero falar inglês.", "target": "I want to interrupt you now and I want to speak English.", "score": 7},
+        {"known": "Ela não quer interromper você quando você está falando aqui.", "target": "She doesn't want to interrupt you when you are speaking here.", "score": 8},
+        {"known": "Ele não quer interromper você e ele quer aprender inglês.", "target": "He doesn't want to interrupt you and he wants to learn English.", "score": 7},
+        {"known": "Nós não queremos interromper quando outras pessoas estão falando.", "target": "We don't want to interrupt when other people are speaking.", "score": 8},
+        {"known": "Eu não quero interromper você quando você está falando inglês agora.", "target": "I don't want to interrupt you when you are speaking English now.", "score": 8},
+        {"known": "Você queria interromper e eu queria falar com você.", "target": "You wanted to interrupt and I wanted to speak with you.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "a história",
+      "target": "the story",
+      "components": [
+        {"known": "a", "target": "the"},
+        {"known": "história", "target": "story"}
+      ],
+      "build": [
+        {"known": "a história", "target": "the story"},
+        {"known": "interromper a história", "target": "interrupt the story"},
+        {"known": "quero interromper a história", "target": "want to interrupt the story"},
+        {"known": "não quero interromper a história", "target": "don't want to interrupt the story"}
+      ],
+      "use": [
+        {"known": "Nós não queremos interromper a história e nós queremos aprender agora.", "target": "We don't want to interrupt the story and we want to learn now.", "score": 8},
+        {"known": "Eu não quero interromper a história quando você está falando aqui.", "target": "I don't want to interrupt the story when you are speaking here.", "score": 8},
+        {"known": "Ela não quer interromper a história e ela quer aprender inglês.", "target": "She doesn't want to interrupt the story and she wants to learn English.", "score": 7},
+        {"known": "Ele queria interromper a história e ele queria falar inglês.", "target": "He wanted to interrupt the story and he wanted to speak English.", "score": 7},
+        {"known": "Você queria interromper a história quando eu queria falar?", "target": "Did you want to interrupt the story when I wanted to speak?", "score": 8},
+        {"known": "Eu queria interromper a história e eu queria te perguntar uma coisa.", "target": "I wanted to interrupt the story and I wanted to ask you something.", "score": 8}
+      ]
+    }
+  ]
+}

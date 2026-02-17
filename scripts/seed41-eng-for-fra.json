@@ -1,0 +1,114 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 41,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je me sens",
+      "target": "I feel",
+      "components": [
+        {"known": "Je", "target": "I"},
+        {"known": "me sens", "target": "feel"}
+      ],
+      "build": [
+        {"known": "Je me sens", "target": "I feel"},
+        {"known": "Je", "target": "I"},
+        {"known": "me sens", "target": "feel"},
+        {"known": "Je me sens prêt", "target": "I feel ready"}
+      ],
+      "use": [
+        {"known": "Je me sens prêt à parler anglais avec d'autres personnes maintenant.", "target": "I feel ready to speak English with other people now.", "score": 9},
+        {"known": "Je me sens un peu fatigué ce matin mais je veux apprendre.", "target": "I feel a little tired this morning but I want to learn.", "score": 9},
+        {"known": "Je me sens prêt à commencer à parler anglais dès que possible.", "target": "I feel ready to start to speak English as soon as possible.", "score": 9},
+        {"known": "Je me sens fatigué cet après-midi mais je veux apprendre.", "target": "I feel tired this afternoon but I want to learn.", "score": 9},
+        {"known": "Je me sens prêt quand d'autres personnes sont ici avec moi.", "target": "I feel ready when other people are here with me.", "score": 9},
+        {"known": "Je me sens fatigué mais je veux parler anglais avec toi.", "target": "I feel tired but I want to speak English with you.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "bien",
+      "target": "okay",
+      "build": [
+        {"known": "bien", "target": "okay"},
+        {"known": "Je me sens bien", "target": "I feel okay"},
+        {"known": "c'est bien", "target": "it's okay"},
+        {"known": "ça va bien", "target": "it's okay"}
+      ],
+      "use": [
+        {"known": "Je me sens bien quand je parle anglais avec d'autres personnes.", "target": "I feel okay when I speak English with other people.", "score": 9},
+        {"known": "C'est bien de parler anglais avec quelqu'un maintenant.", "target": "It's okay to speak English with someone now.", "score": 9},
+        {"known": "Je me sens bien ce matin mais je suis un peu fatigué.", "target": "I feel okay this morning but I'm a little tired.", "score": 9},
+        {"known": "C'est bien de commencer à parler anglais dès que possible.", "target": "It's okay to start to speak English as soon as possible.", "score": 9},
+        {"known": "Je me sens bien quand tu es ici avec moi.", "target": "I feel okay when you are here with me.", "score": 9},
+        {"known": "C'est bien de parler anglais en ce moment.", "target": "It's okay to speak English at the moment.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "mais",
+      "target": "but",
+      "build": [
+        {"known": "mais", "target": "but"},
+        {"known": "mais je me sens", "target": "but I feel"},
+        {"known": "Je me sens bien mais", "target": "I feel okay but"},
+        {"known": "mais je suis fatigué", "target": "but I'm tired"}
+      ],
+      "use": [
+        {"known": "Je me sens bien mais je suis un peu fatigué ce matin.", "target": "I feel okay but I'm a little tired this morning.", "score": 9},
+        {"known": "Je veux parler anglais mais je suis fatigué maintenant.", "target": "I want to speak English but I'm tired now.", "score": 9},
+        {"known": "C'est bien mais je veux apprendre autre chose.", "target": "It's okay but I want to learn something else.", "score": 9},
+        {"known": "Je me sens prêt mais je suis un peu fatigué.", "target": "I feel ready but I'm a little tired.", "score": 9},
+        {"known": "Je veux apprendre mais je me sens fatigué.", "target": "I want to learn but I feel tired.", "score": 9},
+        {"known": "C'est bien mais je veux parler avec d'autres personnes.", "target": "It's okay but I want to speak with other people.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "je commence à me sentir",
+      "target": "I'm starting to feel",
+      "components": [
+        {"known": "je commence à", "target": "I'm starting to"},
+        {"known": "me sentir", "target": "feel"}
+      ],
+      "build": [
+        {"known": "je commence à me sentir", "target": "I'm starting to feel"},
+        {"known": "je commence à", "target": "I'm starting to"},
+        {"known": "me sentir", "target": "to feel"},
+        {"known": "je commence à me sentir fatigué", "target": "I'm starting to feel tired"}
+      ],
+      "use": [
+        {"known": "Mais je commence à me sentir fatigué ce matin.", "target": "But I'm starting to feel tired this morning.", "score": 9},
+        {"known": "Je me sens bien mais je commence à me sentir fatigué.", "target": "I feel okay but I'm starting to feel tired.", "score": 9},
+        {"known": "Je commence à me sentir prêt à parler anglais maintenant.", "target": "I'm starting to feel ready to speak English now.", "score": 9},
+        {"known": "Je commence à me sentir bien quand je parle anglais.", "target": "I'm starting to feel okay when I speak English.", "score": 9},
+        {"known": "Mais je commence à me sentir un peu fatigué cet après-midi.", "target": "But I'm starting to feel a little tired this afternoon.", "score": 9},
+        {"known": "Je commence à me sentir bien quand d'autres personnes sont ici.", "target": "I'm starting to feel okay when other people are here.", "score": 9}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "fatigué",
+      "target": "tired",
+      "build": [
+        {"known": "fatigué", "target": "tired"},
+        {"known": "je me sens fatigué", "target": "I feel tired"},
+        {"known": "un peu fatigué", "target": "a little tired"},
+        {"known": "je commence à me sentir fatigué", "target": "I'm starting to feel tired"}
+      ],
+      "use": [
+        {"known": "Je me sens bien mais je commence à me sentir fatigué.", "target": "I feel okay but I'm starting to feel tired.", "score": 9},
+        {"known": "Je suis un peu fatigué ce matin mais je veux apprendre.", "target": "I'm a little tired this morning but I want to learn.", "score": 9},
+        {"known": "Je me sens fatigué cet après-midi mais je veux apprendre.", "target": "I feel tired this afternoon but I want to learn.", "score": 9},
+        {"known": "Je suis fatigué mais je veux parler anglais avec toi.", "target": "I'm tired but I want to speak English with you.", "score": 9},
+        {"known": "Je commence à me sentir fatigué quand je parle trop.", "target": "I'm starting to feel tired when I speak too much.", "score": 9},
+        {"known": "Je me sens fatigué mais je suis prêt à commencer.", "target": "I feel tired but I'm ready to start.", "score": 9}
+      ]
+    }
+  ]
+}

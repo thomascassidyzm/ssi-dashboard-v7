@@ -1,0 +1,39 @@
+Seed,Phrase ID,English,Italian,Issues
+S080,9ab5d714-8a46-4eee-9f86-da88a4df5bcf,I'm not sure when I'll be ready.,non sono sicuro quando sarò pronto,MISSING PREP: 'non sono sicuro quando' -> needs 'non sono sicuro di quando'
+S080,2be743e9-621f-4b78-b646-0085284ef642,I'm not sure when I'll be ready to speak with you.,non sono sicuro quando sarò pronto parlare con te,MISSING PREP: 'pronto pensare/parlare' -> needs 'pronto a pensare/parlare' | MISSING PREP: 'non sono sicuro quando' -> needs 'non sono sicuro di quando'
+S080,f1e0ab39-eb8e-4714-9d2e-104d92938cd9,I'll be ready to speak Italian.,sarò pronto parlare italiano,MISSING PREP: 'pronto pensare/parlare' -> needs 'pronto a pensare/parlare'
+S083,26b4437e-5b34-4c0c-b51e-a285795620d2,What you said about the friend?,che cosa hai detto del amico,ELISION: 'del amico' -> should be 'dell'amico'
+S083,8d75abe2-a941-4ad2-98bd-8a11a05769e3,What you said about the your friend?,che cosa hai detto del tuo amico,ARTICLE: 'del tuo amico' needs review (article before possessive)
+S083,6464e73f-0825-4a05-b76d-5816979621d8,You said something about the friend.,hai detto qualcosa del amico,ELISION: 'del amico' -> should be 'dell'amico'
+S083,dd53f740-f86b-4187-9ad5-1e1944398386,You said something about the answer today.,hai detto qualcosa del risposta oggi,GENDER: 'del risposta' -> should be 'della risposta' (feminine)
+S083,cb44c03b-73e6-44b4-b085-efc45cd010e5,You said something about the your friend.,hai detto qualcosa del tuo amico,ARTICLE: 'del tuo amico' needs review (article before possessive)
+S083,38ebec34-49f9-4971-809b-dbdc2b4df5f3,I'm not sure what you said about the answer today.,non sono sicuro che cosa hai detto del risposta oggi,GENDER: 'del risposta' -> should be 'della risposta' (feminine) | MISSING CONJ: 'non sono sicuro che cosa' -> needs 'non sono sicuro di che cosa'
+S083,97f39927-3631-45cb-81f3-5be3a4e740e3,I'm not sure I agree.,non sono sicuro sono d'accordo,MISSING CONJ: 'non sono sicuro sono' -> needs 'non sono sicuro se sono' OR 'non sono sicuro di essere'
+S083,54aee680-4f55-4430-ae0a-e258139aa8a3,I agree with what you said about the answer.,sono d'accordo con che cosa hai detto del risposta,GENDER: 'del risposta' -> should be 'della risposta' (feminine)
+S083,d03b4d64-04d1-474c-9e6c-3a25fddfa33c,I agree with what you said about the your friend.,sono d'accordo con che cosa hai detto del tuo amico,ARTICLE: 'del tuo amico' needs review (article before possessive)
+S083,4b6fbe82-5359-4c85-8c54-546131d3e10c,I'm trying to remember something about the answer.,sto provando ricordare qualcosa del risposta,GENDER: 'del risposta' -> should be 'della risposta' (feminine) | MISSING PREP: 'sto provando + INF' -> needs 'sto provando a + INF'
+S083,c6d55423-a29c-4409-adfc-5dc7b9c9dc65,I'm trying to find your friend now.,sto provando trovare tuo amico adesso,MISSING PREP: 'sto provando + INF' -> needs 'sto provando a + INF'
+S083,1d1f4baa-a08e-4ffd-991f-d03721337d3a,Your friend wants to learn Italian with you today.,tuo amico vuoi imparare italiano con te oggi,VERB CONJ: 'tuo amico vuoi' -> should be 'tuo amico vuole' (3rd person)
+S083,4e10e7bb-f29a-4e0f-adb9-b0e3756add83,I want to speak about the friend.,voglio parlare del amico,ELISION: 'del amico' -> should be 'dell'amico'
+S083,291e379e-d604-423b-8eac-4a37283dff4f,I want to explain something about the answer now.,voglio spiegare qualcosa del risposta adesso,GENDER: 'del risposta' -> should be 'della risposta' (feminine)
+S084,96e32f7d-827f-47e3-821b-796ad125d356,I don't agree with what he said about the answer.,non sono d'accordo con che cosa ha detto del risposta,GENDER: 'del risposta' -> should be 'della risposta' (feminine)
+S084,e86c688a-89d8-41fb-ac81-c6499e262740,I'm not sure what he said today.,non sono sicuro che cosa ha detto oggi,MISSING CONJ: 'non sono sicuro che cosa' -> needs 'non sono sicuro di che cosa'
+S084,ed609f64-e7bf-4fb9-9a9d-46da7101c3cf,I'm trying to remember what he said.,sto provando ricordare che cosa ha detto,MISSING PREP: 'sto provando + INF' -> needs 'sto provando a + INF'
+S084,fc34360f-9764-46e2-9a76-8738b7d69104,I'm trying to find my friend now.,sto provando trovare mio amico adesso,MISSING PREP: 'sto provando + INF' -> needs 'sto provando a + INF'
+S089,035dcfb7-a13b-42fd-ae99-de5b83b93644,What I've done is important.,che cosa aver fatto è importante,VERB FORM: 'che cosa aver fatto' -> should be 'che cosa ho fatto'
+S089,34067371-eec3-410c-8fdf-7402eb511824,You said a lot about the answer.,hai detto molto del risposta,GENDER: 'del risposta' -> should be 'della risposta' (feminine)
+S089,b4d4168e-9653-47ce-82f2-987af82c4a3f,I'm not sure what I've done but it was important.,non sono sicuro che cosa aver fatto ma era importante,MISSING CONJ: 'non sono sicuro che cosa' -> needs 'non sono sicuro di che cosa' | VERB FORM: 'che cosa aver fatto' -> should be 'che cosa ho fatto'
+S089,a141103a-8a36-435d-88d0-d90ecc51dffb,I'm not sure I can do something in a short time.,non sono sicuro posso fare qualcosa in poco tempo,MISSING CONJ: 'non sono sicuro posso' -> needs 'non sono sicuro se posso'
+S091,797162b6-eb9a-4fdf-8e5b-73fa754542f2,I'm not yet ready to speak quickly enough in Italian.,non sono ancora pronto parlare abbastanza velocemente in italiano,MISSING PREP: 'pronto pensare/parlare' -> needs 'pronto a pensare/parlare'
+S091,016448c7-2329-47e4-a10f-6c634db136f0,I'm not yet ready to think quickly enough to answer in time today.,non sono ancora pronto pensare abbastanza velocemente per rispondere in tempo oggi,MISSING PREP: 'pronto pensare/parlare' -> needs 'pronto a pensare/parlare'
+S091,606df522-f7fb-4013-9ee2-2cea67a904aa,I'm not yet ready to think in Italian.,non sono ancora pronto pensare in italiano,MISSING PREP: 'pronto pensare/parlare' -> needs 'pronto a pensare/parlare'
+S091,62ed723f-3e3d-4ca7-9e8f-09b31f4e10f7,I'm not sure I can answer in time.,non sono sicuro posso rispondere in tempo,MISSING CONJ: 'non sono sicuro posso' -> needs 'non sono sicuro se posso'
+S091,ba089f34-d253-4faa-9634-6c4ca2b84167,I think it's difficult to think quickly enough about the answer.,penso è difficile pensare abbastanza velocemente del risposta,GENDER: 'del risposta' -> should be 'della risposta' (feminine) | MISSING CONJ: 'penso è difficile' -> needs 'penso che sia/è difficile'
+S091,27a6110c-b053-4fb4-ac09-0d88faa74fdc,I think it's difficult to think about what you said.,penso è difficile pensare che cosa hai detto,MISSING CONJ: 'penso è difficile' -> needs 'penso che sia/è difficile'
+S091,8a355de9-3ff0-4b05-af6f-f16068b7816a,I'm trying to think quickly enough now.,sto provando pensare abbastanza velocemente adesso,MISSING PREP: 'sto provando + INF' -> needs 'sto provando a + INF'
+S091,0f6c740e-ae74-499d-a429-d03d7505d100,I'm trying to think now.,sto provando pensare adesso,MISSING PREP: 'sto provando + INF' -> needs 'sto provando a + INF'
+S091,5336507e-196a-4c14-a1f7-8d1e5e2b3698,I'm trying to answer in time today.,sto provando rispondere in tempo oggi,MISSING PREP: 'sto provando + INF' -> needs 'sto provando a + INF'
+S091,b7784d67-f883-4c89-97af-c5e3729d6cdf,I want to think about the answer.,voglio pensare del risposta,GENDER: 'del risposta' -> should be 'della risposta' (feminine)
+S091,92913d36-ae5d-4a29-bb57-81536244ac25,I want to take time to think about the answer today.,voglio prendersi il tempo per pensare del risposta oggi,GENDER: 'del risposta' -> should be 'della risposta' (feminine) | REFLEXIVE: 'voglio prendersi' -> should be 'voglio prendermi' (1st person)
+S092,e96399ff-0e87-49c0-9acf-533d35387ed5,I think it's difficult to keep on doing this in a short time.,penso è difficile continuare a farlo in poco tempo,MISSING CONJ: 'penso è difficile' -> needs 'penso che sia/è difficile'
+S092,0fa07fc4-f2e6-4f99-97ae-a3188b8f4e71,I want to think about the answer for a while.,voglio pensare del risposta per un po',GENDER: 'del risposta' -> should be 'della risposta' (feminine)

@@ -1,0 +1,76 @@
+{
+  "course_code": "eng_for_deu",
+  "seed_number": 128,
+  "known_text": "Du bist wie jemand, den ich früher kannte.",
+  "target_text": "You're like someone I used to know.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "du bist wie",
+      "target": "you're like",
+      "components": [
+        {"known": "du bist", "target": "you're"},
+        {"known": "wie", "target": "like"}
+      ],
+      "build": [
+        {"known": "Du bist.", "target": "You're."},
+        {"known": "Wie.", "target": "Like."},
+        {"known": "Du bist wie.", "target": "You're like."},
+        {"known": "Du bist wie ich.", "target": "You're like me."}
+      ],
+      "use": [
+        {"known": "Du bist wie mein Freund, der mir gerne hilft.", "target": "You're like my friend who like to help me.", "score": 6},
+        {"known": "Ich denke, du bist wie jemand, der sehr gut ist.", "target": "I think you're like someone who is very good.", "score": 7},
+        {"known": "Du bist wie ich, und das ist interessant.", "target": "You're like me and that is interesting.", "score": 6},
+        {"known": "Du bist wie jemand, der viel wissen will.", "target": "You're like someone who wants to know a lot.", "score": 7},
+        {"known": "Ich glaube, du bist wie jemand, den ich kenne.", "target": "I believe you're like someone that I know.", "score": 6},
+        {"known": "Du bist wie jemand, der mir sehr wichtig ist.", "target": "You're like someone who is very important to me.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "jemand",
+      "target": "someone",
+      "build": [
+        {"known": "Jemand.", "target": "Someone."},
+        {"known": "Jemand hier.", "target": "Someone here."},
+        {"known": "Ich kenne jemand.", "target": "I know someone."},
+        {"known": "Jemand, der.", "target": "Someone who."}
+      ],
+      "use": [
+        {"known": "Jemand hat mir gesagt, dass du hier bist.", "target": "Someone said to me that you are here.", "score": 7},
+        {"known": "Ich möchte mit jemand sprechen, der mir helfen kann.", "target": "I want to speak with someone who can help me.", "score": 8},
+        {"known": "Jemand hat mir geholfen, als ich es wollte.", "target": "Someone did help me when I wanted it.", "score": 6},
+        {"known": "Ich glaube, jemand ist hier, der dich sehen will.", "target": "I believe someone is here who wants to see you.", "score": 7},
+        {"known": "Jemand muss das machen, und ich denke, du kannst es.", "target": "Someone must do that and I think you can.", "score": 7},
+        {"known": "Ich denke, jemand hat das gesagt, aber ich weiß nicht wer.", "target": "I think someone said that but I don't know who.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "den ich früher kannte",
+      "target": "I used to know",
+      "components": [
+        {"known": "ich kannte", "target": "I knew"},
+        {"known": "früher", "target": "used to"}
+      ],
+      "build": [
+        {"known": "Ich kannte.", "target": "I knew."},
+        {"known": "Früher.", "target": "Used to."},
+        {"known": "Den ich kannte.", "target": "I knew."},
+        {"known": "Den ich früher kannte.", "target": "I used to know."}
+      ],
+      "use": [
+        {"known": "Das ist jemand, den ich früher kannte, bevor ich hier war.", "target": "That is someone I used to know before I was here.", "score": 8},
+        {"known": "Ich denke an jemand, den ich früher kannte.", "target": "I think about someone I used to know.", "score": 7},
+        {"known": "Ich habe mit jemand gesprochen, den ich früher kannte.", "target": "I have talked with someone I used to know.", "score": 7},
+        {"known": "Du bist wie jemand, den ich früher kannte.", "target": "You're like someone I used to know.", "score": 7},
+        {"known": "Das ist jemand, den ich früher kannte, und er war gut.", "target": "That is someone I used to know and he was good.", "score": 7},
+        {"known": "Ich wollte mit jemand sprechen, den ich früher kannte.", "target": "I wanted to speak with someone I used to know.", "score": 7}
+      ]
+    }
+  ]
+}

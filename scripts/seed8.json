@@ -1,0 +1,99 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 8,
+  "target_text": "I'm going to try to explain what I mean.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "我要",
+      "target": "I'm going to",
+      "components": [
+        {"known": "我", "target": "I'm"},
+        {"known": "要", "target": "going to"}
+      ],
+      "build": [
+        {"known": "我要", "target": "I'm going to"},
+        {"known": "要", "target": "going to"},
+        {"known": "我要说", "target": "I'm going to speak"},
+        {"known": "我要学", "target": "I'm going to learn"}
+      ],
+      "use": [
+        {"known": "我要说。", "target": "I'm going to speak.", "score": 7},
+        {"known": "我要学英语。", "target": "I'm going to learn English.", "score": 8},
+        {"known": "我要说英语。", "target": "I'm going to speak English.", "score": 8},
+        {"known": "我要和你说英语。", "target": "I'm going to speak English with you.", "score": 9},
+        {"known": "我现在要说英语。", "target": "I'm going to speak English now.", "score": 8},
+        {"known": "我要尽量多说英语。", "target": "I'm going to speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "试着",
+      "target": "try to",
+      "components": [
+        {"known": "试", "target": "try"},
+        {"known": "着", "target": "to"}
+      ],
+      "build": [
+        {"known": "试着", "target": "try to"},
+        {"known": "着", "target": "to"},
+        {"known": "我想试着说英语", "target": "I want to try to speak English"},
+        {"known": "我要试着学英语", "target": "I'm going to try to learn English"}
+      ],
+      "use": [
+        {"known": "我想试着说英语。", "target": "I want to try to speak English.", "score": 8},
+        {"known": "我想试着和你说。", "target": "I want to try to speak with you.", "score": 8},
+        {"known": "我想试着学英语。", "target": "I want to try to learn English.", "score": 8},
+        {"known": "我要试着记住怎么说一个词。", "target": "I'm going to try to remember how to say a word.", "score": 9},
+        {"known": "我想试着和别人说英语。", "target": "I want to try to speak English with someone else.", "score": 9},
+        {"known": "我想试着尽量多说英语。", "target": "I want to try to speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "解释",
+      "target": "explain",
+      "build": [
+        {"known": "解释", "target": "explain"},
+        {"known": "想解释", "target": "want to explain"},
+        {"known": "我想解释一些东西", "target": "I want to explain something"},
+        {"known": "我要解释一些东西", "target": "I'm going to explain something"}
+      ],
+      "use": [
+        {"known": "我今天想解释。", "target": "I want to explain today.", "score": 8},
+        {"known": "我要和你解释。", "target": "I'm going to explain to you.", "score": 8},
+        {"known": "我在试解释一些东西。", "target": "I'm trying to explain something.", "score": 8},
+        {"known": "我要尽量努力解释。", "target": "I'm going to explain as hard as I can.", "score": 9},
+        {"known": "我今天想和别人解释一些东西。", "target": "I want to explain something to someone else today.", "score": 9},
+        {"known": "我要尽量努力和你解释一些东西。", "target": "I'm going to explain something to you as hard as I can.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "我的意思",
+      "target": "what I mean",
+      "components": [
+        {"known": "我的", "target": "what I"},
+        {"known": "意思", "target": "mean"}
+      ],
+      "build": [
+        {"known": "我的意思", "target": "what I mean"},
+        {"known": "意思", "target": "mean"},
+        {"known": "我想解释我的意思", "target": "I want to explain what I mean"},
+        {"known": "我要解释我的意思", "target": "I'm going to explain what I mean"}
+      ],
+      "use": [
+        {"known": "我想解释我的意思。", "target": "I want to explain what I mean.", "score": 9},
+        {"known": "我要解释我的意思。", "target": "I'm going to explain what I mean.", "score": 9},
+        {"known": "怎么解释我的意思？", "target": "How to explain what I mean?", "score": 8},
+        {"known": "我今天要解释我的意思。", "target": "I'm going to explain what I mean today.", "score": 9},
+        {"known": "我想尽量努力解释我的意思。", "target": "I want to explain what I mean as hard as I can.", "score": 9},
+        {"known": "我要和别人解释我的意思。", "target": "I'm going to explain what I mean to someone else.", "score": 9}
+      ]
+    }
+  ]
+}

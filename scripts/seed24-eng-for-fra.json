@@ -1,0 +1,62 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 24,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je ne vais pas",
+      "target": "I'm not going to",
+      "components": [
+        {"known": "Je", "target": "I'm"},
+        {"known": "ne vais pas", "target": "not going to"}
+      ],
+      "build": [
+        {"known": "Je ne vais pas", "target": "I'm not going to"},
+        {"known": "Je ne vais pas parler", "target": "I'm not going to speak"},
+        {"known": "Je ne vais pas apprendre", "target": "I'm not going to learn"},
+        {"known": "Je ne vais pas revenir", "target": "I'm not going to come back"}
+      ],
+      "use": [
+        {"known": "Je ne vais pas parler anglais maintenant.", "target": "I'm not going to speak English now.", "score": 8},
+        {"known": "Je ne vais pas apprendre son nom rapidement.", "target": "I'm not going to learn his name quickly.", "score": 8},
+        {"known": "Je ne vais pas revenir et parler anglais plus tard.", "target": "I'm not going to come back and speak English later on.", "score": 9},
+        {"known": "Mais je ne vais pas arrêter de parler.", "target": "But I'm not going to stop talking.", "score": 9},
+        {"known": "Je ne vais pas rencontrer des gens qui parlent anglais.", "target": "I'm not going to meet people who speak English.", "score": 9},
+        {"known": "Parce que je ne vais pas commencer à parler bientôt.", "target": "Because I'm not going to start talking soon.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "pouvoir",
+      "target": "to be able to"
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "me souvenir",
+      "target": "to remember"
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "facilement",
+      "target": "easily",
+      "build": [
+        {"known": "facilement", "target": "easily"},
+        {"known": "me souvenir facilement", "target": "to remember easily"},
+        {"known": "parler facilement", "target": "to speak easily"},
+        {"known": "apprendre facilement", "target": "to learn easily"}
+      ],
+      "use": [
+        {"known": "Je ne vais pas pouvoir me souvenir facilement.", "target": "I'm not going to be able to remember easily.", "score": 9},
+        {"known": "Tu veux apprendre facilement comment parler anglais.", "target": "You want to learn easily how to speak English.", "score": 8},
+        {"known": "Parce que je veux parler anglais facilement.", "target": "Because I want to speak English easily.", "score": 9},
+        {"known": "Pourquoi tu veux apprendre anglais facilement?", "target": "Why do you want to learn English easily?", "score": 8},
+        {"known": "J'aimerais pouvoir parler anglais facilement bientôt.", "target": "I'd like to be able to speak English easily soon.", "score": 9},
+        {"known": "Mais je ne vais pas pouvoir apprendre facilement.", "target": "But I'm not going to be able to learn easily.", "score": 9}
+      ]
+    }
+  ]
+}

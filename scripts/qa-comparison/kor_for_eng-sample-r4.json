@@ -1,0 +1,511 @@
+{
+  "course_code": "kor_for_eng",
+  "is_eng_for_x": false,
+  "round": 4,
+  "seed_range": "all",
+  "description": "Fresh random sample from entire course - independent verification round",
+  "total_use_phrases": 4991,
+  "sample_size": 50,
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "b10b1283-bc63-4b5b-a953-45b69a496b83",
+      "seed": 58,
+      "lego": 5,
+      "syllables": 10,
+      "english": "What you said was very interesting.",
+      "other": "당신이 말한 것은 아주 흥미로웠어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 2,
+      "id": "42f5b1cf-cd27-4e77-be51-ab4753ef833f",
+      "seed": 39,
+      "lego": 5,
+      "syllables": 9,
+      "english": "But I'm a little tired this morning",
+      "other": "하지만 저는 오늘 아침 조금 피곤해요",
+      "qa_score": null
+    },
+    {
+      "idx": 3,
+      "id": "4d04cc29-93d7-4b4d-9630-12cc016d4c55",
+      "seed": 246,
+      "lego": 6,
+      "syllables": 5,
+      "english": "she was too busy",
+      "other": "그녀는 너무 바빴어요",
+      "qa_score": null
+    },
+    {
+      "idx": 4,
+      "id": "4afa5405-9b84-4dd1-8f7d-80ee08459181",
+      "seed": 69,
+      "lego": 4,
+      "syllables": 5,
+      "english": "want to look after",
+      "other": "돌보고 싶어요",
+      "qa_score": null
+    },
+    {
+      "idx": 5,
+      "id": "fdd9f193-04d8-42eb-87a9-2f466837b321",
+      "seed": 76,
+      "lego": 5,
+      "syllables": 10,
+      "english": "I am happy that there is more to learn.",
+      "other": "저는 더 배울 것이 있어서 기뻐요.",
+      "qa_score": null
+    },
+    {
+      "idx": 6,
+      "id": "cae63382-4995-4772-b7b2-cc796942f57e",
+      "seed": 148,
+      "lego": 4,
+      "syllables": 5,
+      "english": "not very happy",
+      "other": "그다지 행복하지 않은",
+      "qa_score": null
+    },
+    {
+      "idx": 7,
+      "id": "9a143018-8bdb-4ac0-b6e6-fe603cf82059",
+      "seed": 22,
+      "lego": 4,
+      "syllables": 9,
+      "english": "I want to meet people who speak Korean",
+      "other": "저는 한국어를 하는 사람들을 만나고 싶어요",
+      "qa_score": null
+    },
+    {
+      "idx": 8,
+      "id": "6cc8cdfe-5a60-4086-936d-70f990c8ada6",
+      "seed": 88,
+      "lego": 6,
+      "syllables": 13,
+      "english": "He said he is not ready to talk about that yet.",
+      "other": "그는 아직 그것에 대해 이야기할 준비가 안 됐다고 말했어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 9,
+      "id": "820e54bb-3017-4d3d-9ec0-0f1abcaaab49",
+      "seed": 52,
+      "lego": 4,
+      "syllables": 11,
+      "english": "I wanted to write a letter this morning",
+      "other": "저는 오늘 아침 편지를 쓰고 싶었어요",
+      "qa_score": null
+    },
+    {
+      "idx": 10,
+      "id": "ec359f54-75e5-44d5-8f1b-6c91f6f9485d",
+      "seed": 6,
+      "lego": 2,
+      "syllables": 8,
+      "english": "I'm going to practise saying a word",
+      "other": "저는 단어를 말하기를 연습할 거예요",
+      "qa_score": null
+    },
+    {
+      "idx": 11,
+      "id": "f1f0893d-5888-4729-b80c-11b9912a8640",
+      "seed": 76,
+      "lego": 2,
+      "syllables": 13,
+      "english": "She already knows the truth about everything.",
+      "other": "그녀는 이미 모든 것에 대한 진실을 알아요.",
+      "qa_score": null
+    },
+    {
+      "idx": 12,
+      "id": "31306ce2-bb8b-4f63-9d85-422a289c7467",
+      "seed": 121,
+      "lego": 3,
+      "syllables": 14,
+      "english": "Using Korean words is very interesting for me.",
+      "other": "한국어 단어를 사용하는 것은 저에게 아주 흥미로워요.",
+      "qa_score": null
+    },
+    {
+      "idx": 13,
+      "id": "0ab47602-8a28-49af-99e1-a7bfddde20bb",
+      "seed": 152,
+      "lego": 4,
+      "syllables": 5,
+      "english": "do differently",
+      "other": "다르게 해요",
+      "qa_score": null
+    },
+    {
+      "idx": 14,
+      "id": "d23386f5-c099-4e4f-85c6-9f0923725fea",
+      "seed": 78,
+      "lego": 3,
+      "syllables": 11,
+      "english": "I didn't understand what you said about that.",
+      "other": "저는 당신이 그것에 대해 말한 것을 이해하지 못했어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 15,
+      "id": "f81b7b0c-cfdb-40f8-bc99-2bc77f8ca094",
+      "seed": 25,
+      "lego": 3,
+      "syllables": 9,
+      "english": "Are you going to help me easily?",
+      "other": "저를 쉽게 도와줄 거예요?",
+      "qa_score": null
+    },
+    {
+      "idx": 16,
+      "id": "39e22fa9-3be0-4008-9906-7d44fe264a8c",
+      "seed": 199,
+      "lego": 5,
+      "syllables": 13,
+      "english": "My mother worked at the city hall yesterday.",
+      "other": "어제 제 어머니가 시청에서 일했어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 17,
+      "id": "8763411c-e5a9-4212-bf72-990d1b507660",
+      "seed": 205,
+      "lego": 3,
+      "syllables": 5,
+      "english": "was trying to say it",
+      "other": "말하려고 했던 것",
+      "qa_score": null
+    },
+    {
+      "idx": 18,
+      "id": "ed22fe51-e482-4f3e-8cb3-156e82a5d821",
+      "seed": 44,
+      "lego": 1,
+      "syllables": 8,
+      "english": "Or we can meet this afternoon",
+      "other": "아니면 우리는 오늘 오후에 만날 수 있어요",
+      "qa_score": null
+    },
+    {
+      "idx": 19,
+      "id": "0807cd40-998d-4c59-9b27-08f701fc360f",
+      "seed": 56,
+      "lego": 4,
+      "syllables": 10,
+      "english": "I can remember the new Korean words.",
+      "other": "저는 새로운 한국어 단어를 기억할 수 있어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 20,
+      "id": "92a452d6-bf40-4cb9-a79d-388fc0123601",
+      "seed": 30,
+      "lego": 5,
+      "syllables": 6,
+      "english": "She wanted to ask him",
+      "other": "그녀는 그에게 물어보고 싶었어요",
+      "qa_score": null
+    },
+    {
+      "idx": 21,
+      "id": "a614f4d2-765a-4b16-8b61-cf2bac9028d4",
+      "seed": 33,
+      "lego": 4,
+      "syllables": 9,
+      "english": "I learned something yesterday",
+      "other": "저는 어제 뭔가를 배웠어요",
+      "qa_score": null
+    },
+    {
+      "idx": 22,
+      "id": "0f2df20d-4e98-4852-b181-879da58ee098",
+      "seed": 209,
+      "lego": 3,
+      "syllables": 5,
+      "english": "We met this morning.",
+      "other": "우리는 아침에 만났어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 23,
+      "id": "f652b6ef-0f1c-4842-8b31-c472c47f0874",
+      "seed": 22,
+      "lego": 5,
+      "syllables": 6,
+      "english": "He is trying to meet people",
+      "other": "그는 사람들을 만나려고 해요",
+      "qa_score": null
+    },
+    {
+      "idx": 24,
+      "id": "e4dc91da-2bcc-4903-bb15-a09a34281880",
+      "seed": 117,
+      "lego": 5,
+      "syllables": 5,
+      "english": "definitely",
+      "other": "확실히",
+      "qa_score": null
+    },
+    {
+      "idx": 25,
+      "id": "a19e5efa-f7f0-499d-ad7f-bf73aca5aa9a",
+      "seed": 196,
+      "lego": 2,
+      "syllables": 8,
+      "english": "I think that is a good idea.",
+      "other": "그게 좋은 아이디어라고 생각해요.",
+      "qa_score": null
+    },
+    {
+      "idx": 26,
+      "id": "f80c7bce-fb8e-4fe6-a2c8-8c159ba0bc1a",
+      "seed": 99,
+      "lego": 3,
+      "syllables": 11,
+      "english": "You should ask yourself why it is not working.",
+      "other": "당신은 왜 작동하지 않는지 스스로에게 물어봐야 해요.",
+      "qa_score": null
+    },
+    {
+      "idx": 27,
+      "id": "5840d6b4-a81a-4f05-9a86-ceb5f3eb6184",
+      "seed": 60,
+      "lego": 4,
+      "syllables": 11,
+      "english": "We can remember enough different words.",
+      "other": "우리는 충분히 다른 단어들을 기억할 수 있어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 28,
+      "id": "c2125845-8019-4550-bd29-9b39bffcd97b",
+      "seed": 256,
+      "lego": 2,
+      "syllables": 13,
+      "english": "I think my father will be ready since this morning.",
+      "other": "제 아버지는 오늘 아침부터 준비될 것 같아요.",
+      "qa_score": null
+    },
+    {
+      "idx": 29,
+      "id": "28c0f4a9-8aed-4d31-be23-c1b5ad2ee0dd",
+      "seed": 117,
+      "lego": 6,
+      "syllables": 13,
+      "english": "Our friend is doing better because of learning new words.",
+      "other": "우리의 친구는 새로운 단어를 배우기 때문에 더 잘하고 있어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 30,
+      "id": "e1540107-dae9-4c80-a042-1e77c7044de2",
+      "seed": 169,
+      "lego": 4,
+      "syllables": 7,
+      "english": "What do you want me to do?",
+      "other": "제가 뭘 하기를 원해요?",
+      "qa_score": null
+    },
+    {
+      "idx": 31,
+      "id": "1ad7d97b-3b4c-44bd-a13a-719d3654c0a1",
+      "seed": 204,
+      "lego": 7,
+      "syllables": 11,
+      "english": "Nobody wanted to answer the question.",
+      "other": "아무도 질문에 대답하고 싶지 않았어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 32,
+      "id": "9438681d-5e3a-48d0-9d59-13368694f21a",
+      "seed": 258,
+      "lego": 3,
+      "syllables": 10,
+      "english": "What is fairly good in less than an hour?",
+      "other": "한 시간 안에 꽤 좋은 것은 뭐예요?",
+      "qa_score": null
+    },
+    {
+      "idx": 33,
+      "id": "eedcd104-193d-435c-ad65-34902f441f34",
+      "seed": 118,
+      "lego": 3,
+      "syllables": 8,
+      "english": "We talked last time at the pub.",
+      "other": "우리는 지난번에 술집에서 이야기했어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 34,
+      "id": "f4dfc908-d98d-4dd8-9584-ebd47f95c09f",
+      "seed": 191,
+      "lego": 3,
+      "syllables": 11,
+      "english": "It does not matter if you come tomorrow.",
+      "other": "내일 와도 상관없어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 35,
+      "id": "a3100399-809b-4616-a0f5-d4f45f07dd2a",
+      "seed": 32,
+      "lego": 1,
+      "syllables": 7,
+      "english": "Please give something to me",
+      "other": "저에게 뭔가를 줘요",
+      "qa_score": null
+    },
+    {
+      "idx": 36,
+      "id": "5613d563-3e2b-4966-aead-5989ce3a1718",
+      "seed": 243,
+      "lego": 3,
+      "syllables": 8,
+      "english": "Do you want to eat the same thing?",
+      "other": "같은 것을 먹고 싶어요?",
+      "qa_score": null
+    },
+    {
+      "idx": 37,
+      "id": "83d2b247-4740-46c9-8b07-74b3ddff9f7b",
+      "seed": 142,
+      "lego": 1,
+      "syllables": 16,
+      "english": "That's very kind of you and I'm grateful to you for helping.",
+      "other": "정말 친절하시네요, 그리고 도와주셔서 감사해요.",
+      "qa_score": null
+    },
+    {
+      "idx": 38,
+      "id": "e508f37a-6c51-47a8-9af4-bd3775f84e68",
+      "seed": 94,
+      "lego": 2,
+      "syllables": 12,
+      "english": "I think this will work if we continue practicing.",
+      "other": "저는 연습을 계속하면 이것이 작동할 거라고 생각해요.",
+      "qa_score": null
+    },
+    {
+      "idx": 39,
+      "id": "3483a615-e787-45c5-b4c9-f3e7a188a265",
+      "seed": 1,
+      "lego": 4,
+      "syllables": 6,
+      "english": "I want to do it now",
+      "other": "지금 하고 싶어요",
+      "qa_score": null
+    },
+    {
+      "idx": 40,
+      "id": "953cc33d-d1d5-4a48-9c10-057684bef687",
+      "seed": 252,
+      "lego": 3,
+      "syllables": 8,
+      "english": "When will you be ready to start?",
+      "other": "언제 시작할 준비가 될 거예요?",
+      "qa_score": null
+    },
+    {
+      "idx": 41,
+      "id": "792ddf67-6391-4dd2-af39-29067bfd76d8",
+      "seed": 108,
+      "lego": 2,
+      "syllables": 7,
+      "english": "wake in the middle of the night",
+      "other": "한밤중에 깨요",
+      "qa_score": null
+    },
+    {
+      "idx": 42,
+      "id": "5915a5af-f5ae-4701-b21f-c730340f56bb",
+      "seed": 96,
+      "lego": 1,
+      "syllables": 10,
+      "english": "No, I don't think this is the only way.",
+      "other": "아니요, 저는 이것이 유일한 방법이라고 생각하지 않아요.",
+      "qa_score": null
+    },
+    {
+      "idx": 43,
+      "id": "7a0eb151-829f-4aca-a6da-ef4fcb02be81",
+      "seed": 49,
+      "lego": 1,
+      "syllables": 9,
+      "english": "If you know what I'm saying, it's like this",
+      "other": "무슨 말인지 알겠다면, 이래요",
+      "qa_score": null
+    },
+    {
+      "idx": 44,
+      "id": "63cd6cc6-f3ba-47e3-84dc-2eb07efcfadb",
+      "seed": 182,
+      "lego": 4,
+      "syllables": 10,
+      "english": "Did you see that interesting movie yet?",
+      "other": "그 흥미로운 영화 벌써 봤어요?",
+      "qa_score": null
+    },
+    {
+      "idx": 45,
+      "id": "2c105a3d-91f5-4e9a-acd4-b76aa5908c76",
+      "seed": 88,
+      "lego": 6,
+      "syllables": 10,
+      "english": "I am now ready to speak with more people.",
+      "other": "저는 지금 더 많은 사람들과 말할 준비가 됐어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 46,
+      "id": "bfd66c3e-16a0-4d09-aac5-63134b4f2595",
+      "seed": 253,
+      "lego": 2,
+      "syllables": 17,
+      "english": "When will we be ready? We should be ready in a few minutes.",
+      "other": "언제 준비될 거예요? 몇 분 후에 준비될 거예요.",
+      "qa_score": null
+    },
+    {
+      "idx": 47,
+      "id": "677ab8ca-e85a-4094-968a-16090435626c",
+      "seed": 157,
+      "lego": 4,
+      "syllables": 10,
+      "english": "I don't mind if you won't be able to wait.",
+      "other": "당신이 기다릴 수 없어도 상관없어요.",
+      "qa_score": null
+    },
+    {
+      "idx": 48,
+      "id": "7a2fb95f-958c-434a-9ce8-994db55d9172",
+      "seed": 164,
+      "lego": 1,
+      "syllables": 9,
+      "english": "I think that book is interesting.",
+      "other": "저는 그 책이 흥미롭다고 생각해요.",
+      "qa_score": null
+    },
+    {
+      "idx": 49,
+      "id": "33f00919-929d-4d1c-97cb-89b7f405e4f6",
+      "seed": 77,
+      "lego": 1,
+      "syllables": 10,
+      "english": "I think I understand more than before.",
+      "other": "저는 제가 전보다 더 이해한다고 생각해요.",
+      "qa_score": null
+    },
+    {
+      "idx": 50,
+      "id": "779c1830-e7ab-4373-be56-792b361e528c",
+      "seed": 122,
+      "lego": 1,
+      "syllables": 7,
+      "english": "starting to get easier and",
+      "other": "쉬워지기 시작하고",
+      "qa_score": null
+    }
+  ]
+}

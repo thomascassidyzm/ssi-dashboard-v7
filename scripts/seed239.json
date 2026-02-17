@@ -1,0 +1,100 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 239,
+  "known_text": "My mother likes to read.",
+  "target_text": "我妈妈喜欢看书。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "My.", "target": "我的。"},
+        {"known": "My mother.", "target": "我妈妈。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "My mother likes to help people with their work.", "target": "我妈妈喜欢帮人做他们的工作。", "score": 8},
+        {"known": "That young man asked me if I know your brother.", "target": "那个年轻的男人问我是不是认识你哥哥。", "score": 7},
+        {"known": "If the old woman can tell me, I would be very happy.", "target": "如果那个老女人能告诉我的话，我会很开心。", "score": 8},
+        {"known": "Everyone told me they want to meet your sister too.", "target": "大家都告诉我他们也想见你姐姐。", "score": 7},
+        {"known": "Would that young woman be able to help me with this?", "target": "那个年轻的女人能帮我做这个吗？", "score": 8},
+        {"known": "She hopes I can remember what the old man said.", "target": "她希望我能记住那个老人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "mother",
+      "target": "妈妈",
+      "components": [
+        {"known": "mom", "target": "妈"},
+        {"known": "mom", "target": "妈"}
+      ],
+      "build": [
+        {"known": "Mother.", "target": "妈妈。"},
+        {"known": "Mom.", "target": "妈妈。"},
+        {"known": "My mother.", "target": "我妈妈。"},
+        {"known": "Your mother.", "target": "你妈妈。"}
+      ],
+      "use": [
+        {"known": "My mother likes to read when she has time.", "target": "我妈妈有时间的时候喜欢看书。", "score": 8},
+        {"known": "That young man said his mother wants to meet you.", "target": "那个年轻的男人说他妈妈想见你。", "score": 7},
+        {"known": "If your mother can come tomorrow, we can all talk.", "target": "如果你妈妈明天能来的话，我们大家可以说话。", "score": 8},
+        {"known": "She told me her mother remembers what happened.", "target": "她告诉我她妈妈记住发生了什么。", "score": 7},
+        {"known": "Everyone here wants to meet your mother someday.", "target": "这里的大家都想有一天见你妈妈。", "score": 8},
+        {"known": "Does your mother still want to work together with us?", "target": "你妈妈还想和我们一起工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "like/enjoy",
+      "target": "喜欢",
+      "components": [
+        {"known": "happy", "target": "喜"},
+        {"known": "fond of", "target": "欢"}
+      ],
+      "build": [
+        {"known": "Like.", "target": "喜欢。"},
+        {"known": "Enjoy.", "target": "喜欢。"},
+        {"known": "Likes to.", "target": "喜欢。"},
+        {"known": "Mother likes.", "target": "妈妈喜欢。"}
+      ],
+      "use": [
+        {"known": "My mother likes to read books about many things.", "target": "我妈妈喜欢看很多东西的书。", "score": 8},
+        {"known": "That young woman likes to practise speaking with us.", "target": "那个年轻的女人喜欢和我们练习说话。", "score": 7},
+        {"known": "If you like this kind of work, you should do it.", "target": "如果你喜欢这样的工作的话，你要做。", "score": 8},
+        {"known": "He told me he likes to help people when he can.", "target": "他告诉我他能的时候喜欢帮人。", "score": 7},
+        {"known": "Everyone here likes to learn new things together.", "target": "这里的大家都喜欢一起学新的东西。", "score": 8},
+        {"known": "What kind of things does your sister like to do?", "target": "你姐姐喜欢做什么样的东西？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "read books",
+      "target": "看书",
+      "components": [
+        {"known": "look at", "target": "看"},
+        {"known": "book", "target": "书"}
+      ],
+      "build": [
+        {"known": "Read.", "target": "看书。"},
+        {"known": "Reading.", "target": "看书。"},
+        {"known": "Likes to read.", "target": "喜欢看书。"},
+        {"known": "Read a book.", "target": "看书。"}
+      ],
+      "use": [
+        {"known": "My mother likes to read at night before she sleeps.", "target": "我妈妈喜欢晚上睡觉以前看书。", "score": 8},
+        {"known": "That young man likes to read when he has time.", "target": "那个年轻的男人有时间的时候喜欢看书。", "score": 7},
+        {"known": "If you want to learn more, you should read a lot.", "target": "如果你想学更多的话，你要看很多书。", "score": 8},
+        {"known": "She told me her brother likes to read about work.", "target": "她告诉我她哥哥喜欢看工作的书。", "score": 7},
+        {"known": "Everyone here should read more to learn new things.", "target": "这里的大家要更多看书来学新的东西。", "score": 8},
+        {"known": "Do you like to read books with your sister?", "target": "你喜欢和你姐姐一起看书吗？", "score": 8}
+      ]
+    }
+  ]
+}

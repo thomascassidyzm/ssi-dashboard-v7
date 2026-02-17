@@ -1,0 +1,511 @@
+{
+  "course_code": "cym_s_for_eng",
+  "is_eng_for_x": false,
+  "round": 3,
+  "seed_range": "1-50",
+  "description": "First 50 seeds only - testing \"starting well\" quality",
+  "total_use_phrases_in_range": 667,
+  "sample_size": 50,
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "8b636f64-f103-4414-972c-10006467a500",
+      "seed": 23,
+      "lego": 1,
+      "syllables": 5,
+      "english": "but I enjoy trying",
+      "other": "ond dw i’n joio trio",
+      "qa_score": null
+    },
+    {
+      "idx": 2,
+      "id": "0822d63e-a70c-4aef-9916-cde40db7a8b4",
+      "seed": 46,
+      "lego": 1,
+      "syllables": 8,
+      "english": "but where do you want to go now?",
+      "other": "ond ble wyt ti’n moyn mynd nawr?",
+      "qa_score": null
+    },
+    {
+      "idx": 3,
+      "id": "4614a093-89db-4a62-908a-1333adbaa57f",
+      "seed": 11,
+      "lego": 1,
+      "syllables": 8,
+      "english": "but I want to practice speaking",
+      "other": "ond dw i’n moyn ymarfer siarad",
+      "qa_score": null
+    },
+    {
+      "idx": 4,
+      "id": "8fcab166-5394-4b20-8b95-c0e6469176ed",
+      "seed": 8,
+      "lego": 2,
+      "syllables": 8,
+      "english": "I want to learn how to improve",
+      "other": "dw i’n moyn dysgu sut i wella",
+      "qa_score": null
+    },
+    {
+      "idx": 5,
+      "id": "cf4ce164-6031-42ab-8f01-e6c5120df1ca",
+      "seed": 11,
+      "lego": 1,
+      "syllables": 11,
+      "english": "but I can’t remember what I want to say",
+      "other": "ond alla i ddim cofio beth dw i’n moyn dweud",
+      "qa_score": null
+    },
+    {
+      "idx": 6,
+      "id": "1ffab6fa-2035-4e66-b360-7f70ab956081",
+      "seed": 9,
+      "lego": 3,
+      "syllables": 11,
+      "english": "I want to try to say something in Welsh",
+      "other": "dw i’n moyn trio dweud rhywbeth yn Gymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 7,
+      "id": "64faf5d0-1ad6-497d-81a6-3e30e9533f06",
+      "seed": 7,
+      "lego": 2,
+      "syllables": 5,
+      "english": "I still need to learn",
+      "other": "dw i dal angen dysgu",
+      "qa_score": null
+    },
+    {
+      "idx": 8,
+      "id": "6d8b0d12-6dd2-47c1-a0e9-7c0b151627f3",
+      "seed": 29,
+      "lego": 1,
+      "syllables": 16,
+      "english": "I don’t want to stop talking because I think it’s interesting",
+      "other": "dw i ddim yn moyn stopo siarad achos dw i’n meddwl bod hi’n ddiddorol",
+      "qa_score": null
+    },
+    {
+      "idx": 9,
+      "id": "09d9aadd-001d-47f8-9240-38a4894d8942",
+      "seed": 7,
+      "lego": 1,
+      "syllables": 8,
+      "english": "I can’t remember how to try",
+      "other": "alla i ddim cofio sut i drio",
+      "qa_score": null
+    },
+    {
+      "idx": 10,
+      "id": "73f69e3c-a9ce-4ae8-b126-71e65a822473",
+      "seed": 29,
+      "lego": 1,
+      "syllables": 13,
+      "english": "I’m going to practice more because I want to improve",
+      "other": "dw i’n mynd i ymarfer mwy achos dw i’n moyn gwella",
+      "qa_score": null
+    },
+    {
+      "idx": 11,
+      "id": "f6f6d43b-0d5c-4ed6-9ca8-dcdf7bcaedbe",
+      "seed": 33,
+      "lego": 1,
+      "syllables": 8,
+      "english": "I must stop for about a month",
+      "other": "mae rhaid i fi stopo am biti mis",
+      "qa_score": null
+    },
+    {
+      "idx": 12,
+      "id": "594a3978-58b3-4198-ace0-3c5ba311c203",
+      "seed": 33,
+      "lego": 1,
+      "syllables": 13,
+      "english": "you’re doing what you need to do to speak Welsh very well",
+      "other": "ti’n gwneud beth ti angen gwneud i siarad Cymraeg yn dda iawn",
+      "qa_score": null
+    },
+    {
+      "idx": 13,
+      "id": "0ad6edce-768b-422f-9861-03b14cf3ff54",
+      "seed": 34,
+      "lego": 1,
+      "syllables": 11,
+      "english": "I think you’re doing something interesting",
+      "other": "dw i’n meddwl bo’ ti’n gwneud rhywbeth diddorol",
+      "qa_score": null
+    },
+    {
+      "idx": 14,
+      "id": "ab57a413-ad56-40a0-a0e2-ac0c0821ed22",
+      "seed": 23,
+      "lego": 1,
+      "syllables": 7,
+      "english": "but I enjoy speaking Welsh",
+      "other": "ond dw i’n joio siarad Cymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 15,
+      "id": "878e958f-632d-463d-8a96-9d7332558de4",
+      "seed": 48,
+      "lego": 1,
+      "syllables": 10,
+      "english": "you’ve learnt to speak Welsh a little more slowly",
+      "other": "ti ’di dysgu siarad Cymraeg bach yn arafach",
+      "qa_score": null
+    },
+    {
+      "idx": 16,
+      "id": "d42fa371-56cc-41f5-aa74-c0046ccb834b",
+      "seed": 28,
+      "lego": 4,
+      "syllables": 7,
+      "english": "I don’t want to go with you",
+      "other": "dw i ddim yn moyn mynd gyda ti",
+      "qa_score": null
+    },
+    {
+      "idx": 17,
+      "id": "3c0a4f40-d955-4442-9b10-549d911b75b7",
+      "seed": 47,
+      "lego": 1,
+      "syllables": 5,
+      "english": "but I must go now",
+      "other": "ond mae’n rhaid i fi fynd nawr",
+      "qa_score": null
+    },
+    {
+      "idx": 18,
+      "id": "d3a35c19-fdf3-4373-a0b0-35fe603c188a",
+      "seed": 9,
+      "lego": 2,
+      "syllables": 6,
+      "english": "how to say something",
+      "other": "sut i ddweud rhywbeth",
+      "qa_score": null
+    },
+    {
+      "idx": 19,
+      "id": "8c76ae75-74a2-4993-94d8-d1e84faf4b9f",
+      "seed": 47,
+      "lego": 1,
+      "syllables": 6,
+      "english": "but I’d better go now",
+      "other": "ond well i fi fynd nawr",
+      "qa_score": null
+    },
+    {
+      "idx": 20,
+      "id": "c21a4cbc-4be1-4c9a-a228-a37b03377a8a",
+      "seed": 8,
+      "lego": 2,
+      "syllables": 6,
+      "english": "I still need to improve",
+      "other": "dw i dal angen gwella",
+      "qa_score": null
+    },
+    {
+      "idx": 21,
+      "id": "6b53239b-80d6-48c4-a54d-5e272dfb88b1",
+      "seed": 8,
+      "lego": 1,
+      "syllables": 6,
+      "english": "I still want to learn Welsh",
+      "other": "dw i dal yn moyn dysgu Cymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 22,
+      "id": "d723f6c8-a4e9-4a9b-b2d8-fc92fd4e3b37",
+      "seed": 20,
+      "lego": 1,
+      "syllables": 16,
+      "english": "I was trying to say that I’ve been learning for about a month now",
+      "other": "o’n i’n trio dweud bo’ fi wedi bod yn dysgu am biti mis nawr",
+      "qa_score": null
+    },
+    {
+      "idx": 23,
+      "id": "753309d7-1203-4b8b-83a1-252b7c9a1dc8",
+      "seed": 34,
+      "lego": 1,
+      "syllables": 13,
+      "english": "I’m going to try to say something in Welsh again",
+      "other": "dw i’n mynd i drio dweud rhywbeth yn Gymraeg eto",
+      "qa_score": null
+    },
+    {
+      "idx": 24,
+      "id": "2365d0aa-b321-4fd1-a741-ec52a3501e91",
+      "seed": 27,
+      "lego": 1,
+      "syllables": 6,
+      "english": "I want to practice more",
+      "other": "dw i’n moyn ymarfer mwy",
+      "qa_score": null
+    },
+    {
+      "idx": 25,
+      "id": "992263a6-ab32-4389-a49c-1c755683d131",
+      "seed": 11,
+      "lego": 3,
+      "syllables": 9,
+      "english": "but I can’t remember what to say",
+      "other": "ond alla i ddim cofio beth i ddweud",
+      "qa_score": null
+    },
+    {
+      "idx": 26,
+      "id": "7675cf83-5cdc-4191-a803-a539ef0c527f",
+      "seed": 9,
+      "lego": 2,
+      "syllables": 10,
+      "english": "to remember how to say something",
+      "other": "cofio sut i ddweud rhywbeth",
+      "qa_score": null
+    },
+    {
+      "idx": 27,
+      "id": "932c2b51-f4f6-42f9-ba49-17dc0e0b4bae",
+      "seed": 26,
+      "lego": 1,
+      "syllables": 9,
+      "english": "I’d like to try something else now",
+      "other": "hoffen i drio rhywbeth arall nawr",
+      "qa_score": null
+    },
+    {
+      "idx": 28,
+      "id": "a4b6c54a-9a32-49b7-b6f2-aa8888147902",
+      "seed": 33,
+      "lego": 1,
+      "syllables": 11,
+      "english": "I’d like to say something else if I can",
+      "other": "hoffen i ddweud rhywbeth arall os galla i",
+      "qa_score": null
+    },
+    {
+      "idx": 29,
+      "id": "f79a145e-889c-488e-a53b-450aaaed12b3",
+      "seed": 5,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I’m trying to practice speaking",
+      "other": "dw i’n trio ymarfer siarad",
+      "qa_score": null
+    },
+    {
+      "idx": 30,
+      "id": "b1f6cb44-af82-4885-b80e-b71a9f1a4c3d",
+      "seed": 12,
+      "lego": 1,
+      "syllables": 9,
+      "english": "I still need to say something now",
+      "other": "dw i dal angen dweud rhywbeth nawr",
+      "qa_score": null
+    },
+    {
+      "idx": 31,
+      "id": "23ad8aa6-16f0-43f6-90f4-90c94f6e4368",
+      "seed": 33,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I must practice speaking Welsh",
+      "other": "mae rhaid i fi ymarfer siarad Cymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 32,
+      "id": "30bc25c1-bd8f-4fd5-aa63-fb672c754381",
+      "seed": 48,
+      "lego": 1,
+      "syllables": 7,
+      "english": "you’ve learnt what you need to do",
+      "other": "ti ’di dysgu be’ ti angen gwneud",
+      "qa_score": null
+    },
+    {
+      "idx": 33,
+      "id": "e87a8a0d-416e-44a5-b172-b3fd74d74cb1",
+      "seed": 33,
+      "lego": 1,
+      "syllables": 5,
+      "english": "you’re doing something",
+      "other": "ti’n gwneud rhywbeth",
+      "qa_score": null
+    },
+    {
+      "idx": 34,
+      "id": "d07525d3-601b-4373-a53e-17ba3b3bf76b",
+      "seed": 21,
+      "lego": 2,
+      "syllables": 5,
+      "english": "to remember more",
+      "other": "cofio mwy",
+      "qa_score": null
+    },
+    {
+      "idx": 35,
+      "id": "c5badae0-47b6-4e19-983f-42f8827d9774",
+      "seed": 6,
+      "lego": 3,
+      "syllables": 7,
+      "english": "to remember how to speak",
+      "other": "cofio sut i siarad",
+      "qa_score": null
+    },
+    {
+      "idx": 36,
+      "id": "0d51644a-feaf-4b17-a097-2369f38bdb0a",
+      "seed": 16,
+      "lego": 1,
+      "syllables": 8,
+      "english": "but I’ve just started to learn Welsh",
+      "other": "ond dw i newydd ddechrau dysgu Cymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 37,
+      "id": "e1f0ec97-f295-425d-9dcb-7cbb524421a0",
+      "seed": 38,
+      "lego": 2,
+      "syllables": 9,
+      "english": "I’ve been learning for about a month",
+      "other": "dw i ’di bod yn dysgu am biti mis",
+      "qa_score": null
+    },
+    {
+      "idx": 38,
+      "id": "3d8913b2-01c0-46af-9981-2c39dba2e9c0",
+      "seed": 47,
+      "lego": 1,
+      "syllables": 10,
+      "english": "do you want to speak a little more slowly?",
+      "other": "wyt ti’n moyn siarad bach yn arafach?",
+      "qa_score": null
+    },
+    {
+      "idx": 39,
+      "id": "278a268b-d618-44f5-958e-be006f49ae5a",
+      "seed": 34,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I’m trying to learn Welsh again",
+      "other": "dw i’n trio dysgu Cymraeg eto",
+      "qa_score": null
+    },
+    {
+      "idx": 40,
+      "id": "694bc0c0-9b3e-4d13-9f04-288f1c58c3e9",
+      "seed": 27,
+      "lego": 1,
+      "syllables": 7,
+      "english": "how to say anything else",
+      "other": "sut i ddweud unrhywbeth arall",
+      "qa_score": null
+    },
+    {
+      "idx": 41,
+      "id": "5c05dff8-6d09-46c4-afae-883019f9701c",
+      "seed": 9,
+      "lego": 1,
+      "syllables": 5,
+      "english": "I still need to say",
+      "other": "dw i dal angen dweud",
+      "qa_score": null
+    },
+    {
+      "idx": 42,
+      "id": "a34d4fb0-4ec6-444a-8e77-e136a5646a69",
+      "seed": 22,
+      "lego": 1,
+      "syllables": 6,
+      "english": "I’ve still got more to learn",
+      "other": "mae dal gyda fi fwy i ddysgu",
+      "qa_score": null
+    },
+    {
+      "idx": 43,
+      "id": "13fce943-463e-4e7d-88b5-53dc5482e70c",
+      "seed": 34,
+      "lego": 1,
+      "syllables": 6,
+      "english": "what I wanted to do",
+      "other": "beth o’n i’n moyn gwneud",
+      "qa_score": null
+    },
+    {
+      "idx": 44,
+      "id": "fb24ff42-2564-42b2-bdd5-e8355a91517f",
+      "seed": 23,
+      "lego": 1,
+      "syllables": 14,
+      "english": "and I enjoy trying to remember what I want to say",
+      "other": "a dw i’n joio trio cofio beth dw i’n moyn dweud",
+      "qa_score": null
+    },
+    {
+      "idx": 45,
+      "id": "0f7bcab7-8b7e-44c8-b3bc-65f4372a4fdf",
+      "seed": 10,
+      "lego": 1,
+      "syllables": 10,
+      "english": "I still need to say something in Welsh",
+      "other": "dw i dal angen dweud rhywbeth yn Gymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 46,
+      "id": "b9870a01-030f-4224-b6d3-808c54b0783d",
+      "seed": 15,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I’ve just started to learn Welsh",
+      "other": "dw i newydd ddechrau dysgu Cymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 47,
+      "id": "d051a3c7-dcf9-4ca8-8c8c-d8070da6f968",
+      "seed": 27,
+      "lego": 1,
+      "syllables": 9,
+      "english": "I must remember something else",
+      "other": "mae rhaid i fi gofio rhywbeth arall",
+      "qa_score": null
+    },
+    {
+      "idx": 48,
+      "id": "6797d143-604f-4018-8144-9d01d3ca7614",
+      "seed": 32,
+      "lego": 2,
+      "syllables": 11,
+      "english": "I want to say that you speak Welsh very well",
+      "other": "dw i’n moyn dweud bo’ ti’n siarad Cymraeg yn dda iawn",
+      "qa_score": null
+    },
+    {
+      "idx": 49,
+      "id": "ed139b4b-91f4-4478-8d3e-d38509fffeb5",
+      "seed": 20,
+      "lego": 1,
+      "syllables": 15,
+      "english": "I’d better say that I’ve been learning for about a month now",
+      "other": "well i fi ddweud bo’ fi wedi bod yn dysgu am biti mis nawr",
+      "qa_score": null
+    },
+    {
+      "idx": 50,
+      "id": "970b541e-748d-4eb2-b574-718f4e5fa822",
+      "seed": 30,
+      "lego": 3,
+      "syllables": 7,
+      "english": "and you speak it very well",
+      "other": "a ti’n siarad hi’n dda iawn",
+      "qa_score": null
+    }
+  ]
+}

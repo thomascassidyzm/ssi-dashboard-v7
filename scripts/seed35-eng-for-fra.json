@@ -1,0 +1,90 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 35,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Elle ne veut pas",
+      "target": "She doesn't want",
+      "components": [
+        {"known": "Elle", "target": "She"},
+        {"known": "ne veut pas", "target": "doesn't want"}
+      ],
+      "build": [
+        {"known": "Elle ne veut pas", "target": "She doesn't want"},
+        {"known": "Elle ne veut pas parler", "target": "She doesn't want to speak"},
+        {"known": "Elle ne veut pas apprendre", "target": "She doesn't want to learn"},
+        {"known": "Elle ne veut pas commencer", "target": "She doesn't want to start"}
+      ],
+      "use": [
+        {"known": "Elle ne veut pas parler anglais avec moi maintenant.", "target": "She doesn't want to speak English with me now.", "score": 9},
+        {"known": "Parce que elle ne veut pas apprendre comment parler anglais.", "target": "Because she doesn't want to learn how to speak English.", "score": 9},
+        {"known": "Elle ne veut pas rencontrer d'autres personnes qui parlent anglais.", "target": "She doesn't want to meet other people who speak English.", "score": 9},
+        {"known": "Elle ne veut pas commencer à parler anglais bientôt.", "target": "She doesn't want to start talking English soon.", "score": 9},
+        {"known": "Elle ne veut pas répondre en anglais facilement.", "target": "She doesn't want to answer in English easily.", "score": 9},
+        {"known": "Elle ne veut pas être silencieux quand d'autres personnes sont ici.", "target": "She doesn't want to be quiet when other people are here.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "lire",
+      "target": "to read",
+      "build": [
+        {"known": "lire", "target": "to read"},
+        {"known": "Elle ne veut pas lire", "target": "She doesn't want to read"},
+        {"known": "je veux lire", "target": "I want to read"},
+        {"known": "lire maintenant", "target": "to read now"}
+      ],
+      "use": [
+        {"known": "Elle ne veut pas lire maintenant.", "target": "She doesn't want to read now.", "score": 9},
+        {"known": "Parce que je veux lire quelque chose bientôt.", "target": "Because I want to read something soon.", "score": 9},
+        {"known": "Elle ne veut pas lire quand d'autres personnes sont ici.", "target": "She doesn't want to read when other people are here.", "score": 9},
+        {"known": "Je voulais lire quelque chose hier.", "target": "I wanted to read something yesterday.", "score": 9},
+        {"known": "Elle ne veut pas lire avant que tu partes.", "target": "She doesn't want to read before you go.", "score": 9},
+        {"known": "J'aimerais lire quelque chose facilement.", "target": "I'd like to read something easily.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "quoi que ce soit",
+      "target": "anything",
+      "build": [
+        {"known": "quoi que ce soit", "target": "anything"},
+        {"known": "lire quoi que ce soit", "target": "to read anything"},
+        {"known": "Elle ne veut pas lire quoi que ce soit", "target": "She doesn't want to read anything"},
+        {"known": "apprendre quoi que ce soit", "target": "to learn anything"}
+      ],
+      "use": [
+        {"known": "Elle ne veut pas lire quoi que ce soit maintenant.", "target": "She doesn't want to read anything now.", "score": 9},
+        {"known": "Parce que je ne veux pas lire quoi que ce soit bientôt.", "target": "Because I don't want to read anything soon.", "score": 9},
+        {"known": "Elle ne veut pas apprendre quoi que ce soit quand d'autres personnes sont ici.", "target": "She doesn't want to learn anything when other people are here.", "score": 9},
+        {"known": "Il ne veut pas lire quoi que ce soit avant que tu partes.", "target": "He doesn't want to read anything before you go.", "score": 9},
+        {"known": "Elle ne veut pas dire quoi que ce soit maintenant.", "target": "She doesn't want to say anything now.", "score": 9},
+        {"known": "J'aimerais lire quoi que ce soit facilement.", "target": "I'd like to read anything easily.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "cet après-midi",
+      "target": "this afternoon",
+      "build": [
+        {"known": "cet après-midi", "target": "this afternoon"},
+        {"known": "Elle ne veut pas lire quoi que ce soit cet après-midi", "target": "She doesn't want to read anything this afternoon"},
+        {"known": "parler anglais cet après-midi", "target": "to speak English this afternoon"},
+        {"known": "commencer cet après-midi", "target": "to start this afternoon"}
+      ],
+      "use": [
+        {"known": "Elle ne veut pas lire quoi que ce soit cet après-midi.", "target": "She doesn't want to read anything this afternoon.", "score": 9},
+        {"known": "Parce que je veux parler anglais cet après-midi.", "target": "Because I want to speak English this afternoon.", "score": 9},
+        {"known": "Elle ne veut pas apprendre anglais cet après-midi.", "target": "She doesn't want to learn English this afternoon.", "score": 9},
+        {"known": "Il ne veut pas être silencieux cet après-midi.", "target": "He doesn't want to be quiet this afternoon.", "score": 9},
+        {"known": "Je voulais te demander quelque chose cet après-midi.", "target": "I wanted to ask you something this afternoon.", "score": 9},
+        {"known": "J'ai hâte de parler anglais cet après-midi.", "target": "I'm looking forward to speaking English this afternoon.", "score": 9}
+      ]
+    }
+  ]
+}

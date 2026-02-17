@@ -1,0 +1,52 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 163,
+  "known_text": "面白いと思います。",
+  "target_text": "I think that it's interesting.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "興味深い",
+      "target": "interesting",
+      "components": [
+        {"known": "興味", "target": "interest"},
+        {"known": "深い", "target": "deep"}
+      ],
+      "phrases": [
+        {"known": "興味深い", "target": "interesting", "phrase_role": "BUILD"},
+        {"known": "とても興味深い", "target": "very interesting", "phrase_role": "BUILD"},
+        {"known": "興味深いと思う", "target": "think it is interesting", "phrase_role": "BUILD"},
+        {"known": "興味深いことを知る", "target": "know something interesting", "phrase_role": "BUILD"},
+        {"known": "それは興味深いです。", "target": "That is interesting.", "phrase_role": "USE", "score": 8},
+        {"known": "とても興味深いと思います。", "target": "I think it is very interesting.", "phrase_role": "USE", "score": 8},
+        {"known": "それは興味深いですか？知りたいです。", "target": "Is that interesting? I want to know.", "phrase_role": "USE", "score": 8},
+        {"known": "興味深いと思いますか？知りたいです。あなたはどう思いますか？", "target": "Do you think it is interesting? I want to know. What do you think?", "phrase_role": "USE", "score": 8},
+        {"known": "とても興味深いです。それについて話しましょう。話したいと思います。", "target": "It is very interesting. Let's talk about it. I think I want to talk.", "phrase_role": "USE", "score": 8},
+        {"known": "興味深いことを知りたいです。それについてもっと知りたいと思います。", "target": "I want to know something interesting. I think I want to know more about it.", "phrase_role": "USE", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "面白いと思います",
+      "target": "I think that it's interesting",
+      "components": [
+        {"known": "面白い", "target": "exciting"},
+        {"known": "と思います", "target": "I think that"}
+      ],
+      "phrases": [
+        {"known": "興味深いと思う", "target": "think it's interesting", "phrase_role": "BUILD"},
+        {"known": "面白いと思います", "target": "I think it's interesting", "phrase_role": "BUILD"},
+        {"known": "とても興味深いと思います", "target": "I think it's very interesting", "phrase_role": "BUILD"},
+        {"known": "彼女は興味深いと思います", "target": "I think she is interesting", "phrase_role": "BUILD"},
+        {"known": "興味深いと思います。あなたは？", "target": "I think it's interesting. And you?", "phrase_role": "USE", "score": 8},
+        {"known": "興味深いと思います。どう思いますか？", "target": "I think it's interesting. What do you think?", "phrase_role": "USE", "score": 8},
+        {"known": "とても興味深いと思います。それについてもっと知りたいです。", "target": "I think it's very interesting. I want to know more about it.", "phrase_role": "USE", "score": 8},
+        {"known": "興味深いと思いますが、あなたはどう思いますか？知りたいです。", "target": "I think it's interesting, but what do you think? I want to know.", "phrase_role": "USE", "score": 8},
+        {"known": "興味深いと思います。それについて話したいと思います。話しましょう。", "target": "I think it's interesting. I think I want to talk about it. Let's talk.", "phrase_role": "USE", "score": 8},
+        {"known": "とても興味深いと思います。あなたもそう思いますか？知りたいと思います。", "target": "I think it's very interesting. Do you think so too? I think I want to know.", "phrase_role": "USE", "score": 8}
+      ]
+    }
+  ]
+}

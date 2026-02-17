@@ -4816,6 +4816,95 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
   }
 })
 
+// Search learning journey across ALL content (not paginated)
+app.get('/api/production/:courseCode/learning-journey/search', async (req, res) => {
+  const { courseCode } = req.params
+  const { q } = req.query
+
+  if (!q || q.trim().length === 0) {
+    return res.json({ courseCode, rounds: [], allItems: [], stats: null, query: '' })
+  }
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+    const query = q.trim().toLowerCase()
+
+    // Search lego_cycles for matching LEGOs (by known/target text or seed number)
+    let matchingLegoIds = new Set()
+
+    // 1. Search LEGOs by text
+    const { data: legoMatches } = await supabase
+      .from('lego_cycles')
+      .select('lego_id, seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .or(`known_text.ilike.%${query}%,target_text.ilike.%${query}%`)
+
+    if (legoMatches) {
+      for (const m of legoMatches) matchingLegoIds.add(m.lego_id)
+    }
+
+    // 2. Search by seed number (e.g. "42" matches seed 42)
+    if (/^\d+$/.test(query)) {
+      const seedNum = parseInt(query, 10)
+      const { data: seedMatches } = await supabase
+        .from('lego_cycles')
+        .select('lego_id')
+        .eq('course_code', courseCode)
+        .eq('seed_number', seedNum)
+      if (seedMatches) {
+        for (const m of seedMatches) matchingLegoIds.add(m.lego_id)
+      }
+    }
+
+    // 3. Search practice phrases by text
+    const { data: phraseMatches } = await supabase
+      .from('course_practice_phrases')
+      .select('lego_id')
+      .eq('course_code', courseCode)
+      .or(`known_text.ilike.%${query}%,target_text.ilike.%${query}%`)
+      .limit(500)
+
+    if (phraseMatches) {
+      for (const m of phraseMatches) matchingLegoIds.add(m.lego_id)
+    }
+
+    if (matchingLegoIds.size === 0) {
+      return res.json({ courseCode, rounds: [], allItems: [], stats: null, query: q })
+    }
+
+    // Generate full journey (all LEGOs) then filter to matching rounds
+    const { rounds, allItems, stats } = await learningScriptGenerator.generateLearningScript(
+      supabase,
+      courseCode,
+      9999, // Load all
+      0
+    )
+
+    const filteredRounds = rounds.filter(r => matchingLegoIds.has(r.legoId))
+    const filteredItems = []
+    for (const r of filteredRounds) {
+      filteredItems.push(...r.items)
+    }
+
+    logger.info(`Journey search "${query}" for ${courseCode}: ${matchingLegoIds.size} LEGOs, ${filteredRounds.length} rounds`)
+
+    res.json({
+      courseCode,
+      rounds: filteredRounds,
+      allItems: filteredItems,
+      stats: { ...stats, roundsGenerated: filteredRounds.length, totalItems: filteredItems.length },
+      query: q
+    })
+  } catch (err) {
+    logger.error(`Failed to search learning journey for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Mark LEGO as new/not-new
 app.post('/api/production/:courseCode/lego/:legoId/mark-new', async (req, res) => {
   const { courseCode, legoId } = req.params

@@ -1,0 +1,114 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 1,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je veux",
+      "target": "I want",
+      "components": [
+        {"known": "Je", "target": "I"},
+        {"known": "veux", "target": "want"}
+      ],
+      "build": [
+        {"known": "Je", "target": "I"},
+        {"known": "veux", "target": "want"},
+        {"known": "Je veux", "target": "I want"},
+        {"known": "Je veux", "target": "I want"}
+      ],
+      "use": [
+        {"known": "Je veux.", "target": "I want.", "score": 6},
+        {"known": "Je veux.", "target": "I want.", "score": 6},
+        {"known": "Je veux.", "target": "I want.", "score": 6},
+        {"known": "Je veux.", "target": "I want.", "score": 6},
+        {"known": "Je veux.", "target": "I want.", "score": 6},
+        {"known": "Je veux.", "target": "I want.", "score": 6}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "parler",
+      "target": "to speak",
+      "build": [
+        {"known": "parler", "target": "to speak"},
+        {"known": "Je veux parler", "target": "I want to speak"},
+        {"known": "Je veux parler", "target": "I want to speak"},
+        {"known": "Je veux parler", "target": "I want to speak"}
+      ],
+      "use": [
+        {"known": "Je veux parler.", "target": "I want to speak.", "score": 7},
+        {"known": "Je veux parler.", "target": "I want to speak.", "score": 7},
+        {"known": "Je veux parler.", "target": "I want to speak.", "score": 7},
+        {"known": "Je veux parler.", "target": "I want to speak.", "score": 7},
+        {"known": "Je veux parler.", "target": "I want to speak.", "score": 7},
+        {"known": "Je veux parler.", "target": "I want to speak.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "anglais",
+      "target": "English",
+      "build": [
+        {"known": "anglais", "target": "English"},
+        {"known": "parler anglais", "target": "to speak English"},
+        {"known": "Je veux parler anglais", "target": "I want to speak English"},
+        {"known": "parler anglais", "target": "to speak English"}
+      ],
+      "use": [
+        {"known": "Je veux parler anglais.", "target": "I want to speak English.", "score": 8},
+        {"known": "Je veux parler anglais.", "target": "I want to speak English.", "score": 8},
+        {"known": "Je veux parler anglais.", "target": "I want to speak English.", "score": 8},
+        {"known": "Je veux parler anglais.", "target": "I want to speak English.", "score": 8},
+        {"known": "Je veux parler anglais.", "target": "I want to speak English.", "score": 8},
+        {"known": "Je veux parler anglais.", "target": "I want to speak English.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "avec toi",
+      "target": "with you",
+      "components": [
+        {"known": "avec", "target": "with"},
+        {"known": "toi", "target": "you"}
+      ],
+      "build": [
+        {"known": "avec toi", "target": "with you"},
+        {"known": "parler avec toi", "target": "to speak with you"},
+        {"known": "parler anglais avec toi", "target": "to speak English with you"},
+        {"known": "Je veux parler avec toi", "target": "I want to speak with you"}
+      ],
+      "use": [
+        {"known": "Je veux parler avec toi.", "target": "I want to speak with you.", "score": 8},
+        {"known": "Je veux parler anglais avec toi.", "target": "I want to speak English with you.", "score": 9},
+        {"known": "Je veux parler anglais avec toi.", "target": "I want to speak English with you.", "score": 9},
+        {"known": "Je veux parler avec toi.", "target": "I want to speak with you.", "score": 8},
+        {"known": "Je veux parler anglais avec toi.", "target": "I want to speak English with you.", "score": 9},
+        {"known": "Je veux parler avec toi.", "target": "I want to speak with you.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "maintenant",
+      "target": "now",
+      "build": [
+        {"known": "maintenant", "target": "now"},
+        {"known": "parler maintenant", "target": "to speak now"},
+        {"known": "avec toi maintenant", "target": "with you now"},
+        {"known": "Je veux parler maintenant", "target": "I want to speak now"}
+      ],
+      "use": [
+        {"known": "Je veux parler maintenant.", "target": "I want to speak now.", "score": 7},
+        {"known": "Je veux parler anglais maintenant.", "target": "I want to speak English now.", "score": 8},
+        {"known": "Je veux parler avec toi maintenant.", "target": "I want to speak with you now.", "score": 8},
+        {"known": "Je veux parler anglais avec toi maintenant.", "target": "I want to speak English with you now.", "score": 9},
+        {"known": "Je veux parler anglais avec toi maintenant.", "target": "I want to speak English with you now.", "score": 9},
+        {"known": "Je veux parler anglais maintenant.", "target": "I want to speak English now.", "score": 8}
+      ]
+    }
+  ]
+}

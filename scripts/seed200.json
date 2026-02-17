@@ -1,0 +1,192 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 200,
+  "known_text": "They say they want to make sure that we finish everything in time.",
+  "target_text": "他们说他们想确保我们按时完成一切。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "they",
+      "target": "他们",
+      "components": [
+        {"known": "he/him", "target": "他"},
+        {"known": "(plural)", "target": "们"}
+      ],
+      "build": [
+        {"known": "They.", "target": "他们。"},
+        {"known": "They say.", "target": "他们说。"},
+        {"known": "They want.", "target": "他们想。"},
+        {"known": "They are.", "target": "他们是。"}
+      ],
+      "use": [
+        {"known": "They say my friend used to work at the office before.", "target": "他们说我朋友以前在办公室工作。", "score": 7},
+        {"known": "Have you heard what they said about the latest idea?", "target": "你听说过他们说的关于最新主意的事吗？", "score": 7},
+        {"known": "They want to find good work at the council.", "target": "他们想在政府找好工作。", "score": 6},
+        {"known": "I'm sorry but they are too busy to help us today.", "target": "对不起，但是他们今天太忙了，不能帮我们。", "score": 7},
+        {"known": "My daughter told me they work at that place now.", "target": "我女儿告诉我他们现在在那个地方工作。", "score": 7},
+        {"known": "Do you mind asking them about this problem?", "target": "你介意问他们关于这个问题吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "say/speak",
+      "target": "说",
+      "build": [
+        {"known": "Say.", "target": "说。"},
+        {"known": "They say.", "target": "他们说。"},
+        {"known": "I say.", "target": "我说。"},
+        {"known": "You say.", "target": "你说。"}
+      ],
+      "use": [
+        {"known": "They say they want to work at the council.", "target": "他们说他们想在政府工作。", "score": 7},
+        {"known": "My friend said she used to work at that office.", "target": "我朋友说她以前在那个办公室工作。", "score": 7},
+        {"known": "His teacher said the work is very important.", "target": "他老师说这个工作很重要。", "score": 6},
+        {"known": "I'm sorry but I already said I'm too busy today.", "target": "对不起，但是我已经说了我今天太忙了。", "score": 7},
+        {"known": "Everyone says they want to find good work now.", "target": "大家都说他们现在想找好工作。", "score": 6},
+        {"known": "Did they say when they want to come here?", "target": "他们说他们什么时候想来这里吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "want/think",
+      "target": "想",
+      "build": [
+        {"known": "Want.", "target": "想。"},
+        {"known": "They want.", "target": "他们想。"},
+        {"known": "I want.", "target": "我想。"},
+        {"known": "Want to do.", "target": "想做。"}
+      ],
+      "use": [
+        {"known": "They say they want to find a new office to work in.", "target": "他们说他们想找一个新的办公室工作。", "score": 7},
+        {"known": "My daughter said she wants to work at the council.", "target": "我女儿说她想在政府工作。", "score": 7},
+        {"known": "He said he wants to be a teacher like his friend.", "target": "他说他想像他朋友一样当老师。", "score": 7},
+        {"known": "I'm sorry but I don't want to do this work now.", "target": "对不起，但是我现在不想做这个工作。", "score": 7},
+        {"known": "Everyone says they want to help us with this.", "target": "大家都说他们想帮我们做这个。", "score": 6},
+        {"known": "Do you want me to ask them about this problem?", "target": "你想我问他们关于这个问题吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "make sure/ensure",
+      "target": "确保",
+      "components": [
+        {"known": "certain/sure", "target": "确"},
+        {"known": "protect/guarantee", "target": "保"}
+      ],
+      "build": [
+        {"known": "Make sure.", "target": "确保。"},
+        {"known": "To ensure.", "target": "确保。"},
+        {"known": "Make sure to do.", "target": "确保做。"},
+        {"known": "I'll make sure.", "target": "我确保。"}
+      ],
+      "use": [
+        {"known": "They say they want to make sure we do good work.", "target": "他们说他们想确保我们做好工作。", "score": 7},
+        {"known": "My friend said she wants to make sure everything is done.", "target": "我朋友说她想确保一切都做好了。", "score": 7},
+        {"known": "The teacher wants to make sure everyone understands this.", "target": "老师想确保大家都了解这个。", "score": 7},
+        {"known": "I'm trying to make sure I don't leave anything behind.", "target": "我在试着确保我不留下任何东西。", "score": 8},
+        {"known": "They all want to make sure the work is done properly.", "target": "他们都想确保工作做得好。", "score": 7},
+        {"known": "Do you want me to make sure they know about this?", "target": "你想我确保他们知道这个吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "we/us",
+      "target": "我们",
+      "components": [
+        {"known": "I/me", "target": "我"},
+        {"known": "(plural)", "target": "们"}
+      ],
+      "build": [
+        {"known": "We.", "target": "我们。"},
+        {"known": "We want.", "target": "我们想。"},
+        {"known": "We say.", "target": "我们说。"},
+        {"known": "We are.", "target": "我们是。"}
+      ],
+      "use": [
+        {"known": "They say they want to make sure we do the work.", "target": "他们说他们想确保我们做这个工作。", "score": 7},
+        {"known": "My daughter said she wants to help us at the office.", "target": "我女儿说她想在办公室帮我们。", "score": 7},
+        {"known": "The council wants to make sure we have good work.", "target": "政府想确保我们有好工作。", "score": 7},
+        {"known": "I'm sorry but we are all too busy to help today.", "target": "对不起，但是我们今天都太忙了，不能帮忙。", "score": 7},
+        {"known": "Everyone says they want to work with us now.", "target": "大家都说他们现在想和我们一起工作。", "score": 6},
+        {"known": "Do they want us to come to the office tomorrow?", "target": "他们想我们明天来办公室吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "on time",
+      "target": "按时",
+      "components": [
+        {"known": "according to", "target": "按"},
+        {"known": "time", "target": "时"}
+      ],
+      "build": [
+        {"known": "On time.", "target": "按时。"},
+        {"known": "In time.", "target": "按时。"},
+        {"known": "Finish on time.", "target": "按时完成。"},
+        {"known": "Come on time.", "target": "按时来。"}
+      ],
+      "use": [
+        {"known": "They say they want to make sure we finish on time.", "target": "他们说他们想确保我们按时完成。", "score": 7},
+        {"known": "My friend said she used to finish her work on time.", "target": "我朋友说她以前按时完成她的工作。", "score": 7},
+        {"known": "The teacher wants everyone to come on time.", "target": "老师想大家按时来。", "score": 7},
+        {"known": "I'm trying to make sure I finish this work on time.", "target": "我在试着确保我按时做完这个工作。", "score": 8},
+        {"known": "They all want us to finish the work on time today.", "target": "他们都想我们今天按时做完工作。", "score": 7},
+        {"known": "Do you want me to make sure we arrive on time?", "target": "你想我确保我们按时到吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "M",
+      "known": "finish/complete",
+      "target": "完成",
+      "components": [
+        {"known": "complete/finish", "target": "完"},
+        {"known": "accomplish/become", "target": "成"}
+      ],
+      "build": [
+        {"known": "Finish.", "target": "完成。"},
+        {"known": "Complete.", "target": "完成。"},
+        {"known": "Finish on time.", "target": "按时完成。"},
+        {"known": "Finish the work.", "target": "完成工作。"}
+      ],
+      "use": [
+        {"known": "They say they want to make sure we finish on time.", "target": "他们说他们想确保我们按时完成。", "score": 7},
+        {"known": "My daughter said she finished her work at the office.", "target": "我女儿说她在办公室完成了她的工作。", "score": 7},
+        {"known": "The council wants us to finish everything before tomorrow.", "target": "政府想我们明天之前完成所有的。", "score": 7},
+        {"known": "I'm trying to finish this work before they come here.", "target": "我在试着在他们来这里之前完成这个工作。", "score": 8},
+        {"known": "Everyone wants to make sure we finish on time today.", "target": "大家都想确保我们今天按时完成。", "score": 7},
+        {"known": "Did they say when they want us to finish this work?", "target": "他们说他们想我们什么时候完成这个工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "M",
+      "known": "everything",
+      "target": "一切",
+      "components": [
+        {"known": "one", "target": "一"},
+        {"known": "cut/all", "target": "切"}
+      ],
+      "build": [
+        {"known": "Everything.", "target": "一切。"},
+        {"known": "All.", "target": "一切。"},
+        {"known": "Everything is.", "target": "一切都是。"},
+        {"known": "Finish everything.", "target": "完成一切。"}
+      ],
+      "use": [
+        {"known": "They say they want to make sure we finish everything.", "target": "他们说他们想确保我们完成一切。", "score": 7},
+        {"known": "My friend said everything is going well at the office.", "target": "我朋友说办公室一切都很好。", "score": 7},
+        {"known": "The teacher wants to make sure everything is done on time.", "target": "老师想确保一切按时完成。", "score": 7},
+        {"known": "I'm trying to make sure everything is ready before they come.", "target": "我在试着确保他们来之前一切都好了。", "score": 8},
+        {"known": "They all want us to finish everything before tomorrow.", "target": "他们都想我们明天之前完成一切。", "score": 7},
+        {"known": "Did you make sure everything is done at the office?", "target": "你确保办公室一切都做好了吗？", "score": 8}
+      ]
+    }
+  ]
+}

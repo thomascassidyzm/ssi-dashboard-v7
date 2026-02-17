@@ -1,0 +1,99 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 251,
+  "target_text": "لا أريد أن أكتشف حتى بعد أن ننتهي.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I don't want",
+      "target": "لا أريد",
+      "build": [
+        {"known": "I don't want", "target": "لا أريد"},
+        {"known": "I don't want to", "target": "لا أريد أن"},
+        {"known": "I don't want that", "target": "لا أريد ذلك"},
+        {"known": "I don't want to do", "target": "لا أريد أن أفعل"}
+      ],
+      "use": [
+        {"known": "I don't want to learn Arabic today.", "target": "لا أريد أن أتعلم العربية اليوم.", "score": 8},
+        {"known": "I don't want to speak with him this week.", "target": "لا أريد أن أتكلم معه هذا الأسبوع.", "score": 8},
+        {"known": "I don't want to read that book before the weekend.", "target": "لا أريد أن أقرأ ذلك الكتاب قبل نهاية الأسبوع.", "score": 9},
+        {"known": "I don't want you to tell me what she said.", "target": "لا أريدك أن تخبرني ما قالت.", "score": 8},
+        {"known": "I don't want to go before you tell me.", "target": "لا أريد أن أذهب قبل أن تخبرني.", "score": 8},
+        {"known": "I don't want to think about it now.", "target": "لا أريد أن أفكر في ذلك الآن.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to find out",
+      "target": "أن أكتشف",
+      "components": [
+        {"known": "to", "target": "أن"},
+        {"known": "I find out", "target": "أكتشف"}
+      ],
+      "build": [
+        {"known": "to find out", "target": "أن أكتشف"},
+        {"known": "I don't want to find out", "target": "لا أريد أن أكتشف"},
+        {"known": "to find out what", "target": "أن أكتشف ما"},
+        {"known": "I want to find out", "target": "أريد أن أكتشف"}
+      ],
+      "use": [
+        {"known": "I don't want to find out what she said yesterday.", "target": "لا أريد أن أكتشف ما قالت بالأمس.", "score": 8},
+        {"known": "I want to find out what she thinks about that today.", "target": "أريد أن أكتشف ما تعتقد عن ذلك اليوم.", "score": 8},
+        {"known": "I don't want to find out what he wanted this week.", "target": "لا أريد أن أكتشف ما أراد هذا الأسبوع.", "score": 8},
+        {"known": "I want to find out more about that book before the weekend.", "target": "أريد أن أكتشف أكثر عن ذلك الكتاب قبل نهاية الأسبوع.", "score": 9},
+        {"known": "Can you help me find out what they wanted today?", "target": "هل يمكنك أن تساعدني أن أكتشف ما أرادوا اليوم؟", "score": 9},
+        {"known": "I want to find out what she wanted to tell me yesterday.", "target": "أريد أن أكتشف ما أرادت أن تخبرني بالأمس.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "until after",
+      "target": "حتى بعد",
+      "components": [
+        {"known": "until", "target": "حتى"},
+        {"known": "after", "target": "بعد"}
+      ],
+      "build": [
+        {"known": "until after", "target": "حتى بعد"},
+        {"known": "until after we", "target": "حتى بعد أن"},
+        {"known": "I don't want to find out until after", "target": "لا أريد أن أكتشف حتى بعد"},
+        {"known": "not until after", "target": "لا حتى بعد"}
+      ],
+      "use": [
+        {"known": "I don't want to find out until after she tells me.", "target": "لا أريد أن أكتشف حتى بعد أن تخبرني.", "score": 8},
+        {"known": "I don't want to speak until after I read more.", "target": "لا أريد أن أتكلم حتى بعد أن أقرأ أكثر.", "score": 8},
+        {"known": "She wanted to read until after the weekend.", "target": "أرادت أن تقرأ حتى بعد نهاية الأسبوع.", "score": 8},
+        {"known": "I don't want to find out until after you tell me what you think.", "target": "لا أريد أن أكتشف حتى بعد أن تخبرني ما تعتقد.", "score": 9},
+        {"known": "He said he would not tell me until after he finished.", "target": "قال أنه لن يخبرني حتى بعد أن ينتهي.", "score": 9},
+        {"known": "I want to learn more until after you tell me what to do.", "target": "أريد أن أتعلم أكثر حتى بعد أن تخبرني ماذا أفعل.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "that we finish",
+      "target": "أن ننتهي",
+      "components": [
+        {"known": "that", "target": "أن"},
+        {"known": "we finish", "target": "ننتهي"}
+      ],
+      "build": [
+        {"known": "that we finish", "target": "أن ننتهي"},
+        {"known": "until after we finish", "target": "حتى بعد أن ننتهي"},
+        {"known": "before we finish", "target": "قبل أن ننتهي"},
+        {"known": "I don't want to find out until after we finish", "target": "لا أريد أن أكتشف حتى بعد أن ننتهي"}
+      ],
+      "use": [
+        {"known": "I don't want to find out until after we finish.", "target": "لا أريد أن أكتشف حتى بعد أن ننتهي.", "score": 8},
+        {"known": "Can you tell me something before we finish today?", "target": "هل يمكنك أن تخبرني شيئاً قبل أن ننتهي اليوم؟", "score": 9},
+        {"known": "I want to learn more before we finish this week.", "target": "أريد أن أتعلم أكثر قبل أن ننتهي هذا الأسبوع.", "score": 8},
+        {"known": "She wanted to speak with you before we finish.", "target": "أرادت أن تتكلم معك قبل أن ننتهي.", "score": 8},
+        {"known": "He said he would tell me after we finish.", "target": "قال أنه سيخبرني بعد أن ننتهي.", "score": 8},
+        {"known": "I don't want you to go until after we finish today.", "target": "لا أريدك أن تذهب حتى بعد أن ننتهي اليوم.", "score": 9}
+      ]
+    }
+  ]
+}

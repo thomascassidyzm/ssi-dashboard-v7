@@ -1,0 +1,623 @@
+{
+  "course_code": "nld_for_eng",
+  "is_eng_for_x": false,
+  "round": 3,
+  "seed_range": "1-50",
+  "description": "First 50 seeds only - testing 'starting well' quality",
+  "total_use_phrases_in_range": 1204,
+  "sample_size": 50,
+  "scoring_criteria": {
+    "9": "Perfect native speech in both languages",
+    "7-8": "Strong, minor stylistic preferences",
+    "5-6": "Functional but not remarkable",
+    "3-4": "Awkward, textbook-ish",
+    "1-2": "Marginal, no one would say this"
+  },
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "f8d2c5c8-47ac-40a0-947c-2d5446a9c6d3",
+      "seed": 12,
+      "lego": 3,
+      "syllables": 11,
+      "english": "I would want to guess what you want to explain",
+      "other": "Ik zou willen raden wat jij wil uit te leggen",
+      "qa_score": 4,
+      "qa_notes": "English is awkward ('I would want to guess'). Dutch has incorrect infinitive construction - should be 'wilt uitleggen' not 'wil uit te leggen'. The 'te' before 'leggen' is wrong in this modal verb construction."
+    },
+    {
+      "idx": 2,
+      "id": "fb745def-61f1-4998-aa1c-8c1021acac33",
+      "seed": 26,
+      "lego": 8,
+      "syllables": 21,
+      "english": "I like feeling as if I'm nearly ready to speak Dutch very well with everyone",
+      "other": "Ik vind het fijn om te voelen alsof ik bijna klaar ben om heel goed Nederlands te spreken met iedereen",
+      "qa_score": 7,
+      "qa_notes": "English is natural. Dutch is grammatically correct and natural, though quite long. Good word order with verb placement."
+    },
+    {
+      "idx": 3,
+      "id": "4922b3e3-c39c-47bb-9ef4-efa010c56e08",
+      "seed": 37,
+      "lego": 8,
+      "syllables": 19,
+      "english": "I started to think about it carefully last month about the sentence",
+      "other": "Ik begon er vorige maand goed over na te denken wat de zin is",
+      "qa_score": 3,
+      "qa_notes": "English is awkward - 'about the sentence' at the end is unnatural, redundant with 'about it'. Dutch has issues: 'nadenken over' is correct but the 'wat de zin is' clause doesn't fit naturally with the preceding structure."
+    },
+    {
+      "idx": 4,
+      "id": "905ecf88-ec1c-46c4-8131-37af4d7c1b07",
+      "seed": 24,
+      "lego": 4,
+      "syllables": 20,
+      "english": "I am not going to find out what the answer is soon because I don't want to learn",
+      "other": "Ik ga binnenkort niet uitvinden wat het antwoord is omdat ik niet wil leren",
+      "qa_score": 6,
+      "qa_notes": "English is functional but slightly awkward. Dutch word order is acceptable, though 'binnenkort niet' placement could be debated. 'Uitvinden' is correct for 'find out'."
+    },
+    {
+      "idx": 5,
+      "id": "cf1a9ddd-62f5-434b-9c95-30fafaeaa062",
+      "seed": 29,
+      "lego": 6,
+      "syllables": 20,
+      "english": "I'm looking forward to remembering better what the sentence is tomorrow",
+      "other": "Ik kijk ernaar uit om morgen beter te onthouden wat de zin is",
+      "qa_score": 6,
+      "qa_notes": "English is slightly unnatural ('looking forward to remembering better'). Dutch is grammatically correct with proper separable verb 'uitkijken naar' and infinitive construction."
+    },
+    {
+      "idx": 6,
+      "id": "770ec9a5-8c20-46b3-b762-9150c158915a",
+      "seed": 6,
+      "lego": 5,
+      "syllables": 8,
+      "english": "I'm trying to remember a word",
+      "other": "Ik probeer een woord te onthouden",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Simple, clear sentence with proper Dutch infinitive construction."
+    },
+    {
+      "idx": 7,
+      "id": "13f14a24-8158-4f1f-861b-2447543615f1",
+      "seed": 20,
+      "lego": 4,
+      "syllables": 11,
+      "english": "But you want to learn the whole name very well",
+      "other": "Maar je wilt de hele naam heel goed leren",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural. Dutch word order is correct with verb 'leren' at the end. 'Heel goed' placement is natural."
+    },
+    {
+      "idx": 8,
+      "id": "5c75029a-70c3-4b91-b2f7-8ce677e50b7e",
+      "seed": 19,
+      "lego": 2,
+      "syllables": 10,
+      "english": "I want to explain what I mean in Dutch",
+      "other": "Ik wil in het Nederlands uit te leggen wat ik bedoel",
+      "qa_score": 3,
+      "qa_notes": "English is fine. Dutch has a grammatical error: after 'willen' the infinitive should be 'uitleggen' NOT 'uit te leggen'. The 'te' is incorrect here - modal verb takes bare infinitive."
+    },
+    {
+      "idx": 9,
+      "id": "123500e6-1f50-4980-bd27-ed998217307e",
+      "seed": 12,
+      "lego": 2,
+      "syllables": 7,
+      "english": "I wouldn't want to speak Dutch now",
+      "other": "Ik zou niet willen nu Nederlands spreken",
+      "qa_score": 5,
+      "qa_notes": "English is natural. Dutch word order is slightly off - 'nu' should typically come earlier: 'Ik zou nu niet willen Nederlands spreken' or better 'Ik zou nu geen Nederlands willen spreken'."
+    },
+    {
+      "idx": 10,
+      "id": "117f6ca6-fcb8-460d-9d1c-169bf805c19d",
+      "seed": 4,
+      "lego": 4,
+      "syllables": 9,
+      "english": "I want to speak something in Dutch",
+      "other": "Ik wil iets in het Nederlands spreken",
+      "qa_score": 6,
+      "qa_notes": "English is slightly awkward ('speak something'). Dutch is grammatically correct though 'iets in het Nederlands zeggen' might be more natural than 'spreken'."
+    },
+    {
+      "idx": 11,
+      "id": "a85d2d4d-3d23-4f69-b2c6-474f1e7ef727",
+      "seed": 7,
+      "lego": 4,
+      "syllables": 13,
+      "english": "I'm trying as hard as possible to remember a word",
+      "other": "Ik probeer zo hard mogelijk een woord te onthouden",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Good idiomatic expression in both languages."
+    },
+    {
+      "idx": 12,
+      "id": "dd5de2c1-94fb-4bcb-afa5-490be108b81f",
+      "seed": 26,
+      "lego": 8,
+      "syllables": 21,
+      "english": "I like feeling as if I'm nearly ready to meet people who speak Dutch this evening",
+      "other": "Ik vind het fijn om te voelen alsof ik bijna klaar ben om vanavond mensen te ontmoeten die Nederlands spreken",
+      "qa_score": 7,
+      "qa_notes": "Both languages are natural and correct. Long but well-structured. Good use of relative clause 'die Nederlands spreken'."
+    },
+    {
+      "idx": 13,
+      "id": "5776e5d1-62ba-4100-ae20-1de493a05a22",
+      "seed": 7,
+      "lego": 4,
+      "syllables": 12,
+      "english": "I'm trying as hard as possible to speak Dutch today",
+      "other": "Ik probeer vandaag zo hard mogelijk Nederlands te spreken",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Good word order in Dutch with time adverb 'vandaag' placement."
+    },
+    {
+      "idx": 14,
+      "id": "d399eaa1-92dd-47d9-858f-d6435e5cb566",
+      "seed": 11,
+      "lego": 1,
+      "syllables": 12,
+      "english": "I would like to try as hard as possible today",
+      "other": "Ik zou graag vandaag zo hard mogelijk proberen",
+      "qa_score": 7,
+      "qa_notes": "Both languages are functional. Dutch is correct though slightly stilted. 'Zou graag willen' might be more natural but this is acceptable."
+    },
+    {
+      "idx": 15,
+      "id": "d43e92b2-0a1b-44da-83a9-8a0523703ab4",
+      "seed": 5,
+      "lego": 5,
+      "syllables": 5,
+      "english": "I want to practise",
+      "other": "Ik wil oefenen",
+      "qa_score": 9,
+      "qa_notes": "Perfect in both languages. Simple, natural, correct."
+    },
+    {
+      "idx": 16,
+      "id": "d9ca6286-ecf9-4fc4-a773-b1284f7d5e73",
+      "seed": 16,
+      "lego": 2,
+      "syllables": 11,
+      "english": "He wants to speak Dutch very well tomorrow",
+      "other": "Hij wil morgen heel goed Nederlands spreken",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Good Dutch word order."
+    },
+    {
+      "idx": 17,
+      "id": "4b159e3d-b255-4a52-bf18-813542fe353c",
+      "seed": 12,
+      "lego": 1,
+      "syllables": 12,
+      "english": "I wouldn't like to speak Dutch after you are ready",
+      "other": "Ik zou niet graag Nederlands spreken nadat jij klaar bent",
+      "qa_score": 6,
+      "qa_notes": "English is slightly unnatural phrasing. Dutch is grammatically correct with proper subordinate clause verb order 'klaar bent'."
+    },
+    {
+      "idx": 18,
+      "id": "9ae52dc5-b8c5-4296-941c-b8e5fdbef97e",
+      "seed": 26,
+      "lego": 7,
+      "syllables": 22,
+      "english": "I like feeling as if I am nearly ready to speak Dutch very well with everyone",
+      "other": "Ik vind het fijn om te voelen alsof ik bijna klaar ben heel goed Nederlands te spreken met iedereen",
+      "qa_score": 5,
+      "qa_notes": "English is fine. Dutch is missing 'om' before 'heel goed Nederlands te spreken' - compare with idx 2 which has it correctly. Should be 'om heel goed Nederlands te spreken'."
+    },
+    {
+      "idx": 19,
+      "id": "1e928aaa-a791-435a-bfa5-31a54b7abc3f",
+      "seed": 17,
+      "lego": 5,
+      "syllables": 15,
+      "english": "She wants to speak in the Dutch language very well tomorrow",
+      "other": "Zij wil morgen in het Nederlands heel goed spreken",
+      "qa_score": 6,
+      "qa_notes": "English is slightly awkward ('in the Dutch language' is overly formal). Dutch is correct and natural."
+    },
+    {
+      "idx": 20,
+      "id": "f99e3979-b389-4291-9626-34b96d03dbb2",
+      "seed": 28,
+      "lego": 1,
+      "syllables": 20,
+      "english": "It is useful to remember what the whole sentence is tomorrow morning",
+      "other": "Het is nuttig morgen te onthouden wat de hele zin is",
+      "qa_score": 5,
+      "qa_notes": "English is functional but awkward ('tomorrow morning' at end is odd). Dutch drops 'morgenochtend' (tomorrow morning) reducing to just 'morgen'. Missing 'om' before infinitive - should be 'om morgen te onthouden'."
+    },
+    {
+      "idx": 21,
+      "id": "66600113-000c-4e17-b731-9a31ce90a521",
+      "seed": 24,
+      "lego": 5,
+      "syllables": 6,
+      "english": "easily remember",
+      "other": "makkelijk onthouden",
+      "qa_score": 7,
+      "qa_notes": "Fragment but both are natural. Dutch is correct."
+    },
+    {
+      "idx": 22,
+      "id": "504e7dd5-450f-4a04-8b1e-a536f1683ec2",
+      "seed": 16,
+      "lego": 3,
+      "syllables": 18,
+      "english": "And he would like to be able to speak later on after you are ready",
+      "other": "En hij zou graag later kunnen spreken nadat jij klaar bent",
+      "qa_score": 7,
+      "qa_notes": "Both languages are acceptable. Dutch is grammatically correct with proper modal verb ordering and subordinate clause."
+    },
+    {
+      "idx": 23,
+      "id": "62938742-4a35-4221-b8c7-068ef45f27e3",
+      "seed": 16,
+      "lego": 5,
+      "syllables": 12,
+      "english": "He wants to speak Dutch with everyone later on",
+      "other": "Hij wil later met iedereen Nederlands spreken",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Good word order in Dutch."
+    },
+    {
+      "idx": 24,
+      "id": "c9e6536a-b98e-43fe-b2bb-b6f650efe016",
+      "seed": 17,
+      "lego": 7,
+      "syllables": 15,
+      "english": "And she would like to explain what the answer is later on",
+      "other": "En zij zou graag later willen uit te leggen wat het antwoord is",
+      "qa_score": 3,
+      "qa_notes": "English is fine. Dutch has grammatical error: 'willen uitleggen' should be together, not 'willen uit te leggen'. The 'te' is incorrect after 'willen'."
+    },
+    {
+      "idx": 25,
+      "id": "b26807fc-0823-4120-ac93-3a55c09f4b1f",
+      "seed": 29,
+      "lego": 1,
+      "syllables": 16,
+      "english": "I'm looking forward to not taking too much time to answer people",
+      "other": "Ik kijk ernaar uit om niet te veel tijd te nemen om te antwoorden",
+      "qa_score": 5,
+      "qa_notes": "English is somewhat awkward. Dutch drops 'people' and just has 'te antwoorden'. Structure is grammatically okay but slightly convoluted."
+    },
+    {
+      "idx": 26,
+      "id": "c0b1859a-d972-4730-8fa3-85104d735565",
+      "seed": 27,
+      "lego": 6,
+      "syllables": 20,
+      "english": "I don't like taking too much time to answer because I am not nearly ready",
+      "other": "Ik vind het niet fijn om te veel tijd te nemen om te antwoorden omdat ik niet bijna klaar ben",
+      "qa_score": 6,
+      "qa_notes": "English is functional. Dutch is grammatically correct but long. 'Niet bijna klaar' is a bit awkward - more natural would be 'nog lang niet klaar'."
+    },
+    {
+      "idx": 27,
+      "id": "f7115566-4da1-455f-9a16-281a11809f9f",
+      "seed": 30,
+      "lego": 3,
+      "syllables": 6,
+      "english": "I wanted yesterday",
+      "other": "Ik wilde gisteren",
+      "qa_score": 5,
+      "qa_notes": "Fragment - incomplete in both languages. Grammatically correct but lacks context/object."
+    },
+    {
+      "idx": 28,
+      "id": "c278e600-cc5b-4c72-b4ee-fb50a7fed81d",
+      "seed": 35,
+      "lego": 4,
+      "syllables": 19,
+      "english": "She doesn't want to read anything about remembering what the answer is",
+      "other": "Zij wil vanmiddag niets lezen onthouden wat het antwoord is",
+      "qa_score": 2,
+      "qa_notes": "English is awkward ('read anything about remembering'). Dutch is broken - 'lezen onthouden' makes no sense, missing 'over' and proper construction. 'Vanmiddag' (this afternoon) appears in Dutch but not English."
+    },
+    {
+      "idx": 29,
+      "id": "723b082c-b70c-48c8-8f1e-704b5cd7bea0",
+      "seed": 36,
+      "lego": 3,
+      "syllables": 14,
+      "english": "We don't want to interrupt when someone wants to speak Dutch",
+      "other": "Wij willen niet onderbreken als iemand Nederlands wil spreken",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Good subordinate clause structure in Dutch."
+    },
+    {
+      "idx": 30,
+      "id": "94b3a6a5-56bc-460b-9bf7-b60b12f16874",
+      "seed": 26,
+      "lego": 2,
+      "syllables": 17,
+      "english": "I like to find out what the answer is tomorrow at six o'clock",
+      "other": "Ik vind het fijn morgen om zes uur te uitvinden wat het antwoord is",
+      "qa_score": 3,
+      "qa_notes": "English is fine. Dutch has error: 'te uitvinden' is wrong - should be 'uit te vinden' (separable verb). The particle 'uit' must separate from 'vinden' in infinitive with 'te'."
+    },
+    {
+      "idx": 31,
+      "id": "0312cf1c-de1e-4e87-b9ee-ef31bb91c775",
+      "seed": 17,
+      "lego": 3,
+      "syllables": 8,
+      "english": "She wants to find out what I mean",
+      "other": "Zij wil uitvinden wat ik bedoel",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. 'Uitvinden' is correct as bare infinitive after 'wil'."
+    },
+    {
+      "idx": 32,
+      "id": "958822c9-5a53-42bb-ae64-0f62c4e9eccb",
+      "seed": 10,
+      "lego": 5,
+      "syllables": 9,
+      "english": "I want to say the whole word in Dutch",
+      "other": "Ik wil de hele woord in het Nederlands zeggen",
+      "qa_score": 4,
+      "qa_notes": "English is fine. Dutch has gender error: 'woord' is neuter (het woord), so it should be 'het hele woord' not 'de hele woord'."
+    },
+    {
+      "idx": 33,
+      "id": "3e5c8230-8486-4282-a8b6-b6c34d263a64",
+      "seed": 34,
+      "lego": 1,
+      "syllables": 16,
+      "english": "He doesn't want to meet people who speak Dutch very well this evening",
+      "other": "Hij wil niet vanavond mensen ontmoeten die heel goed Nederlands spreken",
+      "qa_score": 7,
+      "qa_notes": "Both languages are acceptable. Dutch word order is slightly unusual with 'vanavond' placement but grammatically correct."
+    },
+    {
+      "idx": 34,
+      "id": "30d0e01d-32f6-48db-9368-86000906630b",
+      "seed": 4,
+      "lego": 3,
+      "syllables": 7,
+      "english": "I want to learn something",
+      "other": "Ik wil iets leren",
+      "qa_score": 9,
+      "qa_notes": "Perfect in both languages. Simple, natural, correct."
+    },
+    {
+      "idx": 35,
+      "id": "30d8c8be-c8fd-4f3c-bafa-564c0910439f",
+      "seed": 11,
+      "lego": 4,
+      "syllables": 12,
+      "english": "I'm not sure if I can speak Dutch after I try",
+      "other": "Ik weet niet zeker of ik Nederlands kan spreken nadat ik probeer",
+      "qa_score": 6,
+      "qa_notes": "English is natural. Dutch is mostly correct but 'nadat ik probeer' is odd - should be 'nadat ik het probeer' or 'nadat ik geprobeerd heb' (after I've tried)."
+    },
+    {
+      "idx": 36,
+      "id": "88efc6b2-7615-4947-8266-7ac0121d75a5",
+      "seed": 26,
+      "lego": 5,
+      "syllables": 19,
+      "english": "I like feeling as if I can remember what the answer is tomorrow",
+      "other": "Ik vind het fijn om te voelen alsof ik morgen kan onthouden wat het antwoord is",
+      "qa_score": 7,
+      "qa_notes": "Both languages are natural and correct. Good structure with embedded clauses."
+    },
+    {
+      "idx": 37,
+      "id": "07b48523-f899-4b36-a33a-3647cd4f1101",
+      "seed": 4,
+      "lego": 3,
+      "syllables": 5,
+      "english": "to speak something",
+      "other": "iets spreken",
+      "qa_score": 5,
+      "qa_notes": "Fragment. English 'to speak something' is slightly awkward (usually 'say something'). Dutch is correct as a phrase."
+    },
+    {
+      "idx": 38,
+      "id": "384b8685-022d-4b8a-abc8-67c43fe79c96",
+      "seed": 19,
+      "lego": 1,
+      "syllables": 12,
+      "english": "But she would like to find out what the answer is",
+      "other": "Maar zij zou graag willen uitvinden wat het antwoord is",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Good Dutch modal verb construction."
+    },
+    {
+      "idx": 39,
+      "id": "92b70459-b1f0-4473-8e39-ae4e6bc455e2",
+      "seed": 27,
+      "lego": 5,
+      "syllables": 18,
+      "english": "I don't like to take too much time to meet people who speak Dutch this evening",
+      "other": "Ik vind het niet fijn om te veel tijd te nemen om vanavond mensen te ontmoeten die Nederlands spreken",
+      "qa_score": 7,
+      "qa_notes": "Both languages are functional and correct. Long but well-structured."
+    },
+    {
+      "idx": 40,
+      "id": "8eccff2f-c5da-4559-abc8-42fdca54aac9",
+      "seed": 36,
+      "lego": 2,
+      "syllables": 14,
+      "english": "We don't want to start the story as quickly as possible",
+      "other": "Wij willen niet zo snel mogelijk beginnen met het verhaal",
+      "qa_score": 7,
+      "qa_notes": "English is functional. Dutch is correct with 'beginnen met' construction."
+    },
+    {
+      "idx": 41,
+      "id": "63cb5777-047e-46ca-8c4a-7459cf1c3b88",
+      "seed": 18,
+      "lego": 7,
+      "syllables": 17,
+      "english": "And we want to meet at six o'clock and find out what the answer is",
+      "other": "En wij willen om zes uur afspreken en uitvinden wat het antwoord is",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Good use of 'afspreken' for 'meet' in sense of making an appointment."
+    },
+    {
+      "idx": 42,
+      "id": "9adbc8b1-d9c3-4f91-839a-35442735bd1d",
+      "seed": 32,
+      "lego": 1,
+      "syllables": 13,
+      "english": "Did you want not to take too much time to answer people",
+      "other": "Wilde je niet te veel tijd nemen om te antwoorden met mensen",
+      "qa_score": 4,
+      "qa_notes": "English is awkward ('Did you want not to'). Dutch 'antwoorden met mensen' is wrong - should be 'aan mensen antwoorden' or 'mensen antwoorden'. 'Met' is incorrect preposition here."
+    },
+    {
+      "idx": 43,
+      "id": "54dbe2be-34ca-402e-a898-419765a23e4c",
+      "seed": 4,
+      "lego": 7,
+      "syllables": 10,
+      "english": "how often you say something in Dutch",
+      "other": "hoe vaak je iets in het Nederlands zegt",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Good word order."
+    },
+    {
+      "idx": 44,
+      "id": "8790ce9e-a1e7-4603-864d-a5e61fa04b21",
+      "seed": 36,
+      "lego": 3,
+      "syllables": 6,
+      "english": "interrupt the story",
+      "other": "het verhaal onderbreken",
+      "qa_score": 8,
+      "qa_notes": "Fragment but both are natural and correct."
+    },
+    {
+      "idx": 45,
+      "id": "0113309e-aad6-4943-8d1b-1e6d1961a684",
+      "seed": 16,
+      "lego": 2,
+      "syllables": 13,
+      "english": "I would like that he wants to speak Dutch very often",
+      "other": "Ik zou graag willen dat hij heel vaak Nederlands wil spreken",
+      "qa_score": 6,
+      "qa_notes": "English is slightly awkward ('I would like that he wants'). Dutch is grammatically correct with proper 'dat' clause."
+    },
+    {
+      "idx": 46,
+      "id": "698ee5d0-f20d-44a0-af68-3f08ed53720e",
+      "seed": 25,
+      "lego": 4,
+      "syllables": 17,
+      "english": "Are you going to help me speak Dutch very well before this evening",
+      "other": "Ga je me helpen heel goed Nederlands te spreken voordat vanavond",
+      "qa_score": 3,
+      "qa_notes": "English is acceptable. Dutch has a broken ending: 'voordat vanavond' is incomplete - needs a verb clause like 'voordat het vanavond is' or should be 'voor vanavond'."
+    },
+    {
+      "idx": 47,
+      "id": "07f1c923-8b8f-47ee-a2fb-d954affd345e",
+      "seed": 30,
+      "lego": 3,
+      "syllables": 16,
+      "english": "I wanted yesterday to remember what the whole sentence is",
+      "other": "Ik wilde gisteren onthouden wat de hele zin is",
+      "qa_score": 6,
+      "qa_notes": "English word order is slightly awkward ('I wanted yesterday'). Dutch is correct."
+    },
+    {
+      "idx": 48,
+      "id": "07e82a0f-0340-4bef-a7b6-b953f6a3cb49",
+      "seed": 10,
+      "lego": 6,
+      "syllables": 10,
+      "english": "I want to say the whole sentence in Dutch",
+      "other": "Ik wil de hele zin in het Nederlands zeggen",
+      "qa_score": 8,
+      "qa_notes": "Both languages are natural and correct. Note: 'zin' is masculine so 'de hele zin' is correct (unlike idx 32 with 'woord')."
+    },
+    {
+      "idx": 49,
+      "id": "43fda81c-ec5c-4cc6-b9b2-1ecdb9ff4573",
+      "seed": 9,
+      "lego": 1,
+      "syllables": 12,
+      "english": "I speak Dutch now to try to explain what I mean",
+      "other": "Ik spreek nu Nederlands proberen uit te leggen wat ik bedoel",
+      "qa_score": 2,
+      "qa_notes": "English is acceptable. Dutch is broken - missing 'om te' before 'proberen': should be 'Ik spreek nu Nederlands om te proberen uit te leggen wat ik bedoel'. As written, it's ungrammatical."
+    },
+    {
+      "idx": 50,
+      "id": "0617b866-c5fd-4d2b-9288-1ced235ee653",
+      "seed": 34,
+      "lego": 4,
+      "syllables": 19,
+      "english": "He doesn't want to be quiet when he wants to start talking as quickly as possible",
+      "other": "Hij wil niet stil zijn als hij zo snel mogelijk wil beginnen met praten",
+      "qa_score": 7,
+      "qa_notes": "Both languages are functional and correct. Good use of 'beginnen met praten'."
+    }
+  ],
+  "summary": {
+    "average_score": 6.06,
+    "score_distribution": {
+      "9": 2,
+      "8": 14,
+      "7": 10,
+      "6": 9,
+      "5": 6,
+      "4": 3,
+      "3": 4,
+      "2": 2,
+      "1": 0
+    },
+    "phrases_below_5": 9,
+    "phrases_below_5_percentage": "18%",
+    "worst_3_phrases": [
+      {
+        "idx": 28,
+        "score": 2,
+        "english": "She doesn't want to read anything about remembering what the answer is",
+        "other": "Zij wil vanmiddag niets lezen onthouden wat het antwoord is",
+        "reason": "Dutch is completely broken - 'lezen onthouden' is nonsensical, missing preposition 'over', and 'vanmiddag' appears in Dutch but not English. Translation mismatch and grammatical failure."
+      },
+      {
+        "idx": 49,
+        "score": 2,
+        "english": "I speak Dutch now to try to explain what I mean",
+        "other": "Ik spreek nu Nederlands proberen uit te leggen wat ik bedoel",
+        "reason": "Dutch missing required 'om te' construction before 'proberen'. The sentence is ungrammatical - infinitive clause requires 'om te proberen' to connect properly."
+      },
+      {
+        "idx": 3,
+        "score": 3,
+        "english": "I started to think about it carefully last month about the sentence",
+        "other": "Ik begon er vorige maand goed over na te denken wat de zin is",
+        "reason": "English has redundant 'about it...about the sentence'. Dutch structure is confused - 'nadenken over' is correct but the 'wat de zin is' clause doesn't integrate naturally."
+      }
+    ],
+    "common_issues": [
+      "Incorrect infinitive constructions: 'uit te leggen' instead of 'uitleggen' after modal verbs (willen/kunnen)",
+      "Separable verb errors: 'te uitvinden' should be 'uit te vinden'",
+      "Missing 'om te' in infinitive purpose clauses",
+      "Article/gender errors: 'de hele woord' should be 'het hele woord'",
+      "Preposition errors: 'antwoorden met mensen' should be 'aan mensen antwoorden'",
+      "Incomplete subordinate clauses: 'voordat vanavond' is unfinished",
+      "English awkwardness in complex constructions that then compounds in Dutch translation"
+    ],
+    "strengths": [
+      "Simple sentences are generally well-formed (scores 8-9)",
+      "Basic word order is usually correct",
+      "Modal verb + infinitive basics are understood",
+      "Relative clauses ('die Nederlands spreken') are correct",
+      "Time adverb placement is generally acceptable"
+    ]
+  }
+}

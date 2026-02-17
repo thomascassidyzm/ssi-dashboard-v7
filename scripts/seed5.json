@@ -1,0 +1,99 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 5,
+  "target_text": "I'm going to practise speaking with someone else.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "我要",
+      "target": "I'm going to",
+      "components": [
+        {"known": "我", "target": "I'm"},
+        {"known": "要", "target": "going to"}
+      ],
+      "build": [
+        {"known": "我要", "target": "I'm going to"},
+        {"known": "要", "target": "going to"},
+        {"known": "我要说", "target": "I'm going to speak"},
+        {"known": "我要学", "target": "I'm going to learn"}
+      ],
+      "use": [
+        {"known": "我要说。", "target": "I'm going to speak.", "score": 7},
+        {"known": "我要学英语。", "target": "I'm going to learn English.", "score": 8},
+        {"known": "我要说英语。", "target": "I'm going to speak English.", "score": 8},
+        {"known": "我要和你说英语。", "target": "I'm going to speak English with you.", "score": 9},
+        {"known": "我现在要说英语。", "target": "I'm going to speak English now.", "score": 8},
+        {"known": "我要尽量多说英语。", "target": "I'm going to speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "说话",
+      "target": "speaking",
+      "components": [
+        {"known": "说", "target": "speak"},
+        {"known": "话", "target": "-ing"}
+      ],
+      "build": [
+        {"known": "说话", "target": "speaking"},
+        {"known": "想说话", "target": "want speaking"},
+        {"known": "我在说话", "target": "I'm speaking"},
+        {"known": "要说话", "target": "going to speaking"}
+      ],
+      "use": [
+        {"known": "我在说话。", "target": "I'm speaking.", "score": 7},
+        {"known": "我要说话。", "target": "I'm going to speaking.", "score": 6},
+        {"known": "我想说话。", "target": "I want speaking.", "score": 6},
+        {"known": "我在和你说话。", "target": "I'm speaking with you.", "score": 8},
+        {"known": "我要和你说话。", "target": "I'm going to speaking with you.", "score": 7},
+        {"known": "我现在在说话。", "target": "I'm speaking now.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "练习",
+      "target": "practise",
+      "build": [
+        {"known": "练习", "target": "practise"},
+        {"known": "练习说话", "target": "practise speaking"},
+        {"known": "我要练习", "target": "I'm going to practise"},
+        {"known": "想练习", "target": "want to practise"}
+      ],
+      "use": [
+        {"known": "我想练习。", "target": "I want to practise.", "score": 7},
+        {"known": "我要练习说话。", "target": "I'm going to practise speaking.", "score": 9},
+        {"known": "我在试练习。", "target": "I'm trying to practise.", "score": 7},
+        {"known": "我想练习说话。", "target": "I want to practise speaking.", "score": 8},
+        {"known": "我要练习。", "target": "I'm going to practise.", "score": 7},
+        {"known": "怎么练习说话？", "target": "How to practise speaking?", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "和别人",
+      "target": "with someone else",
+      "components": [
+        {"known": "和", "target": "with"},
+        {"known": "别人", "target": "someone else"}
+      ],
+      "build": [
+        {"known": "和别人", "target": "with someone else"},
+        {"known": "和别人说", "target": "speak with someone else"},
+        {"known": "和别人练习", "target": "practise with someone else"},
+        {"known": "和别人说话", "target": "speaking with someone else"}
+      ],
+      "use": [
+        {"known": "我要和别人说。", "target": "I'm going to speak with someone else.", "score": 8},
+        {"known": "我想和别人练习。", "target": "I want to practise with someone else.", "score": 8},
+        {"known": "我要和别人练习说话。", "target": "I'm going to practise speaking with someone else.", "score": 9},
+        {"known": "我要和别人说英语。", "target": "I'm going to speak English with someone else.", "score": 9},
+        {"known": "我想和别人练习说话英语。", "target": "I want to practise speaking English with someone else.", "score": 9},
+        {"known": "我在和别人说话。", "target": "I'm speaking with someone else.", "score": 8}
+      ]
+    }
+  ]
+}

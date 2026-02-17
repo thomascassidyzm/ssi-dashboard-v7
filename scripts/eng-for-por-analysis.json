@@ -1,0 +1,24 @@
+{
+  "analysis": {
+    "generated_at": "2026-01-28T19:00:00.000Z",
+    "seeds_analyzed": 260,
+    "register": {
+      "choice": "neutral-conversational",
+      "notes": "Standard contemporary English, avoiding overly formal or slang expressions"
+    },
+    "problem_areas": [
+      "Phrasal verbs (get up, turn on, etc.) - decompose carefully",
+      "Contractions (I'm vs I am) - use natural contractions in spoken English",
+      "Articles (a/the) - Portuguese speakers often struggle with these"
+    ],
+    "golden_keys": [
+      "want to -> querer + infinitive",
+      "going to -> ir + infinitive",
+      "have to -> ter que + infinitive"
+    ],
+    "zut_concerns": [
+      "to speak vs speak - context-dependent infinitive marker",
+      "a/an - article selection based on following sound"
+    ]
+  }
+}

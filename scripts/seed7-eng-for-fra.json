@@ -1,0 +1,81 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 7,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je veux",
+      "target": "I want",
+      "components": [
+        {"known": "Je", "target": "I"},
+        {"known": "veux", "target": "want"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "essayer",
+      "target": "to try",
+      "build": [
+        {"known": "essayer", "target": "to try"},
+        {"known": "Je veux essayer", "target": "I want to try"},
+        {"known": "J'essaie d'essayer", "target": "I'm trying to try"},
+        {"known": "essayer de parler", "target": "to try to speak"}
+      ],
+      "use": [
+        {"known": "Je veux essayer de parler anglais maintenant.", "target": "I want to try to speak English now.", "score": 8},
+        {"known": "J'essaie d'essayer de parler anglais avec toi.", "target": "I'm trying to try to speak English with you.", "score": 7},
+        {"known": "Je vais essayer de me souvenir d'un mot en anglais.", "target": "I'm going to try to remember a word in English.", "score": 9},
+        {"known": "Je veux essayer de dire quelque chose en anglais.", "target": "I want to try to say something in English.", "score": 8},
+        {"known": "J'essaie d'essayer de parler le plus souvent possible.", "target": "I'm trying to try to speak as often as possible.", "score": 7},
+        {"known": "Je vais essayer d'apprendre comment parler anglais.", "target": "I'm going to try to learn how to speak English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "aussi fort que possible",
+      "target": "as hard as I can",
+      "components": [
+        {"known": "aussi", "target": "as"},
+        {"known": "fort", "target": "hard"},
+        {"known": "que possible", "target": "as I can"}
+      ],
+      "build": [
+        {"known": "aussi fort que possible", "target": "as hard as I can"},
+        {"known": "essayer aussi fort que possible", "target": "to try as hard as I can"},
+        {"known": "Je veux essayer aussi fort que possible", "target": "I want to try as hard as I can"},
+        {"known": "parler aussi fort que possible", "target": "to speak as hard as I can"}
+      ],
+      "use": [
+        {"known": "Je veux essayer aussi fort que possible de parler anglais.", "target": "I want to try as hard as I can to speak English.", "score": 8},
+        {"known": "J'essaie d'essayer aussi fort que possible maintenant.", "target": "I'm trying to try as hard as I can now.", "score": 7},
+        {"known": "Je vais essayer aussi fort que possible de me souvenir d'un mot.", "target": "I'm going to try as hard as I can to remember a word.", "score": 9},
+        {"known": "Je veux apprendre aussi fort que possible comment parler.", "target": "I want to learn as hard as I can how to speak.", "score": 8},
+        {"known": "J'essaie aussi fort que possible de parler anglais avec toi.", "target": "I'm trying as hard as I can to speak English with you.", "score": 9},
+        {"known": "Je vais essayer aussi fort que possible d'apprendre l'anglais.", "target": "I'm going to try as hard as I can to learn English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "aujourd'hui",
+      "target": "today",
+      "build": [
+        {"known": "aujourd'hui", "target": "today"},
+        {"known": "parler aujourd'hui", "target": "to speak today"},
+        {"known": "essayer aujourd'hui", "target": "to try today"},
+        {"known": "Je veux parler aujourd'hui", "target": "I want to speak today"}
+      ],
+      "use": [
+        {"known": "Je veux essayer aussi fort que possible aujourd'hui.", "target": "I want to try as hard as I can today.", "score": 8},
+        {"known": "Je vais parler anglais avec toi aujourd'hui.", "target": "I'm going to speak English with you today.", "score": 8},
+        {"known": "J'essaie de me souvenir d'un mot en anglais aujourd'hui.", "target": "I'm trying to remember a word in English today.", "score": 8},
+        {"known": "Je veux apprendre comment dire quelque chose aujourd'hui.", "target": "I want to learn how to say something today.", "score": 9},
+        {"known": "Je vais essayer de parler anglais le plus souvent possible aujourd'hui.", "target": "I'm going to try to speak English as often as possible today.", "score": 9},
+        {"known": "J'essaie aussi fort que possible d'apprendre l'anglais aujourd'hui.", "target": "I'm trying as hard as I can to learn English today.", "score": 9}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 39,
+  "target_text": "But I'm a little tired this morning.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "mas",
+      "target": "but",
+      "build": [
+        {"known": "mas", "target": "but"},
+        {"known": "mas eu quero", "target": "but I want"},
+        {"known": "mas eu não quero", "target": "but I don't want"},
+        {"known": "mas eu comecei", "target": "but I started"}
+      ],
+      "use": [
+        {"known": "Eu quero falar inglês mas eu estou aprendendo há uma semana.", "target": "I want to speak English but I've been learning for a week.", "score": 8},
+        {"known": "Eu quero pensar nisso mas eu não quero interromper a história.", "target": "I want to think about it but I don't want to interrupt the story.", "score": 8},
+        {"known": "Eu comecei a aprender inglês no mês passado mas eu quero falar agora.", "target": "I started to learn English last month but I want to speak now.", "score": 8},
+        {"known": "Ela quer falar inglês mas ela não quer falar com outras pessoas.", "target": "She wants to speak English but she doesn't want to speak with other people.", "score": 8},
+        {"known": "Nós não queremos interromper mas nós queremos falar com você.", "target": "We don't want to interrupt but we want to speak with you.", "score": 8},
+        {"known": "Estou aprendendo inglês há cerca de um mês mas eu quero aprender mais.", "target": "I've been learning English for about a month but I want to learn more.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "estou",
+      "target": "I'm",
+      "components": [
+        {"known": "eu", "target": "I"},
+        {"known": "estou", "target": "'m"}
+      ],
+      "build": [
+        {"known": "estou", "target": "I'm"},
+        {"known": "mas estou", "target": "but I'm"},
+        {"known": "estou aqui", "target": "I'm here"},
+        {"known": "estou tentando", "target": "I'm trying"}
+      ],
+      "use": [
+        {"known": "Estou aqui e eu quero falar inglês com você agora.", "target": "I'm here and I want to speak English with you now.", "score": 8},
+        {"known": "Estou tentando aprender inglês mas estou aprendendo há uma semana.", "target": "I'm trying to learn English but I've been learning for a week.", "score": 7},
+        {"known": "Estou falando inglês com você mas eu quero pensar nisso com cuidado.", "target": "I'm speaking English with you but I want to think about it carefully.", "score": 8},
+        {"known": "Estou aqui e eu não quero interromper a história.", "target": "I'm here and I don't want to interrupt the story.", "score": 7},
+        {"known": "Estou aprendendo a falar inglês mas estou tentando pensar nisso.", "target": "I'm learning to speak English but I'm trying to think about it.", "score": 7},
+        {"known": "Estou aqui e eu comecei a aprender inglês no mês passado.", "target": "I'm here and I started to learn English last month.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "um pouco",
+      "target": "a little",
+      "components": [
+        {"known": "um", "target": "a"},
+        {"known": "pouco", "target": "little"}
+      ],
+      "build": [
+        {"known": "um pouco", "target": "a little"},
+        {"known": "estou um pouco", "target": "I'm a little"},
+        {"known": "quero aprender um pouco", "target": "want to learn a little"},
+        {"known": "um pouco mais", "target": "a little more"}
+      ],
+      "use": [
+        {"known": "Eu quero aprender um pouco mais e eu quero falar com você.", "target": "I want to learn a little more and I want to speak with you.", "score": 7},
+        {"known": "Estou aqui mas eu quero aprender um pouco mais.", "target": "I'm here but I want to learn a little more.", "score": 8},
+        {"known": "Eu comecei a aprender inglês no mês passado e eu quero aprender um pouco mais.", "target": "I started to learn English last month and I want to learn a little more.", "score": 8},
+        {"known": "Eu quero pensar nisso um pouco e eu quero falar com você.", "target": "I want to think about it a little and I want to speak with you.", "score": 7},
+        {"known": "Estou tentando aprender um pouco mais mas eu não quero interromper.", "target": "I'm trying to learn a little more but I don't want to interrupt.", "score": 8},
+        {"known": "Estou aprendendo inglês há cerca de uma semana e eu quero aprender um pouco mais.", "target": "I've been learning English for about a week and I want to learn a little more.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "cansado",
+      "target": "tired",
+      "build": [
+        {"known": "cansado", "target": "tired"},
+        {"known": "estou cansado", "target": "I'm tired"},
+        {"known": "um pouco cansado", "target": "a little tired"},
+        {"known": "estou um pouco cansado", "target": "I'm a little tired"}
+      ],
+      "use": [
+        {"known": "Estou cansado mas eu quero falar inglês com você agora.", "target": "I'm tired but I want to speak English with you now.", "score": 8},
+        {"known": "Estou um pouco cansado mas eu estou tentando aprender inglês.", "target": "I'm a little tired but I'm trying to learn English.", "score": 8},
+        {"known": "Estou cansado mas eu quero pensar nisso com cuidado.", "target": "I'm tired but I want to think about it carefully.", "score": 8},
+        {"known": "Estou um pouco cansado mas eu quero falar com você.", "target": "I'm a little tired but I want to speak with you.", "score": 8},
+        {"known": "Estou cansado e eu não quero interromper a história.", "target": "I'm tired and I don't want to interrupt the story.", "score": 7},
+        {"known": "Estou um pouco cansado e eu estou aprendendo há cerca de uma semana.", "target": "I'm a little tired and I've been learning for about a week.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "esta manhã",
+      "target": "this morning",
+      "components": [
+        {"known": "esta", "target": "this"},
+        {"known": "manhã", "target": "morning"}
+      ],
+      "build": [
+        {"known": "esta manhã", "target": "this morning"},
+        {"known": "estou cansado esta manhã", "target": "I'm tired this morning"},
+        {"known": "eu comecei esta manhã", "target": "I started this morning"},
+        {"known": "esta manhã eu quero", "target": "this morning I want"}
+      ],
+      "use": [
+        {"known": "Estou um pouco cansado esta manhã mas eu quero falar inglês.", "target": "I'm a little tired this morning but I want to speak English.", "score": 8},
+        {"known": "Eu comecei a aprender inglês esta manhã e eu quero falar com você.", "target": "I started to learn English this morning and I want to speak with you.", "score": 8},
+        {"known": "Esta manhã eu quero pensar nisso com cuidado.", "target": "This morning I want to think about it carefully.", "score": 7},
+        {"known": "Estou cansado esta manhã mas eu quero aprender um pouco mais.", "target": "I'm tired this morning but I want to learn a little more.", "score": 8},
+        {"known": "Esta manhã eu estou tentando falar inglês com você.", "target": "This morning I'm trying to speak English with you.", "score": 8},
+        {"known": "Esta manhã eu comecei a pensar nisso e eu quero falar com você.", "target": "This morning I started to think about it and I want to speak with you.", "score": 8}
+      ]
+    }
+  ]
+}

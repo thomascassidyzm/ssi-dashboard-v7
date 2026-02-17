@@ -1,0 +1,119 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 49,
+  "target_text": "It's like this, if you know what I mean.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "é assim",
+      "target": "it's like this",
+      "components": [
+        {"known": "é", "target": "it's"},
+        {"known": "assim", "target": "like this"}
+      ],
+      "build": [
+        {"known": "é assim", "target": "it's like this"},
+        {"known": "é assim que", "target": "it's like this that"},
+        {"known": "não é assim", "target": "it's not like this"},
+        {"known": "assim", "target": "like this"}
+      ],
+      "use": [
+        {"known": "É assim que eu quero aprender inglês com você.", "target": "It's like this that I want to learn English with you.", "score": 7},
+        {"known": "Não é assim que eu quero falar inglês com outras pessoas.", "target": "It's not like this that I want to speak English with other people.", "score": 8},
+        {"known": "É assim que eu me sinto no momento quando estou aprendendo.", "target": "It's like this that I feel at the moment when I'm learning.", "score": 8},
+        {"known": "Eu acho que é assim que você precisa aprender um pouco mais.", "target": "I think that it's like this that you need to learn a little more.", "score": 8},
+        {"known": "É assim que eu não me importo com cometer erros no momento.", "target": "It's like this that I don't care about making mistakes at the moment.", "score": 8},
+        {"known": "Eu sei que é assim que eu preciso melhorar mais do que antes.", "target": "I know that it's like this that I need to improve more than before.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "se",
+      "target": "if",
+      "build": [
+        {"known": "se", "target": "if"},
+        {"known": "é assim se", "target": "it's like this if"},
+        {"known": "se você", "target": "if you"},
+        {"known": "se eu", "target": "if I"}
+      ],
+      "use": [
+        {"known": "É assim se você quer aprender inglês com outras pessoas.", "target": "It's like this if you want to learn English with other people.", "score": 8},
+        {"known": "Eu não me importo se é assim que eu preciso aprender.", "target": "I don't care if it's like this that I need to learn.", "score": 8},
+        {"known": "Eu acho que é assim se você precisa melhorar mais do que antes.", "target": "I think that it's like this if you need to improve more than before.", "score": 8},
+        {"known": "É assim se você não me importa com cometer erros no momento.", "target": "It's like this if you don't care about making mistakes at the moment.", "score": 8},
+        {"known": "Eu sei que é assim se eu quero aprender um pouco mais.", "target": "I know that it's like this if I want to learn a little more.", "score": 8},
+        {"known": "É assim se você quer saber como responder com cuidado.", "target": "It's like this if you want to know how to answer carefully.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "você sabe",
+      "target": "you know",
+      "components": [
+        {"known": "você", "target": "you"},
+        {"known": "sabe", "target": "know"}
+      ],
+      "build": [
+        {"known": "você sabe", "target": "you know"},
+        {"known": "você sabe que", "target": "you know that"},
+        {"known": "se você sabe", "target": "if you know"},
+        {"known": "você não sabe", "target": "you don't know"}
+      ],
+      "use": [
+        {"known": "É assim, se você sabe como aprender inglês com outras pessoas.", "target": "It's like this, if you know how to learn English with other people.", "score": 8},
+        {"known": "Você sabe que eu quero aprender inglês mais do que antes.", "target": "You know that I want to learn English more than before.", "score": 8},
+        {"known": "Você sabe que é uma coisa boa cometer erros quando você está aprendendo?", "target": "Do you know that it's a good thing to make mistakes when you are learning?", "score": 8},
+        {"known": "Você não sabe que eu não me importo com isso no momento?", "target": "Don't you know that I don't care about it at the moment?", "score": 8},
+        {"known": "Você sabe que eu me sinto melhor agora do que ontem à noite.", "target": "You know that I feel better now than last night.", "score": 8},
+        {"known": "Você sabe que é melhor aprender um pouco mais esta manhã.", "target": "You know that it's better to learn a little more this morning.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "o que",
+      "target": "what",
+      "build": [
+        {"known": "o que", "target": "what"},
+        {"known": "você sabe o que", "target": "you know what"},
+        {"known": "se você sabe o que", "target": "if you know what"},
+        {"known": "o que eu quero", "target": "what I want"}
+      ],
+      "use": [
+        {"known": "É assim, se você sabe o que eu quero aprender no momento.", "target": "It's like this, if you know what I want to learn at the moment.", "score": 8},
+        {"known": "Você sabe o que eu preciso fazer se eu quero melhorar mais?", "target": "Do you know what I need to do if I want to improve more?", "score": 8},
+        {"known": "Eu sei o que você quer aprender mas eu não me importo com isso.", "target": "I know what you want to learn but I don't care about it.", "score": 8},
+        {"known": "Você sabe o que é melhor fazer quando você está cansado?", "target": "Do you know what it's better to do when you are tired?", "score": 8},
+        {"known": "Eu não sei o que você quer dizer quando você fala assim.", "target": "I don't know what you want to say when you speak like this.", "score": 8},
+        {"known": "Você sabe o que eu não me importo com no momento?", "target": "Do you know what I don't care about at the moment?", "score": 7}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "eu quero dizer",
+      "target": "I mean",
+      "components": [
+        {"known": "eu quero", "target": "I"},
+        {"known": "dizer", "target": "mean"}
+      ],
+      "build": [
+        {"known": "eu quero dizer", "target": "I mean"},
+        {"known": "o que eu quero dizer", "target": "what I mean"},
+        {"known": "você sabe o que eu quero dizer", "target": "you know what I mean"},
+        {"known": "se você sabe o que eu quero dizer", "target": "if you know what I mean"}
+      ],
+      "use": [
+        {"known": "É assim, se você sabe o que eu quero dizer.", "target": "It's like this, if you know what I mean.", "score": 9},
+        {"known": "Eu quero dizer que é uma coisa boa aprender inglês o máximo possível.", "target": "I mean that it's a good thing to learn English as often as possible.", "score": 8},
+        {"known": "Você sabe o que eu quero dizer quando eu falo assim com você?", "target": "Do you know what I mean when I speak like this with you?", "score": 8},
+        {"known": "Eu quero dizer que eu não me importo com cometer erros agora.", "target": "I mean that I don't care about making mistakes now.", "score": 8},
+        {"known": "Você sabe o que eu quero dizer quando eu falo inglês assim.", "target": "You know what I mean when I speak English like this.", "score": 8},
+        {"known": "Eu quero dizer que é melhor não se preocupar com isso.", "target": "I mean that it's better not to worry about it.", "score": 8}
+      ]
+    }
+  ]
+}

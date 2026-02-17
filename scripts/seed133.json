@@ -1,0 +1,152 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 133,
+  "known_text": "一緒に働くと誰かをとてもよく知るようになります。",
+  "target_text": "You get to know someone very well when you work together.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "誰かを",
+      "target": "someone",
+      "components": [
+        {"known": "誰か", "target": "some"},
+        {"known": "を", "target": "one"}
+      ],
+      "build": [
+        {"known": "誰かを", "target": "someone"},
+        {"known": "誰かを知る", "target": "know someone"},
+        {"known": "誰かを見る", "target": "see someone"},
+        {"known": "誰かを理解する", "target": "understand someone"}
+      ],
+      "use": [
+        {"known": "私は誰かを知りたいと思います。", "target": "I think I want to know someone.", "score": 7},
+        {"known": "彼女は誰かを知りたいと言いました。", "target": "She said she wanted to know someone.", "score": 8},
+        {"known": "私たちは誰かを理解したいと思っています。", "target": "We think we want to understand someone.", "score": 7},
+        {"known": "彼は誰かを見たいと言いました。", "target": "He said he wanted to see someone.", "score": 7},
+        {"known": "誰かを知るのはとても面白いと思います。", "target": "I think it is very exciting to know someone.", "score": 8},
+        {"known": "私は誰かを理解するのが難しいと思います。", "target": "I think it is difficult to understand someone.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "知るようになる",
+      "target": "get to know",
+      "components": [
+        {"known": "知る", "target": "know"},
+        {"known": "ようになる", "target": "get to"}
+      ],
+      "build": [
+        {"known": "知るようになる", "target": "get to know"},
+        {"known": "知るようになりたい", "target": "want to get to know"},
+        {"known": "彼女を知るようになる", "target": "get to know her"},
+        {"known": "誰かを知るようになる", "target": "get to know someone"}
+      ],
+      "use": [
+        {"known": "私は彼女を知るようになりたいと思います。", "target": "I think I want to get to know her.", "score": 7},
+        {"known": "彼は彼女を知るようになりたいと言いました。", "target": "He said he wanted to get to know her.", "score": 8},
+        {"known": "私たちは誰かを知るようになりたいと思っています。", "target": "We think we want to get to know someone.", "score": 7},
+        {"known": "彼女は私を知るようになりたくないと言いました。", "target": "She said she didn't want to get to know me.", "score": 8},
+        {"known": "誰かを知るようになるのはとても面白いと思います。", "target": "I think it is very exciting to get to know someone.", "score": 8},
+        {"known": "私は誰かを知るようになってとても嬉しいです。", "target": "I'm very happy that I got to know someone.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "とてもよく",
+      "target": "very well",
+      "components": [
+        {"known": "とても", "target": "very"},
+        {"known": "よく", "target": "well"}
+      ],
+      "build": [
+        {"known": "とてもよく", "target": "very well"},
+        {"known": "とてもよく知っている", "target": "know very well"},
+        {"known": "とてもよくやっている", "target": "doing very well"},
+        {"known": "とてもよく理解する", "target": "understand very well"}
+      ],
+      "use": [
+        {"known": "私は彼女をとてもよく知っていると思います。", "target": "I think I know her very well.", "score": 7},
+        {"known": "彼は誰かをとてもよく知りたいと言いました。", "target": "He said he wanted to know someone very well.", "score": 8},
+        {"known": "彼女はあなたをとてもよく知るようになりたいです。", "target": "She wants to get to know you very well.", "score": 8},
+        {"known": "私たちは彼女をとてもよく知っています。", "target": "We know her very well.", "score": 7},
+        {"known": "彼は彼女の考えをとてもよく理解したいと思っています。", "target": "He is thinking he wants to understand her ideas very well.", "score": 8},
+        {"known": "誰かをとてもよく知るようになるのは面白いことです。", "target": "It is exciting to get to know someone very well.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "あなたが〜するとき",
+      "target": "when you",
+      "components": [
+        {"known": "あなたが", "target": "you"},
+        {"known": "〜するとき", "target": "when"}
+      ],
+      "build": [
+        {"known": "あなたが〜するとき", "target": "when you"},
+        {"known": "あなたが働くとき", "target": "when you work"},
+        {"known": "あなたがやるとき", "target": "when you do"},
+        {"known": "あなたが話すとき", "target": "when you talk"}
+      ],
+      "use": [
+        {"known": "あなたが働くとき誰かをとてもよく知るようになります。", "target": "When you work you get to know someone very well.", "score": 7},
+        {"known": "あなたがやるとき彼女をとてもよく知るようになると思います。", "target": "I think when you do it you get to know her very well.", "score": 8},
+        {"known": "あなたが話すとき彼女のことをよく知るようになります。", "target": "When you talk you get to know her well.", "score": 7},
+        {"known": "あなたが働くとき面白いことがたくさんあると思います。", "target": "I think when you work there are a lot of exciting things.", "score": 8},
+        {"known": "あなたがやるとき彼女が言っていたことがよく分かるようになります。", "target": "When you do it you get to understand what she was saying.", "score": 8},
+        {"known": "あなたが働くとき誰かをとてもよく知るようになるのは面白いと思います。", "target": "I think it is exciting that when you work you get to know someone very well.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "一緒に働く",
+      "target": "work together",
+      "components": [
+        {"known": "一緒に", "target": "together"},
+        {"known": "働く", "target": "work"}
+      ],
+      "build": [
+        {"known": "一緒に働く", "target": "work together"},
+        {"known": "一緒に働きたい", "target": "want to work together"},
+        {"known": "一緒に", "target": "together"},
+        {"known": "彼女と一緒に働く", "target": "work together with her"}
+      ],
+      "use": [
+        {"known": "私は彼女と一緒に働きたいと思います。", "target": "I think I want to work together with her.", "score": 7},
+        {"known": "一緒に働くと誰かをとてもよく知るようになります。", "target": "When you work together you get to know someone very well.", "score": 8},
+        {"known": "彼は私と一緒に働きたいと言いました。", "target": "He said he wanted to work together with me.", "score": 8},
+        {"known": "一緒に働くのはとても面白いと思います。", "target": "I think it is very exciting to work together.", "score": 7},
+        {"known": "彼女と一緒に働くと彼女をとてもよく知るようになります。", "target": "When you work together with her you get to know her very well.", "score": 8},
+        {"known": "私たちは一緒に働いてとても嬉しいです。", "target": "We are very happy that we work together.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "あなたは〜ようになる",
+      "target": "You get to",
+      "components": [
+        {"known": "あなたは", "target": "You"},
+        {"known": "〜ようになる", "target": "get to"}
+      ],
+      "build": [
+        {"known": "あなたは〜ようになる", "target": "You get to"},
+        {"known": "あなたは知るようになる", "target": "You get to know"},
+        {"known": "あなたは分かるようになる", "target": "You get to understand"},
+        {"known": "あなたは聞くようになる", "target": "You get to hear"}
+      ],
+      "use": [
+        {"known": "あなたは誰かをとてもよく知るようになります。", "target": "You get to know someone very well.", "score": 7},
+        {"known": "一緒に働くとあなたは彼女をとてもよく知るようになります。", "target": "When you work together you get to know her very well.", "score": 8},
+        {"known": "あなたは彼女が言っていたことを聞くようになると思います。", "target": "I think you get to hear what she was saying.", "score": 8},
+        {"known": "あなたは一緒に働くと誰かをとてもよく知るようになります。", "target": "You get to know someone very well when you work together.", "score": 9},
+        {"known": "あなたは彼女の考えを理解するようになると思います。", "target": "I think you get to understand her ideas.", "score": 8},
+        {"known": "あなたは面白いことをたくさん知るようになります。", "target": "You get to know a lot of exciting things.", "score": 8}
+      ]
+    }
+  ]
+}

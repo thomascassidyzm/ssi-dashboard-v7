@@ -1,0 +1,87 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 5,
+  "target_text": "I'm going to practise speaking with someone else.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Eu vou",
+      "target": "I'm going to",
+      "components": [
+        {"known": "Eu", "target": "I'm"},
+        {"known": "vou", "target": "going to"}
+      ],
+      "build": [
+        {"known": "Eu vou", "target": "I'm going to"},
+        {"known": "Eu vou falar", "target": "I'm going to speak"},
+        {"known": "Eu vou aprender", "target": "I'm going to learn"}
+      ],
+      "use": [
+        {"known": "Eu vou falar inglês.", "target": "I'm going to speak English.", "score": 7},
+        {"known": "Eu vou aprender inglês.", "target": "I'm going to learn English.", "score": 7},
+        {"known": "Eu vou falar inglês com você.", "target": "I'm going to speak English with you.", "score": 8},
+        {"known": "Eu vou aprender como dizer algo em inglês.", "target": "I'm going to learn how to say something in English.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "praticar falar",
+      "target": "practise speaking",
+      "components": [
+        {"known": "praticar", "target": "practise"},
+        {"known": "falar", "target": "speaking"}
+      ],
+      "build": [
+        {"known": "praticar falar", "target": "practise speaking"},
+        {"known": "praticar falar inglês", "target": "practise speaking English"},
+        {"known": "Eu vou praticar falar", "target": "I'm going to practise speaking"}
+      ],
+      "use": [
+        {"known": "Eu vou praticar falar.", "target": "I'm going to practise speaking.", "score": 6},
+        {"known": "Eu quero praticar falar inglês.", "target": "I want to practise speaking English.", "score": 8},
+        {"known": "Estou tentando praticar falar inglês.", "target": "I'm trying to practise speaking English.", "score": 8},
+        {"known": "Eu vou praticar falar inglês o máximo possível.", "target": "I'm going to practise speaking English as often as possible.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "com",
+      "target": "with",
+      "build": [
+        {"known": "com", "target": "with"},
+        {"known": "com você", "target": "with you"},
+        {"known": "falar com", "target": "to speak with"}
+      ],
+      "use": [
+        {"known": "Eu vou falar com você.", "target": "I'm going to speak with you.", "score": 7},
+        {"known": "Eu quero praticar falar com você.", "target": "I want to practise speaking with you.", "score": 8},
+        {"known": "Estou tentando falar com você agora.", "target": "I'm trying to speak with you now.", "score": 7},
+        {"known": "Eu vou praticar falar inglês com você.", "target": "I'm going to practise speaking English with you.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "outra pessoa",
+      "target": "someone else",
+      "components": [
+        {"known": "outra", "target": "someone"},
+        {"known": "pessoa", "target": "else"}
+      ],
+      "build": [
+        {"known": "outra pessoa", "target": "someone else"},
+        {"known": "com outra pessoa", "target": "with someone else"},
+        {"known": "falar com outra pessoa", "target": "to speak with someone else"}
+      ],
+      "use": [
+        {"known": "Eu vou falar com outra pessoa.", "target": "I'm going to speak with someone else.", "score": 7},
+        {"known": "Eu quero praticar falar com outra pessoa.", "target": "I want to practise speaking with someone else.", "score": 8},
+        {"known": "Estou tentando aprender com outra pessoa.", "target": "I'm trying to learn with someone else.", "score": 7},
+        {"known": "Eu vou praticar falar inglês com outra pessoa.", "target": "I'm going to practise speaking English with someone else.", "score": 8}
+      ]
+    }
+  ]
+}

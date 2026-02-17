@@ -1,0 +1,111 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 43,
+  "target_text": "I wasn't thinking about how to answer.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "eu não estava",
+      "target": "I wasn't",
+      "components": [
+        {"known": "eu", "target": "I"},
+        {"known": "não estava", "target": "wasn't"}
+      ],
+      "build": [
+        {"known": "eu não estava", "target": "I wasn't"},
+        {"known": "eu não estava aprendendo", "target": "I wasn't learning"},
+        {"known": "eu não estava tentando", "target": "I wasn't trying"},
+        {"known": "eu não estava falando", "target": "I wasn't speaking"}
+      ],
+      "use": [
+        {"known": "Eu não estava aprendendo inglês ontem à noite.", "target": "I wasn't learning English last night.", "score": 8},
+        {"known": "Eu não estava tentando falar inglês com outras pessoas.", "target": "I wasn't trying to speak English with other people.", "score": 8},
+        {"known": "Eu não estava me sentindo bem ontem mas eu me sinto melhor agora.", "target": "I wasn't feeling okay yesterday but I feel better now.", "score": 8},
+        {"known": "Eu não estava falando inglês quando você queria falar comigo.", "target": "I wasn't speaking English when you wanted to speak with me.", "score": 8},
+        {"known": "Eu não estava cansado ontem à noite mas eu estou cansado agora.", "target": "I wasn't tired last night but I'm tired now.", "score": 8},
+        {"known": "Eu não estava aprendendo muito no mês passado.", "target": "I wasn't learning much last month.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "pensando",
+      "target": "thinking",
+      "build": [
+        {"known": "pensando", "target": "thinking"},
+        {"known": "eu não estava pensando", "target": "I wasn't thinking"},
+        {"known": "eu estava pensando", "target": "I was thinking"},
+        {"known": "estou pensando", "target": "I'm thinking"}
+      ],
+      "use": [
+        {"known": "Eu não estava pensando nisso ontem à noite.", "target": "I wasn't thinking about it last night.", "score": 8},
+        {"known": "Eu estava pensando nisso esta manhã mas eu estava cansado.", "target": "I was thinking about it this morning but I was tired.", "score": 8},
+        {"known": "Estou pensando nisso com cuidado no momento.", "target": "I'm thinking about it carefully at the moment.", "score": 8},
+        {"known": "Eu não estava pensando nisso quando você queria falar comigo.", "target": "I wasn't thinking about it when you wanted to speak with me.", "score": 8},
+        {"known": "Eu estava pensando nisso ontem e eu quero falar com você.", "target": "I was thinking about it yesterday and I want to speak with you.", "score": 8},
+        {"known": "Estou pensando em falar inglês com outras pessoas.", "target": "I'm thinking about speaking English with other people.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "em",
+      "target": "about",
+      "build": [
+        {"known": "em", "target": "about"},
+        {"known": "pensando em", "target": "thinking about"},
+        {"known": "pensando em como", "target": "thinking about how"},
+        {"known": "eu estava pensando em", "target": "I was thinking about"}
+      ],
+      "use": [
+        {"known": "Eu estava pensando em como falar inglês com você.", "target": "I was thinking about how to speak English with you.", "score": 8},
+        {"known": "Eu não estava pensando em você ontem à noite.", "target": "I wasn't thinking about you last night.", "score": 7},
+        {"known": "Estou pensando em aprender um pouco mais esta manhã.", "target": "I'm thinking about learning a little more this morning.", "score": 8},
+        {"known": "Eu estava pensando em como me sentir melhor.", "target": "I was thinking about how to feel better.", "score": 8},
+        {"known": "Eu não estava pensando em como falar inglês ontem.", "target": "I wasn't thinking about how to speak English yesterday.", "score": 8},
+        {"known": "Estou pensando em como aprender inglês mais do que no mês passado.", "target": "I'm thinking about how to learn English more than last month.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "como",
+      "target": "how",
+      "build": [
+        {"known": "como", "target": "how"},
+        {"known": "pensando em como", "target": "thinking about how"},
+        {"known": "como responder", "target": "how to answer"},
+        {"known": "como você se sente", "target": "how do you feel"}
+      ],
+      "use": [
+        {"known": "Eu não estava pensando em como falar com você.", "target": "I wasn't thinking about how to speak with you.", "score": 8},
+        {"known": "Como você se sente no momento? Eu me sinto melhor.", "target": "How do you feel at the moment? I feel better.", "score": 8},
+        {"known": "Eu estava pensando em como aprender inglês mais.", "target": "I was thinking about how to learn English more.", "score": 7},
+        {"known": "Como você quer se sentir esta manhã?", "target": "How do you want to feel this morning?", "score": 7},
+        {"known": "Eu não estava pensando em como falar inglês com outras pessoas.", "target": "I wasn't thinking about how to speak English with other people.", "score": 8},
+        {"known": "Como você estava se sentindo ontem à noite?", "target": "How were you feeling last night?", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "responder",
+      "target": "to answer",
+      "build": [
+        {"known": "responder", "target": "to answer"},
+        {"known": "como responder", "target": "how to answer"},
+        {"known": "quero responder", "target": "want to answer"},
+        {"known": "pensando em como responder", "target": "thinking about how to answer"}
+      ],
+      "use": [
+        {"known": "Eu não estava pensando em como responder.", "target": "I wasn't thinking about how to answer.", "score": 9},
+        {"known": "Eu quero responder mas eu não estava pensando nisso.", "target": "I want to answer but I wasn't thinking about it.", "score": 8},
+        {"known": "Eu estava pensando em como responder ontem à noite.", "target": "I was thinking about how to answer last night.", "score": 8},
+        {"known": "Eu quero responder e eu quero falar inglês com você.", "target": "I want to answer and I want to speak English with you.", "score": 7},
+        {"known": "Eu não estava pensando em como responder esta manhã.", "target": "I wasn't thinking about how to answer this morning.", "score": 8},
+        {"known": "Estou pensando em como responder e eu me sinto melhor agora.", "target": "I'm thinking about how to answer and I feel better now.", "score": 8}
+      ]
+    }
+  ]
+}

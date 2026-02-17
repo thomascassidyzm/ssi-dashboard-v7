@@ -1,0 +1,666 @@
+{
+  "course_code": "eng_for_jpn",
+  "is_eng_for_x": true,
+  "round": 3,
+  "seed_range": "1-50",
+  "description": "First 50 seeds only - testing \"starting well\" quality",
+  "total_use_phrases_in_range": 1030,
+  "sample_size": 50,
+  "scoring_date": "2026-01-30",
+  "scoring_criteria": {
+    "9": "Perfect native speech in both languages",
+    "7-8": "Strong, minor stylistic preferences",
+    "5-6": "Functional but not remarkable",
+    "3-4": "Awkward, textbook-ish",
+    "1-2": "Marginal, no one would say this"
+  },
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "39caffe2-a5cf-426d-b583-afb991fac90a",
+      "seed": 50,
+      "lego": 1,
+      "syllables": 8,
+      "english": "I'm not trying to make mistakes",
+      "other": "間違いをしようとしているわけではありません",
+      "qa_score": 8,
+      "notes": "Both natural. Japanese uses formal negation with explanatory わけではありません. English is natural colloquial speech."
+    },
+    {
+      "idx": 2,
+      "id": "3804f0ef-c5da-42c6-82d4-63b578825350",
+      "seed": 16,
+      "lego": 2,
+      "syllables": 5,
+      "english": "want you to come back",
+      "other": "戻ってほしい",
+      "qa_score": 8,
+      "notes": "Good match. Japanese is natural casual form. English fragment is appropriate for LEGO building block."
+    },
+    {
+      "idx": 3,
+      "id": "0568eb43-7319-408a-95c9-156e59ca3723",
+      "seed": 18,
+      "lego": 3,
+      "syllables": 9,
+      "english": "She wants to come back at six o'clock.",
+      "other": "彼女は6時に戻りたいです。",
+      "qa_score": 7,
+      "notes": "Both functional. Japanese uses polite です form consistently. Minor: 6時 vs 六時 is acceptable variation."
+    },
+    {
+      "idx": 4,
+      "id": "d9e1de7b-406b-40af-be6d-495613d33a00",
+      "seed": 13,
+      "lego": 1,
+      "syllables": 7,
+      "english": "Do you practise tomorrow?",
+      "other": "あなたは明日練習しますか？",
+      "qa_score": 6,
+      "notes": "English question lacks auxiliary 'will' or 'Are you practising'. Japanese uses explicit あなたは which is slightly textbook-ish; native speakers often omit pronouns."
+    },
+    {
+      "idx": 5,
+      "id": "1a4ca8e3-a8c5-41d9-8a14-8b7a969b0014",
+      "seed": 6,
+      "lego": 2,
+      "syllables": 10,
+      "english": "I'm trying to remember with someone else.",
+      "other": "他の人と一緒に思い出そうとしています。",
+      "qa_score": 6,
+      "notes": "Both understandable but slightly awkward. 'Remember with someone else' is an unusual collocation in English. Japanese is grammatically correct but the context is odd."
+    },
+    {
+      "idx": 6,
+      "id": "e75d9579-1161-4908-aee8-f73fad420934",
+      "seed": 16,
+      "lego": 2,
+      "syllables": 5,
+      "english": "be able to come back",
+      "other": "戻れるようになる",
+      "qa_score": 8,
+      "notes": "Good LEGO component. Japanese captures 'become able to' well with ようになる pattern."
+    },
+    {
+      "idx": 7,
+      "id": "4ed56655-4e40-41bb-80a2-c43a6fedf3ae",
+      "seed": 22,
+      "lego": 2,
+      "syllables": 5,
+      "english": "I don't want to meet",
+      "other": "会いたくない",
+      "qa_score": 8,
+      "notes": "Natural in both languages. Japanese たくない is the standard negative desire form."
+    },
+    {
+      "idx": 8,
+      "id": "fe6cec9e-a48c-48c5-9184-f0142fce8a22",
+      "seed": 16,
+      "lego": 3,
+      "syllables": 5,
+      "english": "with everyone else",
+      "other": "皆と一緒に",
+      "qa_score": 7,
+      "notes": "Functional. Japanese 皆と一緒に is more 'with everyone together' rather than 'everyone else'. Minor semantic gap but acceptable."
+    },
+    {
+      "idx": 9,
+      "id": "a4952820-611b-446c-aa2f-1492aa748e94",
+      "seed": 7,
+      "lego": 4,
+      "syllables": 6,
+      "english": "I want to speak today.",
+      "other": "今日話したいです。",
+      "qa_score": 8,
+      "notes": "Natural in both. Polite Japanese with です. Clear and direct English."
+    },
+    {
+      "idx": 10,
+      "id": "735e6fb9-c1ac-4141-b373-7ba6ea581649",
+      "seed": 7,
+      "lego": 3,
+      "syllables": 9,
+      "english": "I'm going to learn as hard as I can.",
+      "other": "できるだけ学ぶつもりです。",
+      "qa_score": 7,
+      "notes": "Both understandable. Japanese できるだけ means 'as much as possible' which works. English 'learn hard' is a bit unusual - 'study hard' is more common."
+    },
+    {
+      "idx": 11,
+      "id": "630713f6-811d-4594-85df-010c2cca34aa",
+      "seed": 19,
+      "lego": 3,
+      "syllables": 5,
+      "english": "want to stop talking",
+      "other": "やめたい",
+      "qa_score": 5,
+      "notes": "Japanese やめたい is just 'want to stop/quit' - missing 'talking' element. Semantic mismatch - Japanese is too abbreviated."
+    },
+    {
+      "idx": 12,
+      "id": "c6eeaf89-fd97-497d-96d8-7229d01f3062",
+      "seed": 18,
+      "lego": 4,
+      "syllables": 6,
+      "english": "come back this evening",
+      "other": "今晩戻る",
+      "qa_score": 8,
+      "notes": "Clean match. Both natural and direct."
+    },
+    {
+      "idx": 13,
+      "id": "a45355b4-bf74-4d8e-9aeb-8d17c7948226",
+      "seed": 16,
+      "lego": 3,
+      "syllables": 5,
+      "english": "with everyone else",
+      "other": "皆と一緒に",
+      "qa_score": 7,
+      "notes": "Duplicate of idx 8. Same minor semantic gap with 'else' vs 一緒に."
+    },
+    {
+      "idx": 14,
+      "id": "e2b5658e-f380-491a-9739-4e7cb95b6db0",
+      "seed": 12,
+      "lego": 1,
+      "syllables": 5,
+      "english": "I wouldn't like to speak",
+      "other": "話したくありません",
+      "qa_score": 6,
+      "notes": "English 'I wouldn't like to speak' is formal/conditional but sounds slightly stiff. Japanese is straightforward polite negative. Functional but not perfectly matched in register."
+    },
+    {
+      "idx": 15,
+      "id": "81c2aaf3-a0f4-4cf0-ab40-eae3acc080d5",
+      "seed": 15,
+      "lego": 3,
+      "syllables": 5,
+      "english": "with me tomorrow",
+      "other": "私と〜明日",
+      "qa_score": 4,
+      "notes": "Japanese has awkward tilde/wave dash suggesting incomplete phrase. 私と明日 alone doesn't form natural phrase. Needs better structure."
+    },
+    {
+      "idx": 16,
+      "id": "552afc39-4aaa-45f1-80e9-61b5e4705ba7",
+      "seed": 24,
+      "lego": 1,
+      "syllables": 12,
+      "english": "Why are you not going to be able to speak English?",
+      "other": "なぜ話せないでしょうか？",
+      "qa_score": 5,
+      "notes": "Mismatch: Japanese lacks 'English' (英語) and future nuance. Japanese is more 'Why can't you speak?' English is overly complex with 'going to be able to'."
+    },
+    {
+      "idx": 17,
+      "id": "23ef9aea-bf49-4e94-a17f-7a3e89a2512f",
+      "seed": 8,
+      "lego": 4,
+      "syllables": 10,
+      "english": "I'm going to try to explain what I mean.",
+      "other": "私が言いたいことを説明しようとします。",
+      "qa_score": 8,
+      "notes": "Both natural. Japanese correctly uses 言いたいこと for 'what I mean/want to say'. Good polite form."
+    },
+    {
+      "idx": 18,
+      "id": "3f2649e2-e71b-4f7b-b4e7-ca00561f3b80",
+      "seed": 23,
+      "lego": 1,
+      "syllables": 6,
+      "english": "I want to start today.",
+      "other": "今日始めたいです。",
+      "qa_score": 8,
+      "notes": "Clean and natural in both languages. Polite Japanese form."
+    },
+    {
+      "idx": 19,
+      "id": "b33de430-bd35-42dd-a5f4-858f22c32860",
+      "seed": 20,
+      "lego": 2,
+      "syllables": 8,
+      "english": "You want to learn his answer now",
+      "other": "彼の答えを今覚えたい",
+      "qa_score": 5,
+      "notes": "Subject mismatch: English 'You want' but Japanese lacks subject and reads as 'I want'. 覚えたい is 'want to memorize/learn' which is odd with 'answer'. Awkward in both."
+    },
+    {
+      "idx": 20,
+      "id": "8f0e6546-b375-4efd-90e5-c5c26164a4ef",
+      "seed": 5,
+      "lego": 3,
+      "syllables": 8,
+      "english": "I'm going to practise speaking now.",
+      "other": "今話すことを練習するつもりです。",
+      "qa_score": 7,
+      "notes": "Both work. Japanese is a bit wordy with 話すことを練習する but grammatically correct."
+    },
+    {
+      "idx": 21,
+      "id": "60edee6a-5229-419d-b30d-f0a608e524bd",
+      "seed": 7,
+      "lego": 3,
+      "syllables": 5,
+      "english": "as hard as I can",
+      "other": "できるだけ",
+      "qa_score": 7,
+      "notes": "Good component match. できるだけ captures the 'as much as possible' sense well."
+    },
+    {
+      "idx": 22,
+      "id": "aa431c47-b407-4339-914c-b463de3c4aa8",
+      "seed": 5,
+      "lego": 4,
+      "syllables": 5,
+      "english": "speak with someone else",
+      "other": "他の人と話す",
+      "qa_score": 8,
+      "notes": "Natural in both. Good clear phrase."
+    },
+    {
+      "idx": 23,
+      "id": "472e8c1b-0661-4328-9378-52cd4b153e89",
+      "seed": 13,
+      "lego": 2,
+      "syllables": 11,
+      "english": "If I try very hard, I'll be able to speak.",
+      "other": "とても頑張ったら話せるようになります。",
+      "qa_score": 8,
+      "notes": "Both natural. Japanese conditional たら form works well. Good use of ようになります for 'become able to'."
+    },
+    {
+      "idx": 24,
+      "id": "36539dda-6bdc-4075-a662-69c0e925aeb7",
+      "seed": 11,
+      "lego": 2,
+      "syllables": 5,
+      "english": "to be able to speak",
+      "other": "〜できるようになる",
+      "qa_score": 5,
+      "notes": "Japanese has leading tilde suggesting placeholder pattern. 話せるようになる would be more complete. English infinitive is fine as component."
+    },
+    {
+      "idx": 25,
+      "id": "8b7d4e23-c35b-456f-80cc-b1c5f0f8f6c9",
+      "seed": 7,
+      "lego": 3,
+      "syllables": 12,
+      "english": "I want to practise with you as hard as I can.",
+      "other": "あなたとできるだけ練習したいです。",
+      "qa_score": 8,
+      "notes": "Both natural and clear. Good polite Japanese form with です."
+    },
+    {
+      "idx": 26,
+      "id": "7fed6ae6-419f-4905-8fa0-5b951f4f85ac",
+      "seed": 22,
+      "lego": 1,
+      "syllables": 9,
+      "english": "Because I don't want to stop talking.",
+      "other": "話すのをやめたくないからです。",
+      "qa_score": 8,
+      "notes": "Both natural. Japanese correctly uses のを particle and からです for 'because'."
+    },
+    {
+      "idx": 27,
+      "id": "243748d8-31be-4da5-92e0-c39718dfbac0",
+      "seed": 24,
+      "lego": 2,
+      "syllables": 10,
+      "english": "Because I want to remember his name.",
+      "other": "覚えたいからです。",
+      "qa_score": 4,
+      "notes": "Japanese missing 'his name' (彼の名前を). Significant semantic gap - Japanese only says 'Because I want to remember.'"
+    },
+    {
+      "idx": 28,
+      "id": "6e67a0c5-8cff-4815-b637-2f4193ca9f3f",
+      "seed": 12,
+      "lego": 3,
+      "syllables": 7,
+      "english": "explain what's going to happen",
+      "other": "何が起こるか説明する",
+      "qa_score": 8,
+      "notes": "Good match. Both natural expressions."
+    },
+    {
+      "idx": 29,
+      "id": "9579a27b-0767-4e96-ab90-4832bcd2d561",
+      "seed": 14,
+      "lego": 1,
+      "syllables": 5,
+      "english": "Do you speak English",
+      "other": "〜しますか？",
+      "qa_score": 2,
+      "notes": "Japanese is completely generic placeholder '~しますか' meaning 'Do you do ~?' Missing any specific content. Unusable as translation."
+    },
+    {
+      "idx": 30,
+      "id": "8a14f053-6725-4bc6-b5d2-41a46353f1a6",
+      "seed": 23,
+      "lego": 2,
+      "syllables": 8,
+      "english": "I'm going to start talking with people.",
+      "other": "人と話し始めるつもりです。",
+      "qa_score": 8,
+      "notes": "Both natural. Good use of つもりです for intention."
+    },
+    {
+      "idx": 31,
+      "id": "15e7941d-e8c8-4ab2-bc55-7d6cc34eb44d",
+      "seed": 15,
+      "lego": 3,
+      "syllables": 7,
+      "english": "practise with me tomorrow",
+      "other": "私と練習する明日",
+      "qa_score": 3,
+      "notes": "Japanese word order is awkward - 明日 (tomorrow) at end reads unnaturally. Should be 明日私と練習する. Sounds textbook-ish."
+    },
+    {
+      "idx": 32,
+      "id": "8d0706ed-74df-43e0-aaa1-7eabfe59ea26",
+      "seed": 15,
+      "lego": 3,
+      "syllables": 9,
+      "english": "I want you to speak all day with me.",
+      "other": "私と一日中話してほしいです。",
+      "qa_score": 7,
+      "notes": "Both work. English word order slightly unusual ('all day with me' vs 'with me all day'). Japanese is natural."
+    },
+    {
+      "idx": 33,
+      "id": "070af556-16bd-4792-8586-7c2e524443f5",
+      "seed": 15,
+      "lego": 2,
+      "syllables": 7,
+      "english": "I want you to speak English",
+      "other": "〜してほしいです",
+      "qa_score": 3,
+      "notes": "Japanese is generic placeholder pattern with tilde. Missing actual content - no 'English' (英語) or specific verb. Unusable as complete translation."
+    },
+    {
+      "idx": 34,
+      "id": "588639fa-8db9-4815-8ccc-d6d1f1c5684a",
+      "seed": 20,
+      "lego": 3,
+      "syllables": 9,
+      "english": "You want to learn his name tomorrow",
+      "other": "彼の名前を明日覚えたい",
+      "qa_score": 5,
+      "notes": "Subject mismatch again - English 'You want' but Japanese lacks subject marker and reads as first person. Needs を particle for 'his name'."
+    },
+    {
+      "idx": 35,
+      "id": "67b546b1-96b4-42c3-a852-57fbf4250835",
+      "seed": 7,
+      "lego": 2,
+      "syllables": 7,
+      "english": "I'm trying hard at something.",
+      "other": "何かを頑張ろうとしています。",
+      "qa_score": 7,
+      "notes": "Both understandable. English is slightly awkward - 'trying hard at something' is not the most natural phrasing."
+    },
+    {
+      "idx": 36,
+      "id": "5075959a-0737-4e75-9ddc-57b84e31f2c1",
+      "seed": 12,
+      "lego": 3,
+      "syllables": 12,
+      "english": "I'd like to be able to guess what's going to happen.",
+      "other": "何が起こるか当てられるようになりたいです。",
+      "qa_score": 7,
+      "notes": "Both understandable but complex. Japanese 当てられる is 'be able to guess/hit'. Good use of polite form."
+    },
+    {
+      "idx": 37,
+      "id": "4557e474-6e92-4d94-a384-022d1675e8de",
+      "seed": 47,
+      "lego": 3,
+      "syllables": 8,
+      "english": "Because I think that it's okay",
+      "other": "なぜならそれは大丈夫だと思うからです",
+      "qa_score": 7,
+      "notes": "Both work. Japanese is somewhat formal with なぜなら and からです double explanation marker. Slightly redundant but acceptable."
+    },
+    {
+      "idx": 38,
+      "id": "41b6bcd5-45ef-4a4c-9d4b-94b9b9dcf844",
+      "seed": 46,
+      "lego": 2,
+      "syllables": 10,
+      "english": "I don't worry about speaking English",
+      "other": "英語を話すことを心配しません",
+      "qa_score": 7,
+      "notes": "Both functional. Japanese is correct with polite negative. English could be 'I don't worry about speaking English' is natural."
+    },
+    {
+      "idx": 39,
+      "id": "f358186e-65d9-4cc7-95f0-c41e031395a6",
+      "seed": 13,
+      "lego": 1,
+      "syllables": 10,
+      "english": "You explain what I mean to someone else.",
+      "other": "あなたは私が言いたいことを説明します。",
+      "qa_score": 6,
+      "notes": "Japanese missing 'to someone else' (他の人に). Also あなたは sounds slightly textbook-ish. English sentence is functional but unusual context."
+    },
+    {
+      "idx": 40,
+      "id": "635b7c5f-9da2-45cf-aefb-3394dab445b8",
+      "seed": 27,
+      "lego": 2,
+      "syllables": 12,
+      "english": "I don't like taking too much time to be ready.",
+      "other": "準備に時間がかかりすぎます。",
+      "qa_score": 5,
+      "notes": "Semantic mismatch: Japanese says 'Preparation takes too much time' (neutral statement), while English expresses personal dislike. Different meaning."
+    },
+    {
+      "idx": 41,
+      "id": "9629f320-93f0-4c88-a009-d68d2ea3d02a",
+      "seed": 11,
+      "lego": 2,
+      "syllables": 9,
+      "english": "I'd like to be able to speak with you.",
+      "other": "あなたと話せるようになりたいです。",
+      "qa_score": 8,
+      "notes": "Both natural. Good use of polite conditional in English and ようになりたい pattern in Japanese."
+    },
+    {
+      "idx": 42,
+      "id": "f8d5c62b-fce8-41f2-8eb0-c7f1ec22149a",
+      "seed": 15,
+      "lego": 2,
+      "syllables": 7,
+      "english": "I want you to speak English",
+      "other": "〜してほしいです",
+      "qa_score": 3,
+      "notes": "Duplicate pattern - generic placeholder with tilde. Missing 'English' (英語) and verb content. Unusable."
+    },
+    {
+      "idx": 43,
+      "id": "3e40a929-6da7-41e9-a70a-93c71e799152",
+      "seed": 28,
+      "lego": 1,
+      "syllables": 9,
+      "english": "It's useful to start talking more.",
+      "other": "もっと話すのは役に立ちます。",
+      "qa_score": 7,
+      "notes": "Both understandable. Japanese structure works. English 'start talking more' vs Japanese 'talking more is useful' - slight structural difference but meaning preserved."
+    },
+    {
+      "idx": 44,
+      "id": "c2086ab3-cee9-463f-acd6-b19306434c4c",
+      "seed": 23,
+      "lego": 3,
+      "syllables": 5,
+      "english": "She wants to learn more.",
+      "other": "彼女はもっと覚えたいです。",
+      "qa_score": 8,
+      "notes": "Both natural. Good polite form with です."
+    },
+    {
+      "idx": 45,
+      "id": "8fbaa587-ac92-468d-af9e-0ffcbdc75ad3",
+      "seed": 7,
+      "lego": 3,
+      "syllables": 9,
+      "english": "I'm trying to speak as hard as I can.",
+      "other": "できるだけ話そうとしています。",
+      "qa_score": 7,
+      "notes": "Both work. English 'speak hard' is slightly unnatural - 'speak as much as I can' would be better. Japanese is natural."
+    },
+    {
+      "idx": 46,
+      "id": "91054eb4-686c-49e6-adaa-56e04dc350c3",
+      "seed": 26,
+      "lego": 1,
+      "syllables": 8,
+      "english": "I like learning his name quickly.",
+      "other": "覚えるのが好きです。",
+      "qa_score": 4,
+      "notes": "Japanese missing 'his name' (彼の名前) and 'quickly' (早く). Only says 'I like memorizing.' Significant semantic gap."
+    },
+    {
+      "idx": 47,
+      "id": "8979d65c-0ed1-4c46-adf7-60ec4d85560e",
+      "seed": 30,
+      "lego": 1,
+      "syllables": 5,
+      "english": "I wanted to speak",
+      "other": "話したかった",
+      "qa_score": 8,
+      "notes": "Both natural. Japanese past tense desire form is correct and natural."
+    },
+    {
+      "idx": 48,
+      "id": "2239a813-b6e3-4cb7-a589-8b2f41e3720c",
+      "seed": 17,
+      "lego": 1,
+      "syllables": 9,
+      "english": "She wants to come back with everyone.",
+      "other": "彼女は皆と一緒に戻りたいです。",
+      "qa_score": 8,
+      "notes": "Both natural. Good polite form and clear meaning."
+    },
+    {
+      "idx": 49,
+      "id": "a5a28bf4-c9c4-4c0c-8e2f-fb79bc9817e5",
+      "seed": 22,
+      "lego": 1,
+      "syllables": 10,
+      "english": "Because I want to speak English today.",
+      "other": "今日話したいからです。",
+      "qa_score": 6,
+      "notes": "Japanese missing 'English' (英語). Says 'Because I want to speak today.' Minor semantic gap."
+    },
+    {
+      "idx": 50,
+      "id": "cdcd5d61-2cb2-4179-b885-638d1b6d66bf",
+      "seed": 23,
+      "lego": 4,
+      "syllables": 8,
+      "english": "I'm going to start talking more soon.",
+      "other": "もうすぐもっと話し始めるつもりです。",
+      "qa_score": 8,
+      "notes": "Both natural. Good use of もうすぐ for 'soon' and つもりです for intention."
+    }
+  ],
+  "summary": {
+    "total_phrases": 50,
+    "average_score": 6.52,
+    "score_distribution": {
+      "9": 0,
+      "8": 22,
+      "7": 13,
+      "6": 5,
+      "5": 5,
+      "4": 3,
+      "3": 2,
+      "2": 1,
+      "1": 0
+    },
+    "phrases_below_5": [
+      {
+        "idx": 15,
+        "score": 4,
+        "english": "with me tomorrow",
+        "other": "私と〜明日",
+        "reason": "Japanese has awkward tilde/wave dash suggesting incomplete phrase structure."
+      },
+      {
+        "idx": 27,
+        "score": 4,
+        "english": "Because I want to remember his name.",
+        "other": "覚えたいからです。",
+        "reason": "Japanese missing 'his name' - significant semantic gap."
+      },
+      {
+        "idx": 31,
+        "score": 3,
+        "english": "practise with me tomorrow",
+        "other": "私と練習する明日",
+        "reason": "Japanese word order unnatural - 明日 should come at beginning."
+      },
+      {
+        "idx": 33,
+        "score": 3,
+        "english": "I want you to speak English",
+        "other": "〜してほしいです",
+        "reason": "Generic placeholder pattern - missing actual content."
+      },
+      {
+        "idx": 42,
+        "score": 3,
+        "english": "I want you to speak English",
+        "other": "〜してほしいです",
+        "reason": "Duplicate - generic placeholder pattern with no content."
+      },
+      {
+        "idx": 46,
+        "score": 4,
+        "english": "I like learning his name quickly.",
+        "other": "覚えるのが好きです。",
+        "reason": "Missing 'his name' and 'quickly' in Japanese."
+      },
+      {
+        "idx": 29,
+        "score": 2,
+        "english": "Do you speak English",
+        "other": "〜しますか？",
+        "reason": "Japanese is completely generic placeholder - unusable as translation."
+      }
+    ],
+    "worst_3_phrases": [
+      {
+        "idx": 29,
+        "score": 2,
+        "english": "Do you speak English",
+        "other": "〜しますか？",
+        "reason": "WORST: Japanese is a completely generic placeholder '~しますか?' meaning just 'Do you do ~?' with no actual content. This is unusable as a translation - it provides no learning value for the specific English phrase."
+      },
+      {
+        "idx": 33,
+        "score": 3,
+        "english": "I want you to speak English",
+        "other": "〜してほしいです",
+        "reason": "Japanese is a generic pattern placeholder with tilde mark. Missing the core content - no 'English' (英語を), no specific verb. The learner would not understand what actual Japanese corresponds to this English sentence."
+      },
+      {
+        "idx": 31,
+        "score": 3,
+        "english": "practise with me tomorrow",
+        "other": "私と練習する明日",
+        "reason": "Unnatural Japanese word order. Time expressions like 明日 (tomorrow) should typically come earlier in the sentence in Japanese. This reads as textbook-assembled rather than natural speech. Should be 明日私と練習する."
+      }
+    ],
+    "key_issues_identified": [
+      "Placeholder patterns (tilde ~) in Japanese indicate incomplete translations (idx 15, 24, 29, 33, 42)",
+      "Several phrases have semantic gaps where Japanese omits key elements present in English (idx 11, 16, 27, 40, 46, 49)",
+      "Subject mismatches between English 'You want' and Japanese first-person reading (idx 19, 34)",
+      "Some unnatural word orders in Japanese (idx 31)",
+      "Explicit あなたは can sound textbook-ish; native speakers often omit pronouns (idx 4, 39)"
+    ],
+    "overall_assessment": "This Round 3 sample shows decent but inconsistent quality with an average score of 6.52. The majority of phrases (35/50 or 70%) score 7 or above, indicating functional to strong quality. However, 7 phrases (14%) fall below the acceptable threshold of 5, with placeholder patterns being the most serious issue. The presence of generic tilde (~) placeholders in Japanese translations suggests incomplete LEGO decomposition or pattern scaffolding that was never filled in. Semantic mismatches where Japanese translations omit key elements from the English are also concerning. For a 'starting well' test, the course shows promise but needs attention to the problematic patterns before wider release."
+  }
+}

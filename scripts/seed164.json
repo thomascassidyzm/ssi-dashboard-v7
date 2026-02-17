@@ -1,0 +1,30 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 164,
+  "known_text": "面白い本",
+  "target_text": "An interesting book",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "面白い本",
+      "target": "An interesting book",
+      "components": [
+        {"known": "興味深い", "target": "interesting"},
+        {"known": "本", "target": "book"}
+      ],
+      "phrases": [
+        {"known": "興味深い本", "target": "an interesting book", "phrase_role": "BUILD"},
+        {"known": "面白い本", "target": "an interesting book", "phrase_role": "BUILD"},
+        {"known": "興味深い本を読む", "target": "read an interesting book", "phrase_role": "BUILD"},
+        {"known": "その興味深い本", "target": "that interesting book", "phrase_role": "BUILD"},
+        {"known": "興味深い本を読みたいです。", "target": "I want to read an interesting book.", "phrase_role": "USE", "score": 8},
+        {"known": "それは興味深い本です。", "target": "That is an interesting book.", "phrase_role": "USE", "score": 8},
+        {"known": "興味深い本を読みたいと思います。とても読みたいです。", "target": "I think I want to read an interesting book. I want to read it so much.", "phrase_role": "USE", "score": 8},
+        {"known": "興味深い本をくれますか？読みたいと思います。とても読みたいです。", "target": "Can you give me an interesting book? I think I want to read it. I want to read it so much.", "phrase_role": "USE", "score": 8},
+        {"known": "興味深い本について話しましょう。それについてどう思いますか？知りたいです。", "target": "Let's talk about an interesting book. What do you think about it? I want to know.", "phrase_role": "USE", "score": 8},
+        {"known": "その興味深い本を読みたいと思います。日曜日の朝に読みたいです。", "target": "I think I want to read that interesting book. I want to read it on Sunday morning.", "phrase_role": "USE", "score": 8}
+      ]
+    }
+  ]
+}

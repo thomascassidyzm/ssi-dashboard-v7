@@ -1,0 +1,168 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 80,
+  "known_text": "I'm not sure when I'll be ready.",
+  "target_text": "Ik weet niet zeker wanneer ik klaar zal zijn.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I",
+      "target": "ik",
+      "build": [
+        {"known": "I", "target": "ik"},
+        {"known": "I want", "target": "ik wil"},
+        {"known": "I can", "target": "ik kan"},
+        {"known": "I am", "target": "ik ben"}
+      ],
+      "use": [
+        {"known": "I want to learn Dutch with my friends.", "target": "Ik wil Nederlands leren met mijn vrienden.", "score": 8},
+        {"known": "I can remember how to say a few words now.", "target": "Ik kan nu onthouden hoe ik een paar woorden moet zeggen.", "score": 8},
+        {"known": "I don't enjoy waking up when I didn't sleep well.", "target": "Ik vind het niet leuk om wakker te worden als ik niet goed heb geslapen.", "score": 8},
+        {"known": "I wanted to give you more time last week.", "target": "Ik wilde je vorige week meer tijd geven.", "score": 8},
+        {"known": "I am trying to remember how to do it well.", "target": "Ik probeer te onthouden hoe ik het goed moet doen.", "score": 8},
+        {"known": "I started to learn Dutch with her last week.", "target": "Ik ben vorige week begonnen met Nederlands leren met haar.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "know [1st person]",
+      "target": "weet",
+      "build": [
+        {"known": "know", "target": "weet"},
+        {"known": "I know", "target": "ik weet"},
+        {"known": "you know", "target": "je weet"},
+        {"known": "don't know", "target": "weet niet"}
+      ],
+      "use": [
+        {"known": "I know that you want to learn Dutch with me.", "target": "Ik weet dat je Nederlands met me wilt leren.", "score": 8},
+        {"known": "Do you know how to say it in Dutch?", "target": "Weet je hoe je het in het Nederlands moet zeggen?", "score": 8},
+        {"known": "She knows that I want to give her more time.", "target": "Zij weet dat ik haar meer tijd wil geven.", "score": 8},
+        {"known": "I don't know what she wanted to do last week.", "target": "Ik weet niet wat zij vorige week wilde doen.", "score": 8},
+        {"known": "He knows that we wanted to do it with everyone.", "target": "Hij weet dat wij het met iedereen wilden doen.", "score": 8},
+        {"known": "Do you know when she wants to speak Dutch?", "target": "Weet je wanneer zij Nederlands wil spreken?", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "not",
+      "target": "niet",
+      "build": [
+        {"known": "not", "target": "niet"},
+        {"known": "not sure", "target": "niet zeker"},
+        {"known": "I am not", "target": "ik ben niet"},
+        {"known": "do not", "target": "niet doen"}
+      ],
+      "use": [
+        {"known": "I am not going to do it with you now.", "target": "Ik ga het nu niet met je doen.", "score": 8},
+        {"known": "She is not ready to speak Dutch with everyone.", "target": "Zij is niet klaar om Nederlands met iedereen te spreken.", "score": 8},
+        {"known": "He does not want to give her more time.", "target": "Hij wil haar niet meer tijd geven.", "score": 8},
+        {"known": "I am not sure when I want to do it.", "target": "Ik weet niet zeker wanneer ik het wil doen.", "score": 8},
+        {"known": "We are not going to wake up when she is here.", "target": "Wij gaan niet wakker worden als zij hier is.", "score": 8},
+        {"known": "I do not enjoy doing it when I am not ready.", "target": "Ik vind het niet leuk om het te doen als ik niet klaar ben.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "sure/certain",
+      "target": "zeker",
+      "build": [
+        {"known": "sure", "target": "zeker"},
+        {"known": "certainly", "target": "zeker"},
+        {"known": "not sure", "target": "niet zeker"},
+        {"known": "for sure", "target": "zeker"}
+      ],
+      "use": [
+        {"known": "I am not sure when he wants to do it with you.", "target": "Ik weet niet zeker wanneer hij het met je wil doen.", "score": 8},
+        {"known": "She is certainly going to speak Dutch with her friends.", "target": "Zij gaat zeker Nederlands spreken met haar vrienden.", "score": 8},
+        {"known": "Are you sure that you want to give her more time?", "target": "Weet je zeker dat je haar meer tijd wilt geven?", "score": 8},
+        {"known": "I am certainly not going to do it now.", "target": "Ik ga het zeker nu niet doen.", "score": 7},
+        {"known": "He is not sure when she started to learn Dutch.", "target": "Hij weet niet zeker wanneer zij begonnen is met Nederlands leren.", "score": 8},
+        {"known": "We are sure that we want to do it with everyone.", "target": "Wij weten zeker dat wij het met iedereen willen doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "when [question/future]",
+      "target": "wanneer",
+      "build": [
+        {"known": "when", "target": "wanneer"},
+        {"known": "when I", "target": "wanneer ik"},
+        {"known": "when you", "target": "wanneer je"},
+        {"known": "when she", "target": "wanneer zij"}
+      ],
+      "use": [
+        {"known": "When are you going to learn Dutch with your friends?", "target": "Wanneer ga je Nederlands leren met je vrienden?", "score": 8},
+        {"known": "I am not sure when I am going to be ready.", "target": "Ik weet niet zeker wanneer ik klaar ga zijn.", "score": 8},
+        {"known": "When did you start to learn Dutch with her?", "target": "Wanneer ben je begonnen met Nederlands leren met haar?", "score": 8},
+        {"known": "She wants to know when you are going to do it.", "target": "Zij wil weten wanneer je het gaat doen.", "score": 8},
+        {"known": "When is he going to give her more time?", "target": "Wanneer gaat hij haar meer tijd geven?", "score": 8},
+        {"known": "I want to know when we can do it with everyone.", "target": "Ik wil weten wanneer wij het met iedereen kunnen doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "ready",
+      "target": "klaar",
+      "build": [
+        {"known": "ready", "target": "klaar"},
+        {"known": "I am ready", "target": "ik ben klaar"},
+        {"known": "not ready", "target": "niet klaar"},
+        {"known": "are you ready", "target": "ben je klaar"}
+      ],
+      "use": [
+        {"known": "I am not ready to do it with you now.", "target": "Ik ben niet klaar om het nu met je te doen.", "score": 8},
+        {"known": "She is ready to speak Dutch with her friends now.", "target": "Zij is nu klaar om Nederlands met haar vrienden te spreken.", "score": 8},
+        {"known": "Are you ready to give her the letter?", "target": "Ben je klaar om haar de brief te geven?", "score": 8},
+        {"known": "He is not ready to learn Dutch with everyone.", "target": "Hij is niet klaar om Nederlands te leren met iedereen.", "score": 8},
+        {"known": "We are ready to do interesting things with you now.", "target": "Wij zijn nu klaar om interessante dingen met je te doen.", "score": 8},
+        {"known": "I am not sure if you are ready to do it well.", "target": "Ik weet niet zeker of je klaar bent om het goed te doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "will [future]",
+      "target": "zal",
+      "build": [
+        {"known": "will", "target": "zal"},
+        {"known": "I will", "target": "ik zal"},
+        {"known": "will be", "target": "zal zijn"},
+        {"known": "will do", "target": "zal doen"}
+      ],
+      "use": [
+        {"known": "I will do it with you when I am ready.", "target": "Ik zal het met je doen wanneer ik klaar ben.", "score": 8},
+        {"known": "She will speak Dutch with her friends.", "target": "Zij zal Nederlands spreken met haar vrienden.", "score": 8},
+        {"known": "He will give you more time when he can.", "target": "Hij zal je meer tijd geven wanneer hij kan.", "score": 8},
+        {"known": "I will remember how to say it when I want to.", "target": "Ik zal onthouden hoe ik het moet zeggen wanneer ik wil.", "score": 8},
+        {"known": "Will you be ready to do it with me?", "target": "Zal je klaar zijn om het met me te doen?", "score": 8},
+        {"known": "I'm not sure when I'll be ready.", "target": "Ik weet niet zeker wanneer ik klaar zal zijn.", "score": 9}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "to be [infinitive]",
+      "target": "zijn",
+      "build": [
+        {"known": "to be", "target": "zijn"},
+        {"known": "will be", "target": "zal zijn"},
+        {"known": "to be ready", "target": "klaar zijn"},
+        {"known": "to be sure", "target": "zeker zijn"}
+      ],
+      "use": [
+        {"known": "I want to be ready to do it with you.", "target": "Ik wil klaar zijn om het met je te doen.", "score": 8},
+        {"known": "She wants to be sure when she speaks Dutch.", "target": "Zij wil zeker zijn wanneer zij Nederlands spreekt.", "score": 8},
+        {"known": "He doesn't want to be here when I am ready.", "target": "Hij wil niet hier zijn wanneer ik klaar ben.", "score": 8},
+        {"known": "I'm not sure when I'll be ready to do it.", "target": "Ik weet niet zeker wanneer ik klaar zal zijn om het te doen.", "score": 9},
+        {"known": "We want to be ready to speak Dutch with everyone.", "target": "Wij willen klaar zijn om Nederlands te spreken met iedereen.", "score": 8},
+        {"known": "Do you want to be here when she is ready?", "target": "Wil je hier zijn wanneer zij klaar is?", "score": 8}
+      ]
+    }
+  ]
+}

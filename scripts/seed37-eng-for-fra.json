@@ -1,0 +1,95 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 37,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "J'ai commencé",
+      "target": "I started",
+      "components": [
+        {"known": "J'ai", "target": "I"},
+        {"known": "commencé", "target": "started"}
+      ],
+      "build": [
+        {"known": "J'ai commencé", "target": "I started"},
+        {"known": "J'ai commencé à parler", "target": "I started to speak"},
+        {"known": "J'ai commencé à apprendre", "target": "I started to learn"},
+        {"known": "J'ai commencé à lire", "target": "I started to read"}
+      ],
+      "use": [
+        {"known": "J'ai commencé à parler anglais avec toi hier.", "target": "I started to speak English with you yesterday.", "score": 9},
+        {"known": "Parce que j'ai commencé à apprendre anglais bientôt.", "target": "Because I started to learn English soon.", "score": 9},
+        {"known": "J'ai commencé à lire l'histoire cet après-midi.", "target": "I started to read the story this afternoon.", "score": 9},
+        {"known": "J'ai commencé à rencontrer d'autres personnes qui parlent anglais.", "target": "I started to meet other people who speak English.", "score": 9},
+        {"known": "J'ai commencé à répondre en anglais facilement.", "target": "I started to answer in English easily.", "score": 9},
+        {"known": "J'ai commencé à parler anglais dès que possible.", "target": "I started to speak English as soon as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "à y réfléchir",
+      "target": "to think about it",
+      "components": [
+        {"known": "à", "target": "to"},
+        {"known": "y", "target": "it"},
+        {"known": "réfléchir", "target": "think about"}
+      ],
+      "build": [
+        {"known": "à y réfléchir", "target": "to think about it"},
+        {"known": "J'ai commencé à y réfléchir", "target": "I started to think about it"},
+        {"known": "réfléchir", "target": "to think about"},
+        {"known": "y réfléchir", "target": "think about it"}
+      ],
+      "use": [
+        {"known": "J'ai commencé à y réfléchir maintenant.", "target": "I started to think about it now.", "score": 9},
+        {"known": "Parce que je veux y réfléchir avant de parler.", "target": "Because I want to think about it before I speak.", "score": 9},
+        {"known": "J'ai commencé à y réfléchir cet après-midi.", "target": "I started to think about it this afternoon.", "score": 9},
+        {"known": "Elle ne veut pas y réfléchir quand d'autres personnes sont ici.", "target": "She doesn't want to think about it when other people are here.", "score": 9},
+        {"known": "J'ai commencé à y réfléchir avant que tu partes.", "target": "I started to think about it before you go.", "score": 9},
+        {"known": "Nous ne voulons pas y réfléchir maintenant.", "target": "We don't want to think about it now.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "attentivement",
+      "target": "carefully",
+      "build": [
+        {"known": "attentivement", "target": "carefully"},
+        {"known": "y réfléchir attentivement", "target": "to think about it carefully"},
+        {"known": "J'ai commencé à y réfléchir attentivement", "target": "I started to think about it carefully"},
+        {"known": "lire attentivement", "target": "to read carefully"}
+      ],
+      "use": [
+        {"known": "J'ai commencé à y réfléchir attentivement maintenant.", "target": "I started to think about it carefully now.", "score": 9},
+        {"known": "Parce que je veux lire l'histoire attentivement.", "target": "Because I want to read the story carefully.", "score": 9},
+        {"known": "J'ai commencé à y réfléchir attentivement cet après-midi.", "target": "I started to think about it carefully this afternoon.", "score": 9},
+        {"known": "Elle veut apprendre anglais attentivement.", "target": "She wants to learn English carefully.", "score": 9},
+        {"known": "J'ai commencé à y réfléchir attentivement avant que tu partes.", "target": "I started to think about it carefully before you go.", "score": 9},
+        {"known": "Il veut lire l'histoire attentivement.", "target": "He wants to read the story carefully.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "le mois dernier",
+      "target": "last month",
+      "build": [
+        {"known": "le mois dernier", "target": "last month"},
+        {"known": "J'ai commencé à y réfléchir attentivement le mois dernier", "target": "I started to think about it carefully last month"},
+        {"known": "j'ai commencé le mois dernier", "target": "I started last month"},
+        {"known": "parler anglais le mois dernier", "target": "to speak English last month"}
+      ],
+      "use": [
+        {"known": "J'ai commencé à y réfléchir attentivement le mois dernier.", "target": "I started to think about it carefully last month.", "score": 9},
+        {"known": "Parce que j'ai commencé à apprendre anglais le mois dernier.", "target": "Because I started to learn English last month.", "score": 9},
+        {"known": "J'ai commencé à lire l'histoire attentivement le mois dernier.", "target": "I started to read the story carefully last month.", "score": 9},
+        {"known": "Elle a commencé à parler anglais le mois dernier.", "target": "She started to speak English last month.", "score": 9},
+        {"known": "J'ai commencé à rencontrer d'autres personnes le mois dernier.", "target": "I started to meet other people last month.", "score": 9},
+        {"known": "Nous avons commencé à y réfléchir le mois dernier.", "target": "We started to think about it last month.", "score": 9}
+      ]
+    }
+  ]
+}

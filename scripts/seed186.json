@@ -1,0 +1,79 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 186,
+  "target_text": "Do you want to talk about something different next week?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Voulez-vous parler",
+      "target": "Do you want to talk",
+      "components": [
+        {"known": "Voulez-vous", "target": "Do you want to"},
+        {"known": "parler", "target": "talk"}
+      ],
+      "build": [
+        {"known": "Voulez-vous parler", "target": "Do you want to talk"},
+        {"known": "parler", "target": "talk"},
+        {"known": "je veux parler", "target": "I want to talk"},
+        {"known": "tu veux parler", "target": "you want to talk"}
+      ],
+      "use": [
+        {"known": "Voulez-vous parler de ce que vous avez vu au bureau?", "target": "Do you want to talk about what you saw in the office?", "score": 8},
+        {"known": "Je veux parler de ce que j'ai vu il y a un moment", "target": "I want to talk about what I saw a while ago", "score": 8},
+        {"known": "Tu veux parler de ça maintenant ou plus tard?", "target": "Do you want to talk about that now or later on?", "score": 8},
+        {"known": "Je voudrais parler avec vous de ce que je pense faire", "target": "I'd like to talk with you about what I think I should do", "score": 8},
+        {"known": "Voulez-vous parler de ce que vous avez laissé au travail?", "target": "Do you want to talk about what you left at work?", "score": 8},
+        {"known": "Je ne veux pas parler de ça maintenant, malheureusement", "target": "I don't want to talk about that now, I'm afraid", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "de quelque chose de différent",
+      "target": "about something different",
+      "components": [
+        {"known": "de quelque chose", "target": "about something"},
+        {"known": "de différent", "target": "different"}
+      ],
+      "build": [
+        {"known": "de quelque chose de différent", "target": "about something different"},
+        {"known": "quelque chose de différent", "target": "something different"},
+        {"known": "parler de quelque chose", "target": "talk about something"},
+        {"known": "de différent", "target": "different"}
+      ],
+      "use": [
+        {"known": "Voulez-vous parler de quelque chose de différent maintenant?", "target": "Do you want to talk about something different now?", "score": 8},
+        {"known": "Je voudrais faire quelque chose de différent ce dimanche", "target": "I'd like to do something different this Sunday", "score": 8},
+        {"known": "Tu veux parler de quelque chose de différent ou de ça?", "target": "Do you want to talk about something different or about that?", "score": 8},
+        {"known": "Je pense que nous devrions parler de quelque chose d'important", "target": "I think we should talk about something important", "score": 8},
+        {"known": "C'est quelque chose de différent et je pense que c'est bien", "target": "It's something different and I think it's good", "score": 8},
+        {"known": "Je voudrais lire quelque chose de différent ce soir si j'ai le temps", "target": "I'd like to read something different this evening if I have time", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "la semaine prochaine",
+      "target": "next week",
+      "components": [
+        {"known": "la semaine", "target": "week"},
+        {"known": "prochaine", "target": "next"}
+      ],
+      "build": [
+        {"known": "la semaine prochaine", "target": "next week"},
+        {"known": "cette semaine", "target": "this week"},
+        {"known": "la semaine dernière", "target": "last week"},
+        {"known": "semaine", "target": "week"}
+      ],
+      "use": [
+        {"known": "Voulez-vous parler de quelque chose de différent la semaine prochaine?", "target": "Do you want to talk about something different next week?", "score": 9},
+        {"known": "Je vais aller au travail la semaine prochaine je pense", "target": "I'm going to go to work next week I think", "score": 8},
+        {"known": "Tu peux venir me voir la semaine prochaine au bureau?", "target": "Can you come see me next week at the office?", "score": 8},
+        {"known": "Cette semaine je dois emmener ma mère chez le médecin", "target": "This week I have to take my mother to the doctor", "score": 8},
+        {"known": "La semaine dernière j'ai vu tes clés quelque part ici", "target": "Last week I saw your keys anywhere here", "score": 8},
+        {"known": "Je voudrais faire quelque chose de différent la semaine prochaine", "target": "I'd like to do something different next week", "score": 8}
+      ]
+    }
+  ]
+}

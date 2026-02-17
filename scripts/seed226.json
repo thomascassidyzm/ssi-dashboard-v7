@@ -1,0 +1,140 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 226,
+  "known_text": "The man is trying to help me.",
+  "target_text": "这个男人在试着帮我。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "this (specific)",
+      "target": "这个",
+      "components": [
+        {"known": "this", "target": "这"},
+        {"known": "measure word", "target": "个"}
+      ],
+      "build": [
+        {"known": "This.", "target": "这个。"},
+        {"known": "This one.", "target": "这个。"},
+        {"known": "This person.", "target": "这个人。"},
+        {"known": "This thing.", "target": "这个东西。"}
+      ],
+      "use": [
+        {"known": "This person is trying to help me with the work.", "target": "这个人在试着帮我做工作。", "score": 8},
+        {"known": "She said this person wants to meet us tomorrow.", "target": "她说这个人想明天见我们。", "score": 7},
+        {"known": "If this person can help, we should ask them now.", "target": "如果这个人能帮忙的话，我们现在要问。", "score": 8},
+        {"known": "I want to know what this person said at the meeting.", "target": "我想知道这个人在开会说了什么。", "score": 8},
+        {"known": "Everyone knows this person is good at their job.", "target": "大家都知道这个人工作做得好。", "score": 7},
+        {"known": "What did this person tell you about the work yesterday?", "target": "这个人昨天告诉你什么工作的东西？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "man",
+      "target": "男人",
+      "components": [
+        {"known": "male", "target": "男"},
+        {"known": "person", "target": "人"}
+      ],
+      "build": [
+        {"known": "Man.", "target": "男人。"},
+        {"known": "This man.", "target": "这个男人。"},
+        {"known": "The man.", "target": "这个男人。"},
+        {"known": "A man.", "target": "一个男人。"}
+      ],
+      "use": [
+        {"known": "The man is trying to help me understand the problem.", "target": "这个男人在试着帮我了解问题。", "score": 8},
+        {"known": "She asked if the man can come to the meeting tomorrow.", "target": "她问这个男人是不是明天能来开会。", "score": 7},
+        {"known": "If the man wants to help, he should come talk to us.", "target": "如果这个男人想帮忙的话，他要来和我们说话。", "score": 8},
+        {"known": "I saw a man at the office who wanted to ask questions.", "target": "我在办公室见了一个男人，他想问问题。", "score": 8},
+        {"known": "Everyone thinks the man did a great job this week.", "target": "大家都觉得这个男人这个星期做得很好。", "score": 7},
+        {"known": "What did that man tell you about the work yesterday?", "target": "这个男人昨天告诉你什么工作的东西？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "is (progressive marker)",
+      "target": "在",
+      "build": [
+        {"known": "Is.", "target": "在。"},
+        {"known": "Is doing.", "target": "在做。"},
+        {"known": "He is.", "target": "他在。"},
+        {"known": "Is trying.", "target": "在试着。"}
+      ],
+      "use": [
+        {"known": "The man is trying to explain the answer to me.", "target": "这个男人在试着给我解释答案。", "score": 8},
+        {"known": "She is working on something important for the meeting.", "target": "她在做开会的一些重要的东西。", "score": 7},
+        {"known": "If you are watching television, I will come back later.", "target": "如果你在看电视的话，我以后回来。", "score": 8},
+        {"known": "I am trying to understand what he wants from me.", "target": "我在试着了解他想要什么。", "score": 8},
+        {"known": "Everyone is asking what we should do about this.", "target": "大家都在问我们要怎么做这个。", "score": 7},
+        {"known": "What is he trying to tell us about the problem?", "target": "他在试着告诉我们问题的什么东西？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "trying to",
+      "target": "试着",
+      "components": [
+        {"known": "try", "target": "试"},
+        {"known": "action marker", "target": "着"}
+      ],
+      "build": [
+        {"known": "Trying.", "target": "试着。"},
+        {"known": "Trying to.", "target": "试着。"},
+        {"known": "Is trying.", "target": "在试着。"},
+        {"known": "Trying to help.", "target": "试着帮。"}
+      ],
+      "use": [
+        {"known": "The man is trying to help me finish the work.", "target": "这个男人在试着帮我完成工作。", "score": 8},
+        {"known": "She is trying to understand what we want to do.", "target": "她在试着了解我们想做什么。", "score": 7},
+        {"known": "If you are trying to help, please let me know.", "target": "如果你在试着帮忙的话，请让我知道。", "score": 8},
+        {"known": "I have been trying to finish this work all week.", "target": "我一整个星期都在试着完成这个工作。", "score": 7},
+        {"known": "Everyone is trying to find a way to solve it.", "target": "大家都在试着找办法处理。", "score": 8},
+        {"known": "Why is the man trying to explain it to us now?", "target": "这个男人为什么现在在试着给我们解释？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "help",
+      "target": "帮",
+      "build": [
+        {"known": "Help.", "target": "帮。"},
+        {"known": "Help me.", "target": "帮我。"},
+        {"known": "Trying to help.", "target": "试着帮。"},
+        {"known": "Help with.", "target": "帮忙。"}
+      ],
+      "use": [
+        {"known": "The man is trying to help me with the problem.", "target": "这个男人在试着帮我做问题。", "score": 8},
+        {"known": "She asked if we can help her finish the work.", "target": "她问我们是不是能帮她完成工作。", "score": 7},
+        {"known": "If you want to help, please come to the meeting.", "target": "如果你想帮忙的话，请来开会。", "score": 8},
+        {"known": "I would like to help you if I have the time.", "target": "如果我有时间的话，我想帮你。", "score": 7},
+        {"known": "Everyone wants to help when they hear about it.", "target": "大家听说的时候都想帮忙。", "score": 8},
+        {"known": "Would the man be able to help us with this tomorrow?", "target": "这个男人明天能帮我们做这个吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "Me.", "target": "我。"},
+        {"known": "Help me.", "target": "帮我。"},
+        {"known": "Tell me.", "target": "告诉我。"},
+        {"known": "Give me.", "target": "给我。"}
+      ],
+      "use": [
+        {"known": "The man is trying to help me understand what to do.", "target": "这个男人在试着帮我了解做什么。", "score": 8},
+        {"known": "She asked me if I want to watch a film tonight.", "target": "她问我是不是想今天晚上看电影。", "score": 7},
+        {"known": "If you want to tell me something, please do it now.", "target": "如果你想告诉我东西的话，请现在做。", "score": 8},
+        {"known": "I hope he can explain to me what went wrong.", "target": "我希望他能给我解释出了什么问题。", "score": 8},
+        {"known": "Everyone told me they had a good time at the meeting.", "target": "大家都告诉我他们开会过得开心。", "score": 7},
+        {"known": "Would that man be able to help me if I asked?", "target": "如果我问的话，这个男人能帮我吗？", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 86,
+  "known_text": "It wasn't possible, unfortunately.",
+  "target_text": "Het was niet mogelijk, helaas.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "it",
+      "target": "het",
+      "build": [
+        {"known": "it", "target": "het"},
+        {"known": "it is", "target": "het is"},
+        {"known": "it was", "target": "het was"},
+        {"known": "do it", "target": "het doen"}
+      ],
+      "use": [
+        {"known": "It is not sure when he wants to start.", "target": "Het is niet zeker wanneer hij wil beginnen.", "score": 8},
+        {"known": "It was interesting what she said about my friend.", "target": "Het was interessant wat zij zei over mijn vriend.", "score": 8},
+        {"known": "I don't know those people but it doesn't matter.", "target": "Ik ken die mensen niet maar het maakt niet uit.", "score": 8},
+        {"known": "It is not easy to know everyone who wants to start.", "target": "Het is niet makkelijk om iedereen te leren kennen die wil beginnen.", "score": 8},
+        {"known": "It was not what I wanted to do with my friends.", "target": "Het was niet wat ik met mijn vrienden wilde doen.", "score": 8},
+        {"known": "Do you agree that it is not sure when we can start?", "target": "Ben je het eens dat het niet zeker is wanneer wij kunnen beginnen?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "was",
+      "target": "was",
+      "build": [
+        {"known": "was", "target": "was"},
+        {"known": "it was", "target": "het was"},
+        {"known": "he was", "target": "hij was"},
+        {"known": "was not", "target": "was niet"}
+      ],
+      "use": [
+        {"known": "It was interesting what he said about those people.", "target": "Het was interessant wat hij zei over die mensen.", "score": 8},
+        {"known": "He was not sure when she wanted to start.", "target": "Hij was niet zeker wanneer zij wilde beginnen.", "score": 8},
+        {"known": "She was ready to do it with everyone last week.", "target": "Zij was vorige week klaar om het met iedereen te doen.", "score": 8},
+        {"known": "It was not easy for me to learn Dutch with my friends.", "target": "Het was niet makkelijk om Nederlands te leren met mijn vrienden.", "score": 8},
+        {"known": "I was not sure what he said about my friend.", "target": "Ik was niet zeker wat hij zei over mijn vriend.", "score": 8},
+        {"known": "Was it interesting what she said about waiting for you?", "target": "Was het interessant wat zij zei over op je wachten?", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "not",
+      "target": "niet",
+      "build": [
+        {"known": "not", "target": "niet"},
+        {"known": "was not", "target": "was niet"},
+        {"known": "not possible", "target": "niet mogelijk"},
+        {"known": "not sure", "target": "niet zeker"}
+      ],
+      "use": [
+        {"known": "It was not what I wanted to say about those people.", "target": "Het was niet wat ik over die mensen wilde zeggen.", "score": 8},
+        {"known": "He was not ready to start doing it with everyone.", "target": "Hij was niet klaar om te beginnen met het met iedereen te doen.", "score": 8},
+        {"known": "She was not sure about what he said about her friend.", "target": "Zij was niet zeker over wat hij zei over haar vriend.", "score": 8},
+        {"known": "I don't know if it was interesting to my friends.", "target": "Ik weet niet of het interessant was met mijn vrienden.", "score": 8},
+        {"known": "It was not easy to agree with what she said.", "target": "Het was niet makkelijk om het eens te zijn met wat zij zei.", "score": 8},
+        {"known": "Was it not sure when he wanted to do it with you?", "target": "Was het niet zeker wanneer hij het met je wilde doen?", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "possible",
+      "target": "mogelijk",
+      "build": [
+        {"known": "possible", "target": "mogelijk"},
+        {"known": "not possible", "target": "niet mogelijk"},
+        {"known": "is possible", "target": "is mogelijk"},
+        {"known": "was possible", "target": "was mogelijk"}
+      ],
+      "use": [
+        {"known": "It was not possible to do it with those people.", "target": "Het was niet mogelijk om het met die mensen te doen.", "score": 8},
+        {"known": "Is it possible that he wants to start learning Dutch?", "target": "Is het mogelijk dat hij Nederlands wil beginnen leren?", "score": 8},
+        {"known": "It was not possible for me to know everyone.", "target": "Het was niet mogelijk voor me om iedereen te kennen.", "score": 8},
+        {"known": "She said that it was not possible to wait for you.", "target": "Zij zei dat het niet mogelijk was om op je te wachten.", "score": 8},
+        {"known": "I am not sure if it is possible to do it now.", "target": "Ik ben niet zeker of het mogelijk is om het nu te doen.", "score": 8},
+        {"known": "Was it possible for her to agree with what he said?", "target": "Was het mogelijk voor haar om het eens te zijn met wat hij zei?", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "unfortunately",
+      "target": "helaas",
+      "build": [
+        {"known": "unfortunately", "target": "helaas"},
+        {"known": "unfortunately not", "target": "helaas niet"},
+        {"known": "sadly", "target": "helaas"},
+        {"known": "regrettably", "target": "helaas"}
+      ],
+      "use": [
+        {"known": "It wasn't possible, unfortunately.", "target": "Het was niet mogelijk, helaas.", "score": 9},
+        {"known": "Unfortunately, I don't know those people.", "target": "Helaas ken ik die mensen niet.", "score": 8},
+        {"known": "She said that unfortunately it was not possible.", "target": "Zij zei dat het helaas niet mogelijk was.", "score": 8},
+        {"known": "Unfortunately, he was not ready to start.", "target": "Helaas was hij niet klaar om te beginnen.", "score": 8},
+        {"known": "It was unfortunately not interesting with my friends.", "target": "Het was helaas niet interessant met mijn vrienden.", "score": 8},
+        {"known": "Unfortunately, I am not sure what she said about it.", "target": "Helaas ben ik niet zeker wat zij over het zei.", "score": 8}
+      ]
+    }
+  ]
+}

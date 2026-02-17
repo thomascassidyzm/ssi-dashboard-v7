@@ -1,0 +1,50 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 2,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "J'essaie",
+      "target": "I'm trying",
+      "components": [
+        {"known": "Je", "target": "I'm"},
+        {"known": "essaie", "target": "trying"}
+      ],
+      "build": [
+        {"known": "J'essaie", "target": "I'm trying"},
+        {"known": "essaie", "target": "trying"},
+        {"known": "J'essaie de parler", "target": "I'm trying to speak"},
+        {"known": "J'essaie de parler anglais", "target": "I'm trying to speak English"}
+      ],
+      "use": [
+        {"known": "J'essaie de parler.", "target": "I'm trying to speak.", "score": 7},
+        {"known": "J'essaie de parler anglais.", "target": "I'm trying to speak English.", "score": 8},
+        {"known": "J'essaie de parler avec toi.", "target": "I'm trying to speak with you.", "score": 8},
+        {"known": "J'essaie de parler anglais avec toi.", "target": "I'm trying to speak English with you.", "score": 9},
+        {"known": "J'essaie de parler anglais maintenant.", "target": "I'm trying to speak English now.", "score": 8},
+        {"known": "J'essaie de parler anglais avec toi maintenant.", "target": "I'm trying to speak English with you now.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "apprendre",
+      "target": "to learn",
+      "build": [
+        {"known": "apprendre", "target": "to learn"},
+        {"known": "J'essaie d'apprendre", "target": "I'm trying to learn"},
+        {"known": "Je veux apprendre", "target": "I want to learn"},
+        {"known": "apprendre l'anglais", "target": "to learn English"}
+      ],
+      "use": [
+        {"known": "J'essaie d'apprendre.", "target": "I'm trying to learn.", "score": 7},
+        {"known": "Je veux apprendre.", "target": "I want to learn.", "score": 7},
+        {"known": "J'essaie d'apprendre l'anglais.", "target": "I'm trying to learn English.", "score": 8},
+        {"known": "Je veux apprendre l'anglais.", "target": "I want to learn English.", "score": 8},
+        {"known": "J'essaie d'apprendre à parler anglais.", "target": "I'm trying to learn to speak English.", "score": 9},
+        {"known": "Je veux apprendre à parler anglais avec toi.", "target": "I want to learn to speak English with you.", "score": 9}
+      ]
+    }
+  ]
+}

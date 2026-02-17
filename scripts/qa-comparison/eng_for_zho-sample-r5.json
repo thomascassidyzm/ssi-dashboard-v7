@@ -1,0 +1,911 @@
+{
+  "course_code": "eng_for_zho",
+  "is_eng_for_x": true,
+  "round": 5,
+  "seed_range": "all",
+  "description": "Single-agent consistent scoring - 100 random USE phrases",
+  "total_use_phrases": 5145,
+  "sample_size": 100,
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "a93493ea-0ea5-4692-a1ce-e4d4d076473f",
+      "seed": 4,
+      "lego": 1,
+      "english": "How to say English?",
+      "other": "怎么说英语？",
+      "qa_score": null
+    },
+    {
+      "idx": 2,
+      "id": "a2c81a9a-6e90-449f-b57b-b795c3b4b4dc",
+      "seed": 167,
+      "lego": 1,
+      "english": "I'll be at home tomorrow afternoon, if you want to come.",
+      "other": "我明天下午会在家，如果你想来。",
+      "qa_score": null
+    },
+    {
+      "idx": 3,
+      "id": "283dcb94-c210-4d15-80a5-9bf2d9425ba4",
+      "seed": 123,
+      "lego": 1,
+      "english": "What do you think about that? I'm excited about learning English.",
+      "other": "你觉得那怎么样？我对学英语很兴奋。",
+      "qa_score": null
+    },
+    {
+      "idx": 4,
+      "id": "359437c5-ed90-4f88-8334-9c14bc056a11",
+      "seed": 47,
+      "lego": 3,
+      "english": "I think that its a good thing to make mistakes But I dont worry about it",
+      "other": "我觉得是好事去犯错但是我不担心",
+      "qa_score": null
+    },
+    {
+      "idx": 5,
+      "id": "fc3bfd4c-847a-4e3d-b218-b9175c79ae45",
+      "seed": 243,
+      "lego": 1,
+      "english": "If you want the same, tell me, I can help you.",
+      "other": "如果你想要同样的，告诉我，我可以帮你。",
+      "qa_score": null
+    },
+    {
+      "idx": 6,
+      "id": "5784870f-e849-45ad-8b5c-63339278b411",
+      "seed": 103,
+      "lego": 1,
+      "english": "I'm not trying to say that, if it's possible.",
+      "other": "我不试着说，如果可以的话。",
+      "qa_score": null
+    },
+    {
+      "idx": 7,
+      "id": "8e7a10d2-7bf2-46bf-ae5d-d035f47a33ce",
+      "seed": 109,
+      "lego": 2,
+      "english": "You must work hard to learn, do you agree?",
+      "other": "你们必须努力学，你同意吗？",
+      "qa_score": null
+    },
+    {
+      "idx": 8,
+      "id": "0f1bbdbb-9117-4fd5-a6ac-5ac8e4106956",
+      "seed": 99,
+      "lego": 1,
+      "english": "You should consider playing something else, if you need to.",
+      "other": "你该考虑玩别的东西，如果你需要。",
+      "qa_score": null
+    },
+    {
+      "idx": 9,
+      "id": "0b370914-1f68-48c6-91ba-addec86c09db",
+      "seed": 183,
+      "lego": 3,
+      "english": "I haven't seen the doctor, but I have to go.",
+      "other": "我没看到医生，但是我必须去。",
+      "qa_score": null
+    },
+    {
+      "idx": 10,
+      "id": "7caddba4-6d2c-4031-833e-4830988a1904",
+      "seed": 117,
+      "lego": 2,
+      "english": "I'm doing better, this is the best choice.",
+      "other": "我做得好，这是最好的选择。",
+      "qa_score": null
+    },
+    {
+      "idx": 11,
+      "id": "2a6be4f1-f245-4171-8472-9b0008530128",
+      "seed": 52,
+      "lego": 3,
+      "english": "I did interesting things with my friends last week",
+      "other": "我上星期做有趣的事和朋友",
+      "qa_score": null
+    },
+    {
+      "idx": 12,
+      "id": "57abbc11-16e8-451e-907c-4627d0ef3ef1",
+      "seed": 11,
+      "lego": 4,
+      "english": "I'd like to speak English with you after.",
+      "other": "我想要以后和你说英语。",
+      "qa_score": null
+    },
+    {
+      "idx": 13,
+      "id": "635ec6cb-e8a7-4936-981e-2ce021b92600",
+      "seed": 131,
+      "lego": 1,
+      "english": "There are too many things to do, I need a little more time.",
+      "other": "有太多工作要做，我需要多一点时间。",
+      "qa_score": null
+    },
+    {
+      "idx": 14,
+      "id": "b8d1da74-0784-484e-a65a-4218a8908760",
+      "seed": 106,
+      "lego": 1,
+      "english": "We don't need to feel happy",
+      "other": "我们不需要觉得开心",
+      "qa_score": null
+    },
+    {
+      "idx": 15,
+      "id": "0ee05a5d-8cfe-4ec5-8286-0fac962fae59",
+      "seed": 61,
+      "lego": 1,
+      "english": "So could you speak about interesting things with friends in English.",
+      "other": "所以你能用英语和朋友说有趣的事吗。",
+      "qa_score": null
+    },
+    {
+      "idx": 16,
+      "id": "232bc3ff-2022-493f-b318-990db98da547",
+      "seed": 149,
+      "lego": 3,
+      "english": "That's very kind of you, I hope you'll finish soon.",
+      "other": "你太好了，我希望你会很快做完。",
+      "qa_score": null
+    },
+    {
+      "idx": 17,
+      "id": "cdb760be-4528-4698-afe3-b4f9825f36a0",
+      "seed": 176,
+      "lego": 2,
+      "english": "I'll ask him if he can come and help next year.",
+      "other": "我会问他明年能不能来帮忙。",
+      "qa_score": null
+    },
+    {
+      "idx": 18,
+      "id": "2a3fce2a-d6dc-466e-b085-252faf55c777",
+      "seed": 127,
+      "lego": 2,
+      "english": "That is why I wanted to see you, it's starting to feel easier.",
+      "other": "那是我想见你的原因，开始觉得更容易了。",
+      "qa_score": null
+    },
+    {
+      "idx": 19,
+      "id": "6273e019-251f-419f-8491-edb6526f66a3",
+      "seed": 198,
+      "lego": 2,
+      "english": "works for the council",
+      "other": "在政府工作",
+      "qa_score": null
+    },
+    {
+      "idx": 20,
+      "id": "a4d6d0ad-ae3e-44ed-a9ba-4941da8b0f96",
+      "seed": 107,
+      "lego": 3,
+      "english": "I want to know what you were doing, if it's possible.",
+      "other": "我想知道你在做什么，如果可以的话。",
+      "qa_score": null
+    },
+    {
+      "idx": 21,
+      "id": "936e6ad4-9230-481b-b7be-ad103feae28d",
+      "seed": 65,
+      "lego": 3,
+      "english": "Is it important",
+      "other": "很重要吗",
+      "qa_score": null
+    },
+    {
+      "idx": 22,
+      "id": "bf4224c1-fdb8-4d77-a163-0044af2716c4",
+      "seed": 240,
+      "lego": 1,
+      "english": "Do you know if your father knows my brother?",
+      "other": "你爸爸认识我哥哥吗？",
+      "qa_score": null
+    },
+    {
+      "idx": 23,
+      "id": "eee390fd-3972-4784-874e-b1b40bdce577",
+      "seed": 45,
+      "lego": 1,
+      "english": "I want to know how to speak English",
+      "other": "我想知道怎么说英语",
+      "qa_score": null
+    },
+    {
+      "idx": 24,
+      "id": "1c3d4fa2-3843-453c-872b-25b31a53b9c1",
+      "seed": 123,
+      "lego": 1,
+      "english": "Do you think that's easier? I feel as if I'm ready.",
+      "other": "你觉得那更容易吗？我觉得好像我准备好了。",
+      "qa_score": null
+    },
+    {
+      "idx": 25,
+      "id": "0fb282b7-4ed7-4e3e-a6db-1f572aa32a5b",
+      "seed": 115,
+      "lego": 2,
+      "english": "I'm ready to learn this language.",
+      "other": "我准备好学这门语言。",
+      "qa_score": null
+    },
+    {
+      "idx": 26,
+      "id": "0c355be3-a203-4e76-9e95-25aa38d2db36",
+      "seed": 19,
+      "lego": 1,
+      "english": "But I can speak English",
+      "other": "但是我能说英语",
+      "qa_score": null
+    },
+    {
+      "idx": 27,
+      "id": "78c84eca-068c-49b3-92d2-99a6b5604639",
+      "seed": 246,
+      "lego": 1,
+      "english": "I wanted her to help you, do you know?",
+      "other": "我想让她帮你，你知道吗？",
+      "qa_score": null
+    },
+    {
+      "idx": 28,
+      "id": "bcaa94a9-5991-4375-8494-9c341086c107",
+      "seed": 152,
+      "lego": 3,
+      "english": "Can you tell me what you wanted?",
+      "other": "你可以告诉我你想要什么吗？",
+      "qa_score": null
+    },
+    {
+      "idx": 29,
+      "id": "bb4cd09d-8760-4cab-a15a-c6526154f9f0",
+      "seed": 231,
+      "lego": 2,
+      "english": "want to ask for help",
+      "other": "想请人帮忙",
+      "qa_score": null
+    },
+    {
+      "idx": 30,
+      "id": "ab2a97ee-1212-4fe8-9de0-18dbaaba47cd",
+      "seed": 144,
+      "lego": 2,
+      "english": "I woke earlier because I want to learn English.",
+      "other": "我醒得早因为我想学英语。",
+      "qa_score": null
+    },
+    {
+      "idx": 31,
+      "id": "b994bc86-c4ed-4a81-9b14-6869cb1eb860",
+      "seed": 68,
+      "lego": 2,
+      "english": "What are you looking for?",
+      "other": "你在找什么东西？",
+      "qa_score": null
+    },
+    {
+      "idx": 32,
+      "id": "5893dd85-5881-4884-82a2-b93d34cef7c7",
+      "seed": 35,
+      "lego": 2,
+      "english": "She doesn't want to read with other people",
+      "other": "她不想和其他人一起读",
+      "qa_score": null
+    },
+    {
+      "idx": 33,
+      "id": "09d2ee09-6a52-4811-8e42-dee49803ff40",
+      "seed": 145,
+      "lego": 1,
+      "english": "Why are you not happy any more",
+      "other": "你为什么不高兴了",
+      "qa_score": null
+    },
+    {
+      "idx": 34,
+      "id": "1e0c9558-af4e-4bfa-b1b8-fc39166414fa",
+      "seed": 99,
+      "lego": 3,
+      "english": "Ask yourself why it's not working, if you need a little more time.",
+      "other": "问自己为什么不行，如果你需要多一点时间。",
+      "qa_score": null
+    },
+    {
+      "idx": 35,
+      "id": "2f055958-28bb-49c0-86b3-827e094412cd",
+      "seed": 26,
+      "lego": 5,
+      "english": "I like feeling as if I'm nearly ready to go today.",
+      "other": "我喜欢感觉好像我快要走今天。",
+      "qa_score": null
+    },
+    {
+      "idx": 36,
+      "id": "677dc10e-c656-476a-93cb-a02759b80d74",
+      "seed": 106,
+      "lego": 3,
+      "english": "Do you need to work hard? I can help you find out.",
+      "other": "你需要努力吗？我可以帮你了解。",
+      "qa_score": null
+    },
+    {
+      "idx": 37,
+      "id": "9f3bd369-6401-4ba7-b8dc-7c4136a17fde",
+      "seed": 140,
+      "lego": 2,
+      "english": "I want to know why I can't see this, it's very important.",
+      "other": "我想知道为什么我看不到这个，很重要。",
+      "qa_score": null
+    },
+    {
+      "idx": 38,
+      "id": "872d8c9e-f24c-4fae-a550-2205af2644e4",
+      "seed": 20,
+      "lego": 3,
+      "english": "I'm not sure if you want to learn his English.",
+      "other": "我不确定你想不想学他的英语。",
+      "qa_score": null
+    },
+    {
+      "idx": 39,
+      "id": "85da5e7d-26b6-4a36-bb8f-fff4e4036e54",
+      "seed": 59,
+      "lego": 4,
+      "english": "I can do what I need to do next week.",
+      "other": "下星期我能做我需要做的。",
+      "qa_score": null
+    },
+    {
+      "idx": 40,
+      "id": "35e0d66a-3a0b-41c8-a19e-57c793b75397",
+      "seed": 138,
+      "lego": 3,
+      "english": "Of course you can meet us, it's not a problem.",
+      "other": "当然你可以跟我们见面，没有问题。",
+      "qa_score": null
+    },
+    {
+      "idx": 41,
+      "id": "5b68a59c-18cf-42c1-8897-ba02fa5c2baa",
+      "seed": 189,
+      "lego": 3,
+      "english": "If you have a better idea, tell me.",
+      "other": "如果你有更好的主意，告诉我。",
+      "qa_score": null
+    },
+    {
+      "idx": 42,
+      "id": "58f2f31c-6f95-424d-bddc-42e85cb964fc",
+      "seed": 126,
+      "lego": 2,
+      "english": "It's unusual that you're changing, you don't like to use your car now.",
+      "other": "奇怪的是你在改变，你不喜欢用你的车了。",
+      "qa_score": null
+    },
+    {
+      "idx": 43,
+      "id": "667ee12a-3d82-40f0-9c84-bc0417f8b45a",
+      "seed": 13,
+      "lego": 4,
+      "english": "I'd like to be able to speak English very well like you with someone else.",
+      "other": "我想要能像你一样和别人英语说得很好。",
+      "qa_score": null
+    },
+    {
+      "idx": 44,
+      "id": "f0480fc2-555a-43c2-9136-4223b64d90a2",
+      "seed": 45,
+      "lego": 2,
+      "english": "Or I want to know everything about how to speak English",
+      "other": "或者我想知道一切怎么说英语",
+      "qa_score": null
+    },
+    {
+      "idx": 45,
+      "id": "d128bdaa-f78e-459d-9688-ad47063d0a10",
+      "seed": 40,
+      "lego": 2,
+      "english": "How do you feel when you have been learning English for about a week",
+      "other": "你感觉到怎么样当你学英语大概一个星期",
+      "qa_score": null
+    },
+    {
+      "idx": 46,
+      "id": "30d9afda-67a0-4f5b-9cc8-6a2185096e30",
+      "seed": 216,
+      "lego": 1,
+      "english": "I went out with a few friends on Saturday night.",
+      "other": "我星期六晚上和几个朋友出去了。",
+      "qa_score": null
+    },
+    {
+      "idx": 47,
+      "id": "4a835817-f444-4f37-bca2-324d007e00dc",
+      "seed": 121,
+      "lego": 1,
+      "english": "It's unusual that I'm definitely doing better than last time.",
+      "other": "奇怪的是我肯定做得好比上次了。",
+      "qa_score": null
+    },
+    {
+      "idx": 48,
+      "id": "1d396f49-db93-47d9-8fd2-97c1e71f500a",
+      "seed": 161,
+      "lego": 3,
+      "english": "Can you give me that book? No problem.",
+      "other": "你能给我那本书吗？没问题。",
+      "qa_score": null
+    },
+    {
+      "idx": 49,
+      "id": "cfb1ff5d-e6bf-4c87-80ba-8b31ea75be70",
+      "seed": 166,
+      "lego": 2,
+      "english": "My English is not very good, but I'm learning.",
+      "other": "我的英语不是很好，但是我在学。",
+      "qa_score": null
+    },
+    {
+      "idx": 50,
+      "id": "4d8c8070-8635-47a5-80e6-5bbb45d46065",
+      "seed": 83,
+      "lego": 2,
+      "english": "Thank you very much. What you said is important.",
+      "other": "非常感谢。你说的很重要。",
+      "qa_score": null
+    },
+    {
+      "idx": 51,
+      "id": "c3f0417c-9d5c-4bb7-b553-11233c44c033",
+      "seed": 207,
+      "lego": 2,
+      "english": "what I needed to do",
+      "other": "我需要做的",
+      "qa_score": null
+    },
+    {
+      "idx": 52,
+      "id": "472f8c55-66c0-4d1d-9837-413d111216bc",
+      "seed": 69,
+      "lego": 3,
+      "english": "I'm looking for my young dog.",
+      "other": "我在找我的小狗。",
+      "qa_score": null
+    },
+    {
+      "idx": 53,
+      "id": "e552d913-4406-4be6-a871-cdf0e6337ba6",
+      "seed": 148,
+      "lego": 2,
+      "english": "wasn't very patient",
+      "other": "不太有耐心",
+      "qa_score": null
+    },
+    {
+      "idx": 54,
+      "id": "78a92fc2-0168-46ef-b03f-846fe12f96a8",
+      "seed": 89,
+      "lego": 4,
+      "english": "I think that I've already been ready to start.",
+      "other": "我觉得我已经准备好开始了。",
+      "qa_score": null
+    },
+    {
+      "idx": 55,
+      "id": "90c4d257-613a-4255-b095-5b96c6f35bfd",
+      "seed": 147,
+      "lego": 2,
+      "english": "They were very kind, I don't know how to say thank you.",
+      "other": "他们对我很好，我不知道该怎么说谢谢。",
+      "qa_score": null
+    },
+    {
+      "idx": 56,
+      "id": "36047a0a-c2a7-4343-a1f8-0ac0f3bf04b7",
+      "seed": 256,
+      "lego": 3,
+      "english": "Do you think you'll be ready in less than an hour?",
+      "other": "你觉得你不到一个小时就准备好吗？",
+      "qa_score": null
+    },
+    {
+      "idx": 57,
+      "id": "bb4ff007-943b-41fc-973b-3219108fce7c",
+      "seed": 170,
+      "lego": 2,
+      "english": "Tell me if you have time tomorrow afternoon.",
+      "other": "告诉我你明天下午有时间吗。",
+      "qa_score": null
+    },
+    {
+      "idx": 58,
+      "id": "3df0085d-b15a-4b17-b7f9-e472e922c3f2",
+      "seed": 44,
+      "lego": 3,
+      "english": "Im trying to improve how to speak English with someone else",
+      "other": "我在试改进怎么说英语和别人",
+      "qa_score": null
+    },
+    {
+      "idx": 59,
+      "id": "cd6585ca-bc99-4edd-8064-9006ca324f70",
+      "seed": 21,
+      "lego": 2,
+      "english": "Why are you learning English",
+      "other": "为什么你在学英语",
+      "qa_score": null
+    },
+    {
+      "idx": 60,
+      "id": "a6527ff2-a1b9-476f-ae79-017bdb29bd85",
+      "seed": 117,
+      "lego": 4,
+      "english": "talked to each other",
+      "other": "聊天",
+      "qa_score": null
+    },
+    {
+      "idx": 61,
+      "id": "1108c6c0-7db6-49eb-87b0-64107a9e1463",
+      "seed": 250,
+      "lego": 3,
+      "english": "My father said he wants more time before he can answer.",
+      "other": "我爸爸说他回答以前想要更多时间。",
+      "qa_score": null
+    },
+    {
+      "idx": 62,
+      "id": "f2b0e123-29da-465d-8eaa-2b4b75e324bc",
+      "seed": 30,
+      "lego": 4,
+      "english": "It's useful to ask something yesterday as soon as you can.",
+      "other": "是有用的问一些东西昨天尽快。",
+      "qa_score": null
+    },
+    {
+      "idx": 63,
+      "id": "9122a983-855f-45b0-9d36-b008e00853b9",
+      "seed": 86,
+      "lego": 1,
+      "english": "Unfortunately, he doesn't want to wait for me.",
+      "other": "很可惜，他不想等我。",
+      "qa_score": null
+    },
+    {
+      "idx": 64,
+      "id": "a279c1e0-5df0-4266-b9d3-67dd0a881002",
+      "seed": 59,
+      "lego": 3,
+      "english": "So I can remember how to do interesting things.",
+      "other": "所以我能记住怎么做有趣的事。",
+      "qa_score": null
+    },
+    {
+      "idx": 65,
+      "id": "8e88a0fb-5a7f-477b-bc71-819ec8d5e31d",
+      "seed": 133,
+      "lego": 2,
+      "english": "I believe that someone is very good, because he's my friend.",
+      "other": "我相信一个人很好，因为他是我的朋友。",
+      "qa_score": null
+    },
+    {
+      "idx": 66,
+      "id": "f67c565e-e0ec-4e9c-ab7f-e7a8c0a058eb",
+      "seed": 83,
+      "lego": 2,
+      "english": "I agree with what you said. This is important.",
+      "other": "我同意你说的。这很重要。",
+      "qa_score": null
+    },
+    {
+      "idx": 67,
+      "id": "38d8beef-a685-44cc-a210-e55c97f8db6d",
+      "seed": 63,
+      "lego": 1,
+      "english": "Are you sure you can do interesting things at the same time.",
+      "other": "你确定你能同时做有趣的事吗。",
+      "qa_score": null
+    },
+    {
+      "idx": 68,
+      "id": "046e693d-16ce-42fe-9c7e-82c5108672b2",
+      "seed": 39,
+      "lego": 4,
+      "english": "I'm a little tired",
+      "other": "我有点累",
+      "qa_score": null
+    },
+    {
+      "idx": 69,
+      "id": "f98a2b71-fd55-4a23-8acd-ba731abcc2ad",
+      "seed": 254,
+      "lego": 3,
+      "english": "My mother has been ready since yesterday morning, she wants to start.",
+      "other": "我妈妈从昨天早上就准备好了，她想开始。",
+      "qa_score": null
+    },
+    {
+      "idx": 70,
+      "id": "87cc1930-9f55-4f92-af98-4931a390b534",
+      "seed": 54,
+      "lego": 2,
+      "english": "She wanted to give you something interesting.",
+      "other": "她想给你一些有趣的东西。",
+      "qa_score": null
+    },
+    {
+      "idx": 71,
+      "id": "57d3709d-e84b-40bc-877b-a68e9a922ee1",
+      "seed": 52,
+      "lego": 4,
+      "english": "want to write a letter",
+      "other": "想写信",
+      "qa_score": null
+    },
+    {
+      "idx": 72,
+      "id": "8952e549-976b-41b5-b1d4-323baf0a070b",
+      "seed": 62,
+      "lego": 4,
+      "english": "So I can't do interesting things at the same time.",
+      "other": "所以我不能同时做有趣的事。",
+      "qa_score": null
+    },
+    {
+      "idx": 73,
+      "id": "75ed8391-9222-4001-9509-7fb57b9150f5",
+      "seed": 260,
+      "lego": 2,
+      "english": "He doesn't have the faintest idea what that thing over there is, he wants you to help him.",
+      "other": "他一点都不知道那边那个东西是什么，他想让你帮他。",
+      "qa_score": null
+    },
+    {
+      "idx": 74,
+      "id": "112422aa-d5c1-4e71-8db6-7b6f16bae82d",
+      "seed": 79,
+      "lego": 1,
+      "english": "I'm surprised at when you started to learn.",
+      "other": "我很惊讶你什么时候开始学的。",
+      "qa_score": null
+    },
+    {
+      "idx": 75,
+      "id": "14292985-8826-4afa-ac7e-7242642ba94c",
+      "seed": 195,
+      "lego": 2,
+      "english": "Your keys are on the table, I saw them a while ago.",
+      "other": "你的钥匙在桌子上，我刚才看到了。",
+      "qa_score": null
+    },
+    {
+      "idx": 76,
+      "id": "dbb1b986-ca94-45e0-9b07-a79e30763f04",
+      "seed": 78,
+      "lego": 2,
+      "english": "I'm starting to understand what you said.",
+      "other": "我开始懂你说了什么了。",
+      "qa_score": null
+    },
+    {
+      "idx": 77,
+      "id": "a119d686-8ce8-41c5-abac-48ab058dbd8a",
+      "seed": 227,
+      "lego": 3,
+      "english": "She said that man just started to work with us.",
+      "other": "她说那个男人刚开始和我们一起工作。",
+      "qa_score": null
+    },
+    {
+      "idx": 78,
+      "id": "9a2e85a0-bd63-4b1c-9afa-b11f368bb50f",
+      "seed": 195,
+      "lego": 2,
+      "english": "I'm trying to find the thing on the table, can you help me?",
+      "other": "我在试着找桌子上的东西，你能帮我吗？",
+      "qa_score": null
+    },
+    {
+      "idx": 79,
+      "id": "2bda9bbe-c4a8-46c3-9500-51db87ea4dac",
+      "seed": 46,
+      "lego": 1,
+      "english": "starting making mistakes",
+      "other": "开始犯错",
+      "qa_score": null
+    },
+    {
+      "idx": 80,
+      "id": "50eef809-4a9f-4472-a5a6-01cf71e9636f",
+      "seed": 26,
+      "lego": 1,
+      "english": "I like learning English with you today.",
+      "other": "我喜欢今天和你学英语。",
+      "qa_score": null
+    },
+    {
+      "idx": 81,
+      "id": "8a1d0eb7-83c8-46c8-82ee-505ec093e4ae",
+      "seed": 11,
+      "lego": 5,
+      "english": "I'm not sure if I can speak after you finish.",
+      "other": "我不确定你说完以后能不能说。",
+      "qa_score": null
+    },
+    {
+      "idx": 82,
+      "id": "bd62d3f8-d7fd-4bbd-95f4-328c6367dfc2",
+      "seed": 77,
+      "lego": 1,
+      "english": "I'm surprised that you already understand.",
+      "other": "我很惊讶你已经理解了。",
+      "qa_score": null
+    },
+    {
+      "idx": 83,
+      "id": "e4ab79ea-059f-4d2d-84cf-de71f7073616",
+      "seed": 184,
+      "lego": 2,
+      "english": "I saw him a while ago, he said he had to go.",
+      "other": "我刚才看到他了，他说他必须走。",
+      "qa_score": null
+    },
+    {
+      "idx": 84,
+      "id": "ed328369-2616-4f25-8efc-3a72c2b1428e",
+      "seed": 64,
+      "lego": 1,
+      "english": "I enjoy speaking with friends when learning English.",
+      "other": "学英语的时候我很喜欢和朋友说话。",
+      "qa_score": null
+    },
+    {
+      "idx": 85,
+      "id": "9128c84e-0d92-4d6f-84ed-a5b8019bdf11",
+      "seed": 239,
+      "lego": 1,
+      "english": "My mother is very old, but she can remember a lot of things.",
+      "other": "我妈妈很老，但是她能记住很多东西。",
+      "qa_score": null
+    },
+    {
+      "idx": 86,
+      "id": "af590156-264b-41aa-9661-bb92d3b89128",
+      "seed": 23,
+      "lego": 4,
+      "english": "Because I want to be talking more.",
+      "other": "因为我想多说话。",
+      "qa_score": null
+    },
+    {
+      "idx": 87,
+      "id": "3fe65650-cf30-427c-8f38-1e5767cbdd9e",
+      "seed": 186,
+      "lego": 2,
+      "english": "I want to talk about why you left them there.",
+      "other": "我想聊为什么你把它们留在那里了。",
+      "qa_score": null
+    },
+    {
+      "idx": 88,
+      "id": "e5b4704b-ea24-49b8-ab0d-5e0ee2e37d32",
+      "seed": 137,
+      "lego": 1,
+      "english": "It's interesting that learning English is more important than I thought.",
+      "other": "有趣的是学英语比我想的更重要。",
+      "qa_score": null
+    },
+    {
+      "idx": 89,
+      "id": "adc8719c-4103-41e1-b7cf-01cff98f142a",
+      "seed": 111,
+      "lego": 2,
+      "english": "Will this change? I want to know the answer.",
+      "other": "这会改变吗？我想知道答案。",
+      "qa_score": null
+    },
+    {
+      "idx": 90,
+      "id": "72622a3a-3851-4ed2-98c0-55aab0e7ad55",
+      "seed": 256,
+      "lego": 2,
+      "english": "If you can come in less than an hour, tell me.",
+      "other": "如果你不到一个小时能来，告诉我。",
+      "qa_score": null
+    },
+    {
+      "idx": 91,
+      "id": "e821c053-03e7-4cbc-b226-01dd7dc1dda2",
+      "seed": 37,
+      "lego": 4,
+      "english": "Did you start to think about it carefully last month?",
+      "other": "你上个月开始仔细想它吗",
+      "qa_score": null
+    },
+    {
+      "idx": 92,
+      "id": "f7b92004-865b-4cf7-b556-4fabb1aa48fe",
+      "seed": 225,
+      "lego": 3,
+      "english": "He said he would help me if he could.",
+      "other": "他说他会帮我，如果他能的话。",
+      "qa_score": null
+    },
+    {
+      "idx": 93,
+      "id": "02e378f3-2148-45f3-8b48-d1de4d32ef23",
+      "seed": 108,
+      "lego": 1,
+      "english": "What didn't you hope to do? I can help you.",
+      "other": "你没希望做什么？我可以帮你。",
+      "qa_score": null
+    },
+    {
+      "idx": 94,
+      "id": "066f929b-b52c-4b44-a2c8-f3dc53fa4173",
+      "seed": 59,
+      "lego": 1,
+      "english": "So I know how to remember enough words.",
+      "other": "所以我知道怎么记住够多词。",
+      "qa_score": null
+    },
+    {
+      "idx": 95,
+      "id": "54b6095e-6c4b-4781-8bf5-470f6c4fea84",
+      "seed": 30,
+      "lego": 2,
+      "english": "It's useful to ask you.",
+      "other": "是有用的问你。",
+      "qa_score": null
+    },
+    {
+      "idx": 96,
+      "id": "bef655dd-0d7e-4de1-9985-078b8a63ffa7",
+      "seed": 98,
+      "lego": 3,
+      "english": "Playing is very useful, I think, do you agree?",
+      "other": "玩是很有用的，我觉得，你同意吗？",
+      "qa_score": null
+    },
+    {
+      "idx": 97,
+      "id": "ad8f14f2-0e9a-438e-ba46-37d9a2096d55",
+      "seed": 230,
+      "lego": 3,
+      "english": "She know a young woman who wants to help us.",
+      "other": "她认识一个年轻女人想帮我们。",
+      "qa_score": null
+    },
+    {
+      "idx": 98,
+      "id": "0b04ef50-309c-4dfa-b159-4869a7c025d6",
+      "seed": 203,
+      "lego": 3,
+      "english": "I don't know what you would do, can you tell me?",
+      "other": "我不知道你会怎么做，你能告诉我吗？",
+      "qa_score": null
+    },
+    {
+      "idx": 99,
+      "id": "265b308a-bc48-4c87-9bd6-17b138fcc1a7",
+      "seed": 23,
+      "lego": 4,
+      "english": "She wants to start talking more with everyone else soon.",
+      "other": "她想很快和别人开始多说话。",
+      "qa_score": null
+    },
+    {
+      "idx": 100,
+      "id": "22f77f92-aa39-49b8-8313-fb6e7349842b",
+      "seed": 6,
+      "lego": 3,
+      "english": "I want to remember a word.",
+      "other": "我想记住一个词。",
+      "qa_score": null
+    }
+  ]
+}

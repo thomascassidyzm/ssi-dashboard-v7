@@ -1,0 +1,80 @@
+{
+  "course_code": "eng_for_deu",
+  "seed_number": 120,
+  "known_text": "Es ist interessant, dass du gerne mit dem Bus fährst.",
+  "target_text": "It's interesting that you like to go by bus.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "es ist interessant",
+      "target": "it's interesting",
+      "components": [
+        {"known": "es ist", "target": "it's"},
+        {"known": "interessant", "target": "interesting"}
+      ],
+      "build": [
+        {"known": "Es ist.", "target": "It's."},
+        {"known": "Interessant.", "target": "Interesting."},
+        {"known": "Es ist interessant.", "target": "It's interesting."},
+        {"known": "Sehr interessant.", "target": "Very interesting."}
+      ],
+      "use": [
+        {"known": "Es ist interessant, dass du das gesagt hast.", "target": "It's interesting that you said that.", "score": 6},
+        {"known": "Ich denke, es ist interessant, was du machst.", "target": "I think it's interesting what you do.", "score": 7},
+        {"known": "Es ist interessant, aber ich verstehe nicht alles.", "target": "It's interesting but I do not understand everything.", "score": 7},
+        {"known": "Für mich ist es interessant zu sehen, wie du das machst.", "target": "For me it's interesting to see how you do that.", "score": 8},
+        {"known": "Es ist interessant, und ich möchte mehr wissen.", "target": "It's interesting and I want to know more.", "score": 6},
+        {"known": "Es ist interessant, dass wir das nicht vorher gesehen haben.", "target": "It's interesting that we did not see that before.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "dass du gerne",
+      "target": "that you like to",
+      "components": [
+        {"known": "dass", "target": "that"},
+        {"known": "du gerne", "target": "you like to"}
+      ],
+      "build": [
+        {"known": "Dass.", "target": "That."},
+        {"known": "Du gerne.", "target": "You like to."},
+        {"known": "Dass du gerne.", "target": "That you like to."},
+        {"known": "Ich weiß, dass du gerne.", "target": "I know that you like to."}
+      ],
+      "use": [
+        {"known": "Ich weiß, dass du gerne mit deinen Freunden sprichst.", "target": "I know that you like to speak with your friends.", "score": 7},
+        {"known": "Es ist gut, dass du gerne neue Dinge lernst.", "target": "It's good that you like to learn new things.", "score": 7},
+        {"known": "Ich finde es interessant, dass du gerne das machst.", "target": "I find it's interesting that you like to do that.", "score": 6},
+        {"known": "Ich hoffe, dass du gerne mehr Zeit mit mir hast.", "target": "I hope that you like to have more time with me.", "score": 6},
+        {"known": "Ich wusste nicht, dass du gerne so etwas machst.", "target": "I did not know that you like to do something like that.", "score": 8},
+        {"known": "Es gefällt mir, dass du gerne mir hilfst.", "target": "I like that you like to help me.", "score": 6}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "mit dem Bus fährst",
+      "target": "go by bus",
+      "components": [
+        {"known": "mit dem Bus", "target": "by bus"},
+        {"known": "fährst", "target": "go"}
+      ],
+      "build": [
+        {"known": "Mit dem Bus.", "target": "By bus."},
+        {"known": "Du fährst.", "target": "You go."},
+        {"known": "Du fährst mit dem Bus.", "target": "You go by bus."},
+        {"known": "Mit dem Bus fahren.", "target": "To go by bus."}
+      ],
+      "use": [
+        {"known": "Wenn du mit dem Bus fährst, kannst du viel sehen.", "target": "When you go by bus you can see a lot.", "score": 7},
+        {"known": "Ich denke, es ist besser, wenn du mit dem Bus fährst.", "target": "I think it's better when you go by bus.", "score": 7},
+        {"known": "Warum willst du mit dem Bus fahren und nicht anders?", "target": "Why do you want to go by bus and not different?", "score": 6},
+        {"known": "Wenn du mit dem Bus fährst, brauchst du mehr Zeit.", "target": "When you go by bus you need more time.", "score": 6},
+        {"known": "Ich fahre nicht gerne mit dem Bus, aber du kannst das machen.", "target": "I do not like to go by bus but you can do that.", "score": 8},
+        {"known": "Es ist gut, wenn du mit dem Bus fährst.", "target": "It's good when you go by bus.", "score": 6}
+      ]
+    }
+  ]
+}

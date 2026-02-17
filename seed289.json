@@ -1,0 +1,31 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 289,
+  "known_text": "今日の午後彼女がそこにいるかどうか気になります。",
+  "target_text": "I wonder if she's going to be there this afternoon.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "気になります",
+      "target": "I wonder",
+      "components": [
+        {"known": "気", "target": "mind"},
+        {"known": "なる", "target": "become"}
+      ],
+      "phrases": [
+        {"role": "build", "known": "気になります。", "target": "I wonder.", "score": 6},
+        {"role": "build", "known": "それが気になります。", "target": "I wonder about that.", "score": 7},
+        {"role": "build", "known": "彼が気になります。", "target": "I wonder about him.", "score": 7},
+        {"role": "use", "known": "彼が来るかどうか気になります。", "target": "I wonder if he's coming.", "score": 7},
+        {"role": "use", "known": "それが本当かどうか気になります。", "target": "I wonder if that's true.", "score": 7},
+        {"role": "use", "known": "誰が知っているか気になります。", "target": "I wonder who knows.", "score": 7},
+        {"role": "use", "known": "彼女が英語を話すかどうか気になります。", "target": "I wonder if she speaks English.", "score": 8},
+        {"role": "use", "known": "明日雨が降るかどうか気になります。", "target": "I wonder if it will rain tomorrow.", "score": 8},
+        {"role": "use", "known": "彼らが手伝いたいかどうか気になります。", "target": "I wonder if they want to help.", "score": 7},
+        {"role": "use", "known": "どこに行ったか気になります。", "target": "I wonder where he went.", "score": 7},
+        {"role": "use", "known": "なぜそれを言ったか気になります。", "target": "I wonder why she said that.", "score": 7}
+      ]
+    }
+  ]
+}

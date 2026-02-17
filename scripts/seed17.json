@@ -1,0 +1,139 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 17,
+  "target_text": "She wants to find out what the answer is.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "她",
+      "target": "She",
+      "build": [
+        {"known": "她", "target": "She"},
+        {"known": "她能", "target": "She can"},
+        {"known": "她能说英语", "target": "She can speak English today"},
+        {"known": "她能和你说英语", "target": "She can speak English with you"}
+      ],
+      "use": [
+        {"known": "她能说英语。", "target": "She can speak English today.", "score": 8},
+        {"known": "她能学英语学得很好。", "target": "She can learn English very well.", "score": 8},
+        {"known": "她能整天说英语。", "target": "She can speak English all day.", "score": 8},
+        {"known": "她能尽量多和你说英语。", "target": "She can speak English with you as often as possible.", "score": 9},
+        {"known": "她能和别人说英语说得很好。", "target": "She can speak English with someone else very well.", "score": 9},
+        {"known": "她能和别人练习说英语。", "target": "She can practise speaking English with someone else.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "想",
+      "target": "wants to",
+      "components": [
+        {"known": "想", "target": "wants"},
+        {"known": "要", "target": "to"}
+      ],
+      "build": [
+        {"known": "想", "target": "wants to"},
+        {"known": "她想", "target": "She wants to"},
+        {"known": "她想说英语", "target": "She wants to speak English"},
+        {"known": "她想和你说英语", "target": "She wants to speak English with you"}
+      ],
+      "use": [
+        {"known": "她想说英语。", "target": "She wants to speak English.", "score": 8},
+        {"known": "她想学英语。", "target": "She wants to learn English.", "score": 8},
+        {"known": "她想和你说英语。", "target": "She wants to speak English with you.", "score": 8},
+        {"known": "她想尽量多说英语。", "target": "She wants to speak English as often as possible.", "score": 9},
+        {"known": "她想和别人练习说英语。", "target": "She wants to practise speaking English with someone else.", "score": 9},
+        {"known": "她想记住怎么用英语说一些东西。", "target": "She wants to remember how to say something in English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "找出",
+      "target": "to find out",
+      "components": [
+        {"known": "找", "target": "to find"},
+        {"known": "出", "target": "out"}
+      ],
+      "build": [
+        {"known": "找出", "target": "to find out"},
+        {"known": "出", "target": "out"},
+        {"known": "她想找出", "target": "She wants to find out"},
+        {"known": "她想找出一些东西", "target": "She wants to find out something"}
+      ],
+      "use": [
+        {"known": "她想找出一些东西。", "target": "She wants to find out something.", "score": 8},
+        {"known": "他想找出一些东西。", "target": "He wants to find out something.", "score": 8},
+        {"known": "我想找出怎么说。", "target": "I want to find out how to say.", "score": 8},
+        {"known": "我不确定能不能找出一些东西今天。", "target": "I'm not sure if I can find out something today.", "score": 9},
+        {"known": "她想尽量努力找出怎么说英语。", "target": "She wants to find out how to speak English as hard as she can.", "score": 9},
+        {"known": "他想找出怎么和别人说英语。", "target": "He wants to find out how to speak English with someone else.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "答案",
+      "target": "the answer",
+      "components": [
+        {"known": "答", "target": "the"},
+        {"known": "案", "target": "answer"}
+      ],
+      "build": [
+        {"known": "答案", "target": "the answer"},
+        {"known": "案", "target": "answer"},
+        {"known": "找出答案", "target": "to find out the answer"},
+        {"known": "她想找出答案", "target": "She wants to find out the answer"}
+      ],
+      "use": [
+        {"known": "她想找出答案。", "target": "She wants to find out the answer.", "score": 8},
+        {"known": "他想找出答案。", "target": "He wants to find out the answer.", "score": 8},
+        {"known": "我想找出答案。", "target": "I want to find out the answer.", "score": 8},
+        {"known": "我不确定能不能今天找出答案。", "target": "I'm not sure if I can find out the answer today.", "score": 9},
+        {"known": "她想尽量努力找出答案。", "target": "She wants to find out the answer as hard as she can.", "score": 9},
+        {"known": "他想和别人一起找出答案。", "target": "He wants to find out the answer with someone else.", "score": 9}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "是",
+      "target": "is",
+      "build": [
+        {"known": "是", "target": "is"},
+        {"known": "答案是", "target": "the answer is"},
+        {"known": "答案是一些东西", "target": "the answer is something"},
+        {"known": "她想找出答案是", "target": "She wants to find out the answer is"}
+      ],
+      "use": [
+        {"known": "答案是一些东西。", "target": "The answer is something today.", "score": 8},
+        {"known": "我不确定答案是一些东西。", "target": "I'm not sure the answer is something.", "score": 8},
+        {"known": "答案今天是一些东西。", "target": "The answer today is something.", "score": 8},
+        {"known": "我不确定答案今天是一些东西。", "target": "I'm not sure if the answer is something today.", "score": 9},
+        {"known": "她想尽量努力找出答案是一些东西。", "target": "She wants to find out what the answer is as hard as she can.", "score": 9},
+        {"known": "他想和别人找出答案是一些东西。", "target": "He wants to find out the answer is something with someone else.", "score": 9}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "什么",
+      "target": "what",
+      "build": [
+        {"known": "什么", "target": "what"},
+        {"known": "是什么", "target": "what is"},
+        {"known": "找出答案是什么", "target": "find out what the answer is"},
+        {"known": "她想找出答案是什么", "target": "She wants to find out what the answer is"}
+      ],
+      "use": [
+        {"known": "答案是什么今天？", "target": "What is the answer today?", "score": 8},
+        {"known": "她想找出答案是什么今天。", "target": "She wants to find out what the answer is today.", "score": 9},
+        {"known": "他想找出答案是什么。", "target": "He wants to find out what the answer is.", "score": 9},
+        {"known": "我不确定今天答案是什么。", "target": "I'm not sure what the answer is today.", "score": 9},
+        {"known": "她想尽量努力找出答案是什么。", "target": "She wants to find out what the answer is as hard as she can.", "score": 9},
+        {"known": "他想和别人一起找出答案是什么。", "target": "He wants to find out what the answer is with someone else.", "score": 9}
+      ]
+    }
+  ]
+}

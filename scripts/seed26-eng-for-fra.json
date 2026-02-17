@@ -1,0 +1,125 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 26,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "J'aime",
+      "target": "I like",
+      "components": [
+        {"known": "J'", "target": "I"},
+        {"known": "aime", "target": "like"}
+      ],
+      "build": [
+        {"known": "J'aime", "target": "I like"},
+        {"known": "J'aime parler", "target": "I like to speak"},
+        {"known": "J'aime apprendre", "target": "I like to learn"},
+        {"known": "J'aime rencontrer", "target": "I like to meet"}
+      ],
+      "use": [
+        {"known": "J'aime parler anglais avec toi maintenant.", "target": "I like to speak English with you now.", "score": 8},
+        {"known": "J'aime apprendre comment parler anglais très bien.", "target": "I like to learn how to speak English very well.", "score": 9},
+        {"known": "J'aime rencontrer des gens qui parlent anglais.", "target": "I like to meet people who speak English.", "score": 9},
+        {"known": "Parce que j'aime parler anglais le plus souvent possible.", "target": "Because I like to speak English as often as possible.", "score": 9},
+        {"known": "J'aime partir et parler anglais avec tout le monde.", "target": "I like to go and speak English with everyone else.", "score": 9},
+        {"known": "Pourquoi tu aimes parler anglais avec moi?", "target": "Why do you like to speak English with me?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "me sentir",
+      "target": "feeling",
+      "build": [
+        {"known": "me sentir", "target": "feeling"},
+        {"known": "J'aime me sentir", "target": "I like feeling"},
+        {"known": "me sentir bien", "target": "feeling well"},
+        {"known": "j'aime me sentir bien", "target": "I like feeling well"}
+      ],
+      "use": [
+        {"known": "J'aime me sentir bien et parler anglais maintenant.", "target": "I like feeling well and speaking English now.", "score": 8},
+        {"known": "Parce que j'aime me sentir bien et apprendre anglais.", "target": "Because I like feeling well and learning English.", "score": 8},
+        {"known": "J'aime me sentir bien et parler anglais avec toi.", "target": "I like feeling well and speaking English with you.", "score": 8},
+        {"known": "J'aime me sentir bien et parler anglais avec des gens.", "target": "I like feeling well and speaking English with people.", "score": 9},
+        {"known": "J'aime me sentir bien et parler anglais le plus souvent possible.", "target": "I like feeling well and speaking English as often as possible.", "score": 9},
+        {"known": "J'aime me sentir bien et partir parler anglais.", "target": "I like feeling well and going to speak English.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "prêt à",
+      "target": "ready to",
+      "components": [
+        {"known": "prêt", "target": "ready"},
+        {"known": "à", "target": "to"}
+      ],
+      "build": [
+        {"known": "prêt à", "target": "ready to"},
+        {"known": "prêt à partir", "target": "ready to go"},
+        {"known": "me sentir prêt à", "target": "feeling ready to"},
+        {"known": "J'aime me sentir prêt à", "target": "I like feeling ready to"}
+      ],
+      "use": [
+        {"known": "J'aime me sentir prêt à parler anglais maintenant.", "target": "I like feeling ready to speak English now.", "score": 9},
+        {"known": "Tu es prêt à parler anglais avec moi maintenant?", "target": "Are you ready to speak English with me now?", "score": 9},
+        {"known": "Parce que je suis prêt à rencontrer des gens qui parlent anglais.", "target": "Because I'm ready to meet people who speak English.", "score": 9},
+        {"known": "J'aime me sentir prêt à commencer à parler anglais.", "target": "I like feeling ready to start talking English.", "score": 9},
+        {"known": "Vas-tu être prêt à partir avant que je doive revenir?", "target": "Are you going to be ready to go before I have to come back?", "score": 9},
+        {"known": "J'aimerais être prêt à parler anglais très bien bientôt.", "target": "I'd like to be ready to speak English very well soon.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "comme si j'étais",
+      "target": "as if I'm",
+      "components": [
+        {"known": "comme", "target": "as"},
+        {"known": "si", "target": "if"},
+        {"known": "j'étais", "target": "I'm"}
+      ],
+      "build": [
+        {"known": "comme si j'étais", "target": "as if I'm"},
+        {"known": "me sentir comme si j'étais", "target": "feeling as if I'm"},
+        {"known": "comme si j'étais prêt à", "target": "as if I'm ready to"},
+        {"known": "parler comme si j'étais", "target": "to speak as if I'm"}
+      ],
+      "use": [
+        {"known": "J'aime me sentir comme si j'étais prêt à partir.", "target": "I like feeling as if I'm ready to go.", "score": 9},
+        {"known": "J'aime parler anglais comme si j'étais prêt à commencer.", "target": "I like to speak English as if I'm ready to start.", "score": 9},
+        {"known": "Parce que j'aime me sentir comme si j'étais bien.", "target": "Because I like feeling as if I'm well.", "score": 8},
+        {"known": "J'aime apprendre anglais comme si j'étais prêt.", "target": "I like to learn English as if I'm ready.", "score": 8},
+        {"known": "J'aime me sentir comme si j'étais prêt à parler anglais.", "target": "I like feeling as if I'm ready to speak English.", "score": 9},
+        {"known": "J'aime parler comme si j'étais prêt à rencontrer des gens.", "target": "I like to speak as if I'm ready to meet people.", "score": 9}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "presque",
+      "target": "nearly",
+      "build": [
+        {"known": "presque", "target": "nearly"},
+        {"known": "comme si j'étais presque", "target": "as if I'm nearly"},
+        {"known": "presque prêt à", "target": "nearly ready to"},
+        {"known": "J'aime me sentir presque prêt", "target": "I like feeling nearly ready"}
+      ],
+      "use": [
+        {"known": "J'aime me sentir comme si j'étais presque prêt à partir.", "target": "I like feeling as if I'm nearly ready to go.", "score": 9},
+        {"known": "J'aime parler anglais comme si j'étais presque prêt.", "target": "I like to speak English as if I'm nearly ready.", "score": 9},
+        {"known": "Parce que j'aime me sentir presque prêt à parler anglais.", "target": "Because I like feeling nearly ready to speak English.", "score": 9},
+        {"known": "J'aime me sentir comme si j'étais presque prêt à commencer.", "target": "I like feeling as if I'm nearly ready to start.", "score": 9},
+        {"known": "Tu es presque prêt à partir et parler anglais.", "target": "You are nearly ready to go and speak English.", "score": 9},
+        {"known": "J'aime me sentir presque prêt à rencontrer des gens.", "target": "I like feeling nearly ready to meet people.", "score": 9}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "partir",
+      "target": "to go"
+    }
+  ]
+}

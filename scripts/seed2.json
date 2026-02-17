@@ -1,0 +1,51 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 2,
+  "target_text": "I'm trying to learn.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "我在试",
+      "target": "I'm trying to",
+      "components": [
+        {"known": "我在", "target": "I'm"},
+        {"known": "试", "target": "trying to"}
+      ],
+      "build": [
+        {"known": "我在试", "target": "I'm trying to"},
+        {"known": "试", "target": "trying to"},
+        {"known": "我在", "target": "I'm"},
+        {"known": "我在试说", "target": "I'm trying to speak"}
+      ],
+      "use": [
+        {"known": "我在试。", "target": "I'm trying to.", "score": 6},
+        {"known": "我在试说。", "target": "I'm trying to speak.", "score": 7},
+        {"known": "我在试说英语。", "target": "I'm trying to speak English.", "score": 8},
+        {"known": "我在试和你说英语。", "target": "I'm trying to speak English with you.", "score": 8},
+        {"known": "我现在在试说英语。", "target": "I'm trying to speak English now.", "score": 8},
+        {"known": "我在试和你说。", "target": "I'm trying to speak with you.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "学",
+      "target": "learn",
+      "build": [
+        {"known": "学", "target": "learn"},
+        {"known": "学英语", "target": "learn English"},
+        {"known": "我在试学", "target": "I'm trying to learn"},
+        {"known": "想学", "target": "want to learn"}
+      ],
+      "use": [
+        {"known": "我在试学。", "target": "I'm trying to learn.", "score": 7},
+        {"known": "我在试学英语。", "target": "I'm trying to learn English.", "score": 8},
+        {"known": "我想学英语。", "target": "I want to learn English.", "score": 8},
+        {"known": "我想学说英语。", "target": "I want to learn to speak English.", "score": 9},
+        {"known": "我现在在试学英语。", "target": "I'm trying to learn English now.", "score": 8},
+        {"known": "我想和你学英语。", "target": "I want to learn English with you.", "score": 8}
+      ]
+    }
+  ]
+}

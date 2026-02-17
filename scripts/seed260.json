@@ -1,0 +1,71 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 260,
+  "target_text": "ليس لدي أدنى فكرة.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't have",
+      "target": "ليس لدي",
+      "components": [
+        {"known": "not", "target": "ليس"},
+        {"known": "I have", "target": "لدي"}
+      ],
+      "build": [
+        {"known": "I don't have", "target": "ليس لدي"},
+        {"known": "I don't have an idea", "target": "ليس لدي فكرة"},
+        {"known": "I don't have time", "target": "ليس لدي وقت"},
+        {"known": "I don't have the", "target": "ليس لدي"}
+      ],
+      "use": [
+        {"known": "I don't have time to speak Arabic with you this week.", "target": "ليس لدي وقت أن أتكلم العربية معك هذا الأسبوع.", "score": 8},
+        {"known": "I don't have a good idea about what to do today.", "target": "ليس لدي فكرة جيدة عن ما يجب أن أفعل اليوم.", "score": 8},
+        {"known": "I don't have time to learn more Arabic this week.", "target": "ليس لدي وقت أن أتعلم العربية أكثر هذا الأسبوع.", "score": 9},
+        {"known": "I don't have anything that I want to say about that.", "target": "ليس لدي شيئاً أريد أن أقول عن ذلك.", "score": 8},
+        {"known": "I don't have time to help you with that today.", "target": "ليس لدي وقت أن أساعدك في ذلك اليوم.", "score": 8},
+        {"known": "I don't have a good idea about that blue thing.", "target": "ليس لدي فكرة جيدة عن ذلك الشيء الأزرق.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "the faintest",
+      "target": "أدنى",
+      "build": [
+        {"known": "the faintest", "target": "أدنى"},
+        {"known": "the faintest idea", "target": "أدنى فكرة"},
+        {"known": "I don't have the faintest", "target": "ليس لدي أدنى"},
+        {"known": "the faintest idea.", "target": "أدنى فكرة."}
+      ],
+      "use": [
+        {"known": "I don't have the faintest idea about what you want today.", "target": "ليس لدي أدنى فكرة عن ما تريد اليوم.", "score": 8},
+        {"known": "I don't have the faintest idea about that thing at all.", "target": "ليس لدي أدنى فكرة عن ذلك الشيء على الإطلاق.", "score": 8},
+        {"known": "I don't have the faintest idea about what she said today.", "target": "ليس لدي أدنى فكرة عن ما قالت اليوم.", "score": 9},
+        {"known": "I don't have the faintest idea about what you wanted.", "target": "ليس لدي أدنى فكرة عن ما أردت.", "score": 9},
+        {"known": "I don't have the faintest idea about what to do today.", "target": "ليس لدي أدنى فكرة عن ما يجب أن أفعل اليوم.", "score": 8},
+        {"known": "I don't have the faintest idea about that blue thing.", "target": "ليس لدي أدنى فكرة عن ذلك الشيء الأزرق.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "idea.",
+      "target": "فكرة.",
+      "build": [
+        {"known": "idea.", "target": "فكرة."},
+        {"known": "faintest idea.", "target": "أدنى فكرة."},
+        {"known": "the faintest idea.", "target": "أدنى فكرة."},
+        {"known": "I don't have the faintest idea.", "target": "ليس لدي أدنى فكرة."}
+      ],
+      "use": [
+        {"known": "I don't have the faintest idea about what you wanted to do.", "target": "ليس لدي أدنى فكرة عن ما أردت أن تفعل.", "score": 8},
+        {"known": "I don't have the faintest idea about what she wanted today.", "target": "ليس لدي أدنى فكرة عن ما أرادت اليوم.", "score": 9},
+        {"known": "I don't have the faintest idea about what to do now.", "target": "ليس لدي أدنى فكرة عن ما يجب أن أفعل الآن.", "score": 8},
+        {"known": "I don't have the faintest idea about what you think today.", "target": "ليس لدي أدنى فكرة عن ما تعتقد اليوم.", "score": 9},
+        {"known": "She wanted to know but I didn't have the faintest idea.", "target": "أرادت أن تعرف لكنني ليس لدي أدنى فكرة.", "score": 8},
+        {"known": "I don't have the faintest idea about what she thought.", "target": "ليس لدي أدنى فكرة عن ما اعتقدت.", "score": 9}
+      ]
+    }
+  ]
+}

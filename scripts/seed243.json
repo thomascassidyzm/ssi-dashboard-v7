@@ -1,0 +1,137 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 243,
+  "known_text": "I'm going to ask for the same thing to eat.",
+  "target_text": "我会要同样的东西吃。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I will.", "target": "我会。"},
+        {"known": "I'm going to.", "target": "我会。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "I'm going to ask for the same thing as you tomorrow.", "target": "我明天会要同样的东西。", "score": 8},
+        {"known": "That young man asked me if I know your brother.", "target": "那个年轻的男人问我是不是认识你哥哥。", "score": 7},
+        {"known": "If the old woman can tell me, I would be very happy.", "target": "如果那个老女人能告诉我的话，我会很开心。", "score": 8},
+        {"known": "Everyone told me they want to meet your sister too.", "target": "大家都告诉我他们也想见你姐姐。", "score": 7},
+        {"known": "Would that young man be able to help me with this?", "target": "那个年轻的男人能帮我做这个吗？", "score": 8},
+        {"known": "She hopes I can remember what the old man said.", "target": "她希望我能记住那个老人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "will/going to",
+      "target": "会",
+      "build": [
+        {"known": "Will.", "target": "会。"},
+        {"known": "Going to.", "target": "会。"},
+        {"known": "I will.", "target": "我会。"},
+        {"known": "Will ask for.", "target": "会要。"}
+      ],
+      "use": [
+        {"known": "I'm going to ask for the same thing tonight.", "target": "我今天晚上会要同样的东西。", "score": 8},
+        {"known": "That young man said he will come to the meeting.", "target": "那个年轻的男人说他会来开会。", "score": 7},
+        {"known": "If you work hard, you will be able to finish on time.", "target": "如果你努力工作，你会按时完成。", "score": 8},
+        {"known": "I think she will want to see your brother tomorrow.", "target": "我觉得她明天会想见你哥哥。", "score": 7},
+        {"known": "Everyone thinks we will have a good time tonight.", "target": "大家都觉得我们今天晚上会过得开心。", "score": 8},
+        {"known": "Will the old woman be able to help us with this work?", "target": "那个老女人会帮我们做这个工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "want/ask for",
+      "target": "要",
+      "build": [
+        {"known": "Want.", "target": "要。"},
+        {"known": "Ask for.", "target": "要。"},
+        {"known": "Will ask for.", "target": "会要。"},
+        {"known": "I'm going to ask for.", "target": "我会要。"}
+      ],
+      "use": [
+        {"known": "I'm going to ask for the same as my father.", "target": "我会要和我爸爸同样的东西。", "score": 8},
+        {"known": "That young woman wants to ask for more time.", "target": "那个年轻的女人要更多时间。", "score": 7},
+        {"known": "If you want to ask for help, please do it now.", "target": "如果你要帮忙的话，请现在做。", "score": 8},
+        {"known": "She told me she wants something to read.", "target": "她告诉我她要看的书。", "score": 7},
+        {"known": "Everyone here wants to ask for the same thing.", "target": "这里的大家都要同样的东西。", "score": 8},
+        {"known": "What do you want to ask for from your mother?", "target": "你要你妈妈给你什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "eat",
+      "target": "吃",
+      "build": [
+        {"known": "Eat.", "target": "吃。"},
+        {"known": "Want to eat.", "target": "想吃。"},
+        {"known": "Will eat.", "target": "会吃。"},
+        {"known": "Ask for to eat.", "target": "要吃。"}
+      ],
+      "use": [
+        {"known": "I'm going to ask for something good to eat tonight.", "target": "我今天晚上会要好的东西吃。", "score": 8},
+        {"known": "That young woman wants something good to eat.", "target": "那个年轻的女人想吃好的东西。", "score": 7},
+        {"known": "If you want something to eat, please tell us now.", "target": "如果你想吃东西的话，请现在告诉我们。", "score": 8},
+        {"known": "She told me she wants to eat with your family.", "target": "她告诉我她想和你的家人吃。", "score": 7},
+        {"known": "Everyone here likes to eat together after work.", "target": "这里的大家都喜欢工作以后一起吃。", "score": 8},
+        {"known": "What does your father like to eat in the morning?", "target": "你爸爸早上喜欢吃什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "same kind (of)",
+      "target": "同样的",
+      "components": [
+        {"known": "same", "target": "同"},
+        {"known": "appearance", "target": "样"},
+        {"known": "possessive", "target": "的"}
+      ],
+      "build": [
+        {"known": "Same kind.", "target": "同样的。"},
+        {"known": "Same kind of thing.", "target": "同样的东西。"},
+        {"known": "Ask for the same kind.", "target": "要同样的。"},
+        {"known": "The same as.", "target": "同样的。"}
+      ],
+      "use": [
+        {"known": "I'm going to ask for the same kind of thing to eat.", "target": "我会要同样的东西吃。", "score": 8},
+        {"known": "That young man ordered the same kind as his father.", "target": "那个年轻的男人要了和他爸爸同样的。", "score": 7},
+        {"known": "If you want the same kind as her, please let me know.", "target": "如果你想和她同样的话，请让我知道。", "score": 8},
+        {"known": "She told me she wants the same kind as yesterday.", "target": "她告诉我她想和昨天同样的东西。", "score": 7},
+        {"known": "Everyone here wants to have the same kind of answer.", "target": "这里的大家都想有同样的答案。", "score": 8},
+        {"known": "Do you want the same kind of thing as your mother?", "target": "你想和你妈妈同样的东西吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "thing",
+      "target": "东西",
+      "components": [
+        {"known": "east", "target": "东"},
+        {"known": "west", "target": "西"}
+      ],
+      "build": [
+        {"known": "Thing.", "target": "东西。"},
+        {"known": "Same kind of thing.", "target": "同样的东西。"},
+        {"known": "Ask for the same thing.", "target": "要同样的东西。"},
+        {"known": "Thing to eat.", "target": "东西吃。"}
+      ],
+      "use": [
+        {"known": "I'm going to ask for the same kind of thing to eat.", "target": "我会要同样的东西吃。", "score": 8},
+        {"known": "That young man brought some things for your mother.", "target": "那个年轻的男人带了一些东西给你妈妈。", "score": 7},
+        {"known": "If you need to buy something, please let me know.", "target": "如果你需要买东西的话，请让我知道。", "score": 8},
+        {"known": "She told me there are many things to learn here.", "target": "她告诉我这里有很多东西要学。", "score": 7},
+        {"known": "Everyone here likes to share things with each other.", "target": "这里的大家都喜欢一起用东西。", "score": 8},
+        {"known": "What kind of things does your father like to read?", "target": "你爸爸喜欢看什么样的东西？", "score": 8}
+      ]
+    }
+  ]
+}

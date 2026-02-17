@@ -1,0 +1,122 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 122,
+  "target_text": "It's starting to feel easier and I'm excited about how it's going.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "より簡単",
+      "target": "easier",
+      "build": [
+        {"known": "より簡単", "target": "easier"},
+        {"known": "より簡単に感じる", "target": "feel easier"},
+        {"known": "より簡単なこと", "target": "something easier"},
+        {"known": "より簡単だ", "target": "it's easier"}
+      ],
+      "use": [
+        {"known": "より簡単に感じ始めています。", "target": "I'm starting to feel like it's easier now.", "score": 8},
+        {"known": "これはより簡単だと思います。", "target": "I think this is easier to do now.", "score": 8},
+        {"known": "より簡単なことをしたいと思います。", "target": "I think I want to do something easier.", "score": 8},
+        {"known": "より簡単に感じますが、まだ難しいこともあります。", "target": "I feel like it's easier, but it is difficult too.", "score": 8},
+        {"known": "より簡単だと思いますが、確実ではありません。", "target": "I think it's easier, but I'm not definitely good.", "score": 7},
+        {"known": "より簡単に感じるようになりたいです。", "target": "I want to feel like it's easier now.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "ワクワクしています",
+      "target": "I'm excited about",
+      "components": [
+        {"known": "私は", "target": "I'm"},
+        {"known": "ワクワクしている", "target": "excited"},
+        {"known": "〜について", "target": "about"}
+      ],
+      "build": [
+        {"known": "ワクワクしています", "target": "I'm excited about"},
+        {"known": "とてもワクワクしています", "target": "I'm very excited about"},
+        {"known": "ワクワクしていない", "target": "I'm not excited about"},
+        {"known": "ワクワクしている", "target": "excited about"}
+      ],
+      "use": [
+        {"known": "進んでいるかにワクワクしています。", "target": "I'm excited about how it's going now.", "score": 8},
+        {"known": "新しいことにワクワクしています。", "target": "I'm excited about something new today.", "score": 8},
+        {"known": "学んでいることにワクワクしています。", "target": "I'm excited about what I'm learning.", "score": 8},
+        {"known": "確実にワクワクしていると思います。", "target": "I think I'm definitely excited about it.", "score": 8},
+        {"known": "何が起きるかにワクワクしています。", "target": "I'm excited about what will happen.", "score": 8},
+        {"known": "ワクワクしていますが、難しいこともあります。", "target": "I'm excited about it, but it is difficult too.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "と",
+      "target": "and",
+      "build": [
+        {"known": "と", "target": "and"},
+        {"known": "とワクワクしている", "target": "and I'm excited"},
+        {"known": "と簡単", "target": "and easier"},
+        {"known": "と良い", "target": "and good"}
+      ],
+      "use": [
+        {"known": "簡単に感じて、とワクワクしています。", "target": "It's easier and I'm excited about it.", "score": 8},
+        {"known": "良いと思いますし、と面白いです。", "target": "I think it's good and it's interesting.", "score": 8},
+        {"known": "確実に良いですし、と楽しいです。", "target": "It's definitely good and it's fun.", "score": 8},
+        {"known": "うまくいっていますし、とワクワクしています。", "target": "It's going well and I'm excited about it.", "score": 8},
+        {"known": "簡単ですし、と大切だと思います。", "target": "It's easier and I think it's important.", "score": 8},
+        {"known": "難しいですが、とワクワクしています。", "target": "It's difficult and I'm excited about it.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "感じ始めています",
+      "target": "It's starting to feel",
+      "components": [
+        {"known": "それは", "target": "It's"},
+        {"known": "始めている", "target": "starting"},
+        {"known": "感じる", "target": "to feel"}
+      ],
+      "build": [
+        {"known": "感じ始めています", "target": "It's starting to feel"},
+        {"known": "簡単に感じ始めています", "target": "It's starting to feel easier"},
+        {"known": "良く感じ始めています", "target": "It's starting to feel good"},
+        {"known": "感じ始めている", "target": "starting to feel"}
+      ],
+      "use": [
+        {"known": "簡単に感じ始めています。", "target": "It's starting to feel easier now.", "score": 8},
+        {"known": "良くなっていると感じ始めています。", "target": "It's starting to feel like I'm doing more good.", "score": 8},
+        {"known": "確実にうまくいっていると感じ始めています。", "target": "It's starting to feel like I'm definitely doing well.", "score": 8},
+        {"known": "何かが違うと感じ始めています。", "target": "It's starting to feel like something is different.", "score": 8},
+        {"known": "感じ始めていますが、まだ確実ではありません。", "target": "It's starting to feel like it, but I'm not definitely good.", "score": 7},
+        {"known": "うまくいっていると感じ始めていてワクワクしています。", "target": "It's starting to feel good and I'm excited about it.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "どう進んでいるか",
+      "target": "how it's going",
+      "components": [
+        {"known": "どう", "target": "how"},
+        {"known": "それが", "target": "it's"},
+        {"known": "進んでいる", "target": "going"}
+      ],
+      "build": [
+        {"known": "どう進んでいるか", "target": "how it's going"},
+        {"known": "どうやっているか", "target": "how it's going now"},
+        {"known": "どう感じているか", "target": "how it's feeling"},
+        {"known": "どうなっているか", "target": "how it's doing"}
+      ],
+      "use": [
+        {"known": "どう進んでいるかにワクワクしています。", "target": "I'm excited about how it's going now.", "score": 8},
+        {"known": "どう進んでいるかを見たいです。", "target": "I want to see how it's going.", "score": 8},
+        {"known": "どう進んでいるかが大切だと思います。", "target": "I think how it's going is important.", "score": 8},
+        {"known": "どう進んでいるかについて話したいです。", "target": "I want to talk about how it's going.", "score": 8},
+        {"known": "簡単に感じ始めていて、どう進んでいるかにワクワクしています。", "target": "It's starting to feel easier and I'm excited about how it's going.", "score": 9},
+        {"known": "どう進んでいるかを確実に知りたいです。", "target": "I definitely want to know how it's going.", "score": 8}
+      ]
+    }
+  ]
+}

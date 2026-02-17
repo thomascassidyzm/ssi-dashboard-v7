@@ -1,0 +1,100 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 11,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "J'aimerais",
+      "target": "I'd like",
+      "components": [
+        {"known": "Je", "target": "I'd"},
+        {"known": "aimerais", "target": "like"}
+      ],
+      "build": [
+        {"known": "J'aimerais", "target": "I'd like"},
+        {"known": "J'aimerais parler", "target": "I'd like to speak"},
+        {"known": "J'aimerais essayer", "target": "I'd like to try"},
+        {"known": "J'aimerais apprendre", "target": "I'd like to learn"}
+      ],
+      "use": [
+        {"known": "J'aimerais parler anglais avec toi maintenant.", "target": "I'd like to speak English with you now.", "score": 8},
+        {"known": "J'aimerais essayer de parler un peu anglais aujourd'hui.", "target": "I'd like to try to speak a little English today.", "score": 9},
+        {"known": "J'aimerais apprendre comment dire quelque chose en anglais.", "target": "I'd like to learn how to say something in English.", "score": 9},
+        {"known": "J'aimerais me souvenir de toute la phrase maintenant.", "target": "I'd like to remember the whole sentence now.", "score": 8},
+        {"known": "J'aimerais expliquer ce que je veux dire en anglais.", "target": "I'd like to explain what I mean in English.", "score": 9},
+        {"known": "J'aimerais parler anglais le plus souvent possible.", "target": "I'd like to speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "pouvoir",
+      "target": "to be able to",
+      "build": [
+        {"known": "pouvoir", "target": "to be able to"},
+        {"known": "pouvoir parler", "target": "to be able to speak"},
+        {"known": "J'aimerais pouvoir", "target": "I'd like to be able to"},
+        {"known": "pouvoir me souvenir", "target": "to be able to remember"}
+      ],
+      "use": [
+        {"known": "J'aimerais pouvoir parler anglais avec toi.", "target": "I'd like to be able to speak English with you.", "score": 9},
+        {"known": "Je veux pouvoir me souvenir de toute la phrase.", "target": "I want to be able to remember the whole sentence.", "score": 9},
+        {"known": "J'essaie de pouvoir parler un peu anglais maintenant.", "target": "I'm trying to be able to speak a little English now.", "score": 8},
+        {"known": "J'aimerais pouvoir expliquer ce que je veux dire.", "target": "I'd like to be able to explain what I mean.", "score": 9},
+        {"known": "Je vais essayer de pouvoir parler anglais aujourd'hui.", "target": "I'm going to try to be able to speak English today.", "score": 8},
+        {"known": "J'aimerais pouvoir dire toute la phrase en anglais.", "target": "I'd like to be able to say the whole sentence in English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "parler",
+      "target": "to speak"
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "après que",
+      "target": "after",
+      "build": [
+        {"known": "après que", "target": "after"},
+        {"known": "parler après que", "target": "to speak after"},
+        {"known": "J'aimerais parler après que", "target": "I'd like to speak after"},
+        {"known": "après que je parle", "target": "after I speak"}
+      ],
+      "use": [
+        {"known": "J'aimerais parler anglais après que j'apprends un peu.", "target": "I'd like to speak English after I learn a little.", "score": 8},
+        {"known": "Je veux essayer de parler après que je me souviens.", "target": "I want to try to speak after I remember.", "score": 8},
+        {"known": "J'aimerais pouvoir parler anglais après que j'essaie.", "target": "I'd like to be able to speak English after I try.", "score": 8},
+        {"known": "Je vais parler anglais après que je me souviens de toute la phrase.", "target": "I'm going to speak English after I remember the whole sentence.", "score": 9},
+        {"known": "J'aimerais expliquer ce que je veux dire après que je parle.", "target": "I'd like to explain what I mean after I speak.", "score": 8},
+        {"known": "Je peux parler un peu anglais après que j'apprends.", "target": "I can speak a little English after I learn.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "tu termines",
+      "target": "you finish",
+      "components": [
+        {"known": "tu", "target": "you"},
+        {"known": "termines", "target": "finish"}
+      ],
+      "build": [
+        {"known": "tu termines", "target": "you finish"},
+        {"known": "après que tu termines", "target": "after you finish"},
+        {"known": "si tu termines", "target": "if you finish"},
+        {"known": "Je parle après que tu termines", "target": "I speak after you finish"}
+      ],
+      "use": [
+        {"known": "J'aimerais pouvoir parler après que tu termines.", "target": "I'd like to be able to speak after you finish.", "score": 9},
+        {"known": "Je vais parler anglais avec toi après que tu termines.", "target": "I'm going to speak English with you after you finish.", "score": 9},
+        {"known": "Je ne suis pas sûr si je peux parler après que tu termines.", "target": "I'm not sure if I can speak after you finish.", "score": 8},
+        {"known": "J'aimerais essayer de parler anglais après que tu termines.", "target": "I'd like to try to speak English after you finish.", "score": 9},
+        {"known": "Je veux pouvoir me souvenir de toute la phrase après que tu termines.", "target": "I want to be able to remember the whole sentence after you finish.", "score": 9},
+        {"known": "Je peux expliquer ce que je veux dire après que tu termines.", "target": "I can explain what I mean after you finish.", "score": 9}
+      ]
+    }
+  ]
+}

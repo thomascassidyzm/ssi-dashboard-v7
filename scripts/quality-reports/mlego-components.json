@@ -1,0 +1,3981 @@
+{
+  "generatedAt": "2026-02-02T10:24:40.397Z",
+  "summary": {
+    "totalCourses": 6,
+    "totalMLegos": 2822,
+    "totalWithComponents": 2822,
+    "totalWithoutComponents": 0,
+    "totalGoodDecompositions": 1949,
+    "averageQualityScore": "68.1",
+    "percentMissing": "0.0",
+    "percentGood": "69.1"
+  },
+  "courseResults": [
+    {
+      "courseCode": "zho_for_eng",
+      "targetLang": "zho",
+      "metrics": {
+        "total": 428,
+        "withComponents": 428,
+        "withoutComponents": 0,
+        "emptyComponents": 0,
+        "percentMissing": "0.0",
+        "longWithoutSufficient": 0,
+        "grammarExplanations": 74,
+        "componentsNotInTarget": 0,
+        "goodDecompositions": 354,
+        "percentGood": "82.7",
+        "qualityScore": "82.7"
+      },
+      "examples": {
+        "missing": [],
+        "insufficient": [],
+        "grammarExplanations": [
+          {
+            "seed": 6,
+            "lego": 3,
+            "known": "a",
+            "target": "一个",
+            "components": [
+              {
+                "known": "one",
+                "target": "一"
+              },
+              {
+                "known": "(measure word)",
+                "target": "个"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "(measure word)",
+                "target": "个"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 8,
+            "lego": 3,
+            "known": "my",
+            "target": "我的",
+            "components": [
+              {
+                "known": "I",
+                "target": "我"
+              },
+              {
+                "known": "(possessive)",
+                "target": "的"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "(possessive)",
+                "target": "的"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 8,
+            "lego": 5,
+            "known": "trying to",
+            "target": "试着",
+            "components": [
+              {
+                "known": "try",
+                "target": "试"
+              },
+              {
+                "known": "(aspect)",
+                "target": "着"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "(aspect)",
+                "target": "着"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 22,
+            "lego": 6,
+            "known": "who speak Chinese",
+            "target": "说中文的",
+            "components": [
+              {
+                "known": "speak",
+                "target": "说"
+              },
+              {
+                "known": "Chinese",
+                "target": "中文"
+              },
+              {
+                "known": "(possessive)",
+                "target": "的"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "(possessive)",
+                "target": "的"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 55,
+            "lego": 2,
+            "known": "when/at the time of",
+            "target": "的时候",
+            "components": [
+              {
+                "known": "(possessive)",
+                "target": "的"
+              },
+              {
+                "known": "time/moment",
+                "target": "时候"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "(possessive)",
+                "target": "的"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 56,
+            "lego": 5,
+            "known": "a few",
+            "target": "几个",
+            "components": [
+              {
+                "known": "how many/a few",
+                "target": "几"
+              },
+              {
+                "known": "(measure word)",
+                "target": "个"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "(measure word)",
+                "target": "个"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 134,
+            "lego": 4,
+            "known": "them",
+            "target": "他们",
+            "components": [
+              {
+                "known": "he",
+                "target": "他"
+              },
+              {
+                "known": "plural",
+                "target": "们"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "plural",
+                "target": "们"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 138,
+            "lego": 7,
+            "known": "friend",
+            "target": "朋友",
+            "components": [
+              {
+                "known": "friend (part 1)",
+                "target": "朋"
+              },
+              {
+                "known": "friend (part 2)",
+                "target": "友"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "friend (part 1)",
+                "target": "朋"
+              },
+              {
+                "known": "friend (part 2)",
+                "target": "友"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 138,
+            "lego": 11,
+            "known": "we/us",
+            "target": "我们",
+            "components": [
+              {
+                "known": "I",
+                "target": "我"
+              },
+              {
+                "known": "(plural)",
+                "target": "们"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "(plural)",
+                "target": "们"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 146,
+            "lego": 4,
+            "known": "trying to",
+            "target": "试着",
+            "components": [
+              {
+                "known": "try",
+                "target": "试"
+              },
+              {
+                "known": "-ing",
+                "target": "着"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "-ing",
+                "target": "着"
+              }
+            ],
+            "isNew": false
+          }
+        ],
+        "componentsNotInTarget": [],
+        "good": [
+          {
+            "seed": 1,
+            "lego": 1,
+            "known": "I want",
+            "target": "我想",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "我"
+              },
+              {
+                "known": "want",
+                "target": "想"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 1,
+            "lego": 4,
+            "known": "with you",
+            "target": "和你",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "with",
+                "target": "和"
+              },
+              {
+                "known": "you",
+                "target": "你"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 2,
+            "lego": 2,
+            "known": "I'm trying",
+            "target": "我在试着",
+            "targetLength": 4,
+            "components": [
+              {
+                "known": "I",
+                "target": "我"
+              },
+              {
+                "known": "am trying",
+                "target": "在试着"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 3,
+            "lego": 2,
+            "known": "as often as possible",
+            "target": "尽量多",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "as much as possible",
+                "target": "尽量"
+              },
+              {
+                "known": "more",
+                "target": "多"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 4,
+            "lego": 2,
+            "known": "something",
+            "target": "一些东西",
+            "targetLength": 4,
+            "components": [
+              {
+                "known": "some",
+                "target": "一些"
+              },
+              {
+                "known": "thing",
+                "target": "东西"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 4,
+            "known": "to talk",
+            "target": "说话",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "to speak",
+                "target": "说"
+              },
+              {
+                "known": "words",
+                "target": "话"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 6,
+            "lego": 2,
+            "known": "to remember",
+            "target": "记住",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "to memorize",
+                "target": "记"
+              },
+              {
+                "known": "firmly",
+                "target": "住"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 6,
+            "lego": 4,
+            "known": "I am trying",
+            "target": "我在试着",
+            "targetLength": 4,
+            "components": [
+              {
+                "known": "I",
+                "target": "我"
+              },
+              {
+                "known": "am trying",
+                "target": "在试着"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 9,
+            "lego": 1,
+            "known": "a little",
+            "target": "一点",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "one",
+                "target": "一"
+              },
+              {
+                "known": "bit",
+                "target": "点"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 10,
+            "lego": 7,
+            "known": "to remember",
+            "target": "记住",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "to memorize",
+                "target": "记"
+              },
+              {
+                "known": "firmly",
+                "target": "住"
+              }
+            ],
+            "isNew": false
+          }
+        ]
+      }
+    },
+    {
+      "courseCode": "nld_for_eng",
+      "targetLang": "nld",
+      "metrics": {
+        "total": 287,
+        "withComponents": 287,
+        "withoutComponents": 0,
+        "emptyComponents": 0,
+        "percentMissing": "0.0",
+        "longWithoutSufficient": 0,
+        "grammarExplanations": 78,
+        "componentsNotInTarget": 6,
+        "goodDecompositions": 206,
+        "percentGood": "71.8",
+        "qualityScore": "71.8"
+      },
+      "examples": {
+        "missing": [],
+        "insufficient": [],
+        "grammarExplanations": [
+          {
+            "seed": 14,
+            "lego": 1,
+            "known": "Do you speak",
+            "target": "Spreek je",
+            "components": [
+              {
+                "known": "speak (I)",
+                "target": "Spreek"
+              },
+              {
+                "known": "you",
+                "target": "je"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "speak (I)",
+                "target": "Spreek"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 21,
+            "lego": 2,
+            "known": "are you learning",
+            "target": "leer je",
+            "components": [
+              {
+                "known": "learn (you)",
+                "target": "leer"
+              },
+              {
+                "known": "you",
+                "target": "je"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "learn (you)",
+                "target": "leer"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 26,
+            "lego": 1,
+            "known": "I like",
+            "target": "Ik vind het fijn",
+            "components": [
+              {
+                "known": "I",
+                "target": "Ik"
+              },
+              {
+                "known": "find",
+                "target": "vind"
+              },
+              {
+                "known": "it (neuter)",
+                "target": "het"
+              },
+              {
+                "known": "nice",
+                "target": "fijn"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "it (neuter)",
+                "target": "het"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 28,
+            "lego": 1,
+            "known": "It is useful",
+            "target": "Het is nuttig",
+            "components": [
+              {
+                "known": "it (neuter)",
+                "target": "Het"
+              },
+              {
+                "known": "is",
+                "target": "is"
+              },
+              {
+                "known": "useful",
+                "target": "nuttig"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "it (neuter)",
+                "target": "Het"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 33,
+            "lego": 3,
+            "known": "are you learning",
+            "target": "leer je",
+            "components": [
+              {
+                "known": "learn (you)",
+                "target": "leer"
+              },
+              {
+                "known": "you",
+                "target": "je"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "learn (you)",
+                "target": "leer"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 36,
+            "lego": 1,
+            "known": "We don't want",
+            "target": "Wij willen niet",
+            "components": [
+              {
+                "known": "we",
+                "target": "Wij"
+              },
+              {
+                "known": "want (we)",
+                "target": "willen"
+              },
+              {
+                "known": "not",
+                "target": "niet"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "want (we)",
+                "target": "willen"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 54,
+            "lego": 6,
+            "known": "we wanted",
+            "target": "Wij wilden",
+            "components": [
+              {
+                "known": "we",
+                "target": "Wij"
+              },
+              {
+                "known": "wanted (plural)",
+                "target": "wilden"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "wanted (plural)",
+                "target": "wilden"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 55,
+            "lego": 6,
+            "known": "I don't enjoy",
+            "target": "Ik vind het niet leuk om",
+            "components": [
+              {
+                "known": "I find it not nice",
+                "target": "Ik vind het niet leuk"
+              },
+              {
+                "known": "to (infinitive marker)",
+                "target": "om"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "to (infinitive marker)",
+                "target": "om"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 57,
+            "lego": 2,
+            "known": "to recall",
+            "target": "herinneren",
+            "components": [
+              {
+                "known": "re- (again)",
+                "target": "her-"
+              },
+              {
+                "known": "inner (inner)",
+                "target": "inner"
+              },
+              {
+                "known": "-en (verb ending)",
+                "target": "-en"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "re- (again)",
+                "target": "her-"
+              },
+              {
+                "known": "inner (inner)",
+                "target": "inner"
+              },
+              {
+                "known": "-en (verb ending)",
+                "target": "-en"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 57,
+            "lego": 8,
+            "known": "I can't remember",
+            "target": "Ik kan me niet herinneren",
+            "components": [
+              {
+                "known": "I can not",
+                "target": "Ik kan niet"
+              },
+              {
+                "known": "myself (recall)",
+                "target": "me herinneren"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "myself (recall)",
+                "target": "me herinneren"
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "componentsNotInTarget": [
+          {
+            "seed": 27,
+            "lego": 1,
+            "known": "I don't like",
+            "target": "Ik vind het niet fijn",
+            "components": [
+              {
+                "known": "I like",
+                "target": "Ik vind het fijn"
+              },
+              {
+                "known": "not",
+                "target": "niet"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "Ik vind het fijn",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 57,
+            "lego": 2,
+            "known": "to recall",
+            "target": "herinneren",
+            "components": [
+              {
+                "known": "re- (again)",
+                "target": "her-"
+              },
+              {
+                "known": "inner (inner)",
+                "target": "inner"
+              },
+              {
+                "known": "-en (verb ending)",
+                "target": "-en"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "her-",
+                "appears": false
+              },
+              {
+                "component": "-en",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 57,
+            "lego": 8,
+            "known": "I can't remember",
+            "target": "Ik kan me niet herinneren",
+            "components": [
+              {
+                "known": "I can not",
+                "target": "Ik kan niet"
+              },
+              {
+                "known": "myself (recall)",
+                "target": "me herinneren"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "Ik kan niet",
+                "appears": false
+              },
+              {
+                "component": "me herinneren",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 63,
+            "lego": 4,
+            "known": "do you mind",
+            "target": "vind je het erg",
+            "components": [
+              {
+                "known": "(you) find",
+                "target": "vindt"
+              },
+              {
+                "known": "you",
+                "target": "je"
+              },
+              {
+                "known": "it",
+                "target": "het"
+              },
+              {
+                "known": "bad/mind",
+                "target": "erg"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "vindt",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 251,
+            "lego": 1,
+            "known": "I don't want to find out",
+            "target": "ik wil er niet achter komen",
+            "components": [
+              {
+                "known": "I don't want",
+                "target": "ik wil niet"
+              },
+              {
+                "known": "to find out",
+                "target": "er achter komen"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "ik wil niet",
+                "appears": false
+              },
+              {
+                "component": "er achter komen",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 267,
+            "lego": 1,
+            "known": "have you heard from",
+            "target": "heb je iets van gehoord",
+            "components": [
+              {
+                "known": "have you heard",
+                "target": "heb je gehoord"
+              },
+              {
+                "known": "from",
+                "target": "van"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "heb je gehoord",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "good": [
+          {
+            "seed": 1,
+            "lego": 1,
+            "known": "I want",
+            "target": "Ik wil",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "Ik"
+              },
+              {
+                "known": "want",
+                "target": "wil"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 1,
+            "lego": 4,
+            "known": "with you",
+            "target": "met je",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "with",
+                "target": "met"
+              },
+              {
+                "known": "you",
+                "target": "je"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 2,
+            "lego": 1,
+            "known": "I'm trying",
+            "target": "Ik probeer",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "Ik"
+              },
+              {
+                "known": "trying",
+                "target": "probeer"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 3,
+            "lego": 3,
+            "known": "as often as possible",
+            "target": "zo vaak mogelijk",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "so",
+                "target": "zo"
+              },
+              {
+                "known": "often",
+                "target": "vaak"
+              },
+              {
+                "known": "possible",
+                "target": "mogelijk"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 4,
+            "lego": 4,
+            "known": "in the",
+            "target": "in het",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "in",
+                "target": "in"
+              },
+              {
+                "known": "the",
+                "target": "het"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 1,
+            "known": "I'm going to",
+            "target": "Ik ga",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "Ik"
+              },
+              {
+                "known": "going",
+                "target": "ga"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 6,
+            "lego": 1,
+            "known": "I'm trying",
+            "target": "Ik probeer",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "Ik"
+              },
+              {
+                "known": "trying",
+                "target": "probeer"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 7,
+            "lego": 1,
+            "known": "I want",
+            "target": "Ik wil",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "Ik"
+              },
+              {
+                "known": "want",
+                "target": "wil"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 7,
+            "lego": 3,
+            "known": "as often as possible",
+            "target": "zo vaak mogelijk",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "so",
+                "target": "zo"
+              },
+              {
+                "known": "often",
+                "target": "vaak"
+              },
+              {
+                "known": "possible",
+                "target": "mogelijk"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 8,
+            "lego": 1,
+            "known": "I'm going to",
+            "target": "Ik ga",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "Ik"
+              },
+              {
+                "known": "going",
+                "target": "ga"
+              }
+            ],
+            "isNew": false
+          }
+        ]
+      }
+    },
+    {
+      "courseCode": "gle_for_eng",
+      "targetLang": "gle",
+      "metrics": {
+        "total": 685,
+        "withComponents": 685,
+        "withoutComponents": 0,
+        "emptyComponents": 0,
+        "percentMissing": "0.0",
+        "longWithoutSufficient": 0,
+        "grammarExplanations": 264,
+        "componentsNotInTarget": 11,
+        "goodDecompositions": 412,
+        "percentGood": "60.1",
+        "qualityScore": "60.1"
+      },
+      "examples": {
+        "missing": [],
+        "insufficient": [],
+        "grammarExplanations": [
+          {
+            "seed": 71,
+            "lego": 3,
+            "known": "to anyone",
+            "target": "do dhuine ar bith",
+            "components": [
+              {
+                "known": "to (prep)",
+                "target": "do"
+              },
+              {
+                "known": "person any",
+                "target": "dhuine ar bith"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "to (prep)",
+                "target": "do"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 73,
+            "lego": 4,
+            "known": "more (quantity)",
+            "target": "níos mó",
+            "components": [
+              {
+                "known": "more (comparative)",
+                "target": "níos"
+              },
+              {
+                "known": "much",
+                "target": "mó"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "more (comparative)",
+                "target": "níos"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 75,
+            "lego": 2,
+            "known": "more (quantity)",
+            "target": "níos mó",
+            "components": [
+              {
+                "known": "more (comparative)",
+                "target": "níos"
+              },
+              {
+                "known": "much",
+                "target": "mó"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "more (comparative)",
+                "target": "níos"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 79,
+            "lego": 1,
+            "known": "when (question)",
+            "target": "Cathain a",
+            "components": [
+              {
+                "known": "when (question word)",
+                "target": "Cathain"
+              },
+              {
+                "known": "which",
+                "target": "a"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "when (question word)",
+                "target": "Cathain"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 80,
+            "lego": 3,
+            "known": "when (mid-sentence)",
+            "target": "cathain a",
+            "components": [
+              {
+                "known": "when (question word)",
+                "target": "cathain"
+              },
+              {
+                "known": "which",
+                "target": "a"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "when (question word)",
+                "target": "cathain"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 81,
+            "lego": 1,
+            "known": "When do",
+            "target": "Cathain ba",
+            "components": [
+              {
+                "known": "when (question)",
+                "target": "Cathain"
+              },
+              {
+                "known": "would",
+                "target": "ba"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "when (question)",
+                "target": "Cathain"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 82,
+            "lego": 6,
+            "known": "is not (question)",
+            "target": "nach bhfuil",
+            "components": [
+              {
+                "known": "not (question)",
+                "target": "nach"
+              },
+              {
+                "known": "is",
+                "target": "bhfuil"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "not (question)",
+                "target": "nach"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 87,
+            "lego": 3,
+            "known": "I do not recognize (relative)",
+            "target": "nach n-aithním",
+            "components": [
+              {
+                "known": "not (relative)",
+                "target": "nach"
+              },
+              {
+                "known": "I recognize",
+                "target": "n-aithním"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "not (relative)",
+                "target": "nach"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 88,
+            "lego": 6,
+            "known": "that I do not recognize",
+            "target": "nach n-aithním",
+            "components": [
+              {
+                "known": "that not (relative)",
+                "target": "nach"
+              },
+              {
+                "known": "I recognize",
+                "target": "aithním"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "that not (relative)",
+                "target": "nach"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 90,
+            "lego": 6,
+            "known": "it (thing)",
+            "target": "sé sin",
+            "components": [
+              {
+                "known": "it",
+                "target": "sé"
+              },
+              {
+                "known": "that (demonstrative)",
+                "target": "sin"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "that (demonstrative)",
+                "target": "sin"
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "componentsNotInTarget": [
+          {
+            "seed": 40,
+            "lego": 2,
+            "known": "do you feel",
+            "target": "a mhothaíonn tú",
+            "components": [
+              {
+                "known": "feel",
+                "target": "mothaíonn"
+              },
+              {
+                "known": "you",
+                "target": "tú"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "mothaíonn",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 42,
+            "lego": 1,
+            "known": "I was",
+            "target": "Bhí mé",
+            "components": [
+              {
+                "known": "was",
+                "target": "bhí"
+              },
+              {
+                "known": "I",
+                "target": "mé"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "bhí",
+                "appears": false
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 43,
+            "lego": 1,
+            "known": "I wasn't",
+            "target": "Ní raibh mé",
+            "components": [
+              {
+                "known": "wasn't",
+                "target": "ní raibh"
+              },
+              {
+                "known": "I",
+                "target": "mé"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "ní raibh",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 45,
+            "lego": 1,
+            "known": "I don't need",
+            "target": "Ní gá dom",
+            "components": [
+              {
+                "known": "it is not needed",
+                "target": "ní gá"
+              },
+              {
+                "known": "for me",
+                "target": "dom"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "ní gá",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 48,
+            "lego": 1,
+            "known": "I don't care",
+            "target": "Is cuma liom",
+            "components": [
+              {
+                "known": "is",
+                "target": "is"
+              },
+              {
+                "known": "same",
+                "target": "cuma"
+              },
+              {
+                "known": "with me",
+                "target": "liom"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "is",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 49,
+            "lego": 1,
+            "known": "It is",
+            "target": "Tá sé",
+            "components": [
+              {
+                "known": "is",
+                "target": "tá"
+              },
+              {
+                "known": "it",
+                "target": "sé"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "tá",
+                "appears": false
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 50,
+            "lego": 1,
+            "known": "I'm not",
+            "target": "Níl mé",
+            "components": [
+              {
+                "known": "am not",
+                "target": "níl"
+              },
+              {
+                "known": "I",
+                "target": "mé"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "níl",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 126,
+            "lego": 5,
+            "known": "my brain",
+            "target": "m'inchinne",
+            "components": [
+              {
+                "known": "my",
+                "target": "mo"
+              },
+              {
+                "known": "brain",
+                "target": "inchinn"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "mo",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 178,
+            "lego": 1,
+            "known": "I did not have time",
+            "target": "Ní raibh am agam",
+            "components": [
+              {
+                "known": "I did not have",
+                "target": "Ní raibh agam"
+              },
+              {
+                "known": "time",
+                "target": "am"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "Ní raibh agam",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 181,
+            "lego": 3,
+            "known": "my mother",
+            "target": "mo mháthair",
+            "components": [
+              {
+                "known": "my (possessive)",
+                "target": "mo"
+              },
+              {
+                "known": "mother",
+                "target": "máthair"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "máthair",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "good": [
+          {
+            "seed": 1,
+            "lego": 1,
+            "known": "I want",
+            "target": "ba mhaith liom",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "want",
+                "target": "ba mhaith"
+              },
+              {
+                "known": "me",
+                "target": "liom"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 2,
+            "lego": 1,
+            "known": "I'm trying",
+            "target": "Táim ag iarraidh",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "I am",
+                "target": "Táim"
+              },
+              {
+                "known": "trying",
+                "target": "ag iarraidh"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 3,
+            "lego": 3,
+            "known": "as often as possible",
+            "target": "chomh minic agus is féidir",
+            "targetLength": 5,
+            "components": [
+              {
+                "known": "as often",
+                "target": "chomh minic"
+              },
+              {
+                "known": "as possible",
+                "target": "agus is féidir"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 1,
+            "known": "I'm going to",
+            "target": "Táim chun",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I am",
+                "target": "Táim"
+              },
+              {
+                "known": "going to",
+                "target": "chun"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 2,
+            "known": "practise speaking",
+            "target": "cleachtadh labhartha",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "practise",
+                "target": "cleachtadh"
+              },
+              {
+                "known": "of speaking",
+                "target": "labhartha"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 5,
+            "known": "someone else",
+            "target": "duine éigin eile",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "someone",
+                "target": "duine éigin"
+              },
+              {
+                "known": "else",
+                "target": "eile"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 6,
+            "lego": 1,
+            "known": "I'm trying",
+            "target": "Táim ag iarraidh",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "I am",
+                "target": "Táim"
+              },
+              {
+                "known": "trying",
+                "target": "ag iarraidh"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 7,
+            "lego": 1,
+            "known": "I want",
+            "target": "ba mhaith liom",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "want",
+                "target": "ba mhaith"
+              },
+              {
+                "known": "me",
+                "target": "liom"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 7,
+            "lego": 4,
+            "known": "as hard as I can",
+            "target": "chomh crua agus is féidir liom",
+            "targetLength": 6,
+            "components": [
+              {
+                "known": "as hard",
+                "target": "chomh crua"
+              },
+              {
+                "known": "as I can",
+                "target": "agus is féidir liom"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 8,
+            "lego": 1,
+            "known": "I'm going to",
+            "target": "Táim chun",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I am",
+                "target": "Táim"
+              },
+              {
+                "known": "going to",
+                "target": "chun"
+              }
+            ],
+            "isNew": false
+          }
+        ]
+      }
+    },
+    {
+      "courseCode": "deu_for_eng",
+      "targetLang": "deu",
+      "metrics": {
+        "total": 634,
+        "withComponents": 634,
+        "withoutComponents": 0,
+        "emptyComponents": 0,
+        "percentMissing": "0.0",
+        "longWithoutSufficient": 0,
+        "grammarExplanations": 72,
+        "componentsNotInTarget": 11,
+        "goodDecompositions": 552,
+        "percentGood": "87.1",
+        "qualityScore": "87.1"
+      },
+      "examples": {
+        "missing": [],
+        "insufficient": [],
+        "grammarExplanations": [
+          {
+            "seed": 58,
+            "lego": 5,
+            "known": "you understand",
+            "target": "du verstehst",
+            "components": [
+              {
+                "known": "you (subject)",
+                "target": "du"
+              },
+              {
+                "known": "understand",
+                "target": "verstehst"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 59,
+            "lego": 2,
+            "known": "I know",
+            "target": "ich weiß",
+            "components": [
+              {
+                "known": "I",
+                "target": "ich"
+              },
+              {
+                "known": "know (fact)",
+                "target": "weiß"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "know (fact)",
+                "target": "weiß"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 60,
+            "lego": 1,
+            "known": "I know",
+            "target": "ich weiß",
+            "components": [
+              {
+                "known": "I",
+                "target": "ich"
+              },
+              {
+                "known": "know (fact)",
+                "target": "weiß"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "know (fact)",
+                "target": "weiß"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 61,
+            "lego": 1,
+            "known": "could you",
+            "target": "könntest du",
+            "components": [
+              {
+                "known": "could",
+                "target": "könntest"
+              },
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 66,
+            "lego": 5,
+            "known": "the answer",
+            "target": "die Antwort",
+            "components": [
+              {
+                "known": "the (fem)",
+                "target": "die"
+              },
+              {
+                "known": "answer (noun)",
+                "target": "Antwort"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "the (fem)",
+                "target": "die"
+              },
+              {
+                "known": "answer (noun)",
+                "target": "Antwort"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 71,
+            "lego": 4,
+            "known": "the truth",
+            "target": "die Wahrheit",
+            "components": [
+              {
+                "known": "the (fem)",
+                "target": "die"
+              },
+              {
+                "known": "truth",
+                "target": "Wahrheit"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "the (fem)",
+                "target": "die"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 74,
+            "lego": 4,
+            "known": "you have",
+            "target": "du hast",
+            "components": [
+              {
+                "known": "you (subject)",
+                "target": "du"
+              },
+              {
+                "known": "have",
+                "target": "hast"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 75,
+            "lego": 1,
+            "known": "have you got",
+            "target": "hast du",
+            "components": [
+              {
+                "known": "have",
+                "target": "hast"
+              },
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 78,
+            "lego": 4,
+            "known": "you have",
+            "target": "du hast",
+            "components": [
+              {
+                "known": "you (subject)",
+                "target": "du"
+              },
+              {
+                "known": "have",
+                "target": "hast"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 79,
+            "lego": 1,
+            "known": "when did you",
+            "target": "wann hast du",
+            "components": [
+              {
+                "known": "when (question)",
+                "target": "wann"
+              },
+              {
+                "known": "have",
+                "target": "hast"
+              },
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "when (question)",
+                "target": "wann"
+              },
+              {
+                "known": "you (subject)",
+                "target": "du"
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "componentsNotInTarget": [
+          {
+            "seed": 7,
+            "lego": 4,
+            "known": "as hard as I can",
+            "target": "so gut ich kann",
+            "components": [
+              {
+                "known": "hard",
+                "target": "hart"
+              },
+              {
+                "known": "can",
+                "target": "kann"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "hart",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 67,
+            "lego": 1,
+            "known": "why do you want",
+            "target": "warum willst du",
+            "components": [
+              {
+                "known": "why",
+                "target": "warum"
+              },
+              {
+                "known": "you want",
+                "target": "du willst"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "du willst",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 68,
+            "lego": 1,
+            "known": "are you searching",
+            "target": "suchst du",
+            "components": [
+              {
+                "known": "to search",
+                "target": "suchen"
+              },
+              {
+                "known": "you",
+                "target": "du"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "suchen",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 87,
+            "lego": 2,
+            "known": "who I don't know",
+            "target": "die ich nicht kenne",
+            "components": [
+              {
+                "known": "who",
+                "target": "die"
+              },
+              {
+                "known": "I know",
+                "target": "ich kenne"
+              },
+              {
+                "known": "not",
+                "target": "nicht"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "ich kenne",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 88,
+            "lego": 3,
+            "known": "who I don't know",
+            "target": "die ich nicht kenne",
+            "components": [
+              {
+                "known": "who",
+                "target": "die"
+              },
+              {
+                "known": "I know",
+                "target": "ich kenne"
+              },
+              {
+                "known": "not",
+                "target": "nicht"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "ich kenne",
+                "appears": false
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 102,
+            "lego": 3,
+            "known": "that it's not like that",
+            "target": "dass es nicht so ist",
+            "components": [
+              {
+                "known": "that",
+                "target": "dass"
+              },
+              {
+                "known": "it is",
+                "target": "es ist"
+              },
+              {
+                "known": "not",
+                "target": "nicht"
+              },
+              {
+                "known": "like that",
+                "target": "so"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "es ist",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 209,
+            "lego": 4,
+            "known": "in order to meet",
+            "target": "um sich zu treffen",
+            "components": [
+              {
+                "known": "in order to",
+                "target": "um zu"
+              },
+              {
+                "known": "meet (reflexive)",
+                "target": "sich treffen"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "um zu",
+                "appears": false
+              },
+              {
+                "component": "sich treffen",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 231,
+            "lego": 3,
+            "known": "who wanted to ask for help",
+            "target": "der um Hilfe bitten wollte",
+            "components": [
+              {
+                "known": "who wanted",
+                "target": "der wollte"
+              },
+              {
+                "known": "to ask for help",
+                "target": "um Hilfe bitten"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "der wollte",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 232,
+            "lego": 3,
+            "known": "who can remember",
+            "target": "die sich erinnern kann",
+            "components": [
+              {
+                "known": "who can",
+                "target": "die kann"
+              },
+              {
+                "known": "remember",
+                "target": "sich erinnern"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "die kann",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 235,
+            "lego": 3,
+            "known": "who said",
+            "target": "der gesagt hat",
+            "components": [
+              {
+                "known": "who has",
+                "target": "der hat"
+              },
+              {
+                "known": "said",
+                "target": "gesagt"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "der hat",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "good": [
+          {
+            "seed": 1,
+            "lego": 1,
+            "known": "I want",
+            "target": "ich will",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "ich"
+              },
+              {
+                "known": "want",
+                "target": "will"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 1,
+            "lego": 4,
+            "known": "with you",
+            "target": "mit dir",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "with",
+                "target": "mit"
+              },
+              {
+                "known": "you",
+                "target": "dir"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 2,
+            "lego": 1,
+            "known": "I am trying",
+            "target": "ich versuche",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "ich"
+              },
+              {
+                "known": "trying",
+                "target": "versuche"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 3,
+            "lego": 2,
+            "known": "one speaks",
+            "target": "man spricht",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "one",
+                "target": "man"
+              },
+              {
+                "known": "speaks",
+                "target": "spricht"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 3,
+            "lego": 3,
+            "known": "as often as possible",
+            "target": "so oft wie möglich",
+            "targetLength": 4,
+            "components": [
+              {
+                "known": "often",
+                "target": "oft"
+              },
+              {
+                "known": "possible",
+                "target": "möglich"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 4,
+            "lego": 5,
+            "known": "in German",
+            "target": "auf Deutsch",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "in",
+                "target": "auf"
+              },
+              {
+                "known": "German",
+                "target": "Deutsch"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 1,
+            "known": "I am going to",
+            "target": "ich werde",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "ich"
+              },
+              {
+                "known": "will",
+                "target": "werde"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 4,
+            "known": "with someone else",
+            "target": "mit jemand anderem",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "with",
+                "target": "mit"
+              },
+              {
+                "known": "someone",
+                "target": "jemand"
+              },
+              {
+                "known": "else",
+                "target": "anderem"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 6,
+            "lego": 1,
+            "known": "I am trying",
+            "target": "ich versuche",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I",
+                "target": "ich"
+              },
+              {
+                "known": "trying",
+                "target": "versuche"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 6,
+            "lego": 4,
+            "known": "to remember",
+            "target": "an erinnern",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "at",
+                "target": "an"
+              },
+              {
+                "known": "remember",
+                "target": "erinnern"
+              }
+            ],
+            "isNew": true
+          }
+        ]
+      }
+    },
+    {
+      "courseCode": "kor_for_eng",
+      "targetLang": "kor",
+      "metrics": {
+        "total": 390,
+        "withComponents": 390,
+        "withoutComponents": 0,
+        "emptyComponents": 0,
+        "percentMissing": "0.0",
+        "longWithoutSufficient": 0,
+        "grammarExplanations": 173,
+        "componentsNotInTarget": 195,
+        "goodDecompositions": 78,
+        "percentGood": "20.0",
+        "qualityScore": "20.0"
+      },
+      "examples": {
+        "missing": [],
+        "insufficient": [],
+        "grammarExplanations": [
+          {
+            "seed": 8,
+            "lego": 2,
+            "known": "what I mean",
+            "target": "제 뜻을",
+            "components": [
+              {
+                "known": "my (humble)",
+                "target": "제"
+              },
+              {
+                "known": "meaning/intention",
+                "target": "뜻"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "my (humble)",
+                "target": "제"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 15,
+            "lego": 2,
+            "known": "you (subject)",
+            "target": "당신이",
+            "components": [
+              {
+                "known": "you",
+                "target": "당신"
+              },
+              {
+                "known": "subject marker",
+                "target": "이"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "subject marker",
+                "target": "이"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 15,
+            "lego": 4,
+            "known": "to speak for me",
+            "target": "말해 주기를",
+            "components": [
+              {
+                "known": "speak",
+                "target": "말하다"
+              },
+              {
+                "known": "give (favor)",
+                "target": "주다"
+              },
+              {
+                "known": "doing (noun)",
+                "target": "기"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "give (favor)",
+                "target": "주다"
+              },
+              {
+                "known": "doing (noun)",
+                "target": "기"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 16,
+            "lego": 4,
+            "known": "wants to come back",
+            "target": "돌아오고 싶어해요",
+            "components": [
+              {
+                "known": "come back",
+                "target": "돌아오다"
+              },
+              {
+                "known": "want (3rd person)",
+                "target": "싶어하다"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "want (3rd person)",
+                "target": "싶어하다"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 17,
+            "lego": 2,
+            "known": "what the answer is",
+            "target": "답이 무엇인지",
+            "components": [
+              {
+                "known": "answer",
+                "target": "답"
+              },
+              {
+                "known": "what",
+                "target": "무엇"
+              },
+              {
+                "known": "is (question)",
+                "target": "인지"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "is (question)",
+                "target": "인지"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 17,
+            "lego": 3,
+            "known": "wants to find out",
+            "target": "알고 싶어해요",
+            "components": [
+              {
+                "known": "know/find out",
+                "target": "알다"
+              },
+              {
+                "known": "want (3rd person)",
+                "target": "싶어하다"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "want (3rd person)",
+                "target": "싶어하다"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 19,
+            "lego": 2,
+            "known": "talking",
+            "target": "말하는 것을",
+            "components": [
+              {
+                "known": "speak",
+                "target": "말하다"
+              },
+              {
+                "known": "thing (gerund)",
+                "target": "것"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "thing (gerund)",
+                "target": "것"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 20,
+            "lego": 2,
+            "known": "his",
+            "target": "그의",
+            "components": [
+              {
+                "known": "he",
+                "target": "그"
+              },
+              {
+                "known": "possessive",
+                "target": "의"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "possessive",
+                "target": "의"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 20,
+            "lego": 3,
+            "known": "name",
+            "target": "이름을",
+            "components": [
+              {
+                "known": "name",
+                "target": "이름"
+              },
+              {
+                "known": "object marker",
+                "target": "을"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "object marker",
+                "target": "을"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 20,
+            "lego": 5,
+            "known": "want to learn",
+            "target": "배우고 싶어해요",
+            "components": [
+              {
+                "known": "learn",
+                "target": "배우다"
+              },
+              {
+                "known": "want (3rd person)",
+                "target": "싶어하다"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "want (3rd person)",
+                "target": "싶어하다"
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "componentsNotInTarget": [
+          {
+            "seed": 1,
+            "lego": 1,
+            "known": "I want to speak",
+            "target": "말하고 싶어요",
+            "components": [
+              {
+                "known": "speak",
+                "target": "말하다"
+              },
+              {
+                "known": "want to",
+                "target": "싶다"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "말하다",
+                "appears": false
+              },
+              {
+                "component": "싶다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 2,
+            "lego": 2,
+            "known": "trying to learn",
+            "target": "배우려고 해요",
+            "components": [
+              {
+                "known": "learn",
+                "target": "배우다"
+              },
+              {
+                "known": "try",
+                "target": "하다"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "배우다",
+                "appears": false
+              },
+              {
+                "component": "하다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 3,
+            "lego": 1,
+            "known": "how to speak",
+            "target": "말하는 방법",
+            "components": [
+              {
+                "known": "speak",
+                "target": "말하다"
+              },
+              {
+                "known": "way/method",
+                "target": "방법"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "말하다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 4,
+            "lego": 2,
+            "known": "how to say",
+            "target": "말하는 방법",
+            "components": [
+              {
+                "known": "speak/say",
+                "target": "말하다"
+              },
+              {
+                "known": "way/method",
+                "target": "방법"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "말하다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 1,
+            "known": "I'm going to practise",
+            "target": "연습할 거예요",
+            "components": [
+              {
+                "known": "practise",
+                "target": "연습하다"
+              },
+              {
+                "known": "going to",
+                "target": "ㄹ 거예요"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "연습하다",
+                "appears": false
+              },
+              {
+                "component": "ㄹ 거예요",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 6,
+            "lego": 1,
+            "known": "trying to remember",
+            "target": "떠올리려고 해요",
+            "components": [
+              {
+                "known": "remember/recall",
+                "target": "떠올리다"
+              },
+              {
+                "known": "trying to",
+                "target": "려고 하다"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "떠올리다",
+                "appears": false
+              },
+              {
+                "component": "려고 하다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 7,
+            "lego": 1,
+            "known": "I want to try",
+            "target": "노력하고 싶어요",
+            "components": [
+              {
+                "known": "try/effort",
+                "target": "노력하다"
+              },
+              {
+                "known": "want to",
+                "target": "싶다"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "노력하다",
+                "appears": false
+              },
+              {
+                "component": "싶다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 7,
+            "lego": 2,
+            "known": "as hard as I can",
+            "target": "최선을 다해",
+            "components": [
+              {
+                "known": "best effort",
+                "target": "최선"
+              },
+              {
+                "known": "give/devote",
+                "target": "다하다"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "다하다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 8,
+            "lego": 1,
+            "known": "I'm going to try to explain",
+            "target": "설명하려고 할 거예요",
+            "components": [
+              {
+                "known": "explain",
+                "target": "설명하다"
+              },
+              {
+                "known": "going to try to",
+                "target": "려고 할 거예요"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "설명하다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 9,
+            "lego": 2,
+            "known": "I speak",
+            "target": "해요",
+            "components": [
+              {
+                "known": "do/speak",
+                "target": "하다"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "하다",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "good": [
+          {
+            "seed": 1,
+            "lego": 3,
+            "known": "with you",
+            "target": "당신과",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "you",
+                "target": "당신"
+              },
+              {
+                "known": "with",
+                "target": "과"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 3,
+            "lego": 3,
+            "known": "as much as possible",
+            "target": "가능한 한",
+            "targetLength": 5,
+            "components": [
+              {
+                "known": "possible",
+                "target": "가능"
+              },
+              {
+                "known": "limit/extent",
+                "target": "한"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 3,
+            "known": "with someone else",
+            "target": "다른 사람과",
+            "targetLength": 6,
+            "components": [
+              {
+                "known": "other/different",
+                "target": "다른"
+              },
+              {
+                "known": "person",
+                "target": "사람"
+              },
+              {
+                "known": "with",
+                "target": "과"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 10,
+            "lego": 3,
+            "known": "the whole sentence",
+            "target": "문장 전체를",
+            "targetLength": 6,
+            "components": [
+              {
+                "known": "sentence",
+                "target": "문장"
+              },
+              {
+                "known": "whole/entire",
+                "target": "전체"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 13,
+            "lego": 1,
+            "known": "very well",
+            "target": "아주 잘",
+            "targetLength": 4,
+            "components": [
+              {
+                "known": "very",
+                "target": "아주"
+              },
+              {
+                "known": "well",
+                "target": "잘"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 14,
+            "lego": 1,
+            "known": "all day",
+            "target": "하루 종일",
+            "targetLength": 5,
+            "components": [
+              {
+                "known": "day",
+                "target": "하루"
+              },
+              {
+                "known": "whole/all",
+                "target": "종일"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 15,
+            "lego": 3,
+            "known": "with me",
+            "target": "저와",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "I/me",
+                "target": "저"
+              },
+              {
+                "known": "with",
+                "target": "와"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 16,
+            "lego": 3,
+            "known": "with everyone else",
+            "target": "다른 모든 사람들과 함께",
+            "targetLength": 13,
+            "components": [
+              {
+                "known": "other",
+                "target": "다른"
+              },
+              {
+                "known": "all/every",
+                "target": "모든"
+              },
+              {
+                "known": "people",
+                "target": "사람들"
+              },
+              {
+                "known": "together",
+                "target": "함께"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 18,
+            "lego": 2,
+            "known": "this evening",
+            "target": "오늘 저녁",
+            "targetLength": 5,
+            "components": [
+              {
+                "known": "today",
+                "target": "오늘"
+              },
+              {
+                "known": "evening",
+                "target": "저녁"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 18,
+            "lego": 3,
+            "known": "at six o'clock",
+            "target": "6시에",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "six",
+                "target": "6"
+              },
+              {
+                "known": "o'clock",
+                "target": "시"
+              },
+              {
+                "known": "at",
+                "target": "에"
+              }
+            ],
+            "isNew": true
+          }
+        ]
+      }
+    },
+    {
+      "courseCode": "ara_for_eng",
+      "targetLang": "ara",
+      "metrics": {
+        "total": 398,
+        "withComponents": 398,
+        "withoutComponents": 0,
+        "emptyComponents": 0,
+        "percentMissing": "0.0",
+        "longWithoutSufficient": 0,
+        "grammarExplanations": 16,
+        "componentsNotInTarget": 35,
+        "goodDecompositions": 347,
+        "percentGood": "87.2",
+        "qualityScore": "87.2"
+      },
+      "examples": {
+        "missing": [],
+        "insufficient": [],
+        "grammarExplanations": [
+          {
+            "seed": 82,
+            "lego": 2,
+            "known": "I wait for you",
+            "target": "أنتظرك",
+            "components": [
+              {
+                "known": "I wait",
+                "target": "أنتظر"
+              },
+              {
+                "known": "you (object)",
+                "target": "ك"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "you (object)",
+                "target": "ك"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 86,
+            "lego": 1,
+            "known": "it wasn't",
+            "target": "لم يكن",
+            "components": [
+              {
+                "known": "not (past)",
+                "target": "لم"
+              },
+              {
+                "known": "it was",
+                "target": "يكن"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "not (past)",
+                "target": "لم"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 89,
+            "lego": 2,
+            "known": "that I",
+            "target": "أنني",
+            "components": [
+              {
+                "known": "that",
+                "target": "أن"
+              },
+              {
+                "known": "I (suffix)",
+                "target": "ني"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "I (suffix)",
+                "target": "ني"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 119,
+            "lego": 1,
+            "known": "Can I",
+            "target": "هل يمكنني",
+            "components": [
+              {
+                "known": "question marker",
+                "target": "هل"
+              },
+              {
+                "known": "I can",
+                "target": "يمكنني"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "question marker",
+                "target": "هل"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 156,
+            "lego": 1,
+            "known": "Do you want",
+            "target": "هل تريد",
+            "components": [
+              {
+                "known": "question marker",
+                "target": "هل"
+              },
+              {
+                "known": "you want",
+                "target": "تريد"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "question marker",
+                "target": "هل"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 156,
+            "lego": 2,
+            "known": "that you go",
+            "target": "أن تذهب",
+            "components": [
+              {
+                "known": "that (subjunctive)",
+                "target": "أن"
+              },
+              {
+                "known": "you go",
+                "target": "تذهب"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "that (subjunctive)",
+                "target": "أن"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 161,
+            "lego": 1,
+            "known": "Can you",
+            "target": "هل يمكنك",
+            "components": [
+              {
+                "known": "can",
+                "target": "يمكنك"
+              },
+              {
+                "known": "you (question)",
+                "target": "هل"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "you (question)",
+                "target": "هل"
+              }
+            ],
+            "isNew": false
+          },
+          {
+            "seed": 205,
+            "lego": 3,
+            "known": "that I was trying",
+            "target": "التي كنت أحاول",
+            "components": [
+              {
+                "known": "that (feminine)",
+                "target": "التي"
+              },
+              {
+                "known": "I was",
+                "target": "كنت"
+              },
+              {
+                "known": "I try",
+                "target": "أحاول"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "that (feminine)",
+                "target": "التي"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 214,
+            "lego": 1,
+            "known": "did you spend",
+            "target": "هل قضيت",
+            "components": [
+              {
+                "known": "did (question)",
+                "target": "هل"
+              },
+              {
+                "known": "you spent",
+                "target": "قضيت"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "did (question)",
+                "target": "هل"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 220,
+            "lego": 1,
+            "known": "did you watch",
+            "target": "هل شاهدت",
+            "components": [
+              {
+                "known": "did (question)",
+                "target": "هل"
+              },
+              {
+                "known": "you watched",
+                "target": "شاهدت"
+              }
+            ],
+            "grammarIssues": [
+              {
+                "known": "did (question)",
+                "target": "هل"
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "componentsNotInTarget": [
+          {
+            "seed": 1,
+            "lego": 1,
+            "known": "I want",
+            "target": "أريد",
+            "components": [
+              {
+                "known": "I",
+                "target": "أنا"
+              },
+              {
+                "known": "want",
+                "target": "يريد"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "أنا",
+                "appears": false
+              },
+              {
+                "component": "يريد",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 1,
+            "lego": 2,
+            "known": "to speak",
+            "target": "أن أتكلم",
+            "components": [
+              {
+                "known": "to",
+                "target": "أن"
+              },
+              {
+                "known": "speak",
+                "target": "يتكلم"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "يتكلم",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 1,
+            "lego": 4,
+            "known": "with you",
+            "target": "معك",
+            "components": [
+              {
+                "known": "with",
+                "target": "مع"
+              },
+              {
+                "known": "you",
+                "target": "أنت"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "أنت",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 2,
+            "lego": 1,
+            "known": "I'm trying",
+            "target": "أحاول",
+            "components": [
+              {
+                "known": "I",
+                "target": "أنا"
+              },
+              {
+                "known": "trying",
+                "target": "يحاول"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "أنا",
+                "appears": false
+              },
+              {
+                "component": "يحاول",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 2,
+            "lego": 2,
+            "known": "to learn",
+            "target": "أن أتعلم",
+            "components": [
+              {
+                "known": "to",
+                "target": "أن"
+              },
+              {
+                "known": "learn",
+                "target": "يتعلم"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "يتعلم",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 1,
+            "known": "I'm going to practise",
+            "target": "سأمارس",
+            "components": [
+              {
+                "known": "will",
+                "target": "س"
+              },
+              {
+                "known": "practise",
+                "target": "يمارس"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "يمارس",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 5,
+            "lego": 2,
+            "known": "to practise",
+            "target": "أن أمارس",
+            "components": [
+              {
+                "known": "to",
+                "target": "أن"
+              },
+              {
+                "known": "practise",
+                "target": "يمارس"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "يمارس",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 6,
+            "lego": 2,
+            "known": "to remember",
+            "target": "أن أتذكر",
+            "components": [
+              {
+                "known": "to",
+                "target": "أن"
+              },
+              {
+                "known": "remember",
+                "target": "يتذكر"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "يتذكر",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 7,
+            "lego": 2,
+            "known": "to try",
+            "target": "أن أحاول",
+            "components": [
+              {
+                "known": "to",
+                "target": "أن"
+              },
+              {
+                "known": "try",
+                "target": "يحاول"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "يحاول",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 8,
+            "lego": 1,
+            "known": "I'm going to try",
+            "target": "سأحاول",
+            "components": [
+              {
+                "known": "going to",
+                "target": "سـ"
+              },
+              {
+                "known": "try",
+                "target": "يحاول"
+              }
+            ],
+            "missingComponents": [
+              {
+                "component": "سـ",
+                "appears": false
+              },
+              {
+                "component": "يحاول",
+                "appears": false
+              }
+            ],
+            "isNew": true
+          }
+        ],
+        "good": [
+          {
+            "seed": 3,
+            "lego": 3,
+            "known": "as often as possible",
+            "target": "قدر الإمكان",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "as much as",
+                "target": "قدر"
+              },
+              {
+                "known": "possible",
+                "target": "إمكان"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 4,
+            "lego": 4,
+            "known": "in Arabic",
+            "target": "بالعربية",
+            "targetLength": 1,
+            "components": [
+              {
+                "known": "in",
+                "target": "ب"
+              },
+              {
+                "known": "Arabic",
+                "target": "العربية"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 7,
+            "lego": 3,
+            "known": "as hard as I can",
+            "target": "بأقصى جهدي",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "effort",
+                "target": "جهد"
+              },
+              {
+                "known": "maximum",
+                "target": "أقصى"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 15,
+            "lego": 1,
+            "known": "and I want you",
+            "target": "وأريدك",
+            "targetLength": 1,
+            "components": [
+              {
+                "known": "and",
+                "target": "و"
+              },
+              {
+                "known": "I want you",
+                "target": "أريدك"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 40,
+            "lego": 4,
+            "known": "the moment?",
+            "target": "هذه اللحظة؟",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "this here",
+                "target": "هذه"
+              },
+              {
+                "known": "the moment",
+                "target": "اللحظة"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 42,
+            "lego": 6,
+            "known": "last night",
+            "target": "الليلة الماضية",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "the night",
+                "target": "الليلة"
+              },
+              {
+                "known": "past",
+                "target": "الماضية"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 43,
+            "lego": 1,
+            "known": "I wasn't",
+            "target": "لم أكن",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "not",
+                "target": "لم"
+              },
+              {
+                "known": "I was",
+                "target": "أكن"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 52,
+            "lego": 6,
+            "known": "his friend",
+            "target": "صديقه",
+            "targetLength": 1,
+            "components": [
+              {
+                "known": "friend",
+                "target": "صديق"
+              },
+              {
+                "known": "his",
+                "target": "ه"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 52,
+            "lego": 7,
+            "known": "last week",
+            "target": "الأسبوع الماضي",
+            "targetLength": 2,
+            "components": [
+              {
+                "known": "the week",
+                "target": "الأسبوع"
+              },
+              {
+                "known": "last",
+                "target": "الماضي"
+              }
+            ],
+            "isNew": true
+          },
+          {
+            "seed": 53,
+            "lego": 1,
+            "known": "she wanted to put",
+            "target": "أرادت أن تضع",
+            "targetLength": 3,
+            "components": [
+              {
+                "known": "she wanted",
+                "target": "أرادت"
+              },
+              {
+                "known": "that",
+                "target": "أن"
+              },
+              {
+                "known": "she puts",
+                "target": "تضع"
+              }
+            ],
+            "isNew": true
+          }
+        ]
+      }
+    }
+  ],
+  "recommendations": [
+    {
+      "courseCode": "zho_for_eng",
+      "qualityScore": "82.7",
+      "recommendations": [
+        {
+          "priority": "HIGH",
+          "issue": "Grammar explanations in components",
+          "count": 74,
+          "description": "74 M-LEGOs use grammar explanations instead of real words.",
+          "action": "Replace grammar explanations with actual word components that learners can use."
+        }
+      ]
+    },
+    {
+      "courseCode": "nld_for_eng",
+      "qualityScore": "71.8",
+      "recommendations": [
+        {
+          "priority": "HIGH",
+          "issue": "Grammar explanations in components",
+          "count": 78,
+          "description": "78 M-LEGOs use grammar explanations instead of real words.",
+          "action": "Replace grammar explanations with actual word components that learners can use."
+        },
+        {
+          "priority": "CRITICAL",
+          "issue": "Components not in target text",
+          "count": 6,
+          "description": "6 M-LEGOs have components that don't appear in the target text.",
+          "action": "Fix component definitions to match actual pieces in the target text."
+        }
+      ]
+    },
+    {
+      "courseCode": "gle_for_eng",
+      "qualityScore": "60.1",
+      "recommendations": [
+        {
+          "priority": "HIGH",
+          "issue": "Grammar explanations in components",
+          "count": 264,
+          "description": "264 M-LEGOs use grammar explanations instead of real words.",
+          "action": "Replace grammar explanations with actual word components that learners can use."
+        },
+        {
+          "priority": "CRITICAL",
+          "issue": "Components not in target text",
+          "count": 11,
+          "description": "11 M-LEGOs have components that don't appear in the target text.",
+          "action": "Fix component definitions to match actual pieces in the target text."
+        }
+      ]
+    },
+    {
+      "courseCode": "deu_for_eng",
+      "qualityScore": "87.1",
+      "recommendations": [
+        {
+          "priority": "HIGH",
+          "issue": "Grammar explanations in components",
+          "count": 72,
+          "description": "72 M-LEGOs use grammar explanations instead of real words.",
+          "action": "Replace grammar explanations with actual word components that learners can use."
+        },
+        {
+          "priority": "CRITICAL",
+          "issue": "Components not in target text",
+          "count": 11,
+          "description": "11 M-LEGOs have components that don't appear in the target text.",
+          "action": "Fix component definitions to match actual pieces in the target text."
+        }
+      ]
+    },
+    {
+      "courseCode": "kor_for_eng",
+      "qualityScore": "20.0",
+      "recommendations": [
+        {
+          "priority": "HIGH",
+          "issue": "Grammar explanations in components",
+          "count": 173,
+          "description": "173 M-LEGOs use grammar explanations instead of real words.",
+          "action": "Replace grammar explanations with actual word components that learners can use."
+        },
+        {
+          "priority": "CRITICAL",
+          "issue": "Components not in target text",
+          "count": 195,
+          "description": "195 M-LEGOs have components that don't appear in the target text.",
+          "action": "Fix component definitions to match actual pieces in the target text."
+        }
+      ]
+    },
+    {
+      "courseCode": "ara_for_eng",
+      "qualityScore": "87.2",
+      "recommendations": [
+        {
+          "priority": "HIGH",
+          "issue": "Grammar explanations in components",
+          "count": 16,
+          "description": "16 M-LEGOs use grammar explanations instead of real words.",
+          "action": "Replace grammar explanations with actual word components that learners can use."
+        },
+        {
+          "priority": "CRITICAL",
+          "issue": "Components not in target text",
+          "count": 35,
+          "description": "35 M-LEGOs have components that don't appear in the target text.",
+          "action": "Fix component definitions to match actual pieces in the target text."
+        }
+      ]
+    }
+  ]
+}

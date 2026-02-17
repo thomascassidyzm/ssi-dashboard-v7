@@ -1,0 +1,96 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 154,
+  "known_text": "Where do you want to meet on Saturday night?",
+  "target_text": "أين تريد أن نلتقي ليلة السبت؟",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "Where",
+      "target": "أين",
+      "build": [
+        {"known": "Where", "target": "أين"},
+        {"known": "where is it", "target": "أين هو"},
+        {"known": "where is she", "target": "أين هي"},
+        {"known": "where is the place", "target": "أين المكان"}
+      ],
+      "use": [
+        {"known": "I do not know where it is now but I believe the answer is there.", "target": "لا أعرف أين هو الآن لكنني أعتقد أن الجواب هناك.", "score": 8},
+        {"known": "She was asking where he was yesterday but I was not sure about it.", "target": "كانت تسأل أين كان أمس لكنني لم أكن متأكداً من ذلك.", "score": 8},
+        {"known": "I want to know where the place is that you were speaking about before.", "target": "أريد أن أعرف أين المكان الذي كنت تتكلم عنه من قبل.", "score": 8},
+        {"known": "I was thinking about where I want to be after I finish learning Arabic.", "target": "كنت أفكر أين أريد أن أكون بعد أن أنتهي من تعلم العربية.", "score": 8},
+        {"known": "He wanted to know where I learned to speak Arabic but I did not say.", "target": "أراد أن يعرف أين تعلمت أن أتكلم العربية لكنني لم أقل.", "score": 8},
+        {"known": "I believe that she knows where the answer is but I am not sure about it.", "target": "أعتقد أن هي تعرف أين الجواب لكنني لست متأكداً من ذلك.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "do you want to",
+      "target": "تريد أن",
+      "components": [
+        {"known": "do you want", "target": "تريد"},
+        {"known": "to", "target": "أن"}
+      ],
+      "build": [
+        {"known": "do you want to", "target": "تريد أن"},
+        {"known": "what do you want", "target": "ماذا تريد"},
+        {"known": "do you want to learn", "target": "تريد أن تتعلم"},
+        {"known": "do you want to speak Arabic", "target": "تريد أن تتكلم العربية"}
+      ],
+      "use": [
+        {"known": "I was thinking about what you want to do after you finish here today.", "target": "كنت أفكر ماذا تريد أن تفعله بعد أن تنتهي هنا اليوم.", "score": 8},
+        {"known": "I do not know what you want but I will try to help you with this.", "target": "لا أعرف ماذا تريد لكنني سأحاول أن أساعدك في هذا.", "score": 8},
+        {"known": "I was thinking about where you want to be after learning Arabic here.", "target": "كنت أفكر أين تريد أن تكون بعد تعلم العربية هنا.", "score": 8},
+        {"known": "I know that you want to try to speak Arabic with everyone here today.", "target": "أعرف أنك تريد أن تحاول أن تتكلم العربية مع الجميع هنا اليوم.", "score": 8},
+        {"known": "I was wondering what you want to say about this but I did not understand.", "target": "كنت أريد أن أعرف ماذا تريد أن تقول عن هذا لكنني لم أفهم.", "score": 8},
+        {"known": "I believe that you want to learn Arabic but I am not sure why.", "target": "أعتقد أنك تريد أن تتعلم العربية لكنني لست متأكداً لماذا.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "we meet",
+      "target": "نلتقي",
+      "build": [
+        {"known": "we meet", "target": "نلتقي"},
+        {"known": "we meet there", "target": "نلتقي هناك"},
+        {"known": "where we meet", "target": "أين نلتقي"},
+        {"known": "do you want to meet", "target": "تريد أن نلتقي"}
+      ],
+      "use": [
+        {"known": "I was thinking about where you want us to meet after you finish today.", "target": "كنت أفكر أين تريد أن نلتقي بعد أن تنتهي اليوم.", "score": 8},
+        {"known": "I was thinking about where we should meet after this is finished here.", "target": "كنت أفكر أين يجب أن نلتقي بعد أن ينتهي هذا هنا.", "score": 8},
+        {"known": "I know that you want us to meet here tomorrow after everything is done.", "target": "أعرف أنك تريد أن نلتقي هنا غداً بعد أن ينتهي كل شيء.", "score": 8},
+        {"known": "She wanted to know where we meet but I was not sure about that.", "target": "أرادت أن تعرف أين نلتقي لكنني لم أكن متأكداً من ذلك.", "score": 8},
+        {"known": "I do not know where we should meet but I will try to find out.", "target": "لا أعرف أين يجب أن نلتقي لكنني سأحاول أن أعرف.", "score": 8},
+        {"known": "I want to know where you want us to meet tomorrow after this.", "target": "أريد أن أعرف أين تريد أن نلتقي غداً بعد هذا.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "on Saturday night?",
+      "target": "ليلة السبت؟",
+      "components": [
+        {"known": "night", "target": "ليلة"},
+        {"known": "Saturday", "target": "السبت"}
+      ],
+      "build": [
+        {"known": "on Saturday night?", "target": "ليلة السبت؟"},
+        {"known": "Saturday night", "target": "ليلة السبت"},
+        {"known": "the night", "target": "الليلة"},
+        {"known": "Saturday", "target": "السبت"}
+      ],
+      "use": [
+        {"known": "Where do you want us to meet on Saturday night?", "target": "أين تريد أن نلتقي ليلة السبت؟", "score": 8},
+        {"known": "I was thinking about where we should meet on Saturday night this week.", "target": "كنت أفكر أين يجب أن نلتقي ليلة السبت هذا الأسبوع.", "score": 8},
+        {"known": "I know that you want to speak Arabic with me on Saturday night.", "target": "أعرف أنك تريد أن تتكلم العربية معي ليلة السبت.", "score": 8},
+        {"known": "She wanted to know what I was doing on Saturday night this week.", "target": "أرادت أن تعرف ماذا كنت أحاول ليلة السبت هذا الأسبوع.", "score": 8},
+        {"known": "I do not know what I want to do on Saturday night but I will try.", "target": "لا أعرف ماذا أريد أن أفعله ليلة السبت لكنني سأحاول.", "score": 8},
+        {"known": "I want to know where you want to be on Saturday night this week.", "target": "أريد أن أعرف أين تريد أن تكون ليلة السبت هذا الأسبوع.", "score": 8}
+      ]
+    }
+  ]
+}

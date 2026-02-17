@@ -1,0 +1,111 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 112,
+  "target_text": "That was very interesting, and I wasn't expecting it.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "面白かった",
+      "target": "interesting",
+      "components": [
+        {"known": "面白い", "target": "interest"},
+        {"known": "かった", "target": "-ing"}
+      ],
+      "build": [
+        {"known": "面白かった", "target": "interesting"},
+        {"known": "とても面白かった", "target": "very interesting"},
+        {"known": "面白かったです", "target": "was interesting"},
+        {"known": "それは面白かった", "target": "that was interesting"}
+      ],
+      "use": [
+        {"known": "それはとても面白かったと思います。", "target": "I think that it was very interesting to learn.", "score": 8},
+        {"known": "彼が言ったことは面白かったです。", "target": "What he said was very interesting to me.", "score": 8},
+        {"known": "それは面白かったです、楽しかったです。", "target": "It was interesting, and I think it was fun.", "score": 8},
+        {"known": "この話は面白かったと思います。", "target": "I think that this was very interesting.", "score": 8},
+        {"known": "新しいことを学ぶのは面白かったです。", "target": "It was interesting to learn something new.", "score": 8},
+        {"known": "友達と話すのは面白かったと思います。", "target": "I think it was interesting to talk with friends.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "そして",
+      "target": "And",
+      "is_duplicate": true
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "予想していなかった",
+      "target": "wasn't expecting",
+      "components": [
+        {"known": "〜なかった", "target": "wasn't"},
+        {"known": "予想している", "target": "expecting"}
+      ],
+      "build": [
+        {"known": "予想していなかった", "target": "wasn't expecting"},
+        {"known": "それを予想していなかった", "target": "wasn't expecting it"},
+        {"known": "こんなに予想していなかった", "target": "wasn't expecting this"},
+        {"known": "予想していなかったです", "target": "I wasn't expecting"}
+      ],
+      "use": [
+        {"known": "それを予想していなかったです。", "target": "I wasn't expecting it to happen like that.", "score": 8},
+        {"known": "予想していなかったですが、面白かったです。", "target": "I wasn't expecting it, but it was interesting.", "score": 8},
+        {"known": "彼がそれを言うとは予想していなかったです。", "target": "I wasn't expecting that he said that to me.", "score": 8},
+        {"known": "それが起きることを予想していなかったです。", "target": "I wasn't expecting that to happen today.", "score": 8},
+        {"known": "予想していなかったことが起きました。", "target": "Something I wasn't expecting did happen.", "score": 8},
+        {"known": "予想していなかったですが、良かったです。", "target": "I wasn't expecting it, but it was good.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "それはとても",
+      "target": "That was very",
+      "components": [
+        {"known": "それは", "target": "That was"},
+        {"known": "とても", "target": "very"}
+      ],
+      "build": [
+        {"known": "それはとても", "target": "That was very"},
+        {"known": "それはとても良い", "target": "That was very good"},
+        {"known": "それはとても面白い", "target": "That was very interesting"},
+        {"known": "それはとても大切", "target": "That was very important"}
+      ],
+      "use": [
+        {"known": "それはとても良かったと思います。", "target": "I think that was very good to do.", "score": 8},
+        {"known": "それはとても面白かったです、そして予想していなかったです。", "target": "That was very interesting, and I wasn't expecting it.", "score": 9},
+        {"known": "それはとても大切なことでした。", "target": "That was very important to know about.", "score": 8},
+        {"known": "それはとても楽しかったと思います。", "target": "I think that was very fun to do.", "score": 8},
+        {"known": "それはとても長い時間でしたが、良かったです。", "target": "That was very long, but it was good.", "score": 8},
+        {"known": "それはとても難しかったですが、やりました。", "target": "That was very difficult, but I did it.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "予想していませんでした",
+      "target": "I wasn't expecting it",
+      "components": [
+        {"known": "私は", "target": "I"},
+        {"known": "予想していなかった", "target": "wasn't expecting"},
+        {"known": "それを", "target": "it"}
+      ],
+      "build": [
+        {"known": "予想していませんでした", "target": "I wasn't expecting it"},
+        {"known": "それを予想していませんでした", "target": "I wasn't expecting that"},
+        {"known": "こんなに予想していませんでした", "target": "I wasn't expecting this"},
+        {"known": "全く予想していませんでした", "target": "I wasn't expecting it at all"}
+      ],
+      "use": [
+        {"known": "それはとても面白かったですが、予想していませんでした。", "target": "That was very interesting, but I wasn't expecting it.", "score": 8},
+        {"known": "彼がそれを言うとは予想していませんでした。", "target": "I wasn't expecting it when he said that.", "score": 8},
+        {"known": "予想していませんでしたが、とても良かったです。", "target": "I wasn't expecting it, but it was very good.", "score": 8},
+        {"known": "今日起きたことを予想していませんでした。", "target": "I wasn't expecting it to happen today.", "score": 8},
+        {"known": "そんなに早いとは予想していませんでした。", "target": "I wasn't expecting it to be that way.", "score": 8},
+        {"known": "私たちが終わることを予想していませんでした。", "target": "I wasn't expecting it when we did finish.", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 255,
+  "target_text": "متى تعتقد أنك ستكون جاهزاً للمغادرة؟",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "When",
+      "target": "متى",
+      "build": [
+        {"known": "When", "target": "متى"},
+        {"known": "When do you", "target": "متى"},
+        {"known": "When do you think", "target": "متى تعتقد"},
+        {"known": "When do you think you", "target": "متى تعتقد أنك"}
+      ],
+      "use": [
+        {"known": "I wanted to know when you would be ready.", "target": "أردت أن أعرف متى ستكون جاهزاً.", "score": 8},
+        {"known": "She asked me when I would be ready to speak Arabic.", "target": "قالت لك متى أكون جاهزاً أن أتكلم العربية.", "score": 8},
+        {"known": "He wanted to know when you would be ready to help.", "target": "أراد أن يعرف متى ستكون جاهزاً أن تساعد.", "score": 8},
+        {"known": "I should ask when you think you will be ready.", "target": "يجب أن أسأل متى تعتقد أنك ستكون جاهزاً.", "score": 9},
+        {"known": "I am ready now but when will you be ready?", "target": "أنا جاهز الآن لكن متى ستكون جاهزاً؟", "score": 8},
+        {"known": "She said she wanted to know when he would be ready.", "target": "قالت أنها أرادت أن تعرف متى سيكون جاهزاً.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "do you think that you",
+      "target": "تعتقد أنك",
+      "components": [
+        {"known": "do you think", "target": "تعتقد"},
+        {"known": "that you", "target": "أنك"}
+      ],
+      "build": [
+        {"known": "do you think that you", "target": "تعتقد أنك"},
+        {"known": "When do you think that you", "target": "متى تعتقد أنك"},
+        {"known": "do you think that you will", "target": "تعتقد أنك ستكون"},
+        {"known": "do you think that you are", "target": "تعتقد أنك"}
+      ],
+      "use": [
+        {"known": "Do you think that you will be ready to learn Arabic today?", "target": "تعتقد أنك ستكون جاهزاً أن تتعلم العربية اليوم؟", "score": 8},
+        {"known": "When do you think that you will be ready to help me?", "target": "متى تعتقد أنك ستكون جاهزاً أن تساعدني؟", "score": 8},
+        {"known": "Do you think that you should learn more Arabic this week?", "target": "تعتقد أنك يجب أن تتعلم العربية أكثر هذا الأسبوع؟", "score": 9},
+        {"known": "I wanted to know if you think that you will be ready.", "target": "أردت أن أعرف تعتقد أنك ستكون جاهزاً.", "score": 8},
+        {"known": "Do you think that you can speak Arabic with me today?", "target": "تعتقد أنك يمكنك أن تتكلم العربية معي اليوم؟", "score": 9},
+        {"known": "When do you think that you will be ready to do that?", "target": "متى تعتقد أنك ستكون جاهزاً أن تفعل ذلك؟", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "will be ready",
+      "target": "ستكون جاهزاً",
+      "components": [
+        {"known": "will be", "target": "ستكون"},
+        {"known": "ready", "target": "جاهزاً"}
+      ],
+      "build": [
+        {"known": "will be ready", "target": "ستكون جاهزاً"},
+        {"known": "you think you will be ready", "target": "تعتقد أنك ستكون جاهزاً"},
+        {"known": "When do you think you will be ready", "target": "متى تعتقد أنك ستكون جاهزاً"},
+        {"known": "will be ready to", "target": "ستكون جاهزاً ل"}
+      ],
+      "use": [
+        {"known": "When do you think you will be ready to speak Arabic?", "target": "متى تعتقد أنك ستكون جاهزاً أن تتكلم العربية؟", "score": 8},
+        {"known": "I think you will be ready to learn more Arabic this week.", "target": "أعتقد أنك ستكون جاهزاً أن تتعلم العربية أكثر هذا الأسبوع.", "score": 9},
+        {"known": "She wanted to know when you will be ready to help.", "target": "أرادت أن تعرف متى ستكون جاهزاً أن تساعد.", "score": 8},
+        {"known": "He thinks you will be ready in a few minutes.", "target": "يعتقد أنك ستكون جاهزاً في بضع دقائق.", "score": 9},
+        {"known": "When do you think you will be ready to do that?", "target": "متى تعتقد أنك ستكون جاهزاً أن تفعل ذلك؟", "score": 8},
+        {"known": "I don't know when you will be ready to start.", "target": "لا أعرف متى ستكون جاهزاً أن تبدأ.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "to leave?",
+      "target": "للمغادرة؟",
+      "components": [
+        {"known": "for", "target": "ل"},
+        {"known": "leaving?", "target": "المغادرة؟"}
+      ],
+      "build": [
+        {"known": "to leave?", "target": "للمغادرة؟"},
+        {"known": "ready to leave?", "target": "جاهزاً للمغادرة؟"},
+        {"known": "will be ready to leave?", "target": "ستكون جاهزاً للمغادرة؟"},
+        {"known": "When do you think you will be ready to leave?", "target": "متى تعتقد أنك ستكون جاهزاً للمغادرة؟"}
+      ],
+      "use": [
+        {"known": "When do you think you will be ready to leave?", "target": "متى تعتقد أنك ستكون جاهزاً للمغادرة؟", "score": 8},
+        {"known": "I want to know when you will be ready to leave?", "target": "أريد أن أعرف متى ستكون جاهزاً للمغادرة؟", "score": 9},
+        {"known": "She wanted to know when he would be ready to leave?", "target": "أرادت أن تعرف متى سيكون جاهزاً للمغادرة؟", "score": 8},
+        {"known": "He asked when you think you will be ready to leave?", "target": "قال متى تعتقد أنك ستكون جاهزاً للمغادرة؟", "score": 9},
+        {"known": "Do you think you will be ready to leave?", "target": "تعتقد أنك ستكون جاهزاً للمغادرة؟", "score": 8},
+        {"known": "I wanted to ask you when you will be ready to leave?", "target": "أردت أن أسألك متى ستكون جاهزاً للمغادرة؟", "score": 9}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 218,
+  "known_text": "I didn't do much on Sunday.",
+  "target_text": "我星期天没做什么。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I didn't.", "target": "我没。"},
+        {"known": "I do.", "target": "我做。"},
+        {"known": "I want.", "target": "我想。"}
+      ],
+      "use": [
+        {"known": "I didn't do much on Sunday because I was too tired.", "target": "我星期天没做什么因为我太累了。", "score": 8},
+        {"known": "She asked if I want to do something with her this Sunday.", "target": "她问我是不是想这个星期天和她做东西。", "score": 7},
+        {"known": "If I have time on Sunday, I will try to do more work.", "target": "如果我星期天有时间，我会试着做更多工作。", "score": 8},
+        {"known": "I hope I can do something interesting this weekend.", "target": "我希望我这个周末可以做一些有意思的东西。", "score": 8},
+        {"known": "Everyone said they didn't see me doing much on Sunday.", "target": "大家都说他们星期天没见我做什么。", "score": 7},
+        {"known": "Did anyone ask you what I did on Sunday last week?", "target": "有人问你我上星期天做了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "Sunday",
+      "target": "星期天",
+      "components": [
+        {"known": "week", "target": "星期"},
+        {"known": "day/sky", "target": "天"}
+      ],
+      "build": [
+        {"known": "Sunday.", "target": "星期天。"},
+        {"known": "On Sunday.", "target": "星期天。"},
+        {"known": "This Sunday.", "target": "这个星期天。"},
+        {"known": "Last Sunday.", "target": "上星期天。"}
+      ],
+      "use": [
+        {"known": "I didn't do anything special on Sunday so I stayed home.", "target": "我星期天没做什么所以我在家。", "score": 8},
+        {"known": "She said she is going to be very busy this Sunday.", "target": "她说她这个星期天要很忙。", "score": 7},
+        {"known": "If you have time on Sunday, we can go out together.", "target": "如果你星期天有时间，我们可以一起出去。", "score": 8},
+        {"known": "I usually like to spend time with friends on Sunday.", "target": "我通常喜欢星期天和朋友花时间。", "score": 7},
+        {"known": "Everyone wants to have a good time together on Sunday.", "target": "大家都想星期天一起过得开心。", "score": 8},
+        {"known": "Did they tell you what they did together last Sunday?", "target": "他们告诉你他们上星期天一起做了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "not/didn't (negation)",
+      "target": "没",
+      "build": [
+        {"known": "Didn't.", "target": "没。"},
+        {"known": "Not.", "target": "没。"},
+        {"known": "Didn't do.", "target": "没做。"},
+        {"known": "I didn't.", "target": "我没。"}
+      ],
+      "use": [
+        {"known": "I didn't do anything special on Sunday because I was tired.", "target": "我星期天没做什么因为我累了。", "score": 7},
+        {"known": "She told me she didn't have time to come this weekend.", "target": "她告诉我她这个周末没有时间来。", "score": 8},
+        {"known": "If you didn't do the work, please tell me right now.", "target": "如果你没做工作，请现在告诉我。", "score": 8},
+        {"known": "I didn't know they wanted to meet us on Saturday.", "target": "我没知道他们想星期六见我们。", "score": 7},
+        {"known": "Everyone said they didn't see him at the office today.", "target": "大家都说他们今天在办公室没见他。", "score": 8},
+        {"known": "Did you know I didn't go out on Saturday night?", "target": "你知道我星期六晚上没出去吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "do/make",
+      "target": "做",
+      "build": [
+        {"known": "Do.", "target": "做。"},
+        {"known": "Make.", "target": "做。"},
+        {"known": "Didn't do.", "target": "没做。"},
+        {"known": "Do what.", "target": "做什么。"}
+      ],
+      "use": [
+        {"known": "I didn't do much on Sunday so I had a lot of free time.", "target": "我星期天没做什么所以我有很多时间。", "score": 7},
+        {"known": "She asked what we need to do before the meeting starts.", "target": "她问我们在开会开始之前需要做什么。", "score": 8},
+        {"known": "If you don't know what to do, just ask me for help.", "target": "如果你不知道做什么，就问我帮忙。", "score": 7},
+        {"known": "I want to do something different this Sunday if I can.", "target": "我想星期天做一些不一样的东西如果可以。", "score": 8},
+        {"known": "Everyone did their best to finish the work on time.", "target": "大家都做得最好按时完成工作。", "score": 8},
+        {"known": "Did you do everything I asked you to do last Sunday?", "target": "你做了我上星期天让你做的一切吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "what",
+      "target": "什么",
+      "components": [
+        {"known": "what (part)", "target": "什"},
+        {"known": "suffix", "target": "么"}
+      ],
+      "build": [
+        {"known": "What?", "target": "什么？"},
+        {"known": "Do what.", "target": "做什么。"},
+        {"known": "Didn't do much.", "target": "没做什么。"},
+        {"known": "What thing.", "target": "什么东西。"}
+      ],
+      "use": [
+        {"known": "I didn't do much on Sunday but I had a good time.", "target": "我星期天没做什么但是我过得开心。", "score": 7},
+        {"known": "She asked what we were doing at the office yesterday.", "target": "她问我们昨天在办公室做什么。", "score": 7},
+        {"known": "If you don't know what to do, please ask me for help.", "target": "如果你不知道做什么，请问我帮忙。", "score": 8},
+        {"known": "I want to know what you did last Sunday with friends.", "target": "我想知道你上星期天和朋友做了什么。", "score": 8},
+        {"known": "Everyone is asking what went wrong at the meeting.", "target": "大家都在问开会出了什么问题。", "score": 8},
+        {"known": "Did you know what he was trying to say to us?", "target": "你知道他在试着和我们说什么吗？", "score": 8}
+      ]
+    }
+  ]
+}

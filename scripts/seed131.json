@@ -1,0 +1,128 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 131,
+  "known_text": "頭の中にたくさんの考えがぐるぐる回っています。",
+  "target_text": "There are too many ideas going around in my head.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "複数の考え",
+      "target": "ideas",
+      "components": [
+        {"known": "複数の", "target": "plural"},
+        {"known": "考え", "target": "idea"}
+      ],
+      "build": [
+        {"known": "複数の考え", "target": "ideas"},
+        {"known": "新しい考え", "target": "new ideas"},
+        {"known": "良い考え", "target": "good ideas"},
+        {"known": "私の考え", "target": "my ideas"}
+      ],
+      "use": [
+        {"known": "私はたくさんの考えを持っていると思います。", "target": "I think that I have a lot of ideas.", "score": 7},
+        {"known": "彼女は良い考えを持ちたいと言いました。", "target": "She said that she wanted to have good ideas.", "score": 8},
+        {"known": "彼は私の考えを理解したいと言いました。", "target": "He said that he wanted to understand my ideas.", "score": 8},
+        {"known": "私たちは新しい考えが必要だと思います。", "target": "I think that we need new ideas.", "score": 7},
+        {"known": "彼女は彼の考えを知りたかったです。", "target": "She wanted to know his ideas.", "score": 7},
+        {"known": "私はあなたの考えを聞きたいと思っています。", "target": "I think that I want to hear your ideas.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "多すぎる",
+      "target": "too many",
+      "components": [
+        {"known": "多い", "target": "many"},
+        {"known": "すぎる", "target": "too"}
+      ],
+      "build": [
+        {"known": "多すぎる", "target": "too many"},
+        {"known": "多すぎる考え", "target": "too many ideas"},
+        {"known": "多すぎること", "target": "too many things"},
+        {"known": "多すぎる仕事", "target": "too many work"}
+      ],
+      "use": [
+        {"known": "それは私にとって多すぎると思います。", "target": "I think that is too many for me.", "score": 7},
+        {"known": "彼女は多すぎることをしたくなかったです。", "target": "She didn't want to do too many things.", "score": 8},
+        {"known": "私たちは多すぎることを今やっています。", "target": "We are doing too many things now.", "score": 7},
+        {"known": "彼は多すぎることを知っていたと思います。", "target": "I think he used to know too many things.", "score": 7},
+        {"known": "多すぎる考えがあると理解するのが難しいです。", "target": "It is difficult to understand when you have too many ideas.", "score": 8},
+        {"known": "私は多すぎることをやっていてとても嬉しくないです。", "target": "I'm not very happy that I'm doing too many things.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "ぐるぐる回っている",
+      "target": "going around",
+      "components": [
+        {"known": "回る", "target": "going"},
+        {"known": "ぐるぐる", "target": "around"}
+      ],
+      "build": [
+        {"known": "ぐるぐる回っている", "target": "going around"},
+        {"known": "考えがぐるぐる回っている", "target": "ideas going around"},
+        {"known": "ぐるぐる回っています", "target": "is going around"},
+        {"known": "何かがぐるぐる回っている", "target": "something going around"}
+      ],
+      "use": [
+        {"known": "多すぎる考えがぐるぐる回っていると思います。", "target": "I think that too many ideas are going around.", "score": 7},
+        {"known": "同じことがぐるぐる回っていると思いました。", "target": "I thought that the same thing was going around.", "score": 8},
+        {"known": "彼女は何かがぐるぐる回っていると言いました。", "target": "She said that something was going around.", "score": 8},
+        {"known": "多すぎる考えがぐるぐる回っていて私は理解しにくいです。", "target": "Too many ideas are going around and it is difficult for me to understand.", "score": 8},
+        {"known": "私の考えがぐるぐる回っているので、仕事が難しいです。", "target": "My ideas are going around, so work is difficult.", "score": 8},
+        {"known": "彼は何がぐるぐる回っているか知りたかったです。", "target": "He wanted to know what was going around.", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "頭の中に",
+      "target": "in my head",
+      "components": [
+        {"known": "頭", "target": "head"},
+        {"known": "の中に", "target": "in my"}
+      ],
+      "build": [
+        {"known": "頭の中に", "target": "in my head"},
+        {"known": "私の頭の中に", "target": "in my head"},
+        {"known": "頭の中にある", "target": "is in my head"},
+        {"known": "あなたの頭の中に", "target": "in your head"}
+      ],
+      "use": [
+        {"known": "それは私の頭の中にあると思います。", "target": "I think that is in my head.", "score": 7},
+        {"known": "多すぎる考えが頭の中にあると彼女は言いました。", "target": "She said that too many ideas are in my head.", "score": 8},
+        {"known": "彼女の言葉が私の頭の中にあると思います。", "target": "I think that her words are in my head.", "score": 8},
+        {"known": "何が頭の中にあるか教えてください。", "target": "Tell me what is in your head.", "score": 7},
+        {"known": "多すぎることが頭の中にぐるぐる回っていると思います。", "target": "I think that too many things are going around in my head.", "score": 8},
+        {"known": "私の頭の中には多すぎる考えがぐるぐる回っていると思います。", "target": "I think that too many ideas are going around in my head.", "score": 9}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "〜があります",
+      "target": "There are",
+      "components": [
+        {"known": "ある", "target": "are"},
+        {"known": "〜が", "target": "There"}
+      ],
+      "build": [
+        {"known": "〜があります", "target": "There are"},
+        {"known": "考えがあります", "target": "There are ideas"},
+        {"known": "多すぎることがあります", "target": "There are too many things"},
+        {"known": "ぐるぐる回っている考えがあります", "target": "There are ideas going around"}
+      ],
+      "use": [
+        {"known": "ここには多すぎることがあると思います。", "target": "I think that there are too many things here.", "score": 8},
+        {"known": "私の頭の中に多すぎる考えがあります。", "target": "There are too many ideas in my head.", "score": 8},
+        {"known": "ここには私たちがやりたいことがたくさんあります。", "target": "There are a lot of things that we want to do here.", "score": 8},
+        {"known": "彼女が理解したいことがあると思います。", "target": "I think there are things she wanted to understand.", "score": 8},
+        {"known": "頭の中に多すぎる考えがぐるぐる回っています。", "target": "There are too many ideas going around in my head.", "score": 9},
+        {"known": "ここには私が知りたいことがたくさんあります。", "target": "There are a lot of things I want to know here.", "score": 8}
+      ]
+    }
+  ]
+}

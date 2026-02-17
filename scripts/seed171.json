@@ -1,0 +1,79 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 171,
+  "target_text": "Do you want me to help you look for it?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Voulez-vous",
+      "target": "Do you want",
+      "components": [
+        {"known": "Voulez", "target": "Do"},
+        {"known": "vous", "target": "you want"}
+      ],
+      "build": [
+        {"known": "Voulez-vous", "target": "Do you want"},
+        {"known": "vous voulez", "target": "you want"},
+        {"known": "Voulez-vous faire", "target": "Do you want to do"},
+        {"known": "Voulez-vous venir", "target": "Do you want to come"}
+      ],
+      "use": [
+        {"known": "Voulez-vous venir avec nous demain après-midi si vous pouvez?", "target": "Do you want to come with us tomorrow afternoon if you can?", "score": 8},
+        {"known": "Voulez-vous faire quelque chose de différent ce soir avec moi?", "target": "Do you want to do something different this evening with me?", "score": 8},
+        {"known": "Voulez-vous que je vienne vous aider demain matin?", "target": "Do you want me to come and help you tomorrow morning?", "score": 8},
+        {"known": "Voulez-vous me dire ce que vous pensez de ça maintenant?", "target": "Do you want to tell me what you think about that now?", "score": 8},
+        {"known": "Voulez-vous parler de ça avec moi plus tard cet après-midi?", "target": "Do you want to talk about that with me later on this afternoon?", "score": 8},
+        {"known": "Voulez-vous savoir ce dont j'ai besoin pour le faire demain?", "target": "Do you want to know what I need to do it tomorrow?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "que je vous aide",
+      "target": "me to help you",
+      "components": [
+        {"known": "que je", "target": "me to"},
+        {"known": "vous aide", "target": "help you"}
+      ],
+      "build": [
+        {"known": "que je vous aide", "target": "me to help you"},
+        {"known": "vous aide", "target": "help you"},
+        {"known": "que je t'aide", "target": "me to help you"},
+        {"known": "voulez que je vous aide", "target": "want me to help you"}
+      ],
+      "use": [
+        {"known": "Voulez-vous que je vous aide à faire ça demain matin?", "target": "Do you want me to help you do that tomorrow morning?", "score": 8},
+        {"known": "Je voudrais vous aider mais je ne peux pas maintenant", "target": "I'd like to help you but I can't now", "score": 8},
+        {"known": "Tu veux que je t'aide avec ça demain après-midi?", "target": "Do you want me to help you with that tomorrow afternoon?", "score": 8},
+        {"known": "Je peux venir t'aider plus tard si tu veux demain", "target": "I can come and help you later on if you want tomorrow", "score": 8},
+        {"known": "Je voudrais que tu me dises si tu veux que je t'aide", "target": "I'd like you to tell me if you want me to help you", "score": 8},
+        {"known": "Vous voulez que je vienne vous aider ce soir à la maison?", "target": "Do you want me to come and help you this evening at home?", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "à le chercher",
+      "target": "look for it",
+      "components": [
+        {"known": "chercher", "target": "look for"},
+        {"known": "le", "target": "it"}
+      ],
+      "build": [
+        {"known": "à le chercher", "target": "look for it"},
+        {"known": "chercher", "target": "look for"},
+        {"known": "le chercher", "target": "look for it"},
+        {"known": "aider à chercher", "target": "help look for"}
+      ],
+      "use": [
+        {"known": "Voulez-vous que je vous aide à le chercher demain matin?", "target": "Do you want me to help you look for it tomorrow morning?", "score": 9},
+        {"known": "Je vais le chercher demain si tu veux que je le fasse", "target": "I'm going to look for it tomorrow if you want me to do it", "score": 8},
+        {"known": "Tu peux m'aider à le chercher plus tard cet après-midi?", "target": "Can you help me look for it later on this afternoon?", "score": 8},
+        {"known": "Je voudrais le chercher mais je ne sais pas où c'est", "target": "I'd like to look for it but I don't know where it is", "score": 8},
+        {"known": "Je vais t'aider à le chercher si tu veux demain", "target": "I'm going to help you look for it if you want tomorrow", "score": 8},
+        {"known": "Voulez-vous venir m'aider à le chercher ce soir à la maison?", "target": "Do you want to come and help me look for it this evening at home?", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 38,
+  "target_text": "I've been learning for about a week.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "estou aprendendo",
+      "target": "I've been learning",
+      "components": [
+        {"known": "estou", "target": "I've been"},
+        {"known": "aprendendo", "target": "learning"}
+      ],
+      "build": [
+        {"known": "estou aprendendo", "target": "I've been learning"},
+        {"known": "estou aprendendo inglês", "target": "I've been learning English"},
+        {"known": "estou aprendendo a falar", "target": "I've been learning to speak"},
+        {"known": "estou aprendendo com você", "target": "I've been learning with you"}
+      ],
+      "use": [
+        {"known": "Estou aprendendo inglês e eu quero falar com você agora.", "target": "I've been learning English and I want to speak with you now.", "score": 8},
+        {"known": "Estou aprendendo a falar inglês com outras pessoas aqui.", "target": "I've been learning to speak English with other people here.", "score": 8},
+        {"known": "Estou aprendendo inglês com cuidado e eu quero pensar nisso.", "target": "I've been learning English carefully and I want to think about it.", "score": 8},
+        {"known": "Estou aprendendo a pensar nisso com cuidado.", "target": "I've been learning to think about it carefully.", "score": 7},
+        {"known": "Estou aprendendo inglês e eu comecei no mês passado.", "target": "I've been learning English and I started last month.", "score": 8},
+        {"known": "Estou aprendendo inglês e eu não quero interromper a história.", "target": "I've been learning English and I don't want to interrupt the story.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "há cerca de",
+      "target": "for about",
+      "components": [
+        {"known": "há", "target": "for"},
+        {"known": "cerca de", "target": "about"}
+      ],
+      "build": [
+        {"known": "há cerca de", "target": "for about"},
+        {"known": "estou aprendendo há cerca de", "target": "I've been learning for about"},
+        {"known": "há cerca de um mês", "target": "for about a month"},
+        {"known": "estou falando há cerca de", "target": "I've been speaking for about"}
+      ],
+      "use": [
+        {"known": "Estou aprendendo inglês há cerca de um mês e eu quero falar.", "target": "I've been learning English for about a month and I want to speak.", "score": 8},
+        {"known": "Estou tentando falar inglês com você há cerca de um mês.", "target": "I've been trying to speak English with you for about a month.", "score": 8},
+        {"known": "Estou aprendendo a pensar nisso com cuidado há cerca de um mês.", "target": "I've been learning to think about it carefully for about a month.", "score": 8},
+        {"known": "Estou falando inglês com outras pessoas há cerca de um mês.", "target": "I've been speaking English with other people for about a month.", "score": 8},
+        {"known": "Estou tentando aprender inglês há cerca de um mês agora.", "target": "I've been trying to learn English for about a month now.", "score": 7},
+        {"known": "Estou aprendendo inglês com cuidado há cerca de um mês.", "target": "I've been learning English carefully for about a month.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "uma semana",
+      "target": "a week",
+      "components": [
+        {"known": "uma", "target": "a"},
+        {"known": "semana", "target": "week"}
+      ],
+      "build": [
+        {"known": "uma semana", "target": "a week"},
+        {"known": "há cerca de uma semana", "target": "for about a week"},
+        {"known": "estou aprendendo há uma semana", "target": "I've been learning for a week"},
+        {"known": "há uma semana", "target": "for a week"}
+      ],
+      "use": [
+        {"known": "Estou aprendendo inglês há cerca de uma semana e eu quero falar agora.", "target": "I've been learning English for about a week and I want to speak now.", "score": 8},
+        {"known": "Estou tentando pensar nisso com cuidado há cerca de uma semana.", "target": "I've been trying to think about it carefully for about a week.", "score": 8},
+        {"known": "Estou aprendendo a falar inglês há uma semana e eu quero falar com você.", "target": "I've been learning to speak English for a week and I want to speak with you.", "score": 8},
+        {"known": "Estou tentando aprender inglês há uma semana agora.", "target": "I've been trying to learn English for a week now.", "score": 7},
+        {"known": "Estou aprendendo a falar inglês com cuidado há cerca de uma semana.", "target": "I've been learning to speak English carefully for about a week.", "score": 8},
+        {"known": "Eu quero falar inglês com você há uma semana.", "target": "I've wanted to speak English with you for a week.", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 53,
+  "known_text": "She wanted to put his letter in her bag.",
+  "target_text": "Zij wilde zijn brief in haar tas stoppen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "she",
+      "target": "zij",
+      "build": [
+        {"known": "she", "target": "zij"},
+        {"known": "she wants", "target": "zij wil"},
+        {"known": "she is", "target": "zij is"},
+        {"known": "she wanted", "target": "zij wilde"}
+      ],
+      "use": [
+        {"known": "She wants to speak Dutch with everyone.", "target": "Zij wil Nederlands spreken met iedereen.", "score": 8},
+        {"known": "She wanted to do it with my friends last week.", "target": "Zij wilde het vorige week doen met mijn vrienden.", "score": 8},
+        {"known": "I think that she wants to learn Dutch now.", "target": "Ik denk dat zij nu Nederlands wil leren.", "score": 8},
+        {"known": "She wanted to write a letter to her friend.", "target": "Zij wilde een brief aan haar vriend schrijven.", "score": 8},
+        {"known": "She wanted to do interesting things with everyone.", "target": "Zij wilde interessante dingen doen met iedereen.", "score": 7},
+        {"known": "She wanted to learn something interesting last week.", "target": "Zij wilde vorige week iets interessants leren.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "wanted",
+      "target": "wilde",
+      "build": [
+        {"known": "wanted", "target": "wilde"},
+        {"known": "she wanted", "target": "zij wilde"},
+        {"known": "wanted to do", "target": "wilde doen"},
+        {"known": "wanted to speak", "target": "wilde spreken"}
+      ],
+      "use": [
+        {"known": "She wanted to speak Dutch with my friend.", "target": "Zij wilde Nederlands spreken met mijn vriend.", "score": 8},
+        {"known": "She wanted to do it with someone else last week.", "target": "Zij wilde het vorige week met iemand anders doen.", "score": 8},
+        {"known": "She wanted to write something interesting now.", "target": "Zij wilde nu iets interessants schrijven.", "score": 8},
+        {"known": "I think that she wanted to do it with everyone.", "target": "Ik denk dat zij het met iedereen wilde doen.", "score": 7},
+        {"known": "She wanted to learn Dutch with his friends.", "target": "Zij wilde Nederlands leren met zijn vrienden.", "score": 8},
+        {"known": "She wanted to do interesting things with my friends.", "target": "Zij wilde interessante dingen doen met mijn vrienden.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "to put",
+      "target": "stoppen",
+      "build": [
+        {"known": "to put", "target": "stoppen"},
+        {"known": "to put it", "target": "het stoppen"},
+        {"known": "I want to put", "target": "ik wil stoppen"},
+        {"known": "to put something", "target": "iets stoppen"}
+      ],
+      "use": [
+        {"known": "I want to put it with my things now.", "target": "Ik wil het nu met mijn dingen stoppen.", "score": 7},
+        {"known": "She wanted to put something with his things.", "target": "Zij wilde iets met zijn dingen stoppen.", "score": 7},
+        {"known": "He wanted to put it somewhere interesting.", "target": "Hij wilde het ergens interessants stoppen.", "score": 7},
+        {"known": "I try to put it with my friend now.", "target": "Ik probeer het nu met mijn vriend te stoppen.", "score": 6},
+        {"known": "She wanted to put the letter somewhere now.", "target": "Zij wilde de brief nu ergens stoppen.", "score": 7},
+        {"known": "He wanted to put his letter with his things last week.", "target": "Hij wilde vorige week zijn brief met zijn dingen stoppen.", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "his",
+      "target": "zijn",
+      "build": [
+        {"known": "his", "target": "zijn"},
+        {"known": "his friend", "target": "zijn vriend"},
+        {"known": "his letter", "target": "zijn brief"},
+        {"known": "his things", "target": "zijn dingen"}
+      ],
+      "use": [
+        {"known": "She wanted to put his letter somewhere.", "target": "Zij wilde zijn brief ergens stoppen.", "score": 8},
+        {"known": "I think that his Dutch is very good now.", "target": "Ik denk dat zijn Nederlands nu heel goed is.", "score": 8},
+        {"known": "She wanted to put his things with my things.", "target": "Zij wilde zijn dingen met mijn dingen stoppen.", "score": 7},
+        {"known": "His friend wanted to write something interesting.", "target": "Zijn vriend wilde iets interessants schrijven.", "score": 8},
+        {"known": "She wanted to put his letter with her things.", "target": "Zij wilde zijn brief met haar dingen stoppen.", "score": 7},
+        {"known": "He wanted to put his letter somewhere last week.", "target": "Hij wilde vorige week zijn brief ergens stoppen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "letter",
+      "target": "brief",
+      "build": [
+        {"known": "letter", "target": "brief"},
+        {"known": "his letter", "target": "zijn brief"},
+        {"known": "a letter", "target": "een brief"},
+        {"known": "the letter", "target": "de brief"}
+      ],
+      "use": [
+        {"known": "She wanted to put the letter somewhere now.", "target": "Zij wilde de brief nu ergens stoppen.", "score": 7},
+        {"known": "I think that his letter is very good.", "target": "Ik denk dat zijn brief heel goed is.", "score": 7},
+        {"known": "She wanted to put his letter with her things.", "target": "Zij wilde zijn brief met haar dingen stoppen.", "score": 8},
+        {"known": "He wanted to write a letter to his friend last week.", "target": "Hij wilde vorige week een brief aan zijn vriend schrijven.", "score": 8},
+        {"known": "She wanted to put the letter somewhere interesting.", "target": "Zij wilde de brief ergens interessants stoppen.", "score": 7},
+        {"known": "I would like to put his letter with my things.", "target": "Ik zou graag zijn brief met mijn dingen willen stoppen.", "score": 7}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "in",
+      "target": "in",
+      "build": [
+        {"known": "in", "target": "in"},
+        {"known": "in it", "target": "in het"},
+        {"known": "in Dutch", "target": "in het Nederlands"},
+        {"known": "in the letter", "target": "in de brief"}
+      ],
+      "use": [
+        {"known": "I want to put his letter in something now.", "target": "Ik wil zijn brief nu in iets stoppen.", "score": 7},
+        {"known": "She wanted to put something in the letter.", "target": "Zij wilde iets in de brief stoppen.", "score": 7},
+        {"known": "He wanted to write something in Dutch last week.", "target": "Hij wilde vorige week iets in het Nederlands schrijven.", "score": 8},
+        {"known": "I enjoy speaking in Dutch with my friends now.", "target": "Ik vind het nu leuk om in het Nederlands te spreken met mijn vrienden.", "score": 8},
+        {"known": "She wanted to put his letter in something interesting.", "target": "Zij wilde zijn brief in iets interessants stoppen.", "score": 7},
+        {"known": "He wanted to put the letter in his things last week.", "target": "Hij wilde vorige week de brief in zijn dingen stoppen.", "score": 7}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "her",
+      "target": "haar",
+      "build": [
+        {"known": "her", "target": "haar"},
+        {"known": "her friend", "target": "haar vriend"},
+        {"known": "her letter", "target": "haar brief"},
+        {"known": "with her", "target": "met haar"}
+      ],
+      "use": [
+        {"known": "She wanted to put something in her letter.", "target": "Zij wilde iets in haar brief stoppen.", "score": 7},
+        {"known": "I think that her Dutch is very good now.", "target": "Ik denk dat haar Nederlands nu heel goed is.", "score": 8},
+        {"known": "He wanted to write a letter to her last week.", "target": "Hij wilde vorige week een brief aan haar schrijven.", "score": 8},
+        {"known": "I enjoy speaking Dutch with her friends now.", "target": "Ik vind het nu leuk om Nederlands te spreken met haar vrienden.", "score": 7},
+        {"known": "She wanted to put his letter in her things.", "target": "Zij wilde zijn brief in haar dingen stoppen.", "score": 8},
+        {"known": "Her friend wanted to write something last week.", "target": "Haar vriend wilde vorige week iets schrijven.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "bag",
+      "target": "tas",
+      "build": [
+        {"known": "bag", "target": "tas"},
+        {"known": "a bag", "target": "een tas"},
+        {"known": "her bag", "target": "haar tas"},
+        {"known": "my bag", "target": "mijn tas"}
+      ],
+      "use": [
+        {"known": "I want to put the letter in my bag now.", "target": "Ik wil de brief nu in mijn tas stoppen.", "score": 8},
+        {"known": "She wanted to put his letter in her bag.", "target": "Zij wilde zijn brief in haar tas stoppen.", "score": 9},
+        {"known": "He wanted to put the letter in her bag last week.", "target": "Hij wilde vorige week de brief in haar tas stoppen.", "score": 8},
+        {"known": "I think that my bag is very good now.", "target": "Ik denk dat mijn tas nu heel goed is.", "score": 6},
+        {"known": "She wanted to put something interesting in her bag.", "target": "Zij wilde iets interessants in haar tas stoppen.", "score": 7},
+        {"known": "He wanted to put his letter in her bag last week.", "target": "Hij wilde vorige week zijn brief in haar tas stoppen.", "score": 8}
+      ]
+    }
+  ]
+}

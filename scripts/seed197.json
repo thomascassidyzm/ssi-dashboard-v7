@@ -1,0 +1,96 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 197,
+  "known_text": "My son works as a teacher.",
+  "target_text": "我儿子当老师。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/my",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "My.", "target": "我的。"},
+        {"known": "My son.", "target": "我儿子。"},
+        {"known": "I am.", "target": "我是。"}
+      ],
+      "use": [
+        {"known": "Have you heard about the latest idea my friend has?", "target": "你听说过我朋友最新的主意吗？", "score": 7},
+        {"known": "I'm trying to find the money I left on the table.", "target": "我在试着找我留在桌子上的钱。", "score": 7},
+        {"known": "I'm sorry but I'm too busy to help you today.", "target": "对不起，但是我今天太忙了，不能帮你。", "score": 7},
+        {"known": "Do you mind if I tell you about the latest thing I heard?", "target": "你介意我告诉你我听说的最新的事吗？", "score": 8},
+        {"known": "Everyone has heard about what I did at that place.", "target": "大家都听说了我在那个地方做的事。", "score": 6},
+        {"known": "I don't mind at all if you have questions for me.", "target": "如果你有问题要问我，我一点都不介意。", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "son",
+      "target": "儿子",
+      "components": [
+        {"known": "child/son", "target": "儿"},
+        {"known": "suffix", "target": "子"}
+      ],
+      "build": [
+        {"known": "Son.", "target": "儿子。"},
+        {"known": "My son.", "target": "我儿子。"},
+        {"known": "Your son.", "target": "你儿子。"},
+        {"known": "His son.", "target": "他儿子。"}
+      ],
+      "use": [
+        {"known": "My son has heard about the latest idea you have.", "target": "我儿子听说过你最新的主意。", "score": 7},
+        {"known": "Her son is trying to find a good place to work.", "target": "她儿子在试着找一个好的地方工作。", "score": 7},
+        {"known": "His son left some money on the table yesterday.", "target": "他儿子昨天把一些钱留在桌子上了。", "score": 7},
+        {"known": "I'm sorry but my son is too busy to come today.", "target": "对不起，但是我儿子今天太忙了，不能来。", "score": 7},
+        {"known": "Everyone has heard about what her son did.", "target": "大家都听说了她儿子做的事。", "score": 6},
+        {"known": "Do you mind if my son asks you some questions?", "target": "你介意我儿子问你几个问题吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "work as/serve as",
+      "target": "当",
+      "build": [
+        {"known": "Work as.", "target": "当。"},
+        {"known": "I work as.", "target": "我当。"},
+        {"known": "He works as.", "target": "他当。"},
+        {"known": "My son works as.", "target": "我儿子当。"}
+      ],
+      "use": [
+        {"known": "My son works as someone important at that place.", "target": "我儿子在那个地方当一个重要的人。", "score": 6},
+        {"known": "She told me she has been working there already.", "target": "她告诉我她已经在那里当了。", "score": 7},
+        {"known": "He said he wants to work as something different now.", "target": "他说他现在想当一些不一样的。", "score": 7},
+        {"known": "I'm trying to find out what he works as there.", "target": "我在试着找出他在那里当什么。", "score": 7},
+        {"known": "Everyone knows my son has been working there.", "target": "大家都知道我儿子在那里当了。", "score": 6},
+        {"known": "Do you mind telling me what your son works as?", "target": "你介意告诉我你儿子当什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "teacher",
+      "target": "老师",
+      "components": [
+        {"known": "old/experienced", "target": "老"},
+        {"known": "master/teacher", "target": "师"}
+      ],
+      "build": [
+        {"known": "Teacher.", "target": "老师。"},
+        {"known": "My teacher.", "target": "我老师。"},
+        {"known": "A good teacher.", "target": "好老师。"},
+        {"known": "Work as a teacher.", "target": "当老师。"}
+      ],
+      "use": [
+        {"known": "My son works as a teacher at that place now.", "target": "我儿子现在在那个地方当老师。", "score": 7},
+        {"known": "She has heard that the teacher there is very good.", "target": "她听说过那里的老师很好。", "score": 7},
+        {"known": "His teacher told him to find the latest thing.", "target": "他老师告诉他找最新的事。", "score": 7},
+        {"known": "I'm sorry but the teacher is too busy to help today.", "target": "对不起，但是老师今天太忙了，不能帮忙。", "score": 7},
+        {"known": "Everyone wants to work as a teacher like him.", "target": "大家都想像他一样当老师。", "score": 7},
+        {"known": "Do you mind if I ask the teacher about this problem?", "target": "你介意我问老师关于这个问题吗？", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 43,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je ne pensais pas",
+      "target": "I wasn't thinking",
+      "components": [
+        {"known": "Je", "target": "I"},
+        {"known": "ne pensais pas", "target": "wasn't thinking"}
+      ],
+      "build": [
+        {"known": "Je ne pensais pas", "target": "I wasn't thinking"},
+        {"known": "ne pensais pas", "target": "wasn't thinking"},
+        {"known": "Je ne pensais pas à", "target": "I wasn't thinking about"},
+        {"known": "Je ne pensais pas à ça", "target": "I wasn't thinking about it"}
+      ],
+      "use": [
+        {"known": "Je ne pensais pas à parler anglais ce matin.", "target": "I wasn't thinking about speaking English this morning.", "score": 9},
+        {"known": "Je ne pensais pas à ça quand tu as commencé à parler.", "target": "I wasn't thinking about it when you started to speak.", "score": 9},
+        {"known": "Je ne pensais pas à apprendre anglais hier soir.", "target": "I wasn't thinking about learning English last night.", "score": 9},
+        {"known": "Je ne pensais pas à parler anglais avec d'autres personnes.", "target": "I wasn't thinking about speaking English with other people.", "score": 9},
+        {"known": "Je ne pensais pas à comment me sentir mieux ce matin.", "target": "I wasn't thinking about how to feel better this morning.", "score": 9},
+        {"known": "Je ne pensais pas à ça quand je commençais à me sentir fatigué.", "target": "I wasn't thinking about it when I was starting to feel tired.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "à",
+      "target": "about",
+      "build": [
+        {"known": "à", "target": "about"},
+        {"known": "penser à", "target": "to think about"},
+        {"known": "Je ne pensais pas à", "target": "I wasn't thinking about"},
+        {"known": "à ça", "target": "about it"}
+      ],
+      "use": [
+        {"known": "Je ne pensais pas à comment répondre en anglais.", "target": "I wasn't thinking about how to answer in English.", "score": 9},
+        {"known": "Je commençais à y réfléchir attentivement.", "target": "I was starting to think about it carefully.", "score": 9},
+        {"known": "Je ne pensais pas à ça ce matin.", "target": "I wasn't thinking about it this morning.", "score": 9},
+        {"known": "Je veux y réfléchir attentivement avant de répondre.", "target": "I want to think about it carefully before I answer.", "score": 9},
+        {"known": "Je ne pensais pas à parler anglais hier soir.", "target": "I wasn't thinking about speaking English last night.", "score": 9},
+        {"known": "Je me sens mieux quand je pense à comment parler anglais.", "target": "I feel better when I think about how to speak English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "comment",
+      "target": "how",
+      "build": [
+        {"known": "comment", "target": "how"},
+        {"known": "comment répondre", "target": "how to answer"},
+        {"known": "Je ne pensais pas à comment", "target": "I wasn't thinking about how"},
+        {"known": "comment parler", "target": "how to speak"}
+      ],
+      "use": [
+        {"known": "Je ne pensais pas à comment répondre.", "target": "I wasn't thinking about how to answer.", "score": 9},
+        {"known": "Je veux apprendre comment parler anglais mieux.", "target": "I want to learn how to speak English better.", "score": 9},
+        {"known": "Je ne pensais pas à comment commencer à parler.", "target": "I wasn't thinking about how to start to speak.", "score": 9},
+        {"known": "Je me sens mieux maintenant quand je sais comment répondre.", "target": "I feel better now when I know how to answer.", "score": 9},
+        {"known": "Je ne pensais pas à comment me sentir mieux.", "target": "I wasn't thinking about how to feel better.", "score": 9},
+        {"known": "Je veux apprendre comment répondre en anglais facilement.", "target": "I want to learn how to answer in English easily.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "répondre",
+      "target": "to answer",
+      "build": [
+        {"known": "répondre", "target": "to answer"},
+        {"known": "comment répondre", "target": "how to answer"},
+        {"known": "Je ne pensais pas à comment répondre", "target": "I wasn't thinking about how to answer"},
+        {"known": "répondre en anglais", "target": "to answer in English"}
+      ],
+      "use": [
+        {"known": "Je ne pensais pas à comment répondre en anglais.", "target": "I wasn't thinking about how to answer in English.", "score": 9},
+        {"known": "Je veux répondre en anglais facilement.", "target": "I want to answer in English easily.", "score": 9},
+        {"known": "Je ne pensais pas à répondre quand tu as parlé.", "target": "I wasn't thinking about answering when you spoke.", "score": 9},
+        {"known": "Je me sens prêt à répondre en anglais maintenant.", "target": "I feel ready to answer in English now.", "score": 9},
+        {"known": "Je commençais à apprendre comment répondre mieux.", "target": "I was starting to learn how to answer better.", "score": 9},
+        {"known": "Je ne pensais pas à répondre hier soir.", "target": "I wasn't thinking about answering last night.", "score": 9}
+      ]
+    }
+  ]
+}

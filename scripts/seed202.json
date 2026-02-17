@@ -1,0 +1,148 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 202,
+  "known_text": "Nobody was sure how to answer the question.",
+  "target_text": "没有人知道怎么回答问题。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "do not have (negation)",
+      "target": "没有",
+      "components": [
+        {"known": "not (past)", "target": "没"},
+        {"known": "have/exist", "target": "有"}
+      ],
+      "build": [
+        {"known": "No.", "target": "没有。"},
+        {"known": "Don't have.", "target": "没有。"},
+        {"known": "Nobody.", "target": "没有人。"},
+        {"known": "Nothing.", "target": "没有东西。"}
+      ],
+      "use": [
+        {"known": "Nobody knows what happened at the office yesterday.", "target": "没有人知道昨天办公室发生了什么。", "score": 7},
+        {"known": "We wanted to know but nobody could tell us.", "target": "我们想知道，但是没有人能告诉我们。", "score": 7},
+        {"known": "She said nobody at the council knew how to help.", "target": "她说政府没有人知道怎么帮忙。", "score": 7},
+        {"known": "I'm sorry but nobody finished the work on time.", "target": "对不起，但是没有人按时完成工作。", "score": 7},
+        {"known": "They say nobody wants to go to that place tomorrow.", "target": "他们说没有人想明天去那个地方。", "score": 6},
+        {"known": "Did you know nobody was at the office this morning?", "target": "你知道今天早上办公室没有人吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "person/people",
+      "target": "人",
+      "build": [
+        {"known": "Person.", "target": "人。"},
+        {"known": "Nobody.", "target": "没有人。"},
+        {"known": "Someone.", "target": "有人。"},
+        {"known": "This person.", "target": "这个人。"}
+      ],
+      "use": [
+        {"known": "Nobody knew how to answer that question.", "target": "没有人知道怎么回答那个问题。", "score": 7},
+        {"known": "We wanted to find someone who knows what happened.", "target": "我们想找知道发生了什么的人。", "score": 7},
+        {"known": "She said this person used to work at the council.", "target": "她说这个人以前在政府工作。", "score": 6},
+        {"known": "I'm trying to find the person who knows about this.", "target": "我在试着找知道这个的人。", "score": 7},
+        {"known": "They said someone at the office will help us today.", "target": "他们说办公室有人今天会帮我们。", "score": 7},
+        {"known": "Did you know that person works as a teacher now?", "target": "你知道那个人现在当老师吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "know",
+      "target": "知道",
+      "components": [
+        {"known": "know/wisdom", "target": "知"},
+        {"known": "way/path", "target": "道"}
+      ],
+      "build": [
+        {"known": "Know.", "target": "知道。"},
+        {"known": "I know.", "target": "我知道。"},
+        {"known": "Nobody knows.", "target": "没有人知道。"},
+        {"known": "Want to know.", "target": "想知道。"}
+      ],
+      "use": [
+        {"known": "Nobody knew how to answer that question.", "target": "没有人知道怎么回答那个问题。", "score": 7},
+        {"known": "We wanted to know what happened at the office.", "target": "我们想知道办公室发生了什么。", "score": 7},
+        {"known": "She said she knows someone who can help us today.", "target": "她说她知道今天能帮我们的人。", "score": 7},
+        {"known": "I'm sorry but I don't know the answer to this.", "target": "对不起，但是我不知道这个的答案。", "score": 7},
+        {"known": "They said everyone knows what will happen tomorrow.", "target": "他们说大家都知道明天会发生什么。", "score": 6},
+        {"known": "Did you know she used to work at the council?", "target": "你知道她以前在政府工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "how/what way",
+      "target": "怎么",
+      "components": [
+        {"known": "how/what", "target": "怎"},
+        {"known": "suffix", "target": "么"}
+      ],
+      "build": [
+        {"known": "How?", "target": "怎么？"},
+        {"known": "How to do?", "target": "怎么做？"},
+        {"known": "How to answer?", "target": "怎么回答？"},
+        {"known": "How to know?", "target": "怎么知道？"}
+      ],
+      "use": [
+        {"known": "Nobody knew how to answer that question.", "target": "没有人知道怎么回答那个问题。", "score": 7},
+        {"known": "We wanted to know how to finish the work on time.", "target": "我们想知道怎么按时完成工作。", "score": 7},
+        {"known": "She asked how to find someone who works there.", "target": "她问怎么找在那里工作的人。", "score": 7},
+        {"known": "I'm trying to figure out how to help them today.", "target": "我在试着想出今天怎么帮他们。", "score": 8},
+        {"known": "They don't know how to make sure everything is done.", "target": "他们不知道怎么确保一切都做好了。", "score": 7},
+        {"known": "Did you know how to answer that problem before?", "target": "你以前知道怎么回答那个问题吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "answer/reply",
+      "target": "回答",
+      "components": [
+        {"known": "return/back", "target": "回"},
+        {"known": "answer/respond", "target": "答"}
+      ],
+      "build": [
+        {"known": "Answer.", "target": "回答。"},
+        {"known": "My answer.", "target": "我的回答。"},
+        {"known": "Answer the question.", "target": "回答问题。"},
+        {"known": "How to answer.", "target": "怎么回答。"}
+      ],
+      "use": [
+        {"known": "Nobody knew how to answer that difficult question.", "target": "没有人知道怎么回答那个难的问题。", "score": 7},
+        {"known": "We wanted to know how to answer the question properly.", "target": "我们想知道怎么好好地回答问题。", "score": 7},
+        {"known": "She said her daughter knows how to answer this one.", "target": "她说她女儿知道怎么回答这个。", "score": 7},
+        {"known": "I'm trying to figure out how to answer his question.", "target": "我在试着想出怎么回答他的问题。", "score": 8},
+        {"known": "They asked me to answer but I don't know how.", "target": "他们让我回答，但是我不知道怎么回答。", "score": 7},
+        {"known": "Did you know the answer to that question before?", "target": "你以前知道那个问题的回答吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "question/problem",
+      "target": "问题",
+      "components": [
+        {"known": "ask/inquire", "target": "问"},
+        {"known": "topic/subject", "target": "题"}
+      ],
+      "build": [
+        {"known": "Question.", "target": "问题。"},
+        {"known": "The question.", "target": "那个问题。"},
+        {"known": "Answer the question.", "target": "回答问题。"},
+        {"known": "No problem.", "target": "没问题。"}
+      ],
+      "use": [
+        {"known": "Nobody knew how to answer that question yesterday.", "target": "昨天没有人知道怎么回答那个问题。", "score": 7},
+        {"known": "We wanted to know the answer to this question.", "target": "我们想知道这个问题的答案。", "score": 7},
+        {"known": "She said there is no problem with answering now.", "target": "她说现在回答没问题。", "score": 6},
+        {"known": "I'm trying to understand the question they asked.", "target": "我在试着了解他们问的问题。", "score": 7},
+        {"known": "They asked a question but nobody could answer it.", "target": "他们问了一个问题，但是没有人能回答。", "score": 8},
+        {"known": "Did everyone understand the question the teacher asked?", "target": "大家都了解老师问的问题吗？", "score": 8}
+      ]
+    }
+  ]
+}

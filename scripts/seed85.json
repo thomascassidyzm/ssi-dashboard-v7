@@ -1,0 +1,108 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 85,
+  "known_text": "I don't know those people.",
+  "target_text": "Ik ken die mensen niet.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I",
+      "target": "ik",
+      "build": [
+        {"known": "I", "target": "ik"},
+        {"known": "I am", "target": "ik ben"},
+        {"known": "I don't", "target": "ik niet"},
+        {"known": "I want", "target": "ik wil"}
+      ],
+      "use": [
+        {"known": "I don't agree with what he said about my friend.", "target": "Ik ben het niet eens met wat hij zei over mijn vriend.", "score": 8},
+        {"known": "I am not going to wait for you to be ready.", "target": "Ik ga niet op je wachten om klaar te zijn.", "score": 8},
+        {"known": "I don't know when she wants to start with it.", "target": "Ik weet niet wanneer zij ermee wil beginnen.", "score": 8},
+        {"known": "I want to do interesting things with my friends.", "target": "Ik wil interessante dingen doen met mijn vrienden.", "score": 8},
+        {"known": "I am sure that he said something about your friend.", "target": "Ik ben zeker dat hij iets zei over je vriend.", "score": 8},
+        {"known": "I don't want to agree with what she said about it.", "target": "Ik wil het niet eens zijn met wat zij erover zei.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "know [people]",
+      "target": "ken",
+      "build": [
+        {"known": "know", "target": "ken"},
+        {"known": "I know", "target": "ik ken"},
+        {"known": "know you", "target": "ken je"},
+        {"known": "don't know", "target": "ken niet"}
+      ],
+      "use": [
+        {"known": "I know your friend who wants to learn Dutch.", "target": "Ik ken je vriend die Nederlands wil leren.", "score": 8},
+        {"known": "Do you know my friend who wants to learn Dutch?", "target": "Ken je mijn vriend die Nederlands wil leren?", "score": 8},
+        {"known": "I don't know her but I am sure she wants to start.", "target": "Ik ken haar niet maar ik ben zeker dat zij wil beginnen.", "score": 8},
+        {"known": "I know everyone who wants to do interesting things.", "target": "Ik ken iedereen die interessante dingen wil doen.", "score": 8},
+        {"known": "I don't know her but I know what she said about you.", "target": "Ik ken haar niet maar ik weet wat zij over je zei.", "score": 8},
+        {"known": "Do you know my friends who are learning Dutch with me?", "target": "Ken je mijn vrienden die Nederlands met me leren?", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "those/that",
+      "target": "die",
+      "build": [
+        {"known": "those", "target": "die"},
+        {"known": "that", "target": "die"},
+        {"known": "those people", "target": "die mensen"},
+        {"known": "that friend", "target": "die vriend"}
+      ],
+      "use": [
+        {"known": "I don't know those friends that you said something about.", "target": "Ik ken die vrienden niet waar je iets over zei.", "score": 8},
+        {"known": "Do you know that friend who wants to learn Dutch?", "target": "Ken je die vriend die Nederlands wil leren?", "score": 8},
+        {"known": "She agrees with those who say that we want to start.", "target": "Zij is het eens met die mensen die zeggen dat wij willen beginnen.", "score": 8},
+        {"known": "I don't agree with those who don't want to wait.", "target": "Ik ben het niet eens met die mensen die niet willen wachten.", "score": 8},
+        {"known": "I know that friend who said something about you.", "target": "Ik ken die vriend die iets over je zei.", "score": 8},
+        {"known": "Do you know those friends who want to do it with us?", "target": "Ken je die vrienden die het met iedereen willen doen?", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "people",
+      "target": "mensen",
+      "build": [
+        {"known": "people", "target": "mensen"},
+        {"known": "those people", "target": "die mensen"},
+        {"known": "the people", "target": "de mensen"},
+        {"known": "many people", "target": "veel mensen"}
+      ],
+      "use": [
+        {"known": "I don't know those people.", "target": "Ik ken die mensen niet.", "score": 9},
+        {"known": "Those people want to start learning Dutch with us.", "target": "Die mensen willen beginnen met Nederlands leren met iedereen.", "score": 8},
+        {"known": "Do you know the people who said that about my friend?", "target": "Ken je de mensen die dat over mijn vriend zeiden?", "score": 8},
+        {"known": "She agrees with the people who don't want to wait.", "target": "Zij is het eens met de mensen die niet willen wachten.", "score": 8},
+        {"known": "He doesn't know those people who said that about you.", "target": "Hij kent die mensen niet die dat over je zeiden.", "score": 8},
+        {"known": "I want to do interesting things with those people.", "target": "Ik wil interessante dingen doen met die mensen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "not",
+      "target": "niet",
+      "build": [
+        {"known": "not", "target": "niet"},
+        {"known": "don't know", "target": "ken niet"},
+        {"known": "not agree", "target": "niet eens"},
+        {"known": "not want", "target": "niet wil"}
+      ],
+      "use": [
+        {"known": "I don't know those people.", "target": "Ik ken die mensen niet.", "score": 9},
+        {"known": "She doesn't agree with what those people said.", "target": "Zij is het niet eens met wat die mensen zeiden.", "score": 8},
+        {"known": "He doesn't want to wait for the people to be ready.", "target": "Hij wil niet op de mensen wachten om klaar te zijn.", "score": 8},
+        {"known": "I am not sure if you know those friends of mine.", "target": "Ik ben niet zeker of je die vrienden van mij kent.", "score": 8},
+        {"known": "We don't know when those people want to start.", "target": "Wij weten niet wanneer die mensen willen beginnen.", "score": 8},
+        {"known": "Do you not know the people who said that about her?", "target": "Ken je de mensen niet die dat over haar zeiden?", "score": 8}
+      ]
+    }
+  ]
+}

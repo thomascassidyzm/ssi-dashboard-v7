@@ -1,0 +1,91 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 44,
+  "target_text": "Or if I need to improve.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "ou",
+      "target": "or",
+      "build": [
+        {"known": "ou", "target": "or"},
+        {"known": "ou você", "target": "or you"},
+        {"known": "ou eu", "target": "or I"},
+        {"known": "ou não", "target": "or not"}
+      ],
+      "use": [
+        {"known": "Eu quero falar inglês ou eu quero aprender um pouco mais.", "target": "I want to speak English or I want to learn a little more.", "score": 7},
+        {"known": "Você quer falar inglês ou você quer pensar nisso?", "target": "Do you want to speak English or do you want to think about it?", "score": 8},
+        {"known": "Eu estava pensando nisso ontem à noite ou esta manhã.", "target": "I was thinking about it last night or this morning.", "score": 8},
+        {"known": "Eu me sinto melhor agora ou você quer falar comigo?", "target": "I feel better now or do you want to speak with me?", "score": 7},
+        {"known": "Eu quero responder ou eu não quero falar agora.", "target": "I want to answer or I don't want to speak now.", "score": 7},
+        {"known": "Eu estava aprendendo inglês ontem ou eu estava cansado.", "target": "I was learning English yesterday or I was tired.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "se",
+      "target": "if",
+      "build": [
+        {"known": "se", "target": "if"},
+        {"known": "se eu", "target": "if I"},
+        {"known": "se você", "target": "if you"},
+        {"known": "ou se", "target": "or if"}
+      ],
+      "use": [
+        {"known": "Eu não estava pensando se você queria falar comigo.", "target": "I wasn't thinking if you wanted to speak with me.", "score": 8},
+        {"known": "Eu estava pensando se eu quero aprender inglês.", "target": "I was thinking if I want to learn English.", "score": 7},
+        {"known": "Eu quero responder se você quer falar comigo.", "target": "I want to answer if you want to speak with me.", "score": 8},
+        {"known": "Eu não estava pensando se eu me sinto melhor.", "target": "I wasn't thinking if I feel better.", "score": 7},
+        {"known": "Eu estava pensando se eu quero aprender um pouco mais.", "target": "I was thinking if I want to learn a little more.", "score": 8},
+        {"known": "Eu estava me sentindo cansado e eu estava pensando se eu quero falar.", "target": "I was feeling tired and I was thinking if I want to speak.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "eu preciso",
+      "target": "I need",
+      "components": [
+        {"known": "eu", "target": "I"},
+        {"known": "preciso", "target": "need"}
+      ],
+      "build": [
+        {"known": "eu preciso", "target": "I need"},
+        {"known": "eu preciso falar", "target": "I need to speak"},
+        {"known": "eu preciso aprender", "target": "I need to learn"},
+        {"known": "se eu preciso", "target": "if I need"}
+      ],
+      "use": [
+        {"known": "Eu preciso falar inglês com você esta manhã.", "target": "I need to speak English with you this morning.", "score": 8},
+        {"known": "Eu preciso aprender um pouco mais se eu quero falar melhor.", "target": "I need to learn a little more if I want to speak better.", "score": 8},
+        {"known": "Eu preciso pensar nisso com cuidado ou eu preciso responder agora?", "target": "Do I need to think about it carefully or do I need to answer now?", "score": 8},
+        {"known": "Eu preciso me sentir melhor se eu quero falar inglês.", "target": "I need to feel better if I want to speak English.", "score": 8},
+        {"known": "Eu estava pensando se eu preciso aprender mais.", "target": "I was thinking if I need to learn more.", "score": 7},
+        {"known": "Eu não estava pensando se eu preciso falar com você.", "target": "I wasn't thinking if I need to speak with you.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "melhorar",
+      "target": "to improve",
+      "build": [
+        {"known": "melhorar", "target": "to improve"},
+        {"known": "preciso melhorar", "target": "need to improve"},
+        {"known": "quero melhorar", "target": "want to improve"},
+        {"known": "estou tentando melhorar", "target": "I'm trying to improve"}
+      ],
+      "use": [
+        {"known": "Ou se eu preciso melhorar.", "target": "Or if I need to improve.", "score": 9},
+        {"known": "Eu preciso melhorar se eu quero falar inglês melhor.", "target": "I need to improve if I want to speak English better.", "score": 8},
+        {"known": "Eu estava pensando se eu preciso melhorar esta manhã.", "target": "I was thinking if I need to improve this morning.", "score": 8},
+        {"known": "Eu quero melhorar e eu estou aprendendo inglês há uma semana.", "target": "I want to improve and I've been learning English for a week.", "score": 8},
+        {"known": "Estou tentando melhorar e eu me sinto melhor agora.", "target": "I'm trying to improve and I feel better now.", "score": 8},
+        {"known": "Eu não estava pensando se eu preciso melhorar ou não.", "target": "I wasn't thinking if I need to improve or not.", "score": 8}
+      ]
+    }
+  ]
+}

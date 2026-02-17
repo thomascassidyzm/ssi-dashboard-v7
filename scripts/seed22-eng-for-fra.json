@@ -1,0 +1,110 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 22,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "Parce que",
+      "target": "Because",
+      "build": [
+        {"known": "Parce que", "target": "Because"},
+        {"known": "Parce que je veux", "target": "Because I want"},
+        {"known": "Parce que tu veux", "target": "Because you want"},
+        {"known": "Parce que elle veut", "target": "Because she wants"}
+      ],
+      "use": [
+        {"known": "Parce que je veux parler anglais maintenant.", "target": "Because I want to speak English now.", "score": 8},
+        {"known": "Parce que tu veux savoir quelle est la réponse.", "target": "Because you want to find out what the answer is.", "score": 9},
+        {"known": "Parce que nous voulons nous retrouver à six heures.", "target": "Because we want to meet at six o'clock.", "score": 9},
+        {"known": "Parce que je ne veux pas arrêter de parler.", "target": "Because I don't want to stop talking.", "score": 9},
+        {"known": "Parce que tu veux apprendre son nom rapidement.", "target": "Because you want to learn his name quickly.", "score": 9},
+        {"known": "Parce que il veut revenir et parler anglais plus tard.", "target": "Because he wants to come back and speak English later on.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "Je veux",
+      "target": "I want",
+      "components": [
+        {"known": "Je", "target": "I"},
+        {"known": "veux", "target": "want"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "rencontrer",
+      "target": "to meet",
+      "build": [
+        {"known": "rencontrer", "target": "to meet"},
+        {"known": "Je veux rencontrer", "target": "I want to meet"},
+        {"known": "Parce que je veux rencontrer", "target": "Because I want to meet"},
+        {"known": "rencontrer tout le monde", "target": "to meet everyone else"}
+      ],
+      "use": [
+        {"known": "Parce que je veux rencontrer tout le monde.", "target": "Because I want to meet everyone else.", "score": 9},
+        {"known": "Je veux rencontrer quelqu'un d'autre demain.", "target": "I want to meet someone else tomorrow.", "score": 9},
+        {"known": "Tu veux rencontrer tout le monde à six heures.", "target": "You want to meet everyone else at six o'clock.", "score": 9},
+        {"known": "Pourquoi tu veux rencontrer quelqu'un d'autre?", "target": "Why do you want to meet someone else?", "score": 9},
+        {"known": "Parce que j'aimerais rencontrer quelqu'un d'autre.", "target": "Because I'd like to meet someone else.", "score": 9},
+        {"known": "Mais je ne veux pas rencontrer quelqu'un d'autre maintenant.", "target": "But I don't want to meet someone else now.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "des gens",
+      "target": "people",
+      "components": [
+        {"known": "des", "target": "peo"},
+        {"known": "gens", "target": "ple"}
+      ],
+      "build": [
+        {"known": "des gens", "target": "people"},
+        {"known": "rencontrer des gens", "target": "to meet people"},
+        {"known": "Je veux rencontrer des gens", "target": "I want to meet people"},
+        {"known": "parler avec des gens", "target": "to speak with people"}
+      ],
+      "use": [
+        {"known": "Parce que je veux rencontrer des gens.", "target": "Because I want to meet people.", "score": 9},
+        {"known": "Tu veux parler anglais avec des gens.", "target": "You want to speak English with people.", "score": 8},
+        {"known": "Pourquoi tu veux rencontrer des gens demain?", "target": "Why do you want to meet people tomorrow?", "score": 9},
+        {"known": "J'aimerais rencontrer des gens à six heures ce soir.", "target": "I'd like to meet people at six o'clock this evening.", "score": 9},
+        {"known": "Mais je ne veux pas rencontrer des gens maintenant.", "target": "But I don't want to meet people now.", "score": 8},
+        {"known": "Parce que nous voulons rencontrer des gens plus tard.", "target": "Because we want to meet people later on.", "score": 9}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "qui parlent",
+      "target": "who speak",
+      "components": [
+        {"known": "qui", "target": "who"},
+        {"known": "parlent", "target": "speak"}
+      ],
+      "build": [
+        {"known": "qui parlent", "target": "who speak"},
+        {"known": "des gens qui parlent", "target": "people who speak"},
+        {"known": "des gens qui parlent anglais", "target": "people who speak English"},
+        {"known": "rencontrer des gens qui parlent", "target": "to meet people who speak"}
+      ],
+      "use": [
+        {"known": "Parce que je veux rencontrer des gens qui parlent anglais.", "target": "Because I want to meet people who speak English.", "score": 9},
+        {"known": "Tu veux rencontrer des gens qui parlent anglais très bien.", "target": "You want to meet people who speak English very well.", "score": 9},
+        {"known": "J'aimerais rencontrer des gens qui parlent anglais avec moi.", "target": "I'd like to meet people who speak English with me.", "score": 9},
+        {"known": "Pourquoi tu veux rencontrer des gens qui parlent anglais?", "target": "Why do you want to meet people who speak English?", "score": 9},
+        {"known": "Parce que je veux parler avec des gens qui parlent anglais.", "target": "Because I want to speak with people who speak English.", "score": 9},
+        {"known": "Nous voulons rencontrer des gens qui parlent anglais demain.", "target": "We want to meet people who speak English tomorrow.", "score": 9}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "anglais",
+      "target": "English"
+    }
+  ]
+}

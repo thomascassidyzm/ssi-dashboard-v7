@@ -1,0 +1,152 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 208,
+  "known_text": "I didn't want to ask you how to say it.",
+  "target_text": "我不想问你怎么说。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I don't.", "target": "我不。"},
+        {"known": "I want.", "target": "我想。"},
+        {"known": "I didn't.", "target": "我不想。"}
+      ],
+      "use": [
+        {"known": "I didn't want to bother you with this question.", "target": "我不想用这个问题打扰你。", "score": 7},
+        {"known": "I forgot how to say that word in Chinese.", "target": "我忘了那个词中文怎么说。", "score": 7},
+        {"known": "I wanted to ask her but she was too busy.", "target": "我想问她但是她太忙了。", "score": 7},
+        {"known": "If I don't know something, I will ask you.", "target": "如果我不知道，我会问你。", "score": 8},
+        {"known": "They told me how to do it but I forgot again.", "target": "他们告诉了我怎么做但是我又忘了。", "score": 8},
+        {"known": "Everyone thinks I know the answer but I don't.", "target": "大家都想我知道回答但是我不知道。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "not",
+      "target": "不",
+      "build": [
+        {"known": "Not.", "target": "不。"},
+        {"known": "Don't want.", "target": "不想。"},
+        {"known": "Don't know.", "target": "不知道。"},
+        {"known": "I don't.", "target": "我不。"}
+      ],
+      "use": [
+        {"known": "I didn't want to ask you because you were busy.", "target": "我不想问你因为你很忙。", "score": 7},
+        {"known": "She doesn't know how to say this in Chinese.", "target": "她不知道这个中文怎么说。", "score": 7},
+        {"known": "If you don't want to go, you don't have to.", "target": "如果你不想去，你不用去。", "score": 8},
+        {"known": "They told us not to worry about the problem.", "target": "他们告诉我们不要担心问题。", "score": 7},
+        {"known": "Nobody wants to ask him because he gets upset.", "target": "没有人想问他因为他会不高兴。", "score": 8},
+        {"known": "Did you know she doesn't want to come tomorrow?", "target": "你知道她明天不想来吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "want/think",
+      "target": "想",
+      "build": [
+        {"known": "Want.", "target": "想。"},
+        {"known": "Don't want.", "target": "不想。"},
+        {"known": "Want to ask.", "target": "想问。"},
+        {"known": "I want.", "target": "我想。"}
+      ],
+      "use": [
+        {"known": "I didn't want to ask how to say it again.", "target": "我不想再问怎么说。", "score": 7},
+        {"known": "She said she wants to know how we finished it.", "target": "她说她想知道我们怎么完成的。", "score": 8},
+        {"known": "If you want to learn, you need to ask questions.", "target": "如果你想学，你需要问问题。", "score": 7},
+        {"known": "They didn't want anyone to know what happened.", "target": "他们不想任何人知道发生了什么。", "score": 8},
+        {"known": "Everyone wanted to know how to say it properly.", "target": "大家都想知道怎么好好说。", "score": 7},
+        {"known": "Did you want me to show you how it works?", "target": "你想我给你看怎么做吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "ask",
+      "target": "问",
+      "build": [
+        {"known": "Ask.", "target": "问。"},
+        {"known": "Ask you.", "target": "问你。"},
+        {"known": "Want to ask.", "target": "想问。"},
+        {"known": "Ask how.", "target": "问怎么。"}
+      ],
+      "use": [
+        {"known": "I didn't want to ask you how to say that.", "target": "我不想问你那个怎么说。", "score": 7},
+        {"known": "She asked me how to finish the work on time.", "target": "她问我怎么按时完成工作。", "score": 7},
+        {"known": "If you don't understand, please ask the teacher.", "target": "如果你不了解，请问老师。", "score": 7},
+        {"known": "They said you can ask anyone for help.", "target": "他们说你可以问任何人帮忙。", "score": 8},
+        {"known": "Nobody wanted to ask her about what happened.", "target": "没有人想问她发生了什么。", "score": 7},
+        {"known": "Did you ask them how they did it so fast?", "target": "你问他们怎么这么快做完的吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "you",
+      "target": "你",
+      "build": [
+        {"known": "You.", "target": "你。"},
+        {"known": "Ask you.", "target": "问你。"},
+        {"known": "Tell you.", "target": "告诉你。"},
+        {"known": "Help you.", "target": "帮你。"}
+      ],
+      "use": [
+        {"known": "I didn't want to ask you because you were busy.", "target": "我不想问你因为你很忙。", "score": 7},
+        {"known": "She said she will tell you how to do it.", "target": "她说她会告诉你怎么做。", "score": 7},
+        {"known": "If you need help, let me know right away.", "target": "如果你需要帮忙，马上让我知道。", "score": 8},
+        {"known": "They asked if you know how to say this word.", "target": "他们问你是不是知道这个词怎么说。", "score": 8},
+        {"known": "Everyone thinks you already know how to do it.", "target": "大家都想你已经知道怎么做了。", "score": 7},
+        {"known": "Did anyone tell you how to finish this work?", "target": "有人告诉你怎么完成这个工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "how/what way",
+      "target": "怎么",
+      "components": [
+        {"known": "how/what", "target": "怎"},
+        {"known": "suffix", "target": "么"}
+      ],
+      "build": [
+        {"known": "How?", "target": "怎么？"},
+        {"known": "How to say.", "target": "怎么说。"},
+        {"known": "How to do.", "target": "怎么做。"},
+        {"known": "Ask how.", "target": "问怎么。"}
+      ],
+      "use": [
+        {"known": "I didn't want to ask you how to say it.", "target": "我不想问你怎么说。", "score": 7},
+        {"known": "She doesn't know how to finish this on time.", "target": "她不知道怎么按时完成这个。", "score": 7},
+        {"known": "If you forget how to do it, just ask me.", "target": "如果你忘了怎么做，就问我。", "score": 8},
+        {"known": "They want to know how we did it so fast.", "target": "他们想知道我们怎么这么快做完的。", "score": 8},
+        {"known": "Nobody told me how to answer that question.", "target": "没有人告诉我怎么回答那个问题。", "score": 7},
+        {"known": "Did you ask her how to get to that place?", "target": "你问她怎么去那个地方吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "say/speak",
+      "target": "说",
+      "build": [
+        {"known": "Say.", "target": "说。"},
+        {"known": "How to say.", "target": "怎么说。"},
+        {"known": "Ask how to say.", "target": "问怎么说。"},
+        {"known": "I say.", "target": "我说。"}
+      ],
+      "use": [
+        {"known": "I didn't want to ask you how to say it again.", "target": "我不想再问你怎么说。", "score": 7},
+        {"known": "She told me how to say this word properly.", "target": "她告诉了我这个词怎么好好说。", "score": 8},
+        {"known": "If you don't know how to say it, just point.", "target": "如果你不知道怎么说，就指一下。", "score": 7},
+        {"known": "They asked how we say this in our language.", "target": "他们问我们的语言怎么说这个。", "score": 8},
+        {"known": "Nobody wanted to say what really happened.", "target": "没有人想说真的发生了什么。", "score": 7},
+        {"known": "Did you learn how to say that word yesterday?", "target": "你昨天学了那个词怎么说吗？", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,911 @@
+{
+  "course_code": "jpn_for_eng",
+  "is_eng_for_x": false,
+  "round": 5,
+  "seed_range": "all",
+  "description": "Single-agent consistent scoring - 100 random USE phrases",
+  "total_use_phrases": 5124,
+  "sample_size": 100,
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "79fae53b-3f0b-4b8e-9cde-0e5f1ffd29b9",
+      "seed": 194,
+      "lego": 1,
+      "english": "What are you looking for?",
+      "other": "何を探していますか",
+      "qa_score": null
+    },
+    {
+      "idx": 2,
+      "id": "27a8d642-3e56-409f-a191-eb38264a2a05",
+      "seed": 139,
+      "lego": 1,
+      "english": "so early, difficult",
+      "other": "こんなに早くて難しい",
+      "qa_score": null
+    },
+    {
+      "idx": 3,
+      "id": "5e07e753-2bbb-48d8-b765-f6cce8de652a",
+      "seed": 226,
+      "lego": 3,
+      "english": "help (volitional)",
+      "other": "手伝おう",
+      "qa_score": null
+    },
+    {
+      "idx": 4,
+      "id": "2c0f38b9-a2ae-4ebd-bb14-8f243b5e18a0",
+      "seed": 58,
+      "lego": 1,
+      "english": "There is enough time.",
+      "other": "十分な時間があります",
+      "qa_score": null
+    },
+    {
+      "idx": 5,
+      "id": "913474f2-2981-4ca5-8dbe-f57571ad9513",
+      "seed": 22,
+      "lego": 1,
+      "english": "meet people who speak Japanese",
+      "other": "日本語を話す人に会う",
+      "qa_score": null
+    },
+    {
+      "idx": 6,
+      "id": "877b11dc-03d0-4214-85cf-8c5add6f427b",
+      "seed": 84,
+      "lego": 2,
+      "english": "What he said today.",
+      "other": "彼が今日言ったこと",
+      "qa_score": null
+    },
+    {
+      "idx": 7,
+      "id": "6ff6be34-a032-4c58-972c-6f0ed3be3aa8",
+      "seed": 98,
+      "lego": 4,
+      "english": "better to consider doing it",
+      "other": "やることを考えた方がいい",
+      "qa_score": null
+    },
+    {
+      "idx": 8,
+      "id": "e12345fa-f01b-4e79-aa9c-341c15390846",
+      "seed": 147,
+      "lego": 2,
+      "english": "When he saw that she was happy.",
+      "other": "彼が彼女が幸せなのを見た時",
+      "qa_score": null
+    },
+    {
+      "idx": 9,
+      "id": "d8da9aaf-923d-4000-a192-d8a3706a3382",
+      "seed": 65,
+      "lego": 3,
+      "english": "He thinks helping is important.",
+      "other": "彼は手伝うことは大切だと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 10,
+      "id": "6d954308-c51a-4fcd-883c-6591a50d0465",
+      "seed": 55,
+      "lego": 3,
+      "english": "waking up (topic)",
+      "other": "起きるのは",
+      "qa_score": null
+    },
+    {
+      "idx": 11,
+      "id": "21acb390-16c2-4f7e-a21b-0a1bb3f6f6d1",
+      "seed": 179,
+      "lego": 2,
+      "english": "What are you going to do on Sunday morning?",
+      "other": "日曜日の朝に何をするつもりですか",
+      "qa_score": null
+    },
+    {
+      "idx": 12,
+      "id": "f81c1e94-0423-4702-b5d1-79e323be2a8b",
+      "seed": 105,
+      "lego": 2,
+      "english": "That is why he didn't know the answer.",
+      "other": "だから彼は答えを知りませんでした",
+      "qa_score": null
+    },
+    {
+      "idx": 13,
+      "id": "524b4e41-65b7-4b28-b768-1a3760160a94",
+      "seed": 86,
+      "lego": 1,
+      "english": "unfortunately he couldn't",
+      "other": "残念ながら彼はできなかった",
+      "qa_score": null
+    },
+    {
+      "idx": 14,
+      "id": "a872c30c-7b93-4a43-8cdd-1d54745449de",
+      "seed": 34,
+      "lego": 1,
+      "english": "When I learn Japanese.",
+      "other": "日本語を学ぶ時に",
+      "qa_score": null
+    },
+    {
+      "idx": 15,
+      "id": "9e617baf-7d12-49c1-9832-6d55e4573fe4",
+      "seed": 248,
+      "lego": 3,
+      "english": "She said she wants her money back.",
+      "other": "彼女はお金を返してほしいと言いました",
+      "qa_score": null
+    },
+    {
+      "idx": 16,
+      "id": "10db1097-ee7a-45e8-b9cf-27ded0c7ad94",
+      "seed": 229,
+      "lego": 3,
+      "english": "He said she would probably help with the problem.",
+      "other": "彼は彼女が問題を手伝ってくれるでしょうと言いました",
+      "qa_score": null
+    },
+    {
+      "idx": 17,
+      "id": "15265fd0-0ba5-4996-ab6b-758d0568cd6b",
+      "seed": 231,
+      "lego": 1,
+      "english": "Do you know that old man?",
+      "other": "あの老人を知っていますか",
+      "qa_score": null
+    },
+    {
+      "idx": 18,
+      "id": "f72df597-6282-4e4d-b9d8-3a39b2a8c314",
+      "seed": 54,
+      "lego": 5,
+      "english": "He wanted to give it.",
+      "other": "彼はあげたかったです",
+      "qa_score": null
+    },
+    {
+      "idx": 19,
+      "id": "6400c70a-ea5e-4a73-97ba-583bf5f41355",
+      "seed": 211,
+      "lego": 2,
+      "english": "He didn't want to say it.",
+      "other": "彼は言いたくなかったです",
+      "qa_score": null
+    },
+    {
+      "idx": 20,
+      "id": "30695baf-970a-4d42-82ad-97354f9b6268",
+      "seed": 218,
+      "lego": 2,
+      "english": "I think there was nothing there.",
+      "other": "そこには何もなかったと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 21,
+      "id": "26fdc1e8-6c41-498c-9e5b-06a8f28d3c13",
+      "seed": 228,
+      "lego": 1,
+      "english": "I want to practise speaking.",
+      "other": "話す練習をしたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 22,
+      "id": "8ee5daee-13c7-4faa-98eb-32ea3bf04b70",
+      "seed": 46,
+      "lego": 1,
+      "english": "I was starting to make fewer mistakes.",
+      "other": "私は間違えることが少なくなり始めていました",
+      "qa_score": null
+    },
+    {
+      "idx": 23,
+      "id": "ad321b6c-ca72-4868-930e-09adf1386f46",
+      "seed": 235,
+      "lego": 1,
+      "english": "She wants to tell something.",
+      "other": "彼女は何か伝えたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 24,
+      "id": "3a3596f5-cdcb-42c5-87bb-3ae1ba73e87b",
+      "seed": 136,
+      "lego": 1,
+      "english": "Of course I want to.",
+      "other": "もちろんしたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 25,
+      "id": "7745c657-56e4-472f-b639-5cd770b3006b",
+      "seed": 55,
+      "lego": 4,
+      "english": "He thinks doing things when he didn't sleep well is not enjoyable.",
+      "other": "彼はよく眠れなかった時にことをするのは楽しくないと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 26,
+      "id": "bb672296-1a79-4c32-8fb2-071b6e75a201",
+      "seed": 228,
+      "lego": 3,
+      "english": "He has just finished.",
+      "other": "彼は終わったばかりです",
+      "qa_score": null
+    },
+    {
+      "idx": 27,
+      "id": "4d2d395e-17b7-44d6-b718-9d4519e7bd2a",
+      "seed": 61,
+      "lego": 2,
+      "english": "He wanted to do it again last week.",
+      "other": "彼は先週もう一度したかったです",
+      "qa_score": null
+    },
+    {
+      "idx": 28,
+      "id": "6361ea3b-5b97-440a-a8c9-02da6d612b56",
+      "seed": 132,
+      "lego": 3,
+      "english": "Unfortunately, my idea is worse than hers.",
+      "other": "残念ながら、私の考えは彼女のより良くないです",
+      "qa_score": null
+    },
+    {
+      "idx": 29,
+      "id": "6cf7dcc0-35aa-4c5f-a77f-25c0fcef2834",
+      "seed": 99,
+      "lego": 3,
+      "english": "better to ask now",
+      "other": "もう聞いた方がいいです",
+      "qa_score": null
+    },
+    {
+      "idx": 30,
+      "id": "d2056f18-a596-44e6-8063-06d5cda3cbc4",
+      "seed": 4,
+      "lego": 2,
+      "english": "want to say something",
+      "other": "何かを言いたい",
+      "qa_score": null
+    },
+    {
+      "idx": 31,
+      "id": "606c942f-3e6b-43f2-a811-b08ce9c5f9a1",
+      "seed": 27,
+      "lego": 1,
+      "english": "He doesn't like speaking Japanese with everyone.",
+      "other": "彼は皆と一緒に日本語を話すのは好きじゃありません",
+      "qa_score": null
+    },
+    {
+      "idx": 32,
+      "id": "22a4e5a6-498c-4bc6-8684-d7f61cb9c9fc",
+      "seed": 1,
+      "lego": 2,
+      "english": "I want to speak Japanese.",
+      "other": "日本語を話したいです",
+      "qa_score": null
+    },
+    {
+      "idx": 33,
+      "id": "832b8d7e-45cf-445f-86e1-1ca3b7a140bf",
+      "seed": 71,
+      "lego": 4,
+      "english": "She didn't want to let him hear the answer.",
+      "other": "彼女は彼に答えを聞かせたくありませんでした",
+      "qa_score": null
+    },
+    {
+      "idx": 34,
+      "id": "b1e07cc6-67bd-4a26-a642-e8cc2c074f4a",
+      "seed": 133,
+      "lego": 4,
+      "english": "You get to know someone very well when you work together.",
+      "other": "一緒に働くと誰かをとてもよく知るようになります",
+      "qa_score": null
+    },
+    {
+      "idx": 35,
+      "id": "f915d9d7-361f-42ab-9267-5df21657ebf4",
+      "seed": 12,
+      "lego": 2,
+      "english": "I want to explain what will happen tomorrow.",
+      "other": "明日何が起こるか説明したいです",
+      "qa_score": null
+    },
+    {
+      "idx": 36,
+      "id": "b447551a-b10f-446d-b284-c613601ccb7b",
+      "seed": 213,
+      "lego": 2,
+      "english": "She is trying to go.",
+      "other": "彼女は行こうとしています",
+      "qa_score": null
+    },
+    {
+      "idx": 37,
+      "id": "4e04437e-826e-4848-80c3-2dfd587646ab",
+      "seed": 156,
+      "lego": 3,
+      "english": "Where do you want to go?",
+      "other": "どこに行きたいですか",
+      "qa_score": null
+    },
+    {
+      "idx": 38,
+      "id": "f44c56d1-67d9-40b4-a4e2-6172985431d4",
+      "seed": 180,
+      "lego": 2,
+      "english": "I'd like to read my book.",
+      "other": "私の本を読みたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 39,
+      "id": "922d75c9-3bc2-429c-b8b7-cd66c27e5ef3",
+      "seed": 55,
+      "lego": 1,
+      "english": "didn't sleep very well",
+      "other": "よく眠れなかった",
+      "qa_score": null
+    },
+    {
+      "idx": 40,
+      "id": "05291b44-2224-4f17-8c58-ad8601a49635",
+      "seed": 3,
+      "lego": 2,
+      "english": "Do you speak Japanese as often as possible?",
+      "other": "日本語をできるだけ頻繁に話しますか",
+      "qa_score": null
+    },
+    {
+      "idx": 41,
+      "id": "8e22b916-6400-4f00-b6b5-b8795e7642b3",
+      "seed": 66,
+      "lego": 2,
+      "english": "He thinks speaking Japanese isn't difficult.",
+      "other": "彼は日本語を話すのは難しくないと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 42,
+      "id": "ef191714-72d1-414c-b6a3-d381b91ca0a9",
+      "seed": 243,
+      "lego": 1,
+      "english": "I want the same food.",
+      "other": "同じ食べ物がほしいです",
+      "qa_score": null
+    },
+    {
+      "idx": 43,
+      "id": "d22db0aa-cfc8-4a5e-841d-ed8564d43a1d",
+      "seed": 112,
+      "lego": 1,
+      "english": "That was interesting.",
+      "other": "それは面白かったです",
+      "qa_score": null
+    },
+    {
+      "idx": 44,
+      "id": "318d9718-c6cb-4235-b0ff-04e5cdb72394",
+      "seed": 131,
+      "lego": 1,
+      "english": "She has many ideas that are good.",
+      "other": "彼女はたくさんのいい考えがある",
+      "qa_score": null
+    },
+    {
+      "idx": 45,
+      "id": "593319a0-cfb7-4fd9-87ac-18abc8e7f871",
+      "seed": 198,
+      "lego": 2,
+      "english": "My daughter is here now.",
+      "other": "娘は今ここにいます",
+      "qa_score": null
+    },
+    {
+      "idx": 46,
+      "id": "150a6a11-13ab-46eb-ba64-d31f25445420",
+      "seed": 14,
+      "lego": 1,
+      "english": "I want to try very hard all day.",
+      "other": "一日中とても頑張りたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 47,
+      "id": "e132061e-45ed-423c-b1fb-cb362d88171c",
+      "seed": 211,
+      "lego": 2,
+      "english": "I think she didn't want to do it.",
+      "other": "彼女はしたくなかったと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 48,
+      "id": "1bb71c28-870a-4bdc-81a8-718551b35d28",
+      "seed": 55,
+      "lego": 4,
+      "english": "waking up is not enjoyable",
+      "other": "起きるのは楽しくない",
+      "qa_score": null
+    },
+    {
+      "idx": 49,
+      "id": "92ab0661-4bdc-4032-8d31-181f0e175b7e",
+      "seed": 40,
+      "lego": 1,
+      "english": "He is learning at the moment.",
+      "other": "今彼は学んでいます",
+      "qa_score": null
+    },
+    {
+      "idx": 50,
+      "id": "c698f100-4c28-4ec9-8e7c-edc498348e10",
+      "seed": 91,
+      "lego": 3,
+      "english": "It's difficult to think quickly enough to answer in time.",
+      "other": "間に合うように答えるほど早く考えるのは難しいです",
+      "qa_score": null
+    },
+    {
+      "idx": 51,
+      "id": "d6ecb135-5a9c-4025-b196-a495f20f1293",
+      "seed": 152,
+      "lego": 3,
+      "english": "I didn't know what she wanted then.",
+      "other": "私はその時彼女が何を望んでいたか知りませんでした",
+      "qa_score": null
+    },
+    {
+      "idx": 52,
+      "id": "350cf442-2509-4652-adcc-cb4e60879458",
+      "seed": 35,
+      "lego": 2,
+      "english": "She wants to meet him this afternoon.",
+      "other": "彼女は今日の午後彼に会いたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 53,
+      "id": "3d02ce09-cc62-4791-bcdd-5a84f2e6ea31",
+      "seed": 9,
+      "lego": 1,
+      "english": "speak a little Japanese now",
+      "other": "今少し日本語を話します",
+      "qa_score": null
+    },
+    {
+      "idx": 54,
+      "id": "b67c8217-d91c-4521-916b-3b26752ebe4f",
+      "seed": 225,
+      "lego": 1,
+      "english": "She wants to know what the answer is.",
+      "other": "彼女は答えが何か知りたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 55,
+      "id": "db12f7bf-1b89-4858-9f95-d5542deca585",
+      "seed": 168,
+      "lego": 3,
+      "english": "I want to come and help.",
+      "other": "来て手伝いたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 56,
+      "id": "13542a73-ee74-4832-94f0-1d53b8bcf22b",
+      "seed": 11,
+      "lego": 2,
+      "english": "I want to become able to speak now.",
+      "other": "今話せるようになりたい",
+      "qa_score": null
+    },
+    {
+      "idx": 57,
+      "id": "30e261ab-e5db-4ae3-9bcc-b2eb49cdefe2",
+      "seed": 110,
+      "lego": 2,
+      "english": "After she finishes today, she wants to go home.",
+      "other": "彼女は今日終わったら家に帰りたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 58,
+      "id": "333f52df-40a6-4408-854a-ee602036a176",
+      "seed": 257,
+      "lego": 3,
+      "english": "I like that blue thing.",
+      "other": "その青いものが好きです",
+      "qa_score": null
+    },
+    {
+      "idx": 59,
+      "id": "c3cf6303-b0c6-4d57-9351-8bd68c91a3cc",
+      "seed": 147,
+      "lego": 3,
+      "english": "He was very kind.",
+      "other": "彼はとても親切でした",
+      "qa_score": null
+    },
+    {
+      "idx": 60,
+      "id": "bac3a95d-25c3-46cd-b56a-678ed43d02d4",
+      "seed": 181,
+      "lego": 1,
+      "english": "take to the doctor",
+      "other": "医者に連れて行きます",
+      "qa_score": null
+    },
+    {
+      "idx": 61,
+      "id": "015017ed-5cf1-4dcd-838d-fa065b2850f7",
+      "seed": 183,
+      "lego": 1,
+      "english": "I'm afraid I haven't seen them",
+      "other": "残念ながら見ていません",
+      "qa_score": null
+    },
+    {
+      "idx": 62,
+      "id": "8aa933a3-bec6-497a-ac82-d497ea91979c",
+      "seed": 149,
+      "lego": 1,
+      "english": "It is difficult.",
+      "other": "それは難しいです",
+      "qa_score": null
+    },
+    {
+      "idx": 63,
+      "id": "5d41bfc6-c20b-44a0-96ab-8e4dbd7ef1b2",
+      "seed": 87,
+      "lego": 3,
+      "english": "They are people she doesn't know.",
+      "other": "彼らは彼女が知らない人たちです",
+      "qa_score": null
+    },
+    {
+      "idx": 64,
+      "id": "a890f9ea-4501-48c3-8b1f-b7a9a56a60e8",
+      "seed": 154,
+      "lego": 1,
+      "english": "on Saturday night I want to go",
+      "other": "土曜日の夜に行きたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 65,
+      "id": "9f067d74-c474-48fc-bc68-5ab353562dac",
+      "seed": 200,
+      "lego": 2,
+      "english": "We all want to finish.",
+      "other": "私たちは全部終わらせたいです",
+      "qa_score": null
+    },
+    {
+      "idx": 66,
+      "id": "42cf2d3a-2996-4a49-aa4c-1e54106450f5",
+      "seed": 84,
+      "lego": 1,
+      "english": "He talked about my friend.",
+      "other": "彼は私の友達について話しました",
+      "qa_score": null
+    },
+    {
+      "idx": 67,
+      "id": "b381afda-b908-46e5-920e-ca317d55f807",
+      "seed": 103,
+      "lego": 2,
+      "english": "It's not that I hear.",
+      "other": "聞くわけではない",
+      "qa_score": null
+    },
+    {
+      "idx": 68,
+      "id": "9aad2433-2855-4b4d-8293-98f10c7609b6",
+      "seed": 141,
+      "lego": 2,
+      "english": "When we talked, she said everything was okay.",
+      "other": "話した時、彼女は全部大丈夫だと言いました",
+      "qa_score": null
+    },
+    {
+      "idx": 69,
+      "id": "de6c1907-9ba6-4294-9da2-d4ade413ba97",
+      "seed": 72,
+      "lego": 2,
+      "english": "very well/skillfully",
+      "other": "とても上手に",
+      "qa_score": null
+    },
+    {
+      "idx": 70,
+      "id": "42f778bb-5538-461f-b26a-4991eb081b10",
+      "seed": 222,
+      "lego": 1,
+      "english": "what does she want today",
+      "other": "彼女は今日何が欲しいか",
+      "qa_score": null
+    },
+    {
+      "idx": 71,
+      "id": "cb6ea5fb-17a3-4b90-b470-5739e3ef9505",
+      "seed": 84,
+      "lego": 3,
+      "english": "He doesn't agree with what she said.",
+      "other": "彼は彼女が言ったことに同意しません",
+      "qa_score": null
+    },
+    {
+      "idx": 72,
+      "id": "ca1a0883-1c98-4c31-9159-339ae654a081",
+      "seed": 257,
+      "lego": 2,
+      "english": "I think that blue one is really good.",
+      "other": "その青いものは本当にいいと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 73,
+      "id": "e460d6bc-b2a8-42e6-9794-b35ec2b579b5",
+      "seed": 63,
+      "lego": 1,
+      "english": "She really did it.",
+      "other": "彼女は本当にしました",
+      "qa_score": null
+    },
+    {
+      "idx": 74,
+      "id": "22302cd6-b4cf-4595-928d-b75081249b69",
+      "seed": 137,
+      "lego": 1,
+      "english": "this, than being perfect",
+      "other": "これは完璧であることより",
+      "qa_score": null
+    },
+    {
+      "idx": 75,
+      "id": "8671f5f9-b42e-4b45-acfe-13db9a4b222b",
+      "seed": 89,
+      "lego": 3,
+      "english": "She thinks that he came here yesterday.",
+      "other": "彼女は彼が昨日ここに来たと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 76,
+      "id": "31c70df9-6860-4416-bcee-0003b2d5bbae",
+      "seed": 245,
+      "lego": 3,
+      "english": "I'm glad about it.",
+      "other": "それが嬉しいです",
+      "qa_score": null
+    },
+    {
+      "idx": 77,
+      "id": "805f4a19-ae58-4a97-a2be-55bd8e1a7d48",
+      "seed": 167,
+      "lego": 3,
+      "english": "it is necessary",
+      "other": "必要です",
+      "qa_score": null
+    },
+    {
+      "idx": 78,
+      "id": "64303933-a86a-4cf1-9626-91352bf4bb03",
+      "seed": 154,
+      "lego": 3,
+      "english": "Do you want to meet him?",
+      "other": "彼に会いたいですか",
+      "qa_score": null
+    },
+    {
+      "idx": 79,
+      "id": "323ed283-ad94-46ee-bdcc-0c597e4f4f86",
+      "seed": 33,
+      "lego": 2,
+      "english": "I have been learning Japanese.",
+      "other": "日本語を学んでいます",
+      "qa_score": null
+    },
+    {
+      "idx": 80,
+      "id": "817ff76c-12b3-473f-8d45-2c4184bb73fe",
+      "seed": 43,
+      "lego": 1,
+      "english": "the way to answer",
+      "other": "答え方",
+      "qa_score": null
+    },
+    {
+      "idx": 81,
+      "id": "a43ab823-c23d-4d2f-8829-4f735c6a99ff",
+      "seed": 123,
+      "lego": 1,
+      "english": "he said that's a good idea",
+      "other": "彼はそれはいい考えだと言った",
+      "qa_score": null
+    },
+    {
+      "idx": 82,
+      "id": "84ae8056-71f5-4b60-8efb-fdaab85aa220",
+      "seed": 204,
+      "lego": 1,
+      "english": "I think she is still making arrangements.",
+      "other": "彼女はまだ準備をしていると思います",
+      "qa_score": null
+    },
+    {
+      "idx": 83,
+      "id": "d3f0626c-c5cd-4272-82ea-cfa603e62df1",
+      "seed": 95,
+      "lego": 1,
+      "english": "I think she is the next person today.",
+      "other": "彼女が今日の次の人だと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 84,
+      "id": "5f3b9431-1d8c-4cf8-b0c5-c6d58782d5ab",
+      "seed": 7,
+      "lego": 2,
+      "english": "I'm going to practice speaking Japanese today.",
+      "other": "今日日本語で話す練習をするつもりです",
+      "qa_score": null
+    },
+    {
+      "idx": 85,
+      "id": "9bc9f594-e898-43df-9608-48f8a78c9934",
+      "seed": 134,
+      "lego": 3,
+      "english": "even when working at this",
+      "other": "これに取り組んでも",
+      "qa_score": null
+    },
+    {
+      "idx": 86,
+      "id": "e718ff44-d2d2-41b4-83d6-da11f9255e1a",
+      "seed": 241,
+      "lego": 2,
+      "english": "She doesn't want to give.",
+      "other": "彼女はあげたくありません",
+      "qa_score": null
+    },
+    {
+      "idx": 87,
+      "id": "7b918b94-fe79-4ed7-9be4-154c49af3e9f",
+      "seed": 25,
+      "lego": 2,
+      "english": "will you help me learn?",
+      "other": "覚えるのを手伝ってくれますか",
+      "qa_score": null
+    },
+    {
+      "idx": 88,
+      "id": "e49efb81-eef0-4cc9-b5f3-751b222fe97f",
+      "seed": 88,
+      "lego": 2,
+      "english": "with people I don't know",
+      "other": "知らない人と",
+      "qa_score": null
+    },
+    {
+      "idx": 89,
+      "id": "0db27033-9f10-4d14-b4aa-02be4b59b0c5",
+      "seed": 109,
+      "lego": 2,
+      "english": "in order to learn",
+      "other": "を学ぶために",
+      "qa_score": null
+    },
+    {
+      "idx": 90,
+      "id": "32115490-56d4-4728-8715-2def02488d86",
+      "seed": 72,
+      "lego": 1,
+      "english": "I think he found the answer last week.",
+      "other": "彼は先週答えを見つけたと思います",
+      "qa_score": null
+    },
+    {
+      "idx": 91,
+      "id": "8fd13fee-d5a8-4553-ba74-f16c9783b523",
+      "seed": 12,
+      "lego": 1,
+      "english": "going to speak tomorrow",
+      "other": "明日話すつもりです",
+      "qa_score": null
+    },
+    {
+      "idx": 92,
+      "id": "4cc1c532-b0cb-4c5a-869b-05b8aa599e51",
+      "seed": 68,
+      "lego": 1,
+      "english": "I asked what is important here.",
+      "other": "ここで何が大切かと聞きました",
+      "qa_score": null
+    },
+    {
+      "idx": 93,
+      "id": "f35c6cf4-45e8-47c0-97be-b8fb702a3fa2",
+      "seed": 85,
+      "lego": 1,
+      "english": "She talked to those people yesterday.",
+      "other": "彼女は昨日あの人たちに話しました",
+      "qa_score": null
+    },
+    {
+      "idx": 94,
+      "id": "da59d791-f7b5-4836-a026-2b287f55d21c",
+      "seed": 171,
+      "lego": 1,
+      "english": "I am looking for that book now.",
+      "other": "今その本を探しています",
+      "qa_score": null
+    },
+    {
+      "idx": 95,
+      "id": "6535dae8-566b-448e-8791-aa51cc2d9075",
+      "seed": 17,
+      "lego": 2,
+      "english": "what the answer is",
+      "other": "答えが何か",
+      "qa_score": null
+    },
+    {
+      "idx": 96,
+      "id": "9a411f64-b32d-41a9-9166-9a5a4bb821fc",
+      "seed": 134,
+      "lego": 3,
+      "english": "Even when I work at it, it's difficult.",
+      "other": "取り組んでも難しいです",
+      "qa_score": null
+    },
+    {
+      "idx": 97,
+      "id": "3ce3f113-ac1f-4232-a0e6-129eee737dd8",
+      "seed": 115,
+      "lego": 2,
+      "english": "I don't feel as if.",
+      "other": "ようには感じません",
+      "qa_score": null
+    },
+    {
+      "idx": 98,
+      "id": "50ed45f4-f49f-4801-a909-f4e542a2c18f",
+      "seed": 61,
+      "lego": 1,
+      "english": "a little more slowly",
+      "other": "もう少しゆっくり",
+      "qa_score": null
+    },
+    {
+      "idx": 99,
+      "id": "32028575-0922-4b10-8567-034f9004abbd",
+      "seed": 228,
+      "lego": 1,
+      "english": "she is practising speaking",
+      "other": "彼女は話す練習をしている",
+      "qa_score": null
+    },
+    {
+      "idx": 100,
+      "id": "d6c9c5c3-bd31-4bea-bce6-e227cd0461f2",
+      "seed": 50,
+      "lego": 1,
+      "english": "As quickly as possible.",
+      "other": "できるだけ早くです",
+      "qa_score": null
+    }
+  ]
+}

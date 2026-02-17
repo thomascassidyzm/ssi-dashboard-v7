@@ -1,0 +1,75 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 252,
+  "target_text": "متى ستكون جاهزاً للبدء؟",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "When",
+      "target": "متى",
+      "build": [
+        {"known": "When", "target": "متى"},
+        {"known": "When did you", "target": "متى أردت"},
+        {"known": "When did she", "target": "متى أرادت"},
+        {"known": "When did he", "target": "متى أراد"}
+      ],
+      "use": [
+        {"known": "I wanted to know when you wanted to learn Arabic with me.", "target": "أردت أن أعرف متى أردت أن تتعلم العربية معي.", "score": 8},
+        {"known": "She told me when she wanted to speak with you this week.", "target": "قالت لك متى أرادت أن تتكلم معك هذا الأسبوع.", "score": 8},
+        {"known": "He said when he wanted to speak with you about that.", "target": "قال متى أراد أن يتكلم معك عن ذلك.", "score": 8},
+        {"known": "I wanted to find out when she wanted to do that.", "target": "أردت أن أعرف متى أرادت أن تفعل ذلك.", "score": 8},
+        {"known": "She told me when she wanted to read that before the weekend.", "target": "قالت لك متى أرادت أن تقرأ ذلك قبل نهاية الأسبوع.", "score": 9},
+        {"known": "I wanted to know when you wanted to learn more Arabic.", "target": "أردت أن أعرف متى أردت أن تتعلم العربية أكثر.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "will you be ready",
+      "target": "ستكون جاهزاً",
+      "components": [
+        {"known": "will you be", "target": "ستكون"},
+        {"known": "ready", "target": "جاهزاً"}
+      ],
+      "build": [
+        {"known": "will you be ready", "target": "ستكون جاهزاً"},
+        {"known": "When will you be ready", "target": "متى ستكون جاهزاً"},
+        {"known": "you will be ready", "target": "ستكون جاهزاً"},
+        {"known": "will you be ready to", "target": "ستكون جاهزاً ل"}
+      ],
+      "use": [
+        {"known": "I wanted to know when you will be ready to speak Arabic.", "target": "أردت أن أعرف متى ستكون جاهزاً أن تتكلم العربية.", "score": 8},
+        {"known": "I want to know when you will be ready to do that today.", "target": "أريد أن أعرف متى ستكون جاهزاً أن تفعل ذلك اليوم.", "score": 8},
+        {"known": "He wanted to know when you will be ready to help me.", "target": "أراد أن يعرف متى ستكون جاهزاً أن تساعدني.", "score": 9},
+        {"known": "I wanted to know when you will be ready to tell me that.", "target": "أردت أن أعرف متى ستكون جاهزاً أن تخبرني ذلك.", "score": 9},
+        {"known": "I don't know when you will be ready to learn more Arabic.", "target": "لا أعرف متى ستكون جاهزاً أن تتعلم العربية أكثر.", "score": 8},
+        {"known": "She wanted to know when you will be ready this week.", "target": "أرادت أن تعرف متى ستكون جاهزاً هذا الأسبوع.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "to start?",
+      "target": "للبدء؟",
+      "components": [
+        {"known": "for", "target": "ل"},
+        {"known": "starting?", "target": "البدء؟"}
+      ],
+      "build": [
+        {"known": "to start?", "target": "للبدء؟"},
+        {"known": "ready to start?", "target": "جاهزاً للبدء؟"},
+        {"known": "When will you be ready to start?", "target": "متى ستكون جاهزاً للبدء؟"},
+        {"known": "be ready to start?", "target": "ستكون جاهزاً للبدء؟"}
+      ],
+      "use": [
+        {"known": "When do you think you will be ready to start?", "target": "متى تعتقد أنك ستكون جاهزاً للبدء؟", "score": 9},
+        {"known": "I want to know when you will be ready to start?", "target": "أريد أن أعرف متى ستكون جاهزاً للبدء؟", "score": 9},
+        {"known": "She wanted to know when he would be ready to start?", "target": "أرادت أن تعرف متى سيكون جاهزاً للبدء؟", "score": 8},
+        {"known": "He wanted to know when you will be ready to start?", "target": "أراد أن يعرف متى ستكون جاهزاً للبدء؟", "score": 9},
+        {"known": "Can you tell me when you will be ready to start?", "target": "هل يمكنك أن تخبرني متى ستكون جاهزاً للبدء؟", "score": 9},
+        {"known": "I wanted to know when you would be ready to start?", "target": "أردت أن أعرف متى ستكون جاهزاً للبدء؟", "score": 8}
+      ]
+    }
+  ]
+}

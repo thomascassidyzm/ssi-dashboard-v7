@@ -1,0 +1,220 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 235,
+  "known_text": "I met someone who said that he wanted to tell you something.",
+  "target_text": "我见了一个人说他想告诉你一些。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I met.", "target": "我见了。"},
+        {"known": "I said.", "target": "我说。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he wanted to help with this.", "target": "我见了一个人，他说他想帮忙做这个。", "score": 8},
+        {"known": "That young woman asked me if I know your brother.", "target": "那个年轻的女人问我是不是认识你哥哥。", "score": 7},
+        {"known": "If the old man can tell me, I would be very happy.", "target": "如果那个老人能告诉我的话，我会很开心。", "score": 8},
+        {"known": "Everyone told me they want to meet your sister too.", "target": "大家都告诉我他们也想见你姐姐。", "score": 7},
+        {"known": "Would that young man be able to help me with this work?", "target": "那个年轻的男人能帮我做这个工作吗？", "score": 8},
+        {"known": "She hopes I can remember what the old woman said.", "target": "她希望我能记住那个老女人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "met/saw",
+      "target": "见了",
+      "build": [
+        {"known": "Met.", "target": "见了。"},
+        {"known": "Saw.", "target": "见了。"},
+        {"known": "I met.", "target": "我见了。"},
+        {"known": "Met someone.", "target": "见了人。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he wanted to tell us something.", "target": "我见了一个人，他说他想告诉我们东西。", "score": 8},
+        {"known": "That young woman told me she met your brother yesterday.", "target": "那个年轻的女人告诉我她昨天见了你哥哥。", "score": 7},
+        {"known": "If you met someone who can help, please tell us now.", "target": "如果你见了能帮忙的人的话，请现在告诉我们。", "score": 8},
+        {"known": "She just said she met the old man this morning.", "target": "她刚说她今天早上见了那个老人。", "score": 7},
+        {"known": "Everyone here met your sister when she came last night.", "target": "这里的大家你姐姐昨天晚上来的时候都见了她。", "score": 8},
+        {"known": "Did you meet anyone new at the work yesterday?", "target": "你昨天在工作见了新的人吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "one (measure)",
+      "target": "一个",
+      "components": [
+        {"known": "one", "target": "一"},
+        {"known": "measure word", "target": "个"}
+      ],
+      "build": [
+        {"known": "One.", "target": "一个。"},
+        {"known": "A (thing).", "target": "一个。"},
+        {"known": "One person.", "target": "一个人。"},
+        {"known": "Met someone.", "target": "见了一个人。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he knows your sister.", "target": "我见了一个人，他说他认识你姐姐。", "score": 8},
+        {"known": "That old woman is waiting for us to give her an answer.", "target": "那个老女人在等我们给她一个答案。", "score": 7},
+        {"known": "If you need an answer now, you should ask your brother.", "target": "如果你现在需要一个答案的话，你要问你哥哥。", "score": 8},
+        {"known": "She will give him an answer when she sees him tonight.", "target": "她今天晚上见他的时候会给他一个答案。", "score": 7},
+        {"known": "Everyone is waiting to hear an answer about the work.", "target": "大家都在等听工作的一个答案。", "score": 8},
+        {"known": "What kind of answer do you think that man will give us?", "target": "你觉得那个男人会给我们什么样的一个答案？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "person/someone",
+      "target": "人",
+      "build": [
+        {"known": "Person.", "target": "人。"},
+        {"known": "Someone.", "target": "人。"},
+        {"known": "Met someone.", "target": "见了一个人。"},
+        {"known": "Old person.", "target": "老人。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he wanted to help us.", "target": "我见了一个人，他说他想帮我们。", "score": 8},
+        {"known": "That young woman knows a lot of people here.", "target": "那个年轻的女人认识这里很多人。", "score": 7},
+        {"known": "If you don't understand, you should ask someone.", "target": "如果你不了解，你要问人。", "score": 8},
+        {"known": "He is going to ask some people what happened yesterday.", "target": "他会问一些人昨天发生了什么。", "score": 7},
+        {"known": "Everyone here is a person who wants to help.", "target": "这里的大家都是想帮忙的人。", "score": 8},
+        {"known": "How many people did you meet at work yesterday?", "target": "你昨天在工作见了多少人？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "he/him",
+      "target": "他",
+      "build": [
+        {"known": "He.", "target": "他。"},
+        {"known": "He said.", "target": "他说。"},
+        {"known": "He wanted.", "target": "他想。"},
+        {"known": "Tell him.", "target": "告诉他。"}
+      ],
+      "use": [
+        {"known": "I met someone, he said he wanted to tell us something.", "target": "我见了一个人，他说他想告诉我们东西。", "score": 8},
+        {"known": "That young woman asked if he can come to the meeting.", "target": "那个年轻的女人问他是不是能来开会。", "score": 7},
+        {"known": "If he has time tomorrow, he will help us with the work.", "target": "如果他明天有时间的话，他会帮我们做工作。", "score": 8},
+        {"known": "I want him to tell us what the old man said.", "target": "我想他告诉我们那个老人说了什么。", "score": 7},
+        {"known": "Everyone is waiting for him to give us an answer.", "target": "大家都在等他给我们一个答案。", "score": 8},
+        {"known": "Would he be able to remember what happened yesterday?", "target": "他能记住昨天发生了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "said/say",
+      "target": "说",
+      "build": [
+        {"known": "Said.", "target": "说。"},
+        {"known": "Say.", "target": "说。"},
+        {"known": "He said.", "target": "他说。"},
+        {"known": "Said that.", "target": "说...。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he wanted to tell you something.", "target": "我见了一个人，他说他想告诉你东西。", "score": 8},
+        {"known": "That young woman said she wants to see your brother.", "target": "那个年轻的女人说她想见你哥哥。", "score": 7},
+        {"known": "If she said that, I think you should believe her.", "target": "如果她说了那个的话，我觉得你要信她。", "score": 8},
+        {"known": "Your sister said she remembers what happened yesterday.", "target": "你姐姐说她记住昨天发生了什么。", "score": 7},
+        {"known": "Everyone here said they want to work together with us.", "target": "这里的大家都说他们想和我们一起工作。", "score": 8},
+        {"known": "What did the old man say when you met him last night?", "target": "你昨天晚上见他的时候那个老人说了什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "want/wanted",
+      "target": "想",
+      "build": [
+        {"known": "Want.", "target": "想。"},
+        {"known": "Wanted.", "target": "想。"},
+        {"known": "He wanted.", "target": "他想。"},
+        {"known": "Wanted to tell.", "target": "想告诉。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he wanted to help with this.", "target": "我见了一个人，他说他想帮忙做这个。", "score": 8},
+        {"known": "That young woman wanted to know what happened yesterday.", "target": "那个年轻的女人想知道昨天发生了什么。", "score": 7},
+        {"known": "If he wanted to tell you, he would have said something.", "target": "如果他想告诉你的话，他会说东西。", "score": 8},
+        {"known": "She just said she wanted to meet your brother today.", "target": "她刚说她今天想见你哥哥。", "score": 7},
+        {"known": "Everyone here wanted to know when the meeting starts.", "target": "这里的大家都想知道开会什么时候开始。", "score": 8},
+        {"known": "What did that young man want to tell you about?", "target": "那个年轻的男人想告诉你什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "M",
+      "known": "tell (someone)",
+      "target": "告诉",
+      "components": [
+        {"known": "announce", "target": "告"},
+        {"known": "inform", "target": "诉"}
+      ],
+      "build": [
+        {"known": "Tell.", "target": "告诉。"},
+        {"known": "Tell you.", "target": "告诉你。"},
+        {"known": "Wanted to tell.", "target": "想告诉。"},
+        {"known": "Tell me.", "target": "告诉我。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he wanted to tell you something.", "target": "我见了一个人，他说他想告诉你东西。", "score": 8},
+        {"known": "That old woman said she wanted to tell us the answer.", "target": "那个老女人说她想告诉我们答案。", "score": 7},
+        {"known": "If you want to tell him something, do it right now.", "target": "如果你想告诉他东西的话，现在做。", "score": 8},
+        {"known": "He told us what happened when he met your sister.", "target": "他告诉我们他见你姐姐的时候发生了什么。", "score": 7},
+        {"known": "Everyone wants to tell you we appreciate your help.", "target": "大家都想告诉你我们很感激你的帮忙。", "score": 8},
+        {"known": "Who told you about what happened at the work yesterday?", "target": "谁告诉你昨天工作发生了什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "you/your",
+      "target": "你",
+      "build": [
+        {"known": "You.", "target": "你。"},
+        {"known": "Your.", "target": "你的。"},
+        {"known": "Tell you.", "target": "告诉你。"},
+        {"known": "Help you.", "target": "帮你。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he wanted to tell you the answer.", "target": "我见了一个人，他说他想告诉你答案。", "score": 8},
+        {"known": "That old man told me he wants to see you tomorrow.", "target": "那个老人告诉我他想明天见你。", "score": 7},
+        {"known": "If he can help you, I think you should ask him now.", "target": "如果他能帮你的话，我觉得你现在要问他。", "score": 8},
+        {"known": "She hopes you can tell her what happened yesterday.", "target": "她希望你能告诉她昨天发生了什么。", "score": 7},
+        {"known": "Everyone here wants to know what you think about this.", "target": "这里的大家都想知道你觉得这个怎么样。", "score": 8},
+        {"known": "Would that young man be able to work together with you?", "target": "那个年轻的男人能和你一起工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 10,
+      "type": "M",
+      "known": "some/a few",
+      "target": "一些",
+      "components": [
+        {"known": "one", "target": "一"},
+        {"known": "some", "target": "些"}
+      ],
+      "build": [
+        {"known": "Some.", "target": "一些。"},
+        {"known": "A few.", "target": "一些。"},
+        {"known": "Tell you some.", "target": "告诉你一些。"},
+        {"known": "Some things.", "target": "一些东西。"}
+      ],
+      "use": [
+        {"known": "I met someone who said he wanted to tell you some.", "target": "我见了一个人说他想告诉你一些。", "score": 8},
+        {"known": "That young woman wants to know some of what you said.", "target": "那个年轻的女人想知道你说了一些什么。", "score": 7},
+        {"known": "If you need some help, please let us know now.", "target": "如果你需要一些帮忙的话，请现在让我们知道。", "score": 8},
+        {"known": "He told me some of what happened yesterday.", "target": "他告诉我一些昨天发生了什么。", "score": 7},
+        {"known": "Everyone brought some things to share at the meeting.", "target": "大家都带了一些东西来开会一起用。", "score": 8},
+        {"known": "Can you tell me some of what the old man said?", "target": "你能告诉我那个老人说了一些什么吗？", "score": 8}
+      ]
+    }
+  ]
+}

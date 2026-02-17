@@ -1,0 +1,143 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 126,
+  "target_text": "This work is changing the shape of my brain.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "仕事",
+      "target": "work",
+      "build": [
+        {"known": "仕事", "target": "work"},
+        {"known": "仕事が", "target": "the work"},
+        {"known": "この仕事", "target": "this work"},
+        {"known": "仕事を", "target": "work is"}
+      ],
+      "use": [
+        {"known": "この仕事は大切だと思います。", "target": "I think this work is important to do now.", "score": 8},
+        {"known": "仕事が好きですか？", "target": "Do you like the work that you do today?", "score": 8},
+        {"known": "仕事は難しいですが、楽しいです。", "target": "The work is difficult, but it is fun too.", "score": 8},
+        {"known": "この仕事を信じています。", "target": "I believe that this work is very good.", "score": 8},
+        {"known": "仕事について話したいです。", "target": "I want to talk about the work with you.", "score": 8},
+        {"known": "いい仕事だと思いました。", "target": "I thought that it was good work to do.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "脳",
+      "target": "brain",
+      "build": [
+        {"known": "脳", "target": "brain"},
+        {"known": "脳の", "target": "the brain"},
+        {"known": "私の脳", "target": "my brain"},
+        {"known": "脳を", "target": "brain is"}
+      ],
+      "use": [
+        {"known": "脳は大切だと信じています。", "target": "I believe that the brain is very important.", "score": 8},
+        {"known": "脳について学びたいです。", "target": "I want to learn about the brain with you.", "score": 8},
+        {"known": "脳が大切だと思います。", "target": "I think the brain is very important to me.", "score": 8},
+        {"known": "私の脳は面白いと思いますか？", "target": "Do you think my brain is interesting to you?", "score": 8},
+        {"known": "脳の仕事は大切です。", "target": "I think the work of the brain is important.", "score": 8},
+        {"known": "脳は難しいと思いますが、学びたいです。", "target": "I think the brain is difficult, but I want to learn.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "形",
+      "target": "shape",
+      "build": [
+        {"known": "形", "target": "shape"},
+        {"known": "形を", "target": "the shape"},
+        {"known": "形が", "target": "shape is"},
+        {"known": "この形", "target": "this shape"}
+      ],
+      "use": [
+        {"known": "形が大切だと思います。", "target": "I think the shape is very important to me.", "score": 8},
+        {"known": "脳の形について話したいです。", "target": "I want to talk about the shape of the brain.", "score": 8},
+        {"known": "形は大切だと信じています。", "target": "I believe that the shape is very important.", "score": 8},
+        {"known": "この形は面白いですね。", "target": "I think this shape is interesting to me.", "score": 8},
+        {"known": "形を変えたいと思います。", "target": "I think I want to change the shape now.", "score": 8},
+        {"known": "形が好きですか？", "target": "Do you like the shape of it very well?", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "〜を変えています",
+      "target": "is changing the",
+      "components": [
+        {"known": "〜している", "target": "is"},
+        {"known": "変える", "target": "changing"},
+        {"known": "〜を", "target": "the"}
+      ],
+      "build": [
+        {"known": "変えています", "target": "is changing the"},
+        {"known": "変えている", "target": "changing the"},
+        {"known": "変えていますか", "target": "is it changing the"},
+        {"known": "変えています", "target": "is changing"}
+      ],
+      "use": [
+        {"known": "この仕事が私の脳の形を変えています。", "target": "This work is changing the shape of my brain.", "score": 9},
+        {"known": "何かが変えていると思います。", "target": "I think something is changing the way I feel.", "score": 8},
+        {"known": "これが形を変えていますか？", "target": "Do you think this is changing the shape now?", "score": 8},
+        {"known": "仕事が脳を変えていると信じています。", "target": "I believe that work is changing the brain.", "score": 8},
+        {"known": "学ぶことが私を変えています。", "target": "I think learning is changing the way I think.", "score": 8},
+        {"known": "これが形を変えていると思います。", "target": "I think this is changing the shape very well.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "私の脳の形",
+      "target": "shape of my brain",
+      "components": [
+        {"known": "形", "target": "shape"},
+        {"known": "〜の", "target": "of"},
+        {"known": "私の", "target": "my"},
+        {"known": "脳", "target": "brain"}
+      ],
+      "build": [
+        {"known": "私の脳の形", "target": "shape of my brain"},
+        {"known": "私の脳の形を", "target": "the shape of my brain"},
+        {"known": "私の脳の形が", "target": "shape of my brain is"},
+        {"known": "脳の形", "target": "shape of the brain"}
+      ],
+      "use": [
+        {"known": "この仕事が私の脳の形を変えています。", "target": "This work is changing the shape of my brain.", "score": 9},
+        {"known": "私の脳の形について学びたいです。", "target": "I want to learn about the shape of my brain.", "score": 8},
+        {"known": "私の脳の形は大切だと信じています。", "target": "I believe that the shape of my brain is important.", "score": 8},
+        {"known": "私の脳の形が変わっていると思います。", "target": "I think the shape of my brain is changing now.", "score": 8},
+        {"known": "私の脳の形について話しましょう。", "target": "I want to talk about the shape of my brain.", "score": 8},
+        {"known": "私の脳の形は面白いと思いますか？", "target": "Do you think the shape of my brain is interesting?", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "この仕事が",
+      "target": "This work is",
+      "components": [
+        {"known": "この", "target": "This"},
+        {"known": "仕事", "target": "work"},
+        {"known": "が", "target": "is"}
+      ],
+      "build": [
+        {"known": "この仕事が", "target": "This work is"},
+        {"known": "この仕事は", "target": "This work"},
+        {"known": "仕事が", "target": "The work is"},
+        {"known": "この仕事を", "target": "This work that"}
+      ],
+      "use": [
+        {"known": "この仕事が私の脳の形を変えています。", "target": "This work is changing the shape of my brain.", "score": 9},
+        {"known": "この仕事が大切だと思います。", "target": "I think this work is important to do now.", "score": 8},
+        {"known": "この仕事が好きですか？", "target": "Do you like this work that you do today?", "score": 8},
+        {"known": "この仕事が難しいと思いました。", "target": "I thought this work was difficult to do.", "score": 8},
+        {"known": "この仕事が面白いと信じています。", "target": "I believe that this work is very interesting.", "score": 8},
+        {"known": "この仕事がとても良いと思います。", "target": "I think this work is very good to do now.", "score": 8}
+      ]
+    }
+  ]
+}

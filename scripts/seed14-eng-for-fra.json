@@ -1,0 +1,66 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 14,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "Est-ce que",
+      "target": "Do",
+      "build": [
+        {"known": "Est-ce que", "target": "Do"},
+        {"known": "Est-ce que tu parles", "target": "Do you speak"},
+        {"known": "Est-ce que tu veux", "target": "Do you want"},
+        {"known": "Est-ce que je peux", "target": "Can I"}
+      ],
+      "use": [
+        {"known": "Est-ce que tu parles anglais maintenant?", "target": "Do you speak English now?", "score": 8},
+        {"known": "Est-ce que tu veux parler anglais avec quelqu'un d'autre?", "target": "Do you want to speak English with someone else?", "score": 9},
+        {"known": "Est-ce que tu peux me souvenir de toute la phrase?", "target": "Can you remember the whole sentence?", "score": 8},
+        {"known": "Est-ce que tu veux pouvoir parler très bien demain?", "target": "Do you want to be able to speak very well tomorrow?", "score": 9},
+        {"known": "Est-ce que tu essaies de parler anglais le plus souvent possible?", "target": "Do you try to speak English as often as possible?", "score": 9},
+        {"known": "Est-ce que tu veux expliquer ce qui va se passer?", "target": "Do you want to explain what's going to happen?", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "Tu parles",
+      "target": "You speak",
+      "components": [
+        {"known": "Tu", "target": "You"},
+        {"known": "parles", "target": "speak"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "anglais",
+      "target": "English"
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "toute la journée",
+      "target": "all day",
+      "components": [
+        {"known": "toute", "target": "all"},
+        {"known": "la journée", "target": "day"}
+      ],
+      "build": [
+        {"known": "toute la journée", "target": "all day"},
+        {"known": "parler toute la journée", "target": "to speak all day"},
+        {"known": "Tu parles toute la journée", "target": "You speak all day"},
+        {"known": "apprendre toute la journée", "target": "to learn all day"}
+      ],
+      "use": [
+        {"known": "Est-ce que tu parles anglais toute la journée?", "target": "Do you speak English all day?", "score": 9},
+        {"known": "J'aimerais pouvoir parler anglais toute la journée.", "target": "I'd like to be able to speak English all day.", "score": 9},
+        {"known": "Tu parles très bien anglais toute la journée.", "target": "You speak English very well all day.", "score": 8},
+        {"known": "J'essaie de parler anglais toute la journée demain.", "target": "I'm trying to speak English all day tomorrow.", "score": 8},
+        {"known": "Je vais m'entraîner à parler anglais toute la journée.", "target": "I'm going to practise speaking English all day.", "score": 9},
+        {"known": "Est-ce que tu veux apprendre anglais toute la journée?", "target": "Do you want to learn English all day?", "score": 8}
+      ]
+    }
+  ]
+}

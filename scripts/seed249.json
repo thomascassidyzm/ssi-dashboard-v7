@@ -1,0 +1,75 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 249,
+  "target_text": "أريدك أن تساعدني قبل أن تذهب.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I want you",
+      "target": "أريدك",
+      "build": [
+        {"known": "I want you", "target": "أريدك"},
+        {"known": "I want you to", "target": "أريدك أن"},
+        {"known": "I want you to learn", "target": "أريدك أن تتعلم"},
+        {"known": "I want you to speak", "target": "أريدك أن تتكلم"}
+      ],
+      "use": [
+        {"known": "I want you to learn Arabic with me today.", "target": "أريدك أن تتعلم العربية معي اليوم.", "score": 8},
+        {"known": "I want you to speak Arabic with me this week.", "target": "أريدك أن تتكلم العربية معي هذا الأسبوع.", "score": 8},
+        {"known": "I want you to understand what I am trying to say.", "target": "أريدك أن تفهم ما أحاول أن أقوله.", "score": 8},
+        {"known": "I want you to read that book before the weekend.", "target": "أريدك أن تقرأ ذلك الكتاب قبل نهاية الأسبوع.", "score": 9},
+        {"known": "I want you to tell me what you think about the film.", "target": "أريدك أن تخبرني ما تعتقد عن الفيلم.", "score": 9},
+        {"known": "I want you to learn something new every day.", "target": "أريدك أن تتعلم شيئاً جديداً كل يوم.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "for you to help me",
+      "target": "أن تساعدني",
+      "components": [
+        {"known": "for you to", "target": "أن"},
+        {"known": "you help me", "target": "تساعدني"}
+      ],
+      "build": [
+        {"known": "for you to help me", "target": "أن تساعدني"},
+        {"known": "I want you to help me", "target": "أريدك أن تساعدني"},
+        {"known": "for you to help me learn", "target": "أن تساعدني أن أتعلم"},
+        {"known": "for you to help me speak", "target": "أن تساعدني أن أتكلم"}
+      ],
+      "use": [
+        {"known": "I want you to help me learn Arabic this week.", "target": "أريدك أن تساعدني أن أتعلم العربية هذا الأسبوع.", "score": 8},
+        {"known": "I want you to help me understand what he said.", "target": "أريدك أن تساعدني أن أفهم ما قال.", "score": 8},
+        {"known": "He wanted you to help me with the book yesterday.", "target": "أرادك أن تساعدني في الكتاب بالأمس.", "score": 8},
+        {"known": "I want you to help me because I do not have time.", "target": "أريدك أن تساعدني لأنني ليس لدي وقت.", "score": 8},
+        {"known": "I want you to help me learn Arabic at the weekend.", "target": "أريدك أن تساعدني أن أتعلم العربية في نهاية الأسبوع.", "score": 8},
+        {"known": "I want you to help me speak Arabic better.", "target": "أريدك أن تساعدني أن أتكلم العربية أفضل.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "before you go",
+      "target": "قبل أن تذهب",
+      "components": [
+        {"known": "before", "target": "قبل"},
+        {"known": "you go", "target": "أن تذهب"}
+      ],
+      "build": [
+        {"known": "before you go", "target": "قبل أن تذهب"},
+        {"known": "I want you to help me before you go", "target": "أريدك أن تساعدني قبل أن تذهب"},
+        {"known": "before you go today", "target": "قبل أن تذهب اليوم"},
+        {"known": "before you go home", "target": "قبل أن تذهب إلى البيت"}
+      ],
+      "use": [
+        {"known": "I want you to help me before you go.", "target": "أريدك أن تساعدني قبل أن تذهب.", "score": 8},
+        {"known": "I want you to tell me what you think before you go.", "target": "أريدك أن تخبرني ما تعتقد قبل أن تذهب.", "score": 8},
+        {"known": "I want you to read the book before you go today.", "target": "أريدك أن تقرأ الكتاب قبل أن تذهب اليوم.", "score": 8},
+        {"known": "She wanted to speak with you before you go home.", "target": "أرادت أن تتكلم معك قبل أن تذهب إلى البيت.", "score": 9},
+        {"known": "I want you to learn this before you go home today.", "target": "أريدك أن تتعلم هذا قبل أن تذهب إلى البيت اليوم.", "score": 9},
+        {"known": "He wanted to tell you something before you go this week.", "target": "أراد أن يخبرك شيئاً قبل أن تذهب هذا الأسبوع.", "score": 9}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 20,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Tu veux",
+      "target": "You want",
+      "components": [
+        {"known": "Tu", "target": "You"},
+        {"known": "veux", "target": "want"}
+      ],
+      "build": [
+        {"known": "Tu veux", "target": "You want"},
+        {"known": "Tu veux parler", "target": "You want to speak"},
+        {"known": "Tu veux apprendre", "target": "You want to learn"},
+        {"known": "Tu veux revenir", "target": "You want to come back"}
+      ],
+      "use": [
+        {"known": "Tu veux parler anglais avec moi maintenant.", "target": "You want to speak English with me now.", "score": 8},
+        {"known": "Tu veux apprendre comment parler anglais très bien.", "target": "You want to learn how to speak English very well.", "score": 9},
+        {"known": "Tu veux revenir et parler anglais plus tard.", "target": "You want to come back and speak English later on.", "score": 9},
+        {"known": "Tu veux savoir quelle est la réponse ce soir.", "target": "You want to find out what the answer is this evening.", "score": 9},
+        {"known": "Mais tu veux nous retrouver à six heures.", "target": "But you want to meet at six o'clock.", "score": 8},
+        {"known": "Tu veux arrêter de parler anglais maintenant.", "target": "You want to stop talking English now.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "apprendre",
+      "target": "to learn"
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "son nom",
+      "target": "his name",
+      "components": [
+        {"known": "son", "target": "his"},
+        {"known": "nom", "target": "name"}
+      ],
+      "build": [
+        {"known": "son nom", "target": "his name"},
+        {"known": "apprendre son nom", "target": "to learn his name"},
+        {"known": "Tu veux apprendre son nom", "target": "You want to learn his name"},
+        {"known": "savoir son nom", "target": "to find out his name"}
+      ],
+      "use": [
+        {"known": "Tu veux apprendre son nom maintenant.", "target": "You want to learn his name now.", "score": 8},
+        {"known": "Elle veut savoir son nom ce soir.", "target": "She wants to find out his name this evening.", "score": 9},
+        {"known": "Je veux me souvenir de son nom demain.", "target": "I want to remember his name tomorrow.", "score": 9},
+        {"known": "Nous voulons apprendre son nom à six heures.", "target": "We want to learn his name at six o'clock.", "score": 8},
+        {"known": "Mais je ne veux pas expliquer son nom.", "target": "But I don't want to explain his name.", "score": 8},
+        {"known": "Il veut savoir son nom plus tard.", "target": "He wants to find out his name later on.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "rapidement",
+      "target": "quickly",
+      "build": [
+        {"known": "rapidement", "target": "quickly"},
+        {"known": "apprendre rapidement", "target": "to learn quickly"},
+        {"known": "parler rapidement", "target": "to speak quickly"},
+        {"known": "Tu veux apprendre rapidement", "target": "You want to learn quickly"}
+      ],
+      "use": [
+        {"known": "Tu veux apprendre son nom rapidement.", "target": "You want to learn his name quickly.", "score": 9},
+        {"known": "Elle veut parler anglais rapidement.", "target": "She wants to speak English quickly.", "score": 8},
+        {"known": "Nous voulons nous retrouver rapidement ce soir.", "target": "We want to meet quickly this evening.", "score": 8},
+        {"known": "Je veux apprendre comment parler anglais rapidement.", "target": "I want to learn how to speak English quickly.", "score": 9},
+        {"known": "Il veut savoir quelle est la réponse rapidement.", "target": "He wants to find out what the answer is quickly.", "score": 9},
+        {"known": "Mais tu veux arrêter de parler rapidement.", "target": "But you want to stop talking quickly.", "score": 8}
+      ]
+    }
+  ]
+}

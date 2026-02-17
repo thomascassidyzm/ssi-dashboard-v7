@@ -1,0 +1,70 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 36,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Nous ne voulons pas",
+      "target": "We don't want",
+      "components": [
+        {"known": "Nous", "target": "We"},
+        {"known": "ne voulons pas", "target": "don't want"}
+      ],
+      "build": [
+        {"known": "Nous ne voulons pas", "target": "We don't want"},
+        {"known": "Nous ne voulons pas parler", "target": "We don't want to speak"},
+        {"known": "Nous ne voulons pas apprendre", "target": "We don't want to learn"},
+        {"known": "Nous ne voulons pas lire", "target": "We don't want to read"}
+      ],
+      "use": [
+        {"known": "Nous ne voulons pas parler anglais cet après-midi.", "target": "We don't want to speak English this afternoon.", "score": 9},
+        {"known": "Parce que nous ne voulons pas apprendre quoi que ce soit maintenant.", "target": "Because we don't want to learn anything now.", "score": 9},
+        {"known": "Nous ne voulons pas lire quoi que ce soit quand d'autres personnes sont ici.", "target": "We don't want to read anything when other people are here.", "score": 9},
+        {"known": "Nous ne voulons pas être silencieux cet après-midi.", "target": "We don't want to be quiet this afternoon.", "score": 9},
+        {"known": "Nous ne voulons pas partir avant que tu sois prêt.", "target": "We don't want to go before you are ready.", "score": 9},
+        {"known": "Nous ne voulons pas commencer à parler anglais bientôt.", "target": "We don't want to start talking English soon.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "interrompre",
+      "target": "to interrupt",
+      "build": [
+        {"known": "interrompre", "target": "to interrupt"},
+        {"known": "Nous ne voulons pas interrompre", "target": "We don't want to interrupt"},
+        {"known": "je ne veux pas interrompre", "target": "I don't want to interrupt"},
+        {"known": "interrompre quelqu'un", "target": "to interrupt someone"}
+      ],
+      "use": [
+        {"known": "Nous ne voulons pas interrompre maintenant.", "target": "We don't want to interrupt now.", "score": 9},
+        {"known": "Parce que je ne veux pas interrompre quand tu parles.", "target": "Because I don't want to interrupt when you speak.", "score": 9},
+        {"known": "Nous ne voulons pas interrompre d'autres personnes.", "target": "We don't want to interrupt other people.", "score": 9},
+        {"known": "Il ne veut pas interrompre quand tu parles.", "target": "He doesn't want to interrupt when you speak.", "score": 9},
+        {"known": "Nous ne voulons pas interrompre cet après-midi.", "target": "We don't want to interrupt this afternoon.", "score": 9},
+        {"known": "Elle ne veut pas interrompre quand d'autres personnes sont ici.", "target": "She doesn't want to interrupt when other people are here.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "l'histoire",
+      "target": "the story",
+      "build": [
+        {"known": "l'histoire", "target": "the story"},
+        {"known": "interrompre l'histoire", "target": "to interrupt the story"},
+        {"known": "Nous ne voulons pas interrompre l'histoire", "target": "We don't want to interrupt the story"},
+        {"known": "lire l'histoire", "target": "to read the story"}
+      ],
+      "use": [
+        {"known": "Nous ne voulons pas interrompre l'histoire.", "target": "We don't want to interrupt the story.", "score": 9},
+        {"known": "Parce que je veux lire l'histoire maintenant.", "target": "Because I want to read the story now.", "score": 9},
+        {"known": "Nous ne voulons pas interrompre l'histoire cet après-midi.", "target": "We don't want to interrupt the story this afternoon.", "score": 9},
+        {"known": "Elle ne veut pas lire l'histoire quand d'autres personnes sont ici.", "target": "She doesn't want to read the story when other people are here.", "score": 9},
+        {"known": "Il ne veut pas interrompre l'histoire avant que tu partes.", "target": "He doesn't want to interrupt the story before you go.", "score": 9},
+        {"known": "Je voulais lire l'histoire hier.", "target": "I wanted to read the story yesterday.", "score": 9}
+      ]
+    }
+  ]
+}

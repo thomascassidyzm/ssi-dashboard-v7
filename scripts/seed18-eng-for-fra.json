@@ -1,0 +1,99 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 18,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Nous voulons",
+      "target": "We want",
+      "components": [
+        {"known": "Nous", "target": "We"},
+        {"known": "voulons", "target": "want"}
+      ],
+      "build": [
+        {"known": "Nous voulons", "target": "We want"},
+        {"known": "Nous voulons parler", "target": "We want to speak"},
+        {"known": "Nous voulons apprendre", "target": "We want to learn"},
+        {"known": "Nous voulons revenir", "target": "We want to come back"}
+      ],
+      "use": [
+        {"known": "Nous voulons parler anglais avec tout le monde.", "target": "We want to speak English with everyone else.", "score": 9},
+        {"known": "Nous voulons apprendre comment parler anglais très bien.", "target": "We want to learn how to speak English very well.", "score": 9},
+        {"known": "Nous voulons revenir et parler anglais plus tard.", "target": "We want to come back and speak English later on.", "score": 9},
+        {"known": "Nous voulons essayer de parler anglais toute la journée.", "target": "We want to try to speak English all day.", "score": 9},
+        {"known": "Et nous voulons savoir quelle est la réponse.", "target": "And we want to find out what the answer is.", "score": 9},
+        {"known": "Nous voulons pouvoir parler anglais le plus souvent possible.", "target": "We want to be able to speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "nous retrouver",
+      "target": "to meet",
+      "build": [
+        {"known": "nous retrouver", "target": "to meet"},
+        {"known": "Nous voulons nous retrouver", "target": "We want to meet"},
+        {"known": "Je veux nous retrouver", "target": "I want to meet"},
+        {"known": "nous retrouver demain", "target": "to meet tomorrow"}
+      ],
+      "use": [
+        {"known": "Nous voulons nous retrouver et parler anglais.", "target": "We want to meet and speak English.", "score": 9},
+        {"known": "Elle veut nous retrouver et parler anglais plus tard.", "target": "She wants to meet and speak English later on.", "score": 9},
+        {"known": "Il veut nous retrouver demain pour parler anglais.", "target": "He wants to meet tomorrow to speak English.", "score": 9},
+        {"known": "J'aimerais nous retrouver et parler anglais avec toi.", "target": "I'd like to meet and speak English with you.", "score": 9},
+        {"known": "Nous voulons nous retrouver toute la journée.", "target": "We want to meet all day.", "score": 8},
+        {"known": "Est-ce que tu veux nous retrouver plus tard?", "target": "Do you want to meet later on?", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "à six heures",
+      "target": "at six o'clock",
+      "components": [
+        {"known": "à", "target": "at"},
+        {"known": "six", "target": "six"},
+        {"known": "heures", "target": "o'clock"}
+      ],
+      "build": [
+        {"known": "à six heures", "target": "at six o'clock"},
+        {"known": "nous retrouver à six heures", "target": "to meet at six o'clock"},
+        {"known": "parler à six heures", "target": "to speak at six o'clock"},
+        {"known": "revenir à six heures", "target": "to come back at six o'clock"}
+      ],
+      "use": [
+        {"known": "Nous voulons nous retrouver à six heures.", "target": "We want to meet at six o'clock.", "score": 9},
+        {"known": "Elle veut parler anglais à six heures demain.", "target": "She wants to speak English at six o'clock tomorrow.", "score": 9},
+        {"known": "Il veut revenir à six heures pour parler anglais.", "target": "He wants to come back at six o'clock to speak English.", "score": 9},
+        {"known": "J'aimerais nous retrouver à six heures plus tard.", "target": "I'd like to meet at six o'clock later on.", "score": 8},
+        {"known": "Nous voulons savoir quelle est la réponse à six heures.", "target": "We want to find out what the answer is at six o'clock.", "score": 8},
+        {"known": "Est-ce que tu veux nous retrouver à six heures?", "target": "Do you want to meet at six o'clock?", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "ce soir",
+      "target": "this evening",
+      "components": [
+        {"known": "ce", "target": "this"},
+        {"known": "soir", "target": "evening"}
+      ],
+      "build": [
+        {"known": "ce soir", "target": "this evening"},
+        {"known": "nous retrouver ce soir", "target": "to meet this evening"},
+        {"known": "parler ce soir", "target": "to speak this evening"},
+        {"known": "à six heures ce soir", "target": "at six o'clock this evening"}
+      ],
+      "use": [
+        {"known": "Nous voulons nous retrouver à six heures ce soir.", "target": "We want to meet at six o'clock this evening.", "score": 9},
+        {"known": "Elle veut parler anglais avec tout le monde ce soir.", "target": "She wants to speak English with everyone else this evening.", "score": 9},
+        {"known": "Il veut revenir et parler anglais ce soir.", "target": "He wants to come back and speak English this evening.", "score": 9},
+        {"known": "J'aimerais nous retrouver ce soir pour parler anglais.", "target": "I'd like to meet this evening to speak English.", "score": 9},
+        {"known": "Nous voulons savoir quelle est la réponse ce soir.", "target": "We want to find out what the answer is this evening.", "score": 8},
+        {"known": "Est-ce que tu veux nous retrouver à six heures ce soir?", "target": "Do you want to meet at six o'clock this evening?", "score": 9}
+      ]
+    }
+  ]
+}

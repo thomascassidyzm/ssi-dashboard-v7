@@ -1,0 +1,79 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 170,
+  "target_text": "I'd like you to tell me what you need.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je voudrais",
+      "target": "I'd like",
+      "components": [
+        {"known": "Je", "target": "I'd"},
+        {"known": "voudrais", "target": "like"}
+      ],
+      "build": [
+        {"known": "Je voudrais", "target": "I'd like"},
+        {"known": "voudrais", "target": "like"},
+        {"known": "Je voudrais faire", "target": "I'd like to do"},
+        {"known": "je voudrais venir", "target": "I'd like to come"}
+      ],
+      "use": [
+        {"known": "Je voudrais venir demain matin si tu as le temps pour moi", "target": "I'd like to come tomorrow morning if you have time for me", "score": 8},
+        {"known": "Je voudrais faire quelque chose de différent ce soir avec toi", "target": "I'd like to do something different this evening with you", "score": 8},
+        {"known": "Je voudrais venir avec vous demain après-midi si je peux", "target": "I'd like to come with you tomorrow afternoon if I can", "score": 8},
+        {"known": "Je voudrais savoir ce que tu penses de ça maintenant", "target": "I'd like to know what you think about that now", "score": 8},
+        {"known": "Je voudrais parler avec toi de quelque chose d'important demain", "target": "I'd like to talk with you about something important tomorrow", "score": 8},
+        {"known": "Je voudrais faire ça avec vous le mois prochain si tu veux", "target": "I'd like to do that with you next month if you want", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "que vous me disiez",
+      "target": "you to tell me",
+      "components": [
+        {"known": "que vous", "target": "you to"},
+        {"known": "me disiez", "target": "tell me"}
+      ],
+      "build": [
+        {"known": "que vous me disiez", "target": "you to tell me"},
+        {"known": "me disiez", "target": "tell me"},
+        {"known": "que tu me dises", "target": "you to tell me"},
+        {"known": "voudrais que vous me disiez", "target": "like you to tell me"}
+      ],
+      "use": [
+        {"known": "Je voudrais que vous me disiez ce que vous voulez faire demain", "target": "I'd like you to tell me what you want to do tomorrow", "score": 8},
+        {"known": "Je voudrais que tu me dises ce que tu penses de ça", "target": "I'd like you to tell me what you think about that", "score": 8},
+        {"known": "Tu veux que je te dise ce que je pense de ça?", "target": "Do you want me to tell you what I think about that?", "score": 8},
+        {"known": "Je ne veux pas que tu me dises ça maintenant ici", "target": "I don't want you to tell me that now here", "score": 8},
+        {"known": "Elle voulait que je lui dise ce que je voulais faire", "target": "She wanted me to tell her what I wanted to do", "score": 8},
+        {"known": "Je voudrais que tu me dises si tu peux venir demain matin", "target": "I'd like you to tell me if you can come tomorrow morning", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "ce dont vous avez besoin",
+      "target": "what you need",
+      "components": [
+        {"known": "ce dont", "target": "what"},
+        {"known": "vous avez besoin", "target": "you need"}
+      ],
+      "build": [
+        {"known": "ce dont vous avez besoin", "target": "what you need"},
+        {"known": "vous avez besoin", "target": "you need"},
+        {"known": "j'ai besoin", "target": "I need"},
+        {"known": "ce dont j'ai besoin", "target": "what I need"}
+      ],
+      "use": [
+        {"known": "Je voudrais que vous me disiez ce dont vous avez besoin maintenant", "target": "I'd like you to tell me what you need now", "score": 9},
+        {"known": "Je ne sais pas ce dont tu as besoin pour faire ça demain", "target": "I don't know what you need to do that tomorrow", "score": 8},
+        {"known": "Tu peux me dire ce dont tu as besoin pour le faire?", "target": "Can you tell me what you need to do it?", "score": 8},
+        {"known": "Je vais te donner ce dont tu as besoin demain matin", "target": "I'm going to give you what you need tomorrow morning", "score": 8},
+        {"known": "J'ai besoin de savoir ce que tu veux faire ce soir", "target": "I need to know what you want to do this evening", "score": 8},
+        {"known": "Tu me dis ce dont tu as besoin et je vais t'aider", "target": "You tell me what you need and I'm going to help you", "score": 8}
+      ]
+    }
+  ]
+}

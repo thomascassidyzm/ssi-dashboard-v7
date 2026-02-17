@@ -1,0 +1,75 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 178,
+  "target_text": "I didn't have time, although I wanted to see you.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je n'ai pas eu le temps",
+      "target": "I didn't have time",
+      "components": [
+        {"known": "Je n'ai pas eu", "target": "I didn't have"},
+        {"known": "le temps", "target": "time"}
+      ],
+      "build": [
+        {"known": "Je n'ai pas eu le temps", "target": "I didn't have time"},
+        {"known": "le temps", "target": "time"},
+        {"known": "n'ai pas eu", "target": "didn't have"},
+        {"known": "j'ai le temps", "target": "I have time"}
+      ],
+      "use": [
+        {"known": "Je n'ai pas eu le temps de le faire demain matin", "target": "I didn't have time to do it tomorrow morning", "score": 8},
+        {"known": "Tu as eu le temps de lui demander ce qu'elle voulait?", "target": "Did you have time to ask her what she wanted?", "score": 8},
+        {"known": "Je n'ai pas eu le temps de venir te voir cette semaine", "target": "I didn't have time to come see you this week", "score": 8},
+        {"known": "J'ai le temps de le faire maintenant si tu veux", "target": "I have time to do it now if you want", "score": 8},
+        {"known": "Je voudrais avoir le temps de faire ça avec vous demain", "target": "I'd like to have time to do that with you tomorrow", "score": 8},
+        {"known": "Tu as le temps de venir m'aider à le chercher demain?", "target": "Do you have time to come and help me look for it tomorrow?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "bien que",
+      "target": "although",
+      "build": [
+        {"known": "bien que", "target": "although"},
+        {"known": "bien que je", "target": "although I"},
+        {"known": "bien que tu", "target": "although you"},
+        {"known": "bien que nous", "target": "although we"}
+      ],
+      "use": [
+        {"known": "Je n'ai pas eu le temps de le faire, bien que je voulais", "target": "I didn't have time to do it, although I wanted to", "score": 8},
+        {"known": "Je vais venir demain, bien que je n'ai pas beaucoup de temps", "target": "I'm going to come tomorrow, although I don't have much time", "score": 8},
+        {"known": "Je voudrais l'aider, bien que je ne sais pas comment", "target": "I'd like to help him, although I don't know how", "score": 8},
+        {"known": "Je peux le faire, bien que ce serait mieux si tu pouvais m'aider", "target": "I can do it, although it would be better if you could help me", "score": 8},
+        {"known": "Je vais y aller, bien que je voudrais faire autre chose", "target": "I'm going to go there, although I'd like to do something else", "score": 8},
+        {"known": "Je comprends ce que tu dis, bien que c'est difficile pour moi", "target": "I understand what you're saying, although it's difficult for me", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "je voulais vous voir",
+      "target": "I wanted to see you",
+      "components": [
+        {"known": "je voulais", "target": "I wanted to"},
+        {"known": "vous voir", "target": "see you"}
+      ],
+      "build": [
+        {"known": "je voulais vous voir", "target": "I wanted to see you"},
+        {"known": "vous voir", "target": "see you"},
+        {"known": "je voulais", "target": "I wanted to"},
+        {"known": "tu voulais me voir", "target": "you wanted to see me"}
+      ],
+      "use": [
+        {"known": "Je n'ai pas eu le temps, bien que je voulais vous voir demain", "target": "I didn't have time, although I wanted to see you tomorrow", "score": 9},
+        {"known": "Je voulais vous voir pour vous demander quelque chose d'important", "target": "I wanted to see you to ask you something important", "score": 8},
+        {"known": "Je voulais te voir mais je n'ai pas eu le temps", "target": "I wanted to see you but I didn't have time", "score": 8},
+        {"known": "Tu voulais me voir ou tu voulais parler de quelque chose?", "target": "Did you want to see me or did you want to talk about something?", "score": 8},
+        {"known": "Je voudrais vous voir dimanche matin si vous avez le temps", "target": "I'd like to see you on Sunday morning if you have time", "score": 8},
+        {"known": "Elle voulait me voir mais je n'ai pas pu venir la voir", "target": "She wanted to see me but I couldn't come see her", "score": 8}
+      ]
+    }
+  ]
+}

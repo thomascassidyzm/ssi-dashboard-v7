@@ -1,0 +1,105 @@
+================================================================================
+EXECUTIVE SUMMARY: ita_for_eng Seeds 69-97 QA (Pass 3)
+================================================================================
+
+Date: 2026-02-09
+Scope: Seeds 69-97 (29 seeds)
+Total USE phrases: 539
+Issues found: 38 (7.1% failure rate)
+Focus: SPEAKABILITY ONLY (per commit 84ec488e)
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. CRITICAL SEEDS NEEDING ATTENTION:
+   - S083: 14 flagged phrases (HIGH PRIORITY - needs complete review)
+   - S091: 11 flagged phrases (HIGH PRIORITY - needs complete review)
+   - Together these 2 seeds account for 66% of all issues (25/38)
+
+2. TOP ERROR PATTERNS (systematic issues):
+   a) Gender agreement: "del risposta" → "della risposta" (11 instances)
+      - Feminine noun consistently using masculine article/preposition
+   
+   b) Missing preposition: "sto provando + INF" → "sto provando a + INF" (7 instances)
+      - Verb "provare" requires preposition "a" before infinitive
+   
+   c) Missing preposition: "pronto parlare" → "pronto a parlare" (5 instances)
+      - Adjective "pronto" requires "a" before infinitive
+
+3. SUBORDINATE CLAUSE ISSUES (9 instances):
+   - "non sono sicuro che cosa" → needs "di che cosa"
+   - "non sono sicuro posso" → needs "se posso"
+   - "penso è difficile" → needs "che è/sia difficile"
+
+4. VERB AGREEMENT & FORM (4 instances):
+   - Wrong person: "tuo amico vuoi" → "vuole"
+   - Wrong form: "che cosa aver fatto" → "che cosa ho fatto"
+   - Wrong reflexive: "voglio prendersi" → "prendermi"
+
+================================================================================
+RECOMMENDED ACTIONS
+================================================================================
+
+IMMEDIATE (before Phase 8 audio generation):
+
+1. Flag all 38 phrases in database (SQL script provided)
+   
+2. REGENERATE COMPLETELY:
+   - S083 (14 phrases) - Multiple pattern errors
+   - S091 (11 phrases) - Multiple pattern errors
+
+3. FIX INDIVIDUALLY:
+   - S080: 3 phrases (preposition issues)
+   - S084: 4 phrases (mixed issues)
+   - S089: 4 phrases (verb form + conjunction issues)
+   - S092: 2 phrases (conjunction issues)
+
+SYSTEMATIC IMPROVEMENTS NEEDED:
+
+1. Add prepositional government validation to Course Builder:
+   - essere pronto + a + infinitive
+   - provare + a + infinitive
+   - pensare + a/di + noun/infinitive
+
+2. Add subordinate clause structure validation:
+   - non sono sicuro + se/di + clause
+   - penso/credo + che + clause
+
+3. Add gender agreement validation:
+   - Check article/preposition matches noun gender
+
+4. Add reflexive pronoun validation:
+   - Check reflexive pronoun agrees with subject
+
+================================================================================
+COMPARISON WITH PREVIOUS PASSES
+================================================================================
+
+Pass 2: 95 issues (punctuation + grammar + style)
+Pass 3: 38 issues (SPEAKABILITY ONLY)
+
+The 38 issues found in Pass 3 are GENUINE GRAMMAR ERRORS that make phrases
+unspeakable by native speakers. These must be fixed before audio generation.
+
+================================================================================
+DELIVERABLES
+================================================================================
+
+1. QA_ITA_SEEDS_69_97_PASS3.md - Full detailed report
+2. /tmp/flag_ita_69_97_issues.sql - SQL script to flag issues
+3. /tmp/qa_issues.csv - CSV export of all issues
+4. /tmp/qa_issues_final.json - Machine-readable issue data
+5. /tmp/error_patterns.txt - Grouped by error pattern for systematic fixing
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Run SQL script to flag 38 phrases
+2. Regenerate S083 and S091 completely
+3. Fix remaining 12 phrases individually
+4. Re-run QA on regenerated content
+5. Proceed to Phase 8 (audio) only after 100% QA pass
+
+================================================================================

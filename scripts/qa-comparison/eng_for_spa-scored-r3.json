@@ -1,0 +1,624 @@
+{
+  "course_code": "eng_for_spa",
+  "is_eng_for_x": true,
+  "round": 3,
+  "seed_range": "1-50",
+  "description": "First 50 seeds only - testing 'starting well' quality",
+  "total_use_phrases_in_range": 1269,
+  "sample_size": 50,
+  "scoring_date": "2026-01-30",
+  "scoring_criteria": {
+    "9": "Perfect native speech in both languages",
+    "7-8": "Strong, minor stylistic preferences",
+    "5-6": "Functional but not remarkable",
+    "3-4": "Awkward, textbook-ish",
+    "1-2": "Marginal, no one would say this"
+  },
+  "summary": {
+    "average_score": 7.36,
+    "distribution": {
+      "9": 7,
+      "8": 29,
+      "7": 4,
+      "6": 3,
+      "5": 2,
+      "4": 4,
+      "3": 1,
+      "2": 0,
+      "1": 0
+    },
+    "phrases_below_5": 5,
+    "phrases_at_or_above_7": 40,
+    "worst_3_phrases": [
+      {
+        "idx": 32,
+        "english": "I want to find out what is after you finish.",
+        "other": "Quiero saber cuál es despues de que termines.",
+        "score": 3,
+        "reason": "English is nonsensical - 'what is after' is incomplete and unclear. The sentence structure is broken."
+      },
+      {
+        "idx": 7,
+        "english": "I'm going to be nearly speaking English before I have to go.",
+        "other": "Voy a estar casi hablando ingles antes de que tenga que ir.",
+        "score": 4,
+        "reason": "Awkward English - 'nearly speaking' is unnatural. No one would say 'I'm going to be nearly speaking'. Should be 'I'll almost be speaking' or restructured entirely."
+      },
+      {
+        "idx": 28,
+        "english": "I'm going to start talking English with people who speak English.",
+        "other": "Voy a empezar hablando ingles con personas que hablan ingles.",
+        "score": 4,
+        "reason": "Wrong collocation - 'talking English' should be 'speaking English'. 'Talk' takes 'in English' not 'English' directly."
+      }
+    ],
+    "other_notable_issues": [
+      {
+        "idx": 46,
+        "english": "He is taking too much time to speak English.",
+        "other": "El esta tomando demasiado tiempo para hablar ingles.",
+        "score": 4,
+        "reason": "Awkward phrasing - 'taking too long' is more natural than 'taking too much time'. Spanish also uses calque 'tomando tiempo'."
+      },
+      {
+        "idx": 50,
+        "english": "You want to speak English.",
+        "other": "Tú quieres hablar ingles?",
+        "score": 4,
+        "reason": "Statement/question mismatch - Spanish is clearly a question (punctuation), but English is a statement. Inconsistent intent."
+      }
+    ]
+  },
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "d3e04b3f-3aed-47ad-b365-6c3cb15d702f",
+      "seed": 28,
+      "lego": 1,
+      "syllables": 8,
+      "english": "It's possible to speak English now.",
+      "other": "Es posible hablar ingles ahora.",
+      "qa_score": 8,
+      "notes": "Both languages natural and correct."
+    },
+    {
+      "idx": 2,
+      "id": "d148bf29-0064-49de-aaa5-af70ed2a29bb",
+      "seed": 22,
+      "lego": 2,
+      "syllables": 14,
+      "english": "I want to learn her name because I want to speak with her.",
+      "other": "Quiero aprender su nombre porque quiero hablar con ella.",
+      "qa_score": 8,
+      "notes": "Good complex sentence, both natural."
+    },
+    {
+      "idx": 3,
+      "id": "07bf03f2-16ab-459e-ac69-3fc6a4942205",
+      "seed": 13,
+      "lego": 3,
+      "syllables": 6,
+      "english": "remember very well",
+      "other": "recordar muy bien",
+      "qa_score": 8,
+      "notes": "Natural fragments in both languages."
+    },
+    {
+      "idx": 4,
+      "id": "5f45197c-fb55-4d5e-b686-f59273696f08",
+      "seed": 2,
+      "lego": 2,
+      "syllables": 8,
+      "english": "I want to learn to speak English.",
+      "other": "Quiero aprender a hablar ingles.",
+      "qa_score": 9,
+      "notes": "Perfect in both languages. Core learner motivation phrase."
+    },
+    {
+      "idx": 5,
+      "id": "d3dd6bbc-2192-46c4-bafe-c58525712969",
+      "seed": 6,
+      "lego": 3,
+      "syllables": 12,
+      "english": "I want to learn a word in English with someone.",
+      "other": "Quiero aprender una palabra en ingles con alguien.",
+      "qa_score": 6,
+      "notes": "Slightly odd - 'learn a word with someone' is unusual phrasing. Functional but not idiomatic."
+    },
+    {
+      "idx": 6,
+      "id": "7622a64b-431b-403a-aefe-50b24c261db7",
+      "seed": 9,
+      "lego": 1,
+      "syllables": 11,
+      "english": "I speak a little English with someone else now.",
+      "other": "Hablo un poco de ingles con alguien mas ahora.",
+      "qa_score": 7,
+      "notes": "Slightly awkward word order with 'someone else now', but acceptable."
+    },
+    {
+      "idx": 7,
+      "id": "f18953b1-a357-48d1-bf39-93badff555a5",
+      "seed": 26,
+      "lego": 5,
+      "syllables": 16,
+      "english": "I'm going to be nearly speaking English before I have to go.",
+      "other": "Voy a estar casi hablando ingles antes de que tenga que ir.",
+      "qa_score": 4,
+      "notes": "AWKWARD: 'nearly speaking' is unnatural English. No native would use this construction."
+    },
+    {
+      "idx": 8,
+      "id": "b8553475-dd4d-4644-90b1-c6d06ea508f8",
+      "seed": 5,
+      "lego": 1,
+      "syllables": 13,
+      "english": "I'm going to speak in English as often as possible.",
+      "other": "Voy a hablar en ingles lo mas posible.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 9,
+      "id": "28ce7b21-63fc-4ef4-86b2-512d4e42f442",
+      "seed": 2,
+      "lego": 1,
+      "syllables": 6,
+      "english": "I'm trying to speak English.",
+      "other": "Estoy intentando hablar ingles.",
+      "qa_score": 9,
+      "notes": "Perfect. Natural in both languages."
+    },
+    {
+      "idx": 10,
+      "id": "41ac7a4d-b9ee-4140-b041-b01cbff5e263",
+      "seed": 5,
+      "lego": 2,
+      "syllables": 11,
+      "english": "I want to practise speaking English with you.",
+      "other": "Quiero practicar hablar ingles contigo.",
+      "qa_score": 8,
+      "notes": "Good. British spelling 'practise' noted."
+    },
+    {
+      "idx": 11,
+      "id": "c6aabe02-e39b-49a8-8f8a-4ff0fe07bcbd",
+      "seed": 12,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I wouldn't like to remember",
+      "other": "no me gustaria recordar",
+      "qa_score": 5,
+      "notes": "Awkward English - 'I wouldn't want to remember' more natural than 'wouldn't like to remember'."
+    },
+    {
+      "idx": 12,
+      "id": "c5235e3b-f56d-4bed-b0d6-8b30bfaa49f8",
+      "seed": 3,
+      "lego": 2,
+      "syllables": 7,
+      "english": "learn as often as possible",
+      "other": "aprender lo mas posible",
+      "qa_score": 8,
+      "notes": "Natural fragments."
+    },
+    {
+      "idx": 13,
+      "id": "07118e22-9ac1-46ed-ab7f-c91bd8d7a4f3",
+      "seed": 17,
+      "lego": 1,
+      "syllables": 12,
+      "english": "I'm not sure if she wants to come back later on.",
+      "other": "No estoy seguro si ella quiere volver mas tarde.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 14,
+      "id": "cbcaead9-9593-4db2-83de-e2b080e2dbf0",
+      "seed": 6,
+      "lego": 2,
+      "syllables": 7,
+      "english": "trying to remember English",
+      "other": "tratando de recordar ingles",
+      "qa_score": 5,
+      "notes": "Odd semantics - you remember words/phrases, not 'English' as a language. Functional but unnatural."
+    },
+    {
+      "idx": 15,
+      "id": "923b8880-add6-4063-8dab-fde1ba1b520a",
+      "seed": 1,
+      "lego": 2,
+      "syllables": 9,
+      "english": "Now I want to speak English with you.",
+      "other": "Ahora quiero hablar ingles contigo.",
+      "qa_score": 9,
+      "notes": "Perfect in both languages."
+    },
+    {
+      "idx": 16,
+      "id": "731e4ce6-b467-4cbd-b67d-ee99729ea37b",
+      "seed": 10,
+      "lego": 3,
+      "syllables": 7,
+      "english": "remember the whole sentence",
+      "other": "recordar toda la frase",
+      "qa_score": 8,
+      "notes": "Good fragments, useful for language learning context."
+    },
+    {
+      "idx": 17,
+      "id": "57875594-64bb-45e5-8a3e-fb2697eeeed6",
+      "seed": 3,
+      "lego": 1,
+      "syllables": 5,
+      "english": "how to speak with you",
+      "other": "como hablar contigo",
+      "qa_score": 8,
+      "notes": "Good fragments."
+    },
+    {
+      "idx": 18,
+      "id": "34fa42cb-1408-43ac-84a7-17aed2a777f0",
+      "seed": 4,
+      "lego": 3,
+      "syllables": 13,
+      "english": "I want to speak in English as often as possible.",
+      "other": "Quiero hablar en ingles lo mas posible.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 19,
+      "id": "f9e5d8fa-6754-4d1a-bc1e-0d4becc8890b",
+      "seed": 8,
+      "lego": 1,
+      "syllables": 9,
+      "english": "I'm going to try to say something.",
+      "other": "Voy a intentar decir algo.",
+      "qa_score": 9,
+      "notes": "Perfect. Natural encouragement phrase."
+    },
+    {
+      "idx": 20,
+      "id": "3ebbd240-29ec-42cc-a56a-c9e84e50e281",
+      "seed": 1,
+      "lego": 1,
+      "syllables": 8,
+      "english": "I want to speak English with you",
+      "other": "quiero hablar ingles contigo",
+      "qa_score": 9,
+      "notes": "Perfect. Core phrase."
+    },
+    {
+      "idx": 21,
+      "id": "077a3b15-4ce4-46d8-b6c7-599d8de2a398",
+      "seed": 36,
+      "lego": 2,
+      "syllables": 7,
+      "english": "we don't want to interrupt",
+      "other": "no queremos interrumpir",
+      "qa_score": 9,
+      "notes": "Perfect. Natural polite phrase."
+    },
+    {
+      "idx": 22,
+      "id": "3d45ef62-3f0b-4cd5-8c16-ee63c64c7402",
+      "seed": 10,
+      "lego": 3,
+      "syllables": 9,
+      "english": "I'm going to say the whole sentence now.",
+      "other": "Voy a decir toda la frase ahora.",
+      "qa_score": 8,
+      "notes": "Good, useful for learning context."
+    },
+    {
+      "idx": 23,
+      "id": "6cb9bd0a-97fc-4a28-86d8-edadb8e46b37",
+      "seed": 1,
+      "lego": 2,
+      "syllables": 9,
+      "english": "I want to speak English now with you.",
+      "other": "Yo quiero hablar ingles ahora contigo.",
+      "qa_score": 6,
+      "notes": "Awkward English word order - 'now with you' should be 'with you now'. Spanish has unnecessary 'Yo'."
+    },
+    {
+      "idx": 24,
+      "id": "6953efcb-b714-4a35-af5b-70ead87ff886",
+      "seed": 16,
+      "lego": 3,
+      "syllables": 11,
+      "english": "I'd like to speak English with everyone else.",
+      "other": "Me gustaria hablar ingles con todos los demas.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 25,
+      "id": "26a1bf8f-9d2c-49dc-a0a8-925c1c2d533f",
+      "seed": 22,
+      "lego": 1,
+      "syllables": 6,
+      "english": "because I don't want to",
+      "other": "porque no quiero",
+      "qa_score": 8,
+      "notes": "Natural fragments."
+    },
+    {
+      "idx": 26,
+      "id": "f1727184-5c8d-4b19-9986-edcc7ac6cfa0",
+      "seed": 6,
+      "lego": 2,
+      "syllables": 15,
+      "english": "I want to remember how to say something in English.",
+      "other": "Quiero recordar como decir algo en ingles.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 27,
+      "id": "1694b7d3-3292-451c-aa38-a31bd9c02b11",
+      "seed": 5,
+      "lego": 1,
+      "syllables": 14,
+      "english": "I'm going to speak English with you as often as possible.",
+      "other": "Voy a hablar ingles contigo lo mas posible.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 28,
+      "id": "7e89caf9-6fc2-45c7-9c0c-84f14079026a",
+      "seed": 23,
+      "lego": 3,
+      "syllables": 14,
+      "english": "I'm going to start talking English with people who speak English.",
+      "other": "Voy a empezar hablando ingles con personas que hablan ingles.",
+      "qa_score": 4,
+      "notes": "WRONG COLLOCATION: 'talking English' should be 'speaking English'. You 'talk in English' or 'speak English', not 'talk English'."
+    },
+    {
+      "idx": 29,
+      "id": "ef125520-43e4-4b67-a96d-915fe7b1c8c0",
+      "seed": 22,
+      "lego": 4,
+      "syllables": 13,
+      "english": "Are you learning English because you want to meet people?",
+      "other": "Estas aprendiendo ingles porque quieres conocer a personas?",
+      "qa_score": 7,
+      "notes": "Good, though Spanish 'conocer gente' more idiomatic than 'conocer a personas'."
+    },
+    {
+      "idx": 30,
+      "id": "4a9fd89a-b009-476f-80be-697e5e3af669",
+      "seed": 6,
+      "lego": 1,
+      "syllables": 6,
+      "english": "I'm trying to speak English.",
+      "other": "Estoy tratando de hablar ingles.",
+      "qa_score": 9,
+      "notes": "Perfect. Natural in both."
+    },
+    {
+      "idx": 31,
+      "id": "8f2bad84-37e9-4eee-bf96-5a6d79db4d40",
+      "seed": 16,
+      "lego": 3,
+      "syllables": 14,
+      "english": "I'm not sure if he wants to come back with everyone else.",
+      "other": "No estoy seguro si el quiere volver con todos los demas.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 32,
+      "id": "33334206-3e70-400b-a8ed-22ede4b70c98",
+      "seed": 17,
+      "lego": 3,
+      "syllables": 12,
+      "english": "I want to find out what is after you finish.",
+      "other": "Quiero saber cual es despues de que termines.",
+      "qa_score": 3,
+      "notes": "BROKEN: English is nonsensical - 'what is after' is incomplete/unclear. Both versions have semantic problems."
+    },
+    {
+      "idx": 33,
+      "id": "8a457a0f-5cd0-4f38-bace-23b20fe90076",
+      "seed": 31,
+      "lego": 1,
+      "syllables": 5,
+      "english": "you wanted to speak",
+      "other": "querias hablar",
+      "qa_score": 8,
+      "notes": "Good fragments."
+    },
+    {
+      "idx": 34,
+      "id": "003004eb-2e4b-43af-ada2-b78d6b1bd0ee",
+      "seed": 3,
+      "lego": 2,
+      "syllables": 12,
+      "english": "I'm trying to speak English as often as possible.",
+      "other": "Estoy intentando hablar ingles lo mas posible.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 35,
+      "id": "8b7b9ef7-14a9-4909-bc32-d56b076806a4",
+      "seed": 28,
+      "lego": 2,
+      "syllables": 16,
+      "english": "It's useful to try to speak very well before tomorrow.",
+      "other": "Es util intentar hablar muy bien antes de manana.",
+      "qa_score": 7,
+      "notes": "Slightly odd concept but grammatically correct in both."
+    },
+    {
+      "idx": 36,
+      "id": "80a06526-714f-468b-907f-eaae51f5a45e",
+      "seed": 4,
+      "lego": 1,
+      "syllables": 12,
+      "english": "I want to learn how to speak English with you now.",
+      "other": "Quiero aprender como hablar ingles contigo ahora.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 37,
+      "id": "b4e54429-aa80-47bf-b7c6-e0bcf45a8d0e",
+      "seed": 38,
+      "lego": 1,
+      "syllables": 9,
+      "english": "I've been trying to speak English better.",
+      "other": "Llevo intentando hablar ingles mejor.",
+      "qa_score": 8,
+      "notes": "Good. Spanish uses 'llevar + gerund' construction well."
+    },
+    {
+      "idx": 38,
+      "id": "0da64aec-4648-46c1-8cd2-3d34242e7fcb",
+      "seed": 26,
+      "lego": 3,
+      "syllables": 11,
+      "english": "I like feeling as if I'm speaking with people.",
+      "other": "Me gusta sentirme como si estuviera hablando con personas.",
+      "qa_score": 8,
+      "notes": "Good. Complex subjunctive handled well."
+    },
+    {
+      "idx": 39,
+      "id": "69688a15-df39-41c6-812d-2fc0f3ad2393",
+      "seed": 35,
+      "lego": 4,
+      "syllables": 6,
+      "english": "to read this afternoon",
+      "other": "leer esta tarde",
+      "qa_score": 8,
+      "notes": "Good fragments."
+    },
+    {
+      "idx": 40,
+      "id": "3de95bfd-f471-4daa-a327-cd0a9af6a02e",
+      "seed": 15,
+      "lego": 1,
+      "syllables": 12,
+      "english": "And I'm going to try to speak English tomorrow.",
+      "other": "Y voy a intentar hablar ingles manana.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 41,
+      "id": "cde6fe02-244a-41c7-9f67-70420aee4533",
+      "seed": 20,
+      "lego": 3,
+      "syllables": 6,
+      "english": "You want to learn his name.",
+      "other": "Quieres aprender su nombre.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 42,
+      "id": "b9c08a8a-1dba-4c96-b33e-4f9c8e2f537e",
+      "seed": 22,
+      "lego": 1,
+      "syllables": 12,
+      "english": "Why are you learning her name? Because I want to.",
+      "other": "Por que estas aprendiendo su nombre? Porque quiero.",
+      "qa_score": 8,
+      "notes": "Good conversational Q&A pair."
+    },
+    {
+      "idx": 43,
+      "id": "01a6a4d1-bd1c-4caf-806c-c47b014f1b09",
+      "seed": 3,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I'm trying to learn how to speak.",
+      "other": "Estoy intentando aprender como hablar.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 44,
+      "id": "03d52856-e85e-4399-b8dc-772911dbf65d",
+      "seed": 16,
+      "lego": 4,
+      "syllables": 6,
+      "english": "later on tomorrow",
+      "other": "mas tarde manana",
+      "qa_score": 6,
+      "notes": "Slightly redundant - 'later on' and 'tomorrow' together is unusual, but acceptable."
+    },
+    {
+      "idx": 45,
+      "id": "175ea5ba-b18b-4064-9da1-57a7e7c9f07b",
+      "seed": 28,
+      "lego": 1,
+      "syllables": 13,
+      "english": "It's hard to explain something quickly in English.",
+      "other": "Es dificil explicar algo rapidamente en ingles.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 46,
+      "id": "b764716c-eb64-4ef6-b43c-a3ca7368c435",
+      "seed": 27,
+      "lego": 4,
+      "syllables": 11,
+      "english": "He is taking too much time to speak English.",
+      "other": "El esta tomando demasiado tiempo para hablar ingles.",
+      "qa_score": 4,
+      "notes": "AWKWARD: 'taking too long' is much more natural than 'taking too much time'. Spanish also uses calque."
+    },
+    {
+      "idx": 47,
+      "id": "f41befff-a478-456b-8b65-4e49b5aadb77",
+      "seed": 25,
+      "lego": 4,
+      "syllables": 18,
+      "english": "Are you going to be able to help me before I have to speak more English?",
+      "other": "Vas a poder ayudarme antes de que tenga que hablar mas ingles?",
+      "qa_score": 8,
+      "notes": "Good complex sentence, natural in both."
+    },
+    {
+      "idx": 48,
+      "id": "d0319db9-2e24-4cfe-b3bd-bfe3d44d5aee",
+      "seed": 16,
+      "lego": 4,
+      "syllables": 12,
+      "english": "I'm not sure if he wants to come back later on.",
+      "other": "No estoy seguro si el quiere volver mas tarde.",
+      "qa_score": 8,
+      "notes": "Good in both languages."
+    },
+    {
+      "idx": 49,
+      "id": "162cf8ab-1239-437a-9093-d93d72e49f90",
+      "seed": 20,
+      "lego": 3,
+      "syllables": 5,
+      "english": "remember his name",
+      "other": "recordar su nombre",
+      "qa_score": 8,
+      "notes": "Good fragments."
+    },
+    {
+      "idx": 50,
+      "id": "7e476ad5-e1ca-4659-9d47-59ecb7a22d13",
+      "seed": 1,
+      "lego": 1,
+      "syllables": 6,
+      "english": "You want to speak English.",
+      "other": "Tu quieres hablar ingles?",
+      "qa_score": 4,
+      "notes": "MISMATCH: Spanish is a question (with question mark), English is a statement. Inconsistent communicative intent."
+    }
+  ]
+}

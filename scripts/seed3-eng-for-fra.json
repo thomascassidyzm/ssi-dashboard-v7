@@ -1,0 +1,71 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 3,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "comment",
+      "target": "how",
+      "build": [
+        {"known": "comment", "target": "how"},
+        {"known": "comment parler", "target": "how to speak"},
+        {"known": "comment apprendre", "target": "how to learn"},
+        {"known": "comment parler anglais", "target": "how to speak English"}
+      ],
+      "use": [
+        {"known": "Je veux apprendre comment parler.", "target": "I want to learn how to speak.", "score": 8},
+        {"known": "J'essaie d'apprendre comment parler anglais.", "target": "I'm trying to learn how to speak English.", "score": 9},
+        {"known": "Je veux apprendre comment parler anglais avec toi.", "target": "I want to learn how to speak English with you.", "score": 9},
+        {"known": "J'essaie d'apprendre comment parler anglais maintenant.", "target": "I'm trying to learn how to speak English now.", "score": 9},
+        {"known": "Je veux apprendre comment parler avec toi.", "target": "I want to learn how to speak with you.", "score": 8},
+        {"known": "J'essaie d'apprendre comment parler.", "target": "I'm trying to learn how to speak.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "parler",
+      "target": "to speak",
+      "build": [
+        {"known": "parler", "target": "to speak"},
+        {"known": "comment parler", "target": "how to speak"},
+        {"known": "parler anglais", "target": "to speak English"},
+        {"known": "comment parler anglais", "target": "how to speak English"}
+      ],
+      "use": [
+        {"known": "Je veux parler.", "target": "I want to speak.", "score": 7},
+        {"known": "J'essaie de parler anglais.", "target": "I'm trying to speak English.", "score": 8},
+        {"known": "Je veux apprendre comment parler anglais.", "target": "I want to learn how to speak English.", "score": 9},
+        {"known": "J'essaie de parler avec toi maintenant.", "target": "I'm trying to speak with you now.", "score": 8},
+        {"known": "Je veux parler anglais avec toi.", "target": "I want to speak English with you.", "score": 9},
+        {"known": "J'essaie d'apprendre comment parler.", "target": "I'm trying to learn how to speak.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "le plus souvent possible",
+      "target": "as often as possible",
+      "components": [
+        {"known": "le plus", "target": "as"},
+        {"known": "souvent", "target": "often"},
+        {"known": "possible", "target": "possible"}
+      ],
+      "build": [
+        {"known": "le plus souvent possible", "target": "as often as possible"},
+        {"known": "parler le plus souvent possible", "target": "to speak as often as possible"},
+        {"known": "comment parler le plus souvent possible", "target": "how to speak as often as possible"},
+        {"known": "apprendre le plus souvent possible", "target": "to learn as often as possible"}
+      ],
+      "use": [
+        {"known": "Je veux parler le plus souvent possible.", "target": "I want to speak as often as possible.", "score": 8},
+        {"known": "J'essaie de parler anglais le plus souvent possible.", "target": "I'm trying to speak English as often as possible.", "score": 9},
+        {"known": "Je veux apprendre comment parler le plus souvent possible.", "target": "I want to learn how to speak as often as possible.", "score": 9},
+        {"known": "J'essaie d'apprendre l'anglais le plus souvent possible.", "target": "I'm trying to learn English as often as possible.", "score": 9},
+        {"known": "Je veux parler avec toi le plus souvent possible.", "target": "I want to speak with you as often as possible.", "score": 9},
+        {"known": "J'essaie de parler anglais avec toi le plus souvent possible.", "target": "I'm trying to speak English with you as often as possible.", "score": 9}
+      ]
+    }
+  ]
+}

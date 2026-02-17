@@ -1,0 +1,64 @@
+{
+  "analysis": {
+    "generated_at": "2026-01-26T12:00:00.000Z",
+    "seeds_analyzed": 260,
+    "language_pair": {
+      "known": "zho",
+      "target": "eng",
+      "direction": "English for Chinese speakers"
+    },
+    "register": {
+      "choice": "informal",
+      "rationale": "SSi methodology uses conversational, everyday language. Chinese learners benefit from casual English that mirrors real-world conversations."
+    },
+    "golden_keys": [
+      {
+        "pattern": "I want to [verb]",
+        "chinese_prompt": "我想[动词]",
+        "usage": "Core desire expression, high frequency starter pattern",
+        "examples": ["I want to speak", "I want to learn", "I want to try"]
+      },
+      {
+        "pattern": "I'm trying to [verb]",
+        "chinese_prompt": "我在试着[动词]",
+        "usage": "Ongoing effort expression",
+        "examples": ["I'm trying to learn", "I'm trying to remember", "I'm trying to explain"]
+      },
+      {
+        "pattern": "I'm going to [verb]",
+        "chinese_prompt": "我要[动词]",
+        "usage": "Future intention/plan expression",
+        "examples": ["I'm going to practise", "I'm going to try", "I'm going to speak"]
+      },
+      {
+        "pattern": "with you/someone",
+        "chinese_prompt": "和你/和某人",
+        "usage": "Social interaction marker, high recombination value",
+        "examples": ["speak with you", "learn with you", "practise with someone"]
+      }
+    ],
+    "problem_verbs": [],
+    "zut_concerns": [
+      {
+        "area": "Contractions",
+        "note": "Using contractions (I'm, I'll, don't) consistently as this is natural spoken English",
+        "resolution": "Always use contractions in practice phrases for natural flow"
+      },
+      {
+        "area": "Articles (a/an/the)",
+        "note": "Chinese lacks articles - learners need explicit exposure",
+        "resolution": "Include varied article usage in practice phrases"
+      }
+    ],
+    "lego_strategy": {
+      "verb_phrases": "Group verb phrases as M-type LEGOs (e.g., 'want to speak' as single LEGO)",
+      "adverbs": "Treat adverbs like 'now', 'today', 'tomorrow' as A-type LEGOs",
+      "prepositions": "Prepositional phrases like 'with you' as M-type LEGOs"
+    },
+    "notes": [
+      "English word order (SVO) differs from Chinese - LEGOs will help learners internalize patterns",
+      "Focus on spoken/conversational English, not formal written style",
+      "Prioritize high-frequency vocabulary that enables maximum recombination"
+    ]
+  }
+}

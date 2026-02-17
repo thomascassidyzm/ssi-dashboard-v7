@@ -1,0 +1,76 @@
+{
+  "course_code": "eng_for_spa",
+  "seed_number": 27,
+  "known_text": "No me gusta tomar demasiado tiempo para responder.",
+  "target_text": "I don't like taking too much time to answer.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "tomar",
+      "target": "taking",
+      "build": [
+        {"known": "tomar", "target": "taking"},
+        {"known": "me gusta tomar", "target": "I like taking"},
+        {"known": "no me gusta tomar", "target": "I don't like taking"},
+        {"known": "tomar tiempo", "target": "taking time"}
+      ],
+      "use": [
+        {"known": "No me gusta tomar tiempo para hablar inglés.", "target": "I don't like taking time to speak English.", "score": 7},
+        {"known": "Me gusta tomar tiempo para aprender inglés.", "target": "I like taking time to learn English.", "score": 7},
+        {"known": "¿Te gusta tomar tiempo para hablar con personas?", "target": "Do you like taking time to speak with people?", "score": 8},
+        {"known": "Ella no gusta tomar tiempo para hablar inglés conmigo.", "target": "She doesn't like taking time to speak English with me.", "score": 7},
+        {"known": "Me gusta tomar tiempo para sentirme listo.", "target": "I like taking time to feel ready.", "score": 7},
+        {"known": "No me gusta tomar tiempo antes de que tenga que ir.", "target": "I don't like taking time before I have to go.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "demasiado tiempo",
+      "target": "too much time",
+      "components": [
+        {"known": "demasiado", "target": "too much"},
+        {"known": "tiempo", "target": "time"}
+      ],
+      "build": [
+        {"known": "demasiado tiempo", "target": "too much time"},
+        {"known": "tomar demasiado tiempo", "target": "taking too much time"},
+        {"known": "demasiado tiempo para", "target": "too much time to"},
+        {"known": "no demasiado tiempo", "target": "not too much time"}
+      ],
+      "use": [
+        {"known": "No me gusta tomar demasiado tiempo para hablar inglés.", "target": "I don't like taking too much time to speak English.", "score": 8},
+        {"known": "Me gusta tomar demasiado tiempo para aprender inglés.", "target": "I like taking too much time to learn English.", "score": 6},
+        {"known": "¿Te gusta tomar demasiado tiempo para hablar con personas?", "target": "Do you like taking too much time to speak with people?", "score": 8},
+        {"known": "Ella no quiere tomar demasiado tiempo para hablar inglés.", "target": "She doesn't want to take too much time to speak English.", "score": 8},
+        {"known": "Voy a tomar demasiado tiempo para sentirme listo.", "target": "I'm going to take too much time to feel ready.", "score": 7},
+        {"known": "No quiero tomar demasiado tiempo antes de que tenga que ir.", "target": "I don't want to take too much time before I have to go.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "para responder",
+      "target": "to answer",
+      "components": [
+        {"known": "para", "target": "to"},
+        {"known": "responder", "target": "answer"}
+      ],
+      "build": [
+        {"known": "para responder", "target": "to answer"},
+        {"known": "tiempo para responder", "target": "time to answer"},
+        {"known": "listo para responder", "target": "ready to answer"},
+        {"known": "quiero responder", "target": "I want to answer"}
+      ],
+      "use": [
+        {"known": "No me gusta tomar demasiado tiempo para responder.", "target": "I don't like taking too much time to answer.", "score": 8},
+        {"known": "Me gusta sentirme listo para responder en inglés.", "target": "I like feeling ready to answer in English.", "score": 8},
+        {"known": "¿Estás listo para responder en inglés muy pronto?", "target": "Are you ready to answer in English very soon?", "score": 8},
+        {"known": "Ella quiere tomar tiempo para responder en inglés.", "target": "She wants to take time to answer in English.", "score": 8},
+        {"known": "Voy a estar casi listo para responder antes de que tenga que ir.", "target": "I'm going to be nearly ready to answer before I have to go.", "score": 8},
+        {"known": "No quiero tomar demasiado tiempo para responder esta noche.", "target": "I don't want to take too much time to answer this evening.", "score": 8}
+      ]
+    }
+  ]
+}

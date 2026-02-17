@@ -1,0 +1,148 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 228,
+  "known_text": "That man has just started to practise speaking.",
+  "target_text": "那个男人刚开始练习说话。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that (specific)",
+      "target": "那个",
+      "components": [
+        {"known": "that", "target": "那"},
+        {"known": "measure word", "target": "个"}
+      ],
+      "build": [
+        {"known": "That.", "target": "那个。"},
+        {"known": "That one.", "target": "那个。"},
+        {"known": "That person.", "target": "那个人。"},
+        {"known": "That man.", "target": "那个男人。"}
+      ],
+      "use": [
+        {"known": "That man has just started to learn how to do this.", "target": "那个男人刚开始学怎么做这个。", "score": 8},
+        {"known": "She said that person wants to come see us tomorrow.", "target": "她说那个人想明天来见我们。", "score": 7},
+        {"known": "If that person can help, we should ask them now.", "target": "如果那个人能帮忙的话，我们现在要问。", "score": 8},
+        {"known": "I want to know what that person told you yesterday.", "target": "我想知道那个人昨天告诉你什么。", "score": 8},
+        {"known": "Everyone thinks that person did a great job this week.", "target": "大家都觉得那个人这个星期做得很好。", "score": 7},
+        {"known": "What did that person say to you at the meeting?", "target": "那个人在开会和你说了什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "man",
+      "target": "男人",
+      "components": [
+        {"known": "male", "target": "男"},
+        {"known": "person", "target": "人"}
+      ],
+      "build": [
+        {"known": "Man.", "target": "男人。"},
+        {"known": "That man.", "target": "那个男人。"},
+        {"known": "The man.", "target": "那个男人。"},
+        {"known": "A man.", "target": "一个男人。"}
+      ],
+      "use": [
+        {"known": "That man has just started working at the office.", "target": "那个男人刚开始在办公室工作。", "score": 8},
+        {"known": "She asked if that man can come to the meeting.", "target": "她问那个男人是不是能来开会。", "score": 7},
+        {"known": "If the man wants to help, he should come talk to us.", "target": "如果那个男人想帮忙的话，他要来和我们说话。", "score": 8},
+        {"known": "I saw a man who just started to learn Chinese.", "target": "我见了一个男人，他刚开始学中文。", "score": 8},
+        {"known": "Everyone thinks that man knows a lot about this work.", "target": "大家都觉得那个男人知道很多这个工作。", "score": 7},
+        {"known": "Why did that man just start learning this now?", "target": "那个男人为什么现在刚开始学这个？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "just (recently)",
+      "target": "刚",
+      "build": [
+        {"known": "Just.", "target": "刚。"},
+        {"known": "Just started.", "target": "刚开始。"},
+        {"known": "He just.", "target": "他刚。"},
+        {"known": "Just now.", "target": "刚刚。"}
+      ],
+      "use": [
+        {"known": "That man has just started to learn this new thing.", "target": "那个男人刚开始学这个新的东西。", "score": 8},
+        {"known": "She just told me that she wants to come tomorrow.", "target": "她刚告诉我她想明天来。", "score": 7},
+        {"known": "If you just started, you need more time to learn.", "target": "如果你刚开始，你需要更多时间学。", "score": 8},
+        {"known": "I just finished the work we talked about yesterday.", "target": "我刚完成我们昨天说的工作。", "score": 7},
+        {"known": "Everyone just heard about what happened at the office.", "target": "大家刚听说办公室发生了什么。", "score": 8},
+        {"known": "The meeting just ended and we can go home now.", "target": "开会刚完，我们现在可以回家。", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "start/begin",
+      "target": "开始",
+      "components": [
+        {"known": "open", "target": "开"},
+        {"known": "begin", "target": "始"}
+      ],
+      "build": [
+        {"known": "Start.", "target": "开始。"},
+        {"known": "Begin.", "target": "开始。"},
+        {"known": "Just started.", "target": "刚开始。"},
+        {"known": "Start to practise.", "target": "开始练习。"}
+      ],
+      "use": [
+        {"known": "That man has just started to learn how to do this.", "target": "那个男人刚开始学怎么做这个。", "score": 8},
+        {"known": "She wants to start working on this tomorrow morning.", "target": "她想明天早上开始做这个。", "score": 7},
+        {"known": "If we start now, we can finish before the meeting.", "target": "如果我们现在开始，我们可以在开会之前完成。", "score": 8},
+        {"known": "I will start watching the football at eight tonight.", "target": "我今天晚上八点会开始看足球。", "score": 7},
+        {"known": "Everyone is ready to start the work this morning.", "target": "大家今天早上都准备好开始工作了。", "score": 8},
+        {"known": "When did you start learning how to do this work?", "target": "你什么时候开始学怎么做这个工作？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "practise/practice",
+      "target": "练习",
+      "components": [
+        {"known": "drill", "target": "练"},
+        {"known": "practice", "target": "习"}
+      ],
+      "build": [
+        {"known": "Practise.", "target": "练习。"},
+        {"known": "Practice.", "target": "练习。"},
+        {"known": "Start to practise.", "target": "开始练习。"},
+        {"known": "Practise speaking.", "target": "练习说话。"}
+      ],
+      "use": [
+        {"known": "That man has just started to practise doing this.", "target": "那个男人刚开始练习做这个。", "score": 8},
+        {"known": "She wants to practise more before the meeting tomorrow.", "target": "她想明天开会之前更多练习。", "score": 7},
+        {"known": "If you want to get better, you need to practise more.", "target": "如果你想做得更好，你需要更多练习。", "score": 8},
+        {"known": "I have been trying to practise this for a while now.", "target": "我试着练习这个一会儿了。", "score": 7},
+        {"known": "Everyone needs to practise if they want to do well.", "target": "大家都需要练习如果他们想做得好。", "score": 8},
+        {"known": "When did you start to practise doing this work?", "target": "你什么时候开始练习做这个工作？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "speak/talk",
+      "target": "说话",
+      "components": [
+        {"known": "say", "target": "说"},
+        {"known": "words", "target": "话"}
+      ],
+      "build": [
+        {"known": "Speak.", "target": "说话。"},
+        {"known": "Talk.", "target": "说话。"},
+        {"known": "Practise speaking.", "target": "练习说话。"},
+        {"known": "He speaks.", "target": "他说话。"}
+      ],
+      "use": [
+        {"known": "That man has just started to practise speaking Chinese.", "target": "那个男人刚开始练习说中文。", "score": 8},
+        {"known": "She wants to learn how to speak better at meetings.", "target": "她想学怎么在开会说话说得更好。", "score": 7},
+        {"known": "If you want to speak well, you need to practise a lot.", "target": "如果你想说话说得好，你需要很多练习。", "score": 8},
+        {"known": "I have been trying to speak more at work this week.", "target": "我这个星期在工作试着说话说得更多。", "score": 7},
+        {"known": "Everyone wants him to speak at the meeting tomorrow.", "target": "大家都想他明天在开会说话。", "score": 8},
+        {"known": "Why doesn't that man want to speak at the meeting?", "target": "那个男人为什么不想在开会说话？", "score": 8}
+      ]
+    }
+  ]
+}

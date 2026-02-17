@@ -1,0 +1,228 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 91,
+  "known_text": "It's difficult to think quickly enough to answer in time.",
+  "target_text": "Het is moeilijk om snel genoeg te denken om op tijd te antwoorden.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "it",
+      "target": "het",
+      "build": [
+        {"known": "it", "target": "het"},
+        {"known": "it is", "target": "het is"},
+        {"known": "it would be", "target": "het zou zijn"},
+        {"known": "it was", "target": "het was"}
+      ],
+      "use": [
+        {"known": "It is great if you can speak more slowly.", "target": "Het is geweldig als je langzamer kunt spreken.", "score": 8},
+        {"known": "It would be nice if we can start learning now.", "target": "Het zou leuk zijn als wij nu kunnen beginnen leren.", "score": 8},
+        {"known": "It was not possible to do it in a short time.", "target": "Het was niet mogelijk om het in korte tijd te doen.", "score": 8},
+        {"known": "I think that it is time to start now.", "target": "Ik denk dat het tijd is om nu te beginnen.", "score": 8},
+        {"known": "It is not sure if she can do it with us.", "target": "Het is niet zeker of zij het met iedereen kan doen.", "score": 8},
+        {"known": "If it is possible, I would like to speak Dutch.", "target": "Als het mogelijk is, zou ik Nederlands willen spreken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "is",
+      "target": "is",
+      "build": [
+        {"known": "is", "target": "is"},
+        {"known": "it is", "target": "het is"},
+        {"known": "is not", "target": "is niet"},
+        {"known": "that is", "target": "dat is"}
+      ],
+      "use": [
+        {"known": "It is great if you can speak more slowly.", "target": "Het is geweldig als je langzamer kunt spreken.", "score": 8},
+        {"known": "That is interesting if she can do it now.", "target": "Dat is interessant als zij het nu kan doen.", "score": 8},
+        {"known": "She is ready to start learning Dutch with me.", "target": "Zij is klaar om te beginnen met Nederlands leren met me.", "score": 8},
+        {"known": "It is not possible to do a lot in a short time.", "target": "Het is niet mogelijk om veel te doen in korte tijd.", "score": 8},
+        {"known": "I think that it is time to speak Dutch now.", "target": "Ik denk dat het tijd is om nu Nederlands te spreken.", "score": 8},
+        {"known": "Is it possible to speak more slowly with me?", "target": "Is het mogelijk om langzamer met me te spreken?", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "difficult",
+      "target": "moeilijk",
+      "build": [
+        {"known": "difficult", "target": "moeilijk"},
+        {"known": "is difficult", "target": "is moeilijk"},
+        {"known": "too difficult", "target": "te moeilijk"},
+        {"known": "not difficult", "target": "niet moeilijk"}
+      ],
+      "use": [
+        {"known": "It is difficult to speak Dutch if you are not ready.", "target": "Het is moeilijk om Nederlands te spreken als je niet klaar bent.", "score": 8},
+        {"known": "I think that it is difficult to do a lot in a short time.", "target": "Ik denk dat het moeilijk is om veel te doen in korte tijd.", "score": 8},
+        {"known": "Is it difficult to speak more slowly with those people?", "target": "Is het moeilijk om langzamer te spreken met die mensen?", "score": 8},
+        {"known": "She said that it is not difficult to learn Dutch.", "target": "Zij zei dat het niet moeilijk is om Nederlands te leren.", "score": 8},
+        {"known": "It would be difficult if I can not speak slowly.", "target": "Het zou moeilijk zijn als ik niet langzaam kan spreken.", "score": 8},
+        {"known": "I don't think that it is too difficult to do.", "target": "Ik denk niet dat het te moeilijk is om te doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to [infinitive]",
+      "target": "om",
+      "build": [
+        {"known": "to", "target": "om"},
+        {"known": "to speak", "target": "om te spreken"},
+        {"known": "to do", "target": "om te doen"},
+        {"known": "to learn", "target": "om te leren"}
+      ],
+      "use": [
+        {"known": "It is difficult to speak Dutch if you are not ready.", "target": "Het is moeilijk om Nederlands te spreken als je niet klaar bent.", "score": 8},
+        {"known": "I want to start to learn Dutch with you.", "target": "Ik wil beginnen om Nederlands te leren met je.", "score": 8},
+        {"known": "Is it possible to speak more slowly?", "target": "Is het mogelijk om langzamer te spreken?", "score": 8},
+        {"known": "She said that it is not difficult to do.", "target": "Zij zei dat het niet moeilijk is om te doen.", "score": 8},
+        {"known": "It would be nice to have more time to learn.", "target": "Het zou leuk zijn om meer tijd te hebben om te leren.", "score": 8},
+        {"known": "I think that it is time to start now.", "target": "Ik denk dat het tijd is om nu te beginnen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "quickly/fast",
+      "target": "snel",
+      "build": [
+        {"known": "quickly", "target": "snel"},
+        {"known": "fast", "target": "snel"},
+        {"known": "speak quickly", "target": "snel spreken"},
+        {"known": "think quickly", "target": "snel denken"}
+      ],
+      "use": [
+        {"known": "It is difficult to speak quickly if I am not ready.", "target": "Het is moeilijk om snel te spreken als ik niet klaar ben.", "score": 8},
+        {"known": "I think that she speaks too quickly.", "target": "Ik denk dat zij te snel spreekt.", "score": 8},
+        {"known": "Is it possible to do it quickly now?", "target": "Is het mogelijk om het nu snel te doen?", "score": 8},
+        {"known": "She said that I speak too quickly.", "target": "Zij zei dat ik te snel spreek.", "score": 8},
+        {"known": "It would be difficult to do it quickly.", "target": "Het zou moeilijk zijn om het snel te doen.", "score": 8},
+        {"known": "I don't think that I can speak that quickly.", "target": "Ik denk niet dat ik zo snel kan spreken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "enough",
+      "target": "genoeg",
+      "build": [
+        {"known": "enough", "target": "genoeg"},
+        {"known": "quickly enough", "target": "snel genoeg"},
+        {"known": "time enough", "target": "genoeg tijd"},
+        {"known": "good enough", "target": "goed genoeg"}
+      ],
+      "use": [
+        {"known": "It is difficult to speak quickly enough.", "target": "Het is moeilijk om snel genoeg te spreken.", "score": 8},
+        {"known": "I think that I have done enough for now.", "target": "Ik denk dat ik genoeg heb gedaan voor nu.", "score": 8},
+        {"known": "Is it possible to have enough time to do it?", "target": "Is het mogelijk om genoeg tijd te hebben om het te doen?", "score": 8},
+        {"known": "She said that I don't speak slowly enough.", "target": "Zij zei dat ik niet langzaam genoeg spreek.", "score": 8},
+        {"known": "It would be difficult to do it well enough.", "target": "Het zou moeilijk zijn om het goed genoeg te doen.", "score": 8},
+        {"known": "I don't think that I can do enough in a short time.", "target": "Ik denk niet dat ik genoeg kan doen in korte tijd.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "to [part of verb]",
+      "target": "te",
+      "build": [
+        {"known": "to", "target": "te"},
+        {"known": "to speak", "target": "te spreken"},
+        {"known": "to do", "target": "te doen"},
+        {"known": "too difficult", "target": "te moeilijk"}
+      ],
+      "use": [
+        {"known": "It is difficult to think quickly enough.", "target": "Het is moeilijk om snel genoeg te denken.", "score": 8},
+        {"known": "I want to start to learn Dutch now.", "target": "Ik wil nu beginnen om Nederlands te leren.", "score": 8},
+        {"known": "Is it possible to do it quickly enough?", "target": "Is het mogelijk om het snel genoeg te doen?", "score": 8},
+        {"known": "She said that it is too difficult to do.", "target": "Zij zei dat het te moeilijk is om te doen.", "score": 8},
+        {"known": "It would be nice to have enough time.", "target": "Het zou leuk zijn om genoeg tijd te hebben.", "score": 8},
+        {"known": "I think that it is too fast for me.", "target": "Ik denk dat het te snel is voor me.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "to think",
+      "target": "denken",
+      "build": [
+        {"known": "to think", "target": "denken"},
+        {"known": "think quickly", "target": "snel denken"},
+        {"known": "I think", "target": "ik denk"},
+        {"known": "think about", "target": "denken over"}
+      ],
+      "use": [
+        {"known": "It is difficult to think quickly enough.", "target": "Het is moeilijk om snel genoeg te denken.", "score": 8},
+        {"known": "I want to think about it if I can.", "target": "Ik wil over het denken als ik kan.", "score": 8},
+        {"known": "Is it possible to think more slowly?", "target": "Is het mogelijk om langzamer te denken?", "score": 8},
+        {"known": "She said that it is difficult to think quickly.", "target": "Zij zei dat het moeilijk is om snel te denken.", "score": 8},
+        {"known": "It would be nice to have time to think about it.", "target": "Het zou leuk zijn om tijd te hebben om over het te denken.", "score": 8},
+        {"known": "I don't think that I can think quickly enough.", "target": "Ik denk niet dat ik snel genoeg kan denken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "in/on",
+      "target": "op",
+      "build": [
+        {"known": "on", "target": "op"},
+        {"known": "in time", "target": "op tijd"},
+        {"known": "wait for", "target": "wachten op"},
+        {"known": "on time", "target": "op tijd"}
+      ],
+      "use": [
+        {"known": "It is difficult to think quickly enough to answer in time.", "target": "Het is moeilijk om snel genoeg te denken om op tijd te antwoorden.", "score": 8},
+        {"known": "I want to be ready on time to start.", "target": "Ik wil op tijd klaar zijn om te beginnen.", "score": 8},
+        {"known": "Is it possible to do it on time?", "target": "Is het mogelijk om het op tijd te doen?", "score": 8},
+        {"known": "She said that it is difficult to be ready on time.", "target": "Zij zei dat het moeilijk is om op tijd klaar te zijn.", "score": 8},
+        {"known": "It would be nice if I can be on time.", "target": "Het zou leuk zijn als ik op tijd kan zijn.", "score": 8},
+        {"known": "I don't think that I can be ready on time.", "target": "Ik denk niet dat ik op tijd klaar kan zijn.", "score": 8}
+      ]
+    },
+    {
+      "idx": 10,
+      "type": "A",
+      "known": "time",
+      "target": "tijd",
+      "build": [
+        {"known": "time", "target": "tijd"},
+        {"known": "on time", "target": "op tijd"},
+        {"known": "in time", "target": "op tijd"},
+        {"known": "short time", "target": "korte tijd"}
+      ],
+      "use": [
+        {"known": "It's difficult to think quickly enough to answer in time.", "target": "Het is moeilijk om snel genoeg te denken om op tijd te antwoorden.", "score": 9},
+        {"known": "I want to have enough time to think about it.", "target": "Ik wil genoeg tijd hebben om over het te denken.", "score": 8},
+        {"known": "Is it possible to be ready on time?", "target": "Is het mogelijk om op tijd klaar te zijn?", "score": 8},
+        {"known": "She said that she doesn't have enough time.", "target": "Zij zei dat zij niet genoeg tijd heeft.", "score": 8},
+        {"known": "It would be difficult to do it in a short time.", "target": "Het zou moeilijk zijn om het in korte tijd te doen.", "score": 8},
+        {"known": "I don't think that I have enough time now.", "target": "Ik denk niet dat ik nu genoeg tijd heb.", "score": 8}
+      ]
+    },
+    {
+      "idx": 11,
+      "type": "A",
+      "known": "to answer",
+      "target": "antwoorden",
+      "build": [
+        {"known": "to answer", "target": "antwoorden"},
+        {"known": "answer quickly", "target": "snel antwoorden"},
+        {"known": "answer in time", "target": "op tijd antwoorden"},
+        {"known": "want to answer", "target": "wil antwoorden"}
+      ],
+      "use": [
+        {"known": "It's difficult to think quickly enough to answer in time.", "target": "Het is moeilijk om snel genoeg te denken om op tijd te antwoorden.", "score": 9},
+        {"known": "I want to answer quickly but it is difficult.", "target": "Ik wil snel antwoorden maar het is moeilijk.", "score": 8},
+        {"known": "Is it possible to answer on time?", "target": "Is het mogelijk om op tijd te antwoorden?", "score": 8},
+        {"known": "She said that it is difficult to answer quickly.", "target": "Zij zei dat het moeilijk is om snel te antwoorden.", "score": 8},
+        {"known": "It would be nice to have time to answer.", "target": "Het zou leuk zijn om tijd te hebben om te antwoorden.", "score": 8},
+        {"known": "I don't think that I can answer quickly enough.", "target": "Ik denk niet dat ik snel genoeg kan antwoorden.", "score": 8}
+      ]
+    }
+  ]
+}

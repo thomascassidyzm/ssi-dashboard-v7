@@ -1,0 +1,635 @@
+{
+  "course_code": "eng_for_zho",
+  "is_eng_for_x": true,
+  "round": 4,
+  "seed_range": "all",
+  "description": "Fresh random sample from entire course - independent verification round",
+  "total_use_phrases": 5145,
+  "sample_size": 50,
+  "scoring_date": "2026-01-30",
+  "scoring_agent": "Claude Opus 4.5",
+  "scoring_criteria": {
+    "scale": "1-9",
+    "9": "Perfect native speech in both languages, high pedagogical value",
+    "8": "Strong, minor stylistic preferences only",
+    "7": "Good quality, minor issues",
+    "6": "Functional, no major issues",
+    "5": "Adequate but not remarkable",
+    "4": "Awkward, textbook-ish",
+    "3": "Poor quality",
+    "2": "Marginal - technically correct but low value",
+    "1": "Unusable"
+  },
+  "summary": {
+    "average_score": 6.88,
+    "score_distribution": {
+      "9": 4,
+      "8": 21,
+      "7": 11,
+      "6": 6,
+      "5": 3,
+      "4": 3,
+      "3": 2,
+      "2": 0,
+      "1": 0
+    },
+    "phrases_below_5": 5,
+    "percent_below_5": 10.0,
+    "worst_phrases": [
+      {
+        "idx": 2,
+        "score": 2,
+        "english": "I started to think about it carefully for about yesterday",
+        "other": "我开始仔细想它大概昨天",
+        "reasons": [
+          "English grammar is nonsensical: 'for about yesterday' is not valid English",
+          "Chinese word order is wrong: time expression '大概昨天' should come before the verb, not after",
+          "Correct Chinese: '我大概昨天开始仔细想它' or '大概昨天我开始仔细想它'",
+          "Both languages have critical errors making this unusable"
+        ]
+      },
+      {
+        "idx": 5,
+        "score": 3,
+        "english": "I enjoy write a letter to my friends and doing interesting things",
+        "other": "我很喜欢写信给朋友和做有趣的事",
+        "reasons": [
+          "English grammar error: 'enjoy write' should be 'enjoy writing'",
+          "Parallel structure broken: 'write' and 'doing' should both be gerunds",
+          "Chinese is acceptable but English error is severe"
+        ]
+      },
+      {
+        "idx": 7,
+        "score": 3,
+        "english": "speaking better as soon as I can",
+        "other": "说得更好我能尽快",
+        "reasons": [
+          "English is a sentence fragment with no subject",
+          "Chinese word order is incorrect: '我能尽快' should precede '说得更好'",
+          "Correct Chinese: '我尽快说得更好' or '尽快说得更好'",
+          "Low pedagogical value due to incomplete structure"
+        ]
+      }
+    ],
+    "systematic_issues": [
+      "Chinese time expression placement: Some phrases place time expressions incorrectly (should come before verb)",
+      "English gerund errors: Verbs following 'enjoy' should use -ing form",
+      "Sentence fragments: Some phrases are incomplete fragments with limited pedagogical value",
+      "Missing subjects: One phrase (idx 47) missing subject '我' in Chinese",
+      "Semantic mismatches: One phrase (idx 48) has response that doesn't match the question"
+    ]
+  },
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "6b0647d1-05b5-4d4c-a13e-ab015229a415",
+      "seed": 207,
+      "lego": 2,
+      "syllables": 12,
+      "english": "I know what you needed to do, I can help you.",
+      "other": "我知道你需要做的是什么，我可以帮你。",
+      "qa_score": 8,
+      "qa_notes": "Good quality, natural in both languages"
+    },
+    {
+      "idx": 2,
+      "id": "f99aedf9-3870-426b-a2ca-e81837e448ca",
+      "seed": 38,
+      "lego": 2,
+      "syllables": 18,
+      "english": "I started to think about it carefully for about yesterday",
+      "other": "我开始仔细想它大概昨天",
+      "qa_score": 2,
+      "qa_notes": "CRITICAL: English grammar nonsensical ('for about yesterday'), Chinese word order wrong (time should precede verb)"
+    },
+    {
+      "idx": 3,
+      "id": "c264260a-e87e-424e-862a-75e2e57c0cbd",
+      "seed": 142,
+      "lego": 1,
+      "syllables": 8,
+      "english": "That's very kind of you, thank you",
+      "other": "你太好了，谢谢",
+      "qa_score": 9,
+      "qa_notes": "Perfect, natural phrase in both languages"
+    },
+    {
+      "idx": 4,
+      "id": "e2109611-798e-4447-83f5-55ae683769b2",
+      "seed": 54,
+      "lego": 1,
+      "syllables": 9,
+      "english": "We want to speak with you a little more.",
+      "other": "我们想和你说话多一点。",
+      "qa_score": 7,
+      "qa_notes": "Good, natural. Chinese '多一点' position is acceptable colloquially"
+    },
+    {
+      "idx": 5,
+      "id": "c432ab33-e325-468d-91b6-146828a0cc2f",
+      "seed": 52,
+      "lego": 4,
+      "syllables": 17,
+      "english": "I enjoy write a letter to my friends and doing interesting things",
+      "other": "我很喜欢写信给朋友和做有趣的事",
+      "qa_score": 3,
+      "qa_notes": "MAJOR: English grammar error - 'enjoy write' should be 'enjoy writing', parallel structure broken"
+    },
+    {
+      "idx": 6,
+      "id": "c4d8c590-ae31-429a-a68c-ed97de9d64d0",
+      "seed": 210,
+      "lego": 2,
+      "syllables": 12,
+      "english": "He said we need to discuss, but I don't want to.",
+      "other": "他说我们需要讨论，但是我不想。",
+      "qa_score": 8,
+      "qa_notes": "Good quality, natural conversation"
+    },
+    {
+      "idx": 7,
+      "id": "b1c44448-cab3-432b-8ad5-d9552eed8349",
+      "seed": 29,
+      "lego": 3,
+      "syllables": 9,
+      "english": "speaking better as soon as I can",
+      "other": "说得更好我能尽快",
+      "qa_score": 3,
+      "qa_notes": "English is fragment (no subject), Chinese word order incorrect ('我能尽快' should precede verb)"
+    },
+    {
+      "idx": 8,
+      "id": "546120e1-aef7-4bbf-9b1b-c68f0c136bf7",
+      "seed": 92,
+      "lego": 1,
+      "syllables": 12,
+      "english": "They have to wait for a while, I'm not sure how long.",
+      "other": "他们要等一会儿，我不确定多久。",
+      "qa_score": 8,
+      "qa_notes": "Good quality, natural in both languages"
+    },
+    {
+      "idx": 9,
+      "id": "59464ea4-f2b2-426d-9070-bae48801cf0a",
+      "seed": 53,
+      "lego": 4,
+      "syllables": 6,
+      "english": "But her bag is in here",
+      "other": "但是她的包在这里",
+      "qa_score": 7,
+      "qa_notes": "Good, simple and clear"
+    },
+    {
+      "idx": 10,
+      "id": "d2999f6e-1142-4c35-affb-ed7032642c6c",
+      "seed": 17,
+      "lego": 4,
+      "syllables": 8,
+      "english": "I want to find out the answer.",
+      "other": "我想找出答案。",
+      "qa_score": 8,
+      "qa_notes": "Perfect, natural phrase"
+    },
+    {
+      "idx": 11,
+      "id": "55edba75-1572-4eb9-a618-bd6315ef1739",
+      "seed": 82,
+      "lego": 1,
+      "syllables": 7,
+      "english": "She didn't want to wait for you.",
+      "other": "她不想等你。",
+      "qa_score": 8,
+      "qa_notes": "Perfect, natural phrase"
+    },
+    {
+      "idx": 12,
+      "id": "fae696e6-c106-4b35-8588-5be669c88147",
+      "seed": 128,
+      "lego": 2,
+      "syllables": 25,
+      "english": "It's interesting that you're like someone I used to know, we talked to each other at the pub.",
+      "other": "有趣的是你像我以前认识的人，我们在酒吧聊天了。",
+      "qa_score": 8,
+      "qa_notes": "Good quality, natural conversation"
+    },
+    {
+      "idx": 13,
+      "id": "20636c05-9b7a-4bb4-8ed7-2baf1e192fc8",
+      "seed": 200,
+      "lego": 2,
+      "syllables": 5,
+      "english": "want to make sure that",
+      "other": "想确保",
+      "qa_score": 5,
+      "qa_notes": "Fragment, limited pedagogical value as incomplete"
+    },
+    {
+      "idx": 14,
+      "id": "0115707e-3539-43df-94a7-a15333a00e6e",
+      "seed": 84,
+      "lego": 4,
+      "syllables": 11,
+      "english": "I don't agree with what he said about my friend.",
+      "other": "我不同意他说的关于我朋友的事。",
+      "qa_score": 8,
+      "qa_notes": "Excellent, natural in both languages"
+    },
+    {
+      "idx": 15,
+      "id": "d8174d4a-c8db-45a5-875e-12d62d16bd93",
+      "seed": 33,
+      "lego": 2,
+      "syllables": 11,
+      "english": "How long have you been learning to speak English?",
+      "other": "你学说英语学了多久",
+      "qa_score": 8,
+      "qa_notes": "Good, natural question with Chinese reduplication pattern"
+    },
+    {
+      "idx": 16,
+      "id": "c857f348-0307-4854-a65c-0e61f31ec09d",
+      "seed": 252,
+      "lego": 3,
+      "syllables": 13,
+      "english": "My mother asked when you will be ready to start.",
+      "other": "我妈妈问你什么时候准备好开始。",
+      "qa_score": 7,
+      "qa_notes": "Good quality. Slight tense issue in indirect speech but acceptable informally"
+    },
+    {
+      "idx": 17,
+      "id": "0c670c93-8002-4328-9b18-2ec462b03abb",
+      "seed": 162,
+      "lego": 2,
+      "syllables": 9,
+      "english": "Do you think that is good? I'm not sure.",
+      "other": "你觉得那个好吗？我不确定。",
+      "qa_score": 8,
+      "qa_notes": "Good, natural dialogue"
+    },
+    {
+      "idx": 18,
+      "id": "c9c89b94-a62e-42aa-933f-20c1529a3e85",
+      "seed": 47,
+      "lego": 2,
+      "syllables": 5,
+      "english": "Because I think that",
+      "other": "因为我觉得",
+      "qa_score": 5,
+      "qa_notes": "Fragment, but useful as connector phrase"
+    },
+    {
+      "idx": 19,
+      "id": "81c0be3d-9ba1-488b-804c-374837b379df",
+      "seed": 60,
+      "lego": 1,
+      "syllables": 6,
+      "english": "I can't remember yet",
+      "other": "我还不能记住",
+      "qa_score": 6,
+      "qa_notes": "Acceptable but slightly awkward; 'I still can't remember' more natural in English"
+    },
+    {
+      "idx": 20,
+      "id": "1f905fb5-9d98-4634-8309-71a28edff3f2",
+      "seed": 183,
+      "lego": 2,
+      "syllables": 5,
+      "english": "I'm afraid I can't",
+      "other": "我恐怕不能",
+      "qa_score": 7,
+      "qa_notes": "Good, polite refusal phrase"
+    },
+    {
+      "idx": 21,
+      "id": "6878edde-89e3-499e-85e8-faaf09508286",
+      "seed": 202,
+      "lego": 1,
+      "syllables": 11,
+      "english": "Nobody was sure what was going to happen.",
+      "other": "没有人确定会发生什么。",
+      "qa_score": 8,
+      "qa_notes": "Excellent, natural in both languages"
+    },
+    {
+      "idx": 22,
+      "id": "60e4804a-7b45-44f4-b2c9-961244dcf9d4",
+      "seed": 169,
+      "lego": 1,
+      "syllables": 11,
+      "english": "Do you want me to help? I can come and help.",
+      "other": "你想让我帮忙吗？我可以来帮忙。",
+      "qa_score": 9,
+      "qa_notes": "Perfect, natural offer of help"
+    },
+    {
+      "idx": 23,
+      "id": "d7d3368f-3165-4dbd-8e6f-c1ba59fa51db",
+      "seed": 32,
+      "lego": 2,
+      "syllables": 17,
+      "english": "You wanted to start to show me how to say something in English",
+      "other": "你想要开始给我看怎么用英语说一些东西",
+      "qa_score": 6,
+      "qa_notes": "Slightly awkward in both; 'show' for language less natural than 'teach'"
+    },
+    {
+      "idx": 24,
+      "id": "42b39f61-1b1f-4395-b427-4ee020e72818",
+      "seed": 118,
+      "lego": 3,
+      "syllables": 15,
+      "english": "When we were in the pub, I wasn't ready, but now I'm ready.",
+      "other": "我们在酒吧的时候，我没准备好，但是现在我准备好了。",
+      "qa_score": 8,
+      "qa_notes": "Excellent, natural in both languages"
+    },
+    {
+      "idx": 25,
+      "id": "0e3cf54c-dfc7-4319-9435-cc6ec52c4885",
+      "seed": 248,
+      "lego": 3,
+      "syllables": 6,
+      "english": "I want my money back",
+      "other": "我想把钱要回来",
+      "qa_score": 8,
+      "qa_notes": "Good, natural phrase"
+    },
+    {
+      "idx": 26,
+      "id": "553d95e6-e294-4e17-b9e0-e6fcb2847e7b",
+      "seed": 104,
+      "lego": 2,
+      "syllables": 12,
+      "english": "We should change this, I think it's very important.",
+      "other": "我们该改变这个，我觉得很重要。",
+      "qa_score": 8,
+      "qa_notes": "Good quality, natural"
+    },
+    {
+      "idx": 27,
+      "id": "1bdad0c5-3cae-4be3-8357-48bbc8af9b6d",
+      "seed": 63,
+      "lego": 2,
+      "syllables": 14,
+      "english": "You don't mind helping me speak in English when waking up.",
+      "other": "醒来的时候你不介意帮我用英语说话吗。",
+      "qa_score": 4,
+      "qa_notes": "English awkward ('when waking up' is strange context), mismatch: Chinese is question (吗) but English is statement"
+    },
+    {
+      "idx": 28,
+      "id": "36eda13e-6345-4b5b-a216-923a15201686",
+      "seed": 170,
+      "lego": 1,
+      "syllables": 9,
+      "english": "I'd like you to tell me what you think.",
+      "other": "我想让你告诉我你觉得怎么样。",
+      "qa_score": 8,
+      "qa_notes": "Excellent, polite request"
+    },
+    {
+      "idx": 29,
+      "id": "dd33f797-99f9-4056-9894-aa7e607478ee",
+      "seed": 120,
+      "lego": 1,
+      "syllables": 6,
+      "english": "It's interesting that",
+      "other": "有趣的是",
+      "qa_score": 6,
+      "qa_notes": "Useful fragment/connector"
+    },
+    {
+      "idx": 30,
+      "id": "059f0bdd-88f2-4ca2-a48c-e0bdad91720f",
+      "seed": 189,
+      "lego": 3,
+      "syllables": 11,
+      "english": "Yes, that's a good idea, we'll go tomorrow.",
+      "other": "是的，那是个好主意，我们明天去。",
+      "qa_score": 9,
+      "qa_notes": "Excellent, natural conversation"
+    },
+    {
+      "idx": 31,
+      "id": "59fb5cfe-c644-4eb3-9521-6d9d9d5fa169",
+      "seed": 162,
+      "lego": 1,
+      "syllables": 14,
+      "english": "What do you think about this? I want to know what you think.",
+      "other": "你觉得这个怎么样？我想知道你的想法。",
+      "qa_score": 8,
+      "qa_notes": "Excellent, natural in both languages"
+    },
+    {
+      "idx": 32,
+      "id": "5fe0d90f-34c5-45c5-a00b-97e1d8a18926",
+      "seed": 169,
+      "lego": 2,
+      "syllables": 9,
+      "english": "What do you want me to do? Tell me.",
+      "other": "你想让我做什么？告诉我。",
+      "qa_score": 8,
+      "qa_notes": "Perfect, natural dialogue"
+    },
+    {
+      "idx": 33,
+      "id": "8903fd4b-b23c-4362-831e-d5062c2c2c0a",
+      "seed": 120,
+      "lego": 1,
+      "syllables": 19,
+      "english": "It's interesting that when we were in the pub we talked to each other.",
+      "other": "有趣的是我们在酒吧的时候聊天了。",
+      "qa_score": 7,
+      "qa_notes": "Good, Chinese drops 'to each other' but it's implied"
+    },
+    {
+      "idx": 34,
+      "id": "17029780-1690-470b-8339-9d2b9fd6cc96",
+      "seed": 182,
+      "lego": 2,
+      "syllables": 14,
+      "english": "Have you seen my keys anywhere? I think I put them here.",
+      "other": "你有没有看到我的钥匙？我想我放在这里了。",
+      "qa_score": 9,
+      "qa_notes": "Excellent, natural daily conversation"
+    },
+    {
+      "idx": 35,
+      "id": "0b04ef50-309c-4dfa-b159-4869a7c025d6",
+      "seed": 203,
+      "lego": 3,
+      "syllables": 11,
+      "english": "I don't know what you would do, can you tell me?",
+      "other": "我不知道你会怎么做，你能告诉我吗？",
+      "qa_score": 8,
+      "qa_notes": "Good quality"
+    },
+    {
+      "idx": 36,
+      "id": "07fac76f-d0f6-4054-9a01-9a0f1c99328a",
+      "seed": 226,
+      "lego": 1,
+      "syllables": 13,
+      "english": "She asked me who that man is, I said I don't know.",
+      "other": "她问我那个男人是谁，我说我不知道。",
+      "qa_score": 7,
+      "qa_notes": "Good, tense in English indirect speech could be 'was/didn't' but acceptable informally"
+    },
+    {
+      "idx": 37,
+      "id": "4ce06869-0b39-4ca3-af0b-17f63c588837",
+      "seed": 149,
+      "lego": 1,
+      "syllables": 12,
+      "english": "This isn't very difficult, but I couldn't answer.",
+      "other": "这个不是很难，但是我回答不了。",
+      "qa_score": 7,
+      "qa_notes": "Good quality"
+    },
+    {
+      "idx": 38,
+      "id": "3275bc85-e65c-40a2-94b4-5d2a655ed2dd",
+      "seed": 100,
+      "lego": 1,
+      "syllables": 12,
+      "english": "You shouldn't speak too quickly, I need a little more time.",
+      "other": "你不该说太快，我需要多一点时间。",
+      "qa_score": 8,
+      "qa_notes": "Excellent, practical phrase for learners"
+    },
+    {
+      "idx": 39,
+      "id": "828d3216-3a24-4048-a2a1-a8dc666d43e1",
+      "seed": 12,
+      "lego": 2,
+      "syllables": 14,
+      "english": "I wouldn't like to guess how to say something in English.",
+      "other": "我不想猜怎么用英语说一些东西。",
+      "qa_score": 6,
+      "qa_notes": "Slightly awkward ('I wouldn't like to guess' is unusual) but acceptable"
+    },
+    {
+      "idx": 40,
+      "id": "45c801ec-0047-4d50-b2ac-123004e51b97",
+      "seed": 230,
+      "lego": 3,
+      "syllables": 11,
+      "english": "I know a young man who wants to work with you",
+      "other": "我认识一个年轻人想和你工作",
+      "qa_score": 6,
+      "qa_notes": "Chinese missing relative clause marker, should be '我认识一个想和你工作的年轻人' for proper structure"
+    },
+    {
+      "idx": 41,
+      "id": "7291202a-f104-4876-8868-1dd38a62ed6d",
+      "seed": 112,
+      "lego": 2,
+      "syllables": 9,
+      "english": "I wasn't expecting it, do you agree?",
+      "other": "我没想到，你同意吗？",
+      "qa_score": 8,
+      "qa_notes": "Good, natural"
+    },
+    {
+      "idx": 42,
+      "id": "a2004f1a-a27e-43eb-a84f-c2852c2edb7c",
+      "seed": 103,
+      "lego": 2,
+      "syllables": 11,
+      "english": "I want to hear what you say, if it's possible.",
+      "other": "我想听你说什么，如果可以的话。",
+      "qa_score": 7,
+      "qa_notes": "Good quality"
+    },
+    {
+      "idx": 43,
+      "id": "9847dfb2-4410-424e-917a-bac0b6df4513",
+      "seed": 51,
+      "lego": 1,
+      "syllables": 7,
+      "english": "interesting mistakes",
+      "other": "有趣的犯错",
+      "qa_score": 4,
+      "qa_notes": "Fragment with issue: Chinese '有趣的犯错' awkward ('犯错' is verb phrase); '有趣的错误' better"
+    },
+    {
+      "idx": 44,
+      "id": "365ae96e-0a1d-4260-a311-e7bc5624e6ad",
+      "seed": 235,
+      "lego": 2,
+      "syllables": 16,
+      "english": "We met someone who said that he wanted to work with your brother.",
+      "other": "我们见了一个人说他想和你哥哥工作。",
+      "qa_score": 7,
+      "qa_notes": "Good quality"
+    },
+    {
+      "idx": 45,
+      "id": "3df7b04f-8bdd-40eb-9f7a-ef2cd57ffeaf",
+      "seed": 92,
+      "lego": 3,
+      "syllables": 5,
+      "english": "I want to do this",
+      "other": "我想做这个",
+      "qa_score": 8,
+      "qa_notes": "Perfect, basic phrase"
+    },
+    {
+      "idx": 46,
+      "id": "560f4fba-ea39-4e47-87fe-cf285d28e80a",
+      "seed": 255,
+      "lego": 2,
+      "syllables": 10,
+      "english": "When do you think you'll be ready to leave?",
+      "other": "你觉得你什么时候准备好离开？",
+      "qa_score": 8,
+      "qa_notes": "Excellent, natural question"
+    },
+    {
+      "idx": 47,
+      "id": "a4ec46a6-d2a4-4183-8951-53de3e961691",
+      "seed": 1,
+      "lego": 2,
+      "syllables": 6,
+      "english": "I want to speak English.",
+      "other": "想说英语。",
+      "qa_score": 5,
+      "qa_notes": "Chinese missing subject '我'; should be '我想说英语。'"
+    },
+    {
+      "idx": 48,
+      "id": "0f5ef701-6ae7-418a-94aa-2c4d50256b6a",
+      "seed": 220,
+      "lego": 2,
+      "syllables": 13,
+      "english": "She asked me what you saw, I said I didn't do much.",
+      "other": "她问我你看了什么，我说我没做什么。",
+      "qa_score": 4,
+      "qa_notes": "Semantic mismatch: question is about 'saw' but response is about 'did'; confusing for learners"
+    },
+    {
+      "idx": 49,
+      "id": "043677e3-fc7d-487e-afaa-795ec55f038a",
+      "seed": 85,
+      "lego": 2,
+      "syllables": 11,
+      "english": "I want to find those words, but I'm not sure where.",
+      "other": "我想找那些词，但是我不确定在哪里。",
+      "qa_score": 7,
+      "qa_notes": "Good quality"
+    },
+    {
+      "idx": 50,
+      "id": "87900ecb-de7d-4e4b-826e-a871a71b1455",
+      "seed": 228,
+      "lego": 1,
+      "syllables": 12,
+      "english": "We need to practise speaking, can you be with us?",
+      "other": "我们需要练习说，你能和我们一起吗？",
+      "qa_score": 7,
+      "qa_notes": "Good quality; Chinese '练习说' could be '练习说话' for completeness"
+    }
+  ]
+}

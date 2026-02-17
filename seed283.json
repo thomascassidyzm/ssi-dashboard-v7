@@ -1,0 +1,46 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 283,
+  "known_text": "あなたの友達のうち誰が英語を話しますか？",
+  "target_text": "Which of your friends speak English?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "のうち",
+      "target": "of",
+      "phrases": [
+        {"role": "build", "known": "友達のうち。", "target": "Of friends.", "score": 6},
+        {"role": "build", "known": "私のうち。", "target": "Of me.", "score": 6},
+        {"role": "build", "known": "人々のうち。", "target": "Of people.", "score": 6},
+        {"role": "use", "known": "私たちのうち誰が行きますか？", "target": "Which of us is going?", "score": 7},
+        {"role": "use", "known": "あなたの友達のうち誰が来ますか？", "target": "Which of your friends are coming?", "score": 7},
+        {"role": "use", "known": "人々のうち誰が知っていますか？", "target": "Which of the people know?", "score": 7},
+        {"role": "use", "known": "彼らのうち誰が話しますか？", "target": "Which of them speak?", "score": 7},
+        {"role": "use", "known": "私の姉のうち誰が好きですか？", "target": "Which of my sisters do you like?", "score": 7},
+        {"role": "use", "known": "本のうちどれが面白いですか？", "target": "Which of the books is interesting?", "score": 7},
+        {"role": "use", "known": "先生のうち誰が英語を話しますか？", "target": "Which of the teachers speak English?", "score": 7},
+        {"role": "use", "known": "友達のうち誰が手伝いたいですか？", "target": "Which of the friends want to help?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "誰",
+      "target": "which",
+      "phrases": [
+        {"role": "build", "known": "誰？", "target": "Which?", "score": 6},
+        {"role": "build", "known": "誰が来ますか？", "target": "Which are coming?", "score": 6},
+        {"role": "build", "known": "誰が話しますか？", "target": "Which speak?", "score": 6},
+        {"role": "use", "known": "誰が一番良いですか？", "target": "Which is the best?", "score": 7},
+        {"role": "use", "known": "誰があなたを知っていますか？", "target": "Which know you?", "score": 7},
+        {"role": "use", "known": "誰がそれを言いましたか？", "target": "Which said that?", "score": 7},
+        {"role": "use", "known": "誰が明日行きますか？", "target": "Which are going tomorrow?", "score": 7},
+        {"role": "use", "known": "誰が手伝いたいですか？", "target": "Which want to help?", "score": 7},
+        {"role": "use", "known": "誰があなたの友達ですか？", "target": "Which are your friends?", "score": 7},
+        {"role": "use", "known": "誰がここにいますか？", "target": "Which are here?", "score": 7},
+        {"role": "use", "known": "誰が英語を話しますか？", "target": "Which speak English?", "score": 7}
+      ]
+    }
+  ]
+}

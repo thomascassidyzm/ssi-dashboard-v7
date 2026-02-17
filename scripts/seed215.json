@@ -1,0 +1,121 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 215,
+  "known_text": "I went out on Saturday night.",
+  "target_text": "我星期六晚上出去了。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I went.", "target": "我去。"},
+        {"known": "I went out.", "target": "我出去。"},
+        {"known": "I did.", "target": "我做了。"}
+      ],
+      "use": [
+        {"known": "I went out on Saturday night with some friends.", "target": "我星期六晚上和一些朋友出去了。", "score": 7},
+        {"known": "She asked if I want to go out with her tomorrow.", "target": "她问我是不是想明天和她出去。", "score": 7},
+        {"known": "If I have time this weekend, I will go out with them.", "target": "如果我这个周末有时间，我会和他们出去。", "score": 8},
+        {"known": "I hope I can go out and have a good time this week.", "target": "我希望我这个星期可以出去过得好。", "score": 8},
+        {"known": "Everyone said they want to go out together on Saturday.", "target": "大家都说他们想星期六一起出去。", "score": 7},
+        {"known": "Did anyone tell you I went out last night to meet friends?", "target": "有人告诉你我昨天晚上出去见朋友了吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "Saturday",
+      "target": "星期六",
+      "components": [
+        {"known": "star/week", "target": "星"},
+        {"known": "period", "target": "期"},
+        {"known": "six", "target": "六"}
+      ],
+      "build": [
+        {"known": "Saturday.", "target": "星期六。"},
+        {"known": "On Saturday.", "target": "星期六。"},
+        {"known": "Saturday night.", "target": "星期六晚上。"},
+        {"known": "This Saturday.", "target": "这个星期六。"}
+      ],
+      "use": [
+        {"known": "I went out on Saturday night and had a good time.", "target": "我星期六晚上出去了，过得开心。", "score": 7},
+        {"known": "She said she is busy on Saturday but free on Sunday.", "target": "她说她星期六很忙但是星期天有空。", "score": 8},
+        {"known": "If you have time on Saturday, we can go out together.", "target": "如果你星期六有时间，我们可以一起出去。", "score": 8},
+        {"known": "I usually like to go out on Saturday evening with friends.", "target": "我通常喜欢星期六晚上和朋友出去。", "score": 8},
+        {"known": "Everyone wants to meet on Saturday to discuss the work.", "target": "大家都想星期六开会讨论工作。", "score": 7},
+        {"known": "Did they tell you what they did on Saturday last week?", "target": "他们告诉你他们上星期六做了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "evening/night",
+      "target": "晚上",
+      "components": [
+        {"known": "late/evening", "target": "晚"},
+        {"known": "above/on", "target": "上"}
+      ],
+      "build": [
+        {"known": "Evening.", "target": "晚上。"},
+        {"known": "Night.", "target": "晚上。"},
+        {"known": "Saturday night.", "target": "星期六晚上。"},
+        {"known": "This evening.", "target": "今天晚上。"}
+      ],
+      "use": [
+        {"known": "I went out on Saturday evening and had a great time.", "target": "我星期六晚上出去了，过得很好。", "score": 7},
+        {"known": "She said she wants to go out with us tomorrow evening.", "target": "她说她想明天晚上和我们出去。", "score": 7},
+        {"known": "If you have time in the evening, we can discuss this.", "target": "如果你晚上有时间，我们可以讨论这个。", "score": 7},
+        {"known": "I usually like to spend time with my family in the evening.", "target": "我通常喜欢晚上和我的家人花时间。", "score": 8},
+        {"known": "Everyone went out on Saturday evening and had a good time.", "target": "大家星期六晚上都出去了，过得开心。", "score": 8},
+        {"known": "Did you know they went out together last night to celebrate?", "target": "你知道他们昨天晚上一起出去了吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "go out",
+      "target": "出去",
+      "components": [
+        {"known": "exit/out", "target": "出"},
+        {"known": "go", "target": "去"}
+      ],
+      "build": [
+        {"known": "Go out.", "target": "出去。"},
+        {"known": "Went out.", "target": "出去了。"},
+        {"known": "Go out at night.", "target": "晚上出去。"},
+        {"known": "I went out.", "target": "我出去。"}
+      ],
+      "use": [
+        {"known": "I went out on Saturday night with my friends.", "target": "我星期六晚上和我朋友出去了。", "score": 7},
+        {"known": "She asked if we want to go out together this weekend.", "target": "她问我们是不是想这个周末一起出去。", "score": 8},
+        {"known": "If you want to go out, please let me know first.", "target": "如果你想出去，请让我知道。", "score": 7},
+        {"known": "I don't like to go out when I am too tired to do so.", "target": "我不喜欢太累的时候出去。", "score": 8},
+        {"known": "Everyone wanted to go out and have a good time together.", "target": "大家都想出去一起过得开心。", "score": 7},
+        {"known": "Did you know they went out last Saturday and had fun?", "target": "你知道他们上星期六出去了过得开心吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "completed action marker",
+      "target": "了",
+      "build": [
+        {"known": "Done.", "target": "了。"},
+        {"known": "Went out.", "target": "出去了。"},
+        {"known": "Did.", "target": "做了。"},
+        {"known": "I went.", "target": "我去了。"}
+      ],
+      "use": [
+        {"known": "I went out on Saturday night and had a good time.", "target": "我星期六晚上出去了，过得开心。", "score": 7},
+        {"known": "She told me they finished the work yesterday evening.", "target": "她告诉我他们昨天晚上完成了工作。", "score": 8},
+        {"known": "If you went out last night, you must be very tired today.", "target": "如果你昨天晚上出去了，你今天一定很累。", "score": 8},
+        {"known": "I already told them we went out on Saturday together.", "target": "我已经告诉他们我们星期六一起出去了。", "score": 8},
+        {"known": "Everyone said they went out and had a really good time.", "target": "大家都说他们出去了，过得很好。", "score": 7},
+        {"known": "Did anyone tell you they went out together last weekend?", "target": "有人告诉你他们上周末一起出去了吗？", "score": 8}
+      ]
+    }
+  ]
+}

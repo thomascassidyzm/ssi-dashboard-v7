@@ -1,0 +1,126 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 117,
+  "target_text": "I'm definitely doing better than I was last time we talked to each other.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "確実に",
+      "target": "definitely",
+      "build": [
+        {"known": "確実に", "target": "definitely"},
+        {"known": "確実にそうです", "target": "definitely is"},
+        {"known": "確実にうまくいく", "target": "definitely going well"},
+        {"known": "確実に良い", "target": "definitely good"}
+      ],
+      "use": [
+        {"known": "確実にうまくいっていると思います。", "target": "I think I'm definitely doing well now.", "score": 8},
+        {"known": "確実に良いと思います。", "target": "I think it is definitely good for me.", "score": 8},
+        {"known": "確実にこれが最善の選択です。", "target": "This is definitely the best choice for me.", "score": 8},
+        {"known": "確実に難しいと思いますが、やります。", "target": "I think it is definitely difficult, but I will do it.", "score": 8},
+        {"known": "確実に良くなっていると思います。", "target": "I think I'm definitely doing more good now.", "score": 8},
+        {"known": "確実に違うと思います。", "target": "I think it is definitely different now.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "私がやっていたよりも",
+      "target": "than I was",
+      "components": [
+        {"known": "〜より", "target": "than"},
+        {"known": "私が", "target": "I"},
+        {"known": "やっていた", "target": "was"}
+      ],
+      "build": [
+        {"known": "私がやっていたより", "target": "than I was"},
+        {"known": "私がやっていたよりも良い", "target": "than I was before"},
+        {"known": "私が思っていたより", "target": "than I was thinking"},
+        {"known": "私ができたより", "target": "than I was doing"}
+      ],
+      "use": [
+        {"known": "私がやっていたよりも確実にうまくやっています。", "target": "I'm definitely doing better than I was before.", "score": 8},
+        {"known": "私がやっていたよりも良いと思います。", "target": "I think it is more good than I was doing.", "score": 8},
+        {"known": "私がやっていたよりも難しいと思います。", "target": "I think it is more difficult than I was doing.", "score": 8},
+        {"known": "私がやっていたよりも違うと思います。", "target": "I think it is different than I was doing.", "score": 8},
+        {"known": "私がやっていたよりも確実に良いです。", "target": "It is definitely more good than I was before.", "score": 8},
+        {"known": "私がやっていたよりも簡単だと思います。", "target": "I think it is more easy than I was thinking.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "もっとうまく",
+      "target": "I'm doing better",
+      "components": [
+        {"known": "私は", "target": "I'm"},
+        {"known": "やっている", "target": "doing"},
+        {"known": "もっとうまく", "target": "better"}
+      ],
+      "build": [
+        {"known": "もっとうまく", "target": "I'm doing better"},
+        {"known": "もっとうまくやっている", "target": "I'm doing better now"},
+        {"known": "うまくできない", "target": "I'm not doing better"},
+        {"known": "うまくやる", "target": "I'm doing well"}
+      ],
+      "use": [
+        {"known": "確実にもっとうまくやっています。", "target": "I'm definitely doing better than I was.", "score": 8},
+        {"known": "もっとうまくやりたいと思います。", "target": "I think I want to be doing better now.", "score": 8},
+        {"known": "彼はもっとうまくやっていると思います。", "target": "I think he is doing better than I was.", "score": 8},
+        {"known": "昨日よりもっとうまくやっていると思います。", "target": "I think I'm doing better than I was yesterday.", "score": 8},
+        {"known": "もっとうまくやりたいですが、難しいです。", "target": "I want to be doing better, but it is difficult.", "score": 8},
+        {"known": "確実にもっとうまくやっていますが、まだ難しいです。", "target": "I'm definitely doing better, but it is difficult.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "前回",
+      "target": "last time",
+      "components": [
+        {"known": "前", "target": "last"},
+        {"known": "回", "target": "time"}
+      ],
+      "build": [
+        {"known": "前回", "target": "last time"},
+        {"known": "前回した", "target": "last time we did"},
+        {"known": "前回やった", "target": "last time I did"},
+        {"known": "前回あった", "target": "last time we were"}
+      ],
+      "use": [
+        {"known": "前回した時よりうまくやっています。", "target": "I'm doing better than I was last time we did.", "score": 8},
+        {"known": "前回やった時より確実に良いです。", "target": "It is definitely good than I was last time I did it.", "score": 7},
+        {"known": "前回よりもっと学んだと思います。", "target": "I think I did learn more than I was last time.", "score": 8},
+        {"known": "前回した時より難しいと思います。", "target": "I think it is more difficult than last time.", "score": 8},
+        {"known": "前回やった時より違うと思います。", "target": "I think it is different than last time I did.", "score": 8},
+        {"known": "前回よりもっとうまくやれると思います。", "target": "I think I can do better than last time.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "お互いに話した",
+      "target": "we talked to each other",
+      "components": [
+        {"known": "私たちが", "target": "we"},
+        {"known": "話した", "target": "talked"},
+        {"known": "お互いに", "target": "to each other"}
+      ],
+      "build": [
+        {"known": "お互いに話した", "target": "we talked to each other"},
+        {"known": "お互いに", "target": "to each other"},
+        {"known": "話した時", "target": "we talked"},
+        {"known": "お互いにやった", "target": "we did to each other"}
+      ],
+      "use": [
+        {"known": "前回お互いに話した時より確実にうまくやっています。", "target": "I'm definitely doing better than I was last time we talked to each other.", "score": 9},
+        {"known": "お互いに話すのは大切だと思います。", "target": "I think it is important to talk to each other.", "score": 8},
+        {"known": "お互いに話した時は良かったと思います。", "target": "I think it was good when we talked to each other.", "score": 8},
+        {"known": "お互いに話すことで学べると思います。", "target": "I think we can learn when we talk to each other.", "score": 8},
+        {"known": "お互いに話したいと思います。", "target": "I think I want to talk to each other now.", "score": 7},
+        {"known": "前回お互いに話した時は難しかったです。", "target": "It was difficult last time we talked to each other.", "score": 8}
+      ]
+    }
+  ]
+}

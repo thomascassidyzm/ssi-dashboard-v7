@@ -1,0 +1,132 @@
+================================================================================
+VISUAL ISSUE SUMMARY: ita_for_eng Seeds 69-97 (QA Pass 3)
+================================================================================
+
+ISSUE DISTRIBUTION BY SEED
+================================================================================
+
+S080: ███ (3 phrases)
+      Issues: Missing prepositions (pronto a, non sono sicuro di)
+
+S083: ██████████████ (14 phrases) ⚠️ CRITICAL - REGENERATE
+      Issues: Gender, elision, prepositions, verb conjugation, articles
+
+S084: ████ (4 phrases)
+      Issues: Missing prepositions (provando a), subordinate clauses
+
+S089: ████ (4 phrases)
+      Issues: Verb forms, gender, subordinate clauses
+
+S091: ███████████ (11 phrases) ⚠️ CRITICAL - REGENERATE
+      Issues: Multiple missing preps, subordinate clauses, reflexives
+
+S092: ██ (2 phrases)
+      Issues: Gender, missing "che"
+
+================================================================================
+ISSUE TYPES (by frequency)
+================================================================================
+
+MISSING PREP        ████████████████ 14 (36.8%)
+                    ├── sto provando + INF: 7
+                    ├── pronto + INF: 5
+                    └── non sono sicuro quando: 2
+
+GENDER              ███████████ 11 (28.9%)
+                    └── del risposta → della risposta: 11
+
+MISSING CONJ        █████████ 9 (23.7%)
+                    ├── non sono sicuro che cosa: 3
+                    ├── penso è difficile: 3
+                    ├── non sono sicuro posso: 2
+                    └── non sono sicuro sono: 1
+
+ELISION             ███ 3 (7.9%)
+                    └── del amico → dell'amico: 3
+
+ARTICLE             ███ 3 (7.9%)
+                    └── del tuo amico (needs review): 3
+
+VERB FORM           ██ 2 (5.3%)
+                    └── aver fatto → ho fatto: 2
+
+VERB CONJ           █ 1 (2.6%)
+                    └── vuoi → vuole: 1
+
+REFLEXIVE           █ 1 (2.6%)
+                    └── prendersi → prendermi: 1
+
+================================================================================
+SEVERITY HEATMAP (by seed × error count)
+================================================================================
+
+Seed | Count | Severity | Action
+-----|-------|----------|------------------------------------
+ 083 |  14   | 🔴🔴🔴    | REGENERATE COMPLETELY
+ 091 |  11   | 🔴🔴     | REGENERATE COMPLETELY
+ 089 |   4   | 🟡       | Fix individually
+ 084 |   4   | 🟡       | Fix individually
+ 080 |   3   | 🟡       | Fix individually
+ 092 |   2   | 🟢       | Fix individually
+
+Legend:
+🔴 Critical (10+ issues) - Full regeneration required
+🟡 Medium (3-9 issues) - Individual fixes acceptable
+🟢 Low (1-2 issues) - Quick fixes
+
+================================================================================
+PATTERN PRIORITY (fix order)
+================================================================================
+
+Priority 1 (SYSTEMATIC - affects multiple seeds):
+  ✓ Gender: del → della risposta (11 instances)
+  ✓ Preposition: provando a + INF (7 instances)
+  ✓ Preposition: pronto a + INF (5 instances)
+
+Priority 2 (GRAMMATICAL - native speakers would notice):
+  ✓ Subordinate: non sono sicuro + se/di (6 instances)
+  ✓ Subordinate: penso che + clause (3 instances)
+  ✓ Elision: del → dell'amico (3 instances)
+
+Priority 3 (EDGE CASES):
+  ✓ Article with possessive: del tuo amico (3 instances)
+  ✓ Verb form: aver fatto → ho fatto (2 instances)
+  ✓ Verb person: vuoi → vuole (1 instance)
+  ✓ Reflexive: prendersi → prendermi (1 instance)
+
+================================================================================
+QUALITY IMPACT
+================================================================================
+
+Before fixes:  501 ██████████████████░░ (93.0% correct)
+               38  ██ (7.0% incorrect)
+
+After fixes:   539 ████████████████████ (100% target)
+
+Learner impact: HIGH
+  - Gender errors teach wrong patterns
+  - Missing prepositions make ungrammatical sentences
+  - Subordinate clause errors sound non-native
+
+Audio impact: CRITICAL
+  - Cannot generate TTS for unspeakable phrases
+  - Native voice recordings would need corrections
+  - Blocks Phase 8 progression
+
+================================================================================
+ESTIMATED EFFORT
+================================================================================
+
+Task                          Time      Difficulty
+--------------------------    -------   ----------
+Flag issues (SQL)             5 min     Easy
+Fix S080-S092 (12 phrases)    2 hours   Medium
+Regenerate S083 (14 phrases)  3 hours   Hard
+Regenerate S091 (11 phrases)  3 hours   Hard
+QA verification               1 hour    Easy
+--------------------------    -------   ----------
+TOTAL                         9 hours   Medium-Hard
+
+Bottleneck: S083 & S091 regeneration requires linguistic expertise
+
+================================================================================

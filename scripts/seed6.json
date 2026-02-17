@@ -1,0 +1,75 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 6,
+  "target_text": "I'm trying to remember a word.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "我在试",
+      "target": "I'm trying to",
+      "components": [
+        {"known": "我在", "target": "I'm"},
+        {"known": "试", "target": "trying to"}
+      ],
+      "build": [
+        {"known": "我在试", "target": "I'm trying to"},
+        {"known": "试", "target": "trying to"},
+        {"known": "我在试说英语现在", "target": "I'm trying to speak English now"},
+        {"known": "我在试和你练习说话", "target": "I'm trying to practise speaking with you"}
+      ],
+      "use": [
+        {"known": "我在试说英语。", "target": "I'm trying to speak English.", "score": 8},
+        {"known": "我在试学英语。", "target": "I'm trying to learn English.", "score": 8},
+        {"known": "我在试和你说英语。", "target": "I'm trying to speak English with you.", "score": 8},
+        {"known": "我在试练习说话。", "target": "I'm trying to practise speaking.", "score": 8},
+        {"known": "我在试和别人说英语。", "target": "I'm trying to speak English with someone else.", "score": 9},
+        {"known": "我在试尽量多说英语。", "target": "I'm trying to speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "记住",
+      "target": "remember",
+      "build": [
+        {"known": "记住", "target": "remember"},
+        {"known": "想记住", "target": "want to remember"},
+        {"known": "我要记住英语", "target": "I'm going to remember English"},
+        {"known": "我想记住一些东西", "target": "I want to remember something"}
+      ],
+      "use": [
+        {"known": "我在试记住。", "target": "I'm trying to remember.", "score": 8},
+        {"known": "我要记住英语。", "target": "I'm going to remember English.", "score": 7},
+        {"known": "我想记住怎么说。", "target": "I want to remember how to say.", "score": 8},
+        {"known": "我在试记住怎么说英语。", "target": "I'm trying to remember how to say in English.", "score": 9},
+        {"known": "我想记住怎么和你说英语。", "target": "I want to remember how to speak English with you.", "score": 9},
+        {"known": "我在试记住怎么用英语说一些东西。", "target": "I'm trying to remember how to say something in English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "一个词",
+      "target": "a word",
+      "components": [
+        {"known": "一个", "target": "a"},
+        {"known": "词", "target": "word"}
+      ],
+      "build": [
+        {"known": "一个词", "target": "a word"},
+        {"known": "记住一个词", "target": "remember a word"},
+        {"known": "我在试学一个词", "target": "I'm trying to learn a word"},
+        {"known": "我要记住一个词", "target": "I'm going to remember a word"}
+      ],
+      "use": [
+        {"known": "我想记住一个词。", "target": "I want to remember a word.", "score": 8},
+        {"known": "我在试记住一个词。", "target": "I'm trying to remember a word.", "score": 9},
+        {"known": "我要学一个词。", "target": "I'm going to learn a word.", "score": 8},
+        {"known": "我想记住怎么用英语说一个词。", "target": "I want to remember how to say a word in English.", "score": 9},
+        {"known": "我在试记住怎么和你说一个词。", "target": "I'm trying to remember how to say a word with you.", "score": 9},
+        {"known": "我在试尽量多记住一个词。", "target": "I'm trying to remember a word as often as possible.", "score": 9}
+      ]
+    }
+  ]
+}

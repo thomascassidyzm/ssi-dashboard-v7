@@ -1,0 +1,680 @@
+{
+  "timestamp": "2026-02-02T10:27:07.642Z",
+  "totalCoursesAnalyzed": 7,
+  "overallStatistics": {
+    "averageCritical": "0.0",
+    "averageHigh": "0.1",
+    "averageModerate": "4.6",
+    "averageAcceptable": "95.3"
+  },
+  "courseResults": [
+    {
+      "courseCode": "eng_for_ara",
+      "courseName": "English for Arabic Speakers",
+      "knownLang": "ara",
+      "targetLang": "eng",
+      "totalSampled": 100,
+      "severityCounts": {
+        "CRITICAL": 0,
+        "HIGH": 1,
+        "MODERATE": 5,
+        "ACCEPTABLE": 94
+      },
+      "issuesByType": {
+        "REPEATED_WORDS": {
+          "count": 6,
+          "severity": "MODERATE",
+          "description": "Contains repeated words (possible duplication)"
+        },
+        "EXTREME_LENGTH_MISMATCH": {
+          "count": 1,
+          "severity": "HIGH",
+          "description": "Extreme word count difference: 5 vs 14 (2.8x)"
+        }
+      },
+      "examples": {
+        "CRITICAL": [],
+        "HIGH": [
+          {
+            "phraseId": "804651e3-5912-4aee-8645-23b475ad183e",
+            "seedNumber": 25,
+            "legoIndex": 3,
+            "knownText": "سأبدأ بالكلام معك لأنك ستساعدني.",
+            "targetText": "I'm going to start talking with you because you are going to help me.",
+            "issues": [
+              {
+                "type": "EXTREME_LENGTH_MISMATCH",
+                "severity": "HIGH",
+                "description": "Extreme word count difference: 5 vs 14 (2.8x)",
+                "detail": "Possible missing or added content"
+              },
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [going]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 5,
+              "targetWords": 14,
+              "knownChars": 32,
+              "targetChars": 69,
+              "tokenRatio": "2.80",
+              "charRatio": "2.16"
+            }
+          }
+        ],
+        "MODERATE": [
+          {
+            "phraseId": "e6f5940e-0898-40b3-90bf-65569a430e20",
+            "seedNumber": 35,
+            "legoIndex": 4,
+            "knownText": "سوف أحاول أن أتذكر كيف أقول هذا بالإنجليزية بعد الظهر.",
+            "targetText": "I'm going to try to remember how to say this in English this afternoon.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [this]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 10,
+              "targetWords": 14,
+              "knownChars": 54,
+              "targetChars": 71,
+              "tokenRatio": "1.40",
+              "charRatio": "1.31"
+            }
+          },
+          {
+            "phraseId": "cc2b98ab-715f-4b49-84ef-97adda11bb6d",
+            "seedNumber": 26,
+            "legoIndex": 2,
+            "knownText": "أحب الشعور بالتحدث الإنجليزية.",
+            "targetText": "I like feeling like speaking English.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [like]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 4,
+              "targetWords": 6,
+              "knownChars": 30,
+              "targetChars": 37,
+              "tokenRatio": "1.50",
+              "charRatio": "1.23"
+            }
+          },
+          {
+            "phraseId": "d8b6e64a-4757-450c-b98d-a96576b6ff3f",
+            "seedNumber": 16,
+            "legoIndex": 5,
+            "knownText": "لست متأكدًا إن يريد أن يشرح ما يريد لاحقًا.",
+            "targetText": "I'm not sure if he wants to explain what he wants later on.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [يريد], Target: [wants]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 9,
+              "targetWords": 13,
+              "knownChars": 43,
+              "targetChars": 59,
+              "tokenRatio": "1.44",
+              "charRatio": "1.37"
+            }
+          }
+        ]
+      },
+      "qualityRate": {
+        "critical": "0.0",
+        "high": "1.0",
+        "moderate": "5.0",
+        "acceptable": "94.0"
+      }
+    },
+    {
+      "courseCode": "deu_for_eng",
+      "courseName": "German for English Speakers",
+      "knownLang": "eng",
+      "targetLang": "deu",
+      "totalSampled": 100,
+      "severityCounts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 6,
+        "ACCEPTABLE": 94
+      },
+      "issuesByType": {
+        "REPEATED_WORDS": {
+          "count": 6,
+          "severity": "MODERATE",
+          "description": "Contains repeated words (possible duplication)"
+        }
+      },
+      "examples": {
+        "CRITICAL": [],
+        "HIGH": [],
+        "MODERATE": [
+          {
+            "phraseId": "8a7d1695-fc2a-4eef-957e-b2837a92b4d8",
+            "seedNumber": 55,
+            "legoIndex": 9,
+            "knownText": "I don't enjoy waking up when I didn't sleep very well.",
+            "targetText": "Ich mag es nicht aufzuwachen wenn ich nicht sehr gut geschlafen habe.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [nicht]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 11,
+              "targetWords": 12,
+              "knownChars": 54,
+              "targetChars": 69,
+              "tokenRatio": "1.09",
+              "charRatio": "1.28"
+            }
+          },
+          {
+            "phraseId": "0bf856a6-123f-4cc6-8c86-3a4b7cda264c",
+            "seedNumber": 91,
+            "legoIndex": 2,
+            "knownText": "I think that I can't think quickly enough.",
+            "targetText": "Ich denke, dass ich nicht schnell genug denken kann.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [think], Target: []"
+              }
+            ],
+            "metrics": {
+              "knownWords": 8,
+              "targetWords": 9,
+              "knownChars": 42,
+              "targetChars": 52,
+              "tokenRatio": "1.13",
+              "charRatio": "1.24"
+            }
+          },
+          {
+            "phraseId": "c4cb9d80-990a-42aa-bef4-ec71c4034214",
+            "seedNumber": 55,
+            "legoIndex": 10,
+            "knownText": "I don't enjoy waking up when I didn't sleep very well.",
+            "targetText": "Ich mag es nicht aufzuwachen wenn ich nicht sehr gut geschlafen habe.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [nicht]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 11,
+              "targetWords": 12,
+              "knownChars": 54,
+              "targetChars": 69,
+              "tokenRatio": "1.09",
+              "charRatio": "1.28"
+            }
+          }
+        ]
+      },
+      "qualityRate": {
+        "critical": "0.0",
+        "high": "0.0",
+        "moderate": "6.0",
+        "acceptable": "94.0"
+      }
+    },
+    {
+      "courseCode": "ara_for_eng",
+      "courseName": "Arabic for English Speakers",
+      "knownLang": "eng",
+      "targetLang": "ara",
+      "totalSampled": 100,
+      "severityCounts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 10,
+        "ACCEPTABLE": 90
+      },
+      "issuesByType": {
+        "REPEATED_WORDS": {
+          "count": 10,
+          "severity": "MODERATE",
+          "description": "Contains repeated words (possible duplication)"
+        }
+      },
+      "examples": {
+        "CRITICAL": [],
+        "HIGH": [],
+        "MODERATE": [
+          {
+            "phraseId": "86ca9ecf-a0f2-4e74-8b25-76cca8286924",
+            "seedNumber": 34,
+            "legoIndex": 5,
+            "knownText": "He doesn't want to be quiet whenever there is someone at six o'clock.",
+            "targetText": "لا يريد أن يكون هادئاً عندما يكون شخص في الساعة السادسة.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [يكون]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 13,
+              "targetWords": 11,
+              "knownChars": 69,
+              "targetChars": 56,
+              "tokenRatio": "1.18",
+              "charRatio": "1.23"
+            }
+          },
+          {
+            "phraseId": "cef7258f-b83e-4888-83e6-c4e1a545b707",
+            "seedNumber": 34,
+            "legoIndex": 5,
+            "knownText": "He doesn't want to be quiet whenever there is someone with everyone.",
+            "targetText": "لا يريد أن يكون هادئاً عندما يكون شخص مع الجميع.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [يكون]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 12,
+              "targetWords": 10,
+              "knownChars": 68,
+              "targetChars": 48,
+              "tokenRatio": "1.20",
+              "charRatio": "1.42"
+            }
+          },
+          {
+            "phraseId": "3295d6b1-8ab0-4afe-92d6-d27b44d163f5",
+            "seedNumber": 42,
+            "legoIndex": 6,
+            "knownText": "I was starting with feeling with improvement than last night with everyone.",
+            "targetText": "كنت أبدأ بالشعور بتحسن عن الليلة الماضية مع الجميع.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [with], Target: []"
+              }
+            ],
+            "metrics": {
+              "knownWords": 12,
+              "targetWords": 9,
+              "knownChars": 75,
+              "targetChars": 51,
+              "tokenRatio": "1.33",
+              "charRatio": "1.47"
+            }
+          }
+        ]
+      },
+      "qualityRate": {
+        "critical": "0.0",
+        "high": "0.0",
+        "moderate": "10.0",
+        "acceptable": "90.0"
+      }
+    },
+    {
+      "courseCode": "eng_for_deu",
+      "courseName": "eng for deu speakers",
+      "knownLang": "deu",
+      "targetLang": "eng",
+      "totalSampled": 100,
+      "severityCounts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 1,
+        "ACCEPTABLE": 99
+      },
+      "issuesByType": {
+        "REPEATED_WORDS": {
+          "count": 1,
+          "severity": "MODERATE",
+          "description": "Contains repeated words (possible duplication)"
+        }
+      },
+      "examples": {
+        "CRITICAL": [],
+        "HIGH": [],
+        "MODERATE": [
+          {
+            "phraseId": "6b73e839-bd26-4bca-ae76-a762427db60e",
+            "seedNumber": 8,
+            "legoIndex": 4,
+            "knownText": "Ich will erklären, was ich auf Englisch sagen will.",
+            "targetText": "I want to explain what I want to say in English.",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [want]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 9,
+              "targetWords": 11,
+              "knownChars": 51,
+              "targetChars": 48,
+              "tokenRatio": "1.22",
+              "charRatio": "1.06"
+            }
+          }
+        ]
+      },
+      "qualityRate": {
+        "critical": "0.0",
+        "high": "0.0",
+        "moderate": "1.0",
+        "acceptable": "99.0"
+      }
+    },
+    {
+      "courseCode": "bre_for_fra",
+      "courseName": "Breton for French Speakers",
+      "knownLang": "fra",
+      "targetLang": "bre",
+      "totalSampled": 100,
+      "severityCounts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 6,
+        "ACCEPTABLE": 94
+      },
+      "issuesByType": {
+        "REPEATED_WORDS": {
+          "count": 6,
+          "severity": "MODERATE",
+          "description": "Contains repeated words (possible duplication)"
+        }
+      },
+      "examples": {
+        "CRITICAL": [],
+        "HIGH": [],
+        "MODERATE": [
+          {
+            "phraseId": "8fbb6c71-8517-436a-9d29-1d04df341313",
+            "seedNumber": 11,
+            "legoIndex": 2,
+            "knownText": "j'aimerais pouvoir essayer de dire quelque chose avec quelqu'un d'autre",
+            "targetText": "me a garje gallout klask lavaret un dra bennak gant unan bennak all",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [bennak]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 10,
+              "targetWords": 13,
+              "knownChars": 71,
+              "targetChars": 67,
+              "tokenRatio": "1.30",
+              "charRatio": "1.06"
+            }
+          },
+          {
+            "phraseId": "ce2a0f3e-ea75-45a9-85fb-e9403bc33e29",
+            "seedNumber": 59,
+            "legoIndex": 3,
+            "knownText": "donc je sais comment faire ce que je dois faire demain",
+            "targetText": "neuze gouzout a ran penaos ober ar pezh a ret eo din ober warc'hoazh",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [faire], Target: [ober]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 11,
+              "targetWords": 14,
+              "knownChars": 54,
+              "targetChars": 68,
+              "tokenRatio": "1.27",
+              "charRatio": "1.26"
+            }
+          },
+          {
+            "phraseId": "01ce6993-ded0-4352-849a-239020f02d96",
+            "seedNumber": 66,
+            "legoIndex": 2,
+            "knownText": "ce n'est pas difficile de faire ce que je veux faire la semaine prochaine",
+            "targetText": "n'eo ket diaes ober ar pezh a fell din ober ar sizhun a zeu",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [faire], Target: [ober]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 14,
+              "targetWords": 14,
+              "knownChars": 73,
+              "targetChars": 59,
+              "tokenRatio": "1.00",
+              "charRatio": "1.24"
+            }
+          }
+        ]
+      },
+      "qualityRate": {
+        "critical": "0.0",
+        "high": "0.0",
+        "moderate": "6.0",
+        "acceptable": "94.0"
+      }
+    },
+    {
+      "courseCode": "cym_s_for_eng",
+      "courseName": "Welsh (South) for English Speakers",
+      "knownLang": "eng",
+      "targetLang": "cym",
+      "totalSampled": 100,
+      "severityCounts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 3,
+        "ACCEPTABLE": 97
+      },
+      "issuesByType": {
+        "REPEATED_WORDS": {
+          "count": 3,
+          "severity": "MODERATE",
+          "description": "Contains repeated words (possible duplication)"
+        }
+      },
+      "examples": {
+        "CRITICAL": [],
+        "HIGH": [],
+        "MODERATE": [
+          {
+            "phraseId": "104056c3-5848-4804-86f3-4edb5ffd06d1",
+            "seedNumber": 147,
+            "legoIndex": 1,
+            "knownText": "the oldest is ten, and the girl there is five",
+            "targetText": "mae’r hynaf yn ddeg, ac mae’r ferch yna yn bump",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [mae’r]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 10,
+              "targetWords": 10,
+              "knownChars": 45,
+              "targetChars": 47,
+              "tokenRatio": "1.00",
+              "charRatio": "1.04"
+            }
+          },
+          {
+            "phraseId": "342be0be-6d9a-4822-a2f0-54ffdcc07a69",
+            "seedNumber": 147,
+            "legoIndex": 1,
+            "knownText": "the oldest is ten, and that girl is five",
+            "targetText": "mae’r hynaf yn ddeg, ac mae’r ferch ’na yn bump",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [], Target: [mae’r]"
+              }
+            ],
+            "metrics": {
+              "knownWords": 9,
+              "targetWords": 10,
+              "knownChars": 40,
+              "targetChars": 47,
+              "tokenRatio": "1.11",
+              "charRatio": "1.18"
+            }
+          },
+          {
+            "phraseId": "d6aaa319-c145-4e4b-b219-001cc503093c",
+            "seedNumber": 47,
+            "legoIndex": 1,
+            "knownText": "I was trying to say that I think that you’ve done very well",
+            "targetText": "o’n i’n trio dweud bo’ fi’n meddwl bo’ ti ’di gwneud yn dda iawn",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [that], Target: []"
+              }
+            ],
+            "metrics": {
+              "knownWords": 13,
+              "targetWords": 14,
+              "knownChars": 59,
+              "targetChars": 64,
+              "tokenRatio": "1.08",
+              "charRatio": "1.08"
+            }
+          }
+        ]
+      },
+      "qualityRate": {
+        "critical": "0.0",
+        "high": "0.0",
+        "moderate": "3.0",
+        "acceptable": "97.0"
+      }
+    },
+    {
+      "courseCode": "cym_n_for_eng",
+      "courseName": "Welsh (North) for English Speakers",
+      "knownLang": "eng",
+      "targetLang": "cym",
+      "totalSampled": 100,
+      "severityCounts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 1,
+        "ACCEPTABLE": 99
+      },
+      "issuesByType": {
+        "REPEATED_WORDS": {
+          "count": 1,
+          "severity": "MODERATE",
+          "description": "Contains repeated words (possible duplication)"
+        }
+      },
+      "examples": {
+        "CRITICAL": [],
+        "HIGH": [],
+        "MODERATE": [
+          {
+            "phraseId": "5df095dc-59b8-45a0-896f-414ad3e089af",
+            "seedNumber": 89,
+            "legoIndex": 1,
+            "knownText": "I met someone in the restaurant who said that she wanted to watch that film",
+            "targetText": "wnes i gyfarfod rhywun yn y tŷ bwyta ddudodd bod hi isio gwylio’r ffilm ’na",
+            "issues": [
+              {
+                "type": "REPEATED_WORDS",
+                "severity": "MODERATE",
+                "description": "Contains repeated words (possible duplication)",
+                "detail": "Known: [that], Target: []"
+              }
+            ],
+            "metrics": {
+              "knownWords": 15,
+              "targetWords": 15,
+              "knownChars": 75,
+              "targetChars": 75,
+              "tokenRatio": "1.00",
+              "charRatio": "1.00"
+            }
+          }
+        ]
+      },
+      "qualityRate": {
+        "critical": "0.0",
+        "high": "0.0",
+        "moderate": "1.0",
+        "acceptable": "99.0"
+      }
+    }
+  ],
+  "criticalIssues": [],
+  "recommendations": [
+    {
+      "issueType": "REPEATED_WORDS",
+      "severity": "MODERATE",
+      "totalOccurrences": 33,
+      "affectedCourses": [
+        "eng_for_ara",
+        "deu_for_eng",
+        "ara_for_eng",
+        "eng_for_deu",
+        "bre_for_fra",
+        "cym_s_for_eng",
+        "cym_n_for_eng"
+      ],
+      "action": "Check for accidental duplications"
+    }
+  ]
+}

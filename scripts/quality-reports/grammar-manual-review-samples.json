@@ -1,0 +1,2130 @@
+{
+  "eng_for_ara": {
+    "course_name": "English for Arabic speakers",
+    "known_language": "ara",
+    "target_language": "eng",
+    "sample_count": 30,
+    "characteristics": {
+      "length_stats": {
+        "known_avg": 34.8,
+        "target_avg": 43.9,
+        "known_max": 53,
+        "target_max": 71
+      },
+      "word_count_stats": {
+        "known_avg": 6.9,
+        "target_avg": 9.0
+      },
+      "potential_issues": {
+        "empty_known": 0,
+        "empty_target": 0,
+        "very_long": 0,
+        "very_short_single_word": 0
+      }
+    },
+    "samples": [
+      {
+        "sample_number": 1,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "أريد أن أتحدث أنا.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 2,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "أنا أريد أن أتحدث.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 3,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "أريد أن أتحدث. أتحدث.",
+        "target_text": "I want to speak. I speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 4,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "أريد. أريد أن أتحدث.",
+        "target_text": "I want. I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 5,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "أتحدث. أريد أن أتحدث.",
+        "target_text": "I speak. I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 6,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "أريد أن أتحدث.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 7,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "أنا أريد أن أتحدث الإنجليزية.",
+        "target_text": "I want to speak English.",
+        "notes": ""
+      },
+      {
+        "sample_number": 8,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "أريد الإنجليزية.",
+        "target_text": "I want English.",
+        "notes": ""
+      },
+      {
+        "sample_number": 9,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "أتحدث الإنجليزية. أريد أن أتحدث الإنجليزية.",
+        "target_text": "I speak English. I want to speak English.",
+        "notes": ""
+      },
+      {
+        "sample_number": 10,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "أريد أن أتحدث الإنجليزية.",
+        "target_text": "I want to speak English.",
+        "notes": ""
+      },
+      {
+        "sample_number": 11,
+        "seed_number": 111,
+        "lego_index": 3,
+        "known_text": "أظن أن دماغنا يتغير عندما نعمل بجد معا",
+        "target_text": "I think that our brain changes when we work hard",
+        "notes": ""
+      },
+      {
+        "sample_number": 12,
+        "seed_number": 111,
+        "lego_index": 3,
+        "known_text": "للأسف دماغنا يتغير ببطء عندما لا نتعلم",
+        "target_text": "Unfortunately our brain changes slowly when we don't learn",
+        "notes": ""
+      },
+      {
+        "sample_number": 13,
+        "seed_number": 111,
+        "lego_index": 3,
+        "known_text": "نعم دماغنا يتغير عندما نحن أصدقاء ونتعلم الكثير",
+        "target_text": "Yes our brain changes when we're friends and learn a lot",
+        "notes": ""
+      },
+      {
+        "sample_number": 14,
+        "seed_number": 111,
+        "lego_index": 3,
+        "known_text": "لماذا دماغنا يتغير عندما نسمع كلمات جديدة كل يوم",
+        "target_text": "Why our brain changes when we hear new words every day",
+        "notes": ""
+      },
+      {
+        "sample_number": 15,
+        "seed_number": 111,
+        "lego_index": 3,
+        "known_text": "هل دماغنا يتغير عندما نسترخي بعد أن ننتهي معك",
+        "target_text": "Our brain changes when we relax after we finish with you",
+        "notes": ""
+      },
+      {
+        "sample_number": 16,
+        "seed_number": 111,
+        "lego_index": 4,
+        "known_text": "عندما نتعلم شيء جديد يتغير دماغنا كل يوم",
+        "target_text": "When we learn something new it changes our brain every day",
+        "notes": ""
+      },
+      {
+        "sample_number": 17,
+        "seed_number": 111,
+        "lego_index": 4,
+        "known_text": "أظن أن يتغير دماغنا عندما نعمل بجد معا",
+        "target_text": "I think that it changes our brain when we work hard",
+        "notes": ""
+      },
+      {
+        "sample_number": 18,
+        "seed_number": 111,
+        "lego_index": 4,
+        "known_text": "للأسف يتغير دماغنا ببطء عندما لا نتعلم كلمات جديدة",
+        "target_text": "Unfortunately it changes our brain slowly when we don't learn new words",
+        "notes": ""
+      },
+      {
+        "sample_number": 19,
+        "seed_number": 111,
+        "lego_index": 4,
+        "known_text": "نعم يتغير دماغنا عندما نسمع الكثير من الكلمات الجديدة",
+        "target_text": "Yes it changes our brain when we hear a lot of new words",
+        "notes": ""
+      },
+      {
+        "sample_number": 20,
+        "seed_number": 111,
+        "lego_index": 4,
+        "known_text": "لماذا يتغير دماغنا عندما نتعلم شيء جديد معك كل يوم",
+        "target_text": "Why it changes our brain when we learn something new with you every day",
+        "notes": ""
+      },
+      {
+        "sample_number": 21,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "ليس لدي أدنى فكرة عن ما يتحدث عنه",
+        "target_text": "I don't have the faintest idea what he is talking about",
+        "notes": ""
+      },
+      {
+        "sample_number": 22,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "ليس لديه أدنى فكرة عن متى سيكون جاهزًا للمغادرة",
+        "target_text": "He doesn't have the faintest idea when he will be ready to leave",
+        "notes": ""
+      },
+      {
+        "sample_number": 23,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "ليس لديها أدنى فكرة عن ما رأيته هناك أمس",
+        "target_text": "She doesn't have the faintest idea what I saw there yesterday",
+        "notes": ""
+      },
+      {
+        "sample_number": 24,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "أعتقد أنه ليس لديه أدنى فكرة عن ما يفعله",
+        "target_text": "I think he doesn't have the faintest idea what he is doing",
+        "notes": ""
+      },
+      {
+        "sample_number": 25,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "هل لديك أدنى فكرة عن ما ذلك الشيء الأزرق هناك",
+        "target_text": "Do you have the faintest idea what that blue thing over there is",
+        "notes": ""
+      },
+      {
+        "sample_number": 26,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "ليس لدي أدنى فكرة كيف أساعدك في هذا الآن",
+        "target_text": "I don't have the faintest idea how to help you with this now",
+        "notes": ""
+      },
+      {
+        "sample_number": 27,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "ليس لدي المزيد من الوقت لمساعدتك الآن",
+        "target_text": "I don't have more time to help you now",
+        "notes": ""
+      },
+      {
+        "sample_number": 28,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "ليس لدي ذلك الكتاب الذي تريده",
+        "target_text": "I don't have that book you want",
+        "notes": ""
+      },
+      {
+        "sample_number": 29,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "ليس لدي أي شيء جديد لأخبرك عنه",
+        "target_text": "I don't have anything new to tell you about",
+        "notes": ""
+      },
+      {
+        "sample_number": 30,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "ليس لديك وقت لأن تكون هنا معنا",
+        "target_text": "You don't have time to be here with us",
+        "notes": ""
+      }
+    ]
+  },
+  "deu_for_eng": {
+    "course_name": "German for English speakers",
+    "known_language": "eng",
+    "target_language": "deu",
+    "sample_count": 30,
+    "characteristics": {
+      "length_stats": {
+        "known_avg": 39.6,
+        "target_avg": 41.1,
+        "known_max": 60,
+        "target_max": 66
+      },
+      "word_count_stats": {
+        "known_avg": 8.5,
+        "target_avg": 7.7
+      },
+      "potential_issues": {
+        "empty_known": 0,
+        "empty_target": 0,
+        "very_long": 0,
+        "very_short_single_word": 0
+      }
+    },
+    "samples": [
+      {
+        "sample_number": 1,
+        "seed_number": 3,
+        "lego_index": 3,
+        "known_text": "how one speaks German as often as possible",
+        "target_text": "wie man so oft wie möglich Deutsch spricht",
+        "notes": ""
+      },
+      {
+        "sample_number": 2,
+        "seed_number": 4,
+        "lego_index": 5,
+        "known_text": "I want to learn something in German",
+        "target_text": "ich will etwas auf Deutsch lernen",
+        "notes": ""
+      },
+      {
+        "sample_number": 3,
+        "seed_number": 4,
+        "lego_index": 5,
+        "known_text": "how one says something in German",
+        "target_text": "wie man etwas auf Deutsch sagt",
+        "notes": ""
+      },
+      {
+        "sample_number": 4,
+        "seed_number": 4,
+        "lego_index": 5,
+        "known_text": "I am trying to speak in German",
+        "target_text": "ich versuche auf Deutsch zu sprechen",
+        "notes": ""
+      },
+      {
+        "sample_number": 5,
+        "seed_number": 5,
+        "lego_index": 1,
+        "known_text": "I am going to speak German with you",
+        "target_text": "ich werde Deutsch mit dir sprechen",
+        "notes": ""
+      },
+      {
+        "sample_number": 6,
+        "seed_number": 5,
+        "lego_index": 1,
+        "known_text": "I am going to speak in German as often as possible",
+        "target_text": "ich werde so oft wie möglich auf Deutsch sprechen",
+        "notes": ""
+      },
+      {
+        "sample_number": 7,
+        "seed_number": 5,
+        "lego_index": 1,
+        "known_text": "I am going to speak in German now",
+        "target_text": "ich werde jetzt auf Deutsch sprechen",
+        "notes": ""
+      },
+      {
+        "sample_number": 8,
+        "seed_number": 5,
+        "lego_index": 4,
+        "known_text": "I am trying to speak with someone else",
+        "target_text": "ich versuche mit jemand anderem zu sprechen",
+        "notes": ""
+      },
+      {
+        "sample_number": 9,
+        "seed_number": 5,
+        "lego_index": 4,
+        "known_text": "I am going to practise speaking with someone else",
+        "target_text": "ich werde mit jemand anderem sprechen üben",
+        "notes": ""
+      },
+      {
+        "sample_number": 10,
+        "seed_number": 5,
+        "lego_index": 4,
+        "known_text": "I want to speak with someone else",
+        "target_text": "ich will mit jemand anderem sprechen",
+        "notes": ""
+      },
+      {
+        "sample_number": 11,
+        "seed_number": 151,
+        "lego_index": 6,
+        "known_text": "She did not want that to happen",
+        "target_text": "Sie wollte nicht, dass das passiert",
+        "notes": ""
+      },
+      {
+        "sample_number": 12,
+        "seed_number": 152,
+        "lego_index": 1,
+        "known_text": "I would have helped",
+        "target_text": "Ich hätte geholfen",
+        "notes": ""
+      },
+      {
+        "sample_number": 13,
+        "seed_number": 152,
+        "lego_index": 1,
+        "known_text": "I would have done that",
+        "target_text": "Ich hätte das gemacht",
+        "notes": ""
+      },
+      {
+        "sample_number": 14,
+        "seed_number": 152,
+        "lego_index": 1,
+        "known_text": "I would have said something",
+        "target_text": "Ich hätte etwas gesagt",
+        "notes": ""
+      },
+      {
+        "sample_number": 15,
+        "seed_number": 152,
+        "lego_index": 1,
+        "known_text": "I would have done it for you yesterday",
+        "target_text": "Ich hätte es gestern für dich gemacht",
+        "notes": ""
+      },
+      {
+        "sample_number": 16,
+        "seed_number": 152,
+        "lego_index": 1,
+        "known_text": "I would have tried to help you with that",
+        "target_text": "Ich hätte versucht, dir damit zu helfen",
+        "notes": ""
+      },
+      {
+        "sample_number": 17,
+        "seed_number": 152,
+        "lego_index": 1,
+        "known_text": "I would have done something for you",
+        "target_text": "Ich hätte etwas für dich gemacht",
+        "notes": ""
+      },
+      {
+        "sample_number": 18,
+        "seed_number": 152,
+        "lego_index": 2,
+        "known_text": "I do it differently",
+        "target_text": "Ich mache es anders",
+        "notes": ""
+      },
+      {
+        "sample_number": 19,
+        "seed_number": 152,
+        "lego_index": 2,
+        "known_text": "She does it differently",
+        "target_text": "Sie macht es anders",
+        "notes": ""
+      },
+      {
+        "sample_number": 20,
+        "seed_number": 152,
+        "lego_index": 2,
+        "known_text": "I would have done it differently",
+        "target_text": "Ich hätte es anders gemacht",
+        "notes": ""
+      },
+      {
+        "sample_number": 21,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "They have not the faintest idea how to do it better.",
+        "target_text": "Sie haben nicht die geringste Idee, wie man es besser machen kann.",
+        "notes": ""
+      },
+      {
+        "sample_number": 22,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "I had not the faintest idea that you were so good at that.",
+        "target_text": "Ich hatte nicht die geringste Idee, dass du so gut damit bist.",
+        "notes": ""
+      },
+      {
+        "sample_number": 23,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "He has not the faintest idea how to help her with that.",
+        "target_text": "Er hat nicht die geringste Idee, wie er ihr damit helfen kann.",
+        "notes": ""
+      },
+      {
+        "sample_number": 24,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Do you have the faintest idea where he is right now?",
+        "target_text": "Hast du die geringste Idee, wo er jetzt ist?",
+        "notes": ""
+      },
+      {
+        "sample_number": 25,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "She had not the faintest idea about what he said.",
+        "target_text": "Sie hatte nicht die geringste Idee über das, was er gesagt hat.",
+        "notes": ""
+      },
+      {
+        "sample_number": 26,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "I don't have the faintest idea what you want from me.",
+        "target_text": "Ich habe nicht die geringste Idee, was du von mir willst.",
+        "notes": ""
+      },
+      {
+        "sample_number": 27,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "I don't have enough time to do that for you today.",
+        "target_text": "Ich habe heute nicht genug Zeit, das für dich zu machen.",
+        "notes": ""
+      },
+      {
+        "sample_number": 28,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "I don't have what you need but she might have it.",
+        "target_text": "Ich habe nicht, was du brauchst, aber sie hat es.",
+        "notes": ""
+      },
+      {
+        "sample_number": 29,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "I don't have an answer for you right now but I can find one.",
+        "target_text": "Ich habe jetzt keine Antwort für dich, aber ich kann eine finden.",
+        "notes": ""
+      },
+      {
+        "sample_number": 30,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "I don't have the money to do that but I want to.",
+        "target_text": "Ich habe nicht das Geld, um das zu machen, aber ich will es.",
+        "notes": ""
+      }
+    ]
+  },
+  "ara_for_eng": {
+    "course_name": "Arabic for English speakers",
+    "known_language": "eng",
+    "target_language": "ara",
+    "sample_count": 30,
+    "characteristics": {
+      "length_stats": {
+        "known_avg": 46.9,
+        "target_avg": 34.4,
+        "known_max": 66,
+        "target_max": 54
+      },
+      "word_count_stats": {
+        "known_avg": 10.0,
+        "target_avg": 7.3
+      },
+      "potential_issues": {
+        "empty_known": 0,
+        "empty_target": 0,
+        "very_long": 0,
+        "very_short_single_word": 0
+      }
+    },
+    "samples": [
+      {
+        "sample_number": 1,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "I want to speak.",
+        "target_text": "أريد أن أتكلم.",
+        "notes": ""
+      },
+      {
+        "sample_number": 2,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "I want to speak now.",
+        "target_text": "أريد أن أتكلم الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 3,
+        "seed_number": 1,
+        "lego_index": 3,
+        "known_text": "I want Arabic.",
+        "target_text": "أريد العربية.",
+        "notes": ""
+      },
+      {
+        "sample_number": 4,
+        "seed_number": 1,
+        "lego_index": 3,
+        "known_text": "I want to speak Arabic.",
+        "target_text": "أريد أن أتكلم العربية.",
+        "notes": ""
+      },
+      {
+        "sample_number": 5,
+        "seed_number": 1,
+        "lego_index": 4,
+        "known_text": "I want to speak with you.",
+        "target_text": "أريد أن أتكلم معك.",
+        "notes": ""
+      },
+      {
+        "sample_number": 6,
+        "seed_number": 1,
+        "lego_index": 4,
+        "known_text": "I want to speak Arabic with you.",
+        "target_text": "أريد أن أتكلم العربية معك.",
+        "notes": ""
+      },
+      {
+        "sample_number": 7,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "I want to speak now.",
+        "target_text": "أريد أن أتكلم الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 8,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "I want to speak Arabic now.",
+        "target_text": "أريد أن أتكلم العربية الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 9,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "I want to speak Arabic with you now.",
+        "target_text": "أريد أن أتكلم العربية معك الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 10,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "I want to speak with you now.",
+        "target_text": "أريد أن أتكلم معك الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 11,
+        "seed_number": 106,
+        "lego_index": 4,
+        "known_text": "We do not feel happy, when I do not know the answer about this.",
+        "target_text": "لا نشعر بالسعادة، عندما لا أعرف الجواب عن هذا.",
+        "notes": ""
+      },
+      {
+        "sample_number": 12,
+        "seed_number": 106,
+        "lego_index": 5,
+        "known_text": "We just need to change what we do it about this here now.",
+        "target_text": "نحتاج فقط أن نغير ما نفعله عن هذا هنا الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 13,
+        "seed_number": 106,
+        "lego_index": 5,
+        "known_text": "That is why we just need to try something else here in Arabic.",
+        "target_text": "لهذا نحتاج فقط أن نحاول شيء آخر هنا بالعربية.",
+        "notes": ""
+      },
+      {
+        "sample_number": 14,
+        "seed_number": 106,
+        "lego_index": 5,
+        "known_text": "I believe that we just need to feel happy, here now today.",
+        "target_text": "أعتقد أن نحتاج فقط أن نشعر بالسعادة، هنا الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 15,
+        "seed_number": 106,
+        "lego_index": 5,
+        "known_text": "He did not know that we just need to change this here now.",
+        "target_text": "لم يعرف أن نحتاج فقط أن نغير هذا هنا الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 16,
+        "seed_number": 106,
+        "lego_index": 5,
+        "known_text": "We just need to hear the answer about what we say in Arabic.",
+        "target_text": "نحتاج فقط أن نسمع الجواب عن ما نقول بالعربية.",
+        "notes": ""
+      },
+      {
+        "sample_number": 17,
+        "seed_number": 106,
+        "lego_index": 5,
+        "known_text": "That is why we just need to say that it is not like that now.",
+        "target_text": "لهذا نحتاج فقط أن نقول إنه ليس هكذا الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 18,
+        "seed_number": 106,
+        "lego_index": 6,
+        "known_text": "We do not need to feel happy, we just need to work hard.",
+        "target_text": "لا نحتاج أن نشعر بالسعادة، نحتاج فقط أن نعمل بجد.",
+        "notes": ""
+      },
+      {
+        "sample_number": 19,
+        "seed_number": 106,
+        "lego_index": 6,
+        "known_text": "That is why we need to work hard. We need to change what we do it.",
+        "target_text": "لهذا نحتاج أن نعمل بجد. نحتاج أن نغير ما نفعله.",
+        "notes": ""
+      },
+      {
+        "sample_number": 20,
+        "seed_number": 106,
+        "lego_index": 6,
+        "known_text": "I believe that we just need to work hard. I want to learn Arabic.",
+        "target_text": "أعتقد أن نحتاج فقط أن نعمل بجد. أريد أن أتعلم العربية.",
+        "notes": ""
+      },
+      {
+        "sample_number": 21,
+        "seed_number": 260,
+        "lego_index": 3,
+        "known_text": "I don't have the faintest idea about what you wanted to do.",
+        "target_text": "ليس لدي أدنى فكرة عن ما أردت أن تفعل.",
+        "notes": ""
+      },
+      {
+        "sample_number": 22,
+        "seed_number": 260,
+        "lego_index": 3,
+        "known_text": "I don't have the faintest idea about what she wanted today.",
+        "target_text": "ليس لدي أدنى فكرة عن ما أرادت اليوم.",
+        "notes": ""
+      },
+      {
+        "sample_number": 23,
+        "seed_number": 260,
+        "lego_index": 3,
+        "known_text": "I don't have the faintest idea about what to do now.",
+        "target_text": "ليس لدي أدنى فكرة عن ما يجب أن أفعل الآن.",
+        "notes": ""
+      },
+      {
+        "sample_number": 24,
+        "seed_number": 260,
+        "lego_index": 3,
+        "known_text": "I don't have the faintest idea about what you think today.",
+        "target_text": "ليس لدي أدنى فكرة عن ما تعتقد اليوم.",
+        "notes": ""
+      },
+      {
+        "sample_number": 25,
+        "seed_number": 260,
+        "lego_index": 3,
+        "known_text": "She wanted to know but I didn't have the faintest idea.",
+        "target_text": "أرادت أن تعرف لكنني ليس لدي أدنى فكرة.",
+        "notes": ""
+      },
+      {
+        "sample_number": 26,
+        "seed_number": 260,
+        "lego_index": 3,
+        "known_text": "I don't have the faintest idea about what she thought.",
+        "target_text": "ليس لدي أدنى فكرة عن ما اعتقدت.",
+        "notes": ""
+      },
+      {
+        "sample_number": 27,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "I don't have the faintest idea about what you want today.",
+        "target_text": "ليس لدي أدنى فكرة عن ما تريد اليوم.",
+        "notes": ""
+      },
+      {
+        "sample_number": 28,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "I don't have the faintest idea about that thing at all.",
+        "target_text": "ليس لدي أدنى فكرة عن ذلك الشيء على الإطلاق.",
+        "notes": ""
+      },
+      {
+        "sample_number": 29,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "I don't have the faintest idea about what she said today.",
+        "target_text": "ليس لدي أدنى فكرة عن ما قالت اليوم.",
+        "notes": ""
+      },
+      {
+        "sample_number": 30,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "I don't have the faintest idea about what you wanted.",
+        "target_text": "ليس لدي أدنى فكرة عن ما أردت.",
+        "notes": ""
+      }
+    ]
+  },
+  "eng_for_deu": {
+    "course_name": "English for German speakers",
+    "known_language": "deu",
+    "target_language": "eng",
+    "sample_count": 30,
+    "characteristics": {
+      "length_stats": {
+        "known_avg": 45.4,
+        "target_avg": 42.1,
+        "known_max": 69,
+        "target_max": 68
+      },
+      "word_count_stats": {
+        "known_avg": 8.7,
+        "target_avg": 8.8
+      },
+      "potential_issues": {
+        "empty_known": 0,
+        "empty_target": 0,
+        "very_long": 0,
+        "very_short_single_word": 0
+      }
+    },
+    "samples": [
+      {
+        "sample_number": 1,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "Ich will.",
+        "target_text": "I want.",
+        "notes": ""
+      },
+      {
+        "sample_number": 2,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "Sprechen will ich.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 3,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "Ich will sprechen.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 4,
+        "seed_number": 1,
+        "lego_index": 3,
+        "known_text": "Ich will Englisch sprechen.",
+        "target_text": "I want to speak English.",
+        "notes": ""
+      },
+      {
+        "sample_number": 5,
+        "seed_number": 1,
+        "lego_index": 3,
+        "known_text": "Englisch sprechen will ich.",
+        "target_text": "I want to speak English.",
+        "notes": ""
+      },
+      {
+        "sample_number": 6,
+        "seed_number": 1,
+        "lego_index": 3,
+        "known_text": "Englisch will ich sprechen.",
+        "target_text": "I want to speak English.",
+        "notes": ""
+      },
+      {
+        "sample_number": 7,
+        "seed_number": 1,
+        "lego_index": 4,
+        "known_text": "Ich will mit dir sprechen.",
+        "target_text": "I want to speak with you.",
+        "notes": ""
+      },
+      {
+        "sample_number": 8,
+        "seed_number": 1,
+        "lego_index": 4,
+        "known_text": "Ich will mit dir Englisch sprechen.",
+        "target_text": "I want to speak English with you.",
+        "notes": ""
+      },
+      {
+        "sample_number": 9,
+        "seed_number": 1,
+        "lego_index": 4,
+        "known_text": "Englisch mit dir sprechen will ich.",
+        "target_text": "I want to speak English with you.",
+        "notes": ""
+      },
+      {
+        "sample_number": 10,
+        "seed_number": 1,
+        "lego_index": 4,
+        "known_text": "Ich will Englisch mit dir sprechen.",
+        "target_text": "I want to speak English with you.",
+        "notes": ""
+      },
+      {
+        "sample_number": 11,
+        "seed_number": 116,
+        "lego_index": 1,
+        "known_text": "Das ist nicht was ich wollte zu sagen zu dir.",
+        "target_text": "This isn't what I wanted to say to you.",
+        "notes": ""
+      },
+      {
+        "sample_number": 12,
+        "seed_number": 116,
+        "lego_index": 1,
+        "known_text": "Das ist nicht gut genug für mich weil ich mehr brauche.",
+        "target_text": "This isn't good enough for me because I need more.",
+        "notes": ""
+      },
+      {
+        "sample_number": 13,
+        "seed_number": 116,
+        "lego_index": 1,
+        "known_text": "Das ist nicht so schwer wie du denkst dass es ist.",
+        "target_text": "This isn't so hard as you think that it is.",
+        "notes": ""
+      },
+      {
+        "sample_number": 14,
+        "seed_number": 116,
+        "lego_index": 1,
+        "known_text": "Das ist nicht wie ich es machen wollte für dich.",
+        "target_text": "This isn't how I wanted to do it for you.",
+        "notes": ""
+      },
+      {
+        "sample_number": 15,
+        "seed_number": 116,
+        "lego_index": 1,
+        "known_text": "Das ist nicht die Antwort die ich wollte hören.",
+        "target_text": "This isn't the answer that I wanted to hear.",
+        "notes": ""
+      },
+      {
+        "sample_number": 16,
+        "seed_number": 116,
+        "lego_index": 1,
+        "known_text": "Das ist nicht das was ich dir gesagt habe zu tun.",
+        "target_text": "This isn't what I said to you to do.",
+        "notes": ""
+      },
+      {
+        "sample_number": 17,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "Ich denke das ist die beste Wahl die wir haben jetzt.",
+        "target_text": "I think this is the best choice that we have now.",
+        "notes": ""
+      },
+      {
+        "sample_number": 18,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "Das ist nicht die beste Wahl aber es ist gut genug.",
+        "target_text": "This isn't the best choice but it is good enough.",
+        "notes": ""
+      },
+      {
+        "sample_number": 19,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "Du solltest die beste Wahl machen für dich.",
+        "target_text": "You should make the best choice for you.",
+        "notes": ""
+      },
+      {
+        "sample_number": 20,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "Ich will die beste Wahl machen weil es wichtig ist.",
+        "target_text": "I want to make the best choice because it is important.",
+        "notes": ""
+      },
+      {
+        "sample_number": 21,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Mein Vater hat nicht die leiseste Ahnung, was er tun soll dort",
+        "target_text": "My father doesn't have the faintest idea what he should do there",
+        "notes": ""
+      },
+      {
+        "sample_number": 22,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Sie hatte nicht die leiseste Ahnung, was das blaue Ding war dort",
+        "target_text": "She didn't have the faintest idea what that blue thing was there",
+        "notes": ""
+      },
+      {
+        "sample_number": 23,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Er hat nicht die leiseste Ahnung, wie viel Zeit das braucht dort",
+        "target_text": "He doesn't have the faintest idea how much time that will take there",
+        "notes": ""
+      },
+      {
+        "sample_number": 24,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Meine Mutter hatte nicht die leiseste Ahnung, wann er fertig ist dort",
+        "target_text": "My mother didn't have the faintest idea when he will finish there",
+        "notes": ""
+      },
+      {
+        "sample_number": 25,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Ich habe keine Ahnung, was er mir sagen wollte gestern dort",
+        "target_text": "I have no idea what he wanted to tell me yesterday there",
+        "notes": ""
+      },
+      {
+        "sample_number": 26,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Wir hatten nicht die leiseste Ahnung, dass er so beschäftigt war dort",
+        "target_text": "We didn't have the faintest idea that he was so busy there",
+        "notes": ""
+      },
+      {
+        "sample_number": 27,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Ich habe nicht genug Zeit, um das zu tun heute dort",
+        "target_text": "I don't have enough time to do that today there",
+        "notes": ""
+      },
+      {
+        "sample_number": 28,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Ich habe nicht verstanden, was er mir gesagt hat gestern dort",
+        "target_text": "I didn't understand what he told me yesterday there",
+        "notes": ""
+      },
+      {
+        "sample_number": 29,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Ich habe nicht die Antwort, die du brauchst für das dort",
+        "target_text": "I don't have the answer that you need for that there",
+        "notes": ""
+      },
+      {
+        "sample_number": 30,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Ich habe nicht das Buch, das mein Vater lesen wollte dort",
+        "target_text": "I don't have that book that my father wanted to read there",
+        "notes": ""
+      }
+    ]
+  },
+  "bre_for_fra": {
+    "course_name": "Breton for French speakers",
+    "known_language": "fra",
+    "target_language": "bre",
+    "sample_count": 30,
+    "characteristics": {
+      "length_stats": {
+        "known_avg": 48.2,
+        "target_avg": 48.8,
+        "known_max": 74,
+        "target_max": 82
+      },
+      "word_count_stats": {
+        "known_avg": 9.3,
+        "target_avg": 10.1
+      },
+      "potential_issues": {
+        "empty_known": 0,
+        "empty_target": 0,
+        "very_long": 0,
+        "very_short_single_word": 0
+      }
+    },
+    "samples": [
+      {
+        "sample_number": 1,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "je veux parler français avec toi maintenant",
+        "target_text": "c'hoant am eus da gomz galleg ganit bremañ",
+        "notes": ""
+      },
+      {
+        "sample_number": 2,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "maintenant je veux parler français",
+        "target_text": "bremañ c'hoant am eus da gomz galleg",
+        "notes": ""
+      },
+      {
+        "sample_number": 3,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "maintenant je veux parler français avec toi",
+        "target_text": "bremañ c'hoant am eus da gomz galleg ganit",
+        "notes": ""
+      },
+      {
+        "sample_number": 4,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "je veux parler avec toi maintenant",
+        "target_text": "c'hoant am eus da gomz ganit bremañ",
+        "notes": ""
+      },
+      {
+        "sample_number": 5,
+        "seed_number": 1,
+        "lego_index": 5,
+        "known_text": "je veux parler français maintenant",
+        "target_text": "c'hoant am eus da gomz galleg bremañ",
+        "notes": ""
+      },
+      {
+        "sample_number": 6,
+        "seed_number": 2,
+        "lego_index": 2,
+        "known_text": "je veux apprendre à parler français",
+        "target_text": "c'hoant am eus da deskiñ gomz galleg",
+        "notes": ""
+      },
+      {
+        "sample_number": 7,
+        "seed_number": 2,
+        "lego_index": 2,
+        "known_text": "maintenant j'essaie d'apprendre à parler français",
+        "target_text": "bremañ klask a ran deskiñ gomz galleg",
+        "notes": ""
+      },
+      {
+        "sample_number": 8,
+        "seed_number": 2,
+        "lego_index": 2,
+        "known_text": "je veux apprendre à parler français avec toi maintenant",
+        "target_text": "c'hoant am eus da deskiñ gomz galleg ganit bremañ",
+        "notes": ""
+      },
+      {
+        "sample_number": 9,
+        "seed_number": 3,
+        "lego_index": 3,
+        "known_text": "maintenant je veux parler français le plus souvent possible avec toi",
+        "target_text": "bremañ c'hoant am eus da gomz galleg ken alies ha posupl ganit",
+        "notes": ""
+      },
+      {
+        "sample_number": 10,
+        "seed_number": 3,
+        "lego_index": 3,
+        "known_text": "je veux apprendre à parler le plus souvent possible",
+        "target_text": "c'hoant am eus da deskiñ gomz ken alies ha posupl",
+        "notes": ""
+      },
+      {
+        "sample_number": 11,
+        "seed_number": 143,
+        "lego_index": 2,
+        "known_text": "Tout va bien et c'est ce dont nous parlions.",
+        "target_text": "Mat eo pep tra ha an hevelep tra eo ha ar pezh a gomzemp anezhi.",
+        "notes": ""
+      },
+      {
+        "sample_number": 12,
+        "seed_number": 143,
+        "lego_index": 2,
+        "known_text": "C'était une surprise car c'est ce dont nous parlions.",
+        "target_text": "Ur souezhadenn e oa rak an hevelep tra eo ha ar pezh a gomzemp anezhi.",
+        "notes": ""
+      },
+      {
+        "sample_number": 13,
+        "seed_number": 143,
+        "lego_index": 2,
+        "known_text": "C'est la même chose que ce dont nous parlions avec mon ami.",
+        "target_text": "An hevelep tra eo ha ar pezh a gomzemp anezhi gant ma mignon.",
+        "notes": ""
+      },
+      {
+        "sample_number": 14,
+        "seed_number": 143,
+        "lego_index": 3,
+        "known_text": "Je ne sais pas ce que j'ai dit tout à l'heure.",
+        "target_text": "N'ouzon ket ar pezh am eus lavaret nevez zo.",
+        "notes": ""
+      },
+      {
+        "sample_number": 15,
+        "seed_number": 143,
+        "lego_index": 3,
+        "known_text": "C'est très gentil de votre part car c'est ce que j'ai vu tout à l'heure.",
+        "target_text": "Mat-tre eo a-berzh deoc'h rak an hevelep tra eo ha ar pezh am eus gwelet nevez zo.",
+        "notes": ""
+      },
+      {
+        "sample_number": 16,
+        "seed_number": 143,
+        "lego_index": 3,
+        "known_text": "C'est la même chose que ce dont nous parlions tout à l'heure.",
+        "target_text": "An hevelep tra eo ha ar pezh a gomzemp anezhi nevez zo.",
+        "notes": ""
+      },
+      {
+        "sample_number": 17,
+        "seed_number": 143,
+        "lego_index": 3,
+        "known_text": "Je vous suis reconnaissant car c'est ce dont nous parlions tout à l'heure.",
+        "target_text": "Trugarek on deoc'h rak an hevelep tra eo ha ar pezh a gomzemp anezhi nevez zo.",
+        "notes": ""
+      },
+      {
+        "sample_number": 18,
+        "seed_number": 143,
+        "lego_index": 3,
+        "known_text": "Je suis désolé de ce que j'ai dit tout à l'heure.",
+        "target_text": "Keuz am eus eus ar pezh am eus lavaret nevez zo.",
+        "notes": ""
+      },
+      {
+        "sample_number": 19,
+        "seed_number": 143,
+        "lego_index": 3,
+        "known_text": "Tout va bien et c'est ce que nous avons dit tout à l'heure.",
+        "target_text": "Mat eo pep tra ha an hevelep tra eo ha ar pezh hon eus lavaret nevez zo.",
+        "notes": ""
+      },
+      {
+        "sample_number": 20,
+        "seed_number": 144,
+        "lego_index": 1,
+        "known_text": "Je me suis réveillé et je pensais à ce que vous avez dit.",
+        "target_text": "Dihunet on ha soñjal a raen er pezh a lavaret.",
+        "notes": ""
+      },
+      {
+        "sample_number": 21,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Je n'ai aucune idée de la réponse avant le weekend.",
+        "target_text": "N'em eus sonj ebet eus ar respont a-raok ar penn-sizhun.",
+        "notes": ""
+      },
+      {
+        "sample_number": 22,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Je n'ai pas la moindre idée.",
+        "target_text": "N'em eus sonj ebet.",
+        "notes": ""
+      },
+      {
+        "sample_number": 23,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Je n'ai aucune idée de ce que c'est ce truc bleu.",
+        "target_text": "N'em eus sonj ebet petra eo an dra glas.",
+        "notes": ""
+      },
+      {
+        "sample_number": 24,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Je n'ai aucune idée de ce que c'est au loin.",
+        "target_text": "N'em eus sonj ebet petra eo ahont.",
+        "notes": ""
+      },
+      {
+        "sample_number": 25,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Je n'ai aucune idée de ce que mon père a fait.",
+        "target_text": "N'em eus sonj ebet eus ar pezh en deus ma zad graet.",
+        "notes": ""
+      },
+      {
+        "sample_number": 26,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Je n'ai aucune idée de ce que j'ai appris hier.",
+        "target_text": "N'em eus sonj ebet eus ar pezh em eus desket dec'h.",
+        "notes": ""
+      },
+      {
+        "sample_number": 27,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Je n'ai aucune envie de travailler au bureau.",
+        "target_text": "N'em eus c'hoant ebet da labourat er burev.",
+        "notes": ""
+      },
+      {
+        "sample_number": 28,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Je n'ai aucun livre à lire avant le weekend.",
+        "target_text": "N'em eus levr ebet da lenn a-raok ar penn-sizhun.",
+        "notes": ""
+      },
+      {
+        "sample_number": 29,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Je n'ai rien appris en peu de temps.",
+        "target_text": "N'em eus ket desket netra e nebeut a amzer.",
+        "notes": ""
+      },
+      {
+        "sample_number": 30,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Je n'ai aucune réponse pour mon père.",
+        "target_text": "N'em eus respont ebet evit ma zad.",
+        "notes": ""
+      }
+    ]
+  },
+  "cym_s_for_eng": {
+    "course_name": "South Welsh for English speakers",
+    "known_language": "eng",
+    "target_language": "cym_s",
+    "sample_count": 30,
+    "characteristics": {
+      "length_stats": {
+        "known_avg": 30.8,
+        "target_avg": 33.1,
+        "known_max": 46,
+        "target_max": 52
+      },
+      "word_count_stats": {
+        "known_avg": 6.6,
+        "target_avg": 7.1
+      },
+      "potential_issues": {
+        "empty_known": 0,
+        "empty_target": 0,
+        "very_long": 0,
+        "very_short_single_word": 0
+      }
+    },
+    "samples": [
+      {
+        "sample_number": 1,
+        "seed_number": 3,
+        "lego_index": 1,
+        "known_text": "I’m going to try to learn Welsh",
+        "target_text": "dw i’n mynd i drio dysgu Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 2,
+        "seed_number": 3,
+        "lego_index": 1,
+        "known_text": "I’m going to try to speak",
+        "target_text": "dw i’n mynd i drio siarad",
+        "notes": ""
+      },
+      {
+        "sample_number": 3,
+        "seed_number": 6,
+        "lego_index": 3,
+        "known_text": "how to speak Welsh",
+        "target_text": "sut i siarad Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 4,
+        "seed_number": 7,
+        "lego_index": 1,
+        "known_text": "I need to speak Welsh",
+        "target_text": "dw i angen siarad Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 5,
+        "seed_number": 7,
+        "lego_index": 1,
+        "known_text": "I need to try",
+        "target_text": "dw i angen trio",
+        "notes": ""
+      },
+      {
+        "sample_number": 6,
+        "seed_number": 7,
+        "lego_index": 1,
+        "known_text": "I need to try to remember",
+        "target_text": "dw i angen trio cofio",
+        "notes": ""
+      },
+      {
+        "sample_number": 7,
+        "seed_number": 8,
+        "lego_index": 1,
+        "known_text": "I still want to practice speaking Welsh",
+        "target_text": "dw i dal yn moyn ymarfer siarad Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 8,
+        "seed_number": 8,
+        "lego_index": 1,
+        "known_text": "I still want to practice",
+        "target_text": "dw i dal yn moyn ymarfer",
+        "notes": ""
+      },
+      {
+        "sample_number": 9,
+        "seed_number": 8,
+        "lego_index": 2,
+        "known_text": "I want to improve",
+        "target_text": "dw i’n moyn gwella",
+        "notes": ""
+      },
+      {
+        "sample_number": 10,
+        "seed_number": 8,
+        "lego_index": 2,
+        "known_text": "I’m going to try to improve",
+        "target_text": "dw i’n mynd i drio gwella",
+        "notes": ""
+      },
+      {
+        "sample_number": 11,
+        "seed_number": 123,
+        "lego_index": 1,
+        "known_text": "I wanted to learn how to speak Welsh",
+        "target_text": "o’n i’n moyn dysgu sut i siarad Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 12,
+        "seed_number": 124,
+        "lego_index": 1,
+        "known_text": "are you ready to do the same thing?",
+        "target_text": "wyt ti’n barod i wneud yr un peth?",
+        "notes": ""
+      },
+      {
+        "sample_number": 13,
+        "seed_number": 124,
+        "lego_index": 1,
+        "known_text": "are you ready to practice speaking?",
+        "target_text": "wyt ti’n barod i ymarfer siarad?",
+        "notes": ""
+      },
+      {
+        "sample_number": 14,
+        "seed_number": 125,
+        "lego_index": 1,
+        "known_text": "yes, I’m ready to stop now",
+        "target_text": "ydw, dw i’n barod i stopo nawr",
+        "notes": ""
+      },
+      {
+        "sample_number": 15,
+        "seed_number": 125,
+        "lego_index": 1,
+        "known_text": "yes, I’m ready to try again",
+        "target_text": "ydw, dw i’n barod i drio eto",
+        "notes": ""
+      },
+      {
+        "sample_number": 16,
+        "seed_number": 125,
+        "lego_index": 1,
+        "known_text": "yes, I’m ready to eat that now",
+        "target_text": "ydw, dw i’n barod i fwyta hynny nawr",
+        "notes": ""
+      },
+      {
+        "sample_number": 17,
+        "seed_number": 125,
+        "lego_index": 1,
+        "known_text": "yes, I’m ready to talk now",
+        "target_text": "ydw, dw i’n barod i siarad nawr",
+        "notes": ""
+      },
+      {
+        "sample_number": 18,
+        "seed_number": 125,
+        "lego_index": 1,
+        "known_text": "yes, I’m ready to do more",
+        "target_text": "ydw, dw i’n barod i wneud mwy",
+        "notes": ""
+      },
+      {
+        "sample_number": 19,
+        "seed_number": 125,
+        "lego_index": 1,
+        "known_text": "yes, I’m ready now, thank you",
+        "target_text": "ydw, dw i’n barod nawr, diolch",
+        "notes": ""
+      },
+      {
+        "sample_number": 20,
+        "seed_number": 126,
+        "lego_index": 2,
+        "known_text": "yes, I’m ready to wait for your sister",
+        "target_text": "ydw, dw i’n barod i aros am dy chwaer di",
+        "notes": ""
+      },
+      {
+        "sample_number": 21,
+        "seed_number": 324,
+        "lego_index": 3,
+        "known_text": "he told me that he wouldn’t count those things",
+        "target_text": "ddwedodd e wrtha i na fyddai fe’n cyfri’r pethau ’na",
+        "notes": ""
+      },
+      {
+        "sample_number": 22,
+        "seed_number": 323,
+        "lego_index": 2,
+        "known_text": "she won’t go unless they go with you",
+        "target_text": "fydd hi ddim yn mynd heblaw bo’ nhw’n mynd gyda ti",
+        "notes": ""
+      },
+      {
+        "sample_number": 23,
+        "seed_number": 322,
+        "lego_index": 2,
+        "known_text": "you will probably win except for that",
+        "target_text": "wnewch chi ennill heblaw am hynny mwy na thebyg",
+        "notes": ""
+      },
+      {
+        "sample_number": 24,
+        "seed_number": 319,
+        "lego_index": 3,
+        "known_text": "I believe that the whole family going to guess",
+        "target_text": "dw i’n credu bod y teulu cyfan yn mynd i ddyfalu",
+        "notes": ""
+      },
+      {
+        "sample_number": 25,
+        "seed_number": 314,
+        "lego_index": 2,
+        "known_text": "their house is having exactly the same problem",
+        "target_text": "mae eu tŷ’n cael gwmws yr un problem",
+        "notes": ""
+      },
+      {
+        "sample_number": 26,
+        "seed_number": 313,
+        "lego_index": 3,
+        "known_text": "imagine myself having a problem",
+        "target_text": "dychmygu fy hunan yn cael problem",
+        "notes": ""
+      },
+      {
+        "sample_number": 27,
+        "seed_number": 310,
+        "lego_index": 1,
+        "known_text": "it hurts most when I have the keys",
+        "target_text": "mae’n brifo mwyaf pan mae’r allweddi gyda fi",
+        "notes": ""
+      },
+      {
+        "sample_number": 28,
+        "seed_number": 310,
+        "lego_index": 1,
+        "known_text": "it hurts when the office is open",
+        "target_text": "mae’n brifo pan mae’r swyddfa ar agor",
+        "notes": ""
+      },
+      {
+        "sample_number": 29,
+        "seed_number": 310,
+        "lego_index": 1,
+        "known_text": "it hurts most when you walk",
+        "target_text": "mae’n brifo mwyaf pan ti’n cerdded",
+        "notes": ""
+      },
+      {
+        "sample_number": 30,
+        "seed_number": 310,
+        "lego_index": 1,
+        "known_text": "it hurts too much for me to fetch the keys",
+        "target_text": "mae’n brifo gormod i fi nôl yr allweddi",
+        "notes": ""
+      }
+    ]
+  },
+  "cym_n_for_eng": {
+    "course_name": "North Welsh for English speakers",
+    "known_language": "eng",
+    "target_language": "cym_n",
+    "sample_count": 30,
+    "characteristics": {
+      "length_stats": {
+        "known_avg": 32.7,
+        "target_avg": 33.4,
+        "known_max": 60,
+        "target_max": 61
+      },
+      "word_count_stats": {
+        "known_avg": 6.6,
+        "target_avg": 7.3
+      },
+      "potential_issues": {
+        "empty_known": 0,
+        "empty_target": 0,
+        "very_long": 0,
+        "very_short_single_word": 0
+      }
+    },
+    "samples": [
+      {
+        "sample_number": 1,
+        "seed_number": 3,
+        "lego_index": 1,
+        "known_text": "I’m going to try to learn Welsh",
+        "target_text": "dw i’n mynd i drio dysgu Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 2,
+        "seed_number": 3,
+        "lego_index": 1,
+        "known_text": "I’m going to try to speak",
+        "target_text": "dw i’n mynd i drio siarad",
+        "notes": ""
+      },
+      {
+        "sample_number": 3,
+        "seed_number": 6,
+        "lego_index": 3,
+        "known_text": "how to speak Welsh",
+        "target_text": "sut i siarad Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 4,
+        "seed_number": 7,
+        "lego_index": 1,
+        "known_text": "I can’t remember how to try",
+        "target_text": "fedra i ddim cofio sut i drio",
+        "notes": ""
+      },
+      {
+        "sample_number": 5,
+        "seed_number": 7,
+        "lego_index": 1,
+        "known_text": "I can’t remember how to practice speaking",
+        "target_text": "fedra i ddim cofio sut i ymarfer siarad",
+        "notes": ""
+      },
+      {
+        "sample_number": 6,
+        "seed_number": 7,
+        "lego_index": 1,
+        "known_text": "I can’t remember how to practice",
+        "target_text": "fedra i ddim cofio sut i ymarfer",
+        "notes": ""
+      },
+      {
+        "sample_number": 7,
+        "seed_number": 8,
+        "lego_index": 1,
+        "known_text": "I still want to practice speaking Welsh",
+        "target_text": "dw i dal isio ymarfer siarad Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 8,
+        "seed_number": 8,
+        "lego_index": 1,
+        "known_text": "I still want to practice",
+        "target_text": "dw i dal isio ymarfer",
+        "notes": ""
+      },
+      {
+        "sample_number": 9,
+        "seed_number": 8,
+        "lego_index": 2,
+        "known_text": "I can’t remember how to improve",
+        "target_text": "fedra i ddim cofio sut i wella",
+        "notes": ""
+      },
+      {
+        "sample_number": 10,
+        "seed_number": 8,
+        "lego_index": 2,
+        "known_text": "I’m trying to improve",
+        "target_text": "dw i’n trio gwella",
+        "notes": ""
+      },
+      {
+        "sample_number": 11,
+        "seed_number": 116,
+        "lego_index": 1,
+        "known_text": "sometimes I’d rather relax",
+        "target_text": "weithiau mae’n well gen i ymlacio",
+        "notes": ""
+      },
+      {
+        "sample_number": 12,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "I shouldn’t tell you what I want to do",
+        "target_text": "ddylwn i ddim deud wrthot ti be’ dw i isio gwneud",
+        "notes": ""
+      },
+      {
+        "sample_number": 13,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "I’ve got a friend who’s just started to learn Welsh",
+        "target_text": "mae gen i ffrind sydd newydd ddechrau dysgu Cymraeg",
+        "notes": ""
+      },
+      {
+        "sample_number": 14,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "I can’t help everyone",
+        "target_text": "fedra i ddim helpu pawb",
+        "notes": ""
+      },
+      {
+        "sample_number": 15,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "everyone needs to ask sometimes",
+        "target_text": "mae pawb angen gofyn weithiau",
+        "notes": ""
+      },
+      {
+        "sample_number": 16,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "everyone wants to ask your mother",
+        "target_text": "mae pawb isio gofyn i dy fam",
+        "notes": ""
+      },
+      {
+        "sample_number": 17,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "I shouldn’t tell you what she said",
+        "target_text": "ddylwn i ddim deud wrthot ti be’ ddudodd hi",
+        "notes": ""
+      },
+      {
+        "sample_number": 18,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "I didn’t want to tell you how to do it",
+        "target_text": "do’n i ddim isio deud wrthot ti sut i wneud o",
+        "notes": ""
+      },
+      {
+        "sample_number": 19,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "I don’t want to tell everyone",
+        "target_text": "dw i ddim isio deud wrth bawb",
+        "notes": ""
+      },
+      {
+        "sample_number": 20,
+        "seed_number": 116,
+        "lego_index": 2,
+        "known_text": "I don’t want to tell my mother what I’m going to do tomorrow",
+        "target_text": "dw i ddim isio deud wrth fy mam be’ dw i’n mynd i wneud yfory",
+        "notes": ""
+      },
+      {
+        "sample_number": 21,
+        "seed_number": 301,
+        "lego_index": 1,
+        "known_text": "if you'll have been able to finish giving an excuse",
+        "target_text": "os byddi di wedi medru gorffen rhoi esgus",
+        "notes": ""
+      },
+      {
+        "sample_number": 22,
+        "seed_number": 301,
+        "lego_index": 1,
+        "known_text": "but i'm finding it easy to play now",
+        "target_text": "ond dwi'n cael hi'n hawdd i chwarae rwan",
+        "notes": ""
+      },
+      {
+        "sample_number": 23,
+        "seed_number": 297,
+        "lego_index": 1,
+        "known_text": "I haven’t seen a single new baby myself",
+        "target_text": "dw i heb weld yr un babi newydd fy hun",
+        "notes": ""
+      },
+      {
+        "sample_number": 24,
+        "seed_number": 295,
+        "lego_index": 1,
+        "known_text": "I wouldn’t speak",
+        "target_text": "fyddwn i ddim yn siarad",
+        "notes": ""
+      },
+      {
+        "sample_number": 25,
+        "seed_number": 290,
+        "lego_index": 3,
+        "known_text": "several hours on his own",
+        "target_text": "rhai oriau ar ei ben ei hun",
+        "notes": ""
+      },
+      {
+        "sample_number": 26,
+        "seed_number": 290,
+        "lego_index": 1,
+        "known_text": "the news about somewhere safe",
+        "target_text": "y newyddion am rywle diogel",
+        "notes": ""
+      },
+      {
+        "sample_number": 27,
+        "seed_number": 290,
+        "lego_index": 1,
+        "known_text": "the news about the two girls",
+        "target_text": "y newyddion am y ddwy hogan",
+        "notes": ""
+      },
+      {
+        "sample_number": 28,
+        "seed_number": 284,
+        "lego_index": 3,
+        "known_text": "if only I could understand why you’re not counting",
+        "target_text": "taswn i ond yn medru dallt pam dwyt ti ddim yn cyfri’",
+        "notes": ""
+      },
+      {
+        "sample_number": 29,
+        "seed_number": 280,
+        "lego_index": 1,
+        "known_text": "I could remember where he’s standing",
+        "target_text": "o’n i’n medru cofio lle mae o’n sefyll",
+        "notes": ""
+      },
+      {
+        "sample_number": 30,
+        "seed_number": 271,
+        "lego_index": 1,
+        "known_text": "do you want a challenge?",
+        "target_text": "wyt ti isio her?",
+        "notes": ""
+      }
+    ]
+  },
+  "eng_for_fra": {
+    "course_name": "English for French speakers",
+    "known_language": "fra",
+    "target_language": "eng",
+    "sample_count": 30,
+    "characteristics": {
+      "length_stats": {
+        "known_avg": 34.0,
+        "target_avg": 32.6,
+        "known_max": 57,
+        "target_max": 66
+      },
+      "word_count_stats": {
+        "known_avg": 6.9,
+        "target_avg": 6.9
+      },
+      "potential_issues": {
+        "empty_known": 0,
+        "empty_target": 0,
+        "very_long": 0,
+        "very_short_single_word": 0
+      }
+    },
+    "samples": [
+      {
+        "sample_number": 1,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "Je veux.",
+        "target_text": "I want.",
+        "notes": ""
+      },
+      {
+        "sample_number": 2,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "Je veux.",
+        "target_text": "I want.",
+        "notes": ""
+      },
+      {
+        "sample_number": 3,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "Je veux.",
+        "target_text": "I want.",
+        "notes": ""
+      },
+      {
+        "sample_number": 4,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "Je veux.",
+        "target_text": "I want.",
+        "notes": ""
+      },
+      {
+        "sample_number": 5,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "Je veux.",
+        "target_text": "I want.",
+        "notes": ""
+      },
+      {
+        "sample_number": 6,
+        "seed_number": 1,
+        "lego_index": 1,
+        "known_text": "Je veux.",
+        "target_text": "I want.",
+        "notes": ""
+      },
+      {
+        "sample_number": 7,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "Je veux parler.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 8,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "Je veux parler.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 9,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "Je veux parler.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 10,
+        "seed_number": 1,
+        "lego_index": 2,
+        "known_text": "Je veux parler.",
+        "target_text": "I want to speak.",
+        "notes": ""
+      },
+      {
+        "sample_number": 11,
+        "seed_number": 121,
+        "lego_index": 1,
+        "known_text": "C'est inhabituel de voir quelque chose comme ça.",
+        "target_text": "It's unusual to see something like that.",
+        "notes": ""
+      },
+      {
+        "sample_number": 12,
+        "seed_number": 121,
+        "lego_index": 1,
+        "known_text": "C'est très inhabituel ce que tu as dit hier.",
+        "target_text": "It's very unusual what you said yesterday.",
+        "notes": ""
+      },
+      {
+        "sample_number": 13,
+        "seed_number": 121,
+        "lego_index": 1,
+        "known_text": "C'est inhabituel que elle ne veuille pas venir.",
+        "target_text": "It's unusual that she doesn't want to come.",
+        "notes": ""
+      },
+      {
+        "sample_number": 14,
+        "seed_number": 121,
+        "lego_index": 1,
+        "known_text": "C'est inhabituel que nous soyons d'accord.",
+        "target_text": "It's unusual that we agree.",
+        "notes": ""
+      },
+      {
+        "sample_number": 15,
+        "seed_number": 121,
+        "lego_index": 1,
+        "known_text": "C'est inhabituel de travailler comme ça.",
+        "target_text": "It's unusual to work like that.",
+        "notes": ""
+      },
+      {
+        "sample_number": 16,
+        "seed_number": 121,
+        "lego_index": 2,
+        "known_text": "Je n'aime pas travailler quand je suis fatigué.",
+        "target_text": "I don't like to work when I'm tired.",
+        "notes": ""
+      },
+      {
+        "sample_number": 17,
+        "seed_number": 121,
+        "lego_index": 2,
+        "known_text": "Tu n'aimes pas faire ce travail avec elle?",
+        "target_text": "Don't you like to do that work with her?",
+        "notes": ""
+      },
+      {
+        "sample_number": 18,
+        "seed_number": 121,
+        "lego_index": 2,
+        "known_text": "Il n'aime pas parler de ce qu'il a fait.",
+        "target_text": "He doesn't like to talk about what he did.",
+        "notes": ""
+      },
+      {
+        "sample_number": 19,
+        "seed_number": 121,
+        "lego_index": 2,
+        "known_text": "Je n'aime pas ce que tu as dit hier.",
+        "target_text": "I don't like what you said yesterday.",
+        "notes": ""
+      },
+      {
+        "sample_number": 20,
+        "seed_number": 121,
+        "lego_index": 2,
+        "known_text": "Nous n'aimons pas faire des choses comme ça.",
+        "target_text": "We don't like to do things like that.",
+        "notes": ""
+      },
+      {
+        "sample_number": 21,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Je n'ai pas la moindre idée.",
+        "target_text": "I don't have the faintest idea.",
+        "notes": ""
+      },
+      {
+        "sample_number": 22,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Il n'a pas la moindre idée de ce qu'il veut faire.",
+        "target_text": "He doesn't have the faintest idea of what he wants to do.",
+        "notes": ""
+      },
+      {
+        "sample_number": 23,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Elle n'a pas la moindre idée de ce qui se passe là-bas.",
+        "target_text": "She doesn't have the faintest idea of what is going on over there.",
+        "notes": ""
+      },
+      {
+        "sample_number": 24,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Je n'ai pas la moindre idée de ce que tu veux dire.",
+        "target_text": "I don't have the faintest idea of what you want to say.",
+        "notes": ""
+      },
+      {
+        "sample_number": 25,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "Tu n'as pas la moindre idée de ce que j'ai fait pour toi.",
+        "target_text": "You don't have the faintest idea of what I did for you.",
+        "notes": ""
+      },
+      {
+        "sample_number": 26,
+        "seed_number": 260,
+        "lego_index": 2,
+        "known_text": "On n'a pas la moindre idée de quand il va venir.",
+        "target_text": "We don't have the faintest idea of when he is going to come.",
+        "notes": ""
+      },
+      {
+        "sample_number": 27,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Je n'ai pas le temps de parler avec toi maintenant.",
+        "target_text": "I don't have the time to speak with you now.",
+        "notes": ""
+      },
+      {
+        "sample_number": 28,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Je n'ai pas dit ça, tu ne m'as pas compris.",
+        "target_text": "I didn't say that, you didn't understand me.",
+        "notes": ""
+      },
+      {
+        "sample_number": 29,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Je n'ai pas assez de temps pour finir le travail.",
+        "target_text": "I don't have enough time to finish the work.",
+        "notes": ""
+      },
+      {
+        "sample_number": 30,
+        "seed_number": 260,
+        "lego_index": 1,
+        "known_text": "Elle m'a dit qu'elle n'avait pas de temps pour moi.",
+        "target_text": "She told me she didn't have time for me.",
+        "notes": ""
+      }
+    ]
+  }
+}

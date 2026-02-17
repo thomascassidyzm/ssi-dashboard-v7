@@ -1,0 +1,79 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 173,
+  "target_text": "No thank you I can manage on my own.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Non merci",
+      "target": "No thank you",
+      "components": [
+        {"known": "Non", "target": "No"},
+        {"known": "merci", "target": "thank you"}
+      ],
+      "build": [
+        {"known": "Non merci", "target": "No thank you"},
+        {"known": "merci", "target": "thank you"},
+        {"known": "Non je", "target": "No I"},
+        {"known": "Oui merci", "target": "Yes thank you"}
+      ],
+      "use": [
+        {"known": "Non merci je voudrais faire quelque chose de différent ce soir", "target": "No thank you I'd like to do something different this evening", "score": 8},
+        {"known": "Non merci je peux le faire demain matin si tu veux", "target": "No thank you I can do it tomorrow morning if you want", "score": 8},
+        {"known": "Non je ne veux pas faire ça maintenant mais merci", "target": "No I don't want to do that now but thank you", "score": 8},
+        {"known": "Non merci je voudrais aller à la maison maintenant", "target": "No thank you I'd like to go home now", "score": 8},
+        {"known": "Non merci ça serait très utile demain mais pas maintenant", "target": "No thank you that would be very helpful tomorrow but not now", "score": 8},
+        {"known": "Oui merci ça serait très bien si tu pouvais venir demain", "target": "Yes thank you that would be very good if you could come tomorrow", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "je peux me débrouiller",
+      "target": "I can manage",
+      "components": [
+        {"known": "je peux", "target": "I can"},
+        {"known": "me débrouiller", "target": "manage"}
+      ],
+      "build": [
+        {"known": "je peux me débrouiller", "target": "I can manage"},
+        {"known": "me débrouiller", "target": "manage"},
+        {"known": "tu peux te débrouiller", "target": "you can manage"},
+        {"known": "peux me débrouiller", "target": "can manage"}
+      ],
+      "use": [
+        {"known": "Non merci je peux me débrouiller si tu veux partir maintenant", "target": "No thank you I can manage if you want to go now", "score": 8},
+        {"known": "Je pense que tu peux te débrouiller demain matin si je ne suis pas là", "target": "I think that you can manage tomorrow morning if I'm not there", "score": 8},
+        {"known": "Tu peux te débrouiller avec ça si je ne suis pas là?", "target": "Can you manage with that if I'm not there?", "score": 8},
+        {"known": "Je peux me débrouiller mais ça serait utile si tu venais m'aider", "target": "I can manage but that would be helpful if you could come and help me", "score": 8},
+        {"known": "Non merci je peux me débrouiller avec ce que j'ai maintenant", "target": "No thank you I can manage with what I have now", "score": 8},
+        {"known": "Tu penses que tu peux te débrouiller le mois prochain si nous ne sommes pas là?", "target": "Do you think that you can manage next month if we're not there?", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "tout seul",
+      "target": "on my own",
+      "components": [
+        {"known": "tout", "target": "on"},
+        {"known": "seul", "target": "my own"}
+      ],
+      "build": [
+        {"known": "tout seul", "target": "on my own"},
+        {"known": "toute seule", "target": "on her own"},
+        {"known": "faire tout seul", "target": "do on my own"},
+        {"known": "le faire tout seul", "target": "do it on my own"}
+      ],
+      "use": [
+        {"known": "Non merci je peux me débrouiller tout seul demain matin", "target": "No thank you I can manage on my own tomorrow morning", "score": 9},
+        {"known": "Je voudrais le faire tout seul si tu me laisses faire", "target": "I'd like to do it on my own if you let me do it", "score": 8},
+        {"known": "Tu penses que tu peux le faire tout seul demain après-midi?", "target": "Do you think that you can do it on your own tomorrow afternoon?", "score": 8},
+        {"known": "Je vais me débrouiller tout seul ce soir si tu veux partir", "target": "I'm going to manage on my own this evening if you want to go", "score": 8},
+        {"known": "Elle a dit qu'elle pouvait le faire toute seule si elle voulait", "target": "She said that she could do it on her own if she wanted", "score": 8},
+        {"known": "Je peux le faire tout seul mais ça serait utile si tu venais m'aider", "target": "I can do it on my own but that would be helpful if you could come and help me", "score": 8}
+      ]
+    }
+  ]
+}

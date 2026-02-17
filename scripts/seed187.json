@@ -1,0 +1,55 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 187,
+  "target_text": "I'm happy so far.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Je suis content",
+      "target": "I'm happy",
+      "components": [
+        {"known": "Je suis", "target": "I'm"},
+        {"known": "content", "target": "happy"}
+      ],
+      "build": [
+        {"known": "Je suis content", "target": "I'm happy"},
+        {"known": "content", "target": "happy"},
+        {"known": "tu es content", "target": "you're happy"},
+        {"known": "je suis", "target": "I'm"}
+      ],
+      "use": [
+        {"known": "Je suis content de te voir ici au bureau ce matin", "target": "I'm happy to see you here in the office this morning", "score": 8},
+        {"known": "Tu es content de ce que tu as fait cette semaine?", "target": "Are you happy with what you did this week?", "score": 8},
+        {"known": "Je suis content de parler de ça avec vous maintenant", "target": "I'm happy to talk about that with you now", "score": 8},
+        {"known": "Je suis content qu'elle a vu mes clés quelque part", "target": "I'm happy that she saw my keys anywhere", "score": 8},
+        {"known": "Tu es content de ce que tu as laissé au travail?", "target": "Are you happy with what you left at work?", "score": 8},
+        {"known": "Je suis content de pouvoir venir te voir la semaine prochaine", "target": "I'm happy to be able to come see you next week", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "jusqu'ici",
+      "target": "so far",
+      "components": [
+        {"known": "jusqu'", "target": "so"},
+        {"known": "ici", "target": "far"}
+      ],
+      "build": [
+        {"known": "jusqu'ici", "target": "so far"},
+        {"known": "jusqu'à maintenant", "target": "so far"},
+        {"known": "content jusqu'ici", "target": "happy so far"},
+        {"known": "bien jusqu'ici", "target": "good so far"}
+      ],
+      "use": [
+        {"known": "Je suis content jusqu'ici de ce que nous avons fait ensemble", "target": "I'm happy so far with what we have done together", "score": 9},
+        {"known": "Jusqu'ici je pense que c'est très intéressant ce que tu as dit", "target": "So far I think it's very interesting what you said", "score": 8},
+        {"known": "Le travail va bien jusqu'ici, je suis content de ça", "target": "Work is going well so far, I'm happy about that", "score": 8},
+        {"known": "Jusqu'ici je n'ai pas vu mes clés quelque part ici", "target": "So far I haven't seen my keys anywhere here", "score": 8},
+        {"known": "Je suis content de mon livre jusqu'ici et je veux le finir", "target": "I'm happy with my book so far and I want to finish it", "score": 8},
+        {"known": "Jusqu'ici il m'a dit que tout va bien au bureau", "target": "So far he said to me that everything is going well in the office", "score": 8}
+      ]
+    }
+  ]
+}

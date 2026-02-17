@@ -1,0 +1,100 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 124,
+  "target_text": "I thought that was a good idea.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "思いました",
+      "target": "thought",
+      "build": [
+        {"known": "思いました", "target": "thought"},
+        {"known": "思いましたか", "target": "did you think"},
+        {"known": "いいと思いました", "target": "thought good"},
+        {"known": "そう思いました", "target": "thought that"}
+      ],
+      "use": [
+        {"known": "いい考えだと思いました。", "target": "I thought it was a good idea to do.", "score": 8},
+        {"known": "面白いと思いましたか？", "target": "Did you think it was interesting to do?", "score": 8},
+        {"known": "難しいと思いましたが、やりました。", "target": "I thought it was difficult, but I did it.", "score": 8},
+        {"known": "良いと思いましたが、確実ではありませんでした。", "target": "I thought it was good, but I was not sure.", "score": 8},
+        {"known": "そう思いましたが、今は違います。", "target": "I thought that, but now it is different.", "score": 8},
+        {"known": "大切だと思いましたか？", "target": "Did you think it was important to do now?", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "それは〜でした",
+      "target": "that was a",
+      "components": [
+        {"known": "それは", "target": "that was"},
+        {"known": "〜だった", "target": "a"}
+      ],
+      "build": [
+        {"known": "それは〜でした", "target": "that was a"},
+        {"known": "それはいいでした", "target": "that was a good"},
+        {"known": "それは難しいでした", "target": "that was a difficult"},
+        {"known": "それは面白いでした", "target": "that was a fun"}
+      ],
+      "use": [
+        {"known": "それはいい考えだと思いました。", "target": "I thought that was a good idea to do.", "score": 8},
+        {"known": "それは難しいことだと思いました。", "target": "I thought that was a difficult thing to do.", "score": 8},
+        {"known": "それは面白いことでしたか？", "target": "Did you think that was a fun thing to do?", "score": 8},
+        {"known": "それはいい時間でした。", "target": "I think that was a good time to talk.", "score": 8},
+        {"known": "それは大切なことでした。", "target": "I think that was a important thing to do.", "score": 8},
+        {"known": "それは良い選択だと思いました。", "target": "I thought that was a good choice to make.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "いい考え",
+      "target": "good idea",
+      "components": [
+        {"known": "いい", "target": "good"},
+        {"known": "考え", "target": "idea"}
+      ],
+      "build": [
+        {"known": "いい考え", "target": "good idea"},
+        {"known": "いい考えだった", "target": "was good idea"},
+        {"known": "いい考えだと", "target": "a good idea"},
+        {"known": "いい考えがある", "target": "have good idea"}
+      ],
+      "use": [
+        {"known": "それはいい考えだと思いました。", "target": "I thought that was a good idea to do.", "score": 8},
+        {"known": "いい考えがありますか？", "target": "Do you have a good idea for what to do?", "score": 8},
+        {"known": "いい考えだと思います。", "target": "I think it is a good idea to do now.", "score": 8},
+        {"known": "それはいい考えではありませんでした。", "target": "I do not think that was a good idea.", "score": 8},
+        {"known": "いい考えを探しています。", "target": "I want to find a good idea to do now.", "score": 8},
+        {"known": "いい考えだと言いました。", "target": "I said it was a good idea to do.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "〜だと思いました",
+      "target": "I thought that",
+      "components": [
+        {"known": "私は", "target": "I"},
+        {"known": "思った", "target": "thought"},
+        {"known": "〜ということ", "target": "that"}
+      ],
+      "build": [
+        {"known": "思いました", "target": "I thought that"},
+        {"known": "そう思いました", "target": "I thought that was"},
+        {"known": "〜だと思いました", "target": "I thought that it"},
+        {"known": "いいと思いました", "target": "I thought that good"}
+      ],
+      "use": [
+        {"known": "それはいい考えだと思いました。", "target": "I thought that was a good idea to do.", "score": 9},
+        {"known": "面白いことだと思いました。", "target": "I thought that it was interesting to do.", "score": 8},
+        {"known": "難しいことだと思いましたが、やりました。", "target": "I thought that it was difficult, but I did it.", "score": 8},
+        {"known": "大切なことだと思いました。", "target": "I thought that it was important to do now.", "score": 8},
+        {"known": "良いことだと思いましたか？", "target": "Did you think that it was good to do?", "score": 8},
+        {"known": "確実にいいことだと思いました。", "target": "I definitely thought that it was good to do.", "score": 8}
+      ]
+    }
+  ]
+}

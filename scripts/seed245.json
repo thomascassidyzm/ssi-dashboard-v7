@@ -1,0 +1,221 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 245,
+  "known_text": "I'm happy with how much I've done in a short time",
+  "target_text": "我很高兴我在短时间内做了这么多。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I'm.", "target": "我。"},
+        {"known": "I've done.", "target": "我做了。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "I'm happy with how much I've learnt this week.", "target": "我很高兴我这个周学了这么多。", "score": 8},
+        {"known": "That young man asked me if I know your brother.", "target": "那个年轻的男人问我是不是认识你哥哥。", "score": 7},
+        {"known": "If the old woman can tell me, I would be happy.", "target": "如果那个老女人能告诉我的话，我会高兴。", "score": 8},
+        {"known": "Everyone told me they want to meet your sister too.", "target": "大家都告诉我他们也想见你姐姐。", "score": 7},
+        {"known": "Would that young man be able to help me with this?", "target": "那个年轻的男人能帮我做这个吗？", "score": 8},
+        {"known": "She hopes I can remember what the old man said.", "target": "她希望我能记住那个老人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "very",
+      "target": "很",
+      "build": [
+        {"known": "Very.", "target": "很。"},
+        {"known": "Very happy.", "target": "很高兴。"},
+        {"known": "I'm very.", "target": "我很。"},
+        {"known": "Very much.", "target": "很多。"}
+      ],
+      "use": [
+        {"known": "I'm very happy with how well things are going.", "target": "我很高兴东西做得很好。", "score": 8},
+        {"known": "That young woman is very good at learning new things.", "target": "那个年轻的女人很会学新的东西。", "score": 7},
+        {"known": "If you work very hard, you will finish on time.", "target": "如果你很努力工作，你会按时完成。", "score": 8},
+        {"known": "He told me the old man is very happy to help us.", "target": "他告诉我那个老人很高兴帮我们。", "score": 7},
+        {"known": "Everyone here is very busy with work today.", "target": "这里的大家今天工作都很忙。", "score": 8},
+        {"known": "Is your mother very good at reading books?", "target": "你妈妈很会看书吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "happy/glad",
+      "target": "高兴",
+      "components": [
+        {"known": "high", "target": "高"},
+        {"known": "spirits", "target": "兴"}
+      ],
+      "build": [
+        {"known": "Happy.", "target": "高兴。"},
+        {"known": "Glad.", "target": "高兴。"},
+        {"known": "I'm happy.", "target": "我很高兴。"},
+        {"known": "Very happy.", "target": "很高兴。"}
+      ],
+      "use": [
+        {"known": "I'm happy with how much I've done in a short time.", "target": "我很高兴我在短时间内做了这么多。", "score": 8},
+        {"known": "That young man is happy to help us with the work.", "target": "那个年轻的男人很高兴帮我们做工作。", "score": 7},
+        {"known": "If she is happy about it, we should be happy too.", "target": "如果她高兴的话，我们也要高兴。", "score": 8},
+        {"known": "He told me his father is very happy to meet you.", "target": "他告诉我他爸爸很高兴见你。", "score": 7},
+        {"known": "Everyone here will be happy when the work is done.", "target": "这里的大家工作做完的时候都会高兴。", "score": 8},
+        {"known": "Are you happy with how things are going now?", "target": "你高兴东西现在怎么样吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "at/in",
+      "target": "在",
+      "build": [
+        {"known": "At.", "target": "在。"},
+        {"known": "In.", "target": "在。"},
+        {"known": "In a short time.", "target": "在短时间内。"},
+        {"known": "I'm at.", "target": "我在。"}
+      ],
+      "use": [
+        {"known": "I'm happy I've done so much work in a short time.", "target": "我很高兴我在短时间内做了这么多工作。", "score": 8},
+        {"known": "That young woman is working at the office today.", "target": "那个年轻的女人今天在办公室工作。", "score": 7},
+        {"known": "If you are at home, please let me know now.", "target": "如果你在家的话，请现在让我知道。", "score": 8},
+        {"known": "She told me he is at the meeting right now.", "target": "她告诉我他现在在开会。", "score": 7},
+        {"known": "Everyone is working together at this place.", "target": "大家都在这里一起工作。", "score": 8},
+        {"known": "Where were you at when your mother called?", "target": "你妈妈打电话的时候你在哪里？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "short",
+      "target": "短",
+      "build": [
+        {"known": "Short.", "target": "短。"},
+        {"known": "Short time.", "target": "短时间。"},
+        {"known": "In a short time.", "target": "在短时间内。"},
+        {"known": "Very short.", "target": "很短。"}
+      ],
+      "use": [
+        {"known": "I'm happy with what I've done in such a short time.", "target": "我很高兴我在这么短的时间内做了东西。", "score": 8},
+        {"known": "That young man finished the work in a short time.", "target": "那个年轻的男人在短时间内做完了工作。", "score": 7},
+        {"known": "If you have a short time, we can still talk.", "target": "如果你有短时间的话，我们还可以说话。", "score": 8},
+        {"known": "She told me the meeting will be very short today.", "target": "她告诉我开会今天会很短。", "score": 7},
+        {"known": "Everyone here learnt a lot in a short time.", "target": "这里的大家都在短时间内学了很多。", "score": 8},
+        {"known": "How much can you learn in such a short time?", "target": "你在这么短的时间内能学多少？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "time",
+      "target": "时间",
+      "components": [
+        {"known": "hour", "target": "时"},
+        {"known": "space", "target": "间"}
+      ],
+      "build": [
+        {"known": "Time.", "target": "时间。"},
+        {"known": "Short time.", "target": "短时间。"},
+        {"known": "In a short time.", "target": "在短时间内。"},
+        {"known": "Have time.", "target": "有时间。"}
+      ],
+      "use": [
+        {"known": "I'm happy with how much I've learnt in this time.", "target": "我很高兴我在这个时间内学了很多。", "score": 8},
+        {"known": "That young man doesn't have time to help us today.", "target": "那个年轻的男人今天没有时间帮我们。", "score": 7},
+        {"known": "If you have time tomorrow, we can meet and talk.", "target": "如果你明天有时间的话，我们可以见面说话。", "score": 8},
+        {"known": "She told me she needs more time to finish the work.", "target": "她告诉我她需要更多时间来做完工作。", "score": 7},
+        {"known": "Everyone here thinks we don't have enough time.", "target": "这里的大家都觉得我们没有够的时间。", "score": 8},
+        {"known": "When will your father have time to see us?", "target": "你爸爸什么时候有时间见我们？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "inside/within",
+      "target": "内",
+      "build": [
+        {"known": "Inside.", "target": "内。"},
+        {"known": "Within.", "target": "内。"},
+        {"known": "Within a short time.", "target": "短时间内。"},
+        {"known": "In a short time.", "target": "在短时间内。"}
+      ],
+      "use": [
+        {"known": "I've done a lot of work within a short time.", "target": "我在短时间内做了很多工作。", "score": 8},
+        {"known": "That young woman finished everything within an hour.", "target": "那个年轻的女人在一个小时内做完了。", "score": 7},
+        {"known": "If you can finish within the time, we will be happy.", "target": "如果你能在时间内做完的话，我们会高兴。", "score": 8},
+        {"known": "He told me we should finish within this week.", "target": "他告诉我我们要在这个周内做完。", "score": 7},
+        {"known": "Everyone here is trying to finish within the day.", "target": "这里的大家都在试着在这天内做完。", "score": 8},
+        {"known": "Can your brother finish the work within today?", "target": "你哥哥能在今天内做完工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "do/make",
+      "target": "做",
+      "build": [
+        {"known": "Do.", "target": "做。"},
+        {"known": "Make.", "target": "做。"},
+        {"known": "Done.", "target": "做了。"},
+        {"known": "I've done.", "target": "我做了。"}
+      ],
+      "use": [
+        {"known": "I've done a lot of work in a short time.", "target": "我在短时间内做了很多工作。", "score": 8},
+        {"known": "That young man wants to do something new today.", "target": "那个年轻的男人今天想做新的东西。", "score": 7},
+        {"known": "If you want to do it, please let me know now.", "target": "如果你想做的话，请现在让我知道。", "score": 8},
+        {"known": "She told me her father likes to do this kind of work.", "target": "她告诉我她爸爸喜欢做这样的工作。", "score": 7},
+        {"known": "Everyone here has done a lot today already.", "target": "这里的大家今天已经做了很多了。", "score": 8},
+        {"known": "What does your mother like to do in the evening?", "target": "你妈妈晚上喜欢做什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "completed action particle",
+      "target": "了",
+      "build": [
+        {"known": "Done.", "target": "了。"},
+        {"known": "Did.", "target": "做了。"},
+        {"known": "Learnt.", "target": "学了。"},
+        {"known": "Finished.", "target": "完了。"}
+      ],
+      "use": [
+        {"known": "I've done this much work in a short time.", "target": "我在短时间内做了这么多工作。", "score": 8},
+        {"known": "That young man said he has finished the work.", "target": "那个年轻的男人说他做完工作了。", "score": 7},
+        {"known": "If she has come, please let us know right away.", "target": "如果她来了的话，请让我们知道。", "score": 8},
+        {"known": "He told me he has met your father many times.", "target": "他告诉我他见了你爸爸很多次了。", "score": 7},
+        {"known": "Everyone here has eaten and is ready to go.", "target": "这里的大家都吃了准备好走了。", "score": 8},
+        {"known": "What has your sister done with the book?", "target": "你姐姐和那本书做了什么？", "score": 8}
+      ]
+    },
+    {
+      "idx": 10,
+      "type": "M",
+      "known": "this much (quantity)",
+      "target": "这么多",
+      "components": [
+        {"known": "this", "target": "这"},
+        {"known": "so", "target": "么"},
+        {"known": "many", "target": "多"}
+      ],
+      "build": [
+        {"known": "This much.", "target": "这么多。"},
+        {"known": "So much.", "target": "这么多。"},
+        {"known": "Done this much.", "target": "做了这么多。"},
+        {"known": "Learnt this much.", "target": "学了这么多。"}
+      ],
+      "use": [
+        {"known": "I'm happy I've done this much in a short time.", "target": "我很高兴我在短时间内做了这么多。", "score": 8},
+        {"known": "That young woman has already learnt this much.", "target": "那个年轻的女人已经学了这么多了。", "score": 7},
+        {"known": "If you have done this much, you can stop now.", "target": "如果你做了这么多的话，你现在可以停止。", "score": 8},
+        {"known": "He told me he didn't know you had done this much.", "target": "他告诉我他不知道你做了这么多。", "score": 7},
+        {"known": "Everyone here is happy you have learnt this much.", "target": "这里的大家都高兴你学了这么多。", "score": 8},
+        {"known": "Has your brother really done this much work already?", "target": "你哥哥真的已经做了这么多工作了吗？", "score": 8}
+      ]
+    }
+  ]
+}

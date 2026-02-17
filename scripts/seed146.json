@@ -1,0 +1,172 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 146,
+  "known_text": "直そうとしてから何もうまくいかないようです。",
+  "target_text": "Nothing seems to be working since we tried to fix it.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "何も〜ない",
+      "target": "nothing",
+      "build": [
+        {"known": "何も〜ない", "target": "nothing"},
+        {"known": "何もない", "target": "nothing there"},
+        {"known": "何も問題ない", "target": "nothing is a problem"},
+        {"known": "何もやらない", "target": "do nothing"}
+      ],
+      "use": [
+        {"known": "私は何も問題ないと彼女に言いましたが、私は難しいと思います。", "target": "I said to her nothing is a problem, but I think it is difficult.", "score": 8},
+        {"known": "もちろん何も問題ないと私の友達は言いました。", "target": "My friend said of course nothing is a problem.", "score": 7},
+        {"known": "彼女は何もやりたくないと言いましたが、私は問題があると思います。", "target": "She said she wanted to do nothing, but I think there is a problem.", "score": 8},
+        {"known": "私の友達は何も問題ないと頻繁に言っていましたが、私は難しいと思います。", "target": "My friend was often saying nothing is a problem, but I think it is difficult.", "score": 8},
+        {"known": "彼は何もやらないと言いましたが、私は問題だと思います。", "target": "He said he wanted to do nothing, but I think it is a problem.", "score": 8},
+        {"known": "もちろん何もないと彼女は言いました。", "target": "She said of course nothing is there.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "直す",
+      "target": "fix it",
+      "components": [
+        {"known": "直", "target": "fix"},
+        {"known": "す", "target": "it"}
+      ],
+      "build": [
+        {"known": "直す", "target": "fix it"},
+        {"known": "直したい", "target": "want to fix it"},
+        {"known": "直そうとする", "target": "try to fix it"},
+        {"known": "直さない", "target": "not fix it"}
+      ],
+      "use": [
+        {"known": "私はそれを直したいと彼女に言いましたが、難しかったと思います。", "target": "I said to her I want to fix it, but I think it was difficult.", "score": 8},
+        {"known": "もちろん私は直したいと私の友達は言いました。", "target": "My friend said of course I want to fix it.", "score": 7},
+        {"known": "彼女はそれを直そうとしたいと言いましたが、私は問題があると思います。", "target": "She said she wanted to try to fix it, but I think there is a problem.", "score": 8},
+        {"known": "私の友達は直したいと頻繁に言っていましたが、難しかったと思います。", "target": "My friend was often saying she wanted to fix it, but I think it was difficult.", "score": 8},
+        {"known": "彼は直さないと言いましたが、私は直したいと思います。", "target": "He said he doesn't want to fix it, but I think I want to fix it.", "score": 8},
+        {"known": "もちろん私はそれを直したいと彼女は言いました。", "target": "She said of course I want to fix it.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "うまくいっている",
+      "target": "working",
+      "components": [
+        {"known": "うまく", "target": "work"},
+        {"known": "いっている", "target": "ing"}
+      ],
+      "build": [
+        {"known": "うまくいっている", "target": "working"},
+        {"known": "うまくいかない", "target": "not working"},
+        {"known": "うまくいっていない", "target": "is not working"},
+        {"known": "うまくいきたい", "target": "want to be working"}
+      ],
+      "use": [
+        {"known": "私はそれがうまくいっていると彼女に言いましたが、私は問題があると思います。", "target": "I said to her it is working, but I think there is a problem.", "score": 8},
+        {"known": "もちろんうまくいっていると私の友達は言いました。", "target": "My friend said of course it is working.", "score": 7},
+        {"known": "彼女はうまくいかないと言いましたが、私はうまくいっていると思います。", "target": "She said it is not working, but I think it is working.", "score": 8},
+        {"known": "私の友達はうまくいっていると頻繁に言っていましたが、難しかったと思います。", "target": "My friend was often saying it is working, but I think it was difficult.", "score": 8},
+        {"known": "彼はうまくいかないと言いましたが、私はうまくいっていると思います。", "target": "He said it is not working, but I think it is working.", "score": 8},
+        {"known": "もちろんうまくいきたいと彼女は言いました。", "target": "She said of course I want it to be working.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "〜ようです",
+      "target": "seems to be",
+      "components": [
+        {"known": "〜よう", "target": "seems to"},
+        {"known": "です", "target": "be"}
+      ],
+      "build": [
+        {"known": "〜ようです", "target": "seems to be"},
+        {"known": "うまくいかないようです", "target": "seems to be not working"},
+        {"known": "問題があるようです", "target": "seems to be a problem"},
+        {"known": "難しいようです", "target": "seems to be difficult"}
+      ],
+      "use": [
+        {"known": "それはうまくいかないようですと彼女に言いましたが、私は問題があると思います。", "target": "I said to her it seems to be not working, but I think there is a problem.", "score": 8},
+        {"known": "もちろん問題があるようですと私の友達は言いました。", "target": "My friend said of course it seems to be a problem.", "score": 8},
+        {"known": "彼女は難しいようですと言いましたが、私は大丈夫だと思います。", "target": "She said it seems to be difficult, but I think it is okay.", "score": 8},
+        {"known": "私の友達はうまくいっているようですと頻繁に言っていました。", "target": "My friend was often saying it seems to be working.", "score": 8},
+        {"known": "彼は問題があるようですと言いましたが、私は大丈夫だと思います。", "target": "He said it seems to be a problem, but I think it is okay.", "score": 8},
+        {"known": "もちろんうまくいかないようですと彼女は言いました。", "target": "She said of course it seems to be not working.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "〜しようとした",
+      "target": "tried to",
+      "components": [
+        {"known": "〜しよう", "target": "tried"},
+        {"known": "とした", "target": "to"}
+      ],
+      "build": [
+        {"known": "〜しようとした", "target": "tried to"},
+        {"known": "直そうとした", "target": "tried to fix it"},
+        {"known": "話そうとした", "target": "tried to talk"},
+        {"known": "やろうとした", "target": "tried to do"}
+      ],
+      "use": [
+        {"known": "私はそれを直そうとしたと彼女に言いましたが、難しかったと思います。", "target": "I said to her I tried to fix it, but I think it was difficult.", "score": 8},
+        {"known": "もちろん私は話そうとしたと私の友達は言いました。", "target": "My friend said of course I tried to talk.", "score": 7},
+        {"known": "彼女はそれをやろうとしたと言いましたが、私は問題があると思います。", "target": "She said she tried to do it, but I think there is a problem.", "score": 8},
+        {"known": "私の友達は直そうとしたと頻繁に言っていましたが、うまくいかなかったと思います。", "target": "My friend was often saying she tried to fix it, but I think it was not working.", "score": 8},
+        {"known": "彼は直そうとしたと言いましたが、私は難しいと思います。", "target": "He said he tried to fix it, but I think it is difficult.", "score": 8},
+        {"known": "彼は話そうとしたと言いましたが、私は難しいと思います。", "target": "He said he tried to talk, but I think it is difficult.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "〜してから",
+      "target": "since we",
+      "components": [
+        {"known": "〜して", "target": "since"},
+        {"known": "から", "target": "we"}
+      ],
+      "build": [
+        {"known": "〜してから", "target": "since we"},
+        {"known": "直そうとしてから", "target": "since we tried to fix it"},
+        {"known": "話してから", "target": "since we talked"},
+        {"known": "会いたいと言ってから", "target": "since we wanted to meet"}
+      ],
+      "use": [
+        {"known": "直そうとしてからうまくいかないと彼女に言いました。", "target": "I said to her it is not working since we tried to fix it.", "score": 8},
+        {"known": "もちろん話してからうまくいっていると私の友達は言いました。", "target": "My friend said of course it is working since we talked.", "score": 8},
+        {"known": "彼女は直そうとしてから問題があると言いましたが、私は大丈夫だと思います。", "target": "She said there is a problem since we tried to fix it, but I think it is okay.", "score": 8},
+        {"known": "私の友達は話してから幸せだと頻繁に言っていました。", "target": "My friend was often saying she is happy since we talked.", "score": 8},
+        {"known": "直そうとしてから何もうまくいかないようです。", "target": "Nothing seems to be working since we tried to fix it.", "score": 9},
+        {"known": "もちろん直そうとしてからうまくいかないようですと彼女は言いました。", "target": "She said of course it seems to be not working since we tried to fix it.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "M",
+      "known": "何もうまくいかないようです",
+      "target": "Nothing seems to be working",
+      "components": [
+        {"known": "何も", "target": "Nothing seems"},
+        {"known": "うまくいかないようです", "target": "to be working"}
+      ],
+      "build": [
+        {"known": "何もうまくいかないようです", "target": "Nothing seems to be working"},
+        {"known": "何も問題ないようです", "target": "Nothing seems to be a problem"},
+        {"known": "何もいいようです", "target": "Nothing seems to be good"},
+        {"known": "何もできないようです", "target": "Nothing seems to be difficult"}
+      ],
+      "use": [
+        {"known": "何もうまくいかないようですと彼女に言いましたが、私は問題があると思います。", "target": "I said to her nothing seems to be working, but I think there is a problem.", "score": 8},
+        {"known": "もちろん何もうまくいかないようですと私の友達は言いました。", "target": "My friend said of course nothing seems to be working.", "score": 8},
+        {"known": "彼女は何もうまくいかないようですと言いましたが、私は大丈夫だと思います。", "target": "She said nothing seems to be working, but I think it is okay.", "score": 8},
+        {"known": "私の友達は何もうまくいかないようですと頻繁に言っていました。", "target": "My friend was often saying nothing seems to be working.", "score": 8},
+        {"known": "直そうとしてから何もうまくいかないようです。", "target": "Nothing seems to be working since we tried to fix it.", "score": 9},
+        {"known": "彼は何もうまくいかないようですと言いましたが、私は直したいと思います。", "target": "He said nothing seems to be working, but I think I want to fix it.", "score": 8}
+      ]
+    }
+  ]
+}

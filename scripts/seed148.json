@@ -1,0 +1,144 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 148,
+  "known_text": "私が答えられなかった時、彼はあまり辛抱強くありませんでした。",
+  "target_text": "He wasn't very patient when I couldn't answer.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "辛抱強い",
+      "target": "patient",
+      "build": [
+        {"known": "辛抱強い", "target": "patient"},
+        {"known": "辛抱強くない", "target": "not patient"},
+        {"known": "辛抱強くなりたい", "target": "want to be patient"},
+        {"known": "辛抱強かった", "target": "was patient"}
+      ],
+      "use": [
+        {"known": "私は辛抱強くなりたいと彼女に言いましたが、難しかったと思います。", "target": "I said to her I want to be patient, but I think it was difficult.", "score": 8},
+        {"known": "もちろん彼女は辛抱強いと私の友達は言いました。", "target": "My friend said of course she is patient.", "score": 7},
+        {"known": "彼女は辛抱強くないと言いましたが、私は彼女が辛抱強いと思います。", "target": "She said she is not patient, but I think she is patient.", "score": 8},
+        {"known": "私の友達は辛抱強くなりたいと頻繁に言っていましたが、私は難しいと思います。", "target": "My friend was often saying she wanted to be patient, but I think it is difficult.", "score": 8},
+        {"known": "彼は辛抱強かったと言いましたが、私は問題があると思います。", "target": "He said he was patient, but I think there is a problem.", "score": 8},
+        {"known": "もちろん私は辛抱強いですと彼女は言いました。", "target": "She said of course I'm patient.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "答える",
+      "target": "answer",
+      "build": [
+        {"known": "答える", "target": "answer"},
+        {"known": "答えたい", "target": "want to answer"},
+        {"known": "答えられない", "target": "can't answer"},
+        {"known": "答えた", "target": "did answer"}
+      ],
+      "use": [
+        {"known": "私は答えたいと彼女に言いましたが、難しかったと思います。", "target": "I said to her I want to answer, but I think it was difficult.", "score": 8},
+        {"known": "もちろん私は答えたいと私の友達は言いました。", "target": "My friend said of course I want to answer.", "score": 7},
+        {"known": "彼女は答えられないと言いましたが、私は彼女が答えられると思います。", "target": "She said she can't answer, but I think she can answer.", "score": 8},
+        {"known": "私の友達は答えたいと頻繁に言っていましたが、私は難しいと思います。", "target": "My friend was often saying she wanted to answer, but I think it is difficult.", "score": 8},
+        {"known": "彼は答えたと言いましたが、私は問題だと思います。", "target": "He said he did answer, but I think it is a problem.", "score": 8},
+        {"known": "もちろん私は答えたいですと彼女は言いました。", "target": "She said of course I want to answer.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "あまり〜ない",
+      "target": "wasn't very",
+      "components": [
+        {"known": "あまり", "target": "wasn't"},
+        {"known": "〜ない", "target": "very"}
+      ],
+      "build": [
+        {"known": "あまり〜ない", "target": "wasn't very"},
+        {"known": "あまり辛抱強くない", "target": "wasn't very patient"},
+        {"known": "あまり幸せではない", "target": "wasn't very happy"},
+        {"known": "あまり親切ではない", "target": "wasn't very kind"}
+      ],
+      "use": [
+        {"known": "彼はあまり辛抱強くなかったと彼女に言いましたが、私は問題があると思います。", "target": "I said to her he wasn't very patient, but I think there is a problem.", "score": 8},
+        {"known": "もちろん彼女はあまり幸せではなかったと私の友達は言いました。", "target": "My friend said of course she wasn't very happy.", "score": 8},
+        {"known": "彼女はあまり親切ではなかったと言いましたが、私は彼女が親切だと思います。", "target": "She said she wasn't very kind, but I think she is kind.", "score": 8},
+        {"known": "私の友達はあまり辛抱強くなかったと頻繁に言っていました。", "target": "My friend was often saying she wasn't very patient.", "score": 8},
+        {"known": "彼はあまり幸せではなかったと言いましたが、私は大丈夫だと思います。", "target": "He said he wasn't very happy, but I think it is okay.", "score": 8},
+        {"known": "もちろん彼はあまり親切ではなかったと彼女は言いました。", "target": "She said of course he wasn't very kind.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "〜できなかった",
+      "target": "couldn't",
+      "components": [
+        {"known": "〜でき", "target": "could"},
+        {"known": "なかった", "target": "n't"}
+      ],
+      "build": [
+        {"known": "〜できなかった", "target": "couldn't"},
+        {"known": "答えられなかった", "target": "couldn't answer"},
+        {"known": "会えなかった", "target": "couldn't meet"},
+        {"known": "話せなかった", "target": "couldn't talk"}
+      ],
+      "use": [
+        {"known": "私は答えられなかったと彼女に言いましたが、難しかったと思います。", "target": "I said to her I couldn't answer, but I think it was difficult.", "score": 8},
+        {"known": "もちろん私は会えなかったと私の友達は言いました。", "target": "My friend said of course I couldn't meet.", "score": 7},
+        {"known": "彼女は話せなかったと言いましたが、私は大丈夫だと思います。", "target": "She said she couldn't talk, but I think it is okay.", "score": 8},
+        {"known": "私の友達は答えられなかったと頻繁に言っていましたが、私は問題だと思います。", "target": "My friend was often saying she couldn't answer, but I think it is a problem.", "score": 8},
+        {"known": "彼は会えなかったと言いましたが、私は難しいと思います。", "target": "He said he couldn't meet, but I think it is difficult.", "score": 8},
+        {"known": "もちろん私は話せなかったと彼女は言いました。", "target": "She said of course I couldn't talk.", "score": 7}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "彼は〜ありませんでした",
+      "target": "He wasn't",
+      "components": [
+        {"known": "彼は", "target": "He"},
+        {"known": "〜ありませんでした", "target": "wasn't"}
+      ],
+      "build": [
+        {"known": "彼は〜ありませんでした", "target": "He wasn't"},
+        {"known": "彼はあまり辛抱強くありませんでした", "target": "He wasn't very patient"},
+        {"known": "彼はあまり幸せではありませんでした", "target": "He wasn't very happy"},
+        {"known": "彼はあまり親切ではありませんでした", "target": "He wasn't very kind"}
+      ],
+      "use": [
+        {"known": "彼はあまり辛抱強くありませんでしたと彼女に言いました。", "target": "I said to her he wasn't very patient.", "score": 7},
+        {"known": "もちろん彼はあまり幸せではありませんでしたと私の友達は言いました。", "target": "My friend said of course he wasn't very happy.", "score": 8},
+        {"known": "彼女は彼はあまり親切ではありませんでしたと言いましたが、私は大丈夫だと思います。", "target": "She said he wasn't very kind, but I think it is okay.", "score": 8},
+        {"known": "私の友達は彼はあまり辛抱強くありませんでしたと頻繁に言っていました。", "target": "My friend was often saying he wasn't very patient.", "score": 8},
+        {"known": "彼は辛抱強くありませんでしたと言いましたが、私は問題だと思います。", "target": "He said he wasn't patient, but I think it is a problem.", "score": 8},
+        {"known": "もちろん彼はあまり親切ではありませんでしたと彼女は言いました。", "target": "She said of course he wasn't very kind.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "〜時、私が",
+      "target": "when I",
+      "components": [
+        {"known": "〜時", "target": "when"},
+        {"known": "私が", "target": "I"}
+      ],
+      "build": [
+        {"known": "〜時、私が", "target": "when I"},
+        {"known": "答えられなかった時", "target": "when I couldn't answer"},
+        {"known": "緊張している時", "target": "when I was feeling nervous"},
+        {"known": "話していた時", "target": "when I was talking"}
+      ],
+      "use": [
+        {"known": "私が答えられなかった時、彼はあまり辛抱強くありませんでしたと彼女に言いました。", "target": "I said to her he wasn't very patient when I couldn't answer.", "score": 8},
+        {"known": "もちろん私が緊張している時、彼女は親切でしたと私の友達は言いました。", "target": "My friend said of course she was kind when I was feeling nervous.", "score": 8},
+        {"known": "彼女は私が話していた時、彼はあまり辛抱強くなかったと言いました。", "target": "She said he wasn't very patient when I was talking.", "score": 8},
+        {"known": "私の友達は私が答えられなかった時、彼女は親切だったと頻繁に言っていました。", "target": "My friend was often saying she was kind when I couldn't answer.", "score": 8},
+        {"known": "私が答えられなかった時、彼はあまり辛抱強くありませんでした。", "target": "He wasn't very patient when I couldn't answer.", "score": 9},
+        {"known": "彼は私が緊張している時、彼女は幸せだったと言いました。", "target": "He said she was happy when I was feeling nervous.", "score": 8}
+      ]
+    }
+  ]
+}

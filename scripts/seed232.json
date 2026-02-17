@@ -1,0 +1,169 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 232,
+  "known_text": "I know an old woman who can remember the answer.",
+  "target_text": "我认识一个老女人能记住答案。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I know.", "target": "我认识。"},
+        {"known": "I remember.", "target": "我记住。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "I know an old woman who can help us with this work.", "target": "我认识一个老女人，她能帮我们做这个工作。", "score": 8},
+        {"known": "That young man asked me if I can remember what happened.", "target": "那个年轻的男人问我是不是能记住发生了什么。", "score": 7},
+        {"known": "If the old man can tell me, I would be very happy.", "target": "如果那个老人能告诉我的话，我会很开心。", "score": 8},
+        {"known": "Everyone told me they want to know the answer too.", "target": "大家都告诉我他们也想知道答案。", "score": 7},
+        {"known": "Would that old woman be able to help me with this?", "target": "那个老女人能帮我做这个吗？", "score": 8},
+        {"known": "She hopes I can remember what the young man said.", "target": "她希望我能记住那个年轻的男人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "know (be acquainted with)",
+      "target": "认识",
+      "components": [
+        {"known": "recognize", "target": "认"},
+        {"known": "know", "target": "识"}
+      ],
+      "build": [
+        {"known": "Know.", "target": "认识。"},
+        {"known": "I know.", "target": "我认识。"},
+        {"known": "Know someone.", "target": "认识人。"},
+        {"known": "Know an old woman.", "target": "认识一个老女人。"}
+      ],
+      "use": [
+        {"known": "I know an old woman who can help us with this.", "target": "我认识一个老女人，她能帮我们做这个。", "score": 8},
+        {"known": "That young man knows everyone at the office.", "target": "那个年轻的男人认识办公室的大家。", "score": 7},
+        {"known": "If you know someone who remembers, please tell me.", "target": "如果你认识记住的人的话，请告诉我。", "score": 8},
+        {"known": "She just started to know people at the meeting.", "target": "她刚开始认识开会的人。", "score": 7},
+        {"known": "Everyone here knows that old woman from the office.", "target": "这里的大家都认识那个办公室的老女人。", "score": 8},
+        {"known": "Do you know the young man who spoke at the meeting?", "target": "你认识在开会说话的那个年轻的男人吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "one (measure)",
+      "target": "一个",
+      "components": [
+        {"known": "one", "target": "一"},
+        {"known": "measure word", "target": "个"}
+      ],
+      "build": [
+        {"known": "One.", "target": "一个。"},
+        {"known": "A (thing).", "target": "一个。"},
+        {"known": "An old woman.", "target": "一个老女人。"},
+        {"known": "Know an old woman.", "target": "认识一个老女人。"}
+      ],
+      "use": [
+        {"known": "I know an old woman who can remember what happened.", "target": "我认识一个老女人，她能记住发生了什么。", "score": 8},
+        {"known": "That young man is waiting for us to give him an answer.", "target": "那个年轻的男人在等我们给他一个答案。", "score": 7},
+        {"known": "If you need an answer now, you should ask that old woman.", "target": "如果你现在需要一个答案的话，你要问那个老女人。", "score": 8},
+        {"known": "She will give him an answer when she sees him tomorrow.", "target": "她明天见他的时候会给他一个答案。", "score": 7},
+        {"known": "Everyone is waiting to hear an answer about the work.", "target": "大家都在等听工作的一个答案。", "score": 8},
+        {"known": "What kind of answer do you think the old woman will give?", "target": "你觉得那个老女人会给什么样的一个答案？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "old woman/elderly woman",
+      "target": "老女人",
+      "components": [
+        {"known": "old", "target": "老"},
+        {"known": "female", "target": "女"},
+        {"known": "person", "target": "人"}
+      ],
+      "build": [
+        {"known": "Old woman.", "target": "老女人。"},
+        {"known": "An old woman.", "target": "一个老女人。"},
+        {"known": "That old woman.", "target": "那个老女人。"},
+        {"known": "Know an old woman.", "target": "认识一个老女人。"}
+      ],
+      "use": [
+        {"known": "I know an old woman who works with that young man.", "target": "我认识一个老女人，她和那个年轻的男人一起工作。", "score": 8},
+        {"known": "That old woman wants to practise speaking more.", "target": "那个老女人想更多练习说话。", "score": 7},
+        {"known": "If the old woman can help, we should ask her now.", "target": "如果那个老女人能帮忙的话，我们现在要问她。", "score": 8},
+        {"known": "He saw an old woman at the meeting yesterday.", "target": "他昨天在开会见了一个老女人。", "score": 7},
+        {"known": "Everyone thinks that old woman remembers a lot.", "target": "大家都觉得那个老女人记住很多。", "score": 8},
+        {"known": "Which old woman do you think can remember the answer?", "target": "你觉得哪个老女人能记住答案？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "can/able to",
+      "target": "能",
+      "build": [
+        {"known": "Can.", "target": "能。"},
+        {"known": "Able to.", "target": "能。"},
+        {"known": "She can.", "target": "她能。"},
+        {"known": "Can remember.", "target": "能记住。"}
+      ],
+      "use": [
+        {"known": "I know an old woman who can remember everything we said.", "target": "我认识一个老女人，她能记住我们说的一切。", "score": 8},
+        {"known": "That young man asked if we are able to come tomorrow.", "target": "那个年轻的男人问我们是不是能明天来。", "score": 7},
+        {"known": "If you are able to remember, please tell us the answer.", "target": "如果你能记住的话，请告诉我们答案。", "score": 8},
+        {"known": "I hope the old woman is able to help us with this.", "target": "我希望那个老女人能帮我们做这个。", "score": 7},
+        {"known": "Everyone can help if they are able to find the time.", "target": "如果他们能找到时间，大家都可以帮忙。", "score": 8},
+        {"known": "Are you able to remember what the young man said?", "target": "你能记住那个年轻的男人说了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "remember",
+      "target": "记住",
+      "components": [
+        {"known": "record", "target": "记"},
+        {"known": "hold", "target": "住"}
+      ],
+      "build": [
+        {"known": "Remember.", "target": "记住。"},
+        {"known": "Can remember.", "target": "能记住。"},
+        {"known": "She remembers.", "target": "她记住。"},
+        {"known": "Remember the answer.", "target": "记住答案。"}
+      ],
+      "use": [
+        {"known": "I know an old woman who can remember what happened.", "target": "我认识一个老女人，她能记住发生了什么。", "score": 8},
+        {"known": "That young man hopes you can remember his name.", "target": "那个年轻的男人希望你能记住他的名字。", "score": 7},
+        {"known": "If you remember the answer, please tell us now.", "target": "如果你记住答案的话，请现在告诉我们。", "score": 8},
+        {"known": "She just said she remembers what the old man told her.", "target": "她刚说她记住那个老人告诉她的东西。", "score": 7},
+        {"known": "Everyone here remembers what happened at the meeting.", "target": "这里的大家都记住开会发生了什么。", "score": 8},
+        {"known": "Can you remember when the young woman started working?", "target": "你能记住那个年轻的女人什么时候开始工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "M",
+      "known": "answer (solution)",
+      "target": "答案",
+      "components": [
+        {"known": "reply", "target": "答"},
+        {"known": "case", "target": "案"}
+      ],
+      "build": [
+        {"known": "Answer.", "target": "答案。"},
+        {"known": "The answer.", "target": "答案。"},
+        {"known": "Remember the answer.", "target": "记住答案。"},
+        {"known": "Know the answer.", "target": "知道答案。"}
+      ],
+      "use": [
+        {"known": "I know an old woman who can remember the right answer.", "target": "我认识一个老女人，她能记住对的答案。", "score": 8},
+        {"known": "That young man is waiting for us to give him the answer.", "target": "那个年轻的男人在等我们给他答案。", "score": 7},
+        {"known": "If you need the answer now, you should ask that old woman.", "target": "如果你现在需要答案的话，你要问那个老女人。", "score": 8},
+        {"known": "She will give him the answer when she sees him tomorrow.", "target": "她明天见他的时候会给他答案。", "score": 7},
+        {"known": "Everyone is waiting to hear the answer about the work.", "target": "大家都在等听工作的答案。", "score": 8},
+        {"known": "What kind of answer do you think the old woman remembers?", "target": "你觉得那个老女人记住什么样的答案？", "score": 8}
+      ]
+    }
+  ]
+}

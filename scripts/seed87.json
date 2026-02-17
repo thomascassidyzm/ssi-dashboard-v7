@@ -1,0 +1,148 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 87,
+  "known_text": "They are people I don't know.",
+  "target_text": "Het zijn mensen die ik niet ken.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "it",
+      "target": "het",
+      "build": [
+        {"known": "it", "target": "het"},
+        {"known": "they are", "target": "het zijn"},
+        {"known": "it is", "target": "het is"},
+        {"known": "it was", "target": "het was"}
+      ],
+      "use": [
+        {"known": "They are people who don't agree with what I said.", "target": "Het zijn mensen die het niet eens zijn met wat ik zei.", "score": 8},
+        {"known": "It was not possible for me to know those people.", "target": "Het was niet mogelijk om die mensen te leren kennen.", "score": 8},
+        {"known": "They are friends who want to start learning Dutch.", "target": "Het zijn vrienden die Nederlands willen beginnen leren.", "score": 8},
+        {"known": "It is not sure when those people want to start.", "target": "Het is niet zeker wanneer die mensen willen beginnen.", "score": 8},
+        {"known": "They are people who said something about my friend.", "target": "Het zijn mensen die iets over mijn vriend zeiden.", "score": 8},
+        {"known": "It was unfortunately not possible to wait for them.", "target": "Het was helaas niet mogelijk om op die mensen te wachten.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "are [plural]",
+      "target": "zijn",
+      "build": [
+        {"known": "are", "target": "zijn"},
+        {"known": "they are", "target": "het zijn"},
+        {"known": "we are", "target": "wij zijn"},
+        {"known": "are not", "target": "zijn niet"}
+      ],
+      "use": [
+        {"known": "They are people who want to learn Dutch with us.", "target": "Het zijn mensen die Nederlands willen leren met iedereen.", "score": 8},
+        {"known": "We are not sure when those people want to start.", "target": "Wij zijn niet zeker wanneer die mensen willen beginnen.", "score": 8},
+        {"known": "They are friends who I know from learning Dutch.", "target": "Het zijn vrienden die ik ken van Nederlands leren.", "score": 8},
+        {"known": "We are ready to do interesting things with those people.", "target": "Wij zijn klaar om interessante dingen te doen met die mensen.", "score": 8},
+        {"known": "They are people who don't want to wait for everyone.", "target": "Het zijn mensen die niet op iedereen willen wachten.", "score": 8},
+        {"known": "We are the people who agree with what she said.", "target": "Wij zijn de mensen die het eens zijn met wat zij zei.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "people",
+      "target": "mensen",
+      "build": [
+        {"known": "people", "target": "mensen"},
+        {"known": "the people", "target": "de mensen"},
+        {"known": "those people", "target": "die mensen"},
+        {"known": "are people", "target": "zijn mensen"}
+      ],
+      "use": [
+        {"known": "They are people I don't know.", "target": "Het zijn mensen die ik niet ken.", "score": 9},
+        {"known": "The people I know don't agree with what he said.", "target": "De mensen die ik ken zijn het niet eens met wat hij zei.", "score": 8},
+        {"known": "Those people want to start learning Dutch with me.", "target": "Die mensen willen beginnen met Nederlands leren met me.", "score": 8},
+        {"known": "I am looking for people who want to do it with me.", "target": "Ik zoek mensen die het met me willen doen.", "score": 8},
+        {"known": "The people who said that are not sure about it.", "target": "De mensen die dat zeiden zijn er niet zeker van.", "score": 8},
+        {"known": "Unfortunately, those people were not ready to start.", "target": "Helaas waren die mensen niet klaar om te beginnen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "that/who",
+      "target": "die",
+      "build": [
+        {"known": "that", "target": "die"},
+        {"known": "who", "target": "die"},
+        {"known": "people who", "target": "mensen die"},
+        {"known": "friends who", "target": "vrienden die"}
+      ],
+      "use": [
+        {"known": "They are people I don't know.", "target": "Het zijn mensen die ik niet ken.", "score": 9},
+        {"known": "The friends who I know want to learn Dutch.", "target": "De vrienden die ik ken willen Nederlands leren.", "score": 8},
+        {"known": "Those are the people who said something about it.", "target": "Dat zijn de mensen die iets over het zei.", "score": 8},
+        {"known": "I know the people who don't agree with her.", "target": "Ik ken de mensen die het niet met haar eens zijn.", "score": 8},
+        {"known": "I am looking for friends who want to start now.", "target": "Ik zoek vrienden die nu willen beginnen.", "score": 8},
+        {"known": "The people who are not ready want to start now.", "target": "De mensen die niet klaar zijn willen nu beginnen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "I",
+      "target": "ik",
+      "build": [
+        {"known": "I", "target": "ik"},
+        {"known": "I don't", "target": "ik niet"},
+        {"known": "I know", "target": "ik ken"},
+        {"known": "I am", "target": "ik ben"}
+      ],
+      "use": [
+        {"known": "They are people I don't know.", "target": "Het zijn mensen die ik niet ken.", "score": 9},
+        {"known": "I am looking for people who want to learn Dutch.", "target": "Ik zoek mensen die Nederlands willen leren.", "score": 8},
+        {"known": "I don't agree with what those people said about her.", "target": "Ik ben het niet eens met wat die mensen over haar zeiden.", "score": 8},
+        {"known": "I know the people who don't want to wait.", "target": "Ik ken de mensen die niet willen wachten.", "score": 8},
+        {"known": "I am not sure if those people are ready to start.", "target": "Ik ben niet zeker of die mensen klaar zijn om te beginnen.", "score": 8},
+        {"known": "I was not ready to do it with those people.", "target": "Ik was niet klaar om het met die mensen te doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "not",
+      "target": "niet",
+      "build": [
+        {"known": "not", "target": "niet"},
+        {"known": "don't know", "target": "niet ken"},
+        {"known": "not ready", "target": "niet klaar"},
+        {"known": "not sure", "target": "niet zeker"}
+      ],
+      "use": [
+        {"known": "They are people I don't know.", "target": "Het zijn mensen die ik niet ken.", "score": 9},
+        {"known": "Those people are not ready to start with it.", "target": "Die mensen zijn niet klaar om te beginnen.", "score": 8},
+        {"known": "I am not sure if she knows those people.", "target": "Ik ben niet zeker of zij die mensen kent.", "score": 8},
+        {"known": "It was not possible for me to know everyone.", "target": "Het was niet mogelijk om iedereen te leren kennen.", "score": 8},
+        {"known": "She is not the person who said that about him.", "target": "Zij is niet de persoon die dat over hem zei.", "score": 8},
+        {"known": "Unfortunately, he does not know those people.", "target": "Helaas kent hij die mensen niet.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "know [people]",
+      "target": "ken",
+      "build": [
+        {"known": "know", "target": "ken"},
+        {"known": "I know", "target": "ik ken"},
+        {"known": "don't know", "target": "ken niet"},
+        {"known": "know you", "target": "ken je"}
+      ],
+      "use": [
+        {"known": "They are people I don't know.", "target": "Het zijn mensen die ik niet ken.", "score": 9},
+        {"known": "Do you know the people who said that about me?", "target": "Ken je de mensen die dat over me zeiden?", "score": 8},
+        {"known": "I know everyone who wants to learn Dutch.", "target": "Ik ken iedereen die Nederlands wil leren.", "score": 8},
+        {"known": "She doesn't know those people who were not ready.", "target": "Zij kent die mensen niet die niet klaar waren.", "score": 8},
+        {"known": "I know the friends who agree with what you said.", "target": "Ik ken de vrienden die het eens zijn met wat je zei.", "score": 8},
+        {"known": "Unfortunately, I don't know many people here.", "target": "Helaas ken ik niet veel mensen hier.", "score": 8}
+      ]
+    }
+  ]
+}

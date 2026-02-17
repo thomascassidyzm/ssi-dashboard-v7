@@ -1,0 +1,164 @@
+{
+  "course_code": "eng_for_spa",
+  "seed_number": 26,
+  "known_text": "Me gusta sentirme como si estuviera casi listo para irme.",
+  "target_text": "I like feeling as if I'm nearly ready to go.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "me gusta",
+      "target": "I like",
+      "components": [
+        {"known": "me", "target": "I"},
+        {"known": "gusta", "target": "like"}
+      ],
+      "build": [
+        {"known": "me gusta", "target": "I like"},
+        {"known": "me gusta hablar", "target": "I like speaking"},
+        {"known": "me gusta aprender", "target": "I like learning"},
+        {"known": "no me gusta", "target": "I don't like"}
+      ],
+      "use": [
+        {"known": "Me gusta hablar inglés con personas que hablan inglés.", "target": "I like speaking English with people who speak English.", "score": 8},
+        {"known": "Me gusta aprender inglés porque quiero conocer a personas.", "target": "I like learning English because I want to meet people.", "score": 8},
+        {"known": "No me gusta hablar inglés muy pronto.", "target": "I don't like speaking English very soon.", "score": 7},
+        {"known": "Me gusta poder recordar inglés fácilmente.", "target": "I like to be able to remember English easily.", "score": 8},
+        {"known": "¿Te gusta hablar inglés con todos los demás?", "target": "Do you like speaking English with everyone else?", "score": 8},
+        {"known": "Me gusta ayudar a personas que quieren aprender inglés.", "target": "I like to help people who want to learn English.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "sentirme",
+      "target": "feeling",
+      "build": [
+        {"known": "sentirme", "target": "feeling"},
+        {"known": "me gusta sentirme", "target": "I like feeling"},
+        {"known": "sentirme bien", "target": "feeling well"},
+        {"known": "voy a sentirme", "target": "I'm going to be feeling"}
+      ],
+      "use": [
+        {"known": "Me gusta sentirme bien antes de hablar inglés.", "target": "I like feeling well before speaking English.", "score": 7},
+        {"known": "Voy a sentirme bien porque voy a hablar inglés.", "target": "I'm going to be feeling well because I'm going to speak English.", "score": 7},
+        {"known": "Me gusta sentirme bien antes de que tenga que hablar inglés.", "target": "I like feeling well before I have to speak English.", "score": 8},
+        {"known": "No me gusta sentirme bien muy pronto.", "target": "I don't like feeling well very soon.", "score": 6},
+        {"known": "Me gusta sentirme bien antes de ayudar a personas.", "target": "I like feeling well before I help people.", "score": 7},
+        {"known": "¿Te gusta sentirte bien antes de hablar inglés?", "target": "Do you like feeling well before speaking English?", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "como si",
+      "target": "as if",
+      "components": [
+        {"known": "como", "target": "as"},
+        {"known": "si", "target": "if"}
+      ],
+      "build": [
+        {"known": "como si", "target": "as if"},
+        {"known": "sentirme como si", "target": "feeling as if"},
+        {"known": "hablar como si", "target": "speaking as if"},
+        {"known": "como si estuviera", "target": "as if I'm"}
+      ],
+      "use": [
+        {"known": "Me gusta sentirme como si estuviera hablando inglés muy bien.", "target": "I like feeling as if I'm speaking English very well.", "score": 8},
+        {"known": "Me gusta sentirme como si estuviera aprendiendo inglés muy rápidamente.", "target": "I like feeling as if I'm learning English very quickly.", "score": 8},
+        {"known": "No me gusta sentirme como si no estuviera hablando inglés.", "target": "I don't like feeling as if I'm not speaking English.", "score": 7},
+        {"known": "Me gusta sentirme como si estuviera hablando con personas.", "target": "I like feeling as if I'm speaking with people.", "score": 8},
+        {"known": "Me gusta sentirme como si estuviera empezando a hablar más inglés.", "target": "I like feeling as if I'm speaking more English.", "score": 8},
+        {"known": "Me gusta hablar como si estuviera hablando con todos.", "target": "I like speaking as if I'm speaking with everyone.", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "estuviera",
+      "target": "I'm",
+      "components": [
+        {"known": "yo", "target": "I"},
+        {"known": "estuviera", "target": "am"}
+      ],
+      "build": [
+        {"known": "estuviera", "target": "I'm"},
+        {"known": "como si estuviera", "target": "as if I'm"},
+        {"known": "estuviera hablando", "target": "I'm speaking"},
+        {"known": "estuviera aprendiendo", "target": "I'm learning"}
+      ],
+      "use": [
+        {"known": "Me gusta sentirme como si estuviera hablando inglés muy bien.", "target": "I like feeling as if I'm speaking English very well.", "score": 8},
+        {"known": "Me gusta sentirme como si estuviera aprendiendo inglés muy rápidamente.", "target": "I like feeling as if I'm learning English very quickly.", "score": 8},
+        {"known": "No me gusta sentirme como si estuviera hablando muy pronto.", "target": "I don't like feeling as if I'm speaking very soon.", "score": 7},
+        {"known": "Me gusta sentirme como si estuviera hablando con personas.", "target": "I like feeling as if I'm speaking with people.", "score": 8},
+        {"known": "Me gusta sentirme como si estuviera hablando más inglés.", "target": "I like feeling as if I'm speaking more English.", "score": 8},
+        {"known": "Me gusta hablar como si estuviera hablando con todos los demás.", "target": "I like speaking as if I'm speaking with everyone else.", "score": 7}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "casi",
+      "target": "nearly",
+      "build": [
+        {"known": "casi", "target": "nearly"},
+        {"known": "casi todo", "target": "nearly all"},
+        {"known": "casi hablando", "target": "nearly speaking"},
+        {"known": "casi aprendiendo", "target": "nearly learning"}
+      ],
+      "use": [
+        {"known": "Me gusta sentirme como si estuviera casi hablando inglés muy bien.", "target": "I like feeling as if I'm nearly speaking English very well.", "score": 7},
+        {"known": "Estoy casi aprendiendo inglés muy bien.", "target": "I'm nearly learning English very well.", "score": 7},
+        {"known": "Voy a estar casi hablando inglés antes de que tenga que ir.", "target": "I'm going to be nearly speaking English before I have to go.", "score": 7},
+        {"known": "Me gusta sentirme como si estuviera casi hablando.", "target": "I like feeling as if I'm nearly speaking.", "score": 7},
+        {"known": "Quiero estar casi hablando inglés antes de que tenga que ir.", "target": "I want to be nearly speaking English before I have to go.", "score": 8},
+        {"known": "Ella casi quiere hablar inglés conmigo.", "target": "She nearly wants to speak English with me.", "score": 7}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "listo para",
+      "target": "ready to",
+      "components": [
+        {"known": "listo", "target": "ready"},
+        {"known": "para", "target": "to"}
+      ],
+      "build": [
+        {"known": "listo para", "target": "ready to"},
+        {"known": "listo para hablar", "target": "ready to speak"},
+        {"known": "casi listo para", "target": "nearly ready to"},
+        {"known": "estoy listo para", "target": "I'm ready to"}
+      ],
+      "use": [
+        {"known": "Me gusta sentirme como si estuviera casi listo para hablar inglés.", "target": "I like feeling as if I'm nearly ready to speak English.", "score": 8},
+        {"known": "Quiero estar listo para hablar inglés antes de que tenga que ir.", "target": "I want to be ready to speak English before I have to go.", "score": 8},
+        {"known": "Voy a estar casi listo para empezar a hablar inglés muy pronto.", "target": "I'm going to be nearly ready to start speaking English very soon.", "score": 8},
+        {"known": "Me gusta sentirme listo para ayudar a personas que hablan inglés.", "target": "I like feeling ready to help people who speak English.", "score": 8},
+        {"known": "Ella está casi lista para empezar a aprender inglés conmigo.", "target": "She is nearly ready to start learning English with me.", "score": 8},
+        {"known": "¿Estás listo para hablar inglés con todos los demás?", "target": "Are you ready to speak English with everyone else?", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "irme",
+      "target": "go",
+      "build": [
+        {"known": "irme", "target": "go"},
+        {"known": "tengo que irme", "target": "I have to go"},
+        {"known": "listo para irme", "target": "ready to go"},
+        {"known": "casi listo para irme", "target": "nearly ready to go"}
+      ],
+      "use": [
+        {"known": "Me gusta sentirme como si estuviera casi listo para irme.", "target": "I like feeling as if I'm nearly ready to go.", "score": 8},
+        {"known": "Quiero estar listo para irme antes de que tenga que hablar inglés.", "target": "I want to be ready to go before I have to speak English.", "score": 8},
+        {"known": "Voy a estar casi listo para irme muy pronto.", "target": "I'm going to be nearly ready to go very soon.", "score": 8},
+        {"known": "Me gusta sentirme listo para irme antes de hablar inglés.", "target": "I like feeling ready to go before speaking English.", "score": 7},
+        {"known": "Ella está casi lista para irme con todos.", "target": "She is nearly ready to go with everyone.", "score": 6},
+        {"known": "¿Estás listo para irme con todos los demás?", "target": "Are you ready to go with everyone else?", "score": 7}
+      ]
+    }
+  ]
+}

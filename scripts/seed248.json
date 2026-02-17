@@ -1,0 +1,101 @@
+{
+  "course_code": "ara_for_eng",
+  "seed_number": 248,
+  "target_text": "اعتقدت أن الفيلم كان سيئاً تماماً وأريد أن أسترد أموالي.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I thought that",
+      "target": "اعتقدت أن",
+      "components": [
+        {"known": "I thought", "target": "اعتقدت"},
+        {"known": "that", "target": "أن"}
+      ],
+      "build": [
+        {"known": "I thought that", "target": "اعتقدت أن"},
+        {"known": "I thought that it was", "target": "اعتقدت أنه كان"},
+        {"known": "I thought that she", "target": "اعتقدت أنها"},
+        {"known": "I thought that he", "target": "اعتقدت أنه"}
+      ],
+      "use": [
+        {"known": "I thought that she wanted to learn Arabic with me.", "target": "اعتقدت أنها أرادت أن تتعلم العربية معي.", "score": 8},
+        {"known": "I thought that he wanted to speak with you yesterday.", "target": "اعتقدت أنه أراد أن يتكلم معك بالأمس.", "score": 8},
+        {"known": "I thought that she was trying to help me today.", "target": "اعتقدت أنها كانت تحاول أن تساعدني اليوم.", "score": 8},
+        {"known": "I thought that he did not want that.", "target": "اعتقدت أنه لم يرد ذلك.", "score": 8},
+        {"known": "I thought that she was too busy to help me.", "target": "اعتقدت أنها كانت مشغولة جداً أن تساعدني.", "score": 8},
+        {"known": "I thought that book was fairly good.", "target": "اعتقدت أن ذلك الكتاب كان جيداً إلى حد ما.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "the film",
+      "target": "الفيلم",
+      "build": [
+        {"known": "the film", "target": "الفيلم"},
+        {"known": "the film was", "target": "الفيلم كان"},
+        {"known": "I thought the film", "target": "اعتقدت أن الفيلم"},
+        {"known": "I thought the film was", "target": "اعتقدت أن الفيلم كان"}
+      ],
+      "use": [
+        {"known": "I thought the film was good but she did not think so.", "target": "اعتقدت أن الفيلم كان جيداً لكنها لم تعتقد ذلك.", "score": 8},
+        {"known": "She said the film was what she wanted yesterday.", "target": "قالت أن الفيلم كان ما أرادت بالأمس.", "score": 8},
+        {"known": "I thought the film was fairly good but he did not agree with me.", "target": "اعتقدت أن الفيلم كان جيداً إلى حد ما لكنه لم يرد ذلك.", "score": 9},
+        {"known": "He wanted the film but she did not want it at all.", "target": "أراد الفيلم لكنها لم ترد ذلك على الإطلاق.", "score": 8},
+        {"known": "I thought the film was what they wanted but I was not sure.", "target": "اعتقدت أن الفيلم كان ما أرادوا لكنني لم أكن متأكداً.", "score": 9},
+        {"known": "She said the film was very good this week but he did not agree.", "target": "قالت أن الفيلم كان جيداً جداً هذا الأسبوع لكنه لم يرد ذلك.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "was complete rubbish",
+      "target": "كان سيئاً تماماً",
+      "components": [
+        {"known": "was", "target": "كان"},
+        {"known": "bad", "target": "سيئاً"},
+        {"known": "completely", "target": "تماماً"}
+      ],
+      "build": [
+        {"known": "was complete rubbish", "target": "كان سيئاً تماماً"},
+        {"known": "the film was complete rubbish", "target": "الفيلم كان سيئاً تماماً"},
+        {"known": "it was completely bad", "target": "كان سيئاً تماماً"},
+        {"known": "I thought it was complete rubbish", "target": "اعتقدت أنه كان سيئاً تماماً"}
+      ],
+      "use": [
+        {"known": "I thought the film was complete rubbish.", "target": "اعتقدت أن الفيلم كان سيئاً تماماً.", "score": 8},
+        {"known": "She said that book was complete rubbish.", "target": "قالت أن ذلك الكتاب كان سيئاً تماماً.", "score": 8},
+        {"known": "I thought what he did was complete rubbish yesterday.", "target": "اعتقدت أن ما فعل كان سيئاً تماماً بالأمس.", "score": 8},
+        {"known": "He said the film was complete rubbish but I wanted it.", "target": "قال أن الفيلم كان سيئاً تماماً لكنني أردت ذلك.", "score": 9},
+        {"known": "I thought that was complete rubbish.", "target": "اعتقدت أن ذلك كان سيئاً تماماً.", "score": 7},
+        {"known": "She said it was complete rubbish but he did not agree.", "target": "قالت أنه كان سيئاً تماماً لكنه لم يرد ذلك.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "and I want to get my money back",
+      "target": "وأريد أن أسترد أموالي",
+      "components": [
+        {"known": "and I want", "target": "وأريد"},
+        {"known": "to get back", "target": "أن أسترد"},
+        {"known": "my money", "target": "أموالي"}
+      ],
+      "build": [
+        {"known": "and I want to get my money back", "target": "وأريد أن أسترد أموالي"},
+        {"known": "I want to get my money back", "target": "أريد أن أسترد أموالي"},
+        {"known": "and I want my money", "target": "وأريد أموالي"},
+        {"known": "to get my money back", "target": "أن أسترد أموالي"}
+      ],
+      "use": [
+        {"known": "I thought the film was complete rubbish and I want my money back.", "target": "اعتقدت أن الفيلم كان سيئاً تماماً وأريد أن أسترد أموالي.", "score": 8},
+        {"known": "It was complete rubbish and I want to get my money back.", "target": "كان سيئاً تماماً وأريد أن أسترد أموالي.", "score": 8},
+        {"known": "That was bad and I want to get my money back today.", "target": "كان ذلك سيئاً وأريد أن أسترد أموالي اليوم.", "score": 8},
+        {"known": "The film was bad and I want to get my money back.", "target": "الفيلم كان سيئاً وأريد أن أسترد أموالي.", "score": 8},
+        {"known": "She said it was rubbish and I want to get my money back.", "target": "قالت أنه كان سيئاً وأريد أن أسترد أموالي.", "score": 8},
+        {"known": "I want to get my money back because it was complete rubbish.", "target": "أريد أن أسترد أموالي لأنه كان سيئاً تماماً.", "score": 9}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 25,
+  "target_text": "Are you going to help me before I have to go?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "你会",
+      "target": "Are you going to",
+      "components": [
+        {"known": "你", "target": "Are you"},
+        {"known": "会", "target": "going to"}
+      ],
+      "build": [
+        {"known": "你会", "target": "Are you going to"},
+        {"known": "会", "target": "going to"},
+        {"known": "你会今天说英语", "target": "Are you going to speak English today"},
+        {"known": "你会很快学", "target": "Are you going to learn soon"}
+      ],
+      "use": [
+        {"known": "你会今天说英语吗？", "target": "Are you going to speak English today?", "score": 8},
+        {"known": "你会很快学吗？", "target": "Are you going to learn soon?", "score": 8},
+        {"known": "你会和我说英语吗？", "target": "Are you going to speak English with me?", "score": 8},
+        {"known": "你会和别人开始说英语很快吗？", "target": "Are you going to start speaking English with someone else soon?", "score": 9},
+        {"known": "你会今天见说英语的人吗？", "target": "Are you going to meet people who speak English today?", "score": 9},
+        {"known": "你会尽量努力今天和我学英语吗？", "target": "Are you going to learn English with me as hard as you can today?", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "帮我",
+      "target": "help me",
+      "components": [
+        {"known": "帮", "target": "help"},
+        {"known": "我", "target": "me"}
+      ],
+      "build": [
+        {"known": "帮我", "target": "help me"},
+        {"known": "帮", "target": "help"},
+        {"known": "你会帮我", "target": "Are you going to help me"},
+        {"known": "你会帮我很快", "target": "Are you going to help me soon"}
+      ],
+      "use": [
+        {"known": "你会帮我吗？", "target": "Are you going to help me?", "score": 8},
+        {"known": "你会帮我今天吗？", "target": "Are you going to help me today?", "score": 8},
+        {"known": "她想帮我。", "target": "She wants to help me.", "score": 8},
+        {"known": "你会帮我很快今天学英语吗？", "target": "Are you going to help me learn English soon today?", "score": 9},
+        {"known": "我不确定她能不能今天很快帮我学英语。", "target": "I'm not sure if she can help me learn English soon today.", "score": 9},
+        {"known": "因为我想帮她学英语今天。", "target": "Because I want to help her learn English today.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "之前",
+      "target": "before",
+      "build": [
+        {"known": "之前", "target": "before"},
+        {"known": "今天之前", "target": "before today"},
+        {"known": "很快之前", "target": "before soon"},
+        {"known": "你会帮我之前", "target": "Are you going to help me before"}
+      ],
+      "use": [
+        {"known": "你会之前帮我吗？", "target": "Are you going to help me before?", "score": 8},
+        {"known": "我想之前学。", "target": "I want to learn before.", "score": 8},
+        {"known": "她想之前说英语。", "target": "She wants to speak English before.", "score": 8},
+        {"known": "你会之前帮我学英语吗？", "target": "Are you going to help me learn English before?", "score": 9},
+        {"known": "因为我想之前见说英语的人。", "target": "Because I want to meet people who speak English before.", "score": 9},
+        {"known": "我不确定你能不能之前帮我学英语。", "target": "I'm not sure if you can help me learn English before.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "我要走",
+      "target": "I have to go",
+      "components": [
+        {"known": "我", "target": "I"},
+        {"known": "要走", "target": "have to go"}
+      ],
+      "build": [
+        {"known": "我要走", "target": "I have to go"},
+        {"known": "要走", "target": "have to go"},
+        {"known": "我要走之前", "target": "before I have to go"},
+        {"known": "你会帮我我要走之前", "target": "Are you going to help me before I have to go"}
+      ],
+      "use": [
+        {"known": "我要走。", "target": "I have to go.", "score": 8},
+        {"known": "我要走今天。", "target": "I have to go today.", "score": 8},
+        {"known": "因为我要走很快。", "target": "Because I have to go soon.", "score": 8},
+        {"known": "你会帮我我要走之前吗？", "target": "Are you going to help me before I have to go?", "score": 9},
+        {"known": "我不确定你能不能帮我我要走之前。", "target": "I'm not sure if you can help me before I have to go.", "score": 9},
+        {"known": "因为我要走之前想见说英语的人。", "target": "Because I want to meet people who speak English before I have to go.", "score": 9}
+      ]
+    }
+  ]
+}

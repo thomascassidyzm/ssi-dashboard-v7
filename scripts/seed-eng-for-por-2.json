@@ -1,0 +1,47 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 2,
+  "target_text": "I'm trying to learn.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Estou tentando",
+      "target": "I'm trying",
+      "components": [
+        {"known": "Estou", "target": "I'm"},
+        {"known": "tentando", "target": "trying"}
+      ],
+      "build": [
+        {"known": "Estou tentando", "target": "I'm trying"},
+        {"known": "Estou tentando falar", "target": "I'm trying to speak"},
+        {"known": "Estou tentando falar inglês", "target": "I'm trying to speak English"}
+      ],
+      "use": [
+        {"known": "Estou tentando falar inglês.", "target": "I'm trying to speak English.", "score": 7},
+        {"known": "Estou tentando falar com você.", "target": "I'm trying to speak with you.", "score": 7},
+        {"known": "Estou tentando falar inglês com você.", "target": "I'm trying to speak English with you.", "score": 8},
+        {"known": "Estou tentando falar inglês agora.", "target": "I'm trying to speak English now.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "aprender",
+      "target": "to learn",
+      "build": [
+        {"known": "aprender", "target": "to learn"},
+        {"known": "aprender inglês", "target": "to learn English"},
+        {"known": "Estou tentando aprender", "target": "I'm trying to learn"}
+      ],
+      "use": [
+        {"known": "Estou tentando aprender.", "target": "I'm trying to learn.", "score": 6},
+        {"known": "Eu quero aprender.", "target": "I want to learn.", "score": 6},
+        {"known": "Estou tentando aprender inglês.", "target": "I'm trying to learn English.", "score": 7},
+        {"known": "Eu quero aprender inglês.", "target": "I want to learn English.", "score": 7},
+        {"known": "Estou tentando aprender inglês com você.", "target": "I'm trying to learn English with you.", "score": 8},
+        {"known": "Eu quero aprender inglês com você agora.", "target": "I want to learn English with you now.", "score": 8}
+      ]
+    }
+  ]
+}

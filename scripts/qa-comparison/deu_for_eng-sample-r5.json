@@ -1,0 +1,911 @@
+{
+  "course_code": "deu_for_eng",
+  "is_eng_for_x": false,
+  "round": 5,
+  "seed_range": "all",
+  "description": "Single-agent consistent scoring - 100 random USE phrases",
+  "total_use_phrases": 5667,
+  "sample_size": 100,
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "73f8cedf-8cdb-4b1f-93dd-5e2d71738452",
+      "seed": 33,
+      "lego": 1,
+      "english": "how long are you learning German",
+      "other": "wie lange lernst du Deutsch",
+      "qa_score": null
+    },
+    {
+      "idx": 2,
+      "id": "867a6526-1104-4468-9df4-bb698b1966ec",
+      "seed": 123,
+      "lego": 4,
+      "english": "that's a good idea",
+      "other": "das ist eine gute Idee",
+      "qa_score": null
+    },
+    {
+      "idx": 3,
+      "id": "84e46e7f-8a2b-4de0-b6f1-c5ff901816fb",
+      "seed": 134,
+      "lego": 2,
+      "english": "it is not a way when one wants to learn German",
+      "other": "es ist kein Weg wenn man Deutsch lernen will",
+      "qa_score": null
+    },
+    {
+      "idx": 4,
+      "id": "ae0a3b08-62f1-4c70-804a-a2382f403c33",
+      "seed": 29,
+      "lego": 1,
+      "english": "I look forward a lot",
+      "other": "ich freue mich sehr",
+      "qa_score": null
+    },
+    {
+      "idx": 5,
+      "id": "7aec5fb6-8612-4f9f-b305-f880b4dce7c6",
+      "seed": 137,
+      "lego": 2,
+      "english": "it is more important to learn German today",
+      "other": "es ist wichtiger heute Deutsch zu lernen",
+      "qa_score": null
+    },
+    {
+      "idx": 6,
+      "id": "c68fdacb-0019-4c77-8a43-da8a4855c233",
+      "seed": 84,
+      "lego": 5,
+      "english": "I don't agree to what he said concerning my friend.",
+      "other": "Ich stimme dem nicht zu, was er über meinen Freund gesagt hat.",
+      "qa_score": null
+    },
+    {
+      "idx": 7,
+      "id": "2af95ca6-ed03-47b6-91b2-b262730df2cc",
+      "seed": 81,
+      "lego": 1,
+      "english": "When do you want to start to learn German?",
+      "other": "Wann willst du anfangen Deutsch zu lernen?",
+      "qa_score": null
+    },
+    {
+      "idx": 8,
+      "id": "c19035bc-63a8-4a35-aec9-4400eebe2d09",
+      "seed": 134,
+      "lego": 3,
+      "english": "that is not a problem today",
+      "other": "das ist heute kein Problem",
+      "qa_score": null
+    },
+    {
+      "idx": 9,
+      "id": "df67a0f4-1011-414d-8694-32b23bb537ea",
+      "seed": 17,
+      "lego": 1,
+      "english": "she wants to speak German with everyone else tomorrow",
+      "other": "sie will morgen Deutsch mit allen anderen sprechen",
+      "qa_score": null
+    },
+    {
+      "idx": 10,
+      "id": "853d0e95-e27a-4567-be46-dd3c81c4c3a4",
+      "seed": 251,
+      "lego": 3,
+      "english": "He said he won't tell me until after we finish.",
+      "other": "Er hat gesagt, dass er mir nicht sagt, bis nachdem wir fertig sind.",
+      "qa_score": null
+    },
+    {
+      "idx": 11,
+      "id": "a2197930-f7e2-4b58-af57-4f4735620965",
+      "seed": 218,
+      "lego": 2,
+      "english": "We saw friends on Sunday at the restaurant.",
+      "other": "Wir haben am Sonntag Freunde im Restaurant gesehen.",
+      "qa_score": null
+    },
+    {
+      "idx": 12,
+      "id": "9a7ce35d-e69e-4873-880f-7c7a5d4948a4",
+      "seed": 182,
+      "lego": 1,
+      "english": "I saw it somewhere",
+      "other": "ich habe es irgendwo gesehen",
+      "qa_score": null
+    },
+    {
+      "idx": 13,
+      "id": "cc0ac4ac-0a87-4194-9fe1-b574ab6c5892",
+      "seed": 244,
+      "lego": 2,
+      "english": "already learnt a lot",
+      "other": "schon viel gelernt",
+      "qa_score": null
+    },
+    {
+      "idx": 14,
+      "id": "eaf9cb8e-03e0-448a-b924-ba0f2c997032",
+      "seed": 211,
+      "lego": 3,
+      "english": "Nobody knew that they didn't want to discuss the problem.",
+      "other": "Niemand wusste, dass sie das Problem nicht besprechen wollten.",
+      "qa_score": null
+    },
+    {
+      "idx": 15,
+      "id": "ba6e31a1-9970-4424-b55d-103f55c02f97",
+      "seed": 260,
+      "lego": 2,
+      "english": "I had not the faintest idea that you were so good at that.",
+      "other": "Ich hatte nicht die geringste Idee, dass du so gut damit bist.",
+      "qa_score": null
+    },
+    {
+      "idx": 16,
+      "id": "4b1f85cb-6722-49ff-970c-92b42e262ad1",
+      "seed": 105,
+      "lego": 2,
+      "english": "I don't know why he didn't know what we were doing",
+      "other": "ich weiß nicht warum er nicht wusste was wir machen",
+      "qa_score": null
+    },
+    {
+      "idx": 17,
+      "id": "9cb8464e-050e-4533-9d7f-5e69456ca0ff",
+      "seed": 74,
+      "lego": 4,
+      "english": "I think that you have more German to learn with me because it's important",
+      "other": "ich denke, dass du mehr Deutsch mit mir zu lernen hast, weil es wichtig ist",
+      "qa_score": null
+    },
+    {
+      "idx": 18,
+      "id": "bb75d771-6ea0-4f55-a906-7b4ee6b49eb4",
+      "seed": 146,
+      "lego": 6,
+      "english": "I tried to do it but nothing worked any more",
+      "other": "ich habe versucht es zu machen aber nichts hat mehr funktioniert",
+      "qa_score": null
+    },
+    {
+      "idx": 19,
+      "id": "83ceaf72-e32f-4df4-b60b-a2afb90849d1",
+      "seed": 91,
+      "lego": 2,
+      "english": "It's difficult to think quickly enough in German.",
+      "other": "Es ist schwierig, schnell genug auf Deutsch zu denken.",
+      "qa_score": null
+    },
+    {
+      "idx": 20,
+      "id": "2fe94167-e657-46ac-9f41-36699860505d",
+      "seed": 166,
+      "lego": 2,
+      "english": "not unusual here",
+      "other": "nicht ungewöhnlich",
+      "qa_score": null
+    },
+    {
+      "idx": 21,
+      "id": "b215d993-7dc0-4049-a414-30ccfe319153",
+      "seed": 153,
+      "lego": 2,
+      "english": "I do not want it this way",
+      "other": "Ich will es nicht so",
+      "qa_score": null
+    },
+    {
+      "idx": 22,
+      "id": "7b96c1dc-6d8f-4653-b302-96f1b1a04908",
+      "seed": 215,
+      "lego": 2,
+      "english": "on Saturday night",
+      "other": "am Samstagabend",
+      "qa_score": null
+    },
+    {
+      "idx": 23,
+      "id": "6b9151e1-db03-42d5-bf82-f2c676d03a83",
+      "seed": 149,
+      "lego": 1,
+      "english": "I hope you finish soon because I need it",
+      "other": "ich hoffe, du wirst bald fertig, weil ich es brauche",
+      "qa_score": null
+    },
+    {
+      "idx": 24,
+      "id": "ac3200b5-d6d7-4e9e-8085-0c69e3add786",
+      "seed": 69,
+      "lego": 7,
+      "english": "He wanted it on this.",
+      "other": "Er wollte es darauf.",
+      "qa_score": null
+    },
+    {
+      "idx": 25,
+      "id": "c8f3fda7-6af5-43de-a8c7-337c575756cf",
+      "seed": 230,
+      "lego": 2,
+      "english": "I know a young man who is trying to help me.",
+      "other": "Ich kenne einen jungen Mann, der mir zu helfen versucht.",
+      "qa_score": null
+    },
+    {
+      "idx": 26,
+      "id": "101a5f49-154b-4f87-9975-3fc4e2509161",
+      "seed": 71,
+      "lego": 4,
+      "english": "We didn't want anyone to know the truth today.",
+      "other": "Wir wollten heute nicht, dass jemand die Wahrheit weiß.",
+      "qa_score": null
+    },
+    {
+      "idx": 27,
+      "id": "bc6ef24f-1da8-4840-b109-f96699b4ce08",
+      "seed": 162,
+      "lego": 1,
+      "english": "What do you think about it?",
+      "other": "Was denkst du darüber?",
+      "qa_score": null
+    },
+    {
+      "idx": 28,
+      "id": "b3906ebc-ab1e-4a93-b103-31c2e70846f0",
+      "seed": 256,
+      "lego": 3,
+      "english": "I think we will be finished in less than an hour.",
+      "other": "Ich denke, wir werden in weniger als einer Stunde fertig sein.",
+      "qa_score": null
+    },
+    {
+      "idx": 29,
+      "id": "5aa307ab-a72a-449b-b7ef-9278aac8512d",
+      "seed": 178,
+      "lego": 1,
+      "english": "I did not have time to do that.",
+      "other": "Ich hatte keine Zeit, das zu machen.",
+      "qa_score": null
+    },
+    {
+      "idx": 30,
+      "id": "6019343b-6cb8-4e76-abca-9e0de4448ae3",
+      "seed": 40,
+      "lego": 3,
+      "english": "I am here at the moment",
+      "other": "ich bin im Moment hier",
+      "qa_score": null
+    },
+    {
+      "idx": 31,
+      "id": "d5c4390e-67aa-43e4-bb7d-1a2537f01267",
+      "seed": 178,
+      "lego": 1,
+      "english": "I had no time for it",
+      "other": "ich hatte keine Zeit für das",
+      "qa_score": null
+    },
+    {
+      "idx": 32,
+      "id": "edb55a39-3fd8-4519-b81f-2556fafa1d1f",
+      "seed": 5,
+      "lego": 4,
+      "english": "I am trying to speak with someone else",
+      "other": "ich versuche mit jemand anderem zu sprechen",
+      "qa_score": null
+    },
+    {
+      "idx": 33,
+      "id": "68b8915a-3ade-4c19-9f5c-c1faa3d490f9",
+      "seed": 103,
+      "lego": 3,
+      "english": "we're not trying to hear many more words now",
+      "other": "wir versuchen jetzt nicht viel mehr Wörter zu hören",
+      "qa_score": null
+    },
+    {
+      "idx": 34,
+      "id": "74021cd0-db97-495d-a175-2fe9b3d51dc8",
+      "seed": 214,
+      "lego": 2,
+      "english": "I want to have a good time when we meet.",
+      "other": "Ich will eine gute Zeit haben, wenn wir uns treffen.",
+      "qa_score": null
+    },
+    {
+      "idx": 35,
+      "id": "8eaf9e15-d63d-43cf-8305-f3a58c433317",
+      "seed": 155,
+      "lego": 3,
+      "english": "That is a few minutes.",
+      "other": "Das sind ein paar Minuten.",
+      "qa_score": null
+    },
+    {
+      "idx": 36,
+      "id": "9f706818-ce06-4a7e-90d5-701e8ee0c887",
+      "seed": 171,
+      "lego": 2,
+      "english": "I hope that I can help you tomorrow.",
+      "other": "Ich hoffe, dass ich dir morgen helfen kann.",
+      "qa_score": null
+    },
+    {
+      "idx": 37,
+      "id": "16493aaf-c2fb-4f1c-9325-b172627092d3",
+      "seed": 11,
+      "lego": 1,
+      "english": "I would like to remember the whole sentence",
+      "other": "ich möchte mich an den ganzen Satz erinnern",
+      "qa_score": null
+    },
+    {
+      "idx": 38,
+      "id": "746383c8-79af-43d9-871b-5a0df24d4609",
+      "seed": 177,
+      "lego": 3,
+      "english": "I do not know where she wants to go.",
+      "other": "Ich weiß nicht, wohin sie gehen will.",
+      "qa_score": null
+    },
+    {
+      "idx": 39,
+      "id": "41d12e63-d9d5-4193-967b-8d87f99fe0ee",
+      "seed": 17,
+      "lego": 3,
+      "english": "I would like to find out what the answer is",
+      "other": "ich möchte herausfinden was die Antwort ist",
+      "qa_score": null
+    },
+    {
+      "idx": 40,
+      "id": "43797507-f411-44c5-917a-812ba095aa6b",
+      "seed": 234,
+      "lego": 3,
+      "english": "someone yesterday evening",
+      "other": "gestern Abend jemanden",
+      "qa_score": null
+    },
+    {
+      "idx": 41,
+      "id": "990f23bf-371a-4220-8f2f-1a86ddbeca31",
+      "seed": 234,
+      "lego": 2,
+      "english": "I met that man yesterday evening who wanted to help.",
+      "other": "Ich habe gestern Abend den Mann getroffen, der helfen wollte.",
+      "qa_score": null
+    },
+    {
+      "idx": 42,
+      "id": "d9579e0f-a3c4-4e5f-92f6-3e4f9d281d4a",
+      "seed": 136,
+      "lego": 3,
+      "english": "of course you can ask her today",
+      "other": "natürlich kannst du sie heute fragen",
+      "qa_score": null
+    },
+    {
+      "idx": 43,
+      "id": "0784d9e7-5363-46e5-ba85-4b20bb15ee67",
+      "seed": 195,
+      "lego": 1,
+      "english": "Where is the table now?",
+      "other": "Wo ist der Tisch jetzt hier?",
+      "qa_score": null
+    },
+    {
+      "idx": 44,
+      "id": "e6b04fb7-c527-4b38-aba9-e2071915cd12",
+      "seed": 46,
+      "lego": 3,
+      "english": "I have not thought about what is good for me today",
+      "other": "ich habe nicht darüber nachgedacht, was mir heute gut ist",
+      "qa_score": null
+    },
+    {
+      "idx": 45,
+      "id": "d9b88c8b-b71f-48a7-846a-6a5a4c55f8c3",
+      "seed": 54,
+      "lego": 1,
+      "english": "We wanted to find her bag yesterday.",
+      "other": "Wir wollten gestern ihre Tasche finden.",
+      "qa_score": null
+    },
+    {
+      "idx": 46,
+      "id": "1bb35220-2897-4b87-9ad9-debbc82626ef",
+      "seed": 112,
+      "lego": 2,
+      "english": "that was very interesting and I want to learn more",
+      "other": "das war sehr interessant und ich will mehr lernen",
+      "qa_score": null
+    },
+    {
+      "idx": 47,
+      "id": "f7f0d3e7-2b17-49a6-a257-ba6eab187f0a",
+      "seed": 65,
+      "lego": 3,
+      "english": "It is important to speak German with me today.",
+      "other": "Es ist wichtig, heute Deutsch mit mir zu sprechen.",
+      "qa_score": null
+    },
+    {
+      "idx": 48,
+      "id": "9335a64e-446d-4a04-8291-16651328a442",
+      "seed": 23,
+      "lego": 4,
+      "english": "she wants to start speaking German",
+      "other": "sie will anfangen Deutsch zu sprechen",
+      "qa_score": null
+    },
+    {
+      "idx": 49,
+      "id": "a0d49b36-0234-4de6-a6d5-6471d29b2bb1",
+      "seed": 126,
+      "lego": 2,
+      "english": "this work is changing how I think now",
+      "other": "diese Arbeit verändert wie ich jetzt denke",
+      "qa_score": null
+    },
+    {
+      "idx": 50,
+      "id": "de419c7f-0294-45be-b021-df8472515452",
+      "seed": 226,
+      "lego": 1,
+      "english": "The man has started to tell me what he wants.",
+      "other": "Der Mann hat angefangen mir zu sagen, was er will.",
+      "qa_score": null
+    },
+    {
+      "idx": 51,
+      "id": "29b60d35-5824-449d-9c6f-446ed267626d",
+      "seed": 173,
+      "lego": 1,
+      "english": "no thank you I cannot",
+      "other": "nein danke, ich kann nicht",
+      "qa_score": null
+    },
+    {
+      "idx": 52,
+      "id": "3c911472-d097-4124-9072-db1975ae2e77",
+      "seed": 69,
+      "lego": 5,
+      "english": "I want it this afternoon.",
+      "other": "Ich will es heute Nachmittag.",
+      "qa_score": null
+    },
+    {
+      "idx": 53,
+      "id": "23693fae-1fea-458a-a1a1-e0c5cec55198",
+      "seed": 153,
+      "lego": 3,
+      "english": "I would not have done that",
+      "other": "Ich hätte das nicht gemacht",
+      "qa_score": null
+    },
+    {
+      "idx": 54,
+      "id": "b96dd218-829e-4001-9195-5ee727cf4525",
+      "seed": 35,
+      "lego": 3,
+      "english": "she wants nothing this afternoon",
+      "other": "sie will heute Nachmittag nichts",
+      "qa_score": null
+    },
+    {
+      "idx": 55,
+      "id": "e187021f-eb51-4b81-a417-39ea201b760e",
+      "seed": 8,
+      "lego": 4,
+      "english": "I want to explain",
+      "other": "ich will erklären",
+      "qa_score": null
+    },
+    {
+      "idx": 56,
+      "id": "394fa487-1734-4a41-bf71-59bbffdcd786",
+      "seed": 169,
+      "lego": 2,
+      "english": "He wants that I do it.",
+      "other": "Er will, dass ich es mache.",
+      "qa_score": null
+    },
+    {
+      "idx": 57,
+      "id": "e21a16bb-7486-49ef-a2a5-31208dd03600",
+      "seed": 7,
+      "lego": 3,
+      "english": "I am going to try",
+      "other": "ich werde versuchen",
+      "qa_score": null
+    },
+    {
+      "idx": 58,
+      "id": "b1b2b707-d04c-45bb-8ace-5f1722087e0c",
+      "seed": 47,
+      "lego": 4,
+      "english": "I think that it is good to learn German",
+      "other": "ich denke, dass es gut ist, Deutsch zu lernen",
+      "qa_score": null
+    },
+    {
+      "idx": 59,
+      "id": "dada9016-0612-4658-a31f-adb7b595c14b",
+      "seed": 175,
+      "lego": 1,
+      "english": "What do you want me to tell you?",
+      "other": "Was willst du, dass ich dir sage?",
+      "qa_score": null
+    },
+    {
+      "idx": 60,
+      "id": "aa96bbf7-9941-408b-953d-24d38e1dc780",
+      "seed": 248,
+      "lego": 3,
+      "english": "She told me that it was complete rubbish.",
+      "other": "Sie hat mir gesagt, dass es völligen Unsinn war.",
+      "qa_score": null
+    },
+    {
+      "idx": 61,
+      "id": "e8392eab-0a94-4a78-92ad-ce779ca30f4a",
+      "seed": 26,
+      "lego": 5,
+      "english": "I am nearly ready",
+      "other": "ich bin fast fertig",
+      "qa_score": null
+    },
+    {
+      "idx": 62,
+      "id": "b95e3a34-c487-4498-9f04-1eda1a691555",
+      "seed": 52,
+      "lego": 7,
+      "english": "Do you know that he wanted his letter last week?",
+      "other": "Weißt du, dass er letzte Woche seinen Brief wollte?",
+      "qa_score": null
+    },
+    {
+      "idx": 63,
+      "id": "c2cc43aa-a8a9-4fe7-a207-909a10c161b9",
+      "seed": 229,
+      "lego": 1,
+      "english": "That woman is trying to give me an answer.",
+      "other": "Diese Frau versucht mir eine Antwort zu geben.",
+      "qa_score": null
+    },
+    {
+      "idx": 64,
+      "id": "133ca0e8-fbad-4939-a018-9bd1a55b35ae",
+      "seed": 53,
+      "lego": 5,
+      "english": "He wanted to write in the letter.",
+      "other": "Er wollte in den Brief schreiben.",
+      "qa_score": null
+    },
+    {
+      "idx": 65,
+      "id": "94ebfc4f-ed98-4a66-8d25-a4aca119a99a",
+      "seed": 247,
+      "lego": 3,
+      "english": "She told me that the food was fairly good yesterday.",
+      "other": "Sie hat mir gesagt, dass das Essen gestern ziemlich gut war.",
+      "qa_score": null
+    },
+    {
+      "idx": 66,
+      "id": "84a3de30-899e-422c-82cb-bac48004702a",
+      "seed": 125,
+      "lego": 3,
+      "english": "your idea was good",
+      "other": "deine Idee war gut",
+      "qa_score": null
+    },
+    {
+      "idx": 67,
+      "id": "5d6158a0-6c8e-48c3-ade0-3053a257b266",
+      "seed": 17,
+      "lego": 1,
+      "english": "she wants to learn German",
+      "other": "sie will Deutsch lernen",
+      "qa_score": null
+    },
+    {
+      "idx": 68,
+      "id": "a0305c70-9fe3-4284-8898-4993bd3548f3",
+      "seed": 208,
+      "lego": 2,
+      "english": "I didn't want to ask you about the word.",
+      "other": "Ich wollte dich nicht nach dem Wort fragen.",
+      "qa_score": null
+    },
+    {
+      "idx": 69,
+      "id": "4408dacf-b339-4471-afb5-30eed6c5596f",
+      "seed": 184,
+      "lego": 3,
+      "english": "I do not know if she is in the office today.",
+      "other": "Ich weiß nicht, ob sie heute im Büro ist.",
+      "qa_score": null
+    },
+    {
+      "idx": 70,
+      "id": "743dbbc1-3d50-4a8e-ac78-4c8cb9b5c195",
+      "seed": 76,
+      "lego": 3,
+      "english": "I am very happy that you have time to learn German with me today",
+      "other": "ich bin sehr zufrieden, dass du heute Zeit hast, Deutsch mit mir zu lernen",
+      "qa_score": null
+    },
+    {
+      "idx": 71,
+      "id": "86ee3dd6-78b2-438c-98d1-91bfe5fc4b06",
+      "seed": 89,
+      "lego": 2,
+      "english": "Unfortunately, I haven't done it yet.",
+      "other": "Leider habe ich es noch nicht gemacht.",
+      "qa_score": null
+    },
+    {
+      "idx": 72,
+      "id": "50c2455d-6116-43f2-83cd-840966fde5d3",
+      "seed": 251,
+      "lego": 3,
+      "english": "after we finish",
+      "other": "nachdem wir fertig sind",
+      "qa_score": null
+    },
+    {
+      "idx": 73,
+      "id": "207347e8-293b-4ac1-a2df-b7d220219e00",
+      "seed": 46,
+      "lego": 7,
+      "english": "to make mistakes",
+      "other": "Fehler zu machen",
+      "qa_score": null
+    },
+    {
+      "idx": 74,
+      "id": "bd52e24f-7f86-4893-99f0-1860e052edaf",
+      "seed": 46,
+      "lego": 7,
+      "english": "to make it better than yesterday",
+      "other": "es besser als gestern zu machen",
+      "qa_score": null
+    },
+    {
+      "idx": 75,
+      "id": "f4cf7035-252c-491d-b20e-d9892e9cd716",
+      "seed": 168,
+      "lego": 4,
+      "english": "I want to come and help.",
+      "other": "Ich will kommen und helfen.",
+      "qa_score": null
+    },
+    {
+      "idx": 76,
+      "id": "7a23a41b-84f3-4d54-a28d-76a4cd8e862b",
+      "seed": 71,
+      "lego": 2,
+      "english": "we wanted to learn",
+      "other": "wir wollten lernen",
+      "qa_score": null
+    },
+    {
+      "idx": 77,
+      "id": "c43067b9-2448-4cab-aa51-784fe6909f0f",
+      "seed": 4,
+      "lego": 5,
+      "english": "I am trying to speak in German",
+      "other": "ich versuche auf Deutsch zu sprechen",
+      "qa_score": null
+    },
+    {
+      "idx": 78,
+      "id": "9e3038b0-c938-40ae-9f7a-2cf65c1b3139",
+      "seed": 93,
+      "lego": 1,
+      "english": "it's time to learn German",
+      "other": "es ist Zeit Deutsch zu lernen",
+      "qa_score": null
+    },
+    {
+      "idx": 79,
+      "id": "ed911ed5-f490-4b05-9bd8-565d8dc1d435",
+      "seed": 105,
+      "lego": 1,
+      "english": "that is why I want to learn German",
+      "other": "deshalb will ich Deutsch lernen",
+      "qa_score": null
+    },
+    {
+      "idx": 80,
+      "id": "341485d0-5305-4978-b375-033adeb2e01a",
+      "seed": 144,
+      "lego": 7,
+      "english": "I wanted to do it",
+      "other": "ich wollte es machen",
+      "qa_score": null
+    },
+    {
+      "idx": 81,
+      "id": "c1253a51-5623-4808-a76e-3f85f11046f6",
+      "seed": 227,
+      "lego": 2,
+      "english": "That man is going to tell me what he wants.",
+      "other": "Dieser Mann wird mir sagen, was er will.",
+      "qa_score": null
+    },
+    {
+      "idx": 82,
+      "id": "bebe7d97-2eb1-49d8-883e-811bc96a654d",
+      "seed": 104,
+      "lego": 1,
+      "english": "we need to go home now because it's time",
+      "other": "wir müssen jetzt nach Hause gehen weil es Zeit ist",
+      "qa_score": null
+    },
+    {
+      "idx": 83,
+      "id": "1f804500-f2ab-4d50-8542-d1ac079a6dcc",
+      "seed": 26,
+      "lego": 3,
+      "english": "as if I want to go",
+      "other": "als ob ich gehen will",
+      "qa_score": null
+    },
+    {
+      "idx": 84,
+      "id": "e1e7fe8a-63d1-42a3-8d7c-865f32be8a08",
+      "seed": 12,
+      "lego": 1,
+      "english": "I would not like to try today",
+      "other": "ich möchte heute nicht versuchen",
+      "qa_score": null
+    },
+    {
+      "idx": 85,
+      "id": "0d731dda-3e40-4cde-b11d-d0b0a0dabf8d",
+      "seed": 110,
+      "lego": 3,
+      "english": "after we finish",
+      "other": "nachdem wir fertig sind",
+      "qa_score": null
+    },
+    {
+      "idx": 86,
+      "id": "41e7d3bb-2947-4b80-a7bd-81f0537d1539",
+      "seed": 52,
+      "lego": 9,
+      "english": "He wanted to write.",
+      "other": "Er wollte schreiben.",
+      "qa_score": null
+    },
+    {
+      "idx": 87,
+      "id": "846213c0-8254-4e26-90cf-2f9bdc542daf",
+      "seed": 170,
+      "lego": 4,
+      "english": "I know what you need",
+      "other": "ich weiß, was du brauchst",
+      "qa_score": null
+    },
+    {
+      "idx": 88,
+      "id": "58d57d3c-230e-40b4-8c74-c4f0c2d6076a",
+      "seed": 175,
+      "lego": 1,
+      "english": "What do you want from me?",
+      "other": "Was willst du von mir?",
+      "qa_score": null
+    },
+    {
+      "idx": 89,
+      "id": "4a099668-c92e-4769-95a2-f39f7cb2922a",
+      "seed": 195,
+      "lego": 4,
+      "english": "I try to find it here",
+      "other": "ich versuche es hier zu finden",
+      "qa_score": null
+    },
+    {
+      "idx": 90,
+      "id": "58719db4-ca45-483d-927a-a7d5e2f0860d",
+      "seed": 76,
+      "lego": 3,
+      "english": "I think you are happy",
+      "other": "ich denke, du bist zufrieden",
+      "qa_score": null
+    },
+    {
+      "idx": 91,
+      "id": "11a36834-12dc-4bdd-abdf-6cca5ac919ea",
+      "seed": 228,
+      "lego": 3,
+      "english": "to practise speaking",
+      "other": "sprechen zu üben",
+      "qa_score": null
+    },
+    {
+      "idx": 92,
+      "id": "65cdc3ef-ad5b-4ca8-8a43-2ecbb67bf415",
+      "seed": 149,
+      "lego": 8,
+      "english": "I hope that you understand",
+      "other": "ich hoffe, dass du verstehst",
+      "qa_score": null
+    },
+    {
+      "idx": 93,
+      "id": "841e7c2d-924c-4534-8a6e-4885a99c629a",
+      "seed": 148,
+      "lego": 4,
+      "english": "he is very patient",
+      "other": "er ist sehr geduldig",
+      "qa_score": null
+    },
+    {
+      "idx": 94,
+      "id": "05cb19fb-d42f-40bb-a4ec-59dbaceded2a",
+      "seed": 190,
+      "lego": 1,
+      "english": "I have some questions",
+      "other": "ich habe ein paar Fragen",
+      "qa_score": null
+    },
+    {
+      "idx": 95,
+      "id": "6389f4ae-bfc1-4b4b-90f5-cb7d6baad53e",
+      "seed": 249,
+      "lego": 2,
+      "english": "My father wanted you to help me yesterday.",
+      "other": "Mein Vater wollte, dass du mir gestern hilfst.",
+      "qa_score": null
+    },
+    {
+      "idx": 96,
+      "id": "fe2851d2-d117-4209-8898-a32d1ef1b4ae",
+      "seed": 208,
+      "lego": 2,
+      "english": "I didn't want to ask you if you needed help.",
+      "other": "Ich wollte dich nicht fragen, ob du Hilfe brauchst.",
+      "qa_score": null
+    },
+    {
+      "idx": 97,
+      "id": "0a93d52a-388a-42e5-a1bd-3e5d7e53e56a",
+      "seed": 221,
+      "lego": 4,
+      "english": "I watched a film for a while and then I went out.",
+      "other": "Ich habe eine Weile einen Film geschaut und dann bin ich ausgegangen.",
+      "qa_score": null
+    },
+    {
+      "idx": 98,
+      "id": "55580423-2c3a-4c76-9622-bbed9acb2620",
+      "seed": 232,
+      "lego": 4,
+      "english": "She is trying to remember the answer.",
+      "other": "Sie versucht sich an die Antwort zu erinnern.",
+      "qa_score": null
+    },
+    {
+      "idx": 99,
+      "id": "d85999b4-7d87-4b06-8718-8b663a0aed55",
+      "seed": 16,
+      "lego": 3,
+      "english": "I would like to speak with everyone else",
+      "other": "ich möchte mit allen anderen sprechen",
+      "qa_score": null
+    },
+    {
+      "idx": 100,
+      "id": "9cecf36a-dea6-4089-a3ee-ed8503db433c",
+      "seed": 152,
+      "lego": 1,
+      "english": "I would have tried to help you with that",
+      "other": "Ich hätte versucht, dir damit zu helfen",
+      "qa_score": null
+    }
+  ]
+}

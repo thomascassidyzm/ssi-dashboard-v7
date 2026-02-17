@@ -1,0 +1,74 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 19,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "Mais",
+      "target": "But",
+      "build": [
+        {"known": "Mais", "target": "But"},
+        {"known": "Mais je veux", "target": "But I want"},
+        {"known": "Mais elle veut", "target": "But she wants"},
+        {"known": "Mais nous voulons", "target": "But we want"}
+      ],
+      "use": [
+        {"known": "Mais je veux parler anglais maintenant.", "target": "But I want to speak English now.", "score": 8},
+        {"known": "Mais elle veut savoir quelle est la réponse.", "target": "But she wants to find out what the answer is.", "score": 9},
+        {"known": "Mais nous voulons nous retrouver à six heures ce soir.", "target": "But we want to meet at six o'clock this evening.", "score": 9},
+        {"known": "Mais il veut revenir et parler anglais plus tard.", "target": "But he wants to come back and speak English later on.", "score": 9},
+        {"known": "Mais j'aimerais pouvoir parler anglais très bien.", "target": "But I'd like to be able to speak English very well.", "score": 9},
+        {"known": "Mais tu parles anglais avec tout le monde.", "target": "But you speak English with everyone else.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "je ne veux pas",
+      "target": "I don't want",
+      "components": [
+        {"known": "je", "target": "I"},
+        {"known": "ne veux pas", "target": "don't want"}
+      ],
+      "build": [
+        {"known": "je ne veux pas", "target": "I don't want"},
+        {"known": "je ne veux pas parler", "target": "I don't want to speak"},
+        {"known": "Mais je ne veux pas", "target": "But I don't want"},
+        {"known": "je ne veux pas revenir", "target": "I don't want to come back"}
+      ],
+      "use": [
+        {"known": "Mais je ne veux pas parler anglais maintenant.", "target": "But I don't want to speak English now.", "score": 8},
+        {"known": "Je ne veux pas nous retrouver à six heures ce soir.", "target": "I don't want to meet at six o'clock this evening.", "score": 8},
+        {"known": "Je ne veux pas revenir et parler anglais plus tard.", "target": "I don't want to come back and speak English later on.", "score": 8},
+        {"known": "Mais je ne veux pas savoir quelle est la réponse.", "target": "But I don't want to find out what the answer is.", "score": 8},
+        {"known": "Je ne veux pas expliquer ce que je veux dire maintenant.", "target": "I don't want to explain what I mean now.", "score": 9},
+        {"known": "Mais je ne veux pas parler anglais avec tout le monde.", "target": "But I don't want to speak English with everyone else.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "arrêter de parler",
+      "target": "to stop talking",
+      "components": [
+        {"known": "arrêter", "target": "to stop"},
+        {"known": "de parler", "target": "talking"}
+      ],
+      "build": [
+        {"known": "arrêter de parler", "target": "to stop talking"},
+        {"known": "je ne veux pas arrêter de parler", "target": "I don't want to stop talking"},
+        {"known": "Mais je ne veux pas arrêter de parler", "target": "But I don't want to stop talking"},
+        {"known": "Elle veut arrêter de parler", "target": "She wants to stop talking"}
+      ],
+      "use": [
+        {"known": "Mais je ne veux pas arrêter de parler.", "target": "But I don't want to stop talking.", "score": 9},
+        {"known": "Je ne veux pas arrêter de parler anglais maintenant.", "target": "I don't want to stop talking English now.", "score": 8},
+        {"known": "Elle veut arrêter de parler et revenir plus tard.", "target": "She wants to stop talking and come back later on.", "score": 9},
+        {"known": "Mais je ne veux pas arrêter de parler anglais.", "target": "But I don't want to stop talking English.", "score": 8},
+        {"known": "Nous ne voulons pas arrêter de parler ce soir.", "target": "We don't want to stop talking this evening.", "score": 9},
+        {"known": "Est-ce que tu veux arrêter de parler maintenant?", "target": "Do you want to stop talking now?", "score": 9}
+      ]
+    }
+  ]
+}

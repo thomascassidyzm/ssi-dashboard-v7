@@ -1,0 +1,95 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 23,
+  "target_text": "I'm going to start talking more soon.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "很快",
+      "target": "soon",
+      "build": [
+        {"known": "很快", "target": "soon"},
+        {"known": "很快今天", "target": "soon today"},
+        {"known": "因为我想很快学", "target": "Because I want to learn soon"},
+        {"known": "她想很快回来", "target": "She wants to come back soon"}
+      ],
+      "use": [
+        {"known": "她想很快回来。", "target": "She wants to come back soon.", "score": 8},
+        {"known": "因为我想很快学。", "target": "Because I want to learn soon.", "score": 8},
+        {"known": "他能很快今天见你。", "target": "He can meet you soon today.", "score": 8},
+        {"known": "因为我想很快见说英语的人。", "target": "Because I want to meet people who speak English soon.", "score": 9},
+        {"known": "我不确定她想不想很快今天回来。", "target": "I'm not sure if she wants to come back soon today.", "score": 9},
+        {"known": "他想找出为什么你很快在学英语。", "target": "He wants to find out why you are learning English soon.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "我要",
+      "target": "I'm going to",
+      "components": [
+        {"known": "我", "target": "I'm"},
+        {"known": "要", "target": "going to"}
+      ],
+      "build": [
+        {"known": "我要", "target": "I'm going to"},
+        {"known": "要", "target": "going to"},
+        {"known": "我要很快说英语", "target": "I'm going to speak English soon"},
+        {"known": "我要很快今天学", "target": "I'm going to learn soon today"}
+      ],
+      "use": [
+        {"known": "我要很快说英语。", "target": "I'm going to speak English soon.", "score": 8},
+        {"known": "我要今天学英语。", "target": "I'm going to learn English today.", "score": 8},
+        {"known": "我要很快今天见你。", "target": "I'm going to meet you soon today.", "score": 8},
+        {"known": "我要很快今天见说英语的人。", "target": "I'm going to meet people who speak English soon today.", "score": 9},
+        {"known": "我要找出为什么她很快在学她的名字。", "target": "I'm going to find out why she is learning her name soon.", "score": 9},
+        {"known": "因为我要很快和别人说英语。", "target": "Because I'm going to speak English with someone else soon.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "开始",
+      "target": "start",
+      "build": [
+        {"known": "开始", "target": "start"},
+        {"known": "今天开始", "target": "start today"},
+        {"known": "我要很快开始", "target": "I'm going to start soon"},
+        {"known": "我要开始学英语", "target": "I'm going to start learning"}
+      ],
+      "use": [
+        {"known": "我要很快今天开始。", "target": "I'm going to start soon today.", "score": 8},
+        {"known": "我要开始学英语。", "target": "I'm going to start learning.", "score": 8},
+        {"known": "她想很快今天开始。", "target": "She wants to start soon today.", "score": 8},
+        {"known": "我要尽量努力开始学英语。", "target": "I'm going to start learning English as hard as I can.", "score": 9},
+        {"known": "因为我要很快开始和你说英语。", "target": "Because I'm going to start speaking English with you soon.", "score": 9},
+        {"known": "她想很快和别人开始学英语。", "target": "She wants to start learning English with someone else soon.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "多说话",
+      "target": "talking more",
+      "components": [
+        {"known": "说话", "target": "talking"},
+        {"known": "多", "target": "more"}
+      ],
+      "build": [
+        {"known": "多说话", "target": "talking more"},
+        {"known": "说话", "target": "talking"},
+        {"known": "开始多说话", "target": "start talking more"},
+        {"known": "我要开始多说话", "target": "I'm going to start talking more"}
+      ],
+      "use": [
+        {"known": "我要开始多说话。", "target": "I'm going to start talking more.", "score": 8},
+        {"known": "她想开始多说话。", "target": "She wants to start talking more.", "score": 8},
+        {"known": "因为我想多说话。", "target": "Because I want to be talking more.", "score": 8},
+        {"known": "我要很快和你开始多说话。", "target": "I'm going to start talking more with you soon.", "score": 9},
+        {"known": "因为我想尽量努力开始多说话。", "target": "Because I want to start talking more as hard as I can.", "score": 9},
+        {"known": "她想很快和别人开始多说话。", "target": "She wants to start talking more with everyone else soon.", "score": 9}
+      ]
+    }
+  ]
+}

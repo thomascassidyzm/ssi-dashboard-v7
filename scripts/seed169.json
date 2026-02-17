@@ -1,0 +1,55 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 169,
+  "target_text": "What do you want me to do?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Qu'est-ce que vous voulez",
+      "target": "What do you want",
+      "components": [
+        {"known": "Qu'est-ce que", "target": "What do"},
+        {"known": "vous voulez", "target": "you want"}
+      ],
+      "build": [
+        {"known": "Qu'est-ce que vous voulez", "target": "What do you want"},
+        {"known": "vous voulez", "target": "you want"},
+        {"known": "Qu'est-ce que tu veux", "target": "What do you want"},
+        {"known": "je veux", "target": "I want"}
+      ],
+      "use": [
+        {"known": "Qu'est-ce que vous voulez faire demain après-midi avec nous?", "target": "What do you want to do tomorrow afternoon with us?", "score": 8},
+        {"known": "Qu'est-ce que tu veux faire ce soir si tu as le temps?", "target": "What do you want to do this evening if you have time?", "score": 8},
+        {"known": "Je veux savoir ce que vous voulez faire le mois prochain", "target": "I want to know what you want to do next month", "score": 8},
+        {"known": "Qu'est-ce que vous voulez que nous fassions demain matin?", "target": "What do you want us to do tomorrow morning?", "score": 8},
+        {"known": "Qu'est-ce que tu veux faire ce soir avec moi?", "target": "What do you want to do this evening with me?", "score": 8},
+        {"known": "Je ne sais pas ce que vous voulez faire mais je suis là", "target": "I don't know what you want to do but I'm here", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "que je fasse",
+      "target": "me to do",
+      "components": [
+        {"known": "que je", "target": "me to"},
+        {"known": "fasse", "target": "do"}
+      ],
+      "build": [
+        {"known": "que je fasse", "target": "me to do"},
+        {"known": "que tu fasses", "target": "you to do"},
+        {"known": "que nous fassions", "target": "us to do"},
+        {"known": "vouloir que je fasse", "target": "want me to do"}
+      ],
+      "use": [
+        {"known": "Qu'est-ce que vous voulez que je fasse demain matin pour vous?", "target": "What do you want me to do tomorrow morning for you?", "score": 9},
+        {"known": "Je ne sais pas ce que tu veux que je fasse maintenant", "target": "I don't know what you want me to do now", "score": 8},
+        {"known": "Tu veux que je fasse quelque chose de différent demain?", "target": "Do you want me to do something different tomorrow?", "score": 8},
+        {"known": "Je ne comprends pas ce que vous voulez que je fasse ici", "target": "I don't understand what you want me to do here", "score": 8},
+        {"known": "Tu veux que je vienne t'aider plus tard cet après-midi?", "target": "Do you want me to come and help you later on this afternoon?", "score": 8},
+        {"known": "Je pense que tu veux que je fasse ça avant demain matin", "target": "I think that you want me to do that before tomorrow morning", "score": 8}
+      ]
+    }
+  ]
+}

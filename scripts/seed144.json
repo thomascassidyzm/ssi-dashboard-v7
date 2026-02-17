@@ -1,0 +1,120 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 144,
+  "known_text": "今朝起きたかった時間より早く起きました。",
+  "target_text": "I woke earlier than I wanted to this morning.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "起きた",
+      "target": "woke",
+      "build": [
+        {"known": "起きた", "target": "woke"},
+        {"known": "早く起きた", "target": "woke early"},
+        {"known": "起きたくなかった", "target": "didn't want to wake"},
+        {"known": "起きたかった", "target": "wanted to wake"}
+      ],
+      "use": [
+        {"known": "私は今朝早く起きましたと彼女に言いました。", "target": "I said to her I woke early this morning.", "score": 7},
+        {"known": "もちろん私は早く起きましたと私の友達は言いました。", "target": "My friend said of course I woke early.", "score": 8},
+        {"known": "彼女は早く起きたと言いましたが、難しかったと思います。", "target": "She said she woke early, but I think it was difficult.", "score": 8},
+        {"known": "私の友達は早く起きたと頻繁に言っていましたが、私は問題があると思います。", "target": "My friend was often saying she woke early, but I think there is a problem.", "score": 8},
+        {"known": "彼は早く起きたと言いましたが、私は難しいと思います。", "target": "He said he woke early, but I think it is difficult.", "score": 8},
+        {"known": "もちろん私は早く起きましたと彼女は言いました、私は感謝しています。", "target": "She said of course I woke early, I'm grateful.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "今朝",
+      "target": "this morning",
+      "build": [
+        {"known": "今朝", "target": "this morning"},
+        {"known": "今朝早く", "target": "early this morning"},
+        {"known": "今朝起きた", "target": "woke this morning"},
+        {"known": "今朝やった", "target": "did this morning"}
+      ],
+      "use": [
+        {"known": "私は今朝彼女に会いたいと思いますと彼は言いました。", "target": "He said I think I want to meet her this morning.", "score": 8},
+        {"known": "もちろん私は今朝早く起きましたと私の友達は言いました。", "target": "My friend said of course I woke early this morning.", "score": 8},
+        {"known": "彼女は今朝彼女に会いたかったと言いましたが、難しかったと思います。", "target": "She said she wanted to meet her this morning, but I think it was difficult.", "score": 8},
+        {"known": "私の友達は今朝早く起きたいと頻繁に言っていました。", "target": "My friend was often saying she wanted to wake early this morning.", "score": 8},
+        {"known": "彼は今朝問題があると言いましたが、私は大丈夫だと思います。", "target": "He said there is a problem this morning, but I think it's okay.", "score": 8},
+        {"known": "もちろん私は今朝それについて話したいですと彼女は言いました。", "target": "She said of course I want to talk about that this morning.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "より早く",
+      "target": "earlier than",
+      "components": [
+        {"known": "より", "target": "than"},
+        {"known": "早く", "target": "earlier"}
+      ],
+      "build": [
+        {"known": "より早く", "target": "earlier than"},
+        {"known": "〜より早く起きた", "target": "woke earlier than"},
+        {"known": "私より早く", "target": "earlier than me"},
+        {"known": "彼女より早く", "target": "earlier than her"}
+      ],
+      "use": [
+        {"known": "私は彼女より早く起きましたと私の友達に言いました。", "target": "I said to my friend I woke earlier than her.", "score": 8},
+        {"known": "もちろん私は私の友達より早く起きましたと彼女は言いました。", "target": "She said of course I woke earlier than my friend.", "score": 8},
+        {"known": "彼女は私より早く起きたと言いましたが、私は問題があると思います。", "target": "She said she woke earlier than me, but I think there is a problem.", "score": 8},
+        {"known": "私の友達は彼女より早く起きたいと頻繁に言っていました。", "target": "My friend was often saying she wanted to wake earlier than her.", "score": 8},
+        {"known": "彼は私より早く起きたと言いましたが、難しかったと思います。", "target": "He said he woke earlier than me, but I think it was difficult.", "score": 8},
+        {"known": "もちろん私は彼より早く起きましたと私の友達は言いました。", "target": "My friend said of course I woke earlier than he.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "起きたかった",
+      "target": "I wanted to",
+      "components": [
+        {"known": "起きた", "target": "I wanted"},
+        {"known": "かった", "target": "to"}
+      ],
+      "build": [
+        {"known": "起きたかった", "target": "I wanted to"},
+        {"known": "起きたかった時間", "target": "I wanted to wake"},
+        {"known": "早く起きたかった", "target": "I wanted to wake early"},
+        {"known": "今朝起きたかった", "target": "I wanted to wake this morning"}
+      ],
+      "use": [
+        {"known": "私は早く起きたかったですと彼女に言いました。", "target": "I said to her I wanted to wake early.", "score": 7},
+        {"known": "もちろん私は今朝起きたかったですと私の友達は言いました。", "target": "My friend said of course I wanted to wake this morning.", "score": 8},
+        {"known": "彼女は早く起きたかったと言いましたが、難しかったと思います。", "target": "She said she wanted to wake early, but I think it was difficult.", "score": 8},
+        {"known": "私の友達は今朝早く起きたかったと頻繁に言っていました。", "target": "My friend was often saying she wanted to wake early this morning.", "score": 8},
+        {"known": "彼は彼女より早く起きたかったと言いましたが、私は問題があると思います。", "target": "He said he wanted to wake earlier than her, but I think there is a problem.", "score": 8},
+        {"known": "もちろん私は今朝早く起きたかったですと彼女は言いました。", "target": "She said of course I wanted to wake early this morning.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "起きたかった時間より早く",
+      "target": "earlier than I wanted to",
+      "components": [
+        {"known": "起きたかった時間より", "target": "earlier than I wanted"},
+        {"known": "早く", "target": "to"}
+      ],
+      "build": [
+        {"known": "起きたかった時間より早く", "target": "earlier than I wanted to"},
+        {"known": "起きたかったより早く", "target": "earlier than I wanted to wake"},
+        {"known": "彼女が起きたかった時間より早く", "target": "earlier than she wanted to"},
+        {"known": "彼が起きたかった時間より早く", "target": "earlier than he wanted to"}
+      ],
+      "use": [
+        {"known": "私は起きたかった時間より早く起きましたと彼女に言いました。", "target": "I said to her I woke earlier than I wanted to.", "score": 8},
+        {"known": "もちろん私は起きたかった時間より早く起きましたと私の友達は言いました。", "target": "My friend said of course I woke earlier than I wanted to.", "score": 8},
+        {"known": "彼女は起きたかった時間より早く起きたと言いましたが、私は問題があると思います。", "target": "She said she woke earlier than she wanted to, but I think there is a problem.", "score": 8},
+        {"known": "私の友達は起きたかった時間より早く起きたと頻繁に言っていました。", "target": "My friend was often saying she woke earlier than she wanted to.", "score": 8},
+        {"known": "今朝起きたかった時間より早く起きました。", "target": "I woke earlier than I wanted to this morning.", "score": 9},
+        {"known": "彼は起きたかった時間より早く起きたと言いましたが、難しかったと思います。", "target": "He said he woke earlier than he wanted to, but I think it was difficult.", "score": 8}
+      ]
+    }
+  ]
+}

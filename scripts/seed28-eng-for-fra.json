@@ -1,0 +1,84 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 28,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "C'est utile",
+      "target": "It's useful",
+      "components": [
+        {"known": "C'est", "target": "It's"},
+        {"known": "utile", "target": "useful"}
+      ],
+      "build": [
+        {"known": "C'est utile", "target": "It's useful"},
+        {"known": "C'est utile de parler", "target": "It's useful to speak"},
+        {"known": "C'est utile d'apprendre", "target": "It's useful to learn"},
+        {"known": "C'est utile de commencer", "target": "It's useful to start"}
+      ],
+      "use": [
+        {"known": "C'est utile de parler anglais le plus souvent possible.", "target": "It's useful to speak English as often as possible.", "score": 9},
+        {"known": "C'est utile d'apprendre comment parler anglais très bien.", "target": "It's useful to learn how to speak English very well.", "score": 9},
+        {"known": "Parce que c'est utile de commencer à parler anglais maintenant.", "target": "Because it's useful to start talking English now.", "score": 9},
+        {"known": "C'est utile de rencontrer des gens qui parlent anglais.", "target": "It's useful to meet people who speak English.", "score": 9},
+        {"known": "C'est utile de répondre en anglais avant que tu doives partir.", "target": "It's useful to answer in English before you have to go.", "score": 9},
+        {"known": "C'est utile de partir et parler anglais le plus souvent.", "target": "It's useful to go and speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "commencer à parler",
+      "target": "to start talking",
+      "components": [
+        {"known": "commencer", "target": "to start"},
+        {"known": "à parler", "target": "talking"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "dès que",
+      "target": "as soon as",
+      "build": [
+        {"known": "dès que", "target": "as soon as"},
+        {"known": "dès que possible", "target": "as soon as possible"},
+        {"known": "C'est utile dès que", "target": "It's useful as soon as"},
+        {"known": "parler dès que", "target": "to speak as soon as"}
+      ],
+      "use": [
+        {"known": "C'est utile de parler anglais dès que tu peux.", "target": "It's useful to speak English as soon as you can.", "score": 9},
+        {"known": "Je veux commencer à parler anglais dès que possible.", "target": "I want to start talking English as soon as possible.", "score": 9},
+        {"known": "Parce que c'est utile d'apprendre anglais dès que tu es prêt.", "target": "Because it's useful to learn English as soon as you are ready.", "score": 9},
+        {"known": "C'est utile de répondre en anglais dès que tu le peux.", "target": "It's useful to answer in English as soon as you can.", "score": 9},
+        {"known": "J'aimerais parler anglais très bien dès que possible.", "target": "I'd like to speak English very well as soon as possible.", "score": 9},
+        {"known": "C'est utile de rencontrer des gens dès que tu es prêt.", "target": "It's useful to meet people as soon as you are ready.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "tu peux",
+      "target": "you can",
+      "components": [
+        {"known": "tu", "target": "you"},
+        {"known": "peux", "target": "can"}
+      ],
+      "build": [
+        {"known": "tu peux", "target": "you can"},
+        {"known": "dès que tu peux", "target": "as soon as you can"},
+        {"known": "tu peux parler", "target": "you can speak"},
+        {"known": "tu peux apprendre", "target": "you can learn"}
+      ],
+      "use": [
+        {"known": "C'est utile de commencer à parler dès que tu peux.", "target": "It's useful to start talking as soon as you can.", "score": 9},
+        {"known": "Parce que tu peux parler anglais très bien maintenant.", "target": "Because you can speak English very well now.", "score": 9},
+        {"known": "Tu peux apprendre comment répondre en anglais facilement.", "target": "You can learn how to answer in English easily.", "score": 9},
+        {"known": "Tu peux rencontrer des gens qui parlent anglais bientôt.", "target": "You can meet people who speak English soon.", "score": 9},
+        {"known": "Tu peux commencer à parler anglais dès que tu es prêt.", "target": "You can start talking English as soon as you are ready.", "score": 9},
+        {"known": "Tu peux parler anglais avec moi dès que tu es prêt.", "target": "You can speak English with me as soon as you are ready.", "score": 9}
+      ]
+    }
+  ]
+}

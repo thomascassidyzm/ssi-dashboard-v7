@@ -1,0 +1,88 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 57,
+  "known_text": "I can't remember how to say what I wanted to say.",
+  "target_text": "Ik kan me niet herinneren hoe ik moet zeggen wat ik wilde zeggen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "me/myself",
+      "target": "me",
+      "build": [
+        {"known": "me", "target": "me"},
+        {"known": "myself", "target": "me"},
+        {"known": "for me", "target": "voor mij"},
+        {"known": "with me", "target": "met mij"}
+      ],
+      "use": [
+        {"known": "I can give me more time to do it.", "target": "Ik kan me meer tijd geven om het te doen.", "score": 7},
+        {"known": "She wanted to give me a letter last week.", "target": "Zij wilde me vorige week een brief geven.", "score": 8},
+        {"known": "He must remember how to say it to me.", "target": "Hij moet onthouden hoe hij het aan mij moet zeggen.", "score": 8},
+        {"known": "I enjoy it when she speaks Dutch with me.", "target": "Ik vind het leuk als zij Nederlands met mij spreekt.", "score": 8},
+        {"known": "I can not remember how to say it to me.", "target": "Ik kan me niet herinneren hoe ik het moet zeggen.", "score": 7},
+        {"known": "She wanted to wake me up last week.", "target": "Zij wilde me vorige week wakker maken.", "score": 7}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to remember [recall]",
+      "target": "herinneren",
+      "build": [
+        {"known": "to remember", "target": "herinneren"},
+        {"known": "to recall", "target": "herinneren"},
+        {"known": "I remember", "target": "ik herinner me"},
+        {"known": "can remember", "target": "kan herinneren"}
+      ],
+      "use": [
+        {"known": "I can not remember how to say it now.", "target": "Ik kan me nu niet herinneren hoe ik het moet zeggen.", "score": 8},
+        {"known": "She wanted to remember how to do it last week.", "target": "Zij wilde zich vorige week herinneren hoe zij het moet doen.", "score": 7},
+        {"known": "He must remember how to say a few words.", "target": "Hij moet zich herinneren hoe hij een paar woorden moet zeggen.", "score": 8},
+        {"known": "I enjoy it when I can remember how to speak Dutch.", "target": "Ik vind het leuk als ik me kan herinneren hoe ik Nederlands moet spreken.", "score": 8},
+        {"known": "I can not remember what he wanted to say.", "target": "Ik kan me niet herinneren wat hij wilde zeggen.", "score": 8},
+        {"known": "She wanted to remember how to give you the letter.", "target": "Zij wilde zich herinneren hoe zij je de brief moet geven.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "what",
+      "target": "wat",
+      "build": [
+        {"known": "what", "target": "wat"},
+        {"known": "what I", "target": "wat ik"},
+        {"known": "what he", "target": "wat hij"},
+        {"known": "what you", "target": "wat je"}
+      ],
+      "use": [
+        {"known": "I can not remember what I must say.", "target": "Ik kan me niet herinneren wat ik moet zeggen.", "score": 8},
+        {"known": "She wanted to remember what he wanted to do.", "target": "Zij wilde zich herinneren wat hij wilde doen.", "score": 8},
+        {"known": "He must remember what I wanted to give you.", "target": "Hij moet zich herinneren wat ik je wilde geven.", "score": 7},
+        {"known": "I enjoy it when I can remember what I wanted to say.", "target": "Ik vind het leuk als ik me kan herinneren wat ik wilde zeggen.", "score": 8},
+        {"known": "I can not remember what she wanted to put in her bag.", "target": "Ik kan me niet herinneren wat zij in haar tas wilde stoppen.", "score": 8},
+        {"known": "She wanted to remember what you must say.", "target": "Zij wilde zich herinneren wat je moet zeggen.", "score": 7}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "wanted",
+      "target": "wilde",
+      "build": [
+        {"known": "wanted", "target": "wilde"},
+        {"known": "I wanted", "target": "ik wilde"},
+        {"known": "wanted to say", "target": "wilde zeggen"},
+        {"known": "wanted to do", "target": "wilde doen"}
+      ],
+      "use": [
+        {"known": "I can not remember what I wanted to say to you.", "target": "Ik kan me niet herinneren wat ik je wilde zeggen.", "score": 8},
+        {"known": "She wanted to remember how he wanted to do it.", "target": "Zij wilde zich herinneren hoe hij het wilde doen.", "score": 7},
+        {"known": "I can not remember what she wanted to give me.", "target": "Ik kan me niet herinneren wat zij mij wilde geven.", "score": 8},
+        {"known": "I enjoy it when I can remember what I wanted to say.", "target": "Ik vind het leuk als ik me kan herinneren wat ik wilde zeggen.", "score": 8},
+        {"known": "He wanted to remember what we wanted to do last week.", "target": "Hij wilde zich herinneren wat wij vorige week wilden doen.", "score": 7},
+        {"known": "I can't remember how to say what I wanted to say.", "target": "Ik kan me niet herinneren hoe ik moet zeggen wat ik wilde zeggen.", "score": 9}
+      ]
+    }
+  ]
+}

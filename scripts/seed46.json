@@ -1,0 +1,95 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 46,
+  "target_text": "But I don't worry about making mistakes.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "mas",
+      "target": "but",
+      "build": [
+        {"known": "mas", "target": "but"},
+        {"known": "mas eu", "target": "but I"},
+        {"known": "mas eu não", "target": "but I don't"},
+        {"known": "mas você", "target": "but you"}
+      ],
+      "use": [
+        {"known": "Eu quero saber tudo mas eu não preciso saber agora.", "target": "I want to know everything but I don't need to know now.", "score": 8},
+        {"known": "Eu preciso melhorar mas eu me sinto bem no momento.", "target": "I need to improve but I feel okay at the moment.", "score": 8},
+        {"known": "Eu estava pensando nisso mas eu não estava pensando em como responder.", "target": "I was thinking about it but I wasn't thinking about how to answer.", "score": 8},
+        {"known": "Eu não preciso saber tudo mas eu quero aprender mais.", "target": "I don't need to know everything but I want to learn more.", "score": 8},
+        {"known": "Eu me sinto cansado mas eu quero falar inglês com você.", "target": "I feel tired but I want to speak English with you.", "score": 8},
+        {"known": "Eu estava começando a me sentir melhor mas eu estou cansado agora.", "target": "I was starting to feel better but I'm tired now.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "eu não me preocupo",
+      "target": "I don't worry",
+      "components": [
+        {"known": "eu não", "target": "I don't"},
+        {"known": "me preocupo", "target": "worry"}
+      ],
+      "build": [
+        {"known": "eu não me preocupo", "target": "I don't worry"},
+        {"known": "eu me preocupo", "target": "I worry"},
+        {"known": "você se preocupa", "target": "do you worry"},
+        {"known": "não me preocupo", "target": "don't worry"}
+      ],
+      "use": [
+        {"known": "Eu não me preocupo se eu preciso aprender mais.", "target": "I don't worry if I need to learn more.", "score": 8},
+        {"known": "Eu me preocupo mas eu quero saber como melhorar.", "target": "I worry but I want to know how to improve.", "score": 8},
+        {"known": "Você se preocupa se você precisa saber tudo?", "target": "Do you worry if you need to know everything?", "score": 8},
+        {"known": "Eu não me preocupo no momento mas eu quero aprender mais.", "target": "I don't worry at the moment but I want to learn more.", "score": 8},
+        {"known": "Eu me preocupo mas eu me sinto melhor agora.", "target": "I worry but I feel better now.", "score": 7},
+        {"known": "Eu não me preocupo se eu não preciso responder agora.", "target": "I don't worry if I don't need to answer now.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "em",
+      "target": "about",
+      "build": [
+        {"known": "em", "target": "about"},
+        {"known": "preocupo em", "target": "worry about"},
+        {"known": "não me preocupo em", "target": "don't worry about"},
+        {"known": "pensando em", "target": "thinking about"}
+      ],
+      "use": [
+        {"known": "Eu não me preocupo em aprender tudo agora.", "target": "I don't worry about learning everything now.", "score": 8},
+        {"known": "Eu estava pensando em como melhorar ontem à noite.", "target": "I was thinking about how to improve last night.", "score": 8},
+        {"known": "Você se preocupa em saber tudo ou você está bem?", "target": "Do you worry about knowing everything or are you okay?", "score": 8},
+        {"known": "Eu não me preocupo em responder agora se eu preciso pensar.", "target": "I don't worry about answering now if I need to think.", "score": 8},
+        {"known": "Eu me preocupo em como falar inglês melhor.", "target": "I worry about how to speak English better.", "score": 7},
+        {"known": "Eu estava pensando em como aprender mais esta manhã.", "target": "I was thinking about how to learn more this morning.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "cometer erros",
+      "target": "making mistakes",
+      "components": [
+        {"known": "cometer", "target": "making"},
+        {"known": "erros", "target": "mistakes"}
+      ],
+      "build": [
+        {"known": "cometer erros", "target": "making mistakes"},
+        {"known": "preocupo em cometer erros", "target": "worry about making mistakes"},
+        {"known": "não me preocupo em cometer erros", "target": "don't worry about making mistakes"},
+        {"known": "estou cometendo erros", "target": "I'm making mistakes"}
+      ],
+      "use": [
+        {"known": "Mas eu não me preocupo em cometer erros.", "target": "But I don't worry about making mistakes.", "score": 9},
+        {"known": "Eu não me preocupo em cometer erros quando estou aprendendo inglês.", "target": "I don't worry about making mistakes when I'm learning English.", "score": 8},
+        {"known": "Você se preocupa em cometer erros quando você fala inglês?", "target": "Do you worry about making mistakes when you speak English?", "score": 8},
+        {"known": "Eu me preocupo em cometer erros mas eu quero aprender.", "target": "I worry about making mistakes but I want to learn.", "score": 8},
+        {"known": "Eu não me preocupo em cometer erros se eu preciso melhorar.", "target": "I don't worry about making mistakes if I need to improve.", "score": 8},
+        {"known": "Eu quero saber se estou cometendo erros ou não.", "target": "I want to know if I'm making mistakes or not.", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 150,
+  "known_text": "お名前を教えていただけますか？",
+  "target_text": "Can you tell me what your name is?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "名前",
+      "target": "name",
+      "build": [
+        {"known": "名前", "target": "name"},
+        {"known": "お名前", "target": "your name"},
+        {"known": "私の名前", "target": "my name"},
+        {"known": "名前は", "target": "name is"}
+      ],
+      "use": [
+        {"known": "私は私の名前を教えたいと彼女に言いました。", "target": "I said to her I want to tell my name.", "score": 7},
+        {"known": "もちろん私はお名前を知りたいと私の友達は言いました。", "target": "My friend said of course I want to know your name.", "score": 8},
+        {"known": "彼女は私の名前を聞きたいと言いましたが、私は問題があると思います。", "target": "She said she wanted to ask my name, but I think there is a problem.", "score": 8},
+        {"known": "私の友達は名前を知りたいと頻繁に言っていましたが、私は難しいと思います。", "target": "My friend was often saying she wanted to know the name, but I think it is difficult.", "score": 8},
+        {"known": "彼は私の名前を知りたいと言いましたが、私は大丈夫だと思います。", "target": "He said he wanted to know my name, but I think it is okay.", "score": 8},
+        {"known": "もちろん私はお名前を教えたいですと彼女は言いました。", "target": "She said of course I want to tell your name.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "教える",
+      "target": "tell me",
+      "components": [
+        {"known": "教え", "target": "tell"},
+        {"known": "る", "target": "me"}
+      ],
+      "build": [
+        {"known": "教える", "target": "tell me"},
+        {"known": "教えたい", "target": "want to tell me"},
+        {"known": "教えてくれる", "target": "will tell me"},
+        {"known": "教えない", "target": "not tell me"}
+      ],
+      "use": [
+        {"known": "私に教えてくださいと彼女に言いました。", "target": "I said to her tell me.", "score": 7},
+        {"known": "もちろん私に教えたいと私の友達は言いました。", "target": "My friend said of course I want to tell me.", "score": 7},
+        {"known": "彼女は私に教えたいと言いましたが、私は難しいと思います。", "target": "She said she wanted to tell me, but I think it is difficult.", "score": 8},
+        {"known": "私の友達は私に教えてと頻繁に言っていました。", "target": "My friend was often saying tell me.", "score": 8},
+        {"known": "彼は私に教えないと言いましたが、私は彼が教えると思います。", "target": "He said he won't tell me, but I think he will tell me.", "score": 8},
+        {"known": "もちろん私に教えたいですと彼女は言いました。", "target": "She said of course I want to tell me.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "〜いただけますか",
+      "target": "Can you",
+      "components": [
+        {"known": "〜いただけ", "target": "Can"},
+        {"known": "ますか", "target": "you"}
+      ],
+      "build": [
+        {"known": "〜いただけますか", "target": "Can you"},
+        {"known": "教えていただけますか", "target": "Can you tell me"},
+        {"known": "手伝っていただけますか", "target": "Can you help me"},
+        {"known": "話していただけますか", "target": "Can you talk"}
+      ],
+      "use": [
+        {"known": "教えていただけますかと彼女に聞きたいと思います。", "target": "I think I want to ask her can you tell me.", "score": 8},
+        {"known": "もちろん手伝っていただけますかと私の友達は聞きたいと言いました。", "target": "My friend said of course I want to ask can you help me.", "score": 8},
+        {"known": "彼女は話していただけますかと聞きたいと言いましたが、私は難しいと思います。", "target": "She said she wanted to ask can you talk, but I think it is difficult.", "score": 8},
+        {"known": "私の友達は教えていただけますかと頻繁に聞きたいと言っていました。", "target": "My friend was often saying she wanted to ask can you tell me.", "score": 8},
+        {"known": "彼は手伝っていただけますかと聞きたいと言いましたが、私は問題があると思います。", "target": "He said he wanted to ask can you help me, but I think there is a problem.", "score": 8},
+        {"known": "もちろん教えていただけますかと彼女は聞きたいと言いました。", "target": "She said of course I want to ask can you tell me.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "お名前を",
+      "target": "what your name",
+      "components": [
+        {"known": "お名前", "target": "what your"},
+        {"known": "を", "target": "name"}
+      ],
+      "build": [
+        {"known": "お名前を", "target": "what your name"},
+        {"known": "お名前を教える", "target": "tell what your name"},
+        {"known": "お名前を聞く", "target": "ask what your name"},
+        {"known": "お名前を知る", "target": "know what your name"}
+      ],
+      "use": [
+        {"known": "私はお名前を知りたいと彼女に言いました。", "target": "I said to her I want to know what your name is.", "score": 8},
+        {"known": "もちろんお名前を教えていただけますかと私の友達は言いました。", "target": "My friend said of course can you tell me what your name is.", "score": 8},
+        {"known": "彼女はお名前を知りたいと言いましたが、私は難しいと思います。", "target": "She said she wanted to know what your name is, but I think it is difficult.", "score": 8},
+        {"known": "私の友達はお名前を聞きたいと頻繁に言っていました。", "target": "My friend was often saying she wanted to ask what your name is.", "score": 8},
+        {"known": "彼はお名前を知りたいと言いましたが、私は問題があると思います。", "target": "He said he wanted to know what your name is, but I think there is a problem.", "score": 8},
+        {"known": "もちろんお名前を教えてくださいと彼女は言いました。", "target": "She said of course I want you to tell me what your name is.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "何ですか",
+      "target": "is",
+      "components": [
+        {"known": "何", "target": "i"},
+        {"known": "ですか", "target": "s"}
+      ],
+      "build": [
+        {"known": "何ですか", "target": "is"},
+        {"known": "名前は何ですか", "target": "what is your name"},
+        {"known": "問題は何ですか", "target": "what is the problem"},
+        {"known": "これは何ですか", "target": "what is this"}
+      ],
+      "use": [
+        {"known": "お名前は何ですかと彼女に聞きたいと思います。", "target": "I think I want to ask her what your name is.", "score": 8},
+        {"known": "もちろんお名前は何ですかと私の友達は聞きたいと言いました。", "target": "My friend said of course I want to ask what your name is.", "score": 8},
+        {"known": "彼女は問題は何ですかと聞きたいと言いましたが、私は難しいと思います。", "target": "She said she wanted to ask what the problem is, but I think it is difficult.", "score": 8},
+        {"known": "私の友達はこれは何ですかと頻繁に聞きたいと言っていました。", "target": "My friend was often saying she wanted to ask what this is.", "score": 8},
+        {"known": "お名前を教えていただけますか？", "target": "Can you tell me what your name is?", "score": 9},
+        {"known": "彼は問題は何ですかと聞きたいと言いましたが、私は大丈夫だと思います。", "target": "He said he wanted to ask what the problem is, but I think it is okay.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "お名前を教えていただけますか",
+      "target": "Can you tell me what your name is",
+      "components": [
+        {"known": "お名前を教えて", "target": "Can you tell me what your name"},
+        {"known": "いただけますか", "target": "is"}
+      ],
+      "build": [
+        {"known": "お名前を教えていただけますか", "target": "Can you tell me what your name is"},
+        {"known": "問題を教えていただけますか", "target": "Can you tell me what the problem is"},
+        {"known": "名前を教えていただけますか", "target": "Can you tell me the name"},
+        {"known": "何を教えていただけますか", "target": "Can you tell me what"}
+      ],
+      "use": [
+        {"known": "お名前を教えていただけますかと彼女に言いました。", "target": "I said to her can you tell me what your name is.", "score": 8},
+        {"known": "もちろんお名前を教えていただけますかと私の友達は言いました。", "target": "My friend said of course can you tell me what your name is.", "score": 8},
+        {"known": "彼女はお名前を教えていただけますかと言いましたが、私は難しいと思います。", "target": "She said can you tell me what your name is, but I think it is difficult.", "score": 8},
+        {"known": "私の友達はお名前を教えていただけますかと頻繁に言っていました。", "target": "My friend was often saying can you tell me what your name is.", "score": 8},
+        {"known": "お名前を教えていただけますか？", "target": "Can you tell me what your name is?", "score": 9},
+        {"known": "彼はお名前を教えていただけますかと言いましたが、私は問題があると思います。", "target": "He said can you tell me what your name is, but I think there is a problem.", "score": 8}
+      ]
+    }
+  ]
+}

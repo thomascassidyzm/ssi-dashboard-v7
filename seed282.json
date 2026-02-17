@@ -1,0 +1,31 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 282,
+  "known_text": "いいえ、問題ありません。",
+  "target_text": "No that's not a problem.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "問題ありません",
+      "target": "that's not a problem",
+      "components": [
+        {"known": "問題", "target": "problem"},
+        {"known": "ありません", "target": "not"}
+      ],
+      "phrases": [
+        {"role": "build", "known": "問題ありません。", "target": "That's not a problem.", "score": 7},
+        {"role": "build", "known": "全く問題ありません。", "target": "That's not a problem at all.", "score": 7},
+        {"role": "build", "known": "私にとって問題ありません。", "target": "That's not a problem for me.", "score": 7},
+        {"role": "use", "known": "それは問題ありません。", "target": "That's not a problem.", "score": 7},
+        {"role": "use", "known": "彼にとって問題ありません。", "target": "That's not a problem for him.", "score": 7},
+        {"role": "use", "known": "今は問題ありません。", "target": "That's not a problem now.", "score": 7},
+        {"role": "use", "known": "明日は問題ありません。", "target": "That's not a problem tomorrow.", "score": 7},
+        {"role": "use", "known": "私たちにとって問題ありません。", "target": "That's not a problem for us.", "score": 7},
+        {"role": "use", "known": "あなたにとって問題ありませんか？", "target": "Is that not a problem for you?", "score": 7},
+        {"role": "use", "known": "彼女にとって問題ありませんでした。", "target": "That wasn't a problem for her.", "score": 7},
+        {"role": "use", "known": "誰にとっても問題ありません。", "target": "That's not a problem for anyone.", "score": 8}
+      ]
+    }
+  ]
+}

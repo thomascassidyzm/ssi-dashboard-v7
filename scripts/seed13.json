@@ -1,0 +1,91 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 13,
+  "target_text": "You speak English very well.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "你",
+      "target": "You",
+      "build": [
+        {"known": "你", "target": "You"},
+        {"known": "你想", "target": "You want"},
+        {"known": "你想说英语", "target": "You want to speak English"},
+        {"known": "你想学英语吗", "target": "You want to learn English"}
+      ],
+      "use": [
+        {"known": "你想说英语。", "target": "You want to speak English.", "score": 8},
+        {"known": "你想学英语。", "target": "You want to learn English.", "score": 8},
+        {"known": "你想和我说英语吗？", "target": "You want to speak English with someone?", "score": 9},
+        {"known": "你想尽量多说英语吗？", "target": "You want to speak English as often as possible?", "score": 9},
+        {"known": "你想和别人练习说话吗？", "target": "You want to practise speaking with someone else?", "score": 9},
+        {"known": "你想记住怎么用英语说一些东西吗？", "target": "You want to remember how to say something in English?", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "英语",
+      "target": "English",
+      "build": [
+        {"known": "英语", "target": "English"},
+        {"known": "说英语", "target": "speak English"},
+        {"known": "你想说英语", "target": "You want to speak English"},
+        {"known": "你想尽量多说英语", "target": "You want to speak English as often as possible"}
+      ],
+      "use": [
+        {"known": "你想说英语。", "target": "You want to speak English.", "score": 8},
+        {"known": "你想学英语吗？", "target": "You want to learn English?", "score": 8},
+        {"known": "你想和别人说英语吗？", "target": "You want to speak English with someone else?", "score": 9},
+        {"known": "你想尽量多说英语吗？", "target": "You want to speak English as often as possible?", "score": 9},
+        {"known": "你想和别人练习说英语吗？", "target": "You want to practise speaking English with someone else?", "score": 9},
+        {"known": "你想记住怎么用英语说一些东西吗？", "target": "You want to remember how to say something in English?", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "说得",
+      "target": "speak",
+      "build": [
+        {"known": "说得", "target": "speak"},
+        {"known": "你说得", "target": "You speak"},
+        {"known": "你英语说得今天", "target": "You speak English today"},
+        {"known": "我想你英语说得很努力", "target": "I want you to speak English hard"}
+      ],
+      "use": [
+        {"known": "你英语说得今天。", "target": "You speak English today.", "score": 8},
+        {"known": "你想英语说得吗？", "target": "You want to speak English?", "score": 8},
+        {"known": "你今天想英语说得吗？", "target": "You want to speak English today?", "score": 8},
+        {"known": "我想要能像你一样英语说得。", "target": "I'd like to be able to speak English like you.", "score": 9},
+        {"known": "我不确定你和别人英语说得怎么样。", "target": "I'm not sure how you speak English with someone else.", "score": 9},
+        {"known": "我想要能记住怎么像你一样英语说得。", "target": "I'd like to be able to remember how to speak English like you.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "很好",
+      "target": "very well",
+      "components": [
+        {"known": "很", "target": "very"},
+        {"known": "好", "target": "well"}
+      ],
+      "build": [
+        {"known": "很好", "target": "very well"},
+        {"known": "好", "target": "well"},
+        {"known": "英语说得很好", "target": "speak English very well"},
+        {"known": "你英语说得很好", "target": "You speak English very well"}
+      ],
+      "use": [
+        {"known": "你今天说得很好。", "target": "You speak very well today.", "score": 8},
+        {"known": "你英语说得很好。", "target": "You speak English very well.", "score": 9},
+        {"known": "我想说得很好。", "target": "I want to speak very well.", "score": 8},
+        {"known": "我想要能尽量努力英语说得很好。", "target": "I'd like to be able to speak English very well as hard as I can.", "score": 9},
+        {"known": "我不确定能不能像你一样英语说得很好。", "target": "I'm not sure if I can speak English very well like you.", "score": 9},
+        {"known": "我想要能像你一样和别人英语说得很好。", "target": "I'd like to be able to speak English very well like you with someone else.", "score": 9}
+      ]
+    }
+  ]
+}

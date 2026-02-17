@@ -1,0 +1,140 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 221,
+  "known_text": "I watched the football and then I watched a film.",
+  "target_text": "我看了足球然后看了电影。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "I watched.", "target": "我看了。"},
+        {"known": "I want.", "target": "我想。"},
+        {"known": "I did.", "target": "我做了。"}
+      ],
+      "use": [
+        {"known": "I watched the football and then went out with friends.", "target": "我看了足球然后和朋友出去了。", "score": 8},
+        {"known": "She asked if I want to watch something with her tonight.", "target": "她问我是不是想今天晚上和她看东西。", "score": 7},
+        {"known": "If I have time on Sunday, I will watch something to relax.", "target": "如果我星期天有时间，我会看东西放松。", "score": 8},
+        {"known": "I hope I can watch something interesting this weekend.", "target": "我希望我这个周末可以看有意思的东西。", "score": 8},
+        {"known": "Everyone said they want to watch something with me later.", "target": "大家都说他们以后想和我看东西。", "score": 7},
+        {"known": "Did anyone tell you what I watched last night at home?", "target": "有人告诉你我昨天晚上在家看了什么吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "watch/look",
+      "target": "看",
+      "build": [
+        {"known": "Watch.", "target": "看。"},
+        {"known": "Watched.", "target": "看了。"},
+        {"known": "I watch.", "target": "我看。"},
+        {"known": "Watch football.", "target": "看足球。"}
+      ],
+      "use": [
+        {"known": "I watched the football for a while and then relaxed.", "target": "我看了一会儿足球然后放松了。", "score": 7},
+        {"known": "She likes to watch something in the evening after work.", "target": "她喜欢工作以后晚上看东西。", "score": 7},
+        {"known": "If you want to watch something, we can do it together.", "target": "如果你想看东西，我们可以一起看。", "score": 8},
+        {"known": "I didn't watch anything on television last Sunday.", "target": "我上星期天没看电视。", "score": 7},
+        {"known": "Everyone wants to watch something together this weekend.", "target": "大家这个周末都想一起看东西。", "score": 8},
+        {"known": "Did you watch anything interesting last night at home?", "target": "你昨天晚上在家看了有意思的东西吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "completed action marker",
+      "target": "了",
+      "build": [
+        {"known": "Done.", "target": "了。"},
+        {"known": "Watched.", "target": "看了。"},
+        {"known": "I watched.", "target": "我看了。"},
+        {"known": "Then watched.", "target": "然后看了。"}
+      ],
+      "use": [
+        {"known": "I watched the football and felt very relaxed afterwards.", "target": "我看了足球，看完以后觉得很放松。", "score": 8},
+        {"known": "She told me she already watched everything yesterday.", "target": "她告诉我她昨天已经看了一切。", "score": 8},
+        {"known": "If you already watched it, tell me what you thought.", "target": "如果你已经看了，告诉我你觉得怎么样。", "score": 8},
+        {"known": "I already finished watching before you came to my place.", "target": "你来我那里之前我已经看完了。", "score": 7},
+        {"known": "Everyone said they already watched it last weekend.", "target": "大家都说他们上周末已经看了。", "score": 7},
+        {"known": "Did you know I watched something really good yesterday?", "target": "你知道我昨天看了很好的东西吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "football",
+      "target": "足球",
+      "components": [
+        {"known": "foot", "target": "足"},
+        {"known": "ball", "target": "球"}
+      ],
+      "build": [
+        {"known": "Football.", "target": "足球。"},
+        {"known": "Watch football.", "target": "看足球。"},
+        {"known": "Watched football.", "target": "看了足球。"},
+        {"known": "The football.", "target": "足球。"}
+      ],
+      "use": [
+        {"known": "I watched the football on television with my friends.", "target": "我和我朋友在电视上看了足球。", "score": 8},
+        {"known": "She asked if we want to watch football together this week.", "target": "她问我们是不是想这个星期一起看足球。", "score": 8},
+        {"known": "If you like football, we can watch it together sometime.", "target": "如果你喜欢足球，我们有的时候可以一起看。", "score": 8},
+        {"known": "I didn't have time to watch football last weekend.", "target": "我上周末没有时间看足球。", "score": 7},
+        {"known": "Everyone in my family likes to watch football on Sunday.", "target": "我家里大家都喜欢星期天看足球。", "score": 7},
+        {"known": "Did you watch the football match yesterday evening?", "target": "你昨天晚上看足球了吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "and then/afterwards",
+      "target": "然后",
+      "components": [
+        {"known": "so/like that", "target": "然"},
+        {"known": "after", "target": "后"}
+      ],
+      "build": [
+        {"known": "And then.", "target": "然后。"},
+        {"known": "Afterwards.", "target": "然后。"},
+        {"known": "Then watched.", "target": "然后看了。"},
+        {"known": "Then went.", "target": "然后去了。"}
+      ],
+      "use": [
+        {"known": "I watched football and then went out with my friends.", "target": "我看了足球然后和我朋友出去了。", "score": 8},
+        {"known": "She did the work and then relaxed for a while at home.", "target": "她做了工作然后在家放松了一会儿。", "score": 7},
+        {"known": "If you finish early, you can watch something and then go.", "target": "如果你早完成，你可以看东西然后走。", "score": 8},
+        {"known": "I had something to drink and then watched some television.", "target": "我喝了东西然后看了一点电视。", "score": 8},
+        {"known": "Everyone went out and then watched television together.", "target": "大家都出去了然后一起看了电视。", "score": 7},
+        {"known": "Did you relax for a while and then go out on Saturday?", "target": "你星期六放松了一会儿然后出去了吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "film/movie",
+      "target": "电影",
+      "components": [
+        {"known": "electric", "target": "电"},
+        {"known": "shadow/image", "target": "影"}
+      ],
+      "build": [
+        {"known": "Film.", "target": "电影。"},
+        {"known": "Movie.", "target": "电影。"},
+        {"known": "Watch a film.", "target": "看电影。"},
+        {"known": "Watched a film.", "target": "看了电影。"}
+      ],
+      "use": [
+        {"known": "I watched the football and then watched a film at home.", "target": "我看了足球然后在家看了电影。", "score": 8},
+        {"known": "She wants to watch a film with us tomorrow evening.", "target": "她想明天晚上和我们看电影。", "score": 7},
+        {"known": "If you have time this weekend, we can watch a film.", "target": "如果你这个周末有时间，我们可以看电影。", "score": 8},
+        {"known": "I like to watch a film on Sunday evening to relax.", "target": "我喜欢星期天晚上看电影放松。", "score": 7},
+        {"known": "Everyone in the family likes to watch films together.", "target": "家里大家都喜欢一起看电影。", "score": 8},
+        {"known": "Did you watch the new film that everyone is talking about?", "target": "你看了大家都在说的那个新电影吗？", "score": 8}
+      ]
+    }
+  ]
+}

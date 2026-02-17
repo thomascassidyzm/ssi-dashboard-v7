@@ -1,0 +1,911 @@
+{
+  "course_code": "cym_n_for_eng",
+  "is_eng_for_x": false,
+  "round": 5,
+  "seed_range": "all",
+  "description": "Single-agent consistent scoring - 100 random USE phrases",
+  "total_use_phrases": 5359,
+  "sample_size": 100,
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "1d704ee9-3450-499c-a7e9-38349015e350",
+      "seed": 163,
+      "lego": 1,
+      "english": "the time flies past, doesn’t it?",
+      "other": "mae’r amser yn hedfan heibio, tydy?",
+      "qa_score": null
+    },
+    {
+      "idx": 2,
+      "id": "047a5d13-af90-4a31-b625-1119cec0a3f8",
+      "seed": 286,
+      "lego": 3,
+      "english": "I’m going to run across the grass",
+      "other": "dw i’n mynd i redeg ar draws y gwellt",
+      "qa_score": null
+    },
+    {
+      "idx": 3,
+      "id": "5c12e5a4-98c0-4366-8661-f50a3b1379c6",
+      "seed": 34,
+      "lego": 1,
+      "english": "you speak Welsh very well now",
+      "other": "ti’n siarad Cymraeg yn dda iawn rŵan",
+      "qa_score": null
+    },
+    {
+      "idx": 4,
+      "id": "f49658ee-6994-4e34-841b-e478dbabe35f",
+      "seed": 214,
+      "lego": 3,
+      "english": "that is what you would like to do",
+      "other": "dyna ydy beth byddet ti’n licio gwneud",
+      "qa_score": null
+    },
+    {
+      "idx": 5,
+      "id": "45a47eb1-7d67-4493-8f67-a0c277192c67",
+      "seed": 190,
+      "lego": 3,
+      "english": "we’d like to find a better way to practice",
+      "other": "bydden ni’n licio ffeindio ffordd well i ymarfer",
+      "qa_score": null
+    },
+    {
+      "idx": 6,
+      "id": "17ffc0fc-524b-454d-ae77-329b72f8b9e9",
+      "seed": 204,
+      "lego": 2,
+      "english": "I don’t want a cup of tea",
+      "other": "dw i ddim isio panad o de",
+      "qa_score": null
+    },
+    {
+      "idx": 7,
+      "id": "77e74945-35ba-4bfb-87c4-04e4d9817c52",
+      "seed": 73,
+      "lego": 3,
+      "english": "I met someone who wants to speak with you last night",
+      "other": "wnes i gyfarfod rhywun sydd isio siarad efo chdi neithiwr",
+      "qa_score": null
+    },
+    {
+      "idx": 8,
+      "id": "004199a9-a48b-4b8c-878a-b00553f95ec6",
+      "seed": 47,
+      "lego": 1,
+      "english": "could you say it again?",
+      "other": "fedri di ddeud o eto?",
+      "qa_score": null
+    },
+    {
+      "idx": 9,
+      "id": "3613b4f2-b754-4ef8-9f1b-66b31e9abd87",
+      "seed": 70,
+      "lego": 1,
+      "english": "the old woman has just started to speak with you",
+      "other": "mae’r hen ddynas newydd ddechrau siarad efo chdi",
+      "qa_score": null
+    },
+    {
+      "idx": 10,
+      "id": "2f7e9f6b-0053-4e98-b113-492ce4c63852",
+      "seed": 283,
+      "lego": 5,
+      "english": "she wants to speak with you without arguing",
+      "other": "mae hi isio siarad efo chdi heb ddadlau",
+      "qa_score": null
+    },
+    {
+      "idx": 11,
+      "id": "ffa9bb22-8824-4723-80e4-44d6a6cb71e9",
+      "seed": 183,
+      "lego": 1,
+      "english": "they should be open about what was going to happen",
+      "other": "dylen nhw fod yn agored am be’ oedd yn mynd i ddigwydd",
+      "qa_score": null
+    },
+    {
+      "idx": 12,
+      "id": "c216aae1-302d-4202-aadf-a5aed0703f82",
+      "seed": 287,
+      "lego": 7,
+      "english": "before you go to the city",
+      "other": "cyn i chi fynd i’r ddinas",
+      "qa_score": null
+    },
+    {
+      "idx": 13,
+      "id": "68d89131-996c-47ae-a3b5-d64a04b12fc7",
+      "seed": 7,
+      "lego": 1,
+      "english": "I need to remember how to speak Welsh",
+      "other": "dw i angen cofio sut i siarad Cymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 14,
+      "id": "e463e44c-da70-43c1-bdcb-bf3ce4a538e5",
+      "seed": 68,
+      "lego": 1,
+      "english": "I’ve got a friend who wants to help you",
+      "other": "mae gen i ffrind sydd isio helpu chdi",
+      "qa_score": null
+    },
+    {
+      "idx": 15,
+      "id": "b4519dec-6f61-4fe6-921b-849e86b71f71",
+      "seed": 65,
+      "lego": 1,
+      "english": "but he’d like to know what you want now",
+      "other": "ond byddai fo’n licio gwybod be’ ti isio rŵan",
+      "qa_score": null
+    },
+    {
+      "idx": 16,
+      "id": "0daa674a-9ed6-4afb-89cc-dba1226b980a",
+      "seed": 132,
+      "lego": 1,
+      "english": "you’ve done as much as possible to help",
+      "other": "ti ’di gwneud cymaint â phosib i helpu",
+      "qa_score": null
+    },
+    {
+      "idx": 17,
+      "id": "4498c52f-19df-455c-9c78-eec81d990d7c",
+      "seed": 266,
+      "lego": 5,
+      "english": "waiting for the end",
+      "other": "aros tan ddiwedd",
+      "qa_score": null
+    },
+    {
+      "idx": 18,
+      "id": "5ad9245b-19b3-4b22-841a-22dd65d637a7",
+      "seed": 54,
+      "lego": 1,
+      "english": "I didn’t understand what you said",
+      "other": "wnes i ddim dallt be’ ddudest ti",
+      "qa_score": null
+    },
+    {
+      "idx": 19,
+      "id": "e671de8d-e0f1-4074-a53a-4c5e9e9bafb5",
+      "seed": 297,
+      "lego": 2,
+      "english": "what might have happened to the whole family",
+      "other": "beth allai fod wedi digwydd i’r teulu cyfan",
+      "qa_score": null
+    },
+    {
+      "idx": 20,
+      "id": "b4cdc263-69cc-49a8-b981-982cad46c993",
+      "seed": 268,
+      "lego": 3,
+      "english": "but she has such a kind heart",
+      "other": "ond mae ganddi galon mor garedig",
+      "qa_score": null
+    },
+    {
+      "idx": 21,
+      "id": "d2776949-e520-49b3-a167-9c417a64d77d",
+      "seed": 266,
+      "lego": 1,
+      "english": "that we can’t throw anything",
+      "other": "na fedrwn ni daflu unrhywbeth",
+      "qa_score": null
+    },
+    {
+      "idx": 22,
+      "id": "4e6d2119-e17a-4533-a77a-f3fc885ade7e",
+      "seed": 232,
+      "lego": 2,
+      "english": "I wouldn’t give it to him on Tuesday",
+      "other": "fyddwn i ddim yn rhoi fo iddo fo ddydd Mawrth",
+      "qa_score": null
+    },
+    {
+      "idx": 23,
+      "id": "7733f669-f494-4354-91db-b84ea5cbd5c7",
+      "seed": 111,
+      "lego": 3,
+      "english": "it goes fairly slowly on the television, doesn’t it?",
+      "other": "mae’n mynd yn eitha’ araf ar y teledu, tydy?",
+      "qa_score": null
+    },
+    {
+      "idx": 24,
+      "id": "d723f6ff-5228-44e5-a63a-e84d3ef2e2b8",
+      "seed": 113,
+      "lego": 1,
+      "english": "I enjoyed that film on Friday night",
+      "other": "wnes i fwynhau’r ffilm ’na nos Wener",
+      "qa_score": null
+    },
+    {
+      "idx": 25,
+      "id": "7e71ce11-cd62-426f-80fe-46edd55f1476",
+      "seed": 23,
+      "lego": 1,
+      "english": "I still must improve",
+      "other": "mae dal rhaid i mi wella",
+      "qa_score": null
+    },
+    {
+      "idx": 26,
+      "id": "d62f88fa-7c49-435f-9c3f-0c59f035ed47",
+      "seed": 112,
+      "lego": 2,
+      "english": "I’d like to go out with a few friends",
+      "other": "liciwn i fynd allan efo ychydig o ffrindiau",
+      "qa_score": null
+    },
+    {
+      "idx": 27,
+      "id": "0c095ace-16da-40a1-abbd-2a21f19fb9a3",
+      "seed": 264,
+      "lego": 4,
+      "english": "if you knew the facts",
+      "other": "’set ti’n gwybod y ffeithiau",
+      "qa_score": null
+    },
+    {
+      "idx": 28,
+      "id": "584f37db-7d1b-4172-a010-0b3fbc98194c",
+      "seed": 184,
+      "lego": 2,
+      "english": "to explain what was going to happen",
+      "other": "esbonio be’ oedd yn mynd i ddigwydd",
+      "qa_score": null
+    },
+    {
+      "idx": 29,
+      "id": "6142c84a-980a-4ba7-ac34-ef9dacda1f43",
+      "seed": 43,
+      "lego": 1,
+      "english": "did you start to say something?",
+      "other": "wnest ti ddechrau deud rhywbeth?",
+      "qa_score": null
+    },
+    {
+      "idx": 30,
+      "id": "cfb07a1a-0aa7-4a3b-81bf-324936ae8720",
+      "seed": 274,
+      "lego": 1,
+      "english": "if you don’t wait for that yellow line",
+      "other": "os na wnei di aros am y llinell felen yna",
+      "qa_score": null
+    },
+    {
+      "idx": 31,
+      "id": "c4715570-3975-4b19-a2f6-2e5db3a5b6ec",
+      "seed": 267,
+      "lego": 2,
+      "english": "he’s been sick since last weekend",
+      "other": "mae o wedi bod yn sâl ers penwythnos diwetha’",
+      "qa_score": null
+    },
+    {
+      "idx": 32,
+      "id": "df1cf73b-b84e-40a5-a56f-43f00ed53cd4",
+      "seed": 105,
+      "lego": 1,
+      "english": "I didn’t do anything else at the weekend",
+      "other": "wnes i ddim gwneud unrhywbeth arall ar y penwythnos",
+      "qa_score": null
+    },
+    {
+      "idx": 33,
+      "id": "8451705a-a4e8-4b17-8a73-3158e589768c",
+      "seed": 178,
+      "lego": 1,
+      "english": "they think that we need to discuss everything more often",
+      "other": "maen nhw’n meddwl bod ni angen trafod popeth yn fwy aml",
+      "qa_score": null
+    },
+    {
+      "idx": 34,
+      "id": "bdb66a73-c122-4722-8d20-2800a93571d4",
+      "seed": 299,
+      "lego": 1,
+      "english": "let's move to the city",
+      "other": "gadewch i ni symud i'r ddinas",
+      "qa_score": null
+    },
+    {
+      "idx": 35,
+      "id": "be50f240-ef04-4df2-88c5-df776ebded8f",
+      "seed": 165,
+      "lego": 3,
+      "english": "have you got children at school yourself?",
+      "other": "oes gynnoch chi blant yn yr ysgol eich hunain?",
+      "qa_score": null
+    },
+    {
+      "idx": 36,
+      "id": "85afd094-d021-443e-a180-f3e1abb9eaba",
+      "seed": 106,
+      "lego": 1,
+      "english": "I can’t relax yet because I still need to improve",
+      "other": "fedra i ddim ymlacio hyd yn hyn achos dw i dal angen gwella",
+      "qa_score": null
+    },
+    {
+      "idx": 37,
+      "id": "f2dd8bed-443f-4e9c-a9e7-9bd5a49e9c5a",
+      "seed": 83,
+      "lego": 2,
+      "english": "I’ve just started to remember what I wanted to say",
+      "other": "dw i newydd ddechrau cofio beth o’n i isio deud",
+      "qa_score": null
+    },
+    {
+      "idx": 38,
+      "id": "5ffa6cb5-0c5f-4cf3-827b-585b32abaf28",
+      "seed": 206,
+      "lego": 1,
+      "english": "can I get you a cup of tea or coffee?",
+      "other": "ga i nôl panad o de neu goffi i chi?",
+      "qa_score": null
+    },
+    {
+      "idx": 39,
+      "id": "35517ed6-7cb5-4b02-b5ee-92cc5a80a20e",
+      "seed": 135,
+      "lego": 1,
+      "english": "I’d like to talk with you",
+      "other": "liciwn i siarad efo chdi",
+      "qa_score": null
+    },
+    {
+      "idx": 40,
+      "id": "2377ed7c-6bbb-47b1-aade-27cfe01401dd",
+      "seed": 232,
+      "lego": 1,
+      "english": "what would you do on Tuesday?",
+      "other": "be’ fyddet ti’n gwneud ddydd Mawrth?",
+      "qa_score": null
+    },
+    {
+      "idx": 41,
+      "id": "3bf81dfe-2341-4bea-abfc-8e97c34b4a36",
+      "seed": 90,
+      "lego": 1,
+      "english": "do you like this film?",
+      "other": "wyt ti’n licio’r ffilm hon?",
+      "qa_score": null
+    },
+    {
+      "idx": 42,
+      "id": "4b33690a-8237-4f4b-981f-23d1612f1e3d",
+      "seed": 70,
+      "lego": 1,
+      "english": "the old woman is trying to understand",
+      "other": "mae’r hen ddynas yn trio dallt",
+      "qa_score": null
+    },
+    {
+      "idx": 43,
+      "id": "7df3813e-4901-4662-a2b0-b4797ae04d19",
+      "seed": 223,
+      "lego": 2,
+      "english": "I wouldn’t do it on Monday",
+      "other": "fyddwn i ddim yn gwneud o ddydd Llun",
+      "qa_score": null
+    },
+    {
+      "idx": 44,
+      "id": "90a118bc-0100-4472-bfbc-ef70dd02d132",
+      "seed": 231,
+      "lego": 1,
+      "english": "I’m willing to help with it if you like",
+      "other": "dw i’n fodlon helpu efo fo os lici di",
+      "qa_score": null
+    },
+    {
+      "idx": 45,
+      "id": "267c153b-09eb-42a7-a69b-2f2b80ae562b",
+      "seed": 41,
+      "lego": 2,
+      "english": "how long have you been learning?",
+      "other": "pa mor hir wyt ti ’di bod yn dysgu?",
+      "qa_score": null
+    },
+    {
+      "idx": 46,
+      "id": "2ad590a4-3786-4a3c-8cd1-2ac54228360c",
+      "seed": 210,
+      "lego": 1,
+      "english": "I don’t want to drink tea early in the morning",
+      "other": "dw i ddim isio yfed te yn gynnar yn y bore",
+      "qa_score": null
+    },
+    {
+      "idx": 47,
+      "id": "71a844cf-7106-4221-a3f9-a09bb8bb0ca2",
+      "seed": 284,
+      "lego": 1,
+      "english": "she almost spoke without arguing",
+      "other": "bu bron iddi siarad heb ddadlau",
+      "qa_score": null
+    },
+    {
+      "idx": 48,
+      "id": "caf81d80-da3e-4714-900e-39539144d034",
+      "seed": 63,
+      "lego": 1,
+      "english": "he’s going to say something else",
+      "other": "mae o’n mynd i ddeud rhywbeth arall",
+      "qa_score": null
+    },
+    {
+      "idx": 49,
+      "id": "2e127b33-b6b7-425a-a147-bf4d71370fd3",
+      "seed": 109,
+      "lego": 1,
+      "english": "I watched a bit of television on Friday",
+      "other": "wnes i wylio bach o deledu ddydd Gwener",
+      "qa_score": null
+    },
+    {
+      "idx": 50,
+      "id": "d5fab70e-da59-4d57-abee-46d09f5b1f1e",
+      "seed": 59,
+      "lego": 1,
+      "english": "I’m sorry, I’ve forgotten how to say what I wanted to say",
+      "other": "mae’n ddrwg gen i, dw i ’di anghofio sut i ddeud beth o’n i isio deud",
+      "qa_score": null
+    },
+    {
+      "idx": 51,
+      "id": "4c7d8497-feca-471c-ad36-18ea0a320b1f",
+      "seed": 161,
+      "lego": 2,
+      "english": "to grow up so quickly",
+      "other": "tyfu i fyny mor gyflym",
+      "qa_score": null
+    },
+    {
+      "idx": 52,
+      "id": "d7f3083a-0fba-4dfb-8a80-336e81c47bb1",
+      "seed": 82,
+      "lego": 1,
+      "english": "your sister met someone in the restaurant who said that he works with you",
+      "other": "wnaeth dy chwaer gyfarfod rhywun yn y tŷ bwyta ddudodd fod o’n gweithio efo chdi",
+      "qa_score": null
+    },
+    {
+      "idx": 53,
+      "id": "97342948-2d36-420c-908c-63f6fe749f08",
+      "seed": 222,
+      "lego": 1,
+      "english": "I’m ready to go out with you",
+      "other": "dw i’n barod i fynd allan efo chdi",
+      "qa_score": null
+    },
+    {
+      "idx": 54,
+      "id": "a7add994-8dbb-4df1-b73e-a63f3baa7e01",
+      "seed": 231,
+      "lego": 1,
+      "english": "what would you do if I asked you to go out with me tonight?",
+      "other": "be’ fyddet ti’n gwneud ’swn i’n gofyn i ti fynd allan efo fi heno?",
+      "qa_score": null
+    },
+    {
+      "idx": 55,
+      "id": "9e6913d0-497a-4092-a2a7-23905e8d54e4",
+      "seed": 279,
+      "lego": 5,
+      "english": "a bit of a rest",
+      "other": "ychydig o saib",
+      "qa_score": null
+    },
+    {
+      "idx": 56,
+      "id": "912f0512-5d69-450d-9b49-c03433a2e52a",
+      "seed": 244,
+      "lego": 1,
+      "english": "can I think about it before I answer?",
+      "other": "ga i feddwl amdani cyn i mi ateb?",
+      "qa_score": null
+    },
+    {
+      "idx": 57,
+      "id": "01a27969-c17b-440b-8990-e24c889b56a3",
+      "seed": 269,
+      "lego": 4,
+      "english": "seriously I told her my room number",
+      "other": "o ddifri’ ddudes i rif fy ystafell wrthi",
+      "qa_score": null
+    },
+    {
+      "idx": 58,
+      "id": "3d600237-f862-4992-8dd1-3fab72c17524",
+      "seed": 197,
+      "lego": 1,
+      "english": "we all thought that they should find a better way to work",
+      "other": "oeddan ni i gyd yn meddwl y dylen nhw ffeindio ffordd well i weithio",
+      "qa_score": null
+    },
+    {
+      "idx": 59,
+      "id": "4a788967-9572-45a2-8546-75d51e240ab5",
+      "seed": 68,
+      "lego": 1,
+      "english": "I’ve got a friend who needs to practice for about a week",
+      "other": "mae gen i ffrind sydd angen ymarfer am tua wythnos",
+      "qa_score": null
+    },
+    {
+      "idx": 60,
+      "id": "2359b8fd-232d-4839-bda4-62fc2f88c5bd",
+      "seed": 191,
+      "lego": 1,
+      "english": "we want them to spend less time meeting as a group",
+      "other": "dan ni isio iddyn nhw dreulio llai o amser yn cyfarfod fel grŵp",
+      "qa_score": null
+    },
+    {
+      "idx": 61,
+      "id": "c94bf508-0a33-40ce-baf7-cc8c6ec668eb",
+      "seed": 83,
+      "lego": 1,
+      "english": "I can’t remember how to say what I want to say",
+      "other": "fedra i ddim cofio sut i ddeud be’ dw i isio deud",
+      "qa_score": null
+    },
+    {
+      "idx": 62,
+      "id": "6f8a8540-96d0-4e47-8361-02e85f7c1fd1",
+      "seed": 233,
+      "lego": 1,
+      "english": "shall we go home to give her that book?",
+      "other": "awn ni adre i roi’r llyfr ’na iddi hi?",
+      "qa_score": null
+    },
+    {
+      "idx": 63,
+      "id": "dcd758b4-4531-41f0-86bd-41bad503ffb0",
+      "seed": 142,
+      "lego": 1,
+      "english": "the oldest is trying to remember",
+      "other": "mae’r hynaf yn trio cofio",
+      "qa_score": null
+    },
+    {
+      "idx": 64,
+      "id": "fee73a13-be03-418d-8ef4-c87459fb8690",
+      "seed": 176,
+      "lego": 1,
+      "english": "we don’t know how to do it",
+      "other": "dan ni ddim yn gwybod sut i wneud o",
+      "qa_score": null
+    },
+    {
+      "idx": 65,
+      "id": "5fe5fd20-89c7-4c45-8934-3483724fefa2",
+      "seed": 256,
+      "lego": 1,
+      "english": "I’d tell you what I wanted if you asked",
+      "other": "byddwn i’n deu’ ’tho ti beth o’n i isio ’set ti’n gofyn",
+      "qa_score": null
+    },
+    {
+      "idx": 66,
+      "id": "432dd16f-9d65-4893-8b78-ca0a9ae35560",
+      "seed": 212,
+      "lego": 4,
+      "english": "can I get you milk and sugar with your coffee?",
+      "other": "ga i nôl llefrith a siwgr i chi efo’ch coffi?",
+      "qa_score": null
+    },
+    {
+      "idx": 67,
+      "id": "1db80d66-707f-4db0-b832-5463e8ce4ff3",
+      "seed": 172,
+      "lego": 3,
+      "english": "they want us to spend less time",
+      "other": "maen nhw isio i ni dreulio llai o amser",
+      "qa_score": null
+    },
+    {
+      "idx": 68,
+      "id": "5dd17bef-0b27-4db0-8449-40345d218c64",
+      "seed": 205,
+      "lego": 1,
+      "english": "can I get you a cup of tea?",
+      "other": "ga i nôl panad o de i ti?",
+      "qa_score": null
+    },
+    {
+      "idx": 69,
+      "id": "373df285-e3fa-423f-985f-1f2bdf978a0f",
+      "seed": 57,
+      "lego": 2,
+      "english": "I didn’t know that you speak Welsh",
+      "other": "do’n i ddim yn gwybod bo’ ti’n siarad Cymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 70,
+      "id": "b75e32ca-084e-4dbc-a3c8-a415cd143460",
+      "seed": 254,
+      "lego": 1,
+      "english": "I feel like helping at the moment",
+      "other": "dw i’n teimlo fel helpu ar hyn o bryd",
+      "qa_score": null
+    },
+    {
+      "idx": 71,
+      "id": "b90fc10f-8070-44d4-b5c3-c6923c4207ac",
+      "seed": 84,
+      "lego": 1,
+      "english": "he told me something interesting yesterday",
+      "other": "ddudodd o rywbeth diddorol wrthaf fi ddoe",
+      "qa_score": null
+    },
+    {
+      "idx": 72,
+      "id": "f9521c22-d901-4f4f-b9a8-0849a929aa95",
+      "seed": 129,
+      "lego": 2,
+      "english": "you speak it very well already, I heard",
+      "other": "ti’n siarad hi’n dda iawn yn barod, clywes i",
+      "qa_score": null
+    },
+    {
+      "idx": 73,
+      "id": "e2e0aad2-6969-4c26-a1b5-a8d28eb0c1b4",
+      "seed": 241,
+      "lego": 1,
+      "english": "yes, that’s what I said",
+      "other": "do, dyna be’ ddudes i",
+      "qa_score": null
+    },
+    {
+      "idx": 74,
+      "id": "e1cff95a-b113-486a-b456-f1bcbec6a9dd",
+      "seed": 223,
+      "lego": 3,
+      "english": "if I were you I’d rather eat something now",
+      "other": "’swn i chdi byddai’n well gen i fwyta rhywbeth rŵan",
+      "qa_score": null
+    },
+    {
+      "idx": 75,
+      "id": "32be8eb8-f995-453d-8da8-c5da2dddc75a",
+      "seed": 12,
+      "lego": 1,
+      "english": "I wanted to say something",
+      "other": "o’n i isio deud rhywbeth",
+      "qa_score": null
+    },
+    {
+      "idx": 76,
+      "id": "0c9d3237-fbb1-4372-a444-27553556a27b",
+      "seed": 72,
+      "lego": 1,
+      "english": "the young woman wanted",
+      "other": "oedd y ddynas ifanc isio",
+      "qa_score": null
+    },
+    {
+      "idx": 77,
+      "id": "da10c5b5-2af1-459d-8206-470d67f3101e",
+      "seed": 112,
+      "lego": 2,
+      "english": "did you watch the football on Saturday afternoon?",
+      "other": "wnest ti wylio’r pêl-droed bnawn dydd Sadwrn?",
+      "qa_score": null
+    },
+    {
+      "idx": 78,
+      "id": "5e9a4bd8-898d-469c-8fff-a3134fee8f1a",
+      "seed": 177,
+      "lego": 1,
+      "english": "they’re trying to ask us something",
+      "other": "maen nhw’n trio gofyn rhywbeth i ni",
+      "qa_score": null
+    },
+    {
+      "idx": 79,
+      "id": "ca705a47-9ded-4a0e-a351-628dfef239ac",
+      "seed": 178,
+      "lego": 1,
+      "english": "they should be open",
+      "other": "dylen nhw fod yn agored",
+      "qa_score": null
+    },
+    {
+      "idx": 80,
+      "id": "021cae5b-45d8-4ceb-acb5-55e4c80f0a31",
+      "seed": 29,
+      "lego": 1,
+      "english": "I’ve still got something else to say",
+      "other": "mae dal gen i rywbeth arall i ddeud",
+      "qa_score": null
+    },
+    {
+      "idx": 81,
+      "id": "559a6086-7559-400b-a26a-580bbea21696",
+      "seed": 301,
+      "lego": 7,
+      "english": "who told that funny story?",
+      "other": "pwy ddwedodd y stori ddoniol honno?",
+      "qa_score": null
+    },
+    {
+      "idx": 82,
+      "id": "aa76096a-c102-4d40-b8ba-4c0fc309dcbd",
+      "seed": 41,
+      "lego": 2,
+      "english": "I’m trying to learn more",
+      "other": "dw i’n trio dysgu mwy",
+      "qa_score": null
+    },
+    {
+      "idx": 83,
+      "id": "babfa10b-c2e6-45bc-bdfd-e9a8e52afdf6",
+      "seed": 284,
+      "lego": 4,
+      "english": "because she turned left without arguing",
+      "other": "achos iddi droi i’r chwith heb ddadlau",
+      "qa_score": null
+    },
+    {
+      "idx": 84,
+      "id": "1b99a78b-edb1-4ccb-9b0a-4088f11a1544",
+      "seed": 147,
+      "lego": 1,
+      "english": "have you got a glass or two of water?",
+      "other": "oes gynnoch chi wydrad neu ddau o ddŵr?",
+      "qa_score": null
+    },
+    {
+      "idx": 85,
+      "id": "ccc8c48a-5010-4f9a-918d-b4f576146ce6",
+      "seed": 28,
+      "lego": 1,
+      "english": "I’d like to try something else now",
+      "other": "liciwn i drio rhywbeth arall rŵan",
+      "qa_score": null
+    },
+    {
+      "idx": 86,
+      "id": "a304506d-5bbb-4c60-958f-0c0399245e42",
+      "seed": 235,
+      "lego": 2,
+      "english": "would you be willing to bring something to drink?",
+      "other": "fyddech chi’n fodlon dod â rhywbeth i yfed?",
+      "qa_score": null
+    },
+    {
+      "idx": 87,
+      "id": "39a306dc-76b9-4bf6-9082-b1c6dd637524",
+      "seed": 82,
+      "lego": 1,
+      "english": "your sister met someone in the restaurant who said that he works",
+      "other": "wnaeth dy chwaer gyfarfod rhywun yn y tŷ bwyta ddudodd fod o’n gweithio",
+      "qa_score": null
+    },
+    {
+      "idx": 88,
+      "id": "a56a91c3-4c43-4e35-a148-59fee7951637",
+      "seed": 112,
+      "lego": 1,
+      "english": "I didn’t do anything interesting on Sunday afternoon",
+      "other": "wnes i ddim gwneud unrhywbeth diddorol bnawn dydd Sul",
+      "qa_score": null
+    },
+    {
+      "idx": 89,
+      "id": "f59874bd-cafe-4a46-9b31-c3b91fd719ad",
+      "seed": 78,
+      "lego": 1,
+      "english": "I’ve got a friend who wanted to tell you what to do yesterday",
+      "other": "mae gen i ffrind oedd isio deud wrthot ti beth i wneud ddoe",
+      "qa_score": null
+    },
+    {
+      "idx": 90,
+      "id": "db87cebb-2f93-4898-a4d5-3e81b46434e4",
+      "seed": 47,
+      "lego": 1,
+      "english": "but could you say it again?",
+      "other": "ond fedri di ddeud o eto?",
+      "qa_score": null
+    },
+    {
+      "idx": 91,
+      "id": "52c47782-259a-48e1-b80a-97d3d557ea45",
+      "seed": 145,
+      "lego": 2,
+      "english": "the oldest there is ten",
+      "other": "mae’r hynaf yno yn ddeg",
+      "qa_score": null
+    },
+    {
+      "idx": 92,
+      "id": "dc105897-9f4b-4c16-94fd-6417a9e5a6ee",
+      "seed": 299,
+      "lego": 7,
+      "english": "instead of giving an excuse here",
+      "other": "yn hytrach na rhoi esgus yn fan hyn",
+      "qa_score": null
+    },
+    {
+      "idx": 93,
+      "id": "25011e38-6efd-4016-812e-33343be88ab6",
+      "seed": 115,
+      "lego": 1,
+      "english": "your mother doesn’t like to work with my sister",
+      "other": "dydy dy fam ddim yn licio gweithio efo fy chwaer",
+      "qa_score": null
+    },
+    {
+      "idx": 94,
+      "id": "308388e8-b4b3-4aea-ae2b-1ffa3ebe06bb",
+      "seed": 52,
+      "lego": 1,
+      "english": "I’d like to know how to say it in Welsh",
+      "other": "liciwn i wybod sut i ddeud o yn y Gymraeg",
+      "qa_score": null
+    },
+    {
+      "idx": 95,
+      "id": "641e30a8-bab2-4aa9-8bed-6d5cb794b65c",
+      "seed": 204,
+      "lego": 2,
+      "english": "do you want to talk about it?",
+      "other": "dach chi isio siarad amdani?",
+      "qa_score": null
+    },
+    {
+      "idx": 96,
+      "id": "8ef3f3df-7ddc-47c4-87c4-7cbab3c53536",
+      "seed": 175,
+      "lego": 1,
+      "english": "they want us to make sure that we finish ours in time",
+      "other": "maen nhw isio i ni wneud yn siŵr bo’ ni’n gorffen rhai ni mewn pryd",
+      "qa_score": null
+    },
+    {
+      "idx": 97,
+      "id": "5c9425ea-f5a9-42c2-8a03-9e3aef696640",
+      "seed": 264,
+      "lego": 4,
+      "english": "that we can’t climb over the wall next time",
+      "other": "na fedrwn ni dringo dros y wal tro nesa’",
+      "qa_score": null
+    },
+    {
+      "idx": 98,
+      "id": "34e6ed24-0de9-4cf5-8609-aa68841069bb",
+      "seed": 59,
+      "lego": 1,
+      "english": "I didn’t want you to speak",
+      "other": "do’n i ddim isio i ti siarad",
+      "qa_score": null
+    },
+    {
+      "idx": 99,
+      "id": "4e84969d-3f42-4ded-9d55-47bb4b008069",
+      "seed": 290,
+      "lego": 1,
+      "english": "you’re going to park the car",
+      "other": "ti’n mynd i barcio’r car",
+      "qa_score": null
+    },
+    {
+      "idx": 100,
+      "id": "92f62d5e-7252-43ec-8865-9a93693d48d3",
+      "seed": 241,
+      "lego": 1,
+      "english": "what would you say if I asked you to help me on Tuesday?",
+      "other": "be’ fyddet ti’n deud ’swn i’n gofyn i ti helpu fi ddydd Mawrth?",
+      "qa_score": null
+    }
+  ]
+}

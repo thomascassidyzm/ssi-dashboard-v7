@@ -1,0 +1,1068 @@
+{
+  "generated_at": "2026-02-02T10:26:44.368Z",
+  "version": "2.0",
+  "analysis_type": "pattern_variety",
+  "description": "Analyzes sentence pattern diversity with bilingual course support",
+  "improvements": [
+    "Detects target language being taught",
+    "Analyzes appropriate text field (known_text vs target_text)",
+    "Flags non-English text with language detection"
+  ],
+  "courses_analyzed": 5,
+  "comparison": {
+    "best_variety": "cym_s_for_eng",
+    "worst_variety": "eng_for_ara",
+    "average_score": "98.6",
+    "score_range": {
+      "highest": 100,
+      "lowest": 98
+    },
+    "overall_trends": {
+      "avg_statement_pct": "31.3",
+      "avg_question_pct": "28.6",
+      "avg_first_person_pct": "66.4"
+    }
+  },
+  "courses": [
+    {
+      "course_code": "deu_for_eng",
+      "language_info": {
+        "target_lang": "deu",
+        "known_lang": "eng",
+        "is_teaching_english": false
+      },
+      "total_phrases": 1000,
+      "non_english_phrases": 34,
+      "text_field_analyzed": "known_text",
+      "variety_score": 98,
+      "by_type": {
+        "statement": {
+          "count": 409,
+          "percentage": "40.9"
+        },
+        "question": {
+          "count": 295,
+          "percentage": "29.5"
+        },
+        "negation": {
+          "count": 112,
+          "percentage": "11.2"
+        },
+        "command": {
+          "count": 150,
+          "percentage": "15.0"
+        },
+        "non_english": {
+          "count": 34,
+          "percentage": "3.4"
+        }
+      },
+      "by_subject": {
+        "first_person": {
+          "count": 762,
+          "percentage": "76.2"
+        },
+        "second_person": {
+          "count": 76,
+          "percentage": "7.6"
+        },
+        "third_person": {
+          "count": 112,
+          "percentage": "11.2"
+        },
+        "unknown": {
+          "count": 16,
+          "percentage": "1.6"
+        },
+        "non_english": {
+          "count": 34,
+          "percentage": "3.4"
+        }
+      },
+      "top_openings": [
+        {
+          "opening": "i think that",
+          "count": 64,
+          "percentage": "6.4"
+        },
+        {
+          "opening": "i want to",
+          "count": 39,
+          "percentage": "3.9"
+        },
+        {
+          "opening": "i'm not sure",
+          "count": 36,
+          "percentage": "3.6"
+        },
+        {
+          "opening": "i would like",
+          "count": 20,
+          "percentage": "2.0"
+        },
+        {
+          "opening": "i am not",
+          "count": 18,
+          "percentage": "1.8"
+        },
+        {
+          "opening": "she wants to",
+          "count": 17,
+          "percentage": "1.7"
+        },
+        {
+          "opening": "i am going",
+          "count": 16,
+          "percentage": "1.6"
+        },
+        {
+          "opening": "i do not",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "i mean that",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "i don't know",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "i think i",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "i don't agree",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "i wanted to",
+          "count": 13,
+          "percentage": "1.3"
+        },
+        {
+          "opening": "he wanted to",
+          "count": 13,
+          "percentage": "1.3"
+        },
+        {
+          "opening": "i am trying",
+          "count": 12,
+          "percentage": "1.2"
+        },
+        {
+          "opening": "i am looking",
+          "count": 12,
+          "percentage": "1.2"
+        },
+        {
+          "opening": "she wanted to",
+          "count": 12,
+          "percentage": "1.2"
+        },
+        {
+          "opening": "we wanted to",
+          "count": 12,
+          "percentage": "1.2"
+        },
+        {
+          "opening": "if you can",
+          "count": 12,
+          "percentage": "1.2"
+        },
+        {
+          "opening": "why do you",
+          "count": 11,
+          "percentage": "1.1"
+        }
+      ],
+      "issues": {
+        "overused_patterns": [
+          {
+            "pattern": "statement",
+            "percentage": 40.9,
+            "severity": "medium"
+          },
+          {
+            "pattern": "first_person",
+            "percentage": 76.2,
+            "severity": "high"
+          }
+        ],
+        "underused_patterns": [],
+        "recommendations": [
+          "Reduce repetitive patterns by varying sentence structures",
+          "Diversify subjects - add \"you\", \"he/she\", \"they\" perspectives"
+        ]
+      },
+      "sample_phrases": {
+        "questions": [
+          "I am trying to remember how one speaks German",
+          "I want to try to explain what I mean today",
+          "I am going to try to explain what I mean as hard as I can",
+          "I am not sure what I mean",
+          "I would not like to try to explain what I mean"
+        ],
+        "negations": [
+          "I am not sure if I can speak German",
+          "I am not sure if I can",
+          "I am not sure what I mean",
+          "I am not sure if I can remember something today",
+          "I am not sure today"
+        ],
+        "commands": [
+          "speak after you finish",
+          "do you speak German with someone else",
+          "do you speak German as often as possible",
+          "do you speak German all day tomorrow",
+          "and I would like to speak German all day tomorrow"
+        ],
+        "third_person": [
+          "he wants to speak German all day tomorrow",
+          "he wants to come back with everyone else",
+          "he wants to speak German with everyone else tomorrow",
+          "she wants to speak German with everyone else tomorrow",
+          "she wants to come back with everyone else later on"
+        ]
+      }
+    },
+    {
+      "course_code": "ara_for_eng",
+      "language_info": {
+        "target_lang": "ara",
+        "known_lang": "eng",
+        "is_teaching_english": false
+      },
+      "total_phrases": 1000,
+      "non_english_phrases": 19,
+      "text_field_analyzed": "known_text",
+      "variety_score": 98,
+      "by_type": {
+        "statement": {
+          "count": 335,
+          "percentage": "33.5"
+        },
+        "question": {
+          "count": 215,
+          "percentage": "21.5"
+        },
+        "negation": {
+          "count": 122,
+          "percentage": "12.2"
+        },
+        "command": {
+          "count": 309,
+          "percentage": "30.9"
+        },
+        "non_english": {
+          "count": 19,
+          "percentage": "1.9"
+        }
+      },
+      "by_subject": {
+        "first_person": {
+          "count": 777,
+          "percentage": "77.7"
+        },
+        "second_person": {
+          "count": 94,
+          "percentage": "9.4"
+        },
+        "third_person": {
+          "count": 93,
+          "percentage": "9.3"
+        },
+        "unknown": {
+          "count": 17,
+          "percentage": "1.7"
+        },
+        "non_english": {
+          "count": 19,
+          "percentage": "1.9"
+        }
+      },
+      "top_openings": [
+        {
+          "opening": "i want to",
+          "count": 110,
+          "percentage": "11.0"
+        },
+        {
+          "opening": "i'm trying to",
+          "count": 50,
+          "percentage": "5.0"
+        },
+        {
+          "opening": "he doesn't want",
+          "count": 42,
+          "percentage": "4.2"
+        },
+        {
+          "opening": "i'm going to",
+          "count": 39,
+          "percentage": "3.9"
+        },
+        {
+          "opening": "i started to",
+          "count": 36,
+          "percentage": "3.6"
+        },
+        {
+          "opening": "he wants to",
+          "count": 35,
+          "percentage": "3.5"
+        },
+        {
+          "opening": "i wanted to",
+          "count": 35,
+          "percentage": "3.5"
+        },
+        {
+          "opening": "because i want",
+          "count": 34,
+          "percentage": "3.4"
+        },
+        {
+          "opening": "she wants to",
+          "count": 32,
+          "percentage": "3.2"
+        },
+        {
+          "opening": "but i want",
+          "count": 29,
+          "percentage": "2.9"
+        },
+        {
+          "opening": "i'm not sure",
+          "count": 27,
+          "percentage": "2.7"
+        },
+        {
+          "opening": "i'd like to",
+          "count": 27,
+          "percentage": "2.7"
+        },
+        {
+          "opening": "but i like",
+          "count": 24,
+          "percentage": "2.4"
+        },
+        {
+          "opening": "she doesn't want",
+          "count": 24,
+          "percentage": "2.4"
+        },
+        {
+          "opening": "i've been learning",
+          "count": 24,
+          "percentage": "2.4"
+        },
+        {
+          "opening": "i feel that",
+          "count": 24,
+          "percentage": "2.4"
+        },
+        {
+          "opening": "you want to",
+          "count": 21,
+          "percentage": "2.1"
+        },
+        {
+          "opening": "we want to",
+          "count": 20,
+          "percentage": "2.0"
+        },
+        {
+          "opening": "i like to",
+          "count": 18,
+          "percentage": "1.8"
+        },
+        {
+          "opening": "i'm looking forward",
+          "count": 18,
+          "percentage": "1.8"
+        }
+      ],
+      "issues": {
+        "overused_patterns": [
+          {
+            "pattern": "statement",
+            "percentage": 33.5,
+            "severity": "medium"
+          },
+          {
+            "pattern": "command",
+            "percentage": 30.9,
+            "severity": "medium"
+          },
+          {
+            "pattern": "first_person",
+            "percentage": 77.7,
+            "severity": "high"
+          }
+        ],
+        "underused_patterns": [],
+        "recommendations": [
+          "Reduce repetitive patterns by varying sentence structures",
+          "Diversify subjects - add \"you\", \"he/she\", \"they\" perspectives",
+          "Include more third-person constructions for storytelling"
+        ]
+      },
+      "sample_phrases": {
+        "questions": [
+          "I'm trying to learn how to speak Arabic.",
+          "I want to learn how to speak Arabic.",
+          "I want to learn how to speak.",
+          "I want to learn how to speak Arabic now.",
+          "I'm trying to learn how to speak Arabic now."
+        ],
+        "negations": [
+          "I'm not trying to speak Arabic with you now.",
+          "I'm not learning to speak Arabic as hard as I can.",
+          "I'm not speaking a little Arabic with someone else.",
+          "I'm not trying to explain what I mean in Arabic.",
+          "I'm not learning how to say something in Arabic today."
+        ],
+        "commands": [
+          "I'm trying to speak Arabic with you.",
+          "I'm trying to speak Arabic now.",
+          "I'm trying to speak Arabic with you now.",
+          "I'm trying to speak Arabic.",
+          "I'm trying to learn Arabic with you."
+        ],
+        "third_person": [
+          "He wants to speak Arabic well with someone now.",
+          "He wants to speak Arabic as often as possible with someone.",
+          "He wants to speak Arabic a little with someone else tomorrow.",
+          "He wants to speak Arabic well with someone else today.",
+          "He wants to come back a little with someone today as often as possible."
+        ]
+      }
+    },
+    {
+      "course_code": "eng_for_ara",
+      "language_info": {
+        "target_lang": "eng",
+        "known_lang": "ara",
+        "is_teaching_english": true
+      },
+      "total_phrases": 1000,
+      "non_english_phrases": 5,
+      "text_field_analyzed": "target_text",
+      "variety_score": 98,
+      "by_type": {
+        "statement": {
+          "count": 268,
+          "percentage": "26.8"
+        },
+        "question": {
+          "count": 376,
+          "percentage": "37.6"
+        },
+        "negation": {
+          "count": 81,
+          "percentage": "8.1"
+        },
+        "command": {
+          "count": 270,
+          "percentage": "27.0"
+        },
+        "non_english": {
+          "count": 5,
+          "percentage": "0.5"
+        }
+      },
+      "by_subject": {
+        "first_person": {
+          "count": 771,
+          "percentage": "77.1"
+        },
+        "second_person": {
+          "count": 122,
+          "percentage": "12.2"
+        },
+        "third_person": {
+          "count": 88,
+          "percentage": "8.8"
+        },
+        "unknown": {
+          "count": 14,
+          "percentage": "1.4"
+        },
+        "non_english": {
+          "count": 5,
+          "percentage": "0.5"
+        }
+      },
+      "top_openings": [
+        {
+          "opening": "i want to",
+          "count": 123,
+          "percentage": "12.3"
+        },
+        {
+          "opening": "i'm going to",
+          "count": 67,
+          "percentage": "6.7"
+        },
+        {
+          "opening": "i'm not sure",
+          "count": 48,
+          "percentage": "4.8"
+        },
+        {
+          "opening": "i'm trying to",
+          "count": 46,
+          "percentage": "4.6"
+        },
+        {
+          "opening": "i don't like",
+          "count": 28,
+          "percentage": "2.8"
+        },
+        {
+          "opening": "i started to",
+          "count": 25,
+          "percentage": "2.5"
+        },
+        {
+          "opening": "he wants to",
+          "count": 24,
+          "percentage": "2.4"
+        },
+        {
+          "opening": "i'd like to",
+          "count": 23,
+          "percentage": "2.3"
+        },
+        {
+          "opening": "she wants to",
+          "count": 23,
+          "percentage": "2.3"
+        },
+        {
+          "opening": "do you want",
+          "count": 22,
+          "percentage": "2.2"
+        },
+        {
+          "opening": "but i don't",
+          "count": 21,
+          "percentage": "2.1"
+        },
+        {
+          "opening": "i want you",
+          "count": 18,
+          "percentage": "1.8"
+        },
+        {
+          "opening": "it's useful to",
+          "count": 18,
+          "percentage": "1.8"
+        },
+        {
+          "opening": "i'm looking forward",
+          "count": 18,
+          "percentage": "1.8"
+        },
+        {
+          "opening": "i like feeling",
+          "count": 17,
+          "percentage": "1.7"
+        },
+        {
+          "opening": "we want to",
+          "count": 16,
+          "percentage": "1.6"
+        },
+        {
+          "opening": "she doesn't want",
+          "count": 16,
+          "percentage": "1.6"
+        },
+        {
+          "opening": "i wanted to",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "i don't want",
+          "count": 14,
+          "percentage": "1.4"
+        },
+        {
+          "opening": "you want to",
+          "count": 14,
+          "percentage": "1.4"
+        }
+      ],
+      "issues": {
+        "overused_patterns": [
+          {
+            "pattern": "question",
+            "percentage": 37.6,
+            "severity": "medium"
+          },
+          {
+            "pattern": "first_person",
+            "percentage": 77.1,
+            "severity": "high"
+          }
+        ],
+        "underused_patterns": [],
+        "recommendations": [
+          "Reduce repetitive patterns by varying sentence structures",
+          "Add more negation patterns (don't, can't, never, etc.)",
+          "Diversify subjects - add \"you\", \"he/she\", \"they\" perspectives",
+          "Include more third-person constructions for storytelling"
+        ]
+      },
+      "sample_phrases": {
+        "questions": [
+          "I want to learn how to speak.",
+          "I'm trying to learn how to speak English.",
+          "How to speak English?",
+          "I want to learn how to speak English with you.",
+          "I'm trying to learn how to speak English."
+        ],
+        "negations": [
+          "I'm trying to explain. I'm not sure what I mean.",
+          "I'm not sure how to explain what I mean in English.",
+          "I'm not sure how to practise speaking English as often as possible.",
+          "I'm not sure what I want to say now.",
+          "I'm not sure how to speak a little English with someone else."
+        ],
+        "commands": [
+          "I'm trying to speak.",
+          "I'm trying to speak with you.",
+          "I'm trying to speak English.",
+          "I'm trying to speak English now.",
+          "I'm trying to speak English with you now."
+        ],
+        "third_person": [
+          "He wants to speak English very well.",
+          "He wants to learn how to speak English.",
+          "And he wants to speak English all day.",
+          "He wants to explain what he wants in English tomorrow.",
+          "He wants to practise speaking English as often as possible."
+        ]
+      }
+    },
+    {
+      "course_code": "eng_for_deu",
+      "language_info": {
+        "target_lang": "eng",
+        "known_lang": "deu",
+        "is_teaching_english": true
+      },
+      "total_phrases": 1000,
+      "non_english_phrases": 13,
+      "text_field_analyzed": "target_text",
+      "variety_score": 99,
+      "by_type": {
+        "statement": {
+          "count": 307,
+          "percentage": "30.7"
+        },
+        "question": {
+          "count": 317,
+          "percentage": "31.7"
+        },
+        "negation": {
+          "count": 107,
+          "percentage": "10.7"
+        },
+        "command": {
+          "count": 256,
+          "percentage": "25.6"
+        },
+        "non_english": {
+          "count": 13,
+          "percentage": "1.3"
+        }
+      },
+      "by_subject": {
+        "first_person": {
+          "count": 730,
+          "percentage": "73.0"
+        },
+        "second_person": {
+          "count": 128,
+          "percentage": "12.8"
+        },
+        "third_person": {
+          "count": 121,
+          "percentage": "12.1"
+        },
+        "unknown": {
+          "count": 8,
+          "percentage": "0.8"
+        },
+        "non_english": {
+          "count": 13,
+          "percentage": "1.3"
+        }
+      },
+      "top_openings": [
+        {
+          "opening": "i want to",
+          "count": 79,
+          "percentage": "7.9"
+        },
+        {
+          "opening": "i'm trying to",
+          "count": 51,
+          "percentage": "5.1"
+        },
+        {
+          "opening": "i'm going to",
+          "count": 50,
+          "percentage": "5.0"
+        },
+        {
+          "opening": "i'm not sure",
+          "count": 46,
+          "percentage": "4.6"
+        },
+        {
+          "opening": "i'd like to",
+          "count": 40,
+          "percentage": "4.0"
+        },
+        {
+          "opening": "he wants to",
+          "count": 35,
+          "percentage": "3.5"
+        },
+        {
+          "opening": "she wants to",
+          "count": 34,
+          "percentage": "3.4"
+        },
+        {
+          "opening": "we want to",
+          "count": 29,
+          "percentage": "2.9"
+        },
+        {
+          "opening": "i wanted to",
+          "count": 28,
+          "percentage": "2.8"
+        },
+        {
+          "opening": "i like feeling",
+          "count": 23,
+          "percentage": "2.3"
+        },
+        {
+          "opening": "he doesn't want",
+          "count": 21,
+          "percentage": "2.1"
+        },
+        {
+          "opening": "you wanted to",
+          "count": 20,
+          "percentage": "2.0"
+        },
+        {
+          "opening": "he wanted to",
+          "count": 18,
+          "percentage": "1.8"
+        },
+        {
+          "opening": "are you going",
+          "count": 17,
+          "percentage": "1.7"
+        },
+        {
+          "opening": "it's useful to",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "did you want",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "because i want",
+          "count": 14,
+          "percentage": "1.4"
+        },
+        {
+          "opening": "i wouldn't like",
+          "count": 13,
+          "percentage": "1.3"
+        },
+        {
+          "opening": "i started to",
+          "count": 13,
+          "percentage": "1.3"
+        },
+        {
+          "opening": "i'm not trying",
+          "count": 12,
+          "percentage": "1.2"
+        }
+      ],
+      "issues": {
+        "overused_patterns": [
+          {
+            "pattern": "statement",
+            "percentage": 30.7,
+            "severity": "medium"
+          },
+          {
+            "pattern": "question",
+            "percentage": 31.7,
+            "severity": "medium"
+          },
+          {
+            "pattern": "first_person",
+            "percentage": 73,
+            "severity": "high"
+          }
+        ],
+        "underused_patterns": [],
+        "recommendations": [
+          "Reduce repetitive patterns by varying sentence structures",
+          "Diversify subjects - add \"you\", \"he/she\", \"they\" perspectives"
+        ]
+      },
+      "sample_phrases": {
+        "questions": [
+          "I'm trying to learn how to speak now.",
+          "I want to learn how to speak.",
+          "I want to learn how to speak with you.",
+          "I'm trying to learn how to speak English.",
+          "I want to learn how to speak English."
+        ],
+        "negations": [
+          "I'm not sure how to learn to speak English as often as possible.",
+          "I'm not sure how to try as hard as I can today.",
+          "I'm not sure how to remember a word in English.",
+          "I'm not sure how to practise speaking English with someone else.",
+          "I'm not sure how to explain what I mean."
+        ],
+        "commands": [
+          "Now I want to speak English with you.",
+          "Now I want to speak.",
+          "I'm trying to speak English with you now.",
+          "I'm trying to speak now.",
+          "I'm trying to speak English."
+        ],
+        "third_person": [
+          "He wants to speak English tomorrow.",
+          "He wants to try to speak English very well.",
+          "He wants to come back tomorrow.",
+          "He wants to speak English with everyone else all day.",
+          "He wants to come back with everyone else."
+        ]
+      }
+    },
+    {
+      "course_code": "cym_s_for_eng",
+      "language_info": {
+        "target_lang": "cym_s",
+        "known_lang": "eng",
+        "is_teaching_english": false
+      },
+      "total_phrases": 1000,
+      "non_english_phrases": 466,
+      "text_field_analyzed": "known_text",
+      "variety_score": 100,
+      "by_type": {
+        "statement": {
+          "count": 247,
+          "percentage": "24.7"
+        },
+        "question": {
+          "count": 229,
+          "percentage": "22.9"
+        },
+        "negation": {
+          "count": 0,
+          "percentage": "0.0"
+        },
+        "command": {
+          "count": 58,
+          "percentage": "5.8"
+        },
+        "non_english": {
+          "count": 466,
+          "percentage": "46.6"
+        }
+      },
+      "by_subject": {
+        "first_person": {
+          "count": 279,
+          "percentage": "27.9"
+        },
+        "second_person": {
+          "count": 162,
+          "percentage": "16.2"
+        },
+        "third_person": {
+          "count": 23,
+          "percentage": "2.3"
+        },
+        "unknown": {
+          "count": 70,
+          "percentage": "7.0"
+        },
+        "non_english": {
+          "count": 466,
+          "percentage": "46.6"
+        }
+      },
+      "top_openings": [
+        {
+          "opening": "i met someone",
+          "count": 35,
+          "percentage": "3.5"
+        },
+        {
+          "opening": "i want to",
+          "count": 24,
+          "percentage": "2.4"
+        },
+        {
+          "opening": "i’m going to",
+          "count": 22,
+          "percentage": "2.2"
+        },
+        {
+          "opening": "i was trying",
+          "count": 21,
+          "percentage": "2.1"
+        },
+        {
+          "opening": "i’d like to",
+          "count": 20,
+          "percentage": "2.0"
+        },
+        {
+          "opening": "i wanted to",
+          "count": 19,
+          "percentage": "1.9"
+        },
+        {
+          "opening": "i was speaking",
+          "count": 18,
+          "percentage": "1.8"
+        },
+        {
+          "opening": "i was going",
+          "count": 17,
+          "percentage": "1.7"
+        },
+        {
+          "opening": "the old woman",
+          "count": 16,
+          "percentage": "1.6"
+        },
+        {
+          "opening": "have you had",
+          "count": 15,
+          "percentage": "1.5"
+        },
+        {
+          "opening": "do you want",
+          "count": 14,
+          "percentage": "1.4"
+        },
+        {
+          "opening": "i’m sorry, but",
+          "count": 14,
+          "percentage": "1.4"
+        },
+        {
+          "opening": "i didn’t do",
+          "count": 13,
+          "percentage": "1.3"
+        },
+        {
+          "opening": "i’m trying to",
+          "count": 12,
+          "percentage": "1.2"
+        },
+        {
+          "opening": "i’ve got a",
+          "count": 11,
+          "percentage": "1.1"
+        },
+        {
+          "opening": "the young man",
+          "count": 11,
+          "percentage": "1.1"
+        },
+        {
+          "opening": "my brother met",
+          "count": 11,
+          "percentage": "1.1"
+        },
+        {
+          "opening": "you need to",
+          "count": 10,
+          "percentage": "1.0"
+        },
+        {
+          "opening": "yes, i’m ready",
+          "count": 10,
+          "percentage": "1.0"
+        },
+        {
+          "opening": "he’s going to",
+          "count": 9,
+          "percentage": "0.9"
+        }
+      ],
+      "issues": {
+        "overused_patterns": [],
+        "underused_patterns": [
+          {
+            "pattern": "third_person",
+            "percentage": 2.3,
+            "severity": "low"
+          }
+        ],
+        "recommendations": [
+          "Add more diverse patterns to improve learner engagement",
+          "Add more negation patterns (don't, can't, never, etc.)",
+          "Include more third-person constructions for storytelling"
+        ]
+      },
+      "sample_phrases": {
+        "questions": [
+          "how to speak Welsh",
+          "how to say what I need to say",
+          "I was trying to remember what I want to say",
+          "I was trying to remember how to say something",
+          "I was trying to remember how to say something in Welsh"
+        ],
+        "negations": [
+          "nobody needs to know that"
+        ],
+        "commands": [
+          "how to speak Welsh",
+          "but I want to practice speaking",
+          "but I wanted to say something now",
+          "but I wanted to speak Welsh",
+          "but I still need to practice"
+        ],
+        "third_person": [
+          "she wants to learn more",
+          "he wanted to speak Welsh with the old woman",
+          "she wanted to help the old man",
+          "he wanted to help the young woman",
+          "she wanted to speak with the young man"
+        ]
+      }
+    }
+  ]
+}

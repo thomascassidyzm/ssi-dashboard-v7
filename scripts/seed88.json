@@ -1,0 +1,248 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 88,
+  "known_text": "I'm not ready to talk to people I don't know yet.",
+  "target_text": "Ik ben nog niet klaar om met mensen te praten die ik niet ken.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I",
+      "target": "ik",
+      "build": [
+        {"known": "I", "target": "ik"},
+        {"known": "I am", "target": "ik ben"},
+        {"known": "I don't", "target": "ik niet"},
+        {"known": "I know", "target": "ik ken"}
+      ],
+      "use": [
+        {"known": "I am not sure if those people want to start now.", "target": "Ik ben niet zeker of die mensen nu willen beginnen.", "score": 8},
+        {"known": "I don't know the people who said something about her.", "target": "Ik ken de mensen niet die iets over haar zei.", "score": 8},
+        {"known": "I was not ready to do it with those people.", "target": "Ik was niet klaar om het met die mensen te doen.", "score": 8},
+        {"known": "I am looking for people who want to learn Dutch.", "target": "Ik zoek mensen die Nederlands willen leren.", "score": 8},
+        {"known": "I know everyone who agrees with what she said.", "target": "Ik ken iedereen die het eens is met wat zij zei.", "score": 8},
+        {"known": "Unfortunately, I don't know many people here.", "target": "Helaas ken ik niet veel mensen hier.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "am [being]",
+      "target": "ben",
+      "build": [
+        {"known": "am", "target": "ben"},
+        {"known": "I am", "target": "ik ben"},
+        {"known": "am not", "target": "ben niet"},
+        {"known": "am ready", "target": "ben klaar"}
+      ],
+      "use": [
+        {"known": "I am ready to start learning Dutch with those people.", "target": "Ik ben klaar om te beginnen met Nederlands leren met die mensen.", "score": 8},
+        {"known": "I am not sure when she wants to do it with me.", "target": "Ik ben niet zeker wanneer zij het met me wil doen.", "score": 8},
+        {"known": "Are you ready to meet the people I know?", "target": "Ben je klaar om de mensen te ontmoeten die ik ken?", "score": 8},
+        {"known": "I am looking for people who are ready to start.", "target": "Ik zoek mensen die klaar zijn om te beginnen.", "score": 8},
+        {"known": "I am not the person who said that about you.", "target": "Ik ben niet de persoon die dat over je zei.", "score": 8},
+        {"known": "She is not ready to agree with what he said.", "target": "Zij is niet klaar om het eens te zijn met wat hij zei.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "yet/still",
+      "target": "nog",
+      "build": [
+        {"known": "yet", "target": "nog"},
+        {"known": "still", "target": "nog"},
+        {"known": "not yet", "target": "nog niet"},
+        {"known": "still not", "target": "nog niet"}
+      ],
+      "use": [
+        {"known": "I am not ready yet to do it with those people.", "target": "Ik ben nog niet klaar om het met die mensen te doen.", "score": 8},
+        {"known": "She doesn't know him yet but she wants to meet him.", "target": "Zij kent hem nog niet maar zij wil hem ontmoeten.", "score": 7},
+        {"known": "We are still not sure when he wants to start.", "target": "Wij zijn nog niet zeker wanneer hij wil beginnen.", "score": 8},
+        {"known": "Unfortunately, I haven't finished it yet.", "target": "Helaas heb ik het nog niet afgemaakt.", "score": 7},
+        {"known": "Those people are not ready yet to learn Dutch.", "target": "Die mensen zijn nog niet klaar om Nederlands te leren.", "score": 8},
+        {"known": "I still don't know the people she was talking about.", "target": "Ik ken de mensen waar zij over sprak nog niet.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "not",
+      "target": "niet",
+      "build": [
+        {"known": "not", "target": "niet"},
+        {"known": "not ready", "target": "niet klaar"},
+        {"known": "not yet", "target": "nog niet"},
+        {"known": "don't know", "target": "ken niet"}
+      ],
+      "use": [
+        {"known": "I am not ready yet to meet those people.", "target": "Ik ben nog niet klaar om die mensen te ontmoeten.", "score": 8},
+        {"known": "She doesn't agree with what they said about him.", "target": "Zij is het niet eens met wat zij over hem zei.", "score": 7},
+        {"known": "Unfortunately, it was not possible for me to do it.", "target": "Helaas was het niet mogelijk om het te doen.", "score": 8},
+        {"known": "I do not know the people who are not ready yet.", "target": "Ik ken de mensen niet die nog niet klaar zijn.", "score": 8},
+        {"known": "He is still not sure about what she said.", "target": "Hij is nog niet zeker over wat zij zei.", "score": 8},
+        {"known": "Those people are not the friends I was looking for.", "target": "Die mensen zijn niet de vrienden die ik zocht.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "ready",
+      "target": "klaar",
+      "build": [
+        {"known": "ready", "target": "klaar"},
+        {"known": "not ready", "target": "niet klaar"},
+        {"known": "I am ready", "target": "ik ben klaar"},
+        {"known": "ready to", "target": "klaar om"}
+      ],
+      "use": [
+        {"known": "I am not ready yet to meet people I don't know.", "target": "Ik ben nog niet klaar om mensen te ontmoeten die ik niet ken.", "score": 8},
+        {"known": "She is ready to start learning Dutch with those people.", "target": "Zij is klaar om te beginnen met Nederlands leren met die mensen.", "score": 8},
+        {"known": "Are you ready to agree with what he said about her?", "target": "Ben je klaar om het eens te zijn met wat hij over haar zei?", "score": 8},
+        {"known": "Unfortunately, he was not ready to do it with me.", "target": "Helaas was hij niet klaar om het met me te doen.", "score": 8},
+        {"known": "We are still not ready to start learning Dutch.", "target": "Wij zijn nog niet klaar om te beginnen met Nederlands leren.", "score": 8},
+        {"known": "Those people are not ready yet to agree with us.", "target": "Die mensen zijn nog niet klaar om het met iedereen eens te zijn.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "to [infinitive]",
+      "target": "om",
+      "build": [
+        {"known": "to", "target": "om"},
+        {"known": "ready to", "target": "klaar om"},
+        {"known": "to do", "target": "om te doen"},
+        {"known": "to start", "target": "om te beginnen"}
+      ],
+      "use": [
+        {"known": "I am not ready yet to talk to people I don't know.", "target": "Ik ben nog niet klaar om met mensen te praten die ik niet ken.", "score": 8},
+        {"known": "She wants to find people to learn Dutch with.", "target": "Zij wil mensen vinden om Nederlands te leren.", "score": 8},
+        {"known": "Are you ready to start doing interesting things?", "target": "Ben je klaar om te beginnen met interessante dingen doen?", "score": 8},
+        {"known": "Unfortunately, it was not possible to wait for you.", "target": "Helaas was het niet mogelijk om op je te wachten.", "score": 8},
+        {"known": "We are still not ready to agree with what she said.", "target": "Wij zijn nog niet klaar om het eens te zijn met wat zij zei.", "score": 8},
+        {"known": "Those people want to start to learn Dutch with me.", "target": "Die mensen willen beginnen om Nederlands met me te leren.", "score": 8}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "with",
+      "target": "met",
+      "build": [
+        {"known": "with", "target": "met"},
+        {"known": "talk with", "target": "praten met"},
+        {"known": "with people", "target": "met mensen"},
+        {"known": "with me", "target": "met me"}
+      ],
+      "use": [
+        {"known": "I am not ready yet to talk with people I don't know.", "target": "Ik ben nog niet klaar om te praten met mensen die ik niet ken.", "score": 8},
+        {"known": "She wants to start learning Dutch with those people.", "target": "Zij wil beginnen met Nederlands leren met die mensen.", "score": 8},
+        {"known": "Are you going to do interesting things with my friend?", "target": "Ga je interessante dingen doen met mijn vriend?", "score": 8},
+        {"known": "Unfortunately, I don't agree with what she said.", "target": "Helaas ben ik het niet eens met wat zij zei.", "score": 8},
+        {"known": "We want to find people to learn Dutch with.", "target": "Wij willen mensen vinden om Nederlands te leren.", "score": 8},
+        {"known": "Those people want to do something with everyone.", "target": "Die mensen willen iets met iedereen doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "people",
+      "target": "mensen",
+      "build": [
+        {"known": "people", "target": "mensen"},
+        {"known": "those people", "target": "die mensen"},
+        {"known": "the people", "target": "de mensen"},
+        {"known": "with people", "target": "met mensen"}
+      ],
+      "use": [
+        {"known": "I am not ready yet to talk to people I don't know.", "target": "Ik ben nog niet klaar om te praten met mensen die ik niet ken.", "score": 8},
+        {"known": "Those people are still not ready to start learning.", "target": "Die mensen zijn nog niet klaar om te beginnen met leren.", "score": 8},
+        {"known": "The people I know don't agree with what he said.", "target": "De mensen die ik ken zijn het niet eens met wat hij zei.", "score": 8},
+        {"known": "Unfortunately, I don't know many people here.", "target": "Helaas ken ik niet veel mensen hier.", "score": 8},
+        {"known": "She wants to find people who want to learn Dutch.", "target": "Zij wil mensen vinden die Nederlands willen leren.", "score": 8},
+        {"known": "Those people want to start doing interesting things.", "target": "Die mensen willen beginnen met interessante dingen doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "to [part of verb]",
+      "target": "te",
+      "build": [
+        {"known": "to", "target": "te"},
+        {"known": "to talk", "target": "te praten"},
+        {"known": "to do", "target": "te doen"},
+        {"known": "to learn", "target": "te leren"}
+      ],
+      "use": [
+        {"known": "I'm not ready to talk to people I don't know yet.", "target": "Ik ben nog niet klaar om met mensen te praten die ik niet ken.", "score": 9},
+        {"known": "She wants to start to do interesting things with me.", "target": "Zij wil beginnen om interessante dingen met me te doen.", "score": 8},
+        {"known": "Unfortunately, it was not possible to wait for her.", "target": "Helaas was het niet mogelijk om op haar te wachten.", "score": 8},
+        {"known": "Those people want to find friends to learn Dutch with.", "target": "Die mensen willen vrienden vinden om Nederlands te leren.", "score": 8},
+        {"known": "I am not ready yet to agree with what he said.", "target": "Ik ben nog niet klaar om het eens te zijn met wat hij zei.", "score": 8},
+        {"known": "We want to start to meet people we don't know yet.", "target": "Wij willen beginnen met mensen te ontmoeten die wij nog niet ken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 10,
+      "type": "A",
+      "known": "to talk",
+      "target": "praten",
+      "build": [
+        {"known": "to talk", "target": "praten"},
+        {"known": "talk with", "target": "praten met"},
+        {"known": "talk to", "target": "praten met"},
+        {"known": "want to talk", "target": "wil praten"}
+      ],
+      "use": [
+        {"known": "I'm not ready to talk to people I don't know yet.", "target": "Ik ben nog niet klaar om met mensen te praten die ik niet ken.", "score": 9},
+        {"known": "She wants to talk with those people about learning Dutch.", "target": "Zij wil met die mensen praten over Nederlands leren.", "score": 8},
+        {"known": "Unfortunately, he doesn't want to talk to me about it.", "target": "Helaas wil hij niet met me praten over het.", "score": 8},
+        {"known": "Those people are talking about what she said.", "target": "Die mensen praten over wat zij zei.", "score": 8},
+        {"known": "I am not ready yet to talk with everyone about it.", "target": "Ik ben nog niet klaar om met iedereen over het te praten.", "score": 8},
+        {"known": "We want to start talking with people we don't know.", "target": "Wij willen beginnen met praten met mensen die wij niet ken.", "score": 8}
+      ]
+    },
+    {
+      "idx": 11,
+      "type": "A",
+      "known": "that/who",
+      "target": "die",
+      "build": [
+        {"known": "that", "target": "die"},
+        {"known": "who", "target": "die"},
+        {"known": "people who", "target": "mensen die"},
+        {"known": "friends who", "target": "vrienden die"}
+      ],
+      "use": [
+        {"known": "I'm not ready to talk to people I don't know yet.", "target": "Ik ben nog niet klaar om met mensen te praten die ik niet ken.", "score": 9},
+        {"known": "The people who I know want to start learning Dutch.", "target": "De mensen die ik ken willen beginnen met Nederlands leren.", "score": 8},
+        {"known": "She wants to find friends who want to talk with her.", "target": "Zij wil vrienden vinden die met haar willen praten.", "score": 8},
+        {"known": "Unfortunately, I don't know many people who speak Dutch.", "target": "Helaas ken ik niet veel mensen die Nederlands spreken.", "score": 8},
+        {"known": "Those are the people who are not ready yet.", "target": "Dat zijn de mensen die nog niet klaar zijn.", "score": 8},
+        {"known": "We want to find people who want to do it with us.", "target": "Wij willen mensen vinden die het met iedereen willen doen.", "score": 8}
+      ]
+    },
+    {
+      "idx": 12,
+      "type": "A",
+      "known": "know [people]",
+      "target": "ken",
+      "build": [
+        {"known": "know", "target": "ken"},
+        {"known": "I know", "target": "ik ken"},
+        {"known": "don't know", "target": "ken niet"},
+        {"known": "know you", "target": "ken je"}
+      ],
+      "use": [
+        {"known": "I'm not ready to talk to people I don't know yet.", "target": "Ik ben nog niet klaar om met mensen te praten die ik niet ken.", "score": 9},
+        {"known": "Do you know the people who want to learn Dutch?", "target": "Ken je de mensen die Nederlands willen leren?", "score": 8},
+        {"known": "Unfortunately, I don't know anyone who speaks Dutch.", "target": "Helaas ken ik niemand die Nederlands spreekt.", "score": 8},
+        {"known": "She knows the people who are still not ready.", "target": "Zij kent de mensen die nog niet klaar zijn.", "score": 8},
+        {"known": "I know everyone who wants to talk about it.", "target": "Ik ken iedereen die over het wil praten.", "score": 8},
+        {"known": "Do you know many people who agree with what I said?", "target": "Ken je veel mensen die het eens zijn met wat ik zei?", "score": 8}
+      ]
+    }
+  ]
+}

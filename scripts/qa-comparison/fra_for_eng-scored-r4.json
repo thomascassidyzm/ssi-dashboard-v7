@@ -1,0 +1,628 @@
+{
+  "course_code": "fra_for_eng",
+  "is_eng_for_x": false,
+  "round": 4,
+  "seed_range": "all",
+  "description": "Fresh random sample from entire course - independent verification round",
+  "total_use_phrases": 5110,
+  "sample_size": 50,
+  "scoring_metadata": {
+    "scored_by": "Claude Opus 4.5 (QA Agent)",
+    "scored_at": "2026-01-30",
+    "methodology": "Manual linguistic review of each phrase pair"
+  },
+  "summary": {
+    "average_score": 6.98,
+    "score_distribution": {
+      "9": 6,
+      "8": 21,
+      "7": 12,
+      "6": 3,
+      "5": 3,
+      "4": 0,
+      "3": 1,
+      "2": 4,
+      "1": 0
+    },
+    "below_5_count": 5,
+    "below_5_percentage": 10.0,
+    "worst_3_indices": [3, 6, 21]
+  },
+  "phrases": [
+    {
+      "idx": 1,
+      "id": "6127d24f-13c3-45ea-9e6a-94963d4f2952",
+      "seed": 209,
+      "lego": 2,
+      "syllables": 17,
+      "english": "nobody was sure what they want to spend more time practising with you",
+      "other": "personne n'était sûr ce qu'ils veulent passer plus de temps à pratiquer avec vous",
+      "qa_score": 3,
+      "qa_notes": "Tense inconsistency: 'était' (imparfait) + 'veulent' (present) - should be 'voulaient'. Missing 'de' after 'sûr': should be 'sûr de ce que'. Awkward construction overall."
+    },
+    {
+      "idx": 2,
+      "id": "93f91c43-1fe4-424a-a44e-be7eb0c6e5f2",
+      "seed": 28,
+      "lego": 3,
+      "syllables": 5,
+      "english": "as soon as you can",
+      "other": "dès que tu peux",
+      "qa_score": 8,
+      "qa_notes": "Natural and correct."
+    },
+    {
+      "idx": 3,
+      "id": "e48556cb-ad59-437c-99c6-e99b9d12b777",
+      "seed": 43,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I wasn't thinking about it",
+      "other": "je ne pensais pas à y",
+      "qa_score": 2,
+      "qa_notes": "GRAMMATICALLY INCORRECT: 'y' cannot follow preposition 'à'. Correct form: 'je n'y pensais pas'. The pronoun 'y' replaces 'à + noun' and must precede the verb."
+    },
+    {
+      "idx": 4,
+      "id": "9b039504-e43d-4099-9683-87cd0e4f3b7f",
+      "seed": 71,
+      "lego": 2,
+      "syllables": 9,
+      "english": "we didn't want to let anyone do that",
+      "other": "on ne voulait pas laisser quelqu'un faire ça",
+      "qa_score": 7,
+      "qa_notes": "Good. 'Quiconque' or 'personne' might be more idiomatic for 'anyone' in negative context, but 'quelqu'un' is acceptable."
+    },
+    {
+      "idx": 5,
+      "id": "73f8e206-64a8-42c6-b3ca-f9a3e9fbf21c",
+      "seed": 75,
+      "lego": 1,
+      "syllables": 6,
+      "english": "have you got the answer",
+      "other": "avez-vous la réponse",
+      "qa_score": 8,
+      "qa_notes": "Correct and natural."
+    },
+    {
+      "idx": 6,
+      "id": "2346c923-e378-48ae-b7a7-fdecf67c533d",
+      "seed": 107,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I feel we hoped that here",
+      "other": "je me sens que nous espérions que ici",
+      "qa_score": 2,
+      "qa_notes": "UNGRAMMATICAL: 'se sentir' cannot take a 'que' clause this way. 'que ici' is incorrect (should be 'ici' or nothing). English source is also semantically odd. Multiple errors."
+    },
+    {
+      "idx": 7,
+      "id": "15e2f03c-ee79-4ff8-9f27-46d6336d52f8",
+      "seed": 77,
+      "lego": 1,
+      "syllables": 5,
+      "english": "I'm surprised at",
+      "other": "je suis surpris de",
+      "qa_score": 7,
+      "qa_notes": "Correct fragment. Preposition 'de' is appropriate."
+    },
+    {
+      "idx": 8,
+      "id": "381da1be-957c-4211-80d7-af821f6fefe7",
+      "seed": 20,
+      "lego": 2,
+      "syllables": 8,
+      "english": "you want to learn something now",
+      "other": "tu veux apprendre quelque chose maintenant",
+      "qa_score": 8,
+      "qa_notes": "Perfect and natural."
+    },
+    {
+      "idx": 9,
+      "id": "d62ec026-f313-4eca-8de9-2996c5f9430d",
+      "seed": 49,
+      "lego": 3,
+      "syllables": 16,
+      "english": "it's a good thing if you know what I mean because I don't worry",
+      "other": "c'est une bonne chose si tu vois ce que je veux dire parce que je ne m'inquiète pas",
+      "qa_score": 8,
+      "qa_notes": "Good, natural French."
+    },
+    {
+      "idx": 10,
+      "id": "cda54c9f-4059-4499-8b06-9b3cad6423c7",
+      "seed": 249,
+      "lego": 3,
+      "syllables": 16,
+      "english": "I want to give you more time before you go but I'm too busy",
+      "other": "je veux te donner plus de temps avant de partir mais je suis trop occupé",
+      "qa_score": 7,
+      "qa_notes": "Good. Note: 'avant de partir' = 'before leaving' (same subject). 'Before you go' would be 'avant que tu partes' (different subject). Minor semantic shift."
+    },
+    {
+      "idx": 11,
+      "id": "30ab04e4-cb39-4c09-acd8-9200e94b17d3",
+      "seed": 216,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I haven't seen them so far",
+      "other": "je ne les ai pas vus jusqu'ici",
+      "qa_score": 8,
+      "qa_notes": "Correct. Past participle 'vus' properly agrees with masculine plural 'les'."
+    },
+    {
+      "idx": 12,
+      "id": "1df3125d-d6d2-494b-a868-c0928f581008",
+      "seed": 28,
+      "lego": 1,
+      "syllables": 7,
+      "english": "it is useful to learn",
+      "other": "c'est utile d'apprendre",
+      "qa_score": 8,
+      "qa_notes": "Correct and natural."
+    },
+    {
+      "idx": 13,
+      "id": "97dde1ec-5264-41dd-86b2-f310c08e7275",
+      "seed": 50,
+      "lego": 2,
+      "syllables": 8,
+      "english": "I'm not trying to finish today",
+      "other": "je n'essaie pas de finir aujourd'hui",
+      "qa_score": 8,
+      "qa_notes": "Perfect."
+    },
+    {
+      "idx": 14,
+      "id": "97b1d938-dff7-4641-9913-b07aff21e93d",
+      "seed": 174,
+      "lego": 1,
+      "syllables": 16,
+      "english": "I don't know if you can understand what I think about the book",
+      "other": "je ne sais pas si vous pouvez comprendre ce que je pense du livre",
+      "qa_score": 8,
+      "qa_notes": "Correct and natural."
+    },
+    {
+      "idx": 15,
+      "id": "2b866879-3777-40bb-9d16-b438c2f7a481",
+      "seed": 129,
+      "lego": 2,
+      "syllables": 14,
+      "english": "you're like someone I used to know and you're doing so well",
+      "other": "vous êtes comme quelqu'un que je connaissais et vous faites si bien",
+      "qa_score": 7,
+      "qa_notes": "Good. 'Vous vous en sortez si bien' might be more idiomatic for 'doing so well'."
+    },
+    {
+      "idx": 16,
+      "id": "43a42202-3c74-4b0c-9178-5a493ec89c00",
+      "seed": 172,
+      "lego": 1,
+      "syllables": 11,
+      "english": "yes that would be interesting for the book",
+      "other": "oui ça serait intéressant pour le livre",
+      "qa_score": 8,
+      "qa_notes": "Correct and natural."
+    },
+    {
+      "idx": 17,
+      "id": "7608d41f-4c11-4e14-930b-b66a897a3a80",
+      "seed": 200,
+      "lego": 3,
+      "syllables": 9,
+      "english": "they want to make sure that we finish",
+      "other": "ils veulent s'assurer que nous finissons",
+      "qa_score": 8,
+      "qa_notes": "Correct."
+    },
+    {
+      "idx": 18,
+      "id": "84ee932d-3df3-4b71-a71b-714d775f2bbf",
+      "seed": 213,
+      "lego": 1,
+      "syllables": 6,
+      "english": "we don't know something",
+      "other": "nous ne savons pas quelque chose",
+      "qa_score": 5,
+      "qa_notes": "Grammatically acceptable but awkward. In negative contexts, 'quoi que ce soit' or restructuring is more natural."
+    },
+    {
+      "idx": 19,
+      "id": "1de77241-ad22-471e-9f42-5f1f419f748b",
+      "seed": 154,
+      "lego": 2,
+      "syllables": 16,
+      "english": "on Saturday night when everything is okay for us now",
+      "other": "samedi soir quand tout va bien pour nous maintenant",
+      "qa_score": 6,
+      "qa_notes": "Functional but semantically odd English source makes the translation awkward."
+    },
+    {
+      "idx": 20,
+      "id": "e7eef37f-2ce7-479d-908d-02ec9f71d879",
+      "seed": 236,
+      "lego": 1,
+      "syllables": 11,
+      "english": "I know someone who said they were going to come",
+      "other": "je connais quelqu'un qui a dit qu'il allait venir",
+      "qa_score": 8,
+      "qa_notes": "Correct."
+    },
+    {
+      "idx": 21,
+      "id": "b16ae5b8-28e5-49f6-9da8-5bd6ed37475f",
+      "seed": 56,
+      "lego": 2,
+      "syllables": 5,
+      "english": "remember how here",
+      "other": "me rappeler comment ici",
+      "qa_score": 2,
+      "qa_notes": "UNUSABLE: Fragment makes no grammatical sense. Infinitive without subject or context. 'me rappeler comment ici' is ungrammatical. English is equally nonsensical."
+    },
+    {
+      "idx": 22,
+      "id": "883b8a09-4565-4626-952d-b9e5458cb8bc",
+      "seed": 218,
+      "lego": 3,
+      "syllables": 7,
+      "english": "I didn't do much on Sunday",
+      "other": "je n'ai pas fait grand-chose dimanche",
+      "qa_score": 9,
+      "qa_notes": "Perfect, very natural idiomatic French."
+    },
+    {
+      "idx": 23,
+      "id": "e17ba0b8-414f-4cd9-843d-85007e239988",
+      "seed": 88,
+      "lego": 1,
+      "syllables": 16,
+      "english": "I'm not ready to talk to people I don't know very well tonight",
+      "other": "je ne suis pas prêt à parler à des gens que je ne connais pas très bien ce soir",
+      "qa_score": 8,
+      "qa_notes": "Correct and natural."
+    },
+    {
+      "idx": 24,
+      "id": "9ac6ffd9-7fe6-4b01-a8da-45d60942a35e",
+      "seed": 5,
+      "lego": 2,
+      "syllables": 5,
+      "english": "I'm trying to practise",
+      "other": "j'essaie de m'entraîner",
+      "qa_score": 8,
+      "qa_notes": "Correct."
+    },
+    {
+      "idx": 25,
+      "id": "79ad8f04-c2d3-4c53-97d3-952b65bf32f8",
+      "seed": 176,
+      "lego": 2,
+      "syllables": 7,
+      "english": "if he'll be able to help me",
+      "other": "s'il pourra m'aider",
+      "qa_score": 8,
+      "qa_notes": "Correct and natural."
+    },
+    {
+      "idx": 26,
+      "id": "86624010-c7aa-4e35-900e-cefafe921297",
+      "seed": 158,
+      "lego": 1,
+      "syllables": 17,
+      "english": "let's talk about that tomorrow morning or next month when you have time",
+      "other": "parlons de ça demain matin ou le mois prochain quand vous avez du temps",
+      "qa_score": 8,
+      "qa_notes": "Correct."
+    },
+    {
+      "idx": 27,
+      "id": "aa6f6811-be2c-48fc-9348-5ee7cbe3267c",
+      "seed": 251,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I don't want to find out now",
+      "other": "je ne veux pas savoir maintenant",
+      "qa_score": 7,
+      "qa_notes": "Good. Note: 'find out' is more 'découvrir/apprendre' than 'savoir', but acceptable."
+    },
+    {
+      "idx": 28,
+      "id": "a271fd59-b2cc-4094-9057-dfeea09962a1",
+      "seed": 206,
+      "lego": 1,
+      "syllables": 17,
+      "english": "we wanted to know if I appreciate what my friend said yesterday",
+      "other": "nous voulions savoir si j'apprécie ce que mon ami a dit hier",
+      "qa_score": 6,
+      "qa_notes": "Tense inconsistency: 'voulions' (imparfait) followed by 'j'apprécie' (present). Should likely be 'j'appréciais' or 'j'ai apprécié'. English source is also semantically awkward."
+    },
+    {
+      "idx": 29,
+      "id": "52e7b3ca-ede1-442a-877f-ee1b26aa8516",
+      "seed": 9,
+      "lego": 2,
+      "syllables": 5,
+      "english": "I speak a little French",
+      "other": "je parle un peu français",
+      "qa_score": 7,
+      "qa_notes": "Acceptable but should be 'un peu le français' or 'un peu de français' for full correctness."
+    },
+    {
+      "idx": 30,
+      "id": "8fc98159-1f18-486a-a752-8f360a076f36",
+      "seed": 90,
+      "lego": 3,
+      "syllables": 13,
+      "english": "if you can speak more slowly tonight, that would be great",
+      "other": "si vous pouvez parler plus lentement ce soir, ce serait super",
+      "qa_score": 8,
+      "qa_notes": "Correct and natural."
+    },
+    {
+      "idx": 31,
+      "id": "31d5a143-01b7-4fe9-a807-23e25ba3fde5",
+      "seed": 199,
+      "lego": 3,
+      "syllables": 6,
+      "english": "he works in an office",
+      "other": "il travaille dans un bureau",
+      "qa_score": 9,
+      "qa_notes": "Perfect."
+    },
+    {
+      "idx": 32,
+      "id": "618fa763-0a81-4cdd-bbc7-217dd720e52d",
+      "seed": 211,
+      "lego": 1,
+      "syllables": 15,
+      "english": "I appreciate what they told us about the arrangements",
+      "other": "j'apprécie ce qu'ils nous ont dit des préparatifs",
+      "qa_score": 7,
+      "qa_notes": "Good. 'au sujet des préparatifs' slightly more natural than 'des préparatifs'."
+    },
+    {
+      "idx": 33,
+      "id": "eb89ec0e-d2b1-4eb7-80aa-068b464ef16c",
+      "seed": 9,
+      "lego": 2,
+      "syllables": 11,
+      "english": "I'm going to try to speak a little French today",
+      "other": "je vais essayer de parler un peu français aujourd'hui",
+      "qa_score": 7,
+      "qa_notes": "Same issue as #29: 'un peu de français' or 'un peu le français' more correct."
+    },
+    {
+      "idx": 34,
+      "id": "de01dc5b-0c40-468c-aa5c-01ec43469316",
+      "seed": 234,
+      "lego": 1,
+      "syllables": 14,
+      "english": "I met an old woman who can remember the answer",
+      "other": "j'ai rencontré une vieille femme qui peut se souvenir de la réponse",
+      "qa_score": 7,
+      "qa_notes": "Correct. Note: 'vieille' can sound rude; 'une femme âgée' is more polite in formal contexts."
+    },
+    {
+      "idx": 35,
+      "id": "447b32f2-f7b4-451c-bbb8-d2945eac48c5",
+      "seed": 73,
+      "lego": 1,
+      "syllables": 7,
+      "english": "thank you very much for that",
+      "other": "merci beaucoup pour ça",
+      "qa_score": 9,
+      "qa_notes": "Perfect, very natural."
+    },
+    {
+      "idx": 36,
+      "id": "c9ed429f-652f-4abc-a7c7-5cd99e79232e",
+      "seed": 200,
+      "lego": 3,
+      "syllables": 9,
+      "english": "they say we finish everything",
+      "other": "ils disent que nous finissons tout",
+      "qa_score": 7,
+      "qa_notes": "Correct, slightly textbook but acceptable."
+    },
+    {
+      "idx": 37,
+      "id": "780738a3-9cc2-4cad-b7bd-612075e51518",
+      "seed": 77,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I'm surprised at the truth",
+      "other": "je suis surpris de la vérité",
+      "qa_score": 7,
+      "qa_notes": "Correct. 'par la vérité' might be slightly more natural."
+    },
+    {
+      "idx": 38,
+      "id": "756d04f0-a9f9-499d-a0e9-694ab7d70d7a",
+      "seed": 98,
+      "lego": 2,
+      "syllables": 13,
+      "english": "yes I should consider playing something else tonight",
+      "other": "oui je devrais envisager de jouer à autre chose ce soir",
+      "qa_score": 8,
+      "qa_notes": "Correct."
+    },
+    {
+      "idx": 39,
+      "id": "af732185-640f-41dd-bfd7-6cd79aa5f641",
+      "seed": 200,
+      "lego": 4,
+      "syllables": 13,
+      "english": "they say that they want to make sure we finish in time",
+      "other": "ils disent qu'ils veulent s'assurer que nous finissons à temps",
+      "qa_score": 8,
+      "qa_notes": "Correct."
+    },
+    {
+      "idx": 40,
+      "id": "e452496d-ddf2-49ce-b01a-be6912840418",
+      "seed": 122,
+      "lego": 2,
+      "syllables": 7,
+      "english": "and I'm excited about",
+      "other": "et je suis enthousiaste de",
+      "qa_score": 6,
+      "qa_notes": "Incomplete fragment ending with preposition. 'Enthousiaste à l'idée de' would be more natural for expressing excitement about something."
+    },
+    {
+      "idx": 41,
+      "id": "a5c6974c-70cb-43b0-b99b-618ee21598a6",
+      "seed": 258,
+      "lego": 1,
+      "syllables": 7,
+      "english": "I want to know what it is",
+      "other": "je veux savoir c'est quoi",
+      "qa_score": 5,
+      "qa_notes": "Informal/colloquial register. Standard form: 'je veux savoir ce que c'est'. May be intentionally colloquial but sounds unpolished."
+    },
+    {
+      "idx": 42,
+      "id": "f870c9bc-f3bd-4229-bdf5-3ff254f54688",
+      "seed": 130,
+      "lego": 2,
+      "syllables": 10,
+      "english": "that was a surprise because he's my friend",
+      "other": "c'était une surprise parce qu'il est mon ami",
+      "qa_score": 8,
+      "qa_notes": "Correct."
+    },
+    {
+      "idx": 43,
+      "id": "929580d1-2640-49c7-9eb8-5085d75eed92",
+      "seed": 244,
+      "lego": 2,
+      "syllables": 7,
+      "english": "I know a lot already",
+      "other": "je sais déjà beaucoup",
+      "qa_score": 7,
+      "qa_notes": "Correct. 'je sais déjà beaucoup de choses' slightly more natural."
+    },
+    {
+      "idx": 44,
+      "id": "e66640f1-7fb2-40d0-ba63-51dd9ae83240",
+      "seed": 137,
+      "lego": 2,
+      "syllables": 13,
+      "english": "to talk often when you want to go home together",
+      "other": "de parler souvent quand vous voulez rentrer à la maison ensemble",
+      "qa_score": 5,
+      "qa_notes": "Incomplete fragment. Sounds like a subordinate clause without a main clause. Awkward as standalone phrase."
+    },
+    {
+      "idx": 45,
+      "id": "1c02a2a3-ed5a-4fdf-8154-6f8ebbf28bbe",
+      "seed": 21,
+      "lego": 2,
+      "syllables": 5,
+      "english": "are you learning French",
+      "other": "apprends-tu le français",
+      "qa_score": 8,
+      "qa_notes": "Correct, formal register with inversion."
+    },
+    {
+      "idx": 46,
+      "id": "f074ad18-169e-4d88-9110-3ed956926492",
+      "seed": 180,
+      "lego": 2,
+      "syllables": 7,
+      "english": "my book is here with me now",
+      "other": "mon livre est ici avec moi maintenant",
+      "qa_score": 7,
+      "qa_notes": "Correct. Slightly redundant ('ici avec moi') but acceptable."
+    },
+    {
+      "idx": 47,
+      "id": "299f5a3a-aa29-46d7-8a81-6f33f0321388",
+      "seed": 57,
+      "lego": 2,
+      "syllables": 11,
+      "english": "I can't remember how to say a few words",
+      "other": "je ne peux pas me rappeler comment dire quelques mots",
+      "qa_score": 7,
+      "qa_notes": "Correct. 'me souvenir de' slightly more natural than 'me rappeler' here."
+    },
+    {
+      "idx": 48,
+      "id": "a41b3db4-fd32-42b3-bac6-b39815288034",
+      "seed": 7,
+      "lego": 2,
+      "syllables": 5,
+      "english": "I want to try now",
+      "other": "je veux essayer maintenant",
+      "qa_score": 9,
+      "qa_notes": "Perfect."
+    },
+    {
+      "idx": 49,
+      "id": "a275653d-9dcf-44b1-a324-41fc73a6a91e",
+      "seed": 34,
+      "lego": 1,
+      "syllables": 8,
+      "english": "he doesn't want to answer tonight",
+      "other": "il ne veut pas répondre ce soir",
+      "qa_score": 9,
+      "qa_notes": "Perfect."
+    },
+    {
+      "idx": 50,
+      "id": "bdbc306b-d3fc-4411-8d6e-4db0332c5138",
+      "seed": 218,
+      "lego": 3,
+      "syllables": 8,
+      "english": "I saw a few friends on Sunday",
+      "other": "j'ai vu quelques amis dimanche",
+      "qa_score": 9,
+      "qa_notes": "Perfect."
+    }
+  ],
+  "systematic_issues": [
+    {
+      "issue": "Tense inconsistency (imparfait/present mixing)",
+      "affected_phrases": [1, 28],
+      "description": "Past tense in main clause followed by present tense in subordinate clause where past would be expected for sequence of tenses."
+    },
+    {
+      "issue": "Pronoun placement errors",
+      "affected_phrases": [3],
+      "description": "Adverbial pronoun 'y' incorrectly placed after preposition 'à' instead of before the verb."
+    },
+    {
+      "issue": "Incomplete/nonsensical fragments",
+      "affected_phrases": [6, 21, 44],
+      "description": "Some phrases are incomplete fragments that don't function as standalone utterances."
+    },
+    {
+      "issue": "Missing article with 'français'",
+      "affected_phrases": [29, 33],
+      "description": "'Un peu français' should be 'un peu le français' or 'un peu de français'."
+    }
+  ],
+  "worst_3_phrases": [
+    {
+      "idx": 3,
+      "score": 2,
+      "english": "I wasn't thinking about it",
+      "french": "je ne pensais pas à y",
+      "reason": "Critical grammatical error: 'y' cannot follow the preposition 'à'. The pronoun 'y' replaces 'à + noun' and must precede the conjugated verb. Correct form: 'je n'y pensais pas'. This is a fundamental French grammar rule and the error makes the phrase sound completely unnatural to native speakers."
+    },
+    {
+      "idx": 6,
+      "score": 2,
+      "english": "I feel we hoped that here",
+      "french": "je me sens que nous espérions que ici",
+      "reason": "Multiple errors: (1) 'se sentir' cannot take a 'que' clause as direct object in this construction, (2) 'que ici' is ungrammatical - 'que' before an adverb of place makes no sense, (3) the English source itself is semantically unclear. The phrase is unusable for language learning."
+    },
+    {
+      "idx": 21,
+      "score": 2,
+      "english": "remember how here",
+      "french": "me rappeler comment ici",
+      "reason": "Completely nonsensical fragment in both languages. An infinitive 'me rappeler' without a subject or finite verb, combined with 'comment ici' which has no grammatical connection. This appears to be a phrase generation error - neither the English nor French forms are usable as pedagogical content."
+    }
+  ]
+}

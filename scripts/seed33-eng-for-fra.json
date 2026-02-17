@@ -1,0 +1,36 @@
+{
+  "course_code": "eng_for_fra",
+  "seed_number": 33,
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "Depuis combien de temps apprends-tu",
+      "target": "How long have you been learning",
+      "components": [
+        {"known": "Depuis combien de temps", "target": "How long have you been"},
+        {"known": "apprends-tu", "target": "learning"}
+      ],
+      "build": [
+        {"known": "Depuis combien de temps apprends-tu", "target": "How long have you been learning"},
+        {"known": "Depuis combien de temps", "target": "How long have you been"},
+        {"known": "Depuis combien de temps apprends-tu anglais", "target": "How long have you been learning English"},
+        {"known": "apprends-tu", "target": "learning"}
+      ],
+      "use": [
+        {"known": "Depuis combien de temps apprends-tu anglais avec moi?", "target": "How long have you been learning English with me?", "score": 9},
+        {"known": "Depuis combien de temps apprends-tu anglais maintenant?", "target": "How long have you been learning English now?", "score": 9},
+        {"known": "Depuis combien de temps apprends-tu comment parler anglais?", "target": "How long have you been learning how to speak English?", "score": 9},
+        {"known": "Depuis combien de temps apprends-tu anglais très bien?", "target": "How long have you been learning English very well?", "score": 9},
+        {"known": "Depuis combien de temps apprends-tu anglais avec des gens?", "target": "How long have you been learning English with people?", "score": 9},
+        {"known": "Depuis combien de temps apprends-tu anglais facilement?", "target": "How long have you been learning English easily?", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "anglais",
+      "target": "English"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 240,
+  "known_text": "My father doesn't like to stop talking.",
+  "target_text": "我爸爸不喜欢停止说话。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "I/me",
+      "target": "我",
+      "build": [
+        {"known": "I.", "target": "我。"},
+        {"known": "My.", "target": "我的。"},
+        {"known": "My father.", "target": "我爸爸。"},
+        {"known": "Me.", "target": "我。"}
+      ],
+      "use": [
+        {"known": "My father doesn't like to stop when he is working.", "target": "我爸爸工作的时候不喜欢停止。", "score": 8},
+        {"known": "That young man asked me if I know your sister.", "target": "那个年轻的男人问我是不是认识你姐姐。", "score": 7},
+        {"known": "If the old woman can tell me, I would be very happy.", "target": "如果那个老女人能告诉我的话，我会很开心。", "score": 8},
+        {"known": "Everyone told me they want to meet your brother too.", "target": "大家都告诉我他们也想见你哥哥。", "score": 7},
+        {"known": "Would that young woman be able to help me with this?", "target": "那个年轻的女人能帮我做这个吗？", "score": 8},
+        {"known": "She hopes I can remember what the old man said.", "target": "她希望我能记住那个老人说了什么。", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "father",
+      "target": "爸爸",
+      "components": [
+        {"known": "dad", "target": "爸"},
+        {"known": "dad", "target": "爸"}
+      ],
+      "build": [
+        {"known": "Father.", "target": "爸爸。"},
+        {"known": "Dad.", "target": "爸爸。"},
+        {"known": "My father.", "target": "我爸爸。"},
+        {"known": "Your father.", "target": "你爸爸。"}
+      ],
+      "use": [
+        {"known": "My father doesn't like to stop talking about work.", "target": "我爸爸不喜欢停止说工作的话。", "score": 8},
+        {"known": "That young woman said her father wants to meet you.", "target": "那个年轻的女人说她爸爸想见你。", "score": 7},
+        {"known": "If your father can come tomorrow, we can all talk.", "target": "如果你爸爸明天能来的话，我们大家可以说话。", "score": 8},
+        {"known": "He told me his father remembers what happened.", "target": "他告诉我他爸爸记住发生了什么。", "score": 7},
+        {"known": "Everyone here wants to meet your father someday.", "target": "这里的大家都想有一天见你爸爸。", "score": 8},
+        {"known": "Does your father still want to work together with us?", "target": "你爸爸还想和我们一起工作吗？", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "not/no",
+      "target": "不",
+      "build": [
+        {"known": "Not.", "target": "不。"},
+        {"known": "No.", "target": "不。"},
+        {"known": "Don't like.", "target": "不喜欢。"},
+        {"known": "Father doesn't.", "target": "爸爸不。"}
+      ],
+      "use": [
+        {"known": "My father doesn't like to stop when we are talking.", "target": "我爸爸我们说话的时候不喜欢停止。", "score": 8},
+        {"known": "That young man doesn't want to come to the meeting.", "target": "那个年轻的男人不想来开会。", "score": 7},
+        {"known": "If you don't understand, you should ask someone.", "target": "如果你不了解，你要问人。", "score": 8},
+        {"known": "She told me she doesn't know what happened yesterday.", "target": "她告诉我她不知道昨天发生了什么。", "score": 7},
+        {"known": "Everyone here doesn't want to wait any longer.", "target": "这里的大家都不想再等了。", "score": 8},
+        {"known": "Why doesn't your mother like to come to our place?", "target": "你妈妈为什么不喜欢来我们这里？", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "like/enjoy",
+      "target": "喜欢",
+      "components": [
+        {"known": "happy", "target": "喜"},
+        {"known": "fond of", "target": "欢"}
+      ],
+      "build": [
+        {"known": "Like.", "target": "喜欢。"},
+        {"known": "Enjoy.", "target": "喜欢。"},
+        {"known": "Don't like.", "target": "不喜欢。"},
+        {"known": "Father doesn't like.", "target": "爸爸不喜欢。"}
+      ],
+      "use": [
+        {"known": "My father doesn't like to stop reading his books.", "target": "我爸爸不喜欢停止看他的书。", "score": 8},
+        {"known": "That young woman likes to practise speaking with us.", "target": "那个年轻的女人喜欢和我们练习说话。", "score": 7},
+        {"known": "If you like this kind of work, you should do it.", "target": "如果你喜欢这样的工作的话，你要做。", "score": 8},
+        {"known": "He told me he likes to help people when he can.", "target": "他告诉我他能的时候喜欢帮人。", "score": 7},
+        {"known": "Everyone here likes to learn new things together.", "target": "这里的大家都喜欢一起学新的东西。", "score": 8},
+        {"known": "What kind of things does your mother like to do?", "target": "你妈妈喜欢做什么样的东西？", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "stop",
+      "target": "停止",
+      "components": [
+        {"known": "halt", "target": "停"},
+        {"known": "cease", "target": "止"}
+      ],
+      "build": [
+        {"known": "Stop.", "target": "停止。"},
+        {"known": "Stop it.", "target": "停止。"},
+        {"known": "Don't like to stop.", "target": "不喜欢停止。"},
+        {"known": "Stop talking.", "target": "停止说话。"}
+      ],
+      "use": [
+        {"known": "My father doesn't like to stop when he is reading.", "target": "我爸爸看书的时候不喜欢停止。", "score": 8},
+        {"known": "That young man said we should stop and take a rest.", "target": "那个年轻的男人说我们要停止休息一下。", "score": 7},
+        {"known": "If you want to stop, please let me know right away.", "target": "如果你想停止的话，请让我知道。", "score": 8},
+        {"known": "She told me she will stop working when she is done.", "target": "她告诉我她做完的时候会停止工作。", "score": 7},
+        {"known": "Everyone here wants to stop for a bit and rest.", "target": "这里的大家都想停止一下休息。", "score": 8},
+        {"known": "When do you think your mother will stop talking?", "target": "你觉得你妈妈什么时候会停止说话？", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "talk/speak",
+      "target": "说话",
+      "components": [
+        {"known": "say", "target": "说"},
+        {"known": "words", "target": "话"}
+      ],
+      "build": [
+        {"known": "Talk.", "target": "说话。"},
+        {"known": "Speak.", "target": "说话。"},
+        {"known": "Stop talking.", "target": "停止说话。"},
+        {"known": "Don't like to stop talking.", "target": "不喜欢停止说话。"}
+      ],
+      "use": [
+        {"known": "My father doesn't like to stop talking about himself.", "target": "我爸爸不喜欢停止说自己的话。", "score": 8},
+        {"known": "That young woman likes to talk with your brother.", "target": "那个年轻的女人喜欢和你哥哥说话。", "score": 7},
+        {"known": "If you want to talk now, I have time to listen.", "target": "如果你现在想说话的话，我有时间听。", "score": 8},
+        {"known": "She told me her mother likes to talk about the past.", "target": "她告诉我她妈妈喜欢说以前的话。", "score": 7},
+        {"known": "Everyone here enjoys talking together after work.", "target": "这里的大家都喜欢工作以后一起说话。", "score": 8},
+        {"known": "Why does your father like to talk so much?", "target": "你爸爸为什么喜欢说这么多话？", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 145,
+  "known_text": "なぜもう幸せじゃないのですか？",
+  "target_text": "Why are you not happy any more?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "幸せ",
+      "target": "happy",
+      "build": [
+        {"known": "幸せ", "target": "happy"},
+        {"known": "幸せだ", "target": "is happy"},
+        {"known": "幸せではない", "target": "not happy"},
+        {"known": "幸せになりたい", "target": "want to be happy"}
+      ],
+      "use": [
+        {"known": "私は幸せだと彼女に言いましたが、私は問題があると思います。", "target": "I said to her I'm happy, but I think there is a problem.", "score": 8},
+        {"known": "もちろん彼女は幸せだと思いますと私の友達は言いました。", "target": "My friend said of course I think she is happy.", "score": 8},
+        {"known": "彼女は幸せではないと言いましたが、私は彼女が幸せだと思います。", "target": "She said she is not happy, but I think she is happy.", "score": 8},
+        {"known": "私の友達は幸せになりたいと頻繁に言っていましたが、難しかったと思います。", "target": "My friend was often saying she wanted to be happy, but I think it was difficult.", "score": 8},
+        {"known": "彼は幸せだと言いましたが、私は問題があると思います。", "target": "He said he is happy, but I think there is a problem.", "score": 8},
+        {"known": "もちろん私は幸せですと彼女は言いました、私は感謝しています。", "target": "She said of course I'm happy, I'm grateful.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "もう",
+      "target": "more",
+      "build": [
+        {"known": "もう", "target": "more"},
+        {"known": "もう一度", "target": "one more"},
+        {"known": "もうない", "target": "no more"},
+        {"known": "もういい", "target": "more good"}
+      ],
+      "use": [
+        {"known": "私はもう話したいと彼女に言いましたが、難しかったと思います。", "target": "I said to her I want to talk more, but I think it was difficult.", "score": 8},
+        {"known": "もちろんもう会いたいですと私の友達は言いました。", "target": "My friend said of course I want to meet more.", "score": 8},
+        {"known": "彼女はもう知りたいと言いましたが、私は問題があると思います。", "target": "She said she wanted to know more, but I think there is a problem.", "score": 8},
+        {"known": "私の友達はもう理解したいと頻繁に言っていました。", "target": "My friend was often saying she wanted to understand more.", "score": 8},
+        {"known": "彼はもう手伝いたいと言いましたが、私は難しいと思います。", "target": "He said he wanted to help more, but I think it is difficult.", "score": 8},
+        {"known": "もちろんもう知りたいですと彼女は言いました。", "target": "She said of course I want to know more.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "〜じゃない",
+      "target": "not",
+      "components": [
+        {"known": "〜じゃ", "target": "no"},
+        {"known": "ない", "target": "t"}
+      ],
+      "build": [
+        {"known": "〜じゃない", "target": "not"},
+        {"known": "幸せじゃない", "target": "not happy"},
+        {"known": "大丈夫じゃない", "target": "not okay"},
+        {"known": "問題じゃない", "target": "not a problem"}
+      ],
+      "use": [
+        {"known": "私は幸せじゃないと彼女に言いましたが、私は問題だと思います。", "target": "I said to her I'm not happy, but I think it is a problem.", "score": 8},
+        {"known": "もちろんそれは問題じゃないと私の友達は言いました。", "target": "My friend said of course that is not a problem.", "score": 8},
+        {"known": "彼女は大丈夫じゃないと言いましたが、私は彼女が大丈夫だと思います。", "target": "She said she is not okay, but I think she is okay.", "score": 8},
+        {"known": "私の友達は幸せじゃないと頻繁に言っていましたが、私は彼女が幸せだと思います。", "target": "My friend was often saying she is not happy, but I think she is happy.", "score": 8},
+        {"known": "彼は問題じゃないと言いましたが、私は問題だと思います。", "target": "He said it is not a problem, but I think it is a problem.", "score": 8},
+        {"known": "もちろんそれは大丈夫じゃないと彼女は言いました。", "target": "She said of course that is not okay.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "なぜ〜のですか",
+      "target": "Why are you",
+      "components": [
+        {"known": "なぜ", "target": "Why are"},
+        {"known": "〜のですか", "target": "you"}
+      ],
+      "build": [
+        {"known": "なぜ〜のですか", "target": "Why are you"},
+        {"known": "なぜ幸せじゃないのですか", "target": "Why are you not happy"},
+        {"known": "なぜそこにいるのですか", "target": "Why are you there"},
+        {"known": "なぜそれをやるのですか", "target": "Why are you doing that"}
+      ],
+      "use": [
+        {"known": "なぜ幸せじゃないのですかと聞きたいと私は思います。", "target": "I think I want to ask why are you not happy.", "score": 8},
+        {"known": "もちろんなぜそれをやるのですかと私の友達は聞きたいと言いました。", "target": "My friend said of course I want to ask why are you doing that.", "score": 8},
+        {"known": "彼女はなぜ幸せじゃないのですかと聞きたいと言いましたが、私は難しいと思います。", "target": "She said she wanted to ask why are you not happy, but I think it is difficult.", "score": 8},
+        {"known": "私の友達はなぜそこにいるのですかと頻繁に聞きたいと言っていました。", "target": "My friend was often saying she wanted to ask why are you there.", "score": 8},
+        {"known": "彼はなぜ大丈夫じゃないのですかと聞きたいと言いましたが、私は問題だと思います。", "target": "He said he wanted to ask why are you not okay, but I think it is a problem.", "score": 8},
+        {"known": "もちろんなぜ幸せじゃないのですかと彼女は聞きたいと言いました。", "target": "She said of course I want to ask why are you not happy.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "もう〜じゃない",
+      "target": "not... any more",
+      "components": [
+        {"known": "もう", "target": "any more"},
+        {"known": "〜じゃない", "target": "not"}
+      ],
+      "build": [
+        {"known": "もう〜じゃない", "target": "not... any more"},
+        {"known": "もう幸せじゃない", "target": "not happy any more"},
+        {"known": "もう大丈夫じゃない", "target": "not okay any more"},
+        {"known": "もう問題じゃない", "target": "not a problem any more"}
+      ],
+      "use": [
+        {"known": "私はもう幸せじゃないと彼女に言いましたが、私は問題があると思います。", "target": "I said to her I'm not happy any more, but I think there is a problem.", "score": 8},
+        {"known": "もちろんそれはもう問題じゃないと私の友達は言いました。", "target": "My friend said of course that is not a problem any more.", "score": 8},
+        {"known": "彼女はもう大丈夫じゃないと言いましたが、私は彼女が大丈夫だと思います。", "target": "She said she is not okay any more, but I think she is okay.", "score": 8},
+        {"known": "私の友達はもう幸せじゃないと頻繁に言っていましたが、私は彼女が幸せだと思います。", "target": "My friend was often saying she is not happy any more, but I think she is happy.", "score": 8},
+        {"known": "なぜもう幸せじゃないのですか？", "target": "Why are you not happy any more?", "score": 9},
+        {"known": "彼はもう問題じゃないと言いましたが、私は問題だと思います。", "target": "He said it is not a problem any more, but I think it is a problem.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "もう幸せじゃないのですか",
+      "target": "you not happy any",
+      "components": [
+        {"known": "もう幸せ", "target": "you not happy"},
+        {"known": "じゃないのですか", "target": "any"}
+      ],
+      "build": [
+        {"known": "もう幸せじゃないのですか", "target": "you not happy any"},
+        {"known": "もう大丈夫じゃないのですか", "target": "you not okay any"},
+        {"known": "幸せじゃないのですか", "target": "you not happy"},
+        {"known": "もう問題じゃないのですか", "target": "you not a problem any"}
+      ],
+      "use": [
+        {"known": "なぜもう幸せじゃないのですかと聞きたいと私は彼女に言いました。", "target": "I said to her I want to ask why are you not happy any more.", "score": 8},
+        {"known": "もちろんなぜもう幸せじゃないのですかと私の友達は聞きたいと言いました。", "target": "My friend said of course I want to ask why are you not happy any more.", "score": 8},
+        {"known": "彼女はなぜもう大丈夫じゃないのですかと聞きたいと言いましたが、私は問題があると思います。", "target": "She said she wanted to ask why are you not okay any more, but I think there is a problem.", "score": 8},
+        {"known": "私の友達はなぜもう幸せじゃないのですかと頻繁に聞きたいと言っていました。", "target": "My friend was often saying she wanted to ask why are you not happy any more.", "score": 8},
+        {"known": "なぜもう幸せじゃないのですか？", "target": "Why are you not happy any more?", "score": 9},
+        {"known": "彼はなぜもう大丈夫じゃないのですかと聞きたいと言いましたが、私は難しいと思います。", "target": "He said he wanted to ask why are you not okay any more, but I think it is difficult.", "score": 8}
+      ]
+    }
+  ]
+}

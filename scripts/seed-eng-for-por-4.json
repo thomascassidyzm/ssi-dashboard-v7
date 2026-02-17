@@ -1,0 +1,77 @@
+{
+  "course_code": "eng_for_por",
+  "seed_number": 4,
+  "target_text": "how to say something in English",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "como",
+      "target": "how",
+      "build": [
+        {"known": "como", "target": "how"},
+        {"known": "como dizer", "target": "how to say"},
+        {"known": "como falar", "target": "how to speak"}
+      ],
+      "use": [
+        {"known": "Eu quero aprender como falar inglês.", "target": "I want to learn how to speak English.", "score": 8},
+        {"known": "Estou tentando aprender como falar o máximo possível.", "target": "I'm trying to learn how to speak as often as possible.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "dizer",
+      "target": "to say",
+      "build": [
+        {"known": "dizer", "target": "to say"},
+        {"known": "como dizer", "target": "how to say"},
+        {"known": "quero dizer", "target": "want to say"}
+      ],
+      "use": [
+        {"known": "Eu quero aprender como dizer.", "target": "I want to learn how to say.", "score": 7},
+        {"known": "Estou tentando aprender como dizer agora.", "target": "I'm trying to learn how to say now.", "score": 7},
+        {"known": "Eu quero dizer o máximo possível.", "target": "I want to say as often as possible.", "score": 7},
+        {"known": "Estou tentando aprender como dizer com você.", "target": "I'm trying to learn how to say with you.", "score": 7}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "algo",
+      "target": "something",
+      "build": [
+        {"known": "algo", "target": "something"},
+        {"known": "dizer algo", "target": "to say something"},
+        {"known": "falar algo", "target": "to speak something"}
+      ],
+      "use": [
+        {"known": "Eu quero dizer algo agora.", "target": "I want to say something now.", "score": 7},
+        {"known": "Estou tentando dizer algo com você.", "target": "I'm trying to say something with you.", "score": 7},
+        {"known": "Eu quero aprender como dizer algo.", "target": "I want to learn how to say something.", "score": 8},
+        {"known": "Estou tentando aprender como dizer algo o máximo possível.", "target": "I'm trying to learn how to say something as often as possible.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "em inglês",
+      "target": "in English",
+      "components": [
+        {"known": "em", "target": "in"},
+        {"known": "inglês", "target": "English"}
+      ],
+      "build": [
+        {"known": "em inglês", "target": "in English"},
+        {"known": "dizer em inglês", "target": "to say in English"},
+        {"known": "algo em inglês", "target": "something in English"}
+      ],
+      "use": [
+        {"known": "Eu quero dizer algo em inglês.", "target": "I want to say something in English.", "score": 7},
+        {"known": "Estou tentando dizer algo em inglês agora.", "target": "I'm trying to say something in English now.", "score": 8},
+        {"known": "Eu quero aprender como dizer algo em inglês.", "target": "I want to learn how to say something in English.", "score": 8},
+        {"known": "Estou tentando falar em inglês o máximo possível.", "target": "I'm trying to speak in English as often as possible.", "score": 8}
+      ]
+    }
+  ]
+}

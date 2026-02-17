@@ -1,0 +1,140 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 142,
+  "known_text": "とても親切ですね、手伝ってくれて感謝しています。",
+  "target_text": "That's very kind of you and I'm grateful to you for helping.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "親切",
+      "target": "kind",
+      "build": [
+        {"known": "親切", "target": "kind"},
+        {"known": "親切な人", "target": "kind to me"},
+        {"known": "親切ではない", "target": "not kind"},
+        {"known": "親切だと思う", "target": "think is kind"}
+      ],
+      "use": [
+        {"known": "彼女はとても親切だと私の友達は言いました。", "target": "My friend said she is very kind.", "score": 7},
+        {"known": "もちろん彼はとても親切だと思いますと彼女は言いました。", "target": "She said of course I think he is very kind.", "score": 8},
+        {"known": "私の友達はとても親切でしたが、難しかったと思います。", "target": "My friend was very kind, but I think it was difficult.", "score": 8},
+        {"known": "彼女は私に親切だと言いましたが、私は問題があると思います。", "target": "She said she was kind to me, but I think there is a problem.", "score": 8},
+        {"known": "もちろんあなたはとても親切だと思いますと彼は言いました。", "target": "He said of course I think you are very kind.", "score": 8},
+        {"known": "私の友達はとても親切だと頻繁に言っていましたが、私は難しいと思います。", "target": "My friend was often saying she is very kind, but I think it is difficult.", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "感謝",
+      "target": "grateful",
+      "build": [
+        {"known": "感謝", "target": "grateful"},
+        {"known": "感謝している", "target": "I'm grateful"},
+        {"known": "感謝していない", "target": "not grateful"},
+        {"known": "とても感謝している", "target": "very grateful"}
+      ],
+      "use": [
+        {"known": "私はとても感謝していますと彼女に言いました。", "target": "I said to her I'm very grateful.", "score": 7},
+        {"known": "もちろん私は感謝していますと私の友達は言いました。", "target": "My friend said of course I'm grateful.", "score": 8},
+        {"known": "彼女はとても感謝していると言いましたが、私は問題があると思います。", "target": "She said she was very grateful, but I think there is a problem.", "score": 8},
+        {"known": "私は彼女にとても感謝していますと彼は言いました。", "target": "He said I'm very grateful to her.", "score": 7},
+        {"known": "もちろん私は感謝していますと彼女は頻繁に言っていました。", "target": "She was often saying of course I'm grateful.", "score": 8},
+        {"known": "私の友達はとても感謝していると言いましたが、難しかったと思います。", "target": "My friend said she was very grateful, but I think it was difficult.", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "手伝う",
+      "target": "help",
+      "build": [
+        {"known": "手伝う", "target": "help"},
+        {"known": "手伝いたい", "target": "want to help"},
+        {"known": "手伝ってくれる", "target": "help me"},
+        {"known": "手伝わない", "target": "not help"}
+      ],
+      "use": [
+        {"known": "私は彼女を手伝いたいと思いますと彼は言いました。", "target": "He said I think I want to help her.", "score": 7},
+        {"known": "もちろん私はあなたを手伝いたいですと私の友達は言いました。", "target": "My friend said of course I want to help you.", "score": 8},
+        {"known": "彼女は私を手伝いたいと言いましたが、難しかったと思います。", "target": "She said she wanted to help me, but I think it was difficult.", "score": 8},
+        {"known": "私の友達は彼女を手伝いたいと頻繁に言っていました。", "target": "My friend was often saying she wanted to help her.", "score": 8},
+        {"known": "彼は私を手伝いたいと言いましたが、私は問題があると思います。", "target": "He said he wanted to help me, but I think there is a problem.", "score": 8},
+        {"known": "もちろん私はあなたを手伝いたいと思いますと彼女は言いました。", "target": "She said of course I think I want to help you.", "score": 8}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "とても親切ですね",
+      "target": "That's very kind of you",
+      "components": [
+        {"known": "とても親切", "target": "That's very kind"},
+        {"known": "ですね", "target": "of you"}
+      ],
+      "build": [
+        {"known": "とても親切ですね", "target": "That's very kind of you"},
+        {"known": "親切ですね", "target": "That's kind of you"},
+        {"known": "とても親切だ", "target": "That's very kind"},
+        {"known": "とても親切でした", "target": "That was very kind of you"}
+      ],
+      "use": [
+        {"known": "とても親切ですねと私の友達は言いましたが、私は問題があると思います。", "target": "My friend said that's very kind of you, but I think there is a problem.", "score": 8},
+        {"known": "もちろんとても親切ですねと彼女は言いました、彼女は私の友達だからです。", "target": "She said of course that's very kind of you, because she is my friend.", "score": 8},
+        {"known": "彼はとても親切ですねと言いましたが、難しかったと思います。", "target": "He said that's very kind of you, but I think it was difficult.", "score": 8},
+        {"known": "私の友達はとても親切ですねと頻繁に言っていました。", "target": "My friend was often saying that's very kind of you.", "score": 8},
+        {"known": "とても親切ですねと彼女は言いました、私は感謝していますからです。", "target": "She said that's very kind of you, because I'm grateful.", "score": 8},
+        {"known": "もちろんとても親切ですねと彼は私の友達に言いました。", "target": "He said to my friend of course that's very kind of you.", "score": 8}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "そして感謝しています",
+      "target": "and I'm grateful",
+      "components": [
+        {"known": "そして", "target": "and"},
+        {"known": "感謝しています", "target": "I'm grateful"}
+      ],
+      "build": [
+        {"known": "そして感謝しています", "target": "and I'm grateful"},
+        {"known": "そしてとても感謝しています", "target": "and I'm very grateful"},
+        {"known": "そして感謝していません", "target": "and I'm not grateful"},
+        {"known": "そして感謝していますと言いました", "target": "and said I'm grateful"}
+      ],
+      "use": [
+        {"known": "彼女は親切でした、そして感謝していますと私は言いました。", "target": "She was kind, and I'm grateful, I said.", "score": 8},
+        {"known": "もちろん彼は親切でした、そして私は感謝していますと私の友達は言いました。", "target": "My friend said of course he was kind, and I'm grateful.", "score": 8},
+        {"known": "彼女は私を手伝いたいと言いました、そして私はとても感謝しています。", "target": "She said she wanted to help me, and I'm very grateful.", "score": 8},
+        {"known": "私の友達は親切でした、そして私は感謝していますと彼は言いました。", "target": "He said my friend was kind, and I'm grateful.", "score": 8},
+        {"known": "もちろん彼女は私を手伝いたいと言いました、そして私は感謝しています。", "target": "Of course she said she wanted to help me, and I'm grateful.", "score": 8},
+        {"known": "彼は親切でした、そして私は感謝していますと彼女は頻繁に言っていました。", "target": "She was often saying he was kind, and I'm grateful.", "score": 8}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "手伝ってくれて",
+      "target": "to you for helping",
+      "components": [
+        {"known": "手伝って", "target": "to you for"},
+        {"known": "くれて", "target": "helping"}
+      ],
+      "build": [
+        {"known": "手伝ってくれて", "target": "to you for helping"},
+        {"known": "助けてくれて", "target": "to you for helping me"},
+        {"known": "手伝ってくれて感謝", "target": "grateful to you for helping"},
+        {"known": "話してくれて", "target": "to you for that"}
+      ],
+      "use": [
+        {"known": "私は手伝ってくれて感謝していますと彼女に言いました。", "target": "I said to her I'm grateful to you for helping.", "score": 8},
+        {"known": "もちろん手伝ってくれて感謝していますと私の友達は言いました。", "target": "My friend said of course I'm grateful to you for helping.", "score": 8},
+        {"known": "彼女は手伝ってくれて感謝していますと言いましたが、難しかったと思います。", "target": "She said I'm grateful to you for helping, but I think it was difficult.", "score": 8},
+        {"known": "私の友達は手伝ってくれて感謝していますと頻繁に言っていました。", "target": "My friend was often saying I'm grateful to you for helping.", "score": 8},
+        {"known": "とても親切ですね、手伝ってくれて感謝しています。", "target": "That's very kind of you and I'm grateful to you for helping.", "score": 9},
+        {"known": "彼は手伝ってくれて感謝していますと言いましたが、私は問題があると思います。", "target": "He said I'm grateful to you for helping, but I think there is a problem.", "score": 8}
+      ]
+    }
+  ]
+}

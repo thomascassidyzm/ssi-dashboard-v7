@@ -1,0 +1,70 @@
+{
+  "course_code": "eng_for_jpn",
+  "seed_number": 166,
+  "known_text": "私の名前はあまり珍しくありません。",
+  "target_text": "My name is not very unusual.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "珍しい",
+      "target": "unusual",
+      "phrases": [
+        {"known": "とても珍しい", "target": "very unusual", "phrase_role": "BUILD"},
+        {"known": "珍しいと思う", "target": "think it is unusual", "phrase_role": "BUILD"},
+        {"known": "それは珍しいと思います", "target": "I think that is unusual", "phrase_role": "BUILD"},
+        {"known": "珍しいことを知りたい", "target": "I want to know something unusual", "phrase_role": "BUILD"},
+        {"known": "それは珍しいです。知りたいです。", "target": "That is unusual. I want to know.", "phrase_role": "USE", "score": 8},
+        {"known": "珍しいですか？とても知りたいです。", "target": "Is it unusual? I want to know so much.", "phrase_role": "USE", "score": 8},
+        {"known": "珍しいと思います。どう思いますか？", "target": "I think it is unusual. What do you think?", "phrase_role": "USE", "score": 8},
+        {"known": "とても珍しいと思います。あなたはどう思いますか？知りたいです。", "target": "I think it is very unusual. What do you think? I want to know.", "phrase_role": "USE", "score": 8},
+        {"known": "珍しいと思いますか？知りたいと思います。それについて話しましょう。", "target": "Do you think it is unusual? I think I want to know. Let's talk about it.", "phrase_role": "USE", "score": 8},
+        {"known": "それは珍しいです。興味深いと思います。とても知りたいと思います。", "target": "That is unusual. I think it is interesting. I think I want to know so much.", "phrase_role": "USE", "score": 8}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "あまり珍しくありません",
+      "target": "not very unusual",
+      "components": [
+        {"known": "あまり", "target": "not very"},
+        {"known": "珍しくありません", "target": "unusual"}
+      ],
+      "phrases": [
+        {"known": "あまり珍しくない", "target": "not very unusual", "phrase_role": "BUILD"},
+        {"known": "あまり珍しくありません", "target": "is not very unusual", "phrase_role": "BUILD"},
+        {"known": "それはあまり珍しくありません", "target": "that is not very unusual", "phrase_role": "BUILD"},
+        {"known": "あまり珍しくないと思います", "target": "I think it is not very unusual", "phrase_role": "BUILD"},
+        {"known": "あまり珍しくありません。", "target": "It is not very unusual.", "phrase_role": "USE", "score": 8},
+        {"known": "あまり珍しくありません。どう思いますか？", "target": "It is not very unusual. What do you think?", "phrase_role": "USE", "score": 8},
+        {"known": "それはあまり珍しくありません。私はそう思います。あなたは？", "target": "That is not very unusual. I think so. And you?", "phrase_role": "USE", "score": 8},
+        {"known": "あまり珍しくありません。でも興味深いと思います。話しましょう。知りたいです。", "target": "It is not very unusual. But I think it is interesting. Let's talk. I want to know.", "phrase_role": "USE", "score": 8},
+        {"known": "あまり珍しくないと思います。あなたはどう思いますか？知りたいと思います。", "target": "I think it is not very unusual. What do you think? I think I want to know.", "phrase_role": "USE", "score": 8},
+        {"known": "それはあまり珍しくありません。でも本当かどうかわかりません。知りたいです。", "target": "That is not very unusual. But I'm not sure if it's true. I want to know.", "phrase_role": "USE", "score": 8}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "私の名前はあまり珍しくありません",
+      "target": "My name is not very unusual",
+      "components": [
+        {"known": "私の名前", "target": "my name"},
+        {"known": "あまり珍しくありません", "target": "is not very unusual"}
+      ],
+      "phrases": [
+        {"known": "私の名前は", "target": "my name is", "phrase_role": "BUILD"},
+        {"known": "私の名前は珍しい", "target": "my name is unusual", "phrase_role": "BUILD"},
+        {"known": "私の名前はあまり珍しくありません", "target": "my name is not very unusual", "phrase_role": "BUILD"},
+        {"known": "彼の名前はあまり珍しくありません", "target": "his name is not very unusual", "phrase_role": "BUILD"},
+        {"known": "私の名前はあまり珍しくありません。", "target": "My name is not very unusual.", "phrase_role": "USE", "score": 8},
+        {"known": "私の名前はあまり珍しくありません。どう思いますか？", "target": "My name is not very unusual. What do you think?", "phrase_role": "USE", "score": 8},
+        {"known": "私の名前はあまり珍しくありません。でも興味深いと思います。知りたいですか？", "target": "My name is not very unusual. But I think it is interesting. Do you want to know?", "phrase_role": "USE", "score": 8},
+        {"known": "私の名前はあまり珍しくありません。あなたの名前は珍しいですか？知りたいです。", "target": "My name is not very unusual. Is your name unusual? I want to know.", "phrase_role": "USE", "score": 8},
+        {"known": "私の名前はあまり珍しくありません。でも彼女の名前は珍しいと思います。知りたいですか？", "target": "My name is not very unusual. But I think her name is unusual. Do you want to know?", "phrase_role": "USE", "score": 8},
+        {"known": "私の名前はあまり珍しくありません。それについてどう思いますか？知りたいと思います。", "target": "My name is not very unusual. What do you think about that? I think I want to know.", "phrase_role": "USE", "score": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "course_code": "eng_for_zho",
+  "seed_number": 10,
+  "target_text": "I'm not sure if I can remember the whole sentence.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "我不确定",
+      "target": "I'm not sure",
+      "components": [
+        {"known": "我", "target": "I'm"},
+        {"known": "不确定", "target": "not sure"}
+      ],
+      "build": [
+        {"known": "我不确定", "target": "I'm not sure"},
+        {"known": "不确定", "target": "not sure"},
+        {"known": "我不确定怎么说", "target": "I'm not sure how to say"},
+        {"known": "我不确定怎么说英语", "target": "I'm not sure how to speak English"}
+      ],
+      "use": [
+        {"known": "我不确定怎么说。", "target": "I'm not sure how to say.", "score": 8},
+        {"known": "我不确定怎么说英语。", "target": "I'm not sure how to speak English.", "score": 8},
+        {"known": "我不确定怎么解释。", "target": "I'm not sure how to explain.", "score": 8},
+        {"known": "我不确定怎么和你说英语。", "target": "I'm not sure how to speak English with you.", "score": 9},
+        {"known": "我不确定怎么解释我的意思。", "target": "I'm not sure how to explain what I mean.", "score": 9},
+        {"known": "我不确定怎么尽量多说英语。", "target": "I'm not sure how to speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "能不能",
+      "target": "if I can",
+      "components": [
+        {"known": "能", "target": "if I"},
+        {"known": "不能", "target": "can"}
+      ],
+      "build": [
+        {"known": "能不能", "target": "if I can"},
+        {"known": "不能", "target": "can"},
+        {"known": "我不确定能不能", "target": "I'm not sure if I can"},
+        {"known": "我不确定能不能说", "target": "I'm not sure if I can speak"}
+      ],
+      "use": [
+        {"known": "我不确定能不能说。", "target": "I'm not sure if I can speak.", "score": 8},
+        {"known": "我不确定能不能学。", "target": "I'm not sure if I can learn.", "score": 8},
+        {"known": "我不确定能不能记住。", "target": "I'm not sure if I can remember.", "score": 8},
+        {"known": "我不确定能不能和你说英语。", "target": "I'm not sure if I can speak English with you.", "score": 9},
+        {"known": "我不确定能不能解释我的意思。", "target": "I'm not sure if I can explain what I mean.", "score": 9},
+        {"known": "我不确定能不能尽量多说英语。", "target": "I'm not sure if I can speak English as often as possible.", "score": 9}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "记住",
+      "target": "remember",
+      "build": [
+        {"known": "记住", "target": "remember"},
+        {"known": "想记住", "target": "want to remember"},
+        {"known": "我要记住英语", "target": "I'm going to remember English"},
+        {"known": "我想记住一些东西", "target": "I want to remember something"}
+      ],
+      "use": [
+        {"known": "我在试记住。", "target": "I'm trying to remember.", "score": 8},
+        {"known": "我要记住英语。", "target": "I'm going to remember English.", "score": 7},
+        {"known": "我想记住怎么说。", "target": "I want to remember how to say.", "score": 8},
+        {"known": "我在试记住怎么说英语。", "target": "I'm trying to remember how to say in English.", "score": 9},
+        {"known": "我想记住怎么和你说英语。", "target": "I want to remember how to speak English with you.", "score": 9},
+        {"known": "我在试记住怎么用英语说一些东西。", "target": "I'm trying to remember how to say something in English.", "score": 9}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "整个句子",
+      "target": "the whole sentence",
+      "components": [
+        {"known": "整个", "target": "the whole"},
+        {"known": "句子", "target": "sentence"}
+      ],
+      "build": [
+        {"known": "整个句子", "target": "the whole sentence"},
+        {"known": "句子", "target": "sentence"},
+        {"known": "记住整个句子", "target": "remember the whole sentence"},
+        {"known": "我想说整个句子", "target": "I want to say the whole sentence"}
+      ],
+      "use": [
+        {"known": "我说整个句子。", "target": "I say the whole sentence.", "score": 8},
+        {"known": "我学整个句子。", "target": "I learn the whole sentence.", "score": 8},
+        {"known": "我记住整个句子。", "target": "I remember the whole sentence.", "score": 8},
+        {"known": "我想记住整个句子。", "target": "I want to remember the whole sentence.", "score": 9},
+        {"known": "我不确定能不能记住整个句子。", "target": "I'm not sure if I can remember the whole sentence.", "score": 9},
+        {"known": "我想尽量努力记住整个句子。", "target": "I want to remember the whole sentence as hard as I can.", "score": 9}
+      ]
+    }
+  ]
+}
