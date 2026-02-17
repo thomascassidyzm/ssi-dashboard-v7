@@ -6,7 +6,12 @@
         <div class="header-left flex items-center gap-4">
           <h1 class="text-xl font-bold text-white">Script Viewer</h1>
           <div v-if="totalSeeds > 0" class="stats text-sm text-slate-400">
-            {{ loadedSeeds }} of {{ totalSeeds }} seeds, {{ totalPhrases.toLocaleString() }} phrases
+            <template v-if="viewMode === 'journey'">
+              {{ learningJourneyData?.rounds?.length || 0 }} rounds, {{ learningJourneyData?.stats?.totalItems || 0 }} items
+            </template>
+            <template v-else>
+              {{ loadedSeeds }} of {{ totalSeeds }} seeds, {{ totalPhrases.toLocaleString() }} phrases
+            </template>
           </div>
         </div>
 
