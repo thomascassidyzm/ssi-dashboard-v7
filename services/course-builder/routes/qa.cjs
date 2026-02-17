@@ -1672,5 +1672,46 @@ end tell`;
     }
   });
 
+  // ---------------------------------------------------------------------------
+  // POST /qa/reset/:courseCode - Reset QA checked state (clear qa_checked on all phrases)
+  // ---------------------------------------------------------------------------
+  router.post('/qa/reset/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { clear_flags = false } = req.body || {};
+
+      // Clear qa_checked on all phrases
+      const { error: resetError } = await supabase
+        .from('course_practice_phrases')
+        .update({ qa_checked: null })
+        .eq('course_code', courseCode)
+        .not('qa_checked', 'is', null);
+
+      if (resetError) throw resetError;
+
+      let flagsDeleted = 0;
+      if (clear_flags) {
+        const { count, error: flagError } = await supabase
+          .from('course_qa_flags')
+          .delete()
+          .eq('course_code', courseCode)
+          .select('*', { count: 'exact', head: true });
+        if (flagError) throw flagError;
+        flagsDeleted = count || 0;
+      }
+
+      console.log(`[QA] Reset QA for ${courseCode} (clear_flags=${clear_flags}, flags_deleted=${flagsDeleted})`);
+
+      res.json({
+        success: true,
+        course_code: courseCode,
+        flags_deleted: flagsDeleted
+      });
+    } catch (err) {
+      console.error('[QA] Error resetting QA:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   return router;
 };

@@ -431,6 +431,14 @@
                 Start QA
               </button>
               <span v-if="qaRunning" class="text-xs text-cyan-400 animate-pulse">Running...</span>
+              <button
+                v-if="!stageLocked('qa') && (qa.progress > 0 || stageComplete('qa'))"
+                @click="resetQA"
+                :disabled="qaResetting"
+                class="text-xs text-slate-500 hover:text-slate-300 transition-colors"
+              >
+                {{ qaResetting ? 'Resetting...' : 'Reset' }}
+              </button>
             </div>
           </div>
           <div v-if="!stageLocked('qa')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
@@ -781,6 +789,7 @@ const agents = ref({
 
 // QA state
 const qaRunning = ref(false)
+const qaResetting = ref(false)
 const qa = ref({
   total: 0,
   checked: 0,
@@ -1532,6 +1541,29 @@ async function fetchQASummary() {
     }
   } catch (err) {
     // QA summary endpoint may not exist yet
+  }
+}
+
+async function resetQA() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  qaResetting.value = true
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const response = await fetch(`${apiBase}/api/qa/reset/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ clear_flags: true })
+    })
+    if (!response.ok) throw new Error('Reset failed')
+    qaRunning.value = false
+    qa.value = { total: 0, checked: 0, progress: 0, flags: 0, errors: 0, warnings: 0 }
+    uncheckedPhrases.value = []
+    await fetchQASummary()
+  } catch (err) {
+    console.error('Error resetting QA:', err)
+  } finally {
+    qaResetting.value = false
   }
 }
 
