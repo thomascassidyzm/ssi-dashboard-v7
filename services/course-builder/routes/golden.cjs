@@ -150,6 +150,19 @@ module.exports = function(ctx) {
         .lte('seed_number', effectiveTarget);
       if (afErr) throw afErr;
 
+      // Fetch draft review statuses
+      const { data: drafts } = await ctx.supabase
+        .from('course_seed_drafts')
+        .select('seed_number, review_status')
+        .eq('course_code', courseCode)
+        .gte('seed_number', 1)
+        .lte('seed_number', effectiveTarget);
+
+      const draftStatusMap = {};
+      for (const d of (drafts || [])) {
+        draftStatusMap[d.seed_number] = d.review_status;
+      }
+
       // Aggregate per seed
       const seedMap = {};
       for (let i = 1; i <= effectiveTarget; i++) {
@@ -178,7 +191,10 @@ module.exports = function(ctx) {
         const round = s.resolved_flags > 0 ? Math.ceil(s.resolved_flags / 3) + 1 : 1;
 
         let status;
-        if (s.total === 0) status = 'empty';
+        const draftStatus = draftStatusMap[i];
+        if (draftStatus === 'pending_review' && s.total === 0) status = 'pending_review';
+        else if (draftStatus === 'redo' && s.total === 0) status = 'redo';
+        else if (s.total === 0) status = 'empty';
         else if (s.open_flags > 0) status = round >= 3 ? 'escalated' : 'flagged';
         else if (s.checked === s.total) status = 'approved';
         else if (s.checked > 0) status = 'checking';
