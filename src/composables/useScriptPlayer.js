@@ -25,6 +25,7 @@ export function useScriptPlayer(options = {}) {
   const items = ref([])
   let audio = null
   let pauseTimer = null
+  let playbackGeneration = 0 // Incremented on every stop/playFrom to reject stale callbacks
 
   // Event callbacks
   const callbacks = { onItemChange: [], onPhaseChange: [], onComplete: [] }
@@ -96,6 +97,7 @@ export function useScriptPlayer(options = {}) {
   }
 
   async function startPhase(phase) {
+    const gen = playbackGeneration // Capture generation for stale detection
     currentPhase.value = phase
     emitPhaseChange(phase)
 
@@ -107,7 +109,7 @@ export function useScriptPlayer(options = {}) {
         progress.value = 0
         if (item.sourceId) {
           const url = await getAudioUrl(item.sourceId)
-          if (!isPlaying.value) return // Guard after await
+          if (gen !== playbackGeneration) return // Stale — playback was restarted
           if (url) {
             playAudioSrc(url)
           } else {
@@ -123,6 +125,7 @@ export function useScriptPlayer(options = {}) {
         progress.value = 25
         clearPauseTimer()
         pauseTimer = setTimeout(() => {
+          if (gen !== playbackGeneration) return // Stale
           if (isPlaying.value && !isPaused.value) {
             onAudioEnded()
           }
@@ -134,7 +137,7 @@ export function useScriptPlayer(options = {}) {
         progress.value = 50
         if (item.target1Id) {
           const url = await getAudioUrl(item.target1Id)
-          if (!isPlaying.value) return // Guard after await
+          if (gen !== playbackGeneration) return // Stale
           if (url) {
             playAudioSrc(url)
           } else {
@@ -151,7 +154,7 @@ export function useScriptPlayer(options = {}) {
         const target2Id = item.target2Id || item.target1Id
         if (target2Id) {
           const url = await getAudioUrl(target2Id)
-          if (!isPlaying.value) return // Guard after await
+          if (gen !== playbackGeneration) return // Stale
           if (url) {
             playAudioSrc(url)
           } else {
@@ -241,6 +244,9 @@ export function useScriptPlayer(options = {}) {
   }
 
   function stop() {
+    playbackGeneration++ // Invalidate any in-flight async operations
+    clearPauseTimer()
+
     isPlaying.value = false
     isPaused.value = false
     currentPhase.value = null
@@ -248,9 +254,9 @@ export function useScriptPlayer(options = {}) {
 
     if (audio) {
       audio.pause()
+      audio.currentTime = 0
       audio.src = ''
     }
-    clearPauseTimer()
   }
 
   function skip() {
@@ -261,8 +267,10 @@ export function useScriptPlayer(options = {}) {
     }
 
     // Stop current audio/timer without clearing playing state
+    playbackGeneration++
     if (audio) {
       audio.pause()
+      audio.currentTime = 0
       audio.src = ''
     }
     clearPauseTimer()
@@ -282,8 +290,10 @@ export function useScriptPlayer(options = {}) {
   function previous() {
     if (!hasPrevItem.value) return
 
+    playbackGeneration++
     if (audio) {
       audio.pause()
+      audio.currentTime = 0
       audio.src = ''
     }
     clearPauseTimer()

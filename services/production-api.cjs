@@ -4754,14 +4754,14 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
 
     const supabase = supabaseClient.getClient()
 
-    const { rounds, allItems, stats } = await learningScriptGenerator.generateLearningScript(
+    const { rounds, allItems, stats, legosLoaded } = await learningScriptGenerator.generateLearningScript(
       supabase,
       courseCode,
       maxLegosNum,
       offsetNum
     )
 
-    logger.info(`Returning learning journey for ${courseCode}: ${rounds.length} rounds, ${allItems.length} items`)
+    logger.info(`Returning learning journey for ${courseCode}: ${rounds.length} rounds, ${allItems.length} items (${legosLoaded} LEGOs loaded)`)
 
     res.json({
       courseCode,
@@ -4771,7 +4771,7 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
       pagination: {
         maxLegos: maxLegosNum,
         offset: offsetNum,
-        returned: rounds.length,
+        returned: legosLoaded || rounds.length,
       }
     })
   } catch (err) {

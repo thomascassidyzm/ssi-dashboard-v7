@@ -639,7 +639,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     generationTimeMs: elapsed,
   }
 
-  return { rounds, allItems, stats }
+  return { rounds, allItems, stats, legosLoaded: legos.length }
 }
 
 module.exports = {
