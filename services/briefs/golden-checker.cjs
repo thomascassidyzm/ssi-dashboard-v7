@@ -63,12 +63,14 @@ The Creator agent does the first draft. You polish it to perfection.
 - Combine the **new LEGO** with **previously introduced LEGOs**
 - Show how the new piece "plugs in" — NOT the LEGO by itself, NOT component build-up
 - Fragments OK, must contain exact LEGO target
+- No capitalisation, no trailing periods
 
 ### USE Phrases
-- Complete, natural sentences for eternal spaced repetition
+- Natural things a real learner would say — flexible like slogans, not pre-defined sentences
 - Must be things a real learner would say
 - Scored 5-9 (4 or below = reject)
 - Must contain exact LEGO target
+- No capitalisation, no trailing periods
 
 ### LEGO Form Is Fixed
 LEGOs are used exactly as-is — never conjugated or inflected.
