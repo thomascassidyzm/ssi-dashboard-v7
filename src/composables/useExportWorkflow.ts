@@ -194,6 +194,7 @@ export function useExportWorkflow(courseCode: string) {
   const audioJobId = ref<string | null>(null)
   const s3VerifyProgress = ref({ checked: 0, total: 0 })
   const deployProgress = ref({ deployed: 0, total: 0 })
+  const isDeploying = ref(false)
   const deployPlanProgress = ref({
     phase: 'idle' as 'idle' | 'existence' | 'duration',
     checked: 0,
@@ -292,6 +293,9 @@ export function useExportWorkflow(courseCode: string) {
       // Join course-specific room
       socket?.emit('join_course', { courseCode })
       console.log('[ExportWorkflow] Joined course room:', courseCode)
+
+      // Check if a deploy is already running (handles tab refresh, reconnect)
+      checkDeployStatus()
     })
 
     socket.on('connect_error', (error) => {
@@ -450,22 +454,25 @@ export function useExportWorkflow(courseCode: string) {
 
     socket.on('audioDeploy:completed', (data: {
       courseCode: string
+      success?: boolean
       deployed: number
       failed: number
-      verification?: {
-        checked: number
-        matched: number
-        mismatched: number
-        errors: number
-        details: Array<{ uuid: string; issue: string; expected: number }>
-      }
+      verification?: any
+      verificationPassed?: boolean
+      message?: string
     }) => {
       if (data.courseCode === courseCode) {
+        isDeploying.value = false
         deployProgress.value = { deployed: 0, total: 0 }
-        // Save verification results to state
-        if (data.verification) {
-          state.value.deployVerification = data.verification
-        }
+        handleDeployResult(data)
+      }
+    })
+
+    socket.on('audioDeploy:error', (data: { courseCode: string; error: string }) => {
+      if (data.courseCode === courseCode) {
+        isDeploying.value = false
+        deployProgress.value = { deployed: 0, total: 0 }
+        error.value = `Deploy failed: ${data.error}`
       }
     })
 
@@ -904,7 +911,39 @@ export function useExportWorkflow(courseCode: string) {
     }
   }
 
-  // Shared handler for deploy results (used by all three deploy functions)
+  // Check if a deploy is running (lightweight status poll)
+  async function checkDeployStatus() {
+    try {
+      const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/status`)
+      if (data.running) {
+        isDeploying.value = true
+        const progress = data.progress || {}
+        if (progress.phase === 'deploying' && progress.deployed !== undefined) {
+          deployProgress.value = { deployed: progress.deployed, total: progress.total || 0 }
+        } else if (progress.phase === 'verifying' || progress.phase === 'verifying-durations') {
+          deployProgress.value = {
+            ...deployProgress.value,
+            deployed: deployProgress.value.deployed || progress.deployed || 0,
+            total: progress.total || 0,
+            verifying: true,
+            verifyChecked: progress.verified || 0,
+            verifyTotal: progress.total || 0
+          } as any
+        }
+      } else {
+        // Only clear isDeploying if we explicitly know no deploy is running
+        // (don't clear if this is just a startup check and isDeploying was never set)
+        if (isDeploying.value) {
+          isDeploying.value = false
+        }
+      }
+      return data
+    } catch {
+      return { running: false }
+    }
+  }
+
+  // Shared handler for deploy results (used by all three deploy functions and WebSocket completed event)
   function handleDeployResult(data: any) {
     // Only mark as deployed if backend verification passed
     state.value.audioDeployed = data.verificationPassed ?? false
@@ -934,9 +973,8 @@ export function useExportWorkflow(courseCode: string) {
     }
   }
 
-  // Step 4: Deploy audio to production
+  // Step 4: Deploy audio to production (non-blocking — returns immediately, progress via WebSocket)
   async function deployAudio(confirmation?: string) {
-    isLoading.value = true
     error.value = null
     deployProgress.value = { deployed: 0, total: 0 }
     deployPlanProgress.value = { phase: 'idle', checked: 0, total: 0, matched: 0, mismatched: 0, errors: 0 }
@@ -952,23 +990,28 @@ export function useExportWorkflow(courseCode: string) {
       })
 
       if (response.status === 409) {
-        error.value = 'A deploy is already in progress'
+        // Deploy already running — pick it up instead of showing error
+        isDeploying.value = true
+        await checkDeployStatus()
         return null
+      }
+      if (response.status === 202) {
+        // Accepted — deploy running in background, progress via WebSocket
+        isDeploying.value = true
+        return { accepted: true }
       }
       if (!response.ok) {
         const errData = await response.json().catch(() => ({ error: 'Request failed' }))
         throw new Error(errData.error || 'Request failed')
       }
 
+      // Fallback: synchronous response (e.g. empty deploy)
       const data = await response.json()
       handleDeployResult(data)
       return data
     } catch (err: any) {
       error.value = err.message
-      throw err
-    } finally {
-      isLoading.value = false
-      deployProgress.value = { deployed: 0, total: 0 }
+      return null
     }
   }
 
@@ -999,39 +1042,46 @@ export function useExportWorkflow(courseCode: string) {
     }
   }
 
-  // Deploy only missing files (no overwrites)
+  // Deploy only missing files (non-blocking — returns immediately)
   async function deployMissingOnly() {
-    isLoading.value = true
     error.value = null
     deployProgress.value = { deployed: 0, total: 0 }
 
     try {
       connectWebSocket()
 
-      // Use 20-minute timeout for deployment (large courses need time)
-      const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/missing-only`, {
-        method: 'POST'
-      }, 1200000) // 20 minutes
+      const apiBase = getApiBaseUrl()
+      const response = await fetch(`${apiBase}/api/production/${courseCode}/deploy-audio/missing-only`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      })
 
-      if (data.success) {
-        state.value.audioDeployed = true
-        state.value.audioDeployedAt = new Date().toISOString()
-        state.value.deployExecutedAt = new Date().toISOString()
+      if (response.status === 409) {
+        isDeploying.value = true
+        await checkDeployStatus()
+        return null
+      }
+      if (response.status === 202) {
+        isDeploying.value = true
+        return { accepted: true }
+      }
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({ error: 'Request failed' }))
+        throw new Error(errData.error || 'Request failed')
       }
 
+      // Fallback: synchronous response (e.g. nothing to deploy)
+      const data = await response.json()
+      handleDeployResult(data)
       return data
     } catch (err: any) {
       error.value = err.message
-      throw err
-    } finally {
-      isLoading.value = false
-      deployProgress.value = { deployed: 0, total: 0 }
+      return null
     }
   }
 
-  // Deploy only new files from plan (skip overwrites)
+  // Deploy only new files from plan (non-blocking — returns immediately)
   async function deployNewOnly() {
-    isLoading.value = true
     error.value = null
     deployProgress.value = { deployed: 0, total: 0 }
     deployPlanProgress.value = { phase: 'idle', checked: 0, total: 0, matched: 0, mismatched: 0, errors: 0 }
@@ -1039,14 +1089,12 @@ export function useExportWorkflow(courseCode: string) {
     const plan = state.value.deployPlan
     if (!plan) {
       error.value = 'No deploy plan available. Check production status first.'
-      isLoading.value = false
       return null
     }
 
     const newUuids = plan.newUuids || []
     if (newUuids.length === 0) {
       error.value = 'No new files to deploy.'
-      isLoading.value = false
       return null
     }
 
@@ -1061,29 +1109,31 @@ export function useExportWorkflow(courseCode: string) {
       })
 
       if (response.status === 409) {
-        error.value = 'A deploy is already in progress'
+        isDeploying.value = true
+        await checkDeployStatus()
         return null
+      }
+      if (response.status === 202) {
+        isDeploying.value = true
+        return { accepted: true }
       }
       if (!response.ok) {
         const errData = await response.json().catch(() => ({ error: 'Request failed' }))
         throw new Error(errData.error || 'Request failed')
       }
 
+      // Fallback: synchronous response (e.g. empty deploy)
       const data = await response.json()
       handleDeployResult(data)
       return data
     } catch (err: any) {
       error.value = err.message
-      throw err
-    } finally {
-      isLoading.value = false
-      deployProgress.value = { deployed: 0, total: 0 }
+      return null
     }
   }
 
-  // Deploy new files + mismatched overwrites (skip identical)
+  // Deploy new files + mismatched overwrites (non-blocking — returns immediately)
   async function deployNewAndMismatched() {
-    isLoading.value = true
     error.value = null
     deployProgress.value = { deployed: 0, total: 0 }
     deployPlanProgress.value = { phase: 'idle', checked: 0, total: 0, matched: 0, mismatched: 0, errors: 0 }
@@ -1091,7 +1141,6 @@ export function useExportWorkflow(courseCode: string) {
     const plan = state.value.deployPlan
     if (!plan) {
       error.value = 'No deploy plan available. Check production status first.'
-      isLoading.value = false
       return null
     }
 
@@ -1109,23 +1158,26 @@ export function useExportWorkflow(courseCode: string) {
       })
 
       if (response.status === 409) {
-        error.value = 'A deploy is already in progress'
+        isDeploying.value = true
+        await checkDeployStatus()
         return null
+      }
+      if (response.status === 202) {
+        isDeploying.value = true
+        return { accepted: true }
       }
       if (!response.ok) {
         const errData = await response.json().catch(() => ({ error: 'Request failed' }))
         throw new Error(errData.error || 'Request failed')
       }
 
+      // Fallback: synchronous response (e.g. empty deploy)
       const data = await response.json()
       handleDeployResult(data)
       return data
     } catch (err: any) {
       error.value = err.message
-      throw err
-    } finally {
-      isLoading.value = false
-      deployProgress.value = { deployed: 0, total: 0 }
+      return null
     }
   }
 
@@ -1215,6 +1267,7 @@ export function useExportWorkflow(courseCode: string) {
     audioJobId,
     s3VerifyProgress,
     deployProgress,
+    isDeploying,
     deployPlanProgress,
 
     // Computed
@@ -1236,6 +1289,7 @@ export function useExportWorkflow(courseCode: string) {
     deployMissingOnly,
     deployNewOnly,
     deployNewAndMismatched,
+    checkDeployStatus,
     resetState,
     cleanup,
 

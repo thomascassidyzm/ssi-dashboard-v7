@@ -38,7 +38,7 @@ const runningVerifications = new Map()
 const runningDeployPlans = new Map()
 
 // Track running deploy executions to prevent concurrent S3 copy operations
-// Maps courseCode -> { startedAt, type }
+// Maps courseCode -> { startedAt, type, progress: { phase, deployed, total, ... } }
 const runningDeploys = new Map()
 
 async function getCachedManifest(courseCode) {
@@ -6091,19 +6091,28 @@ function collectManifestUuids(manifest) {
  * Build verification progress callback for verifyProductionDurations
  * Handles the (phase, checked, total, ...rest) signature correctly
  */
-function buildVerifyProgressCallback(io, courseCode, totalUuids) {
+function buildVerifyProgressCallback(io, courseCode, totalUuids, runningDeploysMap) {
   return (phase, checked, total, ...rest) => {
     if (phase === 'existence') {
       io.emit('audioDeploy:verifyProgress', {
         courseCode, phase, checked, total: totalUuids,
         matched: 0, mismatched: 0, errors: 0
       })
+      // Update runningDeploys progress for status endpoint
+      if (runningDeploysMap) {
+        const entry = runningDeploysMap.get(courseCode)
+        if (entry) entry.progress = { phase: 'verifying', verified: checked, total: totalUuids }
+      }
     } else if (phase === 'duration') {
       const [matched, mismatched, errors] = rest
       io.emit('audioDeploy:verifyProgress', {
         courseCode, phase, checked, total,
         matched: matched || 0, mismatched: mismatched || 0, errors: errors || 0
       })
+      if (runningDeploysMap) {
+        const entry = runningDeploysMap.get(courseCode)
+        if (entry) entry.progress = { phase: 'verifying-durations', verified: checked, total, matched: matched || 0, mismatched: mismatched || 0, errors: errors || 0 }
+      }
     }
   }
 }
@@ -6200,6 +6209,7 @@ app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
 
 // POST /api/production/:courseCode/deploy-audio/execute
 // Execute deployment (copy stage → production) with post-deployment verification
+// Non-blocking: returns 202 immediately, runs deploy in background, emits completion via WebSocket
 app.post('/api/production/:courseCode/deploy-audio/execute', async (req, res) => {
   const { courseCode } = req.params
 
@@ -6210,68 +6220,89 @@ app.post('/api/production/:courseCode/deploy-audio/execute', async (req, res) =>
     logger.info(`[DEPLOY] Already running for ${courseCode} (${elapsed}s, type: ${running.type})`)
     return res.status(409).json({ error: 'Deploy already in progress', alreadyRunning: true, type: running.type, elapsedSeconds: elapsed })
   }
-  runningDeploys.set(courseCode, { startedAt: Date.now(), type: 'execute' })
 
   try {
+    // Validate synchronously before accepting
     const { confirmation } = req.body
     const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
     const uuids = collectManifestUuids(publishedManifest)
 
-    const result = await s3DeployService.deployToProduction(uuids, {
-      confirmOverwrite: confirmation,
-      onProgress: (deployed, total) => {
-        io.emit('audioDeploy:progress', { courseCode, deployed, total })
-      }
-    })
+    // Register and return 202 immediately
+    runningDeploys.set(courseCode, { startedAt: Date.now(), type: 'execute', progress: { phase: 'deploying', deployed: 0, total: uuids.length } })
+    res.status(202).json({ accepted: true, type: 'execute', total: uuids.length })
 
-    // Post-deployment verification (full manifest)
-    logger.info(`[DEPLOY execute] Post-deployment verification for ${courseCode}`)
-    const verificationResult = await s3DeployService.verifyProductionDurations(
-      uuids, publishedManifest, buildVerifyProgressCallback(io, courseCode, uuids.length)
-    )
-
-    const verificationPassed = (
-      verificationResult.missing === 0 &&
-      verificationResult.durationMismatched === 0 &&
-      verificationResult.durationErrors === 0
-    )
-
-    // Save to state — only mark deployed if verification passed
-    if (supabaseClient.isInitialized()) {
-      const supabase = supabaseClient.getClient()
-      await supabase
-        .from('course_export_states')
-        .update({
-          audio_deployed: verificationPassed,
-          audio_deployed_at: verificationPassed ? new Date().toISOString() : null,
-          deploy_plan: verificationResult,
-          updated_at: new Date().toISOString()
+    // Run deploy + verify in background
+    ;(async () => {
+      try {
+        const result = await s3DeployService.deployToProduction(uuids, {
+          confirmOverwrite: confirmation,
+          onProgress: (deployed, total) => {
+            io.emit('audioDeploy:progress', { courseCode, deployed, total })
+            const entry = runningDeploys.get(courseCode)
+            if (entry) entry.progress = { phase: 'deploying', deployed, total }
+          }
         })
-        .eq('course_code', courseCode)
-    }
 
-    const message = buildDeployMessage(result, verificationResult, verificationPassed)
-    logger.info(`[DEPLOY execute] ${courseCode}: ${message}`)
+        // Post-deployment verification (full manifest)
+        logger.info(`[DEPLOY execute] Post-deployment verification for ${courseCode}`)
+        const entry = runningDeploys.get(courseCode)
+        if (entry) entry.progress = { phase: 'verifying', deployed: result.deployed, total: uuids.length }
 
-    res.json({
-      success: verificationPassed,
-      deployed: result.deployed,
-      failed: result.failed,
-      failedUuids: result.failedUuids || [],
-      verification: verificationResult,
-      verificationPassed,
-      message
-    })
+        const verificationResult = await s3DeployService.verifyProductionDurations(
+          uuids, publishedManifest, buildVerifyProgressCallback(io, courseCode, uuids.length, runningDeploys)
+        )
+
+        const verificationPassed = (
+          verificationResult.missing === 0 &&
+          verificationResult.durationMismatched === 0 &&
+          verificationResult.durationErrors === 0
+        )
+
+        // Save to state — only mark deployed if verification passed
+        if (supabaseClient.isInitialized()) {
+          const supabase = supabaseClient.getClient()
+          await supabase
+            .from('course_export_states')
+            .update({
+              audio_deployed: verificationPassed,
+              audio_deployed_at: verificationPassed ? new Date().toISOString() : null,
+              deploy_plan: verificationResult,
+              updated_at: new Date().toISOString()
+            })
+            .eq('course_code', courseCode)
+        }
+
+        const message = buildDeployMessage(result, verificationResult, verificationPassed)
+        logger.info(`[DEPLOY execute] ${courseCode}: ${message}`)
+
+        io.emit('audioDeploy:completed', {
+          courseCode,
+          success: verificationPassed,
+          deployed: result.deployed,
+          failed: result.failed,
+          failedUuids: result.failedUuids || [],
+          verification: verificationResult,
+          verificationPassed,
+          message
+        })
+      } catch (error) {
+        logger.error(`Deploy error for ${courseCode}:`, error)
+        io.emit('audioDeploy:error', { courseCode, error: error.message })
+      } finally {
+        runningDeploys.delete(courseCode)
+      }
+    })()
   } catch (error) {
-    logger.error(`Deploy error for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
-  } finally {
+    // Validation failed before accepting — return error synchronously
+    logger.error(`Deploy validation error for ${courseCode}:`, error)
     runningDeploys.delete(courseCode)
+    res.status(500).json({ error: error.message })
   }
 })
 
 // POST /api/production/:courseCode/deploy-audio/new-only
 // Deploy ONLY new files (accepts newUuids from frontend plan)
+// Non-blocking: returns 202 immediately, runs deploy in background, emits completion via WebSocket
 app.post('/api/production/:courseCode/deploy-audio/new-only', async (req, res) => {
   const { courseCode } = req.params
 
@@ -6282,77 +6313,90 @@ app.post('/api/production/:courseCode/deploy-audio/new-only', async (req, res) =
     logger.info(`[DEPLOY] Already running for ${courseCode} (${elapsed}s, type: ${running.type})`)
     return res.status(409).json({ error: 'Deploy already in progress', alreadyRunning: true, type: running.type, elapsedSeconds: elapsed })
   }
-  runningDeploys.set(courseCode, { startedAt: Date.now(), type: 'new-only' })
 
-  try {
-    const { newUuids = [] } = req.body
+  const { newUuids = [] } = req.body
 
-    if (newUuids.length === 0) {
-      return res.json({
-        success: true, message: 'No new files to deploy', deployed: 0, failed: 0,
-        verification: null, verificationPassed: true
-      })
-    }
-
-    logger.info(`[DEPLOY new-only] Deploying ${newUuids.length} new files for ${courseCode}`)
-
-    const result = await s3DeployService.deployToProduction(newUuids, {
-      confirmOverwrite: true,
-      onProgress: (deployed, total) => {
-        io.emit('audioDeploy:progress', { courseCode, deployed, total: newUuids.length })
-      }
+  if (newUuids.length === 0) {
+    return res.json({
+      success: true, message: 'No new files to deploy', deployed: 0, failed: 0,
+      verification: null, verificationPassed: true
     })
-
-    // Post-deployment verification (full manifest — verify ALL production audio)
-    logger.info(`[DEPLOY new-only] Post-deployment verification for ${courseCode}`)
-    const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
-    const allUuids = collectManifestUuids(publishedManifest)
-
-    const verificationResult = await s3DeployService.verifyProductionDurations(
-      allUuids, publishedManifest, buildVerifyProgressCallback(io, courseCode, allUuids.length)
-    )
-
-    const verificationPassed = (
-      verificationResult.missing === 0 &&
-      verificationResult.durationMismatched === 0 &&
-      verificationResult.durationErrors === 0
-    )
-
-    // Save to state — only mark deployed if verification passed
-    if (supabaseClient.isInitialized()) {
-      const supabase = supabaseClient.getClient()
-      await supabase
-        .from('course_export_states')
-        .update({
-          audio_deployed: verificationPassed,
-          audio_deployed_at: verificationPassed ? new Date().toISOString() : null,
-          updated_at: new Date().toISOString()
-        })
-        .eq('course_code', courseCode)
-    }
-
-    const message = buildDeployMessage(result, verificationResult, verificationPassed)
-    logger.info(`[DEPLOY new-only] ${courseCode}: ${message}`)
-
-    res.json({
-      success: verificationPassed,
-      deployed: result.deployed,
-      failed: result.failed,
-      failedUuids: result.failedUuids || [],
-      verification: verificationResult,
-      verificationPassed,
-      message
-    })
-  } catch (error) {
-    logger.error(`Deploy new-only error for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
-  } finally {
-    runningDeploys.delete(courseCode)
   }
+
+  // Register and return 202 immediately
+  runningDeploys.set(courseCode, { startedAt: Date.now(), type: 'new-only', progress: { phase: 'deploying', deployed: 0, total: newUuids.length } })
+  res.status(202).json({ accepted: true, type: 'new-only', total: newUuids.length })
+
+  // Run deploy + verify in background
+  ;(async () => {
+    try {
+      logger.info(`[DEPLOY new-only] Deploying ${newUuids.length} new files for ${courseCode}`)
+
+      const result = await s3DeployService.deployToProduction(newUuids, {
+        confirmOverwrite: true,
+        onProgress: (deployed, total) => {
+          io.emit('audioDeploy:progress', { courseCode, deployed, total: newUuids.length })
+          const entry = runningDeploys.get(courseCode)
+          if (entry) entry.progress = { phase: 'deploying', deployed, total: newUuids.length }
+        }
+      })
+
+      // Post-deployment verification (full manifest — verify ALL production audio)
+      logger.info(`[DEPLOY new-only] Post-deployment verification for ${courseCode}`)
+      const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
+      const allUuids = collectManifestUuids(publishedManifest)
+
+      const entry = runningDeploys.get(courseCode)
+      if (entry) entry.progress = { phase: 'verifying', deployed: result.deployed, total: allUuids.length }
+
+      const verificationResult = await s3DeployService.verifyProductionDurations(
+        allUuids, publishedManifest, buildVerifyProgressCallback(io, courseCode, allUuids.length, runningDeploys)
+      )
+
+      const verificationPassed = (
+        verificationResult.missing === 0 &&
+        verificationResult.durationMismatched === 0 &&
+        verificationResult.durationErrors === 0
+      )
+
+      // Save to state — only mark deployed if verification passed
+      if (supabaseClient.isInitialized()) {
+        const supabase = supabaseClient.getClient()
+        await supabase
+          .from('course_export_states')
+          .update({
+            audio_deployed: verificationPassed,
+            audio_deployed_at: verificationPassed ? new Date().toISOString() : null,
+            updated_at: new Date().toISOString()
+          })
+          .eq('course_code', courseCode)
+      }
+
+      const message = buildDeployMessage(result, verificationResult, verificationPassed)
+      logger.info(`[DEPLOY new-only] ${courseCode}: ${message}`)
+
+      io.emit('audioDeploy:completed', {
+        courseCode,
+        success: verificationPassed,
+        deployed: result.deployed,
+        failed: result.failed,
+        failedUuids: result.failedUuids || [],
+        verification: verificationResult,
+        verificationPassed,
+        message
+      })
+    } catch (error) {
+      logger.error(`Deploy new-only error for ${courseCode}:`, error)
+      io.emit('audioDeploy:error', { courseCode, error: error.message })
+    } finally {
+      runningDeploys.delete(courseCode)
+    }
+  })()
 })
 
 // POST /api/production/:courseCode/deploy-audio/new-and-mismatched
 // Deploy new files AND mismatched overwrites (skip identical overwrites)
+// Non-blocking: returns 202 immediately, runs deploy in background, emits completion via WebSocket
 app.post('/api/production/:courseCode/deploy-audio/new-and-mismatched', async (req, res) => {
   const { courseCode } = req.params
 
@@ -6363,74 +6407,100 @@ app.post('/api/production/:courseCode/deploy-audio/new-and-mismatched', async (r
     logger.info(`[DEPLOY] Already running for ${courseCode} (${elapsed}s, type: ${running.type})`)
     return res.status(409).json({ error: 'Deploy already in progress', alreadyRunning: true, type: running.type, elapsedSeconds: elapsed })
   }
-  runningDeploys.set(courseCode, { startedAt: Date.now(), type: 'new-and-mismatched' })
 
-  try {
-    const { newUuids = [], mismatchedUuids = [] } = req.body
-    const uuidsToDeploy = [...newUuids, ...mismatchedUuids]
+  const { newUuids = [], mismatchedUuids = [] } = req.body
+  const uuidsToDeploy = [...newUuids, ...mismatchedUuids]
 
-    if (uuidsToDeploy.length === 0) {
-      return res.json({
-        success: true, message: 'No UUIDs provided to deploy', deployed: 0, failed: 0,
-        verification: null, verificationPassed: true
-      })
-    }
-
-    logger.info(`[DEPLOY new+mismatched] Deploying ${newUuids.length} new + ${mismatchedUuids.length} mismatched files for ${courseCode}`)
-
-    const result = await s3DeployService.deployToProduction(uuidsToDeploy, {
-      confirmOverwrite: true,
-      onProgress: (deployed, total) => {
-        io.emit('audioDeploy:progress', { courseCode, deployed, total })
-      }
+  if (uuidsToDeploy.length === 0) {
+    return res.json({
+      success: true, message: 'No UUIDs provided to deploy', deployed: 0, failed: 0,
+      verification: null, verificationPassed: true
     })
-
-    // Post-deployment verification (full manifest)
-    logger.info(`[DEPLOY new+mismatched] Post-deployment verification for ${courseCode}`)
-    const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
-    const allUuids = collectManifestUuids(publishedManifest)
-
-    const verificationResult = await s3DeployService.verifyProductionDurations(
-      allUuids, publishedManifest, buildVerifyProgressCallback(io, courseCode, allUuids.length)
-    )
-
-    const verificationPassed = (
-      verificationResult.missing === 0 &&
-      verificationResult.durationMismatched === 0 &&
-      verificationResult.durationErrors === 0
-    )
-
-    // Save to state — only mark deployed if verification passed
-    if (supabaseClient.isInitialized()) {
-      const supabase = supabaseClient.getClient()
-      await supabase
-        .from('course_export_states')
-        .update({
-          audio_deployed: verificationPassed,
-          audio_deployed_at: verificationPassed ? new Date().toISOString() : null,
-          updated_at: new Date().toISOString()
-        })
-        .eq('course_code', courseCode)
-    }
-
-    const message = buildDeployMessage(result, verificationResult, verificationPassed)
-    logger.info(`[DEPLOY new+mismatched] ${courseCode}: ${message}`)
-
-    res.json({
-      success: verificationPassed,
-      deployed: result.deployed,
-      failed: result.failed,
-      failedUuids: result.failedUuids || [],
-      verification: verificationResult,
-      verificationPassed,
-      message
-    })
-  } catch (error) {
-    logger.error(`Deploy new-and-mismatched error for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
-  } finally {
-    runningDeploys.delete(courseCode)
   }
+
+  // Register and return 202 immediately
+  runningDeploys.set(courseCode, { startedAt: Date.now(), type: 'new-and-mismatched', progress: { phase: 'deploying', deployed: 0, total: uuidsToDeploy.length } })
+  res.status(202).json({ accepted: true, type: 'new-and-mismatched', total: uuidsToDeploy.length })
+
+  // Run deploy + verify in background
+  ;(async () => {
+    try {
+      logger.info(`[DEPLOY new+mismatched] Deploying ${newUuids.length} new + ${mismatchedUuids.length} mismatched files for ${courseCode}`)
+
+      const result = await s3DeployService.deployToProduction(uuidsToDeploy, {
+        confirmOverwrite: true,
+        onProgress: (deployed, total) => {
+          io.emit('audioDeploy:progress', { courseCode, deployed, total })
+          const entry = runningDeploys.get(courseCode)
+          if (entry) entry.progress = { phase: 'deploying', deployed, total }
+        }
+      })
+
+      // Post-deployment verification (full manifest)
+      logger.info(`[DEPLOY new+mismatched] Post-deployment verification for ${courseCode}`)
+      const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
+      const allUuids = collectManifestUuids(publishedManifest)
+
+      const entry = runningDeploys.get(courseCode)
+      if (entry) entry.progress = { phase: 'verifying', deployed: result.deployed, total: allUuids.length }
+
+      const verificationResult = await s3DeployService.verifyProductionDurations(
+        allUuids, publishedManifest, buildVerifyProgressCallback(io, courseCode, allUuids.length, runningDeploys)
+      )
+
+      const verificationPassed = (
+        verificationResult.missing === 0 &&
+        verificationResult.durationMismatched === 0 &&
+        verificationResult.durationErrors === 0
+      )
+
+      // Save to state — only mark deployed if verification passed
+      if (supabaseClient.isInitialized()) {
+        const supabase = supabaseClient.getClient()
+        await supabase
+          .from('course_export_states')
+          .update({
+            audio_deployed: verificationPassed,
+            audio_deployed_at: verificationPassed ? new Date().toISOString() : null,
+            updated_at: new Date().toISOString()
+          })
+          .eq('course_code', courseCode)
+      }
+
+      const message = buildDeployMessage(result, verificationResult, verificationPassed)
+      logger.info(`[DEPLOY new+mismatched] ${courseCode}: ${message}`)
+
+      io.emit('audioDeploy:completed', {
+        courseCode,
+        success: verificationPassed,
+        deployed: result.deployed,
+        failed: result.failed,
+        failedUuids: result.failedUuids || [],
+        verification: verificationResult,
+        verificationPassed,
+        message
+      })
+    } catch (error) {
+      logger.error(`Deploy new-and-mismatched error for ${courseCode}:`, error)
+      io.emit('audioDeploy:error', { courseCode, error: error.message })
+    } finally {
+      runningDeploys.delete(courseCode)
+    }
+  })()
+})
+
+// GET /api/production/:courseCode/deploy-audio/status
+// Lightweight status check for running deploys (reads from in-memory Map)
+app.get('/api/production/:courseCode/deploy-audio/status', (req, res) => {
+  const { courseCode } = req.params
+  const running = runningDeploys.get(courseCode)
+  if (!running) return res.json({ running: false })
+  res.json({
+    running: true,
+    type: running.type,
+    elapsedSeconds: Math.round((Date.now() - running.startedAt) / 1000),
+    progress: running.progress || {}
+  })
 })
 
 // GET /api/production/audio/:uuid/download/:bucket
@@ -6518,14 +6588,22 @@ app.post('/api/production/:courseCode/verify-production-durations', async (req, 
 
 // POST /api/production/:courseCode/deploy-audio/missing-only
 // Deploy ONLY missing files (safe deployment after verification)
+// Non-blocking: returns 202 immediately, runs deploy in background
 app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, res) => {
-  try {
-    const { courseCode } = req.params
+  const { courseCode } = req.params
 
+  // Dedup guard
+  const running = runningDeploys.get(courseCode)
+  if (running) {
+    const elapsed = Math.round((Date.now() - running.startedAt) / 1000)
+    return res.status(409).json({ error: 'Deploy already in progress', alreadyRunning: true, type: running.type, elapsedSeconds: elapsed })
+  }
+
+  try {
     const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
     const uuids = collectManifestUuids(publishedManifest)
 
-    // First verify production to get missing files
+    // First verify production to get missing files (sync — needed to know total)
     const verification = await s3DeployService.verifyProductionDurations(
       uuids, publishedManifest, buildVerifyProgressCallback(io, courseCode, uuids.length)
     )
@@ -6534,42 +6612,78 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
 
     if (missingUuids.length === 0) {
       return res.json({
-        success: true,
-        message: 'No missing files to deploy',
-        copied: 0,
-        total: uuids.length,
-        missing: 0
+        success: true, message: 'No missing files to deploy', deployed: 0, failed: 0,
+        verification: null, verificationPassed: true
       })
     }
 
-    // Deploy ONLY missing files (no overwrites, no confirmation needed)
-    const result = await s3DeployService.deployToProduction(missingUuids, {
-      confirmOverwrite: false, // Safe - no overwrites
-      onProgress: (copied, total) => {
-        io.emit('audioDeploy:progress', { courseCode, copied, total: missingUuids.length })
-      }
-    })
+    // Register and return 202 immediately
+    runningDeploys.set(courseCode, { startedAt: Date.now(), type: 'missing-only', progress: { phase: 'deploying', deployed: 0, total: missingUuids.length } })
+    res.status(202).json({ accepted: true, type: 'missing-only', total: missingUuids.length })
 
-    result.message = `Deployed ${result.copied} missing files`
-
-    // Update state (database-first)
-    if (supabaseClient.isInitialized()) {
-      const supabase = supabaseClient.getClient()
-      const audioDeployed = verification.missing === 0 // Only mark complete if everything is there
-      await supabase
-        .from('course_export_states')
-        .update({
-          audio_deployed: audioDeployed,
-          audio_deployed_at: audioDeployed ? new Date().toISOString() : null,
-          deploy_plan: verification,
-          updated_at: new Date().toISOString()
+    // Run deploy in background
+    ;(async () => {
+      try {
+        const result = await s3DeployService.deployToProduction(missingUuids, {
+          confirmOverwrite: false,
+          onProgress: (deployed, total) => {
+            io.emit('audioDeploy:progress', { courseCode, deployed, total: missingUuids.length })
+            const entry = runningDeploys.get(courseCode)
+            if (entry) entry.progress = { phase: 'deploying', deployed, total: missingUuids.length }
+          }
         })
-        .eq('course_code', courseCode)
-    }
 
-    res.json(result)
+        // Post-deploy re-verification
+        logger.info(`[DEPLOY missing-only] Post-deployment verification for ${courseCode}`)
+        const entry = runningDeploys.get(courseCode)
+        if (entry) entry.progress = { phase: 'verifying', deployed: result.deployed, total: uuids.length }
+
+        const verificationResult = await s3DeployService.verifyProductionDurations(
+          uuids, publishedManifest, buildVerifyProgressCallback(io, courseCode, uuids.length, runningDeploys)
+        )
+
+        const verificationPassed = (
+          verificationResult.missing === 0 &&
+          verificationResult.durationMismatched === 0 &&
+          verificationResult.durationErrors === 0
+        )
+
+        if (supabaseClient.isInitialized()) {
+          const supabase = supabaseClient.getClient()
+          await supabase
+            .from('course_export_states')
+            .update({
+              audio_deployed: verificationPassed,
+              audio_deployed_at: verificationPassed ? new Date().toISOString() : null,
+              deploy_plan: verificationResult,
+              updated_at: new Date().toISOString()
+            })
+            .eq('course_code', courseCode)
+        }
+
+        const message = buildDeployMessage(result, verificationResult, verificationPassed)
+        logger.info(`[DEPLOY missing-only] ${courseCode}: ${message}`)
+
+        io.emit('audioDeploy:completed', {
+          courseCode,
+          success: verificationPassed,
+          deployed: result.deployed,
+          failed: result.failed,
+          failedUuids: result.failedUuids || [],
+          verification: verificationResult,
+          verificationPassed,
+          message
+        })
+      } catch (error) {
+        logger.error(`Deploy missing-only error for ${courseCode}:`, error)
+        io.emit('audioDeploy:error', { courseCode, error: error.message })
+      } finally {
+        runningDeploys.delete(courseCode)
+      }
+    })()
   } catch (error) {
-    logger.error(`Deploy missing error for ${courseCode}:`, error)
+    logger.error(`Deploy missing-only validation error for ${courseCode}:`, error)
+    runningDeploys.delete(courseCode)
     res.status(500).json({ error: error.message })
   }
 })

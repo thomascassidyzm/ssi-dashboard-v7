@@ -107,7 +107,7 @@
                   :state="workflow.state.value"
                   :deploy-plan="workflow.state.value.deployPlan"
                   :is-loading="workflow.isLoading.value"
-                  :is-deploying="isDeploying"
+                  :is-deploying="workflow.isDeploying.value"
                   :is-verifying="isVerifyingProduction"
                   :progress="workflow.deployProgress.value"
                   :plan-progress="workflow.deployPlanProgress.value"
@@ -182,7 +182,6 @@ const workflow = useExportWorkflow(props.courseCode)
 // Local state
 const isLoadingState = ref(true)
 const isVerifying = ref(false)
-const isDeploying = ref(false)
 const isVerifyingProduction = ref(false)
 const isPushing = ref(false)
 const pushResult = ref<{ success: boolean; message?: string; error?: string } | null>(null)
@@ -357,12 +356,7 @@ async function handleCheckPlan() {
 }
 
 async function handleDeploy(confirmation: string | undefined) {
-  isDeploying.value = true
-  try {
-    await workflow.deployAudio(confirmation)
-  } finally {
-    isDeploying.value = false
-  }
+  await workflow.deployAudio(confirmation)
 }
 
 async function handleVerifyProduction() {
@@ -375,30 +369,15 @@ async function handleVerifyProduction() {
 }
 
 async function handleDeployMissingOnly() {
-  isDeploying.value = true
-  try {
-    await workflow.deployMissingOnly()
-  } finally {
-    isDeploying.value = false
-  }
+  await workflow.deployMissingOnly()
 }
 
 async function handleDeployNewOnly() {
-  isDeploying.value = true
-  try {
-    await workflow.deployNewOnly()
-  } finally {
-    isDeploying.value = false
-  }
+  await workflow.deployNewOnly()
 }
 
 async function handleDeployNewAndMismatched() {
-  isDeploying.value = true
-  try {
-    await workflow.deployNewAndMismatched()
-  } finally {
-    isDeploying.value = false
-  }
+  await workflow.deployNewAndMismatched()
 }
 
 // Reset handler
