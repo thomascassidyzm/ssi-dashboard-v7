@@ -438,6 +438,13 @@ const routes = [
         component: () => import('../views/RecordingOptimizer.vue'),
         props: true,
         meta: { title: 'Recording Optimizer - Production Suite' }
+      },
+      {
+        path: 'calibration-review',
+        name: 'CalibrationReview',
+        component: () => import('../views/production/CalibrationReview.vue'),
+        props: true,
+        meta: { title: 'Calibration Review - Production Suite' }
       }
     ]
   },

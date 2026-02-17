@@ -336,6 +336,30 @@
         </div>
       </section>
 
+      <!-- Calibration Review Queue -->
+      <section v-if="calibrationReview.pending > 0 || calibrationReview.approved > 0" class="bg-slate-800/30 border border-amber-500/30 rounded-lg p-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="status-dot bg-amber-500 animate-pulse"></span>
+            <div>
+              <div class="text-sm font-medium text-slate-200">Calibration Review Queue</div>
+              <div class="text-xs text-slate-500">
+                {{ calibrationReview.approved }}/{{ calibrationReview.total }} approved
+                <span v-if="calibrationReview.pending > 0" class="text-amber-400 ml-1">
+                  &middot; {{ calibrationReview.pending }} awaiting review
+                </span>
+              </div>
+            </div>
+          </div>
+          <router-link
+            :to="`/production/${courseCode}/calibration-review`"
+            class="px-4 py-2 bg-amber-600/20 border border-amber-500/50 text-amber-400 rounded-lg hover:bg-amber-600/30 transition-colors text-sm font-medium"
+          >
+            Review Seeds
+          </router-link>
+        </div>
+      </section>
+
       <!-- Stats Bar -->
       <section class="grid grid-cols-4 gap-4">
         <div
@@ -791,6 +815,9 @@ const rebuildFrom = ref(11)
 const rebuildTo = ref(seedCount.value)
 const rebuildConfirming = ref(false)
 const rebuildRunning = ref(false)
+
+// Calibration review queue state
+const calibrationReview = ref({ pending: 0, approved: 0, redo: 0, total: 0 })
 
 // Wipe state
 const wipeConfirming = ref(false)
@@ -1776,6 +1803,23 @@ function disconnectWebSocket() {
   }
 }
 
+async function fetchCalibrationReview() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const resp = await fetch(`${builderApiUrl}/api/golden/review-queue/${code}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      const data = await resp.json()
+      calibrationReview.value = data.summary || { pending: 0, approved: 0, redo: 0, total: 0 }
+    }
+  } catch (err) {
+    // Silently ignore — calibration review is optional
+  }
+}
+
 // Lifecycle
 onMounted(() => {
   const code = props.courseCode || route.params.courseCode
@@ -1785,6 +1829,7 @@ onMounted(() => {
     configExpanded.value = false
     startPolling()
     connectWebSocket()
+    fetchCalibrationReview()
   } else {
     // Creation mode - expand config
     configExpanded.value = true

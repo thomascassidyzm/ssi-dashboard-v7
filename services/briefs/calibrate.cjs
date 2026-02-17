@@ -1,6 +1,6 @@
 /**
- * Brief: CALIBRATE — Single Opus agent builds calibration seeds with human review.
- * Extracted from generateGoldenCreatorHumanBrief() in course-builder-api.cjs.
+ * Brief: CALIBRATE — Single Opus agent builds calibration seeds with async human review.
+ * Human reviews via dashboard (CalibrationReview view), agent polls for decisions.
  */
 
 const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries } = require('./shared.cjs');
@@ -26,7 +26,7 @@ async function generateCalibrateBrief(courseCode) {
 You are building the first ${targetSeeds} calibration seed decompositions for **${courseCode}** (${langName}).
 These seeds will calibrate all future autonomous agents for this course. Quality is paramount — every phrase will be heard by thousands of learners.
 
-**You are working WITH a human language expert.** Present each seed clearly and wait for their approval before submitting.
+**You submit each seed for remote human review via API.** The human reviews from the dashboard — you poll for their decision.
 
 ## Your Role
 
@@ -96,46 +96,44 @@ curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq '.seeds[] | select(
 ### Step 4: Build the decomposition
 Design LEGOs (A/M types, ordering) and write BUILD + USE phrases.
 
-### Step 5: Present to human for review
-**BEFORE submitting**, present your decomposition clearly:
-
-\`\`\`
-=== SEED $N ===
-Known: "..."
-Target: "..."
-
-L1 [A] "known" → "target"
-  BUILD: ...
-  USE: ...
-
-L2 [M] "known" → "target"
-  Components: ...
-  BUILD: ...
-  USE: ...
-
-Ready to submit? (waiting for approval)
-\`\`\`
-
-**Wait for the human to say "approved", "yes", "go", or similar** before submitting.
-If they give feedback, revise and present again.
-
-### Step 6: Submit (only after human approval)
+### Step 5: Submit for human review
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&skip_validation=true" \\
+curl -s -X POST "http://localhost:3471/api/golden/submit-for-review/${courseCode}/$N" \\
   -H "Content-Type: application/json" \\
-  -d '{...}'
+  -d '{"known_text": "...", "target_text": "...", "submission_data": {"course_code": "${courseCode}", "seed_number": '$N', "known_text": "...", "target_text": "...", "legos": [...]}}'
 \`\`\`
+
+The \`submission_data\` field should contain the full payload you would normally send to \`/api/seed/complete\` — including \`course_code\`, \`seed_number\`, \`known_text\`, \`target_text\`, and the \`legos\` array with all phrases.
+
+### Step 6: Poll for human decision
+\`\`\`bash
+curl -s "http://localhost:3471/api/golden/review-status/${courseCode}/$N"
+\`\`\`
+
+Poll every 30 seconds. The response will be one of:
+- \`{"review_status": "pending_review"}\` → keep waiting
+- \`{"review_status": "approved"}\` → seed is auto-finalized, move to next seed
+- \`{"review_status": "redo", "reviewer_notes": "..."}\` → read the notes, rebuild from scratch, resubmit
+
+**On approved**: The system auto-finalizes the seed (calls \`/api/seed/complete\` internally). You do NOT need to submit it again. Also store it as calibration data:
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/course/${courseCode}/calibration" \\
+  -H "Content-Type: application/json" \\
+  -d '{"golden_decompositions": [{"seed_number": '$N', ...}]}'
+\`\`\`
+
+**On redo**: Read \`reviewer_notes\` carefully. Rebuild the decomposition addressing the feedback, then resubmit via Step 5.
 
 ### Step 7: Move to next seed
-No polling needed — the human is your checker. After submission, move to seed N+1.
+After an approved status, move to seed N+1.
 
 ## AUTONOMY
 
-You are working WITH a human. Present each seed clearly. Wait for approval before submitting.
+You work ALONE — the human reviews asynchronously from a browser dashboard.
 Do NOT spawn sub-agents. Work through seeds one at a time, carefully and thoroughly.
 Work SLOWLY AND STEADILY — quality over speed. Each phrase will be heard by thousands of learners.
 
-When you finish all ${targetSeeds} seeds, submit them as calibration data:
+When you finish all ${targetSeeds} seeds, finalize:
 \`\`\`bash
 curl -s -X POST "http://localhost:3471/api/golden/finalize/${courseCode}" \\
   -H "Content-Type: application/json" \\
