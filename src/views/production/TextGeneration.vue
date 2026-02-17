@@ -691,7 +691,8 @@
           <!-- Legend: build progress (primary) -->
           <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30"></span> Empty</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Decomposed</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Building</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/60"></span> Decomposed</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/60 ring-1 ring-inset ring-rose-400"></span> Collision</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
@@ -1045,6 +1046,8 @@ function seedCellClass(cell) {
       return `${accent} bg-rose-500/60 ring-1 ring-inset ring-rose-400`
     case 'complete':
       return `${accent} bg-emerald-500/80`
+    case 'decomposed':
+      return `${accent} bg-cyan-500/60`
     case 'drafted':
       return `${accent} bg-amber-400/70`
     case 'building':
