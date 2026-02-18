@@ -675,5 +675,60 @@ module.exports = function (ctx) {
     }
   });
 
+  // ===========================================================================
+  // POST /build/orchestrator/:courseCode — Spawn orchestrator agent
+  // ===========================================================================
+  router.post('/build/orchestrator/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+
+      // Fetch brief
+      const port = ctx.config.PORT || 3471;
+      const briefResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/orchestrator`);
+      if (!briefResp.ok) throw new Error(`Failed to fetch orchestrator brief: ${briefResp.status}`);
+      const brief = await briefResp.text();
+
+      // Write brief to /tmp
+      const tmpFile = `/tmp/orchestrator-${courseCode}-${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      // Mark pipeline as running
+      const { setPipelineStage } = require('../lib/pipeline.cjs');
+      const { data: course } = await ctx.supabase
+        .from('courses')
+        .select('quality_rules')
+        .eq('course_code', courseCode)
+        .single();
+
+      const rules = course?.quality_rules || {};
+      await ctx.supabase
+        .from('courses')
+        .update({
+          quality_rules: {
+            ...rules,
+            pipeline_running: true,
+            pipeline_started_at: new Date().toISOString()
+          }
+        })
+        .eq('course_code', courseCode);
+
+      // Spawn
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      spawnInTerminal(ctx, claudeCmd, `Orchestrator`, courseCode);
+
+      ctx.emitPipelineEvent(courseCode, 'orchestrator:message', {
+        checkpoint: null,
+        message: 'Orchestrator agent spawned',
+        metadata: { stage: 'startup' }
+      });
+
+      res.json({ ok: true, message: `Orchestrator spawned for ${courseCode}` });
+    } catch (err) {
+      console.error('[ORCHESTRATOR] Spawn error:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
   return router;
 };

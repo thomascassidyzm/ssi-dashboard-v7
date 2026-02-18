@@ -48,6 +48,7 @@ app.use('/api', require('./course-builder/routes/v2.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/calibration.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/activity.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/drafts.cjs')(ctx));
+app.use('/api', require('./course-builder/routes/orchestrator.cjs')(ctx));
 
 // Mount briefs router
 app.use('/api/brief', require('./briefs/index.cjs'));

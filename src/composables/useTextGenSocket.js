@@ -11,6 +11,8 @@ export function useTextGenSocket() {
   const lastGoldenUpdate = ref(null)
   const lastPipelineStage = ref(null)
   const detectiveFindings = ref(null)
+  const lastOrchestratorMessage = ref(null)
+  const lastOrchestratorResponse = ref(null)
 
   function getWsUrl() {
     const stored = localStorage.getItem('api_base_url')
@@ -52,6 +54,8 @@ export function useTextGenSocket() {
     socket.on('golden:update', (data) => { lastGoldenUpdate.value = data })
     socket.on('pipeline:stage', (data) => { lastPipelineStage.value = data })
     socket.on('detective:report', (data) => { detectiveFindings.value = data })
+    socket.on('orchestrator:message', (data) => { lastOrchestratorMessage.value = data })
+    socket.on('orchestrator:response', (data) => { lastOrchestratorResponse.value = data })
   }
 
   function disconnect() {
@@ -71,5 +75,7 @@ export function useTextGenSocket() {
     lastGoldenUpdate,
     lastPipelineStage,
     detectiveFindings,
+    lastOrchestratorMessage,
+    lastOrchestratorResponse,
   }
 }

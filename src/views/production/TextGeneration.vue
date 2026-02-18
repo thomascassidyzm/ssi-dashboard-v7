@@ -123,16 +123,28 @@
       <section v-if="!isCreateMode" class="space-y-2">
         <div class="flex items-center justify-between mb-3">
           <h2 class="text-xs font-medium text-slate-500 uppercase tracking-wide">Pipeline</h2>
-          <button
-            @click="runDetective"
-            :disabled="diagnosing"
-            class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
-            :class="diagnosing
-              ? 'bg-amber-600/20 border-amber-500/50 text-amber-400 animate-pulse cursor-wait'
-              : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-400'"
-          >
-            {{ diagnosing ? 'Diagnosing...' : 'Diagnose' }}
-          </button>
+          <div class="flex items-center gap-2">
+            <button
+              @click="runOrchestrator"
+              :disabled="orchestratorRunning"
+              class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
+              :class="orchestratorRunning
+                ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400 animate-pulse cursor-wait'
+                : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-emerald-500/50 hover:text-emerald-400'"
+            >
+              {{ orchestratorRunning ? 'Running...' : 'Run' }}
+            </button>
+            <button
+              @click="runDetective"
+              :disabled="diagnosing"
+              class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
+              :class="diagnosing
+                ? 'bg-amber-600/20 border-amber-500/50 text-amber-400 animate-pulse cursor-wait'
+                : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-400'"
+            >
+              {{ diagnosing ? 'Diagnosing...' : 'Diagnose' }}
+            </button>
+          </div>
         </div>
 
         <!-- Detective Findings -->
@@ -176,6 +188,75 @@
                    : detectiveActionStates[finding.action.path] === 'error' ? 'Failed'
                    : finding.action.label }}
               </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orchestrator Message Log -->
+        <div v-if="orchestratorMessages.length > 0" class="mb-3">
+          <div
+            class="bg-slate-800/50 border border-emerald-500/30 rounded-lg overflow-hidden"
+          >
+            <div
+              class="flex items-center justify-between px-4 py-2 cursor-pointer hover:bg-slate-700/30"
+              @click="orchestratorLogExpanded = !orchestratorLogExpanded"
+            >
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full" :class="orchestratorHasPending ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'"></span>
+                <span class="text-xs font-medium text-emerald-400">Orchestrator</span>
+                <span class="text-xs text-slate-500">{{ orchestratorMessages.length }} messages</span>
+              </div>
+              <span class="text-xs text-slate-500">{{ orchestratorLogExpanded ? 'Collapse' : 'Expand' }}</span>
+            </div>
+
+            <div v-if="orchestratorLogExpanded" class="px-4 pb-3 space-y-2 max-h-80 overflow-y-auto">
+              <div
+                v-for="msg in orchestratorMessages"
+                :key="msg.id"
+                class="text-xs rounded px-3 py-2"
+                :class="msg.direction === 'agent_to_human'
+                  ? 'bg-slate-900/50 border-l-2 border-emerald-500/40'
+                  : 'bg-slate-900/50 border-r-2 border-cyan-500/40 ml-8'"
+              >
+                <div class="flex items-center justify-between mb-1">
+                  <span v-if="msg.checkpoint" class="text-emerald-400 font-medium">{{ msg.checkpoint }}</span>
+                  <span v-else class="text-slate-500">{{ msg.direction === 'agent_to_human' ? 'Agent' : 'Human' }}</span>
+                  <span class="text-slate-600">{{ formatTime(msg.created_at) }}</span>
+                </div>
+                <div class="text-slate-300">{{ msg.message || msg.response }}</div>
+
+                <!-- Action buttons for pending agent messages -->
+                <div
+                  v-if="msg.direction === 'agent_to_human' && msg.status === 'pending' && msg.metadata?.options"
+                  class="flex items-center gap-2 mt-2"
+                >
+                  <button
+                    v-for="opt in msg.metadata.options"
+                    :key="opt"
+                    @click="respondToOrchestrator(msg.id, opt)"
+                    :disabled="orchestratorResponding[msg.id]"
+                    class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
+                    :class="opt === 'approve'
+                      ? 'bg-emerald-600/20 border-emerald-500/40 text-emerald-400 hover:bg-emerald-600/30'
+                      : 'bg-amber-600/20 border-amber-500/40 text-amber-400 hover:bg-amber-600/30'"
+                  >
+                    {{ orchestratorResponding[msg.id] ? '...' : opt.charAt(0).toUpperCase() + opt.slice(1) }}
+                  </button>
+                  <input
+                    v-model="orchestratorCommentText[msg.id]"
+                    placeholder="Optional comment..."
+                    class="flex-1 px-2 py-1 bg-slate-900/50 border border-slate-600/40 rounded text-xs text-slate-300 placeholder-slate-600"
+                  />
+                </div>
+
+                <!-- Show response if responded -->
+                <div
+                  v-if="msg.status === 'responded'"
+                  class="mt-1 text-slate-500 italic"
+                >
+                  Responded: {{ msg.response_action }}{{ msg.response ? ` — ${msg.response}` : '' }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -895,6 +976,13 @@ const uncheckedGrouped = computed(() => {
 // WebSocket for real-time updates
 const socket = useTextGenSocket()
 const diagnosing = ref(false)
+
+// Orchestrator state
+const orchestratorRunning = ref(false)
+const orchestratorMessages = ref([])
+const orchestratorLogExpanded = ref(false)
+const orchestratorResponding = ref({})
+const orchestratorCommentText = ref({})
 
 // Translation agent state
 const translateStarting = ref(false)
@@ -2049,6 +2137,82 @@ async function executeDetectiveAction(action) {
   setTimeout(() => { detectiveActionStates.value[action.path] = null }, 5000)
 }
 
+// ─── Orchestrator ────────────────────────────────────────────────────
+
+const orchestratorHasPending = computed(() =>
+  orchestratorMessages.value.some(m => m.direction === 'agent_to_human' && m.status === 'pending')
+)
+
+function formatTime(iso) {
+  if (!iso) return ''
+  const d = new Date(iso)
+  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+}
+
+async function runOrchestrator() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  orchestratorRunning.value = true
+  try {
+    const apiBase = getApiUrl()
+    await fetch(`${apiBase}/api/build/orchestrator/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    // Auto-expand log
+    orchestratorLogExpanded.value = true
+  } catch (err) {
+    console.error('Failed to spawn orchestrator:', err)
+    orchestratorRunning.value = false
+  }
+}
+
+async function fetchOrchestratorMessages() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const apiBase = getApiUrl()
+    const resp = await fetch(`${apiBase}/api/orchestrator/messages/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      const data = await resp.json()
+      orchestratorMessages.value = data.messages || []
+      // If there's a pending message, auto-expand
+      if (orchestratorHasPending.value) orchestratorLogExpanded.value = true
+    }
+  } catch (err) {
+    console.error('Failed to fetch orchestrator messages:', err)
+  }
+}
+
+async function respondToOrchestrator(messageId, action) {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  orchestratorResponding.value[messageId] = true
+  try {
+    const apiBase = getApiUrl()
+    await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${messageId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({
+        action,
+        response: orchestratorCommentText.value[messageId] || null
+      })
+    })
+    // Refresh messages
+    await fetchOrchestratorMessages()
+  } catch (err) {
+    console.error('Failed to respond to orchestrator:', err)
+  } finally {
+    orchestratorResponding.value[messageId] = false
+  }
+}
+
+// Refresh messages when socket events arrive
+watch(() => socket.lastOrchestratorMessage.value, () => { fetchOrchestratorMessages() })
+watch(() => socket.lastOrchestratorResponse.value, () => { fetchOrchestratorMessages() })
+
 // Lifecycle
 onMounted(() => {
   startPolling()
@@ -2059,6 +2223,7 @@ onMounted(() => {
     loadLanguages()
   } else {
     fetchGenderPrepStatus()
+    fetchOrchestratorMessages()
   }
 })
 
