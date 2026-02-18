@@ -27,7 +27,11 @@ export function useTextGenSocket() {
     const wsUrl = getWsUrl()
     socket = io(wsUrl, {
       path: '/api/production/websocket',
-      transports: ['websocket', 'polling']
+      transports: ['websocket', 'polling'],
+      reconnectionAttempts: 5,
+      reconnectionDelay: 2000,
+      reconnectionDelayMax: 30000,
+      timeout: 10000
     })
 
     socket.on('connect', () => {
@@ -37,7 +41,11 @@ export function useTextGenSocket() {
     })
 
     socket.on('connect_error', (err) => {
-      console.error('[TextGenSocket] Connection error:', err.message)
+      console.warn('[TextGenSocket] Connection error:', err.message)
+    })
+
+    socket.on('reconnect_failed', () => {
+      console.warn('[TextGenSocket] Reconnection failed after max attempts')
     })
 
     socket.on('disconnect', (reason) => {

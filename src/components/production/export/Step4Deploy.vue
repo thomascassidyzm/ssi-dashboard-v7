@@ -346,6 +346,7 @@
 
     <!-- Deploy progress -->
     <div v-if="isDeploying" class="progress-section space-y-4">
+      <!-- Phase 1: Copying files -->
       <div v-if="!progress.verifying">
         <div class="flex justify-between text-sm text-slate-400 mb-2">
           <span>Deploying to production...</span>
@@ -360,6 +361,34 @@
         <p class="text-center text-xs text-slate-500 mt-2">
           {{ progressPercent }}% complete
         </p>
+      </div>
+
+      <!-- Phase 2: Post-deploy verification -->
+      <div v-else>
+        <div class="flex justify-between text-sm text-slate-400 mb-2">
+          <span>Verifying production audio...</span>
+          <span>{{ (progress.verifyChecked || 0).toLocaleString() }} / {{ (progress.verifyTotal || 0).toLocaleString() }}</span>
+        </div>
+        <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
+          <div
+            class="progress-bar bg-purple-500 h-full transition-all duration-300"
+            :style="{ width: `${verifyPercent}%` }"
+          />
+        </div>
+        <div class="grid grid-cols-3 gap-2 text-xs mt-2">
+          <div class="text-center">
+            <div class="text-emerald-400 font-medium">{{ (progress.verifyMatched || 0).toLocaleString() }}</div>
+            <div class="text-slate-500">Matched</div>
+          </div>
+          <div class="text-center">
+            <div class="text-amber-400 font-medium">{{ (progress.verifyMismatched || 0).toLocaleString() }}</div>
+            <div class="text-slate-500">Mismatched</div>
+          </div>
+          <div class="text-center">
+            <div class="text-red-400 font-medium">{{ (progress.verifyErrors || 0).toLocaleString() }}</div>
+            <div class="text-slate-500">Errors</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -524,6 +553,11 @@ const downloadingUuids = ref(new Set<string>())
 const progressPercent = computed(() => {
   if (props.progress.total === 0) return 0
   return Math.round((props.progress.deployed / props.progress.total) * 100)
+})
+
+const verifyPercent = computed(() => {
+  if (!props.progress.verifyTotal) return 0
+  return Math.round(((props.progress.verifyChecked || 0) / props.progress.verifyTotal) * 100)
 })
 
 const planProgressPercent = computed(() => {

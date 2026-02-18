@@ -179,8 +179,19 @@
       </div>
     </div>
 
+    <!-- Cancelled message -->
+    <div v-if="verification?.cancelled" class="p-4 bg-amber-900/30 border border-amber-700 rounded-lg">
+      <div class="flex items-center gap-2 text-amber-400 font-medium">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        <span>Verification cancelled</span>
+      </div>
+      <p class="text-sm text-slate-400 mt-1">Click "Verify Audio Files" to start again.</p>
+    </div>
+
     <!-- Results -->
-    <div v-if="verification" class="space-y-4">
+    <div v-else-if="verification" class="space-y-4">
       <!-- Duration check failed - CRITICAL ERROR -->
       <div v-if="verification.durationCheckFailed" class="error-box p-4 bg-red-900/30 border border-red-700 rounded-lg">
         <div class="flex items-center gap-2 text-red-400 font-medium mb-2">

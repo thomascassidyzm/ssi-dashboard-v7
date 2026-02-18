@@ -33,6 +33,137 @@ const KEY_ORDER = {
 }
 
 /**
+ * Trailing period characters to strip.
+ * Matches normalizeForDedup() in generate-legacy-manifest.cjs:
+ *   . (Latin), 。 (CJK), ．(fullwidth), । (Devanagari danda), ۔ (Arabic full stop)
+ */
+const TRAILING_PERIOD_REGEX = /[.。．।۔]+$/
+
+/**
+ * Strip trailing period characters from a text string
+ */
+function stripTrailingPeriod(text) {
+  if (!text || typeof text !== 'string') return text
+  return text.replace(TRAILING_PERIOD_REGEX, '').trim()
+}
+
+/**
+ * Strip trailing periods from all text fields in a manifest.
+ * Cleans: node text (known/target), sample dictionary keys,
+ * seed sentence canonicals, encouragement text, and presentation text.
+ *
+ * Must be called BEFORE populateTokensAndLemmas so tokens reflect cleaned text.
+ *
+ * @param {Object} manifest - The manifest to clean (mutated in place)
+ * @returns {{ textsStripped: number, samplesRenamed: number }}
+ */
+function cleanTrailingPeriods(manifest) {
+  let textsStripped = 0
+  let samplesRenamed = 0
+
+  function stripFromLangObj(langObj) {
+    if (!langObj || !langObj.text) return
+    const cleaned = stripTrailingPeriod(langObj.text)
+    if (cleaned !== langObj.text) {
+      langObj.text = cleaned
+      textsStripped++
+    }
+  }
+
+  for (const slice of manifest.slices || []) {
+    // 1. Clean node text in seeds
+    for (const seed of slice.seeds || []) {
+      // Seed sentence canonical
+      if (seed.seed_sentence?.canonical) {
+        const cleaned = stripTrailingPeriod(seed.seed_sentence.canonical)
+        if (cleaned !== seed.seed_sentence.canonical) {
+          seed.seed_sentence.canonical = cleaned
+          textsStripped++
+        }
+      }
+
+      // Seed node
+      if (seed.node) {
+        stripFromLangObj(seed.node.known)
+        stripFromLangObj(seed.node.target)
+      }
+
+      // Introduction items
+      for (const introItem of seed.introduction_items || []) {
+        if (introItem.node) {
+          stripFromLangObj(introItem.node.known)
+          stripFromLangObj(introItem.node.target)
+        }
+        for (const node of introItem.nodes || []) {
+          stripFromLangObj(node.known)
+          stripFromLangObj(node.target)
+        }
+        // Presentation text
+        if (introItem.presentation) {
+          const cleaned = stripTrailingPeriod(introItem.presentation)
+          if (cleaned !== introItem.presentation) {
+            introItem.presentation = cleaned
+            textsStripped++
+          }
+        }
+      }
+    }
+
+    // 2. Clean sample dictionary keys
+    if (slice.samples) {
+      const newSamples = {}
+      for (const [key, entries] of Object.entries(slice.samples)) {
+        const cleanedKey = stripTrailingPeriod(key)
+        if (cleanedKey !== key) samplesRenamed++
+        // Merge if cleaned key already exists (deduplicate by audio ID)
+        if (newSamples[cleanedKey]) {
+          const existingIds = new Set(newSamples[cleanedKey].map(e => e.id))
+          for (const entry of entries) {
+            if (!existingIds.has(entry.id)) {
+              newSamples[cleanedKey].push(entry)
+            }
+          }
+        } else {
+          newSamples[cleanedKey] = entries
+        }
+      }
+      slice.samples = newSamples
+    }
+
+    // 3. Clean encouragement text
+    for (const enc of slice.orderedEncouragements || []) {
+      if (enc.text) {
+        const cleaned = stripTrailingPeriod(enc.text)
+        if (cleaned !== enc.text) {
+          enc.text = cleaned
+          textsStripped++
+        }
+      }
+    }
+    for (const enc of slice.pooledEncouragements || []) {
+      if (enc.text) {
+        const cleaned = stripTrailingPeriod(enc.text)
+        if (cleaned !== enc.text) {
+          enc.text = cleaned
+          textsStripped++
+        }
+      }
+    }
+    for (const enc of slice.paywallEncouragements || []) {
+      if (enc.text) {
+        const cleaned = stripTrailingPeriod(enc.text)
+        if (cleaned !== enc.text) {
+          enc.text = cleaned
+          textsStripped++
+        }
+      }
+    }
+  }
+
+  return { textsStripped, samplesRenamed }
+}
+
+/**
  * Simple tokenizer - split on whitespace
  */
 function tokenize(text) {
@@ -545,7 +676,13 @@ async function publishManifest(manifest, options = {}) {
   manifest.version = newVersion
   manifest.status = status
 
-  // Populate tokens and lemmas
+  // Strip trailing periods from text fields and sample keys
+  const { textsStripped, samplesRenamed } = cleanTrailingPeriods(manifest)
+  if (textsStripped > 0 || samplesRenamed > 0) {
+    logger.info(`Stripped trailing periods: ${textsStripped} text fields, ${samplesRenamed} sample keys renamed`)
+  }
+
+  // Populate tokens and lemmas (after period stripping so tokens reflect cleaned text)
   const nodesPopulated = populateTokensAndLemmas(manifest)
   logger.info(`Populated tokens/lemmas for ${nodesPopulated} nodes`)
 
@@ -592,6 +729,7 @@ async function publishManifest(manifest, options = {}) {
 
 module.exports = {
   // Core functions
+  cleanTrailingPeriods,
   populateTokensAndLemmas,
   canonicalizeManifest,
 

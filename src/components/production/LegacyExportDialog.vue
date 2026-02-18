@@ -89,6 +89,7 @@
                 <Step3Publish
                   :state="workflow.state.value"
                   :version-info="workflow.versionInfo.value"
+                  :manifest-diff="workflow.manifestDiff.value"
                   :is-loading="workflow.isLoading.value"
                   :is-pushing="isPushing"
                   :push-result="pushResult"
@@ -414,10 +415,13 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
   }
 })
 
-// Load version info when Step 3 becomes active
+// Load version info and manifest diff when Step 3 becomes active
 watch(activeStep, async (step) => {
   if (step === 3) {
-    await handleLoadVersionInfo()
+    await Promise.all([
+      handleLoadVersionInfo(),
+      workflow.getManifestDiff()
+    ])
   }
 })
 
