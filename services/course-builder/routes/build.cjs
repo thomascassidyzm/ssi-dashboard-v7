@@ -22,28 +22,106 @@ module.exports = function (ctx) {
   // ===========================================================================
   router.post('/build/start/:courseCode', async (req, res) => {
     const { courseCode } = req.params;
-    const { terminal = 'iTerm2', targetSeeds = 668 } = req.body || {};
+    const { targetSeeds = 300, maxAgents = 50 } = req.body || {};
+    const dryRun = req.query.dry_run === 'true';
+    const port = ctx.config.PORT || 3471;
+    const projectDir = path.resolve(__dirname, '..', '..', '..');
+    const SEEDS_PER_AGENT = 5;
 
     try {
-      const spawnCallback = async (cc, agentCount, term) => {
-        // Fetch V2 coordinator brief and spawn via iTerm
-        const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${cc}/stage/decompose`);
-        if (!briefResp.ok) throw new Error(`Failed to fetch build brief: ${briefResp.status}`);
+      // Find remaining undecomposed seeds up to targetSeeds
+      const { data: completedSeeds } = await ctx.supabase
+        .from('course_seeds').select('seed_number')
+        .eq('course_code', courseCode).not('decomposed_at', 'is', null)
+        .lte('seed_number', targetSeeds).order('seed_number');
+
+      const completedSet = new Set((completedSeeds || []).map(s => s.seed_number));
+
+      // Golden seeds (1-50) are handled by /build/golden — start from 51
+      const goldenCount = getGoldenSeedCount(
+        (await ctx.supabase.from('courses').select('quality_rules').eq('course_code', courseCode).single()).data
+      );
+      const mvpStart = goldenCount + 1; // typically 51
+
+      const remaining = [];
+      for (let i = mvpStart; i <= targetSeeds; i++) {
+        if (!completedSet.has(i)) remaining.push(i);
+      }
+
+      if (remaining.length === 0) {
+        return res.json({ ok: false, error: `All seeds ${mvpStart}-${targetSeeds} already complete` });
+      }
+
+      // Split into batches of SEEDS_PER_AGENT
+      const batches = [];
+      for (let i = 0; i < remaining.length; i += SEEDS_PER_AGENT) {
+        batches.push(remaining.slice(i, i + SEEDS_PER_AGENT));
+      }
+
+      // Cap at maxAgents
+      const cappedBatches = batches.slice(0, maxAgents);
+
+      if (dryRun) {
+        return res.json({
+          dry_run: true,
+          remaining_seeds: remaining.length,
+          total_batches: batches.length,
+          capped_batches: cappedBatches.length,
+          seeds_per_agent: SEEDS_PER_AGENT,
+          max_agents: maxAgents,
+          first_batch: cappedBatches[0],
+          last_batch: cappedBatches[cappedBatches.length - 1]
+        });
+      }
+
+      // Create build_jobs record
+      let jobId = null;
+      try {
+        const { data: jobData, error: jobError } = await ctx.supabase.from('build_jobs').insert({
+          course_code: courseCode, pass: 'build_mvp', status: 'running',
+          current_seed: remaining[0], seeds_completed: completedSet.size, total_seeds: targetSeeds,
+          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard', terminal: ctx.SPAWN_MODE === 'headless' ? 'headless' : 'iTerm2',
+          agent_count: cappedBatches.length, respawn_count: 0,
+          machine_name: ctx.MACHINE_NAME, build_mode: 'build_mvp'
+        }).select('id').single();
+        if (!jobError && jobData) jobId = jobData.id;
+      } catch (e) { console.error('[BUILD-MVP] Failed to create build_jobs record:', e.message); }
+
+      // Spawn parallel Sonnet agents — one per batch
+      const ts = Date.now();
+      for (let i = 0; i < cappedBatches.length; i++) {
+        const batch = cappedBatches[i];
+        const seedList = batch.join(',');
+        const briefResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/build-mvp?seeds=${seedList}`);
+        if (!briefResp.ok) throw new Error(`Failed to fetch build-mvp brief for batch ${i + 1}: ${briefResp.status}`);
         const brief = await briefResp.text();
 
-        const tmpFile = `/tmp/claude_parallel_${cc}_${Date.now()}.txt`;
+        const tmpFile = `/tmp/build_mvp_${courseCode}_batch${i + 1}_${ts}.md`;
         fs.writeFileSync(tmpFile, brief);
 
-        const projectDir = path.resolve(__dirname, '..', '..', '..');
-        const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
-        console.log(`[BUILD] Spawning parallel coordinator #${agentCount} for ${cc}`);
-        spawnInTerminal(ctx, claudeCmd, `Parallel Build #${agentCount}`, cc);
-      };
+        const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+        console.log(`[BUILD-MVP] Spawning Sonnet Builder ${i + 1}/${cappedBatches.length} for ${courseCode} — seeds ${batch[0]}-${batch[batch.length - 1]}`);
+        spawnInTerminal(ctx, claudeCmd, `Builder ${i + 1}/${cappedBatches.length}`, courseCode);
 
-      const result = await startBuild(ctx, courseCode, terminal, targetSeeds, spawnCallback);
-      ctx.emitPipelineEvent(courseCode, 'build:status', { active: true, pass: 'build', agent_count: result.agent_count || 1 });
-      res.json(result);
+        // Stagger spawns by 2 seconds
+        if (i < cappedBatches.length - 1) await new Promise(resolve => setTimeout(resolve, 2000));
+      }
+
+      ctx.emitPipelineEvent(courseCode, 'build:status', { active: true, pass: 'build_mvp', agent_count: cappedBatches.length });
+
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        job_id: jobId,
+        remaining_seeds: remaining.length,
+        agent_count: cappedBatches.length,
+        seeds_per_agent: SEEDS_PER_AGENT,
+        model: 'sonnet',
+        message: `MVP build started — ${cappedBatches.length} Sonnet agents spawned for ${remaining.length} remaining seeds (${mvpStart}-${targetSeeds})`
+      });
     } catch (err) {
+      console.error('[BUILD-MVP] Error:', err.message);
       res.status(500).json({ ok: false, error: err.message });
     }
   });

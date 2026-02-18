@@ -107,9 +107,10 @@ This spawns calibration agents that build seeds 1-${goldenCount} with human revi
 
 ### Stage 5: build_mvp
 **Goal**: Seeds 51-${mvpTarget} decomposed.
-**Action**: \`POST ${API}/api/v2/build/start/${courseCode}\`
-**Monitor**: Poll \`GET ${API}/api/v2/build/status/${courseCode}\` every 60s.
-**Complete when**: \`decomposed >= ${mvpTarget}\`
+**Action**: \`POST ${API}/api/build/start/${courseCode}\` with body \`{"targetSeeds": ${mvpTarget}}\`
+This spawns parallel Sonnet agents that build seeds via \`POST /api/seed/complete\` (same as golden).
+**Monitor**: Poll \`GET ${API}/api/stats/${courseCode}\` every 60s — check \`decomposed_seeds >= ${mvpTarget}\`
+**Complete when**: \`decomposed_seeds >= ${mvpTarget}\`
 
 ### Stage 6: qa_review
 **Goal**: Full QA scan, human reviews flags.

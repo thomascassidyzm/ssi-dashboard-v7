@@ -432,33 +432,26 @@
           </div>
         </div>
 
-        <!-- Stage 5: Build MVP (V2 Pipeline — 4 sub-stages) -->
+        <!-- Stage 5: Build MVP (parallel seed/complete agents) -->
         <div class="pipeline-card" :class="stageCardClass('mvp')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('mvp')">5</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Build MVP</div>
-                <div class="text-xs text-slate-500">Seeds 51-{{ seedCount }}: V2 staged pipeline</div>
+                <div class="text-xs text-slate-500">Seeds 51-{{ seedCount }}: Parallel seed/complete agents</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ mvpDecomposed }}/{{ mvpTotal }}</span>
-              <span v-if="stageComplete('mvp') && mvpPhrasesComplete" class="stage-badge-complete">Done</span>
-              <button
-                v-else-if="stageComplete('mvp') && !mvpPhrasesComplete && progress.status !== 'running'"
-                @click="startV2PhraseResume"
-                class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 text-xs font-medium rounded-lg transition-all"
-              >
-                Resume Phrases
-              </button>
+              <span v-if="stageComplete('mvp')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('mvp')" class="stage-badge-locked">Locked</span>
               <button
                 v-else-if="progress.status !== 'running'"
-                @click="startV2Build"
+                @click="startMvpBuild"
                 class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-xs font-medium rounded-lg transition-all"
               >
-                Start V2 Build
+                Start Build
               </button>
               <button
                 v-if="progress.status === 'running'"
@@ -485,76 +478,6 @@
           </div>
           <div v-if="!stageLocked('mvp')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
             <div class="h-full rounded-full bg-cyan-500 transition-all duration-500" :style="{ width: `${mvpPercent}%` }"></div>
-          </div>
-
-          <!-- V2 Sub-stages (visible when stage is active or complete) -->
-          <div v-if="!stageLocked('mvp')" class="mt-3 space-y-1.5 pl-8">
-            <!-- 4a: Decompose -->
-            <div class="flex items-center justify-between text-xs">
-              <div class="flex items-center gap-2">
-                <span class="w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-semibold"
-                  :class="stageComplete('mvp') || v2Status.decompose.finalized >= v2Status.decompose.target ? 'bg-emerald-500/20 text-emerald-400' : v2Status.phase === 'decompose' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-700/50 text-slate-500'">a</span>
-                <span class="text-slate-300">Decompose</span>
-                <span class="text-slate-600 font-mono">Sonnet</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span v-if="v2Status.decompose.target > 0" class="font-mono text-slate-400">{{ v2Status.decompose.finalized }}/{{ v2Status.decompose.target }}</span>
-                <span v-else-if="stageComplete('mvp')" class="font-mono text-slate-400">{{ mvpDecomposed }}/{{ mvpTotal }}</span>
-                <span v-if="stageComplete('mvp') || (v2Status.decompose.finalized >= v2Status.decompose.target && v2Status.decompose.target > 0)" class="stage-badge-complete">Done</span>
-                <span v-else-if="v2Status.phase === 'decompose'" class="text-cyan-400 animate-pulse">Active</span>
-              </div>
-            </div>
-
-            <!-- 4b: Collisions -->
-            <div class="flex items-center justify-between text-xs">
-              <div class="flex items-center gap-2">
-                <span class="w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-semibold"
-                  :class="stageComplete('mvp') || (v2Status.decompose.collisions === 0 && v2Status.decompose.finalized > 0) ? 'bg-emerald-500/20 text-emerald-400' : v2Status.decompose.collisions > 0 ? 'bg-red-500/20 text-red-400' : 'bg-slate-700/50 text-slate-500'">b</span>
-                <span class="text-slate-300">Collisions</span>
-                <span class="text-slate-600 font-mono">Sonnet</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span v-if="v2Status.decompose.collisions > 0" class="font-mono text-red-400">{{ v2Status.decompose.collisions }} collisions</span>
-                <span v-else-if="stageComplete('mvp') || v2Status.decompose.finalized > 0" class="stage-badge-complete">Clean</span>
-                <span v-else class="font-mono text-slate-600">—</span>
-              </div>
-            </div>
-
-            <!-- 4c: Phrases -->
-            <div class="flex items-center justify-between text-xs">
-              <div class="flex items-center gap-2">
-                <span class="w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-semibold"
-                  :class="mvpPhrasesComplete ? 'bg-emerald-500/20 text-emerald-400' : v2Status.phase === 'phrases' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-700/50 text-slate-500'">c</span>
-                <span class="text-slate-300">Phrases</span>
-                <span class="text-slate-600 font-mono">Haiku</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span v-if="v2Status.phrases.total_legos > 0" class="font-mono text-slate-400">{{ v2Status.phrases.legos_with_phrases }}/{{ v2Status.phrases.total_legos }}</span>
-                <span v-else-if="mvpPhrasesComplete" class="font-mono text-slate-400">{{ progress.legosInserted }} LEGOs</span>
-                <span v-if="mvpPhrasesComplete" class="stage-badge-complete">Done</span>
-                <span v-else-if="v2Status.phase === 'phrases'" class="text-cyan-400 animate-pulse">Active</span>
-                <button
-                  v-else-if="v2Status.phrases.total_legos > 0 && v2Status.phrases.legos_with_phrases < v2Status.phrases.total_legos"
-                  @click="resumeSubStage('phrases')"
-                  class="px-2 py-0.5 bg-cyan-600 hover:bg-cyan-500 text-white text-xs rounded transition-colors"
-                >Resume</button>
-              </div>
-            </div>
-
-            <!-- 4d: Validate -->
-            <div class="flex items-center justify-between text-xs">
-              <div class="flex items-center gap-2">
-                <span class="w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-semibold"
-                  :class="mvpPhrasesComplete || v2Status.phase === 'complete' ? 'bg-emerald-500/20 text-emerald-400' : v2Status.phase === 'validate' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-700/50 text-slate-500'">d</span>
-                <span class="text-slate-300">Validate</span>
-                <span class="text-slate-600 font-mono">Code</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span v-if="mvpPhrasesComplete || v2Status.phase === 'complete'" class="stage-badge-complete">Pass</span>
-                <span v-else-if="v2Status.phase === 'validate'" class="text-cyan-400 animate-pulse">Active</span>
-                <span v-else class="font-mono text-slate-600">—</span>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -1110,24 +1033,7 @@ const mvpPercent = computed(() => {
 const fullBuildTotal = computed(() => Math.max(0, 668 - seedCount.value))
 const fullBuildDecomposed = computed(() => Math.max(0, progress.value.currentSeed - seedCount.value))
 
-// V2 Pipeline state
-const v2Status = ref({
-  phase: 'idle',
-  active: false,
-  decompose: { drafts: 0, collisions: 0, finalized: 0, target: 0 },
-  phrases: { legos_with_phrases: 0, total_legos: 0, percent: 0 }
-})
-
-// Phrase completion — uses v2Status when populated, falls back to progress stats
-const mvpPhrasesComplete = computed(() => {
-  if (v2Status.value.phrases.percent >= 100) return true
-  if (v2Status.value.phase === 'complete') return true
-  // Fallback: if all MVP seeds are decomposed and phrase/lego ratio is healthy
-  if (stageComplete('mvp') && progress.value.phrasesInserted > 0 && progress.value.legosInserted > 0) {
-    return (progress.value.phrasesInserted / progress.value.legosInserted) >= 4
-  }
-  return false
-})
+// V2 pipeline state removed — MVP now uses seed/complete (same as golden)
 
 const pipelinePhase = computed(() => {
   const translated = progress.value.seedsTranslated || 0
@@ -1310,7 +1216,7 @@ async function fetchProgress() {
     const phase = pipelinePhase.value
     if (['calibrate', 'golden', 'golden-qa'].includes(phase)) fetchGoldenStatus()
     if (['golden-qa'].includes(phase) || !goldenQaStatus.value.complete) fetchGoldenQAStatus()
-    if (phase === 'mvp' || stageComplete('mvp')) fetchV2Status()
+    // V2 status fetch removed — MVP now uses seed/complete
   } catch (error) {
     console.error('Failed to fetch progress:', error)
   }
@@ -1440,25 +1346,6 @@ async function createCourse() {
   }
 }
 
-async function resumeSubStage(stage) {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  try {
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
-    const response = await fetch(`${apiBase}/api/v2/build/start/${courseCode}?from_stage=${stage}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: '{}'
-    })
-    const result = await response.json()
-    if (!response.ok) alert(`Resume failed: ${result.error || 'Unknown error'}`)
-  } catch (err) {
-    console.error('Resume failed:', err)
-    alert(`Resume failed: ${err.message}`)
-  }
-}
-
 async function startBuilder() {
   const courseCode = effectiveCourseCode.value
 
@@ -1570,83 +1457,30 @@ async function forceResetBuilder() {
   startPolling()
 }
 
-// V2 Pipeline methods
-async function fetchV2Status() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/v2/build/status/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      v2Status.value = {
-        phase: data.phase || 'idle',
-        active: data.active || false,
-        decompose: data.decompose || { drafts: 0, collisions: 0, finalized: 0, target: 0 },
-        phrases: data.phrases || { legos_with_phrases: 0, total_legos: 0, percent: 0 }
-      }
-    }
-  } catch (err) {
-    // V2 endpoints may not exist on older servers
-  }
-}
-
-async function startV2Build() {
+// MVP Build — spawns parallel seed/complete agents (same approach as golden)
+async function startMvpBuild() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
 
   try {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
-    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
 
-    const response = await fetch(`${apiBase}/api/v2/build/start/${courseCode}`, {
+    const response = await fetch(`${apiBase}/api/build/start/${courseCode}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
-      body: JSON.stringify({ terminal, targetSeeds: seedCount.value })
+      body: JSON.stringify({ targetSeeds: seedCount.value })
     })
 
     const result = await response.json()
-    if (!result.ok) throw new Error(result.error || 'Failed to start V2 build')
+    if (!result.ok) throw new Error(result.error || 'Failed to start MVP build')
 
     progress.value.status = 'running'
-    progress.value.totalSeeds = result.target_seeds || seedCount.value
-    fetchV2Status()
+    startPolling()
   } catch (error) {
-    console.error('Failed to start V2 build:', error)
-  }
-}
-
-async function startV2PhraseResume() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
-    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
-
-    const response = await fetch(`${apiBase}/api/v2/build/start/${courseCode}?from_stage=phrases`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({ terminal, targetSeeds: seedCount.value })
-    })
-
-    const result = await response.json()
-    if (!result.ok) throw new Error(result.error || 'Failed to resume phrases')
-
-    progress.value.status = 'running'
-    fetchV2Status()
-  } catch (error) {
-    console.error('Failed to resume phrases:', error)
+    console.error('Failed to start MVP build:', error)
   }
 }
 
@@ -2093,7 +1927,7 @@ watch(() => socket.lastSeedComplete.value, (v) => { if (v) debouncedFetch('seed'
 watch(() => socket.lastBuildStatus.value, (v) => { if (v) debouncedFetch('build', fetchProgress) })
 watch(() => socket.lastQaUpdate.value, (v) => { if (v) debouncedFetch('qa', fetchQASummary) })
 watch(() => socket.lastGoldenUpdate.value, (v) => { if (v) debouncedFetch('golden', fetchGoldenStatus) })
-watch(() => socket.lastPipelineStage.value, (v) => { if (v) debouncedFetch('pipeline', fetchV2Status) })
+// V2 pipeline watcher removed — MVP uses seed/complete
 
 async function runDetective() {
   const courseCode = effectiveCourseCode.value

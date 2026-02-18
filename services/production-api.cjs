@@ -299,12 +299,13 @@ app.get('/api/stats/:courseCode', async (req, res) => {
       .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
 
-    // Count completed seeds (those with non-empty target_text)
+    // Count completed seeds (those with BOTH known_text and target_text non-empty)
     const { count: completedSeeds } = await supabase
       .from('course_seeds')
       .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
       .neq('target_text', '')
+      .neq('known_text', '')
 
     // Count seeds with decomposition done (decomposed_at IS NOT NULL)
     // This includes empty seeds (all vocab already known) which have no LEGO rows
@@ -811,6 +812,8 @@ app.get('/api/mission-control/jobs', async (req, res) => {
             .eq('course_code', row.course_code)
             .not('target_text', 'is', null)
             .neq('target_text', '')
+            .not('known_text', 'is', null)
+            .neq('known_text', '')
 
           if (!countError && count !== null) {
             seedsTranslated = count

@@ -258,12 +258,13 @@ module.exports = function courseDataRoutes(ctx) {
       .single();
     const totalSeeds = courseData?.seed_count || 300;
 
-    // Count completed seeds (those with non-empty target_text)
+    // Count completed seeds (those with BOTH known_text and target_text non-empty)
     const { count: completedSeeds } = await ctx.supabase
       .from('course_seeds')
       .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
-      .neq('target_text', '');
+      .neq('target_text', '')
+      .neq('known_text', '');
 
     // Count seeds with decomposition done (includes empty seeds where all LEGOs were duplicates)
     const { count: seedsWithLegos } = await ctx.supabase
@@ -458,7 +459,7 @@ module.exports = function courseDataRoutes(ctx) {
     // Pass 1: Translate all seeds in range (1 to seed_count) + save analysis
     // Pass 2: Decompose all seeds in range into LEGOs
     const seedsInRange = allSeeds.length;  // Seeds 1 to targetSeedCount
-    const seedsTranslated = allSeeds.filter(s => s.target_text && s.target_text.trim() !== '').length;
+    const seedsTranslated = allSeeds.filter(s => s.target_text && s.target_text.trim() !== '' && s.known_text && s.known_text.trim() !== '').length;
     const seedsDecomposed = completedSeeds.size;
     const analysisSaved = !!courseInfo?.translation_analysis;
 

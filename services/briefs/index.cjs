@@ -34,6 +34,7 @@ const generateGoldenCreatorBrief = require('./golden-creator.cjs');
 const generateGoldenCheckerBrief = require('./golden-checker.cjs');
 const generateGoldenQABrief = require('./golden-qa.cjs');
 const generateOrchestratorBrief = require('./orchestrator.cjs');
+const generateBuildMvpBrief = require('./stage-build-mvp.cjs');
 
 // Helper to serve brief as markdown
 async function serveBrief(res, generator, courseCode, query = {}) {
@@ -61,5 +62,6 @@ router.get('/:courseCode/golden-creator', (req, res) => serveBrief(res, generate
 router.get('/:courseCode/golden-checker', (req, res) => serveBrief(res, generateGoldenCheckerBrief, req.params.courseCode, req.query));
 router.get('/:courseCode/golden-qa', (req, res) => serveBrief(res, generateGoldenQABrief, req.params.courseCode));
 router.get('/:courseCode/orchestrator', (req, res) => serveBrief(res, generateOrchestratorBrief, req.params.courseCode));
+router.get('/:courseCode/build-mvp', (req, res) => serveBrief(res, generateBuildMvpBrief, req.params.courseCode, req.query));
 
 module.exports = router;
