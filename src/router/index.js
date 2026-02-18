@@ -8,10 +8,6 @@ import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
-// DEPRECATED: AudioGeneration - use /production/:courseCode/pipeline (AudioPipeline) instead
-// import AudioGeneration from '../views/AudioGeneration.vue'
-// DEPRECATED: AudioPipelineView - use /production/:courseCode/pipeline instead
-// import AudioPipelineView from '../views/AudioPipelineView.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
@@ -21,11 +17,7 @@ import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 import DocsLayout from '../views/docs/DocsLayout.vue'
 import CourseValidator from '../views/CourseValidator.vue'
 import CourseProgress from '../views/CourseProgress.vue'
-// DEPRECATED: RecordingStudio - use /autocue (AutocueStudio) instead
-// import RecordingStudio from '../views/RecordingStudio.vue'
 import UserManagement from '../views/UserManagement.vue'
-// DEPRECATED: CourseScriptView - use /production/:courseCode/script (ScriptViewer) instead
-// import CourseScriptView from '../views/CourseScriptView.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'

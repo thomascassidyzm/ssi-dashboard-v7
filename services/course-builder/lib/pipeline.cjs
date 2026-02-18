@@ -19,7 +19,26 @@ const PIPELINE_STAGES = [
   'complete'
 ];
 
-const HUMAN_GATES = ['calibrate', 'qa_review'];
+const DEFAULT_HUMAN_GATES = ['calibrate', 'golden', 'build_mvp', 'qa_review'];
+
+/**
+ * Check if a stage is a human gate for a given course's quality_rules.
+ * `calibrate` is ALWAYS human — non-negotiable.
+ */
+function isHumanGate(qualityRules, stage) {
+  if (stage === 'calibrate') return true;
+  const modes = qualityRules?.gate_modes || {};
+  if (modes[stage]) return modes[stage] === 'human';
+  return DEFAULT_HUMAN_GATES.includes(stage);
+}
+
+/**
+ * Get resolved gate modes for a course (defaults + overrides, calibrate always human).
+ */
+function getGateModes(qualityRules) {
+  const defaults = Object.fromEntries(DEFAULT_HUMAN_GATES.map(g => [g, 'human']));
+  return { ...defaults, ...(qualityRules?.gate_modes || {}), calibrate: 'human' };
+}
 
 /**
  * Get current pipeline status for a course.
@@ -44,7 +63,8 @@ async function getPipelineStatus(supabase, courseCode) {
     stages: PIPELINE_STAGES,
     is_running: rules.pipeline_running === true,
     started_at: rules.pipeline_started_at || null,
-    human_gate: stage && HUMAN_GATES.includes(stage),
+    human_gate: stage ? isHumanGate(rules, stage) : false,
+    gate_mode: stage ? (isHumanGate(rules, stage) ? 'human' : 'agent') : null,
     seed_count: course.seed_count || 300
   };
 }
@@ -110,13 +130,22 @@ async function advancePipeline(ctx, courseCode, opts = {}) {
 
   const nextStage = PIPELINE_STAGES[nextIdx];
 
+  // Fetch quality_rules for dynamic gate check
+  const { data: courseData } = await ctx.supabase
+    .from('courses')
+    .select('quality_rules')
+    .eq('course_code', courseCode)
+    .single();
+  const qualityRules = courseData?.quality_rules || {};
+  const humanGate = isHumanGate(qualityRules, nextStage);
+
   // Set the stage first
   await setPipelineStage(ctx.supabase, courseCode, nextStage, {
-    pipeline_running: !HUMAN_GATES.includes(nextStage)
+    pipeline_running: !humanGate
   });
 
   // If next stage is a human gate, pause (don't auto-trigger)
-  if (HUMAN_GATES.includes(nextStage) && !opts.force) {
+  if (humanGate && !opts.force) {
     console.log(`[PIPELINE] ${courseCode}: paused at human gate → ${nextStage}`);
     return nextStage;
   }
@@ -148,13 +177,22 @@ async function startPipeline(ctx, courseCode) {
     startStage = await detectCurrentStage(ctx.supabase, courseCode);
   }
 
+  // Fetch quality_rules for dynamic gate check
+  const { data: courseForGate } = await ctx.supabase
+    .from('courses')
+    .select('quality_rules')
+    .eq('course_code', courseCode)
+    .single();
+  const startRules = courseForGate?.quality_rules || {};
+  const startIsHuman = isHumanGate(startRules, startStage);
+
   await setPipelineStage(ctx.supabase, courseCode, startStage, {
-    pipeline_running: !HUMAN_GATES.includes(startStage),
+    pipeline_running: !startIsHuman,
     pipeline_started_at: new Date().toISOString()
   });
 
   // If at a human gate, don't auto-trigger
-  if (HUMAN_GATES.includes(startStage)) {
+  if (startIsHuman) {
     console.log(`[PIPELINE] ${courseCode}: at human gate → ${startStage}`);
     return { stage: startStage, action: 'waiting_at_gate' };
   }
@@ -304,7 +342,9 @@ async function triggerStage(ctx, courseCode, stage) {
 
 module.exports = {
   PIPELINE_STAGES,
-  HUMAN_GATES,
+  DEFAULT_HUMAN_GATES,
+  isHumanGate,
+  getGateModes,
   getPipelineStatus,
   setPipelineStage,
   advancePipeline,

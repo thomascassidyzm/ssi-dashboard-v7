@@ -4,7 +4,7 @@
  */
 
 const { getGoldenSeedCount } = require('./language-config.cjs');
-const { advancePipeline, getPipelineStatus } = require('./pipeline.cjs');
+const { getPipelineStatus, advancePipeline, isHumanGate } = require('./pipeline.cjs');
 
 let buildManagerInterval = null;
 
@@ -105,10 +105,23 @@ async function checkBuilds(ctx) {
             completed_at: new Date().toISOString(),
           }).eq('id', job.id);
 
+          // Conditional auto-advance
           try {
-            await advancePipeline(ctx, courseCode);
-          } catch (chainErr) {
-            console.error(`[BUILD] Pipeline advance failed after translate:`, chainErr.message);
+            const pipelineStatus = await getPipelineStatus(ctx.supabase, courseCode);
+            if (pipelineStatus.stage && pipelineStatus.stage !== 'complete') {
+              const { data: courseForGate } = await ctx.supabase
+                .from('courses')
+                .select('quality_rules')
+                .eq('course_code', courseCode)
+                .single();
+              const qr = courseForGate?.quality_rules || {};
+              if (!isHumanGate(qr, pipelineStatus.stage)) {
+                console.log(`[BUILD] Auto-advancing pipeline for ${courseCode} (agent gate: ${pipelineStatus.stage})`);
+                await advancePipeline(ctx, courseCode);
+              }
+            }
+          } catch (pipeErr) {
+            console.error(`[BUILD] Pipeline auto-advance error for ${courseCode}:`, pipeErr.message);
           }
         }
         continue;
@@ -147,11 +160,25 @@ async function checkBuilds(ctx) {
           completed_at: new Date().toISOString(),
         }).eq('id', job.id);
 
-        // AUTO-CHAIN: Build complete → advance pipeline (e.g. build_mvp → qa_review)
+        // Conditional auto-advance: if current pipeline stage is agent-gated, advance
         try {
-          await advancePipeline(ctx, courseCode);
-        } catch (chainErr) {
-          console.error(`[BUILD] Pipeline advance failed after completion:`, chainErr.message);
+          const pipelineStatus = await getPipelineStatus(ctx.supabase, courseCode);
+          if (pipelineStatus.stage && pipelineStatus.stage !== 'complete') {
+            const { data: courseForGate } = await ctx.supabase
+              .from('courses')
+              .select('quality_rules')
+              .eq('course_code', courseCode)
+              .single();
+            const qr = courseForGate?.quality_rules || {};
+            if (!isHumanGate(qr, pipelineStatus.stage)) {
+              console.log(`[BUILD] Auto-advancing pipeline for ${courseCode} (agent gate: ${pipelineStatus.stage})`);
+              await advancePipeline(ctx, courseCode);
+            } else {
+              console.log(`[BUILD] Pipeline paused at human gate: ${pipelineStatus.stage} for ${courseCode}`);
+            }
+          }
+        } catch (pipeErr) {
+          console.error(`[BUILD] Pipeline auto-advance error for ${courseCode}:`, pipeErr.message);
         }
       }
 

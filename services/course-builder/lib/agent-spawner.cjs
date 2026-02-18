@@ -10,11 +10,18 @@ const path = require('path');
 const { getLanguageName, getGoldenSeedCount, getLangFamily, PREPOSITIONS } = require('./language-config.cjs');
 const { classifySeedPattern, formatDecompositionPatterns } = require('./validation.cjs');
 
+const MAX_CONCURRENT_AGENTS = parseInt(process.env.MAX_CONCURRENT_AGENTS) || 12;
+
 /**
  * Spawn a process in the configured terminal mode.
  * Returns the child process (or null for osascript).
+ * Enforces MAX_CONCURRENT_AGENTS cap before spawning.
  */
 function spawnInTerminal(ctx, cmd, label, courseCode) {
+  const running = getRunningAgentCount();
+  if (running >= MAX_CONCURRENT_AGENTS) {
+    throw new Error(`Agent cap reached: ${running}/${MAX_CONCURRENT_AGENTS} agents running. Not spawning "${label}" for ${courseCode}.`);
+  }
   const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : ctx.SPAWN_MODE;
 
   if (effectiveTerminal === 'headless') {
@@ -210,7 +217,7 @@ async function spawnParallelBuildAgent(ctx, courseCode, agentNumber, terminal = 
 function getRunningAgentCount() {
   try {
     const { execSync } = require('child_process');
-    const output = execSync('pgrep -f "claude" 2>/dev/null || true', { encoding: 'utf8' });
+    const output = execSync('pgrep -f "claude --model" 2>/dev/null || true', { encoding: 'utf8' });
     return output.trim().split('\n').filter(l => l.trim()).length;
   } catch (e) {
     return 0;
@@ -218,6 +225,7 @@ function getRunningAgentCount() {
 }
 
 module.exports = {
+  MAX_CONCURRENT_AGENTS,
   spawnInTerminal,
   fetchGoldenSeedExamples,
   buildCrossCourseSummaries,

@@ -299,6 +299,7 @@
                 <div class="text-sm font-medium text-slate-200">Calibrate</div>
                 <div class="text-xs text-slate-500">Seeds 1-10: Human + Creator collaboration</div>
               </div>
+              <span class="gate-badge gate-badge-human gate-badge-locked" title="Calibrate is always a human gate">Human</span>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ calibrationDone }}/10</span>
@@ -361,6 +362,12 @@
                 <div class="text-sm font-medium text-slate-200">Golden</div>
                 <div class="text-xs text-slate-500">Seeds 11-50: Creator + Checker agents</div>
               </div>
+              <span
+                class="gate-badge cursor-pointer"
+                :class="gateModes.golden === 'agent' ? 'gate-badge-agent' : 'gate-badge-human'"
+                @click="toggleGateMode('golden')"
+                :title="`Click to switch to ${gateModes.golden === 'agent' ? 'human' : 'agent'} gate`"
+              >{{ gateModes.golden === 'agent' ? 'Agent' : 'Human' }}</span>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ goldenRangeDone }}/{{ goldenRangeTotal }}</span>
@@ -441,6 +448,12 @@
                 <div class="text-sm font-medium text-slate-200">Build MVP</div>
                 <div class="text-xs text-slate-500">Seeds 51-{{ seedCount }}: Parallel seed/complete agents</div>
               </div>
+              <span
+                class="gate-badge cursor-pointer"
+                :class="gateModes.build_mvp === 'agent' ? 'gate-badge-agent' : 'gate-badge-human'"
+                @click="toggleGateMode('build_mvp')"
+                :title="`Click to switch to ${gateModes.build_mvp === 'agent' ? 'human' : 'agent'} gate`"
+              >{{ gateModes.build_mvp === 'agent' ? 'Agent' : 'Human' }}</span>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ mvpDecomposed }}/{{ mvpTotal }}</span>
@@ -490,6 +503,12 @@
                 <div class="text-sm font-medium text-slate-200">QA Review</div>
                 <div class="text-xs text-slate-500">Full-course speakability check</div>
               </div>
+              <span
+                class="gate-badge cursor-pointer"
+                :class="gateModes.qa_review === 'agent' ? 'gate-badge-agent' : 'gate-badge-human'"
+                @click="toggleGateMode('qa_review')"
+                :title="`Click to switch to ${gateModes.qa_review === 'agent' ? 'human' : 'agent'} gate`"
+              >{{ gateModes.qa_review === 'agent' ? 'Agent' : 'Human' }}</span>
             </div>
             <div class="flex items-center gap-3">
               <span v-if="qa.flags > 0" class="text-xs text-red-400">{{ qa.flags }} flagged</span>
@@ -906,6 +925,9 @@ const orchestratorMessages = ref([])
 const orchestratorLogExpanded = ref(false)
 const orchestratorResponding = ref({})
 const orchestratorCommentText = ref({})
+
+// Gate modes
+const gateModes = ref({})
 
 // Translation agent state
 const translateStarting = ref(false)
@@ -2047,6 +2069,46 @@ async function respondToOrchestrator(messageId, action) {
 watch(() => socket.lastOrchestratorMessage.value, () => { fetchOrchestratorMessages() })
 watch(() => socket.lastOrchestratorResponse.value, () => { fetchOrchestratorMessages() })
 
+// Gate modes
+async function fetchGateModes() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const apiBase = getApiUrl()
+    const resp = await fetch(`${apiBase}/api/build/pipeline/${courseCode}/gates`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      const data = await resp.json()
+      gateModes.value = data.gates || {}
+    }
+  } catch (err) {
+    console.error('Failed to fetch gate modes:', err)
+  }
+}
+
+async function toggleGateMode(stage) {
+  if (stage === 'calibrate') return
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  const current = gateModes.value[stage] || 'human'
+  const newMode = current === 'human' ? 'agent' : 'human'
+  try {
+    const apiBase = getApiUrl()
+    const resp = await fetch(`${apiBase}/api/build/pipeline/${courseCode}/gates`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ [stage]: newMode })
+    })
+    if (resp.ok) {
+      const data = await resp.json()
+      gateModes.value = data.gates || {}
+    }
+  } catch (err) {
+    console.error('Failed to toggle gate mode:', err)
+  }
+}
+
 // Lifecycle
 onMounted(() => {
   startPolling()
@@ -2058,6 +2120,7 @@ onMounted(() => {
   } else {
     fetchGenderPrepStatus()
     fetchOrchestratorMessages()
+    fetchGateModes()
   }
 })
 
@@ -2112,6 +2175,38 @@ onUnmounted(() => {
   border-radius: 0.25rem;
   background: rgba(71, 85, 105, 0.3);
   color: rgb(148, 163, 184);
+}
+
+.gate-badge {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.gate-badge-human {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: rgb(251, 191, 36);
+}
+
+.gate-badge-agent {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.3);
+  color: rgb(34, 211, 238);
+}
+
+.gate-badge-locked {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.gate-badge.cursor-pointer:hover {
+  filter: brightness(1.3);
 }
 
 @keyframes pulse {

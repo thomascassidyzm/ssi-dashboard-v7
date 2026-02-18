@@ -56,6 +56,7 @@ module.exports = function createContext(supabase) {
       STALL_THRESHOLD_MS: 5 * 60 * 1000,              // 5 minutes = stalled
       BATCH_SIZE: 300,                                  // Full course in one window
       MAX_PARALLEL_AGENTS: parseInt(process.env.MAX_PARALLEL_AGENTS) || 29,
+      MAX_CONCURRENT_AGENTS: parseInt(process.env.MAX_CONCURRENT_AGENTS) || 12,
       SEEDS_PER_AGENT: parseInt(process.env.SEEDS_PER_AGENT) || 10,
       HEARTBEAT_TIMEOUT_MS: 3 * 60 * 1000,            // 3 minutes = agent dead
       STALL_WATCHER_INTERVAL_MS: 60000,                // Check every 60 seconds

@@ -14,7 +14,7 @@ const supabase = createClient(
 
 async function generateOrchestratorBrief(courseCode) {
   // Fetch current pipeline status
-  const { getPipelineStatus } = require('../course-builder/lib/pipeline.cjs');
+  const { getPipelineStatus, getGateModes } = require('../course-builder/lib/pipeline.cjs');
   const status = await getPipelineStatus(supabase, courseCode);
 
   // Fetch course info
@@ -26,6 +26,7 @@ async function generateOrchestratorBrief(courseCode) {
 
   if (!course) throw new Error(`Course not found: ${courseCode}`);
 
+  const gateModes = getGateModes(course.quality_rules);
   const goldenCount = course.quality_rules?.golden_seed_count || 10;
   const seedCount = course.seed_count || 668;
   const mvpTarget = Math.min(seedCount, 300);
@@ -74,6 +75,18 @@ ${pendingMsgs?.length ? `### Recent Messages
 ${pendingMsgs.map(m => `- [${m.status}] ${m.checkpoint || 'info'}: ${m.message}${m.response_action ? ` → ${m.response_action}` : ''}`).join('\n')}
 ` : ''}
 
+## Gate Modes
+
+Each stage has a gate mode — either **human** (wait for approval) or **agent** (auto-advance).
+
+| Stage | Mode |
+|-------|------|
+${Object.entries(gateModes).map(([stage, mode]) => `| ${stage} | **${mode}** |`).join('\n')}
+
+- **human** gates: Post a checkpoint message and WAIT for human approval before advancing.
+- **agent** gates: After the stage completes, call \`POST ${API}/api/build/pipeline/${courseCode}/advance\` to proceed automatically.
+- \`calibrate\` is ALWAYS human — non-negotiable.
+
 ## Stage Map
 
 Execute stages in order. Skip stages that are already complete (check progress first).
@@ -87,16 +100,18 @@ Execute stages in order. Skip stages that are already complete (check progress f
 ### Stage 2: calibrate
 **Goal**: First ${goldenCount} seeds decomposed and approved via human review loop.
 **Action**: \`POST ${API}/api/build/golden/${courseCode}?phase=calibration&target=${goldenCount}\`
-This spawns calibration agents that build seeds 1-${goldenCount} with human review.
-**Monitor**: Poll \`GET ${API}/api/golden/status/${courseCode}\` every 60s.
-**CHECKPOINT**: Each seed requires human approval. The calibration agents handle their own review loop — you just monitor until all ${goldenCount} seeds show as approved.
-**Complete when**: \`approved_count >= ${goldenCount}\`
+This spawns a calibration creator agent that builds seeds 1-${goldenCount} with human review.
+**Monitor**: Poll \`GET ${API}/api/golden/review-queue/${courseCode}\` every 30s — check \`summary.approved\` count. Also check \`GET ${API}/api/stats/${courseCode}\` for \`seeds\` (completed count).
+**CHECKPOINT**: Each seed requires human approval via the dashboard. The calibration agent handles its own build→submit→poll→redo loop — you just monitor the overall count.
+**⚠️ DO NOT respawn or restart the calibration agent.** If it dies, post a message to the human and wait for instructions.
+**Complete when**: \`summary.approved >= ${goldenCount}\` AND \`stats.seeds >= ${goldenCount}\`
 
-### Stage 3: golden (seeds ${goldenCount + 1}-50)
-**Goal**: Seeds ${goldenCount + 1}-50 decomposed (golden creator/checker agents).
+### Stage 3: golden (seeds ${goldenCount + 1}-50)${gateModes.golden === 'human' ? ' — ⚠️ HUMAN GATE' : ' — 🤖 AGENT GATE'}
+**Goal**: Seeds ${goldenCount + 1}-50 decomposed (golden creator agents only, no checkers).
 **Action**: \`POST ${API}/api/build/golden/${courseCode}?phase=golden\`
-**Monitor**: Poll \`GET ${API}/api/golden/status/${courseCode}\` every 60s.
-**Complete when**: All golden seeds decomposed.
+**Monitor**: Poll \`GET ${API}/api/stats/${courseCode}\` every 30s for completed seeds.
+**Complete when**: All golden seeds decomposed and finalized (\`stats.seeds >= 50\`).
+${gateModes.golden === 'human' ? '**⚠️ CHECKPOINT**: Post a checkpoint message and WAIT for human approval before advancing.' : '**🤖 AUTO-ADVANCE**: Call `POST ' + API + '/api/build/pipeline/' + courseCode + '/advance` to proceed.'}
 
 ### Stage 4: golden_qa
 **Goal**: QA scan of golden seeds.
@@ -105,12 +120,13 @@ This spawns calibration agents that build seeds 1-${goldenCount} with human revi
 **CHECKPOINT**: Post message to human with QA summary. Wait for approval.
 **Complete when**: Human approves QA results.
 
-### Stage 5: build_mvp
+### Stage 5: build_mvp${gateModes.build_mvp === 'human' ? ' — ⚠️ HUMAN GATE' : ' — 🤖 AGENT GATE'}
 **Goal**: Seeds 51-${mvpTarget} decomposed.
 **Action**: \`POST ${API}/api/build/start/${courseCode}\` with body \`{"targetSeeds": ${mvpTarget}}\`
 This spawns parallel Sonnet agents that build seeds via \`POST /api/seed/complete\` (same as golden).
 **Monitor**: Poll \`GET ${API}/api/stats/${courseCode}\` every 60s — check \`decomposed_seeds >= ${mvpTarget}\`
 **Complete when**: \`decomposed_seeds >= ${mvpTarget}\`
+${gateModes.build_mvp === 'human' ? '**⚠️ CHECKPOINT**: Post a checkpoint message and WAIT for human approval before advancing to qa_review.' : '**🤖 AUTO-ADVANCE**: Call `POST ' + API + '/api/build/pipeline/' + courseCode + '/advance` to proceed.'}
 
 ### Stage 6: qa_review
 **Goal**: Full QA scan, human reviews flags.
@@ -174,19 +190,20 @@ On startup:
 
 ## Pipeline Stage Advancement
 
-After completing a stage, advance the pipeline:
-\`\`\`bash
-curl -X POST ${API}/api/build/pipeline/${courseCode}/advance
-\`\`\`
-This updates \`quality_rules.pipeline_stage\` and triggers the next stage action.
+Stage advancement depends on the gate mode (see Gate Modes table above):
+- **Human gates**: Post a checkpoint message and WAIT. The human advances via the dashboard.
+- **Agent gates**: You call \`POST /api/build/pipeline/${courseCode}/advance\` to proceed automatically.
 
 ## Important Rules
 
 1. **Never build content yourself** — always trigger existing endpoints
 2. **Poll, don't spin** — use 30-60 second intervals between status checks
 3. **Always post messages at checkpoints** — the human needs visibility
-4. **Handle errors gracefully** — if an endpoint fails, post an error message and wait for human guidance
-5. **Be idempotent** — if killed and restarted, resume from current state without duplicating work
+4. **Respect gate modes** — for human gates, post a checkpoint and WAIT. For agent gates, auto-advance after completion.
+5. **Handle errors gracefully** — if an endpoint fails, post an error message and wait for human guidance
+6. **Be idempotent** — if killed and restarted, resume from current state without duplicating work
+7. **NEVER respawn, restart, or stop sub-agents** — if an agent appears stuck or dead, post a message to the human and WAIT. Respawning can cause data corruption (duplicate submissions, overwritten drafts). Only the human decides when to respawn agents.
+8. **NEVER call /api/build/stop** — stopping a build can leave the system in an inconsistent state. Post a message to the human instead.
 `;
 }
 

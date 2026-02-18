@@ -743,7 +743,9 @@ module.exports = function seedCompleteRoutes(ctx) {
       }
 
       // Force draft mode if parallel build in progress
-      if (!isDraft && course_code) {
+      // But NOT when auto-finalizing from golden approval (skip_validation=true means golden finalize)
+      const isAutoFinalize = req.query.skip_validation === 'true';
+      if (!isDraft && !isAutoFinalize && course_code) {
         const { count: draftCount } = await ctx.supabase
           .from('course_seed_drafts')
           .select('*', { count: 'exact', head: true })

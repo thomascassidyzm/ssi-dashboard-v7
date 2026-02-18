@@ -12,7 +12,7 @@ const path = require('path');
 const { getBuildProgress, startBuild, stopBuild, getBuildStatus } = require('../lib/build-manager.cjs');
 const { spawnInTerminal, fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { getGoldenSeedCount } = require('../lib/language-config.cjs');
-const { startPipeline, getPipelineStatus, advancePipeline } = require('../lib/pipeline.cjs');
+const { startPipeline, getPipelineStatus, advancePipeline, DEFAULT_HUMAN_GATES, getGateModes, isHumanGate } = require('../lib/pipeline.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -373,12 +373,10 @@ module.exports = function (ctx) {
         const phrases = phrasesBySeed[s.seed_number] || 0;
         const draftStatus = draftStatusMap[s.seed_number];
         let status;
-        if (s.decomposed_at && phrases > 0) {
+        if (s.decomposed_at) {
+          // Empty seeds (all LEGOs reused, no new phrases) are still complete
           status = 'complete';
           complete++;
-        } else if (s.decomposed_at) {
-          status = 'decomposed';
-          decomposed++;
         } else if (draftStatus === 'collision' || draftStatus === 'rework') {
           status = draftStatus;
           collision++;
@@ -592,17 +590,9 @@ module.exports = function (ctx) {
       }
 
       if (dryRun) {
-        const SEEDS_PER_CHECKER = 10;
-        const dryCheckerRanges = [];
-        const dryMin = remaining[0];
-        const dryMax = remaining[remaining.length - 1];
-        for (let start = Math.floor((dryMin - 1) / SEEDS_PER_CHECKER) * SEEDS_PER_CHECKER + 1; start <= dryMax; start += SEEDS_PER_CHECKER) {
-          dryCheckerRanges.push({ min: start, max: Math.min(start + SEEDS_PER_CHECKER - 1, targetSeeds) });
-        }
         return res.json({ dry_run: true, phase, remaining_seeds: remaining,
           creator_batches: batches.length, seeds_per_creator: SEEDS_PER_CREATOR,
-          checker_count: dryCheckerRanges.length, checker_ranges: dryCheckerRanges,
-          creator_model: 'sonnet', checker_model: 'opus', target_seeds: targetSeeds });
+          creator_model: 'sonnet', target_seeds: targetSeeds });
       }
 
       // Create build_jobs record
@@ -613,7 +603,7 @@ module.exports = function (ctx) {
           current_seed: remaining[0], seeds_completed: completedSet.size, total_seeds: targetSeeds,
           started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
           requested_by: 'dashboard', terminal: effectiveTerminal,
-          agent_count: batches.length + 1, respawn_count: 0,
+          agent_count: batches.length, respawn_count: 0,
           machine_name: ctx.MACHINE_NAME, build_mode: 'golden_parallel'
         }).select('id').single();
         if (!jobError && jobData) jobId = jobData.id;
@@ -640,34 +630,6 @@ module.exports = function (ctx) {
         if (i < batches.length - 1) await new Promise(resolve => setTimeout(resolve, 2000));
       }
 
-      // Spawn parallel Opus Checkers — one per 10-seed range, after a short delay
-      await new Promise(resolve => setTimeout(resolve, 5000));
-
-      const SEEDS_PER_CHECKER = 10;
-      const checkerRanges = [];
-      const minSeed = remaining[0];
-      const maxSeed = remaining[remaining.length - 1];
-      for (let start = Math.floor((minSeed - 1) / SEEDS_PER_CHECKER) * SEEDS_PER_CHECKER + 1; start <= maxSeed; start += SEEDS_PER_CHECKER) {
-        const end = Math.min(start + SEEDS_PER_CHECKER - 1, targetSeeds);
-        checkerRanges.push({ min: start, max: end });
-      }
-
-      for (let i = 0; i < checkerRanges.length; i++) {
-        const range = checkerRanges[i];
-        const checkerResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/golden-checker?target=${targetSeeds}&seeds_min=${range.min}&seeds_max=${range.max}`);
-        if (!checkerResp.ok) throw new Error(`Failed to fetch checker brief for range ${range.min}-${range.max}: ${checkerResp.status}`);
-        const checkerBrief = await checkerResp.text();
-
-        const checkerFile = `/tmp/golden_checker_${courseCode}_${range.min}-${range.max}_${ts}.md`;
-        fs.writeFileSync(checkerFile, checkerBrief);
-
-        const checkerCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${checkerFile})"`;
-        console.log(`[GOLDEN] Spawning Opus Checker ${i + 1}/${checkerRanges.length} for ${courseCode} — seeds ${range.min}-${range.max}`);
-        spawnInTerminal(ctx, checkerCmd, `Checker ${range.min}-${range.max}`, courseCode);
-
-        if (i < checkerRanges.length - 1) await new Promise(resolve => setTimeout(resolve, 2000));
-      }
-
       res.json({
         ok: true,
         course_code: courseCode,
@@ -676,15 +638,60 @@ module.exports = function (ctx) {
         target_seeds: targetSeeds,
         remaining_seeds: remaining.length,
         creator_batches: batches.length,
-        checker_count: checkerRanges.length,
-        checker_ranges: checkerRanges,
         creator_model: 'sonnet',
-        checker_model: 'opus',
-        message: `Golden build started — ${batches.length} Sonnet Creators + ${checkerRanges.length} Opus Checkers spawned for ${remaining.length} remaining seeds`
+        message: `Golden build started — ${batches.length} Sonnet Creators spawned for ${remaining.length} remaining seeds (no checkers)`
       });
     } catch (err) {
       console.error('[GOLDEN] Error starting golden build:', err);
       res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // POST /build/kill-all — Kill all Claude CLI agents and stop all running builds
+  // ===========================================================================
+  router.post('/build/kill-all', async (req, res) => {
+    try {
+      const { execSync } = require('child_process');
+
+      // 1. Kill all Claude CLI agent processes
+      let killedCount = 0;
+      try {
+        const pids = execSync('pgrep -f "claude --model" 2>/dev/null || true', { encoding: 'utf8' }).trim();
+        if (pids) {
+          killedCount = pids.split('\n').filter(l => l.trim()).length;
+          execSync('pkill -f "claude --model" 2>/dev/null || true');
+        }
+      } catch (e) { /* no processes to kill */ }
+
+      // 2. Mark all running build_jobs as stopped
+      let stoppedJobs = 0;
+      try {
+        const { count } = await ctx.supabase
+          .from('build_jobs')
+          .update({ status: 'stopped', completed_at: new Date().toISOString() }, { count: 'exact' })
+          .in('status', ['running', 'stalled']);
+        stoppedJobs = count || 0;
+      } catch (e) {
+        console.error('[KILL-ALL] Failed to update build_jobs:', e.message);
+      }
+
+      // 3. Clear all in-memory state
+      ctx.activeBuilds.clear();
+      ctx.courseActivity.clear();
+      ctx.agentHeartbeats.clear();
+
+      console.log(`[KILL-ALL] Killed ${killedCount} agent processes, stopped ${stoppedJobs} build jobs`);
+
+      res.json({
+        ok: true,
+        killed_processes: killedCount,
+        stopped_jobs: stoppedJobs,
+        message: `Killed ${killedCount} agent processes and stopped ${stoppedJobs} build jobs`
+      });
+    } catch (err) {
+      console.error('[KILL-ALL] Error:', err.message);
+      res.status(500).json({ ok: false, error: err.message });
     }
   });
 
@@ -727,6 +734,70 @@ module.exports = function (ctx) {
       res.json({ ok: true, stage: newStage });
     } catch (err) {
       console.error('[PIPELINE] Advance error:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // GET /build/pipeline/:courseCode/gates — Get current gate modes
+  // ===========================================================================
+  router.get('/build/pipeline/:courseCode/gates', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { data: course, error } = await ctx.supabase
+        .from('courses')
+        .select('quality_rules')
+        .eq('course_code', courseCode)
+        .single();
+      if (error) throw error;
+      res.json({ ok: true, gates: getGateModes(course.quality_rules) });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // POST /build/pipeline/:courseCode/gates — Update gate modes
+  // ===========================================================================
+  router.post('/build/pipeline/:courseCode/gates', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const updates = req.body;
+
+      // Validate
+      for (const [stage, mode] of Object.entries(updates)) {
+        if (!DEFAULT_HUMAN_GATES.includes(stage)) {
+          return res.status(400).json({ ok: false, error: `Unknown gate stage: ${stage}. Valid stages: ${DEFAULT_HUMAN_GATES.join(', ')}` });
+        }
+        if (!['human', 'agent'].includes(mode)) {
+          return res.status(400).json({ ok: false, error: `Invalid mode "${mode}" for ${stage}. Must be "human" or "agent"` });
+        }
+        if (stage === 'calibrate' && mode === 'agent') {
+          return res.status(400).json({ ok: false, error: 'calibrate is always a human gate — cannot be set to agent' });
+        }
+      }
+
+      // Merge into quality_rules.gate_modes
+      const { data: course, error: fetchErr } = await ctx.supabase
+        .from('courses')
+        .select('quality_rules')
+        .eq('course_code', courseCode)
+        .single();
+      if (fetchErr) throw fetchErr;
+
+      const rules = course.quality_rules || {};
+      const gateModes = { ...(rules.gate_modes || {}), ...updates };
+      // Never allow calibrate to be agent
+      delete gateModes.calibrate;
+
+      const { error: updateErr } = await ctx.supabase
+        .from('courses')
+        .update({ quality_rules: { ...rules, gate_modes: gateModes } })
+        .eq('course_code', courseCode);
+      if (updateErr) throw updateErr;
+
+      res.json({ ok: true, gates: getGateModes({ ...rules, gate_modes: gateModes }) });
+    } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }
   });
