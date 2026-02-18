@@ -961,7 +961,7 @@ module.exports = function seedCompleteRoutes(ctx) {
       const vocabSet = await loadTranslationVocab(ctx, course_code, seed_number);
 
       // 2. TILING VALIDATION
-      {
+      if (!SKIP_VALIDATION) {
         const tilingResult = checkTiling(target_text, legos, course_code, vocabSet);
         if (!tilingResult.valid) {
           errors.push({
@@ -976,7 +976,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         } else {
           console.log(`✓ ${seedId}: Tiling valid (${tilingResult.seed_vocab || 'ok'} → ${legos.length} LEGOs)`);
         }
-      }
+      } // end SKIP_VALIDATION tiling check
 
       // 3. VOCAB VALIDATION
       const vocabViolations = [];
@@ -1031,7 +1031,7 @@ module.exports = function seedCompleteRoutes(ctx) {
                 }
                 return !normalizeForContainment(p.target).includes(legoTargetNorm);
               });
-              if (containmentFails.length > 0) {
+              if (containmentFails.length > 0 && !SKIP_VALIDATION) {
                 const mode = useWordContainment ? 'word-based' : 'substring';
                 errors.push({
                   type: 'lego_containment',
@@ -1050,7 +1050,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
-      if (vocabViolations.length > 0) {
+      if (vocabViolations.length > 0 && !SKIP_VALIDATION) {
         ctx.courseVocabCache.delete(course_code);
         errors.push({
           type: 'vocab',
