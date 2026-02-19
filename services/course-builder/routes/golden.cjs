@@ -181,6 +181,16 @@ module.exports = function(ctx) {
         else seedMap[f.seed_number].resolved_flags++;
       }
 
+      // Fetch human-approved statuses from course_seeds
+      const { data: humanApprovedRows } = await ctx.supabase
+        .from('course_seeds')
+        .select('seed_number')
+        .eq('course_code', courseCode)
+        .gte('seed_number', 1)
+        .lte('seed_number', effectiveTarget)
+        .eq('status', 'approved');
+      const humanApprovedSet = new Set((humanApprovedRows || []).map(s => s.seed_number));
+
       const seeds = [];
       let approvedCount = 0;
       let flaggedCount = 0;
@@ -191,14 +201,18 @@ module.exports = function(ctx) {
         const round = s.resolved_flags > 0 ? Math.ceil(s.resolved_flags / 3) + 1 : 1;
 
         let status;
-        const draftStatus = draftStatusMap[i];
-        if (draftStatus === 'pending_review' && s.total === 0) status = 'pending_review';
-        else if (draftStatus === 'redo' && s.total === 0) status = 'redo';
-        else if (s.total === 0) status = 'empty';
-        else if (s.open_flags > 0) status = round >= 3 ? 'escalated' : 'flagged';
-        else if (s.checked === s.total) status = 'approved';
-        else if (s.checked > 0) status = 'checking';
-        else status = 'submitted';
+        if (humanApprovedSet.has(i)) {
+          status = 'approved';
+        } else {
+          const draftStatus = draftStatusMap[i];
+          if (draftStatus === 'pending_review' && s.total === 0) status = 'pending_review';
+          else if (draftStatus === 'redo' && s.total === 0) status = 'redo';
+          else if (s.total === 0) status = 'empty';
+          else if (s.open_flags > 0) status = round >= 3 ? 'escalated' : 'flagged';
+          else if (s.checked === s.total) status = 'approved';
+          else if (s.checked > 0) status = 'checking';
+          else status = 'submitted';
+        }
 
         if (status === 'approved') approvedCount++;
         if (status === 'flagged') flaggedCount++;
@@ -574,6 +588,82 @@ module.exports = function(ctx) {
       });
     } catch (err) {
       console.error('[GOLDEN] Error getting review queue:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ---------------------------------------------------------------------------
+  // POST /golden/human-approve/:courseCode/:seedNumber
+  // Human (dashboard) explicitly approves a calibration seed.
+  // Sets course_seeds.status = 'approved' — overrides QA-based status.
+  // ---------------------------------------------------------------------------
+  router.post('/golden/human-approve/:courseCode/:seedNumber', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const seedNumber = parseInt(req.params.seedNumber);
+      if (!seedNumber || seedNumber < 1) {
+        return res.status(400).json({ error: 'Invalid seed number' });
+      }
+
+      const { error } = await ctx.supabase
+        .from('course_seeds')
+        .update({ status: 'approved' })
+        .eq('course_code', courseCode)
+        .eq('seed_number', seedNumber);
+
+      if (error) throw error;
+
+      console.log(`[GOLDEN] Seed ${seedNumber} human-approved (${courseCode})`);
+      ctx.emitPipelineEvent(courseCode, 'golden:update', { seed_number: seedNumber, status: 'approved' });
+      res.json({ ok: true, seed_number: seedNumber });
+    } catch (err) {
+      console.error('[GOLDEN] Error human-approving seed:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ---------------------------------------------------------------------------
+  // POST /golden/human-approve-all/:courseCode
+  // Human (dashboard) bulk-approves all decomposed calibration seeds.
+  // ---------------------------------------------------------------------------
+  router.post('/golden/human-approve-all/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+
+      const { data: courseInfo } = await ctx.supabase
+        .from('courses')
+        .select('quality_rules')
+        .eq('course_code', courseCode)
+        .single();
+      const goldenCount = getGoldenSeedCount(courseInfo);
+
+      // Find all decomposed seeds in the calibration range
+      const { data: decomposedSeeds, error: fetchErr } = await ctx.supabase
+        .from('course_seeds')
+        .select('seed_number')
+        .eq('course_code', courseCode)
+        .gte('seed_number', 1)
+        .lte('seed_number', goldenCount)
+        .not('decomposed_at', 'is', null);
+      if (fetchErr) throw fetchErr;
+
+      if (!decomposedSeeds || decomposedSeeds.length === 0) {
+        return res.json({ ok: true, approved: 0 });
+      }
+
+      const seedNumbers = decomposedSeeds.map(s => s.seed_number);
+      const { error: updateErr } = await ctx.supabase
+        .from('course_seeds')
+        .update({ status: 'approved' })
+        .eq('course_code', courseCode)
+        .in('seed_number', seedNumbers);
+      if (updateErr) throw updateErr;
+
+      console.log(`[GOLDEN] ${seedNumbers.length} calibration seeds human-approved (${courseCode})`);
+      ctx.emitPipelineEvent(courseCode, 'golden:update', { seed_number: null, status: 'approved', count: seedNumbers.length });
+      res.json({ ok: true, approved: seedNumbers.length });
+    } catch (err) {
+      console.error('[GOLDEN] Error bulk-approving calibration seeds:', err);
       res.status(500).json({ error: err.message });
     }
   });

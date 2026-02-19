@@ -372,6 +372,14 @@
               >
                 Review ({{ calibrationPendingReview }})
               </router-link>
+              <button
+                v-if="!stageComplete('calibrate') && !stageLocked('calibrate') && calibrationSeeds.some(s => s.status !== 'empty') && calibrationDone < goldenSeedCount"
+                @click="approveAllCalibSeeds"
+                :disabled="calibApprovingAll"
+                class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ calibApprovingAll ? 'Approving...' : 'Approve All' }}
+              </button>
               <!-- Reset -->
               <template v-if="stageResetConfirm === 'calibrate' && showAdvanced">
                 <span class="text-xs text-red-400">Wipe seeds 1-10?</span>
@@ -395,11 +403,54 @@
             <div
               v-for="cell in calibrationSeeds"
               :key="cell.seed_number"
-              class="w-6 h-6 rounded-sm flex items-center justify-center text-xs font-mono cursor-default"
-              :class="goldenCellClass(cell)"
-              :title="`S${cell.seed_number}: ${cell.status}`"
+              class="w-6 h-6 rounded-sm flex items-center justify-center text-xs font-mono cursor-pointer transition-all"
+              :class="[goldenCellClass(cell), selectedCalibSeed === cell.seed_number ? 'ring-2 ring-white/70 ring-offset-1 ring-offset-slate-900' : '']"
+              :title="`S${cell.seed_number}: ${cell.status} — click to review`"
+              @click="selectCalibSeed(cell.seed_number)"
             >
               {{ cell.seed_number }}
+            </div>
+          </div>
+
+          <!-- Inline calibration phrase reviewer -->
+          <div v-if="selectedCalibSeed !== null" class="mt-3 border-t border-slate-700/50 pt-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-slate-400">Seed {{ selectedCalibSeed }} phrases</span>
+              <button @click="selectedCalibSeed = null; calibSeedPhrases = []" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
+            </div>
+            <div v-if="calibSeedLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading phrases...</div>
+            <div v-else-if="calibSeedPhrases.length === 0" class="text-xs text-slate-600 py-2">No phrases found for this seed.</div>
+            <div v-else class="space-y-2 max-h-64 overflow-y-auto pr-1">
+              <div v-for="lego in calibSeedPhrases" :key="lego.lego_index">
+                <div class="text-xs font-mono text-slate-500 mb-0.5">L{{ lego.lego_index }}</div>
+                <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-xs py-0.5">
+                  <span class="font-mono w-8 shrink-0" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-slate-500' : 'text-amber-400/70'">
+                    {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
+                  </span>
+                  <span class="text-slate-300">{{ phrase.known_text }}</span>
+                  <span class="text-slate-600 shrink-0">→</span>
+                  <span class="text-slate-400">{{ phrase.target_text }}</span>
+                </div>
+              </div>
+            </div>
+            <!-- Footer: notes + redo + approve -->
+            <div class="mt-2 flex gap-2 items-start">
+              <textarea
+                v-model="calibSeedNotes"
+                placeholder="Notes for redo (optional)..."
+                rows="1"
+                class="flex-1 bg-slate-800/80 border border-slate-700 rounded text-xs text-slate-300 placeholder-slate-600 px-2 py-1 resize-none"
+              />
+              <button
+                @click="redoCalibSeed"
+                :disabled="calibRedoing"
+                class="px-2 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs rounded transition-all shrink-0"
+              >{{ calibRedoing ? 'Sending...' : 'Redo' }}</button>
+              <button
+                @click="approveCalibSeed"
+                :disabled="calibApproving"
+                class="px-2 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs rounded transition-all shrink-0"
+              >{{ calibApproving ? 'Approving...' : 'Approve' }}</button>
             </div>
           </div>
         </div>
@@ -996,6 +1047,15 @@ const translateRunning = ref(false)
 const goldenSeeds = ref([])
 const goldenTargetSeeds = ref(50)
 const goldenStarting = ref(false)
+
+// Calibration review state
+const selectedCalibSeed = ref(null)
+const calibSeedPhrases = ref([])
+const calibSeedLoading = ref(false)
+const calibSeedNotes = ref('')
+const calibApproving = ref(false)
+const calibApprovingAll = ref(false)
+const calibRedoing = ref(false)
 const goldenFinalizing = ref(false)
 const goldenStatusMessage = ref(null)
 const goldenFinalized = ref(false)
@@ -1068,11 +1128,9 @@ const calibrationSeeds = computed(() => {
   return goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value)
 })
 
-// Calibration done = either golden workflow approved OR seeds actually built (finalized in grid)
+// Calibration done = requires explicit human approval (strict gate)
 const calibrationDone = computed(() => {
-  const goldenApproved = goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value && s.status === 'approved').length
-  const gridFinalized = seedGridFinalizedInRange(1, goldenSeedCount.value)
-  return Math.max(goldenApproved, gridFinalized)
+  return goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value && s.status === 'approved').length
 })
 
 const calibrationPendingReview = computed(() => {
@@ -1822,6 +1880,117 @@ async function fetchGoldenStatus() {
     }
   } catch (err) {
     // Golden endpoints may not exist yet
+  }
+}
+
+// Calibration review functions
+async function selectCalibSeed(seedNum) {
+  const courseCode = effectiveCourseCode.value
+  if (selectedCalibSeed.value === seedNum) {
+    selectedCalibSeed.value = null
+    calibSeedPhrases.value = []
+    return
+  }
+  selectedCalibSeed.value = seedNum
+  calibSeedPhrases.value = []
+  calibSeedNotes.value = ''
+  calibSeedLoading.value = true
+  try {
+    const apiBase = getApiUrl()
+    const resp = await fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=200`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      const data = await resp.json()
+      const legoMap = new Map()
+      for (const p of (data.phrases || [])) {
+        if (!legoMap.has(p.lego_index)) {
+          legoMap.set(p.lego_index, { lego_index: p.lego_index, phrases: [] })
+        }
+        legoMap.get(p.lego_index).phrases.push(p)
+      }
+      calibSeedPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
+    }
+  } catch (err) {
+    console.error('Failed to fetch calib seed phrases:', err)
+  } finally {
+    calibSeedLoading.value = false
+  }
+}
+
+async function approveCalibSeed() {
+  const courseCode = effectiveCourseCode.value
+  const seedNum = selectedCalibSeed.value
+  if (!courseCode || !seedNum) return
+  calibApproving.value = true
+  try {
+    const apiBase = getApiUrl()
+    const resp = await fetch(`${apiBase}/api/golden/human-approve/${courseCode}/${seedNum}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      selectedCalibSeed.value = null
+      calibSeedPhrases.value = []
+      await fetchGoldenStatus()
+    }
+  } catch (err) {
+    console.error('Failed to approve calib seed:', err)
+  } finally {
+    calibApproving.value = false
+  }
+}
+
+async function approveAllCalibSeeds() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  calibApprovingAll.value = true
+  try {
+    const apiBase = getApiUrl()
+    const resp = await fetch(`${apiBase}/api/golden/human-approve-all/${courseCode}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      selectedCalibSeed.value = null
+      calibSeedPhrases.value = []
+      await fetchGoldenStatus()
+    }
+  } catch (err) {
+    console.error('Failed to bulk-approve calib seeds:', err)
+  } finally {
+    calibApprovingAll.value = false
+  }
+}
+
+async function redoCalibSeed() {
+  const courseCode = effectiveCourseCode.value
+  const seedNum = selectedCalibSeed.value
+  if (!courseCode || !seedNum) return
+  calibRedoing.value = true
+  try {
+    const apiBase = getApiUrl()
+    // Find the seed sentence from goldenSeeds data or build a prompt
+    const seedCell = calibrationSeeds.value.find(s => s.seed_number === seedNum)
+    const phraseSummary = calibSeedPhrases.value
+      .flatMap(l => l.phrases.filter(p => p.phrase_role === 'use').slice(0, 3))
+      .map(p => `  - ${p.known_text} → ${p.target_text}`)
+      .join('\n')
+    const prompt = [
+      `Please redo seed ${seedNum} of the calibration stage.`,
+      calibSeedNotes.value.trim() ? `\nNotes from reviewer: ${calibSeedNotes.value.trim()}` : '',
+      phraseSummary ? `\nExisting USE phrases (for reference):\n${phraseSummary}` : ''
+    ].filter(Boolean).join('')
+    await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ prompt, model: 'opus' })
+    })
+    calibSeedNotes.value = ''
+    setTimeout(() => { calibRedoing.value = false }, 2000)
+  } catch (err) {
+    console.error('Failed to spawn redo agent:', err)
+    calibRedoing.value = false
   }
 }
 
