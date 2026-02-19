@@ -893,15 +893,34 @@
           <!-- Inline seed phrase viewer -->
           <div v-if="selectedSeed !== null" class="mt-4 border-t border-slate-700/50 pt-4">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-mono text-slate-400">Seed {{ selectedSeed }} phrases</span>
-              <button @click="selectedSeed = null; seedViewPhrases = []" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
+              <span class="text-xs font-mono text-slate-400">Seed {{ selectedSeed }}</span>
+              <button @click="selectedSeed = null; seedViewPhrases = []; seedViewSeedText = null" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
             </div>
-            <div v-if="seedViewLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading phrases...</div>
+            <!-- Seed sentence -->
+            <div v-if="seedViewSeedText" class="mb-3 p-2 bg-slate-800/60 border border-slate-700/40 rounded">
+              <div class="text-[10px] text-slate-500 mb-1 font-mono tracking-wider uppercase">Seed</div>
+              <div class="flex items-start gap-2 flex-wrap">
+                <span class="text-sm font-medium text-slate-200">{{ seedViewSeedText.known_text || '…' }}</span>
+                <span class="text-slate-500 text-xs mt-0.5">→</span>
+                <span class="text-sm text-emerald-400">{{ seedViewSeedText.target_text || '…' }}</span>
+              </div>
+            </div>
+            <div v-if="seedViewLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading...</div>
             <div v-else-if="seedViewPhrases.length === 0" class="text-xs text-slate-600 py-2">No phrases found for this seed.</div>
-            <div v-else class="space-y-2 max-h-72 overflow-y-auto pr-1">
-              <div v-for="lego in seedViewPhrases" :key="lego.lego_index">
-                <div class="text-xs font-mono text-slate-500 mb-0.5">L{{ lego.lego_index }}</div>
-                <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-xs py-0.5">
+            <div v-else class="space-y-3 max-h-72 overflow-y-auto pr-1">
+              <div v-for="lego in seedViewPhrases" :key="lego.lego_index" class="border border-slate-700/40 rounded p-2">
+                <!-- LEGO header -->
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="text-[10px] font-mono text-slate-600">L{{ lego.lego_index }}</span>
+                  <template v-if="lego.meta">
+                    <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-slate-700/40 text-slate-400'">{{ lego.meta.type || lego.meta.lego_type }}</span>
+                    <span class="text-xs font-medium text-slate-200">{{ lego.meta.known_text }}</span>
+                    <span class="text-slate-600 text-xs">→</span>
+                    <span class="text-xs font-medium text-emerald-400">{{ lego.meta.target_text }}</span>
+                  </template>
+                </div>
+                <!-- Phrases -->
+                <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-xs py-0.5 pl-2">
                   <span class="font-mono w-8 shrink-0" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-slate-500' : 'text-amber-400/70'">
                     {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
                   </span>
@@ -1145,6 +1164,7 @@ const seedGridExpanded = ref(true)
 // Seed grid phrase viewer state
 const selectedSeed = ref(null)
 const seedViewPhrases = ref([])
+const seedViewSeedText = ref(null)
 const seedViewLoading = ref(false)
 const rebuildFrom = ref(11)
 const rebuildTo = ref(300)
@@ -1931,24 +1951,44 @@ async function selectSeed(seedNum) {
   if (selectedSeed.value === seedNum) {
     selectedSeed.value = null
     seedViewPhrases.value = []
+    seedViewSeedText.value = null
     return
   }
   selectedSeed.value = seedNum
   seedViewPhrases.value = []
+  seedViewSeedText.value = null
   seedViewLoading.value = true
   try {
     const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=200`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (resp.ok) {
-      const data = await resp.json()
+    const h = { 'ngrok-skip-browser-warning': 'true' }
+    const [legosResp, phrasesResp, seedsResp] = await Promise.all([
+      fetch(`${apiBase}/api/legos/${courseCode}?seed=${seedNum}`, { headers: h }),
+      fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=300`, { headers: h }),
+      fetch(`${apiBase}/api/seeds/${courseCode}?offset=${seedNum - 1}&limit=1`, { headers: h })
+    ])
+    // Seed sentence
+    if (seedsResp.ok) {
+      const sd = await seedsResp.json()
+      const seed = (sd.seeds || []).find(s => s.seed_number === seedNum)
+      if (seed) seedViewSeedText.value = { known_text: seed.known_text, target_text: seed.target_text }
+    }
+    // LEGO metadata
+    const legoMeta = {}
+    if (legosResp.ok) {
+      const d = await legosResp.json()
+      for (const l of (d.legos || [])) legoMeta[l.lego_index] = l
+    }
+    // Phrases grouped by lego
+    if (phrasesResp.ok) {
+      const data = await phrasesResp.json()
       const legoMap = new Map()
       for (const p of (data.phrases || [])) {
-        if (!legoMap.has(p.lego_index)) {
-          legoMap.set(p.lego_index, { lego_index: p.lego_index, phrases: [] })
-        }
-        legoMap.get(p.lego_index).phrases.push(p)
+        const key = p.lego_index ?? 0
+        if (!legoMap.has(key)) legoMap.set(key, { lego_index: key, meta: legoMeta[key] || null, phrases: [] })
+        legoMap.get(key).phrases.push(p)
+      }
+      for (const [idx, meta] of Object.entries(legoMeta)) {
+        if (!legoMap.has(parseInt(idx))) legoMap.set(parseInt(idx), { lego_index: parseInt(idx), meta, phrases: [] })
       }
       seedViewPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
     }
