@@ -276,28 +276,39 @@
                 </div>
                 <div class="text-slate-300">{{ msg.message || msg.response }}</div>
 
-                <!-- Action buttons for pending agent messages -->
+                <!-- Action buttons for pending agent messages — always shown -->
                 <div
-                  v-if="msg.direction === 'agent_to_human' && msg.status === 'pending' && msg.metadata?.options"
-                  class="flex items-center gap-2 mt-2"
+                  v-if="msg.direction === 'agent_to_human' && msg.status === 'pending'"
+                  class="flex items-center gap-2 mt-2 flex-wrap"
                 >
                   <button
-                    v-for="opt in msg.metadata.options"
-                    :key="opt"
-                    @click="respondToOrchestrator(msg.id, opt)"
+                    @click="respondToOrchestrator(msg.id, 'approve')"
                     :disabled="orchestratorResponding[msg.id]"
-                    class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
-                    :class="opt === 'approve'
-                      ? 'bg-emerald-600/20 border-emerald-500/40 text-emerald-400 hover:bg-emerald-600/30'
-                      : 'bg-amber-600/20 border-amber-500/40 text-amber-400 hover:bg-amber-600/30'"
+                    class="px-2.5 py-1 rounded border text-xs font-medium transition-all bg-emerald-600/20 border-emerald-500/40 text-emerald-400 hover:bg-emerald-600/30 disabled:opacity-40"
                   >
-                    {{ orchestratorResponding[msg.id] ? '...' : opt.charAt(0).toUpperCase() + opt.slice(1) }}
+                    {{ orchestratorResponding[msg.id] === 'approve' ? '...' : 'Approve' }}
+                  </button>
+                  <button
+                    @click="respondToOrchestrator(msg.id, 'redo')"
+                    :disabled="orchestratorResponding[msg.id]"
+                    class="px-2.5 py-1 rounded border text-xs font-medium transition-all bg-amber-600/20 border-amber-500/40 text-amber-400 hover:bg-amber-600/30 disabled:opacity-40"
+                  >
+                    {{ orchestratorResponding[msg.id] === 'redo' ? '...' : 'Redo' }}
                   </button>
                   <input
                     v-model="orchestratorCommentText[msg.id]"
-                    placeholder="Optional comment..."
-                    class="flex-1 px-2 py-1 bg-slate-900/50 border border-slate-600/40 rounded text-xs text-slate-300 placeholder-slate-600"
+                    placeholder="Comment (optional — send with Approve or Redo)"
+                    class="flex-1 min-w-0 px-2 py-1 bg-slate-900/50 border border-slate-600/40 rounded text-xs text-slate-300 placeholder-slate-600"
+                    @keydown.enter="respondToOrchestrator(msg.id, 'comment')"
                   />
+                  <button
+                    v-if="orchestratorCommentText[msg.id]"
+                    @click="respondToOrchestrator(msg.id, 'comment')"
+                    :disabled="orchestratorResponding[msg.id]"
+                    class="px-2.5 py-1 rounded border text-xs font-medium transition-all bg-slate-600/20 border-slate-500/40 text-slate-400 hover:bg-slate-600/30 disabled:opacity-40"
+                  >
+                    Send
+                  </button>
                 </div>
 
                 <!-- Show response if responded -->
@@ -2385,7 +2396,7 @@ async function fetchOrchestratorMessages() {
 async function respondToOrchestrator(messageId, action) {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
-  orchestratorResponding.value[messageId] = true
+  orchestratorResponding.value[messageId] = action
   try {
     const apiBase = getApiUrl()
     await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${messageId}`, {
@@ -2396,12 +2407,13 @@ async function respondToOrchestrator(messageId, action) {
         response: orchestratorCommentText.value[messageId] || null
       })
     })
+    orchestratorCommentText.value[messageId] = ''
     // Refresh messages
     await fetchOrchestratorMessages()
   } catch (err) {
     console.error('Failed to respond to orchestrator:', err)
   } finally {
-    orchestratorResponding.value[messageId] = false
+    orchestratorResponding.value[messageId] = null
   }
 }
 
