@@ -413,10 +413,20 @@
             </div>
             <div v-if="calibSeedLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading phrases...</div>
             <div v-else-if="calibSeedPhrases.length === 0" class="text-xs text-slate-600 py-2">No phrases found for this seed.</div>
-            <div v-else class="space-y-2 max-h-64 overflow-y-auto pr-1">
-              <div v-for="lego in calibSeedPhrases" :key="lego.lego_index">
-                <div class="text-xs font-mono text-slate-500 mb-0.5">L{{ lego.lego_index }}</div>
-                <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-xs py-0.5">
+            <div v-else class="space-y-3 max-h-72 overflow-y-auto pr-1">
+              <div v-for="lego in calibSeedPhrases" :key="lego.lego_index" class="border border-slate-700/40 rounded p-2">
+                <!-- LEGO header -->
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="text-[10px] font-mono text-slate-600">L{{ lego.lego_index }}</span>
+                  <template v-if="lego.meta">
+                    <span class="text-[10px] px-1 rounded font-mono" :class="lego.meta.lego_type === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-slate-700/40 text-slate-400'">{{ lego.meta.lego_type }}</span>
+                    <span class="text-xs font-medium text-slate-200">{{ lego.meta.known_text }}</span>
+                    <span class="text-slate-600 text-xs">→</span>
+                    <span class="text-xs font-medium text-emerald-400">{{ lego.meta.target_text }}</span>
+                  </template>
+                </div>
+                <!-- Phrases -->
+                <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-xs py-0.5 pl-2">
                   <span class="font-mono w-8 shrink-0" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-slate-500' : 'text-amber-400/70'">
                     {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
                   </span>
@@ -1954,17 +1964,31 @@ async function selectCalibSeed(seedNum) {
   calibSeedLoading.value = true
   try {
     const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=200`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (resp.ok) {
-      const data = await resp.json()
+    const [phrasesResp, vocabResp] = await Promise.all([
+      fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=200`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      }),
+      fetch(`${apiBase}/api/vocab/${courseCode}?seed=${seedNum + 1}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    ])
+    // Build lego metadata lookup from vocab (all legos introduced up to this seed)
+    const legoMeta = {}
+    if (vocabResp.ok) {
+      const vocabData = await vocabResp.json()
+      for (const l of (vocabData.legos || [])) {
+        if (l.seed_number === seedNum) legoMeta[l.lego_index] = l
+      }
+    }
+    if (phrasesResp.ok) {
+      const data = await phrasesResp.json()
       const legoMap = new Map()
       for (const p of (data.phrases || [])) {
-        if (!legoMap.has(p.lego_index)) {
-          legoMap.set(p.lego_index, { lego_index: p.lego_index, phrases: [] })
+        const key = p.lego_index ?? 0
+        if (!legoMap.has(key)) {
+          legoMap.set(key, { lego_index: key, meta: legoMeta[key] || null, phrases: [] })
         }
-        legoMap.get(p.lego_index).phrases.push(p)
+        legoMap.get(key).phrases.push(p)
       }
       calibSeedPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
     }
