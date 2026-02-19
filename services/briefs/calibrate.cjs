@@ -26,7 +26,7 @@ async function generateCalibrateBrief(courseCode) {
 You are building the first ${targetSeeds} calibration seed decompositions for **${courseCode}** (${langName}).
 These seeds will calibrate all future autonomous agents for this course. Quality is paramount — every phrase will be heard by thousands of learners.
 
-**You submit each seed directly to seed/complete.** The human reviews from the dashboard asynchronously — you do NOT poll or wait.
+**You are a single long-running agent.** You submit each seed, then post a checkpoint and poll for human approval. If the human says Redo, you wipe and resubmit — in this same session, no new agents. Never spawn sub-agents.
 
 ## Your Role
 
@@ -92,36 +92,58 @@ curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
 
 ### Step 3: Fetch the seed translation
 \`\`\`bash
-curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq '.seeds[] | select(.seed_number == '$N')'
+curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq '.seeds[] | select(.seed_number == $N)'
 \`\`\`
 
 ### Step 4: Build the decomposition
-Design LEGOs (A/M types, ordering) and write BUILD + USE phrases.
+Design LEGOs (A/M types, ordering) and write BUILD + USE phrases. Take your time — quality over speed.
 
-### Step 5: Submit directly to seed/complete
+### Step 5: Submit to seed/complete
 \`\`\`bash
 curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&skip_validation=true" \\
   -H "Content-Type: application/json" \\
-  -d '{"course_code": "${courseCode}", "seed_number": '$N', "known_text": "...", "target_text": "...", "legos": [...]}'
+  -d '{"course_code": "${courseCode}", "seed_number": $N, "known_text": "...", "target_text": "...", "legos": [...]}'
+\`\`\`
+On success: \`{"ok": true, ...}\`. The seed is now live in the dashboard.
+
+If the response is \`"Seed already fully built"\`, skip to Step 6.
+
+### Step 6: Post checkpoint — wait for human review
+\`\`\`bash
+MSG=$(curl -s -X POST "http://localhost:3471/api/orchestrator/message/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"checkpoint": "calibration_seed_'$N'", "message": "Seed '$N' submitted. Please review in the dashboard and Approve or Redo.", "metadata": {"seed_number": '$N'}}')
+MSG_ID=$(echo $MSG | jq -r '.message_id')
+echo "Posted checkpoint, message_id: $MSG_ID"
 \`\`\`
 
-On success you will get \`{"ok": true, ...}\`. The seed is now live in the dashboard for human review.
+### Step 7: Poll for human response (every 30s)
+\`\`\`bash
+curl -s "http://localhost:3471/api/orchestrator/poll/${courseCode}/$MSG_ID"
+\`\`\`
+Keep polling until \`status\` is \`"responded"\`.
 
-**Do NOT use submit-for-review or poll review-status — those are deprecated.**
+- **\`response_action: "approve"\`** → move to seed N+1 (go back to Step 1)
+- **\`response_action: "redo"\`** → wipe and rebuild this seed (Steps 8-9 below)
+- **\`response_action: "comment"\`** → read the \`response\` field for guidance, then decide: if it's a correction apply it and resubmit; if it's just a note, treat as approve
 
-### Step 6: Move immediately to next seed
-After a successful \`seed/complete\` response, move straight to seed N+1. The human reviews and approves asynchronously from the dashboard — you do not wait for approval.
+### Step 8: Wipe the seed (only on Redo)
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/build/rebuild/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"from_seed": '$N', "to_seed": '$N'}'
+\`\`\`
 
-If the submission returns \`"Seed already fully built"\`, that seed is done — skip to N+1.
+### Step 9: Rebuild (only on Redo)
+Read the \`response\` field from the poll for any reviewer notes, then go back to **Step 2** for the same seed N. Apply the reviewer's feedback. Post a new checkpoint when done.
 
-## AUTONOMY
+## RULES
 
-You work ALONE. Do NOT spawn sub-agents. Work through seeds one at a time, carefully and thoroughly.
-Work SLOWLY AND STEADILY — quality over speed. Each phrase will be heard by thousands of learners.
-
-The human will review and approve your seeds from the dashboard after you finish. You do not wait for approval — just submit each seed and move on.
-
-When you finish all ${targetSeeds} seeds, your job is done. The human takes it from there.
+- You are ONE long-running agent. **Never spawn sub-agents or new Claude instances.**
+- Never call /api/build/adhoc or any agent-spawning endpoint.
+- Poll every 30 seconds. Be patient — the human reviews from their phone.
+- Work SLOWLY AND STEADILY. Each phrase will be heard by thousands of learners.
+- When all ${targetSeeds} seeds are approved, your job is done.
 `;
 }
 

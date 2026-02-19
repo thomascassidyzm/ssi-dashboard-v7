@@ -1982,15 +1982,26 @@ async function approveCalibSeed() {
   calibApproving.value = true
   try {
     const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/golden/human-approve/${courseCode}/${seedNum}`, {
+    // Respond to the agent's pending checkpoint so it advances to next seed
+    const pending = orchestratorMessages.value.find(m =>
+      m.direction === 'agent_to_human' && m.status === 'pending' &&
+      (m.metadata?.seed_number === seedNum || m.checkpoint === `calibration_seed_${seedNum}`)
+    )
+    if (pending) {
+      await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ action: 'approve' })
+      })
+    }
+    // Also record the approval in quality_rules so the pipeline gate knows
+    await fetch(`${apiBase}/api/golden/human-approve/${courseCode}/${seedNum}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
-    if (resp.ok) {
-      selectedCalibSeed.value = null
-      calibSeedPhrases.value = []
-      await fetchGoldenStatus()
-    }
+    selectedCalibSeed.value = null
+    calibSeedPhrases.value = []
+    await Promise.all([fetchGoldenStatus(), fetchOrchestratorMessages()])
   } catch (err) {
     console.error('Failed to approve calib seed:', err)
   } finally {
@@ -2027,17 +2038,33 @@ async function redoCalibSeed() {
   calibRedoing.value = true
   try {
     const apiBase = getApiUrl()
-    await fetch(`${apiBase}/api/build/redo-seed/${courseCode}/${seedNum}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ notes: calibSeedNotes.value.trim() || '' })
-    })
+    const notes = calibSeedNotes.value.trim()
+    // Find the pending checkpoint for this seed and respond to it
+    // The running calibration agent is polling for this response
+    const pending = orchestratorMessages.value.find(m =>
+      m.direction === 'agent_to_human' && m.status === 'pending' &&
+      (m.metadata?.seed_number === seedNum || m.checkpoint === `calibration_seed_${seedNum}`)
+    )
+    if (pending) {
+      await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ action: 'redo', response: notes || null })
+      })
+    } else {
+      // No pending checkpoint for this seed — post a free-form message
+      await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ message: `Please redo seed ${seedNum}.${notes ? ' Notes: ' + notes : ''}` })
+      })
+    }
     calibSeedNotes.value = ''
-    // Collapse the viewer so it's clear the rebuild is in flight
     selectedCalibSeed.value = null
-    setTimeout(() => { calibRedoing.value = false }, 2000)
+    await fetchOrchestratorMessages()
+    setTimeout(() => { calibRedoing.value = false }, 1500)
   } catch (err) {
-    console.error('Failed to redo seed:', err)
+    console.error('Failed to send redo:', err)
     calibRedoing.value = false
   }
 }
