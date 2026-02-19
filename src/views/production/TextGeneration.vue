@@ -2027,26 +2027,17 @@ async function redoCalibSeed() {
   calibRedoing.value = true
   try {
     const apiBase = getApiUrl()
-    // Find the seed sentence from goldenSeeds data or build a prompt
-    const seedCell = calibrationSeeds.value.find(s => s.seed_number === seedNum)
-    const phraseSummary = calibSeedPhrases.value
-      .flatMap(l => l.phrases.filter(p => p.phrase_role === 'use').slice(0, 3))
-      .map(p => `  - ${p.known_text} → ${p.target_text}`)
-      .join('\n')
-    const prompt = [
-      `Please redo seed ${seedNum} of the calibration stage.`,
-      calibSeedNotes.value.trim() ? `\nNotes from reviewer: ${calibSeedNotes.value.trim()}` : '',
-      phraseSummary ? `\nExisting USE phrases (for reference):\n${phraseSummary}` : ''
-    ].filter(Boolean).join('')
-    await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
+    await fetch(`${apiBase}/api/build/redo-seed/${courseCode}/${seedNum}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ prompt, model: 'opus' })
+      body: JSON.stringify({ notes: calibSeedNotes.value.trim() || '' })
     })
     calibSeedNotes.value = ''
+    // Collapse the viewer so it's clear the rebuild is in flight
+    selectedCalibSeed.value = null
     setTimeout(() => { calibRedoing.value = false }, 2000)
   } catch (err) {
-    console.error('Failed to spawn redo agent:', err)
+    console.error('Failed to redo seed:', err)
     calibRedoing.value = false
   }
 }

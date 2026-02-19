@@ -303,6 +303,62 @@ module.exports = function (ctx) {
   });
 
   // ===========================================================================
+  // POST /build/redo-seed/:courseCode/:seedNumber — Wipe + respawn single seed
+  // Wipes the seed in-process then spawns a focused Opus agent for just that seed.
+  // Much cheaper than a full ad-hoc agent — no methodology re-discovery needed.
+  // ===========================================================================
+  router.post('/build/redo-seed/:courseCode/:seedNumber', async (req, res) => {
+    const { courseCode, seedNumber } = req.params;
+    const notes = req.body?.notes || '';
+    const n = parseInt(seedNumber);
+
+    try {
+      if (!n || n < 1) return res.status(400).json({ ok: false, error: 'Invalid seed number' });
+
+      const port = ctx.config.PORT || 3471;
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+
+      // 1. Wipe the seed
+      const { count: phrasesDeleted } = await ctx.supabase
+        .from('course_practice_phrases').delete({ count: 'exact' })
+        .eq('course_code', courseCode).eq('seed_number', n);
+      const { count: legosDeleted } = await ctx.supabase
+        .from('course_legos').delete({ count: 'exact' })
+        .eq('course_code', courseCode).eq('seed_number', n);
+      await ctx.supabase
+        .from('course_seeds').update({ decomposed_at: null })
+        .eq('course_code', courseCode).eq('seed_number', n);
+      ctx.courseVocabCache.delete(courseCode);
+
+      console.log(`[REDO-SEED] Wiped ${courseCode} seed ${n}: ${phrasesDeleted||0} phrases, ${legosDeleted||0} LEGOs`);
+
+      // 2. Fetch the calibrate brief and patch it for single-seed use
+      const briefResp = await fetch(`http://localhost:${port}/api/brief/${courseCode}/calibrate`);
+      if (!briefResp.ok) throw new Error('Failed to fetch calibrate brief');
+      let brief = await briefResp.text();
+
+      // Replace the "seeds 1 → N" loop instruction with a single-seed target
+      brief = brief.replace(
+        /## Protocol — For Each Seed N \(1 → \d+\)/,
+        `## Protocol — Rebuild Seed ${n} ONLY`
+      );
+      brief += `\n\n## REDO INSTRUCTIONS\n\nYou are rebuilding **seed ${n} only**. All other seeds are already done.\n${notes ? `\nReviewer notes: ${notes}\n` : ''}\nStart at Step 1 with N=${n}. Submit via seed/complete. When done, you are finished.\n`;
+
+      const ts = Date.now();
+      const tmpFile = `/tmp/redo_seed_${courseCode}_${n}_${ts}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const cmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      spawnInTerminal(ctx, cmd, `Redo S${n}`, courseCode);
+
+      res.json({ ok: true, seed_number: n, phrases_deleted: phrasesDeleted||0, legos_deleted: legosDeleted||0, message: `Seed ${n} wiped and redo agent spawned` });
+    } catch (err) {
+      console.error('[REDO-SEED] Error:', err.message);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // ===========================================================================
   // GET /build/seed-grid/:courseCode — Seed status grid for visualization
   // ===========================================================================
   router.get('/build/seed-grid/:courseCode', async (req, res) => {
