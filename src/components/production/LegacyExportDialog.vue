@@ -122,6 +122,41 @@
             </template>
           </div>
 
+          <!-- Unpushed commits warning -->
+          <div v-if="showPushWarning" class="px-6 py-3 bg-amber-900/40 border-t border-amber-700">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <div class="flex-1">
+                <p class="text-amber-400 text-sm font-medium">course-configs has unpushed commits</p>
+                <p class="text-slate-400 text-xs mt-1">Push to remote before deploying so the app picks up the new manifest.</p>
+                <div class="flex gap-2 mt-2">
+                  <button
+                    @click="handlePushAndProceed"
+                    :disabled="isPushing"
+                    class="px-3 py-1.5 text-xs font-medium bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors disabled:opacity-50 flex items-center gap-1"
+                  >
+                    <span v-if="isPushing" class="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin"></span>
+                    <span>{{ isPushing ? 'Pushing...' : 'Push & Continue' }}</span>
+                  </button>
+                  <button
+                    @click="showPushWarning = false; activeStep++"
+                    class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white transition-colors"
+                  >
+                    Skip anyway
+                  </button>
+                  <button
+                    @click="showPushWarning = false"
+                    class="px-3 py-1.5 text-xs font-medium text-slate-500 hover:text-slate-300 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Footer -->
           <div class="modal-footer flex items-center justify-between px-6 py-4 border-t border-slate-700 sticky bottom-0 bg-slate-800">
             <!-- Navigation buttons -->
@@ -187,6 +222,7 @@ const isVerifyingProduction = ref(false)
 const isPushing = ref(false)
 const pushResult = ref<{ success: boolean; message?: string; error?: string } | null>(null)
 const activeStep = ref(1)
+const showPushWarning = ref(false)
 
 // Computed
 const canProceedToNextStep = computed(() => {
@@ -244,8 +280,23 @@ async function loadInitialState() {
   }
 }
 
-function nextStep() {
+async function nextStep() {
   if (activeStep.value < 4) {
+    // Warn if moving from Step 3 → Step 4 with unpushed course-configs commits
+    if (activeStep.value === 3) {
+      try {
+        const apiBase = localStorage.getItem('api_base_url') || ''
+        const res = await fetch(`${apiBase}/api/production/course-configs/status`)
+        const status = await res.json()
+        if (status.success && status.commitsAhead > 0) {
+          showPushWarning.value = true
+          return
+        }
+      } catch (err) {
+        // If check fails, let them proceed
+        console.warn('Failed to check course-configs push status:', err)
+      }
+    }
     activeStep.value++
   }
 }
@@ -341,6 +392,14 @@ async function handlePushToRemote() {
     pushResult.value = { success: false, error: (err as Error).message }
   } finally {
     isPushing.value = false
+  }
+}
+
+async function handlePushAndProceed() {
+  await handlePushToRemote()
+  if (pushResult.value?.success) {
+    showPushWarning.value = false
+    activeStep.value++
   }
 }
 
