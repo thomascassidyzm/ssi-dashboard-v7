@@ -117,7 +117,7 @@ MSG_ID=$(echo $MSG | jq -r '.message_id')
 echo "Posted checkpoint, message_id: $MSG_ID"
 \`\`\`
 
-### Step 7: Poll for human response (every 30s)
+### Step 7: Poll for human response (every 20s)
 \`\`\`bash
 curl -s "http://localhost:3471/api/orchestrator/poll/${courseCode}/$MSG_ID"
 \`\`\`
@@ -141,7 +141,7 @@ Read the \`response\` field from the poll for any reviewer notes, then go back t
 
 - You are ONE long-running agent. **Never spawn sub-agents or new Claude instances.**
 - Never call /api/build/adhoc or any agent-spawning endpoint.
-- Poll every 30 seconds. Be patient — the human reviews from their phone.
+- Poll every 20 seconds. Be patient — the human reviews from their phone.
 - Work SLOWLY AND STEADILY. Each phrase will be heard by thousands of learners.
 - When all ${targetSeeds} seeds are approved, your job is done.
 `;
