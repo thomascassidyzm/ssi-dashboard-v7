@@ -2375,24 +2375,18 @@ async function sendChat() {
         headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
         body: JSON.stringify({ message: text })
       })
-      // Optimistically add to message list so it appears immediately
-      orchestratorMessages.value.push({
-        id: Date.now().toString(),
-        direction: 'human_to_agent',
-        message: text,
-        status: 'pending',
-        created_at: new Date().toISOString()
-      })
+      await fetchOrchestratorMessages()
     } else {
       await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
         body: JSON.stringify({ prompt: text, model: 'sonnet' })
       })
+      // Optimistically show the user's message (ad-hoc spawns don't go to DB)
       orchestratorMessages.value.push({
         id: Date.now().toString(),
         direction: 'human_to_agent',
-        message: text,
+        message: `[spawned agent] ${text}`,
         _human: true,
         status: 'pending',
         created_at: new Date().toISOString()
@@ -2461,11 +2455,18 @@ async function respondToOrchestrator(messageId, action, textOverride) {
   orchestratorResponding.value[messageId] = action
   try {
     const apiBase = getApiUrl()
+    const h = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     const responseText = textOverride || orchestratorCommentText.value[messageId] || null
+    // Post the response to the agent's checkpoint
     await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${messageId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      method: 'POST', headers: h,
       body: JSON.stringify({ action, response: responseText })
+    })
+    // Also store the human's reply as its own bubble so it appears in the chat
+    const label = responseText ? `${action}: ${responseText}` : action
+    await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
+      method: 'POST', headers: h,
+      body: JSON.stringify({ message: label })
     })
     orchestratorCommentText.value[messageId] = ''
     chatInput.value = ''
