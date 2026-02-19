@@ -667,12 +667,12 @@ module.exports = function(ctx) {
 
       const seedNumbers = decomposedSeeds.map(s => s.seed_number);
 
-      const { data: courseData, error: fetchErr } = await ctx.supabase
+      const { data: courseData, error: courseErr } = await ctx.supabase
         .from('courses')
         .select('quality_rules')
         .eq('course_code', courseCode)
         .single();
-      if (fetchErr) throw fetchErr;
+      if (courseErr) throw courseErr;
 
       const existing = courseData.quality_rules || {};
       const approvedSet = new Set([...(existing.human_approved_seeds || []), ...seedNumbers]);
