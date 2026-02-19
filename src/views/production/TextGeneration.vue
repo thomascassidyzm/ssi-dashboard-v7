@@ -412,11 +412,13 @@
               <button @click="selectedCalibSeed = null; calibSeedPhrases = []" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
             </div>
             <!-- Seed sentence -->
-            <div v-if="goldenSeeds.find(s => s.seed_number === selectedCalibSeed)" class="mb-3 p-2 bg-slate-800/60 border border-slate-700/40 rounded">
-              <div class="text-xs text-slate-500 mb-1 font-mono">S{{ String(selectedCalibSeed).padStart(4,'0') }}</div>
-              <div class="text-sm font-medium text-slate-200">{{ goldenSeeds.find(s => s.seed_number === selectedCalibSeed)?.known_text }}</div>
-              <div class="text-slate-500 text-xs mt-0.5">→</div>
-              <div class="text-sm text-emerald-400">{{ goldenSeeds.find(s => s.seed_number === selectedCalibSeed)?.target_text }}</div>
+            <div class="mb-3 p-2 bg-slate-800/60 border border-slate-700/40 rounded">
+              <div class="text-[10px] text-slate-500 mb-1 font-mono tracking-wider uppercase">Seed</div>
+              <div class="flex items-start gap-2 flex-wrap">
+                <span class="text-sm font-medium text-slate-200">{{ goldenSeeds.find(s => s.seed_number === selectedCalibSeed)?.known_text || '…' }}</span>
+                <span class="text-slate-500 text-xs mt-0.5">→</span>
+                <span class="text-sm text-emerald-400">{{ goldenSeeds.find(s => s.seed_number === selectedCalibSeed)?.target_text || '…' }}</span>
+              </div>
             </div>
             <div v-if="calibSeedLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading...</div>
             <div v-else-if="calibSeedPhrases.length === 0" class="text-xs text-slate-600 py-2">No phrases found for this seed.</div>
@@ -426,7 +428,7 @@
                 <div class="flex items-center gap-2 mb-1.5">
                   <span class="text-[10px] font-mono text-slate-600">L{{ lego.lego_index }}</span>
                   <template v-if="lego.meta">
-                    <span class="text-[10px] px-1 rounded font-mono" :class="lego.meta.lego_type === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-slate-700/40 text-slate-400'">{{ lego.meta.lego_type }}</span>
+                    <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-slate-700/40 text-slate-400'">{{ lego.meta.type || lego.meta.lego_type }}</span>
                     <span class="text-xs font-medium text-slate-200">{{ lego.meta.known_text }}</span>
                     <span class="text-slate-600 text-xs">→</span>
                     <span class="text-xs font-medium text-emerald-400">{{ lego.meta.target_text }}</span>

@@ -185,15 +185,16 @@ module.exports = function(ctx) {
       const humanApproved = courseInfo?.quality_rules?.human_approved_seeds || [];
       const humanApprovedSet = new Set(humanApproved);
 
-      // Fetch decomposed_at to detect empty seeds (decomposed but no phrases)
+      // Fetch decomposed_at + seed sentences
       const { data: decomposedSeeds } = await ctx.supabase
         .from('course_seeds')
-        .select('seed_number')
+        .select('seed_number, known_text, target_text, decomposed_at')
         .eq('course_code', courseCode)
         .gte('seed_number', 1)
-        .lte('seed_number', effectiveTarget)
-        .not('decomposed_at', 'is', null);
-      const decomposedSet = new Set((decomposedSeeds || []).map(s => s.seed_number));
+        .lte('seed_number', effectiveTarget);
+      const decomposedSet = new Set((decomposedSeeds || []).filter(s => s.decomposed_at).map(s => s.seed_number));
+      const seedTextMap = {};
+      for (const s of (decomposedSeeds || [])) seedTextMap[s.seed_number] = { known_text: s.known_text, target_text: s.target_text };
 
       const seeds = [];
       let approvedCount = 0;
@@ -223,7 +224,8 @@ module.exports = function(ctx) {
         if (status === 'flagged') flaggedCount++;
         if (status === 'escalated') escalatedCount++;
 
-        seeds.push({ seed_number: i, status, phrases: s.total, checked: s.checked, flags: s.open_flags, round });
+        const texts = seedTextMap[i] || {};
+        seeds.push({ seed_number: i, status, phrases: s.total, checked: s.checked, flags: s.open_flags, round, known_text: texts.known_text || null, target_text: texts.target_text || null });
       }
 
       res.json({
