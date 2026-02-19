@@ -185,12 +185,6 @@
             />
             <div class="flex flex-col gap-1.5">
               <button
-                @click="adhocModel = adhocModel === 'sonnet' ? 'opus' : 'sonnet'"
-                class="px-2 py-1 rounded border text-xs font-medium bg-slate-700/30 border-slate-600/50 text-slate-400 hover:text-slate-300"
-              >
-                {{ adhocModel === 'sonnet' ? 'Sonnet' : 'Opus' }}
-              </button>
-              <button
                 @click="sendAdhoc"
                 :disabled="adhocSpawning || !adhocPrompt.trim()"
                 class="px-2 py-1 rounded border text-xs font-medium transition-all"

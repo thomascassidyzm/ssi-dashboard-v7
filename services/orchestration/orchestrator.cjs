@@ -4146,7 +4146,7 @@ app.post('/api/courses/generate', async (req, res) => {
     machineProfile,  // Machine profile ID (e.g., 'tom', 'kai') - affects parallelization
     buildMode,  // 'course-builder' for single-agent LEGO network building
     seedCount,  // Number of seeds for course-builder mode
-    model = 'opus'  // Claude model: 'opus' or 'sonnet'
+    model = 'sonnet'  // Claude model: 'sonnet'
   } = req.body;
 
   // ============================================
@@ -4213,7 +4213,7 @@ app.post('/api/courses/generate', async (req, res) => {
           courseCode: builderCourseCode,
           seedCount: totalSeeds,
           terminal: terminalType,
-          model,  // 'opus' or 'sonnet' - selected from dashboard
+          model,  // 'sonnet' - selected from dashboard
           knownLang,
           targetLang,
           workingDir: path.join(__dirname, '../..')

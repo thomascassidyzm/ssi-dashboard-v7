@@ -1135,13 +1135,11 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       let presentationTemplate = templates?.[0]?.template
       if (!presentationTemplate) {
-        presentationTemplate = "The {target_lang_name} for — '{known}' — is:"
+        presentationTemplate = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
       }
 
-      // Remove "as in" clause from template BEFORE any replacements
-      // This avoids issues with seed text containing quotes
-      // Handles all known languages' context clause patterns
-      presentationTemplate = presentationTemplate
+      // Build short template (no "as in" context) for LEGOs where no good context exists
+      const shortPresentationTemplate = presentationTemplate
         .replace(/ as in — '\{seed\}' —/g, '')          // eng
         .replace(/ como en — '\{seed\}' —/g, '')         // spa
         .replace(/ comme dans — '\{seed\}' —/g, '')      // fra
@@ -1158,8 +1156,59 @@ app.post('/generate/:courseCode', async (req, res) => {
         .replace(/, fel yn '\{seed\}'/g, '')              // cym (legacy)
         .replace(/, como en '\{seed\}'/g, '')             // spa (legacy)
 
+      // Load seed sentences for context
+      const legoSeedNumbers = [...new Set(newLegos.map(l => l.seed_number).filter(Boolean))]
+      const seedTextMap = {}
+      if (legoSeedNumbers.length > 0) {
+        const SEED_BATCH = 500
+        for (let i = 0; i < legoSeedNumbers.length; i += SEED_BATCH) {
+          const batch = legoSeedNumbers.slice(i, i + SEED_BATCH)
+          const { data: seeds } = await supabase
+            .from('course_seeds')
+            .select('seed_number, known_text')
+            .eq('course_code', courseCode)
+            .in('seed_number', batch)
+          if (seeds) for (const s of seeds) seedTextMap[s.seed_number] = s.known_text
+        }
+      }
+
+      // Load USE phrases for context (grouped by seed_number:lego_index)
+      const usePhraseMapForPres = {}
+      let useOffset = 0
+      let hasMoreUse = true
+      while (hasMoreUse) {
+        const { data: useBatch } = await supabase
+          .from('course_practice_phrases')
+          .select('seed_number, lego_index, known_text')
+          .eq('course_code', courseCode)
+          .eq('phrase_role', 'use')
+          .order('id')
+          .range(useOffset, useOffset + 999)
+        if (useBatch && useBatch.length > 0) {
+          for (const p of useBatch) {
+            const key = `${p.seed_number}:${p.lego_index}`
+            if (!usePhraseMapForPres[key]) usePhraseMapForPres[key] = []
+            usePhraseMapForPres[key].push(p.known_text)
+          }
+          hasMoreUse = useBatch.length === 1000
+          useOffset += 1000
+        } else {
+          hasMoreUse = false
+        }
+      }
+
+      // Deterministic hash for weighted random context selection
+      function deterministicRand(legoId) {
+        let h = 0
+        for (let i = 0; i < legoId.length; i++) {
+          h = ((h << 5) - h + legoId.charCodeAt(i)) | 0
+        }
+        return (((h >>> 0) % 10000) / 10000)
+      }
+
       // Find LEGOs missing presentation audio and generate the text
       let missingPresentationCount = 0
+      let contextFromSeed = 0, contextFromUse = 0, contextNone = 0
       for (const lego of newLegos) {
         // Skip if already bound on the LEGO itself (authoritative)
         if (lego.presentation_audio_id) continue
@@ -1168,10 +1217,80 @@ app.post('/generate/:courseCode', async (req, res) => {
           continue
         }
 
-        // Generate presentation text from template
-        let presText = presentationTemplate
+        // Parse lego_index from lego_id (e.g., "S0001L03" → 3)
+        const legoIndexMatch = lego.lego_id.match(/L(\d+)$/)
+        const legoIndex = legoIndexMatch ? parseInt(legoIndexMatch[1], 10) : 1
+
+        // Find context sentence containing the known text
+        const seedText = seedTextMap[lego.seed_number] || lego.known_text
+        const knownLower = lego.known_text.toLowerCase()
+        const knownVariants = [knownLower]
+        if (knownLower.includes(' / ')) {
+          knownVariants.push(...knownLower.split(' / ').map(s => s.trim()))
+        }
+        const textContainsKnown = (text) => {
+          const t = text.toLowerCase()
+          return knownVariants.some(v => t.includes(v))
+        }
+
+        const key = `${lego.seed_number}:${legoIndex}`
+        const usePhrases = (usePhraseMapForPres[key] || []).filter(p => textContainsKnown(p))
+        const seedValid = textContainsKnown(seedText)
+
+        // Weighted random: ~60% USE phrase, ~25% seed, ~15% no context
+        const roll = deterministicRand(lego.lego_id)
+        let contextText = null
+
+        if (usePhrases.length > 0 && seedValid) {
+          if (roll < 0.60) {
+            const useIdx = Math.floor(deterministicRand(lego.lego_id + ':use') * usePhrases.length)
+            contextText = usePhrases[useIdx]
+            contextFromUse++
+          } else if (roll < 0.85) {
+            contextText = seedText
+            contextFromSeed++
+          } else {
+            contextNone++
+          }
+        } else if (usePhrases.length > 0) {
+          if (roll < 0.80) {
+            const useIdx = Math.floor(deterministicRand(lego.lego_id + ':use') * usePhrases.length)
+            contextText = usePhrases[useIdx]
+            contextFromUse++
+          } else {
+            contextNone++
+          }
+        } else if (seedValid) {
+          if (roll < 0.70) {
+            contextText = seedText
+            contextFromSeed++
+          } else {
+            contextNone++
+          }
+        } else {
+          contextNone++
+        }
+
+        // Skip context if known text overlaps too much (redundant)
+        if (contextText && lego.known_text.length > 0) {
+          const overlapRatio = lego.known_text.length / contextText.length
+          if (overlapRatio > 0.5) {
+            contextText = null
+            contextNone++
+          }
+        }
+
+        const finalTemplate = contextText ? presentationTemplate : shortPresentationTemplate
+
+        // For slash-compound known_text, use first option only
+        const knownForPres = lego.known_text.includes(' / ')
+          ? lego.known_text.split(' / ')[0].trim()
+          : lego.known_text
+
+        let presText = finalTemplate
           .replace('{target_lang_name}', targetLangName)
-          .replace('{known}', lego.known_text)
+          .replace('{known}', knownForPres)
+          .replace('{seed}', contextText || '')
 
         const presVoice = getVoiceForRole('presentation') || getVoiceForRole('known')
         needed.push({
@@ -1180,13 +1299,13 @@ app.post('/generate/:courseCode', async (req, res) => {
           role: 'presentation',
           voiceId: presVoice,
           speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0,
-          lego_id: lego.lego_id  // Include for linking to lego_introductions later
+          lego_id: lego.lego_id
         })
         missingPresentationCount++
       }
 
       if (missingPresentationCount > 0) {
-        logger.info(`Found ${missingPresentationCount} LEGOs missing presentation audio`)
+        logger.info(`Found ${missingPresentationCount} LEGOs missing presentation audio (context: ${contextFromSeed} seed, ${contextFromUse} USE, ${contextNone} none)`)
       }
     }
 

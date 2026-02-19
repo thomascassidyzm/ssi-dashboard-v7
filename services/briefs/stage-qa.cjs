@@ -110,9 +110,9 @@ Target: checked >= total
 
 ## Part 2: FIX (Opus agent — only if flags > 0)
 
-After scan completes, check flag count. If flags > 0, spawn ONE Opus fix agent:
+After scan completes, check flag count. If flags > 0, spawn ONE fix agent:
 
-subagent_type: "general-purpose", model: "opus", run_in_background: true
+subagent_type: "general-purpose", model: "sonnet", run_in_background: true
 
 ### Fix Agent Prompt
 

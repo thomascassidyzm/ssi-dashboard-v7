@@ -47,7 +47,7 @@
         </button>
         <button @click="spawnPolisher" :disabled="polishing" class="btn-opus">
           <span v-if="polishing" class="spinner"></span>
-          {{ polishing ? 'Polishing...' : 'Opus Polish' }}
+          {{ polishing ? 'Polishing...' : 'Polish' }}
         </button>
       </div>
     </header>

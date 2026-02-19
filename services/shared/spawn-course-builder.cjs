@@ -589,7 +589,7 @@ async function spawnCourseBuilder(options) {
     courseCode,
     seedCount = 30,
     terminal = 'iterm',  // 'iterm' or 'terminal'
-    model = 'opus',      // Always use Opus for vocab discipline
+    model = 'sonnet',      // Always use Opus for vocab discipline
     knownLang,
     targetLang,
     languageBrief,
@@ -672,7 +672,7 @@ Examples:
   const courseCode = getArg('--course');
   const seedCount = parseInt(getArg('--seeds')) || 30;
   const terminal = getArg('--terminal') || 'iterm';
-  const model = getArg('--model') || 'opus';
+  const model = getArg('--model') || 'sonnet';
   const knownLang = getArg('--known');
   const targetLang = getArg('--target');
   const withMonitor = args.includes('--with-monitor');
@@ -1220,13 +1220,13 @@ async function spawnPhraseFixer(options, agentId = 1) {
 
   if (terminal === 'terminal') {
     return await spawnClaudeTerminalAgent(brief, agentId, {
-      model: 'opus',
+      model: 'sonnet',
       workingDir,
       skipPermissions: true
     });
   } else {
     return await spawnClaudeCliAgent(brief, agentId, {
-      model: 'opus',
+      model: 'sonnet',
       workingDir,
       skipPermissions: true
     });
@@ -1423,13 +1423,13 @@ async function spawnPhrasePolisher(options, agentId = 1) {
 
   if (terminal === 'terminal') {
     return await spawnClaudeTerminalAgent(brief, agentId, {
-      model: 'opus',
+      model: 'sonnet',
       workingDir,
       skipPermissions: true
     });
   } else {
     return await spawnClaudeCliAgent(brief, agentId, {
-      model: 'opus',
+      model: 'sonnet',
       workingDir,
       skipPermissions: true
     });

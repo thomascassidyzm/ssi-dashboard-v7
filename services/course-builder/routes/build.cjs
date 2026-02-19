@@ -477,7 +477,7 @@ module.exports = function (ctx) {
       }
 
       // Spawn translation agent
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       console.log(`[TRANSLATE] Spawning translation agent for ${courseCode} in ${effectiveTerminal}`);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode);
 
@@ -556,7 +556,7 @@ module.exports = function (ctx) {
           if (!jobError && jobData) jobId = jobData.id;
         } catch (e) { console.error('[GOLDEN] Failed to create build_jobs record:', e.message); }
 
-        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${creatorFile})"`;
+        const creatorCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${creatorFile})"`;
         console.log(`[GOLDEN] Spawning Calibration Creator for ${courseCode}`);
         spawnInTerminal(ctx, creatorCmd, 'Calibration Creator', courseCode);
 
@@ -863,7 +863,7 @@ module.exports = function (ctx) {
 
       // Spawn
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       spawnInTerminal(ctx, claudeCmd, `Orchestrator`, courseCode);
 
       ctx.emitPipelineEvent(courseCode, 'orchestrator:message', {

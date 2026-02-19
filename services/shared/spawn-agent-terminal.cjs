@@ -7,7 +7,7 @@
  * Pro Max account logged into Terminal for parallel course builds.
  *
  * Usage:
- *   node spawn-agent-terminal.cjs --prompt "Build course" --model opus
+ *   node spawn-agent-terminal.cjs --prompt "Build course" --model sonnet
  */
 
 const fs = require('fs-extra');
@@ -17,7 +17,7 @@ const { promisify } = require('util');
 const execAsync = promisify(exec);
 
 const DEFAULTS = {
-  model: 'opus',
+  model: 'sonnet',
   workingDir: process.cwd(),
   timeout: 600000,
   skipPermissions: true
@@ -156,7 +156,7 @@ Options:
 
 Examples:
   node spawn-agent-terminal.cjs --check
-  node spawn-agent-terminal.cjs --prompt "Build Chinese course" --model opus
+  node spawn-agent-terminal.cjs --prompt "Build Chinese course" --model sonnet
     `);
     process.exit(0);
   }

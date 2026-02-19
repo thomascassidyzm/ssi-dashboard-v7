@@ -132,7 +132,7 @@ curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
 IMPORTANT: When spawning sub-agents via the Task tool:
 - Use subagent_type: "general-purpose"
 - Set run_in_background: true for each
-- Choose model based on language difficulty: use "opus" for languages with complex grammar (e.g. German case system, Japanese honorifics, Welsh mutations, Arabic morphology), "sonnet" for moderately complex languages, "haiku" for well-resourced straightforward languages. Use your own knowledge of the target language to decide.
+- Use model: "sonnet" for all languages.
 - Keep the description short: "QA seeds {start}-{end} for ${courseCode}"
 
 ## Step 2: Monitor Progress
@@ -308,7 +308,7 @@ curl -s -X POST "http://localhost:3471/api/qa/bulk-mark-checked" \\
 IMPORTANT: When spawning sub-agents via the Task tool:
 - Use subagent_type: "general-purpose"
 - Set run_in_background: true for each
-- Choose model based on language difficulty: use "opus" for languages with complex grammar (e.g. German case system, Japanese honorifics, Welsh mutations, Arabic morphology), "sonnet" for moderately complex languages, "haiku" for well-resourced straightforward languages. Use your own knowledge of the target language to decide.
+- Use model: "sonnet" for all languages.
 - Keep the description short: "QA seeds {start}-{end} for ${courseCode}"
 
 ## Step 2: Monitor Progress
@@ -404,7 +404,7 @@ module.exports = function qaRoutes(ctx) {
       fs.writeFileSync(tmpFile, prompt);
 
       const projectDir = ctx.PROJECT_DIR;
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       console.log(`[QA-STRICT] Spawning parallel golden QA coordinator for ${courseCode} seeds 11-50 (8 sub-agents) in ${effectiveTerminal}`);
@@ -627,7 +627,7 @@ return "spawned"`;
       fs.writeFileSync(tmpFile, prompt);
 
       const projectDir = ctx.PROJECT_DIR;
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
 
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
