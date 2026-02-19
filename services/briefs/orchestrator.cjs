@@ -98,13 +98,13 @@ Execute stages in order. Skip stages that are already complete (check progress f
 **Complete when**: All seeds translated.
 
 ### Stage 2: calibrate
-**Goal**: First ${goldenCount} seeds decomposed and approved via human review loop.
+**Goal**: First ${goldenCount} seeds decomposed and human-approved via the dashboard.
 **Action**: \`POST ${API}/api/build/golden/${courseCode}?phase=calibration&target=${goldenCount}\`
-This spawns a calibration creator agent that builds seeds 1-${goldenCount} with human review.
-**Monitor**: Poll \`GET ${API}/api/golden/review-queue/${courseCode}\` every 30s — check \`summary.approved\` count. Also check \`GET ${API}/api/stats/${courseCode}\` for \`seeds\` (completed count).
-**CHECKPOINT**: Each seed requires human approval via the dashboard. The calibration agent handles its own build→submit→poll→redo loop — you just monitor the overall count.
+This spawns a calibration creator agent that submits seeds 1-${goldenCount} directly to \`seed/complete\`. The human approves each seed from the dashboard.
+**Monitor**: Poll \`GET ${API}/api/golden/status/${courseCode}\` every 30s — count seeds with \`status === 'approved'\`. Post periodic progress updates to the human (e.g., "Calibration: 3/${goldenCount} seeds approved").
+**CHECKPOINT**: Seeds need explicit human approval in the dashboard (green = approved). The calibration agent does NOT wait for approval — it submits and moves on. You monitor the approval count.
 **⚠️ DO NOT respawn or restart the calibration agent.** If it dies, post a message to the human and wait for instructions.
-**Complete when**: \`summary.approved >= ${goldenCount}\` AND \`stats.seeds >= ${goldenCount}\`
+**Complete when**: Human-approved count \`>= ${goldenCount}\` (check \`GET ${API}/api/golden/status/${courseCode}\` → count \`status === 'approved'\`)
 
 ### Stage 3: golden (seeds ${goldenCount + 1}-50)${gateModes.golden === 'human' ? ' — ⚠️ HUMAN GATE' : ' — 🤖 AGENT GATE'}
 **Goal**: Seeds ${goldenCount + 1}-50 decomposed (golden creator agents only, no checkers).
@@ -170,15 +170,23 @@ Poll every 30 seconds. When \`status\` changes from \`"pending"\` to \`"responde
 - \`response_action: "comment"\` → read \`response\` field for human instructions
 
 ### 3. Progress updates (non-blocking)
-Between stages, post informational messages (no checkpoint needed):
+**Post a progress message at EVERY stage transition and at least every 5 minutes during long-running stages.** The human sees these in the dashboard chat box in real-time.
+
 \`\`\`bash
 curl -X POST ${API}/api/orchestrator/message/${courseCode} \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "message": "Stage X complete. Moving to Stage Y.",
+    "message": "Stage X complete. Moving to Stage Y. (N seeds decomposed so far)",
     "metadata": { "stage": "Y", "progress": "summary" }
   }'
 \`\`\`
+
+**Mandatory progress posts:**
+- On startup: report current state, what stage you're beginning
+- When spawning a sub-agent: "Spawning calibration creator agent..."
+- Every ~5 minutes during active stages: "Calibration: 4/10 seeds approved so far..."
+- On stage completion: "Stage X done. N items completed. Advancing to Stage Y."
+- On any error: immediately post the error so the human can intervene
 
 ## Resume Logic
 

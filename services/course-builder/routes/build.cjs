@@ -863,7 +863,7 @@ module.exports = function (ctx) {
 
       // Spawn
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       spawnInTerminal(ctx, claudeCmd, `Orchestrator`, courseCode);
 
       ctx.emitPipelineEvent(courseCode, 'orchestrator:message', {
