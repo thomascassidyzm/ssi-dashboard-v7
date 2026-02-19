@@ -26,7 +26,7 @@ async function generateCalibrateBrief(courseCode) {
 You are building the first ${targetSeeds} calibration seed decompositions for **${courseCode}** (${langName}).
 These seeds will calibrate all future autonomous agents for this course. Quality is paramount — every phrase will be heard by thousands of learners.
 
-**You submit each seed for remote human review via API.** The human reviews from the dashboard — you poll for their decision.
+**You submit each seed directly to seed/complete.** The human reviews from the dashboard asynchronously — you do NOT poll or wait.
 
 ## Your Role
 
