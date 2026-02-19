@@ -354,6 +354,26 @@
                 </div>
               </div>
             </div>
+
+            <!-- Approve / Redo controls -->
+            <div class="mt-3 flex gap-2 items-start">
+              <textarea
+                v-model="seedReviewNotes"
+                placeholder="Notes for redo (optional)..."
+                rows="1"
+                class="flex-1 bg-slate-800/80 border border-slate-700 rounded text-xs text-slate-300 placeholder-slate-600 px-2 py-1 resize-none"
+              />
+              <button
+                @click="redoSeed"
+                :disabled="seedRedoing"
+                class="px-2 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs rounded transition-all shrink-0"
+              >{{ seedRedoing ? 'Sending...' : 'Redo' }}</button>
+              <button
+                @click="approveSeed"
+                :disabled="seedApproving"
+                class="px-2 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs rounded transition-all shrink-0"
+              >{{ seedApproving ? 'Approving...' : 'Approve' }}</button>
+            </div>
           </div>
 
           <!-- Legend -->
@@ -474,6 +494,9 @@ const selectedSeed = ref(null)
 const seedViewPhrases = ref([])
 const seedViewSeedText = ref(null)
 const seedViewLoading = ref(false)
+const seedReviewNotes = ref('')
+const seedApproving = ref(false)
+const seedRedoing = ref(false)
 
 const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
@@ -854,6 +877,80 @@ async function selectSeed(seedNum) {
     console.error('Failed to fetch seed phrases:', err)
   } finally {
     seedViewLoading.value = false
+  }
+}
+
+// Approve / Redo seed
+async function approveSeed() {
+  const courseCode = effectiveCourseCode.value
+  const seedNum = selectedSeed.value
+  if (!courseCode || !seedNum) return
+  seedApproving.value = true
+  try {
+    const apiBase = getApiUrl()
+    // Find the pending checkpoint for this seed
+    const pending = orchestratorMessages.value.find(m =>
+      m.direction === 'agent_to_human' && m.status === 'pending' &&
+      (m.metadata?.seed_number === seedNum || m.checkpoint === `decompose_seed_${seedNum}`)
+    )
+    if (pending) {
+      await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ action: 'approve' })
+      })
+    }
+    // Post human message so it shows in chat
+    await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ message: `Approved seed ${seedNum}` })
+    })
+    seedReviewNotes.value = ''
+    selectedSeed.value = null
+    seedViewPhrases.value = []
+    seedViewSeedText.value = null
+    await fetchOrchestratorMessages()
+  } catch (err) {
+    console.error('Failed to approve seed:', err)
+  } finally {
+    seedApproving.value = false
+  }
+}
+
+async function redoSeed() {
+  const courseCode = effectiveCourseCode.value
+  const seedNum = selectedSeed.value
+  if (!courseCode || !seedNum) return
+  seedRedoing.value = true
+  try {
+    const apiBase = getApiUrl()
+    const notes = seedReviewNotes.value.trim()
+    const pending = orchestratorMessages.value.find(m =>
+      m.direction === 'agent_to_human' && m.status === 'pending' &&
+      (m.metadata?.seed_number === seedNum || m.checkpoint === `decompose_seed_${seedNum}`)
+    )
+    if (pending) {
+      await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ action: 'redo', response: notes || null })
+      })
+    } else {
+      // No pending checkpoint — send as free-form message
+      await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ message: `Redo seed ${seedNum}.${notes ? ' Notes: ' + notes : ''}` })
+      })
+    }
+    seedReviewNotes.value = ''
+    selectedSeed.value = null
+    await fetchOrchestratorMessages()
+    setTimeout(() => { seedRedoing.value = false }, 1500)
+  } catch (err) {
+    console.error('Failed to send redo:', err)
+    seedRedoing.value = false
   }
 }
 

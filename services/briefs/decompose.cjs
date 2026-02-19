@@ -159,15 +159,45 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
    - **ZUT conflict:** Same known → different target — rephrase
    - **Vocab violation:** Used a word not yet introduced — check available vocab
    - **Phrase count:** Not enough USE phrases — add more
+   Fix and resubmit — do NOT move to the next seed until submission succeeds.
 
-5. **Record learnings** when you discover something useful:
+5. **Post checkpoint and WAIT for human approval:**
+   After successful submission, post a checkpoint message and wait:
+   \`\`\`
+   curl -X POST "http://localhost:${port}/api/orchestrator/${courseCode}/messages" \\
+     -H "Content-Type: application/json" \\
+     -d '{
+       "direction": "agent_to_human",
+       "message": "Seed <N> submitted: <brief summary of LEGOs>",
+       "checkpoint": "decompose_seed_<N>",
+       "metadata": {"seed_number": <N>}
+     }'
+   \`\`\`
+
+   Then poll until the human responds (approve or redo):
+   \`\`\`
+   curl -s "http://localhost:${port}/api/orchestrator/${courseCode}/messages?direction=agent_to_human&status=pending"
+   \`\`\`
+   - Poll every 10 seconds. While waiting, also check for human_to_agent messages.
+   - If the response is empty (still pending), keep waiting.
+   - Once the checkpoint status changes from "pending":
+     - **"approve"** → proceed to next seed
+     - **"redo"** → read the response text for feedback, wipe the seed, redo it
+
+   To check if your checkpoint was responded to:
+   \`\`\`
+   curl -s "http://localhost:${port}/api/orchestrator/${courseCode}/messages?checkpoint=decompose_seed_<N>"
+   \`\`\`
+   Look at the \`response_action\` field: "approve" or "redo".
+
+6. **Record learnings** when you discover something useful:
    \`\`\`
    curl -X POST "http://localhost:${port}/api/course/${courseCode}/learnings" \\
      -H "Content-Type: application/json" \\
      -d '{"learning": "..."}'
    \`\`\`
 
-6. **Check for human messages** between seeds:
+7. **Check for human messages** between seeds:
    \`\`\`
    curl -s "http://localhost:${port}/api/orchestrator/${courseCode}/messages?direction=human_to_agent&status=pending"
    \`\`\`
@@ -178,7 +208,7 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
      -d '{"direction": "agent_to_human", "content": "..."}'
    \`\`\`
 
-7. **Repeat** from step 1.
+8. **Repeat** from step 1.
 
 ### On Errors
 - If a seed fails validation, fix and resubmit — don't skip it
