@@ -386,10 +386,12 @@ app.all('/api/build/*', proxyCourseBuilder)
 app.all('/api/v2/*', proxyCourseBuilder)
 app.all('/api/golden/*', proxyCourseBuilder)
 app.all('/api/phrases/*', proxyCourseBuilder)
+app.all('/api/legos/*', proxyCourseBuilder)
 app.all('/api/activity', proxyCourseBuilder)
 app.all('/api/activity/*', proxyCourseBuilder)
 app.all('/api/agents', proxyCourseBuilder)
 app.all('/api/agents/*', proxyCourseBuilder)
+app.all('/api/orchestrator/*', proxyCourseBuilder)
 app.all('/api/qa/*', proxyCourseBuilder)
 
 // Proxy to orchestrator (port 3456) for mission-control and health endpoints

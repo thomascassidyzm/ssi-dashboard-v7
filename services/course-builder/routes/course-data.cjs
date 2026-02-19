@@ -1143,6 +1143,27 @@ USE:
   });
 
   // ─── GET /phrases/:courseCode ────────────────────────────────────────
+  // GET /legos/:courseCode?seed=N — LEGO rows for a specific seed (any status)
+  router.get('/legos/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const seedNumber = parseInt(req.query.seed);
+      if (!seedNumber) return res.status(400).json({ error: 'seed param required' });
+
+      const { data, error } = await ctx.supabase
+        .from('course_legos')
+        .select('lego_index, lego_id, type, known_text, target_text, components, seed_number')
+        .eq('course_code', courseCode)
+        .eq('seed_number', seedNumber)
+        .order('lego_index');
+
+      if (error) throw error;
+      res.json({ course_code: courseCode, seed_number: seedNumber, legos: data || [] });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   router.get('/phrases/:courseCode', async (req, res) => {
     try {
       const { courseCode } = req.params;

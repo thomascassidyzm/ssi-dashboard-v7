@@ -408,10 +408,17 @@
           <!-- Inline calibration phrase reviewer -->
           <div v-if="selectedCalibSeed !== null" class="mt-3 border-t border-slate-700/50 pt-3">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-mono text-slate-400">Seed {{ selectedCalibSeed }} phrases</span>
+              <span class="text-xs font-mono text-slate-400">Seed {{ selectedCalibSeed }}</span>
               <button @click="selectedCalibSeed = null; calibSeedPhrases = []" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
             </div>
-            <div v-if="calibSeedLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading phrases...</div>
+            <!-- Seed sentence -->
+            <div v-if="goldenSeeds.find(s => s.seed_number === selectedCalibSeed)" class="mb-3 p-2 bg-slate-800/60 border border-slate-700/40 rounded">
+              <div class="text-xs text-slate-500 mb-1 font-mono">S{{ String(selectedCalibSeed).padStart(4,'0') }}</div>
+              <div class="text-sm font-medium text-slate-200">{{ goldenSeeds.find(s => s.seed_number === selectedCalibSeed)?.known_text }}</div>
+              <div class="text-slate-500 text-xs mt-0.5">→</div>
+              <div class="text-sm text-emerald-400">{{ goldenSeeds.find(s => s.seed_number === selectedCalibSeed)?.target_text }}</div>
+            </div>
+            <div v-if="calibSeedLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading...</div>
             <div v-else-if="calibSeedPhrases.length === 0" class="text-xs text-slate-600 py-2">No phrases found for this seed.</div>
             <div v-else class="space-y-3 max-h-72 overflow-y-auto pr-1">
               <div v-for="lego in calibSeedPhrases" :key="lego.lego_index" class="border border-slate-700/40 rounded p-2">
@@ -1964,31 +1971,28 @@ async function selectCalibSeed(seedNum) {
   calibSeedLoading.value = true
   try {
     const apiBase = getApiUrl()
-    const [phrasesResp, vocabResp] = await Promise.all([
-      fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=200`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      }),
-      fetch(`${apiBase}/api/vocab/${courseCode}?seed=${seedNum + 1}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      })
+    const h = { 'ngrok-skip-browser-warning': 'true' }
+    // Fetch LEGOs directly (status-agnostic) + phrases in parallel
+    const [legosResp, phrasesResp] = await Promise.all([
+      fetch(`${apiBase}/api/legos/${courseCode}?seed=${seedNum}`, { headers: h }),
+      fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=300`, { headers: h })
     ])
-    // Build lego metadata lookup from vocab (all legos introduced up to this seed)
     const legoMeta = {}
-    if (vocabResp.ok) {
-      const vocabData = await vocabResp.json()
-      for (const l of (vocabData.legos || [])) {
-        if (l.seed_number === seedNum) legoMeta[l.lego_index] = l
-      }
+    if (legosResp.ok) {
+      const d = await legosResp.json()
+      for (const l of (d.legos || [])) legoMeta[l.lego_index] = l
     }
     if (phrasesResp.ok) {
       const data = await phrasesResp.json()
       const legoMap = new Map()
       for (const p of (data.phrases || [])) {
         const key = p.lego_index ?? 0
-        if (!legoMap.has(key)) {
-          legoMap.set(key, { lego_index: key, meta: legoMeta[key] || null, phrases: [] })
-        }
+        if (!legoMap.has(key)) legoMap.set(key, { lego_index: key, meta: legoMeta[key] || null, phrases: [] })
         legoMap.get(key).phrases.push(p)
+      }
+      // Also show LEGOs that have no phrases yet
+      for (const [idx, meta] of Object.entries(legoMeta)) {
+        if (!legoMap.has(parseInt(idx))) legoMap.set(parseInt(idx), { lego_index: parseInt(idx), meta, phrases: [] })
       }
       calibSeedPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
     }
