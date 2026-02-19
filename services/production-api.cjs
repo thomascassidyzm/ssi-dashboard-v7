@@ -385,6 +385,7 @@ async function proxyCourseBuilder(req, res) {
 app.all('/api/build/*', proxyCourseBuilder)
 app.all('/api/v2/*', proxyCourseBuilder)
 app.all('/api/golden/*', proxyCourseBuilder)
+app.all('/api/phrases/*', proxyCourseBuilder)
 app.all('/api/activity', proxyCourseBuilder)
 app.all('/api/activity/*', proxyCourseBuilder)
 app.all('/api/agents', proxyCourseBuilder)
