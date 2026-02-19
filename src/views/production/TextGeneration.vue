@@ -162,39 +162,100 @@
               Advanced
             </button>
             <button
-              @click="adhocExpanded = !adhocExpanded"
-              class="px-2 py-1 rounded border text-xs font-mono font-medium transition-all"
-              :class="adhocExpanded
+              @click="chatExpanded = !chatExpanded"
+              class="px-2 py-1 rounded border text-xs font-medium transition-all relative"
+              :class="chatExpanded
                 ? 'bg-violet-600/20 border-violet-500/50 text-violet-400'
-                : 'bg-slate-700/30 border-slate-600/50 text-slate-500 hover:border-violet-500/50 hover:text-violet-400'"
+                : orchestratorHasPending
+                  ? 'bg-amber-600/20 border-amber-500/50 text-amber-400 animate-pulse'
+                  : 'bg-slate-700/30 border-slate-600/50 text-slate-500 hover:border-violet-500/50 hover:text-violet-400'"
             >
-              &gt;_
+              Chat{{ orchestratorHasPending && !chatExpanded ? ' ●' : '' }}
             </button>
           </div>
         </div>
 
-        <!-- Ad-hoc Agent Prompt -->
-        <div v-if="adhocExpanded" class="mb-3 bg-slate-800/50 border border-violet-500/30 rounded-lg p-3">
-          <div class="flex gap-2">
-            <textarea
-              v-model="adhocPrompt"
-              :placeholder="pipelineStatus?.is_running ? 'Message the Orchestrator...' : 'Spawn a Claude agent with course context...'"
-              rows="2"
-              class="flex-1 bg-slate-900/50 border border-slate-600/50 rounded px-2 py-1.5 text-sm text-slate-200 placeholder-slate-500 resize-none focus:outline-none focus:border-violet-500/50"
-              @keydown.meta.enter="sendAdhoc"
-            />
-            <div class="flex flex-col gap-1.5">
-              <button
-                @click="sendAdhoc"
-                :disabled="adhocSpawning || !adhocPrompt.trim()"
-                class="px-2 py-1 rounded border text-xs font-medium transition-all"
-                :class="adhocSpawning
-                  ? 'bg-violet-600/20 border-violet-500/50 text-violet-400 animate-pulse'
-                  : 'bg-violet-600/20 border-violet-500/50 text-violet-400 hover:bg-violet-600/30 disabled:opacity-30'"
-              >
-                {{ adhocSpawning ? (pipelineStatus?.is_running ? 'Sent!' : 'Spawned!') : 'Send' }}
-              </button>
+        <!-- Unified Chat Panel -->
+        <div v-if="chatExpanded" class="mb-3 bg-slate-900/60 border rounded-lg overflow-hidden flex flex-col"
+          :class="orchestratorHasPending ? 'border-amber-500/40' : 'border-slate-600/40'"
+        >
+          <!-- Header -->
+          <div class="flex items-center justify-between px-3 py-2 border-b border-slate-700/50">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full" :class="orchestratorHasPending ? 'bg-amber-400 animate-pulse' : pipelineStatus?.is_running ? 'bg-emerald-400' : 'bg-slate-600'"></span>
+              <span class="text-xs font-medium" :class="pipelineStatus?.is_running ? 'text-emerald-400' : 'text-slate-500'">
+                {{ pipelineStatus?.is_running ? 'Orchestrator' : 'Agent Chat' }}
+              </span>
+              <span v-if="visibleChatMessages.length" class="text-xs text-slate-600">{{ visibleChatMessages.length }} messages</span>
             </div>
+            <button @click="clearChat" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Clear</button>
+          </div>
+
+          <!-- Message thread -->
+          <div ref="chatScrollEl" class="flex-1 overflow-y-auto px-3 py-2 space-y-2 max-h-72">
+            <div v-if="!visibleChatMessages.length" class="text-xs text-slate-600 text-center py-4">
+              {{ pipelineStatus?.is_running ? 'Orchestrator messages will appear here' : 'Type below to spawn an agent' }}
+            </div>
+            <div
+              v-for="msg in visibleChatMessages"
+              :key="msg.id"
+              class="flex"
+              :class="msg.direction === 'human_to_agent' || msg._human ? 'justify-end' : 'justify-start'"
+            >
+              <div
+                class="max-w-[85%] rounded-lg px-3 py-2 text-xs"
+                :class="msg.direction === 'human_to_agent' || msg._human
+                  ? 'bg-violet-600/20 border border-violet-500/30 text-slate-200'
+                  : msg.status === 'responded'
+                    ? 'bg-slate-800/60 border border-slate-700/40 text-slate-400'
+                    : 'bg-slate-800/80 border border-slate-600/40 text-slate-200'"
+              >
+                <div v-if="msg.checkpoint" class="text-amber-400 font-medium mb-1">{{ msg.checkpoint }}</div>
+                <div>{{ msg.message || msg.response }}</div>
+                <div class="text-slate-600 mt-1">{{ formatTime(msg.created_at) }}</div>
+                <div v-if="msg.status === 'responded'" class="text-slate-500 italic mt-1 text-[11px]">
+                  {{ msg.response_action }}{{ msg.response ? ` — ${msg.response}` : '' }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick-action buttons for pending checkpoint -->
+          <div v-if="orchestratorHasPending" class="px-3 py-2 border-t border-slate-700/50 flex items-center gap-2">
+            <span class="text-xs text-amber-400/70">Waiting for response:</span>
+            <button
+              @click="respondToOrchestrator(pendingOrchestratorMessage.id, 'approve', chatInput)"
+              :disabled="orchestratorResponding[pendingOrchestratorMessage?.id]"
+              class="px-2.5 py-1 rounded border text-xs font-medium bg-emerald-600/20 border-emerald-500/40 text-emerald-400 hover:bg-emerald-600/30 disabled:opacity-40"
+            >
+              {{ orchestratorResponding[pendingOrchestratorMessage?.id] === 'approve' ? '...' : 'Approve' }}
+            </button>
+            <button
+              @click="respondToOrchestrator(pendingOrchestratorMessage.id, 'redo', chatInput)"
+              :disabled="orchestratorResponding[pendingOrchestratorMessage?.id]"
+              class="px-2.5 py-1 rounded border text-xs font-medium bg-amber-600/20 border-amber-500/40 text-amber-400 hover:bg-amber-600/30 disabled:opacity-40"
+            >
+              {{ orchestratorResponding[pendingOrchestratorMessage?.id] === 'redo' ? '...' : 'Redo' }}
+            </button>
+          </div>
+
+          <!-- Input -->
+          <div class="px-3 py-2 border-t border-slate-700/50 flex gap-2">
+            <textarea
+              v-model="chatInput"
+              :placeholder="orchestratorHasPending ? 'Reply or hit Approve / Redo above...' : pipelineStatus?.is_running ? 'Message the Orchestrator...' : 'Spawn a Claude agent...'"
+              rows="2"
+              class="flex-1 bg-slate-800/50 border border-slate-600/40 rounded px-2 py-1.5 text-xs text-slate-200 placeholder-slate-600 resize-none focus:outline-none focus:border-violet-500/50"
+              @keydown.meta.enter="sendChat"
+            />
+            <button
+              @click="sendChat"
+              :disabled="chatSending || !chatInput.trim()"
+              class="px-3 py-1 rounded border text-xs font-medium self-end transition-all disabled:opacity-30"
+              :class="chatSending ? 'bg-violet-600/20 border-violet-500/50 text-violet-400 animate-pulse' : 'bg-violet-600/20 border-violet-500/50 text-violet-400 hover:bg-violet-600/30'"
+            >
+              {{ chatSending ? '...' : 'Send' }}
+            </button>
           </div>
         </div>
 
@@ -244,85 +305,6 @@
         </div>
 
         <!-- Orchestrator Message Log -->
-        <div v-if="orchestratorMessages.length > 0" class="mb-3">
-          <div
-            class="bg-slate-800/50 border border-emerald-500/30 rounded-lg overflow-hidden"
-          >
-            <div
-              class="flex items-center justify-between px-4 py-2 cursor-pointer hover:bg-slate-700/30"
-              @click="orchestratorLogExpanded = !orchestratorLogExpanded"
-            >
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full" :class="orchestratorHasPending ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'"></span>
-                <span class="text-xs font-medium text-emerald-400">Orchestrator</span>
-                <span class="text-xs text-slate-500">{{ orchestratorMessages.length }} messages</span>
-              </div>
-              <span class="text-xs text-slate-500">{{ orchestratorLogExpanded ? 'Collapse' : 'Expand' }}</span>
-            </div>
-
-            <div v-if="orchestratorLogExpanded" class="px-4 pb-3 space-y-2 max-h-80 overflow-y-auto">
-              <div
-                v-for="msg in orchestratorMessages"
-                :key="msg.id"
-                class="text-xs rounded px-3 py-2"
-                :class="msg.direction === 'agent_to_human'
-                  ? 'bg-slate-900/50 border-l-2 border-emerald-500/40'
-                  : 'bg-slate-900/50 border-r-2 border-cyan-500/40 ml-8'"
-              >
-                <div class="flex items-center justify-between mb-1">
-                  <span v-if="msg.checkpoint" class="text-emerald-400 font-medium">{{ msg.checkpoint }}</span>
-                  <span v-else class="text-slate-500">{{ msg.direction === 'agent_to_human' ? 'Agent' : 'Human' }}</span>
-                  <span class="text-slate-600">{{ formatTime(msg.created_at) }}</span>
-                </div>
-                <div class="text-slate-300">{{ msg.message || msg.response }}</div>
-
-                <!-- Action buttons for pending agent messages — always shown -->
-                <div
-                  v-if="msg.direction === 'agent_to_human' && msg.status === 'pending'"
-                  class="flex items-center gap-2 mt-2 flex-wrap"
-                >
-                  <button
-                    @click="respondToOrchestrator(msg.id, 'approve')"
-                    :disabled="orchestratorResponding[msg.id]"
-                    class="px-2.5 py-1 rounded border text-xs font-medium transition-all bg-emerald-600/20 border-emerald-500/40 text-emerald-400 hover:bg-emerald-600/30 disabled:opacity-40"
-                  >
-                    {{ orchestratorResponding[msg.id] === 'approve' ? '...' : 'Approve' }}
-                  </button>
-                  <button
-                    @click="respondToOrchestrator(msg.id, 'redo')"
-                    :disabled="orchestratorResponding[msg.id]"
-                    class="px-2.5 py-1 rounded border text-xs font-medium transition-all bg-amber-600/20 border-amber-500/40 text-amber-400 hover:bg-amber-600/30 disabled:opacity-40"
-                  >
-                    {{ orchestratorResponding[msg.id] === 'redo' ? '...' : 'Redo' }}
-                  </button>
-                  <input
-                    v-model="orchestratorCommentText[msg.id]"
-                    placeholder="Comment (optional — send with Approve or Redo)"
-                    class="flex-1 min-w-0 px-2 py-1 bg-slate-900/50 border border-slate-600/40 rounded text-xs text-slate-300 placeholder-slate-600"
-                    @keydown.enter="respondToOrchestrator(msg.id, 'comment')"
-                  />
-                  <button
-                    v-if="orchestratorCommentText[msg.id]"
-                    @click="respondToOrchestrator(msg.id, 'comment')"
-                    :disabled="orchestratorResponding[msg.id]"
-                    class="px-2.5 py-1 rounded border text-xs font-medium transition-all bg-slate-600/20 border-slate-500/40 text-slate-400 hover:bg-slate-600/30 disabled:opacity-40"
-                  >
-                    Send
-                  </button>
-                </div>
-
-                <!-- Show response if responded -->
-                <div
-                  v-if="msg.status === 'responded'"
-                  class="mt-1 text-slate-500 italic"
-                >
-                  Responded: {{ msg.response_action }}{{ msg.response ? ` — ${msg.response}` : '' }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Stage 1: Translate -->
         <div class="pipeline-card" :class="stageCardClass('translate')">
           <div class="flex items-center justify-between">
@@ -954,7 +936,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { useTextGenSocket } from '@/composables/useTextGenSocket'
@@ -1058,11 +1040,12 @@ const uncheckedGrouped = computed(() => {
 const socket = useTextGenSocket()
 const diagnosing = ref(false)
 
-// Ad-hoc agent state
-const adhocExpanded = ref(false)
-const adhocPrompt = ref('')
-const adhocModel = ref('sonnet')
-const adhocSpawning = ref(false)
+// Unified chat state
+const chatExpanded = ref(false)
+const chatInput = ref('')
+const chatSending = ref(false)
+const chatClearedAt = ref(localStorage.getItem('chat_cleared_at') || null)
+const chatScrollEl = ref(null)
 
 // Orchestrator state
 const orchestratorRunning = ref(false)
@@ -2241,53 +2224,6 @@ async function loadLanguages() {
   }
 }
 
-async function sendAdhoc() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode || !adhocPrompt.value.trim()) return
-  adhocSpawning.value = true
-  try {
-    const apiBase = getApiUrl()
-    const prompt = adhocPrompt.value.trim()
-
-    // Route to orchestrator channel if pipeline is running, otherwise spawn ad-hoc agent
-    const statusRes = await fetch(`${apiBase}/api/orchestrator/status/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    const statusData = statusRes.ok ? await statusRes.json() : null
-    const orchRunning = statusData?.pipeline?.is_running
-
-    if (orchRunning) {
-      // If orch has a pending checkpoint, respond to it; otherwise post as free-form human message
-      const pending = statusData?.pending_messages || []
-      if (pending.length > 0) {
-        await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending[0].id}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-          body: JSON.stringify({ action: 'comment', response: prompt })
-        })
-      } else {
-        await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-          body: JSON.stringify({ message: prompt })
-        })
-      }
-    } else {
-      // No orchestrator running — spawn an ad-hoc agent
-      await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ prompt, model: adhocModel.value })
-      })
-    }
-
-    adhocPrompt.value = ''
-    setTimeout(() => { adhocSpawning.value = false; adhocExpanded.value = false }, 2000)
-  } catch (err) {
-    console.error('Failed to send message:', err)
-    adhocSpawning.value = false
-  }
-}
 
 // Debounced socket watchers — coalesce rapid events into single refetch
 let socketDebounceTimers = {}
@@ -2350,6 +2286,82 @@ const orchestratorHasPending = computed(() =>
   orchestratorMessages.value.some(m => m.direction === 'agent_to_human' && m.status === 'pending')
 )
 
+const pendingOrchestratorMessage = computed(() =>
+  orchestratorMessages.value.find(m => m.direction === 'agent_to_human' && m.status === 'pending')
+)
+
+const visibleChatMessages = computed(() => {
+  if (!chatClearedAt.value) return orchestratorMessages.value
+  return orchestratorMessages.value.filter(m => m.created_at > chatClearedAt.value)
+})
+
+function clearChat() {
+  const now = new Date().toISOString()
+  chatClearedAt.value = now
+  localStorage.setItem('chat_cleared_at', now)
+}
+
+async function sendChat() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || !chatInput.value.trim()) return
+  chatSending.value = true
+  const text = chatInput.value.trim()
+  try {
+    const apiBase = getApiUrl()
+
+    // If orch has a pending checkpoint, respond to it (with the typed text as comment)
+    if (orchestratorHasPending.value && pendingOrchestratorMessage.value) {
+      await respondToOrchestrator(pendingOrchestratorMessage.value.id, 'comment', text)
+      chatInput.value = ''
+      return
+    }
+
+    // Check pipeline state
+    const statusRes = await fetch(`${apiBase}/api/orchestrator/status/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    const statusData = statusRes.ok ? await statusRes.json() : null
+    const orchRunning = statusData?.pipeline?.is_running
+
+    if (orchRunning) {
+      await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ message: text })
+      })
+      // Optimistically add to message list so it appears immediately
+      orchestratorMessages.value.push({
+        id: Date.now().toString(),
+        direction: 'human_to_agent',
+        message: text,
+        status: 'pending',
+        created_at: new Date().toISOString()
+      })
+    } else {
+      await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ prompt: text, model: 'sonnet' })
+      })
+      orchestratorMessages.value.push({
+        id: Date.now().toString(),
+        direction: 'human_to_agent',
+        message: text,
+        _human: true,
+        status: 'pending',
+        created_at: new Date().toISOString()
+      })
+    }
+    chatInput.value = ''
+    await nextTick()
+    if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
+  } catch (err) {
+    console.error('Failed to send chat:', err)
+  } finally {
+    chatSending.value = false
+  }
+}
+
 function formatTime(iso) {
   if (!iso) return ''
   const d = new Date(iso)
@@ -2385,31 +2397,35 @@ async function fetchOrchestratorMessages() {
     if (resp.ok) {
       const data = await resp.json()
       orchestratorMessages.value = data.messages || []
-      // If there's a pending message, auto-expand
-      if (orchestratorHasPending.value) orchestratorLogExpanded.value = true
+      // Auto-open chat if there's a pending message
+      if (orchestratorHasPending.value) {
+        chatExpanded.value = true
+        await nextTick()
+        if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
+      }
     }
   } catch (err) {
     console.error('Failed to fetch orchestrator messages:', err)
   }
 }
 
-async function respondToOrchestrator(messageId, action) {
+async function respondToOrchestrator(messageId, action, textOverride) {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
   orchestratorResponding.value[messageId] = action
   try {
     const apiBase = getApiUrl()
+    const responseText = textOverride || orchestratorCommentText.value[messageId] || null
     await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${messageId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({
-        action,
-        response: orchestratorCommentText.value[messageId] || null
-      })
+      body: JSON.stringify({ action, response: responseText })
     })
     orchestratorCommentText.value[messageId] = ''
-    // Refresh messages
+    chatInput.value = ''
     await fetchOrchestratorMessages()
+    await nextTick()
+    if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
   } catch (err) {
     console.error('Failed to respond to orchestrator:', err)
   } finally {
