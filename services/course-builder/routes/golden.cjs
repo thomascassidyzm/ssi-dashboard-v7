@@ -181,15 +181,19 @@ module.exports = function(ctx) {
         else seedMap[f.seed_number].resolved_flags++;
       }
 
-      // Fetch human-approved statuses from course_seeds
-      const { data: humanApprovedRows } = await ctx.supabase
+      // Fetch human-approved seed numbers from quality_rules
+      const humanApproved = courseInfo?.quality_rules?.human_approved_seeds || [];
+      const humanApprovedSet = new Set(humanApproved);
+
+      // Fetch decomposed_at to detect empty seeds (decomposed but no phrases)
+      const { data: decomposedSeeds } = await ctx.supabase
         .from('course_seeds')
         .select('seed_number')
         .eq('course_code', courseCode)
         .gte('seed_number', 1)
         .lte('seed_number', effectiveTarget)
-        .eq('status', 'approved');
-      const humanApprovedSet = new Set((humanApprovedRows || []).map(s => s.seed_number));
+        .not('decomposed_at', 'is', null);
+      const decomposedSet = new Set((decomposedSeeds || []).map(s => s.seed_number));
 
       const seeds = [];
       let approvedCount = 0;
@@ -207,6 +211,7 @@ module.exports = function(ctx) {
           const draftStatus = draftStatusMap[i];
           if (draftStatus === 'pending_review' && s.total === 0) status = 'pending_review';
           else if (draftStatus === 'redo' && s.total === 0) status = 'redo';
+          else if (s.total === 0 && decomposedSet.has(i)) status = 'submitted'; // empty seed: decomposed but no new phrases
           else if (s.total === 0) status = 'empty';
           else if (s.open_flags > 0) status = round >= 3 ? 'escalated' : 'flagged';
           else if (s.checked === s.total) status = 'approved';
@@ -605,13 +610,22 @@ module.exports = function(ctx) {
         return res.status(400).json({ error: 'Invalid seed number' });
       }
 
-      const { error } = await ctx.supabase
-        .from('course_seeds')
-        .update({ status: 'approved' })
+      const { data: courseData, error: fetchErr } = await ctx.supabase
+        .from('courses')
+        .select('quality_rules')
         .eq('course_code', courseCode)
-        .eq('seed_number', seedNumber);
+        .single();
+      if (fetchErr) throw fetchErr;
 
-      if (error) throw error;
+      const existing = courseData.quality_rules || {};
+      const approved = new Set(existing.human_approved_seeds || []);
+      approved.add(seedNumber);
+
+      const { error: updateErr } = await ctx.supabase
+        .from('courses')
+        .update({ quality_rules: { ...existing, human_approved_seeds: [...approved] } })
+        .eq('course_code', courseCode);
+      if (updateErr) throw updateErr;
 
       console.log(`[GOLDEN] Seed ${seedNumber} human-approved (${courseCode})`);
       ctx.emitPipelineEvent(courseCode, 'golden:update', { seed_number: seedNumber, status: 'approved' });
@@ -652,11 +666,21 @@ module.exports = function(ctx) {
       }
 
       const seedNumbers = decomposedSeeds.map(s => s.seed_number);
-      const { error: updateErr } = await ctx.supabase
-        .from('course_seeds')
-        .update({ status: 'approved' })
+
+      const { data: courseData, error: fetchErr } = await ctx.supabase
+        .from('courses')
+        .select('quality_rules')
         .eq('course_code', courseCode)
-        .in('seed_number', seedNumbers);
+        .single();
+      if (fetchErr) throw fetchErr;
+
+      const existing = courseData.quality_rules || {};
+      const approvedSet = new Set([...(existing.human_approved_seeds || []), ...seedNumbers]);
+
+      const { error: updateErr } = await ctx.supabase
+        .from('courses')
+        .update({ quality_rules: { ...existing, human_approved_seeds: [...approvedSet] } })
+        .eq('course_code', courseCode);
       if (updateErr) throw updateErr;
 
       console.log(`[GOLDEN] ${seedNumbers.length} calibration seeds human-approved (${courseCode})`);
