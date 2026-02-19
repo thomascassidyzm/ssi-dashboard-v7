@@ -1782,7 +1782,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // Helper to regenerate a single audio item
     const regenerateItem = async (item) => {
       // Get regeneration attempt count for this item (Azure determinism workaround)
-      const regenerationAttempt = regenerationCounts[item.id] || 0
+      const regenerationAttempt = (regenerationCounts[item.id] || 0) + 1
 
       // Gender expansion for target language audio
       // Pre-computed by Haiku (or regex fallback for marker-based text)
