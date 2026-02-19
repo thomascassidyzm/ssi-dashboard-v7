@@ -178,7 +178,7 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
    \`\`\`
    curl -s "http://localhost:${port}/api/orchestrator/${courseCode}/messages?direction=agent_to_human&status=pending"
    \`\`\`
-   - Poll every 10 seconds. While waiting, also check for human_to_agent messages.
+   - Poll every 20 seconds. While waiting, also check for human_to_agent messages.
    - If the response is empty (still pending), keep waiting.
    - Once the checkpoint status changes from "pending":
      - **"approve"** → proceed to next seed
