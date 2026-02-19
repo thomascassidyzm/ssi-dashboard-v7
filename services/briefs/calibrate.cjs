@@ -98,49 +98,30 @@ curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq '.seeds[] | select(
 ### Step 4: Build the decomposition
 Design LEGOs (A/M types, ordering) and write BUILD + USE phrases.
 
-### Step 5: Submit for human review
+### Step 5: Submit directly to seed/complete
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/golden/submit-for-review/${courseCode}/$N" \\
+curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&skip_validation=true" \\
   -H "Content-Type: application/json" \\
-  -d '{"known_text": "...", "target_text": "...", "submission_data": {"course_code": "${courseCode}", "seed_number": '$N', "known_text": "...", "target_text": "...", "legos": [...]}}'
+  -d '{"course_code": "${courseCode}", "seed_number": '$N', "known_text": "...", "target_text": "...", "legos": [...]}'
 \`\`\`
 
-The \`submission_data\` field should contain the full payload you would normally send to \`/api/seed/complete\` — including \`course_code\`, \`seed_number\`, \`known_text\`, \`target_text\`, and the \`legos\` array with all phrases.
+On success you will get \`{"ok": true, ...}\`. The seed is now live in the dashboard for human review.
 
-### Step 6: Poll for human decision
-\`\`\`bash
-curl -s "http://localhost:3471/api/golden/review-status/${courseCode}/$N"
-\`\`\`
+**Do NOT use submit-for-review or poll review-status — those are deprecated.**
 
-Poll every 30 seconds. The response will be one of:
-- \`{"review_status": "pending_review"}\` → keep waiting
-- \`{"review_status": "approved"}\` → seed is auto-finalized, move to next seed
-- \`{"review_status": "redo", "reviewer_notes": "..."}\` → read the notes, rebuild from scratch, resubmit
+### Step 6: Move immediately to next seed
+After a successful \`seed/complete\` response, move straight to seed N+1. The human reviews and approves asynchronously from the dashboard — you do not wait for approval.
 
-**On approved**: The system auto-finalizes the seed (calls \`/api/seed/complete\` internally). You do NOT need to submit it again. Also store it as calibration data:
-\`\`\`bash
-curl -s -X POST "http://localhost:3471/api/course/${courseCode}/calibration" \\
-  -H "Content-Type: application/json" \\
-  -d '{"golden_decompositions": [{"seed_number": '$N', ...}]}'
-\`\`\`
-
-**On redo**: Read \`reviewer_notes\` carefully. Rebuild the decomposition addressing the feedback, then resubmit via Step 5.
-
-### Step 7: Move to next seed
-After an approved status, move to seed N+1.
+If the submission returns \`"Seed already fully built"\`, that seed is done — skip to N+1.
 
 ## AUTONOMY
 
-You work ALONE — the human reviews asynchronously from a browser dashboard.
-Do NOT spawn sub-agents. Work through seeds one at a time, carefully and thoroughly.
+You work ALONE. Do NOT spawn sub-agents. Work through seeds one at a time, carefully and thoroughly.
 Work SLOWLY AND STEADILY — quality over speed. Each phrase will be heard by thousands of learners.
 
-When you finish all ${targetSeeds} seeds, finalize:
-\`\`\`bash
-curl -s -X POST "http://localhost:3471/api/golden/finalize/${courseCode}" \\
-  -H "Content-Type: application/json" \\
-  -d '{"target_seeds": ${targetSeeds}}'
-\`\`\`
+The human will review and approve your seeds from the dashboard after you finish. You do not wait for approval — just submit each seed and move on.
+
+When you finish all ${targetSeeds} seeds, your job is done. The human takes it from there.
 `;
 }
 
