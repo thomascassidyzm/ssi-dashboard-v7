@@ -871,10 +871,34 @@
             <div
               v-for="cell in seedGrid"
               :key="cell.seed"
-              class="w-5 h-5 rounded-sm cursor-default transition-colors"
-              :class="seedCellClass(cell)"
+              class="w-5 h-5 rounded-sm cursor-pointer transition-colors"
+              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
               :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
+              @click="selectSeed(cell.seed)"
             ></div>
+          </div>
+
+          <!-- Inline seed phrase viewer -->
+          <div v-if="selectedSeed !== null" class="mt-4 border-t border-slate-700/50 pt-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-slate-400">Seed {{ selectedSeed }} phrases</span>
+              <button @click="selectedSeed = null; seedViewPhrases = []" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
+            </div>
+            <div v-if="seedViewLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading phrases...</div>
+            <div v-else-if="seedViewPhrases.length === 0" class="text-xs text-slate-600 py-2">No phrases found for this seed.</div>
+            <div v-else class="space-y-2 max-h-72 overflow-y-auto pr-1">
+              <div v-for="lego in seedViewPhrases" :key="lego.lego_index">
+                <div class="text-xs font-mono text-slate-500 mb-0.5">L{{ lego.lego_index }}</div>
+                <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-xs py-0.5">
+                  <span class="font-mono w-8 shrink-0" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-slate-500' : 'text-amber-400/70'">
+                    {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
+                  </span>
+                  <span class="text-slate-300">{{ phrase.known_text }}</span>
+                  <span class="text-slate-600 shrink-0">→</span>
+                  <span class="text-slate-400">{{ phrase.target_text }}</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Legend: build progress (primary) -->
@@ -1104,6 +1128,11 @@ const isPolling = ref(false)
 // Seed grid state
 const seedGrid = ref([])
 const seedGridExpanded = ref(true)
+
+// Seed grid phrase viewer state
+const selectedSeed = ref(null)
+const seedViewPhrases = ref([])
+const seedViewLoading = ref(false)
 const rebuildFrom = ref(11)
 const rebuildTo = ref(300)
 const rebuildConfirming = ref(false)
@@ -1880,6 +1909,40 @@ async function fetchGoldenStatus() {
     }
   } catch (err) {
     // Golden endpoints may not exist yet
+  }
+}
+
+// Seed grid phrase viewer
+async function selectSeed(seedNum) {
+  const courseCode = effectiveCourseCode.value
+  if (selectedSeed.value === seedNum) {
+    selectedSeed.value = null
+    seedViewPhrases.value = []
+    return
+  }
+  selectedSeed.value = seedNum
+  seedViewPhrases.value = []
+  seedViewLoading.value = true
+  try {
+    const apiBase = getApiUrl()
+    const resp = await fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=200`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (resp.ok) {
+      const data = await resp.json()
+      const legoMap = new Map()
+      for (const p of (data.phrases || [])) {
+        if (!legoMap.has(p.lego_index)) {
+          legoMap.set(p.lego_index, { lego_index: p.lego_index, phrases: [] })
+        }
+        legoMap.get(p.lego_index).phrases.push(p)
+      }
+      seedViewPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
+    }
+  } catch (err) {
+    console.error('Failed to fetch seed phrases:', err)
+  } finally {
+    seedViewLoading.value = false
   }
 }
 
