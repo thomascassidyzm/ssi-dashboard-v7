@@ -196,6 +196,21 @@ On startup:
 3. If there's a responded message → read the response and continue from that checkpoint
 4. If no pending messages → detect current stage from pipeline status and continue
 
+## Human Messages
+
+The human can send you free-form messages at any time via the dashboard chat box. These arrive as \`human_messages\` in the status response.
+
+**During every monitoring poll loop**, check \`human_messages\` in the status response:
+\`\`\`bash
+curl ${API}/api/orchestrator/status/${courseCode}
+# Check: .human_messages[] for any unread messages
+\`\`\`
+
+If \`human_messages\` is non-empty:
+1. Read the messages and act on any instructions
+2. Mark them as read: \`POST ${API}/api/orchestrator/mark-read/${courseCode}\` with \`{ "message_ids": [...] }\`
+3. Post a response acknowledging the instruction via \`POST ${API}/api/orchestrator/message/${courseCode}\`
+
 ## Pipeline Stage Advancement
 
 Stage advancement depends on the gate mode (see Gate Modes table above):

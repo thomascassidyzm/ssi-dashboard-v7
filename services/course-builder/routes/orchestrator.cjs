@@ -127,6 +127,48 @@ module.exports = function (ctx) {
   });
 
   // ===========================================================================
+  // POST /orchestrator/human-message/:courseCode — Human sends message to agent
+  // Stored as direction='human_to_agent'; agent reads these on next status poll.
+  // ===========================================================================
+  router.post('/orchestrator/human-message/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { message } = req.body;
+
+      if (!message) {
+        return res.status(400).json({ ok: false, error: 'message is required' });
+      }
+
+      const { data, error } = await ctx.supabase
+        .from('orchestrator_messages')
+        .insert({
+          course_code: courseCode,
+          direction: 'human_to_agent',
+          checkpoint: null,
+          message,
+          metadata: {},
+          status: 'pending'
+        })
+        .select('id, created_at')
+        .single();
+
+      if (error) throw error;
+
+      // Broadcast to dashboard so the message appears in the chat log
+      ctx.emitPipelineEvent(courseCode, 'orchestrator:human_message', {
+        id: data.id,
+        message,
+        created_at: data.created_at
+      });
+
+      res.json({ ok: true, message_id: data.id });
+    } catch (err) {
+      console.error('[ORCHESTRATOR] Human message error:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // ===========================================================================
   // GET /orchestrator/messages/:courseCode — Full message log for dashboard
   // ===========================================================================
   router.get('/orchestrator/messages/:courseCode', async (req, res) => {
@@ -180,14 +222,53 @@ module.exports = function (ctx) {
         .order('responded_at', { ascending: false })
         .limit(1);
 
+      // Get unread human messages (human_to_agent, pending — agent hasn't seen them yet)
+      const { data: humanMessages } = await ctx.supabase
+        .from('orchestrator_messages')
+        .select('id, message, created_at')
+        .eq('course_code', courseCode)
+        .eq('direction', 'human_to_agent')
+        .eq('status', 'pending')
+        .order('created_at', { ascending: true });
+
       res.json({
         ok: true,
         pipeline: pipelineStatus,
         pending_messages: pending || [],
-        latest_response: latestResponded?.[0] || null
+        latest_response: latestResponded?.[0] || null,
+        human_messages: humanMessages || []
       });
     } catch (err) {
       console.error('[ORCHESTRATOR] Status error:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // POST /orchestrator/mark-read/:courseCode — Agent marks human messages as read
+  // Body: { message_ids: [uuid, ...] }
+  // ===========================================================================
+  router.post('/orchestrator/mark-read/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { message_ids } = req.body;
+
+      if (!message_ids?.length) {
+        return res.json({ ok: true, marked: 0 });
+      }
+
+      const { error } = await ctx.supabase
+        .from('orchestrator_messages')
+        .update({ status: 'responded', responded_at: new Date().toISOString() })
+        .eq('course_code', courseCode)
+        .eq('direction', 'human_to_agent')
+        .in('id', message_ids);
+
+      if (error) throw error;
+
+      res.json({ ok: true, marked: message_ids.length });
+    } catch (err) {
+      console.error('[ORCHESTRATOR] Mark-read error:', err);
       res.status(500).json({ ok: false, error: err.message });
     }
   });

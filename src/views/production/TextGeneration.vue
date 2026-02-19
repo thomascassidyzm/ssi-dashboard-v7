@@ -178,7 +178,7 @@
           <div class="flex gap-2">
             <textarea
               v-model="adhocPrompt"
-              placeholder="Type a task for a Claude agent with course context..."
+              :placeholder="pipelineStatus?.is_running ? 'Message the Orchestrator...' : 'Spawn a Claude agent with course context...'"
               rows="2"
               class="flex-1 bg-slate-900/50 border border-slate-600/50 rounded px-2 py-1.5 text-sm text-slate-200 placeholder-slate-500 resize-none focus:outline-none focus:border-violet-500/50"
               @keydown.meta.enter="sendAdhoc"
@@ -192,7 +192,7 @@
                   ? 'bg-violet-600/20 border-violet-500/50 text-violet-400 animate-pulse'
                   : 'bg-violet-600/20 border-violet-500/50 text-violet-400 hover:bg-violet-600/30 disabled:opacity-30'"
               >
-                {{ adhocSpawning ? 'Spawned!' : 'Send' }}
+                {{ adhocSpawning ? (pipelineStatus?.is_running ? 'Sent!' : 'Spawned!') : 'Send' }}
               </button>
             </div>
           </div>
@@ -2236,15 +2236,44 @@ async function sendAdhoc() {
   adhocSpawning.value = true
   try {
     const apiBase = getApiUrl()
-    await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ prompt: adhocPrompt.value, model: adhocModel.value })
+    const prompt = adhocPrompt.value.trim()
+
+    // Route to orchestrator channel if pipeline is running, otherwise spawn ad-hoc agent
+    const statusRes = await fetch(`${apiBase}/api/orchestrator/status/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
     })
+    const statusData = statusRes.ok ? await statusRes.json() : null
+    const orchRunning = statusData?.pipeline?.is_running
+
+    if (orchRunning) {
+      // If orch has a pending checkpoint, respond to it; otherwise post as free-form human message
+      const pending = statusData?.pending_messages || []
+      if (pending.length > 0) {
+        await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending[0].id}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+          body: JSON.stringify({ action: 'comment', response: prompt })
+        })
+      } else {
+        await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+          body: JSON.stringify({ message: prompt })
+        })
+      }
+    } else {
+      // No orchestrator running — spawn an ad-hoc agent
+      await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ prompt, model: adhocModel.value })
+      })
+    }
+
     adhocPrompt.value = ''
     setTimeout(() => { adhocSpawning.value = false; adhocExpanded.value = false }, 2000)
   } catch (err) {
-    console.error('Failed to spawn adhoc agent:', err)
+    console.error('Failed to send message:', err)
     adhocSpawning.value = false
   }
 }
