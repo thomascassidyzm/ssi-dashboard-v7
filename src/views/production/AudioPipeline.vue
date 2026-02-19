@@ -254,9 +254,9 @@
               <div v-if="regenerateResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
                 <div class="flex justify-between items-center">
                   <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full" :class="regenerateResult.error ? 'bg-red-500' : regenerateResult.dryRun ? 'bg-amber-500' : 'bg-emerald-500'"></div>
-                    <span class="text-sm font-medium" :class="regenerateResult.error ? 'text-red-400' : regenerateResult.dryRun ? 'text-amber-400' : 'text-emerald-400'">
-                      {{ regenerateResult.error ? 'Error' : regenerateResult.dryRun ? 'Preview' : 'Complete' }}
+                    <div class="w-2 h-2 rounded-full" :class="regenerateResult.error ? 'bg-red-500' : regenerateResult.dryRun ? 'bg-amber-500' : regenerateResult.status === 'running' ? 'bg-blue-500 animate-pulse' : 'bg-emerald-500'"></div>
+                    <span class="text-sm font-medium" :class="regenerateResult.error ? 'text-red-400' : regenerateResult.dryRun ? 'text-amber-400' : regenerateResult.status === 'running' ? 'text-blue-400' : 'text-emerald-400'">
+                      {{ regenerateResult.error ? 'Error' : regenerateResult.dryRun ? 'Preview' : regenerateResult.status === 'running' ? 'Running...' : 'Complete' }}
                     </span>
                     <span v-if="regenerateResult.flaggedOnly" class="text-xs text-amber-400">(queue)</span>
                   </div>
@@ -269,8 +269,11 @@
                   Voice: <code class="text-emerald-400 bg-slate-800 px-1.5 py-0.5 rounded">{{ regenerateResult.voiceId }}</code>
                 </div>
                 <div v-if="regenerateResult.error" class="mt-2 text-sm text-red-400">{{ regenerateResult.error }}</div>
+                <div v-if="regenerateResult.status === 'running'" class="mt-2 text-sm text-blue-400">
+                  Regeneration running in background. Progress shown above.
+                </div>
                 <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-sm text-emerald-400">
-                  ✓ {{ regenerateResult.success }} generated, {{ regenerateResult.failed }} failed
+                  {{ regenerateResult.success }} generated, {{ regenerateResult.failed }} failed
                 </div>
 
                 <!-- Review Panel for Regenerated Items -->
@@ -769,6 +772,15 @@ const pollAudioProgress = async () => {
       if (wasGenerating && !isActive) {
         // Generation just finished — refresh everything
         refreshAudioStats()
+        // Update regenerateResult if it was showing "running"
+        if (regenerateResult.value?.status === 'running') {
+          regenerateResult.value = {
+            ...regenerateResult.value,
+            status: 'completed',
+            success: prev?.current || regenerateResult.value.total,
+            failed: prev?.failed || 0
+          }
+        }
       }
       wasGenerating = isActive
     }
@@ -1125,8 +1137,20 @@ const executeRegenerate = async () => {
     })
 
     const data = await response.json()
-    if (!response.ok) {
+    if (!response.ok && response.status !== 202) {
       regenerateResult.value = { error: data.error || 'Regeneration failed' }
+    } else if (response.status === 202 || data.accepted) {
+      // Non-blocking: regeneration running in background
+      regenerateResult.value = {
+        dryRun: false,
+        flaggedOnly: flaggedOnly.value,
+        status: 'running',
+        total: data.total,
+        voiceId: data.voiceId,
+        language: data.language,
+        message: data.message
+      }
+      // Don't set regenerating=false — the audio progress poller shows live status
     } else {
       regenerateResult.value = {
         dryRun: false,

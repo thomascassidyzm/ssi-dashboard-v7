@@ -372,11 +372,18 @@ function getLanguageName(langCode) {
 // =============================================================================
 
 /**
+ * Normalize text for dedup comparison.
+ * Lowercase, trim, strip trailing periods (. and 。) that don't affect pronunciation.
+ */
+function normalizeForDedup(text) {
+  return text.toLowerCase().trim().replace(/[.。．।۔]+$/, '').trim()
+}
+
+/**
  * Generate a unique key for a node based on known and target text.
  */
 function nodeKey(node) {
-  // Case-insensitive matching - normalize to lowercase for duplicate detection
-  return `${node.known.text.toLowerCase().trim()}|${node.target.text.toLowerCase().trim()}`
+  return `${normalizeForDedup(node.known.text)}|${normalizeForDedup(node.target.text)}`
 }
 
 /**
@@ -536,8 +543,7 @@ function findDuplicateSeedCanonicals(seeds) {
   for (const seed of seeds) {
     const canonical = seed.seed_sentence?.canonical
     if (canonical) {
-      // Case-insensitive matching
-      const normalizedCanonical = canonical.toLowerCase().trim()
+      const normalizedCanonical = normalizeForDedup(canonical)
       if (seenCanonicals.has(normalizedCanonical)) {
         duplicates.push({
           originalId: seenCanonicals.get(normalizedCanonical),
@@ -563,8 +569,7 @@ function removeDuplicateSeedCanonicals(seeds) {
 
   for (const seed of seeds) {
     const canonical = seed.seed_sentence?.canonical
-    // Case-insensitive matching
-    const normalizedCanonical = canonical?.toLowerCase().trim()
+    const normalizedCanonical = canonical ? normalizeForDedup(canonical) : null
     if (!normalizedCanonical || !seenCanonicals.has(normalizedCanonical)) {
       if (normalizedCanonical) seenCanonicals.add(normalizedCanonical)
       filtered.push(seed)

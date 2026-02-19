@@ -182,6 +182,7 @@ export function useExportWorkflow(courseCode: string) {
   const validation = ref<ValidationResult | null>(null)
   const warnings = ref<string[]>([])
   const versionInfo = ref<VersionInfo | null>(null)
+  const manifestDiff = ref<any>(null)
 
   // Progress tracking for long operations
   const audioGenerationProgress = ref({
@@ -282,7 +283,11 @@ export function useExportWorkflow(courseCode: string) {
 
     socket = io(wsUrl, {
       path: '/api/production/websocket',
-      transports: ['websocket', 'polling']
+      transports: ['websocket', 'polling'],
+      reconnectionAttempts: 5,
+      reconnectionDelay: 2000,
+      reconnectionDelayMax: 30000,
+      timeout: 10000
     })
 
     socket.on('connect', () => {
@@ -299,7 +304,14 @@ export function useExportWorkflow(courseCode: string) {
     })
 
     socket.on('connect_error', (error) => {
-      console.error('[ExportWorkflow] WebSocket connection error:', error.message)
+      const attempts = (socket as any)?.io?._reconnection !== false
+        ? `(attempt ${(socket as any)?.io?.backoff?.attempts || '?'}/5)`
+        : ''
+      console.warn(`[ExportWorkflow] WebSocket connection error: ${error.message} ${attempts}`)
+    })
+
+    socket.on('reconnect_failed', () => {
+      console.warn('[ExportWorkflow] WebSocket reconnection failed after max attempts — giving up')
     })
 
     socket.on('disconnect', (reason) => {
@@ -743,6 +755,24 @@ export function useExportWorkflow(courseCode: string) {
     } catch (err: any) {
       error.value = err.message
       throw err
+    }
+  }
+
+  // Get manifest diff for Step 3 (compare pending vs published)
+  async function getManifestDiff() {
+    try {
+      const data = await fetchApi(`/api/production/${courseCode}/manifest-diff`)
+      manifestDiff.value = data
+      // If diff provides a suggested version, update versionInfo
+      if (data.suggestedVersion && versionInfo.value) {
+        versionInfo.value.suggestedVersion = data.suggestedVersion
+      }
+      return data
+    } catch (err: any) {
+      // Non-critical — don't block Step 3 if diff fails
+      console.warn('Failed to load manifest diff:', err.message)
+      manifestDiff.value = null
+      return null
     }
   }
 
@@ -1219,6 +1249,14 @@ export function useExportWorkflow(courseCode: string) {
       stats.value = null
       validation.value = null
       versionInfo.value = null
+      manifestDiff.value = null
+
+      // Reset audio progress so old WebSocket events are ignored
+      audioJobId.value = ''
+      audioGenerationProgress.value = {
+        completed: 0, total: 0, status: 'none',
+        errors: [], skipped: []
+      }
     } catch (err: any) {
       error.value = err.message
       throw err
@@ -1261,6 +1299,7 @@ export function useExportWorkflow(courseCode: string) {
     validation,
     warnings,
     versionInfo,
+    manifestDiff,
 
     // Progress
     audioGenerationProgress,
@@ -1281,6 +1320,7 @@ export function useExportWorkflow(courseCode: string) {
     verifyS3,
     cancelVerifyS3,
     getVersionSuggestion,
+    getManifestDiff,
     publishManifest,
     downloadPendingManifest,
     getDeployPlan,

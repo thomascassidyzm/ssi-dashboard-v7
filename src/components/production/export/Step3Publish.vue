@@ -46,6 +46,110 @@
         </p>
       </div>
 
+      <!-- Manifest Diff Summary -->
+      <div v-if="manifestDiff" class="diff-summary p-4 rounded-lg border space-y-3"
+        :class="manifestDiff.isNewCourse ? 'bg-blue-900/20 border-blue-700' :
+                manifestDiff.suggestedBump === 'none' ? 'bg-slate-700 border-slate-600' :
+                'bg-slate-700 border-slate-600'"
+      >
+        <!-- New course -->
+        <template v-if="manifestDiff.isNewCourse">
+          <div class="flex items-center gap-2 text-blue-400 font-medium">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            New Course — first publish
+          </div>
+          <p class="text-slate-400 text-sm">No published version found. Starting at v1.0.0.</p>
+        </template>
+
+        <!-- No changes -->
+        <template v-else-if="manifestDiff.suggestedBump === 'none'">
+          <div class="flex items-center gap-2 text-slate-400 font-medium">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            No changes detected
+          </div>
+          <p class="text-slate-400 text-sm">Pending manifest matches v{{ manifestDiff.existingVersion }}.</p>
+        </template>
+
+        <!-- Changes detected -->
+        <template v-else>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-300 font-medium text-sm">Changes from v{{ manifestDiff.existingVersion }}</span>
+            <span class="text-xs px-2 py-0.5 rounded font-medium"
+              :class="{
+                'bg-red-900/50 text-red-400': manifestDiff.suggestedBump === 'major',
+                'bg-amber-900/50 text-amber-400': manifestDiff.suggestedBump === 'minor',
+                'bg-slate-600 text-slate-300': manifestDiff.suggestedBump === 'patch'
+              }"
+            >
+              {{ manifestDiff.suggestedBump }} bump → v{{ manifestDiff.suggestedVersion }}
+            </span>
+          </div>
+
+          <!-- Category counts -->
+          <div class="flex flex-wrap gap-3 text-sm">
+            <span v-if="manifestDiff.major.length" class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-red-500"></span>
+              <span class="text-red-400">{{ manifestDiff.major.length }} major</span>
+            </span>
+            <span v-if="manifestDiff.minor.length" class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span class="text-amber-400">{{ manifestDiff.minor.length }} minor</span>
+            </span>
+            <span v-if="manifestDiff.patch.length" class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+              <span class="text-slate-400">{{ manifestDiff.patch.length }} patch</span>
+            </span>
+          </div>
+
+          <!-- Collapsible details -->
+          <button
+            @click="showDiffDetails = !showDiffDetails"
+            class="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1"
+          >
+            <svg class="w-3 h-3 transition-transform" :class="showDiffDetails ? 'rotate-90' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            {{ showDiffDetails ? 'Hide' : 'Show' }} details
+          </button>
+
+          <div v-if="showDiffDetails" class="space-y-3 text-xs">
+            <!-- MAJOR details (listed individually) -->
+            <div v-if="manifestDiff.major.length" class="space-y-1">
+              <div class="text-red-400 font-medium uppercase tracking-wider">Major</div>
+              <div
+                v-for="(item, i) in manifestDiff.major" :key="'major-' + i"
+                class="text-slate-300 pl-3 border-l-2 border-red-800"
+              >{{ item.detail }}</div>
+            </div>
+
+            <!-- MINOR details (listed individually) -->
+            <div v-if="manifestDiff.minor.length" class="space-y-1">
+              <div class="text-amber-400 font-medium uppercase tracking-wider">Minor</div>
+              <div
+                v-for="(item, i) in manifestDiff.minor.slice(0, 20)" :key="'minor-' + i"
+                class="text-slate-300 pl-3 border-l-2 border-amber-800"
+              >{{ item.detail }}</div>
+              <div v-if="manifestDiff.minor.length > 20" class="text-slate-500 pl-3">
+                ...and {{ manifestDiff.minor.length - 20 }} more
+              </div>
+            </div>
+
+            <!-- PATCH details (aggregated counts) -->
+            <div v-if="manifestDiff.patch.length" class="space-y-1">
+              <div class="text-slate-400 font-medium uppercase tracking-wider">Patch</div>
+              <div
+                v-for="(item, i) in manifestDiff.patch" :key="'patch-' + i"
+                class="text-slate-400 pl-3 border-l-2 border-slate-700"
+              >{{ formatPatchItem(item) }}</div>
+            </div>
+          </div>
+        </template>
+      </div>
+
       <!-- Version and Status picker (always visible) -->
       <div class="version-info p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-4">
         <!-- Course ID -->
@@ -65,31 +169,25 @@
           </div>
 
           <!-- Version bump buttons -->
-          <div v-if="!showCustomVersion" class="flex gap-2">
-            <button
-              @click="version = nextVersions.patch"
-              :class="version === nextVersions.patch ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-              class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
-            >
-              <div class="text-slate-400 text-xs">Patch</div>
-              <div class="text-white font-mono">{{ nextVersions.patch }}</div>
-            </button>
-            <button
-              @click="version = nextVersions.minor"
-              :class="version === nextVersions.minor ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-              class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
-            >
-              <div class="text-slate-400 text-xs">Minor</div>
-              <div class="text-white font-mono">{{ nextVersions.minor }}</div>
-            </button>
-            <button
-              @click="version = nextVersions.major"
-              :class="version === nextVersions.major ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-              class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
-            >
-              <div class="text-slate-400 text-xs">Major</div>
-              <div class="text-white font-mono">{{ nextVersions.major }}</div>
-            </button>
+          <div v-if="!showCustomVersion" class="space-y-1.5">
+            <div class="flex gap-2">
+              <button
+                v-for="level in (['patch', 'minor', 'major'] as const)" :key="level"
+                @click="version = nextVersions[level]"
+                :class="[
+                  version === nextVersions[level] ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500',
+                  suggestedBump === level && version !== nextVersions[level] ? 'ring-1 ring-emerald-500/40' : ''
+                ]"
+                class="flex-1 px-3 py-2 text-sm border rounded transition-colors relative"
+              >
+                <div class="text-slate-400 text-xs capitalize">{{ level }}</div>
+                <div class="text-white font-mono">{{ nextVersions[level] }}</div>
+                <div v-if="suggestedBump === level && manifestDiff?.suggestedBump !== 'none'" class="text-[10px] text-emerald-400/70 mt-0.5">suggested</div>
+              </button>
+            </div>
+            <div v-if="suggestedReason" class="text-[11px] text-slate-500 text-center">
+              {{ suggestedReason }}
+            </div>
           </div>
 
           <!-- Custom version input (hidden by default) -->
@@ -262,31 +360,25 @@
             </div>
 
             <!-- Version bump buttons -->
-            <div v-if="!showCustomRepublishVersion" class="flex gap-2">
-              <button
-                @click="republishVersion = nextVersions.patch"
-                :class="republishVersion === nextVersions.patch ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-                class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
-              >
-                <div class="text-slate-400 text-xs">Patch</div>
-                <div class="text-white font-mono">{{ nextVersions.patch }}</div>
-              </button>
-              <button
-                @click="republishVersion = nextVersions.minor"
-                :class="republishVersion === nextVersions.minor ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-                class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
-              >
-                <div class="text-slate-400 text-xs">Minor</div>
-                <div class="text-white font-mono">{{ nextVersions.minor }}</div>
-              </button>
-              <button
-                @click="republishVersion = nextVersions.major"
-                :class="republishVersion === nextVersions.major ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-                class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
-              >
-                <div class="text-slate-400 text-xs">Major</div>
-                <div class="text-white font-mono">{{ nextVersions.major }}</div>
-              </button>
+            <div v-if="!showCustomRepublishVersion" class="space-y-1.5">
+              <div class="flex gap-2">
+                <button
+                  v-for="level in (['patch', 'minor', 'major'] as const)" :key="level"
+                  @click="republishVersion = nextVersions[level]"
+                  :class="[
+                    republishVersion === nextVersions[level] ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500',
+                    suggestedBump === level && republishVersion !== nextVersions[level] ? 'ring-1 ring-emerald-500/40' : ''
+                  ]"
+                  class="flex-1 px-3 py-2 text-sm border rounded transition-colors relative"
+                >
+                  <div class="text-slate-400 text-xs capitalize">{{ level }}</div>
+                  <div class="text-white font-mono">{{ nextVersions[level] }}</div>
+                  <div v-if="suggestedBump === level && manifestDiff?.suggestedBump !== 'none'" class="text-[10px] text-emerald-400/70 mt-0.5">suggested</div>
+                </button>
+              </div>
+              <div v-if="suggestedReason" class="text-[11px] text-slate-500 text-center">
+                {{ suggestedReason }}
+              </div>
             </div>
 
             <!-- Custom version input (hidden by default) -->
@@ -393,6 +485,7 @@ import type { ExportState, VersionInfo, S3VerificationResult } from '@/composabl
 const props = defineProps<{
   state: ExportState
   versionInfo: VersionInfo | null
+  manifestDiff: any | null
   isLoading: boolean
   isPushing?: boolean
   pushResult?: { success: boolean; message?: string; error?: string } | null
@@ -440,12 +533,50 @@ const scpToApidev = ref(false)  // Off by default - course-configs is the primar
 const showRepublish = ref(false)
 const showCustomVersion = ref(false)
 
+// Diff details toggle
+const showDiffDetails = ref(false)
+
 // Re-publish form variables
 const republishVersion = ref('')
 const republishStatus = ref('beta')
 const republishToCourseConfigs = ref(true)
 const republishToApidev = ref(false)  // Off by default
 const showCustomRepublishVersion = ref(false)
+
+// Which bump level the diff suggests (null if no diff or no changes)
+const suggestedBump = computed(() => {
+  const bump = props.manifestDiff?.suggestedBump
+  if (!bump || bump === 'none') return 'patch' // default to patch
+  return bump as 'patch' | 'minor' | 'major'
+})
+
+// Brief reason for the suggestion (shown under the buttons)
+const suggestedReason = computed(() => {
+  const diff = props.manifestDiff
+  if (!diff || diff.isNewCourse) return ''
+  if (diff.suggestedBump === 'none') return ''
+
+  const parts: string[] = []
+  const s = diff.stats
+  if (diff.suggestedBump === 'major') {
+    if (s.seedsAdded) parts.push(`${s.seedsAdded} seed${s.seedsAdded > 1 ? 's' : ''} added`)
+    if (s.seedsRemoved) parts.push(`${s.seedsRemoved} removed`)
+    if (s.seedsReordered) parts.push(`${s.seedsReordered} reordered`)
+    if (s.introItemsAdded) parts.push(`${s.introItemsAdded} intro item${s.introItemsAdded > 1 ? 's' : ''} added`)
+    if (s.introItemsRemoved) parts.push(`${s.introItemsRemoved} intro removed`)
+  }
+  if (diff.suggestedBump === 'minor') {
+    if (s.canonicalsChanged) parts.push(`${s.canonicalsChanged} canonical${s.canonicalsChanged > 1 ? 's' : ''}`)
+    if (s.presentationsChanged) parts.push(`${s.presentationsChanged} presentation${s.presentationsChanged > 1 ? 's' : ''}`)
+    if (s.nodesAdded) parts.push(`${s.nodesAdded} node${s.nodesAdded > 1 ? 's' : ''} added`)
+  }
+  if (diff.suggestedBump === 'patch') {
+    if (s.durationsChanged) parts.push(`${s.durationsChanged} duration${s.durationsChanged > 1 ? 's' : ''}`)
+    if (s.samplesAdded) parts.push(`${s.samplesAdded} sample${s.samplesAdded > 1 ? 's' : ''} added`)
+    if (s.encouragementsChanged) parts.push(`${s.encouragementsChanged} encouragement${s.encouragementsChanged > 1 ? 's' : ''}`)
+  }
+  return parts.length > 0 ? parts.slice(0, 3).join(', ') : ''
+})
 
 // Calculate next versions (patch, minor, major) from existing version
 // For new courses (no existing version), default to 1.0.0
@@ -477,21 +608,43 @@ onMounted(() => {
   }
 })
 
-// Update version when version info is loaded - default to patch
+// Update version when version info is loaded - default to suggested or patch
 watch(() => props.versionInfo, (info) => {
   if (info) {
-    // Update to patch version of existing course
-    const parts = info.existingVersion.split('.').map(Number)
-    version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
+    const diff = props.manifestDiff
+    // Use diff suggestion if it's an actual bump; otherwise default to patch
+    if (diff?.suggestedBump && diff.suggestedBump !== 'none') {
+      version.value = diff.suggestedVersion
+    } else {
+      const parts = info.existingVersion.split('.').map(Number)
+      version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
+    }
+  }
+})
+
+// When manifest diff loads (may arrive after versionInfo), update the version
+watch(() => props.manifestDiff, (diff) => {
+  if (diff && props.versionInfo) {
+    // Use diff suggestion if it's an actual bump; otherwise default to patch
+    if (diff.suggestedBump && diff.suggestedBump !== 'none') {
+      version.value = diff.suggestedVersion
+    } else {
+      const parts = props.versionInfo.existingVersion.split('.').map(Number)
+      version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
+    }
   }
 })
 
 // Watch for showRepublish to load version suggestion
 watch(showRepublish, (isShowing) => {
   if (isShowing && props.versionInfo) {
-    // Default to patch version (most common case)
-    const parts = props.versionInfo.existingVersion.split('.').map(Number)
-    republishVersion.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
+    // Use diff suggestion if it's an actual bump, otherwise default to patch
+    if (props.manifestDiff?.suggestedBump && props.manifestDiff.suggestedBump !== 'none') {
+      republishVersion.value = props.manifestDiff.suggestedVersion
+    } else {
+      const parts = props.versionInfo.existingVersion.split('.').map(Number)
+      republishVersion.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
+    }
     republishStatus.value = props.state.manifestStatus || 'beta'
     showCustomRepublishVersion.value = false
   }
@@ -533,6 +686,25 @@ watch(() => props.isLoading, (loading) => {
     isPublishing.value = false
   }
 })
+
+function formatPatchItem(item: { type: string; count?: number; detail?: string }) {
+  const labels: Record<string, string> = {
+    'nodes_removed': 'Nodes removed',
+    'nodes_reordered': 'Nodes reordered',
+    'node_text_changed': 'Node text changed',
+    'samples_added': 'Samples added',
+    'samples_removed': 'Samples removed',
+    'sample_uuid_changed': 'Sample UUIDs changed',
+    'duration_updated': 'Durations updated',
+    'encouragements_changed': 'Encouragements changed',
+    'introduction_changed': 'Introduction',
+    'introduction_duration_changed': 'Introduction duration',
+  }
+  const label = labels[item.type] || item.type.replace(/_/g, ' ')
+  if (item.count) return `${label}: ${item.count}`
+  if (item.detail) return item.detail
+  return label
+}
 
 function handleDownloadManifest() {
   emit('downloadManifest')

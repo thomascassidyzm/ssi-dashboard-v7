@@ -20,6 +20,7 @@ const audioProcessor = require('./audio-processor.cjs')
 const voiceConfigService = require('./voice-config-service.cjs')
 const voiceDiscoveryService = require('./voice-discovery-service.cjs')
 const publishManifestService = require('./publish-manifest-service.cjs')
+const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 
 // =============================================================================
@@ -3168,7 +3169,7 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
     }
 
     const voiceConfig = course.voice_config || {}
-    const voiceId = voiceConfig[role] || voiceConfig.default || 'unknown'
+    const voiceId = voiceConfig.voices?.[role]?.voiceId || voiceConfig[role] || voiceConfig.default || 'unknown'
     const language = role === 'known' ? course.known_lang : course.target_lang
 
     // Query audio samples by role
@@ -3233,14 +3234,6 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 
     const uuids = samplesToRegenerate.map(s => s.id)
 
-    // Call Phase 8 to regenerate audio by role
-    const response = await proxyToPhase8('POST', `/regenerate-role/${courseCode}`, {
-      role,
-      dryRun: false,
-      flaggedOnly,
-      ...(limit ? { limit } : {})
-    })
-
     // Emit WebSocket event
     io.to(`course:${courseCode}`).emit('regeneration_started', {
       courseCode,
@@ -3250,27 +3243,54 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
       timestamp: new Date().toISOString()
     })
 
-    if (response.status === 200) {
-      res.json({
-        dryRun: false,
-        total: uuids.length,
-        success: response.data.success || uuids.length,
-        failed: response.data.failed || 0,
-        voiceId,
-        language,
-        regeneratedItems: samplesToRegenerate.map(s => ({
-          id: s.id,
-          text: s.text,
-          role: s.role
-        })),
-        jobId: response.data.jobId
-      })
-    } else {
-      res.status(response.status).json({
-        error: response.data.error || 'Regeneration failed',
-        ...response.data
-      })
-    }
+    // Return 202 immediately — regeneration runs in background
+    // Frontend polls GET /api/audio/status for progress
+    res.status(202).json({
+      accepted: true,
+      dryRun: false,
+      total: uuids.length,
+      voiceId,
+      language,
+      role,
+      message: `Regeneration of ${uuids.length} ${role} samples started in background. Monitor progress via audio status.`
+    })
+
+    // Run phase8 regeneration in background
+    ;(async () => {
+      try {
+        const response = await proxyToPhase8('POST', `/regenerate-role/${courseCode}`, {
+          role,
+          dryRun: false,
+          flaggedOnly,
+          ...(limit ? { limit } : {})
+        })
+
+        if (response.status === 200) {
+          logger.log(`[Regenerate Role] Completed ${role} for ${courseCode}: ${response.data.success || uuids.length} success, ${response.data.failed || 0} failed`)
+          io.to(`course:${courseCode}`).emit('regeneration_completed', {
+            courseCode,
+            role,
+            total: uuids.length,
+            success: response.data.success || uuids.length,
+            failed: response.data.failed || 0
+          })
+        } else {
+          logger.error(`[Regenerate Role] Failed ${role} for ${courseCode}: ${response.data.error || 'Unknown error'}`)
+          io.to(`course:${courseCode}`).emit('regeneration_error', {
+            courseCode,
+            role,
+            error: response.data.error || 'Regeneration failed'
+          })
+        }
+      } catch (error) {
+        logger.error(`[Regenerate Role] Background error for ${courseCode}/${role}:`, error.message)
+        io.to(`course:${courseCode}`).emit('regeneration_error', {
+          courseCode,
+          role,
+          error: error.message
+        })
+      }
+    })()
   } catch (error) {
     logger.error('Error in regenerate-role:', error)
     res.status(500).json({ error: error.message })
@@ -5329,7 +5349,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
     // If withAudio, run audio generation in background and return response immediately
     if (withAudio && audioJobId) {
       // Generate manifest WITHOUT audio first (fast)
-      const { manifest, audioGenerationWarnings: noAudioWarnings } = await generateLegacyManifest(courseCode, { withAudio: false })
+      const { manifest, audioGenerationWarnings: noAudioWarnings, welcomeMissing } = await generateLegacyManifest(courseCode, { withAudio: false })
 
       // Validate and save manifest
       const validation = validateManifest(manifest)
@@ -5399,7 +5419,9 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
         },
         savedToState: true,
         pendingPath: manifestPath,
-        warnings: [],
+        warnings: [
+          ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : [])
+        ],
         audioJobId: audioJobId
       })
 
@@ -5733,6 +5755,57 @@ app.get('/api/production/:courseCode/publish-manifest/version', async (req, res)
     })
   } catch (error) {
     logger.error('Error getting version suggestion:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/manifest-diff
+// Step 3: Compare pending manifest against published version in course-configs
+app.get('/api/production/:courseCode/manifest-diff', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const course = await supabaseClient.getCourse(courseCode)
+    if (!course) {
+      return res.status(404).json({ error: `Course ${courseCode} not found` })
+    }
+
+    const knownCode = languageCodeService.legacyToStandard(course.known_lang)
+    const targetCode = languageCodeService.legacyToStandard(course.target_lang)
+    const courseConfigsId = `${knownCode}-${targetCode}`
+
+    // Load pending manifest
+    const pendingPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    if (!fs.existsSync(pendingPath)) {
+      return res.status(404).json({ error: 'No pending manifest found. Generate one first (Step 1).' })
+    }
+    const pending = await fs.readJson(pendingPath)
+
+    // Load published manifest from course-configs
+    const repoCheck = publishManifestService.checkCourseConfigsRepo()
+    if (!repoCheck.exists) {
+      return res.json({ isNewCourse: true, suggestedVersion: '1.0.0', suggestedBump: 'none', major: [], minor: [], patch: [], stats: {} })
+    }
+
+    const publishedPath = path.join(repoCheck.path, 'Courses', `${courseConfigsId}.json`)
+    if (!fs.existsSync(publishedPath)) {
+      return res.json({ isNewCourse: true, suggestedVersion: '1.0.0', suggestedBump: 'none', major: [], minor: [], patch: [], stats: {} })
+    }
+
+    const published = await fs.readJson(publishedPath)
+
+    // Run diff
+    const diff = manifestDiffService.diffManifests(published, pending)
+    diff.courseConfigsId = courseConfigsId
+
+    logger.info(`[ManifestDiff] ${courseCode}: ${diff.suggestedBump} bump (${diff.major.length} major, ${diff.minor.length} minor, ${diff.patch.length} patch)`)
+    res.json(diff)
+  } catch (error) {
+    logger.error('Error computing manifest diff:', error)
     res.status(500).json({ error: error.message })
   }
 })
