@@ -354,7 +354,7 @@
               </div>
 
               <p class="text-sm text-slate-400 mb-4">
-                Creates "The [language] for — '[known]' — as in — '[context]' — is:" for all LEGOs. Context is drawn from a USE phrase or seed sentence (~15% intentionally get no context for variety). Target words are played separately.
+                Creates introduction audio for all LEGOs using the pattern: "The Spanish for — 'I want' — as in — 'I want to speak Spanish' — is:" — where the target language name is always in the learner's own language. Context phrase is drawn from a USE phrase or seed sentence (~15% intentionally get no context for variety). Target words are played as separate audio files.
               </p>
 
               <!-- Action Buttons -->
