@@ -48,7 +48,7 @@
       </section>
 
       <!-- Config toolbar: target + engine in one compact row -->
-      <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg px-4 py-2">
+      <section v-if="showAdvanced" class="bg-slate-800/30 border border-slate-700/50 rounded-lg px-4 py-2">
         <div class="flex items-center justify-between gap-4">
           <div class="flex items-center gap-2">
             <button
@@ -135,6 +135,14 @@
               {{ orchestratorRunning ? 'Running...' : 'Run' }}
             </button>
             <button
+              v-if="orchestratorRunning"
+              @click="stopBuilder"
+              class="px-2.5 py-1 rounded border text-xs font-medium transition-all bg-red-600/20 border-red-500/50 text-red-400 hover:bg-red-600/30"
+            >
+              Stop
+            </button>
+            <button
+              v-if="showAdvanced"
               @click="runDetective"
               :disabled="diagnosing"
               class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
@@ -143,6 +151,15 @@
                 : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-400'"
             >
               {{ diagnosing ? 'Diagnosing...' : 'Diagnose' }}
+            </button>
+            <button
+              @click="showAdvanced = !showAdvanced"
+              class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
+              :class="showAdvanced
+                ? 'bg-slate-600/30 border-slate-500/50 text-slate-300'
+                : 'bg-slate-700/30 border-slate-600/50 text-slate-500 hover:border-slate-500/50 hover:text-slate-400'"
+            >
+              Advanced
             </button>
           </div>
         </div>
@@ -275,7 +292,7 @@
               <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/{{ progress.totalSeeds || 668 }}</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
               <button
-                v-else-if="!translateRunning"
+                v-else-if="!translateRunning && showAdvanced"
                 @click="startTranslation"
                 :disabled="translateStarting"
                 class="px-3 py-1 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -306,7 +323,7 @@
               <span v-if="stageComplete('calibrate')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('calibrate')" class="stage-badge-locked">Locked</span>
               <button
-                v-else-if="!goldenStatus.running"
+                v-else-if="!goldenStatus.running && showAdvanced"
                 @click="startCalibrationBuild"
                 :disabled="goldenStarting"
                 class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -315,14 +332,14 @@
               </button>
               <span v-if="goldenStatus.running && pipelinePhase === 'calibrate'" class="text-xs text-amber-400 animate-pulse">Running...</span>
               <router-link
-                v-if="calibrationPendingReview > 0"
+                v-if="calibrationPendingReview > 0 && showAdvanced"
                 :to="`/production/${courseCode}/calibration-review`"
                 class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-xs font-medium rounded-lg transition-all"
               >
                 Review ({{ calibrationPendingReview }})
               </router-link>
               <!-- Reset -->
-              <template v-if="stageResetConfirm === 'calibrate'">
+              <template v-if="stageResetConfirm === 'calibrate' && showAdvanced">
                 <span class="text-xs text-red-400">Wipe seeds 1-10?</span>
                 <button @click="resetStage('calibrate')" :disabled="stageResetting === 'calibrate'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
                   {{ stageResetting === 'calibrate' ? 'Wiping...' : 'Confirm' }}
@@ -330,7 +347,7 @@
                 <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
               </template>
               <button
-                v-else-if="!stageLocked('calibrate')"
+                v-else-if="!stageLocked('calibrate') && showAdvanced"
                 @click="stageResetConfirm = 'calibrate'"
                 class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
               >Reset</button>
@@ -374,7 +391,7 @@
               <span v-if="stageComplete('golden')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('golden')" class="stage-badge-locked">Locked</span>
               <button
-                v-else-if="!goldenStatus.running"
+                v-else-if="!goldenStatus.running && showAdvanced"
                 @click="startGoldenBuild"
                 :disabled="goldenStarting"
                 class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -383,7 +400,7 @@
               </button>
               <span v-if="goldenStatus.running && pipelinePhase === 'golden'" class="text-xs text-amber-400 animate-pulse">Running...</span>
               <!-- Reset -->
-              <template v-if="stageResetConfirm === 'golden'">
+              <template v-if="stageResetConfirm === 'golden' && showAdvanced">
                 <span class="text-xs text-red-400">Wipe seeds 11-50?</span>
                 <button @click="resetStage('golden')" :disabled="stageResetting === 'golden'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
                   {{ stageResetting === 'golden' ? 'Wiping...' : 'Confirm' }}
@@ -391,7 +408,7 @@
                 <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
               </template>
               <button
-                v-else-if="!stageLocked('golden')"
+                v-else-if="!stageLocked('golden') && showAdvanced"
                 @click="stageResetConfirm = 'golden'"
                 class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
               >Reset</button>
@@ -401,7 +418,7 @@
             <div class="h-full rounded-full bg-amber-500 transition-all duration-500" :style="{ width: `${goldenRangePercent}%` }"></div>
           </div>
           <!-- Transition: Finalize Golden Seeds -->
-          <div v-if="stageComplete('golden') && !goldenFinalized" class="mt-2">
+          <div v-if="stageComplete('golden') && !goldenFinalized && showAdvanced" class="mt-2">
             <button
               @click="finalizeGoldenSeeds"
               :disabled="goldenFinalizing"
@@ -427,6 +444,7 @@
               <span v-else-if="stageLocked('golden-qa')" class="stage-badge-locked">Locked</span>
               <template v-else>
                 <button
+                  v-if="showAdvanced"
                   @click="startStrictQA"
                   :disabled="goldenQaStatus.running"
                   class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -460,14 +478,14 @@
               <span v-if="stageComplete('mvp')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('mvp')" class="stage-badge-locked">Locked</span>
               <button
-                v-else-if="progress.status !== 'running'"
+                v-else-if="progress.status !== 'running' && showAdvanced"
                 @click="startMvpBuild"
                 class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-xs font-medium rounded-lg transition-all"
               >
                 Start Build
               </button>
               <button
-                v-if="progress.status === 'running'"
+                v-if="progress.status === 'running' && showAdvanced"
                 @click="stopBuilder"
                 class="px-3 py-1 bg-slate-700/30 border border-slate-600/50 text-slate-400 hover:border-slate-500/50 text-xs font-medium rounded-lg transition-all"
               >
@@ -475,7 +493,7 @@
               </button>
               <span v-if="progress.status === 'running'" class="text-xs text-cyan-400 animate-pulse">Running...</span>
               <!-- Reset -->
-              <template v-if="stageResetConfirm === 'mvp'">
+              <template v-if="stageResetConfirm === 'mvp' && showAdvanced">
                 <span class="text-xs text-red-400">Wipe seeds 51-{{ seedCount }}?</span>
                 <button @click="resetStage('mvp')" :disabled="stageResetting === 'mvp'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
                   {{ stageResetting === 'mvp' ? 'Wiping...' : 'Confirm' }}
@@ -483,7 +501,7 @@
                 <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
               </template>
               <button
-                v-else-if="!stageLocked('mvp')"
+                v-else-if="!stageLocked('mvp') && showAdvanced"
                 @click="stageResetConfirm = 'mvp'"
                 class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
               >Reset</button>
@@ -516,7 +534,7 @@
               <span v-if="stageComplete('qa')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('qa')" class="stage-badge-locked">Locked</span>
               <button
-                v-else-if="!qaRunning"
+                v-else-if="!qaRunning && showAdvanced"
                 @click="startQA"
                 class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-xs font-medium rounded-lg transition-all"
               >
@@ -524,7 +542,7 @@
               </button>
               <span v-if="qaRunning" class="text-xs text-cyan-400 animate-pulse">Running...</span>
               <button
-                v-if="!stageLocked('qa') && (qa.progress > 0 || stageComplete('qa'))"
+                v-if="!stageLocked('qa') && (qa.progress > 0 || stageComplete('qa')) && showAdvanced"
                 @click="resetQA"
                 :disabled="qaResetting"
                 class="text-xs text-slate-500 hover:text-slate-300 transition-colors"
@@ -637,7 +655,7 @@
         </div>
 
         <!-- Optional: Full Build -->
-        <div v-if="stageComplete('mvp')" class="pipeline-card border-slate-700/30">
+        <div v-if="stageComplete('mvp') && showAdvanced" class="pipeline-card border-slate-700/30">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <span class="stage-number bg-slate-700/50 text-slate-400">+</span>
@@ -677,6 +695,7 @@
                 <span class="text-xs text-slate-500">{{ agent.runningMinutes }}m</span>
               </div>
               <button
+                v-if="showAdvanced"
                 @click="killAgent(agent.pid)"
                 class="text-xs px-2 py-0.5 rounded bg-red-600/20 text-red-400 hover:bg-red-600/30 transition-colors"
               >
@@ -721,7 +740,7 @@
 
         <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
           <!-- Rebuild Controls -->
-          <div class="flex items-center gap-4 mb-4">
+          <div v-if="showAdvanced" class="flex items-center gap-4 mb-4">
             <div class="flex items-center gap-2">
               <label class="text-xs text-slate-400">From</label>
               <input
@@ -792,7 +811,7 @@
       </section>
 
       <!-- Controls (simplified - only force reset now) -->
-      <section class="flex justify-end gap-3">
+      <section v-if="showAdvanced" class="flex justify-end gap-3">
         <button
           v-if="progress.status === 'running' && agents.running_count === 0"
           @click="forceResetBuilder"
@@ -979,6 +998,7 @@ function goldenCellClass(cell) {
 }
 
 // UI state
+const showAdvanced = ref(false)
 const isPolling = ref(false)
 
 // Seed grid state
