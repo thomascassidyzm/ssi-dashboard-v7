@@ -879,5 +879,43 @@ module.exports = function (ctx) {
     }
   });
 
+  // ===========================================================================
+  // POST /build/adhoc/:courseCode — Spawn ad-hoc agent with freeform prompt
+  // ===========================================================================
+  router.post('/build/adhoc/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { prompt, model = 'sonnet' } = req.body || {};
+      if (!prompt || !prompt.trim()) {
+        return res.status(400).json({ ok: false, error: 'prompt is required' });
+      }
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const port = ctx.config.PORT || 3471;
+      const wrappedPrompt = [
+        `# Ad-Hoc Task for course: ${courseCode}`,
+        '',
+        `Working directory: ${projectDir}`,
+        `Course Builder API: http://localhost:${port}`,
+        `Supabase client: services/supabase-client.cjs`,
+        '',
+        '## Task',
+        '',
+        prompt.trim()
+      ].join('\n');
+
+      const tmpFile = `/tmp/adhoc-${courseCode}-${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, wrappedPrompt);
+
+      const claudeCmd = `cd "${projectDir}" && claude --model ${model} --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      spawnInTerminal(ctx, claudeCmd, `Ad-hoc`, courseCode);
+
+      res.json({ ok: true, promptFile: tmpFile });
+    } catch (err) {
+      console.error('[ADHOC] Error:', err);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
   return router;
 };

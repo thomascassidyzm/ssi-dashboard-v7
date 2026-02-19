@@ -161,6 +161,46 @@
             >
               Advanced
             </button>
+            <button
+              @click="adhocExpanded = !adhocExpanded"
+              class="px-2 py-1 rounded border text-xs font-mono font-medium transition-all"
+              :class="adhocExpanded
+                ? 'bg-violet-600/20 border-violet-500/50 text-violet-400'
+                : 'bg-slate-700/30 border-slate-600/50 text-slate-500 hover:border-violet-500/50 hover:text-violet-400'"
+            >
+              &gt;_
+            </button>
+          </div>
+        </div>
+
+        <!-- Ad-hoc Agent Prompt -->
+        <div v-if="adhocExpanded" class="mb-3 bg-slate-800/50 border border-violet-500/30 rounded-lg p-3">
+          <div class="flex gap-2">
+            <textarea
+              v-model="adhocPrompt"
+              placeholder="Type a task for a Claude agent with course context..."
+              rows="2"
+              class="flex-1 bg-slate-900/50 border border-slate-600/50 rounded px-2 py-1.5 text-sm text-slate-200 placeholder-slate-500 resize-none focus:outline-none focus:border-violet-500/50"
+              @keydown.meta.enter="sendAdhoc"
+            />
+            <div class="flex flex-col gap-1.5">
+              <button
+                @click="adhocModel = adhocModel === 'sonnet' ? 'opus' : 'sonnet'"
+                class="px-2 py-1 rounded border text-xs font-medium bg-slate-700/30 border-slate-600/50 text-slate-400 hover:text-slate-300"
+              >
+                {{ adhocModel === 'sonnet' ? 'Sonnet' : 'Opus' }}
+              </button>
+              <button
+                @click="sendAdhoc"
+                :disabled="adhocSpawning || !adhocPrompt.trim()"
+                class="px-2 py-1 rounded border text-xs font-medium transition-all"
+                :class="adhocSpawning
+                  ? 'bg-violet-600/20 border-violet-500/50 text-violet-400 animate-pulse'
+                  : 'bg-violet-600/20 border-violet-500/50 text-violet-400 hover:bg-violet-600/30 disabled:opacity-30'"
+              >
+                {{ adhocSpawning ? 'Spawned!' : 'Send' }}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -937,6 +977,12 @@ const uncheckedGrouped = computed(() => {
 // WebSocket for real-time updates
 const socket = useTextGenSocket()
 const diagnosing = ref(false)
+
+// Ad-hoc agent state
+const adhocExpanded = ref(false)
+const adhocPrompt = ref('')
+const adhocModel = ref('sonnet')
+const adhocSpawning = ref(false)
 
 // Orchestrator state
 const orchestratorRunning = ref(false)
@@ -1955,6 +2001,25 @@ async function loadLanguages() {
     ]
   } finally {
     languagesLoading.value = false
+  }
+}
+
+async function sendAdhoc() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || !adhocPrompt.value.trim()) return
+  adhocSpawning.value = true
+  try {
+    const apiBase = getApiUrl()
+    await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ prompt: adhocPrompt.value, model: adhocModel.value })
+    })
+    adhocPrompt.value = ''
+    setTimeout(() => { adhocSpawning.value = false; adhocExpanded.value = false }, 2000)
+  } catch (err) {
+    console.error('Failed to spawn adhoc agent:', err)
+    adhocSpawning.value = false
   }
 }
 
