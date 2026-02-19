@@ -27,6 +27,9 @@ const generatePhraseBrief = require('./stage-phrases.cjs');
 const generateValidateBrief = require('./stage-validate.cjs');
 const generateQABrief = require('./stage-qa.cjs');
 
+// Simplified pipeline briefs
+const generateNewDecomposeBrief = require('./decompose.cjs');
+
 // Non-V2 briefs
 const generateTranslateBrief = require('./translate.cjs');
 const generateCalibrateBrief = require('./calibrate.cjs');
@@ -63,5 +66,8 @@ router.get('/:courseCode/golden-checker', (req, res) => serveBrief(res, generate
 router.get('/:courseCode/golden-qa', (req, res) => serveBrief(res, generateGoldenQABrief, req.params.courseCode));
 router.get('/:courseCode/orchestrator', (req, res) => serveBrief(res, generateOrchestratorBrief, req.params.courseCode));
 router.get('/:courseCode/build-mvp', (req, res) => serveBrief(res, generateBuildMvpBrief, req.params.courseCode, req.query));
+
+// Simplified pipeline
+router.get('/:courseCode/decompose', (req, res) => serveBrief(res, generateNewDecomposeBrief, req.params.courseCode, req.query));
 
 module.exports = router;

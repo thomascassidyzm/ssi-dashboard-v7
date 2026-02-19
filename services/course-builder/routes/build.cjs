@@ -973,5 +973,89 @@ module.exports = function (ctx) {
     }
   });
 
+  // ===========================================================================
+  // POST /build/decompose/:courseCode — Spawn single Opus decompose agent
+  // ===========================================================================
+  router.post('/build/decompose/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const dryRun = req.query.dry_run === 'true';
+      const terminal = req.query.terminal || 'iTerm2';
+
+      // Guard: no active decompose job
+      const { data: activeJob } = await ctx.supabase
+        .from('build_jobs')
+        .select('id, status')
+        .eq('course_code', courseCode)
+        .eq('pass', 'decompose')
+        .in('status', ['running'])
+        .maybeSingle();
+
+      if (activeJob && !dryRun) {
+        return res.status(409).json({ error: 'Decompose agent already running', job_id: activeJob.id });
+      }
+
+      // Fetch brief
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/decompose`);
+      if (!briefResp.ok) throw new Error(`Failed to fetch decompose brief: ${briefResp.status}`);
+      const brief = await briefResp.text();
+
+      if (dryRun) {
+        return res.json({ dry_run: true, brief });
+      }
+
+      // Write brief to temp file
+      const tmpFile = `/tmp/decompose_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      // Create build_jobs record
+      let jobId = null;
+      try {
+        const { data: jobData, error: jobError } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode,
+            pass: 'decompose',
+            status: 'running',
+            current_seed: 0,
+            seeds_completed: 0,
+            total_seeds: 668,
+            started_at: new Date().toISOString(),
+            last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard',
+            terminal: effectiveTerminal,
+            agent_count: 1,
+            respawn_count: 0,
+            machine_name: ctx.MACHINE_NAME,
+            build_mode: 'decompose'
+          })
+          .select('id')
+          .single();
+        if (!jobError && jobData) jobId = jobData.id;
+      } catch (e) {
+        console.error('[DECOMPOSE] Failed to create build_jobs record:', e.message);
+      }
+
+      // Spawn Opus agent
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      console.log(`[DECOMPOSE] Spawning decompose agent for ${courseCode} in ${effectiveTerminal}`);
+      spawnInTerminal(ctx, claudeCmd, 'Decompose', courseCode);
+
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        job_id: jobId,
+        brief_file: tmpFile,
+        message: `Decompose agent spawned for ${courseCode}`
+      });
+    } catch (err) {
+      console.error('[DECOMPOSE] Error starting decompose:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   return router;
 };

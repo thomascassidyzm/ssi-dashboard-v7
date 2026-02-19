@@ -1202,5 +1202,67 @@ USE:
     }
   });
 
+  // ===========================================================================
+  // GET /course/:courseCode/learnings — Fetch agent learnings
+  // ===========================================================================
+  router.get('/course/:courseCode/learnings', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { data, error } = await ctx.supabase
+        .from('courses')
+        .select('quality_rules')
+        .eq('course_code', courseCode)
+        .single();
+
+      if (error) throw error;
+
+      const learnings = data?.quality_rules?.agent_learnings || [];
+      res.json({ course_code: courseCode, learnings });
+    } catch (err) {
+      console.error('[LEARNINGS] Error fetching learnings:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ===========================================================================
+  // POST /course/:courseCode/learnings — Append an agent learning
+  // ===========================================================================
+  router.post('/course/:courseCode/learnings', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const { learning } = req.body;
+
+      if (!learning || typeof learning !== 'string') {
+        return res.status(400).json({ error: 'learning (string) is required' });
+      }
+
+      // Fetch current quality_rules
+      const { data: course, error: fetchError } = await ctx.supabase
+        .from('courses')
+        .select('quality_rules')
+        .eq('course_code', courseCode)
+        .single();
+
+      if (fetchError) throw fetchError;
+
+      const qualityRules = course?.quality_rules || {};
+      const learnings = qualityRules.agent_learnings || [];
+      learnings.push({ learning, created_at: new Date().toISOString() });
+      qualityRules.agent_learnings = learnings;
+
+      const { error: updateError } = await ctx.supabase
+        .from('courses')
+        .update({ quality_rules: qualityRules })
+        .eq('course_code', courseCode);
+
+      if (updateError) throw updateError;
+
+      res.json({ ok: true, count: learnings.length });
+    } catch (err) {
+      console.error('[LEARNINGS] Error appending learning:', err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   return router;
 };

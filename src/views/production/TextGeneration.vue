@@ -47,9 +47,10 @@
         </div>
       </section>
 
-      <!-- Config toolbar: target + engine in one compact row -->
-      <section v-if="showAdvanced" class="bg-slate-800/30 border border-slate-700/50 rounded-lg px-4 py-2">
-        <div class="flex items-center justify-between gap-4">
+      <!-- Target seeds control -->
+      <section v-if="!isCreateMode" class="bg-slate-800/30 border border-slate-700/50 rounded-lg px-4 py-2">
+        <div class="flex items-center gap-4">
+          <span class="text-xs text-slate-500 uppercase">Target</span>
           <div class="flex items-center gap-2">
             <button
               v-for="size in courseSizes"
@@ -69,19 +70,6 @@
               max="1000"
               class="w-16 px-2 py-1 rounded border bg-slate-700/50 border-slate-600/50 text-slate-200 text-xs text-center font-mono"
             />
-          </div>
-          <div class="flex items-center gap-1.5">
-            <button
-              v-for="engine in engines"
-              :key="engine.id"
-              @click="agentEngine = engine.id"
-              class="px-2.5 py-1 rounded border transition-all text-xs font-medium"
-              :class="agentEngine === engine.id
-                ? 'bg-cyan-600/20 border-cyan-500/50 text-cyan-400'
-                : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
-            >
-              {{ engine.label }}
-            </button>
           </div>
         </div>
       </section>
@@ -125,43 +113,6 @@
           <h2 class="text-xs font-medium text-slate-500 uppercase tracking-wide">Pipeline</h2>
           <div class="flex items-center gap-2">
             <button
-              @click="runOrchestrator"
-              :disabled="orchestratorRunning"
-              class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
-              :class="orchestratorRunning
-                ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400 animate-pulse cursor-wait'
-                : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-emerald-500/50 hover:text-emerald-400'"
-            >
-              {{ orchestratorRunning ? 'Running...' : 'Run' }}
-            </button>
-            <button
-              v-if="orchestratorRunning"
-              @click="stopBuilder"
-              class="px-2.5 py-1 rounded border text-xs font-medium transition-all bg-red-600/20 border-red-500/50 text-red-400 hover:bg-red-600/30"
-            >
-              Stop
-            </button>
-            <button
-              v-if="showAdvanced"
-              @click="runDetective"
-              :disabled="diagnosing"
-              class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
-              :class="diagnosing
-                ? 'bg-amber-600/20 border-amber-500/50 text-amber-400 animate-pulse cursor-wait'
-                : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-400'"
-            >
-              {{ diagnosing ? 'Diagnosing...' : 'Diagnose' }}
-            </button>
-            <button
-              @click="showAdvanced = !showAdvanced"
-              class="px-2.5 py-1 rounded border text-xs font-medium transition-all"
-              :class="showAdvanced
-                ? 'bg-slate-600/30 border-slate-500/50 text-slate-300'
-                : 'bg-slate-700/30 border-slate-600/50 text-slate-500 hover:border-slate-500/50 hover:text-slate-400'"
-            >
-              Advanced
-            </button>
-            <button
               @click="chatExpanded = !chatExpanded"
               class="px-2 py-1 rounded border text-xs font-medium transition-all relative"
               :class="chatExpanded
@@ -175,16 +126,16 @@
           </div>
         </div>
 
-        <!-- Unified Chat Panel -->
+        <!-- Chat Panel -->
         <div v-if="chatExpanded" class="mb-3 bg-slate-900/60 border rounded-lg overflow-hidden flex flex-col"
           :class="orchestratorHasPending ? 'border-amber-500/40' : 'border-slate-600/40'"
         >
           <!-- Header -->
           <div class="flex items-center justify-between px-3 py-2 border-b border-slate-700/50">
             <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full" :class="orchestratorHasPending ? 'bg-amber-400 animate-pulse' : pipelineStatus?.is_running ? 'bg-emerald-400' : 'bg-slate-600'"></span>
-              <span class="text-xs font-medium" :class="pipelineStatus?.is_running ? 'text-emerald-400' : 'text-slate-500'">
-                {{ pipelineStatus?.is_running ? 'Orchestrator' : 'Agent Chat' }}
+              <span class="w-2 h-2 rounded-full" :class="agents.running_count > 0 ? 'bg-emerald-400' : 'bg-slate-600'"></span>
+              <span class="text-xs font-medium" :class="agents.running_count > 0 ? 'text-emerald-400' : 'text-slate-500'">
+                Agent Chat
               </span>
               <span v-if="visibleChatMessages.length" class="text-xs text-slate-600">{{ visibleChatMessages.length }} messages</span>
             </div>
@@ -194,7 +145,7 @@
           <!-- Message thread -->
           <div ref="chatScrollEl" class="flex-1 overflow-y-auto px-3 py-2 space-y-2 max-h-72">
             <div v-if="!visibleChatMessages.length" class="text-xs text-slate-600 text-center py-4">
-              {{ pipelineStatus?.is_running ? 'Orchestrator messages will appear here' : 'Type below to spawn an agent' }}
+              Messages with the decompose agent will appear here
             </div>
             <div
               v-for="msg in visibleChatMessages"
@@ -210,40 +161,17 @@
                     ? 'bg-slate-800/60 border border-slate-700/40 text-slate-400'
                     : 'bg-slate-800/80 border border-slate-600/40 text-slate-200'"
               >
-                <div v-if="msg.checkpoint" class="text-amber-400 font-medium mb-1">{{ msg.checkpoint }}</div>
                 <div>{{ msg.message || msg.response }}</div>
                 <div class="text-slate-600 mt-1">{{ formatTime(msg.created_at) }}</div>
-                <div v-if="msg.status === 'responded'" class="text-slate-500 italic mt-1 text-[11px]">
-                  {{ msg.response_action }}{{ msg.response ? ` — ${msg.response}` : '' }}
-                </div>
               </div>
             </div>
-          </div>
-
-          <!-- Quick-action buttons for pending checkpoint -->
-          <div v-if="orchestratorHasPending" class="px-3 py-2 border-t border-slate-700/50 flex items-center gap-2">
-            <span class="text-xs text-amber-400/70">Waiting for response:</span>
-            <button
-              @click="respondToOrchestrator(pendingOrchestratorMessage.id, 'approve', chatInput)"
-              :disabled="orchestratorResponding[pendingOrchestratorMessage?.id]"
-              class="px-2.5 py-1 rounded border text-xs font-medium bg-emerald-600/20 border-emerald-500/40 text-emerald-400 hover:bg-emerald-600/30 disabled:opacity-40"
-            >
-              {{ orchestratorResponding[pendingOrchestratorMessage?.id] === 'approve' ? '...' : 'Approve' }}
-            </button>
-            <button
-              @click="respondToOrchestrator(pendingOrchestratorMessage.id, 'redo', chatInput)"
-              :disabled="orchestratorResponding[pendingOrchestratorMessage?.id]"
-              class="px-2.5 py-1 rounded border text-xs font-medium bg-amber-600/20 border-amber-500/40 text-amber-400 hover:bg-amber-600/30 disabled:opacity-40"
-            >
-              {{ orchestratorResponding[pendingOrchestratorMessage?.id] === 'redo' ? '...' : 'Redo' }}
-            </button>
           </div>
 
           <!-- Input -->
           <div class="px-3 py-2 border-t border-slate-700/50 flex gap-2">
             <textarea
               v-model="chatInput"
-              :placeholder="orchestratorHasPending ? 'Reply or hit Approve / Redo above...' : pipelineStatus?.is_running ? 'Message the Orchestrator...' : 'Spawn a Claude agent...'"
+              placeholder="Message the agent..."
               rows="2"
               class="flex-1 bg-slate-800/50 border border-slate-600/40 rounded px-2 py-1.5 text-xs text-slate-200 placeholder-slate-600 resize-none focus:outline-none focus:border-violet-500/50"
               @keydown.meta.enter="sendChat"
@@ -259,52 +187,6 @@
           </div>
         </div>
 
-        <!-- Detective Findings -->
-        <div v-if="socket.detectiveFindings.value" class="mb-3 bg-slate-800/50 border border-cyan-500/30 rounded-lg p-4">
-          <div class="flex items-center justify-between mb-2">
-            <div class="text-sm font-medium text-cyan-400">Detective Report</div>
-            <button @click="socket.detectiveFindings.value = null" class="text-slate-500 hover:text-slate-300 text-xs">Dismiss</button>
-          </div>
-          <div class="text-xs text-slate-300 mb-3">{{ socket.detectiveFindings.value.summary }}</div>
-          <div v-if="socket.detectiveFindings.value.findings?.length" class="space-y-2">
-            <div
-              v-for="(finding, i) in socket.detectiveFindings.value.findings"
-              :key="i"
-              class="flex items-center justify-between bg-slate-900/50 rounded px-3 py-2"
-            >
-              <div class="flex items-center gap-2">
-                <span
-                  class="w-2 h-2 rounded-full"
-                  :class="{
-                    'bg-red-500': finding.severity === 'error',
-                    'bg-amber-500': finding.severity === 'warning',
-                    'bg-cyan-500': finding.severity === 'info'
-                  }"
-                ></span>
-                <span class="text-xs text-slate-300">{{ finding.message }}</span>
-              </div>
-              <button
-                v-if="finding.action"
-                @click="executeDetectiveAction(finding.action)"
-                :disabled="detectiveActionStates[finding.action.path] === 'loading'"
-                class="px-2 py-0.5 border text-xs rounded transition-all min-w-[100px] text-center"
-                :class="{
-                  'bg-cyan-600/20 border-cyan-500/40 text-cyan-400 hover:bg-cyan-600/30': !detectiveActionStates[finding.action.path],
-                  'bg-amber-600/20 border-amber-500/40 text-amber-400 animate-pulse cursor-wait': detectiveActionStates[finding.action.path] === 'loading',
-                  'bg-emerald-600/20 border-emerald-500/40 text-emerald-400': detectiveActionStates[finding.action.path] === 'ok',
-                  'bg-red-600/20 border-red-500/40 text-red-400': detectiveActionStates[finding.action.path] === 'error',
-                }"
-              >
-                {{ detectiveActionStates[finding.action.path] === 'loading' ? 'Starting...'
-                   : detectiveActionStates[finding.action.path] === 'ok' ? 'Spawned'
-                   : detectiveActionStates[finding.action.path] === 'error' ? 'Failed'
-                   : finding.action.label }}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Orchestrator Message Log -->
         <!-- Stage 1: Translate -->
         <div class="pipeline-card" :class="stageCardClass('translate')">
           <div class="flex items-center justify-between">
@@ -312,14 +194,14 @@
               <span class="stage-number" :class="stageNumberClass('translate')">1</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Translate</div>
-                <div class="text-xs text-slate-500">Pass 1: Seed translations</div>
+                <div class="text-xs text-slate-500">668 seed translations</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/{{ progress.totalSeeds || 668 }}</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
               <button
-                v-else-if="!translateRunning && showAdvanced"
+                v-else-if="!translateRunning"
                 @click="startTranslation"
                 :disabled="translateStarting"
                 class="px-3 py-1 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -334,443 +216,33 @@
           </div>
         </div>
 
-        <!-- Stage 2: Calibrate -->
-        <div class="pipeline-card" :class="stageCardClass('calibrate')">
+        <!-- Stage 2: Decompose -->
+        <div class="pipeline-card" :class="stageCardClass('decompose')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('calibrate')">2</span>
+              <span class="stage-number" :class="stageNumberClass('decompose')">2</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Calibrate</div>
-                <div class="text-xs text-slate-500">Seeds 1-10: Human + Creator collaboration</div>
+                <div class="text-sm font-medium text-slate-200">Decompose</div>
+                <div class="text-xs text-slate-500">Single Opus agent + human oversight</div>
               </div>
-              <span class="gate-badge gate-badge-human gate-badge-locked" title="Calibrate is always a human gate">Human</span>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ calibrationDone }}/10</span>
-              <span v-if="stageComplete('calibrate')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('calibrate')" class="stage-badge-locked">Locked</span>
+              <span class="text-xs font-mono text-slate-300">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
+              <span v-if="stageComplete('decompose')" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageLocked('decompose')" class="stage-badge-locked">Locked</span>
               <button
-                v-else-if="!goldenStatus.running && showAdvanced"
-                @click="startCalibrationBuild"
-                :disabled="goldenStarting"
-                class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                {{ goldenStarting ? 'Spawning...' : 'Spawn Creator' }}
-              </button>
-              <span v-if="goldenStatus.running && pipelinePhase === 'calibrate'" class="text-xs text-amber-400 animate-pulse">Running...</span>
-              <router-link
-                v-if="calibrationPendingReview > 0 && showAdvanced"
-                :to="`/production/${courseCode}/calibration-review`"
-                class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-xs font-medium rounded-lg transition-all"
-              >
-                Review ({{ calibrationPendingReview }})
-              </router-link>
-              <button
-                v-if="!stageComplete('calibrate') && !stageLocked('calibrate') && calibrationSeeds.some(s => s.status !== 'empty') && calibrationDone < goldenSeedCount"
-                @click="approveAllCalibSeeds"
-                :disabled="calibApprovingAll"
+                v-else-if="!decomposeRunning"
+                @click="startDecompose"
+                :disabled="decomposeStarting"
                 class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
-                {{ calibApprovingAll ? 'Approving...' : 'Approve All' }}
+                {{ decomposeStarting ? 'Spawning...' : 'Start Agent' }}
               </button>
-              <!-- Reset -->
-              <template v-if="stageResetConfirm === 'calibrate' && showAdvanced">
-                <span class="text-xs text-red-400">Wipe seeds 1-10?</span>
-                <button @click="resetStage('calibrate')" :disabled="stageResetting === 'calibrate'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
-                  {{ stageResetting === 'calibrate' ? 'Wiping...' : 'Confirm' }}
-                </button>
-                <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
-              </template>
-              <button
-                v-else-if="!stageLocked('calibrate') && showAdvanced"
-                @click="stageResetConfirm = 'calibrate'"
-                class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
-              >Reset</button>
+              <span v-if="decomposeRunning" class="text-xs text-emerald-400 animate-pulse">Running...</span>
             </div>
           </div>
-          <div v-if="!stageLocked('calibrate')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
-            <div class="h-full rounded-full bg-amber-500 transition-all duration-500" :style="{ width: `${calibrationPercent}%` }"></div>
-          </div>
-          <!-- Calibration seed mini-grid -->
-          <div v-if="!stageLocked('calibrate') && goldenSeeds.length > 0" class="mt-2 flex flex-wrap gap-1">
-            <div
-              v-for="cell in calibrationSeeds"
-              :key="cell.seed_number"
-              class="w-6 h-6 rounded-sm flex items-center justify-center text-xs font-mono cursor-pointer transition-all"
-              :class="[goldenCellClass(cell), selectedCalibSeed === cell.seed_number ? 'ring-2 ring-white/70 ring-offset-1 ring-offset-slate-900' : '']"
-              :title="`S${cell.seed_number}: ${cell.status} — click to review`"
-              @click="selectCalibSeed(cell.seed_number)"
-            >
-              {{ cell.seed_number }}
-            </div>
-          </div>
-
-          <!-- Inline calibration phrase reviewer -->
-          <div v-if="selectedCalibSeed !== null" class="mt-3 border-t border-slate-700/50 pt-3">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-mono text-slate-400">Seed {{ selectedCalibSeed }}</span>
-              <button @click="selectedCalibSeed = null; calibSeedPhrases = []" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
-            </div>
-            <!-- Seed sentence -->
-            <div class="mb-3 p-2 bg-slate-800/60 border border-slate-700/40 rounded">
-              <div class="text-[10px] text-slate-500 mb-1 font-mono tracking-wider uppercase">Seed</div>
-              <div class="flex items-start gap-2 flex-wrap">
-                <span class="text-sm font-medium text-slate-200">{{ goldenSeeds.find(s => s.seed_number === selectedCalibSeed)?.known_text || '…' }}</span>
-                <span class="text-slate-500 text-xs mt-0.5">→</span>
-                <span class="text-sm text-emerald-400">{{ goldenSeeds.find(s => s.seed_number === selectedCalibSeed)?.target_text || '…' }}</span>
-              </div>
-            </div>
-            <div v-if="calibSeedLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading...</div>
-            <div v-else-if="calibSeedPhrases.length === 0" class="text-xs text-slate-600 py-2">No phrases found for this seed.</div>
-            <div v-else class="space-y-3 max-h-72 overflow-y-auto pr-1">
-              <div v-for="lego in calibSeedPhrases" :key="lego.lego_index" class="border border-slate-700/40 rounded p-2">
-                <!-- LEGO header -->
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="text-[10px] font-mono text-slate-600">L{{ lego.lego_index }}</span>
-                  <template v-if="lego.meta">
-                    <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-slate-700/40 text-slate-400'">{{ lego.meta.type || lego.meta.lego_type }}</span>
-                    <span class="text-xs font-medium text-slate-200">{{ lego.meta.known_text }}</span>
-                    <span class="text-slate-600 text-xs">→</span>
-                    <span class="text-xs font-medium text-emerald-400">{{ lego.meta.target_text }}</span>
-                  </template>
-                </div>
-                <!-- Phrases -->
-                <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-xs py-0.5 pl-2">
-                  <span class="font-mono w-8 shrink-0" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-slate-500' : 'text-amber-400/70'">
-                    {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
-                  </span>
-                  <span class="text-slate-300">{{ phrase.known_text }}</span>
-                  <span class="text-slate-600 shrink-0">→</span>
-                  <span class="text-slate-400">{{ phrase.target_text }}</span>
-                </div>
-              </div>
-            </div>
-            <!-- Footer: notes + redo + approve -->
-            <div class="mt-2 flex gap-2 items-start">
-              <textarea
-                v-model="calibSeedNotes"
-                placeholder="Notes for redo (optional)..."
-                rows="1"
-                class="flex-1 bg-slate-800/80 border border-slate-700 rounded text-xs text-slate-300 placeholder-slate-600 px-2 py-1 resize-none"
-              />
-              <button
-                @click="redoCalibSeed"
-                :disabled="calibRedoing"
-                class="px-2 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs rounded transition-all shrink-0"
-              >{{ calibRedoing ? 'Sending...' : 'Redo' }}</button>
-              <button
-                @click="approveCalibSeed"
-                :disabled="calibApproving"
-                class="px-2 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs rounded transition-all shrink-0"
-              >{{ calibApproving ? 'Approving...' : 'Approve' }}</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stage 3: Golden -->
-        <div class="pipeline-card" :class="stageCardClass('golden')">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('golden')">3</span>
-              <div>
-                <div class="text-sm font-medium text-slate-200">Golden</div>
-                <div class="text-xs text-slate-500">Seeds 11-50: Creator + Checker agents</div>
-              </div>
-              <span
-                class="gate-badge cursor-pointer"
-                :class="gateModes.golden === 'agent' ? 'gate-badge-agent' : 'gate-badge-human'"
-                @click="toggleGateMode('golden')"
-                :title="`Click to switch to ${gateModes.golden === 'agent' ? 'human' : 'agent'} gate`"
-              >{{ gateModes.golden === 'agent' ? 'Agent' : 'Human' }}</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ goldenRangeDone }}/{{ goldenRangeTotal }}</span>
-              <span v-if="stageComplete('golden')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('golden')" class="stage-badge-locked">Locked</span>
-              <button
-                v-else-if="!goldenStatus.running && showAdvanced"
-                @click="startGoldenBuild"
-                :disabled="goldenStarting"
-                class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                {{ goldenStarting ? 'Spawning...' : 'Launch Creator + Checker' }}
-              </button>
-              <span v-if="goldenStatus.running && pipelinePhase === 'golden'" class="text-xs text-amber-400 animate-pulse">Running...</span>
-              <!-- Reset -->
-              <template v-if="stageResetConfirm === 'golden' && showAdvanced">
-                <span class="text-xs text-red-400">Wipe seeds 11-50?</span>
-                <button @click="resetStage('golden')" :disabled="stageResetting === 'golden'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
-                  {{ stageResetting === 'golden' ? 'Wiping...' : 'Confirm' }}
-                </button>
-                <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
-              </template>
-              <button
-                v-else-if="!stageLocked('golden') && showAdvanced"
-                @click="stageResetConfirm = 'golden'"
-                class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
-              >Reset</button>
-            </div>
-          </div>
-          <div v-if="!stageLocked('golden')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
-            <div class="h-full rounded-full bg-amber-500 transition-all duration-500" :style="{ width: `${goldenRangePercent}%` }"></div>
-          </div>
-          <!-- Transition: Finalize Golden Seeds -->
-          <div v-if="stageComplete('golden') && !goldenFinalized && showAdvanced" class="mt-2">
-            <button
-              @click="finalizeGoldenSeeds"
-              :disabled="goldenFinalizing"
-              class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-            >
-              {{ goldenFinalizing ? 'Finalizing...' : 'Finalize Golden Seeds' }}
-            </button>
-          </div>
-        </div>
-
-        <!-- Stage 4: Golden QA -->
-        <div class="pipeline-card" :class="stageCardClass('golden-qa')">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('golden-qa')">4</span>
-              <div>
-                <div class="text-sm font-medium text-slate-200">Golden QA</div>
-                <div class="text-xs text-slate-500">Seeds 1-50: Speakability + grammar check</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span v-if="stageComplete('golden-qa')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('golden-qa')" class="stage-badge-locked">Locked</span>
-              <template v-else>
-                <button
-                  v-if="showAdvanced"
-                  @click="startStrictQA"
-                  :disabled="goldenQaStatus.running"
-                  class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-                >
-                  1-50 QA Check
-                </button>
-                <span v-if="goldenQaStatus.running" class="text-xs text-amber-400 animate-pulse">Running...</span>
-              </template>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stage 5: Build MVP (parallel seed/complete agents) -->
-        <div class="pipeline-card" :class="stageCardClass('mvp')">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('mvp')">5</span>
-              <div>
-                <div class="text-sm font-medium text-slate-200">Build MVP</div>
-                <div class="text-xs text-slate-500">Seeds 51-{{ seedCount }}: Parallel seed/complete agents</div>
-              </div>
-              <span
-                class="gate-badge cursor-pointer"
-                :class="gateModes.build_mvp === 'agent' ? 'gate-badge-agent' : 'gate-badge-human'"
-                @click="toggleGateMode('build_mvp')"
-                :title="`Click to switch to ${gateModes.build_mvp === 'agent' ? 'human' : 'agent'} gate`"
-              >{{ gateModes.build_mvp === 'agent' ? 'Agent' : 'Human' }}</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ mvpDecomposed }}/{{ mvpTotal }}</span>
-              <span v-if="stageComplete('mvp')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('mvp')" class="stage-badge-locked">Locked</span>
-              <button
-                v-else-if="progress.status !== 'running' && showAdvanced"
-                @click="startMvpBuild"
-                class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-xs font-medium rounded-lg transition-all"
-              >
-                Start Build
-              </button>
-              <button
-                v-if="progress.status === 'running' && showAdvanced"
-                @click="stopBuilder"
-                class="px-3 py-1 bg-slate-700/30 border border-slate-600/50 text-slate-400 hover:border-slate-500/50 text-xs font-medium rounded-lg transition-all"
-              >
-                Stop
-              </button>
-              <span v-if="progress.status === 'running'" class="text-xs text-cyan-400 animate-pulse">Running...</span>
-              <!-- Reset -->
-              <template v-if="stageResetConfirm === 'mvp' && showAdvanced">
-                <span class="text-xs text-red-400">Wipe seeds 51-{{ seedCount }}?</span>
-                <button @click="resetStage('mvp')" :disabled="stageResetting === 'mvp'" class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-xs rounded transition-colors">
-                  {{ stageResetting === 'mvp' ? 'Wiping...' : 'Confirm' }}
-                </button>
-                <button @click="stageResetConfirm = null" class="text-xs text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
-              </template>
-              <button
-                v-else-if="!stageLocked('mvp') && showAdvanced"
-                @click="stageResetConfirm = 'mvp'"
-                class="text-xs text-red-400/60 hover:text-red-400 transition-colors"
-              >Reset</button>
-            </div>
-          </div>
-          <div v-if="!stageLocked('mvp')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
-            <div class="h-full rounded-full bg-cyan-500 transition-all duration-500" :style="{ width: `${mvpPercent}%` }"></div>
-          </div>
-        </div>
-
-        <!-- Stage 6: QA Review -->
-        <div class="pipeline-card" :class="stageCardClass('qa')">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('qa')">6</span>
-              <div>
-                <div class="text-sm font-medium text-slate-200">QA Review</div>
-                <div class="text-xs text-slate-500">Full-course speakability check</div>
-              </div>
-              <span
-                class="gate-badge cursor-pointer"
-                :class="gateModes.qa_review === 'agent' ? 'gate-badge-agent' : 'gate-badge-human'"
-                @click="toggleGateMode('qa_review')"
-                :title="`Click to switch to ${gateModes.qa_review === 'agent' ? 'human' : 'agent'} gate`"
-              >{{ gateModes.qa_review === 'agent' ? 'Agent' : 'Human' }}</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span v-if="qa.flags > 0" class="text-xs text-red-400">{{ qa.flags }} flagged</span>
-              <span class="text-xs font-mono text-slate-300">{{ qa.progress }}%</span>
-              <span v-if="stageComplete('qa')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('qa')" class="stage-badge-locked">Locked</span>
-              <button
-                v-else-if="!qaRunning && showAdvanced"
-                @click="startQA"
-                class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 text-xs font-medium rounded-lg transition-all"
-              >
-                Start QA
-              </button>
-              <span v-if="qaRunning" class="text-xs text-cyan-400 animate-pulse">Running...</span>
-              <button
-                v-if="!stageLocked('qa') && (qa.progress > 0 || stageComplete('qa')) && showAdvanced"
-                @click="resetQA"
-                :disabled="qaResetting"
-                class="text-xs text-slate-500 hover:text-slate-300 transition-colors"
-              >
-                {{ qaResetting ? 'Resetting...' : 'Reset' }}
-              </button>
-            </div>
-          </div>
-          <div v-if="!stageLocked('qa')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
-            <div class="h-full rounded-full bg-cyan-500 transition-all duration-500" :style="{ width: `${qa.progress}%` }"></div>
-          </div>
-          <!-- QA Details (expanded when active) -->
-          <div v-if="!stageLocked('qa') && qa.total > 0" class="mt-2 flex items-center gap-4 text-xs text-slate-500">
-            <span>{{ qa.checked.toLocaleString() }}/{{ qa.total.toLocaleString() }} checked</span>
-            <span v-if="qa.errors > 0" class="text-red-400">{{ qa.errors }} errors</span>
-            <span v-if="qa.warnings > 0" class="text-amber-400">{{ qa.warnings }} warnings</span>
-            <template v-if="qa.flags > 0">
-              <button
-                v-if="!deleteFlaggedConfirming"
-                @click="deleteFlaggedConfirming = true"
-                class="text-red-400 hover:text-red-300 transition-colors ml-auto"
-              >
-                Delete flagged phrases
-              </button>
-              <template v-if="deleteFlaggedConfirming">
-                <span class="text-red-400 ml-auto">Delete {{ qa.flags }} flagged phrases?</span>
-                <button
-                  @click="deleteFlaggedPhrases"
-                  :disabled="deletingFlagged"
-                  class="px-2 py-0.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white rounded transition-colors"
-                >
-                  {{ deletingFlagged ? 'Deleting...' : 'Confirm' }}
-                </button>
-                <button
-                  @click="deleteFlaggedConfirming = false"
-                  class="text-slate-400 hover:text-slate-200 transition-colors"
-                >
-                  Cancel
-                </button>
-              </template>
-            </template>
-          </div>
-          <!-- Unchecked Phrases -->
-          <div v-if="qa.progress > 0 && qa.progress < 100 && uncheckedPhrases.length > 0" class="mt-2 bg-slate-700/20 border border-slate-600/50 rounded-lg p-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs text-slate-300">
-                {{ uncheckedPhrases.length }} unchecked phrases from {{ uncheckedGrouped.length }} seeds
-              </span>
-              <button
-                @click="showUnchecked = !showUnchecked"
-                class="text-xs text-slate-400 hover:text-slate-200 transition-colors"
-              >
-                {{ showUnchecked ? 'Hide' : 'Show' }}
-              </button>
-            </div>
-            <div v-if="showUnchecked" class="mt-2 space-y-2 max-h-60 overflow-y-auto">
-              <div v-for="group in uncheckedGrouped" :key="group.seed">
-                <div class="text-xs font-medium text-slate-400 mb-1">Seed {{ group.seed }} ({{ group.phrases.length }})</div>
-                <div class="space-y-1">
-                  <div
-                    v-for="phrase in group.phrases"
-                    :key="phrase.id"
-                    class="text-xs text-slate-300 bg-slate-700/30 rounded px-2 py-1 font-mono"
-                  >
-                    "{{ phrase.known_text }}" → "{{ phrase.target_text }}"
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 mt-2">
-              <button
-                @click="markAllChecked"
-                :disabled="markingChecked"
-                class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                {{ markingChecked ? 'Marking...' : 'Mark All Checked' }}
-              </button>
-              <button
-                @click="startQA"
-                :disabled="qaRunning"
-                class="px-3 py-1 bg-slate-700/30 border border-slate-600/50 text-slate-400 hover:border-slate-500/50 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                Run QA Agent
-              </button>
-              <span v-if="uncheckedStatus" class="text-xs" :class="uncheckedStatus.ok ? 'text-cyan-400/70' : 'text-red-400'">
-                {{ uncheckedStatus.message }}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stage 7: Gender Prep (only for gendered languages) -->
-        <div v-if="genderPrep.isGendered" class="pipeline-card" :class="stageCardClass('gender-prep')">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('gender-prep')">7</span>
-              <div>
-                <div class="text-sm font-medium text-slate-200">Gender Prep</div>
-                <div class="text-xs text-slate-500">Expand text for gendered TTS voices</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span v-if="genderPrep.processed" class="text-xs font-mono text-slate-300">{{ genderPrep.totalExpansions }} texts expanded</span>
-              <span v-if="genderPrep.flagged > 0" class="text-xs text-amber-400">{{ genderPrep.flagged }} audio flagged</span>
-              <span v-if="genderPrep.processed" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('gender-prep')" class="stage-badge-locked">Locked</span>
-              <span v-else class="text-xs text-slate-500">Run from Audio tab</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Optional: Full Build -->
-        <div v-if="stageComplete('mvp') && showAdvanced" class="pipeline-card border-slate-700/30">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number bg-slate-700/50 text-slate-400">+</span>
-              <div>
-                <div class="text-sm font-medium text-slate-400">Full Build</div>
-                <div class="text-xs text-slate-500">Seeds {{ seedCount + 1 }}-668 (optional)</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span v-if="fullBuildDecomposed > 0" class="text-xs font-mono text-slate-300">{{ fullBuildDecomposed }}/{{ fullBuildTotal }}</span>
-              <button
-                v-if="progress.status !== 'running'"
-                @click="seedCount = 668; startBuilder()"
-                class="px-3 py-1 bg-slate-700/30 border border-slate-600/50 text-slate-400 hover:border-slate-500/50 text-xs font-medium rounded-lg transition-all"
-              >
-                Continue to 668
-              </button>
-            </div>
+          <div v-if="!stageLocked('decompose')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
+            <div class="h-full rounded-full bg-emerald-500 transition-all duration-500" :style="{ width: `${decomposePercent}%` }"></div>
           </div>
         </div>
 
@@ -792,7 +264,6 @@
                 <span class="text-xs text-slate-500">{{ agent.runningMinutes }}m</span>
               </div>
               <button
-                v-if="showAdvanced"
                 @click="killAgent(agent.pid)"
                 class="text-xs px-2 py-0.5 rounded bg-red-600/20 text-red-400 hover:bg-red-600/30 transition-colors"
               >
@@ -800,11 +271,6 @@
               </button>
             </div>
           </div>
-        </div>
-
-        <!-- Status Message -->
-        <div v-if="goldenStatusMessage" class="text-xs px-2" :class="goldenStatusMessage.ok ? 'text-emerald-400' : 'text-red-400'">
-          {{ goldenStatusMessage.text }}
         </div>
       </section>
 
@@ -836,48 +302,6 @@
         </button>
 
         <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
-          <!-- Rebuild Controls -->
-          <div v-if="showAdvanced" class="flex items-center gap-4 mb-4">
-            <div class="flex items-center gap-2">
-              <label class="text-xs text-slate-400">From</label>
-              <input
-                v-model.number="rebuildFrom"
-                type="number" min="1" :max="rebuildTo"
-                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
-              />
-              <label class="text-xs text-slate-400">To</label>
-              <input
-                v-model.number="rebuildTo"
-                type="number" :min="rebuildFrom" max="999"
-                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
-              />
-            </div>
-            <button
-              v-if="!rebuildConfirming"
-              @click="rebuildConfirming = true"
-              :disabled="rebuildRunning"
-              class="px-4 py-1.5 bg-red-600/80 hover:bg-red-600 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
-            >
-              Rebuild
-            </button>
-            <template v-if="rebuildConfirming">
-              <span class="text-xs text-red-400">Delete LEGOs + phrases for seeds {{ rebuildFrom }}-{{ rebuildTo }}?</span>
-              <button
-                @click="executeRebuild"
-                :disabled="rebuildRunning"
-                class="px-4 py-1.5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors"
-              >
-                {{ rebuildRunning ? 'Wiping...' : 'Confirm' }}
-              </button>
-              <button
-                @click="rebuildConfirming = false"
-                class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
-              >
-                Cancel
-              </button>
-            </template>
-          </div>
-
           <!-- Grid -->
           <div class="flex flex-wrap gap-1">
             <div
@@ -932,7 +356,7 @@
             </div>
           </div>
 
-          <!-- Legend: build progress (primary) -->
+          <!-- Legend -->
           <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30"></span> Empty</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Building</span>
@@ -941,31 +365,17 @@
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
           </div>
-          <!-- Legend: range accents (secondary) -->
-          <div class="flex items-center gap-4 mt-1 text-xs text-slate-500">
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30 border-t-2 border-t-orange-400"></span> Calibration (1-{{ goldenSeedCount }})</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30 border-t-2 border-t-yellow-300/80"></span> Golden ({{ goldenSeedCount + 1 }}-50)</span>
-            <span class="text-slate-600">No accent = MVP/Full</span>
-          </div>
         </div>
       </section>
 
-      <!-- Controls (simplified - only force reset now) -->
-      <section v-if="showAdvanced" class="flex justify-end gap-3">
+      <!-- Controls -->
+      <section v-if="progress.status === 'running' && agents.running_count === 0" class="flex justify-end gap-3">
         <button
-          v-if="progress.status === 'running' && agents.running_count === 0"
           @click="forceResetBuilder"
           class="px-4 py-2 bg-orange-600/80 hover:bg-orange-500 text-white text-sm font-medium rounded-lg transition-colors"
-          title="Force reset when Stop button fails (no agents running)"
+          title="Force reset when no agents are running"
         >
           Force Reset
-        </button>
-        <button
-          v-if="progress.status === 'complete'"
-          @click="resetBuilder"
-          class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 text-sm font-medium rounded-lg transition-colors"
-        >
-          Reset
         </button>
       </section>
 
@@ -1011,16 +421,10 @@ const effectiveCourseCode = computed(() => {
 
 // Configuration
 const seedCount = ref(300)
-const agentEngine = ref('cli')
 
 const courseSizes = [
   { seeds: 300, label: 'MVP' },
   { seeds: 668, label: 'Full' }
-]
-
-const engines = [
-  { id: 'cli', label: 'iTerm2', description: 'Pro Max #1' },
-  { id: 'terminal', label: 'Terminal', description: 'Pro Max #2' }
 ]
 
 // Progress state
@@ -1040,122 +444,26 @@ const agents = ref({
   total_tracked: 0
 })
 
-// QA state
-const qaRunning = ref(false)
-const qaResetting = ref(false)
-const qa = ref({
-  total: 0,
-  checked: 0,
-  progress: 0,
-  flags: 0,
-  errors: 0,
-  warnings: 0
-})
-
-// Unchecked phrases state
-const uncheckedPhrases = ref([])
-const showUnchecked = ref(false)
-const markingChecked = ref(false)
-const uncheckedStatus = ref(null)
-
-// Delete flagged phrases state
-const deleteFlaggedConfirming = ref(false)
-const deletingFlagged = ref(false)
-
-// Gender prep state
-const genderPrep = ref({ isGendered: false, processed: false, totalExpansions: 0, processedAt: null, flagged: 0 })
-
-const uncheckedGrouped = computed(() => {
-  const groups = {}
-  for (const p of uncheckedPhrases.value) {
-    if (!groups[p.seed_number]) groups[p.seed_number] = { seed: p.seed_number, phrases: [] }
-    groups[p.seed_number].phrases.push(p)
-  }
-  return Object.values(groups).sort((a, b) => a.seed - b.seed)
-})
-
 // WebSocket for real-time updates
 const socket = useTextGenSocket()
-const diagnosing = ref(false)
 
-// Unified chat state
+// Chat state
 const chatExpanded = ref(false)
 const chatInput = ref('')
 const chatSending = ref(false)
 const chatClearedAt = ref(localStorage.getItem('chat_cleared_at') || null)
 const chatScrollEl = ref(null)
 
-// Orchestrator state
-const orchestratorRunning = ref(false)
+// Orchestrator messages (used for chat display)
 const orchestratorMessages = ref([])
-const orchestratorLogExpanded = ref(false)
-const orchestratorResponding = ref({})
-const orchestratorCommentText = ref({})
-
-// Gate modes
-const gateModes = ref({})
 
 // Translation agent state
 const translateStarting = ref(false)
 const translateRunning = ref(false)
 
-// Golden seed builder state
-const goldenSeeds = ref([])
-const goldenTargetSeeds = ref(50)
-const goldenStarting = ref(false)
-
-// Calibration review state
-const selectedCalibSeed = ref(null)
-const calibSeedPhrases = ref([])
-const calibSeedLoading = ref(false)
-const calibSeedNotes = ref('')
-const calibApproving = ref(false)
-const calibApprovingAll = ref(false)
-const calibRedoing = ref(false)
-const goldenFinalizing = ref(false)
-const goldenStatusMessage = ref(null)
-const goldenFinalized = ref(false)
-const goldenSeedCount = ref(10) // Calibrate = seeds 1-10, Golden = seeds 11-50
-
-// Golden QA state
-const goldenQaStatus = ref({ status: 'not_started', complete: false, running: false })
-
-const goldenStatus = computed(() => {
-  const seeds = goldenSeeds.value
-  const approved = seeds.filter(s => s.status === 'approved').length
-  const allApproved = seeds.length > 0 && approved === seeds.length
-  // "running" = actual build job active, not just seeds awaiting QA
-  const running = progress.value.status === 'running' &&
-    ['golden', 'calibration'].includes(progress.value.buildPass)
-  return { running, allApproved, finalized: goldenFinalized.value, approved }
-})
-
-const goldenSummary = computed(() => {
-  const seeds = goldenSeeds.value
-  return {
-    approved: seeds.filter(s => s.status === 'approved').length,
-    submitted: seeds.filter(s => s.status === 'submitted').length,
-    checking: seeds.filter(s => s.status === 'checking').length,
-    flagged: seeds.filter(s => s.status === 'flagged').length,
-    escalated: seeds.filter(s => s.status === 'escalated').length,
-    empty: seeds.filter(s => s.status === 'empty').length
-  }
-})
-
-function goldenCellClass(cell) {
-  switch (cell.status) {
-    case 'approved': return 'bg-emerald-500/80 text-emerald-100'
-    case 'submitted': return 'bg-cyan-500/80 text-cyan-100'
-    case 'checking': return 'bg-amber-500/80 text-amber-100'
-    case 'flagged': return 'bg-red-500/80 text-red-100'
-    case 'escalated': return 'bg-orange-500/80 text-orange-100'
-    default: return 'bg-slate-700/80 text-slate-500'
-  }
-}
-
-// UI state
-const showAdvanced = ref(false)
-const isPolling = ref(false)
+// Decompose agent state
+const decomposeStarting = ref(false)
+const decomposeRunning = ref(false)
 
 // Seed grid state
 const seedGrid = ref([])
@@ -1166,14 +474,6 @@ const selectedSeed = ref(null)
 const seedViewPhrases = ref([])
 const seedViewSeedText = ref(null)
 const seedViewLoading = ref(false)
-const rebuildFrom = ref(11)
-const rebuildTo = ref(300)
-const rebuildConfirming = ref(false)
-const rebuildRunning = ref(false)
-
-// Stage reset state
-const stageResetConfirm = ref(null) // 'calibrate' | 'golden' | 'mvp' | null
-const stageResetting = ref(null)    // which stage is currently wiping
 
 const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
@@ -1181,86 +481,25 @@ const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status ===
 
 // --- Pipeline computeds ---
 
-// Seed grid helpers: count finalized seeds in a range (ground truth from actual DB data)
-function seedGridFinalizedInRange(from, to) {
-  return seedGrid.value.filter(s => s.seed >= from && s.seed <= to && s.status === 'complete').length
-}
-
-const calibrationSeeds = computed(() => {
-  return goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value)
-})
-
-// Calibration done = requires explicit human approval (strict gate)
-const calibrationDone = computed(() => {
-  return goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value && s.status === 'approved').length
-})
-
-const calibrationPendingReview = computed(() => {
-  return goldenSeeds.value.filter(s => s.seed_number <= goldenSeedCount.value && s.status === 'pending_review').length
-})
-
-const calibrationPercent = computed(() => {
-  if (goldenSeedCount.value === 0) return 0
-  return Math.round((calibrationDone.value / goldenSeedCount.value) * 100)
-})
-
-// Golden range done = either golden workflow approved OR seeds actually built
-const goldenRangeDone = computed(() => {
-  const goldenApproved = goldenSeeds.value.filter(s => s.seed_number > goldenSeedCount.value && s.seed_number <= 50 && s.status === 'approved').length
-  const gridFinalized = seedGridFinalizedInRange(goldenSeedCount.value + 1, 50)
-  return Math.max(goldenApproved, gridFinalized)
-})
-
-const goldenRangeTotal = computed(() => {
-  return Math.max(0, 50 - goldenSeedCount.value)
-})
-
-const goldenRangePercent = computed(() => {
-  if (goldenRangeTotal.value === 0) return 0
-  return Math.round((goldenRangeDone.value / goldenRangeTotal.value) * 100)
-})
-
 const translatePercent = computed(() => {
   const total = progress.value.totalSeeds || 668
   return Math.round(((progress.value.seedsTranslated || 0) / total) * 100)
 })
 
-const mvpTotal = computed(() => Math.max(0, seedCount.value - 50))
-const mvpDecomposed = computed(() => Math.max(0, Math.min(progress.value.currentSeed, seedCount.value) - 50))
-const mvpPercent = computed(() => {
-  if (mvpTotal.value <= 0) return 0
-  return Math.round((mvpDecomposed.value / mvpTotal.value) * 100)
+const decomposePercent = computed(() => {
+  if (seedCount.value <= 0) return 0
+  return Math.round(((progress.value.currentSeed || 0) / seedCount.value) * 100)
 })
 
-const fullBuildTotal = computed(() => Math.max(0, 668 - seedCount.value))
-const fullBuildDecomposed = computed(() => Math.max(0, progress.value.currentSeed - seedCount.value))
-
-// V2 pipeline state removed — MVP now uses seed/complete (same as golden)
-
 const pipelinePhase = computed(() => {
-  const translated = progress.value.seedsTranslated || 0
-  const totalSeeds = progress.value.totalSeeds || 668
-  const decomposed = progress.value.currentSeed || 0
-  const qaProgress = qa.value?.progress || 0
-  const mvpTarget = seedCount.value
-
-  if (translated < totalSeeds) return 'translate'
-  if (calibrationDone.value < goldenSeedCount.value) return 'calibrate'
-  if (goldenRangeDone.value < goldenRangeTotal.value) return 'golden'
-  if (decomposed < mvpTarget) return 'mvp'
-  if (qaProgress < 100) return 'qa'
-  return 'golden-qa'
+  if ((progress.value.seedsTranslated || 0) < (progress.value.totalSeeds || 668)) return 'translate'
+  return 'decompose'
 })
 
 function stageComplete(stage) {
   switch (stage) {
     case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
-    case 'calibrate': return calibrationDone.value >= goldenSeedCount.value
-    case 'golden': return goldenRangeDone.value >= goldenRangeTotal.value && goldenRangeTotal.value > 0
-    case 'mvp': return progress.value.currentSeed >= seedCount.value
-    case 'qa': return qa.value.progress >= 100
-    case 'golden-qa': return goldenQaStatus.value.complete
-    case 'gender-prep': return genderPrep.value.processed
+    case 'decompose': return (progress.value.currentSeed || 0) >= seedCount.value
     default: return false
   }
 }
@@ -1268,12 +507,7 @@ function stageComplete(stage) {
 function stageLocked(stage) {
   switch (stage) {
     case 'translate': return false
-    case 'calibrate': return !stageComplete('translate')
-    case 'golden': return !stageComplete('calibrate')
-    case 'golden-qa': return !stageComplete('golden') // unlocks after golden
-    case 'mvp': return !stageComplete('golden')        // also unlocks after golden (parallel with golden-qa)
-    case 'qa': return !stageComplete('mvp')
-    case 'gender-prep': return !stageComplete('mvp')   // unlocks after MVP complete
+    case 'decompose': return !stageComplete('translate')
     default: return false
   }
 }
@@ -1292,31 +526,21 @@ function stageNumberClass(stage) {
   return 'bg-slate-700/50 text-slate-400'
 }
 
-// Build-progress seed grid — primary: build status, secondary: range accent
-function seedRangeAccent(seed) {
-  if (seed <= goldenSeedCount.value) return 'border-t-2 border-t-orange-400'
-  if (seed <= 50) return 'border-t-2 border-t-yellow-300/80'
-  return ''
-}
-
 function seedCellClass(cell) {
-  const accent = seedRangeAccent(cell.seed)
-
-  // Build status is the primary visual encoding
   switch (cell.status) {
     case 'collision':
     case 'rework':
-      return `${accent} bg-rose-500/60 ring-1 ring-inset ring-rose-400`
+      return 'bg-rose-500/60 ring-1 ring-inset ring-rose-400'
     case 'complete':
-      return `${accent} bg-emerald-500/80`
+      return 'bg-emerald-500/80'
     case 'decomposed':
-      return `${accent} bg-cyan-500/60`
+      return 'bg-cyan-500/60'
     case 'drafted':
-      return `${accent} bg-amber-400/70`
+      return 'bg-amber-400/70'
     case 'building':
-      return `${accent} bg-indigo-400/60`
-    default: // empty
-      return `${accent} bg-slate-700/30`
+      return 'bg-indigo-400/60'
+    default:
+      return 'bg-slate-700/30'
   }
 }
 
@@ -1340,6 +564,16 @@ const qualityScoreClass = computed(() => {
   if (score >= 6.5) return 'text-cyan-400'
   if (score >= 5.5) return 'text-yellow-400'
   return 'text-orange-400'
+})
+
+// Chat computeds
+const orchestratorHasPending = computed(() =>
+  orchestratorMessages.value.some(m => m.direction === 'agent_to_human' && m.status === 'pending')
+)
+
+const visibleChatMessages = computed(() => {
+  if (!chatClearedAt.value) return orchestratorMessages.value
+  return orchestratorMessages.value.filter(m => m.created_at > chatClearedAt.value)
 })
 
 // Methods
@@ -1386,18 +620,17 @@ async function fetchProgress() {
 
       if (buildResponse.ok) {
         const buildData = await buildResponse.json()
-        // Detect translate job running
         translateRunning.value = buildData.active && buildData.build?.pass === 'translate'
+        decomposeRunning.value = buildData.active && buildData.build?.pass === 'decompose'
         if (buildData.active) {
           progress.value.status = 'running'
-          progress.value.agentCount = buildData.build?.agent_count || 0
-          progress.value.batchSeeds = buildData.build?.current_batch_seeds || 0
           progress.value.buildPass = buildData.build?.pass || null
           if (buildData.build?.total_seeds) {
             seedCount.value = buildData.build.total_seeds
           }
         } else {
           translateRunning.value = false
+          decomposeRunning.value = false
           progress.value.buildPass = null
           if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
             progress.value.status = 'complete'
@@ -1413,12 +646,6 @@ async function fetchProgress() {
     }
 
     fetchSeedGrid()
-    fetchQASummary()
-    // Only poll golden/v2 when in relevant phases to avoid 404 console spam
-    const phase = pipelinePhase.value
-    if (['calibrate', 'golden', 'golden-qa'].includes(phase)) fetchGoldenStatus()
-    if (['golden-qa'].includes(phase) || !goldenQaStatus.value.complete) fetchGoldenQAStatus()
-    // V2 status fetch removed — MVP now uses seed/complete
   } catch (error) {
     console.error('Failed to fetch progress:', error)
   }
@@ -1428,8 +655,7 @@ async function fetchSeedGrid() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
   try {
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/build/seed-grid/${courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -1439,79 +665,6 @@ async function fetchSeedGrid() {
     }
   } catch (err) {
     console.error('Failed to fetch seed grid:', err)
-  }
-}
-
-async function executeRebuild() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  rebuildRunning.value = true
-  try {
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
-    const response = await fetch(`${apiBase}/api/build/rebuild/${courseCode}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value })
-    })
-
-    const data = await response.json()
-    if (data.ok) {
-      rebuildConfirming.value = false
-      await fetchSeedGrid()
-    }
-  } catch (err) {
-    console.error('Rebuild error:', err.message)
-  } finally {
-    rebuildRunning.value = false
-  }
-}
-
-async function resetStage(stage) {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  const ranges = {
-    calibrate: { from: 1, to: 10 },
-    golden: { from: 11, to: 50 },
-    mvp: { from: 51, to: seedCount.value }
-  }
-  const range = ranges[stage]
-  if (!range) return
-
-  stageResetting.value = stage
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-
-    // Stop any active build job first (clears "Running..." state)
-    await fetch(`${apiBase}/api/build/stop/${courseCode}`, {
-      method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    }).catch(() => {}) // ignore if no active build
-
-    // Wipe seeds/LEGOs/phrases in the range
-    const response = await fetch(`${apiBase}/api/build/rebuild/${courseCode}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({ from_seed: range.from, to_seed: range.to })
-    })
-
-    const data = await response.json()
-    if (data.ok) {
-      stageResetConfirm.value = null
-      await Promise.all([fetchProgress(), fetchSeedGrid(), fetchGoldenStatus()])
-    }
-  } catch (err) {
-    console.error(`Reset stage ${stage} error:`, err.message)
-  } finally {
-    stageResetting.value = null
   }
 }
 
@@ -1548,72 +701,58 @@ async function createCourse() {
   }
 }
 
-async function startBuilder() {
+async function startTranslation() {
   const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
 
-  if (isCreateMode.value && !courseCode) {
-    console.error('Please select both languages')
-    return
-  }
-
+  translateStarting.value = true
   try {
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
-
-    if (isCreateMode.value) {
-      const createResponse = await fetch(`${apiBase}/api/courses/create`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
-        },
-        body: JSON.stringify({
-          courseCode,
-          knownLanguage: knownLanguage.value,
-          targetLanguage: targetLanguage.value,
-          seedStart: 1,
-          seedEnd: seedCount.value
-        })
-      })
-
-      if (!createResponse.ok) {
-        const err = await createResponse.json()
-        if (createResponse.status !== 409) {
-          throw new Error(err.error || 'Failed to create course')
-        }
-      }
-    }
-
-    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
-    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
-
-    const response = await fetch(`${apiBase}/api/build/start/${courseCode}`, {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/translate/${courseCode}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({ terminal, targetSeeds: seedCount.value })
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-
     const result = await response.json()
-    if (!result.ok) throw new Error(result.error || 'Failed to start course builder')
-
-    progress.value.status = 'running'
-    progress.value.totalSeeds = result.progress?.total || seedCount.value
-    progress.value.currentSeed = result.progress?.completed || 0
-    if (isCreateMode.value) {
-      router.push(`/production/${courseCode}/text`)
+    if (result.ok) {
+      translateRunning.value = true
+    } else {
+      console.error('Failed to start translation:', result.error)
     }
+  } catch (err) {
+    console.error('Failed to start translation:', err)
+  } finally {
+    translateStarting.value = false
+  }
+}
 
-  } catch (error) {
-    console.error('Failed to start course builder:', error)
+async function startDecompose() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  decomposeStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/decompose/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      decomposeRunning.value = true
+      chatExpanded.value = true
+    } else {
+      console.error('Failed to start decompose:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to start decompose:', err)
+  } finally {
+    decomposeStarting.value = false
   }
 }
 
 async function stopBuilder() {
   try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const apiBase = getApiUrl()
     await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -1624,20 +763,9 @@ async function stopBuilder() {
   }
 }
 
-function resetBuilder() {
-  stopPolling()
-  progress.value = {
-    status: 'idle',
-    currentSeed: 0,
-    totalSeeds: 0,
-    legosInserted: 0,
-    phrasesInserted: 0
-  }
-}
-
 async function forceResetBuilder() {
   try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const apiBase = getApiUrl()
     await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -1659,259 +787,9 @@ async function forceResetBuilder() {
   startPolling()
 }
 
-// MVP Build — spawns parallel seed/complete agents (same approach as golden)
-async function startMvpBuild() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-
-    const response = await fetch(`${apiBase}/api/build/start/${courseCode}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({ targetSeeds: seedCount.value })
-    })
-
-    const result = await response.json()
-    if (!result.ok) throw new Error(result.error || 'Failed to start MVP build')
-
-    progress.value.status = 'running'
-    startPolling()
-  } catch (error) {
-    console.error('Failed to start MVP build:', error)
-  }
-}
-
-async function startQA() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  qaRunning.value = true
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/qa/start/${courseCode}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-    const result = await response.json()
-    if (!result.ok) {
-      qaRunning.value = false
-    }
-  } catch (error) {
-    console.error('Failed to start QA:', error)
-    qaRunning.value = false
-  }
-}
-
-async function startStrictQA() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  qaRunning.value = true
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/qa/strict/${courseCode}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-    const result = await response.json()
-    if (!result.ok) {
-      qaRunning.value = false
-    }
-  } catch (error) {
-    console.error('Failed to start strict QA:', error)
-    qaRunning.value = false
-  }
-}
-
-async function fetchQASummary() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/qa/summary/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      qa.value = {
-        total: data.phrases?.total || 0,
-        checked: data.phrases?.checked || 0,
-        progress: data.phrases?.progress_percent || 0,
-        flags: data.flags?.open || 0,
-        errors: data.flags?.errors || 0,
-        warnings: data.flags?.warnings || 0
-      }
-      if (qa.value.progress > 0 && qa.value.progress < 100) {
-        qaRunning.value = true
-      } else if (qa.value.progress >= 100) {
-        qaRunning.value = false
-      }
-      if (qa.value.progress > 0 && qa.value.progress < 100) {
-        fetchUncheckedPhrases()
-      } else {
-        uncheckedPhrases.value = []
-      }
-    }
-  } catch (err) {
-    // QA summary endpoint may not exist yet
-  }
-}
-
-async function resetQA() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  qaResetting.value = true
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/qa/reset/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ clear_flags: true })
-    })
-    if (!response.ok) throw new Error('Reset failed')
-    qaRunning.value = false
-    qa.value = { total: 0, checked: 0, progress: 0, flags: 0, errors: 0, warnings: 0 }
-    uncheckedPhrases.value = []
-    await fetchQASummary()
-  } catch (err) {
-    console.error('Error resetting QA:', err)
-  } finally {
-    qaResetting.value = false
-  }
-}
-
-async function fetchUncheckedPhrases() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/qa/unchecked/${courseCode}?limit=500`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      uncheckedPhrases.value = data.phrases || data || []
-    }
-  } catch (err) {
-    console.error('Failed to fetch unchecked phrases:', err)
-  }
-}
-
-async function markAllChecked() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode || uncheckedPhrases.value.length === 0) return
-
-  markingChecked.value = true
-  uncheckedStatus.value = null
-  try {
-    const count = uncheckedPhrases.value.length
-    const seeds = uncheckedPhrases.value.map(p => p.seed_number)
-    const seedMin = Math.min(...seeds)
-    const seedMax = Math.max(...seeds)
-
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/qa/bulk-mark-checked`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({ course_code: courseCode, seed_min: seedMin, seed_max: seedMax })
-    })
-    if (response.ok) {
-      uncheckedStatus.value = { ok: true, message: `Marked ${count} phrases as checked` }
-      uncheckedPhrases.value = []
-      showUnchecked.value = false
-      fetchQASummary()
-    } else {
-      const err = await response.json().catch(() => ({}))
-      uncheckedStatus.value = { ok: false, message: err.error || `Failed (${response.status})` }
-    }
-  } catch (err) {
-    uncheckedStatus.value = { ok: false, message: err.message }
-  } finally {
-    markingChecked.value = false
-  }
-}
-
-async function deleteFlaggedPhrases() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  deletingFlagged.value = true
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/qa/flagged-phrases/${courseCode}`, {
-      method: 'DELETE',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    const result = await response.json()
-    if (result.success) {
-      deleteFlaggedConfirming.value = false
-      fetchQASummary()
-      fetchSeedGrid()
-      fetchProgress()
-    }
-  } catch (err) {
-    console.error('Failed to delete flagged phrases:', err)
-  } finally {
-    deletingFlagged.value = false
-  }
-}
-
-// Gender prep methods
-async function fetchGenderPrepStatus() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode || isCreateMode.value) return
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/status`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      genderPrep.value = { ...genderPrep.value, ...data }
-      // Also fetch flag count if processed
-      if (data.isGendered && data.processed) {
-        fetchGenderPrepFlagCount()
-      }
-    }
-  } catch (err) {
-    // Gender prep endpoint may not exist yet
-  }
-}
-
-async function fetchGenderPrepFlagCount() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/flag-count`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      genderPrep.value.flagged = data.flagged || 0
-    }
-  } catch (err) {
-    // Silently fail
-  }
-}
-
 async function killAgent(pid) {
   try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/agents/${pid}`, {
       method: 'DELETE',
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -1922,26 +800,6 @@ async function killAgent(pid) {
     }
   } catch (error) {
     console.error('Failed to kill agent:', error)
-  }
-}
-
-// Golden seed builder methods
-async function fetchGoldenStatus() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode || isCreateMode.value) return
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/golden/status/${courseCode}?target=${goldenTargetSeeds.value}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      goldenSeeds.value = data.seeds || []
-      // Calibration count is always 10 (human-reviewed seeds)
-      // golden_seed_count from API represents total golden range, not calibration boundary
-    }
-  } catch (err) {
-    // Golden endpoints may not exist yet
   }
 }
 
@@ -1999,272 +857,64 @@ async function selectSeed(seedNum) {
   }
 }
 
-// Calibration review functions
-async function selectCalibSeed(seedNum) {
-  const courseCode = effectiveCourseCode.value
-  if (selectedCalibSeed.value === seedNum) {
-    selectedCalibSeed.value = null
-    calibSeedPhrases.value = []
-    return
-  }
-  selectedCalibSeed.value = seedNum
-  calibSeedPhrases.value = []
-  calibSeedNotes.value = ''
-  calibSeedLoading.value = true
-  try {
-    const apiBase = getApiUrl()
-    const h = { 'ngrok-skip-browser-warning': 'true' }
-    // Fetch LEGOs directly (status-agnostic) + phrases in parallel
-    const [legosResp, phrasesResp] = await Promise.all([
-      fetch(`${apiBase}/api/legos/${courseCode}?seed=${seedNum}`, { headers: h }),
-      fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=300`, { headers: h })
-    ])
-    const legoMeta = {}
-    if (legosResp.ok) {
-      const d = await legosResp.json()
-      for (const l of (d.legos || [])) legoMeta[l.lego_index] = l
-    }
-    if (phrasesResp.ok) {
-      const data = await phrasesResp.json()
-      const legoMap = new Map()
-      for (const p of (data.phrases || [])) {
-        const key = p.lego_index ?? 0
-        if (!legoMap.has(key)) legoMap.set(key, { lego_index: key, meta: legoMeta[key] || null, phrases: [] })
-        legoMap.get(key).phrases.push(p)
-      }
-      // Also show LEGOs that have no phrases yet
-      for (const [idx, meta] of Object.entries(legoMeta)) {
-        if (!legoMap.has(parseInt(idx))) legoMap.set(parseInt(idx), { lego_index: parseInt(idx), meta, phrases: [] })
-      }
-      calibSeedPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
-    }
-  } catch (err) {
-    console.error('Failed to fetch calib seed phrases:', err)
-  } finally {
-    calibSeedLoading.value = false
-  }
+// Chat functions
+function clearChat() {
+  const now = new Date().toISOString()
+  chatClearedAt.value = now
+  localStorage.setItem('chat_cleared_at', now)
 }
 
-async function approveCalibSeed() {
+async function sendChat() {
   const courseCode = effectiveCourseCode.value
-  const seedNum = selectedCalibSeed.value
-  if (!courseCode || !seedNum) return
-  calibApproving.value = true
+  if (!courseCode || !chatInput.value.trim()) return
+  chatSending.value = true
+  const text = chatInput.value.trim()
   try {
     const apiBase = getApiUrl()
-    // Respond to the agent's pending checkpoint so it advances to next seed
-    const pending = orchestratorMessages.value.find(m =>
-      m.direction === 'agent_to_human' && m.status === 'pending' &&
-      (m.metadata?.seed_number === seedNum || m.checkpoint === `calibration_seed_${seedNum}`)
-    )
-    if (pending) {
-      await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ action: 'approve' })
-      })
-    }
-    // Also record the approval in quality_rules so the pipeline gate knows
-    await fetch(`${apiBase}/api/golden/human-approve/${courseCode}/${seedNum}`, {
+
+    // Send as human message to orchestrator API (agent polls this)
+    await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ message: text })
     })
-    selectedCalibSeed.value = null
-    calibSeedPhrases.value = []
-    await Promise.all([fetchGoldenStatus(), fetchOrchestratorMessages()])
+    await fetchOrchestratorMessages()
+
+    chatInput.value = ''
+    await nextTick()
+    if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
   } catch (err) {
-    console.error('Failed to approve calib seed:', err)
+    console.error('Failed to send chat:', err)
   } finally {
-    calibApproving.value = false
+    chatSending.value = false
   }
 }
 
-async function approveAllCalibSeeds() {
+function formatTime(iso) {
+  if (!iso) return ''
+  const d = new Date(iso)
+  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+}
+
+async function fetchOrchestratorMessages() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
-  calibApprovingAll.value = true
   try {
     const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/golden/human-approve-all/${courseCode}`, {
-      method: 'POST',
+    const resp = await fetch(`${apiBase}/api/orchestrator/messages/${courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     if (resp.ok) {
-      selectedCalibSeed.value = null
-      calibSeedPhrases.value = []
-      await fetchGoldenStatus()
+      const data = await resp.json()
+      orchestratorMessages.value = data.messages || []
+      if (orchestratorHasPending.value) {
+        chatExpanded.value = true
+        await nextTick()
+        if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
+      }
     }
   } catch (err) {
-    console.error('Failed to bulk-approve calib seeds:', err)
-  } finally {
-    calibApprovingAll.value = false
-  }
-}
-
-async function redoCalibSeed() {
-  const courseCode = effectiveCourseCode.value
-  const seedNum = selectedCalibSeed.value
-  if (!courseCode || !seedNum) return
-  calibRedoing.value = true
-  try {
-    const apiBase = getApiUrl()
-    const notes = calibSeedNotes.value.trim()
-    // Find the pending checkpoint for this seed and respond to it
-    // The running calibration agent is polling for this response
-    const pending = orchestratorMessages.value.find(m =>
-      m.direction === 'agent_to_human' && m.status === 'pending' &&
-      (m.metadata?.seed_number === seedNum || m.checkpoint === `calibration_seed_${seedNum}`)
-    )
-    if (pending) {
-      await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ action: 'redo', response: notes || null })
-      })
-    } else {
-      // No pending checkpoint for this seed — post a free-form message
-      await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ message: `Please redo seed ${seedNum}.${notes ? ' Notes: ' + notes : ''}` })
-      })
-    }
-    calibSeedNotes.value = ''
-    selectedCalibSeed.value = null
-    await fetchOrchestratorMessages()
-    setTimeout(() => { calibRedoing.value = false }, 1500)
-  } catch (err) {
-    console.error('Failed to send redo:', err)
-    calibRedoing.value = false
-  }
-}
-
-async function fetchGoldenQAStatus() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode || isCreateMode.value) return
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/qa/golden/status/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      goldenQaStatus.value = data
-    }
-  } catch (err) {
-    // Endpoint may not exist yet
-  }
-}
-
-async function startTranslation() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  translateStarting.value = true
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
-    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
-
-    const response = await fetch(`${apiBase}/api/build/translate/${courseCode}?terminal=${terminal}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    })
-    const result = await response.json()
-    if (result.ok) {
-      translateRunning.value = true
-    } else {
-      console.error('Failed to start translation:', result.error)
-    }
-  } catch (err) {
-    console.error('Failed to start translation:', err)
-  } finally {
-    translateStarting.value = false
-  }
-}
-
-async function startCalibrationBuild() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  goldenStarting.value = true
-  goldenStatusMessage.value = null
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
-    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
-
-    const response = await fetch(`${apiBase}/api/build/golden/${courseCode}?target=${goldenSeedCount.value}&terminal=${terminal}&phase=calibration`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    })
-    const result = await response.json()
-    if (result.ok) {
-      goldenStatusMessage.value = { ok: true, text: result.message }
-      fetchGoldenStatus()
-    } else {
-      goldenStatusMessage.value = { ok: false, text: result.error || 'Failed to start calibration build' }
-    }
-  } catch (err) {
-    goldenStatusMessage.value = { ok: false, text: err.message }
-  } finally {
-    goldenStarting.value = false
-  }
-}
-
-async function startGoldenBuild() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  goldenStarting.value = true
-  goldenStatusMessage.value = null
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
-    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
-
-    const response = await fetch(`${apiBase}/api/build/golden/${courseCode}?target=${goldenTargetSeeds.value}&terminal=${terminal}&phase=golden`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    })
-    const result = await response.json()
-    if (result.ok) {
-      goldenStatusMessage.value = { ok: true, text: result.message }
-      fetchGoldenStatus()
-    } else {
-      goldenStatusMessage.value = { ok: false, text: result.error || 'Failed to start golden build' }
-    }
-  } catch (err) {
-    goldenStatusMessage.value = { ok: false, text: err.message }
-  } finally {
-    goldenStarting.value = false
-  }
-}
-
-async function finalizeGoldenSeeds() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  goldenFinalizing.value = true
-  goldenStatusMessage.value = null
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/golden/finalize/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ target_seeds: goldenTargetSeeds.value })
-    })
-    const result = await response.json()
-    if (result.success) {
-      goldenStatusMessage.value = { ok: true, text: result.message }
-      goldenFinalized.value = true
-    } else {
-      goldenStatusMessage.value = { ok: false, text: result.error || 'Failed to finalize' }
-    }
-  } catch (err) {
-    goldenStatusMessage.value = { ok: false, text: err.message }
-  } finally {
-    goldenFinalizing.value = false
+    console.error('Failed to fetch orchestrator messages:', err)
   }
 }
 
@@ -2273,7 +923,6 @@ let pollInterval = null
 
 function startPolling() {
   if (pollInterval) return
-  isPolling.value = true
   fetchProgress()
   pollInterval = setInterval(fetchProgress, 30000)
 }
@@ -2283,14 +932,13 @@ function stopPolling() {
     clearInterval(pollInterval)
     pollInterval = null
   }
-  isPolling.value = false
 }
 
 // Load languages from API
 async function loadLanguages() {
   languagesLoading.value = true
   try {
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/languages?tts=true&format=legacy`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -2312,8 +960,7 @@ async function loadLanguages() {
   }
 }
 
-
-// Debounced socket watchers — coalesce rapid events into single refetch
+// Debounced socket watchers
 let socketDebounceTimers = {}
 function debouncedFetch(key, fn, delay = 2000) {
   if (socketDebounceTimers[key]) clearTimeout(socketDebounceTimers[key])
@@ -2322,262 +969,18 @@ function debouncedFetch(key, fn, delay = 2000) {
 
 watch(() => socket.lastSeedComplete.value, (v) => { if (v) debouncedFetch('seed', () => { fetchSeedGrid(); fetchProgress() }) })
 watch(() => socket.lastBuildStatus.value, (v) => { if (v) debouncedFetch('build', fetchProgress) })
-watch(() => socket.lastQaUpdate.value, (v) => { if (v) debouncedFetch('qa', fetchQASummary) })
-watch(() => socket.lastGoldenUpdate.value, (v) => { if (v) debouncedFetch('golden', fetchGoldenStatus) })
-// V2 pipeline watcher removed — MVP uses seed/complete
-
-async function runDetective() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  diagnosing.value = true
-  socket.detectiveFindings.value = null
-  try {
-    const apiBase = getApiUrl()
-    await fetch(`${apiBase}/api/build/detective/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    })
-  } catch (err) {
-    console.error('Failed to spawn detective:', err)
-  } finally {
-    // Keep diagnosing=true until findings arrive via socket
-    setTimeout(() => { diagnosing.value = false }, 60000)
-  }
-}
-
-watch(() => socket.detectiveFindings.value, (findings) => {
-  if (findings) diagnosing.value = false
-})
-
-const detectiveActionStates = ref({})  // path -> 'loading' | 'ok' | 'error'
-
-async function executeDetectiveAction(action) {
-  detectiveActionStates.value[action.path] = 'loading'
-  try {
-    const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}${action.path}`, {
-      method: action.method || 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: action.body ? JSON.stringify(action.body) : undefined
-    })
-    detectiveActionStates.value[action.path] = resp.ok ? 'ok' : 'error'
-  } catch (err) {
-    console.error('Detective action failed:', err)
-    detectiveActionStates.value[action.path] = 'error'
-  }
-  setTimeout(() => { detectiveActionStates.value[action.path] = null }, 5000)
-}
-
-// ─── Orchestrator ────────────────────────────────────────────────────
-
-const orchestratorHasPending = computed(() =>
-  orchestratorMessages.value.some(m => m.direction === 'agent_to_human' && m.status === 'pending')
-)
-
-const pendingOrchestratorMessage = computed(() =>
-  orchestratorMessages.value.find(m => m.direction === 'agent_to_human' && m.status === 'pending')
-)
-
-const visibleChatMessages = computed(() => {
-  if (!chatClearedAt.value) return orchestratorMessages.value
-  return orchestratorMessages.value.filter(m => m.created_at > chatClearedAt.value)
-})
-
-function clearChat() {
-  const now = new Date().toISOString()
-  chatClearedAt.value = now
-  localStorage.setItem('chat_cleared_at', now)
-}
-
-async function sendChat() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode || !chatInput.value.trim()) return
-  chatSending.value = true
-  const text = chatInput.value.trim()
-  try {
-    const apiBase = getApiUrl()
-
-    // If orch has a pending checkpoint, respond to it (with the typed text as comment)
-    if (orchestratorHasPending.value && pendingOrchestratorMessage.value) {
-      await respondToOrchestrator(pendingOrchestratorMessage.value.id, 'comment', text)
-      chatInput.value = ''
-      return
-    }
-
-    // Check pipeline state
-    const statusRes = await fetch(`${apiBase}/api/orchestrator/status/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    const statusData = statusRes.ok ? await statusRes.json() : null
-    const orchRunning = statusData?.pipeline?.is_running
-
-    if (orchRunning) {
-      await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ message: text })
-      })
-      await fetchOrchestratorMessages()
-    } else {
-      await fetch(`${apiBase}/api/build/adhoc/${courseCode}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ prompt: text, model: 'sonnet' })
-      })
-      // Optimistically show the user's message (ad-hoc spawns don't go to DB)
-      orchestratorMessages.value.push({
-        id: Date.now().toString(),
-        direction: 'human_to_agent',
-        message: `[spawned agent] ${text}`,
-        _human: true,
-        status: 'pending',
-        created_at: new Date().toISOString()
-      })
-    }
-    chatInput.value = ''
-    await nextTick()
-    if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
-  } catch (err) {
-    console.error('Failed to send chat:', err)
-  } finally {
-    chatSending.value = false
-  }
-}
-
-function formatTime(iso) {
-  if (!iso) return ''
-  const d = new Date(iso)
-  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-}
-
-async function runOrchestrator() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  orchestratorRunning.value = true
-  try {
-    const apiBase = getApiUrl()
-    await fetch(`${apiBase}/api/build/orchestrator/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    })
-    // Auto-expand log
-    orchestratorLogExpanded.value = true
-  } catch (err) {
-    console.error('Failed to spawn orchestrator:', err)
-    orchestratorRunning.value = false
-  }
-}
-
-async function fetchOrchestratorMessages() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  try {
-    const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/orchestrator/messages/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (resp.ok) {
-      const data = await resp.json()
-      orchestratorMessages.value = data.messages || []
-      // Auto-open chat if there's a pending message
-      if (orchestratorHasPending.value) {
-        chatExpanded.value = true
-        await nextTick()
-        if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
-      }
-    }
-  } catch (err) {
-    console.error('Failed to fetch orchestrator messages:', err)
-  }
-}
-
-async function respondToOrchestrator(messageId, action, textOverride) {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  orchestratorResponding.value[messageId] = action
-  try {
-    const apiBase = getApiUrl()
-    const h = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    const responseText = textOverride || orchestratorCommentText.value[messageId] || null
-    // Post the response to the agent's checkpoint
-    await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${messageId}`, {
-      method: 'POST', headers: h,
-      body: JSON.stringify({ action, response: responseText })
-    })
-    // Also store the human's reply as its own bubble so it appears in the chat
-    const label = responseText ? `${action}: ${responseText}` : action
-    await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
-      method: 'POST', headers: h,
-      body: JSON.stringify({ message: label })
-    })
-    orchestratorCommentText.value[messageId] = ''
-    chatInput.value = ''
-    await fetchOrchestratorMessages()
-    await nextTick()
-    if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
-  } catch (err) {
-    console.error('Failed to respond to orchestrator:', err)
-  } finally {
-    orchestratorResponding.value[messageId] = null
-  }
-}
-
-// Refresh messages when socket events arrive
 watch(() => socket.lastOrchestratorMessage.value, () => { fetchOrchestratorMessages() })
 watch(() => socket.lastOrchestratorResponse.value, () => { fetchOrchestratorMessages() })
-
-// Gate modes
-async function fetchGateModes() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  try {
-    const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/build/pipeline/${courseCode}/gates`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (resp.ok) {
-      const data = await resp.json()
-      gateModes.value = data.gates || {}
-    }
-  } catch (err) {
-    console.error('Failed to fetch gate modes:', err)
-  }
-}
-
-async function toggleGateMode(stage) {
-  if (stage === 'calibrate') return
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  const current = gateModes.value[stage] || 'human'
-  const newMode = current === 'human' ? 'agent' : 'human'
-  try {
-    const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/build/pipeline/${courseCode}/gates`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ [stage]: newMode })
-    })
-    if (resp.ok) {
-      const data = await resp.json()
-      gateModes.value = data.gates || {}
-    }
-  } catch (err) {
-    console.error('Failed to toggle gate mode:', err)
-  }
-}
 
 // Lifecycle
 onMounted(() => {
   startPolling()
   if (!isCreateMode.value) {
     socket.connect(effectiveCourseCode.value)
+    fetchOrchestratorMessages()
   }
   if (isCreateMode.value) {
     loadLanguages()
-  } else {
-    fetchGenderPrepStatus()
-    fetchOrchestratorMessages()
-    fetchGateModes()
   }
 })
 
@@ -2632,38 +1035,6 @@ onUnmounted(() => {
   border-radius: 0.25rem;
   background: rgba(71, 85, 105, 0.3);
   color: rgb(148, 163, 184);
-}
-
-.gate-badge {
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.1rem 0.4rem;
-  border-radius: 0.25rem;
-  border: 1px solid;
-  transition: all 0.15s;
-  user-select: none;
-}
-
-.gate-badge-human {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: rgb(251, 191, 36);
-}
-
-.gate-badge-agent {
-  background: rgba(6, 182, 212, 0.1);
-  border-color: rgba(6, 182, 212, 0.3);
-  color: rgb(34, 211, 238);
-}
-
-.gate-badge-locked {
-  opacity: 0.5;
-  cursor: default;
-}
-
-.gate-badge.cursor-pointer:hover {
-  filter: brightness(1.3);
 }
 
 @keyframes pulse {
