@@ -395,6 +395,7 @@ app.all('/api/agents/*', proxyCourseBuilder)
 app.all('/api/orchestrator/*', proxyCourseBuilder)
 app.all('/api/qa/*', proxyCourseBuilder)
 app.all('/api/course/*', proxyCourseBuilder)
+app.all('/api/seeds/*', proxyCourseBuilder)
 
 // Proxy to orchestrator (port 3456) for mission-control and health endpoints
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'

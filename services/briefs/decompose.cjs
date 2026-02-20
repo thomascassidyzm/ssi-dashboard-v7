@@ -225,8 +225,19 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
 - Seeds are processed in order (each builds on prior vocabulary)
 - The human is watching — communicate your thinking when uncertain
 
-## IMPORTANT
-- You are working WITH a human supervisor. Check for messages between every seed.
+## IMPORTANT — READ THIS CAREFULLY
+
+**YOU MUST WAIT FOR HUMAN APPROVAL AFTER EVERY SEED.**
+
+This is NOT optional. The workflow is:
+1. Submit seed via API
+2. Post checkpoint message (step 5 above)
+3. **STOP AND WAIT** — poll every 20 seconds until the human approves or requests redo
+4. Only then proceed to the next seed
+
+If you skip the checkpoint and move to the next seed without approval, you are violating the core workflow. The human needs to review your work before you continue.
+
+Other rules:
 - NEVER ask questions in your terminal output expecting a response there — use the chat API.
 - Work SLOWLY AND STEADILY — quality over speed.
 - Record learnings when you discover patterns specific to ${targetLanguageName}.
