@@ -70,6 +70,20 @@ module.exports = function (ctx) {
             })
             .eq('id', pendingAgent[0].id);
         }
+
+        // Set approved_at on the seed when human approves
+        if (action === 'approve') {
+          const seedMatch = (message || '').match(/seed\s+(\d+)/i);
+          const seedNum = seedMatch ? parseInt(seedMatch[1]) : (metadata?.seed_number || null);
+          if (seedNum) {
+            await ctx.supabase
+              .from('course_seeds')
+              .update({ approved_at: new Date().toISOString() })
+              .eq('course_code', courseCode)
+              .eq('seed_number', seedNum);
+            console.log(`[CHAT] Seed ${seedNum} approved for ${courseCode}`);
+          }
+        }
       }
 
       // Broadcast via WebSocket

@@ -49,7 +49,7 @@ module.exports = function (ctx) {
         .gte('seed_number', from_seed).lte('seed_number', to_seed);
 
       const { count: seedsReset } = await ctx.supabase
-        .from('course_seeds').update({ decomposed_at: null }, { count: 'exact' })
+        .from('course_seeds').update({ decomposed_at: null, approved_at: null }, { count: 'exact' })
         .eq('course_code', courseCode)
         .gte('seed_number', from_seed).lte('seed_number', to_seed);
 
@@ -76,7 +76,7 @@ module.exports = function (ctx) {
       const maxSeed = courseData?.seed_count || 300;
 
       const { data: seeds } = await ctx.supabase
-        .from('course_seeds').select('seed_number, decomposed_at')
+        .from('course_seeds').select('seed_number, decomposed_at, approved_at')
         .eq('course_code', courseCode).lte('seed_number', maxSeed).order('seed_number');
 
       const { data: legoCounts } = await ctx.supabase
@@ -93,18 +93,19 @@ module.exports = function (ctx) {
       const phrasesBySeed = {};
       for (const p of phraseCounts || []) phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1;
 
-      let complete = 0, building = 0, empty = 0;
+      let complete = 0, drafted = 0, building = 0, empty = 0;
       const grid = (seeds || []).map(s => {
         const legos = legosBySeed[s.seed_number] || 0;
         const phrases = phrasesBySeed[s.seed_number] || 0;
         let status;
-        if (s.decomposed_at) { status = 'complete'; complete++; }
+        if (s.approved_at) { status = 'complete'; complete++; }
+        else if (s.decomposed_at) { status = 'drafted'; drafted++; }
         else if (legos > 0) { status = 'building'; building++; }
         else { status = 'empty'; empty++; }
         return { seed: s.seed_number, status, legos, phrases };
       });
 
-      res.json({ seeds: grid, total: grid.length, complete, building, empty });
+      res.json({ seeds: grid, total: grid.length, complete, drafted, building, empty });
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }

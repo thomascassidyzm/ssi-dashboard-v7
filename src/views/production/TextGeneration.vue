@@ -881,13 +881,13 @@ async function approveSeed() {
     await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ role: 'human', message: `Approved seed ${seedNum}`, action: 'approve' })
+      body: JSON.stringify({ role: 'human', message: `Approved seed ${seedNum}`, action: 'approve', metadata: { seed_number: seedNum } })
     })
     seedReviewNotes.value = ''
     selectedSeed.value = null
     seedViewPhrases.value = []
     seedViewSeedText.value = null
-    await fetchOrchestratorMessages()
+    await Promise.all([fetchOrchestratorMessages(), fetchSeedGrid()])
   } catch (err) {
     console.error('Failed to approve seed:', err)
   } finally {
