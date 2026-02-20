@@ -161,29 +161,24 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
    - **Phrase count:** Not enough USE phrases — add more
    Fix and resubmit — do NOT move to the next seed until submission succeeds.
 
-5. **Post checkpoint and WAIT for human approval:**
-   After successful submission, post a checkpoint message:
+5. **Post to chat and WAIT for human approval:**
+   After successful submission, post a message to the chat room:
    \`\`\`
-   curl -X POST "http://localhost:${port}/api/orchestrator/message/${courseCode}" \\
+   curl -X POST "http://localhost:${port}/api/orchestrator/chat/${courseCode}" \\
      -H "Content-Type: application/json" \\
-     -d '{
-       "checkpoint": "decompose_seed_<N>",
-       "message": "Seed <N> submitted: <brief summary of LEGOs>",
-       "metadata": {"seed_number": <N>}
-     }'
+     -d '{"role": "agent", "message": "Seed <N> submitted: <brief summary of LEGOs>"}'
    \`\`\`
-   The response includes \`{ "id": "<message_id>" }\`. Save this ID.
+   The response includes \`{ "id": "<message_id>" }\`. Save the \`created_at\` timestamp.
 
-   Then poll by message ID until the human responds:
+   Then poll for new messages since your post:
    \`\`\`
-   curl -s "http://localhost:${port}/api/orchestrator/poll/${courseCode}/<message_id>"
+   curl -s "http://localhost:${port}/api/orchestrator/chat/${courseCode}?after=<created_at>"
    \`\`\`
    - Poll every 20 seconds.
-   - Response has \`status\`: "pending" or "responded"
-   - When \`status === "responded"\`, check \`response_action\`:
-     - **"approve"** → proceed to next seed
-     - **"redo"** → read the \`response\` field for feedback, wipe the seed, redo it
-   - While waiting, also check for human messages (step 7).
+   - Look for a message with \`role: "human"\` and \`action: "approve"\` or \`action: "redo"\`
+   - **"approve"** → proceed to next seed
+   - **"redo"** → read the \`message\` field for feedback, wipe the seed, redo it
+   - Human may also send plain messages (no action) — read and acknowledge them.
 
 6. **Record learnings** when you discover something useful:
    \`\`\`
@@ -192,16 +187,11 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
      -d '{"learning": "..."}'
    \`\`\`
 
-7. **Check for human messages** between seeds:
+7. **Send messages to the human** at any time:
    \`\`\`
-   curl -s "http://localhost:${port}/api/orchestrator/messages/${courseCode}"
-   \`\`\`
-   Look for messages with \`direction: "human_to_agent"\` and \`status: "pending"\`.
-   If there are pending messages, read them, adjust your approach, and acknowledge:
-   \`\`\`
-   curl -X POST "http://localhost:${port}/api/orchestrator/message/${courseCode}" \\
+   curl -X POST "http://localhost:${port}/api/orchestrator/chat/${courseCode}" \\
      -H "Content-Type: application/json" \\
-     -d '{"message": "Understood, will adjust..."}'
+     -d '{"role": "agent", "message": "..."}'
    \`\`\`
 
 8. **Repeat** from step 1.

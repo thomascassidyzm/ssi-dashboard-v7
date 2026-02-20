@@ -880,7 +880,7 @@ async function selectSeed(seedNum) {
   }
 }
 
-// Approve / Redo seed
+// Approve / Redo seed — posts to chat endpoint, server finds & responds to pending agent message
 async function approveSeed() {
   const courseCode = effectiveCourseCode.value
   const seedNum = selectedSeed.value
@@ -888,29 +888,10 @@ async function approveSeed() {
   seedApproving.value = true
   try {
     const apiBase = getApiUrl()
-    // Find the pending checkpoint for this seed (exact match first, then most recent pending)
-    let pending = orchestratorMessages.value.find(m =>
-      m.direction === 'agent_to_human' && m.status === 'pending' &&
-      (m.metadata?.seed_number === seedNum || m.checkpoint === `decompose_seed_${seedNum}`)
-    )
-    if (!pending) {
-      // Fallback: most recent pending agent_to_human message (agent may not include checkpoint/metadata)
-      pending = [...orchestratorMessages.value]
-        .reverse()
-        .find(m => m.direction === 'agent_to_human' && m.status === 'pending')
-    }
-    if (pending) {
-      await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ action: 'approve' })
-      })
-    }
-    // Post human message so it shows in chat
-    await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
+    await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ message: `Approved seed ${seedNum}` })
+      body: JSON.stringify({ role: 'human', message: `Approved seed ${seedNum}`, action: 'approve' })
     })
     seedReviewNotes.value = ''
     selectedSeed.value = null
@@ -932,29 +913,11 @@ async function redoSeed() {
   try {
     const apiBase = getApiUrl()
     const notes = seedReviewNotes.value.trim()
-    let pending = orchestratorMessages.value.find(m =>
-      m.direction === 'agent_to_human' && m.status === 'pending' &&
-      (m.metadata?.seed_number === seedNum || m.checkpoint === `decompose_seed_${seedNum}`)
-    )
-    if (!pending) {
-      pending = [...orchestratorMessages.value]
-        .reverse()
-        .find(m => m.direction === 'agent_to_human' && m.status === 'pending')
-    }
-    if (pending) {
-      await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ action: 'redo', response: notes || null })
-      })
-    } else {
-      // No pending checkpoint — send as free-form message
-      await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ message: `Redo seed ${seedNum}.${notes ? ' Notes: ' + notes : ''}` })
-      })
-    }
+    await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ role: 'human', message: `Redo seed ${seedNum}.${notes ? ' ' + notes : ''}`, action: 'redo' })
+    })
     seedReviewNotes.value = ''
     selectedSeed.value = null
     await fetchOrchestratorMessages()
@@ -980,11 +943,10 @@ async function sendChat() {
   try {
     const apiBase = getApiUrl()
 
-    // Send as human message to orchestrator API (agent polls this)
-    await fetch(`${apiBase}/api/orchestrator/human-message/${courseCode}`, {
+    await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ message: text })
+      body: JSON.stringify({ role: 'human', message: text })
     })
     await fetchOrchestratorMessages()
 
