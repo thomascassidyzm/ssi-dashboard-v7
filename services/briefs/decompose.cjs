@@ -130,29 +130,59 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
    - What order maximizes useful phrases?
    - Do any LEGOs overlap (A inside M)?
 
-3. **Submit the complete seed:**
+3. **Submit the complete seed in MARKDOWN format:**
    \`\`\`
    curl -X POST "http://localhost:${port}/api/seed/complete?course=${courseCode}" \\
-     -H "Content-Type: application/json" \\
-     -d '{
-       "course_code": "${courseCode}",
-       "seed_number": <N>,
-       "known_text": "<english>",
-       "target_text": "<${targetLanguageName}>",
-       "legos": [
-         {
-           "idx": 1,
-           "type": "A",
-           "known": "...",
-           "target": "...",
-           "phrases": {
-             "build": [{"known": "...", "target": "..."}],
-             "use": [{"known": "...", "target": "...", "score": 7}]
-           }
-         }
-       ]
-     }'
+     -H "Content-Type: text/markdown" \\
+     -d '# Seed 42
+Known: I want to speak German with you now.
+Target: Ich will jetzt Deutsch mit dir sprechen.
+
+## L1 [M] "I want" → "ich will"
+Components: I → ich, want → will
+
+BUILD:
+- I want to speak → ich will sprechen
+- I want that → ich will das
+- I want to learn → ich will lernen
+
+USE:
+- I want to speak German → Ich will Deutsch sprechen [7]
+- I want to learn now → Ich will jetzt lernen [8]
+- I want to speak with you → Ich will mit dir sprechen [7]
+- I want that now → Ich will das jetzt [6]
+- I want to speak now → Ich will jetzt sprechen [7]
+- I want to learn German → Ich will Deutsch lernen [8]
+- I want to speak German with you → Ich will Deutsch mit dir sprechen [8]
+- I want to learn German now → Ich will jetzt Deutsch lernen [7]
+
+## L2 [A] "now" → "jetzt"
+
+BUILD:
+- now with you → jetzt mit dir
+- speak now → jetzt sprechen
+- learn now → jetzt lernen
+
+USE:
+- I want to speak now → Ich will jetzt sprechen [7]
+- I want to learn now → Ich will jetzt lernen [7]
+- speak German now → jetzt Deutsch sprechen [6]
+- I want that now → Ich will das jetzt [7]
+- learn German now → jetzt Deutsch lernen [6]
+- I want to speak German now → Ich will jetzt Deutsch sprechen [8]
+- speak with you now → jetzt mit dir sprechen [7]
+- I want to learn German now → Ich will jetzt Deutsch lernen [8]
+'
    \`\`\`
+
+   **Format rules:**
+   - Header: \`# Seed N\` then \`Known:\` and \`Target:\` lines
+   - Each LEGO: \`## L1 [A] "known" → "target"\` (A = atomic, M = molecular)
+   - M-LEGOs: add \`Components: x → y, a → b\` line
+   - BUILD: 3+ phrases (fragments OK, new LEGO + old vocab)
+   - USE: 8+ phrases (complete sentences, score 5-9 in brackets)
+   - Phrases: \`- known text → target text [score]\`
+   - Scores reflect naturalness (5=OK, 9=perfect everyday phrase)
 
 4. **If the API rejects:** Read the error carefully. Common issues:
    - **Tiling failure:** Missing or extra words — add/adjust LEGOs
