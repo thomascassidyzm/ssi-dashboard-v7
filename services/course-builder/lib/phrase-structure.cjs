@@ -185,6 +185,25 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     };
   }
 
+  // Reject duplicate phrases within this LEGO (across BUILD + USE)
+  const allPhrases = [...buildRaw, ...useRaw];
+  const seen = new Set();
+  const duplicates = [];
+  for (const p of allPhrases) {
+    const norm = normalizeForContainment((p.target || '').trim());
+    if (seen.has(norm)) {
+      duplicates.push(p.target || p.known || '(empty)');
+    }
+    seen.add(norm);
+  }
+  if (duplicates.length > 0) {
+    return {
+      valid: false,
+      error: `${duplicates.length} duplicate phrase(s) within this LEGO: ${duplicates.slice(0, 3).map(d => `"${d}"`).join(', ')}`,
+      details: { build: build.length, use: use.length, duplicates },
+    };
+  }
+
   return {
     valid: true,
     details: {

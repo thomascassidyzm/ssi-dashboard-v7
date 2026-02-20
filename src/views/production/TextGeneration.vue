@@ -971,7 +971,7 @@ async function fetchOrchestratorMessages() {
   if (!courseCode) return
   try {
     const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/orchestrator/messages/${courseCode}`, {
+    const resp = await fetch(`${apiBase}/api/orchestrator/messages/${courseCode}?limit=200`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     if (resp.ok) {
@@ -994,7 +994,8 @@ let pollInterval = null
 function startPolling() {
   if (pollInterval) return
   fetchProgress()
-  pollInterval = setInterval(fetchProgress, 30000)
+  fetchOrchestratorMessages()
+  pollInterval = setInterval(() => { fetchProgress(); fetchOrchestratorMessages() }, 10000)
 }
 
 function stopPolling() {

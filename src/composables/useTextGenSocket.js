@@ -64,6 +64,7 @@ export function useTextGenSocket() {
     socket.on('detective:report', (data) => { detectiveFindings.value = data })
     socket.on('orchestrator:message', (data) => { lastOrchestratorMessage.value = data })
     socket.on('orchestrator:response', (data) => { lastOrchestratorResponse.value = data })
+    socket.on('chat:message', (data) => { lastOrchestratorMessage.value = data })
   }
 
   function disconnect() {
