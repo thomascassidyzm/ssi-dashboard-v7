@@ -98,7 +98,7 @@ A human is watching your work in real-time and will correct you via chat. Listen
 
 ---
 
-## Golden Seed Examples
+## Example Decompositions (from this course)
 
 ${decompositionPatterns || '(No decomposition patterns available yet — check the dashboard for examples)'}
 
@@ -198,40 +198,41 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
    - **Phrase count:** Not enough USE phrases — add more
    Fix and resubmit — do NOT move to the next seed until submission succeeds.
 
-5. **Post to chat and WAIT for human approval:**
-   After successful submission, post a message to the chat room:
+5. **Post to chat after each seed:**
+   After successful submission, post a summary to the chat room:
    \`\`\`
    curl -X POST "http://localhost:${port}/api/orchestrator/chat/${courseCode}" \\
      -H "Content-Type: application/json" \\
-     -d '{"role": "agent", "message": "Seed <N> submitted: <brief summary of LEGOs>"}'
+     -d '{"role": "agent", "message": "Seed <N> submitted: <brief summary of LEGOs and phrase count>"}'
    \`\`\`
-   The response includes \`{ "id": "<message_id>" }\`. Save the \`created_at\` timestamp.
 
-   Then poll for new messages since your post:
+6. **Check for human messages before moving on:**
    \`\`\`
-   curl -s "http://localhost:${port}/api/orchestrator/chat/${courseCode}?after=<created_at>"
+   curl -s "http://localhost:${port}/api/orchestrator/chat/${courseCode}?after=<last_timestamp>"
    \`\`\`
-   - Poll every 20 seconds.
-   - Look for a message with \`role: "human"\` and \`action: "approve"\` or \`action: "redo"\`
-   - **"approve"** → proceed to next seed
-   - **"redo"** → read the \`message\` field for feedback, wipe the seed, redo it
-   - Human may also send plain messages (no action) — read and acknowledge them.
+   - Look for messages with \`role: "human"\`
+   - If \`action: "redo"\` → read the \`message\` for feedback, wipe the seed, redo it
+   - If \`action: "approve"\` → acknowledged, continue
+   - If the human says something like "carry on to seed 50" or "continue without waiting" → proceed autonomously up to that point
+   - If no human messages → **continue to the next seed** (don't wait unless told to)
 
-6. **Record learnings** when you discover something useful:
+   **Default mode: keep going.** The human will interrupt you via chat if they want you to stop, redo, or change approach. You do NOT need to wait for approval after every seed unless the human explicitly tells you to wait.
+
+7. **Record learnings** when you discover something useful:
    \`\`\`
    curl -X POST "http://localhost:${port}/api/course/${courseCode}/learnings" \\
      -H "Content-Type: application/json" \\
      -d '{"learning": "..."}'
    \`\`\`
 
-7. **Send messages to the human** at any time:
+8. **Send messages to the human** at any time:
    \`\`\`
    curl -X POST "http://localhost:${port}/api/orchestrator/chat/${courseCode}" \\
      -H "Content-Type: application/json" \\
      -d '{"role": "agent", "message": "..."}'
    \`\`\`
 
-8. **Repeat** from step 1.
+9. **Repeat** from step 1.
 
 ### On Errors
 - If a seed fails validation, fix and resubmit — don't skip it
@@ -246,25 +247,31 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
 - Target language: ${targetLanguageName}
 - API port: ${port}
 - Seeds are processed in order (each builds on prior vocabulary)
-- The human is watching — communicate your thinking when uncertain
+- There are NO checkpoints — just keep going seed by seed
+- The human reviews seeds in the dashboard and approves/redoes via the grid
 
-## IMPORTANT — READ THIS CAREFULLY
+## IMPORTANT — HOW HUMAN OVERSIGHT WORKS
 
-**YOU MUST WAIT FOR HUMAN APPROVAL AFTER EVERY SEED.**
+**There are NO checkpoints. There is NO golden phase. Just seeds 1 through 300.**
 
-This is NOT optional. The workflow is:
-1. Submit seed via API
-2. Post checkpoint message (step 5 above)
-3. **STOP AND WAIT** — poll every 20 seconds until the human approves or requests redo
-4. Only then proceed to the next seed
+Your default mode is to **keep submitting seeds continuously**. After each seed:
+1. Post a chat summary (step 5)
+2. Quickly check for human messages (step 6) — do NOT poll repeatedly
+3. If no redo request, proceed immediately to the next seed
 
-If you skip the checkpoint and move to the next seed without approval, you are violating the core workflow. The human needs to review your work before you continue.
+The human may tell you to:
+- **"Wait for approval"** → then stop and poll after each seed until approved
+- **"Carry on to seed N"** → submit seeds continuously up to N without waiting
+- **"Redo seed N"** → wipe and redo that specific seed
+- **"Stop"** → stop working
+
+If the human hasn't said anything, **keep going**. They will interrupt if needed.
 
 Other rules:
-- NEVER ask questions in your terminal output expecting a response there — use the chat API.
-- Work SLOWLY AND STEADILY — quality over speed.
-- Record learnings when you discover patterns specific to ${targetLanguageName}.
-- Do NOT spawn sub-agents — decompose all seeds yourself sequentially.
+- NEVER ask questions in your terminal output expecting a response there — use the chat API
+- Work SLOWLY AND STEADILY — quality over speed
+- Record learnings when you discover patterns specific to ${targetLanguageName}
+- Do NOT spawn sub-agents — decompose all seeds yourself sequentially
 `;
 }
 

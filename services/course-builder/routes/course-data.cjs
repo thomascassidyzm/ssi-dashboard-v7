@@ -596,8 +596,6 @@ module.exports = function courseDataRoutes(ctx) {
         };
       })(),
 
-      checkpoint: await getCheckpointStatus(ctx, courseCode),
-
       // Context from recent work
       recent_seeds: recentCompleted || [],
       recent_legos: recentLegos?.reverse() || [],
@@ -681,8 +679,8 @@ USE:
           '3. USE phrases must be complete sentences with scores 5-9',
           '4. Phrases can only use THIS LEGO + vocabulary from PREVIOUS LEGOs',
           `5. Submit as markdown: POST /api/seed/complete?course=${courseCode} with Content-Type: text/markdown`,
-          `6. CHECKPOINTS at seeds ${CHECKPOINT_SEEDS.join(', ')} - stop and await QA`,
-          '7. Continue autonomously until done'
+          '6. Post summary to chat after each seed, check for human feedback',
+          '7. Continue to next seed unless human says to stop or redo'
         ],
         phrase_requirements: {
           build: 'Flexible: LEGO + 1-5 syllables, fragments OK, debut only',
