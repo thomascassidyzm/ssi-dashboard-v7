@@ -3,7 +3,7 @@
  * No Checker review loop. QA runs as a separate pipeline stage afterwards.
  */
 
-const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries } = require('./shared.cjs');
+const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples } = require('./shared.cjs');
 
 async function generateBuildMvpBrief(courseCode, query = {}) {
   const supabase = getSupabase();
@@ -19,6 +19,12 @@ async function generateBuildMvpBrief(courseCode, query = {}) {
   const translationDoctrine = courseInfo?.quality_rules?.target_language_guidance
     ? JSON.stringify(courseInfo.quality_rules.target_language_guidance, null, 2)
     : null;
+
+  // Fetch approved calibration seeds as quality examples
+  const goldenSeedCount = getGoldenSeedCount(courseInfo);
+  const calibrationNums = [];
+  for (let i = 1; i <= Math.min(10, goldenSeedCount); i++) calibrationNums.push(i);
+  const calibrationSeeds = await fetchGoldenSeedExamples(courseCode, calibrationNums);
 
   // Seeds must be provided via query param (parallel batch mode)
   if (!query.seeds) {
@@ -81,6 +87,27 @@ Same KNOWN text → same TARGET text. Always. Use different natural phrases to d
 If a learner CANNOT infer a target form from LEGOs they already know, it MUST have its own LEGO. Every uninferred form is a ZUT violation waiting to happen.
 
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
+## Approved Calibration Seeds — YOUR Quality Reference
+
+These seeds were human-approved for this exact course. **Match this quality level.** Study the LEGO choices, BUILD phrase style, and USE phrase naturalness carefully — this is the gold standard.
+
+${calibrationSeeds && calibrationSeeds.length > 0 ? calibrationSeeds.map(seed => {
+  const lines = [`### Seed ${seed.seed_number}: "${seed.known_text}" → "${seed.target_text}"`];
+  for (const lego of seed.legos) {
+    lines.push(`\n**L${lego.idx} (${lego.type})**: "${lego.known}" → "${lego.target}"`);
+    if (lego.components) {
+      lines.push(`  Components: ${lego.components.map(c => `"${c.known}" → "${c.target}"`).join(', ')}`);
+    }
+    if (lego.build && lego.build.length > 0) {
+      lines.push(`  BUILD: ${lego.build.slice(0, 3).map(p => `"${p.known}" → "${p.target}"`).join(' | ')}`);
+    }
+    if (lego.use && lego.use.length > 0) {
+      lines.push(`  USE: ${lego.use.slice(0, 4).map(p => `"${p.known}" → "${p.target}"`).join(' | ')}`);
+    }
+  }
+  return lines.join('\n');
+}).join('\n\n') : '(No approved calibration seeds available yet — this should not happen. Check the pipeline.)'}
+
 ## Cross-Course Reference (How Other Languages Decomposed These Seeds)
 
 Study these summaries to understand decomposition patterns. For full detail on any seed, fetch from the API.

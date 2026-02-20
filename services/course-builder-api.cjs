@@ -40,14 +40,6 @@ setSupabase(supabase);
 app.use('/api', require('./course-builder/routes/seed-complete.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/course-data.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/build.cjs')(ctx));
-app.use('/api', require('./course-builder/routes/qa.cjs')(ctx));
-app.use('/api', require('./course-builder/routes/checkpoint.cjs')(ctx));
-app.use('/api', require('./course-builder/routes/translation.cjs')(ctx));
-app.use('/api', require('./course-builder/routes/golden.cjs')(ctx));
-app.use('/api', require('./course-builder/routes/v2.cjs')(ctx));
-app.use('/api', require('./course-builder/routes/calibration.cjs')(ctx));
-app.use('/api', require('./course-builder/routes/activity.cjs')(ctx));
-app.use('/api', require('./course-builder/routes/drafts.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/orchestrator.cjs')(ctx));
 
 // Mount briefs router
@@ -65,20 +57,10 @@ app.listen(PORT, () => {
   console.log(`\n╔══════════════════════════════════════════════════════════════╗`);
   console.log(`║  Course Builder API - Port ${PORT}                            ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
-  console.log(`║  Architecture: Thin shell + 11 route modules + 10 lib files ║`);
-  console.log(`║  Briefs: /api/brief/:courseCode/stage/:stage                 ║`);
-  console.log(`╠══════════════════════════════════════════════════════════════╣`);
-  console.log(`║  GOLDEN PATH:                                                ║`);
-  console.log(`║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║`);
-  console.log(`╠══════════════════════════════════════════════════════════════╣`);
-  console.log(`║  Key Endpoints:                                               ║`);
-  console.log(`║  GET  /api/resume/:code    - Resume after compaction          ║`);
-  console.log(`║  GET  /api/stats/:code     - Quality metrics + vocab size     ║`);
-  console.log(`║  GET  /api/seeds/:code     - Canonical seeds from database    ║`);
-  console.log(`║  GET  /api/vocab/:code     - Current vocabulary set           ║`);
-  console.log(`║  POST /api/build/start/:c  - Start parallel build             ║`);
-  console.log(`║  GET  /api/checkpoint/*    - QA gates at seeds 10,50,150,300  ║`);
-  console.log(`║  POST /api/v2/*           - V2 staged pipeline                ║`);
+  console.log(`║  Pipeline: translate → decompose → complete                   ║`);
+  console.log(`║  POST /api/seed/complete    - Atomic seed+LEGOs+phrases       ║`);
+  console.log(`║  POST /api/build/decompose  - Spawn decompose agent           ║`);
+  console.log(`║  POST /api/orchestrator/chat - Agent ↔ human chat             ║`);
   console.log(`╚══════════════════════════════════════════════════════════════╝\n`);
 
   // Start build manager to monitor running jobs from DB
