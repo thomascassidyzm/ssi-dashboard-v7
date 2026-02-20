@@ -121,7 +121,8 @@
                   ? 'bg-amber-600/20 border-amber-500/50 text-amber-400 animate-pulse'
                   : 'bg-slate-700/30 border-slate-600/50 text-slate-500 hover:border-violet-500/50 hover:text-violet-400'"
             >
-              Chat{{ orchestratorHasPending && !chatExpanded ? ' ●' : '' }}
+              Chat
+              <span v-if="unreadChatCount > 0 && !chatExpanded" class="absolute -top-1.5 -right-1.5 min-w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full bg-amber-500 text-[10px] font-bold text-slate-900 px-1">{{ unreadChatCount > 99 ? '99+' : unreadChatCount }}</span>
             </button>
           </div>
         </div>
@@ -246,32 +247,6 @@
           </div>
         </div>
 
-        <!-- Active Agents -->
-        <div v-if="agents.running_count > 0" class="bg-slate-800/20 border border-slate-700/30 rounded-lg px-4 py-3">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs text-slate-500 uppercase tracking-wide">Active Agents</span>
-            <span class="text-xs text-cyan-400">{{ agents.running_count }} running</span>
-          </div>
-          <div class="space-y-1">
-            <div
-              v-for="agent in agents.running"
-              :key="agent.pid"
-              class="flex items-center justify-between bg-slate-700/20 rounded px-3 py-1.5"
-            >
-              <div class="flex items-center gap-4">
-                <span class="text-xs font-mono text-slate-400">PID {{ agent.pid }}</span>
-                <span class="text-xs text-slate-500">{{ agent.seedCount }} seeds</span>
-                <span class="text-xs text-slate-500">{{ agent.runningMinutes }}m</span>
-              </div>
-              <button
-                @click="killAgent(agent.pid)"
-                class="text-xs px-2 py-0.5 rounded bg-red-600/20 text-red-400 hover:bg-red-600/30 transition-colors"
-              >
-                Kill
-              </button>
-            </div>
-          </div>
-        </div>
       </section>
 
       <!-- Seed Grid -->
@@ -314,68 +289,6 @@
             ></div>
           </div>
 
-          <!-- Inline seed phrase viewer -->
-          <div v-if="selectedSeed !== null" class="mt-4 border-t border-slate-700/50 pt-4">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-mono text-slate-400">Seed {{ selectedSeed }}</span>
-              <button @click="selectedSeed = null; seedViewPhrases = []; seedViewSeedText = null" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
-            </div>
-            <!-- Seed sentence -->
-            <div v-if="seedViewSeedText" class="mb-3 p-2 bg-slate-800/60 border border-slate-700/40 rounded">
-              <div class="text-[10px] text-slate-500 mb-1 font-mono tracking-wider uppercase">Seed</div>
-              <div class="flex items-start gap-2 flex-wrap">
-                <span class="text-sm font-medium text-slate-200">{{ seedViewSeedText.known_text || '…' }}</span>
-                <span class="text-slate-500 text-xs mt-0.5">→</span>
-                <span class="text-sm text-emerald-400">{{ seedViewSeedText.target_text || '…' }}</span>
-              </div>
-            </div>
-            <div v-if="seedViewLoading" class="text-xs text-slate-500 animate-pulse py-2">Loading...</div>
-            <div v-else-if="seedViewPhrases.length === 0" class="text-xs text-slate-600 py-2">No phrases found for this seed.</div>
-            <div v-else class="space-y-3 max-h-72 overflow-y-auto pr-1">
-              <div v-for="lego in seedViewPhrases" :key="lego.lego_index" class="border border-slate-700/40 rounded p-2">
-                <!-- LEGO header -->
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="text-[10px] font-mono text-slate-600">L{{ lego.lego_index }}</span>
-                  <template v-if="lego.meta">
-                    <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-slate-700/40 text-slate-400'">{{ lego.meta.type || lego.meta.lego_type }}</span>
-                    <span class="text-xs font-medium text-slate-200">{{ lego.meta.known_text }}</span>
-                    <span class="text-slate-600 text-xs">→</span>
-                    <span class="text-xs font-medium text-emerald-400">{{ lego.meta.target_text }}</span>
-                  </template>
-                </div>
-                <!-- Phrases -->
-                <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-xs py-0.5 pl-2">
-                  <span class="font-mono w-8 shrink-0" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-slate-500' : 'text-amber-400/70'">
-                    {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
-                  </span>
-                  <span class="text-slate-300">{{ phrase.known_text }}</span>
-                  <span class="text-slate-600 shrink-0">→</span>
-                  <span class="text-slate-400">{{ phrase.target_text }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Approve / Redo controls -->
-            <div class="mt-3 flex gap-2 items-start">
-              <textarea
-                v-model="seedReviewNotes"
-                placeholder="Notes for redo (optional)..."
-                rows="1"
-                class="flex-1 bg-slate-800/80 border border-slate-700 rounded text-xs text-slate-300 placeholder-slate-600 px-2 py-1 resize-none"
-              />
-              <button
-                @click="redoSeed"
-                :disabled="seedRedoing"
-                class="px-2 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs rounded transition-all shrink-0"
-              >{{ seedRedoing ? 'Sending...' : 'Redo' }}</button>
-              <button
-                @click="approveSeed"
-                :disabled="seedApproving"
-                class="px-2 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs rounded transition-all shrink-0"
-              >{{ seedApproving ? 'Approving...' : 'Approve' }}</button>
-            </div>
-          </div>
-
           <!-- Legend -->
           <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30"></span> Empty</span>
@@ -384,6 +297,70 @@
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/60 ring-1 ring-inset ring-rose-400"></span> Collision</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Phrase Viewer (standalone, below grid) -->
+      <section v-if="selectedSeed !== null" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+        <div class="px-6 py-4">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-mono font-medium text-slate-300">Seed {{ selectedSeed }}</span>
+            <button @click="selectedSeed = null; seedViewPhrases = []; seedViewSeedText = null" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
+          </div>
+          <!-- Seed sentence -->
+          <div v-if="seedViewSeedText" class="mb-4 p-3 bg-slate-800/60 border border-slate-700/40 rounded">
+            <div class="text-[10px] text-slate-500 mb-1 font-mono tracking-wider uppercase">Seed</div>
+            <div class="flex items-start gap-2 flex-wrap">
+              <span class="text-base font-medium text-slate-200">{{ seedViewSeedText.known_text || '…' }}</span>
+              <span class="text-slate-500 text-sm mt-0.5">→</span>
+              <span class="text-base text-emerald-400">{{ seedViewSeedText.target_text || '…' }}</span>
+            </div>
+          </div>
+          <div v-if="seedViewLoading" class="text-sm text-slate-500 animate-pulse py-2">Loading...</div>
+          <div v-else-if="seedViewPhrases.length === 0" class="text-sm text-slate-600 py-2">No phrases found for this seed.</div>
+          <div v-else class="space-y-3">
+            <div v-for="lego in seedViewPhrases" :key="lego.lego_index" class="border border-slate-700/40 rounded p-3">
+              <!-- LEGO header -->
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-[10px] font-mono text-slate-600">L{{ lego.lego_index }}</span>
+                <template v-if="lego.meta">
+                  <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-slate-700/40 text-slate-400'">{{ lego.meta.type || lego.meta.lego_type }}</span>
+                  <span class="text-base font-medium text-slate-200">{{ lego.meta.known_text }}</span>
+                  <span class="text-slate-600 text-sm">→</span>
+                  <span class="text-base font-medium text-emerald-400">{{ lego.meta.target_text }}</span>
+                </template>
+              </div>
+              <!-- Phrases -->
+              <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-sm py-0.5 pl-3">
+                <span class="font-mono w-8 shrink-0 text-xs" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-slate-500' : 'text-amber-400/70'">
+                  {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
+                </span>
+                <span class="text-slate-300">{{ phrase.known_text }}</span>
+                <span class="text-slate-600 shrink-0">→</span>
+                <span class="text-slate-400">{{ phrase.target_text }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Approve / Redo controls -->
+          <div class="mt-4 pt-4 border-t border-slate-700/50 flex gap-3 items-start">
+            <textarea
+              v-model="seedReviewNotes"
+              placeholder="Notes for redo (optional)..."
+              rows="2"
+              class="flex-1 bg-slate-800/80 border border-slate-700 rounded text-sm text-slate-300 placeholder-slate-600 px-3 py-2 resize-none"
+            />
+            <button
+              @click="redoSeed"
+              :disabled="seedRedoing"
+              class="px-4 py-2 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-sm font-medium rounded transition-all shrink-0"
+            >{{ seedRedoing ? 'Sending...' : 'Redo' }}</button>
+            <button
+              @click="approveSeed"
+              :disabled="seedApproving"
+              class="px-4 py-2 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-sm font-medium rounded transition-all shrink-0"
+            >{{ seedApproving ? 'Approving...' : 'Approve' }}</button>
           </div>
         </div>
       </section>
@@ -599,6 +576,8 @@ const visibleChatMessages = computed(() => {
   return orchestratorMessages.value.filter(m => m.created_at > chatClearedAt.value)
 })
 
+const unreadChatCount = computed(() => visibleChatMessages.value.length)
+
 // Methods
 async function fetchProgress() {
   const courseCode = effectiveCourseCode.value
@@ -752,7 +731,6 @@ async function startDecompose() {
     const result = await response.json()
     if (result.ok) {
       decomposeRunning.value = true
-      chatExpanded.value = true
     } else {
       console.error('Failed to start decompose:', result.error)
     }
@@ -888,6 +866,9 @@ async function approveSeed() {
     seedViewPhrases.value = []
     seedViewSeedText.value = null
     await Promise.all([fetchOrchestratorMessages(), fetchSeedGrid()])
+    // Auto-select next amber (drafted) seed
+    const nextDrafted = seedGrid.value.find(s => s.status === 'drafted')
+    if (nextDrafted) selectSeed(nextDrafted.seed)
   } catch (err) {
     console.error('Failed to approve seed:', err)
   } finally {
@@ -910,8 +891,16 @@ async function redoSeed() {
     })
     seedReviewNotes.value = ''
     selectedSeed.value = null
-    await fetchOrchestratorMessages()
-    setTimeout(() => { seedRedoing.value = false }, 1500)
+    seedViewPhrases.value = []
+    seedViewSeedText.value = null
+    // Optimistically clear the seed from the grid so it's no longer amber
+    const cell = seedGrid.value.find(s => s.seed === seedNum)
+    if (cell) cell.status = 'building'
+    await Promise.all([fetchOrchestratorMessages(), fetchSeedGrid()])
+    // Auto-select next amber seed
+    const nextDrafted = seedGrid.value.find(s => s.status === 'drafted')
+    if (nextDrafted) selectSeed(nextDrafted.seed)
+    seedRedoing.value = false
   } catch (err) {
     console.error('Failed to send redo:', err)
     seedRedoing.value = false
@@ -967,11 +956,6 @@ async function fetchOrchestratorMessages() {
     if (resp.ok) {
       const data = await resp.json()
       orchestratorMessages.value = data.messages || []
-      if (orchestratorHasPending.value) {
-        chatExpanded.value = true
-        await nextTick()
-        if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
-      }
     }
   } catch (err) {
     console.error('Failed to fetch orchestrator messages:', err)
