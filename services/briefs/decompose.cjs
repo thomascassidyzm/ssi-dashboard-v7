@@ -171,7 +171,7 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
    USE:
    - Full sentence a learner would say → Translation [7]
    - Full sentence a learner would say → Translation [8]
-   - (8 or more USE phrases, each scored 5-9)
+   - (5 or more USE phrases, each scored 5-9)
    \`\`\`
 
    **Submission command:**
@@ -186,7 +186,7 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
    - Each LEGO: \`## L1 [A] "known" → "target"\` (A = atomic, M = molecular)
    - M-LEGOs: add \`Components: x → y, a → b\` line
    - BUILD: 3+ phrases (new LEGO + previously introduced vocab, fragments OK)
-   - USE: 8+ complete sentences for spaced repetition, scored 5-9
+   - USE: 5+ complete sentences for spaced repetition, scored 5-9
    - Phrases: \`- known text → target text [score]\`
    - Scores: 5=acceptable, 7=good, 9=perfect everyday phrase
    - No duplicate phrases within any LEGO (across BUILD + USE)

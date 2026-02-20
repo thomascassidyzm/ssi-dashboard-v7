@@ -108,7 +108,7 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
 
   // Graduated requirements
   let minBuild = 3;
-  let minUse = 8;
+  let minUse = 5;
 
   if (seedNumber === 1 && lego.idx === 1) {
     minBuild = 0;
@@ -120,9 +120,6 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     minBuild = 1;
     minUse = 1;
   } else if (seedNumber <= 5) {
-    minBuild = 2;
-    minUse = 2;
-  } else if (seedNumber <= 10) {
     minBuild = 2;
     minUse = 2;
   }
