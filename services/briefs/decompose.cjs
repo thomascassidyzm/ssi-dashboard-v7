@@ -162,33 +162,28 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
    Fix and resubmit — do NOT move to the next seed until submission succeeds.
 
 5. **Post checkpoint and WAIT for human approval:**
-   After successful submission, post a checkpoint message and wait:
+   After successful submission, post a checkpoint message:
    \`\`\`
-   curl -X POST "http://localhost:${port}/api/orchestrator/${courseCode}/messages" \\
+   curl -X POST "http://localhost:${port}/api/orchestrator/message/${courseCode}" \\
      -H "Content-Type: application/json" \\
      -d '{
-       "direction": "agent_to_human",
-       "message": "Seed <N> submitted: <brief summary of LEGOs>",
        "checkpoint": "decompose_seed_<N>",
+       "message": "Seed <N> submitted: <brief summary of LEGOs>",
        "metadata": {"seed_number": <N>}
      }'
    \`\`\`
+   The response includes \`{ "id": "<message_id>" }\`. Save this ID.
 
-   Then poll until the human responds (approve or redo):
+   Then poll by message ID until the human responds:
    \`\`\`
-   curl -s "http://localhost:${port}/api/orchestrator/${courseCode}/messages?direction=agent_to_human&status=pending"
+   curl -s "http://localhost:${port}/api/orchestrator/poll/${courseCode}/<message_id>"
    \`\`\`
-   - Poll every 20 seconds. While waiting, also check for human_to_agent messages.
-   - If the response is empty (still pending), keep waiting.
-   - Once the checkpoint status changes from "pending":
+   - Poll every 20 seconds.
+   - Response has \`status\`: "pending" or "responded"
+   - When \`status === "responded"\`, check \`response_action\`:
      - **"approve"** → proceed to next seed
-     - **"redo"** → read the response text for feedback, wipe the seed, redo it
-
-   To check if your checkpoint was responded to:
-   \`\`\`
-   curl -s "http://localhost:${port}/api/orchestrator/${courseCode}/messages?checkpoint=decompose_seed_<N>"
-   \`\`\`
-   Look at the \`response_action\` field: "approve" or "redo".
+     - **"redo"** → read the \`response\` field for feedback, wipe the seed, redo it
+   - While waiting, also check for human messages (step 7).
 
 6. **Record learnings** when you discover something useful:
    \`\`\`
@@ -199,13 +194,14 @@ ${siblingLearnings.length > 0 ? `## Cross-Course Learnings (same target language
 
 7. **Check for human messages** between seeds:
    \`\`\`
-   curl -s "http://localhost:${port}/api/orchestrator/${courseCode}/messages?direction=human_to_agent&status=pending"
+   curl -s "http://localhost:${port}/api/orchestrator/messages/${courseCode}"
    \`\`\`
+   Look for messages with \`direction: "human_to_agent"\` and \`status: "pending"\`.
    If there are pending messages, read them, adjust your approach, and acknowledge:
    \`\`\`
-   curl -X POST "http://localhost:${port}/api/orchestrator/${courseCode}/messages" \\
+   curl -X POST "http://localhost:${port}/api/orchestrator/message/${courseCode}" \\
      -H "Content-Type: application/json" \\
-     -d '{"direction": "agent_to_human", "content": "..."}'
+     -d '{"message": "Understood, will adjust..."}'
    \`\`\`
 
 8. **Repeat** from step 1.

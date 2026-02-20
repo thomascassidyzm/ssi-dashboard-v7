@@ -648,7 +648,7 @@ async function fetchProgress() {
         if (buildData.active) {
           progress.value.status = 'running'
           progress.value.buildPass = buildData.build?.pass || null
-          if (buildData.build?.total_seeds) {
+          if (buildData.build?.total_seeds && buildData.build?.pass === 'decompose') {
             seedCount.value = buildData.build.total_seeds
           }
         } else {
@@ -888,11 +888,17 @@ async function approveSeed() {
   seedApproving.value = true
   try {
     const apiBase = getApiUrl()
-    // Find the pending checkpoint for this seed
-    const pending = orchestratorMessages.value.find(m =>
+    // Find the pending checkpoint for this seed (exact match first, then most recent pending)
+    let pending = orchestratorMessages.value.find(m =>
       m.direction === 'agent_to_human' && m.status === 'pending' &&
       (m.metadata?.seed_number === seedNum || m.checkpoint === `decompose_seed_${seedNum}`)
     )
+    if (!pending) {
+      // Fallback: most recent pending agent_to_human message (agent may not include checkpoint/metadata)
+      pending = [...orchestratorMessages.value]
+        .reverse()
+        .find(m => m.direction === 'agent_to_human' && m.status === 'pending')
+    }
     if (pending) {
       await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
         method: 'POST',
@@ -926,10 +932,15 @@ async function redoSeed() {
   try {
     const apiBase = getApiUrl()
     const notes = seedReviewNotes.value.trim()
-    const pending = orchestratorMessages.value.find(m =>
+    let pending = orchestratorMessages.value.find(m =>
       m.direction === 'agent_to_human' && m.status === 'pending' &&
       (m.metadata?.seed_number === seedNum || m.checkpoint === `decompose_seed_${seedNum}`)
     )
+    if (!pending) {
+      pending = [...orchestratorMessages.value]
+        .reverse()
+        .find(m => m.direction === 'agent_to_human' && m.status === 'pending')
+    }
     if (pending) {
       await fetch(`${apiBase}/api/orchestrator/respond/${courseCode}/${pending.id}`, {
         method: 'POST',
