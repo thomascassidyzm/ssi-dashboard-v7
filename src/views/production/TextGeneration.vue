@@ -607,24 +607,14 @@ async function fetchProgress() {
   try {
     const apiBase = getApiUrl()
 
-    const [statsResponse, buildResponse, activityResponse] = await Promise.all([
+    const [statsResponse, buildResponse] = await Promise.all([
       fetch(`${apiBase}/api/stats/${courseCode}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       }),
       fetch(`${apiBase}/api/build/status/${courseCode}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
-      }),
-      fetch(`${apiBase}/api/activity`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
       })
     ])
-
-    if (activityResponse.ok) {
-      const activityData = await activityResponse.json()
-      if (activityData.agents) {
-        agents.value = activityData.agents
-      }
-    }
 
     if (statsResponse.ok) {
       const data = await statsResponse.json()
