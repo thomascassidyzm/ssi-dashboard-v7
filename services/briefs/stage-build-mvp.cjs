@@ -120,6 +120,22 @@ Study these summaries to understand decomposition patterns. For full detail on a
 
 ${crossCourseSummaries || '(No cross-course calibrations available yet — you are pioneering!)'}
 
+## STEP 0 — Read the Methodology (MANDATORY)
+
+Before building ANY seed, read the full methodology document:
+\`\`\`bash
+cat ralph-methodology.md
+\`\`\`
+This is the single source of truth for vocabulary constraints, phrase counts, BUILD vs USE rules, and everything else. The summary above is just an orientation — the methodology doc has the binding rules.
+
+## CRITICAL — Vocabulary Constraint (Universal, No Exceptions)
+
+**Every single word in every phrase must trace to introduced vocabulary.** This means:
+- The vocab endpoint (Step 2) shows ALL available vocabulary for seed N.
+- M-LEGO components are included in the vocab — trust the endpoint.
+- **If a word is not in the vocab response and not a LEGO you're introducing in this seed, you CANNOT use it.**
+- If you cannot form enough natural phrases with available vocabulary, reduce the count. Never fabricate vocabulary.
+
 ## Protocol — For Each Seed N (your assigned seeds: ${assignedSeeds.join(', ')})
 
 ### Step 1: Fetch cross-course examples

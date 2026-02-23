@@ -160,6 +160,23 @@ Study these summaries to understand decomposition patterns. For full detail on a
 
 ${crossCourseSummaries || '(No cross-course calibrations available yet — you are pioneering!)'}
 
+## STEP 0 — Read the Methodology (MANDATORY)
+
+Before building ANY seed, read the full methodology document:
+\`\`\`bash
+cat ralph-methodology.md
+\`\`\`
+This is the single source of truth. It covers vocabulary constraints, early-seed phrase counts, BUILD vs USE rules, the bootstrapping curve, and everything else. The summary above is just an orientation — the methodology doc has the binding rules.
+
+## CRITICAL — Vocabulary Constraint (Universal, No Exceptions)
+
+**Every single word in every phrase must trace to introduced vocabulary.** This means:
+- L1 in seed 1 has ZERO prior vocab. Seed 1 L1 gets **0 BUILD, 0 USE**.
+- L2 in seed 1 can use L1 + L2 only. Seed 1 L2 gets **1-2 BUILD, 1-2 USE**.
+- Seeds 2-3: sparse vocab — **1-3 BUILD, 1-3 USE** per LEGO.
+- Seeds 4+: vocab grows, minimums increase to **3 BUILD, 5 USE** per LEGO.
+- **If you cannot form enough natural phrases with available vocabulary, reduce the count. Never use a word that hasn't been introduced.**
+
 ## Protocol — For Each Seed N${query.seeds ? ` (your assigned seeds: ${remainingSeeds.join(', ')})` : ` (1 → ${targetSeeds})`}
 
 ### Step 1: Fetch cross-course examples

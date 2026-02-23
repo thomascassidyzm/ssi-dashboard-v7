@@ -84,6 +84,30 @@ ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translatio
 
 ${crossCourseSummaries || '(No cross-course calibrations available yet — you are pioneering!)'}
 
+## STEP 0 — Read the Methodology (MANDATORY)
+
+Before building ANY seed, read the full methodology document:
+\`\`\`bash
+cat ralph-methodology.md
+\`\`\`
+This is the single source of truth. It covers vocabulary constraints, early-seed phrase counts, BUILD vs USE rules, the bootstrapping curve, and everything else. The summary above is just an orientation — the methodology doc has the binding rules.
+
+Also read the calibration rules if they exist for this course:
+\`\`\`bash
+ls docs/calibration-rules-${courseCode.split('_for_')[0]}*.md 2>/dev/null && cat docs/calibration-rules-${courseCode.split('_for_')[0]}*.md
+\`\`\`
+
+## CRITICAL — Vocabulary Constraint (Universal, No Exceptions)
+
+**Every single word in every phrase must trace to introduced vocabulary.** This means:
+- L1 in seed 1 has ZERO prior vocab. L1 BUILD/USE can ONLY use L1's own target + its components. In practice, seed 1 L1 gets **0 BUILD, 0 USE**.
+- L2 in seed 1 can use L1 + L2 only. Seed 1 L2 gets **1-2 BUILD, 1-2 USE**.
+- L3 can use L1 + L2 + L3 only. And so on.
+- Seeds 2-3: each LEGO can use prior seed vocab + earlier LEGOs from current seed. Still sparse — **1-3 BUILD, 1-3 USE**.
+- Seeds 4+: vocab grows, minimums increase to **3 BUILD, 5 USE** per LEGO.
+
+**If you cannot form enough natural phrases with available vocabulary, reduce the count. Never use a word that hasn't been introduced.**
+
 ## Protocol — For Each Seed N (1 → ${targetSeeds})
 
 ### Step 1: Fetch cross-course examples
