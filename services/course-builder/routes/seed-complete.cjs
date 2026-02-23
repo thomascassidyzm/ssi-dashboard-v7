@@ -946,8 +946,8 @@ module.exports = function seedCompleteRoutes(ctx) {
         });
       }
 
-      // 1b. LEGO SYLLABLE CAP (cognitive load guard)
-      if (!SKIP_VALIDATION) {
+      // 1b. LEGO SYLLABLE CAP (cognitive load guard — always runs, even with skip_validation)
+      {
         const oversizedLegos = [];
         for (const lego of legos) {
           const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
@@ -965,13 +965,13 @@ module.exports = function seedCompleteRoutes(ctx) {
           });
           console.log(`✗ ${seedId}: LEGO SIZE - ${oversizedLegos.map(l => `${l.lego_id} "${l.target}" (${l.syllables} syl)`).join(', ')}`);
         }
-      }
+      } // end syllable cap
 
       // Load vocab from prior seeds
       const vocabSet = await loadTranslationVocab(ctx, course_code, seed_number);
 
-      // 2. TILING VALIDATION
-      if (!SKIP_VALIDATION) {
+      // 2. TILING VALIDATION (always runs — even golden seeds must tile)
+      {
         const tilingResult = checkTiling(target_text, legos, course_code, vocabSet);
         if (!tilingResult.valid) {
           errors.push({
@@ -986,7 +986,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         } else {
           console.log(`✓ ${seedId}: Tiling valid (${tilingResult.seed_vocab || 'ok'} → ${legos.length} LEGOs)`);
         }
-      } // end SKIP_VALIDATION tiling check
+      } // end tiling check
 
       // 3. VOCAB VALIDATION
       const vocabViolations = [];
@@ -1041,7 +1041,7 @@ module.exports = function seedCompleteRoutes(ctx) {
                 }
                 return !normalizeForContainment(p.target).includes(legoTargetNorm);
               });
-              if (containmentFails.length > 0 && !SKIP_VALIDATION) {
+              if (containmentFails.length > 0) {
                 const mode = useWordContainment ? 'word-based' : 'substring';
                 errors.push({
                   type: 'lego_containment',
@@ -1060,7 +1060,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
-      if (vocabViolations.length > 0 && !SKIP_VALIDATION) {
+      if (vocabViolations.length > 0) {
         ctx.courseVocabCache.delete(course_code);
         errors.push({
           type: 'vocab',
