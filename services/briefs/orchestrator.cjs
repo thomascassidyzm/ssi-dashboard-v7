@@ -125,6 +125,15 @@ ${gateModes.golden === 'human' ? '**⚠️ CHECKPOINT**: Post a checkpoint messa
 **Action**: \`POST ${API}/api/build/start/${courseCode}\` with body \`{"targetSeeds": ${mvpTarget}}\`
 This spawns parallel Sonnet agents that build seeds via \`POST /api/seed/complete\` (same as golden).
 **Monitor**: Poll \`GET ${API}/api/stats/${courseCode}\` every 60s — check \`decomposed_seeds >= ${mvpTarget}\`
+
+**⚠️ STALL DETECTION (CRITICAL):** Sonnet builder agents typically run out of context after 70-100 seeds. If the decomposed count stops increasing for **3 consecutive polls** (3 minutes), the builder agents have likely stalled. When this happens:
+1. Post a progress message: "Build stalled at N/${mvpTarget} seeds. Builder agents may have hit context limits."
+2. Check which seed ranges are incomplete: \`GET ${API}/api/stats/${courseCode}?detail=gaps\`
+3. Post a message to the human with the gap ranges and recommend re-spawning builders for those ranges.
+4. The human (or you, if agent-gated) can restart by calling \`POST ${API}/api/build/start/${courseCode}\` again — it will only spawn agents for unbuilt seeds.
+
+**Expected pattern**: A full 300-seed build typically requires 3-4 rounds of builder agents, each handling ~70-100 seeds before context exhaustion. This is normal — monitor, detect stalls, and re-trigger.
+
 **Complete when**: \`decomposed_seeds >= ${mvpTarget}\`
 ${gateModes.build_mvp === 'human' ? '**⚠️ CHECKPOINT**: Post a checkpoint message and WAIT for human approval before advancing to qa_review.' : '**🤖 AUTO-ADVANCE**: Call `POST ' + API + '/api/build/pipeline/' + courseCode + '/advance` to proceed.'}
 

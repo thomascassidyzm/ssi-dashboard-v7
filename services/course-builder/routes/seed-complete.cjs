@@ -9,7 +9,7 @@
 const { Router } = require('express');
 
 // Lib imports
-const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily } = require('../lib/language-config.cjs');
+const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily, checkLegoSyllables } = require('../lib/language-config.cjs');
 const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment } = require('../lib/text-normalization.cjs');
 const {
   makePhraseId, computePhraseRole, computeLegoPosition,
@@ -32,7 +32,7 @@ const {
 
 // ─── Local helpers (only used by these routes) ────────────────────────
 
-const allowValidationBypass = (body) => body.SKIP_VALIDATION === true;
+const allowValidationBypass = (body) => body.SKIP_VALIDATION === true && (body.seed_number || body.seed) <= 3;
 
 /**
  * Record a lesson in build_lessons table when a validation error occurs.
@@ -301,8 +301,8 @@ module.exports = function seedCompleteRoutes(ctx) {
       if (seed === 1 && idx === 1) minRequired = 0;
       else if (seed === 1) minRequired = 1;
       else if (seed <= 3) minRequired = 3;
-      else if (seed <= 5) minRequired = 4;
-      else if (seed <= 10) minRequired = 5;
+      else if (seed <= 5) minRequired = 8;
+      else if (seed <= 10) minRequired = 8;
 
       const globalPosition = (seed - 1) * 3;
 
@@ -724,7 +724,9 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
-      const { course_code, seed_number, known_text: agent_known_text, target_text: agent_target_text, legos, SKIP_VALIDATION } = parsedData;
+      const { course_code, seed_number, known_text: agent_known_text, target_text: agent_target_text, legos, SKIP_VALIDATION: rawSkipValidation } = parsedData;
+      // Only allow skip_validation for seeds 1-3 (early seeds with sparse vocab)
+      const SKIP_VALIDATION = rawSkipValidation && seed_number <= 3;
       const seedId = `S${String(seed_number).padStart(4, '0')}`;
       let isDraft = req.query.draft === 'true';
 
@@ -942,6 +944,27 @@ module.exports = function seedCompleteRoutes(ctx) {
           violations: zutViolations,
           methodology: METHODOLOGY_HINTS.zut,
         });
+      }
+
+      // 1b. LEGO SYLLABLE CAP (cognitive load guard)
+      if (!SKIP_VALIDATION) {
+        const oversizedLegos = [];
+        for (const lego of legos) {
+          const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+          const check = checkLegoSyllables(lego.target, course_code);
+          if (!check.ok) {
+            oversizedLegos.push({ lego_id: legoId, target: lego.target, syllables: check.syllables, max: check.max });
+          }
+        }
+        if (oversizedLegos.length > 0) {
+          errors.push({
+            type: 'lego_too_large',
+            message: `${oversizedLegos.length} LEGO(s) exceed ${oversizedLegos[0].max}-syllable cap. Break into smaller pieces.`,
+            oversized: oversizedLegos,
+            hint: 'LEGOs should be small cognitive chunks (2-4 words, max 8 syllables). If the seed needs a long phrase, decompose it into multiple smaller LEGOs.',
+          });
+          console.log(`✗ ${seedId}: LEGO SIZE - ${oversizedLegos.map(l => `${l.lego_id} "${l.target}" (${l.syllables} syl)`).join(', ')}`);
+        }
       }
 
       // Load vocab from prior seeds
@@ -1238,6 +1261,34 @@ module.exports = function seedCompleteRoutes(ctx) {
         });
       }
 
+      // ── HAIKU PHRASE SCORING (mandatory for non-draft, non-skip) ──
+      const skipScoring = isDraft || req.query.skip_scoring === 'true' || SKIP_VALIDATION;
+      let scoringResult = null;
+
+      if (!skipScoring) {
+        const { scoreUsePhrases, applyThresholds } = require('../lib/phrase-scorer.cjs');
+        try {
+          const scoredPhrases = await scoreUsePhrases(seed_number, known_text, target_text, legos);
+          if (scoredPhrases && scoredPhrases.length > 0) {
+            const { seedPass, legoResults, failReasons } = applyThresholds(legos, scoredPhrases);
+            scoringResult = { legoResults };
+            if (!seedPass) {
+              console.log(`✗ ${seedId}: PHRASE QUALITY FAILED - ${failReasons.join(' | ')}`);
+              return res.status(400).json({
+                error: 'Phrase quality check failed',
+                seed: seedId,
+                scoring: legoResults,
+                hint: `Revise low-scoring phrases and resubmit: ${failReasons.join(' | ')}`,
+                skills: ['ralph-methodology.md'],
+              });
+            }
+            console.log(`✓ ${seedId}: Phrase quality PASSED`);
+          }
+        } catch (err) {
+          console.error(`[seed-complete] Haiku scoring failed, allowing through: ${err.message}`);
+        }
+      }
+
       // ── DRAFT PATH ──
       if (isDraft) {
         const { error: draftError } = await ctx.supabase
@@ -1346,8 +1397,22 @@ module.exports = function seedCompleteRoutes(ctx) {
 
         // BUILD/USE format
         if (usesBuildUseFormat(lego)) {
-          const buildPhrases = lego.build || [];
-          const usePhrases = lego.use || [];
+          // Dedup against already-inserted buildup phrases (e.g. LEGO debut)
+          const buildupNorms = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
+          const rawBuild = lego.build || [];
+          const rawUse = lego.use || [];
+          const buildPhrases = rawBuild.filter(p => {
+            const norm = normalizePhrase(p.target);
+            if (buildupNorms.has(norm)) { console.log(`    Deduped BUILD phrase (matches buildup): "${p.target}"`); return false; }
+            buildupNorms.add(norm);
+            return true;
+          });
+          const usePhrases = rawUse.filter(p => {
+            const norm = normalizePhrase(p.target);
+            if (buildupNorms.has(norm)) { console.log(`    Deduped USE phrase (matches buildup/build): "${p.target}"`); return false; }
+            buildupNorms.add(norm);
+            return true;
+          });
 
           const buildRows = buildPhrases.map((p, i) => {
             roleCounts.build++;

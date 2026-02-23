@@ -119,13 +119,18 @@ ${crossCourseSummaries || '(No cross-course calibrations available yet)'}
 - Do they show genuinely different contexts (not near-duplicates)?
 - Are they things a learner would actually want to say?
 
-### 6. DECOMPOSITION STRATEGY
+### 6. LEGO SIZE
+- LEGOs should be **3-5 syllables** (2-4 words). The API enforces a hard cap of **8 syllables**.
+- If a LEGO feels too big, the decomposition needs restructuring — break it into smaller A-LEGOs + an M-LEGO.
+- When an M-LEGO has a \`components\` array, those components are available vocabulary for later LEGOs in the same seed.
+
+### 7. DECOMPOSITION STRATEGY
 - Are A vs M decisions optimal? Would different choices produce richer phrases?
 - Does LEGO ordering maximize combination richness?
 - Is tiling valid (seed reconstructable from LEGOs)?
 - **Word order**: Where ${langName} orders words differently from English (verb position, adjective placement, subordinate clause verb-final, etc.), are there M-LEGOs showing the correct order? A-LEGOs alone for reordered elements is a flag — the learner would assemble them in English order. Check that component A-LEGOs are introduced BEFORE the larger M-LEGO to keep cognitive load manageable.
 
-### 7. REGISTER/DIALECT
+### 8. REGISTER/DIALECT
 - If translation doctrine exists, check compliance (formal vs casual, regional variants)
 
 ## Protocol

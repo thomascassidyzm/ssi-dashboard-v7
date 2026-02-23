@@ -120,8 +120,8 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     minBuild = 1;
     minUse = 1;
   } else if (seedNumber <= 5) {
-    minBuild = 2;
-    minUse = 2;
+    minBuild = 3;
+    minUse = 5;
   }
 
   const buildRaw = lego.build || [];

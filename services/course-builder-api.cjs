@@ -37,10 +37,12 @@ setSupabase(supabase);
 
 // ─── Mount route modules ──────────────────────────────────────────────
 
+app.use('/api', require('./course-builder/routes/preflight.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/seed-complete.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/course-data.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/build.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/orchestrator.cjs')(ctx));
+app.use('/api', require('./course-builder/routes/v2.cjs')(ctx));
 
 // Mount briefs router
 app.use('/api/brief', require('./briefs/index.cjs'));

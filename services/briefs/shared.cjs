@@ -228,7 +228,7 @@ async function buildCrossCourseSummaries(maxSeed = 5) {
     const comparisons = [];
     for (const course of courses) {
       const goldenCount = course.quality_rules?.golden_seed_count || 10;
-      if (goldenCount < 50) continue;
+      if (goldenCount < 1) continue; // skip courses with no golden seeds configured
 
       const golden = course.quality_rules?.golden_decompositions || [];
       const seed = golden.find(g => g.seed_number === n);

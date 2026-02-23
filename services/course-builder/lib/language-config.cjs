@@ -42,6 +42,9 @@ const PARTICLES = ['了', '着', '过', '的', '地', '得', '吗', '呢', '吧'
 // Multi-language preposition list (for pattern classification)
 const PREPOSITIONS = ['à', 'de', 'du', 'des', 'en', 'au', 'aux', 'avec', 'pour', 'dans', 'sur', 'von', 'mit', 'zu', 'für', 'auf', 'の', 'に', 'で', 'を', 'と', 'com', 'em', 'por', 'para', 'con', 'di', 'da', 'del'];
 
+// Maximum syllables for a single LEGO (cognitive load cap)
+const MAX_LEGO_SYLLABLES = 8;
+
 // Syllable tiers for phrase complexity
 const SYLLABLE_TIERS = {
   SHORT: { min: 3, max: 5 },
@@ -148,6 +151,26 @@ function isParticle(target) {
 }
 
 /**
+ * Estimate syllable count for a text in the target language.
+ * Uses chars-per-syllable ratio as a language-aware proxy.
+ */
+function estimateSyllables(text, courseCode) {
+  if (!text) return 0;
+  const charsPerSyl = getCharsPerSyllable(courseCode);
+  const cleaned = text.trim().replace(/[^\p{L}\p{N}\s]/gu, '');
+  return Math.round(cleaned.length / charsPerSyl);
+}
+
+/**
+ * Check if a LEGO target exceeds the syllable cap.
+ * Returns { ok, syllables, max }
+ */
+function checkLegoSyllables(legoTarget, courseCode) {
+  const syllables = estimateSyllables(legoTarget, courseCode);
+  return { ok: syllables <= MAX_LEGO_SYLLABLES, syllables, max: MAX_LEGO_SYLLABLES };
+}
+
+/**
  * Get golden seed count from course info
  */
 function getGoldenSeedCount(courseInfo) {
@@ -171,4 +194,7 @@ module.exports = {
   getCharThresholds,
   isParticle,
   getGoldenSeedCount,
+  MAX_LEGO_SYLLABLES,
+  estimateSyllables,
+  checkLegoSyllables,
 };

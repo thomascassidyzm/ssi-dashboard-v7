@@ -80,6 +80,12 @@ Your job is to **choose phrases where the exact LEGO form works naturally**, not
 ### Word Order Differences → M-LEGOs Are Required
 When the target language orders words differently from the known language, you MUST use M-LEGOs to show the correct order. A-LEGOs alone would leave the learner guessing (and they'd guess English order, which is wrong).
 
+### LEGO Size — Syllable Cap
+LEGOs must be **small cognitive chunks**. The API enforces a **maximum of 8 syllables** per LEGO target. Aim for the sweet spot of **3-5 syllables** (2-4 words). If you get a \`lego_too_large\` validation error, break the LEGO into smaller pieces.
+
+### M-LEGO Components Are Available Vocabulary
+When you introduce an M-LEGO with a \`components\` array, those component words become **available vocabulary** for all subsequent LEGOs in the same seed. For example, if L2 is an M-LEGO "how to say" → "cómo decir" with components ["how" → "cómo", "to say" → "decir"], then L3's BUILD/USE phrases can use "cómo" and "decir" independently. The vocab endpoint already includes these — trust it.
+
 ### ZUT (Zero Uncertainty Test)
 Same KNOWN text → same TARGET text. Always. Use different natural phrases to disambiguate.
 
@@ -166,6 +172,23 @@ If the submission fails with a validation error, read the error carefully, fix y
 
 ### Step 6: Move to next seed
 No review loop — just move to the next assigned seed. QA runs separately later.
+
+## Context Compaction Recovery
+
+If your conversation context gets compacted mid-task (you'll see a system message about it), you may lose track of which seed you were on. **Do NOT guess.** Call:
+\`\`\`bash
+curl -s "http://localhost:3471/api/resume/${courseCode}"
+\`\`\`
+This returns your exact next seed number. Continue from there.
+
+## Heartbeat
+
+After completing each seed, post a heartbeat so the orchestrator can track your progress:
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/heartbeat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"current_seed": $N, "agent_batch": "${assignedSeeds[0]}-${assignedSeeds[assignedSeeds.length - 1]}"}'
+\`\`\`
 
 ## AUTONOMY
 

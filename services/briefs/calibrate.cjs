@@ -67,6 +67,12 @@ Your job is to **choose phrases where the exact LEGO form works naturally**, not
 ### Word Order Differences → M-LEGOs Are Required
 When the target language orders words differently from the known language, you MUST use M-LEGOs to show the correct order.
 
+### LEGO Size — Syllable Cap
+LEGOs must be **small cognitive chunks**. The API enforces a **maximum of 8 syllables** per LEGO target. Aim for **3-5 syllables** (2-4 words). If a LEGO feels too big, break it into smaller pieces.
+
+### M-LEGO Components Are Available Vocabulary
+When you introduce an M-LEGO with a \`components\` array, those component words become **available vocabulary** for all subsequent LEGOs in the same seed. The vocab endpoint includes these — trust it.
+
 ### ZUT (Zero Uncertainty Test)
 Same KNOWN text → same TARGET text. Always.
 

@@ -120,6 +120,12 @@ Without the M-LEGO, the learner would say "weil ich will sprechen" (English orde
 The M-LEGO teaches NO new vocabulary — all parts are already known. It teaches the **reordering pattern**.
 Introduce the component A-LEGOs and smaller M-LEGOs FIRST, then use the larger M-LEGO to show how they reassemble. This keeps cognitive load manageable.
 
+### LEGO Size — Syllable Cap
+LEGOs must be **small cognitive chunks**. The API enforces a **maximum of 8 syllables** per LEGO target. Aim for the sweet spot of **3-5 syllables** (2-4 words). If you get a \`lego_too_large\` validation error, break the LEGO into smaller pieces.
+
+### M-LEGO Components Are Available Vocabulary
+When you introduce an M-LEGO with a \`components\` array, those component words become **available vocabulary** for all subsequent LEGOs in the same seed. For example, if L2 is an M-LEGO "how to say" → "cómo decir" with components ["how" → "cómo", "to say" → "decir"], then L3's BUILD/USE phrases can use "cómo" and "decir" independently. The vocab endpoint already includes these — trust it.
+
 ### ZUT (Zero Uncertainty Test)
 Same KNOWN text → same TARGET text. Always. Use different natural phrases to disambiguate.
 
