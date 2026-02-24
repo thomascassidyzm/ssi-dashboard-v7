@@ -217,33 +217,137 @@
           </div>
         </div>
 
-        <!-- Stage 2: Decompose -->
-        <div class="pipeline-card" :class="stageCardClass('decompose')">
+        <!-- Stage 2: Build Team -->
+        <div class="pipeline-card" :class="stageCardClass('build-team')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('decompose')">2</span>
+              <span class="stage-number" :class="stageNumberClass('build-team')">2</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Decompose</div>
-                <div class="text-xs text-slate-500">Single Opus agent + human oversight</div>
+                <div class="text-sm font-medium text-slate-200">Build Team</div>
+                <div class="text-xs text-slate-500">Creator/checker — Opus orchestrator</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
-              <span v-if="stageComplete('decompose')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('decompose')" class="stage-badge-locked">Locked</span>
+              <span v-if="stageComplete('build-team')" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageLocked('build-team')" class="stage-badge-locked">Locked</span>
               <button
-                v-else-if="!decomposeRunning"
-                @click="startDecompose"
-                :disabled="decomposeStarting"
+                v-else-if="!buildTeamRunning"
+                @click="startBuildTeam"
+                :disabled="buildTeamStarting"
                 class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
-                {{ decomposeStarting ? 'Spawning...' : 'Start Agent' }}
+                {{ buildTeamStarting ? 'Spawning...' : 'Start Build' }}
               </button>
-              <span v-if="decomposeRunning" class="text-xs text-emerald-400 animate-pulse">Running...</span>
+              <span v-if="buildTeamRunning" class="text-xs text-emerald-400 animate-pulse">Running...</span>
             </div>
           </div>
-          <div v-if="!stageLocked('decompose')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
-            <div class="h-full rounded-full bg-emerald-500 transition-all duration-500" :style="{ width: `${decomposePercent}%` }"></div>
+          <div v-if="!stageLocked('build-team')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
+            <div class="h-full rounded-full bg-emerald-500 transition-all duration-500" :style="{ width: `${buildPercent}%` }"></div>
+          </div>
+        </div>
+
+        <!-- Stage 3: Final Pass -->
+        <div class="pipeline-card" :class="stageCardClass('final-pass')">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="stageNumberClass('final-pass')">3</span>
+              <div>
+                <div class="text-sm font-medium text-slate-200">Final Pass</div>
+                <div class="text-xs text-slate-500">Grammar audit — fix or delete</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span v-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
+              <button
+                v-else-if="!finalPassRunning"
+                @click="startFinalPass"
+                :disabled="finalPassStarting"
+                class="px-3 py-1 bg-violet-600/20 border border-violet-500/50 text-violet-400 hover:border-violet-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ finalPassStarting ? 'Spawning...' : 'Start Final Pass' }}
+              </button>
+              <span v-if="finalPassRunning" class="text-xs text-violet-400 animate-pulse">Running...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 4: Gender Prep -->
+        <div class="pipeline-card" :class="stageCardClass('gender')">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="stageNumberClass('gender')">4</span>
+              <div>
+                <div class="text-sm font-medium text-slate-200">Gender Prep</div>
+                <div class="text-xs text-slate-500">Gender expansions</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span v-if="stageComplete('gender')" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageLocked('gender')" class="stage-badge-locked">Locked</span>
+              <button
+                v-else-if="!genderRunning"
+                @click="startGenderPrep"
+                :disabled="genderStarting"
+                class="px-3 py-1 bg-pink-600/20 border border-pink-500/50 text-pink-400 hover:border-pink-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ genderStarting ? 'Starting...' : 'Start Gender Prep' }}
+              </button>
+              <span v-if="genderRunning" class="text-xs text-pink-400 animate-pulse">Running...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 5: Audio -->
+        <div class="pipeline-card" :class="stageCardClass('audio')">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="stageNumberClass('audio')">5</span>
+              <div>
+                <div class="text-sm font-medium text-slate-200">Audio</div>
+                <div class="text-xs text-slate-500">TTS generation</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span v-if="stageComplete('audio')" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageLocked('audio')" class="stage-badge-locked">Locked</span>
+              <button
+                v-else-if="!audioRunning"
+                @click="startAudio"
+                :disabled="audioStarting"
+                class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ audioStarting ? 'Starting...' : 'Start Audio' }}
+              </button>
+              <span v-if="audioRunning" class="text-xs text-amber-400 animate-pulse">Running...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 6: Export -->
+        <div class="pipeline-card" :class="stageCardClass('export')">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="stageNumberClass('export')">6</span>
+              <div>
+                <div class="text-sm font-medium text-slate-200">Export</div>
+                <div class="text-xs text-slate-500">Manifest compilation</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span v-if="stageComplete('export')" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageLocked('export')" class="stage-badge-locked">Locked</span>
+              <button
+                v-else-if="!exportRunning"
+                @click="startExport"
+                :disabled="exportStarting"
+                class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ exportStarting ? 'Starting...' : 'Start Export' }}
+              </button>
+              <span v-if="exportRunning" class="text-xs text-cyan-400 animate-pulse">Running...</span>
+            </div>
           </div>
         </div>
 
@@ -459,9 +563,25 @@ const orchestratorMessages = ref([])
 const translateStarting = ref(false)
 const translateRunning = ref(false)
 
-// Decompose agent state
-const decomposeStarting = ref(false)
-const decomposeRunning = ref(false)
+// Build Team agent state
+const buildTeamStarting = ref(false)
+const buildTeamRunning = ref(false)
+
+// Final Pass agent state
+const finalPassStarting = ref(false)
+const finalPassRunning = ref(false)
+
+// Gender Prep state
+const genderStarting = ref(false)
+const genderRunning = ref(false)
+
+// Audio state
+const audioStarting = ref(false)
+const audioRunning = ref(false)
+
+// Export state
+const exportStarting = ref(false)
+const exportRunning = ref(false)
 
 // Seed grid state
 const seedGrid = ref([])
@@ -489,17 +609,20 @@ watch(buildMonitor.seedGrid, (grid) => {
 
 watch(buildMonitor.buildStatus, (bs) => {
   if (!bs) return
-  translateRunning.value = bs.active && bs.build?.pass === 'translate'
-  decomposeRunning.value = bs.active && bs.build?.pass === 'decompose'
+  const pass = bs.build?.pass
+  translateRunning.value = bs.active && pass === 'translate'
+  buildTeamRunning.value = bs.active && pass === 'build-team'
+  finalPassRunning.value = bs.active && pass === 'final-pass'
   if (bs.active) {
     progress.value.status = 'running'
-    progress.value.buildPass = bs.build?.pass || null
-    if (bs.build?.total_seeds && bs.build?.pass === 'decompose') {
+    progress.value.buildPass = pass || null
+    if (bs.build?.total_seeds && (pass === 'build-team' || pass === 'decompose')) {
       seedCount.value = bs.build.total_seeds
     }
   } else {
     translateRunning.value = false
-    decomposeRunning.value = false
+    buildTeamRunning.value = false
+    finalPassRunning.value = false
     progress.value.buildPass = null
     if (bs.progress?.isComplete) {
       progress.value.status = 'complete'
@@ -533,20 +656,28 @@ const translatePercent = computed(() => {
   return Math.round(((progress.value.seedsTranslated || 0) / total) * 100)
 })
 
-const decomposePercent = computed(() => {
+const buildPercent = computed(() => {
   if (seedCount.value <= 0) return 0
   return Math.round(((progress.value.currentSeed || 0) / seedCount.value) * 100)
 })
 
 const pipelinePhase = computed(() => {
-  if ((progress.value.seedsTranslated || 0) < (progress.value.totalSeeds || 668)) return 'translate'
-  return 'decompose'
+  if (!stageComplete('translate')) return 'translate'
+  if (!stageComplete('build-team')) return 'build-team'
+  if (!stageComplete('final-pass')) return 'final-pass'
+  if (!stageComplete('gender')) return 'gender'
+  if (!stageComplete('audio')) return 'audio'
+  return 'export'
 })
 
 function stageComplete(stage) {
   switch (stage) {
     case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
-    case 'decompose': return (progress.value.currentSeed || 0) >= seedCount.value
+    case 'build-team': return (progress.value.currentSeed || 0) >= seedCount.value
+    case 'final-pass': return progress.value.finalPassDone === true
+    case 'gender': return progress.value.genderDone === true
+    case 'audio': return progress.value.audioDone === true
+    case 'export': return progress.value.exportDone === true
     default: return false
   }
 }
@@ -554,7 +685,11 @@ function stageComplete(stage) {
 function stageLocked(stage) {
   switch (stage) {
     case 'translate': return false
-    case 'decompose': return !stageComplete('translate')
+    case 'build-team': return !stageComplete('translate')
+    case 'final-pass': return !stageComplete('build-team')
+    case 'gender': return !stageComplete('build-team')
+    case 'audio': return !stageComplete('build-team')
+    case 'export': return !stageComplete('audio')
     default: return false
   }
 }
@@ -659,17 +794,20 @@ async function fetchProgress() {
 
       if (buildResponse.ok) {
         const buildData = await buildResponse.json()
-        translateRunning.value = buildData.active && buildData.build?.pass === 'translate'
-        decomposeRunning.value = buildData.active && buildData.build?.pass === 'decompose'
+        const pass = buildData.build?.pass
+        translateRunning.value = buildData.active && pass === 'translate'
+        buildTeamRunning.value = buildData.active && pass === 'build-team'
+        finalPassRunning.value = buildData.active && pass === 'final-pass'
         if (buildData.active) {
           progress.value.status = 'running'
-          progress.value.buildPass = buildData.build?.pass || null
-          if (buildData.build?.total_seeds && buildData.build?.pass === 'decompose') {
+          progress.value.buildPass = pass || null
+          if (buildData.build?.total_seeds && (pass === 'build-team' || pass === 'decompose')) {
             seedCount.value = buildData.build.total_seeds
           }
         } else {
           translateRunning.value = false
-          decomposeRunning.value = false
+          buildTeamRunning.value = false
+          finalPassRunning.value = false
           progress.value.buildPass = null
           if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
             progress.value.status = 'complete'
@@ -764,27 +902,123 @@ async function startTranslation() {
   }
 }
 
-async function startDecompose() {
+async function startBuildTeam() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
 
-  decomposeStarting.value = true
+  buildTeamStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/decompose/${courseCode}`, {
+    const response = await fetch(`${apiBase}/api/build/team-start/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
     const result = await response.json()
     if (result.ok) {
-      decomposeRunning.value = true
+      buildTeamRunning.value = true
     } else {
-      console.error('Failed to start decompose:', result.error)
+      console.error('Failed to start build team:', result.error)
     }
   } catch (err) {
-    console.error('Failed to start decompose:', err)
+    console.error('Failed to start build team:', err)
   } finally {
-    decomposeStarting.value = false
+    buildTeamStarting.value = false
+  }
+}
+
+async function startFinalPass() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  finalPassStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/final-pass/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      finalPassRunning.value = true
+    } else {
+      console.error('Failed to start final pass:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to start final pass:', err)
+  } finally {
+    finalPassStarting.value = false
+  }
+}
+
+async function startGenderPrep() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  genderStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/start`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok !== false) {
+      genderRunning.value = true
+    } else {
+      console.error('Failed to start gender prep:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to start gender prep:', err)
+  } finally {
+    genderStarting.value = false
+  }
+}
+
+async function startAudio() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  audioStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/production/${courseCode}/audio-pipeline/start`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok !== false) {
+      audioRunning.value = true
+    } else {
+      console.error('Failed to start audio:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to start audio:', err)
+  } finally {
+    audioStarting.value = false
+  }
+}
+
+async function startExport() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  exportStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/production/${courseCode}/manifest/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok !== false) {
+      exportRunning.value = true
+    } else {
+      console.error('Failed to start export:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to start export:', err)
+  } finally {
+    exportStarting.value = false
   }
 }
 

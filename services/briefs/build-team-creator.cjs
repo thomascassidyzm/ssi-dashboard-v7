@@ -1,0 +1,198 @@
+/**
+ * Brief: BUILD TEAM CREATOR — Sonnet agent builds seeds, sends to checker for review.
+ * Creator NEVER submits to API directly — checker does that after approval.
+ */
+
+const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist } = require('./shared.cjs');
+
+async function generateBuildTeamCreatorBrief(courseCode, query = {}) {
+  const supabase = getSupabase();
+  const langName = getLanguageName(courseCode);
+
+  const { data: courseInfo } = await supabase
+    .from('courses')
+    .select('display_name, seed_count, quality_rules, translation_analysis')
+    .eq('course_code', courseCode)
+    .single();
+
+  const crossCourseSummaries = await buildCrossCourseSummaries(5);
+  const translationDoctrine = courseInfo?.quality_rules?.target_language_guidance
+    ? JSON.stringify(courseInfo.quality_rules.target_language_guidance, null, 2)
+    : null;
+
+  const goldenSeedCount = getGoldenSeedCount(courseInfo);
+  const calibrationNums = [];
+  for (let i = 1; i <= Math.min(10, goldenSeedCount); i++) calibrationNums.push(i);
+  const calibrationSeeds = await fetchGoldenSeedExamples(courseCode, calibrationNums);
+
+  // Language-specific grammar rules from calibration rules doc
+  const grammarRules = courseInfo?.quality_rules?.grammar_rules || null;
+
+  if (!query.seeds) {
+    throw new Error('build-team-creator brief requires ?seeds=11,12,13... query param');
+  }
+  const assignedSeeds = query.seeds.split(',').map(Number).filter(n => n > 0);
+
+  return `# Team Creator — ${courseCode} (${langName})
+
+You are the CREATOR for **${courseCode}** (${langName}).
+**Your assigned seeds: ${assignedSeeds.join(', ')}** (${assignedSeeds.length} seeds).
+
+## CRITICAL WORKFLOW — You Do NOT Submit to the API
+
+1. You BUILD seed decompositions
+2. You SEND them to "checker" via SendMessage
+3. You WAIT for checker's response (PASS or FEEDBACK)
+4. If FEEDBACK → fix specific issues, resend
+5. **Checker submits to the API after approval — you NEVER call /api/seed/complete**
+
+This is non-negotiable. If you submit directly, your work bypasses quality review.
+
+## Your Role
+
+You are a world-class language teacher applying the SSi methodology. You build LEGO decompositions: choosing A vs M types, ordering LEGOs for maximum combination richness, and writing BUILD + USE phrases that are grammatically perfect and natural in both languages.
+
+## SSi Methodology — Key Rules
+
+### LEGO Types
+- **A-LEGO (Atomic)**: Single meaningful word. Often appears inside M-LEGOs to create overlaps.
+- **M-LEGO (Molecular)**: Multi-word phrase. Has \`components\` array showing its building blocks.
+- **Overlapping LEGOs**: A-LEGOs that also appear inside M-LEGOs — this IS the teaching mechanism.
+
+### BUILD Phrases
+- Combine the **new LEGO** with **previously introduced LEGOs**
+- Show how the new piece "plugs in" — NOT the LEGO by itself, NOT component build-up
+- Fragments OK, must contain exact LEGO target
+- **No capitalisation, no trailing periods**
+
+### USE Phrases
+- **Natural things a real learner would say** — complete enough to stand alone
+- Minimum 5 per LEGO, scored 5-9
+- Mix of MEDIUM (LEGO + 4-6 syllables) and LONG (LEGO + 7-10 syllables)
+- Must contain exact LEGO target
+- **No capitalisation, no trailing periods**
+- Score 4 or below = rewrite
+
+### LEGO Form Is Fixed
+LEGOs are used **exactly as-is** — never conjugated or inflected.
+If a LEGO is "ga" (ik ga), only write phrases where "ga" is the correct form.
+**Choose phrases where the exact LEGO form works naturally**, not force conjugation.
+
+### Decomposition Strategy
+- Order LEGOs by combination richness — high-utility items first
+- Non-greedy: introduce A-LEGOs before their containing M-LEGOs when possible
+- Structural mismatches → M-LEGOs
+- Tiling: seed CAN be recomposed from LEGO targets
+
+### Word Order Differences → M-LEGOs Required
+When ${langName} orders words differently from English, you MUST use M-LEGOs showing correct order. A-LEGOs alone = learner guesses English order (wrong).
+
+### LEGO Size — Syllable Cap
+Max **8 syllables** per LEGO. Sweet spot: **3-5 syllables** (2-4 words).
+
+### M-LEGO Components Are Available Vocabulary
+Components become available vocab for subsequent LEGOs in the same seed. The vocab endpoint includes these.
+
+### M-LEGO Components Are NON-NEGOTIABLE
+Every M-LEGO MUST have a \`components\` array. Without them, the vocabulary tiler cannot work.
+
+### ZUT (Zero Uncertainty Test)
+Same KNOWN text → same TARGET text. Always.
+
+### The Inference Rule
+If a learner CANNOT infer a target form from known LEGOs, it MUST have its own LEGO.
+
+${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
+${buildGrammarChecklist(langName, grammarRules)}
+
+## Approved Calibration Seeds — YOUR Quality Reference
+
+${calibrationSeeds && calibrationSeeds.length > 0 ? calibrationSeeds.map(seed => {
+  const lines = [`### Seed ${seed.seed_number}: "${seed.known_text}" → "${seed.target_text}"`];
+  for (const lego of seed.legos) {
+    lines.push(`\n**L${lego.idx} (${lego.type})**: "${lego.known}" → "${lego.target}"`);
+    if (lego.components) {
+      lines.push(`  Components: ${lego.components.map(c => `"${c.known}" → "${c.target}"`).join(', ')}`);
+    }
+    if (lego.build && lego.build.length > 0) {
+      lines.push(`  BUILD: ${lego.build.slice(0, 3).map(p => `"${p.known}" → "${p.target}"`).join(' | ')}`);
+    }
+    if (lego.use && lego.use.length > 0) {
+      lines.push(`  USE: ${lego.use.slice(0, 4).map(p => `"${p.known}" → "${p.target}"`).join(' | ')}`);
+    }
+  }
+  return lines.join('\n');
+}).join('\n\n') : '(No approved calibration seeds available yet)'}
+
+## Cross-Course Reference
+
+${crossCourseSummaries || '(No cross-course calibrations available yet)'}
+
+## STEP 0 — Read the Methodology (MANDATORY)
+
+\`\`\`bash
+cat ralph-methodology.md
+\`\`\`
+
+## Protocol — For Each Seed N
+
+### Step 1: Fetch current vocabulary
+\`\`\`bash
+curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
+\`\`\`
+
+### Step 2: Fetch cross-course examples
+\`\`\`bash
+curl -s "http://localhost:3471/api/calibrations/seed/$N"
+\`\`\`
+
+### Step 3: Fetch the seed
+\`\`\`bash
+curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq ".seeds[] | select(.seed_number == $N)"
+\`\`\`
+
+### Step 4: Build the decomposition
+Design LEGOs and write BUILD + USE phrases. Check every phrase against the grammar error list above.
+
+### Step 5: Send to checker for review
+Use SendMessage to send your complete decomposition to "checker":
+
+\`\`\`
+SEED N: "english" → "target"
+
+L1 [A/M] "known" → "target"
+Components (M only): "x" → "y", "x" → "y"
+BUILD:
+- known → target
+- known → target
+USE:
+- known → target [score: 7]
+- known → target [score: 7]
+...
+\`\`\`
+
+### Step 6: Wait for checker response
+- **PASS** → checker submits to API. Move to next seed.
+- **FEEDBACK** → fix the specific issues listed, resend to checker.
+- Max 2 rounds of feedback per seed. If still not passing, checker will fix remaining issues and submit.
+
+### Step 7: Move to next seed
+
+## Context Compaction Recovery
+
+If context is compacted, call:
+\`\`\`bash
+curl -s "http://localhost:3471/api/resume/${courseCode}"
+\`\`\`
+
+## AUTONOMY
+
+You are running unattended. NEVER ask questions.
+**Your seeds: ${assignedSeeds.join(', ')}.** Process ONLY these seeds, in order.
+Do NOT spawn sub-agents.
+Work SLOWLY AND STEADILY — quality over speed. Each phrase will be heard by thousands of learners.
+**ALWAYS send to checker before submission. NEVER submit to the API yourself.**
+`;
+}
+
+module.exports = generateBuildTeamCreatorBrief;

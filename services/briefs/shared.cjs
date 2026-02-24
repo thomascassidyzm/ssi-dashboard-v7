@@ -263,6 +263,47 @@ async function buildCrossCourseSummaries(maxSeed = 5) {
   return lines.length > 0 ? lines.join('\n') : null;
 }
 
+/**
+ * Build the grammar checklist section for briefs.
+ * Universal principles only — language-specific rules come from quality_rules.grammar_rules.
+ */
+function buildGrammarChecklist(langName, grammarRules) {
+  let section = `## Grammar Error Checklist — Check EVERY Phrase
+
+These patterns cause the most common errors in course builds. Apply your expert knowledge of ${langName} grammar to check every phrase.
+
+### Verb Grammar (Most Common Error Category)
+1. **Modal verb + infinitive construction**: Know whether ${langName} modals take a bare infinitive or require a linking particle. Get this right for EVERY modal verb phrase.
+2. **Non-modal verbs + infinitive**: Verbs like "try", "begin", "hope", "learn" often have DIFFERENT infinitive constructions from modals. Don't confuse them.
+3. **Subject-verb agreement**: Every verb must agree with its subject in person, number, and (where applicable) gender. Third person ≠ first person.
+4. **Question inversion**: When subject and verb invert for questions, check whether verb endings change (many languages drop endings in 2nd-person inversion).
+5. **Separable/compound verbs**: If ${langName} has separable verbs or verb particles, check they split correctly in main clauses and stay together in subclauses.
+6. **Tense consistency**: If context is past tense, all verbs in the phrase should be past. Don't mix tenses.
+
+### Pronouns & Agreement
+7. **Reflexive pronouns must match subject**: If the subject is "I", the reflexive must be the first-person form. Never mix persons.
+8. **Pronoun ambiguity**: Where a pronoun can mean multiple things (e.g., singular vs plural), ensure the verb form disambiguates correctly.
+9. **Formal vs informal**: Stick to the register specified in the translation doctrine. Don't mix formal/informal pronouns.
+
+### Word Order
+10. **Subclause word order**: Many languages change verb position in subordinate clauses (after "because", "that", "if", "when"). Check every subclause.
+11. **Adverb/adverbial placement**: Check that adverbs are in the correct position for ${langName}, not in English position.
+12. **Adjective position**: Pre-nominal vs post-nominal — use ${langName} rules, not English.
+
+### Morphology & Agreement
+13. **Adjective agreement**: Check gender, number, and case agreement between adjectives and their nouns.
+14. **Article/determiner agreement**: Check that articles match their noun's gender/class.
+15. **Capitalisation rules**: Apply ${langName} capitalisation conventions (language names, nationalities, days of week, etc.).
+16. **Preposition + pronoun contractions**: Many languages have mandatory contractions or special forms (pronominal adverbs, prepositional pronouns, etc.). Use the correct form.
+`;
+
+  if (grammarRules) {
+    section += `\n### ${langName}-Specific Rules (from course QA)\n\n${grammarRules}\n`;
+  }
+
+  return section;
+}
+
 module.exports = {
   getSupabase,
   setSupabase,
@@ -275,5 +316,6 @@ module.exports = {
   formatBatchAssignments,
   buildCrossCourseSummaries,
   classifySeedPattern,
+  buildGrammarChecklist,
   LANG_MAP
 };

@@ -193,5 +193,87 @@ module.exports = function (ctx) {
     }
   });
 
+  // POST /build/team-start/:courseCode
+  router.post('/build/team-start/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const terminal = req.query.terminal || 'iTerm2';
+
+      const { data: activeJob } = await ctx.supabase
+        .from('build_jobs').select('id')
+        .eq('course_code', courseCode).eq('pass', 'build-team').in('status', ['running']).maybeSingle();
+      if (activeJob) return res.status(409).json({ error: 'Build Team already running' });
+
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator`);
+      if (!briefResp.ok) throw new Error(`Failed to fetch build-team brief: ${briefResp.status}`);
+      const brief = await briefResp.text();
+
+      const tmpFile = `/tmp/build-team_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      const { data: jobData } = await ctx.supabase
+        .from('build_jobs')
+        .insert({
+          course_code: courseCode, pass: 'build-team', status: 'running',
+          current_seed: 0, seeds_completed: 0, total_seeds: 300,
+          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard', terminal: effectiveTerminal,
+          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'build-team'
+        })
+        .select('id').single();
+
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode);
+
+      res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Build Team agent spawned` });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // POST /build/final-pass/:courseCode
+  router.post('/build/final-pass/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const terminal = req.query.terminal || 'iTerm2';
+
+      const { data: activeJob } = await ctx.supabase
+        .from('build_jobs').select('id')
+        .eq('course_code', courseCode).eq('pass', 'final-pass').in('status', ['running']).maybeSingle();
+      if (activeJob) return res.status(409).json({ error: 'Final Pass already running' });
+
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass`);
+      if (!briefResp.ok) throw new Error(`Failed to fetch final-pass brief: ${briefResp.status}`);
+      const brief = await briefResp.text();
+
+      const tmpFile = `/tmp/final-pass_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      const { data: jobData } = await ctx.supabase
+        .from('build_jobs')
+        .insert({
+          course_code: courseCode, pass: 'final-pass', status: 'running',
+          current_seed: 0, seeds_completed: 0, total_seeds: 300,
+          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard', terminal: effectiveTerminal,
+          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'final-pass'
+        })
+        .select('id').single();
+
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      spawnInTerminal(ctx, claudeCmd, 'Final Pass', courseCode);
+
+      res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Final Pass agent spawned` });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   return router;
 };

@@ -1,43 +1,33 @@
 /**
  * Briefs Router — API-served briefs for agent stages.
  *
- * Each endpoint returns focused, state-aware markdown that an agent can follow.
- * The coordinator fetches these on demand instead of getting everything at spawn time.
+ * Pipeline stages (in order):
+ *   1. Create course                              — manual (no brief)
+ *   2. GET /:courseCode/translate                  — Translate all 668 seeds
+ *   3. GET /:courseCode/build-team-orchestrator    — Orchestrator spawns creator/checker team
+ *      GET /:courseCode/build-team-creator         — Team creator (Sonnet) — builds seeds
+ *      GET /:courseCode/build-team-checker         — Team checker (Opus) — reviews + submits
+ *   4. GET /:courseCode/final-pass                 — Post-build grammar audit
+ *   5. Gender expansion                           — service-driven (no brief)
+ *   8. Audio generation                           — service-driven (no brief)
+ *   9. Export manifest                            — service-driven (no brief)
  *
- * Routes:
- *   GET /api/brief/:courseCode/stage/decompose  — V2 Stage 1
- *   GET /api/brief/:courseCode/stage/finalize   — V2 Stage 2
- *   GET /api/brief/:courseCode/stage/phrases    — V2 Stage 3 (the key fix)
- *   GET /api/brief/:courseCode/stage/validate   — V2 Stage 4
- *   GET /api/brief/:courseCode/stage/qa         — V2 Stage 5
- *   GET /api/brief/:courseCode/translate        — Translation agent
- *   GET /api/brief/:courseCode/calibrate        — Calibration (human-in-loop)
- *   GET /api/brief/:courseCode/golden-creator   — Golden seed creator
- *   GET /api/brief/:courseCode/golden-checker   — Golden seed checker
- *   GET /api/brief/:courseCode/golden-qa        — Golden QA parallel
+ * Deprecated briefs moved to ./deprecated/
  */
 
 const express = require('express');
 const router = express.Router();
 
-// Stage briefs (V2 pipeline)
-const generateDecomposeBrief = require('./stage-decompose.cjs');
-const generateFinalizeBrief = require('./stage-finalize.cjs');
-const generatePhraseBrief = require('./stage-phrases.cjs');
-const generateValidateBrief = require('./stage-validate.cjs');
-const generateQABrief = require('./stage-qa.cjs');
-
-// Simplified pipeline briefs
-const generateNewDecomposeBrief = require('./decompose.cjs');
-
-// Non-V2 briefs
+// Stage 2: Translation
 const generateTranslateBrief = require('./translate.cjs');
-const generateCalibrateBrief = require('./calibrate.cjs');
-const generateGoldenCreatorBrief = require('./golden-creator.cjs');
-const generateGoldenCheckerBrief = require('./golden-checker.cjs');
-const generateGoldenQABrief = require('./golden-qa.cjs');
-const generateOrchestratorBrief = require('./orchestrator.cjs');
-const generateBuildMvpBrief = require('./stage-build-mvp.cjs');
+
+// Stage 3: Build team
+const generateBuildTeamCreatorBrief = require('./build-team-creator.cjs');
+const generateBuildTeamCheckerBrief = require('./build-team-checker.cjs');
+const generateBuildTeamOrchestratorBrief = require('./build-team-orchestrator.cjs');
+
+// Stage 4: Final pass
+const generateFinalPassBrief = require('./final-pass.cjs');
 
 // Helper to serve brief as markdown
 async function serveBrief(res, generator, courseCode, query = {}) {
@@ -51,23 +41,15 @@ async function serveBrief(res, generator, courseCode, query = {}) {
   }
 }
 
-// V2 Stage briefs
-router.get('/:courseCode/stage/decompose', (req, res) => serveBrief(res, generateDecomposeBrief, req.params.courseCode));
-router.get('/:courseCode/stage/finalize', (req, res) => serveBrief(res, generateFinalizeBrief, req.params.courseCode));
-router.get('/:courseCode/stage/phrases', (req, res) => serveBrief(res, generatePhraseBrief, req.params.courseCode));
-router.get('/:courseCode/stage/validate', (req, res) => serveBrief(res, generateValidateBrief, req.params.courseCode));
-router.get('/:courseCode/stage/qa', (req, res) => serveBrief(res, generateQABrief, req.params.courseCode));
-
-// Non-V2 briefs
+// Stage 2
 router.get('/:courseCode/translate', (req, res) => serveBrief(res, generateTranslateBrief, req.params.courseCode));
-router.get('/:courseCode/calibrate', (req, res) => serveBrief(res, generateCalibrateBrief, req.params.courseCode, req.query));
-router.get('/:courseCode/golden-creator', (req, res) => serveBrief(res, generateGoldenCreatorBrief, req.params.courseCode, req.query));
-router.get('/:courseCode/golden-checker', (req, res) => serveBrief(res, generateGoldenCheckerBrief, req.params.courseCode, req.query));
-router.get('/:courseCode/golden-qa', (req, res) => serveBrief(res, generateGoldenQABrief, req.params.courseCode));
-router.get('/:courseCode/orchestrator', (req, res) => serveBrief(res, generateOrchestratorBrief, req.params.courseCode));
-router.get('/:courseCode/build-mvp', (req, res) => serveBrief(res, generateBuildMvpBrief, req.params.courseCode, req.query));
 
-// Simplified pipeline
-router.get('/:courseCode/decompose', (req, res) => serveBrief(res, generateNewDecomposeBrief, req.params.courseCode, req.query));
+// Stage 3
+router.get('/:courseCode/build-team-creator', (req, res) => serveBrief(res, generateBuildTeamCreatorBrief, req.params.courseCode, req.query));
+router.get('/:courseCode/build-team-checker', (req, res) => serveBrief(res, generateBuildTeamCheckerBrief, req.params.courseCode, req.query));
+router.get('/:courseCode/build-team-orchestrator', (req, res) => serveBrief(res, generateBuildTeamOrchestratorBrief, req.params.courseCode, req.query));
+
+// Stage 4
+router.get('/:courseCode/final-pass', (req, res) => serveBrief(res, generateFinalPassBrief, req.params.courseCode, req.query));
 
 module.exports = router;

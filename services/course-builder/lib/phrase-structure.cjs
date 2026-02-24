@@ -3,7 +3,7 @@
  * Pure functions (no DB, no state).
  */
 
-const { normalizeForContainment } = require('./text-normalization.cjs');
+const { normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
 const { getTargetLang, getCharsPerSyllable, isParticle } = require('./language-config.cjs');
 
 // Phrase role prefixes for deterministic IDs
@@ -129,9 +129,9 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const legoTarget = (lego.target || '').trim();
   const legoTargetNorm = normalizeForContainment(legoTarget);
 
-  // Filter out component phrases — real BUILD/USE phrases must contain the entire LEGO target
-  const build = buildRaw.filter(p => normalizeForContainment(p.target || '').includes(legoTargetNorm));
-  const use = useRaw.filter(p => normalizeForContainment(p.target || '').includes(legoTargetNorm));
+  // Filter out component phrases — real BUILD/USE phrases must contain all LEGO target words (word-based, handles word-order differences)
+  const build = buildRaw.filter(p => checkWordContainment(legoTarget, p.target || ''));
+  const use = useRaw.filter(p => checkWordContainment(legoTarget, p.target || ''));
   const buildComponents = buildRaw.length - build.length;
   const useComponents = useRaw.length - use.length;
   const componentCount = buildComponents + useComponents;
@@ -246,6 +246,7 @@ function generateBuildupPhrases(lego, courseCode) {
       position: i + 1,
       known_text: comp.known,
       target_text: comp.target,
+      target_text_roman: comp.target_roman || null,
       word_count: comp.target.length,
       lego_count: 1,
       phrase_role: 'component',
@@ -268,6 +269,7 @@ function generateBuildupPhrases(lego, courseCode) {
     position: legoPosition,
     known_text: known,
     target_text: target,
+    target_text_roman: lego.target_roman || null,
     word_count: target.length,
     lego_count: 1,
     phrase_role: 'build',
