@@ -85,6 +85,7 @@ BUILD phrases combine the **new LEGO** with **previously introduced LEGOs**. Thi
 - Used ONLY in the **debut round** for that LEGO
 - Never seen again - not in CONSOLIDATE, not in REVIEW
 - Fragments OK (don't need to be complete sentences)
+- No capitalisation, no trailing periods (spoken fragments, not written sentences)
 - Must contain the **entire LEGO** (exact character match)
 - NOT eternal-eligible
 
@@ -121,6 +122,7 @@ BUILD:
   - **LONG (2-3 phrases):** LEGO + 7-10 syllables - fuller, richer sentences
 - **Minimum 5 per LEGO** - these get reused in CONSOLIDATE, REVIEW, and listening exercises
 - **MUST be complete, natural sentences** - NEVER fragments
+- No capitalisation, no trailing periods (spoken phrases, not written sentences)
 - A USE phrase is something a learner would ACTUALLY SAY in conversation
 - Must contain the LEGO (exact character match)
 - ALL are eternal-eligible (go into spaced repetition)

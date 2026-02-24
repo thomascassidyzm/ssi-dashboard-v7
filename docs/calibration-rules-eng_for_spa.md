@@ -49,6 +49,7 @@ LEGOs are SMALL pieces, never whole sentences. The sweet spot balances safety (b
 ## Phrase Rules
 
 ### 5. BUILD Phrases Must Be Natural Fragments
+No capitalisation, no trailing periods — these are spoken fragments, not written sentences.
 Each BUILD should feel like something a learner might actually say or think.
 
 - ✅ "to speak English" — natural fragment
@@ -64,6 +65,7 @@ BUILD phrases for a LEGO can only use that LEGO's vocab + prior LEGOs + prior se
 
 ### 7. USE Phrases — Complete Sentences for Eternal Spaced Repetition
 - Must be complete, natural sentences
+- No capitalisation, no trailing periods (spoken phrases, not written sentences)
 - Scored 5-9 (9 = native-natural both languages, high pedagogical value)
 - Must be things a learner would genuinely want to say
 - Variety: questions, statements, different time frames, different combinations

@@ -10,7 +10,7 @@ const { Router } = require('express');
 
 // Lib imports
 const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily, checkLegoSyllables } = require('../lib/language-config.cjs');
-const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment } = require('../lib/text-normalization.cjs');
+const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, stripBookendPunctuation } = require('../lib/text-normalization.cjs');
 const {
   makePhraseId, computePhraseRole, computeLegoPosition,
   extractNgrams, usesBuildUseFormat, checkBuildUsePhrases,
@@ -33,6 +33,46 @@ const {
 // ─── Local helpers (only used by these routes) ────────────────────────
 
 const allowValidationBypass = (body) => body.SKIP_VALIDATION === true && (body.seed_number || body.seed) <= 3;
+
+// Languages with no capitalisation concept — skip target lowercasing
+const NO_CAP_TARGET_LANGS = new Set(['jpn', 'zho', 'cmn', 'ara', 'kor', 'heb']);
+
+// Static allowlist of inherently capitalised words
+const KEEP_CAP_WORDS = new Set([
+  'I',
+  'English', 'French', 'German', 'Dutch', 'Spanish', 'Portuguese', 'Italian',
+  'Welsh', 'Irish', 'Scottish', 'Japanese', 'Chinese', 'Korean', 'Arabic',
+  'Hebrew', 'Swedish', 'Greek', 'Russian', 'Polish', 'Turkish', 'Hindi',
+  'Mandarin', 'Cantonese', 'Gaelic',
+  'Nederlands', 'Deutsch', 'Español', 'Português', 'Italiano', 'Français',
+  'Cymraeg', 'Gaeilge', 'Gàidhlig',
+]);
+
+/**
+ * Strip bookend punctuation from all text fields in a LEGO submission.
+ * Mutates in place for efficiency.
+ */
+function normalizeLegoTexts(legos, courseCode) {
+  if (!legos || !Array.isArray(legos)) return;
+  const parts = courseCode.split('_for_');
+  const targetLang = parts[0] || '';
+  const knownLang = parts[1] || '';
+  const skipTarget = NO_CAP_TARGET_LANGS.has(targetLang);
+  const skipKnown = NO_CAP_TARGET_LANGS.has(knownLang);
+
+  for (const lego of legos) {
+    if (lego.known) lego.known = stripBookendPunctuation(lego.known, skipKnown ? null : KEEP_CAP_WORDS);
+    if (lego.target) lego.target = stripBookendPunctuation(lego.target, skipTarget ? null : KEEP_CAP_WORDS);
+
+    const phraseArrays = [lego.build, lego.use, lego.phrases].filter(Boolean);
+    for (const arr of phraseArrays) {
+      for (const p of arr) {
+        if (p.known) p.known = stripBookendPunctuation(p.known, skipKnown ? null : KEEP_CAP_WORDS);
+        if (p.target) p.target = stripBookendPunctuation(p.target, skipTarget ? null : KEEP_CAP_WORDS);
+      }
+    }
+  }
+}
 
 /**
  * Record a lesson in build_lessons table when a validation error occurs.
@@ -287,6 +327,11 @@ module.exports = function seedCompleteRoutes(ctx) {
   // ───────────────────────────────────────────────────────────────────
   router.post('/lego', async (req, res) => {
     try {
+      // Normalize bookend punctuation before destructuring
+      if (req.body.course_code) {
+        normalizeLegoTexts([req.body], req.body.course_code);
+      }
+
       const { course_code, seed, idx, type, known, target, components, phrases } = req.body;
 
       if (!course_code || !seed || !idx || !known || !target) {
@@ -455,6 +500,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               position,
               known_text: p.known,
               target_text: p.target,
+              target_text_roman: p.target_roman || null,
               word_count: p.target.length,
               lego_count: (p.known.match(/\s+/g) || []).length + 1,
               phrase_role: role,
@@ -505,6 +551,11 @@ module.exports = function seedCompleteRoutes(ctx) {
   // ───────────────────────────────────────────────────────────────────
   router.post('/batch', async (req, res) => {
     try {
+      // Normalize bookend punctuation before processing
+      if (req.body.course_code && req.body.legos) {
+        normalizeLegoTexts(req.body.legos, req.body.course_code);
+      }
+
       const { course_code, legos } = req.body;
       const { MIN_PHRASES_PER_LEGO, MIN_BATCH_PHRASE_RATIO } = ctx.config;
 
@@ -585,6 +636,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             is_new: isNew,
             known_text: lego.known,
             target_text: lego.target,
+            target_text_roman: lego.target_roman || null,
             components: lego.components || null,
             status: 'draft',
             version: 1,
@@ -626,6 +678,7 @@ module.exports = function seedCompleteRoutes(ctx) {
                 position,
                 known_text: p.known,
                 target_text: p.target,
+                target_text_roman: p.target_roman || null,
                 word_count: p.target.length,
                 lego_count: (p.known.match(/\s+/g) || []).length + 1,
                 phrase_role: role,
@@ -742,6 +795,11 @@ module.exports = function seedCompleteRoutes(ctx) {
             delete lego.phrases;
           }
         }
+      }
+
+      // Normalize bookend punctuation on all incoming text
+      if (course_code && legos) {
+        normalizeLegoTexts(legos, course_code);
       }
 
       // Force draft mode if parallel build in progress
@@ -1033,7 +1091,7 @@ module.exports = function seedCompleteRoutes(ctx) {
 
             // LEGO CONTAINMENT
             {
-              const useWordContainment = req.query.german_validation === 'true';
+              const useWordContainment = req.query.strict_containment !== 'true'; // default: word-based (handles word-order differences)
               const legoTargetNorm = normalizeForContainment(lego.target);
               const containmentFails = allPhrases.filter(p => {
                 if (useWordContainment) {
@@ -1338,6 +1396,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           seed_number,
           known_text,
           target_text,
+          target_text_roman: parsedData.target_roman || null,
           status: 'released',
           decomposed_at: new Date().toISOString(),
           version: 1,
@@ -1364,6 +1423,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             is_new: !isDuplicate,
             known_text: lego.known,
             target_text: lego.target,
+            target_text_roman: lego.target_roman || null,
             components: lego.components || null,
             status: 'draft',
             version: 1,
@@ -1424,6 +1484,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               position: practiceStartPosition + i,
               known_text: p.known,
               target_text: p.target,
+              target_text_roman: p.target_roman || null,
               word_count: p.target.length,
               lego_count: (p.known.match(/\s+/g) || []).length + 1,
               phrase_role: 'build',
@@ -1445,6 +1506,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               position: practiceStartPosition + buildPhrases.length + i,
               known_text: p.known,
               target_text: p.target,
+              target_text_roman: p.target_roman || null,
               word_count: p.target.length,
               lego_count: (p.known.match(/\s+/g) || []).length + 1,
               phrase_role: 'use',

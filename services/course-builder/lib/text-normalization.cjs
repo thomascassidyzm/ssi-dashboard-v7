@@ -113,6 +113,29 @@ function extractVocab(text, chinese = false) {
   return [normalized];
 }
 
+/**
+ * Strip bookend punctuation from phrase text for storage.
+ * - Removes trailing period (keeps ! ?)
+ * - Lowercases first character UNLESS first word is in keepCapSet
+ *
+ * @param {string} text - The phrase text
+ * @param {Set<string>} [keepCapSet] - Words to keep capitalised (proper nouns, German nouns, "I")
+ * @returns {string} Cleaned text
+ */
+function stripBookendPunctuation(text, keepCapSet) {
+  if (!text) return '';
+  // Remove trailing period
+  let result = text.replace(/\.$/, '');
+  // Lowercase first character if not in keep set
+  if (result.length > 0 && result[0] >= 'A' && result[0] <= 'Z') {
+    const firstWord = result.split(/\s+/)[0].replace(/[.,!?;:¿¡«»""'']+$/, '');
+    if (!keepCapSet || !keepCapSet.has(firstWord)) {
+      result = result[0].toLowerCase() + result.slice(1);
+    }
+  }
+  return result;
+}
+
 module.exports = {
   normalizePhrase,
   normalizeForContainment,
@@ -121,4 +144,5 @@ module.exports = {
   normalizeForStorage,
   normalizeText,
   extractVocab,
+  stripBookendPunctuation,
 };
