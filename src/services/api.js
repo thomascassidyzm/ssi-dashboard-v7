@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { getCachedCourse, setCachedCourse, clearCourseCache, isCacheValid, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
 import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
+import { isConfigured as isSupabaseConfigured, getAllCourses, getAllCourseStats } from './supabase.js'
 
 // Build version for cache busting (set by Vite at build time)
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
@@ -424,6 +425,73 @@ export default {
 
       this._listPendingPromise = (async () => {
         try {
+        // Try direct Supabase first (no ngrok round-trip)
+        if (isSupabaseConfigured()) {
+          console.log('[API] Loading courses directly from Supabase')
+
+          const coursesData = await getAllCourses()
+          const courseCodes = coursesData.map(c => c.course_code)
+          const contentStats = await getAllCourseStats(courseCodes)
+
+          console.log(`[API] ✓ Loaded ${coursesData.length} courses from Supabase`)
+
+          const now = new Date()
+          const daysSince = (ts) => {
+            if (!ts) return undefined
+            return Math.floor((now - new Date(ts)) / (1000 * 60 * 60 * 24))
+          }
+
+          const courses = coursesData.map(course => {
+            const code = course.course_code
+            const stats = contentStats[code] || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
+            return {
+              code,
+              course_code: code,
+              display_name: course.display_name,
+              source_language: code?.split('_for_')[1]?.toUpperCase() || 'UNK',
+              target_language: code?.split('_for_')[0]?.toUpperCase() || 'UNK',
+              total_seeds: stats.seeds || 668,
+              seed_count: course.seed_count || null,
+              version: '1.0',
+              created_at: new Date().toISOString(),
+              status: course.status || 'in_progress',
+              new_app_status: course.new_app_status || 'not_available',
+              legacy_app_status: course.legacy_app_status || 'not_available',
+              new_app_beta_started_at: course.new_app_beta_started_at,
+              legacy_app_beta_started_at: course.legacy_app_beta_started_at,
+              new_app_beta_days: daysSince(course.new_app_beta_started_at),
+              legacy_app_beta_days: daysSince(course.legacy_app_beta_started_at),
+              content_status: course.content_status || 'empty',
+              seed_pairs: stats.completedSeeds,
+              lego_pairs: stats.legos,
+              lego_baskets: 0,
+              phrases: stats.phrases,
+              audio_files: stats.audio,
+              amino_acids: { introductions: 0 },
+              stats: {
+                seeds: stats.seeds,
+                completedSeeds: stats.completedSeeds,
+                legos: stats.legos,
+                phrases: stats.phrases,
+                audio: stats.audio
+              },
+              phases_completed: [
+                ...(stats.completedSeeds > 0 ? ['1'] : []),
+                ...(stats.legos > 0 ? ['3'] : []),
+                ...(stats.phrases > 0 ? ['5'] : []),
+                ...(stats.audio > 0 ? ['8', 'audio'] : [])
+              ]
+            }
+          })
+
+          const result = { courses }
+          this._listCache = result
+          this._listCacheTime = Date.now()
+          return result
+        }
+
+        // Fallback: use API endpoint (proxies through ngrok)
+        console.log('[API] Supabase not configured, falling back to API')
         const response = await api.get('/api/courses', { params: { status: 'true' } });
         const data = response.data;
 
@@ -445,23 +513,20 @@ export default {
           console.warn('[API] Could not load course stats from database:', statsErr.message)
         }
 
-        // Transform API response to expected format
-        // Stats: { seeds, completedSeeds, legos, baskets, phrases, introductions, audio }
         const courses = (data.courses || []).map(course => {
           const code = course.code || course.course_code
           const stats = contentStats[code] || { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0, seed_count: null }
           return {
-            code: code,  // Pass through code for consistent access
+            code: code,
             course_code: code,
             display_name: course.display_name,
             source_language: code?.split('_for_')[1]?.toUpperCase() || 'UNK',
             target_language: code?.split('_for_')[0]?.toUpperCase() || 'UNK',
             total_seeds: stats.seeds || 668,
-            seed_count: stats.seed_count || null,  // Release target from courses table
+            seed_count: stats.seed_count || null,
             version: '1.0',
             created_at: new Date().toISOString(),
             status: course.complete ? 'complete' : 'in_progress',
-            // Platform deployment status (from production-api)
             new_app_status: course.new_app_status || 'not_available',
             legacy_app_status: course.legacy_app_status || 'not_available',
             new_app_beta_started_at: course.new_app_beta_started_at,
@@ -469,7 +534,6 @@ export default {
             new_app_beta_days: course.new_app_beta_days,
             legacy_app_beta_days: course.legacy_app_beta_days,
             content_status: course.content_status || 'empty',
-            // Content stats
             seed_pairs: stats.completedSeeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
@@ -478,7 +542,6 @@ export default {
             amino_acids: {
               introductions: stats.introductions
             },
-            // Pass through stats object for CourseStatusTable
             stats: {
               seeds: stats.seeds,
               completedSeeds: stats.completedSeeds,
@@ -503,7 +566,7 @@ export default {
         this._listCacheTime = Date.now()
         return result
       } catch (err) {
-        console.error('[API] Failed to load courses from API:', err);
+        console.error('[API] Failed to load courses:', err);
         throw err;
       } finally {
         this._listPendingPromise = null

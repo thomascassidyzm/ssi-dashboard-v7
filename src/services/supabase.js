@@ -91,6 +91,71 @@ export async function getCourseInfo(courseCode) {
 }
 
 /**
+ * Get all courses directly from database
+ * @returns {Promise<Array>}
+ */
+export async function getAllCourses() {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('courses')
+    .select('course_code, known_lang, target_lang, display_name, status, seed_count, content_status, new_app_status, legacy_app_status, new_app_beta_started_at, legacy_app_beta_started_at')
+
+  if (error) throw new Error('Failed to load courses: ' + error.message)
+  return data || []
+}
+
+/**
+ * Get stats for all courses directly from database
+ * @param {string[]} courseCodes
+ * @returns {Promise<Object>} Map of course_code → { seeds, completedSeeds, legos, phrases, audio }
+ */
+export async function getAllCourseStats(courseCodes) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const statsMap = {}
+
+  await Promise.all(courseCodes.map(async (courseCode) => {
+    const [seedsResult, legosResult, phrasesResult, audioResult, legoSeedsResult] = await Promise.all([
+      supabase
+        .from('course_seeds')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode),
+      supabase
+        .from('course_legos')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode),
+      supabase
+        .from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode),
+      supabase
+        .from('course_audio')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode),
+      supabase
+        .from('course_legos')
+        .select('seed_number')
+        .eq('course_code', courseCode)
+    ])
+
+    const completedSeeds = legoSeedsResult.data
+      ? new Set(legoSeedsResult.data.map(l => l.seed_number)).size
+      : 0
+
+    statsMap[courseCode] = {
+      seeds: seedsResult.count || 0,
+      completedSeeds,
+      legos: legosResult.count || 0,
+      phrases: phrasesResult.count || 0,
+      audio: audioResult.count || 0
+    }
+  }))
+
+  return statsMap
+}
+
+/**
  * Generate learning script directly from database
  * v3.0: BUILD/USE phrase roles, Fibonacci spaced rep with 12-phrase cap
  *
