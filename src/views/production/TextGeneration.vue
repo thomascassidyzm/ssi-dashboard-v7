@@ -385,6 +385,7 @@ import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { useTextGenSocket } from '@/composables/useTextGenSocket'
+import { useBuildMonitor } from '@/composables/useBuildMonitor'
 
 const router = useRouter()
 
@@ -465,6 +466,52 @@ const decomposeRunning = ref(false)
 // Seed grid state
 const seedGrid = ref([])
 const seedGridExpanded = ref(true)
+
+// Build monitor — direct Supabase reads + Realtime (replaces HTTP polling)
+const buildMonitor = useBuildMonitor(effectiveCourseCode)
+
+// Sync buildMonitor data into existing component state
+watch(buildMonitor.stats, (s) => {
+  if (!s) return
+  const totalSeeds = progress.value.totalSeeds || seedCount.value
+  progress.value = {
+    ...progress.value,
+    currentSeed: s.completeSeeds || 0,
+    legosInserted: s.legos || 0,
+    phrasesInserted: s.practicePhrases || 0,
+    totalSeeds
+  }
+}, { deep: true })
+
+watch(buildMonitor.seedGrid, (grid) => {
+  if (grid && grid.length > 0) seedGrid.value = grid
+}, { deep: true })
+
+watch(buildMonitor.buildStatus, (bs) => {
+  if (!bs) return
+  translateRunning.value = bs.active && bs.build?.pass === 'translate'
+  decomposeRunning.value = bs.active && bs.build?.pass === 'decompose'
+  if (bs.active) {
+    progress.value.status = 'running'
+    progress.value.buildPass = bs.build?.pass || null
+    if (bs.build?.total_seeds && bs.build?.pass === 'decompose') {
+      seedCount.value = bs.build.total_seeds
+    }
+  } else {
+    translateRunning.value = false
+    decomposeRunning.value = false
+    progress.value.buildPass = null
+    if (bs.progress?.isComplete) {
+      progress.value.status = 'complete'
+    } else if (progress.value.status === 'running') {
+      progress.value.status = 'idle'
+    }
+  }
+}, { deep: true })
+
+watch(buildMonitor.messages, (msgs) => {
+  if (msgs && msgs.length > 0) orchestratorMessages.value = msgs
+}, { deep: true })
 
 // Seed grid phrase viewer state
 const selectedSeed = ref(null)
@@ -962,21 +1009,13 @@ async function fetchOrchestratorMessages() {
   }
 }
 
-// Polling
-let pollInterval = null
-
+// Polling — now handled by useBuildMonitor (Realtime + 30s fallback)
 function startPolling() {
-  if (pollInterval) return
-  fetchProgress()
-  fetchOrchestratorMessages()
-  pollInterval = setInterval(() => { fetchProgress(); fetchOrchestratorMessages() }, 10000)
+  buildMonitor.start()
 }
 
 function stopPolling() {
-  if (pollInterval) {
-    clearInterval(pollInterval)
-    pollInterval = null
-  }
+  buildMonitor.stop()
 }
 
 // Load languages from API

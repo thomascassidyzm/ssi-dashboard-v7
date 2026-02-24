@@ -2,6 +2,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { supabase } from '@/services/supabase'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 // This allows routing through ngrok tunnel to local automation server
@@ -24,7 +25,10 @@ function getApiBaseUrl() {
     return ''
   }
 
-  // 3. For Vercel/popty.app - default to Tom's ngrok tunnel
+  // 3. For Vercel/popty.app - no default API base
+  // Read-only data goes direct to Supabase via useBuildMonitor composable.
+  // Agent operations (spawn, audio gen) require the user to set an ngrok URL
+  // via EnvironmentSwitcher or localStorage.
   const isVercel = typeof window !== 'undefined' && (
     window.location.hostname.includes('vercel.app') ||
     window.location.hostname === 'popty.app' ||
@@ -32,8 +36,8 @@ function getApiBaseUrl() {
   )
 
   if (isVercel) {
-    // Default to Tom's dedicated ngrok domain for remote access
-    return 'https://popty.ngrok.app'
+    // Return null — callers must check before making agent API calls
+    return null
   }
 
   // 4. Use env var or localhost for local development
@@ -107,8 +111,9 @@ export const useProductionStore = defineStore('production', () => {
     introNeeds: 0    // Introduction audio needs
   })
 
-  // Polling interval for status updates
+  // Realtime subscription for audio pipeline status
   let statusPollingInterval = null
+  let buildJobChannel = null
 
   // Recording Studio state
   const recordingState = ref('idle') // idle, recording, reviewing, uploading
@@ -666,16 +671,47 @@ export const useProductionStore = defineStore('production', () => {
   }
 
   function startStatusPolling(courseCode) {
-    // Don't start if already polling
-    if (statusPollingInterval) return
+    // Don't start if already subscribed
+    if (buildJobChannel || statusPollingInterval) return
 
-    console.log('[Production] Starting status polling for', courseCode)
-    // Poll immediately, then every 2 seconds
+    console.log('[Production] Starting build_jobs monitoring for', courseCode)
+    // Initial poll
     pollStatus(courseCode)
-    statusPollingInterval = setInterval(() => pollStatus(courseCode), 2000)
+
+    // Try Supabase Realtime first
+    if (supabase) {
+      buildJobChannel = supabase
+        .channel(`build-jobs:${courseCode}`)
+        .on('postgres_changes', {
+          event: '*',
+          schema: 'public',
+          table: 'build_jobs',
+          filter: `course_code=eq.${courseCode}`
+        }, () => {
+          pollStatus(courseCode)
+        })
+        .subscribe((status) => {
+          if (status === 'SUBSCRIBED') {
+            console.log('[Production] Realtime connected for build_jobs')
+          } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
+            // Fall back to polling
+            console.warn('[Production] Realtime disconnected, falling back to 10s poll')
+            if (!statusPollingInterval) {
+              statusPollingInterval = setInterval(() => pollStatus(courseCode), 10000)
+            }
+          }
+        })
+    } else {
+      // No Supabase — use polling fallback
+      statusPollingInterval = setInterval(() => pollStatus(courseCode), 10000)
+    }
   }
 
   function stopStatusPolling() {
+    if (buildJobChannel && supabase) {
+      supabase.removeChannel(buildJobChannel)
+      buildJobChannel = null
+    }
     if (statusPollingInterval) {
       console.log('[Production] Stopping status polling')
       clearInterval(statusPollingInterval)

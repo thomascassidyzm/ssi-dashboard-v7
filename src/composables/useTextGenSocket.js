@@ -29,7 +29,7 @@ export function useTextGenSocket() {
     const wsUrl = getWsUrl()
     socket = io(wsUrl, {
       path: '/api/production/websocket',
-      transports: ['websocket', 'polling'],
+      transports: ['websocket'],
       reconnectionAttempts: 5,
       reconnectionDelay: 2000,
       reconnectionDelayMax: 30000,

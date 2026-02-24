@@ -795,6 +795,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { io } from 'socket.io-client'
 import { LanguageBriefEditor } from '../components/generation'
 import { getApiUrl } from '@/services/api'
+import { useBuildMonitor } from '@/composables/useBuildMonitor'
 
 const route = useRoute()
 const router = useRouter()
@@ -864,6 +865,51 @@ const calibrationReview = ref({ pending: 0, approved: 0, redo: 0, total: 0 })
 
 // Pipeline state
 const pipelineStatus = ref(null)
+
+// Build monitor — direct Supabase reads + Realtime (replaces HTTP polling)
+const effectiveCourseCodeForMonitor = computed(() => props.courseCode || route.params.courseCode)
+const buildMonitor = useBuildMonitor(effectiveCourseCodeForMonitor)
+
+// Sync buildMonitor data into existing component state
+watch(buildMonitor.stats, (s) => {
+  if (!s || buildMode.value !== 'builder') return
+  stats.value = [
+    { label: 'Seeds', value: builderProgress.value.currentSeed },
+    { label: 'LEGOs', value: s.legos || 0 },
+    { label: 'Phrases', value: s.practicePhrases || 0 },
+    { label: 'Ratio', value: s.legos > 0 ? (s.practicePhrases / s.legos).toFixed(1) : 0 }
+  ]
+  builderProgress.value.legosInserted = s.legos || 0
+  builderProgress.value.phrasesInserted = s.practicePhrases || 0
+  lastProgressAt.value = new Date().toISOString()
+}, { deep: true })
+
+watch(buildMonitor.seedGrid, (grid) => {
+  if (grid && grid.length > 0) {
+    seedGrid.value = grid
+  }
+}, { deep: true })
+
+watch(buildMonitor.buildStatus, (bs) => {
+  if (!bs) return
+  if (bs.progress) {
+    builderProgress.value.currentSeed = bs.progress.completed || 0
+    builderProgress.value.totalSeeds = bs.build?.total_seeds || seedCount.value
+  }
+  if (bs.active) {
+    jobStatus.value = bs.build?.status === 'stalled' ? 'stuck' : 'running'
+    builderProgress.value.status = 'running'
+  } else if (bs.progress?.isComplete) {
+    jobStatus.value = 'idle'
+    builderProgress.value.status = 'complete'
+  }
+}, { deep: true })
+
+watch(buildMonitor.pipeline, (p) => {
+  if (p && p.stage) {
+    pipelineStatus.value = p
+  }
+}, { deep: true })
 const pipelineStarting = ref(false)
 const pipelineStages = [
   { id: 'translate', label: 'Translate' },
@@ -1792,29 +1838,15 @@ async function clearStaleJob() {
   }
 }
 
-// Polling
-let pollInterval = null
-
+// Polling — now handled by useBuildMonitor (Realtime + 30s fallback)
 function startPolling() {
-  if (pollInterval) return
-
   isPolling.value = true
-  fetchProgress()
-  fetchPipelineStatus()
-
-  pollInterval = setInterval(() => {
-    fetchProgress()
-    fetchPipelineStatus()
-  }, 3000)
-
-  addEvent('Started polling database')
+  buildMonitor.start()
+  addEvent('Started monitoring (Supabase Realtime)')
 }
 
 function stopPolling() {
-  if (pollInterval) {
-    clearInterval(pollInterval)
-    pollInterval = null
-  }
+  buildMonitor.stop()
   isPolling.value = false
 }
 
