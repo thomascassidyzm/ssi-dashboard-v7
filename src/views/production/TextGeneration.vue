@@ -299,58 +299,6 @@
           </div>
         </div>
 
-        <!-- Stage 5: Audio -->
-        <div class="pipeline-card" :class="stageCardClass('audio')">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('audio')">5</span>
-              <div>
-                <div class="text-sm font-medium text-slate-200">Audio</div>
-                <div class="text-xs text-slate-500">TTS generation</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span v-if="stageComplete('audio')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('audio')" class="stage-badge-locked">Locked</span>
-              <button
-                v-else-if="!audioRunning"
-                @click="startAudio"
-                :disabled="audioStarting"
-                class="px-3 py-1 bg-amber-600/20 border border-amber-500/50 text-amber-400 hover:border-amber-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                {{ audioStarting ? 'Starting...' : 'Start Audio' }}
-              </button>
-              <span v-if="audioRunning" class="text-xs text-amber-400 animate-pulse">Running...</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stage 6: Export -->
-        <div class="pipeline-card" :class="stageCardClass('export')">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('export')">6</span>
-              <div>
-                <div class="text-sm font-medium text-slate-200">Export</div>
-                <div class="text-xs text-slate-500">Manifest compilation</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span v-if="stageComplete('export')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('export')" class="stage-badge-locked">Locked</span>
-              <button
-                v-else-if="!exportRunning"
-                @click="startExport"
-                :disabled="exportStarting"
-                class="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 text-cyan-400 hover:border-cyan-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                {{ exportStarting ? 'Starting...' : 'Start Export' }}
-              </button>
-              <span v-if="exportRunning" class="text-xs text-cyan-400 animate-pulse">Running...</span>
-            </div>
-          </div>
-        </div>
-
       </section>
 
       <!-- Seed Grid -->
@@ -575,13 +523,6 @@ const finalPassRunning = ref(false)
 const genderStarting = ref(false)
 const genderRunning = ref(false)
 
-// Audio state
-const audioStarting = ref(false)
-const audioRunning = ref(false)
-
-// Export state
-const exportStarting = ref(false)
-const exportRunning = ref(false)
 
 // Seed grid state
 const seedGrid = ref([])
@@ -665,9 +606,7 @@ const pipelinePhase = computed(() => {
   if (!stageComplete('translate')) return 'translate'
   if (!stageComplete('build-team')) return 'build-team'
   if (!stageComplete('final-pass')) return 'final-pass'
-  if (!stageComplete('gender')) return 'gender'
-  if (!stageComplete('audio')) return 'audio'
-  return 'export'
+  return 'gender'
 })
 
 function stageComplete(stage) {
@@ -676,8 +615,6 @@ function stageComplete(stage) {
     case 'build-team': return (progress.value.currentSeed || 0) >= seedCount.value
     case 'final-pass': return progress.value.finalPassDone === true
     case 'gender': return progress.value.genderDone === true
-    case 'audio': return progress.value.audioDone === true
-    case 'export': return progress.value.exportDone === true
     default: return false
   }
 }
@@ -688,8 +625,6 @@ function stageLocked(stage) {
     case 'build-team': return !stageComplete('translate')
     case 'final-pass': return !stageComplete('build-team')
     case 'gender': return !stageComplete('build-team')
-    case 'audio': return !stageComplete('build-team')
-    case 'export': return !stageComplete('audio')
     default: return false
   }
 }
@@ -974,53 +909,6 @@ async function startGenderPrep() {
   }
 }
 
-async function startAudio() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  audioStarting.value = true
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/production/${courseCode}/audio-pipeline/start`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    })
-    const result = await response.json()
-    if (result.ok !== false) {
-      audioRunning.value = true
-    } else {
-      console.error('Failed to start audio:', result.error)
-    }
-  } catch (err) {
-    console.error('Failed to start audio:', err)
-  } finally {
-    audioStarting.value = false
-  }
-}
-
-async function startExport() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  exportStarting.value = true
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/production/${courseCode}/manifest/generate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    })
-    const result = await response.json()
-    if (result.ok !== false) {
-      exportRunning.value = true
-    } else {
-      console.error('Failed to start export:', result.error)
-    }
-  } catch (err) {
-    console.error('Failed to start export:', err)
-  } finally {
-    exportStarting.value = false
-  }
-}
 
 async function stopBuilder() {
   try {
