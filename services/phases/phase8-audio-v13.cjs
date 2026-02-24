@@ -28,6 +28,7 @@ const { v4: uuidv4 } = require('uuid')
 const fs = require('fs-extra')
 const path = require('path')
 const os = require('os')
+const { bumpCourseVersion } = require('../shared/course-version.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
@@ -1590,6 +1591,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
     }
 
+    if (!wasCancelled && results.success > 0) {
+      await bumpCourseVersion(supabase, courseCode, 'patch')
+    }
+
     res.json({
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
@@ -2478,6 +2483,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       })
     } catch (e) { /* production-api may not be running */ }
+
+    await bumpCourseVersion(supabase, courseCode, 'patch')
 
     res.json({
       success: true,

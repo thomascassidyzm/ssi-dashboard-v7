@@ -24,6 +24,7 @@ const {
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
+const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const {
   isBlockedByCheckpoint, getCheckpointStatus, getCheckpointConfig,
   isCheckpointRequired, approveCheckpoint, isQAPending,
@@ -530,6 +531,8 @@ module.exports = function seedCompleteRoutes(ctx) {
 
       ctx.emitPipelineEvent(course_code, 'seed:lego_complete', { seed_number: seed, lego_id: legoId, phrases: totalPhrases });
 
+      await bumpCourseVersion(ctx.supabase, course_code, 'minor');
+
       res.json({
         ok: true,
         lego_id: legoId,
@@ -720,6 +723,8 @@ module.exports = function seedCompleteRoutes(ctx) {
       }
 
       ctx.emitPipelineEvent(course_code, 'seed:complete', { seed_number: null, legos_count: legos.length, phrases_count: totalPhrases });
+
+      await bumpCourseVersion(ctx.supabase, course_code, 'minor');
 
       res.json({
         ok: true,
@@ -1725,6 +1730,8 @@ module.exports = function seedCompleteRoutes(ctx) {
         });
 
       ctx.emitPipelineEvent(course_code, 'seed:complete', { seed_number: seed_number, legos_count: legos.length, phrases_count: totalPhrases });
+
+      await bumpCourseVersion(ctx.supabase, course_code, 'minor');
 
       res.json({
         ok: true,

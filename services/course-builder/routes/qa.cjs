@@ -14,6 +14,7 @@ const path = require('path');
 const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.cjs');
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
 const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
+const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 
 // TODO: Extract generateStrictQABrief to briefs module
 function generateStrictQABrief({ courseCode, courseInfo }) {
@@ -1474,6 +1475,10 @@ end tell`;
 
       console.log(`[QA] Deleted phrase ${phraseId}`);
 
+      // Extract course code from phraseId (format: course_code:S0001L01U01)
+      const phraseCourseCode = phraseId.split(':')[0];
+      if (phraseCourseCode) await bumpCourseVersion(supabase, phraseCourseCode, 'minor');
+
       res.json({ success: true, deleted: phraseId });
     } catch (err) {
       console.error('[QA] Error deleting phrase:', err);
@@ -1540,6 +1545,8 @@ end tell`;
       if (delPhraseError) throw delPhraseError;
 
       console.log(`[QA] Bulk deleted ${phraseIds.length} flagged phrases (${flags.length} flags) for ${courseCode}`);
+
+      await bumpCourseVersion(supabase, courseCode, 'minor');
 
       res.json({
         success: true,

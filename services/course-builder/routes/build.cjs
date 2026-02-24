@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { getBuildProgress, stopBuild, getBuildStatus } = require('../lib/build-manager.cjs');
 const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
+const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -54,6 +55,8 @@ module.exports = function (ctx) {
         .gte('seed_number', from_seed).lte('seed_number', to_seed);
 
       ctx.courseVocabCache.delete(courseCode);
+
+      await bumpCourseVersion(ctx.supabase, courseCode, 'minor');
 
       res.json({
         ok: true,

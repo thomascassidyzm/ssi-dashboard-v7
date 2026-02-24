@@ -10,6 +10,7 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
+const { bumpCourseVersion } = require('./shared/course-version.cjs');
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -312,6 +313,9 @@ async function saveVoiceConfig(courseCode, config) {
     if (error) throw error;
 
     console.log(`[VoiceConfig] Saved config for ${courseCode} to Supabase`);
+
+    await bumpCourseVersion(supabase, courseCode, 'patch');
+
     return fullConfig;
 
   } catch (error) {
