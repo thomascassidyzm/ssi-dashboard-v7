@@ -388,12 +388,11 @@ async function linkAudioIds(courseCode, knownLang, targetLang) {
     let count = 0
     for (let i = 0; i < rows.length; i += BATCH_SIZE) {
       const batch = rows.slice(i, i + BATCH_SIZE)
-      // Update one at a time within batch — Supabase JS doesn't support
-      // UPDATE ... SET col = CASE for different values per row
       for (const row of batch) {
         const { error } = await supabase
           .from(table)
           .update({ [column]: row.audioId })
+          .eq('course_code', courseCode)
           .eq(idCol, row.id)
         if (!error) count++
       }
@@ -415,22 +414,22 @@ async function linkAudioIds(courseCode, knownLang, targetLang) {
     while (more) {
       const { data, error } = await supabase
         .from('course_practice_phrases')
-        .select(`phrase_id, ${slot.textCol}`)
+        .select(`id, ${slot.textCol}`)
         .eq('course_code', courseCode)
         .is(slot.audioCol, null)
-        .order('phrase_id', { ascending: true })
+        .order('id', { ascending: true })
         .range(offset, offset + PAGE_SIZE - 1)
       if (error) throw new Error(`Failed to load phrases for ${slotName}: ${error.message}`)
       for (const row of (data || [])) {
         const key = `${normalizeText(row[slot.textCol])}|${slot.lang}|${slot.role}`
         const audioId = audioMap.get(key)
-        if (audioId) updates.push({ id: row.phrase_id, audioId })
+        if (audioId) updates.push({ id: row.id, audioId })
       }
       more = (data || []).length === PAGE_SIZE
       offset += PAGE_SIZE
     }
     if (updates.length > 0) {
-      r.practice_phrases[slotName] = await batchUpdate('course_practice_phrases', 'phrase_id', updates, slot.audioCol)
+      r.practice_phrases[slotName] = await batchUpdate('course_practice_phrases', 'id', updates, slot.audioCol)
     } else {
       r.practice_phrases[slotName] = 0
     }
