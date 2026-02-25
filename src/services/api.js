@@ -535,6 +535,7 @@ export default {
             new_app_beta_days: course.new_app_beta_days,
             legacy_app_beta_days: course.legacy_app_beta_days,
             content_status: course.content_status || 'empty',
+            content_version: course.content_version || '0.0.0',
             seed_pairs: stats.completedSeeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
