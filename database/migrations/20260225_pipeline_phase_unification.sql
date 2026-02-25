@@ -14,12 +14,13 @@ DROP FUNCTION IF EXISTS enforce_pass_order();
 ALTER TABLE build_jobs DROP CONSTRAINT IF EXISTS build_jobs_pass_check;
 ALTER TABLE build_jobs ADD CONSTRAINT build_jobs_pass_check
   CHECK (pass IN ('translate', 'build-team', 'final-pass', 'gender-prep', 'decompose',
-                  'pass_1', 'pass_2'));
+                  'pass_1', 'pass_2', 'golden', 'golden_qa', 'v2_pipeline'));
 -- Keep pass_1/pass_2 in CHECK so existing rows don't violate, but no new ones should be created.
 
--- 3. Migrate legacy pass_1 → decompose, pass_2 → final-pass
+-- 3. Migrate legacy rows
 UPDATE build_jobs SET pass = 'decompose' WHERE pass = 'pass_1';
 UPDATE build_jobs SET pass = 'final-pass' WHERE pass = 'pass_2';
+UPDATE build_jobs SET pass = 'build-team' WHERE pass IN ('golden', 'golden_qa', 'v2_pipeline');
 
 -- 4. Now tighten the constraint (remove legacy values)
 ALTER TABLE build_jobs DROP CONSTRAINT build_jobs_pass_check;
@@ -49,7 +50,7 @@ SELECT
   'gender-prep',
   'complete',
   COUNT(DISTINCT cge.original_text),
-  MAX(cge.created_at)
+  MAX(cge.processed_at)
 FROM course_gender_expansions cge
 GROUP BY cge.course_code
 HAVING COUNT(*) > 0
