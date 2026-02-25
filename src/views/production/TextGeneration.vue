@@ -199,7 +199,7 @@
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/{{ progress.totalSeeds || 668 }}</span>
+              <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/668</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
               <button
                 v-else-if="!translateRunning"
@@ -254,12 +254,21 @@
               <span class="stage-number" :class="stageNumberClass('final-pass')">3</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Final Pass</div>
-                <div class="text-xs text-slate-500">Grammar audit — fix or delete</div>
+                <div class="text-xs text-slate-500">Grammar audit — delete bad phrases</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
+              <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">{{ seedGridFlagged }} flagged</span>
               <span v-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
+              <button
+                v-else-if="!finalPassRunning && seedGridDrafted > 0"
+                @click="massApproveSeeds"
+                :disabled="massApproving"
+                class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ massApproving ? 'Approving...' : `Approve ${seedGridDrafted} Seeds` }}
+              </button>
               <button
                 v-else-if="!finalPassRunning"
                 @click="startFinalPass"
@@ -346,7 +355,7 @@
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30"></span> Empty</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Building</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/60"></span> Decomposed</span>
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/60 ring-1 ring-inset ring-rose-400"></span> Collision</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/70 ring-1 ring-inset ring-rose-400"></span> Flagged</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
           </div>
@@ -518,6 +527,7 @@ const buildTeamRunning = ref(false)
 // Final Pass agent state
 const finalPassStarting = ref(false)
 const finalPassRunning = ref(false)
+const massApproving = ref(false)
 
 // Gender Prep state
 const genderStarting = ref(false)
@@ -589,6 +599,7 @@ const seedRedoing = ref(false)
 const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
 const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
+const seedGridFlagged = computed(() => seedGrid.value.filter(s => s.status === 'flagged').length)
 
 // --- Pipeline computeds ---
 
@@ -645,6 +656,8 @@ function stageNumberClass(stage) {
 
 function seedCellClass(cell) {
   switch (cell.status) {
+    case 'flagged':
+      return 'bg-rose-500/70 ring-1 ring-inset ring-rose-400'
     case 'collision':
     case 'rework':
       return 'bg-rose-500/60 ring-1 ring-inset ring-rose-400'
@@ -882,6 +895,35 @@ async function startFinalPass() {
     console.error('Failed to start final pass:', err)
   } finally {
     finalPassStarting.value = false
+  }
+}
+
+async function massApproveSeeds() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  massApproving.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/mass-approve/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      // Refresh the seed grid
+      const gridResp = await fetch(`${apiBase}/api/build/seed-grid/${courseCode}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      const data = await gridResp.json()
+      seedGrid.value = data.seeds || []
+    } else {
+      console.error('Failed to mass approve:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to mass approve:', err)
+  } finally {
+    massApproving.value = false
   }
 }
 

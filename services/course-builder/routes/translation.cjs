@@ -500,5 +500,40 @@ module.exports = function (ctx) {
     });
   });
 
+  // ===========================================================================
+  // PATCH /course/:courseCode/quality-rules
+  // Merge fields into existing quality_rules (e.g. lessons_learned from final pass)
+  // ===========================================================================
+  router.patch('/course/:courseCode/quality-rules', async (req, res) => {
+    const { courseCode } = req.params;
+    const updates = req.body;
+
+    if (!updates || typeof updates !== 'object') {
+      return res.status(400).json({ error: 'Body must be a JSON object with fields to merge' });
+    }
+
+    const { data: course, error: fetchErr } = await supabase
+      .from('courses')
+      .select('quality_rules')
+      .eq('course_code', courseCode)
+      .single();
+
+    if (fetchErr || !course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` });
+    }
+
+    const merged = { ...(course.quality_rules || {}), ...updates };
+    const { error: updateErr } = await supabase
+      .from('courses')
+      .update({ quality_rules: merged })
+      .eq('course_code', courseCode);
+
+    if (updateErr) {
+      return res.status(500).json({ error: updateErr.message });
+    }
+
+    res.json({ ok: true, course_code: courseCode, quality_rules: merged });
+  });
+
   return router;
 };

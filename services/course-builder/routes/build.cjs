@@ -79,7 +79,7 @@ module.exports = function (ctx) {
       const maxSeed = courseData?.seed_count || 300;
 
       const { data: seeds } = await ctx.supabase
-        .from('course_seeds').select('seed_number, decomposed_at, approved_at')
+        .from('course_seeds').select('seed_number, decomposed_at, approved_at, flagged_at')
         .eq('course_code', courseCode).lte('seed_number', maxSeed).order('seed_number');
 
       const { data: legoCounts } = await ctx.supabase
@@ -96,19 +96,42 @@ module.exports = function (ctx) {
       const phrasesBySeed = {};
       for (const p of phraseCounts || []) phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1;
 
-      let complete = 0, drafted = 0, building = 0, empty = 0;
+      let complete = 0, drafted = 0, building = 0, empty = 0, flagged = 0;
       const grid = (seeds || []).map(s => {
         const legos = legosBySeed[s.seed_number] || 0;
         const phrases = phrasesBySeed[s.seed_number] || 0;
         let status;
-        if (s.approved_at) { status = 'complete'; complete++; }
+        if (s.flagged_at) { status = 'flagged'; flagged++; }
+        else if (s.approved_at) { status = 'complete'; complete++; }
         else if (s.decomposed_at) { status = 'drafted'; drafted++; }
         else if (legos > 0) { status = 'building'; building++; }
         else { status = 'empty'; empty++; }
         return { seed: s.seed_number, status, legos, phrases };
       });
 
-      res.json({ seeds: grid, total: grid.length, complete, drafted, building, empty });
+      res.json({ seeds: grid, total: grid.length, complete, drafted, building, empty, flagged });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // POST /build/mass-approve/:courseCode — approve all decomposed, non-flagged seeds
+  router.post('/build/mass-approve/:courseCode', async (req, res) => {
+    const { courseCode } = req.params;
+    try {
+      const now = new Date().toISOString();
+      const { data, error } = await ctx.supabase
+        .from('course_seeds')
+        .update({ approved_at: now })
+        .eq('course_code', courseCode)
+        .not('decomposed_at', 'is', null)
+        .is('approved_at', null)
+        .is('flagged_at', null)
+        .select('seed_number');
+
+      if (error) throw error;
+      const count = data?.length || 0;
+      res.json({ ok: true, approved: count, message: `Approved ${count} seeds` });
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }
