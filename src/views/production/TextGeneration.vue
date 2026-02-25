@@ -638,7 +638,7 @@ function stageLocked(stage) {
     case 'translate': return false
     case 'build-team': return !stageComplete('translate')
     case 'final-pass': return !stageComplete('build-team')
-    case 'gender': return !stageComplete('build-team')
+    case 'gender': return !stageComplete('final-pass')
     default: return false
   }
 }
