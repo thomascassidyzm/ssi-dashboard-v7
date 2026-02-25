@@ -171,10 +171,10 @@ USE:
 ...
 \`\`\`
 
-### Step 6: Wait for checker response
-- **PASS** → checker submits to API. Move to next seed.
-- **FEEDBACK** → fix the specific issues listed, resend to checker.
-- Max 2 rounds of feedback per seed. If still not passing, checker will fix remaining issues and submit.
+### Step 6: Wait for "DONE" from checker
+- Checker will fix any issues and submit to the API directly.
+- When checker says "DONE — seed N submitted", move to the next seed.
+- **Do NOT expect feedback rounds.** Checker handles all fixes.
 
 ### Step 7: Move to next seed
 

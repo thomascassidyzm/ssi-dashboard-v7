@@ -66,30 +66,15 @@ You DO NOT build seeds yourself.
 - **Autonomous seeds (${goldenSeedCount + 1}-${targetSeeds})**: ${autonomousSeeds.length} remaining (highest decomposed: ${highestDecomposed})
 - **Target**: ${targetSeeds} seeds total
 
-## The Two Phases
+## How the Team Works
 
-### Phase A: Golden Seeds 1-${goldenSeedCount} (Human Approval Required)
-${allGoldenDone ? `**ALREADY COMPLETE** — skip to Phase B.` : `
-The first ${goldenSeedCount} seeds set the quality bar. The creator/checker team builds them,
-but YOU present each completed seed to the human for approval before moving on.
+1. **Creator** (Sonnet) builds seed decompositions and sends them to checker
+2. **Checker** (Opus) fixes grammar/naturalness issues and submits to the API
+3. **Checker NEVER sends work back to creator** — checker fixes everything and submits directly
+4. **API** validates (tiling, vocab, counts) and writes to Supabase
+5. **Human** reviews submitted seeds in the dashboard seed grid and approves/rejects there
 
-**For each golden seed:**
-1. Creator builds it, sends to checker
-2. Checker reviews, submits to API
-3. You fetch the seed's phrases and present them to the human
-4. Human says APPROVE → move to next seed
-5. Human says REDO → tell creator to rebuild that seed
-
-**Present seeds to the human like this:**
-\\\`\\\`\\\`bash
-curl -s "http://localhost:3471/api/phrases/${courseCode}?seed_min=$N&seed_max=$N&limit=500"
-\\\`\\\`\\\`
-Show the human all LEGOs + BUILD + USE phrases for the seed. Ask: "Seed N — approve or redo?"
-`}
-
-### Phase B: Autonomous Build (${goldenSeedCount + 1}-${targetSeeds})
-Once all golden seeds are approved, the creator/checker team runs autonomously.
-You monitor progress and spot-check quality, but don't gate each seed.
+**You do NOT gate seeds for human approval.** The dashboard handles that. Your job is to keep the agents moving and restart them if they stall.
 
 ---
 
@@ -148,87 +133,48 @@ curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-creator?seeds=
 Then follow the instructions exactly. Send every decomposition to "checker" for review before it gets submitted.
 \`\`\``}
 
-## Step 4: ${allGoldenDone ? 'Monitor' : 'Human Approval Loop (Seeds 1-' + goldenSeedCount + ')'}
+## Step 4: Monitor Progress AND Quality
 
-${allGoldenDone ? '' : `**Wait for each golden seed to be submitted, then present to the human.**
+You are the quality eye. Check three things continuously:
 
-After checker submits seed N, fetch the phrases:
+### 4a. Progress (every 5 minutes)
 \`\`\`bash
-node -e "
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
-const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-(async () => {
-  const N = SEED_NUM;
-  const {data: legos} = await sb.from('course_legos').select('lego_index,type,known_text,target_text').eq('course_code','${courseCode}').eq('seed_number',N).order('lego_index');
-  const {data: phrases} = await sb.from('course_practice_phrases').select('known_text,target_text,phrase_role,seed_number').eq('course_code','${courseCode}').eq('seed_number',N).order('id');
-  console.log('=== SEED ' + N + ' ===');
-  for (const l of legos) {
-    console.log('\\nL' + l.lego_index + ' (' + l.type + '): ' + l.known_text + ' → ' + l.target_text);
-    const lp = phrases.filter(p => p.known_text && p.target_text);
-    for (const p of phrases.filter(p => true)) {
-      console.log('  [' + p.phrase_role + '] ' + p.known_text + ' → ' + p.target_text);
-    }
-  }
-})();
-"
+curl -s "http://localhost:3471/api/stats/${courseCode}"
+\`\`\`
+Track seeds completed, LEGOs, phrases. Watch the phrases/LEGO ratio — should stay between 7-13.
+
+### 4b. Quality spot-checks (every ~10 seeds)
+Pick the most recently submitted seed and READ its phrases. You are Opus — you know ${langName}. Check:
+- **Grammar**: Is every phrase grammatically correct in both languages?
+- **Naturalness**: Would a real speaker say this? Watch for mechanical patterns (e.g. just appending "with me" or "now" to every phrase).
+- **Pedagogy**: Do BUILD phrases show genuine recombination? Do USE phrases feel like things a learner would want to say?
+
+Use the seed grid to find recent seeds and their phrase counts:
+\`\`\`bash
+curl -s "http://localhost:3471/api/build/seed-grid/${courseCode}"
 \`\`\`
 
-Present this to the human and ask: **"Seed N — approve or redo?"**
+If you spot issues, message the **checker** with a specific correction: "Seed N had mechanical BUILD phrases — make sure you're rewriting these, not just passing them through."
 
-- **APPROVE** → continue to next golden seed (or Phase B if all golden done)
-- **REDO** → tell creator to rebuild: message "creator" with the human's feedback, then tell checker to wipe the seed first:
+If you see the same issue 3+ times, message **both** creator and checker with a clear directive.
+
+### 4c. Stall detection
+If seed count doesn't increase for 15+ minutes, check if creator/checker died. Respawn from the next undecomposed seed:
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/build/rebuild/${courseCode}" \\
-  -H "Content-Type: application/json" \\
-  -d '{"from_seed": N, "to_seed": N}'
+curl -s "http://localhost:3471/api/resume/${courseCode}"
 \`\`\`
-
-Repeat until all ${goldenSeedCount} golden seeds are approved, then move to Phase B monitoring.
-
-`}## ${allGoldenDone ? 'Monitoring' : 'Step 5: Autonomous Phase Monitoring'}
-
-Every 5 minutes, check progress:
-\`\`\`bash
-node -e "
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
-const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-(async () => {
-  const {count} = await sb.from('course_seeds').select('*',{count:'exact',head:true}).eq('course_code','${courseCode}').not('decomposed_at','is',null);
-  const {data: latest} = await sb.from('course_seeds').select('seed_number').eq('course_code','${courseCode}').not('decomposed_at','is',null).order('seed_number',{ascending:false}).limit(1);
-  console.log('Decomposed:', count, '/ Last:', latest[0]?.seed_number, '/ Target:', ${targetSeeds});
-})();
-"
-\`\`\`
-
-Every ~30 seeds, spot-check a recent seed's USE phrases:
-\`\`\`bash
-node -e "
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
-const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-(async () => {
-  const SEED = SEED_NUM;
-  const {data} = await sb.from('course_practice_phrases').select('known_text,target_text,phrase_role').eq('course_code','${courseCode}').eq('seed_number',SEED).eq('phrase_role','use').order('id');
-  console.log('Seed', SEED, 'USE phrases (' + data.length + '):');
-  for (const p of data) console.log('  ' + p.known_text + ' → ' + p.target_text);
-})();
-"
-\`\`\`
-
-**Stall detection**: If decomposed count doesn't increase for 10+ minutes, check if creator/checker died. If so, respawn from the next undecomposed seed.
 
 ## IMPORTANT RULES
 
 1. **DO NOT build seeds yourself.** Spawn, monitor, restart only.
 2. **DO NOT spawn more than one creator.** Seeds must be sequential.
-3. **Seeds 1-${goldenSeedCount} MUST have human approval.** Never skip the approval loop.
-4. **If spot-checks show quality issues**, message the checker to tighten up on that issue.
-5. **When all ${targetSeeds} seeds are done**, shut down the team and report completion.
+3. **Checker fixes and submits.** No ping-pong between creator and checker. If you see them going back and forth, message checker: "Fix it yourself and submit."
+4. **Human approval happens in the dashboard**, not through you.
+5. **If spot-checks show quality issues**, message the checker to tighten up on that issue.
+6. **When all ${targetSeeds} seeds are done**, shut down the team and report completion.
 
 ## START NOW
-Create the team, spawn checker, spawn creator, ${allGoldenDone ? 'then monitor.' : 'then run the human approval loop for golden seeds.'}
+Create the team, spawn checker, spawn creator, then monitor.
 `;
 }
 
