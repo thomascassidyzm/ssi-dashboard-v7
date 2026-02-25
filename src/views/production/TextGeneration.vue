@@ -585,6 +585,10 @@ watch(buildMonitor.buildStatus, (bs) => {
   }
 }, { deep: true })
 
+watch(buildMonitor.pipeline, (p) => {
+  if (p?.finalPassCompleted) finalPassRan.value = true
+}, { deep: true })
+
 watch(buildMonitor.messages, (msgs) => {
   if (msgs && msgs.length > 0) orchestratorMessages.value = msgs
 }, { deep: true })
