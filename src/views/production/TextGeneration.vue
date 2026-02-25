@@ -262,7 +262,7 @@
               <span v-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
               <button
-                v-else-if="!finalPassRunning && seedGridDrafted > 0"
+                v-else-if="!finalPassRunning && finalPassRan && seedGridDrafted > 0"
                 @click="massApproveSeeds"
                 :disabled="massApproving"
                 class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -601,6 +601,7 @@ const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status ===
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
 const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
 const seedGridFlagged = computed(() => seedGrid.value.filter(s => s.status === 'flagged').length)
+const finalPassRan = computed(() => seedGridFinalized.value > 0 || seedGridFlagged.value > 0)
 
 // --- Pipeline computeds ---
 
