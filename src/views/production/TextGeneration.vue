@@ -612,7 +612,7 @@ const pipelinePhase = computed(() => {
   return 'gender'
 })
 
-const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara']
+const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara', 'bre']
 const courseTargetLang = computed(() => {
   // In create mode, use the dropdown; for existing courses, extract from course code (e.g. "spa_for_eng" → "spa")
   if (targetLanguage.value) return targetLanguage.value
