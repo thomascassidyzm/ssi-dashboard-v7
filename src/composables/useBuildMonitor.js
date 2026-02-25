@@ -105,9 +105,18 @@ export function useBuildMonitor(courseCodeRef) {
         .order('created_at', { ascending: false })
         .limit(1)
 
+      // Check for completed final-pass jobs
+      const { count: completedFinalPass } = await supabase
+        .from('build_jobs')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', code)
+        .eq('pass', 'final-pass')
+        .eq('status', 'completed')
+
       const activeJob = activeJobs?.[0] || null
       buildStatus.value = {
         active: !!activeJob,
+        finalPassCompleted: (completedFinalPass || 0) > 0,
         progress: {
           completed: decomposedCount || 0,
           total: totalCount || 0,
