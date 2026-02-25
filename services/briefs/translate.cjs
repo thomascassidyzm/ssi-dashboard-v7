@@ -192,7 +192,7 @@ A translation is correct if it reduces hesitation and enables reuse.
 - Target language: ${targetLanguageName} (you provide these translations)
 - Work through ALL phases: 1-150 (Stabilisation), 151-300 (Controlled Flexibility), 301-${translateCount} (Natural Range)
 - Same concept = same word throughout. Build a glossary as you go.
-- The analysis at the end captures register decisions, tricky verbs, and ZUT concerns for Pass 2 agents.
+- The analysis at the end captures register decisions, tricky verbs, and ZUT concerns for course-building agents.
 
 ## IMPORTANT
 You are running unattended. NEVER ask questions. Process everything and submit results.
