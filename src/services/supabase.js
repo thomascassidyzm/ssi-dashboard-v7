@@ -100,7 +100,7 @@ export async function getAllCourses() {
 
   const { data, error } = await supabase
     .from('courses')
-    .select('course_code, known_lang, target_lang, display_name, status, seed_count, content_status, content_version, new_app_status, legacy_app_status, new_app_beta_started_at, legacy_app_beta_started_at')
+    .select('*')
 
   if (error) throw new Error('Failed to load courses: ' + error.message)
   return data || []
