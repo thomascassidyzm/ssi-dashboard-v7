@@ -254,6 +254,18 @@
                   title="Regenerate target2 audio"
                   @click.stop="emit('audio-regen', item, 'target2', item.target2_audio_uuid!)"
                 >↻</button>
+                <!-- Trash/flag phrase for deletion -->
+                <button
+                  v-if="item.phrase_id"
+                  class="w-6 h-6 flex items-center justify-center rounded text-xs transition-colors"
+                  :class="flaggedPhraseIds.has(item.phrase_id!) ? 'bg-red-500 text-white' : 'text-red-400 hover:bg-red-500 hover:bg-opacity-20'"
+                  :title="flaggedPhraseIds.has(item.phrase_id!) ? 'Unflag phrase' : 'Flag phrase for deletion'"
+                  @click.stop="emit('phrase-flag', item)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                  </svg>
+                </button>
               </div>
 
               <!-- Phase indicator when this item is playing -->
@@ -370,6 +382,7 @@ const props = defineProps<{
   hideControls?: boolean
   flaggedAudioUuids?: Set<string>
   regeneratingUuids?: Set<string>
+  flaggedPhraseIds?: Set<string>
 }>()
 
 const emit = defineEmits<{
@@ -385,12 +398,14 @@ const emit = defineEmits<{
   'item-edit': [item: ScriptItem]
   'audio-flag': [item: ScriptItem, track: 'target1' | 'target2']
   'audio-regen': [item: ScriptItem, track: 'target1' | 'target2', audioUuid: string]
+  'phrase-flag': [item: ScriptItem]
 }>()
 
 // Default empty sets for optional props
 const emptySet = new Set<string>()
 const flaggedAudioUuids = computed(() => props.flaggedAudioUuids || emptySet)
 const regeneratingUuids = computed(() => props.regeneratingUuids || emptySet)
+const flaggedPhraseIds = computed(() => props.flaggedPhraseIds || emptySet)
 
 // ============================================================================
 // PLAYER SETUP

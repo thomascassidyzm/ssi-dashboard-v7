@@ -310,10 +310,12 @@
           :hide-controls="true"
           :flagged-audio-uuids="flaggedAudioUuids"
           :regenerating-uuids="regeneratingAudioUuids"
+          :flagged-phrase-ids="journeyFlaggedPhraseIds"
           @playback-state="onJourneyPlaybackState"
           @item-edit="onJourneyItemEdit"
           @audio-flag="onJourneyAudioFlag"
           @audio-regen="onJourneyAudioRegen"
+          @phrase-flag="onJourneyPhraseFlag"
         />
       </template>
 
@@ -655,6 +657,107 @@
                 {{ isDeleting ? 'Deleting...' : 'Delete Phrases' }}
               </button>
             </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
+    <!-- Journey Phrase Flagging: Floating Action Bar -->
+    <Transition name="modal">
+      <div
+        v-if="journeyFlaggedPhraseIds.size > 0 && viewMode === 'journey'"
+        class="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-red-900 bg-opacity-95 border border-red-700 rounded-lg shadow-xl px-5 py-3 flex items-center gap-4"
+      >
+        <span class="text-red-200 text-sm font-medium">
+          {{ journeyFlaggedPhraseIds.size }} phrase{{ journeyFlaggedPhraseIds.size !== 1 ? 's' : '' }} flagged
+        </span>
+        <button
+          @click="journeyFlaggedPhraseIds.clear()"
+          class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+        >Clear</button>
+        <button
+          @click="showJourneyDeleteStep = 1"
+          class="px-4 py-1.5 text-sm text-white bg-red-600 hover:bg-red-500 rounded font-medium transition-colors flex items-center gap-2"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+          </svg>
+          Delete Flagged
+        </button>
+      </div>
+    </Transition>
+
+    <!-- Journey Phrase Delete: Two-Step Confirmation Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div
+          v-if="showJourneyDeleteStep > 0"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
+          @click.self="showJourneyDeleteStep = 0"
+        >
+          <div class="bg-slate-800 rounded-lg shadow-xl max-w-lg w-full">
+            <!-- Step 1: Review flagged phrases -->
+            <template v-if="showJourneyDeleteStep === 1">
+              <div class="px-6 py-4 border-b border-slate-700">
+                <h3 class="text-lg font-semibold text-white">Review Flagged Phrases</h3>
+              </div>
+              <div class="px-6 py-4 max-h-80 overflow-y-auto space-y-2">
+                <div
+                  v-for="item in journeyFlaggedPhraseDetails"
+                  :key="item.phrase_id"
+                  class="flex items-center gap-3 p-2 bg-slate-700 rounded text-sm"
+                >
+                  <span class="text-slate-400 truncate flex-1">{{ item.known_text }}</span>
+                  <span class="text-slate-500">&rarr;</span>
+                  <span class="text-white truncate flex-1">{{ item.target_text }}</span>
+                  <button
+                    @click="onRemoveJourneyFlaggedPhrase(item.phrase_id)"
+                    class="text-slate-500 hover:text-red-400 flex-shrink-0"
+                    title="Remove from list"
+                  >&times;</button>
+                </div>
+                <p v-if="journeyFlaggedPhraseDetails.length === 0" class="text-slate-500 text-sm">No phrases flagged.</p>
+              </div>
+              <div class="px-6 py-4 border-t border-slate-700 flex justify-end gap-3">
+                <button @click="showJourneyDeleteStep = 0" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm rounded-lg transition-colors">Cancel</button>
+                <button @click="showJourneyDeleteStep = 2" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors">Confirm Delete</button>
+              </div>
+            </template>
+
+            <!-- Step 2: Final confirmation -->
+            <template v-if="showJourneyDeleteStep === 2">
+              <div class="px-6 py-4 border-b border-slate-700">
+                <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                  <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                  </svg>
+                  Final Confirmation
+                </h3>
+              </div>
+              <div class="px-6 py-5">
+                <p class="text-slate-300 mb-4">
+                  Delete <span class="font-semibold text-white">{{ journeyFlaggedPhraseIds.size }}</span>
+                  phrase{{ journeyFlaggedPhraseIds.size !== 1 ? 's' : '' }}? This cannot be undone.
+                </p>
+                <div class="bg-red-900 bg-opacity-20 border border-red-800 rounded-lg p-4 text-sm text-red-300">
+                  <strong>Warning:</strong> The phrases will be permanently removed from the database.
+                </div>
+              </div>
+              <div class="px-6 py-4 border-t border-slate-700 flex justify-end gap-3">
+                <button @click="showJourneyDeleteStep = 0" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm rounded-lg transition-colors">Cancel</button>
+                <button
+                  @click="handleJourneyBatchDelete"
+                  :disabled="isDeletingJourneyPhrases"
+                  class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                >
+                  <svg v-if="isDeletingJourneyPhrases" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  {{ isDeletingJourneyPhrases ? 'Deleting...' : 'Delete' }}
+                </button>
+              </div>
+            </template>
           </div>
         </div>
       </Transition>
@@ -2006,6 +2109,64 @@ const onJourneyAudioRegen = async (item: any, track: 'target1' | 'target2', audi
     console.error('Error regenerating audio:', err);
   } finally {
     regeneratingAudioUuids.value = new Set([...regeneratingAudioUuids.value].filter(id => id !== audioUuid));
+  }
+};
+
+// Journey view: phrase flagging for deletion
+const journeyFlaggedPhraseIds = ref<Set<string>>(new Set());
+const showJourneyDeleteStep = ref(0); // 0=hidden, 1=review list, 2=final confirm
+const isDeletingJourneyPhrases = ref(false);
+
+const onJourneyPhraseFlag = (item: any) => {
+  if (!item.phrase_id) return;
+  const newSet = new Set(journeyFlaggedPhraseIds.value);
+  if (newSet.has(item.phrase_id)) {
+    newSet.delete(item.phrase_id);
+  } else {
+    newSet.add(item.phrase_id);
+  }
+  journeyFlaggedPhraseIds.value = newSet;
+};
+
+// Build details for the review modal from allItems
+const journeyFlaggedPhraseDetails = computed(() => {
+  if (!learningJourneyData.value?.allItems) return [];
+  return learningJourneyData.value.allItems
+    .filter((item: any) => item.phrase_id && journeyFlaggedPhraseIds.value.has(item.phrase_id))
+    .map((item: any) => ({ phrase_id: item.phrase_id, known_text: item.known_text, target_text: item.target_text }));
+});
+
+const onRemoveJourneyFlaggedPhrase = (phraseId: string) => {
+  const newSet = new Set(journeyFlaggedPhraseIds.value);
+  newSet.delete(phraseId);
+  journeyFlaggedPhraseIds.value = newSet;
+  if (newSet.size === 0) showJourneyDeleteStep.value = 0;
+};
+
+const handleJourneyBatchDelete = async () => {
+  if (journeyFlaggedPhraseIds.value.size === 0) return;
+  isDeletingJourneyPhrases.value = true;
+  const apiBaseUrl = getApiBaseUrl();
+  try {
+    const phraseIds = Array.from(journeyFlaggedPhraseIds.value);
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/phrases/batch-delete`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phraseIds }),
+    });
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to delete phrases');
+    }
+    console.log(`Successfully deleted ${phraseIds.length} phrases from journey view`);
+    journeyFlaggedPhraseIds.value = new Set();
+    showJourneyDeleteStep.value = 0;
+    reloadLearningJourney();
+  } catch (err) {
+    console.error('Failed to delete phrases:', err);
+    error.value = err instanceof Error ? err.message : 'Failed to delete phrases';
+  } finally {
+    isDeletingJourneyPhrases.value = false;
   }
 };
 
