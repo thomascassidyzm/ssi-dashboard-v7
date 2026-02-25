@@ -616,7 +616,14 @@ const pipelinePhase = computed(() => {
 })
 
 const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara']
-const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(targetLanguage.value))
+const courseTargetLang = computed(() => {
+  // In create mode, use the dropdown; for existing courses, extract from course code (e.g. "spa_for_eng" → "spa")
+  if (targetLanguage.value) return targetLanguage.value
+  const code = effectiveCourseCode.value
+  if (code && code.includes('_for_')) return code.split('_for_')[0]
+  return ''
+})
+const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTargetLang.value))
 
 // Phase status from build_jobs (DB-driven)
 const ps = computed(() => buildMonitor.phaseStatus.value)
