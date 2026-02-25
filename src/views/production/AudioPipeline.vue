@@ -758,12 +758,15 @@ const apiBaseUrl = localStorage.getItem('api_base_url') || 'http://localhost:347
 
 // Poll for audio generation progress
 let wasGenerating = false
+let consecutiveErrors = 0
+const MAX_CONSECUTIVE_ERRORS = 3
 const pollAudioProgress = async () => {
   try {
     const response = await fetch(`${apiBaseUrl}/api/audio/status`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     if (response.ok) {
+      consecutiveErrors = 0
       const prev = audioProgress.value
       audioProgress.value = await response.json()
 
@@ -783,9 +786,15 @@ const pollAudioProgress = async () => {
         }
       }
       wasGenerating = isActive
+    } else {
+      consecutiveErrors++
     }
   } catch (err) {
-    // Silently fail - server might not be running
+    consecutiveErrors++
+    if (consecutiveErrors >= MAX_CONSECUTIVE_ERRORS) {
+      console.warn(`[AudioPipeline] Stopping poll after ${MAX_CONSECUTIVE_ERRORS} consecutive errors — server unreachable`)
+      stopProgressPolling()
+    }
   }
 }
 
@@ -832,8 +841,9 @@ const refreshPlanStats = async () => {
 
 const startProgressPolling = () => {
   if (progressPollInterval) return
+  consecutiveErrors = 0
   pollAudioProgress() // Poll immediately
-  progressPollInterval = setInterval(pollAudioProgress, 1000) // Then every second
+  progressPollInterval = setInterval(pollAudioProgress, 10000) // Then every 10 seconds
   // NOTE: No automatic plan refresh - user must explicitly request it
 }
 
