@@ -44,10 +44,22 @@ if (!courseCode) {
 
 let CONCURRENCY = 5
 let BATCH_SIZE = 200
+let JOB_ID = null
 
 for (let i = 1; i < args.length; i++) {
   if (args[i] === '--concurrency' && args[i + 1]) CONCURRENCY = parseInt(args[++i], 10)
   if (args[i] === '--batch-size' && args[i + 1]) BATCH_SIZE = parseInt(args[++i], 10)
+  if (args[i] === '--job-id' && args[i + 1]) JOB_ID = args[++i]
+}
+
+// Helper: update build_jobs row
+async function updateJob(fields) {
+  if (!JOB_ID) return
+  const { error } = await supabase
+    .from('build_jobs')
+    .update(fields)
+    .eq('id', JOB_ID)
+  if (error) console.warn('[JOB] Failed to update build_jobs:', error.message)
 }
 
 // ─── Supabase ─────────────────────────────────────────────────────────
@@ -345,9 +357,13 @@ async function main() {
   console.log(`Batches: ${batches.length} (${BATCH_SIZE} texts each, concurrency ${CONCURRENCY})\n`)
 
   // 5. Build tasks
-  const tasks = batches.map((batchTexts, b) => () => {
+  let batchesCompleted = 0
+  const tasks = batches.map((batchTexts, b) => async () => {
     const brief = buildBrief(langName, course.target_lang, batchTexts)
-    return runHaikuBatch(brief, b + 1, batches.length)
+    const result = await runHaikuBatch(brief, b + 1, batches.length)
+    batchesCompleted++
+    await updateJob({ last_heartbeat: new Date().toISOString(), seeds_completed: batchesCompleted })
+    return result
   })
 
   // 6. Run with concurrency limit
@@ -421,9 +437,13 @@ async function main() {
   if (allResults.length > 0) {
     console.log(`→ Use "Regenerate All Flagged" on the Audio page to regenerate affected audio`)
   }
+
+  // Mark job complete
+  await updateJob({ status: 'complete', completed_at: new Date().toISOString() })
 }
 
-main().catch(e => {
+main().catch(async (e) => {
   console.error('Fatal error:', e)
+  await updateJob({ status: 'failed', error_message: e.message || String(e) })
   process.exit(1)
 })

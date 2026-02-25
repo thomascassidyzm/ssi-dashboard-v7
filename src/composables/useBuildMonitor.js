@@ -17,12 +17,14 @@ export function useBuildMonitor(courseCodeRef) {
   const seedGrid = ref([])
   const buildStatus = ref({ active: false, progress: null, build: null, parallel: null })
   const pipeline = ref({ stage: null, is_running: false })
+  const phaseStatus = ref({ translate: null, 'build-team': null, 'final-pass': null, 'gender-prep': null })
   const messages = ref([])
   const isConnected = ref(false)
   const lastRefresh = ref(null)
 
   let realtimeChannel = null
   let fallbackInterval = null
+  let pollIntervalMs = 30000
 
   // ── Fetch functions (direct Supabase queries) ──
 
@@ -111,7 +113,7 @@ export function useBuildMonitor(courseCodeRef) {
         .select('*', { count: 'exact', head: true })
         .eq('course_code', code)
         .eq('pass', 'final-pass')
-        .eq('status', 'completed')
+        .eq('status', 'complete')
 
       const activeJob = activeJobs?.[0] || null
       buildStatus.value = {
@@ -154,6 +156,35 @@ export function useBuildMonitor(courseCodeRef) {
     }
   }
 
+  async function fetchPhaseStatus(code) {
+    if (!supabase || !code) return
+    try {
+      // Get all build_jobs for this course, most recent per pass
+      const { data: jobs, error } = await supabase
+        .from('build_jobs')
+        .select('pass, status, created_at')
+        .eq('course_code', code)
+        .order('created_at', { ascending: false })
+
+      if (error || !jobs) return
+
+      // Most recent job per pass
+      const latest = {}
+      for (const job of jobs) {
+        if (!latest[job.pass]) latest[job.pass] = job.status
+      }
+
+      phaseStatus.value = {
+        translate: latest['translate'] || null,
+        'build-team': latest['build-team'] || null,
+        'final-pass': latest['final-pass'] || null,
+        'gender-prep': latest['gender-prep'] || null
+      }
+    } catch (e) {
+      console.warn('[BuildMonitor] fetchPhaseStatus error:', e.message)
+    }
+  }
+
   async function fetchMessages(code) {
     if (!supabase || !code) return
     try {
@@ -181,6 +212,7 @@ export function useBuildMonitor(courseCodeRef) {
       fetchSeedGrid(code),
       fetchBuildStatus(code),
       fetchPipeline(code),
+      fetchPhaseStatus(code),
       fetchMessages(code)
     ])
     lastRefresh.value = new Date().toISOString()
@@ -242,6 +274,7 @@ export function useBuildMonitor(courseCodeRef) {
         filter: `course_code=eq.${code}`
       }, () => {
         fetchBuildStatus(code)
+        fetchPhaseStatus(code)
       })
       .subscribe((status) => {
         if (status === 'SUBSCRIBED') {
@@ -275,15 +308,29 @@ export function useBuildMonitor(courseCodeRef) {
         fetchSeedGrid(c)
         fetchBuildStatus(c)
         fetchPipeline(c)
+        fetchPhaseStatus(c)
         fetchMessages(c)
       }
-    }, 30000)
+    }, pollIntervalMs)
   }
 
   function stopFallbackPolling() {
     if (fallbackInterval) {
       clearInterval(fallbackInterval)
       fallbackInterval = null
+    }
+  }
+
+  // Switch between fast (5s) and normal (30s) polling — e.g. when chat panel is open
+  function setFastPolling(fast) {
+    const newInterval = fast ? 5000 : 30000
+    if (newInterval === pollIntervalMs) return
+    pollIntervalMs = newInterval
+    // Restart polling with new interval
+    if (fallbackInterval) {
+      stopFallbackPolling()
+      const code = toValue(courseCodeRef)
+      if (code) startFallbackPolling(code)
     }
   }
 
@@ -321,6 +368,7 @@ export function useBuildMonitor(courseCodeRef) {
     seedGrid,
     buildStatus,
     pipeline,
+    phaseStatus,
     messages,
     isConnected,
     lastRefresh,
@@ -328,6 +376,7 @@ export function useBuildMonitor(courseCodeRef) {
     // Actions
     refresh,
     start,
-    stop
+    stop,
+    setFastPolling
   }
 }

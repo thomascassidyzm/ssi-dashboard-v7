@@ -132,12 +132,39 @@ module.exports = function (ctx) {
       if (error) throw error;
       const count = data?.length || 0;
 
-      // Mark final pass as completed in quality_rules
+      // Mark final pass as completed in quality_rules (backward compat)
       const { data: course } = await ctx.supabase
         .from('courses').select('quality_rules').eq('course_code', courseCode).single();
       await ctx.supabase.from('courses').update({
         quality_rules: { ...(course?.quality_rules || {}), final_pass_completed: true }
       }).eq('course_code', courseCode);
+
+      // Mark final-pass build_jobs row as complete
+      const { data: existingJob } = await ctx.supabase
+        .from('build_jobs')
+        .select('id')
+        .eq('course_code', courseCode)
+        .eq('pass', 'final-pass')
+        .order('created_at', { ascending: false })
+        .limit(1);
+
+      if (existingJob && existingJob.length > 0) {
+        await ctx.supabase
+          .from('build_jobs')
+          .update({ status: 'complete', completed_at: new Date().toISOString() })
+          .eq('id', existingJob[0].id);
+      } else {
+        // Pre-migration course — insert a complete row
+        await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode,
+            pass: 'final-pass',
+            status: 'complete',
+            total_seeds: count,
+            completed_at: new Date().toISOString()
+          });
+      }
 
       res.json({ ok: true, approved: count, message: `Approved ${count} seeds` });
     } catch (err) {

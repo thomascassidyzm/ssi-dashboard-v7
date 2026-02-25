@@ -201,15 +201,15 @@
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/668</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageRunning('translate')" class="text-xs text-blue-400 animate-pulse">Running...</span>
               <button
-                v-else-if="!translateRunning"
+                v-else
                 @click="startTranslation"
                 :disabled="translateStarting"
                 class="px-3 py-1 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ translateStarting ? 'Spawning...' : 'Start Translate' }}
               </button>
-              <span v-if="translateRunning" class="text-xs text-blue-400 animate-pulse">Running...</span>
             </div>
           </div>
           <div class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
@@ -231,15 +231,15 @@
               <span class="text-xs font-mono text-slate-300">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
               <span v-if="stageComplete('build-team')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('build-team')" class="stage-badge-locked">Locked</span>
+              <span v-else-if="stageRunning('build-team')" class="text-xs text-emerald-400 animate-pulse">Running...</span>
               <button
-                v-else-if="!buildTeamRunning"
+                v-else
                 @click="startBuildTeam"
                 :disabled="buildTeamStarting"
                 class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ buildTeamStarting ? 'Spawning...' : 'Start Build' }}
               </button>
-              <span v-if="buildTeamRunning" class="text-xs text-emerald-400 animate-pulse">Running...</span>
             </div>
           </div>
           <div v-if="!stageLocked('build-team')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
@@ -261,7 +261,7 @@
               <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">{{ seedGridFlagged }} flagged</span>
               <span v-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
-              <span v-else-if="finalPassRunning" class="text-xs text-violet-400 animate-pulse">Running...</span>
+              <span v-else-if="stageRunning('final-pass')" class="text-xs text-violet-400 animate-pulse">Running...</span>
               <button
                 v-else-if="finalPassRan && seedGridDrafted > 0"
                 @click="massApproveSeeds"
@@ -282,8 +282,8 @@
           </div>
         </div>
 
-        <!-- Stage 4: Gender Prep -->
-        <div class="pipeline-card" :class="stageCardClass('gender')">
+        <!-- Stage 4: Gender Prep (hidden for non-gendered languages) -->
+        <div v-if="isGenderedLanguage" class="pipeline-card" :class="stageCardClass('gender')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('gender')">4</span>
@@ -295,15 +295,16 @@
             <div class="flex items-center gap-3">
               <span v-if="stageComplete('gender')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('gender')" class="stage-badge-locked">Locked</span>
+              <span v-else-if="stageFailed('gender')" class="text-xs text-red-400">Failed — <button @click="startGenderPrep" class="underline hover:text-red-300">Retry</button></span>
+              <span v-else-if="stageRunning('gender')" class="text-xs text-pink-400 animate-pulse">Running...</span>
               <button
-                v-else-if="!genderRunning"
+                v-else
                 @click="startGenderPrep"
                 :disabled="genderStarting"
                 class="px-3 py-1 bg-pink-600/20 border border-pink-500/50 text-pink-400 hover:border-pink-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ genderStarting ? 'Starting...' : 'Start Gender Prep' }}
               </button>
-              <span v-if="genderRunning" class="text-xs text-pink-400 animate-pulse">Running...</span>
             </div>
           </div>
         </div>
@@ -508,6 +509,9 @@ const socket = useTextGenSocket()
 
 // Chat state
 const chatExpanded = ref(false)
+
+// Fast-poll (5s) when chat is open so messages feel responsive
+watch(chatExpanded, (open) => buildMonitor.setFastPolling(open))
 const chatInput = ref('')
 const chatSending = ref(false)
 const chatClearedAt = ref(localStorage.getItem('chat_cleared_at') || null)
@@ -516,22 +520,12 @@ const chatScrollEl = ref(null)
 // Orchestrator messages (used for chat display)
 const orchestratorMessages = ref([])
 
-// Translation agent state
+// Starting state (optimistic UI while API call in flight)
 const translateStarting = ref(false)
-const translateRunning = ref(false)
-
-// Build Team agent state
 const buildTeamStarting = ref(false)
-const buildTeamRunning = ref(false)
-
-// Final Pass agent state
 const finalPassStarting = ref(false)
-const finalPassRunning = ref(false)
 const massApproving = ref(false)
-
-// Gender Prep state
 const genderStarting = ref(false)
-const genderRunning = ref(false)
 
 
 // Seed grid state
@@ -562,9 +556,6 @@ watch(buildMonitor.seedGrid, (grid) => {
 watch(buildMonitor.buildStatus, (bs) => {
   if (!bs) return
   const pass = bs.build?.pass
-  translateRunning.value = bs.active && pass === 'translate'
-  buildTeamRunning.value = bs.active && pass === 'build-team'
-  finalPassRunning.value = bs.active && pass === 'final-pass'
   finalPassRan.value = bs.finalPassCompleted || buildMonitor.pipeline.value?.finalPassCompleted || false
   if (bs.active) {
     progress.value.status = 'running'
@@ -573,9 +564,6 @@ watch(buildMonitor.buildStatus, (bs) => {
       seedCount.value = bs.build.total_seeds
     }
   } else {
-    translateRunning.value = false
-    buildTeamRunning.value = false
-    finalPassRunning.value = false
     progress.value.buildPass = null
     if (bs.progress?.isComplete) {
       progress.value.status = 'complete'
@@ -627,14 +615,33 @@ const pipelinePhase = computed(() => {
   return 'gender'
 })
 
+const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara']
+const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(targetLanguage.value))
+
+// Phase status from build_jobs (DB-driven)
+const ps = computed(() => buildMonitor.phaseStatus.value)
+
 function stageComplete(stage) {
+  const dbPass = stage === 'gender' ? 'gender-prep' : stage
+  if (ps.value[dbPass] === 'complete') return true
+  // Fallback heuristics for phases that completed before migration
   switch (stage) {
     case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
     case 'build-team': return (progress.value.currentSeed || 0) >= seedCount.value
     case 'final-pass': return seedGridFinalized.value > 0 && seedGridDrafted.value === 0
-    case 'gender': return progress.value.genderDone === true
+    case 'gender': return false
     default: return false
   }
+}
+
+function stageRunning(stage) {
+  const dbPass = stage === 'gender' ? 'gender-prep' : stage
+  return ps.value[dbPass] === 'running' || ps.value[dbPass] === 'pending'
+}
+
+function stageFailed(stage) {
+  const dbPass = stage === 'gender' ? 'gender-prep' : stage
+  return ps.value[dbPass] === 'failed'
 }
 
 function stageLocked(stage) {
@@ -750,9 +757,6 @@ async function fetchProgress() {
       if (buildResponse.ok) {
         const buildData = await buildResponse.json()
         const pass = buildData.build?.pass
-        translateRunning.value = buildData.active && pass === 'translate'
-        buildTeamRunning.value = buildData.active && pass === 'build-team'
-        finalPassRunning.value = buildData.active && pass === 'final-pass'
         if (buildData.active) {
           progress.value.status = 'running'
           progress.value.buildPass = pass || null
@@ -760,9 +764,6 @@ async function fetchProgress() {
             seedCount.value = buildData.build.total_seeds
           }
         } else {
-          translateRunning.value = false
-          buildTeamRunning.value = false
-          finalPassRunning.value = false
           progress.value.buildPass = null
           if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
             progress.value.status = 'complete'
@@ -846,7 +847,7 @@ async function startTranslation() {
     })
     const result = await response.json()
     if (result.ok) {
-      translateRunning.value = true
+      buildMonitor.refresh()
     } else {
       console.error('Failed to start translation:', result.error)
     }
@@ -870,7 +871,7 @@ async function startBuildTeam() {
     })
     const result = await response.json()
     if (result.ok) {
-      buildTeamRunning.value = true
+      buildMonitor.refresh()
     } else {
       console.error('Failed to start build team:', result.error)
     }
@@ -894,7 +895,7 @@ async function startFinalPass() {
     })
     const result = await response.json()
     if (result.ok) {
-      finalPassRunning.value = true
+      buildMonitor.refresh()
     } else {
       console.error('Failed to start final pass:', result.error)
     }
@@ -947,7 +948,8 @@ async function startGenderPrep() {
     })
     const result = await response.json()
     if (result.ok !== false) {
-      genderRunning.value = true
+      // DB row already inserted by API — phaseStatus will pick it up on next poll
+      buildMonitor.refresh()
     } else {
       console.error('Failed to start gender prep:', result.error)
     }
@@ -1083,7 +1085,7 @@ async function approveSeed() {
     selectedSeed.value = null
     seedViewPhrases.value = []
     seedViewSeedText.value = null
-    await Promise.all([fetchOrchestratorMessages(), fetchSeedGrid()])
+    await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
     // Auto-select next amber (drafted) seed
     const nextDrafted = seedGrid.value.find(s => s.status === 'drafted')
     if (nextDrafted) selectSeed(nextDrafted.seed)
@@ -1114,7 +1116,7 @@ async function redoSeed() {
     // Optimistically clear the seed from the grid so it's no longer amber
     const cell = seedGrid.value.find(s => s.seed === seedNum)
     if (cell) cell.status = 'building'
-    await Promise.all([fetchOrchestratorMessages(), fetchSeedGrid()])
+    await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
     // Auto-select next amber seed
     const nextDrafted = seedGrid.value.find(s => s.status === 'drafted')
     if (nextDrafted) selectSeed(nextDrafted.seed)
@@ -1140,16 +1142,25 @@ async function sendChat() {
   try {
     const apiBase = getApiUrl()
 
+    // Optimistically append message so it appears instantly
+    orchestratorMessages.value = [...orchestratorMessages.value, {
+      id: `optimistic-${Date.now()}`,
+      direction: 'human_to_agent',
+      _human: true,
+      message: text,
+      created_at: new Date().toISOString()
+    }]
+    chatInput.value = ''
+    await nextTick()
+    if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
+
     await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
       body: JSON.stringify({ role: 'human', message: text })
     })
-    await fetchOrchestratorMessages()
-
-    chatInput.value = ''
-    await nextTick()
-    if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
+    // Refresh to get server-assigned ID and pick up any agent response
+    buildMonitor.refresh()
   } catch (err) {
     console.error('Failed to send chat:', err)
   } finally {
@@ -1163,22 +1174,8 @@ function formatTime(iso) {
   return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 }
 
-async function fetchOrchestratorMessages() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-  try {
-    const apiBase = getApiUrl()
-    const resp = await fetch(`${apiBase}/api/orchestrator/messages/${courseCode}?limit=200`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (resp.ok) {
-      const data = await resp.json()
-      orchestratorMessages.value = data.messages || []
-    }
-  } catch (err) {
-    console.error('Failed to fetch orchestrator messages:', err)
-  }
-}
+// Messages are now fetched exclusively via buildMonitor (Supabase direct).
+// No separate HTTP endpoint needed.
 
 // Polling — now handled by useBuildMonitor (Realtime + 30s fallback)
 function startPolling() {
@@ -1224,15 +1221,14 @@ function debouncedFetch(key, fn, delay = 2000) {
 
 watch(() => socket.lastSeedComplete.value, (v) => { if (v) debouncedFetch('seed', () => { fetchSeedGrid(); fetchProgress() }) })
 watch(() => socket.lastBuildStatus.value, (v) => { if (v) debouncedFetch('build', fetchProgress) })
-watch(() => socket.lastOrchestratorMessage.value, () => { fetchOrchestratorMessages() })
-watch(() => socket.lastOrchestratorResponse.value, () => { fetchOrchestratorMessages() })
+// Orchestrator messages now driven by buildMonitor (Supabase direct + polling).
+// Socket.IO chat listeners removed — single source of truth.
 
 // Lifecycle
 onMounted(() => {
   startPolling()
   if (!isCreateMode.value) {
     socket.connect(effectiveCourseCode.value)
-    fetchOrchestratorMessages()
   }
   if (isCreateMode.value) {
     loadLanguages()

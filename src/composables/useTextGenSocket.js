@@ -62,9 +62,8 @@ export function useTextGenSocket() {
     socket.on('golden:update', (data) => { lastGoldenUpdate.value = data })
     socket.on('pipeline:stage', (data) => { lastPipelineStage.value = data })
     socket.on('detective:report', (data) => { detectiveFindings.value = data })
-    socket.on('orchestrator:message', (data) => { lastOrchestratorMessage.value = data })
-    socket.on('orchestrator:response', (data) => { lastOrchestratorResponse.value = data })
-    socket.on('chat:message', (data) => { lastOrchestratorMessage.value = data })
+    // Orchestrator/chat messages now delivered via Supabase polling in useBuildMonitor.
+    // Socket events kept for backward compat but no longer drive UI.
   }
 
   function disconnect() {

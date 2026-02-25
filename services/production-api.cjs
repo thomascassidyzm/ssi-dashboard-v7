@@ -6873,16 +6873,49 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
       return res.status(400).json({ error: `Language ${course.target_lang} does not have grammatical gender` })
     }
 
+    // Check for already-running gender-prep job
+    const { data: existingJob } = await supabase
+      .from('build_jobs')
+      .select('id, status')
+      .eq('course_code', courseCode)
+      .eq('pass', 'gender-prep')
+      .in('status', ['running', 'pending'])
+      .limit(1)
+
+    if (existingJob && existingJob.length > 0) {
+      return res.status(409).json({ error: 'Gender prep already running', job_id: existingJob[0].id })
+    }
+
     // Quick count of texts (coordinator does the actual querying)
     const { count: phraseCount } = await supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
     const { count: legoCount } = await supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
     const { count: seedCount } = await supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
     const estimatedTexts = (phraseCount || 0) + (legoCount || 0) + (seedCount || 0)
 
+    // Insert build_jobs row
+    const { data: jobRow, error: jobErr } = await supabase
+      .from('build_jobs')
+      .insert({
+        course_code: courseCode,
+        pass: 'gender-prep',
+        status: 'running',
+        total_seeds: estimatedTexts,
+        started_at: new Date().toISOString()
+      })
+      .select('id')
+      .single()
+
+    if (jobErr) {
+      logger.error('[GENDER-PREP] Failed to create build_jobs row:', jobErr.message)
+      return res.status(500).json({ error: 'Failed to create job record' })
+    }
+
+    const jobId = jobRow.id
+
     // Spawn a single iTerm window running the coordinator script
     const projectDir = path.resolve(__dirname, '..')
     const coordinatorPath = path.resolve(__dirname, 'gender-prep-coordinator.cjs')
-    const cmd = `cd "${projectDir}" && node "${coordinatorPath}" ${courseCode} --concurrency 5 --batch-size 200`
+    const cmd = `cd "${projectDir}" && node "${coordinatorPath}" ${courseCode} --concurrency 5 --batch-size 200 --job-id ${jobId}`
     const escapedCmd = cmd.replace(/"/g, '\\"')
     const osascript = `tell application "iTerm"
   activate
