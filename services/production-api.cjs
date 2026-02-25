@@ -3606,8 +3606,20 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
     const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, options || {}, {
       timeout: 3600000 // 1 hour - audio generation can take a very long time for large courses
     })
+    // After generation, trigger linking so audio IDs get set on content rows
+    let linkResult = null
+    try {
+      const linkResponse = await axios.post(`${PHASE8_URL}/link-audio-ids/${courseCode}`, {}, {
+        timeout: 600000 // 10 min for linking
+      })
+      linkResult = linkResponse.data
+    } catch (linkErr) {
+      logger.warn(`Audio linking after generation failed for ${courseCode}: ${linkErr.message}`)
+    }
     invalidateAudioStatsCache(courseCode)
-    res.json(response.data)
+    const result = response.data
+    if (linkResult) result.linkResult = linkResult
+    res.json(result)
   } catch (error) {
     logger.error(`Audio start error for ${courseCode}:`, error.message)
     if (error.code === 'ECONNREFUSED') {

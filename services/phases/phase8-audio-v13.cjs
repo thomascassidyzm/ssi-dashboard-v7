@@ -358,27 +358,156 @@ app.delete('/cancel/:courseCode', (req, res) => {
 // =============================================================================
 async function linkAudioIds(courseCode, knownLang, targetLang) {
   const r = { practice_phrases: {}, legos: {}, seeds: {} }
+  const BATCH_SIZE = 500
+  const PAGE_SIZE = 1000
 
-  const { data: ppK } = await supabase.rpc('link_practice_phrase_known_audio', { p_course_code: courseCode, p_known_lang: knownLang })
-  r.practice_phrases.known = ppK || 0
-  const { data: ppT1 } = await supabase.rpc('link_practice_phrase_target1_audio', { p_course_code: courseCode, p_target_lang: targetLang })
-  r.practice_phrases.target1 = ppT1 || 0
-  const { data: ppT2 } = await supabase.rpc('link_practice_phrase_target2_audio', { p_course_code: courseCode, p_target_lang: targetLang })
-  r.practice_phrases.target2 = ppT2 || 0
+  // --- Step 1: Load all course_audio into a lookup map ---
+  // Key: "text_normalized|language|role" → course_audio.id
+  const audioMap = new Map()
+  let audioOffset = 0
+  let hasMore = true
+  while (hasMore) {
+    const { data, error } = await supabase
+      .from('course_audio')
+      .select('id, text_normalized, language, role')
+      .eq('course_code', courseCode)
+      .not('s3_key', 'like', 'pending/%')
+      .order('id', { ascending: true })
+      .range(audioOffset, audioOffset + PAGE_SIZE - 1)
+    if (error) throw new Error(`Failed to load course_audio: ${error.message}`)
+    for (const a of (data || [])) {
+      audioMap.set(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`, a.id)
+    }
+    hasMore = (data || []).length === PAGE_SIZE
+    audioOffset += PAGE_SIZE
+  }
+  logger.info(`linkAudioIds: loaded ${audioMap.size} audio entries for ${courseCode}`)
 
-  const { data: lK } = await supabase.rpc('link_lego_known_audio', { p_course_code: courseCode, p_known_lang: knownLang })
-  r.legos.known = lK || 0
-  const { data: lT1 } = await supabase.rpc('link_lego_target1_audio', { p_course_code: courseCode, p_target_lang: targetLang })
-  r.legos.target1 = lT1 || 0
-  const { data: lT2 } = await supabase.rpc('link_lego_target2_audio', { p_course_code: courseCode, p_target_lang: targetLang })
-  r.legos.target2 = lT2 || 0
+  // --- Helper: batch-update a column on a table ---
+  async function batchUpdate(table, idCol, rows, column) {
+    let count = 0
+    for (let i = 0; i < rows.length; i += BATCH_SIZE) {
+      const batch = rows.slice(i, i + BATCH_SIZE)
+      // Update one at a time within batch — Supabase JS doesn't support
+      // UPDATE ... SET col = CASE for different values per row
+      for (const row of batch) {
+        const { error } = await supabase
+          .from(table)
+          .update({ [column]: row.audioId })
+          .eq(idCol, row.id)
+        if (!error) count++
+      }
+    }
+    return count
+  }
 
-  const { data: sK } = await supabase.rpc('link_seed_known_audio', { p_course_code: courseCode, p_known_lang: knownLang })
-  r.seeds.known = sK || 0
-  const { data: sT1 } = await supabase.rpc('link_seed_target1_audio', { p_course_code: courseCode, p_target_lang: targetLang })
-  r.seeds.target1 = sT1 || 0
-  const { data: sT2 } = await supabase.rpc('link_seed_target2_audio', { p_course_code: courseCode, p_target_lang: targetLang })
-  r.seeds.target2 = sT2 || 0
+  // --- Step 2: Link practice_phrases ---
+  const phraseSlots = [
+    { textCol: 'known_text', audioCol: 'known_audio_id', lang: knownLang, role: 'known' },
+    { textCol: 'target_text', audioCol: 'target1_audio_id', lang: targetLang, role: 'target1' },
+    { textCol: 'target_text', audioCol: 'target2_audio_id', lang: targetLang, role: 'target2' },
+  ]
+  for (const slot of phraseSlots) {
+    const slotName = slot.audioCol.replace('_audio_id', '')
+    const updates = []
+    let offset = 0
+    let more = true
+    while (more) {
+      const { data, error } = await supabase
+        .from('course_practice_phrases')
+        .select(`phrase_id, ${slot.textCol}`)
+        .eq('course_code', courseCode)
+        .is(slot.audioCol, null)
+        .order('phrase_id', { ascending: true })
+        .range(offset, offset + PAGE_SIZE - 1)
+      if (error) throw new Error(`Failed to load phrases for ${slotName}: ${error.message}`)
+      for (const row of (data || [])) {
+        const key = `${normalizeText(row[slot.textCol])}|${slot.lang}|${slot.role}`
+        const audioId = audioMap.get(key)
+        if (audioId) updates.push({ id: row.phrase_id, audioId })
+      }
+      more = (data || []).length === PAGE_SIZE
+      offset += PAGE_SIZE
+    }
+    if (updates.length > 0) {
+      r.practice_phrases[slotName] = await batchUpdate('course_practice_phrases', 'phrase_id', updates, slot.audioCol)
+    } else {
+      r.practice_phrases[slotName] = 0
+    }
+    logger.info(`linkAudioIds: phrases.${slotName} = ${r.practice_phrases[slotName]}`)
+  }
+
+  // --- Step 3: Link legos ---
+  const legoSlots = [
+    { textCol: 'known_text', audioCol: 'known_audio_id', lang: knownLang, role: 'known' },
+    { textCol: 'target_text', audioCol: 'target1_audio_id', lang: targetLang, role: 'target1' },
+    { textCol: 'target_text', audioCol: 'target2_audio_id', lang: targetLang, role: 'target2' },
+  ]
+  for (const slot of legoSlots) {
+    const slotName = slot.audioCol.replace('_audio_id', '')
+    const updates = []
+    let offset = 0
+    let more = true
+    while (more) {
+      const { data, error } = await supabase
+        .from('course_legos')
+        .select(`lego_id, ${slot.textCol}`)
+        .eq('course_code', courseCode)
+        .is(slot.audioCol, null)
+        .order('lego_id', { ascending: true })
+        .range(offset, offset + PAGE_SIZE - 1)
+      if (error) throw new Error(`Failed to load legos for ${slotName}: ${error.message}`)
+      for (const row of (data || [])) {
+        const key = `${normalizeText(row[slot.textCol])}|${slot.lang}|${slot.role}`
+        const audioId = audioMap.get(key)
+        if (audioId) updates.push({ id: row.lego_id, audioId })
+      }
+      more = (data || []).length === PAGE_SIZE
+      offset += PAGE_SIZE
+    }
+    if (updates.length > 0) {
+      r.legos[slotName] = await batchUpdate('course_legos', 'lego_id', updates, slot.audioCol)
+    } else {
+      r.legos[slotName] = 0
+    }
+    logger.info(`linkAudioIds: legos.${slotName} = ${r.legos[slotName]}`)
+  }
+
+  // --- Step 4: Link seeds ---
+  const seedSlots = [
+    { textCol: 'known_text', audioCol: 'known_audio_id', lang: knownLang, role: 'known' },
+    { textCol: 'target_text', audioCol: 'target1_audio_id', lang: targetLang, role: 'target1' },
+    { textCol: 'target_text', audioCol: 'target2_audio_id', lang: targetLang, role: 'target2' },
+  ]
+  for (const slot of seedSlots) {
+    const slotName = slot.audioCol.replace('_audio_id', '')
+    const updates = []
+    let offset = 0
+    let more = true
+    while (more) {
+      const { data, error } = await supabase
+        .from('course_seeds')
+        .select(`id, ${slot.textCol}`)
+        .eq('course_code', courseCode)
+        .is(slot.audioCol, null)
+        .order('id', { ascending: true })
+        .range(offset, offset + PAGE_SIZE - 1)
+      if (error) throw new Error(`Failed to load seeds for ${slotName}: ${error.message}`)
+      for (const row of (data || [])) {
+        const key = `${normalizeText(row[slot.textCol])}|${slot.lang}|${slot.role}`
+        const audioId = audioMap.get(key)
+        if (audioId) updates.push({ id: row.id, audioId })
+      }
+      more = (data || []).length === PAGE_SIZE
+      offset += PAGE_SIZE
+    }
+    if (updates.length > 0) {
+      r.seeds[slotName] = await batchUpdate('course_seeds', 'id', updates, slot.audioCol)
+    } else {
+      r.seeds[slotName] = 0
+    }
+    logger.info(`linkAudioIds: seeds.${slotName} = ${r.seeds[slotName]}`)
+  }
 
   // Also link presentation audio (belt-and-suspenders)
   const presResult = await linkPresentationAudio(courseCode)
@@ -387,6 +516,7 @@ async function linkAudioIds(courseCode, knownLang, targetLang) {
     typeof cat === 'object' ? sum + Object.values(cat).reduce((s, v) => s + v, 0) : sum
   , 0) + (r.presentations || 0)
 
+  logger.info(`linkAudioIds: total linked = ${r.total} for ${courseCode}`)
   return r
 }
 
