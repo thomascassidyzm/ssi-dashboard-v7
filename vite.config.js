@@ -50,6 +50,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src')
     }
   },
+  envPrefix: ['VITE_', 'NEXT_PUBLIC_'],
   define: {
     __GIT_COMMIT__: JSON.stringify(gitCommit)
   },
