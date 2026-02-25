@@ -145,7 +145,8 @@ export function useBuildMonitor(courseCodeRef) {
       if (!error && data) {
         pipeline.value = {
           stage: data.status,
-          is_running: data.quality_rules?.build_log?.is_running || false
+          is_running: data.quality_rules?.build_log?.is_running || false,
+          finalPassCompleted: data.quality_rules?.final_pass_completed || false
         }
       }
     } catch (e) {

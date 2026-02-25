@@ -565,7 +565,7 @@ watch(buildMonitor.buildStatus, (bs) => {
   translateRunning.value = bs.active && pass === 'translate'
   buildTeamRunning.value = bs.active && pass === 'build-team'
   finalPassRunning.value = bs.active && pass === 'final-pass'
-  finalPassRan.value = bs.finalPassCompleted || false
+  finalPassRan.value = bs.finalPassCompleted || buildMonitor.pipeline.value?.finalPassCompleted || false
   if (bs.active) {
     progress.value.status = 'running'
     progress.value.buildPass = pass || null

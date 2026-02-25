@@ -131,6 +131,14 @@ module.exports = function (ctx) {
 
       if (error) throw error;
       const count = data?.length || 0;
+
+      // Mark final pass as completed in quality_rules
+      const { data: course } = await ctx.supabase
+        .from('courses').select('quality_rules').eq('course_code', courseCode).single();
+      await ctx.supabase.from('courses').update({
+        quality_rules: { ...(course?.quality_rules || {}), final_pass_completed: true }
+      }).eq('course_code', courseCode);
+
       res.json({ ok: true, approved: count, message: `Approved ${count} seeds` });
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
