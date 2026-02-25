@@ -39,14 +39,42 @@ export function useBuildMonitor(courseCodeRef) {
   async function fetchSeedGrid(code) {
     if (!supabase || !code) return
     try {
-      const { data, error } = await supabase
-        .from('course_seeds')
-        .select('seed_number, decomposed_at, approved_at')
-        .eq('course_code', code)
-        .order('seed_number', { ascending: true })
-      if (!error && data) {
-        seedGrid.value = data
-      }
+      // Fetch seeds, lego counts, and phrase counts in parallel
+      const [seedsRes, legosRes, phrasesRes] = await Promise.all([
+        supabase
+          .from('course_seeds')
+          .select('seed_number, decomposed_at, approved_at')
+          .eq('course_code', code)
+          .order('seed_number', { ascending: true }),
+        supabase
+          .from('course_legos')
+          .select('seed_number')
+          .eq('course_code', code),
+        supabase
+          .from('course_practice_phrases')
+          .select('seed_number')
+          .eq('course_code', code)
+      ])
+
+      if (seedsRes.error || !seedsRes.data) return
+
+      // Count legos and phrases per seed
+      const legosBySeed = {}
+      for (const l of legosRes.data || []) legosBySeed[l.seed_number] = (legosBySeed[l.seed_number] || 0) + 1
+      const phrasesBySeed = {}
+      for (const p of phrasesRes.data || []) phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1
+
+      // Format to match /api/build/seed-grid/:courseCode response
+      seedGrid.value = seedsRes.data.map(s => {
+        const legos = legosBySeed[s.seed_number] || 0
+        const phrases = phrasesBySeed[s.seed_number] || 0
+        let status
+        if (s.approved_at) status = 'complete'
+        else if (s.decomposed_at) status = 'drafted'
+        else if (legos > 0) status = 'building'
+        else status = 'empty'
+        return { seed: s.seed_number, status, legos, phrases }
+      })
     } catch (e) {
       console.warn('[BuildMonitor] fetchSeedGrid error:', e.message)
     }
