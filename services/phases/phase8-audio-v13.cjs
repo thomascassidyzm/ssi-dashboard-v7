@@ -78,6 +78,7 @@ const LANG_NAMES_LOCALISED = {
   kor: { eng: '영어', spa: '스페인어', fra: '프랑스어', deu: '독일어', ita: '이탈리아어', por: '포르투갈어', cmn: '중국어', zho: '중국어', jpn: '일본어', ara: '아랍어', nld: '네덜란드어', rus: '러시아어' },
   fra: { eng: 'anglais', spa: 'espagnol', deu: 'allemand', ita: 'italien', por: 'portugais', cmn: 'chinois', zho: 'chinois', jpn: 'japonais', kor: 'coréen', ara: 'arabe', nld: 'néerlandais', rus: 'russe', bre: 'breton' },
   deu: { eng: 'Englisch', spa: 'Spanisch', fra: 'Französisch', ita: 'Italienisch', por: 'Portugiesisch', cmn: 'Chinesisch', zho: 'Chinesisch', jpn: 'Japanisch', kor: 'Koreanisch', ara: 'Arabisch', nld: 'Niederländisch', rus: 'Russisch' },
+  ita: { eng: 'inglese', spa: 'spagnolo', fra: 'francese', deu: 'tedesco', por: 'portoghese', cmn: 'cinese', zho: 'cinese', jpn: 'giapponese', kor: 'coreano', ara: 'arabo', nld: 'olandese', rus: 'russo' },
   spa: { eng: 'inglés', fra: 'francés', deu: 'alemán', ita: 'italiano', por: 'portugués', cmn: 'chino', zho: 'chino', jpn: 'japonés', kor: 'coreano', ara: 'árabe', nld: 'neerlandés', rus: 'ruso', cat: 'catalán', eus: 'euskera' },
   por: { eng: 'inglês', spa: 'espanhol', fra: 'francês', deu: 'alemão', ita: 'italiano', cmn: 'chinês', zho: 'chinês', jpn: 'japonês', kor: 'coreano', ara: 'árabe', nld: 'neerlandês', rus: 'russo' },
   zho: { eng: '英语', spa: '西班牙语', fra: '法语', deu: '德语', ita: '意大利语', por: '葡萄牙语', jpn: '日语', kor: '韩语', ara: '阿拉伯语', nld: '荷兰语', rus: '俄语' },
@@ -1275,6 +1276,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         .replace(/ comme dans — '\{seed\}' —/g, '')      // fra
         .replace(/ wie in — '\{seed\}' —/g, '')           // deu
         .replace(/ como em — '\{seed\}' —/g, '')          // por
+        .replace(/ come in — '\{seed\}' —/g, '')          // ita
         .replace(/ fel yn — '\{seed\}' —/g, '')           // cym
         .replace(/ — 「\{seed\}」のように —/g, '')          // jpn
         .replace(/ — '\{seed\}'처럼 —/g, '')               // kor
@@ -2264,7 +2266,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // Generate presentation text for each LEGO
     // Short template (no "as in" context) for alternating in early seeds
     const shortTemplate = template
-      .replace(/ as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
+      .replace(/ as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| come in — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
 
     // Load USE phrases for context fallback when seed sentence doesn't contain the known_text
     // Group by seed_number + lego_index for efficient lookup
