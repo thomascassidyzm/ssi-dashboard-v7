@@ -86,6 +86,16 @@ module.exports = function (ctx) {
         }
       }
 
+      // When agent posts, auto-mark all pending human messages as responded
+      if (role === 'agent') {
+        await ctx.supabase
+          .from('orchestrator_messages')
+          .update({ status: 'responded', responded_at: new Date().toISOString() })
+          .eq('course_code', courseCode)
+          .eq('direction', 'human_to_agent')
+          .eq('status', 'pending');
+      }
+
       // Broadcast via WebSocket
       ctx.emitPipelineEvent(courseCode, 'chat:message', {
         id: data.id,
@@ -121,6 +131,12 @@ module.exports = function (ctx) {
 
       if (after) {
         query = query.gt('created_at', after);
+      }
+      if (req.query.direction) {
+        query = query.eq('direction', req.query.direction);
+      }
+      if (req.query.status) {
+        query = query.eq('status', req.query.status);
       }
 
       const { data, error } = await query;

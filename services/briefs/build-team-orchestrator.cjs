@@ -164,6 +164,40 @@ If seed count doesn't increase for 15+ minutes, check if creator/checker died. R
 curl -s "http://localhost:3471/api/resume/${courseCode}"
 \`\`\`
 
+### 4d. Human messages (every monitoring cycle)
+
+The human may be managing this build remotely from their phone. Check for messages every cycle:
+
+\`\`\`bash
+curl -s "http://localhost:3471/api/orchestrator/chat/${courseCode}?direction=human_to_agent&status=pending"
+\`\`\`
+
+If there are pending messages (check the \`messages\` array is non-empty):
+1. Read and understand what the human wants
+2. Act on it — common requests:
+   - "How's it going?" → Reply with current progress (seeds done, quality, issues)
+   - "Skip seed N" / "Redo seed N" → Instruct checker accordingly
+   - "Stop" / "Pause" → Shut down the team gracefully
+   - "Change approach" → Adjust instructions to creator/checker
+   - General questions → Answer concisely
+3. Reply:
+\`\`\`bash
+curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"YOUR RESPONSE"}'
+\`\`\`
+
+Your reply automatically marks the human's messages as read. Keep responses concise — they're reading on a phone.
+
+### 4e. Periodic status updates
+
+Every 3rd progress check (~15 min), post a brief status update to chat so the human can see the build is alive without asking:
+\`\`\`bash
+curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"Progress: X/300 seeds done, ratio Y. No issues."}'
+\`\`\`
+
 ## IMPORTANT RULES
 
 1. **DO NOT build seeds yourself.** Spawn, monitor, restart only.
