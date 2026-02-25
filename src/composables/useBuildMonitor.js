@@ -43,7 +43,7 @@ export function useBuildMonitor(courseCodeRef) {
       const [seedsRes, legosRes, phrasesRes] = await Promise.all([
         supabase
           .from('course_seeds')
-          .select('seed_number, decomposed_at, approved_at')
+          .select('seed_number, decomposed_at, approved_at, flagged_at')
           .eq('course_code', code)
           .order('seed_number', { ascending: true }),
         supabase
@@ -69,7 +69,8 @@ export function useBuildMonitor(courseCodeRef) {
         const legos = legosBySeed[s.seed_number] || 0
         const phrases = phrasesBySeed[s.seed_number] || 0
         let status
-        if (s.approved_at) status = 'complete'
+        if (s.flagged_at) status = 'flagged'
+        else if (s.approved_at) status = 'complete'
         else if (s.decomposed_at) status = 'drafted'
         else if (legos > 0) status = 'building'
         else status = 'empty'

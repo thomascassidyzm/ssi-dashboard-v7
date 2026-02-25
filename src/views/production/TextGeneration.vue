@@ -548,6 +548,7 @@ watch(buildMonitor.stats, (s) => {
   progress.value = {
     ...progress.value,
     currentSeed: s.completeSeeds || 0,
+    seedsTranslated: s.seeds || 0,
     legosInserted: s.legos || 0,
     phrasesInserted: s.practicePhrases || 0,
     totalSeeds
