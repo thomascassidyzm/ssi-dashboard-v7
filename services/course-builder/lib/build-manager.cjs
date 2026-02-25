@@ -125,12 +125,69 @@ async function checkBuilds(ctx) {
         continue;
       }
 
-      // Any other old job type — just mark it stopped
-      console.log(`[BUILD] Stopping stale job for ${courseCode} (pass: ${job.pass}, mode: ${job.build_mode})`);
-      await ctx.supabase.from('build_jobs').update({
-        status: 'stopped',
-        completed_at: new Date().toISOString(),
-      }).eq('id', job.id);
+      // Build-team jobs: same completion as decompose (count decomposed_at seeds)
+      if (job.pass === 'build-team') {
+        const progress = await getBuildProgress(ctx, courseCode);
+        const targetSeeds = job.total_seeds || 300;
+
+        await ctx.supabase.from('build_jobs').update({
+          current_seed: progress.completed,
+          last_heartbeat: new Date().toISOString(),
+        }).eq('id', job.id);
+
+        if (progress.completed >= targetSeeds) {
+          console.log(`[BUILD] BUILD-TEAM COMPLETE: ${courseCode} (${progress.completed}/${targetSeeds} seeds)`);
+          await ctx.supabase.from('build_jobs').update({
+            status: 'complete',
+            current_seed: progress.completed,
+            seeds_completed: progress.completed,
+            completed_at: new Date().toISOString(),
+          }).eq('id', job.id);
+        }
+        continue;
+      }
+
+      // Final-pass jobs: manual completion only (mass-approve marks complete).
+      // Detect stall by checking if flagged phrase count has changed since last check.
+      if (job.pass === 'final-pass') {
+        const { count: flagged } = await ctx.supabase
+          .from('course_practice_phrases')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', courseCode)
+          .eq('flagged', true);
+
+        const prevFlagged = job.metadata?.flagged_phrases ?? -1;
+        const currentFlagged = flagged || 0;
+        const activityChanged = currentFlagged !== prevFlagged;
+
+        const now = new Date();
+        // last_activity tracks when flagged count last changed (agent doing work)
+        const lastActivity = activityChanged
+          ? now.toISOString()
+          : (job.metadata?.last_activity || job.started_at);
+        const minutesSinceActivity = (now - new Date(lastActivity)) / 60000;
+
+        // Update with current counts — last_heartbeat is just "manager checked",
+        // last_activity is "agent did something"
+        await ctx.supabase.from('build_jobs').update({
+          current_seed: currentFlagged,
+          last_heartbeat: now.toISOString(),
+          metadata: { ...(job.metadata || {}), flagged_phrases: currentFlagged, last_activity: lastActivity },
+        }).eq('id', job.id);
+
+        // Mark stalled if no DB activity for 10 minutes (agent probably finished or died)
+        if (minutesSinceActivity > 10) {
+          console.log(`[BUILD] FINAL-PASS STALLED: ${courseCode} (no activity for ${Math.round(minutesSinceActivity)}min, ${currentFlagged} flagged)`);
+          await ctx.supabase.from('build_jobs').update({
+            status: 'stalled',
+          }).eq('id', job.id);
+        }
+        continue;
+      }
+
+      // Gender-prep and other phases manage their own completion via --job-id
+      // Just log and skip — do NOT kill unknown jobs
+      console.log(`[BUILD] Skipping unmanaged job for ${courseCode} (pass: ${job.pass}, mode: ${job.build_mode})`);
 
     } catch (err) {
       console.error(`[BUILD] Error checking ${courseCode}:`, err.message);

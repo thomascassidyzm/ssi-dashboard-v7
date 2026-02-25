@@ -261,9 +261,19 @@
               <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">{{ seedGridFlagged }} flagged</span>
               <span v-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
-              <span v-else-if="stageRunning('final-pass')" class="text-xs text-violet-400 animate-pulse">Running...</span>
+              <template v-else-if="stageRunning('final-pass')">
+                <span class="text-xs text-violet-400 animate-pulse">Running...</span>
+                <button
+                  v-if="seedGridDrafted > 0"
+                  @click="massApproveSeeds"
+                  :disabled="massApproving"
+                  class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >
+                  {{ massApproving ? 'Approving...' : `Approve ${seedGridDrafted} Seeds` }}
+                </button>
+              </template>
               <button
-                v-else-if="finalPassRan && seedGridDrafted > 0"
+                v-else-if="seedGridDrafted > 0"
                 @click="massApproveSeeds"
                 :disabled="massApproving"
                 class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -556,7 +566,6 @@ watch(buildMonitor.seedGrid, (grid) => {
 watch(buildMonitor.buildStatus, (bs) => {
   if (!bs) return
   const pass = bs.build?.pass
-  finalPassRan.value = bs.finalPassCompleted || buildMonitor.pipeline.value?.finalPassCompleted || false
   if (bs.active) {
     progress.value.status = 'running'
     progress.value.buildPass = pass || null
@@ -573,9 +582,6 @@ watch(buildMonitor.buildStatus, (bs) => {
   }
 }, { deep: true })
 
-watch(buildMonitor.pipeline, (p) => {
-  if (p?.finalPassCompleted) finalPassRan.value = true
-}, { deep: true })
 
 watch(buildMonitor.messages, (msgs) => {
   if (msgs && msgs.length > 0) orchestratorMessages.value = msgs
@@ -594,7 +600,6 @@ const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status ===
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
 const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
 const seedGridFlagged = computed(() => seedGrid.value.filter(s => s.status === 'flagged').length)
-const finalPassRan = ref(false)
 
 // --- Pipeline computeds ---
 
