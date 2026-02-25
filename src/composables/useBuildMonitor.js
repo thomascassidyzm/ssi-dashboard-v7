@@ -254,7 +254,9 @@ export function useBuildMonitor(courseCodeRef) {
     const code = toValue(courseCodeRef)
     if (!code || !isConfigured()) return
     refresh()
-    subscribe(code)
+    // Skip Realtime (requires replication config per table in Supabase dashboard).
+    // Just poll every 30s — reliable and sufficient for a dashboard.
+    startFallbackPolling(code)
   }
 
   function stop() {
