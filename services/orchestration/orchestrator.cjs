@@ -11026,27 +11026,18 @@ app.post('/api/deploy', async (req, res) => {
       }
     }
 
-    // 4. Restart services (skip self — orchestrator restarts last)
-    addLog('Restarting PM2 services...');
+    // 4. Collect services to restart (don't restart yet — response must be sent first)
     const pm2Output = execSync('pm2 jlist', { encoding: 'utf-8', timeout: 5000 });
     const pm2Processes = JSON.parse(pm2Output);
     const serviceNames = pm2Processes
       .map(p => p.name)
       .filter(n => n !== 'orchestrator' && n !== 'ngrok' && n !== 'keep-awake');
 
-    for (const name of serviceNames) {
-      try {
-        execSync(`pm2 restart ${name}`, { encoding: 'utf-8', timeout: 10000 });
-        addLog(`Restarted: ${name}`);
-      } catch (restartErr) {
-        addLog(`Failed to restart ${name}: ${restartErr.message}`);
-      }
-    }
-
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-    addLog(`Deploy complete in ${elapsed}s`);
+    addLog(`Deploy complete in ${elapsed}s — restarting ${serviceNames.length} services in background`);
 
-    // Send response before restarting self
+    // Send response BEFORE restarting anything — production-api is proxying
+    // this request, so restarting it before responding causes 503/CORS errors
     res.json({
       success: true,
       already_up_to_date: alreadyUpToDate,
@@ -11058,8 +11049,17 @@ app.post('/api/deploy', async (req, res) => {
       timestamp: new Date().toISOString()
     });
 
-    // 5. Restart orchestrator last (after response is sent)
+    // 5. Restart all services after response is sent
     setTimeout(() => {
+      for (const name of serviceNames) {
+        try {
+          execSync(`pm2 restart ${name}`, { encoding: 'utf-8', timeout: 10000 });
+          console.log(`[Deploy] Restarted: ${name}`);
+        } catch (restartErr) {
+          console.error(`[Deploy] Failed to restart ${name}: ${restartErr.message}`);
+        }
+      }
+      // Restart orchestrator last
       console.log('[Deploy] Restarting orchestrator...');
       spawn('pm2', ['restart', 'orchestrator'], {
         detached: true,
