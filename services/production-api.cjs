@@ -5756,6 +5756,7 @@ app.get('/api/production/:courseCode/publish-manifest/version', async (req, res)
     const courseConfigsId = `${knownCode}-${targetCode}`
 
     const repoCheck = publishManifestService.checkCourseConfigsRepo()
+    if (repoCheck.exists) publishManifestService.pullAuthorBranch()
     const versionInfo = publishManifestService.suggestVersion(courseConfigsId)
 
     res.json({
@@ -5797,11 +5798,12 @@ app.get('/api/production/:courseCode/manifest-diff', async (req, res) => {
     }
     const pending = await fs.readJson(pendingPath)
 
-    // Load published manifest from course-configs
+    // Load published manifest from course-configs (pull latest first)
     const repoCheck = publishManifestService.checkCourseConfigsRepo()
     if (!repoCheck.exists) {
       return res.json({ isNewCourse: true, suggestedVersion: '1.0.0', suggestedBump: 'none', major: [], minor: [], patch: [], stats: {} })
     }
+    publishManifestService.pullAuthorBranch()
 
     const publishedPath = path.join(repoCheck.path, 'Courses', `${courseConfigsId}.json`)
     if (!fs.existsSync(publishedPath)) {

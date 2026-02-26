@@ -398,6 +398,24 @@ function checkCourseConfigsRepo() {
 }
 
 /**
+ * Pull latest author branch from remote.
+ * Call this before reading from the repo (diff, version check) to avoid stale data.
+ */
+function pullAuthorBranch() {
+  const repoCheck = checkCourseConfigsRepo()
+  if (!repoCheck.exists) return
+
+  try {
+    execSync('git checkout author', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' })
+    execSync('git pull --rebase origin author', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' })
+    logger.info('Pulled latest author branch from remote')
+  } catch {
+    // No remote branch yet or network issue — not fatal, just use local state
+    logger.warn('Could not pull author branch (may not exist on remote yet)')
+  }
+}
+
+/**
  * Write manifest to course-configs repo
  * @param {Object} manifest - The manifest to write
  * @param {string} courseConfigsId - Course ID (e.g., 'en-it')
@@ -487,6 +505,13 @@ function pushToRemote() {
       } catch {
         // No upstream set, will push with -u
       }
+    }
+
+    // Pull before pushing to avoid rejection
+    try {
+      execSync('git pull --rebase origin author', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' })
+    } catch {
+      // No remote branch yet or no upstream — fine, push will create it
     }
 
     // Push to origin
@@ -739,6 +764,7 @@ module.exports = {
   suggestVersion,
 
   // Repo operations
+  pullAuthorBranch,
   checkCourseConfigsRepo,
   writeToRepo,
   commitToGit,
