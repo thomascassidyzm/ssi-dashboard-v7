@@ -544,7 +544,8 @@ watch(buildMonitor.stats, (s) => {
   progress.value = {
     ...progress.value,
     currentSeed: s.completeSeeds || 0,
-    seedsTranslated: s.seeds || 0,
+    seedsTranslated: s.seedsTranslated || s.seeds || 0,
+    genderExpansions: s.genderExpansions || 0,
     legosInserted: s.legos || 0,
     phrasesInserted: s.practicePhrases || 0,
     totalSeeds
@@ -626,14 +627,12 @@ const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTarg
 const ps = computed(() => buildMonitor.phaseStatus.value)
 
 function stageComplete(stage) {
-  const dbPass = stage === 'gender' ? 'gender-prep' : stage
-  if (ps.value[dbPass] === 'complete') return true
-  // Fallback heuristics for phases that completed before migration
+  // Data-driven: derive status from actual data, not build_jobs flags
   switch (stage) {
     case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
     case 'build-team': return (progress.value.currentSeed || 0) >= seedCount.value
     case 'final-pass': return seedGridFinalized.value > 0 && seedGridDrafted.value === 0
-    case 'gender': return false
+    case 'gender': return (progress.value.genderExpansions || 0) > 0
     default: return false
   }
 }
@@ -751,6 +750,7 @@ async function fetchProgress() {
         ...progress.value,
         currentSeed: data.seeds_with_legos || data.seeds || 0,
         seedsTranslated: data.completed_seeds || data.seeds_translated || 0,
+        genderExpansions: data.gender_expansions || 0,
         totalSeeds: totalSeeds,
         legosInserted: data.legos || 0,
         phrasesInserted: data.phrases || 0,

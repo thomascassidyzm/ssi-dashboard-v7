@@ -29,7 +29,7 @@ export async function getCourseStats(courseCode) {
   }
 
   // Run all count queries in parallel
-  const [seedsResult, legosResult, phrasesResult, audioResult, legoSeedsResult] = await Promise.all([
+  const [seedsResult, legosResult, phrasesResult, audioResult, legoSeedsResult, translatedResult, genderResult] = await Promise.all([
     supabase
       .from('course_seeds')
       .select('*', { count: 'exact', head: true })
@@ -50,6 +50,18 @@ export async function getCourseStats(courseCode) {
     supabase
       .from('course_legos')
       .select('seed_number')
+      .eq('course_code', courseCode),
+    // Count seeds with both known_text and target_text populated
+    supabase
+      .from('course_seeds')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .neq('known_text', '')
+      .neq('target_text', ''),
+    // Count gender expansions
+    supabase
+      .from('course_gender_expansions')
+      .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
   ])
 
@@ -61,6 +73,8 @@ export async function getCourseStats(courseCode) {
   return {
     seeds: seedsResult.count || 0,
     completeSeeds,
+    seedsTranslated: translatedResult.count || 0,
+    genderExpansions: genderResult.count || 0,
     legos: legosResult.count || 0,
     practicePhrases: phrasesResult.count || 0,
     audio: audioResult.count || 0

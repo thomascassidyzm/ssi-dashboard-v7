@@ -282,6 +282,12 @@ module.exports = function courseDataRoutes(ctx) {
     const vocabSet = await loadCourseVocab(ctx, courseCode);
     const chinese = isChinese(courseCode);
 
+    // Gender expansion count
+    const { count: genderExpansions } = await ctx.supabase
+      .from('course_gender_expansions')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode);
+
     // Draft counts (for parallel builds)
     let draftCount = 0;
     let validDrafts = 0;
@@ -315,6 +321,7 @@ module.exports = function courseDataRoutes(ctx) {
       vocab_size: vocabSet.size,
       vocab_mode: chinese ? 'characters' : 'words',
       quality,
+      gender_expansions: genderExpansions || 0,
       drafts_total: draftCount,
       drafts_valid: validDrafts,
       thresholds: {
