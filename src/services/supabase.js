@@ -243,14 +243,14 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
       .order('lego_index', { ascending: true })
       .order('position', { ascending: true }),
     supabase
-      .from('practice_cycles')
-      .select('seed_number, lego_index, known_text, target_text, phrase_role, known_audio_uuid, target1_audio_uuid, target2_audio_uuid')
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, known_text, target_text, phrase_role, known_audio_id, target1_audio_id, target2_audio_id')
       .eq('course_code', courseCode)
       .gte('seed_number', startSeed)
       .lte('seed_number', endSeed),
     supabase
-      .from('lego_cycles')
-      .select('seed_number, lego_index, known_text, target_text, known_audio_uuid, target1_audio_uuid, target2_audio_uuid')
+      .from('course_legos')
+      .select('seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
       .eq('course_code', courseCode)
       .gte('seed_number', startSeed)
       .lte('seed_number', endSeed),
@@ -270,18 +270,18 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
   for (const cycle of (cyclesResult.data || [])) {
     const key = `${cycle.seed_number}:${cycle.lego_index}:${(cycle.known_text || '').toLowerCase()}:${(cycle.target_text || '').toLowerCase()}`
     audioMap.set(key, {
-      known_audio_uuid: cycle.known_audio_uuid,
-      target1_audio_uuid: cycle.target1_audio_uuid,
-      target2_audio_uuid: cycle.target2_audio_uuid
+      known_audio_uuid: cycle.known_audio_id,
+      target1_audio_uuid: cycle.target1_audio_id,
+      target2_audio_uuid: cycle.target2_audio_id
     })
   }
 
   const legoAudioMap = new Map()
   for (const lc of (legoCyclesResult.data || [])) {
     legoAudioMap.set(`${lc.seed_number}:${lc.lego_index}`, {
-      known_audio_uuid: lc.known_audio_uuid,
-      target1_audio_uuid: lc.target1_audio_uuid,
-      target2_audio_uuid: lc.target2_audio_uuid
+      known_audio_uuid: lc.known_audio_id,
+      target1_audio_uuid: lc.target1_audio_id,
+      target2_audio_uuid: lc.target2_audio_id
     })
   }
 

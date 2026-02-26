@@ -9038,10 +9038,10 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
       return res.status(500).json({ error: 'Failed to query phrases' });
     }
 
-    // 3. Query practice_cycles view to get audio UUIDs
+    // 3. Query course_practice_phrases directly (NOT practice_cycles view — too expensive)
     const { data: cyclesData, error: cyclesError } = await supabase
-      .from('practice_cycles')
-      .select('seed_number, lego_index, known_text, target_text, phrase_role, known_audio_uuid, target1_audio_uuid, target2_audio_uuid')
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, known_text, target_text, phrase_role, known_audio_id, target1_audio_id, target2_audio_id')
       .eq('course_code', courseCode)
       .gte('seed_number', startSeed)
       .lte('seed_number', endSeed);
@@ -9051,10 +9051,10 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
       // Non-fatal - we can fall back to no audio
     }
 
-    // 4. Query lego_cycles for LEGO debut audio
+    // 4. Query course_legos directly for LEGO debut audio (NOT lego_cycles view — too expensive)
     const { data: legoCyclesData, error: legoCyclesError } = await supabase
-      .from('lego_cycles')
-      .select('seed_number, lego_index, known_text, target_text, known_audio_uuid, target1_audio_uuid, target2_audio_uuid')
+      .from('course_legos')
+      .select('seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
       .eq('course_code', courseCode)
       .gte('seed_number', startSeed)
       .lte('seed_number', endSeed);
@@ -9079,9 +9079,9 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
     for (const cycle of (cyclesData || [])) {
       const key = `${cycle.seed_number}:${cycle.lego_index}:${(cycle.known_text || '').toLowerCase()}:${(cycle.target_text || '').toLowerCase()}`;
       audioMap.set(key, {
-        known_audio_uuid: cycle.known_audio_uuid,
-        target1_audio_uuid: cycle.target1_audio_uuid,
-        target2_audio_uuid: cycle.target2_audio_uuid
+        known_audio_uuid: cycle.known_audio_id,
+        target1_audio_uuid: cycle.target1_audio_id,
+        target2_audio_uuid: cycle.target2_audio_id
       });
     }
 
@@ -9090,9 +9090,9 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
     for (const lc of (legoCyclesData || [])) {
       const key = `${lc.seed_number}:${lc.lego_index}`;
       legoAudioMap.set(key, {
-        known_audio_uuid: lc.known_audio_uuid,
-        target1_audio_uuid: lc.target1_audio_uuid,
-        target2_audio_uuid: lc.target2_audio_uuid
+        known_audio_uuid: lc.known_audio_id,
+        target1_audio_uuid: lc.target1_audio_id,
+        target2_audio_uuid: lc.target2_audio_id
       });
     }
 

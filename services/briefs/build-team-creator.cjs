@@ -3,7 +3,7 @@
  * Creator NEVER submits to API directly — checker does that after approval.
  */
 
-const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist } = require('./shared.cjs');
+const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadMethodology } = require('./shared.cjs');
 
 async function generateBuildTeamCreatorBrief(courseCode, query = {}) {
   const supabase = getSupabase();
@@ -128,15 +128,24 @@ ${calibrationSeeds && calibrationSeeds.length > 0 ? calibrationSeeds.map(seed =>
 
 ${crossCourseSummaries || '(No cross-course calibrations available yet)'}
 
-## STEP 0 — Read the Methodology (MANDATORY)
+## Full Methodology Reference
 
-\`\`\`bash
-cat ralph-methodology.md
-\`\`\`
+<details>
+<summary>ralph-methodology.md (embedded)</summary>
+
+${loadMethodology()}
+
+</details>
 
 ## Protocol — For Each Seed N
 
-### Step 1: Fetch current vocabulary
+### Step 1: Vocabulary management
+- **First seed in your batch**: Fetch full vocab once:
+\`\`\`bash
+curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$FIRST_SEED"
+\`\`\`
+- **Subsequent seeds**: After checker says "DONE — seed N submitted", you already know what LEGOs you just introduced. Add them to your mental vocab list and continue.
+- **Every 20 seeds** or after context compaction: Re-fetch vocab as a sync checkpoint:
 \`\`\`bash
 curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
 \`\`\`

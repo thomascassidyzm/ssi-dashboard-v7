@@ -3,7 +3,7 @@
  * Only the checker can submit to /api/seed/complete. Creator NEVER submits directly.
  */
 
-const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist } = require('./shared.cjs');
+const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadCondensedMethodology } = require('./shared.cjs');
 
 async function generateBuildTeamCheckerBrief(courseCode, query = {}) {
   const supabase = getSupabase();
@@ -62,6 +62,15 @@ The API already validates tiling, vocabulary containment, phrase counts, and LEG
 
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
 ${buildGrammarChecklist(langName, grammarRules)}
+
+## Methodology Reference (Condensed)
+
+<details>
+<summary>Key rules for quality checking</summary>
+
+${loadCondensedMethodology()}
+
+</details>
 
 ## Approved Calibration Seeds
 

@@ -4502,7 +4502,7 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
 }
 
 // Get script view data - all phrases grouped by seed and LEGO
-// Uses practice_cycles view which already has audio UUIDs joined (same as learning app)
+// Queries course_practice_phrases and course_legos directly (NOT the cycle views)
 // Supports pagination via query params: seedStart, seedEnd (e.g., S0001, S0030)
 app.get('/api/production/:courseCode/script-view', async (req, res) => {
   const { courseCode } = req.params
@@ -4524,10 +4524,12 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 
     const supabase = supabaseClient.getClient()
 
-    // Query practice_cycles view - already has audio UUIDs joined via audio_registry
-    // This is the same view the learning app uses
+    // Query course_practice_phrases directly (NOT practice_cycles view!)
+    // The practice_cycles view does 3 LEFT JOINs on lower(trim(text)) against course_audio
+    // which takes 5+ minutes for a full course and can exhaust the connection pool.
+    // Audio UUIDs are already on course_practice_phrases — no join needed.
     let cyclesQuery = supabase
-      .from('practice_cycles')
+      .from('course_practice_phrases')
       .select('*')
       .eq('course_code', courseCode)
 
@@ -4574,10 +4576,10 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       .select('audio_uuid, status, reason, flagged_by, created_at, regen_count')
       .eq('course_code', courseCode)
 
-    // Query lego_cycles to get LEGO debut audio (the LEGO itself as a playable/flaggable item)
+    // Query course_legos directly (NOT lego_cycles view which does expensive text JOINs)
     let legoCyclesQuery = supabase
-      .from('lego_cycles')
-      .select('id, lego_id, seed_number, lego_index, known_text, target_text, known_audio_uuid, target1_audio_uuid, target2_audio_uuid, known_duration_ms, target1_duration_ms, target2_duration_ms')
+      .from('course_legos')
+      .select('id, lego_id, seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, target1_duration_ms, target2_duration_ms')
       .eq('course_code', courseCode)
 
     if (startNum !== null) {
@@ -4650,12 +4652,12 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
     logger.info(`Loaded ${cycles?.length || 0} practice cycles, ${seedsData.length} seeds, ${legosData.length} legos for ${courseCode}`)
 
     // Group flat cycles into hierarchical structure: seeds -> legos -> phrases
-    // practice_cycles view already has audio UUIDs joined via audio_registry
     const seedsMap = new Map()  // seed_number -> { legos: Map<lego_id, { phrases: [] }> }
 
     for (const cycle of (cycles || [])) {
       const seedNum = cycle.seed_number
-      const legoId = cycle.lego_id  // Already formatted as S0001L01 in the view
+      // Construct lego_id from seed_number + lego_index (was computed in practice_cycles view)
+      const legoId = 'S' + String(seedNum).padStart(4, '0') + 'L' + String(cycle.lego_index).padStart(2, '0')
 
       // Get or create seed entry
       if (!seedsMap.has(seedNum)) {
@@ -4686,11 +4688,15 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       // S3 path is mastered/{UUID-UPPERCASE}.mp3 (same as learning app)
       const buildS3Key = (uuid) => uuid ? `mastered/${uuid.toUpperCase()}.mp3` : null
 
+      // Map table column names (*_audio_id) to what the frontend expects (*_audio_uuid)
+      const knownAudioUuid = cycle.known_audio_id || null
+      const target1AudioUuid = cycle.target1_audio_id || null
+      const target2AudioUuid = cycle.target2_audio_id || null
+
       // Check flags for any audio in this phrase
-      const knownFlag = cycle.known_audio_uuid ? flagsMap.get(cycle.known_audio_uuid) : null
-      const target1Flag = cycle.target1_audio_uuid ? flagsMap.get(cycle.target1_audio_uuid) : null
-      const target2Flag = cycle.target2_audio_uuid ? flagsMap.get(cycle.target2_audio_uuid) : null
-      // Only count as flagged if status is 'flagged' (new audio_flags table)
+      const knownFlag = knownAudioUuid ? flagsMap.get(knownAudioUuid) : null
+      const target1Flag = target1AudioUuid ? flagsMap.get(target1AudioUuid) : null
+      const target2Flag = target2AudioUuid ? flagsMap.get(target2AudioUuid) : null
       const isFlagged = (flag) => flag?.status === 'flagged'
       const anyFlagged = isFlagged(knownFlag) || isFlagged(target1Flag) || isFlagged(target2Flag)
 
@@ -4700,19 +4706,18 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
         position: cycle.position,
         known_text: cycle.known_text,
         target_text: cycle.target_text,
-        type: cycle.phrase_type || 'practice',  // From view
+        type: cycle.phrase_role || 'build',
         word_count: cycle.word_count,
         lego_count: cycle.lego_count,
-        // Audio UUIDs directly from practice_cycles view (already joined via audio_registry)
-        known_audio_uuid: cycle.known_audio_uuid || null,
-        target1_audio_uuid: cycle.target1_audio_uuid || null,
-        target2_audio_uuid: cycle.target2_audio_uuid || null,
+        known_audio_uuid: knownAudioUuid,
+        target1_audio_uuid: target1AudioUuid,
+        target2_audio_uuid: target2AudioUuid,
         // S3 keys for direct URL construction
-        known_s3_key: buildS3Key(cycle.known_audio_uuid),
-        target1_s3_key: buildS3Key(cycle.target1_audio_uuid),
-        target2_s3_key: buildS3Key(cycle.target2_audio_uuid),
-        // Durations from view
-        known_duration_ms: cycle.known_duration_ms || null,
+        known_s3_key: buildS3Key(knownAudioUuid),
+        target1_s3_key: buildS3Key(target1AudioUuid),
+        target2_s3_key: buildS3Key(target2AudioUuid),
+        // Durations
+        known_duration_ms: null,  // not stored on table, only target durations
         target1_duration_ms: cycle.target1_duration_ms || null,
         target2_duration_ms: cycle.target2_duration_ms || null,
         // Flag status from database
@@ -4748,11 +4753,11 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
               const allPhrases = [...lego.phrases]
 
               // Insert LEGO debut as position 0 if it has audio
-              if (legoDebut && (legoDebut.known_audio_uuid || legoDebut.target1_audio_uuid || legoDebut.target2_audio_uuid)) {
+              if (legoDebut && (legoDebut.known_audio_id || legoDebut.target1_audio_id || legoDebut.target2_audio_id)) {
                 const buildS3Key = (uuid) => uuid ? `mastered/${uuid.toUpperCase()}.mp3` : null
-                const knownFlag = legoDebut.known_audio_uuid ? flagsMap.get(legoDebut.known_audio_uuid) : null
-                const target1Flag = legoDebut.target1_audio_uuid ? flagsMap.get(legoDebut.target1_audio_uuid) : null
-                const target2Flag = legoDebut.target2_audio_uuid ? flagsMap.get(legoDebut.target2_audio_uuid) : null
+                const knownFlag = legoDebut.known_audio_id ? flagsMap.get(legoDebut.known_audio_id) : null
+                const target1Flag = legoDebut.target1_audio_id ? flagsMap.get(legoDebut.target1_audio_id) : null
+                const target2Flag = legoDebut.target2_audio_id ? flagsMap.get(legoDebut.target2_audio_id) : null
                 const isFlagged = (flag) => flag?.status === 'flagged'
 
                 allPhrases.unshift({
@@ -4763,13 +4768,13 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
                   type: 'lego_debut',
                   word_count: 1,
                   lego_count: 1,
-                  known_audio_uuid: legoDebut.known_audio_uuid || null,
-                  target1_audio_uuid: legoDebut.target1_audio_uuid || null,
-                  target2_audio_uuid: legoDebut.target2_audio_uuid || null,
-                  known_s3_key: buildS3Key(legoDebut.known_audio_uuid),
-                  target1_s3_key: buildS3Key(legoDebut.target1_audio_uuid),
-                  target2_s3_key: buildS3Key(legoDebut.target2_audio_uuid),
-                  known_duration_ms: legoDebut.known_duration_ms || null,
+                  known_audio_uuid: legoDebut.known_audio_id || null,
+                  target1_audio_uuid: legoDebut.target1_audio_id || null,
+                  target2_audio_uuid: legoDebut.target2_audio_id || null,
+                  known_s3_key: buildS3Key(legoDebut.known_audio_id),
+                  target1_s3_key: buildS3Key(legoDebut.target1_audio_id),
+                  target2_s3_key: buildS3Key(legoDebut.target2_audio_id),
+                  known_duration_ms: null,
                   target1_duration_ms: legoDebut.target1_duration_ms || null,
                   target2_duration_ms: legoDebut.target2_duration_ms || null,
                   is_flagged: isFlagged(knownFlag) || isFlagged(target1Flag) || isFlagged(target2Flag),
@@ -4883,12 +4888,12 @@ app.get('/api/production/:courseCode/learning-journey/search', async (req, res) 
     const supabase = supabaseClient.getClient()
     const query = q.trim().toLowerCase()
 
-    // Search lego_cycles for matching LEGOs (by known/target text or seed number)
+    // Search course_legos for matching LEGOs (by known/target text or seed number)
     let matchingLegoIds = new Set()
 
     // 1. Search LEGOs by text
     const { data: legoMatches } = await supabase
-      .from('lego_cycles')
+      .from('course_legos')
       .select('lego_id, seed_number, known_text, target_text')
       .eq('course_code', courseCode)
       .or(`known_text.ilike.%${query}%,target_text.ilike.%${query}%`)
@@ -4901,7 +4906,7 @@ app.get('/api/production/:courseCode/learning-journey/search', async (req, res) 
     if (/^\d+$/.test(query)) {
       const seedNum = parseInt(query, 10)
       const { data: seedMatches } = await supabase
-        .from('lego_cycles')
+        .from('course_legos')
         .select('lego_id')
         .eq('course_code', courseCode)
         .eq('seed_number', seedNum)

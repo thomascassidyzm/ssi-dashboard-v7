@@ -88,7 +88,7 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
 
   try {
     const { data, error } = await supabase
-      .from('lego_cycles')
+      .from('course_legos')
       .select('*')
       .eq('course_code', courseCode)
       .order('seed_number', { ascending: true })
@@ -124,10 +124,10 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
           new: record.is_new || false,
           known_text: record.known_text,
           target_text: record.target_text,
-          known_audio_uuid: record.known_audio_uuid,
-          target1_audio_uuid: record.target1_audio_uuid,
-          target2_audio_uuid: record.target2_audio_uuid,
-          known_duration_ms: record.known_duration_ms,
+          known_audio_uuid: record.known_audio_id,
+          target1_audio_uuid: record.target1_audio_id,
+          target2_audio_uuid: record.target2_audio_id,
+          known_duration_ms: null,
           target1_duration_ms: record.target1_duration_ms,
           target2_duration_ms: record.target2_duration_ms,
         },
@@ -162,11 +162,12 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
 
     while (true) {
       const { data: page, error } = await supabase
-        .from('practice_cycles')
+        .from('course_practice_phrases')
         .select('*')
         .eq('course_code', courseCode)
         .gte('position', 1)
-        .order('lego_id', { ascending: true })
+        .order('seed_number', { ascending: true })
+        .order('lego_index', { ascending: true })
         .order('position', { ascending: true })
         .range(offset, offset + pageSize - 1)
 
@@ -183,12 +184,12 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
 
     if (allData.length === 0) return { buildMap, useMap, componentMap }
 
-    logger.info(`Loaded ${allData.length} practice phrases from practice_cycles`)
+    logger.info(`Loaded ${allData.length} practice phrases from course_practice_phrases`)
 
-    // Group by lego_id
+    // Group by lego_id (constructed from seed_number + lego_index)
     const grouped = new Map()
     for (const row of allData) {
-      const legoId = row.lego_id
+      const legoId = 'S' + String(row.seed_number).padStart(4, '0') + 'L' + String(row.lego_index).padStart(2, '0')
       if (!grouped.has(legoId)) grouped.set(legoId, [])
       grouped.get(legoId).push(row)
     }
@@ -202,10 +203,10 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         position: row.position,
         phrase_role: row.phrase_role,
         target_syllable_count: row.target_syllable_count,
-        known_audio_uuid: row.known_audio_uuid,
-        target1_audio_uuid: row.target1_audio_uuid,
-        target2_audio_uuid: row.target2_audio_uuid,
-        known_duration_ms: row.known_duration_ms,
+        known_audio_uuid: row.known_audio_id,
+        target1_audio_uuid: row.target1_audio_id,
+        target2_audio_uuid: row.target2_audio_id,
+        known_duration_ms: null,
         target1_duration_ms: row.target1_duration_ms,
         target2_duration_ms: row.target2_duration_ms,
       }))

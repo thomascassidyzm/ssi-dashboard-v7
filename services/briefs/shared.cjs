@@ -4,6 +4,8 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
+const fs = require('fs');
+const path = require('path');
 
 // Lazy-init Supabase client (same instance as course-builder-api)
 let _supabase;
@@ -304,18 +306,125 @@ These patterns cause the most common errors in course builds. Apply your expert 
   return section;
 }
 
+// --- In-memory caches ---
+
+let _methodologyFull = null;
+let _methodologyCondensed = null;
+
+/**
+ * Load ralph-methodology.md once, cache in memory.
+ * Returns full methodology text for embedding in briefs.
+ */
+function loadMethodology() {
+  if (!_methodologyFull) {
+    const filePath = path.resolve(__dirname, '../../ralph-methodology.md');
+    _methodologyFull = fs.readFileSync(filePath, 'utf8');
+  }
+  return _methodologyFull;
+}
+
+/**
+ * Load condensed methodology for checker briefs.
+ * Keeps: BUILD/USE rules, LEGO form, ZUT, scoring, vocab constraints, checklist.
+ * Drops: decomposition strategy, ordering, multi-language examples, audio doctrine, workflow, QA checkpoints.
+ */
+function loadCondensedMethodology() {
+  if (!_methodologyCondensed) {
+    const full = loadMethodology();
+    const lines = full.split('\n');
+    const sections = [];
+    let currentSection = { header: '', lines: [] };
+
+    for (const line of lines) {
+      if (line.startsWith('## ')) {
+        if (currentSection.header) sections.push(currentSection);
+        currentSection = { header: line, lines: [line] };
+      } else {
+        currentSection.lines.push(line);
+      }
+    }
+    if (currentSection.header) sections.push(currentSection);
+
+    // Keep sections relevant to grammar checking
+    const keepHeaders = [
+      'Phrase Roles: BUILD vs USE',
+      'USE Phrase Scoring',
+      'Complete LEGO Submission Format',
+      'ZUT (Zero Uncertainty Test)',
+      'Vocabulary Constraints',
+      'Checklist Before Submitting',
+      'Early Seeds',
+      'Remember',
+      'Lessons Learned'
+    ];
+
+    // Also keep LEGO Types from the full doc
+    const keepSections = sections.filter(s => {
+      const headerText = s.header.replace(/^#+\s*/, '');
+      return keepHeaders.some(k => headerText.startsWith(k));
+    });
+
+    // Prepend core LEGO types section
+    const legoTypesSection = sections.find(s => s.header.includes('LEGO Types'));
+    if (legoTypesSection) keepSections.unshift(legoTypesSection);
+
+    _methodologyCondensed = '# SSi Methodology (Condensed for Checker)\n\n' +
+      keepSections.map(s => s.lines.join('\n')).join('\n\n');
+  }
+  return _methodologyCondensed;
+}
+
+// Cache for golden seed examples and cross-course summaries
+const _goldenCache = new Map();
+const _crossCourseCache = new Map();
+const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+
+function getCached(cache, key) {
+  const entry = cache.get(key);
+  if (entry && Date.now() - entry.ts < CACHE_TTL_MS) return entry.value;
+  return null;
+}
+
+function setCache(cache, key, value) {
+  cache.set(key, { value, ts: Date.now() });
+}
+
+// Wrap fetchGoldenSeedExamples with cache
+const _originalFetchGoldenSeedExamples = fetchGoldenSeedExamples;
+async function fetchGoldenSeedExamplesCached(courseCode, seedNumbers = [2, 5, 8]) {
+  const key = `${courseCode}:${seedNumbers.join(',')}`;
+  const cached = getCached(_goldenCache, key);
+  if (cached) return cached;
+  const result = await _originalFetchGoldenSeedExamples(courseCode, seedNumbers);
+  setCache(_goldenCache, key, result);
+  return result;
+}
+
+// Wrap buildCrossCourseSummaries with cache
+const _originalBuildCrossCourseSummaries = buildCrossCourseSummaries;
+async function buildCrossCourseSummariesCached(maxSeed = 5) {
+  const key = `${maxSeed}`;
+  const cached = getCached(_crossCourseCache, key);
+  if (cached) return cached;
+  const result = await _originalBuildCrossCourseSummaries(maxSeed);
+  setCache(_crossCourseCache, key, result);
+  return result;
+}
+
 module.exports = {
   getSupabase,
   setSupabase,
   getLanguageName,
   getKnownLanguageName,
   getGoldenSeedCount,
-  fetchGoldenSeedExamples,
+  fetchGoldenSeedExamples: fetchGoldenSeedExamplesCached,
   formatDecompositionPatterns,
   formatGoldenPhraseExamples,
   formatBatchAssignments,
-  buildCrossCourseSummaries,
+  buildCrossCourseSummaries: buildCrossCourseSummariesCached,
   classifySeedPattern,
   buildGrammarChecklist,
+  loadMethodology,
+  loadCondensedMethodology,
   LANG_MAP
 };
