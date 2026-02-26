@@ -3193,14 +3193,13 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 
     let samplesToRegenerate = audioSamples || []
 
-    // If flaggedOnly, filter to only flagged samples (using NEW audio_flags table)
-    if (flaggedOnly && samplesToRegenerate.length > 0) {
-      const uuids = samplesToRegenerate.map(s => s.id)
+    // If flaggedOnly, start from flagged UUIDs and filter audio by those
+    // (Reversed from previous approach which hit 414 URI Too Large with large audio tables)
+    if (flaggedOnly) {
       const { data: flags } = await supabaseClient.getClient()
         .from('audio_flags')
         .select('audio_uuid')
         .eq('course_code', courseCode)
-        .in('audio_uuid', uuids)
         .eq('status', 'flagged')
 
       const flaggedUuids = new Set((flags || []).map(f => f.audio_uuid))
@@ -4506,7 +4505,7 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
 // Supports pagination via query params: seedStart, seedEnd (e.g., S0001, S0030)
 app.get('/api/production/:courseCode/script-view', async (req, res) => {
   const { courseCode } = req.params
-  const { seedStart, seedEnd } = req.query
+  const { seedStart, seedEnd, flaggedOnly } = req.query
 
   // Parse seed range from query params (S0001 -> 1, S0030 -> 30)
   const parseSeedNumber = (s) => {
@@ -4514,8 +4513,8 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
     const match = String(s).match(/(\d+)/)
     return match ? parseInt(match[1], 10) : null
   }
-  const startNum = parseSeedNumber(seedStart)
-  const endNum = parseSeedNumber(seedEnd)
+  let startNum = parseSeedNumber(seedStart)
+  let endNum = parseSeedNumber(seedEnd)
 
   try {
     if (!supabaseClient.isInitialized()) {

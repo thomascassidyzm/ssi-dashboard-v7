@@ -1383,8 +1383,13 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
 
     // Build URL with seed range params for server-side filtering
     const params = new URLSearchParams();
-    if (start) params.set('seedStart', start);
-    if (end) params.set('seedEnd', end);
+    if (filterFlaggedOnly.value) {
+      // Flagged mode: let backend find the right seeds
+      params.set('flaggedOnly', 'true');
+    } else {
+      if (start) params.set('seedStart', start);
+      if (end) params.set('seedEnd', end);
+    }
     const queryString = params.toString();
     const url = `${apiBaseUrl}/api/production/${courseCode.value}/script-view${queryString ? '?' + queryString : ''}`;
 
@@ -2240,6 +2245,11 @@ const handleKeydown = (event: KeyboardEvent) => {
       break;
   }
 };
+
+// Reload data when flagged filter changes (needs different seeds from backend)
+watch(filterFlaggedOnly, () => {
+  loadCourseData();
+});
 
 // Lifecycle
 onMounted(() => {
