@@ -28,7 +28,7 @@ const LANG_MAP = {
   'zho': 'Chinese', 'ita': 'Italian', 'spa': 'Spanish', 'fra': 'French',
   'deu': 'German', 'por': 'Portuguese', 'jpn': 'Japanese', 'kor': 'Korean',
   'ara': 'Arabic', 'rus': 'Russian', 'cym': 'Welsh', 'nld': 'Dutch',
-  'eng': 'English'
+  'eng': 'English', 'eus': 'Basque'
 };
 
 function getLanguageName(courseCode) {
