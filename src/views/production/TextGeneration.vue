@@ -434,9 +434,9 @@
         <button
           @click="forceResetBuilder"
           class="px-4 py-2 bg-orange-600/80 hover:bg-orange-500 text-white text-sm font-medium rounded-lg transition-colors"
-          title="Force reset when no agents are running"
+          title="Stops the current job. Your seeds are safe."
         >
-          Force Reset
+          Stop Job
         </button>
       </section>
 
