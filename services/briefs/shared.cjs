@@ -31,9 +31,17 @@ const LANG_MAP = {
   'eng': 'English', 'eus': 'Basque'
 };
 
+// Regional variant names (keyed by target part before _for_)
+const DIALECT_NAMES = {
+  'por_br': 'Brazilian Portuguese',
+  'spa_mx': 'Mexican Spanish',
+  'cym_n': 'North Welsh',
+  'cym_s': 'South Welsh',
+};
+
 function getLanguageName(courseCode) {
-  const targetLang = courseCode.split('_')[0];
-  return LANG_MAP[targetLang] || targetLang;
+  const [targetPart] = courseCode.split('_for_');
+  return DIALECT_NAMES[targetPart] || LANG_MAP[targetPart.split('_')[0]] || targetPart;
 }
 
 function getKnownLanguageName(courseCode) {
