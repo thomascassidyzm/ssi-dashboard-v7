@@ -925,7 +925,7 @@ async function ensureCourse(courseCode, knownLang, targetLang, seedCount = null)
   // Parse languages from course code if not provided
   // e.g., spa_for_eng_v2 -> target=spa, known=eng
   if (!knownLang || !targetLang) {
-    const match = courseCode.match(/^(\w{3})_for_(\w{3})/);
+    const match = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})/i);
     if (match) {
       targetLang = targetLang || match[1];
       knownLang = knownLang || match[2];

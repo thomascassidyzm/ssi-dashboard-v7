@@ -269,8 +269,8 @@ export default {
         translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
         // Parse course code for metadata
-        const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
-        const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+        const matchStandard = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})_?(\d+)?seeds?/)
+        const matchBasic = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})/)
         const match = matchStandard || matchBasic
 
         // Fetch accurate stats from database (same source as Production Suite list)
@@ -686,8 +686,8 @@ export default {
         }
 
         // Flexible course code parsing
-        const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
-        const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+        const matchStandard = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})_?(\d+)?seeds?/)
+        const matchBasic = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})/)
         const match = matchStandard || matchBasic
 
         // Determine which phases are complete based on data availability
@@ -849,8 +849,8 @@ export default {
           }
 
           // Flexible course code parsing (same as list())
-          const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
-          const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+          const matchStandard = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})_?(\d+)?seeds?/)
+          const matchBasic = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})/)
           const match = matchStandard || matchBasic
 
           // Count baskets and introductions
@@ -1043,8 +1043,8 @@ export default {
           }
 
           // Flexible course code parsing
-          const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
-          const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+          const matchStandard = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})_?(\d+)?seeds?/)
+          const matchBasic = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})/)
           const match = matchStandard || matchBasic
 
           // Count baskets and introductions

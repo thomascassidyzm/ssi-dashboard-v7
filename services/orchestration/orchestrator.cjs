@@ -4284,7 +4284,7 @@ app.post('/api/courses/generate', async (req, res) => {
   let resolvedTarget = target;
   let resolvedKnown = known;
   if (!resolvedTarget || !resolvedKnown) {
-    const match = courseCode.match(/^([a-z]{2,3})_for_([a-z]{2,3})(?:_.*)?$/);
+    const match = courseCode.match(/^([a-z]{2,3})(?:_[a-z]{1,5})?_for_([a-z]{2,3})(?:_.*)?$/);
     if (match) {
       resolvedTarget = resolvedTarget || match[1];
       resolvedKnown = resolvedKnown || match[2];

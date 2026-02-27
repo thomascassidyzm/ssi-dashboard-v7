@@ -73,7 +73,7 @@ const CHARS_PER_SYLLABLE = {
  * Extract target language code from course_code (e.g., "fra_for_eng" → "fra")
  */
 function getTargetLang(courseCode) {
-  const match = courseCode.match(/^([a-z]{3})_for_/);
+  const match = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_/);
   return match ? match[1] : 'DEFAULT';
 }
 

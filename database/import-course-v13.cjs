@@ -59,27 +59,26 @@ function normalizeText(text) {
 function mapCourseId(legacyId) {
   // en-cy-south → cym_s_for_eng
   // en-cy-north → cym_n_for_eng
-  // en-es → spa_for_eng
+  // en-es-es → spa_for_eng (European Spanish)
+  // en-es-mx → spa_mx_for_eng (Mexican Spanish)
   const mapping = {
     'en-cy-south': 'cym_s_for_eng',
     'en-cy-north': 'cym_n_for_eng',
     'en-es': 'spa_for_eng',
-    'en-es-v2': 'spa_for_eng'
+    'en-es-v2': 'spa_for_eng',
+    'en-es-es': 'spa_for_eng',
+    'en-es-mx': 'spa_mx_for_eng',
+    'en-pt-pt': 'por_for_eng',
+    'en-pt-br': 'por_br_for_eng',
   };
   return mapping[legacyId] || legacyId;
 }
 
 function extractLanguages(courseId) {
   // cym_s_for_eng → { known: 'eng', target: 'cym' }
-  // cym_n_for_eng → { known: 'eng', target: 'cym' }
-  // spa_for_eng → { known: 'eng', target: 'spa' }
-  if (courseId.includes('cym')) {
-    return { known: 'eng', target: 'cym' };
-  }
-  if (courseId.includes('spa')) {
-    return { known: 'eng', target: 'spa' };
-  }
-  const match = courseId.match(/^(\w{3})_(?:[ns]_)?for_(\w{3})$/);
+  // spa_mx_for_eng → { known: 'eng', target: 'spa' }
+  // por_br_for_eng → { known: 'eng', target: 'por' }
+  const match = courseId.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})$/i);
   if (match) {
     return { target: match[1], known: match[2] };
   }

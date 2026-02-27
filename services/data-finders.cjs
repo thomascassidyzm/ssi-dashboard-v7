@@ -356,7 +356,7 @@ function getNestedValue(obj, path) {
  * e.g., 'spa_for_eng_v2' -> 'en-es'
  */
 function extractLanguagePairKey(courseCode) {
-  const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/);
+  const match = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})/);
   if (!match) return null;
 
   const [, targetLang, knownLang] = match;

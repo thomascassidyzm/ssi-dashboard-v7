@@ -116,8 +116,8 @@ for (const entry of entries) {
 
   // Parse course code for language info
   // Formats: xxx_for_yyy, xxx_for_yyy_NNseeds, xxx_for_yyy_suffix
-  const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
-  const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+  const matchStandard = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})_?(\d+)?seeds?/)
+  const matchBasic = courseCode.match(/^([a-z]{3})(?:_[a-z]{1,5})?_for_([a-z]{3})/)
   const match = matchStandard || matchBasic
 
   // Detect format and count LEGOs (only if lego_pairs.json exists)

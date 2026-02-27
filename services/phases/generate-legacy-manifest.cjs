@@ -231,15 +231,17 @@ async function loadAudioFromDB(courseCode) {
  * All other courses get an empty paywallEncouragements array
  */
 const PAID_COURSE_CODES = [
-  'ara_for_eng',  // Arabic
-  'zho_for_eng',  // Chinese
-  'jpn_for_eng',  // Japanese
-  'kor_for_eng',  // Korean
-  'spa_for_eng',  // Spanish
-  'por_for_eng',  // Portuguese
-  'ita_for_eng',  // Italian
-  'deu_for_eng',  // German
-  'fra_for_eng'   // French
+  'ara_for_eng',     // Arabic
+  'zho_for_eng',     // Chinese
+  'jpn_for_eng',     // Japanese
+  'kor_for_eng',     // Korean
+  'spa_for_eng',     // Spanish (Spain)
+  'spa_mx_for_eng',  // Spanish (Mexico)
+  'por_for_eng',     // Portuguese (Portugal)
+  'por_br_for_eng',  // Portuguese (Brazil)
+  'ita_for_eng',     // Italian
+  'deu_for_eng',     // German
+  'fra_for_eng'      // French
 ]
 
 /**

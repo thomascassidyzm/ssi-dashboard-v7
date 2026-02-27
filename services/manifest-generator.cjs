@@ -23,6 +23,7 @@
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const { generateSampleId, normalizeText } = require('./uuid-v11.cjs');
+const langService = require('./language-code-service.cjs');
 
 // Supabase client
 const supabase = createClient(
@@ -222,9 +223,10 @@ async function generateManifest(courseCode, options = {}) {
 
   const knownLang3 = course.known_lang;
   const targetLang3 = course.target_lang;
-  const knownLang = LANG_CODES[knownLang3]?.short || knownLang3;
-  const targetLang = LANG_CODES[targetLang3]?.short || targetLang3;
-  const targetName = LANG_CODES[targetLang3]?.name || targetLang3;
+  const knownLang = langService.databaseToManifest(knownLang3) || LANG_CODES[knownLang3]?.short || knownLang3;
+  const targetLang = langService.databaseToManifest(targetLang3) || LANG_CODES[targetLang3]?.short || targetLang3;
+  const targetName = langService.getName(targetLang3) || LANG_CODES[targetLang3]?.name || targetLang3;
+  const manifestId = langService.toManifestId(courseCode) || `${knownLang}-${targetLang}`;
 
   // Get voice assignments (may be null for human-recorded courses)
   const voiceAssignments = {
@@ -632,7 +634,7 @@ async function generateManifest(courseCode, options = {}) {
 
   // Build final manifest
   const manifest = {
-    id: `${knownLang}-${targetLang}`,
+    id: manifestId,
     known: knownLang,
     target: targetLang,
     version: '12.0.0',  // Database-generated version

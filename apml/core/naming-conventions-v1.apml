@@ -34,10 +34,14 @@ dialects:
   _n: { applies_to: "cym", name: "North Welsh (Gogledd)" }
   _s: { applies_to: "cym", name: "South Welsh (De)" }
 
-  # Spanish dialects (future)
+  # Spanish dialects
   _mx: { applies_to: "spa", name: "Mexican Spanish" }
   _es: { applies_to: "spa", name: "Castilian Spanish" }
   _ar: { applies_to: "spa", name: "Argentine Spanish" }
+
+  # Portuguese dialects
+  _br: { applies_to: "por", name: "Brazilian Portuguese" }
+  _pt: { applies_to: "por", name: "European Portuguese" }
 
   # Chinese dialects (if needed - currently using zho for Mandarin)
   # Note: zho covers standard Mandarin; other varieties would need separate codes
@@ -76,6 +80,18 @@ course_code:
       meaning: "Welsh (South) for English speakers"
       target: "cym"
       dialect: "_s"
+      source: "eng"
+
+    - code: "spa_mx_for_eng"
+      meaning: "Spanish (Mexico) for English speakers"
+      target: "spa"
+      dialect: "_mx"
+      source: "eng"
+
+    - code: "por_br_for_eng"
+      meaning: "Portuguese (Brazil) for English speakers"
+      target: "por"
+      dialect: "_br"
       source: "eng"
 
     - code: "eng_for_spa"
@@ -256,8 +272,13 @@ course_aliases:
   # Legacy/alternate names → Canonical course_code
   "en-cy-north": "cym_n_for_eng"
   "en-cy-south": "cym_s_for_eng"
-  "en-es": "spa_for_eng"
-  "cmn_for_eng": "zho_for_eng"  # cmn (Mandarin) aliases to zho (Chinese macrolanguage)
+  "en-es": "spa_for_eng"          # Legacy (pre-regional split)
+  "en-es-es": "spa_for_eng"       # European Spanish
+  "en-es-mx": "spa_mx_for_eng"    # Mexican Spanish
+  "en-pt": "por_for_eng"          # Legacy (pre-regional split)
+  "en-pt-pt": "por_for_eng"       # European Portuguese
+  "en-pt-br": "por_br_for_eng"    # Brazilian Portuguese
+  "cmn_for_eng": "zho_for_eng"    # cmn (Mandarin) aliases to zho (Chinese macrolanguage)
 
 # =============================================================================
 # MIGRATION NOTES

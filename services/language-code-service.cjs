@@ -397,20 +397,25 @@ function standardToLegacy(code) {
 /**
  * Parse a course code into its components
  * e.g., 'spa_for_eng' → { target: 'es', known: 'en', targetLegacy: 'spa', knownLegacy: 'eng', targetName: 'Spanish', knownName: 'English' }
+ * e.g., 'spa_mx_for_eng' → { target: 'es', known: 'en', targetLegacy: 'spa_mx', knownLegacy: 'eng', dialect: 'mx', targetBase: 'spa', ... }
  *
- * @param {string} courseCode - Course code in format target_for_known
+ * @param {string} courseCode - Course code in format target[_dialect]_for_known
  * @returns {object|null} Parsed components, or null if invalid format
  */
 function parseCourseCode(courseCode) {
   if (!courseCode) return null;
 
-  const match = courseCode.match(/^([a-z]+)_for_([a-z]+)$/i);
+  // Match: {lang3}[_{dialect}]_for_{lang3}
+  // e.g., spa_for_eng, spa_mx_for_eng, cym_n_for_eng
+  const match = courseCode.match(/^([a-z]{3})(?:_([a-z]{1,5}))?_for_([a-z]{3})$/i);
   if (!match) return null;
 
-  const targetLegacy = match[1].toLowerCase();
-  const knownLegacy = match[2].toLowerCase();
+  const targetBase = match[1].toLowerCase();
+  const dialect = match[2] ? match[2].toLowerCase() : null;
+  const knownLegacy = match[3].toLowerCase();
+  const targetLegacy = dialect ? `${targetBase}_${dialect}` : targetBase;
 
-  const target = legacyToStandard(targetLegacy);
+  const target = legacyToStandard(targetBase);
   const known = legacyToStandard(knownLegacy);
 
   return {
@@ -418,9 +423,36 @@ function parseCourseCode(courseCode) {
     known,
     targetLegacy,
     knownLegacy,
+    targetBase,
+    dialect,
     targetName: getName(target),
     knownName: getName(known)
   };
+}
+
+// Explicit region overrides for courses whose DB code has no dialect suffix
+// but whose legacy export needs a regional qualifier
+const REGION_OVERRIDES = {
+  'spa_for_eng': 'es',  // European Spanish
+  'por_for_eng': 'pt',  // European Portuguese
+};
+
+/**
+ * Convert a course code to a legacy manifest ID
+ * e.g., 'spa_mx_for_eng' → 'en-es-mx'
+ * e.g., 'spa_for_eng' → 'en-es-es' (via REGION_OVERRIDES)
+ * e.g., 'zho_for_eng' → 'en-cmn' (no region)
+ *
+ * @param {string} courseCode - Course code
+ * @returns {string|null} Legacy manifest ID, or null if invalid
+ */
+function toManifestId(courseCode) {
+  const parsed = parseCourseCode(courseCode);
+  if (!parsed) return null;
+
+  const region = parsed.dialect || REGION_OVERRIDES[courseCode] || null;
+  const base = `${parsed.known}-${parsed.target}`;
+  return region ? `${base}-${region}` : base;
 }
 
 /**
@@ -620,8 +652,12 @@ module.exports = {
   // Course code utilities
   parseCourseCode,
   toCourseCode,
+  toManifestId,
   toLanguagePair,
   fromLanguagePair,
+
+  // Region overrides (for courses without dialect in DB code)
+  REGION_OVERRIDES,
 
   // Direct access to mappings (for advanced use)
   LEGACY_TO_STANDARD,
