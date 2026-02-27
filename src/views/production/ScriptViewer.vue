@@ -205,14 +205,14 @@
 
     <!-- Main Content Area -->
     <div ref="scriptContentRef" class="script-content flex-1 overflow-y-auto p-6" :class="{ 'pb-24': journeyPlayerActive }">
-      <!-- Loading State -->
-      <div v-if="isLoading" class="loading-state flex items-center justify-center h-64">
+      <!-- Loading State (only show full-screen spinner when no seeds loaded yet) -->
+      <div v-if="isLoading && seeds.length === 0 && directFlaggedItems.length === 0" class="loading-state flex items-center justify-center h-64">
         <div class="text-center">
           <svg class="w-12 h-12 mx-auto mb-4 animate-spin text-emerald-500" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
-          <p class="text-slate-400">Loading course data...</p>
+          <p class="text-slate-400">{{ loadingProgress || 'Loading course data...' }}</p>
         </div>
       </div>
 
@@ -416,8 +416,19 @@
           @phrase-pause="pauseAudio"
         />
 
+        <!-- Progressive loading indicator (shown while chunks are still arriving) -->
+        <div v-if="isLoading && seeds.length > 0" class="loading-more text-center py-6">
+          <div class="inline-flex items-center gap-3 px-4 py-2 bg-slate-800 rounded-lg">
+            <svg class="w-5 h-5 animate-spin text-emerald-500" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span class="text-sm text-slate-400">{{ loadingProgress }}</span>
+          </div>
+        </div>
+
         <!-- Load More (if using pagination) -->
-        <div v-if="hasMoreSeeds" class="load-more text-center py-8">
+        <div v-if="!isLoading && hasMoreSeeds" class="load-more text-center py-8">
           <button
             @click="loadMoreSeeds"
             class="px-6 py-3 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
@@ -861,6 +872,7 @@ const scrollDown = () => scriptContentRef.value?.scrollBy({ top: 400, behavior: 
 
 // State
 const isLoading = ref(false);
+const loadingProgress = ref('');  // e.g. "Loading seeds 11-20..."
 const error = ref<string | null>(null);
 const seeds = ref<SeedRowData[]>([]);
 const totalSeedsInCourse = ref(0);  // Total seeds in course (from API)
@@ -1305,13 +1317,21 @@ interface FlaggedItem {
   flaggedBy?: string;
 }
 
+// Direct flagged items from fast endpoint (bypasses seed loading)
+const directFlaggedItems = ref<FlaggedItem[]>([]);
+
 const flatFlaggedItems = computed((): FlaggedItem[] => {
+  // If we have direct items from the fast endpoint, use those
+  if (directFlaggedItems.value.length > 0) {
+    return directFlaggedItems.value;
+  }
+
+  // Fallback: derive from loaded seeds (used in non-flagged mode)
   const items: FlaggedItem[] = [];
 
   seeds.value.forEach(seed => {
     seed.legos.forEach(lego => {
       lego.phrases.forEach(phrase => {
-        // Check each audio track for flagged status
         if (phrase.known_flag?.status === 'flagged' && phrase.known_audio_uuid) {
           items.push({
             uuid: phrase.known_audio_uuid,
@@ -1358,7 +1378,13 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
     });
   });
 
-  return items;
+  // Deduplicate by UUID — same audio file can appear on multiple phrases
+  const seen = new Set<string>();
+  return items.filter(item => {
+    if (seen.has(item.uuid)) return false;
+    seen.add(item.uuid);
+    return true;
+  });
 });
 
 // Keyboard Shortcuts
@@ -1370,9 +1396,12 @@ const keyboardShortcuts: KeyboardShortcut[] = [
 ];
 
 // Methods
+const CHUNK_SIZE = 10; // Load 10 seeds at a time to keep queries fast
+
 const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   isLoading.value = true;
   error.value = null;
+  loadingProgress.value = '';
 
   // Use provided values or current filter values
   const start = seedStart ?? filterSeedStart.value;
@@ -1381,42 +1410,67 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   try {
     const apiBaseUrl = getApiBaseUrl();
 
-    // Build URL with seed range params for server-side filtering
-    const params = new URLSearchParams();
     if (filterFlaggedOnly.value) {
-      // Flagged mode: let backend find the right seeds
-      params.set('flaggedOnly', 'true');
+      // Fast path: use dedicated flagged-items endpoint instead of loading all seeds
+      const flagUrl = `${apiBaseUrl}/api/production/${courseCode.value}/flagged-items`;
+      const flagResponse = await fetch(flagUrl, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      });
+      if (!flagResponse.ok) throw new Error('Failed to load flagged items');
+      const flagData = await flagResponse.json();
+      directFlaggedItems.value = flagData.items || [];
+      seeds.value = [];
     } else {
-      if (start) params.set('seedStart', start);
-      if (end) params.set('seedEnd', end);
-    }
-    const queryString = params.toString();
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/script-view${queryString ? '?' + queryString : ''}`;
+      directFlaggedItems.value = [];
+      seeds.value = []; // Clear before progressive load
 
-    const response = await fetch(url, {
-      headers: {
-        'ngrok-skip-browser-warning': 'true'
+      const startNum = parseInt((start || 'S0001').replace(/\D/g, '')) || 1;
+      const endNum = parseInt((end || 'S0050').replace(/\D/g, '')) || 50;
+
+      // Load in chunks of CHUNK_SIZE, appending results as they arrive
+      for (let chunkStart = startNum; chunkStart <= endNum; chunkStart += CHUNK_SIZE) {
+        const chunkEnd = Math.min(chunkStart + CHUNK_SIZE - 1, endNum);
+        const chunkStartStr = 'S' + String(chunkStart).padStart(4, '0');
+        const chunkEndStr = 'S' + String(chunkEnd).padStart(4, '0');
+
+        loadingProgress.value = `Loading seeds ${chunkStart}–${chunkEnd}...`;
+
+        const params = new URLSearchParams();
+        params.set('seedStart', chunkStartStr);
+        params.set('seedEnd', chunkEndStr);
+
+        const url = `${apiBaseUrl}/api/production/${courseCode.value}/script-view?${params.toString()}`;
+
+        const response = await fetch(url, {
+          headers: { 'ngrok-skip-browser-warning': 'true' },
+          signal: AbortSignal.timeout(60000) // 60s per chunk (not 5 min for everything)
+        });
+
+        if (!response.ok) {
+          console.warn(`Failed to load chunk ${chunkStartStr}-${chunkEndStr}, skipping`);
+          continue;
+        }
+
+        const data = await response.json();
+        const chunkSeeds = transformScriptViewToSeeds(data);
+
+        // Append to existing seeds (progressive update)
+        seeds.value = [...seeds.value, ...chunkSeeds];
+
+        // Store total from first chunk's pagination
+        if (data.pagination && !totalSeedsInCourse.value) {
+          totalSeedsInCourse.value = data.pagination.total;
+        }
       }
-    });
-    if (!response.ok) throw new Error('Failed to load course data');
 
-    const data = await response.json();
-
-    // Transform script-view data into SeedRowData format
-    seeds.value = transformScriptViewToSeeds(data);
-
-    // Store pagination info
-    if (data.pagination) {
-      totalSeedsInCourse.value = data.pagination.total;
+      lastLoadedRange.value = { start, end };
     }
-
-    // Track what range we loaded
-    lastLoadedRange.value = { start, end };
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Unknown error occurred';
     console.error('Error loading course data:', err);
   } finally {
     isLoading.value = false;
+    loadingProgress.value = '';
   }
 };
 
@@ -1748,8 +1802,22 @@ const unflagItem = async (item: FlaggedItem) => {
 
     if (!response.ok) throw new Error('Failed to clear flag');
 
-    // Reload data to update the list
-    await loadCourseData();
+    // Update local state — remove from direct list or clear from seed data
+    if (directFlaggedItems.value.length > 0) {
+      directFlaggedItems.value = directFlaggedItems.value.filter(i => i.uuid !== item.uuid);
+    } else {
+      const audioUuidKey = `${item.track}_audio_uuid` as 'known_audio_uuid' | 'target1_audio_uuid' | 'target2_audio_uuid';
+      const flagKey = `${item.track}_flag` as 'known_flag' | 'target1_flag' | 'target2_flag';
+      for (const seed of seeds.value) {
+        for (const lego of seed.legos) {
+          for (const phrase of lego.phrases) {
+            if ((phrase as any)[audioUuidKey] === item.uuid) {
+              (phrase as any)[flagKey] = null;
+            }
+          }
+        }
+      }
+    }
     console.log(`Cleared flag for ${item.uuid}`);
   } catch (err) {
     console.error('Error clearing flag:', err);

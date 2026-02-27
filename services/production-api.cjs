@@ -1709,6 +1709,126 @@ app.get('/api/production/:courseCode/audio-flags', async (req, res) => {
   }
 })
 
+// Get flagged items with audio context (fast — doesn't load all seeds)
+// Returns items ready for FlaggedItemRow display
+app.get('/api/production/:courseCode/flagged-items', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // 1. Get all flagged UUIDs (small table, instant)
+    const { data: flags, error: flagsErr } = await supabase
+      .from('audio_flags')
+      .select('audio_uuid, status, reason, flagged_by, created_at')
+      .eq('course_code', courseCode)
+      .eq('status', 'flagged')
+
+    if (flagsErr) throw flagsErr
+    if (!flags || flags.length === 0) {
+      return res.json({ items: [], total: 0 })
+    }
+
+    const flagMap = new Map()
+    flags.forEach(f => flagMap.set(f.audio_uuid, f))
+    const uuids = flags.map(f => f.audio_uuid)
+
+    // 2. Look up those UUIDs in course_audio to get text + role (batch in chunks)
+    const audioRows = []
+    for (let i = 0; i < uuids.length; i += 200) {
+      const chunk = uuids.slice(i, i + 200)
+      const { data } = await supabase
+        .from('course_audio')
+        .select('id, text, role')
+        .eq('course_code', courseCode)
+        .in('id', chunk)
+      if (data) audioRows.push(...data)
+    }
+
+    // 3. Look up phrase context directly from course_practice_phrases (NOT practice_cycles view)
+    // practice_cycles does 3 expensive LEFT JOINs with regexp_replace — can exhaust DB connections
+    const uniqueTargetTexts = [...new Set(audioRows.filter(a => a.role !== 'known').map(a => a.text))]
+    const uniqueKnownTexts = [...new Set(audioRows.filter(a => a.role === 'known').map(a => a.text))]
+
+    const phraseRows = []
+    // Look up by target_text
+    for (let i = 0; i < uniqueTargetTexts.length; i += 200) {
+      const chunk = uniqueTargetTexts.slice(i, i + 200)
+      const { data } = await supabase
+        .from('course_practice_phrases')
+        .select('id, seed_number, lego_index, known_text, target_text')
+        .eq('course_code', courseCode)
+        .in('target_text', chunk)
+      if (data) phraseRows.push(...data)
+    }
+    // Look up by known_text
+    for (let i = 0; i < uniqueKnownTexts.length; i += 200) {
+      const chunk = uniqueKnownTexts.slice(i, i + 200)
+      const { data } = await supabase
+        .from('course_practice_phrases')
+        .select('id, seed_number, lego_index, known_text, target_text')
+        .eq('course_code', courseCode)
+        .in('known_text', chunk)
+      if (data) phraseRows.push(...data)
+    }
+
+    // Build text → phrase context map
+    // For each audio row, find which phrase it belongs to by matching text
+    const uuidContext = new Map()
+    for (const audio of audioRows) {
+      if (uuidContext.has(audio.id)) continue
+      const phrase = phraseRows.find(p =>
+        audio.role === 'known' ? p.known_text === audio.text : p.target_text === audio.text
+      )
+      if (phrase) {
+        const seedId = 'S' + String(phrase.seed_number).padStart(4, '0')
+        const legoId = seedId + 'L' + String(phrase.lego_index).padStart(2, '0')
+        uuidContext.set(audio.id, {
+          seedId,
+          legoId,
+          phraseId: phrase.id,
+          track: audio.role,
+          text: audio.text
+        })
+      }
+    }
+
+    // 4. Build response items
+    const items = []
+    const seen = new Set()
+    for (const [uuid, flag] of flagMap) {
+      if (seen.has(uuid)) continue
+      seen.add(uuid)
+
+      const ctx = uuidContext.get(uuid)
+      const audio = audioRows.find(a => a.id === uuid)
+
+      items.push({
+        uuid,
+        seedId: ctx?.seedId || '?',
+        legoId: ctx?.legoId || '?',
+        phraseId: ctx?.phraseId || '?',
+        track: ctx?.track || audio?.role || '?',
+        text: ctx?.text || audio?.text || '?',
+        status: flag.status,
+        notes: flag.reason,
+        flaggedAt: flag.created_at,
+        flaggedBy: flag.flagged_by
+      })
+    }
+
+    logger.info(`[FlaggedItems] ${courseCode}: ${items.length} items returned`)
+    res.json({ items, total: items.length })
+  } catch (error) {
+    logger.error('Error getting flagged items:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // Create or update an audio flag
 app.post('/api/production/:courseCode/audio-flags', async (req, res) => {
   try {
@@ -3266,6 +3386,23 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 
         if (response.status === 200) {
           logger.log(`[Regenerate Role] Completed ${role} for ${courseCode}: ${response.data.success || uuids.length} success, ${response.data.failed || 0} failed`)
+
+          // Clear flags for regenerated audio
+          if (flaggedOnly && uuids.length > 0) {
+            try {
+              const { error: delErr, count } = await supabaseClient.getClient()
+                .from('audio_flags')
+                .delete({ count: 'exact' })
+                .eq('course_code', courseCode)
+                .eq('status', 'flagged')
+                .in('audio_uuid', uuids)
+              if (delErr) logger.warn(`[Regenerate Role] Failed to clear flags: ${delErr.message}`)
+              else logger.log(`[Regenerate Role] Cleared ${count} flags for regenerated ${role} audio`)
+            } catch (e) {
+              logger.warn(`[Regenerate Role] Error clearing flags: ${e.message}`)
+            }
+          }
+
           io.to(`course:${courseCode}`).emit('regeneration_completed', {
             courseCode,
             role,
@@ -4516,6 +4653,20 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
   let startNum = parseSeedNumber(seedStart)
   let endNum = parseSeedNumber(seedEnd)
 
+  // Enforce max seed range to prevent runaway queries that exhaust DB connections
+  // practice_cycles view does 3 LEFT JOINs with regexp — loading 296 seeds can take 5+ minutes
+  const MAX_SEED_RANGE = 50
+  if (startNum !== null && endNum !== null && (endNum - startNum) > MAX_SEED_RANGE) {
+    endNum = startNum + MAX_SEED_RANGE
+    logger.warn(`[ScriptView] Clamped seed range to max ${MAX_SEED_RANGE}: S${startNum}-S${endNum}`)
+  }
+  if (startNum === null && endNum === null && flaggedOnly !== 'true') {
+    // No range specified — default to first 30 seeds instead of loading everything
+    startNum = 1
+    endNum = 30
+    logger.warn(`[ScriptView] No seed range specified — defaulting to S1-S30`)
+  }
+
   try {
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
@@ -4523,14 +4674,26 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 
     const supabase = supabaseClient.getClient()
 
+    // flaggedOnly through script-view is deprecated — use /flagged-items endpoint
+    if (flaggedOnly === 'true') {
+      logger.warn(`[ScriptView] flaggedOnly=true rejected — use GET /api/production/${courseCode}/flagged-items instead`)
+      return res.status(400).json({
+        error: 'Use /api/production/' + courseCode + '/flagged-items instead',
+        redirect: `/api/production/${courseCode}/flagged-items`
+      })
+    }
+
     // Query course_practice_phrases directly (NOT practice_cycles view!)
     // The practice_cycles view does 3 LEFT JOINs on lower(trim(text)) against course_audio
     // which takes 5+ minutes for a full course and can exhaust the connection pool.
     // Audio UUIDs are already on course_practice_phrases — no join needed.
+    // AbortSignal prevents runaway queries from exhausting DB connection pool.
+    const queryTimeout = AbortSignal.timeout(60000) // 60s max per query
     let cyclesQuery = supabase
       .from('course_practice_phrases')
       .select('*')
       .eq('course_code', courseCode)
+      .abortSignal(queryTimeout)
 
     // Apply seed range filter if provided
     if (startNum !== null) {
@@ -4580,6 +4743,7 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       .from('course_legos')
       .select('id, lego_id, seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, target1_duration_ms, target2_duration_ms')
       .eq('course_code', courseCode)
+      .abortSignal(queryTimeout)
 
     if (startNum !== null) {
       legoCyclesQuery = legoCyclesQuery.gte('seed_number', startNum)
