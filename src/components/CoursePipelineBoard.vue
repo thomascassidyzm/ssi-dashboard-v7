@@ -255,7 +255,7 @@ const languageNames = {
 }
 
 function getTargetLanguage(code) {
-  const target = code?.split('_')[0]
+  const target = code?.split('_for_')[0]?.split('_')[0]
   return languageNames[target] || target?.toUpperCase() || '?'
 }
 

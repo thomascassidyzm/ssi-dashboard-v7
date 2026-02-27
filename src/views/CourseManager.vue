@@ -1138,9 +1138,10 @@ const isNewCourse = computed(() => !props.courseCode && !route.params.courseCode
 const displayName = computed(() => {
   const code = props.courseCode || route.params.courseCode
   if (!code) return ''
-  const [target, , known] = code.split('_')
+  const [targetPart, knownPart] = code.split('_for_')
+  const target = targetPart.split('_')[0]
   const targetName = languages.value.find(l => l.code === target)?.name || target
-  const knownName = languages.value.find(l => l.code === known)?.name || known
+  const knownName = languages.value.find(l => l.code === knownPart)?.name || knownPart
   return `${targetName} for ${knownName} speakers`
 })
 
@@ -1148,8 +1149,8 @@ const displayName = computed(() => {
 const effectiveKnownCode = computed(() => {
   const code = props.courseCode || route.params.courseCode
   if (code) {
-    const [, , known] = code.split('_')
-    return known
+    const [, knownPart] = code.split('_for_')
+    return knownPart
   }
   return knownLang.value
 })
@@ -1157,8 +1158,8 @@ const effectiveKnownCode = computed(() => {
 const effectiveTargetCode = computed(() => {
   const code = props.courseCode || route.params.courseCode
   if (code) {
-    const [target] = code.split('_')
-    return target
+    const [targetPart] = code.split('_for_')
+    return targetPart.split('_')[0]
   }
   return targetLang.value
 })

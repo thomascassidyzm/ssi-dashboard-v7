@@ -618,7 +618,7 @@ const courseTargetLang = computed(() => {
   // In create mode, use the dropdown; for existing courses, extract from course code (e.g. "spa_for_eng" → "spa")
   if (targetLanguage.value) return targetLanguage.value
   const code = effectiveCourseCode.value
-  if (code && code.includes('_for_')) return code.split('_for_')[0]
+  if (code && code.includes('_for_')) return code.split('_for_')[0].split('_')[0]
   return ''
 })
 const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTargetLang.value))

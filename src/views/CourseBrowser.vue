@@ -179,9 +179,10 @@ const filteredCourses = computed(() => {
     if (course.course_code.toLowerCase().includes(query)) return true
 
     // Search by full language names (e.g., "French for English")
-    const [target, , known] = course.course_code.split('_')
+    const [targetPart, knownPart] = course.course_code.split('_for_')
+    const target = targetPart.split('_')[0]
     const targetName = languageNames[target] || target
-    const knownName = languageNames[known] || known
+    const knownName = languageNames[knownPart] || knownPart
     const fullName = `${targetName} for ${knownName} speakers`.toLowerCase()
     if (fullName.includes(query)) return true
 
@@ -225,9 +226,10 @@ function formatCourseCode(code) {
 function getFullCourseName(courseCode) {
   // Handle xxx_for_yyy format (e.g., spa_for_eng)
   if (courseCode.includes('_for_')) {
-    const [target, , known] = courseCode.split('_')
+    const [targetPart, knownPart] = courseCode.split('_for_')
+    const target = targetPart.split('_')[0]
     const targetName = languageNames[target] || target?.toUpperCase() || 'Unknown'
-    const knownName = languageNames[known] || known?.toUpperCase() || 'Unknown'
+    const knownName = languageNames[knownPart] || knownPart?.toUpperCase() || 'Unknown'
     return `${targetName} for ${knownName} speakers`
   }
   // Handle other formats (e.g., en-es, en-cy-north) - just return the code

@@ -257,7 +257,7 @@ const playCurrentPhrase = async () => {
   // Try to play target audio (Chinese)
   // TODO: Implement proper audio fetching based on course_audio table
   // For now, we'll skip if no audio is available
-  const targetLang = props.courseCode.split('_')[0]; // e.g., 'zho' from 'zho_for_eng'
+  const targetLang = props.courseCode.split('_for_')[0]?.split('_')[0]; // e.g., 'zho' from 'zho_for_eng'
 
   // Create audio element if not exists
   if (!audioElement.value) {

@@ -28,9 +28,10 @@ const languageNames = {
 
 function getCourseName(code) {
   if (!code || !code.includes('_for_')) return code
-  const [target, , known] = code.split('_')
+  const [targetPart, knownPart] = code.split('_for_')
+  const target = targetPart.split('_')[0] // strip dialect: spa_mx → spa
   const targetName = languageNames[target] || target.toUpperCase()
-  const knownName = languageNames[known] || known.toUpperCase()
+  const knownName = languageNames[knownPart] || knownPart.toUpperCase()
   return `${targetName} for ${knownName} Speakers`
 }
 
