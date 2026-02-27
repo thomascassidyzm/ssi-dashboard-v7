@@ -104,6 +104,24 @@ Solve problems autonomously and proceed to the next workflow step without human 
 - Deleting generated assets (irreversible)
 - Any action with cost or data-loss implications
 
+### **NEVER Use the Anthropic SDK Directly**
+
+**All LLM calls must go through the Claude CLI (`claude --print`), never the `@anthropic-ai/sdk` directly.**
+
+The `ANTHROPIC_API_KEY` exists in `.env` for future use by the dashboard's environment switcher (API mode for community course builders). It is **NOT** for service code to use.
+
+**Why:** Using the SDK directly bypasses the CLI subscription and bills per-token via the API. A previous phrase-scoring module (`phrase-scorer.cjs`) silently cost ~$38/day in Haiku API calls — completely redundant since Opus was already validating the same work.
+
+**If you need an LLM call in service code:**
+- Use `claude --print --model haiku` (or sonnet/opus) via `spawn` or stdin pipe
+- See `gender-prep-coordinator.cjs` for the correct pattern
+- Unset `CLAUDECODE` env var when spawning nested Claude CLI calls
+
+**Never:**
+- `const Anthropic = require('@anthropic-ai/sdk')`
+- `client.messages.create(...)`
+- Any direct API call to Claude models from service code
+
 ### **NEVER Generate TTS Audio Without Approval**
 
 **❌ NEVER:**
