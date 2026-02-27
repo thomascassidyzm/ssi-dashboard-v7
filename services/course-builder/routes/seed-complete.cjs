@@ -1324,33 +1324,12 @@ module.exports = function seedCompleteRoutes(ctx) {
         });
       }
 
-      // ── HAIKU PHRASE SCORING (mandatory for non-draft, non-skip) ──
-      const skipScoring = isDraft || req.query.skip_scoring === 'true' || SKIP_VALIDATION;
+      // ── HAIKU PHRASE SCORING — REMOVED ──
+      // Previously called Haiku API directly for phrase quality scoring on every
+      // seed submission. Removed because the build-team process (Opus checker +
+      // Sonnet creator) already validates quality before submission, making this
+      // redundant and expensive (~$38/day in API costs for zero additional value).
       let scoringResult = null;
-
-      if (!skipScoring) {
-        const { scoreUsePhrases, applyThresholds } = require('../lib/phrase-scorer.cjs');
-        try {
-          const scoredPhrases = await scoreUsePhrases(seed_number, known_text, target_text, legos);
-          if (scoredPhrases && scoredPhrases.length > 0) {
-            const { seedPass, legoResults, failReasons } = applyThresholds(legos, scoredPhrases);
-            scoringResult = { legoResults };
-            if (!seedPass) {
-              console.log(`✗ ${seedId}: PHRASE QUALITY FAILED - ${failReasons.join(' | ')}`);
-              return res.status(400).json({
-                error: 'Phrase quality check failed',
-                seed: seedId,
-                scoring: legoResults,
-                hint: `Revise low-scoring phrases and resubmit: ${failReasons.join(' | ')}`,
-                skills: ['ralph-methodology.md'],
-              });
-            }
-            console.log(`✓ ${seedId}: Phrase quality PASSED`);
-          }
-        } catch (err) {
-          console.error(`[seed-complete] Haiku scoring failed, allowing through: ${err.message}`);
-        }
-      }
 
       // ── DRAFT PATH ──
       if (isDraft) {
