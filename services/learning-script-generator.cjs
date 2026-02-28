@@ -55,7 +55,10 @@ function countTargetSyllables(targetText) {
  */
 function phraseContainsLegoChars(phraseTarget, legoTarget) {
   if (!phraseTarget || !legoTarget) return false
-  const normalize = (t) => t.toLowerCase().replace(/[.,!?;:¡¿'"()\-–—]/g, '').replace(/\s+/g, ' ').trim()
+  const normalize = (t) => t.toLowerCase()
+    .replace(/[\u064B-\u0652]/g, '')  // Strip Arabic tashkeel (diacritics)
+    .replace(/[.,!?;:¡¿'"()\-–—«»""''。，！？؟،؛、：；]/g, '')
+    .replace(/\s+/g, ' ').trim()
   return normalize(phraseTarget).includes(normalize(legoTarget))
 }
 
