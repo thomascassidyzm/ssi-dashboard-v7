@@ -1383,7 +1383,7 @@ onUnmounted(() => {
 .seed-row-blocks {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .seed-block {
@@ -1392,8 +1392,8 @@ onUnmounted(() => {
 }
 
 .seed-cell-grouped {
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 21px;
   border-radius: 3px;
   transition: transform 0.1s, background 0.15s;
 }
