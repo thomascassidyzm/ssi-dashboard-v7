@@ -341,26 +341,20 @@
         </button>
 
         <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
-          <!-- Grid grouped in blocks of 10 -->
-          <div class="seed-grid-grouped">
+          <!-- Flat grid, 30 per row, with row labels -->
+          <div class="seed-grid-flat">
             <template v-for="(row, rowIdx) in seedGridRows" :key="rowIdx">
               <div class="seed-grid-row">
                 <span class="seed-row-label">{{ row.label }}</span>
-                <div class="seed-row-blocks">
+                <div class="seed-row-cells">
                   <div
-                    v-for="(block, blockIdx) in row.blocks"
-                    :key="blockIdx"
-                    class="seed-block"
-                  >
-                    <div
-                      v-for="cell in block"
-                      :key="cell.seed"
-                      class="seed-cell-grouped cursor-pointer transition-colors"
-                      :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
-                      :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
-                      @click="selectSeed(cell.seed)"
-                    ></div>
-                  </div>
+                    v-for="cell in row.cells"
+                    :key="cell.seed"
+                    class="seed-cell cursor-pointer transition-colors"
+                    :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
+                    :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
+                    @click="selectSeed(cell.seed)"
+                  ></div>
                 </div>
               </div>
             </template>
@@ -608,29 +602,14 @@ const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status ===
 const seedGridFlagged = computed(() => seedGrid.value.filter(s => s.status === 'flagged').length)
 
 // Group seeds into rows of blocks (each block = 10 seeds, max 3 blocks per row = 30 seeds)
-const BLOCK_SIZE = 10
-const MAX_BLOCKS_PER_ROW = 3
+const SEEDS_PER_ROW = 30
 const seedGridRows = computed(() => {
   const cells = seedGrid.value
   if (!cells.length) return []
-
-  // Split into blocks of 10
-  const blocks = []
-  for (let i = 0; i < cells.length; i += BLOCK_SIZE) {
-    blocks.push(cells.slice(i, i + BLOCK_SIZE))
-  }
-
-  // Group blocks into rows (max 3 blocks = 30 seeds per row)
   const rows = []
-  for (let i = 0; i < blocks.length; i += MAX_BLOCKS_PER_ROW) {
-    const rowBlocks = blocks.slice(i, i + MAX_BLOCKS_PER_ROW)
-    const firstSeed = rowBlocks[0][0].seed
-    const lastBlock = rowBlocks[rowBlocks.length - 1]
-    const lastSeed = lastBlock[lastBlock.length - 1].seed
-    rows.push({
-      label: `${firstSeed}`,
-      blocks: rowBlocks,
-    })
+  for (let i = 0; i < cells.length; i += SEEDS_PER_ROW) {
+    const rowCells = cells.slice(i, i + SEEDS_PER_ROW)
+    rows.push({ label: `${rowCells[0].seed}`, cells: rowCells })
   }
   return rows
 })
@@ -1355,51 +1334,44 @@ onUnmounted(() => {
   border-radius: 3px;
 }
 
-/* Seed Grid — grouped in blocks of 10 */
-.seed-grid-grouped {
+/* Seed Grid — flat, 30 per row */
+.seed-grid-flat {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .seed-grid-row {
   display: flex;
   align-items: center;
-  gap: 0;
 }
 
 .seed-row-label {
   width: 2.5rem;
   flex-shrink: 0;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-family: ui-monospace, monospace;
-  color: rgba(148, 163, 184, 0.5);
+  color: rgba(148, 163, 184, 0.45);
   text-align: right;
   padding-right: 0.5rem;
   line-height: 1;
   user-select: none;
 }
 
-.seed-row-blocks {
+.seed-row-cells {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  gap: 3px;
 }
 
-.seed-block {
-  display: flex;
-  gap: 2px;
-}
-
-.seed-cell-grouped {
-  width: 24px;
-  height: 24px;
+.seed-cell {
+  width: 22px;
+  height: 22px;
   border-radius: 3px;
   transition: transform 0.1s, background 0.15s;
 }
 
-.seed-cell-grouped:hover {
-  transform: scale(1.15);
+.seed-cell:hover {
+  transform: scale(1.2);
   z-index: 1;
 }
 </style>
