@@ -346,9 +346,9 @@
             <div
               v-for="cell in seedGrid"
               :key="cell.seed"
-              class="w-5 h-5 rounded-sm cursor-pointer transition-colors"
+              class="seed-cell w-5 h-5 rounded-sm cursor-pointer transition-colors"
               :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
-              :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
+              :data-seed="cell.seed"
               @click="selectSeed(cell.seed)"
             ></div>
           </div>
@@ -1316,4 +1316,30 @@ onUnmounted(() => {
   border-radius: 3px;
 }
 
+/* Seed cell instant tooltip */
+.seed-cell {
+  position: relative;
+}
+.seed-cell::after {
+  content: attr(data-seed);
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-family: ui-monospace, monospace;
+  color: #e2e8f0;
+  background: #1e293b;
+  border: 1px solid rgba(100, 116, 139, 0.5);
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.08s;
+  z-index: 10;
+}
+.seed-cell:hover::after {
+  opacity: 1;
+}
 </style>
