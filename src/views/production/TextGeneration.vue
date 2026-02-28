@@ -341,16 +341,29 @@
         </button>
 
         <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
-          <!-- Grid -->
-          <div class="flex flex-wrap gap-1">
-            <div
-              v-for="cell in seedGrid"
-              :key="cell.seed"
-              class="w-5 h-5 rounded-sm cursor-pointer transition-colors"
-              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
-              :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
-              @click="selectSeed(cell.seed)"
-            ></div>
+          <!-- Grid grouped in blocks of 10 -->
+          <div class="seed-grid-grouped">
+            <template v-for="(row, rowIdx) in seedGridRows" :key="rowIdx">
+              <div class="seed-grid-row">
+                <span class="seed-row-label">{{ row.label }}</span>
+                <div class="seed-row-blocks">
+                  <div
+                    v-for="(block, blockIdx) in row.blocks"
+                    :key="blockIdx"
+                    class="seed-block"
+                  >
+                    <div
+                      v-for="cell in block"
+                      :key="cell.seed"
+                      class="seed-cell-grouped cursor-pointer transition-colors"
+                      :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
+                      :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
+                      @click="selectSeed(cell.seed)"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </template>
           </div>
 
           <!-- Legend -->
@@ -593,6 +606,34 @@ const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status ===
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
 const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
 const seedGridFlagged = computed(() => seedGrid.value.filter(s => s.status === 'flagged').length)
+
+// Group seeds into rows of blocks (each block = 10 seeds, max 3 blocks per row = 30 seeds)
+const BLOCK_SIZE = 10
+const MAX_BLOCKS_PER_ROW = 3
+const seedGridRows = computed(() => {
+  const cells = seedGrid.value
+  if (!cells.length) return []
+
+  // Split into blocks of 10
+  const blocks = []
+  for (let i = 0; i < cells.length; i += BLOCK_SIZE) {
+    blocks.push(cells.slice(i, i + BLOCK_SIZE))
+  }
+
+  // Group blocks into rows (max 3 blocks = 30 seeds per row)
+  const rows = []
+  for (let i = 0; i < blocks.length; i += MAX_BLOCKS_PER_ROW) {
+    const rowBlocks = blocks.slice(i, i + MAX_BLOCKS_PER_ROW)
+    const firstSeed = rowBlocks[0][0].seed
+    const lastBlock = rowBlocks[rowBlocks.length - 1]
+    const lastSeed = lastBlock[lastBlock.length - 1].seed
+    rows.push({
+      label: `${firstSeed}`,
+      blocks: rowBlocks,
+    })
+  }
+  return rows
+})
 
 // --- Pipeline computeds ---
 
@@ -1312,5 +1353,53 @@ onUnmounted(() => {
 .overflow-y-auto::-webkit-scrollbar-thumb {
   background: var(--color-graphite, #475569);
   border-radius: 3px;
+}
+
+/* Seed Grid — grouped in blocks of 10 */
+.seed-grid-grouped {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.seed-grid-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.seed-row-label {
+  width: 2.25rem;
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  font-family: ui-monospace, monospace;
+  color: rgba(148, 163, 184, 0.5);
+  text-align: right;
+  padding-right: 0.4rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.seed-row-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.seed-block {
+  display: flex;
+  gap: 1px;
+}
+
+.seed-cell-grouped {
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  transition: transform 0.1s, background 0.15s;
+}
+
+.seed-cell-grouped:hover {
+  transform: scale(1.2);
+  z-index: 1;
 }
 </style>
