@@ -1338,7 +1338,7 @@ onUnmounted(() => {
 .seed-grid-flat {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .seed-grid-row {
@@ -1360,12 +1360,12 @@ onUnmounted(() => {
 
 .seed-row-cells {
   display: flex;
-  gap: 3px;
+  gap: 4px;
 }
 
 .seed-cell {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 3px;
   transition: transform 0.1s, background 0.15s;
 }
