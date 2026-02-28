@@ -1359,7 +1359,7 @@ onUnmounted(() => {
 .seed-grid-grouped {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .seed-grid-row {
@@ -1369,13 +1369,13 @@ onUnmounted(() => {
 }
 
 .seed-row-label {
-  width: 2.25rem;
+  width: 2.5rem;
   flex-shrink: 0;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-family: ui-monospace, monospace;
   color: rgba(148, 163, 184, 0.5);
   text-align: right;
-  padding-right: 0.4rem;
+  padding-right: 0.5rem;
   line-height: 1;
   user-select: none;
 }
@@ -1383,23 +1383,23 @@ onUnmounted(() => {
 .seed-row-blocks {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 10px;
 }
 
 .seed-block {
   display: flex;
-  gap: 1px;
+  gap: 2px;
 }
 
 .seed-cell-grouped {
-  width: 18px;
-  height: 18px;
-  border-radius: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
   transition: transform 0.1s, background 0.15s;
 }
 
 .seed-cell-grouped:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
   z-index: 1;
 }
 </style>
