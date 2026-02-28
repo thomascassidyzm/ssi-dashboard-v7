@@ -341,23 +341,16 @@
         </button>
 
         <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
-          <!-- Flat grid, 30 per row, with row labels -->
-          <div class="seed-grid-flat">
-            <template v-for="(row, rowIdx) in seedGridRows" :key="rowIdx">
-              <div class="seed-grid-row">
-                <span class="seed-row-label">{{ row.label }}</span>
-                <div class="seed-row-cells">
-                  <div
-                    v-for="cell in row.cells"
-                    :key="cell.seed"
-                    class="seed-cell cursor-pointer transition-colors"
-                    :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
-                    :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
-                    @click="selectSeed(cell.seed)"
-                  ></div>
-                </div>
-              </div>
-            </template>
+          <!-- Grid -->
+          <div class="flex flex-wrap gap-1">
+            <div
+              v-for="cell in seedGrid"
+              :key="cell.seed"
+              class="w-5 h-5 rounded-sm cursor-pointer transition-colors"
+              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
+              :title="`S${cell.seed}: ${cell.status} (${cell.legos}L, ${cell.phrases}P)`"
+              @click="selectSeed(cell.seed)"
+            ></div>
           </div>
 
           <!-- Legend -->
@@ -602,17 +595,6 @@ const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status ===
 const seedGridFlagged = computed(() => seedGrid.value.filter(s => s.status === 'flagged').length)
 
 // Group seeds into rows of blocks (each block = 10 seeds, max 3 blocks per row = 30 seeds)
-const SEEDS_PER_ROW = 30
-const seedGridRows = computed(() => {
-  const cells = seedGrid.value
-  if (!cells.length) return []
-  const rows = []
-  for (let i = 0; i < cells.length; i += SEEDS_PER_ROW) {
-    const rowCells = cells.slice(i, i + SEEDS_PER_ROW)
-    rows.push({ label: `${rowCells[0].seed}`, cells: rowCells })
-  }
-  return rows
-})
 
 // --- Pipeline computeds ---
 
@@ -1334,44 +1316,4 @@ onUnmounted(() => {
   border-radius: 3px;
 }
 
-/* Seed Grid — flat, 30 per row */
-.seed-grid-flat {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.seed-grid-row {
-  display: flex;
-  align-items: center;
-}
-
-.seed-row-label {
-  width: 2.5rem;
-  flex-shrink: 0;
-  font-size: 0.6rem;
-  font-family: ui-monospace, monospace;
-  color: rgba(148, 163, 184, 0.45);
-  text-align: right;
-  padding-right: 0.5rem;
-  line-height: 1;
-  user-select: none;
-}
-
-.seed-row-cells {
-  display: flex;
-  gap: 4px;
-}
-
-.seed-cell {
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
-  transition: transform 0.1s, background 0.15s;
-}
-
-.seed-cell:hover {
-  transform: scale(1.2);
-  z-index: 1;
-}
 </style>
