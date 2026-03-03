@@ -27,13 +27,19 @@ const createLogger = require('./shared/logger.cjs')
 const logger = createLogger('LearningScriptGenerator')
 
 // Fibonacci-based skip numbers for spaced repetition
-const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55]
 
 // Constants (matching learning app)
 const MAX_BUILD_PHRASES = 7
 const CONSOLIDATE_COUNT = 2
 const MAX_SPACED_REP_PHRASES = 12
 const N1_PHRASE_COUNT = 3
+
+// Listening configuration
+const LISTENING_OFFSET = 56
+const LISTENING_BATCH_SIZE = 20
+const LISTENING_BATCH_COUNT = 4
+const LISTENING_TOTAL_SEEDS = LISTENING_BATCH_SIZE * LISTENING_BATCH_COUNT // 80
 
 /**
  * Count syllables in target text.
@@ -80,6 +86,17 @@ function calculateSpacedRepReviews(roundNumber) {
   }
 
   return reviews
+}
+
+/**
+ * Get listening playback speeds for a seed based on its cumulative play count.
+ * Returns array of speed strings: ['normal'], ['normal','double'], ['double','double'], or ['double']
+ */
+function getListeningSpeedsForPlayCount(playCount) {
+  if (playCount <= 3) return ['normal']
+  if (playCount <= 6) return ['normal', 'double']
+  if (playCount <= 9) return ['double', 'double']
+  return ['double']
 }
 
 /**
@@ -348,6 +365,18 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const legoIds = legos.map(l => l.lego.id)
   const introAudioMap = await loadIntroductionAudio(supabase, courseCode, legoIds)
 
+  // Load seed sentences for listening items
+  const { data: seedRows } = await supabase
+    .from('course_seeds')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode)
+    .order('seed_number', { ascending: true })
+
+  const seedMap = new Map() // seed_number → { known_text, target_text }
+  for (const row of (seedRows || [])) {
+    seedMap.set(row.seed_number, { known_text: row.known_text, target_text: row.target_text })
+  }
+
   const rounds = []
   const allItems = []
 
@@ -358,6 +387,16 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   // legoState map: tracks lastRound and useIndex per LEGO for deterministic REVIEW
   const legoState = new Map()
   let roundCounter = offset
+
+  // Listening state tracking
+  const seedLastRound = new Map()   // seed_number → last round where seed had a LEGO
+  const graduatedSeeds = []         // ordered list of seed_numbers that have graduated
+  const listeningBatches = [[], [], [], []]  // 4 batches of seed_numbers
+  const seedPlayCount = new Map()   // seed_number → cumulative play count
+  const graduatedLegoIds = new Set() // LEGO IDs whose seeds have graduated (excluded from REVIEW)
+  let nextBatchToFill = 0           // which batch is currently being filled
+  let rotationIndex = 0             // which batch to play next
+  let activeBatchCount = 0          // how many batches have at least 1 seed
 
   for (let legoIdx = 0; legoIdx < legos.length; legoIdx++) {
     const currentLego = legos[legoIdx]
@@ -370,6 +409,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
     roundCounter++
     const n = roundCounter
+
+    // Track which seed this LEGO belongs to (for listening graduation)
+    const seedNum = currentLego.seed.seed_number
+    seedLastRound.set(seedNum, n)
 
     const currentBuildPhrases = buildMap.get(currentLego.lego.id) || []
     const currentUsePhrases = useMap.get(currentLego.lego.id) || []
@@ -519,6 +562,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
 
       if (!reviewLegoState) continue
+      if (graduatedLegoIds.has(reviewLegoState.legoId)) continue
       if (seenReviewLegos.has(reviewLegoState.legoId)) continue
       seenReviewLegos.add(reviewLegoState.legoId)
 
@@ -590,6 +634,83 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       })
     }
 
+    // Phase 6: LISTENING - graduation-triggered batch rotation
+    // Check which seeds graduate THIS round
+    const newGraduationsThisRound = []
+    for (const [sNum, lastRound] of seedLastRound.entries()) {
+      if (n - lastRound === LISTENING_OFFSET) {
+        // This seed just graduated
+        newGraduationsThisRound.push(sNum)
+        graduatedSeeds.push(sNum)
+
+        // Mark all LEGOs from this seed as graduated (exclude from future REVIEW)
+        for (const [legoId, state] of legoState.entries()) {
+          if (state.lego.seed.seed_number === sNum) {
+            graduatedLegoIds.add(legoId)
+          }
+        }
+
+        // Add to listening batch (first 80 seeds only)
+        if (graduatedSeeds.length <= LISTENING_TOTAL_SEEDS) {
+          listeningBatches[nextBatchToFill].push(sNum)
+          if (listeningBatches[nextBatchToFill].length === 1 && nextBatchToFill >= activeBatchCount) {
+            activeBatchCount = nextBatchToFill + 1
+          }
+          if (listeningBatches[nextBatchToFill].length >= LISTENING_BATCH_SIZE) {
+            nextBatchToFill = Math.min(nextBatchToFill + 1, LISTENING_BATCH_COUNT - 1)
+          }
+        }
+      }
+    }
+
+    // For each graduation trigger, play ONE batch (rotating)
+    for (let g = 0; g < newGraduationsThisRound.length; g++) {
+      if (activeBatchCount === 0) break
+      const batchIdx = rotationIndex % activeBatchCount
+      const batch = listeningBatches[batchIdx]
+      rotationIndex++
+
+      if (batch.length === 0) continue
+
+      // Play all seeds in this batch
+      for (const batchSeedNum of batch) {
+        const count = (seedPlayCount.get(batchSeedNum) || 0) + 1
+        seedPlayCount.set(batchSeedNum, count)
+        const speeds = getListeningSpeedsForPlayCount(count)
+
+        const seedData = seedMap.get(batchSeedNum)
+        if (!seedData) continue
+
+        // Find audio for this seed sentence (match against USE phrases)
+        let seedAudioUuid = null
+        for (const [legoId, usePhrases] of useMap.entries()) {
+          if (!legoId.startsWith(`S${String(batchSeedNum).padStart(4, '0')}`)) continue
+          const match = usePhrases.find(p =>
+            normalizePhrase(p.target_text) === normalizePhrase(seedData.target_text)
+          )
+          if (match) {
+            seedAudioUuid = match.target1_audio_uuid
+            break
+          }
+        }
+
+        for (const speed of speeds) {
+          roundItems.push({
+            roundNumber: n,
+            type: 'listening',
+            seedNumber: batchSeedNum,
+            known_text: seedData.known_text,
+            target_text: seedData.target_text,
+            listeningSpeed: speed,
+            listeningBatch: batchIdx + 1,
+            listeningPlayCount: count,
+            target1_audio_uuid: seedAudioUuid,
+            hasAudio: !!seedAudioUuid,
+          })
+        }
+      }
+    }
+
     // Remove consecutive duplicates
     const dedupedItems = []
     let lastItem = null
@@ -638,9 +759,12 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       build: allItems.filter(i => i.type === 'build').length,
       review: allItems.filter(i => i.type === 'review').length,
       consolidate: allItems.filter(i => i.type === 'consolidate').length,
+      listening: allItems.filter(i => i.type === 'listening').length,
     },
     itemsWithAudio: allItems.filter(i => i.hasAudio).length,
     itemsMissingAudio: allItems.filter(i => !i.hasAudio && i.type !== 'intro').length,
+    graduatedSeeds: graduatedSeeds.length,
+    listeningItems: allItems.filter(i => i.type === 'listening').length,
     generationTimeMs: elapsed,
   }
 
