@@ -19,6 +19,10 @@
           <span class="text-amber-400 text-sm">Missing Audio</span>
           <span class="text-amber-300 font-bold text-lg ml-2">{{ stats.itemsMissingAudio }}</span>
         </div>
+        <div v-if="stats.listeningItems > 0" class="stat-item">
+          <span class="text-pink-400 text-sm">Listening</span>
+          <span class="text-pink-300 font-bold text-lg ml-2">{{ stats.listeningItems }}</span>
+        </div>
         <div class="stat-item ml-auto">
           <span class="text-slate-400 text-sm">Generated in</span>
           <span class="text-slate-300 text-lg ml-2">{{ stats.generationTimeMs }}ms</span>
@@ -49,6 +53,10 @@
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
           <span class="text-slate-300">CONSOLIDATE</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-pink-500"></span>
+          <span class="text-slate-300">LISTENING</span>
         </div>
       </div>
 
@@ -199,9 +207,30 @@
                 R{{ item.reviewOf }}
               </div>
 
+              <!-- Listening badges: speed + batch -->
+              <div v-if="item.type === 'listening'" class="flex gap-1">
+                <span
+                  class="px-2 py-1 text-xs rounded font-bold"
+                  :class="item.listeningSpeed === 'double'
+                    ? 'bg-pink-600 text-white'
+                    : 'bg-pink-500 bg-opacity-30 text-pink-300'"
+                >
+                  {{ item.listeningSpeed === 'double' ? '2×' : '1×' }}
+                </span>
+                <span class="px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono">
+                  B{{ item.listeningBatch }}
+                </span>
+              </div>
+
               <!-- Content -->
               <div class="item-content flex-1 min-w-0">
-                <div class="flex gap-4">
+                <!-- Listening: target only -->
+                <div v-if="item.type === 'listening'" class="flex gap-2 items-center">
+                  <span class="text-pink-200">{{ item.target_text }}</span>
+                  <span class="text-slate-500 text-xs">#{{ item.listeningPlayCount }}</span>
+                </div>
+                <!-- Normal: known → target -->
+                <div v-else class="flex gap-4">
                   <span class="text-slate-400 truncate flex-1">{{ item.known_text }}</span>
                   <span class="text-slate-500">&rarr;</span>
                   <span class="text-white truncate flex-1">{{ item.target_text }}</span>
@@ -335,7 +364,7 @@ interface ScriptItem {
   legoId: string
   legoIndex: number
   seedId: string
-  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate'
+  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate' | 'listening'
   phrase_id?: string
   known_text: string
   target_text: string
@@ -351,6 +380,9 @@ interface ScriptItem {
   known_duration_ms?: number
   target1_duration_ms?: number
   target2_duration_ms?: number
+  listeningSpeed?: 'normal' | 'double'
+  listeningBatch?: number
+  listeningPlayCount?: number
 }
 
 interface RoundData {
@@ -371,6 +403,8 @@ interface Stats {
   itemsWithAudio: number
   itemsMissingAudio: number
   generationTimeMs: number
+  listeningItems?: number
+  graduatedSeeds?: number
 }
 
 const props = defineProps<{
@@ -667,6 +701,7 @@ const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?
     case 'build': return phrasePosition ? `BUILD-${phrasePosition}` : 'BUILD'
     case 'review': return 'REVIEW'
     case 'consolidate': return consolidateIndex ? `CONSOLIDATE-${consolidateIndex}` : 'CONSOLIDATE'
+    case 'listening': return 'LISTEN'
     default: return type
   }
 }
@@ -678,12 +713,14 @@ const getTypeBadgeClass = (type: string): string => {
     case 'build': return 'bg-blue-500 bg-opacity-30 text-blue-300'
     case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'
     case 'consolidate': return 'bg-cyan-500 bg-opacity-40 text-cyan-300'
+    case 'listening': return 'bg-pink-500 bg-opacity-30 text-pink-300'
     default: return 'bg-slate-600 text-slate-400'
   }
 }
 
 const getItemBgClass = (item: ScriptItem): string => {
   if (item.type === 'intro') return 'bg-slate-800'
+  if (item.type === 'listening') return 'bg-pink-900 bg-opacity-10'
   if (!item.hasAudio && item.type !== 'intro') return 'bg-amber-900 bg-opacity-10'
   return ''
 }
