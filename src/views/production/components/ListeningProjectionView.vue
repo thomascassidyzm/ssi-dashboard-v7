@@ -17,60 +17,94 @@
       </button>
 
       <div v-show="controlsOpen" class="bg-slate-800 rounded-lg p-4 border border-slate-700">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <!-- Total LEGOs -->
+        <!-- Row 1: Course shape -->
+        <div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Course shape</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Total LEGOs</label>
+            <label class="block text-xs text-slate-400 mb-1">Total LEGOs (rounds)</label>
             <input
               v-model.number="params.totalLegos"
               type="number" min="1" max="700"
               class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
             />
           </div>
-
-          <!-- Productive Window -->
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Productive window: {{ params.productiveWindow }}</label>
+            <label class="block text-xs text-slate-400 mb-1">LEGOs per seed</label>
             <input
-              v-model.number="params.productiveWindow"
-              type="range" min="3" max="30"
+              v-model.number="params.legosPerSeed"
+              type="number" min="1" max="5" step="0.1"
+              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+            />
+            <span class="text-xs text-slate-500">{{ derivedSeedCount }} seeds</span>
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">New content items/round</label>
+            <input
+              v-model.number="params.avgNewContentItems"
+              type="number" min="5" max="25"
+              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Target round time (s)</label>
+            <input
+              v-model.number="params.roundTimeTarget"
+              type="number" min="120" max="600" step="30"
+              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- Row 2: Listening parameters -->
+        <div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Listening</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Listening offset: {{ params.listeningOffset }}</label>
+            <input
+              v-model.number="params.listeningOffset"
+              type="range" min="30" max="150"
               class="w-full accent-purple-500"
             />
           </div>
-
-          <!-- Speed Cutover -->
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Speed cutover: {{ params.speedCutover }}</label>
+            <label class="block text-xs text-slate-400 mb-1">Seeds in listening pool</label>
             <input
-              v-model.number="params.speedCutover"
-              type="range" min="1" max="10"
-              class="w-full accent-purple-500"
+              v-model.number="params.listeningSeedCount"
+              type="number" min="1" max="100"
+              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
             />
           </div>
-
-          <!-- Extended Schedule -->
-          <div class="flex items-end">
-            <label class="flex items-center gap-2 text-sm text-slate-300 cursor-pointer">
-              <input
-                v-model="params.extendedSchedule"
-                type="checkbox"
-                class="accent-purple-500 w-4 h-4"
-              />
-              Extended Fibonacci
-            </label>
-          </div>
-
-          <!-- Productive Phrase Time -->
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Productive time (s)</label>
+            <label class="block text-xs text-slate-400 mb-1">Build-up frequency: {{ params.buildupFrequency }}</label>
+            <input
+              v-model.number="params.buildupFrequency"
+              type="range" min="1" max="5"
+              class="w-full accent-purple-500"
+            />
+            <span class="text-xs text-slate-500">every {{ params.buildupFrequency }} rounds</span>
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Steady frequency: {{ params.steadyFrequency }}</label>
+            <input
+              v-model.number="params.steadyFrequency"
+              type="range" min="1" max="5"
+              class="w-full accent-purple-500"
+            />
+            <span class="text-xs text-slate-500">every {{ params.steadyFrequency }} rounds</span>
+          </div>
+        </div>
+
+        <!-- Row 3: Timing -->
+        <div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Item timing</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Productive phrase (s)</label>
             <input
               v-model.number="params.productivePhraseTime"
               type="number" min="5" max="30"
               class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
             />
           </div>
-
-          <!-- Listening Normal Time -->
           <div>
             <label class="block text-xs text-slate-400 mb-1">Listening normal (s)</label>
             <input
@@ -79,53 +113,39 @@
               class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
             />
           </div>
-
-          <!-- Listening Fast Time -->
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Listening fast (s)</label>
+            <label class="block text-xs text-slate-400 mb-1">Listening double (s)</label>
             <input
               v-model.number="params.listeningFastTime"
               type="number" min="1" max="8"
               class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
             />
           </div>
-
-          <!-- Avg New Content Items -->
           <div>
-            <label class="block text-xs text-slate-400 mb-1">New content items</label>
-            <input
-              v-model.number="params.avgNewContentItems"
-              type="number" min="5" max="25"
+            <label class="block text-xs text-slate-400 mb-1">Build-up mode</label>
+            <select
+              v-model="params.buildupMode"
               class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
-            />
+            >
+              <option value="fixed_cadence">Fixed cadence</option>
+              <option value="on_arrival">On seed arrival</option>
+            </select>
           </div>
+        </div>
 
-          <!-- Round Time Target -->
-          <div>
-            <label class="block text-xs text-slate-400 mb-1">Target round (s)</label>
-            <input
-              v-model.number="params.roundTimeTarget"
-              type="number" min="120" max="600" step="30"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
-            />
-          </div>
-
-          <!-- Max Listening Items -->
-          <div>
-            <label class="block text-xs text-slate-400 mb-1">Max listening items</label>
-            <input
-              v-model.number="params.maxListeningItems"
-              type="number" min="0" max="100" step="1"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
-            />
-            <span class="text-xs text-slate-500">0 = unlimited</span>
-          </div>
+        <!-- Speed progression (read-only display) -->
+        <div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Speed progression per seed</div>
+        <div class="flex gap-3 text-xs text-slate-400">
+          <span class="bg-slate-700 px-2 py-1 rounded">Plays 1-3: normal</span>
+          <span class="bg-slate-700 px-2 py-1 rounded">Plays 4-6: normal + double</span>
+          <span class="bg-slate-700 px-2 py-1 rounded">Plays 7-9: double + double</span>
+          <span class="bg-slate-700 px-2 py-1 rounded">Plays 10+: double only</span>
         </div>
       </div>
     </div>
 
     <!-- Summary Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-4">
       <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
         <div class="text-xs text-slate-400">Avg round</div>
         <div class="text-lg font-bold text-white">{{ formatTime(summaryStats.avgRoundTime) }}</div>
@@ -135,12 +155,22 @@
         <div class="text-lg font-bold text-white">{{ formatTime(summaryStats.maxRoundTime) }}</div>
         <div class="text-xs text-slate-500">Round {{ summaryStats.maxRoundNumber }}</div>
       </div>
+      <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
+        <div class="text-xs text-slate-400">Listening starts</div>
+        <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.firstListeningRound || '—' }}</div>
+      </div>
+      <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
+        <div class="text-xs text-slate-400">Pool full</div>
+        <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.poolFullRound || '—' }}</div>
+        <div class="text-xs text-slate-500">{{ params.listeningSeedCount }} seeds</div>
+      </div>
       <div v-for="milestone in summaryStats.milestones" :key="milestone.round"
         class="bg-slate-800 rounded-lg p-3 border border-slate-700">
         <div class="text-xs text-slate-400">Round {{ milestone.round }}</div>
         <div class="text-sm font-bold text-white">{{ formatTime(milestone.totalTime) }}</div>
         <div class="text-xs text-slate-500">
-          {{ milestone.productive }}p + {{ milestone.listening }}l
+          {{ milestone.productive }}p + {{ milestone.listeningSeeds }}l
+          <span v-if="milestone.isListeningRound" class="text-purple-400 ml-1">(listening)</span>
         </div>
       </div>
     </div>
@@ -166,7 +196,7 @@
       </span>
       <span class="flex items-center gap-1.5">
         <span class="w-3 h-3 rounded-sm bg-purple-500 inline-block"></span>
-        Listening (fast)
+        Listening (double)
       </span>
     </div>
   </div>
@@ -182,28 +212,48 @@ const props = defineProps<{
 }>();
 
 const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
-const EXTENDED_FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610];
 
 const controlsOpen = ref(false);
 const chartContainer = ref<HTMLElement | null>(null);
 
 const params = reactive({
-  totalLegos: props.totalLegos || 50,
-  productiveWindow: 10,
-  speedCutover: 3,
-  extendedSchedule: true,
+  totalLegos: props.totalLegos || 300,
+  legosPerSeed: 2.1,
+  avgNewContentItems: 12,
+  roundTimeTarget: 300,
+  // Listening params
+  listeningOffset: 90,
+  listeningSeedCount: 20,
+  buildupFrequency: 2,
+  steadyFrequency: 3,
+  buildupMode: 'fixed_cadence' as 'fixed_cadence' | 'on_arrival',
+  // Timing
   productivePhraseTime: 15,
   listeningNormalTime: 5,
   listeningFastTime: 3,
-  avgNewContentItems: 12,
-  roundTimeTarget: 300,
-  maxListeningItems: 0,
 });
 
-// Sync prop changes
 watch(() => props.totalLegos, (v) => {
   if (v && v > 0) params.totalLegos = v;
 });
+
+const derivedSeedCount = computed(() =>
+  Math.floor(params.totalLegos / params.legosPerSeed)
+);
+
+// --- Speed progression ---
+// Each seed tracks how many "play events" it has had.
+// Per play event, the audio plays are:
+//   Plays 1-3:  1× normal
+//   Plays 4-6:  1× normal + 1× double
+//   Plays 7-9:  2× double
+//   Plays 10+:  1× double
+function listeningTimeForPlay(playCount: number, normalTime: number, fastTime: number): { normal: number; fast: number } {
+  if (playCount <= 3) return { normal: normalTime, fast: 0 };
+  if (playCount <= 6) return { normal: normalTime, fast: fastTime };
+  if (playCount <= 9) return { normal: 0, fast: 2 * fastTime };
+  return { normal: 0, fast: fastTime };
+}
 
 interface RoundData {
   round: number;
@@ -213,61 +263,130 @@ interface RoundData {
   listeningFastTime: number;
   newContentItems: number;
   productiveReviewItems: number;
-  listeningNormalItems: number;
-  listeningFastItems: number;
+  listeningPoolSize: number;
+  listeningNormalPlays: number;
+  listeningFastPlays: number;
+  isListeningRound: boolean;
+  graduatedLegoCount: number;
 }
 
 const roundData = computed<RoundData[]>(() => {
   const data: RoundData[] = [];
   const total = Math.max(1, params.totalLegos);
-  const fibSet = params.extendedSchedule ? EXTENDED_FIBONACCI : FIBONACCI;
+  const lps = params.legosPerSeed;
+
+  // Precompute: when does each seed become available for listening?
+  // Seed S's last LEGO is at round ceil(S * legosPerSeed).
+  // Seed S enters listening pool at that round + listeningOffset.
+  const seedCount = Math.min(params.listeningSeedCount, Math.floor(total / lps));
+  const seedAvailableAt: number[] = []; // index 0 = seed 1
+  for (let s = 1; s <= seedCount; s++) {
+    seedAvailableAt.push(Math.ceil(s * lps) + params.listeningOffset);
+  }
+
+  // Track play counts per seed
+  const seedPlayCounts = new Array(seedCount).fill(0);
+
+  // Track listening round cadence
+  let firstListeningRound = -1;
+  let poolFullRound = -1;
+  let lastListeningRound = -1;
 
   for (let N = 1; N <= total; N++) {
-    // 1. New content
-    const newContentItems = params.avgNewContentItems;
-    const newContentTime = newContentItems * params.productivePhraseTime;
-
-    // 2. Productive review — Fibonacci offsets within productive window
-    let productiveReviewItems = 0;
-    for (const f of FIBONACCI) {
-      if (f > params.productiveWindow) break;
-      if (N - f >= 1) {
-        productiveReviewItems += (f === 1) ? 3 : 1; // N-1 gets 3 items (isFirstRevisit)
+    // 1. Determine listening pool at this round
+    let poolSize = 0;
+    let newSeedArrived = false;
+    for (let s = 0; s < seedCount; s++) {
+      if (N >= seedAvailableAt[s]) {
+        poolSize++;
+        if (N === seedAvailableAt[s]) newSeedArrived = true;
       }
     }
+
+    if (poolSize > 0 && firstListeningRound < 0) firstListeningRound = N;
+    if (poolSize >= seedCount && poolFullRound < 0) poolFullRound = N;
+
+    // 2. Is this a listening round?
+    let isListeningRound = false;
+    if (poolSize > 0) {
+      if (params.buildupMode === 'on_arrival') {
+        // Trigger on any round a new seed arrives
+        // In steady state (pool full), use steady frequency
+        if (poolSize < seedCount) {
+          isListeningRound = newSeedArrived;
+        } else {
+          if (lastListeningRound < 0) {
+            isListeningRound = true;
+          } else {
+            isListeningRound = (N - lastListeningRound) >= params.steadyFrequency;
+          }
+        }
+      } else {
+        // Fixed cadence
+        if (poolSize < seedCount) {
+          // Build-up phase
+          if (firstListeningRound > 0) {
+            isListeningRound = ((N - firstListeningRound) % params.buildupFrequency === 0);
+          }
+        } else {
+          // Steady state
+          if (poolFullRound > 0) {
+            isListeningRound = ((N - poolFullRound) % params.steadyFrequency === 0);
+          }
+        }
+      }
+    }
+
+    // 3. Compute listening time
+    let listeningNormalTime = 0;
+    let listeningFastTime = 0;
+    let listeningNormalPlays = 0;
+    let listeningFastPlays = 0;
+
+    if (isListeningRound) {
+      lastListeningRound = N;
+      for (let s = 0; s < seedCount; s++) {
+        if (N >= seedAvailableAt[s]) {
+          seedPlayCounts[s]++;
+          const timing = listeningTimeForPlay(
+            seedPlayCounts[s],
+            params.listeningNormalTime,
+            params.listeningFastTime
+          );
+          listeningNormalTime += timing.normal;
+          listeningFastTime += timing.fast;
+          if (timing.normal > 0) listeningNormalPlays++;
+          if (timing.fast > 0) listeningFastPlays += (seedPlayCounts[s] >= 7 && seedPlayCounts[s] <= 9) ? 2 : 1;
+        }
+      }
+    }
+
+    // 4. Productive review — Fibonacci offsets, skipping graduated LEGOs
+    // A LEGO introduced at round R belongs to seed ceil(R / legosPerSeed).
+    // If that seed has entered the listening pool, skip it.
+    let productiveReviewItems = 0;
+    let graduatedLegoCount = 0;
+    for (const f of FIBONACCI) {
+      const legoRound = N - f;
+      if (legoRound < 1) continue;
+
+      // Which seed does this LEGO belong to?
+      const legoSeed = Math.ceil(legoRound / lps); // 1-indexed
+
+      // Has this seed graduated to listening?
+      if (legoSeed <= seedCount && N >= seedAvailableAt[legoSeed - 1]) {
+        graduatedLegoCount++;
+        continue; // skip — graduated to listening
+      }
+
+      productiveReviewItems += (f === 1) ? 3 : 1;
+    }
+
     const productiveReviewTime = productiveReviewItems * params.productivePhraseTime;
 
-    // 3. Listening review — Fibonacci offsets beyond productive window
-    let listeningNormalItems = 0;
-    let listeningFastItems = 0;
-    let positionBeyond = 0;
-
-    for (const f of fibSet) {
-      if (f <= params.productiveWindow) continue;
-      if (N - f < 1) continue;
-      positionBeyond++;
-      if (positionBeyond <= params.speedCutover) {
-        listeningNormalItems++;
-      } else {
-        listeningFastItems++;
-      }
-    }
-
-    // Apply max listening items cap
-    if (params.maxListeningItems > 0) {
-      const totalListening = listeningNormalItems + listeningFastItems;
-      if (totalListening > params.maxListeningItems) {
-        // Keep the most recent (normal speed) ones, trim fast ones first
-        const excess = totalListening - params.maxListeningItems;
-        const fastTrim = Math.min(excess, listeningFastItems);
-        listeningFastItems -= fastTrim;
-        const normalTrim = excess - fastTrim;
-        listeningNormalItems -= normalTrim;
-      }
-    }
-
-    const listeningNormalTime = listeningNormalItems * params.listeningNormalTime;
-    const listeningFastTime = listeningFastItems * params.listeningFastTime;
+    // 5. New content
+    const newContentItems = params.avgNewContentItems;
+    const newContentTime = newContentItems * params.productivePhraseTime;
 
     data.push({
       round: N,
@@ -277,8 +396,11 @@ const roundData = computed<RoundData[]>(() => {
       listeningFastTime,
       newContentItems,
       productiveReviewItems,
-      listeningNormalItems,
-      listeningFastItems,
+      listeningPoolSize: poolSize,
+      listeningNormalPlays,
+      listeningFastPlays,
+      isListeningRound,
+      graduatedLegoCount,
     });
   }
 
@@ -288,7 +410,10 @@ const roundData = computed<RoundData[]>(() => {
 const summaryStats = computed(() => {
   const data = roundData.value;
   if (data.length === 0) {
-    return { avgRoundTime: 0, maxRoundTime: 0, maxRoundNumber: 0, milestones: [] };
+    return {
+      avgRoundTime: 0, maxRoundTime: 0, maxRoundNumber: 0,
+      firstListeningRound: 0, poolFullRound: 0, milestones: [],
+    };
   }
 
   const totalTime = (r: RoundData) =>
@@ -299,21 +424,26 @@ const summaryStats = computed(() => {
   const maxRoundTime = Math.max(...times);
   const maxRoundNumber = times.indexOf(maxRoundTime) + 1;
 
-  const milestoneRounds = [50, 100, 200, 300].filter(r => r <= data.length);
+  const firstListeningRound = data.find(r => r.isListeningRound)?.round || 0;
+  const poolFullRound = data.find(r => r.listeningPoolSize >= params.listeningSeedCount)?.round || 0;
+
+  const milestoneRounds = [100, 200, 300, 500].filter(r => r <= data.length);
   const milestones = milestoneRounds.map(r => {
     const rd = data[r - 1];
     return {
       round: r,
       totalTime: totalTime(rd),
       productive: rd.newContentItems + rd.productiveReviewItems,
-      listening: rd.listeningNormalItems + rd.listeningFastItems,
+      listeningSeeds: rd.listeningPoolSize,
+      isListeningRound: rd.isListeningRound,
     };
   });
 
-  return { avgRoundTime, maxRoundTime, maxRoundNumber, milestones };
+  return { avgRoundTime, maxRoundTime, maxRoundNumber, firstListeningRound, poolFullRound, milestones };
 });
 
 function formatTime(seconds: number): string {
+  if (!seconds && seconds !== 0) return '—';
   const m = Math.floor(seconds / 60);
   const s = Math.round(seconds % 60);
   return `${m}:${s.toString().padStart(2, '0')}`;
@@ -330,7 +460,6 @@ function renderChart() {
   const data = roundData.value;
   if (data.length === 0) return;
 
-  // Clear previous
   d3.select(container).selectAll('*').remove();
 
   const containerWidth = container.clientWidth;
@@ -345,9 +474,8 @@ function renderChart() {
     .append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
-  // Prepare stack data
   const keys = ['newContentTime', 'productiveReviewTime', 'listeningNormalTime', 'listeningFastTime'] as const;
-  const colors = ['#3b82f6', '#10b981', '#f59e0b', '#a855f7']; // blue-500, emerald-500, amber-500, purple-500
+  const colors = ['#3b82f6', '#10b981', '#f59e0b', '#a855f7'];
 
   const stack = d3.stack<RoundData>()
     .keys(keys as any)
@@ -356,7 +484,6 @@ function renderChart() {
 
   const series = stack(data);
 
-  // Scales
   const x = d3.scaleLinear()
     .domain([1, data.length])
     .range([0, width]);
@@ -366,14 +493,13 @@ function renderChart() {
     .domain([0, Math.max(maxY * 1.05, params.roundTimeTarget * 1.2)])
     .range([height, 0]);
 
-  // Area generator
   const area = d3.area<d3.SeriesPoint<RoundData>>()
     .x(d => x(d.data.round))
     .y0(d => y(d[0]))
     .y1(d => y(d[1]))
     .curve(d3.curveMonotoneX);
 
-  // Draw stacked areas
+  // Stacked areas
   svg.selectAll('.area-layer')
     .data(series)
     .join('path')
@@ -382,7 +508,47 @@ function renderChart() {
     .attr('fill', (_, i) => colors[i])
     .attr('opacity', 0.8);
 
-  // Reference line (round time target)
+  // Listening start marker
+  const firstLR = summaryStats.value.firstListeningRound;
+  if (firstLR > 0 && firstLR <= data.length) {
+    svg.append('line')
+      .attr('x1', x(firstLR))
+      .attr('x2', x(firstLR))
+      .attr('y1', 0)
+      .attr('y2', height)
+      .attr('stroke', '#a855f7')
+      .attr('stroke-width', 1)
+      .attr('stroke-dasharray', '4,3')
+      .attr('opacity', 0.6);
+    svg.append('text')
+      .attr('x', x(firstLR) + 4)
+      .attr('y', 12)
+      .attr('fill', '#a855f7')
+      .attr('font-size', '10px')
+      .text('listening starts');
+  }
+
+  // Pool full marker
+  const pfr = summaryStats.value.poolFullRound;
+  if (pfr > 0 && pfr <= data.length && pfr !== firstLR) {
+    svg.append('line')
+      .attr('x1', x(pfr))
+      .attr('x2', x(pfr))
+      .attr('y1', 0)
+      .attr('y2', height)
+      .attr('stroke', '#a855f7')
+      .attr('stroke-width', 1)
+      .attr('stroke-dasharray', '4,3')
+      .attr('opacity', 0.4);
+    svg.append('text')
+      .attr('x', x(pfr) + 4)
+      .attr('y', 24)
+      .attr('fill', '#a855f7')
+      .attr('font-size', '10px')
+      .text('pool full');
+  }
+
+  // Reference line (target)
   svg.append('line')
     .attr('x1', 0)
     .attr('x2', width)
@@ -393,7 +559,6 @@ function renderChart() {
     .attr('stroke-dasharray', '6,4')
     .attr('opacity', 0.8);
 
-  // Target label
   svg.append('text')
     .attr('x', width - 4)
     .attr('y', y(params.roundTimeTarget) - 6)
@@ -447,7 +612,6 @@ function renderChart() {
     .style('z-index', '10')
     .style('white-space', 'nowrap');
 
-  // Hover line
   const hoverLine = svg.append('line')
     .attr('y1', 0)
     .attr('y2', height)
@@ -456,7 +620,6 @@ function renderChart() {
     .attr('stroke-dasharray', '3,3')
     .style('display', 'none');
 
-  // Invisible overlay for mouse events
   svg.append('rect')
     .attr('width', width)
     .attr('height', height)
@@ -470,16 +633,26 @@ function renderChart() {
 
       const total = rd.newContentTime + rd.productiveReviewTime + rd.listeningNormalTime + rd.listeningFastTime;
 
+      const listeningLine = rd.isListeningRound
+        ? `<div style="color:#a855f7;font-weight:500">Listening round — ${rd.listeningPoolSize} seeds in pool</div>`
+        : `<div style="color:#64748b">${rd.listeningPoolSize > 0 ? rd.listeningPoolSize + ' seeds in pool (no listening this round)' : 'No listening yet'}</div>`;
+
+      // Clamp tooltip to stay within chart
+      const tooltipX = mx + margin.left + 12;
+      const clampedX = Math.min(tooltipX, containerWidth - 220);
+
       tooltip
         .style('display', 'block')
-        .style('left', `${mx + margin.left + 12}px`)
-        .style('top', `${y(total) + margin.top - 10}px`)
+        .style('left', `${clampedX}px`)
+        .style('top', `${Math.max(0, y(total) + margin.top - 10)}px`)
         .html(`
           <div style="font-weight:600;margin-bottom:4px">Round ${clamped} — ${formatTime(total)}</div>
           <div style="color:#3b82f6">New content: ${rd.newContentItems} items (${formatTime(rd.newContentTime)})</div>
           <div style="color:#10b981">Productive review: ${rd.productiveReviewItems} items (${formatTime(rd.productiveReviewTime)})</div>
-          <div style="color:#f59e0b">Listening normal: ${rd.listeningNormalItems} items (${formatTime(rd.listeningNormalTime)})</div>
-          <div style="color:#a855f7">Listening fast: ${rd.listeningFastItems} items (${formatTime(rd.listeningFastTime)})</div>
+          ${rd.graduatedLegoCount > 0 ? `<div style="color:#64748b;font-size:11px">${rd.graduatedLegoCount} Fibonacci slots graduated</div>` : ''}
+          ${listeningLine}
+          ${rd.isListeningRound ? `<div style="color:#f59e0b">  Normal plays: ${rd.listeningNormalPlays} (${formatTime(rd.listeningNormalTime)})</div>` : ''}
+          ${rd.isListeningRound ? `<div style="color:#a855f7">  Double plays: ${rd.listeningFastPlays} (${formatTime(rd.listeningFastTime)})</div>` : ''}
         `);
 
       hoverLine
@@ -493,7 +666,6 @@ function renderChart() {
     });
 }
 
-// Watch for param changes and re-render
 watch([roundData, () => params.roundTimeTarget], () => {
   nextTick(renderChart);
 });
@@ -501,7 +673,6 @@ watch([roundData, () => params.roundTimeTarget], () => {
 onMounted(() => {
   nextTick(renderChart);
 
-  // Responsive resize
   if (chartContainer.value) {
     resizeObserver = new ResizeObserver(() => {
       renderChart();
