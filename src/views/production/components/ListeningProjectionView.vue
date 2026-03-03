@@ -67,12 +67,13 @@
             />
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Seeds in listening pool</label>
+            <label class="block text-xs text-slate-400 mb-1">Batch size</label>
             <input
-              v-model.number="params.listeningSeedCount"
-              type="number" min="1" max="100"
+              v-model.number="params.batchSize"
+              type="number" min="5" max="100"
               class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
             />
+            <span class="text-xs text-slate-500">{{ totalGraduatingSeeds }} seeds / {{ batchCount }} batches</span>
           </div>
           <div>
             <label class="block text-xs text-slate-400 mb-1">Build-up frequency: {{ params.buildupFrequency }}</label>
@@ -160,9 +161,9 @@
         <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.firstListeningRound || '—' }}</div>
       </div>
       <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
-        <div class="text-xs text-slate-400">Pool full</div>
-        <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.poolFullRound || '—' }}</div>
-        <div class="text-xs text-slate-500">{{ params.listeningSeedCount }} seeds</div>
+        <div class="text-xs text-slate-400">All graduated</div>
+        <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.allGraduatedRound || '—' }}</div>
+        <div class="text-xs text-slate-500">{{ totalGraduatingSeeds }} seeds</div>
       </div>
       <div v-for="milestone in summaryStats.milestones" :key="milestone.round"
         class="bg-slate-800 rounded-lg p-3 border border-slate-700">
@@ -223,7 +224,7 @@ const params = reactive({
   roundTimeTarget: 300,
   // Listening params
   listeningOffset: 90,
-  listeningSeedCount: 20,
+  batchSize: 20,
   buildupFrequency: 2,
   steadyFrequency: 3,
   buildupMode: 'fixed_cadence' as 'fixed_cadence' | 'on_arrival',
@@ -239,6 +240,16 @@ watch(() => props.totalLegos, (v) => {
 
 const derivedSeedCount = computed(() =>
   Math.floor(params.totalLegos / params.legosPerSeed)
+);
+
+// How many seeds can actually graduate within the course length?
+const totalGraduatingSeeds = computed(() => {
+  const maxSeed = Math.floor((params.totalLegos - params.listeningOffset) / params.legosPerSeed);
+  return Math.max(0, Math.min(maxSeed, derivedSeedCount.value));
+});
+
+const batchCount = computed(() =>
+  Math.ceil(totalGraduatingSeeds.value / params.batchSize)
 );
 
 // --- Speed progression ---
@@ -275,10 +286,8 @@ const roundData = computed<RoundData[]>(() => {
   const total = Math.max(1, params.totalLegos);
   const lps = params.legosPerSeed;
 
-  // Precompute: when does each seed become available for listening?
-  // Seed S's last LEGO is at round ceil(S * legosPerSeed).
-  // Seed S enters listening pool at that round + listeningOffset.
-  const seedCount = Math.min(params.listeningSeedCount, Math.floor(total / lps));
+  // All seeds that can graduate within the course length
+  const seedCount = totalGraduatingSeeds.value;
   const seedAvailableAt: number[] = []; // index 0 = seed 1
   for (let s = 1; s <= seedCount; s++) {
     seedAvailableAt.push(Math.ceil(s * lps) + params.listeningOffset);
@@ -289,7 +298,7 @@ const roundData = computed<RoundData[]>(() => {
 
   // Track listening round cadence
   let firstListeningRound = -1;
-  let poolFullRound = -1;
+  let allGraduatedRound = -1;
   let lastListeningRound = -1;
 
   for (let N = 1; N <= total; N++) {
@@ -304,15 +313,15 @@ const roundData = computed<RoundData[]>(() => {
     }
 
     if (poolSize > 0 && firstListeningRound < 0) firstListeningRound = N;
-    if (poolSize >= seedCount && poolFullRound < 0) poolFullRound = N;
+    if (poolSize >= seedCount && allGraduatedRound < 0) allGraduatedRound = N;
 
     // 2. Is this a listening round?
+    // Build-up = new seeds still arriving; steady = all seeds graduated
+    const stillGrowing = poolSize < seedCount;
     let isListeningRound = false;
     if (poolSize > 0) {
       if (params.buildupMode === 'on_arrival') {
-        // Trigger on any round a new seed arrives
-        // In steady state (pool full), use steady frequency
-        if (poolSize < seedCount) {
+        if (stillGrowing) {
           isListeningRound = newSeedArrived;
         } else {
           if (lastListeningRound < 0) {
@@ -323,15 +332,13 @@ const roundData = computed<RoundData[]>(() => {
         }
       } else {
         // Fixed cadence
-        if (poolSize < seedCount) {
-          // Build-up phase
+        if (stillGrowing) {
           if (firstListeningRound > 0) {
             isListeningRound = ((N - firstListeningRound) % params.buildupFrequency === 0);
           }
         } else {
-          // Steady state
-          if (poolFullRound > 0) {
-            isListeningRound = ((N - poolFullRound) % params.steadyFrequency === 0);
+          if (allGraduatedRound > 0) {
+            isListeningRound = ((N - allGraduatedRound) % params.steadyFrequency === 0);
           }
         }
       }
@@ -412,7 +419,7 @@ const summaryStats = computed(() => {
   if (data.length === 0) {
     return {
       avgRoundTime: 0, maxRoundTime: 0, maxRoundNumber: 0,
-      firstListeningRound: 0, poolFullRound: 0, milestones: [],
+      firstListeningRound: 0, allGraduatedRound: 0, milestones: [],
     };
   }
 
@@ -425,7 +432,10 @@ const summaryStats = computed(() => {
   const maxRoundNumber = times.indexOf(maxRoundTime) + 1;
 
   const firstListeningRound = data.find(r => r.isListeningRound)?.round || 0;
-  const poolFullRound = data.find(r => r.listeningPoolSize >= params.listeningSeedCount)?.round || 0;
+  const graduatingCount = totalGraduatingSeeds.value;
+  const allGraduatedRound = graduatingCount > 0
+    ? (data.find(r => r.listeningPoolSize >= graduatingCount)?.round || 0)
+    : 0;
 
   const milestoneRounds = [100, 200, 300, 500].filter(r => r <= data.length);
   const milestones = milestoneRounds.map(r => {
@@ -439,7 +449,7 @@ const summaryStats = computed(() => {
     };
   });
 
-  return { avgRoundTime, maxRoundTime, maxRoundNumber, firstListeningRound, poolFullRound, milestones };
+  return { avgRoundTime, maxRoundTime, maxRoundNumber, firstListeningRound, allGraduatedRound, milestones };
 });
 
 function formatTime(seconds: number): string {
@@ -528,12 +538,12 @@ function renderChart() {
       .text('listening starts');
   }
 
-  // Pool full marker
-  const pfr = summaryStats.value.poolFullRound;
-  if (pfr > 0 && pfr <= data.length && pfr !== firstLR) {
+  // All graduated marker
+  const agr = summaryStats.value.allGraduatedRound;
+  if (agr > 0 && agr <= data.length && agr !== firstLR) {
     svg.append('line')
-      .attr('x1', x(pfr))
-      .attr('x2', x(pfr))
+      .attr('x1', x(agr))
+      .attr('x2', x(agr))
       .attr('y1', 0)
       .attr('y2', height)
       .attr('stroke', '#a855f7')
@@ -541,11 +551,38 @@ function renderChart() {
       .attr('stroke-dasharray', '4,3')
       .attr('opacity', 0.4);
     svg.append('text')
-      .attr('x', x(pfr) + 4)
+      .attr('x', x(agr) + 4)
       .attr('y', 24)
       .attr('fill', '#a855f7')
       .attr('font-size', '10px')
-      .text('pool full');
+      .text('all graduated');
+  }
+
+  // Batch boundary markers
+  const bs = params.batchSize;
+  const gradSeeds = totalGraduatingSeeds.value;
+  for (let b = 1; b * bs < gradSeeds; b++) {
+    // Batch boundary = when seed (b * batchSize) enters the pool
+    const boundarySeed = b * bs; // 1-indexed
+    const boundaryRound = Math.ceil(boundarySeed * params.legosPerSeed) + params.listeningOffset;
+    if (boundaryRound > 0 && boundaryRound <= data.length) {
+      svg.append('line')
+        .attr('x1', x(boundaryRound))
+        .attr('x2', x(boundaryRound))
+        .attr('y1', height - 30)
+        .attr('y2', height)
+        .attr('stroke', '#a855f7')
+        .attr('stroke-width', 1)
+        .attr('opacity', 0.3);
+      svg.append('text')
+        .attr('x', x(boundaryRound))
+        .attr('y', height - 34)
+        .attr('text-anchor', 'middle')
+        .attr('fill', '#a855f7')
+        .attr('font-size', '9px')
+        .attr('opacity', 0.5)
+        .text(`B${b + 1}`);
+    }
   }
 
   // Reference line (target)
