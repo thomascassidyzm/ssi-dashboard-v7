@@ -6,7 +6,10 @@
         <div class="header-left flex items-center gap-4">
           <h1 class="text-xl font-bold text-white">Script Viewer</h1>
           <div v-if="totalSeeds > 0" class="stats text-sm text-slate-400">
-            <template v-if="viewMode === 'journey'">
+            <template v-if="viewMode === 'listening'">
+              <span class="text-purple-400">Listening Projection</span>
+            </template>
+            <template v-else-if="viewMode === 'journey'">
               <span v-if="journeySearching" class="text-emerald-400">Searching...</span>
               <span v-else-if="journeySearch.trim() && journeySearchResults !== null">
                 {{ filteredJourneyRounds.length }} results
@@ -46,13 +49,23 @@
 
         <div class="header-right flex items-center gap-3">
           <!-- View Mode Toggle Buttons -->
-          <!-- Script View title badge -->
-          <div class="px-4 py-2 text-sm bg-emerald-500 text-white rounded-lg flex items-center gap-2">
+          <button
+            @click="viewMode = 'journey'; if (!learningJourneyData) { journeyOffset = 0; loadLearningJourney(); }"
+            :class="viewMode !== 'listening' ? 'bg-emerald-500 text-white' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'"
+            class="px-4 py-2 text-sm rounded-lg flex items-center gap-2 transition-colors"
+          >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
             </svg>
             Course Preview
-          </div>
+          </button>
+          <button
+            @click="viewMode = 'listening'; if (!learningJourneyData) { journeyOffset = 0; loadLearningJourney(); }"
+            :class="viewMode === 'listening' ? 'bg-purple-500 text-white' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'"
+            class="px-4 py-2 text-sm rounded-lg transition-colors"
+          >
+            Listening Projection
+          </button>
 
           <!-- Collapse/Expand All (only in seed mode) -->
           <template v-if="viewMode === 'script'">
@@ -327,6 +340,14 @@
           @audio-flag="onJourneyAudioFlag"
           @audio-regen="onJourneyAudioRegen"
           @phrase-flag="onJourneyPhraseFlag"
+        />
+      </template>
+
+      <!-- Listening Projection View Mode -->
+      <template v-else-if="viewMode === 'listening'">
+        <ListeningProjectionView
+          :course-code="courseCode"
+          :total-legos="learningJourneyData?.stats?.roundsGenerated || 50"
         />
       </template>
 
@@ -849,6 +870,7 @@ import FlagModal from './components/FlagModal.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
 import FlaggedItemRow from './components/FlaggedItemRow.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
+import ListeningProjectionView from './components/ListeningProjectionView.vue';
 import { getApiUrl } from '@/services/api';
 // CyclePlayer removed - not useful for QA workflow
 import type {
@@ -917,7 +939,7 @@ const phraseEditMode = ref<'phrase' | 'lego'>('phrase');
 const showShortcutsHelp = ref(false);
 
 // Learning Journey View Mode
-const viewMode = ref<'script' | 'journey'>('journey');
+const viewMode = ref<'script' | 'journey' | 'listening'>('journey');
 const learningJourneyData = ref<{
   rounds: any[];
   allItems: any[];
@@ -2324,11 +2346,13 @@ onMounted(() => {
   // Check for view query param
   if (route.query.view === 'seed' || route.query.view === 'seed-view') {
     viewMode.value = 'script';
+  } else if (route.query.view === 'listening') {
+    viewMode.value = 'listening';
   } else if (route.query.view === 'journey' || route.query.view === 'script-view') {
     viewMode.value = 'journey';
   }
-  // Default is 'journey' — always load journey data when in journey mode
-  if (viewMode.value === 'journey') {
+  // Load journey data when in journey or listening mode (listening needs stats)
+  if (viewMode.value === 'journey' || viewMode.value === 'listening') {
     loadLearningJourney();
   }
   // Check for filter query param (from QA link)
