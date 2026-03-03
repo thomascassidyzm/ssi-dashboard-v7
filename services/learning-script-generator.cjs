@@ -355,7 +355,13 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
   const startTime = Date.now()
 
-  const legos = await loadAllUniqueLegos(supabase, courseCode, maxLegos, offset)
+  // Pre-load extra LEGOs before offset for Fibonacci lookback (max skip = 55)
+  const maxFibLookback = FIBONACCI[FIBONACCI.length - 1] // 55
+  const lookbackStart = Math.max(0, offset - maxFibLookback)
+  const lookbackCount = offset - lookbackStart  // how many extra LEGOs to pre-process
+  const totalToLoad = lookbackCount + maxLegos
+
+  const legos = await loadAllUniqueLegos(supabase, courseCode, totalToLoad, lookbackStart)
   if (legos.length === 0) {
     return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
   }
@@ -386,7 +392,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
   // legoState map: tracks lastRound and useIndex per LEGO for deterministic REVIEW
   const legoState = new Map()
-  let roundCounter = offset
+  let roundCounter = lookbackStart
 
   // Listening state tracking
   const seedLastRound = new Map()   // seed_number → last round where seed had a LEGO
@@ -731,19 +737,22 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       lastItem = item
     }
 
-    rounds.push({
-      roundNumber: n,
-      legoId: currentLego.lego.id,
-      legoIndex: n,
-      seedId: currentLego.seed.seed_id,
-      legoType: currentLego.lego.type,
-      isNew: currentLego.lego.new,
-      items: dedupedItems,
-      spacedRepReviews: reviewIndices,
-      itemCount: dedupedItems.length,
-    })
+    // Only emit rounds past the lookback range (i.e. at the requested offset)
+    if (n > offset) {
+      rounds.push({
+        roundNumber: n,
+        legoId: currentLego.lego.id,
+        legoIndex: n,
+        seedId: currentLego.seed.seed_id,
+        legoType: currentLego.lego.type,
+        isNew: currentLego.lego.new,
+        items: dedupedItems,
+        spacedRepReviews: reviewIndices,
+        itemCount: dedupedItems.length,
+      })
 
-    allItems.push(...dedupedItems)
+      allItems.push(...dedupedItems)
+    }
   }
 
   const elapsed = Date.now() - startTime
@@ -768,7 +777,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     generationTimeMs: elapsed,
   }
 
-  return { rounds, allItems, stats, legosLoaded: legos.length }
+  return { rounds, allItems, stats, legosLoaded: rounds.length }
 }
 
 module.exports = {
