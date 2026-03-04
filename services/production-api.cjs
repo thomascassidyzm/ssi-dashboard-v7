@@ -90,7 +90,7 @@ const io = new Server(httpServer, {
 app.use(cors({
   origin: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'ngrok-skip-browser-warning'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'],
   credentials: true
 }))
 app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
@@ -103,6 +103,282 @@ app.use((req, res, next) => {
   res.set('Surrogate-Control', 'no-store')
   next()
 })
+
+// =============================================================================
+// AUTH ROUTES
+// =============================================================================
+// S3-backed authentication with login codes
+
+const { S3Client, GetObjectCommand, PutObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3')
+const crypto = require('crypto')
+
+const AUTH_S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
+const AUTH_PREFIX = 'auth/'
+const LOGIN_CODE_TTL = 30 * 24 * 60 * 60 * 1000 // 30 days
+const SESSION_TTL = 7 * 24 * 60 * 60 * 1000 // 7 days
+
+const authS3 = new S3Client({
+  region: process.env.AWS_REGION || 'eu-west-1',
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
+})
+
+async function s3StreamToString(stream) {
+  const chunks = []
+  for await (const chunk of stream) { chunks.push(chunk) }
+  return Buffer.concat(chunks).toString('utf-8')
+}
+
+async function authGetUser(email) {
+  try {
+    const result = await authS3.send(new GetObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}users.json` }))
+    const users = JSON.parse(await s3StreamToString(result.Body))
+    return users.users?.[email] || null
+  } catch (err) {
+    if (err.name === 'NoSuchKey') return null
+    throw err
+  }
+}
+
+async function authGetAllUsers() {
+  try {
+    const result = await authS3.send(new GetObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}users.json` }))
+    return JSON.parse(await s3StreamToString(result.Body))
+  } catch (err) {
+    if (err.name === 'NoSuchKey') return { users: {} }
+    throw err
+  }
+}
+
+async function authSaveUsers(usersData) {
+  await authS3.send(new PutObjectCommand({
+    Bucket: AUTH_S3_BUCKET,
+    Key: `${AUTH_PREFIX}users.json`,
+    Body: JSON.stringify(usersData, null, 2),
+    ContentType: 'application/json'
+  }))
+}
+
+async function authGenerateLoginCode(email) {
+  const user = await authGetUser(email)
+  if (!user) return { error: 'User not found' }
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+  let code = ''
+  const bytes = crypto.randomBytes(6)
+  for (let i = 0; i < 6; i++) { code += chars[bytes[i] % chars.length] }
+  const expires = Date.now() + LOGIN_CODE_TTL
+  await authS3.send(new PutObjectCommand({
+    Bucket: AUTH_S3_BUCKET,
+    Key: `${AUTH_PREFIX}codes/${code}.json`,
+    Body: JSON.stringify({ email, expires }),
+    ContentType: 'application/json'
+  }))
+  return { code, expires }
+}
+
+async function authVerifyLoginCode(email, code) {
+  if (!code) return { error: 'Code required' }
+  const normalizedCode = code.toUpperCase().trim()
+  try {
+    const result = await authS3.send(new GetObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}codes/${normalizedCode}.json` }))
+    const data = JSON.parse(await s3StreamToString(result.Body))
+    if (Date.now() > data.expires) return { error: 'Code expired' }
+    if (data.email.toLowerCase() !== email.toLowerCase()) return { error: 'Invalid code' }
+    return { email: data.email }
+  } catch (err) {
+    if (err.name === 'NoSuchKey') return { error: 'Invalid code' }
+    throw err
+  }
+}
+
+async function authCreateSession(email) {
+  const sessionId = crypto.randomBytes(32).toString('hex')
+  const expires = Date.now() + SESSION_TTL
+  const user = await authGetUser(email)
+  await authS3.send(new PutObjectCommand({
+    Bucket: AUTH_S3_BUCKET,
+    Key: `${AUTH_PREFIX}sessions/${sessionId}.json`,
+    Body: JSON.stringify({ email, expires, user }),
+    ContentType: 'application/json'
+  }))
+  return { sessionId, expires, user }
+}
+
+async function authValidateSession(sessionId) {
+  try {
+    const result = await authS3.send(new GetObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}sessions/${sessionId}.json` }))
+    const data = JSON.parse(await s3StreamToString(result.Body))
+    if (Date.now() > data.expires) return null
+    return data.user
+  } catch (err) {
+    if (err.name === 'NoSuchKey') return null
+    throw err
+  }
+}
+
+async function authDeleteSession(sessionId) {
+  await authS3.send(new DeleteObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}sessions/${sessionId}.json` }))
+}
+
+// Helper: extract session from Authorization header and verify admin
+async function requireAdmin(req, res) {
+  const sessionId = req.headers.authorization?.replace('Bearer ', '')
+  if (!sessionId) { res.status(401).json({ error: 'Authentication required' }); return null }
+  const user = await authValidateSession(sessionId)
+  if (!user || user.role !== 'admin') { res.status(403).json({ error: 'Admin access required' }); return null }
+  return user
+}
+
+// POST /api/auth/login — login with email + code
+app.post('/api/auth/login', async (req, res) => {
+  const { email, code } = req.body
+  if (!email) return res.status(400).json({ error: 'Email required' })
+  if (!code) return res.status(400).json({ error: 'Code required' })
+  try {
+    const result = await authVerifyLoginCode(email, code)
+    if (result.error) return res.status(401).json({ error: result.error })
+    const session = await authCreateSession(result.email)
+    logger.info(`[Auth] Login successful for ${email}`)
+    res.json({ success: true, session: session.sessionId, user: session.user, expires: session.expires })
+  } catch (err) {
+    logger.error('[Auth] Login error:', err)
+    res.status(500).json({ error: 'Login failed' })
+  }
+})
+
+// POST /api/auth/generate-code — admin generates a login code for a user
+app.post('/api/auth/generate-code', async (req, res) => {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+  const { email } = req.body
+  if (!email) return res.status(400).json({ error: 'Email required' })
+  try {
+    const result = await authGenerateLoginCode(email)
+    if (result.error) return res.status(404).json({ error: result.error })
+    logger.info(`[Auth] Login code generated for ${email} by ${adminUser.email}`)
+    res.json({ success: true, code: result.code, expires: new Date(result.expires).toISOString() })
+  } catch (err) {
+    logger.error('[Auth] Generate code error:', err)
+    res.status(500).json({ error: 'Failed to generate code' })
+  }
+})
+
+// GET /api/auth/me — get current user from session
+app.get('/api/auth/me', async (req, res) => {
+  const sessionId = req.headers.authorization?.replace('Bearer ', '')
+  if (!sessionId) return res.status(401).json({ error: 'No session' })
+  const user = await authValidateSession(sessionId)
+  if (!user) return res.status(401).json({ error: 'Invalid or expired session' })
+  res.json({ user })
+})
+
+// POST /api/auth/dev-login — dev bypass, only in non-production
+const DEV_ACCOUNTS = ['thomas.cassidy+ssi@gmail.com', 'test@test.com']
+app.post('/api/auth/dev-login', async (req, res) => {
+  if (process.env.NODE_ENV === 'production') return res.status(403).json({ error: 'Dev login not available in production' })
+  const { email } = req.body
+  if (!email) return res.status(400).json({ error: 'Email required' })
+  if (!DEV_ACCOUNTS.includes(email)) return res.status(403).json({ error: 'Email not in dev accounts list' })
+  try {
+    let user = await authGetUser(email)
+    if (!user) user = { name: email.split('@')[0], email, role: 'admin', courses: '*' }
+    const session = await authCreateSession(email)
+    logger.info(`[Auth] Dev login for ${email}`)
+    res.json({ success: true, session: session.sessionId, user: session.user || user, expires: session.expires })
+  } catch (err) {
+    logger.error('[Auth] Dev login error:', err)
+    res.status(500).json({ error: 'Dev login failed' })
+  }
+})
+
+// POST /api/auth/invite — add new user (admin only)
+// PUT /api/auth/invite — edit existing user (admin only)
+app.post('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
+app.put('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
+
+async function handleInvite(req, res) {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+  const { email, name, courses, role = 'recorder' } = req.body
+  if (!email) return res.status(400).json({ error: 'Email is required' })
+  if (!courses || !Array.isArray(courses) || courses.length === 0) return res.status(400).json({ error: 'At least one course must be assigned' })
+  if (!['recorder', 'editor', 'admin'].includes(role)) return res.status(400).json({ error: 'Invalid role' })
+  try {
+    const usersData = await authGetAllUsers()
+    if (req.method === 'POST') {
+      if (usersData.users[email]) return res.status(409).json({ error: 'User already exists', existing: usersData.users[email] })
+      const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
+      const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
+      const voiceId = role === 'recorder' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
+      usersData.users[email] = {
+        name: name || email.split('@')[0], role, courses,
+        ...(voiceId && { voice_id: voiceId }),
+        invited_by: adminUser.email || adminUser.name, invited_at: new Date().toISOString()
+      }
+    } else {
+      if (!usersData.users[email]) return res.status(404).json({ error: 'User not found' })
+      usersData.users[email] = {
+        ...usersData.users[email], ...(name && { name }), role, courses,
+        updated_by: adminUser.email || adminUser.name, updated_at: new Date().toISOString()
+      }
+    }
+    await authSaveUsers(usersData)
+    logger.info(`[Auth] User ${req.method === 'POST' ? 'invited' : 'updated'}: ${email}`)
+    res.json({ success: true, message: `${req.method === 'POST' ? 'Invited' : 'Updated'} ${email}`, user: usersData.users[email] })
+  } catch (err) {
+    logger.error('[Auth] Invite/update error:', err)
+    res.status(500).json({ error: 'Failed to process request' })
+  }
+}
+
+// GET /api/auth/users — list all users (admin only)
+// DELETE /api/auth/users — remove a user (admin only)
+app.get('/api/auth/users', async (req, res) => {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+  try {
+    const usersData = await authGetAllUsers()
+    const users = Object.entries(usersData.users || {}).map(([email, data]) => ({ email, ...data }))
+    res.json({ users, total: users.length })
+  } catch (err) {
+    logger.error('[Auth] List users error:', err)
+    res.status(500).json({ error: 'Failed to list users' })
+  }
+})
+
+app.delete('/api/auth/users', async (req, res) => {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+  const email = req.query.email
+  if (!email) return res.status(400).json({ error: 'Email query param required' })
+  try {
+    const usersData = await authGetAllUsers()
+    if (!usersData.users[email]) return res.status(404).json({ error: 'User not found' })
+    if (email === adminUser.email) return res.status(400).json({ error: 'Cannot delete your own account' })
+    delete usersData.users[email]
+    await authSaveUsers(usersData)
+    logger.info(`[Auth] User deleted: ${email} by ${adminUser.email}`)
+    res.json({ success: true, message: `User ${email} removed` })
+  } catch (err) {
+    logger.error('[Auth] Delete user error:', err)
+    res.status(500).json({ error: 'Failed to delete user' })
+  }
+})
+
+// POST /api/auth/logout
+app.post('/api/auth/logout', async (req, res) => {
+  const sessionId = req.headers.authorization?.replace('Bearer ', '')
+  if (sessionId) {
+    try { await authDeleteSession(sessionId) } catch (err) { /* ignore */ }
+  }
+  res.json({ success: true })
+})
+
+// =============================================================================
+// END AUTH ROUTES
+// =============================================================================
 
 // Health check
 app.get('/api/production/health', (req, res) => {
@@ -5290,6 +5566,101 @@ app.get('/api/production/:courseCode/recording-optimizer', async (req, res) => {
     })
   } catch (error) {
     logger.error('Error running recording optimizer:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/recording-script
+// Returns the optimizer's script formatted for the autocue — interleaved normal/slow pairs
+// with direct record items appended. Each phrase appears twice: natural then slow cadence.
+app.get('/api/production/:courseCode/recording-script', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}`)
+
+    // Run the optimizer (suppress console output)
+    const originalLog = console.log
+    const logs = []
+    console.log = (...args) => logs.push(args.join(' '))
+
+    const result = await generateRecordingScript(courseCode, { verbose: false })
+
+    console.log = originalLog
+
+    if (!result) {
+      return res.status(404).json({ error: 'No LEGOs found for course. Run Course Builder first.' })
+    }
+
+    const phrases = result.recordingScript.phrases
+    const directItems = result.directRecord.items
+
+    // Interleave: each phrase gets natural + slow pair
+    const items = []
+    let idx = 0
+
+    for (let i = 0; i < phrases.length; i++) {
+      const p = phrases[i]
+      items.push({
+        index: idx++,
+        text: p.target,
+        cadence: 'natural',
+        type: 'phrase',
+        phraseIndex: i,
+        wordCount: p.wordCount,
+        coversLegos: p.coversLegos,
+        known: p.known || '',
+        source: p.source || '',
+        seedNumber: p.seedNumber || null
+      })
+      items.push({
+        index: idx++,
+        text: p.target,
+        cadence: 'slow',
+        type: 'phrase',
+        phraseIndex: i,
+        wordCount: p.wordCount,
+        coversLegos: p.coversLegos,
+        known: p.known || '',
+        source: p.source || '',
+        seedNumber: p.seedNumber || null
+      })
+    }
+
+    // Append direct record items (also normal + slow pairs)
+    for (let i = 0; i < directItems.length; i++) {
+      const d = directItems[i]
+      items.push({
+        index: idx++,
+        text: d.target,
+        cadence: 'natural',
+        type: 'direct',
+        known: d.known || '',
+        legoId: d.legoId || ''
+      })
+      items.push({
+        index: idx++,
+        text: d.target,
+        cadence: 'slow',
+        type: 'direct',
+        known: d.known || '',
+        legoId: d.legoId || ''
+      })
+    }
+
+    // Estimate: ~6 seconds per item (read + pause)
+    const estimatedMinutes = Math.round((items.length * 6) / 60)
+
+    res.json({
+      courseCode,
+      totalItems: items.length,
+      totalPhrases: phrases.length,
+      totalDirect: directItems.length,
+      estimatedMinutes,
+      items
+    })
+  } catch (error) {
+    logger.error('Error generating recording script:', error)
     res.status(500).json({ error: error.message })
   }
 })

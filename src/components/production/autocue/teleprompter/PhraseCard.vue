@@ -1,19 +1,23 @@
 <template>
   <div class="phrase-card" :class="state">
     <div class="phrase-marker">
+      <span v-if="uploaded" class="uploaded-dot"></span>
       <span v-if="state === 'done'">✓</span>
       <span v-else-if="state === 'current'" class="current-marker">══►</span>
       <span v-else>○</span>
     </div>
 
     <div class="phrase-content">
+      <!-- Slow cadence label -->
+      <div v-if="isSlowCadence" class="cadence-label">SLOW</div>
+
       <!-- Normal display -->
-      <div v-if="!showGaps" class="phrase-text">
+      <div v-if="!showGaps" class="phrase-text" :class="{ 'slow-cadence': isSlowCadence }">
         {{ phrase.text }}
       </div>
 
       <!-- Gap markers for Pass 2 -->
-      <div v-else class="phrase-with-gaps">
+      <div v-else class="phrase-with-gaps" :class="{ 'slow-cadence': isSlowCadence }">
         <template v-for="(segment, i) in gapSegments" :key="i">
           <span class="word-segment">{{ segment }}</span>
           <span v-if="i < gapSegments.length - 1" class="gap-marker"></span>
@@ -33,8 +37,12 @@ import { computed } from 'vue'
 const props = defineProps({
   phrase: { type: Object, required: true },
   state: { type: String, default: 'upcoming' }, // done, current, upcoming
-  showGaps: { type: Boolean, default: false }
+  showGaps: { type: Boolean, default: false },
+  uploaded: { type: Boolean, default: false }
 })
+
+// Slow cadence detection — from phrase's own cadence field (optimizer mode)
+const isSlowCadence = computed(() => props.phrase.cadence === 'slow')
 
 // Split text into segments for gap display
 const gapSegments = computed(() => {
@@ -148,6 +156,37 @@ const gapSegments = computed(() => {
 @keyframes gapPulse {
   0%, 100% { opacity: 0.5; transform: scaleX(1); }
   50% { opacity: 1; transform: scaleX(1.15); }
+}
+
+/* Slow cadence treatment */
+.cadence-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--color-tungsten, #ffa630);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.25rem;
+  opacity: 0.8;
+}
+
+.slow-cadence {
+  color: var(--color-tungsten, #ffa630) !important;
+}
+
+.phrase-card.current .slow-cadence {
+  text-shadow: 0 0 20px rgba(255, 166, 48, 0.6);
+}
+
+/* Uploaded indicator */
+.uploaded-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-emerald, #06ffa5);
+  box-shadow: 0 0 6px rgba(6, 255, 165, 0.6);
+  margin-right: 0.25rem;
+  vertical-align: middle;
 }
 
 .phrase-translation {

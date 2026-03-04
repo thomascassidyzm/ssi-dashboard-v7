@@ -13,7 +13,8 @@
         :key="phrase.id"
         :phrase="phrase"
         :state="getPhraseState(index)"
-        :show-gaps="currentPass === 2"
+        :show-gaps="scriptMode ? false : currentPass === 2"
+        :uploaded="uploadedIndices.has(index)"
       />
     </div>
 
@@ -32,7 +33,9 @@ const props = defineProps({
   currentIndex: { type: Number, default: 0 },
   currentPass: { type: Number, default: 1 },
   isRecording: { type: Boolean, default: false },
-  scrollSpeed: { type: Number, default: 3 } // seconds per phrase
+  scrollSpeed: { type: Number, default: 3 }, // seconds per phrase
+  scriptMode: { type: Boolean, default: false }, // optimizer script mode — cadence per phrase
+  uploadedIndices: { type: Set, default: () => new Set() } // indices with completed uploads
 })
 
 const emit = defineEmits(['phrase-change'])

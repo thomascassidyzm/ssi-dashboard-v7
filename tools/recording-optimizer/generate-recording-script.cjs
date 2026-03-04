@@ -136,6 +136,9 @@ function greedySetCover(universe, candidates) {
     // Add to selected, update uncovered
     selected.push({
       phrase: best.originalPhrase,
+      known: best.known || '',
+      source: best.source || '',
+      seedNumber: best.seedNumber || null,
       coversCount: bestCoverage.length,
       covers: bestCoverage,
       wordCount: tokenize(best.phrase).length,
@@ -393,6 +396,9 @@ async function generateRecordingScript(courseCode, options = {}) {
       phrases: result.selected.map((s, i) => ({
         index: i + 1,
         target: s.phrase,
+        known: s.known || '',
+        source: s.source || '',
+        seedNumber: s.seedNumber || null,
         wordCount: s.wordCount,
         coversLegos: s.coversCount,
       })),

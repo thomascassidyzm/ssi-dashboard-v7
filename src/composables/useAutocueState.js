@@ -2,8 +2,9 @@
  * Autocue State Management Composable
  * Manages the two-mode teleprompter recording system state
  *
- * This composable will later integrate with the production Pinia store
- * from Master Agent 1 when available.
+ * Supports two recording modes:
+ * - Queue mode (regeneration): phrase-by-phrase recording with manual advance
+ * - Script mode (new-course): continuous VAD-based recording with background uploads
  */
 
 import { ref, computed, reactive, watch } from 'vue'
@@ -12,13 +13,22 @@ import { getApiUrl } from '@/services/api'
 // Singleton state for the entire autocue session
 const state = reactive({
   // Session phase
-  currentPhase: 'mode-select', // mode-select, role-select, recording, review
+  currentPhase: 'mode-select', // mode-select, role-select, script-loaded, recording, summary, review
 
   // Mode selection
   selectedMode: null, // 'new-course' or 'regeneration'
 
   // Role selection
   selectedRole: null, // 'known', 'target1', 'target2'
+
+  // Script mode flag — when true, phrases come from optimizer and recording is continuous
+  scriptMode: false,
+
+  // Script metadata (optimizer mode only)
+  scriptInfo: null, // { totalItems, totalPhrases, totalDirect, estimatedMinutes }
+
+  // Session ID for grouping recordings
+  scriptSessionId: null,
 
   // Course data
   courseCode: null,
@@ -63,23 +73,6 @@ let audioStream = null
 let currentRecordingChunks = []
 let currentRecordingPhraseId = null
 
-// Sample phrases - now loaded from API via loadCourse()
-// Legacy mock data kept for reference/fallback:
-// const samplePhrases = [
-//   { id: 1, text: 'Sut mae! Sut dych chi heddiw?', translation: 'Hello! How are you today?' },
-//   { id: 2, text: 'Hoffwn i goffi os gwelwch yn dda', translation: 'I would like coffee please' },
-//   { id: 3, text: "Ble mae'r ty bach?", translation: 'Where is the bathroom?' },
-//   { id: 4, text: 'Diolch yn fawr iawn', translation: 'Thank you very much' },
-//   { id: 5, text: "Mae'n braf cwrdd a chi", translation: 'Nice to meet you' },
-//   { id: 6, text: "Beth yw'r amser?", translation: 'What time is it?' },
-//   { id: 7, text: 'Dw i ddim yn deall', translation: "I don't understand" },
-//   { id: 8, text: 'Allwch chi fy helpu i?', translation: 'Can you help me?' },
-//   { id: 9, text: "Faint mae hwn yn costio?", translation: 'How much does this cost?' },
-//   { id: 10, text: "Ble mae'r orsaf tren?", translation: 'Where is the train station?' },
-//   { id: 11, text: "Dw i'n dysgu Cymraeg", translation: "I'm learning Welsh" },
-//   { id: 12, text: 'Bore da!', translation: 'Good morning!' }
-// ]
-
 export function useAutocueState() {
   // Timer interval ref
   let timerInterval = null
@@ -97,7 +90,10 @@ export function useAutocueState() {
   const currentPhrase = computed(() => state.phrases[state.currentPhraseIndex])
 
   const sessionInfo = computed(() => {
-    if (!state.selectedRole) return 'Select a mode to begin'
+    if (state.scriptMode && state.scriptInfo) {
+      return `${state.targetLanguage} — ${state.scriptInfo.totalPhrases} phrases, ~${state.scriptInfo.estimatedMinutes} min`
+    }
+    if (!state.selectedRole && !state.scriptMode) return 'Select a mode to begin'
     return `${state.targetLanguage} Session 001`
   })
 
@@ -122,7 +118,15 @@ export function useAutocueState() {
 
   function selectMode(mode) {
     state.selectedMode = mode
-    state.currentPhase = 'role-select'
+    if (mode === 'new-course') {
+      // New course mode: skip role selection, go straight to loading optimizer script
+      state.scriptMode = true
+      state.selectedRole = 'target1' // optimizer is always target language
+      loadOptimizedScript(state.courseCode)
+    } else {
+      state.scriptMode = false
+      state.currentPhase = 'role-select'
+    }
   }
 
   function selectRole(role) {
@@ -132,13 +136,19 @@ export function useAutocueState() {
   function beginSession(role, language) {
     state.selectedRole = role
     state.currentPhase = 'recording'
-    // Phrases are now loaded via loadCourse() - no need to set them here
-    // state.phrases should already be populated from API call
     state.currentPhraseIndex = 0
     state.currentPass = 1
     state.recordedSegments = []
     state.approvedSegments.clear()
     state.rejectedSegments.clear()
+  }
+
+  // Begin a continuous recording session (from script-loaded confirmation)
+  function beginContinuousSession() {
+    state.currentPhase = 'recording'
+    state.currentPhraseIndex = 0
+    state.recordedSegments = []
+    state.audioRecordings.clear()
   }
 
   // Initialize microphone access
@@ -212,6 +222,7 @@ export function useAutocueState() {
   function startRecording() {
     state.isRecording = true
     state.recordingStartTime = Date.now()
+    state.scriptSessionId = `session_${Date.now()}`
     state.elapsedSeconds = 0
 
     // Start timer
@@ -219,15 +230,19 @@ export function useAutocueState() {
       state.elapsedSeconds++
     }, 1000)
 
-    // Start recording the first phrase
-    startPhraseRecording()
+    // In script mode, continuous recorder is managed externally (AutocueStudio)
+    if (!state.scriptMode) {
+      startPhraseRecording()
+    }
   }
 
   function stopRecording() {
     state.isRecording = false
 
     // Stop current phrase recording
-    stopPhraseRecording()
+    if (!state.scriptMode) {
+      stopPhraseRecording()
+    }
 
     // Stop timer
     if (timerInterval) {
@@ -235,11 +250,15 @@ export function useAutocueState() {
       timerInterval = null
     }
 
-    // Generate segments from actual recordings
-    generateRecordedSegments()
-
-    // Move to review phase
-    state.currentPhase = 'review'
+    if (state.scriptMode) {
+      // In script mode, go to summary instead of review
+      state.currentPhase = 'summary'
+    } else {
+      // Generate segments from actual recordings
+      generateRecordedSegments()
+      // Move to review phase
+      state.currentPhase = 'review'
+    }
   }
 
   function toggleRecording() {
@@ -254,11 +273,46 @@ export function useAutocueState() {
     state.isPaused = !state.isPaused
   }
 
+  // Called by continuous recorder when a segment is captured via VAD
+  function onSegmentCaptured(segment, itemIndex) {
+    const phrase = state.phrases[itemIndex]
+    if (!phrase) return
+
+    // Store the recording
+    state.audioRecordings.set(phrase.id, {
+      blob: segment.blob,
+      url: URL.createObjectURL(segment.blob),
+      mimeType: segment.blob.type || 'audio/webm'
+    })
+
+    // Track as recorded
+    state.recordedSegments.push({
+      id: `seg_${phrase.id}`,
+      phraseId: phrase.id,
+      itemIndex,
+      text: phrase.text,
+      cadence: phrase.cadence,
+      hasRecording: true
+    })
+
+    console.log(`[Autocue] Segment captured for item ${itemIndex}: ${phrase.text.substring(0, 30)}...`)
+  }
+
+  // Auto-advance to next phrase (called after segment captured in script mode)
+  function advanceToNext() {
+    if (state.currentPhraseIndex < totalPhrases.value - 1) {
+      state.currentPhraseIndex++
+    } else {
+      // Last item — stop recording
+      stopRecording()
+    }
+  }
+
   function navigatePhrase(direction) {
     const newIndex = state.currentPhraseIndex + direction
     if (newIndex >= 0 && newIndex < totalPhrases.value) {
       // If recording, stop current phrase and start new one
-      if (state.isRecording) {
+      if (state.isRecording && !state.scriptMode) {
         stopPhraseRecording()
         state.currentPhraseIndex = newIndex
         // Small delay to allow previous recording to save
@@ -280,7 +334,6 @@ export function useAutocueState() {
       const hasRecording = !!recording
 
       // Estimate confidence based on whether we have a recording
-      // In a real implementation, this could use audio analysis
       let confidence, level
       if (hasRecording && recording.blob.size > 1000) {
         confidence = 85 + Math.floor(Math.random() * 15)
@@ -463,6 +516,9 @@ export function useAutocueState() {
     state.currentPhase = 'mode-select'
     state.selectedMode = null
     state.selectedRole = null
+    state.scriptMode = false
+    state.scriptInfo = null
+    state.scriptSessionId = null
     state.currentPass = 1
     state.currentPhraseIndex = 0
     state.isRecording = false
@@ -486,6 +542,80 @@ export function useAutocueState() {
     if (audioStream) {
       audioStream.getTracks().forEach(track => track.stop())
       audioStream = null
+    }
+  }
+
+  // Load optimized recording script (new-course mode)
+  async function loadOptimizedScript(courseCode) {
+    state.isLoading = true
+    state.error = null
+
+    try {
+      const baseUrl = localStorage.getItem('api_base_url') || getApiUrl()
+
+      // Fetch interleaved script from optimizer endpoint
+      const res = await fetch(
+        `${baseUrl}/api/production/${courseCode}/recording-script`,
+        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      )
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}))
+        throw new Error(errData.error || `Failed to load recording script (${res.status})`)
+      }
+
+      const data = await res.json()
+
+      // Store script metadata
+      state.scriptInfo = {
+        totalItems: data.totalItems,
+        totalPhrases: data.totalPhrases,
+        totalDirect: data.totalDirect,
+        estimatedMinutes: data.estimatedMinutes
+      }
+
+      // Transform items to autocue phrase format
+      // Target text only — no known-language hints on the autocue
+      state.phrases = data.items.map((item, idx) => ({
+        id: `script-${idx}`,
+        text: item.text,
+        translation: '', // target only — clean autocue
+        cadence: item.cadence,
+        type: item.type,
+        phraseIndex: item.phraseIndex,
+        wordCount: item.wordCount,
+        coversLegos: item.coversLegos,
+        known: item.known,
+        legoId: item.legoId || '',
+        role: 'target1'
+      }))
+
+      console.log(`[Autocue] Loaded optimizer script: ${state.phrases.length} items (${data.totalPhrases} phrases + ${data.totalDirect} direct)`)
+
+      // Also load course info
+      const courseRes = await fetch(
+        `${baseUrl}/api/production/${courseCode}/info`,
+        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      )
+
+      if (courseRes.ok) {
+        const courseData = await courseRes.json()
+        const course = courseData.course || courseData
+        state.courseName = course.display_name || course.name || courseCode
+        state.knownLanguage = course.known_lang || 'English'
+        state.targetLanguage = course.target_lang || 'Unknown'
+      }
+
+      // Go to script-loaded confirmation
+      state.currentPhase = 'script-loaded'
+
+    } catch (err) {
+      console.error('[Autocue] Failed to load optimizer script:', err)
+      state.error = err.message
+      state.currentPhase = 'mode-select'
+      state.scriptMode = false
+    } finally {
+      state.isLoading = false
     }
   }
 
@@ -583,6 +713,7 @@ export function useAutocueState() {
     selectMode,
     selectRole,
     beginSession,
+    beginContinuousSession,
     initializeMicrophone,
     startRecording,
     stopRecording,
@@ -590,6 +721,8 @@ export function useAutocueState() {
     togglePause,
     navigatePhrase,
     adjustSpeed,
+    onSegmentCaptured,
+    advanceToNext,
     approveSegment,
     rejectSegment,
     approveAllByConfidence,
@@ -597,6 +730,7 @@ export function useAutocueState() {
     finalizeSession,
     resetSession,
     loadCourse,
+    loadOptimizedScript,
     cleanup
   }
 }
