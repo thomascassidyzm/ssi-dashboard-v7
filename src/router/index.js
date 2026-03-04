@@ -367,6 +367,13 @@ const routes = [
         meta: { title: 'Overview - Production Suite' }
       },
       {
+        path: 'seeds',
+        name: 'SeedEditor',
+        component: () => import('../views/production/SeedEditor.vue'),
+        props: true,
+        meta: { title: 'Seed Editor - Production Suite' }
+      },
+      {
         path: 'text',
         name: 'TextGeneration',
         component: () => import('../views/production/TextGeneration.vue'),

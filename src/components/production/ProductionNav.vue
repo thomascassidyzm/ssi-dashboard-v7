@@ -8,6 +8,13 @@
       Overview
     </router-link>
     <router-link
+      :to="`/production/${courseCode}/seeds`"
+      class="nav-item"
+      :class="{ active: isActive('SeedEditor') }"
+    >
+      Seeds
+    </router-link>
+    <router-link
       :to="`/production/${courseCode}/text`"
       class="nav-item"
       :class="{ active: isActive('TextGeneration') }"

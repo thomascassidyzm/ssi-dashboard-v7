@@ -87,6 +87,16 @@
 
     <!-- Main Workflow Cards -->
     <section class="workflow-grid">
+      <!-- Seed Editor -->
+      <router-link :to="`/production/${courseCode}/seeds`" class="workflow-card">
+        <div class="card-icon seeds">Se</div>
+        <div class="card-content">
+          <h3>Seed Editor</h3>
+          <p>Review and approve translations</p>
+        </div>
+        <span class="card-arrow">&rarr;</span>
+      </router-link>
+
       <!-- Text Generation -->
       <router-link :to="`/production/${courseCode}/text`" class="workflow-card">
         <div class="card-icon text">T</div>
@@ -589,6 +599,7 @@ watch(() => props.courseCode, () => {
   flex-shrink: 0;
 }
 
+.card-icon.seeds { background: #06b6d4; color: white; }
 .card-icon.text { background: #3b82f6; color: white; }
 .card-icon.script { background: #f59e0b; color: white; }
 .card-icon.audio { background: #8b5cf6; color: white; }

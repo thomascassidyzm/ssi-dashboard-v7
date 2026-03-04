@@ -234,6 +234,126 @@ module.exports = function (ctx) {
   });
 
   // ===========================================================================
+  // GET /course/:courseCode/seed-editor
+  // Returns ALL seeds with canonical text for the Seed Editor UI.
+  // Supports pagination, filtering, and search.
+  // ===========================================================================
+  router.get('/course/:courseCode/seed-editor', async (req, res) => {
+    const { courseCode } = req.params;
+    const limit = parseInt(req.query.limit) || 50;
+    const offset = parseInt(req.query.offset) || 0;
+    const filter = req.query.filter || 'all';
+    const search = (req.query.search || '').trim().toLowerCase();
+
+    // Parse course type for target language name
+    const parts = courseCode.split('_for_');
+    const targetLang = parts[0] || '';
+    const targetLangName = getLanguageName(courseCode);
+
+    // Initialize course seeds if needed
+    try {
+      await initializeCourseSeeds(courseCode);
+    } catch (err) {
+      console.error('Init error:', err.message);
+    }
+
+    // Get ALL seeds for this course (for counting)
+    const { data: allSeeds, error: allError } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .order('seed_number');
+
+    if (allError) {
+      return res.status(500).json({ error: allError.message });
+    }
+
+    // Count complete seeds
+    const completeCount = (allSeeds || []).filter(s => s.known_text && s.target_text).length;
+
+    // Apply filter
+    let filtered = allSeeds || [];
+    if (filter === 'needs_review') {
+      filtered = filtered.filter(s => !s.known_text || !s.target_text);
+    } else if (filter === 'complete') {
+      filtered = filtered.filter(s => s.known_text && s.target_text);
+    }
+
+    // Get canonical text for all seeds
+    const seedNumbers = filtered.map(s => s.seed_number);
+    let canonicalMap = {};
+    if (seedNumbers.length > 0) {
+      const { data: canonical } = await supabase
+        .from('canonical_seeds')
+        .select('seed_number, source_text')
+        .in('seed_number', seedNumbers);
+
+      (canonical || []).forEach(c => {
+        canonicalMap[c.seed_number] = c.source_text.replace(/\{target\}/g, targetLangName);
+      });
+    }
+
+    // Apply search (search canonical, known, and target text)
+    if (search) {
+      filtered = filtered.filter(s => {
+        const canonical = (canonicalMap[s.seed_number] || '').toLowerCase();
+        const known = (s.known_text || '').toLowerCase();
+        const target = (s.target_text || '').toLowerCase();
+        return canonical.includes(search) || known.includes(search) || target.includes(search);
+      });
+    }
+
+    const totalFiltered = filtered.length;
+
+    // Paginate
+    const page = filtered.slice(offset, offset + limit);
+
+    res.json({
+      course_code: courseCode,
+      total: totalFiltered,
+      complete: completeCount,
+      seeds: page.map(s => ({
+        seed_number: s.seed_number,
+        canonical: canonicalMap[s.seed_number] || '',
+        known_text: s.known_text || '',
+        target_text: s.target_text || ''
+      }))
+    });
+  });
+
+  // ===========================================================================
+  // POST /course/:courseCode/approve-seeds
+  // Sets translations_approved_at timestamp on the course record.
+  // ===========================================================================
+  router.post('/course/:courseCode/approve-seeds', async (req, res) => {
+    const { courseCode } = req.params;
+
+    // Check course exists
+    const { data: course, error: fetchErr } = await supabase
+      .from('courses')
+      .select('course_code, quality_rules')
+      .eq('course_code', courseCode)
+      .single();
+
+    if (fetchErr || !course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` });
+    }
+
+    const merged = { ...(course.quality_rules || {}), translations_approved_at: new Date().toISOString() };
+    const { error: updateErr } = await supabase
+      .from('courses')
+      .update({ quality_rules: merged, updated_at: new Date().toISOString() })
+      .eq('course_code', courseCode);
+
+    if (updateErr) {
+      return res.status(500).json({ error: updateErr.message });
+    }
+
+    console.log(`[SEED-EDITOR] Seeds approved for ${courseCode}`);
+    res.json({ ok: true, course_code: courseCode, translations_approved_at: merged.translations_approved_at });
+  });
+
+  // ===========================================================================
   // POST /course/:courseCode/translate
   // Submit batch translations for multiple seeds at once.
   // Body: { translations: [{ seed_number, known_text?, target_text? }, ...] }
