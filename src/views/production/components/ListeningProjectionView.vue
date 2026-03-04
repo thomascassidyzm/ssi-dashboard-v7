@@ -228,7 +228,7 @@ const params = reactive({
   avgNewContentItems: 12,
   roundTimeTarget: 300,
   // Listening
-  listeningOffset: 90,
+  listeningOffset: 56,
   batchSize: 20,
   batchCount: 4,
   fibMax: 55,

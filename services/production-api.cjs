@@ -107,58 +107,19 @@ app.use((req, res, next) => {
 // =============================================================================
 // AUTH ROUTES
 // =============================================================================
-// S3-backed authentication with login codes
+// Supabase-backed authentication with login codes
 
-const { S3Client, GetObjectCommand, PutObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3')
 const crypto = require('crypto')
 
-const AUTH_S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
-const AUTH_PREFIX = 'auth/'
 const LOGIN_CODE_TTL = 30 * 24 * 60 * 60 * 1000 // 30 days
 const SESSION_TTL = 7 * 24 * 60 * 60 * 1000 // 7 days
 
-const authS3 = new S3Client({
-  region: process.env.AWS_REGION || 'eu-west-1',
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-  }
-})
-
-async function s3StreamToString(stream) {
-  const chunks = []
-  for await (const chunk of stream) { chunks.push(chunk) }
-  return Buffer.concat(chunks).toString('utf-8')
-}
-
 async function authGetUser(email) {
-  try {
-    const result = await authS3.send(new GetObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}users.json` }))
-    const users = JSON.parse(await s3StreamToString(result.Body))
-    return users.users?.[email] || null
-  } catch (err) {
-    if (err.name === 'NoSuchKey') return null
-    throw err
-  }
-}
-
-async function authGetAllUsers() {
-  try {
-    const result = await authS3.send(new GetObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}users.json` }))
-    return JSON.parse(await s3StreamToString(result.Body))
-  } catch (err) {
-    if (err.name === 'NoSuchKey') return { users: {} }
-    throw err
-  }
-}
-
-async function authSaveUsers(usersData) {
-  await authS3.send(new PutObjectCommand({
-    Bucket: AUTH_S3_BUCKET,
-    Key: `${AUTH_PREFIX}users.json`,
-    Body: JSON.stringify(usersData, null, 2),
-    ContentType: 'application/json'
-  }))
+  const { data, error } = await supabaseClient.getClient()
+    .from('dashboard_users').select('*').eq('email', email).single()
+  if (error && error.code === 'PGRST116') return null
+  if (error) throw error
+  return data ? { name: data.name, email: data.email, role: data.role, courses: data.courses, voice_id: data.voice_id } : null
 }
 
 async function authGenerateLoginCode(email) {
@@ -168,58 +129,56 @@ async function authGenerateLoginCode(email) {
   let code = ''
   const bytes = crypto.randomBytes(6)
   for (let i = 0; i < 6; i++) { code += chars[bytes[i] % chars.length] }
-  const expires = Date.now() + LOGIN_CODE_TTL
-  await authS3.send(new PutObjectCommand({
-    Bucket: AUTH_S3_BUCKET,
-    Key: `${AUTH_PREFIX}codes/${code}.json`,
-    Body: JSON.stringify({ email, expires }),
-    ContentType: 'application/json'
-  }))
-  return { code, expires }
+  const expires = new Date(Date.now() + LOGIN_CODE_TTL)
+  const { error } = await supabaseClient.getClient()
+    .from('dashboard_login_codes').insert({ code, email, expires_at: expires.toISOString() })
+  if (error) throw error
+  return { code, expires: expires.getTime() }
 }
 
 async function authVerifyLoginCode(email, code) {
   if (!code) return { error: 'Code required' }
   const normalizedCode = code.toUpperCase().trim()
-  try {
-    const result = await authS3.send(new GetObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}codes/${normalizedCode}.json` }))
-    const data = JSON.parse(await s3StreamToString(result.Body))
-    if (Date.now() > data.expires) return { error: 'Code expired' }
-    if (data.email.toLowerCase() !== email.toLowerCase()) return { error: 'Invalid code' }
-    return { email: data.email }
-  } catch (err) {
-    if (err.name === 'NoSuchKey') return { error: 'Invalid code' }
-    throw err
-  }
+  const { data, error } = await supabaseClient.getClient()
+    .from('dashboard_login_codes')
+    .select('*')
+    .eq('code', normalizedCode)
+    .gt('expires_at', new Date().toISOString())
+    .single()
+  if (error && error.code === 'PGRST116') return { error: 'Invalid code' }
+  if (error) throw error
+  if (!data) return { error: 'Invalid code' }
+  if (data.email.toLowerCase() !== email.toLowerCase()) return { error: 'Invalid code' }
+  return { email: data.email }
 }
 
 async function authCreateSession(email) {
   const sessionId = crypto.randomBytes(32).toString('hex')
-  const expires = Date.now() + SESSION_TTL
+  const expires = new Date(Date.now() + SESSION_TTL)
   const user = await authGetUser(email)
-  await authS3.send(new PutObjectCommand({
-    Bucket: AUTH_S3_BUCKET,
-    Key: `${AUTH_PREFIX}sessions/${sessionId}.json`,
-    Body: JSON.stringify({ email, expires, user }),
-    ContentType: 'application/json'
-  }))
-  return { sessionId, expires, user }
+  const { error } = await supabaseClient.getClient()
+    .from('dashboard_sessions').insert({ session_id: sessionId, email, expires_at: expires.toISOString() })
+  if (error) throw error
+  return { sessionId, expires: expires.getTime(), user }
 }
 
 async function authValidateSession(sessionId) {
-  try {
-    const result = await authS3.send(new GetObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}sessions/${sessionId}.json` }))
-    const data = JSON.parse(await s3StreamToString(result.Body))
-    if (Date.now() > data.expires) return null
-    return data.user
-  } catch (err) {
-    if (err.name === 'NoSuchKey') return null
-    throw err
-  }
+  const { data, error } = await supabaseClient.getClient()
+    .from('dashboard_sessions')
+    .select('email, expires_at, dashboard_users(*)')
+    .eq('session_id', sessionId)
+    .gt('expires_at', new Date().toISOString())
+    .single()
+  if (error && error.code === 'PGRST116') return null
+  if (error) return null
+  if (!data) return null
+  const u = data.dashboard_users
+  return u ? { name: u.name, email: u.email, role: u.role, courses: u.courses, voice_id: u.voice_id } : null
 }
 
 async function authDeleteSession(sessionId) {
-  await authS3.send(new DeleteObjectCommand({ Bucket: AUTH_S3_BUCKET, Key: `${AUTH_PREFIX}sessions/${sessionId}.json` }))
+  await supabaseClient.getClient()
+    .from('dashboard_sessions').delete().eq('session_id', sessionId)
 }
 
 // Helper: extract session from Authorization header and verify admin
@@ -283,7 +242,12 @@ app.post('/api/auth/dev-login', async (req, res) => {
   if (!DEV_ACCOUNTS.includes(email)) return res.status(403).json({ error: 'Email not in dev accounts list' })
   try {
     let user = await authGetUser(email)
-    if (!user) user = { name: email.split('@')[0], email, role: 'admin', courses: '*' }
+    if (!user) {
+      // Auto-create dev user in DB so FK constraint on sessions is satisfied
+      const devUser = { email, name: email.split('@')[0], role: 'admin', courses: '"*"' }
+      await supabaseClient.getClient().from('dashboard_users').upsert(devUser, { onConflict: 'email' })
+      user = { name: devUser.name, email, role: 'admin', courses: '*' }
+    }
     const session = await authCreateSession(email)
     logger.info(`[Auth] Dev login for ${email}`)
     res.json({ success: true, session: session.sessionId, user: session.user || user, expires: session.expires })
@@ -306,27 +270,34 @@ async function handleInvite(req, res) {
   if (!courses || !Array.isArray(courses) || courses.length === 0) return res.status(400).json({ error: 'At least one course must be assigned' })
   if (!['recorder', 'editor', 'admin'].includes(role)) return res.status(400).json({ error: 'Invalid role' })
   try {
-    const usersData = await authGetAllUsers()
+    const db = supabaseClient.getClient()
     if (req.method === 'POST') {
-      if (usersData.users[email]) return res.status(409).json({ error: 'User already exists', existing: usersData.users[email] })
+      const existing = await authGetUser(email)
+      if (existing) return res.status(409).json({ error: 'User already exists', existing })
       const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
       const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
       const voiceId = role === 'recorder' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
-      usersData.users[email] = {
-        name: name || email.split('@')[0], role, courses,
+      const row = {
+        email, name: name || email.split('@')[0], role, courses: JSON.stringify(courses),
         ...(voiceId && { voice_id: voiceId }),
         invited_by: adminUser.email || adminUser.name, invited_at: new Date().toISOString()
       }
+      const { data, error } = await db.from('dashboard_users').insert(row).select().single()
+      if (error) throw error
+      logger.info(`[Auth] User invited: ${email}`)
+      res.json({ success: true, message: `Invited ${email}`, user: data })
     } else {
-      if (!usersData.users[email]) return res.status(404).json({ error: 'User not found' })
-      usersData.users[email] = {
-        ...usersData.users[email], ...(name && { name }), role, courses,
+      const existing = await authGetUser(email)
+      if (!existing) return res.status(404).json({ error: 'User not found' })
+      const updates = {
+        ...(name && { name }), role, courses: JSON.stringify(courses),
         updated_by: adminUser.email || adminUser.name, updated_at: new Date().toISOString()
       }
+      const { data, error } = await db.from('dashboard_users').update(updates).eq('email', email).select().single()
+      if (error) throw error
+      logger.info(`[Auth] User updated: ${email}`)
+      res.json({ success: true, message: `Updated ${email}`, user: data })
     }
-    await authSaveUsers(usersData)
-    logger.info(`[Auth] User ${req.method === 'POST' ? 'invited' : 'updated'}: ${email}`)
-    res.json({ success: true, message: `${req.method === 'POST' ? 'Invited' : 'Updated'} ${email}`, user: usersData.users[email] })
   } catch (err) {
     logger.error('[Auth] Invite/update error:', err)
     res.status(500).json({ error: 'Failed to process request' })
@@ -339,9 +310,10 @@ app.get('/api/auth/users', async (req, res) => {
   const adminUser = await requireAdmin(req, res)
   if (!adminUser) return
   try {
-    const usersData = await authGetAllUsers()
-    const users = Object.entries(usersData.users || {}).map(([email, data]) => ({ email, ...data }))
-    res.json({ users, total: users.length })
+    const { data, error } = await supabaseClient.getClient()
+      .from('dashboard_users').select('*').order('invited_at', { ascending: false })
+    if (error) throw error
+    res.json({ users: data || [], total: (data || []).length })
   } catch (err) {
     logger.error('[Auth] List users error:', err)
     res.status(500).json({ error: 'Failed to list users' })
@@ -353,12 +325,13 @@ app.delete('/api/auth/users', async (req, res) => {
   if (!adminUser) return
   const email = req.query.email
   if (!email) return res.status(400).json({ error: 'Email query param required' })
+  if (email === adminUser.email) return res.status(400).json({ error: 'Cannot delete your own account' })
   try {
-    const usersData = await authGetAllUsers()
-    if (!usersData.users[email]) return res.status(404).json({ error: 'User not found' })
-    if (email === adminUser.email) return res.status(400).json({ error: 'Cannot delete your own account' })
-    delete usersData.users[email]
-    await authSaveUsers(usersData)
+    const existing = await authGetUser(email)
+    if (!existing) return res.status(404).json({ error: 'User not found' })
+    const { error } = await supabaseClient.getClient()
+      .from('dashboard_users').delete().eq('email', email)
+    if (error) throw error
     logger.info(`[Auth] User deleted: ${email} by ${adminUser.email}`)
     res.json({ success: true, message: `User ${email} removed` })
   } catch (err) {
@@ -5284,20 +5257,27 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
 
     const supabase = supabaseClient.getClient()
 
-    const { rounds, allItems, stats, legosLoaded } = await learningScriptGenerator.generateLearningScript(
-      supabase,
-      courseCode,
-      maxLegosNum,
-      offsetNum
-    )
+    const [scriptResult, legoCountResult] = await Promise.all([
+      learningScriptGenerator.generateLearningScript(
+        supabase,
+        courseCode,
+        maxLegosNum,
+        offsetNum
+      ),
+      supabase.from('course_legos').select('id', { count: 'exact', head: true }).eq('course_code', courseCode)
+    ])
 
-    logger.info(`Returning learning journey for ${courseCode}: ${rounds.length} rounds, ${allItems.length} items (${legosLoaded} LEGOs loaded)`)
+    const { rounds, allItems, stats, legosLoaded } = scriptResult
+    const totalLegoCount = legoCountResult.count || 0
+
+    logger.info(`Returning learning journey for ${courseCode}: ${rounds.length} rounds, ${allItems.length} items (${legosLoaded} LEGOs loaded, ${totalLegoCount} total in course)`)
 
     res.json({
       courseCode,
       rounds,
       allItems,
       stats,
+      totalLegoCount,
       pagination: {
         maxLegos: maxLegosNum,
         offset: offsetNum,

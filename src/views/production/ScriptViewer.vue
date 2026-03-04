@@ -347,7 +347,7 @@
       <template v-else-if="viewMode === 'listening'">
         <ListeningProjectionView
           :course-code="courseCode"
-          :total-legos="learningJourneyData?.stats?.roundsGenerated || 50"
+          :total-legos="learningJourneyData?.totalLegoCount || 600"
         />
       </template>
 
@@ -944,6 +944,7 @@ const learningJourneyData = ref<{
   rounds: any[];
   allItems: any[];
   stats: any;
+  totalLegoCount?: number;
 } | null>(null);
 const isLoadingJourney = ref(false);
 const journeyError = ref<string | null>(null);
@@ -1518,6 +1519,7 @@ const loadLearningJourney = async () => {
       rounds: data.rounds || [],
       allItems: data.allItems || [],
       stats: data.stats || null,
+      totalLegoCount: data.totalLegoCount || 0,
     };
 
     // Detect if there are more pages
