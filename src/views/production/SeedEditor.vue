@@ -47,7 +47,7 @@
           <tr v-if="loading && seeds.length === 0">
             <td colspan="4" class="loading-cell">Loading seeds...</td>
           </tr>
-          <tr v-for="seed in seeds" :key="seed.seed_number" class="seed-row">
+          <tr v-for="(seed, idx) in seeds" :key="seed.seed_number" class="seed-row" :class="{ 'row-alt': idx % 2 === 1 }">
             <td class="col-num">
               <span class="seed-number">{{ seed.seed_number }}</span>
               <span class="status-dot" :class="statusClass(seed)"></span>
@@ -57,41 +57,51 @@
               class="col-known editable"
               @click="startEdit(seed, 'known_text')"
             >
-              <template v-if="editingKey === `${seed.seed_number}-known_text`">
-                <input
-                  ref="editInput"
-                  v-model="editValue"
-                  class="cell-input"
-                  @blur="saveEdit(seed, 'known_text')"
-                  @keydown.enter="saveEdit(seed, 'known_text')"
-                  @keydown.escape="cancelEdit"
-                />
-              </template>
-              <template v-else>
-                <span :class="{ empty: !seed.known_text }">
-                  {{ seed.known_text || '—' }}
-                </span>
-              </template>
+              <div class="cell-wrap">
+                <template v-if="editingKey === `${seed.seed_number}-known_text`">
+                  <input
+                    ref="editInput"
+                    v-model="editValue"
+                    class="cell-input"
+                    @blur="saveEdit(seed, 'known_text')"
+                    @keydown.enter="saveEdit(seed, 'known_text')"
+                    @keydown.escape="cancelEdit"
+                  />
+                </template>
+                <template v-else>
+                  <span :class="{ empty: !seed.known_text }">
+                    {{ seed.known_text || '—' }}
+                  </span>
+                </template>
+                <transition name="tick">
+                  <span v-if="savedKey === `${seed.seed_number}-known_text`" class="save-tick">&#10003;</span>
+                </transition>
+              </div>
             </td>
             <td
               class="col-target editable"
               @click="startEdit(seed, 'target_text')"
             >
-              <template v-if="editingKey === `${seed.seed_number}-target_text`">
-                <input
-                  ref="editInput"
-                  v-model="editValue"
-                  class="cell-input"
-                  @blur="saveEdit(seed, 'target_text')"
-                  @keydown.enter="saveEdit(seed, 'target_text')"
-                  @keydown.escape="cancelEdit"
-                />
-              </template>
-              <template v-else>
-                <span :class="{ empty: !seed.target_text }">
-                  {{ seed.target_text || '—' }}
-                </span>
-              </template>
+              <div class="cell-wrap">
+                <template v-if="editingKey === `${seed.seed_number}-target_text`">
+                  <input
+                    ref="editInput"
+                    v-model="editValue"
+                    class="cell-input"
+                    @blur="saveEdit(seed, 'target_text')"
+                    @keydown.enter="saveEdit(seed, 'target_text')"
+                    @keydown.escape="cancelEdit"
+                  />
+                </template>
+                <template v-else>
+                  <span :class="{ empty: !seed.target_text }">
+                    {{ seed.target_text || '—' }}
+                  </span>
+                </template>
+                <transition name="tick">
+                  <span v-if="savedKey === `${seed.seed_number}-target_text`" class="save-tick">&#10003;</span>
+                </transition>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -130,6 +140,8 @@ const approving = ref(false)
 const editingKey = ref(null)
 const editValue = ref('')
 const editInput = ref(null)
+const savedKey = ref(null)
+let savedTimer = null
 
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / PAGE_SIZE)))
 const progressPercent = computed(() => total.value > 0 ? (complete.value / total.value) * 100 : 0)
@@ -209,13 +221,19 @@ async function saveEdit(seed, field) {
   if (wasComplete && !isNowComplete) complete.value--
 
   try {
-    await fetch(`${apiBase}/api/course/${props.courseCode}/translate`, {
+    const resp = await fetch(`${apiBase}/api/course/${props.courseCode}/translate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
       body: JSON.stringify({
         translations: [{ seed_number: seed.seed_number, [field]: newValue }]
       })
     })
+    if (resp.ok) {
+      // Show green tick confirmation
+      clearTimeout(savedTimer)
+      savedKey.value = `${seed.seed_number}-${field}`
+      savedTimer = setTimeout(() => { savedKey.value = null }, 1500)
+    }
   } catch (err) {
     console.error('Failed to save:', err)
     seed[field] = oldValue
@@ -395,8 +413,12 @@ onMounted(loadSeeds)
   vertical-align: middle;
 }
 
+.seed-row.row-alt {
+  background: rgba(255, 255, 255, 0.025);
+}
+
 .seed-row:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.055);
 }
 
 .col-num {
@@ -436,6 +458,33 @@ onMounted(loadSeeds)
 
 .editable .empty {
   color: var(--color-graphite, #475569);
+}
+
+.cell-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.save-tick {
+  color: #34d399;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.tick-enter-active {
+  transition: all 0.2s ease;
+}
+.tick-leave-active {
+  transition: all 0.4s ease;
+}
+.tick-enter-from {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.tick-leave-to {
+  opacity: 0;
 }
 
 .cell-input {
