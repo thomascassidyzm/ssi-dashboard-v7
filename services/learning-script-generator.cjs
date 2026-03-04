@@ -379,8 +379,29 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     .order('seed_number', { ascending: true })
 
   const seedMap = new Map() // seed_number → { known_text, target_text }
+  const seedTargetTexts = []
   for (const row of (seedRows || [])) {
     seedMap.set(row.seed_number, { known_text: row.known_text, target_text: row.target_text })
+    if (row.target_text) seedTargetTexts.push(row.target_text)
+  }
+
+  // Load audio UUIDs for seed sentences directly from course_audio
+  const seedAudioMap = new Map() // target_text → audio_uuid
+  if (seedTargetTexts.length > 0) {
+    const BATCH = 100
+    for (let i = 0; i < seedTargetTexts.length; i += BATCH) {
+      const batch = seedTargetTexts.slice(i, i + BATCH)
+      const { data: audioRows } = await supabase
+        .from('course_audio')
+        .select('text, id')
+        .eq('course_code', courseCode)
+        .eq('role', 'target1')
+        .in('text', batch)
+      for (const row of (audioRows || [])) {
+        seedAudioMap.set(row.text, row.id)
+      }
+    }
+    logger.info(`Loaded ${seedAudioMap.size} seed audio UUIDs from course_audio`)
   }
 
   const rounds = []
@@ -687,18 +708,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         const seedData = seedMap.get(batchSeedNum)
         if (!seedData) continue
 
-        // Find audio for this seed sentence (match against USE phrases)
-        let seedAudioUuid = null
-        for (const [legoId, usePhrases] of useMap.entries()) {
-          if (!legoId.startsWith(`S${String(batchSeedNum).padStart(4, '0')}`)) continue
-          const match = usePhrases.find(p =>
-            normalizePhrase(p.target_text) === normalizePhrase(seedData.target_text)
-          )
-          if (match) {
-            seedAudioUuid = match.target1_audio_uuid
-            break
-          }
-        }
+        // Look up audio directly from course_audio (pre-loaded)
+        const seedAudioUuid = seedAudioMap.get(seedData.target_text) || null
 
         for (const speed of speeds) {
           roundItems.push({
