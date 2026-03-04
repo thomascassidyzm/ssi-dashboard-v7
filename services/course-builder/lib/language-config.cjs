@@ -18,6 +18,40 @@ const LANG_MAP = {
   'rus': 'Russian',
   'cym': 'Welsh',
   'nld': 'Dutch',
+  'bre': 'Breton',
+  'gle': 'Irish',
+  'gla': 'Scottish Gaelic',
+  'cat': 'Catalan',
+  'eus': 'Basque',
+  'fin': 'Finnish',
+  'swe': 'Swedish',
+  'tur': 'Turkish',
+  'hin': 'Hindi',
+  'ben': 'Bengali',
+  'pol': 'Polish',
+  'ukr': 'Ukrainian',
+  'ell': 'Greek',
+  'heb': 'Hebrew',
+  'tha': 'Thai',
+  'vie': 'Vietnamese',
+  'ind': 'Indonesian',
+  'msa': 'Malay',
+  'ron': 'Romanian',
+  'ces': 'Czech',
+  'hun': 'Hungarian',
+  'dan': 'Danish',
+  'nor': 'Norwegian',
+  'lit': 'Lithuanian',
+  'lav': 'Latvian',
+  'est': 'Estonian',
+  'slk': 'Slovak',
+  'slv': 'Slovenian',
+  'hrv': 'Croatian',
+  'srp': 'Serbian',
+  'bul': 'Bulgarian',
+  'ang': 'Old English',
+  'tgl': 'Tagalog',
+  'swa': 'Swahili',
 };
 
 // Regional variant names (keyed by target part before _for_)
@@ -29,11 +63,8 @@ const DIALECT_NAMES = {
 };
 
 // Known language lookup (for non-English known languages)
-const KNOWN_LANG_MAP = {
-  'eng': 'English', 'fra': 'French', 'spa': 'Spanish', 'deu': 'German',
-  'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'jpn': 'Japanese',
-  'kor': 'Korean', 'ara': 'Arabic', 'rus': 'Russian', 'cym': 'Welsh', 'zho': 'Chinese',
-};
+// Falls back to LANG_MAP if not found here
+const KNOWN_LANG_MAP = LANG_MAP;
 
 // Language family mapping (for Ralph lesson lookup)
 const LANG_FAMILY_MAP = {
