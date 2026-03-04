@@ -386,22 +386,35 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   }
 
   // Load audio UUIDs for seed sentences directly from course_audio
+  // Use a text-set filter in JS to avoid Supabase .in() URL-length issues with CJK
   const seedAudioMap = new Map() // target_text → audio_uuid
   if (seedTargetTexts.length > 0) {
-    const BATCH = 100
-    for (let i = 0; i < seedTargetTexts.length; i += BATCH) {
-      const batch = seedTargetTexts.slice(i, i + BATCH)
-      const { data: audioRows } = await supabase
+    const seedTextSet = new Set(seedTargetTexts)
+    let offset = 0
+    const pageSize = 1000
+    while (true) {
+      const { data: audioRows, error } = await supabase
         .from('course_audio')
         .select('text, id')
         .eq('course_code', courseCode)
         .eq('role', 'target1')
-        .in('text', batch)
-      for (const row of (audioRows || [])) {
-        seedAudioMap.set(row.text, row.id)
+        .range(offset, offset + pageSize - 1)
+
+      if (error) {
+        logger.error('Failed to load seed audio:', error)
+        break
       }
+      if (!audioRows || audioRows.length === 0) break
+
+      for (const row of audioRows) {
+        if (seedTextSet.has(row.text)) {
+          seedAudioMap.set(row.text, row.id)
+        }
+      }
+      if (audioRows.length < pageSize) break
+      offset += pageSize
     }
-    logger.info(`Loaded ${seedAudioMap.size} seed audio UUIDs from course_audio`)
+    logger.info(`Loaded ${seedAudioMap.size} seed audio UUIDs from course_audio (scanned ${seedTextSet.size} seed texts)`)
   }
 
   const rounds = []
