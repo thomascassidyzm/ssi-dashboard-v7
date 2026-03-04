@@ -1,58 +1,11 @@
 /**
- * Language configuration — pure functions and constants.
- * No state, no DB access.
+ * Language configuration — functions and constants for course building.
+ * Uses language-code-service (CSV-backed) as the canonical source for
+ * language names. No DB access.
  */
 
-// Language name mapping
-const LANG_MAP = {
-  'eng': 'English',
-  'zho': 'Chinese',
-  'ita': 'Italian',
-  'spa': 'Spanish',
-  'fra': 'French',
-  'deu': 'German',
-  'por': 'Portuguese',
-  'jpn': 'Japanese',
-  'kor': 'Korean',
-  'ara': 'Arabic',
-  'rus': 'Russian',
-  'cym': 'Welsh',
-  'nld': 'Dutch',
-  'bre': 'Breton',
-  'gle': 'Irish',
-  'gla': 'Scottish Gaelic',
-  'cat': 'Catalan',
-  'eus': 'Basque',
-  'fin': 'Finnish',
-  'swe': 'Swedish',
-  'tur': 'Turkish',
-  'hin': 'Hindi',
-  'ben': 'Bengali',
-  'pol': 'Polish',
-  'ukr': 'Ukrainian',
-  'ell': 'Greek',
-  'heb': 'Hebrew',
-  'tha': 'Thai',
-  'vie': 'Vietnamese',
-  'ind': 'Indonesian',
-  'msa': 'Malay',
-  'ron': 'Romanian',
-  'ces': 'Czech',
-  'hun': 'Hungarian',
-  'dan': 'Danish',
-  'nor': 'Norwegian',
-  'lit': 'Lithuanian',
-  'lav': 'Latvian',
-  'est': 'Estonian',
-  'slk': 'Slovak',
-  'slv': 'Slovenian',
-  'hrv': 'Croatian',
-  'srp': 'Serbian',
-  'bul': 'Bulgarian',
-  'ang': 'Old English',
-  'tgl': 'Tagalog',
-  'swa': 'Swahili',
-};
+// Central language code service — loaded from language_codes.csv (ISO 639)
+const languageCodeService = require('../../language-code-service.cjs');
 
 // Regional variant names (keyed by target part before _for_)
 const DIALECT_NAMES = {
@@ -62,9 +15,10 @@ const DIALECT_NAMES = {
   'cym_s': 'South Welsh',
 };
 
-// Known language lookup (for non-English known languages)
-// Falls back to LANG_MAP if not found here
-const KNOWN_LANG_MAP = LANG_MAP;
+// Deprecated: callers should use languageCodeService.getName() directly.
+// Kept for backward-compatible export only.
+const LANG_MAP = {};
+const KNOWN_LANG_MAP = {};
 
 // Language family mapping (for Ralph lesson lookup)
 const LANG_FAMILY_MAP = {
@@ -125,11 +79,19 @@ function getKnownLang(courseCode) {
 }
 
 /**
- * Get language name from course code (target language)
+ * Get language name from course code (target language).
+ * Uses language-code-service (CSV) as canonical source.
+ * Falls back to DIALECT_NAMES for regional variants (por_br, cym_n, etc.).
  */
 function getLanguageName(courseCode) {
   const [targetPart] = courseCode.split('_for_');
-  return DIALECT_NAMES[targetPart] || LANG_MAP[targetPart.split('_')[0]] || targetPart;
+  // Check dialect variants first (por_br → "Brazilian Portuguese")
+  if (DIALECT_NAMES[targetPart]) return DIALECT_NAMES[targetPart];
+  // Use the CSV-backed service for standard codes
+  const baseLang = targetPart.split('_')[0];
+  const name = languageCodeService.getName(baseLang);
+  // getName returns uppercase code if not found — fall back to raw code
+  return name !== baseLang.toUpperCase() ? name : baseLang;
 }
 
 /**
