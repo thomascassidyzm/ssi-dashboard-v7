@@ -343,7 +343,7 @@ async function loadIntroductionAudio(supabase, courseCode, legoIds) {
  *
  * Algorithm matches generateLearningScript.ts in ssi-learning-app exactly:
  * - Deterministic (no randomness)
- * - BUILD first, then USE fill (with 2 reserved for consolidation)
+ * - BUILD first, then USE fill (BUILD fills to 7, CONSOLIDATE reuses if needed)
  * - Round-robin REVIEW selection
  * - legoState map for REVIEW lookups
  */
@@ -539,22 +539,12 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         (b.target_syllable_count || countTargetSyllables(b.target_text))
       )
 
-    const reservedForConsolidation = new Set()
-    let reservedCount = 0
-    for (const phrase of sortedUsePhrases) {
-      if (reservedCount >= CONSOLIDATE_COUNT) break
-      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
-      if (usedPhrasesInRound.has(phraseId)) continue
-      reservedForConsolidation.add(phraseId)
-      reservedCount++
-    }
-
-    // Step 3: Fill remaining BUILD slots with non-reserved USE phrases
+    // Step 3: Fill remaining BUILD slots with USE phrases (BUILD priority > CONSOLIDATE)
+    // CONSOLIDATE can repeat BUILD phrases if needed — filling 7 BUILD is non-negotiable
     for (const phrase of sortedUsePhrases) {
       if (practiceCount >= MAX_BUILD_PHRASES) break
       const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
       if (usedPhrasesInRound.has(phraseId)) continue
-      if (reservedForConsolidation.has(phraseId)) continue
 
       roundItems.push({
         ...baseItem,
@@ -650,16 +640,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // Phase 5: CONSOLIDATE ×2 - use the reserved phrases (deterministic)
+    // Phase 5: CONSOLIDATE ×2 - prefer unused USE phrases, allow reuse if pool exhausted
     let consolidateCount = 0
-    for (const phrase of sortedUsePhrases) {
-      if (consolidateCount >= CONSOLIDATE_COUNT) break
-      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
-      if (!reservedForConsolidation.has(phraseId)) continue
-      if (usedPhrasesInRound.has(phraseId)) continue
+    const emitConsolidate = (phrase) => {
       consolidateCount++
-      usedPhrasesInRound.add(phraseId)
-
       roundItems.push({
         ...baseItem,
         type: 'consolidate',
@@ -672,6 +656,21 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
       })
+    }
+    // First pass: unused USE phrases
+    for (const phrase of sortedUsePhrases) {
+      if (consolidateCount >= CONSOLIDATE_COUNT) break
+      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+      if (usedPhrasesInRound.has(phraseId)) continue
+      usedPhrasesInRound.add(phraseId)
+      emitConsolidate(phrase)
+    }
+    // Second pass: reuse USE phrases already used in BUILD (pool was too small)
+    if (consolidateCount < CONSOLIDATE_COUNT) {
+      for (const phrase of sortedUsePhrases) {
+        if (consolidateCount >= CONSOLIDATE_COUNT) break
+        emitConsolidate(phrase)
+      }
     }
 
     // Phase 6: LISTENING - graduation-triggered batch rotation
