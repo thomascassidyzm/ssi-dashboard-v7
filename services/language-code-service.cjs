@@ -26,6 +26,7 @@ const codeToAzure = {};      // 'es' → 'es-ES'
 const codeToElevenLabs = {}; // 'es' → 'es'
 const codeToLegacy = {};     // 'es' → 'spa' (from CSV column, not computed)
 const codeToGoogle = {};     // 'es' → 'es-ES' (Google BCP-47)
+const azureToDatabase = {};  // 'en-gb' → 'eng' (BCP-47 azure locale → ISO 639-3)
 
 // Legacy non-standard codes → ISO standard codes
 const LEGACY_TO_STANDARD = {
@@ -153,6 +154,9 @@ function loadCSV() {
           if (!LEGACY_TO_STANDARD[databaseCode]) {
             LEGACY_TO_STANDARD[databaseCode] = manifestCode;
           }
+        }
+        if (azureLocale && databaseCode) {
+          azureToDatabase[azureLocale.toLowerCase()] = databaseCode;
         }
         if (googleLocale) {
           codeToGoogle[manifestCode] = googleLocale;
@@ -508,6 +512,37 @@ function fromLanguagePair(pair) {
 }
 
 // ============================================================================
+// ISO 639-3 NORMALIZATION
+// ============================================================================
+
+/**
+ * Normalize any language code to ISO 639-3 (database format).
+ * Accepts: ISO 639-3 ('eng'), BCP-47 ('en-GB'), or ISO 639-1 ('en')
+ * Returns: ISO 639-3 ('eng') — the canonical format for course_audio.language
+ *
+ * @param {string} code - Language code in any format
+ * @returns {string} ISO 639-3 code
+ */
+function toIso3(code) {
+  if (!code) return code;
+  const lower = code.toLowerCase().trim();
+
+  // Already ISO 639-3? (3 lowercase letters, not a BCP-47 locale like 'cmn')
+  if (/^[a-z]{3}$/.test(lower) && !azureToDatabase[lower]) return lower;
+
+  // BCP-47 like 'en-GB', 'de-DE'? Check azure locale map
+  if (azureToDatabase[lower]) return azureToDatabase[lower];
+
+  // ISO 639-1 like 'en', 'de'? Convert via standardToLegacy
+  if (/^[a-z]{2}$/.test(lower)) {
+    const legacy = standardToLegacy(lower);
+    if (legacy !== lower) return legacy;
+  }
+
+  return lower;
+}
+
+// ============================================================================
 // EXPORTS
 // ============================================================================
 
@@ -658,6 +693,10 @@ module.exports = {
 
   // Region overrides (for courses without dialect in DB code)
   REGION_OVERRIDES,
+
+  // ISO 639-3 normalization
+  toIso3,
+  bcp47ToIso3: toIso3,  // Alias
 
   // Direct access to mappings (for advanced use)
   LEGACY_TO_STANDARD,

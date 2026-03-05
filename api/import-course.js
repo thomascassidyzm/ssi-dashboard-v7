@@ -87,10 +87,10 @@ async function clearCourseData(supabase, courseCode) {
   return results;
 }
 
-async function importCourseRecord(supabase, manifest, courseCode) {
+async function importCourseRecord(supabase, manifest, courseCode, displayNameOverride) {
   const knownLang = manifest.known || 'eng';
   const targetLang = manifest.target || 'unknown';
-  const displayName = DISPLAY_NAMES[courseCode] || `${targetLang.toUpperCase()} for ${knownLang.toUpperCase()} speakers`;
+  const displayName = displayNameOverride || DISPLAY_NAMES[courseCode] || `${targetLang.toUpperCase()} for ${knownLang.toUpperCase()} speakers`;
 
   const { error } = await supabase
     .from('courses')
@@ -490,6 +490,10 @@ export default async function handler(req, res) {
       clearFirst = req.body?.clearFirst === true || req.body?.clearFirst === 'true';
     }
 
+    // Optional overrides for course code and display name
+    const courseCodeOverride = req.body?.courseCode || null;
+    const displayNameOverride = req.body?.displayName || null;
+
     if (!manifest || !manifest.id || !manifest.slices) {
       return res.status(400).json({
         success: false,
@@ -498,7 +502,7 @@ export default async function handler(req, res) {
     }
 
     const legacyId = manifest.id;
-    const courseCode = resolveCourseCode(legacyId);
+    const courseCode = courseCodeOverride || resolveCourseCode(legacyId);
 
     const supabase = getSupabase();
 
@@ -509,7 +513,7 @@ export default async function handler(req, res) {
     }
 
     // Run import steps
-    const courseResult = await importCourseRecord(supabase, manifest, courseCode);
+    const courseResult = await importCourseRecord(supabase, manifest, courseCode, displayNameOverride);
     const audioResult = await importAudioSamples(supabase, manifest, courseCode);
     const sharedResult = await importSharedAudio(supabase, manifest, courseCode);
     const copyResult = await copySharedToCourse(supabase, manifest, courseCode);

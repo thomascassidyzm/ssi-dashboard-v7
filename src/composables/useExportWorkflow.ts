@@ -598,7 +598,7 @@ export function useExportWorkflow(courseCode: string) {
   }
 
   // Step 1: Generate manifest
-  async function generateManifest(withAudio = false) {
+  async function generateManifest(withAudio = false, useAsIs = false) {
     isLoading.value = true
     error.value = null
 
@@ -611,7 +611,7 @@ export function useExportWorkflow(courseCode: string) {
         `/api/production/${courseCode}/export-legacy-with-state`,
         {
           method: 'POST',
-          body: JSON.stringify({ withAudio, machineName })
+          body: JSON.stringify({ withAudio, useAsIs, machineName })
         },
         1200000 // 20 minutes
       )

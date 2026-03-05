@@ -1098,7 +1098,7 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
 // =============================================================================
 
 async function generateLegacyManifest(courseCode, options = {}) {
-  const { withAudio = false, dryRun = false, limit = 0, concurrency = 8, onAudioProgress = null } = options
+  const { withAudio = false, useAsIs = false, dryRun = false, limit = 0, concurrency = 8, onAudioProgress = null } = options
   console.error(`Generating legacy manifest for ${courseCode}...`)
   if (withAudio) {
     console.error(`  (with combined presentation audio generation, dryRun=${dryRun}, limit=${limit || 'all'})`)
@@ -1361,65 +1361,117 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // Combined audio generation can run in background with progress updates
   let audioGenerationWarnings = null
   if (withAudio && introItems.length > 0) {
-    console.error(`\n  Generating combined presentation audio (${introItems.length} items)...`)
+    if (useAsIs) {
+      // Use existing presentation audio directly — skip concatenation
+      console.error(`\n  Using existing presentations as-is (${introItems.length} items, skipping target concatenation)...`)
 
-    // Build audio lookup map: (text_normalized|language|role) -> record
-    const audioLookup = new Map()
-    // Build presentation lookup map: lego_id -> record (presentation audio uses lego_id)
-    // IMPORTANT: Only include mastered audio, not pending placeholders
-    const presentationByLegoId = new Map()
-    if (dbAudio) {
-      for (const record of dbAudio) {
-        // Skip pending audio - these are placeholders without real files
-        const isPending = record.s3_key?.startsWith('pending/')
-
-        // For presentation role, index by lego_id (only mastered)
-        if (record.role === 'presentation' && record.lego_id && !isPending) {
-          presentationByLegoId.set(record.lego_id, record)
-        }
-        // Also index by text for target1/target2 lookup (only mastered)
-        // Use normalizeTextForAudio to strip punctuation for consistent matching
-        if (!isPending) {
-          const normalizedText = normalizeTextForAudio(record.text_normalized)
-          const key = `${normalizedText}|${record.language}|${record.role}`
-          audioLookup.set(key, record)
+      // Build presentation lookup: lego_id -> record (mastered only)
+      const presentationByLegoId = new Map()
+      if (dbAudio) {
+        for (const record of dbAudio) {
+          if (record.role === 'presentation' && record.lego_id && !record.s3_key?.startsWith('pending/')) {
+            presentationByLegoId.set(record.lego_id, record)
+          }
         }
       }
-    }
-    console.error(`  Audio lookup: ${audioLookup.size} by text, ${presentationByLegoId.size} presentations by lego_id`)
+      console.error(`  Found ${presentationByLegoId.size} existing presentation audio records`)
 
-    const { results: combinedPresentationMap, errors: combErrors, skipped: combSkipped } = await generateCombinedPresentations(
-      courseCode,
-      introItems,
-      audioLookup,
-      presentationByLegoId,
-      targetLang,
-      knownLang,
-      { dryRun, limit, concurrency, onProgress: onAudioProgress }
-    )
-
-    // Update presentation samples with actual durations (UUIDs already match)
-    let updatedCount = 0
-    for (const item of introItems) {
-      const combinedUuid = combinedPresentationMap.get(item.legoId)
-      if (combinedUuid && samples[item.presentation]) {
-        // UUID should already match, but verify
-        const existingUuid = samples[item.presentation][0]?.id
-        if (existingUuid !== combinedUuid) {
-          console.error(`  Warning: UUID mismatch for ${item.legoId}: expected ${existingUuid}, got ${combinedUuid}`)
+      let linked = 0, missing = 0
+      for (const item of introItems) {
+        const presRecord = presentationByLegoId.get(item.legoId)
+        if (presRecord) {
+          // Use the existing presentation UUID directly as the "combined" presentation
+          const uuid = presRecord.s3_key.replace('mastered/', '').replace('.mp3', '')
+          // Update the samples dict so the manifest has the right UUID for this presentation text
+          if (samples[item.presentation]) {
+            samples[item.presentation] = [{
+              id: uuid,
+              cadence: 'natural',
+              role: 'presentation',
+              duration: presRecord.duration_ms ? presRecord.duration_ms / 1000 : 0
+            }]
+          }
+          linked++
+        } else {
+          console.error(`  Missing presentation audio for LEGO ${item.legoId}`)
+          missing++
         }
-        updatedCount++
-      }
-    }
-    console.error(`  Verified ${updatedCount} combined presentations`)
 
-    // Warn if many presentations were skipped
-    if (combSkipped.length > 0) {
-      console.error(`  ⚠️  WARNING: ${combSkipped.length} combined presentations skipped due to missing audio`)
-      audioGenerationWarnings = {
-        skippedCount: combSkipped.length,
-        skippedItems: combSkipped.slice(0, 10), // First 10 for debugging
-        message: `${combSkipped.length} combined presentations could not be generated due to missing component audio`
+        if (onAudioProgress) {
+          onAudioProgress(linked + missing, introItems.length)
+        }
+      }
+      console.error(`  Linked ${linked} presentations as-is, ${missing} missing`)
+
+      if (missing > 0) {
+        audioGenerationWarnings = {
+          skippedCount: missing,
+          skippedItems: [],
+          message: `${missing} presentations missing existing audio`
+        }
+      }
+    } else {
+      // Normal path: concatenate narration + target1 + target2
+      console.error(`\n  Generating combined presentation audio (${introItems.length} items)...`)
+
+      // Build audio lookup map: (text_normalized|language|role) -> record
+      const audioLookup = new Map()
+      // Build presentation lookup map: lego_id -> record (presentation audio uses lego_id)
+      // IMPORTANT: Only include mastered audio, not pending placeholders
+      const presentationByLegoId = new Map()
+      if (dbAudio) {
+        for (const record of dbAudio) {
+          // Skip pending audio - these are placeholders without real files
+          const isPending = record.s3_key?.startsWith('pending/')
+
+          // For presentation role, index by lego_id (only mastered)
+          if (record.role === 'presentation' && record.lego_id && !isPending) {
+            presentationByLegoId.set(record.lego_id, record)
+          }
+          // Also index by text for target1/target2 lookup (only mastered)
+          // Use normalizeTextForAudio to strip punctuation for consistent matching
+          if (!isPending) {
+            const normalizedText = normalizeTextForAudio(record.text_normalized)
+            const key = `${normalizedText}|${record.language}|${record.role}`
+            audioLookup.set(key, record)
+          }
+        }
+      }
+      console.error(`  Audio lookup: ${audioLookup.size} by text, ${presentationByLegoId.size} presentations by lego_id`)
+
+      const { results: combinedPresentationMap, errors: combErrors, skipped: combSkipped } = await generateCombinedPresentations(
+        courseCode,
+        introItems,
+        audioLookup,
+        presentationByLegoId,
+        targetLang,
+        knownLang,
+        { dryRun, limit, concurrency, onProgress: onAudioProgress }
+      )
+
+      // Update presentation samples with actual durations (UUIDs already match)
+      let updatedCount = 0
+      for (const item of introItems) {
+        const combinedUuid = combinedPresentationMap.get(item.legoId)
+        if (combinedUuid && samples[item.presentation]) {
+          // UUID should already match, but verify
+          const existingUuid = samples[item.presentation][0]?.id
+          if (existingUuid !== combinedUuid) {
+            console.error(`  Warning: UUID mismatch for ${item.legoId}: expected ${existingUuid}, got ${combinedUuid}`)
+          }
+          updatedCount++
+        }
+      }
+      console.error(`  Verified ${updatedCount} combined presentations`)
+
+      // Warn if many presentations were skipped
+      if (combSkipped.length > 0) {
+        console.error(`  ⚠️  WARNING: ${combSkipped.length} combined presentations skipped due to missing audio`)
+        audioGenerationWarnings = {
+          skippedCount: combSkipped.length,
+          skippedItems: combSkipped.slice(0, 10), // First 10 for debugging
+          message: `${combSkipped.length} combined presentations could not be generated due to missing component audio`
+        }
       }
     }
   }

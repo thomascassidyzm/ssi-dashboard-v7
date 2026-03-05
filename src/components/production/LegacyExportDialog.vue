@@ -82,6 +82,23 @@
                   @verify="handleVerify"
                   @stop="handleStopVerify"
                 />
+
+                <!-- Override: skip verification and proceed to Step 3 -->
+                <div v-if="workflow.state.value.s3Verification && !s3VerificationPassing && !isVerifying" class="mt-4 p-3 border rounded-lg" :class="s3VerifyOverride ? 'bg-amber-900/20 border-amber-700' : 'border-slate-700'">
+                  <label class="flex items-center gap-2 cursor-pointer group">
+                    <input
+                      v-model="s3VerifyOverride"
+                      type="checkbox"
+                      class="w-4 h-4 rounded"
+                    />
+                    <span class="text-xs group-hover:text-slate-300 transition-colors" :class="s3VerifyOverride ? 'text-amber-400' : 'text-slate-500'">
+                      Skip verification — proceed to publish anyway
+                    </span>
+                  </label>
+                  <p v-if="s3VerifyOverride" class="text-xs text-amber-500/70 mt-1.5 ml-6">
+                    Duration metadata in the manifest may not match S3 audio files.
+                  </p>
+                </div>
               </div>
 
               <!-- Step 3: Publish Manifest -->
@@ -223,6 +240,19 @@ const isPushing = ref(false)
 const pushResult = ref<{ success: boolean; message?: string; error?: string } | null>(null)
 const activeStep = ref(1)
 const showPushWarning = ref(false)
+const s3VerifyOverride = ref(false)
+
+// Is S3 verification actually passing (without override)?
+const s3VerificationPassing = computed(() => {
+  const state = workflow.state.value
+  if (!state.s3Verified) return false
+  const verification = state.s3Verification
+  if (!verification) return false
+  if (verification.durationsFixed && verification.durationsFixed > 0) {
+    return verification.verifyFixed?.mismatched === 0
+  }
+  return true
+})
 
 // Computed
 const canProceedToNextStep = computed(() => {
@@ -231,21 +261,8 @@ const canProceedToNextStep = computed(() => {
     case 1:
       return state.manifestGenerated
     case 2:
-      // Can only proceed to Step 3 if:
-      // 1. S3 verified
-      // 2. AND either no auto-fix was needed OR auto-fix passed verification
-      if (!state.s3Verified) return false
-      const verification = state.s3Verification
-      if (!verification) return false
-
-      // If durations were fixed, must pass re-verification
-      // If durations were fixed, must also pass re-verification (verifyFixed.mismatched === 0)
-      if (verification.durationsFixed && verification.durationsFixed > 0) {
-        return verification.verifyFixed?.mismatched === 0
-      }
-
-      // If no fix was needed, can proceed
-      return true
+      // Allow proceeding if verification passes OR override is active
+      return s3VerificationPassing.value || s3VerifyOverride.value
     case 3:
       return state.manifestPublished
     default:
@@ -308,9 +325,9 @@ function previousStep() {
 }
 
 // Step 1 handlers
-async function handleGenerate(withAudio: boolean) {
+async function handleGenerate(withAudio: boolean, useAsIs: boolean = false) {
   try {
-    await workflow.generateManifest(withAudio)
+    await workflow.generateManifest(withAudio, useAsIs)
     // Manifest is saved as pending file - download available at Step 3
   } catch (err) {
     // Error handled by workflow

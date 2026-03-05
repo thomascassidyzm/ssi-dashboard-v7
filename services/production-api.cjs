@@ -2760,9 +2760,10 @@ async function getDirectAudioStats(courseCode) {
   const t2Missing = totalT2Needed - t2Bound
   const presMissing = totalPresNeeded - presBound
 
-  const SHARED_AUDIO_REQUIREMENTS = { encouragement: 26, instruction: 48 }
-  const sharedNeeded = SHARED_AUDIO_REQUIREMENTS.encouragement + SHARED_AUDIO_REQUIREMENTS.instruction
+  // Shared audio: use actual count or minimum requirement, whichever is larger
+  const SHARED_AUDIO_MINIMUM = { encouragement: 26, instruction: 48 }
   const sharedExisting = (encRes.count || 0) + (instrRes.count || 0)
+  const sharedNeeded = Math.max(SHARED_AUDIO_MINIMUM.encouragement + SHARED_AUDIO_MINIMUM.instruction, sharedExisting)
 
   // Welcome audio — check course_audio table
   const { count: welcomeCount } = await supabase
@@ -5853,7 +5854,7 @@ app.post('/api/production/:courseCode/export-state', async (req, res) => {
 app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res) => {
   const { courseCode } = req.params
   try {
-    const { withAudio = false } = req.body
+    const { withAudio = false, useAsIs = false } = req.body
 
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
@@ -5872,7 +5873,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
     // Import the legacy manifest generator
     const { generateLegacyManifest, validateManifest } = require('./phases/generate-legacy-manifest.cjs')
 
-    logger.info(`Generating legacy manifest for ${courseCode} (courseConfigsId: ${courseConfigsId}, withAudio: ${withAudio})`)
+    logger.info(`Generating legacy manifest for ${courseCode} (courseConfigsId: ${courseConfigsId}, withAudio: ${withAudio}, useAsIs: ${useAsIs})`)
 
     // Generate a job ID for audio generation tracking
     const audioJobId = withAudio ? `legacy-audio-${courseCode}-${Date.now()}` : null
@@ -5962,6 +5963,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
       // Re-generate manifest with audio (will use the existing one and just add combined audio)
       const { manifest: finalManifest, audioGenerationWarnings } = await generateLegacyManifest(courseCode, {
         withAudio: true,
+        useAsIs,
         onAudioProgress: (completed, total) => {
           logger.info(`[AudioProgress] Emitting progress: ${completed}/${total} for job ${audioJobId}`)
           io.emit('legacyAudio:progress', { jobId: audioJobId, completed, total, courseCode })

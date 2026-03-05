@@ -24,6 +24,21 @@
         </div>
       </label>
 
+      <!-- Use presentations as-is sub-option -->
+      <label
+        v-if="withAudio"
+        class="flex items-start gap-2 ml-8 mt-1 cursor-pointer"
+      >
+        <input
+          v-model="useAsIs"
+          type="checkbox"
+          class="mt-0.5 w-3.5 h-3.5 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+        />
+        <span class="text-xs text-slate-400">
+          Use existing presentations as-is (skip target concatenation)
+        </span>
+      </label>
+
       <!-- Generate button -->
       <button
         @click="handleGenerate"
@@ -206,12 +221,13 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  generate: [withAudio: boolean]
+  generate: [withAudio: boolean, useAsIs: boolean]
   redownload: []
   regenerate: []
 }>()
 
 const withAudio = ref(true) // Default to true - always generate combined audio
+const useAsIs = ref(false) // When true, skip target concatenation and use existing presentation audio
 
 const audioProgressPercent = computed(() => {
   if (props.audioProgress.total === 0) return 0
@@ -219,7 +235,7 @@ const audioProgressPercent = computed(() => {
 })
 
 function handleGenerate() {
-  emit('generate', withAudio.value)
+  emit('generate', withAudio.value, useAsIs.value)
 }
 
 function handleRedownload() {

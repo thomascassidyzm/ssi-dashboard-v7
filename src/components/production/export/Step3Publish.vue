@@ -20,16 +20,22 @@
       </p>
 
       <!-- BLOCKER: Duration verification required -->
-      <div v-if="!durationsVerified" class="blocker-box p-4 bg-red-900/30 border-2 border-red-700 rounded-lg">
-        <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
+      <div v-if="!durationsVerified" class="blocker-box p-4 border-2 rounded-lg" :class="verificationOverride ? 'bg-amber-900/20 border-amber-700' : 'bg-red-900/30 border-red-700'">
+        <div class="flex items-center gap-2 font-medium mb-2" :class="verificationOverride ? 'text-amber-400' : 'text-red-400'">
           <svg v-if="verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0" class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <svg v-else-if="verificationOverride" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>
           <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
           <span v-if="verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0">
             Auto-fix in progress...
+          </span>
+          <span v-else-if="verificationOverride">
+            Override active — publishing without full verification
           </span>
           <span v-else>
             Publishing Blocked: Duration verification required
@@ -38,12 +44,23 @@
         <p v-if="verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0" class="text-sm text-slate-300">
           Step 2 is currently auto-fixing {{ verification.durationsFixed }} duration mismatches. Please wait for it to complete and verify.
         </p>
-        <p v-else class="text-sm text-slate-300">
+        <p v-else-if="!verificationOverride" class="text-sm text-slate-300">
           Go back to Step 2 and verify that all audio durations match the manifest before publishing.
         </p>
-        <p class="text-xs text-slate-400 mt-2">
+        <p v-if="!verificationOverride" class="text-xs text-slate-400 mt-2">
           This ensures the learning app receives accurate duration metadata.
         </p>
+        <!-- Override option -->
+        <label v-if="!verificationOverride && !(verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0)" class="flex items-center gap-2 mt-3 pt-3 border-t border-red-800/50 cursor-pointer group">
+          <input
+            v-model="verificationOverride"
+            type="checkbox"
+            class="w-4 h-4 rounded"
+          />
+          <span class="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
+            I understand the risks — publish without duration verification
+          </span>
+        </label>
       </div>
 
       <!-- Manifest Diff Summary -->
@@ -277,11 +294,13 @@
       <!-- Publish button -->
       <button
         @click="handlePublish"
-        :disabled="isPublishing || !version || !durationsVerified"
-        class="w-full px-4 py-3 text-sm font-medium bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        :disabled="isPublishing || !version || !canPublish"
+        class="w-full px-4 py-3 text-sm font-medium text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        :class="verificationOverride && !durationsVerified ? 'bg-amber-600 hover:bg-amber-700' : 'bg-purple-500 hover:bg-purple-600'"
       >
         <span v-if="isPublishing" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-        <span v-if="!durationsVerified">Blocked: Verify Durations First</span>
+        <span v-if="!canPublish">Blocked: Verify Durations First</span>
+        <span v-else-if="verificationOverride && !durationsVerified">{{ isPublishing ? 'Publishing...' : 'Publish (Unverified)' }}</span>
         <span v-else>{{ isPublishing ? 'Publishing...' : 'Publish Manifest' }}</span>
       </button>
     </div>
@@ -416,16 +435,30 @@
         </div>
 
         <!-- Duration verification requirement -->
-        <div v-if="!durationsVerified" class="blocker-box p-4 bg-red-900/30 border-2 border-red-700 rounded-lg">
-          <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div v-if="!durationsVerified" class="blocker-box p-4 border-2 rounded-lg" :class="verificationOverride ? 'bg-amber-900/20 border-amber-700' : 'bg-red-900/30 border-red-700'">
+          <div class="flex items-center gap-2 font-medium mb-2" :class="verificationOverride ? 'text-amber-400' : 'text-red-400'">
+            <svg v-if="verificationOverride" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
-            <span>Publishing Blocked: Re-verify durations first</span>
+            <span v-if="verificationOverride">Override active — publishing without full verification</span>
+            <span v-else>Publishing Blocked: Re-verify durations first</span>
           </div>
-          <p class="text-sm text-slate-300">
+          <p v-if="!verificationOverride" class="text-sm text-slate-300">
             Go back to Step 2 and re-verify S3 to ensure durations match before publishing.
           </p>
+          <label v-if="!verificationOverride" class="flex items-center gap-2 mt-3 pt-3 border-t border-red-800/50 cursor-pointer group">
+            <input
+              v-model="verificationOverride"
+              type="checkbox"
+              class="w-4 h-4 rounded"
+            />
+            <span class="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
+              I understand the risks — publish without duration verification
+            </span>
+          </label>
         </div>
 
         <!-- Publish options -->
@@ -465,11 +498,13 @@
           </button>
           <button
             @click="handleRepublish"
-            :disabled="isPublishing || !republishVersion || !durationsVerified"
-            class="flex-1 px-4 py-3 text-sm font-medium bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            :disabled="isPublishing || !republishVersion || !canPublish"
+            class="flex-1 px-4 py-3 text-sm font-medium text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            :class="verificationOverride && !durationsVerified ? 'bg-amber-600 hover:bg-amber-700' : 'bg-purple-500 hover:bg-purple-600'"
           >
             <span v-if="isPublishing" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>
-            <span v-if="!durationsVerified">Blocked: Verify Durations First</span>
+            <span v-if="!canPublish">Blocked: Verify Durations First</span>
+            <span v-else-if="verificationOverride && !durationsVerified">{{ isPublishing ? 'Publishing...' : 'Publish (Unverified)' }}</span>
             <span v-else>{{ isPublishing ? 'Publishing...' : 'Publish New Version' }}</span>
           </button>
         </div>
@@ -492,6 +527,12 @@ const props = defineProps<{
   verification: S3VerificationResult | null
   formatDate: (date: string | null) => string
 }>()
+
+// Override: allow publishing without full duration verification
+const verificationOverride = ref(false)
+
+// Can publish if durations verified OR override is active
+const canPublish = computed(() => durationsVerified.value || verificationOverride.value)
 
 // CRITICAL: Check that durations were actually verified
 // Publishing without duration verification can cause sync issues in the learning app

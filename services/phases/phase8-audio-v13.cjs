@@ -37,6 +37,7 @@ const genderHaikuService = require('../gender-haiku-service.cjs')
 
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
+const { toIso3 } = require('../language-code-service.cjs')
 
 const app = express()
 app.use(cors())
@@ -108,7 +109,7 @@ function getLocalisedLangName(targetLang, knownLang) {
  */
 function normalizeText(text) {
   if (!text) return ''
-  return text.toLowerCase().trim()
+  return text.toLowerCase().trim().replace(/[.!。！]+$/, '')
 }
 
 /**
@@ -364,20 +365,21 @@ async function linkAudioIds(courseCode, knownLang, targetLang) {
 
   // --- Step 1: Load all course_audio into a lookup map ---
   // Key: "text_normalized|language|role" → course_audio.id
+  // Filter pending/ s3_keys client-side to avoid blocking index usage
   const audioMap = new Map()
   let audioOffset = 0
   let hasMore = true
   while (hasMore) {
     const { data, error } = await supabase
       .from('course_audio')
-      .select('id, text_normalized, language, role')
+      .select('id, text_normalized, language, role, s3_key')
       .eq('course_code', courseCode)
-      .not('s3_key', 'like', 'pending/%')
-      .order('id', { ascending: true })
       .range(audioOffset, audioOffset + PAGE_SIZE - 1)
     if (error) throw new Error(`Failed to load course_audio: ${error.message}`)
     for (const a of (data || [])) {
-      audioMap.set(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`, a.id)
+      if (!a.s3_key || !a.s3_key.startsWith('pending/')) {
+        audioMap.set(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`, a.id)
+      }
     }
     hasMore = (data || []).length === PAGE_SIZE
     audioOffset += PAGE_SIZE
@@ -527,14 +529,14 @@ async function linkAudioIds(courseCode, knownLang, targetLang) {
 // to course_legos.presentation_audio_id. Runs after any presentation generation.
 // =============================================================================
 async function linkPresentationAudio(courseCode) {
-  // Get all presentation audio that has lego_id set and is not pending
-  const { data: presentations, error: presError } = await supabase
+  // Get all presentation audio that has lego_id set (filter pending client-side)
+  const { data: rawPres, error: presError } = await supabase
     .from('course_audio')
-    .select('id, lego_id')
+    .select('id, lego_id, s3_key')
     .eq('course_code', courseCode)
     .eq('role', 'presentation')
     .not('lego_id', 'is', null)
-    .not('s3_key', 'like', 'pending/%')
+  const presentations = (rawPres || []).filter(p => !p.s3_key || !p.s3_key.startsWith('pending/'))
 
   if (presError || !presentations?.length) {
     return { linked: 0, error: presError?.message || null }
@@ -619,8 +621,7 @@ async function planHandler(req, res) {
     const releaseTarget = course.seed_count || 260
 
     // Get what audio we have (paginated)
-    // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
-    // IMPORTANT: Must use ORDER BY for consistent pagination results
+    // Filter pending/ s3_keys client-side to avoid blocking index usage
     const existingAudio = []
     let audioOffset = 0
     let hasMoreAudio = true
@@ -628,16 +629,17 @@ async function planHandler(req, res) {
     while (hasMoreAudio) {
       const { data: audioBatch, error: audioError } = await supabase
         .from('course_audio')
-        .select('text_normalized, language, role')
+        .select('text_normalized, language, role, s3_key')
         .eq('course_code', courseCode)
-        .not('s3_key', 'like', 'pending/%')
-        .order('id')
         .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
       if (audioError) throw audioError
 
       if (audioBatch && audioBatch.length > 0) {
-        existingAudio.push(...audioBatch)
+        // Exclude pending/ s3_keys - those are placeholders, not real audio
+        for (const a of audioBatch) {
+          if (!a.s3_key || !a.s3_key.startsWith('pending/')) existingAudio.push(a)
+        }
         hasMoreAudio = audioBatch.length === PAGE_SIZE
         audioOffset += PAGE_SIZE
       } else {
@@ -754,13 +756,13 @@ async function planHandler(req, res) {
 
     if (legosError) throw legosError
 
-    // Get existing presentation audio (exclude pending/)
-    const { data: existingPresentations } = await supabase
+    // Get existing presentation audio (filter pending/ client-side to avoid blocking index)
+    const { data: rawPresentations } = await supabase
       .from('course_audio')
-      .select('lego_id')
+      .select('lego_id, s3_key')
       .eq('course_code', courseCode)
       .eq('role', 'presentation')
-      .not('s3_key', 'like', 'pending/%')
+    const existingPresentations = (rawPresentations || []).filter(p => !p.s3_key || !p.s3_key.startsWith('pending/'))
 
     // Build set of lego_ids that have presentation audio in course_audio
     const legoIdsWithPresentation = new Set(
@@ -1021,8 +1023,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     // Get existing audio (paginated)
-    // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
-    // IMPORTANT: Must use ORDER BY for consistent pagination results
+    // Filter pending/ s3_keys client-side to avoid blocking index usage
     const existingAudio = []
     let audioOffset = 0
     let hasMoreAudio = true
@@ -1030,16 +1031,16 @@ app.post('/generate/:courseCode', async (req, res) => {
     while (hasMoreAudio) {
       const { data: audioBatch, error: audioError } = await supabase
         .from('course_audio')
-        .select('text_normalized, language, role')
+        .select('text_normalized, language, role, s3_key')
         .eq('course_code', courseCode)
-        .not('s3_key', 'like', 'pending/%')
-        .order('id')
         .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
       if (audioError) throw audioError
 
       if (audioBatch && audioBatch.length > 0) {
-        existingAudio.push(...audioBatch)
+        for (const a of audioBatch) {
+          if (!a.s3_key || !a.s3_key.startsWith('pending/')) existingAudio.push(a)
+        }
         hasMoreAudio = audioBatch.length === PAGE_SIZE
         audioOffset += PAGE_SIZE
       } else {
@@ -1236,17 +1237,18 @@ app.post('/generate/:courseCode', async (req, res) => {
       .lte('seed_number', releaseTarget)
 
     if (newLegos?.length > 0) {
-      // Get existing presentation audio (exclude pending/ since we handled those above)
-      const { data: existingPresentations } = await supabase
+      // Get existing presentation audio (filter pending client-side)
+      const { data: rawExistPres } = await supabase
         .from('course_audio')
-        .select('lego_id')
+        .select('lego_id, s3_key')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
-        .not('s3_key', 'like', 'pending/%')
 
       // Build set of lego_ids that have presentation audio in course_audio
       const legoIdsWithPresentation = new Set(
-        (existingPresentations || []).map(p => p.lego_id).filter(Boolean)
+        (rawExistPres || [])
+          .filter(p => !p.s3_key || !p.s3_key.startsWith('pending/'))
+          .map(p => p.lego_id).filter(Boolean)
       )
 
       // Exclude LEGOs that have pending presentations (already added above)
@@ -2135,13 +2137,16 @@ app.post('/insert', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' })
     }
 
+    // Normalize language to ISO 639-3 (e.g. 'en-GB' → 'eng')
+    const normalizedLanguage = toIso3(language)
+
     const { data, error } = await supabase
       .from('course_audio')
       .upsert({
         course_code: courseCode,
         text,
         text_normalized: text.toLowerCase().trim(),
-        language,
+        language: normalizedLanguage,
         role,
         voice_id: voiceId,
         origin,
@@ -2538,16 +2543,16 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
       const { data: batchData, error: batchError } = await supabase
         .from('course_audio')
-        .select('id, lego_id')
+        .select('id, lego_id, s3_key')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
-        .not('s3_key', 'like', 'pending/%')
         .in('lego_id', batch)
 
       if (batchError) {
         logger.warn(`Batch query error at offset ${i}:`, batchError.message)
       } else if (batchData) {
-        allPresAudio = allPresAudio.concat(batchData)
+        // Filter pending/ s3_keys client-side
+        allPresAudio = allPresAudio.concat(batchData.filter(a => !a.s3_key || !a.s3_key.startsWith('pending/')))
       }
     }
 

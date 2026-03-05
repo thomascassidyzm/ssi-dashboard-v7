@@ -7,11 +7,13 @@
  *
  * Usage:
  *   node database/import-legacy-course.cjs <manifest.json> [--dry-run] [--max-seeds=N] [--clear-first]
+ *     [--course-code=CODE] [--display-name="Name"]
  *
  * Examples:
  *   node database/import-legacy-course.cjs ~/Downloads/en-ga.json --dry-run
  *   node database/import-legacy-course.cjs ~/Downloads/en-ga.json
  *   node database/import-legacy-course.cjs ~/Downloads/en-es.json --max-seeds=100
+ *   node database/import-legacy-course.cjs manifest.json --course-code=cym_anthem_for_jpn --display-name="Welsh Anthem for Japanese Speakers" --dry-run
  */
 
 require('dotenv').config();
@@ -29,6 +31,10 @@ const dryRun = args.includes('--dry-run');
 const clearFirst = args.includes('--clear-first');
 const maxSeedsArg = args.find(a => a.startsWith('--max-seeds='));
 const maxSeeds = maxSeedsArg ? parseInt(maxSeedsArg.split('=')[1], 10) : null;
+const courseCodeArg = args.find(a => a.startsWith('--course-code='));
+const courseCodeOverride = courseCodeArg ? courseCodeArg.split('=')[1] : null;
+const displayNameArg = args.find(a => a.startsWith('--display-name='));
+const displayNameOverride = displayNameArg ? displayNameArg.split('=').slice(1).join('=') : null;
 
 // =============================================================================
 // MAIN
@@ -39,9 +45,11 @@ async function main() {
     console.error('Usage: node database/import-legacy-course.cjs <manifest.json> [--dry-run] [--max-seeds=N]');
     console.error('');
     console.error('Options:');
-    console.error('  --dry-run       Analyze manifest without importing');
-    console.error('  --max-seeds=N   Limit number of seeds to import');
-    console.error('  --clear-first   Delete existing data before importing (use with caution)');
+    console.error('  --dry-run              Analyze manifest without importing');
+    console.error('  --max-seeds=N          Limit number of seeds to import');
+    console.error('  --clear-first          Delete existing data before importing (use with caution)');
+    console.error('  --course-code=CODE     Override auto-derived course code (e.g., cym_anthem_for_jpn)');
+    console.error('  --display-name="Name"  Override auto-derived display name');
     console.error('');
     console.error('Supported course aliases:');
     for (const [legacy, canonical] of Object.entries(COURSE_ALIASES)) {
@@ -72,11 +80,13 @@ async function main() {
   console.log(`Mode: ${dryRun ? 'DRY RUN' : 'LIVE IMPORT'}`);
   if (maxSeeds) console.log(`Max seeds: ${maxSeeds}`);
   if (clearFirst) console.log(`Clear first: YES (will delete existing data)`);
+  if (courseCodeOverride) console.log(`Course code override: ${courseCodeOverride}`);
+  if (displayNameOverride) console.log(`Display name override: ${displayNameOverride}`);
   console.log('');
 
   // Progress callback
   const onProgress = ({ step, message }) => {
-    process.stdout.write(`\rStep ${step}/8: ${message}`.padEnd(80));
+    process.stdout.write(`\rStep ${step}/9: ${message}`.padEnd(80));
   };
 
   try {
@@ -86,6 +96,8 @@ async function main() {
       dryRun,
       clearFirst,
       maxSeeds,
+      courseCodeOverride,
+      displayNameOverride,
       onProgress: dryRun ? null : onProgress
     });
 
@@ -138,6 +150,7 @@ async function main() {
       console.log(`  course_legos:             ${steps.legos.count.toLocaleString()}`);
       console.log(`  course_practice_phrases:  ${steps.practicePhrases.count.toLocaleString()}`);
       console.log(`  lego_introductions:       ${steps.legoIntroductions.count.toLocaleString()}`);
+      console.log(`  audio_links:              ${steps.audioLinks.count.toLocaleString()}`);
 
       if (steps.audioSamples.errors > 0) {
         console.log('');

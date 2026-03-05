@@ -16,6 +16,7 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
+const langService = require('../../services/language-code-service.cjs');
 
 // =============================================================================
 // COURSE ALIASES - Single Source of Truth
@@ -28,25 +29,6 @@ const COURSE_ALIASES = {
   'en-ga': 'gle_for_eng',
   'cmn_for_eng': 'zho_for_eng',
   'En-Ch': 'zho_for_eng'
-};
-
-// Language code mappings (2-letter to 3-letter ISO 639)
-const LANG_CODES = {
-  'en': 'eng',
-  'cy': 'cym',
-  'es': 'spa',
-  'ga': 'gle',
-  'zh': 'zho',
-  'cmn': 'zho'
-};
-
-// Display names for languages
-const LANG_NAMES = {
-  'eng': 'English',
-  'cym': 'Welsh',
-  'spa': 'Spanish',
-  'gle': 'Irish',
-  'zho': 'Chinese'
 };
 
 // Role mapping: legacy manifest → v13 schema
@@ -71,7 +53,8 @@ function resolveCourseCode(legacyId) {
 }
 
 function resolveLangCode(code) {
-  return LANG_CODES[code] || code;
+  // Use language-code-service: convert manifest codes (ja, cy, en) to database codes (jpn, cym, eng)
+  return langService.standardToLegacy(code) || code;
 }
 
 function extractLanguages(manifest) {
@@ -81,8 +64,9 @@ function extractLanguages(manifest) {
 }
 
 function generateDisplayName(knownLang, targetLang) {
-  const targetName = LANG_NAMES[targetLang] || targetLang.toUpperCase();
-  const knownName = LANG_NAMES[knownLang] || knownLang.toUpperCase();
+  // Use language-code-service for names (accepts any code format)
+  const targetName = langService.getName(targetLang);
+  const knownName = langService.getName(knownLang);
   return `${targetName} for ${knownName} Speakers`;
 }
 
@@ -149,21 +133,21 @@ async function clearCourseData(supabase, courseCode, onProgress) {
 /**
  * Step 1: Import course record
  */
-async function importCourseRecord(supabase, manifest, courseCode, knownLang, targetLang, onProgress) {
+async function importCourseRecord(supabase, manifest, courseCode, knownLang, targetLang, onProgress, displayName) {
   onProgress?.({ step: 1, message: 'Upserting course record...' });
 
-  const displayName = generateDisplayName(knownLang, targetLang);
+  displayName = displayName || generateDisplayName(knownLang, targetLang);
 
   const { error } = await supabase
     .from('courses')
     .upsert({
-      code: courseCode,
+      course_code: courseCode,
       display_name: displayName,
       known_lang: knownLang,
       target_lang: targetLang,
       status: 'released',
       course_type: 'official'
-    }, { onConflict: 'code' });
+    }, { onConflict: 'course_code' });
 
   if (error) throw new Error(`Failed to upsert course: ${error.message}`);
 
@@ -199,7 +183,7 @@ async function importAudioSamples(supabase, manifest, courseCode, knownLang, tar
         role: role,
         voice_id: 'legacy_import',
         origin: 'tts',
-        s3_key: audio.id.includes('/') ? audio.id : `${audio.id}.mp3`,
+        s3_key: audio.id.includes('/') ? audio.id : `mastered/${audio.id}.mp3`,
         duration_ms: audio.duration ? Math.round(audio.duration * 1000) : null
       });
     }
@@ -216,18 +200,28 @@ async function importAudioSamples(supabase, manifest, courseCode, knownLang, tar
       role: 'presentation',
       voice_id: 'human_recording',
       origin: 'human',
-      s3_key: intro.id.includes('/') ? intro.id : `${intro.id}.mp3`,
+      s3_key: intro.id.includes('/') ? intro.id : `mastered/${intro.id}.mp3`,
       duration_ms: intro.duration ? Math.round(intro.duration * 1000) : null
     });
   }
 
-  // Batch insert
+  // Deduplicate before inserting (same text+lang+role = keep first)
+  const seen = new Set();
+  const dedupedRecords = [];
+  for (const rec of audioRecords) {
+    const key = `${rec.text_normalized}|${rec.language}|${rec.role}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    dedupedRecords.push(rec);
+  }
+
+  // Batch upsert (deduped, so batch failures should be rare)
   const BATCH_SIZE = 100;
   let imported = 0;
   let errors = 0;
 
-  for (let i = 0; i < audioRecords.length; i += BATCH_SIZE) {
-    const batch = audioRecords.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < dedupedRecords.length; i += BATCH_SIZE) {
+    const batch = dedupedRecords.slice(i, i + BATCH_SIZE);
 
     const { error } = await supabase
       .from('course_audio')
@@ -237,15 +231,22 @@ async function importAudioSamples(supabase, manifest, courseCode, knownLang, tar
       });
 
     if (error) {
-      errors += batch.length;
+      // Batch failed — fall back to row-by-row to avoid losing good rows
+      for (const row of batch) {
+        const { error: rowErr } = await supabase
+          .from('course_audio')
+          .upsert(row, { onConflict: 'course_code,text_normalized,language,role', ignoreDuplicates: true });
+        if (rowErr) errors++;
+        else imported++;
+      }
     } else {
       imported += batch.length;
     }
 
-    onProgress?.({ step: 2, message: `Importing audio samples... ${imported}/${audioRecords.length}` });
+    onProgress?.({ step: 2, message: `Importing audio samples... ${imported}/${dedupedRecords.length}` });
   }
 
-  return { count: imported, errors };
+  return { count: imported, errors, skippedDuplicates: audioRecords.length - dedupedRecords.length };
 }
 
 /**
@@ -291,7 +292,7 @@ async function importSharedAudio(supabase, manifest, knownLang, onProgress) {
       origin: 'human',
       s3_key: (enc.id || audioInfo?.id || '').includes('/')
         ? (enc.id || audioInfo?.id)
-        : `${enc.id || audioInfo?.id}.mp3`,
+        : `mastered/${enc.id || audioInfo?.id}.mp3`,
       duration_ms: audioInfo?.duration ? Math.round(audioInfo.duration * 1000) : null
     });
   }
@@ -309,7 +310,7 @@ async function importSharedAudio(supabase, manifest, knownLang, onProgress) {
       origin: 'human',
       s3_key: (enc.id || audioInfo?.id || '').includes('/')
         ? (enc.id || audioInfo?.id)
-        : `${enc.id || audioInfo?.id}.mp3`,
+        : `mastered/${enc.id || audioInfo?.id}.mp3`,
       duration_ms: audioInfo?.duration ? Math.round(audioInfo.duration * 1000) : null
     });
   }
@@ -524,12 +525,22 @@ async function importPracticePhrases(supabase, manifest, courseCode, onProgress)
         const phraseKnown = phrase.known?.text || '';
         const phraseTarget = phrase.target?.text || '';
         const wordCount = phraseTarget.trim() ? phraseTarget.trim().split(/\s+/).length : 0;
+        const phraseRole = 'build';
+        const rolePosition = phraseIdx + 1;
+
+        // Deterministic phrase ID: {course_code}:S{NNNN}L{NN}B{NN}
+        const s = String(seedNumber).padStart(4, '0');
+        const l = String(legoIdx + 1).padStart(2, '0');
+        const p = String(rolePosition).padStart(2, '0');
+        const phraseId = `${courseCode}:S${s}L${l}B${p}`;
 
         phraseRecords.push({
+          id: phraseId,
           course_code: courseCode,
           seed_number: seedNumber,
           lego_index: legoIdx + 1,
           position: phraseIdx + 1,
+          phrase_role: phraseRole,
           known_text: phraseKnown,
           target_text: phraseTarget,
           word_count: wordCount,
@@ -549,9 +560,11 @@ async function importPracticePhrases(supabase, manifest, courseCode, onProgress)
 
     const { error } = await supabase
       .from('course_practice_phrases')
-      .insert(batch);
+      .upsert(batch, { onConflict: 'id' });
 
-    if (!error) {
+    if (error) {
+      console.error(`  Phrase batch error: ${error.message}`);
+    } else {
       imported += batch.length;
     }
 
@@ -625,6 +638,151 @@ async function importLegoIntroductions(supabase, manifest, courseCode, onProgres
   return { count: imported };
 }
 
+/**
+ * Step 9: Link audio to content rows
+ * Matches course_audio records (by text_normalized + role) to seeds, LEGOs, and phrases,
+ * then writes the audio IDs back as known_audio_id, target1_audio_id, target2_audio_id,
+ * and presentation_audio_id.
+ */
+async function linkAudioToContent(supabase, courseCode, onProgress, manifest) {
+  onProgress?.({ step: 9, message: 'Linking audio to content...' });
+
+  // Build lookup: text_normalized+role → audio.id
+  const { data: audioRows, error: audioErr } = await supabase
+    .from('course_audio')
+    .select('id, text_normalized, role')
+    .eq('course_code', courseCode);
+
+  if (audioErr) throw new Error(`Failed to fetch course audio: ${audioErr.message}`);
+
+  const audioLookup = {}; // { "text_normalized|role" → audio.id }
+  for (const row of audioRows) {
+    const key = `${row.text_normalized}|${row.role}`;
+    audioLookup[key] = row.id;
+  }
+
+  let linked = 0;
+
+  // Also build exact-text lookup for presentations (normalization can strip trailing punctuation)
+  const { data: audioRowsFull, error: audioFullErr } = await supabase
+    .from('course_audio')
+    .select('id, text, role')
+    .eq('course_code', courseCode)
+    .eq('role', 'presentation');
+
+  if (!audioFullErr) {
+    for (const row of audioRowsFull) {
+      audioLookup[`${row.text}|${row.role}`] = row.id;
+    }
+  }
+
+  // Helper: find audio ID for a text + role
+  const findAudio = (text, role) => {
+    if (!text) return null;
+    // Try exact match first (important for presentation texts with trailing punctuation)
+    const exactKey = `${text}|${role}`;
+    if (audioLookup[exactKey]) return audioLookup[exactKey];
+    // Fall back to normalized match
+    const norm = text.toLowerCase().trim().replace(/\s+/g, ' ');
+    return audioLookup[`${norm}|${role}`] || null;
+  };
+
+  // Link seeds
+  const { data: seeds } = await supabase
+    .from('course_seeds')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode);
+
+  for (const seed of (seeds || [])) {
+    const updates = {};
+    const knownId = findAudio(seed.known_text, 'known');
+    const t1Id = findAudio(seed.target_text, 'target1');
+    const t2Id = findAudio(seed.target_text, 'target2');
+    if (knownId) updates.known_audio_id = knownId;
+    if (t1Id) updates.target1_audio_id = t1Id;
+    if (t2Id) updates.target2_audio_id = t2Id;
+
+    if (Object.keys(updates).length > 0) {
+      await supabase.from('course_seeds').update(updates)
+        .eq('course_code', courseCode).eq('seed_number', seed.seed_number);
+      linked++;
+    }
+  }
+
+  onProgress?.({ step: 9, message: `Linking audio... ${linked} seeds done` });
+
+  // Build presentation text map from manifest (presentation audio text != LEGO target_text)
+  const presTextMap = {}; // "seedNumber|legoIndex" → presentation text
+  if (manifest) {
+    const slice = manifest.slices?.[0];
+    const manifestSeeds = slice?.seeds || [];
+    for (let si = 0; si < manifestSeeds.length; si++) {
+      const mLegos = manifestSeeds[si].introductionItems || manifestSeeds[si].introduction_items || [];
+      for (let li = 0; li < mLegos.length; li++) {
+        if (mLegos[li].presentation) {
+          presTextMap[`${si + 1}|${li + 1}`] = mLegos[li].presentation;
+        }
+      }
+    }
+  }
+
+  // Link LEGOs
+  const { data: legos } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index, known_text, target_text')
+    .eq('course_code', courseCode);
+
+  for (const lego of (legos || [])) {
+    const updates = {};
+    const knownId = findAudio(lego.known_text, 'known');
+    const t1Id = findAudio(lego.target_text, 'target1');
+    const t2Id = findAudio(lego.target_text, 'target2');
+    // Presentation audio uses the explanation text, not target_text
+    const presText = presTextMap[`${lego.seed_number}|${lego.lego_index}`];
+    const presId = presText ? findAudio(presText, 'presentation') : findAudio(lego.target_text, 'presentation');
+    if (knownId) updates.known_audio_id = knownId;
+    if (t1Id) updates.target1_audio_id = t1Id;
+    if (t2Id) updates.target2_audio_id = t2Id;
+    if (presId) updates.presentation_audio_id = presId;
+
+    if (Object.keys(updates).length > 0) {
+      await supabase.from('course_legos').update(updates)
+        .eq('course_code', courseCode)
+        .eq('seed_number', lego.seed_number)
+        .eq('lego_index', lego.lego_index);
+      linked++;
+    }
+  }
+
+  onProgress?.({ step: 9, message: `Linking audio... ${linked} seeds+legos done` });
+
+  // Link phrases
+  const { data: phrases } = await supabase
+    .from('course_practice_phrases')
+    .select('id, known_text, target_text')
+    .eq('course_code', courseCode);
+
+  for (const phrase of (phrases || [])) {
+    const updates = {};
+    const knownId = findAudio(phrase.known_text, 'known');
+    const t1Id = findAudio(phrase.target_text, 'target1');
+    const t2Id = findAudio(phrase.target_text, 'target2');
+    if (knownId) updates.known_audio_id = knownId;
+    if (t1Id) updates.target1_audio_id = t1Id;
+    if (t2Id) updates.target2_audio_id = t2Id;
+
+    if (Object.keys(updates).length > 0) {
+      await supabase.from('course_practice_phrases').update(updates)
+        .eq('id', phrase.id);
+      linked++;
+    }
+  }
+
+  onProgress?.({ step: 9, message: `Linking audio... ${linked} total linked` });
+
+  return { count: linked };
+}
+
 // =============================================================================
 // MAIN IMPORT FUNCTION
 // =============================================================================
@@ -648,12 +806,14 @@ async function importLegacyCourse(manifest, options = {}) {
     dryRun = false,
     clearFirst = false,
     maxSeeds = null,
-    onProgress = null
+    onProgress = null,
+    courseCodeOverride = null,
+    displayNameOverride = null
   } = options;
 
-  // Resolve course info
+  // Resolve course info (overrides take precedence)
   const legacyId = manifest.id;
-  const courseCode = resolveCourseCode(legacyId);
+  const courseCode = courseCodeOverride || resolveCourseCode(legacyId);
   const { knownLang, targetLang } = extractLanguages(manifest);
 
   // Analyze manifest
@@ -678,12 +838,14 @@ async function importLegacyCourse(manifest, options = {}) {
     }
   }
 
+  const displayName = displayNameOverride || generateDisplayName(knownLang, targetLang);
+
   const analysis = {
     legacyId,
     courseCode,
     knownLang,
     targetLang,
-    displayName: generateDisplayName(knownLang, targetLang),
+    displayName,
     seedCount: seeds.length,
     sampleCount,
     legoCount,
@@ -712,7 +874,7 @@ async function importLegacyCourse(manifest, options = {}) {
 
   // Step 1: Course record
   results.steps.courseRecord = await importCourseRecord(
-    supabase, manifest, courseCode, knownLang, targetLang, onProgress
+    supabase, manifest, courseCode, knownLang, targetLang, onProgress, displayName
   );
 
   // Step 2: Audio samples
@@ -750,7 +912,12 @@ async function importLegacyCourse(manifest, options = {}) {
     supabase, manifest, courseCode, onProgress
   );
 
-  onProgress?.({ step: 8, message: 'Import complete!' });
+  // Step 9: Link audio to content rows (seeds, LEGOs, phrases)
+  results.steps.audioLinks = await linkAudioToContent(
+    supabase, courseCode, onProgress, manifest
+  );
+
+  onProgress?.({ step: 9, message: 'Import complete!' });
 
   return results;
 }
@@ -765,8 +932,6 @@ module.exports = {
 
   // Constants
   COURSE_ALIASES,
-  LANG_CODES,
-  LANG_NAMES,
   ROLE_MAP,
 
   // Utilities
@@ -786,5 +951,6 @@ module.exports = {
   importSeeds,
   importLegos,
   importPracticePhrases,
-  importLegoIntroductions
+  importLegoIntroductions,
+  linkAudioToContent
 };
