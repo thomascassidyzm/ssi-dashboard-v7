@@ -271,30 +271,7 @@ const isLoading = ref(false);
 const audioElement = ref<HTMLAudioElement | null>(null);
 const currentlyPlayingTrack = ref<AudioTrack | null>(null);
 
-// API Base URL - NO hardcoding! Must use EnvironmentSwitcher for non-local environments
-const getApiBaseUrl = (): string => {
-  const hostname = window.location.hostname;
-
-  // 1. Check localStorage first (set by EnvironmentSwitcher) - works everywhere
-  const storedUrl = localStorage.getItem('api_base_url');
-  if (storedUrl) return storedUrl;
-
-  // 2. Localhost - use default local URL
-  if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    return 'http://localhost:3470';
-  }
-
-  // 3. ngrok - use relative URL (same origin proxies to backend)
-  if (hostname.includes('ngrok')) {
-    return '';  // Relative URL - goes through ngrok tunnel
-  }
-
-  // 4. Vercel or other static hosting - MUST use EnvironmentSwitcher
-  // Return empty string (relative URL) which will fail on static hosting,
-  // prompting user to set the backend URL via EnvironmentSwitcher
-  console.warn('[PhraseRow] No API URL configured. Use Environment Switcher to set the backend URL.');
-  return '';
-};
+const getApiBaseUrl = (): string => getApiUrl();
 
 // Computed Classes
 const borderClass = computed(() => {

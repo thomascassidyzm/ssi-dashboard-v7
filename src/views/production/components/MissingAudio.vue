@@ -320,13 +320,10 @@
 
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 function getApiBaseUrl() {
-  // Use localStorage api_base_url (set by EnvironmentSwitcher) for ngrok access
-  const savedUrl = localStorage.getItem('api_base_url')
-  if (savedUrl) return savedUrl
-  // Fallback for local development
-  return import.meta.env.VITE_API_URL || 'http://localhost:3470'
+  return getApiUrl()
 }
 
 const props = defineProps({

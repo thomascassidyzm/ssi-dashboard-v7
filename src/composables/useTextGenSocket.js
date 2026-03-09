@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { io } from 'socket.io-client'
+import { getApiUrl } from '@/services/api'
 
 export function useTextGenSocket() {
   let socket = null
@@ -15,11 +16,7 @@ export function useTextGenSocket() {
   const lastOrchestratorResponse = ref(null)
 
   function getWsUrl() {
-    const stored = localStorage.getItem('api_base_url')
-    if (stored) return stored
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    if (isLocal) return 'http://localhost:3470'
-    return window.location.origin
+    return getApiUrl() || window.location.origin
   }
 
   function connect(courseCode) {

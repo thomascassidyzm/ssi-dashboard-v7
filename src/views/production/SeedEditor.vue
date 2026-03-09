@@ -119,12 +119,13 @@
 
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
 })
 
-const apiBase = import.meta.env.VITE_COURSE_BUILDER_URL || 'http://localhost:3471'
+const apiBase = getApiUrl()
 const PAGE_SIZE = 50
 
 const seeds = ref([])

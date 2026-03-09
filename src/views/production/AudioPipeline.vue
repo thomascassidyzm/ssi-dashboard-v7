@@ -689,6 +689,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { getApiUrl } from '@/services/api'
 import { useProductionStore } from '@/stores/production'
 import PipelineProgress from './components/PipelineProgress.vue'
 import MissingAudio from './components/MissingAudio.vue'
@@ -753,8 +754,7 @@ const missingAudioKey = ref(0)
 const audioProgress = ref<any>({ active: false })
 let progressPollInterval: ReturnType<typeof setInterval> | null = null
 
-// API Base URL - use localStorage (set by EnvironmentSwitcher)
-const apiBaseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3470'
+const apiBaseUrl = getApiUrl()
 
 // Poll for audio generation progress
 let wasGenerating = false

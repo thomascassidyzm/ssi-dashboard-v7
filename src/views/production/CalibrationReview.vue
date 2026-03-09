@@ -191,12 +191,13 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
 })
 
-const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+const builderApiUrl = getApiUrl()
 
 const loading = ref(true)
 const reviewing = ref(false)

@@ -1,6 +1,7 @@
 // src/composables/useExportWorkflow.ts
 import { ref, computed, watch } from 'vue'
 import { io, Socket } from 'socket.io-client'
+import { getApiUrl } from '@/services/api'
 
 export interface ExportState {
   courseCode: string
@@ -125,17 +126,7 @@ export interface ValidationResult {
 }
 
 function getApiBaseUrl(): string {
-  const storedUrl = localStorage.getItem('api_base_url')
-  if (storedUrl) return storedUrl
-
-  const isVercel = typeof window !== 'undefined' && (
-    window.location.hostname.includes('vercel.app') ||
-    window.location.hostname === 'popty.app' ||
-    window.location.hostname.endsWith('.popty.app')
-  )
-  if (isVercel) return ''
-
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470'
+  return getApiUrl()
 }
 
 // Get machine name from environment switcher settings

@@ -176,6 +176,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { getApiUrl } from '@/services/api'
 import { useProductionStore } from '@/stores/production'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
 
@@ -249,7 +250,7 @@ const currentStatus = computed(() => {
 async function loadStats() {
   isLoadingStats.value = true
   try {
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_URL || 'http://localhost:3470'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -271,7 +272,7 @@ async function loadStats() {
 
 async function loadQAStats() {
   try {
-    const apiBase = import.meta.env.VITE_COURSE_BUILDER_URL || 'http://localhost:3471'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/qa/summary/${props.courseCode}`)
     if (res.ok) {
       const data = await res.json()
@@ -314,7 +315,7 @@ function launchLearningApp() {
 async function runAudit() {
   auditing.value = true
   try {
-    const apiBase = import.meta.env.VITE_COURSE_BUILDER_URL || 'http://localhost:3471'
+    const apiBase = getApiUrl()
     await fetch(`${apiBase}/api/qa/spawn-audit/${props.courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
