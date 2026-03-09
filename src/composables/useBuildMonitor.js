@@ -168,6 +168,9 @@ export function useBuildMonitor(courseCodeRef) {
 
       if (error || !jobs) return
 
+      // No data from DB (e.g. RLS blocks anon reads) — keep existing state
+      if (jobs.length === 0) return
+
       // Most recent job per pass
       const latest = {}
       for (const job of jobs) {

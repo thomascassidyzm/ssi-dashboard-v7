@@ -862,6 +862,8 @@ async function startTranslation() {
     })
     const result = await response.json()
     if (result.ok) {
+      // Optimistic: show running immediately (poll may lag or RLS may block)
+      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, translate: 'running' }
       buildMonitor.refresh()
     } else {
       console.error('Failed to start translation:', result.error)
@@ -916,6 +918,7 @@ async function startBuildTeam() {
     })
     const result = await response.json()
     if (result.ok) {
+      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'build-team': 'running' }
       buildMonitor.refresh()
     } else {
       console.error('Failed to start build team:', result.error)
@@ -940,6 +943,7 @@ async function startFinalPass() {
     })
     const result = await response.json()
     if (result.ok) {
+      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'final-pass': 'running' }
       buildMonitor.refresh()
     } else {
       console.error('Failed to start final pass:', result.error)
@@ -993,7 +997,7 @@ async function startGenderPrep() {
     })
     const result = await response.json()
     if (result.ok !== false) {
-      // DB row already inserted by API — phaseStatus will pick it up on next poll
+      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'gender-prep': 'running' }
       buildMonitor.refresh()
     } else {
       console.error('Failed to start gender prep:', result.error)
