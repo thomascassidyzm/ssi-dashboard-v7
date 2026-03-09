@@ -314,6 +314,9 @@ async function main() {
   const langName = LANG_NAMES[course.target_lang] || course.target_lang
   console.log(`Language: ${langName} (${course.target_lang})`)
 
+  // Signal actual startup — job was 'pending' until now
+  await updateJob({ status: 'running', last_heartbeat: new Date().toISOString() })
+
   // 2. Collect all unique target texts
   const textSet = new Set()
   const { data: phrases } = await supabase.from('course_practice_phrases').select('target_text').eq('course_code', courseCode)

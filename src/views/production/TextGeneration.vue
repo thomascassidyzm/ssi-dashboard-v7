@@ -518,6 +518,7 @@ import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { useTextGenSocket } from '@/composables/useTextGenSocket'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
+import { isConfigured as isSupabaseConfigured } from '@/services/supabase'
 
 const router = useRouter()
 
@@ -1390,13 +1391,26 @@ function formatTime(iso) {
 // Messages are now fetched exclusively via buildMonitor (Supabase direct).
 // No separate HTTP endpoint needed.
 
-// Polling — now handled by useBuildMonitor (Realtime + 30s fallback)
+// Polling — useBuildMonitor (Realtime + 30s fallback) when Supabase configured,
+// otherwise fall back to HTTP polling via fetchProgress()
+let httpFallbackInterval = null
+
 function startPolling() {
   buildMonitor.start()
+  // When Supabase isn't configured on the frontend, buildMonitor.start() is a no-op.
+  // Fall back to HTTP polling via production-api.
+  if (!isSupabaseConfigured()) {
+    fetchProgress()
+    httpFallbackInterval = setInterval(fetchProgress, 30000)
+  }
 }
 
 function stopPolling() {
   buildMonitor.stop()
+  if (httpFallbackInterval) {
+    clearInterval(httpFallbackInterval)
+    httpFallbackInterval = null
+  }
 }
 
 // Load languages from API

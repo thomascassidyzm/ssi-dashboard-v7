@@ -112,6 +112,38 @@ end tell
 return "spawned"
   `.trim();
 
+  // Terminal.app fallback AppleScript
+  const terminalFallbackScript = `
+tell application "Terminal"
+    activate
+    do script "${claudeCmd.replace(/"/g, '\\"').replace(/'/g, "'\\''")}"
+end tell
+return "spawned"
+  `.trim();
+
+  function tryTerminal() {
+    return new Promise((resolve, reject) => {
+      console.log(`[CLI Agent ${agentId}] Falling back to Terminal.app...`);
+      const termChild = spawn('osascript', ['-e', terminalFallbackScript], {
+        stdio: ['ignore', 'pipe', 'pipe']
+      });
+      let termStderr = '';
+      termChild.stderr.on('data', (data) => { termStderr += data.toString(); });
+      termChild.on('close', (code) => {
+        if (code === 0) {
+          console.log(`[CLI Agent ${agentId}] Terminal.app window opened, Claude CLI running`);
+          if (job && addEvent) {
+            addEvent(job, { type: 'window_ready', window: agentId, model, message: 'Claude CLI started in Terminal.app' });
+          }
+          resolve({ success: true, windowId: `cli-agent-${agentId}-${Date.now()}`, promptFile: tmpPromptFile, terminal: 'Terminal.app' });
+        } else {
+          reject(new Error(`Terminal.app osascript exited with code ${code}: ${termStderr}`));
+        }
+      });
+      termChild.on('error', reject);
+    });
+  }
+
   return new Promise((resolve, reject) => {
     const child = spawn('osascript', ['-e', appleScript], {
       stdio: ['ignore', 'pipe', 'pipe']
@@ -145,15 +177,19 @@ return "spawned"
         resolve({
           success: true,
           windowId: `cli-agent-${agentId}-${Date.now()}`,
-          promptFile: tmpPromptFile
+          promptFile: tmpPromptFile,
+          terminal: 'iTerm2'
         });
       } else {
-        console.error(`[CLI Agent ${agentId}] Failed to open iTerm2: ${stderr}`);
-        reject(new Error(`osascript exited with code ${code}: ${stderr}`));
+        console.warn(`[CLI Agent ${agentId}] iTerm2 failed (exit ${code}), trying Terminal.app...`);
+        tryTerminal().then(resolve).catch(reject);
       }
     });
 
-    child.on('error', reject);
+    child.on('error', (err) => {
+      console.warn(`[CLI Agent ${agentId}] iTerm2 error: ${err.message}, trying Terminal.app...`);
+      tryTerminal().then(resolve).catch(reject);
+    });
   });
 }
 

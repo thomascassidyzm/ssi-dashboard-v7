@@ -30,15 +30,67 @@ module.exports = function (ctx) {
   });
 
   // POST /build/rebuild/:courseCode — Wipe seeds (no spawn)
+  // Safety: requires explicit from_seed/to_seed, confirms large ranges,
+  //         supports dry_run to preview impact before deleting.
   router.post('/build/rebuild/:courseCode', async (req, res) => {
     const { courseCode } = req.params;
-    const { from_seed = 1, to_seed = 300 } = req.body || {};
+    const { from_seed, to_seed, confirm, dry_run } = req.body || {};
 
     try {
+      // SAFETY: require explicit range — no defaults that wipe everything
+      if (from_seed == null || to_seed == null) {
+        return res.status(400).json({
+          ok: false,
+          error: 'from_seed and to_seed are required (no defaults — prevents accidental full-course wipe)'
+        });
+      }
+
       if (from_seed < 1 || to_seed < from_seed) {
         return res.status(400).json({ ok: false, error: `Invalid range: ${from_seed}-${to_seed}` });
       }
 
+      // Count what would be affected BEFORE deleting
+      const { count: phraseCount } = await ctx.supabase
+        .from('course_practice_phrases').select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .gte('seed_number', from_seed).lte('seed_number', to_seed);
+
+      const { count: legoCount } = await ctx.supabase
+        .from('course_legos').select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .gte('seed_number', from_seed).lte('seed_number', to_seed);
+
+      const seedSpan = to_seed - from_seed + 1;
+      const totalItems = (phraseCount || 0) + (legoCount || 0);
+
+      // SAFETY: large-range guard — require explicit confirm for ranges > 10 seeds
+      if (seedSpan > 10 && !confirm) {
+        return res.status(400).json({
+          ok: false,
+          error: `Large range (${seedSpan} seeds) requires confirm: true`,
+          preview: {
+            seeds: seedSpan,
+            phrases_to_delete: phraseCount || 0,
+            legos_to_delete: legoCount || 0,
+            total_items: totalItems,
+            hint: 'Add "confirm": true to the request body to proceed'
+          }
+        });
+      }
+
+      // Dry run — return counts without deleting
+      if (dry_run) {
+        return res.json({
+          ok: true,
+          dry_run: true,
+          seeds: seedSpan,
+          phrases_to_delete: phraseCount || 0,
+          legos_to_delete: legoCount || 0,
+          total_items: totalItems
+        });
+      }
+
+      // Execute the wipe
       const { count: phrasesDeleted } = await ctx.supabase
         .from('course_practice_phrases').delete({ count: 'exact' })
         .eq('course_code', courseCode)
@@ -58,9 +110,11 @@ module.exports = function (ctx) {
 
       await bumpCourseVersion(ctx.supabase, courseCode, 'minor');
 
+      console.log(`[REBUILD] ${courseCode} seeds ${from_seed}-${to_seed}: deleted ${phrasesDeleted} phrases, ${legosDeleted} LEGOs, reset ${seedsReset} seeds`);
+
       res.json({
         ok: true,
-        seeds_to_build: to_seed - from_seed + 1,
+        seeds_to_build: seedSpan,
         phrases_deleted: phrasesDeleted || 0,
         legos_deleted: legosDeleted || 0,
         seeds_reset: seedsReset || 0
@@ -345,15 +399,15 @@ module.exports = function (ctx) {
         .eq('course_code', courseCode).eq('pass', 'build-team').in('status', ['running']).maybeSingle();
       if (activeJob) return res.status(409).json({ error: 'Build Team already running' });
 
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator`);
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator?terminal=${effectiveTerminal}`);
       if (!briefResp.ok) throw new Error(`Failed to fetch build-team brief: ${briefResp.status}`);
       const brief = await briefResp.text();
 
       const tmpFile = `/tmp/build-team_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
-
-      const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       const { data: jobData } = await ctx.supabase
         .from('build_jobs')

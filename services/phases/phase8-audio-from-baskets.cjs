@@ -160,6 +160,9 @@ function generateSampleSpecs(samples, voiceAssignments) {
         ttsText = genderExpansion.expandForVoice(sample.text, voiceId, role);
       }
 
+      // Strip parenthetical notes so TTS doesn't read them aloud
+      ttsText = ttsText.replace(/\s*\([^)]*\)/g, '').trim();
+
       const uuid = uuidService.generateSampleId(
         voiceId,
         ttsText,

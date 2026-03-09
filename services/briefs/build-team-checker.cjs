@@ -8,6 +8,8 @@ const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummar
 async function generateBuildTeamCheckerBrief(courseCode, query = {}) {
   const supabase = getSupabase();
   const langName = getLanguageName(courseCode);
+  const terminal = query.terminal || 'iTerm2';
+  const useTeams = terminal === 'iTerm2';
 
   const { data: courseInfo } = await supabase
     .from('courses')
@@ -86,6 +88,14 @@ ${calibrationSeeds && calibrationSeeds.length > 0 ? calibrationSeeds.slice(0, 3)
 
 ${crossCourseSummaries || '(No cross-course calibrations available yet)'}
 
+## Receiving Work from Creator
+${useTeams ? `Wait for messages from the creator agent. They will send you seed decompositions to review.` : `Poll the message queue for decompositions from creator:
+\\\`\\\`\\\`bash
+# Poll every 10 seconds until you get work
+curl -s "http://localhost:3471/api/agent/inbox/${courseCode}/checker"
+\\\`\\\`\\\`
+When the response has \`count > 0\`, you have work. The \`payload\` contains the decomposition to review.`}
+
 ## Protocol — When Creator Sends You a Decomposition
 
 ### Step 1: Read and review
@@ -123,6 +133,12 @@ If the API rejects, read the error and fix it yourself:
 Resubmit. If truly unfixable after 3 attempts, skip the seed and tell creator to move on.
 
 ### Step 5: Tell creator "DONE — seed N submitted"
+${useTeams ? `Message the creator directly.` : `Post confirmation to the message queue:
+\\\`\\\`\\\`bash
+curl -s -X POST "http://localhost:3471/api/agent/send/${courseCode}" \\\\
+  -H "Content-Type: application/json" \\\\
+  -d '{"from":"checker","to":"creator","type":"done","payload":{"seed_number":N,"message":"DONE — seed N submitted"}}'
+\\\`\\\`\\\``}
 Creator moves to the next seed. No back-and-forth.
 
 ## Heartbeat
@@ -134,10 +150,39 @@ curl -s -X POST "http://localhost:3471/api/heartbeat/${courseCode}" \\
   -d '{"current_seed": N, "agent_role": "checker"}'
 \`\`\`
 
+## Repairing Already-Submitted Seeds
+
+If the orchestrator asks you to fix an already-submitted seed, or you spot an error in a previous seed, use these **granular** endpoints — NEVER resubmit the whole seed.
+
+### Fix a LEGO's text or components
+\`\`\`bash
+curl -s -X PATCH "http://localhost:3470/api/production/${courseCode}/lego/S0010L02" \\
+  -H "Content-Type: application/json" \\
+  -d '{"known_text": "corrected English", "target_text": "corrected target"}'
+\`\`\`
+legoId format: \`S{NNNN}L{NN}\` — e.g. \`S0010L02\` = seed 10, LEGO index 2.
+
+### Fix a phrase's text
+\`\`\`bash
+curl -s -X PATCH "http://localhost:3470/api/production/${courseCode}/phrase/PHRASE_ID" \\
+  -H "Content-Type: application/json" \\
+  -d '{"known_text": "corrected", "target_text": "corrected"}'
+\`\`\`
+
+### View a seed's full structure to find phrase IDs
+\`\`\`bash
+curl -s "http://localhost:3470/api/production/${courseCode}/seed/10/baskets"
+\`\`\`
+
+### Delete a single bad phrase
+\`\`\`bash
+curl -s -X DELETE "http://localhost:3470/api/production/${courseCode}/phrases/PHRASE_ID"
+\`\`\`
+
 ## AUTONOMY
 
 You are running unattended. NEVER ask questions. NEVER send work back to the creator.
-Wait for messages from "creator". Fix any issues yourself and submit.
+${useTeams ? `Wait for messages from "creator".` : `Poll \`/api/agent/inbox/${courseCode}/checker\` every 10 seconds for work from creator.`} Fix any issues yourself and submit.
 **Be STRICT on grammar, generous on style.** Grammar errors teach wrong patterns to thousands of learners.
 **NEVER ping-pong.** You receive → you fix → you submit → you say "DONE". That's it.
 `;

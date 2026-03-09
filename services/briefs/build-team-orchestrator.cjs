@@ -50,10 +50,14 @@ async function generateBuildTeamOrchestratorBrief(courseCode, query = {}) {
   }
 
   const teamName = courseCode.replace(/_/g, '-') + '-build';
+  const terminal = query.terminal || 'iTerm2';
+  const useTeams = terminal === 'iTerm2';
+
+  const creatorSeeds = allGoldenDone ? autonomousSeeds : goldenRemaining.concat(autonomousSeeds);
 
   return `# Build Team Orchestrator — ${courseCode} (${langName})
 
-Working directory: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean
+Working directory: ${process.cwd()}
 
 ## YOUR JOB
 
@@ -78,60 +82,43 @@ You DO NOT build seeds yourself.
 
 ---
 
-## Step 1: Create the Team
-
-\`\`\`javascript
-// Use TeamCreate tool
-team_name: "${teamName}"
-description: "${langName} course builder — seeds ${startSeed}-${targetSeeds}"
-\`\`\`
-
-## Step 2: Spawn the Checker (Opus) FIRST
+## Step 1: Spawn the Checker (Opus) FIRST
 
 Spawn checker first so it's ready when creator sends work.
 
-Use the Task tool:
+Use the Agent tool:
 - subagent_type: "general-purpose"
 - model: "opus"
-- mode: "bypassPermissions"
-- name: "checker"
-- team_name: "${teamName}"
 - run_in_background: true
 
-Checker prompt — fetch the brief:
+Checker prompt:
 \`\`\`
 You are the quality checker for ${courseCode}. Read your full brief:
 
-curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-checker"
+curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-checker?terminal=${terminal}"
 
-Then follow the instructions exactly. Wait for messages from "creator".
+Then follow the instructions exactly.
 \`\`\`
 
-## Step 3: Spawn the Creator (Sonnet)
+## Step 2: Spawn the Creator (Sonnet)
 
-Use the Task tool:
+Use the Agent tool:
 - subagent_type: "general-purpose"
 - model: "sonnet"
-- mode: "bypassPermissions"
-- name: "creator"
-- team_name: "${teamName}"
 - run_in_background: true
 
-${allGoldenDone ? `Creator prompt — autonomous phase only:
+Creator prompt:
 \`\`\`
 You are the seed creator for ${courseCode}. Read your full brief:
 
-curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-creator?seeds=${autonomousSeeds.join(',')}"
+curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-creator?seeds=${creatorSeeds.join(',')}&terminal=${terminal}"
 
-Then follow the instructions exactly. Send every decomposition to "checker" for review before it gets submitted.
-\`\`\`` : `Creator prompt — start with golden seeds:
+Then follow the instructions exactly.
 \`\`\`
-You are the seed creator for ${courseCode}. Read your full brief:
 
-curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-creator?seeds=${goldenRemaining.concat(autonomousSeeds).join(',')}"
+## Step 3: Confirm Team is Running
 
-Then follow the instructions exactly. Send every decomposition to "checker" for review before it gets submitted.
-\`\`\``}
+Check both are alive before monitoring.
 
 ## Step 4: Monitor Progress AND Quality
 
@@ -198,6 +185,39 @@ curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
   -d '{"role":"agent","message":"Progress: X/300 seeds done, ratio Y. No issues."}'
 \`\`\`
 
+## Repair Toolkit — Fixing Seeds Without Rebuilding
+
+When you spot issues in submitted seeds, use these **granular** endpoints. NEVER use the rebuild endpoint to fix individual seeds — it wipes ranges and can destroy hours of work.
+
+### Fix a LEGO's text or components (non-destructive)
+\`\`\`bash
+curl -s -X PATCH "http://localhost:3470/api/production/${courseCode}/lego/S0010L02" \\
+  -H "Content-Type: application/json" \\
+  -d '{"known_text": "corrected English", "target_text": "corrected target"}'
+\`\`\`
+legoId format: \`S{NNNN}L{NN}\` — e.g. \`S0010L02\` = seed 10, LEGO index 2.
+Can also update: \`type\` (A/M), \`components\` (array), \`is_new\` (boolean).
+
+### Fix a phrase's text (non-destructive)
+\`\`\`bash
+curl -s -X PATCH "http://localhost:3470/api/production/${courseCode}/phrase/PHRASE_ID" \\
+  -H "Content-Type: application/json" \\
+  -d '{"known_text": "corrected", "target_text": "corrected"}'
+\`\`\`
+
+### Delete a single bad phrase
+\`\`\`bash
+curl -s -X DELETE "http://localhost:3470/api/production/${courseCode}/phrases/PHRASE_ID"
+\`\`\`
+
+### View a seed's full structure (LEGOs + phrases)
+\`\`\`bash
+curl -s "http://localhost:3470/api/production/${courseCode}/seed/10/baskets"
+\`\`\`
+
+### ⚠️ NEVER use /api/build/rebuild for small fixes
+The rebuild endpoint wipes ALL LEGOs and phrases in a range. For fixing 1-5 seeds, ALWAYS use the PATCH endpoints above. The rebuild endpoint exists only for full course resets and requires explicit confirmation for ranges > 10.
+
 ## IMPORTANT RULES
 
 1. **DO NOT build seeds yourself.** Spawn, monitor, restart only.
@@ -206,6 +226,7 @@ curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
 4. **Human approval happens in the dashboard**, not through you.
 5. **If spot-checks show quality issues**, message the checker to tighten up on that issue.
 6. **When all ${targetSeeds} seeds are done**, shut down the team and report completion.
+7. **NEVER call /api/build/rebuild to fix individual seeds.** Use the PATCH endpoints in the Repair Toolkit above.
 
 ## START NOW
 Create the team, spawn checker, spawn creator, then monitor.

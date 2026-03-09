@@ -7364,17 +7364,29 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
       return res.status(400).json({ error: `Language ${course.target_lang} does not have grammatical gender` })
     }
 
-    // Check for already-running gender-prep job
+    // Check for already-running gender-prep job (with staleness auto-cleanup)
     const { data: existingJob } = await supabase
       .from('build_jobs')
-      .select('id, status')
+      .select('id, status, started_at, last_heartbeat')
       .eq('course_code', courseCode)
       .eq('pass', 'gender-prep')
       .in('status', ['running', 'pending'])
       .limit(1)
 
     if (existingJob && existingJob.length > 0) {
-      return res.status(409).json({ error: 'Gender prep already running', job_id: existingJob[0].id })
+      const job = existingJob[0]
+      const lastActivity = job.last_heartbeat || job.started_at
+      const staleMins = (Date.now() - new Date(lastActivity).getTime()) / 60000
+
+      // Auto-fail jobs with no heartbeat for 10+ minutes
+      if (staleMins > 10) {
+        logger.warn(`[GENDER-PREP] Auto-failing stale job ${job.id} (no heartbeat for ${Math.round(staleMins)} min)`)
+        await supabase.from('build_jobs')
+          .update({ status: 'failed', error_message: `Stale: no heartbeat for ${Math.round(staleMins)} minutes`, completed_at: new Date().toISOString() })
+          .eq('id', job.id)
+      } else {
+        return res.status(409).json({ error: 'Gender prep already running', job_id: job.id })
+      }
     }
 
     // Quick count of texts (coordinator does the actual querying)
@@ -7383,13 +7395,13 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
     const { count: seedCount } = await supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
     const estimatedTexts = (phraseCount || 0) + (legoCount || 0) + (seedCount || 0)
 
-    // Insert build_jobs row
+    // Insert build_jobs row as 'pending' — coordinator sets 'running' on actual startup
     const { data: jobRow, error: jobErr } = await supabase
       .from('build_jobs')
       .insert({
         course_code: courseCode,
         pass: 'gender-prep',
-        status: 'running',
+        status: 'pending',
         total_seeds: estimatedTexts,
         started_at: new Date().toISOString()
       })
@@ -7403,12 +7415,34 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
 
     const jobId = jobRow.id
 
-    // Spawn a single iTerm window running the coordinator script
+    // Spawn coordinator in a terminal window (iTerm preferred, Terminal.app fallback)
     const projectDir = path.resolve(__dirname, '..')
     const coordinatorPath = path.resolve(__dirname, 'gender-prep-coordinator.cjs')
     const cmd = `cd "${projectDir}" && node "${coordinatorPath}" ${courseCode} --concurrency 5 --batch-size 200 --job-id ${jobId}`
     const escapedCmd = cmd.replace(/"/g, '\\"')
-    const osascript = `tell application "iTerm"
+
+    function spawnInTerminalApp() {
+      const termScript = `tell application "Terminal"
+  activate
+  do script "${escapedCmd}"
+end tell`
+      const termAgent = spawnProc('osascript', ['-e', termScript], { stdio: 'pipe', detached: true })
+      termAgent.unref()
+      termAgent.on('error', async (e) => {
+        logger.error(`[GENDER-PREP] Terminal.app spawn failed: ${e.message}`)
+        await supabase.from('build_jobs').update({ status: 'failed', error_message: `Terminal spawn failed: ${e.message}`, completed_at: new Date().toISOString() }).eq('id', jobId)
+      })
+      termAgent.on('exit', async (code) => {
+        if (code !== 0) {
+          logger.error(`[GENDER-PREP] Terminal.app osascript exit code ${code}`)
+          await supabase.from('build_jobs').update({ status: 'failed', error_message: `Terminal spawn exited with code ${code}`, completed_at: new Date().toISOString() }).eq('id', jobId)
+        } else {
+          logger.info(`[GENDER-PREP] Coordinator launched in Terminal.app for ${courseCode}`)
+        }
+      })
+    }
+
+    const itermScript = `tell application "iTerm"
   activate
   set newWindow to (create window with default profile)
   tell current session of newWindow
@@ -7417,10 +7451,20 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
   end tell
 end tell`
 
-    const agent = spawnProc('osascript', ['-e', osascript], { stdio: 'pipe', detached: true })
+    const agent = spawnProc('osascript', ['-e', itermScript], { stdio: 'pipe', detached: true })
     agent.unref()
-    agent.on('error', (e) => logger.error(`[GENDER-PREP] osascript error: ${e.message}`))
-    agent.on('exit', (code) => logger.info(`[GENDER-PREP] iTerm coordinator launched for ${courseCode} (exit: ${code})`))
+    agent.on('error', async (e) => {
+      logger.warn(`[GENDER-PREP] iTerm not available (${e.message}), falling back to Terminal.app`)
+      spawnInTerminalApp()
+    })
+    agent.on('exit', async (code) => {
+      if (code !== 0) {
+        logger.warn(`[GENDER-PREP] iTerm failed (exit ${code}), falling back to Terminal.app`)
+        spawnInTerminalApp()
+      } else {
+        logger.info(`[GENDER-PREP] Coordinator launched in iTerm for ${courseCode}`)
+      }
+    })
 
     const BATCH_SIZE = 200
     const estimatedBatches = Math.ceil(estimatedTexts / BATCH_SIZE)

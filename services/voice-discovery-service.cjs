@@ -26,8 +26,11 @@ function getLocalePrefix(languageCode) {
   // zho = Chinese macro language (ISO 639-3)
   if (code === 'cmn' || code === 'zho') return 'zh';
 
+  // Strip dialect suffix if present (e.g. 'por_br' → 'por', 'spa_mx' → 'spa')
+  const baseCode = code.includes('_') ? code.split('_')[0] : code;
+
   // Convert legacy codes (spa, eng, ita) to standard (es, en, it)
-  const standardCode = langService.legacyToStandard(code);
+  const standardCode = langService.legacyToStandard(baseCode);
 
   return standardCode;
 }

@@ -447,7 +447,10 @@ function getLanguageForRole(roleId) {
   if (!role) return 'unknown'
   const parts = props.courseCode.split('_for_')
   if (parts.length !== 2) return props.courseCode
-  return role.lang === 'target' ? parts[0] : parts[1]
+  // Extract base language (first 3 chars), stripping dialect suffix
+  // e.g. 'por_br' → 'por', 'spa_mx' → 'spa', 'deu_at' → 'deu'
+  const target = parts[0].substring(0, 3)
+  return role.lang === 'target' ? target : parts[1]
 }
 
 function getPhrasesForRole(roleId) {

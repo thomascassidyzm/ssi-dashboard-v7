@@ -32,6 +32,8 @@ async function generateBuildTeamCreatorBrief(courseCode, query = {}) {
     throw new Error('build-team-creator brief requires ?seeds=11,12,13... query param');
   }
   const assignedSeeds = query.seeds.split(',').map(Number).filter(n => n > 0);
+  const terminal = query.terminal || 'iTerm2';
+  const useTeams = terminal === 'iTerm2';
 
   return `# Team Creator — ${courseCode} (${langName})
 
@@ -41,10 +43,9 @@ You are the CREATOR for **${courseCode}** (${langName}).
 ## CRITICAL WORKFLOW — You Do NOT Submit to the API
 
 1. You BUILD seed decompositions
-2. You SEND them to "checker" via SendMessage
-3. You WAIT for checker's response (PASS or FEEDBACK)
-4. If FEEDBACK → fix specific issues, resend
-5. **Checker submits to the API after approval — you NEVER call /api/seed/complete**
+2. You SEND them to checker (see "Sending to Checker" below)
+3. You WAIT for checker's response ("DONE" or feedback)
+4. **Checker submits to the API — you NEVER call /api/seed/complete**
 
 This is non-negotiable. If you submit directly, your work bypasses quality review.
 
@@ -164,8 +165,27 @@ curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq ".seeds[] | select(
 Design LEGOs and write BUILD + USE phrases. Check every phrase against the grammar error list above.
 
 ### Step 5: Send to checker for review
-Use SendMessage to send your complete decomposition to "checker":
+${useTeams ? `Send the decomposition to the checker agent. Format your message clearly:` : `Post the decomposition to the message queue for checker to pick up:
 
+\\\`\\\`\\\`bash
+curl -s -X POST "http://localhost:3471/api/agent/send/${courseCode}" \\\\
+  -H "Content-Type: application/json" \\\\
+  -d '{
+    "from": "creator",
+    "to": "checker",
+    "type": "seed_decomposition",
+    "payload": {
+      "seed_number": N,
+      "known_text": "...",
+      "target_text": "...",
+      "legos": [ ... full decomposition ... ]
+    }
+  }'
+\\\`\\\`\\\`
+
+Format the payload as the same JSON structure the API expects (see calibration seeds above).`}
+
+Decomposition format:
 \`\`\`
 SEED N: "english" → "target"
 
@@ -181,8 +201,11 @@ USE:
 \`\`\`
 
 ### Step 6: Wait for "DONE" from checker
-- Checker will fix any issues and submit to the API directly.
-- When checker says "DONE — seed N submitted", move to the next seed.
+${useTeams ? `Checker will respond directly. When they say "DONE — seed N submitted", move on.` : `Poll for checker's response:
+\\\`\\\`\\\`bash
+curl -s "http://localhost:3471/api/agent/inbox/${courseCode}/creator"
+\\\`\\\`\\\`
+Poll every 10 seconds until you get a message from checker. When checker says "DONE — seed N submitted", move to the next seed.`}
 - **Do NOT expect feedback rounds.** Checker handles all fixes.
 
 ### Step 7: Move to next seed

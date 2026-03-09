@@ -42,23 +42,48 @@ function spawnInTerminal(ctx, cmd, label, courseCode) {
     return agent;
   } else {
     const escapedCmd = cmd.replace(/"/g, '\\"');
-    const osascript = effectiveTerminal === 'iTerm2'
-      ? `tell application "iTerm"
+    const itermScript = `tell application "iTerm"
   activate
   set newWindow to (create window with default profile)
   tell current session of newWindow
     set name to "${label}: ${courseCode}"
     write text "${escapedCmd}"
   end tell
-end tell`
-      : `tell application "Terminal"
+end tell`;
+    const terminalScript = `tell application "Terminal"
   activate
   do script "${escapedCmd}"
 end tell`;
 
-    const agent = spawn('osascript', ['-e', osascript], { stdio: 'pipe', detached: true });
-    agent.on('error', (e) => console.error(`[SPAWN] ${label} osascript error:`, e.message));
-    agent.on('exit', (code) => console.log(`[SPAWN] ${label} terminal launched (osascript exit: ${code})`));
+    function launchTerminalApp() {
+      console.log(`[SPAWN] ${label} falling back to Terminal.app...`);
+      const termAgent = spawn('osascript', ['-e', terminalScript], { stdio: 'pipe', detached: true });
+      termAgent.on('error', (e) => console.error(`[SPAWN] ${label} Terminal.app error:`, e.message));
+      termAgent.on('exit', (code) => {
+        if (code === 0) console.log(`[SPAWN] ${label} launched in Terminal.app`);
+        else console.error(`[SPAWN] ${label} Terminal.app failed (exit: ${code})`);
+      });
+      return termAgent;
+    }
+
+    if (effectiveTerminal === 'Terminal') {
+      return launchTerminalApp();
+    }
+
+    // Try iTerm2 first, fall back to Terminal.app on failure
+    const agent = spawn('osascript', ['-e', itermScript], { stdio: 'pipe', detached: true });
+    agent.on('error', (e) => {
+      console.warn(`[SPAWN] ${label} iTerm2 error: ${e.message}, falling back to Terminal.app`);
+      launchTerminalApp();
+    });
+    agent.on('exit', (code) => {
+      if (code === 0) {
+        console.log(`[SPAWN] ${label} launched in iTerm2`);
+      } else {
+        console.warn(`[SPAWN] ${label} iTerm2 failed (exit: ${code}), falling back to Terminal.app`);
+        launchTerminalApp();
+      }
+    });
 
     return agent;
   }

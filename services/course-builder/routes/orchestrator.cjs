@@ -1,17 +1,78 @@
 /**
- * Chat room for agent ↔ human communication.
+ * Chat room for agent ↔ human communication + agent ↔ agent messaging.
  *
- * Simple model: both sides POST messages, both sides GET messages.
- * Agent polls GET /chat/:courseCode?after=<timestamp> for new messages.
- * Human approve/redo is just a message with role:'human' and action:'approve'|'redo'.
+ * Human ↔ Agent: POST/GET /orchestrator/chat/:courseCode (stored in DB)
+ * Agent ↔ Agent: POST /agent/send/:courseCode + GET /agent/inbox/:courseCode/:role (in-memory)
  *
- * All messages stored in orchestrator_messages table.
+ * Agent-to-agent messages are ephemeral (same lifetime as server process).
+ * They exist for creator→checker communication during build sessions.
  */
 
 const { Router } = require('express');
 
+// In-memory agent message queue: courseCode → role → [messages]
+const agentInbox = new Map();
+
+function getInbox(courseCode, role) {
+  if (!agentInbox.has(courseCode)) agentInbox.set(courseCode, new Map());
+  const course = agentInbox.get(courseCode);
+  if (!course.has(role)) course.set(role, []);
+  return course.get(role);
+}
+
 module.exports = function (ctx) {
   const router = Router();
+
+  // ===========================================================================
+  // Agent-to-Agent Messaging (in-memory, ephemeral)
+  // ===========================================================================
+
+  // POST /agent/send/:courseCode — Send a message to another agent role
+  // Body: { from: "creator", to: "checker", type: "seed_decomposition", payload: {...} }
+  router.post('/agent/send/:courseCode', (req, res) => {
+    const { courseCode } = req.params;
+    const { from, to, type, payload } = req.body || {};
+
+    if (!from || !to) {
+      return res.status(400).json({ ok: false, error: '"from" and "to" are required' });
+    }
+    if (!payload && !type) {
+      return res.status(400).json({ ok: false, error: '"type" or "payload" is required' });
+    }
+
+    const message = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      from,
+      to,
+      type: type || 'message',
+      payload: payload || {},
+      created_at: new Date().toISOString()
+    };
+
+    getInbox(courseCode, to).push(message);
+
+    // Broadcast via WebSocket so dashboard can see agent traffic
+    ctx.emitPipelineEvent(courseCode, 'agent:message', { from, to, type: message.type });
+
+    console.log(`[AGENT-MSG] ${courseCode}: ${from} → ${to} (${message.type})`);
+    res.json({ ok: true, id: message.id, queued: getInbox(courseCode, to).length });
+  });
+
+  // GET /agent/inbox/:courseCode/:role — Poll and consume messages for a role
+  // Returns all pending messages and clears the inbox (one-time delivery).
+  router.get('/agent/inbox/:courseCode/:role', (req, res) => {
+    const { courseCode, role } = req.params;
+    const inbox = getInbox(courseCode, role);
+    const messages = inbox.splice(0); // drain the queue
+    res.json({ ok: true, messages, count: messages.length });
+  });
+
+  // GET /agent/peek/:courseCode/:role — Check inbox without consuming
+  router.get('/agent/peek/:courseCode/:role', (req, res) => {
+    const { courseCode, role } = req.params;
+    const inbox = getInbox(courseCode, role);
+    res.json({ ok: true, count: inbox.length });
+  });
 
   // ===========================================================================
   // POST /orchestrator/chat/:courseCode — Post a message (agent or human)

@@ -1049,7 +1049,7 @@ async function executeRebuild() {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
-      body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value })
+      body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value, confirm: true })
     })
 
     const data = await response.json()
