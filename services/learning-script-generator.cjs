@@ -471,22 +471,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       isNew: currentLego.lego.new,
     }
 
-    // Phase 1: INTRO
-    const introAudio = introAudioMap.get(currentLego.lego.id)
-    roundItems.push({
-      ...baseItem,
-      type: 'intro',
-      known_text: currentLego.lego.known_text,
-      target_text: currentLego.lego.target_text,
-      presentation_audio: introAudio || null,
-      target1_audio_uuid: currentLego.lego.target1_audio_uuid,
-      target2_audio_uuid: currentLego.lego.target2_audio_uuid,
-      hasAudio: !!(introAudio && currentLego.lego.target1_audio_uuid),
-    })
-
-    // Phase 1b: COMPONENT PRIMING (M-LEGOs only)
-    // Each component gets intro + 2× practice before the full M-LEGO debut.
-    // Welsh courses skip this — hand-built with a different methodology.
+    // Phase 1: INTRO or COMPONENT PRIMING
+    // M-LEGOs with components: skip the M-LEGO intro entirely — component intros
+    //   replace it. Each component intro provides the M-LEGO as context
+    //   ("as in 'I'm trying to learn'"), so the M-LEGO is implicit.
+    // A-LEGOs / Welsh: standard intro with presentation audio.
     const isWelsh = courseCode.startsWith('cym_')
     const compPhrases = isWelsh ? [] : (componentMap.get(currentLego.lego.id) || [])
     if (compPhrases.length > 0) {
@@ -517,6 +506,19 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           })
         }
       }
+    } else {
+      // A-LEGO or Welsh: standard intro with presentation audio
+      const introAudio = introAudioMap.get(currentLego.lego.id)
+      roundItems.push({
+        ...baseItem,
+        type: 'intro',
+        known_text: currentLego.lego.known_text,
+        target_text: currentLego.lego.target_text,
+        presentation_audio: introAudio || null,
+        target1_audio_uuid: currentLego.lego.target1_audio_uuid,
+        target2_audio_uuid: currentLego.lego.target2_audio_uuid,
+        hasAudio: !!(introAudio && currentLego.lego.target1_audio_uuid),
+      })
     }
 
     // Phase 2: DEBUT
