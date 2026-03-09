@@ -655,5 +655,37 @@ module.exports = function (ctx) {
     res.json({ ok: true, course_code: courseCode, quality_rules: merged });
   });
 
+  // ---------------------------------------------------------------------------
+  // POST /course/:courseCode/reset-translations
+  // Wipes target_text back to '' for all seeds, allowing re-translation
+  // ---------------------------------------------------------------------------
+  router.post('/course/:courseCode/reset-translations', async (req, res) => {
+    const { courseCode } = req.params;
+
+    // Count how many seeds will be affected
+    const { count, error: countErr } = await supabase
+      .from('course_seeds')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .neq('target_text', '');
+
+    if (countErr) {
+      return res.status(500).json({ error: countErr.message });
+    }
+
+    // Wipe translations
+    const { error: updateErr } = await supabase
+      .from('course_seeds')
+      .update({ target_text: '' })
+      .eq('course_code', courseCode);
+
+    if (updateErr) {
+      return res.status(500).json({ error: updateErr.message });
+    }
+
+    console.log(`[reset-translations] Wiped ${count} translations for ${courseCode}`);
+    res.json({ ok: true, course_code: courseCode, seeds_reset: count });
+  });
+
   return router;
 };

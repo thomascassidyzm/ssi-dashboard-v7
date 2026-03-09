@@ -203,7 +203,15 @@
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageRunning('translate')" class="text-xs text-blue-400 animate-pulse">Running...</span>
               <button
-                v-else
+                v-if="stageComplete('translate')"
+                @click="confirmResetTranslations"
+                :disabled="translateResetting"
+                class="px-3 py-1 bg-slate-600/20 border border-slate-500/50 text-slate-400 hover:border-red-400/70 hover:text-red-400 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ translateResetting ? 'Resetting...' : 'Reset' }}
+              </button>
+              <button
+                v-else-if="!stageRunning('translate')"
                 @click="startTranslation"
                 :disabled="translateStarting"
                 class="px-3 py-1 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -524,6 +532,7 @@ const orchestratorMessages = ref([])
 
 // Starting state (optimistic UI while API call in flight)
 const translateStarting = ref(false)
+const translateResetting = ref(false)
 const buildTeamStarting = ref(false)
 const finalPassStarting = ref(false)
 const massApproving = ref(false)
@@ -544,7 +553,7 @@ watch(buildMonitor.stats, (s) => {
   progress.value = {
     ...progress.value,
     currentSeed: s.completeSeeds || 0,
-    seedsTranslated: s.seedsTranslated || s.seeds || 0,
+    seedsTranslated: s.seedsTranslated ?? 0,
     genderExpansions: s.genderExpansions || 0,
     legosInserted: s.legos || 0,
     phrasesInserted: s.practicePhrases || 0,
@@ -750,8 +759,8 @@ async function fetchProgress() {
 
       progress.value = {
         ...progress.value,
-        currentSeed: data.seeds_with_legos || data.seeds || 0,
-        seedsTranslated: data.completed_seeds || data.seeds_translated || 0,
+        currentSeed: data.seeds_with_legos ?? 0,
+        seedsTranslated: data.completed_seeds ?? data.seeds_translated ?? 0,
         genderExpansions: data.gender_expansions || 0,
         totalSeeds: totalSeeds,
         legosInserted: data.legos || 0,
@@ -861,6 +870,36 @@ async function startTranslation() {
     console.error('Failed to start translation:', err)
   } finally {
     translateStarting.value = false
+  }
+}
+
+async function confirmResetTranslations() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  const ok = window.confirm(
+    `This will wipe all existing translations for ${courseCode}.\n\nYou will need to re-translate all seeds. Continue?`
+  )
+  if (!ok) return
+
+  translateResetting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/course/${courseCode}/reset-translations`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      console.log(`[reset] Wiped ${result.seeds_reset} translations for ${courseCode}`)
+      buildMonitor.refresh()
+    } else {
+      console.error('Failed to reset translations:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to reset translations:', err)
+  } finally {
+    translateResetting.value = false
   }
 }
 
