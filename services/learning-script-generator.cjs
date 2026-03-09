@@ -486,7 +486,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
     // Phase 1b: COMPONENT PRIMING (M-LEGOs only)
     // Each component gets intro + 2× practice before the full M-LEGO debut.
-    const compPhrases = componentMap.get(currentLego.lego.id) || []
+    // Welsh courses skip this — hand-built with a different methodology.
+    const isWelsh = courseCode.startsWith('cym_')
+    const compPhrases = isWelsh ? [] : (componentMap.get(currentLego.lego.id) || [])
     if (compPhrases.length > 0) {
       const practiceReps = 2
       for (const comp of compPhrases) {
