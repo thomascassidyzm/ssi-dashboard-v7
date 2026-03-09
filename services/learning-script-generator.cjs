@@ -232,7 +232,9 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
       }))
 
       const componentPhrases = allPhrases.filter(p => p.phrase_role === 'component')
-      if (componentPhrases.length > 0) componentMap.set(legoId, componentPhrases)
+      if (componentPhrases.length > 0) {
+        componentMap.set(legoId, componentPhrases)
+      }
 
       // Separate build, use, and practice (legacy)
       const rawBuild = allPhrases.filter(p => p.phrase_role === 'build')
@@ -481,6 +483,37 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       target2_audio_uuid: currentLego.lego.target2_audio_uuid,
       hasAudio: !!(introAudio && currentLego.lego.target1_audio_uuid),
     })
+
+    // Phase 1b: COMPONENT PRIMING (M-LEGOs only)
+    const compPhrases = componentMap.get(currentLego.lego.id) || []
+    if (compPhrases.length > 0) {
+      for (const comp of compPhrases) {
+        // Component intro: contextual display, target audio as confirmation, no pause
+        roundItems.push({
+          ...baseItem,
+          type: 'component_intro',
+          known_text: `${comp.known_text}, as in ${currentLego.lego.known_text}`,
+          target_text: comp.target_text,
+          target1_audio_uuid: comp.target1_audio_uuid,
+          target2_audio_uuid: comp.target2_audio_uuid,
+          hasAudio: !!comp.target1_audio_uuid,
+        })
+
+        // Component practice ×2: standard 4-phase cycle
+        for (let cp = 0; cp < 2; cp++) {
+          roundItems.push({
+            ...baseItem,
+            type: 'component_practice',
+            known_text: comp.known_text,
+            target_text: comp.target_text,
+            known_audio_uuid: comp.known_audio_uuid,
+            target1_audio_uuid: comp.target1_audio_uuid,
+            target2_audio_uuid: comp.target2_audio_uuid,
+            hasAudio: !!(comp.known_audio_uuid && comp.target1_audio_uuid),
+          })
+        }
+      }
+    }
 
     // Phase 2: DEBUT
     roundItems.push({
@@ -745,7 +778,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     let lastItem = null
 
     for (const item of roundItems) {
-      if (item.type === 'intro') {
+      if (item.type === 'intro' || item.type === 'component_intro') {
         dedupedItems.push(item)
         continue
       }
@@ -787,6 +820,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     totalItems: allItems.length,
     itemsByType: {
       intro: allItems.filter(i => i.type === 'intro').length,
+      component_intro: allItems.filter(i => i.type === 'component_intro').length,
+      component_practice: allItems.filter(i => i.type === 'component_practice').length,
       debut: allItems.filter(i => i.type === 'debut').length,
       build: allItems.filter(i => i.type === 'build').length,
       review: allItems.filter(i => i.type === 'review').length,

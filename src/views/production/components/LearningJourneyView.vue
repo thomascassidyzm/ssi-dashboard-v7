@@ -364,7 +364,7 @@ interface ScriptItem {
   legoId: string
   legoIndex: number
   seedId: string
-  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate' | 'listening'
+  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate' | 'listening' | 'component_intro' | 'component_practice'
   phrase_id?: string
   known_text: string
   target_text: string
@@ -697,6 +697,8 @@ const getLegoTargetText = (round: RoundData): string => {
 const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?: number): string => {
   switch (type) {
     case 'intro': return 'Intro'
+    case 'component_intro': return 'CMP'
+    case 'component_practice': return 'CMP'
     case 'debut': return 'LEGO'
     case 'build': return phrasePosition ? `BUILD-${phrasePosition}` : 'BUILD'
     case 'review': return 'REVIEW'
@@ -709,6 +711,8 @@ const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?
 const getTypeBadgeClass = (type: string): string => {
   switch (type) {
     case 'intro': return 'bg-purple-500 bg-opacity-30 text-purple-300'
+    case 'component_intro': return 'bg-violet-500 bg-opacity-30 text-violet-300'
+    case 'component_practice': return 'bg-violet-500 bg-opacity-30 text-violet-300'
     case 'debut': return 'bg-emerald-500 bg-opacity-30 text-emerald-300'
     case 'build': return 'bg-blue-500 bg-opacity-30 text-blue-300'
     case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'
@@ -720,8 +724,9 @@ const getTypeBadgeClass = (type: string): string => {
 
 const getItemBgClass = (item: ScriptItem): string => {
   if (item.type === 'intro') return 'bg-slate-800'
+  if (item.type === 'component_intro') return 'bg-violet-900 bg-opacity-10'
   if (item.type === 'listening') return 'bg-pink-900 bg-opacity-10'
-  if (!item.hasAudio && item.type !== 'intro') return 'bg-amber-900 bg-opacity-10'
+  if (!item.hasAudio && item.type !== 'intro' && item.type !== 'component_intro') return 'bg-amber-900 bg-opacity-10'
   return ''
 }
 </script>
