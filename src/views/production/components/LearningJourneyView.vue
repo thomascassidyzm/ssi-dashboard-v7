@@ -479,7 +479,7 @@ const player = useScriptPlayer({
 // Intro cycle: presentation audio (PROMPT) → pause → LEGO target1 → LEGO target2
 const playerItems = computed(() => {
   return props.allItems.map(item => {
-    if (item.type === 'intro') {
+    if (item.type === 'intro' || item.type === 'component_intro') {
       const presId = (item as any).presentation_audio?.id || null
       return {
         sourceId: presId,

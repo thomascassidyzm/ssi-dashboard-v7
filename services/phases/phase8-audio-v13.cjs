@@ -2907,6 +2907,500 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
 })
 
 // =============================================================================
+// POST GENERATE-COMPONENTS - Generate audio for M-LEGO component phrases
+// =============================================================================
+
+app.post('/generate-components/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { dryRun = false, concurrency: requestedConcurrency } = req.body
+
+    const concurrencyToUse = requestedConcurrency
+      ? Math.max(1, Math.min(20, parseInt(requestedConcurrency, 10) || CONCURRENCY))
+      : CONCURRENCY
+
+    if (currentWork.active) {
+      return res.status(409).json({
+        error: 'Another job is already running',
+        activeJob: { operation: currentWork.operation, courseCode: currentWork.courseCode }
+      })
+    }
+
+    // 1. Load course + voice config
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('*')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: 'Course not found' })
+    }
+
+    const voiceConfig = course.voice_config || {}
+    const voices = voiceConfig.voices || voiceConfig
+    if (!voices.known || !voices.target1) {
+      return res.status(400).json({ error: 'Course missing voice configuration', voiceConfig })
+    }
+
+    const getVoiceForRole = (role) => {
+      const v = voices[role]
+      if (!v) return null
+      if (v.provider && v.voiceId) return `${v.provider}_${v.voiceId}`
+      return v.voiceId || v
+    }
+    const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
+
+    const knownLang = course.known_lang
+    const targetLang = course.target_lang
+    const targetLangName = getLocalisedLangName(targetLang, knownLang)
+
+    // 2. Load component phrases
+    const { data: components, error: compError } = await supabase
+      .from('course_practice_phrases')
+      .select('id, seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id')
+      .eq('course_code', courseCode)
+      .eq('phrase_role', 'component')
+      .order('seed_number')
+      .order('lego_index')
+
+    if (compError) throw compError
+    if (!components?.length) {
+      return res.json({ success: true, message: 'No component phrases found', count: 0 })
+    }
+
+    logger.info(`[Components] Found ${components.length} component phrases for ${courseCode}`)
+
+    // 3. Load parent M-LEGOs for presentation context
+    const parentKeys = [...new Set(components.map(c => `${c.seed_number}:${c.lego_index}`))]
+    const parentSeedNumbers = [...new Set(components.map(c => c.seed_number))]
+    const parentLegoIndices = [...new Set(components.map(c => c.lego_index))]
+
+    const { data: parentLegos } = await supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, known_text, target_text')
+      .eq('course_code', courseCode)
+      .eq('type', 'M')
+      .in('seed_number', parentSeedNumbers)
+
+    const parentMap = new Map()
+    for (const l of (parentLegos || [])) {
+      parentMap.set(`${l.seed_number}:${l.lego_index}`, l)
+    }
+
+    // 4. Get presentation template
+    const { data: templates } = await supabase
+      .from('presentation_templates')
+      .select('template')
+      .eq('known_lang', knownLang)
+      .eq('is_active', true)
+      .order('priority', { ascending: false })
+      .limit(1)
+
+    let presentationTemplate = templates?.[0]?.template
+    if (!presentationTemplate) {
+      presentationTemplate = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
+    }
+
+    // 5. Collect all unique texts we need audio for
+    const needed = []
+    const compPresTexts = new Map() // comp.id -> presentation text
+
+    for (const comp of components) {
+      const parent = parentMap.get(`${comp.seed_number}:${comp.lego_index}`)
+
+      // known audio
+      if (!isPunctuationOnly(comp.known_text)) {
+        needed.push({
+          text: comp.known_text,
+          language: knownLang,
+          role: 'known',
+          voiceId: getVoiceForRole('known'),
+          speed: getSpeedForRole('known'),
+          componentId: comp.id
+        })
+      }
+
+      // target1 + target2 audio
+      if (!isPunctuationOnly(comp.target_text)) {
+        for (const role of ['target1', 'target2']) {
+          needed.push({
+            text: comp.target_text,
+            language: targetLang,
+            role,
+            voiceId: getVoiceForRole(role),
+            speed: getSpeedForRole(role),
+            componentId: comp.id
+          })
+        }
+      }
+
+      // presentation audio
+      if (parent) {
+        const presText = presentationTemplate
+          .replace('{target_lang_name}', targetLangName)
+          .replace('{known}', comp.known_text)
+          .replace('{seed}', parent.known_text)
+
+        compPresTexts.set(comp.id, presText)
+
+        needed.push({
+          text: presText,
+          language: knownLang,
+          role: 'presentation',
+          voiceId: getVoiceForRole('presentation') || getVoiceForRole('known'),
+          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0,
+          componentId: comp.id,
+          isComponentPresentation: true
+        })
+      }
+    }
+
+    // 6. Dedup against existing course_audio (targeted query by unique texts)
+    const uniqueTexts = [...new Set(needed.map(n => normalizeText(n.text)))]
+
+    // Query existing audio in batches of 200 texts
+    const existingSet = new Set()
+    const TEXT_BATCH = 200
+    for (let i = 0; i < uniqueTexts.length; i += TEXT_BATCH) {
+      const batch = uniqueTexts.slice(i, i + TEXT_BATCH)
+      const { data: existing } = await supabase
+        .from('course_audio')
+        .select('text_normalized, language, role, s3_key')
+        .eq('course_code', courseCode)
+        .in('text_normalized', batch)
+
+      for (const a of (existing || [])) {
+        if (!a.s3_key || !a.s3_key.startsWith('pending/')) {
+          existingSet.add(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`)
+        }
+      }
+    }
+
+    // Also check sibling courses for cross-course sharing candidates
+    // (the generateItem function handles actual sharing, this is just for counting)
+
+    // Filter out items that already have audio
+    const missing = needed.filter(n => {
+      const key = `${normalizeText(n.text)}|${n.language}|${n.role}`
+      return !existingSet.has(key)
+    })
+
+    // Deduplicate by text|language|role
+    const uniqueNeeded = [...new Map(
+      missing.map(n => [`${n.text}|${n.language}|${n.role}`, n])
+    ).values()]
+
+    logger.info(`[Components] ${needed.length} total needed, ${existingSet.size} already exist, ${uniqueNeeded.length} to generate`)
+
+    // Breakdown by role
+    const byRole = {}
+    for (const n of uniqueNeeded) {
+      byRole[n.role] = (byRole[n.role] || 0) + 1
+    }
+    logger.info(`[Components] By role: ${JSON.stringify(byRole)}`)
+
+    if (dryRun) {
+      return res.json({
+        dryRun: true,
+        courseCode,
+        totalComponents: components.length,
+        alreadyHaveAudio: existingSet.size,
+        wouldGenerate: uniqueNeeded.length,
+        byRole,
+        samples: uniqueNeeded.slice(0, 15).map(n => ({
+          text: n.text.substring(0, 80),
+          role: n.role,
+          language: n.language
+        }))
+      })
+    }
+
+    if (uniqueNeeded.length === 0) {
+      // Nothing to generate — just link existing audio
+      const linkResult = await linkComponentAudio(courseCode, knownLang, targetLang, components, compPresTexts)
+      return res.json({
+        status: 'completed',
+        courseCode,
+        generated: 0,
+        message: 'All component audio already exists',
+        linked: linkResult
+      })
+    }
+
+    // 7. Start generation
+    startWork('generate-components', courseCode, uniqueNeeded.length)
+
+    // Load gender expansions if needed
+    let genderMap = new Map()
+    if (genderHaikuService.GENDERED_LANGUAGES.includes(targetLang)) {
+      genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
+      logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
+    }
+
+    const results = { success: 0, failed: 0, errors: [] }
+
+    // Generate items using the same pattern as /generate
+    const generateItem = async (item) => {
+      // Cross-course sharing
+      try {
+        const { data: siblingAudio } = await supabase
+          .from('course_audio')
+          .select('s3_key, duration_ms, viseme_data')
+          .neq('course_code', courseCode)
+          .eq('text_normalized', item.text.toLowerCase().trim())
+          .eq('language', item.language)
+          .eq('role', item.role)
+          .eq('voice_id', item.voiceId)
+          .not('s3_key', 'like', 'pending/%')
+          .limit(1)
+          .single()
+
+        if (siblingAudio?.s3_key) {
+          const { data: insertedAudio, error: insertError } = await supabase
+            .from('course_audio')
+            .upsert({
+              course_code: courseCode,
+              text: item.text,
+              text_normalized: item.text.toLowerCase().trim(),
+              language: item.language,
+              role: item.role,
+              voice_id: item.voiceId,
+              origin: 'tts',
+              s3_key: siblingAudio.s3_key,
+              duration_ms: siblingAudio.duration_ms,
+              viseme_data: siblingAudio.viseme_data || null
+            }, {
+              onConflict: 'course_code,text_normalized,language,role'
+            })
+            .select('id')
+            .single()
+
+          if (!insertError && insertedAudio) {
+            updateWork(item.text, true)
+            logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (sibling)`)
+            return { success: true, item, shared: true }
+          }
+        }
+      } catch (e) {
+        // Fall through to TTS generation
+      }
+
+      // TTS generation
+      const [provider, voiceName] = item.voiceId.split('_', 2)
+      const speed = item.speed || 1.0
+
+      // Gender expansion
+      let textForTTS = item.text
+      const genderKey = `${item.text}|${item.language}|${item.role}`
+      const genderResult = genderMap.get(genderKey)
+      if (genderResult?.wasModified) {
+        textForTTS = genderResult.expandedText
+      } else if ((item.role === 'target1' || item.role === 'target2') && genderService.hasGenderMarker(item.text)) {
+        const markerResult = genderService.analyzeAndExpand(item.text, item.language, item.role)
+        if (markerResult.wasModified) textForTTS = markerResult.expandedText
+      }
+
+      let rawAudioBuffer, visemes
+      if (provider === 'azure') {
+        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+          subscriptionKey: process.env.AZURE_SPEECH_KEY,
+          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+          voiceName, speed
+        }))
+      } else if (provider === 'elevenlabs') {
+        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+          apiKey: process.env.ELEVENLABS_API_KEY,
+          voiceId: voiceName, speed
+        }))
+      } else {
+        throw new Error(`Unknown TTS provider: ${provider}`)
+      }
+
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+
+      const audioId = uuidv4().toUpperCase()
+      const s3Key = `mastered/${audioId}.mp3`
+
+      await s3.send(new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: s3Key,
+        Body: masteredBuffer,
+        ContentType: 'audio/mpeg'
+      }))
+
+      const { data: insertedAudio, error: insertError } = await supabase
+        .from('course_audio')
+        .upsert({
+          course_code: courseCode,
+          text: item.text,
+          text_normalized: item.text.toLowerCase().trim(),
+          language: item.language,
+          role: item.role,
+          voice_id: item.voiceId,
+          origin: 'tts',
+          s3_key: s3Key,
+          duration_ms: durationMs,
+          viseme_data: visemes || null
+        }, {
+          onConflict: 'course_code,text_normalized,language,role'
+        })
+        .select('id')
+        .single()
+
+      if (insertError) throw insertError
+
+      updateWork(item.text, true)
+      logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
+      return { success: true, item }
+    }
+
+    // Process in parallel batches with timeout
+    for (let i = 0; i < uniqueNeeded.length; i += concurrencyToUse) {
+      if (currentWork.cancelled) break
+
+      const batch = uniqueNeeded.slice(i, i + concurrencyToUse)
+      const batchNum = Math.floor(i / concurrencyToUse) + 1
+      const totalBatches = Math.ceil(uniqueNeeded.length / concurrencyToUse)
+      logger.info(`[Components] Batch ${batchNum}/${totalBatches} (${batch.length} items)`)
+
+      const withTimeout = (fn, ms = 120_000) => Promise.race([
+        fn(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms / 1000}s`)), ms))
+      ])
+
+      const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
+
+      for (let j = 0; j < batchResults.length; j++) {
+        const result = batchResults[j]
+        if (result.status === 'fulfilled') {
+          results.success++
+        } else {
+          results.failed++
+          const item = batch[j]
+          results.errors.push({
+            text: item.text.substring(0, 50),
+            role: item.role,
+            error: result.reason?.message || 'Unknown error'
+          })
+          updateWork(item.text, false, result.reason?.message)
+        }
+      }
+    }
+
+    const wasCancelled = currentWork.cancelled
+    endWork()
+
+    // 8. Link audio IDs back to component phrases
+    let linkResult = {}
+    if (!wasCancelled) {
+      linkResult = await linkComponentAudio(courseCode, knownLang, targetLang, components, compPresTexts)
+    }
+
+    if (!wasCancelled && results.success > 0) {
+      await bumpCourseVersion(supabase, courseCode, 'patch')
+    }
+
+    res.json({
+      status: wasCancelled ? 'cancelled' : 'completed',
+      courseCode,
+      total: uniqueNeeded.length,
+      success: results.success,
+      failed: results.failed,
+      cancelled: wasCancelled,
+      errors: results.errors.slice(0, 10),
+      linked: linkResult
+    })
+
+  } catch (error) {
+    logger.error('Generate components error:', error)
+    endWork()
+    res.status(500).json({ error: error.message })
+  }
+})
+
+/**
+ * Link audio IDs from course_audio to component phrases
+ * Targeted linking — only touches component rows, not all phrases
+ */
+async function linkComponentAudio(courseCode, knownLang, targetLang, components, compPresTexts) {
+  const result = { known: 0, target1: 0, target2: 0, presentation: 0 }
+
+  // Build audio lookup from course_audio for this course
+  // Only fetch audio for texts that components actually use
+  const allTexts = new Set()
+  for (const c of components) {
+    allTexts.add(normalizeText(c.known_text))
+    allTexts.add(normalizeText(c.target_text))
+    const presText = compPresTexts.get(c.id)
+    if (presText) allTexts.add(normalizeText(presText))
+  }
+
+  const audioMap = new Map() // "normalized|lang|role" -> course_audio.id
+  const textArray = [...allTexts]
+  const TEXT_BATCH = 200
+
+  for (let i = 0; i < textArray.length; i += TEXT_BATCH) {
+    const batch = textArray.slice(i, i + TEXT_BATCH)
+    const { data } = await supabase
+      .from('course_audio')
+      .select('id, text_normalized, language, role, s3_key')
+      .eq('course_code', courseCode)
+      .in('text_normalized', batch)
+
+    for (const a of (data || [])) {
+      if (!a.s3_key || !a.s3_key.startsWith('pending/')) {
+        audioMap.set(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`, a.id)
+      }
+    }
+  }
+
+  logger.info(`[LinkComponents] Audio map has ${audioMap.size} entries`)
+
+  // Update each component phrase
+  for (const comp of components) {
+    const updates = {}
+
+    const knownAudioId = audioMap.get(`${normalizeText(comp.known_text)}|${knownLang}|known`)
+    if (knownAudioId && comp.known_audio_id !== knownAudioId) {
+      updates.known_audio_id = knownAudioId
+      result.known++
+    }
+
+    const t1AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target1`)
+    if (t1AudioId && comp.target1_audio_id !== t1AudioId) {
+      updates.target1_audio_id = t1AudioId
+      result.target1++
+    }
+
+    const t2AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target2`)
+    if (t2AudioId && comp.target2_audio_id !== t2AudioId) {
+      updates.target2_audio_id = t2AudioId
+      result.target2++
+    }
+
+    const presText = compPresTexts.get(comp.id)
+    if (presText) {
+      const presAudioId = audioMap.get(`${normalizeText(presText)}|${knownLang}|presentation`)
+      if (presAudioId && comp.presentation_audio_id !== presAudioId) {
+        updates.presentation_audio_id = presAudioId
+        result.presentation++
+      }
+    }
+
+    if (Object.keys(updates).length > 0) {
+      await supabase
+        .from('course_practice_phrases')
+        .update(updates)
+        .eq('id', comp.id)
+    }
+  }
+
+  logger.info(`[LinkComponents] Linked: known=${result.known}, target1=${result.target1}, target2=${result.target2}, presentation=${result.presentation}`)
+  return result
+}
+
+// =============================================================================
 // START SERVER
 // =============================================================================
 

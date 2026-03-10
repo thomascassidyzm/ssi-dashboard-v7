@@ -226,6 +226,7 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         known_audio_uuid: row.known_audio_id,
         target1_audio_uuid: row.target1_audio_id,
         target2_audio_uuid: row.target2_audio_id,
+        presentation_audio_id: row.presentation_audio_id || null,
         known_duration_ms: null,
         target1_duration_ms: row.target1_duration_ms,
         target2_duration_ms: row.target2_duration_ms,
@@ -481,15 +482,16 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     if (compPhrases.length > 0) {
       const practiceReps = 2
       for (const comp of compPhrases) {
-        // Component intro: contextual display, target audio as confirmation, no pause
+        // Component intro: presentation audio prompt → target audio confirmation
         roundItems.push({
           ...baseItem,
           type: 'component_intro',
           known_text: `${comp.known_text}, as in ${currentLego.lego.known_text}`,
           target_text: comp.target_text,
+          presentation_audio: comp.presentation_audio_id ? { id: comp.presentation_audio_id, s3_key: null } : null,
           target1_audio_uuid: comp.target1_audio_uuid,
           target2_audio_uuid: comp.target2_audio_uuid,
-          hasAudio: !!comp.target1_audio_uuid,
+          hasAudio: !!(comp.presentation_audio_id && comp.target1_audio_uuid),
         })
 
         // Component practice: standard 4-phase cycle (tapered by seed)

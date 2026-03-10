@@ -949,8 +949,8 @@ const learningJourneyData = ref<{
 const isLoadingJourney = ref(false);
 const journeyError = ref<string | null>(null);
 
-// Server-side pagination for journey view (50 LEGOs per page)
-const journeyPageSize = 50;
+// Server-side pagination for journey view (20 LEGOs per page)
+const journeyPageSize = 20;
 const journeyOffset = ref(0);
 const journeyHasMore = ref(true);
 
