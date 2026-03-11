@@ -801,7 +801,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     let lastItem = null
 
     for (const item of roundItems) {
-      if (item.type === 'intro' || item.type === 'component_intro') {
+      if (item.type === 'intro' || item.type === 'debut' || item.type === 'component_intro') {
         dedupedItems.push(item)
         continue
       }
