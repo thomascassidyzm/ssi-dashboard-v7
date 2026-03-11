@@ -461,59 +461,50 @@ module.exports = function (ctx) {
   router.get('/build/component-gaps/:courseCode', async (req, res) => {
     try {
       const { courseCode } = req.params;
+      const cjk = /^(zho|jpn|kor|cmn)/.test(courseCode);
 
-      // Count M-LEGOs with null components
-      const { count: nullCount } = await ctx.supabase
+      // Single query, filter in JS (PostgREST can't match JSONB empty arrays)
+      const { data: allMLegos, error } = await ctx.supabase
         .from('course_legos')
-        .select('id', { count: 'exact', head: true })
-        .eq('course_code', courseCode)
-        .eq('type', 'M')
-        .is('components', null)
-        .eq('is_new', true);
-
-      // Count M-LEGOs with empty array components
-      const { count: emptyCount } = await ctx.supabase
-        .from('course_legos')
-        .select('id', { count: 'exact', head: true })
-        .eq('course_code', courseCode)
-        .eq('type', 'M')
-        .eq('components', '[]')
-        .eq('is_new', true);
-
-      // Count M-LEGOs with single component (partial)
-      const { data: allMLegos } = await ctx.supabase
-        .from('course_legos')
-        .select('components, known_text')
-        .eq('course_code', courseCode)
-        .eq('type', 'M')
-        .not('components', 'is', null)
-        .eq('is_new', true);
-
-      const partialCount = (allMLegos || []).filter(l =>
-        Array.isArray(l.components) && l.components.length === 1 &&
-        (l.known_text || '').trim().split(/\s+/).length >= 2
-      ).length;
-
-      const totalMLegos = (nullCount || 0) + (emptyCount || 0) + partialCount;
-
-      // Count total M-LEGOs for the course
-      const { count: totalM } = await ctx.supabase
-        .from('course_legos')
-        .select('id', { count: 'exact', head: true })
+        .select('known_text, target_text, components')
         .eq('course_code', courseCode)
         .eq('type', 'M')
         .eq('is_new', true);
+
+      if (error) throw error;
+
+      let nullCount = 0, emptyCount = 0, partialCount = 0;
+
+      for (const l of (allMLegos || [])) {
+        const comps = l.components;
+        const kw = (l.known_text || '').trim().split(/\s+/).length;
+        const tw = (l.target_text || '').trim().split(/\s+/).length;
+
+        // Skip single-word targets (can't split further) unless CJK
+        if (kw < 2) continue;
+        if (!cjk && tw < 2) continue;
+
+        if (comps === null || comps === undefined) {
+          nullCount++;
+        } else if (Array.isArray(comps) && comps.length === 0) {
+          emptyCount++;
+        } else if (Array.isArray(comps) && comps.length === 1 && kw >= 2) {
+          partialCount++;
+        }
+      }
+
+      const totalGaps = nullCount + emptyCount + partialCount;
 
       res.json({
         course_code: courseCode,
-        total_m_legos: totalM || 0,
+        total_m_legos: (allMLegos || []).length,
         gaps: {
-          null_components: nullCount || 0,
-          empty_components: emptyCount || 0,
+          null_components: nullCount,
+          empty_components: emptyCount,
           partial_components: partialCount,
-          total: totalMLegos
+          total: totalGaps
         },
-        complete: totalMLegos === 0
+        complete: totalGaps === 0
       });
     } catch (err) {
       res.status(500).json({ error: err.message });
