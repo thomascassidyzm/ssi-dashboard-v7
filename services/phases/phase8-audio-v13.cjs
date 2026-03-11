@@ -2430,6 +2430,80 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       shortForm: presentations.filter(p => p.uses_short_template).length
     }
 
+    // =========================================================================
+    // COMPONENT PRESENTATIONS - Generate presentation text for M-LEGO components
+    // =========================================================================
+    const componentPresentations = []
+
+    // Load all component phrases for this course
+    const compPhrases = []
+    let compOffset = 0
+    let hasMoreComps = true
+    while (hasMoreComps) {
+      const { data: compBatch, error: compError } = await supabase
+        .from('course_practice_phrases')
+        .select('id, seed_number, lego_index, known_text, target_text')
+        .eq('course_code', courseCode)
+        .eq('phrase_role', 'component')
+        .order('id')
+        .range(compOffset, compOffset + PAGE_SIZE - 1)
+
+      if (compError) { logger.warn('Failed to fetch component phrases:', compError.message); break }
+      if (compBatch && compBatch.length > 0) {
+        compPhrases.push(...compBatch)
+        hasMoreComps = compBatch.length === PAGE_SIZE
+        compOffset += PAGE_SIZE
+      } else {
+        hasMoreComps = false
+      }
+    }
+
+    if (compPhrases.length > 0) {
+      // Load parent M-LEGOs for "as in" context
+      const compSeedNumbers = [...new Set(compPhrases.map(c => c.seed_number))]
+      const parentLegoMap = new Map()
+
+      const COMP_SEED_BATCH = 500
+      for (let i = 0; i < compSeedNumbers.length; i += COMP_SEED_BATCH) {
+        const seedBatch = compSeedNumbers.slice(i, i + COMP_SEED_BATCH)
+        const { data: parentLegos } = await supabase
+          .from('course_legos')
+          .select('seed_number, lego_index, known_text, target_text')
+          .eq('course_code', courseCode)
+          .eq('type', 'M')
+          .in('seed_number', seedBatch)
+
+        for (const l of (parentLegos || [])) {
+          parentLegoMap.set(`${l.seed_number}:${l.lego_index}`, l)
+        }
+      }
+
+      // Generate presentation text for each component
+      for (const comp of compPhrases) {
+        const parent = parentLegoMap.get(`${comp.seed_number}:${comp.lego_index}`)
+        if (!parent) continue  // Skip components without a parent M-LEGO
+
+        const presText = template
+          .replace('{target_lang_name}', targetLangName)
+          .replace('{known}', comp.known_text)
+          .replace('{seed}', parent.known_text)
+
+        componentPresentations.push({
+          phrase_id: comp.id,
+          known: comp.known_text,
+          target: comp.target_text,
+          parent_known: parent.known_text,
+          seed_number: comp.seed_number,
+          lego_index: comp.lego_index,
+          presentation_text: presText
+        })
+      }
+
+      logger.info(`Generated ${componentPresentations.length} component presentations (from ${compPhrases.length} component phrases)`)
+    } else {
+      logger.info('No component phrases found for this course')
+    }
+
     if (dryRun) {
       return res.json({
         success: true,
@@ -2439,8 +2513,10 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         shortTemplate,
         targetLangName,
         count: presentations.length,
+        componentCount: componentPresentations.length,
         contextStats,
-        sample: presentations.slice(0, 10)  // Show first 10 to see alternation
+        sample: presentations.slice(0, 10),  // Show first 10 LEGO presentations
+        componentSample: componentPresentations.slice(0, 5)  // Show first 5 component presentations
       })
     }
 
@@ -2615,6 +2691,120 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       logger.warn('No presentation audio found to link after upsert')
     }
 
+    // =========================================================================
+    // COMPONENT PRESENTATION UPSERT
+    // =========================================================================
+    let compNewRecords = 0
+    let compTextChanged = 0
+    let compTextUnchanged = 0
+
+    if (componentPresentations.length > 0) {
+      // Fetch existing component presentation audio by text match
+      const compPhraseIds = componentPresentations.map(cp => cp.phrase_id)
+      const existingByPhraseId = new Map()
+
+      // Component presentations don't have lego_id — match by text_normalized + role
+      const compTextsNorm = componentPresentations.map(cp => cp.presentation_text.toLowerCase().trim())
+      const uniqueCompTexts = [...new Set(compTextsNorm)]
+
+      for (let i = 0; i < uniqueCompTexts.length; i += BATCH_SIZE) {
+        const batch = uniqueCompTexts.slice(i, i + BATCH_SIZE)
+        const { data: existing } = await supabase
+          .from('course_audio')
+          .select('id, text_normalized, s3_key')
+          .eq('course_code', courseCode)
+          .eq('role', 'presentation')
+          .in('text_normalized', batch)
+
+        if (existing) {
+          for (const rec of existing) existingByPhraseId.set(rec.text_normalized, rec)
+        }
+      }
+
+      // Build upsert records for component presentations
+      const compUnchangedTexts = new Set()
+      const compIdsToDelete = []
+
+      for (const cp of componentPresentations) {
+        const norm = cp.presentation_text.toLowerCase().trim()
+        const existing = existingByPhraseId.get(norm)
+        if (existing) {
+          // Text already exists — mark as unchanged
+          compUnchangedTexts.add(norm)
+          compTextUnchanged++
+        }
+      }
+
+      // Build new records (skip ones that already exist with same text)
+      const compAudioRecords = componentPresentations
+        .filter(cp => !compUnchangedTexts.has(cp.presentation_text.toLowerCase().trim()))
+        .map(cp => ({
+          course_code: courseCode,
+          text: cp.presentation_text,
+          text_normalized: cp.presentation_text.toLowerCase().trim(),
+          language: knownLang,
+          role: 'presentation',
+          voice_id: presentationVoiceId,
+          origin: 'tts',
+          s3_key: `pending/${uuidv4().toUpperCase()}.mp3`
+        }))
+
+      compNewRecords = compAudioRecords.length
+
+      if (compAudioRecords.length > 0) {
+        const { error: compAudioError } = await supabase
+          .from('course_audio')
+          .upsert(compAudioRecords, {
+            onConflict: 'course_code,text_normalized,language,role',
+            ignoreDuplicates: true
+          })
+
+        if (compAudioError) {
+          logger.error('Component presentation upsert error:', compAudioError)
+        } else {
+          logger.info(`Upserted ${compAudioRecords.length} component presentation texts`)
+        }
+      }
+
+      // Link component presentation_audio_id on course_practice_phrases
+      // Fetch all presentation audio for this course that match component texts
+      const compPresAudioMap = new Map() // text_normalized -> course_audio.id
+      for (let i = 0; i < uniqueCompTexts.length; i += BATCH_SIZE) {
+        const batch = uniqueCompTexts.slice(i, i + BATCH_SIZE)
+        const { data: presAudio } = await supabase
+          .from('course_audio')
+          .select('id, text_normalized, s3_key')
+          .eq('course_code', courseCode)
+          .eq('role', 'presentation')
+          .eq('language', knownLang)
+          .in('text_normalized', batch)
+
+        for (const a of (presAudio || [])) {
+          if (!a.s3_key || !a.s3_key.startsWith('pending/')) {
+            compPresAudioMap.set(a.text_normalized, a.id)
+          }
+        }
+      }
+
+      // Update presentation_audio_id on matching component phrases
+      let compLinked = 0
+      for (const cp of componentPresentations) {
+        const norm = cp.presentation_text.toLowerCase().trim()
+        const audioId = compPresAudioMap.get(norm)
+        if (!audioId) continue
+
+        const { error: linkError } = await supabase
+          .from('course_practice_phrases')
+          .update({ presentation_audio_id: audioId })
+          .eq('id', cp.phrase_id)
+
+        if (!linkError) compLinked++
+      }
+      if (compLinked > 0) {
+        logger.info(`Linked ${compLinked} component presentation_audio_id records`)
+      }
+    }
+
     // Bust production-api stats cache so dashboard refreshes
     try {
       await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
@@ -2631,11 +2821,14 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       template,
       targetLangName,
       total: presentations.length,
+      componentTotal: componentPresentations.length,
       textChanged: idsToDelete.length,
       textUnchanged: unchangedLegoIds.size,
       newRecords: audioRecords.length,
+      componentNewRecords: compNewRecords,
+      componentUnchanged: compTextUnchanged,
       contextStats,
-      message: `${presentations.length} presentations processed (${idsToDelete.length} text changed, ${unchangedLegoIds.size} unchanged, ${presentations.length - idsToDelete.length - unchangedLegoIds.size} new). Run regenerate-role with role=presentation to generate audio.`
+      message: `${presentations.length} LEGO presentations processed (${idsToDelete.length} text changed, ${unchangedLegoIds.size} unchanged, ${presentations.length - idsToDelete.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
     })
 
   } catch (error) {
