@@ -416,7 +416,7 @@ module.exports = function (ctx) {
     }
   });
 
-  // POST /build/component-backfill/:courseCode — Spawn Haiku agent for M-LEGO component backfill
+  // POST /build/component-backfill/:courseCode — Spawn Opus orchestrator for M-LEGO component backfill
   router.post('/build/component-backfill/:courseCode', async (req, res) => {
     try {
       const { courseCode } = req.params;
@@ -448,7 +448,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       spawnInTerminal(ctx, claudeCmd, 'Component Backfill', courseCode);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: 'Component backfill agent spawned' });

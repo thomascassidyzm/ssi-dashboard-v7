@@ -1,10 +1,13 @@
 /**
- * Brief: COMPONENT BACKFILL — Generates literal component breakdowns for M-LEGOs.
+ * Brief: COMPONENT BACKFILL ORCHESTRATOR
  *
- * Workflow:
- *   1. GET /api/course/:courseCode/components/gaps → M-LEGOs needing components
- *   2. For each LEGO, use `claude --print --model haiku` to generate literal component gloss
- *   3. POST /api/course/:courseCode/components/backfill → write components + rebuild phrases
+ * Opus orchestrator that spawns parallel Haiku worker agents to generate
+ * literal component breakdowns for M-LEGOs.
+ *
+ * Architecture:
+ *   Orchestrator (Opus) → spawns N worker agents (Haiku via Agent tool)
+ *   Each worker gets a batch of M-LEGOs to decompose
+ *   Workers call the backfill API directly — no back-and-forth needed
  */
 
 const { getSupabase, getLanguageName } = require('./shared.cjs');
@@ -21,7 +24,7 @@ async function generateComponentBackfillBrief(courseCode, query = {}) {
 
   const displayName = courseInfo?.display_name || langName;
 
-  // Fetch a few example gaps to include in the brief (include partial = single-component M-LEGOs)
+  // Fetch total gap count
   const res = await fetch(`http://localhost:3471/api/course/${courseCode}/components/gaps?limit=5&include_partial=true`);
   const gapData = await res.json();
   const exampleGaps = gapData.gaps || [];
@@ -31,24 +34,25 @@ async function generateComponentBackfillBrief(courseCode, query = {}) {
     `  - S${g.seed_number}L${g.lego_index}: "${g.known_text}" → "${g.target_text}" (seed: "${g.seed_known}" → "${g.seed_target}")`
   ).join('\n');
 
-  const batchSize = parseInt(query.batch) || 50;
+  // Calculate batches — ~30 LEGOs per worker, up to 5 workers
+  const batchSize = parseInt(query.batch) || 30;
+  const workerCount = Math.min(5, Math.ceil(totalGaps / batchSize));
 
-  return `# Component Backfill Agent — ${courseCode} (${displayName})
+  return `# Component Backfill Orchestrator — ${courseCode} (${displayName})
 
-You are generating **literal component breakdowns** for M-LEGOs in **${courseCode}** (${displayName}).
+Working directory: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean
 
-There are **${totalGaps} M-LEGOs** needing components.
+## YOUR JOB
+
+You are an **Opus orchestrator**. You spawn parallel worker agents to generate literal component breakdowns for **${totalGaps} M-LEGOs** in ${courseCode}.
+
+**You do NOT generate components yourself.** You spawn workers, monitor them, and verify completion.
 
 ## What Components Are
 
-M-LEGOs are multi-word chunks the learner absorbs as a unit. The M-LEGO already has its natural translation (known_text). Components add a **visual layer** showing the learner the target language's internal logic.
-
-**The audio gives the correct meaning. The tiles give the structural insight.**
+M-LEGOs are multi-word chunks the learner absorbs as a unit. Components add a **visual layer** showing the target language's internal logic.
 
 Example — French M-LEGO: "I mean" → "je veux dire"
-
-The learner HEARS: "I mean" → "je veux dire" (natural translation, audio)
-The learner SEES on screen:
 \`\`\`
 ┌────────┐ ┌──────┐
 │ je veux│ │ dire │   ← target tiles
@@ -56,85 +60,124 @@ The learner SEES on screen:
   I want    to say    ← LITERAL gloss (not "I mean")
 \`\`\`
 
-The delta between the natural meaning and the literal gloss is where the learning happens. "Oh — French literally says 'I want to say' for 'I mean'!"
-
-## Rules for Component Splitting
-
-1. **Every target character must be covered** by exactly one component — no gaps, no overlaps
-2. **Component known-side = literal translation** of that target piece, NOT the M-LEGO's natural meaning
-3. **Structural glue stays with its content word** — don't isolate particles/prepositions that only make sense attached (e.g. "smettere di" is ONE component, not two)
-4. **If there's no English equivalent** for a structural piece, use empty string \`""\` for known — the app shows a dot
-5. **If the split reveals a reusable pattern**, that's ideal (e.g. "verb + di + infinitive" is a pattern the learner will see again)
-6. **If the M-LEGO is an opaque chunk with no useful internal structure** — return components that cover all the text but don't force artificial splits. Even a single component covering the whole LEGO is valid (it just won't generate component tiles, only the debut)
-7. **Components must concatenate to form the full target_text** (with spaces between for space-separated languages)
+The delta between the natural meaning and the literal gloss is where the learning happens.
 
 ## Example Gaps
 
 ${exampleSection}
 
-## Your Workflow
+## Component Rules (include in every worker prompt)
 
-Process LEGOs in batches of ${batchSize}:
+1. Every target character covered by exactly one component — no gaps, no overlaps
+2. Component known-side = **literal translation** of that target piece, NOT the M-LEGO's natural meaning
+3. Structural glue stays with its content word (e.g. "smettere di" = ONE component)
+4. No English equivalent? Use empty string \`""\` for known
+5. Components must concatenate (with spaces) to form the exact target_text
+6. If no useful internal structure — single component covering whole LEGO is valid
 
-### Step 1: Fetch gaps
+---
+
+## Step 1: Fetch ALL Gaps
 
 \`\`\`bash
-curl -s 'http://localhost:3471/api/course/${courseCode}/components/gaps?limit=${batchSize}&offset=0&include_partial=true'
+curl -s 'http://localhost:3471/api/course/${courseCode}/components/gaps?limit=200&include_partial=true'
 \`\`\`
 
-### Step 2: Generate components for each LEGO
+This returns up to 200 M-LEGOs needing components. Parse the \`gaps\` array from the response.
 
-For each gap, use Haiku to generate the literal component breakdown:
+## Step 2: Spawn ${workerCount} Worker Agents in Parallel
 
-\`\`\`bash
-echo 'M-LEGO: "KNOWN_TEXT" → "TARGET_TEXT"
-Seed context: "SEED_KNOWN" → "SEED_TARGET"
-Language: ${displayName}
+Split the gaps into ${workerCount} batches of ~${batchSize} each. Spawn all workers **simultaneously** using multiple Agent tool calls in a single message.
 
-Split this M-LEGO into components. Each component needs a "known" (literal English gloss) and "target" (the target language piece). Rules:
-- Components must cover ALL target text with no gaps
-- known = literal word-by-word translation, NOT the natural meaning of the whole M-LEGO
-- Keep structural words (prepositions, particles, articles) attached to their content word if they only make sense together
-- Use empty string "" for known if a structural piece has no English equivalent
+For each worker, use the Agent tool:
+- **run_in_background: true**
+- **mode: "bypassPermissions"**
 
-Return ONLY a JSON array, no explanation:
-[{"known": "...", "target": "..."}, ...]' | claude --print --model haiku
+Each worker's prompt should be a COMPLETE self-contained brief (the worker has no context from you). Include:
+1. The batch of M-LEGOs (seed_number, lego_index, known_text, target_text, seed context)
+2. The component rules (all 6 rules above)
+3. The exact curl command to submit results
+4. Language: ${displayName}
+
+### Worker Prompt Template
+
+For each worker, construct a prompt like this (filling in the actual LEGO data):
+
 \`\`\`
+You are generating literal component breakdowns for M-LEGOs in ${courseCode} (${displayName}).
 
-Parse the JSON array from Haiku's response. Validate that the target pieces concatenate to match the full target_text (with spaces).
+## Component Rules
+1. Every target character covered by exactly one component — no gaps, no overlaps
+2. Component known-side = LITERAL translation of that target piece, NOT the M-LEGO's natural meaning
+3. Structural glue stays with its content word (don't isolate particles/prepositions)
+4. No English equivalent? Use empty string "" for known
+5. Components must concatenate (with spaces) to form exact target_text
+6. If no useful internal structure — single component covering whole LEGO is valid
 
-### Step 3: Submit batch
+## Your M-LEGOs
 
-Collect the components for all LEGOs in the batch, then POST:
+Process each of these M-LEGOs. For each one, split the target_text into components with literal English glosses.
 
-\`\`\`bash
+[LIST EACH LEGO HERE, e.g.:]
+1. S2L2: "i'm trying to learn" → "öğrenmeye çalışıyorum" (seed: "I'm trying to learn" → "Öğrenmeye çalışıyorum.")
+2. S3L2: "as often as possible" → "mümkün olduğunca sık" (seed: "how to speak as often as possible" → "...")
+[... etc for all LEGOs in this batch]
+
+## How to Submit
+
+For each LEGO, determine the components array. Then submit ALL at once:
+
 curl -s -X POST 'http://localhost:3471/api/course/${courseCode}/components/backfill?force=true' \\
   -H 'Content-Type: application/json' \\
-  -d '{"legos": [{"seed_number": N, "lego_index": N, "components": [...]}, ...]}'
+  -d '{"legos": [
+    {"seed_number": N, "lego_index": N, "components": [{"known": "...", "target": "..."}, ...]},
+    ...
+  ]}'
+
+## Validation Before Submitting
+
+For each LEGO's components:
+- Join all target pieces with spaces — must exactly match the original target_text
+- No empty target strings
+- known strings are literal glosses, not natural translations
+
+## IMPORTANT
+- Work through ALL LEGOs in your batch
+- Submit them in a single POST call (or split into groups of 20 if the batch is large)
+- Report how many succeeded and how many failed
 \`\`\`
 
-### Step 4: Check response
+## Step 3: Monitor Workers
 
-The response shows \`results\` (success) and \`errors\` (failures). Log any errors.
+Wait for all workers to complete. Each worker will report back how many LEGOs it processed.
 
-### Step 5: Repeat
+## Step 4: Verify Completion
 
-Increment offset by ${batchSize} and fetch the next batch. Continue until all gaps are processed.
+After all workers finish, recheck:
 
-## Quality Checks Before Submitting
+\`\`\`bash
+curl -s 'http://localhost:3471/api/course/${courseCode}/components/gaps?limit=1&include_partial=true'
+\`\`\`
 
-For each LEGO's components, verify:
-- Target pieces join with spaces to form the exact target_text (or characters for CJK)
-- No empty target strings
-- known strings make sense as literal glosses
-- Structural words aren't awkwardly isolated
+If \`total_gaps\` is still > 0, spawn additional workers for the remaining gaps (some may have failed validation).
 
-## Important Notes
+## Step 5: Report
 
-- Work steadily through all ${totalGaps} LEGOs — don't rush
-- Use \`claude --print --model haiku\` for the literal glosses (NEVER the Anthropic SDK)
-- If Haiku returns malformed JSON, retry once, then skip that LEGO and note it
-- The backfill endpoint handles phrase rebuilding automatically — you just provide components
+When \`total_gaps\` reaches 0 (or only unfixable gaps remain), report:
+- Total M-LEGOs processed
+- Success count
+- Any failures with details
+
+## IMPORTANT RULES
+
+1. **Spawn ALL workers in parallel** — use multiple Agent tool calls in a single message
+2. **Each worker is self-contained** — include the full LEGO list and rules in its prompt
+3. **Workers submit directly to the API** — no back-and-forth with you
+4. **You verify completion** after workers finish and handle any stragglers
+5. **DO NOT generate components yourself** — that's the workers' job
+
+## START NOW
+Fetch the gaps, split into batches, spawn ${workerCount} workers in parallel.
 `;
 }
 
