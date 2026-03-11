@@ -1268,12 +1268,13 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       let presentationTemplate = templates?.[0]?.template
       if (!presentationTemplate) {
-        presentationTemplate = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
+        presentationTemplate = "The {target_lang_name} for: '{known}', as in — '{seed}', is:"
       }
 
       // Build short template (no "as in" context) for LEGOs where no good context exists
       const shortPresentationTemplate = presentationTemplate
-        .replace(/ as in — '\{seed\}' —/g, '')          // eng
+        .replace(/, as in — '\{seed\}',/g, ',')          // eng (current)
+        .replace(/ as in — '\{seed\}' —/g, '')          // eng (legacy)
         .replace(/ como en — '\{seed\}' —/g, '')         // spa
         .replace(/ comme dans — '\{seed\}' —/g, '')      // fra
         .replace(/ wie in — '\{seed\}' —/g, '')           // deu
@@ -2206,7 +2207,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // Fall back to default English template if no specific one found
     let template = templates?.[0]?.template
     if (!template) {
-      template = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
+      template = "The {target_lang_name} for: '{known}', as in — '{seed}', is:"
       logger.warn(`No template found for ${knownLang}, using default English`)
     }
 
@@ -2271,6 +2272,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // Generate presentation text for each LEGO
     // Short template (no "as in" context) for alternating in early seeds
     const shortTemplate = template
+      .replace(/, as in — '\{seed\}',/g, ',')
       .replace(/ as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| come in — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
 
     // Load USE phrases for context fallback when seed sentence doesn't contain the known_text
@@ -2999,7 +3001,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 
     let presentationTemplate = templates?.[0]?.template
     if (!presentationTemplate) {
-      presentationTemplate = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
+      presentationTemplate = "The {target_lang_name} for: '{known}', as in — '{seed}', is:"
     }
 
     // 5. Collect all unique texts we need audio for
