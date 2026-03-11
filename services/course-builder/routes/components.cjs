@@ -26,67 +26,35 @@ module.exports = function (ctx) {
     const cjk = isChinese(courseCode);
 
     try {
-      // Fetch M-LEGOs with NULL or empty components that are introducing (is_new=true)
-      // Two queries needed: components IS NULL, and components = '[]' (empty JSON array)
-      const { data: nullLegos, error: nullErr } = await ctx.supabase
+      // Single query: fetch ALL M-LEGOs for this course, filter in JS
+      // (.eq('components', '[]') doesn't work for JSONB empty arrays in PostgREST)
+      const { data: allMLegos, error: legoErr } = await ctx.supabase
         .from('course_legos')
-        .select('seed_number, lego_index, known_text, target_text')
+        .select('seed_number, lego_index, known_text, target_text, components')
         .eq('course_code', courseCode)
         .eq('type', 'M')
-        .is('components', null)
         .eq('is_new', true)
         .order('seed_number')
         .order('lego_index');
-
-      const { data: emptyLegos, error: emptyErr } = await ctx.supabase
-        .from('course_legos')
-        .select('seed_number, lego_index, known_text, target_text')
-        .eq('course_code', courseCode)
-        .eq('type', 'M')
-        .eq('components', '[]')
-        .eq('is_new', true)
-        .order('seed_number')
-        .order('lego_index');
-
-      // If include_partial=true, also fetch M-LEGOs with only 1 component
-      // (incomplete decomposition — needs more components)
-      let partialLegos = [];
-      let partialErr = null;
-      if (includePartial) {
-        const { data, error } = await ctx.supabase
-          .from('course_legos')
-          .select('seed_number, lego_index, known_text, target_text, components')
-          .eq('course_code', courseCode)
-          .eq('type', 'M')
-          .not('components', 'is', null)
-          .eq('is_new', true)
-          .order('seed_number')
-          .order('lego_index');
-        partialErr = error;
-        // Filter to only single-component M-LEGOs (incomplete)
-        partialLegos = (data || []).filter(l =>
-          Array.isArray(l.components) && l.components.length === 1 &&
-          (l.known_text || '').trim().split(/\s+/).length >= 2
-        );
-      }
-
-      const legoErr = nullErr || emptyErr || partialErr;
-      // Merge and deduplicate
-      const seen = new Set();
-      const legos = [...(nullLegos || []), ...(emptyLegos || []), ...partialLegos].filter(l => {
-        const key = `${l.seed_number}:${l.lego_index}`;
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      }).sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index);
 
       if (legoErr) {
         return res.status(500).json({ error: legoErr.message });
       }
 
-      // Filter: known_text must have ≥2 space-separated words
-      // For non-CJK targets: target_text must also have ≥2 words
-      const filtered = (legos || []).filter(l => {
+      // Filter to M-LEGOs that need components:
+      // - null components
+      // - empty array []
+      // - if include_partial: single-component M-LEGOs with multi-word known_text
+      const filtered = (allMLegos || []).filter(l => {
+        const comps = l.components;
+        const isNull = comps === null || comps === undefined;
+        const isEmpty = Array.isArray(comps) && comps.length === 0;
+        const isPartial = includePartial && Array.isArray(comps) && comps.length === 1 &&
+          (l.known_text || '').trim().split(/\s+/).length >= 2;
+
+        if (!isNull && !isEmpty && !isPartial) return false;
+
+        // Multi-word filter: known_text must have ≥2 words
         const knownWords = (l.known_text || '').trim().split(/\s+/).length;
         if (knownWords < 2) return false;
         if (!cjk) {
