@@ -66,13 +66,22 @@ You are an **Opus orchestrator**. You spawn parallel worker agents to generate c
 
 Components are NOT just visual breakdowns. Each component becomes an **active learning unit** with its own presentation audio and 2× practice cycles. The learner hears and practises each piece BEFORE encountering the full M-LEGO.
 
-### Example — Spanish M-LEGO: "I'm trying" → "estoy intentando"
+### The Learner's Experience
 
-The learner experiences this sequence:
+For each component, the learner gets:
+1. **Presentation**: "The ${targetLangName} for '{known}', as in '{M-LEGO known_text}', is:" → target, target
+2. **Practice 1**: known → target
+3. **Practice 2**: known → target
+
+That's it. No BUILD phrases, no interaction with other vocab. Just presentation + 2× repeat.
+
+**Then the M-LEGO intro** shows the learner how the components they've just learned fit together — including any glue particles (prepositions, particle markers, word-order changes) that aren't components themselves.
+
+### Example — Spanish M-LEGO: "I'm trying to learn" → "estoy intentando aprender"
 
 **Component 1: "I'm" → "estoy"**
 \`\`\`
-Presentation: "The ${targetLangName} for 'I'm', as in 'I'm trying', is:"
+Presentation: "The ${targetLangName} for 'I'm', as in 'I'm trying to learn', is:"
 → estoy, estoy
 Practice 1: I'm → estoy
 Practice 2: I'm → estoy
@@ -80,29 +89,36 @@ Practice 2: I'm → estoy
 
 **Component 2: "trying" → "intentando"**
 \`\`\`
-Presentation: "The ${targetLangName} for 'trying', as in 'I'm trying', is:"
+Presentation: "The ${targetLangName} for 'trying', as in 'I'm trying to learn', is:"
 → intentando, intentando
 Practice 1: trying → intentando
 Practice 2: trying → intentando
 \`\`\`
 
+**Component 3: "to learn" → "aprender"**
+\`\`\`
+Presentation: "The ${targetLangName} for 'to learn', as in 'I'm trying to learn', is:"
+→ aprender, aprender
+Practice 1: to learn → aprender
+Practice 2: to learn → aprender
+\`\`\`
+
 **Then the full M-LEGO round proceeds normally:**
 \`\`\`
-M-LEGO Intro: "I'm trying" → estoy intentando
-Debut: "I'm trying" → estoy intentando
-Build: "I'm trying to speak" → ...
-Build: "I'm trying Spanish" → ...
-Use cycles...
+M-LEGO Intro: "I'm trying to learn" → estoy intentando aprender
+  (The intro shows how "estoy" + "intentando" + "aprender" fit together)
+Debut: "I'm trying to learn" → estoy intentando aprender
+Build phrases, Use phrases...
 \`\`\`
 
 Components are **prepended** to the existing round. Nothing is removed.
 
 ### What the component \`known\` field means
 
-The \`known\` field is the **natural English for that piece** — it's what becomes the spoken prompt.
-- "I'm" for "estoy" (NOT "I am" or some literal gloss)
+The \`known\` field is the **natural English for that piece AS IT APPEARS in the M-LEGO** — it's what becomes the spoken prompt.
+- "I'm" for "estoy" (NOT "I am" — must match how it appears in "I'm trying to learn")
 - "trying" for "intentando" (NOT "attempting")
-- "to learn" for "aprender" (natural, what you'd say)
+- "to learn" for "aprender" (the exact form from the M-LEGO)
 
 The presentation audio template is: *"The ${targetLangName} for '{known}', as in '{M-LEGO known_text}', is:"*
 
@@ -114,12 +130,13 @@ ${exampleSection}
 
 ## Component Rules (include in every worker prompt)
 
-1. **Every target word must be covered** by exactly one component — no gaps, no overlaps
-2. **Component known = natural English for that piece** — what you'd say when referring to that chunk. It becomes the spoken prompt: "The ${targetLangName} for '{known}', as in '{M-LEGO}', is:"
-3. **Structural glue stays with its content word** — don't isolate particles/prepositions that only make sense attached (e.g., Spanish "estoy intentando" splits as "estoy" + "intentando", NOT "estoy" + "intent" + "ando")
-4. **Components must concatenate (with spaces) to form the exact target_text**
-5. **If a piece has no natural English equivalent**, use empty string \`""\` for known — but prefer attaching it to an adjacent component instead
-6. **Single-word M-LEGOs don't need components** — these are filtered out automatically
+1. **Components MUST be the EXACT FORM as they appear in the M-LEGO** — both known and target, no exceptions. Don't use a dictionary form or a different conjugation. Use exactly what's in the M-LEGO.
+2. **Components must be mappable across languages** — each component has a natural known↔target pair. If a target word has no natural English equivalent (glue particles, prepositions, particle markers), it is NOT a component.
+3. **Components should be standalone-worthy** — not so granular that they'd never be used on their own. Each component becomes an active learning unit the learner practises independently.
+4. **Glue particles are NOT components** — prepositions, particle markers, articles, and structural connectors belong in the M-LEGO intro, not as separate components. The M-LEGO intro shows how components fit together including any glue.
+5. **Component known = natural English for that piece** — what you'd say when referring to that chunk. It becomes the spoken prompt: "The ${targetLangName} for '{known}', as in '{M-LEGO}', is:"
+6. **Components do NOT need to cover every word** in target_text — only the meaningful, standalone-worthy pieces. Glue is absorbed by the M-LEGO intro.
+7. **Single-word M-LEGOs don't need components** — these are filtered out automatically
 
 ---
 
@@ -141,7 +158,7 @@ For each worker, use the Agent tool:
 
 Each worker's prompt should be a COMPLETE self-contained brief (the worker has no context from you). Include:
 1. The batch of M-LEGOs (seed_number, lego_index, known_text, target_text, seed context)
-2. The component rules (all 6 rules above)
+2. The component rules (all 7 rules above)
 3. The exact curl command to submit results
 4. Language: ${displayName}
 
@@ -158,23 +175,30 @@ Each component becomes an ACTIVE LEARNING UNIT. The learner hears a presentation
 
 "The ${targetLangName} for '{known}', as in '{M-LEGO known_text}', is:"
 
-So "known" must be the NATURAL ENGLISH for that piece — what you'd say when referring to it.
+That's all a component gets — presentation + 2× repeat. No BUILD phrases, no interaction with other vocab.
+
+Then the M-LEGO intro shows the learner how those components fit together, including any glue particles.
 
 ## Component Rules
-1. Every target word covered by exactly one component — no gaps, no overlaps
-2. Component known = natural English for that piece (becomes the spoken prompt)
-3. Structural glue stays with its content word (don't isolate particles/prepositions)
-4. Components must concatenate (with spaces) to form exact target_text
-5. No natural English for a piece? Prefer attaching it to an adjacent component. Use "" only as last resort.
+1. Components MUST be the EXACT FORM as they appear in the M-LEGO — both known and target. Don't use dictionary forms or different conjugations.
+2. Components must be mappable across languages — each has a natural known↔target pair. If a target word has no natural English equivalent (glue particles, prepositions, particle markers), it is NOT a component.
+3. Components should be standalone-worthy — not so granular they'd never be used on their own.
+4. Glue particles are NOT components — prepositions, particle markers, articles, structural connectors belong in the M-LEGO intro.
+5. Component known = natural English for that piece (becomes the spoken prompt).
+6. Components do NOT need to cover every word in target_text — only meaningful, standalone-worthy pieces.
 
 ## Your M-LEGOs
 
-For each M-LEGO, split target_text into components. The "known" for each component is the natural English for that piece.
+For each M-LEGO, identify the meaningful, standalone-worthy pieces. Each component must be mappable across both languages with a natural pair.
 
 [LIST EACH LEGO HERE, e.g.:]
-1. S5L2: "I'm trying" → "estoy intentando" (seed: "I'm trying to learn" → "Estoy intentando aprender.")
-   → Components: [{"known": "I'm", "target": "estoy"}, {"known": "trying", "target": "intentando"}]
-2. S8L3: "I want to" → "quiero" (seed: ...)
+1. S5L2: "I'm trying to learn" → "estoy intentando aprender" (seed: "I'm trying to learn Spanish" → "Estoy intentando aprender español.")
+   → Components: [{"known": "I'm", "target": "estoy"}, {"known": "trying", "target": "intentando"}, {"known": "to learn", "target": "aprender"}]
+   (Note: no glue particles here — all words are meaningful)
+2. S12L4: "I like it" → "a mí me gusta" (seed: ...)
+   → Components: [{"known": "I", "target": "mí"}, {"known": "like", "target": "gusta"}]
+   (Note: "a" and "me" are structural glue — NOT components)
+3. S8L3: "I want to" → "quiero" (seed: ...)
    → This is a single target word — skip (no components needed, return empty)
 [... etc for all LEGOs in this batch]
 
@@ -192,9 +216,10 @@ curl -s -X POST 'http://localhost:3471/api/course/${courseCode}/components/backf
 ## Validation Before Submitting
 
 For each LEGO's components:
-- Join all target pieces with spaces — must EXACTLY match the original target_text
+- Each component target must appear in the original target_text (exact form match)
 - No empty target strings
 - known strings are natural English that make sense in: "The ${targetLangName} for '{known}', as in '{M-LEGO}', is:"
+- Glue particles (prepositions, articles, particle markers) are NOT included as components
 
 ## IMPORTANT
 - Work through ALL LEGOs in your batch
