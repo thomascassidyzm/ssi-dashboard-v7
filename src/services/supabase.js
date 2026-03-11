@@ -129,43 +129,48 @@ export async function getAllCourseStats(courseCodes) {
   if (!supabase) throw new Error('Supabase not configured')
 
   const statsMap = {}
+  const BATCH_SIZE = 5
 
-  await Promise.all(courseCodes.map(async (courseCode) => {
-    const [seedsResult, legosResult, phrasesResult, audioResult, legoSeedsResult] = await Promise.all([
-      supabase
-        .from('course_seeds')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', courseCode),
-      supabase
-        .from('course_legos')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', courseCode),
-      supabase
-        .from('course_practice_phrases')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', courseCode),
-      supabase
-        .from('course_audio')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', courseCode),
-      supabase
-        .from('course_legos')
-        .select('seed_number')
-        .eq('course_code', courseCode)
-    ])
+  for (let i = 0; i < courseCodes.length; i += BATCH_SIZE) {
+    const batch = courseCodes.slice(i, i + BATCH_SIZE)
 
-    const completedSeeds = legoSeedsResult.data
-      ? new Set(legoSeedsResult.data.map(l => l.seed_number)).size
-      : 0
+    await Promise.all(batch.map(async (courseCode) => {
+      const [seedsResult, legosResult, phrasesResult, audioResult, legoSeedsResult] = await Promise.all([
+        supabase
+          .from('course_seeds')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', courseCode),
+        supabase
+          .from('course_legos')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', courseCode),
+        supabase
+          .from('course_practice_phrases')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', courseCode),
+        supabase
+          .from('course_audio')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', courseCode),
+        supabase
+          .from('course_legos')
+          .select('seed_number')
+          .eq('course_code', courseCode)
+      ])
 
-    statsMap[courseCode] = {
-      seeds: seedsResult.count || 0,
-      completedSeeds,
-      legos: legosResult.count || 0,
-      phrases: phrasesResult.count || 0,
-      audio: audioResult.count || 0
-    }
-  }))
+      const completedSeeds = legoSeedsResult.data
+        ? new Set(legoSeedsResult.data.map(l => l.seed_number)).size
+        : 0
+
+      statsMap[courseCode] = {
+        seeds: seedsResult.count || 0,
+        completedSeeds,
+        legos: legosResult.count || 0,
+        phrases: phrasesResult.count || 0,
+        audio: audioResult.count || 0
+      }
+    }))
+  }
 
   return statsMap
 }

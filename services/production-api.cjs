@@ -1432,11 +1432,11 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
     }
 
     // Map to new_app_status for learning app
-    // not_available = not deployed, draft = testing, beta = beta, released = live
+    // Constraint: ('not_available', 'draft', 'beta', 'live')
     const appStatusMap = {
       'draft': 'draft',
       'beta': 'beta',
-      'released': 'released'
+      'released': 'live'
     }
     const newAppStatus = appStatusMap[dbStatus]
 
