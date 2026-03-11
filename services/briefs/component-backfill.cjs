@@ -1,11 +1,14 @@
 /**
  * Brief: COMPONENT BACKFILL ORCHESTRATOR
  *
- * Opus orchestrator that spawns parallel Haiku worker agents to generate
- * literal component breakdowns for M-LEGOs.
+ * Opus orchestrator that spawns parallel worker agents to generate
+ * component breakdowns for M-LEGOs.
+ *
+ * Components are ACTIVE LEARNING UNITS — each gets its own presentation
+ * audio prompt and 2× practice cycles before the full M-LEGO is introduced.
  *
  * Architecture:
- *   Orchestrator (Opus) → spawns N worker agents (Haiku via Agent tool)
+ *   Orchestrator (Opus) → spawns N worker agents via Agent tool
  *   Each worker gets a batch of M-LEGOs to decompose
  *   Workers call the backfill API directly — no back-and-forth needed
  */
@@ -18,11 +21,22 @@ async function generateComponentBackfillBrief(courseCode, query = {}) {
 
   const { data: courseInfo } = await supabase
     .from('courses')
-    .select('display_name')
+    .select('display_name, known_lang, target_lang')
     .eq('course_code', courseCode)
     .single();
 
   const displayName = courseInfo?.display_name || langName;
+
+  // Derive target language display name for presentation template
+  const targetLangCode = courseInfo?.target_lang || courseCode.split('_for_')[0];
+  const langDisplayNames = {
+    spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian',
+    por: 'Portuguese', nld: 'Dutch', tur: 'Turkish', pol: 'Polish',
+    ara: 'Arabic', jpn: 'Japanese', zho: 'Chinese', kor: 'Korean',
+    swe: 'Swedish', fin: 'Finnish', gle: 'Irish', cym: 'Welsh',
+    bre: 'Breton', cat: 'Catalan', eus: 'Basque', eng: 'English',
+  };
+  const targetLangName = langDisplayNames[targetLangCode] || targetLangCode;
 
   // Fetch total gap count
   const res = await fetch(`http://localhost:3471/api/course/${courseCode}/components/gaps?limit=5&include_partial=true`);
@@ -44,23 +58,55 @@ Working directory: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean
 
 ## YOUR JOB
 
-You are an **Opus orchestrator**. You spawn parallel worker agents to generate literal component breakdowns for **${totalGaps} M-LEGOs** in ${courseCode}.
+You are an **Opus orchestrator**. You spawn parallel worker agents to generate component breakdowns for **${totalGaps} M-LEGOs** in ${courseCode}.
 
 **You do NOT generate components yourself.** You spawn workers, monitor them, and verify completion.
 
-## What Components Are
+## What Components Are — ACTIVE LEARNING UNITS
 
-M-LEGOs are multi-word chunks the learner absorbs as a unit. Components add a **visual layer** showing the target language's internal logic.
+Components are NOT just visual breakdowns. Each component becomes an **active learning unit** with its own presentation audio and 2× practice cycles. The learner hears and practises each piece BEFORE encountering the full M-LEGO.
 
-Example — French M-LEGO: "I mean" → "je veux dire"
+### Example — Spanish M-LEGO: "I'm trying" → "estoy intentando"
+
+The learner experiences this sequence:
+
+**Component 1: "I'm" → "estoy"**
 \`\`\`
-┌────────┐ ┌──────┐
-│ je veux│ │ dire │   ← target tiles
-└────────┘ └──────┘
-  I want    to say    ← LITERAL gloss (not "I mean")
+Presentation: "The ${targetLangName} for 'I'm', as in 'I'm trying', is:"
+→ estoy, estoy
+Practice 1: I'm → estoy
+Practice 2: I'm → estoy
 \`\`\`
 
-The delta between the natural meaning and the literal gloss is where the learning happens.
+**Component 2: "trying" → "intentando"**
+\`\`\`
+Presentation: "The ${targetLangName} for 'trying', as in 'I'm trying', is:"
+→ intentando, intentando
+Practice 1: trying → intentando
+Practice 2: trying → intentando
+\`\`\`
+
+**Then the full M-LEGO round proceeds normally:**
+\`\`\`
+M-LEGO Intro: "I'm trying" → estoy intentando
+Debut: "I'm trying" → estoy intentando
+Build: "I'm trying to speak" → ...
+Build: "I'm trying Spanish" → ...
+Use cycles...
+\`\`\`
+
+Components are **prepended** to the existing round. Nothing is removed.
+
+### What the component \`known\` field means
+
+The \`known\` field is the **natural English for that piece** — it's what becomes the spoken prompt.
+- "I'm" for "estoy" (NOT "I am" or some literal gloss)
+- "trying" for "intentando" (NOT "attempting")
+- "to learn" for "aprender" (natural, what you'd say)
+
+The presentation audio template is: *"The ${targetLangName} for '{known}', as in '{M-LEGO known_text}', is:"*
+
+So the \`known\` text must make sense when spoken aloud in that template.
 
 ## Example Gaps
 
@@ -68,12 +114,12 @@ ${exampleSection}
 
 ## Component Rules (include in every worker prompt)
 
-1. Every target character covered by exactly one component — no gaps, no overlaps
-2. Component known-side = **literal translation** of that target piece, NOT the M-LEGO's natural meaning
-3. Structural glue stays with its content word (e.g. "smettere di" = ONE component)
-4. No English equivalent? Use empty string \`""\` for known
-5. Components must concatenate (with spaces) to form the exact target_text
-6. If no useful internal structure — single component covering whole LEGO is valid
+1. **Every target word must be covered** by exactly one component — no gaps, no overlaps
+2. **Component known = natural English for that piece** — what you'd say when referring to that chunk. It becomes the spoken prompt: "The ${targetLangName} for '{known}', as in '{M-LEGO}', is:"
+3. **Structural glue stays with its content word** — don't isolate particles/prepositions that only make sense attached (e.g., Spanish "estoy intentando" splits as "estoy" + "intentando", NOT "estoy" + "intent" + "ando")
+4. **Components must concatenate (with spaces) to form the exact target_text**
+5. **If a piece has no natural English equivalent**, use empty string \`""\` for known — but prefer attaching it to an adjacent component instead
+6. **Single-word M-LEGOs don't need components** — these are filtered out automatically
 
 ---
 
@@ -104,28 +150,37 @@ Each worker's prompt should be a COMPLETE self-contained brief (the worker has n
 For each worker, construct a prompt like this (filling in the actual LEGO data):
 
 \`\`\`
-You are generating literal component breakdowns for M-LEGOs in ${courseCode} (${displayName}).
+You are generating component breakdowns for M-LEGOs in ${courseCode} (${displayName}).
+
+## What Components Are
+
+Each component becomes an ACTIVE LEARNING UNIT. The learner hears a presentation prompt and practises each component 2× before encountering the full M-LEGO. The component "known" field is what gets spoken aloud in the prompt:
+
+"The ${targetLangName} for '{known}', as in '{M-LEGO known_text}', is:"
+
+So "known" must be the NATURAL ENGLISH for that piece — what you'd say when referring to it.
 
 ## Component Rules
-1. Every target character covered by exactly one component — no gaps, no overlaps
-2. Component known-side = LITERAL translation of that target piece, NOT the M-LEGO's natural meaning
+1. Every target word covered by exactly one component — no gaps, no overlaps
+2. Component known = natural English for that piece (becomes the spoken prompt)
 3. Structural glue stays with its content word (don't isolate particles/prepositions)
-4. No English equivalent? Use empty string "" for known
-5. Components must concatenate (with spaces) to form exact target_text
-6. If no useful internal structure — single component covering whole LEGO is valid
+4. Components must concatenate (with spaces) to form exact target_text
+5. No natural English for a piece? Prefer attaching it to an adjacent component. Use "" only as last resort.
 
 ## Your M-LEGOs
 
-Process each of these M-LEGOs. For each one, split the target_text into components with literal English glosses.
+For each M-LEGO, split target_text into components. The "known" for each component is the natural English for that piece.
 
 [LIST EACH LEGO HERE, e.g.:]
-1. S2L2: "i'm trying to learn" → "öğrenmeye çalışıyorum" (seed: "I'm trying to learn" → "Öğrenmeye çalışıyorum.")
-2. S3L2: "as often as possible" → "mümkün olduğunca sık" (seed: "how to speak as often as possible" → "...")
+1. S5L2: "I'm trying" → "estoy intentando" (seed: "I'm trying to learn" → "Estoy intentando aprender.")
+   → Components: [{"known": "I'm", "target": "estoy"}, {"known": "trying", "target": "intentando"}]
+2. S8L3: "I want to" → "quiero" (seed: ...)
+   → This is a single target word — skip (no components needed, return empty)
 [... etc for all LEGOs in this batch]
 
 ## How to Submit
 
-For each LEGO, determine the components array. Then submit ALL at once:
+Submit ALL at once:
 
 curl -s -X POST 'http://localhost:3471/api/course/${courseCode}/components/backfill?force=true' \\
   -H 'Content-Type: application/json' \\
@@ -137,13 +192,13 @@ curl -s -X POST 'http://localhost:3471/api/course/${courseCode}/components/backf
 ## Validation Before Submitting
 
 For each LEGO's components:
-- Join all target pieces with spaces — must exactly match the original target_text
+- Join all target pieces with spaces — must EXACTLY match the original target_text
 - No empty target strings
-- known strings are literal glosses, not natural translations
+- known strings are natural English that make sense in: "The ${targetLangName} for '{known}', as in '{M-LEGO}', is:"
 
 ## IMPORTANT
 - Work through ALL LEGOs in your batch
-- Submit them in a single POST call (or split into groups of 20 if the batch is large)
+- Submit them in a single POST call (or split into groups of 20 if large)
 - Report how many succeeded and how many failed
 \`\`\`
 
