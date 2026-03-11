@@ -131,11 +131,11 @@ ${exampleSection}
 ## Component Rules (include in every worker prompt)
 
 1. **Components MUST be the EXACT FORM as they appear in the M-LEGO** — both known and target, no exceptions. Don't use a dictionary form or a different conjugation. Use exactly what's in the M-LEGO.
-2. **Components must be mappable across languages** — each component has a natural known↔target pair. If a target word has no natural English equivalent (glue particles, prepositions, particle markers), it is NOT a component.
+2. **Components must be mappable across languages** — each component has a natural known↔target pair.
 3. **Components should be standalone-worthy** — not so granular that they'd never be used on their own. Each component becomes an active learning unit the learner practises independently.
-4. **Glue particles are NOT components** — prepositions, particle markers, articles, and structural connectors belong in the M-LEGO intro, not as separate components. The M-LEGO intro shows how components fit together including any glue.
-5. **Component known = natural English for that piece** — what you'd say when referring to that chunk. It becomes the spoken prompt: "The ${targetLangName} for '{known}', as in '{M-LEGO}', is:"
-6. **Components do NOT need to cover every word** in target_text — only the meaningful, standalone-worthy pieces. Glue is absorbed by the M-LEGO intro.
+4. **Glue particles are NOT standalone components** — prepositions, particle markers, articles, and structural connectors should be **absorbed into an adjacent component** to make a slightly bigger one. Glue NEVER disappears — it always attaches to a content word. E.g. Turkish "bitirdikten sonra" → the postposition "sonra" (after) attaches to the verb: component = "after finishing" → "bitirdikten sonra".
+5. **Every target word must be accounted for** — either as part of a component or absorbed into one. Nothing gets left out. Components must collectively cover the ENTIRE target_text.
+6. **Component known = natural English for that piece** — what you'd say when referring to that chunk. It becomes the spoken prompt: "The ${targetLangName} for '{known}', as in '{M-LEGO}', is:"
 7. **Single-word M-LEGOs don't need components** — these are filtered out automatically
 
 ---
@@ -181,23 +181,22 @@ Then the M-LEGO intro shows the learner how those components fit together, inclu
 
 ## Component Rules
 1. Components MUST be the EXACT FORM as they appear in the M-LEGO — both known and target. Don't use dictionary forms or different conjugations.
-2. Components must be mappable across languages — each has a natural known↔target pair. If a target word has no natural English equivalent (glue particles, prepositions, particle markers), it is NOT a component.
+2. Components must be mappable across languages — each has a natural known↔target pair.
 3. Components should be standalone-worthy — not so granular they'd never be used on their own.
-4. Glue particles are NOT components — prepositions, particle markers, articles, structural connectors belong in the M-LEGO intro.
-5. Component known = natural English for that piece (becomes the spoken prompt).
-6. Components do NOT need to cover every word in target_text — only meaningful, standalone-worthy pieces.
+4. Glue particles are NOT standalone components — absorb them into an adjacent component to make a slightly bigger one. Glue NEVER disappears. E.g. Turkish "bitirdikten sonra" → postposition attaches to verb: "after finishing" → "bitirdikten sonra".
+5. Every target word must be accounted for — either as part of a component or absorbed into one. Components must collectively cover the ENTIRE target_text.
+6. Component known = natural English for that piece (becomes the spoken prompt).
 
 ## Your M-LEGOs
 
-For each M-LEGO, identify the meaningful, standalone-worthy pieces. Each component must be mappable across both languages with a natural pair.
+For each M-LEGO, break into components that collectively cover the ENTIRE target_text. Absorb glue particles into adjacent content words.
 
 [LIST EACH LEGO HERE, e.g.:]
 1. S5L2: "I'm trying to learn" → "estoy intentando aprender" (seed: "I'm trying to learn Spanish" → "Estoy intentando aprender español.")
    → Components: [{"known": "I'm", "target": "estoy"}, {"known": "trying", "target": "intentando"}, {"known": "to learn", "target": "aprender"}]
-   (Note: no glue particles here — all words are meaningful)
 2. S12L4: "I like it" → "a mí me gusta" (seed: ...)
-   → Components: [{"known": "I", "target": "mí"}, {"known": "like", "target": "gusta"}]
-   (Note: "a" and "me" are structural glue — NOT components)
+   → Components: [{"known": "I", "target": "a mí"}, {"known": "like it", "target": "me gusta"}]
+   (Note: "a" absorbed into "mí", "me" absorbed into "gusta" — glue never disappears)
 3. S8L3: "I want to" → "quiero" (seed: ...)
    → This is a single target word — skip (no components needed, return empty)
 [... etc for all LEGOs in this batch]
@@ -216,10 +215,10 @@ curl -s -X POST 'http://localhost:3471/api/course/${courseCode}/components/backf
 ## Validation Before Submitting
 
 For each LEGO's components:
-- Each component target must appear in the original target_text (exact form match)
+- Join all component targets with spaces — must EXACTLY match the original target_text (complete coverage, nothing left out)
 - No empty target strings
 - known strings are natural English that make sense in: "The ${targetLangName} for '{known}', as in '{M-LEGO}', is:"
-- Glue particles (prepositions, articles, particle markers) are NOT included as components
+- Glue particles absorbed into adjacent components (never standalone, never missing)
 
 ## IMPORTANT
 - Work through ALL LEGOs in your batch
