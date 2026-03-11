@@ -32,6 +32,9 @@ const generateFinalPassBrief = require('./final-pass.cjs');
 // Redo: targeted seed rebuild
 const generateRedoBrief = require('./redo.cjs');
 
+// Component backfill: M-LEGO component decomposition (Haiku agent)
+const { generateComponentBackfillBrief } = require('./component-backfill.cjs');
+
 // Helper to serve brief as markdown
 async function serveBrief(res, generator, courseCode, query = {}) {
   try {
@@ -57,5 +60,8 @@ router.get('/:courseCode/final-pass', (req, res) => serveBrief(res, generateFina
 
 // Redo
 router.get('/:courseCode/redo', (req, res) => serveBrief(res, generateRedoBrief, req.params.courseCode, req.query));
+
+// Component backfill
+router.get('/:courseCode/component-backfill', (req, res) => serveBrief(res, generateComponentBackfillBrief, req.params.courseCode, req.query));
 
 module.exports = router;

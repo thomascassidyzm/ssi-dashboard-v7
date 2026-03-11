@@ -300,11 +300,63 @@
           </div>
         </div>
 
-        <!-- Stage 4: Gender Prep (hidden for non-gendered languages) -->
+        <!-- Stage 4: Verify Components -->
+        <div class="pipeline-card" :class="componentCardClass">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="componentNumberClass">4</span>
+              <div>
+                <div class="text-sm font-medium text-slate-200">Verify Components</div>
+                <div class="text-xs text-slate-500">
+                  <template v-if="componentGaps === null">M-LEGO component completeness</template>
+                  <template v-else-if="componentGaps.complete">All {{ componentGaps.total_m_legos }} M-LEGOs have components</template>
+                  <template v-else>{{ componentGaps.gaps.total }} of {{ componentGaps.total_m_legos }} M-LEGOs need components</template>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <template v-if="componentGaps !== null && !componentGaps.complete">
+                <span class="text-xs text-slate-400">
+                  <span v-if="componentGaps.gaps.null_components" class="text-rose-400">{{ componentGaps.gaps.null_components }} missing</span>
+                  <span v-if="componentGaps.gaps.empty_components" class="text-orange-400 ml-2">{{ componentGaps.gaps.empty_components }} empty</span>
+                  <span v-if="componentGaps.gaps.partial_components" class="text-amber-400 ml-2">{{ componentGaps.gaps.partial_components }} partial</span>
+                </span>
+              </template>
+              <span v-if="componentGaps !== null && componentGaps.complete" class="stage-badge-complete">Done</span>
+              <span v-else-if="stageRunning('component-backfill')" class="text-xs text-teal-400 animate-pulse">Running...</span>
+              <button
+                v-if="componentGaps === null"
+                @click="checkComponentGaps"
+                :disabled="componentCheckLoading"
+                class="px-3 py-1 bg-teal-600/20 border border-teal-500/50 text-teal-400 hover:border-teal-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ componentCheckLoading ? 'Checking...' : 'Check' }}
+              </button>
+              <button
+                v-else-if="!componentGaps.complete && !stageRunning('component-backfill')"
+                @click="startComponentBackfill"
+                :disabled="componentBackfillStarting"
+                class="px-3 py-1 bg-teal-600/20 border border-teal-500/50 text-teal-400 hover:border-teal-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ componentBackfillStarting ? 'Spawning...' : `Fix ${componentGaps.gaps.total} M-LEGOs` }}
+              </button>
+              <button
+                v-if="componentGaps !== null"
+                @click="checkComponentGaps"
+                :disabled="componentCheckLoading"
+                class="px-3 py-1 bg-slate-600/20 border border-slate-500/50 text-slate-400 hover:border-slate-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ componentCheckLoading ? '...' : 'Recheck' }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 5: Gender Prep (hidden for non-gendered languages) -->
         <div v-if="isGenderedLanguage" class="pipeline-card" :class="stageCardClass('gender')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <span class="stage-number" :class="stageNumberClass('gender')">4</span>
+              <span class="stage-number" :class="stageNumberClass('gender')">5</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Gender Prep</div>
                 <div class="text-xs text-slate-500">Gender expansions</div>
@@ -545,7 +597,9 @@ const buildTeamStarting = ref(false)
 const finalPassStarting = ref(false)
 const massApproving = ref(false)
 const genderStarting = ref(false)
-
+const componentCheckLoading = ref(false)
+const componentBackfillStarting = ref(false)
+const componentGaps = ref(null) // null = not checked yet, object = { total_m_legos, gaps: { total, null_components, empty_components, partial_components }, complete }
 
 // Seed grid state
 const seedGrid = ref([])
@@ -990,6 +1044,63 @@ async function massApproveSeeds() {
     console.error('Failed to mass approve:', err)
   } finally {
     massApproving.value = false
+  }
+}
+
+const componentCardClass = computed(() => {
+  if (componentGaps.value !== null && componentGaps.value.complete) return 'border-emerald-500/20'
+  if (stageRunning('component-backfill')) return 'border-teal-500/30'
+  if (componentGaps.value !== null && !componentGaps.value.complete) return 'border-teal-500/30'
+  return 'border-slate-700/50'
+})
+
+const componentNumberClass = computed(() => {
+  if (componentGaps.value !== null && componentGaps.value.complete) return 'bg-emerald-500/20 text-emerald-400'
+  if (stageRunning('component-backfill')) return 'bg-teal-500/20 text-teal-400'
+  return 'bg-slate-700/50 text-slate-400'
+})
+
+async function checkComponentGaps() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  componentCheckLoading.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/component-gaps/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    const data = await response.json()
+    componentGaps.value = data
+  } catch (err) {
+    console.error('Failed to check component gaps:', err)
+  } finally {
+    componentCheckLoading.value = false
+  }
+}
+
+async function startComponentBackfill() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  componentBackfillStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/component-backfill/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'component-backfill': 'running' }
+      buildMonitor.refresh()
+    } else {
+      console.error('Failed to start component backfill:', result.error)
+    }
+  } catch (err) {
+    console.error('Failed to start component backfill:', err)
+  } finally {
+    componentBackfillStarting.value = false
   }
 }
 

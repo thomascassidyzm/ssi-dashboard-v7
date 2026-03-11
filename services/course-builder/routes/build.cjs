@@ -416,5 +416,109 @@ module.exports = function (ctx) {
     }
   });
 
+  // POST /build/component-backfill/:courseCode — Spawn Haiku agent for M-LEGO component backfill
+  router.post('/build/component-backfill/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const terminal = req.query.terminal || 'iTerm2';
+
+      const { data: activeJob } = await ctx.supabase
+        .from('build_jobs').select('id')
+        .eq('course_code', courseCode).eq('pass', 'component-backfill').in('status', ['running']).maybeSingle();
+      if (activeJob) return res.status(409).json({ error: 'Component backfill already running' });
+
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/component-backfill`);
+      if (!briefResp.ok) throw new Error(`Failed to fetch component-backfill brief: ${briefResp.status}`);
+      const brief = await briefResp.text();
+
+      const tmpFile = `/tmp/component-backfill_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      const { data: jobData } = await ctx.supabase
+        .from('build_jobs')
+        .insert({
+          course_code: courseCode, pass: 'component-backfill', status: 'running',
+          current_seed: 0, seeds_completed: 0, total_seeds: 0,
+          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard', terminal: effectiveTerminal,
+          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'component-backfill'
+        })
+        .select('id').single();
+
+      const claudeCmd = `cd "${projectDir}" && claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      spawnInTerminal(ctx, claudeCmd, 'Component Backfill', courseCode);
+
+      res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: 'Component backfill agent spawned' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // GET /build/component-gaps/:courseCode — Quick count of M-LEGOs needing components
+  router.get('/build/component-gaps/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+
+      // Count M-LEGOs with null components
+      const { count: nullCount } = await ctx.supabase
+        .from('course_legos')
+        .select('id', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .eq('type', 'M')
+        .is('components', null)
+        .eq('is_new', true);
+
+      // Count M-LEGOs with empty array components
+      const { count: emptyCount } = await ctx.supabase
+        .from('course_legos')
+        .select('id', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .eq('type', 'M')
+        .eq('components', '[]')
+        .eq('is_new', true);
+
+      // Count M-LEGOs with single component (partial)
+      const { data: allMLegos } = await ctx.supabase
+        .from('course_legos')
+        .select('components, known_text')
+        .eq('course_code', courseCode)
+        .eq('type', 'M')
+        .not('components', 'is', null)
+        .eq('is_new', true);
+
+      const partialCount = (allMLegos || []).filter(l =>
+        Array.isArray(l.components) && l.components.length === 1 &&
+        (l.known_text || '').trim().split(/\s+/).length >= 2
+      ).length;
+
+      const totalMLegos = (nullCount || 0) + (emptyCount || 0) + partialCount;
+
+      // Count total M-LEGOs for the course
+      const { count: totalM } = await ctx.supabase
+        .from('course_legos')
+        .select('id', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .eq('type', 'M')
+        .eq('is_new', true);
+
+      res.json({
+        course_code: courseCode,
+        total_m_legos: totalM || 0,
+        gaps: {
+          null_components: nullCount || 0,
+          empty_components: emptyCount || 0,
+          partial_components: partialCount,
+          total: totalMLegos
+        },
+        complete: totalMLegos === 0
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   return router;
 };
