@@ -2,13 +2,14 @@
  * M-LEGO component backfill routes.
  *
  * GET  /course/:courseCode/components/gaps     — M-LEGOs missing components
- * POST /course/:courseCode/components/backfill — Write components + rebuild phrases
+ * POST /course/:courseCode/components/backfill — Write components JSONB + component phrases only
  *
  * Factory: receives ctx ({ supabase, config }).
  */
 
 const { Router } = require('express');
 const { isChinese } = require('../lib/language-config.cjs');
+const { getMeaningfulComponents, makePhraseId, computeLegoPosition } = require('../lib/phrase-structure.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 
 module.exports = function (ctx) {
@@ -142,7 +143,7 @@ module.exports = function (ctx) {
           }
         }
 
-        // Update ONLY the components JSONB — never touch phrases
+        // 1. Update the components JSONB
         const { error: updateErr } = await ctx.supabase
           .from('course_legos')
           .update({ components })
@@ -154,9 +155,57 @@ module.exports = function (ctx) {
           throw new Error(`Failed to update components for ${label}: ${updateErr.message}`);
         }
 
+        // 2. Delete ONLY existing component phrases — never touch build/use
+        const { error: delErr } = await ctx.supabase
+          .from('course_practice_phrases')
+          .delete()
+          .eq('course_code', courseCode)
+          .eq('seed_number', seed_number)
+          .eq('lego_index', lego_index)
+          .eq('phrase_role', 'component');
+
+        if (delErr) {
+          throw new Error(`Failed to delete old component phrases for ${label}: ${delErr.message}`);
+        }
+
+        // 3. Create new component phrase rows
+        const meaningful = getMeaningfulComponents(components, lego.target_text);
+        const now = new Date().toISOString();
+        const componentPhrases = meaningful.map((comp, i) => ({
+          id: makePhraseId(courseCode, seed_number, lego_index, 'component', i + 1),
+          course_code: courseCode,
+          seed_number,
+          lego_index,
+          position: i + 1,
+          known_text: comp.known,
+          target_text: comp.target,
+          target_text_roman: comp.target_roman || null,
+          word_count: comp.target.length,
+          lego_count: 1,
+          phrase_role: 'component',
+          connected_lego_ids: [],
+          lego_position: computeLegoPosition(comp.target, comp.target),
+          metadata: { buildup: 'component', component_index: i },
+          status: 'draft',
+          version: 1,
+          created_at: now,
+          updated_at: now,
+        }));
+
+        if (componentPhrases.length > 0) {
+          const { error: insertErr } = await ctx.supabase
+            .from('course_practice_phrases')
+            .upsert(componentPhrases, { onConflict: 'id' });
+
+          if (insertErr) {
+            throw new Error(`Failed to insert component phrases for ${label}: ${insertErr.message}`);
+          }
+        }
+
         results.push({
           lego: label,
           components_set: components.length,
+          component_phrases: componentPhrases.length,
         });
       } catch (err) {
         errors.push({ lego: label, error: err.message });
