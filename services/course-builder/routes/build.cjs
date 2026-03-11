@@ -448,7 +448,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       spawnInTerminal(ctx, claudeCmd, 'Component Backfill', courseCode);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: 'Component backfill agent spawned' });
