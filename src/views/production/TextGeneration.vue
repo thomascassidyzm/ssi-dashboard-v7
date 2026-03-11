@@ -267,6 +267,14 @@
             </div>
             <div class="flex items-center gap-3">
               <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">{{ seedGridFlagged }} flagged</span>
+              <button
+                v-if="seedGridFlagged > 0"
+                @click="redoAllFlagged"
+                :disabled="redoingFlagged"
+                class="px-3 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ redoingFlagged ? 'Spawning...' : `Redo ${seedGridFlagged} Flagged` }}
+              </button>
               <span v-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
               <template v-else>
@@ -597,6 +605,7 @@ const seedViewLoading = ref(false)
 const seedReviewNotes = ref('')
 const seedApproving = ref(false)
 const seedRedoing = ref(false)
+const redoingFlagged = ref(false)
 
 const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
@@ -1153,26 +1162,49 @@ async function redoSeed() {
   try {
     const apiBase = getApiUrl()
     const notes = seedReviewNotes.value.trim()
-    await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
+    await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify({ role: 'human', message: `Redo seed ${seedNum}.${notes ? ' ' + notes : ''}`, action: 'redo' })
+      body: JSON.stringify({ seeds: [seedNum], notes })
     })
     seedReviewNotes.value = ''
     selectedSeed.value = null
     seedViewPhrases.value = []
     seedViewSeedText.value = null
-    // Optimistically clear the seed from the grid so it's no longer amber
     const cell = seedGrid.value.find(s => s.seed === seedNum)
     if (cell) cell.status = 'building'
     await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
-    // Auto-select next amber seed
     const nextDrafted = seedGrid.value.find(s => s.status === 'drafted')
     if (nextDrafted) selectSeed(nextDrafted.seed)
     seedRedoing.value = false
   } catch (err) {
-    console.error('Failed to send redo:', err)
+    console.error('Failed to redo seed:', err)
     seedRedoing.value = false
+  }
+}
+
+async function redoAllFlagged() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  const flaggedSeeds = seedGrid.value.filter(s => s.status === 'flagged').map(s => s.seed)
+  if (flaggedSeeds.length === 0) return
+  redoingFlagged.value = true
+  try {
+    const apiBase = getApiUrl()
+    await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ seeds: flaggedSeeds, notes: 'Redo all flagged seeds' })
+    })
+    // Optimistically mark all flagged as building
+    for (const s of seedGrid.value) {
+      if (s.status === 'flagged') s.status = 'building'
+    }
+    await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
+  } catch (err) {
+    console.error('Failed to redo flagged seeds:', err)
+  } finally {
+    redoingFlagged.value = false
   }
 }
 
@@ -1202,6 +1234,27 @@ async function sendChat() {
     chatInput.value = ''
     await nextTick()
     if (chatScrollEl.value) chatScrollEl.value.scrollTop = chatScrollEl.value.scrollHeight
+
+    // Detect "redo seed N" or "redo seeds 1, 4, 17" patterns and route to redo endpoint
+    const redoMatch = text.match(/^redo\s+seeds?\s+([\d,\s]+)/i)
+    if (redoMatch) {
+      const seedNums = redoMatch[1].split(/[,\s]+/).map(Number).filter(n => n > 0)
+      if (seedNums.length > 0) {
+        const notesMatch = text.match(/^redo\s+seeds?\s+[\d,\s]+[.:]?\s*(.*)/i)
+        const notes = notesMatch?.[1]?.trim() || ''
+        await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+          body: JSON.stringify({ seeds: seedNums, notes })
+        })
+        // Optimistically update grid
+        for (const s of seedGrid.value) {
+          if (seedNums.includes(s.seed)) s.status = 'building'
+        }
+        await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
+        return
+      }
+    }
 
     await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
       method: 'POST',

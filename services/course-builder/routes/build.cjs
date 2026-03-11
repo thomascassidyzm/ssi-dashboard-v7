@@ -70,6 +70,86 @@ module.exports = function (ctx) {
     }
   });
 
+  // POST /build/redo/:courseCode — Wipe specific seeds + spawn redo agent
+  router.post('/build/redo/:courseCode', async (req, res) => {
+    const { courseCode } = req.params;
+    const { seeds = [], notes = '' } = req.body || {};
+    const terminal = req.query.terminal || 'iTerm2';
+
+    try {
+      if (!Array.isArray(seeds) || seeds.length === 0) {
+        return res.status(400).json({ ok: false, error: 'seeds array required (e.g. [1, 4, 17])' });
+      }
+
+      const seedNumbers = seeds.map(Number).filter(n => n > 0).sort((a, b) => a - b);
+      if (seedNumbers.length === 0) {
+        return res.status(400).json({ ok: false, error: 'No valid seed numbers provided' });
+      }
+
+      // Wipe each seed (delete phrases + LEGOs, reset decomposed_at)
+      let totalPhrasesDeleted = 0;
+      let totalLegosDeleted = 0;
+      let totalSeedsReset = 0;
+
+      for (const seedNum of seedNumbers) {
+        const { count: phrasesDeleted } = await ctx.supabase
+          .from('course_practice_phrases').delete({ count: 'exact' })
+          .eq('course_code', courseCode).eq('seed_number', seedNum);
+
+        const { count: legosDeleted } = await ctx.supabase
+          .from('course_legos').delete({ count: 'exact' })
+          .eq('course_code', courseCode).eq('seed_number', seedNum);
+
+        const { count: seedsReset } = await ctx.supabase
+          .from('course_seeds').update({ decomposed_at: null, approved_at: null, flagged_at: null }, { count: 'exact' })
+          .eq('course_code', courseCode).eq('seed_number', seedNum);
+
+        totalPhrasesDeleted += phrasesDeleted || 0;
+        totalLegosDeleted += legosDeleted || 0;
+        totalSeedsReset += seedsReset || 0;
+      }
+
+      ctx.courseVocabCache.delete(courseCode);
+      await bumpCourseVersion(ctx.supabase, courseCode, 'minor');
+
+      // Generate redo brief and spawn agent
+      const seedsParam = seedNumbers.join(',');
+      const notesParam = notes ? `&notes=${encodeURIComponent(notes)}` : '';
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/redo?seeds=${seedsParam}${notesParam}`);
+      if (!briefResp.ok) throw new Error(`Failed to fetch redo brief: ${briefResp.status}`);
+      const brief = await briefResp.text();
+
+      const tmpFile = `/tmp/redo_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      spawnInTerminal(ctx, claudeCmd, 'Redo', courseCode);
+
+      // Post status to chat
+      await ctx.supabase.from('orchestrator_messages').insert({
+        course_code: courseCode,
+        direction: 'agent_to_human',
+        message: `Redo agent spawned for seed${seedNumbers.length > 1 ? 's' : ''} ${seedNumbers.join(', ')}. Wiped ${totalLegosDeleted} LEGOs, ${totalPhrasesDeleted} phrases.`,
+        status: 'pending',
+        metadata: { action: 'redo_spawned', seeds: seedNumbers }
+      });
+
+      res.json({
+        ok: true,
+        seeds: seedNumbers,
+        phrases_deleted: totalPhrasesDeleted,
+        legos_deleted: totalLegosDeleted,
+        seeds_reset: totalSeedsReset,
+        message: `Redo agent spawned for ${seedNumbers.length} seed(s)`
+      });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
   // GET /build/seed-grid/:courseCode
   router.get('/build/seed-grid/:courseCode', async (req, res) => {
     const { courseCode } = req.params;

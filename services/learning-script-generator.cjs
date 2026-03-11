@@ -473,9 +473,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     }
 
     // Phase 1: INTRO or COMPONENT PRIMING
-    // M-LEGOs with components: skip the M-LEGO intro entirely — component intros
-    //   replace it. Each component intro provides the M-LEGO as context
-    //   ("as in 'I'm trying to learn'"), so the M-LEGO is implicit.
+    // M-LEGOs with components: prime each component individually, then present
+    //   the assembled M-LEGO so the learner hears the full unit.
+    //   Overkill >> learner uncertainty at the onset of a new LEGO.
     // A-LEGOs / Welsh: standard intro with presentation audio.
     const isWelsh = courseCode.startsWith('cym_')
     const compPhrases = isWelsh ? [] : (componentMap.get(currentLego.lego.id) || [])
@@ -508,6 +508,21 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           })
         }
       }
+
+      // M-LEGO intro: after all components are primed, present the assembled
+      // M-LEGO so the learner hears how the pieces snap together as a single unit.
+      // Overkill >> learner uncertainty at the onset of a new LEGO.
+      const introAudio = introAudioMap.get(currentLego.lego.id)
+      roundItems.push({
+        ...baseItem,
+        type: 'intro',
+        known_text: currentLego.lego.known_text,
+        target_text: currentLego.lego.target_text,
+        presentation_audio: introAudio || null,
+        target1_audio_uuid: currentLego.lego.target1_audio_uuid,
+        target2_audio_uuid: currentLego.lego.target2_audio_uuid,
+        hasAudio: !!(introAudio && currentLego.lego.target1_audio_uuid),
+      })
     } else {
       // A-LEGO or Welsh: standard intro with presentation audio
       const introAudio = introAudioMap.get(currentLego.lego.id)

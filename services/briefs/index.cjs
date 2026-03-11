@@ -29,6 +29,9 @@ const generateBuildTeamOrchestratorBrief = require('./build-team-orchestrator.cj
 // Stage 4: Final pass
 const generateFinalPassBrief = require('./final-pass.cjs');
 
+// Redo: targeted seed rebuild
+const generateRedoBrief = require('./redo.cjs');
+
 // Helper to serve brief as markdown
 async function serveBrief(res, generator, courseCode, query = {}) {
   try {
@@ -51,5 +54,8 @@ router.get('/:courseCode/build-team-orchestrator', (req, res) => serveBrief(res,
 
 // Stage 4
 router.get('/:courseCode/final-pass', (req, res) => serveBrief(res, generateFinalPassBrief, req.params.courseCode, req.query));
+
+// Redo
+router.get('/:courseCode/redo', (req, res) => serveBrief(res, generateRedoBrief, req.params.courseCode, req.query));
 
 module.exports = router;
