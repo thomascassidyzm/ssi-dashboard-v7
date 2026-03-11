@@ -1384,7 +1384,10 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
         },
         // Language-pair learnings from QA and course building
         learnings: learnings,
-        learningsCount: learnings.length
+        learningsCount: learnings.length,
+        // Pricing tier
+        pricingTier: course.pricing_tier || 'premium',
+        isCommunity: course.is_community || false
       }
     })
   } catch (err) {
@@ -1457,6 +1460,60 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
     })
   } catch (err) {
     logger.error(`Failed to update status for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// Update course pricing tier
+// Used by Production Overview to mark courses as free, premium, or community
+app.post('/api/production/:courseCode/pricing-tier', async (req, res) => {
+  const { courseCode } = req.params
+  const { pricingTier } = req.body
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const validTiers = ['free', 'premium', 'community']
+    if (!pricingTier || !validTiers.includes(pricingTier)) {
+      return res.status(400).json({
+        error: `Invalid pricing tier: ${pricingTier}. Must be one of: ${validTiers.join(', ')}`
+      })
+    }
+
+    const { data, error: dbError } = await supabaseClient.getClient()
+      .from('courses')
+      .update({
+        pricing_tier: pricingTier,
+        is_community: pricingTier === 'community'
+      })
+      .eq('course_code', courseCode)
+      .select('course_code, pricing_tier, is_community, updated_at')
+      .single()
+
+    if (dbError) throw dbError
+
+    logger.info(`Updated ${courseCode} pricing_tier to ${pricingTier}`)
+
+    io.emit('course:pricingTierChanged', {
+      courseCode,
+      pricingTier: data.pricing_tier,
+      isCommunity: data.is_community,
+      updatedAt: data.updated_at
+    })
+
+    res.json({
+      success: true,
+      course: {
+        code: data.course_code,
+        pricingTier: data.pricing_tier,
+        isCommunity: data.is_community,
+        updatedAt: data.updated_at
+      }
+    })
+  } catch (err) {
+    logger.error(`Failed to update pricing tier for ${courseCode}:`, err)
     res.status(500).json({ error: err.message })
   }
 })

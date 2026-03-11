@@ -16,6 +16,19 @@
         </button>
       </div>
 
+      <div class="pricing-pills">
+        <button
+          v-for="tier in pricingTiers"
+          :key="tier.value"
+          @click="setPricingTier(tier.value)"
+          class="status-pill pricing-tier"
+          :class="{ active: currentPricingTier === tier.value, [tier.value]: true }"
+          :disabled="isUpdatingTier || store.isLoadingInfo"
+        >
+          {{ tier.label }}
+        </button>
+      </div>
+
       <div class="header-stats">
         <div class="mini-stat primary">
           <template v-if="isLoadingStats">
@@ -188,6 +201,7 @@ const router = useRouter()
 const store = useProductionStore()
 const showExportDialog = ref(false)
 const isUpdating = ref(false)
+const isUpdatingTier = ref(false)
 const auditing = ref(false)
 const showLearnings = ref(false)
 
@@ -207,6 +221,12 @@ const statuses = [
   { value: 'testing', label: 'Testing' },
   { value: 'beta', label: 'Beta' },
   { value: 'live', label: 'Live' }
+]
+
+const pricingTiers = [
+  { value: 'free', label: 'Free' },
+  { value: 'premium', label: 'Premium' },
+  { value: 'community', label: 'Community' }
 ]
 
 const localStats = ref({ completeSeeds: 0, totalSeeds: 668, legos: 0, phrases: 0 })
@@ -245,6 +265,10 @@ const currentStatus = computed(() => {
   if (s === 'draft') return 'testing'
   if (s === 'released') return 'live'
   return s
+})
+
+const currentPricingTier = computed(() => {
+  return store.courseInfo?.pricingTier || 'premium'
 })
 
 async function loadStats() {
@@ -293,6 +317,16 @@ async function setStatus(status) {
     await store.updateCourseStatus(status)
   } finally {
     isUpdating.value = false
+  }
+}
+
+async function setPricingTier(tier) {
+  if (tier === currentPricingTier.value || isUpdatingTier.value) return
+  isUpdatingTier.value = true
+  try {
+    await store.updatePricingTier(tier)
+  } finally {
+    isUpdatingTier.value = false
   }
 }
 
@@ -379,6 +413,15 @@ watch(() => props.courseCode, () => {
 .status-pill.active.testing { background: rgba(148,163,184,0.2); border-color: #94a3b8; color: #94a3b8; }
 .status-pill.active.beta { background: rgba(251,191,36,0.15); border-color: #fbbf24; color: #fbbf24; }
 .status-pill.active.live { background: rgba(52,211,153,0.15); border-color: #34d399; color: #34d399; }
+
+/* Pricing Tier Pills */
+.pricing-pills {
+  display: flex;
+  gap: 0.5rem;
+}
+.status-pill.pricing-tier.active.free { background: rgba(52,211,153,0.15); border-color: #34d399; color: #34d399; }
+.status-pill.pricing-tier.active.premium { background: rgba(251,191,36,0.15); border-color: #fbbf24; color: #fbbf24; }
+.status-pill.pricing-tier.active.community { background: rgba(59,130,246,0.15); border-color: #3b82f6; color: #3b82f6; }
 
 /* Header Stats */
 .header-stats {

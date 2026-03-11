@@ -449,6 +449,42 @@ export const useProductionStore = defineStore('production', () => {
     }
   }
 
+  // Update course pricing tier
+  async function updatePricingTier(tier) {
+    if (!currentCourseCode.value) {
+      throw new Error('No course loaded')
+    }
+
+    try {
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${currentCourseCode.value}/pricing-tier`, {
+        method: 'POST',
+        headers: getApiHeaders(),
+        body: JSON.stringify({ pricingTier: tier })
+      })
+
+      if (!response.ok) {
+        const errData = await response.json()
+        throw new Error(errData.error || 'Failed to update pricing tier')
+      }
+
+      const data = await response.json()
+
+      // Update local state
+      if (courseInfo.value) {
+        courseInfo.value.pricingTier = data.course.pricingTier
+        courseInfo.value.isCommunity = data.course.isCommunity
+        courseInfo.value.updatedAt = data.course.updatedAt
+      }
+
+      console.log(`[Production] Updated pricing tier to ${tier}`)
+      return data.course
+    } catch (err) {
+      error.value = err.message
+      throw err
+    }
+  }
+
   async function updateSampleFlag(uuid, flagData) {
     try {
       const baseUrl = getApiBaseUrl()
@@ -866,6 +902,7 @@ export const useProductionStore = defineStore('production', () => {
     loadCourse,
     loadCourseInfo,
     updateCourseStatus,
+    updatePricingTier,
     updateSampleFlag,
     bulkUpdateFlags,
     updateGenerationProgress,
