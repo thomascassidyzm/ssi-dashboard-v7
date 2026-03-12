@@ -7,6 +7,7 @@ const fs = require('fs-extra')
 const { createServer } = require('http')
 const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
+const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 
 const logger = createLogger('ProductionAPI')
 
@@ -2737,121 +2738,31 @@ async function getDirectAudioStats(courseCode) {
   if (cached && Date.now() < cached.expiry) {
     return cached.data
   }
-  const supabase = supabaseClient.getClient()
 
-  const { data: course } = await supabase
-    .from('courses')
-    .select('seed_count, known_lang, target_lang')
-    .eq('course_code', courseCode)
-    .single()
-  const releaseTarget = course?.seed_count || 260
-
-  // Count audio bindings directly via ID columns — no text matching needed
-  // Phrases: known_audio_id, target1_audio_id, target2_audio_id
-  // LEGOs: known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id
-  // Seeds: known_audio_id, target1_audio_id, target2_audio_id
-  const [
-    phraseTotal, phraseKnownBound, phraseT1Bound, phraseT2Bound,
-    legoTotal, legoKnownBound, legoT1Bound, legoT2Bound,
-    newLegoTotal, newLegoPresentationBound,
-    seedTotal, seedKnownBound, seedT1Bound, seedT2Bound,
-    encRes, instrRes
-  ] = await Promise.all([
-    // Phrase counts
-    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).lte('seed_number', releaseTarget),
-    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
-    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
-    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
-    // LEGO counts
-    supabase.from('course_legos').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).lte('seed_number', releaseTarget),
-    supabase.from('course_legos').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
-    supabase.from('course_legos').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
-    supabase.from('course_legos').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
-    // New LEGO presentation counts
-    supabase.from('course_legos').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', releaseTarget),
-    supabase.from('course_legos').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', releaseTarget).not('presentation_audio_id', 'is', null),
-    // Seed counts
-    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget),
-    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('known_audio_id', 'is', null),
-    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('target1_audio_id', 'is', null),
-    supabase.from('course_seeds').select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode).eq('status', 'released').lte('seed_number', releaseTarget).not('target2_audio_id', 'is', null),
-    // Shared audio
-    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
-      .eq('language', course.known_lang).eq('audio_type', 'encouragement'),
-    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
-      .eq('language', course.known_lang).eq('audio_type', 'instruction')
-  ])
-
-  const phrases = phraseTotal.count || 0
-  const legos = legoTotal.count || 0
-  const newLegos = newLegoTotal.count || 0
-  const seeds = seedTotal.count || 0
-
-  // Total needed: each phrase/LEGO/seed needs known + target1 + target2, new LEGOs also need presentation
-  const totalKnownNeeded = phrases + legos + seeds
-  const totalT1Needed = phrases + legos + seeds
-  const totalT2Needed = phrases + legos + seeds
-  const totalPresNeeded = newLegos
-
-  const knownBound = (phraseKnownBound.count || 0) + (legoKnownBound.count || 0) + (seedKnownBound.count || 0)
-  const t1Bound = (phraseT1Bound.count || 0) + (legoT1Bound.count || 0) + (seedT1Bound.count || 0)
-  const t2Bound = (phraseT2Bound.count || 0) + (legoT2Bound.count || 0) + (seedT2Bound.count || 0)
-  const presBound = newLegoPresentationBound.count || 0
-
-  const knownMissing = totalKnownNeeded - knownBound
-  const t1Missing = totalT1Needed - t1Bound
-  const t2Missing = totalT2Needed - t2Bound
-  const presMissing = totalPresNeeded - presBound
-
-  // Shared audio: use actual count or minimum requirement, whichever is larger
-  const SHARED_AUDIO_MINIMUM = { encouragement: 26, instruction: 48 }
-  const sharedExisting = (encRes.count || 0) + (instrRes.count || 0)
-  const sharedNeeded = Math.max(SHARED_AUDIO_MINIMUM.encouragement + SHARED_AUDIO_MINIMUM.instruction, sharedExisting)
-
-  // Welcome audio — check course_audio table
-  const { count: welcomeCount } = await supabase
-    .from('course_audio')
-    .select('id', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('role', 'welcome')
-    .not('s3_key', 'like', 'pending/%')
-  const welcomeExists = (welcomeCount || 0) > 0
-
-  const azureNeeded = totalKnownNeeded + totalT1Needed + totalT2Needed + totalPresNeeded
-  const azureExisting = knownBound + t1Bound + t2Bound + presBound
-  const totalNeeded = azureNeeded + sharedNeeded + 1 // +1 for welcome
-  const totalExisting = azureExisting + sharedExisting + (welcomeExists ? 1 : 0)
-  const missing = totalNeeded - totalExisting
+  // Single source of truth: Phase 8 /plan endpoint counts unique text+lang+role combos
+  // using normalizeForAudio() — same logic that /generate uses to build the work queue.
+  // This ensures dashboard stats ALWAYS match what generation actually does.
+  const phase8Url = process.env.PHASE8_URL || 'http://localhost:3465'
+  const resp = await fetch(`${phase8Url}/plan/${courseCode}`)
+  if (!resp.ok) {
+    throw new Error(`Phase 8 plan failed for ${courseCode}: ${resp.status}`)
+  }
+  const plan = await resp.json()
 
   const result = {
-    total: totalNeeded,
-    existing: totalExisting,
-    missing,
-    course,
-    releaseTarget,
-    breakdown: { known: knownMissing, target1: t1Missing, target2: t2Missing, presentation: presMissing },
-    existingByRole: { known: knownBound, target1: t1Bound, target2: t2Bound, presentation: presBound },
-    totalPhrases: phrases,
-    totalLegos: legos,
-    totalNewLegos: newLegos,
-    uniquePhraseAudio: totalKnownNeeded + totalT1Needed + totalT2Needed,
-    sharedNeeded,
-    sharedExisting,
-    welcomeExists
+    total: plan.total || 0,
+    existing: plan.existing || 0,
+    missing: plan.missing || 0,
+    breakdown: plan.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    existingByRole: {},
+    totalPhrases: plan.totalPhrases || 0,
+    totalLegos: 0,
+    totalNewLegos: plan.totalPresentationsNeeded || 0,
+    uniquePhraseAudio: plan.uniqueKnownTexts || 0,
+    sharedNeeded: 0,
+    sharedExisting: 0,
+    welcomeExists: false,
+    releaseTarget: plan.releaseTarget || 300
   }
 
   // Cache result
@@ -2958,9 +2869,9 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
     }
 
     // v13: Query course_audio directly (flat table, no joins needed)
-    // Strip punctuation to match Phase 8's normalizeText() which strips before TTS generation
+    const normalizedText = normalizeForAudio(text.toString())
+    // Fallback: strip all punctuation for legacy records with inconsistent normalization
     const PUNCT_REGEX = /[。？！、，.!?,;:()（）「」『』\[\]…—–\-]+/g
-    const normalizedText = text.toString().toLowerCase().trim()
     const strippedText = normalizedText.replace(PUNCT_REGEX, '').trim()
 
     const { data: audioData, error: audioError } = await supabase
@@ -4597,7 +4508,7 @@ app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) 
     for (const sample of existingInS3) {
       try {
         // Check if already registered (v13: course_audio with text_normalized)
-        const normalizedText = sample.text.toLowerCase().trim()
+        const normalizedText = normalizeForAudio(sample.text)
         const { data: existing } = await supabase
           .from('course_audio')
           .select('id')
@@ -4876,8 +4787,8 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
   }
 
   // Normalize and deduplicate texts
-  const normalizedKnown = [...new Set(knownTexts.filter(t => t).map(t => t.toLowerCase().trim()))]
-  const normalizedTarget = [...new Set(targetTexts.filter(t => t).map(t => t.toLowerCase().trim()))]
+  const normalizedKnown = [...new Set(knownTexts.filter(t => t).map(t => normalizeForAudio(t)))]
+  const normalizedTarget = [...new Set(targetTexts.filter(t => t).map(t => normalizeForAudio(t)))]
 
   if (normalizedKnown.length === 0 && normalizedTarget.length === 0) return audioMap
 

@@ -29,6 +29,7 @@ const fs = require('fs-extra')
 const path = require('path')
 const os = require('os')
 const { bumpCourseVersion } = require('../shared/course-version.cjs')
+const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
@@ -96,21 +97,8 @@ function getLocalisedLangName(targetLang, knownLang) {
   return LANG_NAMES[targetLang] || targetLang
 }
 
-// =============================================================================
-// TEXT NORMALIZATION (for audio matching)
-// =============================================================================
-
-// Punctuation to strip when comparing text for audio matching
-/**
- * Normalize text for audio matching comparison
- * Must match what the linking RPCs use: lower(trim(text))
- * Do NOT strip punctuation — punctuation affects TTS output and
- * the linking RPCs match on exact text_normalized (lowercase + trim only)
- */
-function normalizeText(text) {
-  if (!text) return ''
-  return text.toLowerCase().trim().replace(/[.!。！]+$/, '')
-}
+// Canonical text normalization — see services/shared/text-normalize.cjs
+const normalizeText = normalizeForAudio
 
 /**
  * Check if text is punctuation-only (TTS can't generate these)
@@ -139,6 +127,54 @@ function isPunctuationOnly(text) {
 // - 20 concurrent connections max
 // Default 20 = max concurrency for paid tier
 const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 20
+
+/**
+ * Fetch ALL existing audio for a course from course_audio.
+ * Avoids pagination entirely — uses a single query with high limit.
+ * Supabase PostgREST supports up to ~100k rows per request with select.
+ * We deduplicate into a Set anyway, so even if Supabase returns some overlap, it's fine.
+ * @param {string} courseCode
+ * @returns {Set} Set of "normalizedText|language|role" keys for existing audio
+ */
+async function getExistingAudioSet(courseCode) {
+  // Fetch in one large batch — course_audio per course is typically 10k-30k rows
+  // Using .limit() avoids the 1000-row default without needing ORDER BY
+  // Fetch raw `text` column so we can normalize it ourselves — text_normalized
+  // may have been written by old code that stripped ?! (we now preserve them)
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('text, language, role, s3_key')
+    .eq('course_code', courseCode)
+    .not('s3_key', 'like', 'pending/%')
+    .limit(100000)
+
+  if (error) throw error
+
+  // Store both canonical AND ?!-stripped forms so lookups work either way.
+  // Old audio was stored without ?! — new phrases may have them.
+  // "emin misin?" and "emin misin" are the same audio file.
+  const innerSet = new Set()
+  for (const a of (data || [])) {
+    const norm = normalizeText(a.text)
+    innerSet.add(`${norm}|${a.language}|${a.role}`)
+    // Also add stripped form so "emin misin" matches lookup for "emin misin?"
+    const stripped = norm.replace(/[!?！？]+$/, '')
+    if (stripped !== norm) innerSet.add(`${stripped}|${a.language}|${a.role}`)
+  }
+
+  // Return a Set-like object with a custom has() that checks both forms
+  const existingSet = {
+    has(key) {
+      if (innerSet.has(key)) return true
+      // Also try stripping trailing ?! from the lookup key
+      const stripped = key.replace(/([!?！？]+)\|/, '|')
+      return stripped !== key && innerSet.has(stripped)
+    },
+    get size() { return innerSet.size }
+  }
+  logger.info(`getExistingAudioSet(${courseCode}): ${data?.length || 0} rows, ${innerSet.size} unique keys`)
+  return existingSet
+}
 
 /**
  * Process items in parallel with concurrency limit
@@ -358,168 +394,25 @@ app.delete('/cancel/:courseCode', (req, res) => {
 // =============================================================================
 // HELPER: Link audio IDs to phrases/legos/seeds
 // =============================================================================
-async function linkAudioIds(courseCode, knownLang, targetLang) {
-  const r = { practice_phrases: {}, legos: {}, seeds: {} }
-  const BATCH_SIZE = 500
-  const PAGE_SIZE = 1000
+async function linkAudioIds(courseCode) {
+  const { data, error } = await supabase.rpc('link_all_audio_ids', {
+    p_course_code: courseCode
+  })
+  if (error) throw new Error(`link_all_audio_ids RPC failed: ${error.message}`)
 
-  // --- Step 1: Load all course_audio into a lookup map ---
-  // Key: "text_normalized|language|role" → course_audio.id
-  // Filter pending/ s3_keys client-side to avoid blocking index usage
-  const audioMap = new Map()
-  let audioOffset = 0
-  let hasMore = true
-  while (hasMore) {
-    const { data, error } = await supabase
-      .from('course_audio')
-      .select('id, text_normalized, language, role, s3_key')
-      .eq('course_code', courseCode)
-      .range(audioOffset, audioOffset + PAGE_SIZE - 1)
-    if (error) throw new Error(`Failed to load course_audio: ${error.message}`)
-    for (const a of (data || [])) {
-      if (!a.s3_key || !a.s3_key.startsWith('pending/')) {
-        audioMap.set(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`, a.id)
-      }
-    }
-    hasMore = (data || []).length === PAGE_SIZE
-    audioOffset += PAGE_SIZE
-  }
-  logger.info(`linkAudioIds: loaded ${audioMap.size} audio entries for ${courseCode}`)
-
-  // --- Helper: batch-update a column on a table ---
-  async function batchUpdate(table, idCol, rows, column) {
-    let count = 0
-    for (let i = 0; i < rows.length; i += BATCH_SIZE) {
-      const batch = rows.slice(i, i + BATCH_SIZE)
-      for (const row of batch) {
-        const { error } = await supabase
-          .from(table)
-          .update({ [column]: row.audioId })
-          .eq('course_code', courseCode)
-          .eq(idCol, row.id)
-        if (!error) count++
-      }
-    }
-    return count
-  }
-
-  // --- Step 2: Link practice_phrases ---
-  const phraseSlots = [
-    { textCol: 'known_text', audioCol: 'known_audio_id', lang: knownLang, role: 'known' },
-    { textCol: 'target_text', audioCol: 'target1_audio_id', lang: targetLang, role: 'target1' },
-    { textCol: 'target_text', audioCol: 'target2_audio_id', lang: targetLang, role: 'target2' },
-  ]
-  for (const slot of phraseSlots) {
-    const slotName = slot.audioCol.replace('_audio_id', '')
-    const updates = []
-    let offset = 0
-    let more = true
-    while (more) {
-      const { data, error } = await supabase
-        .from('course_practice_phrases')
-        .select(`id, ${slot.textCol}`)
-        .eq('course_code', courseCode)
-        .is(slot.audioCol, null)
-        .order('id', { ascending: true })
-        .range(offset, offset + PAGE_SIZE - 1)
-      if (error) throw new Error(`Failed to load phrases for ${slotName}: ${error.message}`)
-      for (const row of (data || [])) {
-        const key = `${normalizeText(row[slot.textCol])}|${slot.lang}|${slot.role}`
-        const audioId = audioMap.get(key)
-        if (audioId) updates.push({ id: row.id, audioId })
-      }
-      more = (data || []).length === PAGE_SIZE
-      offset += PAGE_SIZE
-    }
-    if (updates.length > 0) {
-      r.practice_phrases[slotName] = await batchUpdate('course_practice_phrases', 'id', updates, slot.audioCol)
-    } else {
-      r.practice_phrases[slotName] = 0
-    }
-    logger.info(`linkAudioIds: phrases.${slotName} = ${r.practice_phrases[slotName]}`)
-  }
-
-  // --- Step 3: Link legos ---
-  const legoSlots = [
-    { textCol: 'known_text', audioCol: 'known_audio_id', lang: knownLang, role: 'known' },
-    { textCol: 'target_text', audioCol: 'target1_audio_id', lang: targetLang, role: 'target1' },
-    { textCol: 'target_text', audioCol: 'target2_audio_id', lang: targetLang, role: 'target2' },
-  ]
-  for (const slot of legoSlots) {
-    const slotName = slot.audioCol.replace('_audio_id', '')
-    const updates = []
-    let offset = 0
-    let more = true
-    while (more) {
-      const { data, error } = await supabase
-        .from('course_legos')
-        .select(`lego_id, ${slot.textCol}`)
-        .eq('course_code', courseCode)
-        .is(slot.audioCol, null)
-        .order('lego_id', { ascending: true })
-        .range(offset, offset + PAGE_SIZE - 1)
-      if (error) throw new Error(`Failed to load legos for ${slotName}: ${error.message}`)
-      for (const row of (data || [])) {
-        const key = `${normalizeText(row[slot.textCol])}|${slot.lang}|${slot.role}`
-        const audioId = audioMap.get(key)
-        if (audioId) updates.push({ id: row.lego_id, audioId })
-      }
-      more = (data || []).length === PAGE_SIZE
-      offset += PAGE_SIZE
-    }
-    if (updates.length > 0) {
-      r.legos[slotName] = await batchUpdate('course_legos', 'lego_id', updates, slot.audioCol)
-    } else {
-      r.legos[slotName] = 0
-    }
-    logger.info(`linkAudioIds: legos.${slotName} = ${r.legos[slotName]}`)
-  }
-
-  // --- Step 4: Link seeds ---
-  const seedSlots = [
-    { textCol: 'known_text', audioCol: 'known_audio_id', lang: knownLang, role: 'known' },
-    { textCol: 'target_text', audioCol: 'target1_audio_id', lang: targetLang, role: 'target1' },
-    { textCol: 'target_text', audioCol: 'target2_audio_id', lang: targetLang, role: 'target2' },
-  ]
-  for (const slot of seedSlots) {
-    const slotName = slot.audioCol.replace('_audio_id', '')
-    const updates = []
-    let offset = 0
-    let more = true
-    while (more) {
-      const { data, error } = await supabase
-        .from('course_seeds')
-        .select(`id, ${slot.textCol}`)
-        .eq('course_code', courseCode)
-        .is(slot.audioCol, null)
-        .order('id', { ascending: true })
-        .range(offset, offset + PAGE_SIZE - 1)
-      if (error) throw new Error(`Failed to load seeds for ${slotName}: ${error.message}`)
-      for (const row of (data || [])) {
-        const key = `${normalizeText(row[slot.textCol])}|${slot.lang}|${slot.role}`
-        const audioId = audioMap.get(key)
-        if (audioId) updates.push({ id: row.id, audioId })
-      }
-      more = (data || []).length === PAGE_SIZE
-      offset += PAGE_SIZE
-    }
-    if (updates.length > 0) {
-      r.seeds[slotName] = await batchUpdate('course_seeds', 'id', updates, slot.audioCol)
-    } else {
-      r.seeds[slotName] = 0
-    }
-    logger.info(`linkAudioIds: seeds.${slotName} = ${r.seeds[slotName]}`)
-  }
-
-  // Also link presentation audio (belt-and-suspenders)
+  // Also link presentation audio (belt-and-suspenders — uses lego_id FK, not text matching)
   const presResult = await linkPresentationAudio(courseCode)
-  r.presentations = presResult.linked || 0
-  r.total = Object.values(r).reduce((sum, cat) =>
-    typeof cat === 'object' ? sum + Object.values(cat).reduce((s, v) => s + v, 0) : sum
-  , 0) + (r.presentations || 0)
 
-  logger.info(`linkAudioIds: total linked = ${r.total} for ${courseCode}`)
-  return r
+  const result = data || {}
+  result.presentations = presResult.linked || 0
+  // Compute total from RPC result fields
+  const rpcTotal = (result.phrases_known || 0) + (result.phrases_target1 || 0) + (result.phrases_target2 || 0)
+    + (result.legos_known || 0) + (result.legos_target1 || 0) + (result.legos_target2 || 0)
+    + (result.seeds_known || 0) + (result.seeds_target1 || 0) + (result.seeds_target2 || 0)
+  result.total = rpcTotal + (result.presentations || 0)
+
+  logger.info(`linkAudioIds: linked via RPC for ${courseCode}`, JSON.stringify(result))
+  return result
 }
 
 // =============================================================================
@@ -604,7 +497,6 @@ app.get('/plan/:courseCode', planHandler)
 async function planHandler(req, res) {
   try {
     const { courseCode } = req.params
-    const PAGE_SIZE = 1000
 
     // Get course info
     const { data: course, error: courseError } = await supabase
@@ -617,291 +509,144 @@ async function planHandler(req, res) {
       return res.status(404).json({ error: 'Course not found' })
     }
 
-    // Release target - only count audio needs up to this seed number (MVP = 260)
     const releaseTarget = course.seed_count || 260
 
-    // Get what audio we have (paginated)
-    // Filter pending/ s3_keys client-side to avoid blocking index usage
-    const existingAudio = []
-    let audioOffset = 0
-    let hasMoreAudio = true
+    // Step 1: Skip linking in plan — backfill already ran, generate endpoint links after each batch.
+    // Calling link_all_audio_ids here was causing statement timeouts on large courses.
 
-    while (hasMoreAudio) {
-      const { data: audioBatch, error: audioError } = await supabase
-        .from('course_audio')
-        .select('text_normalized, language, role, s3_key')
-        .eq('course_code', courseCode)
-        .range(audioOffset, audioOffset + PAGE_SIZE - 1)
+    // Step 2: Get authoritative NULL-based counts via SQL RPC
+    const { data: counts, error: countsError } = await supabase.rpc('get_audio_counts', {
+      p_course_code: courseCode,
+      p_release_target: releaseTarget
+    })
+    if (countsError) throw new Error(`get_audio_counts RPC failed: ${countsError.message}`)
 
-      if (audioError) throw audioError
+    const p = counts.phrases || {}
+    const l = counts.legos || {}
+    const s = counts.seeds || {}
 
-      if (audioBatch && audioBatch.length > 0) {
-        // Exclude pending/ s3_keys - those are placeholders, not real audio
-        for (const a of audioBatch) {
-          if (!a.s3_key || !a.s3_key.startsWith('pending/')) existingAudio.push(a)
-        }
-        hasMoreAudio = audioBatch.length === PAGE_SIZE
-        audioOffset += PAGE_SIZE
-      } else {
-        hasMoreAudio = false
-      }
-    }
+    // Missing counts from NULL audio_id columns (authoritative)
+    const missingKnown = (p.missing_known || 0) + (l.missing_known || 0) + (s.missing_known || 0)
+    const missingTarget1 = (p.missing_target1 || 0) + (l.missing_target1 || 0) + (s.missing_target1 || 0)
+    const missingTarget2 = (p.missing_target2 || 0) + (s.missing_target2 || 0)
+    const missingPresentation = l.missing_presentation || 0
 
-    // Get what phrases we need (from practice phrases, paginated)
-    // Only include phrases up to the release target
-    // IMPORTANT: Must use ORDER BY for consistent pagination results
-    const phrases = []
+    // Total audio slots: phrases×3 + legos×2 (known+target1) + new_legos×1 (presentation) + seeds×3
+    const totalSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3)
+    const totalMissing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation
+    const totalExisting = totalSlots - totalMissing
+
+    // Step 3: Cost estimation — still need unique text dedup for TTS cost (not correctness)
+    const existingSet = await getExistingAudioSet(courseCode)
+    const needed = []
+    const PAGE_SIZE = 1000
+
+    // Phrases
     let phrasesOffset = 0
     let hasMorePhrases = true
-
+    let phraseCount = 0
     while (hasMorePhrases) {
       const { data: phrasesBatch, error: phrasesError } = await supabase
         .from('course_practice_phrases')
-        .select('known_text, target_text, seed_number')
+        .select('known_text, target_text')
         .eq('course_code', courseCode)
         .lte('seed_number', releaseTarget)
         .order('id')
         .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1)
-
       if (phrasesError) throw phrasesError
-
-      if (phrasesBatch && phrasesBatch.length > 0) {
-        phrases.push(...phrasesBatch)
-        hasMorePhrases = phrasesBatch.length === PAGE_SIZE
-        phrasesOffset += PAGE_SIZE
-      } else {
-        hasMorePhrases = false
-      }
-    }
-
-    // Build needed list
-    const needed = []
-    // Use normalizeText on both sides for punctuation-insensitive matching
-    const existingSet = new Set(
-      (existingAudio || []).map(a => `${normalizeText(a.text_normalized)}|${a.language}|${a.role}`)
-    )
-
-    for (const phrase of phrases || []) {
-      // Known language audio
-      const knownKey = `${normalizeText(phrase.known_text)}|${course.known_lang}|known`
-      if (!existingSet.has(knownKey)) {
-        needed.push({ text: phrase.known_text, language: course.known_lang, role: 'known' })
-      }
-
-      // Target language audio (target1 and target2)
-      for (const role of ['target1', 'target2']) {
-        const targetKey = `${normalizeText(phrase.target_text)}|${course.target_lang}|${role}`
-        if (!existingSet.has(targetKey)) {
-          needed.push({ text: phrase.target_text, language: course.target_lang, role })
-        }
-      }
-    }
-
-    // Also include LEGO debut audio (the LEGO text itself needs known/target1/target2)
-    // Only include LEGOs up to the release target
-    const { data: allLegos } = await supabase
-      .from('course_legos')
-      .select('lego_id, seed_number, known_text, target_text')
-      .eq('course_code', courseCode)
-      .lte('seed_number', releaseTarget)
-
-    if (allLegos?.length > 0) {
-      for (const lego of allLegos) {
-        const knownKey = `${normalizeText(lego.known_text)}|${course.known_lang}|known`
+      for (const phrase of (phrasesBatch || [])) {
+        phraseCount++
+        const knownKey = `${normalizeText(phrase.known_text)}|${course.known_lang}|known`
         if (!existingSet.has(knownKey)) {
-          needed.push({ text: lego.known_text, language: course.known_lang, role: 'known' })
+          needed.push({ text: phrase.known_text, language: course.known_lang, role: 'known' })
         }
         for (const role of ['target1', 'target2']) {
-          const targetKey = `${normalizeText(lego.target_text)}|${course.target_lang}|${role}`
+          const targetKey = `${normalizeText(phrase.target_text)}|${course.target_lang}|${role}`
           if (!existingSet.has(targetKey)) {
-            needed.push({ text: lego.target_text, language: course.target_lang, role })
+            needed.push({ text: phrase.target_text, language: course.target_lang, role })
           }
         }
       }
+      hasMorePhrases = (phrasesBatch || []).length === PAGE_SIZE
+      phrasesOffset += PAGE_SIZE
     }
 
-    // Also include seed sentence audio (full seed sentences need known/target1/target2)
-    // Only include released seeds up to the release target
+    // LEGOs
+    const { data: allLegos } = await supabase
+      .from('course_legos')
+      .select('lego_id, known_text, target_text')
+      .eq('course_code', courseCode)
+      .lte('seed_number', releaseTarget)
+    for (const lego of (allLegos || [])) {
+      const knownKey = `${normalizeText(lego.known_text)}|${course.known_lang}|known`
+      if (!existingSet.has(knownKey)) {
+        needed.push({ text: lego.known_text, language: course.known_lang, role: 'known' })
+      }
+      for (const role of ['target1', 'target2']) {
+        const targetKey = `${normalizeText(lego.target_text)}|${course.target_lang}|${role}`
+        if (!existingSet.has(targetKey)) {
+          needed.push({ text: lego.target_text, language: course.target_lang, role })
+        }
+      }
+    }
+
+    // Seeds
     const { data: allSeeds } = await supabase
       .from('course_seeds')
-      .select('seed_number, known_text, target_text')
+      .select('known_text, target_text')
       .eq('course_code', courseCode)
       .eq('status', 'released')
       .lte('seed_number', releaseTarget)
-
-    if (allSeeds?.length > 0) {
-      for (const seed of allSeeds) {
-        const knownKey = `${normalizeText(seed.known_text)}|${course.known_lang}|known`
-        if (!existingSet.has(knownKey)) {
-          needed.push({ text: seed.known_text, language: course.known_lang, role: 'known' })
-        }
-        for (const role of ['target1', 'target2']) {
-          const targetKey = `${normalizeText(seed.target_text)}|${course.target_lang}|${role}`
-          if (!existingSet.has(targetKey)) {
-            needed.push({ text: seed.target_text, language: course.target_lang, role })
-          }
+    for (const seed of (allSeeds || [])) {
+      const knownKey = `${normalizeText(seed.known_text)}|${course.known_lang}|known`
+      if (!existingSet.has(knownKey)) {
+        needed.push({ text: seed.known_text, language: course.known_lang, role: 'known' })
+      }
+      for (const role of ['target1', 'target2']) {
+        const targetKey = `${normalizeText(seed.target_text)}|${course.target_lang}|${role}`
+        if (!existingSet.has(targetKey)) {
+          needed.push({ text: seed.target_text, language: course.target_lang, role })
         }
       }
     }
 
-    // Get LEGOs that need presentation audio (is_new = true)
-    // These are the LEGOs that require a presentation intro like "The Spanish for 'word', is:"
-    // Only include LEGOs up to the release target
-    const { data: newLegos, error: legosError } = await supabase
+    // Presentation audio (still text-dedup for cost)
+    const { data: newLegos } = await supabase
       .from('course_legos')
-      .select('lego_id, seed_number, known_text, presentation_audio_id')
+      .select('lego_id, known_text, presentation_audio_id')
       .eq('course_code', courseCode)
       .eq('is_new', true)
       .lte('seed_number', releaseTarget)
-
-    if (legosError) throw legosError
-
-    // Get existing presentation audio (filter pending/ client-side to avoid blocking index)
     const { data: rawPresentations } = await supabase
       .from('course_audio')
       .select('lego_id, s3_key')
       .eq('course_code', courseCode)
       .eq('role', 'presentation')
     const existingPresentations = (rawPresentations || []).filter(p => !p.s3_key || !p.s3_key.startsWith('pending/'))
-
-    // Build set of lego_ids that have presentation audio in course_audio
-    const legoIdsWithPresentation = new Set(
-      (existingPresentations || []).map(p => p.lego_id).filter(Boolean)
-    )
-
-    // Count missing presentations
-    const missingPresentationLegos = []
-    for (const lego of newLegos || []) {
-      // Skip if already bound on the LEGO itself (authoritative)
+    const legoIdsWithPresentation = new Set(existingPresentations.map(p => p.lego_id).filter(Boolean))
+    for (const lego of (newLegos || [])) {
       if (lego.presentation_audio_id) continue
-      // Skip if presentation audio exists in course_audio by lego_id (generated but not yet bound)
       if (legoIdsWithPresentation.has(lego.lego_id)) continue
-      missingPresentationLegos.push({
-        text: lego.known_text,  // Will be expanded to full presentation text during generation
-        language: course.known_lang,
-        role: 'presentation',
-        lego_id: lego.lego_id
-      })
+      needed.push({ text: lego.known_text, language: course.known_lang, role: 'presentation', lego_id: lego.lego_id })
     }
 
-    if (missingPresentationLegos.length > 0) {
-      needed.push(...missingPresentationLegos)
-      logger.info(`Found ${missingPresentationLegos.length} LEGOs missing presentation audio`)
-    }
+    // Dedup + filter punctuation for cost estimation
+    const uniqueNeeded = [...new Map(
+      needed.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}`, n])
+    ).values()].filter(n => !isPunctuationOnly(n.text))
 
-    // Deduplicate
-    const uniqueNeededRaw = [...new Map(
-      needed.map(n => [`${n.text}|${n.language}|${n.role}`, n])
-    ).values()]
-
-    // Filter out punctuation-only items (TTS can't generate these)
-    // This matches what the generate endpoint does, so plan and generate counts align
-    const uniqueNeeded = uniqueNeededRaw.filter(n => !isPunctuationOnly(n.text))
-
-    // Cost estimate (rough: $0.016 per 1000 chars for Azure Neural)
     const totalChars = uniqueNeeded.reduce((sum, n) => sum + n.text.length, 0)
     const estimatedCost = (totalChars / 1000) * 0.016
 
-    // Count existing by role
-    // existingAudio has known/target1/target2 (presentation is filtered separately)
-    // existingPresentations has presentation audio
-    const existingByRole = {
-      known: 0,
-      target1: 0,
-      target2: 0,
-      presentation: (existingPresentations || []).length  // Count presentation audio records
+    // Unique text counts for display
+    const uniqueTexts = new Set()
+    for (const src of [...(allLegos || []), ...(allSeeds || [])]) {
+      if (!isPunctuationOnly(src.known_text)) uniqueTexts.add(`known|${normalizeText(src.known_text)}`)
+      if (!isPunctuationOnly(src.target_text)) uniqueTexts.add(`target|${normalizeText(src.target_text)}`)
     }
-    for (const audio of existingAudio || []) {
-      // Only count known/target1/target2 here (presentation counted separately)
-      if (audio.role !== 'presentation' && existingByRole[audio.role] !== undefined) {
-        existingByRole[audio.role]++
-      }
-    }
-
-    // Calculate TOTAL REQUIRED based on current course content (not orphaned audio)
-    // Unique texts that need audio: phrases + legos + seeds
-    // Exclude punctuation-only items (TTS can't generate these)
-    const uniqueTextsForAudio = new Set()
-
-    // Count unique known/target texts (excluding punctuation-only)
-    for (const phrase of phrases || []) {
-      if (!isPunctuationOnly(phrase.known_text)) {
-        uniqueTextsForAudio.add(`known|${normalizeText(phrase.known_text)}`)
-      }
-      if (!isPunctuationOnly(phrase.target_text)) {
-        uniqueTextsForAudio.add(`target|${normalizeText(phrase.target_text)}`)
-      }
-    }
-    for (const lego of allLegos || []) {
-      if (!isPunctuationOnly(lego.known_text)) {
-        uniqueTextsForAudio.add(`known|${normalizeText(lego.known_text)}`)
-      }
-      if (!isPunctuationOnly(lego.target_text)) {
-        uniqueTextsForAudio.add(`target|${normalizeText(lego.target_text)}`)
-      }
-    }
-    for (const seed of allSeeds || []) {
-      if (!isPunctuationOnly(seed.known_text)) {
-        uniqueTextsForAudio.add(`known|${normalizeText(seed.known_text)}`)
-      }
-      if (!isPunctuationOnly(seed.target_text)) {
-        uniqueTextsForAudio.add(`target|${normalizeText(seed.target_text)}`)
-      }
-    }
-
-    // Total required: unique known texts + unique target texts × 2 (target1, target2) + presentations
-    const uniqueKnownTexts = [...uniqueTextsForAudio].filter(k => k.startsWith('known|')).length
-    const uniqueTargetTexts = [...uniqueTextsForAudio].filter(k => k.startsWith('target|')).length
+    const uniqueKnownTexts = [...uniqueTexts].filter(k => k.startsWith('known|')).length
+    const uniqueTargetTexts = [...uniqueTexts].filter(k => k.startsWith('target|')).length
     const totalPresentationsNeeded = newLegos?.length || 0
-
-    // Total required = unique audio needs from current content (phrases + legos + seeds + presentations)
-    // Count existing by checking which needed items have matching audio (not ALL audio records)
-    const totalMissing = uniqueNeeded.length
-
-    // Count existing audio that matches CURRENT content only (not orphaned audio from deleted phrases)
-    // Build the full needed set (including items that already have audio) and count matches
-    const fullNeededSet = new Set()
-    for (const phrase of phrases || []) {
-      if (!isPunctuationOnly(phrase.known_text)) {
-        fullNeededSet.add(`${normalizeText(phrase.known_text)}|${course.known_lang}|known`)
-      }
-      if (!isPunctuationOnly(phrase.target_text)) {
-        fullNeededSet.add(`${normalizeText(phrase.target_text)}|${course.target_lang}|target1`)
-        fullNeededSet.add(`${normalizeText(phrase.target_text)}|${course.target_lang}|target2`)
-      }
-    }
-    for (const lego of allLegos || []) {
-      if (!isPunctuationOnly(lego.known_text)) {
-        fullNeededSet.add(`${normalizeText(lego.known_text)}|${course.known_lang}|known`)
-      }
-      if (!isPunctuationOnly(lego.target_text)) {
-        fullNeededSet.add(`${normalizeText(lego.target_text)}|${course.target_lang}|target1`)
-        fullNeededSet.add(`${normalizeText(lego.target_text)}|${course.target_lang}|target2`)
-      }
-    }
-    for (const seed of allSeeds || []) {
-      if (!isPunctuationOnly(seed.known_text)) {
-        fullNeededSet.add(`${normalizeText(seed.known_text)}|${course.known_lang}|known`)
-      }
-      if (!isPunctuationOnly(seed.target_text)) {
-        fullNeededSet.add(`${normalizeText(seed.target_text)}|${course.target_lang}|target1`)
-        fullNeededSet.add(`${normalizeText(seed.target_text)}|${course.target_lang}|target2`)
-      }
-    }
-
-    let matchedExisting = 0
-    for (const key of fullNeededSet) {
-      if (existingSet.has(key)) matchedExisting++
-    }
-    // Add presentation audio that matches current LEGOs
-    let presentationsExisting = 0
-    for (const lego of newLegos || []) {
-      if (lego.presentation_audio_id || legoIdsWithPresentation.has(lego.lego_id)) {
-        presentationsExisting++
-      }
-    }
-    const totalExisting = matchedExisting + presentationsExisting
-    const totalRequired = fullNeededSet.size + totalPresentationsNeeded
 
     res.json({
       courseCode,
@@ -912,20 +657,20 @@ async function planHandler(req, res) {
         targetLang: course.target_lang,
         voiceConfig: course.voice_config
       },
-      existing: totalExisting,  // Audio that matches current requirements
+      existing: totalExisting,
       missing: totalMissing,
-      total: totalRequired,  // existing + missing
-      totalPhrases: phrases.length,
+      total: totalExisting + totalMissing,
+      totalPhrases: phraseCount,
       totalPresentationsNeeded,
       uniqueKnownTexts,
       uniqueTargetTexts,
       estimatedCost: `$${estimatedCost.toFixed(2)}`,
       estimatedChars: totalChars,
       breakdown: {
-        known: uniqueNeeded.filter(n => n.role === 'known').length,
-        target1: uniqueNeeded.filter(n => n.role === 'target1').length,
-        target2: uniqueNeeded.filter(n => n.role === 'target2').length,
-        presentation: uniqueNeeded.filter(n => n.role === 'presentation').length
+        known: missingKnown,
+        target1: missingTarget1,
+        target2: missingTarget2,
+        presentation: missingPresentation
       }
     })
   } catch (error) {
@@ -1022,36 +767,8 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
     }
 
-    // Get existing audio (paginated)
-    // Filter pending/ s3_keys client-side to avoid blocking index usage
-    const existingAudio = []
-    let audioOffset = 0
-    let hasMoreAudio = true
-
-    while (hasMoreAudio) {
-      const { data: audioBatch, error: audioError } = await supabase
-        .from('course_audio')
-        .select('text_normalized, language, role, s3_key')
-        .eq('course_code', courseCode)
-        .range(audioOffset, audioOffset + PAGE_SIZE - 1)
-
-      if (audioError) throw audioError
-
-      if (audioBatch && audioBatch.length > 0) {
-        for (const a of audioBatch) {
-          if (!a.s3_key || !a.s3_key.startsWith('pending/')) existingAudio.push(a)
-        }
-        hasMoreAudio = audioBatch.length === PAGE_SIZE
-        audioOffset += PAGE_SIZE
-      } else {
-        hasMoreAudio = false
-      }
-    }
-
-    // Use normalizeText on both sides for punctuation-insensitive matching
-    const existingSet = new Set(
-      existingAudio.map(a => `${normalizeText(a.text_normalized)}|${a.language}|${a.role}`)
-    )
+    // Get existing audio — single reliable query, no broken pagination
+    const existingSet = await getExistingAudioSet(courseCode)
 
     const needed = []
     // Helper to get voice settings from config (supports nested voices structure)
@@ -1287,7 +1004,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         }
 
         // Check which presentation texts already exist in course_audio
-        const compTextsNorm = componentPresentations.map(cp => cp.presentation_text.toLowerCase().trim())
+        const compTextsNorm = componentPresentations.map(cp => normalizeForAudio(cp.presentation_text))
         const uniqueCompTexts = [...new Set(compTextsNorm)]
         const existingCompTexts = new Set()
 
@@ -1312,11 +1029,11 @@ app.post('/generate/:courseCode', async (req, res) => {
           : presVoiceConfig.presentation || 'azure_en-GB-SoniaNeural'
 
         const newCompRecords = componentPresentations
-          .filter(cp => !existingCompTexts.has(cp.presentation_text.toLowerCase().trim()))
+          .filter(cp => !existingCompTexts.has(normalizeForAudio(cp.presentation_text)))
           .map(cp => ({
             course_code: courseCode,
             text: cp.presentation_text,
-            text_normalized: cp.presentation_text.toLowerCase().trim(),
+            text_normalized: normalizeForAudio(cp.presentation_text),
             language: course.known_lang,
             role: 'presentation',
             voice_id: presVoiceId,
@@ -1594,10 +1311,12 @@ app.post('/generate/:courseCode', async (req, res) => {
       needed.push(...filtered)
     }
 
-    // Deduplicate
+    // Deduplicate using normalizeText for consistent keys (matches existingSet logic)
+    logger.info(`Before dedup: ${needed.length} items (known=${needed.filter(n=>n.role==='known').length}, target1=${needed.filter(n=>n.role==='target1').length}, target2=${needed.filter(n=>n.role==='target2').length}, presentation=${needed.filter(n=>n.role==='presentation').length})`)
     const uniqueNeeded = [...new Map(
-      needed.map(n => [`${n.text}|${n.language}|${n.role}`, n])
+      needed.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}`, n])
     ).values()].slice(0, limit)
+    logger.info(`After dedup: ${uniqueNeeded.length} unique items`)
 
     // Load pre-computed gender expansions from DB
     let genderMap = new Map()
@@ -1634,7 +1353,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           .from('course_audio')
           .select('s3_key, duration_ms, viseme_data')
           .neq('course_code', courseCode)
-          .eq('text_normalized', item.text.toLowerCase().trim())
+          .eq('text_normalized', normalizeForAudio(item.text))
           .eq('language', item.language)
           .eq('role', item.role)
           .eq('voice_id', item.voiceId)
@@ -1649,7 +1368,7 @@ app.post('/generate/:courseCode', async (req, res) => {
             .upsert({
               course_code: courseCode,
               text: item.text,
-              text_normalized: item.text.toLowerCase().trim(),
+              text_normalized: normalizeForAudio(item.text),
               language: item.language,
               role: item.role,
               voice_id: item.voiceId,
@@ -1752,7 +1471,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         .upsert({
           course_code: courseCode,
           text: item.text,
-          text_normalized: item.text.toLowerCase().trim(),
+          text_normalized: normalizeForAudio(item.text),
           language: item.language,
           role: item.role,
           voice_id: item.voiceId,
@@ -1840,7 +1559,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       // even if generation is interrupted
       if (batchNum % 10 === 0) {
         try {
-          const mid = await linkAudioIds(courseCode, course.known_lang, course.target_lang)
+          const mid = await linkAudioIds(courseCode)
           if (mid.total > 0) logger.info(`Mid-generation link: bound ${mid.total} audio IDs`)
         } catch (e) {
           logger.warn(`Mid-generation link failed: ${e.message}`)
@@ -1855,7 +1574,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     let linked = 0
     if (!wasCancelled) {
       try {
-        const linkResults = await linkAudioIds(courseCode, course.known_lang, course.target_lang)
+        const linkResults = await linkAudioIds(courseCode)
         linked = linkResults.total
         if (linked > 0) {
           logger.info(`Auto-linked ${linked} audio IDs for ${courseCode}`)
@@ -2286,7 +2005,7 @@ app.post('/insert', async (req, res) => {
       .upsert({
         course_code: courseCode,
         text,
-        text_normalized: text.toLowerCase().trim(),
+        text_normalized: normalizeForAudio(text),
         language: normalizedLanguage,
         role,
         voice_id: voiceId,
@@ -2689,7 +2408,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     for (const pres of presentations) {
       const existing = existingByLegoId.get(pres.lego_id)
       if (!existing) continue
-      const newNorm = pres.presentation_text.toLowerCase().trim()
+      const newNorm = normalizeForAudio(pres.presentation_text)
       if (existing.text_normalized === newNorm) {
         unchangedLegoIds.add(pres.lego_id)  // text same → keep existing record
       } else {
@@ -2730,7 +2449,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       .map(pres => ({
         course_code: courseCode,
         text: pres.presentation_text,
-        text_normalized: pres.presentation_text.toLowerCase().trim(),
+        text_normalized: normalizeForAudio(pres.presentation_text),
         language: knownLang,
         role: 'presentation',
         voice_id: presentationVoiceId,
@@ -2844,7 +2563,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const existingByPhraseId = new Map()
 
       // Component presentations don't have lego_id — match by text_normalized + role
-      const compTextsNorm = componentPresentations.map(cp => cp.presentation_text.toLowerCase().trim())
+      const compTextsNorm = componentPresentations.map(cp => normalizeForAudio(cp.presentation_text))
       const uniqueCompTexts = [...new Set(compTextsNorm)]
 
       for (let i = 0; i < uniqueCompTexts.length; i += BATCH_SIZE) {
@@ -2866,7 +2585,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const compIdsToDelete = []
 
       for (const cp of componentPresentations) {
-        const norm = cp.presentation_text.toLowerCase().trim()
+        const norm = normalizeForAudio(cp.presentation_text)
         const existing = existingByPhraseId.get(norm)
         if (existing) {
           // Text already exists — mark as unchanged
@@ -2877,11 +2596,11 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
       // Build new records (skip ones that already exist with same text)
       const compAudioRecords = componentPresentations
-        .filter(cp => !compUnchangedTexts.has(cp.presentation_text.toLowerCase().trim()))
+        .filter(cp => !compUnchangedTexts.has(normalizeForAudio(cp.presentation_text)))
         .map(cp => ({
           course_code: courseCode,
           text: cp.presentation_text,
-          text_normalized: cp.presentation_text.toLowerCase().trim(),
+          text_normalized: normalizeForAudio(cp.presentation_text),
           language: knownLang,
           role: 'presentation',
           voice_id: presentationVoiceId,
@@ -2929,7 +2648,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       // Update presentation_audio_id on matching component phrases
       let compLinked = 0
       for (const cp of componentPresentations) {
-        const norm = cp.presentation_text.toLowerCase().trim()
+        const norm = normalizeForAudio(cp.presentation_text)
         const audioId = compPresAudioMap.get(norm)
         if (!audioId) continue
 
@@ -3041,7 +2760,7 @@ app.post('/link-audio-ids/:courseCode', async (req, res) => {
       })
     }
 
-    const linkResults = await linkAudioIds(courseCode, course.known_lang, course.target_lang)
+    const linkResults = await linkAudioIds(courseCode)
 
     logger.info(`Linked ${linkResults.total} audio IDs for ${courseCode}`)
 
@@ -3483,7 +3202,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
           .from('course_audio')
           .select('s3_key, duration_ms, viseme_data')
           .neq('course_code', courseCode)
-          .eq('text_normalized', item.text.toLowerCase().trim())
+          .eq('text_normalized', normalizeForAudio(item.text))
           .eq('language', item.language)
           .eq('role', item.role)
           .eq('voice_id', item.voiceId)
@@ -3497,7 +3216,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
             .upsert({
               course_code: courseCode,
               text: item.text,
-              text_normalized: item.text.toLowerCase().trim(),
+              text_normalized: normalizeForAudio(item.text),
               language: item.language,
               role: item.role,
               voice_id: item.voiceId,
@@ -3569,7 +3288,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         .upsert({
           course_code: courseCode,
           text: item.text,
-          text_normalized: item.text.toLowerCase().trim(),
+          text_normalized: normalizeForAudio(item.text),
           language: item.language,
           role: item.role,
           voice_id: item.voiceId,

@@ -16,6 +16,7 @@
 const { createClient } = require('@supabase/supabase-js')
 const createLogger = require('./shared/logger.cjs')
 const { generateSampleId, normalizeText: uuidNormalizeText } = require('./uuid-v11.cjs')
+const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 
 const logger = createLogger('Supabase')
 
@@ -63,12 +64,9 @@ function getHashInput(voiceId, text, lang, role, cadence) {
   return `${voiceId}:${lang}:${role}:${cadence}:${text}`
 }
 
-/**
- * Normalize text for consistent matching
- * Lowercases, trims, and collapses whitespace.
- */
+// Canonical text normalization — see services/shared/text-normalize.cjs
 function normalizeText(text) {
-  return uuidNormalizeText(text)
+  return normalizeForAudio(text)
 }
 
 /**
