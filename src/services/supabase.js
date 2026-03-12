@@ -128,6 +128,29 @@ export async function getAllCourses() {
 export async function getAllCourseStats(courseCodes) {
   if (!supabase) throw new Error('Supabase not configured')
 
+  // Single RPC call replaces 195 individual HEAD count queries
+  const { data, error } = await supabase.rpc('get_all_course_stats')
+
+  if (error) {
+    console.warn('[Supabase] get_all_course_stats RPC failed, falling back to per-course queries:', error.message)
+    return getAllCourseStatsFallback(courseCodes)
+  }
+
+  const statsMap = {}
+  for (const row of (data || [])) {
+    statsMap[row.course_code] = {
+      seeds: row.seeds || 0,
+      completedSeeds: row.completed_seeds || 0,
+      legos: row.legos || 0,
+      phrases: row.phrases || 0,
+      audio: row.audio || 0
+    }
+  }
+  return statsMap
+}
+
+// Fallback: per-course queries (used if RPC not yet deployed)
+async function getAllCourseStatsFallback(courseCodes) {
   const statsMap = {}
   const BATCH_SIZE = 5
 

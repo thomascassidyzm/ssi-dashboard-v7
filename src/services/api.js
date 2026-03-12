@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getCachedCourse, setCachedCourse, clearCourseCache, isCacheValid, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
 import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
-import { isConfigured as isSupabaseConfigured, getAllCourses, getAllCourseStats } from './supabase.js'
+import { isConfigured as isSupabaseConfigured, getAllCourses } from './supabase.js'
 
 // Build version for cache busting (set by Vite at build time)
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
@@ -430,8 +430,6 @@ export default {
           console.log('[API] Loading courses directly from Supabase')
 
           const coursesData = await getAllCourses()
-          const courseCodes = coursesData.map(c => c.course_code)
-          const contentStats = await getAllCourseStats(courseCodes)
 
           console.log(`[API] ✓ Loaded ${coursesData.length} courses from Supabase`)
 
@@ -443,14 +441,13 @@ export default {
 
           const courses = coursesData.map(course => {
             const code = course.course_code
-            const stats = contentStats[code] || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
             return {
               code,
               course_code: code,
               display_name: course.display_name,
               source_language: code?.split('_for_')[1]?.toUpperCase() || 'UNK',
               target_language: code?.split('_for_')[0]?.toUpperCase() || 'UNK',
-              total_seeds: stats.seeds || 668,
+              total_seeds: 668,
               seed_count: course.seed_count || null,
               version: '1.0',
               created_at: new Date().toISOString(),
@@ -463,25 +460,20 @@ export default {
               legacy_app_beta_days: daysSince(course.legacy_app_beta_started_at),
               content_status: course.content_status || 'empty',
               content_version: course.content_version || '0.0.0',
-              seed_pairs: stats.completedSeeds,
-              lego_pairs: stats.legos,
+              seed_pairs: 0,
+              lego_pairs: 0,
               lego_baskets: 0,
-              phrases: stats.phrases,
-              audio_files: stats.audio,
+              phrases: 0,
+              audio_files: 0,
               amino_acids: { introductions: 0 },
               stats: {
-                seeds: stats.seeds,
-                completedSeeds: stats.completedSeeds,
-                legos: stats.legos,
-                phrases: stats.phrases,
-                audio: stats.audio
+                seeds: 0,
+                completedSeeds: 0,
+                legos: 0,
+                phrases: 0,
+                audio: 0
               },
-              phases_completed: [
-                ...(stats.completedSeeds > 0 ? ['1'] : []),
-                ...(stats.legos > 0 ? ['3'] : []),
-                ...(stats.phrases > 0 ? ['5'] : []),
-                ...(stats.audio > 0 ? ['8', 'audio'] : [])
-              ]
+              phases_completed: []
             }
           })
 

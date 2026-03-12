@@ -1203,6 +1203,146 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
     }
 
+    // =========================================================================
+    // AUTO-GENERATE COMPONENT PRESENTATION TEXT (so "Start Generation" is one-click)
+    // Creates course_audio records with pending/ s3_keys for component phrases
+    // that don't already have presentation audio. These get picked up below.
+    // =========================================================================
+    {
+      const compTargetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
+
+      // Load presentation template
+      const { data: compTemplates } = await supabase
+        .from('presentation_templates')
+        .select('template')
+        .eq('known_lang', course.known_lang)
+        .eq('is_active', true)
+        .order('priority', { ascending: false })
+        .limit(1)
+
+      let compTemplate = compTemplates?.[0]?.template
+      if (!compTemplate) {
+        compTemplate = "The {target_lang_name} for: '{known}', as in — '{seed}', is:"
+      }
+
+      // Load component phrases for this course (within release target)
+      const compPhrases = []
+      let compOffset = 0
+      let hasMoreComps = true
+      while (hasMoreComps) {
+        const { data: compBatch, error: compError } = await supabase
+          .from('course_practice_phrases')
+          .select('id, seed_number, lego_index, known_text, target_text, presentation_audio_id')
+          .eq('course_code', courseCode)
+          .eq('phrase_role', 'component')
+          .lte('seed_number', releaseTarget)
+          .order('id')
+          .range(compOffset, compOffset + PAGE_SIZE - 1)
+
+        if (compError) { logger.warn('Failed to fetch component phrases:', compError.message); break }
+        if (compBatch && compBatch.length > 0) {
+          compPhrases.push(...compBatch)
+          hasMoreComps = compBatch.length === PAGE_SIZE
+          compOffset += PAGE_SIZE
+        } else {
+          hasMoreComps = false
+        }
+      }
+
+      if (compPhrases.length > 0) {
+        // Load parent M-LEGOs for "as in" context
+        const compSeedNumbers = [...new Set(compPhrases.map(c => c.seed_number))]
+        const parentLegoMap = new Map()
+        const COMP_SEED_BATCH = 500
+        for (let i = 0; i < compSeedNumbers.length; i += COMP_SEED_BATCH) {
+          const seedBatch = compSeedNumbers.slice(i, i + COMP_SEED_BATCH)
+          const { data: parentLegos } = await supabase
+            .from('course_legos')
+            .select('seed_number, lego_index, known_text, target_text')
+            .eq('course_code', courseCode)
+            .eq('type', 'M')
+            .in('seed_number', seedBatch)
+
+          for (const l of (parentLegos || [])) {
+            parentLegoMap.set(`${l.seed_number}:${l.lego_index}`, l)
+          }
+        }
+
+        // Generate presentation text for each component
+        const componentPresentations = []
+        for (const comp of compPhrases) {
+          const parent = parentLegoMap.get(`${comp.seed_number}:${comp.lego_index}`)
+          if (!parent) continue
+
+          const presText = compTemplate
+            .replace('{target_lang_name}', compTargetLangName)
+            .replace('{known}', comp.known_text)
+            .replace('{seed}', parent.known_text)
+
+          componentPresentations.push({
+            phrase_id: comp.id,
+            presentation_text: presText,
+            presentation_audio_id: comp.presentation_audio_id
+          })
+        }
+
+        // Check which presentation texts already exist in course_audio
+        const compTextsNorm = componentPresentations.map(cp => cp.presentation_text.toLowerCase().trim())
+        const uniqueCompTexts = [...new Set(compTextsNorm)]
+        const existingCompTexts = new Set()
+
+        for (let i = 0; i < uniqueCompTexts.length; i += 200) {
+          const batch = uniqueCompTexts.slice(i, i + 200)
+          const { data: existing } = await supabase
+            .from('course_audio')
+            .select('text_normalized')
+            .eq('course_code', courseCode)
+            .eq('role', 'presentation')
+            .in('text_normalized', batch)
+
+          if (existing) {
+            for (const rec of existing) existingCompTexts.add(rec.text_normalized)
+          }
+        }
+
+        // Build new records for components that don't have presentation audio yet
+        const presVoiceConfig = course.voice_config || {}
+        const presVoiceId = presVoiceConfig.voices?.presentation?.voiceId
+          ? `${presVoiceConfig.voices?.presentation?.provider || 'azure'}_${presVoiceConfig.voices.presentation.voiceId}`
+          : presVoiceConfig.presentation || 'azure_en-GB-SoniaNeural'
+
+        const newCompRecords = componentPresentations
+          .filter(cp => !existingCompTexts.has(cp.presentation_text.toLowerCase().trim()))
+          .map(cp => ({
+            course_code: courseCode,
+            text: cp.presentation_text,
+            text_normalized: cp.presentation_text.toLowerCase().trim(),
+            language: course.known_lang,
+            role: 'presentation',
+            voice_id: presVoiceId,
+            origin: 'tts',
+            s3_key: `pending/${uuidv4().toUpperCase()}.mp3`
+          }))
+
+        if (newCompRecords.length > 0) {
+          const { error: compUpsertError } = await supabase
+            .from('course_audio')
+            .upsert(newCompRecords, {
+              onConflict: 'course_code,text_normalized,language,role',
+              ignoreDuplicates: true
+            })
+
+          if (compUpsertError) {
+            logger.error('Component presentation auto-upsert error:', compUpsertError)
+          } else {
+            logger.info(`Auto-created ${newCompRecords.length} component presentation records (from ${compPhrases.length} component phrases)`)
+          }
+        } else if (compPhrases.length > 0) {
+          logger.info(`All ${componentPresentations.length} component presentations already have course_audio records`)
+        }
+      }
+    }
+
     // Also include presentation audio that needs generation (pending/ s3_key)
     const { data: pendingPresentations } = await supabase
       .from('course_audio')

@@ -170,6 +170,52 @@ module.exports = function (ctx) {
 
         // 3. Create new component phrase rows
         const meaningful = getMeaningfulComponents(components, lego.target_text);
+        const componentCount = meaningful.length;
+
+        // 3a. Shift existing build/use phrases to make room for components.
+        // Components occupy positions 1..N. LEGO debut (B01) should be at N+1.
+        // Remaining build/use phrases follow at N+2, N+3, ...
+        if (componentCount > 0) {
+          // Fetch existing build/use phrases ordered by position
+          const { data: existingPhrases, error: fetchErr } = await ctx.supabase
+            .from('course_practice_phrases')
+            .select('id, position')
+            .eq('course_code', courseCode)
+            .eq('seed_number', seed_number)
+            .eq('lego_index', lego_index)
+            .in('phrase_role', ['build', 'use'])
+            .order('position');
+
+          if (fetchErr) {
+            throw new Error(`Failed to fetch existing phrases for ${label}: ${fetchErr.message}`);
+          }
+
+          if (existingPhrases && existingPhrases.length > 0) {
+            // Assign new positions: first build/use gets componentCount+1, next gets componentCount+2, etc.
+            // Use a large temporary offset to avoid intermediate collisions, then set final positions.
+            const tempOffset = 10000;
+            for (const p of existingPhrases) {
+              const { error: shiftErr } = await ctx.supabase
+                .from('course_practice_phrases')
+                .update({ position: p.position + tempOffset })
+                .eq('id', p.id);
+              if (shiftErr) {
+                throw new Error(`Failed to shift phrase ${p.id} for ${label}: ${shiftErr.message}`);
+              }
+            }
+            // Now set final positions
+            for (let i = 0; i < existingPhrases.length; i++) {
+              const { error: finalErr } = await ctx.supabase
+                .from('course_practice_phrases')
+                .update({ position: componentCount + 1 + i })
+                .eq('id', existingPhrases[i].id);
+              if (finalErr) {
+                throw new Error(`Failed to finalize position for ${existingPhrases[i].id}: ${finalErr.message}`);
+              }
+            }
+          }
+        }
+
         const now = new Date().toISOString();
         const componentPhrases = meaningful.map((comp, i) => ({
           id: makePhraseId(courseCode, seed_number, lego_index, 'component', i + 1),
