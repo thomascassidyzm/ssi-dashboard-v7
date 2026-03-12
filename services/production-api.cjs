@@ -3925,13 +3925,30 @@ app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
     const stats = await getDirectAudioStats(courseCode)
     const estimatedCostUSD = (stats.missing * 0.004).toFixed(2)
 
+    // Fetch Phase 8's actual generation plan (deduped unique clips to generate)
+    // This is the slow call (~3s) so it only runs when user explicitly requests plan
+    let generationPlan = null
+    try {
+      const planRes = await axios.get(`${PHASE8_URL}/plan/${courseCode}`, { timeout: 30000 })
+      generationPlan = {
+        missing: planRes.data.missing,
+        total: planRes.data.total,
+        existing: planRes.data.existing,
+        breakdown: planRes.data.breakdown
+      }
+    } catch (e) {
+      // Phase 8 may not be running
+    }
+
+    const costSource = generationPlan ? generationPlan.missing : stats.missing
     return res.json({
       success: true,
-      estimatedCost: `$${estimatedCostUSD}`,
-      estimatedTime: `${Math.ceil(stats.missing / 60)} min`,
+      estimatedCost: `$${(costSource * 0.004).toFixed(2)}`,
+      estimatedTime: `${Math.ceil(costSource / 60)} min`,
       total: stats.total,
       existing: stats.existing,
       missing: stats.missing,
+      generationPlan,
       phraseNeeds: stats.totalPhrases,
       introNeeds: stats.totalNewLegos,
       breakdown: [
@@ -4066,6 +4083,37 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
       return res.status(503).json({ error: 'Phase 8 audio service not running' })
     }
     res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/audio-pipeline/link-and-recount
+// Link unlinked audio to content rows, then return refreshed stats
+// Called async by frontend after initial stats load to refine counts
+app.post('/api/production/:courseCode/audio-pipeline/link-and-recount', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    let linked = 0
+    try {
+      const linkResponse = await axios.post(`${PHASE8_URL}/link-audio-ids/${courseCode}`, {}, {
+        timeout: 120000 // 2 min for linking
+      })
+      linked = linkResponse.data?.totalLinked || linkResponse.data?.results?.total || 0
+    } catch (linkErr) {
+      logger.warn(`Audio linking for ${courseCode}: ${linkErr.code === 'ECONNREFUSED' ? 'Phase 8 not running' : linkErr.message}`)
+    }
+
+    // Invalidate cache and re-fetch stats with fresh data
+    invalidateAudioStatsCache(courseCode)
+    const stats = await getDirectAudioStats(courseCode)
+
+    res.json({
+      success: true,
+      linked,
+      stats
+    })
+  } catch (error) {
+    logger.error(`Link-and-recount error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
   }
 })
 

@@ -89,7 +89,7 @@ ${calibrationSeeds && calibrationSeeds.length > 0 ? calibrationSeeds.slice(0, 3)
 ${crossCourseSummaries || '(No cross-course calibrations available yet)'}
 
 ## Receiving Work from Creator
-${useTeams ? `Wait for messages from the creator agent. They will send you seed decompositions to review.` : `Poll the message queue for decompositions from creator:
+${useTeams ? `Wait for messages from "creator" via SendMessage. They will send you seed decompositions to review. Messages arrive automatically — no polling needed.` : `Poll the message queue for decompositions from creator:
 \\\`\\\`\\\`bash
 # Poll every 10 seconds until you get work
 curl -s "http://localhost:3471/api/agent/inbox/${courseCode}/checker"
@@ -133,7 +133,7 @@ If the API rejects, read the error and fix it yourself:
 Resubmit. If truly unfixable after 3 attempts, skip the seed and tell creator to move on.
 
 ### Step 5: Tell creator "DONE — seed N submitted"
-${useTeams ? `Message the creator directly.` : `Post confirmation to the message queue:
+${useTeams ? `Use **SendMessage** to tell "creator": "DONE — seed N submitted".` : `Post confirmation to the message queue:
 \\\`\\\`\\\`bash
 curl -s -X POST "http://localhost:3471/api/agent/send/${courseCode}" \\\\
   -H "Content-Type: application/json" \\\\

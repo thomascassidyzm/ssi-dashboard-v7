@@ -82,14 +82,21 @@ You DO NOT build seeds yourself.
 
 ---
 
-## Step 1: Spawn the Checker (Opus) FIRST
+## Step 1: Create the Team
+
+Use TeamCreate to set up the team so agents can communicate via SendMessage:
+\`\`\`
+TeamCreate: team_name="${teamName}", description="Build team for ${courseCode}"
+\`\`\`
+
+## Step 2: Spawn the Checker (Opus) FIRST
 
 Spawn checker first so it's ready when creator sends work.
 
 Use the Agent tool:
-- subagent_type: "general-purpose"
+- name: "checker"
+- team_name: "${teamName}"
 - model: "opus"
-- run_in_background: true
 
 Checker prompt:
 \`\`\`
@@ -97,15 +104,15 @@ You are the quality checker for ${courseCode}. Read your full brief:
 
 curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-checker?terminal=${terminal}"
 
-Then follow the instructions exactly.
+Then follow the instructions exactly. You will receive seed decompositions from "creator" via SendMessage. Use SendMessage to reply to "creator" when done.
 \`\`\`
 
-## Step 2: Spawn the Creator (Sonnet)
+## Step 3: Spawn the Creator (Sonnet)
 
 Use the Agent tool:
-- subagent_type: "general-purpose"
+- name: "creator"
+- team_name: "${teamName}"
 - model: "sonnet"
-- run_in_background: true
 
 Creator prompt:
 \`\`\`
@@ -113,14 +120,14 @@ You are the seed creator for ${courseCode}. Read your full brief:
 
 curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-creator?seeds=${creatorSeeds.join(',')}&terminal=${terminal}"
 
-Then follow the instructions exactly.
+Then follow the instructions exactly. Use SendMessage to send decompositions to "checker". Wait for "checker" to reply with "DONE" before moving to the next seed.
 \`\`\`
 
-## Step 3: Confirm Team is Running
+## Step 4: Confirm Team is Running
 
-Check both are alive before monitoring.
+Check both are alive before monitoring. Messages between creator and checker flow automatically via SendMessage — no HTTP queue needed.
 
-## Step 4: Monitor Progress AND Quality
+## Step 5: Monitor Progress AND Quality
 
 You are the quality eye. Check three things continuously:
 

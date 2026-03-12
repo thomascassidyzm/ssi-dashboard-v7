@@ -165,7 +165,7 @@ curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq ".seeds[] | select(
 Design LEGOs and write BUILD + USE phrases. Check every phrase against the grammar error list above.
 
 ### Step 5: Send to checker for review
-${useTeams ? `Send the decomposition to the checker agent. Format your message clearly:` : `Post the decomposition to the message queue for checker to pick up:
+${useTeams ? `Use **SendMessage** to send the decomposition to "checker". Format your message clearly:` : `Post the decomposition to the message queue for checker to pick up:
 
 \\\`\\\`\\\`bash
 curl -s -X POST "http://localhost:3471/api/agent/send/${courseCode}" \\\\
@@ -201,7 +201,7 @@ USE:
 \`\`\`
 
 ### Step 6: Wait for "DONE" from checker
-${useTeams ? `Checker will respond directly. When they say "DONE — seed N submitted", move on.` : `Poll for checker's response:
+${useTeams ? `Checker will respond via SendMessage. When they say "DONE — seed N submitted", move on.` : `Poll for checker's response:
 \\\`\\\`\\\`bash
 curl -s "http://localhost:3471/api/agent/inbox/${courseCode}/creator"
 \\\`\\\`\\\`

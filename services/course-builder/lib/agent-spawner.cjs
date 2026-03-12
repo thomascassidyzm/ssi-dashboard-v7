@@ -17,12 +17,12 @@ const MAX_CONCURRENT_AGENTS = parseInt(process.env.MAX_CONCURRENT_AGENTS) || 12;
  * Returns the child process (or null for osascript).
  * Enforces MAX_CONCURRENT_AGENTS cap before spawning.
  */
-function spawnInTerminal(ctx, cmd, label, courseCode) {
+function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
   const running = getRunningAgentCount();
   if (running >= MAX_CONCURRENT_AGENTS) {
     throw new Error(`Agent cap reached: ${running}/${MAX_CONCURRENT_AGENTS} agents running. Not spawning "${label}" for ${courseCode}.`);
   }
-  const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : ctx.SPAWN_MODE;
+  const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : (terminal || ctx.SPAWN_MODE || 'iTerm2');
 
   if (effectiveTerminal === 'headless') {
     const logsDir = path.join(ctx.PROJECT_DIR, 'logs');

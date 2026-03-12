@@ -1683,7 +1683,7 @@ async function startCourseBuilder() {
 
   try {
     const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
-    const response = await fetch(`${builderApiUrl}/api/build/start/${code}`, {
+    const response = await fetch(`${builderApiUrl}/api/build/team-start/${code}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

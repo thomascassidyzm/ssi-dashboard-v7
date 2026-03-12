@@ -108,8 +108,12 @@ export const useProductionStore = defineStore('production', () => {
     existing: 0,     // Already generated
     missing: 0,      // Still need to generate
     phraseNeeds: 0,  // Phrase audio needs
-    introNeeds: 0    // Introduction audio needs
+    introNeeds: 0,   // Introduction audio needs
+    generationPlan: null  // Phase 8's actual "clips to generate" count (deduped)
   })
+
+  // Tracks whether async link-and-recount is in progress
+  const isLinkingAudio = ref(false)
 
   // Realtime subscription for audio pipeline status
   let statusPollingInterval = null
@@ -320,12 +324,13 @@ export const useProductionStore = defineStore('production', () => {
     // PROGRESSIVE LOADING: Fire all requests but don't block on them
     // Each updates the UI as it completes - fast endpoints show data first
 
-    // 1. Audio stats - FAST (~5ms) - load first for quick stats display
+    // 1. Audio stats - FAST (~5ms) - FK-binding counts for quick display
     fetch(`${baseUrl}/api/production/${courseCode}/audio-stats`, { headers })
       .then(res => res.ok ? res.json() : null)
       .then(stats => {
         if (stats) {
           audioCourseStats.value = {
+            ...audioCourseStats.value,
             total: stats.total || 0,
             existing: stats.existing || 0,
             missing: stats.missing || 0
@@ -850,6 +855,33 @@ export const useProductionStore = defineStore('production', () => {
     }
   }
 
+  // Link unlinked audio and refresh stats — runs in background after initial stats load
+  async function linkAndRecount(courseCode) {
+    isLinkingAudio.value = true
+    try {
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/link-and-recount`, {
+        method: 'POST',
+        headers: getApiHeaders()
+      })
+      if (!response.ok) return null
+      const data = await response.json()
+      if (data.stats) {
+        audioCourseStats.value = {
+          total: data.stats.total || 0,
+          existing: data.stats.existing || 0,
+          missing: data.stats.missing || 0,
+          generationPlan: data.stats.generationPlan || null
+        }
+      }
+      return data
+    } catch {
+      return null
+    } finally {
+      isLinkingAudio.value = false
+    }
+  }
+
   // Update pipeline stats from fresh plan data
   // This syncs the Progress Dashboard with the plan results
   function updatePipelineStats(total, existing, missing) {
@@ -879,6 +911,7 @@ export const useProductionStore = defineStore('production', () => {
     jobStatus,
     costEstimate,
     audioCourseStats,
+    isLinkingAudio,
     isLoading,
     isLoadingInfo,
     isLoadingFlags,
@@ -910,6 +943,7 @@ export const useProductionStore = defineStore('production', () => {
     cancelGeneration,
     retryFailed,
     generatePlan,
+    linkAndRecount,
     updatePipelineStats,
     reset,
     // Recording actions

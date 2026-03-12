@@ -502,6 +502,13 @@
           <div class="flex items-center gap-4 mb-4">
             <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pipeline Status</h2>
             <div class="flex-1 h-px bg-slate-700/50"></div>
+            <span v-if="productionStore.isLinkingAudio" class="text-xs text-teal-400/70 flex items-center gap-1">
+              <svg class="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Linking unlinked audio...
+            </span>
             <button
               @click="refreshAudioStats"
               class="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1"
@@ -830,7 +837,12 @@ const refreshPlanStats = async () => {
     })
     if (response.ok) {
       const data = await response.json()
-      if (data.total !== undefined && data.existing !== undefined) {
+      // Use Phase 8's generation plan (deduped unique clips) when available —
+      // this matches the actual number TTS will generate during active generation
+      const gp = data.generationPlan
+      if (gp && gp.total !== undefined) {
+        productionStore.updatePipelineStats(gp.total, gp.existing, gp.missing || 0)
+      } else if (data.total !== undefined && data.existing !== undefined) {
         productionStore.updatePipelineStats(data.total, data.existing, data.missing || 0)
       }
     }
@@ -947,15 +959,17 @@ onMounted(async () => {
     fetchGenderPrepStatus()
 
     // Stats come from the fast /audio-stats endpoint (via loadCourse).
-    // The slow /audio-pipeline/plan endpoint is only needed for cost/time estimates
-    // and is called on-demand when user clicks "Start Generation".
-    // Mark stats as loaded once the store has audio data (watch below handles it).
+    // Phase 8's generation plan (accurate "to generate" count) comes separately
+    // via refreshPlanStats() below — it's slower (~3s) so it loads in background.
     statsLoaded.value = true
 
     // Fetch pipeline stats in background (for Progress Dashboard)
     refreshPlanStats().then(() => {
       statsLoaded.value = true
     })
+
+    // Link unlinked audio in the background — refines counts after linking
+    productionStore.linkAndRecount(courseCode.value)
 
     // Check for mode=flagged query param (from Script Viewer link)
     if (route.query.mode === 'flagged') {
@@ -999,8 +1013,11 @@ const startGeneration = async () => {
     // First fetch fresh plan to get accurate counts and sync dashboard
     const planData = await productionStore.generatePlan(courseCode.value)
 
-    // Update dashboard stats to match fresh data
-    if (planData.total !== undefined && planData.existing !== undefined) {
+    // Update dashboard stats — prefer Phase 8's generation plan (deduped unique clips)
+    const gp = planData.generationPlan
+    if (gp && gp.total !== undefined) {
+      productionStore.updatePipelineStats(gp.total, gp.existing, gp.missing || 0)
+    } else if (planData.total !== undefined && planData.existing !== undefined) {
       productionStore.updatePipelineStats(planData.total, planData.existing, planData.missing || 0)
     }
 
@@ -1034,9 +1051,11 @@ const showPlan = async () => {
     const data = await productionStore.generatePlan(courseCode.value)
     planResult.value = data
     showingPlan.value = true
-    // Also update the dashboard stats to match the fresh plan data
-    // This ensures the Progress Dashboard shows the same numbers as the plan
-    if (data.total !== undefined && data.existing !== undefined) {
+    // Also update the dashboard stats — prefer Phase 8's generation plan (deduped unique clips)
+    const gp = data.generationPlan
+    if (gp && gp.total !== undefined) {
+      productionStore.updatePipelineStats(gp.total, gp.existing, gp.missing || 0)
+    } else if (data.total !== undefined && data.existing !== undefined) {
       productionStore.updatePipelineStats(data.total, data.existing, data.missing || 0)
     }
   } catch (err: any) {
