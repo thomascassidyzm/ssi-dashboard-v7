@@ -461,9 +461,15 @@ async function linkAudioIdsBatch(courseCode) {
       // Collect updates
       const updates = []
       for (const row of rows) {
-        const norm = row[textCol]?.toLowerCase().trim().replace(/\s+/g, ' ')
+        const norm = normalizeForAudio(row[textCol])
         if (!norm) continue
-        const audioId = audioMap.get(`${norm}|${lang}|${role}`)
+        const key = `${norm}|${lang}|${role}`
+        let audioId = audioMap.get(key)
+        // DB text_normalized may strip ?! while JS normalizeForAudio preserves them — try stripped form
+        if (!audioId) {
+          const stripped = norm.replace(/[!?！？]+$/, '')
+          if (stripped !== norm) audioId = audioMap.get(`${stripped}|${lang}|${role}`)
+        }
         if (audioId) updates.push({ id: row[idCol], audioId })
       }
 
