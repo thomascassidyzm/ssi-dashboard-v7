@@ -1117,8 +1117,8 @@ app.post('/generate/:courseCode', async (req, res) => {
         const uniqueCompTexts = [...new Set(compTextsNorm)]
         const existingCompTexts = new Set()
 
-        for (let i = 0; i < uniqueCompTexts.length; i += 200) {
-          const batch = uniqueCompTexts.slice(i, i + 200)
+        for (let i = 0; i < uniqueCompTexts.length; i += 50) {
+          const batch = uniqueCompTexts.slice(i, i + 50)
           const { data: existing } = await supabase
             .from('course_audio')
             .select('text_normalized')
@@ -2737,15 +2737,22 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       // Link component presentation_audio_id on course_practice_phrases
       // Fetch all presentation audio for this course that match component texts
       const compPresAudioMap = new Map() // text_normalized -> course_audio.id
-      for (let i = 0; i < uniqueCompTexts.length; i += BATCH_SIZE) {
-        const batch = uniqueCompTexts.slice(i, i + BATCH_SIZE)
-        const { data: presAudio } = await supabase
+      // Use small batches — long presentation texts can exceed PostgREST URL limits with .in()
+      const COMP_BATCH = 50
+      for (let i = 0; i < uniqueCompTexts.length; i += COMP_BATCH) {
+        const batch = uniqueCompTexts.slice(i, i + COMP_BATCH)
+        const { data: presAudio, error: presErr } = await supabase
           .from('course_audio')
           .select('id, text_normalized, s3_key')
           .eq('course_code', courseCode)
           .eq('role', 'presentation')
           .eq('language', knownLang)
           .in('text_normalized', batch)
+
+        if (presErr) {
+          logger.error(`Component pres audio lookup error (batch ${i}): ${presErr.message}`)
+          continue
+        }
 
         for (const a of (presAudio || [])) {
           if (!a.s3_key || !a.s3_key.startsWith('pending/')) {
@@ -2755,6 +2762,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       }
 
       // Update presentation_audio_id on matching component phrases
+      logger.info(`Component linking: ${compPresAudioMap.size} mastered audio entries, ${componentPresentations.length} components to link`)
       let compLinked = 0
       for (const cp of componentPresentations) {
         const norm = normalizeForAudio(cp.presentation_text)
