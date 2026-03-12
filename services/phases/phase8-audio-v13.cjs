@@ -395,23 +395,132 @@ app.delete('/cancel/:courseCode', (req, res) => {
 // HELPER: Link audio IDs to phrases/legos/seeds
 // =============================================================================
 async function linkAudioIds(courseCode) {
+  // Try RPC first (single DB round-trip, handles normalization correctly)
   const { data, error } = await supabase.rpc('link_all_audio_ids', {
     p_course_code: courseCode
   })
-  if (error) throw new Error(`link_all_audio_ids RPC failed: ${error.message}`)
 
-  // Also link presentation audio (belt-and-suspenders — uses lego_id FK, not text matching)
+  if (!error) {
+    const presResult = await linkPresentationAudio(courseCode)
+    const result = data || {}
+    result.presentations = presResult.linked || 0
+    const rpcTotal = (result.phrases_known || 0) + (result.phrases_target1 || 0) + (result.phrases_target2 || 0)
+      + (result.legos_known || 0) + (result.legos_target1 || 0) + (result.legos_target2 || 0)
+      + (result.seeds_known || 0) + (result.seeds_target1 || 0) + (result.seeds_target2 || 0)
+    result.total = rpcTotal + (result.presentations || 0)
+    logger.info(`linkAudioIds: linked via RPC for ${courseCode}`, JSON.stringify(result))
+    return result
+  }
+
+  // RPC timed out — fall back to JS batch linking
+  logger.warn(`link_all_audio_ids RPC failed (${error.message}), falling back to JS batch linking`)
+  return await linkAudioIdsBatch(courseCode)
+}
+
+/**
+ * JS fallback for linking audio IDs when the SQL RPC times out on large courses.
+ * Loads the audio map, then batch-updates each table's NULL audio_id columns.
+ * Uses text_normalized from course_audio (written by SQL normalize_text) for matching.
+ */
+async function linkAudioIdsBatch(courseCode) {
+  const result = { total: 0 }
+  const PAGE_SIZE = 1000
+  const BATCH = 200
+
+  // Load audio map: "text_normalized|language|role" → course_audio.id
+  const { data: audioRows, error: audioErr } = await supabase
+    .from('course_audio')
+    .select('id, text_normalized, language, role, s3_key')
+    .eq('course_code', courseCode)
+    .not('s3_key', 'like', 'pending/%')
+    .limit(100000)
+  if (audioErr) throw new Error(`Failed to load course_audio: ${audioErr.message}`)
+
+  const audioMap = new Map()
+  for (const a of (audioRows || [])) {
+    if (a.text_normalized) audioMap.set(`${a.text_normalized}|${a.language}|${a.role}`, a.id)
+  }
+  logger.info(`linkAudioIdsBatch: loaded ${audioMap.size} audio entries for ${courseCode}`)
+
+  // Helper: link one slot on one table
+  async function linkSlot(table, idCol, textCol, audioCol, lang, role) {
+    let linked = 0
+    let offset = 0
+    let more = true
+    while (more) {
+      const { data: rows, error: err } = await supabase
+        .from(table)
+        .select(`${idCol}, ${textCol}`)
+        .eq('course_code', courseCode)
+        .is(audioCol, null)
+        .order(idCol, { ascending: true })
+        .range(offset, offset + PAGE_SIZE - 1)
+      if (err) { logger.error(`linkSlot ${table}.${audioCol}: ${err.message}`); break }
+      if (!rows?.length) break
+
+      // Collect updates
+      const updates = []
+      for (const row of rows) {
+        const norm = row[textCol]?.toLowerCase().trim().replace(/\s+/g, ' ')
+        if (!norm) continue
+        const audioId = audioMap.get(`${norm}|${lang}|${role}`)
+        if (audioId) updates.push({ id: row[idCol], audioId })
+      }
+
+      // Batch update
+      for (let i = 0; i < updates.length; i += BATCH) {
+        const batch = updates.slice(i, i + BATCH)
+        for (const u of batch) {
+          const { error: upErr } = await supabase
+            .from(table)
+            .update({ [audioCol]: u.audioId })
+            .eq('course_code', courseCode)
+            .eq(idCol, u.id)
+          if (!upErr) linked++
+        }
+      }
+
+      more = rows.length === PAGE_SIZE
+      offset += PAGE_SIZE
+    }
+    return linked
+  }
+
+  // Get course languages
+  const { data: course } = await supabase
+    .from('courses')
+    .select('known_lang, target_lang')
+    .eq('course_code', courseCode)
+    .single()
+  if (!course) throw new Error(`Course not found: ${courseCode}`)
+  const { known_lang, target_lang } = course
+
+  // Link all slots across all 3 tables
+  const slots = [
+    ['course_practice_phrases', 'id',      'known_text',  'known_audio_id',   known_lang,  'known'],
+    ['course_practice_phrases', 'id',      'target_text', 'target1_audio_id', target_lang, 'target1'],
+    ['course_practice_phrases', 'id',      'target_text', 'target2_audio_id', target_lang, 'target2'],
+    ['course_legos',            'lego_id', 'known_text',  'known_audio_id',   known_lang,  'known'],
+    ['course_legos',            'lego_id', 'target_text', 'target1_audio_id', target_lang, 'target1'],
+    ['course_seeds',            'id',      'known_text',  'known_audio_id',   known_lang,  'known'],
+    ['course_seeds',            'id',      'target_text', 'target1_audio_id', target_lang, 'target1'],
+    ['course_seeds',            'id',      'target_text', 'target2_audio_id', target_lang, 'target2'],
+  ]
+
+  for (const [table, idCol, textCol, audioCol, lang, role] of slots) {
+    const n = await linkSlot(table, idCol, textCol, audioCol, lang, role)
+    const key = `${table.replace('course_', '')}_${audioCol.replace('_audio_id', '')}`
+    result[key] = n
+    result.total += n
+    if (n > 0) logger.info(`linkAudioIdsBatch: ${key} = ${n}`)
+  }
+
+  // Presentation audio
   const presResult = await linkPresentationAudio(courseCode)
-
-  const result = data || {}
   result.presentations = presResult.linked || 0
-  // Compute total from RPC result fields
-  const rpcTotal = (result.phrases_known || 0) + (result.phrases_target1 || 0) + (result.phrases_target2 || 0)
-    + (result.legos_known || 0) + (result.legos_target1 || 0) + (result.legos_target2 || 0)
-    + (result.seeds_known || 0) + (result.seeds_target1 || 0) + (result.seeds_target2 || 0)
-  result.total = rpcTotal + (result.presentations || 0)
+  result.total += result.presentations
 
-  logger.info(`linkAudioIds: linked via RPC for ${courseCode}`, JSON.stringify(result))
+  logger.info(`linkAudioIdsBatch: total linked = ${result.total} for ${courseCode}`)
   return result
 }
 
