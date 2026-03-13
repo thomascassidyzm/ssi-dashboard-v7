@@ -4,6 +4,7 @@
  *
  * Query params:
  *   ?seed_min=N&seed_max=N — range to review
+ *   ?seeds=4,17,22 — specific seed numbers to review
  */
 
 const { getSupabase, getLanguageName, buildGrammarChecklist } = require('./shared.cjs');
@@ -23,13 +24,15 @@ async function generateFinalPassReviewerBrief(courseCode, query = {}) {
     : null;
   const grammarRules = courseInfo?.quality_rules?.grammar_rules || null;
 
-  const seedMin = parseInt(query.seed_min) || 4;
-  const seedMax = parseInt(query.seed_max) || 300;
+  const specificSeeds = query.seeds ? query.seeds.split(',').map(Number).filter(n => n > 0).sort((a, b) => a - b) : null;
+  const seedMin = specificSeeds ? specificSeeds[0] : (parseInt(query.seed_min) || 4);
+  const seedMax = specificSeeds ? specificSeeds[specificSeeds.length - 1] : (parseInt(query.seed_max) || 300);
+  const scopeLabel = specificSeeds ? `seeds ${specificSeeds.join(', ')}` : `seeds ${seedMin}-${seedMax}`;
 
-  return `# Final Pass Reviewer — ${courseCode} (${langName}) — Seeds ${seedMin}-${seedMax}
+  return `# Final Pass Reviewer — ${courseCode} (${langName}) — ${scopeLabel}
 
 You are a GRAMMAR REVIEWER for **${courseCode}** (${langName}).
-Your job is to check every phrase in seeds ${seedMin}-${seedMax} and **report** grammar errors to the orchestrator.
+Your job is to check every phrase in ${scopeLabel} and **report** grammar errors to the orchestrator.
 
 ## CRITICAL: You Do NOT Delete or Modify Anything
 
@@ -45,8 +48,8 @@ ${buildGrammarChecklist(langName, grammarRules)}
 
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
 
-## Protocol — Work Through Seeds ${seedMin} to ${seedMax}
-
+## Protocol — Work Through ${scopeLabel}
+${specificSeeds ? `\nYou must review these EXACT seeds: ${specificSeeds.join(', ')}\n` : ''}
 ### For each seed:
 
 **Step 1: Fetch all phrases**
@@ -107,7 +110,7 @@ You are running unattended. NEVER ask questions. Work through every seed in your
 When you finish all seeds, send a final message:
 
 \`\`\`
-SendMessage to "orchestrator": "REVIEWER COMPLETE — seeds ${seedMin}-${seedMax} done. X seeds reviewed, Y seeds with issues, Z total issues found"
+SendMessage to "orchestrator": "REVIEWER COMPLETE — ${scopeLabel} done. X seeds reviewed, Y seeds with issues, Z total issues found"
 \`\`\`
 `;
 }

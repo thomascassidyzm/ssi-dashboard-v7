@@ -280,12 +280,20 @@
                 <span v-if="stageComplete('final-pass')" class="stage-badge-complete mr-2">Done</span>
                 <span v-if="stageRunning('final-pass')" class="text-xs text-violet-400 animate-pulse">Running...</span>
                 <button
-                  v-if="!stageRunning('final-pass')"
-                  @click="startFinalPass"
+                  v-if="!stageRunning('final-pass') && seedGridDrafted > 0"
+                  @click="startFinalPass('drafted')"
                   :disabled="finalPassStarting"
                   class="px-3 py-1 bg-violet-600/20 border border-violet-500/50 text-violet-400 hover:border-violet-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
                 >
-                  {{ finalPassStarting ? 'Spawning...' : stageComplete('final-pass') ? 'Re-run Final Pass' : 'Start Final Pass' }}
+                  {{ finalPassStarting ? 'Spawning...' : `Final Pass ${seedGridDrafted} Seeds` }}
+                </button>
+                <button
+                  v-if="!stageRunning('final-pass')"
+                  @click="startFinalPass('all')"
+                  :disabled="finalPassStarting"
+                  class="px-3 py-1 bg-violet-600/10 border border-violet-500/30 text-violet-400/70 hover:border-violet-400/50 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >
+                  {{ finalPassStarting ? 'Spawning...' : stageComplete('final-pass') ? 'Re-run Final Pass' : 'Full Final Pass' }}
                 </button>
                 <button
                   v-if="seedGridDrafted > 0"
@@ -994,14 +1002,26 @@ async function startBuildTeam() {
   }
 }
 
-async function startFinalPass() {
+async function startFinalPass(mode = 'all') {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
 
   finalPassStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/final-pass/${courseCode}`, {
+    let url = `${apiBase}/api/build/final-pass/${courseCode}`
+
+    // If targeting drafted seeds only, pass their seed numbers
+    if (mode === 'drafted') {
+      const draftedSeeds = seedGrid.value
+        .filter(s => s.status === 'drafted')
+        .map(s => s.seed)
+      if (draftedSeeds.length > 0) {
+        url += `?seeds=${draftedSeeds.join(',')}`
+      }
+    }
+
+    const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })

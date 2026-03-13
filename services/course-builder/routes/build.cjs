@@ -440,8 +440,15 @@ module.exports = function (ctx) {
         .eq('course_code', courseCode).eq('pass', 'final-pass').in('status', ['running']).maybeSingle();
       if (activeJob) return res.status(409).json({ error: 'Final Pass already running' });
 
-      const agents = req.query.agents || '6';
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass-orchestrator?agents=${agents}`);
+      const seeds = req.query.seeds || null; // comma-separated seed numbers, or null for all
+      const seedList = seeds ? seeds.split(',').map(Number).filter(n => n > 0) : null;
+      const agents = req.query.agents || (seedList && seedList.length <= 20 ? Math.min(seedList.length, 3) : 6);
+
+      // Build query params for brief
+      const briefParams = new URLSearchParams({ agents: String(agents) });
+      if (seedList) briefParams.set('seeds', seeds);
+
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass-orchestrator?${briefParams}`);
       if (!briefResp.ok) throw new Error(`Failed to fetch final-pass-orchestrator brief: ${briefResp.status}`);
       const brief = await briefResp.text();
 
@@ -450,15 +457,16 @@ module.exports = function (ctx) {
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+      const totalSeeds = seedList ? seedList.length : 300;
 
       const { data: jobData } = await ctx.supabase
         .from('build_jobs')
         .insert({
           course_code: courseCode, pass: 'final-pass', status: 'running',
-          current_seed: 0, seeds_completed: 0, total_seeds: 300,
+          current_seed: 0, seeds_completed: 0, total_seeds: totalSeeds,
           started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
           requested_by: 'dashboard', terminal: effectiveTerminal,
-          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'final-pass'
+          agent_count: parseInt(agents), respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'final-pass'
         })
         .select('id').single();
 
