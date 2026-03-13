@@ -23,7 +23,7 @@ const { applyRegenerationVariation } = require('./azure-tts-service.cjs');
  * @param {number} config.stability - Voice stability (0-1)
  * @param {number} config.similarityBoost - Similarity boost (0-1)
  * @param {number} config.speed - Speech speed multiplier (0.25-4.0)
- * @returns {Promise<{audioBuffer: Buffer, visemes: Array|null}>} Audio data + viseme keyframes
+ * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
 async function generateElevenLabs(text, config) {
   const {
@@ -69,7 +69,7 @@ async function generateElevenLabs(text, config) {
   }
 
   const arrayBuffer = await response.arrayBuffer();
-  return { audioBuffer: Buffer.from(arrayBuffer), visemes: null };
+  return { audioBuffer: Buffer.from(arrayBuffer), wordBoundaries: null };
 }
 
 /**
@@ -81,7 +81,7 @@ async function generateElevenLabs(text, config) {
  * @param {string} config.voiceName - Voice name (e.g., 'it-IT-IsabellaNeural')
  * @param {number} config.speed - Speech speed multiplier (0.5-2.0)
  * @param {number} config.regenerationAttempt - For flagged regeneration (0 = original)
- * @returns {Promise<{audioBuffer: Buffer, visemes: Array|null}>} Audio data + viseme keyframes
+ * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
 async function generateAzure(text, config) {
   const {
@@ -113,11 +113,15 @@ async function generateAzure(text, config) {
 
     const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null);
 
-    // Capture viseme events — SDK auto-enables viseme data when handler exists
-    const visemes = [];
-    synthesizer.visemeReceived = (_, e) => {
+    // Capture word boundary events for component audio splicing
+    const wordBoundaries = [];
+    synthesizer.wordBoundary = (_, e) => {
       // audioOffset is in 100ns ticks; convert to milliseconds
-      visemes.push([Math.round(e.audioOffset / 10000), e.visemeId]);
+      wordBoundaries.push({
+        text: e.text,
+        offset: Math.round(e.audioOffset / 10000),
+        duration: Math.round(e.duration / 10000)
+      });
     };
 
     // Build SSML with voice and rate settings
@@ -140,7 +144,7 @@ async function generateAzure(text, config) {
         synthesizer.close();
 
         if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-          resolve({ audioBuffer: Buffer.from(result.audioData), visemes });
+          resolve({ audioBuffer: Buffer.from(result.audioData), wordBoundaries });
         } else {
           reject(new Error(`Azure TTS failed: ${result.errorDetails}`));
         }
@@ -170,7 +174,7 @@ function escapeXml(text) {
  * @param {string} text - Text to synthesize
  * @param {string} provider - TTS provider ('elevenlabs' or 'azure')
  * @param {object} config - Provider-specific configuration
- * @returns {Promise<{audioBuffer: Buffer, visemes: Array|null}>} Audio data + viseme keyframes
+ * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
 async function generate(text, provider, config) {
   if (!text || text.trim() === '') {
@@ -195,7 +199,7 @@ async function generate(text, provider, config) {
  * @param {string} provider - TTS provider
  * @param {object} config - Provider configuration
  * @param {number} maxRetries - Maximum retry attempts
- * @returns {Promise<{audioBuffer: Buffer, visemes: Array|null}>} Audio data + viseme keyframes
+ * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
 async function generateWithRetry(text, provider, config, maxRetries = 3) {
   let lastError = null;

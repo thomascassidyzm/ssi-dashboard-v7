@@ -1466,7 +1466,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       try {
         const { data: siblingAudio } = await supabase
           .from('course_audio')
-          .select('s3_key, duration_ms, viseme_data')
+          .select('s3_key, duration_ms, word_boundaries')
           .neq('course_code', courseCode)
           .eq('text_normalized', normalizeForAudio(item.text))
           .eq('language', item.language)
@@ -1491,7 +1491,7 @@ app.post('/generate/:courseCode', async (req, res) => {
               s3_key: siblingAudio.s3_key,
               duration_ms: siblingAudio.duration_ms,
               lego_id: item.lego_id || null,
-              viseme_data: siblingAudio.viseme_data || null
+              word_boundaries: siblingAudio.word_boundaries || null
             }, {
               onConflict: 'course_code,text_normalized,language,role'
             })
@@ -1545,16 +1545,16 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
 
       // Generate TTS audio using gender-expanded text
-      let rawAudioBuffer, visemes
+      let rawAudioBuffer, wordBoundaries
       if (provider === 'azure') {
-        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceName,
           speed
         }))
       } else if (provider === 'elevenlabs') {
-        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceName,
           speed
@@ -1594,7 +1594,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           s3_key: s3Key,
           duration_ms: durationMs,
           lego_id: item.lego_id || null,
-          viseme_data: visemes || null
+          word_boundaries: wordBoundaries || null
         }, {
           onConflict: 'course_code,text_normalized,language,role'
         })
@@ -1915,9 +1915,9 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       }
 
       // Generate TTS audio using provider from voice config
-      let rawAudioBuffer, visemes
+      let rawAudioBuffer, wordBoundaries
       if (voiceProvider === 'azure') {
-        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
@@ -1925,7 +1925,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           regenerationAttempt  // Pass to TTS for variation
         }))
       } else if (voiceProvider === 'elevenlabs') {
-        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
@@ -1957,7 +1957,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           origin: 'tts',
           s3_key: s3Key,
           duration_ms: durationMs,
-          viseme_data: visemes || null
+          word_boundaries: wordBoundaries || null
         })
         .eq('id', item.id)
 
@@ -2995,9 +2995,9 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     // 5. TTS generate
     logger.info(`[Regen Single] "${text.substring(0, 40)}..." role=${role} voice=${voiceId} attempt=${regenCount}`)
 
-    let rawAudioBuffer, visemes
+    let rawAudioBuffer, wordBoundaries
     if (voiceProvider === 'azure') {
-      ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
         subscriptionKey: process.env.AZURE_SPEECH_KEY,
         region: process.env.AZURE_SPEECH_REGION || 'westeurope',
         voiceName: voiceId,
@@ -3005,7 +3005,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         regenerationAttempt: regenCount
       }))
     } else if (voiceProvider === 'elevenlabs') {
-      ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
         apiKey: process.env.ELEVENLABS_API_KEY,
         voiceId: voiceId,
         speed
@@ -3036,7 +3036,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         origin: 'tts',
         s3_key: newS3Key,
         duration_ms: durationMs,
-        viseme_data: visemes || null
+        word_boundaries: wordBoundaries || null
       })
       .eq('id', audioUuid)
 
@@ -3323,7 +3323,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       try {
         const { data: siblingAudio } = await supabase
           .from('course_audio')
-          .select('s3_key, duration_ms, viseme_data')
+          .select('s3_key, duration_ms, word_boundaries')
           .neq('course_code', courseCode)
           .eq('text_normalized', normalizeForAudio(item.text))
           .eq('language', item.language)
@@ -3346,7 +3346,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
               origin: 'tts',
               s3_key: siblingAudio.s3_key,
               duration_ms: siblingAudio.duration_ms,
-              viseme_data: siblingAudio.viseme_data || null
+              word_boundaries: siblingAudio.word_boundaries || null
             }, {
               onConflict: 'course_code,text_normalized,language,role'
             })
@@ -3378,15 +3378,15 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         if (markerResult.wasModified) textForTTS = markerResult.expandedText
       }
 
-      let rawAudioBuffer, visemes
+      let rawAudioBuffer, wordBoundaries
       if (provider === 'azure') {
-        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName, speed
         }))
       } else if (provider === 'elevenlabs') {
-        ({ audioBuffer: rawAudioBuffer, visemes } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceName, speed
         }))
@@ -3418,7 +3418,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
           origin: 'tts',
           s3_key: s3Key,
           duration_ms: durationMs,
-          viseme_data: visemes || null
+          word_boundaries: wordBoundaries || null
         }, {
           onConflict: 'course_code,text_normalized,language,role'
         })
