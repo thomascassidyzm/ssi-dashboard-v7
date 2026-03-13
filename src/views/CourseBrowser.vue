@@ -31,6 +31,12 @@
         />
       </div>
 
+      <!-- Stats loading indicator -->
+      <div v-if="loadingStats" class="mb-4 flex items-center gap-2 text-sm text-slate-500">
+        <div class="w-3 h-3 border-2 border-slate-500 border-t-emerald-400 rounded-full animate-spin"></div>
+        Loading course stats...
+      </div>
+
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
         <div class="text-slate-400">Loading courses...</div>
@@ -85,7 +91,7 @@
                 </span>
               </div>
               <p class="text-sm text-slate-400">
-                {{ getFullCourseName(course.course_code) }}
+                {{ course.display_name || getFullCourseName(course.course_code) }}
               </p>
             </div>
             <span
@@ -141,13 +147,14 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
-import api from '../services/api'
+import api, { getApiUrl } from '../services/api'
 import { useCourses } from '../composables/useCourses'
 
 const toast = useToast()
-const { getCourseName } = useCourses()
+const { getCourseName, courseDisplayNames } = useCourses()
 const courses = ref([])
 const loading = ref(true)
+const loadingStats = ref(false)
 const error = ref(null)
 const searchQuery = ref('')
 const highlightedCourses = ref(new Set()) // Courses to highlight as new/updated
@@ -185,14 +192,68 @@ async function loadCourses() {
   error.value = null
 
   try {
-    // In production, this would call the API
-    // For now, we'll load from the local VFS structure
-    const response = await api.course.list()
-    courses.value = response.courses || []
+    const baseUrl = getApiUrl()
+
+    // Phase 1: Load course metadata only (fast — no stats query)
+    const res = await fetch(`${baseUrl}/api/courses`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
+    const data = await res.json()
+    courses.value = data.courses || []
+    // Populate display name cache so getCourseName() works everywhere
+    for (const c of courses.value) {
+      if (c.display_name && c.course_code) courseDisplayNames[c.course_code] = c.display_name
+    }
+    loading.value = false
+
+    // Phase 2: Load stats per-course in background (trickle in)
+    loadingStats.value = true
+    const codes = courses.value.map(c => c.course_code)
+    let pending = codes.length
+    const concurrency = 6
+
+    async function fetchStats(code) {
+      try {
+        const res = await fetch(`${baseUrl}/api/courses/${code}/stats`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' }
+        })
+        if (res.ok) {
+          const { stats: courseStats } = await res.json()
+          // Update the single course reactively
+          const idx = courses.value.findIndex(c => c.course_code === code)
+          if (idx !== -1) {
+            courses.value[idx] = {
+              ...courses.value[idx],
+              seed_pairs: courseStats.completedSeeds || 0,
+              lego_pairs: courseStats.legos || 0,
+              phrases: courseStats.phrases || 0,
+              audio_count: courseStats.audio || 0,
+              stats: { ...courses.value[idx].stats, ...courseStats }
+            }
+          }
+        }
+      } catch {
+        // Individual failure is fine — stats just stay at 0
+      } finally {
+        pending--
+        if (pending <= 0) loadingStats.value = false
+      }
+    }
+
+    // Run with concurrency limit
+    const queue = [...codes]
+    async function worker() {
+      while (queue.length > 0) {
+        const code = queue.shift()
+        if (code) await fetchStats(code)
+      }
+    }
+    // Fire workers without awaiting — they run in background
+    for (let i = 0; i < concurrency; i++) worker()
   } catch (err) {
     error.value = err.message || 'Failed to load courses'
     console.error('Failed to load courses:', err)
-  } finally {
     loading.value = false
   }
 }

@@ -998,55 +998,25 @@ async function bulkUpdateFlagStatus(uuids, courseCode, status, notes = '') {
 async function getCourseContentStats(courseCode) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  const stats = { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
+  const [seedsResult, completedSeedsResult, legosResult, phrasesResult, introsResult, audioResult] = await Promise.all([
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode).neq('target_text', ''),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('lego_introductions').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_audio').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+  ])
 
-  // Count total seeds (all rows in course_seeds)
-  const { count: seedCount } = await supabase
-    .from('course_seeds')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-  stats.seeds = seedCount || 0
-
-  // Count completed seeds (those with non-empty target_text)
-  const { count: completedSeedCount } = await supabase
-    .from('course_seeds')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .neq('target_text', '')
-  stats.completedSeeds = completedSeedCount || 0
-
-  // Count legos
-  const { count: legoCount } = await supabase
-    .from('course_legos')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-  stats.legos = legoCount || 0
-
-  // Baskets = same as legos (1 basket per lego)
-  stats.baskets = legoCount || 0
-
-  // Count practice phrases
-  const { count: phraseCount } = await supabase
-    .from('course_practice_phrases')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-  stats.phrases = phraseCount || 0
-
-  // Count introductions
-  const { count: introCount } = await supabase
-    .from('lego_introductions')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-  stats.introductions = introCount || 0
-
-  // Count course audio
-  const { count: audioCount } = await supabase
-    .from('course_audio')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-  stats.audio = audioCount || 0
-
-  return stats
+  const legos = legosResult.count || 0
+  return {
+    seeds: seedsResult.count || 0,
+    completedSeeds: completedSeedsResult.count || 0,
+    legos,
+    baskets: legos,
+    phrases: phrasesResult.count || 0,
+    introductions: introsResult.count || 0,
+    audio: audioResult.count || 0
+  }
 }
 
 /**

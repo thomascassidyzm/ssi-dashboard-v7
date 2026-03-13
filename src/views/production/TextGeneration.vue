@@ -275,9 +275,9 @@
               >
                 {{ redoingFlagged ? 'Spawning...' : `Redo ${seedGridFlagged} Flagged` }}
               </button>
-              <span v-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
+              <span v-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
               <template v-else>
+                <span v-if="stageComplete('final-pass')" class="stage-badge-complete mr-2">Done</span>
                 <span v-if="stageRunning('final-pass')" class="text-xs text-violet-400 animate-pulse">Running...</span>
                 <button
                   v-if="!stageRunning('final-pass')"
@@ -285,7 +285,7 @@
                   :disabled="finalPassStarting"
                   class="px-3 py-1 bg-violet-600/20 border border-violet-500/50 text-violet-400 hover:border-violet-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
                 >
-                  {{ finalPassStarting ? 'Spawning...' : 'Start Final Pass' }}
+                  {{ finalPassStarting ? 'Spawning...' : stageComplete('final-pass') ? 'Re-run Final Pass' : 'Start Final Pass' }}
                 </button>
                 <button
                   v-if="seedGridDrafted > 0"

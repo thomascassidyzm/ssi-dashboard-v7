@@ -4,11 +4,15 @@ import { getApiUrl } from '../services/api'
 
 // Hardcoded fallback for immediate use before API responds
 const fallbackNames = {
-  'eng': 'English', 'spa': 'Spanish', 'fra': 'French', 'deu': 'German',
+  'eng': 'English', 'spa': 'Spanish (Spain)', 'fra': 'French', 'deu': 'German',
   'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'pol': 'Polish',
   'rus': 'Russian', 'cym': 'Welsh', 'gle': 'Irish', 'gla': 'Scottish Gaelic',
   'zho': 'Chinese', 'cmn': 'Mandarin', 'jpn': 'Japanese', 'kor': 'Korean',
-  'ara': 'Arabic', 'hin': 'Hindi', 'tur': 'Turkish', 'swa': 'Swahili'
+  'ara': 'Arabic', 'hin': 'Hindi', 'tur': 'Turkish', 'swa': 'Swahili',
+  // Dialect variants
+  'por_br': 'Portuguese (Brazil)', 'spa_mx': 'Spanish (Mexico)',
+  'ara_eg': 'Arabic (Egypt)', 'ara_sy': 'Arabic (Syria)',
+  'deu_at': 'German (Austria)'
 }
 
 // Live language name map — starts with fallback, enriched from API
@@ -37,11 +41,18 @@ async function loadLanguageNames() {
 // Fire immediately (non-blocking)
 loadLanguageNames()
 
+// Cache of course_code → display_name from the database
+// Populated when courses are loaded, used as authoritative source
+const courseDisplayNames = {}
+
 function getCourseName(code) {
   if (!code || !code.includes('_for_')) return code
+  // Prefer display_name from database (handles cym_anthem, cym_n, etc.)
+  if (courseDisplayNames[code]) return courseDisplayNames[code]
   const [targetPart, knownPart] = code.split('_for_')
-  const target = targetPart.split('_')[0] // strip dialect: spa_mx → spa
-  const targetName = languageNames[target] || target.toUpperCase()
+  // Try full dialect code first (por_br, spa_mx), then base code (por, spa)
+  const targetBase = targetPart.split('_')[0]
+  const targetName = languageNames[targetPart] || languageNames[targetBase] || targetPart.toUpperCase()
   const knownName = languageNames[knownPart] || knownPart.toUpperCase()
   return `${targetName} for ${knownName} Speakers`
 }
@@ -57,8 +68,21 @@ async function loadCourses(force = false) {
   try {
     // Ensure language names are loaded before mapping course names
     await loadLanguageNames()
-    const response = await api.course.list()
-    const courseList = response.courses || []
+
+    // Fast path: fetch course metadata only (no stats — those load in background)
+    const baseUrl = getApiUrl()
+    const res = await fetch(`${baseUrl}/api/courses`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
+    const data = await res.json()
+    const courseList = data.courses || []
+
+    // Populate display name cache for getCourseName() lookups
+    for (const c of courseList) {
+      const code = c.code || c.course_code || c.id
+      if (c.display_name && code) courseDisplayNames[code] = c.display_name
+    }
     courses.value = courseList.map(c => ({
       code: c.code || c.course_code || c.id,
       name: c.display_name || getCourseName(c.code || c.course_code || c.id),
@@ -96,6 +120,7 @@ export function useCourses() {
     courseCount,
     inProductionCount,
     getCourseName,
-    languageNames
+    languageNames,
+    courseDisplayNames
   }
 }

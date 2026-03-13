@@ -387,6 +387,7 @@ app.get('/api/production/schema/validate', async (req, res) => {
 
 // List all courses (simplified endpoint for frontend)
 // Replaces orchestrator's /api/courses endpoint
+// Returns course metadata immediately; stats loaded separately via /api/courses/stats
 app.get('/api/courses', async (req, res) => {
   try {
     if (!supabaseClient.isInitialized()) {
@@ -394,7 +395,6 @@ app.get('/api/courses', async (req, res) => {
     }
 
     const courses = await supabaseClient.getCourses()
-    const stats = await supabaseClient.getAllCourseContentStats()
 
     // Helper to compute days since beta started
     function computeBetaDays(betaStartedAt) {
@@ -403,6 +403,12 @@ app.get('/api/courses', async (req, res) => {
       const now = new Date()
       const diffMs = now - start
       return Math.floor(diffMs / (1000 * 60 * 60 * 24))
+    }
+
+    // If ?stats=true, include stats (legacy behaviour, slower)
+    let stats = {}
+    if (req.query.stats === 'true') {
+      stats = await supabaseClient.getAllCourseContentStats()
     }
 
     // Merge course info with stats and platform status
@@ -422,13 +428,27 @@ app.get('/api/courses', async (req, res) => {
       legacy_app_beta_days: computeBetaDays(c.legacy_app_beta_started_at),
       content_status: c.content_status || 'empty',
       export_ready: c.export_ready || false,
-      stats: stats[c.course_code] || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0 }
+      stats: stats[c.course_code] || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
     }))
 
-    logger.info(`Returning ${result.length} courses from database`)
+    logger.info(`Returning ${result.length} courses from database${req.query.stats === 'true' ? ' (with stats)' : ''}`)
     res.json({ courses: result })
   } catch (err) {
     logger.error('Failed to get courses:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// Course content stats — per-course endpoint for progressive loading
+app.get('/api/courses/:courseCode/stats', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const stats = await supabaseClient.getCourseContentStats(req.params.courseCode)
+    res.json({ course_code: req.params.courseCode, stats })
+  } catch (err) {
+    logger.error(`Failed to get stats for ${req.params.courseCode}:`, err)
     res.status(500).json({ error: err.message })
   }
 })
