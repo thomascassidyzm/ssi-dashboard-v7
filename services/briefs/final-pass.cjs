@@ -33,7 +33,7 @@ async function generateFinalPassBrief(courseCode, query = {}) {
 
   const seedMin = parseInt(query.seed_min) || 4; // Skip seeds 1-3 (golden, hand-verified, limited vocab confuses agent)
   const seedMax = parseInt(query.seed_max) || 300;
-  const strategy = query.strategy || 'adaptive';
+  const strategy = query.strategy || 'full';
 
   const { count: phraseCount } = await supabase
     .from('course_practice_phrases')
