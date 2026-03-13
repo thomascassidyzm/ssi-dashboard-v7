@@ -78,9 +78,10 @@
           @mouseenter="activeCourse = course.code"
           @mouseleave="activeCourse = null"
         >
-          <!-- Course code -->
+          <!-- Course code + name -->
           <span class="cell cell-course">
             <span class="course-code-label">{{ course.code }}</span>
+            <span class="course-name-label">{{ getFullCourseName(course.code) }}</span>
           </span>
 
           <!-- Seeds count + pipeline journey -->
@@ -183,6 +184,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useCourses } from '../composables/useCourses'
 
 const props = defineProps({
   courses: {
@@ -197,6 +199,7 @@ const props = defineProps({
 
 const emit = defineEmits(['action', 'updateLegacyStatus', 'updateNewAppStatus', 'deployToProduction'])
 const router = useRouter()
+const { getCourseName } = useCourses()
 
 const searchQuery = ref('')
 const searchFocused = ref(false)
@@ -236,36 +239,8 @@ function showToast(message) {
   setTimeout(() => { toastVisible.value = false }, 2500)
 }
 
-// Language names
-const languageNames = {
-  eng: 'English', spa: 'Spanish', fra: 'French', deu: 'German',
-  ita: 'Italian', por: 'Portuguese', nld: 'Dutch', pol: 'Polish',
-  rus: 'Russian', ukr: 'Ukrainian', ces: 'Czech', slk: 'Slovak',
-  hun: 'Hungarian', ron: 'Romanian', bul: 'Bulgarian', hrv: 'Croatian',
-  srp: 'Serbian', slv: 'Slovenian', ell: 'Greek', tur: 'Turkish',
-  swe: 'Swedish', nor: 'Norwegian', dan: 'Danish', fin: 'Finnish',
-  cym: 'Welsh', gle: 'Irish', gla: 'Scottish Gaelic', bre: 'Breton',
-  zho: 'Chinese', cmn: 'Mandarin', yue: 'Cantonese',
-  jpn: 'Japanese', kor: 'Korean', vie: 'Vietnamese',
-  tha: 'Thai', ind: 'Indonesian', msa: 'Malay', tgl: 'Tagalog',
-  hin: 'Hindi', ben: 'Bengali', tam: 'Tamil', tel: 'Telugu',
-  ara: 'Arabic', heb: 'Hebrew', fas: 'Persian', urd: 'Urdu',
-  swa: 'Swahili', zul: 'Zulu', xho: 'Xhosa', afr: 'Afrikaans',
-  cat: 'Catalan', eus: 'Basque', lat: 'Latin', epo: 'Esperanto'
-}
-
-function getTargetLanguage(code) {
-  const target = code?.split('_for_')[0]?.split('_')[0]
-  return languageNames[target] || target?.toUpperCase() || '?'
-}
-
-function getKnownLanguage(code) {
-  const known = code?.split('_for_')[1]
-  return languageNames[known] || known?.toUpperCase() || '?'
-}
-
 function getFullCourseName(code) {
-  return `${getTargetLanguage(code)} for ${getKnownLanguage(code)}`
+  return getCourseName(code)
 }
 
 function getCompletedSeeds(course) {
@@ -484,7 +459,7 @@ function cycleNewAppStatus(course) {
   if (!statusCycle.includes(current)) current = 'not_available'
   const nextIndex = (statusCycle.indexOf(current) + 1) % statusCycle.length
   const next = statusCycle[nextIndex]
-  showToast(`New App: ${getTargetLanguage(course.code)} → ${next === 'not_available' ? 'removed' : next}`)
+  showToast(`New App: ${getFullCourseName(course.code)} → ${next === 'not_available' ? 'removed' : next}`)
   emit('updateNewAppStatus', { courseCode: course.code, status: next })
 }
 
@@ -493,7 +468,7 @@ function cycleLegacyStatus(course) {
   if (!statusCycle.includes(current)) current = 'not_available'
   const nextIndex = (statusCycle.indexOf(current) + 1) % statusCycle.length
   const next = statusCycle[nextIndex]
-  showToast(`Legacy App: ${getTargetLanguage(course.code)} → ${next === 'not_available' ? 'removed' : next}`)
+  showToast(`Legacy App: ${getFullCourseName(course.code)} → ${next === 'not_available' ? 'removed' : next}`)
   emit('updateLegacyStatus', { courseCode: course.code, status: next })
 }
 </script>
@@ -745,17 +720,26 @@ function cycleLegacyStatus(course) {
   justify-content: flex-end;
 }
 
-/* Course code */
+/* Course code + name */
 .cell-course {
   padding-right: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
 }
 
 .course-code-label {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-tungsten, #ffa630);
   letter-spacing: 0.01em;
+}
+
+.course-name-label {
+  font-size: 0.75rem;
+  color: var(--color-paper-dim, #c1c1bb);
+  line-height: 1.2;
 }
 
 /* Seeds + progress bar — inline single row */

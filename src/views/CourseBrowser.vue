@@ -142,26 +142,10 @@
 import { ref, computed, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import api from '../services/api'
+import { useCourses } from '../composables/useCourses'
 
 const toast = useToast()
-
-// Language name mapping for search
-const languageNames = {
-  'eng': 'English',
-  'spa': 'Spanish',
-  'fra': 'French',
-  'cmn': 'Chinese',
-  'gle': 'Irish',
-  'cym': 'Welsh',
-  'ita': 'Italian',
-  'deu': 'German',
-  'por': 'Portuguese',
-  'jpn': 'Japanese',
-  'kor': 'Korean',
-  'ara': 'Arabic',
-  'rus': 'Russian',
-  'tur': 'Turkish'
-}
+const { getCourseName } = useCourses()
 const courses = ref([])
 const loading = ref(true)
 const error = ref(null)
@@ -179,11 +163,7 @@ const filteredCourses = computed(() => {
     if (course.course_code.toLowerCase().includes(query)) return true
 
     // Search by full language names (e.g., "French for English")
-    const [targetPart, knownPart] = course.course_code.split('_for_')
-    const target = targetPart.split('_')[0]
-    const targetName = languageNames[target] || target
-    const knownName = languageNames[knownPart] || knownPart
-    const fullName = `${targetName} for ${knownName} speakers`.toLowerCase()
+    const fullName = getCourseName(course.course_code).toLowerCase()
     if (fullName.includes(query)) return true
 
     // Search by phase (e.g., "Phase 5")
@@ -224,16 +204,7 @@ function formatCourseCode(code) {
 }
 
 function getFullCourseName(courseCode) {
-  // Handle xxx_for_yyy format (e.g., spa_for_eng)
-  if (courseCode.includes('_for_')) {
-    const [targetPart, knownPart] = courseCode.split('_for_')
-    const target = targetPart.split('_')[0]
-    const targetName = languageNames[target] || target?.toUpperCase() || 'Unknown'
-    const knownName = languageNames[knownPart] || knownPart?.toUpperCase() || 'Unknown'
-    return `${targetName} for ${knownName} speakers`
-  }
-  // Handle other formats (e.g., en-es, en-cy-north) - just return the code
-  return courseCode
+  return getCourseName(courseCode)
 }
 
 function formatStatus(status) {

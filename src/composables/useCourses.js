@@ -1,30 +1,41 @@
 import { ref, computed } from 'vue'
 import api from '../services/api'
+import { getApiUrl } from '../services/api'
 
-// Language name mapping (ISO 639-3 codes) — single source of truth
-const languageNames = {
-  // Major European languages
+// Hardcoded fallback for immediate use before API responds
+const fallbackNames = {
   'eng': 'English', 'spa': 'Spanish', 'fra': 'French', 'deu': 'German',
   'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'pol': 'Polish',
-  'rus': 'Russian', 'ukr': 'Ukrainian', 'ces': 'Czech', 'slk': 'Slovak',
-  'hun': 'Hungarian', 'ron': 'Romanian', 'bul': 'Bulgarian', 'hrv': 'Croatian',
-  'srp': 'Serbian', 'slv': 'Slovenian', 'ell': 'Greek', 'tur': 'Turkish',
-  'swe': 'Swedish', 'nor': 'Norwegian', 'dan': 'Danish', 'fin': 'Finnish',
-  // Celtic languages
-  'cym': 'Welsh', 'gle': 'Irish', 'gla': 'Scottish Gaelic', 'glv': 'Manx',
-  'cor': 'Cornish', 'bre': 'Breton',
-  // Asian languages
-  'zho': 'Chinese', 'cmn': 'Mandarin', 'yue': 'Cantonese',
-  'jpn': 'Japanese', 'kor': 'Korean', 'vie': 'Vietnamese',
-  'tha': 'Thai', 'ind': 'Indonesian', 'msa': 'Malay', 'tgl': 'Tagalog',
-  'hin': 'Hindi', 'ben': 'Bengali', 'tam': 'Tamil', 'tel': 'Telugu',
-  // Middle Eastern languages
-  'ara': 'Arabic', 'heb': 'Hebrew', 'fas': 'Persian', 'urd': 'Urdu',
-  // African languages
-  'swa': 'Swahili', 'zul': 'Zulu', 'xho': 'Xhosa', 'afr': 'Afrikaans',
-  // Other languages
-  'cat': 'Catalan', 'eus': 'Basque', 'lat': 'Latin', 'epo': 'Esperanto'
+  'rus': 'Russian', 'cym': 'Welsh', 'gle': 'Irish', 'gla': 'Scottish Gaelic',
+  'zho': 'Chinese', 'cmn': 'Mandarin', 'jpn': 'Japanese', 'kor': 'Korean',
+  'ara': 'Arabic', 'hin': 'Hindi', 'tur': 'Turkish', 'swa': 'Swahili'
 }
+
+// Live language name map — starts with fallback, enriched from API
+const languageNames = { ...fallbackNames }
+let languagesLoaded = false
+
+// Fetch full language name map from backend (CSV-backed, all ISO 639 codes)
+async function loadLanguageNames() {
+  if (languagesLoaded) return
+  try {
+    const baseUrl = getApiUrl()
+    const res = await fetch(`${baseUrl}/api/languages?format=legacy`)
+    if (!res.ok) return
+    const languages = await res.json()
+    for (const lang of languages) {
+      if (lang.code && lang.name) {
+        languageNames[lang.code] = lang.name
+      }
+    }
+    languagesLoaded = true
+  } catch {
+    // Fallback map is already populated — no-op
+  }
+}
+
+// Fire immediately (non-blocking)
+loadLanguageNames()
 
 function getCourseName(code) {
   if (!code || !code.includes('_for_')) return code
@@ -44,6 +55,8 @@ async function loadCourses(force = false) {
   if (loaded && !force) return
   loading.value = true
   try {
+    // Ensure language names are loaded before mapping course names
+    await loadLanguageNames()
     const response = await api.course.list()
     const courseList = response.courses || []
     courses.value = courseList.map(c => ({
