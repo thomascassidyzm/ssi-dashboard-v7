@@ -440,8 +440,9 @@ module.exports = function (ctx) {
         .eq('course_code', courseCode).eq('pass', 'final-pass').in('status', ['running']).maybeSingle();
       if (activeJob) return res.status(409).json({ error: 'Final Pass already running' });
 
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass`);
-      if (!briefResp.ok) throw new Error(`Failed to fetch final-pass brief: ${briefResp.status}`);
+      const agents = req.query.agents || '6';
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass-orchestrator?agents=${agents}`);
+      if (!briefResp.ok) throw new Error(`Failed to fetch final-pass-orchestrator brief: ${briefResp.status}`);
       const brief = await briefResp.text();
 
       const tmpFile = `/tmp/final-pass_${courseCode}_${Date.now()}.md`;

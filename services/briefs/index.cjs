@@ -28,6 +28,8 @@ const generateBuildTeamOrchestratorBrief = require('./build-team-orchestrator.cj
 
 // Stage 4: Final pass
 const generateFinalPassBrief = require('./final-pass.cjs');
+const generateFinalPassOrchestratorBrief = require('./final-pass-orchestrator.cjs');
+const generateFinalPassReviewerBrief = require('./final-pass-reviewer.cjs');
 
 // Redo: targeted seed rebuild
 const generateRedoBrief = require('./redo.cjs');
@@ -57,6 +59,8 @@ router.get('/:courseCode/build-team-orchestrator', (req, res) => serveBrief(res,
 
 // Stage 4
 router.get('/:courseCode/final-pass', (req, res) => serveBrief(res, generateFinalPassBrief, req.params.courseCode, req.query));
+router.get('/:courseCode/final-pass-orchestrator', (req, res) => serveBrief(res, generateFinalPassOrchestratorBrief, req.params.courseCode, req.query));
+router.get('/:courseCode/final-pass-reviewer', (req, res) => serveBrief(res, generateFinalPassReviewerBrief, req.params.courseCode, req.query));
 
 // Redo
 router.get('/:courseCode/redo', (req, res) => serveBrief(res, generateRedoBrief, req.params.courseCode, req.query));
