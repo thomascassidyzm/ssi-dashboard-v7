@@ -41,18 +41,21 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
 
     return agent;
   } else {
-    const escapedCmd = cmd.replace(/"/g, '\\"');
+    // Write command to a temp shell script to avoid osascript escaping issues
+    const scriptFile = `/tmp/spawn_${courseCode}_${Date.now()}.sh`;
+    fs.writeFileSync(scriptFile, `#!/bin/bash\n${cmd}\n`, { mode: 0o755 });
+
     const itermScript = `tell application "iTerm"
   activate
   set newWindow to (create window with default profile)
   tell current session of newWindow
     set name to "${label}: ${courseCode}"
-    write text "${escapedCmd}"
+    write text "${scriptFile}"
   end tell
 end tell`;
     const terminalScript = `tell application "Terminal"
   activate
-  do script "${escapedCmd}"
+  do script "${scriptFile}"
 end tell`;
 
     function launchTerminalApp() {
@@ -72,6 +75,8 @@ end tell`;
 
     // Try iTerm2 first, fall back to Terminal.app on failure
     const agent = spawn('osascript', ['-e', itermScript], { stdio: 'pipe', detached: true });
+    let stderrOutput = '';
+    if (agent.stderr) agent.stderr.on('data', (d) => { stderrOutput += d.toString(); });
     agent.on('error', (e) => {
       console.warn(`[SPAWN] ${label} iTerm2 error: ${e.message}, falling back to Terminal.app`);
       launchTerminalApp();
@@ -80,7 +85,7 @@ end tell`;
       if (code === 0) {
         console.log(`[SPAWN] ${label} launched in iTerm2`);
       } else {
-        console.warn(`[SPAWN] ${label} iTerm2 failed (exit: ${code}), falling back to Terminal.app`);
+        console.warn(`[SPAWN] ${label} iTerm2 failed (exit: ${code}), stderr: ${stderrOutput.trim()}, falling back to Terminal.app`);
         launchTerminalApp();
       }
     });
