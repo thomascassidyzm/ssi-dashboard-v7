@@ -311,16 +311,19 @@ onMounted(() => {
   .navbar-left {
     order: 1;
     min-width: 0;
+    flex: 1;
   }
 
-  /* Hide the long course name — the course switcher dropdown already shows it */
   .navbar-title {
-    display: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9375rem;
   }
 
   .navbar-right {
     order: 2;
     gap: 0.5rem;
+    flex-shrink: 0;
   }
 
   .navbar-tabs {
@@ -336,7 +339,7 @@ onMounted(() => {
     display: none;
   }
 
-  /* Hide the display name in course switcher, keep just the code */
+  /* Title is visible — hide the duplicate name in course switcher, keep just the code */
   .navbar-right :deep(.course-name) {
     display: none;
   }
@@ -345,6 +348,10 @@ onMounted(() => {
 @media (max-width: 640px) {
   .app-navbar {
     padding: 0 0.75rem;
+  }
+
+  .navbar-title {
+    font-size: 0.8125rem;
   }
 
   .tab-item {

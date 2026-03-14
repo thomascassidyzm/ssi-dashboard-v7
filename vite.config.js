@@ -7,10 +7,10 @@ import fs from 'fs-extra'
 // Get git commit hash at build time (fallback for Vercel where .git doesn't exist)
 let gitCommit = 'unknown'
 try {
-  gitCommit = execSync('git rev-parse --short HEAD').toString().trim()
+  gitCommit = execSync('git rev-parse --short=8 HEAD').toString().trim()
 } catch (err) {
   // Git not available (e.g., Vercel build), use env var or timestamp
-  gitCommit = process.env.VERCEL_GIT_COMMIT_SHA?.substring(0, 7) || `build-${Date.now()}`
+  gitCommit = process.env.VERCEL_GIT_COMMIT_SHA?.substring(0, 8) || `build-${Date.now()}`
 }
 
 // https://vite.dev/config/
