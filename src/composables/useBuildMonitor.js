@@ -78,10 +78,11 @@ export function useBuildMonitor(courseCodeRef) {
           if (newLegos.has(key)) useCounts[key] = (useCounts[key] || 0) + 1
         }
       }
-      // Seeds where any new LEGO has < 4 USE phrases
+      // Seeds where any new LEGO has < 4 USE phrases (exclude golden seeds 1-3)
       const underThreshold = new Set()
       for (const key of newLegos) {
-        if ((useCounts[key] || 0) < 4) underThreshold.add(parseInt(key.split(':')[0]))
+        const seedNum = parseInt(key.split(':')[0])
+        if (seedNum > 3 && (useCounts[key] || 0) < 4) underThreshold.add(seedNum)
       }
 
       // Format seed grid — data-driven status distinguishes flagged from under-threshold
