@@ -313,15 +313,14 @@ onMounted(() => {
     min-width: 0;
   }
 
+  /* Hide the long course name — the course switcher dropdown already shows it */
   .navbar-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px;
-    font-size: 0.9375rem;
+    display: none;
   }
 
   .navbar-right {
     order: 2;
+    gap: 0.5rem;
   }
 
   .navbar-tabs {
@@ -337,10 +336,6 @@ onMounted(() => {
     display: none;
   }
 
-  .navbar-env-deploy {
-    display: none;
-  }
-
   /* Hide the display name in course switcher, keep just the code */
   .navbar-right :deep(.course-name) {
     display: none;
@@ -350,11 +345,6 @@ onMounted(() => {
 @media (max-width: 640px) {
   .app-navbar {
     padding: 0 0.75rem;
-  }
-
-  .navbar-title {
-    max-width: 120px;
-    font-size: 0.8125rem;
   }
 
   .tab-item {
