@@ -19,6 +19,10 @@ const fallbackNames = {
 const languageNames = { ...fallbackNames }
 let languagesLoaded = false
 
+// Reactive version counter — bumped when language/display names change
+// Forces computed properties that call getCourseName() to re-evaluate
+const nameVersion = ref(0)
+
 // Fetch full language name map from backend (CSV-backed, all ISO 639 codes)
 async function loadLanguageNames() {
   if (languagesLoaded) return
@@ -33,6 +37,7 @@ async function loadLanguageNames() {
       }
     }
     languagesLoaded = true
+    nameVersion.value++
   } catch {
     // Fallback map is already populated — no-op
   }
@@ -46,6 +51,8 @@ loadLanguageNames()
 const courseDisplayNames = {}
 
 function getCourseName(code) {
+  // Touch reactive dep so computed properties re-evaluate when names load
+  void nameVersion.value
   if (!code || !code.includes('_for_')) return code
   // Prefer display_name from database (handles cym_anthem, cym_n, etc.)
   if (courseDisplayNames[code]) return courseDisplayNames[code]
@@ -83,6 +90,7 @@ async function loadCourses(force = false) {
       const code = c.code || c.course_code || c.id
       if (c.display_name && code) courseDisplayNames[code] = c.display_name
     }
+    nameVersion.value++
     courses.value = courseList.map(c => ({
       code: c.code || c.course_code || c.id,
       name: c.display_name || getCourseName(c.code || c.course_code || c.id),
