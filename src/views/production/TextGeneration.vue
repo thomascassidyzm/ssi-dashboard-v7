@@ -1476,11 +1476,26 @@ onMounted(() => {
   startPolling()
   if (!isCreateMode.value) {
     socket.connect(effectiveCourseCode.value)
+    // Auto-check component gaps on load — no manual click needed
+    checkComponentGaps()
   }
   if (isCreateMode.value) {
     loadLanguages()
   }
 })
+
+// Watch for phase transitions — when a job finishes, refresh dependent state
+watch(() => buildMonitor.phaseStatus.value, (newPs, oldPs) => {
+  if (!oldPs) return
+  const phases = ['translate', 'build-team', 'final-pass', 'component-backfill', 'gender-prep']
+  for (const phase of phases) {
+    if (oldPs[phase] === 'running' && newPs[phase] !== 'running') {
+      buildMonitor.refresh()
+      if (phase === 'component-backfill') checkComponentGaps()
+      break
+    }
+  }
+}, { deep: true })
 
 onUnmounted(() => {
   stopPolling()

@@ -13,6 +13,39 @@ const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 module.exports = function (ctx) {
   const router = Router();
 
+  // Helper: append a shell-level job completion curl to any claude command.
+  // Uses `;` so it fires regardless of how the Claude process exits.
+  function withJobDone(cmd, jobId) {
+    if (!jobId) return cmd;
+    return `${cmd} ; curl -s -X POST "http://localhost:${ctx.config.PORT || 3471}/api/build/job-done/${jobId}" > /dev/null 2>&1`;
+  }
+
+  // POST /build/job-done/:jobId — Shell wrapper calls this when Claude process exits
+  router.post('/build/job-done/:jobId', async (req, res) => {
+    try {
+      const { jobId } = req.params;
+      const { data: job } = await ctx.supabase
+        .from('build_jobs')
+        .select('id, status')
+        .eq('id', jobId)
+        .single();
+
+      if (!job) return res.json({ ok: false, error: 'Job not found' });
+      if (job.status !== 'running') return res.json({ ok: true, already: job.status });
+
+      await ctx.supabase.from('build_jobs').update({
+        status: 'complete',
+        completed_at: new Date().toISOString(),
+      }).eq('id', jobId);
+
+      console.log(`[BUILD] JOB DONE (shell wrapper): ${jobId}`);
+      res.json({ ok: true });
+    } catch (err) {
+      console.error(`[BUILD] job-done error:`, err.message);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
   // POST /build/stop/:courseCode
   router.post('/build/stop/:courseCode', async (req, res) => {
     const result = await stopBuild(ctx, req.params.courseCode);
@@ -338,7 +371,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Translation agent spawned` });
@@ -379,7 +412,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Decompose', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Decompose agent spawned` });
@@ -420,7 +453,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Build Team agent spawned` });
@@ -470,7 +503,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Final Pass', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Final Pass agent spawned` });
@@ -511,7 +544,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Component Backfill', courseCode);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: 'Component backfill agent spawned' });

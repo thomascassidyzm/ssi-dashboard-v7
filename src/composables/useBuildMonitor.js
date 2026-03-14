@@ -181,6 +181,7 @@ export function useBuildMonitor(courseCodeRef) {
         translate: latest['translate'] || null,
         'build-team': latest['build-team'] || null,
         'final-pass': latest['final-pass'] || null,
+        'component-backfill': latest['component-backfill'] || null,
         'gender-prep': latest['gender-prep'] || null
       }
     } catch (e) {

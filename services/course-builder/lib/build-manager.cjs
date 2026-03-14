@@ -185,9 +185,16 @@ async function checkBuilds(ctx) {
         continue;
       }
 
-      // Gender-prep and other phases manage their own completion via --job-id
-      // Just log and skip — do NOT kill unknown jobs
-      console.log(`[BUILD] Skipping unmanaged job for ${courseCode} (pass: ${job.pass}, mode: ${job.build_mode})`);
+      // Unmanaged job types (component-backfill, gender-prep, etc.)
+      // Check for staleness — if no heartbeat for 10 min, mark stalled
+      const minutesSinceHeartbeat = (new Date() - new Date(job.last_heartbeat)) / 60000;
+      if (minutesSinceHeartbeat > 10) {
+        console.log(`[BUILD] STALLED: ${courseCode} ${job.pass} (no heartbeat for ${Math.round(minutesSinceHeartbeat)}min)`);
+        await ctx.supabase.from('build_jobs').update({
+          status: 'stalled',
+          completed_at: new Date().toISOString(),
+        }).eq('id', job.id);
+      }
 
     } catch (err) {
       console.error(`[BUILD] Error checking ${courseCode}:`, err.message);
