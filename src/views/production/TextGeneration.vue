@@ -109,6 +109,12 @@
 
       <!-- PIPELINE -->
       <section v-if="!isCreateMode" class="space-y-2">
+        <!-- Action Error Banner -->
+        <div v-if="actionError" class="flex items-center justify-between bg-red-900/30 border border-red-500/50 rounded-lg px-4 py-2.5 mb-2">
+          <span class="text-sm text-red-300">{{ actionError.message }}</span>
+          <button @click="actionError = null" class="text-red-400 hover:text-red-300 text-xs ml-4">Dismiss</button>
+        </div>
+
         <div class="flex items-center justify-between mb-3">
           <h2 class="text-xs font-medium text-slate-500 uppercase tracking-wide">Pipeline</h2>
           <div class="flex items-center gap-2">
@@ -609,6 +615,13 @@ const genderStarting = ref(false)
 const componentCheckLoading = ref(false)
 const componentBackfillStarting = ref(false)
 const componentGaps = ref(null) // null = not checked yet, object = { total_m_legos, gaps: { total, null_components, empty_components, partial_components }, complete }
+const actionError = ref(null) // { message, timestamp } — auto-dismisses after 8s
+let actionErrorTimer = null
+function showActionError(msg) {
+  actionError.value = { message: msg, timestamp: Date.now() }
+  if (actionErrorTimer) clearTimeout(actionErrorTimer)
+  actionErrorTimer = setTimeout(() => { actionError.value = null }, 8000)
+}
 
 // Seed grid state
 const seedGrid = ref([])
@@ -938,10 +951,10 @@ async function startTranslation() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, translate: 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start translation:', result.error)
+      showActionError(`Translation failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start translation:', err)
+    showActionError(`Translation failed: ${err.message}`)
   } finally {
     translateStarting.value = false
   }
@@ -968,10 +981,10 @@ async function confirmResetTranslations() {
       console.log(`[reset] Wiped ${result.seeds_reset} translations for ${courseCode}`)
       buildMonitor.refresh()
     } else {
-      console.error('Failed to reset translations:', result.error)
+      showActionError(`Reset translations failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to reset translations:', err)
+    showActionError(`Reset translations failed: ${err.message}`)
   } finally {
     translateResetting.value = false
   }
@@ -993,10 +1006,10 @@ async function startBuildTeam() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'build-team': 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start build team:', result.error)
+      showActionError(`Build team failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start build team:', err)
+    showActionError(`Build team failed: ${err.message}`)
   } finally {
     buildTeamStarting.value = false
   }
@@ -1030,10 +1043,10 @@ async function startFinalPass(mode = 'all') {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'final-pass': 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start final pass:', result.error)
+      showActionError(`Final pass failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start final pass:', err)
+    showActionError(`Final pass failed: ${err.message}`)
   } finally {
     finalPassStarting.value = false
   }
@@ -1059,10 +1072,10 @@ async function massApproveSeeds() {
       const data = await gridResp.json()
       seedGrid.value = data.seeds || []
     } else {
-      console.error('Failed to mass approve:', result.error)
+      showActionError(`Mass approve failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to mass approve:', err)
+    showActionError(`Mass approve failed: ${err.message}`)
   } finally {
     massApproving.value = false
   }
@@ -1116,10 +1129,10 @@ async function startComponentBackfill() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'component-backfill': 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start component backfill:', result.error)
+      showActionError(`Component backfill failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start component backfill:', err)
+    showActionError(`Component backfill failed: ${err.message}`)
   } finally {
     componentBackfillStarting.value = false
   }
@@ -1141,10 +1154,10 @@ async function startGenderPrep() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'gender-prep': 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start gender prep:', result.error)
+      showActionError(`Gender prep failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start gender prep:', err)
+    showActionError(`Gender prep failed: ${err.message}`)
   } finally {
     genderStarting.value = false
   }
@@ -1160,7 +1173,7 @@ async function stopBuilder() {
     })
     progress.value.status = 'idle'
   } catch (error) {
-    console.error('Failed to stop builder:', error)
+    showActionError(`Failed to stop builder: ${error.message}`)
   }
 }
 
@@ -1200,7 +1213,7 @@ async function killAgent(pid) {
       fetchProgress()
     }
   } catch (error) {
-    console.error('Failed to kill agent:', error)
+    showActionError(`Failed to kill agent: ${error.message}`)
   }
 }
 
@@ -1280,7 +1293,7 @@ async function approveSeed() {
     const nextDrafted = seedGrid.value.find(s => s.status === 'drafted')
     if (nextDrafted) selectSeed(nextDrafted.seed)
   } catch (err) {
-    console.error('Failed to approve seed:', err)
+    showActionError(`Failed to approve seed: ${err.message}`)
   } finally {
     seedApproving.value = false
   }
@@ -1310,7 +1323,7 @@ async function redoSeed() {
     if (nextDrafted) selectSeed(nextDrafted.seed)
     seedRedoing.value = false
   } catch (err) {
-    console.error('Failed to redo seed:', err)
+    showActionError(`Failed to redo seed: ${err.message}`)
     seedRedoing.value = false
   }
 }
@@ -1334,7 +1347,7 @@ async function redoAllFlagged() {
     }
     await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
   } catch (err) {
-    console.error('Failed to redo flagged seeds:', err)
+    showActionError(`Failed to redo flagged seeds: ${err.message}`)
   } finally {
     redoingFlagged.value = false
   }

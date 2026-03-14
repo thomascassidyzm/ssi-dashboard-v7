@@ -30,7 +30,9 @@
           <span class="summary-sep">&middot;</span>
           <span class="summary-value">{{ inProductionCount }}</span> in production
         </span>
-        <EnvironmentSwitcher />
+        <div class="navbar-env-deploy">
+          <EnvironmentSwitcher />
+        </div>
         <CourseSwitcherDropdown />
       </div>
     </div>
@@ -294,20 +296,70 @@ onMounted(() => {
   opacity: 0.5;
 }
 
-/* Responsive */
+/* Responsive — tabs MUST always be visible */
 @media (max-width: 900px) {
+  .app-navbar {
+    height: auto;
+  }
+
+  .navbar-inner {
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+    gap: 0;
+  }
+
+  .navbar-left {
+    order: 1;
+    min-width: 0;
+  }
+
+  .navbar-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+    font-size: 0.9375rem;
+  }
+
+  .navbar-right {
+    order: 2;
+  }
+
   .navbar-tabs {
-    display: none;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    padding: 0.25rem 0;
+    border-top: 1px solid var(--color-graphite, #475569);
+    margin-top: 0.375rem;
   }
 
   .course-summary {
+    display: none;
+  }
+
+  .navbar-env-deploy {
+    display: none;
+  }
+
+  /* Hide the display name in course switcher, keep just the code */
+  .navbar-right :deep(.course-name) {
     display: none;
   }
 }
 
 @media (max-width: 640px) {
   .app-navbar {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
+  }
+
+  .navbar-title {
+    max-width: 120px;
+    font-size: 0.8125rem;
+  }
+
+  .tab-item {
+    font-size: 0.8125rem;
+    padding: 0.375rem 0.625rem;
   }
 }
 </style>
