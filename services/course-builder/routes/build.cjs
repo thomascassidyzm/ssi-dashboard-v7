@@ -669,14 +669,21 @@ module.exports = function (ctx) {
           continue;
         }
 
-        // Get existing USE phrase count to continue numbering
-        const { count: existingUseCount } = await ctx.supabase
+        // Get max existing USE phrase number from IDs (not count — IDs may have gaps)
+        const { data: existingUse } = await ctx.supabase
           .from('course_practice_phrases')
-          .select('*', { count: 'exact', head: true })
+          .select('id')
           .eq('course_code', courseCode)
           .eq('seed_number', seed_number)
           .eq('lego_index', lego_index)
           .eq('phrase_role', 'use');
+
+        let maxUseNum = 0;
+        for (const row of existingUse || []) {
+          // ID format: {course_code}:S{NNNN}L{NN}U{NN}
+          const match = row.id.match(/U(\d+)$/);
+          if (match) maxUseNum = Math.max(maxUseNum, parseInt(match[1], 10));
+        }
 
         // Get max position for this LEGO to continue from
         const { data: maxPosRow } = await ctx.supabase
@@ -688,7 +695,7 @@ module.exports = function (ctx) {
           .order('position', { ascending: false })
           .limit(1);
 
-        const startUseNum = (existingUseCount || 0) + 1;
+        const startUseNum = maxUseNum + 1;
         const startPosition = (maxPosRow?.[0]?.position || 0) + 1;
 
         // Build phrase rows
