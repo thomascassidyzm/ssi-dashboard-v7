@@ -84,13 +84,13 @@ export function useBuildMonitor(courseCodeRef) {
         if ((useCounts[key] || 0) < 4) underThreshold.add(parseInt(key.split(':')[0]))
       }
 
-      // Format seed grid — data-driven status overrides agent-set flags
+      // Format seed grid — data-driven status distinguishes flagged from under-threshold
       seedGrid.value = seedsRes.data.map(s => {
         const legos = legosBySeed[s.seed_number] || 0
         const phrases = phrasesBySeed[s.seed_number] || 0
         let status
-        if (s.flagged_at) status = 'flagged'
-        else if (s.decomposed_at && underThreshold.has(s.seed_number)) status = 'flagged'
+        if (s.flagged_at) status = 'flagged'                                        // explicitly flagged — needs redo
+        else if (s.decomposed_at && underThreshold.has(s.seed_number)) status = 'under-threshold' // needs phrase backfill
         else if (s.approved_at) status = 'complete'
         else if (s.decomposed_at) status = 'drafted'
         else if (legos > 0) status = 'building'
@@ -200,6 +200,7 @@ export function useBuildMonitor(courseCodeRef) {
         translate: latest['translate'] || null,
         'build-team': latest['build-team'] || null,
         'final-pass': latest['final-pass'] || null,
+        'backfill-phrases': latest['backfill-phrases'] || null,
         'component-backfill': latest['component-backfill'] || null,
         'gender-prep': latest['gender-prep'] || null
       }

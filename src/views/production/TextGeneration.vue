@@ -271,13 +271,25 @@
                 <div class="text-xs text-slate-500">Grammar audit — delete bad phrases</div>
               </div>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 flex-wrap justify-end">
+              <!-- Under-threshold: needs phrase backfill (orange) -->
+              <span v-if="seedGridUnderThreshold > 0" class="text-xs text-orange-400">{{ seedGridUnderThreshold }} need phrases</span>
+              <button
+                v-if="seedGridUnderThreshold > 0 && !stageRunning('backfill-phrases')"
+                @click="startBackfillPhrases"
+                :disabled="backfillPhrasesStarting"
+                class="px-3 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ backfillPhrasesStarting ? 'Spawning...' : `Backfill ${seedGridUnderThreshold} Seeds` }}
+              </button>
+              <span v-if="stageRunning('backfill-phrases')" class="text-xs text-orange-400 animate-pulse">Backfilling...</span>
+              <!-- Flagged: needs full redo (red) -->
               <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">{{ seedGridFlagged }} flagged</span>
               <button
                 v-if="seedGridFlagged > 0"
                 @click="redoAllFlagged"
                 :disabled="redoingFlagged"
-                class="px-3 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                class="px-3 py-1 bg-rose-600/20 border border-rose-500/50 text-rose-400 hover:border-rose-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ redoingFlagged ? 'Spawning...' : `Redo ${seedGridFlagged} Flagged` }}
               </button>
@@ -408,6 +420,12 @@
             </span>
             <span v-if="seedGridDrafted > 0" class="text-xs text-amber-400">
               {{ seedGridDrafted }} drafted
+            </span>
+            <span v-if="seedGridUnderThreshold > 0" class="text-xs text-orange-400">
+              {{ seedGridUnderThreshold }} need phrases
+            </span>
+            <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">
+              {{ seedGridFlagged }} flagged
             </span>
             <span v-if="seedGridCollision > 0" class="text-xs text-red-400">
               {{ seedGridCollision }} collision
@@ -612,6 +630,7 @@ const buildTeamStarting = ref(false)
 const finalPassStarting = ref(false)
 const massApproving = ref(false)
 const genderStarting = ref(false)
+const backfillPhrasesStarting = ref(false)
 const componentCheckLoading = ref(false)
 const componentBackfillStarting = ref(false)
 const componentGaps = ref(null) // null = not checked yet, object = { total_m_legos, gaps: { total, null_components, empty_components, partial_components }, complete }
@@ -687,6 +706,7 @@ const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status ===
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
 const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
 const seedGridFlagged = computed(() => seedGrid.value.filter(s => s.status === 'flagged').length)
+const seedGridUnderThreshold = computed(() => seedGrid.value.filter(s => s.status === 'under-threshold').length)
 
 // Group seeds into rows of blocks (each block = 10 seeds, max 3 blocks per row = 30 seeds)
 
@@ -771,6 +791,8 @@ function seedCellClass(cell) {
   switch (cell.status) {
     case 'flagged':
       return 'bg-rose-500/70 ring-1 ring-inset ring-rose-400'
+    case 'under-threshold':
+      return 'bg-orange-400/70 ring-1 ring-inset ring-orange-300'
     case 'collision':
     case 'rework':
       return 'bg-rose-500/60 ring-1 ring-inset ring-rose-400'
@@ -1135,6 +1157,31 @@ async function startComponentBackfill() {
     showActionError(`Component backfill failed: ${err.message}`)
   } finally {
     componentBackfillStarting.value = false
+  }
+}
+
+async function startBackfillPhrases() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  backfillPhrasesStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/backfill-phrases/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'backfill-phrases': 'running' }
+      buildMonitor.refresh()
+    } else {
+      showActionError(`Backfill failed: ${result.error}`)
+    }
+  } catch (err) {
+    showActionError(`Backfill failed: ${err.message}`)
+  } finally {
+    backfillPhrasesStarting.value = false
   }
 }
 
