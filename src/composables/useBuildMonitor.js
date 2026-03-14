@@ -41,7 +41,7 @@ export function useBuildMonitor(courseCodeRef) {
   async function fetchSeedGrid(code) {
     if (!supabase || !code) return
     try {
-      // Fetch seeds, lego counts, and phrase counts in parallel
+      // Fetch seeds, legos (with is_new + index), and phrases (with role + index) in parallel
       const [seedsRes, legosRes, phrasesRes] = await Promise.all([
         supabase
           .from('course_seeds')
@@ -50,11 +50,11 @@ export function useBuildMonitor(courseCodeRef) {
           .order('seed_number', { ascending: true }),
         supabase
           .from('course_legos')
-          .select('seed_number')
+          .select('seed_number, lego_index, is_new')
           .eq('course_code', code),
         supabase
           .from('course_practice_phrases')
-          .select('seed_number')
+          .select('seed_number, lego_index, phrase_role')
           .eq('course_code', code)
       ])
 
@@ -66,12 +66,31 @@ export function useBuildMonitor(courseCodeRef) {
       const phrasesBySeed = {}
       for (const p of phrasesRes.data || []) phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1
 
-      // Format to match /api/build/seed-grid/:courseCode response
+      // Build USE phrase counts per seed:lego for new LEGOs (data-driven threshold check)
+      const newLegos = new Set()
+      for (const l of legosRes.data || []) {
+        if (l.is_new) newLegos.add(l.seed_number + ':' + l.lego_index)
+      }
+      const useCounts = {}
+      for (const p of phrasesRes.data || []) {
+        if (p.phrase_role === 'use') {
+          const key = p.seed_number + ':' + p.lego_index
+          if (newLegos.has(key)) useCounts[key] = (useCounts[key] || 0) + 1
+        }
+      }
+      // Seeds where any new LEGO has < 4 USE phrases
+      const underThreshold = new Set()
+      for (const key of newLegos) {
+        if ((useCounts[key] || 0) < 4) underThreshold.add(parseInt(key.split(':')[0]))
+      }
+
+      // Format seed grid — data-driven status overrides agent-set flags
       seedGrid.value = seedsRes.data.map(s => {
         const legos = legosBySeed[s.seed_number] || 0
         const phrases = phrasesBySeed[s.seed_number] || 0
         let status
         if (s.flagged_at) status = 'flagged'
+        else if (s.decomposed_at && underThreshold.has(s.seed_number)) status = 'flagged'
         else if (s.approved_at) status = 'complete'
         else if (s.decomposed_at) status = 'drafted'
         else if (legos > 0) status = 'building'
