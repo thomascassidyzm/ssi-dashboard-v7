@@ -381,6 +381,26 @@ const previewPhrases = {
     "C'hoant am eus da zeskiñ kement ha ma c'hallan",
     "Labourat a ra mat-tre evidon"
   ],
+  pol: [
+    "Staram się ćwiczyć każdego dnia",
+    "Chcę się nauczyć jak najwięcej",
+    "To naprawdę dobrze działa"
+  ],
+  ron: [
+    "Încerc să exersez în fiecare zi",
+    "Vreau să învăț cât mai mult posibil",
+    "Asta funcționează foarte bine pentru mine"
+  ],
+  hin: [
+    "मैं हर दिन अभ्यास करने की कोशिश कर रहा हूँ",
+    "मैं जितना हो सके उतना सीखना चाहता हूँ",
+    "यह मेरे लिए बहुत अच्छा काम कर रहा है"
+  ],
+  rus: [
+    "Я стараюсь практиковаться каждый день",
+    "Я хочу выучить как можно больше",
+    "Это работает очень хорошо для меня"
+  ],
   default: [
     "I'm trying to practice every day",
     "I want to learn as much as I can"
