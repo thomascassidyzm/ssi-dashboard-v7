@@ -23,7 +23,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const { createClient } = require('@supabase/supabase-js')
-const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
+const { S3Client, PutObjectCommand, HeadObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
 const { v4: uuidv4 } = require('uuid')
 const fs = require('fs-extra')
 const path = require('path')
@@ -38,7 +38,7 @@ const genderHaikuService = require('../gender-haiku-service.cjs')
 
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
-const { toIso3 } = require('../language-code-service.cjs')
+const { toIso3, getName: getLangEnglishName, databaseToManifest } = require('../language-code-service.cjs')
 
 const app = express()
 app.use(cors())
@@ -63,38 +63,19 @@ const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 // LANGUAGE NAMES (for presentation templates)
 // =============================================================================
 
-// Language names in English (default / fallback)
-const LANG_NAMES = {
-  'eng': 'English', 'spa': 'Spanish', 'fra': 'French', 'deu': 'German',
-  'ita': 'Italian', 'por': 'Portuguese', 'cmn': 'Chinese', 'zho': 'Chinese',
-  'jpn': 'Japanese', 'kor': 'Korean', 'ara': 'Arabic', 'cym': 'Welsh',
-  'gle': 'Irish', 'gla': 'Scottish Gaelic', 'nld': 'Dutch', 'rus': 'Russian',
-  'swe': 'Swedish', 'fin': 'Finnish', 'tur': 'Turkish', 'bre': 'Breton',
-  'eus': 'Basque', 'cat': 'Catalan', 'lit': 'Lithuanian', 'ang': 'Old English',
-}
-
-// Language names localised into each known language (for presentation TTS)
-// Key: known_lang, Value: { target_lang: localised name }
-const LANG_NAMES_LOCALISED = {
-  jpn: { eng: '英語', spa: 'スペイン語', fra: 'フランス語', deu: 'ドイツ語', ita: 'イタリア語', por: 'ポルトガル語', cmn: '中国語', zho: '中国語', kor: '韓国語', ara: 'アラビア語', nld: 'オランダ語', rus: 'ロシア語' },
-  kor: { eng: '영어', spa: '스페인어', fra: '프랑스어', deu: '독일어', ita: '이탈리아어', por: '포르투갈어', cmn: '중국어', zho: '중국어', jpn: '일본어', ara: '아랍어', nld: '네덜란드어', rus: '러시아어' },
-  fra: { eng: 'anglais', spa: 'espagnol', deu: 'allemand', ita: 'italien', por: 'portugais', cmn: 'chinois', zho: 'chinois', jpn: 'japonais', kor: 'coréen', ara: 'arabe', nld: 'néerlandais', rus: 'russe', bre: 'breton' },
-  deu: { eng: 'Englisch', spa: 'Spanisch', fra: 'Französisch', ita: 'Italienisch', por: 'Portugiesisch', cmn: 'Chinesisch', zho: 'Chinesisch', jpn: 'Japanisch', kor: 'Koreanisch', ara: 'Arabisch', nld: 'Niederländisch', rus: 'Russisch' },
-  ita: { eng: 'inglese', spa: 'spagnolo', fra: 'francese', deu: 'tedesco', por: 'portoghese', cmn: 'cinese', zho: 'cinese', jpn: 'giapponese', kor: 'coreano', ara: 'arabo', nld: 'olandese', rus: 'russo' },
-  spa: { eng: 'inglés', fra: 'francés', deu: 'alemán', ita: 'italiano', por: 'portugués', cmn: 'chino', zho: 'chino', jpn: 'japonés', kor: 'coreano', ara: 'árabe', nld: 'neerlandés', rus: 'ruso', cat: 'catalán', eus: 'euskera' },
-  por: { eng: 'inglês', spa: 'espanhol', fra: 'francês', deu: 'alemão', ita: 'italiano', cmn: 'chinês', zho: 'chinês', jpn: 'japonês', kor: 'coreano', ara: 'árabe', nld: 'neerlandês', rus: 'russo' },
-  zho: { eng: '英语', spa: '西班牙语', fra: '法语', deu: '德语', ita: '意大利语', por: '葡萄牙语', jpn: '日语', kor: '韩语', ara: '阿拉伯语', nld: '荷兰语', rus: '俄语' },
-  cmn: { eng: '英语', spa: '西班牙语', fra: '法语', deu: '德语', ita: '意大利语', por: '葡萄牙语', jpn: '日语', kor: '韩语', ara: '阿拉伯语', nld: '荷兰语', rus: '俄语' },
-  ara: { eng: 'الإنجليزية', spa: 'الإسبانية', fra: 'الفرنسية', deu: 'الألمانية', ita: 'الإيطالية', por: 'البرتغالية', cmn: 'الصينية', zho: 'الصينية', jpn: 'اليابانية', kor: 'الكورية', nld: 'الهولندية', rus: 'الروسية' },
-  cym: { eng: 'Saesneg', spa: 'Sbaeneg', fra: 'Ffrangeg', deu: 'Almaeneg', ita: 'Eidaleg', por: 'Portiwgaleg' },
-  lit: { eng: 'angliškai', spa: 'ispaniškai', fra: 'prancūziškai', deu: 'vokiškai', por: 'portugališkai' },
-}
-
-// Get the target language name in the known language
+// Get the target language name localised into the known language.
+// Uses Intl.DisplayNames (488 languages via CLDR) with language-code-service fallback.
+// No hardcoded maps — adding a new language Just Works.
 function getLocalisedLangName(targetLang, knownLang) {
-  const localised = LANG_NAMES_LOCALISED[knownLang]?.[targetLang]
-  if (localised) return localised
-  return LANG_NAMES[targetLang] || targetLang
+  try {
+    const target2 = databaseToManifest(targetLang) // 3-letter → 2-letter for Intl API
+    const known2 = databaseToManifest(knownLang)
+    const dn = new Intl.DisplayNames([known2], { type: 'language' })
+    const name = dn.of(target2)
+    if (name && name !== target2) return name
+  } catch (_) { /* fall through */ }
+  // Fallback: English name from CSV
+  return getLangEnglishName(targetLang)
 }
 
 // Canonical text normalization — see services/shared/text-normalize.cjs
@@ -111,11 +92,14 @@ function isPunctuationOnly(text) {
   const trimmed = text.trim()
   if (!trimmed) return true
   // Match common punctuation marks:
-  // - Western: .,;:!?-()[]{}
+  // - Western: .,;:!?-()[]{}  (including inverted ¿¡)
   // - CJK: 。、？！；：…—–「」『』（）【】
   // - Arabic/RTL: ؟،؛ (U+061F, U+060C, U+061B)
   // - Hebrew: ־ (U+05BE maqaf)
-  return /^[.,;:!?。、？！；：…—–\-()[\]{}「」『』（）【】؟،؛־]+$/.test(trimmed)
+  // Also treat single non-ASCII-alpha characters as ungeneratable
+  // (e.g. CJK particles 儿, の, が used as component known_text with no English translation)
+  if (trimmed.length === 1 && !/[a-zA-Z0-9]/.test(trimmed)) return true
+  return /^[.,;:!?¿¡。、？！；：…—–\-()[\]{}「」『』（）【】؟،؛־]+$/.test(trimmed)
 }
 
 // =============================================================================
@@ -640,14 +624,51 @@ async function planHandler(req, res) {
     const l = counts.legos || {}
     const s = counts.seeds || {}
 
-    // Missing counts from NULL audio_id columns (authoritative)
-    const missingKnown = (p.missing_known || 0) + (l.missing_known || 0) + (s.missing_known || 0)
-    const missingTarget1 = (p.missing_target1 || 0) + (l.missing_target1 || 0) + (s.missing_target1 || 0)
-    const missingTarget2 = (p.missing_target2 || 0) + (s.missing_target2 || 0)
+    // Count un-generatable phrases (empty/punctuation text with NULL audio_id)
+    // These should not be reported as "missing" — they can never have audio
+    let ungeneratableKnown = 0
+    let ungeneratableTarget1 = 0
+    let ungeneratableTarget2 = 0
+    {
+      // Phrases with NULL audio_id AND empty/punctuation text
+      const { data: ungeneratable } = await supabase
+        .from('course_practice_phrases')
+        .select('known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+        .eq('course_code', courseCode)
+        .lte('seed_number', releaseTarget)
+        .or('known_audio_id.is.null,target1_audio_id.is.null,target2_audio_id.is.null')
+        .limit(10000)
+
+      for (const row of (ungeneratable || [])) {
+        if (row.known_audio_id === null && isPunctuationOnly(row.known_text)) ungeneratableKnown++
+        if (row.target1_audio_id === null && isPunctuationOnly(row.target_text)) ungeneratableTarget1++
+        if (row.target2_audio_id === null && isPunctuationOnly(row.target_text)) ungeneratableTarget2++
+      }
+
+      // Also check legos
+      const { data: ungeneratableLegos } = await supabase
+        .from('course_legos')
+        .select('known_text, target_text, known_audio_id, target1_audio_id')
+        .eq('course_code', courseCode)
+        .lte('seed_number', releaseTarget)
+        .or('known_audio_id.is.null,target1_audio_id.is.null')
+        .limit(10000)
+
+      for (const row of (ungeneratableLegos || [])) {
+        if (row.known_audio_id === null && isPunctuationOnly(row.known_text)) ungeneratableKnown++
+        if (row.target1_audio_id === null && isPunctuationOnly(row.target_text)) ungeneratableTarget1++
+      }
+    }
+
+    // Missing counts from NULL audio_id columns, minus un-generatable items
+    const missingKnown = Math.max(0, (p.missing_known || 0) + (l.missing_known || 0) + (s.missing_known || 0) - ungeneratableKnown)
+    const missingTarget1 = Math.max(0, (p.missing_target1 || 0) + (l.missing_target1 || 0) + (s.missing_target1 || 0) - ungeneratableTarget1)
+    const missingTarget2 = Math.max(0, (p.missing_target2 || 0) + (s.missing_target2 || 0) - ungeneratableTarget2)
     const missingPresentation = l.missing_presentation || 0
 
-    // Total audio slots: phrases×3 + legos×2 (known+target1) + new_legos×1 (presentation) + seeds×3
-    const totalSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3)
+    // Total audio slots (also subtract un-generatable from total)
+    const ungeneratableTotal = ungeneratableKnown + ungeneratableTarget1 + ungeneratableTarget2
+    const totalSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3) - ungeneratableTotal
     const totalMissing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation
     const totalExisting = totalSlots - totalMissing
 
@@ -2558,6 +2579,40 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     }
     logger.info(`Keeping ${unchangedLegoIds.size} unchanged presentation records`)
 
+    // Clean up orphan presentation records with null lego_id (legacy records from before lego_id was set)
+    // These can't be matched by the lego_id lookup above, so we delete any that don't match a current text
+    const allNewTextsNorm = new Set(presentations.map(p => normalizeForAudio(p.presentation_text)))
+    // Also include component presentation texts so we don't accidentally delete those
+    const allCompTextsNorm = new Set(componentPresentations.map(cp => normalizeForAudio(cp.presentation_text)))
+
+    let orphanIds = []
+    let orphanOffset = 0
+    while (true) {
+      const { data: orphanBatch } = await supabase
+        .from('course_audio')
+        .select('id, text_normalized')
+        .eq('course_code', courseCode)
+        .eq('role', 'presentation')
+        .is('lego_id', null)
+        .range(orphanOffset, orphanOffset + 999)
+      if (!orphanBatch || orphanBatch.length === 0) break
+      for (const rec of orphanBatch) {
+        if (!allNewTextsNorm.has(rec.text_normalized) && !allCompTextsNorm.has(rec.text_normalized)) {
+          orphanIds.push(rec.id)
+        }
+      }
+      if (orphanBatch.length < 1000) break
+      orphanOffset += 1000
+    }
+
+    if (orphanIds.length > 0) {
+      for (let i = 0; i < orphanIds.length; i += BATCH_SIZE) {
+        const batch = orphanIds.slice(i, i + BATCH_SIZE)
+        await supabase.from('course_audio').delete().in('id', batch)
+      }
+      logger.info(`Deleted ${orphanIds.length} orphan presentation records (null lego_id, text no longer matches)`)
+    }
+
     // Build records for bulk upsert (skip unchanged — their records already exist)
     const audioRecords = presentations
       .filter(pres => !unchangedLegoIds.has(pres.lego_id))
@@ -3123,8 +3178,9 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     const getVoiceForRole = (role) => {
       const v = voices[role]
       if (!v) return null
-      if (v.provider && v.voiceId) return `${v.provider}_${v.voiceId}`
-      return v.voiceId || v
+      const provider = v.provider || 'azure'
+      if (v.voiceId) return `${provider}_${v.voiceId}`
+      return v
     }
     const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
 
@@ -3503,32 +3559,28 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 async function linkComponentAudio(courseCode, knownLang, targetLang, components, compPresTexts) {
   const result = { known: 0, target1: 0, target2: 0, presentation: 0 }
 
-  // Build audio lookup from course_audio for this course
-  // Only fetch audio for texts that components actually use
-  const allTexts = new Set()
-  for (const c of components) {
-    allTexts.add(normalizeText(c.known_text))
-    allTexts.add(normalizeText(c.target_text))
-    const presText = compPresTexts.get(c.id)
-    if (presText) allTexts.add(normalizeText(presText))
-  }
-
+  // Build audio lookup from ALL course_audio for this course
+  // Using .in('text_normalized', batch) with long Unicode strings can exceed
+  // PostgREST URL length limits, causing silent failures. Instead, fetch all
+  // audio for the relevant roles and build the map locally.
   const audioMap = new Map() // "normalized|lang|role" -> course_audio.id
-  const textArray = [...allTexts]
-  const TEXT_BATCH = 200
 
-  for (let i = 0; i < textArray.length; i += TEXT_BATCH) {
-    const batch = textArray.slice(i, i + TEXT_BATCH)
-    const { data } = await supabase
-      .from('course_audio')
-      .select('id, text_normalized, language, role, s3_key')
-      .eq('course_code', courseCode)
-      .in('text_normalized', batch)
-
-    for (const a of (data || [])) {
-      if (!a.s3_key || !a.s3_key.startsWith('pending/')) {
+  for (const role of ['known', 'target1', 'target2', 'presentation']) {
+    let offset = 0
+    while (true) {
+      const { data, error } = await supabase
+        .from('course_audio')
+        .select('id, text_normalized, language, role, s3_key')
+        .eq('course_code', courseCode)
+        .eq('role', role)
+        .not('s3_key', 'like', 'pending/%')
+        .range(offset, offset + 999)
+      if (error || !data?.length) break
+      for (const a of data) {
         audioMap.set(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`, a.id)
       }
+      if (data.length < 1000) break
+      offset += 1000
     }
   }
 
@@ -3576,6 +3628,388 @@ async function linkComponentAudio(courseCode, knownLang, targetLang, components,
   logger.info(`[LinkComponents] Linked: known=${result.known}, target1=${result.target1}, target2=${result.target2}, presentation=${result.presentation}`)
   return result
 }
+
+// =============================================================================
+// COMPONENT AUDIO SPLICING — extract component words from parent M-LEGO audio
+// =============================================================================
+
+/**
+ * Download an audio file from S3 and return as Buffer
+ * @param {string} s3Key - S3 key (e.g. "mastered/UUID.mp3")
+ * @returns {Promise<Buffer>}
+ */
+async function downloadFromS3(s3Key) {
+  const response = await s3.send(new GetObjectCommand({
+    Bucket: S3_BUCKET,
+    Key: s3Key
+  }))
+  const chunks = []
+  for await (const chunk of response.Body) {
+    chunks.push(chunk)
+  }
+  return Buffer.concat(chunks)
+}
+
+/**
+ * Find word boundary entries matching component text within parent word boundaries.
+ * Handles multi-word components by finding consecutive matching boundaries.
+ *
+ * @param {string} componentText - The component word/phrase to find (e.g. "speak")
+ * @param {Array<{text: string, offset: number, duration: number}>} wordBoundaries - Parent word boundaries
+ * @returns {{startMs: number, endMs: number}|null} Start and end timestamps, or null if not found
+ */
+function findComponentBoundaries(componentText, wordBoundaries) {
+  if (!wordBoundaries?.length || !componentText) return null
+
+  const compWords = componentText.trim().toLowerCase().split(/\s+/)
+
+  // Try exact multi-word match first
+  for (let i = 0; i <= wordBoundaries.length - compWords.length; i++) {
+    let allMatch = true
+    for (let j = 0; j < compWords.length; j++) {
+      const wbText = wordBoundaries[i + j].text.toLowerCase()
+      if (wbText !== compWords[j]) {
+        allMatch = false
+        break
+      }
+    }
+    if (allMatch) {
+      const first = wordBoundaries[i]
+      const last = wordBoundaries[i + compWords.length - 1]
+      return {
+        startMs: first.offset,
+        endMs: last.offset + last.duration
+      }
+    }
+  }
+
+  // Fallback: single-word component, try partial match (e.g. punctuation differences)
+  if (compWords.length === 1) {
+    const target = compWords[0].replace(/[^\p{L}\p{N}]/gu, '')
+    for (const wb of wordBoundaries) {
+      const wbClean = wb.text.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '')
+      if (wbClean === target) {
+        return { startMs: wb.offset, endMs: wb.offset + wb.duration }
+      }
+    }
+  }
+
+  return null
+}
+
+/**
+ * Splice a segment from parent audio using ffmpeg.
+ * Uses simple volume normalization (not loudnorm) to avoid minimum-duration issues.
+ *
+ * @param {Buffer} parentAudioBuffer - Full parent audio
+ * @param {number} startMs - Start offset in milliseconds
+ * @param {number} endMs - End offset in milliseconds
+ * @param {number} paddingMs - Padding to add before/after the splice (default 20ms)
+ * @returns {Promise<{buffer: Buffer, durationMs: number}>}
+ */
+async function spliceAudio(parentAudioBuffer, startMs, endMs, paddingMs = 20) {
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'audio-splice-'))
+  const parentPath = path.join(tempDir, 'parent.mp3')
+  const splicedPath = path.join(tempDir, 'spliced.mp3')
+
+  try {
+    await fs.writeFile(parentPath, parentAudioBuffer)
+
+    // Add padding but don't go below 0
+    const actualStart = Math.max(0, startMs - paddingMs)
+    const durationMs = (endMs + paddingMs) - actualStart
+
+    // Use ffmpeg to extract segment — simple volume filter instead of loudnorm
+    // loudnorm needs ~400ms minimum; component words can be much shorter
+    const { exec: execCb } = require('child_process')
+    const { promisify } = require('util')
+    const execAsync = promisify(execCb)
+
+    await execAsync(
+      `ffmpeg -y -i "${parentPath}" -ss ${actualStart}ms -t ${durationMs}ms -q:a 2 "${splicedPath}"`
+    )
+
+    // Get actual duration from the spliced file
+    const metadata = await audioProcessor.getAudioMetadata(splicedPath)
+    const actualDurationMs = Math.round(metadata.duration * 1000)
+
+    const splicedBuffer = await fs.readFile(splicedPath)
+
+    return { buffer: splicedBuffer, durationMs: actualDurationMs }
+  } finally {
+    await fs.remove(tempDir)
+  }
+}
+
+/**
+ * POST /splice-components/:courseCode
+ *
+ * For each component phrase missing target1/target2 audio:
+ * 1. Find the parent M-LEGO's course_audio record (has word_boundaries)
+ * 2. Download the parent audio from S3
+ * 3. Find the component word(s) in word_boundaries
+ * 4. Splice out the segment with ffmpeg
+ * 5. Upload splice to S3, create course_audio record
+ * 6. Link audio ID to the component phrase
+ */
+app.post('/splice-components/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { dryRun = false, roles = ['target1', 'target2'] } = req.body || {}
+
+    if (currentWork.active) {
+      return res.status(409).json({
+        error: 'Another job is already running',
+        activeJob: { operation: currentWork.operation, courseCode: currentWork.courseCode }
+      })
+    }
+
+    // 1. Load course
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('course_code, known_lang, target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: 'Course not found' })
+    }
+
+    const { target_lang: targetLang } = course
+
+    // 2. Load component phrases missing audio for requested roles
+    const { data: components, error: compError } = await supabase
+      .from('course_practice_phrases')
+      .select('id, seed_number, lego_index, known_text, target_text, target1_audio_id, target2_audio_id')
+      .eq('course_code', courseCode)
+      .eq('phrase_role', 'component')
+      .order('seed_number')
+      .order('lego_index')
+
+    if (compError) throw compError
+    if (!components?.length) {
+      return res.json({ success: true, message: 'No component phrases found', spliced: 0 })
+    }
+
+    // Filter to those actually missing audio
+    const needsSplice = components.filter(c => {
+      if (roles.includes('target1') && !c.target1_audio_id) return true
+      if (roles.includes('target2') && !c.target2_audio_id) return true
+      return false
+    })
+
+    if (!needsSplice.length) {
+      return res.json({ success: true, message: 'All component phrases already have audio', spliced: 0 })
+    }
+
+    // 3. Load parent M-LEGOs for these components
+    const parentSeedNumbers = [...new Set(needsSplice.map(c => c.seed_number))]
+    const { data: parentLegos } = await supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, target_text, type')
+      .eq('course_code', courseCode)
+      .eq('type', 'M')
+      .in('seed_number', parentSeedNumbers)
+
+    const parentMap = new Map()
+    for (const l of (parentLegos || [])) {
+      parentMap.set(`${l.seed_number}:${l.lego_index}`, l)
+    }
+
+    // 4. Load parent M-LEGO audio records (with word boundaries)
+    const parentTexts = [...new Set([...(parentLegos || [])].map(l => normalizeForAudio(l.target_text)))]
+
+    // Batch query parent audio
+    const parentAudioMap = new Map() // normalizedText -> {s3_key, word_boundaries}
+    const BATCH = 200
+    for (let i = 0; i < parentTexts.length; i += BATCH) {
+      const batch = parentTexts.slice(i, i + BATCH)
+      for (const role of roles) {
+        const { data: audioRows } = await supabase
+          .from('course_audio')
+          .select('text_normalized, s3_key, word_boundaries')
+          .eq('course_code', courseCode)
+          .eq('language', targetLang)
+          .eq('role', role)
+          .not('s3_key', 'like', 'pending/%')
+          .not('word_boundaries', 'is', null)
+          .in('text_normalized', batch)
+
+        for (const row of (audioRows || [])) {
+          parentAudioMap.set(`${row.text_normalized}|${role}`, row)
+        }
+      }
+    }
+
+    // 5. Build splice plan
+    const splicePlan = []
+    const skipped = { noParent: 0, noParentAudio: 0, noBoundaries: 0, noMatch: 0 }
+
+    for (const comp of needsSplice) {
+      const parent = parentMap.get(`${comp.seed_number}:${comp.lego_index}`)
+      if (!parent) { skipped.noParent++; continue }
+
+      const parentTextNorm = normalizeForAudio(parent.target_text)
+
+      for (const role of roles) {
+        // Skip if this component already has audio for this role
+        if (role === 'target1' && comp.target1_audio_id) continue
+        if (role === 'target2' && comp.target2_audio_id) continue
+
+        const parentAudio = parentAudioMap.get(`${parentTextNorm}|${role}`)
+        if (!parentAudio) { skipped.noParentAudio++; continue }
+        if (!parentAudio.word_boundaries?.length) { skipped.noBoundaries++; continue }
+
+        const bounds = findComponentBoundaries(comp.target_text, parentAudio.word_boundaries)
+        if (!bounds) { skipped.noMatch++; continue }
+
+        splicePlan.push({
+          componentId: comp.id,
+          componentText: comp.target_text,
+          parentText: parent.target_text,
+          parentS3Key: parentAudio.s3_key,
+          parentWordBoundaries: parentAudio.word_boundaries,
+          role,
+          language: targetLang,
+          startMs: bounds.startMs,
+          endMs: bounds.endMs
+        })
+      }
+    }
+
+    logger.info(`[Splice] Plan: ${splicePlan.length} splices, skipped: ${JSON.stringify(skipped)}`)
+
+    if (dryRun) {
+      return res.json({
+        dryRun: true,
+        courseCode,
+        totalComponents: components.length,
+        needingSplice: needsSplice.length,
+        wouldSplice: splicePlan.length,
+        skipped,
+        samples: splicePlan.slice(0, 15).map(s => ({
+          component: s.componentText,
+          parent: s.parentText.substring(0, 60),
+          role: s.role,
+          startMs: s.startMs,
+          endMs: s.endMs,
+          durationMs: s.endMs - s.startMs
+        }))
+      })
+    }
+
+    if (!splicePlan.length) {
+      return res.json({
+        success: true,
+        message: 'No spliceable components found',
+        spliced: 0,
+        skipped
+      })
+    }
+
+    // 6. Execute splices
+    startWork('splice-components', courseCode, splicePlan.length)
+
+    // Cache downloaded parent audio to avoid re-downloading the same file
+    const parentAudioCache = new Map() // s3Key -> Buffer
+    const results = { success: 0, failed: 0, errors: [] }
+
+    // Process sequentially to manage memory (parent audio files can be large)
+    for (const splice of splicePlan) {
+      if (currentWork.cancelled) break
+
+      try {
+        // Download parent audio (with cache)
+        let parentBuffer = parentAudioCache.get(splice.parentS3Key)
+        if (!parentBuffer) {
+          parentBuffer = await downloadFromS3(splice.parentS3Key)
+          parentAudioCache.set(splice.parentS3Key, parentBuffer)
+        }
+
+        // Splice out the component
+        const { buffer: splicedBuffer, durationMs } = await spliceAudio(
+          parentBuffer, splice.startMs, splice.endMs
+        )
+
+        // Upload to S3
+        const audioId = uuidv4().toUpperCase()
+        const s3Key = `mastered/${audioId}.mp3`
+
+        await s3.send(new PutObjectCommand({
+          Bucket: S3_BUCKET,
+          Key: s3Key,
+          Body: splicedBuffer,
+          ContentType: 'audio/mpeg'
+        }))
+
+        // Insert course_audio record
+        const { data: insertedAudio, error: insertError } = await supabase
+          .from('course_audio')
+          .upsert({
+            course_code: courseCode,
+            text: splice.componentText,
+            text_normalized: normalizeForAudio(splice.componentText),
+            language: splice.language,
+            role: splice.role,
+            voice_id: 'spliced',
+            origin: 'tts',
+            s3_key: s3Key,
+            duration_ms: durationMs
+          }, {
+            onConflict: 'course_code,text_normalized,language,role'
+          })
+          .select('id')
+          .single()
+
+        if (insertError) throw insertError
+
+        // Link audio ID directly to the component phrase
+        const audioCol = splice.role === 'target1' ? 'target1_audio_id' : 'target2_audio_id'
+        await supabase
+          .from('course_practice_phrases')
+          .update({ [audioCol]: insertedAudio.id })
+          .eq('id', splice.componentId)
+
+        results.success++
+        updateWork(`${splice.componentText} (${splice.role})`, true)
+        logger.info(`[Splice] OK: "${splice.componentText}" from "${splice.parentText.substring(0, 30)}..." (${splice.role}, ${durationMs}ms)`)
+
+      } catch (err) {
+        results.failed++
+        results.errors.push({
+          component: splice.componentText,
+          parent: splice.parentText.substring(0, 50),
+          role: splice.role,
+          error: err.message
+        })
+        updateWork(`${splice.componentText} (${splice.role})`, false, err.message)
+        logger.error(`[Splice] FAIL: "${splice.componentText}" - ${err.message}`)
+      }
+    }
+
+    const wasCancelled = currentWork.cancelled
+    endWork()
+
+    if (!wasCancelled && results.success > 0) {
+      await bumpCourseVersion(supabase, courseCode, 'patch')
+    }
+
+    res.json({
+      status: wasCancelled ? 'cancelled' : 'completed',
+      courseCode,
+      total: splicePlan.length,
+      success: results.success,
+      failed: results.failed,
+      skipped,
+      errors: results.errors.slice(0, 20)
+    })
+
+  } catch (err) {
+    endWork()
+    logger.error('[Splice] Error:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
 
 // =============================================================================
 // START SERVER
