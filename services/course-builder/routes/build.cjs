@@ -585,7 +585,10 @@ module.exports = function (ctx) {
         } else if (Array.isArray(comps) && comps.length === 0) {
           emptyCount++;
         } else if (Array.isArray(comps) && comps.length === 1 && kw >= 2) {
-          partialCount++;
+          // Single component equal to the whole LEGO = intentionally indivisible (e.g. reflexive verbs)
+          const compTarget = (comps[0].target || '').trim();
+          const legoTarget = (l.target_text || '').trim();
+          if (compTarget !== legoTarget) partialCount++;
         }
       }
 
