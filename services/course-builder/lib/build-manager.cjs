@@ -6,6 +6,20 @@
 let buildManagerInterval = null;
 
 /**
+ * Check if a claude agent process is still running for a given course.
+ * Looks for 'claude --model' processes whose command line includes the course code.
+ */
+function isAgentRunningForCourse(courseCode) {
+  try {
+    const { execSync } = require('child_process');
+    const output = execSync(`pgrep -af "claude --model" 2>/dev/null || true`, { encoding: 'utf8' });
+    return output.includes(courseCode);
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
  * Get current progress for a course (seeds with decomposed_at).
  */
 async function getBuildProgress(ctx, courseCode) {
@@ -147,8 +161,7 @@ async function checkBuilds(ctx) {
         continue;
       }
 
-      // Final-pass jobs: manual completion only (mass-approve marks complete).
-      // Detect stall by checking if flagged phrase count has changed since last check.
+      // Final-pass jobs: detect agent exit via process check.
       if (job.pass === 'final-pass') {
         const { count: flagged } = await ctx.supabase
           .from('course_practice_phrases')
@@ -156,42 +169,34 @@ async function checkBuilds(ctx) {
           .eq('course_code', courseCode)
           .eq('flagged', true);
 
-        const prevFlagged = job.metadata?.flagged_phrases ?? -1;
         const currentFlagged = flagged || 0;
-        const activityChanged = currentFlagged !== prevFlagged;
-
         const now = new Date();
-        // last_activity tracks when flagged count last changed (agent doing work)
-        const lastActivity = activityChanged
-          ? now.toISOString()
-          : (job.metadata?.last_activity || job.started_at);
-        const minutesSinceActivity = (now - new Date(lastActivity)) / 60000;
+        const minutesSinceStart = (now - new Date(job.started_at)) / 60000;
 
-        // Update with current counts — last_heartbeat is just "manager checked",
-        // last_activity is "agent did something"
         await ctx.supabase.from('build_jobs').update({
           current_seed: currentFlagged,
           last_heartbeat: now.toISOString(),
-          metadata: { ...(job.metadata || {}), flagged_phrases: currentFlagged, last_activity: lastActivity },
+          metadata: { ...(job.metadata || {}), flagged_phrases: currentFlagged },
         }).eq('id', job.id);
 
-        // Mark stalled if no DB activity for 10 minutes (agent probably finished or died)
-        if (minutesSinceActivity > 10) {
-          console.log(`[BUILD] FINAL-PASS STALLED: ${courseCode} (no activity for ${Math.round(minutesSinceActivity)}min, ${currentFlagged} flagged)`);
+        // If no claude process running for this course and it's been > 2 min, agent is done
+        if (minutesSinceStart > 2 && !isAgentRunningForCourse(courseCode)) {
+          console.log(`[BUILD] FINAL-PASS COMPLETE (agent exited): ${courseCode} (${currentFlagged} flagged phrases)`);
           await ctx.supabase.from('build_jobs').update({
-            status: 'stalled',
+            status: 'complete',
+            completed_at: now.toISOString(),
           }).eq('id', job.id);
         }
         continue;
       }
 
       // Unmanaged job types (component-backfill, gender-prep, etc.)
-      // Check for staleness — if no heartbeat for 10 min, mark stalled
-      const minutesSinceHeartbeat = (new Date() - new Date(job.last_heartbeat)) / 60000;
-      if (minutesSinceHeartbeat > 10) {
-        console.log(`[BUILD] STALLED: ${courseCode} ${job.pass} (no heartbeat for ${Math.round(minutesSinceHeartbeat)}min)`);
+      // If agent process is gone and job has been running > 2 min, mark complete
+      const minutesSinceStart2 = (new Date() - new Date(job.started_at)) / 60000;
+      if (minutesSinceStart2 > 2 && !isAgentRunningForCourse(courseCode)) {
+        console.log(`[BUILD] COMPLETE (agent exited): ${courseCode} ${job.pass}`);
         await ctx.supabase.from('build_jobs').update({
-          status: 'stalled',
+          status: 'complete',
           completed_at: new Date().toISOString(),
         }).eq('id', job.id);
       }
