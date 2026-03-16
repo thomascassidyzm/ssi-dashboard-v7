@@ -438,6 +438,16 @@ const previewPhrases = {
     "Vreau să învăț cât mai mult posibil",
     "Asta funcționează foarte bine pentru mine"
   ],
+  ell: [
+    "Προσπαθώ να εξασκούμαι κάθε μέρα",
+    "Θέλω να μάθω όσο περισσότερα μπορώ",
+    "Αυτό λειτουργεί πολύ καλά για μένα"
+  ],
+  hrv: [
+    "Pokušavam vježbati svaki dan",
+    "Želim naučiti što više mogu",
+    "Ovo stvarno dobro funkcionira za mene"
+  ],
   hin: [
     "मैं हर दिन अभ्यास करने की कोशिश कर रहा हूँ",
     "मैं जितना हो सके उतना सीखना चाहता हूँ",
