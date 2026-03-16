@@ -74,7 +74,10 @@ end tell`;
     }
 
     // Try iTerm2 first, fall back to Terminal.app on failure
-    const agent = spawn('osascript', ['-e', itermScript], { stdio: 'pipe', detached: true });
+    // Write osascript to a file too — osascript -e from PM2 can fail silently
+    const osaFile = `/tmp/spawn_osa_${courseCode}_${Date.now()}.scpt`;
+    fs.writeFileSync(osaFile, itermScript);
+    const agent = spawn('osascript', [osaFile], { stdio: 'pipe', detached: true });
     let stderrOutput = '';
     if (agent.stderr) agent.stderr.on('data', (d) => { stderrOutput += d.toString(); });
     agent.on('error', (e) => {
@@ -82,6 +85,7 @@ end tell`;
       launchTerminalApp();
     });
     agent.on('exit', (code) => {
+      try { fs.unlinkSync(osaFile); } catch (_) {}
       if (code === 0) {
         console.log(`[SPAWN] ${label} launched in iTerm2`);
       } else {

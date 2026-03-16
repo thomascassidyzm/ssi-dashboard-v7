@@ -975,7 +975,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1039,7 +1039,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1193,7 +1193,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {

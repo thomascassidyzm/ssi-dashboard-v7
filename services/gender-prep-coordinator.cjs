@@ -139,7 +139,7 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
     // Build the command that Claude will run
     // Use stdin instead of command-line args to avoid length limits
     // Explicitly unset CLAUDECODE to allow nested Claude CLI calls
-    const claudeCmd = `unset CLAUDECODE && cat '${briefFile}' | claude --print --model haiku > '${outputFile}' 2>&1 && touch '${doneFile}'`
+    const claudeCmd = `unset CLAUDECODE ANTHROPIC_API_KEY && cat '${briefFile}' | claude --print --model haiku > '${outputFile}' 2>&1 && touch '${doneFile}'`
 
     if (TERMINAL_MODE === 'headless') {
       // Headless mode: direct spawn (original behavior)
@@ -373,8 +373,14 @@ async function main() {
   const startTime = Date.now()
   const batchResults = await runWithConcurrency(tasks, CONCURRENCY)
 
-  // 7. Collect all results
-  const allResults = batchResults.flat().filter(r => r && r.original)
+  // 7. Collect all results (deduplicate by original_text to avoid upsert conflict)
+  const resultMap = new Map()
+  for (const r of batchResults.flat()) {
+    if (r && r.original && !resultMap.has(r.original)) {
+      resultMap.set(r.original, r)
+    }
+  }
+  const allResults = [...resultMap.values()]
   console.log(`\nTotal variants found: ${allResults.length}`)
 
   // 8. Insert into DB
