@@ -315,7 +315,78 @@ app.post('/api/auth/dev-login', async (req, res) => {
   }
 })
 
-// POST /api/auth/invite — add new user (admin only)
+// POST /api/auth/invite-dashboard — create Supabase Auth account + learner with dashboard access
+app.post('/api/auth/invite-dashboard', async (req, res) => {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+
+  const { email, name, platform_role = 'popty_user', dashboard_courses } = req.body
+  if (!email) return res.status(400).json({ error: 'Email is required' })
+  if (!['ssi_admin', 'popty_user'].includes(platform_role)) {
+    return res.status(400).json({ error: 'Invalid platform_role' })
+  }
+
+  const db = supabaseClient.getClient()
+
+  try {
+    // Check if Supabase Auth account already exists
+    const { data: existingUsers } = await db.auth.admin.listUsers()
+    const existing = existingUsers?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase())
+
+    let authUserId
+    if (existing) {
+      authUserId = existing.id
+      logger.info(`[Invite] Existing auth account found for ${email}: ${authUserId}`)
+    } else {
+      // Create Supabase Auth account (confirmed, no email sent)
+      const { data: newUser, error: createErr } = await db.auth.admin.createUser({
+        email,
+        email_confirm: true,
+      })
+      if (createErr) throw createErr
+      authUserId = newUser.user.id
+      logger.info(`[Invite] Created auth account for ${email}: ${authUserId}`)
+    }
+
+    // Check if learner record exists
+    const { data: existingLearner } = await db
+      .from('learners')
+      .select('id, platform_role, dashboard_courses')
+      .eq('user_id', authUserId)
+      .single()
+
+    if (existingLearner) {
+      // Update existing learner
+      const updates = { platform_role }
+      if (dashboard_courses) updates.dashboard_courses = dashboard_courses
+      await db.from('learners').update(updates).eq('id', existingLearner.id)
+      logger.info(`[Invite] Updated learner ${existingLearner.id} — role: ${platform_role}`)
+      res.json({ success: true, message: `Updated ${email} — they can now sign in to Popty`, learner_id: existingLearner.id })
+    } else {
+      // Create learner record
+      const displayName = name || email.split('@')[0]
+      const { data: newLearner, error: insertErr } = await db
+        .from('learners')
+        .insert({
+          user_id: authUserId,
+          display_name: displayName,
+          platform_role,
+          dashboard_courses: dashboard_courses || null,
+          verified_emails: [email.toLowerCase()],
+        })
+        .select('id')
+        .single()
+      if (insertErr) throw insertErr
+      logger.info(`[Invite] Created learner for ${email}: ${newLearner.id} — role: ${platform_role}`)
+      res.json({ success: true, message: `Invited ${email} — they can now sign in to Popty`, learner_id: newLearner.id })
+    }
+  } catch (err) {
+    logger.error('[Invite] Error:', err)
+    res.status(500).json({ error: err.message || 'Failed to invite user' })
+  }
+})
+
+// POST /api/auth/invite — add new user (admin only) [LEGACY — old dashboard_users flow]
 // PUT /api/auth/invite — edit existing user (admin only)
 app.post('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
 app.put('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
