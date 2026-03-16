@@ -4,12 +4,33 @@ import { getApiUrl } from '../services/api'
 
 // Hardcoded fallback for immediate use before API responds
 const fallbackNames = {
-  'eng': 'English', 'spa': 'Spanish (Spain)', 'fra': 'French', 'deu': 'German',
+  // Core
+  'eng': 'English', 'spa': 'Spanish', 'fra': 'French', 'deu': 'German',
   'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'pol': 'Polish',
   'rus': 'Russian', 'cym': 'Welsh', 'gle': 'Irish', 'gla': 'Scottish Gaelic',
   'zho': 'Chinese', 'cmn': 'Mandarin', 'jpn': 'Japanese', 'kor': 'Korean',
   'ara': 'Arabic', 'hin': 'Hindi', 'tur': 'Turkish', 'swa': 'Swahili',
+  // Romance
+  'ron': 'Romanian', 'cat': 'Catalan', 'eus': 'Basque', 'glg': 'Galician',
+  // Germanic
+  'swe': 'Swedish', 'nor': 'Norwegian', 'dan': 'Danish', 'fin': 'Finnish', 'isl': 'Icelandic',
+  'nob': 'Norwegian (Bokmål)', 'nno': 'Norwegian (Nynorsk)',
+  // Slavic
+  'hrv': 'Croatian', 'srp': 'Serbian', 'bos': 'Bosnian', 'slv': 'Slovenian',
+  'ces': 'Czech', 'slk': 'Slovak', 'ukr': 'Ukrainian', 'bul': 'Bulgarian', 'mkd': 'Macedonian',
+  // Other European
+  'ell': 'Greek', 'hun': 'Hungarian', 'heb': 'Hebrew', 'sqi': 'Albanian',
+  'lit': 'Lithuanian', 'lav': 'Latvian', 'est': 'Estonian',
+  // Asian
+  'tha': 'Thai', 'vie': 'Vietnamese', 'ind': 'Indonesian', 'fil': 'Filipino',
+  'ben': 'Bengali', 'urd': 'Urdu', 'tam': 'Tamil', 'tel': 'Telugu', 'msa': 'Malay',
+  'yue': 'Cantonese',
+  // Other
+  'fas': 'Persian', 'kur': 'Kurdish', 'amh': 'Amharic', 'hau': 'Hausa',
+  'yor': 'Yoruba', 'zul': 'Zulu', 'kat': 'Georgian', 'hye': 'Armenian',
+  'bre': 'Breton', 'cor': 'Cornish',
   // Dialect variants
+  'cym_n': 'Welsh (North)', 'cym_s': 'Welsh (South)',
   'por_br': 'Portuguese (Brazil)', 'spa_mx': 'Spanish (Mexico)',
   'ara_eg': 'Arabic (Egypt)', 'ara_sy': 'Arabic (Syria)',
   'deu_at': 'German (Austria)'
@@ -54,8 +75,14 @@ function getCourseName(code) {
   // Touch reactive dep so computed properties re-evaluate when names load
   void nameVersion.value
   if (!code || !code.includes('_for_')) return code
-  // Prefer display_name from database (handles cym_anthem, cym_n, etc.)
-  if (courseDisplayNames[code]) return courseDisplayNames[code]
+  // Prefer display_name from database — but only if it looks like a proper name
+  // (DB may contain raw codes like "ron for eng" which we should skip)
+  if (courseDisplayNames[code]) {
+    const raw = courseDisplayNames[code]
+    // If display_name looks like "xxx for yyy" where xxx is a 2-3 char code, skip it
+    const beforeFor = raw.replace(/\s+for\s+.+$/i, '').trim()
+    if (!/^[a-z]{2,3}$/i.test(beforeFor)) return raw
+  }
   const [targetPart, knownPart] = code.split('_for_')
   // Try full dialect code first (por_br, spa_mx), then base code (por, spa)
   const targetBase = targetPart.split('_')[0]
