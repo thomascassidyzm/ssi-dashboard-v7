@@ -38,7 +38,7 @@ async function fetchLearner(userId) {
 
   const { data, error: fetchError } = await supabase
     .from('learners')
-    .select('id, user_id, display_name, platform_role, educational_role, verified_emails, created_at')
+    .select('id, user_id, display_name, platform_role, educational_role, verified_emails, dashboard_courses, created_at')
     .eq('user_id', userId)
     .single()
 
@@ -203,11 +203,32 @@ async function getAccessToken() {
 }
 
 /**
- * Check if user can access a course (dashboard users can access all courses)
+ * Check if user can access a specific course in the dashboard.
+ * - ssi_admin / god → all courses
+ * - popty_user → only courses in dashboard_courses (or all if ['*'])
  */
-function canAccessCourse() {
-  return hasDashboardAccess.value
+function canAccessCourse(courseCode) {
+  if (!learner.value) return false
+  // Admins and god get everything
+  if (isAdmin.value) return true
+  // popty_user: check dashboard_courses
+  const dc = learner.value.dashboard_courses
+  if (!dc || dc.length === 0) return false
+  if (dc.includes('*')) return true
+  return dc.includes(courseCode)
 }
+
+/**
+ * Get list of accessible course codes (null = all courses)
+ */
+const accessibleCourses = computed(() => {
+  if (!learner.value) return []
+  if (isAdmin.value) return null // null means all
+  const dc = learner.value.dashboard_courses
+  if (!dc || dc.length === 0) return []
+  if (dc.includes('*')) return null // null means all
+  return dc
+})
 
 export function useAuth() {
   return {
@@ -222,6 +243,7 @@ export function useAuth() {
     isAuthenticated,
     isAdmin,
     hasDashboardAccess,
+    accessibleCourses,
 
     // Methods
     sendOTP,

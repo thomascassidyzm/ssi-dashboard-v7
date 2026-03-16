@@ -497,6 +497,15 @@ router.beforeEach(async (to, from, next) => {
     return next({ name: 'Login', query: { redirect: to.fullPath } })
   }
 
+  // Course-level access check for routes with courseCode param
+  const courseCode = to.params.courseCode
+  if (courseCode && courseCode !== 'new') {
+    const { canAccessCourse } = useAuth()
+    if (!canAccessCourse(courseCode)) {
+      return next({ name: 'MissionControl' })
+    }
+  }
+
   next()
 })
 

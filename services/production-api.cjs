@@ -190,7 +190,7 @@ async function verifySupabaseJWT(token) {
 
     const { data: lr } = await supabaseClient.getClient()
       .from('learners')
-      .select('id, user_id, display_name, platform_role, educational_role')
+      .select('id, user_id, display_name, platform_role, educational_role, dashboard_courses')
       .eq('user_id', user.id)
       .single()
 
@@ -200,11 +200,16 @@ async function verifySupabaseJWT(token) {
     const er = lr.educational_role
     if (pr !== 'ssi_admin' && pr !== 'popty_user' && er !== 'god') return null
 
+    // Course access: admins/god get all, popty_user gets dashboard_courses
+    const isAdminUser = pr === 'ssi_admin' || er === 'god'
+    const dc = lr.dashboard_courses || []
+    const coursesAccess = isAdminUser ? '*' : (dc.includes('*') ? '*' : dc)
+
     return {
       name: lr.display_name,
       email: user.email,
-      role: (pr === 'ssi_admin' || er === 'god') ? 'admin' : 'user',
-      courses: '*', // All dashboard users get full course access
+      role: isAdminUser ? 'admin' : 'user',
+      courses: coursesAccess,
       learner_id: lr.id,
     }
   } catch (err) {
@@ -213,7 +218,15 @@ async function verifySupabaseJWT(token) {
   }
 }
 
-// Helper: extract session from Authorization header and verify admin
+// Helper: check if user has access to a specific course
+function userCanAccessCourse(user, courseCode) {
+  if (!user || !courseCode) return false
+  if (user.courses === '*') return true
+  if (Array.isArray(user.courses)) return user.courses.includes(courseCode)
+  return false
+}
+
+// Helper: extract session from Authorization header and verify dashboard access
 // Tries Supabase JWT first, falls back to old session-based auth
 async function requireAdmin(req, res) {
   const token = req.headers.authorization?.replace('Bearer ', '')
@@ -5200,6 +5213,7 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
         known_text: cycle.known_text,
         target_text: cycle.target_text,
         type: cycle.phrase_role || 'build',
+        introduce: cycle.introduce,
         word_count: cycle.word_count,
         lego_count: cycle.lego_count,
         known_audio_uuid: knownAudioUuid,

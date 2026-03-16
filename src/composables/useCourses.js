@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import api from '../services/api'
 import { getApiUrl } from '../services/api'
+import { useAuth } from './useAuth'
 
 // Hardcoded fallback for immediate use before API responds
 const fallbackNames = {
@@ -139,17 +140,24 @@ async function loadCourses(force = false) {
   }
 }
 
-const courseCount = computed(() => courses.value.length)
+// Filtered courses based on user's dashboard_courses access
+const visibleCourses = computed(() => {
+  const { canAccessCourse } = useAuth()
+  return courses.value.filter(c => canAccessCourse(c.code))
+})
+
+const courseCount = computed(() => visibleCourses.value.length)
 
 const inProductionCount = computed(() => {
-  return courses.value.filter(c => {
+  return visibleCourses.value.filter(c => {
     return c.stats?.seeds > 0 || c.stats?.completedSeeds > 0
   }).length
 })
 
 export function useCourses() {
   return {
-    courses,
+    courses: visibleCourses,
+    allCourses: courses, // unfiltered, for admin use if needed
     loading,
     loadCourses,
     courseCount,
