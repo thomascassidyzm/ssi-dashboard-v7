@@ -464,6 +464,9 @@ const previewPhrases = {
   ]
 }
 
+// Live seed phrases fetched from DB (keyed by 'known' / 'target')
+const livePhrases = ref({ known: [], target: [] })
+
 // Current phrase index per role (for cycling through phrases)
 const phraseIndex = ref({})
 
@@ -531,6 +534,10 @@ function getLanguageForRole(roleId) {
 }
 
 function getPhrasesForRole(roleId) {
+  const role = roles.find(r => r.id === roleId)
+  const side = role?.lang === 'target' ? 'target' : 'known'
+  if (livePhrases.value[side].length > 0) return livePhrases.value[side]
+  // Fallback to hardcoded phrases if no seeds loaded
   const lang = getLanguageForRole(roleId)
   return previewPhrases[lang] || previewPhrases['default']
 }
@@ -545,6 +552,20 @@ function cyclePhrase(roleId) {
   const phrases = getPhrasesForRole(roleId)
   const current = phraseIndex.value[roleId] || 0
   phraseIndex.value[roleId] = (current + 1) % phrases.length
+}
+
+async function loadSeedPhrases() {
+  try {
+    const resp = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/seed-phrases-preview`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (!resp.ok) return
+    const data = await resp.json()
+    if (data.known?.length) livePhrases.value.known = data.known
+    if (data.target?.length) livePhrases.value.target = data.target
+  } catch (e) {
+    // Fallback to hardcoded phrases silently
+  }
 }
 
 function formatSpeed(speed) {
@@ -784,12 +805,18 @@ function onAudioEnded() {
 
 // Watch for course code changes
 watch(() => props.courseCode, () => {
-  if (props.courseCode) loadConfig()
+  if (props.courseCode) {
+    loadConfig()
+    loadSeedPhrases()
+  }
 })
 
 // Load on mount
 onMounted(() => {
-  if (props.courseCode) loadConfig()
+  if (props.courseCode) {
+    loadConfig()
+    loadSeedPhrases()
+  }
 })
 </script>
 

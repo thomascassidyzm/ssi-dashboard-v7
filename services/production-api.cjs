@@ -1075,6 +1075,37 @@ app.get('/api/voices/discover/:language', async (req, res) => {
   }
 })
 
+// GET /api/courses/:courseCode/seed-phrases-preview - Get sample phrases from seeds for voice testing
+app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    // Pick ~10 seeds spread across the course for variety
+    const { data: seeds } = await supabase
+      .from('course_seeds')
+      .select('known_text, target_text')
+      .eq('course_code', courseCode)
+      .not('known_text', 'is', null)
+      .not('target_text', 'is', null)
+      .order('seed_number')
+
+    if (!seeds || seeds.length === 0) {
+      return res.json({ known: [], target: [] })
+    }
+
+    // Sample ~10 evenly spaced seeds
+    const step = Math.max(1, Math.floor(seeds.length / 10))
+    const sampled = seeds.filter((_, i) => i % step === 0).slice(0, 10)
+
+    res.json({
+      known: sampled.map(s => s.known_text),
+      target: sampled.map(s => s.target_text)
+    })
+  } catch (error) {
+    logger.error(`[SeedPhrases] Error loading preview phrases for ${courseCode}:`, error)
+    res.status(500).json({ known: [], target: [] })
+  }
+})
+
 // POST /api/voices/preview - Generate a voice preview audio sample
 app.post('/api/voices/preview', async (req, res) => {
   const { voiceId, text, speed, provider } = req.body
