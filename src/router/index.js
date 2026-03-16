@@ -479,11 +479,24 @@ const router = createRouter({
   }
 })
 
-// Page title only - auth disabled for now
-router.beforeEach((to, from, next) => {
+// Auth guard + page title
+router.beforeEach(async (to, from, next) => {
   document.title = to.meta.title
     ? `${to.meta.title} - Popty`
     : 'Popty v14.0.0 - SSi Course Production Dashboard'
+
+  // Public routes (login, auth verify) don't need auth
+  if (to.meta.public) return next()
+
+  const { isAuthenticated, hasDashboardAccess, initAuth } = useAuth()
+
+  // Initialize auth if not already done (first page load)
+  await initAuth()
+
+  if (!isAuthenticated.value || !hasDashboardAccess.value) {
+    return next({ name: 'Login', query: { redirect: to.fullPath } })
+  }
+
   next()
 })
 

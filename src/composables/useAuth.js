@@ -1,170 +1,212 @@
 /**
- * Auth Composable
- * Manages authentication state and operations
+ * Auth Composable - Supabase Auth (email OTP)
+ *
+ * Uses the same Supabase Auth as the learning app.
+ * Dashboard access requires platform_role in ('ssi_admin', 'popty_user')
+ * or educational_role = 'god'.
  */
 
-import { ref, computed, watch } from 'vue'
-import api from '../services/api'
+import { ref, computed } from 'vue'
+import { supabase } from '../services/supabase'
 
-const SESSION_KEY = 'ssi_session'
-const USER_KEY = 'ssi_user'
-
-// Reactive state
-const session = ref(localStorage.getItem(SESSION_KEY) || null)
-const user = ref(JSON.parse(localStorage.getItem(USER_KEY) || 'null'))
+// Reactive state (module-level so it's shared across all useAuth() calls)
+const session = ref(null)
+const user = ref(null)       // Supabase Auth user
+const learner = ref(null)    // learners table row
 const loading = ref(false)
 const error = ref(null)
+const initialized = ref(false)
 
 // Computed
-const isAuthenticated = computed(() => !!session.value && !!user.value)
-const isAdmin = computed(() => user.value?.role === 'admin')
-
-// Persist to localStorage
-watch(session, (val) => {
-  if (val) localStorage.setItem(SESSION_KEY, val)
-  else localStorage.removeItem(SESSION_KEY)
+const isAuthenticated = computed(() => !!session.value && !!learner.value)
+const isAdmin = computed(() => {
+  if (!learner.value) return false
+  return learner.value.platform_role === 'ssi_admin' || learner.value.educational_role === 'god'
+})
+const hasDashboardAccess = computed(() => {
+  if (!learner.value) return false
+  const pr = learner.value.platform_role
+  const er = learner.value.educational_role
+  return pr === 'ssi_admin' || pr === 'popty_user' || er === 'god'
 })
 
-watch(user, (val) => {
-  if (val) localStorage.setItem(USER_KEY, JSON.stringify(val))
-  else localStorage.removeItem(USER_KEY)
-}, { deep: true })
-
 /**
- * Request magic link
+ * Fetch the learner record for the current auth user
  */
-async function requestMagicLink(email) {
-  loading.value = true
-  error.value = null
+async function fetchLearner(userId) {
+  if (!supabase) return null
 
-  try {
-    const response = await fetch('/api/auth/request-link', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    })
+  const { data, error: fetchError } = await supabase
+    .from('learners')
+    .select('id, user_id, display_name, platform_role, educational_role, verified_emails, created_at')
+    .eq('user_id', userId)
+    .single()
 
-    const data = await response.json()
-
-    if (!response.ok) {
-      throw new Error(data.error || 'Failed to send magic link')
-    }
-
-    return data
-  } catch (err) {
-    error.value = err.message
-    throw err
-  } finally {
-    loading.value = false
-  }
-}
-
-/**
- * Verify magic link token
- */
-async function verifyToken(token) {
-  loading.value = true
-  error.value = null
-
-  try {
-    const response = await fetch(`/api/auth/verify?token=${token}`)
-    const data = await response.json()
-
-    if (!response.ok) {
-      throw new Error(data.error || 'Invalid or expired link')
-    }
-
-    session.value = data.session
-    user.value = data.user
-
-    return data
-  } catch (err) {
-    error.value = err.message
-    throw err
-  } finally {
-    loading.value = false
-  }
-}
-
-/**
- * Check current session
- */
-async function checkSession() {
-  if (!session.value) return null
-
-  try {
-    const response = await fetch('/api/auth/me', {
-      headers: { 'Authorization': `Bearer ${session.value}` }
-    })
-
-    if (!response.ok) {
-      // Session invalid, clear it
-      session.value = null
-      user.value = null
-      return null
-    }
-
-    const data = await response.json()
-    user.value = data.user
-    return data.user
-  } catch (err) {
-    console.error('[Auth] Session check failed:', err)
+  if (fetchError) {
+    console.warn('[Auth] No learner record found for user:', userId)
     return null
+  }
+
+  return data
+}
+
+/**
+ * Send OTP code to email via Supabase Auth
+ */
+async function sendOTP(email) {
+  loading.value = true
+  error.value = null
+
+  try {
+    const { error: otpError } = await supabase.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: false }
+    })
+
+    if (otpError) {
+      // "Signups not allowed" means user doesn't have a Supabase Auth account
+      if (otpError.message?.includes('Signups not allowed') || otpError.message?.includes('not allowed')) {
+        throw new Error('No account found for this email. Contact an SSi admin for access.')
+      }
+      throw otpError
+    }
+
+    return { success: true }
+  } catch (err) {
+    error.value = err.message
+    throw err
+  } finally {
+    loading.value = false
+  }
+}
+
+/**
+ * Verify OTP code
+ */
+async function verifyOTP(email, token) {
+  loading.value = true
+  error.value = null
+
+  try {
+    const { data, error: verifyError } = await supabase.auth.verifyOtp({
+      email,
+      token,
+      type: 'email'
+    })
+
+    if (verifyError) throw verifyError
+
+    // Session is set automatically by Supabase, onAuthStateChange will fire
+    // But we also check dashboard access immediately
+    if (data.user) {
+      const lr = await fetchLearner(data.user.id)
+      if (!lr) {
+        // User exists in Supabase Auth but has no learner record
+        await supabase.auth.signOut()
+        throw new Error('No dashboard access. Contact an SSi admin.')
+      }
+
+      const pr = lr.platform_role
+      const er = lr.educational_role
+      if (pr !== 'ssi_admin' && pr !== 'popty_user' && er !== 'god') {
+        await supabase.auth.signOut()
+        throw new Error('You don\'t have dashboard access. Contact an SSi admin.')
+      }
+
+      learner.value = lr
+    }
+
+    return data
+  } catch (err) {
+    error.value = err.message
+    throw err
+  } finally {
+    loading.value = false
+  }
+}
+
+/**
+ * Initialize auth — check for existing session, set up listener
+ */
+async function initAuth() {
+  if (!supabase || initialized.value) return
+
+  initialized.value = true
+  loading.value = true
+
+  try {
+    // Check for existing session
+    const { data: { session: existingSession } } = await supabase.auth.getSession()
+
+    if (existingSession?.user) {
+      session.value = existingSession
+      user.value = existingSession.user
+      const lr = await fetchLearner(existingSession.user.id)
+
+      if (lr) {
+        const pr = lr.platform_role
+        const er = lr.educational_role
+        if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') {
+          learner.value = lr
+        } else {
+          // Has account but no dashboard access — sign out
+          await supabase.auth.signOut()
+          session.value = null
+          user.value = null
+        }
+      } else {
+        // No learner record — sign out
+        await supabase.auth.signOut()
+        session.value = null
+        user.value = null
+      }
+    }
+
+    // Listen for auth changes (sign in, sign out, token refresh)
+    supabase.auth.onAuthStateChange(async (event, newSession) => {
+      session.value = newSession
+      user.value = newSession?.user || null
+
+      if (event === 'SIGNED_IN' && newSession?.user) {
+        const lr = await fetchLearner(newSession.user.id)
+        learner.value = lr
+      } else if (event === 'SIGNED_OUT') {
+        learner.value = null
+      }
+    })
+  } catch (err) {
+    console.error('[Auth] Init error:', err)
+  } finally {
+    loading.value = false
   }
 }
 
 /**
  * Logout
  */
-function logout() {
+async function logout() {
+  if (supabase) {
+    await supabase.auth.signOut()
+  }
   session.value = null
   user.value = null
+  learner.value = null
 }
 
 /**
- * Dev bypass login - skips magic link for testing
- * Only works in development mode
+ * Get the current access token (for API calls to production-api)
  */
-async function devBypassLogin(email) {
-  if (import.meta.env.PROD) {
-    throw new Error('Dev bypass not available in production')
-  }
-
-  loading.value = true
-  error.value = null
-
-  try {
-    const response = await fetch('/api/auth/dev-login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    })
-
-    const data = await response.json()
-
-    if (!response.ok) {
-      throw new Error(data.error || 'Dev login failed')
-    }
-
-    session.value = data.session
-    user.value = data.user
-
-    return data
-  } catch (err) {
-    error.value = err.message
-    throw err
-  } finally {
-    loading.value = false
-  }
+async function getAccessToken() {
+  if (!supabase) return null
+  const { data: { session: s } } = await supabase.auth.getSession()
+  return s?.access_token || null
 }
 
 /**
- * Check if user can access a course
+ * Check if user can access a course (dashboard users can access all courses)
  */
-function canAccessCourse(courseCode) {
-  if (!user.value) return false
-  if (user.value.role === 'admin' || user.value.courses === '*') return true
-  return user.value.courses?.includes(courseCode)
+function canAccessCourse() {
+  return hasDashboardAccess.value
 }
 
 export function useAuth() {
@@ -172,19 +214,21 @@ export function useAuth() {
     // State
     session,
     user,
+    learner,
     loading,
     error,
 
     // Computed
     isAuthenticated,
     isAdmin,
+    hasDashboardAccess,
 
     // Methods
-    requestMagicLink,
-    verifyToken,
-    checkSession,
+    sendOTP,
+    verifyOTP,
+    initAuth,
     logout,
+    getAccessToken,
     canAccessCourse,
-    devBypassLogin
   }
 }

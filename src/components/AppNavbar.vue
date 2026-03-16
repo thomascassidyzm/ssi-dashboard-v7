@@ -23,7 +23,7 @@
         </router-link>
       </nav>
 
-      <!-- Right: Summary + Env + Course Switcher -->
+      <!-- Right: Summary + Env + Course Switcher + User -->
       <div class="navbar-right">
         <span v-if="showSummary && !loading" class="course-summary">
           <span class="summary-value">{{ courseCount }}</span> courses
@@ -34,6 +34,14 @@
           <EnvironmentSwitcher />
         </div>
         <CourseSwitcherDropdown />
+        <button
+          v-if="isAuthenticated"
+          @click="handleLogout"
+          class="logout-btn"
+          :title="learner?.display_name || user?.email || 'Sign out'"
+        >
+          {{ userInitial }}
+        </button>
       </div>
     </div>
   </header>
@@ -41,14 +49,27 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useCourses } from '../composables/useCourses'
+import { useAuth } from '../composables/useAuth'
 import { getApiUrl } from '../services/api'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 
 const route = useRoute()
+const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
+const { isAuthenticated, user, learner, logout } = useAuth()
+
+const userInitial = computed(() => {
+  const name = learner.value?.display_name || user.value?.email || ''
+  return name.charAt(0).toUpperCase() || '?'
+})
+
+async function handleLogout() {
+  await logout()
+  router.push({ name: 'Login' })
+}
 
 const activeJobCount = ref(0)
 
@@ -294,6 +315,29 @@ onMounted(() => {
 .summary-sep {
   margin: 0 0.25rem;
   opacity: 0.5;
+}
+
+.logout-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
+  color: var(--color-paper-dim, #c1c1bb);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logout-btn:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: white;
 }
 
 /* Responsive — tabs MUST always be visible */

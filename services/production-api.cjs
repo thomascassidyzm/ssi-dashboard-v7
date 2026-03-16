@@ -182,11 +182,49 @@ async function authDeleteSession(sessionId) {
     .from('dashboard_sessions').delete().eq('session_id', sessionId)
 }
 
+// Helper: verify Supabase JWT and check dashboard access
+async function verifySupabaseJWT(token) {
+  try {
+    const { data: { user }, error } = await supabaseClient.getClient().auth.getUser(token)
+    if (error || !user) return null
+
+    const { data: lr } = await supabaseClient.getClient()
+      .from('learners')
+      .select('id, user_id, display_name, platform_role, educational_role')
+      .eq('user_id', user.id)
+      .single()
+
+    if (!lr) return null
+
+    const pr = lr.platform_role
+    const er = lr.educational_role
+    if (pr !== 'ssi_admin' && pr !== 'popty_user' && er !== 'god') return null
+
+    return {
+      name: lr.display_name,
+      email: user.email,
+      role: (pr === 'ssi_admin' || er === 'god') ? 'admin' : 'user',
+      courses: '*', // All dashboard users get full course access
+      learner_id: lr.id,
+    }
+  } catch (err) {
+    logger.error('[Auth] Supabase JWT verification error:', err)
+    return null
+  }
+}
+
 // Helper: extract session from Authorization header and verify admin
+// Tries Supabase JWT first, falls back to old session-based auth
 async function requireAdmin(req, res) {
-  const sessionId = req.headers.authorization?.replace('Bearer ', '')
-  if (!sessionId) { res.status(401).json({ error: 'Authentication required' }); return null }
-  const user = await authValidateSession(sessionId)
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
+
+  // Try Supabase JWT first (new auth)
+  const supabaseUser = await verifySupabaseJWT(token)
+  if (supabaseUser) return supabaseUser
+
+  // Fall back to old session-based auth (for backwards compat during transition)
+  const user = await authValidateSession(token)
   if (!user || user.role !== 'admin') { res.status(403).json({ error: 'Admin access required' }); return null }
   return user
 }
@@ -225,11 +263,17 @@ app.post('/api/auth/generate-code', async (req, res) => {
   }
 })
 
-// GET /api/auth/me — get current user from session
+// GET /api/auth/me — get current user from session (supports both JWT and old sessions)
 app.get('/api/auth/me', async (req, res) => {
-  const sessionId = req.headers.authorization?.replace('Bearer ', '')
-  if (!sessionId) return res.status(401).json({ error: 'No session' })
-  const user = await authValidateSession(sessionId)
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) return res.status(401).json({ error: 'No session' })
+
+  // Try Supabase JWT first
+  const supabaseUser = await verifySupabaseJWT(token)
+  if (supabaseUser) return res.json({ user: supabaseUser })
+
+  // Fall back to old session
+  const user = await authValidateSession(token)
   if (!user) return res.status(401).json({ error: 'Invalid or expired session' })
   res.json({ user })
 })

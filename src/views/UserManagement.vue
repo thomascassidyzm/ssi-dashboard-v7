@@ -174,7 +174,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../composables/useAuth'
 
-const { session } = useAuth()
+const { getAccessToken } = useAuth()
 
 // Available courses (in production, fetch from API)
 const availableCourses = ref([
@@ -218,11 +218,12 @@ async function inviteUser() {
   inviteLink.value = null
 
   try {
+    const token = await getAccessToken()
     const response = await fetch('/api/auth/invite', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${session.value}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(newUser.value)
     })
@@ -263,9 +264,10 @@ async function loadUsers() {
   loadingUsers.value = true
 
   try {
+    const token = await getAccessToken()
     const response = await fetch('/api/auth/users', {
       headers: {
-        'Authorization': `Bearer ${session.value}`
+        'Authorization': `Bearer ${token}`
       }
     })
 
@@ -283,10 +285,11 @@ async function deleteUser(email) {
   if (!confirm(`Remove ${email}?`)) return
 
   try {
+    const token = await getAccessToken()
     const response = await fetch(`/api/auth/users?email=${encodeURIComponent(email)}`, {
       method: 'DELETE',
       headers: {
-        'Authorization': `Bearer ${session.value}`
+        'Authorization': `Bearer ${token}`
       }
     })
 
