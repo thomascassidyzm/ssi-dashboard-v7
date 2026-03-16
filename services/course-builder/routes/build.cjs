@@ -638,6 +638,11 @@ module.exports = function (ctx) {
         const { seed_number, lego_index, use = [] } = entry;
         const label = `S${String(seed_number).padStart(4, '0')}L${String(lego_index).padStart(2, '0')}`;
 
+        if (seed_number <= 3) {
+          errors.push({ entry: label, error: 'Seeds 1-3 excluded from backfill (insufficient prior vocab)' });
+          continue;
+        }
+
         if (!use.length) {
           errors.push({ entry: label, error: 'No USE phrases provided' });
           continue;

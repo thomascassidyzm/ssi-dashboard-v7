@@ -51,9 +51,10 @@ async function generateBackfillPhrasesBrief(courseCode, query = {}) {
     }
   }
 
-  // Build list of LEGOs needing phrases
+  // Build list of LEGOs needing phrases (skip seeds 1-3 — too little prior vocab)
   const gaps = [];
   for (const l of legos || []) {
+    if (l.seed_number <= 3) continue;
     const key = `${l.seed_number}:${l.lego_index}`;
     const have = useCounts[key] || 0;
     if (have < minUse) {
