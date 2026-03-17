@@ -556,6 +556,8 @@ app.get('/api/courses', async (req, res) => {
       legacy_app_beta_days: computeBetaDays(c.legacy_app_beta_started_at),
       content_status: c.content_status || 'empty',
       export_ready: c.export_ready || false,
+      created_at: c.created_at || null,
+      updated_at: c.updated_at || null,
       stats: stats[c.course_code] || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
     }))
 

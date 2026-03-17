@@ -7,6 +7,20 @@
           <template v-if="hasActiveFilters">{{ sortedCourses.length }} of </template>{{ courses.length }} courses
           <button v-if="hasActiveFilters" class="clear-all" @click="clearAllFilters" title="Clear all filters">Clear</button>
         </span>
+        <!-- Sort buttons -->
+        <div class="sort-buttons">
+          <button
+            v-for="s in sortOptions"
+            :key="s.key"
+            class="sort-btn"
+            :class="{ active: sortBy === s.key }"
+            @click="toggleSort(s.key)"
+            :title="s.title"
+          >
+            {{ s.label }}
+            <svg v-if="sortBy === s.key" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </button>
+        </div>
       </div>
       <div class="header-right">
         <!-- Filter chips -->
@@ -162,6 +176,13 @@ const openDropdown = ref(null)
 // Active filter selections: { target: 'Spanish', known: 'English', app: 'Live' }
 const activeFilters = ref({})
 
+// Sort options
+const sortOptions = [
+  { key: 'alpha', label: 'A-Z', title: 'Sort alphabetically' },
+  { key: 'created', label: 'Created', title: 'Sort by date created' },
+  { key: 'updated', label: 'Updated', title: 'Sort by last updated' }
+]
+
 // Sort state (persisted)
 const SORT_STORAGE_KEY = 'ssi-pipeline-sort'
 const sortBy = ref(localStorage.getItem(SORT_STORAGE_KEY) || 'alpha')
@@ -177,7 +198,8 @@ function toggleSort(field) {
     sortDesc.value = !sortDesc.value
   } else {
     sortBy.value = field
-    sortDesc.value = false
+    // Date sorts default to newest-first (desc), alpha defaults to A-Z (asc)
+    sortDesc.value = field !== 'alpha'
   }
 }
 
@@ -352,7 +374,17 @@ const sortedCourses = computed(() => {
   // Sort
   const sorted = [...list]
   sorted.sort((a, b) => {
-    const cmp = getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
+    let cmp = 0
+    switch (sortBy.value) {
+      case 'created':
+        cmp = (a.createdAt || '').localeCompare(b.createdAt || '')
+        break
+      case 'updated':
+        cmp = (a.updatedAt || '').localeCompare(b.updatedAt || '')
+        break
+      default: // alpha
+        cmp = getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
+    }
     return sortDesc.value ? -cmp : cmp
   })
 
@@ -448,6 +480,52 @@ function cycleLegacyStatus(course) {
 .clear-all:hover {
   background: rgba(255, 255, 255, 0.15);
   color: var(--color-paper, #f7f7f2);
+}
+
+/* Sort buttons */
+.sort-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 5px;
+  padding: 0.125rem;
+}
+
+.sort-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: var(--color-paper-dim, #c1c1bb);
+  font-size: 0.75rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.sort-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-paper, #f7f7f2);
+}
+
+.sort-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-paper, #f7f7f2);
+}
+
+.sort-arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.sort-arrow.desc {
+  transform: rotate(180deg);
 }
 
 .header-right {

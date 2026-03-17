@@ -129,6 +129,8 @@ async function loadCourses(force = false) {
       content_status: c.content_status,
       export_ready: c.export_ready || false,
       seed_count: c.seed_count,
+      created_at: c.created_at || null,
+      updated_at: c.updated_at || null,
       stats: c.stats || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
     }))
     loaded = true
