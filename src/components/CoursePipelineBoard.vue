@@ -788,7 +788,7 @@ function cycleLegacyStatus(course) {
 .course-name-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-tungsten, #ffa630);
   line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
