@@ -122,3 +122,6 @@ Romanisation follows the convention above.
 
 ### M-LEGO Components
 M-LEGOs MUST declare components. Without them, the DP vocab tiler can't verify phrase tiling.
+
+### Optional Component Introduction (`introduce: false`)
+Set `introduce: false` on a component when it would confuse more than help as a standalone item — single-letter prepositions, particles, or stubs that only make sense attached. The component still exists for tiling but the learner won't hear it solo. Default is `true`.

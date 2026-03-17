@@ -51,6 +51,22 @@ Multi-word phrase. Patterns are inferred through overlap with related A-LEGOs.
 }
 ```
 
+### Optional Component Introduction (`introduce: false`)
+
+M-LEGO components are required for tiling validation, but not all are worth introducing to the learner solo. Set `introduce: false` on components that would confuse more than help — single-letter prepositions, particles, or stubs that only make sense attached.
+
+```json
+{
+  "type": "M", "known": "with you", "target": "s tobom",
+  "components": [
+    { "known": "with", "target": "s", "introduce": false },
+    { "known": "you", "target": "tobom" }
+  ]
+}
+```
+
+The component still exists for tiling and still counts as available vocabulary. Default is `introduce: true`.
+
 ### Overlapping LEGOs (The Teaching Mechanism)
 
 LEGOs do NOT have to tile perfectly to make the SEED. Instead, create **overlapping LEGOs** where A-LEGOs also appear as parts of M-LEGOs. The overlap IS the teaching.

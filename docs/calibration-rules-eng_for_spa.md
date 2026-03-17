@@ -143,6 +143,30 @@ Content-Type: text/markdown
 
 ---
 
+## Optional Component Introduction (`introduce: false`)
+
+M-LEGO components exist for two reasons: (1) tiling validation, (2) pedagogy. These are independent — a component may be needed for tiling but not worth introducing to the learner solo.
+
+Set `introduce: false` on a component when it would confuse more than help as a standalone item:
+- Single-letter prepositions ("s", "a", "de") that are meaningless alone
+- Particles or stubs that only make sense attached to their parent
+- Components that are already well-known from an earlier A-LEGO (no need to re-introduce)
+
+Example:
+```json
+{
+  "type": "M", "known": "with you", "target": "s tobom",
+  "components": [
+    { "known": "with", "target": "s", "introduce": false },
+    { "known": "you", "target": "tobom" }
+  ]
+}
+```
+
+Default is `introduce: true` — only suppress when the component would actively confuse. The component still exists in the DB for tiling and still counts as available vocabulary.
+
+---
+
 ## Common Mistakes to Avoid
 
 1. **Stripping person from conjugated verbs** — "quiero hablar" → "want to speak" (WRONG)
