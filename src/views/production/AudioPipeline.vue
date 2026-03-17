@@ -91,7 +91,7 @@
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
                 <h2 class="text-lg font-semibold text-slate-100">
-                  {{ audioProgress.operation === 'regenerate-role' ? `Regenerating ${audioProgress.role}` : 'Generating Audio' }}
+                  {{ audioProgress.operation === 'regenerate-role' ? `Regenerating ${audioProgress.role}` : 'Generating Missing Audio' }}
                 </h2>
                 <span class="px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded-full font-medium">
                   LIVE
@@ -357,7 +357,7 @@
               </div>
 
               <p class="text-sm text-slate-400 mb-4">
-                Creates introduction audio for all LEGOs using the pattern: "The Spanish for — 'I want' — as in — 'I want to speak Spanish' — is:" — where the target language name is always in the learner's own language. Context phrase is drawn from a USE phrase or seed sentence (~15% intentionally get no context for variety). Target words are played as separate audio files.
+                Generates introduction scripts for LEGOs that are missing presentation text. Pattern: "The Spanish for — 'I want' — as in — 'I want to speak Spanish' — is:" Context is drawn from a USE phrase or seed sentence (~15% get no context for variety).
               </p>
 
               <!-- Action Buttons -->
@@ -374,7 +374,7 @@
                   :disabled="regeneratingPresentations"
                   class="flex-1 px-4 py-2.5 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
                 >
-                  {{ regeneratingPresentations ? 'Working...' : 'Generate' }}
+                  {{ regeneratingPresentations ? 'Working...' : 'Generate Missing' }}
                 </button>
               </div>
 
@@ -577,7 +577,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              {{ isGenerating ? 'Generating...' : startingGeneration ? 'Starting...' : 'Start Generation' }}
+              {{ isGenerating ? 'Generating...' : startingGeneration ? 'Starting...' : 'Generate Missing Audio' }}
             </button>
             <button
               v-if="isGenerating"
@@ -668,7 +668,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
-                  Start Generation ({{ planResult.missing.toLocaleString() }} files)
+                  Generate Missing Audio ({{ planResult.missing.toLocaleString() }} files)
                 </button>
               </div>
               <div v-else class="text-center py-2">
@@ -1327,8 +1327,7 @@ const previewPresentations = async () => {
 
 const executePresentations = async () => {
   const confirmed = confirm(
-    `This will update presentation text for all LEGOs in ${courseCode.value}.\n\n` +
-    `Existing presentation audio will need to be regenerated.\n\n` +
+    `This will generate presentation text for LEGOs that are missing it in ${courseCode.value}.\n\n` +
     `Continue?`
   )
   if (!confirmed) return
