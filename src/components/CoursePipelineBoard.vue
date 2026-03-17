@@ -59,35 +59,23 @@
       </div>
     </div>
 
-    <!-- Column Headers -->
-    <div class="table-header">
-      <span class="th th-course" @click="toggleSort('alpha')">
-        Course
-        <svg v-if="sortBy === 'alpha'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </span>
-      <span class="th th-apps">Apps</span>
-    </div>
-
-    <!-- Course Rows -->
-    <div class="table-body">
-      <TransitionGroup name="row" tag="div">
+    <!-- Course Grid -->
+    <div class="course-grid">
+      <TransitionGroup name="row" tag="div" class="grid-inner">
         <div
-          v-for="(course, idx) in sortedCourses"
+          v-for="course in sortedCourses"
           :key="course.code"
-          class="course-row"
-          :class="{ active: activeCourse === course.code, 'row-even': idx % 2 === 1 }"
+          class="course-card"
+          :class="{ active: activeCourse === course.code }"
           @click="handleCourseClick(course)"
           @mouseenter="activeCourse = course.code"
           @mouseleave="activeCourse = null"
         >
-          <!-- Course code + name -->
-          <span class="cell cell-course">
+          <div class="card-main">
             <span class="course-code-label">{{ course.code }}</span>
             <span class="course-name-label">{{ getFullCourseName(course.code) }}</span>
-          </span>
-
-          <!-- App status badges -->
-          <span class="cell cell-apps">
+          </div>
+          <span class="card-apps">
             <button
               class="app-badge"
               :class="[
@@ -674,90 +662,49 @@ function cycleLegacyStatus(course) {
   color: var(--color-paper-dim, #c1c1bb);
 }
 
-/* Table header */
-.table-header {
-  display: grid;
-  grid-template-columns: 1fr 80px;
-  align-items: center;
-  padding: 0.5rem 1.25rem;
-  border-bottom: 1px solid var(--color-graphite, #475569);
-  background: var(--color-slate, #334155);
+/* Course grid */
+.course-grid {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem;
 }
 
-.th {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-paper-dim, #c1c1bb);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.grid-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.375rem;
+}
+
+.course-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
   cursor: pointer;
-  user-select: none;
+  transition: all 0.12s;
+}
+
+.course-card:hover,
+.course-card.active {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+  min-width: 0;
+}
+
+.card-apps {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  transition: color 0.15s;
-}
-
-.th:hover {
-  color: var(--color-paper, #f7f7f2);
-}
-
-.th-apps {
-  justify-content: center;
-  cursor: default;
-}
-
-.sort-arrow {
   flex-shrink: 0;
-  transition: transform 0.2s;
-}
-
-.sort-arrow.desc {
-  transform: rotate(180deg);
-}
-
-/* Table body */
-.table-body {
-  flex: 1;
-  overflow-y: auto;
-}
-
-/* Course row */
-.course-row {
-  display: grid;
-  grid-template-columns: 1fr 80px;
-  align-items: center;
-  padding: 0.625rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  cursor: pointer;
-  transition: background 0.12s;
-}
-
-.course-row.row-even {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.course-row:hover,
-.course-row.active {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.course-row:last-child {
-  border-bottom: none;
-}
-
-/* Cells */
-.cell {
-  display: flex;
-  align-items: center;
-}
-
-/* Course code + name */
-.cell-course {
-  padding-right: 1rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.125rem;
+  margin-left: 0.5rem;
 }
 
 .course-code-label {
@@ -772,13 +719,13 @@ function cycleLegacyStatus(course) {
   font-size: 0.75rem;
   color: var(--color-paper-dim, #c1c1bb);
   line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* App badges */
-.cell-apps {
-  justify-content: center;
-  gap: 0.25rem;
-}
 
 .app-badge {
   width: 26px;
@@ -960,7 +907,16 @@ function cycleLegacyStatus(course) {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 1100px) {
+  .grid-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid-inner {
+    grid-template-columns: 1fr;
+  }
   .board-header {
     flex-direction: column;
     align-items: stretch;
