@@ -13,6 +13,39 @@ const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 module.exports = function (ctx) {
   const router = Router();
 
+  // Helper: append a shell-level job completion curl to any claude command.
+  // Uses `;` so it fires regardless of how the Claude process exits.
+  function withJobDone(cmd, jobId) {
+    if (!jobId) return cmd;
+    return `${cmd} ; curl -s -X POST "http://localhost:${ctx.config.PORT || 3471}/api/build/job-done/${jobId}" > /dev/null 2>&1`;
+  }
+
+  // POST /build/job-done/:jobId — Shell wrapper calls this when Claude process exits
+  router.post('/build/job-done/:jobId', async (req, res) => {
+    try {
+      const { jobId } = req.params;
+      const { data: job } = await ctx.supabase
+        .from('build_jobs')
+        .select('id, status')
+        .eq('id', jobId)
+        .single();
+
+      if (!job) return res.json({ ok: false, error: 'Job not found' });
+      if (job.status !== 'running') return res.json({ ok: true, already: job.status });
+
+      await ctx.supabase.from('build_jobs').update({
+        status: 'complete',
+        completed_at: new Date().toISOString(),
+      }).eq('id', jobId);
+
+      console.log(`[BUILD] JOB DONE (shell wrapper): ${jobId}`);
+      res.json({ ok: true });
+    } catch (err) {
+      console.error(`[BUILD] job-done error:`, err.message);
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
   // POST /build/stop/:courseCode
   router.post('/build/stop/:courseCode', async (req, res) => {
     const result = await stopBuild(ctx, req.params.courseCode);
@@ -440,8 +473,15 @@ module.exports = function (ctx) {
         .eq('course_code', courseCode).eq('pass', 'final-pass').in('status', ['running']).maybeSingle();
       if (activeJob) return res.status(409).json({ error: 'Final Pass already running' });
 
-      const agents = req.query.agents || '6';
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass-orchestrator?agents=${agents}`);
+      const seeds = req.query.seeds || null; // comma-separated seed numbers, or null for all
+      const seedList = seeds ? seeds.split(',').map(Number).filter(n => n > 0) : null;
+      const agents = req.query.agents || (seedList && seedList.length <= 20 ? Math.min(seedList.length, 3) : 6);
+
+      // Build query params for brief
+      const briefParams = new URLSearchParams({ agents: String(agents) });
+      if (seedList) briefParams.set('seeds', seeds);
+
+      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass-orchestrator?${briefParams}`);
       if (!briefResp.ok) throw new Error(`Failed to fetch final-pass-orchestrator brief: ${briefResp.status}`);
       const brief = await briefResp.text();
 
@@ -450,15 +490,16 @@ module.exports = function (ctx) {
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+      const totalSeeds = seedList ? seedList.length : 300;
 
       const { data: jobData } = await ctx.supabase
         .from('build_jobs')
         .insert({
           course_code: courseCode, pass: 'final-pass', status: 'running',
-          current_seed: 0, seeds_completed: 0, total_seeds: 300,
+          current_seed: 0, seeds_completed: 0, total_seeds: totalSeeds,
           started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
           requested_by: 'dashboard', terminal: effectiveTerminal,
-          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'final-pass'
+          agent_count: parseInt(agents), respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'final-pass'
         })
         .select('id').single();
 
@@ -503,7 +544,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Component Backfill', courseCode);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: 'Component backfill agent spawned' });
@@ -544,7 +585,11 @@ module.exports = function (ctx) {
         } else if (Array.isArray(comps) && comps.length === 0) {
           emptyCount++;
         } else if (Array.isArray(comps) && comps.length === 1 && kw >= 2) {
-          partialCount++;
+          // Single component: if its target is a substring of the LEGO target,
+          // the residual is structural (e.g. Greek να, Spanish se) — not a gap.
+          const compTarget = (comps[0].target || '').trim();
+          const legoTarget = (l.target_text || '').trim();
+          if (compTarget !== legoTarget && !legoTarget.includes(compTarget)) partialCount++;
         }
       }
 
@@ -563,6 +608,202 @@ module.exports = function (ctx) {
       });
     } catch (err) {
       res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Phrase Backfill ──────────────────────────────────────────────────────
+  //
+  // POST /build/backfill-submit/:courseCode — Add USE phrases to existing LEGOs.
+  // Unlike /v2/phrases which enforces minimums, this appends to existing phrases
+  // and continues numbering from where existing phrases left off.
+  //
+  // POST /build/backfill-phrases/:courseCode — Spawn a backfill agent.
+  // Finds under-threshold LEGOs and spawns a Sonnet agent to write missing USE phrases.
+
+  const { makePhraseId, computeLegoPosition } = require('../lib/phrase-structure.cjs');
+  const { normalizeForContainment } = require('../lib/text-normalization.cjs');
+
+  router.post('/build/backfill-submit/:courseCode', async (req, res) => {
+    try {
+      const courseCode = req.params.courseCode;
+      const { phrases } = req.body;
+
+      if (!phrases || !Array.isArray(phrases) || phrases.length === 0) {
+        return res.status(400).json({ error: 'phrases must be a non-empty array' });
+      }
+
+      const errors = [];
+      let totalInserted = 0;
+
+      for (const entry of phrases) {
+        const { seed_number, lego_index, use = [] } = entry;
+        const label = `S${String(seed_number).padStart(4, '0')}L${String(lego_index).padStart(2, '0')}`;
+
+        if (seed_number <= 3) {
+          errors.push({ entry: label, error: 'Seeds 1-3 excluded from backfill (insufficient prior vocab)' });
+          continue;
+        }
+
+        if (!use.length) {
+          errors.push({ entry: label, error: 'No USE phrases provided' });
+          continue;
+        }
+
+        // Verify LEGO exists and is new
+        const { data: lego, error: legoErr } = await ctx.supabase
+          .from('course_legos')
+          .select('known_text, target_text, type, is_new')
+          .eq('course_code', courseCode)
+          .eq('seed_number', seed_number)
+          .eq('lego_index', lego_index)
+          .single();
+
+        if (legoErr || !lego) {
+          errors.push({ entry: label, error: 'LEGO not found' });
+          continue;
+        }
+        if (!lego.is_new) {
+          errors.push({ entry: label, error: 'LEGO is duplicate (is_new: false)' });
+          continue;
+        }
+
+        // Check containment — each phrase must contain the LEGO target
+        const legoTargetNorm = normalizeForContainment(lego.target_text);
+        const containmentFails = use.filter(p => {
+          const target = p.target_text || p.target || '';
+          return !normalizeForContainment(target).includes(legoTargetNorm);
+        });
+        if (containmentFails.length > 0) {
+          errors.push({ entry: label, error: `${containmentFails.length} phrase(s) don't contain LEGO target "${lego.target_text}"` });
+          continue;
+        }
+
+        // Get max existing USE phrase number from IDs (not count — IDs may have gaps)
+        const { data: existingUse } = await ctx.supabase
+          .from('course_practice_phrases')
+          .select('id')
+          .eq('course_code', courseCode)
+          .eq('seed_number', seed_number)
+          .eq('lego_index', lego_index)
+          .eq('phrase_role', 'use');
+
+        let maxUseNum = 0;
+        for (const row of existingUse || []) {
+          // ID format: {course_code}:S{NNNN}L{NN}U{NN}
+          const match = row.id.match(/U(\d+)$/);
+          if (match) maxUseNum = Math.max(maxUseNum, parseInt(match[1], 10));
+        }
+
+        // Get max position for this LEGO to continue from
+        const { data: maxPosRow } = await ctx.supabase
+          .from('course_practice_phrases')
+          .select('position')
+          .eq('course_code', courseCode)
+          .eq('seed_number', seed_number)
+          .eq('lego_index', lego_index)
+          .order('position', { ascending: false })
+          .limit(1);
+
+        const startUseNum = maxUseNum + 1;
+        const startPosition = (maxPosRow?.[0]?.position || 0) + 1;
+
+        // Build phrase rows
+        const rows = use.map((p, i) => ({
+          id: makePhraseId(courseCode, seed_number, lego_index, 'use', startUseNum + i),
+          course_code: courseCode,
+          seed_number,
+          lego_index,
+          position: startPosition + i,
+          known_text: p.known_text || p.known,
+          target_text: p.target_text || p.target,
+          word_count: (p.target_text || p.target).length,
+          lego_count: ((p.known_text || p.known).match(/\s+/g) || []).length + 1,
+          phrase_role: 'use',
+          connected_lego_ids: [],
+          lego_position: computeLegoPosition(p.target_text || p.target, lego.target_text),
+          metadata: {
+            format: 'build_use',
+            pipeline: 'backfill',
+            score: p.score || p.target_score,
+            target_score: p.target_score,
+            scored_at: new Date().toISOString()
+          },
+          status: 'draft',
+          version: 1
+        }));
+
+        const { error: insertErr } = await ctx.supabase
+          .from('course_practice_phrases')
+          .upsert(rows, { onConflict: 'id' });
+
+        if (insertErr) {
+          errors.push({ entry: label, error: `Insert failed: ${insertErr.message}` });
+          continue;
+        }
+        totalInserted += rows.length;
+      }
+
+      console.log(`[BACKFILL] ${courseCode}: ${totalInserted} phrases inserted, ${errors.length} errors`);
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        phrases_inserted: totalInserted,
+        entries_processed: phrases.length,
+        errors: errors.length > 0 ? errors : undefined
+      });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // POST /build/backfill-phrases/:courseCode — Spawn backfill agent
+  router.post('/build/backfill-phrases/:courseCode', async (req, res) => {
+    const { courseCode } = req.params;
+    const terminal = req.query.terminal || 'iTerm2';
+
+    try {
+      // Fetch brief
+      const briefUrl = `http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/backfill-phrases`;
+      const briefResp = await fetch(briefUrl);
+      if (!briefResp.ok) throw new Error(`Failed to fetch backfill brief: ${briefResp.status}`);
+      const brief = await briefResp.text();
+
+      const tmpFile = `/tmp/backfill_phrases_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      // Create build_jobs row
+      const { data: jobRow } = await ctx.supabase
+        .from('build_jobs')
+        .insert({
+          course_code: courseCode,
+          pass: 'backfill-phrases',
+          status: 'running',
+          started_at: new Date().toISOString(),
+          last_heartbeat: new Date().toISOString()
+        })
+        .select('id')
+        .single();
+
+      const jobId = jobRow?.id;
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      let claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      claudeCmd = withJobDone(claudeCmd, jobId);
+      spawnInTerminal(ctx, claudeCmd, 'Backfill', courseCode);
+
+      await ctx.supabase.from('orchestrator_messages').insert({
+        course_code: courseCode,
+        direction: 'agent_to_human',
+        message: `Backfill agent spawned — adding USE phrases to under-threshold LEGOs`,
+        status: 'pending',
+        metadata: { action: 'backfill_phrases_spawned' }
+      });
+
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: 'Backfill agent spawned' });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
     }
   });
 

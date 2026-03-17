@@ -8,9 +8,14 @@
  *      GET /:courseCode/build-team-creator         — Team creator (Sonnet) — builds seeds
  *      GET /:courseCode/build-team-checker         — Team checker (Opus) — reviews + submits
  *   4. GET /:courseCode/final-pass                 — Post-build grammar audit
- *   5. Gender expansion                           — service-driven (no brief)
+ *   4b.GET /:courseCode/backfill-phrases           — Top up under-threshold LEGOs
+ *   5. GET /:courseCode/component-backfill         — Fix M-LEGO components
+ *   6. Gender expansion                           — service-driven (no brief)
  *   8. Audio generation                           — service-driven (no brief)
  *   9. Export manifest                            — service-driven (no brief)
+ *
+ * Repair briefs:
+ *   GET /:courseCode/redo                          — Wipe & rebuild broken seeds
  *
  * Deprecated briefs moved to ./deprecated/
  */
@@ -33,6 +38,9 @@ const generateFinalPassReviewerBrief = require('./final-pass-reviewer.cjs');
 
 // Redo: targeted seed rebuild
 const generateRedoBrief = require('./redo.cjs');
+
+// Phrase backfill: add missing USE phrases to under-threshold LEGOs
+const generateBackfillPhrasesBrief = require('./backfill-phrases.cjs');
 
 // Component backfill: M-LEGO component decomposition (Haiku agent)
 const { generateComponentBackfillBrief } = require('./component-backfill.cjs');
@@ -64,6 +72,9 @@ router.get('/:courseCode/final-pass-reviewer', (req, res) => serveBrief(res, gen
 
 // Redo
 router.get('/:courseCode/redo', (req, res) => serveBrief(res, generateRedoBrief, req.params.courseCode, req.query));
+
+// Phrase backfill
+router.get('/:courseCode/backfill-phrases', (req, res) => serveBrief(res, generateBackfillPhrasesBrief, req.params.courseCode, req.query));
 
 // Component backfill
 router.get('/:courseCode/component-backfill', (req, res) => serveBrief(res, generateComponentBackfillBrief, req.params.courseCode, req.query));

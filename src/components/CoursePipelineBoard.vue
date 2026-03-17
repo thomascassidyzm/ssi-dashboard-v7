@@ -1,27 +1,60 @@
 <template>
   <div class="pipeline-board">
-    <!-- Header -->
+    <!-- Header: count + filter chips + search -->
     <div class="board-header">
       <div class="header-left">
         <span class="course-count">
-          <template v-if="stageFilter || searchQuery.trim()">{{ sortedCourses.length }} of </template>{{ courses.length }} courses
-          <button v-if="stageFilter" class="clear-filter" @click="stageFilter = null" title="Clear filter">&times;</button>
+          <template v-if="hasActiveFilters">{{ sortedCourses.length }} of </template>{{ courses.length }} courses
+          <button v-if="hasActiveFilters" class="clear-all" @click="clearAllFilters" title="Clear all filters">Clear</button>
         </span>
+        <!-- Sort buttons -->
+        <div class="sort-buttons">
+          <button
+            v-for="s in sortOptions"
+            :key="s.key"
+            class="sort-btn"
+            :class="{ active: sortBy === s.key }"
+            @click="toggleSort(s.key)"
+            :title="s.title"
+          >
+            {{ s.label }}
+            <svg v-if="sortBy === s.key" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </button>
+        </div>
       </div>
       <div class="header-right">
-        <!-- Stage legend (clickable filters) -->
-        <div class="stage-legend">
-          <button
-            class="legend-item"
-            :class="{ active: stageFilter === s.key }"
-            v-for="s in stageLegend"
-            :key="s.key"
-            @click="toggleStageFilter(s.key)"
-          >
-            <span class="legend-dot" :style="{ background: s.color }"></span>
-            <span class="legend-label">{{ s.label }}</span>
-            <span class="legend-count">{{ stageCounts[s.key] || 0 }}</span>
-          </button>
+        <!-- Filter chips -->
+        <div class="filter-chips">
+          <div v-for="facet in facets" :key="facet.key" class="filter-chip-wrapper" v-click-outside="() => closeDropdown(facet.key)">
+            <button
+              class="filter-chip"
+              :class="[`chip-${facet.key}`, { active: activeFilters[facet.key], open: openDropdown === facet.key }]"
+              @click="toggleDropdown(facet.key)"
+            >
+              <span class="chip-label">{{ activeFilters[facet.key] || facet.label }}</span>
+              <svg v-if="activeFilters[facet.key]" class="chip-clear" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" @click.stop="clearFilter(facet.key)">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+              <svg v-else class="chip-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <!-- Dropdown -->
+            <Transition name="dropdown">
+              <div v-if="openDropdown === facet.key" class="filter-dropdown" :class="`dropdown-${facet.key}`">
+                <button
+                  v-for="opt in facet.options"
+                  :key="opt.value"
+                  class="dropdown-option"
+                  :class="{ selected: activeFilters[facet.key] === opt.value }"
+                  @click="selectFilter(facet.key, opt.value)"
+                >
+                  <span class="opt-label">{{ opt.label }}</span>
+                  <span class="opt-count">{{ opt.count }}</span>
+                </button>
+              </div>
+            </Transition>
+          </div>
         </div>
 
         <div class="search-box" :class="{ focused: searchFocused }">
@@ -40,79 +73,23 @@
       </div>
     </div>
 
-    <!-- Column Headers -->
-    <div class="table-header">
-      <span class="th th-course" @click="toggleSort('alpha')">
-        Course
-        <svg v-if="sortBy === 'alpha'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </span>
-      <span class="th th-seeds" @click="toggleSort('seeds')">
-        Seeds
-        <svg v-if="sortBy === 'seeds'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </span>
-      <span class="th th-legos" @click="toggleSort('legos')">
-        LEGOs
-        <svg v-if="sortBy === 'legos'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </span>
-      <span class="th th-phrases" @click="toggleSort('phrases')">
-        Phrases
-        <svg v-if="sortBy === 'phrases'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </span>
-      <span class="th th-audio" @click="toggleSort('audio')">
-        Audio
-        <svg v-if="sortBy === 'audio'" class="sort-arrow" :class="{ desc: sortDesc }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </span>
-      <span class="th th-apps">Apps</span>
-    </div>
-
-    <!-- Course Rows -->
-    <div class="table-body">
-      <TransitionGroup name="row" tag="div">
+    <!-- Course Grid -->
+    <div class="course-grid">
+      <TransitionGroup name="row" tag="div" class="grid-inner">
         <div
-          v-for="(course, idx) in sortedCourses"
+          v-for="course in sortedCourses"
           :key="course.code"
-          class="course-row"
-          :class="{ active: activeCourse === course.code, 'row-even': idx % 2 === 1 }"
-          :style="{ borderLeftColor: getStageColor(course) }"
+          class="course-card"
+          :class="{ active: activeCourse === course.code }"
           @click="handleCourseClick(course)"
           @mouseenter="activeCourse = course.code"
           @mouseleave="activeCourse = null"
         >
-          <!-- Course code + name -->
-          <span class="cell cell-course">
-            <span class="course-code-label">{{ course.code }}</span>
+          <div class="card-main">
             <span class="course-name-label">{{ getFullCourseName(course.code) }}</span>
-          </span>
-
-          <!-- Seeds count + pipeline journey -->
-          <span class="cell cell-seeds">
-            <span class="seeds-text">
-              <span class="seeds-count">{{ getCompletedSeeds(course) }}</span>
-              <span class="seeds-sep">/</span>
-              <span class="seeds-target">{{ course.targetSeeds || 300 }}</span>
-            </span>
-            <span class="pipeline-grid">
-              <span
-                v-for="(block, i) in getPipelineBlocks(course)"
-                :key="i"
-                class="grid-block"
-                :class="{ filled: block.filled, 'stage-start': block.isStageStart }"
-                :style="{ background: block.filled ? block.color : undefined }"
-              ></span>
-            </span>
-          </span>
-
-          <!-- LEGOs -->
-          <span class="cell cell-legos mono">{{ formatNumber(course.stats?.legos || 0) }}</span>
-
-          <!-- Phrases -->
-          <span class="cell cell-phrases mono">{{ formatNumber(course.stats?.phrases || 0) }}</span>
-
-          <!-- Audio -->
-          <span class="cell cell-audio mono">{{ formatNumber(course.stats?.audio || 0) }}</span>
-
-          <!-- App status badges -->
-          <span class="cell cell-apps">
+            <span class="course-code-label">{{ course.code }}</span>
+          </div>
+          <span class="card-apps">
             <button
               class="app-badge"
               :class="[
@@ -141,30 +118,20 @@
 
       <!-- Empty state -->
       <div v-if="sortedCourses.length === 0" class="empty-state">
-        <span class="empty-text">{{ searchQuery ? 'No courses match your search' : 'No courses yet' }}</span>
+        <span class="empty-text">{{ hasActiveFilters || searchQuery ? 'No courses match your filters' : 'No courses yet' }}</span>
       </div>
     </div>
 
-    <!-- Summary Footer -->
+    <!-- Footer -->
     <div class="board-footer">
-      <div class="footer-stat">
-        <span class="footer-value">{{ totalSeeds.toLocaleString() }}</span>
-        <span class="footer-label">Seeds Built</span>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="footer-stat">
-        <span class="footer-value">{{ totalPhrases.toLocaleString() }}</span>
-        <span class="footer-label">Phrases</span>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="footer-stat">
-        <span class="footer-value">{{ totalAudio.toLocaleString() }}</span>
-        <span class="footer-label">Audio Files</span>
-      </div>
-      <div class="footer-divider"></div>
       <div class="footer-stat highlight">
-        <span class="footer-value">{{ productionCount }}</span>
-        <span class="footer-label">Live</span>
+        <span class="footer-value">{{ deployedCount }}</span>
+        <span class="footer-label">Deployed</span>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-stat">
+        <span class="footer-value">{{ courses.length }}</span>
+        <span class="footer-label">Total</span>
       </div>
     </div>
 
@@ -199,18 +166,24 @@ const props = defineProps({
 
 const emit = defineEmits(['action', 'updateLegacyStatus', 'updateNewAppStatus', 'deployToProduction'])
 const router = useRouter()
-const { getCourseName } = useCourses()
+const { getCourseName, languageNames } = useCourses()
 
 const searchQuery = ref('')
 const searchFocused = ref(false)
 const activeCourse = ref(null)
-const stageFilter = ref(null)
+const openDropdown = ref(null)
 
-function toggleStageFilter(key) {
-  stageFilter.value = stageFilter.value === key ? null : key
-}
+// Active filter selections: { target: 'Spanish', known: 'English', app: 'Live' }
+const activeFilters = ref({})
 
-// Sort state
+// Sort options
+const sortOptions = [
+  { key: 'alpha', label: 'A-Z', title: 'Sort alphabetically' },
+  { key: 'created', label: 'Created', title: 'Sort by date created' },
+  { key: 'updated', label: 'Updated', title: 'Sort by last updated' }
+]
+
+// Sort state (persisted)
 const SORT_STORAGE_KEY = 'ssi-pipeline-sort'
 const sortBy = ref(localStorage.getItem(SORT_STORAGE_KEY) || 'alpha')
 const sortDesc = ref(localStorage.getItem(SORT_STORAGE_KEY + '-desc') === 'true')
@@ -225,7 +198,8 @@ function toggleSort(field) {
     sortDesc.value = !sortDesc.value
   } else {
     sortBy.value = field
-    sortDesc.value = field !== 'alpha' // default desc for numeric, asc for alpha
+    // Date sorts default to newest-first (desc), alpha defaults to A-Z (asc)
+    sortDesc.value = field !== 'alpha'
   }
 }
 
@@ -239,99 +213,22 @@ function showToast(message) {
   setTimeout(() => { toastVisible.value = false }, 2500)
 }
 
-function getFullCourseName(code) {
-  return getCourseName(code)
+// --- Language extraction from course code ---
+function parseCode(code) {
+  if (!code || !code.includes('_for_')) return { target: code, known: '' }
+  const [targetPart, knownPart] = code.split('_for_')
+  return { target: targetPart, known: knownPart }
 }
 
-function getCompletedSeeds(course) {
-  return course.stats?.completedSeeds || 0
+function langName(isoCode) {
+  if (!isoCode) return isoCode
+  // Try full code first (e.g. "ara_eg"), then base (e.g. "ara")
+  if (languageNames[isoCode]) return languageNames[isoCode]
+  const base = isoCode.split('_')[0]
+  return languageNames[base] || isoCode.toUpperCase()
 }
 
-function getProgress(course) {
-  const target = course.targetSeeds || 300
-  const completed = getCompletedSeeds(course)
-  return Math.min(100, Math.round((completed / target) * 100))
-}
-
-function getPipelineSegments(course) {
-  const stage = getStage(course)
-  const stats = course.stats || {}
-  const targetSeeds = course.targetSeeds || 300
-  const completedSeeds = getCompletedSeeds(course)
-  const phrases = stats.phrases || 0
-  const audio = stats.audio || 0
-
-  const segDefs = [
-    { key: 'building', color: '#f59e0b' },
-    { key: 'review',   color: '#a855f7' },
-    { key: 'audio',    color: '#3b82f6' },
-    { key: 'staging',  color: '#f97316' },
-    { key: 'live',     color: '#10b981' }
-  ]
-
-  const stageIdx = segDefs.findIndex(d => d.key === stage) // -1 for not_started
-
-  return segDefs.map((def, i) => {
-    let fill = 0
-    if (stageIdx < 0) {
-      fill = 0
-    } else if (i < stageIdx) {
-      fill = 100
-    } else if (i === stageIdx) {
-      if (def.key === 'building') {
-        fill = Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
-      } else if (def.key === 'audio') {
-        fill = phrases > 0 ? Math.min(100, Math.round((audio / (phrases * 2)) * 100)) : 0
-      } else if (def.key === 'staging') {
-        fill = course.exportReady ? 100 : 50
-      } else {
-        fill = 100
-      }
-    }
-    return { fill, color: def.color }
-  })
-}
-
-function getPipelineBlocks(course) {
-  const segments = getPipelineSegments(course)
-  const blocks = []
-  for (const seg of segments) {
-    const filledCount = Math.round((seg.fill / 100) * 6)
-    for (let i = 0; i < 6; i++) {
-      blocks.push({
-        color: seg.color,
-        filled: i < filledCount,
-        isStageStart: i === 0
-      })
-    }
-  }
-  return blocks
-}
-
-function formatNumber(n) {
-  if (n >= 1000) return (n / 1000).toFixed(1) + 'k'
-  return n.toString()
-}
-
-// Stage logic
-const stageConfig = {
-  not_started:{ color: '#475569', label: 'Not Started' },
-  building:   { color: '#f59e0b', label: 'Building' },
-  review:     { color: '#a855f7', label: 'Review' },
-  audio:      { color: '#3b82f6', label: 'Audio' },
-  staging:    { color: '#f97316', label: 'Staging' },
-  live:       { color: '#10b981', label: 'Live' }
-}
-
-const stageLegend = [
-  { key: 'not_started',color: '#475569', label: 'Not Started' },
-  { key: 'building',   color: '#f59e0b', label: 'Building' },
-  { key: 'review',     color: '#a855f7', label: 'Review' },
-  { key: 'audio',      color: '#3b82f6', label: 'Audio' },
-  { key: 'staging',    color: '#f97316', label: 'Staging' },
-  { key: 'live',       color: '#10b981', label: 'Live' }
-]
-
+// --- App status helpers ---
 function normalizeAppStatus(s) {
   if (!s || s === 'not_available') return 'not_available'
   if (s === 'draft') return 'testing'
@@ -347,58 +244,121 @@ function getNormalizedLegacyStatus(course) {
   return normalizeAppStatus(course.legacyAppStatus)
 }
 
-function getStage(course) {
-  // Live — any app deployed
+function getAppStatusLabel(course) {
   const newApp = getNormalizedNewAppStatus(course)
   const legacy = getNormalizedLegacyStatus(course)
-  if (newApp !== 'not_available' || legacy !== 'not_available') return 'live'
-
-  const stats = course.stats || {}
-  const targetSeeds = course.targetSeeds || 300
-  const completedSeeds = getCompletedSeeds(course)
-  const phrases = stats.phrases || 0
-  const audio = stats.audio || 0
-
-  // Staging — export-ready or audio substantially complete
-  if (course.exportReady || (audio >= phrases * 2 && audio > 100)) return 'staging'
-
-  // Audio — seeds done, audio generation started
-  if (completedSeeds >= targetSeeds && audio > 0) return 'audio'
-
-  // Review — seeds done, phrases exist, no meaningful audio yet
-  if (completedSeeds >= targetSeeds && phrases > 0) return 'review'
-
-  // Building — any content exists
-  if ((stats.seeds || 0) > 0 || (stats.legos || 0) > 0 || completedSeeds > 0) return 'building'
-
-  return 'not_started'
+  // Return highest status across both apps
+  for (const s of ['live', 'beta', 'testing']) {
+    if (newApp === s || legacy === s) return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+  return 'Not Deployed'
 }
 
-function getStageColor(course) {
-  return stageConfig[getStage(course)]?.color || '#475569'
-}
+// --- Faceted filters ---
+const facets = computed(() => {
+  const allCourses = props.courses
 
-function getStageLabel(course) {
-  return stageConfig[getStage(course)]?.label || 'Not Started'
-}
+  // Target languages
+  const targets = {}
+  const knowns = {}
+  const apps = {}
 
-// Stage counts for legend
-const stageCounts = computed(() => {
-  const counts = {}
-  props.courses.forEach(c => {
-    const stage = getStage(c)
-    counts[stage] = (counts[stage] || 0) + 1
-  })
-  return counts
+  for (const c of allCourses) {
+    const { target, known } = parseCode(c.code)
+    const tName = langName(target)
+    const kName = langName(known)
+    targets[tName] = (targets[tName] || 0) + 1
+    if (kName) knowns[kName] = (knowns[kName] || 0) + 1
+
+    const appLabel = getAppStatusLabel(c)
+    apps[appLabel] = (apps[appLabel] || 0) + 1
+  }
+
+  function toOptions(map) {
+    return Object.entries(map)
+      .sort((a, b) => b[1] - a[1]) // most courses first
+      .map(([label, count]) => ({ value: label, label, count }))
+  }
+
+  return [
+    { key: 'target', label: 'Target', options: toOptions(targets) },
+    { key: 'known', label: 'Known', options: toOptions(knowns) },
+    { key: 'app', label: 'App Status', options: toOptions(apps) }
+  ]
 })
 
-// Filter + sort
+const hasActiveFilters = computed(() => {
+  return Object.keys(activeFilters.value).length > 0 || searchQuery.value.trim() !== ''
+})
+
+function toggleDropdown(key) {
+  openDropdown.value = openDropdown.value === key ? null : key
+}
+
+function closeDropdown(key) {
+  if (openDropdown.value === key) openDropdown.value = null
+}
+
+function selectFilter(key, value) {
+  if (activeFilters.value[key] === value) {
+    // Deselect
+    const copy = { ...activeFilters.value }
+    delete copy[key]
+    activeFilters.value = copy
+  } else {
+    activeFilters.value = { ...activeFilters.value, [key]: value }
+  }
+  openDropdown.value = null
+}
+
+function clearFilter(key) {
+  const copy = { ...activeFilters.value }
+  delete copy[key]
+  activeFilters.value = copy
+}
+
+function clearAllFilters() {
+  activeFilters.value = {}
+  searchQuery.value = ''
+}
+
+// v-click-outside directive
+const vClickOutside = {
+  mounted(el, binding) {
+    el._clickOutsideHandler = (e) => {
+      if (!el.contains(e.target)) binding.value()
+    }
+    document.addEventListener('click', el._clickOutsideHandler)
+  },
+  unmounted(el) {
+    document.removeEventListener('click', el._clickOutsideHandler)
+  }
+}
+
+function getFullCourseName(code) {
+  return getCourseName(code)
+}
+
+// --- Filtering + sorting ---
 const sortedCourses = computed(() => {
   let list = props.courses
 
-  // Stage filter
-  if (stageFilter.value) {
-    list = list.filter(c => getStage(c) === stageFilter.value)
+  // Apply facet filters
+  const filters = activeFilters.value
+  if (filters.target) {
+    list = list.filter(c => {
+      const { target } = parseCode(c.code)
+      return langName(target) === filters.target
+    })
+  }
+  if (filters.known) {
+    list = list.filter(c => {
+      const { known } = parseCode(c.code)
+      return langName(known) === filters.known
+    })
+  }
+  if (filters.app) {
+    list = list.filter(c => getAppStatusLabel(c) === filters.app)
   }
 
   // Search filter
@@ -416,22 +376,13 @@ const sortedCourses = computed(() => {
   sorted.sort((a, b) => {
     let cmp = 0
     switch (sortBy.value) {
-      case 'alpha':
-        cmp = getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
+      case 'created':
+        cmp = (a.createdAt || '').localeCompare(b.createdAt || '')
         break
-      case 'seeds':
-        cmp = getCompletedSeeds(a) - getCompletedSeeds(b)
+      case 'updated':
+        cmp = (a.updatedAt || '').localeCompare(b.updatedAt || '')
         break
-      case 'legos':
-        cmp = (a.stats?.legos || 0) - (b.stats?.legos || 0)
-        break
-      case 'phrases':
-        cmp = (a.stats?.phrases || 0) - (b.stats?.phrases || 0)
-        break
-      case 'audio':
-        cmp = (a.stats?.audio || 0) - (b.stats?.audio || 0)
-        break
-      default:
+      default: // alpha
         cmp = getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
     }
     return sortDesc.value ? -cmp : cmp
@@ -441,10 +392,13 @@ const sortedCourses = computed(() => {
 })
 
 // Summary stats
-const totalSeeds = computed(() => props.courses.reduce((sum, c) => sum + getCompletedSeeds(c), 0))
-const totalPhrases = computed(() => props.courses.reduce((sum, c) => sum + (c.stats?.phrases || 0), 0))
-const totalAudio = computed(() => props.courses.reduce((sum, c) => sum + (c.stats?.audio || 0), 0))
-const productionCount = computed(() => props.courses.filter(c => getStage(c) === 'live').length)
+const deployedCount = computed(() => {
+  return props.courses.filter(c => {
+    const newApp = getNormalizedNewAppStatus(c)
+    const legacy = getNormalizedLegacyStatus(c)
+    return newApp !== 'not_available' || legacy !== 'not_available'
+  }).length
+})
 
 // Actions
 function handleCourseClick(course) {
@@ -491,6 +445,8 @@ function cycleLegacyStatus(course) {
   padding: 0.75rem 1.25rem;
   border-bottom: 1px solid var(--color-graphite, #475569);
   background: var(--color-slate, #334155);
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .header-left {
@@ -505,88 +461,247 @@ function cycleLegacyStatus(course) {
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 0.5rem;
+  white-space: nowrap;
 }
 
-.clear-filter {
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
+.clear-all {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--color-paper-dim, #c1c1bb);
-  font-size: 0.875rem;
-  line-height: 1;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+  font-size: 0.75rem;
+  font-family: inherit;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
   cursor: pointer;
+  transition: all 0.15s;
+}
+
+.clear-all:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-paper, #f7f7f2);
+}
+
+/* Sort buttons */
+.sort-buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-  padding: 0;
+  gap: 0.125rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 5px;
+  padding: 0.125rem;
 }
 
-.clear-filter:hover {
-  background: rgba(255, 255, 255, 0.2);
+.sort-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: var(--color-paper-dim, #c1c1bb);
+  font-size: 0.75rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.sort-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
   color: var(--color-paper, #f7f7f2);
+}
+
+.sort-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-paper, #f7f7f2);
+}
+
+.sort-arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.sort-arrow.desc {
+  transform: rotate(180deg);
 }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
-/* Stage legend */
-.stage-legend {
+/* Filter chips */
+.filter-chips {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
+  gap: 0.375rem;
 }
 
-.legend-item {
+.filter-chip-wrapper {
+  position: relative;
+}
+
+.filter-chip {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  background: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  padding: 0.1875rem 0.375rem;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 0.8125rem;
+  font-family: inherit;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
-  font-family: inherit;
-  color: inherit;
+  white-space: nowrap;
 }
 
-.legend-item:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.08);
+/* Target — amber/orange */
+.chip-target {
+  background: rgba(255, 166, 48, 0.06);
+  border-color: rgba(255, 166, 48, 0.2);
+  color: rgba(255, 186, 88, 0.8);
+}
+.chip-target:hover {
+  background: rgba(255, 166, 48, 0.12);
+  border-color: rgba(255, 166, 48, 0.35);
+}
+.chip-target.active {
+  background: rgba(255, 166, 48, 0.18);
+  border-color: rgba(255, 166, 48, 0.5);
+  color: #ffa630;
 }
 
-.legend-item.active {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.15);
+/* Known — blue/cyan */
+.chip-known {
+  background: rgba(56, 189, 248, 0.06);
+  border-color: rgba(56, 189, 248, 0.2);
+  color: rgba(125, 211, 252, 0.8);
+}
+.chip-known:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+.chip-known.active {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
 }
 
-.legend-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
+/* App status — green */
+.chip-app {
+  background: rgba(16, 185, 129, 0.06);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: rgba(52, 211, 153, 0.8);
+}
+.chip-app:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.chip-app.active {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10b981;
+}
+
+.filter-chip.open {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.chip-arrow {
+  opacity: 0.5;
   flex-shrink: 0;
 }
 
-.legend-label {
-  font-size: 0.8125rem;
-  color: var(--color-paper-dim, #c1c1bb);
-  font-weight: 500;
+.chip-clear {
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
 }
 
-.legend-count {
+.chip-clear:hover {
+  opacity: 1;
+}
+
+/* Filter dropdown */
+.filter-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 180px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  padding: 0.25rem;
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.4375rem 0.625rem;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: var(--color-paper-dim, #c1c1bb);
+  font-size: 0.8125rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-align: left;
+}
+
+.dropdown-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-paper, #f7f7f2);
+}
+
+/* Selected option inherits parent chip color */
+.dropdown-target .dropdown-option.selected {
+  background: rgba(255, 166, 48, 0.15);
+  color: #ffa630;
+}
+.dropdown-known .dropdown-option.selected {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+.dropdown-app .dropdown-option.selected {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.opt-label {
+  flex: 1;
+}
+
+.opt-count {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;
-  color: var(--color-paper, #f7f7f2);
-  font-weight: 600;
-  min-width: 1rem;
-  text-align: center;
+  opacity: 0.5;
+  min-width: 1.25rem;
+  text-align: right;
+}
+
+/* Dropdown transition */
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.15s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 
 /* Search */
@@ -594,7 +709,7 @@ function cycleLegacyStatus(course) {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.375rem 0.625rem;
+  padding: 0.25rem 0.625rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--color-graphite, #475569);
   border-radius: 6px;
@@ -625,188 +740,72 @@ function cycleLegacyStatus(course) {
   color: var(--color-paper-dim, #c1c1bb);
 }
 
-/* Table header */
-.table-header {
-  display: grid;
-  grid-template-columns: 200px 1fr 88px 88px 88px 80px;
-  align-items: center;
-  padding: 0.5rem 1.25rem;
-  padding-left: calc(1.25rem + 3px); /* account for row left-border */
-  border-bottom: 1px solid var(--color-graphite, #475569);
-  background: var(--color-slate, #334155);
+/* Course grid */
+.course-grid {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem;
 }
 
-.th {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-paper-dim, #c1c1bb);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.grid-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.375rem;
+}
+
+.course-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
   cursor: pointer;
-  user-select: none;
+  transition: all 0.12s;
+}
+
+.course-card:hover,
+.course-card.active {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+  min-width: 0;
+}
+
+.card-apps {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  transition: color 0.15s;
-}
-
-.th:hover {
-  color: var(--color-paper, #f7f7f2);
-}
-
-.th-legos,
-.th-phrases,
-.th-audio {
-  justify-content: flex-end;
-}
-
-.th-apps {
-  justify-content: center;
-  cursor: default;
-}
-
-.sort-arrow {
   flex-shrink: 0;
-  transition: transform 0.2s;
+  margin-left: 0.5rem;
 }
 
-.sort-arrow.desc {
-  transform: rotate(180deg);
-}
-
-/* Table body */
-.table-body {
-  flex: 1;
-  overflow-y: auto;
-}
-
-/* Course row */
-.course-row {
-  display: grid;
-  grid-template-columns: 200px 1fr 88px 88px 88px 80px;
-  align-items: center;
-  padding: 0.8125rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  border-left: 3px solid transparent;
-  cursor: pointer;
-  transition: background 0.12s;
-}
-
-.course-row.row-even {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.course-row:hover,
-.course-row.active {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.course-row:last-child {
-  border-bottom: none;
-}
-
-/* Cells */
-.cell {
-  display: flex;
-  align-items: center;
-}
-
-.cell.mono {
-  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 1rem;
+.course-name-label {
+  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-paper-dim, #c1c1bb);
-  font-variant-numeric: tabular-nums;
-  justify-content: flex-end;
-}
-
-/* Course code + name */
-.cell-course {
-  padding-right: 1rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.125rem;
+  color: var(--color-tungsten, #ffa630);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .course-code-label {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-tungsten, #ffa630);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: var(--color-paper-dim, #c1c1bb);
   letter-spacing: 0.01em;
-}
-
-.course-name-label {
-  font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
-  line-height: 1.2;
-}
-
-/* Seeds + progress bar — inline single row */
-.cell-seeds {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-}
-
-.seeds-text {
-  display: flex;
-  align-items: baseline;
-  gap: 0.125rem;
-  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
-}
-
-.seeds-count {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
-}
-
-.seeds-sep {
-  font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
-}
-
-.seeds-target {
-  font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
-}
-
-/* Pipeline grid blocks */
-.pipeline-grid {
-  display: flex;
-  gap: 2px;
-  flex: 1;
-  min-width: 120px;
-}
-
-.grid-block {
-  flex: 1;
-  height: 10px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.06);
-  transition: background 0.3s ease;
-}
-
-.grid-block.stage-start {
-  margin-left: 3px;
-}
-
-.grid-block.stage-start:first-child {
-  margin-left: 0;
-}
-
-.grid-block.filled {
-  opacity: 0.9;
+  opacity: 0.6;
 }
 
 /* App badges */
-.cell-apps {
-  justify-content: center;
-  gap: 0.25rem;
-}
 
 .app-badge {
   width: 26px;
@@ -988,36 +987,25 @@ function cycleLegacyStatus(course) {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .table-header,
-  .course-row {
-    grid-template-columns: 1fr 100px 60px 60px 64px;
-  }
-  .th-audio,
-  .cell-audio {
-    display: none;
-  }
-  .stage-legend {
-    display: none;
+@media (max-width: 1100px) {
+  .grid-inner {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-  .table-header,
-  .course-row {
-    grid-template-columns: 1fr 64px;
-  }
-  .th-legos, .th-phrases, .th-audio, .th-apps,
-  .cell-legos, .cell-phrases, .cell-audio, .cell-apps {
-    display: none;
+@media (max-width: 700px) {
+  .grid-inner {
+    grid-template-columns: 1fr;
   }
   .board-header {
     flex-direction: column;
-    gap: 0.75rem;
     align-items: stretch;
   }
   .header-right {
     justify-content: space-between;
+  }
+  .filter-chips {
+    flex-wrap: wrap;
   }
 }
 </style>

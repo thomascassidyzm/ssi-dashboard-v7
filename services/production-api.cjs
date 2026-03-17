@@ -195,11 +195,62 @@ async function authDeleteSession(sessionId) {
     .from('dashboard_sessions').delete().eq('session_id', sessionId)
 }
 
-// Helper: extract session from Authorization header and verify admin
+// Helper: verify Supabase JWT and check dashboard access
+async function verifySupabaseJWT(token) {
+  try {
+    const { data: { user }, error } = await supabaseClient.getClient().auth.getUser(token)
+    if (error || !user) return null
+
+    const { data: lr } = await supabaseClient.getClient()
+      .from('learners')
+      .select('id, user_id, display_name, platform_role, educational_role, dashboard_courses')
+      .eq('user_id', user.id)
+      .single()
+
+    if (!lr) return null
+
+    const pr = lr.platform_role
+    const er = lr.educational_role
+    if (pr !== 'ssi_admin' && pr !== 'popty_user' && er !== 'god') return null
+
+    // Course access: admins/god get all, popty_user gets dashboard_courses
+    const isAdminUser = pr === 'ssi_admin' || er === 'god'
+    const dc = lr.dashboard_courses || []
+    const coursesAccess = isAdminUser ? '*' : (dc.includes('*') ? '*' : dc)
+
+    return {
+      name: lr.display_name,
+      email: user.email,
+      role: isAdminUser ? 'admin' : 'user',
+      courses: coursesAccess,
+      learner_id: lr.id,
+    }
+  } catch (err) {
+    logger.error('[Auth] Supabase JWT verification error:', err)
+    return null
+  }
+}
+
+// Helper: check if user has access to a specific course
+function userCanAccessCourse(user, courseCode) {
+  if (!user || !courseCode) return false
+  if (user.courses === '*') return true
+  if (Array.isArray(user.courses)) return user.courses.includes(courseCode)
+  return false
+}
+
+// Helper: extract session from Authorization header and verify dashboard access
+// Tries Supabase JWT first, falls back to old session-based auth
 async function requireAdmin(req, res) {
-  const sessionId = req.headers.authorization?.replace('Bearer ', '')
-  if (!sessionId) { res.status(401).json({ error: 'Authentication required' }); return null }
-  const user = await authValidateSession(sessionId)
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
+
+  // Try Supabase JWT first (new auth)
+  const supabaseUser = await verifySupabaseJWT(token)
+  if (supabaseUser) return supabaseUser
+
+  // Fall back to old session-based auth (for backwards compat during transition)
+  const user = await authValidateSession(token)
   if (!user || user.role !== 'admin') { res.status(403).json({ error: 'Admin access required' }); return null }
   return user
 }
@@ -238,11 +289,17 @@ app.post('/api/auth/generate-code', async (req, res) => {
   }
 })
 
-// GET /api/auth/me — get current user from session
+// GET /api/auth/me — get current user from session (supports both JWT and old sessions)
 app.get('/api/auth/me', async (req, res) => {
-  const sessionId = req.headers.authorization?.replace('Bearer ', '')
-  if (!sessionId) return res.status(401).json({ error: 'No session' })
-  const user = await authValidateSession(sessionId)
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) return res.status(401).json({ error: 'No session' })
+
+  // Try Supabase JWT first
+  const supabaseUser = await verifySupabaseJWT(token)
+  if (supabaseUser) return res.json({ user: supabaseUser })
+
+  // Fall back to old session
+  const user = await authValidateSession(token)
   if (!user) return res.status(401).json({ error: 'Invalid or expired session' })
   res.json({ user })
 })
@@ -271,7 +328,78 @@ app.post('/api/auth/dev-login', async (req, res) => {
   }
 })
 
-// POST /api/auth/invite — add new user (admin only)
+// POST /api/auth/invite-dashboard — create Supabase Auth account + learner with dashboard access
+app.post('/api/auth/invite-dashboard', async (req, res) => {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+
+  const { email, name, platform_role = 'popty_user', dashboard_courses } = req.body
+  if (!email) return res.status(400).json({ error: 'Email is required' })
+  if (!['ssi_admin', 'popty_user'].includes(platform_role)) {
+    return res.status(400).json({ error: 'Invalid platform_role' })
+  }
+
+  const db = supabaseClient.getClient()
+
+  try {
+    // Check if Supabase Auth account already exists
+    const { data: existingUsers } = await db.auth.admin.listUsers()
+    const existing = existingUsers?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase())
+
+    let authUserId
+    if (existing) {
+      authUserId = existing.id
+      logger.info(`[Invite] Existing auth account found for ${email}: ${authUserId}`)
+    } else {
+      // Create Supabase Auth account (confirmed, no email sent)
+      const { data: newUser, error: createErr } = await db.auth.admin.createUser({
+        email,
+        email_confirm: true,
+      })
+      if (createErr) throw createErr
+      authUserId = newUser.user.id
+      logger.info(`[Invite] Created auth account for ${email}: ${authUserId}`)
+    }
+
+    // Check if learner record exists
+    const { data: existingLearner } = await db
+      .from('learners')
+      .select('id, platform_role, dashboard_courses')
+      .eq('user_id', authUserId)
+      .single()
+
+    if (existingLearner) {
+      // Update existing learner
+      const updates = { platform_role }
+      if (dashboard_courses) updates.dashboard_courses = dashboard_courses
+      await db.from('learners').update(updates).eq('id', existingLearner.id)
+      logger.info(`[Invite] Updated learner ${existingLearner.id} — role: ${platform_role}`)
+      res.json({ success: true, message: `Updated ${email} — they can now sign in to Popty`, learner_id: existingLearner.id })
+    } else {
+      // Create learner record
+      const displayName = name || email.split('@')[0]
+      const { data: newLearner, error: insertErr } = await db
+        .from('learners')
+        .insert({
+          user_id: authUserId,
+          display_name: displayName,
+          platform_role,
+          dashboard_courses: dashboard_courses || null,
+          verified_emails: [email.toLowerCase()],
+        })
+        .select('id')
+        .single()
+      if (insertErr) throw insertErr
+      logger.info(`[Invite] Created learner for ${email}: ${newLearner.id} — role: ${platform_role}`)
+      res.json({ success: true, message: `Invited ${email} — they can now sign in to Popty`, learner_id: newLearner.id })
+    }
+  } catch (err) {
+    logger.error('[Invite] Error:', err)
+    res.status(500).json({ error: err.message || 'Failed to invite user' })
+  }
+})
+
+// POST /api/auth/invite — add new user (admin only) [LEGACY — old dashboard_users flow]
 // PUT /api/auth/invite — edit existing user (admin only)
 app.post('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
 app.put('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
@@ -441,6 +569,8 @@ app.get('/api/courses', async (req, res) => {
       legacy_app_beta_days: computeBetaDays(c.legacy_app_beta_started_at),
       content_status: c.content_status || 'empty',
       export_ready: c.export_ready || false,
+      created_at: c.created_at || null,
+      updated_at: c.updated_at || null,
       stats: stats[c.course_code] || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
     }))
 
@@ -957,6 +1087,37 @@ app.get('/api/voices/discover/:language', async (req, res) => {
   } catch (error) {
     logger.error(`[VoiceDiscovery] Error discovering voices for ${language}:`, error)
     res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// GET /api/courses/:courseCode/seed-phrases-preview - Get sample phrases from seeds for voice testing
+app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    // Pick ~10 seeds spread across the course for variety
+    const { data: seeds } = await supabase
+      .from('course_seeds')
+      .select('known_text, target_text')
+      .eq('course_code', courseCode)
+      .not('known_text', 'is', null)
+      .not('target_text', 'is', null)
+      .order('seed_number')
+
+    if (!seeds || seeds.length === 0) {
+      return res.json({ known: [], target: [] })
+    }
+
+    // Sample ~10 evenly spaced seeds
+    const step = Math.max(1, Math.floor(seeds.length / 10))
+    const sampled = seeds.filter((_, i) => i % step === 0).slice(0, 10)
+
+    res.json({
+      known: sampled.map(s => s.known_text),
+      target: sampled.map(s => s.target_text)
+    })
+  } catch (error) {
+    logger.error(`[SeedPhrases] Error loading preview phrases for ${courseCode}:`, error)
+    res.status(500).json({ known: [], target: [] })
   }
 })
 
@@ -5169,6 +5330,7 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
         known_text: cycle.known_text,
         target_text: cycle.target_text,
         type: cycle.phrase_role || 'build',
+        introduce: cycle.introduce,
         word_count: cycle.word_count,
         lego_count: cycle.lego_count,
         known_audio_uuid: knownAudioUuid,

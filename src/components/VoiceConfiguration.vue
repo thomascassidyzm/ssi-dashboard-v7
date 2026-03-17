@@ -222,6 +222,50 @@
       </div>
     </div>
 
+    <!-- Learner Playback Section -->
+    <div v-if="config" class="playback-section">
+      <h3 class="playback-title">Learner Playback</h3>
+      <p class="playback-subtitle">Controls how target audio plays in the learning app. Does not affect TTS generation.</p>
+
+      <div class="playback-controls">
+        <!-- Belt Ramp Toggle -->
+        <div class="playback-row" @click="toggleBeltRamp">
+          <div class="playback-info">
+            <span class="playback-label">Beginner speed ramp</span>
+            <span class="playback-desc">Slow target audio for early seeds (White belt 0.82x, Yellow 0.91x, then normal). Only enable for audio recorded at natural speed.</span>
+          </div>
+          <div :class="['playback-toggle', { active: config.target_speed?.belt_ramp }]">
+            <div class="playback-toggle-track">
+              <div class="playback-toggle-thumb"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Global Speed -->
+        <div class="playback-row">
+          <div class="playback-info">
+            <span class="playback-label">Global playback speed</span>
+            <span class="playback-desc">Base speed multiplier for all target audio in the learner app. Use to compensate if a voice sounds naturally fast or slow.</span>
+          </div>
+          <div class="global-speed-control">
+            <div class="speed-notches">
+              <button
+                v-for="speed in globalSpeedOptions"
+                :key="speed"
+                :class="['speed-notch', { active: isGlobalSpeedActive(speed) }]"
+                @click="setGlobalSpeed(speed)"
+                :title="`${speed}x`"
+              >
+                <span class="notch-mark"></span>
+                <span class="notch-label">{{ speed === 1.0 ? '1x' : speed + 'x' }}</span>
+              </button>
+            </div>
+            <span class="global-speed-value">{{ formatSpeed(config.target_speed?.global_speed || 1.0) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Save Status -->
     <div v-if="saveStatus" :class="['save-status', saveStatus.type]">
       {{ saveStatus.message }}
@@ -275,6 +319,9 @@ const audioPlayer = ref(null)
 
 // Speed options (discrete notches) - biased toward slower for learning
 const speedOptions = [0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1.0, 1.2, 1.5]
+
+// Global playback speed options (for learner app, not TTS)
+const globalSpeedOptions = [0.8, 0.85, 0.9, 0.95, 1.0, 1.05, 1.1]
 
 // Role definitions
 const roles = [
@@ -381,11 +428,44 @@ const previewPhrases = {
     "C'hoant am eus da zeskiñ kement ha ma c'hallan",
     "Labourat a ra mat-tre evidon"
   ],
+  pol: [
+    "Staram się ćwiczyć każdego dnia",
+    "Chcę się nauczyć jak najwięcej",
+    "To naprawdę dobrze działa"
+  ],
+  ron: [
+    "Încerc să exersez în fiecare zi",
+    "Vreau să învăț cât mai mult posibil",
+    "Asta funcționează foarte bine pentru mine"
+  ],
+  ell: [
+    "Προσπαθώ να εξασκούμαι κάθε μέρα",
+    "Θέλω να μάθω όσο περισσότερα μπορώ",
+    "Αυτό λειτουργεί πολύ καλά για μένα"
+  ],
+  hrv: [
+    "Pokušavam vježbati svaki dan",
+    "Želim naučiti što više mogu",
+    "Ovo stvarno dobro funkcionira za mene"
+  ],
+  hin: [
+    "मैं हर दिन अभ्यास करने की कोशिश कर रहा हूँ",
+    "मैं जितना हो सके उतना सीखना चाहता हूँ",
+    "यह मेरे लिए बहुत अच्छा काम कर रहा है"
+  ],
+  rus: [
+    "Я стараюсь практиковаться каждый день",
+    "Я хочу выучить как можно больше",
+    "Это работает очень хорошо для меня"
+  ],
   default: [
     "I'm trying to practice every day",
     "I want to learn as much as I can"
   ]
 }
+
+// Live seed phrases fetched from DB (keyed by 'known' / 'target')
+const livePhrases = ref({ known: [], target: [] })
 
 // Current phrase index per role (for cycling through phrases)
 const phraseIndex = ref({})
@@ -454,6 +534,10 @@ function getLanguageForRole(roleId) {
 }
 
 function getPhrasesForRole(roleId) {
+  const role = roles.find(r => r.id === roleId)
+  const side = role?.lang === 'target' ? 'target' : 'known'
+  if (livePhrases.value[side].length > 0) return livePhrases.value[side]
+  // Fallback to hardcoded phrases if no seeds loaded
   const lang = getLanguageForRole(roleId)
   return previewPhrases[lang] || previewPhrases['default']
 }
@@ -468,6 +552,20 @@ function cyclePhrase(roleId) {
   const phrases = getPhrasesForRole(roleId)
   const current = phraseIndex.value[roleId] || 0
   phraseIndex.value[roleId] = (current + 1) % phrases.length
+}
+
+async function loadSeedPhrases() {
+  try {
+    const resp = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/seed-phrases-preview`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (!resp.ok) return
+    const data = await resp.json()
+    if (data.known?.length) livePhrases.value.known = data.known
+    if (data.target?.length) livePhrases.value.target = data.target
+  } catch (e) {
+    // Fallback to hardcoded phrases silently
+  }
 }
 
 function formatSpeed(speed) {
@@ -680,6 +778,26 @@ async function selectManualVoiceForRole(roleId) {
   await saveConfig()
 }
 
+// Learner playback controls
+async function toggleBeltRamp() {
+  if (!config.value) return
+  if (!config.value.target_speed) config.value.target_speed = {}
+  config.value.target_speed.belt_ramp = !config.value.target_speed.belt_ramp
+  await saveConfig()
+}
+
+function isGlobalSpeedActive(speed) {
+  const current = config.value?.target_speed?.global_speed || 1.0
+  return Math.abs(current - speed) < 0.01
+}
+
+async function setGlobalSpeed(speed) {
+  if (!config.value) return
+  if (!config.value.target_speed) config.value.target_speed = {}
+  config.value.target_speed.global_speed = speed
+  await saveConfig()
+}
+
 function onAudioEnded() {
   previewingVoiceId.value = null
   testingRole.value = null
@@ -687,12 +805,18 @@ function onAudioEnded() {
 
 // Watch for course code changes
 watch(() => props.courseCode, () => {
-  if (props.courseCode) loadConfig()
+  if (props.courseCode) {
+    loadConfig()
+    loadSeedPhrases()
+  }
 })
 
 // Load on mount
 onMounted(() => {
-  if (props.courseCode) loadConfig()
+  if (props.courseCode) {
+    loadConfig()
+    loadSeedPhrases()
+  }
 })
 </script>
 
@@ -1346,5 +1470,110 @@ onMounted(() => {
 .save-status.error {
   background: rgba(239, 68, 68, 0.2);
   color: #ef4444;
+}
+
+/* Learner Playback Section */
+.playback-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #334155;
+}
+
+.playback-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 0 0 4px 0;
+}
+
+.playback-subtitle {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin: 0 0 16px 0;
+}
+
+.playback-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.playback-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.playback-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.playback-label {
+  color: #e2e8f0;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.playback-desc {
+  color: #64748b;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.playback-toggle {
+  flex-shrink: 0;
+}
+
+.playback-toggle-track {
+  width: 40px;
+  height: 22px;
+  background: #334155;
+  border-radius: 11px;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.playback-toggle.active .playback-toggle-track {
+  background: #10b981;
+}
+
+.playback-toggle-thumb {
+  width: 18px;
+  height: 18px;
+  background: #e2e8f0;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+}
+
+.playback-toggle.active .playback-toggle-thumb {
+  transform: translateX(18px);
+}
+
+.global-speed-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.global-speed-value {
+  color: #10b981;
+  font-weight: 600;
+  font-family: monospace;
+  font-size: 0.85rem;
+  min-width: 3.5em;
+  text-align: right;
 }
 </style>

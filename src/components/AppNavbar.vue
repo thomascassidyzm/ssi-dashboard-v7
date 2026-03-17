@@ -23,30 +23,67 @@
         </router-link>
       </nav>
 
-      <!-- Right: Summary + Env + Course Switcher -->
+      <!-- Right: Summary + Env + Course Switcher + User -->
       <div class="navbar-right">
         <span v-if="showSummary && !loading" class="course-summary">
           <span class="summary-value">{{ courseCount }}</span> courses
           <span class="summary-sep">&middot;</span>
           <span class="summary-value">{{ inProductionCount }}</span> in production
         </span>
-        <EnvironmentSwitcher />
+        <div class="navbar-env-deploy">
+          <EnvironmentSwitcher />
+        </div>
         <CourseSwitcherDropdown />
+        <div v-if="isAuthenticated" class="user-menu" ref="userMenuRef">
+          <button @click="showUserMenu = !showUserMenu" class="avatar-btn">
+            {{ userInitial }}
+          </button>
+          <div v-if="showUserMenu" class="user-dropdown">
+            <div class="user-dropdown-name">{{ learner?.display_name || user?.email }}</div>
+            <button @click="handleLogout" class="user-dropdown-logout">Sign out</button>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useCourses } from '../composables/useCourses'
+import { useAuth } from '../composables/useAuth'
 import { getApiUrl } from '../services/api'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 
 const route = useRoute()
+const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
+const { isAuthenticated, user, learner, logout } = useAuth()
+
+const showUserMenu = ref(false)
+const userMenuRef = ref(null)
+
+const userInitial = computed(() => {
+  const name = learner.value?.display_name || user.value?.email || ''
+  return name.charAt(0).toUpperCase() || '?'
+})
+
+async function handleLogout() {
+  showUserMenu.value = false
+  await logout()
+  router.push({ name: 'Login' })
+}
+
+function handleClickOutside(e) {
+  if (userMenuRef.value && !userMenuRef.value.contains(e.target)) {
+    showUserMenu.value = false
+  }
+}
+
+onMounted(() => document.addEventListener('click', handleClickOutside))
+onUnmounted(() => document.removeEventListener('click', handleClickOutside))
 
 const activeJobCount = ref(0)
 
@@ -294,20 +331,130 @@ onMounted(() => {
   opacity: 0.5;
 }
 
-/* Responsive */
+.user-menu {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
+  color: var(--color-paper-dim, #c1c1bb);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-btn:hover {
+  border-color: var(--color-tungsten, #ffa630);
+  color: var(--color-paper, #f7f7f2);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  min-width: 180px;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.user-dropdown-name {
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-paper-dim, #c1c1bb);
+  border-bottom: 1px solid var(--color-graphite, #475569);
+}
+
+.user-dropdown-logout {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  color: #ef4444;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.user-dropdown-logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Responsive — tabs MUST always be visible */
 @media (max-width: 900px) {
+  .app-navbar {
+    height: auto;
+  }
+
+  .navbar-inner {
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+    gap: 0;
+  }
+
+  .navbar-left {
+    order: 1;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .navbar-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9375rem;
+  }
+
+  .navbar-right {
+    order: 2;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
   .navbar-tabs {
-    display: none;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    padding: 0.25rem 0;
+    border-top: 1px solid var(--color-graphite, #475569);
+    margin-top: 0.375rem;
   }
 
   .course-summary {
+    display: none;
+  }
+
+  /* Title is visible — hide the duplicate name in course switcher, keep just the code */
+  .navbar-right :deep(.course-name) {
     display: none;
   }
 }
 
 @media (max-width: 640px) {
   .app-navbar {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
+  }
+
+  .navbar-title {
+    font-size: 0.8125rem;
+  }
+
+  .tab-item {
+    font-size: 0.8125rem;
+    padding: 0.375rem 0.625rem;
   }
 }
 </style>

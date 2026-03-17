@@ -109,6 +109,12 @@
 
       <!-- PIPELINE -->
       <section v-if="!isCreateMode" class="space-y-2">
+        <!-- Action Error Banner -->
+        <div v-if="actionError" class="flex items-center justify-between bg-red-900/30 border border-red-500/50 rounded-lg px-4 py-2.5 mb-2">
+          <span class="text-sm text-red-300">{{ actionError.message }}</span>
+          <button @click="actionError = null" class="text-red-400 hover:text-red-300 text-xs ml-4">Dismiss</button>
+        </div>
+
         <div class="flex items-center justify-between mb-3">
           <h2 class="text-xs font-medium text-slate-500 uppercase tracking-wide">Pipeline</h2>
           <div class="flex items-center gap-2">
@@ -265,13 +271,25 @@
                 <div class="text-xs text-slate-500">Grammar audit — delete bad phrases</div>
               </div>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 flex-wrap justify-end">
+              <!-- Under-threshold: needs phrase backfill (orange) -->
+              <span v-if="seedGridUnderThreshold > 0" class="text-xs text-orange-400">{{ seedGridUnderThreshold }} need phrases</span>
+              <button
+                v-if="seedGridUnderThreshold > 0 && !stageRunning('backfill-phrases')"
+                @click="startBackfillPhrases"
+                :disabled="backfillPhrasesStarting"
+                class="px-3 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ backfillPhrasesStarting ? 'Spawning...' : `Backfill ${seedGridUnderThreshold} Seeds` }}
+              </button>
+              <span v-if="stageRunning('backfill-phrases')" class="text-xs text-orange-400 animate-pulse">Backfilling...</span>
+              <!-- Flagged: needs full redo (red) -->
               <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">{{ seedGridFlagged }} flagged</span>
               <button
                 v-if="seedGridFlagged > 0"
                 @click="redoAllFlagged"
                 :disabled="redoingFlagged"
-                class="px-3 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                class="px-3 py-1 bg-rose-600/20 border border-rose-500/50 text-rose-400 hover:border-rose-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ redoingFlagged ? 'Spawning...' : `Redo ${seedGridFlagged} Flagged` }}
               </button>
@@ -280,12 +298,20 @@
                 <span v-if="stageComplete('final-pass')" class="stage-badge-complete mr-2">Done</span>
                 <span v-if="stageRunning('final-pass')" class="text-xs text-violet-400 animate-pulse">Running...</span>
                 <button
-                  v-if="!stageRunning('final-pass')"
-                  @click="startFinalPass"
+                  v-if="!stageRunning('final-pass') && seedGridDrafted > 0"
+                  @click="startFinalPass('drafted')"
                   :disabled="finalPassStarting"
                   class="px-3 py-1 bg-violet-600/20 border border-violet-500/50 text-violet-400 hover:border-violet-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
                 >
-                  {{ finalPassStarting ? 'Spawning...' : stageComplete('final-pass') ? 'Re-run Final Pass' : 'Start Final Pass' }}
+                  {{ finalPassStarting ? 'Spawning...' : `Final Pass ${seedGridDrafted} Seeds` }}
+                </button>
+                <button
+                  v-if="!stageRunning('final-pass')"
+                  @click="startFinalPass('all')"
+                  :disabled="finalPassStarting"
+                  class="px-3 py-1 bg-violet-600/10 border border-violet-500/30 text-violet-400/70 hover:border-violet-400/50 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >
+                  {{ finalPassStarting ? 'Spawning...' : stageComplete('final-pass') ? 'Re-run Final Pass' : 'Full Final Pass' }}
                 </button>
                 <button
                   v-if="seedGridDrafted > 0"
@@ -394,6 +420,12 @@
             </span>
             <span v-if="seedGridDrafted > 0" class="text-xs text-amber-400">
               {{ seedGridDrafted }} drafted
+            </span>
+            <span v-if="seedGridUnderThreshold > 0" class="text-xs text-orange-400">
+              {{ seedGridUnderThreshold }} need phrases
+            </span>
+            <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">
+              {{ seedGridFlagged }} flagged
             </span>
             <span v-if="seedGridCollision > 0" class="text-xs text-red-400">
               {{ seedGridCollision }} collision
@@ -598,9 +630,17 @@ const buildTeamStarting = ref(false)
 const finalPassStarting = ref(false)
 const massApproving = ref(false)
 const genderStarting = ref(false)
+const backfillPhrasesStarting = ref(false)
 const componentCheckLoading = ref(false)
 const componentBackfillStarting = ref(false)
 const componentGaps = ref(null) // null = not checked yet, object = { total_m_legos, gaps: { total, null_components, empty_components, partial_components }, complete }
+const actionError = ref(null) // { message, timestamp } — auto-dismisses after 8s
+let actionErrorTimer = null
+function showActionError(msg) {
+  actionError.value = { message: msg, timestamp: Date.now() }
+  if (actionErrorTimer) clearTimeout(actionErrorTimer)
+  actionErrorTimer = setTimeout(() => { actionError.value = null }, 8000)
+}
 
 // Seed grid state
 const seedGrid = ref([])
@@ -666,6 +706,7 @@ const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status ===
 const seedGridDrafted = computed(() => seedGrid.value.filter(s => s.status === 'drafted').length)
 const seedGridCollision = computed(() => seedGrid.value.filter(s => s.status === 'collision' || s.status === 'rework').length)
 const seedGridFlagged = computed(() => seedGrid.value.filter(s => s.status === 'flagged').length)
+const seedGridUnderThreshold = computed(() => seedGrid.value.filter(s => s.status === 'under-threshold').length)
 
 // Group seeds into rows of blocks (each block = 10 seeds, max 3 blocks per row = 30 seeds)
 
@@ -750,6 +791,8 @@ function seedCellClass(cell) {
   switch (cell.status) {
     case 'flagged':
       return 'bg-rose-500/70 ring-1 ring-inset ring-rose-400'
+    case 'under-threshold':
+      return 'bg-orange-400/70 ring-1 ring-inset ring-orange-300'
     case 'collision':
     case 'rework':
       return 'bg-rose-500/60 ring-1 ring-inset ring-rose-400'
@@ -930,10 +973,10 @@ async function startTranslation() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, translate: 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start translation:', result.error)
+      showActionError(`Translation failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start translation:', err)
+    showActionError(`Translation failed: ${err.message}`)
   } finally {
     translateStarting.value = false
   }
@@ -960,10 +1003,10 @@ async function confirmResetTranslations() {
       console.log(`[reset] Wiped ${result.seeds_reset} translations for ${courseCode}`)
       buildMonitor.refresh()
     } else {
-      console.error('Failed to reset translations:', result.error)
+      showActionError(`Reset translations failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to reset translations:', err)
+    showActionError(`Reset translations failed: ${err.message}`)
   } finally {
     translateResetting.value = false
   }
@@ -985,23 +1028,35 @@ async function startBuildTeam() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'build-team': 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start build team:', result.error)
+      showActionError(`Build team failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start build team:', err)
+    showActionError(`Build team failed: ${err.message}`)
   } finally {
     buildTeamStarting.value = false
   }
 }
 
-async function startFinalPass() {
+async function startFinalPass(mode = 'all') {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
 
   finalPassStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/final-pass/${courseCode}`, {
+    let url = `${apiBase}/api/build/final-pass/${courseCode}`
+
+    // If targeting drafted seeds only, pass their seed numbers
+    if (mode === 'drafted') {
+      const draftedSeeds = seedGrid.value
+        .filter(s => s.status === 'drafted')
+        .map(s => s.seed)
+      if (draftedSeeds.length > 0) {
+        url += `?seeds=${draftedSeeds.join(',')}`
+      }
+    }
+
+    const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
@@ -1010,10 +1065,10 @@ async function startFinalPass() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'final-pass': 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start final pass:', result.error)
+      showActionError(`Final pass failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start final pass:', err)
+    showActionError(`Final pass failed: ${err.message}`)
   } finally {
     finalPassStarting.value = false
   }
@@ -1039,10 +1094,10 @@ async function massApproveSeeds() {
       const data = await gridResp.json()
       seedGrid.value = data.seeds || []
     } else {
-      console.error('Failed to mass approve:', result.error)
+      showActionError(`Mass approve failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to mass approve:', err)
+    showActionError(`Mass approve failed: ${err.message}`)
   } finally {
     massApproving.value = false
   }
@@ -1096,12 +1151,37 @@ async function startComponentBackfill() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'component-backfill': 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start component backfill:', result.error)
+      showActionError(`Component backfill failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start component backfill:', err)
+    showActionError(`Component backfill failed: ${err.message}`)
   } finally {
     componentBackfillStarting.value = false
+  }
+}
+
+async function startBackfillPhrases() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  backfillPhrasesStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/build/backfill-phrases/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'backfill-phrases': 'running' }
+      buildMonitor.refresh()
+    } else {
+      showActionError(`Backfill failed: ${result.error}`)
+    }
+  } catch (err) {
+    showActionError(`Backfill failed: ${err.message}`)
+  } finally {
+    backfillPhrasesStarting.value = false
   }
 }
 
@@ -1121,10 +1201,10 @@ async function startGenderPrep() {
       buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'gender-prep': 'running' }
       buildMonitor.refresh()
     } else {
-      console.error('Failed to start gender prep:', result.error)
+      showActionError(`Gender prep failed: ${result.error}`)
     }
   } catch (err) {
-    console.error('Failed to start gender prep:', err)
+    showActionError(`Gender prep failed: ${err.message}`)
   } finally {
     genderStarting.value = false
   }
@@ -1140,7 +1220,7 @@ async function stopBuilder() {
     })
     progress.value.status = 'idle'
   } catch (error) {
-    console.error('Failed to stop builder:', error)
+    showActionError(`Failed to stop builder: ${error.message}`)
   }
 }
 
@@ -1180,7 +1260,7 @@ async function killAgent(pid) {
       fetchProgress()
     }
   } catch (error) {
-    console.error('Failed to kill agent:', error)
+    showActionError(`Failed to kill agent: ${error.message}`)
   }
 }
 
@@ -1260,7 +1340,7 @@ async function approveSeed() {
     const nextDrafted = seedGrid.value.find(s => s.status === 'drafted')
     if (nextDrafted) selectSeed(nextDrafted.seed)
   } catch (err) {
-    console.error('Failed to approve seed:', err)
+    showActionError(`Failed to approve seed: ${err.message}`)
   } finally {
     seedApproving.value = false
   }
@@ -1290,7 +1370,7 @@ async function redoSeed() {
     if (nextDrafted) selectSeed(nextDrafted.seed)
     seedRedoing.value = false
   } catch (err) {
-    console.error('Failed to redo seed:', err)
+    showActionError(`Failed to redo seed: ${err.message}`)
     seedRedoing.value = false
   }
 }
@@ -1314,7 +1394,7 @@ async function redoAllFlagged() {
     }
     await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
   } catch (err) {
-    console.error('Failed to redo flagged seeds:', err)
+    showActionError(`Failed to redo flagged seeds: ${err.message}`)
   } finally {
     redoingFlagged.value = false
   }
@@ -1456,11 +1536,26 @@ onMounted(() => {
   startPolling()
   if (!isCreateMode.value) {
     socket.connect(effectiveCourseCode.value)
+    // Auto-check component gaps on load — no manual click needed
+    checkComponentGaps()
   }
   if (isCreateMode.value) {
     loadLanguages()
   }
 })
+
+// Watch for phase transitions — when a job finishes, refresh dependent state
+watch(() => buildMonitor.phaseStatus.value, (newPs, oldPs) => {
+  if (!oldPs) return
+  const phases = ['translate', 'build-team', 'final-pass', 'component-backfill', 'gender-prep']
+  for (const phase of phases) {
+    if (oldPs[phase] === 'running' && newPs[phase] !== 'running') {
+      buildMonitor.refresh()
+      if (phase === 'component-backfill') checkComponentGaps()
+      break
+    }
+  }
+}, { deep: true })
 
 onUnmounted(() => {
   stopPolling()

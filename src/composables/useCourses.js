@@ -1,15 +1,37 @@
 import { ref, computed } from 'vue'
 import api from '../services/api'
 import { getApiUrl } from '../services/api'
+import { useAuth } from './useAuth'
 
 // Hardcoded fallback for immediate use before API responds
 const fallbackNames = {
-  'eng': 'English', 'spa': 'Spanish (Spain)', 'fra': 'French', 'deu': 'German',
+  // Core
+  'eng': 'English', 'spa': 'Spanish', 'fra': 'French', 'deu': 'German',
   'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'pol': 'Polish',
   'rus': 'Russian', 'cym': 'Welsh', 'gle': 'Irish', 'gla': 'Scottish Gaelic',
   'zho': 'Chinese', 'cmn': 'Mandarin', 'jpn': 'Japanese', 'kor': 'Korean',
   'ara': 'Arabic', 'hin': 'Hindi', 'tur': 'Turkish', 'swa': 'Swahili',
+  // Romance
+  'ron': 'Romanian', 'cat': 'Catalan', 'eus': 'Basque', 'glg': 'Galician',
+  // Germanic
+  'swe': 'Swedish', 'nor': 'Norwegian', 'dan': 'Danish', 'fin': 'Finnish', 'isl': 'Icelandic',
+  'nob': 'Norwegian (Bokmål)', 'nno': 'Norwegian (Nynorsk)',
+  // Slavic
+  'hrv': 'Croatian', 'srp': 'Serbian', 'bos': 'Bosnian', 'slv': 'Slovenian',
+  'ces': 'Czech', 'slk': 'Slovak', 'ukr': 'Ukrainian', 'bul': 'Bulgarian', 'mkd': 'Macedonian',
+  // Other European
+  'ell': 'Greek', 'hun': 'Hungarian', 'heb': 'Hebrew', 'sqi': 'Albanian',
+  'lit': 'Lithuanian', 'lav': 'Latvian', 'est': 'Estonian',
+  // Asian
+  'tha': 'Thai', 'vie': 'Vietnamese', 'ind': 'Indonesian', 'fil': 'Filipino',
+  'ben': 'Bengali', 'urd': 'Urdu', 'tam': 'Tamil', 'tel': 'Telugu', 'msa': 'Malay',
+  'yue': 'Cantonese',
+  // Other
+  'fas': 'Persian', 'kur': 'Kurdish', 'amh': 'Amharic', 'hau': 'Hausa',
+  'yor': 'Yoruba', 'zul': 'Zulu', 'kat': 'Georgian', 'hye': 'Armenian',
+  'bre': 'Breton', 'cor': 'Cornish',
   // Dialect variants
+  'cym_n': 'Welsh (North)', 'cym_s': 'Welsh (South)',
   'por_br': 'Portuguese (Brazil)', 'spa_mx': 'Spanish (Mexico)',
   'ara_eg': 'Arabic (Egypt)', 'ara_sy': 'Arabic (Syria)',
   'deu_at': 'German (Austria)'
@@ -18,6 +40,10 @@ const fallbackNames = {
 // Live language name map — starts with fallback, enriched from API
 const languageNames = { ...fallbackNames }
 let languagesLoaded = false
+
+// Reactive version counter — bumped when language/display names change
+// Forces computed properties that call getCourseName() to re-evaluate
+const nameVersion = ref(0)
 
 // Fetch full language name map from backend (CSV-backed, all ISO 639 codes)
 async function loadLanguageNames() {
@@ -33,6 +59,7 @@ async function loadLanguageNames() {
       }
     }
     languagesLoaded = true
+    nameVersion.value++
   } catch {
     // Fallback map is already populated — no-op
   }
@@ -46,9 +73,17 @@ loadLanguageNames()
 const courseDisplayNames = {}
 
 function getCourseName(code) {
+  // Touch reactive dep so computed properties re-evaluate when names load
+  void nameVersion.value
   if (!code || !code.includes('_for_')) return code
-  // Prefer display_name from database (handles cym_anthem, cym_n, etc.)
-  if (courseDisplayNames[code]) return courseDisplayNames[code]
+  // Prefer display_name from database — but only if it looks like a proper name
+  // (DB may contain raw codes like "ron for eng" which we should skip)
+  if (courseDisplayNames[code]) {
+    const raw = courseDisplayNames[code]
+    // If display_name looks like "xxx for yyy" where xxx is a 2-3 char code, skip it
+    const beforeFor = raw.replace(/\s+for\s+.+$/i, '').trim()
+    if (!/^[a-z]{2,3}$/i.test(beforeFor)) return raw
+  }
   const [targetPart, knownPart] = code.split('_for_')
   // Try full dialect code first (por_br, spa_mx), then base code (por, spa)
   const targetBase = targetPart.split('_')[0]
@@ -83,6 +118,7 @@ async function loadCourses(force = false) {
       const code = c.code || c.course_code || c.id
       if (c.display_name && code) courseDisplayNames[code] = c.display_name
     }
+    nameVersion.value++
     courses.value = courseList.map(c => ({
       code: c.code || c.course_code || c.id,
       name: c.display_name || getCourseName(c.code || c.course_code || c.id),
@@ -93,6 +129,8 @@ async function loadCourses(force = false) {
       content_status: c.content_status,
       export_ready: c.export_ready || false,
       seed_count: c.seed_count,
+      created_at: c.created_at || null,
+      updated_at: c.updated_at || null,
       stats: c.stats || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
     }))
     loaded = true
@@ -104,17 +142,24 @@ async function loadCourses(force = false) {
   }
 }
 
-const courseCount = computed(() => courses.value.length)
+// Filtered courses based on user's dashboard_courses access
+const visibleCourses = computed(() => {
+  const { canAccessCourse } = useAuth()
+  return courses.value.filter(c => canAccessCourse(c.code))
+})
+
+const courseCount = computed(() => visibleCourses.value.length)
 
 const inProductionCount = computed(() => {
-  return courses.value.filter(c => {
+  return visibleCourses.value.filter(c => {
     return c.stats?.seeds > 0 || c.stats?.completedSeeds > 0
   }).length
 })
 
 export function useCourses() {
   return {
-    courses,
+    courses: visibleCourses,
+    allCourses: courses, // unfiltered, for admin use if needed
     loading,
     loadCourses,
     courseCount,
