@@ -146,6 +146,7 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
       // Unset CLAUDECODE to allow nested Claude CLI calls
       const env = { ...process.env, HOME: process.env.HOME }
       delete env.CLAUDECODE
+      delete env.ANTHROPIC_API_KEY
 
       const proc = spawn('bash', ['-c', claudeCmd], {
         cwd: path.resolve(__dirname, '..'),

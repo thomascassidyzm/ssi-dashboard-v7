@@ -31,11 +31,13 @@ const azureToDatabase = {};  // 'en-gb' → 'eng' (BCP-47 azure locale → ISO 6
 // Legacy non-standard codes → ISO standard codes
 const LEGACY_TO_STANDARD = {
   'eng': 'en',
-  'spa': 'es',
+  'spa': 'es-es',
+  'spa_mx': 'es-mx',
   'ita': 'it',
   'deu': 'de',
   'fra': 'fr',
-  'por': 'pt',
+  'por': 'pt-pt',
+  'por_br': 'pt-br',
   'jpn': 'ja',
   'kor': 'ko',
   'ara': 'ar',
@@ -72,6 +74,7 @@ const LEGACY_TO_STANDARD = {
   'bre': 'br',       // Breton
   'eus': 'eu',       // Basque
   'cym': 'cy',       // Welsh
+  'por_br': 'pt-br',          // Brazilian Portuguese
   'gle': 'ga',       // Irish
   'gla': 'gd',       // Scottish Gaelic
   'glv': 'gv',       // Manx

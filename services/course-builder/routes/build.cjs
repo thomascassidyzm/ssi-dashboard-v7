@@ -338,7 +338,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Translation agent spawned` });
@@ -379,7 +379,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Decompose', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Decompose agent spawned` });
@@ -420,7 +420,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Build Team agent spawned` });
@@ -462,7 +462,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE ANTHROPIC_API_KEY && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Final Pass', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Final Pass agent spawned` });

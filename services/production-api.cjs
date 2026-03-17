@@ -24,6 +24,19 @@ const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 
+/**
+ * Derive course-configs ID from course metadata.
+ * Handles course-level suffixes (not dialects): cym_anthem_for_jpn → ja-cy-anthem
+ * Dialect variants are handled by the language code service: spa_mx → es-mx
+ */
+function getCourseConfigsId(courseCode, knownLang, targetLang) {
+  const knownCode = languageCodeService.legacyToStandard(knownLang)
+  const targetCode = languageCodeService.legacyToStandard(targetLang)
+  const base = `${knownCode}-${targetCode}`
+  const courseSuffix = courseCode.match(new RegExp(`^${targetLang}_(.+)_for_${knownLang}$`))?.[1]
+  return courseSuffix ? `${base}-${courseSuffix}` : base
+}
+
 // =============================================================================
 // MANIFEST CACHING
 // =============================================================================
@@ -5902,9 +5915,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
       return res.status(404).json({ error: `Course ${courseCode} not found` })
     }
 
-    const knownCode = languageCodeService.legacyToStandard(course.known_lang)
-    const targetCode = languageCodeService.legacyToStandard(course.target_lang)
-    const courseConfigsId = `${knownCode}-${targetCode}`
+    const courseConfigsId = getCourseConfigsId(courseCode, course.known_lang, course.target_lang)
 
     // Import the legacy manifest generator
     const { generateLegacyManifest, validateManifest } = require('./phases/generate-legacy-manifest.cjs')
@@ -6308,9 +6319,7 @@ app.get('/api/production/:courseCode/publish-manifest/version', async (req, res)
       return res.status(404).json({ error: `Course ${courseCode} not found` })
     }
 
-    const knownCode = languageCodeService.legacyToStandard(course.known_lang)
-    const targetCode = languageCodeService.legacyToStandard(course.target_lang)
-    const courseConfigsId = `${knownCode}-${targetCode}`
+    const courseConfigsId = getCourseConfigsId(courseCode, course.known_lang, course.target_lang)
 
     const repoCheck = publishManifestService.checkCourseConfigsRepo()
     if (repoCheck.exists) publishManifestService.pullAuthorBranch()
@@ -6344,9 +6353,7 @@ app.get('/api/production/:courseCode/manifest-diff', async (req, res) => {
       return res.status(404).json({ error: `Course ${courseCode} not found` })
     }
 
-    const knownCode = languageCodeService.legacyToStandard(course.known_lang)
-    const targetCode = languageCodeService.legacyToStandard(course.target_lang)
-    const courseConfigsId = `${knownCode}-${targetCode}`
+    const courseConfigsId = getCourseConfigsId(courseCode, course.known_lang, course.target_lang)
 
     // Load pending manifest
     const pendingPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
@@ -6691,10 +6698,8 @@ async function loadPublishedManifest(courseCode) {
     throw new Error(`Course ${courseCode} not found`)
   }
 
-  // Compute courseConfigsId dynamically from language codes (e.g., "en-cmn" for zho_for_eng)
-  const knownCode = languageCodeService.databaseToManifest(course.known_lang)
-  const targetCode = languageCodeService.databaseToManifest(course.target_lang)
-  const courseConfigsId = `${knownCode}-${targetCode}`
+  // Compute courseConfigsId dynamically from language codes + course suffix
+  const courseConfigsId = getCourseConfigsId(courseCode, course.known_lang, course.target_lang)
 
   // Try course-configs repo first (canonical published location)
   const courseConfigsRepo = process.env.COURSE_CONFIGS_REPO || path.join(require('os').homedir(), 'Documents', 'GitHub', 'course-configs')

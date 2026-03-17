@@ -640,10 +640,11 @@ const nextVersions = computed(() => {
   }
 })
 
-// Load version info when component mounts
+// Set default version for new courses (will be overwritten if versionInfo loads)
+// Note: version info loading is triggered by the parent when Step 3 becomes active,
+// NOT on mount — mounting happens immediately via v-show and would crash if version
+// info isn't available yet.
 onMounted(() => {
-  emit('loadVersionInfo')
-  // Set default version for new courses (will be overwritten if versionInfo loads)
   if (!version.value) {
     version.value = '1.0.0'
   }
@@ -656,10 +657,11 @@ watch(() => props.versionInfo, (info) => {
     // Use diff suggestion if it's an actual bump; otherwise default to patch
     if (diff?.suggestedBump && diff.suggestedBump !== 'none') {
       version.value = diff.suggestedVersion
-    } else {
+    } else if (info.existingVersion) {
       const parts = info.existingVersion.split('.').map(Number)
       version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
     }
+    // else: keep default 1.0.0 for new courses
   }
 })
 
@@ -669,7 +671,7 @@ watch(() => props.manifestDiff, (diff) => {
     // Use diff suggestion if it's an actual bump; otherwise default to patch
     if (diff.suggestedBump && diff.suggestedBump !== 'none') {
       version.value = diff.suggestedVersion
-    } else {
+    } else if (props.versionInfo.existingVersion) {
       const parts = props.versionInfo.existingVersion.split('.').map(Number)
       version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
     }
@@ -682,7 +684,7 @@ watch(showRepublish, (isShowing) => {
     // Use diff suggestion if it's an actual bump, otherwise default to patch
     if (props.manifestDiff?.suggestedBump && props.manifestDiff.suggestedBump !== 'none') {
       republishVersion.value = props.manifestDiff.suggestedVersion
-    } else {
+    } else if (props.versionInfo.existingVersion) {
       const parts = props.versionInfo.existingVersion.split('.').map(Number)
       republishVersion.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
     }

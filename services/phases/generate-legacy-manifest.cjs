@@ -1516,7 +1516,9 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // 12. Build manifest
   const knownLegacy = getLegacyCode(knownLang, 'known language')
   const targetLegacy = getLegacyCode(targetLang, 'target language')
-  const manifestId = `${knownLegacy}-${targetLegacy}`
+  // Course-level suffix: e.g. cym_anthem_for_jpn → "anthem" (not a dialect, just a course variant)
+  const courseSuffix = courseCode.match(new RegExp(`^${targetLang}_(.+)_for_${knownLang}$`))?.[1]
+  const manifestId = courseSuffix ? `${knownLegacy}-${targetLegacy}-${courseSuffix}` : `${knownLegacy}-${targetLegacy}`
 
   const manifest = {
     id: manifestId,

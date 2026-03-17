@@ -1096,25 +1096,27 @@ module.exports = function seedCompleteRoutes(ctx) {
 
             // LEGO CONTAINMENT
             {
-              const useWordContainment = req.query.strict_containment !== 'true'; // default: word-based (handles word-order differences)
+              // For Chinese/logographic: always use substring containment (no spaces between characters)
+              // For alphabetic: default to word-based, override with strict_containment=true for substring
+              const useSubstring = chinese || req.query.strict_containment === 'true';
               const legoTargetNorm = normalizeForContainment(lego.target);
               const containmentFails = allPhrases.filter(p => {
-                if (useWordContainment) {
-                  return !checkWordContainment(lego.target, p.target);
+                if (useSubstring) {
+                  return !normalizeForContainment(p.target).includes(legoTargetNorm);
                 }
-                return !normalizeForContainment(p.target).includes(legoTargetNorm);
+                return !checkWordContainment(lego.target, p.target);
               });
               if (containmentFails.length > 0) {
-                const mode = useWordContainment ? 'word-based' : 'substring';
+                const mode = useSubstring ? 'substring' : 'word-based';
                 errors.push({
                   type: 'lego_containment',
                   message: `${legoId}: ${containmentFails.length} phrase(s) fail ${mode} containment for LEGO target "${lego.target}"`,
                   lego_id: legoId,
                   lego_target: lego.target,
                   failing_phrases: containmentFails.slice(0, 3).map(p => p.target),
-                  hint: useWordContainment
-                    ? 'Every BUILD and USE phrase must contain ALL words from the LEGO target (German word-order mode).'
-                    : 'Every BUILD and USE phrase MUST contain the exact LEGO target text. No conjugation changes, no substitutions, no omissions.',
+                  hint: useSubstring
+                    ? 'Every BUILD and USE phrase MUST contain the exact LEGO target text. No conjugation changes, no substitutions, no omissions.'
+                    : 'Every BUILD and USE phrase must contain ALL words from the LEGO target (German word-order mode).',
                 });
                 console.log(`✗ ${legoId}: CONTAINMENT (${mode}) - ${containmentFails.length} phrases missing LEGO target "${lego.target}"`);
               }
