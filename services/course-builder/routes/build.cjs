@@ -585,10 +585,11 @@ module.exports = function (ctx) {
         } else if (Array.isArray(comps) && comps.length === 0) {
           emptyCount++;
         } else if (Array.isArray(comps) && comps.length === 1 && kw >= 2) {
-          // Single component equal to the whole LEGO = intentionally indivisible (e.g. reflexive verbs)
+          // Single component: if its target is a substring of the LEGO target,
+          // the residual is structural (e.g. Greek να, Spanish se) — not a gap.
           const compTarget = (comps[0].target || '').trim();
           const legoTarget = (l.target_text || '').trim();
-          if (compTarget !== legoTarget) partialCount++;
+          if (compTarget !== legoTarget && !legoTarget.includes(compTarget)) partialCount++;
         }
       }
 

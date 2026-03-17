@@ -49,7 +49,8 @@ module.exports = function (ctx) {
         const isNull = comps === null || comps === undefined;
         const isEmpty = Array.isArray(comps) && comps.length === 0;
         const isPartial = includePartial && Array.isArray(comps) && comps.length === 1 &&
-          (l.known_text || '').trim().split(/\s+/).length >= 2;
+          (l.known_text || '').trim().split(/\s+/).length >= 2 &&
+          !(l.target_text || '').trim().includes((comps[0].target || '').trim());
 
         if (!isNull && !isEmpty && !isPartial) return false;
 
@@ -229,6 +230,7 @@ module.exports = function (ctx) {
           word_count: comp.target.length,
           lego_count: 1,
           phrase_role: 'component',
+          introduce: comp.introduce !== false,
           connected_lego_ids: [],
           lego_position: computeLegoPosition(comp.target, comp.target),
           metadata: { buildup: 'component', component_index: i },
