@@ -222,6 +222,7 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         target_text: row.target_text,
         position: row.position,
         phrase_role: row.phrase_role,
+        introduce: row.introduce,
         target_syllable_count: row.target_syllable_count,
         known_audio_uuid: row.known_audio_id,
         target1_audio_uuid: row.target1_audio_id,
@@ -478,7 +479,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     //   Overkill >> learner uncertainty at the onset of a new LEGO.
     // A-LEGOs / Welsh: standard intro with presentation audio.
     const isWelsh = courseCode.startsWith('cym_')
-    const compPhrases = isWelsh ? [] : (componentMap.get(currentLego.lego.id) || [])
+    const allCompPhrases = isWelsh ? [] : (componentMap.get(currentLego.lego.id) || [])
+    // Only generate audio cycles for components meant to be introduced
+    const compPhrases = allCompPhrases.filter(c => c.introduce !== false)
     if (compPhrases.length > 0) {
       const practiceReps = 2
       for (const comp of compPhrases) {

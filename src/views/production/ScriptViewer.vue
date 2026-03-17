@@ -1587,6 +1587,7 @@ const transformScriptViewToSeeds = (data: any): SeedRowData[] => {
           cycle_index: phrase.position,
           word_count: phrase.word_count,
           lego_count: phrase.lego_count,
+          introduce: phrase.introduce,
         };
       });
 

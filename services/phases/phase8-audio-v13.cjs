@@ -492,6 +492,7 @@ async function linkAudioIdsBatch(courseCode) {
     ['course_practice_phrases', 'id',      'target_text', 'target2_audio_id', target_lang, 'target2'],
     ['course_legos',            'lego_id', 'known_text',  'known_audio_id',   known_lang,  'known'],
     ['course_legos',            'lego_id', 'target_text', 'target1_audio_id', target_lang, 'target1'],
+    ['course_legos',            'lego_id', 'target_text', 'target2_audio_id', target_lang, 'target2'],
     ['course_seeds',            'id',      'known_text',  'known_audio_id',   known_lang,  'known'],
     ['course_seeds',            'id',      'target_text', 'target1_audio_id', target_lang, 'target1'],
     ['course_seeds',            'id',      'target_text', 'target2_audio_id', target_lang, 'target2'],
@@ -2169,9 +2170,9 @@ app.post('/insert', async (req, res) => {
 app.post('/regenerate-presentations/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = true, regenerateAudio = false } = req.body
+    const { dryRun = true, regenerateAudio = false, regenerateAll = false } = req.body
 
-    logger.info(`Regenerating presentations for ${courseCode} (dryRun=${dryRun})`)
+    logger.info(`Regenerating presentations for ${courseCode} (dryRun=${dryRun}, regenerateAll=${regenerateAll})`)
 
     // Get course info
     const { data: course, error: courseError } = await supabase
@@ -2215,11 +2216,15 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     let hasMoreLegos = true
 
     while (hasMoreLegos) {
-      const { data: legosBatch, error: legosError } = await supabase
+      let query = supabase
         .from('course_legos')
         .select('lego_id, known_text, target_text, seed_number')
         .eq('course_code', courseCode)
         .eq('is_new', true)
+      if (!regenerateAll) {
+        query = query.is('presentation_text', null)
+      }
+      const { data: legosBatch, error: legosError } = await query
         .range(legosOffset, legosOffset + PAGE_SIZE - 1)
 
       if (legosError) throw legosError

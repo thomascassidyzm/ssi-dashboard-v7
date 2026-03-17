@@ -250,6 +250,7 @@ function generateBuildupPhrases(lego, courseCode) {
       word_count: comp.target.length,
       lego_count: 1,
       phrase_role: 'component',
+      introduce: comp.introduce !== false,
       connected_lego_ids: [],
       lego_position: computeLegoPosition(comp.target, comp.target),
       metadata: { buildup: 'component', component_index: i },
