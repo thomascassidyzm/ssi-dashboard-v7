@@ -86,8 +86,8 @@
           @mouseleave="activeCourse = null"
         >
           <div class="card-main">
-            <span class="course-code-label">{{ course.code }}</span>
             <span class="course-name-label">{{ getFullCourseName(course.code) }}</span>
+            <span class="course-code-label">{{ course.code }}</span>
           </div>
           <span class="card-apps">
             <button
@@ -785,22 +785,24 @@ function cycleLegacyStatus(course) {
   margin-left: 0.5rem;
 }
 
-.course-code-label {
-  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-tungsten, #ffa630);
-  letter-spacing: 0.01em;
-}
-
 .course-name-label {
-  font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
-  line-height: 1.2;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-paper, #f7f7f2);
+  line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+}
+
+.course-code-label {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: var(--color-paper-dim, #c1c1bb);
+  letter-spacing: 0.01em;
+  opacity: 0.6;
 }
 
 /* App badges */
