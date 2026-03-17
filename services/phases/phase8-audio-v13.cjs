@@ -2211,31 +2211,47 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     // Get LEGOs where is_new=true (only new introductions need presentation audio)
     const PAGE_SIZE = 1000
-    const legos = []
+    let allLegos = []
     let legosOffset = 0
     let hasMoreLegos = true
 
     while (hasMoreLegos) {
-      let query = supabase
+      const { data: legosBatch, error: legosError } = await supabase
         .from('course_legos')
         .select('lego_id, known_text, target_text, seed_number')
         .eq('course_code', courseCode)
         .eq('is_new', true)
-      if (!regenerateAll) {
-        query = query.is('presentation_text', null)
-      }
-      const { data: legosBatch, error: legosError } = await query
         .range(legosOffset, legosOffset + PAGE_SIZE - 1)
 
       if (legosError) throw legosError
 
       if (legosBatch && legosBatch.length > 0) {
-        legos.push(...legosBatch)
+        allLegos.push(...legosBatch)
         hasMoreLegos = legosBatch.length === PAGE_SIZE
         legosOffset += PAGE_SIZE
       } else {
         hasMoreLegos = false
       }
+    }
+
+    // If not regenerateAll, filter out LEGOs that already have presentation audio
+    let legos = allLegos
+    if (!regenerateAll && allLegos.length > 0) {
+      const existingPresIds = new Set()
+      for (let i = 0; i < allLegos.length; i += PAGE_SIZE) {
+        const batch = allLegos.slice(i, i + PAGE_SIZE).map(l => l.lego_id)
+        const { data: existing } = await supabase
+          .from('course_audio')
+          .select('lego_id')
+          .eq('course_code', courseCode)
+          .eq('role', 'presentation')
+          .in('lego_id', batch)
+        if (existing) {
+          for (const rec of existing) existingPresIds.add(rec.lego_id)
+        }
+      }
+      legos = allLegos.filter(l => !existingPresIds.has(l.lego_id))
+      logger.info(`Filtered to ${legos.length} LEGOs missing presentation audio (${existingPresIds.size} already have it)`)
     }
 
     if (legos.length === 0) {
