@@ -2684,6 +2684,41 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       }
     }
 
+    // For LEGOs that share identical presentation text (e.g. two LEGOs both meaning "so"),
+    // the upsert with ignoreDuplicates skips the second record. Find these and link them
+    // to the existing audio record by text match.
+    const linkedLegoIds = new Set(allPresAudio.map(a => a.lego_id))
+    const unlinkedPres = presentations.filter(p => !linkedLegoIds.has(p.lego_id) && !unchangedLegoIds.has(p.lego_id))
+    if (unlinkedPres.length > 0) {
+      logger.info(`${unlinkedPres.length} LEGOs have duplicate presentation text — linking to shared audio records`)
+      const normToPresMap = new Map()
+      for (const p of unlinkedPres) {
+        normToPresMap.set(normalizeForAudio(p.presentation_text), p)
+      }
+      const norms = [...normToPresMap.keys()]
+      for (let i = 0; i < norms.length; i += BATCH_SIZE) {
+        const batch = norms.slice(i, i + BATCH_SIZE)
+        const { data: matchedAudio } = await supabase
+          .from('course_audio')
+          .select('id, text_normalized, s3_key')
+          .eq('course_code', courseCode)
+          .eq('role', 'presentation')
+          .in('text_normalized', batch)
+        if (matchedAudio) {
+          for (const audio of matchedAudio) {
+            if (audio.s3_key && !audio.s3_key.startsWith('pending/')) {
+              // Find all unlinked LEGOs with this text
+              for (const p of unlinkedPres) {
+                if (normalizeForAudio(p.presentation_text) === audio.text_normalized) {
+                  allPresAudio.push({ id: audio.id, lego_id: p.lego_id, s3_key: audio.s3_key })
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     if (allPresAudio.length > 0) {
       // Build lego_id -> course_audio.id map
       const legoToAudioId = new Map()
