@@ -14,7 +14,7 @@
           <div v-for="facet in facets" :key="facet.key" class="filter-chip-wrapper" v-click-outside="() => closeDropdown(facet.key)">
             <button
               class="filter-chip"
-              :class="{ active: activeFilters[facet.key], open: openDropdown === facet.key }"
+              :class="[`chip-${facet.key}`, { active: activeFilters[facet.key], open: openDropdown === facet.key }]"
               @click="toggleDropdown(facet.key)"
             >
               <span class="chip-label">{{ activeFilters[facet.key] || facet.label }}</span>
@@ -27,7 +27,7 @@
             </button>
             <!-- Dropdown -->
             <Transition name="dropdown">
-              <div v-if="openDropdown === facet.key" class="filter-dropdown">
+              <div v-if="openDropdown === facet.key" class="filter-dropdown" :class="`dropdown-${facet.key}`">
                 <button
                   v-for="opt in facet.options"
                   :key="opt.value"
@@ -485,10 +485,8 @@ function cycleLegacyStatus(course) {
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem 0.5rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid;
   border-radius: 5px;
-  color: var(--color-paper-dim, #c1c1bb);
   font-size: 0.8125rem;
   font-family: inherit;
   font-weight: 500;
@@ -497,15 +495,52 @@ function cycleLegacyStatus(course) {
   white-space: nowrap;
 }
 
-.filter-chip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+/* Target — amber/orange */
+.chip-target {
+  background: rgba(255, 166, 48, 0.06);
+  border-color: rgba(255, 166, 48, 0.2);
+  color: rgba(255, 186, 88, 0.8);
 }
-
-.filter-chip.active {
+.chip-target:hover {
   background: rgba(255, 166, 48, 0.12);
   border-color: rgba(255, 166, 48, 0.35);
-  color: var(--color-tungsten, #ffa630);
+}
+.chip-target.active {
+  background: rgba(255, 166, 48, 0.18);
+  border-color: rgba(255, 166, 48, 0.5);
+  color: #ffa630;
+}
+
+/* Known — blue/cyan */
+.chip-known {
+  background: rgba(56, 189, 248, 0.06);
+  border-color: rgba(56, 189, 248, 0.2);
+  color: rgba(125, 211, 252, 0.8);
+}
+.chip-known:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+.chip-known.active {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
+}
+
+/* App status — green */
+.chip-app {
+  background: rgba(16, 185, 129, 0.06);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: rgba(52, 211, 153, 0.8);
+}
+.chip-app:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.chip-app.active {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10b981;
 }
 
 .filter-chip.open {
@@ -565,9 +600,18 @@ function cycleLegacyStatus(course) {
   color: var(--color-paper, #f7f7f2);
 }
 
-.dropdown-option.selected {
-  background: rgba(255, 166, 48, 0.12);
-  color: var(--color-tungsten, #ffa630);
+/* Selected option inherits parent chip color */
+.dropdown-target .dropdown-option.selected {
+  background: rgba(255, 166, 48, 0.15);
+  color: #ffa630;
+}
+.dropdown-known .dropdown-option.selected {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+.dropdown-app .dropdown-option.selected {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
 }
 
 .opt-label {
