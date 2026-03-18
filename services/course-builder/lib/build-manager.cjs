@@ -87,118 +87,70 @@ async function checkBuilds(ctx) {
 
   for (const job of runningJobs) {
     const courseCode = job.course_code;
+    const now = new Date();
+    const minutesSinceStart = (now - new Date(job.started_at)) / 60000;
 
     try {
-      // Translate jobs: check if all seeds have target_text
-      if (job.build_mode === 'translate' || job.pass === 'translate') {
-        const { count: translated } = await ctx.supabase
+      // --- Step 1: Get current DB progress for this course ---
+      let currentProgress = 0;
+      let target = job.total_seeds || 300;
+
+      if (job.pass === 'translate') {
+        const { count } = await ctx.supabase
           .from('course_seeds')
           .select('*', { count: 'exact', head: true })
           .eq('course_code', courseCode)
           .not('target_text', 'is', null)
           .neq('target_text', '');
-
-        const target = job.total_seeds || 668;
-
-        await ctx.supabase.from('build_jobs').update({
-          current_seed: translated || 0,
-          last_heartbeat: new Date().toISOString(),
-        }).eq('id', job.id);
-
-        if ((translated || 0) >= target) {
-          console.log(`[BUILD] TRANSLATE COMPLETE: ${courseCode} (${translated}/${target} seeds)`);
-          await ctx.supabase.from('build_jobs').update({
-            status: 'complete',
-            current_seed: translated,
-            seeds_completed: translated,
-            completed_at: new Date().toISOString(),
-          }).eq('id', job.id);
-          // No auto-advance — human starts decompose from dashboard
-        }
-        continue;
-      }
-
-      // Decompose jobs: track progress
-      if (job.pass === 'decompose') {
-        const progress = await getBuildProgress(ctx, courseCode);
-        const targetSeeds = job.total_seeds || 300;
-
-        await ctx.supabase.from('build_jobs').update({
-          current_seed: progress.completed,
-          last_heartbeat: new Date().toISOString(),
-        }).eq('id', job.id);
-
-        if (progress.completed >= targetSeeds) {
-          console.log(`[BUILD] DECOMPOSE COMPLETE: ${courseCode} (${progress.completed}/${targetSeeds} seeds)`);
-          await ctx.supabase.from('build_jobs').update({
-            status: 'complete',
-            current_seed: progress.completed,
-            seeds_completed: progress.completed,
-            completed_at: new Date().toISOString(),
-          }).eq('id', job.id);
-        }
-        continue;
-      }
-
-      // Build-team jobs: same completion as decompose (count decomposed_at seeds)
-      if (job.pass === 'build-team') {
-        const progress = await getBuildProgress(ctx, courseCode);
-        const targetSeeds = job.total_seeds || 300;
-
-        await ctx.supabase.from('build_jobs').update({
-          current_seed: progress.completed,
-          last_heartbeat: new Date().toISOString(),
-        }).eq('id', job.id);
-
-        if (progress.completed >= targetSeeds) {
-          console.log(`[BUILD] BUILD-TEAM COMPLETE: ${courseCode} (${progress.completed}/${targetSeeds} seeds)`);
-          await ctx.supabase.from('build_jobs').update({
-            status: 'complete',
-            current_seed: progress.completed,
-            seeds_completed: progress.completed,
-            completed_at: new Date().toISOString(),
-          }).eq('id', job.id);
-        }
-        continue;
-      }
-
-      // Final-pass jobs: detect agent exit via process check.
-      if (job.pass === 'final-pass') {
-        const { count: flagged } = await ctx.supabase
-          .from('course_practice_phrases')
+        currentProgress = count || 0;
+        target = job.total_seeds || 668;
+      } else if (job.pass === 'build-team' || job.pass === 'decompose') {
+        const p = await getBuildProgress(ctx, courseCode);
+        currentProgress = p.completed;
+      } else if (job.pass === 'final-pass') {
+        // Count approved seeds as progress
+        const { count } = await ctx.supabase
+          .from('course_seeds')
           .select('*', { count: 'exact', head: true })
           .eq('course_code', courseCode)
-          .eq('flagged', true);
+          .not('approved_at', 'is', null);
+        currentProgress = count || 0;
+      } else if (job.pass === 'backfill-phrases') {
+        // Progress tracked via activity log in metadata — use seeds_completed
+        currentProgress = job.seeds_completed || 0;
+      }
 
-        const currentFlagged = flagged || 0;
-        const now = new Date();
-        const minutesSinceStart = (now - new Date(job.started_at)) / 60000;
+      // --- Step 2: Update heartbeat + progress in DB ---
+      const progressChanged = currentProgress !== (job.seeds_completed || 0);
+      const updates = {
+        current_seed: currentProgress,
+        seeds_completed: currentProgress,
+        last_heartbeat: now.toISOString(),
+      };
+      if (progressChanged) {
+        updates.last_progress_at = now.toISOString();
+      }
+      await ctx.supabase.from('build_jobs').update(updates).eq('id', job.id);
 
+      // --- Step 3: Check completion ---
+      if (currentProgress >= target && target > 0) {
+        console.log(`[BUILD] ${job.pass.toUpperCase()} COMPLETE: ${courseCode} (${currentProgress}/${target})`);
         await ctx.supabase.from('build_jobs').update({
-          current_seed: currentFlagged,
-          last_heartbeat: now.toISOString(),
-          metadata: { ...(job.metadata || {}), flagged_phrases: currentFlagged },
+          status: 'complete',
+          current_seed: currentProgress,
+          seeds_completed: currentProgress,
+          completed_at: now.toISOString(),
         }).eq('id', job.id);
-
-        // If no claude process running for this course and it's been > 2 min, agent is done
-        if (minutesSinceStart > 2 && !isAgentRunningForCourse(courseCode)) {
-          console.log(`[BUILD] FINAL-PASS COMPLETE (agent exited): ${courseCode} (${currentFlagged} flagged phrases)`);
-          await ctx.supabase.from('build_jobs').update({
-            status: 'complete',
-            completed_at: now.toISOString(),
-          }).eq('id', job.id);
-        }
         continue;
       }
 
-      // Unmanaged job types (component-backfill, gender-prep, etc.)
-      // If agent process is gone and job has been running > 2 min, mark complete
-      const minutesSinceStart2 = (new Date() - new Date(job.started_at)) / 60000;
-      if (minutesSinceStart2 > 2 && !isAgentRunningForCourse(courseCode)) {
-        console.log(`[BUILD] COMPLETE (agent exited): ${courseCode} ${job.pass}`);
+      // --- Step 4: Detect dead agents ---
+      // If job has been running > 2 min and no local agent process, mark stopped
+      if (minutesSinceStart > 2 && !isAgentRunningForCourse(courseCode)) {
+        console.log(`[BUILD] STOPPED (no agent process): ${courseCode} ${job.pass} (${currentProgress}/${target})`);
         await ctx.supabase.from('build_jobs').update({
-          status: 'complete',
-          completed_at: new Date().toISOString(),
+          status: 'stopped',
+          completed_at: now.toISOString(),
         }).eq('id', job.id);
       }
 
