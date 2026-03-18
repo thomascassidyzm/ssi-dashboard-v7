@@ -16,10 +16,9 @@ const learner = ref(null)    // learners table row
 const loading = ref(false)
 const error = ref(null)
 const initialized = ref(false)
-const hasTransientError = ref(false) // true when learner fetch failed transiently
 
-// Computed — allow access during transient errors (session valid, learner fetch just failed)
-const isAuthenticated = computed(() => !!session.value && (!!learner.value || hasTransientError.value))
+// Computed
+const isAuthenticated = computed(() => !!session.value && !!learner.value)
 const isAdmin = computed(() => {
   if (!learner.value) return false
   return learner.value.platform_role === 'ssi_admin' || learner.value.educational_role === 'god'
@@ -32,11 +31,10 @@ const hasDashboardAccess = computed(() => {
 })
 
 /**
- * Fetch the learner record for the current auth user.
- * Returns { data, isTransientError } to distinguish "no record" from "network failure".
+ * Fetch the learner record for the current auth user
  */
 async function fetchLearner(userId) {
-  if (!supabase) return { data: null, isTransientError: false }
+  if (!supabase) return null
 
   const { data, error: fetchError } = await supabase
     .from('learners')
@@ -45,18 +43,11 @@ async function fetchLearner(userId) {
     .single()
 
   if (fetchError) {
-    // PGRST116 = "no rows returned" — genuine missing record
-    // Anything else (network, timeout, rate limit) is transient
-    const isTransient = fetchError.code !== 'PGRST116'
-    if (isTransient) {
-      console.warn('[Auth] Transient error fetching learner (keeping session):', fetchError.message)
-    } else {
-      console.warn('[Auth] No learner record found for user:', userId)
-    }
-    return { data: null, isTransientError: isTransient }
+    console.warn('[Auth] No learner record found for user:', userId)
+    return null
   }
 
-  return { data, isTransientError: false }
+  return data
 }
 
 /**
@@ -108,7 +99,7 @@ async function verifyOTP(email, token) {
     // Session is set automatically by Supabase, onAuthStateChange will fire
     // But we also check dashboard access immediately
     if (data.user) {
-      const { data: lr } = await fetchLearner(data.user.id)
+      const lr = await fetchLearner(data.user.id)
       if (!lr) {
         // User exists in Supabase Auth but has no learner record
         await supabase.auth.signOut()
@@ -144,30 +135,18 @@ async function initAuth() {
   loading.value = true
 
   try {
-    // Try getUser() first (validates/refreshes JWT with server).
-    // If it fails (network issue), fall back to getSession() from localStorage
-    // so the user isn't needlessly logged out by transient connectivity problems.
-    let validatedUser = null
-    const { data: { user: serverUser }, error: userError } = await supabase.auth.getUser()
+    // Check for existing session — getUser() validates/refreshes the JWT
+    // (getSession() only reads from storage without validation, which can
+    // return an expired token and cause fetchLearner to fail)
+    const { data: { user: validatedUser }, error: userError } = await supabase.auth.getUser()
 
-    if (serverUser && !userError) {
-      validatedUser = serverUser
-    } else if (userError) {
-      // Server validation failed — try localStorage session as fallback
-      console.warn('[Auth] getUser() failed, falling back to cached session:', userError.message)
-      const { data: { session: cachedSession } } = await supabase.auth.getSession()
-      if (cachedSession?.user) {
-        validatedUser = cachedSession.user
-      }
-    }
-
-    if (validatedUser) {
-      // Get the current session (refreshed or cached)
-      const { data: { session: currentSession } } = await supabase.auth.getSession()
-      session.value = currentSession
+    if (validatedUser && !userError) {
+      // Now get the refreshed session
+      const { data: { session: refreshedSession } } = await supabase.auth.getSession()
+      session.value = refreshedSession
       user.value = validatedUser
 
-      const { data: lr, isTransientError } = await fetchLearner(validatedUser.id)
+      const lr = await fetchLearner(validatedUser.id)
 
       if (lr) {
         const pr = lr.platform_role
@@ -180,14 +159,8 @@ async function initAuth() {
           session.value = null
           user.value = null
         }
-      } else if (isTransientError) {
-        // Network/timeout error — keep session alive, don't sign out.
-        // User will see the dashboard but learner-specific features may be limited
-        // until the next successful fetch (e.g. on onAuthStateChange TOKEN_REFRESHED).
-        hasTransientError.value = true
-        console.warn('[Auth] Keeping session despite transient learner fetch failure')
       } else {
-        // Genuinely no learner record — sign out
+        // No learner record — sign out
         await supabase.auth.signOut()
         session.value = null
         user.value = null
@@ -199,14 +172,9 @@ async function initAuth() {
       session.value = newSession
       user.value = newSession?.user || null
 
-      if ((event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') && newSession?.user) {
-        // On TOKEN_REFRESHED, re-fetch learner if missing (recovers from earlier transient failure)
-        if (event === 'TOKEN_REFRESHED' && learner.value) return
-        const { data: lr } = await fetchLearner(newSession.user.id)
-        if (lr) {
-          learner.value = lr
-          hasTransientError.value = false
-        }
+      if (event === 'SIGNED_IN' && newSession?.user) {
+        const lr = await fetchLearner(newSession.user.id)
+        learner.value = lr
       } else if (event === 'SIGNED_OUT') {
         learner.value = null
       }
@@ -228,7 +196,6 @@ async function logout() {
   session.value = null
   user.value = null
   learner.value = null
-  hasTransientError.value = false
 }
 
 /**
