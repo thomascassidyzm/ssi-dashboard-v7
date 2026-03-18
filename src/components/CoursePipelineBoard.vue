@@ -76,12 +76,12 @@
     <!-- Course Grid -->
     <div class="course-grid">
       <TransitionGroup name="row" tag="div" class="grid-inner">
-        <div
+        <router-link
           v-for="course in sortedCourses"
           :key="course.code"
+          :to="`/production/${course.code}`"
           class="course-card"
           :class="{ active: activeCourse === course.code }"
-          @click="handleCourseClick(course)"
           @mouseenter="activeCourse = course.code"
           @mouseleave="activeCourse = null"
         >
@@ -113,7 +113,7 @@
               L
             </button>
           </span>
-        </div>
+        </router-link>
       </TransitionGroup>
 
       <!-- Empty state -->
@@ -399,11 +399,6 @@ const deployedCount = computed(() => {
     return newApp !== 'not_available' || legacy !== 'not_available'
   }).length
 })
-
-// Actions
-function handleCourseClick(course) {
-  router.push(`/production/${course.code}`)
-}
 
 // Cycle app statuses
 const statusCycle = ['not_available', 'testing', 'beta', 'live']
@@ -762,6 +757,8 @@ function cycleLegacyStatus(course) {
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.12s;
+  text-decoration: none;
+  color: inherit;
 }
 
 .course-card:hover,
