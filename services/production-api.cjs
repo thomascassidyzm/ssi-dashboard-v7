@@ -7926,13 +7926,39 @@ app.post('/api/admin/agents/kill', async (req, res) => {
   }
 })
 
-// POST /api/admin/agents/kill-all — nuclear option: quit and relaunch iTerm2
+// POST /api/admin/agents/kill-all — kill all claude processes then close iTerm windows
 app.post('/api/admin/agents/kill-all', async (req, res) => {
   try {
-    await execFileAsync('osascript', ['-e', 'tell application "iTerm" to quit'])
-    res.json({ ok: true, message: 'iTerm2 quit. All agent sessions terminated.' })
+    // Step 1: Find and kill all claude processes (except our own node process)
+    const { stdout: psList } = await execFileAsync('bash', ['-c', 'ps aux | grep "[c]laude" | awk \'{print $2}\''])
+    const claudePids = psList.trim().split('\n').filter(Boolean).map(Number)
+
+    let killed = 0
+    for (const pid of claudePids) {
+      try {
+        process.kill(pid, 'SIGTERM')
+        killed++
+      } catch (e) { /* already dead */ }
+    }
+
+    // Step 2: Wait a moment for processes to die, then close all iTerm windows
+    setTimeout(async () => {
+      try {
+        await execFileAsync('osascript', ['-e', `
+          tell application "iTerm"
+            repeat with w in windows
+              close w
+            end repeat
+          end tell
+        `], { timeout: 10000 })
+      } catch (e) {
+        logger.warn('[Admin] iTerm window close failed (may need manual dismiss):', e.message)
+      }
+    }, 2000)
+
+    res.json({ ok: true, claudeProcessesKilled: killed, pids: claudePids, message: `Killed ${killed} claude processes. iTerm windows closing in 2s.` })
   } catch (error) {
-    logger.error('[Admin] Error quitting iTerm:', error.message)
+    logger.error('[Admin] Error killing agents:', error.message)
     res.status(500).json({ error: error.message })
   }
 })
