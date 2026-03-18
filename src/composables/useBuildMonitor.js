@@ -15,9 +15,7 @@ export function useBuildMonitor(courseCodeRef) {
   // Reactive state
   const stats = ref({ seeds: 0, completeSeeds: 0, legos: 0, practicePhrases: 0, audio: 0 })
   const seedGrid = ref([])
-  const buildStatus = ref({ active: false, progress: null, build: null, parallel: null })
   const pipeline = ref({ stage: null, is_running: false })
-  const phaseStatus = ref({ translate: null, 'build-team': null, 'final-pass': null, 'gender-prep': null })
   const messages = ref([])
   const isConnected = ref(false)
   const lastRefresh = ref(null)
@@ -103,59 +101,6 @@ export function useBuildMonitor(courseCodeRef) {
     }
   }
 
-  async function fetchBuildStatus(code) {
-    if (!supabase || !code) return
-    try {
-      // Count decomposed seeds
-      const { count: decomposedCount } = await supabase
-        .from('course_seeds')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', code)
-        .not('decomposed_at', 'is', null)
-
-      const { count: totalCount } = await supabase
-        .from('course_seeds')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', code)
-
-      // Check for active build jobs
-      const { data: activeJobs } = await supabase
-        .from('build_jobs')
-        .select('status, pass, total_seeds, created_at')
-        .eq('course_code', code)
-        .in('status', ['running', 'pending'])
-        .order('created_at', { ascending: false })
-        .limit(1)
-
-      // Check for completed final-pass jobs
-      const { count: completedFinalPass } = await supabase
-        .from('build_jobs')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', code)
-        .eq('pass', 'final-pass')
-        .eq('status', 'complete')
-
-      const activeJob = activeJobs?.[0] || null
-      buildStatus.value = {
-        active: !!activeJob,
-        finalPassCompleted: (completedFinalPass || 0) > 0,
-        progress: {
-          completed: decomposedCount || 0,
-          total: totalCount || 0,
-          isComplete: decomposedCount >= totalCount && totalCount > 0
-        },
-        build: activeJob ? {
-          status: activeJob.status,
-          pass: activeJob.pass,
-          total_seeds: activeJob.total_seeds
-        } : null,
-        parallel: null
-      }
-    } catch (e) {
-      console.warn('[BuildMonitor] fetchBuildStatus error:', e.message)
-    }
-  }
-
   async function fetchPipeline(code) {
     if (!supabase || !code) return
     try {
@@ -173,40 +118,6 @@ export function useBuildMonitor(courseCodeRef) {
       }
     } catch (e) {
       console.warn('[BuildMonitor] fetchPipeline error:', e.message)
-    }
-  }
-
-  async function fetchPhaseStatus(code) {
-    if (!supabase || !code) return
-    try {
-      // Get all build_jobs for this course, most recent per pass
-      const { data: jobs, error } = await supabase
-        .from('build_jobs')
-        .select('pass, status, created_at')
-        .eq('course_code', code)
-        .order('created_at', { ascending: false })
-
-      if (error || !jobs) return
-
-      // No data from DB (e.g. RLS blocks anon reads) — keep existing state
-      if (jobs.length === 0) return
-
-      // Most recent job per pass
-      const latest = {}
-      for (const job of jobs) {
-        if (!latest[job.pass]) latest[job.pass] = job.status
-      }
-
-      phaseStatus.value = {
-        translate: latest['translate'] || null,
-        'build-team': latest['build-team'] || null,
-        'final-pass': latest['final-pass'] || null,
-        'backfill-phrases': latest['backfill-phrases'] || null,
-        'component-backfill': latest['component-backfill'] || null,
-        'gender-prep': latest['gender-prep'] || null
-      }
-    } catch (e) {
-      console.warn('[BuildMonitor] fetchPhaseStatus error:', e.message)
     }
   }
 
@@ -235,9 +146,7 @@ export function useBuildMonitor(courseCodeRef) {
     await Promise.all([
       fetchStats(code),
       fetchSeedGrid(code),
-      fetchBuildStatus(code),
       fetchPipeline(code),
-      fetchPhaseStatus(code),
       fetchMessages(code)
     ])
     lastRefresh.value = new Date().toISOString()
@@ -251,7 +160,7 @@ export function useBuildMonitor(courseCodeRef) {
 
     realtimeChannel = supabase
       .channel(`build-monitor:${code}`)
-      // Seed changes → refresh grid + stats + build status
+      // Seed changes → refresh grid + stats
       .on('postgres_changes', {
         event: '*',
         schema: 'public',
@@ -260,7 +169,6 @@ export function useBuildMonitor(courseCodeRef) {
       }, () => {
         fetchSeedGrid(code)
         fetchStats(code)
-        fetchBuildStatus(code)
       })
       // New LEGOs → refresh stats
       .on('postgres_changes', {
@@ -290,16 +198,6 @@ export function useBuildMonitor(courseCodeRef) {
         filter: `course_code=eq.${code}`
       }, () => {
         fetchPipeline(code)
-      })
-      // Build job changes → refresh build status
-      .on('postgres_changes', {
-        event: '*',
-        schema: 'public',
-        table: 'build_jobs',
-        filter: `course_code=eq.${code}`
-      }, () => {
-        fetchBuildStatus(code)
-        fetchPhaseStatus(code)
       })
       .subscribe((status) => {
         if (status === 'SUBSCRIBED') {
@@ -331,9 +229,7 @@ export function useBuildMonitor(courseCodeRef) {
       if (c) {
         fetchStats(c)
         fetchSeedGrid(c)
-        fetchBuildStatus(c)
         fetchPipeline(c)
-        fetchPhaseStatus(c)
         fetchMessages(c)
       }
     }, pollIntervalMs)
@@ -392,9 +288,7 @@ export function useBuildMonitor(courseCodeRef) {
     // Reactive state
     stats,
     seedGrid,
-    buildStatus,
     pipeline,
-    phaseStatus,
     messages,
     isConnected,
     lastRefresh,

@@ -207,7 +207,6 @@
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/668</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageRunning('translate')" class="text-xs text-blue-400 animate-pulse">Running...</span>
               <button
                 v-if="stageComplete('translate')"
                 @click="confirmResetTranslations"
@@ -217,7 +216,7 @@
                 {{ translateResetting ? 'Resetting...' : 'Reset' }}
               </button>
               <button
-                v-else-if="!stageRunning('translate')"
+                v-else
                 @click="startTranslation"
                 :disabled="translateStarting"
                 class="px-3 py-1 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -245,7 +244,6 @@
               <span class="text-xs font-mono text-slate-300">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
               <span v-if="stageComplete('build-team')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('build-team')" class="stage-badge-locked">Locked</span>
-              <span v-else-if="stageRunning('build-team')" class="text-xs text-emerald-400 animate-pulse">Running...</span>
               <button
                 v-else
                 @click="startBuildTeam"
@@ -274,7 +272,6 @@
             <div class="flex items-center gap-3">
               <span v-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
               <span v-else-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
-              <span v-else-if="finalPassBusy" class="text-xs animate-pulse" :class="finalPassBusyColor">{{ finalPassBusyLabel }}...</span>
               <template v-else>
                 <button
                   @click="finalPassNextAction.handler"
@@ -316,7 +313,6 @@
                 </span>
               </template>
               <span v-if="componentGaps !== null && componentGaps.complete" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageRunning('component-backfill')" class="text-xs text-teal-400 animate-pulse">Running...</span>
               <button
                 v-if="componentGaps === null"
                 @click="checkComponentGaps"
@@ -326,7 +322,7 @@
                 {{ componentCheckLoading ? 'Checking...' : 'Check' }}
               </button>
               <button
-                v-else-if="!componentGaps.complete && !stageRunning('component-backfill')"
+                v-else-if="!componentGaps.complete"
                 @click="startComponentBackfill"
                 :disabled="componentBackfillStarting"
                 class="px-3 py-1 bg-teal-600/20 border border-teal-500/50 text-teal-400 hover:border-teal-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
@@ -358,8 +354,6 @@
             <div class="flex items-center gap-3">
               <span v-if="stageComplete('gender')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('gender')" class="stage-badge-locked">Locked</span>
-              <span v-else-if="stageFailed('gender')" class="text-xs text-red-400">Failed — <button @click="startGenderPrep" class="underline hover:text-red-300">Retry</button></span>
-              <span v-else-if="stageRunning('gender')" class="text-xs text-pink-400 animate-pulse">Running...</span>
               <button
                 v-else
                 @click="startGenderPrep"
@@ -734,20 +728,6 @@ const buildTeamSubtitle = computed(() => {
 
 // --- Final Pass wizard logic (one action at a time) ---
 
-const finalPassBusy = computed(() =>
-  stageRunning('final-pass') || stageRunning('backfill-phrases')
-)
-
-const finalPassBusyColor = computed(() => {
-  if (stageRunning('backfill-phrases')) return 'text-orange-400'
-  return 'text-violet-400'
-})
-
-const finalPassBusyLabel = computed(() => {
-  if (stageRunning('backfill-phrases')) return 'Backfilling phrases'
-  return 'Running final pass'
-})
-
 const finalPassNextAction = computed(() => {
   const ut = seedGridUnderThreshold.value
   const flagged = seedGridFlagged.value
@@ -796,7 +776,6 @@ const finalPassSubtitle = computed(() => {
 
   if (stageLocked('final-pass')) return 'Waiting for Build Team to finish'
   if (stageComplete('final-pass')) return `All ${finalized} seeds approved`
-  if (finalPassBusy.value) return stageRunning('backfill-phrases') ? 'Adding phrases to under-threshold LEGOs' : 'Grammar audit in progress'
   if (ut > 0) return `${ut} seed${ut !== 1 ? 's have' : ' has'} LEGOs with too few phrases — backfill first`
   if (flagged > 0) return `${flagged} seed${flagged !== 1 ? 's' : ''} failed grammar review — need rebuilding`
   if (drafted > 0) return `${drafted} seed${drafted !== 1 ? 's' : ''} ready for grammar review`
@@ -816,9 +795,6 @@ const finalPassSummary = computed(() => {
   return parts.join(' · ')
 })
 
-// Phase status from build_jobs (DB-driven)
-const ps = computed(() => buildMonitor.phaseStatus.value)
-
 function stageComplete(stage) {
   // Data-driven: derive status from actual data, not build_jobs flags
   switch (stage) {
@@ -828,16 +804,6 @@ function stageComplete(stage) {
     case 'gender': return (progress.value.genderExpansions || 0) > 0
     default: return false
   }
-}
-
-function stageRunning(stage) {
-  const dbPass = stage === 'gender' ? 'gender-prep' : stage
-  return ps.value[dbPass] === 'running' || ps.value[dbPass] === 'pending'
-}
-
-function stageFailed(stage) {
-  const dbPass = stage === 'gender' ? 'gender-prep' : stage
-  return ps.value[dbPass] === 'failed'
 }
 
 function stageLocked(stage) {
