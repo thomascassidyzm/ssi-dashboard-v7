@@ -25,6 +25,8 @@ const isAdmin = computed(() => {
   return learner.value.platform_role === 'ssi_admin' || learner.value.educational_role === 'god'
 })
 const hasDashboardAccess = computed(() => {
+  // During transient errors, trust the session — don't kick user to login
+  if (hasTransientError.value && session.value) return true
   if (!learner.value) return false
   const pr = learner.value.platform_role
   const er = learner.value.educational_role
@@ -144,27 +146,40 @@ async function initAuth() {
   loading.value = true
 
   try {
-    // Try getUser() first (validates/refreshes JWT with server).
-    // If it fails (network issue), fall back to getSession() from localStorage
-    // so the user isn't needlessly logged out by transient connectivity problems.
+    // Step 1: Try getUser() — validates JWT with the server.
+    // Step 2: If that fails (expired token), try refreshSession() to get fresh tokens.
+    // Step 3: If refresh also fails (offline/no refresh token), fall back to cached session.
     let validatedUser = null
+    let activeSession = null
+
     const { data: { user: serverUser }, error: userError } = await supabase.auth.getUser()
 
     if (serverUser && !userError) {
       validatedUser = serverUser
+      const { data: { session: s } } = await supabase.auth.getSession()
+      activeSession = s
+      console.log('[Auth] Session restored via getUser()')
     } else if (userError) {
-      // Server validation failed — try localStorage session as fallback
-      console.warn('[Auth] getUser() failed, falling back to cached session:', userError.message)
-      const { data: { session: cachedSession } } = await supabase.auth.getSession()
-      if (cachedSession?.user) {
-        validatedUser = cachedSession.user
+      console.warn('[Auth] getUser() failed:', userError.message, '— trying refreshSession()')
+      // Access token expired — try to refresh using the refresh token in localStorage
+      const { data: refreshData, error: refreshError } = await supabase.auth.refreshSession()
+      if (refreshData?.session && !refreshError) {
+        validatedUser = refreshData.session.user
+        activeSession = refreshData.session
+        console.log('[Auth] Session restored via refreshSession()')
+      } else {
+        // Refresh failed too — fall back to whatever's cached (transient/offline)
+        console.warn('[Auth] refreshSession() also failed:', refreshError?.message, '— using cached session')
+        const { data: { session: cachedSession } } = await supabase.auth.getSession()
+        if (cachedSession?.user) {
+          validatedUser = cachedSession.user
+          activeSession = cachedSession
+        }
       }
     }
 
     if (validatedUser) {
-      // Get the current session (refreshed or cached)
-      const { data: { session: currentSession } } = await supabase.auth.getSession()
-      session.value = currentSession
+      session.value = activeSession
       user.value = validatedUser
 
       const { data: lr, isTransientError } = await fetchLearner(validatedUser.id)
