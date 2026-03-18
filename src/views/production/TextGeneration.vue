@@ -215,6 +215,7 @@
               >
                 {{ translateResetting ? 'Resetting...' : 'Reset' }}
               </button>
+              <span v-else-if="translateSpawned" class="text-xs text-blue-400 animate-pulse">Spawned — waiting for first seed...</span>
               <button
                 v-else
                 @click="startTranslation"
@@ -244,6 +245,7 @@
               <span class="text-xs font-mono text-slate-300">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
               <span v-if="stageComplete('build-team')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('build-team')" class="stage-badge-locked">Locked</span>
+              <span v-else-if="buildTeamSpawned" class="text-xs text-emerald-400 animate-pulse">Spawned — waiting for first seed...</span>
               <button
                 v-else
                 @click="startBuildTeam"
@@ -586,8 +588,10 @@ const orchestratorMessages = ref([])
 
 // Starting state (optimistic UI while API call in flight)
 const translateStarting = ref(false)
+const translateSpawned = ref(false)
 const translateResetting = ref(false)
 const buildTeamStarting = ref(false)
+const buildTeamSpawned = ref(false)
 const finalPassStarting = ref(false)
 const massApproving = ref(false)
 const genderStarting = ref(false)
@@ -614,6 +618,8 @@ const buildMonitor = useBuildMonitor(effectiveCourseCode)
 watch(buildMonitor.stats, (s) => {
   if (!s) return
   const totalSeeds = progress.value.totalSeeds || seedCount.value
+  const prevSeeds = progress.value.currentSeed || 0
+  const prevTranslated = progress.value.seedsTranslated || 0
   progress.value = {
     ...progress.value,
     currentSeed: s.completeSeeds || 0,
@@ -623,6 +629,9 @@ watch(buildMonitor.stats, (s) => {
     phrasesInserted: s.practicePhrases || 0,
     totalSeeds
   }
+  // Clear spawned flags when progress actually appears
+  if ((s.completeSeeds || 0) > prevSeeds) buildTeamSpawned.value = false
+  if ((s.seedsTranslated || 0) > prevTranslated) translateSpawned.value = false
 }, { deep: true })
 
 watch(buildMonitor.seedGrid, (grid) => {
@@ -1011,6 +1020,7 @@ async function startTranslation() {
     })
     const result = await response.json()
     if (result.ok) {
+      translateSpawned.value = true
       buildMonitor.refresh()
     } else {
       showActionError(`Translation failed: ${result.error}`)
@@ -1065,6 +1075,7 @@ async function startBuildTeam() {
     })
     const result = await response.json()
     if (result.ok) {
+      buildTeamSpawned.value = true
       buildMonitor.refresh()
     } else {
       showActionError(`Build team failed: ${result.error}`)
