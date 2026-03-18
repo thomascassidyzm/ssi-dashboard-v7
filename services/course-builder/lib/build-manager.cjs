@@ -144,10 +144,13 @@ async function checkBuilds(ctx) {
         continue;
       }
 
-      // --- Step 4: Detect dead agents ---
-      // If job has been running > 2 min and no local agent process, mark stopped
-      if (minutesSinceStart > 2 && !isAgentRunningForCourse(courseCode)) {
-        console.log(`[BUILD] STOPPED (no agent process): ${courseCode} ${job.pass} (${currentProgress}/${target})`);
+      // --- Step 4: Detect stale jobs ---
+      // If no progress for 10+ minutes, mark stopped.
+      // (Don't rely on process detection — agent command line may not contain course code)
+      const lastProgress = job.last_progress_at ? new Date(job.last_progress_at) : new Date(job.started_at);
+      const minutesSinceProgress = (now - lastProgress) / 60000;
+      if (minutesSinceProgress > 10 && minutesSinceStart > 10) {
+        console.log(`[BUILD] STOPPED (no progress for ${Math.round(minutesSinceProgress)}min): ${courseCode} ${job.pass} (${currentProgress}/${target})`);
         await ctx.supabase.from('build_jobs').update({
           status: 'stopped',
           completed_at: now.toISOString(),
