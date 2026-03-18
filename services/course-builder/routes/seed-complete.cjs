@@ -1692,20 +1692,46 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
-      // Update build_jobs with progress (fire-and-forget)
+      // Update build_jobs with progress + activity log (fire-and-forget)
       const progressTimestamp = new Date().toISOString();
+      const newLegosCount = legos.length - skippedDuplicates;
+      const activityEntry = {
+        at: progressTimestamp,
+        seed: seed_number,
+        legos: legos.length,
+        new_legos: newLegosCount,
+        phrases: totalPhrases,
+        msg: `Seed ${seed_number}: ${newLegosCount} new LEGOs, ${totalPhrases} phrases`
+      };
       ctx.supabase.from('build_jobs')
-        .update({
-          current_seed: seed_number,
-          seeds_completed: seed_number,
-          last_heartbeat: progressTimestamp,
-          last_progress_at: progressTimestamp,
-          machine_name: ctx.MACHINE_NAME,
-        })
+        .select('metadata')
         .eq('course_code', course_code)
         .eq('status', 'running')
-        .then(({ error }) => {
-          if (error) console.error(`[BUILD] build_jobs update failed:`, error.message);
+        .single()
+        .then(({ data: jobRow }) => {
+          const meta = jobRow?.metadata || {};
+          const log = Array.isArray(meta.activity_log) ? meta.activity_log : [];
+          log.push(activityEntry);
+          // FIFO ring buffer: keep last 20 entries
+          while (log.length > 20) log.shift();
+          meta.activity_log = log;
+          return ctx.supabase.from('build_jobs')
+            .update({
+              current_seed: seed_number,
+              seeds_completed: seed_number,
+              last_heartbeat: progressTimestamp,
+              last_progress_at: progressTimestamp,
+              machine_name: ctx.MACHINE_NAME,
+              metadata: meta,
+            })
+            .eq('course_code', course_code)
+            .eq('status', 'running');
+        })
+        .then((result) => {
+          if (result?.error) console.error(`[BUILD] build_jobs update failed:`, result.error.message);
+        })
+        .catch((err) => {
+          console.error(`[BUILD] build_jobs activity log update failed:`, err.message);
         });
 
       ctx.emitPipelineEvent(course_code, 'seed:complete', { seed_number: seed_number, legos_count: legos.length, phrases_count: totalPhrases });

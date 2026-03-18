@@ -211,6 +211,61 @@
               </div>
             </div>
 
+            <!-- Last activity indicator -->
+            <div v-if="job.lastProgressAt" class="last-activity" :class="lastActivityClass(job)">
+              <span class="activity-label">Last activity:</span>
+              <span class="activity-time">{{ formatRelativeTime(job.lastProgressAt) }}</span>
+              <span v-if="lastActivityClass(job) === 'activity-danger'" class="activity-warn-text">— may be stuck</span>
+            </div>
+
+            <!-- Stall/spawn warning banner -->
+            <div v-if="getStallWarning(job)" class="stall-banner" :class="getStallClass(job)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <span>{{ getStallWarning(job) }}</span>
+            </div>
+
+            <!-- Activity feed (compact) -->
+            <div v-if="job.activityLog?.length" class="activity-feed">
+              <div class="activity-feed-header">
+                <span class="activity-feed-title">Activity</span>
+                <span class="activity-feed-count">{{ job.activityLog.length }} events</span>
+              </div>
+              <div class="activity-feed-lines">
+                <div
+                  v-for="(entry, idx) in getVisibleActivityLog(job)"
+                  :key="idx"
+                  class="activity-line"
+                >{{ formatActivityLine(entry) }}</div>
+              </div>
+              <button
+                v-if="job.activityLog.length > 5"
+                @click="toggleActivityLog(job.id)"
+                class="activity-show-more"
+              >
+                {{ expandedActivityLogs[job.id] ? 'Show less' : `Show all ${job.activityLog.length}` }}
+              </button>
+            </div>
+
+            <!-- Chat messages inline -->
+            <div v-if="job.chatMessages?.length" class="chat-section">
+              <div class="chat-section-title">Messages</div>
+              <div class="chat-lines">
+                <div
+                  v-for="msg in job.chatMessages"
+                  :key="msg.id"
+                  class="chat-line"
+                  :class="msg.direction === 'human_to_agent' ? 'chat-outgoing' : 'chat-incoming'"
+                >
+                  <span class="chat-time">{{ formatChatTime(msg.created_at) }}</span>
+                  <span class="chat-text">{{ msg.message }}</span>
+                </div>
+              </div>
+            </div>
+
             <!-- Errors (expandable) -->
             <div v-if="job.metadata?.errors?.length > 0" class="job-errors">
               <button
@@ -334,8 +389,11 @@ const stopping = ref({})
 const resuming = ref({})
 const clearing = ref({})
 const restarting = ref({})
+const expandedActivityLogs = ref({})
+const now = ref(Date.now())
 
 let pollInterval = null
+let tickInterval = null
 const POLL_INTERVAL_MS = 5000
 
 // Services to hide from display (deprecated or utility)
@@ -582,6 +640,85 @@ function toggleErrors(jobId) {
   expandedErrors.value[jobId] = !expandedErrors.value[jobId]
 }
 
+// Activity & stall helpers
+function getSecondsSince(isoString) {
+  if (!isoString) return null
+  return Math.floor((now.value - new Date(isoString).getTime()) / 1000)
+}
+
+function formatRelativeTime(isoString) {
+  const secs = getSecondsSince(isoString)
+  if (secs === null) return null
+  if (secs < 60) return `${secs}s ago`
+  if (secs < 3600) return `${Math.floor(secs / 60)}m ago`
+  if (secs < 86400) return `${Math.floor(secs / 3600)}h ago`
+  return `${Math.floor(secs / 86400)}d ago`
+}
+
+function lastActivityClass(job) {
+  if (job.status !== 'running') return ''
+  const secs = getSecondsSince(job.lastProgressAt)
+  if (secs === null) return ''
+  if (secs >= 300) return 'activity-danger'
+  if (secs >= 60) return 'activity-warning'
+  return 'activity-ok'
+}
+
+function getStallWarning(job) {
+  if (job.status !== 'running') return null
+  const startedSecs = getSecondsSince(job.startedAt)
+  const progressSecs = getSecondsSince(job.lastProgressAt)
+
+  if (!job.lastProgressAt && startedSecs !== null && startedSecs > 60) {
+    return 'No activity since launch — agent may have failed to start'
+  }
+  if (progressSecs !== null && progressSecs >= 300) {
+    return 'No progress for 5+ minutes — agent may be stuck'
+  }
+  return null
+}
+
+function getStallClass(job) {
+  if (job.status !== 'running') return ''
+  const progressSecs = getSecondsSince(job.lastProgressAt)
+  if (!job.lastProgressAt) return 'stall-warning'
+  if (progressSecs !== null && progressSecs >= 300) return 'stall-danger'
+  return ''
+}
+
+function formatActivityLine(entry) {
+  const time = new Date(entry.at)
+  const hh = String(time.getHours()).padStart(2, '0')
+  const mm = String(time.getMinutes()).padStart(2, '0')
+  let line = `${hh}:${mm}`
+  if (entry.seed != null) line += `  Seed ${entry.seed}:`
+  const parts = []
+  if (entry.new_legos) parts.push(`${entry.new_legos} new LEGOs`)
+  else if (entry.legos) parts.push(`${entry.legos} LEGOs`)
+  if (entry.phrases) parts.push(`${entry.phrases} phrases`)
+  if (parts.length) line += ` ${parts.join(', ')}`
+  if (entry.msg && !parts.length) line += ` ${entry.msg}`
+  return line
+}
+
+function getVisibleActivityLog(job) {
+  if (!job.activityLog?.length) return []
+  if (expandedActivityLogs.value[job.id]) return job.activityLog
+  return job.activityLog.slice(-5)
+}
+
+function toggleActivityLog(jobId) {
+  expandedActivityLogs.value[jobId] = !expandedActivityLogs.value[jobId]
+}
+
+function formatChatTime(isoString) {
+  if (!isoString) return ''
+  const d = new Date(isoString)
+  const hh = String(d.getHours()).padStart(2, '0')
+  const mm = String(d.getMinutes()).padStart(2, '0')
+  return `${hh}:${mm}`
+}
+
 // Format helpers
 function formatServiceName(key) {
   const names = {
@@ -669,10 +806,18 @@ onMounted(() => {
   if (polling.value) {
     startPolling()
   }
+  // Tick every second to update relative timestamps
+  tickInterval = setInterval(() => {
+    now.value = Date.now()
+  }, 1000)
 })
 
 onUnmounted(() => {
   stopPolling()
+  if (tickInterval) {
+    clearInterval(tickInterval)
+    tickInterval = null
+  }
 })
 </script>
 
@@ -1386,6 +1531,192 @@ onUnmounted(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Last Activity Indicator */
+.last-activity {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.activity-label {
+  color: var(--jm-text-muted);
+}
+
+.activity-time {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--jm-text-dim);
+}
+
+.last-activity.activity-ok .activity-time {
+  color: var(--jm-accent);
+}
+
+.last-activity.activity-warning .activity-time {
+  color: var(--jm-warning);
+}
+
+.last-activity.activity-danger .activity-time {
+  color: var(--jm-danger);
+}
+
+.activity-warn-text {
+  color: var(--jm-danger);
+  font-weight: 600;
+}
+
+/* Stall/Spawn Warning Banner */
+.stall-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.stall-banner svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.stall-banner.stall-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: var(--jm-warning);
+}
+
+.stall-banner.stall-danger {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: var(--jm-danger);
+}
+
+/* Activity Feed */
+.activity-feed {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--jm-border);
+  padding-top: 0.625rem;
+}
+
+.activity-feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.375rem;
+}
+
+.activity-feed-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--jm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.activity-feed-count {
+  font-size: 0.6875rem;
+  color: var(--jm-text-muted);
+}
+
+.activity-feed-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.activity-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  color: var(--jm-text-dim);
+  padding: 0.1875rem 0.375rem;
+  background: rgba(51, 65, 85, 0.3);
+  border-radius: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-show-more {
+  display: block;
+  margin-top: 0.25rem;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--jm-accent);
+  font-size: 0.6875rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.activity-show-more:hover {
+  color: var(--jm-text);
+}
+
+/* Chat Messages */
+.chat-section {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--jm-border);
+  padding-top: 0.625rem;
+}
+
+.chat-section-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--jm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.375rem;
+}
+
+.chat-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.chat-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  max-width: 95%;
+}
+
+.chat-line.chat-incoming {
+  background: rgba(51, 65, 85, 0.4);
+  align-self: flex-start;
+}
+
+.chat-line.chat-outgoing {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  align-self: flex-end;
+}
+
+.chat-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  color: var(--jm-text-muted);
+  flex-shrink: 0;
+}
+
+.chat-text {
+  color: var(--jm-text-dim);
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.chat-line.chat-outgoing .chat-text {
+  color: var(--jm-accent);
 }
 
 /* Errors */

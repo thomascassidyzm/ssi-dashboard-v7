@@ -1234,6 +1234,26 @@ app.get('/api/mission-control/jobs', async (req, res) => {
     if (error) {
       logger.warn('[Mission Control] Could not fetch build_jobs:', error.message)
     } else if (buildJobs && buildJobs.length > 0) {
+      // Fetch orchestrator messages for all active build jobs in parallel
+      const messagePromises = buildJobs.map(row =>
+        supabase
+          .from('orchestrator_messages')
+          .select('id, direction, message, status, created_at')
+          .eq('course_code', row.course_code)
+          .order('created_at', { ascending: false })
+          .limit(10)
+          .then(({ data: msgs, error: msgErr }) => {
+            if (msgErr) logger.warn(`[Mission Control] Could not fetch orchestrator_messages for ${row.course_code}:`, msgErr.message)
+            return { courseCode: row.course_code, messages: (msgs || []).reverse() }
+          })
+          .catch(err => {
+            logger.warn(`[Mission Control] orchestrator_messages query failed for ${row.course_code}:`, err.message)
+            return { courseCode: row.course_code, messages: [] }
+          })
+      )
+      const allMessages = await Promise.all(messagePromises)
+      const messagesByCourse = Object.fromEntries(allMessages.map(m => [m.courseCode, m.messages]))
+
       for (const row of buildJobs) {
         const totalSeeds = row.total_seeds || 300
         const seedsDecomposed = row.seeds_completed || 0  // Pass 2: seeds with LEGOs
@@ -1286,7 +1306,10 @@ app.get('/api/mission-control/jobs', async (req, res) => {
             requestedBy: row.requested_by,
             lastHeartbeat: row.last_heartbeat,
             errorMessage: row.error_message
-          }
+          },
+          activityLog: row.metadata?.activity_log || [],
+          lastProgressAt: row.last_progress_at,
+          chatMessages: messagesByCourse[row.course_code] || []
         })
       }
     }
