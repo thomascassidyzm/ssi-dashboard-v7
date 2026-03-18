@@ -7852,8 +7852,8 @@ app.get('/api/admin/agents', async (req, res) => {
             repeat with s in sessions of t
               set sName to name of s
               set isAt to (is at shell prompt of s)
-              set sPid to (unix id of s)
-              set output to output & winIdx & "," & tabIdx & "," & sPid & "," & isAt & "," & sName & linefeed
+              set sTty to tty of s
+              set output to output & winIdx & "," & tabIdx & "," & sTty & "," & isAt & "," & sName & linefeed
             end repeat
           end repeat
         end repeat
@@ -7862,11 +7862,11 @@ app.get('/api/admin/agents', async (req, res) => {
     `])
 
     const sessions = stdout.trim().split('\n').filter(Boolean).map(line => {
-      const [winIdx, tabIdx, pid, atPrompt, ...nameParts] = line.split(',')
+      const [winIdx, tabIdx, tty, atPrompt, ...nameParts] = line.split(',')
       return {
         window: parseInt(winIdx),
         tab: parseInt(tabIdx),
-        pid: parseInt(pid),
+        tty: tty.trim(),
         atPrompt: atPrompt.trim() === 'true',
         name: nameParts.join(',').trim()
       }
