@@ -7831,6 +7831,112 @@ app.use('/api/checkpoint', async (req, res) => {
   }
 })
 
+// ─── Admin: iTerm2 Agent Management ─────────────────────────────────
+
+const { execFile } = require('child_process')
+const { promisify } = require('util')
+const execFileAsync = promisify(execFile)
+
+// GET /api/admin/agents — list all iTerm2 sessions with their status
+app.get('/api/admin/agents', async (req, res) => {
+  try {
+    const { stdout } = await execFileAsync('osascript', ['-e', `
+      tell application "iTerm"
+        set output to ""
+        set winIdx to 0
+        repeat with w in windows
+          set winIdx to winIdx + 1
+          set tabIdx to 0
+          repeat with t in tabs of w
+            set tabIdx to tabIdx + 1
+            repeat with s in sessions of t
+              set sName to name of s
+              set isAt to (is at shell prompt of s)
+              set sPid to (unix id of s)
+              set output to output & winIdx & "," & tabIdx & "," & sPid & "," & isAt & "," & sName & linefeed
+            end repeat
+          end repeat
+        end repeat
+        return output
+      end tell
+    `])
+
+    const sessions = stdout.trim().split('\n').filter(Boolean).map(line => {
+      const [winIdx, tabIdx, pid, atPrompt, ...nameParts] = line.split(',')
+      return {
+        window: parseInt(winIdx),
+        tab: parseInt(tabIdx),
+        pid: parseInt(pid),
+        atPrompt: atPrompt.trim() === 'true',
+        name: nameParts.join(',').trim()
+      }
+    })
+
+    res.json({ ok: true, sessions, total: sessions.length, idle: sessions.filter(s => s.atPrompt).length })
+  } catch (error) {
+    logger.error('[Admin] Error listing agents:', error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/admin/agents/kill — kill specific sessions by PID, or all idle ones
+// Body: { pids: [123, 456] } or { idle: true } to kill all at-prompt sessions
+app.post('/api/admin/agents/kill', async (req, res) => {
+  try {
+    const { pids, idle } = req.body || {}
+
+    if (idle) {
+      // Kill all sessions that are at shell prompt (completed agents)
+      const { stdout } = await execFileAsync('osascript', ['-e', `
+        tell application "iTerm"
+          set killed to 0
+          repeat with w in windows
+            repeat with t in tabs of w
+              repeat with s in sessions of t
+                if (is at shell prompt of s) then
+                  tell s to close
+                  set killed to killed + 1
+                end if
+              end repeat
+            end repeat
+          end repeat
+          return killed
+        end tell
+      `])
+      const killed = parseInt(stdout.trim()) || 0
+      res.json({ ok: true, killed, mode: 'idle' })
+    } else if (pids && pids.length > 0) {
+      // Kill specific PIDs
+      let killed = 0
+      for (const pid of pids) {
+        try {
+          process.kill(pid, 'SIGTERM')
+          killed++
+        } catch (e) {
+          logger.warn(`[Admin] Could not kill PID ${pid}: ${e.message}`)
+        }
+      }
+      res.json({ ok: true, killed, requested: pids.length, mode: 'pids' })
+    } else {
+      res.status(400).json({ error: 'Provide { pids: [...] } or { idle: true }' })
+    }
+  } catch (error) {
+    logger.error('[Admin] Error killing agents:', error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/admin/agents/kill-all — nuclear option: quit and relaunch iTerm2
+app.post('/api/admin/agents/kill-all', async (req, res) => {
+  try {
+    await execFileAsync('osascript', ['-e', 'tell application "iTerm" to quit'])
+    res.json({ ok: true, message: 'iTerm2 quit. All agent sessions terminated.' })
+  } catch (error) {
+    logger.error('[Admin] Error quitting iTerm:', error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {
