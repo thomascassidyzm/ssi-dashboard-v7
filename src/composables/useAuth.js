@@ -4,6 +4,12 @@
  * Uses the same Supabase Auth as the learning app.
  * Dashboard access requires platform_role in ('ssi_admin', 'popty_user')
  * or educational_role = 'god'.
+ *
+ * Session persistence strategy:
+ *   1. getUser()       — validates access token with Supabase server
+ *   2. refreshSession() — exchanges refresh token for fresh access token
+ *   3. If both fail    — session is dead, user must re-login
+ *   Transient DB errors (learner fetch) don't destroy the session.
  */
 
 import { ref, computed } from 'vue'
@@ -15,8 +21,10 @@ const user = ref(null)       // Supabase Auth user
 const learner = ref(null)    // learners table row
 const loading = ref(false)
 const error = ref(null)
-const initialized = ref(false)
 const hasTransientError = ref(false) // true when learner fetch failed transiently
+
+// Single init promise — all concurrent callers await the same work
+let initPromise = null
 
 // Computed — allow access during transient errors (session valid, learner fetch just failed)
 const isAuthenticated = computed(() => !!session.value && (!!learner.value || hasTransientError.value))
@@ -137,18 +145,26 @@ async function verifyOTP(email, token) {
 }
 
 /**
- * Initialize auth — check for existing session, set up listener
+ * Initialize auth — check for existing session, set up listener.
+ * Safe to call concurrently — all callers await the same promise.
  */
 async function initAuth() {
-  if (!supabase || initialized.value) return
+  if (!supabase) return
+  // Return existing promise so concurrent callers (e.g. multiple route guards)
+  // all wait for the SAME init to complete, not race past each other.
+  if (initPromise) return initPromise
+  initPromise = _doInitAuth()
+  return initPromise
+}
 
-  initialized.value = true
+async function _doInitAuth() {
   loading.value = true
 
   try {
-    // Step 1: Try getUser() — validates JWT with the server.
-    // Step 2: If that fails (expired token), try refreshSession() to get fresh tokens.
-    // Step 3: If refresh also fails (offline/no refresh token), fall back to cached session.
+    // Step 1: Try getUser() — validates access token with Supabase server.
+    // Step 2: If that fails (expired token), try refreshSession() for fresh tokens.
+    // Step 3: If refresh also fails — session is truly dead, user must re-login.
+    //         (No cached fallback — a dead refresh token can't recover.)
     let validatedUser = null
     let activeSession = null
 
@@ -161,20 +177,15 @@ async function initAuth() {
       console.log('[Auth] Session restored via getUser()')
     } else if (userError) {
       console.warn('[Auth] getUser() failed:', userError.message, '— trying refreshSession()')
-      // Access token expired — try to refresh using the refresh token in localStorage
+      // Access token expired or invalid — try refresh token
       const { data: refreshData, error: refreshError } = await supabase.auth.refreshSession()
       if (refreshData?.session && !refreshError) {
         validatedUser = refreshData.session.user
         activeSession = refreshData.session
         console.log('[Auth] Session restored via refreshSession()')
       } else {
-        // Refresh failed too — fall back to whatever's cached (transient/offline)
-        console.warn('[Auth] refreshSession() also failed:', refreshError?.message, '— using cached session')
-        const { data: { session: cachedSession } } = await supabase.auth.getSession()
-        if (cachedSession?.user) {
-          validatedUser = cachedSession.user
-          activeSession = cachedSession
-        }
+        // Both failed — session is dead. Don't fall back to cached expired tokens.
+        console.warn('[Auth] refreshSession() failed:', refreshError?.message, '— session expired, must re-login')
       }
     }
 
@@ -196,9 +207,9 @@ async function initAuth() {
           user.value = null
         }
       } else if (isTransientError) {
-        // Network/timeout error — keep session alive, don't sign out.
-        // User will see the dashboard but learner-specific features may be limited
-        // until the next successful fetch (e.g. on onAuthStateChange TOKEN_REFRESHED).
+        // Network/timeout error on learner fetch — keep session alive.
+        // The session itself IS valid (getUser or refreshSession succeeded).
+        // Learner-specific features limited until TOKEN_REFRESHED recovers.
         hasTransientError.value = true
         console.warn('[Auth] Keeping session despite transient learner fetch failure')
       } else {
@@ -224,6 +235,7 @@ async function initAuth() {
         }
       } else if (event === 'SIGNED_OUT') {
         learner.value = null
+        hasTransientError.value = false
       }
     })
   } catch (err) {
@@ -261,6 +273,8 @@ async function getAccessToken() {
  * - popty_user → only courses in dashboard_courses (or all if ['*'])
  */
 function canAccessCourse(courseCode) {
+  // During transient errors, allow access (can't check course list without learner)
+  if (hasTransientError.value && session.value) return true
   if (!learner.value) return false
   // Admins and god get everything
   if (isAdmin.value) return true
