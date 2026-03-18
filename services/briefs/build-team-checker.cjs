@@ -1,6 +1,9 @@
 /**
- * Brief: BUILD TEAM CHECKER — Opus agent reviews creator's work and submits to API.
- * Only the checker can submit to /api/seed/complete. Creator NEVER submits directly.
+ * DEPRECATED (March 2026): Creator/checker team pattern replaced by single-agent builder.
+ * Builder submits directly to API. Final pass handles grammar/naturalness QA.
+ * Kept for reference only — not used in new builds.
+ *
+ * Original: BUILD TEAM CHECKER — Opus agent reviews creator's work and submits to API.
  */
 
 const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadCondensedMethodology } = require('./shared.cjs');
@@ -44,7 +47,7 @@ When the creator sends you a seed decomposition:
 2. **Fix** any issues yourself (rewrite phrases, drop bad ones, add replacements)
 3. **Submit** to the API
 4. If API rejects (tiling, vocab, counts) → fix the technical issue and resubmit
-5. Tell creator "DONE — seed N submitted" so they move on
+5. Move to the next decomposition in your queue — do NOT message creator back
 
 **NEVER send feedback to creator. NEVER ask them to revise. YOU fix everything and submit.**
 The API already validates tiling, vocabulary containment, phrase counts, and LEGO form. Your job is ONLY:
@@ -108,6 +111,7 @@ Rewrite bad grammar. Replace unnatural phrases. Drop nonsense and write replacem
 \`\`\`bash
 curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" \\
   -H "Content-Type: application/json" \\
+  -H "X-Agent-Role: checker" \\
   -d '{
     "course_code": "${courseCode}",
     "seed_number": N,
@@ -132,14 +136,8 @@ If the API rejects, read the error and fix it yourself:
 
 Resubmit. If truly unfixable after 3 attempts, skip the seed and tell creator to move on.
 
-### Step 5: Tell creator "DONE — seed N submitted"
-${useTeams ? `Use **SendMessage** to tell "creator": "DONE — seed N submitted".` : `Post confirmation to the message queue:
-\\\`\\\`\\\`bash
-curl -s -X POST "http://localhost:3471/api/agent/send/${courseCode}" \\\\
-  -H "Content-Type: application/json" \\\\
-  -d '{"from":"checker","to":"creator","type":"done","payload":{"seed_number":N,"message":"DONE — seed N submitted"}}'
-\\\`\\\`\\\``}
-Creator moves to the next seed. No back-and-forth.
+### Step 5: Move to next decomposition
+Do NOT message creator. Just wait for the next decomposition to arrive and process it.
 
 ## Heartbeat
 
@@ -184,7 +182,7 @@ curl -s -X DELETE "http://localhost:3470/api/production/${courseCode}/phrases/PH
 You are running unattended. NEVER ask questions. NEVER send work back to the creator.
 ${useTeams ? `Wait for messages from "creator".` : `Poll \`/api/agent/inbox/${courseCode}/checker\` every 10 seconds for work from creator.`} Fix any issues yourself and submit.
 **Be STRICT on grammar, generous on style.** Grammar errors teach wrong patterns to thousands of learners.
-**NEVER ping-pong.** You receive → you fix → you submit → you say "DONE". That's it.
+**NEVER ping-pong.** You receive → you fix → you submit → you wait for the next one. That's it. Do NOT message creator back.
 `;
 }
 
