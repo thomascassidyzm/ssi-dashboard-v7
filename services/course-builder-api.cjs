@@ -37,7 +37,10 @@ setSupabase(supabase);
 
 // ─── Mount route modules ──────────────────────────────────────────────
 
-app.use('/api', require('./course-builder/routes/preflight.cjs')(ctx));
+// DISABLED: preflight route used Anthropic SDK directly (phrase-scorer.cjs),
+// billing per-token instead of using CLI subscription. Agents already score
+// their own phrases — this was redundant. See CLAUDE.md "NEVER Use the Anthropic SDK".
+// app.use('/api', require('./course-builder/routes/preflight.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/seed-complete.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/course-data.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/build.cjs')(ctx));
