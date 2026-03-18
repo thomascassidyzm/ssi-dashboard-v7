@@ -95,7 +95,8 @@ async function checkBuilds(ctx) {
           .from('course_seeds')
           .select('*', { count: 'exact', head: true })
           .eq('course_code', courseCode)
-          .not('target_text', 'is', null);
+          .not('target_text', 'is', null)
+          .neq('target_text', '');
 
         const target = job.total_seeds || 668;
 
