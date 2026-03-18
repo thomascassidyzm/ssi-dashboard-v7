@@ -312,12 +312,13 @@
                   >
                     Re-run
                   </button>
-                  <button
-                    @click.stop="viewSeedDetail(seed)"
-                    class="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-white rounded text-xs transition-colors"
+                  <router-link
+                    :to="`/quality/${courseCode}/${seed.id}`"
+                    @click.stop
+                    class="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-white rounded text-xs transition-colors inline-block no-underline"
                   >
                     Review Details
-                  </button>
+                  </router-link>
                 </div>
               </div>
             </div>

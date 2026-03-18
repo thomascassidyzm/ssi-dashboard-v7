@@ -583,13 +583,13 @@
             >
               {{ pipelineStarting ? 'Starting...' : (pipelineStatus.stage === 'not_started' ? 'Build Course' : 'Resume Pipeline') }}
             </button>
-            <button
+            <router-link
               v-if="pipelineStatus.human_gate"
-              @click="$router.push(`/production/${courseCode}/${pipelineStatus.stage === 'calibrate' ? 'calibration-review' : 'qa-review'}`)"
-              class="px-4 py-1.5 bg-amber-600/20 border border-amber-500/50 text-amber-400 rounded text-xs font-medium hover:bg-amber-600/30 transition-colors"
+              :to="`/production/${courseCode}/${pipelineStatus.stage === 'calibrate' ? 'calibration-review' : 'qa-review'}`"
+              class="px-4 py-1.5 bg-amber-600/20 border border-amber-500/50 text-amber-400 rounded text-xs font-medium hover:bg-amber-600/30 transition-colors inline-block text-center no-underline"
             >
               Open Review
-            </button>
+            </router-link>
           </div>
         </div>
 
