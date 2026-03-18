@@ -744,6 +744,43 @@ module.exports = function (ctx) {
       }
 
       console.log(`[BACKFILL] ${courseCode}: ${totalInserted} phrases inserted, ${errors.length} errors`);
+
+      // Update build_jobs with progress + activity log (fire-and-forget)
+      if (totalInserted > 0) {
+        const progressTimestamp = new Date().toISOString();
+        const seedNums = [...new Set(phrases.map(p => p.seed_number))];
+        const activityEntry = {
+          at: progressTimestamp,
+          seed: seedNums.length === 1 ? seedNums[0] : null,
+          phrases: totalInserted,
+          msg: seedNums.length === 1
+            ? `Seed ${seedNums[0]}: backfilled ${totalInserted} phrases`
+            : `Backfilled ${totalInserted} phrases across ${seedNums.length} seeds`
+        };
+        ctx.supabase.from('build_jobs')
+          .select('id, metadata, seeds_completed')
+          .eq('course_code', courseCode)
+          .eq('status', 'running')
+          .single()
+          .then(({ data: jobRow }) => {
+            if (!jobRow) return;
+            const meta = jobRow.metadata || {};
+            const log = Array.isArray(meta.activity_log) ? meta.activity_log : [];
+            log.push(activityEntry);
+            while (log.length > 20) log.shift();
+            meta.activity_log = log;
+            return ctx.supabase.from('build_jobs')
+              .update({
+                seeds_completed: (jobRow.seeds_completed || 0) + seedNums.length,
+                last_heartbeat: progressTimestamp,
+                last_progress_at: progressTimestamp,
+                metadata: meta
+              })
+              .eq('id', jobRow.id);
+          })
+          .catch(err => console.error('[BACKFILL] build_jobs update failed:', err.message));
+      }
+
       res.json({
         ok: true,
         course_code: courseCode,
@@ -771,19 +808,28 @@ module.exports = function (ctx) {
       const tmpFile = `/tmp/backfill_phrases_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
 
-      // Create build_jobs row
-      const { data: jobRow } = await ctx.supabase
+      // Create build_jobs row (clear any stale running backfill-phrases first)
+      await ctx.supabase
+        .from('build_jobs')
+        .update({ status: 'stopped', completed_at: new Date().toISOString() })
+        .eq('course_code', courseCode)
+        .eq('pass', 'backfill-phrases')
+        .in('status', ['pending', 'running', 'stalled']);
+
+      const { data: jobRow, error: jobErr } = await ctx.supabase
         .from('build_jobs')
         .insert({
           course_code: courseCode,
           pass: 'backfill-phrases',
           status: 'running',
           started_at: new Date().toISOString(),
-          last_heartbeat: new Date().toISOString()
+          last_heartbeat: new Date().toISOString(),
+          machine_name: ctx.MACHINE_NAME || 'unknown'
         })
         .select('id')
         .single();
 
+      if (jobErr) console.error('[BACKFILL] build_jobs insert failed:', jobErr.message);
       const jobId = jobRow?.id;
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
