@@ -7958,6 +7958,40 @@ app.post('/api/admin/agents/kill-all', async (req, res) => {
   }
 })
 
+// GET /api/admin/system — system stats (RAM, CPU, uptime)
+const os = require('os')
+app.get('/api/admin/system', async (req, res) => {
+  const totalMem = os.totalmem()
+  const freeMem = os.freemem()
+  const usedMem = totalMem - freeMem
+
+  // Get top memory consumers
+  let topProcesses = []
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', 'ps aux --sort=-%mem 2>/dev/null || ps aux -m 2>/dev/null | head -16'])
+    const lines = stdout.trim().split('\n')
+    topProcesses = lines.slice(1, 16).map(line => {
+      const parts = line.trim().split(/\s+/)
+      return { user: parts[0], pid: parts[1], cpu: parts[2] + '%', mem: parts[3] + '%', command: parts.slice(10).join(' ').substring(0, 80) }
+    })
+  } catch (e) { /* ignore */ }
+
+  res.json({
+    ok: true,
+    hostname: os.hostname(),
+    platform: os.platform(),
+    uptime: Math.floor(os.uptime() / 3600) + 'h',
+    cpu: { model: os.cpus()[0]?.model, cores: os.cpus().length, load: os.loadavg() },
+    memory: {
+      total: (totalMem / 1e9).toFixed(1) + ' GB',
+      used: (usedMem / 1e9).toFixed(1) + ' GB',
+      free: (freeMem / 1e9).toFixed(1) + ' GB',
+      percent: ((usedMem / totalMem) * 100).toFixed(1) + '%'
+    },
+    topProcesses
+  })
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {
