@@ -53,7 +53,6 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useCourses } from '../composables/useCourses'
 import { useAuth } from '../composables/useAuth'
-import { getApiUrl } from '../services/api'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 
@@ -85,7 +84,7 @@ function handleClickOutside(e) {
 onMounted(() => document.addEventListener('click', handleClickOutside))
 onUnmounted(() => document.removeEventListener('click', handleClickOutside))
 
-const activeJobCount = ref(0)
+const activeCourseCount = ref(0)
 
 // Hide on auth routes
 const isHidden = computed(() => route.meta.public === true)
@@ -111,7 +110,7 @@ const backLink = computed(() => {
 const title = computed(() => {
   if (isHome.value) return 'Popty'
   if (isDocs.value) return 'Documentation'
-  if (isJobs.value) return 'Active Jobs'
+  if (isJobs.value) return 'Activity'
   if (isCreateMode.value) return 'New Course'
   if (isProduction.value) return getCourseName(courseCode.value)
   return route.meta.title || 'Popty'
@@ -123,10 +122,10 @@ const tabs = computed(() => {
     return [
       { label: 'Courses', to: '/', active: true },
       {
-        label: 'Jobs',
+        label: 'Activity',
         to: '/jobs',
         active: false,
-        badge: activeJobCount.value > 0 ? activeJobCount.value : null
+        badge: activeCourseCount.value > 0 ? activeCourseCount.value : null
       },
       { label: 'Docs', to: '/docs', active: false }
     ]
@@ -185,25 +184,8 @@ const tabs = computed(() => {
   return []
 })
 
-async function loadJobCount() {
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/mission-control/jobs`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      const jobs = data.jobs || []
-      activeJobCount.value = jobs.filter(j => j.status === 'running' || j.status === 'pending').length
-    }
-  } catch {
-    activeJobCount.value = 0
-  }
-}
-
 onMounted(() => {
   loadCourses()
-  loadJobCount()
 })
 </script>
 

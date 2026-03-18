@@ -721,7 +721,6 @@ const buildTeamSubtitle = computed(() => {
   const remaining = buildTeamRemaining.value
   if (stageLocked('build-team')) return 'Waiting for translations'
   if (stageComplete('build-team')) return `All ${total} seeds built`
-  if (stageRunning('build-team')) return 'Building seeds — LEGOs and phrases'
   if (done === 0) return 'Creator/checker — Opus orchestrator'
   return `${remaining} of ${total} seeds still need building`
 })
@@ -1012,8 +1011,6 @@ async function startTranslation() {
     })
     const result = await response.json()
     if (result.ok) {
-      // Optimistic: show running immediately (poll may lag or RLS may block)
-      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, translate: 'running' }
       buildMonitor.refresh()
     } else {
       showActionError(`Translation failed: ${result.error}`)
@@ -1068,7 +1065,6 @@ async function startBuildTeam() {
     })
     const result = await response.json()
     if (result.ok) {
-      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'build-team': 'running' }
       buildMonitor.refresh()
     } else {
       showActionError(`Build team failed: ${result.error}`)
@@ -1105,7 +1101,6 @@ async function startFinalPass(mode = 'all') {
     })
     const result = await response.json()
     if (result.ok) {
-      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'final-pass': 'running' }
       buildMonitor.refresh()
     } else {
       showActionError(`Final pass failed: ${result.error}`)
@@ -1148,14 +1143,12 @@ async function massApproveSeeds() {
 
 const componentCardClass = computed(() => {
   if (componentGaps.value !== null && componentGaps.value.complete) return 'border-emerald-500/20'
-  if (stageRunning('component-backfill')) return 'border-teal-500/30'
   if (componentGaps.value !== null && !componentGaps.value.complete) return 'border-teal-500/30'
   return 'border-slate-700/50'
 })
 
 const componentNumberClass = computed(() => {
   if (componentGaps.value !== null && componentGaps.value.complete) return 'bg-emerald-500/20 text-emerald-400'
-  if (stageRunning('component-backfill')) return 'bg-teal-500/20 text-teal-400'
   return 'bg-slate-700/50 text-slate-400'
 })
 
@@ -1191,7 +1184,6 @@ async function startComponentBackfill() {
     })
     const result = await response.json()
     if (result.ok) {
-      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'component-backfill': 'running' }
       buildMonitor.refresh()
     } else {
       showActionError(`Component backfill failed: ${result.error}`)
@@ -1216,7 +1208,6 @@ async function startBackfillPhrases() {
     })
     const result = await response.json()
     if (result.ok) {
-      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'backfill-phrases': 'running' }
       buildMonitor.refresh()
     } else {
       showActionError(`Backfill failed: ${result.error}`)
@@ -1241,7 +1232,6 @@ async function startGenderPrep() {
     })
     const result = await response.json()
     if (result.ok !== false) {
-      buildMonitor.phaseStatus.value = { ...buildMonitor.phaseStatus.value, 'gender-prep': 'running' }
       buildMonitor.refresh()
     } else {
       showActionError(`Gender prep failed: ${result.error}`)
@@ -1596,19 +1586,6 @@ onMounted(() => {
     loadLanguages()
   }
 })
-
-// Watch for phase transitions — when a job finishes, refresh dependent state
-watch(() => buildMonitor.phaseStatus.value, (newPs, oldPs) => {
-  if (!oldPs) return
-  const phases = ['translate', 'build-team', 'final-pass', 'component-backfill', 'gender-prep']
-  for (const phase of phases) {
-    if (oldPs[phase] === 'running' && newPs[phase] !== 'running') {
-      buildMonitor.refresh()
-      if (phase === 'component-backfill') checkComponentGaps()
-      break
-    }
-  }
-}, { deep: true })
 
 onUnmounted(() => {
   stopPolling()
