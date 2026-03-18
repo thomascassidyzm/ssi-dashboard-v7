@@ -439,7 +439,8 @@ function checkPhraseBalance(phrases, balanceData, courseCode) {
   let totalVocabRefs = 0;
 
   for (const phrase of phrases) {
-    const target = phrase.target;
+    const target = phrase.target_text || phrase.target;
+    if (!target) continue;
     for (const [legoTarget] of legoScores) {
       if (target.includes(legoTarget)) {
         totalVocabRefs++;
@@ -457,7 +458,7 @@ function checkPhraseBalance(phrases, balanceData, courseCode) {
       balanced: false,
       overusedRatio: Math.round(overusedRatio * 100),
       overusedInPhrases: overused.filter(l =>
-        phrases.some(p => p.target.includes(l.target))
+        phrases.some(p => (p.target_text || p.target || '').includes(l.target))
       ).slice(0, 5),
       underusedAvailable: underused.slice(0, 5),
       message: `${Math.round(overusedRatio * 100)}% of vocabulary refs are overused LEGOs, with 0 underused LEGOs included`,

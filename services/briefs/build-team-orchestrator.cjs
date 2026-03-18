@@ -53,13 +53,25 @@ async function generateBuildTeamOrchestratorBrief(courseCode, query = {}) {
   const terminal = query.terminal || 'iTerm2';
   const useTeams = terminal === 'iTerm2';
 
+  // TEMPORARY: Opus cannot reliably output Armenian script — use Sonnet for checker
+  const checkerModel = courseCode.startsWith('hye_') ? 'sonnet' : 'opus';
+  const checkerModelNote = courseCode.startsWith('hye_') ? `
+## ⚠️ ARMENIAN SCRIPT OVERRIDE
+
+**The checker for this course uses Sonnet, not Opus.** This is because Opus has a confirmed bug where it cannot reliably output Armenian (հայերեն) script — it enters a corruption loop producing partial characters and garbage text. This was tested and verified on ${new Date().toISOString().split('T')[0]}. Sonnet handles Armenian perfectly.
+
+**As the orchestrator (Opus), you must NEVER write Armenian text in your messages.** When spot-checking quality or flagging issues, refer to phrases by number only (e.g. "S0042L02 BUILD phrase 3"). Quote only the English (known) side if needed.
+
+**Process note:** With both creator and checker on Sonnet, stalling risk is higher. Check progress every 5 minutes (not 15). Ping agents proactively if seed count hasn't increased in 10 minutes.
+` : '';
+
   const creatorSeeds = allGoldenDone ? autonomousSeeds : goldenRemaining.concat(autonomousSeeds);
 
   return `# Build Team Orchestrator — ${courseCode} (${langName})
 
 Working directory: ${process.cwd()}
 
-## YOUR JOB
+${checkerModelNote}## YOUR JOB
 
 You spawn a creator/checker team and drive the full build from seed 1 to ${targetSeeds}.
 You DO NOT build seeds yourself.
@@ -73,7 +85,7 @@ You DO NOT build seeds yourself.
 ## How the Team Works
 
 1. **Creator** (Sonnet) builds seed decompositions and sends them to checker
-2. **Checker** (Opus) fixes grammar/naturalness issues and submits to the API
+2. **Checker** (${checkerModel === 'opus' ? 'Opus' : 'Sonnet'}) fixes grammar/naturalness issues and submits to the API
 3. **Checker NEVER sends work back to creator** — checker fixes everything and submits directly
 4. **API** validates (tiling, vocab, counts) and writes to Supabase
 5. **Human** reviews submitted seeds in the dashboard seed grid and approves/rejects there
@@ -89,14 +101,14 @@ Use TeamCreate to set up the team so agents can communicate via SendMessage:
 TeamCreate: team_name="${teamName}", description="Build team for ${courseCode}"
 \`\`\`
 
-## Step 2: Spawn the Checker (Opus) FIRST
+## Step 2: Spawn the Checker FIRST
 
 Spawn checker first so it's ready when creator sends work.
 
 Use the Agent tool:
 - name: "checker"
 - team_name: "${teamName}"
-- model: "opus"
+- model: "${checkerModel}"
 
 Checker prompt:
 \`\`\`

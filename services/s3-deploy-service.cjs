@@ -773,12 +773,17 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
     errorDetails: []
   }
 
-  // Build UUID to manifest location map
-  const uuidToLocation = new Map()
+  // Build UUID to manifest location map (array of refs — same UUID can appear multiple times)
+  const uuidToLocations = new Map()
+
+  const addLocation = (uuid, location) => {
+    if (!uuidToLocations.has(uuid)) uuidToLocations.set(uuid, [])
+    uuidToLocations.get(uuid).push(location)
+  }
 
   // Map introduction
   if (manifest.introduction?.id) {
-    uuidToLocation.set(manifest.introduction.id, { type: 'introduction', ref: manifest.introduction })
+    addLocation(manifest.introduction.id, { type: 'introduction', ref: manifest.introduction })
   }
 
   // Map encouragements
@@ -786,7 +791,7 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
   const pooledEnc = manifest.slices?.[0]?.pooledEncouragements || []
   for (const enc of [...orderedEnc, ...pooledEnc]) {
     if (enc.id) {
-      uuidToLocation.set(enc.id, { type: 'encouragement', ref: enc })
+      addLocation(enc.id, { type: 'encouragement', ref: enc })
     }
   }
 
@@ -795,7 +800,7 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
   for (const variants of Object.values(manifestSamples)) {
     for (const variant of variants) {
       if (variant.id) {
-        uuidToLocation.set(variant.id, { type: 'sample', ref: variant })
+        addLocation(variant.id, { type: 'sample', ref: variant })
       }
     }
   }
@@ -804,8 +809,8 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
   if (extractedDurations) {
     // INSTANT FIX: Use pre-extracted durations
     for (const uuid of uuids) {
-      const location = uuidToLocation.get(uuid)
-      if (!location) {
+      const locations = uuidToLocations.get(uuid)
+      if (!locations || locations.length === 0) {
         logger.warn(`[AUTO-FIX] UUID ${uuid} not found in manifest`)
         continue
       }
@@ -815,16 +820,18 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
         results.errors++
         results.errorDetails.push({ uuid, error: 'S3 duration not found in extracted data' })
       } else {
-        // Update manifest with S3 duration
-        location.ref.duration = s3Duration
+        // Update ALL manifest instances with S3 duration
+        for (const location of locations) {
+          location.ref.duration = s3Duration
+        }
         results.fixed++
       }
     }
   } else {
     // SLOW FIX: Extract durations from S3 (original behavior)
     for (const uuid of uuids) {
-      const location = uuidToLocation.get(uuid)
-      if (!location) {
+      const locations = uuidToLocations.get(uuid)
+      if (!locations || locations.length === 0) {
         logger.warn(`[AUTO-FIX] UUID ${uuid} not found in manifest`)
         continue
       }
@@ -837,8 +844,10 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
           results.errors++
           results.errorDetails.push({ uuid, error: 'Failed to extract duration' })
         } else {
-          // Update manifest with EXACT duration from sox
-          location.ref.duration = result.actualDuration
+          // Update ALL manifest instances with EXACT duration from sox
+          for (const location of locations) {
+            location.ref.duration = result.actualDuration
+          }
           results.fixed++
 
           if (results.fixed % 100 === 0 && onProgress) {

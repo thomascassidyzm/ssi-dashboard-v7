@@ -1095,7 +1095,7 @@ app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
   const { courseCode } = req.params
   try {
     // Pick ~10 seeds spread across the course for variety
-    const { data: seeds } = await supabase
+    const { data: seeds } = await supabaseClient.getClient()
       .from('course_seeds')
       .select('known_text, target_text')
       .eq('course_code', courseCode)
