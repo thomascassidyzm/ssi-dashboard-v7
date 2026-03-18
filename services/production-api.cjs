@@ -7941,18 +7941,13 @@ app.post('/api/admin/agents/kill-all', async (req, res) => {
       } catch (e) { /* already dead */ }
     }
 
-    // Step 2: Wait a moment for processes to die, then close all iTerm windows
+    // Step 2: Wait for processes to die, then force-kill iTerm2 app
     setTimeout(async () => {
       try {
-        await execFileAsync('osascript', ['-e', `
-          tell application "iTerm"
-            repeat with w in windows
-              close w
-            end repeat
-          end tell
-        `], { timeout: 10000 })
+        await execFileAsync('bash', ['-c', 'pkill -9 iTerm2 || true'], { timeout: 5000 })
+        logger.info('[Admin] iTerm2 force-killed')
       } catch (e) {
-        logger.warn('[Admin] iTerm window close failed (may need manual dismiss):', e.message)
+        logger.warn('[Admin] iTerm2 force-kill note:', e.message)
       }
     }, 2000)
 
