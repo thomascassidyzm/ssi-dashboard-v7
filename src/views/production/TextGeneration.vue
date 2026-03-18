@@ -261,68 +261,35 @@
           </div>
         </div>
 
-        <!-- Stage 3: Final Pass -->
+        <!-- Stage 3: Final Pass (wizard-style — one action at a time) -->
         <div class="pipeline-card" :class="stageCardClass('final-pass')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('final-pass')">3</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Final Pass</div>
-                <div class="text-xs text-slate-500">Grammar audit — delete bad phrases</div>
+                <div class="text-xs text-slate-500">{{ finalPassSubtitle }}</div>
               </div>
             </div>
-            <div class="flex items-center gap-3 flex-wrap justify-end">
-              <!-- Under-threshold: needs phrase backfill (orange) -->
-              <span v-if="seedGridUnderThreshold > 0" class="text-xs text-orange-400">{{ seedGridUnderThreshold }} need phrases</span>
-              <button
-                v-if="seedGridUnderThreshold > 0 && !stageRunning('backfill-phrases')"
-                @click="startBackfillPhrases"
-                :disabled="backfillPhrasesStarting"
-                class="px-3 py-1 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                {{ backfillPhrasesStarting ? 'Spawning...' : `Backfill ${seedGridUnderThreshold} Seeds` }}
-              </button>
-              <span v-if="stageRunning('backfill-phrases')" class="text-xs text-orange-400 animate-pulse">Backfilling...</span>
-              <!-- Flagged: needs full redo (red) -->
-              <span v-if="seedGridFlagged > 0" class="text-xs text-rose-400">{{ seedGridFlagged }} flagged</span>
-              <button
-                v-if="seedGridFlagged > 0"
-                @click="redoAllFlagged"
-                :disabled="redoingFlagged"
-                class="px-3 py-1 bg-rose-600/20 border border-rose-500/50 text-rose-400 hover:border-rose-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-              >
-                {{ redoingFlagged ? 'Spawning...' : `Redo ${seedGridFlagged} Flagged` }}
-              </button>
+            <div class="flex items-center gap-3">
               <span v-if="stageLocked('final-pass')" class="stage-badge-locked">Locked</span>
+              <span v-else-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
+              <span v-else-if="finalPassBusy" class="text-xs animate-pulse" :class="finalPassBusyColor">{{ finalPassBusyLabel }}...</span>
               <template v-else>
-                <span v-if="stageComplete('final-pass')" class="stage-badge-complete mr-2">Done</span>
-                <span v-if="stageRunning('final-pass')" class="text-xs text-violet-400 animate-pulse">Running...</span>
                 <button
-                  v-if="!stageRunning('final-pass') && seedGridDrafted > 0"
-                  @click="startFinalPass('drafted')"
-                  :disabled="finalPassStarting"
-                  class="px-3 py-1 bg-violet-600/20 border border-violet-500/50 text-violet-400 hover:border-violet-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                  @click="finalPassNextAction.handler"
+                  :disabled="finalPassNextAction.disabled"
+                  class="px-4 py-1.5 text-xs font-medium rounded-lg transition-all disabled:opacity-50"
+                  :class="finalPassNextAction.btnClass"
                 >
-                  {{ finalPassStarting ? 'Spawning...' : `Final Pass ${seedGridDrafted} Seeds` }}
-                </button>
-                <button
-                  v-if="!stageRunning('final-pass')"
-                  @click="startFinalPass('all')"
-                  :disabled="finalPassStarting"
-                  class="px-3 py-1 bg-violet-600/10 border border-violet-500/30 text-violet-400/70 hover:border-violet-400/50 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-                >
-                  {{ finalPassStarting ? 'Spawning...' : stageComplete('final-pass') ? 'Re-run Final Pass' : 'Full Final Pass' }}
-                </button>
-                <button
-                  v-if="seedGridDrafted > 0"
-                  @click="massApproveSeeds"
-                  :disabled="massApproving"
-                  class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
-                >
-                  {{ massApproving ? 'Approving...' : `Approve ${seedGridDrafted} Seeds` }}
+                  {{ finalPassNextAction.label }}
                 </button>
               </template>
             </div>
+          </div>
+          <!-- Progress summary (when not locked and not complete) -->
+          <div v-if="!stageLocked('final-pass') && !stageComplete('final-pass') && finalPassSummary" class="mt-2 text-xs text-slate-500">
+            {{ finalPassSummary }}
           </div>
         </div>
 
@@ -738,6 +705,90 @@ const courseTargetLang = computed(() => {
   return ''
 })
 const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTargetLang.value))
+
+// --- Final Pass wizard logic (one action at a time) ---
+
+const finalPassBusy = computed(() =>
+  stageRunning('final-pass') || stageRunning('backfill-phrases')
+)
+
+const finalPassBusyColor = computed(() => {
+  if (stageRunning('backfill-phrases')) return 'text-orange-400'
+  return 'text-violet-400'
+})
+
+const finalPassBusyLabel = computed(() => {
+  if (stageRunning('backfill-phrases')) return 'Backfilling phrases'
+  return 'Running final pass'
+})
+
+const finalPassNextAction = computed(() => {
+  const ut = seedGridUnderThreshold.value
+  const flagged = seedGridFlagged.value
+  const drafted = seedGridDrafted.value
+
+  // Priority 1: backfill under-threshold seeds
+  if (ut > 0) return {
+    label: backfillPhrasesStarting.value ? 'Spawning...' : `Backfill ${ut} seed${ut !== 1 ? 's' : ''}`,
+    handler: startBackfillPhrases,
+    disabled: backfillPhrasesStarting.value,
+    btnClass: 'bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70'
+  }
+
+  // Priority 2: redo flagged seeds
+  if (flagged > 0) return {
+    label: redoingFlagged.value ? 'Spawning...' : `Redo ${flagged} flagged seed${flagged !== 1 ? 's' : ''}`,
+    handler: redoAllFlagged,
+    disabled: redoingFlagged.value,
+    btnClass: 'bg-rose-600/20 border border-rose-500/50 text-rose-400 hover:border-rose-400/70'
+  }
+
+  // Priority 3: run final pass on drafted seeds
+  if (drafted > 0) return {
+    label: finalPassStarting.value ? 'Spawning...' : `Review ${drafted} seed${drafted !== 1 ? 's' : ''}`,
+    handler: () => startFinalPass('drafted'),
+    disabled: finalPassStarting.value,
+    btnClass: 'bg-violet-600/20 border border-violet-500/50 text-violet-400 hover:border-violet-400/70'
+  }
+
+  // Priority 4: approve (all reviewed, none flagged/under-threshold)
+  if (seedGridFinalized.value < seedGrid.value.length && seedGrid.value.length > 0) return {
+    label: massApproving.value ? 'Approving...' : 'Approve all seeds',
+    handler: massApproveSeeds,
+    disabled: massApproving.value,
+    btnClass: 'bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70'
+  }
+
+  return { label: 'Done', handler: () => {}, disabled: true, btnClass: '' }
+})
+
+const finalPassSubtitle = computed(() => {
+  const ut = seedGridUnderThreshold.value
+  const flagged = seedGridFlagged.value
+  const drafted = seedGridDrafted.value
+  const finalized = seedGridFinalized.value
+
+  if (stageLocked('final-pass')) return 'Waiting for Build Team to finish'
+  if (stageComplete('final-pass')) return `All ${finalized} seeds approved`
+  if (finalPassBusy.value) return stageRunning('backfill-phrases') ? 'Adding phrases to under-threshold LEGOs' : 'Grammar audit in progress'
+  if (ut > 0) return `${ut} seed${ut !== 1 ? 's have' : ' has'} LEGOs with too few phrases — backfill first`
+  if (flagged > 0) return `${flagged} seed${flagged !== 1 ? 's' : ''} failed grammar review — need rebuilding`
+  if (drafted > 0) return `${drafted} seed${drafted !== 1 ? 's' : ''} ready for grammar review`
+  return 'Review and approve all seeds'
+})
+
+const finalPassSummary = computed(() => {
+  const ut = seedGridUnderThreshold.value
+  const flagged = seedGridFlagged.value
+  const drafted = seedGridDrafted.value
+  const finalized = seedGridFinalized.value
+  const parts = []
+  if (finalized > 0) parts.push(`${finalized} approved`)
+  if (drafted > 0) parts.push(`${drafted} drafted`)
+  if (ut > 0) parts.push(`${ut} need phrases`)
+  if (flagged > 0) parts.push(`${flagged} flagged`)
+  return parts.join(' · ')
+})
 
 // Phase status from build_jobs (DB-driven)
 const ps = computed(() => buildMonitor.phaseStatus.value)
