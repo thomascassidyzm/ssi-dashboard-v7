@@ -133,26 +133,15 @@ async function checkBuilds(ctx) {
       await ctx.supabase.from('build_jobs').update(updates).eq('id', job.id);
 
       // --- Step 3: Check completion ---
+      // Only mark complete when target is reached. Never kill jobs —
+      // the job-done curl handles agent exit, dashboard shows stall warnings,
+      // user clicks Stop manually if needed.
       if (currentProgress >= target && target > 0) {
         console.log(`[BUILD] ${job.pass.toUpperCase()} COMPLETE: ${courseCode} (${currentProgress}/${target})`);
         await ctx.supabase.from('build_jobs').update({
           status: 'complete',
           current_seed: currentProgress,
           seeds_completed: currentProgress,
-          completed_at: now.toISOString(),
-        }).eq('id', job.id);
-        continue;
-      }
-
-      // --- Step 4: Detect stale jobs ---
-      // If no progress for 10+ minutes, mark stopped.
-      // (Don't rely on process detection — agent command line may not contain course code)
-      const lastProgress = job.last_progress_at ? new Date(job.last_progress_at) : new Date(job.started_at);
-      const minutesSinceProgress = (now - lastProgress) / 60000;
-      if (minutesSinceProgress > 10 && minutesSinceStart > 10) {
-        console.log(`[BUILD] STOPPED (no progress for ${Math.round(minutesSinceProgress)}min): ${courseCode} ${job.pass} (${currentProgress}/${target})`);
-        await ctx.supabase.from('build_jobs').update({
-          status: 'stopped',
           completed_at: now.toISOString(),
         }).eq('id', job.id);
       }
