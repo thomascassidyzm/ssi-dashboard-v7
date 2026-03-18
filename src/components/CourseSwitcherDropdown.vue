@@ -74,7 +74,8 @@ const filteredCourses = computed(() => {
   const q = searchQuery.value.toLowerCase()
   return courses.value.filter(c =>
     c.code.toLowerCase().includes(q) ||
-    c.name.toLowerCase().includes(q)
+    c.name.toLowerCase().includes(q) ||
+    getCourseName(c.code).toLowerCase().includes(q)
   )
 })
 
