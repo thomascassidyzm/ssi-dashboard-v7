@@ -238,7 +238,7 @@
               <span class="stage-number" :class="stageNumberClass('build-team')">2</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Build Team</div>
-                <div class="text-xs text-slate-500">Creator/checker — Opus orchestrator</div>
+                <div class="text-xs text-slate-500">{{ buildTeamSubtitle }}</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
@@ -252,7 +252,7 @@
                 :disabled="buildTeamStarting"
                 class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
-                {{ buildTeamStarting ? 'Spawning...' : 'Start Build' }}
+                {{ buildTeamStarting ? 'Spawning...' : buildTeamButtonLabel }}
               </button>
             </div>
           </div>
@@ -705,6 +705,32 @@ const courseTargetLang = computed(() => {
   return ''
 })
 const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTargetLang.value))
+
+// --- Build Team label logic ---
+
+const buildTeamRemaining = computed(() => {
+  const done = progress.value.currentSeed || 0
+  const total = seedCount.value
+  return Math.max(0, total - done)
+})
+
+const buildTeamButtonLabel = computed(() => {
+  const remaining = buildTeamRemaining.value
+  const done = progress.value.currentSeed || 0
+  if (done === 0) return 'Start Build'
+  return `Build ${remaining} remaining seed${remaining !== 1 ? 's' : ''}`
+})
+
+const buildTeamSubtitle = computed(() => {
+  const done = progress.value.currentSeed || 0
+  const total = seedCount.value
+  const remaining = buildTeamRemaining.value
+  if (stageLocked('build-team')) return 'Waiting for translations'
+  if (stageComplete('build-team')) return `All ${total} seeds built`
+  if (stageRunning('build-team')) return 'Building seeds — LEGOs and phrases'
+  if (done === 0) return 'Creator/checker — Opus orchestrator'
+  return `${remaining} of ${total} seeds still need building`
+})
 
 // --- Final Pass wizard logic (one action at a time) ---
 
