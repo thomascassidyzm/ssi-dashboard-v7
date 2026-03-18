@@ -1577,8 +1577,18 @@ function debouncedFetch(key, fn, delay = 2000) {
   socketDebounceTimers[key] = setTimeout(fn, delay)
 }
 
-watch(() => socket.lastSeedComplete.value, (v) => { if (v) debouncedFetch('seed', () => { fetchSeedGrid(); fetchProgress() }) })
-watch(() => socket.lastBuildStatus.value, (v) => { if (v) debouncedFetch('build', fetchProgress) })
+// Socket events trigger a refresh — use buildMonitor when Supabase is configured,
+// otherwise fall back to HTTP fetchProgress
+watch(() => socket.lastSeedComplete.value, (v) => {
+  if (v) debouncedFetch('seed', () => {
+    if (isSupabaseConfigured()) { buildMonitor.refresh() } else { fetchSeedGrid(); fetchProgress() }
+  })
+})
+watch(() => socket.lastBuildStatus.value, (v) => {
+  if (v) debouncedFetch('build', () => {
+    if (isSupabaseConfigured()) { buildMonitor.refresh() } else { fetchProgress() }
+  })
+})
 // Orchestrator messages now driven by buildMonitor (Supabase direct + polling).
 // Socket.IO chat listeners removed — single source of truth.
 
