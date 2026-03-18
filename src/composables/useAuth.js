@@ -30,6 +30,31 @@ const hasDashboardAccess = computed(() => {
   return pr === 'ssi_admin' || pr === 'popty_user' || er === 'god'
 })
 
+// ─── Learner localStorage cache ──────────────────────────────────────
+const LEARNER_CACHE_KEY = 'popty_learner'
+
+function cacheLearner(userId, data) {
+  try { localStorage.setItem(LEARNER_CACHE_KEY, JSON.stringify({ userId, data })) } catch {}
+}
+
+function loadCachedLearner(userId) {
+  try {
+    const raw = localStorage.getItem(LEARNER_CACHE_KEY)
+    if (!raw) return null
+    const cached = JSON.parse(raw)
+    if (cached.userId !== userId) return null
+    // Verify cached learner has dashboard access
+    const pr = cached.data?.platform_role
+    const er = cached.data?.educational_role
+    if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') return cached.data
+    return null
+  } catch { return null }
+}
+
+function clearCachedLearner() {
+  try { localStorage.removeItem(LEARNER_CACHE_KEY) } catch {}
+}
+
 /**
  * Fetch the learner record for the current auth user
  */
@@ -114,6 +139,7 @@ async function verifyOTP(email, token) {
       }
 
       learner.value = lr
+      cacheLearner(data.user.id, lr)
     }
 
     return data
@@ -135,44 +161,42 @@ async function initAuth() {
   loading.value = true
 
   try {
-    // Check for existing session — getUser() validates the JWT with the server.
-    // If the access token has expired, try refreshSession() to get a fresh one
-    // (this is what keeps users logged in across new tabs after token expiry).
-    let { data: { user: validatedUser }, error: userError } = await supabase.auth.getUser()
+    // Read session from localStorage (instant, no network call).
+    // This survives deploys, new tabs, and page refreshes without hitting Supabase.
+    // Token refresh happens in the background via onAuthStateChange.
+    const { data: { session: cachedSession } } = await supabase.auth.getSession()
 
-    if (userError) {
-      console.warn('[Auth] getUser() failed, trying refresh:', userError.message)
-      const { data: refreshData } = await supabase.auth.refreshSession()
-      if (refreshData?.session) {
-        validatedUser = refreshData.session.user
+    if (cachedSession?.user) {
+      session.value = cachedSession
+      user.value = cachedSession.user
+
+      // Try loading learner from localStorage cache first (instant)
+      const cachedLearner = loadCachedLearner(cachedSession.user.id)
+      if (cachedLearner) {
+        learner.value = cachedLearner
       }
-    }
 
-    if (validatedUser) {
-      // Now get the refreshed session
-      const { data: { session: refreshedSession } } = await supabase.auth.getSession()
-      session.value = refreshedSession
-      user.value = validatedUser
-
-      const lr = await fetchLearner(validatedUser.id)
-
-      if (lr) {
-        const pr = lr.platform_role
-        const er = lr.educational_role
-        if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') {
-          learner.value = lr
-        } else {
-          // Has account but no dashboard access — sign out
-          await supabase.auth.signOut()
+      // Refresh learner from DB in background (non-blocking)
+      fetchLearner(cachedSession.user.id).then(lr => {
+        if (lr) {
+          const pr = lr.platform_role
+          const er = lr.educational_role
+          if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') {
+            learner.value = lr
+            cacheLearner(cachedSession.user.id, lr)
+          } else if (!cachedLearner) {
+            // No cached learner AND no access — sign out
+            supabase.auth.signOut()
+            session.value = null
+            user.value = null
+          }
+        } else if (!cachedLearner) {
+          // No learner record at all and no cache — sign out
+          supabase.auth.signOut()
           session.value = null
           user.value = null
         }
-      } else {
-        // No learner record — sign out
-        await supabase.auth.signOut()
-        session.value = null
-        user.value = null
-      }
+      })
     }
 
     // Listen for auth changes (sign in, sign out, token refresh)
@@ -182,9 +206,13 @@ async function initAuth() {
 
       if (event === 'SIGNED_IN' && newSession?.user) {
         const lr = await fetchLearner(newSession.user.id)
-        learner.value = lr
+        if (lr) {
+          learner.value = lr
+          cacheLearner(newSession.user.id, lr)
+        }
       } else if (event === 'SIGNED_OUT') {
         learner.value = null
+        clearCachedLearner()
       }
     })
   } catch (err) {
@@ -204,6 +232,7 @@ async function logout() {
   session.value = null
   user.value = null
   learner.value = null
+  clearCachedLearner()
 }
 
 /**
