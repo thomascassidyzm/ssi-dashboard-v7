@@ -186,6 +186,7 @@ export interface PhraseRowData {
   cycle_index: number;
   is_debut?: boolean;
   is_component?: boolean;
+  introduce?: boolean;
 }
 
 // LEGO Row Data

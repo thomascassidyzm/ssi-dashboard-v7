@@ -492,6 +492,7 @@ async function linkAudioIdsBatch(courseCode) {
     ['course_practice_phrases', 'id',      'target_text', 'target2_audio_id', target_lang, 'target2'],
     ['course_legos',            'lego_id', 'known_text',  'known_audio_id',   known_lang,  'known'],
     ['course_legos',            'lego_id', 'target_text', 'target1_audio_id', target_lang, 'target1'],
+    ['course_legos',            'lego_id', 'target_text', 'target2_audio_id', target_lang, 'target2'],
     ['course_seeds',            'id',      'known_text',  'known_audio_id',   known_lang,  'known'],
     ['course_seeds',            'id',      'target_text', 'target1_audio_id', target_lang, 'target1'],
     ['course_seeds',            'id',      'target_text', 'target2_audio_id', target_lang, 'target2'],
@@ -2169,9 +2170,9 @@ app.post('/insert', async (req, res) => {
 app.post('/regenerate-presentations/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = true, regenerateAudio = false } = req.body
+    const { dryRun = true, regenerateAudio = false, regenerateAll = false } = req.body
 
-    logger.info(`Regenerating presentations for ${courseCode} (dryRun=${dryRun})`)
+    logger.info(`Regenerating presentations for ${courseCode} (dryRun=${dryRun}, regenerateAll=${regenerateAll})`)
 
     // Get course info
     const { data: course, error: courseError } = await supabase
@@ -2210,7 +2211,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     // Get LEGOs where is_new=true (only new introductions need presentation audio)
     const PAGE_SIZE = 1000
-    const legos = []
+    let allLegos = []
     let legosOffset = 0
     let hasMoreLegos = true
 
@@ -2225,12 +2226,32 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       if (legosError) throw legosError
 
       if (legosBatch && legosBatch.length > 0) {
-        legos.push(...legosBatch)
+        allLegos.push(...legosBatch)
         hasMoreLegos = legosBatch.length === PAGE_SIZE
         legosOffset += PAGE_SIZE
       } else {
         hasMoreLegos = false
       }
+    }
+
+    // If not regenerateAll, filter out LEGOs that already have presentation audio
+    let legos = allLegos
+    if (!regenerateAll && allLegos.length > 0) {
+      const existingPresIds = new Set()
+      for (let i = 0; i < allLegos.length; i += PAGE_SIZE) {
+        const batch = allLegos.slice(i, i + PAGE_SIZE).map(l => l.lego_id)
+        const { data: existing } = await supabase
+          .from('course_audio')
+          .select('lego_id')
+          .eq('course_code', courseCode)
+          .eq('role', 'presentation')
+          .in('lego_id', batch)
+        if (existing) {
+          for (const rec of existing) existingPresIds.add(rec.lego_id)
+        }
+      }
+      legos = allLegos.filter(l => !existingPresIds.has(l.lego_id))
+      logger.info(`Filtered to ${legos.length} LEGOs missing presentation audio (${existingPresIds.size} already have it)`)
     }
 
     if (legos.length === 0) {
@@ -2660,6 +2681,41 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       } else if (batchData) {
         // Filter pending/ s3_keys client-side
         allPresAudio = allPresAudio.concat(batchData.filter(a => !a.s3_key || !a.s3_key.startsWith('pending/')))
+      }
+    }
+
+    // For LEGOs that share identical presentation text (e.g. two LEGOs both meaning "so"),
+    // the upsert with ignoreDuplicates skips the second record. Find these and link them
+    // to the existing audio record by text match.
+    const linkedLegoIds = new Set(allPresAudio.map(a => a.lego_id))
+    const unlinkedPres = presentations.filter(p => !linkedLegoIds.has(p.lego_id) && !unchangedLegoIds.has(p.lego_id))
+    if (unlinkedPres.length > 0) {
+      logger.info(`${unlinkedPres.length} LEGOs have duplicate presentation text — linking to shared audio records`)
+      const normToPresMap = new Map()
+      for (const p of unlinkedPres) {
+        normToPresMap.set(normalizeForAudio(p.presentation_text), p)
+      }
+      const norms = [...normToPresMap.keys()]
+      for (let i = 0; i < norms.length; i += BATCH_SIZE) {
+        const batch = norms.slice(i, i + BATCH_SIZE)
+        const { data: matchedAudio } = await supabase
+          .from('course_audio')
+          .select('id, text_normalized, s3_key')
+          .eq('course_code', courseCode)
+          .eq('role', 'presentation')
+          .in('text_normalized', batch)
+        if (matchedAudio) {
+          for (const audio of matchedAudio) {
+            if (audio.s3_key && !audio.s3_key.startsWith('pending/')) {
+              // Find all unlinked LEGOs with this text
+              for (const p of unlinkedPres) {
+                if (normalizeForAudio(p.presentation_text) === audio.text_normalized) {
+                  allPresAudio.push({ id: audio.id, lego_id: p.lego_id, s3_key: audio.s3_key })
+                }
+              }
+            }
+          }
+        }
       }
     }
 

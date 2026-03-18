@@ -135,13 +135,18 @@ async function initAuth() {
   loading.value = true
 
   try {
-    // Check for existing session
-    const { data: { session: existingSession } } = await supabase.auth.getSession()
+    // Check for existing session — getUser() validates/refreshes the JWT
+    // (getSession() only reads from storage without validation, which can
+    // return an expired token and cause fetchLearner to fail)
+    const { data: { user: validatedUser }, error: userError } = await supabase.auth.getUser()
 
-    if (existingSession?.user) {
-      session.value = existingSession
-      user.value = existingSession.user
-      const lr = await fetchLearner(existingSession.user.id)
+    if (validatedUser && !userError) {
+      // Now get the refreshed session
+      const { data: { session: refreshedSession } } = await supabase.auth.getSession()
+      session.value = refreshedSession
+      user.value = validatedUser
+
+      const lr = await fetchLearner(validatedUser.id)
 
       if (lr) {
         const pr = lr.platform_role

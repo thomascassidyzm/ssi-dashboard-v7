@@ -1,7 +1,7 @@
 <template>
   <div
     class="phrase-row bg-slate-800 border-l-4 rounded-lg p-4 transition-all"
-    :class="[borderClass, { 'bg-red-900 bg-opacity-30': isSelected }]"
+    :class="[borderClass, { 'bg-red-900 bg-opacity-30': isSelected, 'opacity-50': phrase.introduce === false }]"
   >
     <!-- Header -->
     <div class="phrase-header flex items-start justify-between gap-4 mb-3">
@@ -24,6 +24,11 @@
             {{ position }}
           </span>
           <span class="phrase-id text-xs font-mono text-slate-500">{{ phrase.phrase_id }}</span>
+          <span
+            v-if="phrase.introduce === false"
+            class="px-1.5 py-0.5 text-xs font-medium bg-slate-600 bg-opacity-50 text-slate-500 rounded line-through"
+            title="Tiling only — not presented to learner"
+          >CMP</span>
         </div>
 
         <div class="phrase-texts space-y-1">
