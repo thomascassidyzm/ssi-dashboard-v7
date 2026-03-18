@@ -135,12 +135,20 @@ async function initAuth() {
   loading.value = true
 
   try {
-    // Check for existing session — getUser() validates/refreshes the JWT
-    // (getSession() only reads from storage without validation, which can
-    // return an expired token and cause fetchLearner to fail)
-    const { data: { user: validatedUser }, error: userError } = await supabase.auth.getUser()
+    // Check for existing session — getUser() validates the JWT with the server.
+    // If the access token has expired, try refreshSession() to get a fresh one
+    // (this is what keeps users logged in across new tabs after token expiry).
+    let { data: { user: validatedUser }, error: userError } = await supabase.auth.getUser()
 
-    if (validatedUser && !userError) {
+    if (userError) {
+      console.warn('[Auth] getUser() failed, trying refresh:', userError.message)
+      const { data: refreshData } = await supabase.auth.refreshSession()
+      if (refreshData?.session) {
+        validatedUser = refreshData.session.user
+      }
+    }
+
+    if (validatedUser) {
       // Now get the refreshed session
       const { data: { session: refreshedSession } } = await supabase.auth.getSession()
       session.value = refreshedSession
