@@ -35,8 +35,12 @@ export function getApiUrl() {
     return ''  // Relative URL - ngrok tunnel handles it
   }
 
-  // 4. Vercel/other static hosting - requires EnvironmentSwitcher
-  // Return empty string which will use relative URLs (will fail on static hosting)
+  // 4. popty.app (Vercel) - default to Tom's ngrok tunnel
+  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') {
+    return 'https://popty.ngrok.app'
+  }
+
+  // 5. Other static hosting - requires EnvironmentSwitcher
   console.warn('[API] No API URL configured. Use Environment Switcher to set the backend URL.')
   return ''
 }
