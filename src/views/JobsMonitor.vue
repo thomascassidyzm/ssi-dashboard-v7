@@ -175,10 +175,40 @@ function updateSnapshot(courseCode, newStats) {
 }
 
 async function refreshKnownCourses() {
-  // Only re-fetch stats for courses we've already seen via Realtime
+  // Re-fetch stats for courses we've already seen
   const codes = Object.keys(snapshots.value)
   for (const code of codes) {
     await fetchSingleCourseStats(code)
+  }
+}
+
+async function detectRecentActivity() {
+  // Ask the DB: which courses had seeds built in the last 10 minutes?
+  if (!supabase) return
+  try {
+    const tenMinAgo = new Date(Date.now() - TEN_MINUTES).toISOString()
+    const { data, error } = await supabase
+      .from('course_seeds')
+      .select('course_code, decomposed_at')
+      .gte('decomposed_at', tenMinAgo)
+      .order('decomposed_at', { ascending: false })
+
+    if (error || !data) return
+
+    // Get unique course codes with recent activity
+    const recentCourses = [...new Set(data.map(s => s.course_code))]
+
+    for (const code of recentCourses) {
+      // Find the most recent decomposed_at for this course
+      const latest = data.find(s => s.course_code === code)
+      await fetchSingleCourseStats(code)
+      // Set lastChanged to the actual DB timestamp so it shows immediately
+      if (snapshots.value[code]) {
+        snapshots.value[code].lastChanged = new Date(latest.decomposed_at).getTime()
+      }
+    }
+  } catch (err) {
+    console.warn('[Activity] detectRecentActivity failed:', err.message)
   }
 }
 
@@ -233,8 +263,10 @@ let tickTimer = null
 
 onMounted(async () => {
   await loadCourses()
+  // Check DB for courses with recent activity (so page isn't empty after refresh)
+  await detectRecentActivity()
   setupRealtime()
-  // Poll every 30s as fallback (only re-fetches courses we've already seen)
+  // Poll every 30s as fallback
   pollTimer = setInterval(refreshKnownCourses, 30000)
   // Tick for timeAgo refresh
   tickTimer = setInterval(() => { tick.value++ }, 5000)
