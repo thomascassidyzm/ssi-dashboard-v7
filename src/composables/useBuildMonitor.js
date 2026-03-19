@@ -202,12 +202,12 @@ export function useBuildMonitor(courseCodeRef) {
       .subscribe((status) => {
         if (status === 'SUBSCRIBED') {
           isConnected.value = true
-          stopFallbackPolling()
-          console.log('[BuildMonitor] Realtime connected')
+          // Don't stop polling — keep it as a safety net alongside Realtime
+          console.log('[BuildMonitor] Realtime connected (polling continues as safety net)')
         } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
           isConnected.value = false
           startFallbackPolling(code)
-          console.warn('[BuildMonitor] Realtime disconnected, falling back to 30s poll')
+          console.warn('[BuildMonitor] Realtime disconnected')
         }
       })
   }
