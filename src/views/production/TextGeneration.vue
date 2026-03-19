@@ -219,6 +219,18 @@
                 Translating — last seed {{ translateLastActivity }}
               </span>
               <span v-else-if="translateSpawned" class="text-xs text-blue-400 animate-pulse">Spawned — waiting for first seed...</span>
+              <template v-else-if="translateStale">
+                <span class="text-xs text-amber-400">No new seeds for {{ translateLastActivity }}</span>
+                <button
+                  @click="buildMonitor.refresh()"
+                  class="px-2 py-0.5 bg-slate-600/20 border border-slate-500/50 text-slate-300 hover:border-slate-400/70 text-xs font-medium rounded-lg transition-all"
+                >Check</button>
+                <button
+                  @click="startTranslation"
+                  :disabled="translateStarting"
+                  class="px-2 py-0.5 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >{{ translateStarting ? 'Spawning...' : 'Restart' }}</button>
+              </template>
               <button
                 v-else
                 @click="startTranslation"
@@ -252,6 +264,18 @@
                 Building — last seed {{ buildLastActivity }}
               </span>
               <span v-else-if="buildTeamSpawned" class="text-xs text-emerald-400 animate-pulse">Spawned — waiting for first seed...</span>
+              <template v-else-if="buildStale">
+                <span class="text-xs text-amber-400">No new seeds for {{ buildLastActivity }}</span>
+                <button
+                  @click="buildMonitor.refresh()"
+                  class="px-2 py-0.5 bg-slate-600/20 border border-slate-500/50 text-slate-300 hover:border-slate-400/70 text-xs font-medium rounded-lg transition-all"
+                >Check</button>
+                <button
+                  @click="startBuildTeam"
+                  :disabled="buildTeamStarting"
+                  class="px-2 py-0.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >{{ buildTeamStarting ? 'Spawning...' : 'Restart' }}</button>
+              </template>
               <button
                 v-else
                 @click="startBuildTeam"
@@ -751,6 +775,16 @@ const buildActive = computed(() => {
 const translateActive = computed(() => {
   const secs = secondsSince(lastTranslateChangeAt.value)
   return secs !== null && secs * 1000 < ACTIVE_THRESHOLD_MS
+})
+
+const buildStale = computed(() => {
+  const secs = secondsSince(lastSeedChangeAt.value)
+  return secs !== null && secs * 1000 >= ACTIVE_THRESHOLD_MS
+})
+
+const translateStale = computed(() => {
+  const secs = secondsSince(lastTranslateChangeAt.value)
+  return secs !== null && secs * 1000 >= ACTIVE_THRESHOLD_MS
 })
 
 const buildLastActivity = computed(() => formatSecondsAgo(secondsSince(lastSeedChangeAt.value)))
