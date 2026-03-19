@@ -169,7 +169,7 @@ async function initAuth() {
         cacheLearner(cachedSession.user.id, learner.value)
       }
     } else {
-      // No session but maybe a cached learner from before token expired
+      // No session but cached learner from a previous login
       const fallbackLearner = loadCachedLearner()
       if (fallbackLearner) {
         learner.value = fallbackLearner
