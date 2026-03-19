@@ -66,7 +66,20 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    // Write a version file for stale-tab detection
+    rollupOptions: {
+      plugins: [{
+        name: 'write-version',
+        generateBundle() {
+          this.emitFile({
+            type: 'asset',
+            fileName: 'version.json',
+            source: JSON.stringify({ version: gitCommit, built: new Date().toISOString() })
+          })
+        }
+      }]
+    }
   },
   publicDir: 'public'
 })
