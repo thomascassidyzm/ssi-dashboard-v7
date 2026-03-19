@@ -488,22 +488,14 @@ router.beforeEach(async (to, from, next) => {
   // Public routes (login, auth verify) don't need auth
   if (to.meta.public) return next()
 
-  const { isAuthenticated, hasDashboardAccess, initAuth } = useAuth()
+  const { isAuthenticated, initAuth } = useAuth()
 
   // Initialize auth if not already done (first page load)
   await initAuth()
 
-  if (!isAuthenticated.value || !hasDashboardAccess.value) {
+  // OTP is the gate. If you have a session, you're in.
+  if (!isAuthenticated.value) {
     return next({ name: 'Login', query: { redirect: to.fullPath } })
-  }
-
-  // Course-level access check for routes with courseCode param
-  const courseCode = to.params.courseCode
-  if (courseCode && courseCode !== 'new') {
-    const { canAccessCourse } = useAuth()
-    if (!canAccessCourse(courseCode)) {
-      return next({ name: 'MissionControl' })
-    }
   }
 
   next()

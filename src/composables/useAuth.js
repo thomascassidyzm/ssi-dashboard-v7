@@ -117,37 +117,21 @@ async function verifyOTP(email, token) {
   error.value = null
 
   try {
-    console.log('[Auth] Calling verifyOtp...')
     const { data, error: verifyError } = await supabase.auth.verifyOtp({
       email,
       token,
       type: 'email'
     })
-    console.log('[Auth] verifyOtp returned:', verifyError ? `ERROR: ${verifyError.message}` : `OK, user=${data?.user?.id}`)
 
     if (verifyError) throw verifyError
 
-    // Session is set automatically by Supabase, onAuthStateChange will fire
-    // But we also check dashboard access immediately
+    // OTP verified = you're in. That's it.
     if (data.user) {
-      console.log('[Auth] Fetching learner record...')
-      const lr = await fetchLearner(data.user.id)
-      console.log('[Auth] fetchLearner returned:', lr ? `found (role=${lr.platform_role})` : 'null')
-      if (!lr) {
-        // User exists in Supabase Auth but has no learner record
-        await supabase.auth.signOut()
-        throw new Error('No dashboard access. Contact an SSi admin.')
-      }
-
-      const pr = lr.platform_role
-      const er = lr.educational_role
-      if (pr !== 'ssi_admin' && pr !== 'popty_user' && er !== 'god') {
-        await supabase.auth.signOut()
-        throw new Error('You don\'t have dashboard access. Contact an SSi admin.')
-      }
-
-      learner.value = lr
-      cacheLearner(data.user.id, lr)
+      user.value = data.user
+      session.value = data.session
+      // Cache a minimal learner so isAuthenticated is true immediately
+      learner.value = { user_id: data.user.id, email: data.user.email, platform_role: 'popty_user' }
+      cacheLearner(data.user.id, learner.value)
     }
 
     return data
@@ -169,72 +153,38 @@ async function initAuth() {
   loading.value = true
 
   try {
-    // Read session from localStorage (instant, no network call).
-    // This survives deploys, new tabs, and page refreshes without hitting Supabase.
-    // Token refresh happens in the background via onAuthStateChange.
     const { data: { session: cachedSession } } = await supabase.auth.getSession()
 
     if (cachedSession?.user) {
       session.value = cachedSession
       user.value = cachedSession.user
 
-      // Try loading learner from localStorage cache first (instant)
+      // Restore learner from localStorage (instant, no DB call)
       const cachedLearner = loadCachedLearner(cachedSession.user.id)
       if (cachedLearner) {
         learner.value = cachedLearner
+      } else {
+        // First login or cache cleared — create a minimal learner
+        learner.value = { user_id: cachedSession.user.id, email: cachedSession.user.email, platform_role: 'popty_user' }
+        cacheLearner(cachedSession.user.id, learner.value)
       }
-
-      // Refresh learner from DB in background (non-blocking)
-      fetchLearner(cachedSession.user.id).then(lr => {
-        if (lr) {
-          const pr = lr.platform_role
-          const er = lr.educational_role
-          if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') {
-            learner.value = lr
-            cacheLearner(cachedSession.user.id, lr)
-          } else if (!cachedLearner) {
-            // No cached learner AND no access — sign out
-            supabase.auth.signOut()
-            session.value = null
-            user.value = null
-          }
-        } else if (!cachedLearner) {
-          // No learner record at all and no cache — sign out
-          supabase.auth.signOut()
-          session.value = null
-          user.value = null
-        }
-      })
-    }
-
-    // Fallback: if no Supabase session but we have a cached learner, use it
-    // (covers new tabs where token expired but user previously logged in)
-    if (!learner.value) {
+    } else {
+      // No session but maybe a cached learner from before token expired
       const fallbackLearner = loadCachedLearner()
       if (fallbackLearner) {
         learner.value = fallbackLearner
       }
     }
 
-    // Listen for auth changes (sign in, sign out, token refresh)
-    supabase.auth.onAuthStateChange(async (event, newSession) => {
+    // Listen for auth changes
+    supabase.auth.onAuthStateChange((event, newSession) => {
       session.value = newSession
       user.value = newSession?.user || null
 
-      if (event === 'SIGNED_IN' && newSession?.user) {
-        const lr = await fetchLearner(newSession.user.id)
-        if (lr) {
-          learner.value = lr
-          cacheLearner(newSession.user.id, lr)
-        }
-      } else if (event === 'SIGNED_OUT') {
-        // Only clear learner on explicit logout — transient token refresh
-        // failures fire SIGNED_OUT but shouldn't kick the user out
-        if (explicitLogout) {
-          learner.value = null
-          clearCachedLearner()
-          explicitLogout = false
-        }
+      if (event === 'SIGNED_OUT' && explicitLogout) {
+        learner.value = null
+        clearCachedLearner()
+        explicitLogout = false
       }
     })
   } catch (err) {
