@@ -193,16 +193,14 @@ async function detectRecentActivity() {
   try {
     const tenMinAgo = new Date(Date.now() - TEN_MINUTES).toISOString()
 
-    // Check all activity types in parallel
-    const [built, approved, flagged, audio] = await Promise.all([
+    // Check seed activity types in parallel (audio detected via Realtime — table too large to query on load)
+    const [built, approved, flagged] = await Promise.all([
       supabase.from('course_seeds').select('course_code, decomposed_at')
         .gte('decomposed_at', tenMinAgo).order('decomposed_at', { ascending: false }),
       supabase.from('course_seeds').select('course_code, approved_at')
         .gte('approved_at', tenMinAgo).order('approved_at', { ascending: false }),
       supabase.from('course_seeds').select('course_code, flagged_at')
-        .gte('flagged_at', tenMinAgo).order('flagged_at', { ascending: false }),
-      supabase.from('course_audio').select('course_code, created_at')
-        .gte('created_at', tenMinAgo).order('created_at', { ascending: false }).limit(100)
+        .gte('flagged_at', tenMinAgo).order('flagged_at', { ascending: false })
     ])
 
     // Merge into a map of course_code → most recent timestamp
@@ -217,10 +215,6 @@ async function detectRecentActivity() {
     }
     for (const row of (flagged.data || [])) {
       const ts = new Date(row.flagged_at).getTime()
-      if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
-    }
-    for (const row of (audio.data || [])) {
-      const ts = new Date(row.created_at).getTime()
       if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
     }
 
