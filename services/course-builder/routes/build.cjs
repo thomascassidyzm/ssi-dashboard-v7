@@ -26,7 +26,7 @@ module.exports = function (ctx) {
       const { jobId } = req.params;
       const { data: job } = await ctx.supabase
         .from('build_jobs')
-        .select('id, status')
+        .select('id, status, pass, course_code')
         .eq('id', jobId)
         .single();
 
@@ -37,6 +37,14 @@ module.exports = function (ctx) {
         status: 'complete',
         completed_at: new Date().toISOString(),
       }).eq('id', jobId);
+
+      // If this was a final-pass job, set the flag so wizard knows review is done
+      if (job.pass === 'final-pass' && job.course_code) {
+        const { data: fpCourse } = await ctx.supabase.from('courses').select('quality_rules').eq('course_code', job.course_code).single();
+        await ctx.supabase.from('courses').update({
+          quality_rules: { ...(fpCourse?.quality_rules || {}), final_pass_completed: true }
+        }).eq('course_code', job.course_code);
+      }
 
       console.log(`[BUILD] JOB DONE (shell wrapper): ${jobId}`);
       res.json({ ok: true });
@@ -198,6 +206,14 @@ module.exports = function (ctx) {
 
       ctx.courseVocabCache.delete(courseCode);
       await bumpCourseVersion(ctx.supabase, courseCode, 'minor');
+
+      // Clear final_pass_completed — rebuilt seeds need re-review
+      const { data: redoCourse } = await ctx.supabase.from('courses').select('quality_rules').eq('course_code', courseCode).single();
+      if (redoCourse?.quality_rules?.final_pass_completed) {
+        await ctx.supabase.from('courses').update({
+          quality_rules: { ...(redoCourse.quality_rules), final_pass_completed: false }
+        }).eq('course_code', courseCode);
+      }
 
       // Generate redo brief and spawn agent
       const seedsParam = seedNumbers.join(',');
@@ -744,6 +760,19 @@ module.exports = function (ctx) {
       }
 
       console.log(`[BACKFILL] ${courseCode}: ${totalInserted} phrases inserted, ${errors.length} errors`);
+
+      // Clear final_pass_completed — backfilled phrases need re-review
+      if (totalInserted > 0) {
+        ctx.supabase.from('courses').select('quality_rules').eq('course_code', courseCode).single()
+          .then(({ data: bfCourse }) => {
+            if (bfCourse?.quality_rules?.final_pass_completed) {
+              return ctx.supabase.from('courses').update({
+                quality_rules: { ...(bfCourse.quality_rules), final_pass_completed: false }
+              }).eq('course_code', courseCode);
+            }
+          })
+          .catch(err => console.error('[BACKFILL] Failed to clear final_pass_completed:', err.message));
+      }
 
       // Update build_jobs with progress + activity log (fire-and-forget)
       if (totalInserted > 0) {
