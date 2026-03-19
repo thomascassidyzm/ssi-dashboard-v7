@@ -277,6 +277,7 @@ function generateBuildupPhrases(lego, courseCode) {
     connected_lego_ids: [],
     lego_position: computeLegoPosition(target, target),
     metadata: { buildup: 'lego' },
+    introduce: true,
     status: 'draft',
     version: 1,
   });
