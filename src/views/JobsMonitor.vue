@@ -55,6 +55,10 @@
             <span class="stat"><span class="stat-num">{{ course.stats.legos }}</span> LEGOs</span>
             <span class="stat-sep">&middot;</span>
             <span class="stat"><span class="stat-num">{{ course.stats.phrases }}</span> phrases</span>
+            <template v-if="course.stats.audio > 0">
+              <span class="stat-sep">&middot;</span>
+              <span class="stat"><span class="stat-num">{{ course.stats.audio }}</span> audio</span>
+            </template>
           </div>
 
           <div class="course-activity">
@@ -189,14 +193,16 @@ async function detectRecentActivity() {
   try {
     const tenMinAgo = new Date(Date.now() - TEN_MINUTES).toISOString()
 
-    // Check all three activity types in parallel
-    const [built, approved, flagged] = await Promise.all([
+    // Check all activity types in parallel
+    const [built, approved, flagged, audio] = await Promise.all([
       supabase.from('course_seeds').select('course_code, decomposed_at')
         .gte('decomposed_at', tenMinAgo).order('decomposed_at', { ascending: false }),
       supabase.from('course_seeds').select('course_code, approved_at')
         .gte('approved_at', tenMinAgo).order('approved_at', { ascending: false }),
       supabase.from('course_seeds').select('course_code, flagged_at')
-        .gte('flagged_at', tenMinAgo).order('flagged_at', { ascending: false })
+        .gte('flagged_at', tenMinAgo).order('flagged_at', { ascending: false }),
+      supabase.from('course_audio').select('course_code, created_at')
+        .gte('created_at', tenMinAgo).order('created_at', { ascending: false }).limit(100)
     ])
 
     // Merge into a map of course_code → most recent timestamp
@@ -211,6 +217,10 @@ async function detectRecentActivity() {
     }
     for (const row of (flagged.data || [])) {
       const ts = new Date(row.flagged_at).getTime()
+      if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
+    }
+    for (const row of (audio.data || [])) {
+      const ts = new Date(row.created_at).getTime()
       if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
     }
 
@@ -243,7 +253,7 @@ async function fetchSingleCourseStats(courseCode) {
 function setupRealtime() {
   if (!supabase) return
 
-  const tables = ['course_seeds', 'course_legos', 'course_practice_phrases']
+  const tables = ['course_seeds', 'course_legos', 'course_practice_phrases', 'course_audio']
   for (const table of tables) {
     const channel = supabase
       .channel(`activity-${table}`)
