@@ -183,28 +183,41 @@ async function refreshKnownCourses() {
 }
 
 async function detectRecentActivity() {
-  // Ask the DB: which courses had seeds built in the last 10 minutes?
+  // Ask the DB: which courses had any seed activity in the last 10 minutes?
+  // Covers building (decomposed_at), final pass (approved_at, flagged_at)
   if (!supabase) return
   try {
     const tenMinAgo = new Date(Date.now() - TEN_MINUTES).toISOString()
-    const { data, error } = await supabase
-      .from('course_seeds')
-      .select('course_code, decomposed_at')
-      .gte('decomposed_at', tenMinAgo)
-      .order('decomposed_at', { ascending: false })
 
-    if (error || !data) return
+    // Check all three activity types in parallel
+    const [built, approved, flagged] = await Promise.all([
+      supabase.from('course_seeds').select('course_code, decomposed_at')
+        .gte('decomposed_at', tenMinAgo).order('decomposed_at', { ascending: false }),
+      supabase.from('course_seeds').select('course_code, approved_at')
+        .gte('approved_at', tenMinAgo).order('approved_at', { ascending: false }),
+      supabase.from('course_seeds').select('course_code, flagged_at')
+        .gte('flagged_at', tenMinAgo).order('flagged_at', { ascending: false })
+    ])
 
-    // Get unique course codes with recent activity
-    const recentCourses = [...new Set(data.map(s => s.course_code))]
+    // Merge into a map of course_code → most recent timestamp
+    const recentMap = {}
+    for (const row of (built.data || [])) {
+      const ts = new Date(row.decomposed_at).getTime()
+      if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
+    }
+    for (const row of (approved.data || [])) {
+      const ts = new Date(row.approved_at).getTime()
+      if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
+    }
+    for (const row of (flagged.data || [])) {
+      const ts = new Date(row.flagged_at).getTime()
+      if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
+    }
 
-    for (const code of recentCourses) {
-      // Find the most recent decomposed_at for this course
-      const latest = data.find(s => s.course_code === code)
+    for (const [code, latestTs] of Object.entries(recentMap)) {
       await fetchSingleCourseStats(code)
-      // Set lastChanged to the actual DB timestamp so it shows immediately
       if (snapshots.value[code]) {
-        snapshots.value[code].lastChanged = new Date(latest.decomposed_at).getTime()
+        snapshots.value[code].lastChanged = latestTs
       }
     }
   } catch (err) {
