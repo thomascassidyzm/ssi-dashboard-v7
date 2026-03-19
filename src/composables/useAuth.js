@@ -117,18 +117,22 @@ async function verifyOTP(email, token) {
   error.value = null
 
   try {
+    console.log('[Auth] Calling verifyOtp...')
     const { data, error: verifyError } = await supabase.auth.verifyOtp({
       email,
       token,
       type: 'email'
     })
+    console.log('[Auth] verifyOtp returned:', verifyError ? `ERROR: ${verifyError.message}` : `OK, user=${data?.user?.id}`)
 
     if (verifyError) throw verifyError
 
     // Session is set automatically by Supabase, onAuthStateChange will fire
     // But we also check dashboard access immediately
     if (data.user) {
+      console.log('[Auth] Fetching learner record...')
       const lr = await fetchLearner(data.user.id)
+      console.log('[Auth] fetchLearner returned:', lr ? `found (role=${lr.platform_role})` : 'null')
       if (!lr) {
         // User exists in Supabase Auth but has no learner record
         await supabase.auth.signOut()
