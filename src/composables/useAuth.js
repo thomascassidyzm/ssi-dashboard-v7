@@ -9,6 +9,9 @@
 import { ref, computed } from 'vue'
 import { supabase } from '../services/supabase'
 
+// Explicit logout flag — prevents onAuthStateChange SIGNED_OUT from clearing cached learner
+let explicitLogout = false
+
 // Reactive state (module-level so it's shared across all useAuth() calls)
 const session = ref(null)
 const user = ref(null)       // Supabase Auth user
@@ -18,7 +21,8 @@ const error = ref(null)
 const initialized = ref(false)
 
 // Computed
-const isAuthenticated = computed(() => !!session.value && !!learner.value)
+// Learner cache is the source of truth — survives token refresh failures
+const isAuthenticated = computed(() => !!learner.value)
 const isAdmin = computed(() => {
   if (!learner.value) return false
   return learner.value.platform_role === 'ssi_admin' || learner.value.educational_role === 'god'
@@ -42,7 +46,7 @@ function loadCachedLearner(userId) {
     const raw = localStorage.getItem(LEARNER_CACHE_KEY)
     if (!raw) return null
     const cached = JSON.parse(raw)
-    if (cached.userId !== userId) return null
+    if (userId && cached.userId !== userId) return null
     // Verify cached learner has dashboard access
     const pr = cached.data?.platform_role
     const er = cached.data?.educational_role
@@ -199,6 +203,15 @@ async function initAuth() {
       })
     }
 
+    // Fallback: if no Supabase session but we have a cached learner, use it
+    // (covers new tabs where token expired but user previously logged in)
+    if (!learner.value) {
+      const fallbackLearner = loadCachedLearner()
+      if (fallbackLearner) {
+        learner.value = fallbackLearner
+      }
+    }
+
     // Listen for auth changes (sign in, sign out, token refresh)
     supabase.auth.onAuthStateChange(async (event, newSession) => {
       session.value = newSession
@@ -211,8 +224,13 @@ async function initAuth() {
           cacheLearner(newSession.user.id, lr)
         }
       } else if (event === 'SIGNED_OUT') {
-        learner.value = null
-        clearCachedLearner()
+        // Only clear learner on explicit logout — transient token refresh
+        // failures fire SIGNED_OUT but shouldn't kick the user out
+        if (explicitLogout) {
+          learner.value = null
+          clearCachedLearner()
+          explicitLogout = false
+        }
       }
     })
   } catch (err) {
@@ -226,6 +244,7 @@ async function initAuth() {
  * Logout
  */
 async function logout() {
+  explicitLogout = true
   if (supabase) {
     await supabase.auth.signOut()
   }
