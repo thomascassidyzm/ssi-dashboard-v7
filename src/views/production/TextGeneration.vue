@@ -215,6 +215,9 @@
               >
                 {{ translateResetting ? 'Resetting...' : 'Reset' }}
               </button>
+              <span v-else-if="translateActive" class="text-xs text-blue-400">
+                Translating — last seed {{ translateLastActivity }}
+              </span>
               <span v-else-if="translateSpawned" class="text-xs text-blue-400 animate-pulse">Spawned — waiting for first seed...</span>
               <button
                 v-else
@@ -245,6 +248,9 @@
               <span class="text-xs font-mono text-slate-300">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
               <span v-if="stageComplete('build-team')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('build-team')" class="stage-badge-locked">Locked</span>
+              <span v-else-if="buildActive" class="text-xs text-emerald-400">
+                Building — last seed {{ buildLastActivity }}
+              </span>
               <span v-else-if="buildTeamSpawned" class="text-xs text-emerald-400 animate-pulse">Spawned — waiting for first seed...</span>
               <button
                 v-else
@@ -593,6 +599,12 @@ const translateResetting = ref(false)
 const buildTeamStarting = ref(false)
 const buildTeamSpawned = ref(false)
 const finalPassStarting = ref(false)
+
+// Activity tracking — detect when counts are changing (agent is working)
+const lastSeedChangeAt = ref(null)    // timestamp of last decomposed_at count change
+const lastTranslateChangeAt = ref(null) // timestamp of last seedsTranslated change
+const now = ref(Date.now())
+let tickInterval = null
 const massApproving = ref(false)
 const genderStarting = ref(false)
 const backfillPhrasesStarting = ref(false)
@@ -629,9 +641,15 @@ watch(buildMonitor.stats, (s) => {
     phrasesInserted: s.practicePhrases || 0,
     totalSeeds
   }
-  // Clear spawned flags when progress actually appears
-  if ((s.completeSeeds || 0) > prevSeeds) buildTeamSpawned.value = false
-  if ((s.seedsTranslated || 0) > prevTranslated) translateSpawned.value = false
+  // Track when counts change — this means an agent is actively working
+  if ((s.completeSeeds || 0) > prevSeeds) {
+    lastSeedChangeAt.value = Date.now()
+    buildTeamSpawned.value = false
+  }
+  if ((s.seedsTranslated || 0) > prevTranslated) {
+    lastTranslateChangeAt.value = Date.now()
+    translateSpawned.value = false
+  }
 }, { deep: true })
 
 watch(buildMonitor.seedGrid, (grid) => {
@@ -709,6 +727,35 @@ const courseTargetLang = computed(() => {
 })
 const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTargetLang.value))
 
+// --- Activity detection — is an agent actively working? ---
+
+const ACTIVE_THRESHOLD_MS = 120000 // 2 minutes — if no change in 2 min, consider idle
+
+function secondsSince(timestamp) {
+  if (!timestamp) return null
+  return Math.floor((now.value - timestamp) / 1000)
+}
+
+function formatSecondsAgo(secs) {
+  if (secs === null) return ''
+  if (secs < 60) return `${secs}s ago`
+  if (secs < 3600) return `${Math.floor(secs / 60)}m ago`
+  return `${Math.floor(secs / 3600)}h ago`
+}
+
+const buildActive = computed(() => {
+  const secs = secondsSince(lastSeedChangeAt.value)
+  return secs !== null && secs * 1000 < ACTIVE_THRESHOLD_MS
+})
+
+const translateActive = computed(() => {
+  const secs = secondsSince(lastTranslateChangeAt.value)
+  return secs !== null && secs * 1000 < ACTIVE_THRESHOLD_MS
+})
+
+const buildLastActivity = computed(() => formatSecondsAgo(secondsSince(lastSeedChangeAt.value)))
+const translateLastActivity = computed(() => formatSecondsAgo(secondsSince(lastTranslateChangeAt.value)))
+
 // --- Build Team label logic ---
 
 const buildTeamRemaining = computed(() => {
@@ -730,6 +777,7 @@ const buildTeamSubtitle = computed(() => {
   const remaining = buildTeamRemaining.value
   if (stageLocked('build-team')) return 'Waiting for translations'
   if (stageComplete('build-team')) return `All ${total} seeds built`
+  if (buildActive.value) return `Building — ${done}/${total} seeds, ${remaining} remaining`
   if (done === 0) return 'Creator/checker — Opus orchestrator'
   return `${remaining} of ${total} seeds still need building`
 })
@@ -1590,17 +1638,19 @@ onMounted(() => {
   startPolling()
   if (!isCreateMode.value) {
     socket.connect(effectiveCourseCode.value)
-    // Auto-check component gaps on load — no manual click needed
     checkComponentGaps()
   }
   if (isCreateMode.value) {
     loadLanguages()
   }
+  // Tick every 5s to update "Xs ago" displays
+  tickInterval = setInterval(() => { now.value = Date.now() }, 5000)
 })
 
 onUnmounted(() => {
   stopPolling()
   socket.disconnect()
+  if (tickInterval) { clearInterval(tickInterval); tickInterval = null }
 })
 </script>
 
