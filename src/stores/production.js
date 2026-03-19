@@ -2,7 +2,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { getApiUrl } from '@/services/api'
-import { supabase } from '@/services/supabase'
+import { supabase, isConfigured as isSupabaseConfigured, getAudioStats as sbGetAudioStats, getAudioMetadata as sbGetAudioMetadata, getAudioFlags as sbGetAudioFlags, getCourseInfo as sbGetCourseInfo } from '@/services/supabase'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 // This allows routing through ngrok tunnel to local automation server
@@ -324,10 +324,11 @@ export const useProductionStore = defineStore('production', () => {
     // PROGRESSIVE LOADING: Fire all requests but don't block on them
     // Each updates the UI as it completes - fast endpoints show data first
 
-    // 1. Audio stats - FAST (~5ms) - FK-binding counts for quick display
-    fetch(`${baseUrl}/api/production/${courseCode}/audio-stats`, { headers })
-      .then(res => res.ok ? res.json() : null)
-      .then(stats => {
+    if (isSupabaseConfigured()) {
+      // Direct Supabase reads — no ngrok round-trip
+
+      // 1. Audio stats
+      sbGetAudioStats(courseCode).then(stats => {
         if (stats) {
           audioCourseStats.value = {
             ...audioCourseStats.value,
@@ -336,83 +337,122 @@ export const useProductionStore = defineStore('production', () => {
             missing: stats.missing || 0
           }
         }
-      })
-      .catch(() => {})
+      }).catch(() => {})
 
-    // 2. Audio metadata - MEDIUM (~150ms)
-    isLoadingMetadata.value = true
-    fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers })
-      .then(res => res.ok ? res.json() : { audio: {} })
-      .then(data => {
+      // 2. Audio metadata
+      isLoadingMetadata.value = true
+      sbGetAudioMetadata(courseCode).then(data => {
         audioMetadata.value = data
-      })
-      .catch(() => {
+      }).catch(() => {
         audioMetadata.value = { audio: {} }
-      })
-      .finally(() => {
+      }).finally(() => {
         isLoadingMetadata.value = false
       })
 
-    // 3. Flags - MEDIUM (~150ms)
-    fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers })
-      .then(res => res.ok ? res.json() : { samples: {} })
-      .then(data => {
-        sampleFlags.value = data
-      })
-      .catch(() => {
-        sampleFlags.value = { samples: {} }
-      })
+      // 3. Legacy flags — keep on proxy (different table, rarely used)
+      if (baseUrl) {
+        fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers })
+          .then(res => res.ok ? res.json() : { samples: {} })
+          .then(data => { sampleFlags.value = data })
+          .catch(() => { sampleFlags.value = { samples: {} } })
+      }
 
-    // 4. Audio flags - MEDIUM (~200ms)
-    isLoadingFlags.value = true
-    fetch(`${baseUrl}/api/production/${courseCode}/audio-flags`, { headers })
-      .then(res => res.ok ? res.json() : { flags: [], stats: {} })
-      .then(data => {
+      // 4. Audio flags
+      isLoadingFlags.value = true
+      sbGetAudioFlags(courseCode).then(data => {
         audioFlags.value = data
-      })
-      .catch(() => {
+      }).catch(() => {
         audioFlags.value = { flags: [], stats: {} }
-      })
-      .finally(() => {
+      }).finally(() => {
         isLoadingFlags.value = false
       })
+    } else {
+      // Fallback: API proxy
+
+      // 1. Audio stats
+      fetch(`${baseUrl}/api/production/${courseCode}/audio-stats`, { headers })
+        .then(res => res.ok ? res.json() : null)
+        .then(stats => {
+          if (stats) {
+            audioCourseStats.value = {
+              ...audioCourseStats.value,
+              total: stats.total || 0,
+              existing: stats.existing || 0,
+              missing: stats.missing || 0
+            }
+          }
+        })
+        .catch(() => {})
+
+      // 2. Audio metadata
+      isLoadingMetadata.value = true
+      fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers })
+        .then(res => res.ok ? res.json() : { audio: {} })
+        .then(data => { audioMetadata.value = data })
+        .catch(() => { audioMetadata.value = { audio: {} } })
+        .finally(() => { isLoadingMetadata.value = false })
+
+      // 3. Flags
+      fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers })
+        .then(res => res.ok ? res.json() : { samples: {} })
+        .then(data => { sampleFlags.value = data })
+        .catch(() => { sampleFlags.value = { samples: {} } })
+
+      // 4. Audio flags
+      isLoadingFlags.value = true
+      fetch(`${baseUrl}/api/production/${courseCode}/audio-flags`, { headers })
+        .then(res => res.ok ? res.json() : { flags: [], stats: {} })
+        .then(data => { audioFlags.value = data })
+        .catch(() => { audioFlags.value = { flags: [], stats: {} } })
+        .finally(() => { isLoadingFlags.value = false })
+    }
 
     // Mark data as loaded (individual sections have their own loading states)
     lastLoadTime.value[courseCode] = Date.now()
   }
 
-  // Load course info including status (SLOW ~700ms)
+  // Load course info including status (SLOW ~700ms via proxy, fast via Supabase)
   async function loadCourseInfo(courseCode) {
     isLoadingInfo.value = true
     try {
+      if (isSupabaseConfigured()) {
+        const row = await sbGetCourseInfo(courseCode)
+        if (!row) {
+          courseInfo.value = { code: courseCode, displayName: courseCode.replace(/_/g, ' '), status: 'testing' }
+          return courseInfo.value
+        }
+        // Map DB row to expected shape
+        courseInfo.value = {
+          code: row.course_code,
+          displayName: row.display_name,
+          knownLang: row.known_lang,
+          targetLang: row.target_lang,
+          status: row.status,
+          courseType: row.course_type,
+          seed_count: row.seed_count,
+          pricingTier: row.pricing_tier || 'premium',
+          isCommunity: row.is_community || false
+        }
+        return courseInfo.value
+      }
+
+      // Fallback: API proxy
       const baseUrl = getApiBaseUrl()
       const response = await fetch(`${baseUrl}/api/production/${courseCode}/info`, {
         headers: getApiHeaders()
       })
 
       if (!response.ok) {
-        // Course might not exist in database yet - use defaults
-        console.warn(`[Production] Could not load course info for ${courseCode}`)
-        courseInfo.value = {
-          code: courseCode,
-          displayName: courseCode.replace(/_/g, ' '),
-          status: 'testing'
-        }
+        courseInfo.value = { code: courseCode, displayName: courseCode.replace(/_/g, ' '), status: 'testing' }
         return courseInfo.value
       }
 
       const data = await response.json()
       courseInfo.value = data.course
-      console.log(`[Production] Loaded course info: status=${data.course.status}`)
       return data.course
     } catch (err) {
       console.warn('[Production] Failed to load course info:', err.message)
-      // Set defaults on error
-      courseInfo.value = {
-        code: courseCode,
-        displayName: courseCode.replace(/_/g, ' '),
-        status: 'testing'
-      }
+      courseInfo.value = { code: courseCode, displayName: courseCode.replace(/_/g, ' '), status: 'testing' }
       return courseInfo.value
     } finally {
       isLoadingInfo.value = false

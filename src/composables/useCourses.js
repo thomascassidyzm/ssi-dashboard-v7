@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import api from '../services/api'
 import { getApiUrl } from '../services/api'
+import { isConfigured as isSupabaseConfigured, getAllCourses } from '../services/supabase'
 import { useAuth } from './useAuth'
 
 // Hardcoded fallback for immediate use before API responds
@@ -104,14 +105,35 @@ async function loadCourses(force = false) {
     // Ensure language names are loaded before mapping course names
     await loadLanguageNames()
 
-    // Fast path: fetch course metadata only (no stats — those load in background)
-    const baseUrl = getApiUrl()
-    const res = await fetch(`${baseUrl}/api/courses`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
-    const data = await res.json()
-    const courseList = data.courses || []
+    let courseList
+
+    if (isSupabaseConfigured()) {
+      // Direct Supabase — no ngrok round-trip
+      const coursesData = await getAllCourses()
+      courseList = coursesData.map(c => ({
+        code: c.course_code,
+        course_code: c.course_code,
+        display_name: c.display_name,
+        new_app_status: c.new_app_status,
+        legacy_app_status: c.legacy_app_status,
+        new_app_beta_started_at: c.new_app_beta_started_at,
+        legacy_app_beta_started_at: c.legacy_app_beta_started_at,
+        content_status: c.content_status,
+        seed_count: c.seed_count,
+        created_at: c.created_at,
+        updated_at: c.updated_at,
+        stats: { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
+      }))
+    } else {
+      // Fallback: API proxy
+      const baseUrl = getApiUrl()
+      const res = await fetch(`${baseUrl}/api/courses`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
+      const data = await res.json()
+      courseList = data.courses || []
+    }
 
     // Populate display name cache for getCourseName() lookups
     for (const c of courseList) {

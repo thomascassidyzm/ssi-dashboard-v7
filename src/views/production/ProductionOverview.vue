@@ -190,6 +190,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
+import { isConfigured as isSupabaseConfigured, getCourseProgress, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
 
@@ -274,17 +275,27 @@ const currentPricingTier = computed(() => {
 async function loadStats() {
   isLoadingStats.value = true
   try {
-    const apiBase = getApiUrl()
-    const res = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (res.ok) {
-      const data = await res.json()
+    if (isSupabaseConfigured()) {
+      const data = await getCourseProgress(props.courseCode)
       localStats.value = {
-        completeSeeds: data.seeds_with_legos || data.completed_seeds || 0,
-        totalSeeds: data.total_seeds || 668,
+        completeSeeds: data.completedSeeds || 0,
+        totalSeeds: data.seeds || 668,
         legos: data.legos || 0,
         phrases: data.phrases || 0
+      }
+    } else {
+      const apiBase = getApiUrl()
+      const res = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      if (res.ok) {
+        const data = await res.json()
+        localStats.value = {
+          completeSeeds: data.seeds_with_legos || data.completed_seeds || 0,
+          totalSeeds: data.total_seeds || 668,
+          legos: data.legos || 0,
+          phrases: data.phrases || 0
+        }
       }
     }
   } catch (err) {
@@ -296,13 +307,15 @@ async function loadStats() {
 
 async function loadQAStats() {
   try {
-    const apiBase = getApiUrl()
-    const res = await fetch(`${apiBase}/api/qa/summary/${props.courseCode}`)
-    if (res.ok) {
-      const data = await res.json()
-      qaStats.value = {
-        flags: data.flags?.total || 0,
-        checked: data.phrases?.checked || 0
+    if (isSupabaseConfigured()) {
+      const data = await getQASummary(props.courseCode)
+      qaStats.value = { flags: data.flagged || 0, checked: 0 }
+    } else {
+      const apiBase = getApiUrl()
+      const res = await fetch(`${apiBase}/api/qa/summary/${props.courseCode}`)
+      if (res.ok) {
+        const data = await res.json()
+        qaStats.value = { flags: data.flags?.total || 0, checked: data.phrases?.checked || 0 }
       }
     }
   } catch (err) {

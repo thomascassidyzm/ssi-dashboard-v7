@@ -148,6 +148,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import api, { getApiUrl } from '../services/api'
+import { isConfigured as isSupabaseConfigured, getAllCourses, getAllCourseStats } from '../services/supabase'
 import { useCourses } from '../composables/useCourses'
 
 const toast = useToast()
@@ -192,65 +193,100 @@ async function loadCourses() {
   error.value = null
 
   try {
-    const baseUrl = getApiUrl()
+    if (isSupabaseConfigured()) {
+      // Direct Supabase — no ngrok round-trip
+      const coursesData = await getAllCourses()
+      courses.value = coursesData.map(c => ({
+        course_code: c.course_code,
+        display_name: c.display_name,
+        status: c.status,
+        seed_count: c.seed_count,
+        seed_pairs: 0, lego_pairs: 0, phrases: 0, audio_count: 0,
+        stats: { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
+      }))
+      for (const c of courses.value) {
+        if (c.display_name && c.course_code) courseDisplayNames[c.course_code] = c.display_name
+      }
+      loading.value = false
 
-    // Phase 1: Load course metadata only (fast — no stats query)
-    const res = await fetch(`${baseUrl}/api/courses`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
-    const data = await res.json()
-    courses.value = data.courses || []
-    // Populate display name cache so getCourseName() works everywhere
-    for (const c of courses.value) {
-      if (c.display_name && c.course_code) courseDisplayNames[c.course_code] = c.display_name
-    }
-    loading.value = false
-
-    // Phase 2: Load stats per-course in background (trickle in)
-    loadingStats.value = true
-    const codes = courses.value.map(c => c.course_code)
-    let pending = codes.length
-    const concurrency = 6
-
-    async function fetchStats(code) {
+      // Phase 2: Load all stats in one RPC call
+      loadingStats.value = true
+      const codes = courses.value.map(c => c.course_code)
       try {
-        const res = await fetch(`${baseUrl}/api/courses/${code}/stats`, {
-          headers: { 'ngrok-skip-browser-warning': 'true' }
-        })
-        if (res.ok) {
-          const { stats: courseStats } = await res.json()
-          // Update the single course reactively
-          const idx = courses.value.findIndex(c => c.course_code === code)
-          if (idx !== -1) {
-            courses.value[idx] = {
-              ...courses.value[idx],
-              seed_pairs: courseStats.completedSeeds || 0,
-              lego_pairs: courseStats.legos || 0,
-              phrases: courseStats.phrases || 0,
-              audio_count: courseStats.audio || 0,
-              stats: { ...courses.value[idx].stats, ...courseStats }
-            }
+        const statsMap = await getAllCourseStats(codes)
+        for (const c of courses.value) {
+          const s = statsMap[c.course_code]
+          if (s) {
+            c.seed_pairs = s.completedSeeds || 0
+            c.lego_pairs = s.legos || 0
+            c.phrases = s.phrases || 0
+            c.audio_count = s.audio || 0
+            c.stats = { ...c.stats, ...s }
           }
         }
-      } catch {
-        // Individual failure is fine — stats just stay at 0
+        // Trigger reactivity
+        courses.value = [...courses.value]
+      } catch (err) {
+        console.warn('Failed to load course stats:', err.message)
       } finally {
-        pending--
-        if (pending <= 0) loadingStats.value = false
+        loadingStats.value = false
       }
-    }
+    } else {
+      // Fallback: API proxy
+      const baseUrl = getApiUrl()
+      const res = await fetch(`${baseUrl}/api/courses`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
+      const data = await res.json()
+      courses.value = data.courses || []
+      for (const c of courses.value) {
+        if (c.display_name && c.course_code) courseDisplayNames[c.course_code] = c.display_name
+      }
+      loading.value = false
 
-    // Run with concurrency limit
-    const queue = [...codes]
-    async function worker() {
-      while (queue.length > 0) {
-        const code = queue.shift()
-        if (code) await fetchStats(code)
+      // Phase 2: Load stats per-course in background (trickle in)
+      loadingStats.value = true
+      const codes = courses.value.map(c => c.course_code)
+      let pending = codes.length
+      const concurrency = 6
+
+      async function fetchStats(code) {
+        try {
+          const res = await fetch(`${baseUrl}/api/courses/${code}/stats`, {
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+          })
+          if (res.ok) {
+            const { stats: courseStats } = await res.json()
+            const idx = courses.value.findIndex(c => c.course_code === code)
+            if (idx !== -1) {
+              courses.value[idx] = {
+                ...courses.value[idx],
+                seed_pairs: courseStats.completedSeeds || 0,
+                lego_pairs: courseStats.legos || 0,
+                phrases: courseStats.phrases || 0,
+                audio_count: courseStats.audio || 0,
+                stats: { ...courses.value[idx].stats, ...courseStats }
+              }
+            }
+          }
+        } catch {
+          // Individual failure is fine
+        } finally {
+          pending--
+          if (pending <= 0) loadingStats.value = false
+        }
       }
+
+      const queue = [...codes]
+      async function worker() {
+        while (queue.length > 0) {
+          const code = queue.shift()
+          if (code) await fetchStats(code)
+        }
+      }
+      for (let i = 0; i < concurrency; i++) worker()
     }
-    // Fire workers without awaiting — they run in background
-    for (let i = 0; i < concurrency; i++) worker()
   } catch (err) {
     error.value = err.message || 'Failed to load courses'
     console.error('Failed to load courses:', err)

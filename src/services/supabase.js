@@ -198,6 +198,432 @@ async function getAllCourseStatsFallback(courseCodes) {
   return statsMap
 }
 
+// =============================================================================
+// Direct Supabase queries for dashboard reads
+// Each function returns the same shape as the API endpoint it replaces.
+// Pattern: useBuildMonitor.js already does this — these extend the pattern.
+// =============================================================================
+
+/**
+ * Get course progress counts
+ * Replaces: /api/production/:code/stats, /api/stats/:code
+ */
+export async function getCourseProgress(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const [seedsRes, legosRes, phrasesRes, decomposedRes] = await Promise.all([
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode).not('decomposed_at', 'is', null)
+  ])
+
+  return {
+    seeds: seedsRes.count || 0,
+    completedSeeds: decomposedRes.count || 0,
+    legos: legosRes.count || 0,
+    phrases: phrasesRes.count || 0
+  }
+}
+
+/**
+ * Get audio stats (counts by role from course_audio)
+ * Replaces: /api/production/:code/audio-stats
+ * Note: The full Phase 8 plan (deduped counts) stays on proxy — this is the fast approximation
+ */
+export async function getAudioStats(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const [audioRes, phraseRes, newLegoRes] = await Promise.all([
+    supabase.from('course_audio').select('role').eq('course_code', courseCode),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode).eq('is_new', true)
+  ])
+
+  const audioRows = audioRes.data || []
+  const existing = audioRows.length
+  // Approximate total: phrases need known + target1 + target2, new legos need presentation
+  const phraseAudioNeeded = (phraseRes.count || 0) * 3
+  const presentationNeeded = newLegoRes.count || 0
+  const total = phraseAudioNeeded + presentationNeeded
+
+  // Count by role
+  const byRole = {}
+  for (const row of audioRows) {
+    byRole[row.role] = (byRole[row.role] || 0) + 1
+  }
+
+  return {
+    success: true,
+    total,
+    existing,
+    missing: Math.max(0, total - existing),
+    breakdown: {
+      phrases: phraseRes.count || 0,
+      seeds: 0,
+      uniquePhraseAudio: byRole.known || 0,
+      newLegos: newLegoRes.count || 0,
+      presentationsExisting: byRole.presentation || 0,
+      sharedNeeded: 0,
+      sharedExisting: 0,
+      welcomeExists: false
+    }
+  }
+}
+
+/**
+ * Get audio metadata from course_audio table
+ * Replaces: /api/production/:code/audio-metadata
+ */
+export async function getAudioMetadata(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('id, course_code, text, role, s3_key, origin, voice_id, created_at')
+    .eq('course_code', courseCode)
+
+  if (error) {
+    console.warn('[Supabase] getAudioMetadata error:', error.message)
+    return { audio: {} }
+  }
+
+  // Index by UUID for easy lookup
+  const audio = {}
+  for (const row of data || []) {
+    audio[row.id] = row
+  }
+  return { audio }
+}
+
+/**
+ * Get audio flags for a course
+ * Replaces: /api/production/:code/audio-flags
+ */
+export async function getAudioFlags(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data: flags, error: flagsErr } = await supabase
+    .from('audio_flags')
+    .select('audio_uuid, status, reason, flagged_by, created_at')
+    .eq('course_code', courseCode)
+
+  if (flagsErr) {
+    console.warn('[Supabase] getAudioFlags error:', flagsErr.message)
+    return { flags: [], stats: {} }
+  }
+
+  // Compute stats
+  const stats = { total: 0, flagged: 0, resolved: 0 }
+  for (const f of flags || []) {
+    stats.total++
+    if (f.status === 'flagged') stats.flagged++
+    else if (f.status === 'resolved') stats.resolved++
+  }
+
+  return { flags: flags || [], stats }
+}
+
+/**
+ * Get build status (latest build job for course)
+ * Replaces: /api/build/status/:code
+ */
+export async function getBuildStatus(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('build_jobs')
+    .select('*')
+    .eq('course_code', courseCode)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle()
+
+  if (error) {
+    console.warn('[Supabase] getBuildStatus error:', error.message)
+    return null
+  }
+  return data
+}
+
+/**
+ * Get seed grid (seeds with decomposition status)
+ * Replaces: /api/build/seed-grid/:code
+ * Note: useBuildMonitor already has fetchSeedGrid — this is the standalone version
+ */
+export async function getSeedGrid(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const [seedsRes, legosRes, phrasesRes] = await Promise.all([
+    supabase
+      .from('course_seeds')
+      .select('seed_number, decomposed_at, approved_at, flagged_at')
+      .eq('course_code', courseCode)
+      .order('seed_number', { ascending: true }),
+    supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, is_new')
+      .eq('course_code', courseCode),
+    supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, phrase_role')
+      .eq('course_code', courseCode)
+  ])
+
+  if (seedsRes.error || !seedsRes.data) return []
+
+  const legosBySeed = {}
+  for (const l of legosRes.data || []) legosBySeed[l.seed_number] = (legosBySeed[l.seed_number] || 0) + 1
+  const phrasesBySeed = {}
+  for (const p of phrasesRes.data || []) phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1
+
+  // USE phrase threshold check (same as useBuildMonitor)
+  const newLegos = new Set()
+  for (const l of legosRes.data || []) {
+    if (l.is_new) newLegos.add(l.seed_number + ':' + l.lego_index)
+  }
+  const useCounts = {}
+  for (const p of phrasesRes.data || []) {
+    if (p.phrase_role === 'use') {
+      const key = p.seed_number + ':' + p.lego_index
+      if (newLegos.has(key)) useCounts[key] = (useCounts[key] || 0) + 1
+    }
+  }
+  const underThreshold = new Set()
+  for (const key of newLegos) {
+    const seedNum = parseInt(key.split(':')[0])
+    if (seedNum > 3 && (useCounts[key] || 0) < 4) underThreshold.add(seedNum)
+  }
+
+  return seedsRes.data.map(s => {
+    const legos = legosBySeed[s.seed_number] || 0
+    const phrases = phrasesBySeed[s.seed_number] || 0
+    let status
+    if (s.flagged_at) status = 'flagged'
+    else if (s.decomposed_at && underThreshold.has(s.seed_number)) status = 'under-threshold'
+    else if (s.approved_at) status = 'complete'
+    else if (s.decomposed_at) status = 'drafted'
+    else if (legos > 0) status = 'building'
+    else status = 'empty'
+    return { seed: s.seed_number, status, legos, phrases }
+  })
+}
+
+/**
+ * Get QA summary (flagged phrase counts)
+ * Replaces: /api/production/:code/qa-summary
+ */
+export async function getQASummary(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const [flaggedRes, totalRes] = await Promise.all([
+    supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .not('flagged_at', 'is', null),
+    supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+  ])
+
+  return {
+    total: totalRes.count || 0,
+    flagged: flaggedRes.count || 0
+  }
+}
+
+/**
+ * Get QA flags (flagged phrase rows)
+ * Replaces: /api/production/:code/qa-flags
+ */
+export async function getQAFlags(courseCode, status = 'flagged') {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  let query = supabase
+    .from('course_practice_phrases')
+    .select('id, seed_number, lego_index, known_text, target_text, phrase_role, flagged_at, flag_reason')
+    .eq('course_code', courseCode)
+
+  if (status === 'flagged') {
+    query = query.not('flagged_at', 'is', null)
+  }
+
+  const { data, error } = await query.order('seed_number').order('lego_index')
+
+  if (error) {
+    console.warn('[Supabase] getQAFlags error:', error.message)
+    return []
+  }
+  return data || []
+}
+
+/**
+ * Get golden review queue from courses.quality_rules
+ * Replaces: /api/production/:code/golden-review
+ */
+export async function getGoldenReviewQueue(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('courses')
+    .select('quality_rules')
+    .eq('course_code', courseCode)
+    .single()
+
+  if (error || !data) return { golden_decompositions: [], golden_seed_count: 10 }
+
+  const qr = data.quality_rules || {}
+  return {
+    golden_decompositions: qr.golden_decompositions || [],
+    golden_seed_count: qr.golden_seed_count || 10,
+    build_log: qr.build_log || null
+  }
+}
+
+/**
+ * Get voice config for a course
+ * Replaces: /api/production/:code/voice-config
+ */
+export async function getVoiceConfig(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('courses')
+    .select('voice_config')
+    .eq('course_code', courseCode)
+    .single()
+
+  if (error || !data) return null
+  return data.voice_config || null
+}
+
+/**
+ * Get sample phrases for voice preview
+ * Replaces: /api/production/:code/seed-phrases-preview
+ */
+export async function getSeedPhrasesPreview(courseCode, limit = 10) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('course_practice_phrases')
+    .select('id, seed_number, lego_index, known_text, target_text, phrase_role')
+    .eq('course_code', courseCode)
+    .limit(limit)
+
+  if (error) {
+    console.warn('[Supabase] getSeedPhrasesPreview error:', error.message)
+    return []
+  }
+  return data || []
+}
+
+/**
+ * Get aggregated feedback above threshold
+ * Replaces: /api/production/:code/feedback/aggregated
+ */
+export async function getFeedbackAggregated(courseCode, { threshold = 3, type = null, limit: maxItems = 50 } = {}) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  let query = supabase
+    .from('content_feedback')
+    .select('audio_id, feedback_type, comment, created_at, session_context')
+    .eq('course_code', courseCode)
+    .is('resolved_at', null)
+    .order('created_at', { ascending: false })
+
+  if (type) query = query.eq('feedback_type', type)
+
+  const { data, error } = await query
+  if (error) {
+    console.warn('[Supabase] getFeedbackAggregated error:', error.message)
+    return { items: [], total: 0 }
+  }
+
+  // Aggregate by audio_id + feedback_type (same logic as production-api)
+  const buckets = {}
+  for (const fb of data || []) {
+    const key = `${fb.audio_id || 'general'}:${fb.feedback_type}`
+    if (!buckets[key]) {
+      buckets[key] = { audio_id: fb.audio_id, feedback_type: fb.feedback_type, count: 0, comments: [], latest: fb.created_at }
+    }
+    buckets[key].count++
+    if (fb.comment) buckets[key].comments.push(fb.comment)
+    if (fb.created_at > buckets[key].latest) buckets[key].latest = fb.created_at
+  }
+
+  const items = Object.values(buckets)
+    .filter(b => b.count >= threshold)
+    .sort((a, b) => b.count - a.count)
+    .slice(0, maxItems)
+
+  return { items, total: items.length }
+}
+
+/**
+ * Get feedback stats for a course
+ * Replaces: /api/production/:code/feedback/stats
+ */
+export async function getFeedbackStats(courseCode) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('content_feedback')
+    .select('feedback_type, resolved_at')
+    .eq('course_code', courseCode)
+
+  if (error) {
+    console.warn('[Supabase] getFeedbackStats error:', error.message)
+    return { total: 0, unresolved: 0, resolved: 0, by_type: {} }
+  }
+
+  const stats = { total: 0, unresolved: 0, resolved: 0, by_type: {} }
+  for (const fb of data || []) {
+    stats.total++
+    if (fb.resolved_at) stats.resolved++
+    else stats.unresolved++
+    stats.by_type[fb.feedback_type] = (stats.by_type[fb.feedback_type] || 0) + 1
+  }
+  return stats
+}
+
+/**
+ * Get seed detail (seed + legos + phrases for one seed)
+ * Replaces: /api/production/:code/seed/:num
+ */
+export async function getSeedDetail(courseCode, seedNum) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const [seedRes, legosRes, phrasesRes] = await Promise.all([
+    supabase
+      .from('course_seeds')
+      .select('*')
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNum)
+      .single(),
+    supabase
+      .from('course_legos')
+      .select('*')
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNum)
+      .order('lego_index', { ascending: true }),
+    supabase
+      .from('course_practice_phrases')
+      .select('*')
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNum)
+      .order('lego_index', { ascending: true })
+      .order('position', { ascending: true })
+  ])
+
+  return {
+    seed: seedRes.data || null,
+    legos: legosRes.data || [],
+    phrases: phrasesRes.data || []
+  }
+}
+
 /**
  * Generate learning script directly from database
  * v3.0: BUILD/USE phrase roles, Fibonacci spaced rep with 12-phrase cap

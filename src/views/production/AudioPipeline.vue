@@ -697,6 +697,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api'
+import { isConfigured as isSupabaseConfigured, getAudioStats as sbGetAudioStats } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
 import PipelineProgress from './components/PipelineProgress.vue'
 import MissingAudio from './components/MissingAudio.vue'
@@ -809,12 +810,19 @@ const pollAudioProgress = async () => {
 const refreshAudioStats = async () => {
   refreshingStats.value = true
   try {
-    const headers = { 'ngrok-skip-browser-warning': 'true' }
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
-    if (response.ok) {
-      const stats = await response.json()
+    if (isSupabaseConfigured()) {
+      const stats = await sbGetAudioStats(courseCode.value)
       if (stats.total !== undefined) {
         productionStore.updatePipelineStats(stats.total, stats.existing, stats.missing || 0)
+      }
+    } else {
+      const headers = { 'ngrok-skip-browser-warning': 'true' }
+      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
+      if (response.ok) {
+        const stats = await response.json()
+        if (stats.total !== undefined) {
+          productionStore.updatePipelineStats(stats.total, stats.existing, stats.missing || 0)
+        }
       }
     }
     // Also refresh MissingAudio component

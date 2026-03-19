@@ -132,6 +132,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { isConfigured as isSupabaseConfigured, getQASummary } from '@/services/supabase'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
@@ -153,8 +154,12 @@ const hasMore = ref(false)
 
 async function fetchSummary() {
   try {
-    const res = await fetch(`${API_BASE}/api/qa/summary/${props.courseCode}`)
-    summary.value = await res.json()
+    if (isSupabaseConfigured()) {
+      summary.value = await getQASummary(props.courseCode)
+    } else {
+      const res = await fetch(`${API_BASE}/api/qa/summary/${props.courseCode}`)
+      summary.value = await res.json()
+    }
   } catch (err) {
     console.error('Failed to fetch QA summary:', err)
   }

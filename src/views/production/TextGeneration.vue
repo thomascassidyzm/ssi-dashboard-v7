@@ -543,7 +543,7 @@ import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { useTextGenSocket } from '@/composables/useTextGenSocket'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
-import { isConfigured as isSupabaseConfigured } from '@/services/supabase'
+import { isConfigured as isSupabaseConfigured, getCourseProgress, getBuildStatus, getSeedGrid as sbGetSeedGrid, getSeedDetail } from '@/services/supabase'
 
 const router = useRouter()
 
@@ -1000,45 +1000,36 @@ async function fetchProgress() {
   if (!courseCode) return
 
   try {
-    const apiBase = getApiUrl()
+    if (isSupabaseConfigured()) {
+      const [statsData, buildData] = await Promise.all([
+        getCourseProgress(courseCode),
+        getBuildStatus(courseCode)
+      ])
 
-    const [statsResponse, buildResponse] = await Promise.all([
-      fetch(`${apiBase}/api/stats/${courseCode}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      }),
-      fetch(`${apiBase}/api/build/status/${courseCode}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      })
-    ])
-
-    if (statsResponse.ok) {
-      const data = await statsResponse.json()
-      const totalSeeds = data.total_seeds || seedCount.value
-
+      const totalSeeds = statsData.seeds || seedCount.value
       progress.value = {
         ...progress.value,
-        currentSeed: data.seeds_with_legos ?? 0,
-        seedsTranslated: data.completed_seeds ?? data.seeds_translated ?? 0,
-        genderExpansions: data.gender_expansions || 0,
+        currentSeed: statsData.completedSeeds ?? 0,
+        seedsTranslated: statsData.completedSeeds ?? 0,
+        genderExpansions: 0,
         totalSeeds: totalSeeds,
-        legosInserted: data.legos || 0,
-        phrasesInserted: data.phrases || 0,
-        avgPhraseScore: data.avg_phrase_score || null,
-        scoredPhrases: data.scored_phrases || 0
+        legosInserted: statsData.legos || 0,
+        phrasesInserted: statsData.phrases || 0,
+        avgPhraseScore: null,
+        scoredPhrases: 0
       }
 
-      if (buildResponse.ok) {
-        const buildData = await buildResponse.json()
-        const pass = buildData.build?.pass
-        if (buildData.active) {
+      if (buildData) {
+        const pass = buildData.pass
+        if (buildData.status === 'running') {
           progress.value.status = 'running'
           progress.value.buildPass = pass || null
-          if (buildData.build?.total_seeds && (pass === 'build-team' || pass === 'decompose')) {
-            seedCount.value = buildData.build.total_seeds
+          if (buildData.total_seeds && (pass === 'build-team' || pass === 'decompose')) {
+            seedCount.value = buildData.total_seeds
           }
         } else {
           progress.value.buildPass = null
-          if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
+          if (statsData.completedSeeds >= totalSeeds && statsData.completedSeeds > 0) {
             progress.value.status = 'complete'
           } else if (progress.value.status === 'running') {
             progress.value.status = 'idle'
@@ -1046,8 +1037,53 @@ async function fetchProgress() {
         }
       }
 
-      if (data.seeds === 0 && progress.value.status === 'complete') {
+      if (statsData.seeds === 0 && progress.value.status === 'complete') {
         progress.value.status = 'idle'
+      }
+    } else {
+      const apiBase = getApiUrl()
+      const [statsResponse, buildResponse] = await Promise.all([
+        fetch(`${apiBase}/api/stats/${courseCode}`, { headers: { 'ngrok-skip-browser-warning': 'true' } }),
+        fetch(`${apiBase}/api/build/status/${courseCode}`, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+      ])
+
+      if (statsResponse.ok) {
+        const data = await statsResponse.json()
+        const totalSeeds = data.total_seeds || seedCount.value
+        progress.value = {
+          ...progress.value,
+          currentSeed: data.seeds_with_legos ?? 0,
+          seedsTranslated: data.completed_seeds ?? data.seeds_translated ?? 0,
+          genderExpansions: data.gender_expansions || 0,
+          totalSeeds: totalSeeds,
+          legosInserted: data.legos || 0,
+          phrasesInserted: data.phrases || 0,
+          avgPhraseScore: data.avg_phrase_score || null,
+          scoredPhrases: data.scored_phrases || 0
+        }
+
+        if (buildResponse.ok) {
+          const buildData = await buildResponse.json()
+          const pass = buildData.build?.pass
+          if (buildData.active) {
+            progress.value.status = 'running'
+            progress.value.buildPass = pass || null
+            if (buildData.build?.total_seeds && (pass === 'build-team' || pass === 'decompose')) {
+              seedCount.value = buildData.build.total_seeds
+            }
+          } else {
+            progress.value.buildPass = null
+            if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
+              progress.value.status = 'complete'
+            } else if (progress.value.status === 'running') {
+              progress.value.status = 'idle'
+            }
+          }
+        }
+
+        if (data.seeds === 0 && progress.value.status === 'complete') {
+          progress.value.status = 'idle'
+        }
       }
     }
 
@@ -1061,13 +1097,17 @@ async function fetchSeedGrid() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
   try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/seed-grid/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      seedGrid.value = data.seeds || []
+    if (isSupabaseConfigured()) {
+      seedGrid.value = await sbGetSeedGrid(courseCode)
+    } else {
+      const apiBase = getApiUrl()
+      const response = await fetch(`${apiBase}/api/build/seed-grid/${courseCode}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      if (response.ok) {
+        const data = await response.json()
+        seedGrid.value = data.seeds || []
+      }
     }
   } catch (err) {
     console.error('Failed to fetch seed grid:', err)
@@ -1422,30 +1462,15 @@ async function selectSeed(seedNum) {
   seedViewSeedText.value = null
   seedViewLoading.value = true
   try {
-    const apiBase = getApiUrl()
-    const h = { 'ngrok-skip-browser-warning': 'true' }
-    const [legosResp, phrasesResp, seedsResp] = await Promise.all([
-      fetch(`${apiBase}/api/legos/${courseCode}?seed=${seedNum}`, { headers: h }),
-      fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=300`, { headers: h }),
-      fetch(`${apiBase}/api/seeds/${courseCode}?offset=${seedNum - 1}&limit=1`, { headers: h })
-    ])
-    // Seed sentence
-    if (seedsResp.ok) {
-      const sd = await seedsResp.json()
-      const seed = (sd.seeds || []).find(s => s.seed_number === seedNum)
-      if (seed) seedViewSeedText.value = { known_text: seed.known_text, target_text: seed.target_text }
-    }
-    // LEGO metadata
-    const legoMeta = {}
-    if (legosResp.ok) {
-      const d = await legosResp.json()
-      for (const l of (d.legos || [])) legoMeta[l.lego_index] = l
-    }
-    // Phrases grouped by lego
-    if (phrasesResp.ok) {
-      const data = await phrasesResp.json()
+    if (isSupabaseConfigured()) {
+      const detail = await getSeedDetail(courseCode, seedNum)
+      if (detail.seed) {
+        seedViewSeedText.value = { known_text: detail.seed.known_text, target_text: detail.seed.target_text }
+      }
+      const legoMeta = {}
+      for (const l of detail.legos) legoMeta[l.lego_index] = l
       const legoMap = new Map()
-      for (const p of (data.phrases || [])) {
+      for (const p of detail.phrases) {
         const key = p.lego_index ?? 0
         if (!legoMap.has(key)) legoMap.set(key, { lego_index: key, meta: legoMeta[key] || null, phrases: [] })
         legoMap.get(key).phrases.push(p)
@@ -1454,6 +1479,37 @@ async function selectSeed(seedNum) {
         if (!legoMap.has(parseInt(idx))) legoMap.set(parseInt(idx), { lego_index: parseInt(idx), meta, phrases: [] })
       }
       seedViewPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
+    } else {
+      const apiBase = getApiUrl()
+      const h = { 'ngrok-skip-browser-warning': 'true' }
+      const [legosResp, phrasesResp, seedsResp] = await Promise.all([
+        fetch(`${apiBase}/api/legos/${courseCode}?seed=${seedNum}`, { headers: h }),
+        fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=300`, { headers: h }),
+        fetch(`${apiBase}/api/seeds/${courseCode}?offset=${seedNum - 1}&limit=1`, { headers: h })
+      ])
+      if (seedsResp.ok) {
+        const sd = await seedsResp.json()
+        const seed = (sd.seeds || []).find(s => s.seed_number === seedNum)
+        if (seed) seedViewSeedText.value = { known_text: seed.known_text, target_text: seed.target_text }
+      }
+      const legoMeta = {}
+      if (legosResp.ok) {
+        const d = await legosResp.json()
+        for (const l of (d.legos || [])) legoMeta[l.lego_index] = l
+      }
+      if (phrasesResp.ok) {
+        const data = await phrasesResp.json()
+        const legoMap = new Map()
+        for (const p of (data.phrases || [])) {
+          const key = p.lego_index ?? 0
+          if (!legoMap.has(key)) legoMap.set(key, { lego_index: key, meta: legoMeta[key] || null, phrases: [] })
+          legoMap.get(key).phrases.push(p)
+        }
+        for (const [idx, meta] of Object.entries(legoMeta)) {
+          if (!legoMap.has(parseInt(idx))) legoMap.set(parseInt(idx), { lego_index: parseInt(idx), meta, phrases: [] })
+        }
+        seedViewPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
+      }
     }
   } catch (err) {
     console.error('Failed to fetch seed phrases:', err)

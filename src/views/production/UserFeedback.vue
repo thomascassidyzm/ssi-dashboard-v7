@@ -272,6 +272,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { getApiUrl } from '@/services/api';
+import { isConfigured as isSupabaseConfigured, getFeedbackAggregated, getFeedbackStats } from '@/services/supabase';
 
 // Route
 const route = useRoute();
@@ -315,24 +316,33 @@ const S3_AUDIO_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/master
 const loadIssues = async () => {
   isLoading.value = true;
   try {
-    const apiBaseUrl = getApiBaseUrl();
-    const params = new URLSearchParams({
-      threshold: threshold.value.toString(),
-      limit: '100'
-    });
-    if (typeFilter.value) {
-      params.append('type', typeFilter.value);
+    if (isSupabaseConfigured()) {
+      const data = await getFeedbackAggregated(courseCode.value, {
+        threshold: threshold.value,
+        type: typeFilter.value || null,
+        limit: 100
+      });
+      issues.value = data.items || [];
+    } else {
+      const apiBaseUrl = getApiBaseUrl();
+      const params = new URLSearchParams({
+        threshold: threshold.value.toString(),
+        limit: '100'
+      });
+      if (typeFilter.value) {
+        params.append('type', typeFilter.value);
+      }
+
+      const response = await fetch(
+        `${apiBaseUrl}/api/production/${courseCode.value}/feedback/aggregated?${params}`,
+        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      );
+
+      if (!response.ok) throw new Error('Failed to load issues');
+
+      const data = await response.json();
+      issues.value = data.issues || [];
     }
-
-    const response = await fetch(
-      `${apiBaseUrl}/api/production/${courseCode.value}/feedback/aggregated?${params}`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
-    );
-
-    if (!response.ok) throw new Error('Failed to load issues');
-
-    const data = await response.json();
-    issues.value = data.issues || [];
   } catch (err) {
     console.error('Error loading issues:', err);
   } finally {
@@ -343,16 +353,20 @@ const loadIssues = async () => {
 // Load stats
 const loadStats = async () => {
   try {
-    const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(
-      `${apiBaseUrl}/api/production/${courseCode.value}/feedback/stats`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
-    );
+    if (isSupabaseConfigured()) {
+      stats.value = await getFeedbackStats(courseCode.value);
+    } else {
+      const apiBaseUrl = getApiBaseUrl();
+      const response = await fetch(
+        `${apiBaseUrl}/api/production/${courseCode.value}/feedback/stats`,
+        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      );
 
-    if (!response.ok) throw new Error('Failed to load stats');
+      if (!response.ok) throw new Error('Failed to load stats');
 
-    const data = await response.json();
-    stats.value = data.stats || { total: 0, unresolved: 0, resolved: 0, by_type: {} };
+      const data = await response.json();
+      stats.value = data.stats || { total: 0, unresolved: 0, resolved: 0, by_type: {} };
+    }
   } catch (err) {
     console.error('Error loading stats:', err);
   }

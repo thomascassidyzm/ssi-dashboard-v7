@@ -138,6 +138,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { isConfigured as isSupabaseConfigured, getQAFlags, getQASummary } from '@/services/supabase'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
@@ -191,32 +192,46 @@ function toggleDismiss(flagId) {
 
 async function fetchFlags() {
   try {
-    const [flagsResp, summaryResp] = await Promise.all([
-      fetch(`${builderApiUrl}/api/qa/flags/${props.courseCode}?status=open`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      }),
-      fetch(`${builderApiUrl}/api/qa/summary/${props.courseCode}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      })
-    ])
-
-    if (flagsResp.ok) {
-      const data = await flagsResp.json()
-      flags.value = data.flags || []
-      summary.value = {
-        errors: data.by_severity?.error || 0,
-        warnings: data.by_severity?.warning || 0,
-        info: data.by_severity?.info || 0,
-      }
-    }
-
-    if (summaryResp.ok) {
-      const data = await summaryResp.json()
+    if (isSupabaseConfigured()) {
+      const [flagsData, summaryData] = await Promise.all([
+        getQAFlags(props.courseCode, 'flagged'),
+        getQASummary(props.courseCode)
+      ])
+      flags.value = flagsData || []
       phraseProgress.value = {
-        total: data.phrases?.total || 0,
-        checked: data.phrases?.checked || 0,
-        unchecked: data.phrases?.unchecked || 0,
-        percent: data.phrases?.progress_percent || 0,
+        total: summaryData.total || 0,
+        checked: 0,
+        unchecked: summaryData.flagged || 0,
+        percent: summaryData.total > 0 ? Math.round(((summaryData.total - summaryData.flagged) / summaryData.total) * 100) : 0,
+      }
+    } else {
+      const [flagsResp, summaryResp] = await Promise.all([
+        fetch(`${builderApiUrl}/api/qa/flags/${props.courseCode}?status=open`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' }
+        }),
+        fetch(`${builderApiUrl}/api/qa/summary/${props.courseCode}`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' }
+        })
+      ])
+
+      if (flagsResp.ok) {
+        const data = await flagsResp.json()
+        flags.value = data.flags || []
+        summary.value = {
+          errors: data.by_severity?.error || 0,
+          warnings: data.by_severity?.warning || 0,
+          info: data.by_severity?.info || 0,
+        }
+      }
+
+      if (summaryResp.ok) {
+        const data = await summaryResp.json()
+        phraseProgress.value = {
+          total: data.phrases?.total || 0,
+          checked: data.phrases?.checked || 0,
+          unchecked: data.phrases?.unchecked || 0,
+          percent: data.phrases?.progress_percent || 0,
+        }
       }
     }
   } catch (err) {

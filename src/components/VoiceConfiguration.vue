@@ -279,6 +279,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { isConfigured as isSupabaseConfigured, getVoiceConfig, getSeedPhrasesPreview } from '@/services/supabase'
 
 const props = defineProps({
   courseCode: {
@@ -607,15 +608,19 @@ async function loadConfig() {
   error.value = null
 
   try {
-    const response = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/voice-config`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    if (!response.ok) throw new Error('Failed to load voice configuration')
-
-    const data = await response.json()
-    config.value = data.config
-    emit('config-loaded', config.value)
+    if (isSupabaseConfigured()) {
+      const voiceConfig = await getVoiceConfig(props.courseCode)
+      config.value = voiceConfig || {}
+      emit('config-loaded', config.value)
+    } else {
+      const response = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/voice-config`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      if (!response.ok) throw new Error('Failed to load voice configuration')
+      const data = await response.json()
+      config.value = data.config
+      emit('config-loaded', config.value)
+    }
   } catch (err) {
     error.value = err.message
     console.error('[VoiceConfig] Load error:', err)
