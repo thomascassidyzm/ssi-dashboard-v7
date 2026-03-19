@@ -839,7 +839,17 @@ const finalPassNextAction = computed(() => {
     btnClass: 'bg-rose-600/20 border border-rose-500/50 text-rose-400 hover:border-rose-400/70'
   }
 
-  // Priority 3: run final pass on drafted seeds
+  // Priority 3: if final pass already ran and no issues remain, go straight to approve
+  // (backfilled phrases don't need another full review)
+  const finalPassDone = buildMonitor.pipeline.value?.finalPassCompleted
+  if (drafted > 0 && finalPassDone) return {
+    label: massApproving.value ? 'Approving...' : `Approve ${drafted} seed${drafted !== 1 ? 's' : ''}`,
+    handler: massApproveSeeds,
+    disabled: massApproving.value,
+    btnClass: 'bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70'
+  }
+
+  // Priority 4: run final pass on drafted seeds (first time)
   if (drafted > 0) return {
     label: finalPassStarting.value ? 'Spawning...' : `Review ${drafted} seed${drafted !== 1 ? 's' : ''}`,
     handler: () => startFinalPass('drafted'),
@@ -847,7 +857,7 @@ const finalPassNextAction = computed(() => {
     btnClass: 'bg-violet-600/20 border border-violet-500/50 text-violet-400 hover:border-violet-400/70'
   }
 
-  // Priority 4: approve (all reviewed, none flagged/under-threshold)
+  // Priority 5: approve remaining
   if (seedGridFinalized.value < seedGrid.value.length && seedGrid.value.length > 0) return {
     label: massApproving.value ? 'Approving...' : 'Approve all seeds',
     handler: massApproveSeeds,
@@ -868,6 +878,8 @@ const finalPassSubtitle = computed(() => {
   if (stageComplete('final-pass')) return `All ${finalized} seeds approved`
   if (ut > 0) return `${ut} seed${ut !== 1 ? 's have' : ' has'} LEGOs with too few phrases — backfill first`
   if (flagged > 0) return `${flagged} seed${flagged !== 1 ? 's' : ''} failed grammar review — need rebuilding`
+  const finalPassDone = buildMonitor.pipeline.value?.finalPassCompleted
+  if (drafted > 0 && finalPassDone) return `Review complete — ${drafted} seed${drafted !== 1 ? 's' : ''} ready to approve`
   if (drafted > 0) return `${drafted} seed${drafted !== 1 ? 's' : ''} ready for grammar review`
   return 'Review and approve all seeds'
 })
