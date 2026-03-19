@@ -508,7 +508,6 @@ module.exports = function seedCompleteRoutes(ctx) {
               connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, target),
               metadata: p.score ? { score: p.score } : {},
-              introduce: true,
               status: 'draft',
               version: 1,
             };
@@ -747,15 +746,6 @@ module.exports = function seedCompleteRoutes(ctx) {
   // ───────────────────────────────────────────────────────────────────
   router.post('/seed/complete', async (req, res) => {
     try {
-      // ── Role guard: only checker (or no role specified) can submit ──
-      const agentRole = req.headers['x-agent-role'] || req.query.agent_role;
-      if (agentRole === 'creator') {
-        return res.status(403).json({
-          error: 'Creator agents cannot submit directly',
-          hint: 'Send your decomposition to checker via SendMessage. Checker reviews and submits.',
-        });
-      }
-
       // ── Markdown detection & parsing ──
       let parsedData;
       const isMarkdown = isMarkdownSubmission(req);
@@ -1062,9 +1052,6 @@ module.exports = function seedCompleteRoutes(ctx) {
       } // end tiling check
 
       // 3. VOCAB VALIDATION
-      // Sort LEGOs by idx so vocab accumulates in correct order —
-      // prevents forward references (L2 phrase using L3's vocab)
-      legos.sort((a, b) => a.idx - b.idx);
       const vocabViolations = [];
       const chinese = isChinese(course_code);
       for (const lego of legos) {
@@ -1488,7 +1475,6 @@ module.exports = function seedCompleteRoutes(ctx) {
               connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, lego.target),
               metadata: { format: 'build_use' },
-              introduce: true,
               status: 'draft',
               version: 1,
             };
@@ -1515,7 +1501,6 @@ module.exports = function seedCompleteRoutes(ctx) {
                 score: p.score,
                 scored_at: new Date().toISOString(),
               },
-              introduce: true,
               status: 'draft',
               version: 1,
             };
@@ -1563,7 +1548,6 @@ module.exports = function seedCompleteRoutes(ctx) {
               connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, lego.target),
               metadata: p.score ? { score: p.score } : {},
-              introduce: true,
               status: 'draft',
               version: 1,
             };
@@ -1655,7 +1639,6 @@ module.exports = function seedCompleteRoutes(ctx) {
                 source_seed: seed_number,
                 score: 8,
               },
-              introduce: true,
               status: 'draft',
               version: 1,
             });
