@@ -627,6 +627,7 @@ const finalPassStarting = ref(false)
 // Activity tracking — detect when counts are changing (agent is working)
 const lastSeedChangeAt = ref(null)    // timestamp of last decomposed_at count change
 const lastTranslateChangeAt = ref(null) // timestamp of last seedsTranslated change
+let statsBaselineSet = false           // skip first update (initial load isn't "activity")
 const now = ref(Date.now())
 let tickInterval = null
 const massApproving = ref(false)
@@ -666,6 +667,11 @@ watch(buildMonitor.stats, (s) => {
     totalSeeds
   }
   // Track when counts change — this means an agent is actively working
+  // Skip the first update (initial load from DB isn't real activity)
+  if (!statsBaselineSet) {
+    statsBaselineSet = true
+    return
+  }
   if ((s.completeSeeds || 0) > prevSeeds) {
     lastSeedChangeAt.value = Date.now()
     buildTeamSpawned.value = false
