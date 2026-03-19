@@ -729,7 +729,7 @@ const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTarg
 
 // --- Activity detection — is an agent actively working? ---
 
-const ACTIVE_THRESHOLD_MS = 120000 // 2 minutes — if no change in 2 min, consider idle
+const ACTIVE_THRESHOLD_MS = 300000 // 5 minutes — if no change in 5 min, consider idle
 
 function secondsSince(timestamp) {
   if (!timestamp) return null
