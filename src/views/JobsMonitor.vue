@@ -43,28 +43,28 @@
         :to="`/production/${course.code}/text`"
         class="course-row"
       >
-        <div class="course-info">
-          <span class="course-name">{{ course.displayName }}</span>
-          <span class="course-code">{{ course.code }}</span>
-        </div>
+        <div class="course-row-inner">
+          <div class="course-info">
+            <span class="course-name">{{ course.displayName }}</span>
+            <span class="course-code">{{ course.code }}</span>
+          </div>
 
-        <div class="course-stats">
-          <span class="stat">Seeds: <span class="stat-num">{{ course.stats.completedSeeds }}/300</span> built</span>
-          <span class="stat-sep">&middot;</span>
-          <span class="stat"><span class="stat-num">{{ course.stats.seeds }}</span> translated</span>
-          <span class="stat-sep">&middot;</span>
-          <span class="stat">LEGOs: <span class="stat-num">{{ course.stats.legos }}</span></span>
-          <span class="stat-sep">&middot;</span>
-          <span class="stat">Phrases: <span class="stat-num">{{ course.stats.phrases }}</span></span>
-        </div>
+          <div class="course-stats">
+            <span class="stat"><span class="stat-num">{{ course.stats.completedSeeds }}/300</span> built</span>
+            <span class="stat-sep">&middot;</span>
+            <span class="stat"><span class="stat-num">{{ course.stats.legos }}</span> LEGOs</span>
+            <span class="stat-sep">&middot;</span>
+            <span class="stat"><span class="stat-num">{{ course.stats.phrases }}</span> phrases</span>
+          </div>
 
-        <div class="course-activity">
-          <span class="last-change" :class="ageClass(course.lastChanged)">
-            {{ timeAgo(course.lastChanged) }}
-          </span>
-          <span v-if="course.delta" class="delta">
-            {{ course.delta }}
-          </span>
+          <div class="course-activity">
+            <span class="last-change" :class="ageClass(course.lastChanged)">
+              {{ timeAgo(course.lastChanged) }}
+            </span>
+            <span v-if="course.delta" class="delta">
+              {{ course.delta }}
+            </span>
+          </div>
         </div>
       </router-link>
     </main>
@@ -405,73 +405,101 @@ onUnmounted(() => {
   font-size: 0.9rem;
 }
 
-/* Course rows */
+/* Course cards */
 .course-row {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.25rem;
-  border-radius: 0.5rem;
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(148, 163, 184, 0.08);
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 0.625rem;
+  border-radius: 10px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.1);
   text-decoration: none;
   color: inherit;
-  transition: background 0.15s, border-color 0.15s;
+  transition: all 0.2s;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .course-row:hover {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(148, 163, 184, 0.15);
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(255, 166, 48, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Left accent bar — green pulse when active */
+.course-row::before {
+  content: '';
+  width: 3px;
+  flex-shrink: 0;
+  background: #10b981;
+  border-radius: 10px 0 0 10px;
+  animation: accent-pulse 2s ease-in-out infinite;
+}
+
+@keyframes accent-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.course-row-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.875rem 1.25rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .course-info {
   flex: 0 0 auto;
-  min-width: 180px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.15rem;
 }
 
 .course-name {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #f1f5f9;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #ffa630;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .course-code {
-  font-size: 0.7rem;
+  font-size: 0.6875rem;
   color: #64748b;
-  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  opacity: 0.7;
 }
 
 .course-stats {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
   flex-wrap: wrap;
 }
 
 .stat {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: #94a3b8;
   white-space: nowrap;
 }
 
 .stat-num {
-  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
-  color: #cbd5e1;
-  font-weight: 500;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  color: #e2e8f0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-sep {
-  color: #475569;
-  font-size: 0.75rem;
+  color: #334155;
+  font-size: 0.5rem;
 }
 
 .course-activity {
@@ -479,14 +507,14 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.15rem;
-  min-width: 120px;
+  gap: 0.2rem;
+  min-width: 140px;
 }
 
 .last-change {
   font-size: 0.75rem;
-  font-weight: 500;
-  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  font-weight: 600;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
 }
 
 .last-change.green {
@@ -502,10 +530,10 @@ onUnmounted(() => {
 }
 
 .delta {
-  font-size: 0.7rem;
-  color: #10b981;
-  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
-  opacity: 0.8;
+  font-size: 0.6875rem;
+  color: #34d399;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-weight: 500;
 }
 
 /* Responsive */
