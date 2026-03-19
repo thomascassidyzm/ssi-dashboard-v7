@@ -65,7 +65,12 @@
             <span class="last-change" :class="ageClass(course.lastChanged)">
               {{ timeAgo(course.lastChanged) }}
             </span>
-            <span v-if="course.delta" class="delta">
+            <span v-if="course.audioGen" class="audio-progress">
+              Audio: {{ course.audioGen.current }}/{{ course.audioGen.total }}
+              ({{ Math.round((course.audioGen.current / course.audioGen.total) * 100) }}%)
+              <span v-if="course.audioGen.failed > 0" class="audio-failed">· {{ course.audioGen.failed }} failed</span>
+            </span>
+            <span v-else-if="course.delta" class="delta">
               {{ course.delta }}
             </span>
           </div>
@@ -79,6 +84,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { supabase, getCourseStats } from '@/services/supabase'
 import { useCourses } from '@/composables/useCourses'
+import { getApiUrl } from '@/services/api'
 
 const { getCourseName, loadCourses } = useCourses()
 
@@ -93,6 +99,7 @@ const TEN_MINUTES = 10 * 60 * 1000
 
 const activeCourses = computed(() => {
   const now = Date.now()
+  const as = audioStatus.value
   return Object.entries(snapshots.value)
     .filter(([, snap]) => snap.lastChanged && (now - snap.lastChanged) < TEN_MINUTES)
     .sort((a, b) => b[1].lastChanged - a[1].lastChanged)
@@ -101,7 +108,8 @@ const activeCourses = computed(() => {
       displayName: getCourseName(code),
       stats: snap.stats,
       lastChanged: snap.lastChanged,
-      delta: formatDelta(snap)
+      delta: formatDelta(snap),
+      audioGen: as?.courseCode === code ? as : null
     }))
 })
 
@@ -110,7 +118,8 @@ function formatDelta(snap) {
   const seedDiff = (snap.stats.completedSeeds || 0) - (snap.firstStats.completedSeeds || 0)
   const phraseDiff = (snap.stats.phrases || 0) - (snap.firstStats.phrases || 0)
   const legoDiff = (snap.stats.legos || 0) - (snap.firstStats.legos || 0)
-  if (seedDiff === 0 && phraseDiff === 0 && legoDiff === 0) return null
+  const audioDiff = (snap.stats.audio || 0) - (snap.firstStats.audio || 0)
+  if (seedDiff === 0 && phraseDiff === 0 && legoDiff === 0 && audioDiff === 0) return null
 
   const elapsed = Date.now() - snap.firstSeen
   const mins = Math.round(elapsed / 60000)
@@ -118,6 +127,7 @@ function formatDelta(snap) {
   if (seedDiff > 0) parts.push(`+${seedDiff} seed${seedDiff !== 1 ? 's' : ''}`)
   if (legoDiff > 0) parts.push(`+${legoDiff} LEGOs`)
   if (phraseDiff > 0) parts.push(`+${phraseDiff} phrases`)
+  if (audioDiff > 0) parts.push(`+${audioDiff} audio`)
   if (parts.length === 0) return null
   return `${parts.join(', ')} in ${mins < 1 ? '<1' : mins} min`
 }
@@ -244,6 +254,28 @@ async function fetchSingleCourseStats(courseCode) {
   }
 }
 
+// Audio generation status from Phase 8 API
+const audioStatus = ref(null) // { active, courseCode, current, total, success, failed }
+let audioStatusTimer = null
+
+async function pollAudioStatus() {
+  try {
+    const apiBase = getApiUrl()
+    const response = await fetch(`${apiBase}/api/audio/status`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' },
+      signal: AbortSignal.timeout(5000)
+    })
+    if (response.ok) {
+      const data = await response.json()
+      audioStatus.value = data?.active ? data : null
+    } else {
+      audioStatus.value = null
+    }
+  } catch {
+    audioStatus.value = null
+  }
+}
+
 function setupRealtime() {
   if (!supabase) return
 
@@ -283,7 +315,10 @@ onMounted(async () => {
   // Check DB for courses with recent activity (so page isn't empty after refresh)
   await detectRecentActivity()
   setupRealtime()
-  // Poll every 30s as fallback
+  // Poll audio status from Phase 8 API every 10s
+  pollAudioStatus()
+  audioStatusTimer = setInterval(pollAudioStatus, 10000)
+  // Poll DB stats every 30s as fallback
   pollTimer = setInterval(refreshKnownCourses, 30000)
   // Tick for timeAgo refresh
   tickTimer = setInterval(() => { tick.value++ }, 5000)
@@ -293,6 +328,7 @@ onUnmounted(() => {
   teardownRealtime()
   if (pollTimer) clearInterval(pollTimer)
   if (tickTimer) clearInterval(tickTimer)
+  if (audioStatusTimer) clearInterval(audioStatusTimer)
 })
 
 </script>
@@ -583,6 +619,17 @@ onUnmounted(() => {
   color: #34d399;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-weight: 500;
+}
+
+.audio-progress {
+  font-size: 0.6875rem;
+  color: #38bdf8;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-weight: 500;
+}
+
+.audio-failed {
+  color: #f87171;
 }
 
 /* Responsive */
