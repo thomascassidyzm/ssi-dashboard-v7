@@ -73,7 +73,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { supabase, getCourseStats, getAllCourseStats } from '@/services/supabase'
+import { supabase, getCourseStats } from '@/services/supabase'
 import { useCourses } from '@/composables/useCourses'
 
 const { getCourseName, loadCourses } = useCourses()
@@ -174,14 +174,11 @@ function updateSnapshot(courseCode, newStats) {
   // If not changed, leave lastChanged as-is (will age out after 10 min)
 }
 
-async function fetchAllStats() {
-  try {
-    const statsMap = await getAllCourseStats()
-    for (const [code, stats] of Object.entries(statsMap)) {
-      updateSnapshot(code, stats)
-    }
-  } catch (err) {
-    console.warn('[Activity] Failed to fetch stats:', err.message)
+async function refreshKnownCourses() {
+  // Only re-fetch stats for courses we've already seen via Realtime
+  const codes = Object.keys(snapshots.value)
+  for (const code of codes) {
+    await fetchSingleCourseStats(code)
   }
 }
 
@@ -236,10 +233,9 @@ let tickTimer = null
 
 onMounted(async () => {
   await loadCourses()
-  await fetchAllStats()
   setupRealtime()
-  // Poll every 30s as fallback
-  pollTimer = setInterval(fetchAllStats, 30000)
+  // Poll every 30s as fallback (only re-fetches courses we've already seen)
+  pollTimer = setInterval(refreshKnownCourses, 30000)
   // Tick for timeAgo refresh
   tickTimer = setInterval(() => { tick.value++ }, 5000)
 })
