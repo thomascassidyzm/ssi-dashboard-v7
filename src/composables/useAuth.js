@@ -4,6 +4,13 @@
  * Uses the same Supabase Auth as the learning app.
  * Dashboard access requires platform_role in ('ssi_admin', 'popty_user')
  * or educational_role = 'god'.
+ *
+ * PERSISTENCE STRATEGY (March 2026):
+ * We maintain our OWN localStorage cache for both session and learner data.
+ * On page load / new tab, we read from OUR cache first (instant, zero network).
+ * Supabase's getSession() is only used as a fallback, and onAuthStateChange
+ * is only allowed to UPGRADE auth state (sign-in, token refresh) — never to
+ * downgrade it due to transient refresh failures. Only explicit logout clears state.
  */
 
 import { ref, computed } from 'vue'
@@ -16,6 +23,9 @@ const learner = ref(null)    // learners table row
 const loading = ref(false)
 const error = ref(null)
 const initialized = ref(false)
+
+// Track whether the user explicitly logged out (vs transient refresh failure)
+let explicitLogout = false
 
 // Computed
 const isAuthenticated = computed(() => !!session.value && !!learner.value)
@@ -30,8 +40,9 @@ const hasDashboardAccess = computed(() => {
   return pr === 'ssi_admin' || pr === 'popty_user' || er === 'god'
 })
 
-// ─── Learner localStorage cache ──────────────────────────────────────
+// ─── localStorage cache ──────────────────────────────────────────────
 const LEARNER_CACHE_KEY = 'popty_learner'
+const SESSION_CACHE_KEY = 'popty_session'
 
 function cacheLearner(userId, data) {
   try { localStorage.setItem(LEARNER_CACHE_KEY, JSON.stringify({ userId, data })) } catch {}
@@ -42,8 +53,7 @@ function loadCachedLearner(userId) {
     const raw = localStorage.getItem(LEARNER_CACHE_KEY)
     if (!raw) return null
     const cached = JSON.parse(raw)
-    if (cached.userId !== userId) return null
-    // Verify cached learner has dashboard access
+    if (userId && cached.userId !== userId) return null
     const pr = cached.data?.platform_role
     const er = cached.data?.educational_role
     if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') return cached.data
@@ -53,6 +63,30 @@ function loadCachedLearner(userId) {
 
 function clearCachedLearner() {
   try { localStorage.removeItem(LEARNER_CACHE_KEY) } catch {}
+}
+
+function cacheSession(sessionData) {
+  try {
+    localStorage.setItem(SESSION_CACHE_KEY, JSON.stringify({
+      user: sessionData.user,
+      access_token: sessionData.access_token,
+      refresh_token: sessionData.refresh_token,
+      expires_at: sessionData.expires_at,
+      cached_at: Date.now()
+    }))
+  } catch {}
+}
+
+function loadCachedSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_CACHE_KEY)
+    if (!raw) return null
+    return JSON.parse(raw)
+  } catch { return null }
+}
+
+function clearCachedSession() {
+  try { localStorage.removeItem(SESSION_CACHE_KEY) } catch {}
 }
 
 /**
@@ -89,7 +123,6 @@ async function sendOTP(email) {
     })
 
     if (otpError) {
-      // "Signups not allowed" means user doesn't have a Supabase Auth account
       if (otpError.message?.includes('Signups not allowed') || otpError.message?.includes('not allowed')) {
         throw new Error('No account found for this email. Contact an SSi admin for access.')
       }
@@ -121,12 +154,9 @@ async function verifyOTP(email, token) {
 
     if (verifyError) throw verifyError
 
-    // Session is set automatically by Supabase, onAuthStateChange will fire
-    // But we also check dashboard access immediately
     if (data.user) {
       const lr = await fetchLearner(data.user.id)
       if (!lr) {
-        // User exists in Supabase Auth but has no learner record
         await supabase.auth.signOut()
         throw new Error('No dashboard access. Contact an SSi admin.')
       }
@@ -140,6 +170,7 @@ async function verifyOTP(email, token) {
 
       learner.value = lr
       cacheLearner(data.user.id, lr)
+      if (data.session) cacheSession(data.session)
     }
 
     return data
@@ -153,66 +184,90 @@ async function verifyOTP(email, token) {
 
 /**
  * Initialize auth — check for existing session, set up listener
+ *
+ * STRATEGY: Read our own localStorage cache first (instant, zero network).
+ * This means new tabs, refreshes, and post-deploy loads are instant.
+ * Supabase session refresh happens in the background.
  */
 async function initAuth() {
   if (!supabase || initialized.value) return
 
   initialized.value = true
   loading.value = true
+  explicitLogout = false
 
   try {
-    // Read session from localStorage (instant, no network call).
-    // This survives deploys, new tabs, and page refreshes without hitting Supabase.
-    // Token refresh happens in the background via onAuthStateChange.
-    const { data: { session: cachedSession } } = await supabase.auth.getSession()
+    // ── Step 1: Load from OUR cache (instant, no network) ──────────
+    const cachedSess = loadCachedSession()
+    const cachedLr = cachedSess?.user?.id ? loadCachedLearner(cachedSess.user.id) : loadCachedLearner()
 
-    if (cachedSession?.user) {
-      session.value = cachedSession
-      user.value = cachedSession.user
-
-      // Try loading learner from localStorage cache first (instant)
-      const cachedLearner = loadCachedLearner(cachedSession.user.id)
-      if (cachedLearner) {
-        learner.value = cachedLearner
-      }
-
-      // Refresh learner from DB in background (non-blocking)
-      fetchLearner(cachedSession.user.id).then(lr => {
-        if (lr) {
-          const pr = lr.platform_role
-          const er = lr.educational_role
-          if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') {
-            learner.value = lr
-            cacheLearner(cachedSession.user.id, lr)
-          } else if (!cachedLearner) {
-            // No cached learner AND no access — sign out
-            supabase.auth.signOut()
-            session.value = null
-            user.value = null
-          }
-        } else if (!cachedLearner) {
-          // No learner record at all and no cache — sign out
-          supabase.auth.signOut()
-          session.value = null
-          user.value = null
-        }
-      })
+    if (cachedSess?.user && cachedLr) {
+      // We have everything we need — auth is ready immediately
+      session.value = cachedSess
+      user.value = cachedSess.user
+      learner.value = cachedLr
+      console.log('[Auth] Restored from cache (instant)')
     }
 
-    // Listen for auth changes (sign in, sign out, token refresh)
-    supabase.auth.onAuthStateChange(async (event, newSession) => {
-      session.value = newSession
-      user.value = newSession?.user || null
+    // ── Step 2: Try Supabase getSession as upgrade/fallback ────────
+    // This may make a network call if token is expired. That's OK —
+    // if it succeeds, we upgrade. If it fails, we already have cache.
+    supabase.auth.getSession().then(({ data: { session: supaSession } }) => {
+      if (supaSession?.user) {
+        session.value = supaSession
+        user.value = supaSession.user
+        cacheSession(supaSession)
 
-      if (event === 'SIGNED_IN' && newSession?.user) {
-        const lr = await fetchLearner(newSession.user.id)
-        if (lr) {
-          learner.value = lr
-          cacheLearner(newSession.user.id, lr)
+        // Refresh learner from DB in background
+        fetchLearner(supaSession.user.id).then(lr => {
+          if (lr) {
+            const pr = lr.platform_role
+            const er = lr.educational_role
+            if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') {
+              learner.value = lr
+              cacheLearner(supaSession.user.id, lr)
+            }
+          }
+        })
+      } else if (!cachedSess?.user) {
+        // No Supabase session AND no cache — genuinely not logged in
+        console.log('[Auth] No session found (not logged in)')
+      }
+      // If getSession returns null but we have cache, do NOT clear —
+      // it's likely a transient refresh failure
+    }).catch(err => {
+      console.warn('[Auth] getSession failed (using cache):', err.message)
+    })
+
+    // ── Step 3: Listen for auth changes ────────────────────────────
+    supabase.auth.onAuthStateChange(async (event, newSession) => {
+      console.log('[Auth] Event:', event)
+
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        // Upgrade auth state
+        session.value = newSession
+        user.value = newSession?.user || null
+        if (newSession) cacheSession(newSession)
+
+        if (newSession?.user) {
+          const lr = await fetchLearner(newSession.user.id)
+          if (lr) {
+            learner.value = lr
+            cacheLearner(newSession.user.id, lr)
+          }
         }
       } else if (event === 'SIGNED_OUT') {
-        learner.value = null
-        clearCachedLearner()
+        // ONLY clear state if the user explicitly logged out.
+        // Transient refresh failures fire SIGNED_OUT — ignore those.
+        if (explicitLogout) {
+          session.value = null
+          user.value = null
+          learner.value = null
+          clearCachedLearner()
+          clearCachedSession()
+        } else {
+          console.warn('[Auth] Ignoring SIGNED_OUT (not explicit logout — likely token refresh failure)')
+        }
       }
     })
   } catch (err) {
@@ -223,9 +278,10 @@ async function initAuth() {
 }
 
 /**
- * Logout
+ * Logout — the ONLY way to clear auth state
  */
 async function logout() {
+  explicitLogout = true
   if (supabase) {
     await supabase.auth.signOut()
   }
@@ -233,6 +289,7 @@ async function logout() {
   user.value = null
   learner.value = null
   clearCachedLearner()
+  clearCachedSession()
 }
 
 /**
@@ -246,14 +303,10 @@ async function getAccessToken() {
 
 /**
  * Check if user can access a specific course in the dashboard.
- * - ssi_admin / god → all courses
- * - popty_user → only courses in dashboard_courses (or all if ['*'])
  */
 function canAccessCourse(courseCode) {
   if (!learner.value) return false
-  // Admins and god get everything
   if (isAdmin.value) return true
-  // popty_user: check dashboard_courses
   const dc = learner.value.dashboard_courses
   if (!dc || dc.length === 0) return false
   if (dc.includes('*')) return true
@@ -265,10 +318,10 @@ function canAccessCourse(courseCode) {
  */
 const accessibleCourses = computed(() => {
   if (!learner.value) return []
-  if (isAdmin.value) return null // null means all
+  if (isAdmin.value) return null
   const dc = learner.value.dashboard_courses
   if (!dc || dc.length === 0) return []
-  if (dc.includes('*')) return null // null means all
+  if (dc.includes('*')) return null
   return dc
 })
 
