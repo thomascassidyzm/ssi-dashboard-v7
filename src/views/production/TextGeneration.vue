@@ -1629,9 +1629,14 @@ async function loadLanguages() {
 }
 
 // Lifecycle
-onMounted(() => {
+onMounted(async () => {
   startPolling()
   if (!isCreateMode.value) {
+    // Fetch seed grid and progress immediately (buildMonitor watcher may miss initial load)
+    if (isSupabaseConfigured()) {
+      fetchProgress()
+      fetchSeedGrid()
+    }
     checkComponentGaps()
   }
   if (isCreateMode.value) {
