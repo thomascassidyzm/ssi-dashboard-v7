@@ -7,12 +7,12 @@
           ← Back to Dashboard
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">User Management</h1>
-        <p class="text-slate-400">Invite volunteers and manage course access</p>
+        <p class="text-slate-400">Add users and manage course access</p>
       </div>
 
       <!-- Invite New User -->
       <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
-        <h2 class="text-xl font-semibold text-emerald-400 mb-4">Invite New User</h2>
+        <h2 class="text-xl font-semibold text-emerald-400 mb-4">Add New User</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
@@ -84,7 +84,7 @@
             :disabled="!canInvite || inviting"
             class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
           >
-            {{ inviting ? 'Inviting...' : 'Send Invite' }}
+            {{ inviting ? 'Adding...' : 'Add User' }}
           </button>
 
           <p v-if="inviteError" class="text-red-400 text-sm">{{ inviteError }}</p>
@@ -345,7 +345,7 @@ async function inviteUser() {
       throw new Error(data.error || 'Failed to invite user')
     }
 
-    inviteSuccess.value = data.message || `Invited ${newUser.value.email}`
+    inviteSuccess.value = `Added ${newUser.value.email} — they can now log in`
 
     // Reset form
     newUser.value = {
