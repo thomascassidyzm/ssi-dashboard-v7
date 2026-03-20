@@ -406,15 +406,19 @@ async function handleInvite(req, res) {
 
       // Create Supabase Auth account so user can receive OTP
       try {
-        const { data: existingAuthUsers } = await db.auth.admin.listUsers()
-        const hasAuth = existingAuthUsers?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase())
-        if (!hasAuth) {
-          const { error: authErr } = await db.auth.admin.createUser({
-            email,
-            email_confirm: true,
-          })
-          if (authErr) logger.warn(`[Auth] Failed to create Supabase Auth account for ${email}: ${authErr.message}`)
-          else logger.info(`[Auth] Created Supabase Auth account for ${email}`)
+        const { data: authData, error: authErr } = await db.auth.admin.createUser({
+          email,
+          email_confirm: true,
+        })
+        if (authErr) {
+          // "already registered" is fine — just means they already have an auth account
+          if (authErr.message?.includes('already') || authErr.message?.includes('exists')) {
+            logger.info(`[Auth] Supabase Auth account already exists for ${email}`)
+          } else {
+            logger.warn(`[Auth] Failed to create Supabase Auth account for ${email}: ${authErr.message}`)
+          }
+        } else {
+          logger.info(`[Auth] Created Supabase Auth account for ${email}: ${authData?.user?.id}`)
         }
       } catch (authErr) {
         logger.warn(`[Auth] Supabase Auth account creation failed for ${email}: ${authErr.message}`)
