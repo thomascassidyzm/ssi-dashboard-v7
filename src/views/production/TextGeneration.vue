@@ -306,6 +306,15 @@
               <span v-else-if="stageComplete('final-pass')" class="stage-badge-complete">Done</span>
               <template v-else>
                 <button
+                  v-if="finalPassApproveAction"
+                  @click="finalPassApproveAction.handler"
+                  :disabled="finalPassApproveAction.disabled"
+                  class="px-4 py-1.5 text-xs font-medium rounded-lg transition-all disabled:opacity-50"
+                  :class="finalPassApproveAction.btnClass"
+                >
+                  {{ finalPassApproveAction.label }}
+                </button>
+                <button
                   @click="finalPassNextAction.handler"
                   :disabled="finalPassNextAction.disabled"
                   class="px-4 py-1.5 text-xs font-medium rounded-lg transition-all disabled:opacity-50"
@@ -811,17 +820,7 @@ const finalPassNextAction = computed(() => {
     btnClass: 'bg-rose-600/20 border border-rose-500/50 text-rose-400 hover:border-rose-400/70'
   }
 
-  // Priority 3: if final pass already ran and no issues remain, go straight to approve
-  // (backfilled phrases don't need another full review)
-  const finalPassDone = buildMonitor.pipeline.value?.finalPassCompleted
-  if (drafted > 0 && finalPassDone) return {
-    label: massApproving.value ? 'Approving...' : `Approve ${drafted} seed${drafted !== 1 ? 's' : ''}`,
-    handler: massApproveSeeds,
-    disabled: massApproving.value,
-    btnClass: 'bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70'
-  }
-
-  // Priority 4: run final pass on drafted seeds (first time)
+  // Priority 3: run final pass on drafted seeds
   if (drafted > 0) return {
     label: finalPassStarting.value ? 'Spawning...' : `Review ${drafted} seed${drafted !== 1 ? 's' : ''}`,
     handler: () => startFinalPass('drafted'),
@@ -838,6 +837,20 @@ const finalPassNextAction = computed(() => {
   }
 
   return { label: 'Done', handler: () => {}, disabled: true, btnClass: '' }
+})
+
+// Approve button — shown alongside Review when there are drafted seeds and no blockers
+const finalPassApproveAction = computed(() => {
+  const ut = seedGridUnderThreshold.value
+  const flagged = seedGridFlagged.value
+  const drafted = seedGridDrafted.value
+  if (ut > 0 || flagged > 0 || drafted === 0) return null
+  return {
+    label: massApproving.value ? 'Approving...' : `Approve ${drafted}`,
+    handler: massApproveSeeds,
+    disabled: massApproving.value,
+    btnClass: 'bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70'
+  }
 })
 
 const finalPassSubtitle = computed(() => {
