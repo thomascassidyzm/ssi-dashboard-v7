@@ -48,6 +48,10 @@
             </div>
 
             <div class="course-stats">
+              <template v-if="course.stats.seedsTranslated > 0 && course.stats.seedsTranslated < course.stats.seeds">
+                <span class="stat"><span class="stat-num">{{ course.stats.seedsTranslated }}/{{ course.stats.seeds }}</span> translated</span>
+                <span class="stat-sep">&middot;</span>
+              </template>
               <span class="stat"><span class="stat-num">{{ course.stats.completedSeeds }}/300</span> built</span>
               <span class="stat-sep">&middot;</span>
               <span class="stat"><span class="stat-num">{{ course.stats.legos }}</span> LEGOs</span>
@@ -94,6 +98,10 @@
             </div>
 
             <div class="course-stats">
+              <template v-if="course.stats.seedsTranslated > 0 && course.stats.seedsTranslated < course.stats.seeds">
+                <span class="stat"><span class="stat-num">{{ course.stats.seedsTranslated }}/{{ course.stats.seeds }}</span> translated</span>
+                <span class="stat-sep">&middot;</span>
+              </template>
               <span class="stat"><span class="stat-num">{{ course.stats.completedSeeds }}/300</span> built</span>
               <span class="stat-sep">&middot;</span>
               <span class="stat"><span class="stat-num">{{ course.stats.legos }}</span> LEGOs</span>
@@ -149,14 +157,16 @@ const activeCourses = computed(() => {
 function formatDelta(snap) {
   if (!snap.firstStats || !snap.firstSeen) return null
   const seedDiff = (snap.stats.completedSeeds || 0) - (snap.firstStats.completedSeeds || 0)
+  const translateDiff = (snap.stats.seedsTranslated || 0) - (snap.firstStats.seedsTranslated || 0)
   const phraseDiff = (snap.stats.phrases || 0) - (snap.firstStats.phrases || 0)
   const legoDiff = (snap.stats.legos || 0) - (snap.firstStats.legos || 0)
   const audioDiff = (snap.stats.audio || 0) - (snap.firstStats.audio || 0)
-  if (seedDiff === 0 && phraseDiff === 0 && legoDiff === 0 && audioDiff === 0) return null
+  if (seedDiff === 0 && translateDiff === 0 && phraseDiff === 0 && legoDiff === 0 && audioDiff === 0) return null
 
   const elapsed = Date.now() - snap.firstSeen
   const mins = Math.round(elapsed / 60000)
   const parts = []
+  if (translateDiff > 0) parts.push(`+${translateDiff} translated`)
   if (seedDiff > 0) parts.push(`+${seedDiff} seed${seedDiff !== 1 ? 's' : ''}`)
   if (legoDiff > 0) parts.push(`+${legoDiff} LEGOs`)
   if (phraseDiff > 0) parts.push(`+${phraseDiff} phrases`)
@@ -201,6 +211,7 @@ function updateSnapshot(courseCode, newStats, isAudio = false) {
 
   const changed =
     prev.stats.completedSeeds !== newStats.completedSeeds ||
+    prev.stats.seedsTranslated !== newStats.seedsTranslated ||
     prev.stats.legos !== newStats.legos ||
     prev.stats.phrases !== newStats.phrases ||
     prev.stats.seeds !== newStats.seeds ||
@@ -274,6 +285,7 @@ async function fetchSingleCourseStats(courseCode, audioActive = false) {
     updateSnapshot(courseCode, {
       seeds: stats.seeds || 0,
       completedSeeds: stats.completeSeeds || 0,
+      seedsTranslated: stats.seedsTranslated || 0,
       legos: stats.legos || 0,
       phrases: stats.practicePhrases || 0,
       audio: stats.audio || 0
@@ -329,6 +341,7 @@ async function loadRecentCourses() {
         stats: {
           seeds: stats.seeds || 0,
           completedSeeds: stats.completeSeeds || 0,
+          seedsTranslated: stats.seedsTranslated || 0,
           legos: stats.legos || 0,
           phrases: stats.practicePhrases || 0,
           audio: stats.audio || 0
