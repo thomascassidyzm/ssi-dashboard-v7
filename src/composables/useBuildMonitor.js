@@ -1,11 +1,11 @@
 /**
- * useBuildMonitor — Direct Supabase queries + Realtime subscriptions
+ * useBuildMonitor — Direct Supabase queries with polling
  *
  * Replaces 5 polling endpoints that previously routed through ngrok:
  *   /api/stats/:code, /api/build/status/:code, /api/build/seed-grid/:code,
  *   /api/build/pipeline/:code, /api/orchestrator/messages/:code
  *
- * Zero polling when Realtime is connected. Falls back to 30s polling on disconnect.
+ * Polls every 30s (5s when chat panel is open). No Realtime/WebSocket.
  */
 
 import { ref, watch, onUnmounted, toValue } from 'vue'
@@ -17,11 +17,10 @@ export function useBuildMonitor(courseCodeRef) {
   const seedGrid = ref([])
   const pipeline = ref({ stage: null, is_running: false })
   const messages = ref([])
-  const isConnected = ref(false)
+  const isConnected = ref(true) // always "connected" — we're polling
   const lastRefresh = ref(null)
 
-  let realtimeChannel = null
-  let fallbackInterval = null
+  let pollInterval = null
   let pollIntervalMs = 30000
 
   // ── Fetch functions (direct Supabase queries) ──
@@ -39,7 +38,6 @@ export function useBuildMonitor(courseCodeRef) {
   async function fetchSeedGrid(code) {
     if (!supabase || !code) return
     try {
-      // Fetch seeds, legos (with is_new + index), and phrases (with role + index) in parallel
       const [seedsRes, legosRes, phrasesRes] = await Promise.all([
         supabase
           .from('course_seeds')
@@ -58,13 +56,11 @@ export function useBuildMonitor(courseCodeRef) {
 
       if (seedsRes.error || !seedsRes.data) return
 
-      // Count legos and phrases per seed
       const legosBySeed = {}
       for (const l of legosRes.data || []) legosBySeed[l.seed_number] = (legosBySeed[l.seed_number] || 0) + 1
       const phrasesBySeed = {}
       for (const p of phrasesRes.data || []) phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1
 
-      // Build USE phrase counts per seed:lego for new LEGOs (data-driven threshold check)
       const newLegos = new Set()
       for (const l of legosRes.data || []) {
         if (l.is_new) newLegos.add(l.seed_number + ':' + l.lego_index)
@@ -76,20 +72,18 @@ export function useBuildMonitor(courseCodeRef) {
           if (newLegos.has(key)) useCounts[key] = (useCounts[key] || 0) + 1
         }
       }
-      // Seeds where any new LEGO has < 4 USE phrases (exclude golden seeds 1-3)
       const underThreshold = new Set()
       for (const key of newLegos) {
         const seedNum = parseInt(key.split(':')[0])
         if (seedNum > 3 && (useCounts[key] || 0) < 4) underThreshold.add(seedNum)
       }
 
-      // Format seed grid — data-driven status distinguishes flagged from under-threshold
       seedGrid.value = seedsRes.data.map(s => {
         const legos = legosBySeed[s.seed_number] || 0
         const phrases = phrasesBySeed[s.seed_number] || 0
         let status
-        if (s.flagged_at) status = 'flagged'                                        // explicitly flagged — needs redo
-        else if (s.decomposed_at && underThreshold.has(s.seed_number)) status = 'under-threshold' // needs phrase backfill
+        if (s.flagged_at) status = 'flagged'
+        else if (s.decomposed_at && underThreshold.has(s.seed_number)) status = 'under-threshold'
         else if (s.approved_at) status = 'complete'
         else if (s.decomposed_at) status = 'drafted'
         else if (legos > 0) status = 'building'
@@ -152,79 +146,11 @@ export function useBuildMonitor(courseCodeRef) {
     lastRefresh.value = new Date().toISOString()
   }
 
-  // ── Realtime subscriptions ──
+  // ── Polling ──
 
-  function subscribe(code) {
-    if (!supabase || !code) return
-    unsubscribe()
-
-    realtimeChannel = supabase
-      .channel(`build-monitor:${code}`)
-      // Seed changes → refresh grid + stats
-      .on('postgres_changes', {
-        event: '*',
-        schema: 'public',
-        table: 'course_seeds',
-        filter: `course_code=eq.${code}`
-      }, () => {
-        fetchSeedGrid(code)
-        fetchStats(code)
-      })
-      // New LEGOs → refresh stats
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'course_legos',
-        filter: `course_code=eq.${code}`
-      }, () => {
-        fetchStats(code)
-      })
-      // New messages → append
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'orchestrator_messages',
-        filter: `course_code=eq.${code}`
-      }, (payload) => {
-        if (payload.new) {
-          messages.value = [...messages.value, payload.new]
-        }
-      })
-      // Course updates → refresh pipeline
-      .on('postgres_changes', {
-        event: 'UPDATE',
-        schema: 'public',
-        table: 'courses',
-        filter: `course_code=eq.${code}`
-      }, () => {
-        fetchPipeline(code)
-      })
-      .subscribe((status) => {
-        if (status === 'SUBSCRIBED') {
-          isConnected.value = true
-          // Don't stop polling — keep it as a safety net alongside Realtime
-          console.log('[BuildMonitor] Realtime connected (polling continues as safety net)')
-        } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
-          isConnected.value = false
-          startFallbackPolling(code)
-          console.warn('[BuildMonitor] Realtime disconnected')
-        }
-      })
-  }
-
-  function unsubscribe() {
-    if (realtimeChannel) {
-      supabase.removeChannel(realtimeChannel)
-      realtimeChannel = null
-      isConnected.value = false
-    }
-  }
-
-  // ── Fallback polling (30s) ──
-
-  function startFallbackPolling(code) {
-    if (fallbackInterval) return
-    fallbackInterval = setInterval(() => {
+  function startPolling(code) {
+    if (pollInterval) return
+    pollInterval = setInterval(() => {
       const c = code || toValue(courseCodeRef)
       if (c) {
         fetchStats(c)
@@ -235,23 +161,21 @@ export function useBuildMonitor(courseCodeRef) {
     }, pollIntervalMs)
   }
 
-  function stopFallbackPolling() {
-    if (fallbackInterval) {
-      clearInterval(fallbackInterval)
-      fallbackInterval = null
+  function stopPolling() {
+    if (pollInterval) {
+      clearInterval(pollInterval)
+      pollInterval = null
     }
   }
 
-  // Switch between fast (5s) and normal (30s) polling — e.g. when chat panel is open
   function setFastPolling(fast) {
     const newInterval = fast ? 5000 : 30000
     if (newInterval === pollIntervalMs) return
     pollIntervalMs = newInterval
-    // Restart polling with new interval
-    if (fallbackInterval) {
-      stopFallbackPolling()
+    if (pollInterval) {
+      stopPolling()
       const code = toValue(courseCodeRef)
-      if (code) startFallbackPolling(code)
+      if (code) startPolling(code)
     }
   }
 
@@ -261,15 +185,11 @@ export function useBuildMonitor(courseCodeRef) {
     const code = toValue(courseCodeRef)
     if (!code || !isConfigured()) return
     refresh()
-    // Try Realtime first — falls back to 30s polling if subscription fails
-    subscribe(code)
-    // Also start polling as safety net (stopped automatically when Realtime connects)
-    startFallbackPolling(code)
+    startPolling(code)
   }
 
   function stop() {
-    unsubscribe()
-    stopFallbackPolling()
+    stopPolling()
   }
 
   // Watch for courseCode changes
@@ -285,7 +205,6 @@ export function useBuildMonitor(courseCodeRef) {
   })
 
   return {
-    // Reactive state
     stats,
     seedGrid,
     pipeline,
@@ -293,7 +212,6 @@ export function useBuildMonitor(courseCodeRef) {
     isConnected,
     lastRefresh,
 
-    // Actions
     refresh,
     start,
     stop,
