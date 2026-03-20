@@ -403,6 +403,23 @@ async function handleInvite(req, res) {
     if (req.method === 'POST') {
       const existing = await authGetUser(email)
       if (existing) return res.status(409).json({ error: 'User already exists', existing })
+
+      // Create Supabase Auth account so user can receive OTP
+      try {
+        const { data: existingAuthUsers } = await db.auth.admin.listUsers()
+        const hasAuth = existingAuthUsers?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase())
+        if (!hasAuth) {
+          const { error: authErr } = await db.auth.admin.createUser({
+            email,
+            email_confirm: true,
+          })
+          if (authErr) logger.warn(`[Auth] Failed to create Supabase Auth account for ${email}: ${authErr.message}`)
+          else logger.info(`[Auth] Created Supabase Auth account for ${email}`)
+        }
+      } catch (authErr) {
+        logger.warn(`[Auth] Supabase Auth account creation failed for ${email}: ${authErr.message}`)
+      }
+
       const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
       const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
       const voiceId = role === 'recorder' ? `human_${sanitizedEmail}_${primaryLanguage}` : null

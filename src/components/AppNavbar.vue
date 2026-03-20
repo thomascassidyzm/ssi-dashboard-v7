@@ -40,6 +40,9 @@
           </button>
           <div v-if="showUserMenu" class="user-dropdown">
             <div class="user-dropdown-name">{{ learner?.name || user?.email }}</div>
+            <router-link v-if="isAdmin" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
+              Users
+            </router-link>
             <button @click="showPasswordModal = true; showUserMenu = false" class="user-dropdown-item">
               {{ hasPassword ? 'Change password' : 'Set password' }}
             </button>
@@ -103,7 +106,7 @@ import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
-const { isAuthenticated, user, learner, hasPassword, updatePassword, logout } = useAuth()
+const { isAuthenticated, isAdmin, user, learner, hasPassword, updatePassword, logout } = useAuth()
 
 const showUserMenu = ref(false)
 const userMenuRef = ref(null)
@@ -454,6 +457,8 @@ onMounted(() => {
   text-align: left;
   cursor: pointer;
   transition: background 0.15s;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .user-dropdown-item:hover {
