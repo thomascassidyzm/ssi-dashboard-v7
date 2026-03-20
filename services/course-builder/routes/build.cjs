@@ -366,6 +366,11 @@ module.exports = function (ctx) {
         .eq('course_code', courseCode).eq('pass', 'translate').in('status', ['running']).maybeSingle();
       if (activeJob) return res.status(409).json({ error: 'Translation already running' });
 
+      // Initialize course seeds from canonical before spawning agent
+      // (GET translate endpoint calls initializeCourseSeeds as side effect)
+      const initResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/course/${courseCode}/translate?limit=1`);
+      if (!initResp.ok) console.warn(`[Translate] Seed init returned ${initResp.status} — agent will retry`);
+
       const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/translate`);
       if (!briefResp.ok) throw new Error(`Failed to fetch translate brief: ${briefResp.status}`);
       const brief = await briefResp.text();
