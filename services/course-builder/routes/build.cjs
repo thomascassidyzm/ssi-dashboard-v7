@@ -834,17 +834,18 @@ module.exports = function (ctx) {
 
       console.log(`[BACKFILL] ${courseCode}: ${totalInserted} phrases inserted, ${errors.length} errors`);
 
-      // Clear final_pass_completed — backfilled phrases need re-review
+      // Clear flagged_at on backfilled seeds — the reason for flagging (under-threshold) is resolved
       if (totalInserted > 0) {
-        ctx.supabase.from('courses').select('quality_rules').eq('course_code', courseCode).single()
-          .then(({ data: bfCourse }) => {
-            if (bfCourse?.quality_rules?.final_pass_completed) {
-              return ctx.supabase.from('courses').update({
-                quality_rules: { ...(bfCourse.quality_rules), final_pass_completed: false }
-              }).eq('course_code', courseCode);
-            }
-          })
-          .catch(err => console.error('[BACKFILL] Failed to clear final_pass_completed:', err.message));
+        const backfilledSeeds = [...new Set(phrases.map(p => p.seed_number))];
+        ctx.supabase.from('course_seeds')
+          .update({ flagged_at: null })
+          .eq('course_code', courseCode)
+          .in('seed_number', backfilledSeeds)
+          .not('flagged_at', 'is', null)
+          .then(({ error: flagErr }) => {
+            if (flagErr) console.error('[BACKFILL] Failed to clear flags:', flagErr.message);
+            else console.log(`[BACKFILL] Cleared flags on seeds: ${backfilledSeeds.join(', ')}`);
+          });
       }
 
       // Update build_jobs with progress + activity log (fire-and-forget)
