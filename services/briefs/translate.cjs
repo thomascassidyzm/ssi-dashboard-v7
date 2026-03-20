@@ -10,6 +10,17 @@ async function generateTranslateBrief(courseCode) {
   const targetLanguageName = getLanguageName(courseCode);
   const knownName = getKnownLanguageName(courseCode);
 
+  const parts = courseCode.split('_for_');
+  const targetLang = parts[0] || '';
+  const knownLang = parts[1] || '';
+  const knownIsEng = knownLang === 'eng';
+  const targetIsEng = targetLang === 'eng';
+
+  // Determine which field the agent needs to provide
+  const translateField = targetIsEng ? 'known_text' : 'target_text';
+  const translateLangName = targetIsEng ? knownName : targetLanguageName;
+  const alreadyPopulated = targetIsEng ? 'target_text (English)' : 'known_text (English)';
+
   const { data: courseInfo } = await supabase
     .from('courses')
     .select('display_name, seed_count, quality_rules')
@@ -160,36 +171,54 @@ GLOBAL RULES
 SUCCESS TEST
 A translation is correct if it reduces hesitation and enables reuse.
 
-## API Workflow
+## CRITICAL: Which field to translate
 
-1. Fetch seeds needing translation in batches of 50 (NOT all at once):
-   curl -s "http://localhost:3471/api/course/${courseCode}/translate?limit=50&offset=0"
-   Increment offset by 50 each time: offset=0, offset=50, offset=100, etc.
+The \`${alreadyPopulated}\` is ALREADY populated in the database.
+You are providing the \`${translateField}\` field — translations into **${translateLangName}**.
 
-2. Translate each batch of 50 and submit:
-   curl -X POST "http://localhost:3471/api/course/${courseCode}/translate" \\
-     -H "Content-Type: application/json" \\
-     -d '{ "translations": [{ "seed_number": 1, "target_text": "..." }, ...] }'
+## API Workflow — STRICT SEQUENTIAL BATCHING
 
-3. Fetch the next batch (offset += 50) and repeat until all ${translateCount} seeds are translated.
-   Keep your output concise — do NOT print every seed back. Just translate, submit, move on.
+You MUST follow this loop exactly. ONE batch at a time. Never fetch the next batch until the current one is submitted.
 
-4. Write a translation analysis and submit:
-   curl -X POST "http://localhost:3471/api/course/${courseCode}/analysis" \\
-     -H "Content-Type: application/json" \\
-     -d '{ "analysis": {
-       "generated_at": "<ISO timestamp>",
-       "seeds_analyzed": ${translateCount},
-       "register": { "choice": "...", "markers": ["..."] },
-       "problem_verbs": ["..."],
-       "golden_keys": ["..."],
-       "zut_concerns": ["..."]
-     }}'
+\`\`\`
+FOR offset = 0, 50, 100, ... until no seeds returned:
+  1. FETCH one batch:
+     curl -s "http://localhost:3471/api/course/${courseCode}/translate?limit=50&offset=$offset"
+
+  2. TRANSLATE the batch into ${translateLangName}
+
+  3. SUBMIT the batch immediately:
+     curl -X POST "http://localhost:3471/api/course/${courseCode}/translate" \\
+       -H "Content-Type: application/json" \\
+       -d '{ "translations": [{ "seed_number": N, "${translateField}": "..." }, ...] }'
+
+  4. ONLY THEN fetch the next batch (offset += 50)
+\`\`\`
+
+**RULES:**
+- NEVER fetch more than one batch before submitting
+- NEVER loop through all offsets in a single bash command
+- Each fetch→translate→submit is ONE iteration. Do not combine iterations.
+- Keep output concise — do NOT echo every seed. Just translate, submit, report count, move on.
+
+After all ${translateCount} seeds are translated, submit an analysis:
+\`\`\`
+curl -X POST "http://localhost:3471/api/course/${courseCode}/analysis" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "analysis": {
+    "generated_at": "<ISO timestamp>",
+    "seeds_analyzed": ${translateCount},
+    "register": { "choice": "...", "markers": ["..."] },
+    "problem_verbs": ["..."],
+    "golden_keys": ["..."],
+    "zut_concerns": ["..."]
+  }}'
+\`\`\`
 
 ## Key Context
 - Course: ${courseCode} (${displayName})
-- Known language: ${knownName} (already populated in course_seeds)
-- Target language: ${targetLanguageName} (you provide these translations)
+- You are translating into: **${translateLangName}** (the \`${translateField}\` field)
+- Already populated: ${alreadyPopulated} — do NOT overwrite this
 - Work through ALL phases: 1-150 (Stabilisation), 151-300 (Controlled Flexibility), 301-${translateCount} (Natural Range)
 - Same concept = same word throughout. Build a glossary as you go.
 - The analysis at the end captures register decisions, tricky verbs, and ZUT concerns for course-building agents.
@@ -198,6 +227,7 @@ A translation is correct if it reduces hesitation and enables reuse.
 You are running unattended. NEVER ask questions. Process everything and submit results.
 Do NOT spawn sub-agents — translate all seeds yourself sequentially.
 Work SLOWLY AND STEADILY — quality over speed.
+ONE BATCH AT A TIME. Fetch, translate, submit, next.
 `;
 }
 
