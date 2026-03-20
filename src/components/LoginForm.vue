@@ -22,7 +22,8 @@
         :disabled="loading || !email"
         class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
       >
-        Continue
+        <span v-if="loading">Sending code...</span>
+        <span v-else>Send Login Code</span>
       </button>
 
       <p v-if="error" class="text-red-400 text-sm text-center">
@@ -120,6 +121,12 @@
           Resend code
         </button>
         <button
+          @click="switchToPassword"
+          class="text-slate-400 hover:text-slate-300 transition-colors"
+        >
+          Use password
+        </button>
+        <button
           @click="reset"
           class="text-slate-400 hover:text-slate-300 transition-colors"
         >
@@ -145,13 +152,19 @@ const code = ref('')
 const codeInput = ref(null)
 const passwordInput = ref(null)
 
-function goToAuth() {
+async function goToAuth() {
   if (!email.value) return
   error.value = null
-  // Always show password step first — user can switch to OTP
-  step.value = 'password'
-  password.value = ''
-  nextTick(() => passwordInput.value?.focus())
+  // OTP is the default — send code immediately
+  try {
+    await sendOTP(email.value)
+    step.value = 'code'
+    code.value = ''
+    await nextTick()
+    codeInput.value?.focus()
+  } catch (err) {
+    // Error handled in composable
+  }
 }
 
 async function handlePasswordLogin() {
@@ -164,6 +177,13 @@ async function handlePasswordLogin() {
   } catch (err) {
     // If "Invalid login credentials", stay on password step — user can retry or switch to OTP
   }
+}
+
+function switchToPassword() {
+  error.value = null
+  step.value = 'password'
+  password.value = ''
+  nextTick(() => passwordInput.value?.focus())
 }
 
 async function switchToOTP() {
