@@ -40,7 +40,7 @@
       <router-link
         v-for="course in activeCourses"
         :key="course.code"
-        :to="`/production/${course.code}/text`"
+        :to="course.audioActive ? `/production/${course.code}/audio` : `/production/${course.code}/text`"
         class="course-row"
       >
         <div class="course-row-inner">
@@ -65,11 +65,7 @@
             <span class="last-change" :class="ageClass(course.lastChanged)">
               {{ timeAgo(course.lastChanged) }}
             </span>
-            <span v-if="course.audioGen" class="audio-progress">
-              Audio: {{ course.audioGen.current }}/{{ course.audioGen.total }}
-              ({{ Math.round((course.audioGen.current / course.audioGen.total) * 100) }}%)
-              <span v-if="course.audioGen.failed > 0" class="audio-failed">· {{ course.audioGen.failed }} failed</span>
-            </span>
+            <span v-if="course.audioActive" class="audio-badge">Audio generating</span>
             <span v-else-if="course.delta" class="delta">
               {{ course.delta }}
             </span>
@@ -84,11 +80,10 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { supabase, getCourseStats } from '@/services/supabase'
 import { useCourses } from '@/composables/useCourses'
-import { getApiUrl } from '@/services/api'
 
 const { getCourseName, loadCourses } = useCourses()
 
-// Snapshots: { [courseCode]: { stats, lastChanged, firstStats, firstSeen } }
+// Snapshots: { [courseCode]: { stats, lastChanged, firstStats, firstSeen, audioActive } }
 const snapshots = ref({})
 const realtimeConnected = ref(false)
 let pollTimer = null
@@ -99,7 +94,6 @@ const TEN_MINUTES = 10 * 60 * 1000
 
 const activeCourses = computed(() => {
   const now = Date.now()
-  const as = audioStatus.value
   return Object.entries(snapshots.value)
     .filter(([, snap]) => snap.lastChanged && (now - snap.lastChanged) < TEN_MINUTES)
     .sort((a, b) => b[1].lastChanged - a[1].lastChanged)
@@ -109,7 +103,7 @@ const activeCourses = computed(() => {
       stats: snap.stats,
       lastChanged: snap.lastChanged,
       delta: formatDelta(snap),
-      audioGen: as?.courseCode === code ? as : null
+      audioActive: snap.audioActive || false
     }))
 })
 
@@ -134,7 +128,7 @@ function formatDelta(snap) {
 
 function timeAgo(ts) {
   if (!ts) return ''
-  void tick.value // reactive dependency for re-render
+  void tick.value
   const seconds = Math.floor((Date.now() - ts) / 1000)
   if (seconds < 5) return 'just now'
   if (seconds < 60) return `${seconds}s ago`
@@ -144,29 +138,28 @@ function timeAgo(ts) {
 
 function ageClass(ts) {
   if (!ts) return 'dim'
-  void tick.value // reactive dependency for re-render
+  void tick.value
   const seconds = (Date.now() - ts) / 1000
   if (seconds < 60) return 'green'
   if (seconds < 300) return 'amber'
   return 'dim'
 }
 
-function updateSnapshot(courseCode, newStats) {
+function updateSnapshot(courseCode, newStats, isAudio = false) {
   const prev = snapshots.value[courseCode]
   const now = Date.now()
 
   if (!prev) {
-    // First time seeing this course — record baseline, no lastChanged yet
     snapshots.value[courseCode] = {
       stats: newStats,
       lastChanged: null,
       firstStats: { ...newStats },
-      firstSeen: now
+      firstSeen: now,
+      audioActive: isAudio
     }
     return
   }
 
-  // Check if counts differ from previous snapshot
   const changed =
     prev.stats.completedSeeds !== newStats.completedSeeds ||
     prev.stats.legos !== newStats.legos ||
@@ -175,21 +168,19 @@ function updateSnapshot(courseCode, newStats) {
     prev.stats.audio !== newStats.audio
 
   if (changed) {
-    // Set firstStats/firstSeen on the first real change (not baseline)
     const firstStats = prev.lastChanged ? prev.firstStats : { ...prev.stats }
     const firstSeen = prev.lastChanged ? prev.firstSeen : now
     snapshots.value[courseCode] = {
       stats: newStats,
       lastChanged: now,
       firstStats,
-      firstSeen
+      firstSeen,
+      audioActive: isAudio || prev.audioActive
     }
   }
-  // If not changed, leave lastChanged as-is (will age out after 10 min)
 }
 
 async function refreshKnownCourses() {
-  // Re-fetch stats for courses we've already seen
   const codes = Object.keys(snapshots.value)
   for (const code of codes) {
     await fetchSingleCourseStats(code)
@@ -197,41 +188,40 @@ async function refreshKnownCourses() {
 }
 
 async function detectRecentActivity() {
-  // Ask the DB: which courses had any seed activity in the last 10 minutes?
-  // Covers building (decomposed_at), final pass (approved_at, flagged_at)
   if (!supabase) return
   try {
     const tenMinAgo = new Date(Date.now() - TEN_MINUTES).toISOString()
 
-    // Check seed activity types in parallel (audio detected via Realtime — table too large to query on load)
-    const [built, approved, flagged] = await Promise.all([
+    // Check seed + audio activity in parallel
+    const [built, approved, flagged, audioRecent] = await Promise.all([
       supabase.from('course_seeds').select('course_code, decomposed_at')
         .gte('decomposed_at', tenMinAgo).order('decomposed_at', { ascending: false }),
       supabase.from('course_seeds').select('course_code, approved_at')
         .gte('approved_at', tenMinAgo).order('approved_at', { ascending: false }),
       supabase.from('course_seeds').select('course_code, flagged_at')
-        .gte('flagged_at', tenMinAgo).order('flagged_at', { ascending: false })
+        .gte('flagged_at', tenMinAgo).order('flagged_at', { ascending: false }),
+      supabase.from('course_audio').select('course_code, created_at')
+        .gte('created_at', tenMinAgo).order('created_at', { ascending: false }).limit(100)
     ])
 
-    // Merge into a map of course_code → most recent timestamp
+    // Merge into a map of course_code → { latestTs, audioActive }
     const recentMap = {}
-    for (const row of (built.data || [])) {
-      const ts = new Date(row.decomposed_at).getTime()
-      if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
-    }
-    for (const row of (approved.data || [])) {
-      const ts = new Date(row.approved_at).getTime()
-      if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
-    }
-    for (const row of (flagged.data || [])) {
-      const ts = new Date(row.flagged_at).getTime()
-      if (!recentMap[row.course_code] || ts > recentMap[row.course_code]) recentMap[row.course_code] = ts
+    function track(code, ts, audio = false) {
+      if (!recentMap[code]) recentMap[code] = { ts: 0, audioActive: false }
+      if (ts > recentMap[code].ts) recentMap[code].ts = ts
+      if (audio) recentMap[code].audioActive = true
     }
 
-    for (const [code, latestTs] of Object.entries(recentMap)) {
-      await fetchSingleCourseStats(code)
+    for (const row of (built.data || [])) track(row.course_code, new Date(row.decomposed_at).getTime())
+    for (const row of (approved.data || [])) track(row.course_code, new Date(row.approved_at).getTime())
+    for (const row of (flagged.data || [])) track(row.course_code, new Date(row.flagged_at).getTime())
+    for (const row of (audioRecent.data || [])) track(row.course_code, new Date(row.created_at).getTime(), true)
+
+    for (const [code, info] of Object.entries(recentMap)) {
+      await fetchSingleCourseStats(code, info.audioActive)
       if (snapshots.value[code]) {
-        snapshots.value[code].lastChanged = latestTs
+        snapshots.value[code].lastChanged = info.ts
+        if (info.audioActive) snapshots.value[code].audioActive = true
       }
     }
   } catch (err) {
@@ -239,7 +229,7 @@ async function detectRecentActivity() {
   }
 }
 
-async function fetchSingleCourseStats(courseCode) {
+async function fetchSingleCourseStats(courseCode, audioActive = false) {
   try {
     const stats = await getCourseStats(courseCode)
     updateSnapshot(courseCode, {
@@ -248,31 +238,9 @@ async function fetchSingleCourseStats(courseCode) {
       legos: stats.legos || 0,
       phrases: stats.practicePhrases || 0,
       audio: stats.audio || 0
-    })
+    }, audioActive)
   } catch (err) {
     console.warn(`[Activity] Failed to fetch stats for ${courseCode}:`, err.message)
-  }
-}
-
-// Audio generation status from Phase 8 API
-const audioStatus = ref(null) // { active, courseCode, current, total, success, failed }
-let audioStatusTimer = null
-
-async function pollAudioStatus() {
-  try {
-    const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/audio/status`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' },
-      signal: AbortSignal.timeout(5000)
-    })
-    if (response.ok) {
-      const data = await response.json()
-      audioStatus.value = data?.active ? data : null
-    } else {
-      audioStatus.value = null
-    }
-  } catch {
-    audioStatus.value = null
   }
 }
 
@@ -286,12 +254,16 @@ function setupRealtime() {
       .on('postgres_changes', { event: '*', schema: 'public', table }, (payload) => {
         const courseCode = payload.new?.course_code || payload.old?.course_code
         if (courseCode) {
-          fetchSingleCourseStats(courseCode)
+          const isAudio = table === 'course_audio'
+          fetchSingleCourseStats(courseCode, isAudio)
         }
       })
       .subscribe((status) => {
         if (status === 'SUBSCRIBED') {
           realtimeConnected.value = true
+        } else if (status === 'CHANNEL_ERROR') {
+          // Silently fall back to polling — don't spam console
+          realtimeConnected.value = false
         }
       })
     subscriptions.push(channel)
@@ -312,12 +284,8 @@ let tickTimer = null
 
 onMounted(async () => {
   await loadCourses()
-  // Check DB for courses with recent activity (so page isn't empty after refresh)
   await detectRecentActivity()
   setupRealtime()
-  // Poll audio status from Phase 8 API every 10s
-  pollAudioStatus()
-  audioStatusTimer = setInterval(pollAudioStatus, 10000)
   // Poll DB stats every 30s as fallback
   pollTimer = setInterval(refreshKnownCourses, 30000)
   // Tick for timeAgo refresh
@@ -328,7 +296,6 @@ onUnmounted(() => {
   teardownRealtime()
   if (pollTimer) clearInterval(pollTimer)
   if (tickTimer) clearInterval(tickTimer)
-  if (audioStatusTimer) clearInterval(audioStatusTimer)
 })
 
 </script>
@@ -513,7 +480,7 @@ onUnmounted(() => {
   transform: translateY(-1px);
 }
 
-/* Left accent bar — green pulse when active */
+/* Left accent bar */
 .course-row::before {
   content: '';
   width: 3px;
@@ -621,15 +588,11 @@ onUnmounted(() => {
   font-weight: 500;
 }
 
-.audio-progress {
+.audio-badge {
   font-size: 0.6875rem;
   color: #38bdf8;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-weight: 500;
-}
-
-.audio-failed {
-  color: #f87171;
 }
 
 /* Responsive */
