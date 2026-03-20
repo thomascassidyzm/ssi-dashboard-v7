@@ -522,16 +522,6 @@
         </div>
       </section>
 
-      <!-- Controls -->
-      <section v-if="progress.status === 'running' && agents.running_count === 0" class="flex justify-end gap-3">
-        <button
-          @click="forceResetBuilder"
-          class="px-4 py-2 bg-orange-600/80 hover:bg-orange-500 text-white text-sm font-medium rounded-lg transition-colors"
-          title="Stops the current job. Your seeds are safe."
-        >
-          Stop Job
-        </button>
-      </section>
 
     </div>
   </div>
@@ -542,7 +532,7 @@ import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
-import { isConfigured as isSupabaseConfigured, getCourseProgress, getBuildStatus, getSeedGrid as sbGetSeedGrid, getSeedDetail } from '@/services/supabase'
+import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail } from '@/services/supabase'
 
 const router = useRouter()
 
@@ -582,14 +572,14 @@ const courseSizes = [
   { seeds: 668, label: 'Full' }
 ]
 
-// Progress state
+// Progress state — derived from DB counts, no build_jobs
 const progress = ref({
-  status: 'idle',
   currentSeed: 0,
   seedsTranslated: 0,
   totalSeeds: 0,
   legosInserted: 0,
-  phrasesInserted: 0
+  phrasesInserted: 0,
+  genderExpansions: 0
 })
 
 // Agent tracking state
@@ -681,26 +671,6 @@ watch(buildMonitor.stats, (s) => {
 watch(buildMonitor.seedGrid, (grid) => {
   if (grid && grid.length > 0) seedGrid.value = grid
 }, { deep: true })
-
-watch(buildMonitor.buildStatus, (bs) => {
-  if (!bs) return
-  const pass = bs.build?.pass
-  if (bs.active) {
-    progress.value.status = 'running'
-    progress.value.buildPass = pass || null
-    if (bs.build?.total_seeds && (pass === 'build-team' || pass === 'decompose')) {
-      seedCount.value = bs.build.total_seeds
-    }
-  } else {
-    progress.value.buildPass = null
-    if (bs.progress?.isComplete) {
-      progress.value.status = 'complete'
-    } else if (progress.value.status === 'running') {
-      progress.value.status = 'idle'
-    }
-  }
-}, { deep: true })
-
 
 watch(buildMonitor.messages, (msgs) => {
   if (msgs && msgs.length > 0) orchestratorMessages.value = msgs
@@ -997,11 +967,7 @@ async function fetchProgress() {
 
   try {
     if (isSupabaseConfigured()) {
-      const [statsData, buildData] = await Promise.all([
-        getCourseProgress(courseCode),
-        getBuildStatus(courseCode)
-      ])
-
+      const statsData = await getCourseProgress(courseCode)
       const totalSeeds = statsData.seeds || seedCount.value
       progress.value = {
         ...progress.value,
@@ -1010,39 +976,11 @@ async function fetchProgress() {
         genderExpansions: 0,
         totalSeeds: totalSeeds,
         legosInserted: statsData.legos || 0,
-        phrasesInserted: statsData.phrases || 0,
-        avgPhraseScore: null,
-        scoredPhrases: 0
-      }
-
-      if (buildData) {
-        const pass = buildData.pass
-        if (buildData.status === 'running') {
-          progress.value.status = 'running'
-          progress.value.buildPass = pass || null
-          if (buildData.total_seeds && (pass === 'build-team' || pass === 'decompose')) {
-            seedCount.value = buildData.total_seeds
-          }
-        } else {
-          progress.value.buildPass = null
-          if (statsData.completedSeeds >= totalSeeds && statsData.completedSeeds > 0) {
-            progress.value.status = 'complete'
-          } else if (progress.value.status === 'running') {
-            progress.value.status = 'idle'
-          }
-        }
-      }
-
-      if (statsData.seeds === 0 && progress.value.status === 'complete') {
-        progress.value.status = 'idle'
+        phrasesInserted: statsData.phrases || 0
       }
     } else {
       const apiBase = getApiUrl()
-      const [statsResponse, buildResponse] = await Promise.all([
-        fetch(`${apiBase}/api/stats/${courseCode}`, { headers: { 'ngrok-skip-browser-warning': 'true' } }),
-        fetch(`${apiBase}/api/build/status/${courseCode}`, { headers: { 'ngrok-skip-browser-warning': 'true' } })
-      ])
-
+      const statsResponse = await fetch(`${apiBase}/api/stats/${courseCode}`, { headers: { 'ngrok-skip-browser-warning': 'true' } })
       if (statsResponse.ok) {
         const data = await statsResponse.json()
         const totalSeeds = data.total_seeds || seedCount.value
@@ -1053,32 +991,7 @@ async function fetchProgress() {
           genderExpansions: data.gender_expansions || 0,
           totalSeeds: totalSeeds,
           legosInserted: data.legos || 0,
-          phrasesInserted: data.phrases || 0,
-          avgPhraseScore: data.avg_phrase_score || null,
-          scoredPhrases: data.scored_phrases || 0
-        }
-
-        if (buildResponse.ok) {
-          const buildData = await buildResponse.json()
-          const pass = buildData.build?.pass
-          if (buildData.active) {
-            progress.value.status = 'running'
-            progress.value.buildPass = pass || null
-            if (buildData.build?.total_seeds && (pass === 'build-team' || pass === 'decompose')) {
-              seedCount.value = buildData.build.total_seeds
-            }
-          } else {
-            progress.value.buildPass = null
-            if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
-              progress.value.status = 'complete'
-            } else if (progress.value.status === 'running') {
-              progress.value.status = 'idle'
-            }
-          }
-        }
-
-        if (data.seeds === 0 && progress.value.status === 'complete') {
-          progress.value.status = 'idle'
+          phrasesInserted: data.phrases || 0
         }
       }
     }

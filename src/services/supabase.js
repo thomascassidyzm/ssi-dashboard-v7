@@ -325,28 +325,6 @@ export async function getAudioFlags(courseCode) {
 }
 
 /**
- * Get build status (latest build job for course)
- * Replaces: /api/build/status/:code
- */
-export async function getBuildStatus(courseCode) {
-  if (!supabase) throw new Error('Supabase not configured')
-
-  const { data, error } = await supabase
-    .from('build_jobs')
-    .select('*')
-    .eq('course_code', courseCode)
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .maybeSingle()
-
-  if (error) {
-    console.warn('[Supabase] getBuildStatus error:', error.message)
-    return null
-  }
-  return data
-}
-
-/**
  * Get seed grid (seeds with decomposition status)
  * Replaces: /api/build/seed-grid/:code
  * Note: useBuildMonitor already has fetchSeedGrid — this is the standalone version
