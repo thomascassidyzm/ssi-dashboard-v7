@@ -541,7 +541,6 @@
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
-import { useTextGenSocket } from '@/composables/useTextGenSocket'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getBuildStatus, getSeedGrid as sbGetSeedGrid, getSeedDetail } from '@/services/supabase'
 
@@ -599,9 +598,6 @@ const agents = ref({
   running_count: 0,
   total_tracked: 0
 })
-
-// WebSocket for real-time updates
-const socket = useTextGenSocket()
 
 // Chat state
 const chatExpanded = ref(false)
@@ -1719,33 +1715,10 @@ async function loadLanguages() {
   }
 }
 
-// Debounced socket watchers
-let socketDebounceTimers = {}
-function debouncedFetch(key, fn, delay = 2000) {
-  if (socketDebounceTimers[key]) clearTimeout(socketDebounceTimers[key])
-  socketDebounceTimers[key] = setTimeout(fn, delay)
-}
-
-// Socket events trigger a refresh — use buildMonitor when Supabase is configured,
-// otherwise fall back to HTTP fetchProgress
-watch(() => socket.lastSeedComplete.value, (v) => {
-  if (v) debouncedFetch('seed', () => {
-    if (isSupabaseConfigured()) { buildMonitor.refresh() } else { fetchSeedGrid(); fetchProgress() }
-  })
-})
-watch(() => socket.lastBuildStatus.value, (v) => {
-  if (v) debouncedFetch('build', () => {
-    if (isSupabaseConfigured()) { buildMonitor.refresh() } else { fetchProgress() }
-  })
-})
-// Orchestrator messages now driven by buildMonitor (Supabase direct + polling).
-// Socket.IO chat listeners removed — single source of truth.
-
 // Lifecycle
 onMounted(() => {
   startPolling()
   if (!isCreateMode.value) {
-    socket.connect(effectiveCourseCode.value)
     checkComponentGaps()
   }
   if (isCreateMode.value) {
@@ -1757,7 +1730,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopPolling()
-  socket.disconnect()
   if (tickInterval) { clearInterval(tickInterval); tickInterval = null }
 })
 </script>
