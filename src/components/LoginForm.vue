@@ -173,7 +173,7 @@ async function handlePasswordLogin() {
   try {
     await signInWithPassword(email.value, password.value)
     const redirect = router.currentRoute.value.query.redirect || '/'
-    router.push(redirect)
+    window.location.href = redirect
   } catch (err) {
     // If "Invalid login credentials", stay on password step — user can retry or switch to OTP
   }
@@ -214,7 +214,7 @@ async function handleVerifyOTP() {
   try {
     await verifyOTP(email.value, code.value)
     const redirect = router.currentRoute.value.query.redirect || '/'
-    router.push(redirect)
+    window.location.href = redirect
   } catch (err) {
     // Error handled in composable
   }
