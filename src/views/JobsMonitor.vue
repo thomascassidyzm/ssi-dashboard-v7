@@ -348,7 +348,7 @@ async function loadRecentCourses() {
         },
         updatedAt: course.updated_at
       })
-      if (results.length >= 10) break
+      if (results.length >= 5) break
     }
     recentCoursesData.value = results
   } catch (err) {
