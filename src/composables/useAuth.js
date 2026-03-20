@@ -1,82 +1,82 @@
 /**
  * Auth Composable - Supabase Auth (email OTP)
  *
- * Uses the same Supabase Auth as the learning app.
- * Dashboard access requires platform_role in ('ssi_admin', 'popty_user')
- * or educational_role = 'god'.
+ * OTP email = identity. dashboard_users table = access control.
+ * No learners table, no RLS gymnastics.
  */
 
 import { ref, computed } from 'vue'
 import { supabase } from '../services/supabase'
 
-// Explicit logout flag — prevents onAuthStateChange SIGNED_OUT from clearing cached learner
 let explicitLogout = false
 
 // Reactive state (module-level so it's shared across all useAuth() calls)
 const session = ref(null)
-const user = ref(null)       // Supabase Auth user
-const learner = ref(null)    // learners table row
+const user = ref(null)           // Supabase Auth user
+const dashboardUser = ref(null)  // dashboard_users row (email, role, courses)
 const loading = ref(false)
 const error = ref(null)
 const initialized = ref(false)
 
 // Computed
-// Learner cache is the source of truth — survives token refresh failures
-const isAuthenticated = computed(() => !!learner.value)
-const isAdmin = computed(() => {
-  if (!learner.value) return false
-  return learner.value.platform_role === 'ssi_admin' || learner.value.educational_role === 'god'
-})
-const hasDashboardAccess = computed(() => {
-  if (!learner.value) return false
-  const pr = learner.value.platform_role
-  const er = learner.value.educational_role
-  return pr === 'ssi_admin' || pr === 'popty_user' || er === 'god'
-})
+const isAuthenticated = computed(() => !!dashboardUser.value)
+const isAdmin = computed(() => dashboardUser.value?.role === 'admin')
+const hasDashboardAccess = computed(() => !!dashboardUser.value)
 
-// ─── Learner localStorage cache ──────────────────────────────────────
-const LEARNER_CACHE_KEY = 'popty_learner'
+// ─── localStorage cache ──────────────────────────────────────
+const CACHE_KEY = 'popty_dashboard_user'
 
-function cacheLearner(userId, data) {
-  try { localStorage.setItem(LEARNER_CACHE_KEY, JSON.stringify({ userId, data })) } catch {}
+function cacheUser(data) {
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)) } catch {}
 }
 
-function loadCachedLearner(userId) {
+function loadCachedUser(email) {
   try {
-    const raw = localStorage.getItem(LEARNER_CACHE_KEY)
+    const raw = localStorage.getItem(CACHE_KEY)
     if (!raw) return null
     const cached = JSON.parse(raw)
-    if (userId && cached.userId !== userId) return null
-    // Verify cached learner has dashboard access
-    const pr = cached.data?.platform_role
-    const er = cached.data?.educational_role
-    if (pr === 'ssi_admin' || pr === 'popty_user' || er === 'god') return cached.data
-    return null
+    if (email && cached.email !== email) return null
+    return cached
   } catch { return null }
 }
 
-function clearCachedLearner() {
-  try { localStorage.removeItem(LEARNER_CACHE_KEY) } catch {}
+function clearCachedUser() {
+  try { localStorage.removeItem(CACHE_KEY) } catch {}
 }
 
 /**
- * Fetch the learner record for the current auth user
+ * Fetch the dashboard_users row by email.
+ * Uses service key via production-api because dashboard_users
+ * has RLS restricted to service_role (and that's fine).
  */
-async function fetchLearner(userId) {
-  if (!supabase) return null
+async function fetchDashboardUser(email) {
+  if (!email) return null
 
-  const { data, error: fetchError } = await supabase
-    .from('learners')
-    .select('id, user_id, display_name, platform_role, educational_role, verified_emails, dashboard_courses, created_at')
-    .eq('user_id', userId)
-    .single()
+  try {
+    // Try direct Supabase first (works if anon has read access)
+    if (supabase) {
+      const { data, error: fetchError } = await supabase
+        .from('dashboard_users')
+        .select('email, name, role, courses')
+        .eq('email', email)
+        .single()
 
-  if (fetchError) {
-    console.warn('[Auth] No learner record found for user:', userId)
-    return null
+      if (data) return data
+      // RLS might block anon — fall through to API
+      if (fetchError) console.warn('[Auth] Direct dashboard_users query failed, trying API:', fetchError.message)
+    }
+
+    // Fallback: ask production-api (uses service key)
+    const { getApiUrl } = await import('../services/api.js')
+    const resp = await fetch(`${getApiUrl()}/api/auth/me?email=${encodeURIComponent(email)}`)
+    if (resp.ok) {
+      const data = await resp.json()
+      return data
+    }
+  } catch (err) {
+    console.warn('[Auth] fetchDashboardUser error:', err.message)
   }
-
-  return data
+  return null
 }
 
 /**
@@ -93,7 +93,6 @@ async function sendOTP(email) {
     })
 
     if (otpError) {
-      // "Signups not allowed" means user doesn't have a Supabase Auth account
       if (otpError.message?.includes('Signups not allowed') || otpError.message?.includes('not allowed')) {
         throw new Error('No account found for this email. Contact an SSi admin for access.')
       }
@@ -110,7 +109,7 @@ async function sendOTP(email) {
 }
 
 /**
- * Verify OTP code
+ * Verify OTP code — email is the identity
  */
 async function verifyOTP(email, token) {
   loading.value = true
@@ -125,13 +124,21 @@ async function verifyOTP(email, token) {
 
     if (verifyError) throw verifyError
 
-    // OTP verified = you're in. That's it.
     if (data.user) {
       user.value = data.user
       session.value = data.session
-      // Cache a minimal learner so isAuthenticated is true immediately
-      learner.value = { user_id: data.user.id, email: data.user.email, platform_role: 'popty_user' }
-      cacheLearner(data.user.id, learner.value)
+
+      // Look up dashboard access by email
+      const dbUser = await fetchDashboardUser(email)
+      if (dbUser) {
+        dashboardUser.value = dbUser
+        cacheUser(dbUser)
+      } else {
+        // OTP verified but no dashboard_users row — no dashboard access
+        error.value = 'No dashboard access for this email. Contact an SSi admin.'
+        dashboardUser.value = null
+        clearCachedUser()
+      }
     }
 
     return data
@@ -158,22 +165,26 @@ async function initAuth() {
     if (cachedSession?.user) {
       session.value = cachedSession
       user.value = cachedSession.user
+      const email = cachedSession.user.email
 
-      // Restore learner from localStorage (instant, no DB call)
-      const cachedLearner = loadCachedLearner(cachedSession.user.id)
-      if (cachedLearner) {
-        learner.value = cachedLearner
-      } else {
-        // First login or cache cleared — create a minimal learner
-        learner.value = { user_id: cachedSession.user.id, email: cachedSession.user.email, platform_role: 'popty_user' }
-        cacheLearner(cachedSession.user.id, learner.value)
+      // Restore from cache instantly
+      const cached = loadCachedUser(email)
+      if (cached) {
+        dashboardUser.value = cached
       }
-    } else {
-      // No session but cached learner from a previous login
-      const fallbackLearner = loadCachedLearner()
-      if (fallbackLearner) {
-        learner.value = fallbackLearner
-      }
+
+      // Refresh from DB in background
+      fetchDashboardUser(email).then(dbUser => {
+        if (dbUser) {
+          dashboardUser.value = dbUser
+          cacheUser(dbUser)
+        } else if (!cached) {
+          // No cache and no DB row — not a dashboard user
+          dashboardUser.value = null
+        }
+      }).catch(() => {
+        // DB fetch failed — cache is good enough
+      })
     }
 
     // Listen for auth changes
@@ -182,8 +193,8 @@ async function initAuth() {
       user.value = newSession?.user || null
 
       if (event === 'SIGNED_OUT' && explicitLogout) {
-        learner.value = null
-        clearCachedLearner()
+        dashboardUser.value = null
+        clearCachedUser()
         explicitLogout = false
       }
     })
@@ -204,8 +215,8 @@ async function logout() {
   }
   session.value = null
   user.value = null
-  learner.value = null
-  clearCachedLearner()
+  dashboardUser.value = null
+  clearCachedUser()
 }
 
 /**
@@ -219,30 +230,29 @@ async function getAccessToken() {
 
 /**
  * Check if user can access a specific course in the dashboard.
- * - ssi_admin / god → all courses
- * - popty_user → only courses in dashboard_courses (or all if ['*'])
+ * admin → all courses. Others → check courses field.
  */
 function canAccessCourse(courseCode) {
-  if (!learner.value) return false
-  // Admins and god get everything
+  if (!dashboardUser.value) return false
   if (isAdmin.value) return true
-  // popty_user: check dashboard_courses
-  const dc = learner.value.dashboard_courses
-  if (!dc || dc.length === 0) return false
-  if (dc.includes('*')) return true
-  return dc.includes(courseCode)
+  const courses = dashboardUser.value.courses
+  if (!courses) return false
+  if (courses === '*') return true
+  if (Array.isArray(courses)) return courses.includes(courseCode)
+  return false
 }
 
 /**
  * Get list of accessible course codes (null = all courses)
  */
 const accessibleCourses = computed(() => {
-  if (!learner.value) return []
-  if (isAdmin.value) return null // null means all
-  const dc = learner.value.dashboard_courses
-  if (!dc || dc.length === 0) return []
-  if (dc.includes('*')) return null // null means all
-  return dc
+  if (!dashboardUser.value) return []
+  if (isAdmin.value) return null
+  const courses = dashboardUser.value.courses
+  if (!courses) return []
+  if (courses === '*') return null
+  if (Array.isArray(courses)) return courses
+  return []
 })
 
 export function useAuth() {
@@ -250,7 +260,7 @@ export function useAuth() {
     // State
     session,
     user,
-    learner,
+    learner: dashboardUser,  // kept as 'learner' for backwards compat with templates
     loading,
     error,
 

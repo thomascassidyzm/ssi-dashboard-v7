@@ -39,7 +39,7 @@
             {{ userInitial }}
           </button>
           <div v-if="showUserMenu" class="user-dropdown">
-            <div class="user-dropdown-name">{{ learner?.display_name || user?.email }}</div>
+            <div class="user-dropdown-name">{{ learner?.name || user?.email }}</div>
             <button @click="handleLogout" class="user-dropdown-logout">Sign out</button>
           </div>
         </div>
@@ -65,7 +65,7 @@ const showUserMenu = ref(false)
 const userMenuRef = ref(null)
 
 const userInitial = computed(() => {
-  const name = learner.value?.display_name || user.value?.email || ''
+  const name = learner.value?.name || user.value?.email || ''
   return name.charAt(0).toUpperCase() || '?'
 })
 
