@@ -237,7 +237,7 @@
                 :disabled="translateStarting"
                 class="px-3 py-1 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
-                {{ translateStarting ? 'Spawning...' : 'Start Translate' }}
+                {{ translateStarting ? 'Spawning...' : (progress.seedsTranslated > 0 ? 'Continue Translate' : 'Start Translate') }}
               </button>
             </div>
           </div>
