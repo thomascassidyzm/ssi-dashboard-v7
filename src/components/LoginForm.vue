@@ -29,6 +29,15 @@
       <p v-if="error" class="text-red-400 text-sm text-center">
         {{ error }}
       </p>
+
+      <div v-if="email" class="text-center">
+        <button
+          @click="step = 'password'; nextTick(() => passwordInput?.focus())"
+          class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+        >
+          Use password instead
+        </button>
+      </div>
     </div>
 
     <!-- Step 2: Password Entry -->
