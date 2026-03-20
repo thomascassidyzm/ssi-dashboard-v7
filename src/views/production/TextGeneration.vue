@@ -874,7 +874,7 @@ function stageComplete(stage) {
   switch (stage) {
     case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
     case 'build-team': return (progress.value.currentSeed || 0) >= seedCount.value
-    case 'final-pass': return seedGridFinalized.value > 0 && seedGridDrafted.value === 0
+    case 'final-pass': return seedGridFinalized.value > 0 && seedGridDrafted.value === 0 && seedGridFlagged.value === 0 && seedGridUnderThreshold.value === 0
     case 'gender': return (progress.value.genderExpansions || 0) > 0
     default: return false
   }

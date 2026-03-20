@@ -273,18 +273,43 @@ module.exports = function (ctx) {
         .from('course_practice_phrases').select('seed_number')
         .eq('course_code', courseCode).lte('seed_number', maxSeed);
 
+      // Count USE phrases per seed:lego to detect under-threshold LEGOs
+      const { data: usePhrasesRaw } = await ctx.supabase
+        .from('course_practice_phrases').select('seed_number, lego_index')
+        .eq('course_code', courseCode).eq('phrase_role', 'use').lte('seed_number', maxSeed);
+
+      const usePerLego = {};
+      for (const p of usePhrasesRaw || []) {
+        const key = `${p.seed_number}:${p.lego_index}`;
+        usePerLego[key] = (usePerLego[key] || 0) + 1;
+      }
+
+      // Find seeds with any new LEGO below 4 USE phrases
+      const underThresholdSeeds = new Set();
+      const newLegos = (legoCounts || []);
+      // We need lego_index too — re-query with is_new filter
+      const { data: newLegosDetailed } = await ctx.supabase
+        .from('course_legos').select('seed_number, lego_index')
+        .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', maxSeed);
+      for (const l of newLegosDetailed || []) {
+        if (l.seed_number <= 3) continue; // seeds 1-3 excluded from backfill
+        const key = `${l.seed_number}:${l.lego_index}`;
+        if ((usePerLego[key] || 0) < 4) underThresholdSeeds.add(l.seed_number);
+      }
+
       const legosBySeed = {};
       for (const l of legoCounts || []) legosBySeed[l.seed_number] = (legosBySeed[l.seed_number] || 0) + 1;
 
       const phrasesBySeed = {};
       for (const p of phraseCounts || []) phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1;
 
-      let complete = 0, drafted = 0, building = 0, empty = 0, flagged = 0;
+      let complete = 0, drafted = 0, building = 0, empty = 0, flagged = 0, underThreshold = 0;
       const grid = (seeds || []).map(s => {
         const legos = legosBySeed[s.seed_number] || 0;
         const phrases = phrasesBySeed[s.seed_number] || 0;
         let status;
-        if (s.flagged_at) { status = 'flagged'; flagged++; }
+        if (underThresholdSeeds.has(s.seed_number)) { status = 'under-threshold'; underThreshold++; }
+        else if (s.flagged_at) { status = 'flagged'; flagged++; }
         else if (s.approved_at) { status = 'complete'; complete++; }
         else if (s.decomposed_at) { status = 'drafted'; drafted++; }
         else if (legos > 0) { status = 'building'; building++; }
@@ -292,7 +317,7 @@ module.exports = function (ctx) {
         return { seed: s.seed_number, status, legos, phrases };
       });
 
-      res.json({ seeds: grid, total: grid.length, complete, drafted, building, empty, flagged });
+      res.json({ seeds: grid, total: grid.length, complete, drafted, building, empty, flagged, underThreshold });
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }
@@ -355,6 +380,49 @@ module.exports = function (ctx) {
     }
   });
 
+  // POST /build/set-flags/:courseCode — flag specific seeds (e.g., after final pass deletions)
+  router.post('/build/set-flags/:courseCode', async (req, res) => {
+    const { courseCode } = req.params;
+    const { seeds } = req.body; // array of seed numbers
+    if (!Array.isArray(seeds) || seeds.length === 0) {
+      return res.status(400).json({ error: 'seeds array required' });
+    }
+    try {
+      const now = new Date().toISOString();
+      const { data, error } = await ctx.supabase
+        .from('course_seeds')
+        .update({ flagged_at: now })
+        .eq('course_code', courseCode)
+        .in('seed_number', seeds)
+        .select('seed_number');
+      if (error) throw error;
+      res.json({ ok: true, flagged: data?.length || 0, seeds: (data || []).map(s => s.seed_number) });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // POST /build/clear-flags/:courseCode — unflag seeds (e.g., after backfill completes)
+  router.post('/build/clear-flags/:courseCode', async (req, res) => {
+    const { courseCode } = req.params;
+    const { seeds } = req.body; // array of seed numbers, or omit to clear all flags
+    try {
+      let query = ctx.supabase
+        .from('course_seeds')
+        .update({ flagged_at: null })
+        .eq('course_code', courseCode)
+        .not('flagged_at', 'is', null);
+      if (Array.isArray(seeds) && seeds.length > 0) {
+        query = query.in('seed_number', seeds);
+      }
+      const { data, error } = await query.select('seed_number');
+      if (error) throw error;
+      res.json({ ok: true, cleared: data?.length || 0, seeds: (data || []).map(s => s.seed_number) });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
   // POST /build/translate/:courseCode
   router.post('/build/translate/:courseCode', async (req, res) => {
     try {
@@ -392,7 +460,7 @@ module.exports = function (ctx) {
         })
         .select('id').single();
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Translation agent spawned` });
@@ -578,7 +646,7 @@ module.exports = function (ctx) {
   router.get('/build/component-gaps/:courseCode', async (req, res) => {
     try {
       const { courseCode } = req.params;
-      const cjk = /^(zho|jpn|kor|cmn)/.test(courseCode);
+      const cjk = /^(zho|jpn|kor|cmn|tha|mya|lao|khm)/.test(courseCode);
 
       // Single query, filter in JS (PostgREST can't match JSONB empty arrays)
       const { data: allMLegos, error } = await ctx.supabase
