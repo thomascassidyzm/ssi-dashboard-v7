@@ -40,7 +40,51 @@
           </button>
           <div v-if="showUserMenu" class="user-dropdown">
             <div class="user-dropdown-name">{{ learner?.name || user?.email }}</div>
+            <button @click="showPasswordModal = true; showUserMenu = false" class="user-dropdown-item">
+              {{ hasPassword ? 'Change password' : 'Set password' }}
+            </button>
             <button @click="handleLogout" class="user-dropdown-logout">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div v-if="showPasswordModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50" @click.self="closePasswordModal">
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 w-full max-w-sm">
+        <h3 class="text-lg font-semibold text-slate-100 mb-4">{{ hasPassword ? 'Change Password' : 'Set Password' }}</h3>
+
+        <div v-if="passwordSuccess" class="text-emerald-400 text-center py-4">
+          Password updated!
+        </div>
+
+        <div v-else class="space-y-3">
+          <input
+            v-model="newPassword"
+            type="password"
+            placeholder="New password (min 8 chars)"
+            class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-sm"
+            @keyup.enter="$refs.confirmPw?.focus()"
+          />
+          <input
+            ref="confirmPw"
+            v-model="confirmPassword"
+            type="password"
+            placeholder="Confirm password"
+            class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-sm"
+            @keyup.enter="handleSetPassword"
+          />
+          <p v-if="passwordError" class="text-red-400 text-xs">{{ passwordError }}</p>
+          <div class="flex gap-2 pt-1">
+            <button
+              @click="closePasswordModal"
+              class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm font-medium rounded-lg transition-colors"
+            >Cancel</button>
+            <button
+              @click="handleSetPassword"
+              :disabled="passwordSaving"
+              class="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors"
+            >{{ passwordSaving ? 'Saving...' : 'Save' }}</button>
           </div>
         </div>
       </div>
@@ -59,10 +103,50 @@ import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
-const { isAuthenticated, user, learner, logout } = useAuth()
+const { isAuthenticated, user, learner, hasPassword, updatePassword, logout } = useAuth()
 
 const showUserMenu = ref(false)
 const userMenuRef = ref(null)
+const showPasswordModal = ref(false)
+const newPassword = ref('')
+const confirmPassword = ref('')
+const passwordError = ref(null)
+const passwordSuccess = ref(false)
+const passwordSaving = ref(false)
+
+async function handleSetPassword() {
+  passwordError.value = null
+  if (newPassword.value.length < 8) {
+    passwordError.value = 'Password must be at least 8 characters'
+    return
+  }
+  if (newPassword.value !== confirmPassword.value) {
+    passwordError.value = 'Passwords do not match'
+    return
+  }
+  passwordSaving.value = true
+  const result = await updatePassword(newPassword.value)
+  passwordSaving.value = false
+  if (result.error) {
+    passwordError.value = result.error
+  } else {
+    passwordSuccess.value = true
+    setTimeout(() => {
+      showPasswordModal.value = false
+      passwordSuccess.value = false
+      newPassword.value = ''
+      confirmPassword.value = ''
+    }, 1500)
+  }
+}
+
+function closePasswordModal() {
+  showPasswordModal.value = false
+  newPassword.value = ''
+  confirmPassword.value = ''
+  passwordError.value = null
+  passwordSuccess.value = false
+}
 
 const userInitial = computed(() => {
   const name = learner.value?.name || user.value?.email || ''
@@ -357,6 +441,24 @@ onMounted(() => {
   font-size: 0.8125rem;
   color: var(--color-paper-dim, #c1c1bb);
   border-bottom: 1px solid var(--color-graphite, #475569);
+}
+
+.user-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.user-dropdown-item:hover {
+  background: rgba(148, 163, 184, 0.1);
+  color: #e2e8f0;
 }
 
 .user-dropdown-logout {

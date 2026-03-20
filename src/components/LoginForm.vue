@@ -13,17 +13,16 @@
           type="email"
           placeholder="you@example.com"
           class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
-          @keyup.enter="handleSendOTP"
+          @keyup.enter="goToAuth"
         />
       </div>
 
       <button
-        @click="handleSendOTP"
+        @click="goToAuth"
         :disabled="loading || !email"
         class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
       >
-        <span v-if="loading">Sending...</span>
-        <span v-else>Send Login Code</span>
+        Continue
       </button>
 
       <p v-if="error" class="text-red-400 text-sm text-center">
@@ -31,7 +30,55 @@
       </p>
     </div>
 
-    <!-- Step 2: OTP Code Entry -->
+    <!-- Step 2: Password Entry -->
+    <div v-else-if="step === 'password'" class="space-y-4">
+      <p class="text-slate-300 text-center mb-2">
+        <strong class="text-emerald-400">{{ email }}</strong>
+      </p>
+
+      <div>
+        <label class="block text-sm text-slate-400 mb-2">Password</label>
+        <input
+          ref="passwordInput"
+          v-model="password"
+          type="password"
+          placeholder="Enter your password"
+          class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
+          @keyup.enter="handlePasswordLogin"
+        />
+      </div>
+
+      <button
+        @click="handlePasswordLogin"
+        :disabled="loading || !password"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
+      >
+        <span v-if="loading">Signing in...</span>
+        <span v-else>Sign In</span>
+      </button>
+
+      <p v-if="error" class="text-red-400 text-sm text-center">
+        {{ error }}
+      </p>
+
+      <div class="flex justify-between text-sm">
+        <button
+          @click="switchToOTP"
+          :disabled="loading"
+          class="text-slate-400 hover:text-emerald-400 transition-colors"
+        >
+          Use login code instead
+        </button>
+        <button
+          @click="reset"
+          class="text-slate-400 hover:text-slate-300 transition-colors"
+        >
+          Different email
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3: OTP Code Entry -->
     <div v-else-if="step === 'code'" class="space-y-4">
       <p class="text-slate-300 text-center mb-4">
         We sent a 6-digit code to<br/>
@@ -89,16 +136,38 @@ import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 
 const router = useRouter()
-const { sendOTP, verifyOTP, loading, error } = useAuth()
+const { sendOTP, verifyOTP, signInWithPassword, loading, error } = useAuth()
 
 const step = ref('email')
 const email = ref('')
+const password = ref('')
 const code = ref('')
 const codeInput = ref(null)
+const passwordInput = ref(null)
 
-async function handleSendOTP() {
+function goToAuth() {
   if (!email.value) return
+  error.value = null
+  // Always show password step first — user can switch to OTP
+  step.value = 'password'
+  password.value = ''
+  nextTick(() => passwordInput.value?.focus())
+}
 
+async function handlePasswordLogin() {
+  if (!password.value) return
+
+  try {
+    await signInWithPassword(email.value, password.value)
+    const redirect = router.currentRoute.value.query.redirect || '/'
+    router.push(redirect)
+  } catch (err) {
+    // If "Invalid login credentials", stay on password step — user can retry or switch to OTP
+  }
+}
+
+async function switchToOTP() {
+  error.value = null
   try {
     await sendOTP(email.value)
     step.value = 'code'
@@ -110,12 +179,20 @@ async function handleSendOTP() {
   }
 }
 
+async function handleSendOTP() {
+  try {
+    await sendOTP(email.value)
+    code.value = ''
+  } catch (err) {
+    // Error handled in composable
+  }
+}
+
 async function handleVerifyOTP() {
   if (code.value.length < 6) return
 
   try {
     await verifyOTP(email.value, code.value)
-    // Redirect to home or the page they were trying to access
     const redirect = router.currentRoute.value.query.redirect || '/'
     router.push(redirect)
   } catch (err) {
@@ -125,6 +202,7 @@ async function handleVerifyOTP() {
 
 function reset() {
   step.value = 'email'
+  password.value = ''
   code.value = ''
   error.value = null
 }

@@ -22,6 +22,7 @@ const initialized = ref(false)
 const isAuthenticated = computed(() => !!dashboardUser.value)
 const isAdmin = computed(() => dashboardUser.value?.role === 'admin')
 const hasDashboardAccess = computed(() => !!dashboardUser.value)
+const hasPassword = computed(() => !!user.value?.user_metadata?.has_password)
 
 // ─── localStorage cache ──────────────────────────────────────
 const CACHE_KEY = 'popty_dashboard_user'
@@ -77,6 +78,69 @@ async function fetchDashboardUser(email) {
     console.warn('[Auth] fetchDashboardUser error:', err.message)
   }
   return null
+}
+
+/**
+ * Sign in with email + password
+ */
+async function signInWithPassword(email, password) {
+  loading.value = true
+  error.value = null
+
+  try {
+    const { data, error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    })
+
+    if (signInError) throw signInError
+
+    if (data.user) {
+      user.value = data.user
+      session.value = data.session
+
+      const dbUser = await fetchDashboardUser(email)
+      if (dbUser) {
+        dashboardUser.value = dbUser
+        cacheUser(dbUser)
+      } else {
+        error.value = 'No dashboard access for this email. Contact an SSi admin.'
+        dashboardUser.value = null
+        clearCachedUser()
+      }
+    }
+
+    return data
+  } catch (err) {
+    error.value = err.message
+    throw err
+  } finally {
+    loading.value = false
+  }
+}
+
+/**
+ * Set or change password for the current user
+ */
+async function updatePassword(newPassword) {
+  if (!supabase) return { error: 'Not connected' }
+
+  const { error: updateError } = await supabase.auth.updateUser({
+    password: newPassword,
+    data: { has_password: true }
+  })
+
+  if (updateError) return { error: updateError.message }
+
+  // Update local user ref
+  if (user.value) {
+    user.value = {
+      ...user.value,
+      user_metadata: { ...user.value.user_metadata, has_password: true }
+    }
+  }
+
+  return { success: true }
 }
 
 /**
@@ -268,11 +332,14 @@ export function useAuth() {
     isAuthenticated,
     isAdmin,
     hasDashboardAccess,
+    hasPassword,
     accessibleCourses,
 
     // Methods
     sendOTP,
     verifyOTP,
+    signInWithPassword,
+    updatePassword,
     initAuth,
     logout,
     getAccessToken,
