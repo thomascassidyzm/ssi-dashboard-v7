@@ -150,8 +150,10 @@ import { useToast } from 'vue-toastification'
 import api, { getApiUrl } from '../services/api'
 import { isConfigured as isSupabaseConfigured, getAllCourses, getAllCourseStats } from '../services/supabase'
 import { useCourses } from '../composables/useCourses'
+import { useAuth } from '../composables/useAuth'
 
 const toast = useToast()
+const { canAccessCourse } = useAuth()
 const { getCourseName, courseDisplayNames } = useCourses()
 const courses = ref([])
 const loading = ref(true)
@@ -162,11 +164,14 @@ const highlightedCourses = ref(new Set()) // Courses to highlight as new/updated
 
 // Computed: Filtered courses based on search query
 const filteredCourses = computed(() => {
-  if (!searchQuery.value) return courses.value
+  // Filter by user's course access first
+  const accessible = courses.value.filter(c => canAccessCourse(c.course_code))
+
+  if (!searchQuery.value) return accessible
 
   const query = searchQuery.value.toLowerCase()
 
-  return courses.value.filter(course => {
+  return accessible.filter(course => {
     // Search by course code (e.g., "fra_for_eng")
     if (course.course_code.toLowerCase().includes(query)) return true
 

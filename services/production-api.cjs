@@ -428,7 +428,7 @@ async function handleInvite(req, res) {
       const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
       const voiceId = role === 'recorder' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
       const row = {
-        email, name: name || email.split('@')[0], role, courses: JSON.stringify(courses),
+        email, name: name || email.split('@')[0], role, courses,
         ...(voiceId && { voice_id: voiceId }),
         invited_by: adminUser.email || adminUser.name, invited_at: new Date().toISOString()
       }
@@ -440,7 +440,7 @@ async function handleInvite(req, res) {
       const existing = await authGetUser(email)
       if (!existing) return res.status(404).json({ error: 'User not found' })
       const updates = {
-        ...(name && { name }), role, courses: JSON.stringify(courses),
+        ...(name && { name }), role, courses,
         updated_by: adminUser.email || adminUser.name, updated_at: new Date().toISOString()
       }
       const { data, error } = await db.from('dashboard_users').update(updates).eq('email', email).select().single()
