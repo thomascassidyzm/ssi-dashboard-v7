@@ -31,47 +31,86 @@
       </div>
     </header>
 
-    <!-- Active Courses -->
     <main class="am-content">
-      <div v-if="activeCourses.length === 0" class="empty-state">
-        <p>No active builds. Start a build from a course's Text page.</p>
-      </div>
+      <!-- Current -->
+      <section v-if="activeCourses.length > 0" class="section">
+        <h2 class="section-title">Current</h2>
+        <router-link
+          v-for="course in activeCourses"
+          :key="course.code"
+          :to="course.audioActive ? `/production/${course.code}/audio` : `/production/${course.code}/text`"
+          class="course-row active"
+        >
+          <div class="course-row-inner">
+            <div class="course-info">
+              <span class="course-name">{{ course.displayName }}</span>
+              <span class="course-code">{{ course.code }}</span>
+            </div>
 
-      <router-link
-        v-for="course in activeCourses"
-        :key="course.code"
-        :to="course.audioActive ? `/production/${course.code}/audio` : `/production/${course.code}/text`"
-        class="course-row"
-      >
-        <div class="course-row-inner">
-          <div class="course-info">
-            <span class="course-name">{{ course.displayName }}</span>
-            <span class="course-code">{{ course.code }}</span>
-          </div>
-
-          <div class="course-stats">
-            <span class="stat"><span class="stat-num">{{ course.stats.completedSeeds }}/300</span> built</span>
-            <span class="stat-sep">&middot;</span>
-            <span class="stat"><span class="stat-num">{{ course.stats.legos }}</span> LEGOs</span>
-            <span class="stat-sep">&middot;</span>
-            <span class="stat"><span class="stat-num">{{ course.stats.phrases }}</span> phrases</span>
-            <template v-if="course.stats.audio > 0">
+            <div class="course-stats">
+              <span class="stat"><span class="stat-num">{{ course.stats.completedSeeds }}/300</span> built</span>
               <span class="stat-sep">&middot;</span>
-              <span class="stat"><span class="stat-num">{{ course.stats.audio }}</span> audio</span>
-            </template>
-          </div>
+              <span class="stat"><span class="stat-num">{{ course.stats.legos }}</span> LEGOs</span>
+              <span class="stat-sep">&middot;</span>
+              <span class="stat"><span class="stat-num">{{ course.stats.phrases }}</span> phrases</span>
+              <template v-if="course.stats.audio > 0">
+                <span class="stat-sep">&middot;</span>
+                <span class="stat"><span class="stat-num">{{ course.stats.audio }}</span> audio</span>
+              </template>
+            </div>
 
-          <div class="course-activity">
-            <span class="last-change" :class="ageClass(course.lastChanged)">
-              {{ timeAgo(course.lastChanged) }}
-            </span>
-            <span v-if="course.audioActive" class="audio-badge">Audio generating</span>
-            <span v-else-if="course.delta" class="delta">
-              {{ course.delta }}
-            </span>
+            <div class="course-activity">
+              <span class="last-change" :class="ageClass(course.lastChanged)">
+                {{ timeAgo(course.lastChanged) }}
+              </span>
+              <span v-if="course.audioActive" class="audio-badge">Audio generating</span>
+              <span v-else-if="course.delta" class="delta">
+                {{ course.delta }}
+              </span>
+            </div>
           </div>
+        </router-link>
+      </section>
+
+      <!-- Recent -->
+      <section class="section">
+        <h2 class="section-title">Recent</h2>
+        <div v-if="recentCourses.length === 0 && activeCourses.length === 0" class="empty-state">
+          <p>No activity yet.</p>
         </div>
-      </router-link>
+        <div v-else-if="recentCourses.length === 0" class="empty-state-small">
+          <p>No other recent activity.</p>
+        </div>
+        <router-link
+          v-for="course in recentCourses"
+          :key="course.code"
+          :to="`/production/${course.code}/text`"
+          class="course-row recent"
+        >
+          <div class="course-row-inner">
+            <div class="course-info">
+              <span class="course-name">{{ course.displayName }}</span>
+              <span class="course-code">{{ course.code }}</span>
+            </div>
+
+            <div class="course-stats">
+              <span class="stat"><span class="stat-num">{{ course.stats.completedSeeds }}/300</span> built</span>
+              <span class="stat-sep">&middot;</span>
+              <span class="stat"><span class="stat-num">{{ course.stats.legos }}</span> LEGOs</span>
+              <span class="stat-sep">&middot;</span>
+              <span class="stat"><span class="stat-num">{{ course.stats.phrases }}</span> phrases</span>
+              <template v-if="course.stats.audio > 0">
+                <span class="stat-sep">&middot;</span>
+                <span class="stat"><span class="stat-num">{{ course.stats.audio }}</span> audio</span>
+              </template>
+            </div>
+
+            <div class="course-activity">
+              <span class="recent-time">{{ formatRecentTime(course.updatedAt) }}</span>
+            </div>
+          </div>
+        </router-link>
+      </section>
     </main>
   </div>
 </template>
@@ -244,6 +283,66 @@ async function fetchSingleCourseStats(courseCode, audioActive = false) {
   }
 }
 
+// Recent = 10 most recently updated courses, excluding ones in Current
+const recentCoursesData = ref([]) // [{ code, displayName, stats, updatedAt }]
+
+const recentCourses = computed(() => {
+  const activeCodes = new Set(activeCourses.value.map(c => c.code))
+  return recentCoursesData.value.filter(c => !activeCodes.has(c.code))
+})
+
+function formatRecentTime(ts) {
+  if (!ts) return ''
+  const d = new Date(ts)
+  const now = new Date()
+  const diffMs = now - d
+  const diffMins = Math.floor(diffMs / 60000)
+  const diffHours = Math.floor(diffMs / 3600000)
+  const diffDays = Math.floor(diffMs / 86400000)
+
+  if (diffMins < 60) return `${diffMins}m ago`
+  if (diffHours < 24) return `${diffHours}h ago`
+  if (diffDays < 7) return `${diffDays}d ago`
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+}
+
+async function loadRecentCourses() {
+  if (!supabase) return
+  try {
+    // Get 15 most recently updated courses (extra to account for Current overlap)
+    const { data, error } = await supabase
+      .from('courses')
+      .select('course_code, display_name, updated_at')
+      .order('updated_at', { ascending: false })
+      .limit(15)
+
+    if (error || !data) return
+
+    const results = []
+    for (const course of data) {
+      const stats = await getCourseStats(course.course_code)
+      // Skip courses with no content at all
+      if ((stats.seeds || 0) === 0 && (stats.legos || 0) === 0) continue
+      results.push({
+        code: course.course_code,
+        displayName: course.display_name || getCourseName(course.course_code),
+        stats: {
+          seeds: stats.seeds || 0,
+          completedSeeds: stats.completeSeeds || 0,
+          legos: stats.legos || 0,
+          phrases: stats.practicePhrases || 0,
+          audio: stats.audio || 0
+        },
+        updatedAt: course.updated_at
+      })
+      if (results.length >= 10) break
+    }
+    recentCoursesData.value = results
+  } catch (err) {
+    console.warn('[Activity] loadRecentCourses failed:', err.message)
+  }
+}
+
 function setupRealtime() {
   if (!supabase) return
 
@@ -284,7 +383,7 @@ let tickTimer = null
 
 onMounted(async () => {
   await loadCourses()
-  await detectRecentActivity()
+  await Promise.all([detectRecentActivity(), loadRecentCourses()])
   setupRealtime()
   // Poll DB stats every 30s as fallback
   pollTimer = setInterval(refreshKnownCourses, 30000)
@@ -450,11 +549,32 @@ onUnmounted(() => {
   padding: 1rem 1.5rem 3rem;
 }
 
+.section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
 .empty-state {
   text-align: center;
   padding: 4rem 1rem;
   color: #64748b;
   font-size: 0.9rem;
+}
+
+.empty-state-small {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: #475569;
+  font-size: 0.8rem;
 }
 
 /* Course cards */
@@ -485,14 +605,25 @@ onUnmounted(() => {
   content: '';
   width: 3px;
   flex-shrink: 0;
-  background: #10b981;
+  background: #334155;
   border-radius: 10px 0 0 10px;
+}
+
+.course-row.active::before {
+  background: #10b981;
   animation: accent-pulse 2s ease-in-out infinite;
 }
 
 @keyframes accent-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
+}
+
+.recent-time {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-weight: 500;
 }
 
 .course-row-inner {
