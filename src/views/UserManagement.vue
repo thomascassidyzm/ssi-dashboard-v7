@@ -49,33 +49,24 @@
 
         <div class="mb-4">
           <label class="block text-sm text-slate-400 mb-2">Course Access *</label>
-          <div class="flex flex-wrap gap-2 mb-2">
-            <button
-              @click="toggleAllCourses(newUser)"
-              :class="[
-                'px-3 py-1 rounded-full text-sm font-semibold transition-colors border',
-                newUser.courses.length === availableCourses.length
-                  ? 'bg-emerald-600 text-white border-emerald-500'
-                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600 border-slate-600'
-              ]"
+          <!-- Selected courses as chips -->
+          <div v-if="newUser.courses.length" class="flex flex-wrap gap-1.5 mb-2">
+            <span
+              v-for="code in newUser.courses"
+              :key="code"
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-emerald-600 text-white"
             >
-              {{ newUser.courses.length === availableCourses.length ? 'Deselect All' : 'Select All' }}
-            </button>
-            <button
-              v-for="course in availableCourses"
-              :key="course.code"
-              @click="toggleCourse(newUser.courses, course.code)"
-              :class="[
-                'px-3 py-1 rounded-full text-sm transition-colors',
-                newUser.courses.includes(course.code)
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
-              ]"
-            >
-              {{ course.display }}
-            </button>
+              {{ courseDisplayName(code) }}
+              <button @click="toggleCourse(newUser.courses, code)" class="hover:text-emerald-200 ml-0.5">&times;</button>
+            </span>
           </div>
-          <p class="text-xs text-slate-500">Click to select courses this user can access</p>
+          <!-- Search + dropdown -->
+          <CourseSearchPicker
+            :available="availableCourses"
+            :selected="newUser.courses"
+            @toggle="(code) => toggleCourse(newUser.courses, code)"
+            @toggleAll="toggleAllCourses(newUser)"
+          />
         </div>
 
         <div class="flex items-center gap-4">
@@ -204,32 +195,25 @@
 
               <div>
                 <label class="block text-xs text-slate-500 mb-1">Course Access</label>
-                <div class="flex flex-wrap gap-2">
-                  <button
-                    @click="toggleAllCourses(editForm)"
-                    :class="[
-                      'px-3 py-1 rounded-full text-xs font-semibold transition-colors border',
-                      editForm.courses.length === availableCourses.length
-                        ? 'bg-emerald-600 text-white border-emerald-500'
-                        : 'bg-slate-700 text-slate-300 hover:bg-slate-600 border-slate-600'
-                    ]"
+                <!-- Selected courses as chips -->
+                <div v-if="editForm.courses.length" class="flex flex-wrap gap-1.5 mb-2">
+                  <span
+                    v-for="code in editForm.courses"
+                    :key="code"
+                    class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-emerald-600 text-white"
                   >
-                    {{ editForm.courses.length === availableCourses.length ? 'Deselect All' : 'Select All' }}
-                  </button>
-                  <button
-                    v-for="course in availableCourses"
-                    :key="course.code"
-                    @click="toggleCourse(editForm.courses, course.code)"
-                    :class="[
-                      'px-3 py-1 rounded-full text-xs transition-colors',
-                      editForm.courses.includes(course.code)
-                        ? 'bg-emerald-600 text-white'
-                        : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
-                    ]"
-                  >
-                    {{ course.display }}
-                  </button>
+                    {{ courseDisplayName(code) }}
+                    <button @click="toggleCourse(editForm.courses, code)" class="hover:text-emerald-200 ml-0.5">&times;</button>
+                  </span>
                 </div>
+                <!-- Search + dropdown -->
+                <CourseSearchPicker
+                  :available="availableCourses"
+                  :selected="editForm.courses"
+                  @toggle="(code) => toggleCourse(editForm.courses, code)"
+                  @toggleAll="toggleAllCourses(editForm)"
+                  size="sm"
+                />
               </div>
 
               <p v-if="editError" class="text-red-400 text-xs mt-2">{{ editError }}</p>
@@ -242,10 +226,89 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, defineComponent, h } from 'vue'
 import { useAuth } from '../composables/useAuth'
 import { getApiUrl } from '../services/api.js'
 import { getAllCourses } from '../services/supabase.js'
+
+// Inline CourseSearchPicker component
+const CourseSearchPicker = defineComponent({
+  name: 'CourseSearchPicker',
+  props: {
+    available: { type: Array, default: () => [] },
+    selected: { type: Array, default: () => [] },
+    size: { type: String, default: 'md' }
+  },
+  emits: ['toggle', 'toggleAll'],
+  setup(props, { emit }) {
+    const query = ref('')
+    const isOpen = ref(false)
+
+    const filtered = computed(() => {
+      if (!query.value) return props.available
+      const q = query.value.toLowerCase()
+      return props.available.filter(c =>
+        c.display.toLowerCase().includes(q) || c.code.toLowerCase().includes(q)
+      )
+    })
+
+    const allSelected = computed(() =>
+      props.available.length > 0 && props.selected.length === props.available.length
+    )
+
+    return () => {
+      const isSm = props.size === 'sm'
+      return h('div', { class: 'relative' }, [
+        // Search input
+        h('div', { class: 'flex gap-2' }, [
+          h('input', {
+            value: query.value,
+            onInput: (e) => { query.value = e.target.value; isOpen.value = true },
+            onFocus: () => { isOpen.value = true },
+            placeholder: 'Search courses...',
+            class: `flex-1 bg-slate-900 border border-slate-600 rounded-lg px-3 ${isSm ? 'py-1 text-xs' : 'py-2 text-sm'} text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none`
+          }),
+          h('button', {
+            onClick: () => emit('toggleAll'),
+            class: `px-3 ${isSm ? 'py-1 text-xs' : 'py-2 text-sm'} rounded-lg border transition-colors whitespace-nowrap ${
+              allSelected.value
+                ? 'bg-emerald-600 text-white border-emerald-500'
+                : 'bg-slate-700 text-slate-300 border-slate-600 hover:bg-slate-600'
+            }`
+          }, allSelected.value ? 'Deselect All' : 'Select All')
+        ]),
+        // Dropdown
+        isOpen.value && filtered.value.length > 0
+          ? h('div', {
+              class: 'absolute z-50 mt-1 w-full max-h-60 overflow-y-auto bg-slate-900 border border-slate-600 rounded-lg shadow-xl'
+            }, [
+              ...filtered.value.map(course =>
+                h('button', {
+                  key: course.code,
+                  onClick: () => { emit('toggle', course.code) },
+                  class: `w-full text-left px-3 ${isSm ? 'py-1.5 text-xs' : 'py-2 text-sm'} hover:bg-slate-800 flex items-center justify-between ${
+                    props.selected.includes(course.code) ? 'text-emerald-400' : 'text-slate-300'
+                  }`
+                }, [
+                  h('span', {}, course.display),
+                  props.selected.includes(course.code)
+                    ? h('span', { class: 'text-emerald-400' }, '✓')
+                    : null
+                ])
+              )
+            ])
+          : null,
+        // Click-outside to close
+        isOpen.value
+          ? h('div', {
+              class: 'fixed inset-0 z-40',
+              onClick: () => { isOpen.value = false }
+            })
+          : null
+      ])
+    }
+  }
+})
 
 const { getAccessToken } = useAuth()
 
