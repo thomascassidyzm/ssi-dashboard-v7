@@ -36,6 +36,7 @@ const audioProcessor = require('../audio-processor.cjs')
 const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
 
+const { claudeChat } = require('../shared/claude-cli.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 const { toIso3, getName: getLangEnglishName, databaseToManifest } = require('../language-code-service.cjs')
@@ -80,6 +81,89 @@ function getLocalisedLangName(targetLang, knownLang) {
 
 // Canonical text normalization — see services/shared/text-normalize.cjs
 const normalizeText = normalizeForAudio
+
+/**
+ * Get or generate presentation template for a known language.
+ * Looks up presentation_templates first; if none exists, uses Haiku to
+ * generate one in the known language and caches it for future use.
+ *
+ * @param {string} knownLang - ISO 639-3 language code for the known language
+ * @returns {Promise<string>} The presentation template string
+ */
+async function getOrCreatePresentationTemplate(knownLang) {
+  // 1. Check DB for existing template
+  const { data: existing } = await supabase
+    .from('presentation_templates')
+    .select('template')
+    .eq('known_lang', knownLang)
+    .eq('is_active', true)
+    .order('priority', { ascending: false })
+    .limit(1)
+
+  if (existing?.[0]?.template) {
+    return existing[0].template
+  }
+
+  // 2. Load example templates to show Haiku the pattern
+  const { data: examples } = await supabase
+    .from('presentation_templates')
+    .select('known_lang, template')
+    .eq('is_active', true)
+    .order('known_lang')
+
+  const knownLangName = getLocalisedLangName(knownLang, 'eng')
+
+  const exampleBlock = (examples || [])
+    .map(e => `${e.known_lang}: ${e.template}`)
+    .join('\n')
+
+  const prompt = `You are a translation expert. Generate a presentation template for introducing language LEGOs (vocabulary items) to learners whose known language is ${knownLangName} (${knownLang}).
+
+The template MUST be written entirely in ${knownLangName}. It introduces a target language word/phrase to the learner.
+
+It must contain exactly these three placeholders (keep them as-is, do not translate them):
+- {target_lang_name} — will be replaced with the name of the target language in ${knownLangName}
+- {known} — will be replaced with the word/phrase in the learner's known language
+- {seed} — will be replaced with a context sentence in the learner's known language
+
+Here are working examples in other languages:
+${exampleBlock}
+
+The pattern is: "[target_lang_name] [for] — '{known}' — [as in] — '{seed}' — [is]:"
+Translate this pattern naturally into ${knownLangName}. Use appropriate punctuation for ${knownLangName}.
+
+Reply with ONLY the template string, nothing else.`
+
+  logger.info(`Generating presentation template for ${knownLang} (${knownLangName}) via Haiku...`)
+  const template = await claudeChat(prompt, { model: 'haiku', timeout: 30000 })
+
+  // Validate it contains all required placeholders
+  if (!template.includes('{target_lang_name}') || !template.includes('{known}') || !template.includes('{seed}')) {
+    logger.error(`Generated template for ${knownLang} is missing placeholders: "${template}"`)
+    // Fall back to a simple universal pattern
+    const fallback = `{target_lang_name} — '{known}' — '{seed}' —:`
+    logger.warn(`Using minimal fallback template for ${knownLang}`)
+    return fallback
+  }
+
+  // 3. Cache in DB for future use
+  const { error: insertError } = await supabase
+    .from('presentation_templates')
+    .insert({
+      template: template.trim(),
+      known_lang: knownLang,
+      priority: 5, // Lower than hand-verified (10)
+      is_active: true
+    })
+
+  if (insertError) {
+    logger.warn(`Failed to cache template for ${knownLang}: ${insertError.message}`)
+  } else {
+    logger.info(`Cached new presentation template for ${knownLang}: "${template.trim()}"`)
+  }
+
+  return template.trim()
+}
 
 /**
  * Check if text is punctuation-only (TTS can't generate these)
@@ -386,12 +470,14 @@ async function linkAudioIds(courseCode) {
 
   if (!error) {
     const presResult = await linkPresentationAudio(courseCode)
+    const compPresResult = await linkComponentPresentationAudio(courseCode)
     const result = data || {}
     result.presentations = presResult.linked || 0
+    result.component_presentations = compPresResult.linked || 0
     const rpcTotal = (result.phrases_known || 0) + (result.phrases_target1 || 0) + (result.phrases_target2 || 0)
       + (result.legos_known || 0) + (result.legos_target1 || 0) + (result.legos_target2 || 0)
       + (result.seeds_known || 0) + (result.seeds_target1 || 0) + (result.seeds_target2 || 0)
-    result.total = rpcTotal + (result.presentations || 0)
+    result.total = rpcTotal + (result.presentations || 0) + (result.component_presentations || 0)
     logger.info(`linkAudioIds: linked via RPC for ${courseCode}`, JSON.stringify(result))
     return result
   }
@@ -511,6 +597,11 @@ async function linkAudioIdsBatch(courseCode) {
   result.presentations = presResult.linked || 0
   result.total += result.presentations
 
+  // Component presentation audio
+  const compPresResult = await linkComponentPresentationAudio(courseCode)
+  result.component_presentations = compPresResult.linked || 0
+  result.total += result.component_presentations
+
   logger.info(`linkAudioIdsBatch: total linked = ${result.total} for ${courseCode}`)
   return result
 }
@@ -575,6 +666,105 @@ async function linkPresentationAudio(courseCode) {
 
   if (linked > 0) {
     logger.info(`linkPresentationAudio: linked ${linked} presentation audio IDs for ${courseCode}`)
+  }
+
+  return { linked }
+}
+
+/**
+ * Link presentation audio IDs to component phrases (course_practice_phrases).
+ * Component presentation audio is matched by text_normalized + role.
+ * This mirrors linkPresentationAudio but for components instead of LEGOs.
+ */
+async function linkComponentPresentationAudio(courseCode) {
+  // 1. Get component phrases missing presentation_audio_id
+  const PAGE_SIZE = 1000
+  const components = []
+  let offset = 0
+  while (true) {
+    const { data, error } = await supabase
+      .from('course_practice_phrases')
+      .select('id, seed_number, lego_index, known_text')
+      .eq('course_code', courseCode)
+      .eq('phrase_role', 'component')
+      .is('presentation_audio_id', null)
+      .order('id')
+      .range(offset, offset + PAGE_SIZE - 1)
+    if (error || !data?.length) break
+    components.push(...data)
+    if (data.length < PAGE_SIZE) break
+    offset += PAGE_SIZE
+  }
+
+  if (components.length === 0) return { linked: 0 }
+
+  // 2. Get course info and presentation template
+  const { data: course } = await supabase
+    .from('courses')
+    .select('known_lang, target_lang')
+    .eq('course_code', courseCode)
+    .single()
+  if (!course) return { linked: 0 }
+
+  const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
+  const template = await getOrCreatePresentationTemplate(course.known_lang)
+
+  // 3. Load parent M-LEGOs for "as in" context
+  const seedNumbers = [...new Set(components.map(c => c.seed_number))]
+  const parentMap = new Map()
+  for (let i = 0; i < seedNumbers.length; i += 500) {
+    const batch = seedNumbers.slice(i, i + 500)
+    const { data: parents } = await supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, known_text')
+      .eq('course_code', courseCode)
+      .eq('type', 'M')
+      .in('seed_number', batch)
+    for (const l of (parents || [])) {
+      parentMap.set(`${l.seed_number}:${l.lego_index}`, l)
+    }
+  }
+
+  // 4. Build presentation text for each component and look up audio
+  const { data: allPresAudio } = await supabase
+    .from('course_audio')
+    .select('id, text_normalized, s3_key')
+    .eq('course_code', courseCode)
+    .eq('role', 'presentation')
+    .eq('language', course.known_lang)
+    .not('s3_key', 'like', 'pending/%')
+    .limit(100000)
+
+  const presAudioMap = new Map()
+  for (const a of (allPresAudio || [])) {
+    presAudioMap.set(a.text_normalized, a.id)
+  }
+
+  // 5. Match and link
+  let linked = 0
+  for (const comp of components) {
+    const parent = parentMap.get(`${comp.seed_number}:${comp.lego_index}`)
+    if (!parent) continue
+
+    const presText = template
+      .replace('{target_lang_name}', targetLangName)
+      .replace('{known}', comp.known_text)
+      .replace('{seed}', parent.known_text)
+
+    const norm = normalizeForAudio(presText)
+    const audioId = presAudioMap.get(norm)
+    if (!audioId) continue
+
+    const { error } = await supabase
+      .from('course_practice_phrases')
+      .update({ presentation_audio_id: audioId })
+      .eq('id', comp.id)
+
+    if (!error) linked++
+  }
+
+  if (linked > 0) {
+    logger.info(`linkComponentPresentationAudio: linked ${linked} component presentation audio IDs for ${courseCode}`)
   }
 
   return { linked }
@@ -1065,19 +1255,8 @@ app.post('/generate/:courseCode', async (req, res) => {
     {
       const compTargetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
 
-      // Load presentation template
-      const { data: compTemplates } = await supabase
-        .from('presentation_templates')
-        .select('template')
-        .eq('known_lang', course.known_lang)
-        .eq('is_active', true)
-        .order('priority', { ascending: false })
-        .limit(1)
-
-      let compTemplate = compTemplates?.[0]?.template
-      if (!compTemplate) {
-        compTemplate = "The {target_lang_name} for: '{known}', as in — '{seed}', is:"
-      }
+      // Load (or auto-generate) presentation template for known language
+      const compTemplate = await getOrCreatePresentationTemplate(course.known_lang)
 
       // Load component phrases for this course (within release target)
       const compPhrases = []
@@ -1250,40 +1429,28 @@ app.post('/generate/:courseCode', async (req, res) => {
         (pendingPresentations || []).map(p => p.lego_id).filter(Boolean)
       )
 
-      // Get presentation template for this course
+      // Get (or auto-generate) presentation template for this course
       const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
-      const { data: templates } = await supabase
-        .from('presentation_templates')
-        .select('template')
-        .eq('known_lang', course.known_lang)
-        .eq('is_active', true)
-        .order('priority', { ascending: false })
-        .limit(1)
+      const presentationTemplate = await getOrCreatePresentationTemplate(course.known_lang)
 
-      let presentationTemplate = templates?.[0]?.template
-      if (!presentationTemplate) {
-        presentationTemplate = "The {target_lang_name} for: '{known}', as in — '{seed}', is:"
+      // Build short template (no "as in" context) for LEGOs where no good context exists.
+      // Universal: splice out everything between {known}'s closing delimiter and
+      // {seed}'s closing delimiter. Works for any language's template.
+      let shortPresentationTemplate = presentationTemplate
+      const _knownIdx = presentationTemplate.indexOf('{known}')
+      const _seedIdx = presentationTemplate.indexOf('{seed}')
+      if (_knownIdx !== -1 && _seedIdx !== -1) {
+        const _afterKnown = presentationTemplate.substring(_knownIdx + 7)
+        const _knownEndMatch = _afterKnown.match(/^['"}\u300D]?[,]\s*|^['"}\u300D]?\s*[—–]\s*/)
+        const _knownClauseEnd = _knownIdx + 7 + (_knownEndMatch ? _knownEndMatch[0].length : 0)
+
+        const _afterSeed = presentationTemplate.substring(_seedIdx + 6)
+        const _seedEndMatch = _afterSeed.match(/^['"}\u300D]?(?:\uCC98\uB7FC|\u306E\u3088\u3046\u306B|[^\s,\u2014\u2013{]*?)?\s*[,\u2014\u2013]\s*/)
+        const _seedClauseEnd = _seedIdx + 6 + (_seedEndMatch ? _seedEndMatch[0].length : 0)
+
+        shortPresentationTemplate = presentationTemplate.substring(0, _knownClauseEnd)
+          + presentationTemplate.substring(_seedClauseEnd)
       }
-
-      // Build short template (no "as in" context) for LEGOs where no good context exists
-      const shortPresentationTemplate = presentationTemplate
-        .replace(/, as in — '\{seed\}',/g, ',')          // eng (current)
-        .replace(/ as in — '\{seed\}' —/g, '')          // eng (legacy)
-        .replace(/ como en — '\{seed\}' —/g, '')         // spa
-        .replace(/ comme dans — '\{seed\}' —/g, '')      // fra
-        .replace(/ wie in — '\{seed\}' —/g, '')           // deu
-        .replace(/ como em — '\{seed\}' —/g, '')          // por
-        .replace(/ come in — '\{seed\}' —/g, '')          // ita
-        .replace(/ fel yn — '\{seed\}' —/g, '')           // cym
-        .replace(/ — 「\{seed\}」のように —/g, '')          // jpn
-        .replace(/ — '\{seed\}'처럼 —/g, '')               // kor
-        .replace(/ كما في — '\{seed\}' —/g, '')           // ara
-        .replace(/ kaip — '\{seed\}' —/g, '')             // lit
-        .replace(/ 如「\{seed\}」—/g, '')                   // zho/cmn
-        .replace(/, as in '\{seed\}'/g, '')               // eng (legacy)
-        .replace(/，如"\{seed\}"/g, '')                    // zho (legacy)
-        .replace(/, fel yn '\{seed\}'/g, '')              // cym (legacy)
-        .replace(/, como en '\{seed\}'/g, '')             // spa (legacy)
 
       // Load seed sentences for context
       const legoSeedNumbers = [...new Set(newLegos.map(l => l.seed_number).filter(Boolean))]
@@ -2190,23 +2357,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     const targetLangName = getLocalisedLangName(targetLang, knownLang)
 
     // Get template for this known language
-    const { data: templates, error: templateError } = await supabase
-      .from('presentation_templates')
-      .select('*')
-      .eq('known_lang', knownLang)
-      .eq('is_active', true)
-      .order('priority', { ascending: false })
-      .limit(1)
-
-    if (templateError) throw templateError
-
-    // Fall back to default English template if no specific one found
-    let template = templates?.[0]?.template
-    if (!template) {
-      template = "The {target_lang_name} for: '{known}', as in — '{seed}', is:"
-      logger.warn(`No template found for ${knownLang}, using default English`)
-    }
-
+    const template = await getOrCreatePresentationTemplate(knownLang)
     logger.info(`Using template: ${template}`)
 
     // Get LEGOs where is_new=true (only new introductions need presentation audio)
@@ -3277,19 +3428,8 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       parentMap.set(`${l.seed_number}:${l.lego_index}`, l)
     }
 
-    // 4. Get presentation template
-    const { data: templates } = await supabase
-      .from('presentation_templates')
-      .select('template')
-      .eq('known_lang', knownLang)
-      .eq('is_active', true)
-      .order('priority', { ascending: false })
-      .limit(1)
-
-    let presentationTemplate = templates?.[0]?.template
-    if (!presentationTemplate) {
-      presentationTemplate = "The {target_lang_name} for: '{known}', as in — '{seed}', is:"
-    }
+    // 4. Get (or auto-generate) presentation template
+    const presentationTemplate = await getOrCreatePresentationTemplate(knownLang)
 
     // 5. Collect all unique texts we need audio for
     const needed = []
