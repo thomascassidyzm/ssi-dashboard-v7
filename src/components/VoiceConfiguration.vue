@@ -459,6 +459,86 @@ const previewPhrases = {
     "Я хочу выучить как можно больше",
     "Это работает очень хорошо для меня"
   ],
+  sin: [
+    "මම සෑම දිනකම පුහුණු වීමට උත්සාහ කරනවා",
+    "මට හැකි තරම් ඉගෙන ගන්න ඕනේ",
+    "මේක මට හරිම හොඳින් වැඩ කරනවා"
+  ],
+  tam: [
+    "நான் தினமும் பயிற்சி செய்ய முயற்சிக்கிறேன்",
+    "என்னால் முடிந்தவரை கற்றுக்கொள்ள விரும்புகிறேன்",
+    "இது எனக்கு மிகவும் நன்றாக வேலை செய்கிறது"
+  ],
+  fas: [
+    "من هر روز سعی می‌کنم تمرین کنم",
+    "می‌خواهم تا جایی که می‌توانم یاد بگیرم",
+    "این روش برای من خیلی خوب کار می‌کند"
+  ],
+  prs: [
+    "من هر روز کوشش می‌کنم تمرین کنم",
+    "می‌خواهم هر قدر که بتوانم یاد بگیرم",
+    "این برایم بسیار خوب کار می‌کند"
+  ],
+  pus: [
+    "زه هره ورځ د تمرین هڅه کوم",
+    "زه غواړم هر څومره چې وکولای شم زده کړم",
+    "دا زما لپاره ډیره ښه کار کوي"
+  ],
+  nor: [
+    "Jeg prøver å øve hver dag",
+    "Jeg vil lære så mye som mulig",
+    "Dette fungerer veldig bra for meg"
+  ],
+  nob: [
+    "Jeg prøver å øve hver dag",
+    "Jeg vil lære så mye som mulig",
+    "Dette fungerer veldig bra for meg"
+  ],
+  nno: [
+    "Eg prøver å øve kvar dag",
+    "Eg vil lære så mykje som mogleg",
+    "Dette fungerer veldig bra for meg"
+  ],
+  bul: [
+    "Опитвам се да практикувам всеки ден",
+    "Искам да науча колкото е възможно повече",
+    "Това работи наистина добре за мен"
+  ],
+  gsw: [
+    "Ich versuech jede Tag z üebe",
+    "Ich wett so viel wie möglech lehre",
+    "Das funktioniert würklech guet für mich"
+  ],
+  ukr: [
+    "Я намагаюся практикуватися щодня",
+    "Я хочу вивчити якомога більше",
+    "Це працює дуже добре для мене"
+  ],
+  gla: [
+    "Tha mi a' feuchainn ri cleachdadh a h-uile latha",
+    "Tha mi airson ionnsachadh cho mòr 's a ghabhas",
+    "Tha seo ag obair glè mhath dhomh"
+  ],
+  cat: [
+    "Intento practicar cada dia",
+    "Vull aprendre tant com pugui",
+    "Això em funciona molt bé"
+  ],
+  isl: [
+    "Ég reyni að æfa mig á hverjum degi",
+    "Ég vil læra eins mikið og ég get",
+    "Þetta virkar mjög vel fyrir mig"
+  ],
+  tha: [
+    "ผมพยายามฝึกทุกวัน",
+    "ผมอยากเรียนรู้ให้ได้มากที่สุด",
+    "วิธีนี้ได้ผลดีมากสำหรับผม"
+  ],
+  hye: [
+    "Ես փորձում եմ ամեն օր վարժել",
+    "Ես ուզում եմ սովորել հնարավորինս շատ",
+    "Սա շատ լավ է աշխատում ինձ համար"
+  ],
   default: [
     "I'm trying to practice every day",
     "I want to learn as much as I can"
