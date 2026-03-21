@@ -276,19 +276,27 @@ app.post('/api/auth/generate-code', async (req, res) => {
   }
 })
 
-// GET /api/auth/me — get current user from session (supports both JWT and old sessions)
+// GET /api/auth/me — get current user from session or email lookup
 app.get('/api/auth/me', async (req, res) => {
+  // Path 1: Bearer token (JWT or old session)
   const token = req.headers.authorization?.replace('Bearer ', '')
-  if (!token) return res.status(401).json({ error: 'No session' })
+  if (token) {
+    const supabaseUser = await verifySupabaseJWT(token)
+    if (supabaseUser) return res.json(supabaseUser)
 
-  // Try Supabase JWT first
-  const supabaseUser = await verifySupabaseJWT(token)
-  if (supabaseUser) return res.json({ user: supabaseUser })
+    const user = await authValidateSession(token)
+    if (user) return res.json(user)
+  }
 
-  // Fall back to old session
-  const user = await authValidateSession(token)
-  if (!user) return res.status(401).json({ error: 'Invalid or expired session' })
-  res.json({ user })
+  // Path 2: Email query param (used by frontend when direct Supabase is blocked by CORS)
+  const email = req.query.email
+  if (email) {
+    const user = await authGetUser(email)
+    if (user) return res.json(user)
+    return res.status(404).json({ error: 'User not found' })
+  }
+
+  return res.status(401).json({ error: 'No session or email provided' })
 })
 
 // POST /api/auth/dev-login — dev bypass, only in non-production
