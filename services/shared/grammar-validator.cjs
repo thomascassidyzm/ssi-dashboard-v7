@@ -12,16 +12,7 @@
  * - "This make me happy" → "This makes me happy"
  */
 
-const Anthropic = require('@anthropic-ai/sdk');
-
-let anthropic = null;
-
-function initClient() {
-  if (!anthropic && process.env.ANTHROPIC_API_KEY) {
-    anthropic = new Anthropic();
-  }
-  return anthropic;
-}
+const { claudeChat } = require('./claude-cli.cjs');
 
 /**
  * Validate English phrases for natural grammar
@@ -30,13 +21,6 @@ function initClient() {
  * @returns {Promise<{valid: boolean, errors: Array<{phrase: string, issue: string, suggestion: string}>}>}
  */
 async function validateGrammar(phrases) {
-  const client = initClient();
-
-  if (!client) {
-    console.warn('[GrammarValidator] No API key - skipping grammar check');
-    return { valid: true, errors: [], skipped: true };
-  }
-
   if (!phrases || phrases.length === 0) {
     return { valid: true, errors: [] };
   }
@@ -72,13 +56,7 @@ If ALL phrases are grammatically correct, respond with:
 ONLY output the JSON, nothing else.`;
 
   try {
-    const response = await client.messages.create({
-      model: 'claude-3-5-haiku-20241022',
-      max_tokens: 2000,
-      messages: [{ role: 'user', content: prompt }]
-    });
-
-    const content = response.content[0]?.text || '{"errors": []}';
+    const content = await claudeChat(prompt, { model: 'haiku' });
 
     // Parse JSON response
     let result;

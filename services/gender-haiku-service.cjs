@@ -10,16 +10,7 @@
  * @module gender-haiku-service
  */
 
-const Anthropic = require('@anthropic-ai/sdk')
-
-let anthropic = null
-
-function initClient() {
-  if (!anthropic && process.env.ANTHROPIC_API_KEY) {
-    anthropic = new Anthropic()
-  }
-  return anthropic
-}
+const { claudeChat } = require('./shared/claude-cli.cjs')
 
 // Only these languages have grammatical gender agreement that affects TTS
 const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara']
@@ -127,26 +118,10 @@ function parseResponse(content) {
  * @returns {Array<{text: string, expandedText: string, wasModified: boolean}>}
  */
 async function callHaikuBatch(items, language, role) {
-  const client = initClient()
-  if (!client) {
-    // No API key — return originals
-    return items.map(item => ({
-      text: item.text,
-      expandedText: item.text,
-      wasModified: false
-    }))
-  }
-
   try {
     const prompt = buildPrompt(items, language, role)
 
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-5-20250929',
-      max_tokens: 4096,
-      messages: [{ role: 'user', content: prompt }]
-    })
-
-    const content = response.content[0]?.text || ''
+    const content = await claudeChat(prompt, { model: 'sonnet' })
     const parsed = parseResponse(content)
 
     if (!parsed?.results || !Array.isArray(parsed.results)) {

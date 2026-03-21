@@ -27,17 +27,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs-extra');
 const path = require('path');
-const Anthropic = require('@anthropic-ai/sdk');
+const { claudeChat } = require('../../shared/claude-cli.cjs');
 
 // Supabase client
 const { createClient } = require('@supabase/supabase-js');
 
-// Anthropic client for direct API generation
-let anthropic = null;
-if (process.env.ANTHROPIC_API_KEY) {
-  anthropic = new Anthropic();
-  console.log(`[Phase 0] Anthropic API configured`);
-}
+// Claude CLI configured (uses Max Plan subscription, not API key)
+console.log(`[Phase 0] Claude CLI configured (via claude --print)`);
 
 const PORT = process.env.PHASE0_PORT || 3455;
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 0 (Language Brief)';
@@ -389,14 +385,6 @@ app.post('/api/language-brief/generate', async (req, res) => {
     }
   }
 
-  // Check if API is available
-  if (!anthropic) {
-    return res.status(503).json({
-      error: 'Anthropic API not configured',
-      message: 'Set ANTHROPIC_API_KEY in .env to enable brief generation'
-    });
-  }
-
   // Load prompt template
   const promptTemplate = await fs.readFile(path.join(__dirname, 'PROMPT.md'), 'utf8');
 
@@ -409,18 +397,14 @@ ${sample_seeds?.length > 0 ? `Sample seeds from the course:\n${JSON.stringify(sa
 
 Follow the instructions in the system prompt exactly. Return ONLY valid JSON.`;
 
-  console.log(`[Phase 0] Calling Claude API to generate brief...`);
+  console.log(`[Phase 0] Calling Claude CLI to generate brief...`);
 
   try {
-    const response = await anthropic.messages.create({
-      model: 'claude-opus-4-5-20251101',
-      max_tokens: 16000,
+    const responseText = await claudeChat(userMessage, {
+      model: 'opus',
       system: promptTemplate,
-      messages: [{ role: 'user', content: userMessage }]
+      timeout: 300000 // 5 min for opus
     });
-
-    // Extract JSON from response
-    const responseText = response.content[0].text;
     let brief;
 
     try {

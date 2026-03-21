@@ -2,9 +2,7 @@
  * Phrase scoring via Claude Haiku — shared by seed-complete and preflight routes.
  */
 
-const Anthropic = require('@anthropic-ai/sdk');
-
-const client = new Anthropic();
+const { claudeChat } = require('../../shared/claude-cli.cjs');
 
 // ─── Thresholds ──────────────────────────────────────────────────────────────
 
@@ -65,13 +63,7 @@ Return ONLY a JSON array (no markdown, no explanation) with one object per phras
 Phrases to score:
 ${JSON.stringify(phraseList, null, 2)}`;
 
-  const response = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 8192,
-    messages: [{ role: 'user', content: prompt }],
-  });
-
-  const text = response.content[0].text.trim();
+  const text = (await claudeChat(prompt, { model: 'haiku' })).trim();
   const match = text.match(/\[[\s\S]*\]/);
   if (!match) throw new Error('No JSON array found in Haiku response');
   return JSON.parse(match[0]);
