@@ -429,11 +429,6 @@ module.exports = function (ctx) {
       const { courseCode } = req.params;
       const terminal = req.query.terminal || 'iTerm2';
 
-      const { data: activeJob } = await ctx.supabase
-        .from('build_jobs').select('id')
-        .eq('course_code', courseCode).eq('pass', 'translate').in('status', ['running']).maybeSingle();
-      if (activeJob) return res.status(409).json({ error: 'Translation already running' });
-
       // Initialize course seeds from canonical before spawning agent
       // (GET translate endpoint calls initializeCourseSeeds as side effect)
       const initResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/course/${courseCode}/translate?limit=1`);
@@ -475,10 +470,7 @@ module.exports = function (ctx) {
       const { courseCode } = req.params;
       const terminal = req.query.terminal || 'iTerm2';
 
-      const { data: activeJob } = await ctx.supabase
-        .from('build_jobs').select('id')
-        .eq('course_code', courseCode).eq('pass', 'decompose').in('status', ['running']).maybeSingle();
-      if (activeJob) return res.status(409).json({ error: 'Decompose agent already running' });
+
 
       const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/decompose`);
       if (!briefResp.ok) throw new Error(`Failed to fetch decompose brief: ${briefResp.status}`);
@@ -516,10 +508,7 @@ module.exports = function (ctx) {
       const { courseCode } = req.params;
       const terminal = req.body?.terminal || req.query.terminal || 'iTerm2';
 
-      const { data: activeJob } = await ctx.supabase
-        .from('build_jobs').select('id')
-        .eq('course_code', courseCode).eq('pass', 'build-team').in('status', ['running']).maybeSingle();
-      if (activeJob) return res.status(409).json({ error: 'Build Team already running' });
+
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
@@ -557,10 +546,7 @@ module.exports = function (ctx) {
       const { courseCode } = req.params;
       const terminal = req.query.terminal || 'iTerm2';
 
-      const { data: activeJob } = await ctx.supabase
-        .from('build_jobs').select('id')
-        .eq('course_code', courseCode).eq('pass', 'final-pass').in('status', ['running']).maybeSingle();
-      if (activeJob) return res.status(409).json({ error: 'Final Pass already running' });
+
 
       const seeds = req.query.seeds || null; // comma-separated seed numbers, or null for all
       const seedList = seeds ? seeds.split(',').map(Number).filter(n => n > 0) : null;
@@ -607,10 +593,7 @@ module.exports = function (ctx) {
       const { courseCode } = req.params;
       const terminal = req.query.terminal || 'iTerm2';
 
-      const { data: activeJob } = await ctx.supabase
-        .from('build_jobs').select('id')
-        .eq('course_code', courseCode).eq('pass', 'component-backfill').in('status', ['running']).maybeSingle();
-      if (activeJob) return res.status(409).json({ error: 'Component backfill already running' });
+
 
       const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/component-backfill`);
       if (!briefResp.ok) throw new Error(`Failed to fetch component-backfill brief: ${briefResp.status}`);
