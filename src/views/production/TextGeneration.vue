@@ -194,6 +194,15 @@
           </div>
         </div>
 
+        <!-- Process Activity Banner -->
+        <div v-if="processActive && latestProcessMessage" class="pipeline-card border-cyan-500/30 bg-cyan-500/5">
+          <div class="flex items-center gap-3">
+            <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span class="text-xs text-cyan-300">{{ latestProcessMessage }}</span>
+            <span class="text-xs text-slate-500 ml-auto">{{ formatSecondsAgo(secondsSince(lastProgressMessageAt)) }}</span>
+          </div>
+        </div>
+
         <!-- Stage 1: Translate -->
         <div class="pipeline-card" :class="stageCardClass('translate')">
           <div class="flex items-center justify-between">
@@ -227,14 +236,14 @@
                 >Check</button>
                 <button
                   @click="startTranslation"
-                  :disabled="translateStarting"
+                  :disabled="translateStarting || processActive"
                   class="px-2 py-0.5 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
                 >{{ translateStarting ? 'Spawning...' : 'Restart' }}</button>
               </template>
               <button
                 v-else
                 @click="startTranslation"
-                :disabled="translateStarting"
+                :disabled="translateStarting || processActive"
                 class="px-3 py-1 bg-blue-600/20 border border-blue-500/50 text-blue-400 hover:border-blue-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ translateStarting ? 'Spawning...' : (progress.seedsTranslated > 0 ? 'Continue Translate' : 'Start Translate') }}
@@ -272,14 +281,14 @@
                 >Check</button>
                 <button
                   @click="startBuildTeam"
-                  :disabled="buildTeamStarting"
+                  :disabled="buildTeamStarting || processActive"
                   class="px-2 py-0.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
                 >{{ buildTeamStarting ? 'Spawning...' : 'Restart' }}</button>
               </template>
               <button
                 v-else
                 @click="startBuildTeam"
-                :disabled="buildTeamStarting"
+                :disabled="buildTeamStarting || processActive"
                 class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ buildTeamStarting ? 'Spawning...' : buildTeamButtonLabel }}
@@ -622,6 +631,7 @@ const finalPassStarting = ref(false)
 // Activity tracking — detect when counts are changing (agent is working)
 const lastSeedChangeAt = ref(null)    // timestamp of last decomposed_at count change
 const lastTranslateChangeAt = ref(null) // timestamp of last seedsTranslated change
+const lastProgressMessageAt = ref(null) // timestamp of latest system progress message
 let statsBaselineSet = false           // skip first update (initial load isn't "activity")
 const now = ref(Date.now())
 let tickInterval = null
@@ -682,7 +692,18 @@ watch(buildMonitor.seedGrid, (grid) => {
 }, { deep: true })
 
 watch(buildMonitor.messages, (msgs) => {
-  if (msgs && msgs.length > 0) orchestratorMessages.value = msgs
+  if (msgs && msgs.length > 0) {
+    orchestratorMessages.value = msgs
+    // Track latest system progress message for activity detection
+    const systemMsgs = msgs.filter(m => m.direction === 'agent_to_human' && m.metadata?.source === 'system')
+    if (systemMsgs.length > 0) {
+      const latest = systemMsgs[systemMsgs.length - 1]
+      const latestTime = new Date(latest.created_at).getTime()
+      if (!lastProgressMessageAt.value || latestTime > lastProgressMessageAt.value) {
+        lastProgressMessageAt.value = latestTime
+      }
+    }
+  }
 }, { deep: true })
 
 // Seed grid phrase viewer state
@@ -747,6 +768,20 @@ function formatSecondsAgo(secs) {
   if (secs < 3600) return `${Math.floor(secs / 60)}m ago`
   return `${Math.floor(secs / 3600)}h ago`
 }
+
+// Is any background process active? (audio gen, presentation regen, gender prep, etc.)
+// Based on system progress messages in orchestrator_messages
+const processActive = computed(() => {
+  const secs = secondsSince(lastProgressMessageAt.value)
+  return secs !== null && secs * 1000 < ACTIVE_THRESHOLD_MS
+})
+
+// Latest process update message text (for display)
+const latestProcessMessage = computed(() => {
+  const systemMsgs = orchestratorMessages.value.filter(m => m.direction === 'agent_to_human' && m.metadata?.source === 'system')
+  if (systemMsgs.length === 0) return null
+  return systemMsgs[systemMsgs.length - 1].message
+})
 
 const buildActive = computed(() => {
   const secs = secondsSince(lastSeedChangeAt.value)
