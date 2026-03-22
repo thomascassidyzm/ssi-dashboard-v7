@@ -13,6 +13,7 @@
 const { Router } = require('express');
 const { getLanguageName } = require('../lib/language-config.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
+const { emitProgress } = require('../../shared/emit-progress.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -350,6 +351,7 @@ module.exports = function (ctx) {
     }
 
     console.log(`[SEED-EDITOR] Seeds approved for ${courseCode}`);
+    emitProgress(supabase, courseCode, 'Seed translations approved — ready for decomposition', { phase: 'translate', action: 'approved' });
     res.json({ ok: true, course_code: courseCode, translations_approved_at: merged.translations_approved_at });
   });
 
@@ -406,6 +408,7 @@ module.exports = function (ctx) {
     }
 
     console.log(`Batch translation for ${courseCode}: ${updated}/${translations.length} updated`);
+    emitProgress(supabase, courseCode, `Translation batch: ${updated}/${translations.length} seeds translated`, { phase: 'translate', action: 'batch', updated, total: translations.length });
 
     res.json({
       course_code: courseCode,

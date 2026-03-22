@@ -37,6 +37,7 @@ const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
 
 const { claudeChat } = require('../shared/claude-cli.cjs')
+const { emitProgress } = require('../shared/emit-progress.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 const { toIso3, getName: getLangEnglishName, databaseToManifest } = require('../language-code-service.cjs')
@@ -1640,6 +1641,12 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Start progress tracking
     startWork('generate', courseCode, uniqueNeeded.length)
 
+    // Emit narrative beat
+    const roleCounts = {}
+    for (const n of uniqueNeeded) roleCounts[n.role] = (roleCounts[n.role] || 0) + 1
+    const roleDesc = Object.entries(roleCounts).map(([r, c]) => `${c} ${r}`).join(', ')
+    emitProgress(supabase, courseCode, `Audio generation started: ${uniqueNeeded.length} files (${roleDesc})`, { phase: 'audio', action: 'generate', total: uniqueNeeded.length, roles: roleCounts })
+
     // Process items in parallel with concurrency limit
     logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${concurrencyToUse}`)
 
@@ -1859,6 +1866,11 @@ app.post('/generate/:courseCode', async (req, res) => {
         }
       }
 
+      // Emit progress every 10 batches
+      if (batchNum % 10 === 0) {
+        emitProgress(supabase, courseCode, `Audio: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? ` (${results.failed} failed)` : ''}`, { phase: 'audio', action: 'generate', progress: results.success, total: uniqueNeeded.length, failed: results.failed })
+      }
+
       // Periodically link audio IDs every 10 batches so progress is visible
       // even if generation is interrupted
       if (batchNum % 10 === 0) {
@@ -1891,6 +1903,10 @@ app.post('/generate/:courseCode', async (req, res) => {
     if (!wasCancelled && results.success > 0) {
       await bumpCourseVersion(supabase, courseCode, 'patch')
     }
+
+    // Emit completion
+    const statusWord = wasCancelled ? 'Audio generation cancelled' : 'Audio generation complete'
+    emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? `, ${results.failed} failed` : ''}${linked > 0 ? `, ${linked} audio IDs linked` : ''}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, linked })
 
     res.json({
       status: wasCancelled ? 'cancelled' : 'completed',
@@ -3074,6 +3090,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       contextStats,
       message: `${presentations.length} LEGO presentations processed (${idsToDelete.length} text changed, ${unchangedLegoIds.size} unchanged, ${presentations.length - idsToDelete.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
     })
+
+    emitProgress(supabase, courseCode, `Presentation text regenerated: ${presentations.length} LEGOs, ${componentPresentations.length} components — ready for audio generation`, { phase: 'audio', action: 'regenerate-presentations', legos: presentations.length, components: componentPresentations.length })
 
   } catch (error) {
     logger.error('Regenerate presentations error:', error)

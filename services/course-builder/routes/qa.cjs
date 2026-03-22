@@ -15,6 +15,7 @@ const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
 const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
+const { emitProgress } = require('../../shared/emit-progress.cjs');
 
 // TODO: Extract generateStrictQABrief to briefs module
 function generateStrictQABrief({ courseCode, courseInfo }) {
@@ -409,6 +410,7 @@ module.exports = function qaRoutes(ctx) {
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       console.log(`[QA-STRICT] Spawning parallel golden QA coordinator for ${courseCode} seeds 11-50 (8 sub-agents) in ${effectiveTerminal}`);
+      emitProgress(ctx.supabase, courseCode, 'Golden QA started: checking seeds 11–50 with 8 parallel agents', { phase: 'qa', action: 'golden-qa-start' });
 
       let agent;
       if (effectiveTerminal === 'headless') {
@@ -594,6 +596,7 @@ return "spawned"`;
       }
 
       console.log(`[QA] Starting parallel QA for ${courseCode}: ${uncheckedPhrases}/${totalPhrases} unchecked phrases`);
+      emitProgress(supabase, courseCode, `QA pass started: ${uncheckedPhrases}/${totalPhrases} phrases to check`, { phase: 'qa', action: 'qa-start', unchecked: uncheckedPhrases, total: totalPhrases });
 
       // spawnParallelQAAgent inline — the lib stub throws, so run the logic here
       const { data: courseInfo } = await supabase

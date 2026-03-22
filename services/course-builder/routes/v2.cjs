@@ -20,6 +20,7 @@ const { loadCourseVocab, loadTranslationVocab, addToCourseVocab, invalidateVocab
 const { checkTiling, checkVocabViolations, formatDecompositionPatterns } = require('../lib/validation.cjs');
 const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cjs');
 const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
+const { emitProgress } = require('../../shared/emit-progress.cjs');
 
 module.exports = function(ctx) {
   const router = Router();
@@ -1139,6 +1140,8 @@ module.exports = function(ctx) {
         .single();
 
       if (jobErr) return res.status(500).json({ ok: false, error: `Failed to create build job: ${jobErr.message}` });
+
+      emitProgress(ctx.supabase, courseCode, `Build pipeline started: seeds ${progress.completed + 1}–${effectiveTarget} (${effectiveTarget - progress.completed} to build)`, { phase: 'build', action: 'pipeline-start', from: progress.completed + 1, to: effectiveTarget });
 
       // Generate and spawn v2 coordinator
       const goldenSeedMarkdown = await fetchGoldenSeedExamples(ctx, courseCode,

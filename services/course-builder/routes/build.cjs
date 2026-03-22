@@ -9,6 +9,7 @@ const path = require('path');
 const { getBuildProgress, stopBuild, getBuildStatus } = require('../lib/build-manager.cjs');
 const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
+const { emitProgress } = require('../../shared/emit-progress.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -47,6 +48,8 @@ module.exports = function (ctx) {
       }
 
       console.log(`[BUILD] JOB DONE (shell wrapper): ${jobId}`);
+      const passLabel = job.pass === 'final-pass' ? 'Final pass' : job.pass === 'pass_1' ? 'Translation' : 'Build';
+      emitProgress(ctx.supabase, job.course_code, `${passLabel} job complete`, { phase: 'build', action: 'job-done', pass: job.pass, jobId });
       res.json({ ok: true });
     } catch (err) {
       console.error(`[BUILD] job-done error:`, err.message);

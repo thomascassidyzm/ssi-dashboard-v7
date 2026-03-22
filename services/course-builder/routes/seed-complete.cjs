@@ -30,13 +30,14 @@ const {
   isCheckpointRequired, approveCheckpoint, isQAPending,
   CHECKPOINT_SEEDS, QA_DRIFT_THRESHOLD,
 } = require('../lib/checkpoint.cjs');
+const { emitProgress } = require('../../shared/emit-progress.cjs');
 
 // ─── Local helpers (only used by these routes) ────────────────────────
 
 const allowValidationBypass = (body) => body.SKIP_VALIDATION === true && (body.seed_number || body.seed) <= 3;
 
 // Languages with no capitalisation concept — skip target lowercasing
-const NO_CAP_TARGET_LANGS = new Set(['jpn', 'zho', 'cmn', 'ara', 'kor', 'heb']);
+const NO_CAP_TARGET_LANGS = new Set(['jpn', 'zho', 'cmn', 'ara', 'kor', 'heb', 'tha', 'mya', 'lao', 'khm']);
 
 // Static allowlist of inherently capitalised words
 const KEEP_CAP_WORDS = new Set([
@@ -47,6 +48,7 @@ const KEEP_CAP_WORDS = new Set([
   'Mandarin', 'Cantonese', 'Gaelic',
   'Nederlands', 'Deutsch', 'Español', 'Português', 'Italiano', 'Français',
   'Cymraeg', 'Gaeilge', 'Gàidhlig',
+  'Thai', 'Burmese', 'Lao', 'Khmer',
 ]);
 
 /**
@@ -1109,25 +1111,31 @@ module.exports = function seedCompleteRoutes(ctx) {
 
             // LEGO CONTAINMENT
             {
-              const useWordContainment = req.query.strict_containment !== 'true'; // default: word-based (handles word-order differences)
+              // Character-based languages (Thai, Chinese, Japanese, Korean) use substring containment
+              // because they have no word spaces. Space-delimited languages use word-based containment.
+              const charBased = isChinese(course_code);
+              const useWordContainment = !charBased && req.query.strict_containment !== 'true';
               const legoTargetNorm = normalizeForContainment(lego.target);
               const containmentFails = allPhrases.filter(p => {
+                if (charBased) {
+                  return !normalizeForContainment(p.target).includes(legoTargetNorm);
+                }
                 if (useWordContainment) {
                   return !checkWordContainment(lego.target, p.target);
                 }
                 return !normalizeForContainment(p.target).includes(legoTargetNorm);
               });
               if (containmentFails.length > 0) {
-                const mode = useWordContainment ? 'word-based' : 'substring';
+                const mode = charBased ? 'substring' : (useWordContainment ? 'word-based' : 'substring');
                 errors.push({
                   type: 'lego_containment',
                   message: `${legoId}: ${containmentFails.length} phrase(s) fail ${mode} containment for LEGO target "${lego.target}"`,
                   lego_id: legoId,
                   lego_target: lego.target,
                   failing_phrases: containmentFails.slice(0, 3).map(p => p.target),
-                  hint: useWordContainment
-                    ? 'Every BUILD and USE phrase must contain ALL words from the LEGO target (German word-order mode).'
-                    : 'Every BUILD and USE phrase MUST contain the exact LEGO target text. No conjugation changes, no substitutions, no omissions.',
+                  hint: (charBased || !useWordContainment)
+                    ? 'Every BUILD and USE phrase MUST contain the exact LEGO target text. No conjugation changes, no substitutions, no omissions.'
+                    : 'Every BUILD and USE phrase must contain ALL words from the LEGO target (German word-order mode).',
                 });
                 console.log(`✗ ${legoId}: CONTAINMENT (${mode}) - ${containmentFails.length} phrases missing LEGO target "${lego.target}"`);
               }
@@ -1147,7 +1155,7 @@ module.exports = function seedCompleteRoutes(ctx) {
       }
 
       // 3b. PHRASE LENGTH RATIO VALIDATION
-      const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'jpn', 'kor'];
+      const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
       const isLogographic = LOGOGRAPHIC_LANGS.includes(targetLang) || LOGOGRAPHIC_LANGS.includes(knownLang);
       const LENGTH_RATIO_THRESHOLD = 2.5;
       const lengthMismatches = [];
@@ -1752,6 +1760,12 @@ module.exports = function seedCompleteRoutes(ctx) {
         });
 
       ctx.emitPipelineEvent(course_code, 'seed:complete', { seed_number: seed_number, legos_count: legos.length, phrases_count: totalPhrases });
+
+      // Emit progress at milestones (every 10 seeds, or first 3)
+      if (seed_number <= 3 || seed_number % 10 === 0 || seed_number === 300) {
+        const newCount = legos.filter(l => l._isNew !== false).length;
+        emitProgress(ctx.supabase, course_code, `Seed ${seed_number} built: ${newCount} new LEGOs, ${totalPhrases} phrases`, { phase: 'build', action: 'seed-complete', seed: seed_number, legos: legos.length, newLegos: newCount, phrases: totalPhrases });
+      }
 
       await bumpCourseVersion(ctx.supabase, course_code, 'minor');
 
