@@ -461,6 +461,14 @@ module.exports = function (ctx) {
       const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode, effectiveTerminal);
 
+      await ctx.supabase.from('orchestrator_messages').insert({
+        course_code: courseCode,
+        direction: 'agent_to_human',
+        message: `Translation agent spawned — translating seeds`,
+        status: 'pending',
+        metadata: { action: 'translate_spawned' }
+      });
+
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Translation agent spawned` });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -536,6 +544,14 @@ module.exports = function (ctx) {
 
       const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
+
+      await ctx.supabase.from('orchestrator_messages').insert({
+        course_code: courseCode,
+        direction: 'agent_to_human',
+        message: `Build team spawned — building seeds`,
+        status: 'pending',
+        metadata: { action: 'build_team_spawned' }
+      });
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Build Team agent spawned` });
     } catch (err) {
@@ -629,6 +645,14 @@ module.exports = function (ctx) {
 
       const claudeCmd = withJobDone(`cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Component Backfill', courseCode);
+
+      await ctx.supabase.from('orchestrator_messages').insert({
+        course_code: courseCode,
+        direction: 'agent_to_human',
+        message: `Component backfill agent spawned — fixing M-LEGO components`,
+        status: 'pending',
+        metadata: { action: 'component_backfill_spawned' }
+      });
 
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: 'Component backfill agent spawned' });
     } catch (err) {

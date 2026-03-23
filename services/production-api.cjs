@@ -7751,6 +7751,14 @@ end tell`
     const BATCH_SIZE = 200
     const estimatedBatches = Math.ceil(estimatedTexts / BATCH_SIZE)
 
+    await supabase.from('orchestrator_messages').insert({
+      course_code: courseCode,
+      direction: 'agent_to_human',
+      message: `Gender prep spawned — processing ${estimatedTexts} texts across ${estimatedBatches} batches`,
+      status: 'pending',
+      metadata: { action: 'gender_prep_spawned' }
+    })
+
     res.json({
       ok: true,
       spawned: true,

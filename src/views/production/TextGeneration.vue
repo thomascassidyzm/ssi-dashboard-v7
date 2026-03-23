@@ -374,10 +374,10 @@
               <button
                 v-else-if="!componentGaps.complete"
                 @click="startComponentBackfill"
-                :disabled="componentBackfillStarting"
+                :disabled="componentBackfillStarting || componentBackfillSpawned"
                 class="px-3 py-1 bg-teal-600/20 border border-teal-500/50 text-teal-400 hover:border-teal-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
-                {{ componentBackfillStarting ? 'Spawning...' : `Fix ${componentGaps.gaps.total} M-LEGOs` }}
+                {{ componentBackfillStarting ? 'Spawning...' : componentBackfillSpawned ? 'Agent working...' : `Fix ${componentGaps.gaps.total} M-LEGOs` }}
               </button>
               <button
                 v-if="componentGaps !== null"
@@ -407,10 +407,10 @@
               <button
                 v-else
                 @click="startGenderPrep"
-                :disabled="genderStarting"
+                :disabled="genderStarting || genderSpawned"
                 class="px-3 py-1 bg-pink-600/20 border border-pink-500/50 text-pink-400 hover:border-pink-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
-                {{ genderStarting ? 'Starting...' : 'Start Gender Prep' }}
+                {{ genderStarting ? 'Starting...' : genderSpawned ? 'Agent working...' : 'Start Gender Prep' }}
               </button>
             </div>
           </div>
@@ -638,10 +638,12 @@ const now = ref(Date.now())
 let tickInterval = null
 const massApproving = ref(false)
 const genderStarting = ref(false)
+const genderSpawned = ref(false)
 const backfillPhrasesStarting = ref(false)
 const backfillPhrasesSpawned = ref(false)
 const componentCheckLoading = ref(false)
 const componentBackfillStarting = ref(false)
+const componentBackfillSpawned = ref(false)
 const componentGaps = ref(null) // null = not checked yet, object = { total_m_legos, gaps: { total, null_components, empty_components, partial_components }, complete }
 const actionError = ref(null) // { message, timestamp } — auto-dismisses after 8s
 let actionErrorTimer = null
@@ -707,6 +709,8 @@ watch(buildMonitor.seedGrid, (grid) => {
   }
 }, { deep: true })
 
+let componentBackfillSpawnedMsgCount = 0
+let genderSpawnedMsgCount = 0
 watch(buildMonitor.messages, (msgs) => {
   if (msgs && msgs.length > 0) {
     orchestratorMessages.value = msgs
@@ -718,6 +722,13 @@ watch(buildMonitor.messages, (msgs) => {
       if (!lastProgressMessageAt.value || latestTime > lastProgressMessageAt.value) {
         lastProgressMessageAt.value = latestTime
       }
+    }
+    // Reset spawned flags once agent posts a follow-up message (beyond the spawn confirmation)
+    if (componentBackfillSpawned.value && msgs.length > componentBackfillSpawnedMsgCount + 1) {
+      componentBackfillSpawned.value = false
+    }
+    if (genderSpawned.value && msgs.length > genderSpawnedMsgCount + 1) {
+      genderSpawned.value = false
     }
   }
 }, { deep: true })
@@ -1309,6 +1320,8 @@ async function startComponentBackfill() {
     })
     const result = await response.json()
     if (result.ok) {
+      componentBackfillSpawnedMsgCount = orchestratorMessages.value.length
+      componentBackfillSpawned.value = true
       buildMonitor.refresh()
     } else {
       showActionError(`Component backfill failed: ${result.error}`)
@@ -1358,6 +1371,8 @@ async function startGenderPrep() {
     })
     const result = await response.json()
     if (result.ok !== false) {
+      genderSpawnedMsgCount = orchestratorMessages.value.length
+      genderSpawned.value = true
       buildMonitor.refresh()
     } else {
       showActionError(`Gender prep failed: ${result.error}`)
