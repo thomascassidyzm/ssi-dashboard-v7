@@ -8059,6 +8059,18 @@ app.post('/api/admin/pm2/fix', async (req, res) => {
   }, 3000)
 })
 
+// POST /api/admin/pm2/stop — stop a named pm2 process (e.g. ssi-dashboard dev server)
+app.post('/api/admin/pm2/stop', async (req, res) => {
+  const name = req.body?.name
+  if (!name) return res.status(400).json({ error: 'name required' })
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 stop ${name} && pm2 save`])
+    res.json({ ok: true, name, output: stdout.trim() })
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message })
+  }
+})
+
 // POST /api/admin/setup-remote — one-time remote setup for headless operation
 // Saves pm2 process list, checks startup config, adds sudoers NOPASSWD for reboot
 app.post('/api/admin/setup-remote', async (req, res) => {
