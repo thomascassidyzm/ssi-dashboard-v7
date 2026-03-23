@@ -8129,6 +8129,22 @@ app.post('/api/admin/setup-remote', async (req, res) => {
   res.json({ ok: true, ...results })
 })
 
+// POST /api/admin/kill-apps — kill non-essential GUI apps to free RAM
+// Kills: Google Chrome, iTerm2, Safari, Finder (optional), Xcode, etc.
+app.post('/api/admin/kill-apps', async (req, res) => {
+  const targets = req.body?.apps || ['Google Chrome', 'iTerm2']
+  const results = {}
+  for (const app of targets) {
+    try {
+      await execFileAsync('killall', [app])
+      results[app] = 'killed'
+    } catch (e) {
+      results[app] = e.stderr?.includes('No matching processes') ? 'not running' : e.message
+    }
+  }
+  res.json({ ok: true, results })
+})
+
 // POST /api/admin/restart-machine — remotely reboot SSi Machine
 // Requires ?secret=ADMIN_SECRET (or x-admin-secret header)
 app.post('/api/admin/restart-machine', async (req, res) => {
