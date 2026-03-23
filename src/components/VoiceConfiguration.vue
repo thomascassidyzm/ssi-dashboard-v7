@@ -688,19 +688,22 @@ async function loadConfig() {
   error.value = null
 
   try {
+    let voiceConfig = null
     if (isSupabaseConfigured()) {
-      const voiceConfig = await getVoiceConfig(props.courseCode)
-      config.value = voiceConfig || {}
-      emit('config-loaded', config.value)
-    } else {
+      voiceConfig = await getVoiceConfig(props.courseCode)
+    }
+    if (!voiceConfig && props.apiBaseUrl) {
+      // Fallback to API (handles RLS gaps or missing Supabase config)
       const response = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/voice-config`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       })
-      if (!response.ok) throw new Error('Failed to load voice configuration')
-      const data = await response.json()
-      config.value = data.config
-      emit('config-loaded', config.value)
+      if (response.ok) {
+        const data = await response.json()
+        voiceConfig = data.config
+      }
     }
+    config.value = voiceConfig || {}
+    emit('config-loaded', config.value)
   } catch (err) {
     error.value = err.message
     console.error('[VoiceConfig] Load error:', err)
