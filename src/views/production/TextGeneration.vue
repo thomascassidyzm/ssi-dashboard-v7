@@ -638,6 +638,7 @@ let tickInterval = null
 const massApproving = ref(false)
 const genderStarting = ref(false)
 const backfillPhrasesStarting = ref(false)
+const backfillPhrasesSpawned = ref(false)
 const componentCheckLoading = ref(false)
 const componentBackfillStarting = ref(false)
 const componentGaps = ref(null) // null = not checked yet, object = { total_m_legos, gaps: { total, null_components, empty_components, partial_components }, complete }
@@ -687,8 +688,16 @@ watch(buildMonitor.stats, (s) => {
   }
 }, { deep: true })
 
+let prevUnderThreshold = null
 watch(buildMonitor.seedGrid, (grid) => {
-  if (grid && grid.length > 0) seedGrid.value = grid
+  if (grid && grid.length > 0) {
+    seedGrid.value = grid
+    const ut = grid.filter(s => s.status === 'under-threshold').length
+    if (prevUnderThreshold !== null && ut < prevUnderThreshold) {
+      backfillPhrasesSpawned.value = false
+    }
+    prevUnderThreshold = ut
+  }
 }, { deep: true })
 
 watch(buildMonitor.messages, (msgs) => {
@@ -841,9 +850,9 @@ const finalPassNextAction = computed(() => {
 
   // Priority 1: backfill under-threshold seeds
   if (ut > 0) return {
-    label: backfillPhrasesStarting.value ? 'Spawning...' : `Backfill ${ut} seed${ut !== 1 ? 's' : ''}`,
+    label: backfillPhrasesStarting.value ? 'Spawning...' : backfillPhrasesSpawned.value ? 'Agent working...' : `Backfill ${ut} seed${ut !== 1 ? 's' : ''}`,
     handler: startBackfillPhrases,
-    disabled: backfillPhrasesStarting.value,
+    disabled: backfillPhrasesStarting.value || backfillPhrasesSpawned.value,
     btnClass: 'bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70'
   }
 
@@ -1316,6 +1325,7 @@ async function startBackfillPhrases() {
     })
     const result = await response.json()
     if (result.ok) {
+      backfillPhrasesSpawned.value = true
       buildMonitor.refresh()
     } else {
       showActionError(`Backfill failed: ${result.error}`)
