@@ -8153,6 +8153,22 @@ app.post('/api/admin/setup-remote', async (req, res) => {
   res.json({ ok: true, ...results })
 })
 
+// POST /api/admin/kill-pid — kill a process by PID
+app.post('/api/admin/kill-pid', async (req, res) => {
+  const pids = Array.isArray(req.body?.pids) ? req.body.pids : [req.body?.pid]
+  if (!pids[0]) return res.status(400).json({ error: 'pid or pids required' })
+  const results = {}
+  for (const pid of pids) {
+    try {
+      await execFileAsync('kill', ['-9', String(pid)])
+      results[pid] = 'killed'
+    } catch (e) {
+      results[pid] = e.message
+    }
+  }
+  res.json({ ok: true, results })
+})
+
 // POST /api/admin/kill-apps — kill non-essential GUI apps to free RAM
 // Kills: Google Chrome, iTerm2, Safari, Finder (optional), Xcode, etc.
 app.post('/api/admin/kill-apps', async (req, res) => {
