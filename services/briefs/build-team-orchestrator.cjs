@@ -94,6 +94,13 @@ curl -s "http://localhost:3471/api/brief/${courseCode}/build-team-creator?seeds=
 Then follow the instructions exactly. Build each seed, submit directly to the API, and move to the next one. You are fully autonomous — never ask questions.
 \`\`\`
 
+After spawning, post to chat:
+\`\`\`bash
+curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"Build team active — Sonnet builder running, targeting ${targetSeeds} seeds"}'
+\`\`\`
+
 ## Step 2: Monitor Progress AND Quality
 
 ### 2a. Progress (every 5 minutes)
