@@ -584,6 +584,14 @@ module.exports = function (ctx) {
       const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
       spawnInTerminal(ctx, claudeCmd, 'Final Pass', courseCode, effectiveTerminal);
 
+      await ctx.supabase.from('orchestrator_messages').insert({
+        course_code: courseCode,
+        direction: 'agent_to_human',
+        message: `Final pass agent spawned — reviewing ${totalSeeds} seed${totalSeeds !== 1 ? 's' : ''}`,
+        status: 'pending',
+        metadata: { action: 'final_pass_spawned' }
+      });
+
       res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Final Pass agent spawned` });
     } catch (err) {
       res.status(500).json({ error: err.message });

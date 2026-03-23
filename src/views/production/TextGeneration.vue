@@ -627,6 +627,7 @@ const translateResetting = ref(false)
 const buildTeamStarting = ref(false)
 const buildTeamSpawned = ref(false)
 const finalPassStarting = ref(false)
+const finalPassSpawned = ref(false)
 
 // Activity tracking — detect when counts are changing (agent is working)
 const lastSeedChangeAt = ref(null)    // timestamp of last decomposed_at count change
@@ -689,14 +690,20 @@ watch(buildMonitor.stats, (s) => {
 }, { deep: true })
 
 let prevUnderThreshold = null
+let prevDrafted = null
 watch(buildMonitor.seedGrid, (grid) => {
   if (grid && grid.length > 0) {
     seedGrid.value = grid
     const ut = grid.filter(s => s.status === 'under-threshold').length
+    const drafted = grid.filter(s => s.status === 'drafted').length
     if (prevUnderThreshold !== null && ut < prevUnderThreshold) {
       backfillPhrasesSpawned.value = false
     }
+    if (prevDrafted !== null && drafted < prevDrafted) {
+      finalPassSpawned.value = false
+    }
     prevUnderThreshold = ut
+    prevDrafted = drafted
   }
 }, { deep: true })
 
@@ -866,9 +873,9 @@ const finalPassNextAction = computed(() => {
 
   // Priority 3: run final pass on drafted seeds
   if (drafted > 0) return {
-    label: finalPassStarting.value ? 'Spawning...' : `Review ${drafted} seed${drafted !== 1 ? 's' : ''}`,
+    label: finalPassStarting.value ? 'Spawning...' : finalPassSpawned.value ? 'Agent working...' : `Review ${drafted} seed${drafted !== 1 ? 's' : ''}`,
     handler: () => startFinalPass('drafted'),
-    disabled: finalPassStarting.value,
+    disabled: finalPassStarting.value || finalPassSpawned.value,
     btnClass: 'bg-violet-600/20 border border-violet-500/50 text-violet-400 hover:border-violet-400/70'
   }
 
@@ -1218,6 +1225,7 @@ async function startFinalPass(mode = 'all') {
     })
     const result = await response.json()
     if (result.ok) {
+      finalPassSpawned.value = true
       buildMonitor.refresh()
     } else {
       showActionError(`Final pass failed: ${result.error}`)
