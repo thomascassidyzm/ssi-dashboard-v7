@@ -8047,16 +8047,16 @@ app.get('/api/admin/pm2', async (req, res) => {
 
 // POST /api/admin/pm2/fix — disable watch on all processes and save
 app.post('/api/admin/pm2/fix', async (req, res) => {
-  try {
-    // Disable watch on all processes and restart cleanly
-    await execFileAsync('bash', ['-c', 'pm2 restart all --watch false'])
-    await execFileAsync('bash', ['-c', 'pm2 save'])
-    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
-    const procs = JSON.parse(stdout)
-    res.json({ ok: true, message: 'Watch disabled and processes restarted', processes: procs.map(p => ({ name: p.name, watch: p.pm2_env?.watch, status: p.pm2_env?.status })) })
-  } catch (e) {
-    res.status(500).json({ error: e.message })
-  }
+  // Respond immediately — restart happens after, so connection isn't dropped
+  res.json({ ok: true, message: 'Disabling pm2 watch and restarting all services in 3s...' })
+  setTimeout(async () => {
+    try {
+      await execFileAsync('bash', ['-c', 'pm2 restart all --watch false'])
+      await execFileAsync('bash', ['-c', 'pm2 save'])
+    } catch (e) {
+      logger.warn('[Admin] pm2/fix error:', e.message)
+    }
+  }, 3000)
 })
 
 // POST /api/admin/setup-remote — one-time remote setup for headless operation
