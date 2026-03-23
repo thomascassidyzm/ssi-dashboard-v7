@@ -11003,7 +11003,13 @@ app.post('/api/deploy', async (req, res) => {
       addLog(`WARNING: ${gitStatus.split('\n').length} uncommitted changes detected`);
     }
 
-    // 2. Git pull
+    // 2. Git pull (stash local changes if force=true)
+    const force = req.body?.force || req.query?.force
+    if (force && gitStatus) {
+      addLog('force=true — stashing local changes...');
+      execSync('git stash', { cwd: projectDir, encoding: 'utf-8', timeout: 10000 });
+      addLog('Stashed local changes');
+    }
     addLog('Running git pull...');
     const pullOutput = execSync('git pull --ff-only 2>&1', { cwd: projectDir, encoding: 'utf-8', timeout: 30000 }).trim();
     addLog(`git pull: ${pullOutput}`);
