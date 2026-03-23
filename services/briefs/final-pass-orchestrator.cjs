@@ -104,7 +104,15 @@ You run a full quality pipeline: grammar review → delete bad phrases → backf
 TeamCreate: team_name="${courseCode.replace(/_/g, '-')}-final-pass", description="Final pass QA for ${courseCode}"
 \`\`\`
 
-### Step 1.2: Spawn All Reviewers in Parallel
+### Step 1.2: Post start to chat
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"Final pass started — spawning ${batches.length} reviewer${batches.length !== 1 ? 's' : ''} across ${totalSeeds} seeds"}'
+\`\`\`
+
+### Step 1.3: Spawn All Reviewers in Parallel
 
 Spawn all ${batches.length} reviewers at once using the Agent tool. Each reviewer gets its own seeds:
 
@@ -117,7 +125,7 @@ Agent tool:
   prompt: "You are a grammar reviewer. Read your brief and follow it exactly:\\n\\ncurl -s \\"${reviewerBriefUrl(b)}\\"\\n\\nThen work through every seed in your assignment."
 \`\`\``).join('\n\n')}
 
-### Step 1.3: Process Reports As They Come In
+### Step 1.4: Process Reports As They Come In
 
 Reviewers will send you messages like:
 - \`SEED N: CLEAN — X phrases reviewed, 0 issues\`
@@ -139,13 +147,22 @@ Count remaining USE phrases per LEGO. Track which seeds have LEGOs below 4 USE p
 
 **Do NOT approve or flag individual seeds yet — wait until all reviewers finish.**
 
-### Step 1.4: Monitor Progress
+### Step 1.5: Monitor Progress
 
 Track which reviewers have completed. If a reviewer goes silent for 10+ minutes, check its status. If it died, spawn a replacement for its remaining seeds. Shut down completed reviewers.
 
 ## Phase 2: Triage & Backfill
 
 When all reviewers are done and you've processed all deletions:
+
+### Step 2.0: Post Phase 1 summary to chat
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"Phase 1 complete — reviews done, [N] phrases deleted across [N] seeds. Moving to triage."}'
+\`\`\`
+(Replace [N] with your actual counts.)
 
 ### Step 2.1: Flag seeds with under-threshold LEGOs
 
@@ -187,6 +204,15 @@ print(f'Under-threshold: {ut}')
 \`\`\`
 Poll until under-threshold count reaches 0.
 
+### Step 2.3b: Post backfill status to chat
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"Phase 2: backfill agent spawned for [N] under-threshold seeds — waiting for completion"}'
+\`\`\`
+(If no backfill needed: post "Phase 2: no under-threshold seeds — skipping backfill".)
+
 ### Step 2.4: After backfill — clear flags on backfilled seeds
 
 \`\`\`bash
@@ -206,6 +232,14 @@ curl -s -X POST "http://localhost:3471/api/build/mass-approve/${courseCode}" \\
 \`\`\`
 
 This approves all decomposed, non-flagged seeds at once.
+
+### Step 3.1b: Post approval summary to chat
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"Phase 3 complete — [N] seeds approved. Final pass done for ${courseCode}."}'
+\`\`\`
 
 ### Step 3.2: Store lessons learned
 

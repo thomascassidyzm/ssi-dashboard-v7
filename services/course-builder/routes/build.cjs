@@ -926,6 +926,10 @@ module.exports = function (ctx) {
       if (!briefResp.ok) throw new Error(`Failed to fetch backfill brief: ${briefResp.status}`);
       const brief = await briefResp.text();
 
+      // Parse seed count from brief text ("in **N seeds**")
+      const seedMatch = brief.match(/in\s+\*\*(\d+)\s+seed/);
+      const underThresholdCount = seedMatch ? parseInt(seedMatch[1]) : 1;
+
       const tmpFile = `/tmp/backfill_phrases_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
 
@@ -943,8 +947,12 @@ module.exports = function (ctx) {
           course_code: courseCode,
           pass: 'backfill-phrases',
           status: 'running',
+          current_seed: 0,
+          seeds_completed: 0,
+          total_seeds: underThresholdCount || 1,
           started_at: new Date().toISOString(),
           last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard',
           machine_name: ctx.MACHINE_NAME || 'unknown'
         })
         .select('id')
