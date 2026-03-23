@@ -8047,10 +8047,6 @@ app.get('/api/admin/pm2', async (req, res) => {
 
 // POST /api/admin/pm2/fix — disable watch on all processes and save
 app.post('/api/admin/pm2/fix', async (req, res) => {
-  const secret = req.query.secret || req.headers['x-admin-secret']
-  if (!process.env.ADMIN_SECRET || secret !== process.env.ADMIN_SECRET) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
   try {
     // Disable watch on all processes and restart cleanly
     await execFileAsync('bash', ['-c', 'pm2 restart all --watch false'])
