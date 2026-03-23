@@ -8029,6 +8029,130 @@ app.get('/api/admin/system', async (req, res) => {
   })
 })
 
+// GET /api/admin/pm2 — pm2 process list with watch status
+app.get('/api/admin/pm2', async (req, res) => {
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
+    const procs = JSON.parse(stdout)
+    res.json({ ok: true, processes: procs.map(p => ({
+      name: p.name, pid: p.pid, status: p.pm2_env?.status,
+      watch: p.pm2_env?.watch, restarts: p.pm2_env?.restart_time,
+      memory: Math.round((p.monit?.memory || 0) / 1e6) + 'MB',
+      cpu: (p.monit?.cpu || 0) + '%'
+    }))})
+  } catch (e) {
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// POST /api/admin/pm2/fix — disable watch on all processes and save
+app.post('/api/admin/pm2/fix', async (req, res) => {
+  const secret = req.query.secret || req.headers['x-admin-secret']
+  if (!process.env.ADMIN_SECRET || secret !== process.env.ADMIN_SECRET) {
+    return res.status(401).json({ error: 'Unauthorized' })
+  }
+  try {
+    // Disable watch on all processes and restart cleanly
+    await execFileAsync('bash', ['-c', 'pm2 restart all --watch false'])
+    await execFileAsync('bash', ['-c', 'pm2 save'])
+    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
+    const procs = JSON.parse(stdout)
+    res.json({ ok: true, message: 'Watch disabled and processes restarted', processes: procs.map(p => ({ name: p.name, watch: p.pm2_env?.watch, status: p.pm2_env?.status })) })
+  } catch (e) {
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// POST /api/admin/setup-remote — one-time remote setup for headless operation
+// Saves pm2 process list, checks startup config, adds sudoers NOPASSWD for reboot
+app.post('/api/admin/setup-remote', async (req, res) => {
+  const secret = req.query.secret || req.headers['x-admin-secret']
+  const expected = process.env.ADMIN_SECRET
+  if (!expected || secret !== expected) {
+    return res.status(401).json({ error: 'Unauthorized' })
+  }
+
+  const results = {}
+
+  // 1. pm2 save
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 save'])
+    results.pm2_save = { ok: true, output: stdout.trim() }
+  } catch (e) {
+    results.pm2_save = { ok: false, error: e.message }
+  }
+
+  // 2. Check if pm2 startup is already configured (launchd plist exists)
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', 'launchctl list | grep pm2 || echo "NOT_FOUND"'])
+    results.pm2_startup = { configured: !stdout.includes('NOT_FOUND'), output: stdout.trim() }
+  } catch (e) {
+    results.pm2_startup = { configured: false, error: e.message }
+  }
+
+  // 3. Add sudoers NOPASSWD for reboot (so restart-machine works headless)
+  try {
+    const user = process.env.USER || 'tomcassidy'
+    const sudoersLine = `${user} ALL=(ALL) NOPASSWD: /sbin/reboot`
+    const sudoersFile = '/etc/sudoers.d/ssi-reboot'
+    await execFileAsync('bash', ['-c', `echo "${sudoersLine}" | sudo tee ${sudoersFile} > /dev/null && sudo chmod 440 ${sudoersFile}`])
+    results.sudoers_reboot = { ok: true, file: sudoersFile }
+  } catch (e) {
+    results.sudoers_reboot = { ok: false, error: e.message }
+  }
+
+  // 4. Set SPAWN_MODE=headless in .env (removes all iTerm2/osascript dependencies)
+  try {
+    const envPath = path.join(__dirname, '..', '.env')
+    let envContent = fs.readFileSync(envPath, 'utf8')
+    if (envContent.includes('SPAWN_MODE=')) {
+      envContent = envContent.replace(/SPAWN_MODE=.*/g, 'SPAWN_MODE=headless')
+    } else {
+      envContent += '\n# Headless agent spawning — no iTerm2/osascript needed\nSPAWN_MODE=headless\n'
+    }
+    fs.writeFileSync(envPath, envContent)
+    results.spawn_mode = { ok: true, value: 'headless', note: 'Agents now run as background processes — no iTerm2 permissions needed' }
+  } catch (e) {
+    results.spawn_mode = { ok: false, error: e.message }
+  }
+
+  // 5. Check auto-login status
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', 'sudo defaults read /Library/Preferences/com.apple.loginwindow autoLoginUser 2>/dev/null || echo "NOT_SET"'])
+    results.auto_login = { configured: !stdout.includes('NOT_SET'), current_user: stdout.trim() }
+  } catch (e) {
+    results.auto_login = { configured: false, note: 'Must be set manually in System Settings → Users & Groups' }
+  }
+
+  results.manual_steps_still_needed = [
+    !results.auto_login?.configured && 'Auto-login: System Settings → Users & Groups → enable Automatic Login'
+  ].filter(Boolean)
+
+  results.note = 'SPAWN_MODE=headless eliminates all iTerm2/Automation permission requirements'
+
+  res.json({ ok: true, ...results })
+})
+
+// POST /api/admin/restart-machine — remotely reboot SSi Machine
+// Requires ?secret=ADMIN_SECRET (or x-admin-secret header)
+app.post('/api/admin/restart-machine', async (req, res) => {
+  const secret = req.query.secret || req.headers['x-admin-secret']
+  const expected = process.env.ADMIN_SECRET
+  if (!expected || secret !== expected) {
+    return res.status(401).json({ error: 'Unauthorized' })
+  }
+  // Respond before the reboot kicks in
+  res.json({ ok: true, message: 'Rebooting SSi Machine in 5 seconds...' })
+  setTimeout(async () => {
+    try {
+      await execFileAsync('sudo', ['reboot'])
+    } catch (e) {
+      logger.warn('[Admin] sudo reboot failed, trying osascript:', e.message)
+      execFileAsync('osascript', ['-e', 'tell application "System Events" to restart']).catch(() => {})
+    }
+  }, 5000)
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {

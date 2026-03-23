@@ -14,6 +14,16 @@ const { emitProgress } = require('../../shared/emit-progress.cjs');
 module.exports = function (ctx) {
   const router = Router();
 
+  // Helper: fetch a brief, throw with actual error message on failure.
+  async function fetchBrief(url) {
+    const resp = await fetch(url);
+    if (!resp.ok) {
+      const body = await resp.json().catch(() => ({}));
+      throw new Error(body.error || `Brief generation failed (${resp.status})`);
+    }
+    return resp.text();
+  }
+
   // Helper: append a shell-level job completion curl to any claude command.
   // Uses `;` so it fires regardless of how the Claude process exits.
   function withJobDone(cmd, jobId) {
@@ -221,9 +231,7 @@ module.exports = function (ctx) {
       // Generate redo brief and spawn agent
       const seedsParam = seedNumbers.join(',');
       const notesParam = notes ? `&notes=${encodeURIComponent(notes)}` : '';
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/redo?seeds=${seedsParam}${notesParam}`);
-      if (!briefResp.ok) throw new Error(`Failed to fetch redo brief: ${briefResp.status}`);
-      const brief = await briefResp.text();
+      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/redo?seeds=${seedsParam}${notesParam}`);
 
       const tmpFile = `/tmp/redo_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
@@ -437,9 +445,7 @@ module.exports = function (ctx) {
       const initResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/course/${courseCode}/translate?limit=1`);
       if (!initResp.ok) console.warn(`[Translate] Seed init returned ${initResp.status} — agent will retry`);
 
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/translate`);
-      if (!briefResp.ok) throw new Error(`Failed to fetch translate brief: ${briefResp.status}`);
-      const brief = await briefResp.text();
+      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/translate`);
 
       const tmpFile = `/tmp/translate_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
@@ -447,29 +453,37 @@ module.exports = function (ctx) {
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      const { data: jobData } = await ctx.supabase
-        .from('build_jobs')
-        .insert({
-          course_code: courseCode, pass: 'translate', status: 'running',
-          current_seed: 0, seeds_completed: 0, total_seeds: 668,
-          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
-          requested_by: 'dashboard', terminal: effectiveTerminal,
-          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'translate'
-        })
-        .select('id').single();
+      let jobId;
+      try {
+        const { data: jobData } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode, pass: 'translate', status: 'running',
+            current_seed: 0, seeds_completed: 0, total_seeds: 668,
+            started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard', terminal: effectiveTerminal,
+            agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'translate'
+          })
+          .select('id').single();
+        jobId = jobData?.id;
+      } catch (e) {
+        console.warn('[Translate] build_jobs insert failed (Supabase unreachable?) — spawning anyway:', e.message);
+      }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode, effectiveTerminal);
 
-      await ctx.supabase.from('orchestrator_messages').insert({
-        course_code: courseCode,
-        direction: 'agent_to_human',
-        message: `Translation agent spawned — translating seeds`,
-        status: 'pending',
-        metadata: { action: 'translate_spawned' }
-      });
+      try {
+        await ctx.supabase.from('orchestrator_messages').insert({
+          course_code: courseCode,
+          direction: 'agent_to_human',
+          message: `Translation agent spawned — translating seeds`,
+          status: 'pending',
+          metadata: { action: 'translate_spawned' }
+        });
+      } catch (e) { /* non-critical */ }
 
-      res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Translation agent spawned` });
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Translation agent spawned` });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -483,9 +497,7 @@ module.exports = function (ctx) {
 
 
 
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/decompose`);
-      if (!briefResp.ok) throw new Error(`Failed to fetch decompose brief: ${briefResp.status}`);
-      const brief = await briefResp.text();
+      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/decompose`);
 
       const tmpFile = `/tmp/decompose_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
@@ -493,21 +505,27 @@ module.exports = function (ctx) {
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      const { data: jobData } = await ctx.supabase
-        .from('build_jobs')
-        .insert({
-          course_code: courseCode, pass: 'decompose', status: 'running',
-          current_seed: 0, seeds_completed: 0, total_seeds: 300,
-          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
-          requested_by: 'dashboard', terminal: effectiveTerminal,
-          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'decompose'
-        })
-        .select('id').single();
+      let jobId;
+      try {
+        const { data: jobData } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode, pass: 'decompose', status: 'running',
+            current_seed: 0, seeds_completed: 0, total_seeds: 300,
+            started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard', terminal: effectiveTerminal,
+            agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'decompose'
+          })
+          .select('id').single();
+        jobId = jobData?.id;
+      } catch (e) {
+        console.warn('[Decompose] build_jobs insert failed:', e.message);
+      }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Decompose', courseCode, effectiveTerminal);
 
-      res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Decompose agent spawned` });
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Decompose agent spawned` });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -524,36 +542,42 @@ module.exports = function (ctx) {
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator?terminal=${effectiveTerminal}`);
-      if (!briefResp.ok) throw new Error(`Failed to fetch build-team brief: ${briefResp.status}`);
-      const brief = await briefResp.text();
+      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator?terminal=${effectiveTerminal}`);
 
       const tmpFile = `/tmp/build-team_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
 
-      const { data: jobData } = await ctx.supabase
-        .from('build_jobs')
-        .insert({
-          course_code: courseCode, pass: 'build-team', status: 'running',
-          current_seed: 0, seeds_completed: 0, total_seeds: 300,
-          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
-          requested_by: 'dashboard', terminal: effectiveTerminal,
-          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'build-team'
-        })
-        .select('id').single();
+      let jobId;
+      try {
+        const { data: jobData } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode, pass: 'build-team', status: 'running',
+            current_seed: 0, seeds_completed: 0, total_seeds: 300,
+            started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard', terminal: effectiveTerminal,
+            agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'build-team'
+          })
+          .select('id').single();
+        jobId = jobData?.id;
+      } catch (e) {
+        console.warn('[BuildTeam] build_jobs insert failed:', e.message);
+      }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
 
-      await ctx.supabase.from('orchestrator_messages').insert({
-        course_code: courseCode,
-        direction: 'agent_to_human',
-        message: `Build team spawned — building seeds`,
-        status: 'pending',
-        metadata: { action: 'build_team_spawned' }
-      });
+      try {
+        await ctx.supabase.from('orchestrator_messages').insert({
+          course_code: courseCode,
+          direction: 'agent_to_human',
+          message: `Build team spawned — building seeds`,
+          status: 'pending',
+          metadata: { action: 'build_team_spawned' }
+        });
+      } catch (e) { /* non-critical */ }
 
-      res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Build Team agent spawned` });
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Build Team agent spawned` });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -575,9 +599,7 @@ module.exports = function (ctx) {
       const briefParams = new URLSearchParams({ agents: String(agents) });
       if (seedList) briefParams.set('seeds', seeds);
 
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass-orchestrator?${briefParams}`);
-      if (!briefResp.ok) throw new Error(`Failed to fetch final-pass-orchestrator brief: ${briefResp.status}`);
-      const brief = await briefResp.text();
+      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/final-pass-orchestrator?${briefParams}`);
 
       const tmpFile = `/tmp/final-pass_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
@@ -586,29 +608,37 @@ module.exports = function (ctx) {
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
       const totalSeeds = seedList ? seedList.length : 300;
 
-      const { data: jobData } = await ctx.supabase
-        .from('build_jobs')
-        .insert({
-          course_code: courseCode, pass: 'final-pass', status: 'running',
-          current_seed: 0, seeds_completed: 0, total_seeds: totalSeeds,
-          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
-          requested_by: 'dashboard', terminal: effectiveTerminal,
-          agent_count: parseInt(agents), respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'final-pass'
-        })
-        .select('id').single();
+      let jobId;
+      try {
+        const { data: jobData } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode, pass: 'final-pass', status: 'running',
+            current_seed: 0, seeds_completed: 0, total_seeds: totalSeeds,
+            started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard', terminal: effectiveTerminal,
+            agent_count: parseInt(agents), respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'final-pass'
+          })
+          .select('id').single();
+        jobId = jobData?.id;
+      } catch (e) {
+        console.warn('[FinalPass] build_jobs insert failed:', e.message);
+      }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Final Pass', courseCode, effectiveTerminal);
 
-      await ctx.supabase.from('orchestrator_messages').insert({
-        course_code: courseCode,
-        direction: 'agent_to_human',
-        message: `Final pass agent spawned — reviewing ${totalSeeds} seed${totalSeeds !== 1 ? 's' : ''}`,
-        status: 'pending',
-        metadata: { action: 'final_pass_spawned' }
-      });
+      try {
+        await ctx.supabase.from('orchestrator_messages').insert({
+          course_code: courseCode,
+          direction: 'agent_to_human',
+          message: `Final pass agent spawned — reviewing ${totalSeeds} seed${totalSeeds !== 1 ? 's' : ''}`,
+          status: 'pending',
+          metadata: { action: 'final_pass_spawned' }
+        });
+      } catch (e) { /* non-critical */ }
 
-      res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: `Final Pass agent spawned` });
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Final Pass agent spawned` });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -622,9 +652,7 @@ module.exports = function (ctx) {
 
 
 
-      const briefResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/component-backfill`);
-      if (!briefResp.ok) throw new Error(`Failed to fetch component-backfill brief: ${briefResp.status}`);
-      const brief = await briefResp.text();
+      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/component-backfill`);
 
       const tmpFile = `/tmp/component-backfill_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
@@ -632,29 +660,37 @@ module.exports = function (ctx) {
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      const { data: jobData } = await ctx.supabase
-        .from('build_jobs')
-        .insert({
-          course_code: courseCode, pass: 'component-backfill', status: 'running',
-          current_seed: 0, seeds_completed: 0, total_seeds: 0,
-          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
-          requested_by: 'dashboard', terminal: effectiveTerminal,
-          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'component-backfill'
-        })
-        .select('id').single();
+      let jobId;
+      try {
+        const { data: jobData } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode, pass: 'component-backfill', status: 'running',
+            current_seed: 0, seeds_completed: 0, total_seeds: 0,
+            started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard', terminal: effectiveTerminal,
+            agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'component-backfill'
+          })
+          .select('id').single();
+        jobId = jobData?.id;
+      } catch (e) {
+        console.warn('[ComponentBackfill] build_jobs insert failed:', e.message);
+      }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobData?.id);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Component Backfill', courseCode);
 
-      await ctx.supabase.from('orchestrator_messages').insert({
-        course_code: courseCode,
-        direction: 'agent_to_human',
-        message: `Component backfill agent spawned — fixing M-LEGO components`,
-        status: 'pending',
-        metadata: { action: 'component_backfill_spawned' }
-      });
+      try {
+        await ctx.supabase.from('orchestrator_messages').insert({
+          course_code: courseCode,
+          direction: 'agent_to_human',
+          message: `Component backfill agent spawned — fixing M-LEGO components`,
+          status: 'pending',
+          metadata: { action: 'component_backfill_spawned' }
+        });
+      } catch (e) { /* non-critical */ }
 
-      res.json({ ok: true, course_code: courseCode, job_id: jobData?.id, message: 'Component backfill agent spawned' });
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: 'Component backfill agent spawned' });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -922,9 +958,7 @@ module.exports = function (ctx) {
     try {
       // Fetch brief
       const briefUrl = `http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/backfill-phrases`;
-      const briefResp = await fetch(briefUrl);
-      if (!briefResp.ok) throw new Error(`Failed to fetch backfill brief: ${briefResp.status}`);
-      const brief = await briefResp.text();
+      const brief = await fetchBrief(briefUrl);
 
       // Parse seed count from brief text ("in **N seeds**")
       const seedMatch = brief.match(/in\s+\*\*(\d+)\s+seed/);

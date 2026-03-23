@@ -417,23 +417,22 @@ export const useProductionStore = defineStore('production', () => {
     try {
       if (isSupabaseConfigured()) {
         const row = await sbGetCourseInfo(courseCode)
-        if (!row) {
-          courseInfo.value = { code: courseCode, displayName: courseCode.replace(/_/g, ' '), status: 'testing' }
+        if (row) {
+          // Map DB row to expected shape
+          courseInfo.value = {
+            code: row.course_code,
+            displayName: row.display_name,
+            knownLang: row.known_lang,
+            targetLang: row.target_lang,
+            status: row.status,
+            courseType: row.course_type,
+            seed_count: row.seed_count,
+            pricingTier: row.pricing_tier || 'premium',
+            isCommunity: row.is_community || false
+          }
           return courseInfo.value
         }
-        // Map DB row to expected shape
-        courseInfo.value = {
-          code: row.course_code,
-          displayName: row.display_name,
-          knownLang: row.known_lang,
-          targetLang: row.target_lang,
-          status: row.status,
-          courseType: row.course_type,
-          seed_count: row.seed_count,
-          pricingTier: row.pricing_tier || 'premium',
-          isCommunity: row.is_community || false
-        }
-        return courseInfo.value
+        // Supabase returned null (RLS gap?) — fall through to API
       }
 
       // Fallback: API proxy

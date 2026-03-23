@@ -98,13 +98,17 @@ async function generateTranslateBrief(courseCode) {
   const translateField = targetIsEng ? 'known_text' : 'target_text';
   const translateLangName = targetIsEng ? knownName : targetLanguageName;
 
-  const { data: courseInfo } = await supabase
-    .from('courses')
-    .select('display_name')
-    .eq('course_code', courseCode)
-    .single();
-
-  const displayName = courseInfo?.display_name || courseCode;
+  let displayName = courseCode;
+  try {
+    const { data: courseInfo } = await supabase
+      .from('courses')
+      .select('display_name')
+      .eq('course_code', courseCode)
+      .single();
+    displayName = courseInfo?.display_name || courseCode;
+  } catch (_) {
+    // Supabase unreachable — use courseCode as fallback display name
+  }
   const translateCount = 668;
 
   const sonnetBrief = generateSonnetTranslatorBrief(courseCode, translateField, translateLangName, translateCount);
