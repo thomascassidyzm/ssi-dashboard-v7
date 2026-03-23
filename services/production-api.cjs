@@ -8169,6 +8169,30 @@ app.post('/api/admin/kill-pid', async (req, res) => {
   res.json({ ok: true, results })
 })
 
+// POST /api/admin/git-pull — stash local changes and pull latest code, then restart services
+app.post('/api/admin/git-pull', async (req, res) => {
+  const projectDir = path.resolve(__dirname, '..')
+  const log = []
+  const add = msg => { log.push(msg); logger.log('[git-pull]', msg) }
+  try {
+    const status = (await execFileAsync('git', ['status', '--porcelain'], { cwd: projectDir })).stdout.trim()
+    if (status) {
+      add(`Stashing ${status.split('\n').length} local changes...`)
+      await execFileAsync('git', ['stash'], { cwd: projectDir })
+    }
+    const pull = (await execFileAsync('git', ['pull', '--ff-only'], { cwd: projectDir })).stdout.trim()
+    add(`git pull: ${pull}`)
+    res.json({ ok: true, log })
+    // Restart services after responding
+    setTimeout(async () => {
+      try { await execFileAsync('bash', ['-c', 'pm2 restart all --watch false && pm2 save']) }
+      catch (e) { logger.warn('[git-pull] restart error:', e.message) }
+    }, 2000)
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message, log })
+  }
+})
+
 // POST /api/admin/kill-apps — kill non-essential GUI apps to free RAM
 // Kills: Google Chrome, iTerm2, Safari, Finder (optional), Xcode, etc.
 app.post('/api/admin/kill-apps', async (req, res) => {
