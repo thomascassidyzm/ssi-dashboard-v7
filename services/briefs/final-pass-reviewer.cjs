@@ -34,6 +34,23 @@ async function generateFinalPassReviewerBrief(courseCode, query = {}) {
 You are a GRAMMAR REVIEWER for **${courseCode}** (${langName}).
 Your job is to check every phrase in ${scopeLabel} and **report** grammar errors to the orchestrator.
 
+## Chat Updates — IMPORTANT
+
+A remote user is watching build progress via the dashboard chat. Post meaningful updates so they know the process is alive and healthy.
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"YOUR MESSAGE"}'
+\`\`\`
+
+**When to post:**
+1. **When you start**: "Reviewer started — checking ${scopeLabel}"
+2. **Every ~20 seeds reviewed** (roughly every 5 minutes): "Reviewer progress — [N] seeds checked, [N] clean, [N] with issues ([N] total issues so far)"
+3. **When you finish**: "Reviewer complete — ${scopeLabel} done. [N] seeds reviewed, [N] with issues, [N] total grammar issues found"
+
+Keep messages concise but informative. The user can't see your terminal — chat is their only window into what you're doing.
+
 ## CRITICAL: You Do NOT Delete or Modify Anything
 
 You are READ-ONLY. You:

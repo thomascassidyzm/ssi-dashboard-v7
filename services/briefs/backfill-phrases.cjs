@@ -142,12 +142,7 @@ curl -X POST "http://localhost:3471/api/build/backfill-submit/${courseCode}" \\
   }'
 \`\`\`
 
-### Step 5: Post progress to chat
-\`\`\`bash
-curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
-  -H "Content-Type: application/json" \\
-  -d '{ "role": "agent", "message": "Backfill: seed N done — added X USE phrases" }'
-\`\`\`
+### Step 5: Continue to the next seed
 
 ## USE Phrase Rules
 
@@ -159,6 +154,23 @@ curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
 
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
 ${buildGrammarChecklist(langName, grammarRules)}
+
+## Chat Updates — IMPORTANT
+
+A remote user is watching build progress via the dashboard chat. Post meaningful updates so they know the process is alive and healthy.
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"YOUR MESSAGE"}'
+\`\`\`
+
+**When to post:**
+1. **When you start**: "Phrase backfill started — ${totalNeeded} USE phrases needed across ${filteredGaps.length} LEGOs in ${seedCount} seeds"
+2. **Every ~5 seeds** (or every ~5 minutes, whichever is less frequent): "Phrase backfill progress — [N]/${seedCount} seeds done, [N]/${totalNeeded} phrases added so far"
+3. **When you finish**: "Phrase backfill complete — added [N] USE phrases across [N] LEGOs in [N] seeds"
+
+Keep messages concise but informative. The user can't see your terminal — chat is their only window into what you're doing.
 
 ## IMPORTANT
 

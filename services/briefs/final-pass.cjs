@@ -59,6 +59,23 @@ The course has been built by a creator/checker team. Your job is to do a thoroug
 **Scope**: Seeds ${seedMin}-${seedMax} (~${phraseCount || '?'} phrases across ~${legoCount || '?'} LEGOs)
 **Strategy**: ${strategy === 'full' ? 'FULL — check every seed' : 'ADAPTIVE SAMPLING — drill deeper where errors are found'}
 
+## Chat Updates — IMPORTANT
+
+A remote user is watching build progress via the dashboard chat. Post meaningful updates so they know the process is alive and healthy.
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"YOUR MESSAGE"}'
+\`\`\`
+
+**When to post:**
+1. **When you start**: "Final pass started — reviewing seeds ${seedMin}-${seedMax} (~${phraseCount || '?'} phrases, ${strategy} strategy)"
+2. **Every ~20 seeds reviewed** (roughly every 5 minutes): "Final pass progress — reviewed seeds [N]-[N], [N] approved, [N] flagged, [N] phrases deleted so far. ${strategy !== 'full' ? 'Current tier: [tier].' : ''}"
+3. **When you finish**: "Final pass complete — [N] seeds reviewed, [N] approved, [N] flagged, [N] phrases deleted. Most common error: [pattern]"
+
+Keep messages concise but informative. The user can't see your terminal — chat is their only window into what you're doing.
+
 ## Your Approach: Identify and Delete — NEVER Fix
 
 For each phrase you review:

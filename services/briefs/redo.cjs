@@ -64,15 +64,7 @@ curl -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" \\
   -d '{ "course_code": "${courseCode}", "seed_number": N, "legos": [...] }'
 \`\`\`
 
-### Step 5: Post status to chat
-After each seed, report progress:
-\`\`\`bash
-curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
-  -H "Content-Type: application/json" \\
-  -d '{ "role": "agent", "message": "Redo complete: seed N — X LEGOs, Y phrases" }'
-\`\`\`
-
-### Step 6: Move to next seed
+### Step 5: Move to next seed
 
 ## SSi Methodology — Key Rules
 
@@ -142,12 +134,29 @@ If context is compacted, call:
 curl -s "http://localhost:3471/api/resume/${courseCode}"
 \`\`\`
 
+## Chat Updates — IMPORTANT
+
+A remote user is watching build progress via the dashboard chat. Post meaningful updates so they know the process is alive and healthy.
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"YOUR MESSAGE"}'
+\`\`\`
+
+**When to post:**
+1. **When you start**: "Redo started — rebuilding ${seedNumbers.length} seed(s): ${seedNumbers.join(', ')}"
+2. **Every ~5 seeds** (or every ~5 minutes, whichever is less frequent): "Redo progress — [N]/${seedNumbers.length} seeds rebuilt so far. Latest: seed [N] ([N] LEGOs, [N] phrases)"
+3. **When you finish**: "Redo complete — ${seedNumbers.length} seeds rebuilt. [N] LEGOs, [N] phrases total"
+
+Keep messages concise but informative. The user can't see your terminal — chat is their only window into what you're doing.
+
 ## AUTONOMY
 
 You are running unattended. NEVER ask questions.
 **Your seeds: ${seedNumbers.join(', ')}.** Process ONLY these seeds, in order.
 Do NOT spawn sub-agents.
-Submit each seed directly to the API. Post status to chat after each seed.
+Submit each seed directly to the API.
 Work SLOWLY AND STEADILY — quality over speed.
 `;
 }

@@ -140,6 +140,23 @@ ${exampleSection}
 
 ---
 
+## Chat Updates — IMPORTANT
+
+A remote user is watching build progress via the dashboard chat. Post meaningful updates so they know the process is alive and healthy.
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"YOUR MESSAGE"}'
+\`\`\`
+
+**When to post:**
+1. **When you start**: "Component backfill started — ${totalGaps} M-LEGOs to process, spawning [N] workers"
+2. **Every ~5 minutes while waiting for workers**: Re-check the gaps endpoint and report: "Component backfill progress — [N]/${totalGaps} gaps filled, [N] workers still running"
+3. **When workers finish**: "Component backfill complete — [N]/${totalGaps} M-LEGOs processed, [N] succeeded, [N] failed"
+
+Keep messages concise but informative. The user can't see your terminal — chat is their only window into what you're doing.
+
 ## Step 1: Fetch ALL Gaps
 
 \`\`\`bash

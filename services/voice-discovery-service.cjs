@@ -14,16 +14,17 @@ const langService = require('./language-code-service.cjs');
 
 /**
  * Get Azure locale prefix from language code
- * Uses centralized language-code-service for legacy→standard conversion
- * Special case: cmn/zho (Mandarin/Chinese) → 'zh' for Azure locales
+ * Uses the Azure locale from language-code-service CSV when available,
+ * falling back to legacy→standard conversion.
+ *
+ * This matters for languages where the Azure locale prefix differs from the
+ * ISO 639-1 code (e.g. Norwegian: ISO 'no' but Azure uses 'nb-NO')
  */
 function getLocalePrefix(languageCode) {
   if (!languageCode) return null;
   const code = languageCode.toLowerCase();
 
   // Special case: Chinese language codes → 'zh' prefix in Azure
-  // cmn = Mandarin Chinese (ISO 639-3)
-  // zho = Chinese macro language (ISO 639-3)
   if (code === 'cmn' || code === 'zho') return 'zh';
 
   // Strip dialect suffix if present (e.g. 'por_br' → 'por', 'spa_mx' → 'spa')
@@ -31,6 +32,13 @@ function getLocalePrefix(languageCode) {
 
   // Convert legacy codes (spa, eng, ita) to standard (es, en, it)
   const standardCode = langService.legacyToStandard(baseCode);
+
+  // Check if the CSV has an Azure locale mapped — use its prefix if so
+  // This handles cases like Norwegian (no → nb-NO, prefix should be 'nb')
+  const azureLocale = langService.getAzureLocale(standardCode);
+  if (azureLocale) {
+    return azureLocale.split('-')[0];
+  }
 
   return standardCode;
 }

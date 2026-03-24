@@ -138,6 +138,23 @@ ${loadMethodology()}
 
 </details>
 
+## Chat Updates — IMPORTANT
+
+A remote user is watching build progress via the dashboard chat. Post meaningful updates so they know the build is alive and healthy.
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"YOUR MESSAGE"}'
+\`\`\`
+
+**When to post:**
+1. **When you start**: "Builder started — working on seeds ${assignedSeeds[0]}-${assignedSeeds[assignedSeeds.length - 1]} (${assignedSeeds.length} seeds)"
+2. **Every ~10 seeds** (roughly every 5-10 minutes): "Builder progress — seed N done, [N]/${assignedSeeds.length} complete, ratio [X]. No issues." Include any problems you hit (API rejections, retries, skipped seeds).
+3. **When you finish**: "Builder complete — seeds ${assignedSeeds[0]}-${assignedSeeds[assignedSeeds.length - 1]} done. [N] seeds submitted, [N] LEGOs, [N] phrases."
+
+Keep messages concise but informative. The user can't see your terminal — chat is their only window into what you're doing.
+
 ## Protocol — For Each Seed N
 
 ### Step 1: Vocabulary management
