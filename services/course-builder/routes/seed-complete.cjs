@@ -30,7 +30,7 @@ const {
   isCheckpointRequired, approveCheckpoint, isQAPending,
   CHECKPOINT_SEEDS, QA_DRIFT_THRESHOLD,
 } = require('../lib/checkpoint.cjs');
-const { emitProgress } = require('../../shared/emit-progress.cjs');
+const { emitProgress, emitProgressThrottled } = require('../../shared/emit-progress.cjs');
 
 // ─── Local helpers (only used by these routes) ────────────────────────
 
@@ -1761,11 +1761,24 @@ module.exports = function seedCompleteRoutes(ctx) {
 
       ctx.emitPipelineEvent(course_code, 'seed:complete', { seed_number: seed_number, legos_count: legos.length, phrases_count: totalPhrases });
 
-      // Emit progress at milestones (every 10 seeds, or first 3)
-      if (seed_number <= 3 || seed_number % 10 === 0 || seed_number === 300) {
-        const newCount = legos.filter(l => l._isNew !== false).length;
-        emitProgress(ctx.supabase, course_code, `Seed ${seed_number} built: ${newCount} new LEGOs, ${totalPhrases} phrases`, { phase: 'build', action: 'seed-complete', seed: seed_number, legos: legos.length, newLegos: newCount, phrases: totalPhrases });
-      }
+      // Emit progress every 25 seeds with real counts from DB
+      emitProgressThrottled(ctx.supabase, course_code, 'build', {
+        every: 25,
+        getProgress: async () => {
+          const { count: done } = await ctx.supabase
+            .from('course_seeds')
+            .select('*', { count: 'exact', head: true })
+            .eq('course_code', course_code)
+            .not('decomposed_at', 'is', null);
+          const { data: courseInfo } = await ctx.supabase
+            .from('courses')
+            .select('seed_count')
+            .eq('course_code', course_code)
+            .single();
+          return { done: done || 0, total: courseInfo?.seed_count || 300 };
+        },
+        message: (done, total) => `Build progress: ${done}/${total} seeds decomposed (${Math.round(done / total * 100)}%)`
+      });
 
       await bumpCourseVersion(ctx.supabase, course_code, 'minor');
 

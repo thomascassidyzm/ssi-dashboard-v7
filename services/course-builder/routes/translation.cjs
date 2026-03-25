@@ -13,7 +13,7 @@
 const { Router } = require('express');
 const { getLanguageName } = require('../lib/language-config.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
-const { emitProgress } = require('../../shared/emit-progress.cjs');
+const { emitProgress, emitProgressThrottled } = require('../../shared/emit-progress.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -408,7 +408,19 @@ module.exports = function (ctx) {
     }
 
     console.log(`Batch translation for ${courseCode}: ${updated}/${translations.length} updated`);
-    emitProgress(supabase, courseCode, `Translation batch: ${updated}/${translations.length} seeds translated`, { phase: 'translate', action: 'batch', updated, total: translations.length });
+    emitProgressThrottled(supabase, courseCode, 'translate', {
+      every: 50,
+      getProgress: async () => {
+        const { data: seeds } = await supabase
+          .from('course_seeds')
+          .select('known_text, target_text')
+          .eq('course_code', courseCode);
+        const total = (seeds || []).length;
+        const done = (seeds || []).filter(s => s.known_text && s.target_text).length;
+        return { done, total };
+      },
+      message: (done, total) => `Translation progress: ${done}/${total} seeds translated (${Math.round(done / total * 100)}%)`
+    });
 
     res.json({
       course_code: courseCode,
