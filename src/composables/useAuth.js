@@ -3,12 +3,34 @@
  *
  * OTP email = identity. dashboard_users table = access control.
  * No learners table, no RLS gymnastics.
+ *
+ * Resilience: All Supabase calls are wrapped with timeouts so the UI
+ * never hangs indefinitely when the database is unreachable.
  */
 
 import { ref, computed } from 'vue'
 import { supabase } from '../services/supabase'
 
 let explicitLogout = false
+
+// Timeout for auth operations (ms) — if Supabase doesn't respond in this time,
+// we fail fast with a clear error instead of hanging forever.
+const AUTH_TIMEOUT_MS = 10_000
+
+/**
+ * Wrap a promise with a timeout. Rejects with a clear message if the
+ * promise doesn't settle within `ms` milliseconds.
+ */
+function withTimeout(promise, ms = AUTH_TIMEOUT_MS, operation = 'Auth operation') {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error(
+        `${operation} timed out — the authentication service may be unavailable. Please try again in a few minutes.`
+      )), ms)
+    )
+  ])
+}
 
 // Reactive state (module-level so it's shared across all useAuth() calls)
 const session = ref(null)
@@ -17,6 +39,7 @@ const dashboardUser = ref(null)  // dashboard_users row (email, role, courses)
 const loading = ref(false)
 const error = ref(null)
 const initialized = ref(false)
+const serviceUnavailable = ref(false) // true when Supabase appears unreachable
 
 // Computed
 const isAuthenticated = computed(() => !!dashboardUser.value)
@@ -56,11 +79,15 @@ async function fetchDashboardUser(email) {
   try {
     // Try direct Supabase first (works if anon has read access)
     if (supabase) {
-      const { data, error: fetchError } = await supabase
-        .from('dashboard_users')
-        .select('email, name, role, courses')
-        .eq('email', email)
-        .single()
+      const { data, error: fetchError } = await withTimeout(
+        supabase
+          .from('dashboard_users')
+          .select('email, name, role, courses')
+          .eq('email', email)
+          .single(),
+        AUTH_TIMEOUT_MS,
+        'Fetching user profile'
+      )
 
       if (data) return data
       // RLS might block anon — fall through to API
@@ -69,10 +96,17 @@ async function fetchDashboardUser(email) {
 
     // Fallback: ask production-api (uses service key)
     const { getApiUrl } = await import('../services/api.js')
-    const resp = await fetch(`${getApiUrl()}/api/auth/me?email=${encodeURIComponent(email)}`)
-    if (resp.ok) {
-      const data = await resp.json()
-      return data
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), AUTH_TIMEOUT_MS)
+    try {
+      const resp = await fetch(`${getApiUrl()}/api/auth/me?email=${encodeURIComponent(email)}`, {
+        signal: controller.signal
+      })
+      if (resp.ok) {
+        return await resp.json()
+      }
+    } finally {
+      clearTimeout(timeoutId)
     }
   } catch (err) {
     console.warn('[Auth] fetchDashboardUser error:', err.message)
@@ -86,12 +120,14 @@ async function fetchDashboardUser(email) {
 async function signInWithPassword(email, password) {
   loading.value = true
   error.value = null
+  serviceUnavailable.value = false
 
   try {
-    const { data, error: signInError } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    })
+    const { data, error: signInError } = await withTimeout(
+      supabase.auth.signInWithPassword({ email, password }),
+      AUTH_TIMEOUT_MS,
+      'Signing in'
+    )
 
     if (signInError) throw signInError
 
@@ -112,7 +148,12 @@ async function signInWithPassword(email, password) {
 
     return data
   } catch (err) {
-    error.value = err.message
+    if (err.message?.includes('timed out') || err.message?.includes('Failed to fetch') || err.message?.includes('NetworkError')) {
+      serviceUnavailable.value = true
+      error.value = 'Unable to reach the authentication service. Please try again in a few minutes.'
+    } else {
+      error.value = err.message
+    }
     throw err
   } finally {
     loading.value = false
@@ -149,12 +190,17 @@ async function updatePassword(newPassword) {
 async function sendOTP(email) {
   loading.value = true
   error.value = null
+  serviceUnavailable.value = false
 
   try {
-    const { error: otpError } = await supabase.auth.signInWithOtp({
-      email,
-      options: { shouldCreateUser: false }
-    })
+    const { error: otpError } = await withTimeout(
+      supabase.auth.signInWithOtp({
+        email,
+        options: { shouldCreateUser: false }
+      }),
+      AUTH_TIMEOUT_MS,
+      'Sending login code'
+    )
 
     if (otpError) {
       if (otpError.message?.includes('Signups not allowed') || otpError.message?.includes('not allowed')) {
@@ -163,9 +209,15 @@ async function sendOTP(email) {
       throw otpError
     }
 
+    serviceUnavailable.value = false
     return { success: true }
   } catch (err) {
-    error.value = err.message
+    if (err.message?.includes('timed out') || err.message?.includes('Failed to fetch') || err.message?.includes('NetworkError')) {
+      serviceUnavailable.value = true
+      error.value = 'Unable to reach the authentication service. Please try again in a few minutes.'
+    } else {
+      error.value = err.message
+    }
     throw err
   } finally {
     loading.value = false
@@ -178,13 +230,14 @@ async function sendOTP(email) {
 async function verifyOTP(email, token) {
   loading.value = true
   error.value = null
+  serviceUnavailable.value = false
 
   try {
-    const { data, error: verifyError } = await supabase.auth.verifyOtp({
-      email,
-      token,
-      type: 'email'
-    })
+    const { data, error: verifyError } = await withTimeout(
+      supabase.auth.verifyOtp({ email, token, type: 'email' }),
+      AUTH_TIMEOUT_MS,
+      'Verifying code'
+    )
 
     if (verifyError) throw verifyError
 
@@ -224,7 +277,14 @@ async function initAuth() {
   loading.value = true
 
   try {
-    const { data: { session: cachedSession } } = await supabase.auth.getSession()
+    // Timeout getSession so the router guard doesn't block forever when Supabase is down.
+    // getSession() reads from local storage first, so this is usually instant —
+    // but if it tries to refresh an expired token, it hits the network.
+    const { data: { session: cachedSession } } = await withTimeout(
+      supabase.auth.getSession(),
+      AUTH_TIMEOUT_MS,
+      'Restoring session'
+    )
 
     if (cachedSession?.user) {
       session.value = cachedSession
@@ -237,7 +297,7 @@ async function initAuth() {
         dashboardUser.value = cached
       }
 
-      // Refresh from DB in background
+      // Refresh from DB in background (no timeout needed — fire and forget)
       fetchDashboardUser(email).then(dbUser => {
         if (dbUser) {
           dashboardUser.value = dbUser
@@ -264,6 +324,11 @@ async function initAuth() {
     })
   } catch (err) {
     console.error('[Auth] Init error:', err)
+    // If init fails due to timeout, mark service as unavailable
+    // but don't block the app — let the user see the login page
+    if (err.message?.includes('timed out')) {
+      serviceUnavailable.value = true
+    }
   } finally {
     loading.value = false
   }
@@ -327,6 +392,7 @@ export function useAuth() {
     learner: dashboardUser,  // kept as 'learner' for backwards compat with templates
     loading,
     error,
+    serviceUnavailable,
 
     // Computed
     isAuthenticated,

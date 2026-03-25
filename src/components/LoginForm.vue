@@ -4,6 +4,14 @@
       Sign In to Popty
     </h2>
 
+    <!-- Service unavailable banner -->
+    <div v-if="serviceUnavailable" class="mb-4 p-4 bg-amber-900/50 border border-amber-600 rounded-lg text-center">
+      <p class="text-amber-300 font-semibold mb-1">Service Temporarily Unavailable</p>
+      <p class="text-amber-400/80 text-sm">
+        The authentication service is not responding. This is usually temporary — please try again in a few minutes.
+      </p>
+    </div>
+
     <!-- Step 1: Email Entry -->
     <div v-if="step === 'email'" class="space-y-4">
       <div>
@@ -152,7 +160,7 @@ import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 
 const router = useRouter()
-const { sendOTP, verifyOTP, signInWithPassword, loading, error } = useAuth()
+const { sendOTP, verifyOTP, signInWithPassword, loading, error, serviceUnavailable } = useAuth()
 
 const step = ref('email')
 const email = ref('')
