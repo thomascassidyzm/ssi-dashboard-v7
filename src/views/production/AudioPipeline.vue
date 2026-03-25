@@ -61,8 +61,29 @@
           </span>
         </div>
 
-        <!-- LIVE PROGRESS (when active) -->
-        <div v-if="audioProgress.active" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-emerald-500/30 rounded-xl p-6">
+        <!-- OTHER COURSE JOB BANNER (when audio job is active for a different course) -->
+        <div v-if="audioProgress.active && audioProgress.courseCode && audioProgress.courseCode !== courseCode" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-amber-500/30 rounded-xl p-5 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <div class="text-sm font-medium text-amber-300">Audio job running on another course</div>
+            <div class="text-xs text-slate-400 mt-1">
+              Only one audio job can run at a time. Currently
+              {{ audioProgress.operation === 'regenerate-role' ? 'regenerating' : 'generating' }}
+              audio for <span class="text-amber-400 font-medium">{{ audioProgress.courseCode }}</span>
+              — {{ audioProgress.current }}/{{ audioProgress.total }} processed.
+            </div>
+          </div>
+          <div class="flex-shrink-0">
+            <div class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+          </div>
+        </div>
+
+        <!-- LIVE PROGRESS (when active for THIS course) -->
+        <div v-if="audioProgress.active && (!audioProgress.courseCode || audioProgress.courseCode === courseCode)" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-emerald-500/30 rounded-xl p-6">
           <div class="flex items-center gap-6">
             <!-- Circular Progress -->
             <div class="relative w-28 h-28 flex-shrink-0">
@@ -236,14 +257,14 @@
               <div class="flex gap-3">
                 <button
                   @click="previewRegenerate"
-                  :disabled="!regenerateRole || regenerating"
+                  :disabled="!regenerateRole || regenerating || otherCourseJobActive"
                   class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
                 >
                   Preview
                 </button>
                 <button
                   @click="executeRegenerate"
-                  :disabled="!regenerateRole || regenerating"
+                  :disabled="!regenerateRole || regenerating || otherCourseJobActive"
                   class="flex-1 px-4 py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
                 >
                   {{ regenerating ? 'Working...' : 'Regenerate' }}
@@ -458,14 +479,14 @@
             <div class="flex gap-3">
               <button
                 @click="previewAllFlagged"
-                :disabled="regeneratingAll"
+                :disabled="regeneratingAll || otherCourseJobActive"
                 class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
               >
                 {{ loadingAllFlaggedQueue ? 'Loading...' : 'Preview Queue' }}
               </button>
               <button
                 @click="executeAllFlagged"
-                :disabled="regeneratingAll || !allFlaggedQueue?.total"
+                :disabled="regeneratingAll || otherCourseJobActive || !allFlaggedQueue?.total"
                 class="flex-1 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
               >
                 {{ regeneratingAll ? 'Working...' : 'Regenerate All' }}
@@ -577,7 +598,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              {{ isGenerating ? 'Generating...' : startingGeneration ? 'Starting...' : 'Generate Missing Audio' }}
+              {{ isGenerating ? 'Generating...' : startingGeneration ? 'Starting...' : otherCourseJobActive ? `Busy (${audioProgress.courseCode})` : 'Generate Missing Audio' }}
             </button>
             <button
               v-if="isGenerating"
@@ -1000,9 +1021,12 @@ onUnmounted(() => {
 // Computed properties
 const progressStats = computed(() => productionStore.pipelineStats)
 const isGenerating = computed(() => productionStore.jobStatus === 'running')
+const otherCourseJobActive = computed(() =>
+  audioProgress.value.active && audioProgress.value.courseCode && audioProgress.value.courseCode !== courseCode.value
+)
 const hasFailed = computed(() => progressStats.value.failed > 0)
 const canStartGeneration = computed(() =>
-  !isGenerating.value && progressStats.value.pending > 0
+  !isGenerating.value && !otherCourseJobActive.value && progressStats.value.pending > 0
 )
 const estimatedCost = computed(() => productionStore.costEstimate.estimated || null)
 const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime || null)
