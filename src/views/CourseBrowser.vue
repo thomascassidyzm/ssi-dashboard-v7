@@ -122,14 +122,7 @@
               <div class="text-slate-500 text-xs mb-1">Phrases</div>
               <div class="font-mono text-emerald-400">{{ (course.phrases || 0).toLocaleString() }}</div>
             </div>
-            <!-- Audio Coverage -->
-            <div class="bg-slate-700/50 rounded px-3 py-2">
-              <div class="text-slate-500 text-xs mb-1">Audio</div>
-              <div class="font-mono">
-                <span :class="getAudioCoverageClass(course)">{{ course.audio_count || 0 }}</span>
-                <span class="text-slate-500"> / {{ course.audio_needed || course.phrases || 0 }}</span>
-              </div>
-            </div>
+            <!-- Audio coverage available per-course in Production Suite -->
           </div>
 
           <!-- Click hint -->
@@ -206,8 +199,8 @@ async function loadCourses() {
         display_name: c.display_name,
         status: c.status,
         seed_count: c.seed_count,
-        seed_pairs: 0, lego_pairs: 0, phrases: 0, audio_count: 0,
-        stats: { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
+        seed_pairs: 0, lego_pairs: 0, phrases: 0,
+        stats: { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0 }
       }))
       for (const c of courses.value) {
         if (c.display_name && c.course_code) courseDisplayNames[c.course_code] = c.display_name
@@ -225,7 +218,6 @@ async function loadCourses() {
             c.seed_pairs = s.completedSeeds || 0
             c.lego_pairs = s.legos || 0
             c.phrases = s.phrases || 0
-            c.audio_count = s.audio || 0
             c.stats = { ...c.stats, ...s }
           }
         }
@@ -270,7 +262,6 @@ async function loadCourses() {
                 seed_pairs: courseStats.completedSeeds || 0,
                 lego_pairs: courseStats.legos || 0,
                 phrases: courseStats.phrases || 0,
-                audio_count: courseStats.audio || 0,
                 stats: { ...courses.value[idx].stats, ...courseStats }
               }
             }
@@ -323,14 +314,5 @@ function getStatusClass(status) {
   }
 }
 
-function getAudioCoverageClass(course) {
-  const count = course.audio_count || 0
-  const needed = course.audio_needed || course.phrases || 0
-  if (needed === 0) return 'text-slate-400'
-  const ratio = count / needed
-  if (ratio >= 1) return 'text-emerald-400'
-  if (ratio >= 0.5) return 'text-yellow-400'
-  return 'text-orange-400'
-}
 
 </script>

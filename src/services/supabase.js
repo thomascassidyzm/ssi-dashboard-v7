@@ -142,8 +142,7 @@ export async function getAllCourseStats(courseCodes) {
       seeds: row.seeds || 0,
       completedSeeds: row.completed_seeds || 0,
       legos: row.legos || 0,
-      phrases: row.phrases || 0,
-      audio: row.audio || 0
+      phrases: row.phrases || 0
     }
   }
   return statsMap
@@ -158,7 +157,7 @@ async function getAllCourseStatsFallback(courseCodes) {
     const batch = courseCodes.slice(i, i + BATCH_SIZE)
 
     await Promise.all(batch.map(async (courseCode) => {
-      const [seedsResult, legosResult, phrasesResult, audioResult, legoSeedsResult] = await Promise.all([
+      const [seedsResult, legosResult, phrasesResult, legoSeedsResult] = await Promise.all([
         supabase
           .from('course_seeds')
           .select('*', { count: 'exact', head: true })
@@ -169,10 +168,6 @@ async function getAllCourseStatsFallback(courseCodes) {
           .eq('course_code', courseCode),
         supabase
           .from('course_practice_phrases')
-          .select('*', { count: 'exact', head: true })
-          .eq('course_code', courseCode),
-        supabase
-          .from('course_audio')
           .select('*', { count: 'exact', head: true })
           .eq('course_code', courseCode),
         supabase
@@ -189,8 +184,7 @@ async function getAllCourseStatsFallback(courseCodes) {
         seeds: seedsResult.count || 0,
         completedSeeds,
         legos: legosResult.count || 0,
-        phrases: phrasesResult.count || 0,
-        audio: audioResult.count || 0
+        phrases: phrasesResult.count || 0
       }
     }))
   }
