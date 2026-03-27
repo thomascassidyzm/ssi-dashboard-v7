@@ -79,7 +79,11 @@
       <!-- Recent -->
       <section class="section">
         <h2 class="section-title">Recent</h2>
-        <div v-if="recentCourses.length === 0 && activeCourses.length === 0" class="empty-state">
+        <div v-if="loadingRecent" class="loading-state">
+          <span class="loading-spinner"></span>
+          <span>Loading recent activity...</span>
+        </div>
+        <div v-else-if="recentCourses.length === 0 && activeCourses.length === 0" class="empty-state">
           <p>No activity yet.</p>
         </div>
         <div v-else-if="recentCourses.length === 0" class="empty-state-small">
@@ -133,6 +137,7 @@ const { getCourseName, loadCourses } = useCourses()
 // Snapshots: { [courseCode]: { stats, lastChanged, firstStats, firstSeen, audioActive } }
 const snapshots = ref({})
 const realtimeConnected = ref(false)
+const loadingRecent = ref(true)
 let pollTimer = null
 let subscriptions = []
 
@@ -320,39 +325,52 @@ function formatRecentTime(ts) {
 
 async function loadRecentCourses() {
   if (!supabase) return
+  loadingRecent.value = true
   try {
-    // Get 15 most recently updated courses (extra to account for Current overlap)
-    const { data, error } = await supabase
-      .from('courses')
-      .select('course_code, display_name, updated_at')
-      .order('updated_at', { ascending: false })
-      .limit(15)
+    // Two fast queries in parallel:
+    // 1. Recently updated courses (just metadata)
+    // 2. All course stats via the optimized RPC (~635ms)
+    const [coursesResult, statsResult] = await Promise.all([
+      supabase
+        .from('courses')
+        .select('course_code, display_name, updated_at')
+        .order('updated_at', { ascending: false })
+        .limit(15),
+      supabase.rpc('get_all_course_stats')
+    ])
 
-    if (error || !data) return
+    if (coursesResult.error || !coursesResult.data) return
+
+    // Build stats lookup from RPC result
+    const statsMap = {}
+    for (const row of (statsResult.data || [])) {
+      statsMap[row.course_code] = row
+    }
 
     const results = []
-    for (const course of data) {
-      const stats = await getCourseStats(course.course_code)
-      // Skip courses with no content at all
-      if ((stats.seeds || 0) === 0 && (stats.legos || 0) === 0) continue
+    for (const course of coursesResult.data) {
+      const s = statsMap[course.course_code]
+      if (!s || ((s.seeds || 0) === 0 && (s.legos || 0) === 0)) continue
       results.push({
         code: course.course_code,
         displayName: course.display_name || getCourseName(course.course_code),
         stats: {
-          seeds: stats.seeds || 0,
-          completedSeeds: stats.completeSeeds || 0,
-          seedsTranslated: stats.seedsTranslated || 0,
-          legos: stats.legos || 0,
-          phrases: stats.practicePhrases || 0,
-          audio: stats.audio || 0
+          seeds: s.seeds || 0,
+          completedSeeds: s.completed_seeds || 0,
+          seedsTranslated: 0, // Not in the RPC — populated by detectRecentActivity if active
+          legos: s.legos || 0,
+          phrases: s.phrases || 0,
+          audio: 0 // Removed from RPC for performance
         },
         updatedAt: course.updated_at
       })
-      if (results.length >= 5) break
+      if (results.length >= 10) break
     }
     recentCoursesData.value = results
   } catch (err) {
     console.warn('[Activity] loadRecentCourses failed:', err.message)
+  } finally {
+    loadingRecent.value = false
   }
 }
 
@@ -574,6 +592,29 @@ onUnmounted(() => {
   color: #64748b;
   margin-bottom: 0.75rem;
   padding-left: 0.25rem;
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 1rem;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #334155;
+  border-top-color: #64748b;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .empty-state {
