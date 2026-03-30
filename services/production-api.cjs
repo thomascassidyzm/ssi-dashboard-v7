@@ -242,6 +242,19 @@ async function requireAdmin(req, res) {
   return user
 }
 
+// Like requireAdmin but allows any dashboard user (editor, recorder, admin)
+async function requireDashboardUser(req, res) {
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
+
+  const supabaseUser = await verifySupabaseJWT(token)
+  if (supabaseUser) return supabaseUser
+
+  const user = await authValidateSession(token)
+  if (!user) { res.status(403).json({ error: 'Dashboard access required' }); return null }
+  return user
+}
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
@@ -511,10 +524,11 @@ app.post('/api/auth/logout', async (req, res) => {
 // INVITE CODES
 // =============================================================================
 
-// POST /api/auth/invite-codes/generate — admin generates an invite code
+// POST /api/auth/invite-codes/generate — generate an invite code
+// Admins: any role, any course. Editors: recorder role only, own courses only.
 app.post('/api/auth/invite-codes/generate', async (req, res) => {
-  const adminUser = await requireAdmin(req, res)
-  if (!adminUser) return
+  const user = await requireDashboardUser(req, res)
+  if (!user) return
 
   const { courses, role = 'recorder', label, expires_days, max_uses = 1 } = req.body
   if (!courses || !Array.isArray(courses) || courses.length === 0) {
@@ -522,6 +536,18 @@ app.post('/api/auth/invite-codes/generate', async (req, res) => {
   }
   if (!['recorder', 'editor', 'admin'].includes(role)) {
     return res.status(400).json({ error: 'Invalid role' })
+  }
+
+  // Non-admins can only generate recorder codes for their own courses
+  if (user.role !== 'admin') {
+    if (role !== 'recorder') {
+      return res.status(403).json({ error: 'You can only invite recorders' })
+    }
+    const userCourses = Array.isArray(user.courses) ? user.courses : []
+    const unauthorized = courses.filter(c => !userCourses.includes(c))
+    if (unauthorized.length > 0) {
+      return res.status(403).json({ error: `You don't have access to: ${unauthorized.join(', ')}` })
+    }
   }
 
   try {
@@ -540,13 +566,13 @@ app.post('/api/auth/invite-codes/generate', async (req, res) => {
       role,
       courses: JSON.stringify(courses),
       label: label || null,
-      created_by: adminUser.email,
+      created_by: user.email,
       expires_at,
       max_uses: max_uses || 1,
     }).select().single()
 
     if (error) throw error
-    logger.info(`[Auth] Invite code generated: ${code} for ${courses.join(',')} by ${adminUser.email}`)
+    logger.info(`[Auth] Invite code generated: ${code} for ${courses.join(',')} by ${user.email}`)
     res.json({ code: data.code, id: data.id, expires_at: data.expires_at })
   } catch (err) {
     logger.error('[Auth] Generate invite code error:', err)

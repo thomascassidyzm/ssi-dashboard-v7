@@ -88,7 +88,7 @@
         <h2 class="text-xl font-semibold text-amber-400 mb-4">Invite Code</h2>
         <p class="text-slate-400 text-sm mb-4">Generate a code to send via WhatsApp. Recipient signs in with any email and enters the code to get access.</p>
 
-        <div class="mb-4">
+        <div v-if="isAdmin" class="mb-4">
           <label class="block text-sm text-slate-400 mb-2">Role</label>
           <select
             v-model="codeForm.role"
@@ -98,6 +98,9 @@
             <option value="editor">Editor (can edit course content)</option>
             <option value="admin">Admin (full access)</option>
           </select>
+        </div>
+        <div v-else class="mb-4">
+          <p class="text-sm text-slate-400">Inviting as <span class="text-amber-400 font-medium">Recorder</span></p>
         </div>
 
         <div class="mb-4">
@@ -113,7 +116,7 @@
             </span>
           </div>
           <CourseSearchPicker
-            :available="availableCourses"
+            :available="inviteAvailableCourses"
             :selected="codeForm.courses"
             @toggle="(code) => toggleCourse(codeForm.courses, code)"
             @toggleAll="toggleAllCourses(codeForm)"
@@ -438,7 +441,7 @@ const CourseSearchPicker = defineComponent({
   }
 })
 
-const { getAccessToken } = useAuth()
+const { getAccessToken, isAdmin, accessibleCourses } = useAuth()
 
 const availableCourses = ref([])
 const courseMap = ref({})
@@ -642,7 +645,12 @@ async function deleteUser(email) {
   }
 }
 
-// Invite codes
+// Invite codes — non-admins can only see their own courses
+const inviteAvailableCourses = computed(() => {
+  if (isAdmin.value || !accessibleCourses.value) return availableCourses.value
+  return availableCourses.value.filter(c => accessibleCourses.value.includes(c.code))
+})
+
 const codeForm = ref({ role: 'recorder', courses: [], label: '', expiresDays: null })
 const generatingCode = ref(false)
 const generatedCode = ref(null)
