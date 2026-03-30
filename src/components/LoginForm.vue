@@ -197,7 +197,7 @@ import { useAuth } from '../composables/useAuth'
 import { getApiUrl } from '../services/api'
 
 const router = useRouter()
-const { sendOTP, verifyOTP, signInWithPassword, loading, error, hasDashboardAccess } = useAuth()
+const { sendOTP, verifyOTP, signInWithPassword, loading, error, hasDashboardAccess, refreshAccess } = useAuth()
 
 const step = ref('email')
 const email = ref('')
@@ -312,8 +312,9 @@ async function handleRedeemCode() {
       return
     }
 
-    // Refresh auth state — now they have a dashboard_users row
-    window.location.href = router.currentRoute.value.query.redirect || '/'
+    // Refresh auth state in memory — now they have a dashboard_users row
+    await refreshAccess(email.value)
+    router.push(router.currentRoute.value.query.redirect || '/')
   } catch (err) {
     redeemError.value = 'Connection error. Please try again.'
   } finally {

@@ -341,5 +341,12 @@ export function useAuth() {
     logout,
     getAccessToken,
     canAccessCourse,
+    refreshAccess: async (email) => {
+      const dbUser = await fetchDashboardUser(email)
+      if (dbUser) {
+        dashboardUser.value = dbUser
+        cacheUser(dbUser)
+      }
+    },
   }
 }
