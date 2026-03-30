@@ -413,7 +413,7 @@ const CourseSearchPicker = defineComponent({
               ...filtered.value.map(course =>
                 h('button', {
                   key: course.code,
-                  onClick: () => { emit('toggle', course.code) },
+                  onMousedown: (e) => { e.preventDefault(); e.stopPropagation(); emit('toggle', course.code) },
                   class: `w-full text-left px-3 ${isSm ? 'py-1.5 text-xs' : 'py-2 text-sm'} hover:bg-slate-800 flex items-center justify-between ${
                     props.selected.includes(course.code) ? 'text-emerald-400' : 'text-slate-300'
                   }`
