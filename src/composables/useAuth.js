@@ -153,13 +153,10 @@ async function sendOTP(email) {
   try {
     const { error: otpError } = await supabase.auth.signInWithOtp({
       email,
-      options: { shouldCreateUser: false }
+      options: { shouldCreateUser: true }
     })
 
     if (otpError) {
-      if (otpError.message?.includes('Signups not allowed') || otpError.message?.includes('not allowed')) {
-        throw new Error('No account found for this email. Contact an SSi admin for access.')
-      }
       throw otpError
     }
 

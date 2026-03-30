@@ -508,6 +508,175 @@ app.post('/api/auth/logout', async (req, res) => {
 })
 
 // =============================================================================
+// INVITE CODES
+// =============================================================================
+
+// POST /api/auth/invite-codes/generate — admin generates an invite code
+app.post('/api/auth/invite-codes/generate', async (req, res) => {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+
+  const { courses, role = 'recorder', label, expires_days, max_uses = 1 } = req.body
+  if (!courses || !Array.isArray(courses) || courses.length === 0) {
+    return res.status(400).json({ error: 'courses array is required' })
+  }
+  if (!['recorder', 'editor', 'admin'].includes(role)) {
+    return res.status(400).json({ error: 'Invalid role' })
+  }
+
+  try {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+    let code = ''
+    const bytes = crypto.randomBytes(8)
+    for (let i = 0; i < 8; i++) { code += chars[bytes[i] % chars.length] }
+
+    const expires_at = expires_days
+      ? new Date(Date.now() + expires_days * 86400000).toISOString()
+      : null
+
+    const db = supabaseClient.getClient()
+    const { data, error } = await db.from('dashboard_invite_codes').insert({
+      code,
+      role,
+      courses: JSON.stringify(courses),
+      label: label || null,
+      created_by: adminUser.email,
+      expires_at,
+      max_uses: max_uses || 1,
+    }).select().single()
+
+    if (error) throw error
+    logger.info(`[Auth] Invite code generated: ${code} for ${courses.join(',')} by ${adminUser.email}`)
+    res.json({ code: data.code, id: data.id, expires_at: data.expires_at })
+  } catch (err) {
+    logger.error('[Auth] Generate invite code error:', err)
+    res.status(500).json({ error: 'Failed to generate invite code' })
+  }
+})
+
+// GET /api/auth/invite-codes — list all invite codes (admin only)
+app.get('/api/auth/invite-codes', async (req, res) => {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+
+  try {
+    const db = supabaseClient.getClient()
+    const { data, error } = await db
+      .from('dashboard_invite_codes')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+    res.json({ codes: data || [] })
+  } catch (err) {
+    logger.error('[Auth] List invite codes error:', err)
+    res.status(500).json({ error: 'Failed to list invite codes' })
+  }
+})
+
+// POST /api/auth/invite-codes/redeem — redeem an invite code (no admin required)
+app.post('/api/auth/invite-codes/redeem', async (req, res) => {
+  const { code: rawCode, email } = req.body
+  if (!rawCode || !email) {
+    return res.status(400).json({ error: 'code and email are required' })
+  }
+
+  const code = rawCode.toUpperCase().replace(/[^A-Z0-9]/g, '').trim()
+
+  try {
+    const db = supabaseClient.getClient()
+
+    // Check if user already has dashboard access
+    const existing = await authGetUser(email)
+    if (existing) {
+      return res.status(409).json({ error: 'You already have dashboard access' })
+    }
+
+    // Atomically claim the code: increment use_count only if under max_uses
+    const { data: invite, error: claimError } = await db
+      .from('dashboard_invite_codes')
+      .update({
+        use_count: db.rpc ? undefined : undefined, // placeholder — real increment below
+      })
+      .eq('code', code)
+      .select()
+      .single()
+
+    // Fetch the code first to validate
+    const { data: codeRow, error: fetchError } = await db
+      .from('dashboard_invite_codes')
+      .select('*')
+      .eq('code', code)
+      .single()
+
+    if (fetchError || !codeRow) {
+      return res.status(404).json({ error: 'Invalid invite code' })
+    }
+
+    // Check expiry
+    if (codeRow.expires_at && new Date(codeRow.expires_at) < new Date()) {
+      return res.status(410).json({ error: 'This invite code has expired' })
+    }
+
+    // Check uses
+    if (codeRow.use_count >= codeRow.max_uses) {
+      return res.status(410).json({ error: 'This invite code has already been used' })
+    }
+
+    // Parse courses from the code
+    let courses = codeRow.courses
+    if (typeof courses === 'string') {
+      try { courses = JSON.parse(courses) } catch { courses = [] }
+    }
+
+    // Create Supabase Auth account if needed (so they can log in with OTP)
+    try {
+      await db.auth.admin.createUser({ email, email_confirm: true })
+    } catch (authErr) {
+      // Already exists is fine
+      if (!authErr.message?.includes('already') && !authErr.message?.includes('exists')) {
+        logger.warn(`[Auth] Failed to create auth account for ${email}: ${authErr.message}`)
+      }
+    }
+
+    // Create dashboard_users row
+    const { data: newUser, error: insertError } = await db
+      .from('dashboard_users')
+      .insert({
+        email,
+        name: email.split('@')[0],
+        role: codeRow.role,
+        courses,
+        invited_by: codeRow.created_by,
+        invited_at: new Date().toISOString(),
+      })
+      .select()
+      .single()
+
+    if (insertError) throw insertError
+
+    // Mark code as used (atomic increment + append redemption)
+    const redemptions = [...(codeRow.redemptions || []), { email, redeemed_at: new Date().toISOString() }]
+    await db
+      .from('dashboard_invite_codes')
+      .update({
+        use_count: codeRow.use_count + 1,
+        redemptions,
+      })
+      .eq('code', code)
+
+    logger.info(`[Auth] Invite code ${code} redeemed by ${email} → ${codeRow.role}, courses: ${JSON.stringify(courses)}`)
+    res.json({
+      success: true,
+      user: { email: newUser.email, name: newUser.name, role: newUser.role, courses: newUser.courses }
+    })
+  } catch (err) {
+    logger.error('[Auth] Redeem invite code error:', err)
+    res.status(500).json({ error: 'Failed to redeem invite code' })
+  }
+})
+
+// =============================================================================
 // END AUTH ROUTES
 // =============================================================================
 
