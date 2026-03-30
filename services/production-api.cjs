@@ -1169,7 +1169,7 @@ app.post('/api/courses/create', async (req, res) => {
         course_code: courseCode,
         known_lang: known,
         target_lang: targetLanguage,
-        display_name: displayName || `${targetLanguage} for ${known} speakers`,
+        display_name: displayName || `${languageCodeService.getName(targetLanguage) || targetLanguage} for ${languageCodeService.getName(known) || known} Speakers`,
         status: 'draft'
       })
 
