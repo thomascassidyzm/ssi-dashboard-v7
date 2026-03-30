@@ -83,6 +83,134 @@
         </div>
       </div>
 
+      <!-- Generate Invite Code -->
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
+        <h2 class="text-xl font-semibold text-amber-400 mb-4">Invite Code</h2>
+        <p class="text-slate-400 text-sm mb-4">Generate a code to send via WhatsApp. Recipient signs in with any email and enters the code to get access.</p>
+
+        <div class="mb-4">
+          <label class="block text-sm text-slate-400 mb-2">Role</label>
+          <select
+            v-model="codeForm.role"
+            class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-slate-100 focus:border-amber-500 focus:outline-none"
+          >
+            <option value="recorder">Recorder (can record audio)</option>
+            <option value="editor">Editor (can edit course content)</option>
+            <option value="admin">Admin (full access)</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm text-slate-400 mb-2">Course Access *</label>
+          <div v-if="codeForm.courses.length" class="flex flex-wrap gap-1.5 mb-2">
+            <span
+              v-for="code in codeForm.courses"
+              :key="code"
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-amber-600 text-white"
+            >
+              {{ courseDisplayName(code) }}
+              <button @click="toggleCourse(codeForm.courses, code)" class="hover:text-amber-200 ml-0.5">&times;</button>
+            </span>
+          </div>
+          <CourseSearchPicker
+            :available="availableCourses"
+            :selected="codeForm.courses"
+            @toggle="(code) => toggleCourse(codeForm.courses, code)"
+            @toggleAll="toggleAllCourses(codeForm)"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-sm text-slate-400 mb-2">Label (optional)</label>
+            <input
+              v-model="codeForm.label"
+              type="text"
+              placeholder="For Aaron — Catalan recording"
+              class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-slate-100 placeholder-slate-500 focus:border-amber-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-sm text-slate-400 mb-2">Expires</label>
+            <select
+              v-model="codeForm.expiresDays"
+              class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-slate-100 focus:border-amber-500 focus:outline-none"
+            >
+              <option :value="null">Never</option>
+              <option :value="7">7 days</option>
+              <option :value="30">30 days</option>
+              <option :value="90">90 days</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button
+            @click="generateCode"
+            :disabled="!codeForm.courses.length || generatingCode"
+            class="bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+          >
+            {{ generatingCode ? 'Generating...' : 'Generate Code' }}
+          </button>
+          <p v-if="codeError" class="text-red-400 text-sm">{{ codeError }}</p>
+        </div>
+
+        <!-- Generated code display -->
+        <div v-if="generatedCode" class="mt-4 p-4 bg-slate-900 border border-amber-500/30 rounded-lg text-center">
+          <p class="text-slate-400 text-sm mb-2">Send this code:</p>
+          <div class="flex items-center justify-center gap-3">
+            <span class="text-3xl font-mono font-bold text-amber-400 tracking-[0.2em]">{{ generatedCode }}</span>
+            <button
+              @click="copyCode"
+              class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
+            >
+              {{ codeCopied ? 'Copied' : 'Copy' }}
+            </button>
+          </div>
+          <p v-if="codeForm.label" class="text-slate-500 text-xs mt-2">{{ codeForm.label }}</p>
+        </div>
+      </div>
+
+      <!-- Existing Invite Codes -->
+      <div v-if="inviteCodes.length > 0" class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-semibold text-amber-400">Invite Codes</h2>
+          <button
+            @click="loadInviteCodes"
+            class="text-slate-400 hover:text-slate-300 text-sm"
+          >
+            ↻ Refresh
+          </button>
+        </div>
+
+        <div class="space-y-2">
+          <div
+            v-for="ic in inviteCodes"
+            :key="ic.id"
+            class="flex items-center justify-between bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3"
+          >
+            <div class="flex items-center gap-4">
+              <span class="font-mono font-bold text-sm" :class="codeStatusClass(ic)">{{ ic.code }}</span>
+              <span v-if="ic.label" class="text-slate-400 text-sm">{{ ic.label }}</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="flex flex-wrap gap-1">
+                <span
+                  v-for="course in parseCodeCourses(ic.courses)"
+                  :key="course"
+                  class="text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded"
+                >
+                  {{ course }}
+                </span>
+              </div>
+              <span :class="['text-xs px-2 py-0.5 rounded-full', codeStatusBadge(ic)]">
+                {{ codeStatusLabel(ic) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Existing Users -->
       <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
         <div class="flex items-center justify-between mb-4">
@@ -514,8 +642,107 @@ async function deleteUser(email) {
   }
 }
 
+// Invite codes
+const codeForm = ref({ role: 'recorder', courses: [], label: '', expiresDays: null })
+const generatingCode = ref(false)
+const generatedCode = ref(null)
+const codeCopied = ref(false)
+const codeError = ref(null)
+const inviteCodes = ref([])
+
+async function generateCode() {
+  generatingCode.value = true
+  codeError.value = null
+  generatedCode.value = null
+
+  try {
+    const token = await getAccessToken()
+    const response = await fetch(`${getApiUrl()}/api/auth/invite-codes/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      body: JSON.stringify({
+        courses: codeForm.value.courses,
+        role: codeForm.value.role,
+        label: codeForm.value.label || null,
+        expires_days: codeForm.value.expiresDays,
+      })
+    })
+    const data = await response.json()
+    if (!response.ok) throw new Error(data.error || 'Failed to generate code')
+
+    generatedCode.value = data.code
+    codeCopied.value = false
+    await loadInviteCodes()
+  } catch (err) {
+    codeError.value = err.message
+  } finally {
+    generatingCode.value = false
+  }
+}
+
+async function copyCode() {
+  if (!generatedCode.value) return
+  try {
+    await navigator.clipboard.writeText(generatedCode.value)
+    codeCopied.value = true
+    setTimeout(() => { codeCopied.value = false }, 2000)
+  } catch {
+    // Fallback for non-HTTPS
+    const input = document.createElement('input')
+    input.value = generatedCode.value
+    document.body.appendChild(input)
+    input.select()
+    document.execCommand('copy')
+    document.body.removeChild(input)
+    codeCopied.value = true
+    setTimeout(() => { codeCopied.value = false }, 2000)
+  }
+}
+
+async function loadInviteCodes() {
+  try {
+    const token = await getAccessToken()
+    const response = await fetch(`${getApiUrl()}/api/auth/invite-codes`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+    const data = await response.json()
+    inviteCodes.value = data.codes || []
+  } catch (err) {
+    console.warn('Failed to load invite codes:', err)
+  }
+}
+
+function parseCodeCourses(courses) {
+  if (Array.isArray(courses)) return courses
+  if (typeof courses === 'string') {
+    try { return JSON.parse(courses) } catch { return [] }
+  }
+  return []
+}
+
+function codeStatusLabel(ic) {
+  if (ic.expires_at && new Date(ic.expires_at) < new Date()) return 'Expired'
+  if (ic.use_count >= ic.max_uses) return 'Redeemed'
+  if (ic.use_count > 0) return `${ic.use_count}/${ic.max_uses} used`
+  return 'Unused'
+}
+
+function codeStatusClass(ic) {
+  if (ic.expires_at && new Date(ic.expires_at) < new Date()) return 'text-slate-500 line-through'
+  if (ic.use_count >= ic.max_uses) return 'text-slate-500'
+  return 'text-amber-400'
+}
+
+function codeStatusBadge(ic) {
+  if (ic.expires_at && new Date(ic.expires_at) < new Date()) return 'bg-red-500/20 text-red-400'
+  if (ic.use_count >= ic.max_uses) return 'bg-emerald-500/20 text-emerald-400'
+  if (ic.use_count > 0) return 'bg-amber-500/20 text-amber-400'
+  return 'bg-slate-600 text-slate-300'
+}
+
 onMounted(() => {
   loadAvailableCourses()
   loadUsers()
+  loadInviteCodes()
 })
 </script>
