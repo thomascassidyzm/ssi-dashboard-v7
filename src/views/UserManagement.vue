@@ -6,12 +6,12 @@
         <router-link to="/" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
           ← Back to Dashboard
         </router-link>
-        <h1 class="text-4xl font-bold text-emerald-400 mb-2">User Management</h1>
-        <p class="text-slate-400">Add users and manage course access</p>
+        <h1 class="text-4xl font-bold text-emerald-400 mb-2">{{ isAdmin ? 'User Management' : 'Invite Recorder' }}</h1>
+        <p class="text-slate-400">{{ isAdmin ? 'Add users and manage course access' : 'Generate invite codes for voice recorders' }}</p>
       </div>
 
-      <!-- Invite New User -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
+      <!-- Invite New User (admin only) -->
+      <div v-if="isAdmin" class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
         <h2 class="text-xl font-semibold text-emerald-400 mb-4">Add New User</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -214,8 +214,8 @@
         </div>
       </div>
 
-      <!-- Existing Users -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+      <!-- Existing Users (admin only) -->
+      <div v-if="isAdmin" class="bg-slate-800 border border-slate-700 rounded-lg p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-xl font-semibold text-emerald-400">Existing Users</h2>
           <button

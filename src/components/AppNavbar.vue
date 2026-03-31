@@ -43,6 +43,9 @@
             <router-link v-if="isAdmin" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
               Users
             </router-link>
+            <router-link v-else-if="hasDashboardAccess" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
+              Invite Recorder
+            </router-link>
             <button @click="showPasswordModal = true; showUserMenu = false" class="user-dropdown-item">
               {{ hasPassword ? 'Change password' : 'Set password' }}
             </button>
@@ -106,7 +109,7 @@ import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
-const { isAuthenticated, isAdmin, user, learner, hasPassword, updatePassword, logout } = useAuth()
+const { isAuthenticated, isAdmin, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout } = useAuth()
 
 const showUserMenu = ref(false)
 const userMenuRef = ref(null)
