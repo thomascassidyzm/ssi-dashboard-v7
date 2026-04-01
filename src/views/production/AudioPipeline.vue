@@ -866,12 +866,9 @@ const refreshPlanStats = async () => {
     })
     if (response.ok) {
       const data = await response.json()
-      // Use Phase 8's generation plan (deduped unique clips) when available —
-      // this matches the actual number TTS will generate during active generation
-      const gp = data.generationPlan
-      if (gp && gp.total !== undefined) {
-        productionStore.updatePipelineStats(gp.total, gp.existing, gp.missing || 0)
-      } else if (data.total !== undefined && data.existing !== undefined) {
+      // Use the slot-based counts (total/existing/missing from get_audio_counts RPC)
+      // NOT generationPlan which is deduped unique clips for cost estimation only
+      if (data.total !== undefined && data.existing !== undefined) {
         productionStore.updatePipelineStats(data.total, data.existing, data.missing || 0)
       }
     }
@@ -1042,17 +1039,6 @@ const startGeneration = async () => {
   startingGeneration.value = true
   error.value = null
   try {
-    // First fetch fresh plan to get accurate counts and sync dashboard
-    const planData = await productionStore.generatePlan(courseCode.value)
-
-    // Update dashboard stats — prefer Phase 8's generation plan (deduped unique clips)
-    const gp = planData.generationPlan
-    if (gp && gp.total !== undefined) {
-      productionStore.updatePipelineStats(gp.total, gp.existing, gp.missing || 0)
-    } else if (planData.total !== undefined && planData.existing !== undefined) {
-      productionStore.updatePipelineStats(planData.total, planData.existing, planData.missing || 0)
-    }
-
     // Always call generate - even with 0 missing, it links audio IDs to phrases
     const result = await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
     if (result?.linked > 0) {
