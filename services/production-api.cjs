@@ -3167,30 +3167,56 @@ async function getDirectAudioStats(courseCode) {
     return cached.data
   }
 
-  // Single source of truth: Phase 8 /plan endpoint counts unique text+lang+role combos
-  // using normalizeForAudio() — same logic that /generate uses to build the work queue.
-  // This ensures dashboard stats ALWAYS match what generation actually does.
-  const phase8Url = process.env.PHASE8_URL || 'http://localhost:3465'
-  const resp = await fetch(`${phase8Url}/plan/${courseCode}`)
-  if (!resp.ok) {
-    throw new Error(`Phase 8 plan failed for ${courseCode}: ${resp.status}`)
-  }
-  const plan = await resp.json()
+  const supabase = supabaseClient.getClient()
+
+  // Get course info for release target
+  const { data: course, error: courseError } = await supabase
+    .from('courses')
+    .select('seed_count')
+    .eq('course_code', courseCode)
+    .single()
+  if (courseError) throw new Error(`Course not found: ${courseCode}`)
+  const releaseTarget = course.seed_count || 260
+
+  // Single source of truth: get_audio_counts RPC counts NULL audio_id columns
+  // directly on content tables (phrases, legos, seeds). No dedup, no normalization,
+  // no Phase 8 dependency. Just: is the audio_id linked or not?
+  const { data: counts, error: countsError } = await supabase.rpc('get_audio_counts', {
+    p_course_code: courseCode,
+    p_release_target: releaseTarget
+  })
+  if (countsError) throw new Error(`get_audio_counts RPC failed: ${countsError.message}`)
+
+  const p = counts.phrases || {}
+  const l = counts.legos || {}
+  const s = counts.seeds || {}
+
+  const missingKnown = (p.missing_known || 0) + (l.missing_known || 0) + (s.missing_known || 0)
+  const missingTarget1 = (p.missing_target1 || 0) + (l.missing_target1 || 0) + (s.missing_target1 || 0)
+  const missingTarget2 = (p.missing_target2 || 0) + (s.missing_target2 || 0)
+  const missingPresentation = l.missing_presentation || 0
+  const totalMissing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation
+  const totalSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3)
+  const totalExisting = totalSlots - totalMissing
 
   const result = {
-    total: plan.total || 0,
-    existing: plan.existing || 0,
-    missing: plan.missing || 0,
-    breakdown: plan.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    total: totalSlots,
+    existing: totalExisting,
+    missing: totalMissing,
+    breakdown: {
+      known: missingKnown,
+      target1: missingTarget1,
+      target2: missingTarget2,
+      presentation: missingPresentation
+    },
     existingByRole: {},
-    totalPhrases: plan.totalPhrases || 0,
-    totalLegos: 0,
-    totalNewLegos: plan.totalPresentationsNeeded || 0,
-    uniquePhraseAudio: plan.uniqueKnownTexts || 0,
+    totalPhrases: p.total || 0,
+    totalLegos: l.total || 0,
+    totalNewLegos: l.total_new || 0,
     sharedNeeded: 0,
     sharedExisting: 0,
     welcomeExists: false,
-    releaseTarget: plan.releaseTarget || 300
+    releaseTarget
   }
 
   // Cache result

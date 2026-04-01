@@ -855,27 +855,9 @@ const refreshAudioStats = async () => {
   }
 }
 
-// NOTE: Plan stats refresh removed from automatic polling - takes 40+ seconds!
-// Plan is only loaded when user explicitly clicks "Start Generation" or views the plan.
-// Use refreshPlanStats() manually when needed (e.g., after generation completes).
-
-const refreshPlanStats = async () => {
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-pipeline/plan`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      // Use the slot-based counts (total/existing/missing from get_audio_counts RPC)
-      // NOT generationPlan which is deduped unique clips for cost estimation only
-      if (data.total !== undefined && data.existing !== undefined) {
-        productionStore.updatePipelineStats(data.total, data.existing, data.missing || 0)
-      }
-    }
-  } catch (err) {
-    // Silently fail
-  }
-}
+// refreshPlanStats now just delegates to refreshAudioStats — both use the same
+// get_audio_counts RPC via /audio-stats. No Phase 8 dependency.
+const refreshPlanStats = () => refreshAudioStats()
 
 const startProgressPolling = () => {
   if (progressPollInterval) return
