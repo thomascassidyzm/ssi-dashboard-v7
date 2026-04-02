@@ -3169,14 +3169,15 @@ async function getDirectAudioStats(courseCode) {
 
   const supabase = supabaseClient.getClient()
 
-  // Get course info for release target
+  // Get course info for release target and known_lang (for shared audio)
   const { data: course, error: courseError } = await supabase
     .from('courses')
-    .select('seed_count')
+    .select('seed_count, known_lang')
     .eq('course_code', courseCode)
     .single()
   if (courseError) throw new Error(`Course not found: ${courseCode}`)
   const releaseTarget = course.seed_count || 260
+  const knownLang = course.known_lang || 'eng'
 
   // Single source of truth: get_audio_counts RPC counts NULL audio_id columns
   // directly on content tables (phrases, legos, seeds). No dedup, no normalization,
@@ -3195,8 +3196,29 @@ async function getDirectAudioStats(courseCode) {
   const missingTarget1 = (p.missing_target1 || 0) + (l.missing_target1 || 0) + (s.missing_target1 || 0)
   const missingTarget2 = (p.missing_target2 || 0) + (s.missing_target2 || 0)
   const missingPresentation = l.missing_presentation || 0
-  const totalMissing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation
-  const totalSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3)
+  const azureMissing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation
+  const azureSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3)
+
+  // Shared audio (ElevenLabs): encouragements, instructions, welcome
+  // Must match the /audio-pipeline/missing endpoint's counting exactly
+  const SHARED_REQUIREMENTS = { encouragement: 26, instruction: 48 }
+  const [encRes, instrRes, welcomeRes] = await Promise.all([
+    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
+      .eq('language', knownLang).eq('audio_type', 'encouragement'),
+    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
+      .eq('language', knownLang).eq('audio_type', 'instruction'),
+    supabase.from('course_audio').select('id')
+      .eq('course_code', courseCode).eq('role', 'welcome')
+      .not('s3_key', 'like', 'pending/%').limit(1)
+  ])
+  const sharedMissing = Math.max(0, SHARED_REQUIREMENTS.encouragement - (encRes.count || 0))
+    + Math.max(0, SHARED_REQUIREMENTS.instruction - (instrRes.count || 0))
+  const sharedTotal = SHARED_REQUIREMENTS.encouragement + SHARED_REQUIREMENTS.instruction
+  const welcomeMissing = (welcomeRes.data?.length > 0) ? 0 : 1
+  const welcomeTotal = 1
+
+  const totalSlots = azureSlots + sharedTotal + welcomeTotal
+  const totalMissing = azureMissing + sharedMissing + welcomeMissing
   const totalExisting = totalSlots - totalMissing
 
   const result = {
@@ -3213,9 +3235,9 @@ async function getDirectAudioStats(courseCode) {
     totalPhrases: p.total || 0,
     totalLegos: l.total || 0,
     totalNewLegos: l.total_new || 0,
-    sharedNeeded: 0,
-    sharedExisting: 0,
-    welcomeExists: false,
+    sharedNeeded: sharedTotal,
+    sharedExisting: sharedTotal - sharedMissing,
+    welcomeExists: welcomeMissing === 0,
     releaseTarget
   }
 
