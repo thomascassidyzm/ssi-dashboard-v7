@@ -831,19 +831,14 @@ const pollAudioProgress = async () => {
 const refreshAudioStats = async () => {
   refreshingStats.value = true
   try {
-    if (isSupabaseConfigured()) {
-      const stats = await sbGetAudioStats(courseCode.value)
+    // Always use the backend API — it calls get_audio_counts RPC directly.
+    // Never use sbGetAudioStats (frontend direct Supabase) as it counts differently.
+    const headers = { 'ngrok-skip-browser-warning': 'true' }
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
+    if (response.ok) {
+      const stats = await response.json()
       if (stats.total !== undefined) {
         productionStore.updatePipelineStats(stats.total, stats.existing, stats.missing || 0)
-      }
-    } else {
-      const headers = { 'ngrok-skip-browser-warning': 'true' }
-      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
-      if (response.ok) {
-        const stats = await response.json()
-        if (stats.total !== undefined) {
-          productionStore.updatePipelineStats(stats.total, stats.existing, stats.missing || 0)
-        }
       }
     }
     // Also refresh MissingAudio component
