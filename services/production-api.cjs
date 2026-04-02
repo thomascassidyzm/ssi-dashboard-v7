@@ -4607,7 +4607,8 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     // =========================================================================
     const stats = await getDirectAudioStats(courseCode)
     const breakdown = stats.breakdown
-    const azureMissing = stats.missing
+    // Use breakdown totals (Azure-only), NOT stats.missing which now includes shared+welcome
+    const azureMissing = (breakdown.known || 0) + (breakdown.target1 || 0) + (breakdown.target2 || 0) + (breakdown.presentation || 0)
 
     const supabase = supabaseClient.getClient()
     const knownLang = stats.course?.known_lang || 'eng'
