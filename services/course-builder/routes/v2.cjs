@@ -540,9 +540,11 @@ module.exports = function(ctx) {
       }
 
       const chinese = isChinese(courseCode);
-      const vocabSet = await loadCourseVocab(ctx, courseCode);
       const errors = [];
       let totalInserted = 0;
+
+      // Cache vocab per seed_number to avoid repeated DB queries within a batch
+      const vocabBySeed = new Map();
 
       for (const entry of phrases) {
         const { seed_number, lego_index, build = [], use = [] } = entry;
@@ -589,7 +591,29 @@ module.exports = function(ctx) {
           continue;
         }
 
-        // 3. Check vocab violations
+        // 3. Check vocab violations — scoped to vocabulary available at this seed
+        // Load vocab for this seed (cached per-seed within request to avoid redundant queries)
+        if (!vocabBySeed.has(seed_number)) {
+          // loadTranslationVocab uses .lt (strictly less than) — prior seeds only
+          const seedVocab = await loadTranslationVocab(ctx, courseCode, seed_number);
+          // Add current seed's LEGOs (already finalized in course_legos)
+          const { data: currentSeedLegos } = await ctx.supabase
+            .from('course_legos')
+            .select('target_text, type, components')
+            .eq('course_code', courseCode)
+            .eq('seed_number', seed_number);
+          for (const l of currentSeedLegos || []) {
+            extractVocab(l.target_text, chinese).forEach(v => seedVocab.add(v));
+            if (l.type === 'M' && l.components) {
+              for (const c of l.components) {
+                extractVocab(c.target, chinese).forEach(v => seedVocab.add(v));
+              }
+            }
+          }
+          vocabBySeed.set(seed_number, seedVocab);
+        }
+        const vocabSet = vocabBySeed.get(seed_number);
+
         const allPhrases = [
           ...build.map(p => ({ target: p.target_text || p.target })),
           ...use.map(p => ({ target: p.target_text || p.target }))
@@ -698,8 +722,8 @@ module.exports = function(ctx) {
           totalInserted += allPhraseRows.length;
         }
 
-        // Update vocab cache
-        addToCourseVocab(ctx, courseCode, { target: lego.target_text, type: lego.type, components: lego.components });
+        // Invalidate course-wide vocab cache since new phrases were added
+        invalidateVocabCache(ctx, courseCode);
       }
 
       console.log(`[V2] Phrases: ${courseCode} — ${totalInserted} phrases inserted, ${errors.length} errors`);
