@@ -26,6 +26,8 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 const os = require('os');
 
+const languageCodeService = require('../language-code-service.cjs');
+
 // Load centralized course mode configuration
 const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes, getMachinePattern, getAllMachineProfiles } = require('../config/course-mode-loader.cjs');
 
@@ -2213,7 +2215,7 @@ app.post('/api/courses/create', async (req, res) => {
         course_code: courseCode,
         known_lang: sourceLanguage,
         target_lang: targetLanguage,
-        display_name: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+        display_name: displayName || `${languageCodeService.getName(targetLanguage) || targetLanguage} for ${languageCodeService.getName(sourceLanguage) || sourceLanguage} Speakers`,
         status: 'draft'
       });
 

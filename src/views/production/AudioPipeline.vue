@@ -831,19 +831,14 @@ const pollAudioProgress = async () => {
 const refreshAudioStats = async () => {
   refreshingStats.value = true
   try {
-    if (isSupabaseConfigured()) {
-      const stats = await sbGetAudioStats(courseCode.value)
+    // Always use the backend API — it calls get_audio_counts RPC directly.
+    // Never use sbGetAudioStats (frontend direct Supabase) as it counts differently.
+    const headers = { 'ngrok-skip-browser-warning': 'true' }
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
+    if (response.ok) {
+      const stats = await response.json()
       if (stats.total !== undefined) {
         productionStore.updatePipelineStats(stats.total, stats.existing, stats.missing || 0)
-      }
-    } else {
-      const headers = { 'ngrok-skip-browser-warning': 'true' }
-      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
-      if (response.ok) {
-        const stats = await response.json()
-        if (stats.total !== undefined) {
-          productionStore.updatePipelineStats(stats.total, stats.existing, stats.missing || 0)
-        }
       }
     }
     // Also refresh MissingAudio component
@@ -855,30 +850,9 @@ const refreshAudioStats = async () => {
   }
 }
 
-// NOTE: Plan stats refresh removed from automatic polling - takes 40+ seconds!
-// Plan is only loaded when user explicitly clicks "Start Generation" or views the plan.
-// Use refreshPlanStats() manually when needed (e.g., after generation completes).
-
-const refreshPlanStats = async () => {
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-pipeline/plan`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      // Use Phase 8's generation plan (deduped unique clips) when available —
-      // this matches the actual number TTS will generate during active generation
-      const gp = data.generationPlan
-      if (gp && gp.total !== undefined) {
-        productionStore.updatePipelineStats(gp.total, gp.existing, gp.missing || 0)
-      } else if (data.total !== undefined && data.existing !== undefined) {
-        productionStore.updatePipelineStats(data.total, data.existing, data.missing || 0)
-      }
-    }
-  } catch (err) {
-    // Silently fail
-  }
-}
+// refreshPlanStats now just delegates to refreshAudioStats — both use the same
+// get_audio_counts RPC via /audio-stats. No Phase 8 dependency.
+const refreshPlanStats = () => refreshAudioStats()
 
 const startProgressPolling = () => {
   if (progressPollInterval) return
@@ -1042,17 +1016,6 @@ const startGeneration = async () => {
   startingGeneration.value = true
   error.value = null
   try {
-    // First fetch fresh plan to get accurate counts and sync dashboard
-    const planData = await productionStore.generatePlan(courseCode.value)
-
-    // Update dashboard stats — prefer Phase 8's generation plan (deduped unique clips)
-    const gp = planData.generationPlan
-    if (gp && gp.total !== undefined) {
-      productionStore.updatePipelineStats(gp.total, gp.existing, gp.missing || 0)
-    } else if (planData.total !== undefined && planData.existing !== undefined) {
-      productionStore.updatePipelineStats(planData.total, planData.existing, planData.missing || 0)
-    }
-
     // Always call generate - even with 0 missing, it links audio IDs to phrases
     const result = await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
     if (result?.linked > 0) {

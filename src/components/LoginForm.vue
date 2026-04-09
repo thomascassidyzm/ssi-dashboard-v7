@@ -143,6 +143,50 @@
         </button>
       </div>
     </div>
+
+    <!-- Step 4: Invite Code (shown when authenticated but no dashboard access) -->
+    <div v-else-if="step === 'invite-code'" class="space-y-4">
+      <p class="text-slate-300 text-center mb-2">
+        Signed in as <strong class="text-emerald-400">{{ email }}</strong>
+      </p>
+      <p class="text-slate-400 text-sm text-center mb-4">
+        Enter your invite code to get access.
+      </p>
+
+      <div>
+        <input
+          ref="inviteInput"
+          v-model="inviteCode"
+          type="text"
+          maxlength="8"
+          placeholder="XXXXXXXX"
+          class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-center text-2xl tracking-widest font-mono uppercase"
+          @keyup.enter="handleRedeemCode"
+        />
+      </div>
+
+      <button
+        @click="handleRedeemCode"
+        :disabled="redeemLoading || inviteCode.length < 4"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
+      >
+        <span v-if="redeemLoading">Redeeming...</span>
+        <span v-else>Redeem Code</span>
+      </button>
+
+      <p v-if="redeemError" class="text-red-400 text-sm text-center">
+        {{ redeemError }}
+      </p>
+
+      <div class="text-center text-sm">
+        <button
+          @click="reset"
+          class="text-slate-400 hover:text-slate-300 transition-colors"
+        >
+          Different email
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -150,16 +194,21 @@
 import { ref, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
+import { getApiUrl } from '../services/api'
 
 const router = useRouter()
-const { sendOTP, verifyOTP, signInWithPassword, loading, error } = useAuth()
+const { sendOTP, verifyOTP, signInWithPassword, loading, error, hasDashboardAccess, refreshAccess } = useAuth()
 
 const step = ref('email')
 const email = ref('')
 const password = ref('')
 const code = ref('')
+const inviteCode = ref('')
+const redeemLoading = ref(false)
+const redeemError = ref(null)
 const codeInput = ref(null)
 const passwordInput = ref(null)
+const inviteInput = ref(null)
 
 async function goToAuth() {
   if (!email.value) return
@@ -181,6 +230,14 @@ async function handlePasswordLogin() {
 
   try {
     await signInWithPassword(email.value, password.value)
+    if (!hasDashboardAccess.value) {
+      error.value = null
+      step.value = 'invite-code'
+      inviteCode.value = ''
+      await nextTick()
+      inviteInput.value?.focus()
+      return
+    }
     const redirect = router.currentRoute.value.query.redirect || '/'
     window.location.href = redirect
   } catch (err) {
@@ -222,10 +279,46 @@ async function handleVerifyOTP() {
 
   try {
     await verifyOTP(email.value, code.value)
+    if (!hasDashboardAccess.value) {
+      error.value = null
+      step.value = 'invite-code'
+      inviteCode.value = ''
+      await nextTick()
+      inviteInput.value?.focus()
+      return
+    }
     const redirect = router.currentRoute.value.query.redirect || '/'
     window.location.href = redirect
   } catch (err) {
     // Error handled in composable
+  }
+}
+
+async function handleRedeemCode() {
+  if (!inviteCode.value || inviteCode.value.length < 4) return
+  redeemLoading.value = true
+  redeemError.value = null
+
+  try {
+    const resp = await fetch(`${getApiUrl()}/api/auth/invite-codes/redeem`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: inviteCode.value, email: email.value })
+    })
+    const data = await resp.json()
+
+    if (!resp.ok) {
+      redeemError.value = data.error || 'Failed to redeem code'
+      return
+    }
+
+    // Refresh auth state in memory — now they have a dashboard_users row
+    await refreshAccess(email.value)
+    router.push(router.currentRoute.value.query.redirect || '/')
+  } catch (err) {
+    redeemError.value = 'Connection error. Please try again.'
+  } finally {
+    redeemLoading.value = false
   }
 }
 

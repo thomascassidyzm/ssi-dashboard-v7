@@ -327,17 +327,20 @@ export const useProductionStore = defineStore('production', () => {
     if (isSupabaseConfigured()) {
       // Direct Supabase reads — no ngrok round-trip
 
-      // 1. Audio stats
-      sbGetAudioStats(courseCode).then(stats => {
-        if (stats) {
-          audioCourseStats.value = {
-            ...audioCourseStats.value,
-            total: stats.total || 0,
-            existing: stats.existing || 0,
-            missing: stats.missing || 0
+      // 1. Audio stats — use backend API (get_audio_counts RPC), not sbGetAudioStats
+      // sbGetAudioStats counts course_audio rows which differs from NULL audio_id counting
+      fetch(`${baseUrl}/api/production/${courseCode}/audio-stats?fresh=1`, { headers: getApiHeaders() })
+        .then(r => r.ok ? r.json() : null)
+        .then(stats => {
+          if (stats && stats.total !== undefined) {
+            audioCourseStats.value = {
+              ...audioCourseStats.value,
+              total: stats.total || 0,
+              existing: stats.existing || 0,
+              missing: stats.missing || 0
+            }
           }
-        }
-      }).catch(() => {})
+        }).catch(() => {})
 
       // 2. Audio metadata
       isLoadingMetadata.value = true

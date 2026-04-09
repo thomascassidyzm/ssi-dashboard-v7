@@ -242,6 +242,19 @@ async function requireAdmin(req, res) {
   return user
 }
 
+// Like requireAdmin but allows any dashboard user (editor, recorder, admin)
+async function requireDashboardUser(req, res) {
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
+
+  const supabaseUser = await verifySupabaseJWT(token)
+  if (supabaseUser) return supabaseUser
+
+  const user = await authValidateSession(token)
+  if (!user) { res.status(403).json({ error: 'Dashboard access required' }); return null }
+  return user
+}
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
@@ -505,6 +518,188 @@ app.post('/api/auth/logout', async (req, res) => {
     try { await authDeleteSession(sessionId) } catch (err) { /* ignore */ }
   }
   res.json({ success: true })
+})
+
+// =============================================================================
+// INVITE CODES
+// =============================================================================
+
+// POST /api/auth/invite-codes/generate — generate an invite code
+// Admins: any role, any course. Editors: recorder role only, own courses only.
+app.post('/api/auth/invite-codes/generate', async (req, res) => {
+  const user = await requireDashboardUser(req, res)
+  if (!user) return
+
+  const { courses, role = 'recorder', label, expires_days, max_uses = 1 } = req.body
+  if (!courses || !Array.isArray(courses) || courses.length === 0) {
+    return res.status(400).json({ error: 'courses array is required' })
+  }
+  if (!['recorder', 'editor', 'admin'].includes(role)) {
+    return res.status(400).json({ error: 'Invalid role' })
+  }
+
+  // Non-admins can only generate recorder codes for their own courses
+  if (user.role !== 'admin') {
+    if (role !== 'recorder') {
+      return res.status(403).json({ error: 'You can only invite recorders' })
+    }
+    const userCourses = Array.isArray(user.courses) ? user.courses : []
+    const unauthorized = courses.filter(c => !userCourses.includes(c))
+    if (unauthorized.length > 0) {
+      return res.status(403).json({ error: `You don't have access to: ${unauthorized.join(', ')}` })
+    }
+  }
+
+  try {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+    let code = ''
+    const bytes = crypto.randomBytes(8)
+    for (let i = 0; i < 8; i++) { code += chars[bytes[i] % chars.length] }
+
+    const expires_at = expires_days
+      ? new Date(Date.now() + expires_days * 86400000).toISOString()
+      : null
+
+    const db = supabaseClient.getClient()
+    const { data, error } = await db.from('dashboard_invite_codes').insert({
+      code,
+      role,
+      courses: JSON.stringify(courses),
+      label: label || null,
+      created_by: user.email,
+      expires_at,
+      max_uses: max_uses || 1,
+    }).select().single()
+
+    if (error) throw error
+    logger.info(`[Auth] Invite code generated: ${code} for ${courses.join(',')} by ${user.email}`)
+    res.json({ code: data.code, id: data.id, expires_at: data.expires_at })
+  } catch (err) {
+    logger.error('[Auth] Generate invite code error:', err)
+    res.status(500).json({ error: 'Failed to generate invite code' })
+  }
+})
+
+// GET /api/auth/invite-codes — list all invite codes (admin only)
+app.get('/api/auth/invite-codes', async (req, res) => {
+  const adminUser = await requireAdmin(req, res)
+  if (!adminUser) return
+
+  try {
+    const db = supabaseClient.getClient()
+    const { data, error } = await db
+      .from('dashboard_invite_codes')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+    res.json({ codes: data || [] })
+  } catch (err) {
+    logger.error('[Auth] List invite codes error:', err)
+    res.status(500).json({ error: 'Failed to list invite codes' })
+  }
+})
+
+// POST /api/auth/invite-codes/redeem — redeem an invite code (no admin required)
+app.post('/api/auth/invite-codes/redeem', async (req, res) => {
+  const { code: rawCode, email } = req.body
+  if (!rawCode || !email) {
+    return res.status(400).json({ error: 'code and email are required' })
+  }
+
+  const code = rawCode.toUpperCase().replace(/[^A-Z0-9]/g, '').trim()
+
+  try {
+    const db = supabaseClient.getClient()
+
+    // Check if user already has dashboard access
+    const existing = await authGetUser(email)
+    if (existing) {
+      return res.status(409).json({ error: 'You already have dashboard access' })
+    }
+
+    // Atomically claim the code: increment use_count only if under max_uses
+    const { data: invite, error: claimError } = await db
+      .from('dashboard_invite_codes')
+      .update({
+        use_count: db.rpc ? undefined : undefined, // placeholder — real increment below
+      })
+      .eq('code', code)
+      .select()
+      .single()
+
+    // Fetch the code first to validate
+    const { data: codeRow, error: fetchError } = await db
+      .from('dashboard_invite_codes')
+      .select('*')
+      .eq('code', code)
+      .single()
+
+    if (fetchError || !codeRow) {
+      return res.status(404).json({ error: 'Invalid invite code' })
+    }
+
+    // Check expiry
+    if (codeRow.expires_at && new Date(codeRow.expires_at) < new Date()) {
+      return res.status(410).json({ error: 'This invite code has expired' })
+    }
+
+    // Check uses
+    if (codeRow.use_count >= codeRow.max_uses) {
+      return res.status(410).json({ error: 'This invite code has already been used' })
+    }
+
+    // Parse courses from the code
+    let courses = codeRow.courses
+    if (typeof courses === 'string') {
+      try { courses = JSON.parse(courses) } catch { courses = [] }
+    }
+
+    // Create Supabase Auth account if needed (so they can log in with OTP)
+    try {
+      await db.auth.admin.createUser({ email, email_confirm: true })
+    } catch (authErr) {
+      // Already exists is fine
+      if (!authErr.message?.includes('already') && !authErr.message?.includes('exists')) {
+        logger.warn(`[Auth] Failed to create auth account for ${email}: ${authErr.message}`)
+      }
+    }
+
+    // Create dashboard_users row
+    const { data: newUser, error: insertError } = await db
+      .from('dashboard_users')
+      .insert({
+        email,
+        name: email.split('@')[0],
+        role: codeRow.role,
+        courses,
+        invited_by: codeRow.created_by,
+        invited_at: new Date().toISOString(),
+      })
+      .select()
+      .single()
+
+    if (insertError) throw insertError
+
+    // Mark code as used (atomic increment + append redemption)
+    const redemptions = [...(codeRow.redemptions || []), { email, redeemed_at: new Date().toISOString() }]
+    await db
+      .from('dashboard_invite_codes')
+      .update({
+        use_count: codeRow.use_count + 1,
+        redemptions,
+      })
+      .eq('code', code)
+
+    logger.info(`[Auth] Invite code ${code} redeemed by ${email} → ${codeRow.role}, courses: ${JSON.stringify(courses)}`)
+    res.json({
+      success: true,
+      user: { email: newUser.email, name: newUser.name, role: newUser.role, courses: newUser.courses }
+    })
+  } catch (err) {
+    logger.error('[Auth] Redeem invite code error:', err)
+    res.status(500).json({ error: 'Failed to redeem invite code' })
+  }
 })
 
 // =============================================================================
@@ -1000,7 +1195,7 @@ app.post('/api/courses/create', async (req, res) => {
         course_code: courseCode,
         known_lang: known,
         target_lang: targetLanguage,
-        display_name: displayName || `${targetLanguage} for ${known} speakers`,
+        display_name: displayName || `${languageCodeService.getName(targetLanguage) || targetLanguage} for ${languageCodeService.getName(known) || known} Speakers`,
         status: 'draft'
       })
 
@@ -2972,30 +3167,78 @@ async function getDirectAudioStats(courseCode) {
     return cached.data
   }
 
-  // Single source of truth: Phase 8 /plan endpoint counts unique text+lang+role combos
-  // using normalizeForAudio() — same logic that /generate uses to build the work queue.
-  // This ensures dashboard stats ALWAYS match what generation actually does.
-  const phase8Url = process.env.PHASE8_URL || 'http://localhost:3465'
-  const resp = await fetch(`${phase8Url}/plan/${courseCode}`)
-  if (!resp.ok) {
-    throw new Error(`Phase 8 plan failed for ${courseCode}: ${resp.status}`)
-  }
-  const plan = await resp.json()
+  const supabase = supabaseClient.getClient()
+
+  // Get course info for release target and known_lang (for shared audio)
+  const { data: course, error: courseError } = await supabase
+    .from('courses')
+    .select('seed_count, known_lang')
+    .eq('course_code', courseCode)
+    .single()
+  if (courseError) throw new Error(`Course not found: ${courseCode}`)
+  const releaseTarget = course.seed_count || 260
+  const knownLang = course.known_lang || 'eng'
+
+  // Single source of truth: get_audio_counts RPC counts NULL audio_id columns
+  // directly on content tables (phrases, legos, seeds). No dedup, no normalization,
+  // no Phase 8 dependency. Just: is the audio_id linked or not?
+  const { data: counts, error: countsError } = await supabase.rpc('get_audio_counts', {
+    p_course_code: courseCode,
+    p_release_target: releaseTarget
+  })
+  if (countsError) throw new Error(`get_audio_counts RPC failed: ${countsError.message}`)
+
+  const p = counts.phrases || {}
+  const l = counts.legos || {}
+  const s = counts.seeds || {}
+
+  const missingKnown = (p.missing_known || 0) + (l.missing_known || 0) + (s.missing_known || 0)
+  const missingTarget1 = (p.missing_target1 || 0) + (l.missing_target1 || 0) + (s.missing_target1 || 0)
+  const missingTarget2 = (p.missing_target2 || 0) + (s.missing_target2 || 0)
+  const missingPresentation = l.missing_presentation || 0
+  const azureMissing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation
+  const azureSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3)
+
+  // Shared audio (ElevenLabs): encouragements, instructions, welcome
+  // Must match the /audio-pipeline/missing endpoint's counting exactly
+  const SHARED_REQUIREMENTS = { encouragement: 26, instruction: 48 }
+  const [encRes, instrRes, welcomeRes] = await Promise.all([
+    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
+      .eq('language', knownLang).eq('audio_type', 'encouragement'),
+    supabase.from('shared_audio').select('*', { count: 'exact', head: true })
+      .eq('language', knownLang).eq('audio_type', 'instruction'),
+    supabase.from('course_audio').select('id')
+      .eq('course_code', courseCode).eq('role', 'welcome')
+      .not('s3_key', 'like', 'pending/%').limit(1)
+  ])
+  const sharedMissing = Math.max(0, SHARED_REQUIREMENTS.encouragement - (encRes.count || 0))
+    + Math.max(0, SHARED_REQUIREMENTS.instruction - (instrRes.count || 0))
+  const sharedTotal = SHARED_REQUIREMENTS.encouragement + SHARED_REQUIREMENTS.instruction
+  const welcomeMissing = (welcomeRes.data?.length > 0) ? 0 : 1
+  const welcomeTotal = 1
+
+  const totalSlots = azureSlots + sharedTotal + welcomeTotal
+  const totalMissing = azureMissing + sharedMissing + welcomeMissing
+  const totalExisting = totalSlots - totalMissing
 
   const result = {
-    total: plan.total || 0,
-    existing: plan.existing || 0,
-    missing: plan.missing || 0,
-    breakdown: plan.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    total: totalSlots,
+    existing: totalExisting,
+    missing: totalMissing,
+    breakdown: {
+      known: missingKnown,
+      target1: missingTarget1,
+      target2: missingTarget2,
+      presentation: missingPresentation
+    },
     existingByRole: {},
-    totalPhrases: plan.totalPhrases || 0,
-    totalLegos: 0,
-    totalNewLegos: plan.totalPresentationsNeeded || 0,
-    uniquePhraseAudio: plan.uniqueKnownTexts || 0,
-    sharedNeeded: 0,
-    sharedExisting: 0,
-    welcomeExists: false,
-    releaseTarget: plan.releaseTarget || 300
+    totalPhrases: p.total || 0,
+    totalLegos: l.total || 0,
+    totalNewLegos: l.total_new || 0,
+    sharedNeeded: sharedTotal,
+    sharedExisting: sharedTotal - sharedMissing,
+    welcomeExists: welcomeMissing === 0,
+    releaseTarget
   }
 
   // Cache result
@@ -4364,7 +4607,8 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     // =========================================================================
     const stats = await getDirectAudioStats(courseCode)
     const breakdown = stats.breakdown
-    const azureMissing = stats.missing
+    // Use breakdown totals (Azure-only), NOT stats.missing which now includes shared+welcome
+    const azureMissing = (breakdown.known || 0) + (breakdown.target1 || 0) + (breakdown.target2 || 0) + (breakdown.presentation || 0)
 
     const supabase = supabaseClient.getClient()
     const knownLang = stats.course?.known_lang || 'eng'

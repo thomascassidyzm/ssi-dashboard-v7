@@ -257,7 +257,7 @@ const routes = [
     path: '/users',
     name: 'UserManagement',
     component: UserManagement,
-    meta: { title: 'User Management', requiresAuth: true, requiresAdmin: true }
+    meta: { title: 'User Management', requiresAuth: true }
   },
   // Legacy redirects for /reference/* routes → /docs/*
   { path: '/reference/overview', redirect: '/docs/pipeline' },
