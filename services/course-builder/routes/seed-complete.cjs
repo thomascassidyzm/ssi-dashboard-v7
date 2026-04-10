@@ -398,9 +398,30 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
-      const vocabSet = await loadCourseVocab(ctx, course_code);
-      const newLego = { target, type, components };
-      addToCourseVocab(ctx, course_code, newLego);
+      // Load vocab scoped to this seed — prior seeds + current seed's LEGOs
+      const vocabSet = await loadTranslationVocab(ctx, course_code, seed);
+      // Add this LEGO's own vocab (phrases must contain the LEGO, so its vocab is available)
+      const chinese = isChinese(course_code);
+      extractVocab(target, chinese).forEach(v => vocabSet.add(v));
+      if (type === 'M' && components) {
+        for (const comp of components) {
+          extractVocab(comp.target, chinese).forEach(v => vocabSet.add(v));
+        }
+      }
+      // Also add other LEGOs from this same seed (already in DB)
+      const { data: siblingLegos } = await ctx.supabase
+        .from('course_legos')
+        .select('target_text, type, components')
+        .eq('course_code', course_code)
+        .eq('seed_number', seed);
+      for (const sl of siblingLegos || []) {
+        extractVocab(sl.target_text, chinese).forEach(v => vocabSet.add(v));
+        if (sl.type === 'M' && sl.components) {
+          for (const c of sl.components) {
+            extractVocab(c.target, chinese).forEach(v => vocabSet.add(v));
+          }
+        }
+      }
 
       if (phrases && phrases.length > 0 && !skipBaskets && !allowValidationBypass(req.body)) {
         const legoTargetNorm = normalizeForContainment(target);
@@ -421,8 +442,6 @@ module.exports = function seedCompleteRoutes(ctx) {
 
         const violations = checkVocabViolations(phrases, vocabSet, course_code);
         if (violations.length > 0) {
-          ctx.courseVocabCache.delete(course_code);
-
           console.log(`✗ ${legoId}: REJECTED - Vocabulary violations:`);
           violations.forEach(v => console.log(`   "${v.phrase}" uses unknown: [${v.unknown}]`));
 
