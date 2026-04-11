@@ -941,7 +941,7 @@ function stageCurrent(stage) {
 async function fetchPipelineStatus() {
   if (!props.courseCode) return
   try {
-    const builderApiUrl = getApiUrl()
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const resp = await fetch(`${builderApiUrl}/api/build/pipeline/${props.courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -957,7 +957,7 @@ async function startPipeline() {
   if (!props.courseCode) return
   pipelineStarting.value = true
   try {
-    const builderApiUrl = getApiUrl()
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const resp = await fetch(`${builderApiUrl}/api/build/pipeline/${props.courseCode}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -995,7 +995,7 @@ async function executeWipe() {
 
   wipeRunning.value = true
   try {
-    const builderApiUrl = getApiUrl()
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const keepAudioParam = wipeKeepAudio.value ? '&keep_audio=true' : ''
     const response = await fetch(`${builderApiUrl}/api/course/${code}/wipe?confirm=yes${keepAudioParam}`, {
       method: 'POST',
@@ -1023,7 +1023,7 @@ async function fetchSeedGrid() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
   try {
-    const builderApiUrl = getApiUrl()
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const response = await fetch(`${builderApiUrl}/api/build/seed-grid/${code}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -1042,7 +1042,7 @@ async function executeRebuild() {
 
   rebuildRunning.value = true
   try {
-    const builderApiUrl = getApiUrl()
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const response = await fetch(`${builderApiUrl}/api/build/rebuild/${code}`, {
       method: 'POST',
       headers: {
@@ -1400,7 +1400,7 @@ async function fetchProgress() {
   // Builder mode: poll course-builder-api stats
   if (buildMode.value === 'builder') {
     try {
-      const builderApiUrl = getApiUrl()
+      const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
       const response = await fetch(`${builderApiUrl}/api/stats/${code}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       })
@@ -1682,7 +1682,7 @@ async function startCourseBuilder() {
   if (!code) return
 
   try {
-    const builderApiUrl = getApiUrl()
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const response = await fetch(`${builderApiUrl}/api/build/team-start/${code}`, {
       method: 'POST',
       headers: {
@@ -1949,7 +1949,7 @@ async function fetchCalibrationReview() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
   try {
-    const builderApiUrl = getApiUrl()
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const resp = await fetch(`${builderApiUrl}/api/golden/review-queue/${code}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
