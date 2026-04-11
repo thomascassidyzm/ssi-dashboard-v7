@@ -188,9 +188,9 @@ This dashboard (Popty) is the **content creation** half of the SSi system. The o
 │  ═══════════════════                     ═══════════════════            │
 │  Content CREATION                         Content DELIVERY               │
 │  • Phase 1-3: Translation, LEGOs         • @ssi/core: Engine            │
-│  • Phase 8: Audio generation (TTS)       • player-vue: Demo UI          │
-│  • Phase 9: Manifest compilation         • apps/web: PWA (TODO)         │
-│  • Production API: QA, recording         • apps/schools-dashboard       │
+│  • Phase 8: Audio generation (TTS)       • player-vue: Unified SPA      │
+│  • Phase 9: Manifest compilation         • /schools: Schools dashboard   │
+│  • Production API: QA, recording         • apps/web: PWA (TODO)         │
 │  • DATABASE-ONLY (Supabase) ✅            • Database-first reads (TODO)  │
 │                                                                          │
 │  Dashboard → Supabase/S3 → Learning App → Learner                       │
@@ -895,8 +895,8 @@ You're doing well if:
 | Project | Purpose | CLAUDE.md |
 |---------|---------|-----------|
 | **ssi-learning-app** | Content delivery (learner-facing) | Yes - see ecosystem overview |
+| **ssi-learning-app `/schools`** | Schools dashboard (fully implemented in player-vue) | Documented in learning app CLAUDE.md |
 | **ssi-learning-app/apps/web** | PWA for community courses (TODO) | Planned |
-| **ssi-learning-app/apps/schools-dashboard** | Schools/classroom version | Planned |
 
 ---
 
