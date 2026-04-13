@@ -22,13 +22,50 @@
       </div>
 
       <!-- Search Bar -->
-      <div class="mb-6">
+      <div class="mb-4">
         <input
           v-model="searchQuery"
           type="text"
           placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Basket Generation')..."
           class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
         />
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="mb-6 flex flex-wrap items-center gap-3">
+        <!-- Status filters -->
+        <span class="text-xs text-slate-500 uppercase tracking-wider">Status</span>
+        <button
+          v-for="s in statusFilters"
+          :key="s.value"
+          @click="toggleStatusFilter(s.value)"
+          :class="[
+            'px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
+            activeStatusFilters.has(s.value)
+              ? s.activeClass
+              : 'border-slate-600 text-slate-500 hover:border-slate-400 hover:text-slate-300'
+          ]"
+        >
+          {{ s.label }}
+        </button>
+
+        <span class="text-slate-700 mx-1">|</span>
+
+        <!-- Pricing filters -->
+        <span class="text-xs text-slate-500 uppercase tracking-wider">Pricing</span>
+        <button
+          v-for="p in pricingFilters"
+          :key="p.value"
+          @click="togglePricingFilter(p.value)"
+          :class="[
+            'px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
+            activePricingFilters.has(p.value)
+              ? p.activeClass
+              : 'border-slate-600 text-slate-500 hover:border-slate-400 hover:text-slate-300'
+          ]"
+        >
+          {{ p.label }}
+        </button>
       </div>
 
       <!-- Stats loading indicator -->
@@ -94,12 +131,20 @@
                 {{ course.display_name || getFullCourseName(course.course_code) }}
               </p>
             </div>
-            <span
-              class="px-3 py-1 rounded-full text-xs font-medium flex-shrink-0"
-              :class="getStatusClass(course.status)"
-            >
-              {{ formatStatus(course.status) }}
-            </span>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <span
+                class="px-2 py-0.5 rounded-full text-xs font-medium"
+                :class="getPricingClass(course.pricing_tier)"
+              >
+                {{ (course.pricing_tier || 'premium').toUpperCase() }}
+              </span>
+              <span
+                class="px-3 py-1 rounded-full text-xs font-medium"
+                :class="getStatusClass(course.status)"
+              >
+                {{ formatStatus(course.status) }}
+              </span>
+            </div>
           </div>
 
           <!-- Stats Grid -->
@@ -155,29 +200,72 @@ const error = ref(null)
 const searchQuery = ref('')
 const highlightedCourses = ref(new Set()) // Courses to highlight as new/updated
 
-// Computed: Filtered courses based on search query
+// Filter state — empty Set means "show all"
+const activeStatusFilters = ref(new Set())
+const activePricingFilters = ref(new Set())
+
+const statusFilters = [
+  { value: 'draft', label: 'Testing', activeClass: 'bg-slate-600/30 border-slate-400 text-slate-300' },
+  { value: 'beta', label: 'Beta', activeClass: 'bg-yellow-600/20 border-yellow-500 text-yellow-400' },
+  { value: 'released', label: 'Live', activeClass: 'bg-emerald-600/20 border-emerald-500 text-emerald-400' },
+]
+
+const pricingFilters = [
+  { value: 'free', label: 'Free', activeClass: 'bg-emerald-600/20 border-emerald-400 text-emerald-400' },
+  { value: 'premium', label: 'Premium', activeClass: 'bg-yellow-600/20 border-yellow-500 text-yellow-400' },
+  { value: 'community', label: 'Community', activeClass: 'bg-blue-600/20 border-blue-500 text-blue-400' },
+]
+
+function toggleStatusFilter(value) {
+  if (activeStatusFilters.value.has(value)) {
+    activeStatusFilters.value.delete(value)
+  } else {
+    activeStatusFilters.value.add(value)
+  }
+  activeStatusFilters.value = new Set(activeStatusFilters.value) // trigger reactivity
+}
+
+function togglePricingFilter(value) {
+  if (activePricingFilters.value.has(value)) {
+    activePricingFilters.value.delete(value)
+  } else {
+    activePricingFilters.value.add(value)
+  }
+  activePricingFilters.value = new Set(activePricingFilters.value)
+}
+
+// Computed: Filtered courses based on search query + filters
 const filteredCourses = computed(() => {
   // Filter by user's course access first
-  const accessible = courses.value.filter(c => canAccessCourse(c.course_code))
+  let result = courses.value.filter(c => canAccessCourse(c.course_code))
 
-  if (!searchQuery.value) return accessible
+  // Apply status filter
+  if (activeStatusFilters.value.size > 0) {
+    result = result.filter(c => {
+      const status = c.status || 'draft'
+      return activeStatusFilters.value.has(status)
+    })
+  }
+
+  // Apply pricing filter
+  if (activePricingFilters.value.size > 0) {
+    result = result.filter(c => {
+      const tier = c.pricing_tier || 'premium'
+      return activePricingFilters.value.has(tier)
+    })
+  }
+
+  // Apply search
+  if (!searchQuery.value) return result
 
   const query = searchQuery.value.toLowerCase()
 
-  return accessible.filter(course => {
-    // Search by course code (e.g., "fra_for_eng")
+  return result.filter(course => {
     if (course.course_code.toLowerCase().includes(query)) return true
-
-    // Search by full language names (e.g., "French for English")
     const fullName = getCourseName(course.course_code).toLowerCase()
     if (fullName.includes(query)) return true
-
-    // Search by phase (e.g., "Phase 5")
     if (course.phase && course.phase.toLowerCase().includes(query)) return true
-
-    // Search by format version
     if (course.format && course.format.toLowerCase().includes(query)) return true
-
     return false
   })
 })
@@ -198,6 +286,7 @@ async function loadCourses() {
         course_code: c.course_code,
         display_name: c.display_name,
         status: c.status,
+        pricing_tier: c.pricing_tier || 'premium',
         seed_count: c.seed_count,
         seed_pairs: 0, lego_pairs: 0, phrases: 0,
         stats: { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0 }
@@ -312,6 +401,12 @@ function getStatusClass(status) {
   } else {
     return 'bg-slate-600 text-slate-300'
   }
+}
+
+function getPricingClass(tier) {
+  if (tier === 'free') return 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+  if (tier === 'community') return 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+  return 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
 }
 
 
