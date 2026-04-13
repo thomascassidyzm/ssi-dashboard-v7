@@ -382,15 +382,16 @@ export async function getSeedGrid(courseCode) {
 }
 
 /**
- * Get QA summary (flagged phrase counts)
+ * Get QA summary (flagged seed counts)
  * Replaces: /api/production/:code/qa-summary
+ * Note: Flags live on course_seeds, not course_practice_phrases
  */
 export async function getQASummary(courseCode) {
   if (!supabase) throw new Error('Supabase not configured')
 
   const [flaggedRes, totalRes] = await Promise.all([
     supabase
-      .from('course_practice_phrases')
+      .from('course_seeds')
       .select('*', { count: 'exact', head: true })
       .eq('course_code', courseCode)
       .not('flagged_at', 'is', null),
@@ -407,22 +408,23 @@ export async function getQASummary(courseCode) {
 }
 
 /**
- * Get QA flags (flagged phrase rows)
+ * Get QA flags (flagged seed rows)
  * Replaces: /api/production/:code/qa-flags
+ * Note: Flags live on course_seeds, not course_practice_phrases
  */
 export async function getQAFlags(courseCode, status = 'flagged') {
   if (!supabase) throw new Error('Supabase not configured')
 
   let query = supabase
-    .from('course_practice_phrases')
-    .select('id, seed_number, lego_index, known_text, target_text, phrase_role, flagged_at, flag_reason')
+    .from('course_seeds')
+    .select('seed_number, known_text, target_text, flagged_at')
     .eq('course_code', courseCode)
 
   if (status === 'flagged') {
     query = query.not('flagged_at', 'is', null)
   }
 
-  const { data, error } = await query.order('seed_number').order('lego_index')
+  const { data, error } = await query.order('seed_number')
 
   if (error) {
     console.warn('[Supabase] getQAFlags error:', error.message)

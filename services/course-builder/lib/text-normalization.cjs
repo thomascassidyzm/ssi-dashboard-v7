@@ -68,7 +68,7 @@ function normalizeForZUT(text, chinese = false) {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')     // Strip Latin combining diacritics
     .replace(/[\u064B-\u0652]/g, '')     // Strip Arabic tashkeel
-    .replace(/[¿¡.,;:!?؟،؛«»""。，！？、：；""]/g, '')
+    .replace(/[¿¡.,;:!?؟،؛«»""。，！？、：；""\u0589]/g, '')  // \u0589 = Armenian full stop ։
     .trim();
   if (!chinese) {
     normalized = normalized.replace(/\s+/g, ' ');
@@ -86,7 +86,7 @@ function normalizeForStorage(text, chinese = false) {
   let normalized = text
     .toLowerCase()
     .replace(/[\u064B-\u0652]/g, '')     // Strip Arabic tashkeel
-    .replace(/[¿¡.,;:!?؟،؛«»""。，！？、：；""]/g, '')
+    .replace(/[¿¡.,;:!?؟،؛«»""。，！？、：；""\u0589]/g, '')  // \u0589 = Armenian full stop ։
     .trim();
   if (!chinese) {
     normalized = normalized.replace(/\s+/g, ' ');

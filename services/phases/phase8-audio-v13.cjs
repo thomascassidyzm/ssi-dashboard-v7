@@ -166,26 +166,8 @@ Reply with ONLY the template string, nothing else.`
   return template.trim()
 }
 
-/**
- * Check if text is punctuation-only (TTS can't generate these)
- * Punctuation should be taught contextually as part of M-LEGOs, not standalone
- * @param {string} text - Text to check
- * @returns {boolean} True if text is empty or punctuation-only
- */
-function isPunctuationOnly(text) {
-  if (!text) return true
-  const trimmed = text.trim()
-  if (!trimmed) return true
-  // Match common punctuation marks:
-  // - Western: .,;:!?-()[]{}  (including inverted ¿¡)
-  // - CJK: 。、？！；：…—–「」『』（）【】
-  // - Arabic/RTL: ؟،؛ (U+061F, U+060C, U+061B)
-  // - Hebrew: ־ (U+05BE maqaf)
-  // Also treat single non-ASCII-alpha characters as ungeneratable
-  // (e.g. CJK particles 儿, の, が used as component known_text with no English translation)
-  if (trimmed.length === 1 && !/[a-zA-Z0-9]/.test(trimmed)) return true
-  return /^[.,;:!?¿¡。、？！；：…—–\-()[\]{}「」『』（）【】؟،؛־]+$/.test(trimmed)
-}
+// Punctuation-only filter (single source of truth, shared with production-api)
+const { isPunctuationOnly } = require('../shared/text-classification.cjs')
 
 // =============================================================================
 // CONCURRENCY SETTINGS

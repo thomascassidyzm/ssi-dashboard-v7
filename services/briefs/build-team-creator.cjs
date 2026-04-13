@@ -3,11 +3,12 @@
  * API validates tiling, vocab, ZUT, phrase counts. Final pass handles grammar/naturalness QA.
  */
 
-const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadMethodology } = require('./shared.cjs');
+const { getSupabase, getLanguageName, getKnownLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadMethodology } = require('./shared.cjs');
 
 async function generateBuildTeamCreatorBrief(courseCode, query = {}) {
   const supabase = getSupabase();
   const langName = getLanguageName(courseCode);
+  const knownLangName = getKnownLanguageName(courseCode);
 
   const { data: courseInfo } = await supabase
     .from('courses')
@@ -37,6 +38,13 @@ async function generateBuildTeamCreatorBrief(courseCode, query = {}) {
 
 You are the BUILDER for **${courseCode}** (${langName}).
 **Your assigned seeds: ${assignedSeeds.join(', ')}** (${assignedSeeds.length} seeds).
+
+## ⚠️ KNOWN LANGUAGE = ${knownLangName.toUpperCase()}
+
+The **known language** for this course is **${knownLangName}**.
+ALL \`known_text\` fields — LEGO labels, component labels, phrase known_text — MUST be written in **${knownLangName}**.${knownLangName !== 'English' ? `\nNEVER use English for any known_text field.` : ''}
+The learners speak ${knownLangName} and are learning ${langName}.
+If any generic examples below show a different language in the known_text position, mentally replace them with ${knownLangName} equivalents.
 
 ## WORKFLOW — Build and Submit Directly
 
@@ -86,7 +94,7 @@ If a LEGO is "ga" (ik ga), only write phrases where "ga" is the correct form.
 - Tiling: seed CAN be recomposed from LEGO targets
 
 ### Word Order Differences → M-LEGOs Required
-When ${langName} orders words differently from English, you MUST use M-LEGOs showing correct order. A-LEGOs alone = learner guesses English order (wrong).
+When ${langName} orders words differently from ${knownLangName}, you MUST use M-LEGOs showing correct order. A-LEGOs alone = learner guesses ${knownLangName} order (wrong).
 
 ### LEGO Size — Syllable Cap
 Max **8 syllables** per LEGO. Sweet spot: **3-5 syllables** (2-4 words).
@@ -188,18 +196,18 @@ curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" -
 \`\`\`
 If rejected, fix the issue and resubmit. If unfixable after 3 attempts, skip and move on.
 
-Decomposition format:
+Decomposition format (remember: "known" = ${knownLangName}, "target" = ${langName}):
 \`\`\`
-SEED N: "english" → "target"
+SEED N: "${knownLangName} text" → "${langName} text"
 
-L1 [A/M] "known" → "target"
-Components (M only): "x" → "y", "x" → "y"
+L1 [A/M] "${knownLangName} known" → "${langName} target"
+Components (M only): "${knownLangName}" → "${langName}", "${knownLangName}" → "${langName}"
 BUILD:
-- known → target
-- known → target
+- ${knownLangName} known → ${langName} target
+- ${knownLangName} known → ${langName} target
 USE:
-- known → target [score: 7]
-- known → target [score: 7]
+- ${knownLangName} known → ${langName} target [score: 7]
+- ${knownLangName} known → ${langName} target [score: 7]
 ...
 \`\`\`
 

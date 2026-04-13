@@ -656,9 +656,12 @@ watch(() => props.versionInfo, (info) => {
     // Use diff suggestion if it's an actual bump; otherwise default to patch
     if (diff?.suggestedBump && diff.suggestedBump !== 'none') {
       version.value = diff.suggestedVersion
-    } else {
+    } else if (info.existingVersion) {
       const parts = info.existingVersion.split('.').map(Number)
       version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
+    } else {
+      // New course — default to 1.0.0
+      version.value = '1.0.0'
     }
   }
 })
@@ -669,9 +672,11 @@ watch(() => props.manifestDiff, (diff) => {
     // Use diff suggestion if it's an actual bump; otherwise default to patch
     if (diff.suggestedBump && diff.suggestedBump !== 'none') {
       version.value = diff.suggestedVersion
-    } else {
+    } else if (props.versionInfo.existingVersion) {
       const parts = props.versionInfo.existingVersion.split('.').map(Number)
       version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
+    } else {
+      version.value = '1.0.0'
     }
   }
 })
@@ -682,7 +687,7 @@ watch(showRepublish, (isShowing) => {
     // Use diff suggestion if it's an actual bump, otherwise default to patch
     if (props.manifestDiff?.suggestedBump && props.manifestDiff.suggestedBump !== 'none') {
       republishVersion.value = props.manifestDiff.suggestedVersion
-    } else {
+    } else if (props.versionInfo.existingVersion) {
       const parts = props.versionInfo.existingVersion.split('.').map(Number)
       republishVersion.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
     }

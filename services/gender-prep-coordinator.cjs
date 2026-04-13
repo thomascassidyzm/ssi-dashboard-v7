@@ -139,13 +139,14 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
     // Build the command that Claude will run
     // Use stdin instead of command-line args to avoid length limits
     // Explicitly unset CLAUDECODE to allow nested Claude CLI calls
-    const claudeCmd = `unset CLAUDECODE && cat '${briefFile}' | claude --print --model haiku > '${outputFile}' 2>&1 && touch '${doneFile}'`
+    const claudeCmd = `unset CLAUDECODE ANTHROPIC_API_KEY && cat '${briefFile}' | claude --print --model haiku > '${outputFile}' 2>&1 && touch '${doneFile}'`
 
     if (TERMINAL_MODE === 'headless') {
       // Headless mode: direct spawn (original behavior)
       // Unset CLAUDECODE to allow nested Claude CLI calls
       const env = { ...process.env, HOME: process.env.HOME }
       delete env.CLAUDECODE
+      delete env.ANTHROPIC_API_KEY
 
       const proc = spawn('bash', ['-c', claudeCmd], {
         cwd: path.resolve(__dirname, '..'),

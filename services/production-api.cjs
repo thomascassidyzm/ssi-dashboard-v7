@@ -8,6 +8,7 @@ const { createServer } = require('http')
 const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
+const { isPunctuationOnly } = require('./shared/text-classification.cjs')
 
 const logger = createLogger('ProductionAPI')
 
@@ -1305,6 +1306,7 @@ app.get('/api/voices/discover/:language', async (req, res) => {
 app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
   const { courseCode } = req.params
   try {
+    const supabase = supabaseClient.getClient()
     // Pick ~10 seeds spread across the course for variety
     const { data: seeds } = await supabase
       .from('course_seeds')
@@ -2687,6 +2689,95 @@ app.post('/api/production/:courseCode/audio-flags/bulk-delete', async (req, res)
   }
 })
 
+// Delete orphaned audio flags (flags whose text no longer matches any phrase)
+app.post('/api/production/:courseCode/audio-flags/delete-orphaned', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // 1. Get all flagged UUIDs
+    const { data: flags, error: flagsErr } = await supabase
+      .from('audio_flags')
+      .select('audio_uuid')
+      .eq('course_code', courseCode)
+      .eq('status', 'flagged')
+
+    if (flagsErr) throw flagsErr
+    if (!flags || flags.length === 0) {
+      return res.json({ deleted: 0, total: 0, remaining: 0 })
+    }
+
+    const uuids = flags.map(f => f.audio_uuid)
+
+    // 2. Get audio text+role for each flagged UUID
+    const audioRows = []
+    for (let i = 0; i < uuids.length; i += 200) {
+      const chunk = uuids.slice(i, i + 200)
+      const { data } = await supabase
+        .from('course_audio')
+        .select('id, text, role')
+        .eq('course_code', courseCode)
+        .in('id', chunk)
+      if (data) audioRows.push(...data)
+    }
+
+    // 3. Get all phrase texts for this course
+    const { data: phrases, error: phrasesErr } = await supabase
+      .from('course_practice_phrases')
+      .select('known_text, target_text')
+      .eq('course_code', courseCode)
+
+    if (phrasesErr) throw phrasesErr
+
+    const knownTexts = new Set((phrases || []).map(p => p.known_text))
+    const targetTexts = new Set((phrases || []).map(p => p.target_text))
+
+    // 4. Find orphaned flags (audio text doesn't match any phrase)
+    const orphanedUuids = []
+    for (const audio of audioRows) {
+      const hasMatch = audio.role === 'known'
+        ? knownTexts.has(audio.text)
+        : targetTexts.has(audio.text)
+      if (!hasMatch) orphanedUuids.push(audio.id)
+    }
+
+    // Also include flags whose UUID isn't even in course_audio anymore
+    const audioIdSet = new Set(audioRows.map(a => a.id))
+    for (const uuid of uuids) {
+      if (!audioIdSet.has(uuid) && !orphanedUuids.includes(uuid)) {
+        orphanedUuids.push(uuid)
+      }
+    }
+
+    if (orphanedUuids.length === 0) {
+      return res.json({ deleted: 0, total: flags.length, remaining: flags.length })
+    }
+
+    // 5. Delete orphaned flags
+    const BATCH = 100
+    for (let i = 0; i < orphanedUuids.length; i += BATCH) {
+      const batch = orphanedUuids.slice(i, i + BATCH)
+      const { error } = await supabase
+        .from('audio_flags')
+        .delete()
+        .eq('course_code', courseCode)
+        .in('audio_uuid', batch)
+      if (error) throw error
+    }
+
+    logger.info(`[OrphanFlags] ${courseCode}: deleted ${orphanedUuids.length} orphaned flags out of ${flags.length} total`)
+    res.json({ deleted: orphanedUuids.length, total: flags.length, remaining: flags.length - orphanedUuids.length })
+  } catch (error) {
+    logger.error('Error deleting orphaned flags:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // =============================================================================
 // PHRASE MANAGEMENT
 // =============================================================================
@@ -3130,7 +3221,7 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
 // Cached in-memory for 60s per course — invalidated on audio generation events
 // =============================================================================
 const _audioStatsCache = new Map() // courseCode → { data, expiry }
-const AUDIO_STATS_CACHE_TTL = 60_000 // 60 seconds
+const AUDIO_STATS_CACHE_TTL = 5_000 // 5 seconds — short because Phase 8 linking can change counts between requests
 
 function invalidateAudioStatsCache(courseCode) {
   if (courseCode) {
@@ -4764,6 +4855,71 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
   } catch (error) {
     logger.error(`Missing audio error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/audio-pipeline/ungeneratable
+// List items whose text is empty/punctuation-only AND have no audio linked.
+// These are silently filtered by Phase 8 generation, so the dashboard needs
+// to surface them — otherwise the user sees "X missing", clicks generate,
+// nothing changes, and they have no idea why.
+app.get('/api/production/:courseCode/audio-pipeline/ungeneratable', async (req, res) => {
+  const { courseCode } = req.params
+
+  try {
+    const supabase = supabaseClient.getClient()
+    if (!supabase) return res.status(500).json({ error: 'Database not initialized' })
+
+    const items = []
+
+    // Practice phrases — known/target1/target2 with NULL audio_id
+    const { data: phrases, error: pErr } = await supabase
+      .from('course_practice_phrases')
+      .select('id, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .eq('course_code', courseCode)
+      .or('known_audio_id.is.null,target1_audio_id.is.null,target2_audio_id.is.null')
+      .limit(10000)
+    if (pErr) throw pErr
+
+    for (const row of phrases || []) {
+      if (row.known_audio_id === null && isPunctuationOnly(row.known_text)) {
+        items.push({ source: 'phrase', id: row.id, role: 'known', text: row.known_text || '' })
+      }
+      if (row.target1_audio_id === null && isPunctuationOnly(row.target_text)) {
+        items.push({ source: 'phrase', id: row.id, role: 'target1', text: row.target_text || '' })
+      }
+      if (row.target2_audio_id === null && isPunctuationOnly(row.target_text)) {
+        items.push({ source: 'phrase', id: row.id, role: 'target2', text: row.target_text || '' })
+      }
+    }
+
+    // LEGOs — known/target1 with NULL audio_id
+    const { data: legos, error: lErr } = await supabase
+      .from('course_legos')
+      .select('lego_id, seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id')
+      .eq('course_code', courseCode)
+      .or('known_audio_id.is.null,target1_audio_id.is.null')
+      .limit(10000)
+    if (lErr) throw lErr
+
+    for (const row of legos || []) {
+      if (row.known_audio_id === null && isPunctuationOnly(row.known_text)) {
+        items.push({ source: 'lego', id: row.lego_id, seed: row.seed_number, legoIndex: row.lego_index, role: 'known', text: row.known_text || '' })
+      }
+      if (row.target1_audio_id === null && isPunctuationOnly(row.target_text)) {
+        items.push({ source: 'lego', id: row.lego_id, seed: row.seed_number, legoIndex: row.lego_index, role: 'target1', text: row.target_text || '' })
+      }
+    }
+
+    res.json({
+      success: true,
+      courseCode,
+      count: items.length,
+      items
+    })
+  } catch (error) {
+    logger.error(`Ungeneratable items error for ${courseCode}:`, error.message)
     res.status(500).json({ error: error.message })
   }
 })
