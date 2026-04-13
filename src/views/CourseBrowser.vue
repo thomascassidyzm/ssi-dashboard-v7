@@ -91,7 +91,7 @@
                 </span>
               </div>
               <p class="text-sm text-slate-400">
-                {{ course.display_name || getFullCourseName(course.course_code) }}
+                {{ getFullCourseName(course.course_code) }}
               </p>
             </div>
             <span
