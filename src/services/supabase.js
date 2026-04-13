@@ -93,7 +93,7 @@ export async function getCourseInfo(courseCode) {
 
   const { data, error } = await supabase
     .from('courses')
-    .select('course_code, known_lang, target_lang, display_name, status, course_type, voice_config, seed_count')
+    .select('course_code, known_lang, target_lang, display_name, status, course_type, voice_config, seed_count, pricing_tier, is_community')
     .eq('course_code', courseCode)
     .single()
 
