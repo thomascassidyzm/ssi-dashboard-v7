@@ -63,6 +63,7 @@ const coursesWithStatus = computed(() => {
       newAppBetaDays: c.new_app_beta_days || null,
       legacyAppBetaDays: c.legacy_app_beta_days || null,
       contentStatus: c.content_status || null,
+      pricingTier: c.pricing_tier || 'premium',
       exportReady: c.export_ready || false,
       createdAt: c.created_at || null,
       updatedAt: c.updated_at || null,

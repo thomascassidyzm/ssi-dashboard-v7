@@ -262,6 +262,7 @@ const facets = computed(() => {
   const targets = {}
   const knowns = {}
   const apps = {}
+  const pricing = {}
 
   for (const c of allCourses) {
     const { target, known } = parseCode(c.code)
@@ -272,6 +273,9 @@ const facets = computed(() => {
 
     const appLabel = getAppStatusLabel(c)
     apps[appLabel] = (apps[appLabel] || 0) + 1
+
+    const tier = (c.pricingTier || 'premium').charAt(0).toUpperCase() + (c.pricingTier || 'premium').slice(1)
+    pricing[tier] = (pricing[tier] || 0) + 1
   }
 
   function toOptions(map) {
@@ -283,7 +287,8 @@ const facets = computed(() => {
   return [
     { key: 'target', label: 'Target', options: toOptions(targets) },
     { key: 'known', label: 'Known', options: toOptions(knowns) },
-    { key: 'app', label: 'App Status', options: toOptions(apps) }
+    { key: 'app', label: 'App Status', options: toOptions(apps) },
+    { key: 'pricing', label: 'Pricing', options: toOptions(pricing) }
   ]
 })
 
@@ -359,6 +364,12 @@ const sortedCourses = computed(() => {
   }
   if (filters.app) {
     list = list.filter(c => getAppStatusLabel(c) === filters.app)
+  }
+  if (filters.pricing) {
+    list = list.filter(c => {
+      const tier = (c.pricingTier || 'premium').charAt(0).toUpperCase() + (c.pricingTier || 'premium').slice(1)
+      return tier === filters.pricing
+    })
   }
 
   // Search filter
