@@ -16,11 +16,15 @@
         {{ phrase.text }}
       </div>
 
-      <!-- Gap markers for Pass 2 -->
+      <!-- Chunk-level gap display for Pass 2.
+           Each chunk is a group of words the speaker reads without pausing;
+           pauses (gap markers) fall BETWEEN chunks. -->
       <div v-else class="phrase-with-gaps" :class="{ 'slow-cadence': isSlowCadence }">
-        <template v-for="(segment, i) in gapSegments" :key="i">
-          <span class="word-segment">{{ segment }}</span>
-          <span v-if="i < gapSegments.length - 1" class="gap-marker"></span>
+        <template v-for="(chunk, i) in displayChunks" :key="i">
+          <span class="chunk-segment" :class="{ 'has-absorbed-glue': chunk.mergedGlue && chunk.mergedGlue.length > 0 }">
+            {{ chunk.text }}
+          </span>
+          <span v-if="i < displayChunks.length - 1" class="gap-marker"></span>
         </template>
       </div>
 
@@ -44,11 +48,32 @@ const props = defineProps({
 // Slow cadence detection — from phrase's own cadence field (optimizer mode)
 const isSlowCadence = computed(() => props.phrase.cadence === 'slow')
 
-// Split text into segments for gap display
-const gapSegments = computed(() => {
+// Resolve chunks from whichever format the phrase provides.
+// Priority: recordingChunks (objects) > chunks (objects or strings) > chunksString (pipe-delimited) > text (whitespace fallback)
+const displayChunks = computed(() => {
+  // Preferred: recordingChunks with glue absorbed into adjacent LEGOs
+  if (Array.isArray(props.phrase.recordingChunks) && props.phrase.recordingChunks.length > 0) {
+    return props.phrase.recordingChunks.map(c => ({
+      text: typeof c === 'string' ? c : c.text,
+      mergedGlue: typeof c === 'object' ? c.mergedGlue : null,
+      legoId: typeof c === 'object' ? c.legoId : null,
+    }))
+  }
+  // Next: raw chunks array (strings or objects)
+  if (Array.isArray(props.phrase.chunks) && props.phrase.chunks.length > 0) {
+    return props.phrase.chunks.map(c => ({
+      text: typeof c === 'string' ? c : c.text,
+      mergedGlue: typeof c === 'object' ? c.mergedGlue : null,
+      legoId: typeof c === 'object' ? c.legoId : null,
+    }))
+  }
+  // Next: pipe-delimited string from the optimiser output
+  if (typeof props.phrase.chunksString === 'string' && props.phrase.chunksString.length > 0) {
+    return props.phrase.chunksString.split('|').map(s => ({ text: s.trim(), mergedGlue: null, legoId: null }))
+  }
+  // Fallback: legacy word-level split (no LEGO info available)
   if (!props.phrase.text) return []
-  // Split by spaces for simple word-by-word gaps
-  return props.phrase.text.split(' ')
+  return props.phrase.text.split(' ').map(w => ({ text: w, mergedGlue: null, legoId: null }))
 })
 </script>
 
@@ -133,12 +158,32 @@ const gapSegments = computed(() => {
   font-size: 1.6rem;
   font-weight: 500;
   color: var(--color-paper, #f7f7f2);
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
-.word-segment {
+/* A chunk is a group of words the speaker reads without pausing.
+   Internal spaces inside chunk.text are preserved naturally. */
+.chunk-segment {
   display: inline-block;
-  padding: 0.2rem 0.4rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: inset 0 0 0 1px rgba(255, 166, 48, 0.08);
+  transition: all 0.4s ease;
+}
+
+.phrase-card.current .chunk-segment {
+  background: rgba(255, 166, 48, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 166, 48, 0.25);
+}
+
+/* Chunks that absorbed glue words are functionally identical to pure-LEGO
+   chunks for the speaker — but we keep a subtle hint for dev/debugging mode. */
+.chunk-segment.has-absorbed-glue {
+  /* no visual distinction by default — speaker shouldn't care.
+     Uncomment for debugging:
+     border-bottom: 2px dotted rgba(255, 166, 48, 0.3); */
 }
 
 .gap-marker {
