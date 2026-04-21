@@ -125,7 +125,23 @@ Note: Single real words like `I`, `a`, `の` are NOT unpronounceable — they ha
 
 Report: count + all matches.
 
-#### Check 7: Trailing periods
+#### Check 7: Speech marks wrapping text
+
+Detect phrases or LEGOs where known_text or target_text is wrapped in speech marks. These appear as quotes on screen in the app.
+
+```javascript
+const hasWrappingQuotes = (t) => (t.startsWith('"') && t.endsWith('"')) ||
+  (t.startsWith('\u201C') && t.endsWith('\u201D')) ||
+  (t.startsWith('\u201E') && t.endsWith('\u201D'));
+
+const quotedPhrases = phrases.filter(p => hasWrappingQuotes(p.known_text) || hasWrappingQuotes(p.target_text));
+const quotedLegos = legos.filter(l => hasWrappingQuotes(l.known_text) || hasWrappingQuotes(l.target_text));
+```
+
+Report: count + 5 samples.
+Action: Strip wrapping quotes from both known_text and target_text. Also strip from matching course_audio.text and text_normalized to keep exports consistent.
+
+#### Check 8: Trailing periods
 
 Detect phrases with trailing periods (`.`) in known_text or target_text. These cause TTS to add unnatural pauses and create duplicate key conflicts in `course_audio`.
 
@@ -181,6 +197,109 @@ Report: count + each conflict with LEGO IDs, known text, and both target texts.
 **Important:** This check should run AFTER parentheticals and slashes are fixed, since stripping those can reveal hidden duplicates (e.g., two LEGOs both become "it was" after removing "(imperfect)" and "(preterite)").
 
 See `memory/methodology-zut-resolution.md` for the resolution patterns.
+
+#### Check 10: Vocab ordering — word-level (known side)
+
+Detect phrases that introduce NEW ENGLISH words the learner hasn't encountered yet. This is the pedagogically serious version of the vocab-ordering check — if the learner sees an English word they've never seen before, they're confused regardless of whether the target language already introduced it.
+
+```javascript
+// Tokenizer that PRESERVES contractions (didn't, weren't, I'll, etc.)
+// Apostrophes inside words are part of the word — don't strip them.
+function tokenize(text) {
+  return text.toLowerCase()
+    .replace(/[.,!?;:()\/\-–—¿¡"]/g, ' ')  // strip sentence punctuation, KEEP apostrophes
+    .split(/\s+/)
+    .filter(w => w.length > 0);
+}
+
+// Build cumulative known-side vocabulary per seed
+// Source: all LEGOs (both is_new and reuses), all seeds, and all build/component phrases
+const knownAtSeed = new Map();
+for (const l of legos) {
+  if (!knownAtSeed.has(l.seed_number)) knownAtSeed.set(l.seed_number, new Set());
+  for (const w of tokenize(l.known_text)) knownAtSeed.get(l.seed_number).add(w);
+}
+for (const s of seeds) {
+  if (!knownAtSeed.has(s.seed_number)) knownAtSeed.set(s.seed_number, new Set());
+  for (const w of tokenize(s.known_text)) knownAtSeed.get(s.seed_number).add(w);
+}
+for (const p of phrases) {
+  if (p.phrase_role === 'use') continue;  // USE phrases are the ones being CHECKED, not sources
+  if (!knownAtSeed.has(p.seed_number)) knownAtSeed.set(p.seed_number, new Set());
+  for (const w of tokenize(p.known_text)) knownAtSeed.get(p.seed_number).add(w);
+}
+const maxSeed = Math.max(...seeds.map(s => s.seed_number));
+let running = new Set();
+const cumKnown = new Map();
+for (let s = 1; s <= maxSeed; s++) {
+  if (knownAtSeed.has(s)) for (const w of knownAtSeed.get(s)) running.add(w);
+  cumKnown.set(s, new Set(running));
+}
+
+// Violations: phrases whose known_text uses English words not yet introduced
+const wordViolations = phrases.filter(p => {
+  const words = tokenize(p.known_text);
+  const known = cumKnown.get(p.seed_number);
+  return words.some(w => !known.has(w));
+});
+```
+
+Report: count + 10 samples with the specific new English words.
+Action: Delete these phrases. Mild false positives (a verb conjugation the learner would intuit) can be kept on a case-by-case basis.
+
+#### Check 11: Vocab ordering — chunk-level (multi-word M-LEGO target text used before introduced)
+
+Deborah discovered that single-word vocab checks miss an important class: **multi-word M-LEGO chunks** (fixed expressions like "ein bisschen", "kein Problem", "lo que", "llevas aprendiendo") that are taught AS A UNIT at a specific seed but appear wholesale in earlier phrases. The learner's confusion isn't at the word level — it's "I recognise the individual words but this combination means something I haven't learned."
+
+```javascript
+// Multi-word M-type is_new LEGOs are the chunks we protect
+const mLegos = legos.filter(l => {
+  if (l.type !== 'M' || !l.is_new) return false;
+  const w = l.target_text.trim().split(/\s+/).filter(x => x.length > 0);
+  return w.length >= 2;
+});
+
+// Exclude own-seed LEGO texts (a phrase can naturally use its own seed's LEGOs)
+const seedLegoTexts = new Map();
+for (const l of legos) {
+  if (!seedLegoTexts.has(l.seed_number)) seedLegoTexts.set(l.seed_number, new Set());
+  seedLegoTexts.get(l.seed_number).add(l.target_text.toLowerCase().trim());
+}
+
+const chunkViolations = [];
+for (const p of phrases) {
+  const pt = p.target_text.toLowerCase();
+  const own = seedLegoTexts.get(p.seed_number) || new Set();
+  for (const ml of mLegos) {
+    if (ml.seed_number <= p.seed_number) continue;  // already introduced
+    const chunk = ml.target_text.toLowerCase().trim();
+    if (own.has(chunk)) continue;  // skip self-matches
+    const escaped = chunk.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // Word boundary: before chunk = start/space/punct; after chunk = end/space/punct
+    const re = new RegExp('(?:^|\\s|[\"\\\',.¿¡])' + escaped + '(?:$|\\s|[\"\\\',.?!])', 'i');
+    if (re.test(pt)) {
+      chunkViolations.push({ id: p.id, seed: p.seed_number, chunk: ml.target_text, introSeed: ml.seed_number });
+      break;  // one violation per phrase
+    }
+  }
+}
+```
+
+**Filter by English-side novelty before acting.** Most chunk violations are "grammar-y" (the target chunk recombined from known words, like `ich habe` used early even though `ich` and `habe` are known). The ones worth deleting are those where the KNOWN TEXT also introduces a new English concept — the learner is confused both sides.
+
+```javascript
+const catA = chunkViolations.filter(v => {
+  const phrase = phrases.find(p => p.id === v.id);
+  const knownWords = tokenize(phrase.known_text);
+  const knownNow = cumKnown.get(v.seed);
+  return knownWords.some(w => !knownNow.has(w));
+});
+```
+
+Report: count (A vs B) + top chunks by frequency + sample Cat A violations.
+Action:
+- **Category A (new English + early chunk)**: delete. These confuse the learner on both sides.
+- **Category B (all English known, just chunk reuse)**: keep unless the chunk is an idiomatic unit the learner really needs to be introduced to first (judgment call).
 
 ### Step 4: Language spot-check with Haiku
 
@@ -352,6 +471,39 @@ See `memory/methodology-zut-resolution.md` for the full pattern catalogue. Summa
 - Does the seed still have at least one is_new LEGO? If not, set the seed to draft.
 - Did the expansion absorb another LEGO in the same seed? Set that one to is_new=false.
 - Does the expanded LEGO tile into the seed target_text?
+
+## IMPORTANT: Clean Up Stale Audio After Text Changes
+
+When ANY fix changes the `known_text` or `target_text` of a seed, LEGO, or phrase, the old audio record becomes stale — it has the wrong text but is still linked via `audio_id`. The dashboard will show 0 missing (because the link exists), but the legacy export will fail because the text doesn't match.
+
+**After changing text, ALWAYS:**
+
+1. **Delete the old `course_audio` record** (it has the wrong text):
+   ```javascript
+   await supabase.from('course_audio').delete().eq('id', oldAudioId);
+   ```
+
+2. **Unlink from the parent** (set `audio_id` back to null):
+   ```javascript
+   // For seeds:
+   await supabase.from('course_seeds')
+     .update({ known_audio_id: null })  // or target_audio_id
+     .eq('course_code', CODE).eq('seed_number', N);
+
+   // For LEGOs (presentation):
+   await supabase.from('course_legos')
+     .update({ presentation_audio_id: null })
+     .eq('course_code', CODE).eq('lego_id', ID);
+
+   // For phrases:
+   await supabase.from('course_practice_phrases')
+     .update({ known_audio_id: null })  // or target_audio_id
+     .eq('id', phraseId);
+   ```
+
+3. **Regenerate** from the dashboard (the record will now correctly show as missing).
+
+**Why this matters:** The dashboard's missing audio count checks `audio_id` links. The legacy export checks text matching. If you change text without cleaning up audio, the link still exists but points to audio with the OLD text — dashboard says 0 missing, export breaks.
 
 ## What This Skill Does NOT Do
 

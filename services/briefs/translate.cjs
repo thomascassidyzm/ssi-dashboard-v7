@@ -61,6 +61,11 @@ curl -s -X POST "http://localhost:3471/api/course/${courseCode}/translate" \\
 You are providing \`${translateField}\` (${translateLangName}).
 The English text is already in the database — do NOT overwrite it.
 
+## Language name fidelity
+When a seed refers to a language by name (e.g. "Italian", "French", "Spanish"), translate the name of THAT specific language into ${translateLangName}. Do NOT substitute it with the learner's own language. Seeds only ever refer to the target language of the course — never to the learner's language or to unrelated languages.
+
+For example, in a French course for Italian speakers (Italians learning French), the known_text should use "Francese" (the Italian word for French), NOT "italiano".
+
 ## After all seeds are translated
 Submit a translation analysis:
 \`\`\`

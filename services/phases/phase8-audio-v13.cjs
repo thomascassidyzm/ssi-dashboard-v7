@@ -201,26 +201,17 @@ async function getExistingAudioSet(courseCode) {
 
   if (error) throw error
 
-  // Store both canonical AND ?!-stripped forms so lookups work either way.
-  // Old audio was stored without ?! — new phrases may have them.
-  // "emin misin?" and "emin misin" are the same audio file.
+  // Exact matching only. "emin misin?" and "emin misin" are DIFFERENT audio files
+  // because ? changes TTS intonation (question vs statement).
+  // normalizeForAudio no longer strips trailing ? — so keys are exact.
   const innerSet = new Set()
   for (const a of (data || [])) {
     const norm = normalizeText(a.text)
     innerSet.add(`${norm}|${a.language}|${a.role}`)
-    // Also add stripped form so "emin misin" matches lookup for "emin misin?"
-    const stripped = norm.replace(/[!?！？]+$/, '')
-    if (stripped !== norm) innerSet.add(`${stripped}|${a.language}|${a.role}`)
   }
 
-  // Return a Set-like object with a custom has() that checks both forms
   const existingSet = {
-    has(key) {
-      if (innerSet.has(key)) return true
-      // Also try stripping trailing ?! from the lookup key
-      const stripped = key.replace(/([!?！？]+)\|/, '|')
-      return stripped !== key && innerSet.has(stripped)
-    },
+    has(key) { return innerSet.has(key) },
     get size() { return innerSet.size }
   }
   logger.info(`getExistingAudioSet(${courseCode}): ${data?.length || 0} rows, ${innerSet.size} unique keys`)
@@ -239,7 +230,7 @@ async function getExistingAudioSet(courseCode) {
  * @param {object} course - Course record with known_lang, target_lang
  * @returns {Promise<{toLink: number, toGenerate: Array, stats: object}>}
  */
-async function getAudioNeeds(courseCode, releaseTarget, course) {
+async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = false) {
   const PAGE_SIZE = 1000
 
   // Step 1: Find all unlinked slots (NULL audio_id)
@@ -316,7 +307,9 @@ async function getAudioNeeds(courseCode, releaseTarget, course) {
   }
 
   // Step 2: Check which unlinked items have existing audio (can be linked without TTS)
-  const existingSet = await getExistingAudioSet(courseCode)
+  // If forceGenerate is true, skip this check — treat everything as needing TTS.
+  // Used when link step ran but linked 0 (normalization mismatch prevents linking).
+  const existingSet = forceGenerate ? { has: () => false, get size() { return 0 } } : await getExistingAudioSet(courseCode)
 
   let toLinkCount = 0
   const toGenerate = []
@@ -328,6 +321,10 @@ async function getAudioNeeds(courseCode, releaseTarget, course) {
     } else {
       toGenerate.push({ text: item.text, language: item.lang, role: item.role })
     }
+  }
+
+  if (forceGenerate) {
+    logger.info(`getAudioNeeds: forceGenerate=true, all ${unlinked.length} unlinked items classified as to-generate`)
   }
 
   // Step 3: Deduplicate toGenerate (same text used by multiple phrases)
@@ -1210,6 +1207,19 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     // Step B: Find what still needs generating (after linking)
     const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course)
+
+    // Step B2: If items are "linkable" but nothing actually linked (link step ran
+    // but linked 0), the "linkable" items are stuck — normalization mismatch between
+    // JS normalizeForAudio and DB text_normalized prevents the RPC from matching.
+    // Reclassify them as "to generate" so TTS runs and creates correct records.
+    if (audioNeeds.toLink > 0 && audioNeeds.toGenerate.length === 0) {
+      logger.warn(`${audioNeeds.toLink} items stuck as "linkable" — reclassifying all unlinked as "to generate"`)
+      // Re-run but skip the existingSet check — treat everything unlinked as needing TTS
+      const forceNeeds = await getAudioNeeds(courseCode, releaseTarget, course, true)
+      audioNeeds.toGenerate = forceNeeds.toGenerate
+      audioNeeds.toLink = 0
+      logger.info(`Reclassified: now ${audioNeeds.toGenerate.length} to generate`)
+    }
 
     // Add voice config to each item
     const needed = audioNeeds.toGenerate.map(item => ({
