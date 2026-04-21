@@ -415,9 +415,12 @@ app.put('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
 async function handleInvite(req, res) {
   const adminUser = await requireAdmin(req, res)
   if (!adminUser) return
-  const { email, name, courses, role = 'recorder' } = req.body
+  const { email, name, courses, role = 'editor' } = req.body
   if (!email) return res.status(400).json({ error: 'Email is required' })
   if (!courses || !Array.isArray(courses) || courses.length === 0) return res.status(400).json({ error: 'At least one course must be assigned' })
+  // 'recorder' still accepted for backward-compat with existing rows; new
+  // invites default to 'editor'. Recorder role was retired from the UI on
+  // 2026-04-21 — the only gating going forward is per-course access.
   if (!['recorder', 'editor', 'admin'].includes(role)) return res.status(400).json({ error: 'Invalid role' })
   try {
     const db = supabaseClient.getClient()
@@ -447,7 +450,8 @@ async function handleInvite(req, res) {
 
       const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
       const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
-      const voiceId = role === 'recorder' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
+      // Non-admins get a voice_id since editors are the ones recording now.
+      const voiceId = role !== 'admin' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
       const row = {
         email, name: name || email.split('@')[0], role, courses,
         ...(voiceId && { voice_id: voiceId }),
@@ -525,12 +529,14 @@ app.post('/api/auth/logout', async (req, res) => {
 // =============================================================================
 
 // POST /api/auth/invite-codes/generate — generate an invite code
-// Admins: any role, any course. Editors: recorder role only, own courses only.
+// Admins: any role, any course. Editors: can only invite editors for their own courses.
+// (The 'recorder' role was retired from the UI on 2026-04-21; accepted here for
+// backward compat with any outstanding recorder invites. Gating is now by course access only.)
 app.post('/api/auth/invite-codes/generate', async (req, res) => {
   const user = await requireDashboardUser(req, res)
   if (!user) return
 
-  const { courses, role = 'recorder', label, expires_days, max_uses = 1 } = req.body
+  const { courses, role = 'editor', label, expires_days, max_uses = 1 } = req.body
   if (!courses || !Array.isArray(courses) || courses.length === 0) {
     return res.status(400).json({ error: 'courses array is required' })
   }
@@ -538,10 +544,10 @@ app.post('/api/auth/invite-codes/generate', async (req, res) => {
     return res.status(400).json({ error: 'Invalid role' })
   }
 
-  // Non-admins can only generate recorder codes for their own courses
+  // Non-admins can only generate non-admin codes for their own courses.
   if (user.role !== 'admin') {
-    if (role !== 'recorder') {
-      return res.status(403).json({ error: 'You can only invite recorders' })
+    if (role === 'admin') {
+      return res.status(403).json({ error: 'Only admins can invite admins' })
     }
     const userCourses = Array.isArray(user.courses) ? user.courses : []
     const unauthorized = courses.filter(c => !userCourses.includes(c))
@@ -6076,6 +6082,14 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
 
     for (let i = 0; i < phrases.length; i++) {
       const p = phrases[i]
+      // Pass chunk data through to the autocue so Pass 2 (slow) can render
+      // LEGO-level pause boundaries rather than word-level.
+      const chunkFields = {
+        recordingChunks: p.recordingChunks || null,
+        legoChunks: p.legoChunks || null,
+        chunksString: p.chunksString || null,
+        chunkCount: p.chunkCount || null,
+      }
       items.push({
         index: idx++,
         text: p.target,
@@ -6086,7 +6100,8 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         coversLegos: p.coversLegos,
         known: p.known || '',
         source: p.source || '',
-        seedNumber: p.seedNumber || null
+        seedNumber: p.seedNumber || null,
+        ...chunkFields
       })
       items.push({
         index: idx++,
@@ -6098,20 +6113,27 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         coversLegos: p.coversLegos,
         known: p.known || '',
         source: p.source || '',
-        seedNumber: p.seedNumber || null
+        seedNumber: p.seedNumber || null,
+        ...chunkFields
       })
     }
 
-    // Append direct record items (also normal + slow pairs)
+    // Append direct record items (also normal + slow pairs).
+    // A direct-record item is a single LEGO — one chunk by definition.
     for (let i = 0; i < directItems.length; i++) {
       const d = directItems[i]
+      const directChunk = [{ text: d.target, legoId: d.legoId || null, isLego: true }]
       items.push({
         index: idx++,
         text: d.target,
         cadence: 'natural',
         type: 'direct',
         known: d.known || '',
-        legoId: d.legoId || ''
+        legoId: d.legoId || '',
+        recordingChunks: directChunk,
+        legoChunks: directChunk,
+        chunksString: d.target,
+        chunkCount: 1
       })
       items.push({
         index: idx++,
@@ -6119,7 +6141,11 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         cadence: 'slow',
         type: 'direct',
         known: d.known || '',
-        legoId: d.legoId || ''
+        legoId: d.legoId || '',
+        recordingChunks: directChunk,
+        legoChunks: directChunk,
+        chunksString: d.target,
+        chunkCount: 1
       })
     }
 
