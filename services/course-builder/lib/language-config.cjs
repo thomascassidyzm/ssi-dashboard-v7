@@ -50,6 +50,10 @@ const CHARS_PER_SYLLABLE = {
   zho: 1.0,
   jpn: 1.5,
   kor: 1.0,
+  tha: 1.5,
+  mya: 1.5,
+  lao: 1.5,
+  khm: 1.5,
   fra: 3.5,
   spa: 3.2,
   deu: 3.0,
@@ -108,7 +112,7 @@ function getLangFamily(courseCode) {
 function isChinese(courseCode) {
   const parts = courseCode.split('_for_');
   const targetLang = parts[0] || '';
-  const characterBasedLangs = ['zho', 'jpn', 'kor'];
+  const characterBasedLangs = ['zho', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
   return characterBasedLangs.includes(targetLang);
 }
 

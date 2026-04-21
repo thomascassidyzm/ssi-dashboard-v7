@@ -32,6 +32,7 @@ const { bumpCourseVersion } = require('../shared/course-version.cjs')
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
+const { toBcp47 } = require('../voice-discovery-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
 const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
@@ -59,6 +60,23 @@ const supabase = createClient(
 )
 
 const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
+
+/**
+ * Get the effective release target for a course.
+ * Rule: if a seed has been decomposed (has LEGOs), it needs audio.
+ * Uses the actual max decomposed seed_number, not a configured value.
+ */
+async function getEffectiveReleaseTarget(courseCode, courseSeedCount) {
+  const { data } = await supabase
+    .from('course_legos')
+    .select('seed_number')
+    .eq('course_code', courseCode)
+    .order('seed_number', { ascending: false })
+    .limit(1)
+  const maxDecomposed = data?.[0]?.seed_number || 0
+  // Use the higher of: actual decomposed seeds vs configured seed_count vs 260 fallback
+  return Math.max(maxDecomposed, courseSeedCount || 0, 260)
+}
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 
 // =============================================================================
@@ -800,7 +818,7 @@ async function planHandler(req, res) {
       return res.status(404).json({ error: 'Course not found' })
     }
 
-    const releaseTarget = course.seed_count || 260
+    const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
 
     // Step 1: Skip linking in plan — backfill already ran, generate endpoint links after each batch.
     // Calling link_all_audio_ids here was causing statement timeouts on large courses.
@@ -1064,9 +1082,9 @@ app.post('/generate/:courseCode', async (req, res) => {
       })
     }
 
-    // Release target - only generate audio for seeds up to this number (MVP = 260)
-    // This must match the /plan endpoint logic for consistent results
-    const releaseTarget = course.seed_count || 260
+    // Release target — generate audio for all decomposed seeds
+    // Uses actual max decomposed seed_number, not a configured cap
+    const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
 
     // Get practice phrases (paginated) - filtered by release target
     // IMPORTANT: Must use ORDER BY for consistent pagination results
@@ -1755,11 +1773,20 @@ app.post('/generate/:courseCode', async (req, res) => {
           voiceId: voiceName,
           speed
         }))
+      } else if (provider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceName,
+          language: toBcp47(item.language),
+        }))
       } else {
         throw new Error(`Unknown TTS provider: ${provider}`)
       }
 
       // Master audio: normalize loudness and extract duration
+      // Note: xAI does not expose an API-level speed parameter, so xAI audio
+      // is always generated at natural speed. Downstream cadence playback speed
+      // adjustments are applied in the player, not at TTS time.
       const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
 
       // Generate UUID for S3 key (UPPERCASE to match existing S3 convention)
@@ -2134,6 +2161,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
+        }))
+      } else if (voiceProvider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceId,
+          language: toBcp47(language),
         }))
       } else {
         throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -3290,6 +3323,12 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         voiceId: voiceId,
         speed
       }))
+    } else if (voiceProvider === 'xai') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+        apiKey: process.env.XAI_API_KEY,
+        voiceId: voiceId,
+        language: toBcp47(lang),
+      }))
     } else {
       throw new Error(`Unknown TTS provider: ${voiceProvider}`)
     }
@@ -3659,6 +3698,12 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceName, speed
+        }))
+      } else if (provider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceName,
+          language: toBcp47(item.language),
         }))
       } else {
         throw new Error(`Unknown TTS provider: ${provider}`)

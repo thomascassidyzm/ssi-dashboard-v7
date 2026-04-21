@@ -6,8 +6,8 @@
         <router-link to="/" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
           ← Back to Dashboard
         </router-link>
-        <h1 class="text-4xl font-bold text-emerald-400 mb-2">{{ isAdmin ? 'User Management' : 'Invite Recorder' }}</h1>
-        <p class="text-slate-400">{{ isAdmin ? 'Add users and manage course access' : 'Generate invite codes for voice recorders' }}</p>
+        <h1 class="text-4xl font-bold text-emerald-400 mb-2">{{ isAdmin ? 'User Management' : 'Invite Editor' }}</h1>
+        <p class="text-slate-400">{{ isAdmin ? 'Add users and manage course access' : 'Generate invite codes for editors on your courses' }}</p>
       </div>
 
       <!-- Invite New User (admin only) -->
@@ -41,8 +41,7 @@
             v-model="newUser.role"
             class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-slate-100 focus:border-emerald-500 focus:outline-none"
           >
-            <option value="recorder">Recorder (can record audio)</option>
-            <option value="editor">Editor (can edit course content)</option>
+            <option value="editor">Editor (can edit + record for granted courses)</option>
             <option value="admin">Admin (full access)</option>
           </select>
         </div>
@@ -94,13 +93,12 @@
             v-model="codeForm.role"
             class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-slate-100 focus:border-amber-500 focus:outline-none"
           >
-            <option value="recorder">Recorder (can record audio)</option>
-            <option value="editor">Editor (can edit course content)</option>
+            <option value="editor">Editor (can edit + record for granted courses)</option>
             <option value="admin">Admin (full access)</option>
           </select>
         </div>
         <div v-else class="mb-4">
-          <p class="text-sm text-slate-400">Inviting as <span class="text-amber-400 font-medium">Recorder</span></p>
+          <p class="text-sm text-slate-400">Inviting as <span class="text-amber-400 font-medium">Editor</span></p>
         </div>
 
         <div class="mb-4">
@@ -318,7 +316,6 @@
                   v-model="editForm.role"
                   class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-1.5 text-sm text-slate-100 focus:border-emerald-500 focus:outline-none"
                 >
-                  <option value="recorder">Recorder</option>
                   <option value="editor">Editor</option>
                   <option value="admin">Admin</option>
                 </select>
@@ -477,7 +474,7 @@ function parseCourses(courses) {
 const newUser = ref({
   email: '',
   name: '',
-  role: 'recorder',
+  role: 'editor',
   courses: []
 })
 
@@ -545,7 +542,7 @@ async function inviteUser() {
     newUser.value = {
       email: '',
       name: '',
-      role: 'recorder',
+      role: 'editor',
       courses: []
     }
 
@@ -651,7 +648,7 @@ const inviteAvailableCourses = computed(() => {
   return availableCourses.value.filter(c => accessibleCourses.value.includes(c.code))
 })
 
-const codeForm = ref({ role: 'recorder', courses: [], label: '', expiresDays: null })
+const codeForm = ref({ role: 'editor', courses: [], label: '', expiresDays: null })
 const generatingCode = ref(false)
 const generatedCode = ref(null)
 const codeCopied = ref(false)

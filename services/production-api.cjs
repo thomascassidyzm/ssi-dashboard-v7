@@ -18,6 +18,7 @@ const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
 const audioProcessor = require('./audio-processor.cjs')
+const ttsService = require('./tts-service.cjs')
 const voiceConfigService = require('./voice-config-service.cjs')
 const voiceDiscoveryService = require('./voice-discovery-service.cjs')
 const publishManifestService = require('./publish-manifest-service.cjs')
@@ -415,9 +416,12 @@ app.put('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
 async function handleInvite(req, res) {
   const adminUser = await requireAdmin(req, res)
   if (!adminUser) return
-  const { email, name, courses, role = 'recorder' } = req.body
+  const { email, name, courses, role = 'editor' } = req.body
   if (!email) return res.status(400).json({ error: 'Email is required' })
   if (!courses || !Array.isArray(courses) || courses.length === 0) return res.status(400).json({ error: 'At least one course must be assigned' })
+  // 'recorder' still accepted for backward-compat with existing rows; new
+  // invites default to 'editor'. Recorder role was retired from the UI on
+  // 2026-04-21 — the only gating going forward is per-course access.
   if (!['recorder', 'editor', 'admin'].includes(role)) return res.status(400).json({ error: 'Invalid role' })
   try {
     const db = supabaseClient.getClient()
@@ -447,7 +451,8 @@ async function handleInvite(req, res) {
 
       const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
       const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
-      const voiceId = role === 'recorder' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
+      // Non-admins get a voice_id since editors are the ones recording now.
+      const voiceId = role !== 'admin' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
       const row = {
         email, name: name || email.split('@')[0], role, courses,
         ...(voiceId && { voice_id: voiceId }),
@@ -525,12 +530,14 @@ app.post('/api/auth/logout', async (req, res) => {
 // =============================================================================
 
 // POST /api/auth/invite-codes/generate — generate an invite code
-// Admins: any role, any course. Editors: recorder role only, own courses only.
+// Admins: any role, any course. Editors: can only invite editors for their own courses.
+// (The 'recorder' role was retired from the UI on 2026-04-21; accepted here for
+// backward compat with any outstanding recorder invites. Gating is now by course access only.)
 app.post('/api/auth/invite-codes/generate', async (req, res) => {
   const user = await requireDashboardUser(req, res)
   if (!user) return
 
-  const { courses, role = 'recorder', label, expires_days, max_uses = 1 } = req.body
+  const { courses, role = 'editor', label, expires_days, max_uses = 1 } = req.body
   if (!courses || !Array.isArray(courses) || courses.length === 0) {
     return res.status(400).json({ error: 'courses array is required' })
   }
@@ -538,10 +545,10 @@ app.post('/api/auth/invite-codes/generate', async (req, res) => {
     return res.status(400).json({ error: 'Invalid role' })
   }
 
-  // Non-admins can only generate recorder codes for their own courses
+  // Non-admins can only generate non-admin codes for their own courses.
   if (user.role !== 'admin') {
-    if (role !== 'recorder') {
-      return res.status(403).json({ error: 'You can only invite recorders' })
+    if (role === 'admin') {
+      return res.status(403).json({ error: 'Only admins can invite admins' })
     }
     const userCourses = Array.isArray(user.courses) ? user.courses : []
     const unauthorized = courses.filter(c => !userCourses.includes(c))
@@ -1285,18 +1292,28 @@ app.patch('/api/courses/:courseCode/voice-config/:role', async (req, res) => {
 // VOICE DISCOVERY & PREVIEW ROUTES (for VoiceConfiguration component)
 // =============================================================================
 
-// GET /api/voices/discover/:language - Discover available Azure voices for a language
+// GET /api/voices/discover/:language?provider=azure|xai - Discover voices for a language
+// Defaults to azure if no provider specified (backwards-compatible).
+// ElevenLabs voices are entered manually in the UI (no discovery endpoint).
 app.get('/api/voices/discover/:language', async (req, res) => {
   const { language } = req.params
+  const provider = (req.query.provider || 'azure').toLowerCase()
   try {
-    logger.info(`[VoiceDiscovery] Discovering voices for language: ${language}`)
+    logger.info(`[VoiceDiscovery] Discovering ${provider} voices for language: ${language}`)
 
-    const voices = await voiceDiscoveryService.discoverAzureVoices(language)
+    let voices
+    if (provider === 'azure') {
+      voices = await voiceDiscoveryService.discoverAzureVoices(language)
+    } else if (provider === 'xai') {
+      voices = await voiceDiscoveryService.discoverXaiVoices(language)
+    } else {
+      return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` })
+    }
 
-    logger.info(`[VoiceDiscovery] Found ${voices.length} voices for ${language}`)
-    res.json({ success: true, voices })
+    logger.info(`[VoiceDiscovery] Found ${voices.length} ${provider} voices for ${language}`)
+    res.json({ success: true, provider, voices })
   } catch (error) {
-    logger.error(`[VoiceDiscovery] Error discovering voices for ${language}:`, error)
+    logger.error(`[VoiceDiscovery] Error discovering ${provider} voices for ${language}:`, error)
     res.status(500).json({ success: false, error: error.message })
   }
 })
@@ -1333,86 +1350,64 @@ app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
 })
 
 // POST /api/voices/preview - Generate a voice preview audio sample
+// Body: { voiceId, text, speed?, provider?, language? }
+// provider: 'azure' (default) | 'elevenlabs' | 'xai'
+// language: BCP-47 code for xAI (e.g. 'es', 'pt-BR'). Derived from voiceId for Azure.
 app.post('/api/voices/preview', async (req, res) => {
-  const { voiceId, text, speed, provider } = req.body
+  const { voiceId, text, speed, provider = 'azure', language } = req.body
 
-  // Validation
-  if (!voiceId) {
-    return res.status(400).json({ success: false, error: 'voiceId is required' })
-  }
-  if (!text) {
-    return res.status(400).json({ success: false, error: 'text is required' })
-  }
-  if (text.length > 1000) {
-    return res.status(400).json({ success: false, error: 'Text too long (max 1000 characters for preview)' })
-  }
+  if (!voiceId) return res.status(400).json({ success: false, error: 'voiceId is required' })
+  if (!text) return res.status(400).json({ success: false, error: 'text is required' })
+  if (text.length > 1000) return res.status(400).json({ success: false, error: 'Text too long (max 1000 characters for preview)' })
 
   try {
-    const azureKey = process.env.AZURE_SPEECH_KEY
-    const azureRegion = process.env.AZURE_SPEECH_REGION || 'westeurope'
+    logger.info(`[VoicePreview] provider=${provider} voice=${voiceId} textLen=${text.length}`)
 
-    if (!azureKey) {
-      return res.status(500).json({
-        success: false,
-        error: 'Azure Speech not configured (AZURE_SPEECH_KEY not set)'
-      })
-    }
+    let audioBuffer
 
-    logger.info(`[VoicePreview] Generating preview: ${voiceId}, text length: ${text.length}`)
-
-    // Extract locale from voiceId (e.g., 'es-ES' from 'es-ES-ElviraNeural')
-    const locale = voiceId.split('-').slice(0, 2).join('-')
-
-    // Build SSML with optional speed adjustment
-    const rate = speed && speed !== 1.0 ? speed : null
-    let ssml = `<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='${locale}'>`
-    ssml += `<voice name='${voiceId}'>`
-    if (rate) {
-      ssml += `<prosody rate='${rate}'>`
-    }
-    ssml += escapeXml(text)
-    if (rate) {
-      ssml += `</prosody>`
-    }
-    ssml += `</voice></speak>`
-
-    // Call Azure TTS API
-    const response = await fetch(
-      `https://${azureRegion}.tts.speech.microsoft.com/cognitiveservices/v1`,
-      {
-        method: 'POST',
-        headers: {
-          'Ocp-Apim-Subscription-Key': azureKey,
-          'Content-Type': 'application/ssml+xml',
-          'X-Microsoft-OutputFormat': 'audio-24khz-96kbitrate-mono-mp3',
-          'User-Agent': 'SSi-Dashboard-Voice-Preview'
-        },
-        body: ssml
+    if (provider === 'azure') {
+      const azureKey = process.env.AZURE_SPEECH_KEY
+      const azureRegion = process.env.AZURE_SPEECH_REGION || 'westeurope'
+      if (!azureKey) {
+        return res.status(500).json({ success: false, error: 'Azure Speech not configured (AZURE_SPEECH_KEY not set)' })
       }
-    )
-
-    if (!response.ok) {
-      const errorText = await response.text()
-      logger.error(`[VoicePreview] Azure TTS error: ${response.status} ${errorText}`)
-      return res.status(response.status).json({
-        success: false,
-        error: `Azure TTS error: ${response.status}`,
-        message: errorText
+      const result = await ttsService.generateWithRetry(text, 'azure', {
+        subscriptionKey: azureKey,
+        region: azureRegion,
+        voiceName: voiceId,
+        speed: speed || 1.0,
       })
+      audioBuffer = result.audioBuffer
+    } else if (provider === 'elevenlabs') {
+      const apiKey = process.env.ELEVENLABS_API_KEY
+      if (!apiKey) {
+        return res.status(500).json({ success: false, error: 'ElevenLabs not configured (ELEVENLABS_API_KEY not set)' })
+      }
+      const result = await ttsService.generateWithRetry(text, 'elevenlabs', {
+        apiKey, voiceId, speed: speed || 1.0
+      })
+      audioBuffer = result.audioBuffer
+    } else if (provider === 'xai') {
+      const apiKey = process.env.XAI_API_KEY
+      if (!apiKey) {
+        return res.status(500).json({ success: false, error: 'xAI not configured (XAI_API_KEY not set)' })
+      }
+      const result = await ttsService.generateWithRetry(text, 'xai', {
+        apiKey,
+        voiceId,
+        language: language || 'auto',
+      })
+      audioBuffer = result.audioBuffer
+    } else {
+      return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` })
     }
 
     // Convert audio to base64 data URI for frontend playback
-    const audioBuffer = await response.arrayBuffer()
     const base64Audio = Buffer.from(audioBuffer).toString('base64')
     const dataUri = `data:audio/mpeg;base64,${base64Audio}`
 
-    logger.info(`[VoicePreview] Generated ${audioBuffer.byteLength} bytes of audio`)
-
-    res.json({
-      success: true,
-      audio: dataUri,
-      byteLength: audioBuffer.byteLength
-    })
+    logger.info(`[VoicePreview] Generated ${audioBuffer.length} bytes of audio`)
+    res.json({ success: true, audio: dataUri, byteLength: audioBuffer.length })
   } catch (error) {
     logger.error('[VoicePreview] Error generating preview:', error)
     res.status(500).json({ success: false, error: error.message })
@@ -6076,6 +6071,14 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
 
     for (let i = 0; i < phrases.length; i++) {
       const p = phrases[i]
+      // Pass chunk data through to the autocue so Pass 2 (slow) can render
+      // LEGO-level pause boundaries rather than word-level.
+      const chunkFields = {
+        recordingChunks: p.recordingChunks || null,
+        legoChunks: p.legoChunks || null,
+        chunksString: p.chunksString || null,
+        chunkCount: p.chunkCount || null,
+      }
       items.push({
         index: idx++,
         text: p.target,
@@ -6086,7 +6089,8 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         coversLegos: p.coversLegos,
         known: p.known || '',
         source: p.source || '',
-        seedNumber: p.seedNumber || null
+        seedNumber: p.seedNumber || null,
+        ...chunkFields
       })
       items.push({
         index: idx++,
@@ -6098,20 +6102,27 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         coversLegos: p.coversLegos,
         known: p.known || '',
         source: p.source || '',
-        seedNumber: p.seedNumber || null
+        seedNumber: p.seedNumber || null,
+        ...chunkFields
       })
     }
 
-    // Append direct record items (also normal + slow pairs)
+    // Append direct record items (also normal + slow pairs).
+    // A direct-record item is a single LEGO — one chunk by definition.
     for (let i = 0; i < directItems.length; i++) {
       const d = directItems[i]
+      const directChunk = [{ text: d.target, legoId: d.legoId || null, isLego: true }]
       items.push({
         index: idx++,
         text: d.target,
         cadence: 'natural',
         type: 'direct',
         known: d.known || '',
-        legoId: d.legoId || ''
+        legoId: d.legoId || '',
+        recordingChunks: directChunk,
+        legoChunks: directChunk,
+        chunksString: d.target,
+        chunkCount: 1
       })
       items.push({
         index: idx++,
@@ -6119,7 +6130,11 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         cadence: 'slow',
         type: 'direct',
         known: d.known || '',
-        legoId: d.legoId || ''
+        legoId: d.legoId || '',
+        recordingChunks: directChunk,
+        legoChunks: directChunk,
+        chunksString: d.target,
+        chunkCount: 1
       })
     }
 
@@ -8301,6 +8316,18 @@ app.post('/api/admin/pm2/fix', async (req, res) => {
       logger.warn('[Admin] pm2/fix error:', e.message)
     }
   }, 3000)
+})
+
+// POST /api/admin/pm2/restart — restart a named pm2 process
+app.post('/api/admin/pm2/restart', async (req, res) => {
+  const name = req.body?.name
+  if (!name) return res.status(400).json({ error: 'name required' })
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
+    res.json({ ok: true, name, output: stdout.trim() })
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message })
+  }
 })
 
 // POST /api/admin/pm2/stop — stop a named pm2 process (e.g. ssi-dashboard dev server)

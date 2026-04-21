@@ -4,6 +4,7 @@
  * Supports multiple TTS providers:
  * - ElevenLabs (multilingual, high quality)
  * - Azure Speech Services (Microsoft TTS)
+ * - xAI TTS (cheap, 5 voices, 20+ languages, expressive markup)
  *
  * Usage:
  *   const tts = require('./services/tts-service.cjs');
@@ -158,6 +159,70 @@ async function generateAzure(text, config) {
 }
 
 /**
+ * Generate speech using xAI TTS
+ * @param {string} text - Text to synthesize (may include expressive markup like [laugh], <whisper>)
+ * @param {object} config - xAI configuration
+ * @param {string} config.apiKey - xAI API key
+ * @param {string} config.voiceId - Voice ID: 'eve' | 'ara' | 'leo' | 'rex' | 'sal' (case-insensitive)
+ * @param {string} config.language - BCP-47 language code (e.g., 'es', 'en', 'pt-BR', 'ar-EG', 'auto')
+ * @param {number} config.speed - Speech speed multiplier (applied client-side via SSML-like wrapping if supported)
+ * @param {string} config.codec - Output codec: 'mp3' (default) | 'wav' | 'pcm' | 'mulaw' | 'alaw'
+ * @param {number} config.sampleRate - Sample rate in Hz (default: 24000)
+ * @param {number} config.bitRate - Bit rate in bps (default: 128000)
+ * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data. Word boundaries are null — xAI does not provide them.
+ */
+async function generateXai(text, config) {
+  const {
+    apiKey,
+    voiceId = 'eve',
+    language = 'auto',
+    codec = 'mp3',
+    sampleRate = 24000,
+    bitRate = 128000
+  } = config;
+
+  if (!apiKey) {
+    throw new Error('xAI API key is required');
+  }
+
+  if (text.length > 15000) {
+    throw new Error(`xAI TTS REST request limited to 15000 characters; got ${text.length}. Use streaming endpoint for longer content.`);
+  }
+
+  // Note: xAI currently does not document a speed parameter on the /v1/tts endpoint.
+  // Speed control is handled downstream via audio-processing (masterAudio stage).
+  // Expressive markup ([laugh], [sigh], <whisper>, <emphasis>) passes through text as-is.
+
+  const body = {
+    text,
+    voice_id: voiceId,
+    language,
+    output_format: {
+      codec,
+      sample_rate: sampleRate,
+      bit_rate: bitRate
+    }
+  };
+
+  const response = await fetch('https://api.x.ai/v1/tts', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`xAI TTS API error (${response.status}): ${errorText}`);
+  }
+
+  const arrayBuffer = await response.arrayBuffer();
+  return { audioBuffer: Buffer.from(arrayBuffer), wordBoundaries: null };
+}
+
+/**
  * Escape XML special characters for SSML
  */
 function escapeXml(text) {
@@ -172,7 +237,7 @@ function escapeXml(text) {
 /**
  * Generate speech using specified TTS provider
  * @param {string} text - Text to synthesize
- * @param {string} provider - TTS provider ('elevenlabs' or 'azure')
+ * @param {string} provider - TTS provider ('elevenlabs' | 'azure' | 'xai')
  * @param {object} config - Provider-specific configuration
  * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
@@ -187,6 +252,9 @@ async function generate(text, provider, config) {
 
     case 'azure':
       return await generateAzure(text, config);
+
+    case 'xai':
+      return await generateXai(text, config);
 
     default:
       throw new Error(`Unknown TTS provider: ${provider}`);
@@ -259,6 +327,7 @@ module.exports = {
   generateWithRetry,
   generateElevenLabs,
   generateAzure,
+  generateXai,
   getCadenceSpeed,
   getVoiceForRole
 };

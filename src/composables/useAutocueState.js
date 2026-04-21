@@ -587,7 +587,13 @@ export function useAutocueState() {
         coversLegos: item.coversLegos,
         known: item.known,
         legoId: item.legoId || '',
-        role: 'target1'
+        role: 'target1',
+        // LEGO-level chunking — PhraseCard uses these in Pass 2 (slow) to
+        // render pause boundaries between LEGO chunks rather than every word.
+        recordingChunks: item.recordingChunks || null,
+        legoChunks: item.legoChunks || null,
+        chunksString: item.chunksString || null,
+        chunkCount: item.chunkCount || null
       }))
 
       console.log(`[Autocue] Loaded optimizer script: ${state.phrases.length} items (${data.totalPhrases} phrases + ${data.totalDirect} direct)`)

@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     return res.status(403).json({ error: 'Admin access required' });
   }
 
-  const { email, name, courses, role = 'recorder' } = req.body;
+  const { email, name, courses, role = 'editor' } = req.body;
 
   // Validate input
   if (!email) {
@@ -54,8 +54,10 @@ export default async function handler(req, res) {
   if (!courses || !Array.isArray(courses) || courses.length === 0) {
     return res.status(400).json({ error: 'At least one course must be assigned' });
   }
+  // 'recorder' accepted for backward compat with pre-2026-04-21 invites;
+  // new invites default to 'editor'. Gating is per-course going forward.
   if (!['recorder', 'editor', 'admin'].includes(role)) {
-    return res.status(400).json({ error: 'Invalid role. Must be: recorder, editor, or admin' });
+    return res.status(400).json({ error: 'Invalid role. Must be: editor or admin' });
   }
 
   try {
@@ -80,10 +82,10 @@ export default async function handler(req, res) {
       });
     }
 
-    // Generate voice_id for recorders
+    // Generate voice_id for non-admin users (editors record for their courses)
     const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase();
     const primaryLanguage = courses[0]?.split('_')[0] || 'unknown';
-    const voiceId = role === 'recorder' ? `human_${sanitizedEmail}_${primaryLanguage}` : null;
+    const voiceId = role !== 'admin' ? `human_${sanitizedEmail}_${primaryLanguage}` : null;
 
     // Add new user
     usersData.users[email] = {
