@@ -155,7 +155,7 @@ Note: This does NOT flag `?` or `!` — those are valid sentence-ending punctuat
 
 Report: count + 5 samples.
 
-#### Check 8: Lowercase "I" in English
+#### Check 9: Lowercase "I" in English
 
 If the target language is English (`target_lang === 'eng'`), check for standalone lowercase `i` that should be `I`:
 
@@ -168,7 +168,7 @@ If the known language is English (`known_lang === 'eng'`), check known_text inst
 
 Report: count + 5 samples.
 
-#### Check 8: ZUT conflicts (duplicate known_text → different target_text)
+#### Check 10: ZUT conflicts (duplicate known_text → different target_text)
 
 Find is_new LEGOs where two or more share the same known_text but have different target_text. This means the learner won't know which word to say.
 
@@ -198,7 +198,7 @@ Report: count + each conflict with LEGO IDs, known text, and both target texts.
 
 See `memory/methodology-zut-resolution.md` for the resolution patterns.
 
-#### Check 10: Vocab ordering — word-level (known side)
+#### Check 11: Vocab ordering — word-level (known side)
 
 Detect phrases that introduce NEW ENGLISH words the learner hasn't encountered yet. This is the pedagogically serious version of the vocab-ordering check — if the learner sees an English word they've never seen before, they're confused regardless of whether the target language already introduced it.
 
@@ -247,7 +247,7 @@ const wordViolations = phrases.filter(p => {
 Report: count + 10 samples with the specific new English words.
 Action: Delete these phrases. Mild false positives (a verb conjugation the learner would intuit) can be kept on a case-by-case basis.
 
-#### Check 11: Vocab ordering — chunk-level (multi-word M-LEGO target text used before introduced)
+#### Check 12: Vocab ordering — chunk-level (multi-word M-LEGO target text used before introduced)
 
 Deborah discovered that single-word vocab checks miss an important class: **multi-word M-LEGO chunks** (fixed expressions like "ein bisschen", "kein Problem", "lo que", "llevas aprendiendo") that are taught AS A UNIT at a specific seed but appear wholesale in earlier phrases. The learner's confusion isn't at the word level — it's "I recognise the individual words but this combination means something I haven't learned."
 
@@ -301,6 +301,254 @@ Action:
 - **Category A (new English + early chunk)**: delete. These confuse the learner on both sides.
 - **Category B (all English known, just chunk reuse)**: keep unless the chunk is an idiomatic unit the learner really needs to be introduced to first (judgment call).
 
+#### Check 13: Capitalisation consistency
+
+Two sub-checks. Case-only duplicates are clear bugs; first-letter outliers are usually bugs but occasionally false positives (e.g., a phrase starting with a proper noun).
+
+**13a. Case-only duplicates** — two phrases or LEGOs with the same text but different case. Nearly always a data corruption bug.
+
+```javascript
+function groupByLower(items, field) {
+  const m = new Map();
+  for (const it of items) {
+    const key = (it[field] || '').toLowerCase().trim();
+    if (!key) continue;
+    if (!m.has(key)) m.set(key, []);
+    m.get(key).push(it);
+  }
+  return m;
+}
+
+function caseOnlyDupes(items, field) {
+  const out = [];
+  for (const [key, group] of groupByLower(items, field)) {
+    if (group.length < 2) continue;
+    const variants = new Set(group.map(g => g[field]));
+    if (variants.size > 1) {
+      out.push({ key, variants: [...variants], ids: group.map(g => g.id || `${g.seed_number}/${g.lego_index}`) });
+    }
+  }
+  return out;
+}
+
+const phraseKnownCaseDupes = caseOnlyDupes(phrases, 'known_text');
+const phraseTargetCaseDupes = caseOnlyDupes(phrases, 'target_text');
+```
+
+**13b. First-letter outliers** — determine the dominant first-letter case across phrases and flag the minority.
+
+```javascript
+function firstLetterStats(items, field) {
+  let upper = 0, lower = 0;
+  for (const it of items) {
+    const t = (it[field] || '').trim();
+    const first = [...t][0]; // handle multi-byte first char
+    if (!first) continue;
+    if (first === first.toUpperCase() && first !== first.toLowerCase()) upper++;
+    else if (first === first.toLowerCase() && first !== first.toUpperCase()) lower++;
+  }
+  return { upper, lower, dominant: upper >= lower ? 'upper' : 'lower' };
+}
+
+function firstLetterOutliers(items, field, dominant) {
+  return items.filter(it => {
+    const t = (it[field] || '').trim();
+    const first = [...t][0];
+    if (!first || first === first.toUpperCase() && first === first.toLowerCase()) return false;
+    const isUpper = first === first.toUpperCase() && first !== first.toLowerCase();
+    return (dominant === 'upper' && !isUpper) || (dominant === 'lower' && isUpper);
+  });
+}
+
+const knownStats = firstLetterStats(phrases, 'known_text');
+const targetStats = firstLetterStats(phrases, 'target_text');
+// Only flag outliers if dominance is strong (>80%)
+const knownOutliers = Math.max(knownStats.upper, knownStats.lower) / (knownStats.upper + knownStats.lower) > 0.8
+  ? firstLetterOutliers(phrases, 'known_text', knownStats.dominant) : [];
+const targetOutliers = Math.max(targetStats.upper, targetStats.lower) / (targetStats.upper + targetStats.lower) > 0.8
+  ? firstLetterOutliers(phrases, 'target_text', targetStats.dominant) : [];
+```
+
+Note: Skip outlier flagging for languages where initial-capital is grammatically required (e.g., German sentences starting with a noun) — or accept the noise and let the user judge. For `deu` target_text, initial capital is the norm only for sentence-start, so the outlier logic still works course-wide.
+
+Report:
+- Case-only duplicates: each with both variants and phrase IDs
+- First-letter outliers: count + 10 samples (suppress if dominance < 80%)
+
+Action: For case-only dupes, pick the dominant case and update the outlier. For outliers, bulk-update to match dominant convention (unless it's a proper noun case).
+
+#### Check 14: Missing question marks
+
+Direct questions must end with `?`. Spanish also requires opening `¿`.
+
+```javascript
+const QUESTION_STARTERS = {
+  eng: /^(what|where|when|why|who|which|whose|how|can|could|will|would|do|does|did|is|are|was|were|am|have|has|had|should|shall|may|might|must)\b/i,
+  spa: /^(qué|cómo|cuándo|dónde|por qué|quién|cuál|cuáles|cuánto|cuánta|cuántos|cuántas|puedes|podrías|puedo|hay)\b/i,
+  fra: /^(qu'|que|qui|où|quand|comment|pourquoi|quel|quelle|quels|quelles|est-ce|peux-tu|peut-on|peux|y a-t-il)\b/i,
+  ita: /^(che|cosa|come|dove|quando|perché|chi|quale|quali|quanto|quanti|quante|puoi|potresti)\b/i,
+  por: /^(o que|que|como|onde|quando|por que|quem|qual|quais|quanto|quantas|quantos|você|posso)\b/i,
+  deu: /^(was|wo|wann|warum|wer|welche|welches|welcher|wie|kannst|bist|ist|hast|hat|habt|könntest|würdest|darf)\b/i,
+  cym: /^(beth|ble|pryd|pam|pwy|pa|sut|oes|ydw|ydy|wyt|oeddwn)\b/i,
+};
+
+// Subordinate-clause patterns: question word + subject is a subordinate clause,
+// NOT a direct question. Direct questions have subject-verb inversion
+// ("what IS he doing?" vs subordinate "what HE is doing").
+const SUBORDINATE_STARTERS = {
+  eng: /^(what|where|when|why|who|which|whose|how)\s+(i|you|we|they|he|she|it|the|a|an|some|my|your|his|her|its|our|their|someone|somebody|anyone|anybody|everyone|everybody|no one|nobody|nothing|something|anything|everything|people|things)\b/i,
+  por: /^(o que|que|quando|onde|como|por que|quem)\s+(eu|tu|você|vocês|ele|ela|nós|eles|elas|o|a|os|as|um|uma|uns|umas|alguém|todos|ninguém|algo|tudo|nada|pessoas|gente)\b/i,
+  spa: /^(qué|cómo|cuándo|dónde|por qué|quién)\s+(yo|tú|usted|ustedes|él|ella|nosotros|vosotros|ellos|ellas|el|la|los|las|un|una|unos|unas|alguien|todos|nadie|algo|todo|nada|gente)\b/i,
+  ita: /^(che|cosa|come|dove|quando|perché|chi)\s+(io|tu|lei|lui|noi|voi|loro|il|la|i|le|l'|un|una|qualcuno|tutti|nessuno|qualcosa|tutto|niente|gente)\b/i,
+  fra: /^(qu'|que|qui|où|quand|comment|pourquoi)\s+(je|tu|il|elle|on|nous|vous|ils|elles|le|la|les|l'|un|une|des|quelqu'un|tout|personne|quelque chose|rien|gens)\b/i,
+  deu: /^(was|wo|wann|warum|wer|wie)\s+(ich|du|er|sie|es|wir|ihr|sie|der|die|das|den|dem|ein|eine|einen|jemand|niemand|alle|etwas|nichts|leute)\b/i,
+};
+
+const endsWithQmark = (t) => /[?？]\s*$/.test((t || '').trim());
+const startsSpanishQmark = (t) => /^\s*¿/.test(t || '');
+
+// Infinitive-after-wh patterns: "how to say", "what to do", "where to go"
+// are infinitive/gerund constructions, not questions.
+const INFINITIVE_STARTERS = {
+  eng: /^(what|where|when|why|who|how|whose|which)\s+to\s+\w/i,
+  por: /^(o que|que|como|onde|quando|por que|quem)\s+\w+r\b/i, // ends with infinitive -ar/-er/-ir
+};
+
+function questionNeedsMark(text, lang) {
+  if (!text) return false;
+  const rx = QUESTION_STARTERS[lang];
+  if (!rx) return false;
+  const trimmed = text.trim();
+  if (!rx.test(trimmed)) return false;
+  // Skip very short fragments — bare LEGO components like "why" / "how"
+  // aren't questions, they're vocabulary being introduced.
+  const wordCount = trimmed.split(/\s+/).length;
+  if (wordCount < 3) return false;
+  // Exclude subordinate-clause patterns (wh-word + subject = not a question)
+  const sub = SUBORDINATE_STARTERS[lang];
+  if (sub && sub.test(trimmed)) return false;
+  // Exclude infinitive constructions (wh-word + "to" + verb)
+  const inf = INFINITIVE_STARTERS[lang];
+  if (inf && inf.test(trimmed)) return false;
+  return !endsWithQmark(text);
+}
+
+// Require BOTH sides to look like questions to avoid false positives.
+// Question starters like "when", "que", "what" also appear in subordinate clauses:
+//   "when we learn, it changes everything" (eng subordinate)
+//   "que eu podia fazer" = "that I could do" (por subordinate)
+// Real direct questions have question-starter on BOTH sides.
+const missingQmark = phrases.filter(p => {
+  const knownIsQ = questionNeedsMark(p.known_text, course.known_lang);
+  const targetIsQ = questionNeedsMark(p.target_text, course.target_lang);
+  return knownIsQ && targetIsQ;
+});
+
+// Spanish-specific: missing opening ¿ (when phrase already has closing ?)
+const missingSpanishOpen = [];
+for (const p of phrases) {
+  const lang = course.known_lang === 'spa' ? 'known' : course.target_lang === 'spa' ? 'target' : null;
+  if (!lang) continue;
+  const text = p[`${lang}_text`];
+  if (endsWithQmark(text) && !startsSpanishQmark(text)) missingSpanishOpen.push(p);
+}
+```
+
+Note: Indirect questions ("I wonder what...", "tell me where...") do NOT start with a question starter and won't be flagged. That's correct — they don't need `?`.
+
+Note: The "both sides must look like questions" requirement is strict but necessary — on por_br_for_eng this cut false positives from 208 (mostly subordinate clauses) to a handful of real ones. If a finding seems to be missed, it's likely because one side is an indirect question — which is fine.
+
+Report: count by field (known vs target) + 10 samples + Spanish ¿ violations separately.
+Action: Bulk-append `?` (and prepend `¿` for Spanish). This is an audio-affecting change — null the known_audio_id / target_audio_id on modified phrases for regen.
+
+#### Check 15: Identical known_text and target_text
+
+Data corruption: target text is literally the same string as known text (after trim + lowercase). Legitimate only for a tiny cognate allowlist per language pair.
+
+```javascript
+// Cognate allowlist — single-word cognates that are legitimately identical.
+// Pronouns like "me" and articles like "a"/"o" are also included where
+// the written form happens to match between English and the target language,
+// even if the pronunciation differs.
+const COGNATES = {
+  'eng|spa': new Set(['idea','ideas','bar','total','hotel','email','emails','radio','internet','taxi','me','yoga','pizza']),
+  'eng|deu': new Set(['bar','email','hotel','internet','okay','ok','taxi']),
+  'eng|por': new Set(['total','hotel','emails','internet','taxi','radio','um','yoga','me']),
+  'eng|ita': new Set(['email','hotel','internet','okay','ok','taxi','radio','pizza','me']),
+  'eng|fra': new Set(['taxi','hotel','email','internet']),
+};
+
+function pairKey(a, b) {
+  const langs = [a, b].sort();
+  return langs.join('|');
+}
+
+function isCognate(text, knownLang, targetLang) {
+  const key = pairKey(knownLang, targetLang);
+  const allow = COGNATES[key];
+  if (!allow) return false;
+  const normalized = text.toLowerCase().trim().replace(/[.,!?¿¡]/g, '');
+  return allow.has(normalized);
+}
+
+function identicalPairs(items) {
+  return items.filter(it => {
+    const k = (it.known_text || '').toLowerCase().trim();
+    const t = (it.target_text || '').toLowerCase().trim();
+    if (!k || !t || k !== t) return false;
+    if (isCognate(k, course.known_lang, course.target_lang)) return false;
+    return true;
+  });
+}
+
+const identicalPhrases = identicalPairs(phrases);
+const identicalLegos = identicalPairs(legos);
+```
+
+Report: count + all matches (usually rare).
+Action: Flag seeds for rebuild if LEGO-level — the target_text is missing. For phrase-level, delete or fix based on context.
+
+#### Check 16: Underpopulated LEGOs
+
+LEGOs that are missing practice phrases. A healthy LEGO has at least 1 build phrase and typically ≥2 use phrases. Multi-word M-type LEGOs also need components.
+
+```javascript
+// Count phrases per LEGO by role
+const perLego = new Map();
+for (const p of phrases) {
+  const key = `${p.seed_number}/${p.lego_index}`;
+  if (!perLego.has(key)) perLego.set(key, { component: 0, build: 0, use: 0 });
+  perLego.get(key)[p.phrase_role]++;
+}
+
+const underpopulated = [];
+for (const l of legos) {
+  // Only new LEGOs need their own phrases. Reused LEGOs (is_new=false)
+  // rely on the phrases at their original introduction seed.
+  if (l.is_new === false) continue;
+  const key = `${l.seed_number}/${l.lego_index}`;
+  const counts = perLego.get(key) || { component: 0, build: 0, use: 0 };
+  const targetWords = (l.target_text || '').trim().split(/\s+/).filter(w => w.length > 0);
+  const likelyM = targetWords.length >= 2;
+  const issues = [];
+  if (counts.build === 0) issues.push('0 build phrases');
+  if (likelyM && counts.component === 0) issues.push('0 components (multi-word target, expected M-type)');
+  if (counts.use < 2) issues.push(`${counts.use} use phrases (< 2)`);
+  if (issues.length) {
+    underpopulated.push({
+      lego: `S${String(l.seed_number).padStart(4,'0')}L${String(l.lego_index).padStart(2,'0')}`,
+      known: l.known_text,
+      target: l.target_text,
+      counts,
+      issues
+    });
+  }
+}
+```
+
+Report: count grouped by severity — "empty" (0 build AND 0 use), "no builds", "few uses". Sample 10 of each.
+Action: Either generate more phrases via course builder, or accept the LEGO is intentionally sparse (rare — usually a builder bug).
+
 ### Step 4: Language spot-check with Haiku
 
 For EVERY seed in the course, pick 1 random phrase and ask Haiku to verify the languages are correct. This catches subtle issues regex misses (e.g., Portuguese words that look valid in English).
@@ -344,29 +592,73 @@ Format:
 {display_name}
 {lego_count} LEGOs, {phrase_count} phrases scanned
 
-PARENTHETICALS IN LEGO KNOWN_TEXT: {count}
-  {5 samples}
-  Action: Strip parentheticals from known_text
+[1] PARENTHETICALS IN LEGO KNOWN_TEXT: {count}
+    {5 samples}
+    Action: Strip parentheticals from known_text
 
-SLASHES IN LEGO KNOWN_TEXT: {count}
-  {5 samples}
-  Action: Resolve slashes (pick first option or check phrase usage)
+[2] SLASHES IN LEGO KNOWN_TEXT: {count}
+    {5 samples}
+    Action: Resolve slashes (pick first option or check phrase usage)
 
-WRONG LANGUAGE IN KNOWN_TEXT: {count} ({seed range})
-  {5 samples}
-  Action: Flag affected seeds for rebuild
+[3] WRONG LANGUAGE IN KNOWN_TEXT: {count} ({seed range})
+    {5 samples}
+    Action: Flag affected seeds for rebuild
 
-WRONG LANGUAGE IN TARGET_TEXT: {count}
-  {5 samples}
-  Action: Flag affected seeds for rebuild
+[4] WRONG LANGUAGE IN TARGET_TEXT: {count}
+    {5 samples}
+    Action: Flag affected seeds for rebuild
 
-MULTI-SENTENCE PHRASES: {count}
-  {all matches}
-  Action: Delete dialogue phrases
+[5] MULTI-SENTENCE PHRASES: {count}
+    {all matches}
+    Action: Delete dialogue phrases, keep tag questions / connectors
 
-LOWERCASE "I" IN ENGLISH: {count}
-  {5 samples}
-  Action: Bulk replace \bi\b with I
+[6] UNPRONOUNCEABLE PHRASES: {count}
+    {all matches}
+    Action: Delete
+
+[7] SPEECH-MARK WRAPPED: {count}
+    {5 samples}
+    Action: Strip wrapping quotes (also from course_audio.text)
+
+[8] TRAILING PERIODS: {count}
+    {5 samples}
+    Action: Strip trailing "."
+
+[9] LOWERCASE "I" IN ENGLISH: {count}
+    {5 samples}
+    Action: Bulk replace \bi\b with I
+
+[10] ZUT CONFLICTS: {count}
+     {each conflict with both targets}
+     Action: See memory/methodology-zut-resolution.md
+
+[11] VOCAB ORDERING (word-level, known side): {count}
+     {10 samples with the new English words}
+     Action: Delete violating phrases (case-by-case for mild cases)
+
+[12] VOCAB ORDERING (chunk-level, target): {total} ({catA} Cat A)
+     {top chunks + Cat A samples}
+     Action: Delete Cat A; Cat B is judgment
+
+[13a] CASE-ONLY DUPLICATES: {count}
+      {each dupe with variants}
+      Action: Pick dominant case, update outliers
+
+[13b] FIRST-LETTER CASE OUTLIERS: {count} (dominant: {upper/lower}, {X}%)
+      {10 samples}
+      Action: Bulk-update to dominant convention
+
+[14] MISSING QUESTION MARKS: {count} ({spanish_open} missing ¿)
+     {10 samples}
+     Action: Bulk-append "?" (and prepend "¿" for Spanish), null audio_ids for regen
+
+[15] IDENTICAL KNOWN/TARGET: {count} ({legos} LEGOs, {phrases} phrases)
+     {all matches}
+     Action: Flag seeds for rebuild (LEGO-level) or delete/fix (phrase-level)
+
+[16] UNDERPOPULATED LEGOs: {count} ({empty} empty, {noBuilds} no-builds, {fewUses} few-uses)
+     {10 samples of each}
+     Action: Generate more phrases or accept
 
 LANGUAGE SPOT-CHECK ({seed_count} seeds): {PASS/FAIL}
   {any flagged seeds}
@@ -382,12 +674,24 @@ After the scan, the user will decide what to fix. Here's how to handle each issu
 
 1. Strip parentheticals
 2. Resolve slashes
-3. Fix lowercase I
-4. **Re-scan for ZUT conflicts** (stripping parens/slashes can reveal hidden duplicates)
-5. Resolve ZUT conflicts
-6. Delete multi-sentence phrases
+3. Strip wrapping speech marks
+4. Strip trailing periods
+5. Fix lowercase I
+6. Fix capitalisation outliers (case-only dupes first, then outliers)
+7. Add missing question marks (and Spanish `¿`)
+8. Fix identical known/target (flag seeds for rebuild)
+9. **Re-scan for ZUT conflicts** (stripping parens/slashes can reveal hidden duplicates)
+10. Resolve ZUT conflicts
+11. Delete multi-sentence phrases
+12. Delete unpronounceable phrases
+13. Delete Cat A vocab ordering violations (word-level, then chunk-level)
+14. Backfill underpopulated LEGOs (or accept)
 
-This order matters — steps 1-2 can CREATE ZUT conflicts that step 4 detects.
+**Why this order matters:**
+- Strip-then-rescan: parens/slashes hide ZUT conflicts — strip before resolving.
+- Capitalisation before `?`: adding `?` to "Is this correct" is fine, but if the phrase is also case-inconsistent you fix both in one update.
+- Identical known/target before ZUT: seeds flagged for rebuild will be regenerated and may resolve other issues for free.
+- Underpopulated last: you may delete phrases at steps 11-13 that affect the count.
 
 ### Fixing parentheticals
 
@@ -471,6 +775,81 @@ See `memory/methodology-zut-resolution.md` for the full pattern catalogue. Summa
 - Does the seed still have at least one is_new LEGO? If not, set the seed to draft.
 - Did the expansion absorb another LEGO in the same seed? Set that one to is_new=false.
 - Does the expanded LEGO tile into the seed target_text?
+
+### Fixing capitalisation
+
+**Case-only duplicates (13a)**: always a clear bug. For each pair/group:
+- Count each case variant's occurrences across the full course (not just the flagged pair) to see which is dominant.
+- Update the outlier(s) to match dominant. E.g., if "I want" appears 120× and "i want" appears 3×, update the 3 lowercase ones.
+- Null `known_audio_id` / `target1_audio_id` on changed phrases — audio is case-insensitive to TTS but the `text_normalized` column may have a case mismatch.
+
+**First-letter outliers (13b)**: bulk update only when dominance is strong (>80%) and the outliers aren't proper nouns.
+```javascript
+for (const p of outliers) {
+  const text = p.known_text;
+  const fixed = dominant === 'upper'
+    ? text.charAt(0).toUpperCase() + text.slice(1)
+    : text.charAt(0).toLowerCase() + text.slice(1);
+  await supabase.from('course_practice_phrases')
+    .update({ known_text: fixed, known_audio_id: null }).eq('id', p.id);
+}
+```
+
+**Languages with initial-cap grammar (German nouns, sentence starts)**: if the target language is German, skip target-side outlier correction — German noun-initial capitals are grammatical, not style.
+
+### Fixing missing question marks
+
+Bulk-append `?` to phrases that match the question-starter regex but don't end with `?`. For Spanish, also prepend `¿`.
+
+```javascript
+for (const p of missingQmark) {
+  const updates = {};
+  if (questionNeedsMark(p.known_text, course.known_lang)) {
+    updates.known_text = p.known_text.trim() + '?';
+    updates.known_audio_id = null;
+  }
+  if (questionNeedsMark(p.target_text, course.target_lang)) {
+    let fixed = p.target_text.trim() + '?';
+    if (course.target_lang === 'spa' && !fixed.startsWith('¿')) fixed = '¿' + fixed;
+    updates.target_text = fixed;
+    updates.target1_audio_id = null;
+    updates.target2_audio_id = null;
+  }
+  await supabase.from('course_practice_phrases').update(updates).eq('id', p.id);
+}
+```
+
+**Audio regen required** — `?` changes TTS intonation. Null audio_ids and let Phase 8 regenerate.
+
+### Fixing identical known/target
+
+Almost always indicates LEGO-level data corruption — the target translation is missing and the builder duplicated the known field. Fix by:
+
+1. Flag the seed for rebuild (`flagged_at = now()`) so the course builder regenerates.
+2. Or, if it's an isolated phrase (not LEGO), check surrounding context and either fix in-place or delete.
+
+```javascript
+const seedsToFlag = [...new Set(identicalLegos.map(l => l.seed_number))];
+if (seedsToFlag.length) {
+  await supabase.from('course_seeds')
+    .update({ flagged_at: new Date().toISOString() })
+    .eq('course_code', COURSE_CODE).in('seed_number', seedsToFlag);
+}
+```
+
+**Don't auto-delete** — the issue is usually missing translation, not a wrong phrase. Rebuild is safer.
+
+### Fixing underpopulated LEGOs
+
+These are generation gaps, not corruptions — the builder missed components/builds/uses. Options:
+
+1. **Run the course builder** on the specific LEGO via checkpoint-qa skill to add more phrases.
+2. **Accept as intentional** — rare, but some LEGOs are sparse on purpose (e.g., highly specific vocab that doesn't recombine).
+
+Summary report by severity:
+- **Empty (0 build + 0 use)**: must rebuild. These LEGOs provide no practice at all.
+- **No builds (0 build, some uses)**: should rebuild — learner jumps to sentences without seeing the LEGO in isolation.
+- **Few uses (<2 use)**: nice to have more, but not blocking if the LEGO is simple.
 
 ## IMPORTANT: Clean Up Stale Audio After Text Changes
 
