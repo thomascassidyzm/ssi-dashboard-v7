@@ -4493,6 +4493,15 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     const concurrency = Math.max(1, Math.min(10, body.concurrency || 5))
 
     const ctx = await getCourseContext(courseCode)
+
+    // Optional per-run voice overrides. Useful when you want pod audio to use
+    // a different provider (e.g. xAI) than the course's canonical voice_config.
+    // Shape: { voice_id: string, provider: 'xai'|'azure'|'elevenlabs', gender?: string }
+    if (body.known_voice) {
+      ctx.knownVoice = { ...ctx.knownVoice, ...body.known_voice }
+      logger.info(`[Pods] Known voice override: ${JSON.stringify(ctx.knownVoice)}`)
+    }
+
     const pods = await loadPodsForPlan(courseCode, podIds)
 
     // Build a flat work queue: each item is one audio clip to generate.
