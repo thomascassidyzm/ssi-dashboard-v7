@@ -202,6 +202,20 @@ const routes = [
     props: true
   },
   {
+    path: '/courses/:courseCode/pods',
+    name: 'Pods',
+    component: () => import('../views/PodsView.vue'),
+    props: true,
+    meta: { title: 'Listening Pods' }
+  },
+  {
+    path: '/courses/:courseCode/pods/:slug',
+    name: 'PodDetail',
+    component: () => import('../views/PodDetailView.vue'),
+    props: true,
+    meta: { title: 'Pod Detail' }
+  },
+  {
     // DEPRECATED: Redirect to Production Suite script viewer
     path: '/courses/:courseCode/script',
     name: 'CourseScriptView',

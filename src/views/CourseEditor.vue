@@ -31,6 +31,15 @@
           </div>
           <div class="flex items-center gap-3">
             <router-link
+              :to="`/courses/${courseCode}/pods`"
+              class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6v12m-3.536-2.464a5 5 0 010-7.072M4 12h.01M20 12h.01" />
+              </svg>
+              Listening Pods
+            </router-link>
+            <router-link
               :to="`/production/${courseCode}`"
               class="bg-amber-600 hover:bg-amber-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
             >
