@@ -32,6 +32,7 @@ const { bumpCourseVersion } = require('../shared/course-version.cjs')
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
+const { toBcp47 } = require('../voice-discovery-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
 const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
@@ -1772,11 +1773,20 @@ app.post('/generate/:courseCode', async (req, res) => {
           voiceId: voiceName,
           speed
         }))
+      } else if (provider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceName,
+          language: toBcp47(item.language),
+        }))
       } else {
         throw new Error(`Unknown TTS provider: ${provider}`)
       }
 
       // Master audio: normalize loudness and extract duration
+      // Note: xAI does not expose an API-level speed parameter, so xAI audio
+      // is always generated at natural speed. Downstream cadence playback speed
+      // adjustments are applied in the player, not at TTS time.
       const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
 
       // Generate UUID for S3 key (UPPERCASE to match existing S3 convention)
@@ -2151,6 +2161,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
+        }))
+      } else if (voiceProvider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceId,
+          language: toBcp47(language),
         }))
       } else {
         throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -3307,6 +3323,12 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         voiceId: voiceId,
         speed
       }))
+    } else if (voiceProvider === 'xai') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+        apiKey: process.env.XAI_API_KEY,
+        voiceId: voiceId,
+        language: toBcp47(lang),
+      }))
     } else {
       throw new Error(`Unknown TTS provider: ${voiceProvider}`)
     }
@@ -3676,6 +3698,12 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceName, speed
+        }))
+      } else if (provider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceName,
+          language: toBcp47(item.language),
         }))
       } else {
         throw new Error(`Unknown TTS provider: ${provider}`)

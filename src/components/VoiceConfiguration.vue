@@ -103,7 +103,7 @@
           <div class="provider-toggle">
             <button
               :class="['provider-btn', { active: selectedProvider === 'azure' }]"
-              @click="selectedProvider = 'azure'; discoverVoices(role.id)"
+              @click="selectedProvider = 'azure'; discoverVoices(role.id, 'azure')"
             >
               Azure
             </button>
@@ -112,6 +112,12 @@
               @click="selectedProvider = 'elevenlabs'"
             >
               ElevenLabs
+            </button>
+            <button
+              :class="['provider-btn', { active: selectedProvider === 'xai' }]"
+              @click="selectedProvider = 'xai'; discoverVoices(role.id, 'xai')"
+            >
+              xAI
             </button>
           </div>
 
@@ -193,6 +199,64 @@
               class="load-voices-btn"
             >
               Load Available Voices
+            </button>
+          </div>
+
+          <!-- xAI Voice List -->
+          <div v-else-if="selectedProvider === 'xai'" class="xai-voices">
+            <div v-if="discovering" class="discovering">
+              <div class="btn-spinner"></div>
+              <span>Loading voices...</span>
+            </div>
+
+            <div v-else-if="discoveredVoices.length > 0" class="voice-list">
+              <p class="xai-note">
+                xAI's 5 voices are multilingual — the same voice works across
+                20+ languages; the course's target language is passed per-call.
+              </p>
+
+              <!-- Gender Filter -->
+              <div class="voice-filter">
+                <button
+                  v-for="gender in ['all', 'Female', 'Male', 'Neutral']"
+                  :key="gender"
+                  :class="['filter-btn', { active: genderFilter === gender }]"
+                  @click="genderFilter = gender"
+                >
+                  {{ gender === 'all' ? 'All' : gender }}
+                </button>
+              </div>
+
+              <!-- Voice Options -->
+              <div class="voice-options">
+                <button
+                  v-for="voice in filteredVoices"
+                  :key="voice.id"
+                  :class="['voice-option', { previewing: previewingVoiceId === voice.id }]"
+                  @click="selectVoiceForRole(role.id, voice)"
+                >
+                  <div class="voice-info">
+                    <span class="voice-name">{{ voice.displayName || voice.name }}</span>
+                    <span :class="['voice-gender', (voice.gender || '').toLowerCase()]">{{ voice.gender }}</span>
+                    <span class="voice-locale">{{ voice.locale }}</span>
+                  </div>
+                  <button
+                    @click.stop="previewVoice(voice, role.id)"
+                    :disabled="previewingVoiceId === voice.id"
+                    class="preview-btn"
+                  >
+                    {{ previewingVoiceId === voice.id ? '...' : 'Preview' }}
+                  </button>
+                </button>
+              </div>
+            </div>
+
+            <button
+              v-else
+              @click="discoverVoices(role.id, 'xai')"
+              class="load-voices-btn"
+            >
+              Load xAI voices
             </button>
           </div>
 
@@ -742,13 +806,14 @@ async function saveConfig() {
   }
 }
 
-async function discoverVoices(roleId) {
+async function discoverVoices(roleId, provider = 'azure') {
   discovering.value = true
   discoveredVoices.value = []
 
   try {
     const langCode = getLanguageForRole(roleId)
-    const response = await fetch(`${props.apiBaseUrl}/api/voices/discover/${langCode}`, {
+    const url = `${props.apiBaseUrl}/api/voices/discover/${langCode}?provider=${provider}`
+    const response = await fetch(url, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
 
@@ -769,13 +834,19 @@ async function previewVoice(voice, roleId) {
 
   try {
     const text = getCurrentPhrase(roleId)
+    // Use the voice's declared provider (azure / elevenlabs / xai). Fall back to
+    // the currently-selected provider button if the voice object doesn't carry one.
+    const provider = voice.provider || selectedProvider.value || 'azure'
+    const body = { voiceId: voice.id, text, speed: 1.0, provider }
+    if (provider === 'xai') body.language = voice.locale  // BCP-47 for xAI
+
     const response = await fetch(`${props.apiBaseUrl}/api/voices/preview`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
-      body: JSON.stringify({ voiceId: voice.id, text, speed: 1.0, provider: 'azure' })
+      body: JSON.stringify(body)
     })
 
     if (!response.ok) throw new Error('Failed to preview')
@@ -799,18 +870,24 @@ async function testVoice(roleId) {
 
   try {
     const text = getCurrentPhrase(roleId)
+    const provider = voice.provider || 'azure'
+    const body = {
+      voiceId: voice.voiceId,
+      text,
+      speed: voice.settings?.speed || 1.0,
+      provider
+    }
+    // xAI needs a BCP-47 language code — use the course's target language
+    if (provider === 'xai') {
+      body.language = getLanguageForRole(roleId)
+    }
     const response = await fetch(`${props.apiBaseUrl}/api/voices/preview`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
-      body: JSON.stringify({
-        voiceId: voice.voiceId,
-        text,
-        speed: voice.settings?.speed || 1.0,
-        provider: voice.provider || 'azure'
-      })
+      body: JSON.stringify(body)
     })
 
     if (!response.ok) throw new Error('Failed to test')
@@ -1497,6 +1574,24 @@ onMounted(() => {
 
 .load-voices-btn:hover {
   background: #475569;
+}
+
+/* xAI voice list — similar to Azure but voices are multilingual */
+.xai-voices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.xai-note {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  background: #1e293b;
+  border-left: 3px solid #8b5cf6;
+  border-radius: 4px;
+  line-height: 1.45;
 }
 
 /* ElevenLabs Entry */

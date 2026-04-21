@@ -18,6 +18,7 @@ const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
 const audioProcessor = require('./audio-processor.cjs')
+const ttsService = require('./tts-service.cjs')
 const voiceConfigService = require('./voice-config-service.cjs')
 const voiceDiscoveryService = require('./voice-discovery-service.cjs')
 const publishManifestService = require('./publish-manifest-service.cjs')
@@ -1291,18 +1292,28 @@ app.patch('/api/courses/:courseCode/voice-config/:role', async (req, res) => {
 // VOICE DISCOVERY & PREVIEW ROUTES (for VoiceConfiguration component)
 // =============================================================================
 
-// GET /api/voices/discover/:language - Discover available Azure voices for a language
+// GET /api/voices/discover/:language?provider=azure|xai - Discover voices for a language
+// Defaults to azure if no provider specified (backwards-compatible).
+// ElevenLabs voices are entered manually in the UI (no discovery endpoint).
 app.get('/api/voices/discover/:language', async (req, res) => {
   const { language } = req.params
+  const provider = (req.query.provider || 'azure').toLowerCase()
   try {
-    logger.info(`[VoiceDiscovery] Discovering voices for language: ${language}`)
+    logger.info(`[VoiceDiscovery] Discovering ${provider} voices for language: ${language}`)
 
-    const voices = await voiceDiscoveryService.discoverAzureVoices(language)
+    let voices
+    if (provider === 'azure') {
+      voices = await voiceDiscoveryService.discoverAzureVoices(language)
+    } else if (provider === 'xai') {
+      voices = await voiceDiscoveryService.discoverXaiVoices(language)
+    } else {
+      return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` })
+    }
 
-    logger.info(`[VoiceDiscovery] Found ${voices.length} voices for ${language}`)
-    res.json({ success: true, voices })
+    logger.info(`[VoiceDiscovery] Found ${voices.length} ${provider} voices for ${language}`)
+    res.json({ success: true, provider, voices })
   } catch (error) {
-    logger.error(`[VoiceDiscovery] Error discovering voices for ${language}:`, error)
+    logger.error(`[VoiceDiscovery] Error discovering ${provider} voices for ${language}:`, error)
     res.status(500).json({ success: false, error: error.message })
   }
 })
@@ -1339,86 +1350,64 @@ app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
 })
 
 // POST /api/voices/preview - Generate a voice preview audio sample
+// Body: { voiceId, text, speed?, provider?, language? }
+// provider: 'azure' (default) | 'elevenlabs' | 'xai'
+// language: BCP-47 code for xAI (e.g. 'es', 'pt-BR'). Derived from voiceId for Azure.
 app.post('/api/voices/preview', async (req, res) => {
-  const { voiceId, text, speed, provider } = req.body
+  const { voiceId, text, speed, provider = 'azure', language } = req.body
 
-  // Validation
-  if (!voiceId) {
-    return res.status(400).json({ success: false, error: 'voiceId is required' })
-  }
-  if (!text) {
-    return res.status(400).json({ success: false, error: 'text is required' })
-  }
-  if (text.length > 1000) {
-    return res.status(400).json({ success: false, error: 'Text too long (max 1000 characters for preview)' })
-  }
+  if (!voiceId) return res.status(400).json({ success: false, error: 'voiceId is required' })
+  if (!text) return res.status(400).json({ success: false, error: 'text is required' })
+  if (text.length > 1000) return res.status(400).json({ success: false, error: 'Text too long (max 1000 characters for preview)' })
 
   try {
-    const azureKey = process.env.AZURE_SPEECH_KEY
-    const azureRegion = process.env.AZURE_SPEECH_REGION || 'westeurope'
+    logger.info(`[VoicePreview] provider=${provider} voice=${voiceId} textLen=${text.length}`)
 
-    if (!azureKey) {
-      return res.status(500).json({
-        success: false,
-        error: 'Azure Speech not configured (AZURE_SPEECH_KEY not set)'
-      })
-    }
+    let audioBuffer
 
-    logger.info(`[VoicePreview] Generating preview: ${voiceId}, text length: ${text.length}`)
-
-    // Extract locale from voiceId (e.g., 'es-ES' from 'es-ES-ElviraNeural')
-    const locale = voiceId.split('-').slice(0, 2).join('-')
-
-    // Build SSML with optional speed adjustment
-    const rate = speed && speed !== 1.0 ? speed : null
-    let ssml = `<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='${locale}'>`
-    ssml += `<voice name='${voiceId}'>`
-    if (rate) {
-      ssml += `<prosody rate='${rate}'>`
-    }
-    ssml += escapeXml(text)
-    if (rate) {
-      ssml += `</prosody>`
-    }
-    ssml += `</voice></speak>`
-
-    // Call Azure TTS API
-    const response = await fetch(
-      `https://${azureRegion}.tts.speech.microsoft.com/cognitiveservices/v1`,
-      {
-        method: 'POST',
-        headers: {
-          'Ocp-Apim-Subscription-Key': azureKey,
-          'Content-Type': 'application/ssml+xml',
-          'X-Microsoft-OutputFormat': 'audio-24khz-96kbitrate-mono-mp3',
-          'User-Agent': 'SSi-Dashboard-Voice-Preview'
-        },
-        body: ssml
+    if (provider === 'azure') {
+      const azureKey = process.env.AZURE_SPEECH_KEY
+      const azureRegion = process.env.AZURE_SPEECH_REGION || 'westeurope'
+      if (!azureKey) {
+        return res.status(500).json({ success: false, error: 'Azure Speech not configured (AZURE_SPEECH_KEY not set)' })
       }
-    )
-
-    if (!response.ok) {
-      const errorText = await response.text()
-      logger.error(`[VoicePreview] Azure TTS error: ${response.status} ${errorText}`)
-      return res.status(response.status).json({
-        success: false,
-        error: `Azure TTS error: ${response.status}`,
-        message: errorText
+      const result = await ttsService.generateWithRetry(text, 'azure', {
+        subscriptionKey: azureKey,
+        region: azureRegion,
+        voiceName: voiceId,
+        speed: speed || 1.0,
       })
+      audioBuffer = result.audioBuffer
+    } else if (provider === 'elevenlabs') {
+      const apiKey = process.env.ELEVENLABS_API_KEY
+      if (!apiKey) {
+        return res.status(500).json({ success: false, error: 'ElevenLabs not configured (ELEVENLABS_API_KEY not set)' })
+      }
+      const result = await ttsService.generateWithRetry(text, 'elevenlabs', {
+        apiKey, voiceId, speed: speed || 1.0
+      })
+      audioBuffer = result.audioBuffer
+    } else if (provider === 'xai') {
+      const apiKey = process.env.XAI_API_KEY
+      if (!apiKey) {
+        return res.status(500).json({ success: false, error: 'xAI not configured (XAI_API_KEY not set)' })
+      }
+      const result = await ttsService.generateWithRetry(text, 'xai', {
+        apiKey,
+        voiceId,
+        language: language || 'auto',
+      })
+      audioBuffer = result.audioBuffer
+    } else {
+      return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` })
     }
 
     // Convert audio to base64 data URI for frontend playback
-    const audioBuffer = await response.arrayBuffer()
     const base64Audio = Buffer.from(audioBuffer).toString('base64')
     const dataUri = `data:audio/mpeg;base64,${base64Audio}`
 
-    logger.info(`[VoicePreview] Generated ${audioBuffer.byteLength} bytes of audio`)
-
-    res.json({
-      success: true,
-      audio: dataUri,
-      byteLength: audioBuffer.byteLength
-    })
+    logger.info(`[VoicePreview] Generated ${audioBuffer.length} bytes of audio`)
+    res.json({ success: true, audio: dataUri, byteLength: audioBuffer.length })
   } catch (error) {
     logger.error('[VoicePreview] Error generating preview:', error)
     res.status(500).json({ success: false, error: error.message })
