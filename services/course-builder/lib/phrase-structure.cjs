@@ -4,7 +4,7 @@
  */
 
 const { normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
-const { getTargetLang, getCharsPerSyllable, isParticle } = require('./language-config.cjs');
+const { getTargetLang, getCharsPerSyllable, isParticle, isChinese } = require('./language-config.cjs');
 
 // Phrase role prefixes for deterministic IDs
 const ROLE_PREFIX = { component: 'C', build: 'B', use: 'U' };
@@ -129,9 +129,17 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const legoTarget = (lego.target || '').trim();
   const legoTargetNorm = normalizeForContainment(legoTarget);
 
-  // Filter out component phrases — real BUILD/USE phrases must contain all LEGO target words (word-based, handles word-order differences)
-  const build = buildRaw.filter(p => checkWordContainment(legoTarget, p.target || ''));
-  const use = useRaw.filter(p => checkWordContainment(legoTarget, p.target || ''));
+  // Filter out component phrases — for character-based languages (Thai, Chinese, Japanese, Korean)
+  // use substring containment; for space-delimited languages use word-based containment.
+  const charBased = isChinese(courseCode);
+  const containsLego = (phraseTarget) => {
+    if (charBased) {
+      return normalizeForContainment(phraseTarget).includes(normalizeForContainment(legoTarget));
+    }
+    return checkWordContainment(legoTarget, phraseTarget);
+  };
+  const build = buildRaw.filter(p => containsLego(p.target || ''));
+  const use = useRaw.filter(p => containsLego(p.target || ''));
   const buildComponents = buildRaw.length - build.length;
   const useComponents = useRaw.length - use.length;
   const componentCount = buildComponents + useComponents;
