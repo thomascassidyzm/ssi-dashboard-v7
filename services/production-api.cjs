@@ -3278,6 +3278,84 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
   }
 })
 
+// =============================================================================
+// LISTENING PODS (Layer 2)
+// =============================================================================
+
+// GET /api/pods/:courseCode — list pods for a course with coverage summary
+app.get('/api/pods/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const supabase = supabaseClient.getClient()
+
+    const { data: pods, error: podsErr } = await supabase
+      .from('listening_pods')
+      .select('id, course_code, pod_type, slug, title, scene, difficulty, speakers, metadata, source_file, updated_at')
+      .eq('course_code', courseCode)
+      .order('pod_type').order('slug')
+
+    if (podsErr) throw podsErr
+
+    const results = []
+    for (const pod of pods || []) {
+      const { count: totalSentences } = await supabase
+        .from('listening_pod_sentences')
+        .select('*', { count: 'exact', head: true })
+        .eq('pod_id', pod.id)
+      const { count: targetAudio } = await supabase
+        .from('listening_pod_sentences')
+        .select('*', { count: 'exact', head: true })
+        .eq('pod_id', pod.id)
+        .not('target_audio_id', 'is', null)
+      const { count: knownAudio } = await supabase
+        .from('listening_pod_sentences')
+        .select('*', { count: 'exact', head: true })
+        .eq('pod_id', pod.id)
+        .not('known_audio_id', 'is', null)
+
+      results.push({
+        ...pod,
+        sentence_count: totalSentences || 0,
+        audio_coverage: {
+          target: targetAudio || 0,
+          known: knownAudio || 0,
+          total_sentences: totalSentences || 0,
+        },
+      })
+    }
+
+    res.json({ course_code: courseCode, pods: results })
+  } catch (err) {
+    logger.error(`[Pods list] ${err.message}`)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// GET /api/pods/:courseCode/:slug — pod detail with all sentences
+app.get('/api/pods/:courseCode/:slug', async (req, res) => {
+  try {
+    const { courseCode, slug } = req.params
+    const supabase = supabaseClient.getClient()
+    const podId = `${courseCode}:${slug}`
+
+    const { data: pod, error: podErr } = await supabase
+      .from('listening_pods').select('*').eq('id', podId).single()
+    if (podErr || !pod) return res.status(404).json({ error: `Pod not found: ${podId}` })
+
+    const { data: sentences, error: sErr } = await supabase
+      .from('listening_pod_sentences')
+      .select('id, scene_number, sentence_number, global_order, beat_label, speaker, target_text, known_text, target_audio_id, known_audio_id')
+      .eq('pod_id', podId)
+      .order('global_order')
+    if (sErr) throw sErr
+
+    res.json({ pod, sentences: sentences || [] })
+  } catch (err) {
+    logger.error(`[Pod detail] ${err.message}`)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
 app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
