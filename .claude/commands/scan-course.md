@@ -236,16 +236,77 @@ for (let s = 1; s <= maxSeed; s++) {
   cumKnown.set(s, new Set(running));
 }
 
-// Violations: phrases whose known_text uses English words not yet introduced
-const wordViolations = phrases.filter(p => {
-  const words = tokenize(p.known_text);
-  const known = cumKnown.get(p.seed_number);
-  return words.some(w => !known.has(w));
-});
+// Build the same cumulative set for the target language side.
+const targetAtSeed = new Map();
+for (const l of legos) {
+  if (!targetAtSeed.has(l.seed_number)) targetAtSeed.set(l.seed_number, new Set());
+  for (const w of tokenize(l.target_text)) targetAtSeed.get(l.seed_number).add(w);
+}
+for (const s of seeds) {
+  if (!targetAtSeed.has(s.seed_number)) targetAtSeed.set(s.seed_number, new Set());
+  for (const w of tokenize(s.target_text)) targetAtSeed.get(s.seed_number).add(w);
+}
+for (const p of phrases) {
+  if (p.phrase_role === 'use') continue;
+  if (!targetAtSeed.has(p.seed_number)) targetAtSeed.set(p.seed_number, new Set());
+  for (const w of tokenize(p.target_text)) targetAtSeed.get(p.seed_number).add(w);
+}
+let runTarget = new Set();
+const cumTarget = new Map();
+for (let s = 1; s <= maxSeed; s++) {
+  if (targetAtSeed.has(s)) for (const w of targetAtSeed.get(s)) runTarget.add(w);
+  cumTarget.set(s, new Set(runTarget));
+}
+
+// Classify violations by whether the TARGET side is also new:
+//   Cat A: both sides introduce new vocab → real violation, DELETE.
+//   Cat B: only the English label is new, every target word already taught →
+//          WORTH CHECKING, not automatically safe. Cat B is safe ONLY when
+//          the new English word is a clear bridge from something taught —
+//          contraction ("he'd" from "he would"), gerund ("practising" from
+//          "practice"), past tense ("were" from "are/is"), plural. If the
+//          new English word is a fresh lexical item ("glad", "really",
+//          "afternoon") with no clear bridge, the learner sees an unfamiliar
+//          prompt and has to guess what to say — Kai's criterion: "is it
+//          possible for the learner to know what to say?" Safe answer
+//          requires a bridge, not just a known target.
+//   Cat C: mixed (some new target words but fewer than new known words).
+//          Worth a manual look.
+const wordViolationsCatA = [];
+const wordViolationsCatB = [];
+const wordViolationsCatC = [];
+for (const p of phrases) {
+  if (p.phrase_role !== 'use') continue;
+  const knownWords = tokenize(p.known_text);
+  const targetWords = tokenize(p.target_text);
+  const known = cumKnown.get(p.seed_number) || new Set();
+  const target = cumTarget.get(p.seed_number) || new Set();
+  const newK = knownWords.filter(w => !known.has(w));
+  if (!newK.length) continue;
+  const newT = targetWords.filter(w => !target.has(w));
+  const row = { id: p.id, seed: p.seed_number, known: p.known_text, target: p.target_text, newK, newT };
+  if (newT.length === 0) wordViolationsCatB.push(row);
+  else if (newT.length >= newK.length) wordViolationsCatA.push(row);
+  else wordViolationsCatC.push(row);
+}
 ```
 
-Report: count + 10 samples with the specific new English words.
-Action: Delete these phrases. Mild false positives (a verb conjugation the learner would intuit) can be kept on a case-by-case basis.
+**Why the target-side filter matters.** Raw Check 11 fires on any phrase whose English prompt uses a word not yet introduced. In practice most of those are Cat B — the English prompt is a synonym/morph variant ("were" vs "are", "he'd" contraction, "practising" gerund of "practice") while the target uses only known words. The learner produces the correct target regardless. On por_br_for_eng the filter cut 140 raw to 1 Cat A.
+
+**Cat B is "worth verifying", not "automatically safe".** Two ways a Cat B can still be a real violation:
+
+1. **The new English word isn't a clear bridge.** Cat B is safe *only* when the new English word is derivable from something taught: contraction ("he'd"), gerund ("practising"), past-tense ("were"), plural, or an obvious synonym. A fresh lexical item like "glad", "really", "afternoon" that happens to map to words the learner knows in the target is still a guess for the learner unless the bridge is explicit. Kai's criterion: "is it possible for the learner to know what to say?" Bridge required, not just target familiarity.
+
+2. **New sense of an already-taught target word.** The target word has been seen before but in a different meaning — e.g. Portuguese "fizer" taught as "ask" (in "fazer perguntas") and later used to mean "do/make". The word is familiar, the *sense* isn't. Mechanical Check 11 can't detect sense changes; the Cat B flag just confirms the word-form was seen. Step 6b (category LLM pre-check) is where new-sense violations should be caught — it's exactly a translation_mismatch finding. If you're running Check 11 standalone (without Step 6b), flag Cat B items for a semantic look.
+
+Report: total + Cat A + Cat C + Cat B. Show all Cat A with new English AND new target words. Sample Cat B with both the new English word and its mapping in target — enough context for a bridge judgement.
+
+Action:
+- **Cat A**: delete.
+- **Cat C**: review each.
+- **Cat B**: spot-check for the two failure modes above. If running Step 6b later in the pipeline, safe to defer — the category LLM will catch new-sense cases as translation_mismatch.
+
+**Known limitation**: the tokenizer does not stem. `perguntas` (plural) and `pergunta` (singular) count as different words. If a Cat A is just a singular/plural mismatch within the same seed's own vocabulary, it's a false positive — check the seed's target_text before acting.
 
 #### Check 12: Vocab ordering — chunk-level (multi-word M-LEGO target text used before introduced)
 
