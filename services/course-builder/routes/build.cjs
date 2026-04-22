@@ -644,6 +644,64 @@ module.exports = function (ctx) {
     }
   });
 
+  // POST /build/learner-simulation/:courseCode
+  // Spawn a single Opus agent that reads the course as a total beginner
+  // and produces a final-final-pass report (no mutations). Runs after all
+  // mechanical scans and specific-category LLM checks.
+  //   query: ?max_seed=N   (default 150)
+  //          ?terminal=iTerm2 | Terminal | headless   (default iTerm2)
+  router.post('/build/learner-simulation/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const terminal = req.query.terminal || 'iTerm2';
+      const maxSeed = parseInt(req.query.max_seed) || 150;
+
+      const briefParams = new URLSearchParams({ max_seed: String(maxSeed) });
+      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/learner-simulation?${briefParams}`);
+
+      const tmpFile = `/tmp/learner-simulation_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+
+      let jobId;
+      try {
+        const { data: jobData } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode, pass: 'learner-simulation', status: 'running',
+            current_seed: 0, seeds_completed: 0, total_seeds: maxSeed,
+            started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard', terminal: effectiveTerminal,
+            agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'learner-simulation'
+          })
+          .select('id').single();
+        jobId = jobData?.id;
+      } catch (e) {
+        console.warn('[LearnerSim] build_jobs insert failed:', e.message);
+      }
+
+      // Opus agent — single thread, reads course sequentially, produces report.
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      spawnInTerminal(ctx, claudeCmd, 'Learner Simulation', courseCode, effectiveTerminal);
+
+      try {
+        await ctx.supabase.from('orchestrator_messages').insert({
+          course_code: courseCode,
+          direction: 'agent_to_human',
+          message: `Learner simulation spawned — reading seeds 1-${maxSeed} as a total beginner`,
+          status: 'pending',
+          metadata: { action: 'learner_simulation_spawned' }
+        });
+      } catch (e) { /* non-critical */ }
+
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Learner simulation spawned (seeds 1-${maxSeed})` });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // POST /build/component-backfill/:courseCode — Spawn Opus orchestrator for M-LEGO component backfill
   router.post('/build/component-backfill/:courseCode', async (req, res) => {
     try {

@@ -45,6 +45,9 @@ const generateBackfillPhrasesBrief = require('./backfill-phrases.cjs');
 // Component backfill: M-LEGO component decomposition (Haiku agent)
 const { generateComponentBackfillBrief } = require('./component-backfill.cjs');
 
+// Stage 5: Learner simulation — final-final pass, report only
+const generateLearnerSimulationBrief = require('./learner-simulation.cjs');
+
 // Emit a chat message when an agent fetches a brief — covers the "silent startup" gap
 const supabaseClient = require('../supabase-client.cjs');
 const { emitProgress } = require('../shared/emit-progress.cjs');
@@ -60,6 +63,7 @@ const BRIEF_LABELS = {
   'redo': 'Redo agent',
   'backfill-phrases': 'Phrase backfill',
   'component-backfill': 'Component backfill',
+  'learner-simulation': 'Learner simulation',
 };
 
 // Helper to serve brief as markdown
@@ -96,6 +100,9 @@ router.get('/:courseCode/final-pass-reviewer', (req, res) => serveBrief(res, gen
 
 // Redo
 router.get('/:courseCode/redo', (req, res) => serveBrief(res, generateRedoBrief, req.params.courseCode, req.query, 'redo'));
+
+// Stage 5 (final-final): learner simulation
+router.get('/:courseCode/learner-simulation', (req, res) => serveBrief(res, generateLearnerSimulationBrief, req.params.courseCode, req.query, 'learner-simulation'));
 
 // Phrase backfill
 router.get('/:courseCode/backfill-phrases', (req, res) => serveBrief(res, generateBackfillPhrasesBrief, req.params.courseCode, req.query, 'backfill-phrases'));

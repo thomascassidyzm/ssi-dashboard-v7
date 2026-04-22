@@ -1003,6 +1003,56 @@ After one full pass (6a → 6b → 6c → 6d → 6e), re-run the scan. If new is
 
 The signal for "ready for Deborah": 0 under-threshold, 0 flagged, final-pass complete, gender-prep complete, audio gen complete, scan-course report clean on mechanical checks.
 
+## Step 7: Learner simulation — the final-final pass
+
+After Steps 1-6 (mechanical + category LLM + pipeline) the course is *structurally* sound. Step 7 asks a different question: **does the course feel like a trustworthy teacher to an actual beginner?** A single Opus agent roleplays a complete beginner in the target language, works through seeds 1-150 in order, and rates every practice phrase against what they've been explicitly taught so far.
+
+This is a **report-only** pass. No deletes, no fixes. Kai reads the report and decides which findings (if any) to act on.
+
+### What the simulation catches that Steps 1-6 miss
+
+- **Cumulative texture**: five defensible "borderline" phrases in three consecutive seeds *feels* confusing to a real learner even if each one is individually fine. Mechanical checks miss density; the simulation tracks it.
+- **Learner back-pressure**: would the learner's reasonable guess, said to a native speaker, be *understood correctly*? A phrase can be perfectly grammatical and still teach a pattern that misleads the learner about how to say what they actually mean.
+- **Order-of-exposure drift**: subtle cases where a word has been "introduced" via an M-LEGO component but never practised in isolation, so the learner technically knows it but doesn't feel they do.
+- **Pattern inconsistency**: the course establishes an implicit rule (verb goes at the end in subclauses, say) in early seeds and then contradicts it later without flagging the shift.
+
+### Endpoint
+
+`POST http://localhost:3470/api/build/learner-simulation/{courseCode}?max_seed=150`
+
+Spawns a single Opus agent (one iTerm2 window) that fetches seed/LEGO/phrase data via the existing API as it goes. The agent:
+
+1. Sets itself up as a total beginner (zero target-language knowledge).
+2. Walks seeds 1-150. At each seed: (a) adds newly-introduced LEGOs to its "vocab known" state, (b) attempts every practice phrase using only that state, (c) rates each attempt on a 5-point rubric (OK / surprise / borderline / problematic / misleading).
+3. Tracks nervousness clusters (3+ ⚠️ or worse in 2-3 seeds).
+4. Posts a final report to the orchestrator chat and stdout.
+
+### Rubric (summary)
+
+| Level | When |
+|---|---|
+| ✓ OK | Guess matches or differs only in taught-variable surface |
+| 🤔 Surprise | Word order or cognate mild divergence, learner re-reads and gets it |
+| ⚠️ Borderline | New word that maps clearly to a known concept (synonym / morphological variant). Acceptable once; concerning in clusters |
+| 🚨 Problematic | New word never introduced, or pattern contradicting an earlier lesson |
+| 💔 Misleading | Learner's reasonable guess, said to a native, would be understood wrongly |
+
+### When to run
+
+After Steps 1-6 complete and the scan is clean. This is the last signal before handoff to Deborah. If Step 7 surfaces many ⚠️ clusters or 🚨/💔 findings, fix them (back to the Remediation Guide) and re-run Step 7 until the report is quiet.
+
+### Placement in the pipeline
+
+```
+scan → fix → 6a-6e pipeline → scan again → 6a-6e again if needed
+                                    ↓ (clean)
+                            Step 6 category LLM pre-check (Opus orch + Sonnet)
+                                    ↓
+                            Step 7 Learner simulation (single Opus)
+                                    ↓
+                                 Deborah
+```
+
 ## IMPORTANT: Clean Up Stale Audio After Text Changes
 
 When ANY fix changes the `known_text` or `target_text` of a seed, LEGO, or phrase, the old audio record becomes stale — it has the wrong text but is still linked via `audio_id`. The dashboard will show 0 missing (because the link exists), but the legacy export will fail because the text doesn't match.
