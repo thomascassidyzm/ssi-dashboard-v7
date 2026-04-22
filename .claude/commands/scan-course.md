@@ -905,11 +905,12 @@ if (seedsToFlag.length) {
 These are generation gaps, not corruptions — the builder missed components/builds/uses. Options:
 
 1. **Run the course builder** on the specific LEGO via checkpoint-qa skill to add more phrases.
-2. **Accept as intentional** — rare, but some LEGOs are sparse on purpose (e.g., highly specific vocab that doesn't recombine).
+2. **Break a USE phrase down into BUILDs.** When a LEGO has plenty of USE phrases but few BUILDs, construct BUILDs by trimming a USE to a simpler, more atomic fragment. A USE like "someone said he wanted to tell you" can seed BUILDs "someone said" and "he said he wanted". The fragments aren't always perfect but they populate the pedagogical step between bare vocab and full USE without an LLM call; the build team can polish later.
+3. **Accept as intentional** — rare, but some LEGOs are sparse on purpose (e.g., highly specific vocab that doesn't recombine).
 
 Summary report by severity:
 - **Empty (0 build + 0 use)**: must rebuild. These LEGOs provide no practice at all.
-- **No builds (0 build, some uses)**: should rebuild — learner jumps to sentences without seeing the LEGO in isolation.
+- **No builds (0 build, some uses)**: option 2 (break a USE down into BUILDs) is usually the fastest fix — you already have the material. Option 1 if there are no USEs to draw from.
 - **Few uses (<2 use)**: nice to have more, but not blocking if the LEGO is simple.
 
 ### Fixing LEGO ordering (when many phrases need the following LEGO to be grammatical)
