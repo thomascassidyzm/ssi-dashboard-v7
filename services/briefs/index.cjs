@@ -45,6 +45,11 @@ const generateBackfillPhrasesBrief = require('./backfill-phrases.cjs');
 // Component backfill: M-LEGO component decomposition (Haiku agent)
 const { generateComponentBackfillBrief } = require('./component-backfill.cjs');
 
+// Stage 4b: Category LLM pre-check — Opus reviewers, Opus orchestrator,
+// targets the five categories mechanical scans and grammar review can't catch.
+const generateCategoryLLMOrchestratorBrief = require('./category-llm-orchestrator.cjs');
+const generateCategoryLLMReviewerBrief = require('./category-llm-reviewer.cjs');
+
 // Stage 5: Learner simulation — final-final pass, report only
 const generateLearnerSimulationBrief = require('./learner-simulation.cjs');
 
@@ -63,6 +68,8 @@ const BRIEF_LABELS = {
   'redo': 'Redo agent',
   'backfill-phrases': 'Phrase backfill',
   'component-backfill': 'Component backfill',
+  'category-llm-orchestrator': 'Category LLM orchestrator',
+  'category-llm-reviewer': 'Category LLM reviewer',
   'learner-simulation': 'Learner simulation',
 };
 
@@ -100,6 +107,10 @@ router.get('/:courseCode/final-pass-reviewer', (req, res) => serveBrief(res, gen
 
 // Redo
 router.get('/:courseCode/redo', (req, res) => serveBrief(res, generateRedoBrief, req.params.courseCode, req.query, 'redo'));
+
+// Stage 4b: category LLM pre-check
+router.get('/:courseCode/category-llm-orchestrator', (req, res) => serveBrief(res, generateCategoryLLMOrchestratorBrief, req.params.courseCode, req.query, 'category-llm-orchestrator'));
+router.get('/:courseCode/category-llm-reviewer', (req, res) => serveBrief(res, generateCategoryLLMReviewerBrief, req.params.courseCode, req.query, 'category-llm-reviewer'));
 
 // Stage 5 (final-final): learner simulation
 router.get('/:courseCode/learner-simulation', (req, res) => serveBrief(res, generateLearnerSimulationBrief, req.params.courseCode, req.query, 'learner-simulation'));

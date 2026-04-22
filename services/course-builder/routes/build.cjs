@@ -644,6 +644,70 @@ module.exports = function (ctx) {
     }
   });
 
+  // POST /build/category-llm/:courseCode
+  // Spawn an Opus orchestrator that dispatches N Opus reviewers across seed batches.
+  // Reviewers flag awkward / wrong-order / gender / translation-mismatch /
+  // presentation-weird findings. Orchestrator verifies and decides action.
+  // Default scope: seeds 1-150 (not full course).
+  //   query: ?agents=N (default 6), ?seed_max=N (default 150), ?seeds=... , ?terminal=...
+  router.post('/build/category-llm/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const terminal = req.query.terminal || 'iTerm2';
+      const seeds = req.query.seeds || null;
+      const seedList = seeds ? seeds.split(',').map(Number).filter(n => n > 0) : null;
+      const seedMax = parseInt(req.query.seed_max) || 150;
+      const agents = req.query.agents || (seedList && seedList.length <= 20 ? Math.min(seedList.length, 3) : 6);
+
+      const briefParams = new URLSearchParams({ agents: String(agents) });
+      if (seedList) briefParams.set('seeds', seeds);
+      else briefParams.set('seed_max', String(seedMax));
+
+      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/category-llm-orchestrator?${briefParams}`);
+
+      const tmpFile = `/tmp/category-llm_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+      const totalSeeds = seedList ? seedList.length : seedMax;
+
+      let jobId;
+      try {
+        const { data: jobData } = await ctx.supabase
+          .from('build_jobs')
+          .insert({
+            course_code: courseCode, pass: 'category-llm', status: 'running',
+            current_seed: 0, seeds_completed: 0, total_seeds: totalSeeds,
+            started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+            requested_by: 'dashboard', terminal: effectiveTerminal,
+            agent_count: parseInt(agents), respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'category-llm'
+          })
+          .select('id').single();
+        jobId = jobData?.id;
+      } catch (e) {
+        console.warn('[CategoryLLM] build_jobs insert failed:', e.message);
+      }
+
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      spawnInTerminal(ctx, claudeCmd, 'Category LLM', courseCode, effectiveTerminal);
+
+      try {
+        await ctx.supabase.from('orchestrator_messages').insert({
+          course_code: courseCode,
+          direction: 'agent_to_human',
+          message: `Category LLM pre-check spawned — Opus orchestrator + ${agents} Opus reviewers across ${totalSeeds} seeds`,
+          status: 'pending',
+          metadata: { action: 'category_llm_spawned' }
+        });
+      } catch (e) { /* non-critical */ }
+
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Category LLM orchestrator spawned (seeds 1-${totalSeeds}, ${agents} reviewers)` });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // POST /build/learner-simulation/:courseCode
   // Spawn a single Opus agent that reads the course as a total beginner
   // and produces a final-final-pass report (no mutations). Runs after all

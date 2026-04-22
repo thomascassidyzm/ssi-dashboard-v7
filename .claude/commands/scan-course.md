@@ -1003,6 +1003,40 @@ After one full pass (6a → 6b → 6c → 6d → 6e), re-run the scan. If new is
 
 The signal for "ready for Deborah": 0 under-threshold, 0 flagged, final-pass complete, gender-prep complete, audio gen complete, scan-course report clean on mechanical checks.
 
+## Step 6b: Category LLM pre-check
+
+After Step 6's pipeline (backfill / final-pass / gender-prep / audio) is stable, run the category-LLM pre-check before Step 7. This pass targets the five categories that mechanical scans and the grammar-focused final-pass **cannot** detect:
+
+- **awkward_phrase** — grammatically valid, but nothing a native would say.
+- **wrong_word_order** — allowed word order, not the preferred one a native would pick (especially for flexible-order languages like Finnish / Japanese / Russian).
+- **gender_mismatch** — wrong gendered form for the context (first-person speaker voice, possessive/article concord, referent agreement).
+- **translation_mismatch** — ${'`'}target_text${'`'} and ${'`'}known_text${'`'} don't mean the same thing.
+- **presentation_weird** — LEGO intro example is ambiguous, uses unintroduced vocab, or doesn't match the LEGO's pattern.
+
+### Endpoint
+
+\`POST http://localhost:3470/api/build/category-llm/{courseCode}?seed_max=150&agents=6\`
+
+Spawns an Opus orchestrator that dispatches N Opus reviewers in parallel. Reviewers are **Opus** (not Sonnet) because these categories need careful judgement — Sonnet produces noisier false positives on awkwardness, subtle gender, and nuanced meaning drift. Default scope is seeds 1-150 (not full course — this is a high-value sampling pass, not an exhaustive audit).
+
+### Orchestrator behaviour
+
+- Verifies each reviewer finding against its own target-language knowledge before acting.
+- **translation_mismatch** severe + obvious fix: rewrite target + null audio. Ambiguous: delete. Moderate/minor: flag to Kai.
+- **awkward_phrase** severe: delete. Moderate/minor: flag.
+- **wrong_word_order** with easy less-surprising alternative: rewrite. Otherwise flag.
+- **gender_mismatch**: always flag (Kai owns voice assignment).
+- **presentation_weird** severe: flag seed for rebuild. Otherwise note.
+- Posts a final report with per-category counts, auto-actions, flagged items, and cumulative patterns.
+
+### When to run
+
+After mechanical scan + fixes + Steps 6a-6e pipeline is complete (course is structurally sound). Before Step 7 learner simulation (so the sim isn't drowning in category-shaped noise the LLM should catch).
+
+### Calibration
+
+Reviewer brief includes a section on **Deborah's past findings** per category as calibration templates. Update \`docs/deborahs-findings.md\` whenever Deborah surfaces new patterns — the brief reads from that catalog at generation time.
+
 ## Step 7: Learner simulation — the final-final pass
 
 After Steps 1-6 (mechanical + category LLM + pipeline) the course is *structurally* sound. Step 7 asks a different question: **does the course feel like a trustworthy teacher to an actual beginner?** A single Opus agent roleplays a complete beginner in the target language, works through seeds 1-150 in order, and rates every practice phrase against what they've been explicitly taught so far.
