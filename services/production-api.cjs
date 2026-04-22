@@ -8384,6 +8384,7 @@ app.get('/api/admin/pm2', async (req, res) => {
 
 // POST /api/admin/pm2/fix — disable watch on all processes and save
 app.post('/api/admin/pm2/fix', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   // Respond immediately — restart happens after, so connection isn't dropped
   res.json({ ok: true, message: 'Disabling pm2 watch and restarting all services in 3s...' })
   setTimeout(async () => {
@@ -8398,6 +8399,7 @@ app.post('/api/admin/pm2/fix', async (req, res) => {
 
 // POST /api/admin/pm2/restart — restart a named pm2 process
 app.post('/api/admin/pm2/restart', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
@@ -8410,6 +8412,7 @@ app.post('/api/admin/pm2/restart', async (req, res) => {
 
 // POST /api/admin/pm2/stop — stop a named pm2 process (e.g. ssi-dashboard dev server)
 app.post('/api/admin/pm2/stop', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
@@ -8422,6 +8425,7 @@ app.post('/api/admin/pm2/stop', async (req, res) => {
 
 // POST /api/admin/pm2/delete — permanently remove a process from pm2
 app.post('/api/admin/pm2/delete', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
@@ -8504,6 +8508,7 @@ app.post('/api/admin/setup-remote', async (req, res) => {
 
 // POST /api/admin/kill-pid — kill a process by PID
 app.post('/api/admin/kill-pid', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const pids = Array.isArray(req.body?.pids) ? req.body.pids : [req.body?.pid]
   if (!pids[0]) return res.status(400).json({ error: 'pid or pids required' })
   const results = {}
@@ -8520,6 +8525,7 @@ app.post('/api/admin/kill-pid', async (req, res) => {
 
 // POST /api/admin/git-pull — stash local changes and pull latest code, then restart services
 app.post('/api/admin/git-pull', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const projectDir = path.resolve(__dirname, '..')
   const log = []
   const add = msg => { log.push(msg); logger.log('[git-pull]', msg) }
@@ -8545,6 +8551,7 @@ app.post('/api/admin/git-pull', async (req, res) => {
 // POST /api/admin/kill-apps — kill non-essential GUI apps to free RAM
 // Kills: Google Chrome, iTerm2, Safari, Finder (optional), Xcode, etc.
 app.post('/api/admin/kill-apps', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const targets = req.body?.apps || ['Google Chrome', 'iTerm2']
   const results = {}
   for (const app of targets) {
@@ -8558,14 +8565,50 @@ app.post('/api/admin/kill-apps', async (req, res) => {
   res.json({ ok: true, results })
 })
 
+// GET /api/admin/system-health — RAM, load, and PM2 process snapshot
+// Read-only; no auth (same posture as /health).
+app.get('/api/admin/system-health', async (req, res) => {
+  const os = require('os')
+  const totalMem = os.totalmem()
+  const freeMem = os.freemem()
+  const usedMem = totalMem - freeMem
+  const health = {
+    hostname: os.hostname(),
+    platform: os.platform(),
+    uptime_seconds: Math.round(os.uptime()),
+    mem: {
+      total_bytes: totalMem,
+      used_bytes: usedMem,
+      free_bytes: freeMem,
+      used_percent: Math.round((usedMem / totalMem) * 1000) / 10
+    },
+    load_avg: os.loadavg(),
+    cpu_count: os.cpus().length,
+    pm2: []
+  }
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
+    const list = JSON.parse(stdout || '[]')
+    health.pm2 = list.map(p => ({
+      name: p.name,
+      pm_id: p.pm_id,
+      pid: p.pid,
+      status: p.pm2_env?.status,
+      restart_count: p.pm2_env?.restart_time,
+      uptime_ms: p.pm2_env?.pm_uptime ? Date.now() - p.pm2_env.pm_uptime : null,
+      mem_bytes: p.monit?.memory ?? 0,
+      cpu_percent: p.monit?.cpu ?? 0
+    }))
+  } catch (e) {
+    health.pm2_error = e.message
+  }
+  res.json(health)
+})
+
 // POST /api/admin/restart-machine — remotely reboot SSi Machine
 // Requires ?secret=ADMIN_SECRET (or x-admin-secret header)
 app.post('/api/admin/restart-machine', async (req, res) => {
-  const secret = req.query.secret || req.headers['x-admin-secret']
-  const expected = process.env.ADMIN_SECRET
-  if (!expected || secret !== expected) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+  if (!await requireAdmin(req, res)) return
   // Respond before the reboot kicks in
   res.json({ ok: true, message: 'Rebooting SSi Machine in 5 seconds...' })
   setTimeout(async () => {
