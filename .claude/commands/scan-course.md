@@ -1041,6 +1041,35 @@ Spawns a single Opus agent (one iTerm2 window) that fetches seed/LEGO/phrase dat
 
 After Steps 1-6 complete and the scan is clean. This is the last signal before handoff to Deborah. If Step 7 surfaces many ⚠️ clusters or 🚨/💔 findings, fix them (back to the Remediation Guide) and re-run Step 7 until the report is quiet.
 
+### After the report lands — read it and decide
+
+The agent posts its report to `orchestrator_messages` for the course. Fetch the latest:
+
+\`\`\`javascript
+const { data } = await supabase.from('orchestrator_messages')
+  .select('created_at, message')
+  .eq('course_code', COURSE_CODE)
+  .ilike('message', '# Learner Simulation Report%')
+  .order('created_at', { ascending: false })
+  .limit(1);
+\`\`\`
+
+Read it and decide per-finding. Pattern:
+
+- **💔 Misleading**: almost always fix. The learner would say the wrong thing to a native.
+  - If the target mis-translates the prompt → rewrite target_text, null target1/target2_audio_id for regen.
+  - If the fix reveals a systemic pattern (one wrong translation predicts N more), scan for all instances and fix in one pass.
+- **🚨 Problematic (new word never introduced)**: usually fix. Either delete the phrase or rewrite the prompt to use taught vocab. Scan-course Check 11 (word-level vocab ordering) should have caught most of these — if it didn't, the simulation is showing a gap in the mechanical check.
+- **⚠️ Borderline clusters**: methodology call, do NOT auto-fix. Flag to Kai with the cluster + root cause. Options are usually "standardise the earlier seeds", "standardise the later seeds", or "add a bridge LEGO". Learner's call.
+- **🤔 Surprise**: not automatic-leave. Check two conditions:
+  1. **Is there an equally-correct less-surprising version?** If a language allows flexible word order (e.g. Finnish), or a phrase has multiple natural renderings, and one of them lines up with what the learner would guess from what they've been taught, prefer that. We only spend a "surprise" when it's unavoidable.
+  2. **Is it clustered?** Three surprises in consecutive seeds — even if each is individually natural — dents confidence. In a cluster, rewrite the few that are easiest to make less surprising so the density drops below the threshold.
+  Leave the surprise only when every natural rendering of the target would surprise the learner equally. Don't surprise the learner for no reason.
+- **Pattern inconsistencies / methodology notes**: flag to Kai, don't act. These are course-design decisions.
+- **Component metadata issues** (e.g. M-LEGO listing itself as a component): low priority, non-learner-facing. Log for a future builder pass.
+
+Always verify a proposed fix against the cognate/cumulative findings before applying — if the simulation says 7 phrases share a root cause, search for the pattern across the whole course, not just the flagged instances.
+
 ### Placement in the pipeline
 
 ```
