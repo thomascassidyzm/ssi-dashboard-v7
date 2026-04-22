@@ -153,6 +153,16 @@
         <span class="card-arrow">&rarr;</span>
       </router-link>
 
+      <!-- Listening Pods -->
+      <router-link :to="`/production/${courseCode}/pods`" class="workflow-card">
+        <div class="card-icon pods">P</div>
+        <div class="card-content">
+          <h3>Listening Pods</h3>
+          <p>Layer 2 podcast content</p>
+        </div>
+        <span class="card-arrow">&rarr;</span>
+      </router-link>
+
       <!-- Launch Learning App -->
       <button @click="launchLearningApp" class="workflow-card action">
         <div class="card-icon launch">L</div>
@@ -662,6 +672,7 @@ watch(() => props.courseCode, () => {
 .card-icon.audio { background: #8b5cf6; color: white; }
 .card-icon.review { background: #ec4899; color: white; }
 .card-icon.record { background: #10b981; color: white; }
+.card-icon.pods { background: #a855f7; color: white; }
 .card-icon.launch { background: var(--color-graphite, #475569); color: var(--color-tungsten, #ffa630); }
 
 .card-content {

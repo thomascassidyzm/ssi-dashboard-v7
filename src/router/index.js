@@ -202,18 +202,13 @@ const routes = [
     props: true
   },
   {
+    // DEPRECATED: Old /courses/:code/pods path — redirect to /production
     path: '/courses/:courseCode/pods',
-    name: 'Pods',
-    component: () => import('../views/PodsView.vue'),
-    props: true,
-    meta: { title: 'Listening Pods' }
+    redirect: to => `/production/${to.params.courseCode}/pods`
   },
   {
     path: '/courses/:courseCode/pods/:slug',
-    name: 'PodDetail',
-    component: () => import('../views/PodDetailView.vue'),
-    props: true,
-    meta: { title: 'Pod Detail' }
+    redirect: to => `/production/${to.params.courseCode}/pods/${to.params.slug}`
   },
   {
     // DEPRECATED: Redirect to Production Suite script viewer
@@ -465,6 +460,20 @@ const routes = [
         component: () => import('../views/production/QAReview.vue'),
         props: true,
         meta: { title: 'QA Review - Production Suite' }
+      },
+      {
+        path: 'pods',
+        name: 'Pods',
+        component: () => import('../views/PodsView.vue'),
+        props: true,
+        meta: { title: 'Listening Pods - Production Suite' }
+      },
+      {
+        path: 'pods/:slug',
+        name: 'PodDetail',
+        component: () => import('../views/PodDetailView.vue'),
+        props: true,
+        meta: { title: 'Pod Detail - Production Suite' }
       }
     ]
   },

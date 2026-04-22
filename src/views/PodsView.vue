@@ -6,7 +6,7 @@
         <div class="flex items-center gap-4 mb-4 text-sm">
           <router-link to="/" class="text-emerald-400 hover:text-emerald-300">Home</router-link>
           <span class="text-slate-600">/</span>
-          <router-link :to="`/courses/${courseCode}`" class="text-emerald-400 hover:text-emerald-300">
+          <router-link :to="`/production/${courseCode}`" class="text-emerald-400 hover:text-emerald-300">
             {{ formatCourseCode(courseCode) }}
           </router-link>
           <span class="text-slate-600">/</span>
@@ -37,7 +37,7 @@
         <router-link
           v-for="pod in pods"
           :key="pod.id"
-          :to="`/courses/${courseCode}/pods/${pod.slug}`"
+          :to="`/production/${courseCode}/pods/${pod.slug}`"
           class="block bg-slate-800 border border-slate-700 rounded-lg p-6 hover:border-emerald-500 transition-colors"
         >
           <div class="flex items-start justify-between gap-6">

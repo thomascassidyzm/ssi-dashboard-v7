@@ -5,9 +5,9 @@
       <div class="flex items-center gap-3 mb-6 text-sm">
         <router-link to="/" class="text-emerald-400 hover:text-emerald-300">Home</router-link>
         <span class="text-slate-600">/</span>
-        <router-link :to="`/courses/${courseCode}`" class="text-emerald-400 hover:text-emerald-300">{{ courseCode }}</router-link>
+        <router-link :to="`/production/${courseCode}`" class="text-emerald-400 hover:text-emerald-300">{{ courseCode }}</router-link>
         <span class="text-slate-600">/</span>
-        <router-link :to="`/courses/${courseCode}/pods`" class="text-emerald-400 hover:text-emerald-300">Pods</router-link>
+        <router-link :to="`/production/${courseCode}/pods`" class="text-emerald-400 hover:text-emerald-300">Pods</router-link>
         <span class="text-slate-600">/</span>
         <span class="text-slate-400">{{ slug }}</span>
       </div>
