@@ -67,6 +67,15 @@
         </ul>
       </div>
 
+      <div class="rc-section">
+        <button
+          class="rc-btn-wide"
+          :disabled="busy.__killapps"
+          @click="killApps"
+          title="Kill Chrome + iTerm2 to free RAM on the remote machine"
+        >{{ busy.__killapps ? 'Killing…' : 'Free RAM (kill Chrome + iTerm)' }}</button>
+      </div>
+
       <div class="rc-section rc-danger">
         <button
           class="rc-btn rc-btn-danger"
@@ -169,6 +178,30 @@ async function restartProc(name) {
     flash(`Restart failed: ${e.message}`, true)
   } finally {
     const next = { ...busy.value }; delete next[name]; busy.value = next
+  }
+}
+
+async function killApps() {
+  if (!window.confirm('Kill Chrome and iTerm2 on the remote machine? Any unsaved work there will be lost.')) return
+  busy.value = { ...busy.value, __killapps: true }
+  try {
+    const r = await authedFetch('/api/admin/kill-apps', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ apps: ['Google Chrome', 'iTerm2'] }),
+      timeout: 15000
+    })
+    const data = await r.json().catch(() => ({}))
+    if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`)
+    const killed = Object.entries(data.results || {})
+      .filter(([, v]) => v === 'killed')
+      .map(([k]) => k)
+    flash(killed.length ? `Killed: ${killed.join(', ')}` : 'No target apps were running')
+    setTimeout(fetchHealth, 1500)
+  } catch (e) {
+    flash(`Kill failed: ${e.message}`, true)
+  } finally {
+    const next = { ...busy.value }; delete next.__killapps; busy.value = next
   }
 }
 
@@ -311,6 +344,14 @@ onBeforeUnmount(() => {
 }
 .rc-btn:hover:not(:disabled) { background: #475569; }
 .rc-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.rc-btn-wide {
+  width: 100%; padding: 0.5rem; font-size: 0.75rem; font-weight: 500;
+  background: #334155; border: 1px solid #475569; color: #e2e8f0;
+  border-radius: 4px; cursor: pointer; transition: background 0.15s;
+}
+.rc-btn-wide:hover:not(:disabled) { background: #475569; }
+.rc-btn-wide:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .rc-danger { display: flex; gap: 0.5rem; align-items: center; }
 .rc-btn-danger {
