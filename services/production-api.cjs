@@ -8398,10 +8398,22 @@ app.post('/api/admin/pm2/fix', async (req, res) => {
 })
 
 // POST /api/admin/pm2/restart — restart a named pm2 process
+// Self-restart (production-api restarting itself) replies first, then restarts
+// after a short delay so the browser actually receives the success response
+// instead of seeing the connection drop mid-reply.
 app.post('/api/admin/pm2/restart', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
+  const selfName = process.env.name || 'production-api'
+  if (name === selfName) {
+    res.json({ ok: true, name, message: `Self-restart scheduled in 1s` })
+    setTimeout(() => {
+      execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
+        .catch(e => logger.warn('[Admin] self-restart error:', e.message))
+    }, 1000)
+    return
+  }
   try {
     const { stdout } = await execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
     res.json({ ok: true, name, output: stdout.trim() })
