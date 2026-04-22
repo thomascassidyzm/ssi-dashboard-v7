@@ -943,6 +943,66 @@ When a new language-specific pattern is found during content check, add it here 
 3. Any exclusion regex (e.g., `TIME_DURATION` for llevar)
 4. The fix action (mechanical / LLM / flag-for-rebuild)
 
+## Step 6: Post-scan pipeline — backfill, final pass, gender prep
+
+Scanner fixes change phrase counts (deletes leave LEGOs thinner, rewrites invalidate audio). After applying fixes from the Remediation Guide, run the build pipeline to fill gaps, re-run quality checks, and prep new items for gender expansion.
+
+**Model pattern**: Opus *orchestrates*, Sonnet does the per-phrase work, Haiku is for mechanical classification only. The endpoints below already follow this pattern internally — they spawn Sonnet workers orchestrated by Opus. Don't replace them with per-phrase Opus calls.
+
+### Flow
+
+```
+scan → fix → backfill → final-pass → gender-prep → re-scan → (if issues: loop)
+```
+
+Ready criteria: 0 under-threshold seeds, 0 flagged seeds, final-pass complete, gender-prep complete, scan re-runs clean on the categories the fixes addressed.
+
+### Endpoints
+
+All run on `production-api` (port 3470). Each is an async spawn — the endpoint returns immediately with a `job_id` and the actual work happens in the background. Poll the seed-grid / pipeline status to know when to move to the next step.
+
+#### 6a. Backfill phrases (under-threshold seeds)
+
+`POST http://localhost:3470/api/build/backfill-phrases/{courseCode}`
+
+Regenerates practice phrases for seeds that fell below the threshold (usually because deletes during fix steps thinned the LEGOs). Returns `{ok: true, job_id, message}`.
+
+Wait for `GET /api/build/seed-grid/{courseCode}` to show `under-threshold=0` before proceeding.
+
+#### 6b. Component backfill (M-type LEGOs missing components)
+
+`POST http://localhost:3470/api/build/component-backfill/{courseCode}`
+
+Fills in missing component phrases for multi-word M-LEGOs. Run after 6a when Check 16 reports M-LEGOs missing components.
+
+#### 6c. Final pass (quality review)
+
+`POST http://localhost:3470/api/build/final-pass/{courseCode}`
+
+Opus-orchestrated Sonnet workers review every phrase for grammar, naturalness, vocab ordering, and register. Flags seeds that need rebuild and marks complete ones as finalized. Check completion via the `finalPassCompleted` flag in the pipeline status.
+
+Can be targeted at specific seeds by POSTing `{seeds: [N, M, ...]}` — useful when scan fixes only touched a subset.
+
+#### 6d. Gender prep (only for gendered target languages)
+
+`POST http://localhost:3470/api/production/{courseCode}/gender-prep/start`
+
+Identifies phrases needing male/female voice variants and prepares the expansion records. Only applies to gendered-grammar languages (spa, por, fra, ita, deu, ...). Skipped automatically for ungendered languages (eng, jpn, zho, ...).
+
+Specifically make sure this runs on **new items created by backfill/final-pass**, not just pre-existing ones — the coordinator scans all phrases each run, so one pass after 6c covers it.
+
+#### 6e. Audio regen (nulled audio_ids)
+
+Any phrase with `known_audio_id = null` or `target1_audio_id = null` after text changes needs audio regenerated via Phase 8:
+
+`POST http://localhost:3465/generate/{courseCode}` — show `--plan` first, wait for user approval, then execute (costs TTS API credits).
+
+### Iteration
+
+After one full pass (6a → 6b → 6c → 6d → 6e), re-run the scan. If new issues surfaced (e.g. backfill regenerated a phrase that introduces new vocab ordering violation), fix → re-run pipeline. Loop until the scan is clean AND the pipeline is stable.
+
+The signal for "ready for Deborah": 0 under-threshold, 0 flagged, final-pass complete, gender-prep complete, audio gen complete, scan-course report clean on mechanical checks.
+
 ## IMPORTANT: Clean Up Stale Audio After Text Changes
 
 When ANY fix changes the `known_text` or `target_text` of a seed, LEGO, or phrase, the old audio record becomes stale — it has the wrong text but is still linked via `audio_id`. The dashboard will show 0 missing (because the link exists), but the legacy export will fail because the text doesn't match.

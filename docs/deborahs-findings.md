@@ -54,7 +54,7 @@ Deborah speaks Spanish, German, French, and English. For these courses her findi
 | `audio_issue` | ❌ | manual |
 | `presentation_weird` | ❌ | manual / LLM |
 
-**Step 6 plan**: bring Opus in as an LLM pre-check for the ❌ categories (awkward phrasing, wrong word order, gender mismatch, translation mismatch, presentation naturalness) before Deborah sees the course. Opus because these categories need careful reasoning — Sonnet/Haiku trade accuracy for cost here and the cost of a missed subtle bug landing in front of learners is worse than the cost of a slower scan. Expected to reduce what Deborah catches by a significant fraction and let her focus on the genuinely hard cases.
+**Step 6 plan**: LLM pre-check for the ❌ categories before Deborah sees the course. Pattern matches the existing pipeline: **Opus orchestrates, Sonnet workers** — Opus picks the batch and evaluates results, Sonnet does the per-phrase reading. Don't burn Opus on every phrase; let the orchestrator dispatch. Expected to reduce what Deborah catches by a significant fraction and let her focus on the genuinely hard cases.
 
 ---
 
