@@ -866,7 +866,7 @@ Pattern `llevo aprendiendo` / `llevas hablando` requires an explicit time: `cuá
 ```javascript
 // Run only when target_lang === 'spa' or known_lang === 'spa'
 const LLEVAR_GERUND = /\bllev[oa]s?\s+\w+ndo\b/i;
-const TIME_DURATION = /\b(cuánto tiempo|mucho tiempo|poco tiempo|un año|una hora|una semana|un mes|un día|\d+\s+(años?|meses|semanas|días|horas|minutos)|m[aá]s o menos\s+\w+|algún tiempo|bastante tiempo)\b/i;
+const TIME_DURATION = /\b(cuánto tiempo|mucho tiempo|poco tiempo|un año|una hora|una semana|un mes|un día|\d+\s+(años?|meses|semanas|días|horas|minutos)|m[aá]s o menos\s+\w+|algún tiempo|bastante tiempo|desde que\s+\w+|desde hace\s+\w+|hace\s+(un|una|\d+))\b/i;
 
 const llevarViolations = phrases.filter(p => {
   const text = course.target_lang === 'spa' ? p.target_text : (course.known_lang === 'spa' ? p.known_text : null);
@@ -913,7 +913,7 @@ const germanSubordinateCandidates = phrases.filter(p => {
 });
 ```
 
-Report: count. These are candidates, not violations — the regex can't tell which have wrong verb placement. Sample 10 and pass to Haiku/Sonnet with the rule "the finite verb must be at the end of the subordinate clause".
+Report: count. These are candidates, not violations — the regex can't tell which have wrong verb placement. Sample 10 and pass to Opus with the rule "the finite verb must be at the end of the subordinate clause". (Opus not Haiku/Sonnet for grammar judgement of this subtlety.)
 
 Action: Flag for LLM check (Step 6) or Deborah's review.
 

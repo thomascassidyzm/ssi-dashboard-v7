@@ -26,6 +26,36 @@ Deborah speaks Spanish, German, French, and English. For these courses her findi
 
 **Scan coverage**: ✅ caught now, 🚧 check being added, ❌ needs LLM or manual
 
+## Scanner coverage summary (2026-04-22, after Steps 3 & 4)
+
+| Category | Status | Check(s) |
+|---|---|---|
+| `vocab_ordering` (word-level, known side) | ✅ | 11 |
+| `vocab_ordering` (chunk-level, target) | ✅ | 12 |
+| `capitalisation` (case-only dupes) | ✅ | 13a |
+| `capitalisation` (first-letter outliers, >80% dominance) | ✅ | 13b |
+| `capitalisation` (lowercase I in English contractions) | ✅ | 9 |
+| `missing_qmark` (direct questions, both-sides filter) | ✅ | 14 |
+| `missing_qmark` (Spanish `¿` opener) | ✅ | 14 |
+| `identical_known_target` (with per-pair cognate allowlist) | ✅ | 15 |
+| `underpopulated_lego` (empty / no-builds / few-uses) | ✅ | 16 |
+| `grammar_incomplete` — spa `llevar + gerund` needs time | ✅ | 17a |
+| `grammar_incomplete` — ita subjunctive after `penso che` | ✅ | 17b |
+| `grammar_incomplete` — deu verb-final in subclauses | 🚧 | 17c (candidates only, needs LLM verdict) |
+| `punctuation` — trailing periods | ✅ | 8 |
+| `punctuation` — speech marks wrapping | ✅ | 7 |
+| `punctuation` — jpn `ka`/`?` inconsistency | ✅ | 17d |
+| `mixed_language` (wrong script in known/target) | ✅ | 3, 4 |
+| `wrong_language_mention` (e.g. 日本語 in target-language field) | 🚧 | partial via Check 3/4; needs LLM for subtle cases |
+| `awkward_phrase` | ❌ | LLM only |
+| `wrong_word_order` | ❌ | LLM only |
+| `gender_mismatch` | ❌ | LLM only |
+| `translation_mismatch` | ❌ | LLM only |
+| `audio_issue` | ❌ | manual |
+| `presentation_weird` | ❌ | manual / LLM |
+
+**Step 6 plan**: bring Opus in as an LLM pre-check for the ❌ categories (awkward phrasing, wrong word order, gender mismatch, translation mismatch, presentation naturalness) before Deborah sees the course. Opus because these categories need careful reasoning — Sonnet/Haiku trade accuracy for cost here and the cost of a missed subtle bug landing in front of learners is worse than the cost of a slower scan. Expected to reduce what Deborah catches by a significant fraction and let her focus on the genuinely hard cases.
+
 ---
 
 ## German for English Speakers (deu_for_eng)
@@ -240,24 +270,28 @@ Deborah speaks Spanish, German, French, and English. For these courses her findi
 
 ## Patterns to codify in language-patterns library
 
-### Spanish (`spa`)
-- **`llevar + gerund` needs a time duration** (or "cuánto tiempo" question word)
-  - Surface: `/\bllev[oa]s?\s+\w+ndo\b/i`
-  - Required: `/(cuánto tiempo|\bun[oa]s?\s+\w+|\bmucho\s+tiempo|\bm[aá]s o menos\s+\w+)/i`
+(Implementation lives in `.claude/commands/scan-course.md` Check 17. Add new patterns here with the regex and required-context, then wire them into Check 17.)
 
-### Italian (`ita`)
+### Spanish (`spa`) ✅ implemented as 17a
+- **`llevar + gerund` needs a time duration** (or "cuánto tiempo" question word, or `desde que ...`)
+  - Surface: `/\bllev[oa]s?\s+\w+ndo\b/i`
+  - Required: `/(cuánto tiempo|\bun[oa]s?\s+\w+|\bmucho\s+tiempo|\bm[aá]s o menos\s+\w+|\bdesde que\s+\w+)/i`
+  - Known FP: `desde que empezaste a trabajar aquí` — scan Check 17a's TIME_DURATION regex may need `desde que` added.
+
+### Italian (`ita`) ✅ implemented as 17b
 - **Subjunctive after `penso che` / `credo che`**
   - Surface: `/\bpens[oa]\s+che\b/i` or `/\bcred[oa]\s+che\b/i`
-  - Required: subjunctive forms (abbia, sia, possa, debba, etc.) — LLM check needed
+  - Detection: flag common indicative 3sg/3pl forms (ha, hanno, è, sono, può, deve, vuole, fa, va, viene, sa, dice, ...) appearing after the "penso/credo che" trigger. Fix is mechanical (indicative → subjunctive table).
 
-### German (`deu`)
-- **Verb-final in subclauses** — "weil/wenn/dass/ob/als" trigger verb-final word order
-  - Surface: `/\b(weil|wenn|dass|ob|als|nachdem|bevor)\b/i` in phrase
-  - Required: finite verb at or near end of clause — complex, probably LLM check
+### German (`deu`) 🚧 candidates only (17c)
+- **Verb-final in subclauses** — "weil/wenn/dass/ob/als/nachdem/bevor/..." trigger verb-final word order
+  - Surface: `/\b(weil|wenn|dass|ob|als|nachdem|bevor|während|damit|obwohl|falls|sobald)\b/i` in phrase
+  - Detection regex flags candidates but cannot verify verb placement — needs LLM (Step 6) or Deborah.
 
-### Japanese (`jpn`)
-- **`ka` particle + `?` consistency** — either both or just `ka`
-- **Kanji readings** — context-dependent (kun/on-yomi). Single-char kanji especially.
+### Japanese (`jpn`) ✅ implemented as 17d (consistency report)
+- **`ka` particle + `?` consistency** — either both or just `ka`, but not a mix across a course
+  - Reports `ka+?` vs `ka`-only vs `?`-without-`ka`. Minority gets flagged for alignment.
+- **Kanji readings** — context-dependent (kun/on-yomi). Single-char kanji especially. Not mechanically checkable; handled by `scripts/fixes/regen-jpn-single-char.cjs` (SSML `<sub alias>`).
 
 ## Cognate allowlist
 
