@@ -912,6 +912,48 @@ Summary report by severity:
 - **No builds (0 build, some uses)**: should rebuild — learner jumps to sentences without seeing the LEGO in isolation.
 - **Few uses (<2 use)**: nice to have more, but not blocking if the LEGO is simple.
 
+### Fixing LEGO ordering (when many phrases need the following LEGO to be grammatical)
+
+**Detection cue**: an early LEGO in a seed has multiple practice phrases that feel ungrammatical or incomplete on their own, and what makes them complete is vocabulary from a LATER LEGO in the same seed. The builder decomposed the seed in the wrong order — the LEGOs need to trade places so the prerequisite vocabulary is introduced first.
+
+**How to spot this:**
+- The LEGO's BUILD and USE phrases keep showing up as Cat A vocab-ordering violations (Check 11), but the "new" words aren't unintroduced — they're in the *next* LEGO of the same seed.
+- The Step 7 learner simulation flags a cluster of 🚨 Problematic in one seed where the learner attempts LEGO N's phrases but needs LEGO N+1's words.
+- Step 6b category LLM reviewer flags multiple phrases in one LEGO as "awkward" or "translation mismatch" because the phrase is a fragment waiting for more.
+- In the seed's own LEGO list, LEGO N has a short/atomic known_text and its phrases all quote the longer LEGO N+1 content.
+
+**Fix — reorder then repopulate:**
+
+1. **Reorder the LEGOs within the seed.** Swap `lego_index` so the prerequisite LEGO comes first. If only two need swapping, it's a 2-row update. Be careful: `lego_index` is part of the phrase_id, so touching it while phrases exist is messy.
+2. **Delete the affected phrases.** Since their IDs depend on the LEGO index, and they're ungrammatical anyway, remove them rather than try to rewrite.
+3. **Flag the seed** (`flagged_at = now()`) so the build team picks it up.
+4. **Repopulate via the build team**. With the corrected LEGO order, the builder now has the right prerequisites at each step and produces grammatical phrases. The standard flow — flagged seed → build-team rebuild — handles this cleanly; no special brief needed.
+
+Script sketch:
+
+\`\`\`javascript
+// Swap LEGO indices within a seed
+const newIdxA = oldIdxB, newIdxB = oldIdxA;
+// Delete affected phrases (both LEGOs)
+await supabase.from('course_practice_phrases').delete()
+  .eq('course_code', CODE).eq('seed_number', SEED).in('lego_index', [oldIdxA, oldIdxB]);
+// Use a placeholder to avoid the unique constraint during the swap
+await supabase.from('course_legos').update({ lego_index: 999 })
+  .eq('course_code', CODE).eq('seed_number', SEED).eq('lego_index', oldIdxA);
+await supabase.from('course_legos').update({ lego_index: newIdxB })
+  .eq('course_code', CODE).eq('seed_number', SEED).eq('lego_index', oldIdxB);
+await supabase.from('course_legos').update({ lego_index: newIdxA })
+  .eq('course_code', CODE).eq('seed_number', SEED).eq('lego_index', 999);
+// Null presentation audio (LEGO text may shift depending on component order)
+// Flag the seed for rebuild
+await supabase.from('course_seeds').update({ flagged_at: new Date().toISOString() })
+  .eq('course_code', CODE).eq('seed_number', SEED);
+\`\`\`
+
+**Don't try to preserve phrases across a reorder.** A phrase written against the wrong order is very rarely salvageable — the wording assumes one decomposition, the new order needs different framing. Let the builder start clean.
+
+**If the reorder isn't straightforward** (e.g. three LEGOs that should be a different structure entirely, or the decomposition itself is wrong regardless of order), just flag the seed and let the builder redecompose from scratch.
+
 ### Fixing language-specific pattern violations
 
 See Check 17 below. Each sub-check is independent of the others — run only the ones relevant to the course's target (or known) language.
