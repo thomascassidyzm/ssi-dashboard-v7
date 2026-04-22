@@ -851,6 +851,98 @@ Summary report by severity:
 - **No builds (0 build, some uses)**: should rebuild — learner jumps to sentences without seeing the LEGO in isolation.
 - **Few uses (<2 use)**: nice to have more, but not blocking if the LEGO is simple.
 
+### Fixing language-specific pattern violations
+
+See Check 17 below. Each sub-check is independent of the others — run only the ones relevant to the course's target (or known) language.
+
+#### Check 17: Language-specific patterns
+
+These checks encode grammar rules that generic checks can't see. Only the sub-check matching the course's target language is meaningful — the others are no-ops.
+
+##### 17a. Spanish: `llevar + gerund` needs a time duration
+
+Pattern `llevo aprendiendo` / `llevas hablando` requires an explicit time: `cuánto tiempo llevas hablando`, `llevo dos meses aprendiendo`, `llevas mucho tiempo estudiando`. Without the time, the construction is incomplete.
+
+```javascript
+// Run only when target_lang === 'spa' or known_lang === 'spa'
+const LLEVAR_GERUND = /\bllev[oa]s?\s+\w+ndo\b/i;
+const TIME_DURATION = /\b(cuánto tiempo|mucho tiempo|poco tiempo|un año|una hora|una semana|un mes|un día|\d+\s+(años?|meses|semanas|días|horas|minutos)|m[aá]s o menos\s+\w+|algún tiempo|bastante tiempo)\b/i;
+
+const llevarViolations = phrases.filter(p => {
+  const text = course.target_lang === 'spa' ? p.target_text : (course.known_lang === 'spa' ? p.known_text : null);
+  if (!text) return false;
+  return LLEVAR_GERUND.test(text) && !TIME_DURATION.test(text);
+});
+```
+
+Report: count + all matches with the llevar+gerund phrase highlighted.
+Action: Flag for build team (requires restructuring the phrase to include a time duration, not a mechanical fix).
+
+##### 17b. Italian: subjunctive required after `penso che` / `credo che`
+
+After "penso che" or "credo che" (also "sembra che", "è possibile che"), the verb must be in the subjunctive mood. Indicative forms like `ha`, `è`, `può`, `deve`, `vuole`, `fa` are wrong.
+
+```javascript
+// Run only when target_lang === 'ita' or known_lang === 'ita'
+// Common indicative 3sg/3pl that should be subjunctive after penso/credo che
+const INDICATIVE_AFTER_CHE = /\b(pens[oa]|cred[oa]|sembra|è possibile)\s+che\s+(\w+\s+)?(ha|hanno|è|sono|può|possono|deve|devono|vuole|vogliono|fa|fanno|va|vanno|viene|vengono|sa|sanno|dice|dicono)\b/i;
+
+const italianSubjunctiveViolations = phrases.filter(p => {
+  const text = course.target_lang === 'ita' ? p.target_text : (course.known_lang === 'ita' ? p.known_text : null);
+  if (!text) return false;
+  return INDICATIVE_AFTER_CHE.test(text);
+});
+```
+
+Report: count + samples with the offending indicative form highlighted.
+Action: Replace indicative with subjunctive (ha→abbia, è→sia, può→possa, deve→debba, vuole→voglia, fa→faccia, va→vada, viene→venga, sa→sappia, dice→dica, hanno→abbiano, sono→siano, possono→possano, devono→debbano, vogliono→vogliano, fanno→facciano, vanno→vadano, vengono→vengano, sanno→sappiano, dicono→dicano).
+
+See `memory/feedback_subjunctive_penso_che.md` for the underlying rule.
+
+##### 17c. German: verb-final in subclauses
+
+Subordinating conjunctions (weil, dass, wenn, ob, als, nachdem, bevor, während, damit, obwohl, falls, sobald) trigger verb-final word order. Regex can detect the clause boundary but can't reliably check verb placement — this is an LLM-only check.
+
+```javascript
+// Run only when target_lang === 'deu'. Flag candidates for manual or LLM review.
+const SUBORDINATOR = /\b(weil|dass|wenn|ob|als|nachdem|bevor|während|damit|obwohl|falls|sobald)\b/i;
+
+const germanSubordinateCandidates = phrases.filter(p => {
+  if (course.target_lang !== 'deu') return false;
+  return SUBORDINATOR.test(p.target_text);
+});
+```
+
+Report: count. These are candidates, not violations — the regex can't tell which have wrong verb placement. Sample 10 and pass to Haiku/Sonnet with the rule "the finite verb must be at the end of the subordinate clause".
+
+Action: Flag for LLM check (Step 6) or Deborah's review.
+
+##### 17d. Japanese: `ka` particle + `?` consistency
+
+Japanese questions use the sentence-final particle `か` (ka). The app's convention is `ka?` or `ka？` — never `ka` alone for a direct question. Check consistency:
+
+```javascript
+// Run only when target_lang === 'jpn'.
+const KA_NO_QMARK = /か\s*$/;      // ends with か but no ? (hidden after spaces)
+const KA_WITH_QMARK = /か[?？]\s*$/;
+const QMARK_NO_KA = /[^か][?？]\s*$/;
+
+const kaNoQmark = phrases.filter(p => course.target_lang === 'jpn' && KA_NO_QMARK.test(p.target_text) && !KA_WITH_QMARK.test(p.target_text));
+const qmarkNoKa = phrases.filter(p => course.target_lang === 'jpn' && QMARK_NO_KA.test(p.target_text));
+```
+
+Report: ka+? count, ka-only count, ?-only count. Whichever convention is dominant wins; the other is flagged.
+
+Action: Bulk-append `?` to ka-only phrases, or strip `?` if ka-only is dominant. Null target audio for regen.
+
+##### Adding new language patterns
+
+When a new language-specific pattern is found during content check, add it here with:
+1. The language code and rule name
+2. The detection regex
+3. Any exclusion regex (e.g., `TIME_DURATION` for llevar)
+4. The fix action (mechanical / LLM / flag-for-rebuild)
+
 ## IMPORTANT: Clean Up Stale Audio After Text Changes
 
 When ANY fix changes the `known_text` or `target_text` of a seed, LEGO, or phrase, the old audio record becomes stale — it has the wrong text but is still linked via `audio_id`. The dashboard will show 0 missing (because the link exists), but the legacy export will fail because the text doesn't match.
