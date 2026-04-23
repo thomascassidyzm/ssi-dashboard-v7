@@ -76,13 +76,31 @@
         >{{ busy.__killapps ? 'Killing…' : 'Free RAM (kill Chrome + iTerm)' }}</button>
       </div>
 
+      <div v-if="health?.reboot_readiness" class="rc-section rc-readiness">
+        <div class="rc-section-head"><span>Boot readiness</span></div>
+        <div class="rc-row">
+          <span class="rc-readiness-dot" :class="{ ok: health.reboot_readiness.pm2_launch_agent.exists }"></span>
+          <span class="rc-readiness-label">PM2 launch agent</span>
+          <span class="rc-meta">{{ health.reboot_readiness.pm2_launch_agent.exists ? 'installed' : 'missing' }}</span>
+        </div>
+        <div class="rc-row">
+          <span class="rc-readiness-dot" :class="{ ok: health.reboot_readiness.pm2_dump.exists }"></span>
+          <span class="rc-readiness-label">PM2 saved state</span>
+          <span class="rc-meta">{{ health.reboot_readiness.pm2_dump.exists ? formatAge(health.reboot_readiness.pm2_dump.age_seconds) : 'missing' }}</span>
+        </div>
+        <div v-if="!health.reboot_readiness.ready" class="rc-fix">
+          <div class="rc-fix-label">One-time fix, run on target machine:</div>
+          <code class="rc-fix-cmd">{{ health.reboot_readiness.fix_command }}</code>
+        </div>
+      </div>
+
       <div class="rc-section rc-danger">
         <button
           class="rc-btn rc-btn-danger"
-          :disabled="busy.__reboot"
+          :disabled="busy.__reboot || !canReboot"
           @click="rebootMachine"
-          title="Reboot the whole machine"
-        >{{ busy.__reboot ? 'Rebooting…' : 'Reboot machine' }}</button>
+          :title="canReboot ? 'Reboot the whole machine' : 'Blocked: PM2 would not auto-resurrect after reboot'"
+        >{{ busy.__reboot ? 'Rebooting…' : (canReboot ? 'Reboot machine' : 'Reboot blocked') }}</button>
       </div>
 
       <div v-if="lastMessage" class="rc-message" :class="{ error: lastIsError }">
@@ -122,6 +140,8 @@ const sortedProcs = computed(() => {
   if (!health.value?.pm2) return []
   return [...health.value.pm2].sort((a, b) => (b.mem_bytes || 0) - (a.mem_bytes || 0))
 })
+
+const canReboot = computed(() => health.value?.reboot_readiness?.ready === true)
 
 function apiBase() {
   return localStorage.getItem('api_base_url') || 'http://localhost:3470'
@@ -250,6 +270,13 @@ function formatUptime(s) {
   if (h) return `${h}h ${m}m`
   return `${m}m`
 }
+function formatAge(s) {
+  if (s == null) return '—'
+  if (s < 60) return `${s}s ago`
+  if (s < 3600) return `${Math.floor(s / 60)}m ago`
+  if (s < 86400) return `${Math.floor(s / 3600)}h ago`
+  return `${Math.floor(s / 86400)}d ago`
+}
 
 onMounted(() => {
   if (isAdmin.value) fetchHealth()
@@ -359,6 +386,15 @@ onBeforeUnmount(() => {
   background: #7f1d1d; border-color: #991b1b; color: #fecaca; font-size: 0.75rem;
 }
 .rc-btn-danger:hover:not(:disabled) { background: #991b1b; }
+
+.rc-readiness .rc-row { margin-bottom: 0.2rem; }
+.rc-readiness-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
+.rc-readiness-dot.ok { background: #22c55e; }
+.rc-readiness-label { flex: 1; font-size: 0.7rem; color: #cbd5e1; }
+
+.rc-fix { margin-top: 0.4rem; padding: 0.4rem 0.5rem; background: #0f172a; border-radius: 4px; }
+.rc-fix-label { font-size: 0.65rem; color: #94a3b8; margin-bottom: 0.2rem; }
+.rc-fix-cmd { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.65rem; color: #fbbf24; word-break: break-all; user-select: all; }
 
 .rc-loading, .rc-error { font-size: 0.75rem; color: #94a3b8; padding: 0.5rem 0; }
 .rc-error { color: #fca5a5; }

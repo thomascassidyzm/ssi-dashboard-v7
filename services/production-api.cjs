@@ -8577,7 +8577,44 @@ app.post('/api/admin/kill-apps', async (req, res) => {
   res.json({ ok: true, results })
 })
 
-// GET /api/admin/system-health — RAM, load, and PM2 process snapshot
+// Check reboot readiness — whether PM2 will auto-resurrect after reboot.
+// Readable without sudo; all paths are in the current user's space or are
+// root-owned files whose *existence* is the only bit we need.
+async function checkRebootReadiness() {
+  const os = require('os')
+  const home = os.homedir()
+  const user = os.userInfo().username
+  const plistPath = `${home}/Library/LaunchAgents/pm2.${user}.plist`
+  const dumpPath = `${home}/.pm2/dump.pm2`
+
+  const out = {
+    pm2_launch_agent: { exists: false, path: plistPath },
+    pm2_dump: { exists: false, path: dumpPath, mtime: null, age_seconds: null },
+    ready: false,
+    fix_command: null
+  }
+  try {
+    const s = await fs.stat(plistPath)
+    out.pm2_launch_agent.exists = true
+    out.pm2_launch_agent.mtime = s.mtime.toISOString()
+  } catch {}
+  try {
+    const s = await fs.stat(dumpPath)
+    out.pm2_dump.exists = true
+    out.pm2_dump.mtime = s.mtime.toISOString()
+    out.pm2_dump.age_seconds = Math.round((Date.now() - s.mtimeMs) / 1000)
+  } catch {}
+
+  out.ready = out.pm2_launch_agent.exists && out.pm2_dump.exists
+  if (!out.pm2_launch_agent.exists) {
+    out.fix_command = `sudo env PATH=$PATH:$(dirname $(which node)) pm2 startup launchd -u ${user} --hp ${home} && pm2 save`
+  } else if (!out.pm2_dump.exists) {
+    out.fix_command = 'pm2 save'
+  }
+  return out
+}
+
+// GET /api/admin/system-health — RAM, load, PM2 process snapshot, reboot readiness
 // Read-only; no auth (same posture as /health).
 app.get('/api/admin/system-health', async (req, res) => {
   const os = require('os')
@@ -8596,7 +8633,8 @@ app.get('/api/admin/system-health', async (req, res) => {
     },
     load_avg: os.loadavg(),
     cpu_count: os.cpus().length,
-    pm2: []
+    pm2: [],
+    reboot_readiness: await checkRebootReadiness()
   }
   try {
     const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
@@ -8617,12 +8655,26 @@ app.get('/api/admin/system-health', async (req, res) => {
   res.json(health)
 })
 
-// POST /api/admin/restart-machine — remotely reboot SSi Machine
-// Requires ?secret=ADMIN_SECRET (or x-admin-secret header)
+// POST /api/admin/restart-machine — remotely reboot the machine
+// Refuses unless reboot readiness checks pass, to avoid bricking a remote
+// box whose PM2 won't auto-resurrect. Pass ?force=1 to override.
 app.post('/api/admin/restart-machine', async (req, res) => {
   if (!await requireAdmin(req, res)) return
+  const force = req.query.force === '1' || req.body?.force === true
+  if (!force) {
+    try { await execFileAsync('bash', ['-c', 'pm2 save']) } catch {}
+    const readiness = await checkRebootReadiness()
+    if (!readiness.ready) {
+      return res.status(412).json({
+        ok: false,
+        error: 'Reboot blocked: PM2 auto-resurrect is not configured on this machine.',
+        readiness,
+        hint: 'Run the fix_command on the target machine once, then try again. Or pass ?force=1 to reboot anyway.'
+      })
+    }
+  }
   // Respond before the reboot kicks in
-  res.json({ ok: true, message: 'Rebooting SSi Machine in 5 seconds...' })
+  res.json({ ok: true, message: 'Rebooting machine in 5 seconds...' })
   setTimeout(async () => {
     try {
       await execFileAsync('sudo', ['reboot'])
