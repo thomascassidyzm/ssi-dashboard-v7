@@ -659,9 +659,11 @@ module.exports = function (ctx) {
       const seedMax = parseInt(req.query.seed_max) || 150;
       const agents = req.query.agents || (seedList && seedList.length <= 20 ? Math.min(seedList.length, 3) : 6);
 
+      const mode = req.query.mode === 'lite' ? 'lite' : 'heavy';
       const briefParams = new URLSearchParams({ agents: String(agents) });
       if (seedList) briefParams.set('seeds', seeds);
       else briefParams.set('seed_max', String(seedMax));
+      if (mode === 'lite') briefParams.set('mode', 'lite');
 
       const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/category-llm-orchestrator?${briefParams}`);
 
@@ -720,7 +722,9 @@ module.exports = function (ctx) {
       const terminal = req.query.terminal || 'iTerm2';
       const maxSeed = parseInt(req.query.max_seed) || 150;
 
+      const mode = req.query.mode === 'lite' ? 'lite' : 'heavy';
       const briefParams = new URLSearchParams({ max_seed: String(maxSeed) });
+      if (mode === 'lite') briefParams.set('mode', 'lite');
       const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/learner-simulation?${briefParams}`);
 
       const tmpFile = `/tmp/learner-simulation_${courseCode}_${Date.now()}.md`;

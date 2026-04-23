@@ -30,6 +30,8 @@ async function generateCategoryLLMOrchestratorBrief(courseCode, query = {}) {
   const seedMin = specificSeeds ? specificSeeds[0] : (parseInt(query.seed_min) || 1);
   const seedMax = specificSeeds ? specificSeeds[specificSeeds.length - 1] : (parseInt(query.seed_max) || 150);
   const agentCount = parseInt(query.agents) || 6;
+  const mode = query.mode === 'lite' ? 'lite' : 'heavy';
+  const reviewerModel = mode === 'lite' ? 'sonnet' : 'opus';
 
   // Count phrases in scope
   let phraseCount;
@@ -103,8 +105,15 @@ You run this BEFORE the Step 7 learner simulation. The goal is to clean out cate
 
 ## Architecture
 
-- **${batches.length} Opus reviewers** (read-only) — each gets a seed batch, scans phrases + presentations, reports findings. Opus (not Sonnet) because these categories need careful judgement: awkwardness, subtle gender, nuanced meaning drift, and word-order preference are exactly the places where Sonnet produces noisier false positives.
+- **${batches.length} ${reviewerModel === 'opus' ? 'Opus' : 'Sonnet'} reviewers** (read-only) — each gets a seed batch, scans phrases + presentations, reports findings.${mode === 'lite' ? ' Sonnet and severity=severe-only because this is the lite pass: we accept some missed nuance in exchange for speed and lower cost. Use after a small redo or for courses Deborah can also review.' : ' Opus because these categories need careful judgement: awkwardness, subtle gender, nuanced meaning drift, and word-order preference are exactly the places where Sonnet produces noisier false positives.'}
 - **You** (Opus orchestrator) — verify each finding against your ${langName} knowledge, then decide the action per finding.
+
+${mode === 'lite' ? `## LITE MODE — rules for this run
+
+- Reviewers report **severe findings only**. Skip moderate and minor. "Severe" = the phrase teaches something wrong or would be misunderstood by a native; "moderate" and "minor" (awkward register, mild word-order preference) are not for this pass.
+- Fewer findings means less verification work. Don't chase nuance.
+- Goal: catch catastrophic bugs quickly. Polish comes from the heavy mode or from Deborah.
+` : ''}
 
 ## Phase 1: Review
 
@@ -126,13 +135,13 @@ curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
 
 Use the Agent tool. One call per reviewer, all in the same tool-use message:
 
-${batches.map(b => `**reviewer-${b.index}** (Opus, ${batchLabel(b)}):
+${batches.map(b => `**reviewer-${b.index}** (${reviewerModel === 'opus' ? 'Opus' : 'Sonnet'}, ${batchLabel(b)}):
 \`\`\`
 Agent tool:
   name: "reviewer-${b.index}"
   team_name: "${teamName}"
-  model: "opus"
-  prompt: "You are a category LLM reviewer. Read your brief and follow it exactly:\\n\\ncurl -s \\"${reviewerBriefUrl(b)}\\"\\n\\nThen work through every seed in your assignment."
+  model: "${reviewerModel}"
+  prompt: "You are a category LLM reviewer. Read your brief and follow it exactly:\\n\\ncurl -s \\"${reviewerBriefUrl(b)}${mode === 'lite' ? '&mode=lite' : ''}\\"\\n\\nThen work through every seed in your assignment."
 \`\`\``).join('\n\n')}
 
 ### Step 1.4: Process findings as they come in

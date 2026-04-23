@@ -1071,7 +1071,17 @@ All run on `production-api` (port 3470). Each is an async spawn — the endpoint
 
 Regenerates practice phrases for seeds that fell below the threshold (usually because deletes during fix steps thinned the LEGOs). Returns `{ok: true, job_id, message}`.
 
-Wait for `GET /api/build/seed-grid/{courseCode}` to show `under-threshold=0` before proceeding.
+**Before firing backfill, read the under-threshold seeds.** Deletion-driven under-thresholds often surface a structural problem — a LEGO that was thin *because* phrases kept failing review, not because of random bad luck. Fire backfill on a broken LEGO and you spend a build-team run on the same garbage input; iteration count goes up, quality stays flat.
+
+For each under-threshold seed, eyeball for:
+- **Reorder opportunity**: the thin LEGO is early, its remaining phrases quote vocabulary from the NEXT LEGO in the same seed. Swap `lego_index` and let backfill work with the prerequisites in place. (See "Fixing LEGO ordering" in the Remediation Guide.)
+- **Bad LEGO mapping**: the known/target pairing is off in a way that makes every phrase a synonym-struggle for the builder — e.g. `your` → `tua` standalone when the natural unit is `your sister` → `tua irmã`. Restructure the LEGO into a larger unit (M-LEGO with the noun) before backfilling.
+- **Redundant or absorbed LEGO**: the thin LEGO's meaning is already covered by a sibling LEGO in the same seed. Consider setting `is_new=false` so it reuses the sibling's phrases, or merge.
+- **Duplicate sense**: two LEGOs end up meaning the same thing (ZUT-like but for senses, not surface forms). Resolve the duplication before filling.
+
+Only once the structural issues are addressed should you hit the backfill endpoint. Then wait for `GET /api/build/seed-grid/{courseCode}` to show `under-threshold=0`.
+
+After backfill lands, **re-run final-pass on the affected seeds** (`POST /build/final-pass/{courseCode}?seeds=N,M,...`). If final-pass deletes more, loop: structural check → backfill → final-pass. The loop terminates when a final-pass cycle produces no new deletions.
 
 #### 6b. Component backfill (M-type LEGOs missing components)
 
@@ -1106,6 +1116,32 @@ Any phrase with `known_audio_id = null` or `target1_audio_id = null` after text 
 After one full pass (6a → 6b → 6c → 6d → 6e), re-run the scan. If new issues surfaced (e.g. backfill regenerated a phrase that introduces new vocab ordering violation), fix → re-run pipeline. Loop until the scan is clean AND the pipeline is stable.
 
 The signal for "ready for Deborah": 0 under-threshold, 0 flagged, final-pass complete, gender-prep complete, audio gen complete, scan-course report clean on mechanical checks.
+
+## When to go heavy vs lite
+
+**Default: lite mode for courses Deborah can review in her languages (en/es/de/fr/it/pt_br-ish)**. Deborah catches cumulative-texture and idiomatic issues better than the heavy LLM pipeline, for a fraction of the clock time. Running the full Step 6b + 7 on a course she'll review next is duplicative.
+
+**Heavy mode** (Opus reviewers on 6b, full 150-seed Step 7) earns its cost when:
+- The target language is outside Deborah's reach (Armenian, Japanese, Korean, Arabic, Chinese, Welsh minority variants, etc.). The LLM pipeline is the only line of defence.
+- First build of a new variant where nothing has been reviewed yet.
+- Final polish before beta/public release.
+
+**Lite mode** (Sonnet reviewers, severe-only findings, shorter sim) for everything else. Pass `?mode=lite` on the endpoints. The mechanical scan (Checks 1-17), deterministic auto-fixes, and one Sonnet final-pass run unchanged — those are always cheap and always worth running.
+
+## Re-verifying after fixes — affected seeds only
+
+When an edit changes phrases/LEGOs in a specific set of seeds, **re-verify only those seeds, not the whole course**. Running full-course passes after every fix multiplies clock time without catching issues outside the affected set.
+
+Pattern:
+
+1. Track which seeds were touched (by IDs or by filtering `updated_at` within the edit window).
+2. Run targeted final-pass: `POST /build/final-pass/:courseCode?seeds=N,M,...`.
+3. If backfill is needed (under-threshold count went up), run backfill — it already scopes itself to under-threshold seeds automatically.
+4. Run lite 6b on the touched seeds only: `POST /build/category-llm/:courseCode?seeds=N,M&mode=lite`.
+5. Skip learner sim unless the change was systemic (affected >30% of early seeds). Cumulative-texture impact of a narrow edit is usually local.
+6. Repeat until stable.
+
+The full-course run is for initial builds or after wide-pattern sweeps (EP→BR cleanup of 100+ phrases, e.g.). Targeted passes for everything else.
 
 ## Step 6b: Category LLM pre-check
 

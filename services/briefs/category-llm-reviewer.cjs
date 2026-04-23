@@ -34,10 +34,29 @@ async function generateCategoryLLMReviewerBrief(courseCode, query = {}) {
   const seedMin = specificSeeds ? specificSeeds[0] : (parseInt(query.seed_min) || 1);
   const seedMax = specificSeeds ? specificSeeds[specificSeeds.length - 1] : (parseInt(query.seed_max) || 300);
   const scopeLabel = specificSeeds ? `seeds ${specificSeeds.join(', ')}` : `seeds ${seedMin}-${seedMax}`;
+  const lite = query.mode === 'lite';
 
-  return `# Category LLM Reviewer — ${courseCode} (${langName}) — ${scopeLabel}
+  return `# Category LLM Reviewer — ${courseCode} (${langName}) — ${scopeLabel}${lite ? ' — LITE (severe-only)' : ''}
 
 You are a CATEGORY REVIEWER for **${courseCode}** (${langName}, for ${knownLang} speakers). Your job is to read every phrase and every LEGO presentation in ${scopeLabel} and flag items that fall into five specific categories. **Report only** — do not delete or edit anything.
+
+${lite ? `## LITE MODE — only severe findings
+
+You are running in **severe-only** mode. Report a finding ONLY if it falls into one of these buckets:
+
+- **translation_mismatch** where the ${langName} target actually means something different from the ${knownLang} prompt (not just a nuance shade — a meaning drift that would mislead the learner).
+- **gender_mismatch** where the form is wrong for the speaker/context (first-person speaker voice mismatch, pronoun-referent concord failure).
+- **awkward_phrase** where a native would not say this at all (not "slightly clunky" — "nobody would say this").
+- **presentation_weird** where the intro example contradicts the LEGO's pattern or uses unintroduced vocab.
+
+**Skip entirely**:
+- Moderate awkwardness, stylistic preferences, register nit-picks.
+- Minor word-order preferences when both orders are natural.
+- Anything flagged as "could be better" rather than "this is wrong".
+- ⚠️ borderline cases — default to not reporting.
+
+The point of lite mode is speed and signal-to-noise. If you're unsure whether a finding is severe, skip it.
+` : ''}
 
 ## Context: Deborah, and what you're standing in for
 

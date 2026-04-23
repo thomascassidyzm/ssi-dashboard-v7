@@ -16,7 +16,8 @@ async function generateLearnerSimulationBrief(courseCode, query = {}) {
   const supabase = getSupabase();
   const targetLang = getLanguageName(courseCode);
   const knownLang = getKnownLanguageName(courseCode);
-  const maxSeed = parseInt(query.max_seed) || 150;
+  const lite = query.mode === 'lite';
+  const maxSeed = parseInt(query.max_seed) || (lite ? 75 : 150);
 
   const { data: courseInfo } = await supabase
     .from('courses')
@@ -26,7 +27,7 @@ async function generateLearnerSimulationBrief(courseCode, query = {}) {
 
   const displayName = courseInfo?.display_name || courseCode;
 
-  return `# Learner Simulation — ${courseCode} (${displayName})
+  return `# Learner Simulation — ${courseCode} (${displayName})${lite ? ' — LITE' : ''}
 
 Working directory: ${process.cwd()}
 
@@ -37,6 +38,22 @@ You are roleplaying a **complete beginner** in ${targetLang}. You are fluent in 
 Read through seeds 1 to ${maxSeed} one at a time, in order. At each seed you (a) learn the new LEGOs introduced in that seed, then (b) attempt every practice phrase in that seed as if you were the learner. Track how each attempt makes you feel, note anything confusing, and produce a report at the end.
 
 **This is a REPORT-ONLY pass.** Do not delete, flag, or edit anything. No curl calls that mutate state. Only read.
+
+${lite ? `## LITE MODE — severe findings only
+
+You are running in **lite** mode. Goal: catch the 🚨 Problematic and 💔 Misleading items fast. Skip most ⚠️ Borderline detail.
+
+- Still rate each attempt internally so cumulative-density detection works.
+- But in the FINAL REPORT, only surface:
+  - All 💔 Misleading (every one).
+  - All 🚨 Problematic (every one).
+  - Nervousness clusters (2+ severe in 2-3 seeds).
+  - A 1-paragraph headline.
+- **Skip** the detailed Cat B/Borderline lists, pattern inconsistency notes, and methodology asides unless directly severe.
+- Aim for a report you can read in under 2 minutes.
+
+Purpose: a fast pulse-check after fixes, not a deep audit.
+` : ''}
 
 ## Why this matters
 
