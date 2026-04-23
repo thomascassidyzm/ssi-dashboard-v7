@@ -8577,6 +8577,47 @@ app.post('/api/admin/kill-apps', async (req, res) => {
   res.json({ ok: true, results })
 })
 
+// Memory stats that mean what a human expects.
+// os.freemem() on macOS only counts truly-free pages — file cache shows as
+// "used" even though it's instantly reclaimable, so the raw metric pegs at
+// 95-99% on a healthy machine. vm_stat gives us Activity Monitor's numbers:
+// wired + active + compressed = real "Memory Used"; the rest is cache.
+async function getMemStats() {
+  const os = require('os')
+  const totalBytes = os.totalmem()
+
+  if (os.platform() === 'darwin') {
+    try {
+      const { stdout } = await execFileAsync('vm_stat')
+      const pageSizeMatch = stdout.match(/page size of (\d+) bytes/)
+      const pageSize = pageSizeMatch ? parseInt(pageSizeMatch[1], 10) : 16384
+      const grab = (label) => {
+        const m = stdout.match(new RegExp(`^${label}:\\s+(\\d+)\\.?\\s*$`, 'm'))
+        return m ? parseInt(m[1], 10) : 0
+      }
+      const wired       = grab('Pages wired down')
+      const active      = grab('Pages active')
+      const compressor  = grab('Pages occupied by compressor')
+      const usedBytes   = Math.min(totalBytes, (wired + active + compressor) * pageSize)
+      return {
+        total_bytes: totalBytes,
+        used_bytes: usedBytes,
+        free_bytes: totalBytes - usedBytes,
+        used_percent: Math.round((usedBytes / totalBytes) * 1000) / 10
+      }
+    } catch (_) { /* fall through to os.freemem() */ }
+  }
+
+  const freeMem = os.freemem()
+  const usedMem = totalBytes - freeMem
+  return {
+    total_bytes: totalBytes,
+    used_bytes: usedMem,
+    free_bytes: freeMem,
+    used_percent: Math.round((usedMem / totalBytes) * 1000) / 10
+  }
+}
+
 // Check reboot readiness — whether PM2 will auto-resurrect after reboot.
 // Readable without sudo; all paths are in the current user's space or are
 // root-owned files whose *existence* is the only bit we need.
@@ -8618,19 +8659,11 @@ async function checkRebootReadiness() {
 // Read-only; no auth (same posture as /health).
 app.get('/api/admin/system-health', async (req, res) => {
   const os = require('os')
-  const totalMem = os.totalmem()
-  const freeMem = os.freemem()
-  const usedMem = totalMem - freeMem
   const health = {
     hostname: os.hostname(),
     platform: os.platform(),
     uptime_seconds: Math.round(os.uptime()),
-    mem: {
-      total_bytes: totalMem,
-      used_bytes: usedMem,
-      free_bytes: freeMem,
-      used_percent: Math.round((usedMem / totalMem) * 1000) / 10
-    },
+    mem: await getMemStats(),
     load_avg: os.loadavg(),
     cpu_count: os.cpus().length,
     pm2: [],

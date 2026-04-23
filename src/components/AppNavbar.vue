@@ -388,6 +388,12 @@ onMounted(() => {
   flex-shrink: 0;
 }
 
+.navbar-env-deploy {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .course-summary {
   font-size: 0.75rem;
   color: var(--color-paper-muted, #64748b);
