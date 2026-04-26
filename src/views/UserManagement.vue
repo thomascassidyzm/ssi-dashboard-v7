@@ -356,6 +356,7 @@
 <script setup>
 import { ref, computed, onMounted, defineComponent, h } from 'vue'
 import { useAuth } from '../composables/useAuth'
+import { useCourses } from '../composables/useCourses'
 import { getApiUrl } from '../services/api.js'
 import { getAllCourses } from '../services/supabase.js'
 
@@ -439,6 +440,7 @@ const CourseSearchPicker = defineComponent({
 })
 
 const { getAccessToken, isAdmin, accessibleCourses } = useAuth()
+const { getCourseName } = useCourses()
 
 const availableCourses = ref([])
 const courseMap = ref({})
@@ -448,7 +450,7 @@ async function loadAvailableCourses() {
     const courses = await getAllCourses()
     availableCourses.value = courses.map(c => ({
       code: c.course_code,
-      display: c.display_name || c.course_code
+      display: getCourseName(c.course_code)
     })).sort((a, b) => a.display.localeCompare(b.display))
     courseMap.value = Object.fromEntries(
       availableCourses.value.map(c => [c.code, c.display])

@@ -9,6 +9,9 @@
 
 import { ref, computed, reactive, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
+
+const { getCourseName } = useCourses()
 
 // Singleton state for the entire autocue session
 const state = reactive({
@@ -607,7 +610,7 @@ export function useAutocueState() {
       if (courseRes.ok) {
         const courseData = await courseRes.json()
         const course = courseData.course || courseData
-        state.courseName = course.display_name || course.name || courseCode
+        state.courseName = getCourseName(courseCode)
         state.knownLanguage = course.known_lang || 'English'
         state.targetLanguage = course.target_lang || 'Unknown'
       }
@@ -668,7 +671,7 @@ export function useAutocueState() {
       if (courseRes.ok) {
         const courseData = await courseRes.json()
         const course = courseData.course || courseData
-        state.courseName = course.display_name || course.name || courseCode
+        state.courseName = getCourseName(courseCode)
         state.knownLanguage = course.known_lang || 'English'
         state.targetLanguage = course.target_lang || 'Unknown'
       }

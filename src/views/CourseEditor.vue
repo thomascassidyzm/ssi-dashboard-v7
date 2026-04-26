@@ -22,7 +22,7 @@
             </h1>
             <p class="text-slate-400">
               <template v-if="course.isEmpty">
-                {{ course.display_name || course.name }} • <span class="text-amber-400">Ready to generate</span>
+                {{ getCourseName(course.course_code) }} • <span class="text-amber-400">Ready to generate</span>
               </template>
               <template v-else>
                 {{ course.total_seeds }} seeds • Version {{ course.version }}
@@ -69,7 +69,7 @@
           <div class="text-6xl mb-4">🌱</div>
           <h2 class="text-2xl font-bold text-emerald-400 mb-2">New Course Created</h2>
           <p class="text-slate-400 mb-6 max-w-lg mx-auto">
-            <strong>{{ course.display_name || course.name }}</strong> has been created but has no content yet.
+            <strong>{{ getCourseName(course.course_code) }}</strong> has been created but has no content yet.
             Start the generation pipeline to create translations and LEGOs.
           </p>
           <div class="flex flex-col items-center gap-4">
@@ -1032,6 +1032,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import api from '../services/api'
+import { useCourses } from '../composables/useCourses'
 import { GITHUB_CONFIG } from '../config/github'
 
 import LegoBasketViewer from '../components/LegoBasketViewer.vue'
@@ -1054,6 +1055,8 @@ const generatorLink = computed(() => {
   }
   return '/generate'
 })
+
+const { getCourseName } = useCourses()
 
 const course = ref(null)
 const translations = ref([])

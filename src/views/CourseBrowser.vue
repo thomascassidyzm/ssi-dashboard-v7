@@ -192,7 +192,7 @@ import { useAuth } from '../composables/useAuth'
 
 const toast = useToast()
 const { canAccessCourse } = useAuth()
-const { getCourseName, courseDisplayNames } = useCourses()
+const { getCourseName } = useCourses()
 const courses = ref([])
 const loading = ref(true)
 const loadingStats = ref(false)
@@ -291,9 +291,6 @@ async function loadCourses() {
         seed_pairs: 0, lego_pairs: 0, phrases: 0,
         stats: { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0 }
       }))
-      for (const c of courses.value) {
-        if (c.display_name && c.course_code) courseDisplayNames[c.course_code] = c.display_name
-      }
       loading.value = false
 
       // Phase 2: Load all stats in one RPC call
@@ -326,9 +323,6 @@ async function loadCourses() {
       if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
       const data = await res.json()
       courses.value = data.courses || []
-      for (const c of courses.value) {
-        if (c.display_name && c.course_code) courseDisplayNames[c.course_code] = c.display_name
-      }
       loading.value = false
 
       // Phase 2: Load stats per-course in background (trickle in)
