@@ -8707,8 +8707,14 @@ app.post('/api/admin/restart-machine', async (req, res) => {
     }
   }
   // Respond before the reboot kicks in
-  res.json({ ok: true, message: 'Rebooting machine in 5 seconds...' })
+  res.json({ ok: true, message: 'Rebooting machine in 5 seconds (killing GUI apps first)...' })
   setTimeout(async () => {
+    // Kill GUI apps that block reboot with "Quit anyway?" dialogs (iTerm2 with
+    // running shells, Chrome with unsaved tabs). killall is non-fatal — we
+    // ignore failures (app not running) and proceed to reboot.
+    for (const app of ['iTerm2', 'Google Chrome']) {
+      try { await execFileAsync('killall', [app]) } catch {}
+    }
     try {
       await execFileAsync('sudo', ['reboot'])
     } catch (e) {
