@@ -35,9 +35,10 @@ export function getApiUrl() {
     return ''  // Relative URL - ngrok tunnel handles it
   }
 
-  // 4. popty.app (Vercel) - default to Tom's ngrok tunnel
+  // 4. popty.app (Vercel) - default to the SSi machine (always-on company server).
+  // Override via EnvironmentSwitcher to point at a dev box (e.g. popty.ngrok.app).
   if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') {
-    return 'https://popty.ngrok.app'
+    return 'https://ssi-machine.ngrok.app'
   }
 
   // 5. Other static hosting - requires EnvironmentSwitcher

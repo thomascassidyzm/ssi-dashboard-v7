@@ -74,6 +74,12 @@
           @click="killApps"
           title="Kill Chrome + iTerm2 to free RAM on the remote machine"
         >{{ busy.__killapps ? 'Killing…' : 'Free RAM (kill Chrome + iTerm)' }}</button>
+        <button
+          class="rc-btn-wide rc-btn-restart-all"
+          :disabled="busy.__restartall"
+          @click="restartAll"
+          title="pm2 restart all — restarts every PM2 process on the remote machine"
+        >{{ busy.__restartall ? 'Restarting all…' : 'Restart all PM2 services' }}</button>
       </div>
 
       <div v-if="health?.reboot_readiness" class="rc-section rc-readiness">
@@ -222,6 +228,25 @@ async function killApps() {
     flash(`Kill failed: ${e.message}`, true)
   } finally {
     const next = { ...busy.value }; delete next.__killapps; busy.value = next
+  }
+}
+
+async function restartAll() {
+  if (!window.confirm('Restart every PM2 process on the remote machine? Services will blip for ~5–10 seconds.')) return
+  busy.value = { ...busy.value, __restartall: true }
+  try {
+    const r = await authedFetch('/api/admin/pm2/fix', {
+      method: 'POST',
+      timeout: 10000
+    })
+    const data = await r.json().catch(() => ({}))
+    if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`)
+    flash(data.message || 'Restart-all initiated')
+    setTimeout(fetchHealth, 6000)
+  } catch (e) {
+    flash(`Restart-all failed: ${e.message}`, true)
+  } finally {
+    const next = { ...busy.value }; delete next.__restartall; busy.value = next
   }
 }
 
@@ -379,6 +404,7 @@ onBeforeUnmount(() => {
 }
 .rc-btn-wide:hover:not(:disabled) { background: #475569; }
 .rc-btn-wide:disabled { opacity: 0.5; cursor: not-allowed; }
+.rc-btn-restart-all { margin-top: 0.4rem; }
 
 .rc-danger { display: flex; gap: 0.5rem; align-items: center; }
 .rc-btn-danger {
