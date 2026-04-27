@@ -364,7 +364,12 @@ interface ScriptItem {
   legoId: string
   legoIndex: number
   seedId: string
-  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate' | 'listening' | 'component_intro' | 'component_practice' | 'listen_intro' | 'listen_outro'
+  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate' | 'listening' | 'component_intro' | 'component_practice' | 'listen_intro' | 'listen_outro' | 'pod'
+  // Pod-specific (Layer 2 round-end lap)
+  podSentenceIdx?: number
+  podStage?: number
+  podPlayRole?: 'slow' | 'trans' | 'fast' | 'fast2x'
+  playbackSpeed?: number
   phrase_id?: string
   known_text: string
   target_text: string
@@ -706,6 +711,7 @@ const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?
     case 'listening': return 'LISTEN'
     case 'listen_intro': return 'LISTEN ▸'
     case 'listen_outro': return '◂ LISTEN'
+    case 'pod': return 'POD'
     default: return type
   }
 }
@@ -722,6 +728,7 @@ const getTypeBadgeClass = (type: string): string => {
     case 'listening': return 'bg-pink-500 bg-opacity-30 text-pink-300'
     case 'listen_intro':
     case 'listen_outro': return 'bg-fuchsia-500 bg-opacity-30 text-fuchsia-200'
+    case 'pod': return 'bg-orange-500 bg-opacity-30 text-orange-300'
     default: return 'bg-slate-600 text-slate-400'
   }
 }
@@ -731,6 +738,7 @@ const getItemBgClass = (item: ScriptItem): string => {
   if (item.type === 'component_intro') return 'bg-violet-900 bg-opacity-10'
   if (item.type === 'listening') return 'bg-pink-900 bg-opacity-10'
   if (item.type === 'listen_intro' || item.type === 'listen_outro') return 'bg-fuchsia-900 bg-opacity-10'
+  if (item.type === 'pod') return 'bg-orange-900 bg-opacity-10'
   if (!item.hasAudio && item.type !== 'intro' && item.type !== 'component_intro') return 'bg-amber-900 bg-opacity-10'
   return ''
 }

@@ -437,6 +437,40 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const listenOutroAudio = bookendByRole.get('bookend_listen_outro') || null
   const hasBookends = !!(listenIntroAudio && listenOutroAudio)
 
+  // Pre-fetch Pod 0 sentences for Layer 2 round-end lap. Mirrors the
+  // matching fetch in generateLearningScript.ts. Pod ID: ${course}:pod-0.
+  const { data: podRows, error: podErr } = await supabase
+    .from('listening_pod_sentences')
+    .select('global_order, target_text, known_text, target_audio_id, known_audio_id')
+    .eq('pod_id', `${courseCode}:pod-0`)
+    .order('global_order', { ascending: true })
+  if (podErr) logger.warn('Failed to load pod sentences:', podErr.message)
+  const podSentences = podRows || []
+  const hasPods = podSentences.length > 0
+
+  // Pod-lap mechanics (matches the visualiser at ~/Desktop/listening-playground.html)
+  const POD_ACTIVATION_ROUND = 150
+  const POD_STAGE_PLAYLIST = {
+    1: ['slow', 'trans', 'slow', 'fast'],
+    2: ['slow', 'trans', 'fast'],
+    3: ['slow', 'trans', 'fast', 'fast'],
+    4: ['fast', 'trans', 'fast'],
+    5: ['slow', 'fast'],
+    6: ['fast', 'fast'],
+    7: ['fast2x'],
+  }
+  function podStageFor(entry, current) {
+    const alive = current - entry + 1
+    if (alive < 1) return null
+    if (alive <= 3) return { stage: 1, iter: alive }
+    if (alive <= 6) return { stage: 2, iter: alive - 3 }
+    if (alive <= 9) return { stage: 3, iter: alive - 6 }
+    if (alive <= 12) return { stage: 4, iter: alive - 9 }
+    if (alive <= 15) return { stage: 5, iter: alive - 12 }
+    if (alive <= 18) return { stage: 6, iter: alive - 15 }
+    return { stage: 7, iter: null }
+  }
+
   const rounds = []
   const allItems = []
 
@@ -844,13 +878,76 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
+    // Phase 7: POD 0 round-end lap. Mirrors the matching block in
+    // ssi-learning-app generateLearningScript.ts. Self-bookended (sits
+    // immediately after the LISTEN cluster's bookends if both fire).
+    if (hasPods) {
+      const podRound = n - POD_ACTIVATION_ROUND + 1
+      if (podRound >= 1) {
+        const activeCount = Math.min(podRound, podSentences.length)
+        const podPlays = []
+        for (let i = 1; i <= activeCount; i++) {
+          const sentence = podSentences[i - 1]
+          if (!sentence.target_audio_id) continue
+          const stageInfo = podStageFor(i, podRound)
+          if (!stageInfo) continue
+          for (const playRole of POD_STAGE_PLAYLIST[stageInfo.stage]) {
+            if (playRole === 'trans' && !sentence.known_audio_id) continue
+            podPlays.push({ i, sentence, playRole, stage: stageInfo.stage })
+          }
+        }
+        if (podPlays.length > 0) {
+          if (hasBookends) {
+            roundItems.push({
+              roundNumber: n,
+              type: 'listen_intro',
+              known_text: listenIntroAudio.text,
+              target_text: '',
+              known_audio_uuid: listenIntroAudio.id,
+              hasAudio: true,
+            })
+          }
+          for (const { i, sentence, playRole, stage } of podPlays) {
+            const speed =
+              playRole === 'slow' ? 0.8 :
+              playRole === 'fast' ? 1.6 :
+              playRole === 'fast2x' ? 2.0 : 1.0
+            const isTrans = playRole === 'trans'
+            roundItems.push({
+              roundNumber: n,
+              type: 'pod',
+              podSentenceIdx: i,
+              podStage: stage,
+              podPlayRole: playRole,
+              known_text: isTrans ? sentence.known_text : '',
+              target_text: isTrans ? '' : sentence.target_text,
+              known_audio_uuid: isTrans ? sentence.known_audio_id : null,
+              target1_audio_uuid: isTrans ? null : sentence.target_audio_id,
+              playbackSpeed: speed,
+              hasAudio: true,
+            })
+          }
+          if (hasBookends) {
+            roundItems.push({
+              roundNumber: n,
+              type: 'listen_outro',
+              known_text: listenOutroAudio.text,
+              target_text: '',
+              known_audio_uuid: listenOutroAudio.id,
+              hasAudio: true,
+            })
+          }
+        }
+      }
+    }
+
     // Remove consecutive duplicates
     const dedupedItems = []
     let lastItem = null
 
     for (const item of roundItems) {
       if (item.type === 'intro' || item.type === 'debut' || item.type === 'component_intro' ||
-          item.type === 'listen_intro' || item.type === 'listen_outro') {
+          item.type === 'listen_intro' || item.type === 'listen_outro' || item.type === 'pod') {
         dedupedItems.push(item)
         continue
       }
