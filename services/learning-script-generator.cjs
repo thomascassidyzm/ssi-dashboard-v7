@@ -449,7 +449,24 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const hasPods = podSentences.length > 0
 
   // Pod-lap mechanics (matches the visualiser at ~/Desktop/listening-playground.html)
+  // Per Aran 2026-04-27: listening fires every 3 main rounds, alternating
+  // LISTEN cluster ↔ pod lap. Each layer fires every 6 main rounds.
+  // Pod stage progression ticks per pod firing, NOT per main round.
   const POD_ACTIVATION_ROUND = 150
+  const LISTENING_ROTATION_INTERVAL = 3
+  function listeningSlotForRound(round) {
+    if (round < 1) return 'none'
+    if (round % LISTENING_ROTATION_INTERVAL !== 0) return 'none'
+    if (!hasPods || round < POD_ACTIVATION_ROUND) return 'listen'
+    const slotIndex = Math.floor((round - POD_ACTIVATION_ROUND) / LISTENING_ROTATION_INTERVAL)
+    return slotIndex % 2 === 0 ? 'listen' : 'pod'
+  }
+  function podRoundForMainRound(mainRound) {
+    const firstPodMainRound = POD_ACTIVATION_ROUND + LISTENING_ROTATION_INTERVAL
+    if (mainRound < firstPodMainRound) return 0
+    const podFiringInterval = LISTENING_ROTATION_INTERVAL * 2
+    return Math.floor((mainRound - firstPodMainRound) / podFiringInterval) + 1
+  }
   const POD_STAGE_PLAYLIST = {
     1: ['slow', 'trans', 'slow', 'fast'],
     2: ['slow', 'trans', 'fast'],
@@ -811,14 +828,14 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // For each graduation trigger, play ONE batch (rotating)
-    for (let g = 0; g < newGraduationsThisRound.length; g++) {
-      if (activeBatchCount === 0) break
+    // Emit LISTEN cluster only on LISTEN rotation slots (every 3rd round,
+    // alternating with pod lap post-activation). One batch (rotated) is
+    // played; graduation events accumulate into batches but no longer
+    // directly trigger emission.
+    if (listeningSlotForRound(n) === 'listen' && activeBatchCount > 0) {
       const batchIdx = rotationIndex % activeBatchCount
       const batch = listeningBatches[batchIdx]
-      rotationIndex++
-
-      if (batch.length === 0) continue
+      if (batch.length > 0) rotationIndex++
 
       // Build the listening items first; only wrap with bookends if we
       // actually emitted any (a batch can be empty if seeds have no audio).
@@ -831,7 +848,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         const seedData = seedMap.get(batchSeedNum)
         if (!seedData) continue
 
-        // Look up audio directly from course_audio (pre-loaded)
         const seedAudioUuid = seedAudioMap.get(seedData.target_text) || null
 
         for (const speed of speeds) {
@@ -857,9 +873,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
             type: 'listen_intro',
             known_text: listenIntroAudio.text,
             target_text: '',
-            // Snake-case `known_audio_uuid` matches the rest of the generator
-            // and the playerItems mapper in LearningJourneyView.vue, which
-            // reads it into `sourceId` for the QA preview player's prompt phase.
             known_audio_uuid: listenIntroAudio.id,
             hasAudio: true,
           })
@@ -879,10 +892,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     }
 
     // Phase 7: POD 0 round-end lap. Mirrors the matching block in
-    // ssi-learning-app generateLearningScript.ts. Self-bookended (sits
-    // immediately after the LISTEN cluster's bookends if both fire).
-    if (hasPods) {
-      const podRound = n - POD_ACTIVATION_ROUND + 1
+    // ssi-learning-app generateLearningScript.ts. Fires only on pod
+    // rotation slots (every 6th main round post-activation, offset by 3
+    // from LISTEN slots).
+    if (hasPods && listeningSlotForRound(n) === 'pod') {
+      const podRound = podRoundForMainRound(n)
       if (podRound >= 1) {
         const activeCount = Math.min(podRound, podSentences.length)
         const podPlays = []
