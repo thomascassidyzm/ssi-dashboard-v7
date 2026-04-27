@@ -32,6 +32,7 @@
         </span>
         <div class="navbar-env-deploy">
           <EnvironmentSwitcher />
+          <RemoteControl />
         </div>
         <CourseSwitcherDropdown />
         <div v-if="isAuthenticated" class="user-menu" ref="userMenuRef">
@@ -104,6 +105,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useCourses } from '../composables/useCourses'
 import { useAuth } from '../composables/useAuth'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
+import RemoteControl from './RemoteControl.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 
 const route = useRoute()
@@ -384,6 +386,12 @@ onMounted(() => {
   align-items: center;
   gap: 1rem;
   flex-shrink: 0;
+}
+
+.navbar-env-deploy {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .course-summary {

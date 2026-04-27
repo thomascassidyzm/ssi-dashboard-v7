@@ -168,6 +168,100 @@ async function discoverAzureVoices(languageCode) {
 }
 
 /**
+ * xAI TTS voices — known, static list.
+ *
+ * xAI has 5 voices that each work across 20+ languages. Unlike Azure (where
+ * voices are locale-specific), xAI voices are inherently multilingual — the
+ * target language is a per-call parameter, not a property of the voice.
+ *
+ * Gender/accent characterisations below are best-guess from the launch
+ * materials (xAI has not published per-voice descriptions). Users should
+ * preview before committing.
+ *
+ * Languages officially supported (per xAI docs, April 2026 launch):
+ *   en, es, fr, de, it, pt, pt-BR, nl, ru, zh, ja, ko, vi, hi, bn, ar-EG,
+ *   ar-SA, ar-AE, tr, pl — plus "auto" fallback with variable quality for
+ *   additional languages.
+ */
+const XAI_VOICES = [
+  { id: 'eve', name: 'Eve',  gender: 'Female',  notes: 'Default; warm, conversational' },
+  { id: 'ara', name: 'Ara',  gender: 'Female',  notes: 'Alternative female voice' },
+  { id: 'leo', name: 'Leo',  gender: 'Male',    notes: 'Standard male voice' },
+  { id: 'rex', name: 'Rex',  gender: 'Male',    notes: 'Deeper male voice' },
+  { id: 'sal', name: 'Sal',  gender: 'Neutral', notes: 'Gender-neutral option' },
+];
+
+const XAI_OFFICIAL_LANGUAGES = [
+  'en', 'es', 'fr', 'de', 'it', 'pt', 'pt-BR', 'nl', 'ru',
+  'zh', 'ja', 'ko', 'vi', 'hi', 'bn',
+  'ar-EG', 'ar-SA', 'ar-AE',
+  'tr', 'pl',
+];
+
+/**
+ * Discover xAI voices available for a language.
+ *
+ * Since xAI voices are multilingual, this returns the same 5 voices regardless
+ * of language. The language code is recorded per voice so the voice picker UI
+ * knows what BCP-47 tag to send at generation time.
+ *
+ * For languages NOT in the official list, voices are still returned but
+ * flagged `quality: 'fallback'` since xAI's auto-detect path is variable.
+ *
+ * @param {string} languageCode - ISO 639-3 or ISO 639-1 code
+ * @returns {Promise<Array>} Array of voice objects
+ */
+async function discoverXaiVoices(languageCode) {
+  const bcp47 = toBcp47(languageCode);
+  const isOfficial = XAI_OFFICIAL_LANGUAGES.includes(bcp47) ||
+                     XAI_OFFICIAL_LANGUAGES.some(l => l.split('-')[0] === bcp47.split('-')[0]);
+
+  return XAI_VOICES.map(v => ({
+    id: v.id,
+    name: v.name,
+    displayName: v.name,
+    gender: v.gender,
+    locale: bcp47,
+    localeName: bcp47,
+    voiceType: 'Multilingual',
+    styles: [],
+    secondaryLocales: XAI_OFFICIAL_LANGUAGES.filter(l => l !== bcp47),
+    provider: 'xai',
+    quality: isOfficial ? 200 : 50,  // official > auto-detect fallback
+    notes: isOfficial ? v.notes : `${v.notes} (auto-detect fallback for ${bcp47} — quality may vary)`,
+  }));
+}
+
+/**
+ * Convert a language code to a BCP-47 tag for xAI.
+ * - 'spa' / 'es' / 'es-ES' → 'es'
+ * - 'por_br' / 'pt-BR' → 'pt-BR'
+ * - 'cmn' / 'zho' → 'zh'
+ * - 'ara_eg' → 'ar-EG'
+ */
+function toBcp47(languageCode) {
+  if (!languageCode) return 'auto';
+  const lc = languageCode.toLowerCase();
+  // Chinese variants
+  if (lc === 'cmn' || lc === 'zho') return 'zh';
+  // Portuguese Brazil
+  if (lc === 'por_br' || lc === 'pt_br' || lc === 'pt-br') return 'pt-BR';
+  // Arabic dialects
+  if (lc.startsWith('ara_') || lc.startsWith('ar_')) {
+    const dialect = lc.split('_')[1];
+    if (dialect) return `ar-${dialect.toUpperCase()}`;
+    return 'ar';
+  }
+  // Strip dialect suffixes (spa_mx → spa, por_br → pt-BR handled above)
+  const base = lc.includes('_') ? lc.split('_')[0] : lc.split('-')[0];
+  // Convert legacy ISO 639-3 to ISO 639-1 where needed
+  const map = { spa: 'es', eng: 'en', fra: 'fr', deu: 'de', ita: 'it',
+                por: 'pt', jpn: 'ja', kor: 'ko', nld: 'nl', rus: 'ru',
+                vie: 'vi', hin: 'hi', ben: 'bn', tur: 'tr', pol: 'pl' };
+  return map[base] || base;
+}
+
+/**
  * Calculate voice priority score for sorting/filtering
  *
  * This is NOT a quality score - we can't judge if a voice sounds natural.
@@ -384,11 +478,15 @@ function createVoiceEntry(voice, languageCode) {
 
 module.exports = {
   discoverAzureVoices,
+  discoverXaiVoices,
   selectBestVoices,
   getRecommendationReason,
   getSampleSentences,
   generateVoiceSamples,
   createVoiceEntry,
   calculateVoiceQuality,
-  getLocalePrefix  // Use language-code-service for full mapping
+  getLocalePrefix,  // Use language-code-service for full mapping
+  toBcp47,          // For mapping SSi language codes to xAI BCP-47
+  XAI_VOICES,
+  XAI_OFFICIAL_LANGUAGES,
 };

@@ -32,6 +32,7 @@ const { bumpCourseVersion } = require('../shared/course-version.cjs')
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
+const { toBcp47 } = require('../voice-discovery-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
 const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
@@ -59,6 +60,23 @@ const supabase = createClient(
 )
 
 const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
+
+/**
+ * Get the effective release target for a course.
+ * Rule: if a seed has been decomposed (has LEGOs), it needs audio.
+ * Uses the actual max decomposed seed_number, not a configured value.
+ */
+async function getEffectiveReleaseTarget(courseCode, courseSeedCount) {
+  const { data } = await supabase
+    .from('course_legos')
+    .select('seed_number')
+    .eq('course_code', courseCode)
+    .order('seed_number', { ascending: false })
+    .limit(1)
+  const maxDecomposed = data?.[0]?.seed_number || 0
+  // Use the higher of: actual decomposed seeds vs configured seed_count vs 260 fallback
+  return Math.max(maxDecomposed, courseSeedCount || 0, 260)
+}
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 
 // =============================================================================
@@ -909,7 +927,7 @@ async function planHandler(req, res) {
       return res.status(404).json({ error: 'Course not found' })
     }
 
-    const releaseTarget = course.seed_count || 260
+    const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
 
     // Step 1: Skip linking in plan — backfill already ran, generate endpoint links after each batch.
     // Calling link_all_audio_ids here was causing statement timeouts on large courses.
@@ -1173,9 +1191,9 @@ app.post('/generate/:courseCode', async (req, res) => {
       })
     }
 
-    // Release target - only generate audio for seeds up to this number (MVP = 260)
-    // This must match the /plan endpoint logic for consistent results
-    const releaseTarget = course.seed_count || 260
+    // Release target — generate audio for all decomposed seeds
+    // Uses actual max decomposed seed_number, not a configured cap
+    const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
 
     const PAGE_SIZE = 1000  // Used by component presentation section below
 
@@ -1737,11 +1755,20 @@ app.post('/generate/:courseCode', async (req, res) => {
           voiceId: voiceName,
           speed
         }))
+      } else if (provider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceName,
+          language: toBcp47(item.language),
+        }))
       } else {
         throw new Error(`Unknown TTS provider: ${provider}`)
       }
 
       // Master audio: normalize loudness and extract duration
+      // Note: xAI does not expose an API-level speed parameter, so xAI audio
+      // is always generated at natural speed. Downstream cadence playback speed
+      // adjustments are applied in the player, not at TTS time.
       const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
 
       // Generate UUID for S3 key (UPPERCASE to match existing S3 convention)
@@ -2116,6 +2143,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
+        }))
+      } else if (voiceProvider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceId,
+          language: toBcp47(language),
         }))
       } else {
         throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -3272,6 +3305,12 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         voiceId: voiceId,
         speed
       }))
+    } else if (voiceProvider === 'xai') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+        apiKey: process.env.XAI_API_KEY,
+        voiceId: voiceId,
+        language: toBcp47(lang),
+      }))
     } else {
       throw new Error(`Unknown TTS provider: ${voiceProvider}`)
     }
@@ -3641,6 +3680,12 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceName, speed
+        }))
+      } else if (provider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceName,
+          language: toBcp47(item.language),
         }))
       } else {
         throw new Error(`Unknown TTS provider: ${provider}`)
@@ -4203,6 +4248,328 @@ app.post('/splice-components/:courseCode', async (req, res) => {
   } catch (err) {
     endWork()
     logger.error('[Splice] Error:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// =============================================================================
+// POD AUDIO GENERATION (Layer 2 listening pods)
+// =============================================================================
+// Uses the same masterAudio + S3 + course_audio pipeline as course audio.
+// Pod sentences live in listening_pod_sentences; target audio uses the
+// per-pod speaker->voice mapping from listening_pods.speakers, known audio
+// uses the course-wide known voice from courses.voice_config.
+
+const POD_CHARS_TO_COST = 4.20 / 1_000_000  // xAI pricing; near-identical to Azure scale, rough estimate
+
+/**
+ * Resolve the voice config for a pod sentence's target audio.
+ * Returns { voice_id, provider, gender } from pod.speakers for this speaker,
+ * falling back to pod.speakers._default, falling back to xAI 'sal'.
+ */
+function resolvePodSpeakerVoice(podSpeakers, speaker) {
+  const mapping = podSpeakers || {}
+  return mapping[speaker]
+      || mapping._default
+      || { voice_id: 'sal', provider: 'xai', gender: 'n' }
+}
+
+/**
+ * Build the TTS config for a single audio generation call.
+ */
+function buildPodTTSConfig(voice, language) {
+  const base = { voiceId: voice.voice_id, speed: 1.0 }
+  if (voice.provider === 'xai') {
+    base.apiKey = process.env.XAI_API_KEY
+    base.language = toBcp47(language)
+  } else if (voice.provider === 'elevenlabs') {
+    base.apiKey = process.env.ELEVENLABS_API_KEY
+  } else {
+    // azure (or unspecified)
+    base.subscriptionKey = process.env.AZURE_SPEECH_KEY
+    base.region = process.env.AZURE_SPEECH_REGION || 'westeurope'
+    base.voiceName = voice.voice_id
+  }
+  return base
+}
+
+/**
+ * Look up existing course_audio by (course_code, text_normalized, language, role, voice_id).
+ * Returns the audio row's id if a match exists, else null.
+ */
+async function findExistingAudio(courseCode, text, language, role, voiceId) {
+  const textNorm = normalizeForAudio(text)
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('id')
+    .eq('course_code', courseCode)
+    .eq('text_normalized', textNorm)
+    .eq('language', language)
+    .eq('role', role)
+    .eq('voice_id', voiceId)
+    .limit(1)
+  if (error) {
+    logger.warn(`[Pod] findExistingAudio: ${error.message}`)
+    return null
+  }
+  return data?.[0]?.id || null
+}
+
+/**
+ * Generate one audio clip and insert into course_audio. Returns the audio_id.
+ */
+async function generatePodAudio({ courseCode, text, language, role, voice }) {
+  // Reuse by text+voice hash
+  const existing = await findExistingAudio(courseCode, text, language, role, voice.voice_id)
+  if (existing) return { id: existing, reused: true }
+
+  const ttsConfig = buildPodTTSConfig(voice, language)
+  const { audioBuffer } = await ttsService.generateWithRetry(text, voice.provider || 'azure', ttsConfig)
+  const { buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer)
+
+  const audioId = uuidv4().toUpperCase()
+  const s3Key = `mastered/${audioId}.mp3`
+  await s3.send(new PutObjectCommand({
+    Bucket: S3_BUCKET,
+    Key: s3Key,
+    Body: masteredBuffer,
+    ContentType: 'audio/mpeg',
+  }))
+
+  const { data: inserted, error: insertError } = await supabase
+    .from('course_audio')
+    .upsert({
+      course_code: courseCode,
+      text,
+      text_normalized: normalizeForAudio(text),
+      language,
+      role,
+      voice_id: voice.voice_id,
+      origin: 'tts',
+      s3_key: s3Key,
+      duration_ms: durationMs,
+    }, {
+      onConflict: 'course_code,text_normalized,language,role',
+    })
+    .select('id')
+    .single()
+
+  if (insertError) throw new Error(`course_audio insert failed: ${insertError.message}`)
+  return { id: inserted.id, reused: false, bytes: masteredBuffer.length, chars: text.length }
+}
+
+/**
+ * Load pod(s) + their sentences for a course. If podIds specified, filter.
+ */
+async function loadPodsForPlan(courseCode, podIds) {
+  let podQuery = supabase.from('listening_pods').select('*').eq('course_code', courseCode)
+  if (podIds && podIds.length) podQuery = podQuery.in('id', podIds)
+  const { data: pods, error: podsErr } = await podQuery
+  if (podsErr) throw new Error(`load pods: ${podsErr.message}`)
+
+  // Load sentences for these pods in one go
+  if (!pods || pods.length === 0) return []
+  const { data: sentences, error: sErr } = await supabase
+    .from('listening_pod_sentences')
+    .select('*')
+    .in('pod_id', pods.map(p => p.id))
+    .order('pod_id').order('global_order')
+  if (sErr) throw new Error(`load sentences: ${sErr.message}`)
+
+  const byPod = {}
+  for (const p of pods) byPod[p.id] = { ...p, sentences: [] }
+  for (const s of sentences) byPod[s.pod_id]?.sentences.push(s)
+  return Object.values(byPod)
+}
+
+/**
+ * Get the course's known/target languages + known voice config.
+ */
+async function getCourseContext(courseCode) {
+  const { data: course, error } = await supabase
+    .from('courses').select('known_lang, target_lang, voice_config').eq('course_code', courseCode).single()
+  if (error) throw new Error(`course not found: ${error.message}`)
+  const vc = course.voice_config || {}
+  const knownVoiceRaw = vc.voices?.known || {}
+  const knownVoice = {
+    voice_id: knownVoiceRaw.voiceId || knownVoiceRaw.voice_id || 'en-GB-SoniaNeural',
+    provider: knownVoiceRaw.provider || 'azure',
+    gender: knownVoiceRaw.gender || 'f',
+  }
+  return {
+    knownLang: course.known_lang,
+    targetLang: course.target_lang,
+    knownVoice,
+  }
+}
+
+// =============================================================================
+// GET /plan-pods/:courseCode — what pod audio needs generating
+// =============================================================================
+
+app.get('/plan-pods/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const podIds = req.query.pods ? req.query.pods.split(',') : null
+
+    const ctx = await getCourseContext(courseCode)
+    const pods = await loadPodsForPlan(courseCode, podIds)
+
+    const podPlans = []
+    let totalChars = 0
+    let totalMissing = 0
+
+    for (const pod of pods) {
+      const missing = { target: [], known: [] }
+      for (const s of pod.sentences) {
+        if (!s.target_audio_id) {
+          const voice = resolvePodSpeakerVoice(pod.speakers, s.speaker)
+          missing.target.push({ id: s.id, speaker: s.speaker, voice_id: voice.voice_id, chars: (s.target_text || '').length })
+        }
+        if (!s.known_audio_id) {
+          missing.known.push({ id: s.id, voice_id: ctx.knownVoice.voice_id, chars: (s.known_text || '').length })
+        }
+      }
+      const podChars = missing.target.reduce((a, b) => a + b.chars, 0) + missing.known.reduce((a, b) => a + b.chars, 0)
+      podPlans.push({
+        pod_id: pod.id,
+        title: pod.title,
+        pod_type: pod.pod_type,
+        total_sentences: pod.sentences.length,
+        sentences_needing_target: missing.target.length,
+        sentences_needing_known: missing.known.length,
+        chars: podChars,
+        estimated_cost_usd: +(podChars * POD_CHARS_TO_COST).toFixed(4),
+        distinct_speakers: [...new Set(pod.sentences.map(s => s.speaker))],
+      })
+      totalChars += podChars
+      totalMissing += missing.target.length + missing.known.length
+    }
+
+    res.json({
+      course_code: courseCode,
+      course_context: { known_lang: ctx.knownLang, target_lang: ctx.targetLang, known_voice: ctx.knownVoice },
+      total_clips_to_generate: totalMissing,
+      total_chars: totalChars,
+      estimated_cost_usd: +(totalChars * POD_CHARS_TO_COST).toFixed(4),
+      pods: podPlans,
+    })
+  } catch (err) {
+    logger.error(`[Pods /plan-pods] ${err.message}`)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// =============================================================================
+// POST /generate-pods/:courseCode — actually generate missing audio
+// =============================================================================
+// Body: { pod_ids?: string[], roles?: ('target'|'known')[], concurrency?: number }
+// Default: all pods for the course, both roles, concurrency=5.
+
+app.post('/generate-pods/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const body = req.body || {}
+    const podIds = body.pod_ids || null
+    const roles = body.roles || ['target', 'known']
+    const concurrency = Math.max(1, Math.min(10, body.concurrency || 5))
+
+    const ctx = await getCourseContext(courseCode)
+
+    // Optional per-run voice overrides. Useful when you want pod audio to use
+    // a different provider (e.g. xAI) than the course's canonical voice_config.
+    // Shape: { voice_id: string, provider: 'xai'|'azure'|'elevenlabs', gender?: string }
+    if (body.known_voice) {
+      ctx.knownVoice = { ...ctx.knownVoice, ...body.known_voice }
+      logger.info(`[Pods] Known voice override: ${JSON.stringify(ctx.knownVoice)}`)
+    }
+
+    const pods = await loadPodsForPlan(courseCode, podIds)
+
+    // Build a flat work queue: each item is one audio clip to generate.
+    const workQueue = []
+    for (const pod of pods) {
+      for (const s of pod.sentences) {
+        if (roles.includes('target') && !s.target_audio_id) {
+          workQueue.push({
+            kind: 'target',
+            sentence_id: s.id,
+            pod_id: pod.id,
+            text: s.target_text,
+            language: ctx.targetLang,
+            role: 'target1',
+            voice: resolvePodSpeakerVoice(pod.speakers, s.speaker),
+            link_column: 'target_audio_id',
+          })
+        }
+        if (roles.includes('known') && !s.known_audio_id) {
+          workQueue.push({
+            kind: 'known',
+            sentence_id: s.id,
+            pod_id: pod.id,
+            text: s.known_text,
+            language: ctx.knownLang,
+            role: 'known',
+            voice: ctx.knownVoice,
+            link_column: 'known_audio_id',
+          })
+        }
+      }
+    }
+
+    logger.info(`[Pods] ${courseCode}: ${workQueue.length} clips queued across ${pods.length} pod(s) at concurrency ${concurrency}`)
+
+    const startMs = Date.now()
+    let generated = 0, reused = 0, failed = 0
+    const errors = []
+
+    // Simple parallel batch processor — process `concurrency` items at a time
+    async function worker(items) {
+      for (const item of items) {
+        try {
+          const result = await generatePodAudio({
+            courseCode,
+            text: item.text,
+            language: item.language,
+            role: item.role,
+            voice: item.voice,
+          })
+
+          // Link the audio onto the pod sentence
+          const { error: linkErr } = await supabase
+            .from('listening_pod_sentences')
+            .update({ [item.link_column]: result.id })
+            .eq('id', item.sentence_id)
+          if (linkErr) throw new Error(`link: ${linkErr.message}`)
+
+          if (result.reused) reused++; else generated++
+        } catch (err) {
+          failed++
+          errors.push({ sentence_id: item.sentence_id, kind: item.kind, error: err.message })
+          logger.warn(`[Pods] ${item.sentence_id} ${item.kind}: ${err.message}`)
+        }
+      }
+    }
+
+    // Distribute work across N workers (round-robin)
+    const buckets = Array.from({ length: concurrency }, () => [])
+    workQueue.forEach((item, i) => buckets[i % concurrency].push(item))
+    await Promise.all(buckets.map(b => worker(b)))
+
+    const elapsedMs = Date.now() - startMs
+    logger.info(`[Pods] ${courseCode}: ${generated} generated, ${reused} reused, ${failed} failed in ${(elapsedMs / 1000).toFixed(1)}s`)
+
+    res.json({
+      course_code: courseCode,
+      generated,
+      reused,
+      failed,
+      total: workQueue.length,
+      elapsed_ms: elapsedMs,
+      errors: errors.slice(0, 20),
+    })
+  } catch (err) {
+    logger.error(`[Pods /generate-pods] ${err.message}`)
     res.status(500).json({ error: err.message })
   }
 })

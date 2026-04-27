@@ -9,6 +9,9 @@
 
 import { ref, computed, reactive, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
+
+const { getCourseName } = useCourses()
 
 // Singleton state for the entire autocue session
 const state = reactive({
@@ -587,7 +590,13 @@ export function useAutocueState() {
         coversLegos: item.coversLegos,
         known: item.known,
         legoId: item.legoId || '',
-        role: 'target1'
+        role: 'target1',
+        // LEGO-level chunking — PhraseCard uses these in Pass 2 (slow) to
+        // render pause boundaries between LEGO chunks rather than every word.
+        recordingChunks: item.recordingChunks || null,
+        legoChunks: item.legoChunks || null,
+        chunksString: item.chunksString || null,
+        chunkCount: item.chunkCount || null
       }))
 
       console.log(`[Autocue] Loaded optimizer script: ${state.phrases.length} items (${data.totalPhrases} phrases + ${data.totalDirect} direct)`)
@@ -601,7 +610,7 @@ export function useAutocueState() {
       if (courseRes.ok) {
         const courseData = await courseRes.json()
         const course = courseData.course || courseData
-        state.courseName = course.display_name || course.name || courseCode
+        state.courseName = getCourseName(courseCode)
         state.knownLanguage = course.known_lang || 'English'
         state.targetLanguage = course.target_lang || 'Unknown'
       }
@@ -662,7 +671,7 @@ export function useAutocueState() {
       if (courseRes.ok) {
         const courseData = await courseRes.json()
         const course = courseData.course || courseData
-        state.courseName = course.display_name || course.name || courseCode
+        state.courseName = getCourseName(courseCode)
         state.knownLanguage = course.known_lang || 'English'
         state.targetLanguage = course.target_lang || 'Unknown'
       }

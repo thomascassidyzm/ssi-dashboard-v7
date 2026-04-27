@@ -353,7 +353,7 @@ async function loadRecentCourses() {
       if (!s || ((s.seeds || 0) === 0 && (s.legos || 0) === 0)) continue
       results.push({
         code: course.course_code,
-        displayName: course.display_name || getCourseName(course.course_code),
+        displayName: getCourseName(course.course_code),
         stats: {
           seeds: s.seeds || 0,
           completedSeeds: s.completed_seeds || 0,

@@ -19,6 +19,7 @@ const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
 const audioProcessor = require('./audio-processor.cjs')
+const ttsService = require('./tts-service.cjs')
 const voiceConfigService = require('./voice-config-service.cjs')
 const voiceDiscoveryService = require('./voice-discovery-service.cjs')
 const publishManifestService = require('./publish-manifest-service.cjs')
@@ -416,9 +417,12 @@ app.put('/api/auth/invite', async (req, res) => { handleInvite(req, res) })
 async function handleInvite(req, res) {
   const adminUser = await requireAdmin(req, res)
   if (!adminUser) return
-  const { email, name, courses, role = 'recorder' } = req.body
+  const { email, name, courses, role = 'editor' } = req.body
   if (!email) return res.status(400).json({ error: 'Email is required' })
   if (!courses || !Array.isArray(courses) || courses.length === 0) return res.status(400).json({ error: 'At least one course must be assigned' })
+  // 'recorder' still accepted for backward-compat with existing rows; new
+  // invites default to 'editor'. Recorder role was retired from the UI on
+  // 2026-04-21 — the only gating going forward is per-course access.
   if (!['recorder', 'editor', 'admin'].includes(role)) return res.status(400).json({ error: 'Invalid role' })
   try {
     const db = supabaseClient.getClient()
@@ -448,7 +452,8 @@ async function handleInvite(req, res) {
 
       const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
       const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
-      const voiceId = role === 'recorder' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
+      // Non-admins get a voice_id since editors are the ones recording now.
+      const voiceId = role !== 'admin' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
       const row = {
         email, name: name || email.split('@')[0], role, courses,
         ...(voiceId && { voice_id: voiceId }),
@@ -526,12 +531,14 @@ app.post('/api/auth/logout', async (req, res) => {
 // =============================================================================
 
 // POST /api/auth/invite-codes/generate — generate an invite code
-// Admins: any role, any course. Editors: recorder role only, own courses only.
+// Admins: any role, any course. Editors: can only invite editors for their own courses.
+// (The 'recorder' role was retired from the UI on 2026-04-21; accepted here for
+// backward compat with any outstanding recorder invites. Gating is now by course access only.)
 app.post('/api/auth/invite-codes/generate', async (req, res) => {
   const user = await requireDashboardUser(req, res)
   if (!user) return
 
-  const { courses, role = 'recorder', label, expires_days, max_uses = 1 } = req.body
+  const { courses, role = 'editor', label, expires_days, max_uses = 1 } = req.body
   if (!courses || !Array.isArray(courses) || courses.length === 0) {
     return res.status(400).json({ error: 'courses array is required' })
   }
@@ -539,10 +546,10 @@ app.post('/api/auth/invite-codes/generate', async (req, res) => {
     return res.status(400).json({ error: 'Invalid role' })
   }
 
-  // Non-admins can only generate recorder codes for their own courses
+  // Non-admins can only generate non-admin codes for their own courses.
   if (user.role !== 'admin') {
-    if (role !== 'recorder') {
-      return res.status(403).json({ error: 'You can only invite recorders' })
+    if (role === 'admin') {
+      return res.status(403).json({ error: 'Only admins can invite admins' })
     }
     const userCourses = Array.isArray(user.courses) ? user.courses : []
     const unauthorized = courses.filter(c => !userCourses.includes(c))
@@ -1286,18 +1293,28 @@ app.patch('/api/courses/:courseCode/voice-config/:role', async (req, res) => {
 // VOICE DISCOVERY & PREVIEW ROUTES (for VoiceConfiguration component)
 // =============================================================================
 
-// GET /api/voices/discover/:language - Discover available Azure voices for a language
+// GET /api/voices/discover/:language?provider=azure|xai - Discover voices for a language
+// Defaults to azure if no provider specified (backwards-compatible).
+// ElevenLabs voices are entered manually in the UI (no discovery endpoint).
 app.get('/api/voices/discover/:language', async (req, res) => {
   const { language } = req.params
+  const provider = (req.query.provider || 'azure').toLowerCase()
   try {
-    logger.info(`[VoiceDiscovery] Discovering voices for language: ${language}`)
+    logger.info(`[VoiceDiscovery] Discovering ${provider} voices for language: ${language}`)
 
-    const voices = await voiceDiscoveryService.discoverAzureVoices(language)
+    let voices
+    if (provider === 'azure') {
+      voices = await voiceDiscoveryService.discoverAzureVoices(language)
+    } else if (provider === 'xai') {
+      voices = await voiceDiscoveryService.discoverXaiVoices(language)
+    } else {
+      return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` })
+    }
 
-    logger.info(`[VoiceDiscovery] Found ${voices.length} voices for ${language}`)
-    res.json({ success: true, voices })
+    logger.info(`[VoiceDiscovery] Found ${voices.length} ${provider} voices for ${language}`)
+    res.json({ success: true, provider, voices })
   } catch (error) {
-    logger.error(`[VoiceDiscovery] Error discovering voices for ${language}:`, error)
+    logger.error(`[VoiceDiscovery] Error discovering ${provider} voices for ${language}:`, error)
     res.status(500).json({ success: false, error: error.message })
   }
 })
@@ -1335,86 +1352,64 @@ app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
 })
 
 // POST /api/voices/preview - Generate a voice preview audio sample
+// Body: { voiceId, text, speed?, provider?, language? }
+// provider: 'azure' (default) | 'elevenlabs' | 'xai'
+// language: BCP-47 code for xAI (e.g. 'es', 'pt-BR'). Derived from voiceId for Azure.
 app.post('/api/voices/preview', async (req, res) => {
-  const { voiceId, text, speed, provider } = req.body
+  const { voiceId, text, speed, provider = 'azure', language } = req.body
 
-  // Validation
-  if (!voiceId) {
-    return res.status(400).json({ success: false, error: 'voiceId is required' })
-  }
-  if (!text) {
-    return res.status(400).json({ success: false, error: 'text is required' })
-  }
-  if (text.length > 1000) {
-    return res.status(400).json({ success: false, error: 'Text too long (max 1000 characters for preview)' })
-  }
+  if (!voiceId) return res.status(400).json({ success: false, error: 'voiceId is required' })
+  if (!text) return res.status(400).json({ success: false, error: 'text is required' })
+  if (text.length > 1000) return res.status(400).json({ success: false, error: 'Text too long (max 1000 characters for preview)' })
 
   try {
-    const azureKey = process.env.AZURE_SPEECH_KEY
-    const azureRegion = process.env.AZURE_SPEECH_REGION || 'westeurope'
+    logger.info(`[VoicePreview] provider=${provider} voice=${voiceId} textLen=${text.length}`)
 
-    if (!azureKey) {
-      return res.status(500).json({
-        success: false,
-        error: 'Azure Speech not configured (AZURE_SPEECH_KEY not set)'
-      })
-    }
+    let audioBuffer
 
-    logger.info(`[VoicePreview] Generating preview: ${voiceId}, text length: ${text.length}`)
-
-    // Extract locale from voiceId (e.g., 'es-ES' from 'es-ES-ElviraNeural')
-    const locale = voiceId.split('-').slice(0, 2).join('-')
-
-    // Build SSML with optional speed adjustment
-    const rate = speed && speed !== 1.0 ? speed : null
-    let ssml = `<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='${locale}'>`
-    ssml += `<voice name='${voiceId}'>`
-    if (rate) {
-      ssml += `<prosody rate='${rate}'>`
-    }
-    ssml += escapeXml(text)
-    if (rate) {
-      ssml += `</prosody>`
-    }
-    ssml += `</voice></speak>`
-
-    // Call Azure TTS API
-    const response = await fetch(
-      `https://${azureRegion}.tts.speech.microsoft.com/cognitiveservices/v1`,
-      {
-        method: 'POST',
-        headers: {
-          'Ocp-Apim-Subscription-Key': azureKey,
-          'Content-Type': 'application/ssml+xml',
-          'X-Microsoft-OutputFormat': 'audio-24khz-96kbitrate-mono-mp3',
-          'User-Agent': 'SSi-Dashboard-Voice-Preview'
-        },
-        body: ssml
+    if (provider === 'azure') {
+      const azureKey = process.env.AZURE_SPEECH_KEY
+      const azureRegion = process.env.AZURE_SPEECH_REGION || 'westeurope'
+      if (!azureKey) {
+        return res.status(500).json({ success: false, error: 'Azure Speech not configured (AZURE_SPEECH_KEY not set)' })
       }
-    )
-
-    if (!response.ok) {
-      const errorText = await response.text()
-      logger.error(`[VoicePreview] Azure TTS error: ${response.status} ${errorText}`)
-      return res.status(response.status).json({
-        success: false,
-        error: `Azure TTS error: ${response.status}`,
-        message: errorText
+      const result = await ttsService.generateWithRetry(text, 'azure', {
+        subscriptionKey: azureKey,
+        region: azureRegion,
+        voiceName: voiceId,
+        speed: speed || 1.0,
       })
+      audioBuffer = result.audioBuffer
+    } else if (provider === 'elevenlabs') {
+      const apiKey = process.env.ELEVENLABS_API_KEY
+      if (!apiKey) {
+        return res.status(500).json({ success: false, error: 'ElevenLabs not configured (ELEVENLABS_API_KEY not set)' })
+      }
+      const result = await ttsService.generateWithRetry(text, 'elevenlabs', {
+        apiKey, voiceId, speed: speed || 1.0
+      })
+      audioBuffer = result.audioBuffer
+    } else if (provider === 'xai') {
+      const apiKey = process.env.XAI_API_KEY
+      if (!apiKey) {
+        return res.status(500).json({ success: false, error: 'xAI not configured (XAI_API_KEY not set)' })
+      }
+      const result = await ttsService.generateWithRetry(text, 'xai', {
+        apiKey,
+        voiceId,
+        language: language || 'auto',
+      })
+      audioBuffer = result.audioBuffer
+    } else {
+      return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` })
     }
 
     // Convert audio to base64 data URI for frontend playback
-    const audioBuffer = await response.arrayBuffer()
     const base64Audio = Buffer.from(audioBuffer).toString('base64')
     const dataUri = `data:audio/mpeg;base64,${base64Audio}`
 
-    logger.info(`[VoicePreview] Generated ${audioBuffer.byteLength} bytes of audio`)
-
-    res.json({
-      success: true,
-      audio: dataUri,
-      byteLength: audioBuffer.byteLength
-    })
+    logger.info(`[VoicePreview] Generated ${audioBuffer.length} bytes of audio`)
+    res.json({ success: true, audio: dataUri, byteLength: audioBuffer.length })
   } catch (error) {
     logger.error('[VoicePreview] Error generating preview:', error)
     res.status(500).json({ success: false, error: error.message })
@@ -3371,6 +3366,84 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
   } catch (error) {
     logger.error('Error fetching audio stats:', error)
     res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// LISTENING PODS (Layer 2)
+// =============================================================================
+
+// GET /api/pods/:courseCode — list pods for a course with coverage summary
+app.get('/api/pods/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const supabase = supabaseClient.getClient()
+
+    const { data: pods, error: podsErr } = await supabase
+      .from('listening_pods')
+      .select('id, course_code, pod_type, slug, title, scene, difficulty, speakers, metadata, source_file, updated_at')
+      .eq('course_code', courseCode)
+      .order('pod_type').order('slug')
+
+    if (podsErr) throw podsErr
+
+    const results = []
+    for (const pod of pods || []) {
+      const { count: totalSentences } = await supabase
+        .from('listening_pod_sentences')
+        .select('*', { count: 'exact', head: true })
+        .eq('pod_id', pod.id)
+      const { count: targetAudio } = await supabase
+        .from('listening_pod_sentences')
+        .select('*', { count: 'exact', head: true })
+        .eq('pod_id', pod.id)
+        .not('target_audio_id', 'is', null)
+      const { count: knownAudio } = await supabase
+        .from('listening_pod_sentences')
+        .select('*', { count: 'exact', head: true })
+        .eq('pod_id', pod.id)
+        .not('known_audio_id', 'is', null)
+
+      results.push({
+        ...pod,
+        sentence_count: totalSentences || 0,
+        audio_coverage: {
+          target: targetAudio || 0,
+          known: knownAudio || 0,
+          total_sentences: totalSentences || 0,
+        },
+      })
+    }
+
+    res.json({ course_code: courseCode, pods: results })
+  } catch (err) {
+    logger.error(`[Pods list] ${err.message}`)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// GET /api/pods/:courseCode/:slug — pod detail with all sentences
+app.get('/api/pods/:courseCode/:slug', async (req, res) => {
+  try {
+    const { courseCode, slug } = req.params
+    const supabase = supabaseClient.getClient()
+    const podId = `${courseCode}:${slug}`
+
+    const { data: pod, error: podErr } = await supabase
+      .from('listening_pods').select('*').eq('id', podId).single()
+    if (podErr || !pod) return res.status(404).json({ error: `Pod not found: ${podId}` })
+
+    const { data: sentences, error: sErr } = await supabase
+      .from('listening_pod_sentences')
+      .select('id, scene_number, sentence_number, global_order, beat_label, speaker, target_text, known_text, target_audio_id, known_audio_id')
+      .eq('pod_id', podId)
+      .order('global_order')
+    if (sErr) throw sErr
+
+    res.json({ pod, sentences: sentences || [] })
+  } catch (err) {
+    logger.error(`[Pod detail] ${err.message}`)
+    res.status(500).json({ error: err.message })
   }
 })
 
@@ -6232,6 +6305,14 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
 
     for (let i = 0; i < phrases.length; i++) {
       const p = phrases[i]
+      // Pass chunk data through to the autocue so Pass 2 (slow) can render
+      // LEGO-level pause boundaries rather than word-level.
+      const chunkFields = {
+        recordingChunks: p.recordingChunks || null,
+        legoChunks: p.legoChunks || null,
+        chunksString: p.chunksString || null,
+        chunkCount: p.chunkCount || null,
+      }
       items.push({
         index: idx++,
         text: p.target,
@@ -6242,7 +6323,8 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         coversLegos: p.coversLegos,
         known: p.known || '',
         source: p.source || '',
-        seedNumber: p.seedNumber || null
+        seedNumber: p.seedNumber || null,
+        ...chunkFields
       })
       items.push({
         index: idx++,
@@ -6254,20 +6336,27 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         coversLegos: p.coversLegos,
         known: p.known || '',
         source: p.source || '',
-        seedNumber: p.seedNumber || null
+        seedNumber: p.seedNumber || null,
+        ...chunkFields
       })
     }
 
-    // Append direct record items (also normal + slow pairs)
+    // Append direct record items (also normal + slow pairs).
+    // A direct-record item is a single LEGO — one chunk by definition.
     for (let i = 0; i < directItems.length; i++) {
       const d = directItems[i]
+      const directChunk = [{ text: d.target, legoId: d.legoId || null, isLego: true }]
       items.push({
         index: idx++,
         text: d.target,
         cadence: 'natural',
         type: 'direct',
         known: d.known || '',
-        legoId: d.legoId || ''
+        legoId: d.legoId || '',
+        recordingChunks: directChunk,
+        legoChunks: directChunk,
+        chunksString: d.target,
+        chunkCount: 1
       })
       items.push({
         index: idx++,
@@ -6275,7 +6364,11 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         cadence: 'slow',
         type: 'direct',
         known: d.known || '',
-        legoId: d.legoId || ''
+        legoId: d.legoId || '',
+        recordingChunks: directChunk,
+        legoChunks: directChunk,
+        chunksString: d.target,
+        chunkCount: 1
       })
     }
 
@@ -8447,6 +8540,7 @@ app.get('/api/admin/pm2', async (req, res) => {
 
 // POST /api/admin/pm2/fix — disable watch on all processes and save
 app.post('/api/admin/pm2/fix', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   // Respond immediately — restart happens after, so connection isn't dropped
   res.json({ ok: true, message: 'Disabling pm2 watch and restarting all services in 3s...' })
   setTimeout(async () => {
@@ -8459,8 +8553,34 @@ app.post('/api/admin/pm2/fix', async (req, res) => {
   }, 3000)
 })
 
+// POST /api/admin/pm2/restart — restart a named pm2 process
+// Self-restart (production-api restarting itself) replies first, then restarts
+// after a short delay so the browser actually receives the success response
+// instead of seeing the connection drop mid-reply.
+app.post('/api/admin/pm2/restart', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const name = req.body?.name
+  if (!name) return res.status(400).json({ error: 'name required' })
+  const selfName = process.env.name || 'production-api'
+  if (name === selfName) {
+    res.json({ ok: true, name, message: `Self-restart scheduled in 1s` })
+    setTimeout(() => {
+      execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
+        .catch(e => logger.warn('[Admin] self-restart error:', e.message))
+    }, 1000)
+    return
+  }
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
+    res.json({ ok: true, name, output: stdout.trim() })
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message })
+  }
+})
+
 // POST /api/admin/pm2/stop — stop a named pm2 process (e.g. ssi-dashboard dev server)
 app.post('/api/admin/pm2/stop', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
@@ -8473,6 +8593,7 @@ app.post('/api/admin/pm2/stop', async (req, res) => {
 
 // POST /api/admin/pm2/delete — permanently remove a process from pm2
 app.post('/api/admin/pm2/delete', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
@@ -8555,6 +8676,7 @@ app.post('/api/admin/setup-remote', async (req, res) => {
 
 // POST /api/admin/kill-pid — kill a process by PID
 app.post('/api/admin/kill-pid', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const pids = Array.isArray(req.body?.pids) ? req.body.pids : [req.body?.pid]
   if (!pids[0]) return res.status(400).json({ error: 'pid or pids required' })
   const results = {}
@@ -8571,6 +8693,7 @@ app.post('/api/admin/kill-pid', async (req, res) => {
 
 // POST /api/admin/git-pull — stash local changes and pull latest code, then restart services
 app.post('/api/admin/git-pull', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const projectDir = path.resolve(__dirname, '..')
   const log = []
   const add = msg => { log.push(msg); logger.log('[git-pull]', msg) }
@@ -8596,6 +8719,7 @@ app.post('/api/admin/git-pull', async (req, res) => {
 // POST /api/admin/kill-apps — kill non-essential GUI apps to free RAM
 // Kills: Google Chrome, iTerm2, Safari, Finder (optional), Xcode, etc.
 app.post('/api/admin/kill-apps', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const targets = req.body?.apps || ['Google Chrome', 'iTerm2']
   const results = {}
   for (const app of targets) {
@@ -8609,17 +8733,144 @@ app.post('/api/admin/kill-apps', async (req, res) => {
   res.json({ ok: true, results })
 })
 
-// POST /api/admin/restart-machine — remotely reboot SSi Machine
-// Requires ?secret=ADMIN_SECRET (or x-admin-secret header)
+// Memory stats that mean what a human expects.
+// os.freemem() on macOS only counts truly-free pages — file cache shows as
+// "used" even though it's instantly reclaimable, so the raw metric pegs at
+// 95-99% on a healthy machine. vm_stat gives us Activity Monitor's numbers:
+// wired + active + compressed = real "Memory Used"; the rest is cache.
+async function getMemStats() {
+  const os = require('os')
+  const totalBytes = os.totalmem()
+
+  if (os.platform() === 'darwin') {
+    try {
+      const { stdout } = await execFileAsync('vm_stat')
+      const pageSizeMatch = stdout.match(/page size of (\d+) bytes/)
+      const pageSize = pageSizeMatch ? parseInt(pageSizeMatch[1], 10) : 16384
+      const grab = (label) => {
+        const m = stdout.match(new RegExp(`^${label}:\\s+(\\d+)\\.?\\s*$`, 'm'))
+        return m ? parseInt(m[1], 10) : 0
+      }
+      const wired       = grab('Pages wired down')
+      const active      = grab('Pages active')
+      const compressor  = grab('Pages occupied by compressor')
+      const usedBytes   = Math.min(totalBytes, (wired + active + compressor) * pageSize)
+      return {
+        total_bytes: totalBytes,
+        used_bytes: usedBytes,
+        free_bytes: totalBytes - usedBytes,
+        used_percent: Math.round((usedBytes / totalBytes) * 1000) / 10
+      }
+    } catch (_) { /* fall through to os.freemem() */ }
+  }
+
+  const freeMem = os.freemem()
+  const usedMem = totalBytes - freeMem
+  return {
+    total_bytes: totalBytes,
+    used_bytes: usedMem,
+    free_bytes: freeMem,
+    used_percent: Math.round((usedMem / totalBytes) * 1000) / 10
+  }
+}
+
+// Check reboot readiness — whether PM2 will auto-resurrect after reboot.
+// Readable without sudo; all paths are in the current user's space or are
+// root-owned files whose *existence* is the only bit we need.
+async function checkRebootReadiness() {
+  const os = require('os')
+  const home = os.homedir()
+  const user = os.userInfo().username
+  const plistPath = `${home}/Library/LaunchAgents/pm2.${user}.plist`
+  const dumpPath = `${home}/.pm2/dump.pm2`
+
+  const out = {
+    pm2_launch_agent: { exists: false, path: plistPath },
+    pm2_dump: { exists: false, path: dumpPath, mtime: null, age_seconds: null },
+    ready: false,
+    fix_command: null
+  }
+  try {
+    const s = await fs.stat(plistPath)
+    out.pm2_launch_agent.exists = true
+    out.pm2_launch_agent.mtime = s.mtime.toISOString()
+  } catch {}
+  try {
+    const s = await fs.stat(dumpPath)
+    out.pm2_dump.exists = true
+    out.pm2_dump.mtime = s.mtime.toISOString()
+    out.pm2_dump.age_seconds = Math.round((Date.now() - s.mtimeMs) / 1000)
+  } catch {}
+
+  out.ready = out.pm2_launch_agent.exists && out.pm2_dump.exists
+  if (!out.pm2_launch_agent.exists) {
+    out.fix_command = `sudo env PATH=$PATH:$(dirname $(which node)) pm2 startup launchd -u ${user} --hp ${home} && pm2 save`
+  } else if (!out.pm2_dump.exists) {
+    out.fix_command = 'pm2 save'
+  }
+  return out
+}
+
+// GET /api/admin/system-health — RAM, load, PM2 process snapshot, reboot readiness
+// Read-only; no auth (same posture as /health).
+app.get('/api/admin/system-health', async (req, res) => {
+  const os = require('os')
+  const health = {
+    hostname: os.hostname(),
+    platform: os.platform(),
+    uptime_seconds: Math.round(os.uptime()),
+    mem: await getMemStats(),
+    load_avg: os.loadavg(),
+    cpu_count: os.cpus().length,
+    pm2: [],
+    reboot_readiness: await checkRebootReadiness()
+  }
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
+    const list = JSON.parse(stdout || '[]')
+    health.pm2 = list.map(p => ({
+      name: p.name,
+      pm_id: p.pm_id,
+      pid: p.pid,
+      status: p.pm2_env?.status,
+      restart_count: p.pm2_env?.restart_time,
+      uptime_ms: p.pm2_env?.pm_uptime ? Date.now() - p.pm2_env.pm_uptime : null,
+      mem_bytes: p.monit?.memory ?? 0,
+      cpu_percent: p.monit?.cpu ?? 0
+    }))
+  } catch (e) {
+    health.pm2_error = e.message
+  }
+  res.json(health)
+})
+
+// POST /api/admin/restart-machine — remotely reboot the machine
+// Refuses unless reboot readiness checks pass, to avoid bricking a remote
+// box whose PM2 won't auto-resurrect. Pass ?force=1 to override.
 app.post('/api/admin/restart-machine', async (req, res) => {
-  const secret = req.query.secret || req.headers['x-admin-secret']
-  const expected = process.env.ADMIN_SECRET
-  if (!expected || secret !== expected) {
-    return res.status(401).json({ error: 'Unauthorized' })
+  if (!await requireAdmin(req, res)) return
+  const force = req.query.force === '1' || req.body?.force === true
+  if (!force) {
+    try { await execFileAsync('bash', ['-c', 'pm2 save']) } catch {}
+    const readiness = await checkRebootReadiness()
+    if (!readiness.ready) {
+      return res.status(412).json({
+        ok: false,
+        error: 'Reboot blocked: PM2 auto-resurrect is not configured on this machine.',
+        readiness,
+        hint: 'Run the fix_command on the target machine once, then try again. Or pass ?force=1 to reboot anyway.'
+      })
+    }
   }
   // Respond before the reboot kicks in
-  res.json({ ok: true, message: 'Rebooting SSi Machine in 5 seconds...' })
+  res.json({ ok: true, message: 'Rebooting machine in 5 seconds (killing GUI apps first)...' })
   setTimeout(async () => {
+    // Kill GUI apps that block reboot with "Quit anyway?" dialogs (iTerm2 with
+    // running shells, Chrome with unsaved tabs). killall is non-fatal — we
+    // ignore failures (app not running) and proceed to reboot.
+    for (const app of ['iTerm2', 'Google Chrome']) {
+      try { await execFileAsync('killall', [app]) } catch {}
+    }
     try {
       await execFileAsync('sudo', ['reboot'])
     } catch (e) {

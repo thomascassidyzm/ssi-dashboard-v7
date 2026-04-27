@@ -69,22 +69,14 @@ async function loadLanguageNames() {
 // Fire immediately (non-blocking)
 loadLanguageNames()
 
-// Cache of course_code → display_name from the database
-// Populated when courses are loaded, used as authoritative source
-const courseDisplayNames = {}
-
+// Popty (this dashboard) always renders course names in English.
+// The database `display_name` is the localized native-language label used by
+// the learner-facing app — never use it here. Localization belongs to
+// ssi-learning-app, where the player picks names by interface language.
 function getCourseName(code) {
   // Touch reactive dep so computed properties re-evaluate when names load
   void nameVersion.value
   if (!code || !code.includes('_for_')) return code
-  // Prefer display_name from database — but only if it looks like a proper name
-  // (DB may contain raw codes like "ron for eng" which we should skip)
-  if (courseDisplayNames[code]) {
-    const raw = courseDisplayNames[code]
-    // If display_name looks like "xxx for yyy" where xxx is a 2-3 char code, skip it
-    const beforeFor = raw.replace(/\s+for\s+.+$/i, '').trim()
-    if (!/^[a-z]{2,3}$/i.test(beforeFor)) return raw
-  }
   const [targetPart, knownPart] = code.split('_for_')
   // Try full dialect code first (por_br, spa_mx), then base code (por, spa)
   const targetBase = targetPart.split('_')[0]
@@ -136,15 +128,10 @@ async function loadCourses(force = false) {
       courseList = data.courses || []
     }
 
-    // Populate display name cache for getCourseName() lookups
-    for (const c of courseList) {
-      const code = c.code || c.course_code || c.id
-      if (c.display_name && code) courseDisplayNames[code] = c.display_name
-    }
     nameVersion.value++
     courses.value = courseList.map(c => ({
       code: c.code || c.course_code || c.id,
-      name: c.display_name || getCourseName(c.code || c.course_code || c.id),
+      name: getCourseName(c.code || c.course_code || c.id),
       new_app_status: c.new_app_status,
       legacy_app_status: c.legacy_app_status,
       new_app_beta_days: c.new_app_beta_days,
@@ -189,7 +176,6 @@ export function useCourses() {
     courseCount,
     inProductionCount,
     getCourseName,
-    languageNames,
-    courseDisplayNames
+    languageNames
   }
 }
