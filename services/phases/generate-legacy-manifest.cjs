@@ -740,10 +740,16 @@ function validateAndCleanManifest(seeds, samples, encouragements) {
 
 function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
   const samples = {}
+  // Per-role lookup failures — text appears in the manifest but no audio was
+  // found for that role. Caused by audio drift (target_text changed after
+  // audio was generated, leaving stale audio.text behind), or audio that was
+  // never generated. Returned to the caller so it can warn loudly rather than
+  // silently shipping a manifest with missing variants.
+  const missingSamples = []
 
   if (!audioRecords || audioRecords.length === 0) {
     console.error('  Warning: No audio records, samples will be empty')
-    return samples
+    return { samples, missingSamples }
   }
 
   // Build lookup by normalized text + language + role
@@ -787,7 +793,11 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
             cadence,
             duration: record.duration_ms ? record.duration_ms / 1000 : 0
           })
+        } else {
+          missingSamples.push({ text, lang, role, isKnown, reason: 'audio row has no s3_key' })
         }
+      } else {
+        missingSamples.push({ text, lang, role, isKnown, reason: 'no audio row found for text+lang+role' })
       }
     }
 
@@ -811,7 +821,7 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
     }
   }
 
-  return samples
+  return { samples, missingSamples }
 }
 
 // =============================================================================
@@ -1277,8 +1287,20 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // 8. Build samples dictionary
   const textsArray = Array.from(allTexts).map(s => JSON.parse(s))
   console.error(`  Collected ${textsArray.length} unique texts for samples`)
-  const samples = buildSamplesDictionary(dbAudio, textsArray, knownLang, targetLang)
+  const { samples, missingSamples } = buildSamplesDictionary(dbAudio, textsArray, knownLang, targetLang)
   console.error(`  Built samples dictionary with ${Object.keys(samples).length} entries`)
+
+  // Surface per-role lookup failures. A text can have e.g. target1 audio but
+  // no target2 audio (or vice versa) — previously the export shipped silently
+  // with whatever it found. Now we log every miss so the caller can fix the
+  // drift before publishing.
+  if (missingSamples.length > 0) {
+    console.error(`  ⚠️  WARNING: ${missingSamples.length} per-role audio lookup failures:`)
+    for (const m of missingSamples.slice(0, 50)) {
+      console.error(`     [${m.role}] (${m.lang}) "${m.text}"  — ${m.reason}`)
+    }
+    if (missingSamples.length > 50) console.error(`     … and ${missingSamples.length - 50} more`)
+  }
 
   // 8.1. Add encouragement/instruction samples BEFORE validation
   // This ensures they're included in the orphan check
@@ -1544,7 +1566,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
   console.error(`  Samples: ${Object.keys(samples).length}`)
   console.error(`  Encouragements: ${orderedEncouragements.length} ordered, ${pooledEncouragements.length} pooled, ${paywallEncouragements.length} paywall`)
 
-  return { manifest, audioGenerationWarnings, welcomeMissing }
+  return { manifest, audioGenerationWarnings, welcomeMissing, missingSamples }
 }
 
 // =============================================================================
@@ -1725,11 +1747,18 @@ async function main() {
   }
 
   try {
-    const { manifest, audioGenerationWarnings } = await generateLegacyManifest(courseCode, { withAudio, dryRun, limit, concurrency })
+    const { manifest, audioGenerationWarnings, missingSamples } = await generateLegacyManifest(courseCode, { withAudio, dryRun, limit, concurrency })
 
     // Display audio generation warnings if any
     if (audioGenerationWarnings) {
       console.error(`\n⚠️  ${audioGenerationWarnings.message}`)
+    }
+    if (missingSamples && missingSamples.length > 0) {
+      console.error(`\n⚠️  ${missingSamples.length} sample audio role(s) missing — manifest will ship with gaps:`)
+      for (const m of missingSamples.slice(0, 50)) {
+        console.error(`     [${m.role}] (${m.lang}) "${m.text}"  — ${m.reason}`)
+      }
+      if (missingSamples.length > 50) console.error(`     … and ${missingSamples.length - 50} more`)
     }
 
     // Validate the manifest

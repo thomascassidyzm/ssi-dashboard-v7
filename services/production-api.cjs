@@ -6624,7 +6624,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
     // If withAudio, run audio generation in background and return response immediately
     if (withAudio && audioJobId) {
       // Generate manifest WITHOUT audio first (fast)
-      const { manifest, audioGenerationWarnings: noAudioWarnings, welcomeMissing } = await generateLegacyManifest(courseCode, { withAudio: false })
+      const { manifest, audioGenerationWarnings: noAudioWarnings, welcomeMissing, missingSamples } = await generateLegacyManifest(courseCode, { withAudio: false })
 
       // Validate and save manifest
       const validation = validateManifest(manifest)
@@ -6695,8 +6695,14 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
         savedToState: true,
         pendingPath: manifestPath,
         warnings: [
-          ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : [])
+          ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : []),
+          ...(missingSamples && missingSamples.length > 0
+            ? [`${missingSamples.length} sample audio role(s) missing — manifest will ship with gaps. First few: ` +
+                missingSamples.slice(0, 5).map(m => `[${m.role}] "${m.text.slice(0, 50)}"`).join('; ') +
+                (missingSamples.length > 5 ? ` (+${missingSamples.length - 5} more)` : '')]
+            : [])
         ],
+        missingSamples: missingSamples || [],
         audioJobId: audioJobId
       })
 
@@ -6733,7 +6739,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
     }
 
     // Normal path (withAudio: false)
-    const { manifest, audioGenerationWarnings, welcomeMissing } = await generateLegacyManifest(courseCode, { withAudio: false })
+    const { manifest, audioGenerationWarnings, welcomeMissing, missingSamples } = await generateLegacyManifest(courseCode, { withAudio: false })
 
     // Validate the manifest
     const validation = validateManifest(manifest)
@@ -6809,8 +6815,14 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
       pendingPath: manifestPath,
       warnings: [
         ...(audioGenerationWarnings ? [audioGenerationWarnings.message] : []),
-        ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : [])
+        ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : []),
+        ...(missingSamples && missingSamples.length > 0
+          ? [`${missingSamples.length} sample audio role(s) missing — manifest will ship with gaps. First few: ` +
+              missingSamples.slice(0, 5).map(m => `[${m.role}] "${m.text.slice(0, 50)}"`).join('; ') +
+              (missingSamples.length > 5 ? ` (+${missingSamples.length - 5} more)` : '')]
+          : [])
       ],
+      missingSamples: missingSamples || [],
       audioJobId: audioJobId // Will be null if withAudio=false
     })
   } catch (error) {
