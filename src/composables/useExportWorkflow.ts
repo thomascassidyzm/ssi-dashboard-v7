@@ -770,7 +770,7 @@ export function useExportWorkflow(courseCode: string) {
   // Step 3: Publish manifest
   async function publishManifest(options: {
     version?: string
-    status?: 'alpha' | 'beta' | 'release'
+    status?: 'alpha' | 'beta' | 'published'
     commitToCourseConfigs?: boolean
     scpToApidev?: boolean
   } = {}) {
@@ -782,7 +782,7 @@ export function useExportWorkflow(courseCode: string) {
         method: 'POST',
         body: JSON.stringify({
           version: options.version,
-          status: options.status || 'beta',
+          status: options.status || 'published',
           commitToCourseConfigs: options.commitToCourseConfigs ?? true,
           scpToApidev: options.scpToApidev ?? true
         })
@@ -792,7 +792,7 @@ export function useExportWorkflow(courseCode: string) {
         state.value.manifestPublished = true
         state.value.manifestPublishedAt = new Date().toISOString()
         state.value.manifestVersion = data.version
-        state.value.manifestStatus = options.status || 'beta'
+        state.value.manifestStatus = options.status || 'published'
         state.value.publishCourseConfigsPath = data.courseConfigs?.filePath
         state.value.publishApidevFilename = data.apidev?.filename
       } else {
@@ -801,7 +801,7 @@ export function useExportWorkflow(courseCode: string) {
           state.value.manifestPublished = true
           state.value.manifestPublishedAt = new Date().toISOString()
           state.value.manifestVersion = data.version
-          state.value.manifestStatus = options.status || 'beta'
+          state.value.manifestStatus = options.status || 'published'
           state.value.publishCourseConfigsPath = data.courseConfigs?.filePath
           // Set error to notify user about SCP failure
           error.value = data.error || 'Publish partially failed'

@@ -247,8 +247,8 @@
               beta
             </button>
             <button
-              @click="status = 'release'"
-              :class="status === 'release' ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+              @click="status = 'published'"
+              :class="status === 'published' ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
               class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-white"
             >
               published
@@ -429,7 +429,7 @@
             >
               <option value="alpha">alpha</option>
               <option value="beta">beta</option>
-              <option value="release">release</option>
+              <option value="published">published</option>
             </select>
           </div>
         </div>
@@ -568,7 +568,7 @@ const emit = defineEmits<{
 const isPublishing = ref(false)
 
 const version = ref('')
-const status = ref('beta')
+const status = ref('published')
 const commitToCourseConfigs = ref(true)
 const scpToApidev = ref(false)  // Off by default - course-configs is the primary method
 const showRepublish = ref(false)
@@ -579,7 +579,7 @@ const showDiffDetails = ref(false)
 
 // Re-publish form variables
 const republishVersion = ref('')
-const republishStatus = ref('beta')
+const republishStatus = ref('published')
 const republishToCourseConfigs = ref(true)
 const republishToApidev = ref(false)  // Off by default
 const showCustomRepublishVersion = ref(false)
@@ -691,7 +691,7 @@ watch(showRepublish, (isShowing) => {
       const parts = props.versionInfo.existingVersion.split('.').map(Number)
       republishVersion.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
     }
-    republishStatus.value = props.state.manifestStatus || 'beta'
+    republishStatus.value = props.state.manifestStatus || 'published'
     showCustomRepublishVersion.value = false
   }
 })

@@ -6939,7 +6939,7 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
     const { courseCode } = req.params
     const {
       version,
-      status = 'beta',
+      status = 'published',
       commitToCourseConfigs = true,
       scpToApidev = false
     } = req.body
