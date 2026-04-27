@@ -823,7 +823,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
             type: 'listen_intro',
             known_text: listenIntroAudio.text,
             target_text: '',
-            knownAudioId: listenIntroAudio.id,
+            // Snake-case `known_audio_uuid` matches the rest of the generator
+            // and the playerItems mapper in LearningJourneyView.vue, which
+            // reads it into `sourceId` for the QA preview player's prompt phase.
+            known_audio_uuid: listenIntroAudio.id,
             hasAudio: true,
           })
         }
@@ -834,7 +837,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
             type: 'listen_outro',
             known_text: listenOutroAudio.text,
             target_text: '',
-            knownAudioId: listenOutroAudio.id,
+            known_audio_uuid: listenOutroAudio.id,
             hasAudio: true,
           })
         }
