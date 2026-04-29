@@ -619,8 +619,10 @@ PODS.forEach(pod => {
 const TOTAL = ALL.length;
 const MAX_ROUND = 1200;        // a full course is ~668 seeds × ~2 LEGOs/seed = ~1200+ rounds
 const ROUND_MINUTES = 4.5;     // ~4-5 min per round of speaking practice; the listening adds on top
-// Chart dimensions: 2 px per round (so 1200 rounds = 2400 px wide; horizontally scrollable)
-const CHART_PX_PER_ROUND = 2;
+// Chart dimensions: 5 px per round so the busy first ~150 rounds (where all the
+// listening-stage transitions happen) is legible — full course is ~6000px wide
+// and scrolls horizontally.
+const CHART_PX_PER_ROUND = 5;
 const CHART_W = MAX_ROUND * CHART_PX_PER_ROUND;
 const CHART_H = 360;
 const CHART_PAD_TOP = 24;
