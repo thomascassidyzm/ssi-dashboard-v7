@@ -1,0 +1,955 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Listening Pods Playground</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --ink: #1c1c1c;
+    --muted: #6a6a6a;
+    --accent: #8a5a2b;
+    --card: #ffffff;
+    --rule: #e6e1d6;
+    --stage1-bg: #fbecd8;
+    --stage2-bg: #f7e3c6;
+    --stage3-bg: #f2d7b0;
+    --stage4-bg: #eccb9a;
+    --stage5-bg: #e6bf86;
+    --stage6-bg: #dfb473;
+    --stage7-bg: #d5a45b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.4;
+    font-size: 15px;
+    padding: 24px 18px 80px;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  header h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  header p.sub { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+
+  h2.band {
+    margin: 28px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* Controls */
+  .controls {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .controls .playback { display: flex; gap: 6px; }
+  .controls button {
+    border: 1px solid var(--rule);
+    background: #faf7f1;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    min-width: 36px;
+  }
+  .controls button:hover { background: var(--rule); }
+  .controls .slider { display: flex; flex-direction: column; gap: 4px; }
+  .controls input[type=range] { width: 100%; accent-color: var(--accent); }
+  .controls .slider-label {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+  .controls .slider-label .round-big { color: var(--ink); font-weight: 600; font-size: 14px; }
+  .controls .speed label { font-size: 12px; color: var(--muted); }
+  .controls .speed select {
+    border: 1px solid var(--rule);
+    background: #fff;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+
+  /* Stats strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .stat strong { display: block; font-size: 20px; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .stat span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* Lap chart */
+  .chart-wrap {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  #lapChart { width: 100%; height: 220px; display: block; }
+
+  /* Stage grid */
+  .stage-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr) 1.8fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .stage-column {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .stage-column[data-stage="1"] { background: var(--stage1-bg); }
+  .stage-column[data-stage="2"] { background: var(--stage2-bg); }
+  .stage-column[data-stage="3"] { background: var(--stage3-bg); }
+  .stage-column[data-stage="4"] { background: var(--stage4-bg); }
+  .stage-column[data-stage="5"] { background: var(--stage5-bg); }
+  .stage-column[data-stage="6"] { background: var(--stage6-bg); }
+  .stage-column[data-stage="7"] { background: var(--stage7-bg); }
+  .stage-head { margin-bottom: 8px; }
+  .stage-title { font-weight: 700; font-size: 13px; letter-spacing: 0.02em; }
+  .stage-desc { font-size: 10.5px; color: rgba(0,0,0,0.58); margin-top: 2px; line-height: 1.25; }
+  .stage-count {
+    font-size: 11px;
+    color: rgba(0,0,0,0.6);
+    margin-top: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .iter-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 3px;
+    min-height: 28px;
+  }
+  .iter-label {
+    font-size: 10px;
+    color: rgba(0,0,0,0.55);
+    width: 34px;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .empty-slot {
+    color: rgba(0,0,0,0.3);
+    font-size: 12px;
+    padding: 3px 0;
+  }
+  .chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    align-content: flex-start;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    cursor: help;
+    line-height: 1;
+  }
+  .chip.tiny { min-width: 22px; height: 20px; font-size: 10px; padding: 0 4px; }
+
+  /* Legend */
+  .pod-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 10px 0 16px;
+    font-size: 12px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-swatch {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+  }
+  .legend-label { color: var(--muted); }
+  .legend-label .legend-count { color: rgba(0,0,0,0.35); margin-left: 3px; }
+
+  /* Sentence grid (global progress) */
+  .sentence-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .scell {
+    width: 22px; height: 22px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 3px solid transparent;
+    font-variant-numeric: tabular-nums;
+    cursor: help;
+  }
+  .scell.not-yet { background: #ece8df; color: #b8b0a0; }
+  .scell.s1 { background: var(--stage1-bg); color: #5a3a18; }
+  .scell.s2 { background: var(--stage2-bg); color: #5a3a18; }
+  .scell.s3 { background: var(--stage3-bg); color: #4a2a10; }
+  .scell.s4 { background: var(--stage4-bg); color: #3a1a08; }
+  .scell.s5 { background: var(--stage5-bg); color: #2a1408; }
+  .scell.s6 { background: var(--stage6-bg); color: #2a1408; }
+  .scell.s7 { background: var(--stage7-bg); color: #1a0a04; font-weight: 600; }
+
+  /* Key moments */
+  .key-moments {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .moment {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background .12s;
+  }
+  .moment:hover { background: var(--rule); }
+  .moment-round { font-size: 20px; font-weight: 700; color: var(--accent); }
+  .moment-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .moment-hint { font-size: 12px; color: var(--ink); margin-top: 4px; }
+
+  /* Footer notes */
+  .notes {
+    margin-top: 36px;
+    padding: 16px 20px;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .notes h3 { color: var(--ink); margin: 0 0 8px; font-size: 14px; }
+  .notes ul { margin: 4px 0 0; padding-left: 18px; }
+  .notes li { margin: 2px 0; }
+  .notes code {
+    background: #f0ebdf;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stage-grid { grid-template-columns: 1fr 1fr; }
+    .key-moments { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Listening Pods Playground</h1>
+    <p class="sub">Layer 2 (pods) every round from R6 · Layer 1 (graduated seeds) active-10 every 3 rounds + reserve every 13 from R56 · 1× and 2× speeds only · stage 7 is the eternal 2× holding bay</p>
+  </header>
+
+  <div class="controls">
+    <div class="playback">
+      <button id="stepBack" title="Previous round">⟨</button>
+      <button id="playPause" title="Play / pause">▶</button>
+      <button id="stepForward" title="Next round">⟩</button>
+    </div>
+    <div class="slider">
+      <input type="range" id="roundSlider" min="1" max="500" value="1">
+      <div class="slider-label">
+        <span>Round <span class="round-big" id="roundNum">1</span></span>
+        <span>of <span id="maxRound">500</span></span>
+      </div>
+    </div>
+    <div class="speed">
+      <label>Auto-play:
+        <select id="speedSelect">
+          <option value="1500">0.67×</option>
+          <option value="1000">1×</option>
+          <option value="500" selected>2×</option>
+          <option value="250">4×</option>
+          <option value="100">10×</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <h2 class="band">Key moments · click to jump</h2>
+  <div class="key-moments">
+    <div class="moment" data-round="6">
+      <div class="moment-label">Round 6</div>
+      <div class="moment-round">L2 starts</div>
+      <div class="moment-hint">S1 enters · pod fires every round</div>
+    </div>
+    <div class="moment" data-round="24">
+      <div class="moment-label">Round 24</div>
+      <div class="moment-round">Bay opens</div>
+      <div class="moment-hint">S1 graduates to stage 7 (alive 19)</div>
+    </div>
+    <div class="moment" data-round="57">
+      <div class="moment-label">Round 57</div>
+      <div class="moment-round">L1 starts</div>
+      <div class="moment-hint">Active-10 first fires (R % 3 = 0, 2 seeds graduated)</div>
+    </div>
+    <div class="moment" data-round="78">
+      <div class="moment-label">Round 78</div>
+      <div class="moment-round">First clash</div>
+      <div class="moment-hint">L1 active + reserve fire same round (R % 39 = 0)</div>
+    </div>
+    <div class="moment" data-round="91">
+      <div class="moment-label">Round 91</div>
+      <div class="moment-round">Reserve solo</div>
+      <div class="moment-hint">Reserve fires alone (R % 13 = 0, R % 3 ≠ 0)</div>
+    </div>
+    <div class="moment" data-round="122">
+      <div class="moment-label">Round 122</div>
+      <div class="moment-round">Last L2 intro</div>
+      <div class="moment-hint">S117 enters (= last pod sentence)</div>
+    </div>
+    <div class="moment" data-round="135">
+      <div class="moment-label">Round 135</div>
+      <div class="moment-round">Last L1 grad</div>
+      <div class="moment-hint">80th seed graduates · L1 holds steady</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><strong id="statLapTime">—</strong><span>Round-end lap</span></div>
+    <div class="stat"><strong id="statLapPct">—</strong><span>of 5-min round</span></div>
+    <div class="stat"><strong id="statL2Active">0</strong><span>L2 active stages</span></div>
+    <div class="stat"><strong id="statL2Bay">0</strong><span>L2 holding bay</span></div>
+    <div class="stat"><strong id="statL1Active">0</strong><span>L1 active-10</span></div>
+    <div class="stat"><strong id="statL1Reserve">0</strong><span>L1 reserve</span></div>
+    <div class="stat"><strong id="statL1Fires">—</strong><span>L1 fires this round</span></div>
+  </div>
+
+  <h2 class="band">Lap-time arc · round-by-round</h2>
+  <div class="chart-wrap">
+    <svg id="lapChart" viewBox="0 0 1000 220" preserveAspectRatio="none"></svg>
+  </div>
+
+  <h2 class="band">Round <span id="roundLabel">1</span> · rotation by stage</h2>
+  <div class="stage-grid">
+    <div class="stage-column" data-stage="1">
+      <div class="stage-head">
+        <div class="stage-title">Stage 1</div>
+        <div class="stage-desc">PS · trans · PS · PS×2</div>
+        <div class="stage-count"><span id="count-1">0</span> · 3 rounds</div>
+      </div>
+      <div class="stage-slots" id="stage-1"></div>
+    </div>
+    <div class="stage-column" data-stage="2">
+      <div class="stage-head">
+        <div class="stage-title">Stage 2</div>
+        <div class="stage-desc">PS · trans · PS×2 · PS×2</div>
+        <div class="stage-count"><span id="count-2">0</span> · 3 rounds</div>
+      </div>
+      <div class="stage-slots" id="stage-2"></div>
+    </div>
+    <div class="stage-column" data-stage="3">
+      <div class="stage-head">
+        <div class="stage-title">Stage 3</div>
+        <div class="stage-desc">PS · trans · PS×2</div>
+        <div class="stage-count"><span id="count-3">0</span> · 3 rounds</div>
+      </div>
+      <div class="stage-slots" id="stage-3"></div>
+    </div>
+    <div class="stage-column" data-stage="4">
+      <div class="stage-head">
+        <div class="stage-title">Stage 4</div>
+        <div class="stage-desc">PS×2 · trans · PS×2</div>
+        <div class="stage-count"><span id="count-4">0</span> · 3 rounds</div>
+      </div>
+      <div class="stage-slots" id="stage-4"></div>
+    </div>
+    <div class="stage-column" data-stage="5">
+      <div class="stage-head">
+        <div class="stage-title">Stage 5</div>
+        <div class="stage-desc">PS · PS×2  (no trans)</div>
+        <div class="stage-count"><span id="count-5">0</span> · 3 rounds</div>
+      </div>
+      <div class="stage-slots" id="stage-5"></div>
+    </div>
+    <div class="stage-column" data-stage="6">
+      <div class="stage-head">
+        <div class="stage-title">Stage 6</div>
+        <div class="stage-desc">PS×2 · PS×2</div>
+        <div class="stage-count"><span id="count-6">0</span> · 3 rounds</div>
+      </div>
+      <div class="stage-slots" id="stage-6"></div>
+    </div>
+    <div class="stage-column" data-stage="7">
+      <div class="stage-head">
+        <div class="stage-title">Stage 7 · Holding Bay</div>
+        <div class="stage-desc">PS×2 · eternal</div>
+        <div class="stage-count"><span id="count-7">0</span> · forever</div>
+      </div>
+      <div class="stage-slots" id="stage-7"></div>
+    </div>
+  </div>
+
+  <h2 class="band">All 109 sentences · progression map</h2>
+  <div class="pod-legend" id="podLegend"></div>
+  <div class="sentence-grid" id="sentenceGrid"></div>
+
+  <div class="notes">
+    <h3>Spec (Aran 2026-04-29)</h3>
+    <ul>
+      <li><strong>PS</strong> = pod sentence at normal speed (1×, 3 s).
+          <strong>PS×2</strong> = pod sentence at double speed (2×, 1.5 s).
+          <strong>trans</strong> = English translation (2 s). Only two speeds — no 0.8×.</li>
+      <li><strong>Layer 2 (pods)</strong> activates at <strong>main round 6</strong> (start of Seed 2). Fires every round at round-end. One new sentence enters per round. Stages 1–6 each last 3 rounds; stage 7 is the eternal holding bay.</li>
+      <li><strong>Layer 1 (graduated seeds)</strong> activates at <strong>main round 56</strong> (offset+lastRound for first seed). Fires <strong>active-10 every 3 rounds</strong> + <strong>reserve every 13 rounds</strong>. Sliding window: when seed 11 graduates, oldest moves to reserve. 3 and 13 are coprime, so clashes only every 39 rounds.</li>
+      <li><strong>Round:</strong> assumed 5 min (≈ 30 prompt-response cycles) for the "% of round" reading.</li>
+      <li><strong>L1 simulation</strong> in this visualiser uses 1 graduation per round from R56, capped at 80 seeds — the real implementation will follow course-specific timing.</li>
+    </ul>
+    <h3 style="margin-top:14px">What you're looking at</h3>
+    <ul>
+      <li>The arc chart shows the combined L1 + L2 round-end lap time. Watch for the spikes at every-3-round (active-10) and every-13-round (reserve) intersections post-R56.</li>
+      <li>Each chip in the stage grid is one Pod 0 sentence at its current stage. Stages 1–6 show three iteration rows; stage 7 is the holding bay.</li>
+      <li>L1 status panel (right side of stats) shows how many seeds are in the active-10 sliding window vs the reserve, and which fires this round.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+// ============================================================================
+// DATA — pod series (matches ~/Desktop/spanish-pods.md)
+// ============================================================================
+const PODS = [
+  { slug: 'greetings', title: 'A Day of Greetings', color: '#e8824a', sentences: [
+    { speaker: 'Vecino (08:00)', target: '¡Buenos días, María!', known: 'Good morning, María!' },
+    { speaker: 'María', target: 'Buenos días. ¿Qué tal?', known: "Good morning. How's it going?" },
+    { speaker: 'Vecino', target: 'Muy bien. Hasta luego, que tenga un buen día.', known: 'Very well. See you later, have a good day.' },
+    { speaker: 'María', target: 'Adiós.', known: 'Goodbye.' },
+    { speaker: 'Camarero (15:00)', target: 'Buenas tardes. ¿Qué le pongo?', known: 'Good afternoon. What can I get you?' },
+    { speaker: 'María', target: 'Buenas tardes. Un café, por favor.', known: 'Good afternoon. A coffee, please.' },
+    { speaker: 'María', target: 'Muchas gracias. Adiós, hasta luego.', known: 'Thank you. Goodbye, see you later.' },
+    { speaker: 'Amiga (19:00)', target: '¡Hola, buenas tardes!', known: 'Hi, good afternoon!' },
+    { speaker: 'María', target: '¡Hola! Bueno, me voy a casa. Hasta mañana.', known: "Hi! Well, I'm heading home. See you tomorrow." },
+    { speaker: 'Amiga', target: 'Hasta mañana, adiós.', known: 'See you tomorrow, bye.' },
+    { speaker: 'Vecino (22:30)', target: 'Buenas noches, María.', known: 'Good night, María.' },
+    { speaker: 'María', target: 'Buenas noches. Hasta mañana.', known: 'Good night. See you tomorrow.' },
+  ]},
+  { slug: 'introductions', title: 'Introductions', color: '#d9a84a', sentences: [
+    { speaker: 'Pablo', target: '¡Hola! ¿Cómo te llamas?', known: "Hi! What's your name?" },
+    { speaker: 'Ana', target: 'Me llamo Ana. ¿Y tú?', known: "My name's Ana. And you?" },
+    { speaker: 'Pablo', target: 'Yo soy Pablo. Encantado.', known: "I'm Pablo. Pleased to meet you." },
+    { speaker: 'Ana', target: 'Mucho gusto. ¿De dónde eres?', known: 'Nice to meet you. Where are you from?' },
+    { speaker: 'Pablo', target: 'Soy de Madrid. ¿Y tú?', known: "I'm from Madrid. And you?" },
+    { speaker: 'Ana', target: 'Yo soy de Sevilla, pero vivo aquí desde hace dos años.', known: "I'm from Seville, but I've been living here for two years." },
+    { speaker: 'Pablo', target: '¿A qué te dedicas?', known: 'What do you do?' },
+    { speaker: 'Ana', target: 'Soy enfermera. ¿Y tú?', known: "I'm a nurse. And you?" },
+    { speaker: 'Pablo', target: 'Yo soy profesor de inglés.', known: "I'm an English teacher." },
+    { speaker: 'Ana', target: 'Qué interesante. Bueno, encantada de conocerte.', known: 'How interesting. Well, lovely to meet you.' },
+  ]},
+  { slug: 'coffee', title: 'Coffee Shop', color: '#8b5a3c', sentences: [
+    { speaker: 'Barista', target: '¡Buenos días! ¿Qué le pongo?', known: 'Good morning! What can I get you?' },
+    { speaker: 'Cliente 1', target: 'Un café solo, por favor.', known: 'A black coffee, please.' },
+    { speaker: 'Barista', target: '¿Con azúcar?', known: 'With sugar?' },
+    { speaker: 'Cliente 1', target: 'Sin azúcar, gracias.', known: 'Without sugar, thanks.' },
+    { speaker: 'Barista', target: '¿Para tomar aquí o para llevar?', known: 'For here or to go?' },
+    { speaker: 'Cliente 1', target: 'Para llevar.', known: 'To go.' },
+    { speaker: 'Cliente 2', target: 'Yo quiero un café con leche grande, y un cortado.', known: "I'd like a large coffee with milk, and a cortado." },
+    { speaker: 'Barista', target: 'Muy bien. ¿Algo más?', known: 'Very good. Anything else?' },
+    { speaker: 'Cliente 2', target: 'No, nada más. ¿Cuánto es?', known: 'No, nothing else. How much is it?' },
+    { speaker: 'Barista', target: 'Son cinco euros con treinta. ¿Quiere el ticket?', known: 'Five euros thirty. Would you like the receipt?' },
+    { speaker: 'Cliente 2', target: 'Sí, por favor.', known: 'Yes, please.' },
+    { speaker: 'Cliente 3', target: 'Buenos días. Un café americano y un descafeinado con leche.', known: 'Good morning. An americano and a decaf with milk.' },
+    { speaker: 'Barista', target: 'Ahora mismo.', known: 'Right away.' },
+  ]},
+  { slug: 'bar', title: 'Bar', color: '#b94a5f', sentences: [
+    { speaker: 'Camarero', target: '¡Buenas tardes! ¿Qué van a tomar?', known: 'Good evening! What are you going to have?' },
+    { speaker: 'Cliente 1', target: 'Yo quiero una caña, por favor.', known: "I'd like a small beer, please." },
+    { speaker: 'Cliente 2', target: 'Para mí, un vino tinto.', known: 'And for me, a red wine.' },
+    { speaker: 'Cliente 3', target: 'Yo una copa de vino blanco. ¿Qué vinos tienen?', known: 'A glass of white for me. What wines do you have?' },
+    { speaker: 'Camarero', target: 'Tenemos un verdejo y un albariño.', known: 'We have a verdejo and an albariño.' },
+    { speaker: 'Cliente 3', target: 'El albariño, por favor.', known: 'The albariño, please.' },
+    { speaker: 'Cliente 1', target: 'Ah, y dos cañas más, para nuestros amigos.', known: 'Oh, and two more small beers, for our friends.' },
+    { speaker: 'Camarero', target: '¿Quieren algo para picar?', known: 'Want something to nibble on?' },
+    { speaker: 'Cliente 1', target: '¿Qué tapas tienen hoy?', known: 'What tapas do you have today?' },
+    { speaker: 'Camarero', target: 'Tortilla, croquetas, patatas bravas, jamón y aceitunas.', known: 'Tortilla, croquettes, patatas bravas, ham and olives.' },
+    { speaker: 'Cliente 1', target: 'Ponme una ración de croquetas y unas bravas.', known: 'Bring me a ración of croquettes and some patatas bravas.' },
+    { speaker: 'Cliente 2', target: 'Y una tabla de jamón para compartir.', known: 'And a ham platter to share.' },
+    { speaker: 'Camarero', target: 'Muy bien. ¿Agua para la mesa?', known: 'Very good. Water for the table?' },
+    { speaker: 'Cliente 2', target: 'Sí, una botella de agua con gas.', known: 'Yes, a bottle of sparkling water.' },
+    { speaker: 'Camarero', target: 'Enseguida.', known: 'Right away.' },
+  ]},
+  { slug: 'restaurant', title: 'Restaurant', color: '#7a4477', sentences: [
+    { speaker: 'Cliente', target: 'Buenas noches. ¿Tienen mesa para dos?', known: 'Good evening. Do you have a table for two?' },
+    { speaker: 'Camarero', target: 'Sí, por aquí, por favor. Les traigo la carta.', known: "Yes, this way please. I'll bring you the menu." },
+    { speaker: 'Cliente', target: '¿Tienen algo vegetariano? Mi amiga no come carne.', known: "Do you have anything vegetarian? My friend doesn't eat meat." },
+    { speaker: 'Camarero', target: 'Claro. La ensalada mixta y el risotto son vegetarianos.', known: 'Of course. The mixed salad and the risotto are vegetarian.' },
+    { speaker: 'Cliente', target: '¿Y qué nos recomienda de carne?', known: 'And what do you recommend meat-wise?' },
+    { speaker: 'Camarero', target: 'El pescado del día está muy bueno, y el solomillo también.', known: 'The fish of the day is very good, and the sirloin too.' },
+    { speaker: 'Cliente 1', target: 'Vale, yo quiero el solomillo.', known: "OK, I'll have the sirloin." },
+    { speaker: 'Camarero', target: '¿Cómo lo quiere? ¿Poco hecho, al punto o muy hecho?', known: 'How do you want it? Rare, medium or well done?' },
+    { speaker: 'Cliente 1', target: 'Al punto, por favor.', known: 'Medium, please.' },
+    { speaker: 'Cliente 2', target: 'Y yo, el risotto. De primero, una ensalada para compartir.', known: "And I'll have the risotto. As a starter, a salad to share." },
+    { speaker: 'Camarero', target: 'Perfecto. ¿Y para beber?', known: 'Perfect. And to drink?' },
+    { speaker: 'Cliente 1', target: 'Una botella de agua y una copa de vino tinto.', known: 'A bottle of water and a glass of red wine.' },
+    { speaker: 'Cliente 2', target: 'Para mí, una copa de blanco.', known: 'A glass of white for me.' },
+    { speaker: 'Camarero', target: 'Muy bien. ¿Quieren ver la carta de postres después?', known: 'Very good. Would you like to see the dessert menu later?' },
+    { speaker: 'Cliente 1', target: 'Sí, gracias.', known: 'Yes, thanks.' },
+    { speaker: 'Camarero', target: '¿Todo bien? ¿Algún postre?', known: 'Everything OK? Any dessert?' },
+    { speaker: 'Cliente 2', target: 'Solo un café, por favor. La cuenta, cuando pueda.', known: 'Just a coffee, please. The bill, when you can.' },
+  ]},
+  { slug: 'market', title: 'Market', color: '#6a8a4a', sentences: [
+    { speaker: 'Vendor', target: '¡Hola! ¿Qué le pongo?', known: 'Hello! What can I get you?' },
+    { speaker: 'Customer', target: '¿Cuánto cuestan las naranjas?', known: 'How much are the oranges?' },
+    { speaker: 'Vendor', target: 'A dos euros el kilo.', known: 'Two euros a kilo.' },
+    { speaker: 'Customer', target: 'Ponme un kilo de naranjas y medio kilo de fresas.', known: 'Give me a kilo of oranges and half a kilo of strawberries.' },
+    { speaker: 'Vendor', target: '¿Algo más?', known: 'Anything else?' },
+    { speaker: 'Customer', target: 'Sí, ¿tiene aguacates?', known: 'Yes, do you have avocados?' },
+    { speaker: 'Vendor', target: 'Hoy no me quedan, lo siento.', known: "I don't have any left today, sorry." },
+    { speaker: 'Customer + Vendor', target: 'No pasa nada. ¿Cuánto es todo? Son cinco euros con veinte.', known: "No worries. How much is everything? That's five euros twenty." },
+  ]},
+  { slug: 'hotel', title: 'Hotel', color: '#4a7a8a', sentences: [
+    { speaker: 'Guest', target: 'Buenas tardes. Tengo una reserva a nombre de García.', known: 'Good afternoon. I have a reservation under the name García.' },
+    { speaker: 'Receptionist', target: 'Un momento, por favor. Sí, una habitación doble para tres noches.', known: 'One moment, please. Yes, a double room for three nights.' },
+    { speaker: 'Guest', target: '¿La habitación tiene vistas al mar?', known: 'Does the room have a sea view?' },
+    { speaker: 'Receptionist', target: 'Sí, está en la quinta planta. Aquí tiene la llave.', known: "Yes, it's on the fifth floor. Here's the key." },
+    { speaker: 'Guest', target: '¿A qué hora es el desayuno?', known: 'What time is breakfast?' },
+    { speaker: 'Receptionist', target: 'De siete a diez, en el restaurante de la planta baja.', known: 'From seven to ten, in the ground floor restaurant.' },
+    { speaker: 'Guest', target: '¿Tienen piscina?', known: 'Do you have a pool?' },
+    { speaker: 'Receptionist', target: 'Sí, la piscina está en la azotea. Abre a las nueve.', known: 'Yes, the pool is on the rooftop. It opens at nine.' },
+    { speaker: 'Guest', target: "Perfecto. ¿Y el wifi? ¿Cuál es la contraseña?", known: "Perfect. And the wifi? What's the password?" },
+    { speaker: 'Receptionist', target: 'La contraseña está en la tarjeta de la habitación.', known: 'The password is on the room card.' },
+  ]},
+  { slug: 'pharmacy', title: 'Pharmacy', color: '#4a6aa5', sentences: [
+    { speaker: 'Customer', target: 'Hola, buenas. Necesito algo para el dolor de cabeza.', known: 'Hello. I need something for a headache.' },
+    { speaker: 'Pharmacist', target: '¿Es un dolor fuerte o leve?', known: 'Is it a strong or mild pain?' },
+    { speaker: 'Customer', target: 'Bastante fuerte. Me duele desde esta mañana.', known: "Quite strong. It's been hurting since this morning." },
+    { speaker: 'Pharmacist', target: 'Le recomiendo este ibuprofeno. Tome uno cada ocho horas.', known: 'I recommend this ibuprofen. Take one every eight hours.' },
+    { speaker: 'Customer', target: '¿Tiene algo también para el estómago? Me sienta mal la comida.', known: 'Do you have something for my stomach too? The food disagreed with me.' },
+    { speaker: 'Pharmacist', target: 'Sí, estas pastillas van muy bien. Tómelas antes de comer.', known: 'Yes, these tablets work very well. Take them before eating.' },
+    { speaker: 'Customer', target: 'Muchas gracias. ¿Cuánto es todo?', known: 'Thank you very much. How much is everything?' },
+  ]},
+  { slug: 'directions', title: 'Directions', color: '#6a5aa5', sentences: [
+    { speaker: 'Tourist', target: 'Perdone, ¿sabe dónde está la estación de metro?', known: 'Excuse me, do you know where the metro station is?' },
+    { speaker: 'Local', target: 'Sí, siga todo recto por esta calle.', known: 'Yes, go straight ahead along this street.' },
+    { speaker: 'Tourist', target: '¿Está lejos?', known: 'Is it far?' },
+    { speaker: 'Local', target: 'No, a unos cinco minutos andando.', known: 'No, about five minutes walking.' },
+    { speaker: 'Local', target: 'Al final de la calle, gire a la izquierda.', known: 'At the end of the street, turn left.' },
+    { speaker: 'Local', target: 'La estación está justo enfrente del supermercado.', known: 'The station is right opposite the supermarket.' },
+    { speaker: 'Tourist', target: '¿Y hay algún cajero automático por aquí cerca?', known: 'And is there a cash machine near here?' },
+    { speaker: 'Local', target: 'Sí, hay uno en la esquina, al lado del banco.', known: "Yes, there's one on the corner, next to the bank." },
+    { speaker: 'Tourist', target: 'Muchas gracias. ¿Y la farmacia más cercana?', known: 'Thanks very much. And the nearest pharmacy?' },
+    { speaker: 'Local', target: 'Siga recto un poco más. Al final de la próxima calle, gire a la derecha.', known: 'Go straight a bit further. At the end of the next street, turn right.' },
+  ]},
+  { slug: 'taxi', title: 'Taxi', color: '#4a5a6a', sentences: [
+    { speaker: 'Passenger', target: '¡Hola! Al centro de la ciudad, por favor.', known: 'Hello! To the city centre, please.' },
+    { speaker: 'Driver', target: '¿A qué calle exactamente?', known: 'To which street exactly?' },
+    { speaker: 'Passenger', target: 'A la Plaza Mayor, si puede.', known: 'To the Plaza Mayor, if you can.' },
+    { speaker: 'Driver', target: 'Muy bien. A esta hora hay bastante tráfico.', known: "Very good. There's quite a lot of traffic at this time." },
+    { speaker: 'Passenger', target: '¿Cuánto tiempo tardamos más o menos?', known: 'How long will it take, more or less?' },
+    { speaker: 'Driver', target: 'Unos veinte minutos, depende del tráfico.', known: 'About twenty minutes, it depends on the traffic.' },
+    { speaker: 'Driver', target: "Ya hemos llegado. Son doce euros con setenta.", known: "We've arrived. That's twelve euros seventy." },
+  ]},
+];
+
+// Flatten into global sequence (1-indexed)
+const ALL = [];
+PODS.forEach(pod => {
+  pod.sentences.forEach((s, i) => {
+    ALL.push({ ...s, pod, podSentenceIdx: i + 1, globalIdx: ALL.length + 1 });
+  });
+});
+const TOTAL = ALL.length;
+const MAX_ROUND = 500;
+const ROUND_MINUTES = 5;
+
+// ============================================================================
+// SPEC (Aran 2026-04-29) — Layer 1 + Layer 2 listening at round-end
+// ============================================================================
+const CONFIG = {
+  // Sentence durations
+  podSentenceS: 3.0,        // PS at 1× normal speed
+  transS: 2.0,              // English translation
+  speedFast: 2.0,           // 2× — the only speed-up
+
+  // Layer 2 (Pod 0) timing
+  podActivationRound: 6,    // first pod fires at end of round 6 (start of seed 2)
+  podSentencesPerRound: 1,  // 1 new sentence enters per round, post-activation
+
+  // Layer 1 (graduated seeds) timing
+  l1GraduationRound: 56,    // first seed graduates at offset+lastRound = 56
+  l1ActiveSize: 10,         // sliding window of 10 most recent graduated seeds
+  l1ActiveInterval: 3,      // active-10 fires every 3 rounds
+  l1ReserveInterval: 13,    // reserve fires every 13 rounds (coprime with 3 → clashes only every 39 rounds)
+  l1MaxSeeds: 80,           // existing totalSeeds cap
+  l1GraduationsPerRound: 1, // simplification: ~1 new graduation per round post-l1GraduationRound
+};
+
+function psT() { return CONFIG.podSentenceS; }                    // PS at 1× = 3.0s
+function ps2T() { return CONFIG.podSentenceS / CONFIG.speedFast; } // PS×2 at 2× = 1.5s
+function transT() { return CONFIG.transS; }                       // 2.0s
+
+// Per Aran's notebook, 2026-04-29 — corrected stage definitions
+const STAGE_PLAYS = {
+  1: ['PS', 'trans', 'PS',  'PS×2'],          // 4 plays · 3 rounds
+  2: ['PS', 'trans', 'PS×2','PS×2'],          // 4 plays · 3 rounds
+  3: ['PS', 'trans', 'PS×2'],                  // 3 plays · 3 rounds
+  4: ['PS×2','trans','PS×2'],                  // 3 plays · 3 rounds
+  5: ['PS', 'PS×2'],                           // 2 plays · 3 rounds (translation drops)
+  6: ['PS×2','PS×2'],                          // 2 plays · 3 rounds
+  7: ['PS×2'],                                 // 1 play  · eternal holding bay
+};
+const STAGE_DESCS = {
+  1: 'PS · trans · PS · PS×2',
+  2: 'PS · trans · PS×2 · PS×2',
+  3: 'PS · trans · PS×2',
+  4: 'PS×2 · trans · PS×2',
+  5: 'PS · PS×2  (no trans)',
+  6: 'PS×2 · PS×2',
+  7: 'PS×2  (eternal)',
+};
+const STAGE_TIME = {};
+for (const [stage, plays] of Object.entries(STAGE_PLAYS)) {
+  STAGE_TIME[stage] = () => plays.reduce((sum, p) =>
+    sum + (p === 'PS' ? psT() : p === 'PS×2' ? ps2T() : transT()), 0);
+}
+
+function stageFor(entryPodRound, currentPodRound) {
+  const alive = currentPodRound - entryPodRound + 1;
+  if (alive < 1) return null;
+  if (alive <= 3) return { stage: 1, iter: alive };
+  if (alive <= 6) return { stage: 2, iter: alive - 3 };
+  if (alive <= 9) return { stage: 3, iter: alive - 6 };
+  if (alive <= 12) return { stage: 4, iter: alive - 9 };
+  if (alive <= 15) return { stage: 5, iter: alive - 12 };
+  if (alive <= 18) return { stage: 6, iter: alive - 15 };
+  return { stage: 7, iter: null };
+}
+
+// Pod-round = main-round - activation + 1 (1:1 mapping post-activation)
+function podRoundFor(mainRound) {
+  if (mainRound < CONFIG.podActivationRound) return 0;
+  return mainRound - CONFIG.podActivationRound + 1;
+}
+
+// Layer 1: simplified model — 1 seed graduates per round starting at l1GraduationRound,
+// capped at l1MaxSeeds. Real implementation will follow course-specific timing.
+function l1GraduatedCount(mainRound) {
+  if (mainRound < CONFIG.l1GraduationRound) return 0;
+  return Math.min(mainRound - CONFIG.l1GraduationRound + 1, CONFIG.l1MaxSeeds);
+}
+function l1ActiveCount(mainRound) {
+  return Math.min(l1GraduatedCount(mainRound), CONFIG.l1ActiveSize);
+}
+function l1ReserveCount(mainRound) {
+  return Math.max(0, l1GraduatedCount(mainRound) - CONFIG.l1ActiveSize);
+}
+
+// L1 fires at round-end of:
+//   - active rotation: every l1ActiveInterval rounds, starting from the first round
+//     where there's at least 1 graduated seed
+//   - reserve rotation: every l1ReserveInterval rounds, starting from the first round
+//     where the reserve is non-empty (i.e. the 11th seed has graduated)
+function l1ActiveFiresAt(mainRound) {
+  return l1GraduatedCount(mainRound) > 0 && (mainRound % CONFIG.l1ActiveInterval === 0);
+}
+function l1ReserveFiresAt(mainRound) {
+  return l1ReserveCount(mainRound) > 0 && (mainRound % CONFIG.l1ReserveInterval === 0);
+}
+
+// Each L1 sentence plays once at PS×2 (1.5s). Simplification — real impl can
+// add a slight ramp from 1× → 2× over the first few replays per seed.
+const L1_SENTENCE_TIME = ps2T();
+
+function roundState(round) {
+  const byStage = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [] };
+  let lapTime = 0;
+
+  // Layer 2: pod lap (every round post-activation)
+  const pr = podRoundFor(round);
+  if (pr >= 1) {
+    const activeCount = Math.min(pr, TOTAL);
+    for (let i = 1; i <= activeCount; i++) {
+      const s = ALL[i - 1];
+      const st = stageFor(i, pr);
+      if (st) {
+        byStage[st.stage].push({ s, ...st });
+        lapTime += STAGE_TIME[st.stage]();
+      }
+    }
+  }
+
+  // Layer 1: active-10 every 3 rounds + reserve every 13 rounds
+  const l1ActiveFires = l1ActiveFiresAt(round);
+  const l1ReserveFires = l1ReserveFiresAt(round);
+  let l1ActiveSeeds = 0, l1ReserveSeeds = 0;
+  if (l1ActiveFires) {
+    l1ActiveSeeds = l1ActiveCount(round);
+    lapTime += l1ActiveSeeds * L1_SENTENCE_TIME;
+  }
+  if (l1ReserveFires) {
+    l1ReserveSeeds = l1ReserveCount(round);
+    lapTime += l1ReserveSeeds * L1_SENTENCE_TIME;
+  }
+
+  return {
+    round, podRound: pr, byStage, lapTime,
+    activeCount: Math.min(pr, TOTAL),
+    l1ActiveFires, l1ReserveFires, l1ActiveSeeds, l1ReserveSeeds,
+    l1Graduated: l1GraduatedCount(round),
+  };
+}
+
+// Pre-compute lap times for the chart
+const lapTimes = [];
+for (let r = 1; r <= MAX_ROUND; r++) lapTimes.push(roundState(r).lapTime);
+const maxLap = Math.max(...lapTimes);
+
+// ============================================================================
+// FORMATTING
+// ============================================================================
+function formatTime(s) {
+  if (s < 60) return s.toFixed(0) + ' s';
+  const m = Math.floor(s / 60);
+  const rest = Math.round(s % 60);
+  return m + 'm ' + String(rest).padStart(2, '0') + 's';
+}
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// ============================================================================
+// RENDERING
+// ============================================================================
+function renderLegend() {
+  document.getElementById('podLegend').innerHTML = PODS.map(p => `
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:${p.color}"></div>
+      <div class="legend-label">${escapeHtml(p.title)}<span class="legend-count">(${p.sentences.length})</span></div>
+    </div>
+  `).join('');
+}
+
+function renderLapChart() {
+  const svg = document.getElementById('lapChart');
+  const W = 1000, H = 220, PAD = 24;
+  const points = lapTimes.map((t, i) => {
+    const x = PAD + (i / (MAX_ROUND - 1)) * (W - 2 * PAD);
+    const y = H - PAD - (t / maxLap) * (H - 2 * PAD);
+    return x + ',' + y;
+  }).join(' ');
+  const areaPoints = PAD + ',' + (H - PAD) + ' ' + points + ' ' + (W - PAD) + ',' + (H - PAD);
+
+  // Milestone ticks
+  const milestones = [
+    { r: 1, label: 'R1' },
+    { r: 19, label: 'R19 bay opens' },
+    { r: 109, label: 'R109 last intro' },
+    { r: 127, label: 'R127 eternal' },
+    { r: 250, label: 'R250' },
+    { r: 500, label: 'R500' },
+  ];
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="lapGrad" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#8a5a2b" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#8a5a2b" stop-opacity="0.05"/>
+      </linearGradient>
+    </defs>
+    ${milestones.map(m => {
+      const x = PAD + ((m.r - 1) / (MAX_ROUND - 1)) * (W - 2 * PAD);
+      return `<line x1="${x}" x2="${x}" y1="${PAD}" y2="${H - PAD}" stroke="#c7bca8" stroke-width="1" stroke-dasharray="2,3"/>
+              <text x="${x + 3}" y="${PAD + 10}" font-size="10" fill="#8a7a5a" font-family="inherit">${escapeHtml(m.label)}</text>`;
+    }).join('')}
+    <polygon points="${areaPoints}" fill="url(#lapGrad)"/>
+    <polyline points="${points}" fill="none" stroke="#8a5a2b" stroke-width="1.8"/>
+    <line id="cursor" x1="0" y1="${PAD}" x2="0" y2="${H - PAD}" stroke="#1c1c1c" stroke-width="1.5"/>
+    <circle id="cursorDot" cx="0" cy="0" r="4" fill="#1c1c1c"/>
+    <text id="cursorLabel" text-anchor="middle" font-size="12" font-weight="600" fill="#1c1c1c" font-family="inherit"></text>
+    <text x="${PAD + 2}" y="${H - 6}" font-size="10" fill="#6a6a6a" font-family="inherit">0</text>
+    <text x="${PAD + 2}" y="${PAD - 4}" font-size="10" fill="#6a6a6a" font-family="inherit">${formatTime(maxLap)} peak</text>
+  `;
+}
+
+function updateCursor(round) {
+  const W = 1000, H = 220, PAD = 24;
+  const x = PAD + ((round - 1) / (MAX_ROUND - 1)) * (W - 2 * PAD);
+  const t = lapTimes[round - 1];
+  const y = H - PAD - (t / maxLap) * (H - 2 * PAD);
+  document.getElementById('cursor').setAttribute('x1', x);
+  document.getElementById('cursor').setAttribute('x2', x);
+  const dot = document.getElementById('cursorDot');
+  dot.setAttribute('cx', x);
+  dot.setAttribute('cy', y);
+  const lbl = document.getElementById('cursorLabel');
+  lbl.setAttribute('x', x);
+  lbl.setAttribute('y', y - 10);
+  lbl.textContent = formatTime(t);
+}
+
+function chipTitle(s, extra) {
+  return `S${s.globalIdx} · ${s.pod.title} (#${s.podSentenceIdx})\n[${s.speaker}]\n${s.target}\n${s.known}${extra ? '\n\n' + extra : ''}`;
+}
+
+function renderChip(item, opts = {}) {
+  const s = item.s;
+  const tiny = opts.tiny ? ' tiny' : '';
+  const extra = item.stage === 7 ? 'Stage 7 · eternal 2× holding bay' : `Stage ${item.stage} · iter ${item.iter}/3`;
+  return `<div class="chip${tiny}" style="background:${s.pod.color}" title="${escapeHtml(chipTitle(s, extra))}">${s.globalIdx}</div>`;
+}
+
+function renderStages(state) {
+  for (let stage = 1; stage <= 6; stage++) {
+    const items = state.byStage[stage];
+    document.getElementById('count-' + stage).textContent = items.length;
+    const byIter = [[], [], []];
+    items.forEach(it => byIter[it.iter - 1].push(it));
+    document.getElementById('stage-' + stage).innerHTML = byIter.map((bucket, i) => `
+      <div class="iter-row">
+        <span class="iter-label">${i + 1}/3</span>
+        ${bucket.length ? bucket.map(renderChip).join('') : '<span class="empty-slot">·</span>'}
+      </div>
+    `).join('');
+  }
+  // Stage 7
+  const s7 = state.byStage[7];
+  document.getElementById('count-7').textContent = s7.length;
+  const tinyThreshold = 40;
+  document.getElementById('stage-7').innerHTML = s7.length
+    ? `<div class="chip-grid">${s7.map(it => renderChip(it, { tiny: s7.length > tinyThreshold })).join('')}</div>`
+    : '<div class="empty-slot">empty · first arrives at round 19</div>';
+}
+
+function renderSentenceGrid(state) {
+  const html = ALL.map(s => {
+    const st = stageFor(s.globalIdx, state.round);
+    if (!st) {
+      const tooltip = `S${s.globalIdx} · ${s.pod.title} (#${s.podSentenceIdx})\nEnters at round ${s.globalIdx}\n${s.target}\n${s.known}`;
+      return `<div class="scell not-yet" style="border-left-color:${s.pod.color}" title="${escapeHtml(tooltip)}">${s.globalIdx}</div>`;
+    }
+    const extra = st.stage === 7 ? 'Stage 7 · eternal' : `Stage ${st.stage} · iter ${st.iter}/3`;
+    const tooltip = `S${s.globalIdx} · ${s.pod.title} (#${s.podSentenceIdx})\n[${s.speaker}]\n${s.target}\n${s.known}\n${extra}`;
+    return `<div class="scell s${st.stage}" style="border-left-color:${s.pod.color}" title="${escapeHtml(tooltip)}">${s.globalIdx}</div>`;
+  }).join('');
+  document.getElementById('sentenceGrid').innerHTML = html;
+}
+
+function render(round) {
+  const state = roundState(round);
+  document.getElementById('roundNum').textContent = round;
+  document.getElementById('roundLabel').textContent = round;
+  document.getElementById('statLapTime').textContent = formatTime(state.lapTime);
+  const pct = ((state.lapTime / (ROUND_MINUTES * 60)) * 100).toFixed(0) + '%';
+  document.getElementById('statLapPct').textContent = pct;
+
+  // L2 counts (active in stages 1-6 vs holding bay 7)
+  const l2Active = state.byStage[1].length + state.byStage[2].length + state.byStage[3].length
+                 + state.byStage[4].length + state.byStage[5].length + state.byStage[6].length;
+  document.getElementById('statL2Active').textContent = l2Active;
+  document.getElementById('statL2Bay').textContent = state.byStage[7].length;
+
+  // L1 status
+  document.getElementById('statL1Active').textContent = l1ActiveCount(round);
+  document.getElementById('statL1Reserve').textContent = l1ReserveCount(round);
+  let firesLabel = '—';
+  if (state.l1ActiveFires && state.l1ReserveFires) firesLabel = 'active + reserve';
+  else if (state.l1ActiveFires) firesLabel = 'active-10';
+  else if (state.l1ReserveFires) firesLabel = 'reserve';
+  document.getElementById('statL1Fires').textContent = firesLabel;
+
+  renderStages(state);
+  renderSentenceGrid(state);
+  updateCursor(round);
+}
+
+// ============================================================================
+// PLAYBACK
+// ============================================================================
+let currentRound = 1;
+let playing = false;
+let playInterval = null;
+
+function setRound(r) {
+  currentRound = Math.max(1, Math.min(MAX_ROUND, r));
+  document.getElementById('roundSlider').value = currentRound;
+  render(currentRound);
+}
+
+function togglePlay() {
+  if (playing) {
+    clearInterval(playInterval);
+    playing = false;
+    document.getElementById('playPause').textContent = '▶';
+  } else {
+    if (currentRound >= MAX_ROUND) setRound(1);
+    playing = true;
+    document.getElementById('playPause').textContent = '❚❚';
+    const speed = parseInt(document.getElementById('speedSelect').value);
+    playInterval = setInterval(() => {
+      if (currentRound >= MAX_ROUND) { togglePlay(); return; }
+      setRound(currentRound + 1);
+    }, speed);
+  }
+}
+
+// ============================================================================
+// WIRE UP
+// ============================================================================
+document.getElementById('roundSlider').max = MAX_ROUND;
+document.getElementById('maxRound').textContent = MAX_ROUND;
+document.getElementById('roundSlider').addEventListener('input', e => setRound(parseInt(e.target.value)));
+document.getElementById('stepBack').addEventListener('click', () => setRound(currentRound - 1));
+document.getElementById('stepForward').addEventListener('click', () => setRound(currentRound + 1));
+document.getElementById('playPause').addEventListener('click', togglePlay);
+document.getElementById('speedSelect').addEventListener('change', () => {
+  if (playing) { togglePlay(); togglePlay(); }
+});
+document.querySelectorAll('.moment').forEach(el => {
+  el.addEventListener('click', () => setRound(parseInt(el.dataset.round)));
+});
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if (e.key === 'ArrowLeft') { e.preventDefault(); setRound(currentRound - 1); }
+  else if (e.key === 'ArrowRight') { e.preventDefault(); setRound(currentRound + 1); }
+  else if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+});
+
+renderLegend();
+renderLapChart();
+setRound(1);
+</script>
+</body>
+</html>
