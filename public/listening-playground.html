@@ -100,14 +100,37 @@
   .stat strong { display: block; font-size: 20px; font-variant-numeric: tabular-nums; color: var(--ink); }
   .stat span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-  /* Lap chart */
+  /* Lap chart — horizontal scroll for full course span (~1200 rounds) */
   .chart-wrap {
     background: var(--card);
     border: 1px solid var(--rule);
     border-radius: 10px;
     padding: 10px;
+    position: relative;
   }
-  #lapChart { width: 100%; height: 220px; display: block; }
+  .chart-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* leave room for the y-axis labels on the left, fixed in place */
+    padding-left: 44px;
+    margin-left: -10px;
+  }
+  /* Fixed y-axis on the left so labels stay visible while scrolling */
+  #yAxis {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 44px;
+    height: 360px;
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(to right, var(--card) 70%, rgba(255,255,255,0));
+  }
+  #lapChart {
+    height: 360px;
+    display: block;
+    /* width set inline based on MAX_ROUND × 2 px/round */
+  }
 
   /* Stage grid */
   .stage-grid {
@@ -358,9 +381,12 @@
     <div class="stat"><strong id="statL1Fires">—</strong><span>L1 fires this round</span></div>
   </div>
 
-  <h2 class="band">Lap-time arc · round-by-round</h2>
+  <h2 class="band">Lap-time arc · round-by-round (scroll horizontally for full course)</h2>
   <div class="chart-wrap">
-    <svg id="lapChart" viewBox="0 0 1000 220" preserveAspectRatio="none"></svg>
+    <svg id="yAxis" viewBox="0 0 44 360" preserveAspectRatio="none"></svg>
+    <div class="chart-scroll" id="chartScroll">
+      <svg id="lapChart" preserveAspectRatio="none"></svg>
+    </div>
   </div>
 
   <h2 class="band">Round <span id="roundLabel">1</span> · rotation by stage</h2>
@@ -591,8 +617,15 @@ PODS.forEach(pod => {
   });
 });
 const TOTAL = ALL.length;
-const MAX_ROUND = 500;
-const ROUND_MINUTES = 5;
+const MAX_ROUND = 1200;        // a full course is ~668 seeds × ~2 LEGOs/seed = ~1200+ rounds
+const ROUND_MINUTES = 4.5;     // ~4-5 min per round of speaking practice; the listening adds on top
+// Chart dimensions: 2 px per round (so 1200 rounds = 2400 px wide; horizontally scrollable)
+const CHART_PX_PER_ROUND = 2;
+const CHART_W = MAX_ROUND * CHART_PX_PER_ROUND;
+const CHART_H = 360;
+const CHART_PAD_TOP = 24;
+const CHART_PAD_BOTTOM = 24;
+const Y_AXIS_W = 44;
 
 // ============================================================================
 // SPEC (Aran 2026-04-29) — Layer 1 + Layer 2 listening at round-end
@@ -762,37 +795,53 @@ function renderLegend() {
 }
 
 function renderLapChart() {
-  const svg = document.getElementById('lapChart');
-  const W = 1000, H = 220, PAD = 24;
+  const chartSvg = document.getElementById('lapChart');
+  const yAxisSvg = document.getElementById('yAxis');
+  const W = CHART_W;
+  const H = CHART_H;
+  const PAD_T = CHART_PAD_TOP;
+  const PAD_B = CHART_PAD_BOTTOM;
+  const xLeft = 0;             // chart starts at x=0 (y-axis is in a separate SVG)
+  const xRight = W;
+
+  // Pixel y for a given seconds value
+  const yPx = (t) => H - PAD_B - (t / maxLap) * (H - PAD_T - PAD_B);
+
+  // Compute polyline / area points along full width
   const points = lapTimes.map((t, i) => {
-    const x = PAD + (i / (MAX_ROUND - 1)) * (W - 2 * PAD);
-    const y = H - PAD - (t / maxLap) * (H - 2 * PAD);
-    return x + ',' + y;
+    const x = xLeft + (i / (MAX_ROUND - 1)) * (xRight - xLeft);
+    return x + ',' + yPx(t);
   }).join(' ');
-  const areaPoints = PAD + ',' + (H - PAD) + ' ' + points + ' ' + (W - PAD) + ',' + (H - PAD);
+  const areaPoints = xLeft + ',' + (H - PAD_B) + ' ' + points + ' ' + xRight + ',' + (H - PAD_B);
 
-  // Milestone ticks on x-axis (per new spec)
+  // Milestone ticks on x-axis (per new spec, course can run 1200+ rounds)
   const milestones = [
-    { r: 6, label: 'R6 L2 starts' },
-    { r: 24, label: 'R24 bay opens' },
-    { r: 57, label: 'R57 L1 starts' },
-    { r: 78, label: 'R78 first clash' },
-    { r: 122, label: 'R122 last L2 intro' },
-    { r: 250, label: 'R250' },
-    { r: 500, label: 'R500' },
-  ];
+    { r: 6,    label: 'R6 L2 starts' },
+    { r: 24,   label: 'R24 bay opens' },
+    { r: 57,   label: 'R57 L1 starts' },
+    { r: 78,   label: 'R78 first clash' },
+    { r: 122,  label: 'R122 last L2 intro' },
+    { r: 200,  label: 'R200' },
+    { r: 400,  label: 'R400' },
+    { r: 600,  label: 'R600' },
+    { r: 800,  label: 'R800' },
+    { r: 1000, label: 'R1000' },
+    { r: 1200, label: 'R1200' },
+  ].filter(m => m.r <= MAX_ROUND);
 
-  // Y-axis ticks every 60s (1 min). Pick ticks up to and including the smallest
-  // multiple of 60 that's >= maxLap, so the top of the chart has a labelled tick.
+  // Y-axis ticks every 60s (1 min)
   const yTickInterval = 60;
   const topTickS = Math.ceil(maxLap / yTickInterval) * yTickInterval;
   const yTicks = [];
   for (let t = 0; t <= topTickS; t += yTickInterval) yTicks.push(t);
 
-  // Pixel y for a given seconds value
-  const yPx = (t) => H - PAD - (t / maxLap) * (H - 2 * PAD);
+  // Set explicit width on the scrollable chart SVG
+  chartSvg.setAttribute('width', String(W));
+  chartSvg.setAttribute('height', String(H));
+  chartSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
-  svg.innerHTML = `
+  // Render the main scrollable chart (no y-axis labels — those live in yAxisSvg)
+  chartSvg.innerHTML = `
     <defs>
       <linearGradient id="lapGrad" x1="0" x2="0" y1="0" y2="1">
         <stop offset="0%" stop-color="#8a5a2b" stop-opacity="0.35"/>
@@ -801,30 +850,37 @@ function renderLapChart() {
     </defs>
     ${yTicks.map(t => {
       const y = yPx(t);
-      if (y < PAD - 2 || y > H - PAD + 2) return ''; // skip if outside chart area
-      const label = t === 0 ? '0' : (t % 60 === 0 ? `${t/60}m` : `${t}s`);
-      return `<line x1="${PAD}" x2="${W - PAD}" y1="${y}" y2="${y}" stroke="#e6e1d6" stroke-width="0.8" stroke-dasharray="2,3"/>
-              <text x="${PAD - 4}" y="${y + 3}" font-size="10" fill="#8a7a5a" font-family="inherit" text-anchor="end">${label}</text>`;
+      if (y < PAD_T - 2 || y > H - PAD_B + 2) return '';
+      return `<line x1="${xLeft}" x2="${xRight}" y1="${y}" y2="${y}" stroke="#e6e1d6" stroke-width="0.8" stroke-dasharray="2,3"/>`;
     }).join('')}
     ${milestones.map(m => {
-      const x = PAD + ((m.r - 1) / (MAX_ROUND - 1)) * (W - 2 * PAD);
-      return `<line x1="${x}" x2="${x}" y1="${PAD}" y2="${H - PAD}" stroke="#c7bca8" stroke-width="1" stroke-dasharray="2,3"/>
-              <text x="${x + 3}" y="${PAD + 10}" font-size="10" fill="#8a7a5a" font-family="inherit">${escapeHtml(m.label)}</text>`;
+      const x = xLeft + ((m.r - 1) / (MAX_ROUND - 1)) * (xRight - xLeft);
+      return `<line x1="${x}" x2="${x}" y1="${PAD_T}" y2="${H - PAD_B}" stroke="#c7bca8" stroke-width="1" stroke-dasharray="2,3"/>
+              <text x="${x + 3}" y="${PAD_T + 10}" font-size="11" fill="#8a7a5a" font-family="inherit">${escapeHtml(m.label)}</text>`;
     }).join('')}
     <polygon points="${areaPoints}" fill="url(#lapGrad)"/>
-    <polyline points="${points}" fill="none" stroke="#8a5a2b" stroke-width="1.8"/>
-    <line id="cursor" x1="0" y1="${PAD}" x2="0" y2="${H - PAD}" stroke="#1c1c1c" stroke-width="1.5"/>
+    <polyline points="${points}" fill="none" stroke="#8a5a2b" stroke-width="1.5"/>
+    <line id="cursor" x1="0" y1="${PAD_T}" x2="0" y2="${H - PAD_B}" stroke="#1c1c1c" stroke-width="1.5"/>
     <circle id="cursorDot" cx="0" cy="0" r="4" fill="#1c1c1c"/>
     <text id="cursorLabel" text-anchor="middle" font-size="12" font-weight="600" fill="#1c1c1c" font-family="inherit"></text>
-    <text x="${W - PAD - 2}" y="${PAD - 4}" font-size="10" fill="#8a5a2b" font-family="inherit" text-anchor="end" font-weight="600">peak ${formatTime(maxLap)}</text>
+    <text x="${xRight - 4}" y="${PAD_T - 6}" font-size="11" fill="#8a5a2b" font-family="inherit" text-anchor="end" font-weight="600">peak ${formatTime(maxLap)}</text>
+  `;
+
+  // Render the fixed y-axis SVG (labels visible while scrolling)
+  yAxisSvg.innerHTML = `
+    ${yTicks.map(t => {
+      const y = yPx(t);
+      if (y < PAD_T - 2 || y > H - PAD_B + 2) return '';
+      const label = t === 0 ? '0 s' : (t % 60 === 0 ? `${t/60}m` : `${t}s`);
+      return `<text x="${Y_AXIS_W - 6}" y="${y + 3}" font-size="11" fill="#6a6a6a" font-family="inherit" text-anchor="end">${label}</text>`;
+    }).join('')}
   `;
 }
 
 function updateCursor(round) {
-  const W = 1000, H = 220, PAD = 24;
-  const x = PAD + ((round - 1) / (MAX_ROUND - 1)) * (W - 2 * PAD);
+  const x = ((round - 1) / (MAX_ROUND - 1)) * CHART_W;
   const t = lapTimes[round - 1];
-  const y = H - PAD - (t / maxLap) * (H - 2 * PAD);
+  const y = CHART_H - CHART_PAD_BOTTOM - (t / maxLap) * (CHART_H - CHART_PAD_TOP - CHART_PAD_BOTTOM);
   document.getElementById('cursor').setAttribute('x1', x);
   document.getElementById('cursor').setAttribute('x2', x);
   const dot = document.getElementById('cursorDot');
@@ -834,6 +890,16 @@ function updateCursor(round) {
   lbl.setAttribute('x', x);
   lbl.setAttribute('y', y - 10);
   lbl.textContent = formatTime(t);
+
+  // Auto-scroll the chart so the cursor stays visible
+  const scroll = document.getElementById('chartScroll');
+  if (scroll) {
+    const visibleW = scroll.clientWidth;
+    const targetScroll = Math.max(0, x - visibleW / 2);
+    if (Math.abs(scroll.scrollLeft - targetScroll) > visibleW / 4) {
+      scroll.scrollLeft = targetScroll;
+    }
+  }
 }
 
 function chipTitle(s, extra) {
