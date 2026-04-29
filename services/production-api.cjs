@@ -8695,7 +8695,29 @@ app.post('/api/admin/restart-machine', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const force = req.query.force === '1' || req.body?.force === true
   if (!force) {
-    try { await execFileAsync('bash', ['-c', 'pm2 save']) } catch {}
+    // Ensure every PM2 process is online BEFORE saving — pm2 save persists
+    // current status, and resurrect refuses to start anything saved as
+    // 'stopped'. If a deploy or restart is in flight when reboot is clicked,
+    // saving the transient stopped state would brick the box on next boot.
+    try {
+      await execFileAsync('bash', ['-c', 'pm2 start all'])
+      // Let any launching/restarting processes settle before snapshotting
+      await new Promise(r => setTimeout(r, 2000))
+      const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
+      const procs = JSON.parse(stdout)
+      const notOnline = procs.filter(p => p.pm2_env?.status !== 'online')
+      if (notOnline.length) {
+        return res.status(412).json({
+          ok: false,
+          error: `Reboot blocked: ${notOnline.length} PM2 process(es) not online — saving now would resurrect them stopped.`,
+          not_online: notOnline.map(p => ({ name: p.name, status: p.pm2_env?.status })),
+          hint: 'Fix the offline services first, or pass ?force=1 to reboot anyway.'
+        })
+      }
+      await execFileAsync('bash', ['-c', 'pm2 save'])
+    } catch (e) {
+      logger.warn('[Admin] pre-reboot pm2 save failed:', e.message)
+    }
     const readiness = await checkRebootReadiness()
     if (!readiness.ready) {
       return res.status(412).json({
