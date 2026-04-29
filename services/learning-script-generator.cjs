@@ -35,11 +35,16 @@ const CONSOLIDATE_COUNT = 2
 const MAX_SPACED_REP_PHRASES = 12
 const N1_PHRASE_COUNT = 3
 
-// Listening configuration
+// Listening configuration (Aran spec, 2026-04-29 — canonical visualiser at
+// popty.app/listening-playground.html). Graduation is event-driven (1 LEGO ==
+// 1 round; a seed graduates LISTENING_OFFSET rounds after its last LEGO).
+// Active-10 and reserve-50 fire on co-prime intervals so they only clash
+// every 39 rounds; both can also clash with the every-round L2 firing.
 const LISTENING_OFFSET = 56
-const LISTENING_BATCH_SIZE = 20
-const LISTENING_BATCH_COUNT = 4
-const LISTENING_TOTAL_SEEDS = LISTENING_BATCH_SIZE * LISTENING_BATCH_COUNT // 80
+const L1_ACTIVE_SIZE = 10
+const L1_ACTIVE_INTERVAL = 3
+const L1_RESERVE_SIZE = 50           // overflow → Choice Pods later
+const L1_RESERVE_INTERVAL = 13
 
 /**
  * Count syllables in target text.
@@ -88,16 +93,9 @@ function calculateSpacedRepReviews(roundNumber) {
   return reviews
 }
 
-/**
- * Get listening playback speeds for a seed based on its cumulative play count.
- * Returns array of speed strings: ['normal'], ['normal','double'], ['double','double'], or ['double']
- */
-function getListeningSpeedsForPlayCount(playCount) {
-  if (playCount <= 3) return ['normal']
-  if (playCount <= 6) return ['normal', 'double']
-  if (playCount <= 9) return ['double', 'double']
-  return ['double']
-}
+// L1 sentences play once at 2× per Aran's simplification (visualiser canonical).
+// Real impl could add a 1×→2× ramp on the first few replays per seed; deferred.
+const L1_LISTENING_SPEED = 'double'
 
 /**
  * Load ALL unique LEGOs for a course
@@ -448,33 +446,25 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const podSentences = podRows || []
   const hasPods = podSentences.length > 0
 
-  // Pod-lap mechanics (matches the visualiser at ~/Desktop/listening-playground.html)
-  // Per Aran 2026-04-27: listening fires every 3 main rounds, alternating
-  // LISTEN cluster ↔ pod lap. Each layer fires every 6 main rounds.
-  // Pod stage progression ticks per pod firing, NOT per main round.
-  const POD_ACTIVATION_ROUND = 150
-  const LISTENING_ROTATION_INTERVAL = 3
-  function listeningSlotForRound(round) {
-    if (round < 1) return 'none'
-    if (round % LISTENING_ROTATION_INTERVAL !== 0) return 'none'
-    if (!hasPods || round < POD_ACTIVATION_ROUND) return 'listen'
-    const slotIndex = Math.floor((round - POD_ACTIVATION_ROUND) / LISTENING_ROTATION_INTERVAL)
-    return slotIndex % 2 === 0 ? 'listen' : 'pod'
-  }
+  // Pod-lap mechanics (matches popty.app/listening-playground.html, Aran 2026-04-29).
+  // L2 fires every round at and after POD_ACTIVATION_ROUND (R6 default). Pod-round
+  // is a 1:1 mapping from main-round - activation + 1.
+  const POD_ACTIVATION_ROUND = 6
   function podRoundForMainRound(mainRound) {
-    const firstPodMainRound = POD_ACTIVATION_ROUND + LISTENING_ROTATION_INTERVAL
-    if (mainRound < firstPodMainRound) return 0
-    const podFiringInterval = LISTENING_ROTATION_INTERVAL * 2
-    return Math.floor((mainRound - firstPodMainRound) / podFiringInterval) + 1
+    if (mainRound < POD_ACTIVATION_ROUND) return 0
+    return mainRound - POD_ACTIVATION_ROUND + 1
   }
+  // Stage playlists: PS = pod sentence at 1.0×, PS×2 at 2.0×, trans = English
+  // translation. Stages 1-6 each last 3 pod-rounds; stage 7 is the eternal
+  // holding bay.
   const POD_STAGE_PLAYLIST = {
-    1: ['slow', 'trans', 'slow', 'fast'],
-    2: ['slow', 'trans', 'fast'],
-    3: ['slow', 'trans', 'fast', 'fast'],
-    4: ['fast', 'trans', 'fast'],
-    5: ['slow', 'fast'],
-    6: ['fast', 'fast'],
-    7: ['fast2x'],
+    1: ['ps', 'trans', 'ps', 'ps2x'],
+    2: ['ps', 'trans', 'ps2x', 'ps2x'],
+    3: ['ps', 'trans', 'ps2x'],
+    4: ['ps2x', 'trans', 'ps2x'],
+    5: ['ps', 'ps2x'],
+    6: ['ps2x', 'ps2x'],
+    7: ['ps2x'],
   }
   function podStageFor(entry, current) {
     const alive = current - entry + 1
@@ -501,13 +491,28 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
   // Listening state tracking
   const seedLastRound = new Map()   // seed_number → last round where seed had a LEGO
-  const graduatedSeeds = []         // ordered list of seed_numbers that have graduated
-  const listeningBatches = [[], [], [], []]  // 4 batches of seed_numbers
-  const seedPlayCount = new Map()   // seed_number → cumulative play count
-  const graduatedLegoIds = new Set() // LEGO IDs whose seeds have graduated (excluded from REVIEW)
-  let nextBatchToFill = 0           // which batch is currently being filled
-  let rotationIndex = 0             // which batch to play next
-  let activeBatchCount = 0          // how many batches have at least 1 seed
+  const graduatedSeedSet = new Set()        // idempotency
+  const graduatedQueue = []         // graduation order; L1 windows are slices
+  const graduatedLegoIds = new Set()        // LEGO IDs from graduated seeds (excluded from REVIEW)
+
+  function l1ActiveSeedsList() {
+    return graduatedQueue.slice(-L1_ACTIVE_SIZE)
+  }
+  function l1ReserveSeedsList() {
+    if (graduatedQueue.length <= L1_ACTIVE_SIZE) return []
+    const reserveEnd = graduatedQueue.length - L1_ACTIVE_SIZE
+    const reserveStart = Math.max(0, reserveEnd - L1_RESERVE_SIZE)
+    return graduatedQueue.slice(reserveStart, reserveEnd)
+  }
+  function l1ActiveFiresAt(round) {
+    return round > 0 && round % L1_ACTIVE_INTERVAL === 0 && graduatedQueue.length > 0
+  }
+  function l1ReserveFiresAt(round) {
+    return round > 0 && round % L1_RESERVE_INTERVAL === 0 && graduatedQueue.length > L1_ACTIVE_SIZE
+  }
+  function l2FiresAt(round) {
+    return hasPods && round >= POD_ACTIVATION_ROUND
+  }
 
   for (let legoIdx = 0; legoIdx < legos.length; legoIdx++) {
     const currentLego = legos[legoIdx]
@@ -799,71 +804,46 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // Phase 6: LISTENING - graduation-triggered batch rotation
-    // Check which seeds graduate THIS round
-    const newGraduationsThisRound = []
+    // Phase 6: Layer 1 — graduation tracking + dual-rotation cluster emission.
+    // A seed graduates LISTENING_OFFSET rounds after its last LEGO. Active-10
+    // fires every 3 rounds; reserve-50 fires every 13 rounds. When both fire
+    // (every 39 rounds) we emit one combined cluster, reserve first.
     for (const [sNum, lastRound] of seedLastRound.entries()) {
-      if (n - lastRound === LISTENING_OFFSET) {
-        // This seed just graduated
-        newGraduationsThisRound.push(sNum)
-        graduatedSeeds.push(sNum)
-
-        // Mark all LEGOs from this seed as graduated (exclude from future REVIEW)
-        for (const [legoId, state] of legoState.entries()) {
-          if (state.lego.seed.seed_number === sNum) {
-            graduatedLegoIds.add(legoId)
-          }
-        }
-
-        // Add to listening batch (first 80 seeds only)
-        if (graduatedSeeds.length <= LISTENING_TOTAL_SEEDS) {
-          listeningBatches[nextBatchToFill].push(sNum)
-          if (listeningBatches[nextBatchToFill].length === 1 && nextBatchToFill >= activeBatchCount) {
-            activeBatchCount = nextBatchToFill + 1
-          }
-          if (listeningBatches[nextBatchToFill].length >= LISTENING_BATCH_SIZE) {
-            nextBatchToFill = Math.min(nextBatchToFill + 1, LISTENING_BATCH_COUNT - 1)
-          }
+      if (graduatedSeedSet.has(sNum)) continue
+      if (n - lastRound < LISTENING_OFFSET) continue
+      graduatedSeedSet.add(sNum)
+      graduatedQueue.push(sNum)
+      // Mark all LEGOs from this seed as graduated (exclude from future REVIEW)
+      for (const [legoId, state] of legoState.entries()) {
+        if (state.lego.seed.seed_number === sNum) {
+          graduatedLegoIds.add(legoId)
         }
       }
     }
 
-    // Emit LISTEN cluster only on LISTEN rotation slots (every 3rd round,
-    // alternating with pod lap post-activation). One batch (rotated) is
-    // played; graduation events accumulate into batches but no longer
-    // directly trigger emission.
-    if (listeningSlotForRound(n) === 'listen' && activeBatchCount > 0) {
-      const batchIdx = rotationIndex % activeBatchCount
-      const batch = listeningBatches[batchIdx]
-      if (batch.length > 0) rotationIndex++
+    const fireActive = l1ActiveFiresAt(n)
+    const fireReserve = l1ReserveFiresAt(n)
+    if (fireActive || fireReserve) {
+      const seedNums = []
+      if (fireReserve) seedNums.push(...l1ReserveSeedsList())
+      if (fireActive) seedNums.push(...l1ActiveSeedsList())
 
-      // Build the listening items first; only wrap with bookends if we
-      // actually emitted any (a batch can be empty if seeds have no audio).
       const listeningEmissions = []
-      for (const batchSeedNum of batch) {
-        const count = (seedPlayCount.get(batchSeedNum) || 0) + 1
-        seedPlayCount.set(batchSeedNum, count)
-        const speeds = getListeningSpeedsForPlayCount(count)
-
-        const seedData = seedMap.get(batchSeedNum)
+      for (const sNum of seedNums) {
+        const seedData = seedMap.get(sNum)
         if (!seedData) continue
-
         const seedAudioUuid = seedAudioMap.get(seedData.target_text) || null
-
-        for (const speed of speeds) {
-          listeningEmissions.push({
-            roundNumber: n,
-            type: 'listening',
-            seedNumber: batchSeedNum,
-            known_text: seedData.known_text,
-            target_text: seedData.target_text,
-            listeningSpeed: speed,
-            listeningBatch: batchIdx + 1,
-            listeningPlayCount: count,
-            target1_audio_uuid: seedAudioUuid,
-            hasAudio: !!seedAudioUuid,
-          })
-        }
+        if (!seedAudioUuid) continue
+        listeningEmissions.push({
+          roundNumber: n,
+          type: 'listening',
+          seedNumber: sNum,
+          known_text: seedData.known_text,
+          target_text: seedData.target_text,
+          listeningSpeed: L1_LISTENING_SPEED,
+          target1_audio_uuid: seedAudioUuid,
+          hasAudio: true,
+        })
       }
 
       if (listeningEmissions.length > 0) {
@@ -892,10 +872,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     }
 
     // Phase 7: POD 0 round-end lap. Mirrors the matching block in
-    // ssi-learning-app generateLearningScript.ts. Fires only on pod
-    // rotation slots (every 6th main round post-activation, offset by 3
-    // from LISTEN slots).
-    if (hasPods && listeningSlotForRound(n) === 'pod') {
+    // ssi-learning-app generateLearningScript.ts. Fires every round at and
+    // after POD_ACTIVATION_ROUND.
+    if (l2FiresAt(n)) {
       const podRound = podRoundForMainRound(n)
       if (podRound >= 1) {
         const activeCount = Math.min(podRound, podSentences.length)
@@ -922,10 +901,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
             })
           }
           for (const { i, sentence, playRole, stage } of podPlays) {
-            const speed =
-              playRole === 'slow' ? 0.8 :
-              playRole === 'fast' ? 1.6 :
-              playRole === 'fast2x' ? 2.0 : 1.0
+            // Aran spec: only 1.0× and 2.0× exist for listening.
+            const speed = playRole === 'ps2x' ? 2.0 : 1.0
             const isTrans = playRole === 'trans'
             roundItems.push({
               roundNumber: n,
@@ -1013,7 +990,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     },
     itemsWithAudio: allItems.filter(i => i.hasAudio).length,
     itemsMissingAudio: allItems.filter(i => !i.hasAudio && i.type !== 'intro').length,
-    graduatedSeeds: graduatedSeeds.length,
+    graduatedSeeds: graduatedQueue.length,
     listeningItems: allItems.filter(i => i.type === 'listening').length,
     generationTimeMs: elapsed,
   }
