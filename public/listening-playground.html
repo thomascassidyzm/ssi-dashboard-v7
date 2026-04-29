@@ -647,6 +647,7 @@ const CONFIG = {
   l1ActiveSize: 10,         // sliding window of 10 most recent graduated seeds
   l1ActiveInterval: 3,      // active-10 fires every 3 rounds
   l1ReserveInterval: 13,    // reserve fires every 13 rounds (coprime with 3 → clashes only every 39 rounds)
+  l1ReserveSize: 50,        // cap on reserve sweep — older seeds beyond this overflow into Choice Pods (P1 music / P2 sport / P3 society) when that layer ships
   // Graduation is event-driven, not time-driven: 1 LEGO = 1 round, so a seed
   // graduates when ALL its LEGOs have been introduced. With ~2 LEGOs/seed
   // average across our production courses (deu/nld/spa all ≈ 2.05), one
@@ -717,7 +718,10 @@ function l1ActiveCount(mainRound) {
   return Math.min(l1GraduatedCount(mainRound), CONFIG.l1ActiveSize);
 }
 function l1ReserveCount(mainRound) {
-  return Math.max(0, l1GraduatedCount(mainRound) - CONFIG.l1ActiveSize);
+  // Reserve = graduated minus active-10, capped at l1ReserveSize. Overflow
+  // (older seeds beyond the cap) will eventually feed into Choice Pods.
+  const total = Math.max(0, l1GraduatedCount(mainRound) - CONFIG.l1ActiveSize);
+  return Math.min(total, CONFIG.l1ReserveSize);
 }
 
 // L1 fires at round-end of:
