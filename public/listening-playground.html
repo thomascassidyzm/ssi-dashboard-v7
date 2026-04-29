@@ -647,8 +647,13 @@ const CONFIG = {
   l1ActiveSize: 10,         // sliding window of 10 most recent graduated seeds
   l1ActiveInterval: 3,      // active-10 fires every 3 rounds
   l1ReserveInterval: 13,    // reserve fires every 13 rounds (coprime with 3 → clashes only every 39 rounds)
-  l1MaxSeeds: 80,           // existing totalSeeds cap
-  l1GraduationsPerRound: 1, // simplification: ~1 new graduation per round post-l1GraduationRound
+  // Graduation is event-driven, not time-driven: 1 LEGO = 1 round, so a seed
+  // graduates when ALL its LEGOs have been introduced. With ~2 LEGOs/seed
+  // average across our production courses (deu/nld/spa all ≈ 2.05), one
+  // seed graduates roughly every 2 rounds post-activation. Real player
+  // implementation will tie this to actual graduation events.
+  avgLegosPerSeed: 2.0,
+  totalSeeds: 300,          // full course cap
 };
 
 function psT() { return CONFIG.podSentenceS; }                    // PS at 1× = 3.0s
@@ -698,11 +703,15 @@ function podRoundFor(mainRound) {
   return mainRound - CONFIG.podActivationRound + 1;
 }
 
-// Layer 1: simplified model — 1 seed graduates per round starting at l1GraduationRound,
-// capped at l1MaxSeeds. Real implementation will follow course-specific timing.
+// Layer 1: graduation is event-driven (a seed graduates when all its LEGOs
+// have been introduced; LEGO == ROUND), so the rate ≈ 1 / avgLegosPerSeed.
+// e.g. for a 2-LEGOs/seed course, one seed graduates every 2 rounds.
+// Real player implementation will tie this to actual graduation events.
 function l1GraduatedCount(mainRound) {
   if (mainRound < CONFIG.l1GraduationRound) return 0;
-  return Math.min(mainRound - CONFIG.l1GraduationRound + 1, CONFIG.l1MaxSeeds);
+  const elapsed = mainRound - CONFIG.l1GraduationRound + 1;
+  const grads = Math.floor(elapsed / CONFIG.avgLegosPerSeed) + 1;
+  return Math.min(grads, CONFIG.totalSeeds);
 }
 function l1ActiveCount(mainRound) {
   return Math.min(l1GraduatedCount(mainRound), CONFIG.l1ActiveSize);
