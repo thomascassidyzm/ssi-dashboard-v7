@@ -8735,10 +8735,13 @@ app.post('/api/admin/restart-machine', async (req, res) => {
   res.json({ ok: true, save, message: 'Rebooting in 5 seconds...' })
 
   // Detached so it survives if production-api gets killed for any reason.
-  // Nothing in this script restarts production-api, so tree-kill is not a
-  // concern — the child outlives the response and runs to sudo reboot.
+  // Primary reboot path is osascript — goes through macOS GUI restart flow,
+  // doesn't need sudo, asks apps to quit gracefully. sudo reboot is a
+  // fallback only; it requires NOPASSWD which isn't configured here.
   spawn('bash', ['-c',
-    'sleep 5; killall iTerm2 2>/dev/null; killall "Google Chrome" 2>/dev/null; sudo reboot'
+    'sleep 5; ' +
+    'killall iTerm2 2>/dev/null; killall "Google Chrome" 2>/dev/null; ' +
+    'osascript -e \'tell application "System Events" to restart\' || sudo -n /sbin/reboot'
   ], { detached: true, stdio: 'ignore' }).unref()
 })
 
