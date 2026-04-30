@@ -143,7 +143,7 @@ const LANG_FLAGS = {
   por: '🇵🇹', por_br: '🇧🇷',
   zho: '🇨🇳', jpn: '🇯🇵', kor: '🇰🇷',
   ara: '🇸🇦', ara_sy: '🇸🇾',
-  gle: '🇮🇪', nld: '🇳🇱',
+  gle: '🇮🇪', nld: '🇳🇱', hrv: '🇭🇷',
 }
 const LANG_NAMES = {
   eng: 'English', cym: 'Welsh', gae: 'Scottish Gaelic',
@@ -151,7 +151,7 @@ const LANG_NAMES = {
   por: 'Portuguese', por_br: 'Brazilian Portuguese',
   zho: 'Chinese', jpn: 'Japanese', kor: 'Korean',
   ara: 'Arabic', ara_sy: 'Syrian Arabic',
-  gle: 'Irish', nld: 'Dutch',
+  gle: 'Irish', nld: 'Dutch', hrv: 'Croatian',
 }
 const [targetLang, knownLang] = String(courseCode).split('_for_')
 const targetFlag = LANG_FLAGS[targetLang] || '🌐'
