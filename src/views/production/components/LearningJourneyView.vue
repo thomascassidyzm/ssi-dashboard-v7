@@ -142,7 +142,12 @@
             </div>
 
             <div class="item-count text-slate-400 text-sm">
-              {{ round.itemCount }} items
+              <template v-if="hideListening && visibleItems(round).length !== round.itemCount">
+                {{ visibleItems(round).length }} of {{ round.itemCount }} items
+              </template>
+              <template v-else>
+                {{ round.itemCount }} items
+              </template>
             </div>
 
             <svg
@@ -161,7 +166,7 @@
         <Transition name="slide">
           <div v-if="expandedRounds.has(round.roundNumber)" class="round-items p-4 space-y-2">
             <div
-              v-for="(item, idx) in round.items"
+              v-for="(item, idx) in visibleItems(round)"
               :key="`${round.roundNumber}-${idx}`"
               :ref="el => setItemRef(round.roundNumber, idx, el)"
               class="item-row flex items-center gap-3 p-3 rounded-lg transition-all"
@@ -419,10 +424,17 @@ const props = defineProps<{
   courseCode: string
   isLoading?: boolean
   hideControls?: boolean
+  hideListening?: boolean
   flaggedAudioUuids?: Set<string>
   regeneratingUuids?: Set<string>
   flaggedPhraseIds?: Set<string>
 }>()
+
+// Listening item types (LISTEN intro/outro, POD lap, retired-seed listening cluster)
+// — hidden from the journey view when reviewers are checking main course content.
+const LISTENING_TYPES = new Set(['listening', 'listen_intro', 'listen_outro', 'pod'])
+const visibleItems = (round: RoundData) =>
+  props.hideListening ? round.items.filter(i => !LISTENING_TYPES.has(i.type)) : round.items
 
 const emit = defineEmits<{
   'playback-state': [state: {

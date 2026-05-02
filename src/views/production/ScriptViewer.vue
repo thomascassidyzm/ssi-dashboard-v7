@@ -155,6 +155,14 @@
                 Expand All
               </button>
               <button
+                @click="hideListening = !hideListening"
+                :class="hideListening ? 'bg-fuchsia-700 text-fuchsia-100 hover:bg-fuchsia-600' : 'text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600'"
+                class="px-3 py-1.5 text-sm rounded transition-colors"
+                :title="hideListening ? 'Show LISTEN / POD items' : 'Hide LISTEN / POD items so QA can scan main content'"
+              >
+                {{ hideListening ? 'Show Listening' : 'Hide Listening' }}
+              </button>
+              <button
                 @click="exportLearnerScript"
                 :disabled="!learningJourneyData"
                 class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
@@ -332,6 +340,7 @@
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
           :hide-controls="true"
+          :hide-listening="hideListening"
           :flagged-audio-uuids="flaggedAudioUuids"
           :regenerating-uuids="regeneratingAudioUuids"
           :flagged-phrase-ids="journeyFlaggedPhraseIds"
@@ -1166,6 +1175,10 @@ const collapseAllJourney = () => {
 const expandAllJourney = () => {
   learningJourneyRef.value?.expandAll();
 };
+
+// QA toggle: hide LISTEN/POD items in the journey view so reviewers (Deborah)
+// can scan main course content without scrolling past listening cycles.
+const hideListening = ref(false);
 
 // Export learner script as markdown download
 const exportLearnerScript = () => {
