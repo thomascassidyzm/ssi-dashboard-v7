@@ -721,10 +721,27 @@ Format:
      {10 samples of each}
      Action: Generate more phrases or accept
 
+[17a] LLEVAR + GERUND (spa only): {count} ({noTime} NO_TIME, {wrongOrder} WRONG_ORDER)
+      {10 samples grouped by type}
+      Action: WRONG_ORDER — swap so time sits between llevar and gerund. NO_TIME — flag for builder.
+
+[17e] EUROPEAN PT — você (por non-_br only): {count}
+      {10 samples}
+      Action: Drop você (verb already encodes 2nd person), null target audio for regen.
+
+[17f] PT→EN PRONOUN ENCODING (eng_for_por only): {count}
+      {10 samples — pt verb + missing-I english}
+      Action: Insert "I" into the English target, null target audio for regen.
+
+[18] PRESENTATION/TEXT DRIFT: {count}
+     {all mismatches with LEGO=... PRES=...}
+     Action: Regenerate presentation audio with correct text; null presentation_audio_id first.
+
 LANGUAGE SPOT-CHECK ({seed_count} seeds): {PASS/FAIL}
   {any flagged seeds}
 
 SUMMARY: {total_issues} issues across {categories} categories
+READINESS GATE: {READY ✓ if all deterministic checks zero, NOT READY ✗ otherwise}
 ```
 
 ## Remediation Guide
@@ -963,24 +980,43 @@ See Check 17 below. Each sub-check is independent of the others — run only the
 
 These checks encode grammar rules that generic checks can't see. Only the sub-check matching the course's target language is meaningful — the others are no-ops.
 
-##### 17a. Spanish: `llevar + gerund` needs a time duration
+##### 17a. Spanish: `llevar + gerund` time duration AND word order
 
-Pattern `llevo aprendiendo` / `llevas hablando` requires an explicit time: `cuánto tiempo llevas hablando`, `llevo dos meses aprendiendo`, `llevas mucho tiempo estudiando`. Without the time, the construction is incomplete.
+Pattern `llevo aprendiendo` / `llevas hablando` has TWO failure modes:
+
+1. **NO_TIME** — no explicit time duration anywhere → incomplete construction (means "spending learning"). Needs a time: `llevo dos meses aprendiendo`, `cuánto tiempo llevas hablando`.
+2. **WRONG_ORDER** — time duration is *after* the gerund: `Llevo aprendiendo X una semana` / `Llevo aprendiendo todo el día`. The time duration must sit *between* `llevar` and the gerund: `Llevo una semana aprendiendo X`, `Llevo todo el día aprendiendo`.
+
+Both produce learner-facing nonsense and must be flagged. (Discovered 2026-04-30 — Deborah's 2nd-pass review on spa_for_eng caught 11 WRONG_ORDER survivors after a narrow fix only swept S0038 L03.)
 
 ```javascript
 // Run only when target_lang === 'spa' or known_lang === 'spa'
-const LLEVAR_GERUND = /\bllev[oa]s?\s+\w+ndo\b/i;
-const TIME_DURATION = /\b(cuánto tiempo|mucho tiempo|poco tiempo|un año|una hora|una semana|un mes|un día|\d+\s+(años?|meses|semanas|días|horas|minutos)|m[aá]s o menos\s+\w+|algún tiempo|bastante tiempo|desde que\s+\w+|desde hace\s+\w+|hace\s+(un|una|\d+))\b/i;
+const LLEVAR_GERUND = /\bllev[oa]s?\s+(\w+ndo)\b/i;  // captures the gerund
+const TIME_DURATION = /\b(cuánto tiempo|mucho tiempo|poco tiempo|un año|una hora|una semana|un mes|un día|todo el día|toda la semana|\d+\s+(años?|meses|semanas|días|horas|minutos)|m[aá]s o menos\s+\w+|algún tiempo|bastante tiempo|desde que\s+\w+|desde hace\s+\w+|hace\s+(un|una|\d+))\b/i;
 
-const llevarViolations = phrases.filter(p => {
+const llevarViolations = [];
+for (const p of phrases) {
   const text = course.target_lang === 'spa' ? p.target_text : (course.known_lang === 'spa' ? p.known_text : null);
-  if (!text) return false;
-  return LLEVAR_GERUND.test(text) && !TIME_DURATION.test(text);
-});
+  if (!text) continue;
+  const llevarM = text.match(LLEVAR_GERUND);
+  if (!llevarM) continue;
+  const timeM = text.match(TIME_DURATION);
+  if (!timeM) {
+    llevarViolations.push({ phrase: p, type: 'NO_TIME', text });
+    continue;
+  }
+  // Time exists. Where is it relative to the gerund?
+  const gerundStart = llevarM.index + llevarM[0].length - llevarM[1].length;
+  if (timeM.index > gerundStart) {
+    llevarViolations.push({ phrase: p, type: 'WRONG_ORDER', text });
+  }
+}
 ```
 
-Report: count + all matches with the llevar+gerund phrase highlighted.
-Action: Flag for build team (requires restructuring the phrase to include a time duration, not a mechanical fix).
+Report: count grouped by `type`. NO_TIME and WRONG_ORDER both must be zero before a course is reviewer-ready.
+Action:
+- **WRONG_ORDER**: deterministic rewrite — swap so time sits between `llev[oa]s?` and the gerund. Null target1/target2 audio for regen.
+- **NO_TIME**: needs build judgement (add a time duration that fits the meaning). Flag for builder/Kai, not for mechanical fix.
 
 ##### 17b. Italian: subjunctive required after `penso che` / `credo che`
 
@@ -1039,6 +1075,59 @@ Report: ka+? count, ka-only count, ?-only count. Whichever convention is dominan
 
 Action: Bulk-append `?` to ka-only phrases, or strip `?` if ka-only is dominant. Null target audio for regen.
 
+##### 17e. European Portuguese: ban Brazilian `você`
+
+`você` is the standard 2nd-person address in Brazilian Portuguese, but in European Portuguese it's perceived as overly formal/distant — speakers normally drop the explicit pronoun (`fala inglês?` not `você fala inglês?`). Apply to *whichever side* of the course is European Portuguese (target for `_for_*`, known for `*_for_por`). (Discovered 2026-04-30 — Deborah's review of eng_for_por turned up 442 phrases.)
+
+```javascript
+// Apply when EITHER side is por without _br dialect.
+// CRITICAL: only the SINGULAR "você" is the issue. The plural "vocês" is the standard
+//   2pl form in EU PT and should NOT be flagged. (Earlier draft used /vocês?/ — false-positive on plurals.)
+// IMPORTANT: \b doesn't work with non-ASCII letters in JS regex — \bvocê\b never matches.
+//   Use Unicode property escapes with the /u flag.
+const VOCE_SG = /(?<!\p{L})você(?!\p{L})/iu;
+const cc = course.course_code;
+const ptIsTarget = course.target_lang === 'por' && !/_br/.test(cc);
+const ptIsKnown  = course.known_lang  === 'por' && !/_for_por_br/.test(cc);
+const voceViolations = phrases.filter(p => {
+  if (ptIsTarget && p.target_text && VOCE_SG.test(p.target_text)) return true;
+  if (ptIsKnown  && p.known_text  && VOCE_SG.test(p.known_text))  return true;
+  return false;
+});
+// Also scan course_seeds and course_legos for the same — these aren't usually in `phrases`.
+```
+
+Report: count + all matches.
+Action: Drop `você` from the phrase (the verb conjugation already encodes 2nd person). Null the relevant audio side for regen. For sentences where `você` was load-bearing for disambiguation (e.g. when verb form is ambiguous between 1sg and 3sg), rewrite via build judgement.
+
+##### 17f. Portuguese → English: 1sg verb in known but no "I" subject in target
+
+Portuguese verbs encode the subject (`quero` = "I want", `vou` = "I'm going to", `tenho` = "I have"), so the explicit `eu` is usually dropped. Translators sometimes mirror this by dropping the English `I` too — but English requires an explicit subject. (Discovered 2026-04-30 — Deborah's review of eng_for_por.)
+
+```javascript
+// Run only when target_lang === 'eng' AND known_lang === 'por'
+// NOTE: only include verbs that are unambiguously 1sg. Excluded:
+//   - 'queria' / 'podia' / 'fazia' (imperfect — also 3sg)
+//   - 'consigo' (homonym — 1sg of conseguir, also preposition "with you")
+//   - 'fui' / 'foi' (preterite — also 3sg)
+const PT_1SG = ['quero','vou','sou','sei','tenho','estou','gosto','preciso','sinto','penso','acredito','posso','devo','faço','digo','venho','vejo','tive','estive','vi'];
+// Use Unicode-safe boundary on the right (\b doesn't match non-ASCII letters)
+const PT_1SG_RE = new RegExp(`(?:^|[\\s¿«"'“])(${PT_1SG.join('|')})(?!\\p{L})`, 'iu');
+const HAS_I = /(?:^|\s)(I\b|I')/;  // capital I — English subject pronoun
+const isPtToEn = course.target_lang === 'eng' && course.known_lang === 'por';
+
+const ptPronounViolations = isPtToEn
+  ? phrases.filter(p => {
+      if (!p.known_text || !p.target_text) return false;
+      if (!PT_1SG_RE.test(p.known_text)) return false;
+      return !HAS_I.test(p.target_text);
+    })
+  : [];
+```
+
+Report: count + samples (`pt: …  en: …`).
+Action: Insert "I" into the English target so it matches the Portuguese subject. Null known/target audio for regen. The Portuguese side stays as-is (dropped `eu` is correct).
+
 ##### Adding new language patterns
 
 When a new language-specific pattern is found during content check, add it here with:
@@ -1046,6 +1135,47 @@ When a new language-specific pattern is found during content check, add it here 
 2. The detection regex
 3. Any exclusion regex (e.g., `TIME_DURATION` for llevar)
 4. The fix action (mechanical / LLM / flag-for-rebuild)
+
+#### Check 18: LEGO presentation/text drift
+
+Each LEGO has a `presentation_audio_id` whose audio text follows the template `"The {Language} for: 'X', as in — '...', is:"`. The `'X'` MUST equal the LEGO's `known_text`. When they drift, the learner hears the presenter announce one phrase and then sees a different phrase on screen — extremely confusing.
+
+Two failure patterns observed:
+- **Swap**: L01 announces L02's known_text and L02 announces L01's. Likely a generation bug where presentation prompts iterated in the wrong order.
+- **Synonym drift**: presentation says "about" but the LEGO is "more or less" — usually because the LEGO's known_text was edited but the presentation audio wasn't regenerated.
+
+(Discovered 2026-04-30 — Deborah caught S0033 L01/L02 swap and S0038 L02 synonym drift on spa_for_eng. Course-wide scan turned up 15 more she hadn't reached yet.)
+
+```javascript
+// Fetch presentation audio for every LEGO, compare announced English to lego.known_text
+const presIds = legos.map(l => l.presentation_audio_id).filter(Boolean);
+const audioById = new Map();
+for (let i = 0; i < presIds.length; i += 200) {  // batch-200 — Supabase IN-clause silently truncates at ~500
+  const { data } = await supabase.from('course_audio').select('id, text').in('id', presIds.slice(i, i + 200));
+  for (const a of data || []) audioById.set(a.id, a);
+}
+const TEMPLATE = /^The\s+\w+(?:\s\w+)?\s+for:\s+'([\s\S]*?)'\s*,\s*as in/i;  // lazy `[\s\S]*?` so apostrophes inside the value don't break extraction
+
+const drifts = [];
+for (const l of legos) {
+  if (!l.presentation_audio_id) continue;
+  const a = audioById.get(l.presentation_audio_id);
+  if (!a) continue;
+  const m = a.text.match(TEMPLATE);
+  if (!m) continue;  // doesn't follow standard template (e.g. is_new=false reps) — skip
+  const announced = m[1].toLowerCase().trim();
+  const lego = (l.known_text || '').toLowerCase().trim();
+  if (announced !== lego) drifts.push({ lego_id: l.lego_id, lego_known: l.known_text, announced });
+}
+```
+
+Report: count + every mismatch. Show `LEGO=...  PRES=...` so the swap pattern is obvious at a glance.
+Action: regenerate the presentation audio with the correct text. For swapped pairs, regen both. Set `presentation_audio_id` to null on the LEGO row before re-running presentation generation, so it doesn't try to reuse the wrong audio.
+
+⚠️ **Three implementation gotchas worth knowing:**
+- Supabase silently truncates `IN`-clause results past ~500 IDs. Batch in chunks of 200 to be safe.
+- The naive regex `'([^']+)'` breaks on LEGOs containing apostrophes ("I don't want to find out") because it stops at the first apostrophe. Use lazy `[\s\S]*?` anchored on `, as in`.
+- JS regex `\b` only matches ASCII word boundaries — `\bvocê\b`, `\bcansé\b`, `\bgrüß\b` etc. silently never match. For Unicode-letter words, use `(?<!\p{L})word(?!\p{L})` with the `/u` flag.
 
 ## Step 6: Post-scan pipeline — backfill, final pass, gender prep
 
@@ -1128,9 +1258,38 @@ The signal for "ready for Deborah": 0 under-threshold, 0 flagged, final-pass com
 
 **Lite mode** (Sonnet reviewers, severe-only findings, shorter sim) for everything else. Pass `?mode=lite` on the endpoints. The mechanical scan (Checks 1-17), deterministic auto-fixes, and one Sonnet final-pass run unchanged — those are always cheap and always worth running.
 
+## Readiness gate — fix-script logs are NOT proof of fix
+
+A fix script's "ok=N failed=0" log is proof that *the rows the script targeted* updated. It is **not** proof that the failure class is gone. Coverage holes are how Deborah-flagged classes survive multiple "fix" rounds (spa_for_eng llevar word-order, 2026-04-20 → 2026-04-30: a narrow fix touched S0038L03 only, then reviewer caught 11 untouched siblings two passes later).
+
+**Definition of done after any fix pass:** re-run the *whole class detector* (Check 17a / Check 18 / etc.) against the course and require zero hits. If the detector fires on rows the fix didn't touch, the fix wasn't comprehensive — sweep those too before declaring the card ready.
+
+Specifically, fix-script template should end with the same regex/predicate that *defined* the issue, not a hand-curated verify list:
+
+```javascript
+// WRONG — narrow verify
+const fixed = await supabase.from('course_practice_phrases').select('id,target_text').in('id', PHRASE_IDS);
+console.log('Verified', fixed.data.length, 'updates');  // proves nothing about siblings
+
+// RIGHT — whole-class re-scan
+const survivors = (await supabase.from('course_practice_phrases')
+  .select('id,target_text').eq('course_code', cc))
+  .data.filter(p => CLASS_DETECTOR.test(p.target_text));
+if (survivors.length) {
+  console.error('NOT DONE — class still has', survivors.length, 'hits:');
+  for (const s of survivors) console.error('  ', s.id, s.target_text);
+  process.exit(1);
+}
+console.log('Class clean ✓');
+```
+
+The card stays in Content Checking until **every applicable deterministic check returns zero**.
+
 ## Re-verifying after fixes — affected seeds only
 
-When an edit changes phrases/LEGOs in a specific set of seeds, **re-verify only those seeds, not the whole course**. Running full-course passes after every fix multiplies clock time without catching issues outside the affected set.
+This applies to *expensive LLM* passes (final-pass, category-LLM, learner-sim). For the *cheap deterministic* class detectors (Check 17a, Check 18, etc.), always re-run on the whole course — see "Readiness gate" above.
+
+When an LLM edit changes phrases/LEGOs in a specific set of seeds, **re-verify only those seeds, not the whole course**. Running full-course LLM passes after every fix multiplies clock time without catching issues outside the affected set.
 
 Pattern:
 
