@@ -385,7 +385,8 @@ async function main() {
       original_text: r.original,
       language: course.target_lang,
       expanded_f: r.expanded_f,
-      expanded_m: r.expanded_m
+      expanded_m: r.expanded_m,
+      text_side: 'target'  // unique constraint is on (course_code, original_text, text_side)
     }))
 
     let inserted = 0
@@ -393,7 +394,7 @@ async function main() {
       const batch = rows.slice(i, i + 500)
       const { error } = await supabase
         .from('course_gender_expansions')
-        .upsert(batch, { onConflict: 'course_code,original_text' })
+        .upsert(batch, { onConflict: 'course_code,original_text,text_side' })
       if (error) {
         console.error(`Insert error (batch ${Math.floor(i / 500) + 1}):`, error.message)
       } else {
