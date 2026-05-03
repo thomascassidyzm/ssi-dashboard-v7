@@ -8529,7 +8529,7 @@ app.use('/api/checkpoint', async (req, res) => {
 
 // ─── Admin: iTerm2 Agent Management ─────────────────────────────────
 
-const { execFile } = require('child_process')
+const { execFile, spawn } = require('child_process')
 const { promisify } = require('util')
 const execFileAsync = promisify(execFile)
 
@@ -9013,37 +9013,58 @@ app.get('/api/admin/system-health', async (req, res) => {
 // POST /api/admin/restart-machine — remotely reboot the machine
 // Refuses unless reboot readiness checks pass, to avoid bricking a remote
 // box whose PM2 won't auto-resurrect. Pass ?force=1 to override.
+// The reboot button does two things and nothing else: it preserves the
+// last-known-good pm2 dump, then reboots. Service recovery is not its job —
+// use the restart-all button for that. Keeping responsibilities separate is
+// what makes this reliable.
 app.post('/api/admin/restart-machine', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const force = req.query.force === '1' || req.body?.force === true
+
+  // Resurrect must be wired up, otherwise nothing comes back on boot.
   if (!force) {
-    try { await execFileAsync('bash', ['-c', 'pm2 save']) } catch {}
     const readiness = await checkRebootReadiness()
     if (!readiness.ready) {
       return res.status(412).json({
         ok: false,
-        error: 'Reboot blocked: PM2 auto-resurrect is not configured on this machine.',
+        error: 'Reboot blocked: PM2 auto-resurrect is not configured.',
         readiness,
-        hint: 'Run the fix_command on the target machine once, then try again. Or pass ?force=1 to reboot anyway.'
+        hint: 'Run the fix_command on the target machine, or pass ?force=1 to reboot anyway.'
       })
     }
   }
-  // Respond before the reboot kicks in
-  res.json({ ok: true, message: 'Rebooting machine in 5 seconds (killing GUI apps first)...' })
-  setTimeout(async () => {
-    // Kill GUI apps that block reboot with "Quit anyway?" dialogs (iTerm2 with
-    // running shells, Chrome with unsaved tabs). killall is non-fatal — we
-    // ignore failures (app not running) and proceed to reboot.
-    for (const app of ['iTerm2', 'Google Chrome']) {
-      try { await execFileAsync('killall', [app]) } catch {}
+
+  // Save the current pm2 state ONLY if every process is online. If anything
+  // is unhealthy we leave the existing dump alone — resurrect will use the
+  // last known-good snapshot. Never overwrite a good dump with a broken one.
+  let save = 'preserved previous dump'
+  try {
+    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
+    const procs = JSON.parse(stdout)
+    const allOnline = procs.length > 0 && procs.every(p => p.pm2_env?.status === 'online')
+    if (allOnline) {
+      await execFileAsync('bash', ['-c', 'pm2 save'])
+      save = 'saved current state'
+    } else {
+      const bad = procs.filter(p => p.pm2_env?.status !== 'online')
+        .map(p => `${p.name}=${p.pm2_env?.status || '?'}`)
+      logger.warn('[Admin] pm2 save skipped, unhealthy:', bad.join(', '))
     }
-    try {
-      await execFileAsync('sudo', ['reboot'])
-    } catch (e) {
-      logger.warn('[Admin] sudo reboot failed, trying osascript:', e.message)
-      execFileAsync('osascript', ['-e', 'tell application "System Events" to restart']).catch(() => {})
-    }
-  }, 5000)
+  } catch (e) {
+    logger.warn('[Admin] pm2 save check failed:', e.message)
+  }
+
+  res.json({ ok: true, save, message: 'Rebooting in 5 seconds...' })
+
+  // Detached so it survives if production-api gets killed for any reason.
+  // Primary reboot path is osascript — goes through macOS GUI restart flow,
+  // doesn't need sudo, asks apps to quit gracefully. sudo reboot is a
+  // fallback only; it requires NOPASSWD which isn't configured here.
+  spawn('bash', ['-c',
+    'sleep 5; ' +
+    'killall iTerm2 2>/dev/null; killall "Google Chrome" 2>/dev/null; ' +
+    'osascript -e \'tell application "System Events" to restart\' || sudo -n /sbin/reboot'
+  ], { detached: true, stdio: 'ignore' }).unref()
 })
 
 const PORT = process.env.PRODUCTION_API_PORT || 3470

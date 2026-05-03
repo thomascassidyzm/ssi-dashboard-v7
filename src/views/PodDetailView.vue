@@ -97,16 +97,16 @@
                     v-if="sent.target_audio_id"
                     @click="playAudio(sent.target_audio_id)"
                     :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.target_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-slate-700 hover:bg-emerald-700 text-slate-300 hover:text-emerald-100']"
-                    title="Play target (Spanish)"
-                  >🇪🇸</button>
-                  <span v-else class="px-2 py-1 text-xs text-slate-600" title="No target audio">🇪🇸</span>
+                    :title="`Play target (${targetName})`"
+                  >{{ targetFlag }}</button>
+                  <span v-else class="px-2 py-1 text-xs text-slate-600" title="No target audio">{{ targetFlag }}</span>
                   <button
                     v-if="sent.known_audio_id"
                     @click="playAudio(sent.known_audio_id)"
                     :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.known_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-slate-700 hover:bg-emerald-700 text-slate-300 hover:text-emerald-100']"
-                    title="Play known (English)"
-                  >🇬🇧</button>
-                  <span v-else class="px-2 py-1 text-xs text-slate-600" title="No known audio">🇬🇧</span>
+                    :title="`Play known (${knownName})`"
+                  >{{ knownFlag }}</button>
+                  <span v-else class="px-2 py-1 text-xs text-slate-600" title="No known audio">{{ knownFlag }}</span>
                   <button
                     v-if="sent.target_audio_id && sent.known_audio_id"
                     @click="playPair(sent.target_audio_id, sent.known_audio_id)"
@@ -134,6 +134,30 @@ import { getApiUrl } from '@/services/api.js'
 const route = useRoute()
 const courseCode = route.params.courseCode
 const slug = route.params.slug
+
+// Flag + name for each SSi language code. England/Wales/Scotland use regional
+// tag sequences — NOT 🇬🇧 — so an English course shows St George's cross.
+const LANG_FLAGS = {
+  eng: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', cym: '🏴󠁧󠁢󠁷󠁬󠁳󠁿', gae: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+  spa: '🇪🇸', fra: '🇫🇷', deu: '🇩🇪', ita: '🇮🇹',
+  por: '🇵🇹', por_br: '🇧🇷',
+  zho: '🇨🇳', jpn: '🇯🇵', kor: '🇰🇷',
+  ara: '🇸🇦', ara_sy: '🇸🇾',
+  gle: '🇮🇪', nld: '🇳🇱', hrv: '🇭🇷',
+}
+const LANG_NAMES = {
+  eng: 'English', cym: 'Welsh', gae: 'Scottish Gaelic',
+  spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian',
+  por: 'Portuguese', por_br: 'Brazilian Portuguese',
+  zho: 'Chinese', jpn: 'Japanese', kor: 'Korean',
+  ara: 'Arabic', ara_sy: 'Syrian Arabic',
+  gle: 'Irish', nld: 'Dutch', hrv: 'Croatian',
+}
+const [targetLang, knownLang] = String(courseCode).split('_for_')
+const targetFlag = LANG_FLAGS[targetLang] || '🌐'
+const knownFlag = LANG_FLAGS[knownLang] || '🌐'
+const targetName = LANG_NAMES[targetLang] || targetLang || 'target'
+const knownName = LANG_NAMES[knownLang] || knownLang || 'known'
 
 const pod = ref(null)
 const sentences = ref([])
