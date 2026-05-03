@@ -237,16 +237,99 @@ async function getExistingAudioSet(courseCode) {
 }
 
 /**
- * Unified audio needs detection. Single source of truth for both /plan and /generate.
+ * Check whether presentation text has been generated for all new LEGOs and
+ * component phrases in the release window. Used to gate `/generate` — the
+ * separate "Generate Missing Presentation Text" step (POST /regenerate-presentations)
+ * must run first so that each LEGO/component has a row in course_audio with
+ * its presentation text (pending or generated). `/generate` then only TTSes,
+ * never invents text on the fly.
+ *
+ * @param {string} courseCode
+ * @param {number} releaseTarget - Max seed number
+ * @returns {Promise<{ready: boolean, missingLegoPresentations: number, missingComponentPresentations: number, totalMissing: number}>}
+ */
+async function checkPresentationReadiness(courseCode, releaseTarget) {
+  // 1) New LEGOs (is_new=true) within release_target
+  const { data: newLegos } = await supabase
+    .from('course_legos')
+    .select('lego_id, presentation_audio_id')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+    .lte('seed_number', releaseTarget)
+
+  // 2) All presentation rows in course_audio for this course
+  //    (pending OR generated — both count as "ready", since /generate will TTS pending ones)
+  const { data: presRows } = await supabase
+    .from('course_audio')
+    .select('lego_id, text_normalized')
+    .eq('course_code', courseCode)
+    .eq('role', 'presentation')
+
+  const legoIdsWithPres = new Set((presRows || []).map(p => p.lego_id).filter(Boolean))
+
+  // A LEGO is ready iff it has presentation_audio_id bound OR a presentation
+  // course_audio row by lego_id (which /generate will pick up and process).
+  let missingLegoPresentations = 0
+  for (const lego of (newLegos || [])) {
+    if (lego.presentation_audio_id) continue
+    if (legoIdsWithPres.has(lego.lego_id)) continue
+    missingLegoPresentations++
+  }
+
+  // 3) Component phrases — they get their own presentation rows by text match.
+  //    Each component should have at least one presentation row (any text).
+  //    Approximation: count component phrases lacking a `presentation_audio_id`
+  //    binding AND whose own text doesn't appear in the existing presentation set.
+  //    For now we use the simpler check: component phrases with NULL presentation_audio_id.
+  //    /regenerate-presentations creates these rows, so this is a meaningful gate.
+  const { count: componentMissingCount } = await supabase
+    .from('course_practice_phrases')
+    .select('id', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .eq('phrase_role', 'component')
+    .lte('seed_number', releaseTarget)
+    .is('presentation_audio_id', null)
+
+  // But the component's text may have a matching course_audio row even when
+  // presentation_audio_id is null on the phrase. So we don't strictly require
+  // the per-phrase binding — only that course_audio has *some* row that could match.
+  // For the gate, "no component pending rows at all" is the failure mode worth catching.
+  const { count: pendingCompPresCount } = await supabase
+    .from('course_audio')
+    .select('id', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .eq('role', 'presentation')
+    .is('lego_id', null)  // component presentations have null lego_id
+
+  // If there are component phrases needing audio but ZERO component presentation
+  // rows in course_audio, /regenerate-presentations hasn't been run yet.
+  const missingComponentPresentations = (componentMissingCount > 0 && pendingCompPresCount === 0)
+    ? componentMissingCount
+    : 0
+
+  const totalMissing = missingLegoPresentations + missingComponentPresentations
+  return {
+    ready: totalMissing === 0,
+    missingLegoPresentations,
+    missingComponentPresentations,
+    totalMissing
+  }
+}
+
+/**
+ * Unified audio needs detection. Single source of truth for /plan, /generate, /needs.
  *
  * 1. Finds all slots (phrases/LEGOs/seeds) with NULL audio_id
  * 2. Checks if matching audio exists in course_audio (can be linked without TTS)
- * 3. Returns: toLink (audio exists, just bind), toGenerate (needs TTS)
+ * 3. Adds pending presentation rows (role='presentation' AND s3_key LIKE 'pending/%') to toGenerate
+ * 4. Returns: toLink (audio exists, just bind), toGenerate (needs TTS), readyForGenerate (presentations done?)
+ *
+ * Pure read — no side effects, no DB writes.
  *
  * @param {string} courseCode
  * @param {number} releaseTarget - Max seed number
  * @param {object} course - Course record with known_lang, target_lang
- * @returns {Promise<{toLink: number, toGenerate: Array, stats: object}>}
+ * @returns {Promise<{toLink: number, toGenerate: Array, stats: object, readyForGenerate: boolean, presentationStatus: object}>}
  */
 async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = false) {
   const PAGE_SIZE = 1000
@@ -345,10 +428,38 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     logger.info(`getAudioNeeds: forceGenerate=true, all ${unlinked.length} unlinked items classified as to-generate`)
   }
 
-  // Step 3: Deduplicate toGenerate (same text used by multiple phrases)
+  // Step 3: Pending presentation rows — concrete texts in course_audio waiting for TTS.
+  // These were created by /regenerate-presentations (the "Generate Missing Presentation Text"
+  // button) and have s3_key LIKE 'pending/%'. /generate will TTS them.
+  const { data: pendingPresRows } = await supabase
+    .from('course_audio')
+    .select('id, text, language, voice_id, lego_id')
+    .eq('course_code', courseCode)
+    .eq('role', 'presentation')
+    .like('s3_key', 'pending/%')
+
+  for (const pres of (pendingPresRows || [])) {
+    if (isPunctuationOnly(pres.text)) {
+      ungeneratable++
+      continue
+    }
+    toGenerate.push({
+      text: pres.text,
+      language: pres.language || course.known_lang,
+      role: 'presentation',
+      lego_id: pres.lego_id || null,
+      voice_id: pres.voice_id || null  // preserved so /generate can pick it up
+    })
+  }
+
+  // Step 4: Deduplicate toGenerate (same text used by multiple phrases)
   const uniqueToGenerate = [...new Map(
     toGenerate.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}`, n])
   ).values()]
+
+  // Step 5: Check whether presentation text generation has been run.
+  // /generate will refuse to run if not ready (no on-the-fly text synthesis any more).
+  const presentationStatus = await checkPresentationReadiness(courseCode, releaseTarget)
 
   const totalMissing = unlinked.length + missingPresentation
   const stats = {
@@ -367,9 +478,15 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     }
   }
 
-  logger.info(`getAudioNeeds(${courseCode}): ${totalMissing} missing (${toLinkCount} to link, ${uniqueToGenerate.length} to generate, ${ungeneratable} ungeneratable)`)
+  logger.info(`getAudioNeeds(${courseCode}): ${totalMissing} missing (${toLinkCount} to link, ${uniqueToGenerate.length} to generate, ${ungeneratable} ungeneratable, presentations ready: ${presentationStatus.ready})`)
 
-  return { toLink: toLinkCount, toGenerate: uniqueToGenerate, stats }
+  return {
+    toLink: toLinkCount,
+    toGenerate: uniqueToGenerate,
+    stats,
+    readyForGenerate: presentationStatus.ready,
+    presentationStatus
+  }
 }
 
 /**
@@ -898,6 +1015,38 @@ async function linkComponentPresentationAudio(courseCode) {
   return { linked }
 }
 
+// GET /needs/:courseCode — canonical audio-needs endpoint.
+// Thin wrapper around getAudioNeeds(). Pure read, no side effects.
+// Returns the same shape /generate uses to decide what to TTS, so any other
+// counter (dashboard Pending, /plan, /audio-stats) can consume it for parity.
+app.get('/needs/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { data: course, error: courseError } = await supabase
+      .from('courses').select('*').eq('course_code', courseCode).single()
+    if (courseError || !course) return res.status(404).json({ error: 'Course not found' })
+    const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
+    const needs = await getAudioNeeds(courseCode, releaseTarget, course)
+    return res.json({
+      courseCode,
+      releaseTarget,
+      toGenerate: needs.toGenerate.length,
+      toLink: needs.toLink,
+      ungeneratable: needs.stats.ungeneratable,
+      missingPresentation: needs.stats.missingPresentation,
+      totalSlots: needs.stats.totalSlots,
+      existing: needs.stats.existing,
+      missing: needs.stats.missing,
+      breakdown: needs.stats.breakdown,
+      readyForGenerate: needs.readyForGenerate,
+      presentationStatus: needs.presentationStatus
+    })
+  } catch (error) {
+    logger.error('/needs error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // POST /plan - for production-api compatibility (takes courseCode in body)
 app.post('/plan', async (req, res) => {
   const { courseCode } = req.body
@@ -929,171 +1078,26 @@ async function planHandler(req, res) {
 
     const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
 
-    // Step 1: Skip linking in plan — backfill already ran, generate endpoint links after each batch.
-    // Calling link_all_audio_ids here was causing statement timeouts on large courses.
+    // Single source of truth — same enumeration /generate uses.
+    const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course)
 
-    // Step 2: Get authoritative NULL-based counts via SQL RPC
-    const { data: counts, error: countsError } = await supabase.rpc('get_audio_counts', {
-      p_course_code: courseCode,
-      p_release_target: releaseTarget
-    })
-    if (countsError) throw new Error(`get_audio_counts RPC failed: ${countsError.message}`)
+    // Cost estimation — character count of what would actually be TTS'd.
+    const totalChars = audioNeeds.toGenerate.reduce((sum, n) => sum + (n.text || '').length, 0)
+    const estimatedCost = (totalChars / 1000) * 0.016
 
-    const p = counts.phrases || {}
-    const l = counts.legos || {}
-    const s = counts.seeds || {}
-
-    // Count un-generatable phrases (empty/punctuation text with NULL audio_id)
-    // These should not be reported as "missing" — they can never have audio
-    let ungeneratableKnown = 0
-    let ungeneratableTarget1 = 0
-    let ungeneratableTarget2 = 0
-    {
-      // Phrases with NULL audio_id AND empty/punctuation text
-      const { data: ungeneratable } = await supabase
-        .from('course_practice_phrases')
-        .select('known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
-        .eq('course_code', courseCode)
-        .lte('seed_number', releaseTarget)
-        .or('known_audio_id.is.null,target1_audio_id.is.null,target2_audio_id.is.null')
-        .limit(10000)
-
-      for (const row of (ungeneratable || [])) {
-        if (row.known_audio_id === null && isPunctuationOnly(row.known_text)) ungeneratableKnown++
-        if (row.target1_audio_id === null && isPunctuationOnly(row.target_text)) ungeneratableTarget1++
-        if (row.target2_audio_id === null && isPunctuationOnly(row.target_text)) ungeneratableTarget2++
-      }
-
-      // Also check legos
-      const { data: ungeneratableLegos } = await supabase
-        .from('course_legos')
-        .select('known_text, target_text, known_audio_id, target1_audio_id')
-        .eq('course_code', courseCode)
-        .lte('seed_number', releaseTarget)
-        .or('known_audio_id.is.null,target1_audio_id.is.null')
-        .limit(10000)
-
-      for (const row of (ungeneratableLegos || [])) {
-        if (row.known_audio_id === null && isPunctuationOnly(row.known_text)) ungeneratableKnown++
-        if (row.target1_audio_id === null && isPunctuationOnly(row.target_text)) ungeneratableTarget1++
-      }
-    }
-
-    // Missing counts from NULL audio_id columns, minus un-generatable items
-    const missingKnown = Math.max(0, (p.missing_known || 0) + (l.missing_known || 0) + (s.missing_known || 0) - ungeneratableKnown)
-    const missingTarget1 = Math.max(0, (p.missing_target1 || 0) + (l.missing_target1 || 0) + (s.missing_target1 || 0) - ungeneratableTarget1)
-    const missingTarget2 = Math.max(0, (p.missing_target2 || 0) + (s.missing_target2 || 0) - ungeneratableTarget2)
-    const missingPresentation = l.missing_presentation || 0
-
-    // Total audio slots (also subtract un-generatable from total)
-    const ungeneratableTotal = ungeneratableKnown + ungeneratableTarget1 + ungeneratableTarget2
-    const totalSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3) - ungeneratableTotal
-    const totalMissing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation
-    const totalExisting = totalSlots - totalMissing
-
-    // Step 3: Cost estimation — still need unique text dedup for TTS cost (not correctness)
-    const existingSet = await getExistingAudioSet(courseCode)
-    const needed = []
-    const PAGE_SIZE = 1000
-
-    // Phrases
-    let phrasesOffset = 0
-    let hasMorePhrases = true
-    let phraseCount = 0
-    while (hasMorePhrases) {
-      const { data: phrasesBatch, error: phrasesError } = await supabase
-        .from('course_practice_phrases')
-        .select('known_text, target_text')
-        .eq('course_code', courseCode)
-        .lte('seed_number', releaseTarget)
-        .order('id')
-        .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1)
-      if (phrasesError) throw phrasesError
-      for (const phrase of (phrasesBatch || [])) {
-        phraseCount++
-        const knownKey = `${normalizeText(phrase.known_text)}|${course.known_lang}|known`
-        if (!existingSet.has(knownKey)) {
-          needed.push({ text: phrase.known_text, language: course.known_lang, role: 'known' })
-        }
-        for (const role of ['target1', 'target2']) {
-          const targetKey = `${normalizeText(phrase.target_text)}|${course.target_lang}|${role}`
-          if (!existingSet.has(targetKey)) {
-            needed.push({ text: phrase.target_text, language: course.target_lang, role })
-          }
-        }
-      }
-      hasMorePhrases = (phrasesBatch || []).length === PAGE_SIZE
-      phrasesOffset += PAGE_SIZE
-    }
-
-    // LEGOs
+    // Unique-text counts for display (counts unique known-side and target-side
+    // texts across LEGOs+seeds — NOT the same as TTS work, just informational).
     const { data: allLegos } = await supabase
       .from('course_legos')
-      .select('lego_id, known_text, target_text')
+      .select('known_text, target_text')
       .eq('course_code', courseCode)
       .lte('seed_number', releaseTarget)
-    for (const lego of (allLegos || [])) {
-      const knownKey = `${normalizeText(lego.known_text)}|${course.known_lang}|known`
-      if (!existingSet.has(knownKey)) {
-        needed.push({ text: lego.known_text, language: course.known_lang, role: 'known' })
-      }
-      for (const role of ['target1', 'target2']) {
-        const targetKey = `${normalizeText(lego.target_text)}|${course.target_lang}|${role}`
-        if (!existingSet.has(targetKey)) {
-          needed.push({ text: lego.target_text, language: course.target_lang, role })
-        }
-      }
-    }
-
-    // Seeds
     const { data: allSeeds } = await supabase
       .from('course_seeds')
       .select('known_text, target_text')
       .eq('course_code', courseCode)
       .eq('status', 'released')
       .lte('seed_number', releaseTarget)
-    for (const seed of (allSeeds || [])) {
-      const knownKey = `${normalizeText(seed.known_text)}|${course.known_lang}|known`
-      if (!existingSet.has(knownKey)) {
-        needed.push({ text: seed.known_text, language: course.known_lang, role: 'known' })
-      }
-      for (const role of ['target1', 'target2']) {
-        const targetKey = `${normalizeText(seed.target_text)}|${course.target_lang}|${role}`
-        if (!existingSet.has(targetKey)) {
-          needed.push({ text: seed.target_text, language: course.target_lang, role })
-        }
-      }
-    }
-
-    // Presentation audio (still text-dedup for cost)
-    const { data: newLegos } = await supabase
-      .from('course_legos')
-      .select('lego_id, known_text, presentation_audio_id')
-      .eq('course_code', courseCode)
-      .eq('is_new', true)
-      .lte('seed_number', releaseTarget)
-    const { data: rawPresentations } = await supabase
-      .from('course_audio')
-      .select('lego_id, s3_key')
-      .eq('course_code', courseCode)
-      .eq('role', 'presentation')
-    const existingPresentations = (rawPresentations || []).filter(p => !p.s3_key || !p.s3_key.startsWith('pending/'))
-    const legoIdsWithPresentation = new Set(existingPresentations.map(p => p.lego_id).filter(Boolean))
-    for (const lego of (newLegos || [])) {
-      if (lego.presentation_audio_id) continue
-      if (legoIdsWithPresentation.has(lego.lego_id)) continue
-      needed.push({ text: lego.known_text, language: course.known_lang, role: 'presentation', lego_id: lego.lego_id })
-    }
-
-    // Dedup + filter punctuation for cost estimation
-    const uniqueNeeded = [...new Map(
-      needed.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}`, n])
-    ).values()].filter(n => !isPunctuationOnly(n.text))
-
-    const totalChars = uniqueNeeded.reduce((sum, n) => sum + n.text.length, 0)
-    const estimatedCost = (totalChars / 1000) * 0.016
-
-    // Unique text counts for display
     const uniqueTexts = new Set()
     for (const src of [...(allLegos || []), ...(allSeeds || [])]) {
       if (!isPunctuationOnly(src.known_text)) uniqueTexts.add(`known|${normalizeText(src.known_text)}`)
@@ -1101,7 +1105,21 @@ async function planHandler(req, res) {
     }
     const uniqueKnownTexts = [...uniqueTexts].filter(k => k.startsWith('known|')).length
     const uniqueTargetTexts = [...uniqueTexts].filter(k => k.startsWith('target|')).length
-    const totalPresentationsNeeded = newLegos?.length || 0
+
+    // Total presentations needed = is_new LEGOs in window
+    const { count: totalPresentationsNeeded } = await supabase
+      .from('course_legos')
+      .select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('is_new', true)
+      .lte('seed_number', releaseTarget)
+
+    // Phrase count for display
+    const { count: totalPhrases } = await supabase
+      .from('course_practice_phrases')
+      .select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .lte('seed_number', releaseTarget)
 
     res.json({
       courseCode,
@@ -1112,21 +1130,23 @@ async function planHandler(req, res) {
         targetLang: course.target_lang,
         voiceConfig: course.voice_config
       },
-      existing: totalExisting,
-      missing: totalMissing,
-      total: totalExisting + totalMissing,
-      totalPhrases: phraseCount,
-      totalPresentationsNeeded,
+      // Truth: missing = what /generate will TTS (= toGenerate.length)
+      missing: audioNeeds.toGenerate.length,
+      // Free: rows whose audio already exists, just need the audio_id binding
+      linkable: audioNeeds.toLink,
+      // Dashboard "total" stays the union of slots vs. actual existing
+      existing: audioNeeds.stats.existing,
+      total: audioNeeds.stats.totalSlots,
+      totalPhrases: totalPhrases || 0,
+      totalPresentationsNeeded: totalPresentationsNeeded || 0,
       uniqueKnownTexts,
       uniqueTargetTexts,
       estimatedCost: `$${estimatedCost.toFixed(2)}`,
       estimatedChars: totalChars,
-      breakdown: {
-        known: missingKnown,
-        target1: missingTarget1,
-        target2: missingTarget2,
-        presentation: missingPresentation
-      }
+      ungeneratable: audioNeeds.stats.ungeneratable,
+      readyForGenerate: audioNeeds.readyForGenerate,
+      presentationStatus: audioNeeds.presentationStatus,
+      breakdown: audioNeeds.stats.breakdown
     })
   } catch (error) {
     logger.error('Plan error:', error)
@@ -1226,6 +1246,21 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Step B: Find what still needs generating (after linking)
     const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course)
 
+    // Step B0: Guard — refuse to run if presentation text isn't ready.
+    // Presentation text is created by /regenerate-presentations (the dashboard's
+    // "Generate Missing Presentation Text" button). /generate no longer invents
+    // presentation text on the fly — caller must run that step first.
+    if (!audioNeeds.readyForGenerate && !req.body?.skipPresentationGuard) {
+      const ps = audioNeeds.presentationStatus
+      logger.warn(`/generate refused: presentation text not ready (${ps.totalMissing} missing — ${ps.missingLegoPresentations} LEGO + ${ps.missingComponentPresentations} component)`)
+      return res.status(412).json({
+        error: 'Presentation text not ready',
+        needsPresentationStep: true,
+        message: `${ps.totalMissing} presentation text(s) missing. Run "Generate Missing Presentation Text" first.`,
+        ...ps
+      })
+    }
+
     // Step B2: If items are "linkable" but nothing actually linked (link step ran
     // but linked 0), the "linkable" items are stuck — normalization mismatch between
     // JS normalizeForAudio and DB text_normalized prevents the RPC from matching.
@@ -1239,7 +1274,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       logger.info(`Reclassified: now ${audioNeeds.toGenerate.length} to generate`)
     }
 
-    // Add voice config to each item
+    // Add voice config to each item. Always resolve from voice_config — the
+    // role determines the voice. Don't trust item.voice_id from pending rows;
+    // some flows store it without the provider prefix (e.g. "pt-PT-RaquelNeural"
+    // instead of "azure_pt-PT-RaquelNeural"), which breaks TTS dispatch.
     const needed = audioNeeds.toGenerate.map(item => ({
       ...item,
       voiceId: getVoiceForRole(item.role),
@@ -1248,363 +1286,6 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     logger.info(`Audio needs: ${audioNeeds.stats.missing} missing total, ${audioNeeds.toLink} linkable, ${audioNeeds.toGenerate.length} need TTS`)
 
-    // =========================================================================
-    // AUTO-GENERATE COMPONENT PRESENTATION TEXT (so "Start Generation" is one-click)
-    // Creates course_audio records with pending/ s3_keys for component phrases
-    // that don't already have presentation audio. These get picked up below.
-    // =========================================================================
-    {
-      const compTargetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
-
-      // Load (or auto-generate) presentation template for known language
-      const compTemplate = await getOrCreatePresentationTemplate(course.known_lang)
-
-      // Load component phrases for this course (within release target)
-      const compPhrases = []
-      let compOffset = 0
-      let hasMoreComps = true
-      while (hasMoreComps) {
-        const { data: compBatch, error: compError } = await supabase
-          .from('course_practice_phrases')
-          .select('id, seed_number, lego_index, known_text, target_text, presentation_audio_id')
-          .eq('course_code', courseCode)
-          .eq('phrase_role', 'component')
-          .lte('seed_number', releaseTarget)
-          .order('id')
-          .range(compOffset, compOffset + PAGE_SIZE - 1)
-
-        if (compError) { logger.warn('Failed to fetch component phrases:', compError.message); break }
-        if (compBatch && compBatch.length > 0) {
-          compPhrases.push(...compBatch)
-          hasMoreComps = compBatch.length === PAGE_SIZE
-          compOffset += PAGE_SIZE
-        } else {
-          hasMoreComps = false
-        }
-      }
-
-      if (compPhrases.length > 0) {
-        // Load parent M-LEGOs for "as in" context
-        const compSeedNumbers = [...new Set(compPhrases.map(c => c.seed_number))]
-        const parentLegoMap = new Map()
-        const COMP_SEED_BATCH = 500
-        for (let i = 0; i < compSeedNumbers.length; i += COMP_SEED_BATCH) {
-          const seedBatch = compSeedNumbers.slice(i, i + COMP_SEED_BATCH)
-          const { data: parentLegos } = await supabase
-            .from('course_legos')
-            .select('seed_number, lego_index, known_text, target_text')
-            .eq('course_code', courseCode)
-            .eq('type', 'M')
-            .in('seed_number', seedBatch)
-
-          for (const l of (parentLegos || [])) {
-            parentLegoMap.set(`${l.seed_number}:${l.lego_index}`, l)
-          }
-        }
-
-        // Generate presentation text for each component
-        const componentPresentations = []
-        for (const comp of compPhrases) {
-          const parent = parentLegoMap.get(`${comp.seed_number}:${comp.lego_index}`)
-          if (!parent) continue
-
-          const presText = compTemplate
-            .replace('{target_lang_name}', compTargetLangName)
-            .replace('{known}', comp.known_text)
-            .replace('{seed}', parent.known_text)
-
-          componentPresentations.push({
-            phrase_id: comp.id,
-            presentation_text: presText,
-            presentation_audio_id: comp.presentation_audio_id
-          })
-        }
-
-        // Check which presentation texts already exist in course_audio
-        const compTextsNorm = componentPresentations.map(cp => normalizeForAudio(cp.presentation_text))
-        const uniqueCompTexts = [...new Set(compTextsNorm)]
-        const existingCompTexts = new Set()
-
-        for (let i = 0; i < uniqueCompTexts.length; i += 50) {
-          const batch = uniqueCompTexts.slice(i, i + 50)
-          const { data: existing } = await supabase
-            .from('course_audio')
-            .select('text_normalized')
-            .eq('course_code', courseCode)
-            .eq('role', 'presentation')
-            .in('text_normalized', batch)
-
-          if (existing) {
-            for (const rec of existing) existingCompTexts.add(rec.text_normalized)
-          }
-        }
-
-        // Build new records for components that don't have presentation audio yet
-        const presVoiceConfig = course.voice_config || {}
-        const presVoiceId = presVoiceConfig.voices?.presentation?.voiceId
-          ? `${presVoiceConfig.voices?.presentation?.provider || 'azure'}_${presVoiceConfig.voices.presentation.voiceId}`
-          : presVoiceConfig.presentation || 'azure_en-GB-SoniaNeural'
-
-        const newCompRecords = componentPresentations
-          .filter(cp => !existingCompTexts.has(normalizeForAudio(cp.presentation_text)))
-          .map(cp => ({
-            course_code: courseCode,
-            text: cp.presentation_text,
-            text_normalized: normalizeForAudio(cp.presentation_text),
-            language: course.known_lang,
-            role: 'presentation',
-            voice_id: presVoiceId,
-            origin: 'tts',
-            s3_key: `pending/${uuidv4().toUpperCase()}.mp3`
-          }))
-
-        if (newCompRecords.length > 0) {
-          const { error: compUpsertError } = await supabase
-            .from('course_audio')
-            .upsert(newCompRecords, {
-              onConflict: 'course_code,text_normalized,language,role',
-              ignoreDuplicates: true
-            })
-
-          if (compUpsertError) {
-            logger.error('Component presentation auto-upsert error:', compUpsertError)
-          } else {
-            logger.info(`Auto-created ${newCompRecords.length} component presentation records (from ${compPhrases.length} component phrases)`)
-          }
-        } else if (compPhrases.length > 0) {
-          logger.info(`All ${componentPresentations.length} component presentations already have course_audio records`)
-        }
-      }
-    }
-
-    // Also include presentation audio that needs generation (pending/ s3_key)
-    const { data: pendingPresentations } = await supabase
-      .from('course_audio')
-      .select('id, text, language, voice_id, lego_id')
-      .eq('course_code', courseCode)
-      .eq('role', 'presentation')
-      .like('s3_key', 'pending/%')
-
-    if (pendingPresentations?.length > 0) {
-      logger.info(`Found ${pendingPresentations.length} pending presentation audio items`)
-      for (const pres of pendingPresentations) {
-        // Use presentation voice from config, or fallback to known voice
-        const presVoice = getVoiceForRole('presentation') || pres.voice_id || getVoiceForRole('known')
-        needed.push({
-          text: pres.text,
-          language: pres.language || course.known_lang,
-          role: 'presentation',
-          voiceId: presVoice,
-          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0,
-          lego_id: pres.lego_id || null  // Preserve lego_id for linking after generation
-        })
-      }
-    }
-
-    // Also include LEGOs that are MISSING presentation audio entirely (not just pending)
-    // This matches the /plan endpoint logic for counting missing presentations
-    const { data: newLegos } = await supabase
-      .from('course_legos')
-      .select('lego_id, seed_number, known_text, presentation_audio_id')
-      .eq('course_code', courseCode)
-      .eq('is_new', true)
-      .lte('seed_number', releaseTarget)
-
-    if (newLegos?.length > 0) {
-      // Get existing presentation audio (filter pending client-side)
-      const { data: rawExistPres } = await supabase
-        .from('course_audio')
-        .select('lego_id, s3_key')
-        .eq('course_code', courseCode)
-        .eq('role', 'presentation')
-
-      // Build set of lego_ids that have presentation audio in course_audio
-      const legoIdsWithPresentation = new Set(
-        (rawExistPres || [])
-          .filter(p => !p.s3_key || !p.s3_key.startsWith('pending/'))
-          .map(p => p.lego_id).filter(Boolean)
-      )
-
-      // Exclude LEGOs that have pending presentations (already added above)
-      const pendingLegoIds = new Set(
-        (pendingPresentations || []).map(p => p.lego_id).filter(Boolean)
-      )
-
-      // Get (or auto-generate) presentation template for this course
-      const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
-      const presentationTemplate = await getOrCreatePresentationTemplate(course.known_lang)
-
-      // Build short template (no "as in" context) for LEGOs where no good context exists.
-      // Universal: splice out everything between {known}'s closing delimiter and
-      // {seed}'s closing delimiter. Works for any language's template.
-      let shortPresentationTemplate = presentationTemplate
-      const _knownIdx = presentationTemplate.indexOf('{known}')
-      const _seedIdx = presentationTemplate.indexOf('{seed}')
-      if (_knownIdx !== -1 && _seedIdx !== -1) {
-        const _afterKnown = presentationTemplate.substring(_knownIdx + 7)
-        const _knownEndMatch = _afterKnown.match(/^['"}\u300D]?[,]\s*|^['"}\u300D]?\s*[—–]\s*/)
-        const _knownClauseEnd = _knownIdx + 7 + (_knownEndMatch ? _knownEndMatch[0].length : 0)
-
-        const _afterSeed = presentationTemplate.substring(_seedIdx + 6)
-        const _seedEndMatch = _afterSeed.match(/^['"}\u300D]?(?:\uCC98\uB7FC|\u306E\u3088\u3046\u306B|[^\s,\u2014\u2013{]*?)?\s*[,\u2014\u2013]\s*/)
-        const _seedClauseEnd = _seedIdx + 6 + (_seedEndMatch ? _seedEndMatch[0].length : 0)
-
-        shortPresentationTemplate = presentationTemplate.substring(0, _knownClauseEnd)
-          + presentationTemplate.substring(_seedClauseEnd)
-      }
-
-      // Load seed sentences for context
-      const legoSeedNumbers = [...new Set(newLegos.map(l => l.seed_number).filter(Boolean))]
-      const seedTextMap = {}
-      if (legoSeedNumbers.length > 0) {
-        const SEED_BATCH = 500
-        for (let i = 0; i < legoSeedNumbers.length; i += SEED_BATCH) {
-          const batch = legoSeedNumbers.slice(i, i + SEED_BATCH)
-          const { data: seeds } = await supabase
-            .from('course_seeds')
-            .select('seed_number, known_text')
-            .eq('course_code', courseCode)
-            .in('seed_number', batch)
-          if (seeds) for (const s of seeds) seedTextMap[s.seed_number] = s.known_text
-        }
-      }
-
-      // Load USE phrases for context (grouped by seed_number:lego_index)
-      const usePhraseMapForPres = {}
-      let useOffset = 0
-      let hasMoreUse = true
-      while (hasMoreUse) {
-        const { data: useBatch } = await supabase
-          .from('course_practice_phrases')
-          .select('seed_number, lego_index, known_text')
-          .eq('course_code', courseCode)
-          .eq('phrase_role', 'use')
-          .order('id')
-          .range(useOffset, useOffset + 999)
-        if (useBatch && useBatch.length > 0) {
-          for (const p of useBatch) {
-            const key = `${p.seed_number}:${p.lego_index}`
-            if (!usePhraseMapForPres[key]) usePhraseMapForPres[key] = []
-            usePhraseMapForPres[key].push(p.known_text)
-          }
-          hasMoreUse = useBatch.length === 1000
-          useOffset += 1000
-        } else {
-          hasMoreUse = false
-        }
-      }
-
-      // Deterministic hash for weighted random context selection
-      function deterministicRand(legoId) {
-        let h = 0
-        for (let i = 0; i < legoId.length; i++) {
-          h = ((h << 5) - h + legoId.charCodeAt(i)) | 0
-        }
-        return (((h >>> 0) % 10000) / 10000)
-      }
-
-      // Find LEGOs missing presentation audio and generate the text
-      let missingPresentationCount = 0
-      let contextFromSeed = 0, contextFromUse = 0, contextNone = 0
-      for (const lego of newLegos) {
-        // Skip if already bound on the LEGO itself (authoritative)
-        if (lego.presentation_audio_id) continue
-        // Skip if presentation audio exists in course_audio by lego_id or is pending
-        if (legoIdsWithPresentation.has(lego.lego_id) || pendingLegoIds.has(lego.lego_id)) {
-          continue
-        }
-
-        // Parse lego_index from lego_id (e.g., "S0001L03" → 3)
-        const legoIndexMatch = lego.lego_id.match(/L(\d+)$/)
-        const legoIndex = legoIndexMatch ? parseInt(legoIndexMatch[1], 10) : 1
-
-        // Find context sentence containing the known text
-        const seedText = seedTextMap[lego.seed_number] || lego.known_text
-        const knownLower = lego.known_text.toLowerCase()
-        const knownVariants = [knownLower]
-        if (knownLower.includes(' / ')) {
-          knownVariants.push(...knownLower.split(' / ').map(s => s.trim()))
-        }
-        const textContainsKnown = (text) => {
-          const t = text.toLowerCase()
-          return knownVariants.some(v => t.includes(v))
-        }
-
-        const key = `${lego.seed_number}:${legoIndex}`
-        const usePhrases = (usePhraseMapForPres[key] || []).filter(p => textContainsKnown(p))
-        const seedValid = textContainsKnown(seedText)
-
-        // Weighted random: ~60% USE phrase, ~25% seed, ~15% no context
-        const roll = deterministicRand(lego.lego_id)
-        let contextText = null
-
-        if (usePhrases.length > 0 && seedValid) {
-          if (roll < 0.60) {
-            const useIdx = Math.floor(deterministicRand(lego.lego_id + ':use') * usePhrases.length)
-            contextText = usePhrases[useIdx]
-            contextFromUse++
-          } else if (roll < 0.85) {
-            contextText = seedText
-            contextFromSeed++
-          } else {
-            contextNone++
-          }
-        } else if (usePhrases.length > 0) {
-          if (roll < 0.80) {
-            const useIdx = Math.floor(deterministicRand(lego.lego_id + ':use') * usePhrases.length)
-            contextText = usePhrases[useIdx]
-            contextFromUse++
-          } else {
-            contextNone++
-          }
-        } else if (seedValid) {
-          if (roll < 0.70) {
-            contextText = seedText
-            contextFromSeed++
-          } else {
-            contextNone++
-          }
-        } else {
-          contextNone++
-        }
-
-        // Skip context if known text overlaps too much (redundant)
-        if (contextText && lego.known_text.length > 0) {
-          const overlapRatio = lego.known_text.length / contextText.length
-          if (overlapRatio > 0.5) {
-            contextText = null
-            contextNone++
-          }
-        }
-
-        const finalTemplate = contextText ? presentationTemplate : shortPresentationTemplate
-
-        // For slash-compound known_text, use first option only
-        const knownForPres = lego.known_text.includes(' / ')
-          ? lego.known_text.split(' / ')[0].trim()
-          : lego.known_text
-
-        let presText = finalTemplate
-          .replace('{target_lang_name}', targetLangName)
-          .replace('{known}', knownForPres)
-          .replace('{seed}', contextText || '')
-
-        const presVoice = getVoiceForRole('presentation') || getVoiceForRole('known')
-        needed.push({
-          text: presText,
-          language: course.known_lang,
-          role: 'presentation',
-          voiceId: presVoice,
-          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0,
-          lego_id: lego.lego_id
-        })
-        missingPresentationCount++
-      }
-
-      if (missingPresentationCount > 0) {
-        logger.info(`Found ${missingPresentationCount} LEGOs missing presentation audio (context: ${contextFromSeed} seed, ${contextFromUse} USE, ${contextNone} none)`)
-      }
-    }
 
     // Filter by requested roles if specified (e.g. roles: ['known', 'presentation'])
     if (requestedRoles && Array.isArray(requestedRoles) && requestedRoles.length > 0) {

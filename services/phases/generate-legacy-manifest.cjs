@@ -227,27 +227,29 @@ async function loadAudioFromDB(courseCode) {
 }
 
 /**
- * Paid courses that should include paywall encouragements
- * All other courses get an empty paywallEncouragements array
+ * Paid-target languages — courses whose target is in this set are paid courses
+ * and should include paywall encouragements (per known language) when available.
+ *
+ * Whether the course actually gets paywall content also depends on whether
+ * shared_audio rows exist for the (knownLang, audio_type='paywall') combo —
+ * see the loader below. Today only English-known has them; other known
+ * languages will populate as recordings/TTS land.
+ *
+ * Mirrors PAID_TARGET_LANGUAGES in services/production-api.cjs.
  */
-const PAID_COURSE_CODES = [
-  'ara_for_eng',     // Arabic
-  'zho_for_eng',     // Chinese
-  'jpn_for_eng',     // Japanese
-  'kor_for_eng',     // Korean
-  'spa_for_eng',     // Spanish (Spain)
-  'spa_mx_for_eng',  // Spanish (Mexico)
-  'por_for_eng',     // Portuguese (Portugal)
-  'por_br_for_eng',  // Portuguese (Brazil)
-  'ita_for_eng',     // Italian
-  'deu_for_eng',     // German
-  'fra_for_eng'      // French
-]
+const PAID_TARGET_LANGUAGES = new Set(['eng', 'ara', 'cmn', 'jpn', 'kor', 'ita', 'fra', 'spa', 'por', 'deu'])
+
+function courseQualifiesForPaywall(courseCode, targetLang) {
+  // Strip dialect suffix (mx, br, ca etc) — `cmn` is also stored as `zho` in DB.
+  // Resolved via a dialect-aware lookup against PAID_TARGET_LANGUAGES + the zho/cmn alias.
+  const normalisedTarget = targetLang === 'zho' ? 'cmn' : targetLang
+  return PAID_TARGET_LANGUAGES.has(normalisedTarget) || PAID_TARGET_LANGUAGES.has(targetLang)
+}
 
 /**
  * Load welcome, instructions, and encouragements from database
  */
-async function loadWelcomeAndEncouragements(courseCode, knownLang) {
+async function loadWelcomeAndEncouragements(courseCode, knownLang, targetLang) {
   const client = supabaseClient.getClient()
   if (!client) return { welcome: null, instructions: [], encouragements: [], paywallEncouragements: [] }
 
@@ -276,10 +278,13 @@ async function loadWelcomeAndEncouragements(courseCode, knownLang) {
     .eq('language', knownLang)
     .eq('audio_type', 'encouragement')
 
-  // Load paywall encouragements from shared_audio (only for paid courses)
-  // These are sequential messages shown to free users after they complete free content
+  // Load paywall encouragements from shared_audio (only for paid courses).
+  // A course qualifies if its target language is in PAID_TARGET_LANGUAGES.
+  // The `language` filter on shared_audio uses knownLang because paywall content
+  // is spoken to the learner in their own language. If recordings haven't been
+  // produced for that knownLang yet, this returns an empty array (no error).
   let paywallData = []
-  if (PAID_COURSE_CODES.includes(courseCode)) {
+  if (courseQualifiesForPaywall(courseCode, targetLang)) {
     const { data } = await client
       .from('shared_audio')
       .select('id, text, s3_key, duration_ms, sequence')
@@ -1139,7 +1144,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
   console.error(`  Database: ${dbSeeds?.length || 0} seeds, ${dbLegos?.length || 0} LEGOs, ${dbPhrases?.length || 0} phrases, ${dbAudio?.length || 0} audio`)
 
   // 3. Load welcome and encouragements from database
-  const { welcome, instructions, encouragements: encouragementsList, paywallEncouragements: paywallList } = await loadWelcomeAndEncouragements(courseCode, knownLang)
+  const { welcome, instructions, encouragements: encouragementsList, paywallEncouragements: paywallList } = await loadWelcomeAndEncouragements(courseCode, knownLang, targetLang)
   console.error(`  Welcome: ${welcome ? 'found' : 'missing'}, Instructions: ${instructions.length}, Encouragements: ${encouragementsList.length}, Paywall: ${paywallList.length}`)
 
   // 5. Build lookup maps from database
@@ -1538,10 +1543,20 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // 12. Build manifest
   const knownLegacy = getLegacyCode(knownLang, 'known language')
   const targetLegacy = getLegacyCode(targetLang, 'target language')
-  // Course suffix: e.g. spa_mx_for_eng → "mx", cym_anthem_for_jpn → "anthem".
-  // Base courses (spa_for_eng) match no suffix and keep `{known}-{target}`.
-  const courseSuffix = courseCode.match(new RegExp(`^${targetLang}_(.+)_for_${knownLang}$`))?.[1]
-  const manifestId = courseSuffix ? `${knownLegacy}-${targetLegacy}-${courseSuffix}` : `${knownLegacy}-${targetLegacy}`
+  // Dialect-aware suffix parsing on EITHER side:
+  //   spa_mx_for_eng    → targetSuffix=mx (target dialect)
+  //   eng_for_fra_ca    → knownSuffix=ca  (known dialect — no such course today, future-proofed)
+  //   cym_anthem_for_jpn → targetSuffix=anthem
+  // Per Ivan (2026-04-30): the dialect suffix lives ONLY in `id`. The `known` and `target`
+  // fields must be the base language identifier — stage parses them as language codes and
+  // crashes on unknown identifiers like "es-mx". The variant goes in `id` only.
+  const re = new RegExp(`^${targetLang}(?:_(.+?))?_for_${knownLang}(?:_(.+))?$`)
+  const m = courseCode.match(re)
+  const targetSuffix = m?.[1] || ''
+  const knownSuffix = m?.[2] || ''
+  const knownWithDialect = knownSuffix ? `${knownLegacy}-${knownSuffix}` : knownLegacy
+  const targetWithDialect = targetSuffix ? `${targetLegacy}-${targetSuffix}` : targetLegacy
+  const manifestId = `${knownWithDialect}-${targetWithDialect}`
 
   const manifest = {
     id: manifestId,
