@@ -80,16 +80,8 @@
               </p>
             </div>
 
-            <!-- ElevenLabs (UI Audio) -->
-            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-purple-500">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="text-xs font-medium text-purple-400 uppercase tracking-wide">ElevenLabs</span>
-                <span class="text-xs text-slate-500">(UI)</span>
-              </div>
-              <p class="text-xl font-bold" :class="byProcess.elevenLabs?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
-                {{ byProcess.elevenLabs?.missing || 0 }}
-              </p>
-            </div>
+            <!-- ElevenLabs (UI Audio) row removed — shared audio (encouragements/instructions/welcome)
+                 now lives in the Shared Audio section below. Generate Missing Audio doesn't produce them. -->
           </div>
 
           <!-- Total -->

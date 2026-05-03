@@ -180,6 +180,12 @@ export const useProductionStore = defineStore('production', () => {
   // Computed: pipeline stats (for audio generation)
   // Uses audioCourseStats from database when not actively generating
   // Uses generationQueue for live progress during active generation
+  //
+  // `pending` is the canonical "what Generate Missing Audio will TTS" number.
+  // Source: phase8 /needs (via /audio-stats) which uses getAudioNeeds(). Excludes
+  // shared audio (encouragements/instructions/welcome) — those have their own widget.
+  // `linkable` is rows whose audio already exists, just need binding (no TTS spend).
+  // `readyForGenerate` is false when presentation text hasn't been generated yet.
   const pipelineStats = computed(() => {
     // If we have active generation, show live progress from queue
     if (generationQueue.value.length > 0) {
@@ -187,15 +193,22 @@ export const useProductionStore = defineStore('production', () => {
       const generated = generationQueue.value.filter(item => item.status === 'complete').length
       const failed = generationQueue.value.filter(item => item.status === 'failed').length
       const pending = generationQueue.value.filter(item => item.status === 'queued').length
-      return { total, generated, failed, pending }
+      return { total, generated, failed, pending, linkable: 0, readyForGenerate: true }
     }
 
     // Otherwise use database counts from audioCourseStats
     const stats = audioCourseStats.value
+    // Prefer `toGenerate` (course-specific TTS work) when available.
+    // Falls back to `missing` for backward compat in case the API hasn't been redeployed.
+    const pending = stats.toGenerate !== undefined ? stats.toGenerate : (stats.missing || 0)
     return {
       total: stats.total || 0,
       generated: stats.existing || 0,
-      pending: stats.missing || 0,
+      pending,
+      linkable: stats.toLink || 0,
+      // Default to true if the field is missing (back-compat with older API responses)
+      readyForGenerate: stats.readyForGenerate !== false,
+      presentationStatus: stats.presentationStatus || null,
       failed: 0  // Not tracked in simple stats
     }
   })
