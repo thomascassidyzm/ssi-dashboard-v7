@@ -38,28 +38,89 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 // to the same voice. Overridable in the dashboard later.
 
 const FEMALE_NAMES = new Set([
+  // Spanish
   'ana', 'elena', 'maría', 'maria', 'amiga', 'sofía', 'sofia', 'lucía', 'lucia',
   'marta', 'pilar', 'carmen', 'teresa', 'isabel', 'laura', 'clara', 'rosa',
-  'vecina', 'camarera', 'receptionist', 'barista',
+  'vecina', 'camarera',
+  // English / mixed European
+  'sarah', 'anna', 'emma', 'olivia', 'sophie', 'jessica', 'rachel', 'hannah',
+  'chloe', 'lucy', 'lily', 'amy', 'kate', 'katie', 'eve', 'mary', 'jane',
+  'nurse', 'receptionist', 'barista', 'greengrocer', 'florist', 'cashier',
+  'shopkeeper', 'host', 'hostess', 'mum', 'mother', 'sister', 'daughter',
+  // German / Italian / French / Portuguese common
+  'frau', 'signora', 'signorina', 'madame', 'senhora', 'mademoiselle',
+  'giulia', 'francesca', 'sofia', 'alessia', 'chiara',
+  'claire', 'marie', 'sophie', 'amélie', 'amelie', 'camille',
+  'catarina', 'inês', 'ines', 'mariana', 'beatriz',
 ]);
 const MALE_NAMES = new Set([
+  // Spanish
   'pablo', 'dani', 'javier', 'juan', 'carlos', 'miguel', 'jose', 'josé',
   'antonio', 'luis', 'manuel', 'francisco', 'david', 'sergio',
-  'vecino', 'camarero', 'bartender', 'waiter', 'driver', 'pharmacist',
-  'vendor', 'local', 'guest',
+  'vecino', 'camarero',
+  // English / mixed European
+  'james', 'tom', 'thomas', 'jack', 'henry', 'oliver', 'william', 'george',
+  'harry', 'charlie', 'daniel', 'liam', 'lucas', 'ethan', 'sam', 'mark',
+  'paul', 'peter', 'john', 'alex', 'matt', 'ben', 'andrew', 'simon',
+  'bartender', 'waiter', 'driver', 'pharmacist', 'vendor', 'local', 'guest',
+  'neighbour', 'neighbor', 'friend', 'colleague', 'dad', 'father', 'brother', 'son',
+  // Other European
+  'herr', 'signore', 'monsieur', 'senhor',
+  'felix', 'leon', 'marco', 'pedro', 'pierre', 'michel', 'leonardo',
 ]);
 
-const FEMALE_VOICE_POOL = ['eve', 'ara'];
-const MALE_VOICE_POOL = ['leo', 'rex'];
+// xAI voices the platform now exposes. Ordered as ranked priority — first entry
+// in each pool is the preferred voice for that language.
+// Source: https://api.x.ai/v1/tts/voices (May 2026)
+const XAI_VOICES_BY_LANG = {
+  eng: { female: ['bedd6226'], male: ['f15c6a6a'] }, // Olivia, Henry (en-GB)
+  spa: { female: ['f2f41225', '46a802e3'], male: ['d2313a0d', '1a59f327'] }, // Maria, Lucia, Pablo, Carlos
+  ita: { female: ['43423dee'], male: ['57700f39', '1ebfec36'] }, // Giulia, Leon, Marco
+  deu: { female: ['44c91d64'], male: ['e1fc5a89'] }, // Sonja, Felix
+  por: { female: ['777d3f85'], male: ['a0fa45a6'] }, // Catarina, Pedro
+  zho: { female: ['e521cc67', '09b02491'], male: ['9ab26871', '6997b0ec'] }, // Hui, Mei, Wei, Yang
+  cmn: { female: ['e521cc67', '09b02491'], male: ['9ab26871', '6997b0ec'] },
+  kor: { female: [],                       male: ['d74461c6'] }, // Hyun-woo
+  ara: { female: ['025a38c5'],             male: ['5f0c2251', 'f4b9d6fc'] }, // Yasmin, Youssef, Omar
+  hin: { female: ['a00ce99a', '0735ff93'], male: ['bcf738e4'] }, // Priya, Diya, Vihaan
+  ben: { female: ['57b26f54', 'a2aa4b79'], male: ['e1b1007e', '0b54c30d'] }, // Anika, Pooja, Rohan, Tanvir
+  pol: { female: ['ce19f825', '4984accb'], male: ['70071d42', '2902bcfd'] }, // Magdalena, Zofia, Tomasz, Piotr
+  dan: { female: ['a69bdfe7', '47519c37'], male: ['cfccf16b', '524f4cb1'] }, // Astrid, Freja, Mads, Lucas
+  swe: { female: ['3b312632', 'bab9c92f'], male: ['4c7f16ff', '93bea908'] }, // Alice, Elsa, Oscar, William
+  fin: { female: ['9ec6157c', '3a3e080c'], male: ['f702f406', '5e3e2cbe'] }, // Aino, Sofia, Olli, Mikko
+  hun: { female: ['6583fcc2', '7160ae2c'], male: ['9efdd836', '681cd005'] }, // Eszter, Krisztina, Istvan, Gabor
+  rus: { female: ['0b875ae2'],             male: ['a24f5341', '0d3372eb'] }, // Sonia (ru), Mikhail, Sergei
+  tha: { female: ['a5341c30', '330f1e6d'], male: ['4b7af2d7', '0463086e'] }, // Nicha, Pim, Somchai, Thanawat
+  tur: { female: [],                       male: ['f331ee80'] }, // Ahmet
+  vie: { female: ['e5da67a7'],             male: ['39e46ca3', '4e1d5545'] }, // Linh, Hoang, Quang
+  ind: { female: ['07e283bf', '20fa3f2e'], male: ['a656d78f', '7f989258'] }, // Aisyah, Sri, Budi, Adi
+  cat: { female: ['4d3af3e1', '155d4e9b'], male: ['c630b236', 'e5d4f53e'] }, // Mireia, Nuria, Jordi, Pol
+  nld: { female: ['cdb1cec8', '6fe32f8a'], male: ['18245f0d', 'ef4ce33e'] }, // Lieke, Sophie, Bas, Daan
+};
+
+// Multilingual fallback (xAI's universal voices, work for any language but less native-sounding)
+const FEMALE_VOICE_POOL_FALLBACK = ['eve', 'ara'];
+const MALE_VOICE_POOL_FALLBACK = ['leo', 'rex'];
 const NEUTRAL_VOICE = 'sal';
 
 function normaliseName(speaker) {
   return speaker.toLowerCase().replace(/\s*\([^)]*\)\s*/g, '').trim();
 }
 
-function assignVoices(speakers) {
+function getVoicePoolsForLang(targetLang) {
+  const lang = (targetLang || '').toLowerCase().split(/[_-]/)[0];
+  const lookup = XAI_VOICES_BY_LANG[lang];
+  return {
+    female: (lookup?.female?.length ? lookup.female : []).concat(FEMALE_VOICE_POOL_FALLBACK),
+    male:   (lookup?.male?.length   ? lookup.male   : []).concat(MALE_VOICE_POOL_FALLBACK),
+  };
+}
+
+function assignVoices(speakers, targetLang) {
   // speakers: array of unique speaker-name strings
+  // targetLang: ISO code of the pod's target language (drives xAI voice picking)
   // returns: { [speaker_original_case]: { voice_id, provider, gender } }
+  const pools = getVoicePoolsForLang(targetLang);
   const assignments = {};
   let femaleIdx = 0;
   let maleIdx = 0;
@@ -68,11 +129,11 @@ function assignVoices(speakers) {
     const clean = normaliseName(speaker);
     let voice_id, gender;
     if (FEMALE_NAMES.has(clean)) {
-      voice_id = FEMALE_VOICE_POOL[femaleIdx % FEMALE_VOICE_POOL.length];
+      voice_id = pools.female[femaleIdx % pools.female.length];
       femaleIdx++;
       gender = 'f';
     } else if (MALE_NAMES.has(clean)) {
-      voice_id = MALE_VOICE_POOL[maleIdx % MALE_VOICE_POOL.length];
+      voice_id = pools.male[maleIdx % pools.male.length];
       maleIdx++;
       gender = 'm';
     } else {
@@ -315,7 +376,9 @@ async function syncPod(markdownPath, options) {
   const parsed = parseMarkdown(markdown);
 
   const podId = `${courseCode}:${slug}`;
-  const speakers = assignVoices(parsed.uniqueSpeakers);
+  // Infer target_lang from courseCode (e.g. "eng_for_deu" → "eng", "fra_ca_for_eng" → "fra")
+  const targetLang = courseCode.split('_for_')[0].split('_')[0];
+  const speakers = assignVoices(parsed.uniqueSpeakers, targetLang);
 
   console.log(`\n🎧 Pod Sync: ${markdownPath}`);
   console.log(`   Target:   ${podId}  (type=${podType})`);
