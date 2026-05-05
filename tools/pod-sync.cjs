@@ -73,7 +73,7 @@ const MALE_NAMES = new Set([
 // in each pool is the preferred voice for that language.
 // Source: https://api.x.ai/v1/tts/voices (May 2026)
 const XAI_VOICES_BY_LANG = {
-  eng: { female: ['bedd6226'], male: ['f15c6a6a'] }, // Olivia, Henry (en-GB)
+  eng: { female: ['bedd6226'], male: ['gfzdpspr5fdp', 'f15c6a6a'] }, // Olivia (en-GB); Tom (SSi cloned brand voice) → Henry (en-GB) fallback
   spa: { female: ['f2f41225', '46a802e3'], male: ['d2313a0d', '1a59f327'] }, // Maria, Lucia, Pablo, Carlos
   ita: { female: ['43423dee'], male: ['57700f39', '1ebfec36'] }, // Giulia, Leon, Marco
   deu: { female: ['44c91d64'], male: ['e1fc5a89'] }, // Sonja, Felix
