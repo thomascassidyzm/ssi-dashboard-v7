@@ -161,9 +161,48 @@ function assignVoices(speakers, targetLang) {
 const RE_H1 = /^#\s+(.+?)\s*$/;
 const RE_H2 = /^##\s+(.+?)\s*$/;
 const RE_H3 = /^###\s+(.+?)\s*$/;
-const RE_TABLE_ROW = /^\|\s*(\d+)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*$/;
+// Two markdown shapes supported:
+//   Legacy (4 cols):  | # | Speaker | Target | Known |
+//   Chunked (5 cols): | # | Speaker | Target | Known | + |
+//
+// In the chunked shape, `#` allows a sub-letter (1, 2a, 2b, 3a) and the
+// trailing `+` column carries the glue-to-next marker (presence of any
+// non-whitespace token in that cell = glued; empty = end of utterance).
+const RE_TABLE_ROW_LEGACY  = /^\|\s*(\d+[a-z]?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*$/;
+const RE_TABLE_ROW_CHUNKED = /^\|\s*(\d+[a-z]?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*([^|]*?)\s*\|\s*$/;
 const RE_TABLE_HEADER = /^\|\s*#\s*\|/i;
 const RE_TABLE_SEPARATOR = /^\|[\s-|]+\|\s*$/;
+
+/**
+ * Match a content row in either legacy or chunked shape.
+ * Returns { num, speaker, target, known, glueToNext } or null.
+ * glueToNext is undefined for legacy rows (4 cols), boolean for chunked.
+ */
+function matchTableRow(line) {
+  const chunked = line.match(RE_TABLE_ROW_CHUNKED);
+  if (chunked) {
+    const [, num, speaker, target, known, glueCell] = chunked;
+    return {
+      num,
+      speaker: speaker.trim(),
+      target: target.trim(),
+      known: known.trim(),
+      glueToNext: /\S/.test(glueCell),
+    };
+  }
+  const legacy = line.match(RE_TABLE_ROW_LEGACY);
+  if (legacy) {
+    const [, num, speaker, target, known] = legacy;
+    return {
+      num,
+      speaker: speaker.trim(),
+      target: target.trim(),
+      known: known.trim(),
+      glueToNext: undefined,
+    };
+  }
+  return null;
+}
 
 /**
  * Extract frontmatter (the narrative block above the first `---`) as text.
@@ -273,7 +312,9 @@ function parseMarkdown(markdown) {
   for (const line of lines) {
     const h2 = line.match(RE_H2);
     const h3 = line.match(RE_H3);
-    const row = line.match(RE_TABLE_ROW);
+    const row = (RE_TABLE_HEADER.test(line) || RE_TABLE_SEPARATOR.test(line))
+      ? null
+      : matchTableRow(line);
 
     if (h2) {
       // ONLY treat an H2 as a real section if it matches the expected shape:
@@ -310,10 +351,9 @@ function parseMarkdown(markdown) {
         // clearly part of content structure, otherwise ignore.
         currentBeat = text;
       }
-    } else if (row && currentSection && !RE_TABLE_HEADER.test(line) && !RE_TABLE_SEPARATOR.test(line)) {
-      const [, num, speakerRaw, targetRaw, knownRaw] = row;
-      const speaker = speakerRaw.trim();
-      // Skip "##" or "---" style table separators that match loosely
+    } else if (row && currentSection) {
+      const { speaker, target, known, glueToNext } = row;
+      // Skip stray rows where speaker cell looks like header/separator content
       if (!speaker || speaker === '#') continue;
 
       globalOrder++;
@@ -322,9 +362,12 @@ function parseMarkdown(markdown) {
         sentence_number: sentenceNumInSection,
         global_order: globalOrder,
         speaker,
-        target_text: targetRaw.trim(),
-        known_text: knownRaw.trim(),
+        target_text: target,
+        known_text: known,
         beat_label: currentBeat,
+        // glueToNext is undefined for legacy 4-col files; let the writer
+        // default it. For chunked 5-col files, carry the explicit boolean.
+        glue_to_next: glueToNext,
       });
     }
   }
@@ -441,6 +484,10 @@ async function syncPod(markdownPath, options) {
         target_text: sent.target_text,
         known_text: sent.known_text,
         beat_label: sent.beat_label,
+        // Carry glue marker through. For legacy 4-col markdown, sent.glue_to_next
+        // is undefined → DB default (false) applies. Explicit boolean wins
+        // when the chunked 5-col format is used.
+        ...(typeof sent.glue_to_next === 'boolean' && { glue_to_next: sent.glue_to_next }),
       });
     }
   }
