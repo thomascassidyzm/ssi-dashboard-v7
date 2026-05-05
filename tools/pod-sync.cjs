@@ -77,7 +77,10 @@ const XAI_VOICES_BY_LANG = {
   spa: { female: ['f2f41225', '46a802e3'], male: ['d2313a0d', '1a59f327'] }, // Maria, Lucia, Pablo, Carlos
   ita: { female: ['43423dee'], male: ['57700f39', '1ebfec36'] }, // Giulia, Leon, Marco
   deu: { female: ['44c91d64'], male: ['e1fc5a89'] }, // Sonja, Felix
-  por: { female: ['777d3f85'], male: ['a0fa45a6'] }, // Catarina, Pedro
+  // por: skipped — xAI tags Catarina/Pedro as just "pt" with no region; likely
+  // Brazilian-leaning. SSi `por` courses are European Portuguese, so use Azure
+  // pt-PT-RaquelNeural. (If xAI exposes pt-PT explicitly, revisit. `por_br` could
+  // use xAI "pt" if confirmed Brazilian.)
   // fra: skipped — xAI only has fr-BE (Belgian), not fr-FR. Per "Azure for regionally
   // qualified voices" rule, French targets fall through to course voice_config (Azure fr-FR).
   zho: { female: ['e521cc67', '09b02491'], male: ['9ab26871', '6997b0ec'] }, // Hui, Mei, Wei, Yang
