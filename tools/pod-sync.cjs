@@ -78,6 +78,8 @@ const XAI_VOICES_BY_LANG = {
   ita: { female: ['43423dee'], male: ['57700f39', '1ebfec36'] }, // Giulia, Leon, Marco
   deu: { female: ['44c91d64'], male: ['e1fc5a89'] }, // Sonja, Felix
   por: { female: ['777d3f85'], male: ['a0fa45a6'] }, // Catarina, Pedro
+  // fra: skipped — xAI only has fr-BE (Belgian), not fr-FR. Per "Azure for regionally
+  // qualified voices" rule, French targets fall through to course voice_config (Azure fr-FR).
   zho: { female: ['e521cc67', '09b02491'], male: ['9ab26871', '6997b0ec'] }, // Hui, Mei, Wei, Yang
   cmn: { female: ['e521cc67', '09b02491'], male: ['9ab26871', '6997b0ec'] },
   kor: { female: [],                       male: ['d74461c6'] }, // Hyun-woo
