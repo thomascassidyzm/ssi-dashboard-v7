@@ -110,7 +110,7 @@ async function generatePresentationTexts(courseCode) {
   const { error: upsertError } = await supabase
     .from('course_audio')
     .upsert(audioRecords, {
-      onConflict: 'course_code,text_normalized,language,role',
+      onConflict: 'course_code,text_normalized,language,role,voice_id',
       ignoreDuplicates: true
     })
 

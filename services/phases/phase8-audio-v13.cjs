@@ -1707,7 +1707,7 @@ app.post('/generate/:courseCode', async (req, res) => {
               lego_id: item.lego_id || null,
               word_boundaries: siblingAudio.word_boundaries || null
             }, {
-              onConflict: 'course_code,text_normalized,language,role'
+              onConflict: 'course_code,text_normalized,language,role,voice_id'
             })
             .select('id')
             .single()
@@ -1819,7 +1819,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           lego_id: item.lego_id || null,
           word_boundaries: wordBoundaries || null
         }, {
-          onConflict: 'course_code,text_normalized,language,role'
+          onConflict: 'course_code,text_normalized,language,role,voice_id'
         })
         .select('id')
         .single()
@@ -2366,7 +2366,7 @@ app.post('/insert', async (req, res) => {
         s3_key: s3Key,
         duration_ms: durationMs
       }, {
-        onConflict: 'course_code,text_normalized,language,role'
+        onConflict: 'course_code,text_normalized,language,role,voice_id'
       })
       .select()
       .single()
@@ -3657,7 +3657,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
               duration_ms: siblingAudio.duration_ms,
               word_boundaries: siblingAudio.word_boundaries || null
             }, {
-              onConflict: 'course_code,text_normalized,language,role'
+              onConflict: 'course_code,text_normalized,language,role,voice_id'
             })
             .select('id')
             .single()
@@ -3735,7 +3735,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
           duration_ms: durationMs,
           word_boundaries: wordBoundaries || null
         }, {
-          onConflict: 'course_code,text_normalized,language,role'
+          onConflict: 'course_code,text_normalized,language,role,voice_id'
         })
         .select('id')
         .single()
@@ -4215,7 +4215,7 @@ app.post('/splice-components/:courseCode', async (req, res) => {
             s3_key: s3Key,
             duration_ms: durationMs
           }, {
-            onConflict: 'course_code,text_normalized,language,role'
+            onConflict: 'course_code,text_normalized,language,role,voice_id'
           })
           .select('id')
           .single()
