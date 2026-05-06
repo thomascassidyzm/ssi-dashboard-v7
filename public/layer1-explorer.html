@@ -542,7 +542,7 @@ async function loadCourse(courseCode) {
 
 async function init() {
   try {
-    allCourses = await sb('courses', 'select=course_code,known_language,target_language&order=course_code.asc')
+    allCourses = await sb('courses', 'select=course_code&order=course_code.asc')
     const sel = document.getElementById('course')
     sel.innerHTML = '<option value="">— pick a course —</option>' +
       allCourses.map(c => `<option value="${c.course_code}">${c.course_code}</option>`).join('')
