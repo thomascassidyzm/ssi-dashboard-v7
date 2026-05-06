@@ -41,116 +41,225 @@ const FEMALE_NAMES = new Set([
   // Spanish
   'ana', 'elena', 'maría', 'maria', 'amiga', 'sofía', 'sofia', 'lucía', 'lucia',
   'marta', 'pilar', 'carmen', 'teresa', 'isabel', 'laura', 'clara', 'rosa',
-  'vecina', 'camarera',
+  'vecina', 'camarera', 'cliente femenina', 'amiga', 'cajera', 'recepcionista',
   // English / mixed European
   'sarah', 'anna', 'emma', 'olivia', 'sophie', 'jessica', 'rachel', 'hannah',
   'chloe', 'lucy', 'lily', 'amy', 'kate', 'katie', 'eve', 'mary', 'jane',
   'nurse', 'receptionist', 'barista', 'greengrocer', 'florist', 'cashier',
   'shopkeeper', 'host', 'hostess', 'mum', 'mother', 'sister', 'daughter',
+  'waitress',
   // German / Italian / French / Portuguese common
   'frau', 'signora', 'signorina', 'madame', 'senhora', 'mademoiselle',
   'giulia', 'francesca', 'sofia', 'alessia', 'chiara',
   'claire', 'marie', 'sophie', 'amélie', 'amelie', 'camille',
   'catarina', 'inês', 'ines', 'mariana', 'beatriz',
+  // French roles (-e / -euse / -ière)
+  'voisine', 'serveuse', 'amie', 'cliente', 'vendeuse', 'pharmacienne',
+  'touriste', 'locale', 'passagère', 'réceptionniste',
+  // Italian roles
+  'cameriera', 'amica', 'vicina', 'cliente', 'commessa', 'farmacista',
+  'turista', 'passeggera',
+  // Slavic feminine roles + names (Croatian/Polish/Czech/Slovak/Russian/Ukrainian/Bulgarian/Slovene)
+  'ivana', 'jana', 'mira', 'zofia', 'magdalena', 'olga', 'anya', 'anja',
+  'tatiana', 'natasha', 'ksenija', 'milena', 'svetlana', 'irina', 'natalia',
+  'konobarica', 'recepcionarka', 'ljekarnica', 'putnica', 'lokalka',
+  'klijentica', 'prijateljica', 'susjeda', 'turistkinja', 'prodavačica',
+  'kasiranka', 'liječnica',
+  'kelnerka', 'sąsiadka', 'klientka', 'sprzedawczyni', 'turystka',
+  'farmaceutka', 'recepcjonistka', 'pasażerka', 'przyjaciółka',
+  'sousedka', 'klientka', 'prodavačka',
+  'соседка', 'клиентка', 'официантка', 'продавщица', 'туристка',
+  // Greek
+  'σερβιτόρα', 'γείτονα', 'πελάτισσα', 'τουρίστρια',
+  // Nordic
+  'nabo', 'kvinde', 'kvinna', 'kona', 'flicka', 'pige', 'jente',
+  // Welsh
+  'cymdoges', 'gweinyddes', 'ffrind', 'cwsmer benyw',
+  // Generic feminine role keywords (catches "Customer (woman)", "Vendor — F", etc.)
+  'woman', 'female', 'lady', 'girl',
+  // Hindi
+  'priya', 'diya', 'sita', 'aarti', 'rani',
+  // Japanese (limited names; Japanese typically uses honorifics)
+  'sakura', 'yuki', 'mei', 'aiko', 'mayu',
+  // Korean
+  'sun-hi', 'yujin', 'mi-rae',
+  // Hebrew
+  'sara', 'rachel', 'noa', 'shira', 'hila',
+  // Arabic
+  'fatima', 'aisha', 'zariyah', 'salma', 'amany', 'layla', 'yasmin',
 ]);
 const MALE_NAMES = new Set([
   // Spanish
   'pablo', 'dani', 'javier', 'juan', 'carlos', 'miguel', 'jose', 'josé',
   'antonio', 'luis', 'manuel', 'francisco', 'david', 'sergio',
-  'vecino', 'camarero',
+  'vecino', 'camarero', 'cliente masculino', 'cajero', 'recepcionista varón',
   // English / mixed European
   'james', 'tom', 'thomas', 'jack', 'henry', 'oliver', 'william', 'george',
   'harry', 'charlie', 'daniel', 'liam', 'lucas', 'ethan', 'sam', 'mark',
   'paul', 'peter', 'john', 'alex', 'matt', 'ben', 'andrew', 'simon',
   'bartender', 'waiter', 'driver', 'pharmacist', 'vendor', 'local', 'guest',
   'neighbour', 'neighbor', 'friend', 'colleague', 'dad', 'father', 'brother', 'son',
+  'taxi driver', 'shopkeeper male', 'tourist',
   // Other European
   'herr', 'signore', 'monsieur', 'senhor',
   'felix', 'leon', 'marco', 'pedro', 'pierre', 'michel', 'leonardo',
+  // French roles (-eur / -ier)
+  'voisin', 'serveur', 'ami', 'client', 'vendeur', 'pharmacien',
+  'touriste-h', 'taxi', 'chauffeur', 'passager', 'réceptionniste-h',
+  // Italian roles
+  'cameriere', 'amico', 'vicino', 'cliente-m', 'commesso', 'tassista',
+  // Slavic masculine roles + names
+  'marko', 'ivan', 'pavel', 'dmitry', 'aleksandr', 'nikolai', 'vladimir',
+  'piotr', 'tomasz', 'wojciech', 'andrzej', 'krzysztof',
+  'borislav', 'dragan', 'goran', 'stjepan', 'tomislav', 'mladen',
+  'susjed', 'konobar', 'prijatelj', 'prodavač', 'ljekarnik', 'klijent',
+  'taksist', 'putnik', 'lokalac', 'recepcionar', 'turist', 'kupac',
+  'kelner', 'sąsiad', 'klient', 'sprzedawca', 'kierowca', 'farmaceuta',
+  'recepcjonista', 'pasażer', 'przyjaciel',
+  'soused', 'řidič', 'lékárník',
+  'сосед', 'клиент', 'официант', 'продавец', 'турист', 'таксист',
+  // Greek
+  'σερβιτόρος', 'γείτονας', 'πελάτης', 'τουρίστας', 'οδηγός',
+  // Nordic
+  'nabo', 'mand', 'man', 'pojke', 'gut', 'gutt', 'dreng',
+  // Welsh
+  'cymydog', 'gweinydd', 'ffrind', 'cwsmer gwryw',
+  // Generic masculine role keywords
+  'man', 'male', 'gentleman', 'boy',
+  // Hindi
+  'vihaan', 'rahul', 'arjun', 'kunal', 'rohan', 'amit',
+  // Japanese (limited; honorific-driven)
+  'taro', 'haruto', 'ren', 'naoki', 'tomohiro',
+  // Korean
+  'min-jun', 'gookmin', 'hyun-woo',
+  // Hebrew
+  'avi', 'david', 'noam', 'avri',
+  // Arabic
+  'mohammed', 'ahmed', 'youssef', 'omar', 'hamed', 'laith', 'rami', 'ali',
 ]);
 
-// xAI voices the platform now exposes. Ordered as ranked priority — first entry
-// in each pool is the preferred voice for that language.
-// Source: https://api.x.ai/v1/tts/voices (May 2026)
-const XAI_VOICES_BY_LANG = {
-  eng: { female: ['bedd6226'], male: ['gfzdpspr5fdp', 'f15c6a6a'] }, // Olivia (en-GB); Tom (SSi cloned brand voice) → Henry (en-GB) fallback
-  spa: { female: ['f2f41225', '46a802e3'], male: ['d2313a0d', '1a59f327'] }, // Maria, Lucia, Pablo, Carlos
-  ita: { female: ['43423dee'], male: ['57700f39', '1ebfec36'] }, // Giulia, Leon, Marco
-  deu: { female: ['44c91d64'], male: ['e1fc5a89'] }, // Sonja, Felix
-  // por: skipped — xAI tags Catarina/Pedro as just "pt" with no region; likely
-  // Brazilian-leaning. SSi `por` courses are European Portuguese, so use Azure
-  // pt-PT-RaquelNeural. (If xAI exposes pt-PT explicitly, revisit. `por_br` could
-  // use xAI "pt" if confirmed Brazilian.)
-  // fra: skipped — xAI only has fr-BE (Belgian), not fr-FR. Per "Azure for regionally
-  // qualified voices" rule, French targets fall through to course voice_config (Azure fr-FR).
-  zho: { female: ['e521cc67', '09b02491'], male: ['9ab26871', '6997b0ec'] }, // Hui, Mei, Wei, Yang
-  cmn: { female: ['e521cc67', '09b02491'], male: ['9ab26871', '6997b0ec'] },
-  kor: { female: [],                       male: ['d74461c6'] }, // Hyun-woo
-  ara: { female: ['025a38c5'],             male: ['5f0c2251', 'f4b9d6fc'] }, // Yasmin, Youssef, Omar
-  hin: { female: ['a00ce99a', '0735ff93'], male: ['bcf738e4'] }, // Priya, Diya, Vihaan
-  ben: { female: ['57b26f54', 'a2aa4b79'], male: ['e1b1007e', '0b54c30d'] }, // Anika, Pooja, Rohan, Tanvir
-  pol: { female: ['ce19f825', '4984accb'], male: ['70071d42', '2902bcfd'] }, // Magdalena, Zofia, Tomasz, Piotr
-  dan: { female: ['a69bdfe7', '47519c37'], male: ['cfccf16b', '524f4cb1'] }, // Astrid, Freja, Mads, Lucas
-  swe: { female: ['3b312632', 'bab9c92f'], male: ['4c7f16ff', '93bea908'] }, // Alice, Elsa, Oscar, William
-  fin: { female: ['9ec6157c', '3a3e080c'], male: ['f702f406', '5e3e2cbe'] }, // Aino, Sofia, Olli, Mikko
-  hun: { female: ['6583fcc2', '7160ae2c'], male: ['9efdd836', '681cd005'] }, // Eszter, Krisztina, Istvan, Gabor
-  rus: { female: ['0b875ae2'],             male: ['a24f5341', '0d3372eb'] }, // Sonia (ru), Mikhail, Sergei
-  tha: { female: ['a5341c30', '330f1e6d'], male: ['4b7af2d7', '0463086e'] }, // Nicha, Pim, Somchai, Thanawat
-  tur: { female: [],                       male: ['f331ee80'] }, // Ahmet
-  vie: { female: ['e5da67a7'],             male: ['39e46ca3', '4e1d5545'] }, // Linh, Hoang, Quang
-  ind: { female: ['07e283bf', '20fa3f2e'], male: ['a656d78f', '7f989258'] }, // Aisyah, Sri, Budi, Adi
-  cat: { female: ['4d3af3e1', '155d4e9b'], male: ['c630b236', 'e5d4f53e'] }, // Mireia, Nuria, Jordi, Pol
-  nld: { female: ['cdb1cec8', '6fe32f8a'], male: ['18245f0d', 'ef4ce33e'] }, // Lieke, Sophie, Bas, Daan
-};
-
-// Multilingual fallback (xAI's universal voices, work for any language but less native-sounding)
-const FEMALE_VOICE_POOL_FALLBACK = ['eve', 'ara'];
-const MALE_VOICE_POOL_FALLBACK = ['leo', 'rex'];
-const NEUTRAL_VOICE = 'sal';
+// Voice pools live in app_config.pod_voice_pools (JSONB). See migration
+// 20260505_app_config_pod_voice_pools.sql for shape and policy.
+async function loadVoicePools() {
+  const { data, error } = await supabase
+    .from('app_config').select('value').eq('key', 'pod_voice_pools').single();
+  if (error) throw new Error(`load pod_voice_pools: ${error.message}`);
+  return data.value;
+}
 
 function normaliseName(speaker) {
   return speaker.toLowerCase().replace(/\s*\([^)]*\)\s*/g, '').trim();
 }
 
-function getVoicePoolsForLang(targetLang) {
-  const lang = (targetLang || '').toLowerCase().split(/[_-]/)[0];
-  const lookup = XAI_VOICES_BY_LANG[lang];
-  return {
-    female: (lookup?.female?.length ? lookup.female : []).concat(FEMALE_VOICE_POOL_FALLBACK),
-    male:   (lookup?.male?.length   ? lookup.male   : []).concat(MALE_VOICE_POOL_FALLBACK),
-  };
+// Canonical speaker name = original case, all parens stripped.
+// "Susjed (08:00) (M)" → "Susjed". Used as the stable key so timed/marked
+// variants of the same character collapse to one voice assignment.
+function canonicalSpeakerName(speaker) {
+  return speaker.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-function assignVoices(speakers, targetLang) {
-  // speakers: array of unique speaker-name strings
-  // targetLang: ISO code of the pod's target language (drives xAI voice picking)
-  // returns: { [speaker_original_case]: { voice_id, provider, gender } }
-  const pools = getVoicePoolsForLang(targetLang);
-  const assignments = {};
-  let femaleIdx = 0;
-  let maleIdx = 0;
+// Explicit gender marker in speaker column: "Konobar (M)", "Susjeda (F)".
+// Standalone paren group required — "Susjed (08:00) (M)" works, "(08:00, M)" doesn't.
+// Returns 'f' | 'm' | 'n' | null.
+function extractGenderMarker(speakerRaw) {
+  const m = speakerRaw.match(/\(\s*([FMN])\s*\)/);
+  return m ? m[1].toLowerCase() : null;
+}
 
-  for (const speaker of speakers) {
-    const clean = normaliseName(speaker);
-    let voice_id, gender;
-    if (FEMALE_NAMES.has(clean)) {
-      voice_id = pools.female[femaleIdx % pools.female.length];
-      femaleIdx++;
-      gender = 'f';
-    } else if (MALE_NAMES.has(clean)) {
-      voice_id = pools.male[maleIdx % pools.male.length];
-      maleIdx++;
-      gender = 'm';
-    } else {
-      voice_id = NEUTRAL_VOICE;
-      gender = 'n';
-    }
-    assignments[speaker] = { voice_id, provider: 'xai', gender };
+function inferGenderFromName(speaker) {
+  // Try the full canonical name first, then with trailing index stripped
+  // ("Klijentica 1" → "klijentica") so numbered variants of the same role
+  // resolve via the role's gender.
+  const clean = normaliseName(speaker);
+  const stripped = clean.replace(/\s+\d+$/, '').trim();
+  if (FEMALE_NAMES.has(clean) || FEMALE_NAMES.has(stripped)) return 'f';
+  if (MALE_NAMES.has(clean)   || MALE_NAMES.has(stripped))   return 'm';
+  return null;
+}
+
+function langKey(lang) {
+  return (lang || '').toLowerCase().split(/[_-]/)[0];
+}
+
+async function assignVoices(rawSpeakers, targetLang, knownLang) {
+  // rawSpeakers: array of speaker-name strings as written in the markdown
+  //   (e.g. ["Susjed (08:00)", "Susjed (M)", "Ana (F)", "Ana"]).
+  //   Variants of the same character collapse to one canonical key.
+  // returns: {
+  //   [canonicalSpeaker]: {
+  //     gender, target: { provider, voice_id, name }, known: { ... }
+  //   }
+  // }
+  const pools = await loadVoicePools();
+  const tk = langKey(targetLang);
+  const kk = langKey(knownLang);
+  const targetPool = pools[tk] || { f: [], m: [] };
+  const knownPool  = pools[kk] || { f: [], m: [] };
+
+  // Group raw variants by canonical name, preserving first-seen order.
+  const variantsByCanon = new Map();  // canonical → [raw, raw, ...]
+  for (const raw of rawSpeakers) {
+    const canon = canonicalSpeakerName(raw);
+    if (!variantsByCanon.has(canon)) variantsByCanon.set(canon, []);
+    variantsByCanon.get(canon).push(raw);
   }
 
-  // Always include a _default so the generator never chokes on an unmapped
-  // speaker later (if markdown is edited to add a new speaker without re-sync).
-  assignments._default = { voice_id: NEUTRAL_VOICE, provider: 'xai', gender: 'n' };
+  const counters = { f: 0, m: 0 };
+  const ungendered = [];
+  const assignments = {};
+
+  for (const [canon, variants] of variantsByCanon) {
+    // Gender resolution: any variant with an explicit (F)/(M)/(N) marker wins;
+    // else fall through to the name heuristic on the canonical form; else 'n'.
+    let gender = null;
+    for (const v of variants) {
+      gender = extractGenderMarker(v);
+      if (gender) break;
+    }
+    if (!gender) gender = inferGenderFromName(canon) || 'n';
+    if (gender === 'n') ungendered.push(canon);
+    // 'n' → male default for voice picking; override with explicit marker.
+    const pickGender = gender === 'n' ? 'm' : gender;
+    const idx = counters[pickGender]++;
+    const tPool = targetPool[pickGender] || [];
+    const kPool = knownPool[pickGender] || [];
+    if (tPool.length === 0) {
+      throw new Error(`No target voice available: pod_voice_pools["${tk}"]["${pickGender}"] is empty (speaker "${canon}")`);
+    }
+    if (kPool.length === 0) {
+      throw new Error(`No known voice available: pod_voice_pools["${kk}"]["${pickGender}"] is empty (speaker "${canon}")`);
+    }
+    // Known voice rank is locked to target rank: characters who share a target
+    // voice (same Croatian Gabrijela in hrv, where there's only 1 F target
+    // voice) must share the same known voice. Otherwise listeners hear the
+    // same "person" in Croatian but different people in English.
+    const tIdx = idx % tPool.length;
+    const kIdx = tIdx % kPool.length;
+    const t = tPool[tIdx];
+    const k = kPool[kIdx];
+    assignments[canon] = {
+      gender,
+      variants,
+      target: { provider: t.provider, voice_id: t.voice_id, name: t.name },
+      known:  { provider: k.provider, voice_id: k.voice_id, name: k.name },
+    };
+  }
+
+  // _default for re-run safety (markdown adds a speaker between re-syncs).
+  const defT = (targetPool.m || [])[0];
+  const defK = (knownPool.m  || [])[0];
+  if (defT && defK) {
+    assignments._default = {
+      gender: 'n',
+      target: { provider: defT.provider, voice_id: defT.voice_id, name: defT.name },
+      known:  { provider: defK.provider, voice_id: defK.voice_id, name: defK.name },
+    };
+  }
+
+  if (ungendered.length) {
+    console.warn(`⚠️  Speakers without explicit (F)/(M) marker, defaulted to male: ${ungendered.join(', ')}`);
+    console.warn(`   Add (F) or (M) in the markdown speaker column to override, then re-sync.`);
+  }
   return assignments;
 }
 
@@ -424,9 +533,16 @@ async function syncPod(markdownPath, options) {
   const parsed = parseMarkdown(markdown);
 
   const podId = `${courseCode}:${slug}`;
-  // Infer target_lang from courseCode (e.g. "eng_for_deu" → "eng", "fra_ca_for_eng" → "fra")
-  const targetLang = courseCode.split('_for_')[0].split('_')[0];
-  const speakers = assignVoices(parsed.uniqueSpeakers, targetLang);
+  // courseCode shape: "<target>_for_<known>" or "<target>_<region>_for_<known>"
+  // e.g. "hrv_for_eng" → target=hrv, known=eng
+  //      "fra_ca_for_eng" → target=fra (region stripped to ISO 639-3), known=eng
+  const [targetPart, knownPart] = courseCode.split('_for_');
+  if (!targetPart || !knownPart) {
+    throw new Error(`Course code "${courseCode}" is not in <target>_for_<known> form`);
+  }
+  const targetLang = targetPart.split('_')[0];
+  const knownLang = knownPart.split('_')[0];
+  const speakers = await assignVoices(parsed.uniqueSpeakers, targetLang, knownLang);
 
   console.log(`\n🎧 Pod Sync: ${markdownPath}`);
   console.log(`   Target:   ${podId}  (type=${podType})`);
@@ -439,7 +555,9 @@ async function syncPod(markdownPath, options) {
     console.log('\n   Voice assignments:');
     for (const [sp, v] of Object.entries(speakers)) {
       if (sp === '_default') continue;
-      console.log(`     ${sp.padEnd(20)} → ${v.voice_id} (${v.gender})`);
+      const t = `${v.target.provider}/${v.target.name}`;
+      const k = `${v.known.provider}/${v.known.name}`;
+      console.log(`     ${sp.padEnd(22)} (${v.gender})  target=${t.padEnd(20)} known=${k}`);
     }
     console.log('\n   Sections:');
     for (const s of parsed.sections) {
@@ -576,4 +694,8 @@ Examples:
 
 if (require.main === module) main();
 
-module.exports = { parseMarkdown, syncPod, assignVoices };
+module.exports = {
+  parseMarkdown, syncPod, assignVoices,
+  canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
+  loadVoicePools,
+};
