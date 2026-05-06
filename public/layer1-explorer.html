@@ -134,14 +134,17 @@
     margin-bottom: 12px;
   }
   .seed {
-    display: grid;
-    grid-template-columns: 60px 1fr 1fr 32px;
-    gap: 12px;
-    padding: 8px 0;
+    padding: 10px 0;
     border-bottom: 1px solid var(--rule);
-    align-items: center;
   }
   .seed:last-child { border-bottom: 0; }
+  .seed-head {
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
   .seed-num {
     font-family: ui-monospace, Menlo, monospace;
     color: var(--muted);
@@ -153,24 +156,40 @@
   .seed-known {
     color: var(--muted);
     font-style: italic;
+    font-size: 13px;
   }
-  .play-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+  .seed-plays {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    margin-left: 70px;
+    flex-wrap: wrap;
+  }
+  .play-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px 4px 6px;
+    border-radius: 999px;
     border: 1px solid var(--rule);
     background: white;
     cursor: pointer;
     font-size: 12px;
+    font-family: ui-monospace, Menlo, monospace;
+    color: var(--ink);
   }
-  .play-btn:disabled {
+  .play-pill:disabled {
     opacity: 0.3;
     cursor: not-allowed;
   }
-  .play-btn:hover:not(:disabled) {
+  .play-pill:hover:not(:disabled) {
     border-color: var(--accent);
     color: var(--accent);
   }
+  .play-pill .icon { font-size: 9px; }
+  .play-pill.role-ps { background: #fff8ed; }
+  .play-pill.role-ps2x { background: #fff1d9; }
+  .play-pill.role-trans { background: #f5f1e8; }
   .empty {
     color: var(--muted);
     font-style: italic;
@@ -267,6 +286,17 @@ const L1_ACTIVE_SIZE = 10
 const L1_ACTIVE_INTERVAL = 3
 const L1_RESERVE_SIZE = 50
 const L1_RESERVE_INTERVAL = 13
+// Default per-seed playlist — must match DEFAULT_LISTENING_CONFIG.layer1Playlist
+// in generateLearningScript.ts. 'ps' = target @ 1×, 'ps2x' = target @ 2×,
+// 'trans' = known @ 1× (off by default since graduated seeds are past
+// meaning-acquisition).
+const LAYER1_PLAYLIST = ['ps', 'ps2x', 'ps2x']
+const ROLE_LABEL = { ps: '1×', ps2x: '2×', trans: 'EN' }
+const ROLE_DESC = {
+  ps: 'target at 1.0× — slow listen for clarity',
+  ps2x: 'target at 2.0× — fast rep for retention',
+  trans: 'known-language audio at 1.0×',
+}
 
 // State
 let allCourses = []
@@ -370,21 +400,48 @@ function renderSeed(sNum) {
   const row = seedRows.get(sNum)
   if (!row) {
     return `<div class="seed">
-      <span class="seed-num">S${String(sNum).padStart(4,'0')}</span>
-      <span class="seed-target" style="color:#b83232">— missing in course_seeds —</span>
-      <span></span>
-      <span></span>
+      <div class="seed-head">
+        <span class="seed-num">S${String(sNum).padStart(4,'0')}</span>
+        <span class="seed-target" style="color:#b83232">— missing in course_seeds —</span>
+        <span></span>
+      </div>
     </div>`
   }
   const target = row.target_text_roman || row.target_text || ''
   const known = row.known_text || ''
-  const aid = row.target1_audio_id
-  const url = audioUrl(aid)
+
+  // One pill per playlist entry — exactly what the runtime would emit.
+  const pills = LAYER1_PLAYLIST.map((role, idx) => {
+    const isTrans = role === 'trans'
+    const aid = isTrans ? row.known_audio_id : row.target1_audio_id
+    const url = audioUrl(aid)
+    const speed = role === 'ps2x' ? 2.0 : 1.0
+    const label = `${idx + 1}. ${ROLE_LABEL[role]}`
+    return `<button class="play-pill role-${role}" data-url="${url || ''}" data-speed="${speed}" ${url ? '' : 'disabled'} title="${ROLE_DESC[role]} — audio id: ${aid || 'missing'}">
+      <span class="icon">▶</span>${label}
+    </button>`
+  }).join('')
+
   return `<div class="seed">
-    <span class="seed-num">S${String(sNum).padStart(4,'0')}</span>
-    <span class="seed-target">${escapeHtml(target)}</span>
-    <span class="seed-known">${escapeHtml(known)}</span>
-    <button class="play-btn" data-url="${url || ''}" ${url ? '' : 'disabled'} title="${aid || 'no audio id'}">▶</button>
+    <div class="seed-head">
+      <span class="seed-num">S${String(sNum).padStart(4,'0')}</span>
+      <span class="seed-target">${escapeHtml(target)}</span>
+      <span class="seed-known">${escapeHtml(known)}</span>
+    </div>
+    <div class="seed-plays">${pills}</div>
+  </div>`
+}
+
+function renderPlaylistHeader() {
+  const seq = LAYER1_PLAYLIST.map((r, i) => {
+    return `<span class="play-pill role-${r}" style="cursor:default">
+      <span class="icon">${i + 1}</span>${ROLE_LABEL[r]}
+    </span>`
+  }).join('<span style="color:var(--muted);align-self:center">→</span>')
+  return `<div class="section">
+    <h2>Per-seed playback playlist</h2>
+    <div class="meta">Each graduated seed expands to ${LAYER1_PLAYLIST.length} cycles in this order. Tweakable via <code>listeningConfig.layer1Playlist</code>.</div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">${seq}</div>
   </div>`
 }
 
@@ -451,6 +508,8 @@ function render(round) {
       </div>
     </div>
 
+    ${renderPlaylistHeader()}
+
     <div class="section">
       <h2>Active window (last 10 graduated, plays every 3 rounds)</h2>
       <div class="meta">${active.length} seeds${fireA ? ' • PLAYING THIS ROUND' : ''}</div>
@@ -466,11 +525,14 @@ function render(round) {
     ${timelineHtml}
   `
 
-  document.querySelectorAll('.play-btn').forEach(btn => {
+  document.querySelectorAll('.play-pill').forEach(btn => {
     btn.addEventListener('click', () => {
       const url = btn.dataset.url
       if (!url) return
-      new Audio(url).play().catch(err => console.warn('audio play failed:', err))
+      const audio = new Audio(url)
+      const speed = parseFloat(btn.dataset.speed || '1')
+      audio.playbackRate = speed
+      audio.play().catch(err => console.warn('audio play failed:', err))
     })
   })
 }
