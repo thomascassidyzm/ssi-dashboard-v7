@@ -1322,6 +1322,7 @@ app.get('/api/voices/discover/:language', async (req, res) => {
 app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
   const { courseCode } = req.params
   try {
+    const supabase = supabaseClient.getClient()
     // Pick ~10 seeds spread across the course for variety
     const { data: seeds } = await supabase
       .from('course_seeds')
