@@ -24,21 +24,48 @@
     </div>
 
     <div v-else class="rows">
-      <ConfigRow
-        v-for="row in orderedRows"
-        :key="row.key"
-        :row="row"
-        :description="descriptions[row.key]"
-        :saving="savingKey === row.key"
-        :error="rowErrors[row.key]"
-        @save="onSave"
-      />
+      <section v-for="row in orderedRows" :key="row.key" class="config-row">
+        <div class="row-head">
+          <h2>{{ row.key }}</h2>
+          <span class="meta">
+            Last saved: {{ formatTime(row.updated_at) || '—' }}
+            <span v-if="row.updated_by"> by {{ row.updated_by }}</span>
+          </span>
+        </div>
+        <p v-if="descriptions[row.key]" class="row-desc">{{ descriptions[row.key] }}</p>
+        <textarea
+          class="json-area"
+          :class="{ invalid: !!parseErrors[row.key] }"
+          :value="texts[row.key]"
+          @input="onInput(row.key, $event)"
+          spellcheck="false"
+          :rows="textareaRows(row.key)"
+        ></textarea>
+        <div v-if="parseErrors[row.key]" class="parse-err">
+          Invalid JSON: {{ parseErrors[row.key] }}
+        </div>
+        <div v-if="rowErrors[row.key]" class="save-err">
+          Save failed: {{ rowErrors[row.key] }}
+        </div>
+        <div class="row-actions">
+          <button
+            class="btn-secondary"
+            @click="resetRow(row)"
+            :disabled="!isDirty(row.key) || savingKey === row.key"
+          >Reset</button>
+          <button
+            class="btn-primary"
+            @click="saveRow(row.key)"
+            :disabled="!isDirty(row.key) || !!parseErrors[row.key] || savingKey === row.key"
+          >{{ savingKey === row.key ? 'Saving…' : 'Save' }}</button>
+        </div>
+      </section>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, h, defineComponent } from 'vue'
+import { ref, computed, onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 
@@ -60,35 +87,68 @@ const rows = ref([])
 const loading = ref(true)
 const loadError = ref(null)
 const savingKey = ref(null)
-const rowErrors = ref({})
+
+// Per-row reactive state, keyed by config key.
+const texts = reactive({})         // current textarea contents
+const parseErrors = reactive({})   // last JSON.parse error per row
+const rowErrors = reactive({})     // last save error per row
 
 const orderedRows = computed(() => {
   const byKey = new Map(rows.value.map(r => [r.key, r]))
   const ordered = []
   for (const k of KEY_ORDER) if (byKey.has(k)) ordered.push(byKey.get(k))
-  // Append any unknown keys at the end so we don't hide future rows.
   for (const r of rows.value) if (!KEY_ORDER.includes(r.key)) ordered.push(r)
   return ordered
 })
 
-async function loadAll() {
-  loading.value = true
-  loadError.value = null
+function pristineText(row) {
+  return JSON.stringify(row.config, null, 2)
+}
+
+function isDirty(key) {
+  const row = rows.value.find(r => r.key === key)
+  if (!row) return false
+  return texts[key] !== pristineText(row)
+}
+
+function textareaRows(key) {
+  const t = texts[key] || ''
+  return Math.min(20, Math.max(6, t.split('\n').length))
+}
+
+function onInput(key, ev) {
+  const v = ev.target.value
+  texts[key] = v
   try {
-    const res = await fetch('/api/algorithm-config')
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
-    const data = await res.json()
-    rows.value = data.rows || []
-  } catch (e) {
-    loadError.value = e.message || String(e)
-  } finally {
-    loading.value = false
+    JSON.parse(v)
+    parseErrors[key] = null
+  } catch (err) {
+    parseErrors[key] = err.message
   }
 }
 
-async function onSave({ key, config }) {
+function resetRow(row) {
+  texts[row.key] = pristineText(row)
+  parseErrors[row.key] = null
+  rowErrors[row.key] = null
+}
+
+function formatTime(t) {
+  if (!t) return ''
+  try { return new Date(t).toLocaleString() } catch { return t }
+}
+
+async function saveRow(key) {
+  let config
+  try {
+    config = JSON.parse(texts[key])
+  } catch (err) {
+    parseErrors[key] = err.message
+    return
+  }
+
   savingKey.value = key
-  rowErrors.value = { ...rowErrors.value, [key]: null }
+  rowErrors[key] = null
   try {
     const token = await getAccessToken()
     if (!token) throw new Error('Not signed in')
@@ -102,13 +162,37 @@ async function onSave({ key, config }) {
     })
     const data = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(data.error || `${res.status} ${res.statusText}`)
-    // Replace the row in-place so updated_at / updated_by show the latest.
     const idx = rows.value.findIndex(r => r.key === key)
-    if (idx >= 0 && data.row) rows.value[idx] = data.row
+    if (idx >= 0 && data.row) {
+      rows.value[idx] = data.row
+      // Re-pin the pristine text so the dirty check now reads false.
+      texts[key] = pristineText(data.row)
+    }
   } catch (e) {
-    rowErrors.value = { ...rowErrors.value, [key]: e.message || String(e) }
+    rowErrors[key] = e.message || String(e)
   } finally {
     savingKey.value = null
+  }
+}
+
+async function loadAll() {
+  loading.value = true
+  loadError.value = null
+  try {
+    const res = await fetch('/api/algorithm-config')
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
+    const data = await res.json()
+    rows.value = data.rows || []
+    // Seed per-row text + clear errors.
+    for (const r of rows.value) {
+      texts[r.key] = pristineText(r)
+      parseErrors[r.key] = null
+      rowErrors[r.key] = null
+    }
+  } catch (e) {
+    loadError.value = e.message || String(e)
+  } finally {
+    loading.value = false
   }
 }
 
@@ -117,94 +201,6 @@ function goBack() {
 }
 
 onMounted(loadAll)
-
-// ============================================================================
-// ConfigRow — single section per algorithm_config row.
-// JSON textarea + Save. Validates JSON on each keystroke; Save is gated.
-// ============================================================================
-const ConfigRow = defineComponent({
-  name: 'ConfigRow',
-  props: {
-    row: { type: Object, required: true },
-    description: { type: String, default: '' },
-    saving: { type: Boolean, default: false },
-    error: { type: String, default: null },
-  },
-  emits: ['save'],
-  setup(props, { emit }) {
-    const text = ref(JSON.stringify(props.row.config, null, 2))
-    const parseError = ref(null)
-    const dirty = ref(false)
-
-    const onInput = (e) => {
-      text.value = e.target.value
-      dirty.value = text.value.trim() !== JSON.stringify(props.row.config, null, 2).trim()
-      try {
-        JSON.parse(text.value)
-        parseError.value = null
-      } catch (err) {
-        parseError.value = err.message
-      }
-    }
-
-    const reset = () => {
-      text.value = JSON.stringify(props.row.config, null, 2)
-      dirty.value = false
-      parseError.value = null
-    }
-
-    const save = () => {
-      try {
-        const config = JSON.parse(text.value)
-        emit('save', { key: props.row.key, config })
-        dirty.value = false
-      } catch (err) {
-        parseError.value = err.message
-      }
-    }
-
-    const lastSaved = computed(() => {
-      const t = props.row.updated_at
-      if (!t) return ''
-      try {
-        const d = new Date(t)
-        return d.toLocaleString()
-      } catch { return t }
-    })
-
-    return () => h('section', { class: 'config-row' }, [
-      h('div', { class: 'row-head' }, [
-        h('h2', null, props.row.key),
-        h('span', { class: 'meta' }, [
-          'Last saved: ', lastSaved.value || '—',
-          props.row.updated_by ? ` by ${props.row.updated_by}` : '',
-        ]),
-      ]),
-      props.description ? h('p', { class: 'row-desc' }, props.description) : null,
-      h('textarea', {
-        class: ['json-area', { invalid: !!parseError.value }],
-        value: text.value,
-        onInput,
-        spellcheck: false,
-        rows: Math.min(20, Math.max(6, text.value.split('\n').length)),
-      }),
-      parseError.value ? h('div', { class: 'parse-err' }, ['Invalid JSON: ', parseError.value]) : null,
-      props.error ? h('div', { class: 'save-err' }, ['Save failed: ', props.error]) : null,
-      h('div', { class: 'row-actions' }, [
-        h('button', {
-          class: 'btn-secondary',
-          onClick: reset,
-          disabled: !dirty.value || props.saving,
-        }, 'Reset'),
-        h('button', {
-          class: 'btn-primary',
-          onClick: save,
-          disabled: !dirty.value || !!parseError.value || props.saving,
-        }, props.saving ? 'Saving…' : 'Save'),
-      ]),
-    ])
-  },
-})
 </script>
 
 <style scoped>
@@ -307,6 +303,8 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   line-height: 1.5;
   resize: vertical;
   outline: none;
+  display: block;
+  box-sizing: border-box;
 }
 .json-area:focus { border-color: #60a5fa; }
 .json-area.invalid { border-color: #f87171; }
@@ -331,17 +329,18 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
+  border: 1px solid transparent;
 }
 .btn-primary {
   background: #3b82f6;
-  border: 1px solid #2563eb;
+  border-color: #2563eb;
   color: white;
 }
 .btn-primary:hover:not(:disabled) { background: #2563eb; }
 .btn-primary:disabled { background: #475569; border-color: #475569; cursor: not-allowed; opacity: 0.5; }
 .btn-secondary {
   background: transparent;
-  border: 1px solid var(--color-graphite, #475569);
+  border-color: var(--color-graphite, #475569);
   color: var(--color-paper-dim, #94a3b8);
 }
 .btn-secondary:hover:not(:disabled) { border-color: var(--color-paper, #f7f7f2); color: var(--color-paper, #f7f7f2); }
