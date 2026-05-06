@@ -352,6 +352,14 @@ const routes = [
   },
 
   // ===========================================
+  // Global admin — algorithm_config tweaker. Lives outside /production
+  // because it's not per-course.
+  {
+    path: '/admin/listening',
+    name: 'ListeningAdmin',
+    component: () => import('../views/ListeningAdmin.vue'),
+    meta: { title: 'Listening Config - Admin' }
+  },
   // Production Suite v2.1 Routes (Default)
   // ===========================================
   {

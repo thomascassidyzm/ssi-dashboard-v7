@@ -163,6 +163,16 @@
         <span class="card-arrow">&rarr;</span>
       </router-link>
 
+      <!-- Listening Config (global) -->
+      <router-link to="/admin/listening" class="workflow-card">
+        <div class="card-icon listening-config">Lc</div>
+        <div class="card-content">
+          <h3>Listening Config</h3>
+          <p>Layer 1 / Layer 2 settings (global)</p>
+        </div>
+        <span class="card-arrow">&rarr;</span>
+      </router-link>
+
       <!-- Launch Learning App -->
       <button @click="launchLearningApp" class="workflow-card action">
         <div class="card-icon launch">L</div>
@@ -673,6 +683,7 @@ watch(() => props.courseCode, () => {
 .card-icon.review { background: #ec4899; color: white; }
 .card-icon.record { background: #10b981; color: white; }
 .card-icon.pods { background: #a855f7; color: white; }
+.card-icon.listening-config { background: #ec4899; color: white; }
 .card-icon.launch { background: var(--color-graphite, #475569); color: var(--color-tungsten, #ffa630); }
 
 .card-content {
