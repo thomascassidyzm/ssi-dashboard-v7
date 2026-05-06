@@ -339,10 +339,10 @@
       <div class="moment-round">L2 starts</div>
       <div class="moment-hint">S1 enters · pod fires every round</div>
     </div>
-    <div class="moment" data-round="24">
-      <div class="moment-label">Round 24</div>
+    <div class="moment" data-round="36">
+      <div class="moment-label">Round 36</div>
       <div class="moment-round">Bay opens</div>
-      <div class="moment-hint">S1 graduates to stage 7 (alive 19)</div>
+      <div class="moment-hint">S1 graduates to stage 7 (alive 31, after 6 × 5-round stages)</div>
     </div>
     <div class="moment" data-round="57">
       <div class="moment-label">Round 57</div>
@@ -389,60 +389,117 @@
     </div>
   </div>
 
+  <h2 class="band">Stage patterns · plays per stage (separate from speed)</h2>
+  <p style="margin: 0 0 12px; color: var(--muted); font-size: 13px;">
+    Each row in the table below shows how many times the <strong>target</strong> is heard in that
+    stage and at what speeds, alongside how many <strong>known</strong> plays. The same audio file
+    at 1× then 2× counts as <em>two plays</em> — not one. After stage 4 the known translation drops
+    away entirely.
+  </p>
+  <div style="overflow-x:auto; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 6px;">
+    <table style="width:100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="text-align:left; border-bottom: 2px solid var(--accent);">
+          <th style="padding: 8px 10px;">Stage</th>
+          <th style="padding: 8px 10px;">Target plays</th>
+          <th style="padding: 8px 10px;">Target speeds</th>
+          <th style="padding: 8px 10px;">Known plays</th>
+          <th style="padding: 8px 10px;">Total plays</th>
+          <th style="padding: 8px 10px;">Lasts</th>
+          <th style="padding: 8px 10px;">Sequence</th>
+          <th style="padding: 8px 10px;">Note</th>
+        </tr>
+      </thead>
+      <tbody id="stageInfoTable"></tbody>
+    </table>
+  </div>
+
+  <h2 class="band">Gap timings · pauses between plays</h2>
+  <p style="margin: 0 0 12px; color: var(--muted); font-size: 13px;">
+    Two separate decisions: gaps <em>within</em> one chunk's playlist (target/known/target sequence)
+    are tight; gaps <em>between</em> chunks depend on whether the previous chunk's
+    <code>glue_to_next</code> flag is set. Glued chunks belong to the same natural utterance —
+    keeping them close-coupled preserves the rhythm of the original phrase.
+  </p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+    <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 10px;">
+      <h3 style="margin: 0 0 8px; font-size: 13px;">Within ONE chunk's playlist</h3>
+      <table style="width:100%; border-collapse: collapse; font-size: 13px;">
+        <thead><tr style="text-align:left; border-bottom: 1px solid var(--rule);">
+          <th style="padding: 4px 6px;">Transition</th>
+          <th style="padding: 4px 6px;">Gap</th>
+          <th style="padding: 4px 6px;">Why</th>
+        </tr></thead>
+        <tbody id="gapWithin"></tbody>
+      </table>
+    </div>
+    <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 10px;">
+      <h3 style="margin: 0 0 8px; font-size: 13px;">Between chunks</h3>
+      <table style="width:100%; border-collapse: collapse; font-size: 13px;">
+        <thead><tr style="text-align:left; border-bottom: 1px solid var(--rule);">
+          <th style="padding: 4px 6px;">Boundary</th>
+          <th style="padding: 4px 6px;">Gap</th>
+          <th style="padding: 4px 6px;">Why</th>
+        </tr></thead>
+        <tbody id="gapBetween"></tbody>
+      </table>
+    </div>
+  </div>
+
   <h2 class="band">Round <span id="roundLabel">1</span> · rotation by stage</h2>
   <div class="stage-grid">
     <div class="stage-column" data-stage="1">
       <div class="stage-head">
         <div class="stage-title">Stage 1</div>
-        <div class="stage-desc">PS · trans · PS · PS×2</div>
-        <div class="stage-count"><span id="count-1">0</span> · 3 rounds</div>
+        <div class="stage-desc">tgt × 3 (1×, 1×, 1×) + kn × 1</div>
+        <div class="stage-count"><span id="count-1">0</span> · 5 rounds</div>
       </div>
       <div class="stage-slots" id="stage-1"></div>
     </div>
     <div class="stage-column" data-stage="2">
       <div class="stage-head">
         <div class="stage-title">Stage 2</div>
-        <div class="stage-desc">PS · trans · PS×2 · PS×2</div>
-        <div class="stage-count"><span id="count-2">0</span> · 3 rounds</div>
+        <div class="stage-desc">tgt × 3 (1×, 2×, 2×) + kn × 1</div>
+        <div class="stage-count"><span id="count-2">0</span> · 5 rounds</div>
       </div>
       <div class="stage-slots" id="stage-2"></div>
     </div>
     <div class="stage-column" data-stage="3">
       <div class="stage-head">
         <div class="stage-title">Stage 3</div>
-        <div class="stage-desc">PS · trans · PS×2</div>
-        <div class="stage-count"><span id="count-3">0</span> · 3 rounds</div>
+        <div class="stage-desc">tgt × 2 (1×, 2×) + kn × 1</div>
+        <div class="stage-count"><span id="count-3">0</span> · 5 rounds</div>
       </div>
       <div class="stage-slots" id="stage-3"></div>
     </div>
     <div class="stage-column" data-stage="4">
       <div class="stage-head">
         <div class="stage-title">Stage 4</div>
-        <div class="stage-desc">PS×2 · trans · PS×2</div>
-        <div class="stage-count"><span id="count-4">0</span> · 3 rounds</div>
+        <div class="stage-desc">tgt × 2 (2×, 2×) + kn × 1</div>
+        <div class="stage-count"><span id="count-4">0</span> · 5 rounds</div>
       </div>
       <div class="stage-slots" id="stage-4"></div>
     </div>
     <div class="stage-column" data-stage="5">
       <div class="stage-head">
         <div class="stage-title">Stage 5</div>
-        <div class="stage-desc">PS · PS×2  (no trans)</div>
-        <div class="stage-count"><span id="count-5">0</span> · 3 rounds</div>
+        <div class="stage-desc">tgt × 2 (1×, 2×) — no kn</div>
+        <div class="stage-count"><span id="count-5">0</span> · 5 rounds</div>
       </div>
       <div class="stage-slots" id="stage-5"></div>
     </div>
     <div class="stage-column" data-stage="6">
       <div class="stage-head">
         <div class="stage-title">Stage 6</div>
-        <div class="stage-desc">PS×2 · PS×2</div>
-        <div class="stage-count"><span id="count-6">0</span> · 3 rounds</div>
+        <div class="stage-desc">tgt × 2 (2×, 2×) — no kn</div>
+        <div class="stage-count"><span id="count-6">0</span> · 5 rounds</div>
       </div>
       <div class="stage-slots" id="stage-6"></div>
     </div>
     <div class="stage-column" data-stage="7">
       <div class="stage-head">
         <div class="stage-title">Stage 7 · Holding Bay</div>
-        <div class="stage-desc">PS×2 · eternal</div>
+        <div class="stage-desc">tgt × 1 (2×) — eternal</div>
         <div class="stage-count"><span id="count-7">0</span> · forever</div>
       </div>
       <div class="stage-slots" id="stage-7"></div>
@@ -661,18 +718,34 @@ function psT() { return CONFIG.podSentenceS; }                    // PS at 1× =
 function ps2T() { return CONFIG.podSentenceS / CONFIG.speedFast; } // PS×2 at 2× = 1.5s
 function transT() { return CONFIG.transS; }                       // 2.0s
 
-// Per Aran's notebook, 2026-04-29 — corrected stage definitions
+// Per Aran's road-test, 2026-05-05 — current stage definitions.
+//   • Stage 1 is intentionally ALL 1× (no PS×2 until stage 2) — clean intro
+//   • Each stage 1–6 lasts 5 pod-rounds (was 3), giving more reps per pattern
+//   • Stage 7 is the eternal holding bay
 const STAGE_PLAYS = {
-  1: ['PS', 'trans', 'PS',  'PS×2'],          // 4 plays · 3 rounds
-  2: ['PS', 'trans', 'PS×2','PS×2'],          // 4 plays · 3 rounds
-  3: ['PS', 'trans', 'PS×2'],                  // 3 plays · 3 rounds
-  4: ['PS×2','trans','PS×2'],                  // 3 plays · 3 rounds
-  5: ['PS', 'PS×2'],                           // 2 plays · 3 rounds (translation drops)
-  6: ['PS×2','PS×2'],                          // 2 plays · 3 rounds
+  1: ['PS',   'trans', 'PS',   'PS'],          // 4 plays · 5 rounds — clean intro (no 2× yet)
+  2: ['PS',   'trans', 'PS×2', 'PS×2'],        // 4 plays · 5 rounds — 2× appears
+  3: ['PS',   'trans', 'PS×2'],                // 3 plays · 5 rounds
+  4: ['PS×2', 'trans', 'PS×2'],                // 3 plays · 5 rounds — last with trans
+  5: ['PS',   'PS×2'],                         // 2 plays · 5 rounds — translation drops
+  6: ['PS×2', 'PS×2'],                         // 2 plays · 5 rounds
   7: ['PS×2'],                                 // 1 play  · eternal holding bay
 };
+const STAGE_DURATION = 5;
+// Plays-vs-speed breakdown — "the same audio at different speeds counts as
+// extra plays". Surfaced in the UI so it's clear that e.g. stage 2 is
+// "target heard 3 times (1×, 2×, 2×) + known 1×" rather than a flat list.
+const STAGE_INFO = {
+  1: { tgt: 3, tgtSpeeds: [1, 1, 1], kn: 1, total: 4, dur: 5,    desc: 'Clean intro · all 1×' },
+  2: { tgt: 3, tgtSpeeds: [1, 2, 2], kn: 1, total: 4, dur: 5,    desc: '2× starts here' },
+  3: { tgt: 2, tgtSpeeds: [1, 2],    kn: 1, total: 3, dur: 5,    desc: 'Trim to 1×→2×' },
+  4: { tgt: 2, tgtSpeeds: [2, 2],    kn: 1, total: 3, dur: 5,    desc: 'Last with trans' },
+  5: { tgt: 2, tgtSpeeds: [1, 2],    kn: 0, total: 2, dur: 5,    desc: 'Translation drops' },
+  6: { tgt: 2, tgtSpeeds: [2, 2],    kn: 0, total: 2, dur: 5,    desc: 'Both 2×' },
+  7: { tgt: 1, tgtSpeeds: [2],       kn: 0, total: 1, dur: null, desc: 'Eternal · single 2×' },
+};
 const STAGE_DESCS = {
-  1: 'PS · trans · PS · PS×2',
+  1: 'PS · trans · PS · PS',
   2: 'PS · trans · PS×2 · PS×2',
   3: 'PS · trans · PS×2',
   4: 'PS×2 · trans · PS×2',
@@ -680,21 +753,34 @@ const STAGE_DESCS = {
   6: 'PS×2 · PS×2',
   7: 'PS×2  (eternal)',
 };
+// Gap matrix per Aran 2026-05-05 — separate from playback-speed concerns.
+const GAP_MATRIX = {
+  withinChunk: {
+    'target → known':  { ms: 200, label: 'TIGHT',       why: 'slight beat for translation transition' },
+    'known → target':  { ms: 100, label: 'SUPER_TIGHT', why: 'comparison wants immediacy' },
+    'target → target': { ms: 100, label: 'SUPER_TIGHT', why: 'reinforcement reps flow' },
+  },
+  betweenChunks: {
+    'glued at stage 7': { ms:    0, label: 'SEW',     why: 'sews the natural utterance back together' },
+    'glued earlier':    { ms:  300, label: 'GLUED',   why: 'small breath, still close-coupled' },
+    'not glued':        { ms: 1000, label: 'BETWEEN', why: 'between-phrases pause' },
+  },
+};
 const STAGE_TIME = {};
 for (const [stage, plays] of Object.entries(STAGE_PLAYS)) {
   STAGE_TIME[stage] = () => plays.reduce((sum, p) =>
     sum + (p === 'PS' ? psT() : p === 'PS×2' ? ps2T() : transT()), 0);
 }
 
+// Stages 1–6 last STAGE_DURATION pod-rounds each; stage 7 is eternal.
+// Mirrors `podStageFor` in packages/player-vue/src/composables/usePodLapScheduler.ts
 function stageFor(entryPodRound, currentPodRound) {
   const alive = currentPodRound - entryPodRound + 1;
   if (alive < 1) return null;
-  if (alive <= 3) return { stage: 1, iter: alive };
-  if (alive <= 6) return { stage: 2, iter: alive - 3 };
-  if (alive <= 9) return { stage: 3, iter: alive - 6 };
-  if (alive <= 12) return { stage: 4, iter: alive - 9 };
-  if (alive <= 15) return { stage: 5, iter: alive - 12 };
-  if (alive <= 18) return { stage: 6, iter: alive - 15 };
+  for (let stage = 1; stage <= 6; stage++) {
+    const stageEnd = stage * STAGE_DURATION;
+    if (alive <= stageEnd) return { stage, iter: alive - (stage - 1) * STAGE_DURATION };
+  }
   return { stage: 7, iter: null };
 }
 
@@ -832,7 +918,7 @@ function renderLapChart() {
   // Milestone ticks on x-axis (per new spec, course can run 1200+ rounds)
   const milestones = [
     { r: 6,    label: 'R6 L2 starts' },
-    { r: 24,   label: 'R24 bay opens' },
+    { r: 36,   label: 'R36 bay opens' },
     { r: 57,   label: 'R57 L1 starts' },
     { r: 78,   label: 'R78 first clash' },
     { r: 122,  label: 'R122 last L2 intro' },
@@ -1048,7 +1134,54 @@ document.addEventListener('keydown', e => {
   else if (e.key === ' ') { e.preventDefault(); togglePlay(); }
 });
 
+function renderStageInfoTable() {
+  const stageBgVar = (s) => `var(--stage${s}-bg)`;
+  const rows = Object.entries(STAGE_INFO).map(([s, info]) => {
+    const speeds = info.tgtSpeeds.map(x => x === 1 ? '1×' : '2×').join(' · ');
+    const seq = STAGE_PLAYS[s].join(' · ');
+    const dur = info.dur == null ? 'eternal' : (info.dur + ' rounds');
+    return `
+      <tr style="border-bottom: 1px solid var(--rule); background: ${stageBgVar(s)};">
+        <td style="padding: 8px 10px; font-weight: 700;">Stage ${s}</td>
+        <td style="padding: 8px 10px; font-variant-numeric: tabular-nums;">${info.tgt}</td>
+        <td style="padding: 8px 10px; font-variant-numeric: tabular-nums;">${speeds || '—'}</td>
+        <td style="padding: 8px 10px; font-variant-numeric: tabular-nums;">${info.kn}</td>
+        <td style="padding: 8px 10px; font-weight: 600; font-variant-numeric: tabular-nums;">${info.total}</td>
+        <td style="padding: 8px 10px; font-variant-numeric: tabular-nums;">${dur}</td>
+        <td style="padding: 8px 10px; font-family: monospace; font-size: 12px;">${seq}</td>
+        <td style="padding: 8px 10px; color: rgba(0,0,0,0.62); font-size: 12px;">${info.desc}</td>
+      </tr>
+    `;
+  }).join('');
+  document.getElementById('stageInfoTable').innerHTML = rows;
+}
+
+function renderGapTables() {
+  const within = Object.entries(GAP_MATRIX.withinChunk).map(([k, v]) => `
+    <tr style="border-bottom: 1px solid var(--rule);">
+      <td style="padding: 4px 6px; font-family: monospace;">${k}</td>
+      <td style="padding: 4px 6px; font-weight: 600; font-variant-numeric: tabular-nums;">
+        ${v.ms} ms <span style="color: var(--muted); font-weight: 400; font-size: 11px;">${v.label}</span>
+      </td>
+      <td style="padding: 4px 6px; color: rgba(0,0,0,0.62); font-size: 12px;">${v.why}</td>
+    </tr>
+  `).join('');
+  const between = Object.entries(GAP_MATRIX.betweenChunks).map(([k, v]) => `
+    <tr style="border-bottom: 1px solid var(--rule);">
+      <td style="padding: 4px 6px;">${k}</td>
+      <td style="padding: 4px 6px; font-weight: 600; font-variant-numeric: tabular-nums;">
+        ${v.ms} ms <span style="color: var(--muted); font-weight: 400; font-size: 11px;">${v.label}</span>
+      </td>
+      <td style="padding: 4px 6px; color: rgba(0,0,0,0.62); font-size: 12px;">${v.why}</td>
+    </tr>
+  `).join('');
+  document.getElementById('gapWithin').innerHTML = within;
+  document.getElementById('gapBetween').innerHTML = between;
+}
+
 renderLegend();
+renderStageInfoTable();
+renderGapTables();
 renderLapChart();
 setRound(1);
 </script>
