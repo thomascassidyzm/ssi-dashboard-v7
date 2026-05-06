@@ -280,17 +280,15 @@ const SUPABASE_URL = 'https://swfvymspfxmnfhevgdkg.supabase.co'
 const SUPABASE_KEY = 'sb_publishable_qtEtXRcEOkvapw99x5suww_SuCXYmvg'
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
 
-// Algorithm constants — keep in sync with generateLearningScript.ts
-const GRADUATION_OFFSET = 56
-const L1_ACTIVE_SIZE = 10
-const L1_ACTIVE_INTERVAL = 3
-const L1_RESERVE_SIZE = 50
-const L1_RESERVE_INTERVAL = 13
-// Default per-seed playlist — must match DEFAULT_LISTENING_CONFIG.layer1Playlist
-// in generateLearningScript.ts. 'ps' = target @ 1×, 'ps2x' = target @ 2×,
-// 'trans' = known @ 1× (off by default since graduated seeds are past
-// meaning-acquisition).
-const LAYER1_PLAYLIST = ['ps', 'ps2x', 'ps2x']
+// Algorithm constants — overwritten by DB load (algorithm_config key=listening).
+// Defaults here match DEFAULT_LISTENING in useAlgorithmConfig.ts as a fallback.
+let GRADUATION_OFFSET = 56
+let L1_ACTIVE_SIZE = 10
+let L1_ACTIVE_INTERVAL = 3
+let L1_RESERVE_SIZE = 50
+let L1_RESERVE_INTERVAL = 13
+// 'ps' = target @ 1×, 'ps2x' = target @ 2×, 'trans' = known @ 1×.
+let LAYER1_PLAYLIST = ['ps', 'ps2x', 'ps2x']
 const ROLE_LABEL = { ps: '1×', ps2x: '2×', trans: 'EN' }
 const ROLE_DESC = {
   ps: 'target at 1.0× — slow listen for clarity',
@@ -439,9 +437,14 @@ function renderPlaylistHeader() {
     </span>`
   }).join('<span style="color:var(--muted);align-self:center">→</span>')
   return `<div class="section">
-    <h2>Per-seed playback playlist</h2>
-    <div class="meta">Each graduated seed expands to ${LAYER1_PLAYLIST.length} cycles in this order. Tweakable via <code>listeningConfig.layer1Playlist</code>.</div>
+    <h2>Per-seed playback playlist <span style="font-weight:400;font-size:11px;color:var(--muted);background:var(--rule);padding:2px 8px;border-radius:999px;margin-left:6px;text-transform:uppercase;letter-spacing:0.06em">live from algorithm_config</span></h2>
+    <div class="meta">Each graduated seed expands to ${LAYER1_PLAYLIST.length} cycles in this order. Edit the <code>listening</code> row in <code>algorithm_config</code> to change the playlist globally; new sessions pick it up within 5 min.</div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">${seq}</div>
+    <div class="meta" style="margin-top:10px">
+      Active fires every <strong>${L1_ACTIVE_INTERVAL}</strong> rounds (window: ${L1_ACTIVE_SIZE} most recent graduates).
+      Reserve every <strong>${L1_RESERVE_INTERVAL}</strong> rounds (window: ${L1_RESERVE_SIZE} older).
+      Graduation: ${GRADUATION_OFFSET} rounds after a seed's last LEGO.
+    </div>
   </div>`
 }
 
@@ -602,8 +605,27 @@ async function loadCourse(courseCode) {
 // Bootstrap
 // ============================================================================
 
+async function loadListeningConfig() {
+  try {
+    const rows = await sb('algorithm_config', 'select=config&key=eq.listening')
+    if (!rows || rows.length === 0) return
+    const c = rows[0].config || {}
+    if (typeof c.offset === 'number') GRADUATION_OFFSET = c.offset
+    if (typeof c.l1ActiveSize === 'number') L1_ACTIVE_SIZE = c.l1ActiveSize
+    if (typeof c.l1ActiveInterval === 'number') L1_ACTIVE_INTERVAL = c.l1ActiveInterval
+    if (typeof c.l1ReserveSize === 'number') L1_RESERVE_SIZE = c.l1ReserveSize
+    if (typeof c.l1ReserveInterval === 'number') L1_RESERVE_INTERVAL = c.l1ReserveInterval
+    if (Array.isArray(c.layer1Playlist) && c.layer1Playlist.length > 0) {
+      LAYER1_PLAYLIST = c.layer1Playlist
+    }
+  } catch (e) {
+    console.warn('listening config load failed, using defaults:', e)
+  }
+}
+
 async function init() {
   try {
+    await loadListeningConfig()
     allCourses = await sb('courses', 'select=course_code&order=course_code.asc')
     const sel = document.getElementById('course')
     sel.innerHTML = '<option value="">— pick a course —</option>' +
