@@ -121,6 +121,24 @@
             </button>
           </div>
 
+          <!-- Custom preview text (overrides cycled seed phrase across all tabs) -->
+          <div class="custom-preview">
+            <input
+              type="text"
+              v-model="customText[role.id]"
+              :placeholder="`Type a word or phrase to preview (defaults to: ${getPhrasesForRole(role.id)[0] || '—'})`"
+              class="custom-preview-input"
+            />
+            <button
+              v-if="customText[role.id]"
+              @click="customText[role.id] = ''"
+              class="custom-preview-clear"
+              title="Clear and use seed phrases"
+            >
+              x
+            </button>
+          </div>
+
           <!-- Azure Voices -->
           <div v-if="selectedProvider === 'azure'" class="azure-voices">
             <div v-if="discovering" class="discovering">
@@ -374,6 +392,11 @@ const localeFilter = ref('all')
 const searchQuery = ref('')
 const previewingVoiceId = ref(null)
 const testingRole = ref(null)
+
+// Per-role custom preview text. When non-empty, overrides the cycled seed phrase
+// for both Test Voice and per-voice Preview buttons. Lets users audition voices
+// on specific words (e.g. tone-sensitive single syllables in Mandarin).
+const customText = ref({})
 
 // Manual ElevenLabs entry
 const manualVoiceId = ref('')
@@ -688,6 +711,8 @@ function getPhrasesForRole(roleId) {
 }
 
 function getCurrentPhrase(roleId) {
+  const custom = (customText.value[roleId] || '').trim()
+  if (custom) return custom
   const phrases = getPhrasesForRole(roleId)
   const idx = phraseIndex.value[roleId] || 0
   return phrases[idx % phrases.length]
@@ -913,7 +938,7 @@ async function selectVoiceForRole(roleId, voice) {
 
   config.value.voices[roleId] = {
     voiceId: voice.id,
-    provider: 'azure',
+    provider: voice.provider || 'azure',
     name: voice.displayName || voice.name,
     language: voice.locale,
     settings: { speed: 1.0 }
@@ -1390,6 +1415,50 @@ onMounted(() => {
   background: #10b981;
   border-color: #10b981;
   color: #0f172a;
+}
+
+/* Custom preview text (overrides cycled seed phrases) */
+.custom-preview {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.custom-preview-input {
+  flex: 1;
+  padding: 8px 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+}
+
+.custom-preview-input:focus {
+  outline: none;
+  border-color: #10b981;
+}
+
+.custom-preview-input::placeholder {
+  color: #64748b;
+  font-style: italic;
+}
+
+.custom-preview-clear {
+  padding: 6px 10px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.custom-preview-clear:hover {
+  color: #e2e8f0;
+  border-color: #475569;
 }
 
 /* Azure Voices */
