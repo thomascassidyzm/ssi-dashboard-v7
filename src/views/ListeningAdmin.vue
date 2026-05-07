@@ -57,12 +57,38 @@
           @reset="reset('listening')"
         />
 
-        <div class="field-block">
-          <label>Per-seed playlist <span class="hint">tap to cycle role · arrows reorder · × removes · + adds</span></label>
+        <div class="field-block" v-if="drafts.listening.layer1StagePlaylist">
+          <label>L1 staged playlist <span class="hint">each seed advances stage on each L1 fire — eternal stage is the highest-numbered</span></label>
+          <div class="stage-grid">
+            <template v-for="(stage, idx) in l1StageKeys" :key="`l1-${stage}`">
+              <div class="stage-row">
+                <span class="stage-label">
+                  stage {{ stage }}
+                  <span v-if="idx === l1StageKeys.length - 1" class="stage-eternal">eternal</span>
+                </span>
+                <PlaylistEditor :modelValue="getL1StageList(stage)" @update:modelValue="setL1StageList(stage, $event)" :compact="true" />
+                <button
+                  class="stage-remove-btn"
+                  :disabled="l1StageKeys.length <= 1"
+                  @click="removeL1Stage(stage)"
+                  title="Remove this stage"
+                >×</button>
+              </div>
+              <button class="stage-insert-btn" @click="addL1StageAfter(stage)" :title="`Insert L1 stage after ${stage}`">
+                + insert L1 stage after {{ stage }}
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <div class="field-block" v-else>
+          <label>Per-seed playlist (legacy) <span class="hint">staged playlist not configured — every fire uses this flat playlist</span></label>
           <PlaylistEditor v-model="drafts.listening.layer1Playlist" />
         </div>
 
         <div class="field-grid">
+          <NumField v-model="drafts.listening.layer1StageDuration" label="L1 stage duration" suffix="fires per stage"
+            help="How many L1 emissions a seed spends in each transitional stage before promoting." />
           <NumField v-model="drafts.listening.offset" label="Graduation offset" suffix="rounds"
             help="Rounds after a seed's last LEGO before it graduates into Layer 1 listening." />
           <NumField v-model="drafts.listening.l1ActiveSize" label="Active window size" suffix="seeds"
@@ -541,6 +567,11 @@ const podsStageKeys = computed(() => {
   if (!sp) return []
   return Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
 })
+const l1StageKeys = computed(() => {
+  const sp = drafts.listening?.layer1StagePlaylist
+  if (!sp) return []
+  return Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
+})
 
 function getStageList(stage) {
   if (!drafts.pods) return []
@@ -582,6 +613,46 @@ function removeStage(stage) {
     next[String(newKey)] = sp[String(k)] || sp[k] || []
   }
   drafts.pods.stagePlaylist = next
+}
+
+// L1 staged-playlist helpers — identical shape to the pods ones above
+// (mirror Layer 2's stage UX). Per-seed fire counter advances on each L1
+// emit; stage = floor((fireCount-1)/layer1StageDuration)+1, capped at
+// the highest key (eternal hold).
+function getL1StageList(stage) {
+  if (!drafts.listening) return []
+  const sp = drafts.listening.layer1StagePlaylist || {}
+  return sp[String(stage)] || sp[stage] || []
+}
+function setL1StageList(stage, list) {
+  if (!drafts.listening) return
+  if (!drafts.listening.layer1StagePlaylist) drafts.listening.layer1StagePlaylist = {}
+  drafts.listening.layer1StagePlaylist[String(stage)] = list
+}
+function addL1StageAfter(stage) {
+  if (!drafts.listening) return
+  const sp = drafts.listening.layer1StagePlaylist || {}
+  const keys = l1StageKeys.value
+  const next = {}
+  for (const k of keys) {
+    const newKey = k > stage ? k + 1 : k
+    next[String(newKey)] = sp[String(k)] || sp[k] || []
+  }
+  next[String(stage + 1)] = ['ps2x', 'ps2x']
+  drafts.listening.layer1StagePlaylist = next
+}
+function removeL1Stage(stage) {
+  if (!drafts.listening) return
+  const keys = l1StageKeys.value
+  if (keys.length <= 1) return
+  const sp = drafts.listening.layer1StagePlaylist || {}
+  const next = {}
+  for (const k of keys) {
+    if (k === stage) continue
+    const newKey = k > stage ? k - 1 : k
+    next[String(newKey)] = sp[String(k)] || sp[k] || []
+  }
+  drafts.listening.layer1StagePlaylist = next
 }
 
 function toggleFib(idx) {
