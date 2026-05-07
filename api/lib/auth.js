@@ -6,6 +6,7 @@
 
 import { S3Client, GetObjectCommand, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import crypto from 'crypto';
+import { getSupabase } from './supabase.js';
 
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
@@ -142,6 +143,81 @@ export async function validateSession(sessionId) {
   } catch (err) {
     if (err.name === 'NoSuchKey') return null;
     throw err;
+  }
+}
+
+/**
+ * Verify a Supabase JWT and return a dashboard user record.
+ * Returns null if the token is invalid or the user lacks dashboard access.
+ *
+ * Mirrors verifySupabaseJWT in services/production-api.cjs — keep them in sync.
+ */
+export async function verifySupabaseJWT(token) {
+  try {
+    const supabase = getSupabase();
+    if (!supabase) return null;
+
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+    if (error || !user) return null;
+
+    const { data: lr } = await supabase
+      .from('learners')
+      .select('id, user_id, display_name, platform_role, educational_role, dashboard_courses')
+      .eq('user_id', user.id)
+      .single();
+
+    if (!lr) return null;
+
+    const pr = lr.platform_role;
+    const er = lr.educational_role;
+    if (pr !== 'ssi_admin' && pr !== 'popty_user' && er !== 'god') return null;
+
+    const isAdminUser = pr === 'ssi_admin' || er === 'god';
+    const dc = lr.dashboard_courses || [];
+    const coursesAccess = isAdminUser ? '*' : (dc.includes('*') ? '*' : dc);
+
+    return {
+      name: lr.display_name,
+      email: user.email,
+      role: isAdminUser ? 'admin' : 'user',
+      courses: coursesAccess,
+      learner_id: lr.id,
+    };
+  } catch (err) {
+    console.error('[Auth] Supabase JWT verification error:', err);
+    return null;
+  }
+}
+
+/**
+ * Look up a dashboard user by email (Supabase-backed).
+ * Replaces the legacy S3 users.json lookup in getUser().
+ */
+export async function getDashboardUserByEmail(email) {
+  try {
+    const supabase = getSupabase();
+    if (!supabase) return null;
+
+    const { data, error } = await supabase
+      .from('dashboard_users')
+      .select('*')
+      .eq('email', email)
+      .single();
+
+    if (error && error.code === 'PGRST116') return null;
+    if (error) throw error;
+    if (!data) return null;
+
+    return {
+      name: data.name,
+      email: data.email,
+      role: data.role,
+      courses: data.courses,
+      voice_id: data.voice_id,
+    };
+  } catch (err) {
+    console.error('[Auth] getDashboardUserByEmail error:', err);
+    return null;
   }
 }
 

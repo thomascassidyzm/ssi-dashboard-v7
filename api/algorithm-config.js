@@ -12,7 +12,7 @@
  */
 
 import { getSupabase } from './lib/supabase.js'
-import { validateSession } from './lib/auth.js'
+import { verifySupabaseJWT } from './lib/auth.js'
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -37,9 +37,10 @@ export default async function handler(req, res) {
 
   if (req.method === 'PATCH') {
     // Auth required for writes — preserves the "service_role only" RLS intent.
-    const sessionId = (req.headers.authorization || '').replace('Bearer ', '')
-    if (!sessionId) return res.status(401).json({ error: 'No session' })
-    const user = await validateSession(sessionId)
+    // Frontend sends a Supabase JWT (from supabase.auth.getSession), not a legacy session ID.
+    const token = (req.headers.authorization || '').replace('Bearer ', '')
+    if (!token) return res.status(401).json({ error: 'No session' })
+    const user = await verifySupabaseJWT(token)
     if (!user) return res.status(401).json({ error: 'Invalid or expired session' })
 
     const { key, config } = req.body || {}

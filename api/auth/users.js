@@ -7,7 +7,7 @@
  */
 
 import AWS from 'aws-sdk';
-import { validateSession } from '../lib/auth.js';
+import { verifySupabaseJWT } from '../lib/auth.js';
 
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AUTH_PREFIX = 'auth/';
@@ -26,15 +26,15 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // Verify admin session
+  // Verify admin session — frontend sends a Supabase JWT.
   const authHeader = req.headers.authorization;
-  const sessionId = authHeader?.replace('Bearer ', '');
+  const token = authHeader?.replace('Bearer ', '');
 
-  if (!sessionId) {
+  if (!token) {
     return res.status(401).json({ error: 'Authentication required' });
   }
 
-  const adminUser = await validateSession(sessionId);
+  const adminUser = await verifySupabaseJWT(token);
 
   if (!adminUser || adminUser.role !== 'admin') {
     return res.status(403).json({ error: 'Admin access required' });
