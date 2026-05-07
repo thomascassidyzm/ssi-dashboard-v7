@@ -144,12 +144,26 @@
         />
 
         <div class="field-block">
-          <label>Stage playlists <span class="hint">stage 7 is the eternal hold</span></label>
+          <label>Stage playlists <span class="hint">highest-numbered stage is the eternal hold · + adds, × removes, drag rows by editing the playlist</span></label>
           <div class="stage-grid">
-            <div v-for="stage in 7" :key="stage" class="stage-row">
-              <span class="stage-label">stage {{ stage }}</span>
-              <PlaylistEditor :modelValue="getStageList(stage)" @update:modelValue="setStageList(stage, $event)" :compact="true" />
-            </div>
+            <template v-for="(stage, idx) in podsStageKeys" :key="stage">
+              <div class="stage-row">
+                <span class="stage-label">
+                  stage {{ stage }}
+                  <span v-if="idx === podsStageKeys.length - 1" class="stage-eternal">eternal</span>
+                </span>
+                <PlaylistEditor :modelValue="getStageList(stage)" @update:modelValue="setStageList(stage, $event)" :compact="true" />
+                <button
+                  class="stage-remove-btn"
+                  :disabled="podsStageKeys.length <= 1"
+                  @click="removeStage(stage)"
+                  title="Remove this stage"
+                >×</button>
+              </div>
+              <button class="stage-insert-btn" @click="addStageAfter(stage)" :title="`Insert new stage after stage ${stage}`">
+                + insert stage after {{ stage }}
+              </button>
+            </template>
           </div>
         </div>
 
@@ -519,6 +533,15 @@ async function save(key) {
   }
 }
 
+// Sorted numeric stage keys. Stages are dynamic — admins can add or
+// remove stages from this page; the highest-numbered stage is the
+// eternal hold and the rest are transitional in order.
+const podsStageKeys = computed(() => {
+  const sp = drafts.pods?.stagePlaylist
+  if (!sp) return []
+  return Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
+})
+
 function getStageList(stage) {
   if (!drafts.pods) return []
   const sp = drafts.pods.stagePlaylist || {}
@@ -528,6 +551,37 @@ function setStageList(stage, list) {
   if (!drafts.pods) return
   if (!drafts.pods.stagePlaylist) drafts.pods.stagePlaylist = {}
   drafts.pods.stagePlaylist[String(stage)] = list
+}
+
+/** Insert a new stage immediately after `stage`. Shifts all higher
+ *  keys up by 1; new stage seeds with a sensible playlist. */
+function addStageAfter(stage) {
+  if (!drafts.pods) return
+  const sp = drafts.pods.stagePlaylist || {}
+  const keys = podsStageKeys.value
+  const next = {}
+  for (const k of keys) {
+    const newKey = k > stage ? k + 1 : k
+    next[String(newKey)] = sp[String(k)] || sp[k] || []
+  }
+  next[String(stage + 1)] = ['ps', 'trans', 'ps', 'ps2x']
+  drafts.pods.stagePlaylist = next
+}
+
+/** Remove a stage. Shifts all higher keys down by 1 so the sequence
+ *  stays contiguous. Refuses to remove the last remaining stage. */
+function removeStage(stage) {
+  if (!drafts.pods) return
+  const keys = podsStageKeys.value
+  if (keys.length <= 1) return
+  const sp = drafts.pods.stagePlaylist || {}
+  const next = {}
+  for (const k of keys) {
+    if (k === stage) continue
+    const newKey = k > stage ? k - 1 : k
+    next[String(newKey)] = sp[String(k)] || sp[k] || []
+  }
+  drafts.pods.stagePlaylist = next
 }
 
 function toggleFib(idx) {
@@ -996,7 +1050,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 .stage-row {
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 90px 1fr 28px;
   gap: 0.75rem;
   align-items: center;
   padding: 0.4rem 0.5rem;
@@ -1009,6 +1063,46 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   color: var(--color-paper-dim, #94a3b8);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.stage-eternal {
+  font-size: 0.6rem;
+  color: #93c5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.stage-remove-btn {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--color-graphite, #475569);
+  background: transparent;
+  color: var(--color-paper-dim, #94a3b8);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.stage-remove-btn:hover:not(:disabled) {
+  border-color: #f87171;
+  color: #f87171;
+}
+.stage-remove-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.stage-insert-btn {
+  align-self: stretch;
+  margin: 0;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px dashed transparent;
+  background: transparent;
+  color: var(--color-paper-dim, #64748b);
+  font-size: 0.7rem;
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.stage-insert-btn:hover {
+  border-color: var(--color-graphite, #475569);
+  color: var(--color-paper, #f7f7f2);
 }
 
 /* Fib pills */
