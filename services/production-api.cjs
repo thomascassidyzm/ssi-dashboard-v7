@@ -8212,6 +8212,47 @@ const { execFile, spawn } = require('child_process')
 const { promisify } = require('util')
 const execFileAsync = promisify(execFile)
 
+// Run `pm2 save` only when every managed process is online and has been up
+// long enough to not be mid-flap. Polls pm2 jlist until healthy or timeout.
+// Reason this exists: a naive `pm2 restart X && pm2 save` can capture a
+// 'launching' or 'errored' state into ~/.pm2/dump.pm2, and the next reboot
+// will resurrect that broken state — services come up "stopped" and the
+// machine is unreachable until someone SSHs in.
+async function pm2SaveIfHealthy({ waitMs = 10000, minUptimeMs = 5000 } = {}) {
+  const deadline = Date.now() + waitMs
+  let lastUnhealthy = []
+  while (Date.now() < deadline) {
+    try {
+      const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
+      const procs = JSON.parse(stdout || '[]')
+      if (procs.length === 0) {
+        return { saved: false, reason: 'no pm2 processes' }
+      }
+      const now = Date.now()
+      const unhealthy = procs.filter(p => {
+        const status = p.pm2_env?.status
+        const uptime = p.pm2_env?.pm_uptime ? now - p.pm2_env.pm_uptime : 0
+        return status !== 'online' || uptime < minUptimeMs
+      }).map(p => ({
+        name: p.name,
+        status: p.pm2_env?.status || '?',
+        uptime_ms: p.pm2_env?.pm_uptime ? now - p.pm2_env.pm_uptime : 0
+      }))
+      if (unhealthy.length === 0) {
+        await execFileAsync('bash', ['-c', 'pm2 save'])
+        return { saved: true, reason: 'all online' }
+      }
+      lastUnhealthy = unhealthy
+    } catch (e) {
+      lastUnhealthy = [{ name: 'pm2 jlist failed', status: e.message }]
+    }
+    await new Promise(r => setTimeout(r, 500))
+  }
+  logger.warn('[pm2SaveIfHealthy] save skipped, unhealthy:',
+    lastUnhealthy.map(u => `${u.name}=${u.status}`).join(', '))
+  return { saved: false, reason: 'unhealthy after timeout', unhealthy: lastUnhealthy }
+}
+
 // GET /api/admin/agents — list all iTerm2 sessions with their status
 app.get('/api/admin/agents', async (req, res) => {
   try {
@@ -8391,7 +8432,7 @@ app.post('/api/admin/pm2/fix', async (req, res) => {
   setTimeout(async () => {
     try {
       await execFileAsync('bash', ['-c', 'pm2 restart all --watch false'])
-      await execFileAsync('bash', ['-c', 'pm2 save'])
+      await pm2SaveIfHealthy()
     } catch (e) {
       logger.warn('[Admin] pm2/fix error:', e.message)
     }
@@ -8409,15 +8450,18 @@ app.post('/api/admin/pm2/restart', async (req, res) => {
   const selfName = process.env.name || 'production-api'
   if (name === selfName) {
     res.json({ ok: true, name, message: `Self-restart scheduled in 1s` })
-    setTimeout(() => {
-      execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
-        .catch(e => logger.warn('[Admin] self-restart error:', e.message))
+    setTimeout(async () => {
+      try {
+        await execFileAsync('bash', ['-c', `pm2 restart ${name}`])
+        await pm2SaveIfHealthy()
+      } catch (e) { logger.warn('[Admin] self-restart error:', e.message) }
     }, 1000)
     return
   }
   try {
-    const { stdout } = await execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
-    res.json({ ok: true, name, output: stdout.trim() })
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 restart ${name}`])
+    const save = await pm2SaveIfHealthy()
+    res.json({ ok: true, name, output: stdout.trim(), save })
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message })
   }
@@ -8429,8 +8473,11 @@ app.post('/api/admin/pm2/stop', async (req, res) => {
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
-    const { stdout } = await execFileAsync('bash', ['-c', `pm2 stop ${name} && pm2 save`])
-    res.json({ ok: true, name, output: stdout.trim() })
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 stop ${name}`])
+    // Stop is an explicit user action — capture it. But only if no OTHER
+    // process is mid-flap, otherwise we'd persist some unrelated bad state.
+    const save = await pm2SaveIfHealthy({ waitMs: 3000 })
+    res.json({ ok: true, name, output: stdout.trim(), save })
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message })
   }
@@ -8442,8 +8489,9 @@ app.post('/api/admin/pm2/delete', async (req, res) => {
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
-    const { stdout } = await execFileAsync('bash', ['-c', `pm2 delete ${name} && pm2 save`])
-    res.json({ ok: true, name, output: stdout.trim() })
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 delete ${name}`])
+    const save = await pm2SaveIfHealthy({ waitMs: 3000 })
+    res.json({ ok: true, name, output: stdout.trim(), save })
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message })
   }
@@ -8460,10 +8508,10 @@ app.post('/api/admin/setup-remote', async (req, res) => {
 
   const results = {}
 
-  // 1. pm2 save
+  // 1. pm2 save (healthy only)
   try {
-    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 save'])
-    results.pm2_save = { ok: true, output: stdout.trim() }
+    const result = await pm2SaveIfHealthy()
+    results.pm2_save = { ok: result.saved, ...result }
   } catch (e) {
     results.pm2_save = { ok: false, error: e.message }
   }
@@ -8551,10 +8599,13 @@ app.post('/api/admin/git-pull', async (req, res) => {
     const pull = (await execFileAsync('git', ['pull', '--ff-only'], { cwd: projectDir })).stdout.trim()
     add(`git pull: ${pull}`)
     res.json({ ok: true, log })
-    // Restart services after responding
+    // Restart services after responding. Save only after they settle —
+    // see pm2SaveIfHealthy comment for why this matters.
     setTimeout(async () => {
-      try { await execFileAsync('bash', ['-c', 'pm2 restart all --watch false && pm2 save']) }
-      catch (e) { logger.warn('[git-pull] restart error:', e.message) }
+      try {
+        await execFileAsync('bash', ['-c', 'pm2 restart all --watch false'])
+        await pm2SaveIfHealthy()
+      } catch (e) { logger.warn('[git-pull] restart error:', e.message) }
     }, 2000)
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message, log })
@@ -8716,24 +8767,10 @@ app.post('/api/admin/restart-machine', async (req, res) => {
   // Save the current pm2 state ONLY if every process is online. If anything
   // is unhealthy we leave the existing dump alone — resurrect will use the
   // last known-good snapshot. Never overwrite a good dump with a broken one.
-  let save = 'preserved previous dump'
-  try {
-    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
-    const procs = JSON.parse(stdout)
-    const allOnline = procs.length > 0 && procs.every(p => p.pm2_env?.status === 'online')
-    if (allOnline) {
-      await execFileAsync('bash', ['-c', 'pm2 save'])
-      save = 'saved current state'
-    } else {
-      const bad = procs.filter(p => p.pm2_env?.status !== 'online')
-        .map(p => `${p.name}=${p.pm2_env?.status || '?'}`)
-      logger.warn('[Admin] pm2 save skipped, unhealthy:', bad.join(', '))
-    }
-  } catch (e) {
-    logger.warn('[Admin] pm2 save check failed:', e.message)
-  }
+  const saveResult = await pm2SaveIfHealthy({ waitMs: 3000 })
+  const save = saveResult.saved ? 'saved current state' : 'preserved previous dump'
 
-  res.json({ ok: true, save, message: 'Rebooting in 5 seconds...' })
+  res.json({ ok: true, save, saveResult, message: 'Rebooting in 5 seconds...' })
 
   // Detached so it survives if production-api gets killed for any reason.
   // Primary reboot path is osascript — goes through macOS GUI restart flow,
