@@ -8670,6 +8670,31 @@ async function getMemStats() {
   }
 }
 
+// Disk stats for the root volume. `df -Pk /` gives portable single-line
+// output with sizes in 1024-byte blocks. On macOS APFS the raw "1024-blocks"
+// includes sealed system volumes, so used/total reads at ~3% on a healthy
+// machine; we report the container-fullness view (used / (used + available))
+// to match df's own Capacity column and what a human means by "disk full".
+async function getDiskStats() {
+  try {
+    const { stdout } = await execFileAsync('df', ['-Pk', '/'])
+    const lines = stdout.trim().split('\n')
+    const parts = lines[lines.length - 1].trim().split(/\s+/)
+    const usedBytes = parseInt(parts[2], 10) * 1024
+    const freeBytes = parseInt(parts[3], 10) * 1024
+    const allocatableBytes = usedBytes + freeBytes
+    return {
+      total_bytes: allocatableBytes,
+      used_bytes: usedBytes,
+      free_bytes: freeBytes,
+      used_percent: Math.round((usedBytes / allocatableBytes) * 1000) / 10,
+      mount: parts[5] || '/'
+    }
+  } catch (e) {
+    return { error: e.message }
+  }
+}
+
 // Check reboot readiness — whether PM2 will auto-resurrect after reboot.
 // Readable without sudo; all paths are in the current user's space or are
 // root-owned files whose *existence* is the only bit we need.
@@ -8716,6 +8741,7 @@ app.get('/api/admin/system-health', async (req, res) => {
     platform: os.platform(),
     uptime_seconds: Math.round(os.uptime()),
     mem: await getMemStats(),
+    disk: await getDiskStats(),
     load_avg: os.loadavg(),
     cpu_count: os.cpus().length,
     pm2: [],
