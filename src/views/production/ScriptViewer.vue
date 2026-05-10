@@ -335,7 +335,7 @@
           v-else-if="learningJourneyData"
           ref="learningJourneyRef"
           :rounds="filteredJourneyRounds"
-          :all-items="learningJourneyData?.allItems || []"
+          :all-items="filteredJourneyAllItems"
           :course-code="courseCode"
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
@@ -966,6 +966,7 @@ const journeyHasMore = ref(true);
 // Journey search (server-side across all content)
 const journeySearch = ref('');
 const journeySearchResults = ref<any[] | null>(null);
+const journeySearchAllItems = ref<any[] | null>(null);
 const journeySearching = ref(false);
 let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -975,6 +976,7 @@ watch(journeySearch, (q) => {
   const trimmed = q.trim();
   if (!trimmed) {
     journeySearchResults.value = null;
+    journeySearchAllItems.value = null;
     journeySearching.value = false;
     return;
   }
@@ -994,10 +996,12 @@ async function searchJourney(query: string) {
     // Only update if search query hasn't changed during fetch
     if (journeySearch.value.trim() === query) {
       journeySearchResults.value = data.rounds || [];
+      journeySearchAllItems.value = data.allItems || [];
     }
   } catch (err) {
     console.error('Journey search error:', err);
     journeySearchResults.value = [];
+    journeySearchAllItems.value = [];
   } finally {
     journeySearching.value = false;
   }
@@ -1009,6 +1013,17 @@ const filteredJourneyRounds = computed(() => {
     return journeySearchResults.value;
   }
   return learningJourneyData.value?.rounds || [];
+});
+
+// Player needs items for whichever rounds are currently displayed.
+// When searching, the search endpoint returns full items for matched rounds
+// (which may be outside the loaded page window) — use those so the player
+// can resolve audio for hits like R603 even when only R1-R20 are loaded.
+const filteredJourneyAllItems = computed(() => {
+  if (journeySearch.value.trim() && journeySearchAllItems.value !== null) {
+    return journeySearchAllItems.value;
+  }
+  return learningJourneyData.value?.allItems || [];
 });
 
 // Batch Selection State
