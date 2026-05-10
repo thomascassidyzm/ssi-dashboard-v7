@@ -8916,6 +8916,32 @@ const AUDIT_TABLE_PK = {
   courses: 'course_code'
 }
 
+// GET /api/admin/audit-row?table=X&pk=Y — fetch the current live row at
+// (table, primary_key). Used by the Maintenance UI to render a captured-vs-
+// current diff when an audit event is expanded. Returns { current: row | null };
+// null means the row no longer exists (was deleted since the captured snapshot).
+app.get('/api/admin/audit-row', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const tableName = String(req.query.table || '')
+  const pkValue = String(req.query.pk || '')
+  if (!tableName || !pkValue) return res.status(400).json({ error: 'table + pk required' })
+  const pkCol = AUDIT_TABLE_PK[tableName]
+  if (!pkCol) return res.status(400).json({ error: `unknown table ${tableName}` })
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb
+      .from(tableName)
+      .select('*')
+      .eq(pkCol, pkValue)
+      .maybeSingle()
+    if (error) throw error
+    res.json({ current: data ?? null })
+  } catch (e) {
+    logger.error('[Audit] row fetch error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
 // POST /api/admin/audit-restore — restore rows to their captured state
 // Body: { event_ids: [...] }
 //

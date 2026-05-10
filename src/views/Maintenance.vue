@@ -151,7 +151,32 @@
             </tr>
             <tr v-if="expandedId === ev.id" class="expanded-row">
               <td colspan="7">
-                <pre class="json-preview">{{ JSON.stringify(ev.old_row, null, 2) }}</pre>
+                <div v-if="currentRows[ev.id] === 'loading'" class="diff-loading">
+                  Loading current row…
+                </div>
+                <div v-else-if="currentRows[ev.id]?.error" class="diff-error">
+                  Couldn't fetch current row: {{ currentRows[ev.id].error }}
+                </div>
+                <div v-else class="diff-container">
+                  <div class="diff-header">
+                    <div></div>
+                    <div class="diff-col-label">Captured (will restore to)</div>
+                    <div class="diff-col-label">
+                      Current
+                      <span v-if="currentRows[ev.id]?.current === null" class="missing-tag">deleted</span>
+                    </div>
+                  </div>
+                  <div
+                    v-for="field in diffFields(ev.old_row, currentRows[ev.id]?.current)"
+                    :key="field.key"
+                    class="diff-row"
+                    :class="{ 'diff-changed': field.changed }"
+                  >
+                    <div class="diff-field-name">{{ field.key }}</div>
+                    <div class="diff-value diff-captured">{{ formatValue(field.captured) }}</div>
+                    <div class="diff-value diff-current">{{ formatValue(field.current) }}</div>
+                  </div>
+                </div>
               </td>
             </tr>
           </template>
@@ -262,6 +287,10 @@ const selectedIds = ref(new Set())
 const showRestoreConfirm = ref(false)
 const restoring = ref(false)
 const restoreResult = ref(null)
+
+// Current-row state per expanded event id:
+//   'loading' | { current: row | null } | { error: msg }
+const currentRows = ref({})
 
 const isStale = computed(() => {
   return stats.value?.days_since_oldest !== null && stats.value?.days_since_oldest > 30
@@ -383,8 +412,66 @@ function nextPage() {
   loadEvents()
 }
 
-function toggleExpand(id) {
-  expandedId.value = expandedId.value === id ? null : id
+async function toggleExpand(id) {
+  if (expandedId.value === id) {
+    expandedId.value = null
+    return
+  }
+  expandedId.value = id
+  // Fetch the current live row state if we don't already have it cached
+  if (currentRows.value[id]) return
+  const ev = events.value.find(e => e.id === id)
+  if (!ev) return
+  currentRows.value = { ...currentRows.value, [id]: 'loading' }
+  try {
+    const params = new URLSearchParams({ table: ev.table_name, pk: ev.primary_key || '' })
+    const r = await authedFetch(`/api/admin/audit-row?${params.toString()}`)
+    const body = await r.json()
+    if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
+    currentRows.value = { ...currentRows.value, [id]: { current: body.current } }
+  } catch (e) {
+    currentRows.value = { ...currentRows.value, [id]: { error: e.message } }
+  }
+}
+
+// Build a unified field list across captured + current rows, marking which
+// fields differ so the UI can highlight them.
+function diffFields(captured, current) {
+  const captObj = captured || {}
+  const currObj = current || {}
+  const keys = new Set([...Object.keys(captObj), ...Object.keys(currObj)])
+  // Stable order: keys present in captured first (preserve their order), then
+  // any extras from current. Within those, alphabetical for predictability.
+  const orderedKeys = [
+    ...Object.keys(captObj),
+    ...Object.keys(currObj).filter(k => !(k in captObj))
+  ]
+  return orderedKeys.map(key => {
+    const c = captObj[key]
+    const u = currObj[key]
+    return {
+      key,
+      captured: c,
+      current: u,
+      changed: !valuesEqual(c, u)
+    }
+  })
+}
+
+function valuesEqual(a, b) {
+  if (a === b) return true
+  if (a === null || b === null || a === undefined || b === undefined) return a === b
+  if (typeof a === 'object' || typeof b === 'object') {
+    return JSON.stringify(a) === JSON.stringify(b)
+  }
+  return false
+}
+
+function formatValue(v) {
+  if (v === null) return 'null'
+  if (v === undefined) return '—'
+  if (typeof v === 'object') return JSON.stringify(v)
+  return String(v)
 }
 
 // Selection helpers
@@ -744,16 +831,78 @@ onMounted(() => {
   background: rgba(15, 23, 42, 0.6);
   padding: 0;
 }
-.json-preview {
-  margin: 0;
-  padding: 12px 14px;
-  font-family: 'Geist Mono', ui-monospace, monospace;
-  font-size: 11px;
-  color: #cbd5e1;
-  white-space: pre-wrap;
-  word-break: break-word;
-  max-height: 320px;
+.diff-loading,
+.diff-error {
+  padding: 14px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+.diff-error { color: #fca5a5; }
+.diff-container {
+  padding: 8px 0;
+  max-height: 360px;
   overflow-y: auto;
+}
+.diff-header,
+.diff-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 1fr;
+  gap: 12px;
+  padding: 4px 14px;
+  font-size: 12px;
+  align-items: start;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.05);
+}
+.diff-header {
+  font-weight: 500;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+}
+.diff-col-label {
+  color: #94a3b8;
+}
+.diff-field-name {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  color: #cbd5e1;
+  font-size: 11px;
+  padding-top: 2px;
+}
+.diff-value {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  color: #94a3b8;
+  font-size: 11px;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+.diff-row.diff-changed {
+  background: rgba(245, 158, 11, 0.08);
+}
+.diff-row.diff-changed .diff-captured {
+  color: #86efac;
+}
+.diff-row.diff-changed .diff-current {
+  color: #fca5a5;
+}
+.diff-row.diff-changed .diff-field-name {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+.missing-tag {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  padding: 1px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .pagination {
