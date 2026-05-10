@@ -95,6 +95,14 @@
         <button class="filter-apply" @click="resetAndLoad">Search</button>
       </div>
 
+      <div v-if="selectedIds.size > 0" class="selection-bar">
+        <span>{{ selectedIds.size }} selected</span>
+        <button class="bulk-restore-btn" @click="showRestoreConfirm = true">
+          Restore {{ selectedIds.size }} {{ selectedIds.size === 1 ? 'row' : 'rows' }}
+        </button>
+        <button class="link-btn" @click="selectedIds.clear()">Clear</button>
+      </div>
+
       <div v-if="eventsError" class="error-banner">{{ eventsError }}</div>
 
       <div v-if="eventsLoading && events.length === 0" class="loading">Loading events…</div>
@@ -104,6 +112,14 @@
       <table v-else class="events-table">
         <thead>
           <tr>
+            <th class="cell-check">
+              <input
+                type="checkbox"
+                :checked="allOnPageSelected"
+                :indeterminate.prop="someOnPageSelected && !allOnPageSelected"
+                @change="toggleSelectAllOnPage"
+              />
+            </th>
             <th>Time</th>
             <th>Table</th>
             <th>Op</th>
@@ -114,20 +130,27 @@
         </thead>
         <tbody>
           <template v-for="ev in events" :key="ev.id">
-            <tr @click="toggleExpand(ev.id)" class="event-row" :class="{ expanded: expandedId === ev.id }">
-              <td class="cell-time">{{ formatEventTime(ev.changed_at) }}</td>
-              <td class="cell-table"><code>{{ ev.table_name }}</code></td>
-              <td>
+            <tr class="event-row" :class="{ expanded: expandedId === ev.id, selected: selectedIds.has(ev.id) }">
+              <td class="cell-check" @click.stop>
+                <input
+                  type="checkbox"
+                  :checked="selectedIds.has(ev.id)"
+                  @change="toggleSelect(ev.id)"
+                />
+              </td>
+              <td class="cell-time" @click="toggleExpand(ev.id)">{{ formatEventTime(ev.changed_at) }}</td>
+              <td class="cell-table" @click="toggleExpand(ev.id)"><code>{{ ev.table_name }}</code></td>
+              <td @click="toggleExpand(ev.id)">
                 <span class="op-tag" :class="`op-${ev.change_type.toLowerCase()}`">
                   {{ ev.change_type }}
                 </span>
               </td>
-              <td class="cell-pk"><code>{{ ev.primary_key || '—' }}</code></td>
-              <td class="cell-by">{{ ev.changed_by_uid || ev.changed_by_role }}</td>
-              <td class="cell-expand">{{ expandedId === ev.id ? '▾' : '▸' }}</td>
+              <td class="cell-pk" @click="toggleExpand(ev.id)"><code>{{ ev.primary_key || '—' }}</code></td>
+              <td class="cell-by" @click="toggleExpand(ev.id)">{{ ev.changed_by_uid || ev.changed_by_role }}</td>
+              <td class="cell-expand" @click="toggleExpand(ev.id)">{{ expandedId === ev.id ? '▾' : '▸' }}</td>
             </tr>
             <tr v-if="expandedId === ev.id" class="expanded-row">
-              <td colspan="6">
+              <td colspan="7">
                 <pre class="json-preview">{{ JSON.stringify(ev.old_row, null, 2) }}</pre>
               </td>
             </tr>
@@ -167,6 +190,44 @@
         </div>
       </div>
     </div>
+
+    <div v-if="showRestoreConfirm" class="modal-backdrop" @click.self="showRestoreConfirm = false">
+      <div class="modal modal-wide">
+        <h3>Confirm restore</h3>
+        <p>
+          Restore <strong>{{ selectedIds.size }}</strong>
+          {{ selectedIds.size === 1 ? 'row' : 'rows' }} to their captured state.
+          Each restore is itself a write that will be captured in the audit log,
+          so this is rollback-able too.
+        </p>
+        <p class="modal-note">
+          If the same row appears in multiple selected events, only the oldest
+          snapshot is applied (restores to the earliest pre-change state).
+        </p>
+        <div v-if="restoreResult" class="restore-result">
+          <div v-if="restoreResult.restored.length" class="restore-ok">
+            ✓ Restored {{ restoreResult.restored.length }}
+          </div>
+          <div v-if="restoreResult.skipped.length" class="restore-skipped">
+            • Skipped {{ restoreResult.skipped.length }} (newer event selected for same row)
+          </div>
+          <div v-if="restoreResult.failed.length" class="restore-failed">
+            ✗ Failed {{ restoreResult.failed.length }}:
+            <ul>
+              <li v-for="f in restoreResult.failed" :key="f.event_id">
+                #{{ f.event_id }}: {{ f.reason }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="modal-cancel" @click="closeRestoreModal">{{ restoreResult ? 'Close' : 'Cancel' }}</button>
+          <button v-if="!restoreResult" class="modal-confirm" :disabled="restoring" @click="runRestore">
+            {{ restoring ? 'Restoring…' : 'Yes, restore' }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -195,6 +256,12 @@ const filterQuery = ref('')
 const PAGE_SIZE = 50
 const offset = ref(0)
 const expandedId = ref(null)
+
+// Selection + bulk restore state
+const selectedIds = ref(new Set())
+const showRestoreConfirm = ref(false)
+const restoring = ref(false)
+const restoreResult = ref(null)
 
 const isStale = computed(() => {
   return stats.value?.days_since_oldest !== null && stats.value?.days_since_oldest > 30
@@ -318,6 +385,58 @@ function nextPage() {
 
 function toggleExpand(id) {
   expandedId.value = expandedId.value === id ? null : id
+}
+
+// Selection helpers
+const allOnPageSelected = computed(() =>
+  events.value.length > 0 && events.value.every(e => selectedIds.value.has(e.id))
+)
+const someOnPageSelected = computed(() =>
+  events.value.some(e => selectedIds.value.has(e.id))
+)
+
+function toggleSelect(id) {
+  const next = new Set(selectedIds.value)
+  if (next.has(id)) next.delete(id); else next.add(id)
+  selectedIds.value = next
+}
+
+function toggleSelectAllOnPage() {
+  const next = new Set(selectedIds.value)
+  if (allOnPageSelected.value) {
+    for (const ev of events.value) next.delete(ev.id)
+  } else {
+    for (const ev of events.value) next.add(ev.id)
+  }
+  selectedIds.value = next
+}
+
+async function runRestore() {
+  restoring.value = true
+  restoreResult.value = null
+  try {
+    const r = await authedFetch('/api/admin/audit-restore', {
+      method: 'POST',
+      body: JSON.stringify({ event_ids: Array.from(selectedIds.value) })
+    })
+    const body = await r.json()
+    if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
+    restoreResult.value = body
+    // Clear selection on success (failures still shown in modal)
+    if (body.failed.length === 0) selectedIds.value = new Set()
+    // Refresh the feed + stats so the restore writes appear
+    loadStats()
+    loadEvents()
+  } catch (e) {
+    restoreResult.value = { restored: [], skipped: [], failed: [{ event_id: 0, reason: e.message }] }
+  } finally {
+    restoring.value = false
+  }
+}
+
+function closeRestoreModal() {
+  showRestoreConfirm.value = false
+  restoreResult.value = null
 }
 
 onMounted(() => {
@@ -665,5 +784,81 @@ onMounted(() => {
   font-size: 12px;
   color: #94a3b8;
   font-variant-numeric: tabular-nums;
+}
+
+.selection-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: rgba(29, 78, 216, 0.15);
+  border: 1px solid rgba(29, 78, 216, 0.4);
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #bfdbfe;
+}
+.selection-bar > span {
+  font-weight: 500;
+  color: #f1f5f9;
+}
+.bulk-restore-btn {
+  padding: 6px 14px;
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.bulk-restore-btn:hover {
+  background: #2563eb;
+}
+.link-btn {
+  background: none;
+  border: none;
+  color: #93c5fd;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px 8px;
+}
+
+.cell-check {
+  width: 32px;
+  text-align: center;
+}
+.event-row.selected {
+  background: rgba(29, 78, 216, 0.1);
+}
+.event-row.selected:hover {
+  background: rgba(29, 78, 216, 0.18);
+}
+
+.modal-wide {
+  max-width: 560px;
+}
+.modal-note {
+  font-size: 12px;
+  color: #94a3b8;
+  font-style: italic;
+  margin-top: -8px !important;
+  margin-bottom: 16px !important;
+}
+.restore-result {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+.restore-ok { color: #86efac; }
+.restore-skipped { color: #94a3b8; margin-top: 4px; }
+.restore-failed { color: #fca5a5; margin-top: 4px; }
+.restore-failed ul {
+  margin: 4px 0 0 18px;
+  font-size: 12px;
 }
 </style>

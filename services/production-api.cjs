@@ -8905,6 +8905,95 @@ app.get('/api/admin/audit-events', async (req, res) => {
   }
 })
 
+// Map of audited table → primary-key column. Required for restore to know
+// what to match on / upsert against. Keep in sync with the triggers in
+// ssi-learning-app migration 20260510_content_audit_history.sql.
+const AUDIT_TABLE_PK = {
+  course_legos: 'id',
+  course_seeds: 'id',
+  course_practice_phrases: 'id',
+  course_audio: 'id',
+  courses: 'course_code'
+}
+
+// POST /api/admin/audit-restore — restore rows to their captured state
+// Body: { event_ids: [...] }
+//
+// For each event we upsert the OLD row back into the source table. Upsert
+// handles both cases cleanly: UPDATE rollback (row exists, gets reverted to
+// the captured snapshot) and DELETE rollback (row absent, gets inserted).
+//
+// Conflict resolution: if multiple selected events touch the same
+// (table, primary_key), only the OLDEST is applied — that restores to the
+// earliest pre-change snapshot. Newer events for the same row would just
+// overwrite the older restore.
+//
+// The restore itself is a write to the source table, so the trigger fires
+// AGAIN and a new audit row gets captured for the restore. Rollbacks are
+// themselves rollback-able.
+app.post('/api/admin/audit-restore', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const eventIds = Array.isArray(req.body?.event_ids) ? req.body.event_ids : []
+  if (eventIds.length === 0) return res.status(400).json({ error: 'event_ids required' })
+  if (eventIds.length > 1000) return res.status(400).json({ error: 'max 1000 events per restore' })
+
+  try {
+    const sb = supabaseClient.getClient()
+    const { data: events, error: fetchErr } = await sb
+      .from('content_audit_log')
+      .select('id,changed_at,change_type,table_name,primary_key,old_row')
+      .in('id', eventIds)
+      .order('changed_at', { ascending: true })  // oldest first
+    if (fetchErr) throw fetchErr
+
+    // Oldest-per-(table, primary_key) wins. Drop any newer duplicates from
+    // the apply list but report them as "skipped" so the UI can show them.
+    const seen = new Set()
+    const toApply = []
+    const skipped = []
+    for (const ev of events) {
+      const key = `${ev.table_name} ${ev.primary_key}`
+      if (seen.has(key)) {
+        skipped.push({ event_id: ev.id, reason: 'newer event selected for same row; oldest applied' })
+        continue
+      }
+      seen.add(key)
+      toApply.push(ev)
+    }
+
+    const restored = []
+    const failed = []
+    for (const ev of toApply) {
+      const pkCol = AUDIT_TABLE_PK[ev.table_name]
+      if (!pkCol) {
+        failed.push({ event_id: ev.id, reason: `unknown table ${ev.table_name}` })
+        continue
+      }
+      try {
+        const { error } = await sb.from(ev.table_name).upsert(ev.old_row, { onConflict: pkCol })
+        if (error) {
+          failed.push({ event_id: ev.id, reason: error.message })
+        } else {
+          restored.push({
+            event_id: ev.id,
+            table: ev.table_name,
+            primary_key: ev.primary_key,
+            change_type: ev.change_type
+          })
+        }
+      } catch (e) {
+        failed.push({ event_id: ev.id, reason: e.message })
+      }
+    }
+
+    logger.info(`[Audit] Restore: ${restored.length} ok, ${failed.length} failed, ${skipped.length} skipped`)
+    res.json({ restored, failed, skipped })
+  } catch (e) {
+    logger.error('[Audit] restore error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
 // POST /api/admin/audit-cleanup — delete entries older than `days` (default 3)
 // Hard-capped at 365 days so a stray/zero/negative value can't wipe the table.
 app.post('/api/admin/audit-cleanup', async (req, res) => {
