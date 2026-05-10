@@ -8809,6 +8809,69 @@ app.post('/api/admin/restart-machine', async (req, res) => {
   ], { detached: true, stdio: 'ignore' }).unref()
 })
 
+// ============================================================================
+// Content audit log — read stats + manual cleanup
+// ============================================================================
+// Backs the popty Maintenance page. The audit log itself is populated by
+// triggers on the at-risk content tables (course_legos, course_seeds, etc.)
+// — see ssi-learning-app migration 20260510_content_audit_history.sql.
+// Retention is manual: this endpoint surfaces the stats, the Clean button
+// runs the DELETE.
+
+// GET /api/admin/audit-stats — row count, oldest entry, days since oldest
+app.get('/api/admin/audit-stats', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const sb = supabaseClient.getClient()
+    // Two cheap queries: one for count (HEAD), one for the oldest row
+    const { count, error: countErr } = await sb
+      .from('content_audit_log')
+      .select('*', { count: 'exact', head: true })
+    if (countErr) throw countErr
+
+    const { data: oldestRows, error: oldErr } = await sb
+      .from('content_audit_log')
+      .select('changed_at')
+      .order('changed_at', { ascending: true })
+      .limit(1)
+    if (oldErr) throw oldErr
+
+    const oldest_at = oldestRows?.[0]?.changed_at ?? null
+    const days_since_oldest = oldest_at
+      ? Math.floor((Date.now() - new Date(oldest_at).getTime()) / (1000 * 60 * 60 * 24))
+      : null
+
+    res.json({ total_rows: count ?? 0, oldest_at, days_since_oldest })
+  } catch (e) {
+    logger.error('[Audit] stats error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// POST /api/admin/audit-cleanup — delete entries older than `days` (default 3)
+// Hard-capped at 365 days so a stray/zero/negative value can't wipe the table.
+app.post('/api/admin/audit-cleanup', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const requested = Number(req.body?.days)
+  const days = Number.isFinite(requested) && requested >= 1 && requested <= 365
+    ? Math.floor(requested)
+    : 3
+  try {
+    const sb = supabaseClient.getClient()
+    const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString()
+    const { count, error } = await sb
+      .from('content_audit_log')
+      .delete({ count: 'exact' })
+      .lt('changed_at', cutoff)
+    if (error) throw error
+    logger.info(`[Audit] Cleanup deleted ${count ?? 0} rows older than ${days} days`)
+    res.json({ ok: true, deleted: count ?? 0, days, cutoff })
+  } catch (e) {
+    logger.error('[Audit] cleanup error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {

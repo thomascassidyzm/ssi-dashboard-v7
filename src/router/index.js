@@ -53,6 +53,12 @@ const routes = [
     component: MissionControlHub,
     meta: { title: 'Mission Control' }
   },
+  {
+    path: '/maintenance',
+    name: 'Maintenance',
+    component: () => import('../views/Maintenance.vue'),
+    meta: { title: 'Maintenance' }
+  },
   // ============================================
   // Documentation Section (nested routes with shared layout)
   // ============================================

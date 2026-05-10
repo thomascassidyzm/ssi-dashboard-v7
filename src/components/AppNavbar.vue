@@ -111,7 +111,28 @@ import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
-const { isAuthenticated, isAdmin, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout } = useAuth()
+const { isAuthenticated, isAdmin, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken } = useAuth()
+
+// Audit-log stale check — surfaces a numeric badge on the Maintenance tab
+// when the oldest audit row is older than 30 days, prompting a cleanup.
+// Admin-only and best-effort (silent on error).
+const auditStaleDays = ref(null)
+async function checkAuditStaleness() {
+  if (!isAdmin.value) return
+  try {
+    const token = await getAccessToken()
+    const base = localStorage.getItem('api_base_url') || 'http://localhost:3470'
+    const r = await fetch(`${base}/api/admin/audit-stats`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true',
+        ...(token ? { Authorization: `Bearer ${token}` } : {})
+      }
+    })
+    if (!r.ok) return
+    const stats = await r.json()
+    auditStaleDays.value = stats.days_since_oldest > 30 ? stats.days_since_oldest : null
+  } catch { /* silent */ }
+}
 
 const showUserMenu = ref(false)
 const userMenuRef = ref(null)
@@ -173,7 +194,10 @@ function handleClickOutside(e) {
   }
 }
 
-onMounted(() => document.addEventListener('click', handleClickOutside))
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+  checkAuditStaleness()
+})
 onUnmounted(() => document.removeEventListener('click', handleClickOutside))
 
 const activeCourseCount = ref(0)
@@ -184,10 +208,14 @@ const isHidden = computed(() => route.meta.public === true)
 // Context detection
 const isHome = computed(() => route.path === '/')
 const isJobs = computed(() => route.path === '/jobs')
+const isMaintenance = computed(() => route.path === '/maintenance')
 const isDocs = computed(() => route.path.startsWith('/docs'))
 const isProduction = computed(() => route.path.startsWith('/production/') && route.params.courseCode)
 const courseCode = computed(() => route.params.courseCode || null)
 const isCreateMode = computed(() => courseCode.value === 'new')
+
+// Home-section tabs show on Courses, Activity, and Maintenance pages
+const inHomeSection = computed(() => isHome.value || isJobs.value || isMaintenance.value)
 
 // Show course summary only on home page
 const showSummary = computed(() => isHome.value)
@@ -203,6 +231,7 @@ const title = computed(() => {
   if (isHome.value) return 'Popty'
   if (isDocs.value) return 'Documentation'
   if (isJobs.value) return 'Activity'
+  if (isMaintenance.value) return 'Maintenance'
   if (isCreateMode.value) return 'New Course'
   if (isProduction.value) return getCourseName(courseCode.value)
   return route.meta.title || 'Popty'
@@ -210,16 +239,22 @@ const title = computed(() => {
 
 // Tabs
 const tabs = computed(() => {
-  if (isHome.value) {
+  if (inHomeSection.value) {
     return [
-      { label: 'Courses', to: '/', active: true },
+      { label: 'Courses', to: '/', active: isHome.value },
       {
         label: 'Activity',
         to: '/jobs',
-        active: false,
+        active: isJobs.value,
         badge: activeCourseCount.value > 0 ? activeCourseCount.value : null
       },
-      { label: 'Docs', to: '/docs', active: false }
+      { label: 'Docs', to: '/docs', active: false },
+      {
+        label: 'Maintenance',
+        to: '/maintenance',
+        active: isMaintenance.value,
+        badge: auditStaleDays.value ? `${auditStaleDays.value}d` : null
+      }
     ]
   }
 
