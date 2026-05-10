@@ -58,6 +58,99 @@
         Deleted {{ lastResult.deleted.toLocaleString() }} row{{ lastResult.deleted === 1 ? '' : 's' }}
         older than {{ lastResult.days }} days.
       </p>
+
+      <h2 class="section-title section-title-secondary">Recent changes</h2>
+      <p class="section-blurb">
+        Feed of recent UPDATE / DELETE activity. Click a row to inspect the
+        captured old value. Search hits primary keys + the most common text
+        fields (<code>known_text</code>, <code>target_text</code>).
+      </p>
+
+      <div class="filter-row">
+        <select v-model="filterTable" @change="resetAndLoad">
+          <option value="">All tables</option>
+          <option value="course_legos">course_legos</option>
+          <option value="course_seeds">course_seeds</option>
+          <option value="course_practice_phrases">course_practice_phrases</option>
+          <option value="course_audio">course_audio</option>
+          <option value="courses">courses</option>
+        </select>
+
+        <select v-model.number="filterHours" @change="resetAndLoad">
+          <option :value="1">Last hour</option>
+          <option :value="6">Last 6h</option>
+          <option :value="24">Last 24h</option>
+          <option :value="72">Last 3 days</option>
+          <option :value="168">Last 7 days</option>
+          <option :value="720">Last 30 days</option>
+        </select>
+
+        <input
+          v-model="filterQuery"
+          @keyup.enter="resetAndLoad"
+          type="text"
+          placeholder="Search id or text…"
+          class="search-input"
+        />
+        <button class="filter-apply" @click="resetAndLoad">Search</button>
+      </div>
+
+      <div v-if="eventsError" class="error-banner">{{ eventsError }}</div>
+
+      <div v-if="eventsLoading && events.length === 0" class="loading">Loading events…</div>
+
+      <div v-else-if="events.length === 0" class="empty">No events match these filters.</div>
+
+      <table v-else class="events-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Table</th>
+            <th>Op</th>
+            <th>Primary key</th>
+            <th>By</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="ev in events" :key="ev.id">
+            <tr @click="toggleExpand(ev.id)" class="event-row" :class="{ expanded: expandedId === ev.id }">
+              <td class="cell-time">{{ formatEventTime(ev.changed_at) }}</td>
+              <td class="cell-table"><code>{{ ev.table_name }}</code></td>
+              <td>
+                <span class="op-tag" :class="`op-${ev.change_type.toLowerCase()}`">
+                  {{ ev.change_type }}
+                </span>
+              </td>
+              <td class="cell-pk"><code>{{ ev.primary_key || '—' }}</code></td>
+              <td class="cell-by">{{ ev.changed_by_uid || ev.changed_by_role }}</td>
+              <td class="cell-expand">{{ expandedId === ev.id ? '▾' : '▸' }}</td>
+            </tr>
+            <tr v-if="expandedId === ev.id" class="expanded-row">
+              <td colspan="6">
+                <pre class="json-preview">{{ JSON.stringify(ev.old_row, null, 2) }}</pre>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+
+      <div v-if="events.length > 0" class="pagination">
+        <button
+          class="page-btn"
+          :disabled="offset === 0"
+          @click="prevPage"
+        >‹ Prev</button>
+        <span class="page-info">
+          {{ offset + 1 }}–{{ Math.min(offset + events.length, totalEvents) }}
+          of {{ totalEvents.toLocaleString() }}
+        </span>
+        <button
+          class="page-btn"
+          :disabled="offset + events.length >= totalEvents"
+          @click="nextPage"
+        >Next ›</button>
+      </div>
     </div>
 
     <div v-if="showConfirm" class="modal-backdrop" @click.self="showConfirm = false">
@@ -90,6 +183,18 @@ const keepDays = ref(3)
 const cleaning = ref(false)
 const showConfirm = ref(false)
 const lastResult = ref(null)
+
+// Recent-changes feed state
+const events = ref([])
+const totalEvents = ref(0)
+const eventsLoading = ref(false)
+const eventsError = ref('')
+const filterTable = ref('')
+const filterHours = ref(24)
+const filterQuery = ref('')
+const PAGE_SIZE = 50
+const offset = ref(0)
+const expandedId = ref(null)
 
 const isStale = computed(() => {
   return stats.value?.days_since_oldest !== null && stats.value?.days_since_oldest > 30
@@ -157,7 +262,68 @@ function formatOldest(iso) {
   })
 }
 
-onMounted(loadStats)
+function formatEventTime(iso) {
+  const d = new Date(iso)
+  const now = new Date()
+  const sameDay = d.toDateString() === now.toDateString()
+  if (sameDay) {
+    return d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+  }
+  return d.toLocaleString(undefined, {
+    month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  })
+}
+
+async function loadEvents() {
+  eventsLoading.value = true
+  eventsError.value = ''
+  try {
+    const params = new URLSearchParams({
+      hours: String(filterHours.value),
+      limit: String(PAGE_SIZE),
+      offset: String(offset.value)
+    })
+    if (filterTable.value) params.set('table', filterTable.value)
+    if (filterQuery.value.trim()) params.set('q', filterQuery.value.trim())
+    const r = await authedFetch(`/api/admin/audit-events?${params.toString()}`)
+    if (!r.ok) throw new Error(`HTTP ${r.status}`)
+    const body = await r.json()
+    events.value = body.events
+    totalEvents.value = body.total
+  } catch (e) {
+    eventsError.value = `Failed to load events: ${e.message}`
+  } finally {
+    eventsLoading.value = false
+  }
+}
+
+function resetAndLoad() {
+  offset.value = 0
+  expandedId.value = null
+  loadEvents()
+}
+
+function prevPage() {
+  offset.value = Math.max(0, offset.value - PAGE_SIZE)
+  expandedId.value = null
+  loadEvents()
+}
+
+function nextPage() {
+  offset.value = offset.value + PAGE_SIZE
+  expandedId.value = null
+  loadEvents()
+}
+
+function toggleExpand(id) {
+  expandedId.value = expandedId.value === id ? null : id
+}
+
+onMounted(() => {
+  loadStats()
+  loadEvents()
+})
 </script>
 
 <style scoped>
@@ -336,5 +502,168 @@ onMounted(loadStats)
 .modal-confirm {
   background: #b91c1c;
   color: white;
+}
+
+.section-title-secondary {
+  margin-top: 40px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.filter-row select,
+.filter-row .search-input {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.filter-row .search-input {
+  flex: 1;
+  min-width: 200px;
+}
+.filter-apply {
+  padding: 6px 14px;
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.filter-apply:hover {
+  background: #2563eb;
+}
+
+.empty {
+  font-size: 13px;
+  color: #94a3b8;
+  padding: 24px;
+  text-align: center;
+  border: 1px dashed rgba(148, 163, 184, 0.2);
+  border-radius: 6px;
+}
+
+.events-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.events-table th {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+.events-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  vertical-align: top;
+}
+.event-row {
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.event-row:hover {
+  background: rgba(148, 163, 184, 0.05);
+}
+.event-row.expanded {
+  background: rgba(30, 41, 59, 0.5);
+}
+.cell-time {
+  color: #cbd5e1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.cell-table code,
+.cell-pk code {
+  background: rgba(148, 163, 184, 0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #cbd5e1;
+}
+.cell-by {
+  color: #94a3b8;
+  font-size: 12px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cell-expand {
+  text-align: right;
+  color: #64748b;
+  width: 20px;
+}
+.op-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.op-update {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+}
+.op-delete {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+.expanded-row td {
+  background: rgba(15, 23, 42, 0.6);
+  padding: 0;
+}
+.json-preview {
+  margin: 0;
+  padding: 12px 14px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11px;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 8px;
+}
+.page-btn {
+  padding: 6px 12px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #cbd5e1;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.page-btn:hover:not(:disabled) {
+  background: rgba(30, 41, 59, 0.9);
+}
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.page-info {
+  font-size: 12px;
+  color: #94a3b8;
+  font-variant-numeric: tabular-nums;
 }
 </style>

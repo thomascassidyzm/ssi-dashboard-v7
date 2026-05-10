@@ -8848,6 +8848,63 @@ app.get('/api/admin/audit-stats', async (req, res) => {
   }
 })
 
+// GET /api/admin/audit-events — searchable feed of recent audit rows
+// Query params (all optional):
+//   table=course_legos      filter by source table
+//   hours=24                window in hours (default 24, capped at 720 = 30 days)
+//   q=<text>                substring search inside the JSONB old_row
+//   primary_key=<id>        exact match on primary_key
+//   limit=100 / offset=0    pagination (limit capped at 500)
+// Returns events newest-first + total count for the filter.
+app.get('/api/admin/audit-events', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const sb = supabaseClient.getClient()
+    const hoursRaw = Number(req.query.hours)
+    const hours = Number.isFinite(hoursRaw) && hoursRaw > 0
+      ? Math.min(Math.floor(hoursRaw), 720)
+      : 24
+    const since = new Date(Date.now() - hours * 60 * 60 * 1000).toISOString()
+    const limitRaw = Number(req.query.limit)
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0
+      ? Math.min(Math.floor(limitRaw), 500)
+      : 100
+    const offsetRaw = Number(req.query.offset)
+    const offset = Number.isFinite(offsetRaw) && offsetRaw >= 0
+      ? Math.floor(offsetRaw)
+      : 0
+
+    let q = sb.from('content_audit_log')
+      .select('id,changed_at,change_type,table_name,primary_key,changed_by_role,changed_by_uid,old_row', { count: 'exact' })
+      .gte('changed_at', since)
+      .order('changed_at', { ascending: false })
+      .range(offset, offset + limit - 1)
+
+    if (req.query.table) q = q.eq('table_name', String(req.query.table))
+    if (req.query.primary_key) q = q.eq('primary_key', String(req.query.primary_key))
+    if (req.query.q) {
+      // Substring search across the fields most likely to be useful: the
+      // primary key (lego id, course code) and the visible text fields the
+      // audit usually captures (known_text, target_text). PostgREST can
+      // ilike on JSONB ->> extractions; can't ilike on a JSONB ::text cast.
+      const needle = String(req.query.q).replace(/[%_,]/g, ' ')  // commas would break .or()
+      const pat = `%${needle}%`
+      q = q.or(
+        `primary_key.ilike.${pat},` +
+        `old_row->>known_text.ilike.${pat},` +
+        `old_row->>target_text.ilike.${pat}`
+      )
+    }
+
+    const { data, count, error } = await q
+    if (error) throw error
+    res.json({ events: data || [], total: count ?? 0, limit, offset, hours })
+  } catch (e) {
+    logger.error('[Audit] events error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
 // POST /api/admin/audit-cleanup — delete entries older than `days` (default 3)
 // Hard-capped at 365 days so a stray/zero/negative value can't wipe the table.
 app.post('/api/admin/audit-cleanup', async (req, res) => {
