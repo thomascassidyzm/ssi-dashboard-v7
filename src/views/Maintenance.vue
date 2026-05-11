@@ -76,7 +76,15 @@
           <option value="courses">courses</option>
         </select>
 
+        <select v-model="filterChangeType" @change="resetAndLoad">
+          <option value="">All ops</option>
+          <option value="UPDATE">UPDATE only</option>
+          <option value="DELETE">DELETE only</option>
+        </select>
+
         <select v-model.number="filterHours" @change="resetAndLoad">
+          <option :value="0.25">Last 15 min</option>
+          <option :value="0.5">Last 30 min</option>
           <option :value="1">Last hour</option>
           <option :value="6">Last 6h</option>
           <option :value="24">Last 24h</option>
@@ -276,6 +284,7 @@ const totalEvents = ref(0)
 const eventsLoading = ref(false)
 const eventsError = ref('')
 const filterTable = ref('')
+const filterChangeType = ref('')
 const filterHours = ref(24)
 const filterQuery = ref('')
 const PAGE_SIZE = 50
@@ -381,6 +390,7 @@ async function loadEvents() {
       offset: String(offset.value)
     })
     if (filterTable.value) params.set('table', filterTable.value)
+    if (filterChangeType.value) params.set('change_type', filterChangeType.value)
     if (filterQuery.value.trim()) params.set('q', filterQuery.value.trim())
     const r = await authedFetch(`/api/admin/audit-events?${params.toString()}`)
     if (!r.ok) throw new Error(`HTTP ${r.status}`)

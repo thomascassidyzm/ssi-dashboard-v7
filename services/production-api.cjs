@@ -5985,7 +5985,7 @@ app.post('/api/production/:courseCode/lego/:legoId/mark-new', async (req, res) =
 // Body: { known_text?, target_text?, flag_for_regeneration? }
 app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
   const { courseCode, phraseId } = req.params
-  const { known_text, target_text, flag_for_regeneration } = req.body
+  const { known_text, target_text, flag_for_regeneration, introduce } = req.body
 
   try {
     if (!supabaseClient.isInitialized()) {
@@ -6018,6 +6018,10 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 
     if (target_text !== undefined) {
       updateData.target_text = target_text
+    }
+
+    if (introduce !== undefined) {
+      updateData.introduce = !!introduce
     }
 
     // Handle regeneration flagging in metadata
@@ -8851,7 +8855,9 @@ app.get('/api/admin/audit-stats', async (req, res) => {
 // GET /api/admin/audit-events — searchable feed of recent audit rows
 // Query params (all optional):
 //   table=course_legos      filter by source table
+//   change_type=UPDATE      filter by op (UPDATE or DELETE)
 //   hours=24                window in hours (default 24, capped at 720 = 30 days)
+//                           fractional allowed (0.5 = last 30 min, 0.25 = 15 min)
 //   q=<text>                substring search inside the JSONB old_row
 //   primary_key=<id>        exact match on primary_key
 //   limit=100 / offset=0    pagination (limit capped at 500)
@@ -8861,8 +8867,10 @@ app.get('/api/admin/audit-events', async (req, res) => {
   try {
     const sb = supabaseClient.getClient()
     const hoursRaw = Number(req.query.hours)
+    // Fractional hours allowed so the UI can offer "last 30 min" without
+    // introducing a separate minutes param. Tiny floor prevents 0/negative.
     const hours = Number.isFinite(hoursRaw) && hoursRaw > 0
-      ? Math.min(Math.floor(hoursRaw), 720)
+      ? Math.min(hoursRaw, 720)
       : 24
     const since = new Date(Date.now() - hours * 60 * 60 * 1000).toISOString()
     const limitRaw = Number(req.query.limit)
@@ -8881,6 +8889,10 @@ app.get('/api/admin/audit-events', async (req, res) => {
       .range(offset, offset + limit - 1)
 
     if (req.query.table) q = q.eq('table_name', String(req.query.table))
+    if (req.query.change_type) {
+      const t = String(req.query.change_type).toUpperCase()
+      if (t === 'UPDATE' || t === 'DELETE') q = q.eq('change_type', t)
+    }
     if (req.query.primary_key) q = q.eq('primary_key', String(req.query.primary_key))
     if (req.query.q) {
       // Substring search across the fields most likely to be useful: the
