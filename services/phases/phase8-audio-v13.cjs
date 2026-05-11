@@ -1370,7 +1370,7 @@ app.post('/generate/:courseCode', async (req, res) => {
               lego_id: item.lego_id || null,
               word_boundaries: siblingAudio.word_boundaries || null
             }, {
-              onConflict: 'course_code,text_normalized,language,role'
+              onConflict: 'course_code,text_normalized,language,role,voice_id'
             })
             .select('id')
             .single()
@@ -1482,7 +1482,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           lego_id: item.lego_id || null,
           word_boundaries: wordBoundaries || null
         }, {
-          onConflict: 'course_code,text_normalized,language,role'
+          onConflict: 'course_code,text_normalized,language,role,voice_id'
         })
         .select('id')
         .single()
@@ -2029,7 +2029,7 @@ app.post('/insert', async (req, res) => {
         s3_key: s3Key,
         duration_ms: durationMs
       }, {
-        onConflict: 'course_code,text_normalized,language,role'
+        onConflict: 'course_code,text_normalized,language,role,voice_id'
       })
       .select()
       .single()
@@ -2516,7 +2516,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     const { error: audioError } = await supabase
       .from('course_audio')
       .upsert(audioRecords, {
-        onConflict: 'course_code,text_normalized,language,role',
+        onConflict: 'course_code,text_normalized,language,role,voice_id',
         ignoreDuplicates: true
       })
 
@@ -2703,7 +2703,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         const { error: compAudioError } = await supabase
           .from('course_audio')
           .upsert(compAudioRecords, {
-            onConflict: 'course_code,text_normalized,language,role',
+            onConflict: 'course_code,text_normalized,language,role,voice_id',
             ignoreDuplicates: true
           })
 
@@ -3320,7 +3320,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
               duration_ms: siblingAudio.duration_ms,
               word_boundaries: siblingAudio.word_boundaries || null
             }, {
-              onConflict: 'course_code,text_normalized,language,role'
+              onConflict: 'course_code,text_normalized,language,role,voice_id'
             })
             .select('id')
             .single()
@@ -3398,7 +3398,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
           duration_ms: durationMs,
           word_boundaries: wordBoundaries || null
         }, {
-          onConflict: 'course_code,text_normalized,language,role'
+          onConflict: 'course_code,text_normalized,language,role,voice_id'
         })
         .select('id')
         .single()
@@ -3878,7 +3878,7 @@ app.post('/splice-components/:courseCode', async (req, res) => {
             s3_key: s3Key,
             duration_ms: durationMs
           }, {
-            onConflict: 'course_code,text_normalized,language,role'
+            onConflict: 'course_code,text_normalized,language,role,voice_id'
           })
           .select('id')
           .single()
@@ -3937,22 +3937,55 @@ app.post('/splice-components/:courseCode', async (req, res) => {
 // POD AUDIO GENERATION (Layer 2 listening pods)
 // =============================================================================
 // Uses the same masterAudio + S3 + course_audio pipeline as course audio.
-// Pod sentences live in listening_pod_sentences; target audio uses the
-// per-pod speaker->voice mapping from listening_pods.speakers, known audio
-// uses the course-wide known voice from courses.voice_config.
+// Pod sentences live in listening_pod_sentences. Both target and known audio
+// use per-speaker voice assignments from listening_pods.speakers (set by
+// pod-sync, sourced from app_config.pod_voice_pools).
+//
+// Pod speakers schema (set by tools/pod-sync.cjs):
+//   { [speaker]: { gender, target: {provider,voice_id,name}, known: {...} } }
+// Legacy shape (pre-2026-05-05 pods) had `{ provider, voice_id, gender }`
+// with no known assignment. Those fall through to ctx.knownVoice for known
+// audio — preserves existing audio on previously-shipped pods.
 
 const POD_CHARS_TO_COST = 4.20 / 1_000_000  // xAI pricing; near-identical to Azure scale, rough estimate
 
+// Canonical speaker name = parens stripped. Mirrors tools/pod-sync.cjs so the
+// same key collapses timed/gendered variants ("Susjed (08:00)" / "Susjed (M)"
+// → "Susjed") into one voice assignment.
+function canonicalSpeakerName(speaker) {
+  return (speaker || '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim()
+}
+
 /**
- * Resolve the voice config for a pod sentence's target audio.
- * Returns { voice_id, provider, gender } from pod.speakers for this speaker,
- * falling back to pod.speakers._default, falling back to xAI 'sal'.
+ * Resolve the voice for a pod sentence's audio on a given track.
+ * track: 'target' | 'known'
+ * Returns { voice_id, provider, gender } or null if unresolvable for this track.
  */
-function resolvePodSpeakerVoice(podSpeakers, speaker) {
+function resolvePodSpeakerVoice(podSpeakers, speaker, track) {
   const mapping = podSpeakers || {}
-  return mapping[speaker]
-      || mapping._default
-      || { voice_id: 'sal', provider: 'xai', gender: 'n' }
+  // Try canonical first (new pods), fall back to raw key (legacy pods that
+  // stored raw speaker names), fall back to _default.
+  const canon = canonicalSpeakerName(speaker)
+  const entry = mapping[canon] || mapping[speaker] || mapping._default
+  if (!entry) return null
+
+  // New shape (per-track)
+  if (entry[track] && entry[track].voice_id) {
+    return {
+      voice_id: entry[track].voice_id,
+      provider: entry[track].provider || 'azure',
+      gender: entry.gender || 'n',
+    }
+  }
+  // Legacy shape only carries the target voice
+  if (track === 'target' && entry.voice_id) {
+    return {
+      voice_id: entry.voice_id,
+      provider: entry.provider || 'xai',
+      gender: entry.gender || 'n',
+    }
+  }
+  return null
 }
 
 /**
@@ -4030,7 +4063,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice }) {
       s3_key: s3Key,
       duration_ms: durationMs,
     }, {
-      onConflict: 'course_code,text_normalized,language,role',
+      onConflict: 'course_code,text_normalized,language,role,voice_id',
     })
     .select('id')
     .single()
@@ -4104,11 +4137,14 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
       const missing = { target: [], known: [] }
       for (const s of pod.sentences) {
         if (!s.target_audio_id) {
-          const voice = resolvePodSpeakerVoice(pod.speakers, s.speaker)
-          missing.target.push({ id: s.id, speaker: s.speaker, voice_id: voice.voice_id, chars: (s.target_text || '').length })
+          const voice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target')
+          missing.target.push({ id: s.id, speaker: s.speaker, voice_id: voice?.voice_id, chars: (s.target_text || '').length })
         }
         if (!s.known_audio_id) {
-          missing.known.push({ id: s.id, voice_id: ctx.knownVoice.voice_id, chars: (s.known_text || '').length })
+          // Per-speaker known voice from app_config.pod_voice_pools (via pod-sync).
+          // Legacy pods without a known assignment fall through to ctx.knownVoice.
+          const voice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'known') || ctx.knownVoice
+          missing.known.push({ id: s.id, speaker: s.speaker, voice_id: voice.voice_id, chars: (s.known_text || '').length })
         }
       }
       const podChars = missing.target.reduce((a, b) => a + b.chars, 0) + missing.known.reduce((a, b) => a + b.chars, 0)
@@ -4179,11 +4215,14 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             text: s.target_text,
             language: ctx.targetLang,
             role: 'target1',
-            voice: resolvePodSpeakerVoice(pod.speakers, s.speaker),
+            voice: resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target'),
             link_column: 'target_audio_id',
           })
         }
         if (roles.includes('known') && !s.known_audio_id) {
+          // Per-speaker known voice from pod.speakers (new shape), or course-wide
+          // ctx.knownVoice for legacy pods that haven't been re-synced.
+          const knownVoice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'known') || ctx.knownVoice
           workQueue.push({
             kind: 'known',
             sentence_id: s.id,
@@ -4191,7 +4230,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             text: s.known_text,
             language: ctx.knownLang,
             role: 'known',
-            voice: ctx.knownVoice,
+            voice: knownVoice,
             link_column: 'known_audio_id',
           })
         }

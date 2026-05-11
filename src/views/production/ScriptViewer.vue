@@ -155,6 +155,14 @@
                 Expand All
               </button>
               <button
+                @click="hideListening = !hideListening"
+                :class="hideListening ? 'bg-fuchsia-700 text-fuchsia-100 hover:bg-fuchsia-600' : 'text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600'"
+                class="px-3 py-1.5 text-sm rounded transition-colors"
+                :title="hideListening ? 'Show LISTEN / POD items' : 'Hide LISTEN / POD items so QA can scan main content'"
+              >
+                {{ hideListening ? 'Show Listening' : 'Hide Listening' }}
+              </button>
+              <button
                 @click="exportLearnerScript"
                 :disabled="!learningJourneyData"
                 class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
@@ -344,11 +352,12 @@
           v-else-if="learningJourneyData"
           ref="learningJourneyRef"
           :rounds="filteredJourneyRounds"
-          :all-items="learningJourneyData?.allItems || []"
+          :all-items="filteredJourneyAllItems"
           :course-code="courseCode"
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
           :hide-controls="true"
+          :hide-listening="hideListening"
           :flagged-audio-uuids="flaggedAudioUuids"
           :regenerating-uuids="regeneratingAudioUuids"
           :flagged-phrase-ids="journeyFlaggedPhraseIds"
@@ -974,6 +983,7 @@ const journeyHasMore = ref(true);
 // Journey search (server-side across all content)
 const journeySearch = ref('');
 const journeySearchResults = ref<any[] | null>(null);
+const journeySearchAllItems = ref<any[] | null>(null);
 const journeySearching = ref(false);
 let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -983,6 +993,7 @@ watch(journeySearch, (q) => {
   const trimmed = q.trim();
   if (!trimmed) {
     journeySearchResults.value = null;
+    journeySearchAllItems.value = null;
     journeySearching.value = false;
     return;
   }
@@ -1002,10 +1013,12 @@ async function searchJourney(query: string) {
     // Only update if search query hasn't changed during fetch
     if (journeySearch.value.trim() === query) {
       journeySearchResults.value = data.rounds || [];
+      journeySearchAllItems.value = data.allItems || [];
     }
   } catch (err) {
     console.error('Journey search error:', err);
     journeySearchResults.value = [];
+    journeySearchAllItems.value = [];
   } finally {
     journeySearching.value = false;
   }
@@ -1017,6 +1030,17 @@ const filteredJourneyRounds = computed(() => {
     return journeySearchResults.value;
   }
   return learningJourneyData.value?.rounds || [];
+});
+
+// Player needs items for whichever rounds are currently displayed.
+// When searching, the search endpoint returns full items for matched rounds
+// (which may be outside the loaded page window) — use those so the player
+// can resolve audio for hits like R603 even when only R1-R20 are loaded.
+const filteredJourneyAllItems = computed(() => {
+  if (journeySearch.value.trim() && journeySearchAllItems.value !== null) {
+    return journeySearchAllItems.value;
+  }
+  return learningJourneyData.value?.allItems || [];
 });
 
 // Batch Selection State
@@ -1183,6 +1207,10 @@ const collapseAllJourney = () => {
 const expandAllJourney = () => {
   learningJourneyRef.value?.expandAll();
 };
+
+// QA toggle: hide LISTEN/POD items in the journey view so reviewers (Deborah)
+// can scan main course content without scrolling past listening cycles.
+const hideListening = ref(false);
 
 // Export learner script as markdown download
 const exportLearnerScript = () => {

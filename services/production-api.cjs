@@ -6287,7 +6287,7 @@ app.post('/api/production/:courseCode/lego/:legoId/mark-new', async (req, res) =
 // Body: { known_text?, target_text?, flag_for_regeneration? }
 app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
   const { courseCode, phraseId } = req.params
-  const { known_text, target_text, flag_for_regeneration } = req.body
+  const { known_text, target_text, flag_for_regeneration, introduce } = req.body
 
   try {
     if (!supabaseClient.isInitialized()) {
@@ -6320,6 +6320,10 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 
     if (target_text !== undefined) {
       updateData.target_text = target_text
+    }
+
+    if (introduce !== undefined) {
+      updateData.introduce = !!introduce
     }
 
     // Handle regeneration flagging in metadata
@@ -8573,6 +8577,47 @@ const { execFile, spawn } = require('child_process')
 const { promisify } = require('util')
 const execFileAsync = promisify(execFile)
 
+// Run `pm2 save` only when every managed process is online and has been up
+// long enough to not be mid-flap. Polls pm2 jlist until healthy or timeout.
+// Reason this exists: a naive `pm2 restart X && pm2 save` can capture a
+// 'launching' or 'errored' state into ~/.pm2/dump.pm2, and the next reboot
+// will resurrect that broken state — services come up "stopped" and the
+// machine is unreachable until someone SSHs in.
+async function pm2SaveIfHealthy({ waitMs = 10000, minUptimeMs = 5000 } = {}) {
+  const deadline = Date.now() + waitMs
+  let lastUnhealthy = []
+  while (Date.now() < deadline) {
+    try {
+      const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
+      const procs = JSON.parse(stdout || '[]')
+      if (procs.length === 0) {
+        return { saved: false, reason: 'no pm2 processes' }
+      }
+      const now = Date.now()
+      const unhealthy = procs.filter(p => {
+        const status = p.pm2_env?.status
+        const uptime = p.pm2_env?.pm_uptime ? now - p.pm2_env.pm_uptime : 0
+        return status !== 'online' || uptime < minUptimeMs
+      }).map(p => ({
+        name: p.name,
+        status: p.pm2_env?.status || '?',
+        uptime_ms: p.pm2_env?.pm_uptime ? now - p.pm2_env.pm_uptime : 0
+      }))
+      if (unhealthy.length === 0) {
+        await execFileAsync('bash', ['-c', 'pm2 save'])
+        return { saved: true, reason: 'all online' }
+      }
+      lastUnhealthy = unhealthy
+    } catch (e) {
+      lastUnhealthy = [{ name: 'pm2 jlist failed', status: e.message }]
+    }
+    await new Promise(r => setTimeout(r, 500))
+  }
+  logger.warn('[pm2SaveIfHealthy] save skipped, unhealthy:',
+    lastUnhealthy.map(u => `${u.name}=${u.status}`).join(', '))
+  return { saved: false, reason: 'unhealthy after timeout', unhealthy: lastUnhealthy }
+}
+
 // GET /api/admin/agents — list all iTerm2 sessions with their status
 app.get('/api/admin/agents', async (req, res) => {
   try {
@@ -8752,7 +8797,7 @@ app.post('/api/admin/pm2/fix', async (req, res) => {
   setTimeout(async () => {
     try {
       await execFileAsync('bash', ['-c', 'pm2 restart all --watch false'])
-      await execFileAsync('bash', ['-c', 'pm2 save'])
+      await pm2SaveIfHealthy()
     } catch (e) {
       logger.warn('[Admin] pm2/fix error:', e.message)
     }
@@ -8770,15 +8815,18 @@ app.post('/api/admin/pm2/restart', async (req, res) => {
   const selfName = process.env.name || 'production-api'
   if (name === selfName) {
     res.json({ ok: true, name, message: `Self-restart scheduled in 1s` })
-    setTimeout(() => {
-      execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
-        .catch(e => logger.warn('[Admin] self-restart error:', e.message))
+    setTimeout(async () => {
+      try {
+        await execFileAsync('bash', ['-c', `pm2 restart ${name}`])
+        await pm2SaveIfHealthy()
+      } catch (e) { logger.warn('[Admin] self-restart error:', e.message) }
     }, 1000)
     return
   }
   try {
-    const { stdout } = await execFileAsync('bash', ['-c', `pm2 restart ${name} && pm2 save`])
-    res.json({ ok: true, name, output: stdout.trim() })
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 restart ${name}`])
+    const save = await pm2SaveIfHealthy()
+    res.json({ ok: true, name, output: stdout.trim(), save })
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message })
   }
@@ -8790,8 +8838,11 @@ app.post('/api/admin/pm2/stop', async (req, res) => {
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
-    const { stdout } = await execFileAsync('bash', ['-c', `pm2 stop ${name} && pm2 save`])
-    res.json({ ok: true, name, output: stdout.trim() })
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 stop ${name}`])
+    // Stop is an explicit user action — capture it. But only if no OTHER
+    // process is mid-flap, otherwise we'd persist some unrelated bad state.
+    const save = await pm2SaveIfHealthy({ waitMs: 3000 })
+    res.json({ ok: true, name, output: stdout.trim(), save })
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message })
   }
@@ -8803,8 +8854,9 @@ app.post('/api/admin/pm2/delete', async (req, res) => {
   const name = req.body?.name
   if (!name) return res.status(400).json({ error: 'name required' })
   try {
-    const { stdout } = await execFileAsync('bash', ['-c', `pm2 delete ${name} && pm2 save`])
-    res.json({ ok: true, name, output: stdout.trim() })
+    const { stdout } = await execFileAsync('bash', ['-c', `pm2 delete ${name}`])
+    const save = await pm2SaveIfHealthy({ waitMs: 3000 })
+    res.json({ ok: true, name, output: stdout.trim(), save })
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message })
   }
@@ -8821,10 +8873,10 @@ app.post('/api/admin/setup-remote', async (req, res) => {
 
   const results = {}
 
-  // 1. pm2 save
+  // 1. pm2 save (healthy only)
   try {
-    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 save'])
-    results.pm2_save = { ok: true, output: stdout.trim() }
+    const result = await pm2SaveIfHealthy()
+    results.pm2_save = { ok: result.saved, ...result }
   } catch (e) {
     results.pm2_save = { ok: false, error: e.message }
   }
@@ -8912,10 +8964,13 @@ app.post('/api/admin/git-pull', async (req, res) => {
     const pull = (await execFileAsync('git', ['pull', '--ff-only'], { cwd: projectDir })).stdout.trim()
     add(`git pull: ${pull}`)
     res.json({ ok: true, log })
-    // Restart services after responding
+    // Restart services after responding. Save only after they settle —
+    // see pm2SaveIfHealthy comment for why this matters.
     setTimeout(async () => {
-      try { await execFileAsync('bash', ['-c', 'pm2 restart all --watch false && pm2 save']) }
-      catch (e) { logger.warn('[git-pull] restart error:', e.message) }
+      try {
+        await execFileAsync('bash', ['-c', 'pm2 restart all --watch false'])
+        await pm2SaveIfHealthy()
+      } catch (e) { logger.warn('[git-pull] restart error:', e.message) }
     }, 2000)
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message, log })
@@ -8980,6 +9035,31 @@ async function getMemStats() {
   }
 }
 
+// Disk stats for the root volume. `df -Pk /` gives portable single-line
+// output with sizes in 1024-byte blocks. On macOS APFS the raw "1024-blocks"
+// includes sealed system volumes, so used/total reads at ~3% on a healthy
+// machine; we report the container-fullness view (used / (used + available))
+// to match df's own Capacity column and what a human means by "disk full".
+async function getDiskStats() {
+  try {
+    const { stdout } = await execFileAsync('df', ['-Pk', '/'])
+    const lines = stdout.trim().split('\n')
+    const parts = lines[lines.length - 1].trim().split(/\s+/)
+    const usedBytes = parseInt(parts[2], 10) * 1024
+    const freeBytes = parseInt(parts[3], 10) * 1024
+    const allocatableBytes = usedBytes + freeBytes
+    return {
+      total_bytes: allocatableBytes,
+      used_bytes: usedBytes,
+      free_bytes: freeBytes,
+      used_percent: Math.round((usedBytes / allocatableBytes) * 1000) / 10,
+      mount: parts[5] || '/'
+    }
+  } catch (e) {
+    return { error: e.message }
+  }
+}
+
 // Check reboot readiness — whether PM2 will auto-resurrect after reboot.
 // Readable without sudo; all paths are in the current user's space or are
 // root-owned files whose *existence* is the only bit we need.
@@ -9026,6 +9106,7 @@ app.get('/api/admin/system-health', async (req, res) => {
     platform: os.platform(),
     uptime_seconds: Math.round(os.uptime()),
     mem: await getMemStats(),
+    disk: await getDiskStats(),
     load_avg: os.loadavg(),
     cpu_count: os.cpus().length,
     pm2: [],
@@ -9077,24 +9158,10 @@ app.post('/api/admin/restart-machine', async (req, res) => {
   // Save the current pm2 state ONLY if every process is online. If anything
   // is unhealthy we leave the existing dump alone — resurrect will use the
   // last known-good snapshot. Never overwrite a good dump with a broken one.
-  let save = 'preserved previous dump'
-  try {
-    const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
-    const procs = JSON.parse(stdout)
-    const allOnline = procs.length > 0 && procs.every(p => p.pm2_env?.status === 'online')
-    if (allOnline) {
-      await execFileAsync('bash', ['-c', 'pm2 save'])
-      save = 'saved current state'
-    } else {
-      const bad = procs.filter(p => p.pm2_env?.status !== 'online')
-        .map(p => `${p.name}=${p.pm2_env?.status || '?'}`)
-      logger.warn('[Admin] pm2 save skipped, unhealthy:', bad.join(', '))
-    }
-  } catch (e) {
-    logger.warn('[Admin] pm2 save check failed:', e.message)
-  }
+  const saveResult = await pm2SaveIfHealthy({ waitMs: 3000 })
+  const save = saveResult.saved ? 'saved current state' : 'preserved previous dump'
 
-  res.json({ ok: true, save, message: 'Rebooting in 5 seconds...' })
+  res.json({ ok: true, save, saveResult, message: 'Rebooting in 5 seconds...' })
 
   // Detached so it survives if production-api gets killed for any reason.
   // Primary reboot path is osascript — goes through macOS GUI restart flow,
@@ -9105,6 +9172,257 @@ app.post('/api/admin/restart-machine', async (req, res) => {
     'killall iTerm2 2>/dev/null; killall "Google Chrome" 2>/dev/null; ' +
     'osascript -e \'tell application "System Events" to restart\' || sudo -n /sbin/reboot'
   ], { detached: true, stdio: 'ignore' }).unref()
+})
+
+// ============================================================================
+// Content audit log — read stats + manual cleanup
+// ============================================================================
+// Backs the popty Maintenance page. The audit log itself is populated by
+// triggers on the at-risk content tables (course_legos, course_seeds, etc.)
+// — see ssi-learning-app migration 20260510_content_audit_history.sql.
+// Retention is manual: this endpoint surfaces the stats, the Clean button
+// runs the DELETE.
+
+// GET /api/admin/audit-stats — row count, oldest entry, days since oldest
+app.get('/api/admin/audit-stats', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const sb = supabaseClient.getClient()
+    // Two cheap queries: one for count (HEAD), one for the oldest row
+    const { count, error: countErr } = await sb
+      .from('content_audit_log')
+      .select('*', { count: 'exact', head: true })
+    if (countErr) throw countErr
+
+    const { data: oldestRows, error: oldErr } = await sb
+      .from('content_audit_log')
+      .select('changed_at')
+      .order('changed_at', { ascending: true })
+      .limit(1)
+    if (oldErr) throw oldErr
+
+    const oldest_at = oldestRows?.[0]?.changed_at ?? null
+    const days_since_oldest = oldest_at
+      ? Math.floor((Date.now() - new Date(oldest_at).getTime()) / (1000 * 60 * 60 * 24))
+      : null
+
+    res.json({ total_rows: count ?? 0, oldest_at, days_since_oldest })
+  } catch (e) {
+    logger.error('[Audit] stats error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// GET /api/admin/audit-events — searchable feed of recent audit rows
+// Query params (all optional):
+//   table=course_legos      filter by source table
+//   change_type=UPDATE      filter by op (UPDATE or DELETE)
+//   hours=24                window in hours (default 24, capped at 720 = 30 days)
+//                           fractional allowed (0.5 = last 30 min, 0.25 = 15 min)
+//   q=<text>                substring search inside the JSONB old_row
+//   primary_key=<id>        exact match on primary_key
+//   limit=100 / offset=0    pagination (limit capped at 500)
+// Returns events newest-first + total count for the filter.
+app.get('/api/admin/audit-events', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const sb = supabaseClient.getClient()
+    const hoursRaw = Number(req.query.hours)
+    // Fractional hours allowed so the UI can offer "last 30 min" without
+    // introducing a separate minutes param. Tiny floor prevents 0/negative.
+    const hours = Number.isFinite(hoursRaw) && hoursRaw > 0
+      ? Math.min(hoursRaw, 720)
+      : 24
+    const since = new Date(Date.now() - hours * 60 * 60 * 1000).toISOString()
+    const limitRaw = Number(req.query.limit)
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0
+      ? Math.min(Math.floor(limitRaw), 500)
+      : 100
+    const offsetRaw = Number(req.query.offset)
+    const offset = Number.isFinite(offsetRaw) && offsetRaw >= 0
+      ? Math.floor(offsetRaw)
+      : 0
+
+    let q = sb.from('content_audit_log')
+      .select('id,changed_at,change_type,table_name,primary_key,changed_by_role,changed_by_uid,old_row', { count: 'exact' })
+      .gte('changed_at', since)
+      .order('changed_at', { ascending: false })
+      .range(offset, offset + limit - 1)
+
+    if (req.query.table) q = q.eq('table_name', String(req.query.table))
+    if (req.query.change_type) {
+      const t = String(req.query.change_type).toUpperCase()
+      if (t === 'UPDATE' || t === 'DELETE') q = q.eq('change_type', t)
+    }
+    if (req.query.primary_key) q = q.eq('primary_key', String(req.query.primary_key))
+    if (req.query.q) {
+      // Substring search across the fields most likely to be useful: the
+      // primary key (lego id, course code) and the visible text fields the
+      // audit usually captures (known_text, target_text). PostgREST can
+      // ilike on JSONB ->> extractions; can't ilike on a JSONB ::text cast.
+      const needle = String(req.query.q).replace(/[%_,]/g, ' ')  // commas would break .or()
+      const pat = `%${needle}%`
+      q = q.or(
+        `primary_key.ilike.${pat},` +
+        `old_row->>known_text.ilike.${pat},` +
+        `old_row->>target_text.ilike.${pat}`
+      )
+    }
+
+    const { data, count, error } = await q
+    if (error) throw error
+    res.json({ events: data || [], total: count ?? 0, limit, offset, hours })
+  } catch (e) {
+    logger.error('[Audit] events error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// Map of audited table → primary-key column. Required for restore to know
+// what to match on / upsert against. Keep in sync with the triggers in
+// ssi-learning-app migration 20260510_content_audit_history.sql.
+const AUDIT_TABLE_PK = {
+  course_legos: 'id',
+  course_seeds: 'id',
+  course_practice_phrases: 'id',
+  course_audio: 'id',
+  courses: 'course_code',
+  // Added 2026-05-11 (ssi-learning-app migration 20260511_audit_more_content_tables.sql)
+  canonical_seeds: 'id',
+  canonical_seed_translations: 'id',
+  listening_pod_sentences: 'id',
+  listening_pods: 'id',
+  lego_introductions: 'id',
+  voices: 'voice_id',
+  shared_audio: 'id'
+}
+
+// GET /api/admin/audit-row?table=X&pk=Y — fetch the current live row at
+// (table, primary_key). Used by the Maintenance UI to render a captured-vs-
+// current diff when an audit event is expanded. Returns { current: row | null };
+// null means the row no longer exists (was deleted since the captured snapshot).
+app.get('/api/admin/audit-row', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const tableName = String(req.query.table || '')
+  const pkValue = String(req.query.pk || '')
+  if (!tableName || !pkValue) return res.status(400).json({ error: 'table + pk required' })
+  const pkCol = AUDIT_TABLE_PK[tableName]
+  if (!pkCol) return res.status(400).json({ error: `unknown table ${tableName}` })
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb
+      .from(tableName)
+      .select('*')
+      .eq(pkCol, pkValue)
+      .maybeSingle()
+    if (error) throw error
+    res.json({ current: data ?? null })
+  } catch (e) {
+    logger.error('[Audit] row fetch error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// POST /api/admin/audit-restore — restore rows to their captured state
+// Body: { event_ids: [...] }
+//
+// For each event we upsert the OLD row back into the source table. Upsert
+// handles both cases cleanly: UPDATE rollback (row exists, gets reverted to
+// the captured snapshot) and DELETE rollback (row absent, gets inserted).
+//
+// Conflict resolution: if multiple selected events touch the same
+// (table, primary_key), only the OLDEST is applied — that restores to the
+// earliest pre-change snapshot. Newer events for the same row would just
+// overwrite the older restore.
+//
+// The restore itself is a write to the source table, so the trigger fires
+// AGAIN and a new audit row gets captured for the restore. Rollbacks are
+// themselves rollback-able.
+app.post('/api/admin/audit-restore', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const eventIds = Array.isArray(req.body?.event_ids) ? req.body.event_ids : []
+  if (eventIds.length === 0) return res.status(400).json({ error: 'event_ids required' })
+  if (eventIds.length > 1000) return res.status(400).json({ error: 'max 1000 events per restore' })
+
+  try {
+    const sb = supabaseClient.getClient()
+    const { data: events, error: fetchErr } = await sb
+      .from('content_audit_log')
+      .select('id,changed_at,change_type,table_name,primary_key,old_row')
+      .in('id', eventIds)
+      .order('changed_at', { ascending: true })  // oldest first
+    if (fetchErr) throw fetchErr
+
+    // Oldest-per-(table, primary_key) wins. Drop any newer duplicates from
+    // the apply list but report them as "skipped" so the UI can show them.
+    const seen = new Set()
+    const toApply = []
+    const skipped = []
+    for (const ev of events) {
+      const key = `${ev.table_name} ${ev.primary_key}`
+      if (seen.has(key)) {
+        skipped.push({ event_id: ev.id, reason: 'newer event selected for same row; oldest applied' })
+        continue
+      }
+      seen.add(key)
+      toApply.push(ev)
+    }
+
+    const restored = []
+    const failed = []
+    for (const ev of toApply) {
+      const pkCol = AUDIT_TABLE_PK[ev.table_name]
+      if (!pkCol) {
+        failed.push({ event_id: ev.id, reason: `unknown table ${ev.table_name}` })
+        continue
+      }
+      try {
+        const { error } = await sb.from(ev.table_name).upsert(ev.old_row, { onConflict: pkCol })
+        if (error) {
+          failed.push({ event_id: ev.id, reason: error.message })
+        } else {
+          restored.push({
+            event_id: ev.id,
+            table: ev.table_name,
+            primary_key: ev.primary_key,
+            change_type: ev.change_type
+          })
+        }
+      } catch (e) {
+        failed.push({ event_id: ev.id, reason: e.message })
+      }
+    }
+
+    logger.info(`[Audit] Restore: ${restored.length} ok, ${failed.length} failed, ${skipped.length} skipped`)
+    res.json({ restored, failed, skipped })
+  } catch (e) {
+    logger.error('[Audit] restore error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// POST /api/admin/audit-cleanup — delete entries older than `days` (default 3)
+// Hard-capped at 365 days so a stray/zero/negative value can't wipe the table.
+app.post('/api/admin/audit-cleanup', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const requested = Number(req.body?.days)
+  const days = Number.isFinite(requested) && requested >= 1 && requested <= 365
+    ? Math.floor(requested)
+    : 3
+  try {
+    const sb = supabaseClient.getClient()
+    const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString()
+    const { count, error } = await sb
+      .from('content_audit_log')
+      .delete({ count: 'exact' })
+      .lt('changed_at', cutoff)
+    if (error) throw error
+    logger.info(`[Audit] Cleanup deleted ${count ?? 0} rows older than ${days} days`)
+    res.json({ ok: true, deleted: count ?? 0, days, cutoff })
+  } catch (e) {
+    logger.error('[Audit] cleanup error:', e.message)
+    res.status(500).json({ error: e.message })
+  }
 })
 
 const PORT = process.env.PRODUCTION_API_PORT || 3470

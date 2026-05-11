@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Layer 1 Listening — what plays at round N</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --ink: #1c1c1c;
+    --muted: #6a6a6a;
+    --accent: #8a5a2b;
+    --card: #ffffff;
+    --rule: #e6e1d6;
+    --active: #fbecd8;
+    --reserve: #f2d7b0;
+    --graduated: #e8efde;
+    --pending: #f0eee9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 14px/1.45 -apple-system, system-ui, sans-serif;
+    padding: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0 0 24px;
+  }
+  .controls {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 18px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 18px;
+    align-items: end;
+  }
+  label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  select, input[type="number"] {
+    font: inherit;
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    background: white;
+  }
+  input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+  }
+  .round-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    gap: 10px;
+    align-items: center;
+  }
+  .stats {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .stat-num {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .stat-lbl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .firing {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .pill.fire { background: var(--accent); color: white; }
+  .pill.no { background: var(--rule); color: var(--muted); }
+  .firing-section {
+    flex: 1;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .section h2 {
+    margin: 0 0 4px;
+    font-size: 15px;
+  }
+  .section .meta {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .seed {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .seed:last-child { border-bottom: 0; }
+  .seed-head {
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .seed-num {
+    font-family: ui-monospace, Menlo, monospace;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .seed-target {
+    font-weight: 500;
+  }
+  .seed-known {
+    color: var(--muted);
+    font-style: italic;
+    font-size: 13px;
+  }
+  .seed-plays {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    margin-left: 70px;
+    flex-wrap: wrap;
+  }
+  .play-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px 4px 6px;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: ui-monospace, Menlo, monospace;
+    color: var(--ink);
+  }
+  .play-pill:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  .play-pill:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .play-pill .icon { font-size: 9px; }
+  .play-pill.role-ps { background: #fff8ed; }
+  .play-pill.role-ps2x { background: #fff1d9; }
+  .play-pill.role-trans { background: #f5f1e8; }
+  .empty {
+    color: var(--muted);
+    font-style: italic;
+    padding: 8px 0;
+  }
+  .loading {
+    color: var(--muted);
+    padding: 40px;
+    text-align: center;
+  }
+  .err {
+    background: #fdeeee;
+    border: 1px solid #d4a0a0;
+    color: #8b2a2a;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .timeline {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .timeline-bar {
+    display: flex;
+    height: 26px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+    background: var(--pending);
+  }
+  .timeline-seg {
+    height: 100%;
+    border-right: 1px solid rgba(255,255,255,0.4);
+  }
+  .timeline-seg:last-child { border-right: 0; }
+  .timeline-seg.graduated { background: var(--graduated); }
+  .timeline-seg.reserve { background: var(--reserve); }
+  .timeline-seg.active { background: var(--active); }
+  .timeline-key {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .timeline-key .swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 4px;
+    vertical-align: middle;
+    border: 1px solid var(--rule);
+  }
+</style>
+</head>
+<body>
+
+<h1>Layer 1 Listening — what plays at round N</h1>
+<p class="sub">Replicates the graduation algorithm from <code>generateLearningScript.ts</code> so you can see exactly which seeds Layer 1 would play at any round, sourced from <code>course_seeds</code>.</p>
+
+<div id="err" style="display:none" class="err"></div>
+
+<div class="controls">
+  <div>
+    <label for="course">Course</label>
+    <select id="course"></select>
+  </div>
+  <div>
+    <label for="round">Round</label>
+    <div class="round-row">
+      <input id="round-num" type="number" min="1" max="600" value="100" style="text-align:center">
+      <input id="round" type="range" min="1" max="600" value="100">
+      <span id="round-display" style="text-align:right; color: var(--muted); font-family: ui-monospace, Menlo, monospace;">/ 600</span>
+    </div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="loading">Pick a course to start.</div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://swfvymspfxmnfhevgdkg.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_qtEtXRcEOkvapw99x5suww_SuCXYmvg'
+const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
+
+// Algorithm constants — overwritten by DB load (algorithm_config key=listening).
+// Defaults here match DEFAULT_LISTENING in useAlgorithmConfig.ts as a fallback.
+let GRADUATION_OFFSET = 56
+let L1_ACTIVE_SIZE = 10
+let L1_ACTIVE_INTERVAL = 3
+let L1_RESERVE_SIZE = 50
+let L1_RESERVE_INTERVAL = 13
+// 'ps' = target @ 1×, 'ps2x' = target @ 2×, 'trans' = known @ 1×.
+let LAYER1_PLAYLIST = ['ps', 'ps2x', 'ps2x']
+const ROLE_LABEL = { ps: '1×', ps2x: '2×', trans: 'EN' }
+const ROLE_DESC = {
+  ps: 'target at 1.0× — slow listen for clarity',
+  ps2x: 'target at 2.0× — fast rep for retention',
+  trans: 'known-language audio at 1.0×',
+}
+
+// State
+let allCourses = []
+let currentCourseCode = null
+let seedLastRound = new Map() // seed_number -> round of last is_new LEGO
+let seedRows = new Map()       // seed_number -> seeds row
+let totalRounds = 0
+
+// ============================================================================
+// Supabase helpers
+// ============================================================================
+
+async function sb(table, query) {
+  const url = `${SUPABASE_URL}/rest/v1/${table}?${query}`
+  const res = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+      Accept: 'application/json',
+    },
+  })
+  if (!res.ok) throw new Error(`${table}: ${res.status} ${await res.text()}`)
+  return res.json()
+}
+
+function showError(msg) {
+  const el = document.getElementById('err')
+  el.textContent = msg
+  el.style.display = 'block'
+}
+function clearError() {
+  document.getElementById('err').style.display = 'none'
+}
+
+// ============================================================================
+// Compute seedLastRound from is_new LEGOs
+// Mirrors generateLearningScript.ts: seeds processed in seed_number order;
+// within a seed, is_new LEGOs in lego_index order; each = one round.
+// ============================================================================
+
+function computeSeedLastRound(legos) {
+  const bySeed = new Map()
+  for (const l of legos) {
+    if (!l.is_new) continue
+    if (!bySeed.has(l.seed_number)) bySeed.set(l.seed_number, [])
+    bySeed.get(l.seed_number).push(l)
+  }
+  const sortedSeeds = [...bySeed.keys()].sort((a, b) => a - b)
+  const map = new Map()
+  let round = 0
+  for (const sNum of sortedSeeds) {
+    const inSeed = bySeed.get(sNum).sort((a, b) => a.lego_index - b.lego_index)
+    for (const _ of inSeed) {
+      round++
+    }
+    map.set(sNum, round) // last is_new LEGO of this seed lands at this round
+  }
+  return { seedLastRound: map, totalRounds: round }
+}
+
+// ============================================================================
+// Graduation + window logic — matches the script generator exactly
+// ============================================================================
+
+function graduatedQueueAt(round) {
+  // Order: by seedLastRound asc, ties by seed_number asc — matches the
+  // generator's iteration order (seedLastRound map built in seed_number
+  // order; new graduations appended to graduatedQueue once eligible).
+  const entries = [...seedLastRound.entries()]
+    .filter(([, last]) => round - last >= GRADUATION_OFFSET)
+    .sort((a, b) => a[1] - b[1] || a[0] - b[0])
+  return entries.map(([sNum]) => sNum)
+}
+
+function activeWindow(queue) {
+  return queue.slice(-L1_ACTIVE_SIZE)
+}
+function reserveWindow(queue) {
+  if (queue.length <= L1_ACTIVE_SIZE) return []
+  const reserveEnd = queue.length - L1_ACTIVE_SIZE
+  const reserveStart = Math.max(0, reserveEnd - L1_RESERVE_SIZE)
+  return queue.slice(reserveStart, reserveEnd)
+}
+function l1ActiveFiresAt(round, queueLen) {
+  return round > 0 && round % L1_ACTIVE_INTERVAL === 0 && queueLen > 0
+}
+function l1ReserveFiresAt(round, queueLen) {
+  return round > 0 && round % L1_RESERVE_INTERVAL === 0 && queueLen > L1_ACTIVE_SIZE
+}
+
+// ============================================================================
+// Render
+// ============================================================================
+
+function audioUrl(id) {
+  if (!id) return null
+  return `${AUDIO_BASE}/${id}?courseId=${encodeURIComponent(currentCourseCode)}`
+}
+
+function renderSeed(sNum) {
+  const row = seedRows.get(sNum)
+  if (!row) {
+    return `<div class="seed">
+      <div class="seed-head">
+        <span class="seed-num">S${String(sNum).padStart(4,'0')}</span>
+        <span class="seed-target" style="color:#b83232">— missing in course_seeds —</span>
+        <span></span>
+      </div>
+    </div>`
+  }
+  const target = row.target_text_roman || row.target_text || ''
+  const known = row.known_text || ''
+
+  // One pill per playlist entry — exactly what the runtime would emit.
+  const pills = LAYER1_PLAYLIST.map((role, idx) => {
+    const isTrans = role === 'trans'
+    const aid = isTrans ? row.known_audio_id : row.target1_audio_id
+    const url = audioUrl(aid)
+    const speed = role === 'ps2x' ? 2.0 : 1.0
+    const label = `${idx + 1}. ${ROLE_LABEL[role]}`
+    return `<button class="play-pill role-${role}" data-url="${url || ''}" data-speed="${speed}" ${url ? '' : 'disabled'} title="${ROLE_DESC[role]} — audio id: ${aid || 'missing'}">
+      <span class="icon">▶</span>${label}
+    </button>`
+  }).join('')
+
+  return `<div class="seed">
+    <div class="seed-head">
+      <span class="seed-num">S${String(sNum).padStart(4,'0')}</span>
+      <span class="seed-target">${escapeHtml(target)}</span>
+      <span class="seed-known">${escapeHtml(known)}</span>
+    </div>
+    <div class="seed-plays">${pills}</div>
+  </div>`
+}
+
+function renderPlaylistHeader() {
+  const seq = LAYER1_PLAYLIST.map((r, i) => {
+    return `<span class="play-pill role-${r}" style="cursor:default">
+      <span class="icon">${i + 1}</span>${ROLE_LABEL[r]}
+    </span>`
+  }).join('<span style="color:var(--muted);align-self:center">→</span>')
+  return `<div class="section">
+    <h2>Per-seed playback playlist <span style="font-weight:400;font-size:11px;color:var(--muted);background:var(--rule);padding:2px 8px;border-radius:999px;margin-left:6px;text-transform:uppercase;letter-spacing:0.06em">live from algorithm_config</span></h2>
+    <div class="meta">Each graduated seed expands to ${LAYER1_PLAYLIST.length} cycles in this order. Edit the <code>listening</code> row in <code>algorithm_config</code> to change the playlist globally; new sessions pick it up within 5 min.</div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">${seq}</div>
+    <div class="meta" style="margin-top:10px">
+      Active fires every <strong>${L1_ACTIVE_INTERVAL}</strong> rounds (window: ${L1_ACTIVE_SIZE} most recent graduates).
+      Reserve every <strong>${L1_RESERVE_INTERVAL}</strong> rounds (window: ${L1_RESERVE_SIZE} older).
+      Graduation: ${GRADUATION_OFFSET} rounds after a seed's last LEGO.
+    </div>
+  </div>`
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]))
+}
+
+function render(round) {
+  const queue = graduatedQueueAt(round)
+  const active = activeWindow(queue)
+  const reserve = reserveWindow(queue)
+  const fireA = l1ActiveFiresAt(round, queue.length)
+  const fireR = l1ReserveFiresAt(round, queue.length)
+
+  // Timeline (visualises seedLastRound across full course, shaded by status)
+  const totalSeeds = seedLastRound.size
+  let timelineHtml = ''
+  if (totalSeeds > 0) {
+    const sorted = [...seedLastRound.entries()].sort((a, b) => a[1] - b[1] || a[0] - b[0])
+    const inActive = new Set(active)
+    const inReserve = new Set(reserve)
+    const inGrad = new Set(queue)
+    const segs = sorted.map(([sNum, last]) => {
+      let cls = 'pending'
+      if (inActive.has(sNum)) cls = 'active'
+      else if (inReserve.has(sNum)) cls = 'reserve'
+      else if (inGrad.has(sNum)) cls = 'graduated'
+      return `<div class="timeline-seg ${cls}" style="flex:1" title="S${sNum} (last LEGO @ R${last})"></div>`
+    }).join('')
+    timelineHtml = `
+      <div class="timeline">
+        <h2 style="margin:0 0 0">Graduation timeline (left = earliest last-LEGO, right = latest)</h2>
+        <div class="timeline-bar">${segs}</div>
+        <div class="timeline-key">
+          <span><span class="swatch" style="background: var(--active)"></span>Active (last 10 graduated)</span>
+          <span><span class="swatch" style="background: var(--reserve)"></span>Reserve (next 50 older)</span>
+          <span><span class="swatch" style="background: var(--graduated)"></span>Graduated, beyond reserve</span>
+          <span><span class="swatch" style="background: var(--pending)"></span>Not yet graduated</span>
+        </div>
+      </div>`
+  }
+
+  const playsA = active.map(renderSeed).join('')
+  const playsR = reserve.map(renderSeed).join('')
+
+  document.getElementById('content').innerHTML = `
+    <div class="stats">
+      <div><div class="stat-num">${totalSeeds}</div><div class="stat-lbl">total seeds</div></div>
+      <div><div class="stat-num">${queue.length}</div><div class="stat-lbl">graduated by round ${round}</div></div>
+      <div><div class="stat-num">${active.length}</div><div class="stat-lbl">in active window</div></div>
+      <div><div class="stat-num">${reserve.length}</div><div class="stat-lbl">in reserve window</div></div>
+    </div>
+
+    <div class="firing">
+      <div class="firing-section">
+        <div class="stat-lbl" style="margin-bottom:4px">Active fires this round?</div>
+        <span class="pill ${fireA ? 'fire' : 'no'}">${fireA ? 'YES — every 3 rounds' : `NO — round ${round} % 3 = ${round % 3}`}</span>
+      </div>
+      <div class="firing-section">
+        <div class="stat-lbl" style="margin-bottom:4px">Reserve fires this round?</div>
+        <span class="pill ${fireR ? 'fire' : 'no'}">${fireR ? 'YES — every 13 rounds' : `NO — round ${round} % 13 = ${round % 13}`}</span>
+      </div>
+    </div>
+
+    ${renderPlaylistHeader()}
+
+    <div class="section">
+      <h2>Active window (last 10 graduated, plays every 3 rounds)</h2>
+      <div class="meta">${active.length} seeds${fireA ? ' • PLAYING THIS ROUND' : ''}</div>
+      ${active.length ? playsA : '<div class="empty">No seeds in active window yet.</div>'}
+    </div>
+
+    <div class="section">
+      <h2>Reserve window (next 50 older graduated, plays every 13 rounds)</h2>
+      <div class="meta">${reserve.length} seeds${fireR ? ' • PLAYING THIS ROUND' : ''}</div>
+      ${reserve.length ? playsR : '<div class="empty">No seeds in reserve window yet (need more than 10 graduated).</div>'}
+    </div>
+
+    ${timelineHtml}
+  `
+
+  document.querySelectorAll('.play-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const url = btn.dataset.url
+      if (!url) return
+      const audio = new Audio(url)
+      const speed = parseFloat(btn.dataset.speed || '1')
+      audio.playbackRate = speed
+      audio.play().catch(err => console.warn('audio play failed:', err))
+    })
+  })
+}
+
+// ============================================================================
+// Course load
+// ============================================================================
+
+async function loadCourse(courseCode) {
+  currentCourseCode = courseCode
+  document.getElementById('content').innerHTML = '<div class="loading">Loading…</div>'
+  clearError()
+
+  try {
+    // Fetch all is_new LEGOs (paginated — Supabase REST defaults to 1000 rows)
+    const legos = []
+    let from = 0
+    const limit = 1000
+    while (true) {
+      const batch = await fetch(
+        `${SUPABASE_URL}/rest/v1/course_legos?select=seed_number,lego_index,is_new&course_code=eq.${courseCode}&order=seed_number.asc,lego_index.asc&offset=${from}&limit=${limit}`,
+        { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } }
+      ).then(r => r.json())
+      legos.push(...batch)
+      if (batch.length < limit) break
+      from += limit
+    }
+
+    // Fetch seed sentences
+    const seeds = []
+    from = 0
+    while (true) {
+      const batch = await fetch(
+        `${SUPABASE_URL}/rest/v1/course_seeds?select=seed_number,known_text,target_text,target_text_roman,target1_audio_id,target2_audio_id&course_code=eq.${courseCode}&order=seed_number.asc&offset=${from}&limit=${limit}`,
+        { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } }
+      ).then(r => r.json())
+      seeds.push(...batch)
+      if (batch.length < limit) break
+      from += limit
+    }
+
+    // Compute seedLastRound
+    const { seedLastRound: slr, totalRounds: tr } = computeSeedLastRound(legos)
+    seedLastRound = slr
+    totalRounds = tr
+    seedRows = new Map(seeds.map(s => [s.seed_number, s]))
+
+    // Update slider range
+    const slider = document.getElementById('round')
+    const numInput = document.getElementById('round-num')
+    const max = Math.max(totalRounds, 100)
+    slider.max = max
+    numInput.max = max
+    document.getElementById('round-display').textContent = `/ ${max}`
+
+    if (parseInt(slider.value) > max) slider.value = max
+    if (parseInt(numInput.value) > max) numInput.value = max
+
+    render(parseInt(slider.value))
+  } catch (e) {
+    showError(`Failed to load: ${e.message}`)
+    document.getElementById('content').innerHTML = ''
+  }
+}
+
+// ============================================================================
+// Bootstrap
+// ============================================================================
+
+async function loadListeningConfig() {
+  try {
+    const rows = await sb('algorithm_config', 'select=config&key=eq.listening')
+    if (!rows || rows.length === 0) return
+    const c = rows[0].config || {}
+    if (typeof c.offset === 'number') GRADUATION_OFFSET = c.offset
+    if (typeof c.l1ActiveSize === 'number') L1_ACTIVE_SIZE = c.l1ActiveSize
+    if (typeof c.l1ActiveInterval === 'number') L1_ACTIVE_INTERVAL = c.l1ActiveInterval
+    if (typeof c.l1ReserveSize === 'number') L1_RESERVE_SIZE = c.l1ReserveSize
+    if (typeof c.l1ReserveInterval === 'number') L1_RESERVE_INTERVAL = c.l1ReserveInterval
+    if (Array.isArray(c.layer1Playlist) && c.layer1Playlist.length > 0) {
+      LAYER1_PLAYLIST = c.layer1Playlist
+    }
+  } catch (e) {
+    console.warn('listening config load failed, using defaults:', e)
+  }
+}
+
+async function init() {
+  try {
+    await loadListeningConfig()
+    allCourses = await sb('courses', 'select=course_code&order=course_code.asc')
+    const sel = document.getElementById('course')
+    sel.innerHTML = '<option value="">— pick a course —</option>' +
+      allCourses.map(c => `<option value="${c.course_code}">${c.course_code}</option>`).join('')
+
+    sel.addEventListener('change', () => {
+      if (sel.value) loadCourse(sel.value)
+    })
+
+    const slider = document.getElementById('round')
+    const numInput = document.getElementById('round-num')
+    const sync = (val) => {
+      slider.value = val
+      numInput.value = val
+      if (currentCourseCode) render(parseInt(val))
+    }
+    slider.addEventListener('input', () => sync(slider.value))
+    numInput.addEventListener('input', () => {
+      const v = Math.max(1, Math.min(parseInt(numInput.value) || 1, parseInt(slider.max)))
+      sync(v)
+    })
+
+    // Pre-pick zho_for_eng if present, else first
+    const preferred = allCourses.find(c => c.course_code === 'zho_for_eng' || c.course_code.startsWith('zho_'))
+    if (preferred) {
+      sel.value = preferred.course_code
+      loadCourse(preferred.course_code)
+    }
+  } catch (e) {
+    showError(`Init failed: ${e.message}`)
+  }
+}
+
+init()
+</script>
+
+</body>
+</html>

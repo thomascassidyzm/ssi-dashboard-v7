@@ -53,6 +53,12 @@ const routes = [
     component: MissionControlHub,
     meta: { title: 'Mission Control' }
   },
+  {
+    path: '/maintenance',
+    name: 'Maintenance',
+    component: () => import('../views/Maintenance.vue'),
+    meta: { title: 'Maintenance' }
+  },
   // ============================================
   // Documentation Section (nested routes with shared layout)
   // ============================================
@@ -352,6 +358,14 @@ const routes = [
   },
 
   // ===========================================
+  // Global admin — algorithm_config tweaker. Lives outside /production
+  // because it's not per-course.
+  {
+    path: '/admin/listening',
+    name: 'ListeningAdmin',
+    component: () => import('../views/ListeningAdmin.vue'),
+    meta: { title: 'Listening Config - Admin' }
+  },
   // Production Suite v2.1 Routes (Default)
   // ===========================================
   {

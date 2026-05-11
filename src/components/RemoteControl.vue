@@ -2,7 +2,7 @@
   <div v-if="isAdmin" class="remote-control" ref="rootRef">
     <button
       class="rc-toggle"
-      :class="{ warn: health?.mem?.used_percent >= 85, crit: health?.mem?.used_percent >= 95 }"
+      :class="{ warn: anyWarn, crit: anyCrit }"
       @click="toggle"
       :title="toggleTitle"
     >
@@ -34,6 +34,17 @@
             ></div>
           </div>
           <span class="rc-meta">{{ formatGB(health.mem.used_bytes) }} / {{ formatGB(health.mem.total_bytes) }} ({{ health.mem.used_percent }}%)</span>
+        </div>
+        <div v-if="health.disk && !health.disk.error" class="rc-row">
+          <span class="rc-label">Disk</span>
+          <div class="rc-bar">
+            <div
+              class="rc-bar-fill"
+              :class="{ warn: health.disk.used_percent >= 85, crit: health.disk.used_percent >= 95 }"
+              :style="{ width: health.disk.used_percent + '%' }"
+            ></div>
+          </div>
+          <span class="rc-meta">{{ formatGB(health.disk.free_bytes) }} free of {{ formatGB(health.disk.total_bytes) }} ({{ health.disk.used_percent }}%)</span>
         </div>
         <div class="rc-row">
           <span class="rc-label">Load</span>
@@ -137,9 +148,17 @@ const ramLabel = computed(() => {
   return `${health.value.mem.used_percent}%`
 })
 
+const memPct = computed(() => health.value?.mem?.used_percent ?? 0)
+const diskPct = computed(() => health.value?.disk?.used_percent ?? 0)
+const anyWarn = computed(() => memPct.value >= 85 || diskPct.value >= 85)
+const anyCrit = computed(() => memPct.value >= 95 || diskPct.value >= 95)
+
 const toggleTitle = computed(() => {
   if (!health.value) return 'Remote control'
-  return `RAM ${health.value.mem.used_percent}% · load ${health.value.load_avg[0].toFixed(2)}`
+  const parts = [`RAM ${memPct.value}%`]
+  if (health.value.disk && !health.value.disk.error) parts.push(`disk ${diskPct.value}%`)
+  parts.push(`load ${health.value.load_avg[0].toFixed(2)}`)
+  return parts.join(' · ')
 })
 
 const sortedProcs = computed(() => {
