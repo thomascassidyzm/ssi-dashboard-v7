@@ -14,6 +14,7 @@
  */
 const { spawn } = require('child_process')
 const path = require('path')
+const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const voiceGender = require('./voice-gender-map.cjs')
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') })
@@ -24,6 +25,23 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 // future runs can identify stale determinations and selectively re-run.
 const PROMPT_VERSION = 'v1'
 const MODEL = 'haiku'
+
+// Content signature: hash of all first-person target_text in the course.
+// Stable across re-runs (sorted), so if any relevant phrase is added/edited,
+// the signature changes and the cached determination gets invalidated.
+// Used by detectNeedsGenderPrep to short-circuit re-checks when content hasn't
+// drifted since the last determination.
+async function computeContentSignature(courseCode, knownLang) {
+  const knownPrefix = { eng: 'I ', zho: '我', jpn: '私' }[knownLang] || ''
+  let q = supabase.from('course_practice_phrases').select('target_text')
+    .eq('course_code', courseCode)
+    .not('target_text', 'is', null)
+  if (knownPrefix) q = q.like('known_text', `${knownPrefix}%`)
+  const { data } = await q
+  if (!data || data.length === 0) return null
+  const sorted = data.map(d => d.target_text).filter(Boolean).sort()
+  return crypto.createHash('sha256').update(sorted.join('\n')).digest('hex').slice(0, 16)
+}
 
 // Pull a sample of first-person target_text from the course.
 // First-person phrases are where the answer is most likely to vary by gender.
@@ -98,32 +116,32 @@ function parseHaikuJson(raw) {
   return JSON.parse(json)
 }
 
-// Don't auto-overwrite a determination that was set by a human. The migration
-// stores authoring source in check_notes under `set_by`.
-async function getExistingSetBy(courseCode) {
-  const { data, error } = await supabase.from('courses').select('gender_prep_check_notes').eq('course_code', courseCode).single()
-  if (error || !data?.gender_prep_check_notes) return null
-  try {
-    const parsed = JSON.parse(data.gender_prep_check_notes)
-    return parsed.set_by || null
-  } catch { return null }
+// Fetch existing check_notes + determination for cache + override checks.
+async function getExistingDetermination(courseCode) {
+  const { data, error } = await supabase.from('courses').select('needs_gender_prep, gender_prep_check_notes, gender_prep_checked_at').eq('course_code', courseCode).single()
+  if (error || !data) return null
+  let notes = null
+  try { notes = data.gender_prep_check_notes ? JSON.parse(data.gender_prep_check_notes) : null } catch {}
+  return {
+    needs_gender_prep: data.needs_gender_prep,
+    checked_at: data.gender_prep_checked_at,
+    notes,
+  }
 }
 
 async function detectNeedsGenderPrep(courseCode, opts = {}) {
   const { force = false } = opts
+  const existing = await getExistingDetermination(courseCode).catch(() => null)
 
   // Human override: don't clobber a manually-set decision unless force=true
-  if (!force) {
-    const existingSetBy = await getExistingSetBy(courseCode).catch(() => null)
-    if (existingSetBy === 'human') {
-      return {
-        courseCode,
-        needs_gender_prep: null,
-        reasoning: 'Skipped: existing determination was set by a human. Pass force=true to override.',
-        examples: [],
-        skipped: 'human-override',
-        persisted: false,
-      }
+  if (!force && existing?.notes?.set_by === 'human') {
+    return {
+      courseCode,
+      needs_gender_prep: existing.needs_gender_prep,
+      reasoning: 'Skipped: existing determination was set by a human. Pass force=true to override.',
+      examples: [],
+      skipped: 'human-override',
+      persisted: false,
     }
   }
 
@@ -131,6 +149,26 @@ async function detectNeedsGenderPrep(courseCode, opts = {}) {
   if (samples.length === 0) {
     return { courseCode, needs_gender_prep: null, reasoning: 'No first-person phrases found in course (course may be empty or use non-standard known prefixes)', examples: [] }
   }
+
+  // Content signature: short-circuit re-check if the relevant phrases haven't
+  // drifted since last determination AND the prompt is the same version AND
+  // we're not forcing a re-run. Saves a Haiku call when there's nothing new.
+  const signature = await computeContentSignature(courseCode, course.known_lang)
+  if (!force && existing?.notes?.signature && existing.notes.signature === signature
+      && existing.notes.prompt_version === PROMPT_VERSION) {
+    return {
+      courseCode,
+      needs_gender_prep: existing.needs_gender_prep,
+      reasoning: existing.notes.reasoning,
+      examples: existing.notes.examples || [],
+      language_verdict: existing.notes.language_verdict,
+      voice_gate: existing.notes.voice_gate,
+      signature,
+      skipped: 'unchanged-content',
+      persisted: false,
+    }
+  }
+
   const prompt = buildPrompt(course.target_lang, samples)
   const raw = await callHaiku(prompt)
   const parsed = parseHaikuJson(raw)
@@ -173,6 +211,7 @@ async function detectNeedsGenderPrep(courseCode, opts = {}) {
       set_by: 'haiku',
       model: MODEL,
       prompt_version: PROMPT_VERSION,
+      signature,  // content signature; bumps when first-person phrases drift
     }),
     gender_prep_checked_at: new Date().toISOString()
   }
