@@ -561,7 +561,7 @@ onMounted(() => {
   color: #e2e8f0;
 }
 .maintenance-inner {
-  max-width: 800px;
+  width: 100%;
 }
 .section-title {
   font-size: 20px;
