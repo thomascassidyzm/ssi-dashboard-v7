@@ -8225,19 +8225,41 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
 
 const genderHaikuService = require('./gender-haiku-service.cjs')
 const genderPrepDetector = require('./gender-prep-detector.cjs')
+const voiceGenderMap = require('./voice-gender-map.cjs')
 
 function safeParseJson(s) { try { return JSON.parse(s) } catch { return null } }
 
 // POST /api/production/:courseCode/gender-prep/check
 // Run a Haiku check on this course's actual phrases to determine whether
 // gender prep is needed. Persists the result to courses.needs_gender_prep.
+// Skips if a human has set the determination, unless ?force=true.
 app.post('/api/production/:courseCode/gender-prep/check', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const result = await genderPrepDetector.detectNeedsGenderPrep(courseCode)
+    const force = req.query.force === 'true' || req.body?.force === true
+    const result = await genderPrepDetector.detectNeedsGenderPrep(courseCode, { force })
     res.json(result)
   } catch (e) {
     logger.error('Error in gender-prep/check:', e)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// POST /api/production/:courseCode/gender-prep/override
+// Manually set needs_gender_prep for a course (audit-trail marked `set_by: human`).
+// Body: { value: true | false | null, reason?: string }
+// Subsequent auto-detector runs won't overwrite this unless called with force=true.
+app.post('/api/production/:courseCode/gender-prep/override', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { value, reason } = req.body || {}
+    if (value !== true && value !== false && value !== null) {
+      return res.status(400).json({ error: 'Body must include value: true | false | null' })
+    }
+    const result = await genderPrepDetector.setManualOverride(courseCode, value, reason)
+    res.json(result)
+  } catch (e) {
+    logger.error('Error in gender-prep/override:', e)
     res.status(500).json({ error: e.message })
   }
 })
@@ -8326,17 +8348,18 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
     }
     const supabase = supabaseClient.getClient()
 
-    // Verify course exists and is gendered
+    // Verify course exists and is gendered. voice_config is needed for the
+    // voice-gender gate (no female target voice → prep is pointless).
     let { data: course, error: courseErr } = await supabase
       .from('courses')
-      .select('target_lang, display_name, needs_gender_prep')
+      .select('target_lang, display_name, needs_gender_prep, voice_config')
       .eq('course_code', courseCode)
       .single()
 
     if (courseErr) {
       // Migration not applied yet — retry without the new column
       if (/column .* does not exist/.test(courseErr.message || '')) {
-        const fb = await supabase.from('courses').select('target_lang, display_name').eq('course_code', courseCode).single()
+        const fb = await supabase.from('courses').select('target_lang, display_name, voice_config').eq('course_code', courseCode).single()
         course = fb.data ? { ...fb.data, needs_gender_prep: null } : null
       }
     }
@@ -8347,6 +8370,21 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
     const courseFlag = course.needs_gender_prep
     if (courseFlag === false || (courseFlag === null && !inFallback)) {
       return res.status(400).json({ error: `Course ${courseCode} (${course.target_lang}) is not flagged as needing gender prep` })
+    }
+
+    // Voice-config gate: skip if both target voices are confirmed male — the
+    // masculine canonical text is the only thing that will ever speak, so the
+    // pipeline would produce dead-weight variants. Unknown voices fall through
+    // (run prep) to stay safe.
+    const hasFem = voiceGenderMap.anyTargetVoiceFemale(course.voice_config)
+    if (hasFem === false) {
+      const g = voiceGenderMap.getCourseVoiceGenders(course.voice_config)
+      return res.status(400).json({
+        error: `Course ${courseCode} has no female target voice — gender prep would produce unused variants.`,
+        target1: g.voiceIds.target1, target1_gender: g.target1,
+        target2: g.voiceIds.target2, target2_gender: g.target2,
+        hint: 'If this is wrong (e.g. the voice gender is misidentified), set the voice_id in voice_config or use /gender-prep/override to force a manual decision.',
+      })
     }
 
     // Check for already-running gender-prep job (with staleness auto-cleanup)

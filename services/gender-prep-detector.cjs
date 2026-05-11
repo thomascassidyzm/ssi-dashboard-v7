@@ -15,16 +15,22 @@
 const { spawn } = require('child_process')
 const path = require('path')
 const { createClient } = require('@supabase/supabase-js')
+const voiceGender = require('./voice-gender-map.cjs')
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') })
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+
+// Bump when the Haiku prompt changes meaningfully. Stored in check_notes so
+// future runs can identify stale determinations and selectively re-run.
+const PROMPT_VERSION = 'v1'
+const MODEL = 'haiku'
 
 // Pull a sample of first-person target_text from the course.
 // First-person phrases are where the answer is most likely to vary by gender.
 async function sampleFirstPersonPhrases(courseCode, n = 10) {
   // Heuristic: known_text starting with "I " (English) or "我" (Chinese) or "私" (Japanese)
   // — adjust as needed. For non-English known langs, sampling target_text directly.
-  const { data: course } = await supabase.from('courses').select('known_lang,target_lang').eq('course_code', courseCode).single()
+  const { data: course } = await supabase.from('courses').select('known_lang,target_lang,voice_config').eq('course_code', courseCode).single()
   if (!course) throw new Error(`Course not found: ${courseCode}`)
   const knownPrefix = { eng: 'I ', zho: '我', jpn: '私' }[course.known_lang] || ''
   let q = supabase.from('course_practice_phrases').select('known_text,target_text')
@@ -92,7 +98,35 @@ function parseHaikuJson(raw) {
   return JSON.parse(json)
 }
 
-async function detectNeedsGenderPrep(courseCode) {
+// Don't auto-overwrite a determination that was set by a human. The migration
+// stores authoring source in check_notes under `set_by`.
+async function getExistingSetBy(courseCode) {
+  const { data, error } = await supabase.from('courses').select('gender_prep_check_notes').eq('course_code', courseCode).single()
+  if (error || !data?.gender_prep_check_notes) return null
+  try {
+    const parsed = JSON.parse(data.gender_prep_check_notes)
+    return parsed.set_by || null
+  } catch { return null }
+}
+
+async function detectNeedsGenderPrep(courseCode, opts = {}) {
+  const { force = false } = opts
+
+  // Human override: don't clobber a manually-set decision unless force=true
+  if (!force) {
+    const existingSetBy = await getExistingSetBy(courseCode).catch(() => null)
+    if (existingSetBy === 'human') {
+      return {
+        courseCode,
+        needs_gender_prep: null,
+        reasoning: 'Skipped: existing determination was set by a human. Pass force=true to override.',
+        examples: [],
+        skipped: 'human-override',
+        persisted: false,
+      }
+    }
+  }
+
   const { course, samples } = await sampleFirstPersonPhrases(courseCode, 10)
   if (samples.length === 0) {
     return { courseCode, needs_gender_prep: null, reasoning: 'No first-person phrases found in course (course may be empty or use non-standard known prefixes)', examples: [] }
@@ -100,22 +134,79 @@ async function detectNeedsGenderPrep(courseCode) {
   const prompt = buildPrompt(course.target_lang, samples)
   const raw = await callHaiku(prompt)
   const parsed = parseHaikuJson(raw)
+
+  // Voice-config gate: even if Haiku says the LANGUAGE genders 1st-person
+  // forms, the course only NEEDS gender prep when at least one target voice
+  // is female (otherwise the masculine canonical text is the only thing that
+  // ever speaks, and the feminine variants are dead weight).
+  const voiceGenders = voiceGender.getCourseVoiceGenders(course.voice_config)
+  const hasFemTarget = voiceGender.anyTargetVoiceFemale(course.voice_config)
+
+  const languageVerdict = parsed.needs_gender_prep
+  let courseVerdict = languageVerdict
+  let voiceGate = 'pass'
+  if (languageVerdict === true && hasFemTarget === false) {
+    courseVerdict = false
+    voiceGate = 'no-female-target'
+  } else if (languageVerdict === true && hasFemTarget === null) {
+    // Unknown voices in a gendered lang — conservatively keep prep enabled
+    // and flag it in audit so a reviewer can confirm.
+    voiceGate = 'unknown-voices'
+  }
+
   // Persist
   const update = {
-    needs_gender_prep: parsed.needs_gender_prep,
-    gender_prep_check_notes: JSON.stringify({ reasoning: parsed.reasoning, examples: parsed.examples || [], samples: samples.map(s => s.target_text) }),
+    needs_gender_prep: courseVerdict,
+    gender_prep_check_notes: JSON.stringify({
+      reasoning: parsed.reasoning,
+      examples: parsed.examples || [],
+      samples: samples.map(s => s.target_text),
+      language_verdict: languageVerdict,
+      voice_gate: voiceGate,
+      voices: {
+        target1: voiceGenders.voiceIds.target1,
+        target2: voiceGenders.voiceIds.target2,
+        target1_gender: voiceGenders.target1,
+        target2_gender: voiceGenders.target2,
+        any_female_target: hasFemTarget,
+      },
+      set_by: 'haiku',
+      model: MODEL,
+      prompt_version: PROMPT_VERSION,
+    }),
     gender_prep_checked_at: new Date().toISOString()
   }
   const { error } = await supabase.from('courses').update(update).eq('course_code', courseCode)
   if (error) {
     if (/column .* does not exist|Could not find the/.test(error.message || '')) {
       console.warn(`Migration 20260505_courses_needs_gender_prep.sql not applied yet — Haiku check completed but result not persisted. Run the migration via Supabase dashboard, then re-run.`)
-      return { courseCode, ...parsed, samplesUsed: samples.length, persisted: false, persistError: 'migration not applied' }
+      return { courseCode, ...parsed, needs_gender_prep: courseVerdict, language_verdict: languageVerdict, voice_gate: voiceGate, samplesUsed: samples.length, persisted: false, persistError: 'migration not applied' }
     } else {
       throw error
     }
   }
-  return { courseCode, ...parsed, samplesUsed: samples.length, persisted: true }
+  return { courseCode, ...parsed, needs_gender_prep: courseVerdict, language_verdict: languageVerdict, voice_gate: voiceGate, samplesUsed: samples.length, persisted: true }
+}
+
+// Used by the API endpoint when a human flips needs_gender_prep manually,
+// so the audit trail records who decided what and the auto-detector won't
+// overwrite it on a future run.
+async function setManualOverride(courseCode, value, reason) {
+  if (value !== true && value !== false && value !== null) {
+    throw new Error(`Invalid value: must be true|false|null, got ${value}`)
+  }
+  const update = {
+    needs_gender_prep: value,
+    gender_prep_check_notes: JSON.stringify({
+      reasoning: reason || 'Manual override (no reason given)',
+      set_by: 'human',
+      manual_value: value,
+    }),
+    gender_prep_checked_at: new Date().toISOString(),
+  }
+  const { error } = await supabase.from('courses').update(update).eq('course_code', courseCode)
+  if (error) throw error
+  return { courseCode, needs_gender_prep: value, set_by: 'human' }
 }
 
 if (require.main === module) {
@@ -127,4 +218,4 @@ if (require.main === module) {
   }).catch(e => { console.error('FATAL:', e.message); process.exit(1) })
 }
 
-module.exports = { detectNeedsGenderPrep }
+module.exports = { detectNeedsGenderPrep, setManualOverride }
