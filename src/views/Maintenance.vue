@@ -69,11 +69,24 @@
       <div class="filter-row">
         <select v-model="filterTable" @change="resetAndLoad">
           <option value="">All tables</option>
-          <option value="course_legos">course_legos</option>
-          <option value="course_seeds">course_seeds</option>
-          <option value="course_practice_phrases">course_practice_phrases</option>
-          <option value="course_audio">course_audio</option>
-          <option value="courses">courses</option>
+          <optgroup label="Course content">
+            <option value="course_legos">course_legos</option>
+            <option value="course_seeds">course_seeds</option>
+            <option value="course_practice_phrases">course_practice_phrases</option>
+            <option value="course_audio">course_audio</option>
+            <option value="courses">courses</option>
+          </optgroup>
+          <optgroup label="Shared / canonical">
+            <option value="canonical_seeds">canonical_seeds</option>
+            <option value="canonical_seed_translations">canonical_seed_translations</option>
+            <option value="lego_introductions">lego_introductions</option>
+            <option value="voices">voices</option>
+            <option value="shared_audio">shared_audio</option>
+          </optgroup>
+          <optgroup label="Listening pods">
+            <option value="listening_pods">listening_pods</option>
+            <option value="listening_pod_sentences">listening_pod_sentences</option>
+          </optgroup>
         </select>
 
         <select v-model="filterChangeType" @change="resetAndLoad">

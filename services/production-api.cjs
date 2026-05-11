@@ -8925,7 +8925,15 @@ const AUDIT_TABLE_PK = {
   course_seeds: 'id',
   course_practice_phrases: 'id',
   course_audio: 'id',
-  courses: 'course_code'
+  courses: 'course_code',
+  // Added 2026-05-11 (ssi-learning-app migration 20260511_audit_more_content_tables.sql)
+  canonical_seeds: 'id',
+  canonical_seed_translations: 'id',
+  listening_pod_sentences: 'id',
+  listening_pods: 'id',
+  lego_introductions: 'id',
+  voices: 'voice_id',
+  shared_audio: 'id'
 }
 
 // GET /api/admin/audit-row?table=X&pk=Y — fetch the current live row at
