@@ -549,6 +549,9 @@
             :generated="progressStats.generated"
             :pending="progressStats.pending"
             :failed="progressStats.failed"
+            :linkable="progressStats.linkable"
+            :ready-for-generate="progressStats.readyForGenerate"
+            :presentation-status="progressStats.presentationStatus"
             :estimated-cost="estimatedCost"
             :estimated-time="estimatedTime"
             :loading="!statsLoaded"
@@ -598,7 +601,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              {{ isGenerating ? 'Generating...' : startingGeneration ? 'Starting...' : otherCourseJobActive ? `Busy (${audioProgress.courseCode})` : 'Generate Missing Audio' }}
+              {{ generateButtonLabel }}
             </button>
             <button
               v-if="isGenerating"
@@ -709,6 +712,16 @@
           <MissingAudio :course-code="courseCode" :refresh-trigger="missingAudioKey" />
         </section>
 
+        <!-- SHARED AUDIO Section (encouragements, instructions, welcome, paywall) -->
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Shared Audio</h2>
+            <div class="flex-1 h-px bg-slate-700/50"></div>
+          </div>
+
+          <SharedAudio :course-code="courseCode" />
+        </section>
+
       </div>
     </main>
   </div>
@@ -722,6 +735,7 @@ import { isConfigured as isSupabaseConfigured, getAudioStats as sbGetAudioStats 
 import { useProductionStore } from '@/stores/production'
 import PipelineProgress from './components/PipelineProgress.vue'
 import MissingAudio from './components/MissingAudio.vue'
+import SharedAudio from './components/SharedAudio.vue'
 import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
 
 const route = useRoute()
@@ -971,8 +985,10 @@ onMounted(async () => {
       statsLoaded.value = true
     })
 
-    // Link unlinked audio in the background — refines counts after linking
-    productionStore.linkAndRecount(courseCode.value)
+    // (Removed 2026-04-29) The background linkAndRecount call here is now redundant
+    // because /generate runs link first as Step A, and /audio-stats reports
+    // toLink separately so the user can see linkable rows without doing them
+    // first. Avoiding the extra Supabase RPC on every page load.
 
     // Check for mode=flagged query param (from Script Viewer link)
     if (route.query.mode === 'flagged') {
@@ -999,9 +1015,26 @@ const otherCourseJobActive = computed(() =>
   audioProgress.value.active && audioProgress.value.courseCode && audioProgress.value.courseCode !== courseCode.value
 )
 const hasFailed = computed(() => progressStats.value.failed > 0)
-const canStartGeneration = computed(() =>
-  !isGenerating.value && !otherCourseJobActive.value && progressStats.value.pending > 0
-)
+// Generate is allowed when:
+//  - There's TTS work (pending > 0), OR
+//  - There's link-only work (linkable > 0) — Generate runs the linker even with no TTS
+//  - AND presentation text is ready (LEGOs/components have pending course_audio rows)
+const canStartGeneration = computed(() => {
+  if (isGenerating.value || otherCourseJobActive.value) return false
+  const ps = progressStats.value
+  const hasWork = (ps.pending > 0) || ((ps.linkable || 0) > 0)
+  const ready = ps.readyForGenerate !== false  // default true if undefined
+  return hasWork && ready
+})
+const generateButtonLabel = computed(() => {
+  if (isGenerating.value) return 'Generating...'
+  if (startingGeneration.value) return 'Starting...'
+  if (otherCourseJobActive.value) return `Busy (${audioProgress.value.courseCode})`
+  const ps = progressStats.value
+  if (ps.readyForGenerate === false) return 'Presentation text required'
+  if (ps.pending === 0 && (ps.linkable || 0) > 0) return `Link ${ps.linkable} audios (no TTS)`
+  return 'Generate Missing Audio'
+})
 const estimatedCost = computed(() => productionStore.costEstimate.estimated || null)
 const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime || null)
 

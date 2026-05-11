@@ -12,15 +12,35 @@
 
 const { claudeChat } = require('./shared/claude-cli.cjs')
 
-// Only these languages have grammatical gender agreement that affects TTS
-const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara']
+// Languages with grammatical gender that affects 1st-person predicate forms.
+// (i.e. female speaker says different forms than male speaker for "I am tired",
+// "I have gone", etc.) Per-course override coming in a later pass; this is the
+// fallback list for courses without a stored `needs_gender_prep` flag.
+const GENDERED_LANGUAGES = [
+  // Romance
+  'spa', 'ita', 'por', 'fra', 'cat', 'ron',
+  // Slavic (past tense + adjectives gendered)
+  'pol', 'ces', 'slk', 'hrv', 'rus', 'ukr', 'bul', 'mkd',
+  // Hellenic
+  'ell',
+  // Baltic
+  'lav', 'lit',
+  // Other Indo-European
+  'isl', 'hin', 'nep', 'ben', 'guj', 'pan', 'urd', 'mar',
+  // Semitic
+  'ara', 'heb',
+]
 
 const LANG_NAMES = {
-  spa: 'Spanish',
-  ita: 'Italian',
-  por: 'Portuguese',
-  fra: 'French',
-  ara: 'Arabic'
+  spa: 'Spanish', ita: 'Italian', por: 'Portuguese', fra: 'French',
+  cat: 'Catalan', ron: 'Romanian',
+  pol: 'Polish', ces: 'Czech', slk: 'Slovak', hrv: 'Croatian',
+  rus: 'Russian', ukr: 'Ukrainian', bul: 'Bulgarian', mkd: 'Macedonian',
+  ell: 'Greek',
+  lav: 'Latvian', lit: 'Lithuanian',
+  isl: 'Icelandic', hin: 'Hindi', nep: 'Nepali', ben: 'Bengali',
+  guj: 'Gujarati', pan: 'Punjabi', urd: 'Urdu', mar: 'Marathi',
+  ara: 'Arabic', heb: 'Hebrew',
 }
 
 const BATCH_SIZE = 50

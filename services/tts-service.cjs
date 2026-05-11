@@ -13,7 +13,7 @@
 
 const fetch = require('node-fetch');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
-const { applyRegenerationVariation } = require('./azure-tts-service.cjs');
+const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
 
 /**
  * Generate speech using ElevenLabs API
@@ -93,8 +93,12 @@ async function generateAzure(text, config) {
     regenerationAttempt = 0
   } = config;
 
-  // Apply variation for regeneration (Azure is deterministic)
-  const ttsText = applyRegenerationVariation(text, regenerationAttempt);
+  // Apply variation for regeneration (Azure is deterministic), then apply
+  // the language-aware short-word hint so single chars / very short words
+  // get pronounced as words instead of letter names. Both transforms are
+  // TTS-input-only and are NEVER persisted.
+  let ttsText = applyRegenerationVariation(text, regenerationAttempt);
+  ttsText = applyShortWordHint(ttsText);
 
   if (!subscriptionKey) {
     throw new Error('Azure subscription key is required');

@@ -445,7 +445,7 @@
           <div v-for="detail in state.deployVerification.details.slice(0, 10)" :key="detail.uuid">
             {{ detail.uuid.substring(0, 8) }}... {{ detail.issue }}
             <span v-if="detail.expected != null && detail.actual != null">
-              (expected {{ detail.expected.toFixed(3) }}s, got {{ detail.actual.toFixed(3) }}s)
+              (expected {{ detail.expected.toFixed(6) }}s, got {{ detail.actual.toFixed(6) }}s)
             </span>
           </div>
           <p v-if="state.deployVerification.details.length > 10" class="text-slate-500 italic">

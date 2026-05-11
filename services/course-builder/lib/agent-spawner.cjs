@@ -41,18 +41,21 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
 
     return agent;
   } else {
-    const escapedCmd = cmd.replace(/"/g, '\\"');
+    // Write command to a temp shell script to avoid osascript escaping issues
+    const scriptFile = `/tmp/spawn_${courseCode}_${Date.now()}.sh`;
+    fs.writeFileSync(scriptFile, `#!/bin/bash\n${cmd}\n`, { mode: 0o755 });
+
     const itermScript = `tell application "iTerm"
   activate
   set newWindow to (create window with default profile)
   tell current session of newWindow
     set name to "${label}: ${courseCode}"
-    write text "${escapedCmd}"
+    write text "${scriptFile}"
   end tell
 end tell`;
     const terminalScript = `tell application "Terminal"
   activate
-  do script "${escapedCmd}"
+  do script "${scriptFile}"
 end tell`;
 
     function launchTerminalApp() {
@@ -70,17 +73,28 @@ end tell`;
       return launchTerminalApp();
     }
 
-    // Try iTerm2 first, fall back to Terminal.app on failure
+    // Try iTerm2 first, fall back to Terminal.app on failure.
+    // Use console.error for diagnostics so PM2 captures the reason in the error log.
     const agent = spawn('osascript', ['-e', itermScript], { stdio: 'pipe', detached: true });
+    let stderrOutput = '';
+    let stdoutOutput = '';
+    if (agent.stderr) agent.stderr.on('data', (d) => { stderrOutput += d.toString(); });
+    if (agent.stdout) agent.stdout.on('data', (d) => { stdoutOutput += d.toString(); });
     agent.on('error', (e) => {
-      console.warn(`[SPAWN] ${label} iTerm2 error: ${e.message}, falling back to Terminal.app`);
+      console.error(`[SPAWN] ${label} iTerm2 spawn error: ${e.message} — falling back to Terminal.app`);
       launchTerminalApp();
     });
-    agent.on('exit', (code) => {
+    agent.on('exit', (code, signal) => {
       if (code === 0) {
         console.log(`[SPAWN] ${label} launched in iTerm2`);
       } else {
-        console.warn(`[SPAWN] ${label} iTerm2 failed (exit: ${code}), falling back to Terminal.app`);
+        console.error(
+          `[SPAWN] ${label} iTerm2 failed` +
+          ` (exit=${code}, signal=${signal || 'none'})` +
+          ` stderr=${JSON.stringify(stderrOutput.trim())}` +
+          ` stdout=${JSON.stringify(stdoutOutput.trim())}` +
+          ` — falling back to Terminal.app`
+        );
         launchTerminalApp();
       }
     });

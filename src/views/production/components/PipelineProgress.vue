@@ -34,6 +34,10 @@
           <span v-else>{{ pending }}</span>
         </div>
         <div class="text-sm text-slate-400 mt-1">Pending</div>
+        <!-- Linkable: rows whose audio already exists, just need binding (no TTS spend) -->
+        <div v-if="!loading && linkable > 0" class="text-xs text-cyan-400 mt-1" :title="`${linkable} rows have existing audio that just needs to be linked. No TTS spend.`">
+          + {{ linkable }} to link (no TTS)
+        </div>
       </div>
 
       <!-- Failed -->
@@ -61,6 +65,30 @@
           :style="{ width: progressPercent + '%' }"
         ></div>
       </div>
+    </div>
+
+    <!-- Presentation-text guard: Generate Missing Audio refuses to run when LEGOs/components
+         are missing presentation text. User must click "Generate Missing Presentation Text" first. -->
+    <div
+      v-if="!loading && readyForGenerate === false && presentationStatus"
+      class="mb-6 bg-amber-900/30 rounded-lg p-4 border border-amber-500/30"
+    >
+      <div class="flex items-center gap-3 mb-2">
+        <svg class="w-5 h-5 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+        <span class="font-semibold text-amber-200">Presentation text not ready</span>
+      </div>
+      <p class="text-sm text-amber-100/80 mb-1">
+        {{ presentationStatus.totalMissing }} presentation text(s) missing
+        <span v-if="presentationStatus.missingLegoPresentations > 0">
+          ({{ presentationStatus.missingLegoPresentations }} LEGO<span v-if="presentationStatus.missingComponentPresentations > 0">,
+          {{ presentationStatus.missingComponentPresentations }} component</span>)
+        </span>
+      </p>
+      <p class="text-sm text-amber-100/70">
+        Run <strong>"Generate Missing Presentation Text"</strong> in the Presentation Text section first.
+      </p>
     </div>
 
     <!-- Complete Banner (when 100% done) -->
@@ -112,6 +140,13 @@
 import { computed } from 'vue'
 import CostEstimate from './CostEstimate.vue'
 
+interface PresentationStatus {
+  ready: boolean
+  missingLegoPresentations: number
+  missingComponentPresentations: number
+  totalMissing: number
+}
+
 interface Props {
   total: number
   generated: number
@@ -120,6 +155,10 @@ interface Props {
   estimatedCost: string | null
   estimatedTime: string | null
   loading?: boolean
+  // NEW (post-unification): canonical fields from /audio-stats
+  linkable?: number
+  readyForGenerate?: boolean
+  presentationStatus?: PresentationStatus | null
 }
 
 const props = defineProps<Props>()

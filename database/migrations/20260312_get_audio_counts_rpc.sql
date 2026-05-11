@@ -1,3 +1,11 @@
+-- DEPRECATED 2026-04-29 — superseded by phase8 getAudioNeeds() / GET /needs/:courseCode
+-- The function is left in place for any external callers and as a fallback,
+-- but production code now goes through getAudioNeeds() (services/phases/phase8-audio-v13.cjs)
+-- so all dashboard counts agree with what /generate actually does. Known issues with this
+-- RPC: (a) doesn't count legos.target2_audio_id, (b) doesn't know about linkable-vs-needs-TTS,
+-- (c) doesn't enumerate pending presentation rows. Drop this RPC in a future migration
+-- once we're confident no external callers remain.
+--
 -- get_audio_counts: NULL-based audio counting via audio_id columns
 -- Returns missing counts per table (phrases, legos, seeds) in one DB round-trip.
 -- Used by the plan endpoint instead of text-matching counting.

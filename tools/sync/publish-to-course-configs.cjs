@@ -12,7 +12,7 @@
  *
  * Options:
  *   --version X.Y.Z  Set specific version (default: major bump from existing)
- *   --status STATUS  Set status (alpha, beta, release) - default: beta
+ *   --status STATUS  Set status (alpha, beta, published) - default: published
  *   --dry-run        Show what would happen without writing
  *   --commit         Auto-commit to author branch after copying
  *   --scp            Also upload to apidev server via SCP (requires VPN)
@@ -112,7 +112,7 @@ function parseArgs() {
   const result = {
     filePath: null,
     version: null,
-    status: 'beta',  // Default to beta
+    status: 'published',  // Default to published
     dryRun: false,
     commit: false,
     scp: false,
@@ -439,7 +439,7 @@ async function main() {
     console.error('Options:');
     console.error('  --file PATH       Path to legacy manifest JSON (required)');
     console.error('  --version X.Y.Z   Set specific version (default: major bump)');
-    console.error('  --status STATUS   Set status (default: beta)');
+    console.error('  --status STATUS   Set status (default: published)');
     console.error('  --dry-run         Preview without making changes');
     console.error('  --commit          Auto-commit to author branch');
     console.error('  --scp             Upload to apidev server (requires VPN)');

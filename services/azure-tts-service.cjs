@@ -230,6 +230,62 @@ const REGENERATION_VARIATIONS = [
  * @param {number} attemptNumber - Regeneration attempt (0 = original)
  * @returns {string} Text with variation applied
  */
+/**
+ * Detect script family of text. Used to pick the right "TTS hint" punctuation
+ * for the short-word coaxing helper below.
+ *
+ * @param {string} text
+ * @returns {'cjk'|'rtl'|'latin'} Script family
+ */
+function detectScript(text) {
+  if (!text) return 'latin';
+  // CJK Unified Ideographs, Hiragana, Katakana, Hangul
+  if (/[\u3040-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uAC00-\uD7AF]/.test(text)) return 'cjk';
+  // Arabic, Hebrew, Syriac, Thaana
+  if (/[\u0590-\u06FF\u0700-\u074F\u0780-\u07BF]/.test(text)) return 'rtl';
+  return 'latin';
+}
+
+/**
+ * Apply a language-aware "short word" hint for Azure TTS.
+ *
+ * Azure's neural voices read very short words (single CJK chars, 1-2 letter
+ * Latin words like Spanish "y" or Italian "a") as letter names or
+ * abbreviations rather than as words. Appending a comma forces the engine
+ * to treat the input as a sentence fragment and pronounce it naturally.
+ *
+ * Rules:
+ *   - Latin/Cyrillic/Greek words ≤ 2 chars  → append `,`
+ *   - Single CJK character                 → append `、` (CJK ideographic comma)
+ *   - RTL scripts (Arabic/Hebrew/etc.)      → SKIP — needs testing first
+ *
+ * The hint is applied to the TTS input text only — it is NEVER stored.
+ *
+ * @param {string} text - Original text
+ * @returns {string} Text with hint applied (or unchanged)
+ */
+function applyShortWordHint(text) {
+  if (!text) return text;
+  const trimmed = text.trim();
+  if (!trimmed) return text;
+
+  // Already has trailing punctuation? Leave it alone.
+  if (/[.,;:!?。、？！…]$/.test(trimmed)) return text;
+
+  const script = detectScript(trimmed);
+  if (script === 'rtl') return text; // Skip RTL until tested
+
+  if (script === 'cjk') {
+    // Only single-character CJK words need the hint; 2+ char compounds are fine
+    if ([...trimmed].length === 1) return text + '、';
+    return text;
+  }
+
+  // Latin / Cyrillic / Greek / etc.: apply for words of 1-2 characters
+  if (trimmed.length <= 2) return text + ',';
+  return text;
+}
+
 function applyRegenerationVariation(text, attemptNumber = 0) {
   if (attemptNumber === 0) {
     return text; // First attempt uses original
@@ -315,7 +371,11 @@ async function generateSpeech(text, voiceName, language, options = {}) {
   const regenerationAttempt = options.regenerationAttempt || 0;
 
   // Apply variation for regeneration (doesn't affect database, only TTS input)
-  const ttsText = applyRegenerationVariation(text, regenerationAttempt);
+  // Then apply the short-word hint so single-char / very short words get
+  // pronounced as words instead of letter names. Both transforms are
+  // TTS-input-only and are NEVER persisted.
+  let ttsText = applyRegenerationVariation(text, regenerationAttempt);
+  ttsText = applyShortWordHint(ttsText);
 
   await rateLimitRequest();
 
@@ -502,5 +562,6 @@ module.exports = {
   closePool,
   prewarmPool,
   applyRegenerationVariation,
+  applyShortWordHint,
   REGENERATION_VARIATIONS
 };
