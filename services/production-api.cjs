@@ -8220,6 +8220,23 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
 // =============================================================================
 
 const genderHaikuService = require('./gender-haiku-service.cjs')
+const genderPrepDetector = require('./gender-prep-detector.cjs')
+
+function safeParseJson(s) { try { return JSON.parse(s) } catch { return null } }
+
+// POST /api/production/:courseCode/gender-prep/check
+// Run a Haiku check on this course's actual phrases to determine whether
+// gender prep is needed. Persists the result to courses.needs_gender_prep.
+app.post('/api/production/:courseCode/gender-prep/check', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const result = await genderPrepDetector.detectNeedsGenderPrep(courseCode)
+    res.json(result)
+  } catch (e) {
+    logger.error('Error in gender-prep/check:', e)
+    res.status(500).json({ error: e.message })
+  }
+})
 
 // GET /api/production/:courseCode/gender-prep/status
 // Check gender expansion status for a course
@@ -8232,21 +8249,36 @@ app.get('/api/production/:courseCode/gender-prep/status', async (req, res) => {
     }
     const supabase = supabaseClient.getClient()
 
-    // Get course target language
-    const { data: course, error: courseErr } = await supabase
+    // Get course target language + per-course override (if migration applied)
+    let course
+    let { data: courseData, error: courseErr } = await supabase
       .from('courses')
-      .select('target_lang')
+      .select('target_lang, needs_gender_prep, gender_prep_check_notes, gender_prep_checked_at')
       .eq('course_code', courseCode)
       .single()
-
-    if (courseErr || !course) {
-      return res.status(404).json({ error: 'Course not found' })
+    if (courseErr) {
+      // If migration not applied, retry without the new fields
+      if (/column .* does not exist|Could not find the/.test(courseErr.message || '')) {
+        const fb = await supabase.from('courses').select('target_lang').eq('course_code', courseCode).single()
+        if (!fb.data) return res.status(404).json({ error: 'Course not found' })
+        course = { ...fb.data, needs_gender_prep: null, gender_prep_check_notes: null, gender_prep_checked_at: null }
+      } else {
+        return res.status(404).json({ error: 'Course not found' })
+      }
+    } else {
+      course = courseData
     }
 
-    const isGendered = genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)
+    // Per-course flag wins; null falls back to hardcoded language list
+    const isGendered = course.needs_gender_prep === true ||
+      (course.needs_gender_prep === null && genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang))
 
     if (!isGendered) {
-      return res.json({ isGendered: false, processed: false, totalExpansions: 0, processedAt: null })
+      return res.json({
+        isGendered: false, processed: false, totalExpansions: 0, processedAt: null,
+        autoChecked: course.gender_prep_checked_at || null,
+        checkNotes: course.gender_prep_check_notes ? safeParseJson(course.gender_prep_check_notes) : null
+      })
     }
 
     // Count existing expansions
@@ -8291,18 +8323,26 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
     const supabase = supabaseClient.getClient()
 
     // Verify course exists and is gendered
-    const { data: course, error: courseErr } = await supabase
+    let { data: course, error: courseErr } = await supabase
       .from('courses')
-      .select('target_lang, display_name')
+      .select('target_lang, display_name, needs_gender_prep')
       .eq('course_code', courseCode)
       .single()
 
-    if (courseErr || !course) {
-      return res.status(404).json({ error: 'Course not found' })
+    if (courseErr) {
+      // Migration not applied yet — retry without the new column
+      if (/column .* does not exist/.test(courseErr.message || '')) {
+        const fb = await supabase.from('courses').select('target_lang, display_name').eq('course_code', courseCode).single()
+        course = fb.data ? { ...fb.data, needs_gender_prep: null } : null
+      }
     }
+    if (!course) return res.status(404).json({ error: 'Course not found' })
 
-    if (!genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)) {
-      return res.status(400).json({ error: `Language ${course.target_lang} does not have grammatical gender` })
+    // Allow if either the per-course flag is true OR (flag is null AND language in fallback list)
+    const inFallback = genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)
+    const courseFlag = course.needs_gender_prep
+    if (courseFlag === false || (courseFlag === null && !inFallback)) {
+      return res.status(400).json({ error: `Course ${courseCode} (${course.target_lang}) is not flagged as needing gender prep` })
     }
 
     // Check for already-running gender-prep job (with staleness auto-cleanup)

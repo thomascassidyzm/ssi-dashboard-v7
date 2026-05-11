@@ -1849,6 +1849,27 @@ module.exports = function seedCompleteRoutes(ctx) {
         },
       });
 
+      // Fire-and-forget: when seed 5 lands and the course hasn't yet been
+      // checked, run the Haiku gender-prep detector. Picking seed 5 means
+      // there's enough first-person content to sample. Doesn't block response.
+      if (seed_number === 5) {
+        (async () => {
+          try {
+            const { data: courseRow } = await ctx.supabase.from('courses').select('needs_gender_prep').eq('course_code', course_code).single().catch(() => ({ data: null }));
+            if (courseRow && courseRow.needs_gender_prep === null) {
+              const { detectNeedsGenderPrep } = require('../../gender-prep-detector.cjs');
+              detectNeedsGenderPrep(course_code).then(r => {
+                console.log(`[gender-prep auto-check] ${course_code}: needs_gender_prep=${r.needs_gender_prep} persisted=${r.persisted}`);
+              }).catch(e => {
+                console.warn(`[gender-prep auto-check] ${course_code} failed:`, e.message);
+              });
+            }
+          } catch (e) {
+            // Migration may not be applied yet — silently skip auto-check
+          }
+        })();
+      }
+
     } catch (err) {
       console.error('Error:', err);
       res.status(500).json({ error: err.message });
