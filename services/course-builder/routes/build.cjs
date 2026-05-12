@@ -470,7 +470,7 @@ module.exports = function (ctx) {
         console.warn('[Translate] build_jobs insert failed (Supabase unreachable?) — spawning anyway:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode, effectiveTerminal);
 
       try {
@@ -522,7 +522,7 @@ module.exports = function (ctx) {
         console.warn('[Decompose] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Decompose', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Decompose agent spawned` });
@@ -564,7 +564,7 @@ module.exports = function (ctx) {
         console.warn('[BuildTeam] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
 
       try {
@@ -625,7 +625,7 @@ module.exports = function (ctx) {
         console.warn('[FinalPass] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Final Pass', courseCode, effectiveTerminal);
 
       try {
@@ -691,7 +691,7 @@ module.exports = function (ctx) {
         console.warn('[CategoryLLM] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Category LLM', courseCode, effectiveTerminal);
 
       try {
@@ -751,7 +751,7 @@ module.exports = function (ctx) {
       }
 
       // Opus agent — single thread, reads course sequentially, produces report.
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Learner Simulation', courseCode, effectiveTerminal);
 
       try {
