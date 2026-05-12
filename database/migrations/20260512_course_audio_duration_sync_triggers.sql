@@ -32,8 +32,6 @@
 -- Idempotent: DROP IF EXISTS, CREATE OR REPLACE.
 -- =============================================================================
 
-\set ON_ERROR_STOP on
-
 BEGIN;
 
 -- =============================================================================
@@ -149,11 +147,13 @@ EXECUTE FUNCTION pull_audio_duration_on_link();
 COMMENT ON FUNCTION pull_audio_duration_on_link() IS
   'When target1_audio_id or target2_audio_id is set or changed on course_practice_phrases or course_legos, pull the canonical duration_ms from course_audio into the cache column. Pair: sync_audio_duration_to_dependents().';
 
+COMMIT;
+
 -- =============================================================================
--- Verification: both triggers should now be active
+-- Verification: all three triggers should appear, AFTER on course_audio and
+-- BEFORE on the two dependent tables.
 -- =============================================================================
 
-\echo '=== INSTALLED TRIGGERS ==='
 SELECT
   event_object_table AS table_name,
   trigger_name,
@@ -167,8 +167,6 @@ WHERE trigger_name IN (
 )
 GROUP BY event_object_table, trigger_name, action_timing
 ORDER BY table_name, trigger_name;
-
-COMMIT;
 
 -- =============================================================================
 -- Notes on operational behaviour
