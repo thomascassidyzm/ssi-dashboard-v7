@@ -230,22 +230,39 @@ async function detectNeedsGenderPrep(courseCode, opts = {}) {
 // Used by the API endpoint when a human flips needs_gender_prep manually,
 // so the audit trail records who decided what and the auto-detector won't
 // overwrite it on a future run.
+//
+// value: true | false → pin the determination, mark `set_by: 'human'` so the
+//                       auto-detector skips this course unless forced.
+// value: null         → clear the determination AND clear check_notes, so a
+//                       subsequent detector call (non-forced) treats this
+//                       course as never-checked and re-runs auto-detection.
+//                       Without clearing notes, `set_by: 'human'` would still
+//                       block the detector (Tom's review caught this).
 async function setManualOverride(courseCode, value, reason) {
   if (value !== true && value !== false && value !== null) {
     throw new Error(`Invalid value: must be true|false|null, got ${value}`)
   }
-  const update = {
-    needs_gender_prep: value,
-    gender_prep_check_notes: JSON.stringify({
-      reasoning: reason || 'Manual override (no reason given)',
-      set_by: 'human',
-      manual_value: value,
-    }),
-    gender_prep_checked_at: new Date().toISOString(),
+  let update
+  if (value === null) {
+    update = {
+      needs_gender_prep: null,
+      gender_prep_check_notes: null,
+      gender_prep_checked_at: null,
+    }
+  } else {
+    update = {
+      needs_gender_prep: value,
+      gender_prep_check_notes: JSON.stringify({
+        reasoning: reason || 'Manual override (no reason given)',
+        set_by: 'human',
+        manual_value: value,
+      }),
+      gender_prep_checked_at: new Date().toISOString(),
+    }
   }
   const { error } = await supabase.from('courses').update(update).eq('course_code', courseCode)
   if (error) throw error
-  return { courseCode, needs_gender_prep: value, set_by: 'human' }
+  return { courseCode, needs_gender_prep: value, set_by: value === null ? null : 'human', cleared: value === null }
 }
 
 if (require.main === module) {
