@@ -68,6 +68,12 @@
                 </span>
                 <PlaylistEditor :modelValue="getL1StageList(stage)" @update:modelValue="setL1StageList(stage, $event)" :compact="true" />
                 <button
+                  class="stage-audition-btn"
+                  :disabled="!auditionExampleSeed"
+                  @click="auditionL1Stage(stage)"
+                  :title="auditionExampleSeed ? `Audition stage ${stage} with seed S${String(auditionExampleSeed).padStart(4,'0')}` : 'Pick a course with graduated seeds to audition'"
+                >▶</button>
+                <button
                   class="stage-remove-btn"
                   :disabled="l1StageKeys.length <= 1"
                   @click="removeL1Stage(stage)"
@@ -182,6 +188,12 @@
                   <span v-if="idx === podsStageKeys.length - 1" class="stage-eternal">eternal</span>
                 </span>
                 <PlaylistEditor :modelValue="getStageList(stage)" @update:modelValue="setStageList(stage, $event)" :compact="true" />
+                <button
+                  class="stage-audition-btn"
+                  :disabled="!auditionExamplePodSentence"
+                  @click="auditionPodStage(stage)"
+                  :title="auditionExamplePodSentence ? `Audition stage ${stage} with pod sentence 1` : 'Pick a course with a pod loaded to audition'"
+                >▶</button>
                 <button
                   class="stage-remove-btn"
                   :disabled="podsStageKeys.length <= 1"
@@ -334,6 +346,7 @@ const previewRound = ref(100)
 const courseLoading = ref(false)
 const courseLegos = ref([])           // is_new only, ordered by seed,lego_index
 const courseSeeds = ref([])           // course_seeds rows for picked course
+const coursePodSentences = ref([])    // listening_pod_sentences rows, ordered by global_order
 
 const seedLastRound = computed(() => {
   // Mirrors generateLearningScript.ts: seeds processed in seed_number order;
@@ -467,9 +480,8 @@ function playOne(sNum, role) {
   a.play().catch(err => console.warn('audio play failed:', err))
   currentAudio = a
 }
-async function playSequence(sNum) {
+async function playPlaylistForSeed(playlist, sNum) {
   if (currentAudio) { try { currentAudio.pause() } catch {} }
-  const playlist = seedL1Playlist(sNum)
   for (const role of playlist) {
     const id = seedAudioId(sNum, role)
     const url = audioUrl(id)
@@ -487,10 +499,69 @@ async function playSequence(sNum) {
   }
 }
 
+async function playSequence(sNum) {
+  await playPlaylistForSeed(seedL1Playlist(sNum), sNum)
+}
+
+// Audition a specific L1 stage with the currently-selected example seed.
+// Useful when you want to hear what Stage N sounds like even if no seed
+// is currently sitting in that stage at the previewRound.
+function auditionL1Stage(stage) {
+  const sNum = auditionExampleSeed.value
+  if (sNum == null) return
+  playPlaylistForSeed(getL1StageList(stage), sNum)
+}
+
+// Example seed for stage audition. Prefers the most-recently graduated
+// seed (what a learner is hearing right now); falls back to oldest
+// graduated or the first course seed if nothing has graduated yet.
+const auditionExampleSeed = computed(() => {
+  if (activeWindow.value.length) return activeWindow.value[activeWindow.value.length - 1]
+  if (graduatedQueue.value.length) return graduatedQueue.value[graduatedQueue.value.length - 1]
+  if (courseSeeds.value.length) return courseSeeds.value[0].seed_number
+  return null
+})
+
+// Example pod sentence for L2 stage audition — first sentence of the
+// pod (global_order = 1). Null if the course has no pod loaded.
+const auditionExamplePodSentence = computed(() => {
+  return coursePodSentences.value[0] || null
+})
+
+// Play one pod sentence through a stage playlist. Mirrors the runtime
+// pod-lap builder: trans → known audio, ps/ps2x → target audio (at 1×
+// or 2× respectively). No bookends, no inter-chunk gap matrix — admin
+// preview, not a faithful lap simulation.
+async function playPodPlaylistForSentence(playlist, sentence) {
+  if (currentAudio) { try { currentAudio.pause() } catch {} }
+  for (const role of playlist) {
+    const isTrans = role === 'trans'
+    const id = isTrans ? sentence.known_audio_id : sentence.target_audio_id
+    const url = audioUrl(id)
+    if (!url) continue
+    await new Promise((resolve) => {
+      const a = new Audio(url)
+      a.playbackRate = role === 'ps2x' ? 2.0 : 1.0
+      currentAudio = a
+      a.onended = resolve
+      a.onerror = resolve
+      a.play().catch(resolve)
+    })
+    await new Promise((r) => setTimeout(r, 250))
+  }
+}
+
+function auditionPodStage(stage) {
+  const sentence = auditionExamplePodSentence.value
+  if (!sentence) return
+  playPodPlaylistForSentence(getStageList(stage), sentence)
+}
+
 async function loadCoursePreview(courseCode) {
   courseLoading.value = true
   courseLegos.value = []
   courseSeeds.value = []
+  coursePodSentences.value = []
   try {
     const sb = await import('../services/supabase').then(m => m.supabase)
     if (!sb) throw new Error('Supabase not configured')
@@ -530,6 +601,19 @@ async function loadCoursePreview(courseCode) {
       from += limit
     }
     courseSeeds.value = seeds
+
+    // Pod sentences (for L2 audition). One pod per course; load whatever
+    // exists. Courses without pods still preview L1 fine.
+    const { data: podRows, error: podErr } = await sb
+      .from('listening_pod_sentences')
+      .select('global_order, target_text, known_text, target_audio_id, known_audio_id')
+      .eq('pod_id', `${courseCode}:pod-0`)
+      .order('global_order', { ascending: true })
+    if (podErr) {
+      console.warn('[preview] pod load failed:', podErr)
+    } else {
+      coursePodSentences.value = podRows || []
+    }
   } catch (e) {
     console.warn('[preview] load failed:', e)
   } finally {
@@ -1166,13 +1250,27 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 .stage-row {
   display: grid;
-  grid-template-columns: 90px 1fr 28px;
+  grid-template-columns: 90px 1fr auto auto;
   gap: 0.75rem;
   align-items: center;
   padding: 0.4rem 0.5rem;
   background: rgba(0, 0, 0, 0.15);
   border-radius: 6px;
 }
+.stage-audition-btn {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--color-graphite, #475569);
+  background: transparent;
+  color: var(--color-paper-dim, #94a3b8);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.stage-audition-btn:hover:not(:disabled) {
+  border-color: #34d399;
+  color: #34d399;
+}
+.stage-audition-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 .stage-label {
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 0.75rem;
