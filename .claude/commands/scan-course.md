@@ -50,13 +50,18 @@ Run these checks in a single node script. Print results as you go.
 
 #### Check 1: Parentheticals in LEGO known_text
 
-Pattern: `/\([^)]+\)/` in known_text
+Patterns:
+- ASCII parens: `/\([^)]+\)/`
+- **Fullwidth parens (CJK convention): `/（[^）]+）/`** — appears in Chinese known_text as `（虚拟）`, `（过去式）`, `（条件）` etc. Builder annotations in Chinese-known courses use fullwidth U+FF08/U+FF09. ASCII regex misses these entirely; must check separately. (Discovered 2026-05-12 — scan of x_for_zho courses surfaced 455 fullwidth-paren rows across ita/deu/fra builds, none in spa.)
+- Corner brackets `「」` `『』` and lens brackets `【】` aren't currently used as annotation wrappers in our builds but worth checking opportunistically.
 
-These are grammar annotations like `(sentence end)`, `(2sg pronoun)`, `(past participle)` that the builder agent added. They should not be in learner-facing text.
+These are grammar annotations like `(sentence end)`, `(2sg pronoun)`, `（条件）` that the builder agent added. They should not be in learner-facing text.
 
-**Search independently** — do NOT combine with the slash check. A LEGO can have parentheticals only, slashes only, or both.
+**Search independently** — do NOT combine with the slash check. A LEGO can have parentheticals only, slashes only, or both. Also scan **phrases** (known_text + target_text), not just LEGOs — the deu_for_zho 2026-05-12 sweep found 124 affected phrase rows even with zero affected LEGOs.
 
-Report: count + 5 samples.
+Strip with `replace(/\([^)]*\)/g, '').replace(/（[^）]*）/g, '').replace(/\s+/g, ' ').trim()`.
+
+Report: count + 5 samples (split by ASCII / fullwidth if both present).
 
 #### Check 2: Slashes in LEGO known_text
 
