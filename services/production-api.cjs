@@ -8,6 +8,7 @@ const { createServer } = require('http')
 const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
+const { isPunctuationOnly } = require('./shared/text-classification.cjs')
 
 const logger = createLogger('ProductionAPI')
 
@@ -65,6 +66,41 @@ async function getCachedManifest(courseCode) {
 }
 
 // Clear cache for a specific course (call after data updates)
+/**
+ * Build the courseConfigsId (file name + manifest id) with dialect-aware suffix
+ * on either the known or target side (or both, in theory).
+ * E.g.:
+ *   spa_for_eng        → "en-es"        (no suffix)
+ *   spa_mx_for_eng     → "en-es-mx"     (target suffix)
+ *   fra_ca_for_eng     → "en-fr-ca"
+ *   eng_for_fra_ca     → "fr-ca-en"     (known suffix — hypothetical, no such course today)
+ *   cym_anthem_for_jpn → "ja-cy-anthem"
+ *
+ * Mirrors the logic in services/phases/generate-legacy-manifest.cjs (build manifest section)
+ * so the dashboard's UI/publish path agrees with the manifest's internal id.
+ *
+ * Also exported indirectly via parseCourseCodeSuffixes() so other modules can
+ * reuse the same parsing.
+ *
+ * @param {string} courseCode      e.g. "fra_ca_for_eng"
+ * @param {string} knownDbLang     e.g. "eng" (course.known_lang)
+ * @param {string} targetDbLang    e.g. "fra" (course.target_lang)
+ * @param {string} knownLegacyCode e.g. "en"  (after languageCodeService conversion)
+ * @param {string} targetLegacyCode e.g. "fr"
+ */
+function parseCourseCodeSuffixes(courseCode, knownDbLang, targetDbLang) {
+  const re = new RegExp(`^${targetDbLang}(?:_(.+?))?_for_${knownDbLang}(?:_(.+))?$`)
+  const m = courseCode.match(re)
+  return { targetSuffix: m?.[1] || '', knownSuffix: m?.[2] || '' }
+}
+
+function buildCourseConfigsId(courseCode, knownDbLang, targetDbLang, knownLegacyCode, targetLegacyCode) {
+  const { targetSuffix, knownSuffix } = parseCourseCodeSuffixes(courseCode, knownDbLang, targetDbLang)
+  const knownPart = knownSuffix ? `${knownLegacyCode}-${knownSuffix}` : knownLegacyCode
+  const targetPart = targetSuffix ? `${targetLegacyCode}-${targetSuffix}` : targetLegacyCode
+  return `${knownPart}-${targetPart}`
+}
+
 function invalidateManifestCache(courseCode) {
   if (manifestCache.has(courseCode)) {
     manifestCache.delete(courseCode)
@@ -2683,6 +2719,95 @@ app.post('/api/production/:courseCode/audio-flags/bulk-delete', async (req, res)
   }
 })
 
+// Delete orphaned audio flags (flags whose text no longer matches any phrase)
+app.post('/api/production/:courseCode/audio-flags/delete-orphaned', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // 1. Get all flagged UUIDs
+    const { data: flags, error: flagsErr } = await supabase
+      .from('audio_flags')
+      .select('audio_uuid')
+      .eq('course_code', courseCode)
+      .eq('status', 'flagged')
+
+    if (flagsErr) throw flagsErr
+    if (!flags || flags.length === 0) {
+      return res.json({ deleted: 0, total: 0, remaining: 0 })
+    }
+
+    const uuids = flags.map(f => f.audio_uuid)
+
+    // 2. Get audio text+role for each flagged UUID
+    const audioRows = []
+    for (let i = 0; i < uuids.length; i += 200) {
+      const chunk = uuids.slice(i, i + 200)
+      const { data } = await supabase
+        .from('course_audio')
+        .select('id, text, role')
+        .eq('course_code', courseCode)
+        .in('id', chunk)
+      if (data) audioRows.push(...data)
+    }
+
+    // 3. Get all phrase texts for this course
+    const { data: phrases, error: phrasesErr } = await supabase
+      .from('course_practice_phrases')
+      .select('known_text, target_text')
+      .eq('course_code', courseCode)
+
+    if (phrasesErr) throw phrasesErr
+
+    const knownTexts = new Set((phrases || []).map(p => p.known_text))
+    const targetTexts = new Set((phrases || []).map(p => p.target_text))
+
+    // 4. Find orphaned flags (audio text doesn't match any phrase)
+    const orphanedUuids = []
+    for (const audio of audioRows) {
+      const hasMatch = audio.role === 'known'
+        ? knownTexts.has(audio.text)
+        : targetTexts.has(audio.text)
+      if (!hasMatch) orphanedUuids.push(audio.id)
+    }
+
+    // Also include flags whose UUID isn't even in course_audio anymore
+    const audioIdSet = new Set(audioRows.map(a => a.id))
+    for (const uuid of uuids) {
+      if (!audioIdSet.has(uuid) && !orphanedUuids.includes(uuid)) {
+        orphanedUuids.push(uuid)
+      }
+    }
+
+    if (orphanedUuids.length === 0) {
+      return res.json({ deleted: 0, total: flags.length, remaining: flags.length })
+    }
+
+    // 5. Delete orphaned flags
+    const BATCH = 100
+    for (let i = 0; i < orphanedUuids.length; i += BATCH) {
+      const batch = orphanedUuids.slice(i, i + BATCH)
+      const { error } = await supabase
+        .from('audio_flags')
+        .delete()
+        .eq('course_code', courseCode)
+        .in('audio_uuid', batch)
+      if (error) throw error
+    }
+
+    logger.info(`[OrphanFlags] ${courseCode}: deleted ${orphanedUuids.length} orphaned flags out of ${flags.length} total`)
+    res.json({ deleted: orphanedUuids.length, total: flags.length, remaining: flags.length - orphanedUuids.length })
+  } catch (error) {
+    logger.error('Error deleting orphaned flags:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // =============================================================================
 // PHRASE MANAGEMENT
 // =============================================================================
@@ -3126,7 +3251,7 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
 // Cached in-memory for 60s per course — invalidated on audio generation events
 // =============================================================================
 const _audioStatsCache = new Map() // courseCode → { data, expiry }
-const AUDIO_STATS_CACHE_TTL = 60_000 // 60 seconds
+const AUDIO_STATS_CACHE_TTL = 5_000 // 5 seconds — short because Phase 8 linking can change counts between requests
 
 function invalidateAudioStatsCache(courseCode) {
   if (courseCode) {
@@ -3165,39 +3290,31 @@ async function getDirectAudioStats(courseCode) {
 
   const supabase = supabaseClient.getClient()
 
-  // Get course info for release target and known_lang (for shared audio)
+  // Get course info for shared audio (known_lang)
   const { data: course, error: courseError } = await supabase
     .from('courses')
-    .select('seed_count, known_lang')
+    .select('seed_count, known_lang, target_lang')
     .eq('course_code', courseCode)
     .single()
   if (courseError) throw new Error(`Course not found: ${courseCode}`)
-  const releaseTarget = course.seed_count || 260
   const knownLang = course.known_lang || 'eng'
 
-  // Single source of truth: get_audio_counts RPC counts NULL audio_id columns
-  // directly on content tables (phrases, legos, seeds). No dedup, no normalization,
-  // no Phase 8 dependency. Just: is the audio_id linked or not?
-  const { data: counts, error: countsError } = await supabase.rpc('get_audio_counts', {
-    p_course_code: courseCode,
-    p_release_target: releaseTarget
-  })
-  if (countsError) throw new Error(`get_audio_counts RPC failed: ${countsError.message}`)
+  // Single source of truth: phase 8's /needs endpoint, which uses getAudioNeeds().
+  // This is the same function /generate uses to decide what to TTS, so the
+  // dashboard's "Pending" number now matches what Generate will process exactly.
+  const phase8Resp = await proxyToPhase8('GET', `/needs/${courseCode}`)
+  if (phase8Resp.status >= 400) {
+    throw new Error(`phase8 /needs failed (${phase8Resp.status}): ${JSON.stringify(phase8Resp.data)}`)
+  }
+  const phase8Needs = phase8Resp.data
+  const azureMissing = phase8Needs.toGenerate || 0
+  const azureSlots = phase8Needs.totalSlots || 0
+  const azureExisting = phase8Needs.existing || 0
 
-  const p = counts.phrases || {}
-  const l = counts.legos || {}
-  const s = counts.seeds || {}
-
-  const missingKnown = (p.missing_known || 0) + (l.missing_known || 0) + (s.missing_known || 0)
-  const missingTarget1 = (p.missing_target1 || 0) + (l.missing_target1 || 0) + (s.missing_target1 || 0)
-  const missingTarget2 = (p.missing_target2 || 0) + (s.missing_target2 || 0)
-  const missingPresentation = l.missing_presentation || 0
-  const azureMissing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation
-  const azureSlots = ((p.total || 0) * 3) + ((l.total || 0) * 2) + (l.total_new || 0) + ((s.total || 0) * 3)
-
-  // Shared audio (ElevenLabs): encouragements, instructions, welcome
-  // Must match the /audio-pipeline/missing endpoint's counting exactly
-  const SHARED_REQUIREMENTS = { encouragement: 26, instruction: 48 }
+  // Shared audio (NOT generated by Generate Missing Audio — separate bulk-audio scripts).
+  // Reported here so existing /audio-pipeline/missing consumers don't break, but
+  // dashboard surfaces should use /shared-audio-status for richer per-bucket info.
+  const SHARED_REQUIREMENTS = { encouragement: 48, instruction: 48 }
   const [encRes, instrRes, welcomeRes] = await Promise.all([
     supabase.from('shared_audio').select('*', { count: 'exact', head: true })
       .eq('language', knownLang).eq('audio_type', 'encouragement'),
@@ -3213,6 +3330,7 @@ async function getDirectAudioStats(courseCode) {
   const welcomeMissing = (welcomeRes.data?.length > 0) ? 0 : 1
   const welcomeTotal = 1
 
+  // Combined totals — Pending widget reads `missing` and now matches /generate.
   const totalSlots = azureSlots + sharedTotal + welcomeTotal
   const totalMissing = azureMissing + sharedMissing + welcomeMissing
   const totalExisting = totalSlots - totalMissing
@@ -3221,26 +3339,136 @@ async function getDirectAudioStats(courseCode) {
     total: totalSlots,
     existing: totalExisting,
     missing: totalMissing,
-    breakdown: {
-      known: missingKnown,
-      target1: missingTarget1,
-      target2: missingTarget2,
-      presentation: missingPresentation
-    },
+    // NEW: course-specific TTS work (the Generate button). Excludes shared.
+    toGenerate: azureMissing,
+    toLink: phase8Needs.toLink || 0,
+    azureSlots,
+    azureExisting,
+    breakdown: phase8Needs.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
     existingByRole: {},
-    totalPhrases: p.total || 0,
-    totalLegos: l.total || 0,
-    totalNewLegos: l.total_new || 0,
+    totalPhrases: 0, // not in /needs response; consumers use /audio-pipeline/missing for breakdowns
+    totalLegos: 0,
+    totalNewLegos: 0,
     sharedNeeded: sharedTotal,
     sharedExisting: sharedTotal - sharedMissing,
     welcomeExists: welcomeMissing === 0,
-    releaseTarget
+    readyForGenerate: phase8Needs.readyForGenerate,
+    presentationStatus: phase8Needs.presentationStatus,
+    releaseTarget: phase8Needs.releaseTarget
   }
 
   // Cache result
   _audioStatsCache.set(courseCode, { data: result, expiry: Date.now() + AUDIO_STATS_CACHE_TTL })
   return result
 }
+
+// Paid-target languages — courses with these as target get paywall encouragements
+// (currently only available in English known-language; see memory/project_paywall_encouragements.md)
+const PAID_TARGET_LANGUAGES = new Set(['eng', 'ara', 'cmn', 'jpn', 'kor', 'ita', 'fra', 'spa', 'por', 'deu'])
+
+/**
+ * Render the welcome script text for a given (knownLang, targetLang) pair.
+ * Reads the template from scripts/bulk-audio/data/translations/welcomes/{knownLang}.json
+ * and substitutes target-specific slots ({a_target_speaker}, {in_target}, etc.).
+ * Returns null if the template file or target slots are missing.
+ */
+// Course `known_lang` codes don't always match the welcome-translation file naming.
+// e.g., zho (Chinese — used by courses) ↔ cmn.json (Mandarin — file). Most cases match.
+const WELCOME_FILE_ALIAS = { zho: 'cmn' }
+
+function renderWelcomeScript(knownLang, targetLang, targetSuffix = '') {
+  try {
+    const fs = require('fs')
+    const fileLang = WELCOME_FILE_ALIAS[knownLang] || knownLang
+    const p = path.join(__dirname, '..', 'scripts', 'bulk-audio', 'data', 'translations', 'welcomes', `${fileLang}.json`)
+    if (!fs.existsSync(p)) return null
+    const data = JSON.parse(fs.readFileSync(p, 'utf8'))
+    // Dialect-aware lookup: ara_lb_for_eng → try targets["ara_lb"] first, fall back to targets["ara"]
+    const dialectKey = targetSuffix ? `${targetLang}_${targetSuffix}` : null
+    const slots = (dialectKey && data.targets?.[dialectKey]) || data.targets?.[targetLang]
+    if (!data.template || !slots) return null
+    return data.template
+      .replace(/\{a_target_speaker\}/g, slots.a_target_speaker || '')
+      .replace(/\{in_target\}/g, slots.in_target || '')
+      .replace(/\{target_speakers\}/g, slots.target_speakers || '')
+      .replace(/\{in_known\}/g, data.in_known || '')
+  } catch (e) {
+    logger.warn(`renderWelcomeScript(${knownLang}, ${targetLang}, ${targetSuffix}) failed: ${e.message}`)
+    return null
+  }
+}
+
+// GET /api/production/:courseCode/shared-audio-status
+// Per-bucket status for the dashboard's Shared Audio section.
+// Buckets: welcome, ordered (instructions), pooled (encouragements), paywall (paid courses only).
+app.get('/api/production/:courseCode/shared-audio-status', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const supabase = supabaseClient.getClient()
+    if (!supabase) return res.status(503).json({ error: 'Supabase not initialized' })
+
+    const { data: course, error: courseError } = await supabase
+      .from('courses').select('known_lang, target_lang').eq('course_code', courseCode).single()
+    if (courseError || !course) return res.status(404).json({ error: 'Course not found' })
+
+    const knownLang = course.known_lang
+    const targetLang = course.target_lang
+    const paywallApplies = PAID_TARGET_LANGUAGES.has(targetLang)
+
+    const [orderedRes, pooledRes, welcomeRes, paywallRes] = await Promise.all([
+      supabase.from('shared_audio').select('id', { count: 'exact', head: true })
+        .eq('language', knownLang).eq('audio_type', 'instruction'),
+      supabase.from('shared_audio').select('id', { count: 'exact', head: true })
+        .eq('language', knownLang).eq('audio_type', 'encouragement'),
+      supabase.from('course_audio').select('id, s3_key, text')
+        .eq('course_code', courseCode).eq('role', 'welcome').limit(1),
+      paywallApplies
+        ? supabase.from('shared_audio').select('id', { count: 'exact', head: true })
+            .eq('language', knownLang).eq('audio_type', 'paywall')
+        : Promise.resolve({ count: 0 })
+    ])
+
+    const ORDERED_TOTAL = 48
+    const POOLED_TOTAL = 48
+
+    const welcomeRow = welcomeRes.data?.[0]
+    const welcomePopulated = !!(welcomeRow && welcomeRow.s3_key && !welcomeRow.s3_key.startsWith('pending/'))
+
+    // The text stored on the welcome course_audio row is just "welcome" (a label).
+    // The actual spoken script is built from the template + per-target slot fills.
+    const { targetSuffix } = parseCourseCodeSuffixes(courseCode, knownLang, targetLang)
+    const welcomeScript = renderWelcomeScript(knownLang, targetLang, targetSuffix)
+
+    res.json({
+      knownLang,
+      targetLang,
+      welcome: {
+        populated: welcomePopulated,
+        text: welcomeScript || welcomeRow?.text || null,
+        s3_key: welcomeRow?.s3_key || null
+      },
+      ordered: {
+        populated_count: orderedRes.count || 0,
+        total: ORDERED_TOTAL,
+        complete: (orderedRes.count || 0) >= ORDERED_TOTAL
+      },
+      pooled: {
+        populated_count: pooledRes.count || 0,
+        total: POOLED_TOTAL,
+        complete: (pooledRes.count || 0) >= POOLED_TOTAL
+      },
+      paywall: {
+        applies: paywallApplies,
+        populated_count: paywallRes.count || 0,
+        // Total for paywall not known per-language; report 0 when not applicable
+        // and the actual count when it does. Frontend renders accordingly.
+      }
+    })
+  } catch (error) {
+    logger.error('shared-audio-status error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
 
 // FAST audio stats endpoint - counts audio matching CURRENT course content
 // Returns total needed vs existing audio for Progress Dashboard
@@ -3262,12 +3490,21 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
       total: stats.total,
       existing: stats.existing,
       missing: stats.missing,
+      // NEW canonical fields for the dashboard:
+      // - toGenerate: course-specific TTS work (matches what /generate processes)
+      // - toLink: rows that already have audio, just need binding (no TTS spend)
+      // - readyForGenerate: false → "Generate presentation text first"
+      toGenerate: stats.toGenerate,
+      toLink: stats.toLink,
+      readyForGenerate: stats.readyForGenerate,
+      presentationStatus: stats.presentationStatus,
       breakdown: {
+        ...stats.breakdown,
         phrases: stats.totalPhrases,
         seeds: 0,
         uniquePhraseAudio: stats.uniquePhraseAudio,
         newLegos: stats.totalNewLegos,
-        presentationsExisting: stats.existingByRole.presentation,
+        presentationsExisting: stats.existingByRole?.presentation,
         sharedNeeded: stats.sharedNeeded,
         sharedExisting: stats.sharedExisting,
         welcomeExists: stats.welcomeExists
@@ -4729,7 +4966,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     // =========================================================================
     // ELEVENLABS: Shared audio (encouragements, instructions, welcome)
     // =========================================================================
-    const SHARED_AUDIO_REQUIREMENTS = { encouragement: 26, instruction: 48 }
+    const SHARED_AUDIO_REQUIREMENTS = { encouragement: 48, instruction: 48 }
 
     const { count: encCount } = await supabase
       .from('shared_audio')
@@ -4838,6 +5075,71 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
   } catch (error) {
     logger.error(`Missing audio error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/audio-pipeline/ungeneratable
+// List items whose text is empty/punctuation-only AND have no audio linked.
+// These are silently filtered by Phase 8 generation, so the dashboard needs
+// to surface them — otherwise the user sees "X missing", clicks generate,
+// nothing changes, and they have no idea why.
+app.get('/api/production/:courseCode/audio-pipeline/ungeneratable', async (req, res) => {
+  const { courseCode } = req.params
+
+  try {
+    const supabase = supabaseClient.getClient()
+    if (!supabase) return res.status(500).json({ error: 'Database not initialized' })
+
+    const items = []
+
+    // Practice phrases — known/target1/target2 with NULL audio_id
+    const { data: phrases, error: pErr } = await supabase
+      .from('course_practice_phrases')
+      .select('id, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .eq('course_code', courseCode)
+      .or('known_audio_id.is.null,target1_audio_id.is.null,target2_audio_id.is.null')
+      .limit(10000)
+    if (pErr) throw pErr
+
+    for (const row of phrases || []) {
+      if (row.known_audio_id === null && isPunctuationOnly(row.known_text)) {
+        items.push({ source: 'phrase', id: row.id, role: 'known', text: row.known_text || '' })
+      }
+      if (row.target1_audio_id === null && isPunctuationOnly(row.target_text)) {
+        items.push({ source: 'phrase', id: row.id, role: 'target1', text: row.target_text || '' })
+      }
+      if (row.target2_audio_id === null && isPunctuationOnly(row.target_text)) {
+        items.push({ source: 'phrase', id: row.id, role: 'target2', text: row.target_text || '' })
+      }
+    }
+
+    // LEGOs — known/target1 with NULL audio_id
+    const { data: legos, error: lErr } = await supabase
+      .from('course_legos')
+      .select('lego_id, seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id')
+      .eq('course_code', courseCode)
+      .or('known_audio_id.is.null,target1_audio_id.is.null')
+      .limit(10000)
+    if (lErr) throw lErr
+
+    for (const row of legos || []) {
+      if (row.known_audio_id === null && isPunctuationOnly(row.known_text)) {
+        items.push({ source: 'lego', id: row.lego_id, seed: row.seed_number, legoIndex: row.lego_index, role: 'known', text: row.known_text || '' })
+      }
+      if (row.target1_audio_id === null && isPunctuationOnly(row.target_text)) {
+        items.push({ source: 'lego', id: row.lego_id, seed: row.seed_number, legoIndex: row.lego_index, role: 'target1', text: row.target_text || '' })
+      }
+    }
+
+    res.json({
+      success: true,
+      courseCode,
+      count: items.length,
+      items
+    })
+  } catch (error) {
+    logger.error(`Ungeneratable items error for ${courseCode}:`, error.message)
     res.status(500).json({ error: error.message })
   }
 })
@@ -6460,7 +6762,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
 
     const knownCode = languageCodeService.legacyToStandard(course.known_lang)
     const targetCode = languageCodeService.legacyToStandard(course.target_lang)
-    const courseConfigsId = `${knownCode}-${targetCode}`
+    const courseConfigsId = buildCourseConfigsId(courseCode, course.known_lang, course.target_lang, knownCode, targetCode)
 
     // Import the legacy manifest generator
     const { generateLegacyManifest, validateManifest } = require('./phases/generate-legacy-manifest.cjs')
@@ -6473,7 +6775,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
     // If withAudio, run audio generation in background and return response immediately
     if (withAudio && audioJobId) {
       // Generate manifest WITHOUT audio first (fast)
-      const { manifest, audioGenerationWarnings: noAudioWarnings, welcomeMissing } = await generateLegacyManifest(courseCode, { withAudio: false })
+      const { manifest, audioGenerationWarnings: noAudioWarnings, welcomeMissing, missingSamples } = await generateLegacyManifest(courseCode, { withAudio: false })
 
       // Validate and save manifest
       const validation = validateManifest(manifest)
@@ -6544,8 +6846,14 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
         savedToState: true,
         pendingPath: manifestPath,
         warnings: [
-          ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : [])
+          ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : []),
+          ...(missingSamples && missingSamples.length > 0
+            ? [`${missingSamples.length} sample audio role(s) missing — manifest will ship with gaps. First few: ` +
+                missingSamples.slice(0, 5).map(m => `[${m.role}] "${m.text.slice(0, 50)}"`).join('; ') +
+                (missingSamples.length > 5 ? ` (+${missingSamples.length - 5} more)` : '')]
+            : [])
         ],
+        missingSamples: missingSamples || [],
         audioJobId: audioJobId
       })
 
@@ -6582,7 +6890,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
     }
 
     // Normal path (withAudio: false)
-    const { manifest, audioGenerationWarnings, welcomeMissing } = await generateLegacyManifest(courseCode, { withAudio: false })
+    const { manifest, audioGenerationWarnings, welcomeMissing, missingSamples } = await generateLegacyManifest(courseCode, { withAudio: false })
 
     // Validate the manifest
     const validation = validateManifest(manifest)
@@ -6658,8 +6966,14 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
       pendingPath: manifestPath,
       warnings: [
         ...(audioGenerationWarnings ? [audioGenerationWarnings.message] : []),
-        ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : [])
+        ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : []),
+        ...(missingSamples && missingSamples.length > 0
+          ? [`${missingSamples.length} sample audio role(s) missing — manifest will ship with gaps. First few: ` +
+              missingSamples.slice(0, 5).map(m => `[${m.role}] "${m.text.slice(0, 50)}"`).join('; ') +
+              (missingSamples.length > 5 ? ` (+${missingSamples.length - 5} more)` : '')]
+          : [])
       ],
+      missingSamples: missingSamples || [],
       audioJobId: audioJobId // Will be null if withAudio=false
     })
   } catch (error) {
@@ -6776,7 +7090,7 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
     const { courseCode } = req.params
     const {
       version,
-      status = 'beta',
+      status = 'published',
       commitToCourseConfigs = true,
       scpToApidev = false
     } = req.body
@@ -6866,7 +7180,7 @@ app.get('/api/production/:courseCode/publish-manifest/version', async (req, res)
 
     const knownCode = languageCodeService.legacyToStandard(course.known_lang)
     const targetCode = languageCodeService.legacyToStandard(course.target_lang)
-    const courseConfigsId = `${knownCode}-${targetCode}`
+    const courseConfigsId = buildCourseConfigsId(courseCode, course.known_lang, course.target_lang, knownCode, targetCode)
 
     const repoCheck = publishManifestService.checkCourseConfigsRepo()
     if (repoCheck.exists) publishManifestService.pullAuthorBranch()
@@ -6902,7 +7216,7 @@ app.get('/api/production/:courseCode/manifest-diff', async (req, res) => {
 
     const knownCode = languageCodeService.legacyToStandard(course.known_lang)
     const targetCode = languageCodeService.legacyToStandard(course.target_lang)
-    const courseConfigsId = `${knownCode}-${targetCode}`
+    const courseConfigsId = buildCourseConfigsId(courseCode, course.known_lang, course.target_lang, knownCode, targetCode)
 
     // Load pending manifest
     const pendingPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
@@ -7063,7 +7377,9 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
           await fs.writeJson(durationsPath, durationsObj, { spaces: 2 })
           logger.info(`[AUTO-FIX] Saved ${Object.keys(durationsObj).length} extracted durations`)
 
-          // Run auto-fix with pre-extracted durations (should be instant)
+          // Run auto-fix with pre-extracted durations (should be instant).
+          // Pass courseCode so course_audio.duration_ms is also synced — prevents
+          // a subsequent Step 1 run from re-introducing the stale values.
           const fixResults = await s3DeployService.autoFixDurations(
             uuids,
             pendingManifest,
@@ -7072,15 +7388,19 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
                 courseCode, phase: 'fixing', checked, total, fixed, errors
               })
             },
-            verifyResults.extractedDurations
+            verifyResults.extractedDurations,
+            { courseCode }
           )
 
-          logger.info(`[AUTO-FIX] Fixed ${fixResults.fixed} durations, ${fixResults.errors} errors`)
+          logger.info(`[AUTO-FIX] Fixed ${fixResults.fixed} manifest durations, ${fixResults.errors} errors. DB sync: ${fixResults.dbRowsUpdated} rows updated, ${fixResults.dbAlreadyCorrect} already correct, ${fixResults.dbErrors} errors`)
 
           // Save updated manifest
           await fs.writeJson(manifestPath, fixResults.updatedManifest, { spaces: 2 })
           results.durationsFixed = fixResults.fixed
           results.durationFixErrors = fixResults.errors
+          results.dbRowsUpdated = fixResults.dbRowsUpdated
+          results.dbAlreadyCorrect = fixResults.dbAlreadyCorrect
+          results.dbErrors = fixResults.dbErrors
 
           // Stage 4: Verify fixed durations
           logger.info(`[VERIFY-FIX] Verifying ${fixResults.fixed} fixed durations`)
@@ -7248,9 +7568,10 @@ async function loadPublishedManifest(courseCode) {
   }
 
   // Compute courseConfigsId dynamically from language codes (e.g., "en-cmn" for zho_for_eng)
+  // Dialect-aware: spa_mx_for_eng → "en-es-mx", fra_ca_for_eng → "en-fr-ca"
   const knownCode = languageCodeService.databaseToManifest(course.known_lang)
   const targetCode = languageCodeService.databaseToManifest(course.target_lang)
-  const courseConfigsId = `${knownCode}-${targetCode}`
+  const courseConfigsId = buildCourseConfigsId(courseCode, course.known_lang, course.target_lang, knownCode, targetCode)
 
   // Try course-configs repo first (canonical published location)
   const courseConfigsRepo = process.env.COURSE_CONFIGS_REPO || path.join(require('os').homedir(), 'Documents', 'GitHub', 'course-configs')
@@ -7903,6 +8224,45 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
 // =============================================================================
 
 const genderHaikuService = require('./gender-haiku-service.cjs')
+const genderPrepDetector = require('./gender-prep-detector.cjs')
+const voiceGenderMap = require('./voice-gender-map.cjs')
+
+function safeParseJson(s) { try { return JSON.parse(s) } catch { return null } }
+
+// POST /api/production/:courseCode/gender-prep/check
+// Run a Haiku check on this course's actual phrases to determine whether
+// gender prep is needed. Persists the result to courses.needs_gender_prep.
+// Skips if a human has set the determination, unless ?force=true.
+app.post('/api/production/:courseCode/gender-prep/check', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const force = req.query.force === 'true' || req.body?.force === true
+    const result = await genderPrepDetector.detectNeedsGenderPrep(courseCode, { force })
+    res.json(result)
+  } catch (e) {
+    logger.error('Error in gender-prep/check:', e)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// POST /api/production/:courseCode/gender-prep/override
+// Manually set needs_gender_prep for a course (audit-trail marked `set_by: human`).
+// Body: { value: true | false | null, reason?: string }
+// Subsequent auto-detector runs won't overwrite this unless called with force=true.
+app.post('/api/production/:courseCode/gender-prep/override', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { value, reason } = req.body || {}
+    if (value !== true && value !== false && value !== null) {
+      return res.status(400).json({ error: 'Body must include value: true | false | null' })
+    }
+    const result = await genderPrepDetector.setManualOverride(courseCode, value, reason)
+    res.json(result)
+  } catch (e) {
+    logger.error('Error in gender-prep/override:', e)
+    res.status(500).json({ error: e.message })
+  }
+})
 
 // GET /api/production/:courseCode/gender-prep/status
 // Check gender expansion status for a course
@@ -7915,21 +8275,36 @@ app.get('/api/production/:courseCode/gender-prep/status', async (req, res) => {
     }
     const supabase = supabaseClient.getClient()
 
-    // Get course target language
-    const { data: course, error: courseErr } = await supabase
+    // Get course target language + per-course override (if migration applied)
+    let course
+    let { data: courseData, error: courseErr } = await supabase
       .from('courses')
-      .select('target_lang')
+      .select('target_lang, needs_gender_prep, gender_prep_check_notes, gender_prep_checked_at')
       .eq('course_code', courseCode)
       .single()
-
-    if (courseErr || !course) {
-      return res.status(404).json({ error: 'Course not found' })
+    if (courseErr) {
+      // If migration not applied, retry without the new fields
+      if (/column .* does not exist|Could not find the/.test(courseErr.message || '')) {
+        const fb = await supabase.from('courses').select('target_lang').eq('course_code', courseCode).single()
+        if (!fb.data) return res.status(404).json({ error: 'Course not found' })
+        course = { ...fb.data, needs_gender_prep: null, gender_prep_check_notes: null, gender_prep_checked_at: null }
+      } else {
+        return res.status(404).json({ error: 'Course not found' })
+      }
+    } else {
+      course = courseData
     }
 
-    const isGendered = genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)
+    // Per-course flag wins; null falls back to hardcoded language list
+    const isGendered = course.needs_gender_prep === true ||
+      (course.needs_gender_prep === null && genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang))
 
     if (!isGendered) {
-      return res.json({ isGendered: false, processed: false, totalExpansions: 0, processedAt: null })
+      return res.json({
+        isGendered: false, processed: false, totalExpansions: 0, processedAt: null,
+        autoChecked: course.gender_prep_checked_at || null,
+        checkNotes: course.gender_prep_check_notes ? safeParseJson(course.gender_prep_check_notes) : null
+      })
     }
 
     // Count existing expansions
@@ -7973,19 +8348,43 @@ app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
     }
     const supabase = supabaseClient.getClient()
 
-    // Verify course exists and is gendered
-    const { data: course, error: courseErr } = await supabase
+    // Verify course exists and is gendered. voice_config is needed for the
+    // voice-gender gate (no female target voice → prep is pointless).
+    let { data: course, error: courseErr } = await supabase
       .from('courses')
-      .select('target_lang, display_name')
+      .select('target_lang, display_name, needs_gender_prep, voice_config')
       .eq('course_code', courseCode)
       .single()
 
-    if (courseErr || !course) {
-      return res.status(404).json({ error: 'Course not found' })
+    if (courseErr) {
+      // Migration not applied yet — retry without the new column
+      if (/column .* does not exist/.test(courseErr.message || '')) {
+        const fb = await supabase.from('courses').select('target_lang, display_name, voice_config').eq('course_code', courseCode).single()
+        course = fb.data ? { ...fb.data, needs_gender_prep: null } : null
+      }
+    }
+    if (!course) return res.status(404).json({ error: 'Course not found' })
+
+    // Allow if either the per-course flag is true OR (flag is null AND language in fallback list)
+    const inFallback = genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)
+    const courseFlag = course.needs_gender_prep
+    if (courseFlag === false || (courseFlag === null && !inFallback)) {
+      return res.status(400).json({ error: `Course ${courseCode} (${course.target_lang}) is not flagged as needing gender prep` })
     }
 
-    if (!genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang)) {
-      return res.status(400).json({ error: `Language ${course.target_lang} does not have grammatical gender` })
+    // Voice-config gate: skip if both target voices are confirmed male — the
+    // masculine canonical text is the only thing that will ever speak, so the
+    // pipeline would produce dead-weight variants. Unknown voices fall through
+    // (run prep) to stay safe.
+    const hasFem = voiceGenderMap.anyTargetVoiceFemale(course.voice_config)
+    if (hasFem === false) {
+      const g = voiceGenderMap.getCourseVoiceGenders(course.voice_config)
+      return res.status(400).json({
+        error: `Course ${courseCode} has no female target voice — gender prep would produce unused variants.`,
+        target1: g.voiceIds.target1, target1_gender: g.target1,
+        target2: g.voiceIds.target2, target2_gender: g.target2,
+        hint: 'If this is wrong (e.g. the voice gender is misidentified), set the voice_id in voice_config or use /gender-prep/override to force a manual decision.',
+      })
     }
 
     // Check for already-running gender-prep job (with staleness auto-cleanup)

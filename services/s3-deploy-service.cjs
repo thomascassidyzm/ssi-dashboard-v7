@@ -13,6 +13,7 @@
 const { S3Client, HeadObjectCommand, CopyObjectCommand, ListObjectsV2Command } = require('@aws-sdk/client-s3')
 const createLogger = require('./shared/logger.cjs')
 const audioDurationService = require('./audio-duration-service.cjs')
+const supabaseClient = require('./supabase-client.cjs')
 
 const logger = createLogger('S3Deploy')
 
@@ -758,35 +759,54 @@ async function verifyProductionDurations(uuids, manifest, onProgress = null) {
  * @param {Object} manifest - Course manifest to update
  * @param {Function} onProgress - Progress callback
  * @param {Map<string, number>} extractedDurations - Optional pre-extracted S3 durations (for instant fix)
- * @returns {Promise<Object>} Fix results with updated manifest
+ * @param {Object} options - { courseCode } — when provided, also writes corrected
+ *   durations back to course_audio.duration_ms so the next Step 1 export doesn't
+ *   re-introduce the stale value.
+ * @returns {Promise<Object>} Fix results with updated manifest. Includes
+ *   `dbRowsUpdated`, `dbAlreadyCorrect`, `dbErrors` when courseCode is provided.
  */
-async function autoFixDurations(uuids, manifest, onProgress = null, extractedDurations = null) {
+async function autoFixDurations(uuids, manifest, onProgress = null, extractedDurations = null, options = {}) {
+  const { courseCode = null } = options
+
   if (extractedDurations) {
     logger.info(`[AUTO-FIX] Using pre-extracted S3 durations for instant fix (${extractedDurations.size} durations available)`)
   } else {
     logger.info(`[AUTO-FIX] Extracting exact durations from S3 for ${uuids.length} files`)
   }
+  if (courseCode) {
+    logger.info(`[AUTO-FIX] Will also sync course_audio.duration_ms for ${courseCode}`)
+  }
 
   const results = {
     fixed: 0,
     errors: 0,
-    errorDetails: []
+    errorDetails: [],
+    dbRowsUpdated: 0,
+    dbAlreadyCorrect: 0,
+    dbErrors: 0,
+    dbErrorDetails: []
   }
 
-  // Build UUID to manifest location map
-  const uuidToLocation = new Map()
+  // Build UUID to manifest locations map (array — same UUID can appear multiple times)
+  const uuidToLocations = new Map()
+
+  function addLocation(uuid, entry) {
+    if (!uuidToLocations.has(uuid)) uuidToLocations.set(uuid, [])
+    uuidToLocations.get(uuid).push(entry)
+  }
 
   // Map introduction
   if (manifest.introduction?.id) {
-    uuidToLocation.set(manifest.introduction.id, { type: 'introduction', ref: manifest.introduction })
+    addLocation(manifest.introduction.id, { type: 'introduction', ref: manifest.introduction })
   }
 
   // Map encouragements
   const orderedEnc = manifest.slices?.[0]?.orderedEncouragements || []
   const pooledEnc = manifest.slices?.[0]?.pooledEncouragements || []
-  for (const enc of [...orderedEnc, ...pooledEnc]) {
+  const paywallEnc = manifest.slices?.[0]?.paywallEncouragements || []
+  for (const enc of [...orderedEnc, ...pooledEnc, ...paywallEnc]) {
     if (enc.id) {
-      uuidToLocation.set(enc.id, { type: 'encouragement', ref: enc })
+      addLocation(enc.id, { type: 'encouragement', ref: enc })
     }
   }
 
@@ -795,7 +815,7 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
   for (const variants of Object.values(manifestSamples)) {
     for (const variant of variants) {
       if (variant.id) {
-        uuidToLocation.set(variant.id, { type: 'sample', ref: variant })
+        addLocation(variant.id, { type: 'sample', ref: variant })
       }
     }
   }
@@ -804,8 +824,8 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
   if (extractedDurations) {
     // INSTANT FIX: Use pre-extracted durations
     for (const uuid of uuids) {
-      const location = uuidToLocation.get(uuid)
-      if (!location) {
+      const locations = uuidToLocations.get(uuid)
+      if (!locations) {
         logger.warn(`[AUTO-FIX] UUID ${uuid} not found in manifest`)
         continue
       }
@@ -815,16 +835,18 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
         results.errors++
         results.errorDetails.push({ uuid, error: 'S3 duration not found in extracted data' })
       } else {
-        // Update manifest with S3 duration
-        location.ref.duration = s3Duration
+        // Update ALL manifest instances with S3 duration
+        for (const location of locations) {
+          location.ref.duration = s3Duration
+        }
         results.fixed++
       }
     }
   } else {
     // SLOW FIX: Extract durations from S3 (original behavior)
     for (const uuid of uuids) {
-      const location = uuidToLocation.get(uuid)
-      if (!location) {
+      const locations = uuidToLocations.get(uuid)
+      if (!locations) {
         logger.warn(`[AUTO-FIX] UUID ${uuid} not found in manifest`)
         continue
       }
@@ -837,8 +859,10 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
           results.errors++
           results.errorDetails.push({ uuid, error: 'Failed to extract duration' })
         } else {
-          // Update manifest with EXACT duration from sox
-          location.ref.duration = result.actualDuration
+          // Update ALL manifest instances with EXACT duration from sox
+          for (const location of locations) {
+            location.ref.duration = result.actualDuration
+          }
           results.fixed++
 
           if (results.fixed % 100 === 0 && onProgress) {
@@ -859,10 +883,91 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
 
   logger.info(`[AUTO-FIX] Complete: ${results.fixed} durations fixed, ${results.errors} errors`)
 
+  // Sync corrected durations back to course_audio.duration_ms so the next Step 1
+  // export reads correct values from DB instead of re-introducing the stale ones.
+  if (courseCode && extractedDurations && extractedDurations.size > 0) {
+    await syncDurationsToDb(courseCode, extractedDurations, results)
+  }
+
   return {
     ...results,
     updatedManifest: manifest
   }
+}
+
+/**
+ * Update course_audio.duration_ms rows to match the S3-actual durations we just
+ * wrote into the manifest. Only writes rows whose stored value disagrees, so the
+ * counts are meaningful and we don't churn unchanged rows.
+ *
+ * Mutates `results` in place: dbRowsUpdated, dbAlreadyCorrect, dbErrors, dbErrorDetails.
+ */
+async function syncDurationsToDb(courseCode, extractedDurations, results) {
+  const supabase = supabaseClient.getClient()
+  if (!supabase) {
+    logger.warn(`[AUTO-FIX-DB] Supabase not initialized — skipping DB sync for ${courseCode}`)
+    return
+  }
+
+  // Fetch all course_audio rows for this course in one shot, build uuid -> {id, duration_ms} map
+  const PAGE = 1000
+  const rowByUuid = new Map()
+  let from = 0
+  while (true) {
+    const { data, error } = await supabase
+      .from('course_audio')
+      .select('id, s3_key, duration_ms')
+      .eq('course_code', courseCode)
+      .range(from, from + PAGE - 1)
+    if (error) {
+      logger.error(`[AUTO-FIX-DB] Failed to load course_audio for ${courseCode}: ${error.message}`)
+      results.dbErrors++
+      results.dbErrorDetails.push({ stage: 'load', error: error.message })
+      return
+    }
+    if (!data || data.length === 0) break
+    for (const row of data) {
+      const m = row.s3_key && row.s3_key.match(/([0-9A-Fa-f-]{36})/)
+      if (m) rowByUuid.set(m[1].toUpperCase(), row)
+    }
+    if (data.length < PAGE) break
+    from += PAGE
+  }
+
+  // Build the list of writes — only rows whose stored value differs from S3 actual.
+  const writes = []
+  for (const [uuid, durationSec] of extractedDurations.entries()) {
+    const newMs = Math.round(durationSec * 1000)
+    const row = rowByUuid.get(uuid.toUpperCase())
+    if (!row) continue // not in DB for this course (shared encouragements etc)
+    if (row.duration_ms === newMs) {
+      results.dbAlreadyCorrect++
+    } else {
+      writes.push({ id: row.id, uuid, oldMs: row.duration_ms, newMs })
+    }
+  }
+
+  logger.info(`[AUTO-FIX-DB] ${writes.length} rows need updating, ${results.dbAlreadyCorrect} already correct`)
+
+  // Apply with concurrency 10
+  const CONCURRENCY = 10
+  for (let i = 0; i < writes.length; i += CONCURRENCY) {
+    const batch = writes.slice(i, i + CONCURRENCY)
+    await Promise.all(batch.map(async (w) => {
+      const { error } = await supabase
+        .from('course_audio')
+        .update({ duration_ms: w.newMs })
+        .eq('id', w.id)
+      if (error) {
+        results.dbErrors++
+        results.dbErrorDetails.push({ uuid: w.uuid, error: error.message })
+      } else {
+        results.dbRowsUpdated++
+      }
+    }))
+  }
+
+  logger.info(`[AUTO-FIX-DB] Complete: ${results.dbRowsUpdated} rows updated, ${results.dbErrors} errors`)
 }
 
 module.exports = {

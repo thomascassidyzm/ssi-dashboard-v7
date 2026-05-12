@@ -80,16 +80,8 @@
               </p>
             </div>
 
-            <!-- ElevenLabs (UI Audio) -->
-            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-purple-500">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="text-xs font-medium text-purple-400 uppercase tracking-wide">ElevenLabs</span>
-                <span class="text-xs text-slate-500">(UI)</span>
-              </div>
-              <p class="text-xl font-bold" :class="byProcess.elevenLabs?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
-                {{ byProcess.elevenLabs?.missing || 0 }}
-              </p>
-            </div>
+            <!-- ElevenLabs (UI Audio) row removed — shared audio (encouragements/instructions/welcome)
+                 now lives in the Shared Audio section below. Generate Missing Audio doesn't produce them. -->
           </div>
 
           <!-- Total -->
@@ -115,6 +107,54 @@
             >
               {{ fixingOrphans ? 'Fixing...' : `Fix ${orphanLegos.length} orphan${orphanLegos.length === 1 ? '' : 's'}` }}
             </button>
+          </div>
+
+          <!-- Ungeneratable Items Warning -->
+          <!-- Items where text is empty/punctuation-only and TTS can't generate them.
+               These are silently skipped during audio generation, so we surface them
+               here so the user knows exactly what won't be generated and why. -->
+          <div v-if="ungeneratableItems.length > 0" class="bg-rose-900/20 rounded-lg border border-rose-500/30">
+            <button
+              @click="ungeneratableExpanded = !ungeneratableExpanded"
+              class="w-full flex items-center justify-between px-4 py-3 hover:bg-rose-900/10 transition-colors"
+            >
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                </svg>
+                <span class="text-sm text-rose-300 font-medium">
+                  {{ ungeneratableItems.length }} item{{ ungeneratableItems.length === 1 ? '' : 's' }} cannot be generated
+                </span>
+                <span class="text-xs text-rose-400/70">(empty / punctuation-only — TTS will skip these)</span>
+              </div>
+              <svg
+                class="w-4 h-4 text-rose-400 transition-transform"
+                :class="{ 'rotate-180': ungeneratableExpanded }"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div v-show="ungeneratableExpanded" class="border-t border-rose-500/20 max-h-64 overflow-y-auto">
+              <table class="w-full text-xs">
+                <thead class="sticky top-0 bg-rose-950/50">
+                  <tr class="text-left text-rose-300/70">
+                    <th class="py-2 px-3 font-medium">Source</th>
+                    <th class="py-2 px-3 font-medium">Role</th>
+                    <th class="py-2 px-3 font-medium">ID</th>
+                    <th class="py-2 px-3 font-medium">Text</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, idx) in ungeneratableItems" :key="idx" class="border-t border-rose-500/10">
+                    <td class="py-1.5 px-3 text-rose-300/80">{{ item.source }}</td>
+                    <td class="py-1.5 px-3 text-rose-300/80">{{ item.role }}</td>
+                    <td class="py-1.5 px-3 text-rose-300/60 font-mono">{{ item.id }}</td>
+                    <td class="py-1.5 px-3 text-rose-100 font-mono">{{ item.text || '(empty)' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -346,6 +386,10 @@ const data = ref(null)
 const fixingOrphans = ref(false)
 const orphanLegos = ref([])
 
+// Ungeneratable items state (empty/punctuation-only text that TTS can't generate)
+const ungeneratableItems = ref([])
+const ungeneratableExpanded = ref(false)
+
 // Category and role selection
 const selectedCategory = ref('phrase')  // 'phrase', 'seed', 'lego', 'shared'
 const selectedRole = ref('target1')
@@ -483,6 +527,33 @@ function playSample(role) {
   }
 }
 
+// Fetch ungeneratable items - texts that TTS will silently skip during generation
+async function fetchUngeneratable() {
+  if (!props.courseCode) return
+
+  try {
+    const baseUrl = getApiBaseUrl()
+    const response = await fetch(
+      `${baseUrl}/api/production/${props.courseCode}/audio-pipeline/ungeneratable`,
+      {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      }
+    )
+
+    if (!response.ok) {
+      console.warn('Failed to fetch ungeneratable items:', response.status)
+      return
+    }
+
+    const result = await response.json()
+    ungeneratableItems.value = result.items || []
+  } catch (err) {
+    console.warn('Error fetching ungeneratable items:', err)
+  }
+}
+
 // Orphan LEGO functions - detect orphans, let user decide when to fix
 async function fetchOrphanLegos() {
   if (!props.courseCode) return
@@ -555,6 +626,7 @@ watch(expanded, (isExpanded) => {
   if (isExpanded && !data.value) {
     fetchMissingAudio()
     fetchOrphanLegos()
+    fetchUngeneratable()
   }
 })
 
@@ -565,6 +637,7 @@ watch(() => props.refreshTrigger, () => {
     data.value = null
     fetchMissingAudio()
     fetchOrphanLegos()
+    fetchUngeneratable()
   }
 })
 
@@ -573,6 +646,7 @@ onMounted(() => {
   if (expanded.value) {
     fetchMissingAudio()
     fetchOrphanLegos()
+    fetchUngeneratable()
   }
 })
 </script>

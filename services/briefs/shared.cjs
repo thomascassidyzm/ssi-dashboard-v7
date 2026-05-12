@@ -25,16 +25,66 @@ function setSupabase(client) {
 
 // Language name lookup
 const LANG_MAP = {
-  'zho': 'Chinese', 'ita': 'Italian', 'spa': 'Spanish', 'fra': 'French',
-  'deu': 'German', 'por': 'Portuguese', 'jpn': 'Japanese', 'kor': 'Korean',
-  'ara': 'Arabic', 'rus': 'Russian', 'cym': 'Welsh', 'nld': 'Dutch',
-  'eng': 'English', 'eus': 'Basque'
+  // Major languages
+  'ara': 'Arabic', 'cmn': 'Mandarin Chinese', 'cym': 'Welsh', 'deu': 'German',
+  'eng': 'English', 'fra': 'French', 'ita': 'Italian', 'jpn': 'Japanese',
+  'kor': 'Korean', 'nld': 'Dutch', 'por': 'Portuguese', 'rus': 'Russian',
+  'spa': 'Spanish', 'zho': 'Chinese',
+  // Indo-European (others)
+  'afr': 'Afrikaans', 'arg': 'Aragonese', 'asm': 'Assamese', 'ast': 'Asturian',
+  'bar': 'Bavarian', 'bel': 'Belarusian', 'ben': 'Bengali', 'bos': 'Bosnian',
+  'bre': 'Breton', 'bul': 'Bulgarian', 'cat': 'Catalan', 'ces': 'Czech',
+  'cor': 'Cornish', 'cos': 'Corsican', 'csb': 'Kashubian', 'dan': 'Danish',
+  'dsb': 'Lower Sorbian', 'ell': 'Greek', 'est': 'Estonian', 'eus': 'Basque',
+  'fao': 'Faroese', 'fas': 'Persian', 'fin': 'Finnish', 'frr': 'North Frisian',
+  'fry': 'West Frisian', 'fur': 'Friulian', 'gla': 'Scottish Gaelic',
+  'gle': 'Irish', 'glg': 'Galician', 'glv': 'Manx', 'grk': 'Griko',
+  'gsw': 'Swiss German', 'guj': 'Gujarati', 'hin': 'Hindi', 'hrv': 'Croatian',
+  'hsb': 'Upper Sorbian', 'hun': 'Hungarian', 'hye': 'Armenian',
+  'isl': 'Icelandic', 'kan': 'Kannada', 'kat': 'Georgian', 'kur': 'Kurdish',
+  'lad': 'Ladino', 'lav': 'Latvian', 'lij': 'Ligurian', 'lim': 'Limburgish',
+  'lin': 'Lingala', 'lit': 'Lithuanian', 'ltz': 'Luxembourgish',
+  'mal': 'Malayalam', 'mar': 'Marathi', 'mkd': 'Macedonian', 'nap': 'Neapolitan',
+  'nep': 'Nepali', 'nor': 'Norwegian', 'oci': 'Occitan', 'pan': 'Punjabi',
+  'pol': 'Polish', 'pus': 'Pashto', 'roh': 'Romansh', 'ron': 'Romanian',
+  'scn': 'Sicilian', 'sco': 'Scots', 'slk': 'Slovak', 'slv': 'Slovenian',
+  'sme': 'Northern Sami', 'smj': 'Lule Sami', 'smn': 'Inari Sami',
+  'sms': 'Skolt Sami', 'snd': 'Sindhi', 'srd': 'Sardinian', 'srp': 'Serbian',
+  'swe': 'Swedish', 'tel': 'Telugu', 'ukr': 'Ukrainian', 'urd': 'Urdu',
+  'vec': 'Venetian', 'vls': 'Flemish', 'wln': 'Walloon', 'yid': 'Yiddish',
+  // Arabic variants (ISO 639-3)
+  'afb': 'Gulf Arabic', 'ajp': 'Levantine Arabic', 'apc': 'Levantine Arabic',
+  'ary': 'Moroccan Arabic', 'arz': 'Egyptian Arabic',
+  // Chinese variants (ISO 639-3)
+  'hak': 'Hakka', 'nan': 'Min Nan Chinese', 'wuu': 'Wu Chinese', 'yue': 'Cantonese',
+  // Asian/SE Asian
+  'aze': 'Azerbaijani', 'fil': 'Filipino', 'ind': 'Indonesian', 'jav': 'Javanese',
+  'kaz': 'Kazakh', 'kir': 'Kyrgyz', 'msa': 'Malay', 'sin': 'Sinhala',
+  'tam': 'Tamil', 'tha': 'Thai', 'tur': 'Turkish', 'uig': 'Uyghur',
+  'vie': 'Vietnamese',
+  // Semitic & Other Afro-Asiatic
+  'aii': 'Assyrian Neo-Aramaic', 'amh': 'Amharic', 'heb': 'Hebrew',
+  // African
+  'hau': 'Hausa', 'ibo': 'Igbo', 'nya': 'Chichewa', 'som': 'Somali',
+  'swa': 'Swahili', 'xho': 'Xhosa', 'yor': 'Yoruba', 'zul': 'Zulu',
+  // Americas (indigenous)
+  'chr': 'Cherokee', 'grn': 'Guarani', 'moh': 'Mohawk', 'nav': 'Navajo',
+  'oji': 'Ojibwe', 'que': 'Quechua',
+  // Pacific / Indigenous
+  'fij': 'Fijian', 'haw': 'Hawaiian', 'iku': 'Inuktitut', 'kal': 'Greenlandic',
+  'mri': 'Maori', 'smo': 'Samoan', 'tah': 'Tahitian', 'ton': 'Tongan',
+  // Language isolates / other
+  'ain': 'Ainu', 'ceb': 'Cebuano',
 };
 
 // Regional variant names (keyed by target part before _for_)
 const DIALECT_NAMES = {
   'por_br': 'Brazilian Portuguese',
   'spa_mx': 'Mexican Spanish',
+  'fra_ca': 'Quebec French',
+  'deu_at': 'Austrian German',
+  'ara_eg': 'Egyptian Arabic',
+  'ara_sy': 'Syrian Arabic',
   'cym_n': 'North Welsh',
   'cym_s': 'South Welsh',
 };

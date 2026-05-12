@@ -277,17 +277,34 @@
           <div class="text-sm text-slate-400">
             <span class="text-amber-400 font-semibold">{{ flatFlaggedItems.length }}</span>
             item{{ flatFlaggedItems.length !== 1 ? 's' : '' }} in regen queue
+            <span v-if="orphanedFlagCount > 0" class="text-red-400 ml-2">
+              ({{ orphanedFlagCount }} orphaned)
+            </span>
           </div>
-          <router-link
-            v-if="flatFlaggedItems.length > 0"
-            :to="`/production/${courseCode}/pipeline?mode=flagged`"
-            class="flex items-center gap-2 px-4 py-2 bg-emerald-500 bg-opacity-20 text-emerald-400 hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors"
-          >
-            Regenerate Queue
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </router-link>
+          <div class="flex items-center gap-2">
+            <button
+              v-if="orphanedFlagCount > 0"
+              @click="deleteOrphanedFlags"
+              :disabled="isDeletingOrphans"
+              class="flex items-center gap-2 px-4 py-2 bg-red-500 bg-opacity-20 text-red-400 hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+            >
+              <svg v-if="isDeletingOrphans" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Remove {{ orphanedFlagCount }} Orphaned
+            </button>
+            <router-link
+              v-if="flatFlaggedItems.length > 0"
+              :to="`/production/${courseCode}/pipeline?mode=flagged`"
+              class="flex items-center gap-2 px-4 py-2 bg-emerald-500 bg-opacity-20 text-emerald-400 hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors"
+            >
+              Regenerate Queue
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </router-link>
+          </div>
         </div>
 
         <FlaggedItemRow
@@ -1370,6 +1387,31 @@ interface FlaggedItem {
 
 // Direct flagged items from fast endpoint (bypasses seed loading)
 const directFlaggedItems = ref<FlaggedItem[]>([]);
+
+const orphanedFlagCount = computed(() => {
+  return directFlaggedItems.value.filter(item => item.phraseId === '?').length;
+});
+
+const isDeletingOrphans = ref(false);
+
+async function deleteOrphanedFlags() {
+  isDeletingOrphans.value = true;
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/delete-orphaned`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    });
+    if (!response.ok) throw new Error('Failed to delete orphaned flags');
+    const result = await response.json();
+    // Reload flagged items
+    directFlaggedItems.value = directFlaggedItems.value.filter(item => item.phraseId !== '?');
+  } catch (error) {
+    console.error('Error deleting orphaned flags:', error);
+  } finally {
+    isDeletingOrphans.value = false;
+  }
+}
 
 const flatFlaggedItems = computed((): FlaggedItem[] => {
   // If we have direct items from the fast endpoint, use those

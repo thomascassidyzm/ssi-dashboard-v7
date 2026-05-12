@@ -28,9 +28,14 @@ const TERMINAL_MODE = process.env.TERMINAL_MODE || 'headless' // 'iTerm2', 'Term
 
 const LANG_NAMES = {
   spa: 'Spanish', ita: 'Italian', por: 'Portuguese', fra: 'French',
-  ara: 'Arabic', deu: 'German', ron: 'Romanian', pol: 'Polish',
-  rus: 'Russian', ukr: 'Ukrainian', cat: 'Catalan', hrv: 'Croatian',
-  ces: 'Czech', slk: 'Slovak'
+  cat: 'Catalan', ron: 'Romanian',
+  pol: 'Polish', ces: 'Czech', slk: 'Slovak', hrv: 'Croatian',
+  rus: 'Russian', ukr: 'Ukrainian', bul: 'Bulgarian', mkd: 'Macedonian',
+  ell: 'Greek',
+  lav: 'Latvian', lit: 'Lithuanian',
+  isl: 'Icelandic', hin: 'Hindi', nep: 'Nepali', ben: 'Bengali',
+  guj: 'Gujarati', pan: 'Punjabi', urd: 'Urdu', mar: 'Marathi',
+  ara: 'Arabic', heb: 'Hebrew',
 }
 
 // ─── Parse args ───────────────────────────────────────────────────────
@@ -69,18 +74,60 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 // ─── Build the Haiku brief ───────────────────────────────────────────
 
 function buildBrief(langName, langCode, texts) {
-  const genderRules = langCode === 'ara'
-    ? `- Predicate adjectives about the speaker: أنا سعيد→أنا سعيدة (female)
+  // Language-specific gender-agreement rules. Default ("Romance") covers
+  // adjective/participle agreement with the 1st-person speaker. Add a
+  // tailored block when a language's gender system differs significantly.
+  let genderRules
+  if (langCode === 'ara') {
+    genderRules = `- Predicate adjectives about the speaker: أنا سعيد→أنا سعيدة (female)
 - Active/passive participles as predicates about the speaker
 - Standalone adjective fragments where speaker is implied
 - Do NOT change verb conjugations (Arabic 1st person past/present don't change for gender)
 - Do NOT change 3rd person references or 2nd person forms`
-    : `- Adjectives/participles describing "I" (the speaker): stanco→stanca, content→contente, prêt→prête
+  } else if (langCode === 'heb') {
+    genderRules = `- Hebrew verbs ARE gendered for the speaker: אני מדבר (male) → אני מדברת (female), אני עייף → אני עייפה
+- Predicate adjectives describing the speaker also vary
+- Participles used as present-tense verbs (the most common pattern): vary by gender
+- Do NOT change 2nd person forms unless the addressee is the speaker (rare)
+- Do NOT change past tense or future tense verb conjugations beyond the standard masc/fem pairs
+- Do NOT change nouns, prepositions, particles`
+  } else if (['pol','ces','slk','hrv','rus','ukr','bul','mkd'].includes(langCode)) {
+    genderRules = `- Past tense verbs vary by speaker gender: byłem→byłam (Polish), byl jsem→byla jsem (Czech), bio sam→bila sam (Croatian)
+- Predicate adjectives/participles describing the speaker: zmęczony→zmęczona, готов→готова
+- L-participle past tenses are the main pattern in Slavic — feminine ends in -a where masculine has consonant or -ø
+- Do NOT change present-tense verbs (they don't gender)
+- Do NOT change 3rd-person references, 2nd-person forms, nouns, prepositions`
+  } else if (langCode === 'ell') {
+    genderRules = `- Predicate adjectives describing the speaker: είμαι κουρασμένος (m) → είμαι κουρασμένη (f), έτοιμος → έτοιμη
+- Active participles describing the speaker: ευχαριστημένος → ευχαριστημένη
+- Do NOT change verbs themselves (Greek verbs don't gender)
+- Do NOT change articles, nouns, prepositions, 3rd-person references`
+  } else if (['lav','lit'].includes(langCode)) {
+    genderRules = `- Predicate adjectives describing the speaker MUST agree: esmu gatavs (m) → esmu gatava (f) [Latvian], esu pasiruošęs → esu pasiruošusi [Lithuanian]
+- Past participles used predicatively also vary
+- Adjective fragments where speaker is implied
+- Do NOT change verbs themselves, articles (none in Baltic), nouns
+- Do NOT change 2nd or 3rd person forms`
+  } else if (['hin','urd','ben','guj','pan','mar','nep'].includes(langCode)) {
+    genderRules = `- Indo-Aryan languages gender both verbs AND adjectives for the speaker
+- Verb endings: मैं जाता हूँ (m) → मैं जाती हूँ (f) [Hindi]; main jaata huun → main jaati huun
+- Predicate adjectives: मैं थका हूँ → मैं थकी हूँ
+- Past participles: किया → की, गया → गयी
+- Do NOT change 2nd/3rd person forms, nouns, postpositions
+- The honorific plural may be relevant — use ordinary singular forms unless the original is honorific`
+  } else if (langCode === 'isl') {
+    genderRules = `- Icelandic predicate adjectives strongly agree with the speaker: ég er þreyttur (m) → ég er þreytt (f)
+- Past participles describing the speaker: farinn → farin
+- Do NOT change verbs themselves, articles, 3rd-person references`
+  } else {
+    // Default: Romance + general
+    genderRules = `- Adjectives/participles describing "I" (the speaker): stanco→stanca, content→contente, prêt→prête
 - Past participles where subject is the speaker (être/essere verbs): allé→allée, andato→andata
 - Fragments where speaker is implied: "stanco"→"stanca" (female), "stanco" stays (male)
 - Do NOT change: verbs, nouns, prepositions, articles, 3rd person references, 2nd person forms
 - Do NOT change past participles with avoir/avere (they don't agree with speaker)
 - Do NOT change meaning, word order, or "fix" anything — only adjust gender agreement`
+  }
 
   // Inline the texts directly in the brief (no file reading needed)
   const textList = texts.map((t, i) => `${i + 1}. ${t}`).join('\n')
@@ -139,13 +186,14 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
     // Build the command that Claude will run
     // Use stdin instead of command-line args to avoid length limits
     // Explicitly unset CLAUDECODE to allow nested Claude CLI calls
-    const claudeCmd = `unset CLAUDECODE && cat '${briefFile}' | claude --print --model haiku > '${outputFile}' 2>&1 && touch '${doneFile}'`
+    const claudeCmd = `unset CLAUDECODE ANTHROPIC_API_KEY && cat '${briefFile}' | claude --print --model haiku > '${outputFile}' 2>&1 && touch '${doneFile}'`
 
     if (TERMINAL_MODE === 'headless') {
       // Headless mode: direct spawn (original behavior)
       // Unset CLAUDECODE to allow nested Claude CLI calls
       const env = { ...process.env, HOME: process.env.HOME }
       delete env.CLAUDECODE
+      delete env.ANTHROPIC_API_KEY
 
       const proc = spawn('bash', ['-c', claudeCmd], {
         cwd: path.resolve(__dirname, '..'),
@@ -378,13 +426,29 @@ async function main() {
   console.log(`\nTotal variants found: ${allResults.length}`)
 
   // 8. Insert into DB
+  // Dedupe by (original_text, text_side) BEFORE upsert. Multiple Haiku batches
+  // can return the same original text — Postgres ON CONFLICT can only touch each
+  // row once per upsert, so duplicates kill the whole batch ("ON CONFLICT DO
+  // UPDATE command cannot affect row a second time").
+  // Keep the first occurrence; ties on the same original effectively pick the
+  // first Haiku verdict, which is fine for our purpose.
   if (allResults.length > 0) {
-    const rows = allResults.map(r => ({
+    const seen = new Map()
+    for (const r of allResults) {
+      const key = r.original  // text_side is always 'target' here
+      if (!seen.has(key)) seen.set(key, r)
+    }
+    const dedupedResults = [...seen.values()]
+    if (dedupedResults.length !== allResults.length) {
+      console.log(`Deduped ${allResults.length} → ${dedupedResults.length} (removed ${allResults.length - dedupedResults.length} duplicate originals)`)
+    }
+    const rows = dedupedResults.map(r => ({
       course_code: courseCode,
       original_text: r.original,
       language: course.target_lang,
       expanded_f: r.expanded_f,
-      expanded_m: r.expanded_m
+      expanded_m: r.expanded_m,
+      text_side: 'target'  // unique constraint is on (course_code, original_text, text_side)
     }))
 
     let inserted = 0
@@ -392,7 +456,7 @@ async function main() {
       const batch = rows.slice(i, i + 500)
       const { error } = await supabase
         .from('course_gender_expansions')
-        .upsert(batch, { onConflict: 'course_code,original_text' })
+        .upsert(batch, { onConflict: 'course_code,original_text,text_side' })
       if (error) {
         console.error(`Insert error (batch ${Math.floor(i / 500) + 1}):`, error.message)
       } else {

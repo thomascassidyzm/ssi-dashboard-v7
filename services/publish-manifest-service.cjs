@@ -674,7 +674,7 @@ function uploadToApidev(manifest, courseConfigsId) {
 async function publishManifest(manifest, options = {}) {
   const {
     version = null,
-    status = 'beta',
+    status = 'published',
     commitToCourseConfigs = true,
     scpToApidev = true
   } = options

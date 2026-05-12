@@ -524,7 +524,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               target_text: p.target,
               target_text_roman: p.target_roman || null,
               word_count: p.target.length,
-              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              lego_count: ((p.known || '').match(/\s+/g) || []).length + 1,
               phrase_role: role,
               connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, target),
@@ -705,7 +705,7 @@ module.exports = function seedCompleteRoutes(ctx) {
                 target_text: p.target,
                 target_text_roman: p.target_roman || null,
                 word_count: p.target.length,
-                lego_count: (p.known.match(/\s+/g) || []).length + 1,
+                lego_count: ((p.known || '').match(/\s+/g) || []).length + 1,
                 phrase_role: role,
                 connected_lego_ids: [],
                 lego_position: computeLegoPosition(p.target, lego.target),
@@ -1510,7 +1510,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               target_text: p.target,
               target_text_roman: p.target_roman || null,
               word_count: p.target.length,
-              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              lego_count: ((p.known || '').match(/\s+/g) || []).length + 1,
               phrase_role: 'build',
               connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, lego.target),
@@ -1533,7 +1533,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               target_text: p.target,
               target_text_roman: p.target_roman || null,
               word_count: p.target.length,
-              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              lego_count: ((p.known || '').match(/\s+/g) || []).length + 1,
               phrase_role: 'use',
               connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, lego.target),
@@ -1585,7 +1585,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               known_text: p.known,
               target_text: p.target,
               word_count: p.target.length,
-              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              lego_count: ((p.known || '').match(/\s+/g) || []).length + 1,
               phrase_role: role,
               connected_lego_ids: [],
               lego_position: computeLegoPosition(p.target, lego.target),
@@ -1848,6 +1848,27 @@ module.exports = function seedCompleteRoutes(ctx) {
           instruction: 'ALL SEEDS COMPLETE - say BATCH COMPLETE and exit',
         },
       });
+
+      // Fire-and-forget: when seed 5 lands and the course hasn't yet been
+      // checked, run the Haiku gender-prep detector. Picking seed 5 means
+      // there's enough first-person content to sample. Doesn't block response.
+      if (seed_number === 5) {
+        (async () => {
+          try {
+            const { data: courseRow } = await ctx.supabase.from('courses').select('needs_gender_prep').eq('course_code', course_code).single().catch(() => ({ data: null }));
+            if (courseRow && courseRow.needs_gender_prep === null) {
+              const { detectNeedsGenderPrep } = require('../../gender-prep-detector.cjs');
+              detectNeedsGenderPrep(course_code).then(r => {
+                console.log(`[gender-prep auto-check] ${course_code}: needs_gender_prep=${r.needs_gender_prep} persisted=${r.persisted}`);
+              }).catch(e => {
+                console.warn(`[gender-prep auto-check] ${course_code} failed:`, e.message);
+              });
+            }
+          } catch (e) {
+            // Migration may not be applied yet — silently skip auto-check
+          }
+        })();
+      }
 
     } catch (err) {
       console.error('Error:', err);
