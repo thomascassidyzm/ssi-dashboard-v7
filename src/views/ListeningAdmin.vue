@@ -117,12 +117,15 @@
             <div v-for="sNum in activeWindow" :key="sNum" class="preview-seed">
               <div class="preview-seed-head">
                 <span class="seed-id">S{{ String(sNum).padStart(4, '0') }}</span>
+                <span v-if="seedL1Stage(sNum) != null" class="seed-stage" :title="`${seedL1PriorFires(sNum)} prior L1 fires`">
+                  stage {{ seedL1Stage(sNum) }}
+                </span>
                 <span class="seed-target">{{ seedDisplayTarget(sNum) }}</span>
                 <span class="seed-known">{{ seedDisplayKnown(sNum) }}</span>
               </div>
               <div class="preview-seed-pills">
                 <button
-                  v-for="(role, idx) in drafts.listening.layer1Playlist"
+                  v-for="(role, idx) in seedL1Playlist(sNum)"
                   :key="idx"
                   class="preview-pill"
                   :class="`role-${role}`"
@@ -406,6 +409,48 @@ function seedAudioId(sNum, role) {
   // 'trans' plays known audio; 'ps' / 'ps2x' play target.
   return role === 'trans' ? row.known_audio_id : row.target1_audio_id
 }
+
+// ---------------------------------------------------------------------
+// Per-seed L1 stage progression (mirrors generateLearningScript.ts)
+// ---------------------------------------------------------------------
+// Each L1 emit increments a per-seed fire counter; stage = layer1StageFor
+// (fireCount), capped at the eternal stage. Active-window seeds sit in
+// the active window from graduation onward, so prior fires = number of
+// active-interval-multiples between graduation and (R - 1).
+function seedL1PriorFires(sNum) {
+  const last = seedLastRound.value.get(sNum)
+  if (last == null) return 0
+  const off = drafts.listening?.offset ?? 56
+  const gR = last + off
+  const interval = drafts.listening?.l1ActiveInterval ?? 3
+  const R = previewRound.value
+  if (R < gR || interval <= 0) return 0
+  return Math.floor((R - 1) / interval) - Math.floor((gR - 1) / interval)
+}
+
+function seedL1Stage(sNum) {
+  const sp = drafts.listening?.layer1StagePlaylist || {}
+  const keys = Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
+  if (keys.length === 0) return null
+  const eternal = keys[keys.length - 1]
+  const duration = drafts.listening?.layer1StageDuration ?? 3
+  // Fire count for this emission = prior + 1 — the playlist for the
+  // next/current fire slot, which is what the admin wants to audition.
+  const fireCount = seedL1PriorFires(sNum) + 1
+  for (const stage of keys) {
+    if (stage === eternal) return stage
+    if (fireCount <= stage * duration) return stage
+  }
+  return eternal
+}
+
+function seedL1Playlist(sNum) {
+  const stage = seedL1Stage(sNum)
+  if (stage == null) return drafts.listening?.layer1Playlist || []
+  const list = getL1StageList(stage)
+  if (list && list.length) return list
+  return drafts.listening?.layer1Playlist || []
+}
 function audioUrl(audioId) {
   if (!audioId || !selectedCourseCode.value) return null
   return `${AUDIO_BASE}/${audioId}?courseId=${encodeURIComponent(selectedCourseCode.value)}`
@@ -424,7 +469,7 @@ function playOne(sNum, role) {
 }
 async function playSequence(sNum) {
   if (currentAudio) { try { currentAudio.pause() } catch {} }
-  const playlist = drafts.listening?.layer1Playlist || []
+  const playlist = seedL1Playlist(sNum)
   for (const role of playlist) {
     const id = seedAudioId(sNum, role)
     const url = audioUrl(id)
@@ -1324,6 +1369,16 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-size: 0.7rem;
   color: var(--color-paper-dim, #94a3b8);
   min-width: 56px;
+}
+.seed-stage {
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-paper-dim, #94a3b8);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
 }
 .seed-target { font-weight: 500; }
 .seed-known {
