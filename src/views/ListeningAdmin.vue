@@ -35,6 +35,10 @@
           <span>{{ graduatedQueue.length }} graduated</span>
           <span>active <strong>{{ l1ActiveFires ? '✓' : '–' }}</strong></span>
           <span>reserve <strong>{{ l1ReserveFires ? '✓' : '–' }}</strong></span>
+          <span class="cycle-ratio" title="Listening cycles / speaking cycles this round. Speaking is a script-shape estimate; listening is exact for L1 + approximate for L2 (assumes 1 pod lap per round from activation).">
+            {{ cycleStats.listening }} listen + ~{{ cycleStats.speaking }} speak =
+            <strong :class="{ 'ratio-hot': cycleStats.listeningPct >= 50 }">{{ cycleStats.listeningPct }}% listening</strong>
+          </span>
         </div>
         <div v-if="courseLoading" class="preview-loading">Loading course data…</div>
       </div>
@@ -556,6 +560,88 @@ function auditionPodStage(stage) {
   if (!sentence) return
   playPodPlaylistForSentence(getStageList(stage), sentence)
 }
+
+// Port of usePodLapScheduler.podStageFor — admin-side cycle-count
+// estimate, no runtime dep. Returns the stage a pod sentence at
+// entryPodRound would sit in when the lap is currentPodRound.
+function podStageForAdmin(entryPodRound, currentPodRound, stageDuration, totalStages) {
+  const alive = currentPodRound - entryPodRound + 1
+  if (alive < 1) return null
+  for (let stage = 1; stage < totalStages; stage++) {
+    if (alive <= stage * stageDuration) return stage
+  }
+  return totalStages
+}
+
+// Cycle-count breakdown at the preview round. Answers the pedagogy
+// question 'is the listening / speaking ratio off?' with a single
+// number the admin can dial against.
+//
+// Speaking: rough per-round estimate from script_shape config —
+//   main-loop rounds (R ≤ totalLegos) emit intro+debut+build+SR+USE;
+//   infinite-play rounds emit ~20 (TARGET_ROUND_CYCLES from
+//   generateLearningScript). Off by a few cycles in either direction
+//   for any given round, but consistent enough to read trends.
+//
+// Listening: exact for L1 (sum of per-seed current-stage playlist
+// lengths for the windows that fire this round) and approximate for
+// L2 (assumes 1 pod lap per round from podActivationRound onward,
+// activeCount grows by 1 per lap up to total pod sentences). L2 stage
+// progression mirrors podStageFor.
+const cycleStats = computed(() => {
+  const R = previewRound.value
+  let listening = 0
+
+  // L1
+  if (l1ActiveFires.value) {
+    for (const sNum of activeWindow.value) {
+      listening += seedL1Playlist(sNum).length
+    }
+  }
+  if (l1ReserveFires.value) {
+    // Reserve seeds are by definition old; use the eternal stage's
+    // playlist length as a steady-state approximation.
+    const sp = drafts.listening?.layer1StagePlaylist || {}
+    const keys = Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
+    const eternalLen = keys.length
+      ? getL1StageList(keys[keys.length - 1]).length
+      : (drafts.listening?.layer1Playlist || []).length
+    listening += reserveWindow.value.length * eternalLen
+  }
+
+  // L2 — pods fire every round from activation onward.
+  const activation = drafts.listening?.podActivationRound ?? 6
+  const totalPodSentences = coursePodSentences.value.length
+  if (drafts.pods && totalPodSentences > 0 && R >= activation) {
+    const podRound = R - activation + 1
+    const activeCount = Math.min(podRound, totalPodSentences)
+    const stageDuration = drafts.pods.stageDuration ?? 5
+    const totalStages = podsStageKeys.value.length || 1
+    for (let i = 1; i <= activeCount; i++) {
+      const stage = podStageForAdmin(i, podRound, stageDuration, totalStages)
+      if (stage == null) continue
+      listening += getStageList(stage).length
+    }
+  }
+
+  // Speaking — script-shape estimate.
+  const ss = drafts.script_shape || {}
+  const maxBuild = ss.maxBuildPhrases ?? 7
+  const maxSR = ss.maxSpacedRepPhrases ?? 10
+  const useCons = ss.useConsolidationCount ?? 2
+  const totalLegos = previewRoundMax.value
+  const speaking = R <= totalLegos
+    ? 2 + maxBuild + maxSR + useCons  // intro + debut + build + SR + USE
+    : 20                              // TARGET_ROUND_CYCLES (infinite play)
+
+  const total = listening + speaking
+  return {
+    listening,
+    speaking,
+    total,
+    listeningPct: total > 0 ? Math.round((100 * listening) / total) : 0,
+  }
+})
 
 async function loadCoursePreview(courseCode) {
   courseLoading.value = true
@@ -1405,6 +1491,13 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
 }
 .preview-stats strong { color: var(--color-paper, #f7f7f2); }
+.preview-stats .cycle-ratio {
+  padding: 0.1rem 0.45rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
+  cursor: help;
+}
+.preview-stats .ratio-hot { color: #fb923c; }
 .preview-loading {
   font-size: 0.75rem;
   color: var(--color-paper-dim, #94a3b8);
