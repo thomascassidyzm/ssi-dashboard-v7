@@ -7534,11 +7534,13 @@ app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
     })
 
     // Line-buffered stderr parser for __SD__: events
+    // Split on \r, \n, and \r\n so in-place progress updates (./check's S3
+    // check writes "Checking N/total..\r..\r..") flush as they happen.
     let stderrBuf = ''
     ssh.stderr.on('data', (chunk) => {
       stderrBuf += chunk.toString()
-      const lines = stderrBuf.split('\n')
-      stderrBuf = lines.pop() // hold partial
+      const lines = stderrBuf.split(/\r\n|\n|\r/)
+      stderrBuf = lines.pop()
       for (const line of lines) handleStderrLine(job, line)
     })
 
@@ -7546,9 +7548,10 @@ app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
     let stdoutBuf = ''
     ssh.stdout.on('data', (chunk) => {
       stdoutBuf += chunk.toString()
-      const lines = stdoutBuf.split('\n')
+      const lines = stdoutBuf.split(/\r\n|\n|\r/)
       stdoutBuf = lines.pop()
       for (const line of lines) {
+        if (line === '') continue // collapse runs of separators
         io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line })
       }
     })
@@ -7727,7 +7730,7 @@ app.post('/api/production/:courseCode/stage-restart', async (req, res) => {
     let stderrBuf = ''
     ssh.stderr.on('data', (chunk) => {
       stderrBuf += chunk.toString()
-      const lines = stderrBuf.split('\n')
+      const lines = stderrBuf.split(/\r\n|\n|\r/)
       stderrBuf = lines.pop()
       for (const line of lines) handleRestartStderrLine(job, line)
     })
@@ -7735,9 +7738,10 @@ app.post('/api/production/:courseCode/stage-restart', async (req, res) => {
     let stdoutBuf = ''
     ssh.stdout.on('data', (chunk) => {
       stdoutBuf += chunk.toString()
-      const lines = stdoutBuf.split('\n')
+      const lines = stdoutBuf.split(/\r\n|\n|\r/)
       stdoutBuf = lines.pop()
       for (const line of lines) {
+        if (line === '') continue
         io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line })
       }
     })
