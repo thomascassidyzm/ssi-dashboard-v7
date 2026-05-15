@@ -224,6 +224,7 @@ import Step1Generate from './export/Step1Generate.vue'
 import Step2Verify from './export/Step2Verify.vue'
 import Step3Publish from './export/Step3Publish.vue'
 import Step4Deploy from './export/Step4Deploy.vue'
+import StageDeployPanel from './export/StageDeployPanel.vue'
 
 // Props
 const props = defineProps<{
