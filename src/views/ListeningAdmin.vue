@@ -325,9 +325,12 @@ const router = useRouter()
 const { getAccessToken, isAdmin, learner: currentUser } = useAuth()
 
 const KEYS = ['listening', 'pods', 'script_shape', 'turbo_boost', 'normal_mode']
-const ROLE_LABEL = { ps: '1×', ps2x: '2×', trans: 'EN' }
+const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN' }
+const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0 }
 const ROLE_DESC = {
+  ps08x: 'target at 0.8× — extra-slow for first exposure',
   ps: 'target at 1.0× — slow listen for clarity',
+  ps15x: 'target at 1.5× — gentle stretch on the way up',
   ps2x: 'target at 2.0× — fast rep for retention',
   trans: 'known-language audio at 1.0×',
 }
@@ -480,7 +483,7 @@ function playOne(sNum, role) {
   if (!url) return
   if (currentAudio) { try { currentAudio.pause() } catch {} }
   const a = new Audio(url)
-  a.playbackRate = role === 'ps2x' ? 2.0 : 1.0
+  a.playbackRate = ROLE_SPEED[role] ?? 1.0
   a.play().catch(err => console.warn('audio play failed:', err))
   currentAudio = a
 }
@@ -492,7 +495,7 @@ async function playPlaylistForSeed(playlist, sNum) {
     if (!url) continue
     await new Promise((resolve) => {
       const a = new Audio(url)
-      a.playbackRate = role === 'ps2x' ? 2.0 : 1.0
+      a.playbackRate = ROLE_SPEED[role] ?? 1.0
       currentAudio = a
       a.onended = resolve
       a.onerror = resolve
@@ -545,7 +548,7 @@ async function playPodPlaylistForSentence(playlist, sentence) {
     if (!url) continue
     await new Promise((resolve) => {
       const a = new Audio(url)
-      a.playbackRate = role === 'ps2x' ? 2.0 : 1.0
+      a.playbackRate = ROLE_SPEED[role] ?? 1.0
       currentAudio = a
       a.onended = resolve
       a.onerror = resolve
@@ -918,8 +921,8 @@ const PlaylistEditor = defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const ROLES = ['ps', 'ps2x', 'trans']
-    const ROLE_LABEL = { ps: '1×', ps2x: '2×', trans: 'EN' }
+    const ROLES = ['ps08x', 'ps', 'ps15x', 'ps2x', 'trans']
+    const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN' }
 
     function update(next) { emit('update:modelValue', next) }
     function cycle(idx) {
@@ -1284,7 +1287,9 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 :deep(.role-pill:active) { transform: scale(0.96); }
 :deep(.role-pill:hover) { filter: brightness(1.1); }
+:deep(.role-pill.role-ps08x) { background: #fde047; color: #422006; }
 :deep(.role-pill.role-ps)    { background: #fbbf24; color: #422006; }
+:deep(.role-pill.role-ps15x) { background: #fb923c; color: #431407; }
 :deep(.role-pill.role-ps2x)  { background: #f97316; color: #431407; }
 :deep(.role-pill.role-trans) { background: #6b7280; color: #f9fafb; }
 :deep(.pill-num) {
@@ -1609,7 +1614,9 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   align-items: center; justify-content: center;
 }
 .preview-pill .pill-icon { font-size: 0.65rem; opacity: 0.7; }
+.preview-pill.role-ps08x { background: #fde047; color: #422006; }
 .preview-pill.role-ps    { background: #fbbf24; color: #422006; }
+.preview-pill.role-ps15x { background: #fb923c; color: #431407; }
 .preview-pill.role-ps2x  { background: #f97316; color: #431407; }
 .preview-pill.role-trans { background: #6b7280; color: #f9fafb; }
 .preview-sequence {
