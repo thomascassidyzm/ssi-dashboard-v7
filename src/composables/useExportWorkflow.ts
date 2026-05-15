@@ -196,9 +196,50 @@ export function useExportWorkflow(courseCode: string) {
     errors: 0
   })
 
+  // Stage deploy (apidev ./check -e stage deploy + ~/api/stage/restart.sh).
+  // Lives in memory only for now — re-attaches on dialog reopen via
+  // fetchStageDeployStatus() if a job is still running server-side.
+  type StageDeployStatus = 'idle' | 'running' | 'success' | 'failed' | 'cancelled' | 'identical'
+  type RestartPhase = 'pending' | 'running' | 'succeeded' | 'failed' | 'skipped'
+  const stageDeployStatus = ref<StageDeployStatus>('idle')
+  const stageDeployJobId = ref<string | null>(null)
+  const stageDeployStartedAt = ref<string | null>(null)
+  const stageDeployEndedAt = ref<string | null>(null)
+  const stageDeployLog = ref<Array<{ stream: 'stdout' | 'stderr', line: string }>>([])
+  const stageDeployIsNewCourse = ref(false)
+  const stageDeploySawChecksPassed = ref(false)
+  const stageDeployExitCode = ref<number | null>(null)
+  const stageDeployUsedSkipChecks = ref(false)
+  const stageDeployCourseConfigsId = ref<string | null>(null)
+  const stageDeployRestartPhase = ref<RestartPhase>('pending')
+  const stageDeployRestartFailureReason = ref<string | null>(null)
+  const stageDeployRestartTimeoutSeconds = ref<number | null>(null)
+
+  function resetStageDeployState() {
+    stageDeployStatus.value = 'idle'
+    stageDeployJobId.value = null
+    stageDeployStartedAt.value = null
+    stageDeployEndedAt.value = null
+    stageDeployLog.value = []
+    stageDeployIsNewCourse.value = false
+    stageDeploySawChecksPassed.value = false
+    stageDeployExitCode.value = null
+    stageDeployUsedSkipChecks.value = false
+    stageDeployCourseConfigsId.value = null
+    stageDeployRestartPhase.value = 'pending'
+    stageDeployRestartFailureReason.value = null
+    stageDeployRestartTimeoutSeconds.value = null
+  }
+
   // WebSocket for real-time updates
   let socket: Socket | null = null
   let socketConnected = false
+
+  // Caller-supplied hook fired when legacyAudio:completed arrives for THIS job.
+  // Registered once on dialog mount via onLegacyAudioCompleted(fn) — survives
+  // socket reconnects because the socket-level listener is re-attached inside
+  // connectWebSocket() and dispatches through this ref.
+  let legacyAudioCompletedHandler: ((data: any) => void) | null = null
 
   // Computed
   const currentStep = computed(() => {
@@ -343,6 +384,11 @@ export function useExportWorkflow(courseCode: string) {
           errors: audioGenerationProgress.value.errors.length,
           skipped: audioGenerationProgress.value.skipped.length
         })
+        if (legacyAudioCompletedHandler) {
+          try { legacyAudioCompletedHandler(data) } catch (e) {
+            console.warn('[ExportWorkflow] legacyAudioCompleted handler threw:', e)
+          }
+        }
       }
     })
 
@@ -536,6 +582,98 @@ export function useExportWorkflow(courseCode: string) {
         deployProgress.value = { deployed: 0, total: 0 }
         // Save verification results to state
         state.value.deployVerification = data
+      }
+    })
+
+    // ── Stage deploy (apidev ./check) events ──────────────────────────────
+    socket.on('stageDeploy:started', (data: {
+      jobId: string; courseCode: string; courseConfigsId: string
+      startedAt: string; skipChecks: boolean; deleteProgress: boolean
+    }) => {
+      if (data.courseCode !== courseCode) return
+      // Reset transient state but keep the new jobId
+      resetStageDeployState()
+      stageDeployStatus.value = 'running'
+      stageDeployJobId.value = data.jobId
+      stageDeployCourseConfigsId.value = data.courseConfigsId
+      stageDeployStartedAt.value = data.startedAt
+      stageDeployUsedSkipChecks.value = !!data.skipChecks
+    })
+
+    socket.on('stageDeploy:log', (data: { jobId: string; courseCode: string; stream: 'stdout' | 'stderr'; line: string }) => {
+      if (data.courseCode !== courseCode) return
+      // Soft cap so a runaway log doesn't blow up the renderer
+      if (stageDeployLog.value.length > 5000) stageDeployLog.value.splice(0, 1000)
+      stageDeployLog.value.push({ stream: data.stream, line: data.line })
+    })
+
+    socket.on('stageDeploy:newCourse', (data: { courseCode: string }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeployIsNewCourse.value = true
+    })
+
+    socket.on('stageDeploy:checksPassed', (data: { courseCode: string }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeploySawChecksPassed.value = true
+    })
+
+    socket.on('stageDeploy:identical', (data: { courseCode: string }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeployStatus.value = 'identical'
+    })
+
+    socket.on('stageDeploy:deployed', (_data: { courseCode: string }) => {
+      // No state change — log already captures "Copying ... bucket..."
+    })
+
+    socket.on('stageDeploy:done', (data: { courseCode: string }) => {
+      if (data.courseCode !== courseCode) return
+      // Don't downgrade an 'identical' status to 'success' — identical is more
+      // informative for the UI (no-op deploy).
+      if (stageDeployStatus.value !== 'identical') {
+        stageDeployStatus.value = 'success'
+      }
+    })
+
+    socket.on('stageDeploy:failed', (data: { courseCode: string }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeployStatus.value = 'failed'
+    })
+
+    socket.on('stageDeploy:cancelled', (data: { courseCode: string }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeployStatus.value = 'cancelled'
+    })
+
+    socket.on('stageDeploy:restartStarted', (data: { courseCode: string; timeoutSeconds?: number }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeployRestartPhase.value = 'running'
+      stageDeployRestartTimeoutSeconds.value = data.timeoutSeconds ?? null
+    })
+
+    socket.on('stageDeploy:restartSucceeded', (data: { courseCode: string }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeployRestartPhase.value = 'succeeded'
+    })
+
+    socket.on('stageDeploy:restartFailed', (data: { courseCode: string; reason?: string }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeployRestartPhase.value = 'failed'
+      stageDeployRestartFailureReason.value = data.reason || null
+      // Restart failure also fails the overall deploy run
+      stageDeployStatus.value = 'failed'
+    })
+
+    socket.on('stageDeploy:closed', (data: {
+      jobId: string; courseCode: string; exitCode: number | null; signal: string | null
+      finalState: StageDeployStatus; sawChecksPassed: boolean; sawNewCourse: boolean
+    }) => {
+      if (data.courseCode !== courseCode) return
+      stageDeployExitCode.value = data.exitCode
+      stageDeployEndedAt.value = new Date().toISOString()
+      // Final state sync if no explicit done/failed/identical was seen
+      if (stageDeployStatus.value === 'running') {
+        stageDeployStatus.value = data.finalState
       }
     })
   }
@@ -1280,6 +1418,102 @@ export function useExportWorkflow(courseCode: string) {
     return socket
   }
 
+  // Register a callback fired when legacyAudio:completed arrives for our own
+  // audioJobId. Use this for Step 1 → Step 2 auto-advance. Safe to call before
+  // the socket exists — the composable invokes it from its own jobId-gated
+  // socket listener inside connectWebSocket().
+  function onLegacyAudioCompleted(fn: (data: any) => void) {
+    legacyAudioCompletedHandler = fn
+  }
+
+  // ── Stage deploy actions ────────────────────────────────────────────────
+  async function deployStage(options: { deleteProgress: boolean; skipChecks?: boolean }) {
+    // Make sure the websocket is up so we don't miss the started event
+    connectWebSocket()
+    resetStageDeployState()
+    stageDeployStatus.value = 'running'
+    stageDeployUsedSkipChecks.value = !!options.skipChecks
+    try {
+      const data = await fetchApi(`/api/production/${courseCode}/stage-deploy`, {
+        method: 'POST',
+        body: JSON.stringify({
+          deleteProgress: !!options.deleteProgress,
+          skipChecks: !!options.skipChecks
+        })
+      })
+      stageDeployJobId.value = data.jobId
+      stageDeployCourseConfigsId.value = data.courseConfigsId
+      stageDeployStartedAt.value = data.startedAt
+      return data
+    } catch (err: any) {
+      stageDeployStatus.value = 'failed'
+      error.value = err.message
+      throw err
+    }
+  }
+
+  async function cancelStageDeploy() {
+    try {
+      await fetchApi(`/api/production/${courseCode}/stage-deploy/cancel`, { method: 'POST' })
+    } catch (err: any) {
+      error.value = err.message
+    }
+  }
+
+  // Triggers ~/api/stage/restart.sh on apidev. Independent of deploy — meant
+  // to be invoked by a button after a successful deploy (or as recovery).
+  // Resets only restart-specific state so the deploy summary stays visible.
+  async function restartStage() {
+    connectWebSocket()
+    stageDeployRestartPhase.value = 'running'
+    stageDeployRestartFailureReason.value = null
+    stageDeployRestartTimeoutSeconds.value = null
+    try {
+      const data = await fetchApi(`/api/production/${courseCode}/stage-restart`, {
+        method: 'POST',
+        body: JSON.stringify({})
+      })
+      return data
+    } catch (err: any) {
+      stageDeployRestartPhase.value = 'failed'
+      stageDeployRestartFailureReason.value = err.message
+      error.value = err.message
+      throw err
+    }
+  }
+
+  async function cancelStageRestart() {
+    try {
+      await fetchApi(`/api/production/${courseCode}/stage-restart/cancel`, { method: 'POST' })
+    } catch (err: any) {
+      error.value = err.message
+    }
+  }
+
+  // Reset the panel back to ready (after user reviews a finished run)
+  function clearStageDeploy() {
+    resetStageDeployState()
+  }
+
+  async function fetchStageDeployStatus() {
+    try {
+      const data = await fetchApi(`/api/production/${courseCode}/stage-deploy/status`)
+      if (data?.active) {
+        stageDeployStatus.value = data.state === 'cancelled' ? 'cancelled' : 'running'
+        stageDeployJobId.value = data.jobId
+        stageDeployCourseConfigsId.value = data.courseConfigsId
+        stageDeployStartedAt.value = data.startedAt
+        stageDeploySawChecksPassed.value = !!data.sawChecksPassed
+        stageDeployIsNewCourse.value = !!data.sawNewCourse
+        stageDeployUsedSkipChecks.value = !!data.skipChecks
+        if (data.restartPhase) stageDeployRestartPhase.value = data.restartPhase as RestartPhase
+      }
+      return data
+    } catch {
+      return null
+    }
+  }
+
   return {
     // State
     state,
@@ -1299,6 +1533,21 @@ export function useExportWorkflow(courseCode: string) {
     deployProgress,
     isDeploying,
     deployPlanProgress,
+
+    // Stage deploy (apidev ./check + restart.sh)
+    stageDeployStatus,
+    stageDeployJobId,
+    stageDeployStartedAt,
+    stageDeployEndedAt,
+    stageDeployLog,
+    stageDeployIsNewCourse,
+    stageDeploySawChecksPassed,
+    stageDeployExitCode,
+    stageDeployUsedSkipChecks,
+    stageDeployCourseConfigsId,
+    stageDeployRestartPhase,
+    stageDeployRestartFailureReason,
+    stageDeployRestartTimeoutSeconds,
 
     // Computed
     currentStep,
@@ -1322,10 +1571,17 @@ export function useExportWorkflow(courseCode: string) {
     deployNewAndMismatched,
     checkDeployStatus,
     resetState,
+    deployStage,
+    cancelStageDeploy,
+    restartStage,
+    cancelStageRestart,
+    clearStageDeploy,
+    fetchStageDeployStatus,
     cleanup,
 
     // Utilities
     formatDate,
-    getSocket
+    getSocket,
+    onLegacyAudioCompleted
   }
 }

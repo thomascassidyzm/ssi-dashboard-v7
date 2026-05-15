@@ -428,17 +428,17 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     logger.info(`getAudioNeeds: forceGenerate=true, all ${unlinked.length} unlinked items classified as to-generate`)
   }
 
-  // Step 3: Pending presentation rows — concrete texts in course_audio waiting for TTS.
-  // These were created by /regenerate-presentations (the "Generate Missing Presentation Text"
-  // button) and have s3_key LIKE 'pending/%'. /generate will TTS them.
-  const { data: pendingPresRows } = await supabase
+  // Step 3: Pending audio rows — concrete texts in course_audio waiting for TTS.
+  // These have s3_key LIKE 'pending/%' and can be any role: presentation rows
+  // come from /regenerate-presentations; target/known rows come from text edits
+  // (?, ¡?, etc.) that need re-TTS. /generate will TTS them all.
+  const { data: pendingRows } = await supabase
     .from('course_audio')
-    .select('id, text, language, voice_id, lego_id')
+    .select('id, text, language, role, voice_id, lego_id')
     .eq('course_code', courseCode)
-    .eq('role', 'presentation')
     .like('s3_key', 'pending/%')
 
-  for (const pres of (pendingPresRows || [])) {
+  for (const pres of (pendingRows || [])) {
     if (isPunctuationOnly(pres.text)) {
       ungeneratable++
       continue
@@ -446,7 +446,7 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     toGenerate.push({
       text: pres.text,
       language: pres.language || course.known_lang,
-      role: 'presentation',
+      role: pres.role || 'presentation',
       lego_id: pres.lego_id || null,
       voice_id: pres.voice_id || null  // preserved so /generate can pick it up
     })
@@ -2944,16 +2944,26 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
 
     const regenCount = flagRecord?.regen_count || 0
 
-    // 4. Gender expansion
+    // 4. Gender expansion — consult the pre-computed course_gender_expansions
+    // cache first (populated by gender-prep-coordinator at course-build time
+    // and refreshed per-phrase on edit). Fall through to analyzeAndExpand
+    // (single-item Haiku call) if the cache is empty for this text.
     let textForTTS = text
     const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
     if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(lang)) {
-      // Try Haiku gender expansion
       try {
-        const result = await genderHaikuService.expandGender(text, lang, role)
-        if (result?.wasModified) {
-          textForTTS = result.expandedText
-          logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
+        const genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
+        const cached = genderMap.get(`${text}|${lang}|${role}`)
+        if (cached?.wasModified) {
+          textForTTS = cached.expandedText
+          logger.info(`Gender (cached): "${text}" → "${textForTTS}" (${role})`)
+        } else {
+          // Cache miss — fall back to a single Haiku call for this text
+          const result = await genderHaikuService.analyzeAndExpand(text, lang, role)
+          if (result?.wasModified) {
+            textForTTS = result.expandedText
+            logger.info(`Gender (live): "${text}" → "${textForTTS}" (${role})`)
+          }
         }
       } catch (e) {
         logger.warn(`Gender expansion failed, using original text: ${e.message}`)

@@ -2106,16 +2106,25 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     if (!response.ok) throw new Error(`Failed to save ${phraseEditMode.value}`);
 
+    // The PATCH endpoint may have re-pointed audio_ids if the audio row was
+    // shared with other phrases — pull the canonical post-save uuids from
+    // the response, not the stale local snapshot.
+    const responseData = await response.json().catch(() => ({}));
+    const phraseAfter = responseData.phrase || {};
+    const knownAudioUuid   = phraseAfter.known_audio_id   ?? phraseToEdit.value.known_audio_uuid;
+    const target1AudioUuid = phraseAfter.target1_audio_id ?? phraseToEdit.value.target1_audio_uuid;
+    const target2AudioUuid = phraseAfter.target2_audio_id ?? phraseToEdit.value.target2_audio_uuid;
+
     // Flag individual audio files for regeneration
     const flagPromises: Promise<Response>[] = [];
 
-    if (data.regen_flags.known && phraseToEdit.value.known_audio_uuid) {
+    if (data.regen_flags.known && knownAudioUuid) {
       flagPromises.push(
         fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
           body: JSON.stringify({
-            audio_uuid: phraseToEdit.value.known_audio_uuid,
+            audio_uuid: knownAudioUuid,
             status: 'flagged',
             reason: 'Text edited - flagged for regeneration',
             flagged_by: 'dashboard_user'
@@ -2124,13 +2133,13 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
       );
     }
 
-    if (data.regen_flags.target1 && phraseToEdit.value.target1_audio_uuid) {
+    if (data.regen_flags.target1 && target1AudioUuid) {
       flagPromises.push(
         fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
           body: JSON.stringify({
-            audio_uuid: phraseToEdit.value.target1_audio_uuid,
+            audio_uuid: target1AudioUuid,
             status: 'flagged',
             reason: 'Text edited - flagged for regeneration',
             flagged_by: 'dashboard_user'
@@ -2139,13 +2148,13 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
       );
     }
 
-    if (data.regen_flags.target2 && phraseToEdit.value.target2_audio_uuid) {
+    if (data.regen_flags.target2 && target2AudioUuid) {
       flagPromises.push(
         fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
           body: JSON.stringify({
-            audio_uuid: phraseToEdit.value.target2_audio_uuid,
+            audio_uuid: target2AudioUuid,
             status: 'flagged',
             reason: 'Text edited - flagged for regeneration',
             flagged_by: 'dashboard_user'
@@ -2160,7 +2169,8 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
       console.log(`Flagged ${flagPromises.length} audio file(s) for regeneration`);
     }
 
-    // Update local state
+    // Update local state — include any re-pointed audio uuids from the
+    // PATCH response so subsequent regen-single clicks target the new rows.
     const phraseId = phraseToEdit.value.id;
     seeds.value.forEach(seed => {
       seed.legos.forEach(lego => {
@@ -2168,6 +2178,9 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
         if (phrase) {
           phrase.known_text = data.known_text;
           phrase.target_text = data.target_text;
+          if (phraseAfter.known_audio_id   !== undefined) phrase.known_audio_uuid   = phraseAfter.known_audio_id;
+          if (phraseAfter.target1_audio_id !== undefined) phrase.target1_audio_uuid = phraseAfter.target1_audio_id;
+          if (phraseAfter.target2_audio_id !== undefined) phrase.target2_audio_uuid = phraseAfter.target2_audio_id;
         }
       });
     });
