@@ -89,7 +89,12 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
     emit("start", cmd=cmd, deleteProgress=delete_progress, skipChecks=skip_checks)
 
     child = pexpect.spawn("bash", ["-lc", cmd], encoding="utf-8", timeout=None)
-    child.logfile_read = sys.stdout  # mirror everything to our stdout
+    child.logfile_read = sys.stdout
+    # HighLine's Y/N validator is strict (regex /\A(?:y(?:es)?|no?)\Z/i). A
+    # too-fast sendline right after the prompt has occasionally tripped a
+    # "Please enter yes or no" retry. 0.1s buffer + full words makes the
+    # answer stable regardless of CR/LF handling.
+    child.delaybeforesend = 0.1  # mirror everything to our stdout
 
     # Patterns the deploy script can emit. Order doesn't matter — pexpect.expect
     # returns the index of whichever pattern matches first.
@@ -122,15 +127,15 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
             elif idx == 1:
                 emit("newCourse", courseConfigsId=course_configs_id)
             elif idx == 2:
-                child.sendline("n")
+                child.sendline("no")
             elif idx == 3:
-                child.sendline("n" if skip_checks else "y")
+                child.sendline("no" if skip_checks else "yes")
             elif idx == 4:
                 emit("checksPassed")
             elif idx == 5:
-                child.sendline("y" if delete_progress else "n")
+                child.sendline("yes" if delete_progress else "no")
             elif idx == 6:
-                child.sendline("y")
+                child.sendline("yes")
             elif idx == 7:
                 saw_deployed = True
                 emit("deployed")
