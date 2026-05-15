@@ -34,7 +34,7 @@ const fallbackNames = {
   // Dialect variants
   'cym_n': 'Welsh (North)', 'cym_s': 'Welsh (South)',
   'por_br': 'Portuguese (Brazil)', 'spa_mx': 'Spanish (Mexico)',
-  'ara_eg': 'Arabic (Egypt)', 'ara_sy': 'Arabic (Syria)',
+  'ara_eg': 'Arabic (Egypt)', 'ara_sy': 'Arabic (Syria)', 'ara_lb': 'Arabic (Lebanon)',
   'deu_at': 'German (Austria)'
 }
 

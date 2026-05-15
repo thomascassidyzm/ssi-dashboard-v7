@@ -142,7 +142,7 @@ const LANG_FLAGS = {
   spa: '🇪🇸', fra: '🇫🇷', deu: '🇩🇪', ita: '🇮🇹',
   por: '🇵🇹', por_br: '🇧🇷',
   zho: '🇨🇳', jpn: '🇯🇵', kor: '🇰🇷',
-  ara: '🇸🇦', ara_sy: '🇸🇾',
+  ara: '🇸🇦', ara_sy: '🇸🇾', ara_eg: '🇪🇬', ara_lb: '🇱🇧',
   gle: '🇮🇪', nld: '🇳🇱', hrv: '🇭🇷',
 }
 const LANG_NAMES = {
@@ -150,7 +150,7 @@ const LANG_NAMES = {
   spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian',
   por: 'Portuguese', por_br: 'Brazilian Portuguese',
   zho: 'Chinese', jpn: 'Japanese', kor: 'Korean',
-  ara: 'Arabic', ara_sy: 'Syrian Arabic',
+  ara: 'Arabic', ara_sy: 'Syrian Arabic', ara_eg: 'Egyptian Arabic', ara_lb: 'Lebanese Arabic',
   gle: 'Irish', nld: 'Dutch', hrv: 'Croatian',
 }
 const [targetLang, knownLang] = String(courseCode).split('_for_')

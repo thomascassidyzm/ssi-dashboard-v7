@@ -85,6 +85,7 @@ const DIALECT_NAMES = {
   'deu_at': 'Austrian German',
   'ara_eg': 'Egyptian Arabic',
   'ara_sy': 'Syrian Arabic',
+  'ara_lb': 'Lebanese Arabic',
   'cym_n': 'North Welsh',
   'cym_s': 'South Welsh',
 };
