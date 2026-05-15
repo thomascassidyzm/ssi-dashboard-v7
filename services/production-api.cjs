@@ -2294,6 +2294,10 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
     // Generate combined presentations with progress callback
     const job = legacyAudioJobs.get(jobId)
 
+    // LEGACY_TTS_CONCURRENCY env var lets you tune higher for big batches.
+    // 8 is a safe default: Azure allows ~20 concurrent on standard tiers and
+    // ElevenLabs varies by plan (2 on free, more on paid). Bump cautiously.
+    const legacyConcurrency = parseInt(process.env.LEGACY_TTS_CONCURRENCY, 10) || 8
     await generateCombinedPresentations(
       courseCode,
       introItems,
@@ -2303,7 +2307,7 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
       knownLang,
       {
         dryRun: false,
-        concurrency: 4,
+        concurrency: legacyConcurrency,
         voiceSig: getCombinedVoiceSig(course),
         onProgress: (completed, total) => {
           const currentJob = legacyAudioJobs.get(jobId)
