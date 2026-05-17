@@ -34,6 +34,13 @@ ALTER TABLE courses
   ADD COLUMN IF NOT EXISTS version integer NOT NULL DEFAULT 1;
 
 -- 2. Trigger function -----------------------------------------------------
+--
+-- The column-change check lives inside the function (not in a WHEN clause)
+-- because Postgres disallows NEW references in WHEN when the trigger fires
+-- on DELETE — and we want one trigger covering all three ops. TG_OP lets us
+-- branch cleanly: INSERT and DELETE always bump; UPDATE bumps only when one
+-- of the materially-relevant columns actually changed (no-op updates that
+-- SET a column to its existing value are silently skipped).
 
 CREATE OR REPLACE FUNCTION bump_course_version()
 RETURNS TRIGGER
@@ -41,21 +48,29 @@ LANGUAGE plpgsql
 AS $$
 DECLARE
   v_course_code text;
+  v_should_bump boolean;
 BEGIN
-  -- DELETE: OLD has the course_code. INSERT/UPDATE: NEW does.
   IF TG_OP = 'DELETE' THEN
     v_course_code := OLD.course_code;
-  ELSE
+    v_should_bump := true;
+  ELSIF TG_OP = 'INSERT' THEN
     v_course_code := NEW.course_code;
+    v_should_bump := true;
+  ELSE  -- UPDATE
+    v_course_code := NEW.course_code;
+    v_should_bump :=
+         NEW.target_text  IS DISTINCT FROM OLD.target_text
+      OR NEW.known_text   IS DISTINCT FROM OLD.known_text
+      OR NEW.seed_number  IS DISTINCT FROM OLD.seed_number
+      OR NEW.lego_index   IS DISTINCT FROM OLD.lego_index
+      OR NEW.components   IS DISTINCT FROM OLD.components;
   END IF;
 
-  IF v_course_code IS NULL THEN
-    RETURN COALESCE(NEW, OLD);
+  IF v_should_bump AND v_course_code IS NOT NULL THEN
+    UPDATE courses
+    SET version = version + 1
+    WHERE course_code = v_course_code;
   END IF;
-
-  UPDATE courses
-  SET version = version + 1
-  WHERE course_code = v_course_code;
 
   RETURN COALESCE(NEW, OLD);
 END;
@@ -68,28 +83,14 @@ COMMENT ON FUNCTION bump_course_version() IS
 
 DROP TRIGGER IF EXISTS course_legos_bump_course_version ON course_legos;
 
--- One trigger covers INSERT, DELETE, and the column-scoped UPDATE.
--- The `UPDATE OF ...` clause restricts UPDATE firings to columns that
--- materially affect the round-map or decomposition vocabulary. INSERT and
--- DELETE always fire regardless of columns.
---
--- The WHEN clause then short-circuits no-op UPDATEs (where target_text etc.
--- got SET to the same value). For INSERT, OLD is NULL — so
--- `NEW.x IS DISTINCT FROM OLD.x` is TRUE for any non-NULL NEW.x → fires.
--- For DELETE, NEW is NULL — same logic in reverse → fires.
--- TG_OP is not available in trigger WHEN clauses (it's PL/pgSQL-only),
--- so we rely on NULL semantics to cover INSERT/DELETE cleanly.
+-- One trigger, three operations. The `UPDATE OF columns` clause keeps Postgres
+-- from invoking the function on UPDATEs that don't touch any of the listed
+-- columns (cheap pre-filter at the planner level). The function then handles
+-- per-op logic and the no-op-update guard.
 CREATE TRIGGER course_legos_bump_course_version
 AFTER INSERT OR DELETE OR UPDATE OF target_text, known_text, seed_number, lego_index, components
 ON course_legos
 FOR EACH ROW
-WHEN (
-  NEW.target_text   IS DISTINCT FROM OLD.target_text
-  OR NEW.known_text    IS DISTINCT FROM OLD.known_text
-  OR NEW.seed_number   IS DISTINCT FROM OLD.seed_number
-  OR NEW.lego_index    IS DISTINCT FROM OLD.lego_index
-  OR NEW.components    IS DISTINCT FROM OLD.components
-)
 EXECUTE FUNCTION bump_course_version();
 
 COMMIT;
