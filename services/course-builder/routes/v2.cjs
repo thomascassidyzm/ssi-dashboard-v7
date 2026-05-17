@@ -21,6 +21,7 @@ const { checkTiling, checkVocabViolations, formatDecompositionPatterns } = requi
 const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cjs');
 const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
+const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
 
 module.exports = function(ctx) {
   const router = Router();
@@ -456,7 +457,7 @@ module.exports = function(ctx) {
             const maxPos = existingPhrases?.reduce((max, p) => Math.max(max, p.position), 0) || 0;
             const existingUseCount = existingPhrases?.filter(p => p.phrase_role === 'use').length || 0;
 
-            await ctx.supabase.from('course_practice_phrases').insert({
+            const usePhraseRow = {
               id: makePhraseId(courseCode, bestSeedNum, bestLegoIdx, 'use', existingUseCount + 1),
               course_code: courseCode,
               seed_number: bestSeedNum,
@@ -472,7 +473,10 @@ module.exports = function(ctx) {
               metadata: { format: 'build_use', source: 'seed_sentence', source_seed: draft.seed_number, score: 8 },
               status: 'draft',
               version: 1
-            });
+            };
+            await ctx.supabase.from('course_practice_phrases').insert(usePhraseRow);
+            // Build-time phrase decomposition. Non-blocking — see writer module.
+            await decoratePhrasesWithDecomposition(ctx.supabase, [usePhraseRow]);
             console.log(`  Empty seed ${draft.seed_number} -> USE phrase for S${String(bestSeedNum).padStart(4,'0')}L${String(bestLegoIdx).padStart(2,'0')}`);
           }
         }
@@ -720,6 +724,11 @@ module.exports = function(ctx) {
             continue;
           }
           totalInserted += allPhraseRows.length;
+
+          // Build-time phrase decomposition (PHRASE_DECOMPOSITION_SPEC.md).
+          // Non-blocking — failures log + skip, decomposition stays NULL so
+          // the runtime fallback handles rendering.
+          await decoratePhrasesWithDecomposition(ctx.supabase, allPhraseRows);
         }
 
         // Invalidate course-wide vocab cache since new phrases were added

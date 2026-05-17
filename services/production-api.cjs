@@ -25,6 +25,7 @@ const voiceDiscoveryService = require('./voice-discovery-service.cjs')
 const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
+const { decomposeText } = require('./phrase-decomposer.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -9487,6 +9488,234 @@ app.post('/api/admin/audit-cleanup', async (req, res) => {
     res.json({ ok: true, deleted: totalDeleted, days, cutoff, more_remaining })
   } catch (e) {
     logger.error('[Audit] cleanup error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// ============================================================================
+// Phrase decomposition — backfill + audit
+// ============================================================================
+// See new_vision/PHRASE_DECOMPOSITION_SPEC.md.
+//
+// The build-time phrase decomposer pre-chunks `target_text` into LEGO + ghost
+// blocks at phrase-write time. These endpoints surface drift (phrases whose
+// stored decomposition is missing or stale relative to courses.version) and
+// let an admin trigger backfill / dry-run from the Maintenance UI.
+
+// GET /api/admin/decomposition-audit/:courseCode — drift summary for one course.
+//
+// Returns:
+//   null_count    — phrases with decomposition IS NULL (never computed)
+//   stale_count   — decomposition_course_version < courses.version
+//   clean_count   — decomposition present AND version is current
+//   total         — total phrases in this course
+//   course_version — current courses.version (the target)
+//
+// Click-to-refresh, not auto-polled. Use this to decide whether to run the
+// backfill endpoint.
+app.get('/api/admin/decomposition-audit/:courseCode', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const courseCode = req.params.courseCode
+  try {
+    const sb = supabaseClient.getClient()
+
+    const { data: courseRow, error: courseErr } = await sb
+      .from('courses')
+      .select('version')
+      .eq('course_code', courseCode)
+      .maybeSingle()
+    if (courseErr) throw courseErr
+    if (!courseRow) return res.status(404).json({ error: `course not found: ${courseCode}` })
+    const courseVersion = courseRow.version ?? 1
+
+    // Four count queries in parallel. Each uses count:'exact' on a HEAD-only
+    // request so we don't drag row data over the wire.
+    const [totalRes, nullRes, staleRes, cleanRes] = await Promise.all([
+      sb.from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode),
+      sb.from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .is('decomposition', null),
+      sb.from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .not('decomposition', 'is', null)
+        .lt('decomposition_course_version', courseVersion),
+      sb.from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .not('decomposition', 'is', null)
+        .gte('decomposition_course_version', courseVersion)
+    ])
+    for (const r of [totalRes, nullRes, staleRes, cleanRes]) {
+      if (r.error) throw r.error
+    }
+
+    res.json({
+      course_code: courseCode,
+      course_version: courseVersion,
+      total: totalRes.count ?? 0,
+      null_count: nullRes.count ?? 0,
+      stale_count: staleRes.count ?? 0,
+      clean_count: cleanRes.count ?? 0
+    })
+  } catch (e) {
+    logger.error('[Decomposition] audit error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/decomposition-backfill — compute + persist decompositions.
+//
+// Body: { courseCode?: string, dryRun?: boolean, limit?: int }
+//   courseCode — if omitted, walks ALL courses. Useful for a one-time sweep.
+//   dryRun     — if true, computes but doesn't write. Returns sample blocks.
+//   limit      — max phrases to process this request (default 500, cap 5000).
+//
+// Resumable + capped: batched scan, 60s wall-time deadline per request.
+// Response includes `more_remaining: true` if the deadline tripped or the
+// limit was hit — the UI loops back with another POST.
+//
+// Pattern mirrors /api/admin/audit-cleanup (see ~line 9451): same deadline,
+// chunked-loop shape, partial-progress reporting.
+app.post('/api/admin/decomposition-backfill', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+
+  const courseCode = req.body?.courseCode ? String(req.body.courseCode) : null
+  const dryRun = !!req.body?.dryRun
+  const requestedLimit = Number(req.body?.limit)
+  const maxRows = Number.isFinite(requestedLimit) && requestedLimit > 0
+    ? Math.min(Math.floor(requestedLimit), 5000)
+    : 500
+
+  const DEADLINE_MS = 60_000
+  const PAGE_SIZE = 100
+  const start = Date.now()
+
+  let processed = 0
+  let updated = 0
+  let failed = 0
+  let sample = [] // dry-run only — first 3 decompositions for inspection
+  const failures = [] // first 5 failure reasons for the report
+
+  try {
+    const sb = supabaseClient.getClient()
+
+    // Build the list of courses we're walking.
+    let courseList
+    if (courseCode) {
+      const { data, error } = await sb.from('courses').select('course_code, version').eq('course_code', courseCode)
+      if (error) throw error
+      if (!data || data.length === 0) return res.status(404).json({ error: `course not found: ${courseCode}` })
+      courseList = data
+    } else {
+      const { data, error } = await sb.from('courses').select('course_code, version').order('course_code')
+      if (error) throw error
+      courseList = data || []
+    }
+
+    let moreRemaining = false
+    let cutoffReached = false
+
+    // Per-course: cache vocabulary (one fetch covers every phrase in the
+    // course, since we always look up by seed_number ≤ phrase.seed_number).
+    const vocabCache = new Map()
+    async function getVocab(cc) {
+      if (vocabCache.has(cc)) return vocabCache.get(cc)
+      const { data, error } = await sb
+        .from('course_legos')
+        .select('seed_number, lego_index, target_text, known_text')
+        .eq('course_code', cc)
+      if (error) throw error
+      const vocab = (data || []).map(l => ({
+        lego_id: `S${String(l.seed_number).padStart(4, '0')}L${String(l.lego_index).padStart(2, '0')}`,
+        target_text: l.target_text,
+        known_text: l.known_text,
+        seed_number: l.seed_number
+      }))
+      vocabCache.set(cc, vocab)
+      return vocab
+    }
+
+    outer: for (const course of courseList) {
+      const cc = course.course_code
+      const courseVersion = course.version ?? 1
+
+      // Page through phrases needing work. The "needs work" predicate is
+      // decomposition IS NULL OR decomposition_course_version < courseVersion.
+      // PostgREST's `or()` handles that compactly.
+      // We don't use offset/range because we mutate as we go — keep refetching
+      // the first page until it stops returning rows.
+      while (true) {
+        if (Date.now() - start >= DEADLINE_MS) {
+          moreRemaining = true
+          cutoffReached = true
+          break outer
+        }
+        if (processed >= maxRows) {
+          moreRemaining = true
+          break outer
+        }
+
+        const { data: rows, error: pageErr } = await sb
+          .from('course_practice_phrases')
+          .select('id, course_code, seed_number, target_text, decomposition_course_version')
+          .eq('course_code', cc)
+          .or(`decomposition.is.null,decomposition_course_version.lt.${courseVersion}`)
+          .limit(Math.min(PAGE_SIZE, maxRows - processed))
+        if (pageErr) throw pageErr
+        if (!rows || rows.length === 0) break
+
+        const vocab = await getVocab(cc)
+
+        for (const row of rows) {
+          processed++
+          try {
+            const vocabForPhrase = vocab.filter(l => l.seed_number <= row.seed_number)
+            const blocks = decomposeText(row.target_text, vocabForPhrase)
+
+            if (dryRun) {
+              if (sample.length < 3) sample.push({ phrase_id: row.id, target_text: row.target_text, blocks })
+              continue
+            }
+
+            const { error: updateErr } = await sb
+              .from('course_practice_phrases')
+              .update({ decomposition: blocks, decomposition_course_version: courseVersion })
+              .eq('id', row.id)
+            if (updateErr) throw updateErr
+            updated++
+          } catch (e) {
+            failed++
+            if (failures.length < 5) failures.push({ phrase_id: row.id, reason: e?.message || String(e) })
+          }
+        }
+
+        // Page returned fewer rows than asked = course done (for this version).
+        if (rows.length < PAGE_SIZE) break
+      }
+    }
+
+    logger.info(
+      `[Decomposition] Backfill: processed=${processed} updated=${updated} failed=${failed} ` +
+      `more=${moreRemaining} cutoff=${cutoffReached} dryRun=${dryRun} course=${courseCode || 'ALL'}`
+    )
+
+    res.json({
+      ok: true,
+      dry_run: dryRun,
+      processed,
+      updated,
+      failed,
+      more_remaining: moreRemaining,
+      cutoff_reached: cutoffReached,
+      sample: dryRun ? sample : undefined,
+      failures: failures.length > 0 ? failures : undefined
+    })
+  } catch (e) {
+    logger.error('[Decomposition] backfill error:', e?.message || e)
     res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })
