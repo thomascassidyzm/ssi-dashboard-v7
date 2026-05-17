@@ -9491,6 +9491,224 @@ app.post('/api/admin/audit-cleanup', async (req, res) => {
   }
 })
 
+// ============================================================================
+// Uptime monitoring + DB health — diagnostic panel for the Maintenance tab
+// ============================================================================
+// Backs the popty UptimePanel. Read-only proxies onto two external sources:
+//   - Better Stack (external HTTPS probing of the learner-path URLs)
+//   - Supabase Metrics API (Prometheus exposition, Pro-plan feature)
+// No alert routing, no persistence — Tom checks these when investigating
+// "did the app go down?" or "why are queries slow right now?".
+
+// GET /api/admin/uptime-summary — proxy Better Stack monitors + last-24h incidents.
+// If BETTERSTACK_API_KEY is unset, returns { configured: false } cleanly so the
+// panel can show a setup CTA instead of a generic 500.
+app.get('/api/admin/uptime-summary', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const apiKey = process.env.BETTERSTACK_API_KEY
+  if (!apiKey) {
+    return res.json({ configured: false })
+  }
+  try {
+    const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
+    const headers = { Authorization: `Bearer ${apiKey}` }
+    const [monitorsRes, incidentsRes] = await Promise.all([
+      fetch('https://uptime.betterstack.com/api/v2/monitors', { headers }),
+      fetch(`https://uptime.betterstack.com/api/v2/incidents?from=${encodeURIComponent(since)}`, { headers })
+    ])
+    if (!monitorsRes.ok) throw new Error(`Better Stack monitors HTTP ${monitorsRes.status}`)
+    if (!incidentsRes.ok) throw new Error(`Better Stack incidents HTTP ${incidentsRes.status}`)
+    const [monitorsBody, incidentsBody] = await Promise.all([monitorsRes.json(), incidentsRes.json()])
+
+    const monitors = (monitorsBody.data || []).map(m => ({
+      id: m.id,
+      name: m.attributes?.pronounceable_name || m.attributes?.url || m.id,
+      url: m.attributes?.url,
+      status: m.attributes?.status,            // 'up' | 'down' | 'paused' | 'pending' | 'validating'
+      last_checked_at: m.attributes?.last_checked_at,
+      // Response time shape varies across plans; pick the first numeric we find.
+      last_response_time_ms:
+        m.attributes?.regions?.[0]?.response_times?.[0]?.response_time
+        ?? m.attributes?.last_response_time
+        ?? null
+    }))
+    const incidents = (incidentsBody.data || []).map(i => ({
+      id: i.id,
+      monitor_id: i.attributes?.monitor_id ?? i.relationships?.monitor?.data?.id,
+      started_at: i.attributes?.started_at,
+      resolved_at: i.attributes?.resolved_at,
+      cause: i.attributes?.cause
+    }))
+    res.json({ configured: true, monitors, incidents, since })
+  } catch (e) {
+    logger.error('[Uptime] summary error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// Parse Prometheus exposition format into a flat map keyed by metric name +
+// optional sorted-label string. Values are numbers. Helper kept local — no
+// need for prom-client just to read 8 metrics off a scrape.
+function parsePrometheusText(text) {
+  const samples = []
+  const lines = text.split('\n')
+  for (const line of lines) {
+    if (!line || line.startsWith('#')) continue
+    // Metric line: name{label="v",label="v"} 123 [timestamp]
+    // Or: name 123
+    const m = line.match(/^([a-zA-Z_:][a-zA-Z0-9_:]*)(\{[^}]*\})?\s+([-+0-9.eEnNaIfF]+)/)
+    if (!m) continue
+    const name = m[1]
+    const labelBlock = m[2] || ''
+    const valueStr = m[3]
+    const value = Number(valueStr)
+    if (!Number.isFinite(value)) continue
+    const labels = {}
+    if (labelBlock) {
+      const re = /([a-zA-Z_][a-zA-Z0-9_]*)="((?:[^"\\]|\\.)*)"/g
+      let lm
+      while ((lm = re.exec(labelBlock)) !== null) {
+        labels[lm[1]] = lm[2].replace(/\\"/g, '"').replace(/\\\\/g, '\\')
+      }
+    }
+    samples.push({ name, labels, value })
+  }
+  return samples
+}
+
+// Sum samples for a metric, optionally filtered by label predicate.
+function sumMetric(samples, name, labelPredicate = null) {
+  let total = 0
+  let matched = 0
+  for (const s of samples) {
+    if (s.name !== name) continue
+    if (labelPredicate && !labelPredicate(s.labels)) continue
+    total += s.value
+    matched++
+  }
+  return matched > 0 ? { value: total, count: matched } : null
+}
+
+// First-sample lookup — for gauge metrics where there's typically one series.
+function firstMetric(samples, name, labelPredicate = null) {
+  for (const s of samples) {
+    if (s.name !== name) continue
+    if (labelPredicate && !labelPredicate(s.labels)) continue
+    return s.value
+  }
+  return null
+}
+
+// GET /api/admin/db-health — scrape Supabase Metrics API, extract 6-8 metrics
+// that tell the "is the DB healthy right now?" story. Resilient to missing
+// metrics (logs a warning, returns null in that slot). Project ref is derived
+// from SUPABASE_URL so we don't need a separate env var.
+app.get('/api/admin/db-health', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const supaUrl = process.env.SUPABASE_URL
+  const serviceKey = process.env.SUPABASE_SERVICE_KEY
+  if (!supaUrl || !serviceKey) {
+    return res.status(500).json({ error: 'SUPABASE_URL / SUPABASE_SERVICE_KEY missing' })
+  }
+  // Derive project ref from https://<ref>.supabase.co
+  const refMatch = supaUrl.match(/^https?:\/\/([^.]+)\.supabase\.co/)
+  if (!refMatch) {
+    return res.status(500).json({ error: `Cannot derive project ref from SUPABASE_URL=${supaUrl}` })
+  }
+  const projectRef = refMatch[1]
+  const metricsUrl = `https://${projectRef}.supabase.co/customer/v1/privileged/metrics`
+  const auth = 'Basic ' + Buffer.from(`service_role:${serviceKey}`).toString('base64')
+
+  try {
+    const scrapeStart = Date.now()
+    const r = await fetch(metricsUrl, { headers: { Authorization: auth } })
+    if (!r.ok) throw new Error(`Metrics scrape HTTP ${r.status}`)
+    const text = await r.text()
+    const scrapeMs = Date.now() - scrapeStart
+    const samples = parsePrometheusText(text)
+
+    // Pull out the metrics that matter. Names follow Supabase's exposition:
+    //   pg_stat_database_*           per-database counters
+    //   pg_stat_database_conflicts_* conflicts (incl. statement_timeout cancellations)
+    //   pg_stat_activity_count       current connection count (postgres_exporter)
+    //   pg_settings_max_connections  pool ceiling
+    //   pg_replication_lag           replica lag in seconds (if any replicas)
+    // Some names have varied across exporter versions; we look first and fall
+    // back where sensible. Anything we can't find returns null and gets logged.
+    const isMainDb = (l) => !l.datname || l.datname === 'postgres'
+
+    const blksHit = sumMetric(samples, 'pg_stat_database_blks_hit', isMainDb)
+    const blksRead = sumMetric(samples, 'pg_stat_database_blks_read', isMainDb)
+    const cacheHitRate = (blksHit && blksRead && (blksHit.value + blksRead.value) > 0)
+      ? blksHit.value / (blksHit.value + blksRead.value)
+      : null
+
+    const xactCommit = sumMetric(samples, 'pg_stat_database_xact_commit', isMainDb)
+    const xactRollback = sumMetric(samples, 'pg_stat_database_xact_rollback', isMainDb)
+
+    // Statement-timeout cancellations show up as deadlocks + confl_* counters
+    // depending on exporter version. We surface deadlocks (clear) and a
+    // generic "cancelled queries" total from pg_stat_database_conflicts where
+    // available — both are the failure modes that mask slow queries.
+    const deadlocks = sumMetric(samples, 'pg_stat_database_deadlocks', isMainDb)
+    const conflicts = sumMetric(samples, 'pg_stat_database_conflicts', isMainDb)
+
+    // Connections: count current vs max. The exporter sometimes reports
+    // pg_stat_activity_count, sometimes pg_stat_database_numbackends.
+    const activeConnections =
+      firstMetric(samples, 'pg_stat_activity_count', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_numbackends', isMainDb)?.value
+      ?? null
+    const maxConnections =
+      firstMetric(samples, 'pg_settings_max_connections')
+      ?? null
+    const poolUtilization = (activeConnections != null && maxConnections != null && maxConnections > 0)
+      ? activeConnections / maxConnections
+      : null
+
+    // Replication lag — only present if replicas exist. null is the right
+    // answer for the no-replica case; we don't show it as a failure.
+    const replicationLagSeconds =
+      firstMetric(samples, 'pg_replication_lag')
+      ?? firstMetric(samples, 'pg_stat_replication_lag_seconds')
+      ?? null
+
+    // Disk / WAL pressure — early warning before queries start timing out.
+    const dbSizeBytes = sumMetric(samples, 'pg_database_size_bytes', isMainDb)?.value ?? null
+
+    const metrics = {
+      cache_hit_rate: cacheHitRate,                     // 0-1, ideally > 0.99
+      active_connections: activeConnections,            // current backend count
+      max_connections: maxConnections,                  // pool ceiling
+      pool_utilization: poolUtilization,                // 0-1
+      replication_lag_seconds: replicationLagSeconds,   // null if no replica
+      deadlocks_total: deadlocks?.value ?? null,        // counter, watch for jumps
+      conflicts_total: conflicts?.value ?? null,        // counter, statement_timeout cancellations land here
+      transactions_committed: xactCommit?.value ?? null,
+      transactions_rolled_back: xactRollback?.value ?? null,
+      db_size_bytes: dbSizeBytes
+    }
+
+    // Log any metrics we couldn't find so we know to add fallbacks.
+    const missing = Object.entries(metrics).filter(([_, v]) => v === null).map(([k]) => k)
+    if (missing.length) {
+      logger.warn(`[DBHealth] metrics not found in scrape: ${missing.join(', ')}`)
+    }
+
+    res.json({
+      configured: true,
+      scraped_at: new Date().toISOString(),
+      scrape_ms: scrapeMs,
+      sample_count: samples.length,
+      metrics,
+      missing
+    })
+  } catch (e) {
+    logger.error('[DBHealth] scrape error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {

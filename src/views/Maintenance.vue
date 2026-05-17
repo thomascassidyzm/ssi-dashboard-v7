@@ -1,6 +1,8 @@
 <template>
   <div class="maintenance-page">
     <div class="maintenance-inner">
+      <UptimePanel />
+
       <h2 class="section-title">Content audit log</h2>
       <p class="section-blurb">
         Every UPDATE and DELETE on the at-risk content tables
@@ -281,6 +283,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../composables/useAuth'
+import UptimePanel from '../components/UptimePanel.vue'
 
 const { getAccessToken } = useAuth()
 
