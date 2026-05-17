@@ -57,6 +57,7 @@
       <p v-if="lastResult" class="result-line">
         Deleted {{ lastResult.deleted.toLocaleString() }} row{{ lastResult.deleted === 1 ? '' : 's' }}
         older than {{ lastResult.days }} days.
+        <span v-if="lastResult.more_remaining"> More remaining — click again to continue.</span>
       </p>
 
       <h2 class="section-title section-title-secondary">Recent changes</h2>

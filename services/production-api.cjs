@@ -9221,33 +9221,30 @@ app.post('/api/admin/restart-machine', async (req, res) => {
 // Retention is manual: this endpoint surfaces the stats, the Clean button
 // runs the DELETE.
 
-// GET /api/admin/audit-stats — row count, oldest entry, days since oldest
+// GET /api/admin/audit-stats — row count, oldest entry, days since oldest.
+// Uses Postgres's planner row estimate (count:'estimated') instead of exact count,
+// because content_audit_log can hold millions of rows and exact count(*) is slow
+// enough to trip request timeouts in the proxy chain.
 app.get('/api/admin/audit-stats', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   try {
     const sb = supabaseClient.getClient()
-    // Two cheap queries: one for count (HEAD), one for the oldest row
-    const { count, error: countErr } = await sb
-      .from('content_audit_log')
-      .select('*', { count: 'exact', head: true })
-    if (countErr) throw countErr
+    const [countRes, oldestRes] = await Promise.all([
+      sb.from('content_audit_log').select('*', { count: 'estimated', head: true }),
+      sb.from('content_audit_log').select('changed_at').order('changed_at', { ascending: true }).limit(1)
+    ])
+    if (countRes.error) throw countRes.error
+    if (oldestRes.error) throw oldestRes.error
 
-    const { data: oldestRows, error: oldErr } = await sb
-      .from('content_audit_log')
-      .select('changed_at')
-      .order('changed_at', { ascending: true })
-      .limit(1)
-    if (oldErr) throw oldErr
-
-    const oldest_at = oldestRows?.[0]?.changed_at ?? null
+    const oldest_at = oldestRes.data?.[0]?.changed_at ?? null
     const days_since_oldest = oldest_at
       ? Math.floor((Date.now() - new Date(oldest_at).getTime()) / (1000 * 60 * 60 * 24))
       : null
 
-    res.json({ total_rows: count ?? 0, oldest_at, days_since_oldest })
+    res.json({ total_rows: countRes.count ?? 0, oldest_at, days_since_oldest })
   } catch (e) {
-    logger.error('[Audit] stats error:', e.message)
-    res.status(500).json({ error: e.message })
+    logger.error('[Audit] stats error:', e?.message || e?.code || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })
 
@@ -9450,16 +9447,37 @@ app.post('/api/admin/audit-cleanup', async (req, res) => {
   try {
     const sb = supabaseClient.getClient()
     const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString()
-    const { count, error } = await sb
-      .from('content_audit_log')
-      .delete({ count: 'exact' })
-      .lt('changed_at', cutoff)
-    if (error) throw error
-    logger.info(`[Audit] Cleanup deleted ${count ?? 0} rows older than ${days} days`)
-    res.json({ ok: true, deleted: count ?? 0, days, cutoff })
+    // Batch the delete: a single DELETE on millions of rows hits Postgres's
+    // statement_timeout. We page through old rows by id and delete in
+    // chunks of 5,000, capped at 60s of wall time per request — partial
+    // progress is still progress, the next click finishes the job.
+    const BATCH = 5000
+    const DEADLINE_MS = 60_000
+    const start = Date.now()
+    let totalDeleted = 0
+    let exhausted = true
+    while (Date.now() - start < DEADLINE_MS) {
+      const { data: batch, error: selErr } = await sb
+        .from('content_audit_log')
+        .select('id')
+        .lt('changed_at', cutoff)
+        .limit(BATCH)
+      if (selErr) throw selErr
+      if (!batch || batch.length === 0) break
+      const ids = batch.map(r => r.id)
+      const { error: delErr } = await sb.from('content_audit_log').delete().in('id', ids)
+      if (delErr) throw delErr
+      totalDeleted += ids.length
+      if (ids.length < BATCH) break
+      // Loop continues — there's more to delete, take the next batch
+      exhausted = ids.length < BATCH
+    }
+    const more_remaining = !exhausted && (Date.now() - start >= DEADLINE_MS)
+    logger.info(`[Audit] Cleanup deleted ${totalDeleted} rows older than ${days} days (more_remaining=${more_remaining})`)
+    res.json({ ok: true, deleted: totalDeleted, days, cutoff, more_remaining })
   } catch (e) {
-    logger.error('[Audit] cleanup error:', e.message)
-    res.status(500).json({ error: e.message })
+    logger.error('[Audit] cleanup error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })
 
