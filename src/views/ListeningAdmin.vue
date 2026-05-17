@@ -107,8 +107,6 @@
           <NumField v-model="drafts.listening.l1ReserveSize" label="Reserve window size" suffix="seeds"
             help="Older graduated seeds (next slice after active)." />
           <NumField v-model="drafts.listening.l1ReserveInterval" label="Reserve fires every" suffix="rounds" />
-          <NumField v-model="drafts.listening.podActivationRound" label="Pod activation default" suffix="rounds"
-            help="First main-round at which Layer 2 pods fire (per-learner pin still wins)." />
         </div>
 
         <!-- Live preview: what would Layer 1 play right now? -->
@@ -213,6 +211,8 @@
         </div>
 
         <div class="field-grid">
+          <NumField v-model="drafts.pods.podActivationRound" label="Pod activation default" suffix="rounds"
+            help="First main-round at which Layer 2 pods fire (per-learner pin still wins)." />
           <NumField v-model="drafts.pods.roundInterval" label="Pod fires every" suffix="rounds"
             help="1 = every round (default). 2 = every other round, 3 = every third, etc. Stretches every pod stage proportionally — pod-rounds only tick on actual fires." />
           <NumField v-model="drafts.pods.stageDuration" label="Stage duration" suffix="pod-rounds"
@@ -619,7 +619,9 @@ const cycleStats = computed(() => {
   // so the stage clock and active-count grow at the cadence of fires
   // (not session rounds). Non-firing rounds contribute 0 listening
   // cycles from L2.
-  const activation = drafts.listening?.podActivationRound ?? 6
+  // Pod activation lives on drafts.pods now; legacy `listening` rows still
+  // carry it until they're re-saved. Prefer pods, fall back to listening.
+  const activation = drafts.pods?.podActivationRound ?? drafts.listening?.podActivationRound ?? 6
   const interval = Math.max(1, Math.floor(drafts.pods?.roundInterval ?? 1))
   const totalPodSentences = coursePodSentences.value.length
   const offset = R - activation
@@ -761,8 +763,12 @@ function reset(key) {
   rowErrors[key] = null
   // Mirror the load-time defaults backfill — keeps NumFields bound to
   // defined values after a reset on rows saved before the field existed.
-  if (key === 'pods' && drafts.pods && drafts.pods.roundInterval == null) {
-    drafts.pods.roundInterval = 1
+  if (key === 'pods' && drafts.pods) {
+    if (drafts.pods.roundInterval == null) drafts.pods.roundInterval = 1
+    if (drafts.pods.podActivationRound == null) {
+      // Inherit from the legacy listening row if available, else default 6.
+      drafts.pods.podActivationRound = drafts.listening?.podActivationRound ?? 6
+    }
   }
 }
 
@@ -911,8 +917,14 @@ async function loadAll() {
     // Backfill defaults for fields added after the row was last saved —
     // keeps NumFields bound to defined values, and the first save writes
     // the field into the DB row going forward.
-    if (drafts.pods && drafts.pods.roundInterval == null) {
-      drafts.pods.roundInterval = 1
+    if (drafts.pods) {
+      if (drafts.pods.roundInterval == null) drafts.pods.roundInterval = 1
+      if (drafts.pods.podActivationRound == null) {
+        // Field used to live on drafts.listening — migrate the value across
+        // so existing courses keep their tuned activation round when the
+        // pods row is first saved against the new schema.
+        drafts.pods.podActivationRound = drafts.listening?.podActivationRound ?? 6
+      }
     }
   } catch (e) {
     loadError.value = e.message || String(e)
