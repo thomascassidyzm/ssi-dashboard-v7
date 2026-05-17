@@ -109,8 +109,6 @@
           <NumField v-model="drafts.listening.l1ReserveInterval" label="Reserve fires every" suffix="rounds" />
           <NumField v-model="drafts.listening.podActivationRound" label="Pod activation default" suffix="rounds"
             help="First main-round at which Layer 2 pods fire (per-learner pin still wins)." />
-          <NumField v-model="drafts.listening.podRoundInterval" label="Pod fires every" suffix="rounds"
-            help="1 = every round (default). 2 = every other round, 3 = every third, etc. Stretches every pod stage proportionally — pod-rounds only tick on actual fires." />
         </div>
 
         <!-- Live preview: what would Layer 1 play right now? -->
@@ -215,6 +213,8 @@
         </div>
 
         <div class="field-grid">
+          <NumField v-model="drafts.pods.roundInterval" label="Pod fires every" suffix="rounds"
+            help="1 = every round (default). 2 = every other round, 3 = every third, etc. Stretches every pod stage proportionally — pod-rounds only tick on actual fires." />
           <NumField v-model="drafts.pods.stageDuration" label="Stage duration" suffix="pod-rounds"
             help="Pod-rounds spent in each of stages 1–6 before promoting (stage 7 is eternal)." />
           <NumField v-model="drafts.pods.gapSuperTightMs" label="Gap: super tight" suffix="ms"
@@ -614,12 +614,13 @@ const cycleStats = computed(() => {
     listening += reserveWindow.value.length * eternalLen
   }
 
-  // L2 — pods fire every podRoundInterval main rounds from activation
-  // onward. podRound counts actual fires, not player rounds, so the stage
-  // clock and active-count grow at the cadence of fires (not session
-  // rounds). Non-firing rounds contribute 0 listening cycles from L2.
+  // L2 — pods fire every drafts.pods.roundInterval main rounds from
+  // activation onward. podRound counts actual fires, not player rounds,
+  // so the stage clock and active-count grow at the cadence of fires
+  // (not session rounds). Non-firing rounds contribute 0 listening
+  // cycles from L2.
   const activation = drafts.listening?.podActivationRound ?? 6
-  const interval = Math.max(1, Math.floor(drafts.listening?.podRoundInterval ?? 1))
+  const interval = Math.max(1, Math.floor(drafts.pods?.roundInterval ?? 1))
   const totalPodSentences = coursePodSentences.value.length
   const offset = R - activation
   const podFiresThisRound = drafts.pods && totalPodSentences > 0 && R >= activation && offset % interval === 0
@@ -760,8 +761,8 @@ function reset(key) {
   rowErrors[key] = null
   // Mirror the load-time defaults backfill — keeps NumFields bound to
   // defined values after a reset on rows saved before the field existed.
-  if (key === 'listening' && drafts.listening && drafts.listening.podRoundInterval == null) {
-    drafts.listening.podRoundInterval = 1
+  if (key === 'pods' && drafts.pods && drafts.pods.roundInterval == null) {
+    drafts.pods.roundInterval = 1
   }
 }
 
@@ -910,8 +911,8 @@ async function loadAll() {
     // Backfill defaults for fields added after the row was last saved —
     // keeps NumFields bound to defined values, and the first save writes
     // the field into the DB row going forward.
-    if (drafts.listening && drafts.listening.podRoundInterval == null) {
-      drafts.listening.podRoundInterval = 1
+    if (drafts.pods && drafts.pods.roundInterval == null) {
+      drafts.pods.roundInterval = 1
     }
   } catch (e) {
     loadError.value = e.message || String(e)
