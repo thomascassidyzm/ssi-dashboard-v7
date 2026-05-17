@@ -69,15 +69,22 @@ COMMENT ON FUNCTION bump_course_version() IS
 DROP TRIGGER IF EXISTS course_legos_bump_course_version ON course_legos;
 
 -- One trigger covers INSERT, DELETE, and the column-scoped UPDATE.
--- WHEN clause restricts UPDATE firings to columns that materially affect the
--- round-map or the decomposition vocabulary. INSERT and DELETE always fire.
+-- The `UPDATE OF ...` clause restricts UPDATE firings to columns that
+-- materially affect the round-map or decomposition vocabulary. INSERT and
+-- DELETE always fire regardless of columns.
+--
+-- The WHEN clause then short-circuits no-op UPDATEs (where target_text etc.
+-- got SET to the same value). For INSERT, OLD is NULL — so
+-- `NEW.x IS DISTINCT FROM OLD.x` is TRUE for any non-NULL NEW.x → fires.
+-- For DELETE, NEW is NULL — same logic in reverse → fires.
+-- TG_OP is not available in trigger WHEN clauses (it's PL/pgSQL-only),
+-- so we rely on NULL semantics to cover INSERT/DELETE cleanly.
 CREATE TRIGGER course_legos_bump_course_version
 AFTER INSERT OR DELETE OR UPDATE OF target_text, known_text, seed_number, lego_index, components
 ON course_legos
 FOR EACH ROW
 WHEN (
-  TG_OP <> 'UPDATE'
-  OR NEW.target_text   IS DISTINCT FROM OLD.target_text
+  NEW.target_text   IS DISTINCT FROM OLD.target_text
   OR NEW.known_text    IS DISTINCT FROM OLD.known_text
   OR NEW.seed_number   IS DISTINCT FROM OLD.seed_number
   OR NEW.lego_index    IS DISTINCT FROM OLD.lego_index
