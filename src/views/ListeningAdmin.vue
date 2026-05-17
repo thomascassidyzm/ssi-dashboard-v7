@@ -109,6 +109,8 @@
           <NumField v-model="drafts.listening.l1ReserveInterval" label="Reserve fires every" suffix="rounds" />
           <NumField v-model="drafts.listening.podActivationRound" label="Pod activation default" suffix="rounds"
             help="First main-round at which Layer 2 pods fire (per-learner pin still wins)." />
+          <NumField v-model="drafts.listening.podRoundInterval" label="Pod fires every" suffix="rounds"
+            help="1 = every round (default). 2 = every other round, 3 = every third, etc. Stretches every pod stage proportionally — pod-rounds only tick on actual fires." />
         </div>
 
         <!-- Live preview: what would Layer 1 play right now? -->
@@ -612,11 +614,17 @@ const cycleStats = computed(() => {
     listening += reserveWindow.value.length * eternalLen
   }
 
-  // L2 — pods fire every round from activation onward.
+  // L2 — pods fire every podRoundInterval main rounds from activation
+  // onward. podRound counts actual fires, not player rounds, so the stage
+  // clock and active-count grow at the cadence of fires (not session
+  // rounds). Non-firing rounds contribute 0 listening cycles from L2.
   const activation = drafts.listening?.podActivationRound ?? 6
+  const interval = Math.max(1, Math.floor(drafts.listening?.podRoundInterval ?? 1))
   const totalPodSentences = coursePodSentences.value.length
-  if (drafts.pods && totalPodSentences > 0 && R >= activation) {
-    const podRound = R - activation + 1
+  const offset = R - activation
+  const podFiresThisRound = drafts.pods && totalPodSentences > 0 && R >= activation && offset % interval === 0
+  if (podFiresThisRound) {
+    const podRound = Math.floor(offset / interval) + 1
     const activeCount = Math.min(podRound, totalPodSentences)
     const stageDuration = drafts.pods.stageDuration ?? 5
     const totalStages = podsStageKeys.value.length || 1
@@ -750,6 +758,11 @@ function reset(key) {
   if (!rowMap.value[key]) return
   drafts[key] = deepClone(rowMap.value[key].config)
   rowErrors[key] = null
+  // Mirror the load-time defaults backfill — keeps NumFields bound to
+  // defined values after a reset on rows saved before the field existed.
+  if (key === 'listening' && drafts.listening && drafts.listening.podRoundInterval == null) {
+    drafts.listening.podRoundInterval = 1
+  }
 }
 
 async function save(key) {
@@ -893,6 +906,12 @@ async function loadAll() {
     for (const r of rows.value) {
       drafts[r.key] = deepClone(r.config)
       rowErrors[r.key] = null
+    }
+    // Backfill defaults for fields added after the row was last saved —
+    // keeps NumFields bound to defined values, and the first save writes
+    // the field into the DB row going forward.
+    if (drafts.listening && drafts.listening.podRoundInterval == null) {
+      drafts.listening.podRoundInterval = 1
     }
   } catch (e) {
     loadError.value = e.message || String(e)
