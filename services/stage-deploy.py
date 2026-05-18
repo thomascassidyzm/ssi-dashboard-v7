@@ -7,6 +7,7 @@ Mirrors the prompts in ~/course-tool/commands/deploy.rb on apidev:
   - "Run checks? (Y/N)"                       -> "y" (or "n" with --skip-checks)
   - "Delete progress entries... (Y/N)"        -> per --delete-progress flag
   - "Show deletion set? (Y/N)"                -> "n" (would drop into a pager)
+  - "Delete N records? (Y/N)"                 -> per --delete-progress flag
   - "Deploy course? (Y/N)"                    -> "y"
 
 --skip-checks is for the post-failure retry path: if a deploy passed all
@@ -108,20 +109,31 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
     child.delaybeforesend = 0.1
 
     # Patterns the deploy script can emit. Order doesn't matter — pexpect.expect
-    # returns the index of whichever pattern matches first.
+    # returns the *earliest* match in the buffer (not the first pattern in the
+    # list).
+    #
+    # Each Y/N prompt is anchored with [^\n]* so the lazy match can't cross
+    # newlines and accidentally span a stale validator-retry prompt into the
+    # following one. Earlier this hit us: the buffer would still hold a
+    # rejected "Delete progress entries... (Y/N)" line when we re-entered
+    # expect(), the lazy `.*?` would extend across newlines to the *next*
+    # Y/N prompt downstream (e.g. "Show deletion set? (Y/N)"), and we'd
+    # queue an extra "y" send that arrived at the wrong prompt.
     patterns = [
         r"Existing file is identical to new file\.",            # 0
         r"does not yet exist\.",                                # 1
-        r"Files differ\.\s+Show differences\?\s+\(Y/N\)",       # 2
-        r"Run checks\?\s+\(Y/N\)",                              # 3
+        r"Files differ\.\s+Show differences\?[^\n]*\(Y/N\)",    # 2
+        r"Run checks\?[^\n]*\(Y/N\)",                           # 3
         r"All checks passed\.",                                 # 4
-        r"Delete progress entries.*?\(Y/N\)",                   # 5
-        r"Show deletion set\?\s+\(Y/N\)",                       # 6
-        r"Deploy course\?\s+\(Y/N\)",                           # 7
-        r"Copying .* to .* bucket\.\.\.",                       # 8
-        r"Done\.\r?\n",                                         # 9
-        r"Failed\.\r?\n",                                       # 10
-        pexpect.EOF,                                            # 11
+        r"Delete progress entries[^\n]*\(Y/N\)",                # 5
+        r"Show deletion set\?[^\n]*\(Y/N\)",                    # 6
+        r"Delete \d+ records\?[^\n]*\(Y/N\)",                   # 7
+        r"Deploy course\?[^\n]*\(Y/N\)",                        # 8
+        r"Copying [^\n]* to [^\n]* bucket\.\.\.",               # 9
+        r"Done\.\r?\n",                                         # 10
+        r"Failed\.\r?\n",                                       # 11
+        r"Please enter \"yes\" or \"no\"\.",                    # 12 — validator
+        pexpect.EOF,                                            # 13
     ]
 
     saw_done = False
@@ -151,17 +163,27 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
                 # less-style pager that pexpect can't escape.
                 child.sendline("n")
             elif idx == 7:
-                child.sendline("y")
+                # "Delete N records?" — yes; this is the actual destructive
+                # delete after Show deletion set is declined.
+                child.sendline("y" if delete_progress else "n")
             elif idx == 8:
+                child.sendline("y")
+            elif idx == 9:
                 saw_deployed = True
                 emit("deployed")
-            elif idx == 9:
+            elif idx == 10:
                 saw_done = True
                 emit("done")
-            elif idx == 10:
+            elif idx == 11:
                 saw_failed = True
                 emit("failed")
-            elif idx == 11:  # EOF
+            elif idx == 12:
+                # HighLine validator complained about our last answer. Don't
+                # resend here — the next prompt is matched separately. Just
+                # consume the rejection so it doesn't sit in the buffer and
+                # confuse later lazy matches.
+                pass
+            elif idx == 13:  # EOF
                 break
     except pexpect.exceptions.TIMEOUT:
         emit("failed", reason="timeout")
