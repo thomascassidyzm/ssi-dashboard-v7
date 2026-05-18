@@ -6,6 +6,7 @@ Mirrors the prompts in ~/course-tool/commands/deploy.rb on apidev:
   - "Files differ.  Show differences? (Y/N)"  -> "n"
   - "Run checks? (Y/N)"                       -> "y" (or "n" with --skip-checks)
   - "Delete progress entries... (Y/N)"        -> per --delete-progress flag
+  - "Show deletion set? (Y/N)"                -> "n" (would drop into a pager)
   - "Deploy course? (Y/N)"                    -> "y"
 
 --skip-checks is for the post-failure retry path: if a deploy passed all
@@ -98,12 +99,13 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
 
     child = pexpect.spawn("bash", ["-lc", cmd], encoding="utf-8",
                           timeout=EXPECT_TIMEOUT_SECONDS)
-    child.logfile_read = sys.stdout
-    # HighLine's Y/N validator is strict (regex /\A(?:y(?:es)?|no?)\Z/i). A
-    # too-fast sendline right after the prompt has occasionally tripped a
-    # "Please enter yes or no" retry. 0.1s buffer + full words makes the
-    # answer stable regardless of CR/LF handling.
-    child.delaybeforesend = 0.1  # mirror everything to our stdout
+    child.logfile_read = sys.stdout  # mirror everything to our stdout
+    # HighLine's Y/N validator (/\A(?:y(?:es)?|no?)\Z/i) accepts "y"/"yes"/
+    # "n"/"no". Empirically the multi-char form gets split across the PTY on
+    # some sessions — HighLine then sees the partial bytes as separate input
+    # lines and rejects each ("Please enter yes or no"). Single-char answers
+    # + 0.1s buffer is the stable combo.
+    child.delaybeforesend = 0.1
 
     # Patterns the deploy script can emit. Order doesn't matter — pexpect.expect
     # returns the index of whichever pattern matches first.
@@ -114,11 +116,12 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
         r"Run checks\?\s+\(Y/N\)",                              # 3
         r"All checks passed\.",                                 # 4
         r"Delete progress entries.*?\(Y/N\)",                   # 5
-        r"Deploy course\?\s+\(Y/N\)",                           # 6
-        r"Copying .* to .* bucket\.\.\.",                       # 7
-        r"Done\.\r?\n",                                         # 8
-        r"Failed\.\r?\n",                                       # 9
-        pexpect.EOF,                                            # 10
+        r"Show deletion set\?\s+\(Y/N\)",                       # 6
+        r"Deploy course\?\s+\(Y/N\)",                           # 7
+        r"Copying .* to .* bucket\.\.\.",                       # 8
+        r"Done\.\r?\n",                                         # 9
+        r"Failed\.\r?\n",                                       # 10
+        pexpect.EOF,                                            # 11
     ]
 
     saw_done = False
@@ -136,25 +139,29 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
             elif idx == 1:
                 emit("newCourse", courseConfigsId=course_configs_id)
             elif idx == 2:
-                child.sendline("no")
+                child.sendline("n")
             elif idx == 3:
-                child.sendline("no" if skip_checks else "yes")
+                child.sendline("n" if skip_checks else "y")
             elif idx == 4:
                 emit("checksPassed")
             elif idx == 5:
-                child.sendline("yes" if delete_progress else "no")
+                child.sendline("y" if delete_progress else "n")
             elif idx == 6:
-                child.sendline("yes")
+                # "Show deletion set?" — never; answering "y" drops into a
+                # less-style pager that pexpect can't escape.
+                child.sendline("n")
             elif idx == 7:
+                child.sendline("y")
+            elif idx == 8:
                 saw_deployed = True
                 emit("deployed")
-            elif idx == 8:
+            elif idx == 9:
                 saw_done = True
                 emit("done")
-            elif idx == 9:
+            elif idx == 10:
                 saw_failed = True
                 emit("failed")
-            elif idx == 10:  # EOF
+            elif idx == 11:  # EOF
                 break
     except pexpect.exceptions.TIMEOUT:
         emit("failed", reason="timeout")
