@@ -7842,9 +7842,12 @@ app.post('/api/production/:courseCode/stage-restart/cancel', async (req, res) =>
 // POST /api/production/:courseCode/verify-s3
 // Step 2: Verify stage audio exists and durations match manifest
 app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
+  const { courseCode } = req.params
+  // Hoisted so the catch block can reach it (otherwise a ReferenceError in catch
+  // swallows the original error and the HTTP response never lands — surfaces in
+  // the browser as a CORS error because no headers ever get sent).
+  let abortController = null
   try {
-    const { courseCode } = req.params
-
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
@@ -7862,7 +7865,7 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     }
 
     // Mark verification as running with abort controller
-    const abortController = new AbortController()
+    abortController = new AbortController()
     runningVerifications.set(courseCode, { startedAt: Date.now(), abortController })
 
     // Load manifest from temp/course_export_states
@@ -8085,14 +8088,15 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     }
 
   } catch (error) {
-    if (abortController.signal.aborted) {
+    runningVerifications.delete(courseCode)
+    if (abortController?.signal?.aborted) {
       logger.info(`[VERIFY-S3] Cancelled for ${courseCode}`)
-      runningVerifications.delete(courseCode)
       return res.json({ cancelled: true, message: 'Verification cancelled' })
     }
     logger.error(`Verify S3 error for ${courseCode}:`, error)
-    runningVerifications.delete(courseCode)
-    res.status(500).json({ error: error.message })
+    if (!res.headersSent) {
+      res.status(500).json({ error: error.message })
+    }
   }
 })
 
