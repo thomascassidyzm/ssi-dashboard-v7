@@ -51,6 +51,13 @@ COURSES_DIR = os.environ.get(
 )
 COURSE_TOOL_DIR = os.environ.get("COURSE_TOOL_DIR", "/home/ssi/course-tool")
 
+# Wall-clock budget for each pexpect.expect() call. A real ./check pass takes
+# ~40 min (the "Run checks?" phase is the slow one — checks, not the file
+# copy). Longer courses may push to ~1.5h, so 2h is the floor; env-overridable
+# for outliers. Without this, child.expect() inherits timeout=None and a hung
+# remote prompt sits until TCP keepalive reaps it.
+EXPECT_TIMEOUT_SECONDS = int(os.environ.get("STAGE_DEPLOY_TIMEOUT_SECONDS", "7200"))
+
 
 def emit(event: str, **payload) -> None:
     """Write a structured marker line to stderr so it stays separate from the
@@ -86,9 +93,11 @@ def build_command(course_configs_id: str) -> str:
 
 def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int:
     cmd = build_command(course_configs_id)
-    emit("start", cmd=cmd, deleteProgress=delete_progress, skipChecks=skip_checks)
+    emit("start", cmd=cmd, deleteProgress=delete_progress, skipChecks=skip_checks,
+         timeoutSeconds=EXPECT_TIMEOUT_SECONDS)
 
-    child = pexpect.spawn("bash", ["-lc", cmd], encoding="utf-8", timeout=None)
+    child = pexpect.spawn("bash", ["-lc", cmd], encoding="utf-8",
+                          timeout=EXPECT_TIMEOUT_SECONDS)
     child.logfile_read = sys.stdout
     # HighLine's Y/N validator is strict (regex /\A(?:y(?:es)?|no?)\Z/i). A
     # too-fast sendline right after the prompt has occasionally tripped a

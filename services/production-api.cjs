@@ -2294,10 +2294,12 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
     // Generate combined presentations with progress callback
     const job = legacyAudioJobs.get(jobId)
 
-    // LEGACY_TTS_CONCURRENCY env var lets you tune higher for big batches.
-    // 8 is a safe default: Azure allows ~20 concurrent on standard tiers and
-    // ElevenLabs varies by plan (2 on free, more on paid). Bump cautiously.
-    const legacyConcurrency = parseInt(process.env.LEGACY_TTS_CONCURRENCY, 10) || 8
+    // Controls parallel ffmpeg-concat workers in generateCombinedPresentations.
+    // The actual TTS already happened in Phase 8 — this stage just downloads
+    // existing mastered audio from S3 and stitches narration + target1 + 1s
+    // pause + target2 into a combined-presentation MP3 locally. No external
+    // API rate-limit concern; bottleneck is local CPU + S3 bandwidth.
+    const legacyConcurrency = parseInt(process.env.LEGACY_COMBINE_CONCURRENCY, 10) || 8
     await generateCombinedPresentations(
       courseCode,
       introItems,
@@ -7712,12 +7714,16 @@ app.post('/api/production/:courseCode/stage-restart', async (req, res) => {
 
     const { spawn: spawnProc } = require('child_process')
     const cat = spawnProc('cat', [scriptPath])
+    // jobId doubles as a sentinel in the remote argv list. stage-restart.py
+    // ignores extra argv, but the token shows up in `ps` so the cancel
+    // handler's pkill can scope to THIS restart only — not a concurrent
+    // stage-deploy.py also piped through `python3 -`.
     const ssh = spawnProc('ssh', [
       '-o', 'BatchMode=yes',
       '-o', 'ServerAliveInterval=15',
       '-o', 'ServerAliveCountMax=4',
       'ssi@apidev',
-      'python3 -'
+      `python3 - ${jobId}`
     ])
     cat.stdout.pipe(ssh.stdin)
     cat.on('error', (err) => logger.error(`[StageRestart] cat error: ${err.message}`))
@@ -7813,12 +7819,14 @@ app.post('/api/production/:courseCode/stage-restart/cancel', async (req, res) =>
     try { job.sshProc.kill('SIGTERM') } catch (e) {
       logger.warn(`[StageRestart] SIGTERM ssh failed: ${e.message}`)
     }
-    // Defensive remote cleanup
+    // Defensive remote cleanup — scoped to THIS job's jobId sentinel so a
+    // concurrent stage-deploy.py (also piped through `python3 -`) isn't
+    // collateral damage.
     const { spawn: spawnProc } = require('child_process')
     const pkill = spawnProc('ssh', [
       '-o', 'BatchMode=yes',
       'ssi@apidev',
-      'pkill -TERM -f "python3 -" || true'
+      `pkill -TERM -f "python3 -.*${job.jobId}" || true`
     ])
     pkill.on('error', () => {})
     pkill.unref()
