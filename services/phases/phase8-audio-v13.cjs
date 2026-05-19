@@ -4295,21 +4295,22 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 })
 
 // =============================================================================
-// START SERVER
+// START SERVER (only when run directly, not when require()d)
 // =============================================================================
+// Gated on require.main so other tools (e.g. the pod-explainer overnight
+// runner) can require this file purely for its named helpers — masterAudio,
+// generatePodAudio etc. — without triggering EADDRINUSE on PORT 3465.
 
-app.listen(PORT, () => {
-  logger.info(`Phase 8 Audio Service (v13) running on port ${PORT}`)
-  logger.info(`Supabase: ${process.env.SUPABASE_URL ? 'configured' : 'NOT configured'}`)
-  logger.info(`S3 Bucket: ${S3_BUCKET}`)
-})
+if (require.main === module) {
+  app.listen(PORT, () => {
+    logger.info(`Phase 8 Audio Service (v13) running on port ${PORT}`)
+    logger.info(`Supabase: ${process.env.SUPABASE_URL ? 'configured' : 'NOT configured'}`)
+    logger.info(`S3 Bucket: ${S3_BUCKET}`)
+  })
+}
 
 module.exports = app
-// Named exports for reuse from other audio-generation paths (e.g. the
-// pod-explainer overnight runner). Don't import this file just for these —
-// it pulls in the whole phase8 server graph. But once it's loaded for the
-// Express side, exposing the helpers avoids duplicating ~80 lines of
-// mastering + S3 + course_audio upsert logic.
+// Named exports for reuse from other audio-generation paths.
 module.exports.masterAudio = masterAudio
 module.exports.findExistingAudio = findExistingAudio
 module.exports.generatePodAudio = generatePodAudio

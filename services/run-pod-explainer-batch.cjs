@@ -33,14 +33,103 @@ const podExplainer = require('./pod-explainer-generator.cjs')
 // CONFIG
 // =============================================================================
 
-const EXPLAINER_VOICE_ID = 'gfzdpspr5fdp' // Tom's branded English voice on xAI
+// Default: Tom's branded clone. Override via VOICE_ID env or --voice flag —
+// useful for testing whether stubborn xAI ECONNRESETs are voice-endpoint-specific
+// (e.g. retry the same failed sentence with public 'leo' / 'rex' to compare).
+const EXPLAINER_VOICE_ID = process.env.VOICE_ID || 'gfzdpspr5fdp'
 const EXPLAINER_LANGUAGE = 'auto'         // xAI multilingual handles code-switching
-const EXPLAINER_ROLE = 'pod_explainer'    // distinct from target/known/presentation
+// IMPORTANT: must be 'pod_explainer'. Using role='presentation' here makes
+// these rows indistinguishable from course-intro presentation audio, and the
+// /regenerate-presentations endpoint in phase8-audio-v13.cjs deletes any
+// role='presentation' row with NULL lego_id whose text doesn't match a current
+// LEGO presentation — which is exactly what these are. The Italian + Chinese
+// explainer audio from the first batch run got wiped by that path. Migration
+// 20260519_course_audio_pod_explainer_role.sql adds 'pod_explainer' to the
+// allow-list; the orphan cleanup is scoped to role='presentation' so the new
+// role is immune.
+const EXPLAINER_ROLE = 'pod_explainer'
 const EXPLAINER_PROVIDER = 'xai'
 
 const TEXT_BATCH_SIZE = 12
 const TEXT_PARALLEL = 4
-const AUDIO_PARALLEL = 4
+// Parallel-4 is the sweet spot for healthy xAI endpoint: full 537-clip V6 regen
+// on 2026-05-19 hit 0 failures in 277s. Earlier in the same day we saw ECONNRESETs
+// at parallel-2 — turned out to be an xAI infrastructure spell, not a load issue,
+// since serial passes during that window also failed. Override via env when the
+// endpoint is acting up (AUDIO_PARALLEL=1 fully serialises for mop-up).
+const AUDIO_PARALLEL = Number(process.env.AUDIO_PARALLEL) > 0
+  ? Math.floor(Number(process.env.AUDIO_PARALLEL))
+  : 4
+
+// Default: only touch the canonical pod-0 (the shipped pod for every course).
+// Other pod ids (e.g. spa_for_eng:music, spa_for_eng:travel-situations) are
+// drafts in the table and shouldn't get explainers generated until they're
+// real shipping content. Override via --all-pods.
+const TARGET_POD_SUFFIX = 'pod-0'
+
+// =============================================================================
+// SSML voice-lang wrapping (V6)
+// =============================================================================
+//
+// xAI's auto-detect garbles short Latin-script target tokens — Italian
+// "come stai" reads as English "come" + "stay" — and the explainer needs
+// the target chunks to be IDENTIFIABLE to the learner. Wrapping each target
+// chunk in <voice xml:lang="..."> forces xAI to switch language for that
+// span, producing audibly correct target pronunciation while the English
+// "means …" connector stays in the clone voice's natural English.
+//
+// Tested 2026-05-19 across ita/fra/por/spa/zho: Tom rated V6 "FANTASTIC".
+// Stored prose (explainer_text) stays clean for dashboard display — the
+// markup is rebuilt at TTS time from explainer_decomposition.
+
+// Map course code (e.g. ita_for_eng) → BCP-47 tag for the <voice xml:lang>
+// wrapper. xAI accepts the BCP-47 form for its multilingual code-switching.
+const COURSE_TO_BCP47 = {
+  ita_for_eng: 'it',
+  fra_for_eng: 'fr',
+  por_for_eng: 'pt',
+  por_br_for_eng: 'pt-BR',
+  spa_for_eng: 'es',
+  spa_mx_for_eng: 'es-MX',
+  zho_for_eng: 'zh',
+  deu_for_eng: 'de',
+  nld_for_eng: 'nl',
+  pol_for_eng: 'pl',
+  tur_for_eng: 'tr',
+  rus_for_eng: 'ru',
+  jpn_for_eng: 'ja',
+  kor_for_eng: 'ko',
+  hin_for_eng: 'hi',
+  ara_for_eng: 'ar',
+  fra_ca_for_eng: 'fr-CA',
+  hrv_for_eng: 'hr',
+}
+
+function targetBcp47(courseCode) {
+  if (COURSE_TO_BCP47[courseCode]) return COURSE_TO_BCP47[courseCode]
+  // Fallback: take first 2 chars of the target language half. Works for most
+  // ISO-639-3 → ISO-639-1 short codes but won't be perfect — log so we notice.
+  const target = String(courseCode).split('_for_')[0]
+  log(`[${courseCode}] WARN: no BCP-47 mapping, falling back to "${target.slice(0, 2)}"`)
+  return target.slice(0, 2)
+}
+
+function buildExplainerSsml(decomposition, bcp47) {
+  // Wrap each target chunk in <voice xml:lang="..."> so xAI pronounces it
+  // in the target language. Connector "means" + known meaning stay outside
+  // the wrapper so they read in the clone voice's English.
+  // Returns null if decomposition is empty/malformed — caller falls back
+  // to plain explainer_text.
+  if (!Array.isArray(decomposition) || decomposition.length === 0) return null
+  const parts = []
+  for (const chunk of decomposition) {
+    if (!chunk || typeof chunk.chunk_target !== 'string' || typeof chunk.chunk_known !== 'string') {
+      return null
+    }
+    parts.push(`<voice xml:lang="${bcp47}">${chunk.chunk_target}</voice> means ${chunk.chunk_known}`)
+  }
+  return parts.join(', ')
+}
 
 // =============================================================================
 // ARGV
@@ -49,12 +138,19 @@ const AUDIO_PARALLEL = 4
 const argv = process.argv.slice(2)
 let runText = true
 let runAudio = true
+let allPods = false
 const courses = []
 for (const a of argv) {
   if (a === '--no-audio') { runAudio = false; continue }
   if (a === '--no-text') { runText = false; continue }
+  if (a === '--all-pods') { allPods = true; continue }
   if (a.startsWith('-')) { console.error('Unknown flag:', a); process.exit(1) }
   courses.push(a)
+}
+function podFilter(courseCode) {
+  // Returns the pod_id pattern to filter listening_pod_sentences by.
+  // Default targets only the canonical pod-0; --all-pods opens it up.
+  return allPods ? `${courseCode}:%` : `${courseCode}:${TARGET_POD_SUFFIX}`
 }
 if (courses.length === 0) {
   console.error('Usage: node services/run-pod-explainer-batch.cjs <course_code> [<course_code> ...] [--no-audio] [--no-text]')
@@ -104,12 +200,12 @@ async function runTextPass(courseCode) {
     return { updated: 0, failed: 0, skipped: true }
   }
 
-  // Pull all in-scope candidates for this course.
-  const { data: rows, error } = await supabase
-    .from('listening_pod_sentences')
-    .select('id, target_text, known_text')
-    .like('pod_id', `${courseCode}:%`)
-    .is('explainer_text', null)
+  // Pull all in-scope candidates for this course (canonical pod only by default).
+  const podPattern = podFilter(courseCode)
+  const podQuery = allPods
+    ? supabase.from('listening_pod_sentences').select('id, target_text, known_text').like('pod_id', podPattern)
+    : supabase.from('listening_pod_sentences').select('id, target_text, known_text').eq('pod_id', podPattern)
+  const { data: rows, error } = await podQuery.is('explainer_text', null)
   if (error) throw new Error(`load candidates: ${error.message}`)
 
   const valid = (rows || []).filter(r => r.target_text && r.known_text)
@@ -170,11 +266,14 @@ async function runAudioPass(courseCode) {
   log(`[${courseCode}] audio: scanning rows ready for TTS...`)
   // Pull sentences where explainer_text is non-empty AND explainer_audio_id is NULL.
   // Empty explainer_text rows are intentional skips (one-chunk sentences) and
-  // shouldn't generate audio.
-  const { data: rows, error } = await supabase
-    .from('listening_pod_sentences')
-    .select('id, explainer_text, explainer_audio_id')
-    .like('pod_id', `${courseCode}:%`)
+  // shouldn't generate audio. explainer_decomposition is the structured form
+  // we use to build SSML <voice xml:lang> wrappers per target chunk.
+  const podPattern = podFilter(courseCode)
+  const COLS = 'id, explainer_text, explainer_decomposition, explainer_audio_id'
+  const baseQuery = allPods
+    ? supabase.from('listening_pod_sentences').select(COLS).like('pod_id', podPattern)
+    : supabase.from('listening_pod_sentences').select(COLS).eq('pod_id', podPattern)
+  const { data: rows, error } = await baseQuery
     .not('explainer_text', 'is', null)
     .neq('explainer_text', '')
     .is('explainer_audio_id', null)
@@ -183,6 +282,7 @@ async function runAudioPass(courseCode) {
   log(`[${courseCode}] audio: ${(rows || []).length} sentences to render`)
   if (!rows || rows.length === 0) return { rendered: 0, reused: 0, failed: 0 }
 
+  const bcp47 = targetBcp47(courseCode)
   const { generatePodAudio } = getPhase8()
   let rendered = 0
   let reused = 0
@@ -196,9 +296,14 @@ async function runAudioPass(courseCode) {
     const wave = rows.slice(i, i + AUDIO_PARALLEL)
     await Promise.all(wave.map(async row => {
       try {
+        // Prefer the SSML form built from the structured decomposition; if
+        // that's missing/malformed (legacy rows before the explainer columns
+        // landed) fall back to the flat explainer_text so we still render.
+        const ssml = buildExplainerSsml(row.explainer_decomposition, bcp47)
+        const ttsText = ssml || row.explainer_text
         const result = await generatePodAudio({
           courseCode,
-          text: row.explainer_text,
+          text: ttsText,
           language: EXPLAINER_LANGUAGE,
           role: EXPLAINER_ROLE,
           voice: {
