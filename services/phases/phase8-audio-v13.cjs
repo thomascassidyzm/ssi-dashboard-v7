@@ -608,6 +608,36 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     .eq('course_code', courseCode)
     .like('s3_key', 'pending/%')
 
+  // Auto-fix: normalize voice_id to "${provider}_${voiceId}" form so the
+  // upsert conflict key matches what /generate will write. Historically some
+  // writers (phrase-edit reconcile, older regenerate-presentations) stored
+  // voice_id without the provider prefix or as NULL; those pending rows then
+  // failed to match /generate's upsert (which writes with prefix) and stuck
+  // forever — a duplicate mastered row appeared and the pending stayed.
+  // Fixing voice_id here means the existing upsert path can correctly update
+  // the pending row in-place during this run.
+  const voicesByRole = (course?.voice_config?.voices) || {}
+  const fixVoiceId = (role) => {
+    const v = voicesByRole[role]
+    if (!v) return null
+    if (v.provider && v.voiceId) return `${v.provider}_${v.voiceId}`
+    return v.voiceId || null
+  }
+  const fixesNeeded = []
+  for (const pres of (pendingRows || [])) {
+    const expected = fixVoiceId(pres.role)
+    if (expected && pres.voice_id !== expected) {
+      fixesNeeded.push({ id: pres.id, expected, was: pres.voice_id })
+      pres.voice_id = expected
+    }
+  }
+  if (fixesNeeded.length > 0) {
+    logger.warn(`getAudioNeeds(${courseCode}): normalizing voice_id on ${fixesNeeded.length} pending rows (e.g. "${fixesNeeded[0].was}" → "${fixesNeeded[0].expected}")`)
+    for (const f of fixesNeeded) {
+      await supabase.from('course_audio').update({ voice_id: f.expected }).eq('id', f.id)
+    }
+  }
+
   for (const pres of (pendingRows || [])) {
     if (isPunctuationOnly(pres.text)) {
       ungeneratable++
@@ -2569,9 +2599,19 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       })
     }
 
-    // Bulk upsert presentation text to course_audio
+    // Bulk upsert presentation text to course_audio.
+    // IMPORTANT: voice_id MUST include the provider prefix (e.g.
+    // "azure_en-GB-SoniaNeural"), because /generate's upsert key includes
+    // voice_id and resolves it via `${provider}_${voiceId}`. Storing
+    // unprefixed here causes the conflict-key mismatch — /generate inserts
+    // a duplicate mastered row alongside the pending one, the pending
+    // never gets cleared, and the LEGO might still point at the pending
+    // row. See memory: voice-id-prefix-inconsistency.md.
     const voiceConfig = course.voice_config || {}
-    const presentationVoiceId = voiceConfig.voices?.presentation?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural'
+    const presV = voiceConfig.voices?.presentation
+    const presentationVoiceId = (presV && presV.provider && presV.voiceId)
+      ? `${presV.provider}_${presV.voiceId}`
+      : (presV?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural')
 
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)

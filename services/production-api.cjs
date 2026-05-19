@@ -6366,12 +6366,23 @@ async function reconcileAudioForRole(supabase, courseCode, phraseId, phrase, rol
   if (existing) {
     newAudioId = existing.id
   } else {
+    // Resolve voice_id WITH provider prefix — must match what /generate's
+    // upsert uses ("${provider}_${voiceId}"), otherwise the conflict key
+    // (course_code,text_normalized,language,role,voice_id) won't match the
+    // pending row and /generate will INSERT a duplicate mastered row,
+    // leaving this pending row stuck forever. See memory:
+    // voice-id-prefix-inconsistency.md.
+    const voices = course?.voice_config?.voices || {}
+    const v = voices[role]
+    const voiceId = (v && v.provider && v.voiceId)
+      ? `${v.provider}_${v.voiceId}`
+      : (v?.voiceId || null)
     const inserted = await supabaseClient.insertCourseAudio({
       courseCode,
       text: newText,
       language,
       role,
-      voiceId: null,
+      voiceId,
       origin: 'tts',
       s3Key: null
     })
