@@ -117,14 +117,22 @@ For EACH sentence below, produce two things:
    the target sentence left-to-right. Each chunk-pair has the target fragment
    and its known-language meaning. Chunks are meaningful semantic units
    (e.g. "come stai" stays together as one chunk meaning "how are you doing"),
-   NOT one-word-per-chunk. The concatenation of all chunk_target values must
-   equal the target sentence (modulo punctuation/whitespace).
+   NOT one-word-per-chunk.
 
 2. "explainer_text": a single narration string for TTS that says each chunk
    in the target language, connected with the connector phrase "${connector}",
    with the known meaning. Use natural punctuation.
 
-EXAMPLE for Italian-for-English (connector "means"):
+PROPER NOUNS — names of people, places, brands — are NOT translated and are
+NOT explained. Drop them from the decomposition entirely. "Giulia means
+Giulia" is noise; just skip the name. If a sentence is *only* a proper noun
+("Sarah!", "Buongiorno, Anna!" → after dropping the name only "buongiorno"
+remains), emit just the meaningful chunks. If the sentence has no
+meaningful chunks at all (e.g. it's literally just a name), return an
+empty decomposition array and an empty explainer_text — the row is fine
+without a Stage-1 explainer.
+
+EXAMPLE 1 — Italian-for-English with no proper nouns (connector "means"):
    Input target: "Buona sera, come stai?"
    Input known:  "Good afternoon, how are you doing?"
    Output entry:
@@ -136,6 +144,18 @@ EXAMPLE for Italian-for-English (connector "means"):
        { "chunk_target": "come stai", "chunk_known": "how are you doing" }
      ],
      "explainer_text": "buona means good, sera means afternoon, come stai means how are you doing"
+   }
+
+EXAMPLE 2 — sentence containing a proper noun (note: "Giulia" is dropped):
+   Input target: "Buongiorno, Giulia!"
+   Input known:  "Good morning, Giulia!"
+   Output entry:
+   {
+     "id": "<echo the input id>",
+     "decomposition": [
+       { "chunk_target": "buongiorno", "chunk_known": "good morning" }
+     ],
+     "explainer_text": "buongiorno means good morning"
    }
 
 INPUT (one sentence per line):
@@ -170,7 +190,7 @@ function parseBatchResponse(raw) {
   for (const entry of parsed) {
     if (!entry || typeof entry.id !== 'string') continue
     if (!Array.isArray(entry.decomposition)) continue
-    if (typeof entry.explainer_text !== 'string' || !entry.explainer_text.trim()) continue
+    if (typeof entry.explainer_text !== 'string') continue
     let bad = false
     for (const e of entry.decomposition) {
       if (
@@ -183,6 +203,10 @@ function parseBatchResponse(raw) {
       }
     }
     if (bad) continue
+    // Empty decomposition + empty explainer_text is a valid result for
+    // sentences that consist entirely of proper nouns (names, places).
+    // Stage-1 player skips the slot when explainer_audio_id is NULL, so
+    // an empty text means "no explainer needed for this sentence".
     byId.set(entry.id, {
       decomposition: entry.decomposition.map(e => ({
         chunk_target: e.chunk_target,

@@ -90,7 +90,14 @@
                 @click="generateExplainers(false)"
                 :disabled="explainerBusy || allExplained"
                 class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Generate explainer text for sentences that don't have one yet"
               >{{ explainerBusy ? 'Generating…' : 'Generate' }}</button>
+              <button
+                @click="generateExplainers(true)"
+                :disabled="explainerBusy || sentences.length === 0"
+                class="px-3 py-1.5 text-xs rounded bg-amber-700 hover:bg-amber-600 text-amber-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Re-run for ALL sentences in this pod, overwriting existing explainer text (use after a prompt change)"
+              >Regenerate all</button>
             </div>
           </div>
           <div v-if="explainerStatus" class="mt-3 text-xs text-slate-400">{{ explainerStatus }}</div>
@@ -346,15 +353,17 @@ async function authedFetch(path, init = {}) {
 }
 
 /**
- * Generate Stage-1 explainer text for every sentence in this pod that
- * doesn't yet have one. Polls the resumable backend endpoint until
- * `more_remaining: false`, reloading the pod between batches so the
- * inline display lights up live as rows are populated.
+ * Generate Stage-1 explainer text for every sentence in this pod.
+ *   force=false (Generate)      — picks up only sentences with NULL explainer_text.
+ *   force=true  (Regenerate all) — re-runs every sentence, overwriting existing
+ *                                  text. Used after a prompt change.
+ * Polls the resumable backend endpoint until more_remaining is false,
+ * reloading the pod between batches so the inline display lights up live.
  */
-async function generateExplainers(dryRun) {
+async function generateExplainers(force) {
   if (explainerBusy.value) return
   explainerBusy.value = true
-  explainerStatus.value = dryRun ? 'Dry-run starting…' : 'Generating explainers…'
+  explainerStatus.value = force ? 'Regenerating all sentences…' : 'Generating explainers…'
   explainerError.value = ''
   let totalUpdated = 0
   let totalFailed = 0
@@ -365,16 +374,16 @@ async function generateExplainers(dryRun) {
     for (let pass = 0; pass < 50; pass++) {
       const res = await authedFetch('/api/admin/pod-explainer-generate', {
         method: 'POST',
-        body: JSON.stringify({ podId: pod.value?.id, dryRun, limit: 200 }),
+        body: JSON.stringify({ podId: pod.value?.id, force, limit: 200 }),
       })
       const body = await res.json()
       if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
       totalUpdated += body.updated || 0
       totalFailed += body.failed || 0
       explainerStatus.value =
-        `${dryRun ? 'Dry-run ' : ''}updated ${totalUpdated}, failed ${totalFailed}` +
+        `updated ${totalUpdated}, failed ${totalFailed}` +
         (body.more_remaining ? ' · more remaining, continuing…' : ' · done.')
-      if (!dryRun) await loadPod() // refresh the inline rows
+      await loadPod() // refresh the inline rows so progress is visible
       if (!body.more_remaining) break
     }
   } catch (err) {

@@ -10039,7 +10039,7 @@ const POD_EXPLAINER_BATCH_SIZE = 12
 const POD_EXPLAINER_PARALLEL = 4
 app.post('/api/admin/pod-explainer-generate', async (req, res) => {
   if (!await requireAdmin(req, res)) return
-  const { courseCode, podId, dryRun = false } = req.body || {}
+  const { courseCode, podId, dryRun = false, force = false } = req.body || {}
   const limitNum = Number(req.body?.limit)
   const limit = Number.isFinite(limitNum) && limitNum > 0 ? Math.floor(limitNum) : 1000
   const DEADLINE_MS = 60_000
@@ -10047,12 +10047,16 @@ app.post('/api/admin/pod-explainer-generate', async (req, res) => {
 
   try {
     const sb = supabaseClient.getClient()
-    // Build the candidate set: sentences missing explainer_text in scope.
+    // Build the candidate set. Default: sentences missing explainer_text in
+    // scope. With `force: true`, all in-scope sentences regardless of
+    // current explainer_text — used to re-run after a prompt change.
     let query = sb
       .from('listening_pod_sentences')
       .select('id, pod_id, target_text, known_text')
-      .is('explainer_text', null)
       .limit(limit)
+    if (!force) {
+      query = query.is('explainer_text', null)
+    }
     if (podId) {
       query = query.eq('pod_id', podId)
     } else if (courseCode) {
