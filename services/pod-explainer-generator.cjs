@@ -88,41 +88,48 @@ function shouldSkipCourse(courseCode) {
 // =============================================================================
 
 /**
- * Build the Haiku prompt to produce decomposition + narration for ONE sentence.
+ * Build the Haiku prompt to produce decomposition + narration for a BATCH
+ * of sentences. The CLI startup cost is ~2-15s per invocation regardless
+ * of payload size, so we amortise it by handling many sentences per call.
  *
- * Returns a prompt that asks the model to emit a strict JSON object:
- *   { "decomposition": [{"chunk_target","chunk_known"}, ...],
- *     "explainer_text": "..." }
+ * Returns a prompt that asks the model to emit a strict JSON array, one
+ * entry per input sentence, in the same order:
+ *   [
+ *     { "id": "<echo>", "decomposition": [...], "explainer_text": "..." },
+ *     ...
+ *   ]
  *
- * Chunks are LEGO-sized — a meaningful semantic unit, NOT one word per chunk
- * (compound concepts like "come stai" stay together). Keeps the methodology
- * consistent with the course-side phrase decomposition we already ship.
+ * Chunks are LEGO-sized — meaningful semantic units, NOT one word per
+ * chunk (compound concepts like "come stai" stay together). Keeps the
+ * methodology consistent with the course-side phrase decomposition.
  */
-function buildPrompt({ targetText, knownText, targetLang, learnerLang, connector }) {
-  return `You are decomposing a single sentence for a language-learning app.
+function buildBatchPrompt({ sentences, targetLang, learnerLang, connector }) {
+  const inputBlock = sentences
+    .map((s, i) => `${i + 1}. id=${JSON.stringify(s.id)}  target=${JSON.stringify(s.target_text)}  known=${JSON.stringify(s.known_text)}`)
+    .join('\n')
+  return `You are decomposing sentences for a language-learning app.
+Target language: ${targetLang}
+Learner language: ${learnerLang}
 
-TARGET sentence (${targetLang}): "${targetText}"
-KNOWN gloss (${learnerLang}):     "${knownText}"
+For EACH sentence below, produce two things:
 
-Produce TWO things as a strict JSON object:
+1. "decomposition": ordered array of LEGO-sized chunk-pairs walking through
+   the target sentence left-to-right. Each chunk-pair has the target fragment
+   and its known-language meaning. Chunks are meaningful semantic units
+   (e.g. "come stai" stays together as one chunk meaning "how are you doing"),
+   NOT one-word-per-chunk. The concatenation of all chunk_target values must
+   equal the target sentence (modulo punctuation/whitespace).
 
-1. "decomposition": an ordered array of LEGO-sized chunk-pairs that walk
-   through the target sentence left-to-right. Each chunk-pair contains
-   the target fragment and its known-language meaning. Chunks should be
-   meaningful semantic units (e.g. "come stai" stays together as one
-   chunk meaning "how are you doing"), NOT one-word-per-chunk. The
-   concatenation of all chunk_target values must equal the target
-   sentence (modulo punctuation/whitespace).
+2. "explainer_text": a single narration string for TTS that says each chunk
+   in the target language, connected with the connector phrase "${connector}",
+   with the known meaning. Use natural punctuation.
 
-2. "explainer_text": a single narration string for TTS that says each
-   chunk in the target language, connected with the connector phrase
-   "${connector}", with the known meaning. Use natural punctuation.
-
-EXAMPLE for Italian-for-English (connector: "means"):
-   Input target:  "Buona sera, come stai?"
-   Input known:   "Good afternoon, how are you doing?"
-   Output:
+EXAMPLE for Italian-for-English (connector "means"):
+   Input target: "Buona sera, come stai?"
+   Input known:  "Good afternoon, how are you doing?"
+   Output entry:
    {
+     "id": "<echo the input id>",
      "decomposition": [
        { "chunk_target": "buona", "chunk_known": "good" },
        { "chunk_target": "sera", "chunk_known": "afternoon" },
@@ -131,49 +138,60 @@ EXAMPLE for Italian-for-English (connector: "means"):
      "explainer_text": "buona means good, sera means afternoon, come stai means how are you doing"
    }
 
-Output ONLY the JSON object. No prose, no markdown, no code fences.`
+INPUT (one sentence per line):
+${inputBlock}
+
+OUTPUT FORMAT: a JSON array, one object per input sentence in the same
+order, each with "id" (echoed), "decomposition", "explainer_text". Output
+ONLY the JSON array. No prose, no markdown, no code fences.`
 }
 
 /**
- * Parse the model's response. Tolerant of accidental code fences / leading
- * whitespace; rejects responses that don't include both required fields.
+ * Parse the model's batch response into a Map of id → result. Tolerant of
+ * accidental code fences. Skips entries that are structurally broken — the
+ * caller treats those as failures and surfaces them per-row.
  */
-function parseModelResponse(raw) {
+function parseBatchResponse(raw) {
   if (!raw || typeof raw !== 'string') {
     throw new Error('Empty model response')
   }
-  // Strip code fences if the model added them despite instructions.
-  const m = raw.match(/\{[\s\S]*\}/)
-  if (!m) throw new Error('No JSON object found in model response')
+  const m = raw.match(/\[[\s\S]*\]/)
+  if (!m) throw new Error('No JSON array found in model response')
   let parsed
   try {
     parsed = JSON.parse(m[0])
   } catch (e) {
-    throw new Error(`Invalid JSON from model: ${e.message}`)
+    throw new Error(`Invalid JSON array from model: ${e.message}`)
   }
-  if (!Array.isArray(parsed.decomposition)) {
-    throw new Error('Missing or non-array `decomposition`')
+  if (!Array.isArray(parsed)) {
+    throw new Error('Model response is not an array')
   }
-  if (typeof parsed.explainer_text !== 'string' || !parsed.explainer_text.trim()) {
-    throw new Error('Missing or empty `explainer_text`')
-  }
-  // Shape-check each decomposition entry; tolerate extra keys.
-  for (const [i, entry] of parsed.decomposition.entries()) {
-    if (
-      !entry ||
-      typeof entry.chunk_target !== 'string' ||
-      typeof entry.chunk_known !== 'string'
-    ) {
-      throw new Error(`decomposition[${i}] missing chunk_target/chunk_known`)
+  const byId = new Map()
+  for (const entry of parsed) {
+    if (!entry || typeof entry.id !== 'string') continue
+    if (!Array.isArray(entry.decomposition)) continue
+    if (typeof entry.explainer_text !== 'string' || !entry.explainer_text.trim()) continue
+    let bad = false
+    for (const e of entry.decomposition) {
+      if (
+        !e ||
+        typeof e.chunk_target !== 'string' ||
+        typeof e.chunk_known !== 'string'
+      ) {
+        bad = true
+        break
+      }
     }
+    if (bad) continue
+    byId.set(entry.id, {
+      decomposition: entry.decomposition.map(e => ({
+        chunk_target: e.chunk_target,
+        chunk_known: e.chunk_known,
+      })),
+      explainer_text: entry.explainer_text.trim(),
+    })
   }
-  return {
-    decomposition: parsed.decomposition.map(e => ({
-      chunk_target: e.chunk_target,
-      chunk_known: e.chunk_known,
-    })),
-    explainer_text: parsed.explainer_text.trim(),
-  }
+  return byId
 }
 
 // =============================================================================
@@ -181,29 +199,38 @@ function parseModelResponse(raw) {
 // =============================================================================
 
 /**
- * Generate explainer payload for one sentence row.
+ * Generate explainer payload for a BATCH of sentences from the same course.
+ * One CLI invocation handles up to ~15 sentences — the CLI startup cost
+ * (~2-15s) is dominated by spawning the subprocess, not by the model work
+ * itself, so amortising across many sentences is a ~10× speedup over
+ * per-sentence calls.
  *
- * Returns { decomposition, explainer_text } or throws.
+ * Returns a Map<id, { decomposition, explainer_text }>. The caller treats
+ * any input id missing from the returned map as a per-row failure (rather
+ * than failing the whole batch) so a single garbled JSON entry doesn't
+ * stall an entire pod.
+ *
+ * Throws only on hard CLI failures or completely unparseable output.
  */
-async function generateForSentence({ courseCode, targetText, knownText }) {
+async function generateForBatch({ courseCode, sentences }) {
+  if (!Array.isArray(sentences) || sentences.length === 0) return new Map()
   const { target, learner } = parseCourseCode(courseCode)
   const connector = getConnectorForLearnerLang(learner)
-  const prompt = buildPrompt({
-    targetText,
-    knownText,
+  const prompt = buildBatchPrompt({
+    sentences,
     targetLang: target,
     learnerLang: learner,
     connector,
   })
   const raw = await claudeChat(prompt, { model: 'haiku' })
-  return parseModelResponse(raw)
+  return parseBatchResponse(raw)
 }
 
 module.exports = {
-  generateForSentence,
+  generateForBatch,
   parseCourseCode,
   getConnectorForLearnerLang,
   shouldSkipCourse,
-  // Exported for unit testing the parser without needing the CLI.
-  _internal: { buildPrompt, parseModelResponse },
+  // Exported for unit testing without needing the CLI.
+  _internal: { buildBatchPrompt, parseBatchResponse },
 }

@@ -10023,10 +10023,12 @@ app.get('/api/admin/pod-explainer-audit', async (req, res) => {
 // rows where explainer_text IS NULL (in-scope per skip rules) and fills
 // explainer_decomposition + explainer_text via Haiku.
 //
-// Per-sentence work is sequential (one CLI call at a time) — Haiku at the
-// per-sentence level is the right granularity for quality control and the
-// fan-out doesn't help when each call is ~1s. The deadline + more_remaining
-// flag let the UI poll-loop the endpoint until exhaustion.
+// Sentences are batched into the same Haiku call (BATCH_SIZE per CLI
+// invocation) because each `claude --print` spawn costs 2-15s regardless
+// of payload size — amortising across many sentences is roughly a 10×
+// speedup over the per-sentence pattern. The 60s wall-time deadline +
+// more_remaining flag still drive the UI poll loop.
+const POD_EXPLAINER_BATCH_SIZE = 12
 app.post('/api/admin/pod-explainer-generate', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const { courseCode, podId, dryRun = false } = req.body || {}
@@ -10056,51 +10058,103 @@ app.post('/api/admin/pod-explainer-generate', async (req, res) => {
     let skipped = 0
     let failed = 0
     const failures = []
+    const pushFailure = (id, message) => {
+      failed++
+      failures.push({ id, error: message })
+      if (failures.length > 25) failures.length = 25
+    }
 
+    // Group candidates by course (skip rules + connector localise per course).
+    // Same-course batching guarantees the prompt's "Target language" line is
+    // accurate for every sentence in the batch.
+    const byCourse = new Map()
     for (const row of candidates || []) {
-      if (Date.now() - start >= DEADLINE_MS) break
-      processed++
       const code = String(row.pod_id).split(':')[0]
+      if (!byCourse.has(code)) byCourse.set(code, [])
+      byCourse.get(code).push(row)
+    }
+
+    outer: for (const [code, rows] of byCourse) {
       const skip = podExplainer.shouldSkipCourse(code)
       if (skip.skip) {
-        skipped++
+        skipped += rows.length
+        processed += rows.length
         continue
       }
-      if (!row.target_text || !row.known_text) {
-        skipped++
-        continue
-      }
-      try {
-        const result = await podExplainer.generateForSentence({
-          courseCode: code,
-          targetText: row.target_text,
-          knownText: row.known_text,
-        })
-        if (!dryRun) {
-          const { error: upErr } = await sb
-            .from('listening_pod_sentences')
-            .update({
-              explainer_decomposition: result.decomposition,
-              explainer_text: result.explainer_text,
-            })
-            .eq('id', row.id)
-          if (upErr) throw upErr
+      // Sub-batch this course's sentences.
+      for (let i = 0; i < rows.length; i += POD_EXPLAINER_BATCH_SIZE) {
+        if (Date.now() - start >= DEADLINE_MS) break outer
+        const batch = rows.slice(i, i + POD_EXPLAINER_BATCH_SIZE)
+        // Filter empty inputs out of the batch — those are skip-counted.
+        const valid = []
+        for (const row of batch) {
+          if (!row.target_text || !row.known_text) {
+            skipped++
+            processed++
+          } else {
+            valid.push(row)
+          }
         }
-        updated++
-      } catch (err) {
-        failed++
-        failures.push({ id: row.id, error: err?.message || String(err) })
-        // Cap the failures we report so a runaway doesn't blow the response.
-        if (failures.length > 25) failures.length = 25
+        if (valid.length === 0) continue
+
+        let resultsById
+        try {
+          resultsById = await podExplainer.generateForBatch({
+            courseCode: code,
+            sentences: valid.map(r => ({
+              id: r.id,
+              target_text: r.target_text,
+              known_text: r.known_text,
+            })),
+          })
+        } catch (err) {
+          // Whole-batch failure — surface one error and mark each row failed.
+          const msg = err?.message || String(err)
+          for (const row of valid) {
+            processed++
+            pushFailure(row.id, `batch failed: ${msg}`)
+          }
+          continue
+        }
+
+        // Apply per-row results.
+        for (const row of valid) {
+          processed++
+          const result = resultsById.get(row.id)
+          if (!result) {
+            pushFailure(row.id, 'no entry returned for this id in batch response')
+            continue
+          }
+          if (dryRun) {
+            updated++
+            continue
+          }
+          try {
+            const { error: upErr } = await sb
+              .from('listening_pod_sentences')
+              .update({
+                explainer_decomposition: result.decomposition,
+                explainer_text: result.explainer_text,
+              })
+              .eq('id', row.id)
+            if (upErr) throw upErr
+            updated++
+          } catch (writeErr) {
+            pushFailure(row.id, `write failed: ${writeErr?.message || writeErr}`)
+          }
+        }
       }
     }
 
-    const more_remaining = (candidates?.length || 0) >= limit ||
-      (Date.now() - start >= DEADLINE_MS && processed < (candidates?.length || 0))
+    const totalCandidates = candidates?.length || 0
+    const more_remaining = totalCandidates >= limit ||
+      (Date.now() - start >= DEADLINE_MS && processed < totalCandidates)
 
     logger.info(
       `[PodExplainer] generate processed=${processed} updated=${updated} ` +
-      `skipped=${skipped} failed=${failed} dryRun=${dryRun} more_remaining=${more_remaining}`
+      `skipped=${skipped} failed=${failed} dryRun=${dryRun} ` +
+      `more_remaining=${more_remaining} batchSize=${POD_EXPLAINER_BATCH_SIZE} ` +
+      `elapsed_ms=${Date.now() - start}`
     )
     res.json({
       ok: true,
