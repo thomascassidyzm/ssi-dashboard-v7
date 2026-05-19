@@ -6,6 +6,14 @@
 
 ---
 
+## Related methodology docs (read alongside this one)
+
+- **`synonym-choice-architecture.md`** — sibling doc covering the upstream translation-choice step. Before a SEED is decomposed into LEGOs, the translator picks one of several valid target-language realisations. The synonym-choice doc gives the eight-principle checklist for picking the least-action-path candidate per pair (atomic-vs-chunked for meaningful units, AA/AB phonetic compounding, M-LEGO upchunking for grammatical particles, cliff front-loading, paradigm balance, L1-conditional sequencing, pod-decoupling, mid-course frame-opener placement). Three pair-worked-examples (Mandarin-for-English, Swedish-for-Romanian, Hungarian-for-English) ground the principles for any new pair an LLM has to apply the methodology to.
+
+This methodology doc (ralph-methodology.md) is what to do once the target translation is chosen. The synonym-choice doc is how to choose it.
+
+---
+
 ## The Core Philosophy
 
 ### Grammar is INFERRED, Never Taught

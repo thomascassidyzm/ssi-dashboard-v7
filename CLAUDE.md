@@ -33,7 +33,8 @@ Each phrase will be heard by thousands of learners. A rushed, low-quality phrase
 Content creation is now a single API endpoint: `POST /api/seed/complete` (port 3471)
 - Agent learns methodology from examples (Welsh/Spanish patterns)
 - API validates atomically: tiling, ZUT, vocabulary, phrase counts
-- See: `ralph-methodology.md` - Complete course building methodology
+- See: `ralph-methodology.md` - Complete course building methodology (decomposition, phrases, ZUT, learner pattern)
+- See: `synonym-choice-architecture.md` - Eight-principle translation-choice checklist applied BEFORE LEGO decomposition. Pair-agnostic principles with three worked examples (zho_for_eng, swe_for_ron, hun_for_eng)
 
 ### **READ THE SCHEMA BEFORE MODIFYING DATABASE CODE**
 
@@ -698,6 +699,7 @@ POST /api/seed/complete
 **Related Skills:**
 - `/course-resume` - Full recovery guide after compaction
 - `ralph-methodology.md` - Complete course building methodology (decomposition, phrases, tiers)
+- `synonym-choice-architecture.md` - Translation-choice checklist (upstream of decomposition)
 
 ---
 

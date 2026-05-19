@@ -368,6 +368,7 @@ These patterns cause the most common errors in course builds. Apply your expert 
 
 let _methodologyFull = null;
 let _methodologyCondensed = null;
+let _synonymChoiceArchitecture = null;
 
 /**
  * Load ralph-methodology.md once, cache in memory.
@@ -379,6 +380,21 @@ function loadMethodology() {
     _methodologyFull = fs.readFileSync(filePath, 'utf8');
   }
   return _methodologyFull;
+}
+
+/**
+ * Load synonym-choice-architecture.md once, cache in memory.
+ * Sibling methodology doc covering the translation-choice step upstream
+ * of LEGO decomposition. Eight principles with pair-worked examples
+ * (Mandarin-for-English, Swedish-for-Romanian, Hungarian-for-English).
+ * Returns the full text for embedding in briefs.
+ */
+function loadSynonymChoiceArchitecture() {
+  if (!_synonymChoiceArchitecture) {
+    const filePath = path.resolve(__dirname, '../../synonym-choice-architecture.md');
+    _synonymChoiceArchitecture = fs.readFileSync(filePath, 'utf8');
+  }
+  return _synonymChoiceArchitecture;
 }
 
 /**
@@ -484,5 +500,6 @@ module.exports = {
   buildGrammarChecklist,
   loadMethodology,
   loadCondensedMethodology,
+  loadSynonymChoiceArchitecture,
   LANG_MAP
 };
