@@ -9938,6 +9938,186 @@ app.get('/api/admin/db-health', async (req, res) => {
   }
 })
 
+// ============================================================================
+// Listening Pod Explainer — audit + generate (text only; audio pass is separate)
+// ============================================================================
+// See migration 20260519_listening_pod_explainer_columns.sql for the schema and
+// services/pod-explainer-generator.cjs for the per-sentence generator.
+//
+// Stage-1 sequence per sentence is target → known → explainer → target → target.
+// These endpoints populate explainer_decomposition + explainer_text. A
+// downstream audio pass (not in this commit) renders explainer_audio_id from
+// explainer_text via xAI multilingual TTS.
+
+const podExplainer = require('./pod-explainer-generator.cjs')
+
+// GET /api/admin/pod-explainer-audit
+//   ?courseCode=<code>  optional: scope to one course
+// Returns counts so the Maintenance UI can show progress and the skip rules
+// applied. No mutations.
+app.get('/api/admin/pod-explainer-audit', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const courseFilter = typeof req.query.courseCode === 'string' ? req.query.courseCode : null
+  try {
+    const sb = supabaseClient.getClient()
+    // Pull pod ids (optionally filtered to one course's pods)
+    let podQuery = sb.from('listening_pods').select('id')
+    if (courseFilter) podQuery = podQuery.like('id', `${courseFilter}:%`)
+    const { data: pods, error: podsErr } = await podQuery
+    if (podsErr) throw podsErr
+    const allPodIds = (pods || []).map(p => p.id)
+    // Apply skip rules course-by-course
+    const skippedCourses = []
+    const includedPodIds = []
+    for (const podId of allPodIds) {
+      const code = String(podId).split(':')[0]
+      const skip = podExplainer.shouldSkipCourse(code)
+      if (skip.skip) {
+        if (!skippedCourses.find(s => s.course_code === code)) {
+          skippedCourses.push({ course_code: code, reason: skip.reason })
+        }
+        continue
+      }
+      includedPodIds.push(podId)
+    }
+    // Count sentences in scope by explainer state.
+    if (includedPodIds.length === 0) {
+      return res.json({
+        total: 0,
+        with_explainer_text: 0,
+        with_explainer_audio: 0,
+        without_explainer_text: 0,
+        skipped_courses: skippedCourses,
+      })
+    }
+    // Pull all sentence rows for the in-scope pods; project minimal columns.
+    const { data: rows, error: rowsErr } = await sb
+      .from('listening_pod_sentences')
+      .select('pod_id, explainer_text, explainer_audio_id')
+      .in('pod_id', includedPodIds)
+    if (rowsErr) throw rowsErr
+    let withText = 0
+    let withAudio = 0
+    let withoutText = 0
+    for (const r of rows || []) {
+      if (r.explainer_text && r.explainer_text.trim()) withText++
+      else withoutText++
+      if (r.explainer_audio_id) withAudio++
+    }
+    res.json({
+      total: (rows || []).length,
+      with_explainer_text: withText,
+      with_explainer_audio: withAudio,
+      without_explainer_text: withoutText,
+      skipped_courses: skippedCourses,
+    })
+  } catch (e) {
+    logger.error('[PodExplainer] audit error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/pod-explainer-generate
+//   body: { courseCode?: string, podId?: string, dryRun?: boolean, limit?: int }
+// Batched, resumable, capped at 60s of wall time per request. Picks sentence
+// rows where explainer_text IS NULL (in-scope per skip rules) and fills
+// explainer_decomposition + explainer_text via Haiku.
+//
+// Per-sentence work is sequential (one CLI call at a time) — Haiku at the
+// per-sentence level is the right granularity for quality control and the
+// fan-out doesn't help when each call is ~1s. The deadline + more_remaining
+// flag let the UI poll-loop the endpoint until exhaustion.
+app.post('/api/admin/pod-explainer-generate', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const { courseCode, podId, dryRun = false } = req.body || {}
+  const limitNum = Number(req.body?.limit)
+  const limit = Number.isFinite(limitNum) && limitNum > 0 ? Math.floor(limitNum) : 1000
+  const DEADLINE_MS = 60_000
+  const start = Date.now()
+
+  try {
+    const sb = supabaseClient.getClient()
+    // Build the candidate set: sentences missing explainer_text in scope.
+    let query = sb
+      .from('listening_pod_sentences')
+      .select('id, pod_id, target_text, known_text')
+      .is('explainer_text', null)
+      .limit(limit)
+    if (podId) {
+      query = query.eq('pod_id', podId)
+    } else if (courseCode) {
+      query = query.like('pod_id', `${courseCode}:%`)
+    }
+    const { data: candidates, error: candErr } = await query
+    if (candErr) throw candErr
+
+    let processed = 0
+    let updated = 0
+    let skipped = 0
+    let failed = 0
+    const failures = []
+
+    for (const row of candidates || []) {
+      if (Date.now() - start >= DEADLINE_MS) break
+      processed++
+      const code = String(row.pod_id).split(':')[0]
+      const skip = podExplainer.shouldSkipCourse(code)
+      if (skip.skip) {
+        skipped++
+        continue
+      }
+      if (!row.target_text || !row.known_text) {
+        skipped++
+        continue
+      }
+      try {
+        const result = await podExplainer.generateForSentence({
+          courseCode: code,
+          targetText: row.target_text,
+          knownText: row.known_text,
+        })
+        if (!dryRun) {
+          const { error: upErr } = await sb
+            .from('listening_pod_sentences')
+            .update({
+              explainer_decomposition: result.decomposition,
+              explainer_text: result.explainer_text,
+            })
+            .eq('id', row.id)
+          if (upErr) throw upErr
+        }
+        updated++
+      } catch (err) {
+        failed++
+        failures.push({ id: row.id, error: err?.message || String(err) })
+        // Cap the failures we report so a runaway doesn't blow the response.
+        if (failures.length > 25) failures.length = 25
+      }
+    }
+
+    const more_remaining = (candidates?.length || 0) >= limit ||
+      (Date.now() - start >= DEADLINE_MS && processed < (candidates?.length || 0))
+
+    logger.info(
+      `[PodExplainer] generate processed=${processed} updated=${updated} ` +
+      `skipped=${skipped} failed=${failed} dryRun=${dryRun} more_remaining=${more_remaining}`
+    )
+    res.json({
+      ok: true,
+      processed,
+      updated,
+      skipped,
+      failed,
+      failures,
+      more_remaining,
+      dry_run: !!dryRun,
+    })
+  } catch (e) {
+    logger.error('[PodExplainer] generate error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {
