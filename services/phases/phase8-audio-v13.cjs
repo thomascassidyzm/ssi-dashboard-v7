@@ -4305,3 +4305,13 @@ app.listen(PORT, () => {
 })
 
 module.exports = app
+// Named exports for reuse from other audio-generation paths (e.g. the
+// pod-explainer overnight runner). Don't import this file just for these —
+// it pulls in the whole phase8 server graph. But once it's loaded for the
+// Express side, exposing the helpers avoids duplicating ~80 lines of
+// mastering + S3 + course_audio upsert logic.
+module.exports.masterAudio = masterAudio
+module.exports.findExistingAudio = findExistingAudio
+module.exports.generatePodAudio = generatePodAudio
+module.exports.s3 = s3
+module.exports.S3_BUCKET = S3_BUCKET
