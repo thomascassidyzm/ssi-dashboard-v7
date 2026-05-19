@@ -140,22 +140,25 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
     saw_deployed = False
     saw_identical = False
 
-    # Observed in production: the first sendline after a Y/N prompt
-    # sometimes arrives at HighLine as an empty line (TTY/pty quirk —
-    # ~half of all deploys hit it). HighLine then prints
-    # 'Please enter "yes" or "no".' and redisplays the prompt. Naive
-    # handling (letting the main loop's pattern-N re-fire on the
-    # redisplay) double-sends the answer, leaving queued bytes in the TTY
-    # input buffer that get consumed later as the answer to *the next*
-    # Y/N prompt — e.g. "y" leaks into "Show deletion set?" and drops us
-    # into the unrescuable less pager.
+    # HighLine on apidev runs the Y/N ask() in single-character (raw)
+    # mode: a human user types one letter and it's accepted immediately,
+    # no Enter required. That's why sendline()'s "y\n" worked for the
+    # Y but left the "\n" queued in stdin — which then got consumed by
+    # the NEXT Y/N prompt as an empty line, triggering the
+    # 'Please enter "yes" or "no".' redisplay, and then the y/n char
+    # from a subsequent send landed against the wrong prompt. The
+    # classic failure mode: "y" leaks into "Show deletion set?" and
+    # drops us into the unrescuable less pager.
     #
-    # answer() handles this inline: send → look for validator rejection
-    # within 2s → if seen, drain the redisplayed prompt and resend once.
-    # That way the outer loop only sees the post-prompt state and never
-    # re-fires on a prompt we already answered.
+    # Fix: send only the single character — no newline. HighLine
+    # consumes it as the answer, nothing is left in the input buffer
+    # for the next prompt to mis-consume.
+    #
+    # The validator safety net stays as a fallback. If anything ever
+    # does trip "Please enter…", we resend (still without newline) and
+    # consume the redisplayed prompt so the outer loop doesn't re-fire.
     def answer(s):
-        child.sendline(s)
+        child.send(s)
         try:
             idx = child.expect([
                 r'Please enter "yes" or "no"\.',
@@ -163,13 +166,11 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
                 pexpect.EOF,
             ], timeout=2)
             if idx == 0:
-                # Validator complained. Wait for the redisplayed Y/N
-                # prompt to land in the buffer, consume it, then resend.
+                child.send(s)
                 try:
                     child.expect([r"\(Y/N\)", pexpect.TIMEOUT, pexpect.EOF], timeout=5)
                 except Exception:
                     pass
-                child.sendline(s)
         except Exception:
             pass
 
