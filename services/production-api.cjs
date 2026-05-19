@@ -10028,7 +10028,15 @@ app.get('/api/admin/pod-explainer-audit', async (req, res) => {
 // of payload size — amortising across many sentences is roughly a 10×
 // speedup over the per-sentence pattern. The 60s wall-time deadline +
 // more_remaining flag still drive the UI poll loop.
+//
+// Beyond batching, we fan out PARALLEL_BATCHES CLI invocations at once.
+// Each batch is independent (different sentences, fresh subprocess), so
+// the only ceiling is mild rate-limit risk at the Anthropic side — which
+// at 3-4 concurrent calls from one user is well below the threshold.
+// Throughput at parallel=4 × batch=12 is roughly 48 sentences per ~60s
+// window, so a 117-sentence pod finishes in 2-3 endpoint calls.
 const POD_EXPLAINER_BATCH_SIZE = 12
+const POD_EXPLAINER_PARALLEL = 4
 app.post('/api/admin/pod-explainer-generate', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const { courseCode, podId, dryRun = false } = req.body || {}
@@ -10074,20 +10082,22 @@ app.post('/api/admin/pod-explainer-generate', async (req, res) => {
       byCourse.get(code).push(row)
     }
 
-    outer: for (const [code, rows] of byCourse) {
+    // Build the flat list of batches to run (one batch = one CLI call).
+    // Each entry carries the course + the validated rows it'll process.
+    // Skip rules and empty-text filtering happen here so the parallel
+    // executor below only sees runnable work.
+    const batches = []
+    for (const [code, rows] of byCourse) {
       const skip = podExplainer.shouldSkipCourse(code)
       if (skip.skip) {
         skipped += rows.length
         processed += rows.length
         continue
       }
-      // Sub-batch this course's sentences.
       for (let i = 0; i < rows.length; i += POD_EXPLAINER_BATCH_SIZE) {
-        if (Date.now() - start >= DEADLINE_MS) break outer
-        const batch = rows.slice(i, i + POD_EXPLAINER_BATCH_SIZE)
-        // Filter empty inputs out of the batch — those are skip-counted.
+        const slice = rows.slice(i, i + POD_EXPLAINER_BATCH_SIZE)
         const valid = []
-        for (const row of batch) {
+        for (const row of slice) {
           if (!row.target_text || !row.known_text) {
             skipped++
             processed++
@@ -10095,55 +10105,80 @@ app.post('/api/admin/pod-explainer-generate', async (req, res) => {
             valid.push(row)
           }
         }
-        if (valid.length === 0) continue
+        if (valid.length > 0) batches.push({ code, rows: valid })
+      }
+    }
 
-        let resultsById
-        try {
-          resultsById = await podExplainer.generateForBatch({
-            courseCode: code,
-            sentences: valid.map(r => ({
-              id: r.id,
-              target_text: r.target_text,
-              known_text: r.known_text,
-            })),
-          })
-        } catch (err) {
-          // Whole-batch failure — surface one error and mark each row failed.
-          const msg = err?.message || String(err)
-          for (const row of valid) {
-            processed++
-            pushFailure(row.id, `batch failed: ${msg}`)
-          }
+    /**
+     * Apply one batch's result back to the DB (or count it in dry-run).
+     * Pulled out so the parallel executor can call it once a batch resolves
+     * without serialising the writes.
+     */
+    const applyBatchResult = async (batch, resultsById) => {
+      for (const row of batch.rows) {
+        processed++
+        const result = resultsById.get(row.id)
+        if (!result) {
+          pushFailure(row.id, 'no entry returned for this id in batch response')
           continue
         }
-
-        // Apply per-row results.
-        for (const row of valid) {
-          processed++
-          const result = resultsById.get(row.id)
-          if (!result) {
-            pushFailure(row.id, 'no entry returned for this id in batch response')
-            continue
-          }
-          if (dryRun) {
-            updated++
-            continue
-          }
-          try {
-            const { error: upErr } = await sb
-              .from('listening_pod_sentences')
-              .update({
-                explainer_decomposition: result.decomposition,
-                explainer_text: result.explainer_text,
-              })
-              .eq('id', row.id)
-            if (upErr) throw upErr
-            updated++
-          } catch (writeErr) {
-            pushFailure(row.id, `write failed: ${writeErr?.message || writeErr}`)
-          }
+        if (dryRun) {
+          updated++
+          continue
+        }
+        try {
+          const { error: upErr } = await sb
+            .from('listening_pod_sentences')
+            .update({
+              explainer_decomposition: result.decomposition,
+              explainer_text: result.explainer_text,
+            })
+            .eq('id', row.id)
+          if (upErr) throw upErr
+          updated++
+        } catch (writeErr) {
+          pushFailure(row.id, `write failed: ${writeErr?.message || writeErr}`)
         }
       }
+    }
+
+    /**
+     * Run one batch end-to-end: CLI call → parse → apply. Resolves to
+     * void; per-row failures are accumulated via pushFailure inside.
+     * Whole-batch CLI failures mark every row in that batch as failed.
+     */
+    const runBatch = async (batch) => {
+      let resultsById
+      try {
+        resultsById = await podExplainer.generateForBatch({
+          courseCode: batch.code,
+          sentences: batch.rows.map(r => ({
+            id: r.id,
+            target_text: r.target_text,
+            known_text: r.known_text,
+          })),
+        })
+      } catch (err) {
+        const msg = err?.message || String(err)
+        for (const row of batch.rows) {
+          processed++
+          pushFailure(row.id, `batch failed: ${msg}`)
+        }
+        return
+      }
+      await applyBatchResult(batch, resultsById)
+    }
+
+    // Fan out POD_EXPLAINER_PARALLEL batches at a time. Each parallel
+    // wave is awaited together; we stop accepting new waves once the
+    // deadline trips, but a wave that's already in flight finishes —
+    // partial progress is still progress, the poll loop picks up the
+    // rest on the next call. The deadline check is between waves, not
+    // mid-wave, so any wave that starts is committed to its CLI calls.
+    for (let i = 0; i < batches.length; i += POD_EXPLAINER_PARALLEL) {
+      if (Date.now() - start >= DEADLINE_MS) break
+      const wave = batches.slice(i, i + POD_EXPLAINER_PARALLEL)
+      await Promise.all(wave.map(b => runBatch(b)))
     }
 
     const totalCandidates = candidates?.length || 0
