@@ -57,11 +57,44 @@
           </span>
         </div>
       </label>
-      <button
-        @click="handleDeploy(false)"
-        class="w-full px-4 py-2 text-sm font-medium bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+
+      <!-- Skip-checks toggle. The full S3 + samples + duplicates + durations
+           checks run on apidev take ~1 hour for a large course; iterating
+           after a small text-only fix benefits massively from skipping. The
+           amber warning matters: skipping means no verification that the
+           audio you just pushed is actually reachable on S3. -->
+      <label
+        class="flex items-start gap-3 p-3 rounded border cursor-pointer"
+        :class="skipChecks
+          ? 'bg-amber-900/30 border-amber-700/60'
+          : 'bg-slate-800 border-slate-600'"
       >
-        Deploy to stage
+        <input
+          v-model="skipChecks"
+          type="checkbox"
+          class="w-4 h-4 rounded mt-0.5"
+        />
+        <div>
+          <span class="text-white text-sm">Skip checks ({{ skipChecks ? 'risky' : 'fast iteration' }})</span>
+          <p class="text-slate-400 text-xs mt-0.5">
+            Answers "n" to <span class="font-mono">Run checks?</span> on apidev. Saves ~1h on a full course
+            but skips Samples / S3 / Duplicates / Durations verification.
+          </p>
+          <p v-if="skipChecks" class="text-amber-400 text-xs mt-1 font-medium">
+            ⚠ Only enable when you know the last successful deploy validated the same audio set
+            (e.g. text-only edit, no audio regen). A broken audio reference will reach learners.
+          </p>
+        </div>
+      </label>
+
+      <button
+        @click="handleDeploy(skipChecks)"
+        class="w-full px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors"
+        :class="skipChecks
+          ? 'bg-amber-600 hover:bg-amber-700'
+          : 'bg-blue-500 hover:bg-blue-600'"
+      >
+        {{ skipChecks ? 'Deploy without checks' : 'Deploy to stage' }}
       </button>
 
       <!-- Unpushed-commits warning — mirrors Step 3 → Step 4 nextStep guard -->
@@ -77,7 +110,7 @@
             <p class="text-slate-400 text-xs mt-1">Push to remote before deploying — apidev pulls from origin/author when it runs ./check.</p>
             <div class="flex gap-2 mt-2">
               <button
-                @click="handlePushAndDeploy(false)"
+                @click="handlePushAndDeploy(skipChecks)"
                 class="px-3 py-1.5 text-xs font-medium bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
               >Push &amp; Deploy</button>
               <button
@@ -105,13 +138,15 @@
 
     <div v-else-if="isTerminal" class="flex flex-wrap gap-2">
       <button
-        @click="handleDeploy(false)"
-        class="px-3 py-1.5 text-xs font-medium bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+        @click="handleDeploy(skipChecks)"
+        class="px-3 py-1.5 text-xs font-medium text-white rounded transition-colors"
+        :class="skipChecks ? 'bg-amber-600 hover:bg-amber-700' : 'bg-blue-500 hover:bg-blue-600'"
       >
         {{ status === 'success' || status === 'identical' ? 'Deploy again' : 'Try again' }}
+        {{ skipChecks ? '(no checks)' : '' }}
       </button>
       <button
-        v-if="status === 'failed' && sawChecksPassed"
+        v-if="status === 'failed' && sawChecksPassed && !skipChecks"
         @click="handleDeploy(true)"
         class="px-3 py-1.5 text-xs font-medium bg-amber-500 text-white rounded hover:bg-amber-600 transition-colors"
       >
@@ -214,6 +249,8 @@ const props = defineProps<{
 
 const showLog = ref(true)
 const deleteProgress = ref(true)  // default ON per Kai's preference
+const skipChecks = ref(false)     // default OFF — only enable when you know
+                                  // the same audio set was just validated
 const logEl = ref<HTMLPreElement | null>(null)
 
 // Unwrap reactive refs from the workflow composable
