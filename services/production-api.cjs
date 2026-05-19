@@ -3583,7 +3583,7 @@ app.get('/api/pods/:courseCode/:slug', async (req, res) => {
 
     const { data: sentences, error: sErr } = await supabase
       .from('listening_pod_sentences')
-      .select('id, scene_number, sentence_number, global_order, beat_label, speaker, target_text, known_text, target_audio_id, known_audio_id')
+      .select('id, scene_number, sentence_number, global_order, beat_label, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_decomposition, explainer_text, explainer_audio_id')
       .eq('pod_id', podId)
       .order('global_order')
     if (sErr) throw sErr

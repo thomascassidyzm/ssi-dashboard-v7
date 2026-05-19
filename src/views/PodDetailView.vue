@@ -69,6 +69,40 @@
           </details>
         </div>
 
+        <!-- Explainer generation panel
+             Stage-1 sequence is target → known → explainer → target → target.
+             Generate the per-sentence narration text via Haiku (Max Plan),
+             store on the row. Audio rendering is a separate pass once the
+             text looks good. -->
+        <div class="mb-6 bg-slate-800/60 border border-slate-700 rounded-lg p-4 text-sm">
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex flex-col gap-1 min-w-0">
+              <div class="text-slate-300 font-semibold">Stage-1 explainer text</div>
+              <div class="text-slate-500 text-xs">
+                {{ explainerCovered }}/{{ sentences.length }} sentences have explainer text
+                <span v-if="explainerAudioCovered > 0">
+                  · {{ explainerAudioCovered }} with audio
+                </span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button
+                @click="generateExplainers(true)"
+                :disabled="explainerBusy || allExplained"
+                class="px-3 py-1.5 text-xs rounded bg-slate-700 hover:bg-slate-600 text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Generate without writing (sanity-check output)"
+              >Dry-run</button>
+              <button
+                @click="generateExplainers(false)"
+                :disabled="explainerBusy || allExplained"
+                class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              >{{ explainerBusy ? 'Generating…' : 'Generate' }}</button>
+            </div>
+          </div>
+          <div v-if="explainerStatus" class="mt-3 text-xs text-slate-400">{{ explainerStatus }}</div>
+          <div v-if="explainerError" class="mt-3 text-xs text-red-300 bg-red-900/30 border border-red-800 rounded px-2 py-1">{{ explainerError }}</div>
+        </div>
+
         <!-- Scenes and sentences -->
         <div v-for="scene in groupedScenes" :key="scene.number" class="mb-8">
           <h2 class="text-sm uppercase tracking-wide text-slate-500 mb-2 flex items-center gap-3">
@@ -85,14 +119,22 @@
                 {{ sent.beat_label }}
               </div>
               <!-- Sentence row -->
-              <div class="bg-slate-800/40 border border-slate-800 hover:border-slate-600 rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-center text-sm">
-                <div class="text-slate-600 font-mono text-xs tabular-nums">{{ sent.global_order }}</div>
-                <div class="text-slate-400 text-xs truncate" :title="sent.speaker">{{ sent.speaker }}</div>
+              <div class="bg-slate-800/40 border border-slate-800 hover:border-slate-600 rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-start text-sm">
+                <div class="text-slate-600 font-mono text-xs tabular-nums pt-0.5">{{ sent.global_order }}</div>
+                <div class="text-slate-400 text-xs truncate pt-0.5" :title="sent.speaker">{{ sent.speaker }}</div>
                 <div class="min-w-0">
                   <div class="text-slate-100 truncate" :title="sent.target_text">{{ sent.target_text }}</div>
                   <div class="text-slate-500 text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
+                  <!-- Stage-1 explainer (inline, only when populated) -->
+                  <div
+                    v-if="sent.explainer_text"
+                    class="text-amber-300/80 text-xs mt-1 italic leading-snug"
+                    :title="sent.explainer_text"
+                  >
+                    <span class="text-amber-500/60 not-italic mr-1">ⓘ</span>{{ sent.explainer_text }}
+                  </div>
                 </div>
-                <div class="flex gap-1 items-center">
+                <div class="flex gap-1 items-center pt-0.5">
                   <button
                     v-if="sent.target_audio_id"
                     @click="playAudio(sent.target_audio_id)"
@@ -107,6 +149,17 @@
                     :title="`Play known (${knownName})`"
                   >{{ knownFlag }}</button>
                   <span v-else class="px-2 py-1 text-xs text-slate-600" title="No known audio">{{ knownFlag }}</span>
+                  <button
+                    v-if="sent.explainer_audio_id"
+                    @click="playAudio(sent.explainer_audio_id)"
+                    :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.explainer_audio_id ? 'bg-amber-700 text-amber-100' : 'bg-slate-700 hover:bg-amber-700 text-slate-300 hover:text-amber-100']"
+                    title="Play Stage-1 explainer (mixed-language narration)"
+                  >ⓘ</button>
+                  <span
+                    v-else-if="sent.explainer_text"
+                    class="px-2 py-1 text-xs text-amber-500/40"
+                    title="Explainer text generated; audio not yet rendered"
+                  >ⓘ</span>
                   <button
                     v-if="sent.target_audio_id && sent.known_audio_id"
                     @click="playPair(sent.target_audio_id, sent.known_audio_id)"
@@ -130,6 +183,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
+import { useAuth } from '@/composables/useAuth.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -166,6 +220,21 @@ const error = ref(null)
 const audioEl = ref(null)
 const playingId = ref(null)
 const playQueue = ref([])
+
+// Stage-1 explainer state (text generation, audio is a separate pass)
+const explainerBusy = ref(false)
+const explainerStatus = ref('')
+const explainerError = ref('')
+
+const explainerCovered = computed(() =>
+  sentences.value.filter(s => s.explainer_text && s.explainer_text.trim()).length
+)
+const explainerAudioCovered = computed(() =>
+  sentences.value.filter(s => s.explainer_audio_id).length
+)
+const allExplained = computed(() =>
+  sentences.value.length > 0 && explainerCovered.value === sentences.value.length
+)
 
 const hasMetadata = computed(() =>
   pod.value?.metadata && (pod.value.metadata.hosts?.length || pod.value.metadata.register || pod.value.metadata.status)
@@ -265,6 +334,60 @@ async function loadPod() {
     error.value = err.message
   } finally {
     loading.value = false
+  }
+}
+
+// Admin-gated helper for the explainer endpoint. Mirrors the pattern in
+// RemoteControl / Maintenance — fetch a fresh access token, attach Bearer.
+const { getAccessToken } = useAuth()
+async function authedFetch(path, init = {}) {
+  const token = await getAccessToken()
+  const headers = {
+    'ngrok-skip-browser-warning': 'true',
+    'Content-Type': 'application/json',
+    ...(init.headers || {}),
+  }
+  if (token) headers.Authorization = `Bearer ${token}`
+  return fetch(`${getApiUrl()}${path}`, { ...init, headers })
+}
+
+/**
+ * Generate Stage-1 explainer text for every sentence in this pod that
+ * doesn't yet have one. Polls the resumable backend endpoint until
+ * `more_remaining: false`, reloading the pod between batches so the
+ * inline display lights up live as rows are populated.
+ */
+async function generateExplainers(dryRun) {
+  if (explainerBusy.value) return
+  explainerBusy.value = true
+  explainerStatus.value = dryRun ? 'Dry-run starting…' : 'Generating explainers…'
+  explainerError.value = ''
+  let totalUpdated = 0
+  let totalFailed = 0
+  try {
+    // Resumable poll loop — endpoint caps itself at 60s wall time per call.
+    // Keep going until it tells us we're exhausted, or until we hit a hard
+    // failure ceiling so a runaway can't loop forever.
+    for (let pass = 0; pass < 50; pass++) {
+      const res = await authedFetch('/api/admin/pod-explainer-generate', {
+        method: 'POST',
+        body: JSON.stringify({ podId: pod.value?.id, dryRun, limit: 200 }),
+      })
+      const body = await res.json()
+      if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+      totalUpdated += body.updated || 0
+      totalFailed += body.failed || 0
+      explainerStatus.value =
+        `${dryRun ? 'Dry-run ' : ''}updated ${totalUpdated}, failed ${totalFailed}` +
+        (body.more_remaining ? ' · more remaining, continuing…' : ' · done.')
+      if (!dryRun) await loadPod() // refresh the inline rows
+      if (!body.more_remaining) break
+    }
+  } catch (err) {
+    explainerError.value = err?.message || String(err)
+  } finally {
+    explainerBusy.value = false
+    if (!explainerError.value) explainerStatus.value += ' ✓'
   }
 }
 

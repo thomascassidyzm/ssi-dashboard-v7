@@ -953,8 +953,13 @@ const PlaylistEditor = defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const ROLES = ['ps08x', 'ps', 'ps15x', 'ps2x', 'trans']
-    const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN' }
+    // ps* = target sentence at varying speeds, trans = known-language gloss,
+    // explainer = the per-sentence Stage-1 narration that decomposes the
+    // target into LEGO-sized chunks ("buona means good, sera means afternoon,
+    // come stai means how are you doing"). See migration
+    // 20260519_listening_pod_explainer_columns.sql.
+    const ROLES = ['ps08x', 'ps', 'ps15x', 'ps2x', 'trans', 'explainer']
+    const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN', explainer: 'ⓘ' }
 
     function update(next) { emit('update:modelValue', next) }
     function cycle(idx) {
@@ -1324,6 +1329,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 :deep(.role-pill.role-ps15x) { background: #fb923c; color: #431407; }
 :deep(.role-pill.role-ps2x)  { background: #f97316; color: #431407; }
 :deep(.role-pill.role-trans) { background: #6b7280; color: #f9fafb; }
+:deep(.role-pill.role-explainer) { background: #f59e0b; color: #422006; }
 :deep(.pill-num) {
   background: rgba(0,0,0,0.18);
   color: inherit;
@@ -1651,6 +1657,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .preview-pill.role-ps15x { background: #fb923c; color: #431407; }
 .preview-pill.role-ps2x  { background: #f97316; color: #431407; }
 .preview-pill.role-trans { background: #6b7280; color: #f9fafb; }
+.preview-pill.role-explainer { background: #f59e0b; color: #422006; }
 .preview-sequence {
   margin-left: auto;
   background: transparent;
