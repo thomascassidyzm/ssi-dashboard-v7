@@ -132,14 +132,46 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
         r"Copying [^\n]* to [^\n]* bucket\.\.\.",               # 9
         r"Done\.\r?\n",                                         # 10
         r"Failed\.\r?\n",                                       # 11
-        r"Please enter \"yes\" or \"no\"\.",                    # 12 — validator
-        pexpect.EOF,                                            # 13
+        pexpect.EOF,                                            # 12
     ]
 
     saw_done = False
     saw_failed = False
     saw_deployed = False
     saw_identical = False
+
+    # Observed in production: the first sendline after a Y/N prompt
+    # sometimes arrives at HighLine as an empty line (TTY/pty quirk —
+    # ~half of all deploys hit it). HighLine then prints
+    # 'Please enter "yes" or "no".' and redisplays the prompt. Naive
+    # handling (letting the main loop's pattern-N re-fire on the
+    # redisplay) double-sends the answer, leaving queued bytes in the TTY
+    # input buffer that get consumed later as the answer to *the next*
+    # Y/N prompt — e.g. "y" leaks into "Show deletion set?" and drops us
+    # into the unrescuable less pager.
+    #
+    # answer() handles this inline: send → look for validator rejection
+    # within 2s → if seen, drain the redisplayed prompt and resend once.
+    # That way the outer loop only sees the post-prompt state and never
+    # re-fires on a prompt we already answered.
+    def answer(s):
+        child.sendline(s)
+        try:
+            idx = child.expect([
+                r'Please enter "yes" or "no"\.',
+                pexpect.TIMEOUT,
+                pexpect.EOF,
+            ], timeout=2)
+            if idx == 0:
+                # Validator complained. Wait for the redisplayed Y/N
+                # prompt to land in the buffer, consume it, then resend.
+                try:
+                    child.expect([r"\(Y/N\)", pexpect.TIMEOUT, pexpect.EOF], timeout=5)
+                except Exception:
+                    pass
+                child.sendline(s)
+        except Exception:
+            pass
 
     try:
         while True:
@@ -151,23 +183,23 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
             elif idx == 1:
                 emit("newCourse", courseConfigsId=course_configs_id)
             elif idx == 2:
-                child.sendline("n")
+                answer("n")
             elif idx == 3:
-                child.sendline("n" if skip_checks else "y")
+                answer("n" if skip_checks else "y")
             elif idx == 4:
                 emit("checksPassed")
             elif idx == 5:
-                child.sendline("y" if delete_progress else "n")
+                answer("y" if delete_progress else "n")
             elif idx == 6:
                 # "Show deletion set?" — never; answering "y" drops into a
                 # less-style pager that pexpect can't escape.
-                child.sendline("n")
+                answer("n")
             elif idx == 7:
                 # "Delete N records?" — yes; this is the actual destructive
                 # delete after Show deletion set is declined.
-                child.sendline("y" if delete_progress else "n")
+                answer("y" if delete_progress else "n")
             elif idx == 8:
-                child.sendline("y")
+                answer("y")
             elif idx == 9:
                 saw_deployed = True
                 emit("deployed")
@@ -177,13 +209,7 @@ def run(course_configs_id: str, delete_progress: bool, skip_checks: bool) -> int
             elif idx == 11:
                 saw_failed = True
                 emit("failed")
-            elif idx == 12:
-                # HighLine validator complained about our last answer. Don't
-                # resend here — the next prompt is matched separately. Just
-                # consume the rejection so it doesn't sit in the buffer and
-                # confuse later lazy matches.
-                pass
-            elif idx == 13:  # EOF
+            elif idx == 12:  # EOF
                 break
     except pexpect.exceptions.TIMEOUT:
         emit("failed", reason="timeout")

@@ -63,6 +63,31 @@
       >
         Deploy to stage
       </button>
+
+      <!-- Unpushed-commits warning — mirrors Step 3 → Step 4 nextStep guard -->
+      <div v-if="showPushWarning" class="mt-3 p-3 bg-amber-900/40 border border-amber-700 rounded-lg">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <div class="flex-1">
+            <p class="text-amber-400 text-sm font-medium">
+              course-configs has {{ unpushedCommitsAhead }} unpushed commit{{ unpushedCommitsAhead === 1 ? '' : 's' }}
+            </p>
+            <p class="text-slate-400 text-xs mt-1">Push to remote before deploying — apidev pulls from origin/author when it runs ./check.</p>
+            <div class="flex gap-2 mt-2">
+              <button
+                @click="handlePushAndDeploy(false)"
+                class="px-3 py-1.5 text-xs font-medium bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+              >Push &amp; Deploy</button>
+              <button
+                @click="showPushWarning = false"
+                class="px-3 py-1.5 text-xs font-medium text-slate-500 hover:text-slate-300 transition-colors"
+              >Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div v-else-if="status === 'running'" class="flex items-center justify-between gap-3">
@@ -226,11 +251,48 @@ const isTerminal = computed(() =>
   status.value === 'cancelled' || status.value === 'identical'
 )
 
+const showPushWarning = ref(false)
+const unpushedCommitsAhead = ref(0)
+
 async function handleDeploy(skipChecks: boolean) {
+  // Mirror the Step 3 → Step 4 nextStep() guard: refuse to deploy when
+  // course-configs has unpushed commits. Otherwise apidev's ./check reads a
+  // stale en-XX.json and the live manifest diverges from what we just
+  // published locally.
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || ''
+    const res = await fetch(`${apiBase}/api/production/course-configs/status`)
+    const status = await res.json()
+    if (status.success && status.commitsAhead > 0) {
+      unpushedCommitsAhead.value = status.commitsAhead
+      showPushWarning.value = true
+      return
+    }
+  } catch (err) {
+    // If the status check itself errors, fall through and let the server-side
+    // guard catch it.
+    console.warn('Stage-deploy: course-configs status check failed:', err)
+  }
   await props.workflow.deployStage({
     deleteProgress: deleteProgress.value,
     skipChecks
   })
+}
+
+async function handlePushAndDeploy(skipChecks: boolean) {
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || ''
+    const r = await fetch(`${apiBase}/api/production/course-configs/push`, { method: 'POST' })
+    if (!r.ok) throw new Error(`push failed: ${r.status}`)
+    showPushWarning.value = false
+    unpushedCommitsAhead.value = 0
+    await props.workflow.deployStage({
+      deleteProgress: deleteProgress.value,
+      skipChecks
+    })
+  } catch (err: any) {
+    console.error('Push-then-deploy failed:', err)
+  }
 }
 
 async function handleCancel() {

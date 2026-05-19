@@ -7471,11 +7471,38 @@ app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
     const { courseCode } = req.params
     const { deleteProgress = true, skipChecks = false } = req.body || {}
 
-    if (stageDeployJobs.has(courseCode)) {
+    // Only block on a job that's actually still running. Cancelled/failed/
+    // succeeded jobs linger in the map for 60s (see the close handler) so the
+    // cancel endpoint can still find them — but that linger shouldn't prevent
+    // a fresh retry. Use job.state, not .has().
+    const existing = stageDeployJobs.get(courseCode)
+    if (existing && existing.state === 'running') {
       return res.status(409).json({
         error: 'Stage deploy already running for this course',
-        jobId: stageDeployJobs.get(courseCode).jobId
+        jobId: existing.jobId
       })
+    }
+    // Clear any terminal (cancelled/failed/success/identical) entry now so the
+    // setTimeout cleanup doesn't race with the new job we're about to insert.
+    if (existing) stageDeployJobs.delete(courseCode)
+
+    // Block if course-configs has unpushed commits — same guard Step 3→4 uses
+    // for advancing the wizard. If we deploy with unpushed commits, apidev's
+    // `./check` reads a stale en-XX.json and the live manifest diverges from
+    // what we just published locally.
+    try {
+      const repoStatus = publishManifestService.getRepoStatus()
+      if (repoStatus.success && repoStatus.commitsAhead > 0) {
+        return res.status(412).json({
+          error: 'course-configs has unpushed commits — push first',
+          commitsAhead: repoStatus.commitsAhead,
+          needsPush: true
+        })
+      }
+    } catch (err) {
+      // Non-fatal: if the status check itself errors, let the deploy proceed
+      // rather than blocking on a transient repo-read issue.
+      logger.warn(`[StageDeploy] could not read course-configs status: ${err.message}`)
     }
 
     if (!supabaseClient.isInitialized()) {
@@ -7661,6 +7688,12 @@ app.post('/api/production/:courseCode/stage-deploy/cancel', async (req, res) => 
     pkill.unref()
 
     io.emit('stageDeploy:cancelled', { jobId: job.jobId, courseCode })
+
+    // Drop the entry from the map immediately so a retry isn't blocked by the
+    // 60s close-handler cleanup. (The duplicate guard in POST stage-deploy
+    // already accepts terminal-state entries, but removing it here means the
+    // GET /status endpoint also stops claiming `active: true` straight away.)
+    stageDeployJobs.delete(courseCode)
     res.json({ success: true, jobId: job.jobId })
   } catch (error) {
     logger.error('[StageDeploy] cancel error:', error)
