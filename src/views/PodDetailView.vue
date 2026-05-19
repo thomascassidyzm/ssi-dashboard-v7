@@ -87,12 +87,6 @@
             </div>
             <div class="flex gap-2">
               <button
-                @click="generateExplainers(true)"
-                :disabled="explainerBusy || allExplained"
-                class="px-3 py-1.5 text-xs rounded bg-slate-700 hover:bg-slate-600 text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                title="Generate without writing (sanity-check output)"
-              >Dry-run</button>
-              <button
                 @click="generateExplainers(false)"
                 :disabled="explainerBusy || allExplained"
                 class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
