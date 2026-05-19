@@ -123,16 +123,28 @@ For EACH sentence below, produce two things:
    in the target language, connected with the connector phrase "${connector}",
    with the known meaning. Use natural punctuation.
 
-PROPER NOUNS — names of people, places, brands — are NOT translated and are
-NOT explained. Drop them from the decomposition entirely. "Giulia means
-Giulia" is noise; just skip the name. If a sentence is *only* a proper noun
-("Sarah!", "Buongiorno, Anna!" → after dropping the name only "buongiorno"
-remains), emit just the meaningful chunks. If the sentence has no
-meaningful chunks at all (e.g. it's literally just a name), return an
-empty decomposition array and an empty explainer_text — the row is fine
-without a Stage-1 explainer.
+USE JUDGMENT — an explainer is only useful when the sentence has TWO OR
+MORE meaningful chunks to decompose. The Stage-1 explainer earns its
+keep by helping the learner see "this longer target breaks down into
+these reusable pieces". If the target sentence consists of only ONE
+meaningful chunk (after dropping any proper nouns), the explainer
+adds nothing — the target/known pair already conveys the same one
+mapping. Return an empty decomposition and empty explainer_text in
+that case.
 
-EXAMPLE 1 — Italian-for-English with no proper nouns (connector "means"):
+Specifically:
+- PROPER NOUNS — names of people, places, brands — are NOT translated
+  and are NOT explained. Drop them entirely from the decomposition.
+  "Giulia means Giulia" is noise.
+- After dropping proper nouns, if only ONE meaningful chunk remains
+  (e.g. "Buongiorno, Anna!" → only "buongiorno" is left), skip the
+  explainer for this sentence. Return empty decomposition + empty
+  explainer_text. The player gracefully shows no Stage-1 slot.
+- If the sentence is purely a proper noun ("Sarah!"), also empty.
+- If TWO OR MORE meaningful chunks remain, produce the full
+  decomposition + narration as described above.
+
+EXAMPLE 1 — multi-chunk, no proper nouns (explainer earns its keep):
    Input target: "Buona sera, come stai?"
    Input known:  "Good afternoon, how are you doing?"
    Output entry:
@@ -146,16 +158,24 @@ EXAMPLE 1 — Italian-for-English with no proper nouns (connector "means"):
      "explainer_text": "buona means good, sera means afternoon, come stai means how are you doing"
    }
 
-EXAMPLE 2 — sentence containing a proper noun (note: "Giulia" is dropped):
+EXAMPLE 2 — single chunk after dropping name (no explainer needed):
    Input target: "Buongiorno, Giulia!"
    Input known:  "Good morning, Giulia!"
    Output entry:
    {
      "id": "<echo the input id>",
-     "decomposition": [
-       { "chunk_target": "buongiorno", "chunk_known": "good morning" }
-     ],
-     "explainer_text": "buongiorno means good morning"
+     "decomposition": [],
+     "explainer_text": ""
+   }
+
+EXAMPLE 3 — purely a name (no explainer):
+   Input target: "Anna!"
+   Input known:  "Anna!"
+   Output entry:
+   {
+     "id": "<echo the input id>",
+     "decomposition": [],
+     "explainer_text": ""
    }
 
 INPUT (one sentence per line):
