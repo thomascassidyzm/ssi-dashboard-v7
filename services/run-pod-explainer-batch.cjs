@@ -68,56 +68,28 @@ const AUDIO_PARALLEL = Number(process.env.AUDIO_PARALLEL) > 0
 const TARGET_POD_SUFFIX = 'pod-0'
 
 // =============================================================================
-// SSML voice-lang wrapping (V6)
+// Punctuation-based narration (P5)
 // =============================================================================
 //
-// xAI's auto-detect garbles short Latin-script target tokens — Italian
-// "come stai" reads as English "come" + "stay" — and the explainer needs
-// the target chunks to be IDENTIFIABLE to the learner. Wrapping each target
-// chunk in <voice xml:lang="..."> forces xAI to switch language for that
-// span, producing audibly correct target pronunciation while the English
-// "means …" connector stays in the clone voice's natural English.
+// xAI's auto-detect garbles short Latin-script target tokens (Italian "come
+// stai" reads as English "come" + "stay") unless given a clear segmentation
+// cue. SSML <voice xml:lang="..."> markup (the previous V6 approach) worked
+// most of the time but xAI's parser is unreliable: ~5-15% of clips leaked the
+// closing-tag word "voice" as an audible token in production.
 //
-// Tested 2026-05-19 across ita/fra/por/spa/zho: Tom rated V6 "FANTASTIC".
-// Stored prose (explainer_text) stays clean for dashboard display — the
-// markup is rebuilt at TTS time from explainer_decomposition.
+// Punctuation does the same job without anything to misparse. The P5 form
+// (Tom-validated 2026-05-20 across spa + ita, 5 takes each):
+//
+//   "buongiorno". means good morning. "come stai". means how are you doing.
+//
+// Double-quoting + a period after each target chunk gives xAI an unambiguous
+// "this is a discrete foreign-language token" cue — pronunciation matches
+// the V6 SSML version (correct Italian "come"), with no markup leakage.
+// Stored explainer_text in DB stays clean prose for dashboard display; the
+// quoted form is rebuilt at TTS time from explainer_decomposition.
 
-// Map course code (e.g. ita_for_eng) → BCP-47 tag for the <voice xml:lang>
-// wrapper. xAI accepts the BCP-47 form for its multilingual code-switching.
-const COURSE_TO_BCP47 = {
-  ita_for_eng: 'it',
-  fra_for_eng: 'fr',
-  por_for_eng: 'pt',
-  por_br_for_eng: 'pt-BR',
-  spa_for_eng: 'es',
-  spa_mx_for_eng: 'es-MX',
-  zho_for_eng: 'zh',
-  deu_for_eng: 'de',
-  nld_for_eng: 'nl',
-  pol_for_eng: 'pl',
-  tur_for_eng: 'tr',
-  rus_for_eng: 'ru',
-  jpn_for_eng: 'ja',
-  kor_for_eng: 'ko',
-  hin_for_eng: 'hi',
-  ara_for_eng: 'ar',
-  fra_ca_for_eng: 'fr-CA',
-  hrv_for_eng: 'hr',
-}
-
-function targetBcp47(courseCode) {
-  if (COURSE_TO_BCP47[courseCode]) return COURSE_TO_BCP47[courseCode]
-  // Fallback: take first 2 chars of the target language half. Works for most
-  // ISO-639-3 → ISO-639-1 short codes but won't be perfect — log so we notice.
-  const target = String(courseCode).split('_for_')[0]
-  log(`[${courseCode}] WARN: no BCP-47 mapping, falling back to "${target.slice(0, 2)}"`)
-  return target.slice(0, 2)
-}
-
-function buildExplainerSsml(decomposition, bcp47) {
-  // Wrap each target chunk in <voice xml:lang="..."> so xAI pronounces it
-  // in the target language. Connector "means" + known meaning stay outside
-  // the wrapper so they read in the clone voice's English.
+function buildExplainerNarration(decomposition) {
+  // Build "X". means Y. "A". means B. from the structured chunk list.
   // Returns null if decomposition is empty/malformed — caller falls back
   // to plain explainer_text.
   if (!Array.isArray(decomposition) || decomposition.length === 0) return null
@@ -126,9 +98,9 @@ function buildExplainerSsml(decomposition, bcp47) {
     if (!chunk || typeof chunk.chunk_target !== 'string' || typeof chunk.chunk_known !== 'string') {
       return null
     }
-    parts.push(`<voice xml:lang="${bcp47}">${chunk.chunk_target}</voice> means ${chunk.chunk_known}`)
+    parts.push(`"${chunk.chunk_target}". means ${chunk.chunk_known}.`)
   }
-  return parts.join(', ')
+  return parts.join(' ')
 }
 
 // =============================================================================
@@ -282,7 +254,6 @@ async function runAudioPass(courseCode) {
   log(`[${courseCode}] audio: ${(rows || []).length} sentences to render`)
   if (!rows || rows.length === 0) return { rendered: 0, reused: 0, failed: 0 }
 
-  const bcp47 = targetBcp47(courseCode)
   const { generatePodAudio } = getPhase8()
   let rendered = 0
   let reused = 0
@@ -296,11 +267,11 @@ async function runAudioPass(courseCode) {
     const wave = rows.slice(i, i + AUDIO_PARALLEL)
     await Promise.all(wave.map(async row => {
       try {
-        // Prefer the SSML form built from the structured decomposition; if
-        // that's missing/malformed (legacy rows before the explainer columns
-        // landed) fall back to the flat explainer_text so we still render.
-        const ssml = buildExplainerSsml(row.explainer_decomposition, bcp47)
-        const ttsText = ssml || row.explainer_text
+        // Prefer the P5-quoted form built from the structured decomposition;
+        // if that's missing/malformed (legacy rows before the explainer
+        // columns landed) fall back to the flat explainer_text.
+        const narration = buildExplainerNarration(row.explainer_decomposition)
+        const ttsText = narration || row.explainer_text
         const result = await generatePodAudio({
           courseCode,
           text: ttsText,
