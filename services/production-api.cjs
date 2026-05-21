@@ -350,30 +350,6 @@ app.get('/api/auth/me', async (req, res) => {
   return res.status(401).json({ error: 'No session or email provided' })
 })
 
-// POST /api/auth/dev-login — dev bypass, only in non-production
-const DEV_ACCOUNTS = ['thomas.cassidy+ssi@gmail.com', 'test@test.com']
-app.post('/api/auth/dev-login', async (req, res) => {
-  if (process.env.NODE_ENV === 'production') return res.status(403).json({ error: 'Dev login not available in production' })
-  const { email } = req.body
-  if (!email) return res.status(400).json({ error: 'Email required' })
-  if (!DEV_ACCOUNTS.includes(email)) return res.status(403).json({ error: 'Email not in dev accounts list' })
-  try {
-    let user = await authGetUser(email)
-    if (!user) {
-      // Auto-create dev user in DB so FK constraint on sessions is satisfied
-      const devUser = { email, name: email.split('@')[0], role: 'admin', courses: '"*"' }
-      await supabaseClient.getClient().from('dashboard_users').upsert(devUser, { onConflict: 'email' })
-      user = { name: devUser.name, email, role: 'admin', courses: '*' }
-    }
-    const session = await authCreateSession(email)
-    logger.info(`[Auth] Dev login for ${email}`)
-    res.json({ success: true, session: session.sessionId, user: session.user || user, expires: session.expires })
-  } catch (err) {
-    logger.error('[Auth] Dev login error:', err)
-    res.status(500).json({ error: 'Dev login failed' })
-  }
-})
-
 // POST /api/auth/invite-dashboard — create Supabase Auth account + learner with dashboard access
 app.post('/api/auth/invite-dashboard', async (req, res) => {
   const adminUser = await requireAdmin(req, res)

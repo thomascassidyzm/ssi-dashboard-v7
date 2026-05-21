@@ -633,10 +633,6 @@ interface FrontendState:
         endpoint: "/api/auth/me"
         purpose: "Check current session validity"
 
-      - method: POST
-        endpoint: "/api/auth/dev-login"
-        purpose: "Development bypass login"
-
   ## --------------------------------------------------------------------------
   ## useAutocueState - Teleprompter Workflow
   ## --------------------------------------------------------------------------
