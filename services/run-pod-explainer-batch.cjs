@@ -145,9 +145,13 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 
 // Lazy-load the phase8 helpers — that module pulls in the full audio
 // server graph, so only require() it when audio gen is actually needed.
+// PHASE8_NO_LISTEN suppresses its app.listen() so we don't grab PORT 3465.
 let phase8 = null
 function getPhase8() {
-  if (!phase8) phase8 = require('./phases/phase8-audio-v13.cjs')
+  if (!phase8) {
+    process.env.PHASE8_NO_LISTEN = '1'
+    phase8 = require('./phases/phase8-audio-v13.cjs')
+  }
   return phase8
 }
 
