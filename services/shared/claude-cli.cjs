@@ -37,7 +37,18 @@ function claudeChat(prompt, options = {}) {
       env: { ...process.env, CLAUDECODE: '' }
     }, (error, stdout, stderr) => {
       if (error) {
-        reject(new Error(`claude --print failed: ${error.message}`))
+        // Surface the actual failure shape — execFile's error.message is
+        // just 'Command failed: ...' which hides everything useful. We
+        // need stderr (CLI error text), exit code, signal, and the first
+        // chunk of stdout (CLI may print partial JSON before dying) to
+        // diagnose whether it's a timeout, a parse error, a rate-limit
+        // response, or something else.
+        const parts = [`claude --print failed (code=${error.code}, signal=${error.signal || 'none'}, killed=${!!error.killed})`]
+        const stderrTrim = (stderr || '').trim()
+        if (stderrTrim) parts.push(`stderr: ${stderrTrim.slice(0, 800)}`)
+        const stdoutTrim = (stdout || '').trim()
+        if (stdoutTrim) parts.push(`stdout-head: ${stdoutTrim.slice(0, 400)}`)
+        reject(new Error(parts.join(' | ')))
         return
       }
       resolve(stdout.trim())

@@ -266,7 +266,21 @@ async function generateForBatch({ courseCode, sentences }) {
     learnerLang: learner,
     connector,
   })
-  const raw = await claudeChat(prompt, { model: 'haiku' })
+  // Default Haiku for cost/speed. EXPLAINER_MODEL=sonnet lets the
+  // overnight runner escalate when Haiku struggles on a particular
+  // language's batches (Japanese / Korean explainer prompts have a
+  // higher failure rate, likely from JSON-array escaping around CJK
+  // characters in the model's response).
+  //
+  // Timeout: claudeChat defaults to 120s — fine for Haiku on Latin
+  // batches, too tight for Sonnet on a 12-sentence CJK batch where
+  // the JSON output alone runs 3-4k tokens. Bump to 5 minutes so
+  // legitimate slow generations complete instead of getting SIGTERM'd
+  // with a useless 'Command failed' error.
+  const raw = await claudeChat(prompt, {
+    model: process.env.EXPLAINER_MODEL || 'haiku',
+    timeout: 5 * 60 * 1000,
+  })
   return parseBatchResponse(raw)
 }
 

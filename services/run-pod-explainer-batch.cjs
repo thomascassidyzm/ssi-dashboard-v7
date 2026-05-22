@@ -50,8 +50,16 @@ const EXPLAINER_LANGUAGE = 'auto'         // xAI multilingual handles code-switc
 const EXPLAINER_ROLE = 'pod_explainer'
 const EXPLAINER_PROVIDER = 'xai'
 
-const TEXT_BATCH_SIZE = 12
-const TEXT_PARALLEL = 4
+const TEXT_BATCH_SIZE = Number(process.env.TEXT_BATCH_SIZE) > 0
+  ? Math.floor(Number(process.env.TEXT_BATCH_SIZE))
+  : 12
+// TEXT_PARALLEL=4 is the default for healthy Claude CLI throughput. When
+// Anthropic's CLI subscription is throttling concurrent invocations (whole
+// waves failing with bare 'Command failed') drop to 1 for fully-serialised
+// mop-up: TEXT_PARALLEL=1 EXPLAINER_MODEL=sonnet node services/run-pod-...
+const TEXT_PARALLEL = Number(process.env.TEXT_PARALLEL) > 0
+  ? Math.floor(Number(process.env.TEXT_PARALLEL))
+  : 4
 // Parallel-4 is the sweet spot for healthy xAI endpoint: full 537-clip V6 regen
 // on 2026-05-19 hit 0 failures in 277s. Earlier in the same day we saw ECONNRESETs
 // at parallel-2 — turned out to be an xAI infrastructure spell, not a load issue,
