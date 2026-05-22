@@ -48,6 +48,7 @@ const supabaseClient = require('../supabase-client.cjs')
 const s3Service = require('../s3-service.cjs')
 const uuidService = require('../uuid-service.cjs')
 const languageCodeService = require('../language-code-service.cjs')
+const audioProcessor = require('../audio-processor.cjs')
 
 // =============================================================================
 // CONSTANTS
@@ -846,13 +847,15 @@ async function concatenateWithPauses(audioPaths, outputPath, pauseMs = 1000) {
   fs.mkdirSync(workDir, { recursive: true })
 
   try {
-    // Create silence file
+    // Create silence file via ffmpeg→lame pipe (ffmpeg's MP3 muxer breaks iOS playback)
     const silencePath = path.join(workDir, 'silence.mp3')
     const silenceDuration = pauseMs / 1000
-    execSync(
-      `ffmpeg -f lavfi -i anullsrc=r=44100:cl=stereo -t ${silenceDuration} -q:a 2 "${silencePath}" -y 2>/dev/null`,
-      { stdio: 'pipe' }
-    )
+    await audioProcessor.ffmpegFilterToLameMp3(null, silencePath, {
+      ffmpegInputArgs: ['-f', 'lavfi'],
+      inputOverride: `anullsrc=r=44100:cl=stereo:d=${silenceDuration}`,
+      channels: 2,
+      sampleRate: 44100
+    })
 
     // Create concat list file
     const listPath = path.join(workDir, 'list.txt')
@@ -868,12 +871,14 @@ async function concatenateWithPauses(audioPaths, outputPath, pauseMs = 1000) {
 
     fs.writeFileSync(listPath, listContent.join('\n'))
 
-    // Concatenate using FFmpeg concat demuxer with re-encoding
-    // Re-encoding handles any format variations between input files
-    execSync(
-      `ffmpeg -f concat -safe 0 -i "${listPath}" -ar 44100 -ac 2 -b:a 192k "${outputPath}" -y 2>/dev/null`,
-      { stdio: 'pipe' }
-    )
+    // Concatenate using ffmpeg concat demuxer → lame pipe
+    await audioProcessor.ffmpegFilterToLameMp3(null, outputPath, {
+      ffmpegInputArgs: ['-f', 'concat', '-safe', '0'],
+      inputOverride: listPath,
+      channels: 2,
+      sampleRate: 44100,
+      bitrate: 192
+    })
 
     return true
   } finally {
