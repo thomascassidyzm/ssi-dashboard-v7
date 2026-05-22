@@ -1195,7 +1195,8 @@ async function startBuildTeam() {
     const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/build/team-start/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ targetSeeds: seedCount.value })
     })
     const result = await response.json()
     if (result.ok) {
