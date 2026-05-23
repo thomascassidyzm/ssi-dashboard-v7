@@ -9441,9 +9441,14 @@ app.post('/api/admin/audit-cleanup', async (req, res) => {
     const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString()
     // Batch the delete: a single DELETE on millions of rows hits Postgres's
     // statement_timeout. We page through old rows by id and delete in
-    // chunks of 5,000, capped at 60s of wall time per request — partial
-    // progress is still progress, the next click finishes the job.
-    const BATCH = 5000
+    // chunks, capped at 60s of wall time per request — partial progress is
+    // still progress, the next click finishes the job.
+    //
+    // BATCH=500 because PostgREST builds the DELETE as
+    // `?id=in.(uuid1,uuid2,...)` in the URL — 500 UUIDs is ~4KB which sits
+    // comfortably under typical URL limits, 5,000 was ~40KB which the
+    // ngrok/PostgREST layer rejected with 400 Bad Request.
+    const BATCH = 500
     const DEADLINE_MS = 60_000
     const start = Date.now()
     let totalDeleted = 0
