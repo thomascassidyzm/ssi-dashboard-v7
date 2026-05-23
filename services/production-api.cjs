@@ -9265,8 +9265,13 @@ app.get('/api/admin/audit-events', async (req, res) => {
       ? Math.floor(offsetRaw)
       : 0
 
+    // `count: 'estimated'` because content_audit_log is ~9M rows and growing.
+    // An exact count requires Postgres to scan and count every matching row,
+    // which hits the 8s statement_timeout on this table. The estimated count
+    // is good enough for the UI ("~60k events in last 24h") and the page
+    // through is independent of the count value anyway.
     let q = sb.from('content_audit_log')
-      .select('id,changed_at,change_type,table_name,primary_key,changed_by_role,changed_by_uid,old_row', { count: 'exact' })
+      .select('id,changed_at,change_type,table_name,primary_key,changed_by_role,changed_by_uid,old_row', { count: 'estimated' })
       .gte('changed_at', since)
       .order('changed_at', { ascending: false })
       .range(offset, offset + limit - 1)
@@ -9832,49 +9837,80 @@ app.get('/api/admin/db-health', async (req, res) => {
     const scrapeMs = Date.now() - scrapeStart
     const samples = parsePrometheusText(text)
 
-    // Pull out the metrics that matter. Names follow Supabase's exposition:
-    //   pg_stat_database_*           per-database counters
-    //   pg_stat_database_conflicts_* conflicts (incl. statement_timeout cancellations)
-    //   pg_stat_activity_count       current connection count (postgres_exporter)
-    //   pg_settings_max_connections  pool ceiling
-    //   pg_replication_lag           replica lag in seconds (if any replicas)
-    // Some names have varied across exporter versions; we look first and fall
-    // back where sensible. Anything we can't find returns null and gets logged.
+    // Pull out the metrics that matter. Supabase's exposition (as of May 2026)
+    // uses _total-suffixed counters (Prometheus convention) and num_backends
+    // with an underscore. Older code looked for un-suffixed names which no
+    // longer match — we use the suffixed names with the un-suffixed names as
+    // fallbacks so older exporter versions still work.
+    //
+    //   pg_stat_database_blks_hit_total / _blks_read_total   cache hit rate
+    //   pg_stat_database_xact_commit_total / _xact_rollback_total
+    //   pg_stat_database_deadlocks_total / _conflicts_total
+    //   pg_stat_database_num_backends                        active connections (gauge)
+    //   max_connections_connection_count                     pool ceiling
+    //   physical_replication_lag_*                           replica lag (if any)
+    //   pg_database_size_bytes                               on-disk size
+    //
+    // Anything we can't find returns null and gets logged.
     const isMainDb = (l) => !l.datname || l.datname === 'postgres'
 
-    const blksHit = sumMetric(samples, 'pg_stat_database_blks_hit', isMainDb)
-    const blksRead = sumMetric(samples, 'pg_stat_database_blks_read', isMainDb)
+    // Cache hit rate
+    const blksHit =
+      sumMetric(samples, 'pg_stat_database_blks_hit_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_blks_hit', isMainDb)
+    const blksRead =
+      sumMetric(samples, 'pg_stat_database_blks_read_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_blks_read', isMainDb)
     const cacheHitRate = (blksHit && blksRead && (blksHit.value + blksRead.value) > 0)
       ? blksHit.value / (blksHit.value + blksRead.value)
       : null
 
-    const xactCommit = sumMetric(samples, 'pg_stat_database_xact_commit', isMainDb)
-    const xactRollback = sumMetric(samples, 'pg_stat_database_xact_rollback', isMainDb)
+    // Transaction counters
+    const xactCommit =
+      sumMetric(samples, 'pg_stat_database_xact_commit_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_xact_commit', isMainDb)
+    const xactRollback =
+      sumMetric(samples, 'pg_stat_database_xact_rollback_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_xact_rollback', isMainDb)
 
     // Statement-timeout cancellations show up as deadlocks + confl_* counters
-    // depending on exporter version. We surface deadlocks (clear) and a
-    // generic "cancelled queries" total from pg_stat_database_conflicts where
-    // available — both are the failure modes that mask slow queries.
-    const deadlocks = sumMetric(samples, 'pg_stat_database_deadlocks', isMainDb)
-    const conflicts = sumMetric(samples, 'pg_stat_database_conflicts', isMainDb)
+    // depending on exporter version. We surface deadlocks (clear) and the
+    // aggregate conflicts_total — both are the failure modes that mask slow
+    // queries.
+    const deadlocks =
+      sumMetric(samples, 'pg_stat_database_deadlocks_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_deadlocks', isMainDb)
+    const conflicts =
+      sumMetric(samples, 'pg_stat_database_conflicts_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_conflicts', isMainDb)
 
-    // Connections: count current vs max. The exporter sometimes reports
-    // pg_stat_activity_count, sometimes pg_stat_database_numbackends.
+    // Active connections: gauge — current backend count.
+    // num_backends (with underscore) is what current Supabase exports.
     const activeConnections =
-      firstMetric(samples, 'pg_stat_activity_count', isMainDb)
+      sumMetric(samples, 'pg_stat_database_num_backends', isMainDb)?.value
+      ?? firstMetric(samples, 'pg_stat_activity_count', isMainDb)
       ?? sumMetric(samples, 'pg_stat_database_numbackends', isMainDb)?.value
       ?? null
+
+    // Max connections: Supabase exposes max_connections_connection_count.
+    // Older exporters used pg_settings_max_connections; keep as fallback.
     const maxConnections =
-      firstMetric(samples, 'pg_settings_max_connections')
+      firstMetric(samples, 'max_connections_connection_count')
+      ?? firstMetric(samples, 'pg_settings_max_connections')
       ?? null
+
     const poolUtilization = (activeConnections != null && maxConnections != null && maxConnections > 0)
       ? activeConnections / maxConnections
       : null
 
-    // Replication lag — only present if replicas exist. null is the right
-    // answer for the no-replica case; we don't show it as a failure.
+    // Replication lag — Supabase currently exposes a boolean
+    // physical_replication_lag_is_connected_to_primary plus per-slot bytes
+    // metrics, but no straight seconds figure. We keep the old name lookups
+    // for forward compatibility; null is the correct answer when nothing
+    // seconds-shaped is present.
     const replicationLagSeconds =
-      firstMetric(samples, 'pg_replication_lag')
+      firstMetric(samples, 'physical_replication_lag_seconds')
+      ?? firstMetric(samples, 'pg_replication_lag')
       ?? firstMetric(samples, 'pg_stat_replication_lag_seconds')
       ?? null
 
