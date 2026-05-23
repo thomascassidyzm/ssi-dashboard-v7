@@ -197,7 +197,7 @@
                     </div>
                   </div>
                   <div
-                    v-for="field in diffFields(ev.old_row, currentRows[ev.id]?.current)"
+                    v-for="field in diffFields(currentRows[ev.id]?.old_row, currentRows[ev.id]?.current)"
                     :key="field.key"
                     class="diff-row"
                     :class="{ 'diff-changed': field.changed }"
@@ -560,11 +560,15 @@ async function toggleExpand(id) {
   if (!ev) return
   currentRows.value = { ...currentRows.value, [id]: 'loading' }
   try {
-    const params = new URLSearchParams({ table: ev.table_name, pk: ev.primary_key || '' })
+    const params = new URLSearchParams({
+      table: ev.table_name,
+      pk: ev.primary_key || '',
+      event_id: String(ev.id),
+    })
     const r = await authedFetch(`/api/admin/audit-row?${params.toString()}`)
     const body = await r.json()
     if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
-    currentRows.value = { ...currentRows.value, [id]: { current: body.current } }
+    currentRows.value = { ...currentRows.value, [id]: { current: body.current, old_row: body.old_row } }
   } catch (e) {
     currentRows.value = { ...currentRows.value, [id]: { error: e.message } }
   }

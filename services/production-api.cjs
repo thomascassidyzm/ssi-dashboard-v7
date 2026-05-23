@@ -9270,8 +9270,13 @@ app.get('/api/admin/audit-events', async (req, res) => {
     // which hits the 8s statement_timeout on this table. The estimated count
     // is good enough for the UI ("~60k events in last 24h") and the page
     // through is independent of the count value anyway.
+    // Deliberately omit old_row from the list select. Some old_row JSONB
+    // payloads are very large (a single course_legos snapshot can be ~100 KB);
+    // shipping 100 of them tipped this query past the statement_timeout under
+    // production network conditions. The expanded-row UI fetches old_row via
+    // /api/admin/audit-row?event_id=… on demand instead.
     let q = sb.from('content_audit_log')
-      .select('id,changed_at,change_type,table_name,primary_key,changed_by_role,changed_by_uid,old_row', { count: 'estimated' })
+      .select('id,changed_at,change_type,table_name,primary_key,changed_by_role,changed_by_uid', { count: 'estimated' })
       .gte('changed_at', since)
       .order('changed_at', { ascending: false })
       .range(offset, offset + limit - 1)
@@ -9324,26 +9329,55 @@ const AUDIT_TABLE_PK = {
   shared_audio: 'id'
 }
 
-// GET /api/admin/audit-row?table=X&pk=Y — fetch the current live row at
-// (table, primary_key). Used by the Maintenance UI to render a captured-vs-
-// current diff when an audit event is expanded. Returns { current: row | null };
-// null means the row no longer exists (was deleted since the captured snapshot).
+// GET /api/admin/audit-row?table=X&pk=Y[&event_id=N] — fetch the current
+// live row at (table, primary_key), and optionally the captured old_row
+// + change_type for a specific audit event id. Used by the Maintenance UI
+// to render a captured-vs-current diff when an audit event is expanded.
+//
+// Returns { current, old_row, change_type }:
+//   current     — current live row, or null if it no longer exists (deleted
+//                 since the captured snapshot)
+//   old_row     — the captured snapshot from content_audit_log for the
+//                 given event_id, or null if event_id not provided/not found
+//   change_type — 'UPDATE' | 'DELETE' for that event, or null
+//
+// old_row is fetched per-row on expand rather than included in the list
+// query because some old_row JSONB payloads are very large (~100 KB) and
+// shipping 100 of them in the list response tipped that query past the
+// statement_timeout.
 app.get('/api/admin/audit-row', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const tableName = String(req.query.table || '')
   const pkValue = String(req.query.pk || '')
+  const eventId = req.query.event_id ? String(req.query.event_id) : null
   if (!tableName || !pkValue) return res.status(400).json({ error: 'table + pk required' })
   const pkCol = AUDIT_TABLE_PK[tableName]
   if (!pkCol) return res.status(400).json({ error: `unknown table ${tableName}` })
   try {
     const sb = supabaseClient.getClient()
-    const { data, error } = await sb
-      .from(tableName)
-      .select('*')
-      .eq(pkCol, pkValue)
-      .maybeSingle()
-    if (error) throw error
-    res.json({ current: data ?? null })
+    const queries = [
+      sb.from(tableName).select('*').eq(pkCol, pkValue).maybeSingle(),
+    ]
+    if (eventId) {
+      queries.push(
+        sb.from('content_audit_log')
+          .select('old_row,change_type')
+          .eq('id', eventId)
+          .maybeSingle()
+      )
+    }
+    const results = await Promise.all(queries)
+    const currentRes = results[0]
+    const eventRes = eventId ? results[1] : null
+    if (currentRes.error) throw currentRes.error
+    if (eventRes?.error) {
+      logger.warn('[Audit] event_id fetch failed:', eventRes.error.message)
+    }
+    res.json({
+      current: currentRes.data ?? null,
+      old_row: eventRes?.data?.old_row ?? null,
+      change_type: eventRes?.data?.change_type ?? null,
+    })
   } catch (e) {
     logger.error('[Audit] row fetch error:', e.message)
     res.status(500).json({ error: e.message })
