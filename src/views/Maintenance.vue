@@ -62,6 +62,12 @@
         <span v-if="lastResult.more_remaining"> More remaining — click again to continue.</span>
       </p>
 
+      <p class="auto-prune-note">
+        <strong>Auto-prune:</strong> entries older than 7 days are removed daily at 03:00 UTC by a pg_cron job.
+        Use the manual cleanup above to prune sooner (e.g. after a known incident).
+        Anything older than 7 days has to be recovered from the daily Supabase backup, not from this log.
+      </p>
+
       <h2 class="section-title section-title-secondary">Recent changes</h2>
       <p class="section-blurb">
         Feed of recent UPDATE / DELETE activity. Click a row to inspect the
@@ -191,7 +197,7 @@
                     </div>
                   </div>
                   <div
-                    v-for="field in diffFields(ev.old_row, currentRows[ev.id]?.current)"
+                    v-for="field in diffFields(currentRows[ev.id]?.old_row, currentRows[ev.id]?.current)"
                     :key="field.key"
                     class="diff-row"
                     :class="{ 'diff-changed': field.changed }"
@@ -554,11 +560,15 @@ async function toggleExpand(id) {
   if (!ev) return
   currentRows.value = { ...currentRows.value, [id]: 'loading' }
   try {
-    const params = new URLSearchParams({ table: ev.table_name, pk: ev.primary_key || '' })
+    const params = new URLSearchParams({
+      table: ev.table_name,
+      pk: ev.primary_key || '',
+      event_id: String(ev.id),
+    })
     const r = await authedFetch(`/api/admin/audit-row?${params.toString()}`)
     const body = await r.json()
     if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
-    currentRows.value = { ...currentRows.value, [id]: { current: body.current } }
+    currentRows.value = { ...currentRows.value, [id]: { current: body.current, old_row: body.old_row } }
   } catch (e) {
     currentRows.value = { ...currentRows.value, [id]: { error: e.message } }
   }
@@ -914,6 +924,18 @@ onMounted(() => {
   font-size: 13px;
   color: #86efac;
 }
+
+.auto-prune-note {
+  margin-top: 18px;
+  padding: 12px 14px;
+  background: rgba(30, 41, 59, 0.45);
+  border-left: 3px solid rgba(148, 163, 184, 0.35);
+  border-radius: 4px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #cbd5e1;
+}
+.auto-prune-note strong { color: #f1f5f9; }
 
 .modal-backdrop {
   position: fixed;
