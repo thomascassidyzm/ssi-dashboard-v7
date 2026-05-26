@@ -25,6 +25,7 @@ const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
+const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
 const {
   isBlockedByCheckpoint, getCheckpointStatus, getCheckpointConfig,
   isCheckpointRequired, approveCheckpoint, isQAPending,
@@ -543,6 +544,11 @@ module.exports = function seedCompleteRoutes(ctx) {
             .from('course_practice_phrases')
             .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
           if (phraseError) throw phraseError;
+
+          // Build-time phrase decomposition. Non-blocking by contract (see
+          // phrase-decomposition-writer.cjs) — failures log + skip, leaving
+          // decomposition NULL so the runtime fallback picks up.
+          await decoratePhrasesWithDecomposition(ctx.supabase, allPhraseRows);
         }
       }
 
@@ -725,6 +731,10 @@ module.exports = function seedCompleteRoutes(ctx) {
               .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
             if (phraseError) throw phraseError;
             totalPhrases += allPhraseRows.length;
+
+            // Build-time phrase decomposition (see PHRASE_DECOMPOSITION_SPEC.md).
+            // Non-blocking — failures leave decomposition NULL for runtime fallback.
+            await decoratePhrasesWithDecomposition(ctx.supabase, allPhraseRows);
           }
         }
 

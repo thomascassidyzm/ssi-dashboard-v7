@@ -39,6 +39,7 @@
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const createLogger = require('./shared/logger.cjs');
+const { decoratePhrasesWithDecomposition } = require('./phrase-decomposition-writer.cjs');
 
 const logger = createLogger('CourseData');
 
@@ -628,6 +629,14 @@ async function savePracticePhrase(courseCode, seedNumber, legoIndex, phraseData,
     .single();
 
   if (error) throw error;
+
+  // Build-time phrase decomposition (PHRASE_DECOMPOSITION_SPEC.md).
+  // Fire-and-forget at the call-site level: failures are swallowed inside
+  // decoratePhrasesWithDecomposition (logged, count returned). We await it
+  // here so the row is consistent before the caller reads it back, but a
+  // throw inside the decorator would have been caught — by design it never
+  // throws to its caller.
+  await decoratePhrasesWithDecomposition(supabase, [data], { logger: msg => logger.warn(msg) });
   return data;
 }
 

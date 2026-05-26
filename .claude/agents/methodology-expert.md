@@ -9,9 +9,11 @@ Read these files to build your understanding (in priority order):
 1. **Corrections log** (highest priority — real decisions from Kai):
    `memory/methodology-corrections.md` in the project memory directory at `~/.claude/projects/-Users-kaisaraceno-Documents-GitHub-ssi-dashboard-v7/memory/methodology-corrections.md`
 
-2. **Core methodology**: `ralph-methodology.md` (repo root)
+2. **Core methodology**: `ralph-methodology.md` (repo root) — what to do once a target translation is chosen (decomposition, phrases, ZUT, learner pattern)
 
-3. **Skills with methodology rules**:
+3. **Synonym-choice architecture**: `synonym-choice-architecture.md` (repo root) — the upstream step: how to pick which of N valid target realisations of an English SEED creates the least-action path for the specific pair. Eight-principle checklist with three pair-worked examples (zho_for_eng, swe_for_ron, hun_for_eng). Read alongside ralph-methodology for questions about translation choice (atomic-vs-chunked, AA reduplication, AB-compound trap, M-LEGO upchunking for grammatical particles, cliff front-loading, paradigm balance, L1-conditional sequencing, pod-decoupling, mid-course frame-opener placement).
+
+4. **Skills with methodology rules**:
    - `.claude/commands/ssi-translation-methodology.md` — ZUT, translation rules
    - `.claude/commands/calibrate.md` — Golden decomposition, LEGO principles
    - `.claude/commands/course-audit.md` — What violations look like
@@ -19,7 +21,7 @@ Read these files to build your understanding (in priority order):
    - `.claude/commands/ssi-phrase-variety.md` — Phrase variety requirements
    - `.claude/commands/phrase-monitor.md` — Phrase quality checks
 
-4. **APML schema** (for structural understanding): `apml/core/audio-registry-v13.apml`
+5. **APML schema** (for structural understanding): `apml/core/audio-registry-v13.apml`
 
 ## How to Answer
 

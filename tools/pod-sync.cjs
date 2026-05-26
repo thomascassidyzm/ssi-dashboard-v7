@@ -53,9 +53,12 @@ const FEMALE_NAMES = new Set([
   'giulia', 'francesca', 'sofia', 'alessia', 'chiara',
   'claire', 'marie', 'sophie', 'amélie', 'amelie', 'camille',
   'catarina', 'inês', 'ines', 'mariana', 'beatriz',
-  // French roles (-e / -euse / -ière)
+  // French roles (-e / -euse / -ière / -ère / -trice)
   'voisine', 'serveuse', 'amie', 'cliente', 'vendeuse', 'pharmacienne',
   'touriste', 'locale', 'passagère', 'réceptionniste',
+  'boulangère', 'bouchère', 'pâtissière', 'patissière', 'fromagère',
+  'caissière', 'coiffeuse', 'infirmière', 'institutrice', 'employée',
+  'directrice', 'commerçante', 'épicière', 'fleuriste',
   // Italian roles
   'cameriera', 'amica', 'vicina', 'cliente', 'commessa', 'farmacista',
   'turista', 'passeggera',

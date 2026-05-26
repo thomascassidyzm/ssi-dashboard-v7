@@ -40,6 +40,21 @@ const { spawnCourseBuilder, spawnPhraseMonitor } = require('../shared/spawn-cour
 // Load .env file for AWS credentials etc.
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
+// CRITICAL: scrub ANTHROPIC_API_KEY immediately after dotenv loads it.
+//
+// The .env file carries an Anthropic API key for the dashboard's
+// "future API-mode environment switcher" feature, but the key is NEVER
+// supposed to be visible to service code or to spawned Claude CLI
+// agents. If a child `claude` process inherits ANTHROPIC_API_KEY in its
+// env, the CLI silently switches from the Pro Max subscription to
+// per-token API billing — Maltese-for-English course gen on 2026-05-17
+// burned $42 that way before it was noticed.
+//
+// Don't relax this. If you genuinely need an API key for some service
+// path, read it from a separate env var name (e.g. ANTHROPIC_API_KEY_DASHBOARD)
+// that won't leak into spawned Claude CLI processes.
+delete process.env.ANTHROPIC_API_KEY;
+
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3456;
 const VFS_ROOT = process.env.VFS_ROOT;

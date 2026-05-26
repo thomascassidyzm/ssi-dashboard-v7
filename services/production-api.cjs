@@ -27,6 +27,7 @@ const voiceDiscoveryService = require('./voice-discovery-service.cjs')
 const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
+const { decomposeText } = require('./phrase-decomposer.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -358,30 +359,6 @@ app.get('/api/auth/me', async (req, res) => {
   }
 
   return res.status(401).json({ error: 'No session or email provided' })
-})
-
-// POST /api/auth/dev-login — dev bypass, only in non-production
-const DEV_ACCOUNTS = ['thomas.cassidy+ssi@gmail.com', 'test@test.com']
-app.post('/api/auth/dev-login', async (req, res) => {
-  if (process.env.NODE_ENV === 'production') return res.status(403).json({ error: 'Dev login not available in production' })
-  const { email } = req.body
-  if (!email) return res.status(400).json({ error: 'Email required' })
-  if (!DEV_ACCOUNTS.includes(email)) return res.status(403).json({ error: 'Email not in dev accounts list' })
-  try {
-    let user = await authGetUser(email)
-    if (!user) {
-      // Auto-create dev user in DB so FK constraint on sessions is satisfied
-      const devUser = { email, name: email.split('@')[0], role: 'admin', courses: '"*"' }
-      await supabaseClient.getClient().from('dashboard_users').upsert(devUser, { onConflict: 'email' })
-      user = { name: devUser.name, email, role: 'admin', courses: '*' }
-    }
-    const session = await authCreateSession(email)
-    logger.info(`[Auth] Dev login for ${email}`)
-    res.json({ success: true, session: session.sessionId, user: session.user || user, expires: session.expires })
-  } catch (err) {
-    logger.error('[Auth] Dev login error:', err)
-    res.status(500).json({ error: 'Dev login failed' })
-  }
 })
 
 // POST /api/auth/invite-dashboard — create Supabase Auth account + learner with dashboard access
@@ -3600,7 +3577,7 @@ app.get('/api/pods/:courseCode/:slug', async (req, res) => {
 
     const { data: sentences, error: sErr } = await supabase
       .from('listening_pod_sentences')
-      .select('id, scene_number, sentence_number, global_order, beat_label, speaker, target_text, known_text, target_audio_id, known_audio_id')
+      .select('id, scene_number, sentence_number, global_order, beat_label, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_decomposition, explainer_text, explainer_audio_id')
       .eq('pod_id', podId)
       .order('global_order')
     if (sErr) throw sErr
@@ -9827,33 +9804,40 @@ app.post('/api/admin/restart-machine', async (req, res) => {
 // Retention is manual: this endpoint surfaces the stats, the Clean button
 // runs the DELETE.
 
-// GET /api/admin/audit-stats — row count, oldest entry, days since oldest
+// GET /api/admin/audit-stats — row count, oldest entry, days since oldest.
+// Uses Postgres's planner row estimate (count:'estimated') instead of exact count.
+// The oldest-row query is best-effort: until the changed_at index exists (see
+// migration 20260517_content_audit_log_changed_at_index.sql), ORDER BY changed_at
+// is a full table scan and trips Postgres's 8s statement_timeout on a 4M-row log.
+// We swallow that timeout so the page still loads with row count visible —
+// "oldest" returns null and the panel shows "—" instead of 500-ing the whole tab.
 app.get('/api/admin/audit-stats', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   try {
     const sb = supabaseClient.getClient()
-    // Two cheap queries: one for count (HEAD), one for the oldest row
-    const { count, error: countErr } = await sb
-      .from('content_audit_log')
-      .select('*', { count: 'exact', head: true })
-    if (countErr) throw countErr
+    const [countRes, oldestRes] = await Promise.all([
+      sb.from('content_audit_log').select('*', { count: 'estimated', head: true }),
+      sb.from('content_audit_log').select('changed_at').order('changed_at', { ascending: true }).limit(1)
+    ])
+    if (countRes.error) throw countRes.error
+    if (oldestRes.error) {
+      logger.warn('[Audit] oldest-row query failed (likely missing index on changed_at):', oldestRes.error?.message)
+    }
 
-    const { data: oldestRows, error: oldErr } = await sb
-      .from('content_audit_log')
-      .select('changed_at')
-      .order('changed_at', { ascending: true })
-      .limit(1)
-    if (oldErr) throw oldErr
-
-    const oldest_at = oldestRows?.[0]?.changed_at ?? null
+    const oldest_at = oldestRes.error ? null : (oldestRes.data?.[0]?.changed_at ?? null)
     const days_since_oldest = oldest_at
       ? Math.floor((Date.now() - new Date(oldest_at).getTime()) / (1000 * 60 * 60 * 24))
       : null
 
-    res.json({ total_rows: count ?? 0, oldest_at, days_since_oldest })
+    res.json({
+      total_rows: countRes.count ?? 0,
+      oldest_at,
+      days_since_oldest,
+      oldest_unavailable: !!oldestRes.error,
+    })
   } catch (e) {
-    logger.error('[Audit] stats error:', e.message)
-    res.status(500).json({ error: e.message })
+    logger.error('[Audit] stats error:', e?.message || e?.code || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })
 
@@ -9887,8 +9871,18 @@ app.get('/api/admin/audit-events', async (req, res) => {
       ? Math.floor(offsetRaw)
       : 0
 
+    // `count: 'estimated'` because content_audit_log is ~9M rows and growing.
+    // An exact count requires Postgres to scan and count every matching row,
+    // which hits the 8s statement_timeout on this table. The estimated count
+    // is good enough for the UI ("~60k events in last 24h") and the page
+    // through is independent of the count value anyway.
+    // Deliberately omit old_row from the list select. Some old_row JSONB
+    // payloads are very large (a single course_legos snapshot can be ~100 KB);
+    // shipping 100 of them tipped this query past the statement_timeout under
+    // production network conditions. The expanded-row UI fetches old_row via
+    // /api/admin/audit-row?event_id=… on demand instead.
     let q = sb.from('content_audit_log')
-      .select('id,changed_at,change_type,table_name,primary_key,changed_by_role,changed_by_uid,old_row', { count: 'exact' })
+      .select('id,changed_at,change_type,table_name,primary_key,changed_by_role,changed_by_uid', { count: 'estimated' })
       .gte('changed_at', since)
       .order('changed_at', { ascending: false })
       .range(offset, offset + limit - 1)
@@ -9941,26 +9935,55 @@ const AUDIT_TABLE_PK = {
   shared_audio: 'id'
 }
 
-// GET /api/admin/audit-row?table=X&pk=Y — fetch the current live row at
-// (table, primary_key). Used by the Maintenance UI to render a captured-vs-
-// current diff when an audit event is expanded. Returns { current: row | null };
-// null means the row no longer exists (was deleted since the captured snapshot).
+// GET /api/admin/audit-row?table=X&pk=Y[&event_id=N] — fetch the current
+// live row at (table, primary_key), and optionally the captured old_row
+// + change_type for a specific audit event id. Used by the Maintenance UI
+// to render a captured-vs-current diff when an audit event is expanded.
+//
+// Returns { current, old_row, change_type }:
+//   current     — current live row, or null if it no longer exists (deleted
+//                 since the captured snapshot)
+//   old_row     — the captured snapshot from content_audit_log for the
+//                 given event_id, or null if event_id not provided/not found
+//   change_type — 'UPDATE' | 'DELETE' for that event, or null
+//
+// old_row is fetched per-row on expand rather than included in the list
+// query because some old_row JSONB payloads are very large (~100 KB) and
+// shipping 100 of them in the list response tipped that query past the
+// statement_timeout.
 app.get('/api/admin/audit-row', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const tableName = String(req.query.table || '')
   const pkValue = String(req.query.pk || '')
+  const eventId = req.query.event_id ? String(req.query.event_id) : null
   if (!tableName || !pkValue) return res.status(400).json({ error: 'table + pk required' })
   const pkCol = AUDIT_TABLE_PK[tableName]
   if (!pkCol) return res.status(400).json({ error: `unknown table ${tableName}` })
   try {
     const sb = supabaseClient.getClient()
-    const { data, error } = await sb
-      .from(tableName)
-      .select('*')
-      .eq(pkCol, pkValue)
-      .maybeSingle()
-    if (error) throw error
-    res.json({ current: data ?? null })
+    const queries = [
+      sb.from(tableName).select('*').eq(pkCol, pkValue).maybeSingle(),
+    ]
+    if (eventId) {
+      queries.push(
+        sb.from('content_audit_log')
+          .select('old_row,change_type')
+          .eq('id', eventId)
+          .maybeSingle()
+      )
+    }
+    const results = await Promise.all(queries)
+    const currentRes = results[0]
+    const eventRes = eventId ? results[1] : null
+    if (currentRes.error) throw currentRes.error
+    if (eventRes?.error) {
+      logger.warn('[Audit] event_id fetch failed:', eventRes.error.message)
+    }
+    res.json({
+      current: currentRes.data ?? null,
+      old_row: eventRes?.data?.old_row ?? null,
+      change_type: eventRes?.data?.change_type ?? null,
+    })
   } catch (e) {
     logger.error('[Audit] row fetch error:', e.message)
     res.status(500).json({ error: e.message })
@@ -10056,16 +10079,792 @@ app.post('/api/admin/audit-cleanup', async (req, res) => {
   try {
     const sb = supabaseClient.getClient()
     const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString()
-    const { count, error } = await sb
-      .from('content_audit_log')
-      .delete({ count: 'exact' })
-      .lt('changed_at', cutoff)
-    if (error) throw error
-    logger.info(`[Audit] Cleanup deleted ${count ?? 0} rows older than ${days} days`)
-    res.json({ ok: true, deleted: count ?? 0, days, cutoff })
+    // Batch the delete: a single DELETE on millions of rows hits Postgres's
+    // statement_timeout. We page through old rows by id and delete in
+    // chunks, capped at 60s of wall time per request — partial progress is
+    // still progress, the next click finishes the job.
+    //
+    // BATCH=500 because PostgREST builds the DELETE as
+    // `?id=in.(uuid1,uuid2,...)` in the URL — 500 UUIDs is ~4KB which sits
+    // comfortably under typical URL limits, 5,000 was ~40KB which the
+    // ngrok/PostgREST layer rejected with 400 Bad Request.
+    const BATCH = 500
+    const DEADLINE_MS = 60_000
+    const start = Date.now()
+    let totalDeleted = 0
+    let exhausted = true
+    while (Date.now() - start < DEADLINE_MS) {
+      const { data: batch, error: selErr } = await sb
+        .from('content_audit_log')
+        .select('id')
+        .lt('changed_at', cutoff)
+        .limit(BATCH)
+      if (selErr) throw selErr
+      if (!batch || batch.length === 0) break
+      const ids = batch.map(r => r.id)
+      const { error: delErr } = await sb.from('content_audit_log').delete().in('id', ids)
+      if (delErr) throw delErr
+      totalDeleted += ids.length
+      if (ids.length < BATCH) break
+      // Loop continues — there's more to delete, take the next batch
+      exhausted = ids.length < BATCH
+    }
+    const more_remaining = !exhausted && (Date.now() - start >= DEADLINE_MS)
+    logger.info(`[Audit] Cleanup deleted ${totalDeleted} rows older than ${days} days (more_remaining=${more_remaining})`)
+    res.json({ ok: true, deleted: totalDeleted, days, cutoff, more_remaining })
   } catch (e) {
-    logger.error('[Audit] cleanup error:', e.message)
-    res.status(500).json({ error: e.message })
+    logger.error('[Audit] cleanup error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// ============================================================================
+// Phrase decomposition — backfill + audit
+// ============================================================================
+// See new_vision/PHRASE_DECOMPOSITION_SPEC.md.
+//
+// The build-time phrase decomposer pre-chunks `target_text` into LEGO + ghost
+// blocks at phrase-write time. These endpoints surface drift (phrases whose
+// stored decomposition is missing or stale relative to courses.version) and
+// let an admin trigger backfill / dry-run from the Maintenance UI.
+
+// GET /api/admin/decomposition-audit/:courseCode — drift summary for one course.
+//
+// Returns:
+//   null_count    — phrases with decomposition IS NULL (never computed)
+//   stale_count   — decomposition_course_version < courses.version
+//   clean_count   — decomposition present AND version is current
+//   total         — total phrases in this course
+//   course_version — current courses.version (the target)
+//
+// Click-to-refresh, not auto-polled. Use this to decide whether to run the
+// backfill endpoint.
+app.get('/api/admin/decomposition-audit/:courseCode', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const courseCode = req.params.courseCode
+  try {
+    const sb = supabaseClient.getClient()
+
+    const { data: courseRow, error: courseErr } = await sb
+      .from('courses')
+      .select('version')
+      .eq('course_code', courseCode)
+      .maybeSingle()
+    if (courseErr) throw courseErr
+    if (!courseRow) return res.status(404).json({ error: `course not found: ${courseCode}` })
+    const courseVersion = courseRow.version ?? 1
+
+    // Four count queries in parallel. Each uses count:'exact' on a HEAD-only
+    // request so we don't drag row data over the wire.
+    const [totalRes, nullRes, staleRes, cleanRes] = await Promise.all([
+      sb.from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode),
+      sb.from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .is('decomposition', null),
+      sb.from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .not('decomposition', 'is', null)
+        .lt('decomposition_course_version', courseVersion),
+      sb.from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .not('decomposition', 'is', null)
+        .gte('decomposition_course_version', courseVersion)
+    ])
+    for (const r of [totalRes, nullRes, staleRes, cleanRes]) {
+      if (r.error) throw r.error
+    }
+
+    res.json({
+      course_code: courseCode,
+      course_version: courseVersion,
+      total: totalRes.count ?? 0,
+      null_count: nullRes.count ?? 0,
+      stale_count: staleRes.count ?? 0,
+      clean_count: cleanRes.count ?? 0
+    })
+  } catch (e) {
+    logger.error('[Decomposition] audit error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/decomposition-backfill — compute + persist decompositions.
+//
+// Body: { courseCode?: string, dryRun?: boolean, limit?: int }
+//   courseCode — if omitted, walks ALL courses. Useful for a one-time sweep.
+//   dryRun     — if true, computes but doesn't write. Returns sample blocks.
+//   limit      — max phrases to process this request (default 500, cap 5000).
+//
+// Resumable + capped: batched scan, 60s wall-time deadline per request.
+// Response includes `more_remaining: true` if the deadline tripped or the
+// limit was hit — the UI loops back with another POST.
+//
+// Pattern mirrors /api/admin/audit-cleanup (see ~line 9451): same deadline,
+// chunked-loop shape, partial-progress reporting.
+app.post('/api/admin/decomposition-backfill', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+
+  const courseCode = req.body?.courseCode ? String(req.body.courseCode) : null
+  const dryRun = !!req.body?.dryRun
+  const requestedLimit = Number(req.body?.limit)
+  const maxRows = Number.isFinite(requestedLimit) && requestedLimit > 0
+    ? Math.min(Math.floor(requestedLimit), 5000)
+    : 500
+
+  const DEADLINE_MS = 60_000
+  const PAGE_SIZE = 100
+  const start = Date.now()
+
+  let processed = 0
+  let updated = 0
+  let failed = 0
+  let sample = [] // dry-run only — first 3 decompositions for inspection
+  const failures = [] // first 5 failure reasons for the report
+
+  try {
+    const sb = supabaseClient.getClient()
+
+    // Build the list of courses we're walking.
+    let courseList
+    if (courseCode) {
+      const { data, error } = await sb.from('courses').select('course_code, version').eq('course_code', courseCode)
+      if (error) throw error
+      if (!data || data.length === 0) return res.status(404).json({ error: `course not found: ${courseCode}` })
+      courseList = data
+    } else {
+      const { data, error } = await sb.from('courses').select('course_code, version').order('course_code')
+      if (error) throw error
+      courseList = data || []
+    }
+
+    let moreRemaining = false
+    let cutoffReached = false
+
+    // Per-course: cache vocabulary (one fetch covers every phrase in the
+    // course, since we always look up by seed_number ≤ phrase.seed_number).
+    const vocabCache = new Map()
+    async function getVocab(cc) {
+      if (vocabCache.has(cc)) return vocabCache.get(cc)
+      const { data, error } = await sb
+        .from('course_legos')
+        .select('seed_number, lego_index, target_text, known_text')
+        .eq('course_code', cc)
+      if (error) throw error
+      const vocab = (data || []).map(l => ({
+        lego_id: `S${String(l.seed_number).padStart(4, '0')}L${String(l.lego_index).padStart(2, '0')}`,
+        target_text: l.target_text,
+        known_text: l.known_text,
+        seed_number: l.seed_number
+      }))
+      vocabCache.set(cc, vocab)
+      return vocab
+    }
+
+    outer: for (const course of courseList) {
+      const cc = course.course_code
+      const courseVersion = course.version ?? 1
+
+      // Page through phrases needing work. The "needs work" predicate is
+      // decomposition IS NULL OR decomposition_course_version < courseVersion.
+      // PostgREST's `or()` handles that compactly.
+      // We don't use offset/range because we mutate as we go — keep refetching
+      // the first page until it stops returning rows.
+      while (true) {
+        if (Date.now() - start >= DEADLINE_MS) {
+          moreRemaining = true
+          cutoffReached = true
+          break outer
+        }
+        if (processed >= maxRows) {
+          moreRemaining = true
+          break outer
+        }
+
+        const { data: rows, error: pageErr } = await sb
+          .from('course_practice_phrases')
+          .select('id, course_code, seed_number, target_text, decomposition_course_version')
+          .eq('course_code', cc)
+          .or(`decomposition.is.null,decomposition_course_version.lt.${courseVersion}`)
+          .limit(Math.min(PAGE_SIZE, maxRows - processed))
+        if (pageErr) throw pageErr
+        if (!rows || rows.length === 0) break
+
+        const vocab = await getVocab(cc)
+
+        for (const row of rows) {
+          processed++
+          try {
+            const vocabForPhrase = vocab.filter(l => l.seed_number <= row.seed_number)
+            const blocks = decomposeText(row.target_text, vocabForPhrase)
+
+            if (dryRun) {
+              if (sample.length < 3) sample.push({ phrase_id: row.id, target_text: row.target_text, blocks })
+              continue
+            }
+
+            const { error: updateErr } = await sb
+              .from('course_practice_phrases')
+              .update({ decomposition: blocks, decomposition_course_version: courseVersion })
+              .eq('id', row.id)
+            if (updateErr) throw updateErr
+            updated++
+          } catch (e) {
+            failed++
+            if (failures.length < 5) failures.push({ phrase_id: row.id, reason: e?.message || String(e) })
+          }
+        }
+
+        // Page returned fewer rows than asked = course done (for this version).
+        if (rows.length < PAGE_SIZE) break
+      }
+    }
+
+    logger.info(
+      `[Decomposition] Backfill: processed=${processed} updated=${updated} failed=${failed} ` +
+      `more=${moreRemaining} cutoff=${cutoffReached} dryRun=${dryRun} course=${courseCode || 'ALL'}`
+    )
+
+    res.json({
+      ok: true,
+      dry_run: dryRun,
+      processed,
+      updated,
+      failed,
+      more_remaining: moreRemaining,
+      cutoff_reached: cutoffReached,
+      sample: dryRun ? sample : undefined,
+      failures: failures.length > 0 ? failures : undefined
+    })
+  } catch (e) {
+    logger.error('[Decomposition] backfill error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// ============================================================================
+// Uptime monitoring + DB health — diagnostic panel for the Maintenance tab
+// ============================================================================
+// Backs the popty UptimePanel. Read-only proxies onto two external sources:
+//   - Better Stack (external HTTPS probing of the learner-path URLs)
+//   - Supabase Metrics API (Prometheus exposition, Pro-plan feature)
+// No alert routing, no persistence — Tom checks these when investigating
+// "did the app go down?" or "why are queries slow right now?".
+
+// GET /api/admin/uptime-summary — proxy Better Stack monitors + last-24h incidents.
+// If BETTERSTACK_API_KEY is unset, returns { configured: false } cleanly so the
+// panel can show a setup CTA instead of a generic 500.
+app.get('/api/admin/uptime-summary', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const apiKey = process.env.BETTERSTACK_API_KEY
+  if (!apiKey) {
+    return res.json({ configured: false })
+  }
+  try {
+    const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
+    const headers = { Authorization: `Bearer ${apiKey}` }
+    const [monitorsRes, incidentsRes] = await Promise.all([
+      fetch('https://uptime.betterstack.com/api/v2/monitors', { headers }),
+      fetch(`https://uptime.betterstack.com/api/v2/incidents?from=${encodeURIComponent(since)}`, { headers })
+    ])
+    if (!monitorsRes.ok) throw new Error(`Better Stack monitors HTTP ${monitorsRes.status}`)
+    if (!incidentsRes.ok) throw new Error(`Better Stack incidents HTTP ${incidentsRes.status}`)
+    const [monitorsBody, incidentsBody] = await Promise.all([monitorsRes.json(), incidentsRes.json()])
+
+    const monitors = (monitorsBody.data || []).map(m => ({
+      id: m.id,
+      name: m.attributes?.pronounceable_name || m.attributes?.url || m.id,
+      url: m.attributes?.url,
+      status: m.attributes?.status,            // 'up' | 'down' | 'paused' | 'pending' | 'validating'
+      last_checked_at: m.attributes?.last_checked_at,
+      // Response time shape varies across plans; pick the first numeric we find.
+      last_response_time_ms:
+        m.attributes?.regions?.[0]?.response_times?.[0]?.response_time
+        ?? m.attributes?.last_response_time
+        ?? null
+    }))
+    const incidents = (incidentsBody.data || []).map(i => ({
+      id: i.id,
+      monitor_id: i.attributes?.monitor_id ?? i.relationships?.monitor?.data?.id,
+      started_at: i.attributes?.started_at,
+      resolved_at: i.attributes?.resolved_at,
+      cause: i.attributes?.cause
+    }))
+    res.json({ configured: true, monitors, incidents, since })
+  } catch (e) {
+    logger.error('[Uptime] summary error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// Parse Prometheus exposition format into a flat map keyed by metric name +
+// optional sorted-label string. Values are numbers. Helper kept local — no
+// need for prom-client just to read 8 metrics off a scrape.
+function parsePrometheusText(text) {
+  const samples = []
+  const lines = text.split('\n')
+  for (const line of lines) {
+    if (!line || line.startsWith('#')) continue
+    // Metric line: name{label="v",label="v"} 123 [timestamp]
+    // Or: name 123
+    const m = line.match(/^([a-zA-Z_:][a-zA-Z0-9_:]*)(\{[^}]*\})?\s+([-+0-9.eEnNaIfF]+)/)
+    if (!m) continue
+    const name = m[1]
+    const labelBlock = m[2] || ''
+    const valueStr = m[3]
+    const value = Number(valueStr)
+    if (!Number.isFinite(value)) continue
+    const labels = {}
+    if (labelBlock) {
+      const re = /([a-zA-Z_][a-zA-Z0-9_]*)="((?:[^"\\]|\\.)*)"/g
+      let lm
+      while ((lm = re.exec(labelBlock)) !== null) {
+        labels[lm[1]] = lm[2].replace(/\\"/g, '"').replace(/\\\\/g, '\\')
+      }
+    }
+    samples.push({ name, labels, value })
+  }
+  return samples
+}
+
+// Sum samples for a metric, optionally filtered by label predicate.
+function sumMetric(samples, name, labelPredicate = null) {
+  let total = 0
+  let matched = 0
+  for (const s of samples) {
+    if (s.name !== name) continue
+    if (labelPredicate && !labelPredicate(s.labels)) continue
+    total += s.value
+    matched++
+  }
+  return matched > 0 ? { value: total, count: matched } : null
+}
+
+// First-sample lookup — for gauge metrics where there's typically one series.
+function firstMetric(samples, name, labelPredicate = null) {
+  for (const s of samples) {
+    if (s.name !== name) continue
+    if (labelPredicate && !labelPredicate(s.labels)) continue
+    return s.value
+  }
+  return null
+}
+
+// GET /api/admin/db-health — scrape Supabase Metrics API, extract 6-8 metrics
+// that tell the "is the DB healthy right now?" story. Resilient to missing
+// metrics (logs a warning, returns null in that slot). Project ref is derived
+// from SUPABASE_URL so we don't need a separate env var.
+app.get('/api/admin/db-health', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const supaUrl = process.env.SUPABASE_URL
+  const serviceKey = process.env.SUPABASE_SERVICE_KEY
+  if (!supaUrl || !serviceKey) {
+    return res.status(500).json({ error: 'SUPABASE_URL / SUPABASE_SERVICE_KEY missing' })
+  }
+  // Derive project ref from https://<ref>.supabase.co
+  const refMatch = supaUrl.match(/^https?:\/\/([^.]+)\.supabase\.co/)
+  if (!refMatch) {
+    return res.status(500).json({ error: `Cannot derive project ref from SUPABASE_URL=${supaUrl}` })
+  }
+  const projectRef = refMatch[1]
+  const metricsUrl = `https://${projectRef}.supabase.co/customer/v1/privileged/metrics`
+  const auth = 'Basic ' + Buffer.from(`service_role:${serviceKey}`).toString('base64')
+
+  try {
+    const scrapeStart = Date.now()
+    const r = await fetch(metricsUrl, { headers: { Authorization: auth } })
+    if (!r.ok) throw new Error(`Metrics scrape HTTP ${r.status}`)
+    const text = await r.text()
+    const scrapeMs = Date.now() - scrapeStart
+    const samples = parsePrometheusText(text)
+
+    // Pull out the metrics that matter. Supabase's exposition (as of May 2026)
+    // uses _total-suffixed counters (Prometheus convention) and num_backends
+    // with an underscore. Older code looked for un-suffixed names which no
+    // longer match — we use the suffixed names with the un-suffixed names as
+    // fallbacks so older exporter versions still work.
+    //
+    //   pg_stat_database_blks_hit_total / _blks_read_total   cache hit rate
+    //   pg_stat_database_xact_commit_total / _xact_rollback_total
+    //   pg_stat_database_deadlocks_total / _conflicts_total
+    //   pg_stat_database_num_backends                        active connections (gauge)
+    //   max_connections_connection_count                     pool ceiling
+    //   physical_replication_lag_*                           replica lag (if any)
+    //   pg_database_size_bytes                               on-disk size
+    //
+    // Anything we can't find returns null and gets logged.
+    const isMainDb = (l) => !l.datname || l.datname === 'postgres'
+
+    // Cache hit rate
+    const blksHit =
+      sumMetric(samples, 'pg_stat_database_blks_hit_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_blks_hit', isMainDb)
+    const blksRead =
+      sumMetric(samples, 'pg_stat_database_blks_read_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_blks_read', isMainDb)
+    const cacheHitRate = (blksHit && blksRead && (blksHit.value + blksRead.value) > 0)
+      ? blksHit.value / (blksHit.value + blksRead.value)
+      : null
+
+    // Transaction counters
+    const xactCommit =
+      sumMetric(samples, 'pg_stat_database_xact_commit_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_xact_commit', isMainDb)
+    const xactRollback =
+      sumMetric(samples, 'pg_stat_database_xact_rollback_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_xact_rollback', isMainDb)
+
+    // Statement-timeout cancellations show up as deadlocks + confl_* counters
+    // depending on exporter version. We surface deadlocks (clear) and the
+    // aggregate conflicts_total — both are the failure modes that mask slow
+    // queries.
+    const deadlocks =
+      sumMetric(samples, 'pg_stat_database_deadlocks_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_deadlocks', isMainDb)
+    const conflicts =
+      sumMetric(samples, 'pg_stat_database_conflicts_total', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_conflicts', isMainDb)
+
+    // Active connections: gauge — current backend count.
+    // num_backends (with underscore) is what current Supabase exports.
+    const activeConnections =
+      sumMetric(samples, 'pg_stat_database_num_backends', isMainDb)?.value
+      ?? firstMetric(samples, 'pg_stat_activity_count', isMainDb)
+      ?? sumMetric(samples, 'pg_stat_database_numbackends', isMainDb)?.value
+      ?? null
+
+    // Max connections: Supabase exposes max_connections_connection_count.
+    // Older exporters used pg_settings_max_connections; keep as fallback.
+    const maxConnections =
+      firstMetric(samples, 'max_connections_connection_count')
+      ?? firstMetric(samples, 'pg_settings_max_connections')
+      ?? null
+
+    const poolUtilization = (activeConnections != null && maxConnections != null && maxConnections > 0)
+      ? activeConnections / maxConnections
+      : null
+
+    // Replication lag — Supabase currently exposes a boolean
+    // physical_replication_lag_is_connected_to_primary plus per-slot bytes
+    // metrics, but no straight seconds figure. We keep the old name lookups
+    // for forward compatibility; null is the correct answer when nothing
+    // seconds-shaped is present.
+    const replicationLagSeconds =
+      firstMetric(samples, 'physical_replication_lag_seconds')
+      ?? firstMetric(samples, 'pg_replication_lag')
+      ?? firstMetric(samples, 'pg_stat_replication_lag_seconds')
+      ?? null
+
+    // Disk / WAL pressure — early warning before queries start timing out.
+    const dbSizeBytes = sumMetric(samples, 'pg_database_size_bytes', isMainDb)?.value ?? null
+
+    const metrics = {
+      cache_hit_rate: cacheHitRate,                     // 0-1, ideally > 0.99
+      active_connections: activeConnections,            // current backend count
+      max_connections: maxConnections,                  // pool ceiling
+      pool_utilization: poolUtilization,                // 0-1
+      replication_lag_seconds: replicationLagSeconds,   // null if no replica
+      deadlocks_total: deadlocks?.value ?? null,        // counter, watch for jumps
+      conflicts_total: conflicts?.value ?? null,        // counter, statement_timeout cancellations land here
+      transactions_committed: xactCommit?.value ?? null,
+      transactions_rolled_back: xactRollback?.value ?? null,
+      db_size_bytes: dbSizeBytes
+    }
+
+    // Log any metrics we couldn't find so we know to add fallbacks.
+    const missing = Object.entries(metrics).filter(([_, v]) => v === null).map(([k]) => k)
+    if (missing.length) {
+      logger.warn(`[DBHealth] metrics not found in scrape: ${missing.join(', ')}`)
+    }
+
+    res.json({
+      configured: true,
+      scraped_at: new Date().toISOString(),
+      scrape_ms: scrapeMs,
+      sample_count: samples.length,
+      metrics,
+      missing
+    })
+  } catch (e) {
+    logger.error('[DBHealth] scrape error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// ============================================================================
+// Listening Pod Explainer — audit + generate (text only; audio pass is separate)
+// ============================================================================
+// See migration 20260519_listening_pod_explainer_columns.sql for the schema and
+// services/pod-explainer-generator.cjs for the per-sentence generator.
+//
+// Stage-1 sequence per sentence is target → known → explainer → target → target.
+// These endpoints populate explainer_decomposition + explainer_text. A
+// downstream audio pass (not in this commit) renders explainer_audio_id from
+// explainer_text via xAI multilingual TTS.
+
+const podExplainer = require('./pod-explainer-generator.cjs')
+
+// GET /api/admin/pod-explainer-audit
+//   ?courseCode=<code>  optional: scope to one course
+// Returns counts so the Maintenance UI can show progress and the skip rules
+// applied. No mutations.
+app.get('/api/admin/pod-explainer-audit', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const courseFilter = typeof req.query.courseCode === 'string' ? req.query.courseCode : null
+  try {
+    const sb = supabaseClient.getClient()
+    // Pull pod ids (optionally filtered to one course's pods)
+    let podQuery = sb.from('listening_pods').select('id')
+    if (courseFilter) podQuery = podQuery.like('id', `${courseFilter}:%`)
+    const { data: pods, error: podsErr } = await podQuery
+    if (podsErr) throw podsErr
+    const allPodIds = (pods || []).map(p => p.id)
+    // Apply skip rules course-by-course
+    const skippedCourses = []
+    const includedPodIds = []
+    for (const podId of allPodIds) {
+      const code = String(podId).split(':')[0]
+      const skip = podExplainer.shouldSkipCourse(code)
+      if (skip.skip) {
+        if (!skippedCourses.find(s => s.course_code === code)) {
+          skippedCourses.push({ course_code: code, reason: skip.reason })
+        }
+        continue
+      }
+      includedPodIds.push(podId)
+    }
+    // Count sentences in scope by explainer state.
+    if (includedPodIds.length === 0) {
+      return res.json({
+        total: 0,
+        with_explainer_text: 0,
+        with_explainer_audio: 0,
+        without_explainer_text: 0,
+        skipped_courses: skippedCourses,
+      })
+    }
+    // Pull all sentence rows for the in-scope pods; project minimal columns.
+    const { data: rows, error: rowsErr } = await sb
+      .from('listening_pod_sentences')
+      .select('pod_id, explainer_text, explainer_audio_id')
+      .in('pod_id', includedPodIds)
+    if (rowsErr) throw rowsErr
+    let withText = 0
+    let withAudio = 0
+    let withoutText = 0
+    for (const r of rows || []) {
+      if (r.explainer_text && r.explainer_text.trim()) withText++
+      else withoutText++
+      if (r.explainer_audio_id) withAudio++
+    }
+    res.json({
+      total: (rows || []).length,
+      with_explainer_text: withText,
+      with_explainer_audio: withAudio,
+      without_explainer_text: withoutText,
+      skipped_courses: skippedCourses,
+    })
+  } catch (e) {
+    logger.error('[PodExplainer] audit error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/pod-explainer-generate
+//   body: { courseCode?: string, podId?: string, dryRun?: boolean, limit?: int }
+// Batched, resumable, capped at 60s of wall time per request. Picks sentence
+// rows where explainer_text IS NULL (in-scope per skip rules) and fills
+// explainer_decomposition + explainer_text via Haiku.
+//
+// Sentences are batched into the same Haiku call (BATCH_SIZE per CLI
+// invocation) because each `claude --print` spawn costs 2-15s regardless
+// of payload size — amortising across many sentences is roughly a 10×
+// speedup over the per-sentence pattern. The 60s wall-time deadline +
+// more_remaining flag still drive the UI poll loop.
+//
+// Beyond batching, we fan out PARALLEL_BATCHES CLI invocations at once.
+// Each batch is independent (different sentences, fresh subprocess), so
+// the only ceiling is mild rate-limit risk at the Anthropic side — which
+// at 3-4 concurrent calls from one user is well below the threshold.
+// Throughput at parallel=4 × batch=12 is roughly 48 sentences per ~60s
+// window, so a 117-sentence pod finishes in 2-3 endpoint calls.
+const POD_EXPLAINER_BATCH_SIZE = 12
+const POD_EXPLAINER_PARALLEL = 4
+app.post('/api/admin/pod-explainer-generate', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const { courseCode, podId, dryRun = false, force = false } = req.body || {}
+  const limitNum = Number(req.body?.limit)
+  const limit = Number.isFinite(limitNum) && limitNum > 0 ? Math.floor(limitNum) : 1000
+  const DEADLINE_MS = 60_000
+  const start = Date.now()
+
+  try {
+    const sb = supabaseClient.getClient()
+    // Build the candidate set. Default: sentences missing explainer_text in
+    // scope. With `force: true`, all in-scope sentences regardless of
+    // current explainer_text — used to re-run after a prompt change.
+    let query = sb
+      .from('listening_pod_sentences')
+      .select('id, pod_id, target_text, known_text')
+      .limit(limit)
+    if (!force) {
+      query = query.is('explainer_text', null)
+    }
+    if (podId) {
+      query = query.eq('pod_id', podId)
+    } else if (courseCode) {
+      query = query.like('pod_id', `${courseCode}:%`)
+    }
+    const { data: candidates, error: candErr } = await query
+    if (candErr) throw candErr
+
+    let processed = 0
+    let updated = 0
+    let skipped = 0
+    let failed = 0
+    const failures = []
+    const pushFailure = (id, message) => {
+      failed++
+      failures.push({ id, error: message })
+      if (failures.length > 25) failures.length = 25
+    }
+
+    // Group candidates by course (skip rules + connector localise per course).
+    // Same-course batching guarantees the prompt's "Target language" line is
+    // accurate for every sentence in the batch.
+    const byCourse = new Map()
+    for (const row of candidates || []) {
+      const code = String(row.pod_id).split(':')[0]
+      if (!byCourse.has(code)) byCourse.set(code, [])
+      byCourse.get(code).push(row)
+    }
+
+    // Build the flat list of batches to run (one batch = one CLI call).
+    // Each entry carries the course + the validated rows it'll process.
+    // Skip rules and empty-text filtering happen here so the parallel
+    // executor below only sees runnable work.
+    const batches = []
+    for (const [code, rows] of byCourse) {
+      const skip = podExplainer.shouldSkipCourse(code)
+      if (skip.skip) {
+        skipped += rows.length
+        processed += rows.length
+        continue
+      }
+      for (let i = 0; i < rows.length; i += POD_EXPLAINER_BATCH_SIZE) {
+        const slice = rows.slice(i, i + POD_EXPLAINER_BATCH_SIZE)
+        const valid = []
+        for (const row of slice) {
+          if (!row.target_text || !row.known_text) {
+            skipped++
+            processed++
+          } else {
+            valid.push(row)
+          }
+        }
+        if (valid.length > 0) batches.push({ code, rows: valid })
+      }
+    }
+
+    /**
+     * Apply one batch's result back to the DB (or count it in dry-run).
+     * Pulled out so the parallel executor can call it once a batch resolves
+     * without serialising the writes.
+     */
+    const applyBatchResult = async (batch, resultsById) => {
+      for (const row of batch.rows) {
+        processed++
+        const result = resultsById.get(row.id)
+        if (!result) {
+          pushFailure(row.id, 'no entry returned for this id in batch response')
+          continue
+        }
+        if (dryRun) {
+          updated++
+          continue
+        }
+        try {
+          const { error: upErr } = await sb
+            .from('listening_pod_sentences')
+            .update({
+              explainer_decomposition: result.decomposition,
+              explainer_text: result.explainer_text,
+            })
+            .eq('id', row.id)
+          if (upErr) throw upErr
+          updated++
+        } catch (writeErr) {
+          pushFailure(row.id, `write failed: ${writeErr?.message || writeErr}`)
+        }
+      }
+    }
+
+    /**
+     * Run one batch end-to-end: CLI call → parse → apply. Resolves to
+     * void; per-row failures are accumulated via pushFailure inside.
+     * Whole-batch CLI failures mark every row in that batch as failed.
+     */
+    const runBatch = async (batch) => {
+      let resultsById
+      try {
+        resultsById = await podExplainer.generateForBatch({
+          courseCode: batch.code,
+          sentences: batch.rows.map(r => ({
+            id: r.id,
+            target_text: r.target_text,
+            known_text: r.known_text,
+          })),
+        })
+      } catch (err) {
+        const msg = err?.message || String(err)
+        for (const row of batch.rows) {
+          processed++
+          pushFailure(row.id, `batch failed: ${msg}`)
+        }
+        return
+      }
+      await applyBatchResult(batch, resultsById)
+    }
+
+    // Fan out POD_EXPLAINER_PARALLEL batches at a time. Each parallel
+    // wave is awaited together; we stop accepting new waves once the
+    // deadline trips, but a wave that's already in flight finishes —
+    // partial progress is still progress, the poll loop picks up the
+    // rest on the next call. The deadline check is between waves, not
+    // mid-wave, so any wave that starts is committed to its CLI calls.
+    for (let i = 0; i < batches.length; i += POD_EXPLAINER_PARALLEL) {
+      if (Date.now() - start >= DEADLINE_MS) break
+      const wave = batches.slice(i, i + POD_EXPLAINER_PARALLEL)
+      await Promise.all(wave.map(b => runBatch(b)))
+    }
+
+    const totalCandidates = candidates?.length || 0
+    const more_remaining = totalCandidates >= limit ||
+      (Date.now() - start >= DEADLINE_MS && processed < totalCandidates)
+
+    logger.info(
+      `[PodExplainer] generate processed=${processed} updated=${updated} ` +
+      `skipped=${skipped} failed=${failed} dryRun=${dryRun} ` +
+      `more_remaining=${more_remaining} batchSize=${POD_EXPLAINER_BATCH_SIZE} ` +
+      `elapsed_ms=${Date.now() - start}`
+    )
+    res.json({
+      ok: true,
+      processed,
+      updated,
+      skipped,
+      failed,
+      failures,
+      more_remaining,
+      dry_run: !!dryRun,
+    })
+  } catch (e) {
+    logger.error('[PodExplainer] generate error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })
 

@@ -1,6 +1,8 @@
 <template>
   <div class="maintenance-page">
     <div class="maintenance-inner">
+      <UptimePanel />
+
       <h2 class="section-title">Content audit log</h2>
       <p class="section-blurb">
         Every UPDATE and DELETE on the at-risk content tables
@@ -57,6 +59,13 @@
       <p v-if="lastResult" class="result-line">
         Deleted {{ lastResult.deleted.toLocaleString() }} row{{ lastResult.deleted === 1 ? '' : 's' }}
         older than {{ lastResult.days }} days.
+        <span v-if="lastResult.more_remaining"> More remaining — click again to continue.</span>
+      </p>
+
+      <p class="auto-prune-note">
+        <strong>Auto-prune:</strong> entries older than 7 days are removed daily at 03:00 UTC by a pg_cron job.
+        Use the manual cleanup above to prune sooner (e.g. after a known incident).
+        Anything older than 7 days has to be recovered from the daily Supabase backup, not from this log.
       </p>
 
       <h2 class="section-title section-title-secondary">Recent changes</h2>
@@ -188,7 +197,7 @@
                     </div>
                   </div>
                   <div
-                    v-for="field in diffFields(ev.old_row, currentRows[ev.id]?.current)"
+                    v-for="field in diffFields(currentRows[ev.id]?.old_row, currentRows[ev.id]?.current)"
                     :key="field.key"
                     class="diff-row"
                     :class="{ 'diff-changed': field.changed }"
@@ -219,6 +228,109 @@
           :disabled="offset + events.length >= totalEvents"
           @click="nextPage"
         >Next ›</button>
+      </div>
+
+      <h2 class="section-title section-title-secondary">Phrase decomposition</h2>
+      <p class="section-blurb">
+        Each <code>course_practice_phrases</code> row carries a precomputed
+        <code>decomposition</code> — the LEGO/ghost block list the player
+        renders without runtime alignment. When the course's LEGO set changes
+        (a new M-LEGO that would absorb characters previously ghosted),
+        downstream phrases go stale until they're recomputed. A row's
+        <code>decomposition_course_version</code> &lt; <code>courses.version</code>
+        means "stale". This panel surfaces drift and runs the backfill.
+        See <code>new_vision/PHRASE_DECOMPOSITION_SPEC.md</code>.
+      </p>
+
+      <div class="decomp-controls">
+        <label class="course-select">
+          Course
+          <select v-model="decompCourse" @change="loadDecompAudit">
+            <option value="">— select —</option>
+            <option v-for="c in availableCourses" :key="c.code" :value="c.code">
+              {{ c.code }}
+            </option>
+          </select>
+        </label>
+        <button
+          class="page-btn"
+          :disabled="!decompCourse || decompAuditLoading"
+          @click="loadDecompAudit"
+        >
+          {{ decompAuditLoading ? 'Loading…' : 'Refresh audit' }}
+        </button>
+      </div>
+
+      <div v-if="decompAuditError" class="error-banner">{{ decompAuditError }}</div>
+
+      <div v-if="decompAudit" class="stats-grid decomp-stats">
+        <div class="stat-card">
+          <div class="stat-label">Total phrases</div>
+          <div class="stat-value">{{ decompAudit.total.toLocaleString() }}</div>
+        </div>
+        <div class="stat-card" :class="{ stale: decompAudit.null_count > 0 }">
+          <div class="stat-label">Never computed</div>
+          <div class="stat-value">{{ decompAudit.null_count.toLocaleString() }}</div>
+        </div>
+        <div class="stat-card" :class="{ stale: decompAudit.stale_count > 0 }">
+          <div class="stat-label">Stale</div>
+          <div class="stat-value">{{ decompAudit.stale_count.toLocaleString() }}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Clean (v{{ decompAudit.course_version }})</div>
+          <div class="stat-value">{{ decompAudit.clean_count.toLocaleString() }}</div>
+        </div>
+      </div>
+
+      <div v-if="decompCourse" class="decomp-actions">
+        <button
+          class="page-btn"
+          :disabled="decompBusy || !decompCourse"
+          @click="runDecompDryRun"
+        >
+          {{ decompBusy && decompMode === 'dry' ? 'Running…' : 'Dry-run (20 phrases)' }}
+        </button>
+        <button
+          class="cleanup-btn decomp-backfill-btn"
+          :disabled="decompBusy || !decompCourse || !decompAudit || (decompAudit.null_count + decompAudit.stale_count === 0)"
+          @click="runDecompBackfill"
+        >
+          {{ decompBusy && decompMode === 'live' ? `Backfilling… ${decompProgress.processed}/${(decompAudit?.null_count || 0) + (decompAudit?.stale_count || 0)}` : 'Backfill' }}
+        </button>
+      </div>
+
+      <p v-if="decompResultLine" class="result-line">{{ decompResultLine }}</p>
+
+      <div v-if="decompSample.length > 0" class="decomp-sample">
+        <div class="decomp-sample-title">Dry-run sample ({{ decompSample.length }})</div>
+        <div v-for="(item, idx) in decompSample" :key="idx" class="decomp-sample-item">
+          <div class="decomp-sample-head">
+            <code>{{ item.phrase_id }}</code>
+            <span class="decomp-target">{{ item.target_text }}</span>
+          </div>
+          <div class="decomp-blocks">
+            <span
+              v-for="(b, i) in item.blocks"
+              :key="i"
+              class="decomp-block"
+              :class="{ 'decomp-ghost': b.isGhost }"
+              :title="b.legoId ? `${b.legoId} — ${b.known}` : 'ghost block'"
+            >
+              <span class="decomp-block-target">{{ b.target }}</span>
+              <span v-if="!b.isGhost" class="decomp-block-lego">{{ b.legoId }}</span>
+              <span v-else class="decomp-block-lego decomp-ghost-tag">ghost</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="decompFailures.length > 0" class="decomp-failures">
+        <div class="decomp-failures-title">First failures ({{ decompFailures.length }})</div>
+        <ul>
+          <li v-for="f in decompFailures" :key="f.phrase_id">
+            <code>{{ f.phrase_id }}</code>: {{ f.reason }}
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -280,6 +392,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../composables/useAuth'
+import UptimePanel from '../components/UptimePanel.vue'
 
 const { getAccessToken } = useAuth()
 
@@ -447,11 +560,15 @@ async function toggleExpand(id) {
   if (!ev) return
   currentRows.value = { ...currentRows.value, [id]: 'loading' }
   try {
-    const params = new URLSearchParams({ table: ev.table_name, pk: ev.primary_key || '' })
+    const params = new URLSearchParams({
+      table: ev.table_name,
+      pk: ev.primary_key || '',
+      event_id: String(ev.id),
+    })
     const r = await authedFetch(`/api/admin/audit-row?${params.toString()}`)
     const body = await r.json()
     if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
-    currentRows.value = { ...currentRows.value, [id]: { current: body.current } }
+    currentRows.value = { ...currentRows.value, [id]: { current: body.current, old_row: body.old_row } }
   } catch (e) {
     currentRows.value = { ...currentRows.value, [id]: { error: e.message } }
   }
@@ -549,9 +666,133 @@ function closeRestoreModal() {
   restoreResult.value = null
 }
 
+// ---------------------------------------------------------------------------
+// Phrase decomposition section state + actions
+// ---------------------------------------------------------------------------
+
+const availableCourses = ref([])
+const decompCourse = ref('')
+const decompAudit = ref(null)
+const decompAuditLoading = ref(false)
+const decompAuditError = ref('')
+const decompBusy = ref(false)
+const decompMode = ref(null) // 'dry' | 'live'
+const decompProgress = ref({ processed: 0, updated: 0, failed: 0 })
+const decompResultLine = ref('')
+const decompSample = ref([])
+const decompFailures = ref([])
+
+async function loadAvailableCourses() {
+  try {
+    const r = await authedFetch('/api/courses')
+    if (!r.ok) throw new Error(`HTTP ${r.status}`)
+    const body = await r.json()
+    // /api/courses returns { courses: [{ code, course_code, ... }] }
+    availableCourses.value = (body.courses || []).map(c => ({ code: c.code || c.course_code }))
+  } catch (e) {
+    // Non-critical for this section — UI still works with manual typing
+    console.warn('[decomposition] courses list failed:', e.message)
+  }
+}
+
+async function loadDecompAudit() {
+  if (!decompCourse.value) return
+  decompAuditLoading.value = true
+  decompAuditError.value = ''
+  // Don't clear decompAudit on refresh — keep the old numbers visible during reload
+  try {
+    const r = await authedFetch(`/api/admin/decomposition-audit/${decompCourse.value}`)
+    const body = await r.json()
+    if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
+    decompAudit.value = body
+  } catch (e) {
+    decompAuditError.value = `Failed to load audit: ${e.message}`
+  } finally {
+    decompAuditLoading.value = false
+  }
+}
+
+async function runDecompDryRun() {
+  if (!decompCourse.value || decompBusy.value) return
+  decompBusy.value = true
+  decompMode.value = 'dry'
+  decompResultLine.value = ''
+  decompSample.value = []
+  decompFailures.value = []
+  try {
+    const r = await authedFetch('/api/admin/decomposition-backfill', {
+      method: 'POST',
+      body: JSON.stringify({ courseCode: decompCourse.value, dryRun: true, limit: 20 })
+    })
+    const body = await r.json()
+    if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
+    decompSample.value = body.sample || []
+    decompFailures.value = body.failures || []
+    decompResultLine.value =
+      `Dry-run: processed ${body.processed}, would update ${body.processed - (body.failed || 0)}, ` +
+      `failed ${body.failed || 0}. Sample of ${decompSample.value.length} shown below.`
+  } catch (e) {
+    decompResultLine.value = `Dry-run failed: ${e.message}`
+  } finally {
+    decompBusy.value = false
+    decompMode.value = null
+  }
+}
+
+async function runDecompBackfill() {
+  if (!decompCourse.value || decompBusy.value) return
+  decompBusy.value = true
+  decompMode.value = 'live'
+  decompResultLine.value = ''
+  decompSample.value = []
+  decompFailures.value = []
+  decompProgress.value = { processed: 0, updated: 0, failed: 0 }
+
+  // Loop the endpoint until more_remaining is false. Each request is capped
+  // at ~60s server-side; we just keep firing.
+  let totalProcessed = 0
+  let totalUpdated = 0
+  let totalFailed = 0
+  let safetyIterations = 0
+  try {
+    while (true) {
+      if (++safetyIterations > 200) {
+        // Hard cap — 200 batches × 500 phrases each = 100k phrases. Anything
+        // bigger probably means a bug.
+        decompResultLine.value = 'Stopped after 200 batches — refresh audit and re-run if needed.'
+        break
+      }
+      const r = await authedFetch('/api/admin/decomposition-backfill', {
+        method: 'POST',
+        body: JSON.stringify({ courseCode: decompCourse.value, dryRun: false, limit: 500 })
+      })
+      const body = await r.json()
+      if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
+      totalProcessed += body.processed || 0
+      totalUpdated += body.updated || 0
+      totalFailed += body.failed || 0
+      decompProgress.value = { processed: totalProcessed, updated: totalUpdated, failed: totalFailed }
+      if (body.failures && decompFailures.value.length < 5) {
+        decompFailures.value = [...decompFailures.value, ...body.failures].slice(0, 5)
+      }
+      if (!body.more_remaining) break
+    }
+    decompResultLine.value =
+      `Backfill done: processed ${totalProcessed}, updated ${totalUpdated}, failed ${totalFailed}.`
+    // Refresh audit so the panel reflects the new state
+    await loadDecompAudit()
+  } catch (e) {
+    decompResultLine.value = `Backfill failed: ${e.message} (processed ${totalProcessed} so far)`
+  } finally {
+    decompBusy.value = false
+    decompMode.value = null
+  }
+}
+
 onMounted(() => {
   loadStats()
   loadEvents()
+  loadAvailableCourses()
 })
 </script>
 
@@ -683,6 +924,18 @@ onMounted(() => {
   font-size: 13px;
   color: #86efac;
 }
+
+.auto-prune-note {
+  margin-top: 18px;
+  padding: 12px 14px;
+  background: rgba(30, 41, 59, 0.45);
+  border-left: 3px solid rgba(148, 163, 184, 0.35);
+  border-radius: 4px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #cbd5e1;
+}
+.auto-prune-note strong { color: #f1f5f9; }
 
 .modal-backdrop {
   position: fixed;
@@ -1032,5 +1285,154 @@ onMounted(() => {
 .restore-failed ul {
   margin: 4px 0 0 18px;
   font-size: 12px;
+}
+
+/* -----------------------------------------------------------------------
+   Phrase decomposition section
+   ----------------------------------------------------------------------- */
+
+.decomp-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: rgba(30, 41, 59, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 8px;
+}
+.course-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+.course-select select {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  min-width: 180px;
+}
+
+.decomp-stats {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.decomp-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.decomp-backfill-btn {
+  background: #1d4ed8;
+}
+.decomp-backfill-btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.decomp-sample {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 8px;
+}
+.decomp-sample-title {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.decomp-sample-item + .decomp-sample-item {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.08);
+}
+.decomp-sample-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.decomp-sample-head code {
+  background: rgba(148, 163, 184, 0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 11px;
+  color: #cbd5e1;
+}
+.decomp-target {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+.decomp-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.decomp-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 8px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: 5px;
+  font-size: 12px;
+  min-width: 32px;
+}
+.decomp-block.decomp-ghost {
+  background: rgba(148, 163, 184, 0.08);
+  border-style: dashed;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+.decomp-block-target {
+  color: #f1f5f9;
+  font-weight: 500;
+  white-space: pre;
+}
+.decomp-block-lego {
+  margin-top: 2px;
+  font-size: 9px;
+  color: #93c5fd;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+.decomp-ghost-tag {
+  color: #94a3b8;
+}
+
+.decomp-failures {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 6px;
+  font-size: 12px;
+  color: #fca5a5;
+}
+.decomp-failures-title {
+  font-weight: 500;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+.decomp-failures ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.decomp-failures code {
+  background: rgba(239, 68, 68, 0.12);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 11px;
+  color: #fecaca;
 }
 </style>

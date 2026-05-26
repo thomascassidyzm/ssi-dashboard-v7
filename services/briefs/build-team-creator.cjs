@@ -3,7 +3,7 @@
  * API validates tiling, vocab, ZUT, phrase counts. Final pass handles grammar/naturalness QA.
  */
 
-const { getSupabase, getLanguageName, getKnownLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadMethodology } = require('./shared.cjs');
+const { getSupabase, getLanguageName, getKnownLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadMethodology, loadSynonymChoiceArchitecture } = require('./shared.cjs');
 
 async function generateBuildTeamCreatorBrief(courseCode, query = {}) {
   const supabase = getSupabase();
@@ -143,6 +143,17 @@ ${crossCourseSummaries || '(No cross-course calibrations available yet)'}
 <summary>ralph-methodology.md (embedded)</summary>
 
 ${loadMethodology()}
+
+</details>
+
+## Synonym-Choice Architecture (upstream of LEGO decomposition)
+
+Read this BEFORE you decide on a target-language realisation for each SEED. It is the eight-principle checklist for picking the least-action-path candidate per pair. Three worked examples (Mandarin-for-English, Swedish-for-Romanian, Hungarian-for-English) ground each principle; the closing section tells you how to apply the methodology to any new pair.
+
+<details>
+<summary>synonym-choice-architecture.md (embedded)</summary>
+
+${loadSynonymChoiceArchitecture()}
 
 </details>
 

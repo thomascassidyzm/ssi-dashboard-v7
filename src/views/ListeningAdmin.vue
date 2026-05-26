@@ -35,6 +35,10 @@
           <span>{{ graduatedQueue.length }} graduated</span>
           <span>active <strong>{{ l1ActiveFires ? '✓' : '–' }}</strong></span>
           <span>reserve <strong>{{ l1ReserveFires ? '✓' : '–' }}</strong></span>
+          <span class="cycle-ratio" title="Listening cycles / speaking cycles this round. Speaking is a script-shape estimate; listening is exact for L1 + approximate for L2 (assumes 1 pod lap per round from activation).">
+            {{ cycleStats.listening }} listen + ~{{ cycleStats.speaking }} speak =
+            <strong :class="{ 'ratio-hot': cycleStats.listeningPct >= 50 }">{{ cycleStats.listeningPct }}% listening</strong>
+          </span>
         </div>
         <div v-if="courseLoading" class="preview-loading">Loading course data…</div>
       </div>
@@ -68,6 +72,12 @@
                 </span>
                 <PlaylistEditor :modelValue="getL1StageList(stage)" @update:modelValue="setL1StageList(stage, $event)" :compact="true" />
                 <button
+                  class="stage-audition-btn"
+                  :disabled="!auditionExampleSeed"
+                  @click="auditionL1Stage(stage)"
+                  :title="auditionExampleSeed ? `Audition stage ${stage} with seed S${String(auditionExampleSeed).padStart(4,'0')}` : 'Pick a course with graduated seeds to audition'"
+                >▶</button>
+                <button
                   class="stage-remove-btn"
                   :disabled="l1StageKeys.length <= 1"
                   @click="removeL1Stage(stage)"
@@ -97,8 +107,6 @@
           <NumField v-model="drafts.listening.l1ReserveSize" label="Reserve window size" suffix="seeds"
             help="Older graduated seeds (next slice after active)." />
           <NumField v-model="drafts.listening.l1ReserveInterval" label="Reserve fires every" suffix="rounds" />
-          <NumField v-model="drafts.listening.podActivationRound" label="Pod activation default" suffix="rounds"
-            help="First main-round at which Layer 2 pods fire (per-learner pin still wins)." />
         </div>
 
         <!-- Live preview: what would Layer 1 play right now? -->
@@ -117,12 +125,15 @@
             <div v-for="sNum in activeWindow" :key="sNum" class="preview-seed">
               <div class="preview-seed-head">
                 <span class="seed-id">S{{ String(sNum).padStart(4, '0') }}</span>
+                <span v-if="seedL1Stage(sNum) != null" class="seed-stage" :title="`${seedL1PriorFires(sNum)} prior L1 fires`">
+                  stage {{ seedL1Stage(sNum) }}
+                </span>
                 <span class="seed-target">{{ seedDisplayTarget(sNum) }}</span>
                 <span class="seed-known">{{ seedDisplayKnown(sNum) }}</span>
               </div>
               <div class="preview-seed-pills">
                 <button
-                  v-for="(role, idx) in drafts.listening.layer1Playlist"
+                  v-for="(role, idx) in seedL1Playlist(sNum)"
                   :key="idx"
                   class="preview-pill"
                   :class="`role-${role}`"
@@ -180,6 +191,12 @@
                 </span>
                 <PlaylistEditor :modelValue="getStageList(stage)" @update:modelValue="setStageList(stage, $event)" :compact="true" />
                 <button
+                  class="stage-audition-btn"
+                  :disabled="!auditionExamplePodSentence"
+                  @click="auditionPodStage(stage)"
+                  :title="auditionExamplePodSentence ? `Audition stage ${stage} with pod sentence 1` : 'Pick a course with a pod loaded to audition'"
+                >▶</button>
+                <button
                   class="stage-remove-btn"
                   :disabled="podsStageKeys.length <= 1"
                   @click="removeStage(stage)"
@@ -194,6 +211,10 @@
         </div>
 
         <div class="field-grid">
+          <NumField v-model="drafts.pods.podActivationRound" label="Pod activation default" suffix="rounds"
+            help="First main-round at which Layer 2 pods fire (per-learner pin still wins)." />
+          <NumField v-model="drafts.pods.roundInterval" label="Pod fires every" suffix="rounds"
+            help="1 = every round (default). 2 = every other round, 3 = every third, etc. Stretches every pod stage proportionally — pod-rounds only tick on actual fires." />
           <NumField v-model="drafts.pods.stageDuration" label="Stage duration" suffix="pod-rounds"
             help="Pod-rounds spent in each of stages 1–6 before promoting (stage 7 is eternal)." />
           <NumField v-model="drafts.pods.gapSuperTightMs" label="Gap: super tight" suffix="ms"
@@ -306,9 +327,12 @@ const router = useRouter()
 const { getAccessToken, isAdmin, learner: currentUser } = useAuth()
 
 const KEYS = ['listening', 'pods', 'script_shape', 'turbo_boost', 'normal_mode']
-const ROLE_LABEL = { ps: '1×', ps2x: '2×', trans: 'EN' }
+const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN' }
+const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0 }
 const ROLE_DESC = {
+  ps08x: 'target at 0.8× — extra-slow for first exposure',
   ps: 'target at 1.0× — slow listen for clarity',
+  ps15x: 'target at 1.5× — gentle stretch on the way up',
   ps2x: 'target at 2.0× — fast rep for retention',
   trans: 'known-language audio at 1.0×',
 }
@@ -331,6 +355,7 @@ const previewRound = ref(100)
 const courseLoading = ref(false)
 const courseLegos = ref([])           // is_new only, ordered by seed,lego_index
 const courseSeeds = ref([])           // course_seeds rows for picked course
+const coursePodSentences = ref([])    // listening_pod_sentences rows, ordered by global_order
 
 const seedLastRound = computed(() => {
   // Mirrors generateLearningScript.ts: seeds processed in seed_number order;
@@ -406,6 +431,48 @@ function seedAudioId(sNum, role) {
   // 'trans' plays known audio; 'ps' / 'ps2x' play target.
   return role === 'trans' ? row.known_audio_id : row.target1_audio_id
 }
+
+// ---------------------------------------------------------------------
+// Per-seed L1 stage progression (mirrors generateLearningScript.ts)
+// ---------------------------------------------------------------------
+// Each L1 emit increments a per-seed fire counter; stage = layer1StageFor
+// (fireCount), capped at the eternal stage. Active-window seeds sit in
+// the active window from graduation onward, so prior fires = number of
+// active-interval-multiples between graduation and (R - 1).
+function seedL1PriorFires(sNum) {
+  const last = seedLastRound.value.get(sNum)
+  if (last == null) return 0
+  const off = drafts.listening?.offset ?? 56
+  const gR = last + off
+  const interval = drafts.listening?.l1ActiveInterval ?? 3
+  const R = previewRound.value
+  if (R < gR || interval <= 0) return 0
+  return Math.floor((R - 1) / interval) - Math.floor((gR - 1) / interval)
+}
+
+function seedL1Stage(sNum) {
+  const sp = drafts.listening?.layer1StagePlaylist || {}
+  const keys = Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
+  if (keys.length === 0) return null
+  const eternal = keys[keys.length - 1]
+  const duration = drafts.listening?.layer1StageDuration ?? 3
+  // Fire count for this emission = prior + 1 — the playlist for the
+  // next/current fire slot, which is what the admin wants to audition.
+  const fireCount = seedL1PriorFires(sNum) + 1
+  for (const stage of keys) {
+    if (stage === eternal) return stage
+    if (fireCount <= stage * duration) return stage
+  }
+  return eternal
+}
+
+function seedL1Playlist(sNum) {
+  const stage = seedL1Stage(sNum)
+  if (stage == null) return drafts.listening?.layer1Playlist || []
+  const list = getL1StageList(stage)
+  if (list && list.length) return list
+  return drafts.listening?.layer1Playlist || []
+}
 function audioUrl(audioId) {
   if (!audioId || !selectedCourseCode.value) return null
   return `${AUDIO_BASE}/${audioId}?courseId=${encodeURIComponent(selectedCourseCode.value)}`
@@ -418,20 +485,19 @@ function playOne(sNum, role) {
   if (!url) return
   if (currentAudio) { try { currentAudio.pause() } catch {} }
   const a = new Audio(url)
-  a.playbackRate = role === 'ps2x' ? 2.0 : 1.0
+  a.playbackRate = ROLE_SPEED[role] ?? 1.0
   a.play().catch(err => console.warn('audio play failed:', err))
   currentAudio = a
 }
-async function playSequence(sNum) {
+async function playPlaylistForSeed(playlist, sNum) {
   if (currentAudio) { try { currentAudio.pause() } catch {} }
-  const playlist = drafts.listening?.layer1Playlist || []
   for (const role of playlist) {
     const id = seedAudioId(sNum, role)
     const url = audioUrl(id)
     if (!url) continue
     await new Promise((resolve) => {
       const a = new Audio(url)
-      a.playbackRate = role === 'ps2x' ? 2.0 : 1.0
+      a.playbackRate = ROLE_SPEED[role] ?? 1.0
       currentAudio = a
       a.onended = resolve
       a.onerror = resolve
@@ -442,10 +508,160 @@ async function playSequence(sNum) {
   }
 }
 
+async function playSequence(sNum) {
+  await playPlaylistForSeed(seedL1Playlist(sNum), sNum)
+}
+
+// Audition a specific L1 stage with the currently-selected example seed.
+// Useful when you want to hear what Stage N sounds like even if no seed
+// is currently sitting in that stage at the previewRound.
+function auditionL1Stage(stage) {
+  const sNum = auditionExampleSeed.value
+  if (sNum == null) return
+  playPlaylistForSeed(getL1StageList(stage), sNum)
+}
+
+// Example seed for stage audition. Prefers the most-recently graduated
+// seed (what a learner is hearing right now); falls back to oldest
+// graduated or the first course seed if nothing has graduated yet.
+const auditionExampleSeed = computed(() => {
+  if (activeWindow.value.length) return activeWindow.value[activeWindow.value.length - 1]
+  if (graduatedQueue.value.length) return graduatedQueue.value[graduatedQueue.value.length - 1]
+  if (courseSeeds.value.length) return courseSeeds.value[0].seed_number
+  return null
+})
+
+// Example pod sentence for L2 stage audition — first sentence of the
+// pod (global_order = 1). Null if the course has no pod loaded.
+const auditionExamplePodSentence = computed(() => {
+  return coursePodSentences.value[0] || null
+})
+
+// Play one pod sentence through a stage playlist. Mirrors the runtime
+// pod-lap builder: trans → known audio, ps/ps2x → target audio (at 1×
+// or 2× respectively). No bookends, no inter-chunk gap matrix — admin
+// preview, not a faithful lap simulation.
+async function playPodPlaylistForSentence(playlist, sentence) {
+  if (currentAudio) { try { currentAudio.pause() } catch {} }
+  for (const role of playlist) {
+    const isTrans = role === 'trans'
+    const id = isTrans ? sentence.known_audio_id : sentence.target_audio_id
+    const url = audioUrl(id)
+    if (!url) continue
+    await new Promise((resolve) => {
+      const a = new Audio(url)
+      a.playbackRate = ROLE_SPEED[role] ?? 1.0
+      currentAudio = a
+      a.onended = resolve
+      a.onerror = resolve
+      a.play().catch(resolve)
+    })
+    await new Promise((r) => setTimeout(r, 250))
+  }
+}
+
+function auditionPodStage(stage) {
+  const sentence = auditionExamplePodSentence.value
+  if (!sentence) return
+  playPodPlaylistForSentence(getStageList(stage), sentence)
+}
+
+// Port of usePodLapScheduler.podStageFor — admin-side cycle-count
+// estimate, no runtime dep. Returns the stage a pod sentence at
+// entryPodRound would sit in when the lap is currentPodRound.
+function podStageForAdmin(entryPodRound, currentPodRound, stageDuration, totalStages) {
+  const alive = currentPodRound - entryPodRound + 1
+  if (alive < 1) return null
+  for (let stage = 1; stage < totalStages; stage++) {
+    if (alive <= stage * stageDuration) return stage
+  }
+  return totalStages
+}
+
+// Cycle-count breakdown at the preview round. Answers the pedagogy
+// question 'is the listening / speaking ratio off?' with a single
+// number the admin can dial against.
+//
+// Speaking: rough per-round estimate from script_shape config —
+//   main-loop rounds (R ≤ totalLegos) emit intro+debut+build+SR+USE;
+//   infinite-play rounds emit ~20 (TARGET_ROUND_CYCLES from
+//   generateLearningScript). Off by a few cycles in either direction
+//   for any given round, but consistent enough to read trends.
+//
+// Listening: exact for L1 (sum of per-seed current-stage playlist
+// lengths for the windows that fire this round) and approximate for
+// L2 (assumes 1 pod lap per round from podActivationRound onward,
+// activeCount grows by 1 per lap up to total pod sentences). L2 stage
+// progression mirrors podStageFor.
+const cycleStats = computed(() => {
+  const R = previewRound.value
+  let listening = 0
+
+  // L1
+  if (l1ActiveFires.value) {
+    for (const sNum of activeWindow.value) {
+      listening += seedL1Playlist(sNum).length
+    }
+  }
+  if (l1ReserveFires.value) {
+    // Reserve seeds are by definition old; use the eternal stage's
+    // playlist length as a steady-state approximation.
+    const sp = drafts.listening?.layer1StagePlaylist || {}
+    const keys = Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
+    const eternalLen = keys.length
+      ? getL1StageList(keys[keys.length - 1]).length
+      : (drafts.listening?.layer1Playlist || []).length
+    listening += reserveWindow.value.length * eternalLen
+  }
+
+  // L2 — pods fire every drafts.pods.roundInterval main rounds from
+  // activation onward. podRound counts actual fires, not player rounds,
+  // so the stage clock and active-count grow at the cadence of fires
+  // (not session rounds). Non-firing rounds contribute 0 listening
+  // cycles from L2.
+  // Pod activation lives on drafts.pods now; legacy `listening` rows still
+  // carry it until they're re-saved. Prefer pods, fall back to listening.
+  const activation = drafts.pods?.podActivationRound ?? drafts.listening?.podActivationRound ?? 6
+  const interval = Math.max(1, Math.floor(drafts.pods?.roundInterval ?? 1))
+  const totalPodSentences = coursePodSentences.value.length
+  const offset = R - activation
+  const podFiresThisRound = drafts.pods && totalPodSentences > 0 && R >= activation && offset % interval === 0
+  if (podFiresThisRound) {
+    const podRound = Math.floor(offset / interval) + 1
+    const activeCount = Math.min(podRound, totalPodSentences)
+    const stageDuration = drafts.pods.stageDuration ?? 5
+    const totalStages = podsStageKeys.value.length || 1
+    for (let i = 1; i <= activeCount; i++) {
+      const stage = podStageForAdmin(i, podRound, stageDuration, totalStages)
+      if (stage == null) continue
+      listening += getStageList(stage).length
+    }
+  }
+
+  // Speaking — script-shape estimate.
+  const ss = drafts.script_shape || {}
+  const maxBuild = ss.maxBuildPhrases ?? 7
+  const maxSR = ss.maxSpacedRepPhrases ?? 10
+  const useCons = ss.useConsolidationCount ?? 2
+  const totalLegos = previewRoundMax.value
+  const speaking = R <= totalLegos
+    ? 2 + maxBuild + maxSR + useCons  // intro + debut + build + SR + USE
+    : 20                              // TARGET_ROUND_CYCLES (infinite play)
+
+  const total = listening + speaking
+  return {
+    listening,
+    speaking,
+    total,
+    listeningPct: total > 0 ? Math.round((100 * listening) / total) : 0,
+  }
+})
+
 async function loadCoursePreview(courseCode) {
   courseLoading.value = true
   courseLegos.value = []
   courseSeeds.value = []
+  coursePodSentences.value = []
   try {
     const sb = await import('../services/supabase').then(m => m.supabase)
     if (!sb) throw new Error('Supabase not configured')
@@ -485,6 +701,19 @@ async function loadCoursePreview(courseCode) {
       from += limit
     }
     courseSeeds.value = seeds
+
+    // Pod sentences (for L2 audition). One pod per course; load whatever
+    // exists. Courses without pods still preview L1 fine.
+    const { data: podRows, error: podErr } = await sb
+      .from('listening_pod_sentences')
+      .select('global_order, target_text, known_text, target_audio_id, known_audio_id')
+      .eq('pod_id', `${courseCode}:pod-0`)
+      .order('global_order', { ascending: true })
+    if (podErr) {
+      console.warn('[preview] pod load failed:', podErr)
+    } else {
+      coursePodSentences.value = podRows || []
+    }
   } catch (e) {
     console.warn('[preview] load failed:', e)
   } finally {
@@ -532,6 +761,15 @@ function reset(key) {
   if (!rowMap.value[key]) return
   drafts[key] = deepClone(rowMap.value[key].config)
   rowErrors[key] = null
+  // Mirror the load-time defaults backfill — keeps NumFields bound to
+  // defined values after a reset on rows saved before the field existed.
+  if (key === 'pods' && drafts.pods) {
+    if (drafts.pods.roundInterval == null) drafts.pods.roundInterval = 1
+    if (drafts.pods.podActivationRound == null) {
+      // Inherit from the legacy listening row if available, else default 6.
+      drafts.pods.podActivationRound = drafts.listening?.podActivationRound ?? 6
+    }
+  }
 }
 
 async function save(key) {
@@ -676,6 +914,18 @@ async function loadAll() {
       drafts[r.key] = deepClone(r.config)
       rowErrors[r.key] = null
     }
+    // Backfill defaults for fields added after the row was last saved —
+    // keeps NumFields bound to defined values, and the first save writes
+    // the field into the DB row going forward.
+    if (drafts.pods) {
+      if (drafts.pods.roundInterval == null) drafts.pods.roundInterval = 1
+      if (drafts.pods.podActivationRound == null) {
+        // Field used to live on drafts.listening — migrate the value across
+        // so existing courses keep their tuned activation round when the
+        // pods row is first saved against the new schema.
+        drafts.pods.podActivationRound = drafts.listening?.podActivationRound ?? 6
+      }
+    }
   } catch (e) {
     loadError.value = e.message || String(e)
   } finally {
@@ -703,8 +953,13 @@ const PlaylistEditor = defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const ROLES = ['ps', 'ps2x', 'trans']
-    const ROLE_LABEL = { ps: '1×', ps2x: '2×', trans: 'EN' }
+    // ps* = target sentence at varying speeds, trans = known-language gloss,
+    // explainer = the per-sentence Stage-1 narration that decomposes the
+    // target into LEGO-sized chunks ("buona means good, sera means afternoon,
+    // come stai means how are you doing"). See migration
+    // 20260519_listening_pod_explainer_columns.sql.
+    const ROLES = ['ps08x', 'ps', 'ps15x', 'ps2x', 'trans', 'explainer']
+    const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN', explainer: 'ⓘ' }
 
     function update(next) { emit('update:modelValue', next) }
     function cycle(idx) {
@@ -1069,9 +1324,12 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 :deep(.role-pill:active) { transform: scale(0.96); }
 :deep(.role-pill:hover) { filter: brightness(1.1); }
+:deep(.role-pill.role-ps08x) { background: #fde047; color: #422006; }
 :deep(.role-pill.role-ps)    { background: #fbbf24; color: #422006; }
+:deep(.role-pill.role-ps15x) { background: #fb923c; color: #431407; }
 :deep(.role-pill.role-ps2x)  { background: #f97316; color: #431407; }
 :deep(.role-pill.role-trans) { background: #6b7280; color: #f9fafb; }
+:deep(.role-pill.role-explainer) { background: #f59e0b; color: #422006; }
 :deep(.pill-num) {
   background: rgba(0,0,0,0.18);
   color: inherit;
@@ -1121,13 +1379,27 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 .stage-row {
   display: grid;
-  grid-template-columns: 90px 1fr 28px;
+  grid-template-columns: 90px 1fr auto auto;
   gap: 0.75rem;
   align-items: center;
   padding: 0.4rem 0.5rem;
   background: rgba(0, 0, 0, 0.15);
   border-radius: 6px;
 }
+.stage-audition-btn {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--color-graphite, #475569);
+  background: transparent;
+  color: var(--color-paper-dim, #94a3b8);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.stage-audition-btn:hover:not(:disabled) {
+  border-color: #34d399;
+  color: #34d399;
+}
+.stage-audition-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 .stage-label {
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 0.75rem;
@@ -1262,6 +1534,13 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
 }
 .preview-stats strong { color: var(--color-paper, #f7f7f2); }
+.preview-stats .cycle-ratio {
+  padding: 0.1rem 0.45rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
+  cursor: help;
+}
+.preview-stats .ratio-hot { color: #fb923c; }
 .preview-loading {
   font-size: 0.75rem;
   color: var(--color-paper-dim, #94a3b8);
@@ -1325,6 +1604,16 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   color: var(--color-paper-dim, #94a3b8);
   min-width: 56px;
 }
+.seed-stage {
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-paper-dim, #94a3b8);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
 .seed-target { font-weight: 500; }
 .seed-known {
   color: var(--color-paper-dim, #94a3b8);
@@ -1363,9 +1652,12 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   align-items: center; justify-content: center;
 }
 .preview-pill .pill-icon { font-size: 0.65rem; opacity: 0.7; }
+.preview-pill.role-ps08x { background: #fde047; color: #422006; }
 .preview-pill.role-ps    { background: #fbbf24; color: #422006; }
+.preview-pill.role-ps15x { background: #fb923c; color: #431407; }
 .preview-pill.role-ps2x  { background: #f97316; color: #431407; }
 .preview-pill.role-trans { background: #6b7280; color: #f9fafb; }
+.preview-pill.role-explainer { background: #f59e0b; color: #422006; }
 .preview-sequence {
   margin-left: auto;
   background: transparent;

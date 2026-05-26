@@ -4518,13 +4518,29 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 })
 
 // =============================================================================
-// START SERVER
+// START SERVER (suppressed when require()d as a library)
 // =============================================================================
+// Gated on PHASE8_NO_LISTEN so other tools (e.g. the pod-explainer overnight
+// runner) can require this file purely for its named helpers — masterAudio,
+// generatePodAudio etc. — without triggering EADDRINUSE on PORT 3465.
+//
+// We use an explicit env-var rather than `require.main === module` because
+// PM2's ProcessContainerFork loads the script via _load() and require.main
+// points at PM2's wrapper, not this file — so the require.main gate would
+// silently skip app.listen under PM2 and the service would crash-loop.
 
-app.listen(PORT, () => {
-  logger.info(`Phase 8 Audio Service (v13) running on port ${PORT}`)
-  logger.info(`Supabase: ${process.env.SUPABASE_URL ? 'configured' : 'NOT configured'}`)
-  logger.info(`S3 Bucket: ${S3_BUCKET}`)
-})
+if (!process.env.PHASE8_NO_LISTEN) {
+  app.listen(PORT, () => {
+    logger.info(`Phase 8 Audio Service (v13) running on port ${PORT}`)
+    logger.info(`Supabase: ${process.env.SUPABASE_URL ? 'configured' : 'NOT configured'}`)
+    logger.info(`S3 Bucket: ${S3_BUCKET}`)
+  })
+}
 
 module.exports = app
+// Named exports for reuse from other audio-generation paths.
+module.exports.masterAudio = masterAudio
+module.exports.findExistingAudio = findExistingAudio
+module.exports.generatePodAudio = generatePodAudio
+module.exports.s3 = s3
+module.exports.S3_BUCKET = S3_BUCKET
