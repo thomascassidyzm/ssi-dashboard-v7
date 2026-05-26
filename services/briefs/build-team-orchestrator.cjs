@@ -32,7 +32,9 @@ async function generateBuildTeamOrchestratorBrief(courseCode, query = {}) {
     ? decomposedSeeds[decomposedSeeds.length - 1].seed_number
     : 0;
 
-  const targetSeeds = parseInt(query.target) || 300;
+  // Resolution order: explicit ?target= → courses.seed_count → 300
+  // This way the orchestrator brief always reflects the course's recorded release target.
+  const targetSeeds = parseInt(query.target) || courseInfo?.seed_count || 300;
 
   // Figure out where we are in the process
   const goldenDone = [];

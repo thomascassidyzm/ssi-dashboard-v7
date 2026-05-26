@@ -537,12 +537,39 @@ module.exports = function (ctx) {
       const { courseCode } = req.params;
       const terminal = req.body?.terminal || req.query.terminal || 'iTerm2';
 
+      // Resolve the build target.
+      // Priority: body.targetSeeds (the user's selection on the page) →
+      // current courses.seed_count → 300.
+      // If the body explicitly asked for a new size, persist it to courses.seed_count
+      // so every downstream consumer (stats, briefs, phase8) stays in sync.
+      const requestedTarget = Number.isFinite(Number(req.body?.targetSeeds))
+        ? parseInt(req.body.targetSeeds, 10)
+        : null;
 
+      const { data: courseRow } = await ctx.supabase
+        .from('courses')
+        .select('seed_count')
+        .eq('course_code', courseCode)
+        .single();
+      const currentSeedCount = courseRow?.seed_count || 300;
+
+      const effectiveTargetSeeds = requestedTarget || currentSeedCount;
+
+      if (requestedTarget && requestedTarget !== currentSeedCount) {
+        const { error: updateErr } = await ctx.supabase
+          .from('courses')
+          .update({ seed_count: requestedTarget })
+          .eq('course_code', courseCode);
+        if (updateErr) {
+          console.warn(`[BuildTeam] Failed to update courses.seed_count for ${courseCode}: ${updateErr.message}`);
+        }
+      }
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator?terminal=${effectiveTerminal}`);
+      const briefUrl = `http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator?terminal=${effectiveTerminal}&target=${effectiveTargetSeeds}`;
+      const brief = await fetchBrief(briefUrl);
 
       const tmpFile = `/tmp/build-team_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
@@ -553,7 +580,7 @@ module.exports = function (ctx) {
           .from('build_jobs')
           .insert({
             course_code: courseCode, pass: 'build-team', status: 'running',
-            current_seed: 0, seeds_completed: 0, total_seeds: 300,
+            current_seed: 0, seeds_completed: 0, total_seeds: effectiveTargetSeeds,
             started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
             requested_by: 'dashboard', terminal: effectiveTerminal,
             agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'build-team'
@@ -564,20 +591,32 @@ module.exports = function (ctx) {
         console.warn('[BuildTeam] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
-      spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
+      const dryRun = req.body?.dryRun === true;
 
-      try {
-        await ctx.supabase.from('orchestrator_messages').insert({
-          course_code: courseCode,
-          direction: 'agent_to_human',
-          message: `Build team spawned — building seeds`,
-          status: 'pending',
-          metadata: { action: 'build_team_spawned' }
-        });
-      } catch (e) { /* non-critical */ }
+      if (!dryRun) {
+        const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+        spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
 
-      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Build Team agent spawned` });
+        try {
+          await ctx.supabase.from('orchestrator_messages').insert({
+            course_code: courseCode,
+            direction: 'agent_to_human',
+            message: `Build team spawned — building seeds`,
+            status: 'pending',
+            metadata: { action: 'build_team_spawned' }
+          });
+        } catch (e) { /* non-critical */ }
+      }
+
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        job_id: jobId,
+        message: dryRun ? `Build Team dry-run — agent NOT spawned` : `Build Team agent spawned`,
+        target_seeds: effectiveTargetSeeds,
+        brief_file: tmpFile,
+        dry_run: dryRun
+      });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
