@@ -276,36 +276,8 @@ async function checkPresentationReadiness(courseCode, releaseTarget) {
     missingLegoPresentations++
   }
 
-  // 3) Component phrases — they get their own presentation rows by text match.
-  //    Each component should have at least one presentation row (any text).
-  //    Approximation: count component phrases lacking a `presentation_audio_id`
-  //    binding AND whose own text doesn't appear in the existing presentation set.
-  //    For now we use the simpler check: component phrases with NULL presentation_audio_id.
-  //    /regenerate-presentations creates these rows, so this is a meaningful gate.
-  const { count: componentMissingCount } = await supabase
-    .from('course_practice_phrases')
-    .select('id', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('phrase_role', 'component')
-    .lte('seed_number', releaseTarget)
-    .is('presentation_audio_id', null)
-
-  // But the component's text may have a matching course_audio row even when
-  // presentation_audio_id is null on the phrase. So we don't strictly require
-  // the per-phrase binding — only that course_audio has *some* row that could match.
-  // For the gate, "no component pending rows at all" is the failure mode worth catching.
-  const { count: pendingCompPresCount } = await supabase
-    .from('course_audio')
-    .select('id', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('role', 'presentation')
-    .is('lego_id', null)  // component presentations have null lego_id
-
-  // If there are component phrases needing audio but ZERO component presentation
-  // rows in course_audio, /regenerate-presentations hasn't been run yet.
-  const missingComponentPresentations = (componentMissingCount > 0 && pendingCompPresCount === 0)
-    ? componentMissingCount
-    : 0
+  // Components don't need presentations (Kai 2026-05-19). Only new LEGOs do.
+  const missingComponentPresentations = 0
 
   const totalMissing = missingLegoPresentations + missingComponentPresentations
   return {

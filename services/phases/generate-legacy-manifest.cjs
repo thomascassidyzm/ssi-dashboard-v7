@@ -1214,8 +1214,10 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // 5b. Build presentation text lookup from database (lego_id -> text)
   // This uses the actual generated presentation text instead of hardcoded short form
   const presentationTextByLegoId = new Map()
+  const audioById = new Map()
   if (dbAudio) {
     for (const record of dbAudio) {
+      audioById.set(record.id, record)
       if (record.role === 'presentation' && record.lego_id && record.text) {
         // Prefer mastered over pending
         const isPending = record.s3_key?.startsWith('pending/')
@@ -1224,6 +1226,22 @@ async function generateLegacyManifest(courseCode, options = {}) {
         }
       }
     }
+  }
+  // Fill gaps: LEGOs whose presentation_audio_id points at an audio row with a
+  // different lego_id (shared presentations). Without this, the lookup misses
+  // LEGOs that share presentation audio with another LEGO.
+  if (dbLegos) {
+    let filled = 0
+    for (const lego of dbLegos) {
+      if (presentationTextByLegoId.has(lego.lego_id)) continue
+      if (!lego.presentation_audio_id) continue
+      const audioRow = audioById.get(lego.presentation_audio_id)
+      if (audioRow?.text) {
+        presentationTextByLegoId.set(lego.lego_id, audioRow.text)
+        filled++
+      }
+    }
+    if (filled > 0) console.error(`  Filled ${filled} shared presentation texts via presentation_audio_id`)
   }
   console.error(`  Presentation text lookup: ${presentationTextByLegoId.size} LEGOs`)
 
