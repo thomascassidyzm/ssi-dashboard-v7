@@ -87,7 +87,7 @@ const PLACEHOLDER_INTRO = {
 // =============================================================================
 
 // Punctuation to strip when comparing text for audio matching
-const PUNCT_REGEX = /[。？！、，.!?,;:()（）「」『』\[\]…—–\-]+/g
+const PUNCT_REGEX = /[。？！、，.!?,;:()（）「」『』\[\]…—–\-¿¡]+/g
 
 /**
  * Normalize text for audio matching comparison

@@ -2580,10 +2580,10 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // never gets cleared, and the LEGO might still point at the pending
     // row. See memory: voice-id-prefix-inconsistency.md.
     const voiceConfig = course.voice_config || {}
-    const presV = voiceConfig.voices?.presentation
-    const presentationVoiceId = (presV && presV.provider && presV.voiceId)
-      ? `${presV.provider}_${presV.voiceId}`
-      : (presV?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural')
+    const presVoice = voiceConfig.voices?.presentation || voiceConfig.presentation
+    const presentationVoiceId = (presVoice?.provider && presVoice?.voiceId)
+      ? `${presVoice.provider}_${presVoice.voiceId}`
+      : presVoice?.voiceId || presVoice || 'azure_en-GB-SoniaNeural'
 
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)
