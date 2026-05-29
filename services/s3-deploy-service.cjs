@@ -298,10 +298,16 @@ async function verifyStageAudio(uuids, manifest = null, onProgress = null, optio
         durationErrors: durationResults.errors,
         durationMismatchDetails: durationResults.mismatchDetails,
         durationErrorDetails: durationResults.errorDetails,
-        extractedDurations: durationResults.extractedDurations // Map of uuid -> actual S3 duration
+        extractedDurations: durationResults.extractedDurations, // Map of uuid -> actual S3 duration
+        // MP3 format check (piggybacks on the same downloads as the duration check)
+        formatChecked: durationResults.formatChecked,
+        formatPassed: durationResults.formatPassed,
+        formatFailed: durationResults.formatFailed,
+        formatFailDetails: durationResults.formatFailDetails
       })
 
       logger.info(`[VERIFY] Phase 2 complete: ${durationResults.matched} matched, ${durationResults.mismatched} mismatched, ${durationResults.errors} errors`)
+      logger.info(`[VERIFY] Format check: ${durationResults.formatPassed} clean, ${durationResults.formatFailed} BAD ENCODING (of ${durationResults.formatChecked} checked)`)
     } else {
       // CRITICAL: No samples with durations found - this is a verification FAILURE
       logger.error(`[VERIFY] Phase 2 FAILED: No samples with expected durations found in manifest`)

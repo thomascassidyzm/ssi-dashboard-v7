@@ -9,7 +9,7 @@
  * Uses ffmpeg for audio processing.
  */
 
-const { exec } = require('child_process');
+const { exec, spawn } = require('child_process');
 const { promisify } = require('util');
 const fs = require('fs-extra');
 const path = require('path');
@@ -31,6 +31,94 @@ async function checkFfmpegInstalled() {
 }
 
 /**
+ * Check if lame (the actual LAME binary, not libmp3lame inside ffmpeg) is installed.
+ * Required because ffmpeg's MP3 muxer produces files iOS/AVPlayer can't reliably
+ * decode (ID3v2 prefix + bogus LAME-extension enc_padding). The real lame binary
+ * writes a clean Xing+LAME header CoreAudio trusts.
+ */
+async function checkLameInstalled() {
+  try {
+    await execAsync('lame --version');
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+/**
+ * Encode audio to MP3 by piping ffmpeg's filtered WAV output through the real
+ * lame binary. Replaces every `ffmpeg ... output.mp3` site in this file —
+ * those produced files with the iOS playback bug.
+ *
+ * @param {string} inputPath - source audio
+ * @param {string} outputPath - destination mp3
+ * @param {object} opts
+ * @param {string} [opts.filterChain] - ffmpeg -filter:a expression (e.g. loudnorm=...)
+ * @param {number} [opts.bitrate=96] - lame CBR bitrate (kbps)
+ * @param {number} [opts.sampleRate=48000] - intermediate WAV sample rate
+ * @param {number} [opts.channels=1] - 1 (mono) or 2 (stereo)
+ * @param {number} [opts.quality=2] - lame -q (0=best, 9=fastest); 2 matches the reference good file
+ * @param {string[]} [opts.ffmpegInputArgs] - extra args to insert before -i (e.g. ['-f','lavfi'])
+ * @param {string} [opts.inputOverride] - replace inputPath in the ffmpeg command (used by silence generator)
+ */
+async function ffmpegFilterToLameMp3(inputPath, outputPath, opts = {}) {
+  const {
+    filterChain = null,
+    bitrate = 96,
+    sampleRate = 48000,
+    channels = 1,
+    quality = 2,
+    ffmpegInputArgs = [],
+    inputOverride = null
+  } = opts;
+
+  const ffArgs = ['-y', '-hide_banner', '-loglevel', 'error', ...ffmpegInputArgs];
+  if (inputOverride) {
+    ffArgs.push('-i', inputOverride);
+  } else {
+    ffArgs.push('-i', inputPath);
+  }
+  if (filterChain) ffArgs.push('-filter:a', filterChain);
+  ffArgs.push('-ac', String(channels), '-ar', String(sampleRate), '-f', 'wav', '-');
+
+  const lameArgs = [
+    '-m', channels === 1 ? 'm' : 'j',
+    '-b', String(bitrate),
+    '--cbr',
+    '--noreplaygain',
+    '-q', String(quality),
+    '--silent',
+    '-', outputPath
+  ];
+
+  return new Promise((resolve, reject) => {
+    const ff = spawn('ffmpeg', ffArgs);
+    const lame = spawn('lame', lameArgs);
+
+    let ffErr = '';
+    let lameErr = '';
+    ff.stderr.on('data', d => { ffErr += d.toString(); });
+    lame.stderr.on('data', d => { lameErr += d.toString(); });
+
+    ff.stdout.pipe(lame.stdin);
+
+    ff.on('error', reject);
+    lame.on('error', reject);
+
+    let ffExit = null;
+    let lameExit = null;
+    const settle = () => {
+      if (ffExit === null || lameExit === null) return;
+      if (ffExit !== 0) return reject(new Error(`ffmpeg exited ${ffExit}: ${ffErr.slice(-500)}`));
+      if (lameExit !== 0) return reject(new Error(`lame exited ${lameExit}: ${lameErr.slice(-500)}`));
+      resolve();
+    };
+    ff.on('close', code => { ffExit = code; settle(); });
+    lame.on('close', code => { lameExit = code; settle(); });
+  });
+}
+
+/**
  * Check if sox is installed (fallback for duration extraction)
  *
  * @returns {Promise<boolean>} True if sox is available
@@ -42,6 +130,42 @@ async function checkSoxInstalled() {
   } catch (error) {
     return false;
   }
+}
+
+/**
+ * Check an MP3's container format for the iOS-playback issues (Imdad's checks):
+ *   1. No ID3v2 wrapper — file must start with an MP3 sync frame, not "ID3"
+ *   2. Encoder must be the real LAME binary (LAME3.*), not ffmpeg's muxer (Lavf*)
+ * Runs on a LOCAL file (e.g. one already downloaded for duration extraction).
+ *
+ * @param {string} audioPath - Path to local mp3
+ * @returns {Promise<{ok: boolean, hasId3v2: boolean, encoder: string|null, issues: string[]}>}
+ */
+async function checkMp3Format(audioPath) {
+  let hasId3v2 = false;
+  try {
+    const buf = await fs.readFile(audioPath);
+    // "ID3" = 0x49 0x44 0x33
+    hasId3v2 = buf.length >= 3 && buf[0] === 0x49 && buf[1] === 0x44 && buf[2] === 0x33;
+  } catch (e) { /* unreadable — caught below via empty issues */ }
+
+  let encoder = null;
+  try {
+    const { stdout } = await execAsync(
+      `ffprobe -hide_banner -v error -show_entries stream_tags=encoder:format_tags=encoder -select_streams a:0 -of default=noprint_wrappers=1 "${audioPath}"`
+    );
+    const line = stdout.split('\n').map(l => l.trim())
+      .find(l => /^TAG:encoder=/i.test(l) || /^encoder=/i.test(l));
+    if (line) encoder = line.split('=').slice(1).join('=').trim();
+  } catch (e) { /* no encoder tag */ }
+
+  const issues = [];
+  if (hasId3v2) issues.push('has_ID3v2_wrapper');
+  if (!encoder) issues.push('missing_encoder_tag');
+  else if (/^Lav[fc]/i.test(encoder)) issues.push(`encoded_by_ffmpeg:${encoder}`);
+  else if (!/^LAME/i.test(encoder)) issues.push(`unexpected_encoder:${encoder}`);
+
+  return { ok: issues.length === 0, hasId3v2, encoder, issues };
 }
 
 /**
@@ -93,13 +217,8 @@ async function timeStretchAudio(inputPath, outputPath, factor) {
   }
 
   try {
-    // Use ffmpeg atempo filter for time stretching
-    // atempo has range limits (0.5-2.0), so we may need to chain multiple filters
     const atempoFilters = buildAtempoFilterChain(factor);
-
-    await execAsync(
-      `ffmpeg -y -i "${inputPath}" -filter:a "${atempoFilters}" -q:a 2 "${outputPath}"`
-    );
+    await ffmpegFilterToLameMp3(inputPath, outputPath, { filterChain: atempoFilters });
   } catch (error) {
     throw new Error(`Failed to time-stretch audio: ${error.message}`);
   }
@@ -145,10 +264,9 @@ function buildAtempoFilterChain(factor) {
  */
 async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
   try {
-    // Use ffmpeg loudnorm filter for EBU R128 loudness normalization
-    await execAsync(
-      `ffmpeg -y -i "${inputPath}" -filter:a "loudnorm=I=${targetLUFS}:LRA=11:TP=-1.5" -q:a 2 "${outputPath}"`
-    );
+    await ffmpegFilterToLameMp3(inputPath, outputPath, {
+      filterChain: `loudnorm=I=${targetLUFS}:LRA=11:TP=-1.5`
+    });
   } catch (error) {
     throw new Error(`Failed to normalize audio: ${error.message}`);
   }
@@ -172,9 +290,12 @@ async function processAudio(inputPath, outputPath, options = {}) {
     targetLUFS = -16.0
   } = options;
 
-  // Ensure ffmpeg is installed
+  // Ensure ffmpeg and lame are installed (lame writes the iOS-safe MP3 container)
   if (!(await checkFfmpegInstalled())) {
     throw new Error('ffmpeg is not installed. Please install ffmpeg to process audio.');
+  }
+  if (!(await checkLameInstalled())) {
+    throw new Error('lame is not installed. Please install lame — ffmpeg\'s MP3 muxer produces files that fail on iOS.');
   }
 
   const tempDir = await fs.mkdtemp(path.join(require('os').tmpdir(), 'audio-process-'));
@@ -298,13 +419,11 @@ async function concatenateAudio(audioPaths, outputPath, options = {}) {
           throw new Error(`Input file does not exist: ${audioPaths[i]}`);
         }
 
-        // Normalize with volume adjustment to target dBFS
-        // Using loudnorm for initial normalization, then adjusting to target dBFS
-        await execAsync(
-          `ffmpeg -y -i "${audioPaths[i]}" ` +
-          `-filter:a "loudnorm=I=-16:LRA=11:TP=-1.5" ` +
-          `-q:a 2 "${normalizedPath}"`
-        );
+        // Normalize with volume adjustment to target dBFS via ffmpeg→lame pipe
+        // (ffmpeg's MP3 muxer writes headers iOS can't decode reliably)
+        await ffmpegFilterToLameMp3(audioPaths[i], normalizedPath, {
+          filterChain: 'loudnorm=I=-16:LRA=11:TP=-1.5'
+        });
 
         console.log(`    [CONCAT DEBUG]   Normalized to: ${normalizedPath}`);
         normalizedPaths.push(normalizedPath);
@@ -313,15 +432,17 @@ async function concatenateAudio(audioPaths, outputPath, options = {}) {
       normalizedPaths.push(...audioPaths);
     }
 
-    // Step 2: Create silence segment if pause is needed
+    // Step 2: Create silence segment if pause is needed (via ffmpeg→lame pipe)
     let silencePath = null;
     if (pauseDuration > 0) {
       silencePath = path.join(tempDir, 'silence.mp3');
       const pauseDurationSec = pauseDuration / 1000;
-      await execAsync(
-        `ffmpeg -y -f lavfi -i anullsrc=r=44100:cl=stereo -t ${pauseDurationSec} ` +
-        `-q:a 2 "${silencePath}"`
-      );
+      await ffmpegFilterToLameMp3(null, silencePath, {
+        ffmpegInputArgs: ['-f', 'lavfi'],
+        inputOverride: `anullsrc=r=44100:cl=stereo:d=${pauseDurationSec}`,
+        channels: 2,
+        sampleRate: 44100
+      });
     }
 
     // Step 3: Create concat file list
@@ -345,11 +466,15 @@ async function concatenateAudio(audioPaths, outputPath, options = {}) {
     console.log(`    [CONCAT DEBUG] Concatenating with re-encoding`);
     console.log(`    [CONCAT DEBUG] Temp output: ${tempOutput}`);
 
-    // Use concat demuxer but with re-encoding instead of -c copy
-    // This matches pydub's behavior: load -> process -> export
-    await execAsync(
-      `ffmpeg -y -f concat -safe 0 -i "${concatListPath}" -ar 44100 -ac 2 -b:a 192k "${tempOutput}"`
-    );
+    // Use concat demuxer but with re-encoding via ffmpeg→lame pipe.
+    // -ar 44100 -ac 2 -b:a 192k (original) — bitrate set on the lame side now.
+    await ffmpegFilterToLameMp3(null, tempOutput, {
+      ffmpegInputArgs: ['-f', 'concat', '-safe', '0'],
+      inputOverride: concatListPath,
+      channels: 2,
+      sampleRate: 44100,
+      bitrate: 192
+    });
 
     console.log(`    [CONCAT DEBUG] Concatenation complete, checking file...`);
     const stats = await fs.stat(tempOutput);
@@ -473,13 +598,13 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
 
     const filterChain = filters.join(',');
 
-    // Run FFmpeg: convert to MP3, apply filters, standardize format
-    await execAsync(
-      `ffmpeg -y -i "${inputPath}" ` +
-      `-af "${filterChain}" ` +
-      `-ar 44100 -ac 1 -b:a 128k -codec:a libmp3lame ` +
-      `"${outputPath}"`
-    );
+    // Convert WebM → MP3 via ffmpeg→lame pipe (ffmpeg's MP3 muxer breaks iOS playback)
+    await ffmpegFilterToLameMp3(inputPath, outputPath, {
+      filterChain,
+      bitrate: 128,
+      sampleRate: 44100,
+      channels: 1
+    });
 
     // Read processed output
     const outputBuffer = await fs.readFile(outputPath);
@@ -534,8 +659,11 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
 
 module.exports = {
   checkFfmpegInstalled,
+  checkLameInstalled,
+  ffmpegFilterToLameMp3,
   checkSoxInstalled,
   getAudioDuration,
+  checkMp3Format,
   timeStretchAudio,
   normalizeAudio,
   processAudio,

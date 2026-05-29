@@ -153,6 +153,16 @@
             <span class="text-emerald-400">Stage 2: Duration extraction complete</span>
           </div>
 
+          <!-- Format check (ID3v2 / LAME encoder) -->
+          <div v-if="verification.formatChecked" class="flex items-center gap-2 text-sm">
+            <svg class="w-4 h-4" :class="(verification.formatFailed || 0) === 0 ? 'text-emerald-400' : 'text-red-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+            <span :class="(verification.formatFailed || 0) === 0 ? 'text-emerald-400' : 'text-red-400'">
+              Format check: {{ (verification.formatFailed || 0) === 0 ? `all ${verification.formatChecked.toLocaleString()} correctly encoded` : `${verification.formatFailed.toLocaleString()} BADLY ENCODED` }}
+            </span>
+          </div>
+
           <!-- Stage 3: Auto-fix (if it happened) -->
           <div v-if="verification.durationsFixed && verification.durationsFixed > 0" class="flex items-center gap-2 text-sm">
             <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,6 +215,30 @@
         </p>
         <p class="text-xs text-slate-400">
           Step 3 (Publish Manifest) is blocked until durations are verified.
+        </p>
+      </div>
+
+      <!-- Format check failed - CRITICAL ERROR (iOS playback bug) -->
+      <div v-if="(verification.formatFailed || 0) > 0" class="error-box p-4 bg-red-900/30 border border-red-700 rounded-lg">
+        <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>{{ verification.formatFailed.toLocaleString() }} audio file(s) have bad encoding (iOS playback risk)</span>
+        </div>
+        <p class="text-sm text-slate-300 mb-2">
+          These files have an ID3v2 wrapper or were not encoded by LAME — the issue that breaks iOS playback. Re-encode them before publishing.
+        </p>
+        <ul class="text-xs text-slate-400 font-mono space-y-0.5 max-h-32 overflow-y-auto">
+          <li v-for="f in (verification.formatFailDetails || []).slice(0, 10)" :key="f.uuid">
+            {{ f.uuid }} — {{ (f.issues || []).join(', ') }}
+          </li>
+          <li v-if="(verification.formatFailDetails || []).length > 10" class="text-slate-500">
+            …and {{ verification.formatFailDetails.length - 10 }} more
+          </li>
+        </ul>
+        <p class="text-xs text-slate-400 mt-2">
+          Publishing is blocked until these are re-encoded (fixed via the lame pipeline).
         </p>
       </div>
 
