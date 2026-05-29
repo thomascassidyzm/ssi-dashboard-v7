@@ -133,6 +133,42 @@ async function checkSoxInstalled() {
 }
 
 /**
+ * Check an MP3's container format for the iOS-playback issues (Imdad's checks):
+ *   1. No ID3v2 wrapper — file must start with an MP3 sync frame, not "ID3"
+ *   2. Encoder must be the real LAME binary (LAME3.*), not ffmpeg's muxer (Lavf*)
+ * Runs on a LOCAL file (e.g. one already downloaded for duration extraction).
+ *
+ * @param {string} audioPath - Path to local mp3
+ * @returns {Promise<{ok: boolean, hasId3v2: boolean, encoder: string|null, issues: string[]}>}
+ */
+async function checkMp3Format(audioPath) {
+  let hasId3v2 = false;
+  try {
+    const buf = await fs.readFile(audioPath);
+    // "ID3" = 0x49 0x44 0x33
+    hasId3v2 = buf.length >= 3 && buf[0] === 0x49 && buf[1] === 0x44 && buf[2] === 0x33;
+  } catch (e) { /* unreadable — caught below via empty issues */ }
+
+  let encoder = null;
+  try {
+    const { stdout } = await execAsync(
+      `ffprobe -hide_banner -v error -show_entries stream_tags=encoder:format_tags=encoder -select_streams a:0 -of default=noprint_wrappers=1 "${audioPath}"`
+    );
+    const line = stdout.split('\n').map(l => l.trim())
+      .find(l => /^TAG:encoder=/i.test(l) || /^encoder=/i.test(l));
+    if (line) encoder = line.split('=').slice(1).join('=').trim();
+  } catch (e) { /* no encoder tag */ }
+
+  const issues = [];
+  if (hasId3v2) issues.push('has_ID3v2_wrapper');
+  if (!encoder) issues.push('missing_encoder_tag');
+  else if (/^Lav[fc]/i.test(encoder)) issues.push(`encoded_by_ffmpeg:${encoder}`);
+  else if (!/^LAME/i.test(encoder)) issues.push(`unexpected_encoder:${encoder}`);
+
+  return { ok: issues.length === 0, hasId3v2, encoder, issues };
+}
+
+/**
  * Get audio duration using sox stat (matches original Python workflow)
  *
  * @param {string} audioPath - Path to audio file
@@ -627,6 +663,7 @@ module.exports = {
   ffmpegFilterToLameMp3,
   checkSoxInstalled,
   getAudioDuration,
+  checkMp3Format,
   timeStretchAudio,
   normalizeAudio,
   processAudio,
