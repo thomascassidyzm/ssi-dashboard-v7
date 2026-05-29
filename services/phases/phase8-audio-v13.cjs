@@ -3641,15 +3641,18 @@ async function spliceAudio(parentAudioBuffer, startMs, endMs, paddingMs = 20) {
     const actualStart = Math.max(0, startMs - paddingMs)
     const durationMs = (endMs + paddingMs) - actualStart
 
-    // Use ffmpeg to extract segment — simple volume filter instead of loudnorm
-    // loudnorm needs ~400ms minimum; component words can be much shorter
-    const { exec: execCb } = require('child_process')
-    const { promisify } = require('util')
-    const execAsync = promisify(execCb)
-
-    await execAsync(
-      `ffmpeg -y -i "${parentPath}" -ss ${actualStart}ms -t ${durationMs}ms -q:a 2 "${splicedPath}"`
-    )
+    // Extract the segment and encode via the real LAME binary. ffmpeg's MP3
+    // muxer writes an ID3v2 + bogus LAME-extension header that breaks
+    // iOS/AVPlayer playback — every other encode site pipes ffmpeg→lame for
+    // this reason; this splicer was the last one still using the bad muxer.
+    // Trim with atrim (sample-accurate) and no loudnorm: component words can be
+    // shorter than loudnorm's ~400ms minimum, and the slice must keep the
+    // parent's level so it matches how the word sounds inside its phrase.
+    const startSec = actualStart / 1000
+    const endSec = (actualStart + durationMs) / 1000
+    await audioProcessor.ffmpegFilterToLameMp3(parentPath, splicedPath, {
+      filterChain: `atrim=start=${startSec}:end=${endSec},asetpts=PTS-STARTPTS`
+    })
 
     // Get actual duration from the spliced file
     const metadata = await audioProcessor.getAudioMetadata(splicedPath)
