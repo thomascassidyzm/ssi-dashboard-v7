@@ -15,7 +15,7 @@ const os = require('os')
 const path = require('path')
 const fs = require('fs-extra')
 const { downloadAudio } = require('./s3-service.cjs')
-const { getAudioDuration } = require('./audio-processor.cjs')
+const { getAudioDuration, checkMp3Format } = require('./audio-processor.cjs')
 const createLogger = require('./shared/logger.cjs')
 
 const logger = createLogger('AudioDuration')
@@ -50,6 +50,15 @@ async function extractS3Duration(uuid, bucket, expectedDuration, tolerance = DUR
     // Extract duration using sox
     const actualDuration = await getAudioDuration(tempFile)
 
+    // Check MP3 container format (ID3v2 / encoder) on the same downloaded file —
+    // catches the iOS-playback encoding issues without a second download.
+    let format = null
+    try {
+      format = await checkMp3Format(tempFile)
+    } catch (e) {
+      logger.warn(`Format check failed for ${uuid}: ${e.message}`)
+    }
+
     // Compare with expected
     const difference = Math.abs(actualDuration - expectedDuration)
     const matched = difference <= tolerance
@@ -59,7 +68,8 @@ async function extractS3Duration(uuid, bucket, expectedDuration, tolerance = DUR
       expectedDuration,
       actualDuration,
       difference,
-      matched
+      matched,
+      format
     }
   } catch (error) {
     logger.error(`Failed to extract duration for ${uuid}: ${error.message}`)
@@ -91,7 +101,12 @@ async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgres
     errors: 0,
     mismatchDetails: [],
     errorDetails: [],
-    extractedDurations: new Map() // Store extracted S3 durations for later use
+    extractedDurations: new Map(), // Store extracted S3 durations for later use
+    // MP3 format check (ID3v2 / encoder) — runs on the same downloaded files
+    formatChecked: 0,
+    formatPassed: 0,
+    formatFailed: 0,
+    formatFailDetails: []
   }
 
   // Create work queue
@@ -136,6 +151,21 @@ async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgres
             actualDuration: result.actualDuration,
             difference: result.difference
           })
+        }
+
+        // Aggregate format-check results (ID3v2 / encoder)
+        if (result.format) {
+          results.formatChecked++
+          if (result.format.ok) {
+            results.formatPassed++
+          } else {
+            results.formatFailed++
+            results.formatFailDetails.push({
+              uuid: result.uuid,
+              encoder: result.format.encoder,
+              issues: result.format.issues
+            })
+          }
         }
       }
 

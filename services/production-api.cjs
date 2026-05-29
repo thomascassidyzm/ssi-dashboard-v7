@@ -7464,7 +7464,9 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
           await fs.remove(durationsPath)
 
           // Update final state (database-first)
-          const s3Verified = results.missing === 0 && verifyMismatched === 0
+          // Format failures (ID3v2 / non-LAME encoding) block verification — they're
+          // the iOS-playback bug and must be fixed before publishing.
+          const s3Verified = results.missing === 0 && verifyMismatched === 0 && (results.formatFailed || 0) === 0
           await supabase
             .from('course_export_states')
             .update({
@@ -7487,8 +7489,8 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
         }
       })
     } else {
-      // No mismatches, mark as verified immediately (database-first)
-      const s3Verified = results.missing === 0
+      // No duration mismatches — but format failures (ID3v2 / non-LAME) still block.
+      const s3Verified = results.missing === 0 && (results.formatFailed || 0) === 0
       await supabase
         .from('course_export_states')
         .update({
