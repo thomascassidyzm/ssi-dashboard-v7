@@ -11,6 +11,36 @@ Three layers: **a tunnel**, **an AppleScript launcher**, and **a local service m
 
 ---
 
+## Benefits (plain English)
+
+What this setup actually gives you, no jargon:
+
+- **Your whole studio in your pocket.** Your Mac at home does the heavy work, but
+  you start it, watch it, and stop it from your phone, anywhere — like a remote
+  control for a very capable assistant sitting at your desk.
+- **It costs nothing extra to run.** The work uses your normal Claude
+  subscription (the flat monthly fee), not a per-word meter. Most builds like
+  this accidentally end up paying per-use and bleed money; this one doesn't.
+- **You can walk away.** The job is written down before anything starts, so you
+  can lock your phone, make a coffee, or lose signal on the train — the work
+  keeps going, and tells you where it got to when you come back. Nothing is lost
+  if you disconnect.
+- **One simple door.** From the phone there's just one web address. Everything
+  behind it is hidden — you never think about the plumbing.
+- **You see it happen live.** A progress bar updates in real time as the Mac
+  works, instead of refreshing and guessing.
+- **You're never stranded.** If something gets stuck you can stop everything — or
+  even reboot the Mac — from your phone. No walking over to rescue a frozen job.
+- **It just works when you wake the Mac.** The connection address stays the same,
+  so the phone bookmark keeps working day after day.
+
+**The one honest trade-off:** the convenience comes from a public web address that
+reaches into your Mac. That's what makes it work from anywhere — and it's the one
+thing to keep private (don't share the link), since whoever has it can drive the
+machine.
+
+---
+
 ## Principle 1 — The phone reaches the Mac through one ngrok tunnel
 
 - Frontend is a Vue + Pinia app at **popty.app**. It resolves the backend URL in
@@ -190,3 +220,42 @@ Typical events: `legacyAudio:progress`, `sample_updated`, `audio_flagged`,
       ◄────────────── live progress ──────────────┘
 📱 progress bar updates on the phone
 ```
+
+---
+
+## Docs to tidy up — review list
+
+The system works as-is; these are documentation/consistency items to look at when
+convenient, not bugs. Each is a thing to *check and reconcile*, not an instruction
+to change blindly.
+
+1. **Stale port list in `automation.config.json`.** Its `ports` block still lists
+   the old phase ports (`3457`–`3461`). The live system runs `3470` / `3471` /
+   `3465` / `3466`. Decide whether to update or remove the block.
+
+2. **`SYSTEM.md` describes the old pipeline.** Header says "Last Updated 2026-01-04,
+   APML v13", and the "Active Workflow" + "Phase Server Ports" tables still mark
+   Phases 1–3 (`3457`/`3458`/`3459`) as ✅ Active. Per `CLAUDE.md` these are
+   deprecated and folded into Course Builder. Reconcile `SYSTEM.md` with the
+   current v14 architecture.
+
+3. **Two ngrok generations documented side by side.** Some docs describe a
+   dedicated reverse proxy (`services/api/ngrok-proxy.cjs`, port `3463`) fanning
+   out to many paths; others describe ngrok pointing straight at Production API
+   (`3470`), which now self-proxies. Confirm which one is canonical and mark the
+   other clearly so future-readers aren't misled. (Touches `docs/setup/SERVICE_MESH.md`,
+   `docs/setup/SERVICE_STARTUP_GUIDE.md`, `docs/setup/KAI_ONBOARDING.md`.)
+
+4. **No committed pm2 ecosystem file.** Docs reference `ecosystem.config.cjs` and
+   `pm2 start …`, but the actual process list lives in `start-automation.cjs`.
+   Either commit the ecosystem file or note explicitly that `start-automation.cjs`
+   is the source of truth for the pm2 process set.
+
+5. **Deprecated phase servers still on disk.** The Phase 1–3 server files exist but
+   pm2 no longer starts them. A one-line "deprecated, not started" note next to
+   them (or moving them out of the active services path) would prevent confusion.
+
+6. **Spell out the public-URL safety note in the setup docs.** The "one honest
+   trade-off" above (public ngrok URL can reach admin/spawn endpoints) is worth a
+   short explicit line in the onboarding/setup docs so it isn't rediscovered later.
+
