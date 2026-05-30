@@ -2517,26 +2517,40 @@ app.get('/api/production/:courseCode/flagged-items', async (req, res) => {
     const uniqueKnownTexts = [...new Set(audioRows.filter(a => a.role === 'known').map(a => a.text))]
 
     const phraseRows = []
-    // Look up by target_text
-    for (let i = 0; i < uniqueTargetTexts.length; i += 200) {
-      const chunk = uniqueTargetTexts.slice(i, i + 200)
-      const { data } = await supabase
-        .from('course_practice_phrases')
-        .select('id, seed_number, lego_index, known_text, target_text')
-        .eq('course_code', courseCode)
-        .in('target_text', chunk)
-      if (data) phraseRows.push(...data)
+    // Robust chunked .in() lookup. Long text values (e.g. Icelandic sentences,
+    // multibyte chars that triple in length when percent-encoded) can push the
+    // request URL past the server's max length, making supabase-js return
+    // {data:null, error} ("fetch failed") instead of throwing. Silently dropping
+    // those rows used to mark every phrase in the failed chunk as an orphan —
+    // producing phantom orphan flags that the delete endpoint then refused to
+    // remove (it scans the full table and finds the phrases), so they "came back"
+    // on every reload. Start with a conservative chunk size and recursively split
+    // on failure so an oversized URL never silently loses rows.
+    const lookupPhrasesByText = async (column, values) => {
+      const fetchChunk = async (chunk) => {
+        const { data, error } = await supabase
+          .from('course_practice_phrases')
+          .select('id, seed_number, lego_index, known_text, target_text')
+          .eq('course_code', courseCode)
+          .in(column, chunk)
+        if (error) {
+          if (chunk.length > 1) {
+            const mid = Math.floor(chunk.length / 2)
+            await fetchChunk(chunk.slice(0, mid))
+            await fetchChunk(chunk.slice(mid))
+            return
+          }
+          logger.warn(`[FlaggedItems] ${courseCode}: phrase lookup failed for ${column}=${JSON.stringify(chunk[0])}: ${error.message}`)
+          return
+        }
+        if (data) phraseRows.push(...data)
+      }
+      for (let i = 0; i < values.length; i += 50) {
+        await fetchChunk(values.slice(i, i + 50))
+      }
     }
-    // Look up by known_text
-    for (let i = 0; i < uniqueKnownTexts.length; i += 200) {
-      const chunk = uniqueKnownTexts.slice(i, i + 200)
-      const { data } = await supabase
-        .from('course_practice_phrases')
-        .select('id, seed_number, lego_index, known_text, target_text')
-        .eq('course_code', courseCode)
-        .in('known_text', chunk)
-      if (data) phraseRows.push(...data)
-    }
+    await lookupPhrasesByText('target_text', uniqueTargetTexts)
+    await lookupPhrasesByText('known_text', uniqueKnownTexts)
 
     // Build text → phrase context map
     // For each audio row, find which phrase it belongs to by matching text
