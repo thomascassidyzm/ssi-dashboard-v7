@@ -51,6 +51,13 @@ let CONCURRENCY = 5
 let BATCH_SIZE = 200
 let JOB_ID = null
 
+// Max wall-clock for a single Haiku batch. In headless mode the coordinator
+// resolves a batch only when its `claude --print` child exits — so a single
+// hung child (it happens: a runaway Haiku can spin for hours) used to wedge the
+// entire run forever with no timeout. Kill + retry instead. Override via env.
+const PER_BATCH_TIMEOUT_MS = parseInt(process.env.GENDER_BATCH_TIMEOUT_MS || '480000', 10) // 8 min
+const MAX_BATCH_ATTEMPTS = 2
+
 for (let i = 1; i < args.length; i++) {
   if (args[i] === '--concurrency' && args[i + 1]) CONCURRENCY = parseInt(args[++i], 10)
   if (args[i] === '--batch-size' && args[i + 1]) BATCH_SIZE = parseInt(args[++i], 10)
@@ -170,7 +177,7 @@ Rules:
 // ─── Run a single Haiku batch ─────────────────────────────────────────
 
 function runHaikuBatch(brief, batchNum, totalBatches) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const startTime = Date.now()
     const tempDir = path.resolve(__dirname, '..', 'temp', 'gender-batches')
     if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true })
@@ -198,13 +205,30 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
       const proc = spawn('bash', ['-c', claudeCmd], {
         cwd: path.resolve(__dirname, '..'),
         stdio: 'pipe',
-        env
+        env,
+        detached: true // own process group, so we can kill the whole tree on timeout
       })
 
       let stderr = ''
+      let settled = false
       proc.stderr.on('data', (d) => { stderr += d.toString() })
 
+      // Watchdog: if the child hasn't exited in time, kill its whole process
+      // group (claude can spawn helpers) and reject so the caller can retry.
+      const timer = setTimeout(() => {
+        if (settled) return
+        settled = true
+        const elapsed = ((Date.now() - startTime) / 1000).toFixed(0)
+        console.error(`  [${batchNum}/${totalBatches}] TIMEOUT after ${elapsed}s — killing hung Haiku child`)
+        try { process.kill(-proc.pid, 'SIGKILL') } catch (e) { try { proc.kill('SIGKILL') } catch (_) {} }
+        cleanup()
+        reject(new Error(`timeout after ${elapsed}s`))
+      }, PER_BATCH_TIMEOUT_MS)
+
       proc.on('close', (code) => {
+        if (settled) return
+        settled = true
+        clearTimeout(timer)
         const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
         if (code !== 0 || !fs.existsSync(outputFile)) {
           console.error(`  [${batchNum}/${totalBatches}] FAILED (exit ${code}, ${elapsed}s)`)
@@ -214,7 +238,7 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
             if (output) console.error(`  output: ${output.substring(0, 500)}`)
           }
           cleanup()
-          return resolve([])
+          return reject(new Error(`exit code ${code}`))
         }
 
         const results = parseOutputFile(outputFile, batchNum, totalBatches, elapsed)
@@ -223,9 +247,12 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
       })
 
       proc.on('error', (e) => {
+        if (settled) return
+        settled = true
+        clearTimeout(timer)
         console.error(`  [${batchNum}/${totalBatches}] spawn error: ${e.message}`)
         cleanup()
-        resolve([])
+        reject(e)
       })
     } else {
       // iTerm2/Terminal mode: spawn in visible window
@@ -407,11 +434,60 @@ async function main() {
   }
   console.log(`Batches: ${batches.length} (${BATCH_SIZE} texts each, concurrency ${CONCURRENCY})\n`)
 
-  // 5. Build tasks
+  // Persist one batch's expansions immediately. Incremental persistence means a
+  // later hung/failed batch can no longer discard every other batch's (expensive)
+  // Haiku work — the old code collected all 84 batches and inserted once at the
+  // very end, so any interruption before that lost everything.
+  // Dedupe within the batch: Postgres ON CONFLICT can only touch a row once per
+  // upsert call ("cannot affect row a second time"). Cross-batch is safe — each
+  // unique input text lives in exactly one batch, and repeats are separate calls.
+  const persistExpansions = async (results) => {
+    const valid = (results || []).filter(r => r && r.original)
+    if (valid.length === 0) return 0
+    const seen = new Map()
+    for (const r of valid) if (!seen.has(r.original)) seen.set(r.original, r)
+    const rows = [...seen.values()].map(r => ({
+      course_code: courseCode,
+      original_text: r.original,
+      language: course.target_lang,
+      expanded_f: r.expanded_f,
+      expanded_m: r.expanded_m,
+      text_side: 'target'
+    }))
+    let ok = 0
+    for (let i = 0; i < rows.length; i += 500) {
+      const chunk = rows.slice(i, i + 500)
+      const { error } = await supabase
+        .from('course_gender_expansions')
+        .upsert(chunk, { onConflict: 'course_code,original_text,text_side' })
+      if (error) console.error(`  Persist error:`, error.message)
+      else ok += chunk.length
+    }
+    return ok
+  }
+
+  // 5. Build tasks — each batch retries on failure/timeout, then persists.
   let batchesCompleted = 0
+  let totalPersisted = 0
+  const failedBatches = []
   const tasks = batches.map((batchTexts, b) => async () => {
     const brief = buildBrief(langName, course.target_lang, batchTexts)
-    const result = await runHaikuBatch(brief, b + 1, batches.length)
+    let result = []
+    let ok = false
+    for (let attempt = 1; attempt <= MAX_BATCH_ATTEMPTS; attempt++) {
+      try {
+        result = await runHaikuBatch(brief, b + 1, batches.length)
+        ok = true
+        break
+      } catch (e) {
+        console.error(`  [${b + 1}/${batches.length}] attempt ${attempt}/${MAX_BATCH_ATTEMPTS} failed: ${e.message}`)
+      }
+    }
+    if (!ok) {
+      failedBatches.push(b + 1)
+      console.error(`  [${b + 1}/${batches.length}] GIVING UP after ${MAX_BATCH_ATTEMPTS} attempts — ${batchTexts.length} texts skipped`)
+    }
+    totalPersisted += await persistExpansions(result)
     batchesCompleted++
     await updateJob({ last_heartbeat: new Date().toISOString(), seeds_completed: batchesCompleted })
     return result
@@ -421,52 +497,16 @@ async function main() {
   const startTime = Date.now()
   const batchResults = await runWithConcurrency(tasks, CONCURRENCY)
 
-  // 7. Collect all results
+  // 7. Collect all results (already persisted incrementally per batch above)
   const allResults = batchResults.flat().filter(r => r && r.original)
-  console.log(`\nTotal variants found: ${allResults.length}`)
+  console.log(`\nTotal variants found: ${allResults.length} (persisted ${totalPersisted} to DB)`)
+  if (failedBatches.length > 0) {
+    console.warn(`⚠️  ${failedBatches.length} batch(es) failed after retries and were skipped: ${failedBatches.sort((a, b) => a - b).join(', ')}`)
+  }
 
-  // 8. Insert into DB
-  // Dedupe by (original_text, text_side) BEFORE upsert. Multiple Haiku batches
-  // can return the same original text — Postgres ON CONFLICT can only touch each
-  // row once per upsert, so duplicates kill the whole batch ("ON CONFLICT DO
-  // UPDATE command cannot affect row a second time").
-  // Keep the first occurrence; ties on the same original effectively pick the
-  // first Haiku verdict, which is fine for our purpose.
+  // 8. Flag affected audio for regeneration
+  //    Find target1 + target2 audio matching the expanded texts and flag them
   if (allResults.length > 0) {
-    const seen = new Map()
-    for (const r of allResults) {
-      const key = r.original  // text_side is always 'target' here
-      if (!seen.has(key)) seen.set(key, r)
-    }
-    const dedupedResults = [...seen.values()]
-    if (dedupedResults.length !== allResults.length) {
-      console.log(`Deduped ${allResults.length} → ${dedupedResults.length} (removed ${allResults.length - dedupedResults.length} duplicate originals)`)
-    }
-    const rows = dedupedResults.map(r => ({
-      course_code: courseCode,
-      original_text: r.original,
-      language: course.target_lang,
-      expanded_f: r.expanded_f,
-      expanded_m: r.expanded_m,
-      text_side: 'target'  // unique constraint is on (course_code, original_text, text_side)
-    }))
-
-    let inserted = 0
-    for (let i = 0; i < rows.length; i += 500) {
-      const batch = rows.slice(i, i + 500)
-      const { error } = await supabase
-        .from('course_gender_expansions')
-        .upsert(batch, { onConflict: 'course_code,original_text,text_side' })
-      if (error) {
-        console.error(`Insert error (batch ${Math.floor(i / 500) + 1}):`, error.message)
-      } else {
-        inserted += batch.length
-      }
-    }
-    console.log(`Inserted ${inserted} gender expansions into DB`)
-
-    // 9. Flag affected audio for regeneration
-    //    Find target1 + target2 audio matching the expanded texts and flag them
     console.log(`\nFlagging affected audio for regeneration...`)
     const expandedOriginals = allResults.map(r => r.original)
     let flagged = 0
