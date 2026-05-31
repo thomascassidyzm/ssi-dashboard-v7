@@ -888,6 +888,22 @@ async function concatenateWithPauses(audioPaths, outputPath, pauseMs = 1000) {
 }
 
 /**
+ * Build a voice signature string for combined-presentation UUID hashing.
+ *
+ * The combined audio embeds target1 + target2 voices. Without including those in
+ * the hash, dialect variants (e.g. fra_for_eng vs fra_ca_for_eng) collide on the
+ * same S3 key — whichever exports last overwrites the other's combined audio.
+ *
+ * @param {object} course - Course row with voice_config
+ * @returns {string} Signature like "combined|azure_fr-FR-CelesteNeural|azure_fr-FR-HenriNeural"
+ */
+function getCombinedVoiceSig(course) {
+  const t1 = course?.voice_config?.voices?.target1?.voiceId || 'unknown'
+  const t2 = course?.voice_config?.voices?.target2?.voiceId || 'unknown'
+  return `combined|${t1}|${t2}`
+}
+
+/**
  * Generate combined presentation audio files
  * Each file contains: narration + 1s pause + target1 + 1s pause + target2
  *
@@ -897,11 +913,14 @@ async function concatenateWithPauses(audioPaths, outputPath, pauseMs = 1000) {
  * @param {Map} presentationByLegoId - Map of lego_id -> presentation audio record
  * @param {string} targetLang - Target language code
  * @param {string} knownLang - Known language code
- * @param {object} options - { dryRun, limit, concurrency }
+ * @param {object} options - { dryRun, limit, concurrency, voiceSig }
+ *   voiceSig: pre-computed from getCombinedVoiceSig(course); falls back to legacy
+ *   'combined' literal if absent (preserves old UUIDs for non-variant courses on
+ *   call sites that haven't been updated yet).
  * @returns {Promise<Map>} Map of legoId -> combined audio UUID
  */
 async function generateCombinedPresentations(courseCode, introItems, audioLookup, presentationByLegoId, targetLang, knownLang, options = {}) {
-  const { dryRun = false, limit = 0, concurrency = 2, onProgress = null, shouldCancel = null } = options
+  const { dryRun = false, limit = 0, concurrency = 2, onProgress = null, shouldCancel = null, voiceSig = 'combined' } = options
   const results = new Map()
   const errors = []
   const skipped = []
@@ -1021,17 +1040,36 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
 
       // Generate combined audio with deterministic UUID
       // Uses same pattern as other audio: text|language|role|cadence|voiceId
-      // The presentation text is unique so this won't collide with individual audio
+      // voiceSig encodes target1+target2 voices so variant courses (e.g. fra vs
+      // fra_ca) don't collide on the same S3 key. See getCombinedVoiceSig.
       const combinedUuid = uuidService.generateSampleUUID(
         item.presentation,  // e.g., "The Italian for 'with you', is: ... 'con te' ... 'con te'"
         knownLang,          // 'eng'
         'presentation_combined',  // distinct role
         'natural',
-        'combined'          // pseudo-voiceId to indicate concatenated audio
+        voiceSig            // 'combined|<target1VoiceId>|<target2VoiceId>'
       )
       const combinedPath = path.join(downloadDir, `combined-${combinedUuid}.mp3`)
 
       await concatenateWithPauses([presPath, target1Path, target2Path], combinedPath, 1000)
+
+      // Probe the actual duration of the concatenated file so the manifest
+      // records a duration that EXACTLY matches what verify-s3 reads from S3.
+      // Keep float precision throughout — verify-s3 runs with durationTolerance=0
+      // and reads raw ffprobe output, so any rounding here causes a mismatch.
+      let durationSec = 0
+      try {
+        const out = execSync(
+          `ffprobe -i "${combinedPath}" -show_entries format=duration -v quiet -of csv="p=0"`,
+          { encoding: 'utf8' }
+        )
+        durationSec = parseFloat(out.trim())  // raw float, e.g. 41.742993
+      } catch (e) {
+        // Fall back to summing source durations + 2 × 1000ms pauses (ms → sec)
+        durationSec = ((presRecord.duration_ms || 0) + 1000
+                    + (target1Record.duration_ms || 0) + 1000
+                    + (target2Record.duration_ms || 0)) / 1000
+      }
 
       // Upload to S3 (same bucket as source audio)
       const uploadResult = await s3Service.uploadAudioFile(combinedUuid, combinedPath, audioBucket)
@@ -1041,12 +1079,13 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
       if (uploadCount <= 3) {
         console.error(`  [DEBUG] Combined upload #${uploadCount}: ${combinedUuid} → ${audioBucket}/mastered/${combinedUuid}.mp3`)
         console.error(`         Presentation text: ${item.presentation.substring(0, 80)}...`)
+        console.error(`         Duration: ${durationSec}s`)
       }
 
       // Clean up combined file (keep cache files for reuse)
       fs.unlinkSync(combinedPath)
 
-      return { legoId: item.legoId, uuid: combinedUuid }
+      return { legoId: item.legoId, uuid: combinedUuid, durationSec }
     } catch (err) {
       errors.push({ legoId: item.legoId, error: err.message })
       return null
@@ -1067,7 +1106,7 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
 
     for (const result of batchResults) {
       if (result) {
-        results.set(result.legoId, result.uuid)
+        results.set(result.legoId, { uuid: result.uuid, durationSec: result.durationSec })
       }
     }
 
@@ -1350,13 +1389,14 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // Uses deterministic UUIDs so they match what will be generated later
   // This allows the manifest to be valid immediately (for download)
   // while combined audio generation happens in background
+  const combinedVoiceSig = getCombinedVoiceSig(course)
   for (const item of introItems) {
     const combinedUuid = uuidService.generateSampleUUID(
       item.presentation,
       knownLang,
       'presentation_combined',
       'natural',
-      'combined'
+      combinedVoiceSig
     )
     samples[item.presentation] = [{
       id: combinedUuid,
@@ -1478,23 +1518,25 @@ async function generateLegacyManifest(courseCode, options = {}) {
         presentationByLegoId,
         targetLang,
         knownLang,
-        { dryRun, limit, concurrency, onProgress: onAudioProgress }
+        { dryRun, limit, concurrency, onProgress: onAudioProgress, voiceSig: combinedVoiceSig }
       )
 
-      // Update presentation samples with actual durations (UUIDs already match)
+      // Update presentation samples with actual durations from the generated files.
+      // UUIDs already match (computed deterministically); we just need to populate
+      // duration (which was 0 in the placeholder write).
       let updatedCount = 0
       for (const item of introItems) {
-        const combinedUuid = combinedPresentationMap.get(item.legoId)
-        if (combinedUuid && samples[item.presentation]) {
-          // UUID should already match, but verify
+        const combined = combinedPresentationMap.get(item.legoId)
+        if (combined && samples[item.presentation]) {
           const existingUuid = samples[item.presentation][0]?.id
-          if (existingUuid !== combinedUuid) {
-            console.error(`  Warning: UUID mismatch for ${item.legoId}: expected ${existingUuid}, got ${combinedUuid}`)
+          if (existingUuid !== combined.uuid) {
+            console.error(`  Warning: UUID mismatch for ${item.legoId}: expected ${existingUuid}, got ${combined.uuid}`)
           }
+          samples[item.presentation][0].duration = combined.durationSec || 0
           updatedCount++
         }
       }
-      console.error(`  Verified ${updatedCount} combined presentations`)
+      console.error(`  Updated ${updatedCount} combined presentation durations in manifest`)
 
       // Warn if many presentations were skipped
       if (combSkipped.length > 0) {
@@ -1812,6 +1854,7 @@ if (require.main === module) {
 module.exports = {
   generateLegacyManifest,
   generateCombinedPresentations,
+  getCombinedVoiceSig,
   validateManifest,
   getLanguageName,
   buildPresentation

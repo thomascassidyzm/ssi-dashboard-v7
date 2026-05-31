@@ -317,6 +317,161 @@ async function checkPresentationReadiness(courseCode, releaseTarget) {
 }
 
 /**
+ * Delete orphan course_audio rows for a course. Safe + idempotent.
+ *
+ * Orphan rules:
+ *  - role='presentation': delete if no course_legos row has presentation_audio_id = audio.id
+ *  - role='known': delete if text_normalized doesn't match any phrase/lego/seed known_text
+ *  - role='target1'/'target2': delete if text_normalized doesn't match any phrase/lego/seed target_text
+ *
+ * Welcome / encouragement / instruction / bookend_* / shared rows are never touched.
+ *
+ * The text_normalized comparison uses the DB-stored value (the trigger strips ?/¿
+ * and lowercases — same as what `normalizeForAudio` in the linking code would produce).
+ *
+ * Returns: { presentation, known, target1, target2 } counts deleted.
+ */
+// TTL cache: skip cleanup if it ran within the last 5 minutes for this course.
+// Released-course cleanups can take 10-15s on a fresh start because they scan all
+// course_audio rows; once the orphans are gone, subsequent runs find nothing to do
+// but still pay the scan cost. So we just gate it.
+const _orphanCleanupCache = new Map() // courseCode -> { lastRun, lastResult }
+const ORPHAN_CLEANUP_TTL_MS = 5 * 60 * 1000
+
+async function cleanupOrphanAudio(courseCode) {
+  const cached = _orphanCleanupCache.get(courseCode)
+  if (cached && Date.now() - cached.lastRun < ORPHAN_CLEANUP_TTL_MS) {
+    return cached.lastResult
+  }
+
+  const PAGE = 1000
+  const result = { presentation: 0, known: 0, target1: 0, target2: 0 }
+
+  // 1. Map LEGOs to their current presentation_audio_id state.
+  // A presentation row is "safe to keep" if either (a) some LEGO's
+  // presentation_audio_id points at it, OR (b) it has lego_id set
+  // pointing at a LEGO whose presentation_audio_id is NULL (i.e. the
+  // row is a freshly-inserted candidate waiting for linkAudioIds to bind it).
+  const presRefIds = new Set()       // course_audio.id pointed at by some LEGO
+  const legosWithNullPres = new Set() // lego_ids whose LEGO has NULL presentation_audio_id
+  let lOffset = 0
+  while (true) {
+    const { data, error } = await supabase.from('course_legos')
+      .select('lego_id, presentation_audio_id')
+      .eq('course_code', courseCode)
+      .range(lOffset, lOffset + PAGE - 1)
+    if (error) throw error
+    for (const r of (data || [])) {
+      if (r.presentation_audio_id) presRefIds.add(r.presentation_audio_id)
+      else legosWithNullPres.add(r.lego_id)
+    }
+    if (!data || data.length < PAGE) break
+    lOffset += PAGE
+  }
+
+  // 1b. Collect referenced phrase audio ids (known/target1/target2) from phrases/legos
+  // Conservative: an audio row directly referenced by ANY phrase/lego is NOT orphan,
+  // even if its text_normalized doesn't match (handles legacy or hand-linked rows).
+  const refKnown = new Set()
+  const refTarget1 = new Set()
+  const refTarget2 = new Set()
+  const refTables = [
+    { table: 'course_practice_phrases' },
+    { table: 'course_legos' }
+  ]
+  for (const rt of refTables) {
+    let off = 0
+    while (true) {
+      const { data, error } = await supabase.from(rt.table)
+        .select('known_audio_id, target1_audio_id, target2_audio_id')
+        .eq('course_code', courseCode)
+        .range(off, off + PAGE - 1)
+      if (error) throw error
+      for (const r of (data || [])) {
+        if (r.known_audio_id) refKnown.add(r.known_audio_id)
+        if (r.target1_audio_id) refTarget1.add(r.target1_audio_id)
+        if (r.target2_audio_id) refTarget2.add(r.target2_audio_id)
+      }
+      if (!data || data.length < PAGE) break
+      off += PAGE
+    }
+  }
+
+  // 2. Build "wanted text" sets for known + target roles, sourced from phrases/legos/seeds
+  // Uses normalizeForAudio (same as DB trigger normalization).
+  const wantedKnown = new Set()
+  const wantedTarget = new Set()
+  const sources = [
+    { table: 'course_practice_phrases', knownCol: 'known_text', targetCol: 'target_text' },
+    { table: 'course_legos',            knownCol: 'known_text', targetCol: 'target_text' },
+    { table: 'course_seeds',            knownCol: 'known_text', targetCol: 'target_text' }
+  ]
+  for (const src of sources) {
+    let off = 0
+    while (true) {
+      const { data, error } = await supabase.from(src.table)
+        .select(`${src.knownCol}, ${src.targetCol}`)
+        .eq('course_code', courseCode)
+        .range(off, off + PAGE - 1)
+      if (error) throw error
+      for (const r of (data || [])) {
+        if (r[src.knownCol]) wantedKnown.add(normalizeForAudio(r[src.knownCol]))
+        if (r[src.targetCol]) wantedTarget.add(normalizeForAudio(r[src.targetCol]))
+      }
+      if (!data || data.length < PAGE) break
+      off += PAGE
+    }
+  }
+
+  // 3. Scan course_audio, find orphans
+  const orphanIds = { presentation: [], known: [], target1: [], target2: [] }
+  let aOffset = 0
+  while (true) {
+    const { data, error } = await supabase.from('course_audio')
+      .select('id, role, text_normalized, lego_id')
+      .eq('course_code', courseCode)
+      .in('role', ['presentation', 'known', 'target1', 'target2'])
+      .range(aOffset, aOffset + PAGE - 1)
+    if (error) throw error
+    for (const r of (data || [])) {
+      if (r.role === 'presentation') {
+        // Orphan when: not referenced by any LEGO AND (no lego_id OR the LEGO it
+        // names already has a different presentation_audio_id — i.e. won't be
+        // adopted by linkAudioIds).
+        const safelyLinkable = r.lego_id && legosWithNullPres.has(r.lego_id)
+        if (!presRefIds.has(r.id) && !safelyLinkable) orphanIds.presentation.push(r.id)
+      } else if (r.role === 'known') {
+        // Orphan only if NOT directly referenced AND text doesn't match anything wanted
+        if (!refKnown.has(r.id) && !wantedKnown.has(r.text_normalized)) orphanIds.known.push(r.id)
+      } else if (r.role === 'target1') {
+        if (!refTarget1.has(r.id) && !wantedTarget.has(r.text_normalized)) orphanIds.target1.push(r.id)
+      } else if (r.role === 'target2') {
+        if (!refTarget2.has(r.id) && !wantedTarget.has(r.text_normalized)) orphanIds.target2.push(r.id)
+      }
+    }
+    if (!data || data.length < PAGE) break
+    aOffset += PAGE
+  }
+
+  // 4. Delete in batches of 100
+  for (const role of ['presentation', 'known', 'target1', 'target2']) {
+    const ids = orphanIds[role]
+    for (let i = 0; i < ids.length; i += 100) {
+      const batch = ids.slice(i, i + 100)
+      const { error } = await supabase.from('course_audio').delete().in('id', batch)
+      if (error) {
+        logger.warn(`cleanupOrphanAudio(${courseCode}): delete batch failed for ${role}: ${error.message}`)
+        continue
+      }
+      result[role] += batch.length
+    }
+  }
+
+  _orphanCleanupCache.set(courseCode, { lastRun: Date.now(), lastResult: result })
+  return result
+}
+
+/**
  * Unified audio needs detection. Single source of truth for /plan, /generate, /needs.
  *
  * 1. Finds all slots (phrases/LEGOs/seeds) with NULL audio_id
@@ -324,7 +479,11 @@ async function checkPresentationReadiness(courseCode, releaseTarget) {
  * 3. Adds pending presentation rows (role='presentation' AND s3_key LIKE 'pending/%') to toGenerate
  * 4. Returns: toLink (audio exists, just bind), toGenerate (needs TTS), readyForGenerate (presentations done?)
  *
- * Pure read — no side effects, no DB writes.
+ * Side effect: runs cleanupOrphanAudio() up front to delete course_audio rows
+ * that no phrase/LEGO/seed references. This is intentionally part of the "check"
+ * step so the dashboard's audio counts stay accurate after content edits that
+ * leave stale rows behind (e.g. /regenerate-presentations creating new rows
+ * without removing the old ones).
  *
  * @param {string} courseCode
  * @param {number} releaseTarget - Max seed number
@@ -333,6 +492,17 @@ async function checkPresentationReadiness(courseCode, releaseTarget) {
  */
 async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = false) {
   const PAGE_SIZE = 1000
+
+  // Step 0: opportunistic orphan cleanup (safe, idempotent, scoped to this course)
+  try {
+    const cleaned = await cleanupOrphanAudio(courseCode)
+    const total = cleaned.presentation + cleaned.known + cleaned.target1 + cleaned.target2
+    if (total > 0) {
+      logger.info(`getAudioNeeds(${courseCode}): cleaned ${total} orphan course_audio rows (${cleaned.presentation}pres + ${cleaned.known}known + ${cleaned.target1}t1 + ${cleaned.target2}t2)`)
+    }
+  } catch (e) {
+    logger.warn(`getAudioNeeds(${courseCode}): orphan cleanup failed (non-fatal): ${e.message}`)
+  }
 
   // Step 1: Find all unlinked slots (NULL audio_id)
   const slotDefs = [
@@ -428,17 +598,17 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     logger.info(`getAudioNeeds: forceGenerate=true, all ${unlinked.length} unlinked items classified as to-generate`)
   }
 
-  // Step 3: Pending presentation rows — concrete texts in course_audio waiting for TTS.
-  // These were created by /regenerate-presentations (the "Generate Missing Presentation Text"
-  // button) and have s3_key LIKE 'pending/%'. /generate will TTS them.
-  const { data: pendingPresRows } = await supabase
+  // Step 3: Pending audio rows — concrete texts in course_audio waiting for TTS.
+  // These have s3_key LIKE 'pending/%' and can be any role: presentation rows
+  // come from /regenerate-presentations; target/known rows come from text edits
+  // (?, ¡?, etc.) that need re-TTS. /generate will TTS them all.
+  const { data: pendingRows } = await supabase
     .from('course_audio')
-    .select('id, text, language, voice_id, lego_id')
+    .select('id, text, language, role, voice_id, lego_id')
     .eq('course_code', courseCode)
-    .eq('role', 'presentation')
     .like('s3_key', 'pending/%')
 
-  for (const pres of (pendingPresRows || [])) {
+  for (const pres of (pendingRows || [])) {
     if (isPunctuationOnly(pres.text)) {
       ungeneratable++
       continue
@@ -446,7 +616,7 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     toGenerate.push({
       text: pres.text,
       language: pres.language || course.known_lang,
-      role: 'presentation',
+      role: pres.role || 'presentation',
       lego_id: pres.lego_id || null,
       voice_id: pres.voice_id || null  // preserved so /generate can pick it up
     })
@@ -2528,7 +2698,11 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     logger.info(`Upserted ${audioRecords.length} presentation texts`)
 
     // Populate course_legos.presentation_audio_id using lego_id (reliable, no query size limits)
-    // Only link non-pending audio (pending = text placeholder, no actual audio yet)
+    // Include pending audio rows — they're the freshly-inserted candidates; pointing
+    // the LEGO at them now means later TTS generation updates the same id without
+    // a transient orphan window. (Earlier this skipped pending rows, which left
+    // every regen-without-TTS in a state where the LEGO still pointed at NOTHING
+    // and orphan pending rows accumulated.)
     let allPresAudio = []
     for (let i = 0; i < legoIdList.length; i += BATCH_SIZE) {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
@@ -2542,8 +2716,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       if (batchError) {
         logger.warn(`Batch query error at offset ${i}:`, batchError.message)
       } else if (batchData) {
-        // Filter pending/ s3_keys client-side
-        allPresAudio = allPresAudio.concat(batchData.filter(a => !a.s3_key || !a.s3_key.startsWith('pending/')))
+        allPresAudio = allPresAudio.concat(batchData)
       }
     }
 
@@ -2569,12 +2742,12 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
           .in('text_normalized', batch)
         if (matchedAudio) {
           for (const audio of matchedAudio) {
-            if (audio.s3_key && !audio.s3_key.startsWith('pending/')) {
-              // Find all unlinked LEGOs with this text
-              for (const p of unlinkedPres) {
-                if (normalizeForAudio(p.presentation_text) === audio.text_normalized) {
-                  allPresAudio.push({ id: audio.id, lego_id: p.lego_id, s3_key: audio.s3_key })
-                }
+            // Link to either mastered OR pending — pending is fine as it'll resolve
+            // when audio gen runs; the alternative leaves the LEGO unlinked.
+            // Find all unlinked LEGOs with this text
+            for (const p of unlinkedPres) {
+              if (normalizeForAudio(p.presentation_text) === audio.text_normalized) {
+                allPresAudio.push({ id: audio.id, lego_id: p.lego_id, s3_key: audio.s3_key })
               }
             }
           }
@@ -2944,16 +3117,26 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
 
     const regenCount = flagRecord?.regen_count || 0
 
-    // 4. Gender expansion
+    // 4. Gender expansion — consult the pre-computed course_gender_expansions
+    // cache first (populated by gender-prep-coordinator at course-build time
+    // and refreshed per-phrase on edit). Fall through to analyzeAndExpand
+    // (single-item Haiku call) if the cache is empty for this text.
     let textForTTS = text
     const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
     if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(lang)) {
-      // Try Haiku gender expansion
       try {
-        const result = await genderHaikuService.expandGender(text, lang, role)
-        if (result?.wasModified) {
-          textForTTS = result.expandedText
-          logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
+        const genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
+        const cached = genderMap.get(`${text}|${lang}|${role}`)
+        if (cached?.wasModified) {
+          textForTTS = cached.expandedText
+          logger.info(`Gender (cached): "${text}" → "${textForTTS}" (${role})`)
+        } else {
+          // Cache miss — fall back to a single Haiku call for this text
+          const result = await genderHaikuService.analyzeAndExpand(text, lang, role)
+          if (result?.wasModified) {
+            textForTTS = result.expandedText
+            logger.info(`Gender (live): "${text}" → "${textForTTS}" (${role})`)
+          }
         }
       } catch (e) {
         logger.warn(`Gender expansion failed, using original text: ${e.message}`)

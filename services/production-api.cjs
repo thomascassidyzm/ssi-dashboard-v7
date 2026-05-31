@@ -8,6 +8,8 @@ const { createServer } = require('http')
 const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
+const genderRefreshHelper = require('./gender-refresh-helper.cjs')
+const genderHaikuServiceForLangCheck = require('./gender-haiku-service.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
 
 const logger = createLogger('ProductionAPI')
@@ -45,6 +47,15 @@ const runningDeployPlans = new Map()
 // Track running deploy executions to prevent concurrent S3 copy operations
 // Maps courseCode -> { startedAt, type, progress: { phase, deployed, total, ... } }
 const runningDeploys = new Map()
+
+// Track active apidev stage deploys (one per course at a time).
+// Maps courseCode -> { jobId, courseConfigsId, sshProc, startedAt, state, sawChecksPassed, ... }
+const stageDeployJobs = new Map()
+
+// Track active stage-server restart jobs (one per course at a time).
+// Restarts run independently of deploys — they're triggered by the user
+// after a successful deploy via a separate button.
+const stageRestartJobs = new Map()
 
 async function getCachedManifest(courseCode) {
   const cached = manifestCache.get(courseCode)
@@ -2177,7 +2188,7 @@ app.get('/api/production/:courseCode/export-legacy', async (req, res) => {
 // Start background audio generation for legacy manifest
 async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
   // Import the combined presentations generator
-  const { generateCombinedPresentations } = require('./phases/generate-legacy-manifest.cjs')
+  const { generateCombinedPresentations, getCombinedVoiceSig } = require('./phases/generate-legacy-manifest.cjs')
 
   // Query database to get lego info with original lego_id
   // We need this because the manifest only has generated UUIDs, not the S0001L01 format
@@ -2260,6 +2271,12 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
     // Generate combined presentations with progress callback
     const job = legacyAudioJobs.get(jobId)
 
+    // Controls parallel ffmpeg-concat workers in generateCombinedPresentations.
+    // The actual TTS already happened in Phase 8 — this stage just downloads
+    // existing mastered audio from S3 and stitches narration + target1 + 1s
+    // pause + target2 into a combined-presentation MP3 locally. No external
+    // API rate-limit concern; bottleneck is local CPU + S3 bandwidth.
+    const legacyConcurrency = parseInt(process.env.LEGACY_COMBINE_CONCURRENCY, 10) || 8
     await generateCombinedPresentations(
       courseCode,
       introItems,
@@ -2269,7 +2286,8 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
       knownLang,
       {
         dryRun: false,
-        concurrency: 4,
+        concurrency: legacyConcurrency,
+        voiceSig: getCombinedVoiceSig(course),
         onProgress: (completed, total) => {
           const currentJob = legacyAudioJobs.get(jobId)
           if (currentJob) {
@@ -2292,7 +2310,7 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
       logger.info(`[LegacyAudio] Job ${jobId} cancelled`)
     } else {
       if (finalJob) finalJob.status = 'completed'
-      io.emit('legacyAudio:completed', { jobId })
+      io.emit('legacyAudio:completed', { jobId, courseCode })
       logger.info(`[LegacyAudio] Job ${jobId} completed`)
     }
   } catch (err) {
@@ -6260,6 +6278,93 @@ app.post('/api/production/:courseCode/lego/:legoId/mark-new', async (req, res) =
 // =============================================================================
 
 // Update a practice phrase (text editing with regeneration flagging)
+// Helper: reconcile course_audio.text when a phrase's text changes.
+//
+// Background: course_audio is deduped by (course_code, text_normalized,
+// language, role). Multiple phrases (and legos) can share a single audio row.
+// If we naively UPDATE course_audio.text in place when ONE phrase is edited,
+// we'd corrupt all the siblings that still point at it.
+//
+// Strategy per audio_id:
+//   1. If newText normalizes to the same form as audio.text_normalized → skip
+//      (cosmetic-only change; TTS would produce the same audio).
+//   2. Count refs across course_practice_phrases + course_legos for this role.
+//      Refs == 1 → safe to UPDATE in place.
+//      Refs >= 2 → re-point: find an existing audio row for the new text,
+//                  or insert a placeholder row (no s3_key) for regen to fill.
+//
+// Returns a structured result for logging/response, or null if no audio
+// existed for that role.
+async function reconcileAudioForRole(supabase, courseCode, phraseId, phrase, role, newText, course) {
+  const audioIdCol = `${role}_audio_id`
+  const oldAudioId = phrase[audioIdCol]
+  if (!oldAudioId) return { role, action: 'no-audio' }
+
+  const { data: oldAudio, error: fetchErr } = await supabase
+    .from('course_audio')
+    .select('id, text, language, role')
+    .eq('id', oldAudioId)
+    .maybeSingle()
+  if (fetchErr) throw fetchErr
+  if (!oldAudio) return { role, action: 'audio-missing', oldAudioId }
+
+  // Cosmetic-only — same after JS-normalize on both sides.
+  // (Don't trust course_audio.text_normalized: a known DB-trigger bug strips
+  // trailing '?'. JS-normalize both via normalizeForAudio for a reliable cmp.)
+  const newNorm = normalizeForAudio(newText)
+  const oldNorm = normalizeForAudio(oldAudio.text || '')
+  if (newNorm === oldNorm) {
+    return { role, action: 'cosmetic-skip', oldAudioId }
+  }
+
+  // Count references — phrases + legos in same role column
+  const [pRes, lRes] = await Promise.all([
+    supabase.from('course_practice_phrases').select('id', { count: 'exact', head: true }).eq(audioIdCol, oldAudioId),
+    supabase.from('course_legos').select('id', { count: 'exact', head: true }).eq(audioIdCol, oldAudioId)
+  ])
+  const refCount = (pRes.count || 0) + (lRes.count || 0)
+
+  if (refCount <= 1) {
+    // Unique — safe in-place update. Pass ONLY text (per the trigger gotcha:
+    // updates that also send text_normalized/text_stripped/word_boundaries/
+    // duration_ms silently reject with status 200 + data null).
+    const { error: updateErr } = await supabase
+      .from('course_audio')
+      .update({ text: newText })
+      .eq('id', oldAudioId)
+    if (updateErr) throw updateErr
+    return { role, action: 'in-place', oldAudioId, refCount }
+  }
+
+  // Shared — find an existing audio row for the new text, or insert one
+  const language = oldAudio.language || (role === 'known' ? course.known_lang : course.target_lang)
+  let newAudioId = null
+  const existing = await supabaseClient.findCourseAudio(courseCode, newText, language, role)
+  if (existing) {
+    newAudioId = existing.id
+  } else {
+    const inserted = await supabaseClient.insertCourseAudio({
+      courseCode,
+      text: newText,
+      language,
+      role,
+      voiceId: null,
+      origin: 'tts',
+      s3Key: null
+    })
+    newAudioId = inserted.id
+  }
+
+  // Re-point only this phrase's audio_id
+  const { error: repointErr } = await supabase
+    .from('course_practice_phrases')
+    .update({ [audioIdCol]: newAudioId })
+    .eq('id', phraseId)
+  if (repointErr) throw repointErr
+
+  return { role, action: existing ? 'repoint-existing' : 'repoint-new', oldAudioId, newAudioId, refCount }
+}
+
 // PATCH /api/production/:courseCode/phrase/:phraseId
 // Body: { known_text?, target_text?, flag_for_regeneration? }
 app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
@@ -6333,16 +6438,79 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 
     logger.info(`Updated phrase ${phraseId} in ${courseCode}: ${JSON.stringify(updateData)}`)
 
+    // Propagate text changes into course_audio so a subsequent regen synthesises
+    // the new text. Done AFTER the phrase update so existingPhrase still carries
+    // the original audio_ids we need to reconcile against.
+    const audioChanges = []
+    const textChanged = (
+      (known_text !== undefined && known_text !== existingPhrase.known_text) ||
+      (target_text !== undefined && target_text !== existingPhrase.target_text)
+    )
+    if (textChanged) {
+      try {
+        const course = await supabaseClient.getCourse(courseCode)
+        if (course) {
+          if (known_text !== undefined && known_text !== existingPhrase.known_text) {
+            audioChanges.push(await reconcileAudioForRole(
+              supabase, courseCode, phraseId, existingPhrase, 'known', known_text, course
+            ))
+          }
+          if (target_text !== undefined && target_text !== existingPhrase.target_text) {
+            for (const role of ['target1', 'target2']) {
+              audioChanges.push(await reconcileAudioForRole(
+                supabase, courseCode, phraseId, existingPhrase, role, target_text, course
+              ))
+            }
+            // Fire-and-forget Haiku gender refresh for the new target text.
+            // Gender expansions live in course_gender_expansions keyed by
+            // original_text; the cache for the OLD text is orphaned after this
+            // edit. Computing the new expansion now means the next regen —
+            // bulk or single — uses the right gendered form.
+            if (genderHaikuServiceForLangCheck.GENDERED_LANGUAGES.includes(course.target_lang)) {
+              genderRefreshHelper
+                .refreshGenderExpansionForText(courseCode, target_text, course.target_lang)
+                .then(result => logger.info(`[PhraseEdit] Gender refresh for "${target_text.slice(0, 40)}…": ${JSON.stringify(result)}`))
+                .catch(err => logger.warn(`[PhraseEdit] Gender refresh failed: ${err.message}`))
+            }
+          }
+          logger.info(`[PhraseEdit] Audio reconciliation for ${phraseId}: ${JSON.stringify(audioChanges)}`)
+        } else {
+          logger.warn(`[PhraseEdit] Course ${courseCode} not found — skipping audio reconciliation`)
+        }
+      } catch (audioErr) {
+        // Don't fail the whole PATCH if reconciliation hits a snag — log it and
+        // surface to the caller so they can flag for regen anyway. The phrase
+        // text edit itself has already committed.
+        logger.error(`[PhraseEdit] Audio reconciliation failed for ${phraseId}: ${audioErr.message}`)
+        audioChanges.push({ error: audioErr.message })
+      }
+    }
+
+    // Re-fetch the phrase if any audio reconciliation re-pointed an audio_id
+    // (the original .update().select() result would be stale).
+    let finalPhrase = updatedPhrase
+    const repointed = audioChanges.some(c => c?.action === 'repoint-existing' || c?.action === 'repoint-new')
+    if (repointed) {
+      const { data: refetched } = await supabase
+        .from('course_practice_phrases')
+        .select('*')
+        .eq('id', phraseId)
+        .eq('course_code', courseCode)
+        .single()
+      if (refetched) finalPhrase = refetched
+    }
+
     // Emit WebSocket event for real-time updates
     io.to(`course:${courseCode}`).emit('phrase_updated', {
       courseCode,
       phraseId,
-      phrase: updatedPhrase
+      phrase: finalPhrase
     })
 
     res.json({
       success: true,
-      phrase: updatedPhrase
+      phrase: finalPhrase,
+      audioChanges
     })
   } catch (error) {
     logger.error(`Error updating phrase ${phraseId}:`, error.message)
@@ -7114,20 +7282,27 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
     })
 
     if (result.success) {
-      // Update export state
+      // Update export state.
+      // NOTE: manifest_status is intentionally OMITTED — the DB CHECK constraint
+      // `course_export_states_manifest_status_check` only allows alpha/beta/release,
+      // and the publish endpoint sends 'published' which would silently fail the
+      // upsert (Supabase doesn't throw, just returns {error}). The status is still
+      // recorded inside the manifest JSON itself.
       if (supabaseClient.isInitialized()) {
         const supabase = supabaseClient.getClient()
-        await supabase
+        const { error: stateErr } = await supabase
           .from('course_export_states')
           .upsert({
             course_code: courseCode,
             manifest_published: true,
             manifest_published_at: new Date().toISOString(),
             manifest_version: version,
-            manifest_status: status,
             publish_course_configs_path: result.courseConfigs?.filePath || null,
             publish_apidev_filename: result.apidev?.filename || null
           }, { onConflict: 'course_code' })
+        if (stateErr) {
+          logger.error(`[Publish] Failed to update export state for ${courseCode}: ${stateErr.code} ${stateErr.message}`)
+        }
       }
 
       logger.info(`Manifest published for ${courseCode}: v${version}`)
@@ -7258,12 +7433,398 @@ app.post('/api/production/course-configs/push', async (req, res) => {
   }
 })
 
-// POST /api/production/:courseCode/verify-s3
-// Step 2: Verify stage audio exists and durations match manifest
-app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
+// POST /api/production/:courseCode/stage-deploy
+// Step 3 (sub-step): Run apidev `./check -e stage deploy` for this course.
+// Pipes services/stage-deploy.py over SSH; the pexpect script drives the
+// 4-prompt interaction and emits __SD__:... events on stderr.
+//
+// Body: { deleteProgress?: boolean, skipChecks?: boolean }
+//   deleteProgress (default true)  — answer to "Delete progress entries?"
+//   skipChecks (default false)     — answer "n" to "Run checks?" (retry path
+//                                    after a mid-cp crash that's already had
+//                                    a successful checks pass)
+app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { deleteProgress = true, skipChecks = false } = req.body || {}
+
+    if (stageDeployJobs.has(courseCode)) {
+      return res.status(409).json({
+        error: 'Stage deploy already running for this course',
+        jobId: stageDeployJobs.get(courseCode).jobId
+      })
+    }
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Derive the courseConfigsId (e.g. fra_ca_for_eng -> en-fr-ca)
+    const course = await supabaseClient.getCourse(courseCode)
+    if (!course) return res.status(404).json({ error: `Course ${courseCode} not found` })
+
+    const knownCode = languageCodeService.legacyToStandard(course.known_lang)
+    const targetCode = languageCodeService.legacyToStandard(course.target_lang)
+    const courseConfigsId = buildCourseConfigsId(
+      courseCode, course.known_lang, course.target_lang, knownCode, targetCode
+    )
+
+    // Strict whitelist — interpolated into the SSH-relayed command
+    if (!/^[a-z0-9-]+$/.test(courseConfigsId)) {
+      return res.status(400).json({ error: `Refusing to deploy with unsafe courseConfigsId: ${courseConfigsId}` })
+    }
+
+    const scriptPath = path.join(__dirname, 'stage-deploy.py')
+    if (!fs.existsSync(scriptPath)) {
+      return res.status(500).json({ error: `stage-deploy.py not found at ${scriptPath}` })
+    }
+
+    const jobId = `stage_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
+    const startedAt = new Date().toISOString()
+
+    // Build remote command. courseConfigsId is whitelisted; flags are constants.
+    const flags = []
+    if (deleteProgress) flags.push('--delete-progress')
+    if (skipChecks) flags.push('--skip-checks')
+    const remoteCmd = `python3 - ${courseConfigsId}${flags.length ? ' ' + flags.join(' ') : ''}`
+
+    logger.info(`[StageDeploy] ${courseCode} (${courseConfigsId}) jobId=${jobId} remote: ${remoteCmd}`)
+
+    // Pipe the script via stdin: `cat scriptPath | ssh ... "remoteCmd"`
+    const { spawn: spawnProc } = require('child_process')
+    const cat = spawnProc('cat', [scriptPath])
+    const ssh = spawnProc('ssh', [
+      '-o', 'BatchMode=yes',
+      '-o', 'ServerAliveInterval=15',
+      '-o', 'ServerAliveCountMax=4',
+      'ssi@apidev',
+      remoteCmd
+    ])
+    cat.stdout.pipe(ssh.stdin)
+    cat.on('error', (err) => logger.error(`[StageDeploy] cat error: ${err.message}`))
+
+    const job = {
+      jobId, courseCode, courseConfigsId,
+      sshProc: ssh, catProc: cat,
+      startedAt, state: 'running',
+      sawChecksPassed: false, sawNewCourse: false,
+      skipChecks, deleteProgress
+    }
+    stageDeployJobs.set(courseCode, job)
+
+    io.emit('stageDeploy:started', {
+      jobId, courseCode, courseConfigsId, startedAt, skipChecks, deleteProgress
+    })
+
+    // Line-buffered stderr parser for __SD__: events
+    // Split on \r, \n, and \r\n so in-place progress updates (./check's S3
+    // check writes "Checking N/total..\r..\r..") flush as they happen.
+    let stderrBuf = ''
+    ssh.stderr.on('data', (chunk) => {
+      stderrBuf += chunk.toString()
+      const lines = stderrBuf.split(/\r\n|\n|\r/)
+      stderrBuf = lines.pop()
+      for (const line of lines) handleStderrLine(job, line)
+    })
+
+    // Line-buffered stdout — forward to UI as log
+    let stdoutBuf = ''
+    ssh.stdout.on('data', (chunk) => {
+      stdoutBuf += chunk.toString()
+      const lines = stdoutBuf.split(/\r\n|\n|\r/)
+      stdoutBuf = lines.pop()
+      for (const line of lines) {
+        if (line === '') continue // collapse runs of separators
+        io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line })
+      }
+    })
+
+    ssh.on('error', (err) => {
+      logger.error(`[StageDeploy] ssh spawn error: ${err.message}`)
+    })
+
+    ssh.on('close', (code, signal) => {
+      // Flush partial buffers
+      if (stdoutBuf) io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line: stdoutBuf })
+      if (stderrBuf) handleStderrLine(job, stderrBuf)
+
+      // If no terminal event was seen, derive state from exit code
+      if (job.state === 'running') {
+        job.state = (code === 0) ? 'success' : 'failed'
+      }
+
+      io.emit('stageDeploy:closed', {
+        jobId, courseCode,
+        exitCode: code, signal,
+        finalState: job.state,
+        sawChecksPassed: job.sawChecksPassed,
+        sawNewCourse: job.sawNewCourse
+      })
+
+      logger.info(`[StageDeploy] ${courseCode} closed exit=${code} signal=${signal} state=${job.state}`)
+
+      // Keep the job entry around briefly so the cancel endpoint can find it
+      setTimeout(() => stageDeployJobs.delete(courseCode), 60 * 1000)
+    })
+
+    res.json({
+      success: true,
+      jobId, courseCode, courseConfigsId, startedAt,
+      skipChecks, deleteProgress
+    })
+  } catch (error) {
+    logger.error('[StageDeploy] error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Parse a single line from stage-deploy.py's stderr stream. __SD__:events
+// drive websocket state updates; other lines are forwarded as log noise.
+function handleStderrLine(job, line) {
+  if (!line) return
+  const { jobId, courseCode } = job
+  if (line.startsWith('__SD__:')) {
+    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
+    if (!m) return
+    const event = m[1]
+    let payload = {}
+    if (m[2]) {
+      try { payload = JSON.parse(m[2]) } catch (e) { /* malformed, ignore */ }
+    }
+    switch (event) {
+      case 'start':       io.emit('stageDeploy:start', { jobId, courseCode, ...payload }); break
+      case 'newCourse':   job.sawNewCourse = true
+                          io.emit('stageDeploy:newCourse', { jobId, courseCode, ...payload }); break
+      case 'identical':   io.emit('stageDeploy:identical', { jobId, courseCode }); break
+      case 'checksPassed':job.sawChecksPassed = true
+                          io.emit('stageDeploy:checksPassed', { jobId, courseCode }); break
+      case 'deployed':    io.emit('stageDeploy:deployed', { jobId, courseCode }); break
+      case 'done':        // Don't overwrite if 'identical' already set this state
+                          if (job.state !== 'success') job.state = 'success'
+                          io.emit('stageDeploy:done', { jobId, courseCode }); break
+      case 'failed':      job.state = 'failed'
+                          io.emit('stageDeploy:failed', { jobId, courseCode }); break
+      case 'exit':        /* informational; close event carries final state */ break
+      default:            logger.warn(`[StageDeploy] unknown event: ${event}`)
+    }
+  } else {
+    // Unstructured stderr (warnings, SSH messages) — forward as log
+    io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stderr', line })
+  }
+}
+
+// POST /api/production/:courseCode/stage-deploy/cancel
+// Best-effort cancel. SIGTERMs the local SSH process; also fires a remote pkill
+// so any orphaned python3/check process on apidev gets cleaned up.
+app.post('/api/production/:courseCode/stage-deploy/cancel', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const job = stageDeployJobs.get(courseCode)
+    if (!job) return res.status(404).json({ error: 'No active stage deploy for this course' })
+
+    job.state = 'cancelled'
+    try { job.sshProc.kill('SIGTERM') } catch (e) {
+      logger.warn(`[StageDeploy] SIGTERM ssh failed: ${e.message}`)
+    }
+
+    // Remote cleanup — process group might survive the SSH disconnect
+    const { spawn: spawnProc } = require('child_process')
+    const pkill = spawnProc('ssh', [
+      '-o', 'BatchMode=yes',
+      'ssi@apidev',
+      `pkill -TERM -f "python3 -.*${job.courseConfigsId}" || true`
+    ])
+    pkill.on('error', () => {})
+    pkill.unref()
+
+    io.emit('stageDeploy:cancelled', { jobId: job.jobId, courseCode })
+    res.json({ success: true, jobId: job.jobId })
+  } catch (error) {
+    logger.error('[StageDeploy] cancel error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/stage-deploy/status
+// Lightweight peek so a refreshing UI can re-attach mid-run.
+app.get('/api/production/:courseCode/stage-deploy/status', (req, res) => {
+  const { courseCode } = req.params
+  const job = stageDeployJobs.get(courseCode)
+  if (!job) return res.json({ active: false })
+  res.json({
+    active: true,
+    jobId: job.jobId,
+    courseConfigsId: job.courseConfigsId,
+    startedAt: job.startedAt,
+    state: job.state,
+    sawChecksPassed: job.sawChecksPassed,
+    sawNewCourse: job.sawNewCourse,
+    skipChecks: job.skipChecks,
+    deleteProgress: job.deleteProgress
+  })
+})
+
+// POST /api/production/:courseCode/stage-restart
+// Run ~/api/stage/restart.sh on apidev and watch for the "Server started"
+// notice. Independent of stage-deploy — meant to be invoked by a button
+// after a successful deploy (or as a recovery action).
+app.post('/api/production/:courseCode/stage-restart', async (req, res) => {
   try {
     const { courseCode } = req.params
 
+    if (stageRestartJobs.has(courseCode)) {
+      return res.status(409).json({
+        error: 'Stage restart already running for this course',
+        jobId: stageRestartJobs.get(courseCode).jobId
+      })
+    }
+
+    const scriptPath = path.join(__dirname, 'stage-restart.py')
+    if (!fs.existsSync(scriptPath)) {
+      return res.status(500).json({ error: `stage-restart.py not found at ${scriptPath}` })
+    }
+
+    const jobId = `restart_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
+    const startedAt = new Date().toISOString()
+
+    logger.info(`[StageRestart] ${courseCode} jobId=${jobId}`)
+
+    const { spawn: spawnProc } = require('child_process')
+    const cat = spawnProc('cat', [scriptPath])
+    // jobId doubles as a sentinel in the remote argv list. stage-restart.py
+    // ignores extra argv, but the token shows up in `ps` so the cancel
+    // handler's pkill can scope to THIS restart only — not a concurrent
+    // stage-deploy.py also piped through `python3 -`.
+    const ssh = spawnProc('ssh', [
+      '-o', 'BatchMode=yes',
+      '-o', 'ServerAliveInterval=15',
+      '-o', 'ServerAliveCountMax=4',
+      'ssi@apidev',
+      `python3 - ${jobId}`
+    ])
+    cat.stdout.pipe(ssh.stdin)
+    cat.on('error', (err) => logger.error(`[StageRestart] cat error: ${err.message}`))
+
+    const job = {
+      jobId, courseCode,
+      sshProc: ssh, catProc: cat,
+      startedAt, phase: 'running' // 'running' | 'succeeded' | 'failed' | 'cancelled'
+    }
+    stageRestartJobs.set(courseCode, job)
+
+    io.emit('stageDeploy:restartStarted', { jobId, courseCode, startedAt })
+
+    let stderrBuf = ''
+    ssh.stderr.on('data', (chunk) => {
+      stderrBuf += chunk.toString()
+      const lines = stderrBuf.split(/\r\n|\n|\r/)
+      stderrBuf = lines.pop()
+      for (const line of lines) handleRestartStderrLine(job, line)
+    })
+
+    let stdoutBuf = ''
+    ssh.stdout.on('data', (chunk) => {
+      stdoutBuf += chunk.toString()
+      const lines = stdoutBuf.split(/\r\n|\n|\r/)
+      stdoutBuf = lines.pop()
+      for (const line of lines) {
+        if (line === '') continue
+        io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line })
+      }
+    })
+
+    ssh.on('error', (err) => logger.error(`[StageRestart] ssh spawn error: ${err.message}`))
+
+    ssh.on('close', (code, signal) => {
+      if (stdoutBuf) io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line: stdoutBuf })
+      if (stderrBuf) handleRestartStderrLine(job, stderrBuf)
+
+      // If phase still running, derive from exit code
+      if (job.phase === 'running') {
+        job.phase = (code === 0) ? 'succeeded' : 'failed'
+        if (job.phase === 'succeeded') {
+          io.emit('stageDeploy:restartSucceeded', { jobId, courseCode })
+        } else {
+          io.emit('stageDeploy:restartFailed', { jobId, courseCode, reason: `ssh exited ${code}` })
+        }
+      }
+
+      logger.info(`[StageRestart] ${courseCode} closed exit=${code} signal=${signal} phase=${job.phase}`)
+      setTimeout(() => stageRestartJobs.delete(courseCode), 60 * 1000)
+    })
+
+    res.json({ success: true, jobId, courseCode, startedAt })
+  } catch (error) {
+    logger.error('[StageRestart] error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+function handleRestartStderrLine(job, line) {
+  if (!line) return
+  const { jobId, courseCode } = job
+  if (line.startsWith('__SD__:')) {
+    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
+    if (!m) return
+    const event = m[1]
+    let payload = {}
+    if (m[2]) {
+      try { payload = JSON.parse(m[2]) } catch (e) { /* ignore */ }
+    }
+    switch (event) {
+      case 'start':            io.emit('stageDeploy:restartStarted', { jobId, courseCode, ...payload }); break
+      case 'restartSucceeded': job.phase = 'succeeded'
+                               io.emit('stageDeploy:restartSucceeded', { jobId, courseCode }); break
+      case 'restartFailed':    job.phase = 'failed'
+                               io.emit('stageDeploy:restartFailed', { jobId, courseCode, ...payload }); break
+      case 'exit':             break
+      default:                 logger.warn(`[StageRestart] unknown event: ${event}`)
+    }
+  } else {
+    io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stderr', line })
+  }
+}
+
+// POST /api/production/:courseCode/stage-restart/cancel
+app.post('/api/production/:courseCode/stage-restart/cancel', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const job = stageRestartJobs.get(courseCode)
+    if (!job) return res.status(404).json({ error: 'No active stage restart for this course' })
+
+    job.phase = 'cancelled'
+    try { job.sshProc.kill('SIGTERM') } catch (e) {
+      logger.warn(`[StageRestart] SIGTERM ssh failed: ${e.message}`)
+    }
+    // Defensive remote cleanup — scoped to THIS job's jobId sentinel so a
+    // concurrent stage-deploy.py (also piped through `python3 -`) isn't
+    // collateral damage.
+    const { spawn: spawnProc } = require('child_process')
+    const pkill = spawnProc('ssh', [
+      '-o', 'BatchMode=yes',
+      'ssi@apidev',
+      `pkill -TERM -f "python3 -.*${job.jobId}" || true`
+    ])
+    pkill.on('error', () => {})
+    pkill.unref()
+
+    io.emit('stageDeploy:restartFailed', { jobId: job.jobId, courseCode, reason: 'cancelled' })
+    res.json({ success: true, jobId: job.jobId })
+  } catch (error) {
+    logger.error('[StageRestart] cancel error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/verify-s3
+// Step 2: Verify stage audio exists and durations match manifest
+app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
+  const { courseCode } = req.params
+  // Hoisted so the catch block can reach it (otherwise a ReferenceError in catch
+  // swallows the original error and the HTTP response never lands — surfaces in
+  // the browser as a CORS error because no headers ever get sent).
+  let abortController = null
+  try {
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
@@ -7281,7 +7842,7 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     }
 
     // Mark verification as running with abort controller
-    const abortController = new AbortController()
+    abortController = new AbortController()
     runningVerifications.set(courseCode, { startedAt: Date.now(), abortController })
 
     // Load manifest from temp/course_export_states
@@ -7506,14 +8067,15 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     }
 
   } catch (error) {
-    if (abortController.signal.aborted) {
+    runningVerifications.delete(courseCode)
+    if (abortController?.signal?.aborted) {
       logger.info(`[VERIFY-S3] Cancelled for ${courseCode}`)
-      runningVerifications.delete(courseCode)
       return res.json({ cancelled: true, message: 'Verification cancelled' })
     }
     logger.error(`Verify S3 error for ${courseCode}:`, error)
-    runningVerifications.delete(courseCode)
-    res.status(500).json({ error: error.message })
+    if (!res.headersSent) {
+      res.status(500).json({ error: error.message })
+    }
   }
 })
 

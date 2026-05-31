@@ -24,6 +24,17 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
   }
   const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : (terminal || ctx.SPAWN_MODE || 'iTerm2');
 
+  // Strip ANTHROPIC_API_KEY from spawned agent env so claude CLI uses the
+  // subscription (Claude Code logged-in session) instead of API mode. The
+  // .env's ANTHROPIC_API_KEY is for the dashboard's environment switcher,
+  // NOT for spawned builder agents — leaving it set causes "Credit balance
+  // is too low" on every spawn once API credits are depleted.
+  // See gender-prep-detector.cjs for the same pattern. Also unset CLAUDECODE
+  // to avoid nested-CLI confusion.
+  const agentEnv = { ...process.env };
+  delete agentEnv.ANTHROPIC_API_KEY;
+  delete agentEnv.CLAUDECODE;
+
   if (effectiveTerminal === 'headless') {
     const logsDir = path.join(ctx.PROJECT_DIR, 'logs');
     if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
@@ -32,7 +43,7 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
     const out = fs.openSync(logFile, 'a');
     const err = fs.openSync(logFile, 'a');
 
-    const agent = spawn('bash', ['-c', cmd], { stdio: ['ignore', out, err], detached: true });
+    const agent = spawn('bash', ['-c', cmd], { stdio: ['ignore', out, err], detached: true, env: agentEnv });
     agent.unref();
     console.log(`[SPAWN] ${label} launched headless (pid: ${agent.pid}, log: ${logFile})`);
 
@@ -41,9 +52,12 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
 
     return agent;
   } else {
-    // Write command to a temp shell script to avoid osascript escaping issues
+    // Write command to a temp shell script to avoid osascript escaping issues.
+    // Prepend `unset ANTHROPIC_API_KEY` so the spawned terminal also uses the
+    // subscription (the script inherits the user's shell env, which has the
+    // API key from .env loaded).
     const scriptFile = `/tmp/spawn_${courseCode}_${Date.now()}.sh`;
-    fs.writeFileSync(scriptFile, `#!/bin/bash\n${cmd}\n`, { mode: 0o755 });
+    fs.writeFileSync(scriptFile, `#!/bin/bash\nunset ANTHROPIC_API_KEY\nunset CLAUDECODE\n${cmd}\n`, { mode: 0o755 });
 
     const itermScript = `tell application "iTerm"
   activate

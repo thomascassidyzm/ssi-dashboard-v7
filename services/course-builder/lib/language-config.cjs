@@ -107,12 +107,14 @@ function getLangFamily(courseCode) {
 }
 
 /**
- * Detect if course uses character-level vocab (Chinese, Japanese, Korean target)
+ * Detect if course uses character-level vocab (Chinese, Japanese, Thai, etc.)
+ * Korean is excluded: it uses spaces between words, so word-level validation applies.
  */
 function isChinese(courseCode) {
   const parts = courseCode.split('_for_');
   const targetLang = parts[0] || '';
-  const characterBasedLangs = ['zho', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
+  // Korean (kor) uses spaces between words — treated as space-delimited, not CJK
+  const characterBasedLangs = ['zho', 'jpn', 'tha', 'mya', 'lao', 'khm'];
   return characterBasedLangs.includes(targetLang);
 }
 
