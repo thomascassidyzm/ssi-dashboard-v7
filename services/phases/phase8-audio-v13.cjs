@@ -369,6 +369,46 @@ async function cleanupOrphanAudio(courseCode) {
     }
   }
 
+  // 1c. Protect audio referenced by listening_pod_sentences.
+  // Pod audios live in course_audio with role known/target1 but their text
+  // never matches any phrase/lego/seed (pods have their own scripts), so without
+  // this scan they fail BOTH orphan gates and get deleted — silently nulling the
+  // pods via the FK's ON DELETE SET NULL. (Lost the fra/hrv pods twice: 19 + 28 May.)
+  // listening_pod_sentences has no course_code column, so join via listening_pods.
+  const podRefIds = new Set()
+  {
+    const podIds = []
+    let pOff = 0
+    while (true) {
+      const { data, error } = await supabase.from('listening_pods')
+        .select('id')
+        .eq('course_code', courseCode)
+        .range(pOff, pOff + PAGE - 1)
+      if (error) throw error
+      for (const p of (data || [])) podIds.push(p.id)
+      if (!data || data.length < PAGE) break
+      pOff += PAGE
+    }
+    for (let i = 0; i < podIds.length; i += 200) {
+      const idChunk = podIds.slice(i, i + 200)
+      let sOff = 0
+      while (true) {
+        const { data, error } = await supabase.from('listening_pod_sentences')
+          .select('target_audio_id, known_audio_id, explainer_audio_id')
+          .in('pod_id', idChunk)
+          .range(sOff, sOff + PAGE - 1)
+        if (error) throw error
+        for (const s of (data || [])) {
+          if (s.target_audio_id) podRefIds.add(s.target_audio_id)
+          if (s.known_audio_id) podRefIds.add(s.known_audio_id)
+          if (s.explainer_audio_id) podRefIds.add(s.explainer_audio_id)
+        }
+        if (!data || data.length < PAGE) break
+        sOff += PAGE
+      }
+    }
+  }
+
   // 2. Build "wanted text" sets for known + target roles, sourced from phrases/legos/seeds
   // Uses normalizeForAudio (same as DB trigger normalization).
   const wantedKnown = new Set()
@@ -413,12 +453,12 @@ async function cleanupOrphanAudio(courseCode) {
         const safelyLinkable = r.lego_id && legosWithNullPres.has(r.lego_id)
         if (!presRefIds.has(r.id) && !safelyLinkable) orphanIds.presentation.push(r.id)
       } else if (r.role === 'known') {
-        // Orphan only if NOT directly referenced AND text doesn't match anything wanted
-        if (!refKnown.has(r.id) && !wantedKnown.has(r.text_normalized)) orphanIds.known.push(r.id)
+        // Orphan only if NOT directly referenced (phrases/legos OR pods) AND text doesn't match anything wanted
+        if (!refKnown.has(r.id) && !podRefIds.has(r.id) && !wantedKnown.has(r.text_normalized)) orphanIds.known.push(r.id)
       } else if (r.role === 'target1') {
-        if (!refTarget1.has(r.id) && !wantedTarget.has(r.text_normalized)) orphanIds.target1.push(r.id)
+        if (!refTarget1.has(r.id) && !podRefIds.has(r.id) && !wantedTarget.has(r.text_normalized)) orphanIds.target1.push(r.id)
       } else if (r.role === 'target2') {
-        if (!refTarget2.has(r.id) && !wantedTarget.has(r.text_normalized)) orphanIds.target2.push(r.id)
+        if (!refTarget2.has(r.id) && !podRefIds.has(r.id) && !wantedTarget.has(r.text_normalized)) orphanIds.target2.push(r.id)
       }
     }
     if (!data || data.length < PAGE) break
