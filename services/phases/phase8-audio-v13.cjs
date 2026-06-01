@@ -437,6 +437,7 @@ async function cleanupOrphanAudio(courseCode) {
 
   // 3. Scan course_audio, find orphans
   const orphanIds = { presentation: [], known: [], target1: [], target2: [] }
+  let totalAudioScanned = 0
   let aOffset = 0
   while (true) {
     const { data, error } = await supabase.from('course_audio')
@@ -446,6 +447,7 @@ async function cleanupOrphanAudio(courseCode) {
       .range(aOffset, aOffset + PAGE - 1)
     if (error) throw error
     for (const r of (data || [])) {
+      totalAudioScanned++
       if (r.role === 'presentation') {
         // Orphan when: not referenced by any LEGO AND (no lego_id OR the LEGO it
         // names already has a different presentation_audio_id — i.e. won't be
@@ -463,6 +465,29 @@ async function cleanupOrphanAudio(courseCode) {
     }
     if (!data || data.length < PAGE) break
     aOffset += PAGE
+  }
+
+  // 3b. Safety circuit-breaker. A healthy orphan cleanup after content edits removes a
+  // handful-to-dozens of rows. Deleting hundreds — or a large fraction of the course's
+  // audio — is the signature of a blind-spot bug (e.g. the listening-pod losses of 19 + 28
+  // May: 7,092 rows nulled across fra/hrv). We can't switch the pod FKs to ON DELETE RESTRICT
+  // (no DDL access on the live DB), so this is the code-level equivalent of "fail loudly
+  // instead of silently cascading": refuse to mass-delete and log an error. Override with
+  // PHASE8_ORPHAN_CLEANUP_FORCE=1 after confirming the orphans are genuinely stale.
+  const totalOrphans = orphanIds.presentation.length + orphanIds.known.length
+    + orphanIds.target1.length + orphanIds.target2.length
+  const ABS_CAP = parseInt(process.env.PHASE8_ORPHAN_CLEANUP_ABS_CAP || '500', 10)
+  const PCT_CAP = parseFloat(process.env.PHASE8_ORPHAN_CLEANUP_PCT_CAP || '0.25')
+  const pctOfCourse = totalAudioScanned > 0 ? totalOrphans / totalAudioScanned : 0
+  if (totalOrphans > 0 && (totalOrphans > ABS_CAP || pctOfCourse > PCT_CAP)) {
+    if (process.env.PHASE8_ORPHAN_CLEANUP_FORCE === '1') {
+      logger.warn(`cleanupOrphanAudio(${courseCode}): ${totalOrphans} orphans (${(pctOfCourse * 100).toFixed(1)}% of ${totalAudioScanned}) exceeds safety cap but PHASE8_ORPHAN_CLEANUP_FORCE=1 — proceeding`)
+    } else {
+      logger.error(`cleanupOrphanAudio(${courseCode}): ABORT — would delete ${totalOrphans} rows (${(pctOfCourse * 100).toFixed(1)}% of ${totalAudioScanned}; abs cap ${ABS_CAP}, pct cap ${(PCT_CAP * 100)}%). Refusing — this is almost always an unscanned reference table, not real orphans. Investigate, then set PHASE8_ORPHAN_CLEANUP_FORCE=1 to override.`)
+      const aborted = { presentation: 0, known: 0, target1: 0, target2: 0, aborted: true, wouldDelete: totalOrphans }
+      _orphanCleanupCache.set(courseCode, { lastRun: Date.now(), lastResult: aborted })
+      return aborted
+    }
   }
 
   // 4. Delete in batches of 100
