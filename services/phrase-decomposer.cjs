@@ -86,7 +86,16 @@ function findLongestMatch(residue, vocabulary) {
   for (const lego of vocabulary) {
     const t = lego.target_text
     if (!t) continue
-    if (residue.startsWith(t)) return lego
+    // Case-insensitive, FIXED-LENGTH prefix compare. We fold case for the
+    // match test only; the caller slices the ORIGINAL surface by t.length, so
+    // the displayed casing and the reassembly/integrity contract are both
+    // preserved. Comparing exactly t.length chars means accent/ß-style
+    // case expansions can only fail-to-match (→ ghost), never corrupt the
+    // slice length. Fixes sentence-initial capitals (Quiero/Ich/No) ghosting.
+    if (residue.length >= t.length &&
+        residue.slice(0, t.length).toLowerCase() === t.toLowerCase()) {
+      return lego
+    }
   }
   return null
 }
@@ -165,9 +174,13 @@ function decomposeText(targetText, vocabulary) {
     const lego = findLongestMatch(matchStart, sorted)
 
     if (lego) {
+      // Carry the ORIGINAL surface (case-preserving) — NOT lego.target_text —
+      // so case-insensitive matching can't corrupt reassembly, and the tile
+      // shows the phrase's actual casing.
+      const surface = matchStart.slice(0, lego.target_text.length)
       blocks.push({
         legoId: lego.lego_id,
-        target: leadingWs + lego.target_text,
+        target: leadingWs + surface,
         known: lego.known_text || '',
         isGhost: false
       })
