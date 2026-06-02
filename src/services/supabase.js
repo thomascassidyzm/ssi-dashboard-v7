@@ -121,6 +121,31 @@ export async function getAllCourses() {
 }
 
 /**
+ * Get all canonical seeds — the 668-row English SSoT — directly from Supabase.
+ * Read is direct (no machine/tunnel needed to view); editing a seed saves via
+ * the always-on SSi Machine API (see CanonicalSeeds.vue). Returns the shape the
+ * view renders: { id, seed_number, seed_id, canonical_id, source }.
+ * @returns {Promise<Array<{id:string, seed_number:number, seed_id:string, canonical_id:string, source:string}>>}
+ */
+export async function getCanonicalSeeds() {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('canonical_seeds')
+    .select('id, seed_number, seed_id, canonical_id, source_text')
+    .order('seed_number', { ascending: true })
+
+  if (error) throw new Error('Failed to load canonical seeds: ' + error.message)
+  return (data || []).map(r => ({
+    id: r.id,
+    seed_number: r.seed_number,
+    seed_id: r.seed_id,
+    canonical_id: r.canonical_id,
+    source: r.source_text,
+  }))
+}
+
+/**
  * Get stats for all courses directly from database
  * @param {string[]} courseCodes
  * @returns {Promise<Object>} Map of course_code → { seeds, completedSeeds, legos, phrases, audio }

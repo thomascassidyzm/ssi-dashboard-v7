@@ -155,6 +155,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { getApiUrl } from '@/services/api.js'
+import { getCanonicalSeeds } from '@/services/supabase.js'
 import { useAuth } from '@/composables/useAuth.js'
 
 const { getAccessToken } = useAuth()
@@ -203,17 +204,11 @@ async function loadSeeds() {
     loading.value = true
     error.value = null
 
-    // Canonical seeds live in Supabase (canonical_seeds) — read via the API.
-    const res = await fetch(`${getApiUrl()}/api/canonical-seeds`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' },
-    })
-    if (!res.ok) throw new Error(`Failed to load seeds: ${res.status} ${res.statusText}`)
-    const data = await res.json()
-    const list = Array.isArray(data) ? data : (data.seeds || [])
+    // Read DIRECT from Supabase — surfacing data needs no machine/tunnel up.
+    // (Saving an edit goes via the SSi Machine API; see saveSeeds.)
+    const list = await getCanonicalSeeds()
     seeds.value = list
     originalSeeds.value = JSON.parse(JSON.stringify(list)) // deep copy for diff/cancel
-
-    console.log(`✅ Loaded ${list.length} canonical seeds`)
   } catch (err) {
     error.value = `Error loading canonical seeds: ${err.message}`
     console.error(err)
