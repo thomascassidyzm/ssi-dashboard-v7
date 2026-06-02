@@ -240,6 +240,8 @@
               <button
                 v-if="rule.status === 'active'"
                 @click="disableRule(rule.id)"
+                disabled
+                title="Not implemented yet"
                 class="px-3 py-1 bg-yellow-900/50 hover:bg-yellow-900/70 text-yellow-400 rounded text-xs transition-colors"
               >
                 Disable Rule
@@ -247,12 +249,16 @@
               <button
                 v-if="rule.status === 'disabled'"
                 @click="enableRule(rule.id)"
+                disabled
+                title="Not implemented yet"
                 class="px-3 py-1 bg-emerald-900/50 hover:bg-emerald-900/70 text-emerald-400 rounded text-xs transition-colors"
               >
                 Enable Rule
               </button>
               <button
                 @click="viewRuleDetails(rule.id)"
+                disabled
+                title="Not implemented yet"
                 class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-xs transition-colors"
               >
                 View Details
@@ -336,19 +342,24 @@
             <div class="flex items-center gap-2">
               <button
                 @click="promoteRule(rule.id)"
-                :disabled="rule.confidence < 95"
+                disabled
+                title="Not implemented yet"
                 class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded text-sm transition-colors"
               >
                 Promote to Production
               </button>
               <button
                 @click="rejectRule(rule.id)"
+                disabled
+                title="Not implemented yet"
                 class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded text-sm transition-colors"
               >
                 Reject Rule
               </button>
               <button
                 @click="extendTest(rule.id)"
+                disabled
+                title="Not implemented yet"
                 class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded text-sm transition-colors"
               >
                 Extend Test (+50 samples)
@@ -390,6 +401,8 @@
         <div>
           <button
             @click="rollbackVersion"
+            disabled
+            title="Not implemented yet"
             class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white rounded-lg text-lg font-medium transition-colors"
           >
             ↶ Rollback to Previous Version
@@ -399,12 +412,16 @@
         <div class="flex gap-3">
           <button
             @click="exportPromptHistory"
+            disabled
+            title="Not implemented yet"
             class="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-lg font-medium transition-colors"
           >
             Export History
           </button>
           <button
             @click="createManualRule"
+            disabled
+            title="Not implemented yet"
             class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-lg font-medium transition-colors"
           >
             + Add Manual Rule
@@ -609,66 +626,39 @@ function toggleRuleExamples(ruleId) {
 }
 
 function disableRule(ruleId) {
-  const rule = learnedRules.value.find(r => r.id === ruleId)
-  if (rule) {
-    rule.status = 'disabled'
-    console.log('Disabling rule:', ruleId)
-  }
+  alert("Disabling rules isn't available yet.")
 }
 
 function enableRule(ruleId) {
-  const rule = learnedRules.value.find(r => r.id === ruleId)
-  if (rule) {
-    rule.status = 'active'
-    console.log('Enabling rule:', ruleId)
-  }
+  alert("Enabling rules isn't available yet.")
 }
 
 function viewRuleDetails(ruleId) {
-  console.log('Viewing rule details:', ruleId)
-  // TODO: Open modal with detailed rule analysis
+  alert("Viewing rule details isn't available yet.")
 }
 
 function promoteRule(ruleId) {
-  const confirmed = confirm('Promote this experimental rule to production?')
-  if (!confirmed) return
-
-  const rule = experimentalRules.value.find(r => r.id === ruleId)
-  if (rule) {
-    console.log('Promoting rule to production:', ruleId)
-    // TODO: API call to promote rule
-  }
+  alert("Promoting rules to production isn't available yet.")
 }
 
 function rejectRule(ruleId) {
-  const confirmed = confirm('Reject this experimental rule?')
-  if (!confirmed) return
-
-  console.log('Rejecting experimental rule:', ruleId)
-  experimentalRules.value = experimentalRules.value.filter(r => r.id !== ruleId)
+  alert("Rejecting experimental rules isn't available yet.")
 }
 
 function extendTest(ruleId) {
-  console.log('Extending A/B test:', ruleId)
-  // TODO: API call to extend test
+  alert("Extending A/B tests isn't available yet.")
 }
 
 function rollbackVersion() {
-  const confirmed = confirm('Rollback to the previous prompt version? This will affect all future extractions.')
-  if (!confirmed) return
-
-  console.log('Rolling back to previous version')
-  // TODO: API call to rollback
+  alert("Rolling back to a previous version isn't available yet.")
 }
 
 function exportPromptHistory() {
-  console.log('Exporting prompt history')
-  // TODO: Generate export file
+  alert("Exporting prompt history isn't available yet.")
 }
 
 function createManualRule() {
-  console.log('Creating manual rule')
-  // TODO: Open modal for manual rule creation
+  alert("Adding a manual rule isn't available yet.")
 }
 
 // Lifecycle

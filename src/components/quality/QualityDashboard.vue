@@ -11,20 +11,25 @@
           <div class="flex gap-3">
             <button
               @click="exportReport('csv')"
+              disabled
+              title="Not implemented yet"
               class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
             >
               Export CSV
             </button>
             <button
               @click="exportReport('pdf')"
+              disabled
+              title="Not implemented yet"
               class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
             >
               Export PDF
             </button>
             <button
               @click="refreshData"
+              disabled
+              title="Not implemented yet"
               class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded transition-colors"
-              :disabled="loading"
             >
               {{ loading ? 'Refreshing...' : 'Refresh' }}
             </button>
@@ -199,21 +204,24 @@
           <div class="flex gap-2">
             <button
               @click="bulkAction('accept')"
-              :disabled="selectedSeeds.length === 0"
+              disabled
+              title="Not implemented yet"
               class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded text-sm transition-colors"
             >
               Accept Selected
             </button>
             <button
               @click="bulkAction('rerun')"
-              :disabled="selectedSeeds.length === 0"
+              disabled
+              title="Not implemented yet"
               class="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded text-sm transition-colors"
             >
               Re-run Selected
             </button>
             <button
               @click="bulkAction('remove')"
-              :disabled="selectedSeeds.length === 0"
+              disabled
+              title="Not implemented yet"
               class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded text-sm transition-colors"
             >
               Remove Selected
@@ -302,12 +310,16 @@
                 <div class="flex gap-2 mt-3">
                   <button
                     @click.stop="quickAccept(seed.id)"
+                    disabled
+                    title="Not implemented yet"
                     class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs transition-colors"
                   >
                     Accept
                   </button>
                   <button
                     @click.stop="quickRerun(seed.id)"
+                    disabled
+                    title="Not implemented yet"
                     class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs transition-colors"
                   >
                     Re-run
@@ -670,13 +682,7 @@ function nextPage() {
 }
 
 async function refreshData() {
-  loading.value = true
-  try {
-    // TODO: Fetch real data from API
-    await new Promise(resolve => setTimeout(resolve, 1000))
-  } finally {
-    loading.value = false
-  }
+  alert("Refresh isn't available yet.")
 }
 
 function viewSeedDetail(seed) {
@@ -686,40 +692,19 @@ function viewSeedDetail(seed) {
 }
 
 async function quickAccept(seedId) {
-  // TODO: API call to accept seed
-  console.log('Accepting seed:', seedId)
-  const seed = seeds.value.find(s => s.id === seedId)
-  if (seed) seed.status = 'accepted'
+  alert("Accept isn't available yet.")
 }
 
 async function quickRerun(seedId) {
-  // TODO: API call to trigger re-run
-  console.log('Re-running seed:', seedId)
+  alert("Re-run isn't available yet.")
 }
 
 async function bulkAction(action) {
-  if (selectedSeeds.value.length === 0) return
-
-  const confirmed = confirm(`${action.toUpperCase()} ${selectedSeeds.value.length} selected SEEDs?`)
-  if (!confirmed) return
-
-  // TODO: API call for bulk action
-  console.log(`Bulk ${action}:`, selectedSeeds.value)
-
-  if (action === 'accept') {
-    selectedSeeds.value.forEach(seedId => {
-      const seed = seeds.value.find(s => s.id === seedId)
-      if (seed) seed.status = 'accepted'
-    })
-  }
-
-  selectedSeeds.value = []
-  selectAll.value = false
+  alert("Bulk actions aren't available yet.")
 }
 
 function exportReport(format) {
-  // TODO: Implement export functionality
-  console.log(`Exporting report as ${format}`)
+  alert("Export isn't available yet.")
 }
 
 // Keyboard shortcuts

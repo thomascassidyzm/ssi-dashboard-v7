@@ -343,12 +343,16 @@
         <div class="flex gap-3">
           <button
             @click="acceptAttempt"
+            disabled
+            title="Not implemented yet"
             class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-lg font-medium transition-colors"
           >
             ✓ Accept This Attempt
           </button>
           <button
             @click="rejectAttempt"
+            disabled
+            title="Not implemented yet"
             class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white rounded-lg text-lg font-medium transition-colors"
           >
             ✗ Reject
@@ -358,12 +362,16 @@
         <div class="flex gap-3">
           <button
             @click="triggerRerun"
+            disabled
+            title="Not implemented yet"
             class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-lg font-medium transition-colors"
           >
             ↻ Trigger Re-run
           </button>
           <button
             @click="removeFromCorpus"
+            disabled
+            title="Not implemented yet"
             class="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-lg font-medium transition-colors"
           >
             🗑 Remove from Corpus
@@ -461,45 +469,19 @@ function nextAttempt() {
 }
 
 async function acceptAttempt() {
-  const confirmed = confirm(`Accept this extraction for ${props.seedId}?`)
-  if (!confirmed) return
-
-  // TODO: API call to accept
-  console.log('Accepting attempt:', currentAttemptIndex.value)
-  seed.value.status = 'accepted'
-
-  // Navigate back to dashboard
-  setTimeout(() => {
-    router.push(`/quality/${props.courseCode}`)
-  }, 500)
+  alert("Accepting an attempt isn't available yet.")
 }
 
 async function rejectAttempt() {
-  const confirmed = confirm(`Reject this extraction for ${props.seedId}?`)
-  if (!confirmed) return
-
-  // TODO: API call to reject
-  console.log('Rejecting attempt:', currentAttemptIndex.value)
-  seed.value.status = 'rejected'
+  alert("Rejecting an attempt isn't available yet.")
 }
 
 async function triggerRerun() {
-  const confirmed = confirm(`Trigger a new extraction attempt for ${props.seedId}?`)
-  if (!confirmed) return
-
-  // TODO: API call to trigger re-run
-  console.log('Triggering re-run for:', props.seedId)
+  alert("Triggering a re-run isn't available yet.")
 }
 
 async function removeFromCorpus() {
-  const confirmed = confirm(`Remove ${props.seedId} from the corpus entirely? This cannot be undone.`)
-  if (!confirmed) return
-
-  // TODO: API call to remove
-  console.log('Removing from corpus:', props.seedId)
-
-  // Navigate back to dashboard
-  router.push(`/quality/${props.courseCode}`)
+  alert("Removing from the corpus isn't available yet.")
 }
 
 // Keyboard shortcuts

@@ -234,8 +234,10 @@
               <div class="flex items-center gap-3">
                 <span class="text-xs text-slate-500">{{ filteredPhrases.length }} phrases</span>
                 <button @click="exportPDF"
+                        disabled
+                        title="Not implemented yet"
                         class="text-sm px-4 py-1.5 bg-slate-700 text-slate-300 rounded
-                               hover:bg-slate-600 transition-colors">
+                               hover:bg-slate-600 transition-colors disabled:opacity-50">
                   Export PDF
                 </button>
               </div>
@@ -619,8 +621,7 @@ async function runAlgorithm() {
 }
 
 function exportPDF() {
-  // TODO: Generate PDF of recording script
-  alert('PDF export coming soon!')
+  alert("Export PDF isn't available yet.")
 }
 
 // Load data on mount

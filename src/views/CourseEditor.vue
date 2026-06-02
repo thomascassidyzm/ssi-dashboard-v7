@@ -2067,21 +2067,12 @@ function loadSampleFromHistory(sample) {
 async function flagCurrentSample() {
   if (!currentAudioSample.value) return
 
-  // Mark as flagged in history
-  const historyItem = audioSampleHistory.value.find(s => s.id === currentAudioSample.value.id)
-  if (historyItem) {
-    historyItem.flagged = true
-  }
-  currentAudioSample.value.flagged = true
-
-  // TODO: Save flag to backend
-  toast.success('Sample flagged for review')
+  toast.info("Flagging audio samples isn't available yet.")
 }
 
 // Handle flag from learning cycle player
 function handleCycleFlag(sampleId) {
-  toast.success(`Cycle sample ${sampleId} flagged for review`)
-  // TODO: Save flag to backend
+  toast.info("Flagging cycle samples isn't available yet.")
 }
 
 // Cleanup on component unmount

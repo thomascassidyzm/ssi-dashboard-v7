@@ -349,6 +349,8 @@
               </div>
               <button
                 @click="applyRecommendation(rec.id)"
+                disabled
+                title="Not implemented yet"
                 class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-sm transition-colors"
               >
                 Apply
@@ -362,6 +364,8 @@
       <div class="flex items-center justify-end gap-4 sticky bottom-8 bg-slate-800 border border-slate-700 rounded-lg p-6 shadow-xl">
         <button
           @click="exportReport('pdf')"
+          disabled
+          title="Not implemented yet"
           class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white rounded-lg text-lg font-medium transition-colors flex items-center gap-2"
         >
           <span>📄</span>
@@ -369,6 +373,8 @@
         </button>
         <button
           @click="exportReport('csv')"
+          disabled
+          title="Not implemented yet"
           class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-lg font-medium transition-colors flex items-center gap-2"
         >
           <span>📊</span>
@@ -376,6 +382,8 @@
         </button>
         <button
           @click="scheduleReport"
+          disabled
+          title="Not implemented yet"
           class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-lg font-medium transition-colors flex items-center gap-2"
         >
           <span>📅</span>
@@ -653,18 +661,15 @@ function getPriorityClass(priority) {
 }
 
 function exportReport(format) {
-  console.log(`Exporting health report as ${format}`)
-  // TODO: Generate and download report
+  alert("Exporting the report isn't available yet.")
 }
 
 function scheduleReport() {
-  console.log('Opening schedule report modal')
-  // TODO: Open modal for scheduling periodic reports
+  alert("Scheduling reports isn't available yet.")
 }
 
 function applyRecommendation(recId) {
-  console.log('Applying recommendation:', recId)
-  // TODO: API call to apply recommendation
+  alert("Applying recommendations isn't available yet.")
 }
 
 // Lifecycle
