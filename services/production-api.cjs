@@ -3659,6 +3659,51 @@ app.patch('/api/admin/canonical-pods/:id', async (req, res) => {
   }
 })
 
+// GET /api/canonical-seeds — the 668 language-neutral English seeds (the SSoT
+// in the canonical_seeds table). Public read: this drives the docs/seeds page.
+// Returns the shape that view renders: { id, seed_number, seed_id, canonical_id, source }.
+app.get('/api/canonical-seeds', async (req, res) => {
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('canonical_seeds')
+      .select('id, seed_number, seed_id, canonical_id, source_text')
+      .order('seed_number', { ascending: true })
+    if (error) throw error
+    const seeds = (data || []).map(r => ({
+      id: r.id, seed_number: r.seed_number, seed_id: r.seed_id,
+      canonical_id: r.canonical_id, source: r.source_text,
+    }))
+    res.json({ seeds, total: seeds.length })
+  } catch (e) {
+    logger.error('[CanonicalSeeds] list error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// PATCH /api/admin/canonical-seeds/:id — edit a canonical seed's English source.
+// Admin-gated. Updates source_text only; re-translation is a separate pipeline
+// step (editing the canonical does not auto-propagate to course translations).
+app.patch('/api/admin/canonical-seeds/:id', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const id = String(req.params.id || '')
+  const source = req.body?.source
+  if (typeof source !== 'string' || !source.trim()) {
+    return res.status(400).json({ error: 'source (non-empty string) required' })
+  }
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('canonical_seeds')
+      .update({ source_text: source }).eq('id', id)
+      .select('id, seed_id, source_text').maybeSingle()
+    if (error) throw error
+    if (!data) return res.status(404).json({ error: `seed not found: ${id}` })
+    res.json({ ok: true, seed: { id: data.id, seed_id: data.seed_id, source: data.source_text } })
+  } catch (e) {
+    logger.error('[CanonicalSeeds] patch error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
 app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {

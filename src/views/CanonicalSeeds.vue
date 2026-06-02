@@ -17,10 +17,10 @@
             Edit Seeds
           </button>
           <template v-if="editing">
-            <button @click="saveSeeds" class="btn-save">
-              Save Changes
+            <button @click="saveSeeds" :disabled="saving" class="btn-save">
+              {{ saving ? 'Saving…' : 'Save Changes' }}
             </button>
-            <button @click="cancelEdit" class="btn-cancel">
+            <button @click="cancelEdit" :disabled="saving" class="btn-cancel">
               Cancel
             </button>
           </template>
@@ -154,12 +154,16 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { GITHUB_CONFIG } from '../config/github'
+import { getApiUrl } from '@/services/api.js'
+import { useAuth } from '@/composables/useAuth.js'
+
+const { getAccessToken } = useAuth()
 
 const seeds = ref([])
 const loading = ref(true)
 const error = ref(null)
 const editing = ref(false)
+const saving = ref(false)
 const searchQuery = ref('')
 const currentPage = ref(1)
 const pageSize = ref(50)
@@ -174,8 +178,8 @@ const filteredSeeds = computed(() => {
 
   const query = searchQuery.value.toLowerCase()
   return seeds.value.filter(seed =>
-    seed.seed_id.toLowerCase().includes(query) ||
-    seed.source.toLowerCase().includes(query)
+    (seed.seed_id || '').toLowerCase().includes(query) ||
+    (seed.source || '').toLowerCase().includes(query)
   )
 })
 
@@ -187,25 +191,29 @@ const paginatedSeeds = computed(() => {
   return filteredSeeds.value.slice(start, end)
 })
 
+async function authedFetch(path, init = {}) {
+  const token = await getAccessToken()
+  const headers = { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json', ...(init.headers || {}) }
+  if (token) headers.Authorization = `Bearer ${token}`
+  return fetch(`${getApiUrl()}${path}`, { ...init, headers })
+}
+
 async function loadSeeds() {
   try {
     loading.value = true
     error.value = null
 
-    // Fetch canonical seeds from GitHub (single source of truth)
-    const url = `${GITHUB_CONFIG.rawBaseUrl}/public/vfs/seeds/canonical_seeds.json`
-    console.log('🔍 Fetching canonical seeds from GitHub:', url)
+    // Canonical seeds live in Supabase (canonical_seeds) — read via the API.
+    const res = await fetch(`${getApiUrl()}/api/canonical-seeds`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' },
+    })
+    if (!res.ok) throw new Error(`Failed to load seeds: ${res.status} ${res.statusText}`)
+    const data = await res.json()
+    const list = Array.isArray(data) ? data : (data.seeds || [])
+    seeds.value = list
+    originalSeeds.value = JSON.parse(JSON.stringify(list)) // deep copy for diff/cancel
 
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`Failed to load seeds: ${response.statusText}`)
-    }
-
-    const data = await response.json()
-    seeds.value = data
-    originalSeeds.value = JSON.parse(JSON.stringify(data)) // Deep copy
-
-    console.log(`✅ Loaded ${data.length} canonical seeds from GitHub`)
+    console.log(`✅ Loaded ${list.length} canonical seeds`)
   } catch (err) {
     error.value = `Error loading canonical seeds: ${err.message}`
     console.error(err)
@@ -214,15 +222,36 @@ async function loadSeeds() {
   }
 }
 
-function saveSeeds() {
-  // TODO: Implement save functionality (POST to API endpoint)
-  console.log('💾 Saving seeds...', seeds.value)
-
-  // For now, just show a message
-  alert(`Saving ${seeds.value.length} canonical seeds...\n\nTODO: Implement API endpoint to save seeds back to canonical_seeds.json`)
-
-  editing.value = false
-  originalSeeds.value = JSON.parse(JSON.stringify(seeds.value))
+// Persist only the seeds whose English source actually changed (admin-gated).
+async function saveSeeds() {
+  if (saving.value) return
+  const origById = new Map(originalSeeds.value.map(s => [s.id, s.source]))
+  const changed = seeds.value.filter(s => origById.get(s.id) !== s.source)
+  if (changed.length === 0) { editing.value = false; return }
+  try {
+    saving.value = true
+    error.value = null
+    let ok = 0
+    for (const s of changed) {
+      const res = await authedFetch(`/api/admin/canonical-seeds/${encodeURIComponent(s.id)}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ source: s.source }),
+      })
+      if (!res.ok) {
+        const b = await res.json().catch(() => ({}))
+        throw new Error(b.error || `HTTP ${res.status} saving ${s.seed_id}`)
+      }
+      ok++
+    }
+    originalSeeds.value = JSON.parse(JSON.stringify(seeds.value))
+    editing.value = false
+    console.log(`✅ Saved ${ok} canonical seed(s)`)
+  } catch (err) {
+    error.value = `Error saving seeds: ${err.message}`
+    console.error(err)
+  } finally {
+    saving.value = false
+  }
 }
 
 function cancelEdit() {
