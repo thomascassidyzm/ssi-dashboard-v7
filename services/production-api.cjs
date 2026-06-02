@@ -3571,6 +3571,94 @@ app.get('/api/pods/:courseCode/:slug', async (req, res) => {
   }
 })
 
+// POST /api/admin/pods/generate — create/extend a listening pod for a course by
+// flexing the canonical scenarios (canonical_pod_scenarios) into the course's
+// language pair via the Max-plan Claude CLI. Resumable: generates scenes within
+// a wall-time budget and returns more_remaining; the UI calls again to continue
+// (same loop shape as /api/admin/pod-explainer-generate). Generated sentences
+// have no audio yet, so they're a reviewable/editable DRAFT until audio is run.
+// Refuses to overwrite a pod that already has audio unless { force: true }.
+app.post('/api/admin/pods/generate', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const courseCode = String(req.body?.courseCode || '').trim()
+  const slug = String(req.body?.slug || 'pod-0').trim()
+  const force = req.body?.force === true
+  if (!courseCode) return res.status(400).json({ error: 'courseCode required' })
+  try {
+    const podGenerator = require('./pod-dialogue-generator.cjs')
+    const r = await podGenerator.generatePodBatch({
+      courseCode, podSlug: slug, force,
+      deadlineMs: 45_000, maxScenes: 4, // bounded per call; UI loops until more_remaining=false
+      log: (m) => logger.info('[PodGen] ' + m),
+    })
+    res.json({ ok: true, ...r })
+  } catch (e) {
+    logger.error('[PodGen] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// PATCH /api/admin/pod-sentences/:id — edit a generated pod sentence's text.
+// Editing target/known text nulls its audio (the recorded audio no longer
+// matches), same convention as the course-content tables — Phase 8 regenerates.
+app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const id = String(req.params.id || '')
+  const patch = {}
+  if (typeof req.body?.target_text === 'string') { patch.target_text = req.body.target_text.trim(); patch.target_audio_id = null }
+  if (typeof req.body?.known_text === 'string') { patch.known_text = req.body.known_text.trim(); patch.known_audio_id = null }
+  if (Object.keys(patch).length === 0) return res.status(400).json({ error: 'target_text or known_text required' })
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('listening_pod_sentences').update(patch).eq('id', id).select('id, target_text, known_text').maybeSingle()
+    if (error) throw error
+    if (!data) return res.status(404).json({ error: `sentence not found: ${id}` })
+    res.json({ ok: true, sentence: data })
+  } catch (e) {
+    logger.error('[PodSentence] patch error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// GET /api/admin/canonical-pods/:slug — the language-neutral English scenarios
+// (the editable source the generator flexes per course).
+app.get('/api/admin/canonical-pods/:slug', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('canonical_pod_scenarios')
+      .select('id, scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, author_notes')
+      .eq('pod_slug', String(req.params.slug || 'pod-0')).order('global_order', { ascending: true })
+    if (error) throw error
+    res.json({ slug: req.params.slug, scenarios: data || [] })
+  } catch (e) {
+    logger.error('[CanonicalPods] list error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// PATCH /api/admin/canonical-pods/:id — edit a canonical scenario line (English
+// + optional speaker/notes). This is the "Aran writes the English" surface.
+app.patch('/api/admin/canonical-pods/:id', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const id = String(req.params.id || '')
+  const patch = {}
+  for (const k of ['english_text', 'speaker', 'author_notes']) {
+    if (typeof req.body?.[k] === 'string') patch[k] = req.body[k]
+  }
+  if (Object.keys(patch).length === 0) return res.status(400).json({ error: 'nothing to update' })
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('canonical_pod_scenarios').update(patch).eq('id', id).select('id, english_text, speaker, author_notes').maybeSingle()
+    if (error) throw error
+    if (!data) return res.status(404).json({ error: `canonical line not found: ${id}` })
+    res.json({ ok: true, line: data })
+  } catch (e) {
+    logger.error('[CanonicalPods] patch error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
 app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
@@ -9515,6 +9603,59 @@ app.post('/api/admin/audit-cleanup', async (req, res) => {
 })
 
 // ============================================================================
+// Audit archive (S3 tiering) — POST /api/admin/audit-archive
+// ============================================================================
+// Tiers content_audit_log: archive days older than hotDays to S3 as gzipped
+// NDJSON (recovery-readable via recover-pod-audio-from-audit.cjs --archive),
+// and with prune=true delete them from Postgres. Reuses the tested CLI
+// (tools/archive-audit-log.cjs) via spawn rather than duplicating its logic.
+// Capped at ~110s wall time — archive-before-delete means partial progress is
+// safe; click again to continue. The nightly scheduler (below) runs the same
+// CLI with --execute --prune.
+const { spawn: spawnArchive } = require('child_process')
+const ARCHIVE_TOOL = path.join(__dirname, '..', 'tools', 'archive-audit-log.cjs')
+
+function runArchiveTool(flags, { timeoutMs = 110_000 } = {}) {
+  return new Promise((resolve) => {
+    const child = spawnArchive('node', [ARCHIVE_TOOL, ...flags], {
+      cwd: path.join(__dirname, '..'),
+      env: process.env,
+    })
+    let stdout = '', stderr = '', timedOut = false
+    const killer = setTimeout(() => { timedOut = true; child.kill('SIGTERM') }, timeoutMs)
+    child.stdout.on('data', d => { stdout += d })
+    child.stderr.on('data', d => { stderr += d })
+    child.on('close', (code) => { clearTimeout(killer); resolve({ code, stdout, stderr, timedOut }) })
+    child.on('error', (e) => { clearTimeout(killer); resolve({ code: -1, stdout, stderr: `${stderr}\n${e.message}`, timedOut }) })
+  })
+}
+
+app.post('/api/admin/audit-archive', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const hotDays = Math.max(1, Math.min(365, Math.floor(Number(req.body?.hotDays)) || 14))
+  const maxDays = Math.max(1, Math.min(400, Math.floor(Number(req.body?.maxDays)) || 30))
+  const execute = req.body?.execute === true
+  const prune = req.body?.prune === true
+  const flags = [`--hot-days=${hotDays}`, `--max-days=${maxDays}`]
+  if (execute) flags.push('--execute')
+  if (prune) flags.push('--prune')
+  try {
+    logger.info(`[AuditArchive] run ${flags.join(' ')}`)
+    const r = await runArchiveTool(flags)
+    res.json({
+      ok: r.code === 0 && !r.timedOut,
+      execute, prune, hotDays, maxDays,
+      timedOut: r.timedOut,
+      exitCode: r.code,
+      output: `${r.stdout}${r.stderr ? `\n[stderr]\n${r.stderr}` : ''}`.trim(),
+    })
+  } catch (e) {
+    logger.error('[AuditArchive] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// ============================================================================
 // Phrase decomposition — backfill + audit
 // ============================================================================
 // See new_vision/PHRASE_DECOMPOSITION_SPEC.md.
@@ -10264,11 +10405,50 @@ app.post('/api/admin/pod-explainer-generate', async (req, res) => {
   }
 })
 
+// ============================================================================
+// Nightly audit-log archive+prune scheduler
+// ============================================================================
+// Tiers content_audit_log to S3 each night at 03:00 UTC via the same CLI the
+// Maintenance button uses. pg_cron can't write to S3, so the schedule lives
+// here in the long-running API process. OPT-IN: set AUDIT_ARCHIVE_CRON=on, so
+// merely deploying this code never silently starts deleting prod audit rows.
+function scheduleNightlyArchive() {
+  if (process.env.AUDIT_ARCHIVE_CRON !== 'on') {
+    logger.log('[AuditArchive] nightly schedule DISABLED — set AUDIT_ARCHIVE_CRON=on to enable')
+    return
+  }
+  const HOUR_UTC = 3
+  const hotDays = Math.max(1, Math.floor(Number(process.env.AUDIT_ARCHIVE_HOT_DAYS)) || 14)
+  const msUntilNext = () => {
+    const now = new Date()
+    const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), HOUR_UTC, 0, 0))
+    if (next <= now) next.setUTCDate(next.getUTCDate() + 1)
+    return next - now
+  }
+  const arm = () => {
+    const delay = msUntilNext()
+    logger.log(`[AuditArchive] nightly armed — next run in ${(delay / 3600000).toFixed(1)}h (03:00 UTC, hot-days=${hotDays})`)
+    setTimeout(async () => {
+      try {
+        logger.log('[AuditArchive] nightly run starting')
+        const r = await runArchiveTool([`--hot-days=${hotDays}`, '--max-days=120', '--execute', '--prune'], { timeoutMs: 30 * 60_000 })
+        logger.log(`[AuditArchive] nightly run done (exit ${r.code}${r.timedOut ? ', TIMED OUT' : ''})`)
+      } catch (e) {
+        logger.error('[AuditArchive] nightly run error:', e?.message || e)
+      } finally {
+        arm() // reschedule for tomorrow
+      }
+    }, delay)
+  }
+  arm()
+}
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {
   logger.log(`Production API server running on port ${PORT}`)
   logger.log(`WebSocket path: /api/production/websocket`)
+  scheduleNightlyArchive()
 })
 
 module.exports = { app, io, emitToRoom }

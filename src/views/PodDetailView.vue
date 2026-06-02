@@ -124,15 +124,31 @@
                 <div class="text-slate-600 font-mono text-xs tabular-nums pt-0.5">{{ sent.global_order }}</div>
                 <div class="text-slate-400 text-xs truncate pt-0.5" :title="sent.speaker">{{ sent.speaker }}</div>
                 <div class="min-w-0">
-                  <div class="text-slate-100 truncate" :title="sent.target_text">{{ sent.target_text }}</div>
-                  <div class="text-slate-500 text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
-                  <!-- Stage-1 explainer (inline, only when populated) -->
-                  <div
-                    v-if="sent.explainer_text"
-                    class="text-amber-300/80 text-xs mt-1 italic leading-snug"
-                    :title="sent.explainer_text"
-                  >
-                    <span class="text-amber-500/60 not-italic mr-1">ⓘ</span>{{ sent.explainer_text }}
+                  <!-- Display mode -->
+                  <template v-if="editingId !== sent.id">
+                    <div class="text-slate-100 truncate" :title="sent.target_text">{{ sent.target_text }}</div>
+                    <div class="text-slate-500 text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
+                    <!-- Stage-1 explainer (inline, only when populated) -->
+                    <div
+                      v-if="sent.explainer_text"
+                      class="text-amber-300/80 text-xs mt-1 italic leading-snug"
+                      :title="sent.explainer_text"
+                    >
+                      <span class="text-amber-500/60 not-italic mr-1">ⓘ</span>{{ sent.explainer_text }}
+                    </div>
+                  </template>
+                  <!-- Edit mode -->
+                  <div v-else class="space-y-1.5">
+                    <textarea v-model="editBuf.target" rows="1" dir="auto"
+                      class="w-full bg-slate-900 border border-emerald-700 rounded px-2 py-1 text-slate-100 text-sm resize-y outline-none" placeholder="target" />
+                    <textarea v-model="editBuf.known" rows="1"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-2 py-1 text-slate-400 text-xs resize-y outline-none" placeholder="known / translation" />
+                    <div class="flex items-center gap-2">
+                      <button :disabled="savingEdit" @click="saveSentence(sent)" class="text-xs px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white">{{ savingEdit ? 'Saving…' : 'Save' }}</button>
+                      <button :disabled="savingEdit" @click="cancelEdit" class="text-xs px-2.5 py-1 rounded border border-slate-600 text-slate-300">Cancel</button>
+                      <span class="text-[11px] text-slate-500">editing clears this line's audio</span>
+                      <span v-if="editError" class="text-[11px] text-red-400">{{ editError }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="flex gap-1 items-center pt-0.5">
@@ -167,6 +183,12 @@
                     :class="['px-2 py-1 text-xs rounded transition-colors bg-slate-700 hover:bg-emerald-700 text-slate-300 hover:text-emerald-100']"
                     title="Play target then known"
                   >⇉</button>
+                  <button
+                    v-if="editingId !== sent.id"
+                    @click="startEdit(sent)"
+                    class="px-2 py-1 text-xs rounded bg-slate-700 hover:bg-sky-700 text-slate-300 hover:text-sky-100"
+                    title="Edit target / known text"
+                  >✎</button>
                 </div>
               </div>
             </template>
@@ -350,6 +372,42 @@ async function authedFetch(path, init = {}) {
   }
   if (token) headers.Authorization = `Bearer ${token}`
   return fetch(`${getApiUrl()}${path}`, { ...init, headers })
+}
+
+// --- Inline sentence editing ---
+const editingId = ref(null)
+const editBuf = ref({ target: '', known: '' })
+const savingEdit = ref(false)
+const editError = ref('')
+
+function startEdit(sent) {
+  editingId.value = sent.id
+  editBuf.value = { target: sent.target_text || '', known: sent.known_text || '' }
+  editError.value = ''
+}
+function cancelEdit() { editingId.value = null; editError.value = '' }
+
+async function saveSentence(sent) {
+  savingEdit.value = true
+  editError.value = ''
+  try {
+    const res = await authedFetch(`/api/admin/pod-sentences/${encodeURIComponent(sent.id)}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ target_text: editBuf.value.target, known_text: editBuf.value.known }),
+    })
+    const body = await res.json()
+    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+    // Editing nulls the audio (text no longer matches the recording) — reflect locally.
+    sent.target_text = body.sentence.target_text
+    sent.known_text = body.sentence.known_text
+    sent.target_audio_id = null
+    sent.known_audio_id = null
+    editingId.value = null
+  } catch (err) {
+    editError.value = err?.message || String(err)
+  } finally {
+    savingEdit.value = false
+  }
 }
 
 /**

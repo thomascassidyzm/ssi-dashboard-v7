@@ -488,6 +488,13 @@ const routes = [
         component: () => import('../views/PodDetailView.vue'),
         props: true,
         meta: { title: 'Pod Detail - Production Suite' }
+      },
+      {
+        path: 'canonical/:slug',
+        name: 'CanonicalPod',
+        component: () => import('../views/CanonicalPodView.vue'),
+        props: true,
+        meta: { title: 'Canonical Scenarios - Production Suite' }
       }
     ]
   },

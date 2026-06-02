@@ -63,10 +63,39 @@
       </p>
 
       <p class="auto-prune-note">
-        <strong>Auto-prune:</strong> entries older than 7 days are removed daily at 03:00 UTC by a pg_cron job.
-        Use the manual cleanup above to prune sooner (e.g. after a known incident).
-        Anything older than 7 days has to be recovered from the daily Supabase backup, not from this log.
+        <strong>Auto-prune:</strong> handled by the nightly <strong>archive + prune</strong> below
+        (03:00 UTC, when <code>AUDIT_ARCHIVE_CRON=on</code>) — older days are copied to S3 cold storage
+        <em>before</em> deletion, so they stay recoverable via
+        <code>recover-pod-audio-from-audit.cjs --archive</code>. The delete-only cleanup above is for
+        pruning sooner without archiving. (The old pg_cron job is dead; this replaces it.)
       </p>
+
+      <h2 class="section-title section-title-secondary">Archive to S3 (cold tiering)</h2>
+      <p class="section-blurb">
+        Archive audit days older than the hot window to S3 as gzipped NDJSON, then —
+        with prune — delete them from Postgres. <strong>Preview</strong> is read-only;
+        <strong>Archive + Prune</strong> writes to S3 and deletes, but only after each day's
+        upload is verified. Capped at ~110s per click — click again to continue a long run.
+      </p>
+      <div class="cleanup-row">
+        <label class="days-input">
+          Hot window
+          <input type="number" v-model.number="archiveHotDays" min="1" max="365" step="1" />
+          days
+        </label>
+        <label class="days-input">
+          Scan back
+          <input type="number" v-model.number="archiveMaxDays" min="1" max="400" step="1" />
+          days
+        </label>
+        <button class="cleanup-btn" :disabled="archiving" @click="runArchive(false)">
+          {{ archiving ? 'Running…' : 'Preview (dry run)' }}
+        </button>
+        <button class="cleanup-btn" :disabled="archiving" @click="confirmArchivePrune">
+          {{ archiving ? 'Running…' : 'Archive + Prune now' }}
+        </button>
+      </div>
+      <pre v-if="archiveOutput" class="archive-output">{{ archiveOutput }}</pre>
 
       <h2 class="section-title section-title-secondary">Recent changes</h2>
       <p class="section-blurb">
@@ -404,6 +433,12 @@ const cleaning = ref(false)
 const showConfirm = ref(false)
 const lastResult = ref(null)
 
+// Audit archive (S3 cold tiering)
+const archiveHotDays = ref(14)
+const archiveMaxDays = ref(30)
+const archiving = ref(false)
+const archiveOutput = ref('')
+
 // Recent-changes feed state
 const events = ref([])
 const totalEvents = ref(0)
@@ -481,6 +516,43 @@ async function runCleanup() {
     loadError.value = `Cleanup failed: ${e.message}`
   } finally {
     cleaning.value = false
+  }
+}
+
+function confirmArchivePrune() {
+  if (window.confirm(
+    'Archive every audit day older than the hot window to S3, then DELETE those rows from Postgres?\n\n' +
+    'Each day is uploaded and verified BEFORE deletion, and pruned rows stay recoverable via ' +
+    'recover-pod-audio-from-audit.cjs --archive.'
+  )) {
+    runArchive(true)
+  }
+}
+
+// prune=false → dry-run preview (read-only). prune=true → archive to S3 + delete.
+async function runArchive(prune) {
+  archiving.value = true
+  archiveOutput.value = ''
+  loadError.value = ''
+  try {
+    const r = await authedFetch('/api/admin/audit-archive', {
+      method: 'POST',
+      body: JSON.stringify({
+        hotDays: archiveHotDays.value,
+        maxDays: archiveMaxDays.value,
+        execute: prune,
+        prune
+      })
+    })
+    const body = await r.json()
+    if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
+    archiveOutput.value = body.output || '(no output)'
+    if (body.timedOut) archiveOutput.value += '\n\n⏱ hit the 110s cap — partial progress is saved, click again to continue.'
+    await loadStats()
+  } catch (e) {
+    loadError.value = `Archive failed: ${e.message}`
+  } finally {
+    archiving.value = false
   }
 }
 
@@ -923,6 +995,22 @@ onMounted(() => {
   margin-top: 16px;
   font-size: 13px;
   color: #86efac;
+}
+
+.archive-output {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 360px;
+  overflow-y: auto;
 }
 
 .auto-prune-note {

@@ -18,6 +18,37 @@
         </p>
       </div>
 
+      <!-- Generate from canonical -->
+      <div class="bg-slate-800 border border-slate-700 rounded-lg p-5 mb-6 flex items-center gap-4 flex-wrap">
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-semibold text-slate-200">Generate Pod 0 from canonical scenarios</div>
+          <div class="text-xs text-slate-400 mt-0.5">
+            Flexes the 10 English scenarios into {{ courseCode }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
+          </div>
+          <div v-if="genStatus" class="text-xs mt-2" :class="genError ? 'text-red-300' : 'text-emerald-300'">{{ genStatus }}</div>
+          <div v-if="genError" class="text-xs text-red-300 mt-1">{{ genError }}</div>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <router-link :to="`/production/${courseCode}/canonical/pod-0`" class="text-xs px-3 py-2 rounded border border-slate-600 text-slate-300 hover:border-emerald-500">Edit canonical</router-link>
+          <button
+            :disabled="generating"
+            @click="generatePod(false)"
+            class="text-sm px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-medium"
+          >
+            {{ generating ? 'Generating…' : 'Generate Pod 0' }}
+          </button>
+          <button
+            v-if="pods.some(p => p.slug === 'pod-0')"
+            :disabled="generating"
+            @click="generatePod(true)"
+            title="Regenerate all scenes, overwriting (refuses if audio exists)"
+            class="text-xs px-3 py-2 rounded border border-amber-700 text-amber-300 hover:border-amber-500 disabled:opacity-50"
+          >
+            Regenerate
+          </button>
+        </div>
+      </div>
+
       <!-- Loading -->
       <div v-if="loading" class="text-slate-500 text-center py-12">Loading pods…</div>
 
@@ -92,6 +123,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
+import { useAuth } from '@/composables/useAuth.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -99,6 +131,47 @@ const courseCode = route.params.courseCode
 const pods = ref([])
 const loading = ref(true)
 const error = ref(null)
+
+// --- Generate Pod 0 from the canonical scenarios (admin) ---
+const { getAccessToken } = useAuth()
+const generating = ref(false)
+const genStatus = ref('')
+const genError = ref('')
+
+async function authedFetch(path, init = {}) {
+  const token = await getAccessToken()
+  const headers = { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json', ...(init.headers || {}) }
+  if (token) headers.Authorization = `Bearer ${token}`
+  return fetch(`${getApiUrl()}${path}`, { ...init, headers })
+}
+
+// Resumable poll loop — the endpoint generates a few scenes per call and
+// returns more_remaining. Mirrors the explainer-generate pattern.
+async function generatePod(force = false) {
+  if (generating.value) return
+  generating.value = true
+  genError.value = ''
+  genStatus.value = 'Building consistency ledger + generating scenes…'
+  try {
+    for (let pass = 0; pass < 30; pass++) {
+      const res = await authedFetch('/api/admin/pods/generate', {
+        method: 'POST',
+        body: JSON.stringify({ courseCode, slug: 'pod-0', force }),
+      })
+      const body = await res.json()
+      if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+      const done = (body.totalScenes || 0) - (body.remaining || 0)
+      genStatus.value = `Generated ${done}/${body.totalScenes || '?'} scenes` +
+        (body.more_remaining ? ' · continuing…' : ' · done ✓')
+      await loadPods()
+      if (!body.more_remaining) break
+    }
+  } catch (err) {
+    genError.value = err?.message || String(err)
+  } finally {
+    generating.value = false
+  }
+}
 
 const totalSentences = computed(() =>
   pods.value.reduce((a, p) => a + (p.sentence_count || 0), 0)
