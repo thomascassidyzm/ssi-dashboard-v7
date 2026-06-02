@@ -596,7 +596,7 @@ const dataSource = ref('fallback')
 const defaults = {
   title: 'SSi Pedagogical Model',
   subtitle: 'The "why" behind the SSi teaching system',
-  versionInfo: 'APML v11.2.0 | Conceptual foundation for language learning through LEGO recombination'
+  versionInfo: 'APML v14.1 | Conceptual foundation for language learning through LEGO recombination'
 }
 
 // Computed properties that use database or fallback

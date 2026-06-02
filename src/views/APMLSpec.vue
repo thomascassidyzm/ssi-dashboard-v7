@@ -105,8 +105,8 @@
                 <h4 class="font-semibold text-emerald-300">courses</h4>
                 <p class="text-sm text-slate-400 mt-1">
                   Course metadata with voice configuration<br/>
-                  <code class="text-xs">code (PK) | display_name | known_lang | target_lang | voice_config (JSONB)</code><br/>
-                  <span class="text-xs text-amber-400">PRIMARY KEY(code)</span>
+                  <code class="text-xs">course_code (PK) | display_name | known_lang | target_lang | voice_config (JSONB)</code><br/>
+                  <span class="text-xs text-amber-400">PRIMARY KEY(course_code)</span>
                 </p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
@@ -156,7 +156,7 @@
                   <tr>
                     <td class="border border-slate-600 px-3 py-2">S3 Storage</td>
                     <td class="border border-slate-600 px-3 py-2 text-red-300">mastered/{uuid}.mp3</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">{uuid}.mp3 (flat)</td>
+                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">mastered/{uuid}.mp3</td>
                   </tr>
                   <tr>
                     <td class="border border-slate-600 px-3 py-2">Origin Tracking</td>
@@ -249,7 +249,7 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
 2. Extract audio needs from course_practice_phrases (Supabase)
 3. Check what's missing: get_missing_audio() RPC
 4. Generate TTS for missing audio (Azure)
-5. Upload to S3: {uuid}.mp3 (flat storage)
+5. Upload to S3: mastered/{uuid}.mp3
 6. INSERT INTO course_audio (course_code, text, language, role, voice_id, origin, s3_key)
 7. Verify completeness: get_course_audio_summary() RPC</pre>
             </div>
@@ -271,7 +271,7 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
               <h4 class="font-semibold text-slate-300">course_manifest.json</h4>
               <p class="text-sm text-slate-400 mt-1">
                 Phase 9 output: compiled manifest for learning app<br/>
-                Generated ON-DEMAND from Supabase (not stored, regenerable)
+                Generated ON-DEMAND and written to public/vfs/courses/{courseCode}/course_manifest.json (regenerable)
               </p>
             </div>
             <div class="bg-amber-900/20 border border-amber-500/30 rounded p-4">
@@ -288,10 +288,10 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Key Algorithms</h2>
           <div class="space-y-4">
             <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-              <h4 class="font-semibold text-emerald-300">find_or_create_audio()</h4>
+              <h4 class="font-semibold text-emerald-300">get_missing_audio() / get_course_audio_summary()</h4>
               <p class="text-sm text-slate-400 mt-2">
-                Idempotent database function: finds existing audio or creates entry.<br/>
-                Returns <code class="text-xs">{audio_id, s3_key, needs_generation}</code>
+                Database RPCs used by Phase 8: identify which audio still needs generation and verify course audio completeness.<br/>
+                <span class="text-xs text-amber-400">(Replaces deprecated v12 find_or_create_audio())</span>
               </p>
             </div>
             <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
@@ -303,7 +303,7 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
             <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
               <h4 class="font-semibold text-emerald-300">IRON RULE</h4>
               <p class="text-sm text-slate-400 mt-2">
-                No LEGO begins or ends with a preposition. Absolute rule enforced during Phase 1.
+                No LEGO begins or ends with a preposition. Absolute rule enforced in the Course Builder validation gates.
               </p>
             </div>
             <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">

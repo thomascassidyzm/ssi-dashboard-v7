@@ -47,7 +47,7 @@
                   </svg>
                 </div>
                 <div class="card-badge apml">
-                  <span class="badge-value">v14</span>
+                  <span class="badge-value">v14.1</span>
                   <span class="badge-label">spec</span>
                 </div>
               </div>
@@ -217,6 +217,35 @@
               </div>
             </div>
           </router-link>
+
+          <!-- Phase Intelligence -->
+          <router-link to="/docs/intelligence" class="doc-card card-glossary">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2a4.5 4.5 0 0 0-4.5 4.5c0 .54.1 1.05.27 1.53A4 4 0 0 0 6 12a4 4 0 0 0 2 3.46V18a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.54A4 4 0 0 0 18 12a4 4 0 0 0-1.77-3.97c.17-.48.27-.99.27-1.53A4.5 4.5 0 0 0 12 2z"/>
+                    <path d="M9.5 22h5"/>
+                    <path d="M12 8v6"/>
+                  </svg>
+                </div>
+                <div class="card-badge glossary">
+                  <span class="badge-label">reference</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">Phase Intelligence</h2>
+                <p class="card-description">How agents apply the methodology at each phase - decision logic, skills, and orchestration</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">Explore Intelligence</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </router-link>
         </div>
       </section>
 
@@ -224,12 +253,12 @@
       <section class="stats-section">
         <div class="stats-bar">
           <div class="stat-item">
-            <span class="stat-value">6</span>
+            <span class="stat-value">7</span>
             <span class="stat-label">Documents</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-value">v14</span>
+            <span class="stat-value">v14.1</span>
             <span class="stat-label">APML Version</span>
           </div>
           <div class="stat-divider"></div>

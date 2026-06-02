@@ -27,7 +27,7 @@
 
             <div class="bg-slate-900/80 border border-emerald-500/30 rounded-lg p-4 my-4">
               <h4 class="text-lg font-semibold text-emerald-300 mb-3">Hybrid Cloud + Local Architecture</h4>
-              <p class="text-slate-300 mb-4">Popty uses a hybrid architecture: the dashboard runs on Vercel for global access, but content creation requires a local machine running the orchestrator.</p>
+              <p class="text-slate-300 mb-4">Popty uses a hybrid architecture: the dashboard runs on Vercel for global access, but content creation requires a local machine running the Production API (port 3470).</p>
 
               <div class="grid md:grid-cols-2 gap-4 mt-4">
                 <div class="bg-slate-800/50 rounded p-3">
@@ -55,7 +55,7 @@
               <h4 class="text-lg font-semibold text-slate-200 mb-3">Why Local Machines?</h4>
               <p class="text-slate-400 mb-3">Claude Code agents run via browser automation on local machines using Pro Max subscriptions ($200/month). This is far more cost-effective than API calls for course generation.</p>
               <div class="text-sm text-slate-500">
-                <p><strong>Data Flow:</strong> Dashboard → ngrok tunnel → Local Orchestrator → Claude Code Agents → Supabase Database</p>
+                <p><strong>Data Flow:</strong> Dashboard → ngrok → Local Production API (3470) → Course Builder (3471) / Agents → Supabase</p>
               </div>
             </div>
 
@@ -70,7 +70,7 @@
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Data Storage</h3>
             <ul class="space-y-2">
-              <li><strong>Supabase:</strong> Single source of truth for all content (seeds, LEGOs, practice phrases, audio metadata)</li>
+              <li><strong>Supabase:</strong> Single source of truth for all content (seeds, LEGOs, component / build / use phrases, audio metadata)</li>
               <li><strong>AWS S3:</strong> Audio file storage (ssi-audio-stage bucket)</li>
               <li><strong>Local JSON:</strong> Phase outputs also written locally for backup/debugging</li>
             </ul>
@@ -91,8 +91,8 @@
                 <div class="flex items-center justify-between">
                   <div>
                     <h4 class="font-semibold text-purple-300">Phase 8: Audio Generation (Port 3465)</h4>
-                    <p class="text-sm text-slate-400 mt-1">POST /generate → course_audio table + S3 storage</p>
-                    <p class="text-xs text-purple-400 mt-1">TTS via Azure, deduplicates across courses</p>
+                    <p class="text-sm text-slate-400 mt-1">POST /generate/:courseCode → course_audio table + S3 storage</p>
+                    <p class="text-xs text-purple-400 mt-1">TTS via Azure (default), ElevenLabs, or xAI per voice config; deduplicates across courses</p>
                   </div>
                   <span class="text-purple-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -110,7 +110,7 @@
             </div>
 
             <div class="mt-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded">
-              <p class="text-xs text-amber-300"><strong>Deprecated:</strong> Phase 1 (3457), Phase 2 (3458), Phase 3 (3459) - all consolidated into Course Builder</p>
+              <p class="text-xs text-amber-300"><strong>Deprecated:</strong> Phase 1 (3457), Phase 2 (3458), Phase 3 (3459) - all consolidated into Course Builder; Orchestrator (3456) — optional, consolidated into Production API (3470)</p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v14</h3>
@@ -123,7 +123,7 @@
               <li><strong>Two Heuristics:</strong> Remove learner uncertainty (ZUT) + Maximize patterns with minimum vocab</li>
               <li><strong>M-LEGO Build-up:</strong> Automatic component→LEGO→phrases structure generation</li>
               <li><strong>Course Validators:</strong> Measure vocabulary, patterns, completeness (0-100% score)</li>
-              <li><strong>Phase 8 Audio:</strong> TTS generation via Azure, stores in S3 with Supabase registry</li>
+              <li><strong>Phase 8 Audio:</strong> TTS via Azure (default), ElevenLabs, or xAI per voice config, stores in S3 with Supabase registry</li>
               <li><strong>Phase 9 Manifest:</strong> On-demand compilation from Supabase, validates 100% audio coverage</li>
             </ul>
           </div>
