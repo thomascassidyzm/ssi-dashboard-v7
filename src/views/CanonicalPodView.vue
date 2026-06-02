@@ -23,9 +23,11 @@
       <div v-else-if="error" class="bg-red-900/40 border border-red-700 rounded-lg p-4 text-red-200">{{ error }}</div>
 
       <div v-else class="space-y-6">
-        <div v-for="scene in scenes" :key="scene.number" class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
+        <div class="text-xs text-slate-500 -mt-3">{{ scenes.length }} scenes · {{ scenes.reduce((a, s) => a + s.lines.length, 0) }} lines</div>
+        <div v-for="(scene, idx) in scenes" :key="scene.number" class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
           <div class="px-5 py-3 border-b border-slate-700 flex items-baseline gap-3">
-            <span class="text-xs font-mono text-slate-500">{{ scene.label || ('Scene ' + scene.number) }}</span>
+            <span class="text-xs font-mono text-emerald-400/70 bg-slate-700/40 px-1.5 py-0.5 rounded flex-shrink-0" title="position in the pod">{{ idx + 1 }}/{{ scenes.length }}</span>
+            <span class="text-xs font-mono text-slate-500" title="canonical scenario label">{{ scene.label || ('Scene ' + scene.number) }}</span>
             <span class="font-semibold text-slate-100">{{ scene.title }}</span>
             <span v-if="scene.subtitle" class="text-xs italic text-slate-500">{{ scene.subtitle }}</span>
             <span class="ml-auto text-xs text-slate-600">{{ scene.lines.length }} lines</span>
