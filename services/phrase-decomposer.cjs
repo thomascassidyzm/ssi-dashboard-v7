@@ -79,10 +79,18 @@ function consumeOneToken(residue, charLevel) {
   return { token: residue, rest: '' }
 }
 
+// A "word char" for boundary tests: letters, marks (combining/diacritics),
+// digits. Whitespace, punctuation, and end-of-string are boundaries.
+const WORD_CHAR = /[\p{L}\p{M}\p{N}]/u
+function isBoundaryAt(text, pos) {
+  if (pos < 0 || pos >= text.length) return true // start / end
+  return !WORD_CHAR.test(text[pos])
+}
+
 // Try to match the longest vocabulary entry starting at position 0 of
 // `residue`. Vocabulary is pre-sorted longest-first, so the first hit wins.
 // Returns the matched lego or null.
-function findLongestMatch(residue, vocabulary) {
+function findLongestMatch(residue, vocabulary, charLevel) {
   for (const lego of vocabulary) {
     const t = lego.target_text
     if (!t) continue
@@ -92,10 +100,13 @@ function findLongestMatch(residue, vocabulary) {
     // preserved. Comparing exactly t.length chars means accent/ß-style
     // case expansions can only fail-to-match (→ ghost), never corrupt the
     // slice length. Fixes sentence-initial capitals (Quiero/Ich/No) ghosting.
-    if (residue.length >= t.length &&
-        residue.slice(0, t.length).toLowerCase() === t.toLowerCase()) {
-      return lego
-    }
+    if (residue.length < t.length) continue
+    if (residue.slice(0, t.length).toLowerCase() !== t.toLowerCase()) continue
+    // Word-boundary guard for whitespace-delimited scripts: the match must END
+    // at a boundary, so a short LEGO ("el") can't match the prefix of a longer
+    // word ("ella"). CJK/char-level has a boundary at every char, so skip.
+    if (!charLevel && !isBoundaryAt(residue, t.length)) continue
+    return lego
   }
   return null
 }
@@ -171,7 +182,7 @@ function decomposeText(targetText, vocabulary) {
     const leadingWs = wsMatch ? wsMatch[1] : ''
     const matchStart = leadingWs ? residue.slice(leadingWs.length) : residue
 
-    const lego = findLongestMatch(matchStart, sorted)
+    const lego = findLongestMatch(matchStart, sorted, charLevel)
 
     if (lego) {
       // Carry the ORIGINAL surface (case-preserving) — NOT lego.target_text —
@@ -217,6 +228,84 @@ function decomposeText(targetText, vocabulary) {
   }
 
   return blocks
+}
+
+// =============================================================================
+// Salient-anchored decomposition
+// =============================================================================
+
+// Find the parent LEGO's surface span in the phrase: case-folded, fixed-length
+// (so accent/case expansion can't drift the index), and — for whitespace-
+// delimited scripts — only at whole-word boundaries (so "한" can't match inside
+// "한국어"). CJK/char-level scripts have a boundary at every char.
+function findParentSpan(targetText, parentTarget, charLevel) {
+  if (!parentTarget) return null
+  const L = parentTarget.length
+  if (L === 0 || L > targetText.length) return null
+  const folded = parentTarget.toLowerCase()
+  for (let i = 0; i + L <= targetText.length; i++) {
+    if (targetText.slice(i, i + L).toLowerCase() !== folded) continue
+    // Whole-word boundary on both sides (whitespace, punctuation, or edge) so
+    // "한" can't match inside "한국어". CJK/char-level: every char is a boundary.
+    if (!charLevel && !(isBoundaryAt(targetText, i - 1) && isBoundaryAt(targetText, i + L))) continue
+    return { index: i, length: L }
+  }
+  return null
+}
+
+/**
+ * Like decomposeText, but GUARANTEES the parent (salient) LEGO is its own block
+ * whenever it's present in the phrase — rather than leaving it to the greedy
+ * matcher (which could shadow/split it). Every phrase belongs to its parent
+ * course_lego, so the salient is always known; this anchors it.
+ *
+ * Carves [before] + [parent salient block] + [after] and decomposes before/
+ * after with the normal greedy pass. If the parent's canonical surface isn't
+ * present (e.g. a conjugated/leveraged salient — a content imprecision), falls
+ * back to plain decomposeText; the result then simply won't contain the parent
+ * legoId, which the caller can count as a content-QA signal.
+ *
+ * @param {string} targetText
+ * @param {Array<{lego_id,target_text,known_text}>} vocabulary
+ * @param {{lego_id:string,target_text:string,known_text:string}|null} parentLego
+ */
+function decomposeAnchored(targetText, vocabulary, parentLego) {
+  if (!parentLego || !parentLego.target_text) {
+    return { blocks: decomposeText(targetText, vocabulary), salientAnchored: false }
+  }
+  const charLevel = isCharLevelScript(targetText)
+  const span = findParentSpan(targetText, parentLego.target_text, charLevel)
+  if (!span) {
+    // Parent not present as a clean surface — likely conjugated/leveraged.
+    return { blocks: decomposeText(targetText, vocabulary), salientAnchored: false }
+  }
+
+  const before = targetText.slice(0, span.index)
+  const parentSurface = targetText.slice(span.index, span.index + span.length)
+  const after = targetText.slice(span.index + span.length)
+
+  // decomposeText can't consume a trailing-whitespace-only residue, so peel the
+  // separator whitespace off the end of `before` and fold it onto the parent
+  // block's leading edge (keeps the concat invariant exact).
+  const beforeContent = before.replace(/\s+$/, '')
+  const sepWs = before.slice(beforeContent.length)
+
+  const blocks = []
+  if (beforeContent.length) blocks.push(...decomposeText(beforeContent, vocabulary))
+  blocks.push({
+    legoId: parentLego.lego_id,
+    target: sepWs + parentSurface,
+    known: parentLego.known_text || '',
+    isGhost: false,
+    isSalient: true
+  })
+  if (after.length) blocks.push(...decomposeText(after, vocabulary))
+
+  const recomposed = blocks.map(b => b.target).join('')
+  if (normaliseWhitespace(recomposed) !== normaliseWhitespace(targetText)) {
+    throw new Error(`decomposeAnchored: integrity violation — "${recomposed}" != "${targetText}"`)
+  }
+  return { blocks, salientAnchored: true }
 }
 
 // =============================================================================
@@ -291,6 +380,7 @@ async function decomposePhrase(supabase, courseCode, seedNumber, targetText) {
 
 module.exports = {
   decomposeText,
+  decomposeAnchored,
   decomposePhrase,
   // Exported for testing/debugging; not part of the public surface
   _internal: {
