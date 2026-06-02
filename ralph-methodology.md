@@ -59,6 +59,10 @@ Multi-word phrase. Patterns are inferred through overlap with related A-LEGOs.
 }
 ```
 
+> **Type is author-declared, not computed.** "Single word = A, multi-word = M" is the convention *you* follow — the validator never counts words to assign type. It only checks the literal value is `'A'` or `'M'` (a missing type defaults to `'A'`), and rejects an `'M'` with no `components[]`.
+>
+> **The real size guard is syllables, not word count.** Every LEGO — A or M — has its target capped at **8 syllables** (`MAX_LEGO_SYLLABLES`), estimated from character length per language. This cap **always runs, even under `skip_validation`**. An oversized LEGO is rejected with a prompt to decompose it into multiple smaller LEGOs (aim for 2-4 words, max 8 syllables).
+
 ### Optional Component Introduction (`introduce: false`)
 
 M-LEGO components are required for tiling validation, but not all are worth introducing to the learner solo. Set `introduce: false` on components that would confuse more than help — single-letter prepositions, particles, or stubs that only make sense attached.
@@ -183,11 +187,13 @@ USE examples for "after you finish" → "despues de que termines":
 
 ### Round Structure for a New LEGO
 
-1. **Intro** - LEGO introduced
+1. **Intro** - LEGO introduced (presentation audio)
 2. **Debut** - the LEGO itself
-3. **Practice** - ~7 phrases total (all BUILD + enough USE to reach ~7)
-4. **Review** - USE phrases from previous LEGOs (spaced repetition)
-5. **Consolidate** - 2x USE phrases from this LEGO
+3. **Practice** - all BUILD phrases first (shortest-first by syllable count), then USE phrases fill remaining slots, **capped at 7 total**
+4. **Review** - USE phrases of *older* LEGOs on a Fibonacci-style offset schedule (spaced repetition); see below
+5. **Consolidate** - up to **2** of this LEGO's own USE phrases not already used this round
+
+**Spaced repetition (Review) at runtime:** earlier LEGOs' USE phrases are revisited at offsets `[1, 2, 3, 5, 8, 13, 21, 34, 55, 89]` rounds back. The most-recent prior LEGO (offset 1, "N-1") contributes **3** USE phrases; every other due LEGO contributes **1**, drawn from a rotating pool so successive reviews surface fresh sentences. Total review items per round are **capped at 12**. Only USE phrases are ever reviewed — BUILD never enters spaced repetition. Components are skipped entirely at runtime.
 
 ### Syllable Guidelines
 
@@ -198,6 +204,8 @@ USE examples for "after you finish" → "despues de que termines":
 | USE (long) | LEGO + 7-10 | Yes (required) | Yes (consolidate, review) | Yes |
 
 **Key principle:** Syllable count is the proxy for cognitive load. The progression SHORT → MEDIUM → LONG creates a smooth ramp, not a cliff.
+
+> **Note on enforcement:** the SHORT/MEDIUM/LONG length spread is **pedagogical guidance, not a hard gate**. The validator's phrase-complexity tier check is **warning-only — it never blocks a submission** (it logs spread feedback as the course matures). Treat the length mix as a quality bar you hold yourself to, not a wall the API enforces. (The real always-on size limit is the 8-syllable LEGO cap above — that one does reject.)
 
 ---
 
@@ -284,6 +292,35 @@ Below shows how overlapping LEGOs work in practice. Note that "importante" appea
 ```
 
 **Key insight:** The learner first sees "importante" alone (A-LEGO), then sees it inside "es importante" (M-LEGO). The overlap lets them infer the pattern without any explanation.
+
+---
+
+## How the API Processes Your Submission
+
+### "Atomic" = validate everything, then insert everything (or nothing)
+
+When you POST a seed, **every validation gate runs first** and accumulates all failures into a single error list — ZUT/duplicate, syllable cap, tiling, vocabulary + containment, length-ratio, phrase counts, and (late-course) the balance check. **Only if that list is empty** does the insert phase run, writing `course_seeds`, `course_legos`, and `course_practice_phrases`. If any hard error exists, **nothing is inserted** and you get a structured 400 with the *full* list of problems and fix hints — there is no partial save.
+
+This is what "atomic" means here: validate-all-then-insert-all (or insert nothing). It is achieved by gating before any write, **not** by a database transaction/rollback. The upside for you: you see *all* problems at once, so fix them in one pass and resubmit rather than discovering them one at a time.
+
+### Deterministic phrase IDs — the API assigns them, you never do
+
+Every phrase gets a stable, self-describing ID **assigned by the API** — agents never set phrase IDs. Format:
+
+```
+{course_code}:S{NNNN}L{NN}{R}{NN}
+```
+
+- `S{NNNN}` = seed number, zero-padded to 4
+- `L{NN}` = LEGO index, zero-padded to 2
+- `{R}` = role letter: **C** (component), **B** (build), **U** (use)
+- `{NN}` = 1-based index within that role for that LEGO, zero-padded to 2
+
+Example: `fra_for_eng:S0042L03U05` = the 5th USE phrase of LEGO 3 in seed 42. The same phrase always gets the same ID, so audio and progress stay stable across rebuilds. Do **not** put IDs in your submission.
+
+### Intake text normalization + the canonical mismatch
+
+On intake the API normalizes all known/target text: it strips bookend punctuation and lowercases known/target — **except** non-cased scripts (Japanese, Chinese, Arabic, Korean, Hebrew, Thai, etc.) and an allowlist of always-capitalised words ("I", language names, …). Your English `known_text` for the seed **must match the canonical seed** (after normalization), or you get a `CANONICAL MISMATCH` 400 — you cannot quietly reword the seed. (Diacritics are stripped only for the internal ZUT comparison; storage and containment keep them.)
 
 ---
 
@@ -403,6 +440,12 @@ For LEGO N in seed S, phrases can ONLY use:
 - Overlapping A-LEGOs that appear within M-LEGOs above
 
 **You CANNOT use vocabulary not yet introduced!**
+
+**Phrases tile from WHOLE already-introduced chunks — never re-split into words.** The validator reconstructs each phrase only from complete LEGO/component targets that have already been introduced; it never re-splices or re-conjugates word forms. This is what blocks untaught conjugations, inversions, and contractions: if a wording needs a form you haven't introduced as a whole chunk, it fails. Vocabulary accumulates strictly in seed/idx order (LEGOs sorted by `idx`), so LEGO N may draw on prior seeds plus LEGOs 1..N-1 — **never a later sibling**. No forward references.
+
+### Late-course balance check (seeds > 20)
+
+From seed 21 onward (non-draft submissions only), a balance check guards against leaning on a handful of over-taught LEGOs while ignoring under-used ones. Each LEGO gets a `practice_score`; a submission is flagged when **more than half** its new-phrase vocabulary references are "overused" LEGOs **and** it includes **zero** "underused" ones. Escalation is **three-strike**: the first two flags are warnings, the third consecutive flag is a hard reject. A balanced submission resets the counter. In practice: keep spreading your phrases across the whole accumulated vocabulary, not just the latest few LEGOs.
 
 ---
 
@@ -616,6 +659,15 @@ For each seed:
 3. Work on the next incomplete seed
 ```
 
+### Creator vs Checker — the role guard
+
+`POST /api/seed/complete` enforces a **two-role workflow**. A request carrying `x-agent-role: creator` (or `?agent_role=creator`) is **rejected with 403** — creators may *draft* but may not *submit*.
+
+- **Creator (Sonnet):** drafts the decomposition and phrases, then hands the draft to a checker (routed via SendMessage).
+- **Checker (Opus):** reviews the draft and is the role that actually submits to `/api/seed/complete`.
+
+If you are running as a creator and try to submit, expect a 403 — that's the guard working, not a bug. Pass the draft to the checker rather than forcing the submission.
+
 ---
 
 ## QA Checkpoints
@@ -737,16 +789,18 @@ When all seeds pass validation:
 
 ---
 
-## Early Seeds (1-5): Relaxed Requirements
+## Early Seeds: The Graduated Phrase-Count Ramp
 
-Seeds 1-5 have limited vocabulary. Requirements are relaxed:
+Early seeds have limited vocabulary, so the enforced BUILD/USE minimums ramp up gradually. The validator applies exactly this graduated ramp (minimums shown as **BUILD / USE**):
 
-- Seed 1, LEGO 1: 0-2 BUILD, 0-2 USE (almost nothing to combine)
-- Seed 1, LEGO 2: 2 BUILD, 2 USE (can use L1)
-- Seeds 2-5: BUILD as needed (flexible), minimum 3 USE
-- Seeds 6+: BUILD as needed (flexible), minimum 5 USE
+- **Seed 1, LEGO 1 → 0 / 0** (nothing to combine yet)
+- **Rest of seed 1 → 1 / 1** (can use L1)
+- **Seeds 2-3 → 1 / 1**
+- **Seeds 4-5 onward → 3 / 5** — the full minimum, and it stays there for the rest of the course
 
-The BUILD quantity is always flexible based on LEGO length and cognitive load. USE minimums ensure enough eternal phrases for spaced repetition.
+A LEGO caps at **13** phrases total (`MAX_PHRASES_PER_LEGO`). These are *minimums and a maximum* — above the minimum, BUILD quantity stays flexible based on LEGO length and cognitive load, and USE minimums ensure enough eternal phrases for spaced repetition. A LEGO with **no** phrases at all is always rejected. Only phrases that literally contain the LEGO target count toward these minimums.
+
+`skip_validation` (honoured **only for seeds 1-3**) silences these phrase-count minimums — but structural gates still run, so even a skip-validation submission must tile, pass ZUT, respect vocabulary, and stay under the syllable cap.
 
 ---
 
