@@ -248,6 +248,7 @@ function phrasesContaining(legoId) {
 async function fetchNetworks() {
   try {
     const res = await fetch(`${API_BASE}/networks`)
+    if (!res.ok) throw new Error((await res.clone().json().catch(() => ({}))).error || `HTTP ${res.status}`)
     const data = await res.json()
     networkList.value = data.networks || []
   } catch (e) {
@@ -258,6 +259,7 @@ async function fetchNetworks() {
 async function fetchState() {
   try {
     const res = await fetch(`${API_BASE}/state?network=${currentNetwork.value}`)
+    if (!res.ok) throw new Error((await res.clone().json().catch(() => ({}))).error || `HTTP ${res.status}`)
     const data = await res.json()
     legos.value = data.legos || []
     phrases.value = data.phrases || []
@@ -288,6 +290,7 @@ async function addLego() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newLego.value)
     })
+    if (!res.ok) throw new Error((await res.clone().json().catch(() => ({}))).error || `HTTP ${res.status}`)
     const data = await res.json()
     if (data.lego) {
       await fetchState()

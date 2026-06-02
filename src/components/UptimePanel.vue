@@ -169,6 +169,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useAuth } from '../composables/useAuth'
+import { getApiUrl } from '../services/api'
 
 const { getAccessToken } = useAuth()
 
@@ -183,7 +184,9 @@ const dbError = ref('')
 let pollTimer = null
 
 function apiBase() {
-  return localStorage.getItem('api_base_url') || 'http://localhost:3470'
+  // getApiUrl() already honours the EnvironmentSwitcher's api_base_url override,
+  // then resolves popty.app → the SSi Machine tunnel (never a dead localhost).
+  return getApiUrl()
 }
 
 async function authedFetch(path, init = {}) {

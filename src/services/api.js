@@ -58,6 +58,33 @@ function getProductionApiUrl() {
 // Export for direct access
 export { getProductionApiUrl, getApiBaseUrl }
 
+/**
+ * fetch + guard + parse JSON in one call. Throws a CLEAN Error on a non-OK or
+ * non-JSON response, instead of the cryptic "Unexpected token '<'" you get when
+ * an HTML error page or SPA-404 (`<!doctype …>`) is fed straight to res.json().
+ * Pass a full URL (build it with getApiUrl() for API calls, or a /vfs/… path for
+ * static files) — this helper does NOT prefix anything.
+ */
+export async function fetchJson(url, init = {}) {
+  const res = await fetch(url, {
+    ...init,
+    headers: { 'ngrok-skip-browser-warning': 'true', ...(init.headers || {}) },
+  })
+  const ct = res.headers.get('content-type') || ''
+  if (!res.ok) {
+    let msg = `HTTP ${res.status}`
+    try {
+      const body = ct.includes('json') ? await res.json() : await res.text()
+      msg = (body && body.error) || (typeof body === 'string' && body.slice(0, 200)) || msg
+    } catch { /* keep HTTP status */ }
+    throw new Error(msg)
+  }
+  if (!ct.includes('json')) {
+    throw new Error(`Expected JSON but got ${ct || 'unknown content'} (HTTP ${res.status}) — is the API/file reachable?`)
+  }
+  return res.json()
+}
+
 const API_BASE_URL = getApiBaseUrl()
 
 const api = axios.create({

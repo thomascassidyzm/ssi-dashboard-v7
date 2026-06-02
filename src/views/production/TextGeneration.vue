@@ -548,7 +548,7 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
-import { getApiUrl } from '@/services/api'
+import { getApiUrl, fetchJson } from '@/services/api'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail } from '@/services/supabase'
 
@@ -1120,6 +1120,7 @@ async function createCourse() {
         seedCount: seedCount.value
       })
     })
+    if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
     const result = await response.json()
     if (!response.ok) throw new Error(result.error || 'Failed to create course')
     router.push(`/production/${courseCode}/text`)
@@ -1138,11 +1139,10 @@ async function startTranslation() {
   translateStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/translate/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/translate/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       translateSpawned.value = true
       buildMonitor.refresh()
@@ -1168,11 +1168,10 @@ async function confirmResetTranslations() {
   translateResetting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/course/${courseCode}/reset-translations`, {
+    const result = await fetchJson(`${apiBase}/api/course/${courseCode}/reset-translations`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       console.log(`[reset] Wiped ${result.seeds_reset} translations for ${courseCode}`)
       buildMonitor.refresh()
@@ -1193,11 +1192,10 @@ async function startBuildTeam() {
   buildTeamStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/team-start/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/team-start/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       buildTeamSpawned.value = true
       buildMonitor.refresh()
@@ -1230,11 +1228,10 @@ async function startFinalPass(mode = 'all') {
       }
     }
 
-    const response = await fetch(url, {
+    const result = await fetchJson(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       finalPassSpawned.value = true
       buildMonitor.refresh()
@@ -1255,17 +1252,15 @@ async function massApproveSeeds() {
   massApproving.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/mass-approve/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/mass-approve/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       // Refresh the seed grid
-      const gridResp = await fetch(`${apiBase}/api/build/seed-grid/${courseCode}`, {
+      const data = await fetchJson(`${apiBase}/api/build/seed-grid/${courseCode}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       })
-      const data = await gridResp.json()
       seedGrid.value = data.seeds || []
     } else {
       showActionError(`Mass approve failed: ${result.error}`)
@@ -1295,10 +1290,9 @@ async function checkComponentGaps() {
   componentCheckLoading.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/component-gaps/${courseCode}`, {
+    const data = await fetchJson(`${apiBase}/api/build/component-gaps/${courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
-    const data = await response.json()
     componentGaps.value = data
   } catch (err) {
     console.error('Failed to check component gaps:', err)
@@ -1314,11 +1308,10 @@ async function startComponentBackfill() {
   componentBackfillStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/component-backfill/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/component-backfill/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       componentBackfillSpawnedMsgCount = orchestratorMessages.value.length
       componentBackfillSpawned.value = true
@@ -1340,11 +1333,10 @@ async function startBackfillPhrases() {
   backfillPhrasesStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/backfill-phrases/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/backfill-phrases/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       backfillPhrasesSpawned.value = true
       buildMonitor.refresh()
@@ -1365,11 +1357,10 @@ async function startGenderPrep() {
   genderStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/start`, {
+    const result = await fetchJson(`${apiBase}/api/production/${courseCode}/gender-prep/start`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok !== false) {
       genderSpawnedMsgCount = orchestratorMessages.value.length
       genderSpawned.value = true
@@ -1425,11 +1416,10 @@ async function forceResetBuilder() {
 async function killAgent(pid) {
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/agents/${pid}`, {
+    const result = await fetchJson(`${apiBase}/api/agents/${pid}`, {
       method: 'DELETE',
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       fetchProgress()
     }

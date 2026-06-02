@@ -453,6 +453,7 @@ async function generateBrief() {
       })
     })
 
+    if (!res.ok) throw new Error((await res.clone().json().catch(() => ({}))).error || `HTTP ${res.status}`)
     const data = await res.json()
 
     if (res.ok && data.brief) {

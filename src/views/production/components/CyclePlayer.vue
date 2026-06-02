@@ -278,7 +278,6 @@ const playCurrentPhrase = async () => {
     });
   } else {
     // No audio available, auto-advance after a delay
-    console.log('No audio for phrase:', phrase.target_text);
     setTimeout(advanceToNext, 1500);
   }
 

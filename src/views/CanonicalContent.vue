@@ -37,11 +37,11 @@
             <h2 class="text-2xl font-semibold text-emerald-400">Canonical Seeds</h2>
             <p class="text-slate-400 mt-1">668 pedagogically-ordered seeds with {target} placeholders</p>
           </div>
-          <span class="text-xs text-slate-500 font-mono">canonical_seeds.json</span>
+          <span class="text-xs text-slate-500 font-mono">Supabase · canonical_seeds</span>
         </div>
 
         <div class="bg-slate-900/50 rounded p-4 mb-4">
-          <p class="text-sm text-slate-300 mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/canonical_seeds.json</code></p>
+          <p class="text-sm text-slate-300 mb-2"><strong>Source:</strong> <code class="text-emerald-400">Supabase table: canonical_seeds (live)</code></p>
           <p class="text-sm text-slate-300 mb-2"><strong>Total Seeds:</strong> <code class="text-emerald-400">668</code></p>
           <p class="text-sm text-slate-300"><strong>Optimization:</strong> <code class="text-emerald-400">16 years empirical refinement</code></p>
         </div>
@@ -114,33 +114,27 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-
-// Page styles for DocsLayout integration
-
+import { getCanonicalSeeds } from '@/services/supabase.js'
+import { fetchJson } from '@/services/api.js'
 
 const canonicalSeeds = ref([])
 const encouragements = ref({})
 const welcomes = ref({})
 
 onMounted(async () => {
+  // Seeds are the live SSoT — read direct from Supabase. Encouragements/welcomes
+  // are still static canonical files (guarded so a 404 can't throw cryptically).
+  // Independent try/catches so one missing file doesn't blank the others.
   try {
-    // Load canonical seeds
-    const seedsResponse = await fetch('/vfs/canonical/canonical_seeds.json')
-    canonicalSeeds.value = await seedsResponse.json()
-
-    // Load encouragements
-    const encouragementsResponse = await fetch('/vfs/canonical/eng_encouragements.json')
-    encouragements.value = await encouragementsResponse.json()
-
-    // Load welcomes
-    const welcomesResponse = await fetch('/vfs/canonical/welcomes.json')
-    welcomes.value = await welcomesResponse.json()
-  } catch (error) {
-    console.error('Failed to load canonical content:', error)
-  }
+    canonicalSeeds.value = await getCanonicalSeeds()
+  } catch (e) { console.error('Failed to load canonical seeds:', e) }
+  try {
+    encouragements.value = await fetchJson('/vfs/canonical/eng_encouragements.json')
+  } catch (e) { console.error('Failed to load encouragements:', e) }
+  try {
+    welcomes.value = await fetchJson('/vfs/canonical/welcomes.json')
+  } catch (e) { console.error('Failed to load welcomes:', e) }
 })
-
-console.log('🌱 Canonical Content Loaded')
 </script>
 
 <style scoped>

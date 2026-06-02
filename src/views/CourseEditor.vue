@@ -1063,6 +1063,7 @@ const translations = ref([])
 const legos = ref([])
 const legoBreakdowns = ref([]) // Raw breakdown data for visualizer
 const baskets = ref([])
+const provenanceResult = ref(null) // traceProvenance() wrote to this before it was declared (ReferenceError)
 const basketsData = ref(null) // LEGO_BASKETS data structure from baskets.json
 const legoPairsData = ref(null) // LEGO_PAIRS data structure from lego_pairs.json
 const expandedBaskets = ref({}) // Track which baskets are expanded
@@ -1263,8 +1264,6 @@ async function loadCourse() {
 
     if (isFromDatabase && response.lego_breakdowns?.length > 0) {
       // Use database data - transform to component format
-      console.log('🗄️ Using database data for LEGOs:', response.legos?.length, 'legos from', response.lego_breakdowns?.length, 'seeds')
-
       legoBreakdowns.value = response.lego_breakdowns.map(seed => ({
         seed_id: seed.seed_id,
         original_target: seed.seed_pair?.target || '',
@@ -1283,7 +1282,6 @@ async function loadCourse() {
       }))
 
       legos.value = response.legos || []
-      console.log(`✅ Loaded ${legoBreakdowns.value.length} seeds with ${legos.value.length} LEGOs from database`)
     } else {
       // Legacy: load from S3/VFS files
       legos.value = []

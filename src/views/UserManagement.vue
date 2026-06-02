@@ -230,7 +230,7 @@
 import { ref, computed, onMounted, defineComponent, h } from 'vue'
 import { useAuth } from '../composables/useAuth'
 import { useCourses } from '../composables/useCourses'
-import { getApiUrl } from '../services/api.js'
+import { getApiUrl, fetchJson } from '../services/api.js'
 import { getAllCourses } from '../services/supabase.js'
 
 // Inline CourseSearchPicker component
@@ -405,6 +405,7 @@ async function inviteUser() {
       body: JSON.stringify(newUser.value)
     })
 
+    if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
     const data = await response.json()
 
     if (!response.ok) {
@@ -436,13 +437,11 @@ async function loadUsers() {
 
   try {
     const token = await getAccessToken()
-    const response = await fetch(`${getApiUrl()}/api/auth/users`, {
+    const data = await fetchJson(`${getApiUrl()}/api/auth/users`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     })
-
-    const data = await response.json()
     users.value = data.users || []
 
   } catch (err) {
@@ -485,6 +484,7 @@ async function saveEdit() {
       })
     })
 
+    if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
     const data = await response.json()
     if (!response.ok) throw new Error(data.error || 'Failed to update user')
 

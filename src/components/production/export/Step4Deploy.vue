@@ -510,6 +510,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { getApiUrl } from '@/services/api'
 import type { ExportState, DeployPlan } from '@/composables/useExportWorkflow'
 
 const props = defineProps<{
@@ -633,8 +634,9 @@ async function handleDownloadAudioFiles(uuid: string) {
 
   downloadingUuids.value.add(uuid)
   try {
-    // Get API base URL from localStorage
-    const apiBase = localStorage.getItem('api_base_url') || ''
+    // Route through the SSi Machine tunnel (getApiUrl honours the api_base_url
+    // override); '' fell through to the SPA origin and downloaded index.html.
+    const apiBase = getApiUrl()
 
     // Download via backend proxy to avoid CORS issues
     const downloadFile = async (bucket: string, filename: string) => {

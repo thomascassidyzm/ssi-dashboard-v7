@@ -238,7 +238,7 @@
 </template>
 
 <script>
-import { baseURL } from '../services/api.js';
+import { baseURL, fetchJson } from '../services/api.js';
 
 export default {
   name: 'RecursiveUpregulation',
@@ -287,8 +287,7 @@ export default {
   methods: {
     async loadMetrics() {
       try {
-        const response = await fetch(`${baseURL}/api/metrics/generations`);
-        const data = await response.json();
+        const data = await fetchJson(`${baseURL}/api/metrics/generations`);
 
         // Extract data from the nested structure
         if (data.generation_0) {
@@ -323,8 +322,7 @@ export default {
 
     async checkReadyState() {
       try {
-        const response = await fetch(`${baseURL}/api/fine-tuning/ready`);
-        const data = await response.json();
+        const data = await fetchJson(`${baseURL}/api/fine-tuning/ready`);
 
         this.readyToFineTune = data.ready;
         this.hasBaseline = data.prerequisites?.baseline_metrics;
@@ -336,12 +334,10 @@ export default {
 
     async startFineTuning() {
       try {
-        const response = await fetch(`${baseURL}/api/fine-tuning/start`, {
+        const data = await fetchJson(`${baseURL}/api/fine-tuning/start`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' }
         });
-
-        const data = await response.json();
 
         if (data.success) {
           this.fineTuningInProgress = true;
@@ -356,11 +352,9 @@ export default {
 
     async runComparison() {
       try {
-        const response = await fetch(`${baseURL}/api/fine-tuning/compare`, {
+        const data = await fetchJson(`${baseURL}/api/fine-tuning/compare`, {
           method: 'POST'
         });
-
-        const data = await response.json();
         this.comparisonData = data.comparison;
         this.selfHealingData = Object.values(data.comparison.self_healing || {});
       } catch (error) {

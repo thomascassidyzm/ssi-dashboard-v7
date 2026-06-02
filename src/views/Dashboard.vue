@@ -291,6 +291,4 @@ function handleLogout() {
   logout()
   router.push('/login')
 }
-
-console.log('🚀 Dashboard View Loaded')
 </script>

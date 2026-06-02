@@ -389,7 +389,6 @@ const emit = defineEmits<{
 const verification = computed(() => props.state.s3Verification || props.verification)
 
 const progressPercent = computed(() => {
-  console.log('[Step2Verify] Progress:', props.progress)
   if (props.progress.total === 0) return 0
   return Math.round((props.progress.checked / props.progress.total) * 100)
 })

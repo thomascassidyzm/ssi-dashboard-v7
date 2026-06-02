@@ -452,7 +452,6 @@ const languageBrief = ref(null)
 
 function onBriefReady(brief) {
   languageBrief.value = brief
-  console.log('[CourseGen] Language brief ready:', brief?.target_language_profile?.word_order)
 }
 
 // Computed
@@ -601,7 +600,6 @@ async function analyzeCourseState(code) {
 
     if (res.ok) {
       courseState.value = await res.json()
-      console.log('[CourseGen] Course state:', courseState.value)
     }
   } catch (err) {
     console.error('[CourseGen] Failed to analyze course:', err)
@@ -632,8 +630,6 @@ async function stopCurrentJob() {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
-
-    console.log('[CourseGen] Job cancelled')
 
     // Refresh course state
     await analyzeCourseState(courseCode.value)
@@ -699,18 +695,15 @@ function connectWebSocket() {
   })
 
   socket.on('connect', () => {
-    console.log('[WebSocket] Connected:', socket.id)
     // Subscribe to this course's progress
     socket.emit('subscribe', courseCode.value)
   })
 
   socket.on('progress', (progress) => {
-    console.log('[WebSocket] Progress update:', progress)
     handleProgressUpdate(progress)
   })
 
   socket.on('disconnect', () => {
-    console.log('[WebSocket] Disconnected')
   })
 
   socket.on('connect_error', (err) => {
@@ -786,7 +779,6 @@ function handleProgressUpdate(progress) {
  */
 async function fallbackToPollStatus() {
   const apiBase = getApiUrl()
-  console.log('[Progress] Falling back to polling...')
 
   while (isGenerating.value) {
     try {
@@ -850,7 +842,6 @@ function handleRecommendation(rec) {
   if (!rec.action) return
 
   const action = rec.action
-  console.log('[CourseGen] Handling recommendation:', rec.type, action)
 
   // Route navigation (e.g., to monitor page)
   if (action.route) {
@@ -919,7 +910,6 @@ function handleRecommendation(rec) {
     return
   }
 
-  console.log('[CourseGen] Unhandled recommendation:', rec.type, action)
 }
 </script>
 

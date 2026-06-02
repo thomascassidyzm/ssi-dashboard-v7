@@ -211,6 +211,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { fetchJson } from '@/services/api.js'
 import { useExportWorkflow } from '@/composables/useExportWorkflow'
 import ExportStepIndicator from './export/ExportStepIndicator.vue'
 import Step1Generate from './export/Step1Generate.vue'
@@ -303,8 +304,7 @@ async function nextStep() {
     if (activeStep.value === 3) {
       try {
         const apiBase = localStorage.getItem('api_base_url') || ''
-        const res = await fetch(`${apiBase}/api/production/course-configs/status`)
-        const status = await res.json()
+        const status = await fetchJson(`${apiBase}/api/production/course-configs/status`)
         if (status.success && status.commitsAhead > 0) {
           showPushWarning.value = true
           return
@@ -399,11 +399,10 @@ async function handlePushToRemote() {
   try {
     // Get API base URL from localStorage (consistent with useExportWorkflow)
     const apiBase = localStorage.getItem('api_base_url') || ''
-    const response = await fetch(`${apiBase}/api/production/course-configs/push`, {
+    const result = await fetchJson(`${apiBase}/api/production/course-configs/push`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     })
-    const result = await response.json()
     pushResult.value = result
   } catch (err) {
     pushResult.value = { success: false, error: (err as Error).message }
@@ -513,8 +512,6 @@ onMounted(() => {
     socket.on('legacyAudio:completed', (data: { jobId: string; courseCode?: string }) => {
       // Only auto-advance if user is still on Step 1
       if (activeStep.value === 1) {
-        console.log('Manifest generation complete - auto-starting S3 verification')
-
         // Small delay for UX smoothness (let user see completion message)
         setTimeout(() => {
           // Move to Step 2

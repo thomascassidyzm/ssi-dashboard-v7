@@ -620,7 +620,6 @@ async function runAlgorithm() {
 
 function exportPDF() {
   // TODO: Generate PDF of recording script
-  console.log('Exporting PDF...')
   alert('PDF export coming soon!')
 }
 

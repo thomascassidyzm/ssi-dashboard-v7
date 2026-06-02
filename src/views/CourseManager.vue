@@ -1002,6 +1002,7 @@ async function executeWipe() {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
 
+    if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
     const data = await response.json()
     if (data.ok) {
       const parts = Object.entries(data.deleted || {}).filter(([, v]) => v > 0).map(([k, v]) => `${v} ${k}`).join(', ')
@@ -1052,6 +1053,7 @@ async function executeRebuild() {
       body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value, confirm: true })
     })
 
+    if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
     const data = await response.json()
     if (data.ok) {
       addEvent(`Rebuild started: wiped ${data.legos_deleted} LEGOs + ${data.phrases_deleted} phrases for seeds ${rebuildFrom.value}-${rebuildTo.value}`)

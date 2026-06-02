@@ -11,9 +11,6 @@
 import AppNavbar from './components/AppNavbar.vue'
 
 const gitCommit = __GIT_COMMIT__
-
-// Clean v7.0 build with Vue Router
-console.log(`🚀 SSi Dashboard ${gitCommit} - Clean Build`)
 </script>
 
 <style scoped>

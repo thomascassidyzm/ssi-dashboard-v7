@@ -346,7 +346,6 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
 </template>
 
 <script setup>
-console.log('APML Specification Loaded')
 </script>
 
 <style scoped>

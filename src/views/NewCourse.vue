@@ -733,8 +733,6 @@ const createCourse = async () => {
       mode: selectedMode.value
     }
 
-    console.log('Creating course with data:', courseData)
-
     // Create course in Supabase (database-first)
     await apiClient.post('/api/courses/create', courseData)
 

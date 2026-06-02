@@ -131,7 +131,7 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-import { getApiUrl } from '@/services/api'
+import { getApiUrl, fetchJson } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getQASummary } from '@/services/supabase'
 
 const props = defineProps({
@@ -157,8 +157,7 @@ async function fetchSummary() {
     if (isSupabaseConfigured()) {
       summary.value = await getQASummary(props.courseCode)
     } else {
-      const res = await fetch(`${API_BASE}/api/qa/summary/${props.courseCode}`)
-      summary.value = await res.json()
+      summary.value = await fetchJson(`${API_BASE}/api/qa/summary/${props.courseCode}`)
     }
   } catch (err) {
     console.error('Failed to fetch QA summary:', err)
@@ -174,8 +173,7 @@ async function fetchFlags() {
     if (severityFilter.value) {
       url.searchParams.set('severity', severityFilter.value)
     }
-    const res = await fetch(url)
-    const data = await res.json()
+    const data = await fetchJson(url)
     flags.value = data.flags || []
     total.value = data.total || 0
     hasMore.value = data.has_more || false
