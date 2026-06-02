@@ -67,7 +67,7 @@
 
               <div class="bg-blue-900/20 border border-blue-500/50 rounded p-3 mb-4">
                 <p class="text-blue-300 text-xs font-semibold mb-1">Definition:</p>
-                <p class="text-slate-300 text-xs">Smallest teachable unit that passes ZUT (Zero Uncertainty Test). Can be single-word or multi-word. The learner hears the known text and produces the target with zero ambiguity.</p>
+                <p class="text-slate-300 text-xs">A single meaningful word. No components, no build-up ladder. The learner hears the known text and produces the target with zero ambiguity.</p>
               </div>
 
               <div class="bg-slate-900 p-4 rounded space-y-2">
@@ -75,20 +75,20 @@
                 <div class="space-y-2 text-sm">
                   <div>
                     <p class="text-slate-200">"quiero" = "I want"</p>
-                    <p class="text-xs text-slate-500">Single target word, passes ZUT</p>
+                    <p class="text-xs text-slate-500">A single target word, passes ZUT</p>
                   </div>
                   <div>
                     <p class="text-slate-200">"hablar" = "to speak"</p>
-                    <p class="text-xs text-slate-500">Single target word, passes ZUT</p>
+                    <p class="text-xs text-slate-500">A single target word, passes ZUT</p>
                   </div>
                   <div>
-                    <p class="text-slate-200">"speak Chinese" = "shuo zhongwen"</p>
-                    <p class="text-xs text-emerald-500">A-types tile perfectly - no M-type needed!</p>
+                    <p class="text-slate-200">"ahora" = "now"</p>
+                    <p class="text-xs text-slate-500">One word in, one word out - nothing to break down</p>
                   </div>
                 </div>
               </div>
 
-              <p class="text-xs text-slate-400 mt-3 italic">No component breakdown - the LEGO is the minimum viable unit that passes ZUT.</p>
+              <p class="text-xs text-slate-400 mt-3 italic">An A-LEGO is a single word - no components, no build-up. The type is something the author declares, not something the system works out from the word count.</p>
             </div>
 
             <!-- MOLECULAR -->
@@ -100,7 +100,7 @@
 
               <div class="bg-emerald-900/20 border border-emerald-500/50 rounded p-3 mb-4">
                 <p class="text-emerald-300 text-xs font-semibold mb-1">Definition:</p>
-                <p class="text-slate-300 text-xs">An introducible unit that CANNOT be inferred by the learner from what they already know. Requires explicit introduction.</p>
+                <p class="text-slate-300 text-xs">A multi-word chunk that bundles structure the learner cannot yet recombine. It declares its own components - the word-level pieces it is built from - so the system can teach those pieces first, then the whole.</p>
               </div>
 
               <div class="bg-amber-900/20 border border-amber-500/50 rounded p-3 mb-4">
@@ -130,7 +130,7 @@
                 </div>
               </div>
 
-              <p class="text-xs text-slate-400 mt-3 italic">The Inferability Test: Can the learner figure this out from what they already know? No = M-type needed.</p>
+              <p class="text-xs text-slate-400 mt-3 italic">The Inferability Test: can the learner figure this out from what they already know? No = M-type needed. Either way, a LEGO is kept small - the builder caps every LEGO target at roughly eight syllables, so anything bigger gets decomposed.</p>
             </div>
           </div>
 
@@ -147,6 +147,13 @@
                 <p class="text-amber-300 font-semibold mb-2">No = M-type needed</p>
                 <p class="text-slate-300 text-sm">Requires explicit introduction</p>
               </div>
+            </div>
+
+            <div class="bg-slate-900/60 border border-slate-600 p-4 rounded mt-4">
+              <p class="text-amber-200 font-semibold text-sm mb-2">Overlap is a feature, not a clash</p>
+              <p class="text-slate-300 text-sm">
+                A single word is allowed to live both as an A-LEGO on its own <strong>and</strong> inside an M-LEGO - the atom "blue" and the chunk "blue thing", say. This is deliberate. The learner meets the word alone, meets it again inside a larger chunk that handles the reordering, and infers the pattern with no explanation. Because the known-language prompts differ, this never trips the consistency check - it is precisely the device that teaches word order across languages.
+              </p>
             </div>
           </div>
 
@@ -209,116 +216,156 @@
           </div>
         </section>
 
-        <!-- Section 2: What is a Basket? -->
+        <!-- Section 2: A LEGO's Phrases -->
         <section class="mb-12">
-          <h2 class="text-2xl font-semibold text-emerald-400 mb-6">What is a Basket?</h2>
+          <h2 class="text-2xl font-semibold text-emerald-400 mb-6">A LEGO's Phrases: BUILD and USE</h2>
 
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
             <p class="text-slate-200 mb-4">
-              A <strong>basket</strong> is <strong>NOT</strong> a random collection of practice phrases.
+              Every LEGO carries its own practice phrases. These are <strong>not</strong> a random bag of sentences. Each one demonstrates how <strong>this LEGO plugs into LEGOs the learner already knows.</strong>
             </p>
             <p class="text-slate-200 mb-4">
-              A basket is a <strong>demonstration of how THIS LEGO plugs into LEGOs the learner ALREADY knows.</strong>
+              The phrases come in two kinds, and the difference between them is the whole story of how a LEGO is taught and then kept alive: <strong>BUILD</strong> phrases get you onto the LEGO, and <strong>USE</strong> phrases keep you fluent with it forever.
+            </p>
+
+            <p class="text-slate-400 text-sm mb-4">
+              (You may still hear the old word "basket" for a LEGO's phrases. It is a legacy term. The phrases are now stored directly under each LEGO, each tagged with its role, and the app assembles them into a <strong>round</strong> at runtime.)
             </p>
 
             <div class="bg-blue-900/20 border border-blue-500/50 rounded p-4 mt-4">
               <p class="text-blue-300 font-semibold mb-2">The API Documentation Metaphor</p>
               <div class="space-y-2 text-sm text-slate-300">
                 <p>&bull; <strong>LEGO</strong> = new function you are learning (e.g., <code class="bg-slate-800 px-2 py-1 rounded font-mono">filter()</code>)</p>
-                <p>&bull; <strong>Basket</strong> = code examples showing how to use this function</p>
+                <p>&bull; <strong>Its phrases</strong> = worked examples showing how to call this function</p>
                 <p>&bull; <strong>Available vocabulary</strong> = variables/functions already defined in previous code</p>
-                <p class="text-red-400">&bull; <strong>Iron Rule</strong> = You cannot use undefined variables in your examples</p>
+                <p class="text-red-400">&bull; <strong>Iron Rule</strong> = you cannot use undefined variables in your examples</p>
               </div>
             </div>
           </div>
 
-          <!-- 10 Phrases Structure -->
+          <!-- BUILD vs USE structure -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-            <h3 class="text-xl font-semibold text-emerald-300 mb-4">Approximately 10 Phrases per Basket</h3>
+            <h3 class="text-xl font-semibold text-emerald-300 mb-4">Training Wheels vs Cycling Forever</h3>
 
-            <p class="text-slate-300 mb-4">Every basket contains <strong>approximately 10 practice phrases</strong> in progressive complexity.</p>
+            <p class="text-slate-300 mb-4">
+              When you first learn to ride a bike you use training wheels. They get you balanced and moving. Then they come off - and you cycle for the rest of your life without them. A LEGO's phrases work exactly the same way. The split is <strong>not</strong> "short phrases vs long phrases" - it is <strong>BUILD</strong> (the training wheels) vs <strong>USE</strong> (the cycling).
+            </p>
 
             <div class="space-y-4">
-              <!-- Shorter Phrases (First Introduction) -->
+              <!-- BUILD phrases -->
               <div class="bg-slate-900 p-4 rounded border-l-4 border-blue-500">
                 <div class="flex items-start justify-between mb-2">
-                  <h4 class="text-blue-300 font-semibold">Shorter Phrases (Up to 8 Shortest)</h4>
-                  <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">FIRST TIME ONLY</span>
+                  <h4 class="text-blue-300 font-semibold">BUILD phrases - the training wheels</h4>
+                  <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">DEBUT ROUND ONLY</span>
                 </div>
-                <p class="text-slate-300 text-sm mb-3">Practiced ONLY during first introduction of this LEGO. Progressive complexity helps learner build confidence.</p>
+                <p class="text-slate-300 text-sm mb-3">Short, pattern-locking phrases - fragments are fine. They appear <strong>only in the round that introduces the LEGO</strong>, then they are gone. Their whole job is to get the new LEGO under the learner's fingers cleanly before anything harder is asked.</p>
                 <div class="bg-slate-800 p-3 rounded">
                   <p class="text-xs text-slate-400 mb-2">Characteristics:</p>
                   <ul class="text-xs text-slate-300 space-y-1">
-                    <li>&bull; Simpler, shorter practice phrases</li>
-                    <li>&bull; Build gradually from simple to more complex</li>
-                    <li>&bull; Help learner gain initial confidence</li>
-                    <li>&bull; Discarded after first introduction</li>
+                    <li>&bull; Short and tightly focused on the new LEGO</li>
+                    <li>&bull; Fragments allowed - they need not be complete sentences</li>
+                    <li>&bull; Lock the pattern in, build first-time confidence</li>
+                    <li>&bull; <strong>Ephemeral</strong> - played once, never re-reviewed</li>
                   </ul>
                 </div>
-                <p class="text-xs text-slate-400 mt-3 italic">Like training wheels - used during initial learning, then removed.</p>
+                <p class="text-xs text-slate-400 mt-3 italic">Like training wheels - used while you find your balance, then taken off for good.</p>
               </div>
 
-              <!-- Longer Phrases (Eternal Practice) -->
+              <!-- USE phrases -->
               <div class="bg-slate-900 p-4 rounded border-l-4 border-emerald-500">
                 <div class="flex items-start justify-between mb-2">
-                  <h4 class="text-emerald-300 font-semibold">Longer Phrases (Spaced Repetition)</h4>
-                  <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">USED FOREVER</span>
+                  <h4 class="text-emerald-300 font-semibold">USE phrases - the cycling</h4>
+                  <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">ETERNAL</span>
                 </div>
-                <p class="text-slate-300 text-sm mb-3">Practiced <strong>every time this LEGO is revisited</strong> via the app spaced repetition logic. Must be excellent, natural, conversational.</p>
+                <p class="text-slate-300 text-sm mb-3">Longer, complete, natural sentences. These are the <strong>only</strong> phrases that come back - they re-enter spaced repetition and consolidation, surfacing again and again across the whole course. Because they are forever, they have to be excellent.</p>
                 <div class="bg-slate-800 p-3 rounded">
-                  <p class="text-xs text-slate-400 mb-2">Quality Requirements:</p>
+                  <p class="text-xs text-slate-400 mb-2">Quality requirements:</p>
                   <ul class="text-xs text-slate-300 space-y-1">
-                    <li>&bull; <strong>Most complex</strong> and longest phrases in basket</li>
-                    <li>&bull; <strong>Natural</strong> in BOTH languages</li>
-                    <li>&bull; <strong>Perfect grammar</strong> (errors here = disaster)</li>
-                    <li>&bull; Final LEGO in seed &rarr; longest phrase = complete seed sentence</li>
+                    <li>&bull; Complete, <strong>natural</strong> sentences in BOTH languages</li>
+                    <li>&bull; Carry an author <strong>quality score on a 5-9 scale</strong> (9 = native-natural; below 5 is rejected and rewritten)</li>
+                    <li>&bull; The builder hard-rejects any USE phrase scored below 5 in either language</li>
+                    <li>&bull; Final LEGO in a seed &rarr; a USE phrase completes the whole seed sentence</li>
                   </ul>
                 </div>
-                <p class="text-xs text-slate-400 mt-3 italic">Like actual cycling - used forever after you have learned.</p>
+                <p class="text-xs text-slate-400 mt-3 italic">Like actual cycling - kept for life, long after the training wheels are gone.</p>
+              </div>
+            </div>
+
+            <div class="mt-4 bg-slate-900 border border-slate-600 p-4 rounded">
+              <p class="text-amber-300 font-semibold text-sm mb-2">A note on the score</p>
+              <p class="text-slate-300 text-sm">
+                The 5-9 score is the <strong>author's own judgement</strong>, stored alongside the phrase - it is not produced by an automatic scorer on the live build path. What the builder enforces mechanically is the floor: a USE phrase scored below 5 in either language is rejected outright. Quality, in the end, rests on the person writing the sentence.
+              </p>
+            </div>
+          </div>
+
+          <!-- The runtime round -->
+          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+            <h3 class="text-xl font-semibold text-emerald-300 mb-4">How the app assembles a round</h3>
+
+            <p class="text-slate-300 mb-4">
+              The learner never sees a "basket" laid out flat. At runtime the app walks the LEGOs in order and builds <strong>one round per LEGO</strong>, drawing on that LEGO's phrases and the USE phrases of everything that came before. Every round has the same five phases:
+            </p>
+
+            <div class="space-y-3">
+              <div class="bg-slate-900 p-4 rounded border-l-4 border-slate-500">
+                <p class="text-slate-100 font-semibold text-sm">1. INTRO</p>
+                <p class="text-slate-300 text-xs mt-1">You hear the new LEGO presented. (For an M-LEGO, its components are taught here first - never as solo practice, just as a build-up to the whole.)</p>
+              </div>
+              <div class="bg-slate-900 p-4 rounded border-l-4 border-blue-500">
+                <p class="text-slate-100 font-semibold text-sm">2. DEBUT</p>
+                <p class="text-slate-300 text-xs mt-1">The LEGO itself, on its own. Its first appearance as a thing you produce.</p>
+              </div>
+              <div class="bg-slate-900 p-4 rounded border-l-4 border-blue-500">
+                <p class="text-slate-100 font-semibold text-sm">3. PRACTICE</p>
+                <p class="text-slate-300 text-xs mt-1">All the BUILD phrases first - shortest first - then USE phrases fill any remaining slots, up to a total of seven. This is where the training wheels do their work.</p>
+              </div>
+              <div class="bg-slate-900 p-4 rounded border-l-4 border-emerald-500">
+                <p class="text-slate-100 font-semibold text-sm">4. SPACED REPETITION</p>
+                <p class="text-slate-300 text-xs mt-1">USE phrases from <strong>older</strong> LEGOs come back, on a Fibonacci-style schedule (1, 2, 3, 5, 8, 13, 21... rounds back). The LEGO you met just before this one gets the most attention (three of its USE phrases); each other due LEGO contributes one. Capped at twelve review items per round. <strong>Only USE phrases are ever reviewed - BUILD never returns.</strong></p>
+              </div>
+              <div class="bg-slate-900 p-4 rounded border-l-4 border-emerald-500">
+                <p class="text-slate-100 font-semibold text-sm">5. CONSOLIDATE</p>
+                <p class="text-slate-300 text-xs mt-1">Up to two more of this LEGO's own USE phrases that haven't been used yet this round - a final settling-in before moving on.</p>
               </div>
             </div>
 
             <div class="mt-4 bg-amber-900/20 border border-amber-600 p-4 rounded">
-              <p class="text-amber-300 font-semibold text-sm mb-2">How the App Uses Baskets</p>
-              <p class="text-slate-300 text-sm mb-2">
-                The app uses different phrases from the basket depending on context:
+              <p class="text-amber-300 font-semibold text-sm mb-2">Why this matters</p>
+              <p class="text-slate-300 text-sm">
+                BUILD gets you onto each new LEGO and then politely disappears. USE is what keeps coming round - so the long-term shape of your fluency is built entirely from complete, natural sentences, met again and again at widening intervals. The training wheels are temporary on purpose; the cycling is forever on purpose.
               </p>
-              <ul class="text-slate-300 text-sm mt-2 space-y-1">
-                <li>&bull; <strong>First time learning?</strong> &rarr; Practice the shorter phrases (up to 8 shortest)</li>
-                <li>&bull; <strong>Spaced repetition?</strong> &rarr; Practice the longer phrases (revisited forever)</li>
-                <li>&bull; <strong>Need easy practice?</strong> &rarr; Pull shorter phrases</li>
-                <li>&bull; <strong>Need hard practice?</strong> &rarr; Pull longest phrases</li>
-              </ul>
             </div>
           </div>
 
-          <!-- Example Basket -->
+          <!-- Example phrases for one LEGO -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <h3 class="text-xl font-semibold text-emerald-300 mb-4">Example: Basket for "decir algo" (to say something) - S0004L02</h3>
+            <h3 class="text-xl font-semibold text-emerald-300 mb-4">Example: phrases for "decir algo" (to say something)</h3>
 
             <p class="text-slate-400 text-sm mb-4">
-              This basket demonstrates the vocabulary constraint: all practice phrases use LEGOs the learner already knows from earlier seeds.
+              These phrases demonstrate the vocabulary constraint: every one is built entirely from LEGOs the learner already knows, plus the single new LEGO being taught. Notice how the roles split - BUILD locks the pattern in, USE carries it forward.
             </p>
 
             <div class="bg-slate-900 p-4 rounded overflow-x-auto">
-              <pre class="text-xs text-slate-300"><code>[
-  {"known": "to say something", "target": "decir algo"},                                              <span class="text-blue-400">// 1: Bare LEGO (shorter)</span>
-  {"known": "I want to say something", "target": "Quiero decir algo"},                                <span class="text-blue-400">// 2: 2 LEGOs (shorter)</span>
-  {"known": "I want to learn how to say something", "target": "Quiero aprender como decir algo"},     <span class="text-blue-400">// 3: 4 LEGOs (shorter)</span>
-  {"known": "I am trying to say something", "target": "Estoy intentando decir algo"},                  <span class="text-blue-400">// 4: 3 LEGOs (shorter)</span>
-  {"known": "I am trying to learn how to say something", "target": "Estoy intentando aprender como decir algo"},  <span class="text-blue-400">// 5: 5 LEGOs (shorter)</span>
-  {"known": "I want to say something now", "target": "Quiero decir algo ahora"},                      <span class="text-emerald-400">// 6: Longer phrase (eternal)</span>
-  {"known": "I want to learn how to say something now", "target": "Quiero aprender como decir algo ahora"}      <span class="text-emerald-400">// 7: Longest phrase (eternal)</span>
-]</code></pre>
+              <pre class="text-xs text-slate-300"><code>BUILD  (training wheels - this round only)
+  {"known": "to say something",                  "target": "decir algo"}            <span class="text-blue-400">// the debut: the LEGO itself</span>
+  {"known": "I want to say something",           "target": "quiero decir algo"}     <span class="text-blue-400">// short, pattern-locking</span>
+  {"known": "I am trying to say something",      "target": "estoy intentando decir algo"}
+
+USE    (eternal - re-reviewed forever, each scored 5-9)
+  {"known": "I want to learn how to say something now",
+                                                 "target": "quiero aprender como decir algo ahora"}
+  {"known": "I am trying to learn how to say something with you",
+                                                 "target": "estoy intentando aprender como decir algo contigo"}</code></pre>
             </div>
 
             <div class="mt-4 bg-blue-900/20 border border-blue-500/50 rounded p-3">
               <p class="text-blue-300 text-xs font-semibold mb-2">Notice:</p>
               <ul class="text-slate-300 text-xs space-y-1">
-                <li>&bull; All LEGOs used ("quiero", "aprender", "como", "estoy intentando", "ahora") were learned in earlier seeds</li>
-                <li>&bull; Only "decir algo" is new - everything else is already mastered vocabulary</li>
-                <li>&bull; Shorter phrases (1-5) used for first introduction only</li>
-                <li>&bull; Longer phrases (6-7) practiced forever via spaced repetition</li>
+                <li>&bull; Every other LEGO used ("quiero", "aprender", "como", "estoy intentando", "ahora", "contigo") was learned in an earlier seed</li>
+                <li>&bull; Only "decir algo" is new - everything else is already-mastered vocabulary</li>
+                <li>&bull; The split is by <strong>role, not length</strong>: BUILD phrases play only in this round; USE phrases come back forever</li>
+                <li>&bull; The BUILD list happens to be shorter here, but length is incidental - what makes a phrase BUILD or USE is the job it does, not its word count</li>
               </ul>
             </div>
           </div>
@@ -331,17 +378,17 @@
           <div class="bg-red-900/20 border border-red-600 rounded-lg p-6 mb-6">
             <h3 class="text-red-300 font-semibold mb-3 text-lg">The Vocabulary Constraint</h3>
             <p class="text-slate-200 text-lg mb-4">
-              A basket can <strong>ONLY</strong> use LEGOs the learner has <strong>ALREADY</strong> mastered.
+              A LEGO's phrases can <strong>ONLY</strong> use LEGOs the learner has <strong>ALREADY</strong> mastered.
             </p>
             <p class="text-slate-300 text-sm">
-              Every practice phrase must contain ZERO unknowns except the LEGO being taught.
+              Every practice phrase must contain ZERO unknowns except the LEGO being taught. The builder enforces this literally - a phrase has to tile entirely from whole chunks already introduced, accumulating in order, with no forward references and no re-spliced or re-conjugated word forms.
             </p>
           </div>
 
           <div class="bg-blue-900/20 border border-blue-600 rounded-lg p-6 mb-6">
             <h3 class="text-blue-300 font-semibold mb-3 text-lg">The ZUT (Zero Uncertainty Test)</h3>
             <p class="text-slate-200 mb-4">
-              Also called "Functional Determinism" - the ZUT is the guiding principle for LEGO extraction and basket generation in the Course Builder.
+              The ZUT is the guiding principle for LEGO extraction in the Course Builder - and the one piece of it the builder enforces in code. Give the same known text two different target wordings anywhere in a course and the builder hard-rejects the seed, with three suggested fixes: upchunk (add context), pick a single synonym, or keep both an atomic piece and a chunk to handle word order.
             </p>
             <div class="bg-slate-900 p-4 rounded">
               <p class="text-emerald-400 font-semibold mb-2">The Test:</p>
@@ -438,7 +485,7 @@
                 <span class="text-emerald-400 text-xl">+</span>
                 <div>
                   <p class="font-semibold">True spaced repetition</p>
-                  <p class="text-sm text-slate-400">Earlier LEGOs naturally reappear in later baskets</p>
+                  <p class="text-sm text-slate-400">Earlier LEGOs' USE phrases naturally resurface in later rounds</p>
                 </div>
               </li>
             </ul>
@@ -455,10 +502,10 @@
                 <p><span class="text-blue-400">Position #3:</span> LEGO C &rarr; Available vocabulary: <span class="text-amber-400">[A, B]</span></p>
                 <p><span class="text-blue-400">Position #4:</span> LEGO D &rarr; Available vocabulary: <span class="text-amber-400">[A, B, C]</span></p>
                 <p class="text-emerald-400">...</p>
-                <p><span class="text-blue-400">Position #2965:</span> LEGO Z &rarr; Available vocabulary: <span class="text-amber-400">[A, B, C, ..., Y]</span></p>
+                <p><span class="text-blue-400">Position #N:</span> LEGO Z &rarr; Available vocabulary: <span class="text-amber-400">[A, B, C, ..., Y]</span> (everything before it)</p>
               </div>
-              <p class="text-amber-400 mt-4 text-xs">LEGO type (ATOMIC vs MOLECULAR) has ZERO effect on availability!</p>
-              <p class="text-slate-400 text-xs">ONLY chronological position matters.</p>
+              <p class="text-amber-400 mt-4 text-xs">A LEGO may draw on prior seeds and the earlier LEGOs in its own seed - never a later sibling.</p>
+              <p class="text-slate-400 text-xs">LEGO type (atomic vs molecular) has no effect on availability - only position in the order matters.</p>
             </div>
           </div>
         </section>
@@ -527,7 +574,7 @@
               <ul class="space-y-2 text-slate-200 text-sm">
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-400">&bull;</span>
-                  <p>2965 LEGOs &rarr; millions of possible sentence combinations</p>
+                  <p>A few thousand LEGOs &rarr; millions of possible sentence combinations</p>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-400">&bull;</span>
