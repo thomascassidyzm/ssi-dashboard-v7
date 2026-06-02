@@ -21,30 +21,45 @@
       <!-- Generate from canonical -->
       <div class="bg-slate-800 border border-slate-700 rounded-lg p-5 mb-6 flex items-center gap-4 flex-wrap">
         <div class="flex-1 min-w-0">
-          <div class="text-sm font-semibold text-slate-200">Generate Pod 0 from canonical scenarios</div>
-          <div class="text-xs text-slate-400 mt-0.5">
-            Flexes the 10 English scenarios into {{ courseCode }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
-          </div>
+          <!-- No pod-0 yet: this is the create step -->
+          <template v-if="!pod0">
+            <div class="text-sm font-semibold text-slate-200">Generate Pod 0 from canonical scenarios</div>
+            <div class="text-xs text-slate-400 mt-0.5">
+              Flexes the 10 English scenarios into {{ courseCode }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
+            </div>
+          </template>
+          <!-- pod-0 exists: this is the manage/re-flex step -->
+          <template v-else>
+            <div class="text-sm font-semibold text-slate-200">Pod 0 — already generated</div>
+            <div class="text-xs text-slate-400 mt-0.5">
+              {{ pod0.sentence_count }} sentences · audio {{ pod0.audio_coverage.target }}/{{ pod0.audio_coverage.total_sentences }} target, {{ pod0.audio_coverage.known }}/{{ pod0.audio_coverage.total_sentences }} known.
+              Edit sentences in the pod below, or re-flex the English in <span class="text-slate-300">Edit canonical</span>.
+              <span class="text-amber-300/90">Regenerate replaces all sentences{{ pod0HasAudio ? ' and clears their audio' : '' }}.</span>
+            </div>
+          </template>
           <div v-if="genStatus" class="text-xs mt-2" :class="genError ? 'text-red-300' : 'text-emerald-300'">{{ genStatus }}</div>
           <div v-if="genError" class="text-xs text-red-300 mt-1">{{ genError }}</div>
         </div>
         <div class="flex items-center gap-2 flex-shrink-0">
           <router-link :to="`/production/${courseCode}/canonical/pod-0`" class="text-xs px-3 py-2 rounded border border-slate-600 text-slate-300 hover:border-emerald-500">Edit canonical</router-link>
+          <!-- Create (green) only when there's no pod-0 -->
           <button
+            v-if="!pod0"
             :disabled="generating"
             @click="generatePod(false)"
             class="text-sm px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-medium"
           >
             {{ generating ? 'Generating…' : 'Generate Pod 0' }}
           </button>
+          <!-- Regenerate (amber, confirmed) once it exists -->
           <button
-            v-if="pods.some(p => p.slug === 'pod-0')"
+            v-else
             :disabled="generating"
-            @click="generatePod(true)"
-            title="Regenerate all scenes, overwriting (refuses if audio exists)"
-            class="text-xs px-3 py-2 rounded border border-amber-700 text-amber-300 hover:border-amber-500 disabled:opacity-50"
+            @click="regenerate"
+            :title="pod0HasAudio ? 'Wipe all sentences + audio and re-flex from canonical' : 'Wipe all sentences and re-flex from canonical'"
+            class="text-sm px-4 py-2 rounded border border-amber-700 text-amber-300 hover:border-amber-500 disabled:opacity-50 font-medium"
           >
-            Regenerate
+            {{ generating ? 'Regenerating…' : 'Regenerate' }}
           </button>
         </div>
       </div>
@@ -156,7 +171,10 @@ async function generatePod(force = false) {
     for (let pass = 0; pass < 30; pass++) {
       const res = await authedFetch('/api/admin/pods/generate', {
         method: 'POST',
-        body: JSON.stringify({ courseCode, slug: 'pod-0', force }),
+        // force is a one-shot reset: wipe + restart on the first pass only, then
+        // resume normally — otherwise every pass would re-wipe scenes 1..maxScenes
+        // and never advance past the first batch.
+        body: JSON.stringify({ courseCode, slug: 'pod-0', force: force && pass === 0 }),
       })
       const body = await res.json()
       if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
@@ -171,6 +189,26 @@ async function generatePod(force = false) {
   } finally {
     generating.value = false
   }
+}
+
+const pod0 = computed(() => pods.value.find(p => p.slug === 'pod-0') || null)
+const pod0HasAudio = computed(() => {
+  const c = pod0.value?.audio_coverage
+  return !!c && (c.target > 0 || c.known > 0)
+})
+
+// Regenerate is destructive (wipes sentences, and audio if any) — confirm first,
+// and make the audio cost explicit when the pod is already voiced.
+function regenerate() {
+  if (generating.value) return
+  const p = pod0.value
+  if (!p) return
+  const c = p.audio_coverage || {}
+  const msg = pod0HasAudio.value
+    ? `Regenerate Pod 0 for ${courseCode}?\n\nThis DELETES all ${p.sentence_count} sentences and their audio (${c.target}/${c.total_sentences} target, ${c.known}/${c.total_sentences} known voiced), then re-flexes from the canonical English. Audio will need re-recording (TTS cost).`
+    : `Regenerate Pod 0 for ${courseCode}?\n\nThis replaces all ${p.sentence_count} sentences by re-flexing from the canonical English.`
+  if (!window.confirm(msg)) return
+  generatePod(true)
 }
 
 const totalSentences = computed(() =>

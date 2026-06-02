@@ -252,7 +252,9 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
   return { speakers, voiceNote }
 }
 
-/** Upsert a generated scene's sentences (idempotent by id). */
+/** Upsert a generated scene's sentences (idempotent by id). Generated/regenerated
+ *  text never carries old audio — null the audio + explainer so nothing stale
+ *  survives the text change (it gets re-recorded / re-explained downstream). */
 async function writeSceneSentences({ podId, scene, lines }) {
   const rows = lines.map(l => ({
     id: `${podId}:SC${pad2(scene.number)}-S${pad3(l.sentence_number)}`,
@@ -263,10 +265,22 @@ async function writeSceneSentences({ podId, scene, lines }) {
     speaker: l.speaker,
     target_text: l.target_text,
     known_text: l.known_text,
+    target_audio_id: null,
+    known_audio_id: null,
+    explainer_text: null,
+    explainer_audio_id: null,
+    explainer_decomposition: null,
   }))
   const { error } = await supabase.from('listening_pod_sentences').upsert(rows, { onConflict: 'id' })
   if (error) throw new Error(`sentence upsert (scene ${scene.number}): ${error.message}`)
   return rows.length
+}
+
+/** Wipe a pod's sentences — used on force-regen for a clean slate (no orphans
+ *  from a differently-structured prior pod, no stale audio). */
+async function deleteAllSentences(podId) {
+  const { error } = await supabase.from('listening_pod_sentences').delete().eq('pod_id', podId)
+  if (error) throw new Error(`sentence wipe: ${error.message}`)
 }
 
 // ---------------------------------------------------------------------------
@@ -299,6 +313,12 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
   if (!force && await podHasAudio(podId)) {
     throw new Error(`${podId} already has audio — refusing to regenerate without force`)
   }
+
+  // force = clean-slate reset: wipe the pod's sentences so a re-flex can't leave
+  // orphans from a differently-structured prior pod, or stale audio on changed
+  // text. Resumable poll calls pass force only on the FIRST pass (see PodsView);
+  // later passes resume with force=false against the now-empty/no-audio pod.
+  if (force) await deleteAllSentences(podId)
 
   const done = force ? new Set() : await generatedSceneNumbers(podId)
   const { notes: cultureNotes, source: cultureSource } = await getCultureNotes(targetVariant)
