@@ -115,31 +115,6 @@ export async function getCourseVoices(courseCode) {
 // =============================================================================
 
 /**
- * Get all course audio for a course
- */
-export async function getCourseAudioList(courseCode, filters = {}) {
-  const supabase = getSupabase();
-  if (!supabase) throw new Error('Supabase not configured');
-
-  let query = supabase
-    .from('course_audio')
-    .select('*')
-    .eq('course_code', courseCode);
-
-  if (filters.role) {
-    query = query.eq('role', filters.role);
-  }
-  if (filters.language) {
-    query = query.eq('language', filters.language);
-  }
-
-  const { data, error } = await query.order('created_at');
-
-  if (error) throw error;
-  return data || [];
-}
-
-/**
  * Get course audio by ID
  */
 export async function getCourseAudio(id) {
@@ -435,7 +410,6 @@ export default {
   listCoursesFromDatabase,
   getCourse,
   getCourseVoices,
-  getCourseAudioList,
   getCourseAudio,
   findCourseAudio,
   getCourseAudioSummary,
