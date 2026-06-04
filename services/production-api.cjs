@@ -3659,6 +3659,110 @@ app.post('/api/admin/pods/:courseCode/generate-audio', async (req, res) => {
   }
 })
 
+// POST /api/admin/pods/:courseCode/generate-explainer-audio — render the
+// Stage-1 explainer narration (Tom's branded xAI voice gfzdpspr5fdp) for
+// sentences that HAVE explainer_text but NO explainer_audio_id yet, then write
+// the resulting audio id back to the row. Mirrors the audio pass of
+// services/run-pod-explainer-batch.cjs EXACTLY — same generatePodAudio params
+// (text = explainer_text, language 'auto', role 'pod_explainer', voice
+// {voice_id:'gfzdpspr5fdp', provider:'xai'}), same null-only scoping, same
+// bounded fan-out. It never regenerates text and never overwrites an existing
+// explainer_audio_id. Body may carry { pod_ids?: string[] } or ?slug=<slug> to
+// scope to one pod. Calls phase8's generatePodAudio in-process (it inherits the
+// xAI→Azure fallback + retry resilience); PHASE8_NO_LISTEN keeps it from
+// grabbing port 3465 when required here.
+const EXPLAINER_VOICE_ID = 'gfzdpspr5fdp'
+const EXPLAINER_LANGUAGE = 'auto'
+const EXPLAINER_ROLE = 'pod_explainer'
+const EXPLAINER_PROVIDER = 'xai'
+const EXPLAINER_AUDIO_PARALLEL = 4
+app.post('/api/admin/pods/:courseCode/generate-explainer-audio', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const { courseCode } = req.params
+  try {
+    const supabase = supabaseClient.getClient()
+
+    // Scope: explicit pod_ids list, or a single pod via ?slug / body slug
+    // (pod id is `${courseCode}:${slug}`). No scope = every pod in the course.
+    let podIds = null
+    if (Array.isArray(req.body?.pod_ids) && req.body.pod_ids.length) {
+      podIds = req.body.pod_ids.map(String).filter(Boolean)
+    } else {
+      const slug = (req.query.slug || req.body?.slug)
+      if (slug) podIds = [`${courseCode}:${String(slug).trim()}`]
+    }
+
+    // Candidates: explainer_text non-empty AND explainer_audio_id IS NULL.
+    let query = supabase
+      .from('listening_pod_sentences')
+      .select('id, explainer_text, explainer_audio_id')
+      .not('explainer_text', 'is', null)
+      .neq('explainer_text', '')
+      .is('explainer_audio_id', null)
+    if (podIds && podIds.length) {
+      query = podIds.length === 1 ? query.eq('pod_id', podIds[0]) : query.in('pod_id', podIds)
+    } else {
+      // No explicit scope: still bound to this course's pods.
+      query = query.like('pod_id', `${courseCode}:%`)
+    }
+    const { data: rows, error } = await query
+    if (error) throw new Error(`load explainer-audio candidates: ${error.message}`)
+
+    const total = (rows || []).length
+    if (total === 0) {
+      logger.info(`[Pods generate-explainer-audio] ${courseCode}: nothing to render`)
+      return res.json({ generated: 0, failed: 0, total: 0 })
+    }
+
+    // Lazy-load phase8 (pulls the full audio graph). PHASE8_NO_LISTEN stops its
+    // app.listen() so requiring it here never collides with port 3465.
+    process.env.PHASE8_NO_LISTEN = '1'
+    const { generatePodAudio } = require('./phases/phase8-audio-v13.cjs')
+
+    let generated = 0
+    let failed = 0
+    const errors = []
+    for (let i = 0; i < rows.length; i += EXPLAINER_AUDIO_PARALLEL) {
+      const wave = rows.slice(i, i + EXPLAINER_AUDIO_PARALLEL)
+      await Promise.all(wave.map(async row => {
+        try {
+          const result = await generatePodAudio({
+            courseCode,
+            text: row.explainer_text,
+            language: EXPLAINER_LANGUAGE,
+            role: EXPLAINER_ROLE,
+            voice: {
+              voice_id: EXPLAINER_VOICE_ID,
+              provider: EXPLAINER_PROVIDER,
+            },
+          })
+          const audioId = result?.id
+          if (!audioId) throw new Error('no audio id returned from generatePodAudio')
+          const { error: upErr } = await supabase
+            .from('listening_pod_sentences')
+            .update({ explainer_audio_id: audioId })
+            .eq('id', row.id)
+          if (upErr) throw new Error(`link write failed: ${upErr.message}`)
+          generated++
+        } catch (err) {
+          failed++
+          const msg = err?.message || String(err)
+          errors.push({ id: row.id, error: msg })
+          logger.error(`[Pods generate-explainer-audio] ${courseCode} fail for ${row.id}:`, msg)
+        }
+      }))
+    }
+
+    logger.info(`[Pods generate-explainer-audio] ${courseCode}: generated=${generated}, failed=${failed}, total=${total}`)
+    const payload = { generated, failed, total }
+    if (errors.length) payload.errors = errors
+    res.json(payload)
+  } catch (e) {
+    logger.error('[Pods generate-explainer-audio] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 // GET /api/admin/canonical-pods/:slug — the language-neutral English scenarios
 // (the editable source the generator flexes per course).
 app.get('/api/admin/canonical-pods/:slug', async (req, res) => {

@@ -98,10 +98,18 @@
                 class="px-3 py-1.5 text-xs rounded bg-amber-700 hover:bg-amber-600 text-amber-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 title="Re-run for ALL sentences in this pod, overwriting existing explainer text (use after a prompt change)"
               >Regenerate all</button>
+              <button
+                @click="generateExplainerAudio"
+                :disabled="explainerAudioBusy || explainerAudioMissing === 0"
+                class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Render explainer narration (Tom's voice) for sentences that have explainer text but no audio yet. Never deletes or overwrites existing explainer audio."
+              >{{ explainerAudioBusy ? 'Generating explainer audio…' : `Generate explainer audio (${explainerAudioMissing})` }}</button>
             </div>
           </div>
           <div v-if="explainerStatus" class="mt-3 text-xs text-slate-400">{{ explainerStatus }}</div>
           <div v-if="explainerError" class="mt-3 text-xs text-red-300 bg-red-900/30 border border-red-800 rounded px-2 py-1">{{ explainerError }}</div>
+          <div v-if="explainerAudioStatus" class="mt-3 text-xs text-slate-400">{{ explainerAudioStatus }}</div>
+          <div v-if="explainerAudioError" class="mt-3 text-xs text-red-300 bg-red-900/30 border border-red-800 rounded px-2 py-1">{{ explainerAudioError }}</div>
         </div>
 
         <!-- Pod audio coverage + inline regeneration
@@ -275,11 +283,21 @@ const explainerBusy = ref(false)
 const explainerStatus = ref('')
 const explainerError = ref('')
 
+// Stage-1 explainer AUDIO state (renders narration for explainer text). N is
+// the sentences that have explainer text but no explainer audio yet — exactly
+// the rows the endpoint will render.
+const explainerAudioBusy = ref(false)
+const explainerAudioStatus = ref('')
+const explainerAudioError = ref('')
+
 const explainerCovered = computed(() =>
   sentences.value.filter(s => s.explainer_text && s.explainer_text.trim()).length
 )
 const explainerAudioCovered = computed(() =>
   sentences.value.filter(s => s.explainer_audio_id).length
+)
+const explainerAudioMissing = computed(() =>
+  Math.max(0, explainerCovered.value - explainerAudioCovered.value)
 )
 const allExplained = computed(() =>
   sentences.value.length > 0 && explainerCovered.value === sentences.value.length
@@ -529,6 +547,48 @@ async function regenerateAudio() {
     audioError.value = err?.message || String(err)
   } finally {
     audioBusy.value = false
+  }
+}
+
+/**
+ * Render Stage-1 explainer narration (Tom's branded xAI voice) for sentences
+ * that HAVE explainer text but NO explainer audio yet. Optimistic — no confirm.
+ * The endpoint only touches rows with explainer_audio_id === null, so it never
+ * deletes or overwrites. Loops defensively up to a small ceiling (reloading the
+ * pod between passes so the new explainer audio becomes playable inline via the
+ * per-sentence ▶ "Play Stage-1 explainer" button) in case a wave partially
+ * failed and there's more left to do.
+ */
+async function generateExplainerAudio() {
+  if (explainerAudioBusy.value || explainerAudioMissing.value === 0) return
+  explainerAudioBusy.value = true
+  explainerAudioError.value = ''
+  let totalGenerated = 0
+  let totalFailed = 0
+  try {
+    for (let pass = 0; pass < 5; pass++) {
+      const before = explainerAudioMissing.value
+      explainerAudioStatus.value = `Generating explainer audio for ${before} sentence${before === 1 ? '' : 's'}…`
+      const res = await authedFetch(
+        `/api/admin/pods/${encodeURIComponent(courseCode)}/generate-explainer-audio`,
+        { method: 'POST', body: JSON.stringify({ pod_ids: [pod.value?.id] }) },
+      )
+      const body = await res.json()
+      if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+      totalGenerated += body.generated || 0
+      totalFailed += body.failed || 0
+      await loadPod() // re-bind audio so it's playable inline + refresh the count
+      // Stop once none remain or this pass made no progress (all failed).
+      if (explainerAudioMissing.value === 0 || (body.generated || 0) === 0) break
+    }
+    explainerAudioStatus.value =
+      `generated ${totalGenerated}` +
+      (totalFailed ? `, failed ${totalFailed}` : '') +
+      (explainerAudioMissing.value === 0 ? ' · done ✓' : ` · ${explainerAudioMissing.value} still missing`)
+  } catch (err) {
+    explainerAudioError.value = err?.message || String(err)
+  } finally {
+    explainerAudioBusy.value = false
   }
 }
 
