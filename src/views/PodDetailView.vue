@@ -104,6 +104,32 @@
           <div v-if="explainerError" class="mt-3 text-xs text-red-300 bg-red-900/30 border border-red-800 rounded px-2 py-1">{{ explainerError }}</div>
         </div>
 
+        <!-- Pod audio coverage + inline regeneration
+             Fills only MISSING (e.g. freshly-edited) target/known clips via
+             Phase 8. Optimistic: no confirm, runs in the background and reloads
+             the pod when done so the new audio is playable right here. This is
+             NOT the destructive text "Regenerate" — it never deletes audio. -->
+        <div class="mb-6 bg-slate-800/60 border border-slate-700 rounded-lg p-4 text-sm">
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex flex-col gap-1 min-w-0">
+              <div class="text-slate-300 font-semibold">Pod audio</div>
+              <div class="text-slate-500 text-xs">
+                {{ audioVoiced }}/{{ audioTotal }} clips voiced
+                <span v-if="audioMissing > 0"> · {{ audioMissing }} missing</span>
+                <span v-else class="text-emerald-400/70"> · fully voiced</span>
+              </div>
+            </div>
+            <button
+              @click="regenerateAudio"
+              :disabled="audioBusy || audioMissing === 0"
+              class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Generate audio for sentences missing it (e.g. after editing text). Never deletes existing audio."
+            >{{ audioBusy ? 'Regenerating…' : `Regenerate audio (${audioMissing})` }}</button>
+          </div>
+          <div v-if="audioStatus" class="mt-3 text-xs text-slate-400">{{ audioStatus }}</div>
+          <div v-if="audioError" class="mt-3 text-xs text-red-300 bg-red-900/30 border border-red-800 rounded px-2 py-1">{{ audioError }}</div>
+        </div>
+
         <!-- Scenes and sentences -->
         <div v-for="scene in groupedScenes" :key="scene.number" class="mb-8">
           <h2 class="text-sm uppercase tracking-wide text-slate-500 mb-2 flex items-center gap-3">
@@ -258,6 +284,19 @@ const explainerAudioCovered = computed(() =>
 const allExplained = computed(() =>
   sentences.value.length > 0 && explainerCovered.value === sentences.value.length
 )
+
+// Pod audio regeneration state. N (missing clips) is derived from the same
+// rows the page already loads — every sentence needs a target + a known clip,
+// so total = 2 × sentences and missing = the ones with a null audio id.
+const audioBusy = ref(false)
+const audioStatus = ref('')
+const audioError = ref('')
+
+const audioTotal = computed(() => sentences.value.length * 2)
+const audioVoiced = computed(() =>
+  sentences.value.reduce((n, s) => n + (s.target_audio_id ? 1 : 0) + (s.known_audio_id ? 1 : 0), 0)
+)
+const audioMissing = computed(() => audioTotal.value - audioVoiced.value)
 
 const hasMetadata = computed(() =>
   pod.value?.metadata && (pod.value.metadata.hosts?.length || pod.value.metadata.register || pod.value.metadata.status)
@@ -449,6 +488,47 @@ async function generateExplainers(force) {
   } finally {
     explainerBusy.value = false
     if (!explainerError.value) explainerStatus.value += ' ✓'
+  }
+}
+
+/**
+ * Fill MISSING pod audio (target/known) for this pod via Phase 8.
+ * Optimistic — no confirm, no approval. Phase 8's /generate-pods only touches
+ * clips whose audio_id is null, so this never deletes or overwrites. It runs in
+ * one pass (returns generated/reused/failed/total), but we loop defensively up
+ * to a small ceiling in case anything's left, reloading the pod between passes
+ * so the freshly-bound audio becomes playable inline immediately.
+ */
+async function regenerateAudio() {
+  if (audioBusy.value || audioMissing.value === 0) return
+  audioBusy.value = true
+  audioError.value = ''
+  let totalGenerated = 0
+  let totalFailed = 0
+  try {
+    for (let pass = 0; pass < 5; pass++) {
+      const before = audioMissing.value
+      audioStatus.value = `Regenerating ${before} clip${before === 1 ? '' : 's'}…`
+      const res = await authedFetch(
+        `/api/admin/pods/${encodeURIComponent(courseCode)}/generate-audio`,
+        { method: 'POST', body: JSON.stringify({ pod_ids: [pod.value?.id] }) },
+      )
+      const body = await res.json()
+      if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+      totalGenerated += body.generated || 0
+      totalFailed += body.failed || 0
+      await loadPod() // re-bind audio so it's playable inline + refresh the count
+      // Phase 8 is single-pass; stop once nothing new was made or none remain.
+      if (audioMissing.value === 0 || (body.generated || 0) + (body.reused || 0) === 0) break
+    }
+    audioStatus.value =
+      `generated ${totalGenerated}` +
+      (totalFailed ? `, failed ${totalFailed}` : '') +
+      (audioMissing.value === 0 ? ' · done ✓' : ` · ${audioMissing.value} still missing`)
+  } catch (err) {
+    audioError.value = err?.message || String(err)
+  } finally {
+    audioBusy.value = false
   }
 }
 

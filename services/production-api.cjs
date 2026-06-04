@@ -3620,6 +3620,45 @@ app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
   }
 })
 
+// GET /api/admin/pods/:courseCode/audio-plan — what pod audio is missing.
+// Thin passthrough to Phase 8's /plan-pods (port 3465). Optional ?slug=<slug>
+// scopes to one pod (Phase 8's route takes a comma-separated ?pods=<id> list,
+// where a pod id is `${courseCode}:${slug}`). Returns Phase 8's shape so the UI
+// reads total_clips_to_generate + per-pod missing counts directly.
+app.get('/api/admin/pods/:courseCode/audio-plan', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const { courseCode } = req.params
+  const slug = req.query.slug ? String(req.query.slug).trim() : null
+  try {
+    let path = `/plan-pods/${courseCode}`
+    if (slug) path += `?pods=${encodeURIComponent(`${courseCode}:${slug}`)}`
+    const response = await proxyToPhase8('GET', path)
+    logger.info(`[Pods audio-plan] ${courseCode}${slug ? ' (' + slug + ')' : ''}: ${response.status}`)
+    res.status(response.status).json(response.data)
+  } catch (e) {
+    logger.error('[Pods audio-plan] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/pods/:courseCode/generate-audio — fill MISSING pod audio.
+// Thin passthrough to Phase 8's /generate-pods (port 3465). Body may carry
+// { pod_ids?: string[], roles?, concurrency? }; Phase 8 only generates clips
+// whose audio_id is null, so this never deletes or overwrites existing audio.
+// Returns Phase 8's shape ({ generated, reused, failed, total, ... }).
+app.post('/api/admin/pods/:courseCode/generate-audio', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const { courseCode } = req.params
+  try {
+    const response = await proxyToPhase8('POST', `/generate-pods/${courseCode}`, req.body || {})
+    logger.info(`[Pods generate-audio] ${courseCode}: ${response.status} (generated=${response.data?.generated}, failed=${response.data?.failed})`)
+    res.status(response.status).json(response.data)
+  } catch (e) {
+    logger.error('[Pods generate-audio] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 // GET /api/admin/canonical-pods/:slug — the language-neutral English scenarios
 // (the editable source the generator flexes per course).
 app.get('/api/admin/canonical-pods/:slug', async (req, res) => {
