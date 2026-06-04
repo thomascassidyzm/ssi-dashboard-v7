@@ -107,83 +107,143 @@ function buildBatchPrompt({ sentences, targetLang, learnerLang, connector }) {
   const inputBlock = sentences
     .map((s, i) => `${i + 1}. id=${JSON.stringify(s.id)}  target=${JSON.stringify(s.target_text)}  known=${JSON.stringify(s.known_text)}`)
     .join('\n')
-  return `You are decomposing sentences for a language-learning app.
+  return `You are writing a one-time spoken "explainer" for a language-learning app.
 Target language: ${targetLang}
 Learner language: ${learnerLang}
 
-For EACH sentence below, produce two things:
+This explainer fires ONCE, the first time a learner meets a target sentence. It
+sits between the target audio and its meaning. It must be SHORT and
+NON-INTERRUPTIVE — a quick, friendly "here's how this breaks down", never a
+grammar lesson. The learner just wants to get on with hearing the language.
 
-1. "decomposition": ordered array of LEGO-sized chunk-pairs walking through
-   the target sentence left-to-right. Each chunk-pair has the target fragment
-   and its known-language meaning. Chunks are meaningful semantic units
-   (e.g. "come stai" stays together as one chunk meaning "how are you doing"),
-   NOT one-word-per-chunk.
+For EACH sentence below produce a JSON object with:
 
-2. "explainer_text": a single narration string for TTS that says each chunk
-   in the target language, connected with the connector phrase "${connector}",
-   with the known meaning. Use natural punctuation.
+  "id"            — echo the input id
+  "decomposition" — ordered array of chunk objects (see below), or []
+  "explainer_text"— the SPOKEN narration string (the only thing turned into
+                    audio), or "" if no explainer is warranted
 
-USE JUDGMENT — an explainer is only useful when the sentence has TWO OR
-MORE meaningful chunks to decompose. The Stage-1 explainer earns its
-keep by helping the learner see "this longer target breaks down into
-these reusable pieces". If the target sentence consists of only ONE
-meaningful chunk (after dropping any proper nouns), the explainer
-adds nothing — the target/known pair already conveys the same one
-mapping. Return an empty decomposition and empty explainer_text in
-that case.
+Each chunk object in "decomposition" has:
+  "chunk_target"  — the target fragment (LEGO-sized: a meaningful unit, e.g.
+                    "come stai" stays whole; NOT forced one-word-per-chunk)
+  "chunk_known"   — its known-language gloss, following the CALIBRATED RULE below
+  "primitives"    — OPTIONAL array of finer {target, known} word-pieces inside
+                    this chunk, INCLUDING form-as-job glosses (see rule). Omit
+                    when the chunk is already a single word. This is structured
+                    data for later use; it is NOT all spoken.
+  "literal"       — OPTIONAL assembled word-by-word reading of the chunk, e.g.
+                    "from Split I am". Include ONLY when the word-by-word reading
+                    would MISLEAD the learner (see rule). Omit otherwise.
 
-Specifically:
-- PROPER NOUNS — names of people, places, brands — are NOT translated
-  and are NOT explained. Drop them entirely from the decomposition.
-  "Giulia means Giulia" is noise.
-- After dropping proper nouns, if only ONE meaningful chunk remains
-  (e.g. "Buongiorno, Anna!" → only "buongiorno" is left), skip the
-  explainer for this sentence. Return empty decomposition + empty
-  explainer_text. The player gracefully shows no Stage-1 slot.
-- If the sentence is purely a proper noun ("Sarah!"), also empty.
-- If TWO OR MORE meaningful chunks remain, produce the full
-  decomposition + narration as described above.
+================  THE CALIBRATED RULE (follow exactly)  ================
 
-EXAMPLE 1 — multi-chunk, no proper nouns (explainer earns its keep):
-   Input target: "Buona sera, come stai?"
-   Input known:  "Good afternoon, how are you doing?"
-   Output entry:
-   {
-     "id": "<echo the input id>",
-     "decomposition": [
-       { "chunk_target": "buona", "chunk_known": "good" },
-       { "chunk_target": "sera", "chunk_known": "afternoon" },
-       { "chunk_target": "come stai", "chunk_known": "how are you doing" }
-     ],
-     "explainer_text": "buona means good, sera means afternoon, come stai means how are you doing"
-   }
+1. DEFAULT narration is just glosses joined by "${connector}":
+     "X ${connector} Y, Z ${connector} Q"
+   Say each meaningful target chunk, then its meaning. Natural punctuation.
 
-EXAMPLE 2 — single chunk after dropping name (no explainer needed):
-   Input target: "Buongiorno, Giulia!"
-   Input known:  "Good morning, Giulia!"
-   Output entry:
-   {
-     "id": "<echo the input id>",
-     "decomposition": [],
-     "explainer_text": ""
-   }
+2. FORM-DOES-A-JOB. When a word's grammatical FORM carries the meaning, gloss
+   it AS that job in plain English — never name the grammar.
+     rajčica  → "of tomatoes"      (NOT "tomatoes (genitive)")
+     veliku   → "large"            (just the meaning; the ending is silent)
+   Put any finer form-job pieces in "primitives", but keep "chunk_known" plain.
 
-EXAMPLE 3 — purely a name (no explainer):
-   Input target: "Anna!"
-   Input known:  "Anna!"
-   Output entry:
-   {
-     "id": "<echo the input id>",
-     "decomposition": [],
-     "explainer_text": ""
-   }
+3. "SO / LITERALLY" TAIL — use SPARINGLY. Add the tail to explainer_text ONLY
+   where the word-by-word would MISLEAD the learner about how the phrase is
+   built — i.e. reading the pieces in order gives the wrong idea of the
+   construction. That covers have-for-be, "call yourself"-style reflexives, and
+   verb-on-the-end orders. It does NOT cover mild reordering that still reads
+   fine (e.g. "for me, a kir"): leave those bare.
+     "Iz Splita sam"  → "...sam ${connector} I am — so 'from Split I am'"
+     "molim"          → "please — literally 'I ask'"
+   If reading the pieces in order is clear, NO tail. Most lines have none.
 
-INPUT (one sentence per line):
+4. REGISTER FLAG — one word, only when it matters. If the target is marked
+   formal/polite (e.g. the vous / -ste / formal-or-plural form), append the
+   single word "politely" to that chunk's gloss. Do NOT explain the alternative,
+   do NOT say "you'd say X to a friend". Just the flag.
+
+5. FIXED SINGLE-WORD EXPRESSIONS. Some targets are one fixed word with no clean
+   word-gloss (e.g. "Izvolite"). Do NOT force a decomposition and do NOT drop
+   it. Instead give a ONE-LINE USAGE note as the explainer_text, and put a
+   single chunk in decomposition whose chunk_known IS that usage note:
+     "Izvolite" → explainer_text:
+       "Izvolite — a waiter's polite 'go ahead, what'll it be?'"
+   Keep it to one short, natural line.
+
+6. PROPER NOUNS — names of people, places, brands — are NOT translated and NOT
+   explained. Drop them from the decomposition entirely ("Split ${connector}
+   Split" is noise; "Karlovačko" is a beer brand, leave it).
+
+7. WHEN TO SKIP. After dropping proper nouns, if only ONE ordinary meaningful
+   chunk remains AND it is NOT a fixed expression needing a usage note, the
+   target/known pair already says everything — return [] and "". (A bare
+   one-word line like "molim?" on its own still earns a tiny gloss IF its form
+   would mislead per rule 3; otherwise skip.)
+
+8. NEVER use grammar terms (genitive, accusative, reflexive, dative,
+   nominative, conjugation, declension...). NO asides. NO alternatives. NO
+   "you could also say". Short, plain, kind, once.
+
+================  WORKED EXAMPLES  ================
+
+EXAMPLE A — plain multi-chunk, no tail:
+  target "Buona sera"  known "Good afternoon"
+  {
+    "id": "...",
+    "decomposition": [
+      { "chunk_target": "buona", "chunk_known": "good" },
+      { "chunk_target": "sera",  "chunk_known": "afternoon" }
+    ],
+    "explainer_text": "buona ${connector} good, sera ${connector} afternoon"
+  }
+
+EXAMPLE B — word-by-word would mislead, so a tail is added:
+  target "Iz Splita sam"  known "I'm from Split"
+  {
+    "id": "...",
+    "decomposition": [
+      { "chunk_target": "Iz",     "chunk_known": "from" },
+      { "chunk_target": "Splita", "chunk_known": "Split" },
+      { "chunk_target": "sam",    "chunk_known": "I am" }
+    ],
+    "literal": "from Split I am",
+    "explainer_text": "iz ${connector} from, sam ${connector} I am — so 'from Split I am'"
+  }
+  (Split is a place name; here it is load-bearing to the literal reading so it
+   stays, but it is not glossed as a translation.)
+
+EXAMPLE C — fixed single word, usage note:
+  target "Izvolite"  known "What can I get you?"
+  {
+    "id": "...",
+    "decomposition": [
+      { "chunk_target": "Izvolite", "chunk_known": "a waiter's polite 'go ahead, what'll it be?'" }
+    ],
+    "explainer_text": "Izvolite — a waiter's polite 'go ahead, what'll it be?'"
+  }
+
+EXAMPLE D — form does a job (gloss as the job, no grammar word):
+  target "kilogram rajčica"  known "a kilo of tomatoes"
+  {
+    "id": "...",
+    "decomposition": [
+      { "chunk_target": "kilogram", "chunk_known": "a kilo" },
+      { "chunk_target": "rajčica",  "chunk_known": "of tomatoes" }
+    ],
+    "explainer_text": "kilogram ${connector} a kilo, rajčica ${connector} of tomatoes"
+  }
+
+EXAMPLE E — skip (single ordinary chunk, no misleading order, no usage note):
+  target "Zanimljivo"  known "How interesting"
+  { "id": "...", "decomposition": [], "explainer_text": "" }
+
+================  INPUT  ================
 ${inputBlock}
 
-OUTPUT FORMAT: a JSON array, one object per input sentence in the same
-order, each with "id" (echoed), "decomposition", "explainer_text". Output
-ONLY the JSON array. No prose, no markdown, no code fences.`
+OUTPUT: a JSON array, one object per input sentence IN THE SAME ORDER, each with
+"id", "decomposition", and "explainer_text" (plus optional "literal" on chunks /
+"primitives" where the rule calls for them). Output ONLY the JSON array — no
+prose, no markdown, no code fences.`
 }
 
 /**
@@ -227,11 +287,29 @@ function parseBatchResponse(raw) {
     // sentences that consist entirely of proper nouns (names, places).
     // Stage-1 player skips the slot when explainer_audio_id is NULL, so
     // an empty text means "no explainer needed for this sentence".
+    //
+    // The decomposition column is jsonb, so we additively pass through the
+    // optional per-chunk `literal` (string) and `primitives` ([{target,known}])
+    // when the model supplies them. Malformed primitives are dropped rather
+    // than failing the row; the core chunk_target/chunk_known pair is always
+    // preserved so existing readers keep working unchanged.
     byId.set(entry.id, {
-      decomposition: entry.decomposition.map(e => ({
-        chunk_target: e.chunk_target,
-        chunk_known: e.chunk_known,
-      })),
+      decomposition: entry.decomposition.map(e => {
+        const chunk = {
+          chunk_target: e.chunk_target,
+          chunk_known: e.chunk_known,
+        }
+        if (typeof e.literal === 'string' && e.literal.trim()) {
+          chunk.literal = e.literal.trim()
+        }
+        if (Array.isArray(e.primitives)) {
+          const prims = e.primitives
+            .filter(p => p && typeof p.target === 'string' && typeof p.known === 'string')
+            .map(p => ({ target: p.target, known: p.known }))
+          if (prims.length) chunk.primitives = prims
+        }
+        return chunk
+      }),
       explainer_text: entry.explainer_text.trim(),
     })
   }

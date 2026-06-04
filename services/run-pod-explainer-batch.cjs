@@ -96,10 +96,21 @@ const TARGET_POD_SUFFIX = 'pod-0'
 // Stored explainer_text in DB stays clean prose for dashboard display; the
 // quoted form is rebuilt at TTS time from explainer_decomposition.
 
-function buildExplainerNarration(decomposition) {
-  // Build "X". means Y. "A". means B. from the structured chunk list.
-  // Returns null if decomposition is empty/malformed — caller falls back
-  // to plain explainer_text.
+function buildExplainerNarration(decomposition, explainerText) {
+  // The calibrated-rule prompt now AUTHORS explainer_text as the exact spoken
+  // line — including the " — so '…'" / "— literally '…'" tail and the
+  // single-line usage notes for fixed expressions ("Izvolite — a waiter's
+  // polite ..."). Rebuilding the old P5 quoted form ("X". means Y.) from the
+  // decomposition would mangle those: the tail and the usage note live in
+  // explainer_text, not in the chunk pairs. So when we have a non-empty
+  // explainer_text, TTS it VERBATIM.
+  if (typeof explainerText === 'string' && explainerText.trim()) {
+    return explainerText.trim()
+  }
+  // Fallback for legacy rows that have only a structured decomposition and no
+  // explainer_text: rebuild the P5 quoted form ("X". means Y. "A". means B.).
+  // Returns null if decomposition is empty/malformed — caller then falls back
+  // to whatever explainer_text it has (possibly empty).
   if (!Array.isArray(decomposition) || decomposition.length === 0) return null
   const parts = []
   for (const chunk of decomposition) {
@@ -279,10 +290,10 @@ async function runAudioPass(courseCode) {
     const wave = rows.slice(i, i + AUDIO_PARALLEL)
     await Promise.all(wave.map(async row => {
       try {
-        // Prefer the P5-quoted form built from the structured decomposition;
-        // if that's missing/malformed (legacy rows before the explainer
-        // columns landed) fall back to the flat explainer_text.
-        const narration = buildExplainerNarration(row.explainer_decomposition)
+        // TTS the authored explainer_text VERBATIM (it carries the calibrated
+        // tail / usage note). Only legacy rows with no explainer_text fall back
+        // to the rebuilt P5-quoted form from the structured decomposition.
+        const narration = buildExplainerNarration(row.explainer_decomposition, row.explainer_text)
         const ttsText = narration || row.explainer_text
         const result = await generatePodAudio({
           courseCode,
