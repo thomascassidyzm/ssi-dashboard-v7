@@ -10488,6 +10488,43 @@ function scheduleNightlyArchive() {
   arm()
 }
 
+// ============================================================
+// INSIGHT DISCOVERY — trigger the SSi-learning-app insights deep-run on this
+// machine so it can be fired from popty without being at the box. Runs the
+// zero-dep discovery script (claude --print on the Max plan — same headless
+// mechanism as services/shared/claude-cli.cjs — school-demo learners excluded),
+// which writes findings to the shared insight_discoveries table. The learning
+// app's /admin/insights feed then reads them. requireAdmin.
+// ============================================================
+const INSIGHT_SCRIPT = process.env.INSIGHT_DISCOVERY_SCRIPT
+  || path.resolve(__dirname, 'insight-discovery.cjs')  // services/insight-discovery.cjs (this repo — present on every machine)
+const INSIGHT_CWD = path.resolve(__dirname, '..')      // dashboard repo root (its .env)
+
+app.post('/api/insight-discovery/run', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  const demo = req.body && req.body.demo === true
+  const args = [INSIGHT_SCRIPT, '--write']
+  if (demo) args.push('--demo')
+  try {
+    const { spawn: spawnProc } = require('child_process')
+    // Nested claude --print: scrub the billed key (use the subscription) and
+    // unset CLAUDECODE (per CLAUDE.md — required for nested Claude CLI calls).
+    const childEnv = { ...process.env }
+    delete childEnv.ANTHROPIC_API_KEY
+    delete childEnv.ANTHROPIC_AUTH_TOKEN
+    delete childEnv.CLAUDECODE
+    const child = spawnProc('node', args, { cwd: INSIGHT_CWD, detached: true, stdio: 'ignore', env: childEnv })
+    child.on('error', (e) => logger.error(`[InsightDiscovery] spawn error: ${e.message}`))
+    child.unref()
+    logger.log(`[InsightDiscovery] triggered (${demo ? 'demo' : 'real'}) by ${admin.email || admin.id} → ${INSIGHT_SCRIPT}`)
+    res.status(202).json({ triggered: true, source: demo ? 'demo' : 'real', note: 'Deep-run started on the machine; the feed updates when it finishes (~1-2 min).' })
+  } catch (e) {
+    logger.error(`[InsightDiscovery] failed to start: ${e.message}`)
+    res.status(500).json({ error: 'Failed to start discovery run', detail: e.message })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {
