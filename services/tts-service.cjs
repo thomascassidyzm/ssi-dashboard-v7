@@ -266,7 +266,54 @@ async function generate(text, provider, config) {
 }
 
 /**
- * Generate speech with retry logic
+ * Decide whether a TTS error is worth retrying.
+ *
+ * Retry on transient/load failures: HTTP 5xx, connection resets, socket hang
+ * ups, timeouts, fetch/network errors. These are exactly the intermittent
+ * failures xAI's /v1/tts throws under the pod generator's fan-out
+ * (e.g. `500 {"error":"TTS synthesis failed: Timeout expired"}`, `ECONNRESET`).
+ *
+ * Do NOT retry on real client errors (HTTP 4xx — bad key, bad voice id,
+ * malformed request): retrying just burns time and money on a request that
+ * will never succeed.
+ *
+ * @param {Error} error - The error thrown by generate()
+ * @returns {boolean} True if the failure looks transient and retriable
+ */
+function isRetriableTtsError(error) {
+  const msg = (error && error.message) ? error.message : String(error);
+
+  // Provider error strings embed the HTTP status as "(NNN)". A 4xx is a real
+  // client error — never retry it. Treat everything else as potentially
+  // transient.
+  const statusMatch = msg.match(/\((\d{3})\)/);
+  if (statusMatch) {
+    const status = parseInt(statusMatch[1], 10);
+    if (status >= 400 && status < 500) return false; // client error → give up
+    if (status >= 500) return true;                   // server error → retry
+  }
+
+  // Node fetch / socket level transient failures.
+  const code = error && error.code ? String(error.code) : '';
+  if (/ECONNRESET|ETIMEDOUT|ECONNREFUSED|EAI_AGAIN|EPIPE|ENETUNREACH/.test(code)) {
+    return true;
+  }
+  if (/ECONNRESET|socket hang up|timeout|timed out|network|fetch failed|aborted|EAI_AGAIN|ETIMEDOUT/i.test(msg)) {
+    return true;
+  }
+
+  // Unknown shape → retry once rather than fail hard on a possibly-transient
+  // blip. The retry budget (maxRetries) bounds the downside.
+  return true;
+}
+
+/**
+ * Generate speech with retry logic and exponential backoff + jitter.
+ *
+ * Backoff is exponential (base 1s, doubling) with full jitter, so a fan-out of
+ * concurrent pod clips that all hit a transient xAI 5xx don't retry in lockstep
+ * and re-stampede the API. Non-retriable (4xx) failures bail immediately.
+ *
  * @param {string} text - Text to synthesize
  * @param {string} provider - TTS provider
  * @param {object} config - Provider configuration
@@ -281,11 +328,20 @@ async function generateWithRetry(text, provider, config, maxRetries = 3) {
       return await generate(text, provider, config);
     } catch (error) {
       lastError = error;
-      console.warn(`[TTS] Attempt ${attempt + 1}/${maxRetries} failed: ${error.message}`);
+      const retriable = isRetriableTtsError(error);
+      console.warn(`[TTS] Attempt ${attempt + 1}/${maxRetries} failed (${retriable ? 'retriable' : 'fatal'}): ${error.message}`);
+
+      // Real client error (4xx etc.) — retrying cannot help, fail fast.
+      if (!retriable) {
+        throw new Error(`TTS generation failed (non-retriable): ${error.message}`);
+      }
 
       if (attempt < maxRetries - 1) {
-        // Exponential backoff: 1s, 2s, 4s
-        const delay = Math.pow(2, attempt) * 1000;
+        // Exponential backoff with full jitter: pick a random delay in
+        // [0, base * 2^attempt]. base=1s → windows of [0,1s], [0,2s], [0,4s].
+        // Jitter de-synchronises concurrent retries so they don't re-stampede.
+        const ceiling = Math.pow(2, attempt) * 1000;
+        const delay = Math.floor(Math.random() * ceiling);
         await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
@@ -329,6 +385,7 @@ function getVoiceForRole(role, voiceMapping) {
 module.exports = {
   generate,
   generateWithRetry,
+  isRetriableTtsError,
   generateElevenLabs,
   generateAzure,
   generateXai,

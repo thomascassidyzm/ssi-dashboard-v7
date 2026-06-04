@@ -41,7 +41,7 @@ const { claudeChat } = require('../shared/claude-cli.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
-const { toIso3, getName: getLangEnglishName, databaseToManifest } = require('../language-code-service.cjs')
+const { toIso3, getName: getLangEnglishName, databaseToManifest, getAzureLocale } = require('../language-code-service.cjs')
 
 const app = express()
 app.use(cors())
@@ -3952,6 +3952,82 @@ app.post('/splice-components/:courseCode', async (req, res) => {
 
 const POD_CHARS_TO_COST = 4.20 / 1_000_000  // xAI pricing; near-identical to Azure scale, rough estimate
 
+// Safe ceiling for concurrent xAI TTS calls during pod generation. xAI's
+// /v1/tts throws intermittent 500 "Timeout expired" / ECONNRESET under heavy
+// fan-out, so we keep the worker pool small. The /generate-pods endpoint
+// clamps any caller-supplied concurrency to this ceiling.
+const POD_GEN_CONCURRENCY_DEFAULT = 5
+const POD_GEN_CONCURRENCY_MAX = 6
+
+// Default Azure neural voice per Azure locale, used as the safety-net voice
+// when xAI synthesis fails for a clip and we fall back to Azure. These are
+// standard, broadly-available neural voices; the map covers the SSi launch
+// languages plus Croatian. Unlisted locales fall through to a null lookup and
+// the clip is left for xAI to retry on a later run (no silent wrong-voice).
+const DEFAULT_AZURE_VOICE_BY_LOCALE = {
+  'en-GB': 'en-GB-SoniaNeural',
+  'en-US': 'en-US-JennyNeural',
+  'cy-GB': 'cy-GB-NiaNeural',
+  'es-ES': 'es-ES-ElviraNeural',
+  'es-MX': 'es-MX-DaliaNeural',
+  'fr-FR': 'fr-FR-DeniseNeural',
+  'de-DE': 'de-DE-KatjaNeural',
+  'it-IT': 'it-IT-ElsaNeural',
+  'pt-PT': 'pt-PT-RaquelNeural',
+  'pt-BR': 'pt-BR-FranciscaNeural',
+  'nl-NL': 'nl-NL-ColetteNeural',
+  'pl-PL': 'pl-PL-ZofiaNeural',
+  'tr-TR': 'tr-TR-EmelNeural',
+  'hr-HR': 'hr-HR-GabrijelaNeural',
+}
+
+/**
+ * Pick the Azure safety-net voice for a clip whose primary (xAI) provider
+ * failed after all retries.
+ *
+ * Resolution order:
+ *   1. A course-configured Azure voice for this track, if one is Azure already
+ *      (known track → ctx.knownVoice; either track → the course voice_config
+ *      role voice). This reuses the voice the course author actually chose.
+ *   2. A standard default Azure neural voice for the clip's language locale
+ *      (DEFAULT_AZURE_VOICE_BY_LOCALE).
+ *
+ * Returns { voice_id, provider:'azure', gender } or null if no Azure voice can
+ * be determined (caller then leaves the clip unsynthesised rather than guess).
+ *
+ * @param {object} ctx - course context from getCourseContext (knownVoice, voiceConfig)
+ * @param {('target'|'known')} track - which pod track failed
+ * @param {string} language - the clip's language code (target or known lang)
+ */
+function pickAzureFallbackVoice(ctx, track, language) {
+  // 1a. Known track: the course's known voice is often already Azure.
+  if (track === 'known' && ctx.knownVoice && (ctx.knownVoice.provider || 'azure') === 'azure' && ctx.knownVoice.voice_id) {
+    return { voice_id: ctx.knownVoice.voice_id, provider: 'azure', gender: ctx.knownVoice.gender || 'n' }
+  }
+
+  // 1b. Either track: if the course voice_config role voice is Azure, reuse it.
+  const voices = (ctx.voiceConfig && (ctx.voiceConfig.voices || ctx.voiceConfig)) || {}
+  const roleVoice = track === 'target' ? (voices.target1 || voices.target) : voices.known
+  if (roleVoice && (roleVoice.provider || 'azure') === 'azure') {
+    const vid = roleVoice.voiceId || roleVoice.voice_id
+    if (vid) return { voice_id: vid, provider: 'azure', gender: roleVoice.gender || 'n' }
+  }
+
+  // 2. Standard default Azure neural voice for the language's Azure locale.
+  let locale = null
+  try {
+    locale = getAzureLocale(language)
+  } catch (_) {
+    locale = null  // language not Azure-configured
+  }
+  const voiceId = locale ? DEFAULT_AZURE_VOICE_BY_LOCALE[locale] : null
+  if (voiceId) {
+    return { voice_id: voiceId, provider: 'azure', gender: 'n' }
+  }
+
+  return null
+}
+
 // Canonical speaker name = parens stripped. Mirrors tools/pod-sync.cjs so the
 // same key collapses timed/gendered variants ("Susjed (08:00)" / "Susjed (M)"
 // → "Susjed") into one voice assignment.
@@ -4034,14 +4110,50 @@ async function findExistingAudio(courseCode, text, language, role, voiceId) {
 
 /**
  * Generate one audio clip and insert into course_audio. Returns the audio_id.
+ *
+ * Resilience: the primary voice (often xAI for known/English clips) is tried
+ * first via generateWithRetry (backoff + jitter on transient 5xx/ECONNRESET).
+ * If it still fails after all retries AND the primary was xAI, we fall back to
+ * an Azure voice for that one clip so it generates rather than staying NULL.
+ * The Azure voice is chosen by pickAzureFallbackVoice (course voice → default).
+ *
+ * @param {object} args
+ * @param {object} [args.ctx] - course context (for Azure fallback voice pick)
+ * @param {('target'|'known')} [args.track] - which pod track this clip is
+ * @param {string} [args.sentenceId] - pod sentence id (for the fallback log line)
  */
-async function generatePodAudio({ courseCode, text, language, role, voice }) {
+async function generatePodAudio({ courseCode, text, language, role, voice, ctx, track, sentenceId }) {
   // Reuse by text+voice hash
   const existing = await findExistingAudio(courseCode, text, language, role, voice.voice_id)
   if (existing) return { id: existing, reused: true }
 
-  const ttsConfig = buildPodTTSConfig(voice, language)
-  const { audioBuffer } = await ttsService.generateWithRetry(text, voice.provider || 'azure', ttsConfig)
+  let provider = voice.provider || 'azure'
+  let activeVoice = voice
+  let audioBuffer
+  try {
+    const ttsConfig = buildPodTTSConfig(activeVoice, language)
+    ;({ audioBuffer } = await ttsService.generateWithRetry(text, provider, ttsConfig))
+  } catch (primaryErr) {
+    // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
+    // back when the primary was xAI — Azure failing has nowhere better to go,
+    // and elevenlabs failures aren't in scope for this safety net.
+    if (provider !== 'xai') throw primaryErr
+
+    const kind = track || (role === 'known' ? 'known' : 'target')
+    const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, language) : null
+    if (!azureVoice) {
+      // No Azure voice determinable — surface the original xAI failure so the
+      // clip is recorded as failed (not silently wrong-voiced).
+      throw primaryErr
+    }
+
+    logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
+    provider = 'azure'
+    activeVoice = azureVoice
+    const azureConfig = buildPodTTSConfig(activeVoice, language)
+    ;({ audioBuffer } = await ttsService.generateWithRetry(text, 'azure', azureConfig))
+  }
+  voice = activeVoice  // course_audio row records the voice that actually produced the clip
   const { buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer)
 
   const audioId = uuidv4().toUpperCase()
@@ -4117,6 +4229,7 @@ async function getCourseContext(courseCode) {
     knownLang: course.known_lang,
     targetLang: course.target_lang,
     knownVoice,
+    voiceConfig: vc,  // raw voice_config — pickAzureFallbackVoice reads role voices for the Azure safety net
   }
 }
 
@@ -4192,7 +4305,9 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     const body = req.body || {}
     const podIds = body.pod_ids || null
     const roles = body.roles || ['target', 'known']
-    const concurrency = Math.max(1, Math.min(10, body.concurrency || 5))
+    // Cap fan-out: xAI TTS is flaky under heavy concurrency, so clamp to a
+    // small safe ceiling (POD_GEN_CONCURRENCY_MAX) regardless of caller input.
+    const concurrency = Math.max(1, Math.min(POD_GEN_CONCURRENCY_MAX, body.concurrency || POD_GEN_CONCURRENCY_DEFAULT))
 
     const ctx = await getCourseContext(courseCode)
 
@@ -4256,6 +4371,9 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             language: item.language,
             role: item.role,
             voice: item.voice,
+            ctx,                  // enables Azure fallback when xAI fails
+            track: item.kind,     // 'target' | 'known'
+            sentenceId: item.sentence_id,
           })
 
           // Link the audio onto the pod sentence
