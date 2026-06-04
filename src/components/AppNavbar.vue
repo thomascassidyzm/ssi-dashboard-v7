@@ -209,13 +209,14 @@ const isHidden = computed(() => route.meta.public === true)
 const isHome = computed(() => route.path === '/')
 const isJobs = computed(() => route.path === '/jobs')
 const isMaintenance = computed(() => route.path === '/maintenance')
+const isInsights = computed(() => route.path === '/insights')
 const isDocs = computed(() => route.path.startsWith('/docs'))
 const isProduction = computed(() => route.path.startsWith('/production/') && route.params.courseCode)
 const courseCode = computed(() => route.params.courseCode || null)
 const isCreateMode = computed(() => courseCode.value === 'new')
 
 // Home-section tabs show on Courses, Activity, and Maintenance pages
-const inHomeSection = computed(() => isHome.value || isJobs.value || isMaintenance.value)
+const inHomeSection = computed(() => isHome.value || isJobs.value || isMaintenance.value || isInsights.value)
 
 // Show course summary only on home page
 const showSummary = computed(() => isHome.value)
@@ -254,7 +255,8 @@ const tabs = computed(() => {
         to: '/maintenance',
         active: isMaintenance.value,
         badge: auditStaleDays.value ? `${auditStaleDays.value}d` : null
-      }
+      },
+      { label: 'Insights', to: '/insights', active: isInsights.value }
     ]
   }
 

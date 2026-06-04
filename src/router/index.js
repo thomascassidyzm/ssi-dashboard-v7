@@ -59,6 +59,12 @@ const routes = [
     component: () => import('../views/Maintenance.vue'),
     meta: { title: 'Maintenance' }
   },
+  {
+    path: '/insights',
+    name: 'Insights',
+    component: () => import('../views/Insights.vue'),
+    meta: { title: 'Insights' }
+  },
   // ============================================
   // Documentation Section (nested routes with shared layout)
   // ============================================

@@ -1,0 +1,111 @@
+<template>
+  <div class="insights-view">
+    <header class="iv-head">
+      <h2>Insights</h2>
+      <p class="iv-sub">
+        Claude's "before you asked" deep-run over real learner telemetry — school-demo accounts excluded.
+        Runs on the SSi Machine via the Max subscription; findings persist to the shared DB and also show in the
+        learning app at <code>/admin/insights</code>.
+      </p>
+    </header>
+
+    <section class="iv-controls">
+      <button class="iv-btn" :disabled="running" @click="run(false)">
+        {{ running ? 'Running deep-run…' : 'Run discovery' }}
+      </button>
+      <button class="iv-btn iv-btn--ghost" :disabled="running" @click="run(true)" title="Synthetic populated run for presentations">
+        Demo run
+      </button>
+      <button class="iv-btn iv-btn--ghost" :disabled="loadingLatest" @click="refresh">Refresh</button>
+      <span v-if="status" class="iv-status" :class="{ 'iv-status--err': !!error }">{{ status }}</span>
+    </section>
+
+    <section v-if="meta" class="iv-meta">
+      What Claude surfaced · {{ relTime(meta.generated_at) }} · {{ (latest?.findings || []).length }} findings ·
+      {{ meta.source }} · {{ meta.window_days }}d window
+    </section>
+
+    <section class="iv-feed">
+      <p v-if="loadingLatest && !latest" class="iv-empty">Loading…</p>
+      <p v-else-if="!latest" class="iv-empty">No discovery run yet — hit <strong>Run discovery</strong> (takes ~1–2 min).</p>
+      <article v-for="(f, i) in (latest?.findings || [])" :key="i" class="iv-card" :class="`tone-${(f.tone || 'neutral')}`">
+        <div class="iv-card-top">
+          <span class="iv-badge">{{ (f.tone || 'neutral').toUpperCase() }}</span>
+          <h3>{{ f.title }}</h3>
+        </div>
+        <p class="iv-story">{{ f.story }}</p>
+        <p v-if="f.annotate" class="iv-annotate">{{ f.annotate }}</p>
+        <div v-if="f.actions && f.actions.length" class="iv-actions">
+          <span v-for="(a, j) in f.actions" :key="j" class="iv-action">
+            <strong>{{ a.tier }} · {{ a.owner }}</strong> {{ a.text }}
+          </span>
+        </div>
+        <span class="iv-tags">{{ f.frame }} · {{ f.metric }} · {{ f.widget }}</span>
+      </article>
+    </section>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { useInsightDiscovery } from '@/composables/useInsightDiscovery'
+
+const { running, error, latest, loadingLatest, trigger, fetchLatest } = useInsightDiscovery()
+const status = ref('')
+const meta = computed(() => latest.value ? { generated_at: latest.value.generated_at, source: latest.value.source, window_days: latest.value.window_days } : null)
+
+onMounted(() => fetchLatest('real'))
+
+async function refresh() { await fetchLatest('real') }
+
+async function run(demo) {
+  status.value = ''
+  try {
+    const data = await trigger(demo)
+    status.value = data?.note || `Started (${demo ? 'demo' : 'real'}). Refreshing as it lands…`
+    // the deep-run takes ~1-2 min; poll a few times to pick up the new findings
+    ;[30000, 60000, 90000, 120000].forEach((ms) => setTimeout(() => fetchLatest(demo ? 'demo' : 'real'), ms))
+  } catch (e) {
+    status.value = `Failed: ${e.message}`
+  }
+}
+
+function relTime(iso) {
+  if (!iso) return ''
+  const s = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1000)
+  if (s < 90) return 'just now'
+  if (s < 5400) return `${Math.round(s / 60)} min ago`
+  if (s < 172800) return `${Math.round(s / 3600)} h ago`
+  return `${Math.round(s / 86400)} d ago`
+}
+</script>
+
+<style scoped>
+.insights-view { max-width: 1100px; margin: 0 auto; padding: 1.5rem; color: #e5e7eb; }
+.iv-head h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.25rem; }
+.iv-sub { color: #9ca3af; font-size: 0.9rem; margin: 0 0 1.25rem; max-width: 70ch; }
+.iv-sub code { background: #1f2937; padding: 0.05rem 0.35rem; border-radius: 0.25rem; }
+.iv-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
+.iv-btn { padding: 0.5rem 1rem; border-radius: 0.5rem; border: 1px solid transparent; background: #4f46e5; color: #fff; font-weight: 600; cursor: pointer; }
+.iv-btn:disabled { opacity: 0.55; cursor: default; }
+.iv-btn--ghost { background: transparent; color: #a5b4fc; border-color: #4f46e5; }
+.iv-status { font-size: 0.85rem; color: #9ca3af; }
+.iv-status--err { color: #f87171; }
+.iv-meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.75rem; }
+.iv-feed { display: flex; flex-direction: column; gap: 0.75rem; }
+.iv-empty { color: #9ca3af; }
+.iv-card { background: #111827; border: 1px solid #1f2937; border-left-width: 3px; border-radius: 0.6rem; padding: 0.9rem 1rem; }
+.iv-card-top { display: flex; align-items: baseline; gap: 0.6rem; }
+.iv-card-top h3 { font-size: 1.02rem; font-weight: 650; margin: 0; }
+.iv-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.1rem 0.4rem; border-radius: 0.25rem; background: #1f2937; color: #9ca3af; }
+.iv-story { margin: 0.4rem 0 0; color: #d1d5db; font-size: 0.92rem; }
+.iv-annotate { margin: 0.3rem 0 0; color: #9ca3af; font-size: 0.82rem; }
+.iv-actions { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.5rem; }
+.iv-action { font-size: 0.82rem; color: #cbd5e1; }
+.iv-action strong { color: #a5b4fc; font-weight: 600; }
+.iv-tags { display: inline-block; margin-top: 0.5rem; font-size: 0.72rem; color: #6b7280; }
+.tone-alarm { border-left-color: #ef4444; } .tone-alarm .iv-badge { background: #7f1d1d; color: #fecaca; }
+.tone-warn  { border-left-color: #f59e0b; } .tone-warn .iv-badge  { background: #78350f; color: #fde68a; }
+.tone-good  { border-left-color: #10b981; } .tone-good .iv-badge  { background: #064e3b; color: #a7f3d0; }
+.tone-neutral { border-left-color: #4b5563; }
+</style>

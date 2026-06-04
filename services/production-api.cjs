@@ -10525,6 +10525,26 @@ app.post('/api/insight-discovery/run', async (req, res) => {
   }
 })
 
+// GET the latest persisted discovery (service-key read — popty's own auth can't
+// pass the table's god-gate, so the dashboard reads it through this admin route).
+app.get('/api/insight-discovery/latest', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  const source = req.query.source === 'demo' ? 'demo' : 'real'
+  try {
+    const base = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
+    const key = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY
+    const r = await fetch(`${base}/rest/v1/insight_discoveries?source=eq.${source}&order=generated_at.desc&limit=1&select=generated_at,window_days,source,findings`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` },
+    })
+    const rows = await r.json()
+    res.json({ latest: Array.isArray(rows) && rows[0] ? rows[0] : null })
+  } catch (e) {
+    logger.error(`[InsightDiscovery] latest read failed: ${e.message}`)
+    res.status(500).json({ error: 'Failed to read latest discovery' })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {

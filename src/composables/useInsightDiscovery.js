@@ -14,6 +14,26 @@ export function useInsightDiscovery() {
   const running = ref(false)
   const lastResult = ref(null)
   const error = ref(null)
+  const latest = ref(null)
+  const loadingLatest = ref(false)
+
+  async function fetchLatest(source = 'real') {
+    loadingLatest.value = true
+    try {
+      const token = await getAccessToken()
+      const res = await fetch(`${getApiUrl()}/api/insight-discovery/latest?source=${source}`, {
+        headers: { Authorization: `Bearer ${token}`, 'ngrok-skip-browser-warning': 'true' },
+      })
+      const data = await res.json().catch(() => ({}))
+      latest.value = data && data.latest ? data.latest : null
+      return latest.value
+    } catch (e) {
+      error.value = e.message
+      return null
+    } finally {
+      loadingLatest.value = false
+    }
+  }
 
   async function trigger(demo = false) {
     running.value = true
@@ -41,5 +61,5 @@ export function useInsightDiscovery() {
     }
   }
 
-  return { running, lastResult, error, trigger }
+  return { running, lastResult, error, trigger, latest, loadingLatest, fetchLatest }
 }
