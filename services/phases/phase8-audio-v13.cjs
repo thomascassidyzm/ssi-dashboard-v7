@@ -28,7 +28,7 @@ const { v4: uuidv4 } = require('uuid')
 const fs = require('fs-extra')
 const path = require('path')
 const os = require('os')
-const { bumpCourseVersion } = require('../shared/course-version.cjs')
+const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
@@ -1639,6 +1639,10 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     if (!wasCancelled && results.success > 0) {
       await bumpCourseVersion(supabase, courseCode, 'patch')
+      // Bump the integer revalidation key once so the learning app
+      // auto-detects this freshly generated audio (the course_legos trigger
+      // never fires on audio-only runs).
+      await bumpCourseRevalidation(supabase, courseCode)
     }
 
     // Emit completion
@@ -2068,6 +2072,16 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
     const wasCancelled = currentWork.cancelled
     endWork()
+
+    // This route generates real audio (presentation/known/target1/target2),
+    // but previously bumped NEITHER version column — so regenerated audio went
+    // undetected by the learning app. Bump both, once, on a successful run.
+    if (!wasCancelled && results.success > 0) {
+      await bumpCourseVersion(supabase, courseCode, 'patch')
+      // Integer revalidation key — once per run — so the app picks up the
+      // regenerated audio.
+      await bumpCourseRevalidation(supabase, courseCode)
+    }
 
     res.json({
       status: wasCancelled ? 'cancelled' : 'completed',
@@ -2969,6 +2983,9 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     } catch (e) { /* production-api may not be running */ }
 
     await bumpCourseVersion(supabase, courseCode, 'patch')
+    // Integer revalidation key — once per run. Presentation text changed here,
+    // which the round-map/decomposition care about; bump so the app revalidates.
+    await bumpCourseRevalidation(supabase, courseCode)
 
     res.json({
       success: true,
@@ -3881,6 +3898,9 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 
     if (!wasCancelled && results.success > 0) {
       await bumpCourseVersion(supabase, courseCode, 'patch')
+      // Integer revalidation key — once per run — so the app picks up the
+      // new component audio.
+      await bumpCourseRevalidation(supabase, courseCode)
     }
 
     res.json({
@@ -4344,6 +4364,9 @@ app.post('/splice-components/:courseCode', async (req, res) => {
 
     if (!wasCancelled && results.success > 0) {
       await bumpCourseVersion(supabase, courseCode, 'patch')
+      // Integer revalidation key — once per run — so the app picks up the
+      // spliced component audio.
+      await bumpCourseRevalidation(supabase, courseCode)
     }
 
     res.json({
