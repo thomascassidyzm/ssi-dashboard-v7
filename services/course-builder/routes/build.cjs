@@ -822,6 +822,105 @@ module.exports = function (ctx) {
     }
   });
 
+  // GET /build/zut-collisions/:courseCode — Detect production-direction ZUT collisions
+  // (one English prompt → multiple distinct Chinese answers, across the course's phrases).
+  router.get('/build/zut-collisions/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const maxSeed = req.query.maxSeed ? parseInt(req.query.maxSeed, 10) : null;
+      const nk = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+      const nt = s => (s || '').replace(/[\s。，？！、.?!,]/g, '');
+      let phrases = [], from = 0;
+      while (true) {
+        let q = ctx.supabase.from('course_practice_phrases')
+          .select('known_text, target_text, seed_number')
+          .eq('course_code', courseCode).neq('phrase_role', 'component');
+        if (maxSeed) q = q.lte('seed_number', maxSeed);
+        const { data, error } = await q.range(from, from + 999);
+        if (error) throw error;
+        if (!data || !data.length) break;
+        phrases.push(...data);
+        if (data.length < 1000) break;
+        from += 1000;
+      }
+      const byK = new Map();
+      for (const p of phrases) {
+        const k = nk(p.known_text);
+        if (!k || k.length < 2) continue;
+        if (!byK.has(k)) byK.set(k, new Map());
+        byK.get(k).set(nt(p.target_text), p.target_text);
+      }
+      const collisions = [];
+      for (const [k, m] of byK) if (m.size >= 2) collisions.push({ known: k, n: m.size, targets: [...m.values()].slice(0, 4) });
+      collisions.sort((a, b) => b.n - a.n);
+      res.json({
+        ok: true, course_code: courseCode, total_phrases: phrases.length,
+        collisions: { total: collisions.length, items: collisions.slice(0, 60) },
+        complete: collisions.length === 0,
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // POST /build/zut-resolve/:courseCode — Spawn agent to resolve ZUT collisions
+  // (the native-speaker+methodologist at scale: consolidate / differentiate / standardise).
+  router.post('/build/zut-resolve/:courseCode', async (req, res) => {
+    try {
+      const { courseCode } = req.params;
+      const terminal = req.query.terminal || 'iTerm2';
+      const port = ctx.config.PORT || 3471;
+      const brief = `# ZUT Collision Resolution — ${courseCode}
+
+You are the native-speaker + methodologist that humans cannot be at 58-language scale. Resolve every production-direction collision so that ONE English prompt → exactly ONE target answer (Zero Uncertainty Test). The learner must never doubt which to say.
+
+## 1. Detect
+GET http://localhost:${port}/api/build/zut-collisions/${courseCode} — returns collisions (one English → ≥2 distinct target answers, with seed-level detail available in course_practice_phrases).
+
+## 2. Resolve each (apply the methodology — see ralph-methodology.md + synonym-choice-architecture.md)
+- **CONSOLIDATE** — variants are true synonyms → pick the canonical target (most beginner-confident / simplest / most-frequent). Rewrite the losing variants' target_text to it. ⚠ FIRST check the losing variant is not a *taught LEGO of its own seed* — if it is, you'd orphan that seed's lesson; differentiate by seed-context or escalate instead of silently consolidating.
+- **DIFFERENTIATE** — genuinely different senses English conflates (know-fact 知道 vs know-person 认识) → keep both targets, rewrite each ENGLISH known_text to be specific so each maps uniquely. The disambiguator MUST be in the learner-facing English prompt, not a note.
+- **STANDARDISE** — same words, structural variant (了/在/吗 optional) → pick the full natural form, rewrite the others.
+- **Content-safety**: flag archaic/pejorative targets (don't teach them as neutral).
+- **Cross-methodology**: never drop a deliberately-taught particle to "fix" a collision (re-gloss instead).
+
+## 3. Verify before applying
+For each resolution, confirm it actually achieves ZUT (especially DIFFERENTIATE: are the new English prompts distinct enough that a learner reliably produces the right target? If not, it FAILS — consolidate instead).
+
+## 4. Apply
+- DIFFERENTIATE = update course_practice_phrases.known_text (cheap, NO audio regen).
+- CONSOLIDATE / STANDARDISE = update course_practice_phrases.target_text, then the changed Chinese needs audio regen (note which seeds for a follow-up scoped /generate).
+Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the count drops. Report what you changed + any high-risk items you escalated.`;
+      const tmpFile = `/tmp/zut-resolve_${courseCode}_${Date.now()}.md`;
+      fs.writeFileSync(tmpFile, brief);
+      const projectDir = path.resolve(__dirname, '..', '..', '..');
+      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+      let jobId;
+      try {
+        const { data: jobData } = await ctx.supabase.from('build_jobs').insert({
+          course_code: courseCode, pass: 'zut-resolve', status: 'running',
+          current_seed: 0, seeds_completed: 0, total_seeds: 0,
+          started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard', terminal: effectiveTerminal,
+          agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'zut-resolve'
+        }).select('id').single();
+        jobId = jobData?.id;
+      } catch (e) { console.warn('[ZutResolve] build_jobs insert failed:', e.message); }
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      spawnInTerminal(ctx, claudeCmd, 'ZUT Resolve', courseCode);
+      try {
+        await ctx.supabase.from('orchestrator_messages').insert({
+          course_code: courseCode, direction: 'agent_to_human',
+          message: 'ZUT resolution agent spawned — resolving collisions', status: 'pending',
+          metadata: { action: 'zut_resolve_spawned' }
+        });
+      } catch (e) { /* non-critical */ }
+      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: 'ZUT resolution agent spawned' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // GET /build/component-gaps/:courseCode — Quick count of M-LEGOs needing components
   router.get('/build/component-gaps/:courseCode', async (req, res) => {
     try {

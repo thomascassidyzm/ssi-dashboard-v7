@@ -391,6 +391,51 @@
           </div>
         </div>
 
+        <!-- Stage: Zero Uncertainty (ZUT) — one English prompt → one answer -->
+        <div class="pipeline-card" :class="zutCardClass">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="zutNumberClass">Z</span>
+              <div>
+                <div class="text-sm font-medium text-slate-200">Zero Uncertainty (ZUT)</div>
+                <div class="text-xs text-slate-500">
+                  <template v-if="zutCollisions === null">One English prompt → one answer</template>
+                  <template v-else-if="zutCollisions.complete">No collisions — every prompt maps to one answer</template>
+                  <template v-else>{{ zutCollisions.collisions.total }} prompts map to multiple answers</template>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span v-if="zutCollisions !== null && !zutCollisions.complete" class="text-xs text-rose-400">{{ zutCollisions.collisions.total }} collisions</span>
+              <span v-if="zutCollisions !== null && zutCollisions.complete" class="stage-badge-complete">Done</span>
+              <button
+                v-if="zutCollisions === null"
+                @click="checkZutCollisions"
+                :disabled="zutCheckLoading"
+                class="px-3 py-1 bg-teal-600/20 border border-teal-500/50 text-teal-400 hover:border-teal-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ zutCheckLoading ? 'Checking...' : 'Check' }}
+              </button>
+              <button
+                v-else-if="!zutCollisions.complete"
+                @click="startZutResolve"
+                :disabled="zutResolveStarting || zutResolveSpawned"
+                class="px-3 py-1 bg-teal-600/20 border border-teal-500/50 text-teal-400 hover:border-teal-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ zutResolveStarting ? 'Spawning...' : zutResolveSpawned ? 'Agent working...' : `Resolve ${zutCollisions.collisions.total}` }}
+              </button>
+              <button
+                v-if="zutCollisions !== null"
+                @click="checkZutCollisions"
+                :disabled="zutCheckLoading"
+                class="px-3 py-1 bg-slate-600/20 border border-slate-500/50 text-slate-400 hover:border-slate-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ zutCheckLoading ? '...' : 'Recheck' }}
+              </button>
+            </div>
+          </div>
+        </div>
+
         <!-- Stage 5: Gender Prep (hidden for non-gendered languages) -->
         <div v-if="isGenderedLanguage" class="pipeline-card" :class="stageCardClass('gender')">
           <div class="flex items-center justify-between">
@@ -645,6 +690,12 @@ const componentCheckLoading = ref(false)
 const componentBackfillStarting = ref(false)
 const componentBackfillSpawned = ref(false)
 const componentGaps = ref(null) // null = not checked yet, object = { total_m_legos, gaps: { total, null_components, empty_components, partial_components }, complete }
+
+const zutCheckLoading = ref(false)
+const zutResolveStarting = ref(false)
+const zutResolveSpawned = ref(false)
+const zutCollisions = ref(null) // null = not checked; object = { collisions: { total, items }, complete }
+let zutResolveSpawnedMsgCount = 0
 const actionError = ref(null) // { message, timestamp } — auto-dismisses after 8s
 let actionErrorTimer = null
 function showActionError(msg) {
@@ -1325,6 +1376,57 @@ async function startComponentBackfill() {
     componentBackfillStarting.value = false
   }
 }
+
+async function checkZutCollisions() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  zutCheckLoading.value = true
+  try {
+    const apiBase = getApiUrl()
+    const data = await fetchJson(`${apiBase}/api/build/zut-collisions/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    zutCollisions.value = data
+  } catch (err) {
+    console.error('Failed to check ZUT collisions:', err)
+  } finally {
+    zutCheckLoading.value = false
+  }
+}
+
+async function startZutResolve() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  zutResolveStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const result = await fetchJson(`${apiBase}/api/build/zut-resolve/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (result.ok) {
+      zutResolveSpawnedMsgCount = orchestratorMessages.value.length
+      zutResolveSpawned.value = true
+      buildMonitor.refresh()
+    } else {
+      showActionError(`ZUT resolve failed: ${result.error}`)
+    }
+  } catch (err) {
+    showActionError(`ZUT resolve failed: ${err.message}`)
+  } finally {
+    zutResolveStarting.value = false
+  }
+}
+
+const zutCardClass = computed(() => {
+  if (zutCollisions.value !== null && zutCollisions.value.complete) return 'border-emerald-500/20'
+  if (zutCollisions.value !== null && !zutCollisions.value.complete) return 'border-teal-500/30'
+  return 'border-slate-700/50'
+})
+const zutNumberClass = computed(() => {
+  if (zutCollisions.value !== null && zutCollisions.value.complete) return 'bg-emerald-500/20 text-emerald-400'
+  return 'bg-slate-700/50 text-slate-400'
+})
 
 async function startBackfillPhrases() {
   const courseCode = effectiveCourseCode.value

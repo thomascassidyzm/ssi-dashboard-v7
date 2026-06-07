@@ -616,6 +616,50 @@ function formatDecompositionPatterns(goldenSeeds) {
   return lines.join('\n');
 }
 
+// ─── Phrase-level ZUT (production-direction uniqueness) ─────────────────
+// The LEGO-level checkLegoConflict enforces one-known→one-target for LEGOs,
+// but practice PHRASES had no such gate — so a decomposition could gloss
+// "I think" as 我觉得 in one seed and 我想 in another. That is a ZUT
+// violation: the learner, prompted with one English thought, cannot know
+// which target to produce. This checks each submitted phrase's known→target
+// against the existing course (prior seeds). Punctuation/whitespace is
+// normalised away (你准备好了吗？ vs 你准备好了吗 = same spoken answer, NOT a
+// collision); only a genuinely different target for the same English collides.
+// Resolution (the builder must do one): CONSOLIDATE to the existing target, or
+// DIFFERENTIATE the English prompt so each maps uniquely.
+async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber = null) {
+  const nk = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+  const nt = s => (s || '').replace(/[\s。，？！、.?!,]/g, '');
+  const subByKnown = new Map(); // normKnown -> { known, target, normTarget }
+  const rawKnowns = [];
+  for (const p of phrases || []) {
+    if (!p.known || !p.target) continue;
+    const k = nk(p.known);
+    if (!subByKnown.has(k)) { subByKnown.set(k, { known: p.known, target: p.target, normTarget: nt(p.target) }); rawKnowns.push(p.known); }
+  }
+  if (!rawKnowns.length) return [];
+
+  const fetch = async (table) => {
+    let q = supabase.from(table).select('known_text, target_text, seed_number').eq('course_code', courseCode).in('known_text', [...new Set(rawKnowns)]);
+    if (currentSeedNumber !== null) q = q.lt('seed_number', currentSeedNumber);
+    const { data } = await q;
+    return data || [];
+  };
+  const existing = [...(await fetch('course_practice_phrases')), ...(await fetch('course_legos'))];
+
+  const collisions = [], seen = new Set();
+  for (const e of existing) {
+    const sub = subByKnown.get(nk(e.known_text));
+    if (!sub) continue;
+    if (nt(e.target_text) !== sub.normTarget) {
+      const key = `${nk(e.known_text)}|${nt(e.target_text)}`;
+      if (seen.has(key)) continue; seen.add(key);
+      collisions.push({ known: sub.known, new_target: sub.target, existing_target: e.target_text, existing_seed: e.seed_number });
+    }
+  }
+  return collisions;
+}
+
 module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
@@ -625,6 +669,7 @@ module.exports = {
   checkPhraseBalance,
   checkLegoConflict,
   checkLegoOverlap,
+  checkPhraseZUT,
   classifySeedPattern,
   formatDecompositionPatterns,
 };

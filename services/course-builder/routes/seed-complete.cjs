@@ -19,7 +19,7 @@ const {
 const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
-  checkLegoConflict,
+  checkLegoConflict, checkPhraseZUT,
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
@@ -455,6 +455,24 @@ module.exports = function seedCompleteRoutes(ctx) {
             skills: ['ralph-methodology.md'],
             hint: `Phrases must only use vocabulary already introduced. Unknown: ${violations[0].unknown}. Review ralph-methodology.md for vocabulary rules.`,
           });
+        }
+
+        // ZUT gate (production-direction): same English prompt must not map to a
+        // different Chinese than the course already teaches. Forces consolidate-or-differentiate.
+        if (!allowValidationBypass(req.body)) {
+          const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, phrases, seed);
+          if (zutCollisions.length > 0) {
+            console.log(`✗ ${legoId}: REJECTED - ZUT phrase collisions:`);
+            zutCollisions.forEach(c => console.log(`   "${c.known}" → new "${c.new_target}" vs existing "${c.existing_target}" (S${c.existing_seed})`));
+            return res.status(400).json({
+              error: 'ZUT violation (phrase)',
+              lego_id: legoId,
+              collisions: zutCollisions.slice(0, 5),
+              total_collisions: zutCollisions.length,
+              skills: ['ralph-methodology.md', 'synonym-choice-architecture.md'],
+              hint: `One English prompt → one Chinese answer (Zero Uncertainty). "${zutCollisions[0].known}" already maps to "${zutCollisions[0].existing_target}" (S${zutCollisions[0].existing_seed}); you submitted "${zutCollisions[0].new_target}". Either CONSOLIDATE (use the existing target) or DIFFERENTIATE (make the English prompt specific so each maps uniquely, e.g. "I know (a fact)" vs "I know (a person)").`,
+            });
+          }
         }
       }
 
