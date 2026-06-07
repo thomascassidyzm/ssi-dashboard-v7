@@ -20,6 +20,15 @@
       <span v-if="status" class="iv-status" :class="{ 'iv-status--err': !!error }">{{ status }}</span>
     </section>
 
+    <section class="iv-relnotes">
+      <h3 class="iv-relnotes-h">App release notes</h3>
+      <p class="iv-relnotes-sub">
+        Turn the learning-app's <code>main..staging</code> changes into a plain, learner-facing note.
+        Generate a draft, edit it, then publish — it appears for learners at <code>/admin/release-notes</code>.
+      </p>
+      <ReleaseNotesTrigger />
+    </section>
+
     <section v-if="meta" class="iv-meta">
       What Claude surfaced · {{ relTime(meta.generated_at) }} · {{ (latest?.findings || []).length }} findings ·
       {{ meta.source }} · {{ meta.window_days }}d window
@@ -49,6 +58,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useInsightDiscovery } from '@/composables/useInsightDiscovery'
+import ReleaseNotesTrigger from '@/components/ReleaseNotesTrigger.vue'
 
 const { running, error, latest, loadingLatest, trigger, fetchLatest } = useInsightDiscovery()
 const status = ref('')
@@ -91,6 +101,10 @@ function relTime(iso) {
 .iv-btn--ghost { background: transparent; color: #a5b4fc; border-color: #4f46e5; }
 .iv-status { font-size: 0.85rem; color: #9ca3af; }
 .iv-status--err { color: #f87171; }
+.iv-relnotes { background: #0d1424; border: 1px solid #1f2937; border-radius: 0.6rem; padding: 1rem 1.1rem; margin-bottom: 1.25rem; }
+.iv-relnotes-h { font-size: 1.05rem; font-weight: 650; margin: 0 0 0.25rem; }
+.iv-relnotes-sub { color: #9ca3af; font-size: 0.82rem; margin: 0 0 0.75rem; max-width: 70ch; }
+.iv-relnotes-sub code { background: #1f2937; padding: 0.05rem 0.35rem; border-radius: 0.25rem; }
 .iv-meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.75rem; }
 .iv-feed { display: flex; flex-direction: column; gap: 0.75rem; }
 .iv-empty { color: #9ca3af; }
