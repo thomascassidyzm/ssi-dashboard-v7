@@ -17,11 +17,12 @@
  * pod-generation-prompt-design workflow). Culture notes: pod-culture-notes.cjs.
  */
 
+const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const { claudeChat } = require('./shared/claude-cli.cjs')
 const { renderPrompt } = require('./pod-generation-prompt.cjs')
 const { getCultureNotes, languageName } = require('./pod-culture-notes.cjs')
-const { assignVoices, canonicalSpeakerName } = require('../tools/pod-sync.cjs')
+const { assignVoices, canonicalSpeakerName, extractGenderMarker, inferGenderFromName } = require('../tools/pod-sync.cjs')
 
 const supabase = createClient(
   (process.env.SUPABASE_URL || '').trim(),
@@ -95,6 +96,9 @@ function validateScene(inputLines, outLines) {
 
 /** Generate one scene → [{global_order, target_text, known_text}] (+ warnings). Retries once on hard failure. */
 async function generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger }) {
+  // The ledger pins localised character names ("Sarah [S1] → Sophie") which the
+  // dialogue text follows — the learner-visible speaker label must follow too.
+  const nameMap = parseNameMap(ledger)
   const prompt = renderPrompt({
     targetLanguage, knownLanguage, cultureNotes, ledger,
     sceneTitle: scene.title || scene.label || `Scene ${scene.number}`,
@@ -119,7 +123,7 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
         return {
           global_order: inp.global_order,
           sentence_number: inp.sentence_number,
-          speaker: inp.speaker,
+          speaker: localiseSpeakerLabel(inp.speaker, scene.number, nameMap),
           target_text: String(o.target_text || '').trim(),
           known_text: String(o.known_text || '').trim(),
         }
@@ -147,7 +151,7 @@ async function buildPodGlossary({ targetLanguage, cultureNotes, canonicalScenes 
   const prompt = `You are pinning a BINDING CONSISTENCY LEDGER for a ${canonicalScenes.length}-scene "${targetLanguage}" listening pod. The scenes are written independently, so to keep the whole pod coherent when heard in sequence, recurring real-world entities must resolve to the SAME local choice everywhere. Read ALL the canonical English lines, then produce a concise ledger the scene-writers will follow verbatim.
 
 Produce these sections (concise labelled prose, no preamble):
-1. NAMES — apply ONE consistent rule to ALL Western personal names (either transliterate all, or substitute all with ${targetLanguage}-culture names — do not mix). For a RECURRING CHARACTER (the same individual appearing in more than one scene), pin ONE local name used everywhere. But where the SAME source name is just an incidental example in UNRELATED scenes (e.g. a booking surname in a restaurant scene and again in a different hotel scene = two different customers), give each a DIFFERENT local name so it doesn't read as a template repeat. Key as: "<source name> [@scene(s)] → <local name>".
+1. NAMES — apply ONE consistent rule to ALL Western personal names (either transliterate all, or substitute all with ${targetLanguage}-culture names — do not mix). For a RECURRING CHARACTER (the same individual appearing in more than one scene), pin ONE local name used everywhere. But where the SAME source name is just an incidental example in UNRELATED scenes (e.g. a booking surname in a restaurant scene and again in a different hotel scene = two different customers), give each a DIFFERENT local name so it doesn't read as a template repeat. Key each entry EXACTLY as: "<source name> [S<scene number(s)>] → <local name>" (e.g. "Sarah [S1] → Sophie") — this format is machine-parsed to relabel speakers.
 2. PLACES — every distinct landmark / destination / venue-type that needs localising → a DISTINCT, believable ${targetLanguage}-culture equivalent. NO two different source places may map to the same local place. Also AVOID landing two adjacent navigation/destination scenes on the same KIND of place (e.g. museum-then-museum) — vary the type (a square, a market, a station, a mosque). Key as: "<source place> [@scene] → <local place>".
 3. PRICES — pick ONE notional conversion and give the local amount for EACH money figure in the script, as SPOKEN WORDS in COLLOQUIAL ${targetLanguage} spelling, at realistic CURRENT LOCAL price levels (don't be implausibly cheap), and strictly monotonic so distinct source amounts get distinct local amounts. Note any unit shift (e.g. per-punnet → per-kilo). Key as: "<source amount> → <local amount in words>".
 4. PAIRED CHOICES — wherever a line offers a choice between two items (e.g. two ales, two wines), name TWO genuinely different local options to preserve the contrast. Key as: "<source pair> → <local option A> / <local option B>".
@@ -173,6 +177,55 @@ Return ONLY the ledger.`
     }
   }
   return ''
+}
+
+// ---------------------------------------------------------------------------
+// ledger name map → speaker labels
+// ---------------------------------------------------------------------------
+
+/** Parse the ledger's NAMES section into [{source, scenes|null, local}].
+ *  Entry shape pinned by the glossary prompt: "Sarah [S1] → Sophie". Tolerant
+ *  of separators (. / ;) and scope spellings ("S1", "S5, restaurant",
+ *  "@scene 2"). Returns [] when the ledger is absent or unparseable — speaker
+ *  labels then stay canonical, which is always safe. */
+function parseNameMap(ledger) {
+  if (!ledger) return []
+  // NAMES section = from the NAMES heading to the next section heading.
+  const m = String(ledger).match(/NAMES[^\n]*\n?([\s\S]*?)(?=\n\s*(?:\*{0,2}\s*)?(?:\d+\s*[.)]\s*)?(?:\*{0,2})(?:PLACES|PRICES|PAIRED|POLITENESS)|$)/i)
+  if (!m) return []
+  const entries = []
+  const re = /(\p{Lu}[\p{L}'’-]*(?:\s+\p{Lu}[\p{L}'’-]*)*)\s*\[([^\]]*)\]\s*(?:→|->)\s*(\p{Lu}[\p{L}'’-]*(?:\s+\p{Lu}[\p{L}'’-]*)*)/gu
+  for (const hit of m[1].matchAll(re)) {
+    const scenes = [...hit[2].matchAll(/S\s*(\d+)/gi)].map(s => Number(s[1]))
+    entries.push({ source: hit[1].trim(), scenes: scenes.length ? scenes : null, local: hit[3].trim() })
+  }
+  return entries
+}
+
+/** Apply the ledger's pinned local name to a speaker LABEL, preserving any
+ *  paren annotation ("Sarah (8 am)" → "Sophie (8 am)"). Labels are
+ *  learner-visible in the player, so they must match the names the dialogue
+ *  actually uses. sceneNumber null = match any scene (pod-global contexts). */
+function localiseSpeakerLabel(raw, sceneNumber, nameMap) {
+  if (!raw || !nameMap || !nameMap.length) return raw
+  const base = canonicalSpeakerName(raw)
+  const hit = nameMap.find(e =>
+    e.source.toLowerCase() === base.toLowerCase() &&
+    (sceneNumber == null || !e.scenes || e.scenes.includes(sceneNumber)))
+  return hit ? raw.replace(base, hit.local) : raw
+}
+
+/** Localised label handed to VOICE assignment: carry the canonical name's
+ *  resolved gender along as an explicit (F)/(M) marker — the name heuristic
+ *  knows "Sarah", not necessarily "Lucie" (or a Japanese/Arabic local name).
+ *  assignVoices strips parens for the map key, so the marker never leaks
+ *  into the learner-visible label. */
+function localiseSpeakerForVoices(raw, sceneNumber, nameMap) {
+  const loc = localiseSpeakerLabel(raw, sceneNumber, nameMap)
+  if (loc === raw) return raw
+  if (extractGenderMarker(loc)) return loc // canonical marker carried over in the annotation
+  const g = inferGenderFromName(canonicalSpeakerName(raw)) || extractGenderMarker(raw)
+  return g ? `${loc} (${g.toUpperCase()})` : loc
 }
 
 // ---------------------------------------------------------------------------
@@ -225,7 +278,11 @@ async function podHasAudio(podId) {
 
 /** Upsert the listening_pods header row (speakers + metadata). */
 async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canonicalScenes, knownLang, targetLang, ledger }) {
-  const rawSpeakers = [...new Set(canonicalScenes.flatMap(s => s.lines.map(l => l.speaker).filter(Boolean)))]
+  // Voice-map keys must match the (localised) labels written on sentence rows —
+  // phase8 resolves canonicalSpeakerName(sentence.speaker) against these keys.
+  const nameMap = parseNameMap(ledger)
+  const rawSpeakers = [...new Set(canonicalScenes.flatMap(s =>
+    s.lines.map(l => l.speaker && localiseSpeakerForVoices(l.speaker, s.number, nameMap)).filter(Boolean)))]
   // Voices are an AUDIO-phase concern. Don't let a missing voice pool block
   // draft text generation — degrade gracefully and flag it for later.
   let speakers, voiceNote = null
@@ -239,11 +296,14 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
   const sections = canonicalScenes.map(s => ({
     number: s.number, label: s.label, title: s.title, subtitle: s.subtitle, sentence_count: s.lines.length,
   }))
+  // Preserve scene_hashes (the sync diff baseline) across header re-writes.
+  const { data: existing } = await supabase.from('listening_pods').select('metadata').eq('id', podId).maybeSingle()
+  const priorHashes = (existing && existing.metadata && existing.metadata.scene_hashes) || {}
   const row = {
     id: podId, course_code: courseCode, pod_type: 'core', slug: podSlug,
     title: `${targetLanguage} Listening Pods — Pod 0`,
     speakers,
-    metadata: { sections, generated_from: 'canonical_pod_scenarios', status: 'draft', consistency_ledger: ledger || null },
+    metadata: { sections, generated_from: 'canonical_pod_scenarios', status: 'draft', consistency_ledger: ledger || null, name_map: nameMap.length ? nameMap : null, scene_hashes: priorHashes },
     source_file: 'generated:canonical',
     updated_at: new Date().toISOString(),
   }
@@ -283,6 +343,74 @@ async function deleteAllSentences(podId) {
   if (error) throw new Error(`sentence wipe: ${error.message}`)
 }
 
+/** Wipe a single scene's sentences (sync mode — only the changed scene). */
+async function deleteSceneSentences(podId, sceneNumber) {
+  const { error } = await supabase.from('listening_pod_sentences')
+    .delete().eq('pod_id', podId).eq('scene_number', sceneNumber)
+  if (error) throw new Error(`scene wipe (${sceneNumber}): ${error.message}`)
+}
+
+/** Stable content hash of a canonical scene (speaker + English per line). The
+ *  diff key for `sync`: same hash ⇒ nothing to re-flex for this scene. */
+function sceneHash(scene) {
+  const basis = scene.lines.map(l => `${l.speaker}${l.english_text}`).join('')
+  return crypto.createHash('sha1').update(basis).digest('hex').slice(0, 16)
+}
+
+/** Existing pod sentences grouped by scene number (for bootstrap detection). */
+async function loadExistingByScene(podId) {
+  const { data, error } = await supabase.from('listening_pod_sentences')
+    .select('scene_number, sentence_number, speaker, known_text').eq('pod_id', podId)
+  if (error) throw new Error(`load existing: ${error.message}`)
+  const m = new Map()
+  for (const r of (data || [])) {
+    if (!m.has(r.scene_number)) m.set(r.scene_number, [])
+    m.get(r.scene_number).push(r)
+  }
+  return m
+}
+
+/** Bootstrap change detection for pods generated before scene_hashes existed:
+ *  names/details are localised (Sarah→Camille) so we can't compare English
+ *  verbatim — the stable signal is the LINE COUNT. A scene whose canonical line
+ *  count differs from the live pod has definitely changed. (Once a scene has a
+ *  stored hash, detection is exact; this only covers the first sync, and only
+ *  misses a count-neutral edit — which the next, hash-based, sync catches.) */
+function sceneChangedByContent(scene, existingLines) {
+  if (!existingLines) return true
+  return existingLines.length !== scene.lines.length
+}
+
+/** Re-sequence global_order across the whole pod (line counts shift when a
+ *  scene grows/shrinks). Updates only rows whose number actually changed. */
+async function restampGlobalOrder(podId) {
+  const { data, error } = await supabase.from('listening_pod_sentences')
+    .select('id, scene_number, sentence_number, global_order')
+    .eq('pod_id', podId).order('scene_number').order('sentence_number')
+  if (error) throw new Error(`restamp load: ${error.message}`)
+  let go = 0, changed = 0
+  for (const r of (data || [])) {
+    go += 1
+    if (r.global_order !== go) {
+      const { error: e } = await supabase.from('listening_pod_sentences')
+        .update({ global_order: go }).eq('id', r.id)
+      if (e) throw new Error(`restamp ${r.id}: ${e.message}`)
+      changed += 1
+    }
+  }
+  return changed
+}
+
+/** Merge scene→hash map into the pod's metadata.scene_hashes (preserving the
+ *  rest of metadata). The persisted record of "what canonical this pod reflects". */
+async function updatePodSceneHashes(podId, hashes) {
+  const { data, error } = await supabase.from('listening_pods').select('metadata').eq('id', podId).maybeSingle()
+  if (error) throw new Error(`hash load: ${error.message}`)
+  const metadata = { ...(data?.metadata || {}), scene_hashes: hashes }
+  const { error: e } = await supabase.from('listening_pods').update({ metadata }).eq('id', podId)
+  if (e) throw new Error(`hash write: ${e.message}`)
+}
+
 // ---------------------------------------------------------------------------
 // orchestration
 // ---------------------------------------------------------------------------
@@ -294,7 +422,7 @@ async function deleteAllSentences(podId) {
  * @returns {Promise<{podId, courseCode, totalScenes, alreadyDone, generatedNow,
  *   remaining, more_remaining, cultureSource, warnings, scenesDone:number[]}>}
  */
-async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, deadlineMs = Infinity, maxScenes = Infinity, log = () => {} }) {
+async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, mode, deadlineMs = Infinity, maxScenes = Infinity, log = () => {} }) {
   const start = Date.now()
   const podId = `${courseCode}:${podSlug}`
   const course = await loadCourse(courseCode)
@@ -310,30 +438,41 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
   const canonicalScenes = await loadCanonicalScenes(podSlug)
   if (canonicalScenes.length === 0) throw new Error(`no canonical scenarios for pod_slug=${podSlug}`)
 
-  if (!force && await podHasAudio(podId)) {
-    throw new Error(`${podId} already has audio — refusing to regenerate without force`)
+  // mode: 'full'  = clean rebuild (today's `force`: wipe + re-flex every scene)
+  //       'sync'  = incremental: diff canonical vs the live pod, re-flex ONLY
+  //                 changed/new/removed scenes, preserving everything else + its
+  //                 audio (better×simpler×cheaper — a canonical tweak costs one
+  //                 scene, not the whole pod across every language)
+  //       'resume'= default: generate only not-yet-generated scenes; refuse a
+  //                 pod that already has audio (the original safety behaviour)
+  mode = mode || (force ? 'full' : 'resume')
+  if (mode === 'sync') {
+    return syncPodToCanonical({ podId, courseCode, podSlug, course, targetVariant, targetLanguage, knownLanguage, canonicalScenes, maxScenes, deadlineMs, start, log })
   }
 
-  // force = clean-slate reset: wipe the pod's sentences so a re-flex can't leave
-  // orphans from a differently-structured prior pod, or stale audio on changed
-  // text. Resumable poll calls pass force only on the FIRST pass (see PodsView);
-  // later passes resume with force=false against the now-empty/no-audio pod.
-  if (force) await deleteAllSentences(podId)
+  if (mode !== 'full' && await podHasAudio(podId)) {
+    throw new Error(`${podId} already has audio — use mode:'sync' to update incrementally, or force/mode:'full' to rebuild`)
+  }
 
-  const done = force ? new Set() : await generatedSceneNumbers(podId)
+  if (mode === 'full') await deleteAllSentences(podId)
+
+  const done = mode === 'full' ? new Set() : await generatedSceneNumbers(podId)
   const { notes: cultureNotes, source: cultureSource } = await getCultureNotes(targetVariant)
 
   // Cross-scene consistency ledger: build once per pod, persist in metadata,
   // reuse on resume so every scene (and every resumed endpoint call) pins the
   // same names/places/prices.
   const { data: existingPod } = await supabase.from('listening_pods').select('metadata').eq('id', podId).maybeSingle()
-  let ledger = (!force && existingPod && existingPod.metadata && existingPod.metadata.consistency_ledger) || ''
+  let ledger = (mode !== 'full' && existingPod && existingPod.metadata && existingPod.metadata.consistency_ledger) || ''
   if (!ledger) {
     ledger = await buildPodGlossary({ targetLanguage, cultureNotes, canonicalScenes })
   }
-  log(`[${podId}] target=${targetLanguage} (${targetVariant}) known=${knownLanguage} · culture=${cultureSource} · ledger=${ledger ? ledger.length + 'ch' : 'none'} · ${canonicalScenes.length} scenes, ${done.size} done`)
+  log(`[${podId}] mode=${mode} target=${targetLanguage} (${targetVariant}) known=${knownLanguage} · culture=${cultureSource} · ledger=${ledger ? ledger.length + 'ch' : 'none'} · ${canonicalScenes.length} scenes, ${done.size} done`)
 
   const { voiceNote } = await upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canonicalScenes, knownLang: course.known_lang, targetLang: course.target_lang, ledger })
+
+  // Hash baseline: start fresh on full, preserve on resume.
+  const hashes = mode === 'full' ? {} : { ...(existingPod?.metadata?.scene_hashes || {}) }
 
   const pending = canonicalScenes.filter(s => !done.has(s.number))
   const warnings = []
@@ -347,33 +486,171 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
     log(`  scene ${scene.number} [${scene.label}] ${scene.title} — generating (${scene.lines.length} lines)…`)
     const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger })
     const n = await writeSceneSentences({ podId, scene, lines })
+    hashes[scene.number] = sceneHash(scene)
     generatedNow++
     scenesDone.push(scene.number)
     for (const x of w) warnings.push(`scene ${scene.number}: ${x}`)
     log(`    ✓ ${n} sentences written${w.length ? ` (${w.length} warnings)` : ''}`)
   }
 
+  if (scenesDone.length) await updatePodSceneHashes(podId, hashes)
+
   const remaining = pending.length - generatedNow
   return {
-    podId, courseCode, targetLanguage, knownLanguage,
+    podId, courseCode, targetLanguage, knownLanguage, mode,
     totalScenes: canonicalScenes.length, alreadyDone: done.size,
     generatedNow, remaining, more_remaining: remaining > 0,
     cultureSource, warnings, scenesDone,
   }
 }
 
-module.exports = { generatePodBatch, generateScene, validateScene, parseLines, loadCanonicalScenes, loadCourse, buildPodGlossary }
+/**
+ * sync mode — propagate a canonical edit surgically. Diffs each canonical scene
+ * (by content hash) against what the live pod last reflects; re-flexes ONLY the
+ * scenes that changed (delete + re-translate that scene), deletes scenes dropped
+ * from canonical, re-stamps global_order, and leaves every untouched scene's
+ * text AND audio exactly as it was. Reuses the pod's consistency ledger so a
+ * re-flexed scene stays coherent with its neighbours.
+ *
+ * Audio is preserved automatically: only re-flexed scenes get null audio (new
+ * rows), so a downstream recolour + /generate-pods fills just those. Run
+ * recolour after sync — upsertPodRow reassigns draft voices for any NEW speaker.
+ */
+async function syncPodToCanonical({ podId, courseCode, podSlug, course, targetVariant, targetLanguage, knownLanguage, canonicalScenes, maxScenes, deadlineMs, start, log, allowHandAuthored = false }) {
+  const { data: pod } = await supabase.from('listening_pods').select('metadata, source_file').eq('id', podId).maybeSingle()
+  if (!pod) {
+    log(`[${podId}] no existing pod — running a full build instead of sync`)
+    return generatePodBatch({ courseCode, podSlug, force: true, deadlineMs, maxScenes, log })
+  }
+  // SAFETY (totality of impact): a hand-authored pod (synced from a markdown
+  // source, not generated from canonical) holds human-crafted text. Machine
+  // sync would overwrite changed scenes with generated translation — different
+  // names/register than the human scenes around them. Refuse: the canonical
+  // edit should reach these via their SOURCE markdown, not a re-flex.
+  const handAuthored = pod.source_file && !String(pod.source_file).startsWith('generated:')
+  if (handAuthored && !allowHandAuthored) {
+    throw new Error(`${podId} is hand-authored (source: ${pod.source_file}) — sync would overwrite human-crafted scenes. Edit the source markdown + re-sync, or pass allowHandAuthored to override.`)
+  }
 
-// CLI: node services/pod-dialogue-generator.cjs <courseCode> [--force] [--max=N]
+  const storedHashes = (pod.metadata && pod.metadata.scene_hashes) || null
+  const existingByScene = await loadExistingByScene(podId)
+  const { notes: cultureNotes, source: cultureSource } = await getCultureNotes(targetVariant)
+  let ledger = (pod.metadata && pod.metadata.consistency_ledger) || ''
+  if (!ledger) ledger = await buildPodGlossary({ targetLanguage, cultureNotes, canonicalScenes })
+
+  // Diff: which canonical scenes changed?
+  const changed = []
+  for (const scene of canonicalScenes) {
+    const h = sceneHash(scene)
+    const isChanged = (storedHashes && storedHashes[scene.number] != null)
+      ? storedHashes[scene.number] !== h
+      : sceneChangedByContent(scene, existingByScene.get(scene.number))
+    if (isChanged) changed.push(scene)
+  }
+  const canonicalNums = new Set(canonicalScenes.map(s => s.number))
+  const removedScenes = [...existingByScene.keys()].filter(n => !canonicalNums.has(n))
+
+  // Refresh the header (preserves scene_hashes + ledger; picks up any NEW speaker).
+  const { voiceNote } = await upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canonicalScenes, knownLang: course.known_lang, targetLang: course.target_lang, ledger })
+  const warnings = []
+  if (voiceNote) warnings.push(voiceNote)
+
+  log(`[${podId}] mode=sync target=${targetLanguage} (${targetVariant}) · culture=${cultureSource} · ${changed.length}/${canonicalScenes.length} scenes changed${removedScenes.length ? `, ${removedScenes.length} removed` : ''}`)
+
+  // Final hash map: unchanged scenes stamp immediately (esp. bootstrap, where
+  // there was no stored hash); changed scenes stamp only after a successful
+  // re-flex, so an interrupted batch re-detects them next call.
+  const finalHashes = { ...(storedHashes || {}) }
+  for (const scene of canonicalScenes) if (!changed.includes(scene)) finalHashes[scene.number] = sceneHash(scene)
+  for (const n of removedScenes) delete finalHashes[n]
+
+  const regenerated = []
+  let did = 0
+  for (const scene of changed) {
+    if (did >= maxScenes) break
+    if (Date.now() - start >= deadlineMs && did > 0) break
+    log(`  scene ${scene.number} [${scene.label}] CHANGED — re-flexing (${scene.lines.length} lines)…`)
+    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger })
+    await deleteSceneSentences(podId, scene.number)
+    await writeSceneSentences({ podId, scene, lines })
+    finalHashes[scene.number] = sceneHash(scene)
+    regenerated.push(scene.number)
+    did++
+    for (const x of w) warnings.push(`scene ${scene.number}: ${x}`)
+    log(`    ✓ scene ${scene.number} re-flexed (${lines.length} lines)`)
+  }
+  for (const n of removedScenes) { await deleteSceneSentences(podId, n); log(`  scene ${n} removed from canonical — deleted`) }
+
+  const restamped = await restampGlobalOrder(podId)
+  await updatePodSceneHashes(podId, finalHashes)
+
+  const remaining = changed.length - regenerated.length
+  return {
+    podId, courseCode, targetLanguage, knownLanguage, mode: 'sync',
+    totalScenes: canonicalScenes.length,
+    changedScenes: changed.map(s => s.number), regenerated, removedScenes,
+    skipped: canonicalScenes.length - changed.length,
+    restamped, remaining, more_remaining: remaining > 0,
+    cultureSource, warnings, scenesDone: regenerated,
+  }
+}
+
+/** One-off repair for pods generated before speaker labels followed the ledger
+ *  name map: relabel existing sentence rows from the STORED ledger (no re-flex,
+ *  no audio touched) and rebuild the header so voice-map keys match. */
+async function relabelPodSpeakers({ courseCode, podSlug = 'pod-0', log = () => {} }) {
+  const podId = `${courseCode}:${podSlug}`
+  const course = await loadCourse(courseCode)
+  const { data: pod } = await supabase.from('listening_pods').select('metadata, source_file').eq('id', podId).maybeSingle()
+  if (!pod) throw new Error(`${podId} not found`)
+  if (pod.source_file && !String(pod.source_file).startsWith('generated:')) {
+    throw new Error(`${podId} is hand-authored (source: ${pod.source_file}) — relabel only applies to generated pods`)
+  }
+  const ledger = (pod.metadata && pod.metadata.consistency_ledger) || ''
+  const nameMap = parseNameMap(ledger)
+  if (!nameMap.length) { log(`[${podId}] no NAMES entries in ledger — nothing to relabel`); return { podId, relabelled: 0, nameMap } }
+  const { data: rows, error } = await supabase.from('listening_pod_sentences')
+    .select('id, scene_number, speaker').eq('pod_id', podId)
+  if (error) throw new Error(`relabel load: ${error.message}`)
+  let relabelled = 0
+  for (const r of rows || []) {
+    const loc = localiseSpeakerLabel(r.speaker, r.scene_number, nameMap)
+    if (loc !== r.speaker) {
+      const { error: e } = await supabase.from('listening_pod_sentences').update({ speaker: loc }).eq('id', r.id)
+      if (e) throw new Error(`relabel ${r.id}: ${e.message}`)
+      log(`  ${r.id}: "${r.speaker}" → "${loc}"`)
+      relabelled++
+    }
+  }
+  const targetVariant = courseCode.split('_for_')[0] || course.target_lang
+  const canonicalScenes = await loadCanonicalScenes(podSlug)
+  await upsertPodRow({ podId, courseCode, podSlug, targetLanguage: languageName(targetVariant), canonicalScenes, knownLang: course.known_lang, targetLang: course.target_lang, ledger })
+  log(`[${podId}] relabelled ${relabelled} rows; header speakers rebuilt (${nameMap.length} name-map entries)`)
+  return { podId, relabelled, nameMap }
+}
+
+module.exports = { generatePodBatch, generateScene, validateScene, parseLines, loadCanonicalScenes, loadCourse, buildPodGlossary, parseNameMap, localiseSpeakerLabel, relabelPodSpeakers }
+
+// CLI: node services/pod-dialogue-generator.cjs <courseCode> [--force|--sync|--relabel] [--max=N]
+//   --force    full rebuild (wipe + re-flex all)
+//   --sync     incremental: re-flex only canonical scenes that changed
+//   --relabel  repair-only: apply the stored ledger's name map to existing
+//              speaker labels (no re-flex, no audio touched)
 if (require.main === module) {
   require('dotenv').config()
   const courseCode = process.argv.find(a => !a.startsWith('--') && a.includes('_'))
   const force = process.argv.includes('--force')
+  const mode = process.argv.includes('--sync') ? 'sync' : undefined
   const maxArg = process.argv.find(a => a.startsWith('--max='))
   const maxScenes = maxArg ? Number(maxArg.slice(6)) : Infinity
-  if (!courseCode) { console.error('usage: node services/pod-dialogue-generator.cjs <courseCode> [--force] [--max=N]'); process.exit(1) }
+  if (!courseCode) { console.error('usage: node services/pod-dialogue-generator.cjs <courseCode> [--force|--sync|--relabel] [--max=N]'); process.exit(1) }
   ;(async () => {
-    const r = await generatePodBatch({ courseCode, force, maxScenes, log: (...a) => console.log(...a) })
+    if (process.argv.includes('--relabel')) {
+      const r = await relabelPodSpeakers({ courseCode, log: (...a) => console.log(...a) })
+      console.log('\nRESULT:', JSON.stringify(r, null, 1))
+      return
+    }
+    const r = await generatePodBatch({ courseCode, force, mode, maxScenes, log: (...a) => console.log(...a) })
     console.log('\nRESULT:', JSON.stringify({ ...r, warnings: r.warnings.length }, null, 1))
     if (r.warnings.length) { console.log('\nwarnings:'); r.warnings.forEach(w => console.log('  - ' + w)) }
   })().catch(e => { console.error('FATAL:', e.message); process.exit(1) })

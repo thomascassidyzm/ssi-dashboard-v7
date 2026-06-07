@@ -28,6 +28,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 
 const { createClient } = require('@supabase/supabase-js')
 const podExplainer = require('./pod-explainer-generator.cjs')
+const { resolveExplainerLanguage } = require('../tools/pod-voice-coverage.cjs')
 
 // =============================================================================
 // CONFIG
@@ -37,7 +38,12 @@ const podExplainer = require('./pod-explainer-generator.cjs')
 // useful for testing whether stubborn xAI ECONNRESETs are voice-endpoint-specific
 // (e.g. retry the same failed sentence with public 'leo' / 'rex' to compare).
 const EXPLAINER_VOICE_ID = process.env.VOICE_ID || 'gfzdpspr5fdp'
-const EXPLAINER_LANGUAGE = 'auto'         // xAI multilingual handles code-switching
+// Explainer language is now resolved PER COURSE to the target language (fr,
+// pt-PT, es-MX, …) via the coverage map — Tom-validated 2026-06-07 that an
+// explicit target cue pronounces ambiguous tokens ("bien", "pain") far better
+// than 'auto'. Falls back to 'auto' for languages xAI can't speak (Azure tail).
+// This also changes the course_audio.language dedup key, so switching a course
+// from the old 'auto' clips forces fresh synthesis (no stale reuse).
 // IMPORTANT: must be 'pod_explainer'. Using role='presentation' here makes
 // these rows indistinguishable from course-intro presentation audio, and the
 // /regenerate-presentations endpoint in phase8-audio-v13.cjs deletes any
@@ -96,30 +102,45 @@ const TARGET_POD_SUFFIX = 'pod-0'
 // Stored explainer_text in DB stays clean prose for dashboard display; the
 // quoted form is rebuilt at TTS time from explainer_decomposition.
 
-function buildExplainerNarration(decomposition, explainerText) {
-  // The calibrated-rule prompt now AUTHORS explainer_text as the exact spoken
-  // line — including the " — so '…'" / "— literally '…'" tail and the
-  // single-line usage notes for fixed expressions ("Izvolite — a waiter's
-  // polite ..."). Rebuilding the old P5 quoted form ("X". means Y.) from the
-  // decomposition would mangle those: the tail and the usage note live in
-  // explainer_text, not in the chunk pairs. So when we have a non-empty
-  // explainer_text, TTS it VERBATIM.
-  if (typeof explainerText === 'string' && explainerText.trim()) {
-    return explainerText.trim()
-  }
-  // Fallback for legacy rows that have only a structured decomposition and no
-  // explainer_text: rebuild the P5 quoted form ("X". means Y. "A". means B.).
-  // Returns null if decomposition is empty/malformed — caller then falls back
-  // to whatever explainer_text it has (possibly empty).
-  if (!Array.isArray(decomposition) || decomposition.length === 0) return null
-  const parts = []
-  for (const chunk of decomposition) {
-    if (!chunk || typeof chunk.chunk_target !== 'string' || typeof chunk.chunk_known !== 'string') {
-      return null
+// The sparse rule-3 construction tail ("— so 'from Split I am'" / "— literally
+// 'I ask'") is appended at the end of explainer_text and is NOT present in the
+// structured decomposition. Pull it so the P5 rebuild can keep it.
+function extractConstructionTail(explainerText) {
+  if (typeof explainerText !== 'string') return null
+  const m = explainerText.match(/[—–-]\s*(so|literally)\b[\s\S]*$/i)
+  if (!m) return null
+  return m[0].replace(/^[—–\-]\s*/, '').trim().replace(/[.\s]*$/, '.')
+}
+
+function buildExplainerNarration(decomposition, explainerText, connector = 'means') {
+  // P5 PUNCTUATION FORM (Tom-validated 2026-05-20 across spa+ita; see
+  // reference_ssi_tts_recipe_and_intro_model): double-quote each target chunk
+  // and put a period after it, joined by the localised connector —
+  //   "buongiorno". means good morning. "come stai". means how are you doing.
+  // The quotes+period give xAI an unambiguous discrete-foreign-token cue with
+  // NOTHING to misparse (the SSML <voice xml:lang> approach leaked the word
+  // "voice" in 5-15% of clips). Built from the structured decomposition (the
+  // clean target/known pairs). The rare construction tail lives only in
+  // explainer_text, so we extract + append it. NOTE: verbatim TTS of the clean
+  // dashboard prose would DROP the quote cue, so we rebuild from decomposition
+  // whenever it's present and fall back to verbatim prose only when it isn't.
+  if (Array.isArray(decomposition) && decomposition.length > 0) {
+    const parts = []
+    let ok = true
+    for (const chunk of decomposition) {
+      if (!chunk || typeof chunk.chunk_target !== 'string' || typeof chunk.chunk_known !== 'string') { ok = false; break }
+      parts.push(`"${chunk.chunk_target}". ${connector} ${chunk.chunk_known}.`)
     }
-    parts.push(`"${chunk.chunk_target}". means ${chunk.chunk_known}.`)
+    if (ok && parts.length) {
+      let narration = parts.join(' ')
+      const tail = extractConstructionTail(explainerText)
+      if (tail) narration += ` ${tail}`
+      return narration
+    }
   }
-  return parts.join(' ')
+  // Fallback: no usable decomposition → TTS explainer_text verbatim.
+  if (typeof explainerText === 'string' && explainerText.trim()) return explainerText.trim()
+  return null
 }
 
 // =============================================================================
@@ -258,7 +279,14 @@ async function runTextPass(courseCode) {
 // =============================================================================
 
 async function runAudioPass(courseCode) {
-  log(`[${courseCode}] audio: scanning rows ready for TTS...`)
+  // Localised connector for the P5 narration ("means" for _for_eng, "veut dire"
+  // for _for_fra, …), keyed on the learner (known) half of the course code.
+  const { target, learner } = podExplainer.parseCourseCode(courseCode)
+  const connector = podExplainer.getConnectorForLearnerLang(learner)
+  // Explicit target-language cue (fr / pt-PT / es-MX / …) so ambiguous tokens
+  // pronounce correctly; 'auto' only for languages xAI can't speak.
+  const explainerLanguage = resolveExplainerLanguage(target)
+  log(`[${courseCode}] audio: scanning rows ready for TTS... (connector="${connector}", language="${explainerLanguage}")`)
   // Pull sentences where explainer_text is non-empty AND explainer_audio_id is NULL.
   // Empty explainer_text rows are intentional skips (one-chunk sentences) and
   // shouldn't generate audio. explainer_decomposition is the structured form
@@ -293,16 +321,19 @@ async function runAudioPass(courseCode) {
         // TTS the authored explainer_text VERBATIM (it carries the calibrated
         // tail / usage note). Only legacy rows with no explainer_text fall back
         // to the rebuilt P5-quoted form from the structured decomposition.
-        const narration = buildExplainerNarration(row.explainer_decomposition, row.explainer_text)
+        const narration = buildExplainerNarration(row.explainer_decomposition, row.explainer_text, connector)
         const ttsText = narration || row.explainer_text
         const result = await generatePodAudio({
           courseCode,
           text: ttsText,
-          language: EXPLAINER_LANGUAGE,
+          language: explainerLanguage,
           role: EXPLAINER_ROLE,
           voice: {
             voice_id: EXPLAINER_VOICE_ID,
             provider: EXPLAINER_PROVIDER,
+            // carry the locale so buildPodTTSConfig uses it directly (toBcp47
+            // would strip pt-PT→pt, es-MX→es; the explainer needs the exact cue)
+            locale: explainerLanguage === 'auto' ? null : explainerLanguage,
           },
         })
         const audioId = result.id
