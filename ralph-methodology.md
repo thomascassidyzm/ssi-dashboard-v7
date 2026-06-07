@@ -14,6 +14,24 @@ This methodology doc (ralph-methodology.md) is what to do once the target transl
 
 ---
 
+## The World-Class Breakdown — Quality Bar
+
+A breakdown is world-class only if it satisfies all six. Each is both an audit dimension and a build-time check. (Distilled from the zho_for_eng particle/decomposition rebuild, 2026-06-07.)
+
+1. **Reconstructability is sacred.** Every SEED must rebuild *perfectly, in both languages*, from its own decomposition plus already-taught vocabulary. This is the master rule — most other failures are special cases of breaking it.
+
+2. **Nothing load-bearing is acquired by accident.** Every piece a seed leans on — pronouns, question particles, verbs, connectors — must be *deliberately introduced* before/at that seed (a clean LEGO or a declared component). "Grokable from context" is fine for reinforcement, **never** for the pieces a seed actually needs to be rebuilt.
+
+3. **Particles are construction-features, never units of intention.** Never a bare A-LEGO; taught in-context via overlap, **in the seed's own sense**, silent (`introduce:false`). Multi-sense particles are introduced once *per real usage* — coverage-driven, not a fixed count. (See *Intention-units vs construction-features* below, and synonym-choice §6.) **Coverage rule:** ≥1 chosen context must reconstruct the seed's own use of the particle; a sense the seed uses but you don't teach is an ERROR.
+
+4. **Glosses are honest and whole-intention.** No mis-glosses (才≠"only then", 了≠"already", 把≠"take"), no surface-word particle labels, no grammar metadata. The known side names the *whole communicative intention*.
+
+5. **Don't re-teach the known.** Already-introduced pieces are never re-narrated (non-greedy introduction / fuzzy-availability — a component already taught earlier carries `introduce:false`).
+
+6. **Idiomatic chunks are their own units.** Non-derivable combinations (准备好 = "ready", not "prepare"+"good"; 见过 = "have seen") are taught whole, not as a sum of parts that doesn't add up.
+
+---
+
 ## The Core Philosophy
 
 ### Grammar is INFERRED, Never Taught
@@ -99,6 +117,28 @@ LEGOs (with overlaps allowed):
 ```
 
 The learner sees "importante" alone, then sees it inside "es importante" - the overlap lets them infer the pattern without explanation.
+
+### Intention-units vs construction-features
+
+A language has two kinds of piece, and they are taught oppositely:
+
+- **Units of intention** — what the learner *means* (book, want, speak). The learner forms an intention and reaches for it. These map one-to-one (ZUT), are chosen deliberately, and are atomised as A-LEGOs.
+- **Features of construction** — *how* the target assembles a thought (Chinese 才, 了, 都, 把; particles, aspect markers, structural glue). The learner never forms an intention to "say 才"; they mean a whole thought, and the particle is a texture of how it is built. These are **never atomised and never chosen** — they are absorbed inside whole thoughts.
+
+Introducing a construction-feature as a bare A-LEGO ("才 = only then") is a **category error**: it asks the learner to *mean* something that is not a unit of meaning. That is why such a card never reads naturally — the fix is not a better gloss, it is to stop atomising it.
+
+**Particles are consolidated, not introduced.** A construction-feature's debut is not scheduled at the first seed it happens to appear; it is made salient once the learner already commands enough whole-thoughts that contain it. Placement is *pull, not push* — and the signal the moment has come is that the carrier phrases already exist in earlier baskets.
+
+**Contrastive twin debut.** Realise the consolidation as two (or three) overlapping M-LEGOs that share the feature — A+B and A+C, where A is the particle (constant) and B/C are already-known frames:
+
+```
+她才开始     = "she's only just started"   +   我现在才懂   = "I get it only now"
+把它放在桌子上 = "put it on the table"        +   把手举起来   = "raise your hand up"
+```
+
+Both headword cards are whole, natural thoughts; only the particle is new on each; the learner infers the feature by triangulation. The two English glosses are deliberately *near-but-different* so the learner experiences "English splits this, the target unifies it" at first contact — pre-teaching the one-to-many mapping with no rule stated.
+
+**Gloss the whole intention, never the sub-word.** Glossing the particle with an English surface word ("just", "only") smuggles a fork back in — "just" maps to 就/刚/只/才 by intention. The gloss names the whole thought ("she's-only-just-started"), not the particle.
 
 ---
 
@@ -404,6 +444,8 @@ Introducing "now" (现在) early when there's nothing to combine with would be l
 ## ZUT (Zero Uncertainty Test)
 
 Same KNOWN → same TARGET. Always.
+
+**ZUT runs in the production direction, on intentions.** One intention (KNOWN) → one form (TARGET), so the generating learner never forks. The reverse — one TARGET rendered by several natural English phrasings (Chinese 才 ≈ "only just / only now / not until") — is the *reception* direction and is harmless. Never atomise a construction-feature, or contort its gloss, just because its English shadow varies (see *Intention-units vs construction-features*).
 
 ### Violation Example
 ```

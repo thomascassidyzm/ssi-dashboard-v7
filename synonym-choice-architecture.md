@@ -263,11 +263,15 @@ An LLM applying the methodology to a new pair must read the L1 and the target se
 
 ## 6. Grammatical-particle M-LEGO upchunking with "as in" pragmatic anchors
 
+**The layer beneath this principle.** A language has *units of intention* (what the learner means — atomised, one-to-one, chosen deliberately) and *features of construction* (how the target assembles a thought — never atomised, never chosen, absorbed inside whole thoughts). Grammatical particles are construction-features: the learner never forms an intention to "say 吗" or "say 才", only to mean a whole thought the particle helps build. Atomising one is a *category error*, which is why a bare particle card never reads naturally. ZUT lives in the *production* direction on intentions, so a particle's one-target-to-many-English *reception* shadow is harmless — it is exactly what the carriers below exploit. Two consequences follow: (a) **consolidate, don't introduce** — a particle is made salient once enough host-thoughts already contain it (placement is *pull, not push*; the signal is that carrier phrases already exist in earlier baskets); (b) **gloss the whole intention, never the sub-word** — "just/only" imports the very fork ZUT forbids, so the gloss names the whole thought, not the particle.
+
 **Principle.** Grammatical particles never get atomic LEGOs. They appear inside M-LEGOs whose L1 prompts use "as in <fuller contextual phrase>" to disambiguate **pragmatic context** (not grammatical function). Multiple M-LEGOs containing the same particle in varied content provide overlap-inference for the particle's function.
 
 The "as in" clause is doing **pragmatic specificity**, not grammar description. "do you speak Chinese? — as in 'do you speak Chinese, I'd love someone to practise with'" tells the learner which version of "do you speak Chinese?" this is. It never says "turns the statement into a Y/N question". The no-grammar-metadata rule forbids the latter.
 
 After 3-5 M-LEGOs containing the same particle in varied content, the learner has both (a) the pragmatic shading of each individual move, and (b) the abstract "X 吗" / "X-ban" / "X-en" pattern. Atomic productivity of the particle emerges via inference, even though the particle never has an atomic LEGO of its own.
+
+**First-exposure realisation: the contrastive twin debut.** The particle's *first* appearance is itself two (or three) overlapping carriers that share it — A+B and A+C, A constant, B/C already-known — never a bare debut followed later by carriers. e.g. 她才开始 "she's only just started" + 我现在才懂 "I get it only now"; 把它放在桌子上 "put it on the table" + 把手举起来 "raise your hand up". Choose the frame geometry by particle type: for a content-bearing particle pair *different verb classes* (才 with an action verb vs a cognition verb) so it reads as general; for a structural one hold the *object* constant and vary only the verb (把 + same object, different verb) to isolate its move. Keep the English glosses near-but-different so the collapse is felt, not stated.
 
 ### zho_for_eng
 
