@@ -254,6 +254,17 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                   </svg>
                 </button>
+                <!-- Presentation (intro narration) edit + regen -->
+                <button
+                  v-if="item.type === 'intro' || item.type === 'component_intro'"
+                  class="w-6 h-6 flex items-center justify-center rounded text-purple-400 hover:text-white hover:bg-purple-500 hover:bg-opacity-30 transition-colors"
+                  title="Edit intro narration & regenerate audio"
+                  @click.stop="emit('presentation-edit', item)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
+                  </svg>
+                </button>
                 <!-- F (target1) quick-flag -->
                 <button
                   v-if="item.target1_audio_uuid"
@@ -447,6 +458,7 @@ const emit = defineEmits<{
     totalItems: number
   }]
   'item-edit': [item: ScriptItem]
+  'presentation-edit': [item: ScriptItem]
   'audio-flag': [item: ScriptItem, track: 'target1' | 'target2']
   'audio-regen': [item: ScriptItem, track: 'target1' | 'target2', audioUuid: string]
   'phrase-flag': [item: ScriptItem]

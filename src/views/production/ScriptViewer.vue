@@ -363,6 +363,7 @@
           :flagged-phrase-ids="journeyFlaggedPhraseIds"
           @playback-state="onJourneyPlaybackState"
           @item-edit="onJourneyItemEdit"
+          @presentation-edit="onJourneyPresentationEdit"
           @audio-flag="onJourneyAudioFlag"
           @audio-regen="onJourneyAudioRegen"
           @phrase-flag="onJourneyPhraseFlag"
@@ -664,6 +665,106 @@
       @close="closePhraseEditModal"
       @save="savePhraseEdit"
     />
+
+    <!-- Presentation (Intro Narration) Edit + Regenerate Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div
+          v-if="presentationModalVisible"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
+          @click.self="closePresentationModal"
+        >
+          <div class="bg-slate-800 rounded-lg shadow-xl max-w-2xl w-full">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-700">
+              <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
+                </svg>
+                Intro Narration
+                <span class="text-sm font-mono text-slate-400">{{ presentationLegoId }}</span>
+              </h3>
+              <button @click="closePresentationModal" class="text-slate-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Body -->
+            <div class="px-6 py-5 space-y-4">
+              <div class="text-sm text-slate-400">
+                <span class="text-slate-300">{{ presentationKnownText }}</span>
+                <span class="mx-2 text-slate-600">&rarr;</span>
+                <span class="text-white">{{ presentationTargetText }}</span>
+              </div>
+
+              <!-- Loading current text -->
+              <div v-if="presentationLoading" class="flex items-center gap-3 text-slate-400 text-sm py-6">
+                <svg class="w-5 h-5 animate-spin text-purple-400" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Loading current narration text...
+              </div>
+
+              <template v-else>
+                <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide">
+                  Presentation text (spoken in the known language)
+                </label>
+                <textarea
+                  v-model="presentationText"
+                  rows="4"
+                  class="w-full px-3 py-2 text-sm bg-slate-900 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none resize-y"
+                  placeholder="The Chinese for 'to want', is: ... '想' ... '想'"
+                ></textarea>
+                <p class="text-xs text-slate-500">
+                  This is the authoritative store for the intro audio. Saving regenerates only this LEGO's clip.
+                </p>
+
+                <!-- Result / audition -->
+                <div v-if="presentationResult" class="bg-emerald-900 bg-opacity-20 border border-emerald-800 rounded-lg p-3 space-y-2">
+                  <div class="text-sm text-emerald-300">
+                    Regenerated ({{ presentationResult.duration_ms }}ms){{ presentationResult.created ? ' — created new row' : '' }}.
+                  </div>
+                  <audio
+                    v-if="presentationAudioUrl"
+                    :src="presentationAudioUrl"
+                    controls
+                    class="w-full h-9"
+                  ></audio>
+                </div>
+
+                <div v-if="presentationError" class="bg-red-900 bg-opacity-20 border border-red-800 rounded-lg p-3 text-sm text-red-300">
+                  {{ presentationError }}
+                </div>
+              </template>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-700">
+              <button
+                @click="closePresentationModal"
+                class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                Close
+              </button>
+              <button
+                @click="savePresentationAndRegen"
+                :disabled="presentationBusy || presentationLoading || !presentationText.trim()"
+                class="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+              >
+                <svg v-if="presentationBusy" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {{ presentationBusy ? 'Regenerating...' : 'Save & regenerate audio' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
 
     <!-- Batch Delete Confirmation Modal -->
     <Teleport to="body">
@@ -2198,6 +2299,110 @@ const onJourneyItemEdit = (item: any) => {
     target2_audio_uuid: item.target2_audio_uuid,
   };
   phraseEditModalVisible.value = true;
+};
+
+// =========================================================================
+// Presentation (intro narration) edit + surgical per-LEGO regen
+// =========================================================================
+const presentationModalVisible = ref(false);
+const presentationLegoId = ref<string>('');
+const presentationKnownText = ref<string>('');
+const presentationTargetText = ref<string>('');
+const presentationText = ref<string>('');
+const presentationLoading = ref(false);
+const presentationBusy = ref(false);
+const presentationError = ref<string | null>(null);
+const presentationResult = ref<{ audio_id: string; duration_ms: number; created: boolean } | null>(null);
+const presentationAudioUrl = ref<string | null>(null);
+
+const onJourneyPresentationEdit = async (item: any) => {
+  const legoId = item.legoId || item.lego_id;
+  if (!legoId) return;
+  presentationLegoId.value = legoId;
+  presentationKnownText.value = item.known_text || '';
+  presentationTargetText.value = item.target_text || '';
+  presentationText.value = '';
+  presentationError.value = null;
+  presentationResult.value = null;
+  presentationAudioUrl.value = null;
+  presentationModalVisible.value = true;
+  presentationLoading.value = true;
+
+  // Fetch the current authoritative presentation text (course_audio.text)
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const resp = await fetch(
+      `${apiBaseUrl}/api/production/${courseCode.value}/presentation/${encodeURIComponent(legoId)}`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    );
+    if (resp.ok) {
+      const data = await resp.json();
+      presentationText.value = data.text || '';
+    }
+  } catch (err) {
+    console.error('Failed to load presentation text:', err);
+  } finally {
+    presentationLoading.value = false;
+  }
+};
+
+const closePresentationModal = () => {
+  presentationModalVisible.value = false;
+};
+
+const savePresentationAndRegen = async () => {
+  if (presentationBusy.value || !presentationText.value.trim()) return;
+  presentationBusy.value = true;
+  presentationError.value = null;
+  presentationResult.value = null;
+  presentationAudioUrl.value = null;
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const resp = await fetch(
+      `${apiBaseUrl}/api/audio/regenerate-presentation/${courseCode.value}/${encodeURIComponent(presentationLegoId.value)}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ text: presentationText.value.trim() }),
+      }
+    );
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      throw new Error(err.error || `Regeneration failed (${resp.status})`);
+    }
+    const result = await resp.json();
+    presentationResult.value = {
+      audio_id: result.audio_id,
+      duration_ms: result.duration_ms,
+      created: !!result.created,
+    };
+
+    // Fetch a signed URL so the reviewer can audition the fresh clip
+    if (result.audio_id) {
+      try {
+        const urlResp = await fetch(
+          `${apiBaseUrl}/api/production/${courseCode.value}/audio/${result.audio_id}/url`,
+          { headers: { 'ngrok-skip-browser-warning': 'true' } }
+        );
+        if (urlResp.ok) {
+          const urlData = await urlResp.json();
+          presentationAudioUrl.value = urlData.url || null;
+        }
+      } catch (e) {
+        // Non-fatal: regen succeeded, just couldn't fetch audition URL
+      }
+    }
+
+    console.log(`Regenerated presentation for ${presentationLegoId.value} → audio ${result.audio_id} (${result.duration_ms}ms)`);
+    // Refresh the journey so the intro item picks up the new audio
+    reloadLearningJourney();
+  } catch (err) {
+    console.error('Presentation regen failed:', err);
+    presentationError.value = err instanceof Error ? err.message : 'Regeneration failed';
+  } finally {
+    presentationBusy.value = false;
+  }
 };
 
 // Flagged audio UUID tracking for journey view

@@ -1978,6 +1978,43 @@ app.get('/api/production/:courseCode/introductions', async (req, res) => {
   }
 })
 
+// Get the presentation (intro) text + audio for a single LEGO.
+// Reads the AUTHORITATIVE store (course_audio.text, role='presentation') — the same
+// text the audio path generates from — so the Script Viewer edit affordance shows
+// exactly what was/will-be spoken (not the orphaned S3 introductions.json).
+// GET /api/production/:courseCode/presentation/:legoId
+app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const db = supabaseClient.getClient()
+    const { data, error } = await db
+      .from('course_audio')
+      .select('id, text, s3_key, duration_ms')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .eq('lego_id', legoId)
+      .maybeSingle()
+    if (error) throw error
+
+    const isPending = !data?.s3_key || data.s3_key.startsWith('pending/')
+    res.json({
+      success: true,
+      lego_id: legoId,
+      exists: !!data,
+      text: data?.text || null,
+      audio_id: data?.id || null,
+      duration_ms: data?.duration_ms || null,
+      hasAudio: !!data && !isPending
+    })
+  } catch (err) {
+    logger.error(`Failed to get presentation for ${courseCode}/${legoId}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Get course manifest
 // Priority: 1) Database (if course structure exists), 2) S3 static file, 3) Stub
 app.get('/api/production/:courseCode/manifest', async (req, res) => {
@@ -3583,11 +3620,14 @@ app.post('/api/admin/pods/generate', async (req, res) => {
   const courseCode = String(req.body?.courseCode || '').trim()
   const slug = String(req.body?.slug || 'pod-0').trim()
   const force = req.body?.force === true
+  // mode: 'full' | 'sync' | 'resume'. 'sync' propagates a canonical edit
+  // surgically (re-flex only changed scenes, preserve the rest + its audio).
+  const mode = ['full', 'sync', 'resume'].includes(req.body?.mode) ? req.body.mode : undefined
   if (!courseCode) return res.status(400).json({ error: 'courseCode required' })
   try {
     const podGenerator = require('./pod-dialogue-generator.cjs')
     const r = await podGenerator.generatePodBatch({
-      courseCode, podSlug: slug, force,
+      courseCode, podSlug: slug, force, mode,
       deadlineMs: 45_000, maxScenes: 4, // bounded per call; UI loops until more_remaining=false
       log: (m) => logger.info('[PodGen] ' + m),
     })
@@ -4701,6 +4741,23 @@ app.post('/api/audio/regenerate-single/:courseCode/:audioUuid', async (req, res)
     res.status(response.status).json(response.data)
   } catch (error) {
     logger.error('Regenerate single proxy error:', error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
+// Surgical per-LEGO presentation edit + regen (single intro clip)
+// POST /api/audio/regenerate-presentation/:courseCode/:legoId
+// Body: { text? } — if provided, persists new presentation text to course_audio
+// (the authoritative store for intro audio) then regenerates ONLY this lego's
+// presentation clip. No-op for every other row. Proxies to phase8.
+app.post('/api/audio/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
+  try {
+    const { courseCode, legoId } = req.params
+    logger.log(`[Regenerate Presentation] ${courseCode} / ${legoId}`)
+    const response = await proxyToPhase8('POST', `/regenerate-presentation/${courseCode}/${legoId}`, req.body || {})
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Regenerate presentation proxy error:', error)
     res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
   }
 })
