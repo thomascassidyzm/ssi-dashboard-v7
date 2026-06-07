@@ -12,8 +12,22 @@
  */
 
 const fetch = require('node-fetch');
+const https = require('https');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
+
+// Shared keep-alive agent for REST TTS providers (xAI, ElevenLabs). Without it
+// every clip opens a fresh TLS connection — a 14k-clip run churns 14k+
+// handshakes through the router's NAT table, which is what produced the
+// evening-long ECONNRESET/socket-hang-up windows of 2026-06-07 (provider-
+// agnostic; Azure REST hit the same). A handful of pooled sockets carries the
+// whole run instead.
+const ttsKeepAliveAgent = new https.Agent({
+  keepAlive: true,
+  keepAliveMsecs: 30000,
+  maxSockets: 32,
+  maxFreeSockets: 8,
+});
 
 /**
  * Generate speech using ElevenLabs API
@@ -47,6 +61,7 @@ async function generateElevenLabs(text, config) {
 
   const response = await fetch(url, {
     method: 'POST',
+    agent: ttsKeepAliveAgent,
     headers: {
       'Accept': 'audio/mpeg',
       'Content-Type': 'application/json',
@@ -210,6 +225,7 @@ async function generateXai(text, config) {
 
   const response = await fetch('https://api.x.ai/v1/tts', {
     method: 'POST',
+    agent: ttsKeepAliveAgent,
     headers: {
       'Authorization': `Bearer ${apiKey}`,
       'Content-Type': 'application/json'
