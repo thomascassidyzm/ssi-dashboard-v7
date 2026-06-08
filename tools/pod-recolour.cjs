@@ -177,15 +177,16 @@ async function main() {
     process.exit(0)
   }
 
+  const knownLang = courseCode.split('_for_')[1] || 'eng'
   const targetPool = resolveTargetPool(targetLang)
-  const knownPool = resolveKnownPool()
+  const knownPool = resolveKnownPool(knownLang)
 
   console.log(`\n🎨 Pod recolour: ${courseCode}  (${apply ? 'APPLY' : 'DRY-RUN'})`)
   console.log(`   Target pool: tier ${targetPool.tier} · ${targetPool.note}`)
   console.log(`     F: ${targetPool.f.map(v => v.name).join(', ') || '(none)'}`)
   console.log(`     M: ${targetPool.m.map(v => v.name).join(', ') || '(none)'}`)
   console.log(`     locale → ${targetPool.locale}`)
-  console.log(`   Known pool (British): F ${knownPool.f.map(v => v.name).join('/')} · M ${knownPool.m.map(v => v.name).join('/')}`)
+  console.log(`   Known pool (${knownLang}): F ${knownPool.f.map(v => v.name).join('/')} · M ${knownPool.m.map(v => v.name).join('/')}`)
   if (targetPool.human) { console.log(`   ⚠️  HUMAN-only language — no TTS. Aborting.`); process.exit(0) }
 
   let podQuery = supabase.from('listening_pods').select('id, speakers, title, metadata').eq('course_code', courseCode)

@@ -404,7 +404,12 @@ async function stageTtsInproc(course) {
   stageLog(course, 'tts', `${workQueue.length} clips to render (${pod.sentences.length} sentences)`)
   if (workQueue.length === 0) return { generated: 0, reused: 0, failed: 0 }
 
-  const concurrency = 5  // matches POD_GEN_CONCURRENCY_DEFAULT; xAI is flaky above ~6
+  // Default 5 (matches POD_GEN_CONCURRENCY_DEFAULT; xAI flaky above ~6), but
+  // env-tunable for mop-up when the connection pool resets under load —
+  // TTS_CONCURRENCY=1 fully serialises, mirroring the explainer AUDIO_PARALLEL=1 knob.
+  const concurrency = Number(process.env.TTS_CONCURRENCY) > 0
+    ? Math.floor(Number(process.env.TTS_CONCURRENCY))
+    : 5
   let generated = 0, reused = 0, failed = 0
   const errors = []
   async function worker(items) {

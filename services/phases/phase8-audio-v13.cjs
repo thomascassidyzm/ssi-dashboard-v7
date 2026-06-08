@@ -59,7 +59,29 @@ const supabase = createClient(
   { auth: { persistSession: false } }
 )
 
-const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
+// S3 uploads were the REAL source of the bulk-pod ECONNRESET cascade (2026-06-08):
+// the bare client uses Node's https.globalAgent (keepAlive:true but
+// maxSockets:Infinity), so a concurrent fan-out opens unbounded TLS connections
+// that flood the router NAT table → resets (provider-agnostic, same family as the
+// 2026-06-07 TTS windows). Bound the socket pool + reuse connections, and let the
+// SDK retry transient network errors (ECONNRESET) instead of failing the clip.
+const https = require('https')
+const { NodeHttpHandler } = require('@smithy/node-http-handler')
+const s3KeepAliveAgent = new https.Agent({
+  keepAlive: true,
+  keepAliveMsecs: 30000,
+  maxSockets: Number(process.env.S3_MAX_SOCKETS) > 0 ? Math.floor(Number(process.env.S3_MAX_SOCKETS)) : 16,
+  maxFreeSockets: 8,
+})
+const s3 = new S3Client({
+  region: process.env.AWS_REGION || 'eu-west-1',
+  maxAttempts: Number(process.env.S3_MAX_ATTEMPTS) > 0 ? Math.floor(Number(process.env.S3_MAX_ATTEMPTS)) : 6,
+  requestHandler: new NodeHttpHandler({
+    httpsAgent: s3KeepAliveAgent,
+    connectionTimeout: 6000,
+    requestTimeout: 60000,
+  }),
+})
 
 /**
  * Get the effective release target for a course.
@@ -4594,33 +4616,46 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
     // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
     // back when the primary was xAI — Azure failing has nowhere better to go,
     // and elevenlabs failures aren't in scope for this safety net.
-    if (provider !== 'xai') throw primaryErr
+    if (provider !== 'xai') { primaryErr.message = `[STAGE=tts:${provider}] ${primaryErr.message}`; throw primaryErr }
 
     const kind = track || (role === 'known' ? 'known' : 'target')
     const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, language) : null
     if (!azureVoice) {
       // No Azure voice determinable — surface the original xAI failure so the
       // clip is recorded as failed (not silently wrong-voiced).
-      throw primaryErr
+      primaryErr.message = `[STAGE=tts:xai,no-azure-fallback] ${primaryErr.message}`; throw primaryErr
     }
 
     logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
     provider = 'azure'
     activeVoice = azureVoice
     const azureConfig = buildPodTTSConfig(activeVoice, language)
-    ;({ audioBuffer } = await ttsService.generateWithRetry(text, 'azure', azureConfig))
+    try {
+      ;({ audioBuffer } = await ttsService.generateWithRetry(text, 'azure', azureConfig))
+    } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
   }
   voice = activeVoice  // course_audio row records the voice that actually produced the clip
-  const { buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer)
+  let masteredBuffer, durationMs
+  try {
+    ;({ buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer))
+  } catch (e) {
+    // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
+    // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
+    // /buflen so the failure is self-diagnosing.
+    e.message = `[STAGE=master prov=${provider} voice=${voice?.voice_id} lang=${language} buflen=${audioBuffer ? audioBuffer.length : -1}] ${e.message}`
+    throw e
+  }
 
   const audioId = uuidv4().toUpperCase()
   const s3Key = `mastered/${audioId}.mp3`
-  await s3.send(new PutObjectCommand({
-    Bucket: S3_BUCKET,
-    Key: s3Key,
-    Body: masteredBuffer,
-    ContentType: 'audio/mpeg',
-  }))
+  try {
+    await s3.send(new PutObjectCommand({
+      Bucket: S3_BUCKET,
+      Key: s3Key,
+      Body: masteredBuffer,
+      ContentType: 'audio/mpeg',
+    }))
+  } catch (e) { e.message = `[STAGE=s3] ${e.message}`; throw e }
 
   const { data: inserted, error: insertError } = await supabase
     .from('course_audio')

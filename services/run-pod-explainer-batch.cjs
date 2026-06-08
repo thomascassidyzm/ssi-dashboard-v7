@@ -308,51 +308,67 @@ async function runAudioPass(courseCode) {
   const { generatePodAudio } = getPhase8()
   let rendered = 0
   let reused = 0
-  let failed = 0
 
-  // Fan out AUDIO_PARALLEL TTS calls — each one mastering + uploading +
-  // inserting into course_audio independently. The findExistingAudio cache
-  // inside generatePodAudio dedupes by text+voice across sentences with
-  // identical explainer_text (rare but possible).
-  for (let i = 0; i < rows.length; i += AUDIO_PARALLEL) {
-    const wave = rows.slice(i, i + AUDIO_PARALLEL)
-    await Promise.all(wave.map(async row => {
-      try {
-        // TTS the authored explainer_text VERBATIM (it carries the calibrated
-        // tail / usage note). Only legacy rows with no explainer_text fall back
-        // to the rebuilt P5-quoted form from the structured decomposition.
-        const narration = buildExplainerNarration(row.explainer_decomposition, row.explainer_text, connector)
-        const ttsText = narration || row.explainer_text
-        const result = await generatePodAudio({
-          courseCode,
-          text: ttsText,
-          language: explainerLanguage,
-          role: EXPLAINER_ROLE,
-          voice: {
-            voice_id: EXPLAINER_VOICE_ID,
-            provider: EXPLAINER_PROVIDER,
-            // carry the locale so buildPodTTSConfig uses it directly (toBcp47
-            // would strip pt-PT→pt, es-MX→es; the explainer needs the exact cue)
-            locale: explainerLanguage === 'auto' ? null : explainerLanguage,
-          },
-        })
-        const audioId = result.id
-        if (!audioId) throw new Error('no audio id returned from generatePodAudio')
-        const { error: upErr } = await supabase
-          .from('listening_pod_sentences')
-          .update({ explainer_audio_id: audioId })
-          .eq('id', row.id)
-        if (upErr) throw new Error(`link write failed: ${upErr.message}`)
-        if (result.reused) reused++
-        else rendered++
-      } catch (err) {
-        failed++
-        log(`[${courseCode}] audio fail for ${row.id}:`, err?.message || err)
-      }
-    }))
-    log(`[${courseCode}] audio progress: ${rendered} rendered + ${reused} reused, ${failed} failed (of ${rows.length})`)
+  async function renderOne(row) {
+    // TTS the authored explainer_text VERBATIM (it carries the calibrated
+    // tail / usage note). Only legacy rows with no explainer_text fall back
+    // to the rebuilt P5-quoted form from the structured decomposition.
+    const narration = buildExplainerNarration(row.explainer_decomposition, row.explainer_text, connector)
+    const ttsText = narration || row.explainer_text
+    const result = await generatePodAudio({
+      courseCode,
+      text: ttsText,
+      language: explainerLanguage,
+      role: EXPLAINER_ROLE,
+      voice: {
+        voice_id: EXPLAINER_VOICE_ID,
+        provider: EXPLAINER_PROVIDER,
+        // carry the locale so buildPodTTSConfig uses it directly (toBcp47
+        // would strip pt-PT→pt, es-MX→es; the explainer needs the exact cue)
+        locale: explainerLanguage === 'auto' ? null : explainerLanguage,
+      },
+    })
+    const audioId = result.id
+    if (!audioId) throw new Error('no audio id returned from generatePodAudio')
+    const { error: upErr } = await supabase
+      .from('listening_pod_sentences')
+      .update({ explainer_audio_id: audioId })
+      .eq('id', row.id)
+    if (upErr) throw new Error(`link write failed: ${upErr.message}`)
+    return result.reused
   }
-  return { rendered, reused, failed }
+
+  // Round 0 over all rows, then retry rounds over ONLY the still-failed rows.
+  // generatePodAudio dedupes by text+voice (findExistingAudio), so a retry
+  // re-attempts just the failures. This mirrors the tts stage's retry-rounds so
+  // transient S3 / Supabase / connection blips under load self-heal instead of
+  // permanently failing the clip (this stage previously had NO retry, which made
+  // it the fragile link whenever the machine was under concurrent load).
+  let queue = rows
+  for (let round = 0; round <= 3 && queue.length; round++) {
+    if (round > 0) {
+      log(`[${courseCode}] explainer retry round ${round}: ${queue.length} failed clip(s)`)
+      await new Promise(r => setTimeout(r, 3000 * round))
+    }
+    const stillFailed = []
+    for (let i = 0; i < queue.length; i += AUDIO_PARALLEL) {
+      const wave = queue.slice(i, i + AUDIO_PARALLEL)
+      await Promise.all(wave.map(async row => {
+        try {
+          const wasReused = await renderOne(row)
+          if (wasReused) reused++; else rendered++
+        } catch (err) {
+          stillFailed.push(row)
+          // err.message carries a [STAGE=...] tag from generatePodAudio identifying
+          // which call failed (tts / master / s3) — keep it for triage.
+          log(`[${courseCode}] audio fail for ${row.id}: code=${err?.code || '?'} ${err?.message || err}`)
+        }
+      }))
+      log(`[${courseCode}] audio progress: ${rendered} rendered + ${reused} reused, ${stillFailed.length} failing-this-round (of ${queue.length})`)
+    }
+    queue = stillFailed
+  }
+  return { rendered, reused, failed: queue.length }
 }
 
 // =============================================================================

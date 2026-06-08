@@ -189,8 +189,15 @@ function resolveTargetPool(targetLang) {
            note: `${targetLang}: xAI native ${e.native}${toppedF ? ' (no native F → F from multilingual)' : ''}, locale ${e.locale}` }
 }
 
-function resolveKnownPool() {
-  return { ...KNOWN_POOL }
+// The known pool must speak the KNOWN language. English is the default and
+// keeps its curated British pool (eng isn't in TARGET — English is never a
+// target language). Any OTHER known language resolves exactly like a target,
+// so e.g. _for_jpn pods get Japanese known voices instead of (wrong) English
+// ones that produce empty (Azure) or wrong-language (xAI) audio.
+function resolveKnownPool(knownLang) {
+  const c = String(knownLang || 'eng').toLowerCase().trim()
+  if (!knownLang || c === 'eng' || c === 'en') return { ...KNOWN_POOL }
+  return resolveTargetPool(knownLang)
 }
 
 // The explainer narration (Tom's xAI clone, mostly the English gloss + quoted
