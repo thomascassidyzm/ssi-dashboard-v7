@@ -172,8 +172,8 @@ async function generateDraft(opts = {}) {
 }
 
 /**
- * Publish a draft: flip is_published=true, re-stamp released_at, and save any
- * user edits to headline/bullets.
+ * Publish a draft: flip is_published=true, re-stamp released_at, stamp version with
+ * the DEPLOYED build SHA (origin/main), and save any user edits to headline/bullets.
  * @param {object} args
  * @param {string|number} args.id - release_notes row id
  * @param {string} [args.headline] - edited headline (saved if provided)
@@ -188,6 +188,22 @@ async function publishNote({ id, headline, bullets } = {}) {
   if (typeof headline === 'string') patch.headline = headline.trim()
   if (Array.isArray(bullets)) {
     patch.bullets = bullets.map(b => String(b).replace(/^[-•\s]+/, '').trim()).filter(Boolean)
+  }
+
+  // Stamp version with the DEPLOYED build SHA (origin/main), not the staging tip.
+  // Publishing happens AFTER staging→main, so origin/main is the commit that ships,
+  // and the learner app's __BUILD_NUMBER__ (= VERCEL_GIT_COMMIT_SHA.slice(0,7)) will
+  // equal it — so the note's version matches the learner's build number, and the
+  // app's "you're on this version" check (note.version === buildNumber) works.
+  // If git is unavailable, leave the existing version untouched (don't break publish).
+  try {
+    if (fs.existsSync(path.join(LEARNING_APP_REPO, '.git'))) {
+      execSync('git fetch origin --quiet', { cwd: LEARNING_APP_REPO, encoding: 'utf-8', stdio: 'pipe', timeout: 60000 })
+      const sha = execSync('git rev-parse --short=7 origin/main', { cwd: LEARNING_APP_REPO, encoding: 'utf-8', stdio: 'pipe' }).trim()
+      if (sha) patch.version = sha
+    }
+  } catch (e) {
+    console.warn(`[ReleaseNotes] could not stamp deployed origin/main SHA at publish (keeping existing version): ${e.message}`)
   }
 
   const res = await fetch(`${BASE}/rest/v1/release_notes?id=eq.${encodeURIComponent(id)}`, {
