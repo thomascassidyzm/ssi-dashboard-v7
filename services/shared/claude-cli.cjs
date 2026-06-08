@@ -34,7 +34,13 @@ function claudeChat(prompt, options = {}) {
     const child = execFile('claude', args, {
       timeout,
       maxBuffer: 10 * 1024 * 1024, // 10MB
-      env: { ...process.env, CLAUDECODE: '' }
+      // MAX_THINKING_TOKENS=0 disables extended thinking. Without it, the
+      // global effortLevel:high setting flows into every headless `claude
+      // --print` call, so a simple translation-flex spends ~11K hidden
+      // thinking tokens (~90s/call) before a ~450-token answer — a 15×
+      // tax for zero quality gain on these deterministic tasks. With it:
+      // ~8s/call, identical output. (Measured 2026-06-08: 122s → 8s.)
+      env: { ...process.env, CLAUDECODE: '', MAX_THINKING_TOKENS: '0' }
     }, (error, stdout, stderr) => {
       if (error) {
         // Surface the actual failure shape — execFile's error.message is
