@@ -79,6 +79,7 @@ const supabase = createClient(
 // ARGV
 // =============================================================================
 
+const sleep = (ms) => new Promise(r => setTimeout(r, ms))
 const argv = process.argv.slice(2)
 const getArg = (flag) => {
   for (const a of argv) { if (a === flag) return true; if (a.startsWith(flag + '=')) return a.slice(flag.length + 1) }
@@ -424,12 +425,21 @@ async function stageTtsInproc(course) {
       }
     }
   }
-  const buckets = Array.from({ length: concurrency }, () => [])
-  workQueue.forEach((item, i) => buckets[i % concurrency].push(item))
-  await Promise.all(buckets.map(b => worker(b)))
-  stageLog(course, 'tts', `done: ${generated} generated, ${reused} reused, ${failed} failed`)
-  if (failed > 0) throw new Error(`${failed} clip(s) failed to render`)
-  return { generated, reused, failed }
+  // Round 0 over the whole queue, then retry rounds over ONLY the still-failed
+  // items. generatePodAudio dedupes by text+voice, so a retry re-attempts just
+  // the failures — transient external kills (SIGKILL) / connection blips clear.
+  let queue = workQueue
+  for (let round = 0; round <= 2 && queue.length; round++) {
+    if (round > 0) { stageLog(course, 'tts', `retry round ${round}: ${queue.length} failed clips`); await sleep(3000 * round) }
+    failed = 0; errors.length = 0
+    const buckets = Array.from({ length: concurrency }, () => [])
+    queue.forEach((item, i) => buckets[i % concurrency].push(item))
+    await Promise.all(buckets.map(b => worker(b)))
+    queue = errors.map(e => workQueue.find(w => w.sentence_id === e.sentence_id && w.kind === e.kind)).filter(Boolean)
+  }
+  stageLog(course, 'tts', `done: ${generated} generated, ${reused} reused, ${queue.length} failed`)
+  if (queue.length > 0) throw new Error(`${queue.length} clip(s) failed to render after retries`)
+  return { generated, reused, failed: queue.length }
 }
 
 function httpPostPhase8(course, body) {
@@ -445,12 +455,18 @@ function httpPostPhase8(course, body) {
   })
 }
 async function stageTtsHttp(course) {
-  stageLog(course, 'tts', `POST /generate-pods/${course} → localhost:${PHASE8_PORT}`)
-  const r = await httpPostPhase8(course, { pod_ids: [`${course}:${POD_SLUG}`] })
-  if (r.status !== 200) throw new Error(`phase8 ${r.status}: ${JSON.stringify(r.data).slice(0, 300)}`)
-  stageLog(course, 'tts', `done: ${r.data.generated} generated, ${r.data.reused} reused, ${r.data.failed} failed`)
-  if (r.data.failed > 0) throw new Error(`${r.data.failed} clip(s) failed to render`)
-  return r.data
+  // /generate-pods is idempotent (only fills NULL audio ids), so re-POSTing
+  // re-attempts just the failures — transient blips clear across rounds.
+  let last
+  for (let round = 0; round <= 2; round++) {
+    if (round > 0) { stageLog(course, 'tts', `retry round ${round}`); await sleep(3000 * round) }
+    const r = await httpPostPhase8(course, { pod_ids: [`${course}:${POD_SLUG}`] })
+    if (r.status !== 200) throw new Error(`phase8 ${r.status}: ${JSON.stringify(r.data).slice(0, 300)}`)
+    last = r.data
+    stageLog(course, 'tts', `done: ${r.data.generated} generated, ${r.data.reused} reused, ${r.data.failed} failed`)
+    if (!r.data.failed) return r.data
+  }
+  throw new Error(`${last.failed} clip(s) failed to render after retries`)
 }
 
 async function stageTts(course) {
@@ -469,7 +485,13 @@ async function buildPlan() {
   const plan = []
   for (const pod of pods) {
     const course = pod.course_code
-    const skip = shouldSkipCourse(course)
+    // eng_for_* (learn-English) courses invert the SSi language model: target
+    // is English, known is the _for_XXX language — the voice-coverage map has
+    // no English TARGET pool and the known track must NOT be British English.
+    // Needs a deliberate language-aware fix; skip from the standard bulk.
+    const skip = course.startsWith('eng_for_')
+      ? { skip: true, reason: 'eng-target language-inversion — handle separately (see task)' }
+      : shouldSkipCourse(course)
     const entry = ensureCourse(led, course)
     if (skip.skip) {
       entry.skip = skip.reason
@@ -566,21 +588,27 @@ async function realRun() {
     if (idx >= 0) active = active.slice(idx)
   }
 
-  log(`${active.length} course(s) in scope; ${plan.filter(p => p.skip).length} skipped.`)
+  // Courses are fully independent, and each course runs ONE claude call at a
+  // time internally (sequential scenes). So running COURSE_CONCURRENCY courses
+  // at once ≈ that many concurrent claude calls — keep it at the measured
+  // free-concurrency zone (~10-12; 24 starves local resources). This turns a
+  // ~9h sequential run into ~20-40min. Override via COURSE_CONCURRENCY env.
+  const COURSE_CONCURRENCY = Math.max(1, parseInt(process.env.COURSE_CONCURRENCY, 10) || 10)
+  log(`${active.length} course(s) in scope; ${plan.filter(p => p.skip).length} skipped. Course concurrency=${COURSE_CONCURRENCY}.`)
   const failures = []
   let completed = 0
 
-  for (const p of active) {
-    const course = p.course
-    const entry = ensureCourse(led, course)
-    log(`=== ${course} === (stages: ${STAGES.map(s => `${s}=${entry.stages[s]}`).join(' ')})`)
-    let courseFailed = false
+  // Per-course retry: transient external kills (SIGKILL under load / a single
+  // failed clip) shouldn't doom a course. Retry up to COURSE_RETRIES times —
+  // completed stages skip via the ledger, so a retry RESUMES mid-course rather
+  // than redoing finished work. Only a stage that fails on every attempt
+  // (structural, e.g. eng_for_* recolour) ends up in `failures`.
+  const COURSE_RETRIES = 2
+  const attemptCourse = async (course, entry) => {
     for (const stage of STAGES) {
       const force = REDO && REDO.has(stage)
       if (entry.stages[stage] === 'done' && !force) { stageLog(course, stage, 'already done — skipping'); continue }
       entry.stages[stage] = 'running'
-      // Running this stage invalidates every LATER stage's prior completion
-      // (e.g. a forced regen re-wipes audio, so tts/explainers must re-run).
       for (const later of STAGES.slice(STAGES.indexOf(stage) + 1)) {
         if (entry.stages[later] === 'done') { entry.stages[later] = 'pending'; delete entry.errors[later] }
       }
@@ -596,15 +624,37 @@ async function realRun() {
         entry.stages[stage] = 'failed'
         entry.errors[stage] = err.message
         saveLedger(led)
-        stageLog(course, stage, `✗ FAILED: ${err.message}`)
-        failures.push({ course, stage, error: err.message })
-        courseFailed = true
-        break  // don't run later stages for a course whose earlier stage failed
+        stageLog(course, stage, `✗ ${stage} failed: ${err.message}`)
+        return { stage, error: err.message }
       }
     }
-    if (!courseFailed) { entry.finished_at = ts(); completed++; saveLedger(led); log(`=== ${course} COMPLETE ===`) }
-    else log(`=== ${course} stopped (failure) — continuing to next course ===`)
+    return null
   }
+
+  const runCourse = async (p) => {
+    const course = p.course
+    const entry = ensureCourse(led, course)
+    log(`=== ${course} START === (stages: ${STAGES.map(s => `${s}=${entry.stages[s]}`).join(' ')})`)
+    let fail = null
+    for (let attempt = 0; attempt <= COURSE_RETRIES; attempt++) {
+      if (attempt > 0) { log(`=== ${course} retry ${attempt}/${COURSE_RETRIES} (resuming from ${fail.stage}) ===`); await sleep(5000 * attempt) }
+      fail = await attemptCourse(course, entry)
+      if (!fail) break
+    }
+    if (!fail) { entry.finished_at = ts(); completed++; saveLedger(led); log(`=== ${course} COMPLETE (${completed}/${active.length}) ===`) }
+    else { failures.push({ course, stage: fail.stage, error: fail.error }); log(`=== ${course} FAILED at ${fail.stage} after ${COURSE_RETRIES} retries ===`) }
+  }
+
+  // Worker pool over courses (shared cursor; no batch barrier).
+  let cursor = 0
+  const worker = async () => {
+    while (true) {
+      const i = cursor++
+      if (i >= active.length) return
+      await runCourse(active[i])
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(COURSE_CONCURRENCY, active.length) }, worker))
 
   console.log('\n' + '='.repeat(78))
   log(`BATCH DONE. ${completed}/${active.length} courses complete. ${failures.length} failure(s).`)
