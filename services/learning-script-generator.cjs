@@ -630,10 +630,14 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // Step 1: BUILD phrases first, sorted by syllable count
     const legoTarget = currentLego.lego.target_text
 
-    // Filter BUILD phrases for LEGO char validation
-    const validBuildPhrases = currentBuildPhrases.filter(p =>
-      phraseContainsLegoChars(p.target_text, legoTarget)
-    )
+    // NO substring gate — learner-app parity. The learner (generateLearningScript.ts /
+    // CourseDataProvider) selects phrases purely by seed_number+lego_index with NO
+    // phraseContainsLegoChars filter. This .cjs is the dashboard MIRROR; gating here had
+    // DIVERGED from the learner and hid legitimately word-order-inverted phrases (e.g.
+    // Croatian clitic inversion: LEGO "sličan si" vs phrase "...si sličan..."), so they were
+    // invisible/uneditable in Script View though the learner plays them. Do NOT re-add this
+    // filter to "match the app" — the app has no such gate; removing it IS the parity fix.
+    const validBuildPhrases = currentBuildPhrases
     const sortedBuildPhrases = [...validBuildPhrases].sort((a, b) =>
       (a.target_syllable_count || countTargetSyllables(a.target_text)) -
       (b.target_syllable_count || countTargetSyllables(b.target_text))
@@ -664,7 +668,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
     // Step 2: Reserve 2 USE phrases for consolidation BEFORE using them for BUILD padding
     const sortedUsePhrases = [...currentUsePhrases]
-      .filter(p => phraseContainsLegoChars(p.target_text, legoTarget))
+      // No phraseContainsLegoChars gate — learner-app parity (see BUILD note above).
       .sort((a, b) =>
         (a.target_syllable_count || countTargetSyllables(a.target_text)) -
         (b.target_syllable_count || countTargetSyllables(b.target_text))
