@@ -3661,35 +3661,13 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
 
       const column = PHRASE_AUDIO_COLUMN[role]
 
-      // DEDUP / IDEMPOTENCY: course_audio has UNIQUE(course_code, text_normalized,
-      // language, role, voice_id) (constraint unique_course_audio_per_voice). If a
-      // row already exists for this exact key (e.g. reverting to prior text, or a
-      // double-regen of the same text, or another course's identical clip), REUSE
-      // it: rebind the phrase pointer and skip TTS + S3 + insert entirely (no cost,
-      // no constraint collision). This mirrors the bulk path's upsert-on-conflict.
+      // Flagging a role in the edit modal is an EXPLICIT request to regenerate
+      // (e.g. apply a changed voice config, or replace a bad take), so we ALWAYS
+      // render fresh TTS for every requested role — no dedup reuse-skip. The
+      // unique-key collision (reverting to prior text, double-regen of identical
+      // text, etc.) is handled by the upsert-on-conflict at the write below, which
+      // UPDATES the existing row's s3_key/duration/text in place rather than 500ing.
       const textNormalized = normalizeForAudio(text)
-      const { data: existingAudio, error: existingErr } = await supabase
-        .from('course_audio')
-        .select('id, duration_ms')
-        .eq('course_code', courseCode)
-        .eq('text_normalized', textNormalized)
-        .eq('language', language)
-        .eq('role', role)
-        .eq('voice_id', voiceId)
-        .maybeSingle()
-      if (existingErr) throw existingErr
-      if (existingAudio?.id) {
-        const { error: rebindErr } = await supabase
-          .from('course_practice_phrases')
-          .update({ [column]: existingAudio.id })
-          .eq('id', phraseId)
-          .eq('course_code', courseCode)
-        if (rebindErr) throw rebindErr
-        result[column] = existingAudio.id
-        if (typeof existingAudio.duration_ms === 'number') result.durations[role] = existingAudio.duration_ms
-        logger.info(`[Regen Phrase] Reused existing audio for ${phraseId} ${role} → ${existingAudio.id} (skipped TTS)`)
-        continue
-      }
 
       // Gender expansion (target1/target2 only) — Haiku first, marker regex fallback.
       let textForTTS = text
