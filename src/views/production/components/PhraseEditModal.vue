@@ -55,7 +55,7 @@
             <div class="regeneration-section space-y-3">
               <div class="section-header flex items-center justify-between">
                 <label class="block text-sm font-medium text-slate-300">
-                  Flag audio for regeneration
+                  Which roles to regenerate
                 </label>
                 <button
                   @click="toggleAllFlags"
@@ -134,8 +134,73 @@
 
               <!-- Hint text -->
               <p class="text-xs text-slate-500">
-                Only checked audio files will be flagged for regeneration after saving.
+                Defaults to the role(s) whose text you changed. Saving regenerates the
+                checked role(s) directly to new audio (auto-approved) — audition below.
               </p>
+            </div>
+
+            <!-- Inline Audition Area (auto-approve preview) -->
+            <div
+              v-if="auditionActive"
+              class="audition-section space-y-2 pt-2 border-t border-slate-700"
+            >
+              <label class="block text-sm font-medium text-slate-300">Fresh audio</label>
+              <div
+                v-for="role in auditionRoles"
+                :key="role.key"
+                class="audition-row flex items-center gap-3 p-2 rounded-lg bg-slate-700 bg-opacity-40"
+              >
+                <span
+                  class="text-xs font-medium px-1.5 py-0.5 rounded"
+                  :class="role.badgeClass"
+                >{{ role.label }}</span>
+
+                <!-- Regenerating -->
+                <span
+                  v-if="role.state === 'regenerating'"
+                  class="flex items-center gap-2 text-xs text-slate-400"
+                >
+                  <svg class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Regenerating…
+                </span>
+
+                <!-- Ready: preview -->
+                <template v-else-if="role.state === 'ready' && role.url">
+                  <span class="text-emerald-400 text-xs flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <button
+                    @click="playAudition(role.key)"
+                    class="flex items-center gap-1.5 px-2 py-1 text-xs font-medium bg-slate-600 text-white rounded hover:bg-slate-500 transition-colors"
+                    title="Play preview"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    preview
+                  </button>
+                  <span v-if="role.durationMs" class="text-xs text-slate-500">{{ (role.durationMs / 1000).toFixed(1) }}s</span>
+                </template>
+
+                <!-- Ready but no preview URL (regen ok, signed-URL fetch failed) -->
+                <span v-else-if="role.state === 'ready'" class="flex items-center gap-1 text-xs text-emerald-400">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Regenerated (preview unavailable)
+                </span>
+
+                <!-- Failed -->
+                <span v-else-if="role.state === 'error'" class="text-xs text-red-400">
+                  {{ role.error || 'Regeneration failed' }}
+                </span>
+              </div>
+              <audio ref="auditionAudioEl" class="hidden" />
             </div>
           </div>
 
@@ -147,7 +212,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span class="text-sm font-medium">Saved successfully</span>
+                <span class="text-sm font-medium">Saved &amp; regenerated</span>
               </div>
               <div class="flex items-center gap-3">
                 <button
@@ -185,10 +250,10 @@
             <div v-else class="flex items-center justify-between">
               <div class="regen-summary text-xs text-slate-400">
                 <span v-if="selectedRegenCount > 0">
-                  {{ selectedRegenCount }} audio file{{ selectedRegenCount !== 1 ? 's' : '' }} will be regenerated
+                  {{ selectedRegenCount }} role{{ selectedRegenCount !== 1 ? 's' : '' }} will be regenerated
                 </span>
                 <span v-else>
-                  No audio files selected for regeneration
+                  No roles selected for regeneration
                 </span>
               </div>
               <div class="flex items-center gap-3">
@@ -268,6 +333,28 @@ const isSaving = ref(false);
 const saveSuccess = ref(false);
 const saveError = ref<string | null>(null);
 
+// --- Inline audition state (auto-approve preview) ---
+type RoleKey = 'known' | 'target1' | 'target2';
+type AuditionState = 'regenerating' | 'ready' | 'error';
+interface AuditionRole {
+  key: RoleKey;
+  label: string;
+  badgeClass: string;
+  state: AuditionState;
+  url: string | null;
+  durationMs: number | null;
+  error: string | null;
+}
+const auditionActive = ref(false);
+const auditionRoles = ref<AuditionRole[]>([]);
+const auditionAudioEl = ref<HTMLAudioElement | null>(null);
+
+const ROLE_LABELS: Record<RoleKey, { label: string; badgeClass: string }> = {
+  known: { label: 'Known', badgeClass: 'text-slate-300 bg-slate-500 bg-opacity-20' },
+  target1: { label: 'Target 1 · F', badgeClass: 'text-pink-400 bg-pink-500 bg-opacity-20' },
+  target2: { label: 'Target 2 · M', badgeClass: 'text-blue-400 bg-blue-500 bg-opacity-20' },
+};
+
 // Computed
 const textChanged = computed(() => {
   if (!props.phrase) return false;
@@ -336,31 +423,85 @@ const onSaveComplete = (success: boolean, error?: string) => {
   }
 };
 
-defineExpose({ onSaveComplete });
+// ── Inline audition: parent drives these as the regen flow progresses ──
+// Parent calls beginAudition(roles) right after kicking off regeneration,
+// then setAuditionResult(role, {url, durationMs}) / setAuditionError(role, msg)
+// per role as the regenerate-phrase response lands.
+const beginAudition = (roles: RoleKey[]) => {
+  auditionActive.value = roles.length > 0;
+  auditionRoles.value = roles.map(key => ({
+    key,
+    label: ROLE_LABELS[key].label,
+    badgeClass: ROLE_LABELS[key].badgeClass,
+    state: 'regenerating' as AuditionState,
+    url: null,
+    durationMs: null,
+    error: null,
+  }));
+};
+
+const setAuditionResult = (key: RoleKey, payload: { url: string | null; durationMs: number | null }) => {
+  const role = auditionRoles.value.find(r => r.key === key);
+  if (!role) return;
+  role.state = 'ready';
+  role.url = payload.url;
+  role.durationMs = payload.durationMs;
+};
+
+const setAuditionError = (key: RoleKey, message: string) => {
+  const role = auditionRoles.value.find(r => r.key === key);
+  if (!role) return;
+  role.state = 'error';
+  role.error = message;
+};
+
+const playAudition = (key: RoleKey) => {
+  const role = auditionRoles.value.find(r => r.key === key);
+  if (!role?.url || !auditionAudioEl.value) return;
+  auditionAudioEl.value.src = role.url;
+  auditionAudioEl.value.play().catch(() => { /* user gesture / autoplay guard */ });
+};
+
+defineExpose({ onSaveComplete, beginAudition, setAuditionResult, setAuditionError });
+
+const resetForm = (phrase: PhraseData) => {
+  localKnownText.value = phrase.known_text || '';
+  localTargetText.value = phrase.target_text || '';
+  regenFlags.known = false;
+  regenFlags.target1 = false;
+  regenFlags.target2 = false;
+  saveSuccess.value = false;
+  saveError.value = null;
+  auditionActive.value = false;
+  auditionRoles.value = [];
+};
 
 // Watch for modal visibility changes
 watch(() => props.visible, (newVisible) => {
-  if (newVisible && props.phrase) {
-    // Reset form when modal opens
-    localKnownText.value = props.phrase.known_text || '';
-    localTargetText.value = props.phrase.target_text || '';
-    regenFlags.known = false;
-    regenFlags.target1 = false;
-    regenFlags.target2 = false;
-    saveSuccess.value = false;
-    saveError.value = null;
-  }
+  if (newVisible && props.phrase) resetForm(props.phrase);
 });
 
 // Watch for phrase changes
 watch(() => props.phrase, (newPhrase) => {
-  if (newPhrase && props.visible) {
-    localKnownText.value = newPhrase.known_text || '';
-    localTargetText.value = newPhrase.target_text || '';
-    // Keep unchecked by default
-    regenFlags.known = false;
-    regenFlags.target1 = false;
-    regenFlags.target2 = false;
+  if (newPhrase && props.visible) resetForm(newPhrase);
+});
+
+// Auto-default the regen roles to the role(s) whose TEXT changed (D2):
+//  - a known-text edit pre-checks `known`
+//  - a target-text edit pre-checks `target1` + `target2` (two voices, same text)
+// The user can still adjust before saving. We never auto-uncheck (so a manual
+// tick the user added survives a subsequent text tweak), only auto-check on change.
+watch(localKnownText, (val) => {
+  if (!props.phrase) return;
+  if (val !== props.phrase.known_text && props.phrase.known_audio_uuid) {
+    regenFlags.known = true;
+  }
+});
+watch(localTargetText, (val) => {
+  if (!props.phrase) return;
+  if (val !== props.phrase.target_text) {
+    if (props.phrase.target1_audio_uuid) regenFlags.target1 = true;
+    if (props.phrase.target2_audio_uuid) regenFlags.target2 = true;
   }
 });
 

@@ -3532,6 +3532,247 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
 })
 
 // =============================================================================
+// POST REGENERATE-PHRASE - Surgical per-PHRASE text edit + audio regen (auto-approve)
+// =============================================================================
+// Clones /regenerate-presentation's recipe but targets a course_practice_phrases
+// row (component_practice / build / use phrases) instead of presentation intros.
+//
+// THE LOAD-BEARING TRAP this endpoint exists to avoid:
+//   /regenerate-single RE-READS course_audio.text and re-TTSes the OLD text, so it
+//   CANNOT be used after a TEXT edit (stale audio under new text = audio/text desync).
+//   This endpoint takes the NEW text, TTSes IT, persists course_audio.text +
+//   text_normalized = the NEW text, mints a FRESH uuid + S3 key, and rebinds the
+//   phrase pointer. No accept step (PODs auto-approve model). Old S3 never deleted.
+//
+// Roles map to course_practice_phrases columns + voice_config.voices:
+//   'known'   → known_text   → known_audio_id    → voices.known   (known_lang)
+//   'target1' → target_text  → target1_audio_id  → voices.target1 (target_lang)
+//   'target2' → target_text  → target2_audio_id  → voices.target2 (target_lang)
+// (target1 & target2 are two voices of the SAME target text.)
+//
+// Body: { known_text?, target_text?, roles: ['known'|'target1'|'target2', ...] }
+//   - Persists known_text/target_text to course_practice_phrases IF passed (so DB
+//     text + audio text agree). Idempotent: the UI may also PATCH text separately;
+//     we only write text columns that were passed AND actually differ, then rebind.
+//   - Regenerates ONLY the requested roles. Untouched roles keep their existing id.
+// Returns: { known_audio_id, target1_audio_id, target2_audio_id,
+//            durations: { known?, target1?, target2? } }
+// =============================================================================
+
+app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
+  const { courseCode, phraseId } = req.params
+  const { known_text: knownText, target_text: targetText, roles } = req.body || {}
+
+  try {
+    // 0. Validate roles
+    const VALID_ROLES = ['known', 'target1', 'target2']
+    const requestedRoles = Array.isArray(roles) ? [...new Set(roles)] : []
+    if (requestedRoles.length === 0 || requestedRoles.some(r => !VALID_ROLES.includes(r))) {
+      return res.status(400).json({
+        error: `roles must be a non-empty subset of ${JSON.stringify(VALID_ROLES)}`
+      })
+    }
+
+    // 1. Load course + voice config
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('voice_config, known_lang, target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+    const knownLang = course.known_lang
+    const targetLang = course.target_lang
+    const voiceConfig = course.voice_config || {}
+    const voices = voiceConfig.voices || voiceConfig  // support nested + flat
+
+    // 2. Load the phrase row (PK = id, the deterministic text id e.g. fra_for_eng:S0042L03U05)
+    const { data: phrase, error: phraseError } = await supabase
+      .from('course_practice_phrases')
+      .select('id, course_code, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, seed_number, lego_index, lego_id, phrase_role')
+      .eq('id', phraseId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+
+    if (phraseError) throw phraseError
+    if (!phrase) {
+      return res.status(404).json({ error: `Phrase not found: ${phraseId} in ${courseCode}` })
+    }
+
+    // 3. Persist edited text FIRST (only columns passed AND actually changed).
+    //    Order matters: the course_practice_phrases trigger nulls the matching
+    //    *_audio_id when text changes — so we let that fire here, then rebind the
+    //    fresh uuid in step 6. Idempotent: a no-op (same text) writes nothing, so
+    //    a prior UI PATCH of the same text won't re-null our binding.
+    const textPatch = {}
+    if (typeof knownText === 'string' && knownText !== phrase.known_text) {
+      textPatch.known_text = knownText
+    }
+    if (typeof targetText === 'string' && targetText !== phrase.target_text) {
+      textPatch.target_text = targetText
+    }
+    if (Object.keys(textPatch).length > 0) {
+      const { error: textErr } = await supabase
+        .from('course_practice_phrases')
+        .update(textPatch)
+        .eq('id', phraseId)
+        .eq('course_code', courseCode)
+      if (textErr) throw textErr
+    }
+
+    // Authoritative text to speak per role (explicit body wins, else current row).
+    const effectiveKnown = (typeof knownText === 'string') ? knownText : phrase.known_text
+    const effectiveTarget = (typeof targetText === 'string') ? targetText : phrase.target_text
+
+    // 4. Regenerate each requested role. Reuses the EXACT recipe of the bulk role
+    //    path: gender expansion (target only) → provider TTS → master → S3 → mint
+    //    course_audio row with NEW text → rebind phrase pointer.
+    const PHRASE_AUDIO_COLUMN = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id' }
+
+    // Start with the existing ids so untouched roles round-trip unchanged.
+    const result = {
+      known_audio_id: phrase.known_audio_id || null,
+      target1_audio_id: phrase.target1_audio_id || null,
+      target2_audio_id: phrase.target2_audio_id || null,
+      durations: {}
+    }
+
+    for (const role of requestedRoles) {
+      const isKnown = role === 'known'
+      const text = isKnown ? effectiveKnown : effectiveTarget
+      const language = isKnown ? knownLang : targetLang
+
+      if (typeof text !== 'string' || !text.trim()) {
+        return res.status(400).json({
+          error: `No text available for role "${role}" (need ${isKnown ? 'known_text' : 'target_text'})`
+        })
+      }
+
+      // Resolve voice for this role (voiceId / provider / speed).
+      const voiceSettings = voices?.[role] || {}
+      const voiceId = voiceSettings.voiceId || (typeof voices?.[role] === 'string' ? voices[role] : null)
+      const voiceProvider = voiceSettings.provider || 'azure'
+      const speed = voiceSettings.settings?.speed || 1.0
+      if (!voiceId) {
+        return res.status(400).json({ error: `No voice configured for role: ${role}` })
+      }
+
+      // Gender expansion (target1/target2 only) — Haiku first, marker regex fallback.
+      let textForTTS = text
+      if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(language)) {
+        try {
+          const gr = await genderHaikuService.expandGender(text, language, role)
+          if (gr?.wasModified) {
+            textForTTS = gr.expandedText
+            logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
+          }
+        } catch (e) {
+          logger.warn(`Gender expansion failed, using original text: ${e.message}`)
+        }
+      }
+      if (textForTTS === text && (role === 'target1' || role === 'target2') && genderService.hasGenderMarker(text)) {
+        const mr = genderService.analyzeAndExpand(text, language, role)
+        if (mr.wasModified) {
+          textForTTS = mr.expandedText
+          logger.info(`Gender (marker): "${text}" → "${textForTTS}" (${role})`)
+        }
+      }
+
+      // TTS generate (same provider branches as the bulk path).
+      logger.info(`[Regen Phrase] ${courseCode}/${phraseId} role=${role} voice=${voiceId} "${textForTTS.substring(0, 40)}..."`)
+      let rawAudioBuffer, wordBoundaries
+      if (voiceProvider === 'azure') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+          subscriptionKey: process.env.AZURE_SPEECH_KEY,
+          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+          voiceName: voiceId,
+          speed
+        }))
+      } else if (voiceProvider === 'elevenlabs') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+          apiKey: process.env.ELEVENLABS_API_KEY,
+          voiceId: voiceId,
+          speed
+        }))
+      } else if (voiceProvider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceId,
+          language: toBcp47(language)
+        }))
+      } else {
+        return res.status(400).json({ error: `Unknown TTS provider: ${voiceProvider}` })
+      }
+
+      // Master audio (−16 LUFS, duration).
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+
+      // Upload mastered audio to S3 (fresh UUID, UPPERCASE per convention).
+      const newAudioId = uuidv4().toUpperCase()
+      const newS3Key = `mastered/${newAudioId}.mp3`
+      await s3.send(new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: newS3Key,
+        Body: masteredBuffer,
+        ContentType: 'audio/mpeg'
+      }))
+
+      // Mint a FRESH course_audio row carrying the NEW text (NOT the old text).
+      // We always insert (never upsert over the old row) so the prior clip survives
+      // and the new uuid is fresh — idempotent re-edits just stack new rows.
+      const { data: insertedAudio, error: audioInsertError } = await supabase
+        .from('course_audio')
+        .insert({
+          course_code: courseCode,
+          text,                                   // authoritative NEW text
+          text_normalized: normalizeForAudio(text),
+          language,
+          role,
+          voice_id: voiceId,
+          origin: 'tts',
+          s3_key: newS3Key,
+          duration_ms: durationMs,
+          word_boundaries: wordBoundaries || null
+        })
+        .select('id')
+        .single()
+      if (audioInsertError) throw audioInsertError
+      const audioRowId = insertedAudio.id
+
+      // Rebind the phrase pointer to the fresh uuid (single-column update so the
+      // text-change trigger can't fire here and re-null our binding).
+      const column = PHRASE_AUDIO_COLUMN[role]
+      const { error: bindError } = await supabase
+        .from('course_practice_phrases')
+        .update({ [column]: audioRowId })
+        .eq('id', phraseId)
+        .eq('course_code', courseCode)
+      if (bindError) throw bindError
+
+      result[column] = audioRowId
+      result.durations[role] = durationMs
+      logger.info(`[Regen Phrase] Done: ${phraseId} ${role} → ${newS3Key} (${durationMs}ms), audio_id=${audioRowId}`)
+    }
+
+    // 5. Bust production-api stats cache + bump course version (matches bulk paths).
+    try {
+      await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    } catch (e) { /* production-api may not be running */ }
+    await bumpCourseVersion(supabase, courseCode, 'patch')
+
+    res.json(result)
+
+  } catch (error) {
+    logger.error('Regenerate phrase error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
 // POST GENERATE-COMPONENTS - Generate audio for M-LEGO component phrases
 // =============================================================================
 

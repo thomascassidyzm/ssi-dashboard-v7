@@ -244,8 +244,9 @@
 
               <!-- Edit & Flag Buttons -->
               <div class="edit-flags flex items-center gap-1 flex-shrink-0">
-                <!-- Pencil edit button -->
+                <!-- Pencil edit button — LEGO text (debut) is NOT editable; only phrases -->
                 <button
+                  v-if="item.type !== 'debut'"
                   class="w-6 h-6 flex items-center justify-center rounded text-slate-500 hover:text-white hover:bg-slate-600 transition-colors"
                   title="Edit text"
                   @click.stop="emit('item-edit', item)"

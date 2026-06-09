@@ -999,6 +999,7 @@ import FlaggedItemRow from './components/FlaggedItemRow.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
 import ListeningProjectionView from './components/ListeningProjectionView.vue';
 import { getApiUrl } from '@/services/api';
+import { useAuth } from '@/composables/useAuth.js';
 // CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,
@@ -1058,6 +1059,9 @@ const phraseToEdit = ref<{
   known_audio_uuid?: string;
   target1_audio_uuid?: string;
   target2_audio_uuid?: string;
+  // The live journey/seed row object — rebound in-place after regen so the
+  // *_audio_uuid pointers update reactively without a full reload.
+  sourceItem?: any;
 } | null>(null);
 const phraseEditMode = ref<'phrase' | 'lego'>('phrase');
 
@@ -1368,6 +1372,21 @@ const getApiBaseUrl = (): string => {
   const storedUrl = localStorage.getItem('api_base_url');
   if (storedUrl) return storedUrl;
   return getApiUrl();
+};
+
+// Admin-gated fetch — attach a fresh Supabase access token as Bearer.
+// Mirrors the PodDetailView authedFetch pattern. Required for the
+// regenerate-phrase endpoint (requireAdmin — it costs TTS, D3).
+const { getAccessToken } = useAuth();
+const authedFetch = async (path: string, init: RequestInit = {}): Promise<Response> => {
+  const token = await getAccessToken();
+  const headers: Record<string, string> = {
+    'ngrok-skip-browser-warning': 'true',
+    'Content-Type': 'application/json',
+    ...((init.headers as Record<string, string>) || {}),
+  };
+  if (token) headers.Authorization = `Bearer ${token}`;
+  return fetch(`${getApiBaseUrl()}${path}`, { ...init, headers });
 };
 
 // Computed
@@ -2137,6 +2156,8 @@ const openPhraseEditModal = (phrase: PhraseRowData) => {
     known_audio_uuid: phrase.known_audio_uuid,
     target1_audio_uuid: phrase.target1_audio_uuid,
     target2_audio_uuid: phrase.target2_audio_uuid,
+    // Live seed-grid row → rebind audio pointers in-place after regen.
+    sourceItem: phrase,
   };
   phraseEditModalVisible.value = true;
 };
@@ -2182,121 +2203,176 @@ interface RegenFlags {
   target2: boolean;
 }
 
+// Fetch a signed audition URL for a freshly-minted audio uuid (verbatim
+// reuse of the savePresentationAndRegen audition snippet, ~2382-2395).
+const fetchAuditionUrl = async (audioUuid: string): Promise<string | null> => {
+  try {
+    const urlResp = await fetch(
+      `${getApiBaseUrl()}/api/production/${courseCode.value}/audio/${audioUuid}/url`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    );
+    if (urlResp.ok) {
+      const urlData = await urlResp.json();
+      return urlData.url || null;
+    }
+  } catch (e) {
+    // Non-fatal: regen succeeded, just couldn't fetch the audition URL
+  }
+  return null;
+};
+
 const savePhraseEdit = async (data: { known_text: string; target_text: string; regen_flags: RegenFlags }) => {
   if (!phraseToEdit.value) return;
 
+  // LEGO text (course_legos) is NOT editable — editing is for phrases only.
+  // Blocked path: even if 'lego' mode is somehow reached, never PATCH LEGO text.
+  if (phraseEditMode.value === 'lego') {
+    console.warn('LEGO text editing is disallowed — only phrases are editable.');
+    phraseEditModalRef.value?.onSaveComplete(false, 'LEGO text is not editable.');
+    return;
+  }
+
   try {
-    const apiBaseUrl = getApiBaseUrl();
-
-    // Save text changes — route to correct endpoint based on mode
-    const endpoint = phraseEditMode.value === 'lego'
-      ? `${apiBaseUrl}/api/production/${courseCode.value}/lego/${phraseToEdit.value.id}`
-      : `${apiBaseUrl}/api/production/${courseCode.value}/phrase/${phraseToEdit.value.id}`;
-
-    const response = await fetch(endpoint, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        known_text: data.known_text,
-        target_text: data.target_text,
-      })
-    });
-
-    if (!response.ok) throw new Error(`Failed to save ${phraseEditMode.value}`);
-
-    // Flag individual audio files for regeneration
-    const flagPromises: Promise<Response>[] = [];
-
-    if (data.regen_flags.known && phraseToEdit.value.known_audio_uuid) {
-      flagPromises.push(
-        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-          body: JSON.stringify({
-            audio_uuid: phraseToEdit.value.known_audio_uuid,
-            status: 'flagged',
-            reason: 'Text edited - flagged for regeneration',
-            flagged_by: 'dashboard_user'
-          })
+    // Save phrase text changes (course_practice_phrases).
+    // (LEGO/intro narration never reaches the regenerate-phrase path — D4 sends
+    //  intro/component_intro narration edits through onJourneyPresentationEdit.)
+    const response = await authedFetch(
+      `/api/production/${courseCode.value}/phrase/${phraseToEdit.value.id}`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify({
+          known_text: data.known_text,
+          target_text: data.target_text,
         })
-      );
-    }
+      }
+    );
 
-    if (data.regen_flags.target1 && phraseToEdit.value.target1_audio_uuid) {
-      flagPromises.push(
-        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-          body: JSON.stringify({
-            audio_uuid: phraseToEdit.value.target1_audio_uuid,
-            status: 'flagged',
-            reason: 'Text edited - flagged for regeneration',
-            flagged_by: 'dashboard_user'
-          })
-        })
-      );
-    }
+    if (!response.ok) throw new Error('Failed to save phrase');
 
-    if (data.regen_flags.target2 && phraseToEdit.value.target2_audio_uuid) {
-      flagPromises.push(
-        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-          body: JSON.stringify({
-            audio_uuid: phraseToEdit.value.target2_audio_uuid,
-            status: 'flagged',
-            reason: 'Text edited - flagged for regeneration',
-            flagged_by: 'dashboard_user'
-          })
-        })
-      );
-    }
-
-    // Wait for all flag updates
-    if (flagPromises.length > 0) {
-      await Promise.all(flagPromises);
-      console.log(`Flagged ${flagPromises.length} audio file(s) for regeneration`);
-    }
-
-    // Update local state
+    // Update local text state immediately
     const phraseId = phraseToEdit.value.id;
-    seeds.value.forEach(seed => {
-      seed.legos.forEach(lego => {
-        const phrase = lego.phrases.find(p => p.phrase_id === phraseId);
-        if (phrase) {
-          phrase.known_text = data.known_text;
-          phrase.target_text = data.target_text;
-        }
+    const applyLocalText = () => {
+      seeds.value.forEach(seed => {
+        seed.legos.forEach(lego => {
+          const phrase = lego.phrases.find(p => p.phrase_id === phraseId);
+          if (phrase) {
+            phrase.known_text = data.known_text;
+            phrase.target_text = data.target_text;
+          }
+        });
       });
-    });
+      if (phraseToEdit.value?.sourceItem) {
+        phraseToEdit.value.sourceItem.known_text = data.known_text;
+        phraseToEdit.value.sourceItem.target_text = data.target_text;
+      }
+    };
+    applyLocalText();
 
-    // Show success in modal (user can close or refresh)
+    // ── Phrase mode: OPTIMISTIC auto-approved regen of ONLY the changed role(s) (D2) ──
+    // A known_text edit → ['known']; a target_text edit → ['target1','target2']
+    // (two voices of the same target text). We honour the modal's checkboxes,
+    // which default to the changed role(s).
+    const roles: Array<'known' | 'target1' | 'target2'> = [];
+    if (data.regen_flags.known && phraseToEdit.value.known_audio_uuid) roles.push('known');
+    if (data.regen_flags.target1 && phraseToEdit.value.target1_audio_uuid) roles.push('target1');
+    if (data.regen_flags.target2 && phraseToEdit.value.target2_audio_uuid) roles.push('target2');
+
+    // No roles selected → text-only save, no TTS cost. Done.
+    if (roles.length === 0) {
+      phraseEditModalRef.value?.onSaveComplete(true);
+      if (viewMode.value === 'journey') reloadLearningJourney();
+      return;
+    }
+
+    // Tell the modal which roles are regenerating (inline audition spinners)
+    phraseEditModalRef.value?.beginAudition(roles);
     phraseEditModalRef.value?.onSaveComplete(true);
 
-    // Reload journey data if we edited from journey view
-    if (phraseEditMode.value === 'lego' || viewMode.value === 'journey') {
-      reloadLearningJourney();
+    // Admin-only endpoint (it costs TTS, D3). TTSes the NEW text, mints a fresh
+    // UUID/S3 key per role, rebinds the phrase pointer, returns fresh *_audio_id.
+    // CRITICAL: a TEXT edit must use regenerate-PHRASE, never regenerate-single
+    // (which re-reads stale course_audio.text → audio/text desync).
+    const regenResp = await authedFetch(
+      `/api/audio/regenerate-phrase/${courseCode.value}/${encodeURIComponent(phraseId)}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          known_text: data.known_text,
+          target_text: data.target_text,
+          roles,
+        }),
+      }
+    );
+
+    if (!regenResp.ok) {
+      const errBody = await regenResp.json().catch(() => ({}));
+      const msg = errBody.error || `Regeneration failed (${regenResp.status})`;
+      roles.forEach(r => phraseEditModalRef.value?.setAuditionError(r, msg));
+      throw new Error(msg);
     }
+
+    // Response: { known_audio_id, target1_audio_id, target2_audio_id, durations:{role:ms} }
+    // Only regenerated roles carry fresh ids; HTTP 200 == success (no `success` field).
+    const result = await regenResp.json();
+    const REGEN_FIELDS = {
+      known: { column: 'known_audio_id', uuidField: 'known_audio_uuid' },
+      target1: { column: 'target1_audio_id', uuidField: 'target1_audio_uuid' },
+      target2: { column: 'target2_audio_id', uuidField: 'target2_audio_uuid' },
+    } as const;
+
+    // Rebind the live row's *_audio_uuid pointers + audition each regenerated role.
+    for (const role of roles) {
+      const { column, uuidField } = REGEN_FIELDS[role];
+      const newUuid: string | null = result[column] ?? null;
+
+      // Rebind on the modal's working copy + the live source item (journey/seed row)
+      if (phraseToEdit.value) (phraseToEdit.value as any)[uuidField] = newUuid;
+      if (phraseToEdit.value?.sourceItem) phraseToEdit.value.sourceItem[uuidField] = newUuid;
+
+      const durationMs: number | null = result.durations?.[role] ?? null;
+      if (newUuid) {
+        const url = await fetchAuditionUrl(newUuid);
+        phraseEditModalRef.value?.setAuditionResult(role, { url, durationMs });
+      } else {
+        phraseEditModalRef.value?.setAuditionError(role, 'No audio returned for this role');
+      }
+    }
+
+    console.log(`Regenerated phrase ${phraseId} roles [${roles.join(', ')}] → fresh audio`);
+
+    // Refresh the journey so rows pick up the rebound audio on next load.
+    if (viewMode.value === 'journey') reloadLearningJourney();
   } catch (err) {
-    console.error(`Error saving ${phraseEditMode.value}:`, err);
+    console.error('Error saving phrase:', err);
     phraseEditModalRef.value?.onSaveComplete(false, err instanceof Error ? err.message : 'Save failed');
   }
 };
 
 // Journey view: item edit handler
 const onJourneyItemEdit = (item: any) => {
-  const isLego = item.type === 'intro' || item.type === 'debut';
-  phraseEditMode.value = isLego ? 'lego' : 'phrase';
+  // D4: intro / component_intro narration is NOT phrase-role audio — it lives in
+  // course_audio as a presentation clip. Route those edits through the dedicated
+  // presentation path (regenerate-presentation), never regenerate-phrase.
+  if (item.type === 'intro' || item.type === 'component_intro') {
+    onJourneyPresentationEdit(item);
+    return;
+  }
+
+  // LEGO text (the 'debut' item, stored in course_legos) is NOT editable —
+  // editing is for phrases only. Block the edit modal for LEGO-text items.
+  if (item.type === 'debut') return;
+
+  phraseEditMode.value = 'phrase';
   phraseToEdit.value = {
-    id: isLego ? item.legoId : item.phrase_id,
+    id: item.phrase_id,
     known_text: item.known_text,
     target_text: item.target_text,
     known_audio_uuid: item.known_audio_uuid,
     target1_audio_uuid: item.target1_audio_uuid,
     target2_audio_uuid: item.target2_audio_uuid,
+    // Keep a handle on the live journey row so regen can rebind its audio
+    // pointers in-place (reactive) without waiting for a full reload.
+    sourceItem: item,
   };
   phraseEditModalVisible.value = true;
 };

@@ -4762,6 +4762,26 @@ app.post('/api/audio/regenerate-presentation/:courseCode/:legoId', async (req, r
   }
 })
 
+// Surgical per-PHRASE text edit + role-scoped regen (component_practice/build/use rows)
+// POST /api/audio/regenerate-phrase/:courseCode/:phraseId
+// Body: { known_text?, target_text?, roles: ["known"|"target1"|"target2", ...] }
+// TTSes the NEW text (never re-reads stale course_audio.text — the desync trap),
+// persists course_practice_phrases text + course_audio.text, mints a fresh UUID/S3 key
+// per regenerated role, rebinds the phrase pointer, returns fresh *_audio_id + durations.
+// Auto-approve (no accept step); old S3 objects survive. Admin-only — it costs TTS (D3).
+app.post('/api/audio/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const { courseCode, phraseId } = req.params
+    logger.log(`[Regenerate Phrase] ${courseCode} / ${phraseId}`)
+    const response = await proxyToPhase8('POST', `/regenerate-phrase/${courseCode}/${phraseId}`, req.body || {})
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Regenerate phrase proxy error:', error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
 // Regenerate presentation audio
 // POST /api/audio/regenerate-presentations/:courseCode
 // Body: { dryRun, regenerateAudio }
