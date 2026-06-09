@@ -3659,6 +3659,38 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         return res.status(400).json({ error: `No voice configured for role: ${role}` })
       }
 
+      const column = PHRASE_AUDIO_COLUMN[role]
+
+      // DEDUP / IDEMPOTENCY: course_audio has UNIQUE(course_code, text_normalized,
+      // language, role, voice_id) (constraint unique_course_audio_per_voice). If a
+      // row already exists for this exact key (e.g. reverting to prior text, or a
+      // double-regen of the same text, or another course's identical clip), REUSE
+      // it: rebind the phrase pointer and skip TTS + S3 + insert entirely (no cost,
+      // no constraint collision). This mirrors the bulk path's upsert-on-conflict.
+      const textNormalized = normalizeForAudio(text)
+      const { data: existingAudio, error: existingErr } = await supabase
+        .from('course_audio')
+        .select('id, duration_ms')
+        .eq('course_code', courseCode)
+        .eq('text_normalized', textNormalized)
+        .eq('language', language)
+        .eq('role', role)
+        .eq('voice_id', voiceId)
+        .maybeSingle()
+      if (existingErr) throw existingErr
+      if (existingAudio?.id) {
+        const { error: rebindErr } = await supabase
+          .from('course_practice_phrases')
+          .update({ [column]: existingAudio.id })
+          .eq('id', phraseId)
+          .eq('course_code', courseCode)
+        if (rebindErr) throw rebindErr
+        result[column] = existingAudio.id
+        if (typeof existingAudio.duration_ms === 'number') result.durations[role] = existingAudio.duration_ms
+        logger.info(`[Regen Phrase] Reused existing audio for ${phraseId} ${role} → ${existingAudio.id} (skipped TTS)`)
+        continue
+      }
+
       // Gender expansion (target1/target2 only) — Haiku first, marker regex fallback.
       let textForTTS = text
       if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(language)) {
@@ -3719,15 +3751,17 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         ContentType: 'audio/mpeg'
       }))
 
-      // Mint a FRESH course_audio row carrying the NEW text (NOT the old text).
-      // We always insert (never upsert over the old row) so the prior clip survives
-      // and the new uuid is fresh — idempotent re-edits just stack new rows.
+      // Mint a course_audio row carrying the NEW text. We checked above that no row
+      // exists for this key, so this is a fresh clip — but UPSERT on the unique key
+      // (the canonical bulk-path pattern) is belt-and-suspenders against a concurrent
+      // write that created the row between our lookup and here, so we never 500 on
+      // unique_course_audio_per_voice. On conflict the existing row's id is returned.
       const { data: insertedAudio, error: audioInsertError } = await supabase
         .from('course_audio')
-        .insert({
+        .upsert({
           course_code: courseCode,
           text,                                   // authoritative NEW text
-          text_normalized: normalizeForAudio(text),
+          text_normalized: textNormalized,
           language,
           role,
           voice_id: voiceId,
@@ -3735,6 +3769,8 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
           s3_key: newS3Key,
           duration_ms: durationMs,
           word_boundaries: wordBoundaries || null
+        }, {
+          onConflict: 'course_code,text_normalized,language,role,voice_id'
         })
         .select('id')
         .single()
@@ -3743,7 +3779,6 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
 
       // Rebind the phrase pointer to the fresh uuid (single-column update so the
       // text-change trigger can't fire here and re-null our binding).
-      const column = PHRASE_AUDIO_COLUMN[role]
       const { error: bindError } = await supabase
         .from('course_practice_phrases')
         .update({ [column]: audioRowId })
