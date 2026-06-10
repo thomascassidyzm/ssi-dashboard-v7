@@ -26,6 +26,7 @@ const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
+const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext } = require('./recording-upload-helpers.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -4033,7 +4034,11 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       mimeType = 'audio/webm'
     } = req.body
 
-    if (!uuid || !audioData) {
+    // Script-mode takes (new-course autocue) have no pre-existing audio identity;
+    // regeneration-mode takes re-record an existing course_audio row by real uuid.
+    const isScriptMode = isScriptModeUpload(uuid, metadata)
+
+    if (!audioData || (!uuid && !isScriptMode)) {
       return res.status(400).json({ error: 'uuid and audioData required' })
     }
 
@@ -4074,15 +4079,24 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       audioProcessing: audioMeta
     })
 
-    // Update the sample flag in Supabase to mark as recorded
+    // Update the sample flag in Supabase to mark as recorded.
+    // Regeneration mode only: script-mode takes have no sample_flags row (their
+    // identity is server-minted) and the insert here used to 500 the upload AFTER
+    // the S3 PUT succeeded. QA-state failures must never fail an uploaded take.
     if (supabaseClient.isInitialized()) {
-      await supabaseClient.updateRecordingStatus(
-        uuid,
-        courseCode,
-        'needs_review',
-        `Recorded by ${metadata.recordedBy || provenance.recordedBy || 'human'} at ${new Date().toISOString()}`,
-        metadata.recordedBy || provenance.recordedBy || 'human'
-      )
+      if (!isScriptMode) {
+        try {
+          await supabaseClient.updateRecordingStatus(
+            uuid,
+            courseCode,
+            'needs_review',
+            `Recorded by ${metadata.recordedBy || provenance.recordedBy || 'human'} at ${new Date().toISOString()}`,
+            metadata.recordedBy || provenance.recordedBy || 'human'
+          )
+        } catch (flagError) {
+          logger.error('Error updating recording status (upload kept):', flagError)
+        }
+      }
 
       // Insert recording provenance if metadata provided
       if (provenance.recordedBy) {
