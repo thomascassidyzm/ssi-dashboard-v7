@@ -30,8 +30,20 @@ function liveRow(ctxOverrides = {}, rowOverrides = {}) {
   }
 }
 
+// Mimics PostgREST paging: select().order().order().range(from,to) returns
+// only the requested slice — so these tests also prove the adapter pages.
 function fakeSupabase(rows) {
-  return { from: () => ({ select: async () => ({ data: rows, error: null }) }) }
+  return {
+    from: () => ({
+      select: () => {
+        const builder = {
+          order: () => builder,
+          range: async (from, to) => ({ data: rows.slice(from, to + 1), error: null }),
+        }
+        return builder
+      },
+    }),
+  }
 }
 
 describe('fromProvenanceRow (live quality_notes JSON shape)', () => {
@@ -98,5 +110,15 @@ describe('fetchProvenanceRows filtering', () => {
       courseCode: 'mkd_for_fra',
     })
     expect(takes).toHaveLength(3)
+  })
+
+  it('pages past the PostgREST 1000-row cap (takes must not vanish at scale)', async () => {
+    const many = Array.from({ length: 2350 }, (_, i) =>
+      liveRow({ text: `фраза ${i}` }, { audio_uuid: `UUID-${String(i).padStart(5, '0')}` }))
+    const { rows: takes, error } = await adapter.fetchProvenanceRows(fakeSupabase(many), {
+      courseCode: 'mkd_for_fra', voiceId: 'human_richard_mkd',
+    })
+    expect(error).toBe(null)
+    expect(takes).toHaveLength(2350)
   })
 })

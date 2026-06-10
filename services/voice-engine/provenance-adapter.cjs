@@ -16,6 +16,7 @@
  */
 
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { pageThrough } = require('./db.cjs')
 
 /** Guarded parse of the quality_notes JSON context (old rows may hold plain text). */
 function parseContext(row) {
@@ -68,10 +69,17 @@ function fromProvenanceRow(row) {
  */
 async function fetchProvenanceRows(supabase, { courseCode, voiceId, role = null }) {
   try {
-    const { data, error } = await supabase
+    // Paginated — PostgREST max-rows silently truncates un-paginated selects
+    // (the INF PLAY lesson, banked in db.cjs). One course at design scale
+    // (2 voices × ~150 phrases × 2 cadences + known voice + re-records)
+    // crosses 1000 rows on its own. The live table has no id column; order
+    // by (created_at, audio_uuid) for a stable page walk.
+    const data = await pageThrough((from, to) => supabase
       .from('recording_provenance')
       .select('*')
-    if (error) return { rows: [], error: error.message }
+      .order('created_at', { ascending: true })
+      .order('audio_uuid', { ascending: true })
+      .range(from, to))
     const rows = (data || [])
       .map(fromProvenanceRow)
       .filter(Boolean)
