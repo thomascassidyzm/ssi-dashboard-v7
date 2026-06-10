@@ -263,31 +263,15 @@ const tabs = computed(() => {
 
   if (isProduction.value && !isCreateMode.value) {
     const code = courseCode.value
+    // ONE door per course (Tom, 2026-06-10): Overview is the hub — every
+    // working surface (Text, Audio, Record Room, QA, …) is a card there.
+    // Per-flow tabs in the navbar just duplicated the hub and confused
+    // community builders.
     return [
       {
         label: 'Overview',
         to: `/production/${code}`,
         active: route.name === 'ProductionDashboard'
-      },
-      {
-        label: 'Text',
-        to: `/production/${code}/text`,
-        active: route.name === 'TextGeneration'
-      },
-      {
-        label: 'Audio',
-        to: `/production/${code}/pipeline`,
-        active: route.name === 'AudioPipelineProduction'
-      },
-      {
-        label: 'Record Room',
-        to: `/record/${code}`,
-        active: route.name === 'RecordRoom'
-      },
-      {
-        label: 'QA',
-        to: { name: 'ScriptViewer', params: { courseCode: code }, query: { filter: 'flagged' } },
-        active: route.name === 'ScriptViewer' && route.query.filter === 'flagged'
       }
     ]
   }
