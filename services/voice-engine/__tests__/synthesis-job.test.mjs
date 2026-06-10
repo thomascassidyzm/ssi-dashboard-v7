@@ -72,7 +72,9 @@ function makeFakeDb() {
     },
     async loadSeeds() { return [] },
     async fetchExistingAudioTexts() {
-      return new Set(upserts.map(u => normalizeForAudio(u.text)))
+      // Same shape as db.cjs: Map text_normalized → registered s3_key
+      // (latest upsert wins, like the real 5-col-conflict upsert).
+      return new Map(upserts.map(u => [normalizeForAudio(u.text), u.s3Key]))
     },
     async upsertHumanCourseAudio(_supabase, args) {
       upserts.push(args)
@@ -85,7 +87,7 @@ function makeFakeDb() {
   }
 }
 
-function makeDeps(db) {
+function makeDeps(db, extraProvenanceRows = []) {
   return {
     supabase: {}, // never touched by the fakes
     storage,
@@ -96,8 +98,9 @@ function makeDeps(db) {
       async fetchProvenanceRows() {
         // Keystone-shaped raw rows through the REAL mapping function.
         const raw = [
-          { id: 'pr-slow', course_code: COURSE, s3_key: 'recordings/slow.mp3', phrase_text: PHRASE_RECORDED, chunks_string: CHUNKS_STRING, voice_id: VOICE, role: 'target1', cadence: 'slow', recorded_by: 'marija' },
-          { id: 'pr-nat', course_code: COURSE, s3_key: 'recordings/natural.mp3', phrase_text: PHRASE_RECORDED, chunks_string: CHUNKS_STRING, voice_id: VOICE, role: 'target1', cadence: 'natural', recorded_by: 'marija', duration_ms: 2300 },
+          { id: 'pr-slow', course_code: COURSE, s3_key: 'recordings/slow.mp3', phrase_text: PHRASE_RECORDED, chunks_string: CHUNKS_STRING, voice_id: VOICE, role: 'target1', cadence: 'slow', recorded_by: 'marija', recorded_at: '2026-06-01T10:00:00Z' },
+          { id: 'pr-nat', course_code: COURSE, s3_key: 'recordings/natural.mp3', phrase_text: PHRASE_RECORDED, chunks_string: CHUNKS_STRING, voice_id: VOICE, role: 'target1', cadence: 'natural', recorded_by: 'marija', duration_ms: 2300, recorded_at: '2026-06-01T10:00:00Z' },
+          ...extraProvenanceRows,
         ]
         return { rows: raw.map(realProvenance.fromProvenanceRow), error: null }
       },
@@ -195,6 +198,42 @@ describe('synthesis job (mock db, local storage, real ffmpeg)', () => {
     expect(c.spliced).toBe(0)
     expect(c.alreadyRegistered).toBe(2)       // p1 + p2
     expect(db.upserts.length).toBe(upsertsAfterFirst)
+  }, 180000)
+
+  it('RE-RECORDS SUPERSEDE: a fresher natural take re-points the row and re-cuts its segments', async () => {
+    const db = makeFakeDb()
+    // First run with the original takes.
+    const first = synthesisJob.startSynthesisJob(makeDeps(db), { courseCode: COURSE, voiceId: VOICE })
+    await first.job._run
+    expect(first.job.state).toBe('completed')
+    const takeRowBefore = db.upserts.find(u => u.text === PHRASE_RECORDED)
+    expect(takeRowBefore.s3Key).toBe('recordings/natural.mp3')
+
+    // Marija re-records the natural take (newer recorded_at, fresh provenance id).
+    await storage.putObject('recordings/natural-v2.mp3', await storage.getObjectBuffer('recordings/natural.mp3'), 'audio/mpeg')
+    const reRecord = {
+      id: 'pr-nat-v2', course_code: COURSE, s3_key: 'recordings/natural-v2.mp3',
+      phrase_text: PHRASE_RECORDED, chunks_string: CHUNKS_STRING,
+      voice_id: VOICE, role: 'target1', cadence: 'natural', recorded_by: 'marija',
+      duration_ms: 2300, recorded_at: '2026-06-09T10:00:00Z',
+    }
+    const second = synthesisJob.startSynthesisJob(makeDeps(db, [reRecord]), { courseCode: COURSE, voiceId: VOICE })
+    await second.job._run
+    expect(second.job.state).toBe('completed')
+
+    // The whole-take row now points at the NEW take (not frozen on the first).
+    const takeRows = db.upserts.filter(u => u.text === PHRASE_RECORDED)
+    expect(takeRows[takeRows.length - 1].s3Key).toBe('recordings/natural-v2.mp3')
+    expect(second.job.report.counts.takesRegistered).toBe(1)
+
+    // Segments cut from the superseded take were pruned and re-cut from v2.
+    expect(second.job.report.counts.segmentsExtracted).toBe(3)
+    const manifest = await segmentStore.loadManifest(storage, COURSE, VOICE)
+    const natSegs = manifest.segments.filter(s => s.cadence === 'natural')
+    expect(natSegs).toHaveLength(3)
+    for (const seg of natSegs) {
+      expect(seg.take.provenanceId).toBe('pr-nat-v2')
+    }
   }, 180000)
 
   it('rejects an unknown voice and refuses concurrent jobs', async () => {

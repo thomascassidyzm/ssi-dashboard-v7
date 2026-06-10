@@ -130,6 +130,33 @@ function upsertSegmentEntry(manifest, entry) {
   return { added: true, entry }
 }
 
+/**
+ * Drop segments for the given textKeys whose source take has been superseded
+ * by a re-record (latest take per (phrase, cadence) wins — provenance-adapter
+ * contract). The caller re-cuts those chunks from the fresh take; without
+ * this, upsertSegmentEntry's existing-wins rule would freeze the FIRST
+ * recording forever. Old S3 segment objects are orphaned, not deleted
+ * (same stance as the splice crash window).
+ *
+ * @param {object} manifest
+ * @param {Iterable<string>} textKeys - normalizeForMatching'd chunk texts in play
+ * @param {Set<string>} supersededTakeIds - provenance ids of out-dated takes
+ * @returns {object[]} the removed entries (so callers can fix their index)
+ */
+function pruneSupersededSegments(manifest, textKeys, supersededTakeIds) {
+  if (!supersededTakeIds?.size) return []
+  const keys = new Set(textKeys)
+  const removed = []
+  manifest.segments = (manifest.segments || []).filter(seg => {
+    const stale = keys.has(seg.textKey)
+      && seg.take?.provenanceId != null
+      && supersededTakeIds.has(seg.take.provenanceId)
+    if (stale) removed.push(seg)
+    return !stale
+  })
+  return removed
+}
+
 /** Record a spliced phrase in the synthesis ledger (dedupes by textKey). */
 function recordSpliced(manifest, { text, textKey, audioId, s3Key }) {
   const k = textKey ?? normalizeForMatching(text)
@@ -155,6 +182,7 @@ module.exports = {
   segmentIndex,
   makeSegmentEntry,
   upsertSegmentEntry,
+  pruneSupersededSegments,
   recordSpliced,
   recordAlignmentFailure,
 }

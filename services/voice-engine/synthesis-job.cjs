@@ -18,6 +18,11 @@
  * - the course_audio upsert hits the live 5-column unique index.
  * Re-POSTing /synthesize after a crash continues where it left off.
  *
+ * RE-RECORDS SUPERSEDE (provenance contract: latest take per (phrase,
+ * cadence) wins): segments cut from out-dated takes are pruned and re-cut,
+ * and a course_audio row pointing at an older take's s3_key (or a splice)
+ * is re-upserted to the latest whole take.
+ *
  * NO TTS calls, ever. NO DDL. Course-agnostic.
  */
 
@@ -183,6 +188,22 @@ function startSynthesisJob(deps, { courseCode, voiceId = null, role = null, dryR
       }
       const takeGroups = deps.provenance.groupTakesByPhrase(takes)
 
+      // Re-records supersede (provenance-adapter contract: latest take per
+      // (phrase, cadence) wins). Any take id that is NOT a current winner is
+      // superseded — its segments get pruned and re-cut, its course_audio
+      // registration gets re-pointed.
+      const winnerTakeIds = new Set()
+      for (const g of takeGroups.values()) {
+        if (g.natural?.id != null) winnerTakeIds.add(g.natural.id)
+        if (g.slow?.id != null) winnerTakeIds.add(g.slow.id)
+      }
+      const supersededTakeIds = new Set()
+      for (const t of takes) {
+        if (t?.id == null) continue
+        if (t.method && t.method !== 'take') continue
+        if (!winnerTakeIds.has(t.id)) supersededTakeIds.add(t.id)
+      }
+
       const manifest = await segmentStore.loadManifest(deps.storage, courseCode, job.voiceId)
 
       // ---- PHASE: align + extract segments ------------------------------
@@ -200,6 +221,15 @@ function startSynthesisJob(deps, { courseCode, voiceId = null, role = null, dryR
         job.lastItem = group.phraseText?.slice(0, 40)
         try {
           const expectedChunks = parseChunks(group.chunksString)
+          // Supersede: drop segments cut from out-dated takes of these chunks
+          // BEFORE the resume check, so a re-record forces a re-cut instead
+          // of the first recording winning forever.
+          const pruned = segmentStore.pruneSupersededSegments(
+            manifest,
+            expectedChunks.map(c => normalizeForMatching(c)),
+            supersededTakeIds,
+          )
+          for (const seg of pruned) idx.delete(`${seg.textKey}|${seg.cadence}`)
           // Resume: skip when every chunk already has a segment in ANY cadence.
           const allPresent = expectedChunks.every(c => {
             const k = normalizeForMatching(c)
@@ -277,6 +307,9 @@ function startSynthesisJob(deps, { courseCode, voiceId = null, role = null, dryR
       for (const s of seeds) if (s[textCol]) neededTexts.set(normalizeForAudio(s[textCol]), s[textCol])
       for (const l of legos) if (l[textCol]) neededTexts.set(normalizeForAudio(l[textCol]), l[textCol])
 
+      // Map text_normalized → registered s3_key (db.fetchExistingAudioTexts).
+      // The s3_key is what makes re-records supersede: a row pointing at an
+      // older take (or a splice) gets re-upserted to the latest take.
       let existingTexts = await db.fetchExistingAudioTexts(deps.supabase, { courseCode, role: slot.role, voiceId: job.voiceId })
       const wholeTakeTexts = new Set()
       let takesRegistered = 0
@@ -285,7 +318,10 @@ function startSynthesisJob(deps, { courseCode, voiceId = null, role = null, dryR
         if (job.cancelled) break
         if (!group.natural) continue
         wholeTakeTexts.add(norm)
-        if (!neededTexts.has(norm) || existingTexts.has(norm)) continue
+        if (!neededTexts.has(norm)) continue
+        // Already registered from THIS take → nothing to do (resume).
+        // Registered from anything else → the latest take wins (supersede).
+        if (existingTexts.get(norm) === group.natural.s3Key) continue
         if (dryRun) { takesRegistered++; continue }
         try {
           let durationMs = group.natural.durationMs
@@ -306,7 +342,7 @@ function startSynthesisJob(deps, { courseCode, voiceId = null, role = null, dryR
             s3Key: group.natural.s3Key,
             durationMs,
           })
-          existingTexts.add(norm)
+          existingTexts.set(norm, group.natural.s3Key)
           takesRegistered++
         } catch (err) {
           pushError(job, group.phraseText, err.message)

@@ -66,12 +66,17 @@ async function loadSeeds(supabase, courseCode) {
     .range(from, to))
 }
 
-/** text_normalized values already registered for (course, role, voice). */
+/**
+ * text_normalized → s3_key already registered for (course, role, voice).
+ * A Map (not a Set) so the job can tell "registered from THIS take" apart
+ * from "registered from an older take or a splice" — re-records supersede.
+ * (.has() keeps working for the splice planner.)
+ */
 async function fetchExistingAudioTexts(supabase, { courseCode, role, voiceId }) {
   const rows = await pageThrough((from, to) => {
     let q = supabase
       .from('course_audio')
-      .select('text_normalized')
+      .select('text_normalized, s3_key')
       .eq('course_code', courseCode)
       .eq('role', role)
       .order('id', { ascending: true })
@@ -79,7 +84,11 @@ async function fetchExistingAudioTexts(supabase, { courseCode, role, voiceId }) 
     if (voiceId) q = q.eq('voice_id', voiceId)
     return q
   })
-  return new Set(rows.map(r => r.text_normalized).filter(Boolean))
+  const map = new Map()
+  for (const r of rows) {
+    if (r.text_normalized) map.set(r.text_normalized, r.s3_key ?? null)
+  }
+  return map
 }
 
 /** All audio rows for a role (any voice) — used by /coverage. */
