@@ -113,6 +113,16 @@ function extractConstructionTail(explainerText) {
 }
 
 function buildExplainerNarration(decomposition, explainerText, connector = 'means') {
+  // FIRST-ENCOUNTER DISCIPLINE (Tom 2026-06-10): chunks flagged
+  // first_encounter:false by runOncePass are repeats — never narrated again.
+  // A flagless chunk counts as first (pre-once-pass rows keep old behaviour).
+  // Identity chunks ("Sarah" means Sarah — untranslated proper nouns the
+  // model failed to drop per rule 6) carry zero information: never narrated.
+  if (Array.isArray(decomposition) && decomposition.length > 0) {
+    const active = decomposition.filter(c => c && c.first_encounter !== false && !isIdentityChunk(c))
+    if (active.length === 0) return null // everything already introduced — no explainer
+    decomposition = active
+  }
   // P5 PUNCTUATION FORM (Tom-validated 2026-05-20 across spa+ita; see
   // reference_ssi_tts_recipe_and_intro_model): double-quote each target chunk
   // and put a period after it, joined by the localised connector —
@@ -219,12 +229,23 @@ async function runTextPass(courseCode) {
   // Pull all in-scope candidates for this course (canonical pod only by default).
   const podPattern = podFilter(courseCode)
   const podQuery = allPods
-    ? supabase.from('listening_pod_sentences').select('id, target_text, known_text').like('pod_id', podPattern)
-    : supabase.from('listening_pod_sentences').select('id, target_text, known_text').eq('pod_id', podPattern)
+    ? supabase.from('listening_pod_sentences').select('id, target_text, known_text, speaker').like('pod_id', podPattern)
+    : supabase.from('listening_pod_sentences').select('id, target_text, known_text, speaker').eq('pod_id', podPattern)
   const { data: rows, error } = await podQuery.is('explainer_text', null)
   if (error) throw new Error(`load candidates: ${error.message}`)
 
-  const valid = (rows || []).filter(r => r.target_text && r.known_text)
+  // Narrator rows are the canon-v2 vocab codas (numbers/colours/days). They
+  // NEVER get an explainer — the translation plays anyway (Tom 2026-06-10).
+  // Stamp them '' so they're deliberately done, not re-scanned every run.
+  const codas = (rows || []).filter(r => r.speaker === 'Narrator')
+  for (const r of codas) {
+    const { error: codaErr } = await supabase.from('listening_pod_sentences')
+      .update({ explainer_decomposition: [], explainer_text: '' }).eq('id', r.id)
+    if (codaErr) log(`[${courseCode}] coda stamp failed:`, r.id, codaErr.message)
+  }
+  if (codas.length) log(`[${courseCode}] text: ${codas.length} Narrator coda(s) stamped no-explainer`)
+
+  const valid = (rows || []).filter(r => r.target_text && r.known_text && r.speaker !== 'Narrator')
   log(`[${courseCode}] text: ${valid.length} sentences to process`)
   if (valid.length === 0) return { updated: 0, failed: 0, skipped: false }
 
@@ -272,6 +293,84 @@ async function runTextPass(courseCode) {
     log(`[${courseCode}] text progress: ${updated}/${valid.length} updated, ${failed} failed`)
   }
   return { updated, failed, skipped: false }
+}
+
+// =============================================================================
+// ONCE PASS — first-encounter discipline (Tom 2026-06-10)
+// =============================================================================
+// "We never want an explainer for something ALREADY introduced." Deterministic
+// code, not LLM judgement: walk each pod in global_order, flag every chunk's
+// FIRST occurrence (first_encounter:true) and every repeat (false). Narration
+// (buildExplainerNarration) speaks only first-encounter chunks; a sentence
+// with nothing new gets explainer_text '' and no audio — the player just plays
+// the translation. Decomposition data is kept intact (flags are additive).
+// Idempotent: same rows in, same flags out; audio is nulled ONLY when the
+// effective narration actually changed.
+
+function normChunkKey(s) {
+  return String(s || '').normalize('NFC').toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/^[\p{P}\s]+|[\p{P}\s]+$/gu, '')
+    .trim()
+}
+
+// "X means X" is always noise — an untranslated token (proper noun, loanword
+// echo) the model should have dropped. Excluded from narration and prose.
+function isIdentityChunk(ch) {
+  const t = normChunkKey(ch && ch.chunk_target)
+  return t !== '' && t === normChunkKey(ch && ch.chunk_known)
+}
+
+async function runOncePass(courseCode) {
+  const { learner } = podExplainer.parseCourseCode(courseCode)
+  const connector = podExplainer.getConnectorForLearnerLang(learner)
+  const podPattern = podFilter(courseCode)
+  const COLS = 'id, pod_id, global_order, explainer_decomposition, explainer_text, explainer_audio_id'
+  const q = allPods
+    ? supabase.from('listening_pod_sentences').select(COLS).like('pod_id', podPattern)
+    : supabase.from('listening_pod_sentences').select(COLS).eq('pod_id', podPattern)
+  const { data: rows, error } = await q.order('pod_id').order('global_order')
+  if (error) throw new Error(`once-pass load: ${error.message}`)
+
+  let flagged = 0, emptied = 0, revoice = 0
+  const seenByPod = new Map()
+  for (const row of rows || []) {
+    const dec = Array.isArray(row.explainer_decomposition) ? row.explainer_decomposition : null
+    if (!dec || dec.length === 0) continue
+    if (!seenByPod.has(row.pod_id)) seenByPod.set(row.pod_id, new Set())
+    const seen = seenByPod.get(row.pod_id)
+
+    const oldNarration = buildExplainerNarration(dec, row.explainer_text, connector)
+    const newDec = dec.map(ch => {
+      const key = normChunkKey(ch && ch.chunk_target)
+      if (!key) return ch
+      const first = !seen.has(key)
+      seen.add(key)
+      return { ...ch, first_encounter: first }
+    })
+    const newNarration = buildExplainerNarration(newDec, row.explainer_text, connector)
+
+    const active = newDec.filter(c => c && c.first_encounter !== false && !isIdentityChunk(c))
+    const flagsChanged = JSON.stringify(newDec) !== JSON.stringify(dec)
+    const narrationChanged = newNarration !== oldNarration
+
+    if (!flagsChanged && !narrationChanged) continue
+
+    // Display prose mirrors the spoken form: first-encounter chunks only,
+    // tail preserved while any chunk survives; '' when nothing is new.
+    const tail = extractConstructionTail(row.explainer_text)
+    const newText = active.length === 0 ? '' :
+      active.map(ch => `${ch.chunk_target} ${connector} ${ch.chunk_known}`).join(', ') + (tail ? ` — ${tail.replace(/\.$/, '')}` : '')
+
+    const update = { explainer_decomposition: newDec, explainer_text: newText }
+    if (narrationChanged && row.explainer_audio_id) { update.explainer_audio_id = null; revoice++ }
+    const { error: upErr } = await supabase.from('listening_pod_sentences').update(update).eq('id', row.id)
+    if (upErr) { log(`[${courseCode}] once-pass write failed:`, row.id, upErr.message); continue }
+    flagged++
+    if (active.length === 0) emptied++
+  }
+  log(`[${courseCode}] once-pass: ${flagged} rows updated (${emptied} fully-repeat → no explainer, ${revoice} queued for re-voice)`)
+  return { flagged, emptied, revoice }
 }
 
 // =============================================================================
@@ -387,6 +486,7 @@ async function runAudioPass(courseCode) {
     let audioResult = null
     try {
       if (runText) textResult = await runTextPass(courseCode)
+      await runOncePass(courseCode) // first-encounter discipline before any TTS
       if (runAudio) audioResult = await runAudioPass(courseCode)
     } catch (err) {
       log(`[${courseCode}] FATAL:`, err?.message || err)

@@ -175,9 +175,12 @@ Each chunk object in "decomposition" has:
    explained. Drop them from the decomposition entirely ("Split ${connector}
    Split" is noise; "Karlovačko" is a beer brand, leave it).
 
-7. WHEN TO SKIP. After dropping proper nouns, if only ONE ordinary meaningful
-   chunk remains AND it is NOT a fixed expression needing a usage note, the
-   target/known pair already says everything — return [] and "". (A bare
+7. WHEN TO SKIP — RARE. After dropping proper nouns, skip (return [] and "")
+   ONLY when at most ONE ordinary meaningful chunk remains AND it is NOT a
+   fixed expression needing a usage note — the target/known pair already says
+   everything. A sentence with TWO OR MORE meaningful chunks must ALWAYS be
+   decomposed and narrated, however simple or familiar it looks — whether the
+   learner has met a chunk before is handled downstream, never by you. (A bare
    one-word line like "molim?" on its own still earns a tiny gloss IF its form
    would mislead per rule 3; otherwise skip.)
 
