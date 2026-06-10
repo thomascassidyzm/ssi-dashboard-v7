@@ -19,9 +19,12 @@
           <span class="text-amber-400 text-sm">Missing Audio</span>
           <span class="text-amber-300 font-bold text-lg ml-2">{{ stats.itemsMissingAudio }}</span>
         </div>
-        <div v-if="stats.listeningItems > 0" class="stat-item">
-          <span class="text-pink-400 text-sm">Listening</span>
-          <span class="text-pink-300 font-bold text-lg ml-2">{{ stats.listeningItems }}</span>
+        <!-- Learner view: how much content is hidden because audio is missing -->
+        <div v-if="stats.learnerView" class="stat-item">
+          <span class="text-emerald-400 text-sm">Learner view</span>
+          <span class="text-emerald-300 text-sm ml-2">
+            {{ (stats.legosDroppedForAudio || 0) }} LEGOs + {{ (stats.phrasesDroppedForAudio || 0) }} phrases awaiting audio hidden, rounds renumbered
+          </span>
         </div>
         <div class="stat-item ml-auto">
           <span class="text-slate-400 text-sm">Generated in</span>
@@ -53,10 +56,6 @@
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
           <span class="text-slate-300">CONSOLIDATE</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-pink-500"></span>
-          <span class="text-slate-300">LISTENING</span>
         </div>
       </div>
 
@@ -142,12 +141,7 @@
             </div>
 
             <div class="item-count text-slate-400 text-sm">
-              <template v-if="hideListening && visibleItems(round).length !== round.itemCount">
-                {{ visibleItems(round).length }} of {{ round.itemCount }} items
-              </template>
-              <template v-else>
-                {{ round.itemCount }} items
-              </template>
+              {{ round.itemCount }} items
             </div>
 
             <svg
@@ -166,7 +160,7 @@
         <Transition name="slide">
           <div v-if="expandedRounds.has(round.roundNumber)" class="round-items p-4 space-y-2">
             <div
-              v-for="(item, idx) in visibleItems(round)"
+              v-for="(item, idx) in round.items"
               :key="`${round.roundNumber}-${idx}`"
               :ref="el => setItemRef(round.roundNumber, idx, el)"
               class="item-row flex items-center gap-3 p-3 rounded-lg transition-all"
@@ -212,30 +206,9 @@
                 R{{ item.reviewOf }}
               </div>
 
-              <!-- Listening badges: speed + batch -->
-              <div v-if="item.type === 'listening'" class="flex gap-1">
-                <span
-                  class="px-2 py-1 text-xs rounded font-bold"
-                  :class="item.listeningSpeed === 'double'
-                    ? 'bg-pink-600 text-white'
-                    : 'bg-pink-500 bg-opacity-30 text-pink-300'"
-                >
-                  {{ item.listeningSpeed === 'double' ? '2×' : '1×' }}
-                </span>
-                <span class="px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono">
-                  B{{ item.listeningBatch }}
-                </span>
-              </div>
-
-              <!-- Content -->
+              <!-- Content: known → target -->
               <div class="item-content flex-1 min-w-0">
-                <!-- Listening: target only -->
-                <div v-if="item.type === 'listening'" class="flex gap-2 items-center">
-                  <span class="text-pink-200">{{ item.target_text }}</span>
-                  <span class="text-slate-500 text-xs">#{{ item.listeningPlayCount }}</span>
-                </div>
-                <!-- Normal: known → target -->
-                <div v-else class="flex gap-4">
+                <div class="flex gap-4">
                   <span class="text-slate-400 truncate flex-1">{{ item.known_text }}</span>
                   <span class="text-slate-500">&rarr;</span>
                   <span class="text-white truncate flex-1">{{ item.target_text }}</span>
@@ -257,7 +230,7 @@
                 </button>
                 <!-- Presentation (intro narration) edit + regen -->
                 <button
-                  v-if="item.type === 'intro' || item.type === 'component_intro'"
+                  v-if="item.type === 'intro'"
                   class="w-6 h-6 flex items-center justify-center rounded text-purple-400 hover:text-white hover:bg-purple-500 hover:bg-opacity-30 transition-colors"
                   title="Edit intro narration & regenerate audio"
                   @click.stop="emit('presentation-edit', item)"
@@ -376,17 +349,17 @@ import { ref, computed, watch, nextTick } from 'vue'
 import { useScriptPlayer } from '@/composables/useScriptPlayer'
 import { getApiUrl } from '@/services/api'
 
+// Mirrors the learner session's cycle types: the generator emits ONLY
+// intro/debut/build/review/consolidate. Component priming, listening clusters
+// and pod laps are never played in the learner's main flow (Listening MODE
+// and the per-learner pod scheduler own those) so Script View no longer
+// projects them — see docs/voice-engine/script-divergence-report.md.
 interface ScriptItem {
   roundNumber: number
   legoId: string
   legoIndex: number
   seedId: string
-  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate' | 'listening' | 'component_intro' | 'component_practice' | 'listen_intro' | 'listen_outro' | 'pod'
-  // Pod-specific (Layer 2 round-end lap)
-  podSentenceIdx?: number
-  podStage?: number
-  podPlayRole?: 'slow' | 'trans' | 'fast' | 'fast2x'
-  playbackSpeed?: number
+  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate'
   phrase_id?: string
   known_text: string
   target_text: string
@@ -402,9 +375,6 @@ interface ScriptItem {
   known_duration_ms?: number
   target1_duration_ms?: number
   target2_duration_ms?: number
-  listeningSpeed?: 'normal' | 'double'
-  listeningBatch?: number
-  listeningPlayCount?: number
 }
 
 interface RoundData {
@@ -425,8 +395,11 @@ interface Stats {
   itemsWithAudio: number
   itemsMissingAudio: number
   generationTimeMs: number
-  listeningItems?: number
   graduatedSeeds?: number
+  // Audio-gap toggle ("As the learner hears it") — set by the generator
+  learnerView?: boolean
+  legosDroppedForAudio?: number
+  phrasesDroppedForAudio?: number
 }
 
 const props = defineProps<{
@@ -436,17 +409,10 @@ const props = defineProps<{
   courseCode: string
   isLoading?: boolean
   hideControls?: boolean
-  hideListening?: boolean
   flaggedAudioUuids?: Set<string>
   regeneratingUuids?: Set<string>
   flaggedPhraseIds?: Set<string>
 }>()
-
-// Listening item types (LISTEN intro/outro, POD lap, retired-seed listening cluster)
-// — hidden from the journey view when reviewers are checking main course content.
-const LISTENING_TYPES = new Set(['listening', 'listen_intro', 'listen_outro', 'pod'])
-const visibleItems = (round: RoundData) =>
-  props.hideListening ? round.items.filter(i => !LISTENING_TYPES.has(i.type)) : round.items
 
 const emit = defineEmits<{
   'playback-state': [state: {
@@ -509,7 +475,7 @@ const player = useScriptPlayer({
 // Intro cycle: presentation audio (PROMPT) → pause → LEGO target1 → LEGO target2
 const playerItems = computed(() => {
   return props.allItems.map(item => {
-    if (item.type === 'intro' || item.type === 'component_intro') {
+    if (item.type === 'intro') {
       const presId = (item as any).presentation_audio?.id || null
       return {
         sourceId: presId,
@@ -727,16 +693,10 @@ const getLegoTargetText = (round: RoundData): string => {
 const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?: number): string => {
   switch (type) {
     case 'intro': return 'Intro'
-    case 'component_intro': return 'CMP'
-    case 'component_practice': return 'CMP'
     case 'debut': return 'LEGO'
     case 'build': return phrasePosition ? `BUILD-${phrasePosition}` : 'BUILD'
     case 'review': return 'REVIEW'
     case 'consolidate': return consolidateIndex ? `CONSOLIDATE-${consolidateIndex}` : 'CONSOLIDATE'
-    case 'listening': return 'LISTEN'
-    case 'listen_intro': return 'LISTEN ▸'
-    case 'listen_outro': return '◂ LISTEN'
-    case 'pod': return 'POD'
     default: return type
   }
 }
@@ -744,27 +704,17 @@ const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?
 const getTypeBadgeClass = (type: string): string => {
   switch (type) {
     case 'intro': return 'bg-purple-500 bg-opacity-30 text-purple-300'
-    case 'component_intro': return 'bg-violet-500 bg-opacity-30 text-violet-300'
-    case 'component_practice': return 'bg-violet-500 bg-opacity-30 text-violet-300'
     case 'debut': return 'bg-emerald-500 bg-opacity-30 text-emerald-300'
     case 'build': return 'bg-blue-500 bg-opacity-30 text-blue-300'
     case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'
     case 'consolidate': return 'bg-cyan-500 bg-opacity-40 text-cyan-300'
-    case 'listening': return 'bg-pink-500 bg-opacity-30 text-pink-300'
-    case 'listen_intro':
-    case 'listen_outro': return 'bg-fuchsia-500 bg-opacity-30 text-fuchsia-200'
-    case 'pod': return 'bg-orange-500 bg-opacity-30 text-orange-300'
     default: return 'bg-slate-600 text-slate-400'
   }
 }
 
 const getItemBgClass = (item: ScriptItem): string => {
   if (item.type === 'intro') return 'bg-slate-800'
-  if (item.type === 'component_intro') return 'bg-violet-900 bg-opacity-10'
-  if (item.type === 'listening') return 'bg-pink-900 bg-opacity-10'
-  if (item.type === 'listen_intro' || item.type === 'listen_outro') return 'bg-fuchsia-900 bg-opacity-10'
-  if (item.type === 'pod') return 'bg-orange-900 bg-opacity-10'
-  if (!item.hasAudio && item.type !== 'intro' && item.type !== 'component_intro') return 'bg-amber-900 bg-opacity-10'
+  if (!item.hasAudio && item.type !== 'intro') return 'bg-amber-900 bg-opacity-10'
   return ''
 }
 </script>

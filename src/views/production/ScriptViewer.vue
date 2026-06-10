@@ -143,13 +143,19 @@
               >
                 Expand All
               </button>
+              <!-- Audio-gap toggle: production view (default) shows items awaiting
+                   audio so QA can fix them; learner view applies the learner app's
+                   audio gate server-side (no-audio LEGOs/phrases dropped, rounds
+                   renumbered — generateLearningScript.ts:816-823 port). -->
               <button
-                @click="hideListening = !hideListening"
-                :class="hideListening ? 'bg-fuchsia-700 text-fuchsia-100 hover:bg-fuchsia-600' : 'text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600'"
+                @click="toggleLearnerAudioView"
+                :class="learnerAudioView ? 'bg-emerald-700 text-emerald-100 hover:bg-emerald-600' : 'text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600'"
                 class="px-3 py-1.5 text-sm rounded transition-colors"
-                :title="hideListening ? 'Show LISTEN / POD items' : 'Hide LISTEN / POD items so QA can scan main content'"
+                :title="learnerAudioView
+                  ? 'Learner view: LEGOs & phrases awaiting audio are dropped and rounds are renumbered — exactly what the learner hears. Click for the production view.'
+                  : 'Production view: includes items awaiting audio — learners skip these until fixed. Click to see the script as the learner hears it.'"
               >
-                {{ hideListening ? 'Show Listening' : 'Hide Listening' }}
+                {{ learnerAudioView ? 'As the learner hears it' : 'Production view (incl. awaiting audio)' }}
               </button>
               <button
                 @click="exportLearnerScript"
@@ -346,7 +352,6 @@
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
           :hide-controls="true"
-          :hide-listening="hideListening"
           :flagged-audio-uuids="flaggedAudioUuids"
           :regenerating-uuids="regeneratingAudioUuids"
           :flagged-phrase-ids="journeyFlaggedPhraseIds"
@@ -1296,9 +1301,18 @@ const expandAllJourney = () => {
   learningJourneyRef.value?.expandAll();
 };
 
-// QA toggle: hide LISTEN/POD items in the journey view so reviewers (Deborah)
-// can scan main course content without scrolling past listening cycles.
-const hideListening = ref(false);
+// Audio-gap toggle. Default = production view: rows awaiting audio are SHOWN
+// and flagged (that's the review tool's job). ON = "As the learner hears it":
+// the journey is regenerated server-side with the learner app's audio gates —
+// LEGOs/phrases missing any of known/target1/target2 audio are dropped BEFORE
+// the round walk, so round numbers compress exactly the way the learner's do.
+const learnerAudioView = ref(false);
+const toggleLearnerAudioView = () => {
+  learnerAudioView.value = !learnerAudioView.value;
+  // Round numbering changes between the two views — restart from page 1.
+  journeyOffset.value = 0;
+  loadLearningJourney();
+};
 
 // Export learner script as markdown download
 const exportLearnerScript = () => {
@@ -1677,7 +1691,7 @@ const loadLearningJourney = async () => {
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}`;
+    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}${learnerAudioView.value ? '&learnerView=1' : ''}`;
 
     const response = await fetch(url, {
       headers: {
