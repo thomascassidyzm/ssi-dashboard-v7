@@ -5,24 +5,31 @@ phrase audio set (`course_audio` rows, `origin='human'`) — course-agnostic, pe
 No TTS, ever: the cost being minimised is the recorder's time.
 
 Design authority: `docs/voice-engine/design/multi-voice-model.md` (the keystone) +
-audit reports `docs/voice-engine/audit/02|04|06-*.md`.
+audit reports `docs/voice-engine/audit/02|04|05|06-*.md` + `design/integration-map.md`.
 
-## Mounting (integration's job — NOT done by this build)
-
-One line in `services/production-api.cjs` (after the other `app.use` mounts):
+Two routers live here, both MOUNTED in `services/production-api.cjs` under
+`/api/production/:courseCode/...` so the app-level `app.param('courseCode')`
+course-scope auth gate fires for every route:
 
 ```js
-app.use('/api/voice-engine', require('./voice-engine/router.cjs').createVoiceEngineRouter())
+// synthesis + coverage (router uses mergeParams — must NOT declare :courseCode internally)
+app.use('/api/production/:courseCode/voice-engine',
+  require('./voice-engine/router.cjs').createVoiceEngineRouter())
+
+// team roster + voice-slot assignment + recorder invites
+app.use('/api/production/:courseCode/team',
+  require('./voice-engine/team-router.cjs')({ requireDashboardUser, userCanAccessCourse,
+    getDb: () => supabaseClient.getClient(), logger }))
 ```
 
-## Routes
+## Synthesis routes
 
 | Route | What |
 |---|---|
-| `POST /api/voice-engine/:courseCode/synthesize` `{ voiceId? \| role?, dryRun? }` | Start a per-course-per-voice synthesis job (align → segment → register takes → splice → register → link). `dryRun: true` returns the plan + gap report without writing. |
-| `GET /api/voice-engine/:courseCode/synthesize/status?voiceId=` | Job progress/status (phase, counters, errors, final report). |
-| `POST /api/voice-engine/:courseCode/synthesize/cancel` `{ voiceId }` | Cancel between items. |
-| `GET /api/voice-engine/:courseCode/coverage` | HONEST per-slot counts: real phrase totals, recorded-take / spliced / missing per voice slot, plus the seed-auto-cover gap (LEGOs alignment can never extract). Replaces RecordingOptimizer's fabricated `totalLegos × 10` and TODO-stub zeros. |
+| `POST /api/production/:courseCode/voice-engine/synthesize` `{ voiceId? \| role?, dryRun? }` | Start a per-course-per-voice synthesis job (align → segment → register takes → splice → register → link). `dryRun: true` returns the plan + gap report without writing. |
+| `GET .../voice-engine/synthesize/status?voiceId=` | Job progress/status (phase, counters, errors, final report). |
+| `POST .../voice-engine/synthesize/cancel` `{ voiceId }` | Cancel between items. |
+| `GET .../voice-engine/coverage` | HONEST per-slot counts: real phrase totals, recorded-take / spliced / missing per voice slot, plus the seed-auto-cover gap (LEGOs alignment can never extract). Replaces RecordingOptimizer's fabricated `totalLegos × 10` and TODO-stub zeros. |
 
 ## Pipeline (one job = one course + one voice slot)
 
@@ -45,21 +52,31 @@ app.use('/api/voice-engine', require('./voice-engine/router.cjs').createVoiceEng
    uploaded to `mastered/{UUID}.mp3`, upserted with `origin='human'`, `role=slot`, `voice_id`
    (conflict = the live 5-column unique index). Missing chunks → gap report ("record these N
    more"), never a partial splice.
-6. **Link** — the existing pass (`link_all_audio_ids` RPC). Note: today it has no
-   human-preference ordering; that lands in the parallel safety build.
+6. **Link** — phase8's `linkAudioIds` pass (human-preference pre-pass + RPC), so freshly
+   recorded/spliced human rows win duplicate-text links.
 
 Resume = idempotency: re-POST after a crash skips manifest-present segments and
 already-registered texts. Job state itself is in-memory (phase8 `startWork` idiom), keyed
 per `(courseCode, voiceId)`.
 
-## Input contract (⚠️ integration seam)
+## Input contract (reconciled 2026-06-10)
 
-The engine consumes `recording_provenance` rows written by the parallel safety/upload-seam
-build, carrying (keystone names): `course_code, s3_key, phrase_text, chunks_string, voice_id,
-role, cadence, recorded_by`. **All field-name mapping is isolated in
-`provenance-adapter.cjs#fromProvenanceRow`** — reconcile that one function (and the two
-filter columns in `fetchProvenanceRows`) against what the safety build shipped; nothing else
-changes. Until then, the engine reports `provenanceError` and zero takes honestly.
+The engine consumes `recording_provenance` rows written by the upload seam
+(`recording-upload-helpers.cjs#buildProvenanceContext`): the live table has no dedicated
+columns for course/phrase/voice context, so it rides as JSON in `quality_notes`, keyed by
+`audio_uuid` (= the take's `mastered/{audio_uuid}.mp3`). `provenance-adapter.cjs` parses and
+filters client-side; rows written before the server stamped `voice_id` fall back to
+slot-role matching. The upload handler resolves `voice_id` SERVER-side from
+`voice_config.voices[role].voiceId` (client value advisory).
+
+## Team roster routes (all require a dashboard user who holds the course)
+
+| Method | Path | Body | Does |
+|---|---|---|---|
+| GET | `/api/production/:courseCode/team` | — | members (email, name, role, voice_id, slot, recorded_count placeholder) + the two target slots |
+| POST | `.../team/assign-slot` | `{ email, slot }` | mints `human_{localpart}_{target lang}` (collision-suffixed), writes `dashboard_users.voice_id` AND `courses.voice_config.voices[slot]` (surgical single-slot merge; displaced TTS voice stashed under `previousVoice` for restore). `slot: "unassigned"` (or null) vacates. |
+| DELETE | `.../team/member` | `{ email }` | removes THIS course from their `courses[]` (never deletes the row); vacates their slot |
+| POST | `.../team/invite` | `{ role?, label?, expires_days?, max_uses? }` | recorder (default) or editor invite code via `dashboard_invite_codes` — redeemable at the existing `POST /api/auth/invite-codes/redeem` |
 
 ## Files
 
@@ -70,20 +87,29 @@ services/voice-engine/
   segment-store.cjs      S3 segment keys (UUID), JSON manifest, splice ledger
   splicer.cjs            splice plan (pure) + crossfade assembly (ffmpeg→lame)
   storage.cjs            S3 / local-filesystem adapter (tests never touch S3)
-  provenance-adapter.cjs input contract — THE integration seam
+  provenance-adapter.cjs input contract (quality_notes JSON ← upload seam)
   db.cjs                 paginated reads, human course_audio upsert, link pass
   synthesis-job.cjs      per-(course,voice) job orchestrator (progress/cancel/resume)
   coverage.cjs           honest per-slot coverage + seed-auto-cover gap
-  router.cjs             express.Router (mount line above)
-  __tests__/             vitest unit tests + local ffmpeg round-trip smoke test
+  router.cjs             synthesis express.Router (mergeParams; mount line above)
+  team-router.cjs        roster express Router factory (dependency-injected)
+  voice-slots.cjs        pure logic: voice-id minting, surgical voice_config merge/vacate
+  voice-slots.test.cjs   roster unit tests
+  __tests__/             engine unit tests + local ffmpeg round-trip smoke test
 ```
 
 Run tests: `npx vitest run services/voice-engine` (no env, no network — local tone fixtures).
 
-## Hard rules honoured
+## Hard rules honoured / safety notes
 
 - No DDL, no migrations; writes are `course_audio` upserts + S3 puts at runtime only.
 - Vocabulary: known / target / seed.
 - Voice is a hard partition of the splice space: one plan per `(voice_id, cadence)`;
   two larynxes are never spliced into one phrase. >2 spliced voices is out of scope
   (whole-utterance pod recordings are a later workstream, never spliced).
+- `courses.voice_config` drives **live TTS serving**. All roster writes go through
+  `assignVoiceToSlot` / `vacateSlot`, which deep-clone and touch ONLY the one slot key —
+  every other key is preserved exactly. Covered by tests against a live-shaped fixture.
+- Known limitation (documented): `dashboard_users.voice_id` is a single column — a recorder
+  assigned in two courses with different target languages shows "Not yet assigned" in the
+  older course's Record Room. Per-course `voice_config` stays canonical; synthesis unaffected.

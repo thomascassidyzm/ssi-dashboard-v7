@@ -484,6 +484,13 @@ const routes = [
         meta: { title: 'Recording Optimizer - Production Suite' }
       },
       {
+        path: 'team',
+        name: 'TeamRoster',
+        component: () => import('../views/production/TeamRoster.vue'),
+        props: true,
+        meta: { title: 'Team - Production Suite' }
+      },
+      {
         path: 'calibration-review',
         name: 'CalibrationReview',
         component: () => import('../views/production/CalibrationReview.vue'),

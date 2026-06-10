@@ -385,6 +385,19 @@ app.param('courseCode', async (req, res, next, courseCode) => {
 app.use('/api/production/:courseCode/voice-engine',
   require('./voice-engine/router.cjs').createVoiceEngineRouter())
 
+// Voice-engine team roster: members, voice-slot assignment (writes
+// courses.voice_config — surgical single-slot merge), recorder invites.
+// Same gate coverage as above; bumpCourseVersion so learner apps re-fetch
+// after a voice_config change (mirrors voice-config-service).
+app.use('/api/production/:courseCode/team',
+  require('./voice-engine/team-router.cjs')({
+    requireDashboardUser,
+    userCanAccessCourse,
+    getDb: () => supabaseClient.getClient(),
+    logger,
+    bumpCourseVersion: require('./shared/course-version.cjs').bumpCourseVersion,
+  }))
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
