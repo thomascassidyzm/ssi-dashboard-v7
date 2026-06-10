@@ -294,6 +294,90 @@ async function requireDashboardUser(req, res) {
   return user
 }
 
+// =============================================================================
+// COURSE SCOPING — every route carrying :courseCode is gated in ONE place:
+// the caller must be a dashboard user AND hold access to that course.
+// A missing/empty course list on a non-admin record is a DENY (the
+// dashboard_users.courses DB default of '"*"' is fail-open; only an explicit
+// '*' or list membership grants access — userCanAccessCourse handles both).
+// =============================================================================
+
+// Same-host service-mesh calls (phase8 cache busts, course-builder/build-team
+// agents spawned ON the host — the working remote design) arrive on loopback
+// with NO forwarded headers. ngrok and LAN traffic always carry
+// x-forwarded-for / a non-loopback peer address, so they cannot spoof this.
+function isLoopbackDirectRequest(req) {
+  const addr = req.socket?.remoteAddress || ''
+  const isLoopback = addr === '127.0.0.1' || addr === '::1' || addr === '::ffff:127.0.0.1'
+  return isLoopback && !req.headers['x-forwarded-for'] && !req.headers['x-real-ip']
+}
+
+// Resolve the calling dashboard user WITHOUT writing a response. Tries, in
+// order: Supabase JWT → learners (popty_user/ssi_admin/god), legacy dashboard
+// session id, then Supabase JWT email → dashboard_users (the client's OTP
+// model: email = identity, dashboard_users = access control — mirrors
+// /api/auth/me so an OTP'd editor without a learners role still resolves).
+async function resolveDashboardUser(req) {
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) return null
+
+  const supabaseUser = await verifySupabaseJWT(token)
+  if (supabaseUser) return supabaseUser
+
+  const sessionUser = await authValidateSession(token)
+  if (sessionUser) return sessionUser
+
+  try {
+    const { data: { user } } = await supabaseClient.getClient().auth.getUser(token)
+    if (user?.email) return await authGetUser(user.email)
+  } catch (err) { /* invalid token — fall through to null */ }
+  return null
+}
+
+// Small TTL cache so polling surfaces (build monitor, audio-stats, upload
+// queue) don't hit Supabase auth on every request.
+const courseScopeUserCache = new Map() // token → { user, expires }
+const COURSE_SCOPE_CACHE_TTL = 60 * 1000
+const COURSE_SCOPE_CACHE_MAX = 500
+
+async function resolveDashboardUserCached(req) {
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) return null
+  const hit = courseScopeUserCache.get(token)
+  if (hit && hit.expires > Date.now()) return hit.user
+  const user = await resolveDashboardUser(req)
+  if (user) {
+    if (courseScopeUserCache.size >= COURSE_SCOPE_CACHE_MAX) {
+      const oldest = courseScopeUserCache.keys().next().value
+      courseScopeUserCache.delete(oldest)
+    }
+    courseScopeUserCache.set(token, { user, expires: Date.now() + COURSE_SCOPE_CACHE_TTL })
+  }
+  return user
+}
+
+app.param('courseCode', async (req, res, next, courseCode) => {
+  try {
+    if (isLoopbackDirectRequest(req)) return next()
+
+    const user = await resolveDashboardUserCached(req)
+    if (!user) {
+      return res.status(401).json({ error: 'Authentication required' })
+    }
+    // admin → all courses (matches useAuth.canAccessCourse); everyone else
+    // needs '*' or list membership. Missing/empty courses on the record = DENY.
+    if (user.role !== 'admin' && !userCanAccessCourse(user, courseCode)) {
+      logger.warn(`[CourseScope] DENY ${user.email || 'unknown'} → ${courseCode} (${req.method} ${req.path})`)
+      return res.status(403).json({ error: `No access to course ${courseCode}` })
+    }
+    req.dashboardUser = user
+    next()
+  } catch (err) {
+    logger.error('[CourseScope] error:', err)
+    res.status(500).json({ error: 'Course access check failed' })
+  }
+})
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
