@@ -4188,9 +4188,14 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       logger.warn(`[Upload] Audio processing skipped: ${audioMeta.reason}`)
     }
 
-    // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key
+    // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
+    // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
+    // text and chunk maps percent-encode at ~6-9 bytes per non-Latin char and
+    // would 400 the PUT. Supabase (recording_provenance) holds the truth; keep
+    // only short identifiers on the object.
+    const { text: _metaText, chunksString: _metaChunks, ...s3SafeMetadata } = metadata
     const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
-      ...metadata,
+      ...s3SafeMetadata,
       recordedBy: 'human',
       source: 'recording',
       audioProcessing: audioMeta

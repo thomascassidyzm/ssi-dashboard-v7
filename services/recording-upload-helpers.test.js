@@ -130,4 +130,16 @@ describe('toS3Metadata', () => {
     expect(meta.chunksString).toBe(encodeURIComponent('сакам|да зборувам'))
     expect(/^[\x20-\x7e]*$/.test(meta.text)).toBe(true)
   })
+
+  it('truncates runaway values at an escape boundary (AWS 2KB total metadata cap)', () => {
+    // ~200 Cyrillic chars percent-encode to ~1200 bytes — must come back capped,
+    // never sliced mid-%XX escape.
+    const long = 'сакам да зборувам македонски '.repeat(10)
+    const meta = toS3Metadata({ text: long })
+    expect(meta.text.length).toBeLessThanOrEqual(512)
+    expect(/%[0-9A-Fa-f]?$/.test(meta.text)).toBe(false)
+    expect(/^[\x20-\x7e]*$/.test(meta.text)).toBe(true)
+    // Short values pass through untouched
+    expect(toS3Metadata({ role: 'target1' }).role).toBe('target1')
+  })
 })

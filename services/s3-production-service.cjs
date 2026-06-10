@@ -155,12 +155,18 @@ async function audioFileExists(uuid) {
 // Drop null/undefined, stringify non-strings, percent-encode non-ASCII (Cyrillic
 // target text, chunk maps, etc. would otherwise break the PUT). This metadata is
 // informational only — Supabase holds the truth.
+// AWS caps TOTAL user metadata at 2KB, so any runaway value is truncated (at a
+// percent-escape boundary) rather than letting one long field 400 the PUT.
+const S3_META_VALUE_MAX = 512
 function toS3Metadata(raw) {
   const out = {}
   for (const [key, value] of Object.entries(raw)) {
     if (value === null || value === undefined) continue
     let str = typeof value === 'string' ? value : JSON.stringify(value)
     if (/[^\x20-\x7e]/.test(str)) str = encodeURIComponent(str)
+    if (str.length > S3_META_VALUE_MAX) {
+      str = str.slice(0, S3_META_VALUE_MAX).replace(/%[0-9A-Fa-f]?$/, '')
+    }
     out[key] = str
   }
   return out
