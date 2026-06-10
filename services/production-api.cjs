@@ -4130,6 +4130,22 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       logger.log(`[Upload] course_audio ${uuid} repointed ${existingRow.s3_key} -> ${s3Key} (origin=human)`)
     }
 
+    // Who recorded this take: the authenticated user's email when a session token
+    // is presented, else the client-sent recorded_by. Clients send snake_case
+    // provenance keys; the old camelCase-only gate meant recording_provenance was
+    // NEVER written (live: 0 rows ever).
+    const prov = normalizeProvenance(provenance)
+    let recordedBy = prov.recordedBy || metadata.recordedBy || 'human'
+    const authToken = req.headers.authorization?.replace('Bearer ', '')
+    if (authToken) {
+      try {
+        const sessionUser = (await verifySupabaseJWT(authToken)) || (await authValidateSession(authToken))
+        if (sessionUser?.email) recordedBy = sessionUser.email
+      } catch (authErr) {
+        // Endpoint is not auth-gated — fall back to the client-sent identity
+      }
+    }
+
     // Update the sample flag in Supabase to mark as recorded.
     // Regeneration mode only: script-mode takes have no sample_flags row (their
     // identity is server-minted) and the insert here used to 500 the upload AFTER
@@ -4141,41 +4157,52 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
             uuid,
             courseCode,
             'needs_review',
-            `Recorded by ${metadata.recordedBy || provenance.recordedBy || 'human'} at ${new Date().toISOString()}`,
-            metadata.recordedBy || provenance.recordedBy || 'human'
+            `Recorded by ${recordedBy} at ${new Date().toISOString()}`,
+            recordedBy
           )
         } catch (flagError) {
           logger.error('Error updating recording status (upload kept):', flagError)
         }
       }
 
-      // Insert recording provenance if metadata provided
-      if (provenance.recordedBy) {
-        try {
-          await supabaseClient.insertRecordingProvenance({
-            audioUuid: uuid,
-            recordedBy: provenance.recordedBy,
-            speakerNativeLanguage: provenance.speakerNativeLanguage,
-            speakerProficiency: provenance.speakerProficiency,
-            speakerAgeRange: provenance.speakerAgeRange,
-            speakerDialect: provenance.speakerDialect,
-            speakerRegion: provenance.speakerRegion,
-            recordedAt: provenance.recordedAt || new Date().toISOString(),
-            recordingLocation: provenance.recordingLocation,
-            recordingDevice: provenance.recordingDevice,
-            recordingEnvironment: provenance.recordingEnvironment,
-            speakerConsent: provenance.speakerConsent !== undefined ? provenance.speakerConsent : true,
-            consentFormRef: provenance.consentFormRef,
-            usageRights: provenance.usageRights,
-            qualityNotes: provenance.qualityNotes,
-            retakeCount: provenance.retakeCount || 0
-          })
-          logger.log(`Provenance metadata recorded for ${uuid}`)
-        } catch (provenanceError) {
-          // Log error but don't fail the upload
-          logger.error('Error inserting provenance metadata:', provenanceError)
-          logger.error('Upload succeeded but provenance recording failed')
-        }
+      // Register the take in recording_provenance — who/when plus the aligner-critical
+      // context (course, seed/phrase identity, chunks_string pause map, replaced
+      // s3_key). The live table has no dedicated columns for that context, so it
+      // rides in quality_notes as JSON. Keyed by the take's fresh S3 uuid so every
+      // re-record gets its own row.
+      const provenanceContext = buildProvenanceContext({
+        courseCode,
+        isScriptMode,
+        metadata,
+        provenance: prov,
+        s3Key,
+        courseAudioId: existingRow ? uuid : null,
+        replacedS3Key: existingRow ? existingRow.s3_key : null
+      })
+      try {
+        await supabaseClient.insertRecordingProvenance({
+          audioUuid: s3KeyUuid,
+          recordedBy,
+          speakerNativeLanguage: prov.speakerNativeLanguage,
+          speakerProficiency: prov.speakerProficiency,
+          speakerAgeRange: prov.speakerAgeRange,
+          speakerDialect: prov.speakerDialect,
+          speakerRegion: prov.speakerRegion,
+          recordedAt: prov.recordedAt || new Date().toISOString(),
+          recordingLocation: prov.recordingLocation,
+          recordingDevice: prov.recordingDevice,
+          recordingEnvironment: prov.recordingEnvironment,
+          speakerConsent: prov.speakerConsent !== undefined ? prov.speakerConsent : true,
+          consentFormRef: prov.consentFormRef,
+          usageRights: prov.usageRights,
+          qualityNotes: JSON.stringify(provenanceContext),
+          retakeCount: prov.retakeCount || 0
+        })
+        logger.log(`Provenance recorded for ${s3KeyUuid} (${provenanceContext.mode} mode)`)
+      } catch (provenanceError) {
+        // Log error but don't fail the upload
+        logger.error('Error inserting provenance metadata:', provenanceError)
+        logger.error('Upload succeeded but provenance recording failed')
       }
     }
 
@@ -4184,8 +4211,8 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       courseCode,
       uuid: audioId,
       metadata: {
-        recordedAt: provenance.recordedAt || new Date().toISOString(),
-        recordedBy: metadata.recordedBy || provenance.recordedBy || 'human',
+        recordedAt: prov.recordedAt || new Date().toISOString(),
+        recordedBy,
         source: 'recording',
         ...metadata
       }

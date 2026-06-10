@@ -286,6 +286,9 @@ continuousRecorder.onSegmentCaptured((segment) => {
       seedNumber: phrase.seedNumber ?? null,
       legoId: phrase.legoId || null,
       coversLegos: phrase.coversLegos,
+      // Pipe-delimited pause map — the aligner's required input; persisted
+      // server-side with the take so slow passes stay alignable.
+      chunksString: phrase.chunksString || null,
       scriptSessionId: state.scriptSessionId
     },
     provenance: {
