@@ -4197,7 +4197,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
       ...s3SafeMetadata,
       recordedBy: 'human',
-      source: 'recording',
+      via: 'recording',
       audioProcessing: audioMeta
     }, { s3Key })
 
@@ -4302,7 +4302,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       metadata: {
         recordedAt: prov.recordedAt || new Date().toISOString(),
         recordedBy,
-        source: 'recording',
+        via: 'recording',
         ...metadata
       }
     })
@@ -6992,7 +6992,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         wordCount: p.wordCount,
         coversLegos: p.coversLegos,
         known: p.known || '',
-        source: p.source || '',
+        phraseOrigin: p.source || '',
         seedNumber: p.seedNumber || null,
         ...chunkFields
       })
@@ -7005,7 +7005,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         wordCount: p.wordCount,
         coversLegos: p.coversLegos,
         known: p.known || '',
-        source: p.source || '',
+        phraseOrigin: p.source || '',
         seedNumber: p.seedNumber || null,
         ...chunkFields
       })
