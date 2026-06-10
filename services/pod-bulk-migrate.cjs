@@ -288,6 +288,19 @@ function runProcess(cmd, args, { course, stage }) {
 
 async function stageRegen(course) {
   await runProcess('node', ['services/pod-dialogue-generator.cjs', course, '--force'], { course, stage: 'regen' })
+  // Wholesale content replacement → restart every learner's pod progression
+  // from sentence 1 of the NEW content (Tom 2026-06-10: "reset completed pods
+  // for existing learners when we do wholesale changes"). Without this, a
+  // learner with a high pod-round counter computes the new sentences at
+  // advanced stages and never hears their Phase-0 explainers.
+  const { data: reset, error } = await supabase
+    .from('course_enrollments')
+    .update({ completed_pod_rounds: 0, pod_activation_round: null })
+    .eq('course_id', course)
+    .or('completed_pod_rounds.gt.0,pod_activation_round.not.is.null')
+    .select('id')
+  if (error) throw new Error(`pod-counter reset: ${error.message}`)
+  if (reset && reset.length) log(`[${course}] [regen] reset pod counters on ${reset.length} enrollment(s)`)
 }
 
 async function stageRecolour(course) {
