@@ -151,6 +151,21 @@ async function audioFileExists(uuid) {
   }
 }
 
+// S3 user metadata rides in HTTP headers: values must be ASCII strings.
+// Drop null/undefined, stringify non-strings, percent-encode non-ASCII (Cyrillic
+// target text, chunk maps, etc. would otherwise break the PUT). This metadata is
+// informational only — Supabase holds the truth.
+function toS3Metadata(raw) {
+  const out = {}
+  for (const [key, value] of Object.entries(raw)) {
+    if (value === null || value === undefined) continue
+    let str = typeof value === 'string' ? value : JSON.stringify(value)
+    if (/[^\x20-\x7e]/.test(str)) str = encodeURIComponent(str)
+    out[key] = str
+  }
+  return out
+}
+
 // Upload recording
 // options.s3Key: explicit object key (canon: mastered/{UUID}.mp3). Falls back to the
 // legacy v12-era prefix only for callers that don't pass one.
@@ -161,11 +176,11 @@ async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}, opt
     Key: key,
     Body: audioBuffer,
     ContentType: 'audio/mpeg',
-    Metadata: {
+    Metadata: toS3Metadata({
       courseCode,
       uploadedAt: new Date().toISOString(),
       ...metadata
-    }
+    })
   })
 
   await s3Client.send(command)
@@ -212,5 +227,6 @@ module.exports = {
   batchCheckAudio,
   getAudioSignedUrl,
   audioFileExists,
-  uploadRecording
+  uploadRecording,
+  toS3Metadata
 }

@@ -6,6 +6,7 @@ import {
   normalizeProvenance,
   buildProvenanceContext
 } from './recording-upload-helpers.cjs'
+import { toS3Metadata } from './s3-production-service.cjs'
 
 describe('isScriptModeUpload', () => {
   it('detects explicit metadata.mode === script (new clients, no uuid)', () => {
@@ -114,5 +115,19 @@ describe('buildProvenanceContext', () => {
     })
     expect(ctx.seed_number).toBe(0)
     expect(ctx.phrase_index).toBe(0)
+  })
+})
+
+describe('toS3Metadata', () => {
+  it('drops null/undefined and stringifies non-strings (S3 metadata = HTTP headers)', () => {
+    const meta = toS3Metadata({ a: 'ok', b: null, c: undefined, d: 7, e: ['S0001L01'], f: { processed: true } })
+    expect(meta).toEqual({ a: 'ok', d: '7', e: '["S0001L01"]', f: '{"processed":true}' })
+  })
+
+  it('percent-encodes non-ASCII values (Cyrillic target text must not break the PUT)', () => {
+    const meta = toS3Metadata({ text: 'сакам да зборувам', chunksString: 'сакам|да зборувам' })
+    expect(meta.text).toBe(encodeURIComponent('сакам да зборувам'))
+    expect(meta.chunksString).toBe(encodeURIComponent('сакам|да зборувам'))
+    expect(/^[\x20-\x7e]*$/.test(meta.text)).toBe(true)
   })
 })
