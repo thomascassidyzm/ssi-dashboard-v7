@@ -4046,8 +4046,34 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     // prefix. Client-fabricated ids (script-0..N) produced one global key per index
     // (ssiborg-assets/mastered/script-0.mp3) shared across every course, session
     // and voice — later sessions PUT over earlier ones.
+    // Every take gets a FRESH object key — an existing S3 object is never PUT over.
+    // Regeneration mode: the course_audio row keeps its id; its s3_key moves to the
+    // fresh key after upload (the old object stays at the old key for reversibility).
     const audioId = isScriptMode ? crypto.randomUUID().toUpperCase() : uuid
-    const s3Key = isScriptMode ? `mastered/${audioId}.mp3` : undefined
+    const s3KeyUuid = isScriptMode ? audioId : crypto.randomUUID().toUpperCase()
+    const s3Key = `mastered/${s3KeyUuid}.mp3`
+
+    // Regeneration mode re-records an existing course_audio row — look it up
+    // BEFORE the S3 PUT so a bad uuid can't orphan bytes.
+    let existingRow = null
+    if (!isScriptMode && supabaseClient.isInitialized()) {
+      const { data: row, error: rowError } = await supabaseClient.getClient()
+        .from('course_audio')
+        .select('id, s3_key, origin')
+        .eq('id', uuid)
+        .eq('course_code', courseCode)
+        .maybeSingle()
+      if (rowError) {
+        if (rowError.code === '22P02') {
+          return res.status(400).json({ error: `Invalid course_audio uuid: ${uuid}` })
+        }
+        throw rowError
+      }
+      if (!row) {
+        return res.status(404).json({ error: `No course_audio row ${uuid} in ${courseCode}` })
+      }
+      existingRow = row
+    }
 
     // Decode base64 audio data
     const rawBuffer = Buffer.from(audioData, 'base64')
@@ -4078,13 +4104,31 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       logger.warn(`[Upload] Audio processing skipped: ${audioMeta.reason}`)
     }
 
-    // Upload processed audio to S3 (script mode: canon mastered/{UUID}.mp3 key)
+    // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key
     const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
       ...metadata,
       recordedBy: 'human',
       source: 'recording',
       audioProcessing: audioMeta
     }, { s3Key })
+
+    // Regeneration mode: repoint the course_audio row at the fresh human take.
+    // origin='human' marks it precious (allowed by the live CHECK: 'tts'|'human').
+    // The old s3_key is recorded in recording_provenance below for reversibility.
+    if (existingRow) {
+      const rowUpdate = { s3_key: s3Key, origin: 'human' }
+      if (audioMeta.processed && audioMeta.durationMs) {
+        rowUpdate.duration_ms = audioMeta.durationMs
+        rowUpdate.file_size_bytes = processedBuffer.length
+      }
+      const { error: updateError } = await supabaseClient.getClient()
+        .from('course_audio')
+        .update(rowUpdate)
+        .eq('id', uuid)
+        .eq('course_code', courseCode)
+      if (updateError) throw updateError
+      logger.log(`[Upload] course_audio ${uuid} repointed ${existingRow.s3_key} -> ${s3Key} (origin=human)`)
+    }
 
     // Update the sample flag in Supabase to mark as recorded.
     // Regeneration mode only: script-mode takes have no sample_flags row (their
