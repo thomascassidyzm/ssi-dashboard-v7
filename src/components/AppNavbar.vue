@@ -111,7 +111,7 @@ import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
-const { isAuthenticated, isAdmin, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken } = useAuth()
+const { isAuthenticated, isAdmin, isRecorder, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken } = useAuth()
 
 // Audit-log stale check — surfaces a numeric badge on the Maintenance tab
 // when the oldest audit row is older than 30 days, prompting a cleanup.
@@ -202,8 +202,9 @@ onUnmounted(() => document.removeEventListener('click', handleClickOutside))
 
 const activeCourseCount = ref(0)
 
-// Hide on auth routes
-const isHidden = computed(() => route.meta.public === true)
+// Hide on auth routes — and for recorders, who live in the Record Room shell
+// and never see the admin console chrome.
+const isHidden = computed(() => route.meta.public === true || isRecorder.value)
 
 // Context detection
 const isHome = computed(() => route.path === '/')
@@ -279,9 +280,9 @@ const tabs = computed(() => {
         active: route.name === 'AudioPipelineProduction'
       },
       {
-        label: 'Recording',
-        to: `/production/${code}/recording`,
-        active: route.name === 'AutocueStudioCourse'
+        label: 'Record Room',
+        to: `/record/${code}`,
+        active: route.name === 'RecordRoom'
       },
       {
         label: 'QA',

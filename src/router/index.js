@@ -274,6 +274,17 @@ const routes = [
     component: () => import('../components/production/autocue/AutocueStudio.vue'),
     meta: { title: 'Autocue Studio', requiresAuth: true }
   },
+
+  // Record Room — minimal recording shell for voice helpers (role 'recorder').
+  // A recorder is confined here by the router guard; editors/admins can use it too.
+  // courseCode is optional so an unassigned recorder still has somewhere to land.
+  {
+    path: '/record/:courseCode?',
+    name: 'RecordRoom',
+    component: () => import('../views/RecordRoom.vue'),
+    props: true,
+    meta: { title: 'Record Room', requiresAuth: true }
+  },
   {
     path: '/users',
     name: 'UserManagement',
@@ -538,7 +549,7 @@ router.beforeEach(async (to, from, next) => {
   // Public routes (login, auth verify) don't need auth
   if (to.meta.public) return next()
 
-  const { isAuthenticated, initAuth } = useAuth()
+  const { isAuthenticated, initAuth, isRecorder, learner, canAccessCourse } = useAuth()
 
   // Initialize auth if not already done (first page load)
   await initAuth()
@@ -546,6 +557,29 @@ router.beforeEach(async (to, from, next) => {
   // OTP is the gate. If you have a session, you're in.
   if (!isAuthenticated.value) {
     return next({ name: 'Login', query: { redirect: to.fullPath } })
+  }
+
+  // Recorders are confined to their Record Room — never the admin console.
+  if (isRecorder.value) {
+    const courses = learner.value?.courses
+    const firstCourse = Array.isArray(courses) && courses.length > 0 ? courses[0] : null
+
+    if (to.name !== 'RecordRoom') {
+      return next(firstCourse ? `/record/${firstCourse}` : { name: 'RecordRoom' })
+    }
+
+    // Inside the room: only their own assigned course(s)
+    const courseCode = to.params.courseCode
+    if (courseCode && !canAccessCourse(courseCode)) {
+      if (firstCourse && firstCourse !== courseCode) return next(`/record/${firstCourse}`)
+      if (!firstCourse) return next({ name: 'RecordRoom' })
+      // firstCourse === courseCode but canAccessCourse false — shouldn't happen; fall through
+    }
+
+    // Landed at /record with no course but exactly one assigned — take them straight in
+    if (!courseCode && firstCourse) {
+      return next(`/record/${firstCourse}`)
+    }
   }
 
   next()
