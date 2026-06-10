@@ -219,8 +219,9 @@ async function alignTakePair({ slowPath, naturalPath = null, expectedChunks, opt
     return { ok: false, failure: { stage: 'slow-align', ...slow } }
   }
 
-  // Single-chunk phrase: the whole take IS the segment; prefer natural audio.
-  // (Direct-record items arrive as one chunk.)
+  // No natural take uploaded: cut from the slow take, cadence 'slow'.
+  // Downstream the splicer only ever uses these in an ALL-slow phrase —
+  // cadence never mixes within one spliced phrase.
   if (!naturalPath) {
     return { ok: true, cutPath: slowPath, cadence: 'slow', chunks: slow.chunks, naturalMethod: null, slowChunks: slow.chunks }
   }

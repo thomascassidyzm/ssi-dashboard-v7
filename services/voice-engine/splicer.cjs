@@ -77,26 +77,35 @@ function buildSplicePlan({
       continue
     }
 
+    // Cadence is chosen PER PHRASE, never per chunk: one spliced phrase is
+    // exactly one (voice_id, cadence) — mixing natural and slow segments in
+    // a single phrase would violate the keystone's hard partition
+    // (multi-voice-model.md). Try each cadence in preference order as a
+    // whole-phrase pass; the first that covers EVERY chunk wins. If none
+    // does, the phrase goes to the gap report (missing chunks reported
+    // against the first-preference cadence — that is the actionable
+    // "record these" list).
     const chunks = recordingChunksForPhrase(text, universe)
-    const resolved = []
-    const missing = []
-    for (const chunk of chunks) {
-      const textKey = normalizeForMatching(chunk.text)
-      let segment = null
-      let cadence = null
-      for (const c of cadencePreference) {
+    let resolved = null
+    let firstPrefMissing = null
+    for (const c of cadencePreference) {
+      const attempt = []
+      const missing = []
+      for (const chunk of chunks) {
+        const textKey = normalizeForMatching(chunk.text)
         const hit = segmentIdx.get(`${textKey}|${c}`)
-        if (hit) { segment = hit; cadence = c; break }
+        if (hit) {
+          attempt.push({ text: chunk.text, textKey, legoId: chunk.legoId ?? null, segmentId: hit.id, s3Key: hit.s3Key, cadence: c })
+        } else {
+          missing.push(chunk.text)
+        }
       }
-      if (segment) {
-        resolved.push({ text: chunk.text, textKey, legoId: chunk.legoId ?? null, segmentId: segment.id, s3Key: segment.s3Key, cadence })
-      } else {
-        missing.push(chunk.text)
-      }
+      if (firstPrefMissing === null) firstPrefMissing = missing
+      if (missing.length === 0) { resolved = attempt; break }
     }
 
-    if (missing.length > 0) {
-      skipped.missingChunks.push({ id: phrase.id, text, missing })
+    if (!resolved) {
+      skipped.missingChunks.push({ id: phrase.id, text, missing: firstPrefMissing ?? chunks.map(c => c.text) })
       continue
     }
 

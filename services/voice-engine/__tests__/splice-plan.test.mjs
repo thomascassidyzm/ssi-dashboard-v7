@@ -84,10 +84,11 @@ describe('buildSplicePlan', () => {
     expect(plan.gapReport[0]).toEqual({ chunkText: 'кафе', blockedPhrases: 2 })
   })
 
-  it('falls back through cadence preference (natural → slow)', () => {
+  it('cadence is per PHRASE: falls back to an all-slow splice when natural is incomplete', () => {
     const idx = makeIdx([
       seg('јас сакам', 'natural', 1),
-      seg('да зборувам', 'slow', 2), // only a slow segment exists
+      seg('јас сакам', 'slow', 6),
+      seg('да зборувам', 'slow', 2), // no natural segment for this chunk
     ])
     const plan = buildSplicePlan({
       phrases: [{ id: 'p1', text: 'јас сакам да зборувам' }],
@@ -95,7 +96,25 @@ describe('buildSplicePlan', () => {
       segmentIdx: idx,
     })
     expect(plan.items).toHaveLength(1)
-    expect(plan.items[0].chunks.map(c => c.cadence)).toEqual(['natural', 'slow'])
+    // One (voice_id, cadence) per phrase — never natural+slow mixed.
+    expect(plan.items[0].chunks.map(c => c.cadence)).toEqual(['slow', 'slow'])
+  })
+
+  it('NEVER mixes cadences: phrase splicable only by mixing goes to the gap report', () => {
+    const idx = makeIdx([
+      seg('јас сакам', 'natural', 1), // natural only
+      seg('да зборувам', 'slow', 2),  // slow only
+    ])
+    const plan = buildSplicePlan({
+      phrases: [{ id: 'p1', text: 'јас сакам да зборувам' }],
+      universe,
+      segmentIdx: idx,
+    })
+    expect(plan.items).toHaveLength(0)
+    expect(plan.skipped.missingChunks).toHaveLength(1)
+    // Missing reported against the first-preference cadence (natural).
+    expect(plan.skipped.missingChunks[0].missing).toEqual(['да зборувам'])
+    expect(plan.gapReport[0]).toEqual({ chunkText: 'да зборувам', blockedPhrases: 1 })
   })
 
   it('dedupes candidates by normalized text and reports honest stats', () => {
