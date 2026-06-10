@@ -37,7 +37,8 @@ import { useAuth } from '../composables/useAuth'
 const MissionControl = () => import('../views/production/MissionControl.vue')
 const ScriptViewer = () => import('../views/production/ScriptViewer.vue')
 const AudioPipeline = () => import('../views/production/AudioPipeline.vue')
-const RecordingStudioV2 = () => import('../views/production/RecordingStudio.vue')
+// RecordingStudio.vue (V2) is deprecated — its upload body shape always 400s.
+// The route below redirects to the Autocue recorder; the component file is kept.
 const UserFeedback = () => import('../views/production/UserFeedback.vue')
 
 // Note: SamplesBrowser removed - QA now uses ScriptViewer with filter=flagged
@@ -267,12 +268,13 @@ const routes = [
     redirect: '/autocue'
   },
 
-  // Autocue Recording System (standalone entry point - course-specific handled by nested routes)
+  // DEPRECATED: standalone autocue had no courseCode, so it fetched
+  // /api/production/null/recording-script and failed. Recording lives at
+  // /production/:courseCode/recording — pick a course from Mission Control.
   {
     path: '/autocue',
     name: 'AutocueStudio',
-    component: () => import('../components/production/autocue/AutocueStudio.vue'),
-    meta: { title: 'Autocue Studio', requiresAuth: true }
+    redirect: '/'
   },
   {
     path: '/users',
@@ -447,11 +449,12 @@ const routes = [
         meta: { title: 'Script Viewer - Production Suite' }
       },
       {
+        // DEPRECATED: RecordingStudio V2's uploads always 400 (wrong body shape).
+        // Name kept so existing router.push({ name: 'RecordingStudioProduction' })
+        // calls resolve, then land on the working Autocue recorder.
         path: 'recording-studio',
         name: 'RecordingStudioProduction',
-        component: RecordingStudioV2,
-        props: true,
-        meta: { title: 'Recording Studio - Production Suite' }
+        redirect: to => `/production/${to.params.courseCode}/recording`
       },
       {
         path: 'feedback',
