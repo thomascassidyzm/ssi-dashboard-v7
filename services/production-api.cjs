@@ -531,11 +531,18 @@ async function handleInvite(req, res) {
   if (!adminUser) return
   const { email, name, courses, role = 'editor' } = req.body
   if (!email) return res.status(400).json({ error: 'Email is required' })
-  if (!courses || !Array.isArray(courses) || courses.length === 0) return res.status(400).json({ error: 'At least one course must be assigned' })
   // 'recorder' still accepted for backward-compat with existing rows; new
   // invites default to 'editor'. Recorder role was retired from the UI on
   // 2026-04-21 — the only gating going forward is per-course access.
   if (!['recorder', 'editor', 'admin'].includes(role)) return res.status(400).json({ error: 'Invalid role' })
+  // Admins always have access to every course — store the '*' wildcard (renders
+  // as a single "All courses" chip, not a wall of every course code) and skip
+  // the per-course requirement. Non-admins must get at least one specific course.
+  const isAdminInvite = role === 'admin'
+  if (!isAdminInvite && (!courses || !Array.isArray(courses) || courses.length === 0)) {
+    return res.status(400).json({ error: 'At least one course must be assigned' })
+  }
+  const effectiveCourses = isAdminInvite ? '*' : courses
   try {
     const db = supabaseClient.getClient()
     if (req.method === 'POST') {
@@ -563,11 +570,11 @@ async function handleInvite(req, res) {
       }
 
       const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
-      const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
+      const primaryLanguage = (Array.isArray(courses) ? courses[0] : null)?.split('_')[0] || 'unknown'
       // Non-admins get a voice_id since editors are the ones recording now.
       const voiceId = role !== 'admin' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
       const row = {
-        email, name: name || email.split('@')[0], role, courses,
+        email, name: name || email.split('@')[0], role, courses: effectiveCourses,
         ...(voiceId && { voice_id: voiceId }),
         invited_by: adminUser.email || adminUser.name, invited_at: new Date().toISOString()
       }
@@ -579,7 +586,7 @@ async function handleInvite(req, res) {
       const existing = await authGetUser(email)
       if (!existing) return res.status(404).json({ error: 'User not found' })
       const updates = {
-        ...(name && { name }), role, courses,
+        ...(name && { name }), role, courses: effectiveCourses,
         updated_by: adminUser.email || adminUser.name, updated_at: new Date().toISOString()
       }
       const { data, error } = await db.from('dashboard_users').update(updates).eq('email', email).select().single()

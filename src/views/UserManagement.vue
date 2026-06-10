@@ -49,7 +49,15 @@
           <p class="text-sm text-slate-400">Adding as <span class="text-emerald-400 font-medium">Editor</span></p>
         </div>
 
-        <div class="mb-4">
+        <!-- Admins get access to every course automatically — no per-course picking. -->
+        <div v-if="newUser.role === 'admin'" class="mb-4">
+          <label class="block text-sm text-slate-400 mb-2">Course Access</label>
+          <span class="inline-flex items-center text-xs bg-emerald-600/20 text-emerald-400 px-2.5 py-1 rounded">
+            All courses
+          </span>
+          <p class="text-xs text-slate-500 mt-1">Admins have access to every course.</p>
+        </div>
+        <div v-else class="mb-4">
           <label class="block text-sm text-slate-400 mb-2">Course Access *</label>
           <!-- Selected courses as chips -->
           <div v-if="newUser.courses.length" class="flex flex-wrap gap-1.5 mb-2">
@@ -194,7 +202,14 @@
                 </select>
               </div>
 
-              <div>
+              <div v-if="editForm.role === 'admin'">
+                <label class="block text-xs text-slate-500 mb-1">Course Access</label>
+                <span class="inline-flex items-center text-xs bg-emerald-600/20 text-emerald-400 px-2 py-0.5 rounded">
+                  All courses
+                </span>
+                <p class="text-xs text-slate-500 mt-1">Admins have access to every course.</p>
+              </div>
+              <div v-else>
                 <label class="block text-xs text-slate-500 mb-1">Course Access</label>
                 <!-- Selected courses as chips -->
                 <div v-if="editForm.courses.length" class="flex flex-wrap gap-1.5 mb-2">
@@ -368,7 +383,8 @@ const saving = ref(false)
 const editError = ref(null)
 
 const canInvite = computed(() => {
-  return newUser.value.email && newUser.value.courses.length > 0
+  // Admins get All courses automatically, so they don't need to pick any.
+  return !!newUser.value.email && (newUser.value.role === 'admin' || newUser.value.courses.length > 0)
 })
 
 function toggleCourse(coursesArray, code) {
