@@ -6675,11 +6675,15 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 // Ported from ssi-learning-app's generateLearningScript()
 app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
   const { courseCode } = req.params
-  const { maxLegos, offset } = req.query
+  const { maxLegos, offset, learnerView } = req.query
 
   // Parse query params
   const maxLegosNum = maxLegos ? parseInt(maxLegos, 10) : 50
   const offsetNum = offset ? parseInt(offset, 10) : 0
+  // learnerView=1 applies the learner app's audio gates: LEGOs/phrases missing
+  // any audio ID are dropped and round numbers compress, exactly as the
+  // learner's script does. Default (production view) keeps + flags the gaps.
+  const learnerViewFlag = learnerView === '1' || learnerView === 'true'
 
   try {
     if (!supabaseClient.isInitialized()) {
@@ -6693,7 +6697,8 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
         supabase,
         courseCode,
         maxLegosNum,
-        offsetNum
+        offsetNum,
+        { learnerView: learnerViewFlag }
       ),
       supabase.from('course_legos').select('id', { count: 'exact', head: true }).eq('course_code', courseCode)
     ])
