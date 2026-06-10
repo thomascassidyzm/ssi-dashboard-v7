@@ -152,10 +152,13 @@ async function audioFileExists(uuid) {
 }
 
 // Upload recording
-async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}) {
+// options.s3Key: explicit object key (canon: mastered/{UUID}.mp3). Falls back to the
+// legacy v12-era prefix only for callers that don't pass one.
+async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}, options = {}) {
+  const key = options.s3Key || `ssiborg-assets/mastered/${uuid}.mp3`
   const command = new PutObjectCommand({
     Bucket: BUCKET,
-    Key: `ssiborg-assets/mastered/${uuid}.mp3`,
+    Key: key,
     Body: audioBuffer,
     ContentType: 'audio/mpeg',
     Metadata: {
@@ -166,7 +169,7 @@ async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}) {
   })
 
   await s3Client.send(command)
-  return { uuid, uploaded: true }
+  return { uuid, key, uploaded: true }
 }
 
 // Batch check if audio files exist in ssi-audio-stage bucket

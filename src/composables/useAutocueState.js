@@ -579,6 +579,8 @@ export function useAutocueState() {
 
       // Transform items to autocue phrase format
       // Target text only — no known-language hints on the autocue
+      // `id` is a LOCAL key only (recordings map / segment tracking) — it is never
+      // sent as an audio identity; the server mints the uuid per uploaded take.
       state.phrases = data.items.map((item, idx) => ({
         id: `script-${idx}`,
         text: item.text,
@@ -589,6 +591,7 @@ export function useAutocueState() {
         wordCount: item.wordCount,
         coversLegos: item.coversLegos,
         known: item.known,
+        seedNumber: item.seedNumber ?? null,
         legoId: item.legoId || '',
         role: 'target1',
         // LEGO-level chunking — PhraseCard uses these in Pass 2 (slow) to

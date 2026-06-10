@@ -21,7 +21,8 @@ export interface UploadMetadata {
 export interface QueuedUpload {
   blob: Blob
   courseCode: string
-  uuid: string
+  // null for script-mode takes — the server mints the audio identity per upload
+  uuid: string | null
   metadata: Record<string, any>
   provenance: Record<string, any>
   itemIndex: number

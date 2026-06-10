@@ -270,17 +270,21 @@ continuousRecorder.onSegmentCaptured((segment) => {
   // Store in state
   onSegmentCaptured(segment, itemIndex)
 
-  // Queue background upload
+  // Queue background upload — script-mode takes carry the script's identity
+  // (seedNumber/legoId/text); the server mints the audio uuid per take.
   uploadQueue.queueUpload({
     blob: segment.blob,
     courseCode: state.courseCode,
-    uuid: phrase.id,
+    uuid: null,
     metadata: {
+      mode: 'script',
       role: 'target1',
       cadence: phrase.cadence,
       text: phrase.text,
       type: phrase.type,
       phraseIndex: phrase.phraseIndex,
+      seedNumber: phrase.seedNumber ?? null,
+      legoId: phrase.legoId || null,
       coversLegos: phrase.coversLegos,
       scriptSessionId: state.scriptSessionId
     },

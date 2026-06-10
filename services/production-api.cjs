@@ -4042,9 +4042,16 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       return res.status(400).json({ error: 'uuid and audioData required' })
     }
 
+    // Script mode: mint the take's identity server-side and store at the canon
+    // prefix. Client-fabricated ids (script-0..N) produced one global key per index
+    // (ssiborg-assets/mastered/script-0.mp3) shared across every course, session
+    // and voice — later sessions PUT over earlier ones.
+    const audioId = isScriptMode ? crypto.randomUUID().toUpperCase() : uuid
+    const s3Key = isScriptMode ? `mastered/${audioId}.mp3` : undefined
+
     // Decode base64 audio data
     const rawBuffer = Buffer.from(audioData, 'base64')
-    logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${uuid}`)
+    logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${audioId}${isScriptMode ? ' (script mode, server-minted)' : ''}`)
 
     // Determine input format from MIME type
     let inputFormat = 'webm'
@@ -4071,13 +4078,13 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       logger.warn(`[Upload] Audio processing skipped: ${audioMeta.reason}`)
     }
 
-    // Upload processed audio to S3
-    const result = await s3Service.uploadRecording(courseCode, uuid, processedBuffer, {
+    // Upload processed audio to S3 (script mode: canon mastered/{UUID}.mp3 key)
+    const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
       ...metadata,
       recordedBy: 'human',
       source: 'recording',
       audioProcessing: audioMeta
-    })
+    }, { s3Key })
 
     // Update the sample flag in Supabase to mark as recorded.
     // Regeneration mode only: script-mode takes have no sample_flags row (their
@@ -4131,7 +4138,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     // Emit recording_completed event
     io.to(`course:${courseCode}`).emit('recording_completed', {
       courseCode,
-      uuid,
+      uuid: audioId,
       metadata: {
         recordedAt: provenance.recordedAt || new Date().toISOString(),
         recordedBy: metadata.recordedBy || provenance.recordedBy || 'human',
@@ -4142,7 +4149,9 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
 
     res.json({
       success: true,
-      uuid,
+      // Script mode: the server-minted identity — clients must carry this, not script-N
+      uuid: audioId,
+      s3Key: s3Key || null,
       uploaded: true,
       audioProcessing: audioMeta.processed ? {
         durationMs: audioMeta.durationMs,
