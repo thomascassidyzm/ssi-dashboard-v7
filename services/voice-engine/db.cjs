@@ -124,12 +124,22 @@ async function upsertHumanCourseAudio(supabase, { courseCode, text, language, ro
 }
 
 /**
- * FK link pass — the existing link machinery (link_all_audio_ids RPC, the
- * same one phase8's linkAudioIds calls first). Note: the RPC has no origin
- * preference today (bare LIMIT 1); the human-preferring ORDER BY lands in
- * the parallel safety build.
+ * FK link pass — phase8's linkAudioIds (human-preference pre-pass, then the
+ * link_all_audio_ids RPC) so freshly recorded/spliced human rows win
+ * duplicate-text links. The RPC itself still links arbitrarily (it's DDL,
+ * untouchable); the pre-pass is what guarantees human-first. Falls back to
+ * the bare RPC only if phase8 can't be loaded (e.g. stripped test envs).
  */
 async function linkCourseAudio(supabase, courseCode) {
+  try {
+    const phase8 = require('../phases/phase8-audio-v13.cjs')
+    if (typeof phase8.linkAudioIds === 'function') {
+      const result = await phase8.linkAudioIds(courseCode)
+      return { ok: true, result: result || {} }
+    }
+  } catch (err) {
+    // fall through to the bare RPC
+  }
   const { data, error } = await supabase.rpc('link_all_audio_ids', { p_course_code: courseCode })
   if (error) return { ok: false, error: error.message }
   return { ok: true, result: data || {} }

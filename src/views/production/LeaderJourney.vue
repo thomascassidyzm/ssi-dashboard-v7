@@ -184,18 +184,18 @@ function describeSlot(v) {
   return { assigned: false, text: 'Not assigned yet' }
 }
 
-// Best-effort read of per-slot recording coverage from the synthesis engine.
-// Field names are reconciled at integration with whatever the engine ships.
+// Per-slot recording coverage from the synthesis engine: GET .../voice-engine/coverage
+// ships { slots: [{ role, needed, covered, recordedTakes, spliced, missing, ... }] }.
 function slotCoverage(slotKey) {
   const c = coverage.value
   if (!c) return null
   let v = null
-  if (c.voices && !Array.isArray(c.voices)) v = c.voices[slotKey]
-  else if (Array.isArray(c.voices)) v = c.voices.find(x => x.slot === slotKey || x.role === slotKey)
-  if (!v && c.slots) v = c.slots[slotKey]
+  if (Array.isArray(c.slots)) v = c.slots.find(x => x.role === slotKey || x.slot === slotKey)
+  else if (c.slots) v = c.slots[slotKey]
+  if (!v && c.voices && !Array.isArray(c.voices)) v = c.voices[slotKey]
   if (!v) return null
-  const done = v.recorded ?? v.covered ?? v.existing ?? null
-  const total = v.required ?? v.needed ?? v.total ?? null
+  const done = v.covered ?? v.recorded ?? v.existing ?? null
+  const total = v.needed ?? v.required ?? v.total ?? null
   if (typeof done !== 'number' || typeof total !== 'number' || total === 0) return null
   return `${done} of ${total} recordings`
 }
@@ -222,10 +222,16 @@ const humanSlotCount = computed(() =>
 const synthSummary = computed(() => {
   const c = coverage.value
   if (!c) return null
+  // Roll up the target slots from the engine's per-slot array (prefer the
+  // human-assigned ones — those are the voices the leader's team records).
+  if (Array.isArray(c.slots)) {
+    const targets = c.slots.filter(s => s.role === 'target1' || s.role === 'target2')
+    const pool = targets.some(s => s.isHuman) ? targets.filter(s => s.isHuman) : targets
+    const done = pool.reduce((n, s) => n + (s.covered ?? 0), 0)
+    const total = pool.reduce((n, s) => n + (s.needed ?? 0), 0)
+    if (total > 0) return `${done} of ${total} phrases covered`
+  }
   if (typeof c.percent === 'number') return `${c.percent}% of phrases have stitched audio`
-  const done = c.covered ?? c.spliced ?? c.existing
-  const total = c.total ?? c.needed
-  if (typeof done === 'number' && typeof total === 'number') return `${done} of ${total} phrases covered`
   return 'Stitching engine connected'
 })
 

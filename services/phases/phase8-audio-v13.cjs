@@ -5387,3 +5387,6 @@ module.exports.findExistingAudio = findExistingAudio
 module.exports.generatePodAudio = generatePodAudio
 module.exports.s3 = s3
 module.exports.S3_BUCKET = S3_BUCKET
+// Human-first FK link pass (G2 pre-pass + RPC) — the voice engine's link
+// step calls this instead of the bare RPC so fresh human rows win links.
+module.exports.linkAudioIds = linkAudioIds
