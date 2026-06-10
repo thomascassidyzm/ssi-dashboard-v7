@@ -59,6 +59,36 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   let stream: MediaStream | null = null
   let chunks: Blob[] = []
   let segmentStartTime: number | null = null
+  let activeMimeType = 'audio/webm'
+  let wakeLock: any = null
+
+  // iOS Safari records audio/mp4 (AAC), not webm/opus — pick the first
+  // supported container; the server transcodes whatever arrives (the upload
+  // handler maps the blob's mimeType to ffmpeg's input format).
+  function pickMimeType(): string | undefined {
+    const candidates = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4']
+    for (const c of candidates) {
+      if (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported?.(c)) return c
+    }
+    return undefined // let the browser choose its default
+  }
+
+  // Phones lock their screen fast, which suspends capture mid-session.
+  // Best-effort screen wake lock while a flow session is live.
+  async function acquireWakeLock() {
+    try {
+      wakeLock = await (navigator as any).wakeLock?.request('screen')
+    } catch { /* unsupported or denied — recording still works while awake */ }
+  }
+  function releaseWakeLock() {
+    try { wakeLock?.release() } catch { /* already released */ }
+    wakeLock = null
+  }
+  if (typeof document !== 'undefined') {
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && isFlowMode.value) acquireWakeLock()
+    })
+  }
 
   // Callbacks
   let onSegmentCaptured: ((segment: RecordedSegment) => void) | null = null
@@ -86,10 +116,13 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
       // Start VAD listening (share the stream)
       await vad.startListening(stream)
 
-      // Set up MediaRecorder
-      mediaRecorder = new MediaRecorder(stream, {
-        mimeType: 'audio/webm;codecs=opus'
-      })
+      // Set up MediaRecorder with the first container this browser supports
+      const mimeType = pickMimeType()
+      mediaRecorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream)
+      activeMimeType = mediaRecorder.mimeType || mimeType || 'audio/webm'
+      acquireWakeLock()
 
       mediaRecorder.ondataavailable = (e) => {
         if (e.data.size > 0) {
@@ -99,7 +132,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
 
       mediaRecorder.onstop = () => {
         if (chunks.length > 0 && segmentStartTime) {
-          const blob = new Blob(chunks, { type: 'audio/webm' })
+          const blob = new Blob(chunks, { type: activeMimeType })
           const durationMs = Date.now() - segmentStartTime
 
           const segment: RecordedSegment = {
@@ -178,6 +211,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
       stream = null
     }
 
+    releaseWakeLock()
     mediaRecorder = null
     isFlowMode.value = false
     isCapturing.value = false
