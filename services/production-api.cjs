@@ -4076,7 +4076,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
 
     // Update the sample flag in Supabase to mark as recorded
     if (supabaseClient.isInitialized()) {
-      await supabaseClient.updateSampleFlag(
+      await supabaseClient.updateRecordingStatus(
         uuid,
         courseCode,
         'needs_review',
