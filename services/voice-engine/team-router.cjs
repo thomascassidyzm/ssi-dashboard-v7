@@ -61,7 +61,14 @@ module.exports = function createTeamRouter({
 
   const router = express.Router({ mergeParams: true })
 
-  // ── Course-scoped auth gate (identity + membership) ──────────────────────
+  // ── Course-scoped auth gate (identity + membership + role for writes) ────
+  // A 'recorder' holds the course too (that is how the recorder shell works)
+  // but is READ-ONLY here: without this server-side check a recorder could
+  // hit POST /invite {role:'editor'} directly and mint an editor code —
+  // privilege escalation. Client-side confinement is not auth. (Deny is by
+  // the 'recorder' role specifically: the Supabase-JWT auth path labels
+  // popty editors role 'user', so an editor/admin allowlist would lock them
+  // out; 'recorder' only ever comes from dashboard_users.role.)
   router.use(async (req, res, next) => {
     try {
       const user = await requireDashboardUser(req, res)
@@ -69,6 +76,9 @@ module.exports = function createTeamRouter({
       const courseCode = req.params.courseCode
       if (!userCanAccessCourse(user, courseCode)) {
         return res.status(403).json({ error: `No access to course ${courseCode}` })
+      }
+      if (req.method !== 'GET' && user.role === 'recorder') {
+        return res.status(403).json({ error: 'Recorders cannot manage the course team' })
       }
       req.dashboardUser = user
       next()
