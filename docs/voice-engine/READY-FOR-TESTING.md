@@ -33,6 +33,13 @@ merge keyed by `assignedEmail`, recorder invite codes, member removal with admin
 status. Community-course breakers fixed: 300-seed approve gate, `/668` labels, the gendered-
 language hard-exclusion (Macedonian works), ScriptViewer defaults, user-facing "source" purged.
 
+**Identity (added at Tom's request, 2026-06-10):** one Supabase account stays the single
+authentication for the learning app AND Popty; `dashboard_users` is now THE Popty authorization
+authority (`services/shared/popty-identity.cjs`, tested) — editing it always changes effective
+access, with `learners` ssi_admin/god as the no-row admin fallback. Verified read-only against
+every live identity: all admins keep full access on both auth paths, editors keep exactly their
+courses, and team routes now work for dashboard-only users on Supabase sessions.
+
 ## How it was verified
 
 - **100/100 unit tests** (engine boundary math, splice plan, cadence-never-mixes, re-record
