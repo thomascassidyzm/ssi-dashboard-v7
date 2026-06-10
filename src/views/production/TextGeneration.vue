@@ -436,14 +436,23 @@
           </div>
         </div>
 
-        <!-- Stage 5: Gender Prep (hidden for non-gendered languages) -->
-        <div v-if="isGenderedLanguage" class="pipeline-card" :class="stageCardClass('gender')">
+        <!-- Stage 5: Gender Prep — always shown; the known-gendered list only
+             changes the hint, it never hides the stage (e.g. Macedonian is
+             gendered but was not on the original 6-language hard-code). -->
+        <div class="pipeline-card" :class="stageCardClass('gender')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('gender')">5</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Gender Prep</div>
-                <div class="text-xs text-slate-500">Gender expansions</div>
+                <div class="text-sm font-medium text-slate-200">
+                  Gender Prep
+                  <span v-if="!genderPrepRecommended" class="ml-2 text-[10px] uppercase tracking-wide text-slate-500 border border-slate-600/60 rounded px-1.5 py-0.5 align-middle">Optional</span>
+                </div>
+                <div class="text-xs text-slate-500">
+                  {{ genderPrepRecommended
+                    ? 'Gender expansions — this language changes words depending on who is speaking or spoken about'
+                    : 'Run this if the target language has masculine/feminine word forms; skip it if not' }}
+                </div>
               </div>
             </div>
             <div class="flex items-center gap-3">
@@ -825,7 +834,10 @@ const pipelinePhase = computed(() => {
   return 'gender'
 })
 
-const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara', 'bre']
+// Languages where Gender Prep is KNOWN to be needed (recommendation only —
+// the stage is shown for every course and works for any language; this list
+// must never hide or exclude the stage for unlisted gendered languages).
+const GENDER_PREP_RECOMMENDED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara', 'bre']
 const courseTargetLang = computed(() => {
   // In create mode, use the dropdown; for existing courses, extract from course code (e.g. "spa_for_eng" → "spa")
   if (targetLanguage.value) return targetLanguage.value
@@ -833,7 +845,7 @@ const courseTargetLang = computed(() => {
   if (code && code.includes('_for_')) return code.split('_for_')[0].split('_')[0]
   return ''
 })
-const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTargetLang.value))
+const genderPrepRecommended = computed(() => GENDER_PREP_RECOMMENDED_LANGUAGES.includes(courseTargetLang.value))
 
 // --- Activity detection — is an agent actively working? ---
 
