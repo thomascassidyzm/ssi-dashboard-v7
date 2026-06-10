@@ -4,13 +4,19 @@
  * NOT mounted anywhere by this build — integration mounts it in
  * services/production-api.cjs with the one-liner in README.md:
  *
- *   app.use('/api/voice-engine', require('./voice-engine/router.cjs').createVoiceEngineRouter())
+ *   app.use('/api/production/:courseCode/voice-engine',
+ *           require('./voice-engine/router.cjs').createVoiceEngineRouter())
+ *
+ * MOUNTED UNDER /api/production/:courseCode so the app-level
+ * app.param('courseCode') course-scope auth gate fires for every route
+ * (the router uses mergeParams to read it; declaring :courseCode inside
+ * the sub-router would silently escape the gate).
  *
  * Routes (all course-agnostic, voice-slot aware):
- *   POST /:courseCode/synthesize          { voiceId? , role?, dryRun? } → start job
- *   GET  /:courseCode/synthesize/status   ?voiceId=                    → job status
- *   POST /:courseCode/synthesize/cancel   { voiceId }                  → cancel
- *   GET  /:courseCode/coverage                                          → honest per-slot counts
+ *   POST /synthesize          { voiceId? , role?, dryRun? } → start job
+ *   GET  /synthesize/status   ?voiceId=                    → job status
+ *   POST /synthesize/cancel   { voiceId }                  → cancel
+ *   GET  /coverage                                          → honest per-slot counts
  *
  * NO TTS. NO DDL. Mutations are course_audio upserts + S3 writes performed
  * by the job, never by the request thread.
@@ -41,7 +47,7 @@ function createDefaultDeps() {
  *   needs no env).
  */
 function createVoiceEngineRouter(depsArg = null) {
-  const router = express.Router()
+  const router = express.Router({ mergeParams: true })
   let deps = depsArg
   const getDeps = () => {
     if (!deps) deps = createDefaultDeps()
@@ -50,7 +56,7 @@ function createVoiceEngineRouter(depsArg = null) {
   }
 
   // Start a synthesis job for one (course, voice slot).
-  router.post('/:courseCode/synthesize', async (req, res) => {
+  router.post('/synthesize', async (req, res) => {
     try {
       const { courseCode } = req.params
       const { voiceId = null, role = null, dryRun = false, includeSeeds = true } = req.body || {}
@@ -78,7 +84,7 @@ function createVoiceEngineRouter(depsArg = null) {
   })
 
   // Job status (one voice, or all jobs for the course).
-  router.get('/:courseCode/synthesize/status', (req, res) => {
+  router.get('/synthesize/status', (req, res) => {
     const { courseCode } = req.params
     const { voiceId } = req.query
     if (voiceId) {
@@ -90,7 +96,7 @@ function createVoiceEngineRouter(depsArg = null) {
   })
 
   // Cancel a running job.
-  router.post('/:courseCode/synthesize/cancel', (req, res) => {
+  router.post('/synthesize/cancel', (req, res) => {
     const { courseCode } = req.params
     const { voiceId } = req.body || {}
     if (!voiceId) return res.status(400).json({ error: 'voiceId required' })
@@ -100,7 +106,7 @@ function createVoiceEngineRouter(depsArg = null) {
   })
 
   // Honest coverage per voice slot (de-fakes RecordingOptimizer's stats).
-  router.get('/:courseCode/coverage', async (req, res) => {
+  router.get('/coverage', async (req, res) => {
     try {
       const coverage = await computeCoverage(getDeps(), req.params.courseCode)
       res.json(coverage)

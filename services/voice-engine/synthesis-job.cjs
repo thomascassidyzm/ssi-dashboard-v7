@@ -176,7 +176,7 @@ function startSynthesisJob(deps, { courseCode, voiceId = null, role = null, dryR
       const universe = buildUniverse(legos)
 
       const { rows: takes, error: provenanceError } = await deps.provenance.fetchProvenanceRows(deps.supabase, {
-        courseCode, voiceId: job.voiceId,
+        courseCode, voiceId: job.voiceId, role: slot.role,
       })
       if (provenanceError) {
         logger.warn?.(`[voice-engine] provenance fetch: ${provenanceError} (0 takes — integration seam, see provenance-adapter.cjs)`)

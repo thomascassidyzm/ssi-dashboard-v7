@@ -79,13 +79,18 @@ function normalizeProvenance(provenance = {}) {
  * @param {string} args.s3Key - the canon key the take was stored at
  * @param {string|null} [args.courseAudioId] - regeneration mode: the course_audio row re-recorded
  * @param {string|null} [args.replacedS3Key] - regeneration mode: the row's previous s3_key (reversibility)
+ * @param {string|null} [args.voiceId] - SERVER-resolved voice for the slot
+ *   (voice_config.voices[role].voiceId; client metadata.voiceId is advisory only).
+ *   The engine partitions the splice space by (voice_id, cadence); takes
+ *   without it fall back to slot-role matching at read time.
  * @returns {Object}
  */
-function buildProvenanceContext({ courseCode, isScriptMode, metadata = {}, provenance = {}, s3Key, courseAudioId = null, replacedS3Key = null }) {
+function buildProvenanceContext({ courseCode, isScriptMode, metadata = {}, provenance = {}, s3Key, courseAudioId = null, replacedS3Key = null, voiceId = null }) {
   return {
     course_code: courseCode,
     mode: isScriptMode ? 'script' : 'regeneration',
     role: metadata.role || null,
+    voice_id: voiceId || null,
     cadence: metadata.cadence || null,
     text: metadata.text || null,
     seed_number: metadata.seedNumber ?? null,

@@ -94,7 +94,7 @@ async function computeCoverage(deps, courseCode) {
     let segmentCount = 0
     if (voiceId) {
       try {
-        const { rows } = await deps.provenance.fetchProvenanceRows(deps.supabase, { courseCode, voiceId })
+        const { rows } = await deps.provenance.fetchProvenanceRows(deps.supabase, { courseCode, voiceId, role })
         for (const t of rows) {
           if (t.method === 'take' && t.phraseText) takeTexts.add(normalizeForAudio(t.phraseText))
         }

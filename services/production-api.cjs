@@ -378,6 +378,13 @@ app.param('courseCode', async (req, res, next, courseCode) => {
   }
 })
 
+// Human voice engine: synthesis jobs + honest coverage. Mounted under
+// /api/production/:courseCode so the app.param course-scope gate above fires
+// for every route (the router itself uses mergeParams — it must NOT declare
+// :courseCode internally or it would escape the gate).
+app.use('/api/production/:courseCode/voice-engine',
+  require('./voice-engine/router.cjs').createVoiceEngineRouter())
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
@@ -4259,6 +4266,24 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       // s3_key). The live table has no dedicated columns for that context, so it
       // rides in quality_notes as JSON. Keyed by the take's fresh S3 uuid so every
       // re-record gets its own row.
+      // voice_id is resolved SERVER-side from the course's voice_config slot —
+      // the client's metadata.voiceId is advisory (used only when the slot has
+      // no human voice assigned yet, e.g. recording ahead of roster assignment).
+      let slotVoiceId = null
+      try {
+        const slotRole = metadata?.role || null
+        if (slotRole) {
+          const { data: courseRow } = await supabaseClient.getClient()
+            .from('courses').select('voice_config').eq('course_code', courseCode).single()
+          slotVoiceId = courseRow?.voice_config?.voices?.[slotRole]?.voiceId || null
+          if (metadata?.voiceId && slotVoiceId && metadata.voiceId !== slotVoiceId) {
+            logger.warn(`[Recording] client voiceId ${metadata.voiceId} disagrees with voice_config ${slotRole}=${slotVoiceId} — server value wins`)
+          }
+        }
+      } catch (voiceResolveError) {
+        logger.warn('[Recording] voice_config resolve failed, falling back to client voiceId:', voiceResolveError.message)
+      }
+      if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
       const provenanceContext = buildProvenanceContext({
         courseCode,
         isScriptMode,
@@ -4266,7 +4291,8 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         provenance: prov,
         s3Key,
         courseAudioId: existingRow ? uuid : null,
-        replacedS3Key: existingRow ? existingRow.s3_key : null
+        replacedS3Key: existingRow ? existingRow.s3_key : null,
+        voiceId: slotVoiceId
       })
       try {
         await supabaseClient.insertRecordingProvenance({
