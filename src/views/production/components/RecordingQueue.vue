@@ -20,7 +20,8 @@
       <select v-model="localFilters.role" @change="updateFilters" class="filter-select">
         <option value="">All Roles</option>
         <option value="target">Target</option>
-        <option value="source">Source</option>
+        <!-- value is a legacy API filter key; the label uses SSi vocabulary -->
+        <option value="source">Known</option>
       </select>
 
       <select v-model="localFilters.cadence" @change="updateFilters" class="filter-select">

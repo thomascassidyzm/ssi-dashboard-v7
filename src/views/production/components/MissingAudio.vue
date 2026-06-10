@@ -139,7 +139,7 @@
               <table class="w-full text-xs">
                 <thead class="sticky top-0 bg-rose-950/50">
                   <tr class="text-left text-rose-300/70">
-                    <th class="py-2 px-3 font-medium">Source</th>
+                    <th class="py-2 px-3 font-medium">From</th>
                     <th class="py-2 px-3 font-medium">Role</th>
                     <th class="py-2 px-3 font-medium">ID</th>
                     <th class="py-2 px-3 font-medium">Text</th>

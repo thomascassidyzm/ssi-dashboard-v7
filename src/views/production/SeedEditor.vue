@@ -7,7 +7,7 @@
         <div class="progress-bar-container">
           <div class="progress-bar" :style="{ width: progressPercent + '%' }"></div>
         </div>
-        <span class="progress-label">{{ complete }} / {{ total }} seeds complete</span>
+        <span class="progress-label">{{ complete }} / {{ courseTotal || total }} seeds complete</span>
       </div>
       <div class="header-right">
         <select v-model="filter" class="filter-select">
@@ -24,7 +24,8 @@
         />
         <button
           class="btn-approve"
-          :disabled="complete < 300 || approving"
+          :disabled="courseTotal === 0 || complete < courseTotal || approving"
+          :title="courseTotal > 0 && complete < courseTotal ? `${courseTotal - complete} of ${courseTotal} seeds still need both languages` : ''"
           @click="approveSeeds"
         >
           {{ approving ? 'Approving...' : 'Approve Seeds' }}
@@ -130,6 +131,7 @@ const PAGE_SIZE = 50
 
 const seeds = ref([])
 const total = ref(0)
+const courseTotal = ref(0) // full course seed count (stable across filter/search)
 const complete = ref(0)
 const page = ref(1)
 const filter = ref('all')
@@ -145,7 +147,10 @@ const savedKey = ref(null)
 let savedTimer = null
 
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / PAGE_SIZE)))
-const progressPercent = computed(() => total.value > 0 ? (complete.value / total.value) * 100 : 0)
+const progressPercent = computed(() => {
+  const denom = courseTotal.value || total.value
+  return denom > 0 ? (complete.value / denom) * 100 : 0
+})
 
 function statusClass(seed) {
   if (seed.known_text && seed.target_text) return 'green'
@@ -181,6 +186,11 @@ async function loadSeeds() {
       seeds.value = data.seeds
       total.value = data.total
       complete.value = data.complete
+      // data.total is the FILTERED count; only an unfiltered load reflects the
+      // course's true seed count. Approval gates on the course's own size.
+      if (filter.value === 'all' && !search.value) {
+        courseTotal.value = data.total
+      }
     }
   } catch (err) {
     console.error('Failed to load seeds:', err)

@@ -154,7 +154,7 @@
               <div class="text-slate-500 text-xs mb-1">Seeds</div>
               <div class="font-mono">
                 <span class="text-emerald-400">{{ course.seed_pairs || 0 }}</span>
-                <span class="text-slate-500"> / {{ course.seed_count || 668 }}</span>
+                <span v-if="course.seed_count" class="text-slate-500"> / {{ course.seed_count }}</span>
               </div>
             </div>
             <!-- LEGOs -->

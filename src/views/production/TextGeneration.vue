@@ -210,11 +210,11 @@
               <span class="stage-number" :class="stageNumberClass('translate')">1</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Translate</div>
-                <div class="text-xs text-slate-500">668 seed translations</div>
+                <div class="text-xs text-slate-500">{{ translateTotal }} seed translations</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/668</span>
+              <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/{{ translateTotal }}</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
               <button
                 v-if="stageComplete('translate')"
@@ -436,14 +436,23 @@
           </div>
         </div>
 
-        <!-- Stage 5: Gender Prep (hidden for non-gendered languages) -->
-        <div v-if="isGenderedLanguage" class="pipeline-card" :class="stageCardClass('gender')">
+        <!-- Stage 5: Gender Prep — always shown; the known-gendered list only
+             changes the hint, it never hides the stage (e.g. Macedonian is
+             gendered but was not on the original 6-language hard-code). -->
+        <div class="pipeline-card" :class="stageCardClass('gender')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('gender')">5</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Gender Prep</div>
-                <div class="text-xs text-slate-500">Gender expansions</div>
+                <div class="text-sm font-medium text-slate-200">
+                  Gender Prep
+                  <span v-if="!genderPrepRecommended" class="ml-2 text-[10px] uppercase tracking-wide text-slate-500 border border-slate-600/60 rounded px-1.5 py-0.5 align-middle">Optional</span>
+                </div>
+                <div class="text-xs text-slate-500">
+                  {{ genderPrepRecommended
+                    ? 'Gender expansions — this language changes words depending on who is speaking or spoken about'
+                    : 'Run this if the target language has masculine/feminine word forms; skip it if not' }}
+                </div>
               </div>
             </div>
             <div class="flex items-center gap-3">
@@ -804,8 +813,12 @@ const seedGridUnderThreshold = computed(() => seedGrid.value.filter(s => s.statu
 
 // --- Pipeline computeds ---
 
+// Denominator for the Translate stage — the course's own seed count,
+// falling back to the selected target size (never a hard-coded canon size).
+const translateTotal = computed(() => progress.value.totalSeeds || seedCount.value)
+
 const translatePercent = computed(() => {
-  const total = progress.value.totalSeeds || 668
+  const total = translateTotal.value || 1
   return Math.round(((progress.value.seedsTranslated || 0) / total) * 100)
 })
 
@@ -821,7 +834,10 @@ const pipelinePhase = computed(() => {
   return 'gender'
 })
 
-const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara', 'bre']
+// Languages where Gender Prep is KNOWN to be needed (recommendation only —
+// the stage is shown for every course and works for any language; this list
+// must never hide or exclude the stage for unlisted gendered languages).
+const GENDER_PREP_RECOMMENDED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara', 'bre']
 const courseTargetLang = computed(() => {
   // In create mode, use the dropdown; for existing courses, extract from course code (e.g. "spa_for_eng" → "spa")
   if (targetLanguage.value) return targetLanguage.value
@@ -829,7 +845,7 @@ const courseTargetLang = computed(() => {
   if (code && code.includes('_for_')) return code.split('_for_')[0].split('_')[0]
   return ''
 })
-const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTargetLang.value))
+const genderPrepRecommended = computed(() => GENDER_PREP_RECOMMENDED_LANGUAGES.includes(courseTargetLang.value))
 
 // --- Activity detection — is an agent actively working? ---
 
@@ -998,7 +1014,7 @@ const finalPassSummary = computed(() => {
 function stageComplete(stage) {
   // Data-driven: derive status from actual data, not build_jobs flags
   switch (stage) {
-    case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
+    case 'translate': return translateTotal.value > 0 && (progress.value.seedsTranslated || 0) >= translateTotal.value
     case 'build-team': return (progress.value.currentSeed || 0) >= seedCount.value
     case 'final-pass': return seedGridFinalized.value > 0 && seedGridDrafted.value === 0 && seedGridFlagged.value === 0 && seedGridUnderThreshold.value === 0
     case 'gender': return (progress.value.genderExpansions || 0) > 0

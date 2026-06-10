@@ -101,7 +101,7 @@
 
     <!-- Individual Audio Controls (always show if UUIDs available) -->
     <div v-if="phrase.known_audio_uuid || phrase.target1_audio_uuid || phrase.target2_audio_uuid" class="audio-controls mt-3 space-y-2">
-      <!-- Known Audio (Source Language) -->
+      <!-- Known-language audio -->
       <div v-if="phrase.known_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-slate-700 bg-opacity-50 rounded-lg">
         <button
           @click="playSingleAudio('known')"

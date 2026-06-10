@@ -1027,10 +1027,13 @@ const error = ref<string | null>(null);
 const seeds = ref<SeedRowData[]>([]);
 const totalSeedsInCourse = ref(0);  // Total seeds in course (from API)
 
-// Filter State - default to first 50 seeds for performance
+// Filter State — default window derived from the course's own seed range on
+// mount (initDefaultSeedRange); 50 is only the pre-fetch placeholder and the
+// performance cap for large courses.
+const DEFAULT_SEED_WINDOW = 50;
 const filterStatus = ref<SampleStatus | 'all' | 'flagged'>('all');
 const filterSeedStart = ref('S0001');
-const filterSeedEnd = ref('S0050');
+const filterSeedEnd = ref('S' + String(DEFAULT_SEED_WINDOW).padStart(4, '0'));
 const filterSearchText = ref('');
 const filterFlaggedOnly = ref(false);
 
@@ -2695,8 +2698,30 @@ watch(filterFlaggedOnly, () => {
   loadCourseData();
 });
 
+// Derive the default seed window from the course's ACTUAL seed range instead
+// of assuming the canonical S0001–S0050. Small community courses get their
+// full range (no fetches for seeds that don't exist); courses larger than the
+// performance window keep the first DEFAULT_SEED_WINDOW seeds.
+const initDefaultSeedRange = async () => {
+  try {
+    const res = await fetch(`${getApiBaseUrl()}/api/stats/${courseCode.value}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' },
+      signal: AbortSignal.timeout(10000)
+    });
+    if (!res.ok) return;
+    const data = await res.json();
+    const total = parseInt(data.total_seeds, 10) || 0;
+    if (total > 0) {
+      totalSeedsInCourse.value = total;
+      filterSeedEnd.value = formatSeedNum(Math.min(total, DEFAULT_SEED_WINDOW));
+    }
+  } catch {
+    // Stats unavailable — keep the placeholder window
+  }
+};
+
 // Lifecycle
-onMounted(() => {
+onMounted(async () => {
   // Check for view query param
   if (route.query.view === 'seed' || route.query.view === 'seed-view') {
     viewMode.value = 'script';
@@ -2713,8 +2738,9 @@ onMounted(() => {
   if (route.query.filter === 'flagged') {
     filterFlaggedOnly.value = true;
   }
-  loadCourseData();
   window.addEventListener('keydown', handleKeydown);
+  await initDefaultSeedRange();
+  loadCourseData();
 });
 
 onBeforeUnmount(() => {

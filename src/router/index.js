@@ -411,6 +411,15 @@ const routes = [
         meta: { title: 'Overview - Production Suite' }
       },
       {
+        // Guided leader's journey — plain-language step-by-step shell over the
+        // existing flows (translate → decompose → verify → record → synthesize → QA → publish)
+        path: 'journey',
+        name: 'LeaderJourney',
+        component: () => import('../views/production/LeaderJourney.vue'),
+        props: true,
+        meta: { title: 'Course Journey - Production Suite' }
+      },
+      {
         path: 'seeds',
         name: 'SeedEditor',
         component: () => import('../views/production/SeedEditor.vue'),

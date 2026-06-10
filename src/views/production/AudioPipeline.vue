@@ -232,7 +232,7 @@
                   <option value="">Select role...</option>
                   <option value="target1">Target 1 (Primary voice)</option>
                   <option value="target2">Target 2 (Secondary voice)</option>
-                  <option value="known">Known (Source language)</option>
+                  <option value="known">Known language</option>
                   <option value="presentation">Presentation (Introductions)</option>
                 </select>
 
