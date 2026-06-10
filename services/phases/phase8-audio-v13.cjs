@@ -1468,13 +1468,17 @@ app.post('/generate/:courseCode', async (req, res) => {
       // PRECIOUS-AUDIO GUARD: if a human recording occupies this exact audio key
       // (a re-recorded row keeps its original voice_id), never TTS over it — the
       // upsert below would flip origin back to 'tts' and repoint s3_key.
-      const guardedHuman = await humanRowAtAudioKey(
-        courseCode, normalizeForAudio(item.text), item.language, item.role, item.voiceId
-      )
-      if (guardedHuman) {
-        updateWork(item.text, true)
-        logger.info(`[PreciousAudio] SKIP generate: "${item.text.substring(0, 40)}" (${item.role}) — human recording ${guardedHuman.id} holds this key`)
-        return { success: true, item, skippedHuman: true }
+      // (No voiceId → no upsert key to collide with; the item fails at TTS
+      // dispatch below exactly as it always did.)
+      if (item.voiceId) {
+        const guardedHuman = await humanRowAtAudioKey(
+          courseCode, normalizeForAudio(item.text), item.language, item.role, item.voiceId
+        )
+        if (guardedHuman) {
+          updateWork(item.text, true)
+          logger.info(`[PreciousAudio] SKIP generate: "${item.text.substring(0, 40)}" (${item.role}) — human recording ${guardedHuman.id} holds this key`)
+          return { success: true, item, skippedHuman: true }
+        }
       }
 
       // -----------------------------------------------------------------------
@@ -4172,13 +4176,16 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     // Generate items using the same pattern as /generate
     const generateItem = async (item) => {
       // PRECIOUS-AUDIO GUARD: never TTS over a human recording at this key.
-      const guardedHuman = await humanRowAtAudioKey(
-        courseCode, normalizeForAudio(item.text), item.language, item.role, item.voiceId
-      )
-      if (guardedHuman) {
-        updateWork(item.text, true)
-        logger.info(`[PreciousAudio] SKIP generate-components: "${item.text.substring(0, 40)}" (${item.role}) — human recording ${guardedHuman.id} holds this key`)
-        return { success: true, item, skippedHuman: true }
+      // (No voiceId → no upsert key to collide with; fails at dispatch as before.)
+      if (item.voiceId) {
+        const guardedHuman = await humanRowAtAudioKey(
+          courseCode, normalizeForAudio(item.text), item.language, item.role, item.voiceId
+        )
+        if (guardedHuman) {
+          updateWork(item.text, true)
+          logger.info(`[PreciousAudio] SKIP generate-components: "${item.text.substring(0, 40)}" (${item.role}) — human recording ${guardedHuman.id} holds this key`)
+          return { success: true, item, skippedHuman: true }
+        }
       }
 
       // Cross-course sharing
