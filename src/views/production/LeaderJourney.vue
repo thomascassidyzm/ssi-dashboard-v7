@@ -218,22 +218,41 @@ const humanSlotCount = computed(() =>
   ['target1', 'target2'].filter(k => voiceConfig.value?.voices?.[k]?.provider === 'human').length
 )
 
-// --- Synthesis step summary --------------------------------------------------
+// --- Synthesis coverage roll-up ----------------------------------------------
+// Target slots from the engine's per-slot array (prefer the human-assigned
+// ones — those are the voices the leader's team records). Shared by the
+// synthesize summary AND the record/synthesize done-states.
+const synthCoverageTotals = computed(() => {
+  const c = coverage.value
+  if (!c || !Array.isArray(c.slots)) return null
+  const targets = c.slots.filter(s => s.role === 'target1' || s.role === 'target2')
+  if (!targets.length) return null
+  const pool = targets.some(s => s.isHuman) ? targets.filter(s => s.isHuman) : targets
+  return {
+    done: pool.reduce((n, s) => n + (s.covered ?? 0), 0),
+    total: pool.reduce((n, s) => n + (s.needed ?? 0), 0),
+  }
+})
+
+const synthCoverageComplete = computed(() => {
+  const t = synthCoverageTotals.value
+  return !!t && t.total > 0 && t.done >= t.total
+})
+
 const synthSummary = computed(() => {
   const c = coverage.value
   if (!c) return null
-  // Roll up the target slots from the engine's per-slot array (prefer the
-  // human-assigned ones — those are the voices the leader's team records).
-  if (Array.isArray(c.slots)) {
-    const targets = c.slots.filter(s => s.role === 'target1' || s.role === 'target2')
-    const pool = targets.some(s => s.isHuman) ? targets.filter(s => s.isHuman) : targets
-    const done = pool.reduce((n, s) => n + (s.covered ?? 0), 0)
-    const total = pool.reduce((n, s) => n + (s.needed ?? 0), 0)
-    if (total > 0) return `${done} of ${total} phrases covered`
-  }
+  const t = synthCoverageTotals.value
+  if (t && t.total > 0) return `${t.done} of ${t.total} phrases covered`
   if (typeof c.percent === 'number') return `${c.percent}% of phrases have stitched audio`
   return 'Stitching engine connected'
 })
+
+// Step done-states: without these, currentStepKey could never advance past
+// the record step — record gets its checkmark once both voices are real
+// people AND their audio is fully covered; synthesize once coverage is full.
+const recordDone = computed(() => humanSlotCount.value >= 2 && synthCoverageComplete.value)
+const synthDone = computed(() => engineInstalled.value && synthCoverageComplete.value)
 
 // --- The steps ---------------------------------------------------------------
 const steps = computed(() => {
@@ -287,7 +306,7 @@ const steps = computed(() => {
     key: 'record', num: 4,
     title: 'Record the voices',
     blurb: 'Your course needs two different voices. Each voice reads one short script aloud — about half an hour of reading covers the whole course.',
-    state: humanSlotCount.value >= 2 ? 'active' : (verifyDone.value ? 'active' : 'todo'),
+    state: recordDone.value ? 'done' : (humanSlotCount.value >= 2 || verifyDone.value ? 'active' : 'todo'),
     statusText: humanSlotCount.value > 0
       ? `${humanSlotCount.value} of 2 voices set to a real person`
       : 'No human voices assigned yet',
@@ -302,7 +321,7 @@ const steps = computed(() => {
     key: 'synthesize', num: 5,
     title: 'Build the full audio',
     blurb: 'Your recordings are stitched together so every practice phrase is heard in your team’s voices — nobody has to read thousands of lines.',
-    state: engineInstalled.value ? 'active' : 'pending',
+    state: synthDone.value ? 'done' : (engineInstalled.value ? 'active' : 'pending'),
     statusText: engineInstalled.value
       ? (synthSummary.value || 'Ready')
       : 'Coming soon — the stitching engine is being installed',

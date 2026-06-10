@@ -41,7 +41,7 @@
           <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
             <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
               <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
-                GuaranteedCoverage Algorithm
+                Your reading plan
               </h2>
               <button @click="runAlgorithm"
                       :disabled="isCalculating"
@@ -56,7 +56,7 @@
               <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
                 <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
                   <div class="text-2xl font-bold text-slate-100">{{ stats.totalLegos }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Total LEGOs</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Building blocks</div>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
                   <div class="text-2xl font-bold text-emerald-400">{{ stats.phrasesToRecord }}</div>
@@ -111,14 +111,14 @@
             </div>
           </section>
 
-          <!-- LEGO Audio Synthesis Demo -->
+          <!-- Audio stitching demo -->
           <section class="rounded-xl border border-violet-500/30 bg-violet-500/5 overflow-hidden">
             <div class="px-6 py-4 border-b border-violet-500/20">
               <div class="flex items-center gap-3">
                 <span class="text-2xl">🧬</span>
                 <div>
-                  <h2 class="text-lg font-semibold text-violet-300">LEGO Audio Synthesis</h2>
-                  <p class="text-sm text-slate-400">Building new phrases from recorded components</p>
+                  <h2 class="text-lg font-semibold text-violet-300">How phrases get stitched</h2>
+                  <p class="text-sm text-slate-400">New phrases are built from pieces your voices already recorded</p>
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="p-6 space-y-6">
               <!-- Target phrase with audio -->
               <div class="text-center">
-                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Synthesized Phrase</p>
+                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Stitched phrase</p>
                 <p class="text-xl text-slate-100 font-medium">{{ currentExample.welsh }}</p>
                 <p class="text-sm text-slate-400 mt-1">"{{ currentExample.english }}"</p>
                 <!-- Play button for target -->
@@ -146,7 +146,7 @@
                       <rect x="5" y="4" width="3" height="12" rx="1"/>
                       <rect x="12" y="4" width="3" height="12" rx="1"/>
                     </svg>
-                    {{ currentlyPlaying === currentExample.seed ? 'Playing...' : 'Play Spliced Result' }}
+                    {{ currentlyPlaying === currentExample.seed ? 'Playing...' : 'Play the stitched result' }}
                   </button>
                   <span v-else class="text-sm text-slate-500 italic">Loading audio...</span>
                 </div>
@@ -213,7 +213,7 @@
                     <p class="text-sm text-slate-200 font-medium">The Magic</p>
                     <p class="text-sm text-slate-400 mt-1">
                       By recording just <span class="text-emerald-400 font-semibold">{{ totalRecordings }} phrases</span>,
-                      we can synthesize audio for all <span class="text-violet-400 font-semibold">{{ stats.totalPhrases.toLocaleString() }} phrases</span> in the course.
+                      we can stitch together audio for all <span class="text-violet-400 font-semibold">{{ stats.totalPhrases.toLocaleString() }} phrases</span> in the course.
                       That's a <span class="text-amber-400 font-semibold">{{ stats.reductionPercent }}% reduction</span> in recording effort.
                     </p>
                   </div>
@@ -251,7 +251,7 @@
                   <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-3 mb-1">
                       <span class="text-slate-600 text-xs font-mono">{{ String(index + 1).padStart(3, '0') }}</span>
-                      <span class="text-xs text-slate-500">{{ phrase.legoCount }} LEGOs</span>
+                      <span class="text-xs text-slate-500">{{ phrase.legoCount }} building blocks</span>
                     </div>
                     <p class="text-sm text-slate-100">{{ phrase.target }}</p>
                     <p class="text-xs text-slate-500 mt-0.5">{{ phrase.source }}</p>
