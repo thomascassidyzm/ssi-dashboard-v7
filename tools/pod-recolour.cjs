@@ -167,10 +167,10 @@ async function main() {
 
   const targetLang = courseCode.split('_for_')[0]
 
-  // Protected languages: skip to avoid disrupting live work. Croatian is in
-  // active daily livecast use (Aran) — don't recolour/regenerate its pods.
+  // Protected languages: skip to avoid disrupting live work. (Croatian was
+  // protected for Aran's livecast until canon v2, 2026-06-10 — now empty.)
   // Override with --force only when you know the live work is paused.
-  const PROTECTED = new Set(['hrv'])
+  const PROTECTED = new Set([])
   if (PROTECTED.has(targetLang) && !getArg('--force')) {
     console.log(`\n⛔ ${courseCode}: target "${targetLang}" is PROTECTED (live use — Aran's Croatian livecast).`)
     console.log(`   Skipping. Pass --force only if the live work is paused.\n`)

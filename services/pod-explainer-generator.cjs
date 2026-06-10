@@ -79,7 +79,8 @@ const SKIPPED_TARGET_LANGS = new Set(['cym', 'cym_n', 'cym_s'])
 function shouldSkipCourse(courseCode) {
   const { target } = parseCourseCode(courseCode)
   if (SKIPPED_TARGET_LANGS.has(target)) return { skip: true, reason: 'welsh-tts-blocker' }
-  if (courseCode === 'hrv_for_eng') return { skip: true, reason: 'pod-0-atomised-pending-redo' }
+  // hrv_for_eng was protected while Aran's hand-authored pod was in live use;
+  // canon v2 (2026-06-10) supersedes it — Tom: "re-do Croatian as well now".
   return { skip: false }
 }
 

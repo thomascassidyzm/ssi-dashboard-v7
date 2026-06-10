@@ -34,10 +34,11 @@
  * logged, marked failed in the ledger, and the batch moves on; the final summary
  * lists failures.
  *
- * SKIPPED courses: hrv_for_eng (hand-authored Croatian, in active livecast use —
- * full-regen would wipe it) and all Welsh (cym, cym_n, cym_s — no Welsh pods +
- * TTS voice-quality blocker). This reuses pod-explainer-generator.shouldSkipCourse,
- * the same skip authority the explainer batch already honours.
+ * SKIPPED courses: all Welsh (cym, cym_n, cym_s — no Welsh pods + TTS
+ * voice-quality blocker). hrv_for_eng was skipped while Aran's hand-authored
+ * Croatian was in livecast use; canon v2 (2026-06-10) supersedes it. This
+ * reuses pod-explainer-generator.shouldSkipCourse, the same skip authority
+ * the explainer batch already honours.
  *
  * Usage:
  *   node services/pod-bulk-migrate.cjs --dry-run            # plan only, touch nothing

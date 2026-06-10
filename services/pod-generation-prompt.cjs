@@ -24,8 +24,12 @@ const PROMPT = fs.readFileSync(path.join(__dirname, 'pod-generation-prompt.txt')
  * @returns {string} the filled prompt to send to claude --print
  */
 function renderPrompt({ targetLanguage, knownLanguage, cultureNotes, sceneTitle, lines, ledger }) {
+  // Canon v2 placeholder: "[target language]" → the language's English name
+  // (deterministic; the model then renders it natively in target_text and the
+  // ledger pins the one self-name). Local substitution only — never mutate the
+  // line objects, sceneHash is computed on the canonical english_text.
   const linesBlock = lines
-    .map(l => `${l.global_order}. [${l.speaker || 'Speaker'}] ${l.english_text}`)
+    .map(l => `${l.global_order}. [${l.speaker || 'Speaker'}] ${String(l.english_text).replace(/\[target language\]/gi, targetLanguage)}`)
     .join('\n')
   return PROMPT
     .replace(/\{\{TARGET_LANGUAGE\}\}/g, targetLanguage)

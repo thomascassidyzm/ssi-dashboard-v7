@@ -49,7 +49,10 @@ function parseLines(raw) {
   if (i !== -1 && j !== -1 && j > i) s = s.slice(i, j + 1)
   const obj = JSON.parse(s)
   if (!obj || !Array.isArray(obj.lines)) throw new Error('response has no "lines" array')
-  return obj.lines
+  // canon-v2 break clause: the model reports any minimal cultural deviation it
+  // had to make ("deviations": [...]) — surfaced as warnings, never silent.
+  const deviations = Array.isArray(obj.deviations) ? obj.deviations.filter(d => typeof d === 'string' && d.trim()) : []
+  return { lines: obj.lines, deviations }
 }
 
 /**
@@ -106,15 +109,16 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
   })
   let lastErr = null
   for (let attempt = 1; attempt <= 2; attempt++) {
-    let out
+    let out, deviations
     try {
       const raw = await claudeChat(prompt, { model: GEN_MODEL, timeout: SCENE_TIMEOUT_MS })
-      out = parseLines(raw)
+      ;({ lines: out, deviations } = parseLines(raw))
     } catch (e) {
       lastErr = `attempt ${attempt}: ${e.message}`
       continue
     }
     const { errors, warnings } = validateScene(scene.lines, out)
+    for (const d of deviations) warnings.push(`scene ${scene.number} DEVIATION (break clause): ${d}`)
     if (errors.length === 0) {
       // map by global_order to be safe about ordering
       const byGo = new Map(out.map(o => [Number(o.global_order), o]))
@@ -137,25 +141,29 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
 
 /**
  * Build a BINDING cross-scene consistency ledger for the whole pod in ONE call,
- * so the independently-generated scenes resolve recurring entities identically
- * (recurring names → one local name; each distinct landmark → a DISTINCT local
- * place; a single currency conversion with monotonic, plausible local prices;
- * paired-choice items kept genuinely different). Pasted verbatim into every
- * scene's prompt. Returns '' on failure (scenes still generate, just without
- * the cross-scene pin).
+ * so the independently-rendered scenes stay consistent. CANON v2 DOCTRINE
+ * (Aran 2026-06-10): the canon is NOT localised — names/places/items stay.
+ * The ledger pins only what fidelity itself requires to be consistent:
+ * transliterations (non-Latin scripts), one currency conversion with plausible
+ * local prices, the target language's own name, identical renderings for
+ * recurring canonical lines, and the register (T/V) choice per relationship.
+ * Pasted verbatim into every scene's prompt. Returns '' on failure (scenes
+ * still generate, just without the cross-scene pin).
+ * NB: deliberately NO "NAMES … → …" section — parseNameMap() must find
+ * nothing, so learner-visible speaker labels stay canonical (Sarah stays SARAH).
  */
 async function buildPodGlossary({ targetLanguage, cultureNotes, canonicalScenes }) {
   const allLines = canonicalScenes.map(s =>
-    `SCENE ${s.number} (${s.title}):\n` + s.lines.map(l => `  ${l.global_order}. [${l.speaker}] ${l.english_text}`).join('\n')
+    `SCENE ${s.number} (${s.title}):\n` + s.lines.map(l => `  ${l.global_order}. [${l.speaker}] ${String(l.english_text).replace(/\[target language\]/gi, targetLanguage)}`).join('\n')
   ).join('\n\n')
-  const prompt = `You are pinning a BINDING CONSISTENCY LEDGER for a ${canonicalScenes.length}-scene "${targetLanguage}" listening pod. The scenes are written independently, so to keep the whole pod coherent when heard in sequence, recurring real-world entities must resolve to the SAME local choice everywhere. Read ALL the canonical English lines, then produce a concise ledger the scene-writers will follow verbatim.
+  const prompt = `You are pinning a BINDING CONSISTENCY LEDGER for a ${canonicalScenes.length}-scene "${targetLanguage}" listening pod. The canonical English script below is rendered FAITHFULLY into ${targetLanguage} — names, places, venues and items are NOT localised or substituted; the scenes must come out parallel to the canon. Each scene is rendered independently, so your ledger pins the few choices that must be IDENTICAL across scenes. Read ALL the canonical lines, then produce a concise ledger the scene-renderers will follow verbatim.
 
 Produce these sections (concise labelled prose, no preamble):
-1. NAMES — apply ONE consistent rule to ALL Western personal names (either transliterate all, or substitute all with ${targetLanguage}-culture names — do not mix). For a RECURRING CHARACTER (the same individual appearing in more than one scene), pin ONE local name used everywhere. But where the SAME source name is just an incidental example in UNRELATED scenes (e.g. a booking surname in a restaurant scene and again in a different hotel scene = two different customers), give each a DIFFERENT local name so it doesn't read as a template repeat. Key each entry EXACTLY as: "<source name> [S<scene number(s)>] → <local name>" (e.g. "Sarah [S1] → Sophie") — this format is machine-parsed to relabel speakers.
-2. PLACES — every distinct landmark / destination / venue-type that needs localising → a DISTINCT, believable ${targetLanguage}-culture equivalent. NO two different source places may map to the same local place. Also AVOID landing two adjacent navigation/destination scenes on the same KIND of place (e.g. museum-then-museum) — vary the type (a square, a market, a station, a mosque). Key as: "<source place> [@scene] → <local place>".
-3. PRICES — pick ONE notional conversion and give the local amount for EACH money figure in the script, as SPOKEN WORDS in COLLOQUIAL ${targetLanguage} spelling, at realistic CURRENT LOCAL price levels (don't be implausibly cheap), and strictly monotonic so distinct source amounts get distinct local amounts. Note any unit shift (e.g. per-punnet → per-kilo). Key as: "<source amount> → <local amount in words>".
-4. PAIRED CHOICES — wherever a line offers a choice between two items (e.g. two ales, two wines), name TWO genuinely different local options to preserve the contrast. Key as: "<source pair> → <local option A> / <local option B>".
-5. POLITENESS VARIETY — list 3-4 natural ${targetLanguage} politeness/please forms so scenes don't all lean on one; the writers should rotate them.
+1. TRANSLITERATION — only if ${targetLanguage} is not normally written in Latin script: pin ONE standard rendering of every personal name and place name in the script, used identically everywhere. Key each entry EXACTLY as: "<canonical name> = <target-script rendering>" (use "=", never an arrow). If the language uses Latin script, write "TRANSLITERATION: not needed — names stay as written."
+2. PRICES — pick ONE notional conversion to the local currency and give the local amount for EACH money figure in the script, as SPOKEN WORDS in natural ${targetLanguage} spelling, at realistic CURRENT LOCAL price levels (don't be implausibly cheap), and strictly monotonic so distinct source amounts get distinct local amounts. Key as: "<source amount> → <local amount in words>".
+3. TARGET-LANGUAGE NAME — the script mentions ${targetLanguage} by name (e.g. "I'm learning ${targetLanguage}"). Pin the ONE standard everyday word ${targetLanguage} speakers use for their own language, used identically in every scene.
+4. RECURRING LINES — list every canonical sentence or formula that appears in MORE THAN ONE scene (greetings, "What can I get you?", "Could I pay by card?", etc.) and pin ONE ${targetLanguage} rendering for each, reused verbatim wherever it recurs.
+5. REGISTER — pin the unmarked polite second-person / honorific level for each relationship type in the pod (customer–staff, strangers, friends), so every scene makes the same T/V choice.
 
 CULTURE NOTES:
 ${cultureNotes}
