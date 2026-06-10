@@ -214,6 +214,14 @@ import RecordingControls from './recording/RecordingControls.vue'
 import RecordingStatus from './recording/RecordingStatus.vue'
 import SessionReview from './review/SessionReview.vue'
 
+// Recording identity, threaded in by the Record Room shell. Left at defaults
+// when mounted from the production console (/production/:courseCode/recording),
+// where the session falls back to the explicit target1 default.
+const props = defineProps({
+  recordSlot: { type: String, default: null }, // 'known' | 'target1' | 'target2' | 'presentation'
+  voiceId: { type: String, default: null }     // human voice id from courses.voice_config
+})
+
 const route = useRoute()
 
 // Use shared autocue state
@@ -224,6 +232,7 @@ const {
   completionPercent,
   sessionInfo,
   formattedTime,
+  setRecordingIdentity,
   selectMode,
   beginSession,
   beginContinuousSession,
@@ -276,7 +285,8 @@ continuousRecorder.onSegmentCaptured((segment) => {
     courseCode: state.courseCode,
     uuid: phrase.id,
     metadata: {
-      role: 'target1',
+      role: state.selectedRole || 'target1',
+      voiceId: state.voiceId || null,
       cadence: phrase.cadence,
       text: phrase.text,
       type: phrase.type,
@@ -371,6 +381,10 @@ function handleKeydown(e) {
 
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown)
+
+  // Bind (or clear) the session's voice-slot identity on every mount so a
+  // Record Room session never leaks into a production-console session.
+  setRecordingIdentity({ role: props.recordSlot, voiceId: props.voiceId })
 
   // Load course data if available from route
   const courseCode = route.params.courseCode

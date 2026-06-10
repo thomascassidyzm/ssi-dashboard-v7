@@ -24,6 +24,12 @@ const state = reactive({
   // Role selection
   selectedRole: null, // 'known', 'target1', 'target2'
 
+  // Recording identity — which voice slot this session records FOR, and the
+  // human voice id it belongs to (from courses.voice_config via Record Room).
+  // Null when entered via the production console (defaults to target1 there).
+  recordingSlot: null, // 'known' | 'target1' | 'target2' | 'presentation' | null
+  voiceId: null,
+
   // Script mode flag — when true, phrases come from optimizer and recording is continuous
   scriptMode: false,
 
@@ -119,12 +125,22 @@ export function useAutocueState() {
     state.currentPhase = phase
   }
 
+  // Bind this session to a voice slot + human voice id (set by Record Room).
+  // Called with nulls when mounted from the production console so a previous
+  // Record Room session can never leak its identity into an editor session.
+  function setRecordingIdentity({ role = null, voiceId = null } = {}) {
+    state.recordingSlot = role
+    state.voiceId = voiceId
+  }
+
   function selectMode(mode) {
     state.selectedMode = mode
     if (mode === 'new-course') {
       // New course mode: skip role selection, go straight to loading optimizer script
       state.scriptMode = true
-      state.selectedRole = 'target1' // optimizer is always target language
+      // Record FOR the assigned voice slot; explicit target1 default when
+      // entered without one (the editor/admin production console path).
+      state.selectedRole = state.recordingSlot || 'target1'
       loadOptimizedScript(state.courseCode)
     } else {
       state.scriptMode = false
@@ -471,7 +487,8 @@ export function useAutocueState() {
               metadata: {
                 role: phrase.role || state.selectedRole,
                 cadence: phrase.cadence || 'slow',
-                text: phrase.text
+                text: phrase.text,
+                voiceId: state.voiceId || null
               },
               provenance: {
                 recorded_by: 'autocue-studio',
@@ -590,7 +607,7 @@ export function useAutocueState() {
         coversLegos: item.coversLegos,
         known: item.known,
         legoId: item.legoId || '',
-        role: 'target1',
+        role: state.selectedRole || 'target1',
         // LEGO-level chunking — PhraseCard uses these in Pass 2 (slow) to
         // render pause boundaries between LEGO chunks rather than every word.
         recordingChunks: item.recordingChunks || null,
@@ -719,6 +736,7 @@ export function useAutocueState() {
 
     // Actions
     setPhase,
+    setRecordingIdentity,
     selectMode,
     selectRole,
     beginSession,
