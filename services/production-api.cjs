@@ -27,6 +27,7 @@ const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext } = require('./recording-upload-helpers.cjs')
+const { resolvePoptyIdentity } = require('./shared/popty-identity.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -227,30 +228,24 @@ async function verifySupabaseJWT(token) {
     const { data: { user }, error } = await supabaseClient.getClient().auth.getUser(token)
     if (error || !user) return null
 
-    const { data: lr } = await supabaseClient.getClient()
-      .from('learners')
-      .select('id, user_id, display_name, platform_role, educational_role, dashboard_courses')
-      .eq('user_id', user.id)
-      .single()
+    // AUTHORITY ORDER (services/shared/popty-identity.cjs): the
+    // dashboard_users row governs Popty authorization when one exists —
+    // editing that table must always change effective access. The learners
+    // ssi_admin/god check is the no-row fallback that keeps the
+    // single-account convenience (one Supabase login → learning app AND
+    // Popty) working for SSi staff.
+    const [dashboardRow, learnerRow] = await Promise.all([
+      authGetUser(user.email).catch(() => null),
+      supabaseClient.getClient()
+        .from('learners')
+        .select('id, user_id, display_name, platform_role, educational_role, dashboard_courses')
+        .eq('user_id', user.id)
+        .maybeSingle()
+        .then(({ data }) => data)
+        .catch(() => null),
+    ])
 
-    if (!lr) return null
-
-    const pr = lr.platform_role
-    const er = lr.educational_role
-    if (pr !== 'ssi_admin' && pr !== 'popty_user' && er !== 'god') return null
-
-    // Course access: admins/god get all, popty_user gets dashboard_courses
-    const isAdminUser = pr === 'ssi_admin' || er === 'god'
-    const dc = lr.dashboard_courses || []
-    const coursesAccess = isAdminUser ? '*' : (dc.includes('*') ? '*' : dc)
-
-    return {
-      name: lr.display_name,
-      email: user.email,
-      role: isAdminUser ? 'admin' : 'user',
-      courses: coursesAccess,
-      learner_id: lr.id,
-    }
+    return resolvePoptyIdentity({ email: user.email, dashboardRow, learnerRow })
   } catch (err) {
     logger.error('[Auth] Supabase JWT verification error:', err)
     return null
