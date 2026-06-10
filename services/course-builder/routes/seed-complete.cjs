@@ -19,7 +19,7 @@ const {
 const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
-  checkLegoConflict, checkPhraseZUT,
+  checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage,
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
@@ -476,6 +476,18 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
+      // Frame-coverage check (7th principle) — WARN-ONLY, never rejects.
+      // The metric has known false positives (lexical variety IS the axis for
+      // negators/nouns), so warnings are surfaced for adjudication, not blocked on.
+      let frameWarnings = [];
+      if (phrases && phrases.length > 0 && !skipBaskets) {
+        frameWarnings = checkBasketFrameCoverage(phrases, target);
+        if (frameWarnings.length > 0) {
+          console.log(`⚠ ${legoId}: frame-coverage warnings:`);
+          frameWarnings.forEach(w => console.log(`   [${w.code}] ${w.detail}`));
+        }
+      }
+
       const { error: legoError } = await ctx.supabase
         .from('course_legos')
         .upsert({
@@ -587,6 +599,10 @@ module.exports = function seedCompleteRoutes(ctx) {
         phrases: totalPhrases,
         buildup_phrases: buildupCount,
         practice_phrases: practiceCount,
+        ...(frameWarnings.length > 0 ? {
+          frame_warnings: frameWarnings,
+          frame_hint: 'Non-blocking. 7th principle: vary along the axis that carries the new distinction — see ralph-methodology.md.',
+        } : {}),
       });
 
     } catch (err) {

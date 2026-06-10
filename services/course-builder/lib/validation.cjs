@@ -660,6 +660,75 @@ async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber =
   return collisions;
 }
 
+// ─── Frame coverage (7th principle) — WARN-ONLY ────────────────────────
+// "Vary along the axis that carries the new distinction." A USE basket whose
+// phrases differ only by the filler of one slot (pronoun swaps, topic swaps)
+// spends production cycles where the learner gains no new pattern. BUILD may
+// repeat frames (chunk automatization); USE must buy new frames — USE phrases
+// are eternal spaced-repetition stock.
+// Signature = phrase with the LEGO slotted out (◇) and pronouns collapsed (Ⓟ),
+// so subject swaps count as ONE pattern. Non-blocking by design: the metric
+// has known false positives (e.g. a negator like 没 legitimately varies verbs
+// = "lexical" variety IS its axis), so a human/agent adjudicates warnings.
+// KNOWN LIMITATION: catches pronoun paradigms and literal repeats, but NOT
+// topic-swaps ([X]很有用 ×N — unique signatures, one frame). Those need the
+// language-aware frame-family analysis in tools/audit-frame-diversity.cjs,
+// run per-course as an audit, not per-submission here.
+const FRAME_PRONOUNS = ['我们', '你们', '他们', '她们', '大家', '我', '你', '他', '她', '它'];
+
+function phraseFrameSignature(target, legoTarget) {
+  let s = (target || '').replace(/[？。，！、?!,.\s]/g, '');
+  const lego = (legoTarget || '').replace(/[？。，！、?!,.\s]/g, '');
+  const i = s.indexOf(lego);
+  if (i === -1) return null;
+  s = s.slice(0, i) + '◇' + s.slice(i + lego.length);
+  for (const p of FRAME_PRONOUNS) s = s.split(p).join('Ⓟ');
+  return s;
+}
+
+function checkBasketFrameCoverage(phrases, legoTarget) {
+  const use = (phrases || []).filter(p => {
+    const r = p.role || p.phrase_role;
+    return !r || r === 'use';
+  });
+  if (use.length < 3) return [];
+
+  const sigCounts = new Map();
+  let nakedSwaps = 0;
+  for (const p of use) {
+    const sig = phraseFrameSignature(p.target, legoTarget);
+    if (sig == null) continue;
+    sigCounts.set(sig, (sigCounts.get(sig) || 0) + 1);
+    if (/^Ⓟ*◇Ⓟ*$/.test(sig)) nakedSwaps++;
+  }
+  const n = [...sigCounts.values()].reduce((a, b) => a + b, 0);
+  if (!n) return [];
+
+  const warnings = [];
+  for (const [sig, count] of sigCounts) {
+    if (count >= 3) {
+      warnings.push({
+        code: 'repeated_frame',
+        detail: `${count} USE phrases share one plug-in pattern "${sig}" — vary the frame (question/negation/time/embedding/connective), not the slot filler`,
+      });
+    }
+  }
+  if (nakedSwaps > 2) {
+    warnings.push({
+      code: 'naked_swaps',
+      detail: `${nakedSwaps} USE phrases are just [pronoun]+LEGO — subject variation is one pattern, worth at most 2 slots`,
+    });
+  }
+  const diversity = sigCounts.size / n;
+  if (n >= 4 && diversity < 0.6) {
+    warnings.push({
+      code: 'low_frame_diversity',
+      detail: `${sigCounts.size} distinct plug-in patterns across ${n} USE phrases (${diversity.toFixed(2)}) — each USE phrase should show a new way the LEGO combines with prior vocabulary`,
+    });
+  }
+  return warnings;
+}
+
 module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
@@ -670,6 +739,7 @@ module.exports = {
   checkLegoConflict,
   checkLegoOverlap,
   checkPhraseZUT,
+  checkBasketFrameCoverage,
   classifySeedPattern,
   formatDecompositionPatterns,
 };
