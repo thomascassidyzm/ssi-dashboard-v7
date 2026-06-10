@@ -252,19 +252,22 @@ function startSynthesisJob(deps, { courseCode, voiceId = null, role = null, dryR
             })
             const { added, entry: live } = segmentStore.upsertSegmentEntry(manifest, entry)
             if (added) {
-              await deps.storage.putObject(live.s3Key, fs.readFileSync(cut.filePath), 'audio/mpeg')
+              // Dry run is read-only: plan against the in-memory entry, no upload.
+              if (!dryRun) {
+                await deps.storage.putObject(live.s3Key, fs.readFileSync(cut.filePath), 'audio/mpeg')
+              }
               idx.set(`${live.textKey}|${live.cadence}`, live)
               segmentsExtracted++
             }
           }
           job.progress.success++
-          if (job.progress.current % 10 === 0) await segmentStore.saveManifest(deps.storage, manifest)
+          if (!dryRun && job.progress.current % 10 === 0) await segmentStore.saveManifest(deps.storage, manifest)
         } catch (err) {
           job.progress.failed++
           pushError(job, group.phraseText, err.message)
         }
       }
-      await segmentStore.saveManifest(deps.storage, manifest)
+      if (!dryRun) await segmentStore.saveManifest(deps.storage, manifest)
 
       // ---- PHASE: register whole-phrase natural takes --------------------
       // A recorded whole-phrase natural take ALWAYS beats splicing it.
