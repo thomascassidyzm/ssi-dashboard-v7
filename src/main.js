@@ -3,6 +3,12 @@ import { createPinia } from 'pinia'
 import './style.css'
 import App from './App.vue'
 import router from './router'
+import { installAuthFetch } from './services/authFetch'
+
+// Attach the dashboard session token to all API-bound fetch() calls —
+// course-scoped routes are auth-gated server-side. Must install before
+// any component fires its first request.
+installAuthFetch()
 
 const pinia = createPinia()
 const app = createApp(App)

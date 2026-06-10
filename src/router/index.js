@@ -541,7 +541,7 @@ router.beforeEach(async (to, from, next) => {
   // Public routes (login, auth verify) don't need auth
   if (to.meta.public) return next()
 
-  const { isAuthenticated, initAuth } = useAuth()
+  const { isAuthenticated, initAuth, canAccessCourse } = useAuth()
 
   // Initialize auth if not already done (first page load)
   await initAuth()
@@ -549,6 +549,15 @@ router.beforeEach(async (to, from, next) => {
   // OTP is the gate. If you have a session, you're in.
   if (!isAuthenticated.value) {
     return next({ name: 'Login', query: { redirect: to.fullPath } })
+  }
+
+  // Course scoping: a course-scoped route needs membership of THAT course
+  // (admin → all; others → '*' or list membership — canAccessCourse handles
+  // both). URL-hopping into an unassigned course bounces to the course list.
+  const courseCode = to.params.courseCode || to.params.code
+  if (courseCode && !canAccessCourse(courseCode)) {
+    console.warn(`[Router] No access to course ${courseCode} — redirecting to course list`)
+    return next({ name: 'CourseBrowser' })
   }
 
   next()
