@@ -30,6 +30,7 @@ const path = require('path')
 const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
 const { toBcp47 } = require('../voice-discovery-service.cjs')
@@ -793,6 +794,27 @@ app.delete('/cancel/:courseCode', (req, res) => {
 // HELPER: Link audio IDs to phrases/legos/seeds
 // =============================================================================
 async function linkAudioIds(courseCode) {
+  // PRECIOUS-AUDIO PREFERENCE: the SQL RPC fills NULL FKs with a bare LIMIT 1
+  // (no origin preference, no ORDER BY). Run a human-first JS pass beforehand
+  // so that when a text has both a human and a TTS clip, the human one wins
+  // the FK; the RPC then fills whatever is still NULL. Costs one head-count
+  // query when the course has no human audio (the common case).
+  try {
+    const { count: humanCount, error: humanCountErr } = await supabase
+      .from('course_audio')
+      .select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('origin', 'human')
+    if (!humanCountErr && humanCount > 0) {
+      const humanResult = await linkAudioIdsBatch(courseCode, { humanOnly: true })
+      if (humanResult.total > 0) {
+        logger.info(`linkAudioIds: human-first pass linked ${humanResult.total} FKs to human recordings for ${courseCode}`)
+      }
+    }
+  } catch (e) {
+    logger.warn(`linkAudioIds: human-first pass failed (${e.message}) — continuing with RPC`)
+  }
+
   // Try RPC first (single DB round-trip, handles normalization correctly)
   const { data, error } = await supabase.rpc('link_all_audio_ids', {
     p_course_code: courseCode
@@ -821,26 +843,36 @@ async function linkAudioIds(courseCode) {
  * JS fallback for linking audio IDs when the SQL RPC times out on large courses.
  * Loads the audio map, then batch-updates each table's NULL audio_id columns.
  * Uses text_normalized from course_audio (written by SQL normalize_text) for matching.
+ * When several rows share a key, pickPreferredAudioRow decides (human > newest >
+ * deterministic) — no more arbitrary last-row-wins.
+ * opts.humanOnly: link only origin='human' rows (the human-first pre-pass).
  */
-async function linkAudioIdsBatch(courseCode) {
+async function linkAudioIdsBatch(courseCode, opts = {}) {
+  const { humanOnly = false } = opts
   const result = { total: 0 }
   const PAGE_SIZE = 1000
   const BATCH = 200
 
-  // Load audio map: "text_normalized|language|role" → course_audio.id
-  const { data: audioRows, error: audioErr } = await supabase
+  // Load audio map: "text_normalized|language|role" → preferred course_audio row
+  let audioQuery = supabase
     .from('course_audio')
-    .select('id, text_normalized, language, role, s3_key')
+    .select('id, text_normalized, language, role, s3_key, origin, created_at')
     .eq('course_code', courseCode)
     .not('s3_key', 'like', 'pending/%')
     .limit(100000)
+  if (humanOnly) audioQuery = audioQuery.eq('origin', 'human')
+  const { data: audioRows, error: audioErr } = await audioQuery
   if (audioErr) throw new Error(`Failed to load course_audio: ${audioErr.message}`)
+
+  if (humanOnly && !(audioRows || []).length) return result
 
   const audioMap = new Map()
   for (const a of (audioRows || [])) {
-    if (a.text_normalized) audioMap.set(`${a.text_normalized}|${a.language}|${a.role}`, a.id)
+    if (!a.text_normalized) continue
+    const key = `${a.text_normalized}|${a.language}|${a.role}`
+    audioMap.set(key, pickPreferredAudioRow(audioMap.get(key), a))
   }
-  logger.info(`linkAudioIdsBatch: loaded ${audioMap.size} audio entries for ${courseCode}`)
+  logger.info(`linkAudioIdsBatch${humanOnly ? ' (human-only)' : ''}: loaded ${audioMap.size} audio entries for ${courseCode}`)
 
   // Helper: link one slot on one table
   async function linkSlot(table, idCol, textCol, audioCol, lang, role) {
@@ -864,13 +896,13 @@ async function linkAudioIdsBatch(courseCode) {
         const norm = normalizeForAudio(row[textCol])
         if (!norm) continue
         const key = `${norm}|${lang}|${role}`
-        let audioId = audioMap.get(key)
+        let audioRow = audioMap.get(key)
         // DB text_normalized may strip ?! while JS normalizeForAudio preserves them — try stripped form
-        if (!audioId) {
+        if (!audioRow) {
           const stripped = norm.replace(/[!?！？]+$/, '')
-          if (stripped !== norm) audioId = audioMap.get(`${stripped}|${lang}|${role}`)
+          if (stripped !== norm) audioRow = audioMap.get(`${stripped}|${lang}|${role}`)
         }
-        if (audioId) updates.push({ id: row[idCol], audioId })
+        if (audioRow) updates.push({ id: row[idCol], audioId: audioRow.id })
       }
 
       // Batch update
@@ -921,6 +953,10 @@ async function linkAudioIdsBatch(courseCode) {
     result.total += n
     if (n > 0) logger.info(`linkAudioIdsBatch: ${key} = ${n}`)
   }
+
+  // Presentation linking is lego_id-keyed (no human/TTS text collision to
+  // resolve) and runs in the main pass — skip it in the human-only pre-pass.
+  if (humanOnly) return result
 
   // Presentation audio
   const presResult = await linkPresentationAudio(courseCode)
@@ -4342,21 +4378,23 @@ async function linkComponentAudio(courseCode, knownLang, targetLang, components,
   // Using .in('text_normalized', batch) with long Unicode strings can exceed
   // PostgREST URL length limits, causing silent failures. Instead, fetch all
   // audio for the relevant roles and build the map locally.
-  const audioMap = new Map() // "normalized|lang|role" -> course_audio.id
+  const audioMap = new Map() // "normalized|lang|role" -> preferred course_audio row
 
   for (const role of ['known', 'target1', 'target2', 'presentation']) {
     let offset = 0
     while (true) {
       const { data, error } = await supabase
         .from('course_audio')
-        .select('id, text_normalized, language, role, s3_key')
+        .select('id, text_normalized, language, role, s3_key, origin, created_at')
         .eq('course_code', courseCode)
         .eq('role', role)
         .not('s3_key', 'like', 'pending/%')
         .range(offset, offset + 999)
       if (error || !data?.length) break
       for (const a of data) {
-        audioMap.set(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`, a.id)
+        // human > newest > deterministic — never arbitrary when keys collide
+        const key = `${normalizeText(a.text_normalized)}|${a.language}|${a.role}`
+        audioMap.set(key, pickPreferredAudioRow(audioMap.get(key), a))
       }
       if (data.length < 1000) break
       offset += 1000
@@ -4369,19 +4407,19 @@ async function linkComponentAudio(courseCode, knownLang, targetLang, components,
   for (const comp of components) {
     const updates = {}
 
-    const knownAudioId = audioMap.get(`${normalizeText(comp.known_text)}|${knownLang}|known`)
+    const knownAudioId = audioMap.get(`${normalizeText(comp.known_text)}|${knownLang}|known`)?.id
     if (knownAudioId && comp.known_audio_id !== knownAudioId) {
       updates.known_audio_id = knownAudioId
       result.known++
     }
 
-    const t1AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target1`)
+    const t1AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target1`)?.id
     if (t1AudioId && comp.target1_audio_id !== t1AudioId) {
       updates.target1_audio_id = t1AudioId
       result.target1++
     }
 
-    const t2AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target2`)
+    const t2AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target2`)?.id
     if (t2AudioId && comp.target2_audio_id !== t2AudioId) {
       updates.target2_audio_id = t2AudioId
       result.target2++
@@ -4389,7 +4427,7 @@ async function linkComponentAudio(courseCode, knownLang, targetLang, components,
 
     const presText = compPresTexts.get(comp.id)
     if (presText) {
-      const presAudioId = audioMap.get(`${normalizeText(presText)}|${knownLang}|presentation`)
+      const presAudioId = audioMap.get(`${normalizeText(presText)}|${knownLang}|presentation`)?.id
       if (presAudioId && comp.presentation_audio_id !== presAudioId) {
         updates.presentation_audio_id = presAudioId
         result.presentation++
