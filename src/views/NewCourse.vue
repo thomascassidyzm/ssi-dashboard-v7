@@ -74,7 +74,7 @@
           <div class="space-y-6">
             <!-- Language Selection -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <!-- Known Language (Source) -->
+              <!-- Known Language -->
               <div>
                 <label class="block text-sm font-medium text-slate-300 mb-2">
                   Known Language (Learning FROM) <span class="text-red-400">*</span>

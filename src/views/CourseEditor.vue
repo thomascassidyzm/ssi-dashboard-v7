@@ -796,7 +796,7 @@
           <!-- Read-only Translation Display -->
           <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 space-y-3">
             <div>
-              <div class="text-xs text-slate-400 mb-1">Known (Source)</div>
+              <div class="text-xs text-slate-400 mb-1">Known</div>
               <div class="text-slate-200 font-mono">{{ editModal.translation?.source }}</div>
             </div>
             <div>
@@ -1085,7 +1085,7 @@ const savingIntro = ref(false) // Saving state
 const audioRoles = [
   { id: 'target1', label: 'Target 1', icon: '🗣️', description: 'Primary target language (slow)' },
   { id: 'target2', label: 'Target 2', icon: '👥', description: 'Secondary target language (slow)' },
-  { id: 'source', label: 'Source', icon: '🔊', description: 'Known language (natural)' },
+  { id: 'source', label: 'Known', icon: '🔊', description: 'Known language (natural)' },
   { id: 'presentation', label: 'Presentation', icon: '🎤', description: 'Introductions & explanations' }
 ]
 const selectedAudioRole = ref(null)
