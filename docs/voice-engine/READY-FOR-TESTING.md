@@ -76,18 +76,17 @@ Small course, two browser profiles (leader + a second email as recorder):
 
 ## Needs your decision (deliberately NOT done — DB writes / deploy ritual)
 
-1. **Welsh backfill — North AND South** (Tom 2026-06-10: N and S are both wholly human-voiced,
-   the only courses like this): 39,391 human Welsh rows still `origin='tts'` with
-   `voice_id='legacy_import'` — 19,992 in `cym_s_for_eng`, 19,080 in `cym_n_for_eng`, 319 reused
-   in `cym_anthem_for_jpn`. Verified (read-only): `legacy_import` exists in NO other course, and
-   no legacy_import row is already `origin='human'`, so the relabel and its revert are exact:
-   ```sql
-   UPDATE course_audio SET origin='human'
-   WHERE voice_id='legacy_import'
-     AND course_code IN ('cym_n_for_eng','cym_s_for_eng','cym_anthem_for_jpn');
-   -- revert: same WHERE, SET origin='tts'
-   ```
-   Until this runs, every new guard is blind to the entire Welsh corpus.
+1. **Welsh relabel — DONE 2026-06-10 (Tom approved, run via psql).** 39,351 of 39,391
+   `voice_id='legacy_import'` rows now `origin='human'` (19,971 `cym_s_for_eng`, 19,061
+   `cym_n_for_eng`, 319 `cym_anthem_for_jpn`) — the origin guard + human-first linking now cover
+   the Welsh corpus. Discovery during the run: `trg_course_audio_normalize` recomputes
+   `text_normalized` on ANY update, and 3,773 rows carried a stale normalization vintage; in 40
+   cases an apostrophe-variant duplicate pair would have collapsed onto one unique key. The
+   first attempt aborted cleanly on that; the final run excluded exactly those **40 stale-norm
+   duplicate siblings** (19 N + 21 S, still `origin='tts'`, each shadowed by a now-protected
+   twin). FOLLOW-UP (small, with Tom): dedup the 40 pairs — check which member the FKs point
+   at, repoint if needed, retire the sibling. Revert of the relabel: `SET origin='tts' WHERE
+   voice_id='legacy_import' AND origin='human'`.
 2. **Deploy coupling**: once merged+restarted, tabs on the old bundle 401 on course routes until
    hard-refresh; an autocue session spanning the restart loses its queued uploads. Coordinate
    with Aran.
