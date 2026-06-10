@@ -431,10 +431,28 @@ const stats = ref({
 const filteredPhrases = ref([])
 const directRecordItems = ref([])
 
-// Coverage stats (will be computed from actual recordings later)
+// Coverage stats — real numbers from the voice engine's honest coverage
+// endpoint (recorded takes / spliced per human slot), not estimates.
 const totalRecordings = computed(() => stats.value.phrasesToRecord + stats.value.directRecord)
-const recordedCount = ref(0) // TODO: fetch from audio inventory
+const recordedCount = ref(0)
 const splicedCount = ref(0)
+
+async function fetchHonestCoverage() {
+  try {
+    const response = await fetch(`${API_BASE}/api/production/${courseCode.value}/voice-engine/coverage`)
+    if (!response.ok) return // engine not mounted / no access — leave zeros
+    const c = await response.json()
+    const slots = Array.isArray(c.slots) ? c.slots : []
+    const targets = slots.filter(s => s.role === 'target1' || s.role === 'target2')
+    const pool = targets.some(s => s.isHuman) ? targets.filter(s => s.isHuman) : targets
+    recordedCount.value = pool.reduce((n, s) => n + (s.recordedTakes ?? 0), 0)
+    splicedCount.value = pool.reduce((n, s) => n + (s.spliced ?? 0), 0)
+    // The course's REAL phrase total (replaces the totalLegos × 10 estimate).
+    if (typeof c.counts?.phrases === 'number' && c.counts.phrases > 0) {
+      stats.value.totalPhrases = c.counts.phrases
+    }
+  } catch { /* coverage is additive — the planner view works without it */ }
+}
 const pendingCount = computed(() => totalRecordings.value - recordedCount.value)
 const recordedPercent = computed(() => {
   const total = recordedCount.value + splicedCount.value + pendingCount.value
@@ -626,7 +644,7 @@ function exportPDF() {
 
 // Load data on mount
 onMounted(() => {
-  runAlgorithm()
+  runAlgorithm().then(fetchHonestCoverage)
   fetchDemoAudio()
 })
 </script>

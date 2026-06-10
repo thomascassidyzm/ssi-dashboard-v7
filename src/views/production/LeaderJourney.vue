@@ -293,6 +293,7 @@ const steps = computed(() => {
       : 'No human voices assigned yet',
     links: [
       { label: 'Open the recording room', to: recordRoomTo.value, primary: true },
+      { label: 'Manage your team & voices', to: `/production/${code}/team` },
       { label: 'See the reading plan', to: `/production/${code}/recording-optimizer` }
     ]
   }
