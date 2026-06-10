@@ -210,11 +210,11 @@
               <span class="stage-number" :class="stageNumberClass('translate')">1</span>
               <div>
                 <div class="text-sm font-medium text-slate-200">Translate</div>
-                <div class="text-xs text-slate-500">668 seed translations</div>
+                <div class="text-xs text-slate-500">{{ translateTotal }} seed translations</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/668</span>
+              <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/{{ translateTotal }}</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
               <button
                 v-if="stageComplete('translate')"
@@ -804,8 +804,12 @@ const seedGridUnderThreshold = computed(() => seedGrid.value.filter(s => s.statu
 
 // --- Pipeline computeds ---
 
+// Denominator for the Translate stage — the course's own seed count,
+// falling back to the selected target size (never a hard-coded canon size).
+const translateTotal = computed(() => progress.value.totalSeeds || seedCount.value)
+
 const translatePercent = computed(() => {
-  const total = progress.value.totalSeeds || 668
+  const total = translateTotal.value || 1
   return Math.round(((progress.value.seedsTranslated || 0) / total) * 100)
 })
 
@@ -998,7 +1002,7 @@ const finalPassSummary = computed(() => {
 function stageComplete(stage) {
   // Data-driven: derive status from actual data, not build_jobs flags
   switch (stage) {
-    case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
+    case 'translate': return translateTotal.value > 0 && (progress.value.seedsTranslated || 0) >= translateTotal.value
     case 'build-team': return (progress.value.currentSeed || 0) >= seedCount.value
     case 'final-pass': return seedGridFinalized.value > 0 && seedGridDrafted.value === 0 && seedGridFlagged.value === 0 && seedGridUnderThreshold.value === 0
     case 'gender': return (progress.value.genderExpansions || 0) > 0

@@ -250,7 +250,7 @@ const pricingTiers = [
   { value: 'community', label: 'Community' }
 ]
 
-const localStats = ref({ completeSeeds: 0, totalSeeds: 668, legos: 0, phrases: 0 })
+const localStats = ref({ completeSeeds: 0, totalSeeds: 0, legos: 0, phrases: 0 })
 const qaStats = ref({ flags: 0, checked: 0 })
 const isLoadingStats = ref(true)  // Start true, set false when loaded
 const audioStatsLoaded = ref(false)  // Track if audio stats have been fetched
@@ -260,7 +260,7 @@ const stats = computed(() => {
   const phrases = localStats.value.phrases || 0
   return {
     completeSeeds: localStats.value.completeSeeds || 0,
-    totalSeeds: localStats.value.totalSeeds || 668,
+    totalSeeds: localStats.value.totalSeeds || 0,
     legos,
     phrases,
     ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0'
@@ -299,7 +299,7 @@ async function loadStats() {
       const data = await getCourseProgress(props.courseCode)
       localStats.value = {
         completeSeeds: data.completedSeeds || 0,
-        totalSeeds: data.seeds || 668,
+        totalSeeds: data.seeds || 0,
         legos: data.legos || 0,
         phrases: data.phrases || 0
       }
@@ -312,7 +312,7 @@ async function loadStats() {
         const data = await res.json()
         localStats.value = {
           completeSeeds: data.seeds_with_legos || data.completed_seeds || 0,
-          totalSeeds: data.total_seeds || 668,
+          totalSeeds: data.total_seeds || 0,
           legos: data.legos || 0,
           phrases: data.phrases || 0
         }
