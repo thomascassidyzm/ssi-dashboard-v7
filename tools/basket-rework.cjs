@@ -10,6 +10,8 @@
  *     "edits":   [{ "id": "...U01", "known_text": "...", "target_text": "...", "target_text_roman": "..." }],
  *     "adds":    [{ "phrase_role": "use", "known_text": "...", "target_text": "...", "target_text_roman": "..." }],
  *     "deletes": ["...U03"],
+ *     "lego_edits": [{ "known_text": "..." }],   // re-gloss the LEGO itself (target unchanged);
+ *                                                 // nulls known + presentation audio (intro speaks the known)
  *     "notes": "why"
  *   }]
  * }
@@ -93,9 +95,12 @@ async function vocabUpTo(course, seed, legoIndex) {
       const candidates = [...(b.edits || []), ...(b.adds || [])];
 
       console.log(`\n=== S${b.seed}L${b.lego_index} ${b.lego_target} ===`);
-      // resulting USE basket = surviving rows + candidates
+      // resulting USE basket = surviving rows + USE-role candidates only
+      // (BUILD-row gloss edits stay out of the dup pool — BUILD may repeat targets)
+      const roleById = new Map(existing.map((p) => [p.id, p.phrase_role]));
       const survivors = existing.filter((p) => p.phrase_role === 'use' && !replacedIds.has(p.id));
-      const finalTargets = [...survivors.map((p) => strip(p.target_text)), ...candidates.map((c) => strip(c.target_text))];
+      const useCandidates = candidates.filter((c) => (c.id ? roleById.get(c.id) === 'use' : (c.phrase_role || 'use') === 'use'));
+      const finalTargets = [...survivors.map((p) => strip(p.target_text)), ...useCandidates.map((c) => strip(c.target_text))];
       // declared convergence pairs: identical target, distinct known intentions (deliberate teaching)
       const allowed = new Map((b.convergence_pairs || []).map((cp) => [strip(cp.target), cp.count || 2]));
       const counts = new Map();
@@ -115,7 +120,13 @@ async function vocabUpTo(course, seed, legoIndex) {
       if (dupTargets.length) { console.log(`  ✗ DUP targets in final basket: ${[...new Set(dupTargets)].join(' / ')}`); failures++; }
 
       // ZUT vs whole course, excluding rows this plan replaces (any basket)
-      const zut = await checkPhraseZUT(sb, course, candidates.map((c) => ({ known: c.known_text, target: c.target_text })), null);
+      // lego_edits join the candidate list: their new known must map uniquely to the lego target
+      const zutCandidates = [
+        ...candidates.map((c) => ({ known: c.known_text, target: c.target_text })),
+        ...(b.lego_edits || []).map((le) => ({ known: le.known_text, target: b.lego_target })),
+      ];
+      for (const le of b.lego_edits || []) console.log(`  ◆ LEGO re-gloss: ${b.lego_target} ⟸ "${le.known_text}"`);
+      const zut = await checkPhraseZUT(sb, course, zutCandidates, null);
       for (const z of zut) {
         if (globalReplaced.has(`${z.known.toLowerCase().trim()}|${strip(z.existing_target)}`)) continue;
         console.log(`  ✗ ZUT: "${z.known}" → ${z.new_target} BUT S${z.existing_seed} has → ${z.existing_target}`);
@@ -157,6 +168,20 @@ async function vocabUpTo(course, seed, legoIndex) {
       if (ue) throw new Error(`update ${e.id}: ${ue.message}`);
       snapshot.actions.push({ op: 'update', id: e.id });
       console.log(`✎ ${e.id}  ${row.target_text} → ${e.target_text}`);
+    }
+    for (const le of b.lego_edits || []) {
+      const { data: legoRow, error: lerr } = await sb.from('course_legos').select('*')
+        .eq('course_code', course).eq('seed_number', b.seed).eq('lego_index', b.lego_index).single();
+      if (lerr || !legoRow) throw new Error(`lego not found S${b.seed}L${b.lego_index}`);
+      snapshot.before.push({ _table: 'course_legos', ...legoRow });
+      const { error: lue } = await sb.from('course_legos').update({
+        known_text: le.known_text,
+        known_audio_id: null, presentation_audio_id: null,
+        version: (legoRow.version || 0) + 1,
+      }).eq('id', legoRow.id);
+      if (lue) throw new Error(`lego update S${b.seed}L${b.lego_index}: ${lue.message}`);
+      snapshot.actions.push({ op: 'lego_update', id: legoRow.id });
+      console.log(`◆ S${b.seed}L${b.lego_index} LEGO  "${legoRow.known_text}" → "${le.known_text}"`);
     }
     for (const id of b.deletes || []) {
       const row = byId.get(id);
