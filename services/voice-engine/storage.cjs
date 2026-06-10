@@ -79,7 +79,26 @@ function createS3Storage(opts = {}) {
   const { S3Client, GetObjectCommand, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
   const bucket = opts.bucket || process.env.S3_BUCKET || 'ssi-audio-stage'
   const region = opts.region || process.env.S3_REGION || 'eu-west-1'
-  const client = opts.client || new S3Client({ region })
+  // Bounded keep-alive agent + retries — the phase8 idiom (a bare S3Client
+  // rides https.globalAgent with maxSockets:Infinity; that unbounded fan-out
+  // was the real cause of the 2026-06-08 bulk-pod ECONNRESET cascade). The
+  // job is sequential today, but the client shouldn't rely on that.
+  const https = require('https')
+  const { NodeHttpHandler } = require('@smithy/node-http-handler')
+  const client = opts.client || new S3Client({
+    region,
+    maxAttempts: Number(process.env.S3_MAX_ATTEMPTS) > 0 ? Math.floor(Number(process.env.S3_MAX_ATTEMPTS)) : 6,
+    requestHandler: new NodeHttpHandler({
+      httpsAgent: new https.Agent({
+        keepAlive: true,
+        keepAliveMsecs: 30000,
+        maxSockets: Number(process.env.S3_MAX_SOCKETS) > 0 ? Math.floor(Number(process.env.S3_MAX_SOCKETS)) : 16,
+        maxFreeSockets: 8,
+      }),
+      connectionTimeout: 6000,
+      requestTimeout: 60000,
+    }),
+  })
 
   async function streamToBuffer(stream) {
     const chunks = []

@@ -230,6 +230,22 @@ module.exports = function createTeamRouter({
         return res.json({ success: true, email, slot: null, vacated: currentSlot })
       }
 
+      // Occupied-slot guard: assigning over a slot held by a DIFFERENT
+      // person would silently displace them (their recordings keep their
+      // voice_id, but they'd lose the slot without anyone deciding that).
+      // The leader unassigns explicitly first.
+      const targetSlot = voiceConfig?.voices?.[slot]
+      if (targetSlot?.provider === 'human' && targetSlot.voiceId) {
+        const heldByThisPerson = targetSlot.assignedEmail
+          ? targetSlot.assignedEmail === email
+          : targetSlot.voiceId === member.voice_id
+        if (!heldByThisPerson) {
+          return res.status(409).json({
+            error: `That voice slot is already held by ${targetSlot.assignedEmail || 'another team member'} — unassign them first`,
+          })
+        }
+      }
+
       // ── Assign: mint (or reuse) the voice id, then surgical merge ──
       // Reuse the member's existing id if it's already a mint for this person+course
       // (idempotent re-assign / slot move); otherwise mint fresh with collision suffixing.
@@ -289,8 +305,8 @@ module.exports = function createTeamRouter({
       const db = getDb()
       const member = await fetchMember(db, email)
       if (!member) return res.status(404).json({ error: `No dashboard user with email ${email}` })
-      if (member.courses === '*') {
-        return res.status(400).json({ error: `${email} has access to all courses (admin-managed) and cannot be removed here` })
+      if (member.courses === '*' || member.role === 'admin') {
+        return res.status(400).json({ error: `${email} is admin-managed and cannot be removed here` })
       }
       if (!Array.isArray(member.courses) || !member.courses.includes(courseCode)) {
         return res.status(400).json({ error: `${email} is not on this course's team` })
