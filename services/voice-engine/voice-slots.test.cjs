@@ -14,6 +14,7 @@ const {
   assignVoiceToSlot,
   vacateSlot,
   findSlotForVoice,
+  findSlotForMember,
   slotSummary,
   holdsCourse,
 } = require('./voice-slots.cjs')
@@ -212,9 +213,33 @@ describe('findSlotForVoice / slotSummary', () => {
     const config = assignVoiceToSlot(liveShapedConfig(), 'target1', 'human_maria_zho')
     const summary = slotSummary(config)
     expect(summary).toHaveLength(2)
-    expect(summary[0]).toEqual({ slot: 'target1', provider: 'human', voiceId: 'human_maria_zho', isHuman: true })
+    expect(summary[0]).toEqual({ slot: 'target1', provider: 'human', voiceId: 'human_maria_zho', isHuman: true, assignedEmail: null })
     expect(summary[1].isHuman).toBe(false)
     expect(slotSummary(null).every(s => s.voiceId === null)).toBe(true)
+  })
+})
+
+// assignedEmail is the per-course "who holds this slot" record — it must
+// survive the same person being re-minted on a second course (which
+// overwrites the single dashboard_users.voice_id column).
+describe('assignedEmail on the slot', () => {
+  it('assign stores it; vacate strips it; round-trip stays exact', () => {
+    const original = liveShapedConfig()
+    const assigned = assignVoiceToSlot(original, 'target1', 'human_maria_zho', 'maria@a.com')
+    expect(assigned.voices.target1.assignedEmail).toBe('maria@a.com')
+    expect(slotSummary(assigned)[0].assignedEmail).toBe('maria@a.com')
+    expect(vacateSlot(assigned, 'target1')).toEqual(original)
+  })
+
+  it('findSlotForMember matches by email even after the voice_id was re-minted elsewhere', () => {
+    const config = assignVoiceToSlot(liveShapedConfig(), 'target1', 'human_maria_zho', 'maria@a.com')
+    // Maria later got assigned on mkd_for_fra → dashboard_users.voice_id is now human_maria_mkd.
+    expect(findSlotForMember(config, { email: 'maria@a.com', voiceId: 'human_maria_mkd' })).toBe('target1')
+    // Voice-id fallback still works for configs written before assignedEmail existed.
+    const legacy = assignVoiceToSlot(liveShapedConfig(), 'target2', 'human_petar_zho')
+    expect(findSlotForMember(legacy, { email: 'petar@a.com', voiceId: 'human_petar_zho' })).toBe('target2')
+    // Someone else's slot is never claimed.
+    expect(findSlotForMember(config, { email: 'other@a.com', voiceId: 'human_other_xxx' })).toBeNull()
   })
 })
 

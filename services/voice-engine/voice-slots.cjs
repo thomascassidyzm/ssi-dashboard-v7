@@ -92,17 +92,23 @@ function clone(obj) {
  * - returns a new object; the input is never mutated
  * - every key outside `voices[slot]` is preserved exactly
  * - inside the slot, existing keys (settings, language, name, ...) are preserved;
- *   only provider/voiceId change
+ *   only provider/voiceId (+ assignedEmail) change
  * - the displaced non-human voice is stashed under `previousVoice` so an
  *   unassign can restore it (if the slot already held a human, its own
  *   previousVoice is carried forward — chains back to the original TTS voice)
+ * - `assignedEmail` rides on the slot because dashboard_users.voice_id is a
+ *   SINGLE column mirroring only the latest mint: a recorder assigned on two
+ *   courses with different target langs no longer matches the first course's
+ *   slot by voice_id alone. The per-course voice_config is the canonical
+ *   "who holds this slot" record.
  *
  * @param {object|null} voiceConfig - raw courses.voice_config (may be null)
  * @param {string} slot - 'target1' | 'target2'
  * @param {string} voiceId - minted human voice id
+ * @param {string|null} [assignedEmail] - the person holding the slot
  * @returns {object} new voice_config
  */
-function assignVoiceToSlot(voiceConfig, slot, voiceId) {
+function assignVoiceToSlot(voiceConfig, slot, voiceId, assignedEmail = null) {
   if (!ASSIGNABLE_SLOTS.includes(slot)) {
     throw new Error(`Slot must be one of ${ASSIGNABLE_SLOTS.join(', ')} (got: ${slot})`)
   }
@@ -113,6 +119,8 @@ function assignVoiceToSlot(voiceConfig, slot, voiceId) {
 
   const existing = config.voices[slot] || {}
   const entry = { ...existing, provider: 'human', voiceId }
+  if (assignedEmail) entry.assignedEmail = assignedEmail
+  else delete entry.assignedEmail
 
   if (existing.voiceId && existing.provider !== 'human') {
     // Displacing a TTS voice — remember it so unassign can restore.
@@ -141,7 +149,7 @@ function vacateSlot(voiceConfig, slot) {
   const existing = config.voices && config.voices[slot]
   if (!existing || existing.provider !== 'human') return config
 
-  const { previousVoice, ...rest } = existing
+  const { previousVoice, assignedEmail, ...rest } = existing
   if (previousVoice && previousVoice.voiceId) {
     config.voices[slot] = { ...rest, provider: previousVoice.provider || 'azure', voiceId: previousVoice.voiceId }
   } else {
@@ -164,8 +172,33 @@ function findSlotForVoice(voiceConfig, voiceId) {
 }
 
 /**
+ * Which assignable slot (if any) a PERSON holds on this course — matched by
+ * the slot's assignedEmail first (per-course canonical), falling back to
+ * voice_id for configs written before assignedEmail existed. This is the
+ * lookup that survives the same person being assigned on a second course
+ * (which re-mints dashboard_users.voice_id).
+ * @returns {string|null}
+ */
+function findSlotForMember(voiceConfig, { email = null, voiceId = null } = {}) {
+  if (!voiceConfig || !voiceConfig.voices) return null
+  for (const slot of ASSIGNABLE_SLOTS) {
+    const v = voiceConfig.voices[slot]
+    if (!v || v.provider !== 'human') continue
+    if (v.assignedEmail) {
+      // assignedEmail is canonical — a stale voice_id never claims a slot
+      // that has been reassigned to someone else.
+      if (email && v.assignedEmail === email) return slot
+      continue
+    }
+    if (voiceId && v.voiceId === voiceId) return slot
+  }
+  return null
+}
+
+/**
  * Summary of the two target slots for the roster UI.
- * @returns {{ slot: string, provider: string|null, voiceId: string|null, isHuman: boolean }[]}
+ * @returns {{ slot: string, provider: string|null, voiceId: string|null,
+ *             isHuman: boolean, assignedEmail: string|null }[]}
  */
 function slotSummary(voiceConfig) {
   return ASSIGNABLE_SLOTS.map(slot => {
@@ -175,6 +208,7 @@ function slotSummary(voiceConfig) {
       provider: v.provider || null,
       voiceId: v.voiceId || null,
       isHuman: v.provider === 'human' && !!v.voiceId,
+      assignedEmail: v.assignedEmail || null,
     }
   })
 }
@@ -197,6 +231,7 @@ module.exports = {
   assignVoiceToSlot,
   vacateSlot,
   findSlotForVoice,
+  findSlotForMember,
   slotSummary,
   holdsCourse,
 }

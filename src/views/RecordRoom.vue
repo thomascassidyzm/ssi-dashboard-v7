@@ -118,37 +118,54 @@ const scriptMinutes = ref(null)
 const scriptError = ref(null)
 
 const userName = computed(() => learner.value?.name || learner.value?.email || '')
-const myVoiceId = computed(() => learner.value?.voice_id || null)
+
+// /api/production/:c/info returns camelCase (targetLang/knownLang); older
+// payload shapes used snake_case — accept both.
+const targetLangName = computed(() => courseInfo.value?.targetLang || courseInfo.value?.target_lang || null)
+const knownLangName = computed(() => courseInfo.value?.knownLang || courseInfo.value?.known_lang || null)
 
 const courseDisplayName = computed(() => {
   if (!props.courseCode) return ''
   const name = getCourseName(props.courseCode)
   if (name && name !== props.courseCode) return name
   const c = courseInfo.value
-  if (c?.target_lang && c?.known_lang) {
-    return `${c.target_lang} for ${c.known_lang} speakers`
+  if (c?.displayName) return c.displayName
+  if (targetLangName.value && knownLangName.value) {
+    return `${targetLangName.value} for ${knownLangName.value} speakers`
   }
   return props.courseCode
 })
 
 // Which voice slot (target1 / target2 / known / presentation) is mine?
-// Canonical mapping lives in courses.voice_config: voices.<slot>.voiceId
-// must match my dashboard_users.voice_id.
+// Canonical mapping lives in courses.voice_config: voices.<slot>.assignedEmail
+// is THIS course's record of who holds the slot. dashboard_users.voice_id is
+// only a mirror of the person's LATEST mint (a recorder assigned on a second
+// course gets re-minted there), so it is the fallback, not the primary match.
 const assignedSlot = computed(() => {
   const voices = voiceConfig.value?.voices
-  if (!voices || !myVoiceId.value) return null
+  if (!voices) return null
+  const myEmail = learner.value?.email || null
   for (const slot of ['target1', 'target2', 'known', 'presentation']) {
-    if (voices[slot]?.voiceId && voices[slot].voiceId === myVoiceId.value) {
-      return slot
-    }
+    const v = voices[slot]
+    if (!v?.voiceId) continue
+    if (myEmail && v.assignedEmail && v.assignedEmail === myEmail) return slot
+    if (!v.assignedEmail && learner.value?.voice_id && v.voiceId === learner.value.voice_id) return slot
   }
   return null
 })
 
+// The voice id everything I record is saved under: the SLOT's voiceId for
+// THIS course (per-course canonical), not my latest cross-course mint.
+const myVoiceId = computed(() => {
+  const slot = assignedSlot.value
+  const slotVoiceId = slot ? voiceConfig.value?.voices?.[slot]?.voiceId : null
+  return slotVoiceId || learner.value?.voice_id || null
+})
+
 // Jargon-free names for the voice slots
 const slotDisplayName = computed(() => {
-  const target = courseInfo.value?.target_lang || 'Course'
-  const known = courseInfo.value?.known_lang || 'Guide'
+  const target = targetLangName.value || 'Course'
+  const known = knownLangName.value || 'Guide'
   switch (assignedSlot.value) {
     case 'target1': return `${target} — Voice 1`
     case 'target2': return `${target} — Voice 2`

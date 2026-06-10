@@ -48,14 +48,15 @@
       <h2>Voices</h2>
       <p class="hint">
         Every course needs two recorded voices in the language being learned.
-        Each voice is one person reading the whole recording script (about 35 minutes).
+        Each voice is one person reading the whole recording script — roughly
+        half an hour of reading (their Record Room shows the exact estimate).
       </p>
       <div class="slots">
         <div v-for="(s, i) in slots" :key="s.slot" class="slot-card" :class="{ filled: s.isHuman }">
           <div class="slot-title">Voice {{ i + 1 }}</div>
           <template v-if="s.isHuman">
             <div class="slot-person">{{ memberName(s.assigned_email) }}</div>
-            <div class="slot-voice-id">{{ s.voiceId }}</div>
+            <div class="slot-voice-id">{{ s.assigned_email || 'Assigned' }}</div>
             <button class="btn small" :disabled="saving" @click="unassign(s.assigned_email)">Unassign</button>
           </template>
           <template v-else>

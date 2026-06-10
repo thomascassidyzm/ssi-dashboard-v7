@@ -35,7 +35,7 @@ const {
   mintVoiceId,
   assignVoiceToSlot,
   vacateSlot,
-  findSlotForVoice,
+  findSlotForMember,
   slotSummary,
   holdsCourse,
 } = require('./voice-slots.cjs')
@@ -149,7 +149,7 @@ module.exports = function createTeamRouter({
   function memberSlotMap(members, voiceConfig) {
     const map = {}
     for (const m of members) {
-      const slot = findSlotForVoice(voiceConfig, m.voice_id)
+      const slot = findSlotForMember(voiceConfig, { email: m.email, voiceId: m.voice_id })
       if (slot) map[m.email] = slot
     }
     return map
@@ -169,8 +169,11 @@ module.exports = function createTeamRouter({
       const slotsByEmail = memberSlotMap(members, voiceConfig)
       const slots = slotSummary(voiceConfig).map(s => ({
         ...s,
+        // assignedEmail on the slot is canonical (survives the same person
+        // being re-minted on another course); voice_id match is the fallback
+        // for configs written before assignedEmail existed.
         assigned_email: s.isHuman
-          ? (members.find(m => m.voice_id === s.voiceId)?.email || null)
+          ? (s.assignedEmail || members.find(m => m.voice_id === s.voiceId)?.email || null)
           : null,
       }))
 
@@ -215,9 +218,9 @@ module.exports = function createTeamRouter({
       const { found, voiceConfig } = await fetchVoiceConfig(db, courseCode)
       if (!found) return res.status(404).json({ error: `Course ${courseCode} not found` })
 
-      // ── Unassign: vacate whichever slot this person's voice holds ──
+      // ── Unassign: vacate whichever slot this person holds ──
       if (unassign) {
-        const currentSlot = findSlotForVoice(voiceConfig, member.voice_id)
+        const currentSlot = findSlotForMember(voiceConfig, { email, voiceId: member.voice_id })
         if (!currentSlot) {
           return res.json({ success: true, email, slot: null, message: `${email} holds no voice slot on this course` })
         }
@@ -243,12 +246,12 @@ module.exports = function createTeamRouter({
 
       // If this person already holds the OTHER slot, vacate it (a move, not a copy).
       let next = voiceConfig
-      const currentSlot = findSlotForVoice(voiceConfig, member.voice_id)
+      const currentSlot = findSlotForMember(voiceConfig, { email, voiceId: member.voice_id })
       if (currentSlot && currentSlot !== slot) {
         next = vacateSlot(next, currentSlot)
       }
 
-      next = assignVoiceToSlot(next, slot, voiceId)
+      next = assignVoiceToSlot(next, slot, voiceId, email)
 
       // Persist: voice_config is canonical for the course; dashboard_users.voice_id
       // mirrors the latest mint for the person.
@@ -297,7 +300,7 @@ module.exports = function createTeamRouter({
       const { found, voiceConfig } = await fetchVoiceConfig(db, courseCode)
       let vacated = null
       if (found) {
-        const currentSlot = findSlotForVoice(voiceConfig, member.voice_id)
+        const currentSlot = findSlotForMember(voiceConfig, { email, voiceId: member.voice_id })
         if (currentSlot) {
           await saveVoiceConfig(db, courseCode, vacateSlot(voiceConfig, currentSlot))
           vacated = currentSlot
