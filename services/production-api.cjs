@@ -5078,6 +5078,12 @@ app.get('/api/production/voices/:voiceId', async (req, res) => {
 // Body: { voiceId, humanName, humanEmail, languages, metadata }
 app.post('/api/production/voices/register-human', async (req, res) => {
   try {
+    // No :courseCode here, so the course-scope param gate never fires — gate
+    // explicitly: the human-voice registry anchors recording provenance and
+    // must not be writable anonymously.
+    const authedUser = await requireDashboardUser(req, res)
+    if (!authedUser) return
+
     const { voiceId, humanName, humanEmail, languages, metadata } = req.body
 
     // Validation
