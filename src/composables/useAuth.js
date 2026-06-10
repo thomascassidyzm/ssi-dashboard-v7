@@ -21,6 +21,9 @@ const initialized = ref(false)
 // Computed
 const isAuthenticated = computed(() => !!dashboardUser.value)
 const isAdmin = computed(() => dashboardUser.value?.role === 'admin')
+// 'recorder' = recording-only helper tier (still in the dashboard_users schema CHECK).
+// Recorders live in the Record Room shell, never the admin console.
+const isRecorder = computed(() => dashboardUser.value?.role === 'recorder')
 const hasDashboardAccess = computed(() => !!dashboardUser.value)
 const hasPassword = computed(() => !!user.value?.user_metadata?.has_password)
 
@@ -58,7 +61,7 @@ async function fetchDashboardUser(email) {
     if (supabase) {
       const { data, error: fetchError } = await supabase
         .from('dashboard_users')
-        .select('email, name, role, courses')
+        .select('email, name, role, courses, voice_id')
         .eq('email', email)
         .single()
 
@@ -328,6 +331,7 @@ export function useAuth() {
     // Computed
     isAuthenticated,
     isAdmin,
+    isRecorder,
     hasDashboardAccess,
     hasPassword,
     accessibleCourses,
