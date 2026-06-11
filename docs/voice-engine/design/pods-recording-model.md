@@ -69,6 +69,14 @@ shape** and **5-slot cast sheets** (markdown packs landing in
   the DB is the machine interface.
 - 5 slots confirmed as the design centre.
 
+**SOFTENED 2026-06-11 (people-first casting, Tom's decision):** the
+consume-verbatim rule above yields to the leader's declared PEOPLE. When a
+leader lists who can actually record (the `/cast/propose` flow), the solver
+runs over exactly those people — the number of actual voice actors drives the
+colouring — even when `listening_pods.speakers` carries generation-side slot
+colouring. Generation colouring is demoted to a default suggestion for the
+5-person case; it never blocks or overrides a people-first solve.
+
 ## Welsh run-steps (after the tool lands — with Tom/Aran, not auto-run)
 1. Generate cym pod scripts from canon (existing pod-dialogue-generator; Welsh
    text QA'd by Aran in PodDetailView). 2. Cast: Aran, Catrin + 2–3 more.
