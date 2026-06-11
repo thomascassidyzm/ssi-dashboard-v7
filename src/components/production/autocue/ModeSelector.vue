@@ -39,27 +39,58 @@
         <li>Quick targeted workflow</li>
       </ul>
     </div>
+
+    <div
+      v-if="courseCode"
+      class="mode-card"
+      @click="goToPods"
+    >
+      <span class="mode-icon">🎭</span>
+      <h2 class="mode-title">Mode 3: Listening Pods</h2>
+      <p class="mode-description">
+        Record the dialogue listening exercises with real voices. Cast each
+        character to a speaker, then everyone reads their own lines with the
+        conversation shown for context.
+      </p>
+      <ul class="mode-features">
+        <li>Cast up to 5 voices + a bilingual guide</li>
+        <li>One link per speaker — read all your lines in one sitting</li>
+        <li>Cue lines show what was just said</li>
+        <li>Works on a phone</li>
+        <li>Starts at the cast panel (Listening Pods page)</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const emit = defineEmits(['select'])
 const selectedMode = ref(null)
+const route = useRoute()
+const router = useRouter()
+const courseCode = route.params.courseCode || null
 
 function selectMode(mode) {
   selectedMode.value = mode
   emit('select', mode)
+}
+
+// Dialogue recording is cast-first: the pods page's Cast panel hands out the
+// per-voice recording links that open the dialogue autocue.
+function goToPods() {
+  router.push(`/production/${courseCode}/pods`)
 }
 </script>
 
 <style scoped>
 .mode-selector {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
