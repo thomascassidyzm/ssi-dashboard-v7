@@ -484,6 +484,20 @@ async function runAudioPass(courseCode) {
     const courseStart = Date.now()
     let textResult = null
     let audioResult = null
+    // SACKED LANGUAGES (Tom 2026-06-11: "the explainer voice can't do Irish").
+    // The explainer is Tom's xAI multilingual clone — it can only be steered
+    // to languages xAI officially handles (resolveExplainerLanguage !== 'auto').
+    // For the Azure-tail targets (Irish, Croatian, Icelandic…) an 'auto' cue
+    // mangles the target chunks, which is worse than no explainer: the player
+    // plays the translation in the explainer slot instead. Skip text AND
+    // audio; any previously-voiced clips get nulled by the bulk's explainer
+    // stage (pod-bulk-migrate) or the one-off sack script.
+    const { target } = podExplainer.parseCourseCode(courseCode)
+    if (resolveExplainerLanguage(target) === 'auto') {
+      log(`[${courseCode}] SACKED — explainer voice can't speak "${target}"; translation plays in the explainer slot`)
+      summary.push({ courseCode, sacked: true, elapsed_ms: Date.now() - courseStart })
+      continue
+    }
     try {
       if (runText) textResult = await runTextPass(courseCode)
       await runOncePass(courseCode) // first-encounter discipline before any TTS

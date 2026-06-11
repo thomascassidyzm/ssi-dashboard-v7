@@ -59,6 +59,7 @@ const fs = require('fs')
 const { spawn } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const { shouldSkipCourse, parseCourseCode, getConnectorForLearnerLang } = require('./pod-explainer-generator.cjs')
+const { resolveExplainerLanguage } = require('../tools/pod-voice-coverage.cjs')
 
 // =============================================================================
 // CONFIG
@@ -320,6 +321,15 @@ async function stageExplainers(course) {
     .eq('pod_id', podId)
     .not('explainer_audio_id', 'is', null)
   if (error) throw new Error(`null explainer_audio_id: ${error.message}`)
+  // SACKED LANGUAGES (Tom 2026-06-11): the explainer voice (xAI multilingual
+  // clone) can't speak the Azure-tail targets — an 'auto' cue mangles them.
+  // The null above IS the cleanup; skip the batch and the voiced-count verify
+  // (the player plays the translation in the explainer slot instead).
+  const target = course.split('_for_')[0]
+  if (resolveExplainerLanguage(target) === 'auto') {
+    log(`[${course}] [explainers] SACKED — explainer voice can't speak "${target}"; audio nulled, translation carries the slot`)
+    return
+  }
   await runProcess('node', ['services/run-pod-explainer-batch.cjs', course], { course, stage: 'explainers' })
   // VERIFY: the explainer batch exits 0 even when individual clips fail (xAI
   // ECONNRESET spells can drop most of a course). Re-observe and throw on a
