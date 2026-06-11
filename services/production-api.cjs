@@ -394,6 +394,25 @@ app.use('/api/production/:courseCode/team',
     bumpCourseVersion: require('./shared/course-version.cjs').bumpCourseVersion,
   }))
 
+// Pod recording coverage (keystone §5): per cast voice (voice_config.podCast)
+// lines recorded / remaining + per-pod breakdown, human-vs-tts per sentence.
+// Under the gated /api/production/:courseCode prefix (app.param fires above).
+// Read-only; module lives with the voice-engine pod modules (territory rule).
+app.get('/api/production/:courseCode/pods/coverage', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const { computePodsCoverage } = require('./voice-engine/pods-coverage.cjs')
+    const coverage = await computePodsCoverage(
+      { supabase: supabaseClient.getClient(), logger }, req.params.courseCode)
+    res.json(coverage)
+  } catch (err) {
+    logger.error(`[PodsCoverage] ${err.message}`)
+    res.status(err.status || 500).json({ error: err.message })
+  }
+})
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body

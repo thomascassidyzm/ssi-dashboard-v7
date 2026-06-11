@@ -186,6 +186,12 @@
                   </div>
                 </div>
                 <div class="flex gap-1 items-center pt-0.5">
+                  <!-- Human-recording status (pods coverage) — additive, hides when coverage unavailable -->
+                  <span
+                    v-if="recChip(sent)"
+                    :class="['px-1.5 py-0.5 text-[10px] rounded whitespace-nowrap', recChip(sent).cls]"
+                    :title="recChip(sent).title"
+                  >{{ recChip(sent).text }}</span>
                   <button
                     v-if="sent.target_audio_id"
                     @click="playAudio(sent.target_audio_id)"
@@ -592,7 +598,45 @@ async function generateExplainerAudio() {
   }
 }
 
-onMounted(loadPod)
+// --- Human recording status (pods coverage, keystone §5) ---
+// Per-sentence human-vs-tts status from the voice-engine pods coverage
+// endpoint. Non-fatal: the page renders fully without it (chips just hide).
+const recBySentence = ref(null) // sentenceId -> kinds {target|known|explainer: {origin, recorded, ...}}
+
+async function loadRecordingStatus() {
+  try {
+    const res = await fetch(`${getApiUrl()}/api/production/${courseCode}/pods/coverage`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' },
+    })
+    if (!res.ok) return
+    const data = await res.json()
+    const podReport = (data.pods || []).find(p => p.podId === `${courseCode}:${slug}`)
+    if (!podReport) return
+    const map = {}
+    for (const s of podReport.sentences || []) map[s.sentenceId] = s.kinds || {}
+    recBySentence.value = map
+  } catch { /* coverage is additive — never block the page */ }
+}
+
+// One compact status chip per sentence: human a/n (recorded lines / lines),
+// tts when machine-voiced only, dim em-dash when nothing is voiced yet.
+function recChip(sent) {
+  const kinds = recBySentence.value?.[sent.id]
+  if (!kinds) return null
+  const entries = Object.values(kinds)
+  if (!entries.length) return null
+  const human = entries.filter(k => k.recorded).length
+  const tts = entries.filter(k => k.origin === 'tts').length
+  const title = Object.entries(kinds)
+    .map(([kind, k]) => `${kind}: ${k.recorded ? 'human' : (k.origin || 'missing')}`)
+    .join(' · ')
+  if (human === entries.length) return { text: `human ${human}/${entries.length}`, cls: 'bg-emerald-900/40 text-emerald-300 border border-emerald-800', title }
+  if (human > 0) return { text: `human ${human}/${entries.length}`, cls: 'bg-amber-900/30 text-amber-300 border border-amber-800', title }
+  if (tts > 0) return { text: 'tts', cls: 'bg-slate-800 text-slate-500 border border-slate-700', title }
+  return { text: '—', cls: 'bg-slate-800/60 text-slate-600 border border-slate-800', title }
+}
+
+onMounted(() => { loadPod(); loadRecordingStatus() })
 
 onUnmounted(() => {
   if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' }
