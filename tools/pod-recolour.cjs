@@ -19,7 +19,7 @@
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') })
 const { createClient } = require('@supabase/supabase-js')
 const { resolveTargetPool, resolveKnownPool } = require('./pod-voice-coverage.cjs')
-const { buildAdjacency, assignVoicesColoured } = require('./pod-voice-colour.cjs')
+const { buildAdjacency, buildTurnWeights, countAdjacentCollisions, assignVoicesColoured } = require('./pod-voice-colour.cjs')
 const {
   canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
 } = require('./pod-sync.cjs')
@@ -71,8 +71,9 @@ async function recolourPod(pod, targetPool, knownPool, opts) {
     scenesMap.get(sc).push(canon)
   }
   const speakers = [...variantsByCanon.keys()]
-  const scenes = [...scenesMap.values()]
+  const scenes = [...scenesMap.values()]   // in turn order (built from global_order)
   const adj = buildAdjacency(scenes)
+  const weights = buildTurnWeights(scenes)
 
   // Generated pods localise speaker names from the ledger ("Sarah → Sophie");
   // the gender name-heuristic knows the CANONICAL name, not necessarily the
@@ -95,6 +96,8 @@ async function recolourPod(pod, targetPool, knownPool, opts) {
   }
   const beforeT = countCollisions(adj, curVoice('target'))
   const beforeK = countCollisions(adj, curVoice('known'))
+  const beforeAdjT = countAdjacentCollisions(weights, curVoice('target'))
+  const beforeAdjK = countAdjacentCollisions(weights, curVoice('known'))
 
   // AFTER: colour with the resolved pools.
   const { assignments, report } = assignVoicesColoured({
@@ -113,6 +116,8 @@ async function recolourPod(pod, targetPool, knownPool, opts) {
   const newVoice = (track) => (canon) => assignments[canon] && assignments[canon][track] ? assignments[canon][track].voice_id : null
   const afterT = countCollisions(adj, newVoice('target'))
   const afterK = countCollisions(adj, newVoice('known'))
+  const afterAdjT = countAdjacentCollisions(weights, newVoice('target'))
+  const afterAdjK = countAdjacentCollisions(weights, newVoice('known'))
 
   const result = {
     pod_id: pod.id,
@@ -120,6 +125,9 @@ async function recolourPod(pod, targetPool, knownPool, opts) {
     scenes: scenes.length,
     before: { target: beforeT, known: beforeK },
     after: { target: afterT, known: afterK },
+    // adjacent-turn collisions = the "answers himself" metric (Tom 2026-06-11)
+    beforeAdj: { target: beforeAdjT, known: beforeAdjK },
+    afterAdj: { target: afterAdjT, known: afterAdjK },
     colours: { target: report.targetColours, known: report.knownColours },
     forced: { target: report.targetForced, known: report.knownForced },
     assignments,
@@ -203,7 +211,8 @@ async function main() {
     totAfter += r.after.target + r.after.known
     console.log(`\n   ▸ ${r.pod_id}  (${r.speakers} speakers, ${r.scenes} scenes)`)
     console.log(`     collisions  target ${r.before.target}→${r.after.target}   known ${r.before.known}→${r.after.known}   (colours T${r.colours.target}/K${r.colours.known})`)
-    if (r.forced.target.length) console.log(`     ⚠️  forced target reuse (pool too small): ${r.forced.target.map(f => f.speaker).join(', ')}`)
+    console.log(`     adjacent-turn collisions (the "answers himself" metric)  target ${r.beforeAdj.target.turns}→${r.afterAdj.target.turns} turns (${r.beforeAdj.target.pairs}→${r.afterAdj.target.pairs} pairs)   known ${r.beforeAdj.known.turns}→${r.afterAdj.known.turns} turns`)
+    if (r.forced.target.length) console.log(`     ⚠️  forced target reuse (pool too small): ${r.forced.target.map(f => `${f.speaker}${f.adjacentTurns != null ? ` (+${f.adjacentTurns} adj turns)` : ''}`).join(', ')}`)
     if (r.forced.known.length)  console.log(`     ⚠️  forced known reuse: ${r.forced.known.map(f => f.speaker).join(', ')}`)
     if (verbose) {
       for (const [sp, a] of Object.entries(r.assignments)) {
