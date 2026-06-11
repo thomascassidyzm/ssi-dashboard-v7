@@ -149,3 +149,28 @@ describe('speakerInventory', () => {
     expect(hasGenerationColouring([{ id: 'x', speakers: null }])).toBe(false)
   })
 })
+
+describe('buildSentenceEditPatch (community script editing)', () => {
+  const { buildSentenceEditPatch } = require('../pods-cast.cjs')
+
+  it('clears exactly the audio pointers of the edited fields', () => {
+    expect(buildSentenceEditPatch({ target_text: ' Bore da! ' })).toEqual({
+      target_text: 'Bore da!', target_audio_id: null,
+    })
+    expect(buildSentenceEditPatch({ known_text: 'Hi', explainer_text: 'Note the mutation' })).toEqual({
+      known_text: 'Hi', known_audio_id: null,
+      explainer_text: 'Note the mutation', explainer_audio_id: null,
+    })
+  })
+
+  it('empty explainer is a deliberate "no explainer", not a no-op', () => {
+    expect(buildSentenceEditPatch({ explainer_text: '' })).toEqual({
+      explainer_text: '', explainer_audio_id: null,
+    })
+  })
+
+  it('nothing editable → null (router 400s)', () => {
+    expect(buildSentenceEditPatch({})).toBe(null)
+    expect(buildSentenceEditPatch({ speaker: 'Sarah' })).toBe(null)
+  })
+})

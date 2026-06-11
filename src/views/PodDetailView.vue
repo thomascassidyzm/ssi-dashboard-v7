@@ -454,7 +454,10 @@ async function saveSentence(sent) {
   savingEdit.value = true
   editError.value = ''
   try {
-    const res = await authedFetch(`/api/admin/pod-sentences/${encodeURIComponent(sent.id)}`, {
+    // Course-scoped edit door: editors who hold the course can fix the script
+    // (community leaders, not just admins — /api/admin/pod-sentences stays
+    // for back-compat).
+    const res = await authedFetch(`/api/production/${courseCode}/pods/sentence/${encodeURIComponent(sent.id)}`, {
       method: 'PATCH',
       body: JSON.stringify({ target_text: editBuf.value.target, known_text: editBuf.value.known }),
     })

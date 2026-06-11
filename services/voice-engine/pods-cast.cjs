@@ -180,10 +180,37 @@ function hasGenerationColouring(pods) {
   return false
 }
 
+/**
+ * Build the update patch for a community script edit (pre- or post-recording).
+ * Editing a line clears THAT line's audio pointer so the recording plan
+ * resurfaces it (recorded=false) and TTS refills stay null-only — the old
+ * audio ROW is never deleted (origin guard keeps human takes; provenance
+ * keeps history). explainer_text edits clear explainer audio likewise.
+ * Returns null when the body carries nothing editable.
+ */
+function buildSentenceEditPatch(body = {}) {
+  const patch = {}
+  if (typeof body.target_text === 'string') {
+    patch.target_text = body.target_text.trim()
+    patch.target_audio_id = null
+  }
+  if (typeof body.known_text === 'string') {
+    patch.known_text = body.known_text.trim()
+    patch.known_audio_id = null
+  }
+  if (typeof body.explainer_text === 'string') {
+    // '' is meaningful: "deliberately no explainer" (canon convention)
+    patch.explainer_text = body.explainer_text.trim()
+    patch.explainer_audio_id = null
+  }
+  return Object.keys(patch).length ? patch : null
+}
+
 module.exports = {
   EXPLAINER_SPEAKER,
   mergePodCast,
   castVoiceFor,
   speakerInventory,
   hasGenerationColouring,
+  buildSentenceEditPatch,
 }

@@ -34,6 +34,7 @@ const {
   mergePodCast,
   speakerInventory,
   hasGenerationColouring,
+  buildSentenceEditPatch,
 } = require('./pods-cast.cjs')
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 
@@ -269,6 +270,58 @@ module.exports = function createPodsCastRouter({
     } catch (err) {
       logger.error(`[PodsCast] recording-plan failed for ${courseCode}/${voiceId}:`, err)
       res.status(500).json({ error: 'Failed to build recording plan' })
+    }
+  })
+
+  // ── PATCH /sentence/:sentenceId — community script editing ───────────────
+  // Course editors fix the generated script BEFORE (or after) recording:
+  // target/known/explainer text. Clearing the edited line's audio pointer is
+  // what resurfaces it in the recording plan; the old audio ROW is never
+  // deleted. (The legacy admin-only /api/admin/pod-sentences/:id stays for
+  // back-compat; this is the per-course-scoped door community leaders use.)
+  router.patch('/sentence/:sentenceId', async (req, res) => {
+    const { courseCode, sentenceId } = req.params
+    const patch = buildSentenceEditPatch(req.body || {})
+    if (!patch) return res.status(400).json({ error: 'target_text, known_text or explainer_text required' })
+    try {
+      const db = getDb()
+      // The sentence must belong to a pod of THIS course — the URL's course
+      // is what the gate authorized, so verify before writing.
+      const { data: sentence, error: fetchError } = await db
+        .from('listening_pod_sentences')
+        .select('id, pod_id, target_audio_id, known_audio_id, explainer_audio_id')
+        .eq('id', sentenceId)
+        .maybeSingle()
+      if (fetchError) throw new Error(fetchError.message)
+      if (!sentence) return res.status(404).json({ error: `sentence not found: ${sentenceId}` })
+      const { data: pod, error: podError } = await db
+        .from('listening_pods')
+        .select('id, course_code')
+        .eq('id', sentence.pod_id)
+        .maybeSingle()
+      if (podError) throw new Error(podError.message)
+      if (!pod || pod.course_code !== courseCode) {
+        return res.status(403).json({ error: `Sentence does not belong to course ${courseCode}` })
+      }
+
+      const cleared = {}
+      for (const col of ['target_audio_id', 'known_audio_id', 'explainer_audio_id']) {
+        if (col in patch && sentence[col]) cleared[col] = sentence[col]
+      }
+      const { data: updated, error: updateError } = await db
+        .from('listening_pod_sentences')
+        .update(patch)
+        .eq('id', sentenceId)
+        .select('id, target_text, known_text, explainer_text, target_audio_id, known_audio_id, explainer_audio_id')
+        .single()
+      if (updateError) throw new Error(updateError.message)
+      if (Object.keys(cleared).length) {
+        logger.info(`[PodsEdit] ${courseCode} ${sentenceId} edited by ${req.dashboardUser?.email || '?'} — unlinked ${JSON.stringify(cleared)} (rows kept)`)
+      }
+      res.json({ ok: true, sentence: updated, unlinkedAudio: cleared })
+    } catch (err) {
+      logger.error(`[PodsEdit] ${courseCode}/${sentenceId} failed:`, err)
+      res.status(500).json({ error: 'Failed to save sentence edit' })
     }
   })
 
