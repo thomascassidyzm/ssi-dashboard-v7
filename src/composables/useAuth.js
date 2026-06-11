@@ -50,14 +50,23 @@ function clearCachedUser() {
 
 /**
  * Fetch the dashboard_users row by email.
- * Uses service key via production-api because dashboard_users
- * has RLS restricted to service_role (and that's fine).
+ * Direct read works for YOUR OWN row (RLS own-row policy); the API
+ * fallback uses the service key and also resolves ssi_admin learners
+ * without dashboard rows.
  */
+// True when the LAST lookup got an AUTHORITATIVE answer (a row, or a
+// definite "no row" from the API). False = the production machine could
+// not be reached — callers must NOT tell the user they lack access then
+// (a down tunnel was sending admins invite-code hunting, 2026-06-11).
+let lastLookupAuthoritative = false
+
 async function fetchDashboardUser(email) {
-  if (!email) return null
+  if (!email) { lastLookupAuthoritative = true; return null }
+  lastLookupAuthoritative = false
 
   try {
-    // Try direct Supabase first (works if anon has read access)
+    // Direct Supabase read — data here is authoritative, but an EMPTY
+    // result is not (RLS hides rows from anon/other sessions).
     if (supabase) {
       const { data, error: fetchError } = await supabase
         .from('dashboard_users')
@@ -65,22 +74,33 @@ async function fetchDashboardUser(email) {
         .eq('email', email)
         .single()
 
-      if (data) return data
-      // RLS might block anon — fall through to API
+      if (data) { lastLookupAuthoritative = true; return data }
       if (fetchError) console.warn('[Auth] Direct dashboard_users query failed, trying API:', fetchError.message)
     }
 
-    // Fallback: ask production-api (uses service key)
+    // Fallback: production-api. 200 and 404 are both authoritative;
+    // anything else (network error, 5xx) means "couldn't reach it".
     const { getApiUrl } = await import('../services/api.js')
     const resp = await fetch(`${getApiUrl()}/api/auth/me?email=${encodeURIComponent(email)}`)
     if (resp.ok) {
-      const data = await resp.json()
-      return data
+      lastLookupAuthoritative = true
+      return await resp.json()
+    }
+    if (resp.status === 404) {
+      lastLookupAuthoritative = true
+      return null
     }
   } catch (err) {
     console.warn('[Auth] fetchDashboardUser error:', err.message)
   }
   return null
+}
+
+/** Message for a failed access lookup that does not lie about access. */
+function accessLookupFailureMessage() {
+  return lastLookupAuthoritative
+    ? 'No dashboard access for this email. Contact an SSi admin.'
+    : 'Could not reach the course production machine — check the machine selector (top right) or try again in a moment.'
 }
 
 /**
@@ -107,7 +127,7 @@ async function signInWithPassword(email, password) {
         dashboardUser.value = dbUser
         cacheUser(dbUser)
       } else {
-        error.value = 'No dashboard access for this email. Contact an SSi admin.'
+        error.value = accessLookupFailureMessage()
         dashboardUser.value = null
         clearCachedUser()
       }
@@ -198,10 +218,12 @@ async function verifyOTP(email, token) {
         dashboardUser.value = dbUser
         cacheUser(dbUser)
       } else {
-        // OTP verified but no dashboard_users row — no dashboard access
-        error.value = 'No dashboard access for this email. Contact an SSi admin.'
+        // OTP verified but no usable answer — distinguish "no access"
+        // from "couldn't reach the machine" (never invite-code-wall admins
+        // over a down tunnel).
+        error.value = accessLookupFailureMessage()
         dashboardUser.value = null
-        clearCachedUser()
+        if (lastLookupAuthoritative) clearCachedUser()
       }
     }
 
@@ -242,8 +264,9 @@ async function initAuth() {
         if (dbUser) {
           dashboardUser.value = dbUser
           cacheUser(dbUser)
-        } else if (!cached) {
-          // No cache and no DB row — not a dashboard user
+        } else if (!cached && lastLookupAuthoritative) {
+          // Definitive "no row" — not a dashboard user. (A non-authoritative
+          // miss — machine unreachable — must not sign anyone out.)
           dashboardUser.value = null
         }
       }).catch(() => {
