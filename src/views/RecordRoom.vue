@@ -28,6 +28,59 @@
       </section>
 
       <template v-else>
+        <!-- Mode switch: script reading vs dialogue recording (only when both exist) -->
+        <div v-if="dialogueAvailable && assignedSlot" class="room-mode-switch">
+          <button
+            class="mode-tab"
+            :class="{ active: roomMode === 'script' }"
+            @click="modeOverride = 'script'"
+          >Reading script</button>
+          <button
+            class="mode-tab"
+            :class="{ active: roomMode === 'dialogue' }"
+            @click="modeOverride = 'dialogue'"
+          >Dialogue lines</button>
+        </div>
+
+        <!-- ── DIALOGUE MODE: pod lines on the cue, per-voice queue ── -->
+        <template v-if="roomMode === 'dialogue'">
+          <div class="room-strip">
+            <div class="room-card slot-card">
+              <span class="card-label">Your dialogue part</span>
+              <template v-if="myCharacters.length > 0">
+                <span class="card-value slot-assigned">{{ myCharacters.join(', ') }}</span>
+                <span class="card-hint">Every line you record is saved under your voice.</span>
+              </template>
+              <template v-else>
+                <span class="card-value slot-assigned">Dialogue voice</span>
+                <span class="card-hint">Recording as {{ podVoiceId }}</span>
+              </template>
+            </div>
+            <div class="room-card progress-card">
+              <span class="card-label">Your lines</span>
+              <template v-if="dialogueProgress">
+                <span class="card-value">
+                  {{ dialogueProgress.recorded }} <span class="value-dim">of {{ dialogueProgress.total }} recorded</span>
+                </span>
+                <span class="card-hint">Lines already recorded are skipped — you can stop and pick up any time.</span>
+              </template>
+              <template v-else>
+                <span class="card-value value-dim">—</span>
+              </template>
+            </div>
+          </div>
+
+          <section class="room-studio">
+            <PodDialogueStudio
+              :course-code="courseCode"
+              :voice-id="podVoiceId"
+              @progress="dialogueProgress = $event"
+            />
+          </section>
+        </template>
+
+        <!-- ── SCRIPT MODE: the existing reading-script room, untouched ── -->
+        <template v-else>
         <!-- Status strip: voice part + reading progress -->
         <div class="room-strip">
           <div class="room-card slot-card">
@@ -82,7 +135,12 @@
           >
             Open the full recording studio instead
           </router-link>
+          <p v-if="dialogueAvailable" class="card-hint dialogue-nudge">
+            You do have dialogue lines to record —
+            <a href="#" @click.prevent="modeOverride = 'dialogue'">switch to dialogue mode</a>.
+          </p>
         </section>
+        </template>
       </template>
     </template>
   </div>
@@ -90,19 +148,21 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
 import { useCourses } from '@/composables/useCourses'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { getApiUrl } from '@/services/api'
 import AutocueStudio from '@/components/production/autocue/AutocueStudio.vue'
+import PodDialogueStudio from '@/components/production/autocue/PodDialogueStudio.vue'
 
 const props = defineProps({
   courseCode: { type: String, default: null }
 })
 
 const router = useRouter()
+const route = useRoute()
 const { learner, isRecorder, logout } = useAuth()
 const { getCourseName } = useCourses()
 
@@ -161,6 +221,53 @@ const myVoiceId = computed(() => {
   const slotVoiceId = slot ? voiceConfig.value?.voices?.[slot]?.voiceId : null
   return slotVoiceId || learner.value?.voice_id || null
 })
+
+// ── Dialogue (pod) recording mode ────────────────────────────────────────────
+// Activated by ?podVoice=<voiceId> (leader-sent link) or automatically when
+// courses.voice_config.podCast — the additive cast map written by the casting
+// build: { "<speakerName>": { voiceId, name, email } } — has an entry for
+// this user's email. Keystone: pods-recording-model.md §1/§3.
+
+// Characters in the cast that belong to me (by email)
+const myPodCastEntries = computed(() => {
+  const cast = voiceConfig.value?.podCast
+  if (!cast || typeof cast !== 'object') return []
+  const myEmail = learner.value?.email || null
+  if (!myEmail) return []
+  return Object.entries(cast)
+    .filter(([, v]) => v && v.email === myEmail && v.voiceId)
+    .map(([speaker, v]) => ({ speaker, voiceId: v.voiceId, name: v.name || null }))
+})
+
+// The voice the dialogue session records under: explicit query wins
+// (works even before the cast carries emails); otherwise my cast entry.
+const podVoiceId = computed(() => {
+  const q = route.query.podVoice
+  if (typeof q === 'string' && q.trim()) return q.trim()
+  return myPodCastEntries.value[0]?.voiceId || null
+})
+
+const dialogueAvailable = computed(() => Boolean(podVoiceId.value))
+
+// Character names this voice plays (explainer cast entry shown in plain words)
+const myCharacters = computed(() => {
+  const mine = myPodCastEntries.value.filter(e => !podVoiceId.value || e.voiceId === podVoiceId.value)
+  return mine.map(e => (e.speaker === '__explainer__' ? 'Explainer voice' : e.speaker))
+})
+
+// Mode: explicit user toggle wins; otherwise a podVoice link opens dialogue,
+// a script slot opens the reading script, and a cast-only recorder lands in dialogue.
+const modeOverride = ref(null)
+const roomMode = computed(() => {
+  if (modeOverride.value === 'dialogue' && dialogueAvailable.value) return 'dialogue'
+  if (modeOverride.value === 'script') return 'script'
+  if (typeof route.query.podVoice === 'string' && route.query.podVoice) return 'dialogue'
+  if (assignedSlot.value) return 'script'
+  return dialogueAvailable.value ? 'dialogue' : 'script'
+})
+
+// Live { recorded, total } emitted by the dialogue studio for the status strip
+const dialogueProgress = ref(null)
 
 // Jargon-free names for the voice slots
 const slotDisplayName = computed(() => {
@@ -291,6 +398,46 @@ onMounted(loadRoom)
 .btn-signout:hover {
   color: var(--color-paper, #f7f7f2);
   border-color: var(--color-paper-dim, #c1c1bb);
+}
+
+.room-mode-switch {
+  display: inline-flex;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mode-tab {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-paper-dim, #c1c1bb);
+  background: transparent;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  cursor: pointer;
+  min-height: 44px;
+  transition: all 0.2s ease;
+}
+
+.mode-tab + .mode-tab {
+  border-left: 1px solid var(--color-graphite, #475569);
+}
+
+.mode-tab.active {
+  color: var(--color-void, #0f172a);
+  background: var(--color-emerald, #06ffa5);
+}
+
+.dialogue-nudge {
+  margin-top: 1rem;
+}
+
+.dialogue-nudge a {
+  color: var(--color-emerald, #06ffa5);
 }
 
 .room-strip {
