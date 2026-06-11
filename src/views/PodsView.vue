@@ -64,6 +64,9 @@
         </div>
       </div>
 
+      <!-- Cast: who records each character (human pod recording) -->
+      <PodCastPanel :course-code="courseCode" />
+
       <!-- Loading -->
       <div v-if="loading" class="text-slate-500 text-center py-12">Loading pods…</div>
 
@@ -139,6 +142,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import PodCastPanel from '@/components/PodCastPanel.vue'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
