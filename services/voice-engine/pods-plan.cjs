@@ -196,8 +196,80 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
   }
 }
 
+/**
+ * Finalize a plan for the wire: canonical item shape (pinned by
+ * pod-recording-plan-contract.test.mjs — drift here rendered empty cue lines,
+ * integration map fix #1) + recorded/audioId stamping (fix #2: resume and
+ * progress need to know what this voice already recorded).
+ *
+ * recorded = the sentence's {kind}_audio_id points at a HUMAN course_audio
+ * row carrying THIS queue's voiceId. audioId is the current pointer either way
+ * (the client echoes it as replacesAudioId provenance on re-records).
+ *
+ * @param {object} args
+ * @param {object} args.plan - buildRecordingPlan output
+ * @param {Array}  args.sentences - the same rows the plan was built from (with *_audio_id columns)
+ * @param {string} args.voiceId
+ * @param {(ids:string[])=>Promise<Array<{id,origin,voice_id}>>} args.fetchAudioRows
+ */
+async function finalizeRecordingPlan({ plan, sentences, voiceId, fetchAudioRows }) {
+  const AUDIO_COL = { target: 'target_audio_id', known: 'known_audio_id', explainer: 'explainer_audio_id' }
+  const rowById = new Map((sentences || []).map(r => [r.id, r]))
+
+  const wanted = new Set()
+  for (const it of plan.items) {
+    const row = rowById.get(it.sentenceId)
+    const aid = row ? row[AUDIO_COL[it.kind]] : null
+    if (aid) wanted.add(aid)
+  }
+  const audioRows = wanted.size ? await fetchAudioRows([...wanted]) : []
+  const audioById = new Map(audioRows.map(r => [r.id, r]))
+
+  let recorded = 0
+  const items = plan.items.map(it => {
+    const row = rowById.get(it.sentenceId) || {}
+    const audioId = row[AUDIO_COL[it.kind]] || null
+    const a = audioId ? audioById.get(audioId) : null
+    const isRecorded = !!(a && a.origin === 'human' && a.voice_id === voiceId)
+    if (isRecorded) recorded++
+    const isTarget = it.kind === 'target'
+    const out = {
+      podId: it.podId,
+      podTitle: it.podTitle,
+      sentenceId: it.sentenceId,
+      sentenceIds: it.sentenceIds,
+      kind: it.kind,
+      speaker: it.speaker,
+      sceneNumber: it.scene ? it.scene.number : null,
+      // boundary-only by contract: the teleprompter shows scene headers once
+      sceneTitle: it.sceneStart && it.scene ? (it.scene.title || null) : null,
+      sceneStart: !!it.sceneStart,
+      cues: (it.cues || []).map(c => ({
+        speaker: c.speaker,
+        targetText: c.target != null ? c.target : null,
+        knownText: c.known != null ? c.known : null,
+      })),
+      line: isTarget
+        ? { targetText: it.line, knownText: it.knownGloss != null ? it.knownGloss : null }
+        : { targetText: null, knownText: it.line },
+      estimatedSeconds: it.estimatedSeconds,
+      recorded: isRecorded,
+      audioId,
+    }
+    if (it.sentenceIds && it.sentenceIds.length > 1) out.glueSentenceIds = it.sentenceIds
+    return out
+  })
+
+  return {
+    ...plan,
+    items,
+    totals: { items: items.length, recorded, remaining: items.length - recorded },
+  }
+}
+
 module.exports = {
   DEFAULT_CUE_COUNT,
+  finalizeRecordingPlan,
   estimateSeconds,
   sceneTitleFor,
   groupGlueItems,

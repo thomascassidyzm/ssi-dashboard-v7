@@ -35,10 +35,10 @@ const {
   speakerInventory,
   hasGenerationColouring,
 } = require('./pods-cast.cjs')
-const { buildRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
+const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 
 const SENTENCE_COLUMNS =
-  'id, pod_id, scene_number, global_order, speaker, target_text, known_text, explainer_text, glue_to_next'
+  'id, pod_id, scene_number, global_order, speaker, target_text, known_text, explainer_text, glue_to_next, target_audio_id, known_audio_id, explainer_audio_id'
 const PAGE_SIZE = 1000 // PostgREST max-rows silently truncates — always paginate
 
 /**
@@ -245,7 +245,27 @@ module.exports = function createPodsCastRouter({
       const podCast = (voiceConfig && voiceConfig.podCast) || {}
       const sentences = await fetchAllSentences(db, pods.map(p => p.id))
       const plan = buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount })
-      res.json({ course_code: courseCode, ...plan })
+      const final = await finalizeRecordingPlan({
+        plan, sentences, voiceId,
+        fetchAudioRows: async (ids) => {
+          const out = []
+          for (let i = 0; i < ids.length; i += 200) {
+            const { data, error } = await db.from('course_audio')
+              .select('id, origin, voice_id').in('id', ids.slice(i, i + 200))
+            if (error) throw new Error(error.message)
+            out.push(...(data || []))
+          }
+          return out
+        },
+      })
+      const castEntry = Object.values(podCast).find(e => e && e.voiceId === voiceId)
+      res.json({
+        course_code: courseCode,
+        courseCode,
+        voiceName: (castEntry && castEntry.name) || null,
+        speakers: final.castSpeakers,
+        ...final,
+      })
     } catch (err) {
       logger.error(`[PodsCast] recording-plan failed for ${courseCode}/${voiceId}:`, err)
       res.status(500).json({ error: 'Failed to build recording plan' })
