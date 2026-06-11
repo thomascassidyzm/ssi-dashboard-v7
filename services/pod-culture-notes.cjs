@@ -51,7 +51,12 @@ const LANG_NAMES = {
   lav: 'Latvian', lit: 'Lithuanian', pol: 'Polish', ces: 'Czech', slk: 'Slovak', hun: 'Hungarian',
   ron: 'Romanian', bul: 'Bulgarian', hrv: 'Croatian', srp: 'Serbian', slv: 'Slovenian', mkd: 'Macedonian',
   ukr: 'Ukrainian', rus: 'Russian', ell: 'Greek', tur: 'Turkish', cat: 'Catalan', eus: 'Basque',
-  gle: 'Irish', gla: 'Scottish Gaelic', cym: 'Welsh', cym_n: 'Welsh', cym_s: 'Welsh', bre: 'Breton',
+  gle: 'Irish', gla: 'Scottish Gaelic', cym: 'Welsh', bre: 'Breton',
+  // Welsh dialect variants carry the dialect IN THE NAME so the faithful
+  // renderer + culture notes steer register correctly (gog vs hwntw:
+  // rŵan/efo/fo vs nawr/gyda/fe). Tom 2026-06-11, human-recorded pods.
+  cym_n: 'Northern Welsh (colloquial Gogledd Cymru Welsh)',
+  cym_s: 'Southern Welsh (colloquial De Cymru Welsh)',
   mlt: 'Maltese', ara: 'Arabic', ara_eg: 'Egyptian Arabic', ara_sy: 'Syrian Arabic', arz: 'Egyptian Arabic',
   heb: 'Hebrew', fas: 'Persian', hye: 'Armenian', jpn: 'Japanese', zho: 'Chinese', kor: 'Korean',
   tha: 'Thai', hin: 'Hindi', ben: 'Bengali', guj: 'Gujarati', tam: 'Tamil', nep: 'Nepali', sin: 'Sinhala',
