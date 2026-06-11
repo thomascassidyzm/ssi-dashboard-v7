@@ -4,6 +4,12 @@
 > TEXT ONLY — for HUMAN recording (no Welsh TTS). 5 voices max, cast by turn-alternation colouring
 > (conversants on different voices wherever possible; 0 adjacent-turn shares remain across 142 lines).
 > The colouring is also written to `listening_pods.speakers` (provider: human) for the recorder.
+>
+> **This file is a SNAPSHOT — the source of truth is the `listening_pod_sentences` rows.**
+> The recorder tool should read text LIVE from the DB and let the speaker EDIT it in place
+> (community tool: text editability is core, not a nicety). A text edit after a take means
+> the take is stale — use the voice-engine's re-records-supersede semantics. Regenerate this
+> snapshot any time: `node scripts/welsh-pod-recording-pack.cjs cym_s_for_eng --slots=5`
 
 ## Cast sheet
 
