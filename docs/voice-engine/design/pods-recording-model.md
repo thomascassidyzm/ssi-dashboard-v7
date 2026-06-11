@@ -55,6 +55,20 @@ keystone decision 2). The LEGO engine is untouched. No DDL; no TTS spend.
    PodDetailView (which already has the edit→regen→preview pattern for sentence
    text edits — text editing is NOT this build's job).
 
+## ADDENDUM 2026-06-11 — generation-side colouring is upstream of the cast
+
+Parallel workstreams (Tom's side) are generating welsh-north + welsh-south pod sets
+with **colouring already written to `listening_pods.speakers` in the standard
+shape** and **5-slot cast sheets** (markdown packs landing in
+`docs/voice-engine/welsh-pods/`). Therefore:
+- The N-voice solver is a FALLBACK for courses without generation-side colouring —
+  when `listening_pods.speakers` carries slot colouring, the recording-plan and
+  casting UI CONSUME it verbatim (never re-solve over it).
+- `voice_config.podCast` maps **slots/characters → humans** (who records), not
+  line-level colouring. Cast sheets in the packs are the human-readable mirror;
+  the DB is the machine interface.
+- 5 slots confirmed as the design centre.
+
 ## Welsh run-steps (after the tool lands — with Tom/Aran, not auto-run)
 1. Generate cym pod scripts from canon (existing pod-dialogue-generator; Welsh
    text QA'd by Aran in PodDetailView). 2. Cast: Aran, Catrin + 2–3 more.
