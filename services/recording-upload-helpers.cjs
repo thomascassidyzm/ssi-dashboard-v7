@@ -83,12 +83,25 @@ function normalizeProvenance(provenance = {}) {
  *   (voice_config.voices[role].voiceId; client metadata.voiceId is advisory only).
  *   The engine partitions the splice space by (voice_id, cadence); takes
  *   without it fall back to slot-role matching at read time.
+ * @param {Object|null} [args.pod] - pod-mode identity (mode:'pod' uploads):
+ *   { podId, sentenceId, kind: 'target'|'known'|'explainer', replacedAudioId }.
+ *   replacedAudioId is the course_audio id the sentence FK pointed at before
+ *   this take re-pointed it (re-records never overwrite — old row + object kept).
+ *   When present, mode is 'pod' and the pod fields are added ADDITIVELY —
+ *   every existing field keeps its exact name and shape.
  * @returns {Object}
  */
-function buildProvenanceContext({ courseCode, isScriptMode, metadata = {}, provenance = {}, s3Key, courseAudioId = null, replacedS3Key = null, voiceId = null }) {
+function buildProvenanceContext({ courseCode, isScriptMode, metadata = {}, provenance = {}, s3Key, courseAudioId = null, replacedS3Key = null, voiceId = null, pod = null }) {
+  const podFields = pod ? {
+    pod_id: pod.podId || null,
+    sentence_id: pod.sentenceId || null,
+    kind: pod.kind || null,
+    replaced_audio_id: pod.replacedAudioId || null
+  } : null
   return {
     course_code: courseCode,
-    mode: isScriptMode ? 'script' : 'regeneration',
+    mode: pod ? 'pod' : (isScriptMode ? 'script' : 'regeneration'),
+    ...(podFields || {}),
     role: metadata.role || null,
     voice_id: voiceId || null,
     cadence: metadata.cadence || null,
