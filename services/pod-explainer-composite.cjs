@@ -43,6 +43,7 @@ const { spliceSegmentsToFile } = require('./voice-engine/splicer.cjs')
 const { resolveTargetPool } = require('../tools/pod-voice-coverage.cjs')
 const { parseCourseCode, getConnectorForLearnerLang } = require('./pod-explainer-generator.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
+const { canonicalSpeakerName } = require('../tools/pod-sync.cjs')
 
 const POD_SLUG = 'pod-0'
 const EXPLAINER_ROLE = 'pod_explainer'
@@ -182,13 +183,25 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
   const { target, learner } = parseCourseCode(courseCode)
   const connector = getConnectorForLearnerLang(learner)
   const { targetVoice, knownVoice } = await getCourseVoices(courseCode)
-  // Composite "voice" tag — the dedup identity of this assembly recipe.
-  const voiceTag = `comp:${targetVoice.voice_id}+${knownVoice.voice_id}`
-  log(`[${courseCode}] composite explainers: target=${targetVoice.voice_id} known=${knownVoice.voice_id} connector="${connector}"`)
+
+  // Per-speaker chunk voices (Tom 2026-06-11): the learner should hear the
+  // chunk as THE CHARACTER ACTUALLY SAYS IT — the cast voice from the pod's
+  // colouring — not a narrator re-saying it. Falls back to the course pool
+  // voice for unmapped speakers.
+  const { data: podRow } = await supabase
+    .from('listening_pods').select('speakers').eq('id', `${courseCode}:${POD_SLUG}`).single()
+  const speakersMap = (podRow && podRow.speakers) || {}
+  const chunkVoiceFor = (speaker) => {
+    const canon = canonicalSpeakerName(speaker || '')
+    const entry = speakersMap[canon] || speakersMap._default
+    const v = entry && entry.target
+    return (v && v.voice_id) ? { provider: v.provider || 'azure', voice_id: v.voice_id, locale: v.locale || null } : targetVoice
+  }
+  log(`[${courseCode}] composite explainers: chunk voices = per-speaker cast (fallback ${targetVoice.voice_id}), known=${knownVoice.voice_id}, connector="${connector}"`)
 
   const { data: rows, error } = await supabase
     .from('listening_pod_sentences')
-    .select('id, global_order, explainer_text, explainer_decomposition')
+    .select('id, global_order, speaker, explainer_text, explainer_decomposition')
     .eq('pod_id', `${courseCode}:${POD_SLUG}`)
     .not('explainer_text', 'is', null)
     .neq('explainer_text', '')
@@ -217,6 +230,8 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
           if (chunks.length === 0) continue // nothing narratable — leave unvoiced (player plays translation)
           const tail = extractConstructionTail(row.explainer_text)
           const text = narrationText(chunks, tail, connector)
+          const chunkVoice = chunkVoiceFor(row.speaker)
+          const voiceTag = `comp:${chunkVoice.voice_id}+${knownVoice.voice_id}`
 
           // Dedup: same narration + same recipe → relink the existing clip.
           const existing = await phase8.findExistingAudio(courseCode, text, target, EXPLAINER_ROLE, voiceTag)
@@ -226,7 +241,7 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
             const files = []
             for (let i = 0; i < chunks.length; i++) {
               const c = chunks[i]
-              files.push(await renderPiece(cache, tempDir, c.chunk_target, targetVoice))
+              files.push(await renderPiece(cache, tempDir, c.chunk_target, chunkVoice))
               files.push(await ensureSilence(cache, tempDir, GAP_CHUNK_TO_GLOSS_MS))
               files.push(await renderPiece(cache, tempDir, `${connector} ${c.chunk_known}`, knownVoice))
               if (i < chunks.length - 1) files.push(await ensureSilence(cache, tempDir, GAP_BETWEEN_PAIRS_MS))

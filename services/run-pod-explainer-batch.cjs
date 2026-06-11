@@ -484,27 +484,19 @@ async function runAudioPass(courseCode) {
     const courseStart = Date.now()
     let textResult = null
     let audioResult = null
-    // COMPOSITE LANGUAGES (Tom 2026-06-11: "the explainer voice can't do
-    // Irish" → "we can't NOT have any — it's a real fail"). The clone can
-    // only be steered to languages xAI officially handles
-    // (resolveExplainerLanguage !== 'auto'); for the Azure-tail targets the
-    // narration is instead ASSEMBLED from pieces — target chunks in the
-    // course's target voice, "means …" glosses in the known voice — and
-    // spliced into one file (services/pod-explainer-composite.cjs). The
-    // text pass + once-pass run as normal; only the audio strategy differs.
-    const { target } = podExplainer.parseCourseCode(courseCode)
-    const isComposite = resolveExplainerLanguage(target) === 'auto'
+    // COMPOSITE EXPLAINERS FOR ALL COURSES (Tom 2026-06-11). Born as the
+    // fix for languages the clone can't speak, promoted to THE method:
+    // the learner hears each chunk as THE CHARACTER ACTUALLY SAYS IT (the
+    // cast voice), with "means …" glosses in the known voice — absolute
+    // consistency, no second generative rendering to drift or mispronounce,
+    // and it works for every language pair. The clone path (runAudioPass)
+    // is retired; see services/pod-explainer-composite.cjs.
     try {
       if (runText) textResult = await runTextPass(courseCode)
       await runOncePass(courseCode) // first-encounter discipline before any TTS
       if (runAudio) {
-        if (isComposite) {
-          log(`[${courseCode}] composite path — clone can't speak "${target}"; assembling target-voice chunks + known-voice glosses`)
-          const { compositeExplainersForCourse } = require('./pod-explainer-composite.cjs')
-          audioResult = await compositeExplainersForCourse(courseCode, { log })
-        } else {
-          audioResult = await runAudioPass(courseCode)
-        }
+        const { compositeExplainersForCourse } = require('./pod-explainer-composite.cjs')
+        audioResult = await compositeExplainersForCourse(courseCode, { log })
       }
     } catch (err) {
       log(`[${courseCode}] FATAL:`, err?.message || err)
