@@ -3,24 +3,20 @@
     <!-- Header -->
     <div class="flex items-center justify-between gap-4 flex-wrap mb-1">
       <div>
-        <h2 class="text-sm font-semibold text-slate-200">Cast — who records each character</h2>
+        <h2 class="text-sm font-semibold text-slate-200">Cast — who can record voices?</h2>
         <p class="text-xs text-slate-400 mt-0.5">
-          Give each character in the dialogues a real person's voice. One person can play several characters,
-          as long as two characters in the same conversation never share a voice.
+          List the real people who can record, then let us work out the parts. One person can play
+          several characters — we just make sure two characters in the same conversation never share a voice.
         </p>
       </div>
       <div class="flex items-center gap-2 flex-shrink-0">
-        <label class="text-xs text-slate-400">Voices:</label>
-        <select v-model.number="proposeN" class="bg-slate-900 border border-slate-600 rounded text-xs px-2 py-1.5 text-slate-200">
-          <option v-for="n in [2,3,4,5,6]" :key="n" :value="n">{{ n }}</option>
-        </select>
         <button
-          :disabled="proposing || loading"
-          @click="proposeCast"
+          :disabled="proposing || loading || !canSolve"
+          @click="workOutParts"
           class="text-xs px-3 py-1.5 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500 disabled:opacity-50"
-          title="Suggest a fair split of characters across this many voices"
+          title="Split the characters fairly across your people"
         >
-          {{ proposing ? 'Working…' : 'Suggest a cast' }}
+          {{ proposing ? 'Working…' : 'Work out the parts' }}
         </button>
         <button
           :disabled="saving || !dirty"
@@ -37,76 +33,123 @@
     <div v-if="loading" class="text-slate-500 text-xs py-4">Loading cast…</div>
 
     <template v-else>
-      <div v-if="generationColouring" class="text-xs text-sky-300/90 mt-2">
-        This course's dialogues already come with a voice plan from generation — the suggestion button is only a fallback.
+      <!-- People rows -->
+      <div class="mt-4">
+        <div class="grid gap-2">
+          <div
+            v-for="(person, i) in people"
+            :key="i"
+            class="flex items-center gap-2 flex-wrap bg-slate-900/60 border border-slate-700 rounded p-2"
+          >
+            <input
+              v-model.trim="person.name"
+              placeholder="Name"
+              class="bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-xs text-slate-200 w-36"
+            />
+            <select
+              v-model="person.gender"
+              class="bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-xs text-slate-200"
+              title="Only a preference — it never blocks the casting"
+            >
+              <option value="">Voice: no preference</option>
+              <option value="f">Female voice</option>
+              <option value="m">Male voice</option>
+            </select>
+            <input
+              v-model.trim="person.email"
+              placeholder="Email (optional — gives them access automatically)"
+              class="bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-xs text-slate-200 flex-1 min-w-[14rem]"
+            />
+            <label
+              class="flex items-center gap-1.5 text-[11px] cursor-pointer select-none"
+              :class="person.guide ? 'text-sky-300' : 'text-slate-400'"
+              title="The bilingual guide reads the translations and explanations"
+            >
+              <input type="radio" name="pod-guide" :checked="person.guide" @change="setGuide(i)" class="accent-sky-500" />
+              bilingual guide
+            </label>
+            <button
+              @click="removePerson(i)"
+              class="text-slate-500 hover:text-red-300 text-sm px-1.5"
+              title="Remove this person"
+            >✕</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 mt-2">
+          <button
+            @click="addPerson"
+            class="text-[11px] px-2.5 py-1 rounded border border-slate-600 text-slate-300 hover:border-emerald-500"
+          >+ Add a person</button>
+          <span class="text-[11px] text-slate-500">
+            The bilingual guide reads the English lines. If nobody's marked, we'll suggest whoever has the lightest load
+            — a guide can also play a character, though a separate voice is nicer.
+          </span>
+        </div>
       </div>
 
-      <!-- Characters table -->
-      <div v-if="speakerRows.length" class="mt-4 overflow-x-auto">
-        <table class="w-full text-xs">
-          <thead>
-            <tr class="text-slate-500 text-left border-b border-slate-700">
-              <th class="py-1.5 pr-3 font-medium">Character</th>
-              <th class="py-1.5 pr-3 font-medium">Lines</th>
-              <th class="py-1.5 pr-3 font-medium">Recorded by</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="row in speakerRows" :key="row.speaker" class="border-b border-slate-700/50">
-              <td class="py-2 pr-3">
-                <span class="text-slate-200">{{ row.label }}</span>
-                <span v-if="row.gender === 'f'" class="text-pink-300/70 ml-1" title="Female character">♀</span>
-                <span v-else-if="row.gender === 'm'" class="text-sky-300/70 ml-1" title="Male character">♂</span>
-              </td>
-              <td class="py-2 pr-3 text-slate-400">{{ row.lineCount }}</td>
-              <td class="py-2 pr-3">
-                <select
-                  :value="assignments[row.speaker] || ''"
-                  @change="setAssignment(row.speaker, $event.target.value)"
-                  class="bg-slate-900 border border-slate-600 rounded px-2 py-1 text-slate-200 min-w-[12rem]"
-                >
-                  <option value="">— not assigned yet —</option>
-                  <option v-for="v in voiceOptions" :key="v.voiceId" :value="v.voiceId">
-                    {{ v.name }}{{ v.placeholder ? ' (placeholder)' : '' }}
-                  </option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div v-else class="text-xs text-slate-500 mt-4">
-        No dialogue characters yet — generate or sync a pod first.
+      <!-- Generation-side colouring: demoted to a default suggestion -->
+      <div v-if="generationColouring" class="text-[11px] text-slate-500 mt-3">
+        This course came with a ready-made 5-voice plan from generation — a handy default when you have
+        5 people. Your list above always wins.
       </div>
 
-      <!-- Per-voice summary: progress placeholders + record links -->
-      <div v-if="voiceSummary.length" class="mt-5 border-t border-slate-700 pt-4">
-        <h3 class="text-xs font-semibold text-slate-300 mb-2">Each voice's recording session</h3>
+      <!-- Warnings from the solve -->
+      <div v-if="proposal && proposal.warnings?.length" class="mt-4 grid gap-1.5">
+        <div
+          v-for="(w, i) in proposal.warnings"
+          :key="i"
+          class="text-xs rounded px-3 py-2 border"
+          :class="w.type === 'need-more-people'
+            ? 'bg-amber-900/30 border-amber-700 text-amber-200'
+            : 'bg-slate-900/60 border-slate-700 text-slate-300'"
+        >{{ w.message }}</div>
+      </div>
+
+      <!-- The allocation: who plays what -->
+      <div v-if="allocation.length" class="mt-5 border-t border-slate-700 pt-4">
+        <h3 class="text-xs font-semibold text-slate-300 mb-2">
+          {{ proposal ? 'The parts — review, then Save cast' : 'Saved cast' }}
+        </h3>
         <div class="grid gap-2 sm:grid-cols-2">
-          <div v-for="v in voiceSummary" :key="v.voiceId" class="bg-slate-900/60 border border-slate-700 rounded p-3">
+          <div v-for="a in allocation" :key="a.voiceId" class="bg-slate-900/60 border border-slate-700 rounded p-3">
             <div class="flex items-center justify-between gap-2">
-              <div class="text-sm text-slate-200 font-medium truncate">{{ v.name }}</div>
+              <div class="text-sm text-slate-200 font-medium truncate">
+                {{ a.name }}
+                <span v-if="a.isGuide" class="text-[10px] text-sky-300 border border-sky-700 rounded-full px-1.5 py-0.5 ml-1 align-middle">
+                  bilingual guide{{ a.guideSuggested ? ' (suggested)' : '' }}
+                </span>
+              </div>
               <button
-                @click="copyRecordLink(v.voiceId)"
+                @click="copyRecordLink(a.voiceId)"
                 class="text-[11px] px-2 py-1 rounded border border-slate-600 text-slate-300 hover:border-emerald-500 flex-shrink-0"
-                :title="recordLink(v.voiceId)"
+                :title="recordLink(a.voiceId)"
               >
-                {{ copiedVoiceId === v.voiceId ? 'Copied ✓' : 'Copy record link' }}
+                {{ copiedVoiceId === a.voiceId ? 'Copied ✓' : 'Copy record link' }}
               </button>
             </div>
-            <div class="text-[11px] text-slate-400 mt-1 truncate">
-              Plays: {{ v.characters.join(', ') || '—' }}
+            <div class="text-[11px] text-slate-400 mt-1">
+              Plays: {{ a.characters.length ? a.characters.join(', ') : (a.isGuide ? 'just the guide lines' : '—') }}
             </div>
-            <div class="text-[11px] text-slate-500 mt-1.5">
-              <!-- Placeholder until per-voice recorded counts land (keystone §5) -->
-              0 of {{ v.lines }} lines recorded
-              <span class="text-slate-600">· progress appears here once recording starts</span>
+            <div class="text-[11px] text-slate-500 mt-1">
+              {{ a.lineCount }} line{{ a.lineCount === 1 ? '' : 's' }}
+              <span v-if="a.estimatedMinutes != null"> · about {{ a.estimatedMinutes }} min of recording</span>
+            </div>
+            <div v-if="a.email" class="text-[11px] text-slate-500 mt-1.5 truncate">
+              Send the link to <span class="text-slate-400">{{ a.email }}</span> — they'll get access automatically when you save.
             </div>
           </div>
         </div>
         <p class="text-[11px] text-slate-500 mt-2">
-          Send each person their record link — it opens their lines, with the conversation shown for context.
+          Each record link opens that person's lines, with the conversation shown around them for context.
         </p>
+      </div>
+      <div v-else-if="!speakerCount" class="text-xs text-slate-500 mt-4">
+        No dialogue characters yet — generate or sync a pod first.
+      </div>
+
+      <!-- Provisioning results after a save -->
+      <div v-if="provisioningNotes.length" class="mt-3 grid gap-1">
+        <div v-for="(n, i) in provisioningNotes" :key="i" class="text-[11px] text-slate-400">{{ n }}</div>
       </div>
     </template>
   </div>
@@ -114,9 +157,11 @@
 
 <script setup>
 /**
- * Pod casting panel (keystone: pods-recording-model.md §1).
- * Talks to GET/PUT /api/production/:courseCode/pods/cast. Plain language —
- * community leaders run this, not engineers.
+ * Pod casting panel — PEOPLE-FIRST (Tom's design 2026-06-11; keystone
+ * pods-recording-model.md §1 + softened addendum). The leader lists who can
+ * actually record; POST /pods/cast/propose works out the parts; PUT /pods/cast
+ * saves and auto-provisions access for entries carrying an email.
+ * Plain language — community leaders run this, not engineers.
  */
 import { ref, computed, onMounted } from 'vue'
 import { getApiUrl } from '@/services/api.js'
@@ -135,15 +180,15 @@ const saving = ref(false)
 const status = ref('')
 const statusIsError = ref(false)
 const copiedVoiceId = ref(null)
-const proposeN = ref(5) // 4-5 voices is the sweet spot
 
-const speakers = ref([])          // [{ speaker, gender, lineCount, ... }]
-const explainerInfo = ref(null)   // { speaker, knownLines, explainerLines }
+const people = ref([])            // [{ name, gender, email, guide }]
+const proposal = ref(null)        // POST /cast/propose response
+const speakers = ref([])          // [{ speaker, gender, lineCount, estimatedSeconds }]
+const explainerInfo = ref(null)   // { speaker, knownLines, explainerLines, estimatedSeconds }
 const rosterVoices = ref([])      // [{ voiceId, name, email }]
 const savedCast = ref({})         // server's podCast
-const assignments = ref({})       // speaker → voiceId (editable)
-const proposalNames = ref({})     // voiceId → display name (from proposals/saved cast)
 const generationColouring = ref(false)
+const provisioningNotes = ref([])
 
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
@@ -160,16 +205,61 @@ function note(msg, isError = false) {
   statusIsError.value = isError
 }
 
-function applyCastToAssignments(podCast) {
-  const map = {}
-  for (const [speaker, entry] of Object.entries(podCast || {})) {
-    if (entry && entry.voiceId) {
-      map[speaker] = entry.voiceId
-      if (entry.name) proposalNames.value[entry.voiceId] = entry.name
+// ── People rows ──────────────────────────────────────────────────────────────
+
+function blankPerson() {
+  return { name: '', gender: '', email: '', guide: false }
+}
+
+function addPerson() {
+  people.value = [...people.value, blankPerson()]
+}
+
+function removePerson(i) {
+  people.value = people.value.filter((_, idx) => idx !== i)
+  proposal.value = null // the cast no longer matches the people
+}
+
+function setGuide(i) {
+  people.value = people.value.map((p, idx) => ({ ...p, guide: idx === i }))
+}
+
+const canSolve = computed(() =>
+  people.value.some(p => (p.name && p.name.trim()) || (p.email && p.email.trim())))
+
+const speakerCount = computed(() => speakers.value.length)
+
+/** Prefill the people list: saved cast first, then the course roster, else one empty row. */
+function prefillPeople() {
+  const seen = new Map() // voiceId → person
+  const guideVoiceId = savedCast.value?.[EXPLAINER]?.voiceId || null
+  for (const [speaker, entry] of Object.entries(savedCast.value || {})) {
+    if (!entry?.voiceId) continue
+    if (!seen.has(entry.voiceId)) {
+      seen.set(entry.voiceId, {
+        name: entry.name || entry.voiceId,
+        gender: entry.gender === 'f' || entry.gender === 'm' ? entry.gender : '',
+        email: entry.email || '',
+        guide: entry.voiceId === guideVoiceId,
+      })
+    } else if (speaker === EXPLAINER) {
+      seen.get(entry.voiceId).guide = true
     }
   }
-  assignments.value = map
+  if (seen.size) {
+    people.value = [...seen.values()]
+    return
+  }
+  if (rosterVoices.value.length) {
+    people.value = rosterVoices.value.map(v => ({
+      name: v.name || '', gender: '', email: v.email || '', guide: false,
+    }))
+    return
+  }
+  people.value = [blankPerson()]
 }
+
+// ── Load / propose / save ────────────────────────────────────────────────────
 
 async function loadCast() {
   loading.value = true
@@ -180,7 +270,7 @@ async function loadCast() {
     rosterVoices.value = data.rosterVoices || []
     generationColouring.value = !!data.generationColouring
     savedCast.value = data.podCast || {}
-    applyCastToAssignments(savedCast.value)
+    prefillPeople()
     note('')
   } catch (err) {
     note(err.message || String(err), true)
@@ -189,22 +279,29 @@ async function loadCast() {
   }
 }
 
-async function proposeCast() {
+async function workOutParts() {
   proposing.value = true
+  provisioningNotes.value = []
   try {
-    const data = await authedFetch(`/api/production/${props.courseCode}/pods/cast?voices=${proposeN.value}`)
-    const proposal = data.proposal
-    if (!proposal) throw new Error('No suggestion returned')
-    const map = { ...assignments.value }
-    for (const [speaker, entry] of Object.entries(proposal.castBySpeaker || {})) {
-      map[speaker] = entry.voiceId
-      if (entry.name) proposalNames.value[entry.voiceId] = entry.name
+    const body = {
+      people: people.value
+        .filter(p => (p.name && p.name.trim()) || (p.email && p.email.trim()))
+        .map(p => ({
+          name: p.name || undefined,
+          gender: p.gender || undefined,
+          email: p.email || undefined,
+          guide: p.guide || undefined,
+        })),
     }
-    assignments.value = map
-    const forced = proposal.report?.forced?.length || 0
-    note(forced
-      ? `Suggestion ready — but ${forced} character(s) had to share a voice with someone they talk to. More voices would fix that. Review, then Save.`
-      : 'Suggestion ready — review the names, then press Save cast.')
+    const data = await authedFetch(`/api/production/${props.courseCode}/pods/cast/propose`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+    proposal.value = data
+    const blocking = (data.warnings || []).filter(w => w.type === 'need-more-people').length
+    note(blocking
+      ? 'Parts worked out — see the note below about needing more people. You can still save and adjust later.'
+      : 'Parts worked out — review who plays what, then press Save cast.')
   } catch (err) {
     note(err.message || String(err), true)
   } finally {
@@ -213,45 +310,55 @@ async function proposeCast() {
 }
 
 const dirty = computed(() => {
-  const saved = {}
-  for (const [sp, e] of Object.entries(savedCast.value || {})) saved[sp] = e?.voiceId || ''
-  const cur = assignments.value
-  const keys = new Set([...Object.keys(saved), ...Object.keys(cur)])
-  for (const k of keys) if ((saved[k] || '') !== (cur[k] || '')) return true
+  if (!proposal.value) return false
+  const proposed = proposal.value.podCast || {}
+  const saved = savedCast.value || {}
+  const keys = new Set([...Object.keys(proposed), ...Object.keys(saved)])
+  for (const k of keys) {
+    const p = proposed[k], s = saved[k]
+    if (!p !== !s) return true
+    if (p && s && (p.voiceId !== s.voiceId || (p.name || '') !== (s.name || '') ||
+        (p.email || '') !== (s.email || '') || (p.gender || '') !== (s.gender || ''))) return true
+  }
   return false
 })
 
-function setAssignment(speaker, voiceId) {
-  assignments.value = { ...assignments.value, [speaker]: voiceId }
-}
-
 async function saveCast() {
+  if (!proposal.value) return
   saving.value = true
   try {
-    // Surgical: send only the changed speakers; null clears an entry.
-    const updates = {}
+    // Surgical diff: changed speakers only; null clears entries no longer cast.
+    const proposed = proposal.value.podCast || {}
     const saved = savedCast.value || {}
-    const keys = new Set([...Object.keys(saved), ...Object.keys(assignments.value)])
-    for (const speaker of keys) {
-      const cur = assignments.value[speaker] || ''
-      const was = saved[speaker]?.voiceId || ''
-      if (cur === was) continue
-      if (!cur) { updates[speaker] = null; continue }
-      const voice = voiceOptions.value.find(v => v.voiceId === cur)
+    const updates = {}
+    for (const [speaker, entry] of Object.entries(proposed)) {
+      const was = saved[speaker]
+      if (was && was.voiceId === entry.voiceId && (was.name || '') === (entry.name || '') &&
+          (was.email || '') === (entry.email || '') && (was.gender || '') === (entry.gender || '')) continue
       updates[speaker] = {
-        voiceId: cur,
-        name: voice?.name || cur,
-        ...(voice?.email ? { email: voice.email } : {}),
+        voiceId: entry.voiceId,
+        name: entry.name || '',
+        email: entry.email || '',
+        gender: entry.gender || '',
       }
     }
+    for (const speaker of Object.keys(saved)) {
+      if (!(speaker in proposed)) updates[speaker] = null
+    }
     if (!Object.keys(updates).length) { note('Nothing to save.'); return }
+
     const data = await authedFetch(`/api/production/${props.courseCode}/pods/cast`, {
       method: 'PUT',
       body: JSON.stringify({ podCast: updates }),
     })
     savedCast.value = data.podCast || {}
-    applyCastToAssignments(savedCast.value)
-    note('Cast saved ✓')
+    provisioningNotes.value = (data.provisioning || []).map(p => {
+      if (p.action === 'create') return `✓ ${p.email} now has recording access to this course — they can log in with this email.`
+      if (p.action === 'add-course') return `✓ ${p.email} already had an account — this course was added for them.`
+      if (p.action === 'error') return `⚠ Couldn't set up access for ${p.email}: ${p.error}`
+      return null
+    }).filter(Boolean)
+    note('Cast saved ✓ — copy each person their record link below.')
   } catch (err) {
     note(err.message || String(err), true)
   } finally {
@@ -259,67 +366,58 @@ async function saveCast() {
   }
 }
 
-// ── Display rows ─────────────────────────────────────────────────────────────
+// ── The allocation display (proposal first, saved cast as fallback) ─────────
 
-const speakerRows = computed(() => {
-  const rows = speakers.value.map(s => ({
-    speaker: s.speaker,
-    label: s.speaker,
-    gender: s.gender,
-    lineCount: s.lineCount,
-  }))
-  const ex = explainerInfo.value
-  if (ex && (ex.knownLines || ex.explainerLines)) {
-    rows.push({
-      speaker: EXPLAINER,
-      label: 'English helper (translations + explanations)',
-      gender: 'n',
-      lineCount: (ex.knownLines || 0) + (ex.explainerLines || 0),
-    })
+const allocation = computed(() => {
+  if (proposal.value) {
+    return (proposal.value.assignments || []).map(a => ({
+      voiceId: a.voiceId,
+      name: a.name,
+      email: a.email,
+      characters: a.characters,
+      lineCount: a.lineCount + (a.isGuide
+        ? (proposal.value.explainer?.knownLines || 0) + (proposal.value.explainer?.explainerLines || 0)
+        : 0),
+      estimatedMinutes: a.estimatedMinutes,
+      isGuide: a.isGuide,
+      guideSuggested: a.guideSuggested,
+    }))
   }
-  return rows
-})
-
-const voiceOptions = computed(() => {
-  const seen = new Map()
-  for (const v of rosterVoices.value) {
-    seen.set(v.voiceId, { voiceId: v.voiceId, name: v.name || v.voiceId, email: v.email || null, placeholder: false })
-  }
-  // Voices referenced by the saved cast or a suggestion but not (yet) on the
-  // roster — keep them selectable so a suggestion is usable before everyone
-  // has joined.
-  const referenced = new Set([
-    ...Object.values(assignments.value).filter(Boolean),
-    ...Object.values(savedCast.value || {}).map(e => e?.voiceId).filter(Boolean),
-  ])
-  for (const vid of referenced) {
-    if (!seen.has(vid)) {
-      seen.set(vid, {
-        voiceId: vid,
-        name: proposalNames.value[vid] || vid,
-        email: null,
-        placeholder: vid.startsWith('pod_voice_'),
+  // Derived from the saved cast (page reload before any new solve).
+  const bySpeaker = new Map(speakers.value.map(s => [s.speaker, s]))
+  const byVoice = new Map()
+  for (const [speaker, entry] of Object.entries(savedCast.value || {})) {
+    if (!entry?.voiceId) continue
+    if (!byVoice.has(entry.voiceId)) {
+      byVoice.set(entry.voiceId, {
+        voiceId: entry.voiceId,
+        name: entry.name || entry.voiceId,
+        email: entry.email || null,
+        characters: [],
+        lineCount: 0,
+        seconds: 0,
+        isGuide: false,
+        guideSuggested: false,
       })
     }
+    const rec = byVoice.get(entry.voiceId)
+    if (speaker === EXPLAINER) {
+      rec.isGuide = true
+      rec.lineCount += (explainerInfo.value?.knownLines || 0) + (explainerInfo.value?.explainerLines || 0)
+      rec.seconds += explainerInfo.value?.estimatedSeconds || 0
+    } else {
+      rec.characters.push(speaker)
+      const sp = bySpeaker.get(speaker)
+      rec.lineCount += sp?.lineCount || 0
+      rec.seconds += sp?.estimatedSeconds || 0
+    }
   }
-  return [...seen.values()]
+  return [...byVoice.values()]
+    .map(r => ({ ...r, estimatedMinutes: Math.round((r.seconds / 60) * 10) / 10 }))
+    .sort((a, b) => b.lineCount - a.lineCount)
 })
 
-const voiceSummary = computed(() => {
-  const byVoice = new Map()
-  for (const row of speakerRows.value) {
-    const vid = assignments.value[row.speaker]
-    if (!vid) continue
-    if (!byVoice.has(vid)) {
-      const v = voiceOptions.value.find(o => o.voiceId === vid)
-      byVoice.set(vid, { voiceId: vid, name: v?.name || vid, characters: [], lines: 0 })
-    }
-    const rec = byVoice.get(vid)
-    rec.characters.push(row.speaker === EXPLAINER ? 'English helper' : row.label)
-    rec.lines += row.lineCount
-  }
-  return [...byVoice.values()].sort((a, b) => b.lines - a.lines)
-})
+// ── Record links ─────────────────────────────────────────────────────────────
 
 function recordLink(voiceId) {
   return `${window.location.origin}/record/${props.courseCode}?podVoice=${encodeURIComponent(voiceId)}`
