@@ -393,6 +393,18 @@ app.use('/api/production/:courseCode/team',
     bumpCourseVersion: require('./shared/course-version.cjs').bumpCourseVersion,
   }))
 
+// Pod casting + per-voice recording plans (human pod recording keystone).
+// Same gate coverage as the voice-engine mounts above. Writes touch ONLY
+// courses.voice_config.podCast — an additive key TTS serving never reads —
+// via a surgical merge (pods-cast.cjs), so no course-version bump is needed.
+app.use('/api/production/:courseCode/pods',
+  require('./voice-engine/pods-router.cjs')({
+    requireDashboardUser,
+    userCanAccessCourse,
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
