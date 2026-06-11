@@ -484,24 +484,20 @@ async function runAudioPass(courseCode) {
     const courseStart = Date.now()
     let textResult = null
     let audioResult = null
-    // SACKED LANGUAGES (Tom 2026-06-11: "the explainer voice can't do Irish").
-    // The explainer is Tom's xAI multilingual clone — it can only be steered
-    // to languages xAI officially handles (resolveExplainerLanguage !== 'auto').
-    // For the Azure-tail targets (Irish, Croatian, Icelandic…) an 'auto' cue
-    // mangles the target chunks, which is worse than no explainer: the player
-    // plays the translation in the explainer slot instead. Skip text AND
-    // audio; any previously-voiced clips get nulled by the bulk's explainer
-    // stage (pod-bulk-migrate) or the one-off sack script.
-    const { target } = podExplainer.parseCourseCode(courseCode)
-    if (resolveExplainerLanguage(target) === 'auto') {
-      log(`[${courseCode}] SACKED — explainer voice can't speak "${target}"; translation plays in the explainer slot`)
-      summary.push({ courseCode, sacked: true, elapsed_ms: Date.now() - courseStart })
-      continue
-    }
+    // COMPOSITE EXPLAINERS FOR ALL COURSES (Tom 2026-06-11). Born as the
+    // fix for languages the clone can't speak, promoted to THE method:
+    // the learner hears each chunk as THE CHARACTER ACTUALLY SAYS IT (the
+    // cast voice), with "means …" glosses in the known voice — absolute
+    // consistency, no second generative rendering to drift or mispronounce,
+    // and it works for every language pair. The clone path (runAudioPass)
+    // is retired; see services/pod-explainer-composite.cjs.
     try {
       if (runText) textResult = await runTextPass(courseCode)
       await runOncePass(courseCode) // first-encounter discipline before any TTS
-      if (runAudio) audioResult = await runAudioPass(courseCode)
+      if (runAudio) {
+        const { compositeExplainersForCourse } = require('./pod-explainer-composite.cjs')
+        audioResult = await compositeExplainersForCourse(courseCode, { log })
+      }
     } catch (err) {
       log(`[${courseCode}] FATAL:`, err?.message || err)
       summary.push({ courseCode, error: err?.message || String(err) })
