@@ -12,8 +12,25 @@
       </div>
     </header>
 
+    <!-- Several rooms (recording for more than one course) — pick one -->
+    <section v-if="!courseCode && myRooms.length > 1" class="room-card">
+      <h2>Your recording rooms</h2>
+      <p>You're recording for more than one course — pick a room:</p>
+      <nav class="room-list">
+        <router-link
+          v-for="code in myRooms"
+          :key="code"
+          :to="`/record/${code}`"
+          class="room-list-item"
+        >
+          <span class="room-list-name">{{ getCourseName(code) || code }}</span>
+          <span class="room-list-arrow" aria-hidden="true">&rarr;</span>
+        </router-link>
+      </nav>
+    </section>
+
     <!-- No course linked yet -->
-    <section v-if="!courseCode" class="room-card center">
+    <section v-else-if="!courseCode" class="room-card center">
       <h2>You're not linked to a course yet</h2>
       <p>
         Ask your course leader to add you to their course, then use the link they send you.
@@ -178,6 +195,13 @@ const scriptMinutes = ref(null)
 const scriptError = ref(null)
 
 const userName = computed(() => learner.value?.name || learner.value?.email || '')
+
+// Rooms this person records in: their explicit course list (admins/editors
+// hold '*' which isn't enumerable — they arrive via per-course links anyway).
+const myRooms = computed(() => {
+  const c = learner.value?.courses
+  return Array.isArray(c) ? c : []
+})
 
 // /api/production/:c/info returns camelCase (targetLang/knownLang); older
 // payload shapes used snake_case — accept both.
@@ -555,5 +579,36 @@ onMounted(loadRoom)
   .room-studio {
     margin: 0 -1rem -1rem;
   }
+}
+.room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.room-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 10px;
+  color: var(--color-paper, #f7f7f2);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.room-list-item:hover {
+  border-color: var(--color-tungsten, #ffa630);
+  transform: translateY(-1px);
+}
+
+.room-list-name {
+  font-weight: 600;
+}
+
+.room-list-arrow {
+  color: var(--color-tungsten, #ffa630);
 }
 </style>

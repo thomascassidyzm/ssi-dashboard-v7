@@ -585,22 +585,24 @@ router.beforeEach(async (to, from, next) => {
   // a recorder must bounce to /record/..., never to the course list.
   if (isRecorder.value) {
     const courses = learner.value?.courses
-    const firstCourse = Array.isArray(courses) && courses.length > 0 ? courses[0] : null
+    const courseList = Array.isArray(courses) ? courses : []
+    const firstCourse = courseList[0] || null
+    // One course → straight into that room. Several (Catrin records North
+    // AND South) → the bare Record Room renders the room picker.
+    const homeRoom = courseList.length === 1 ? `/record/${firstCourse}` : { name: 'RecordRoom' }
 
     if (to.name !== 'RecordRoom') {
-      return next(firstCourse ? `/record/${firstCourse}` : { name: 'RecordRoom' })
+      return next(homeRoom)
     }
 
     // Inside the room: only their own assigned course(s)
     const recorderCourse = to.params.courseCode
     if (recorderCourse && !canAccessCourse(recorderCourse)) {
-      if (firstCourse && firstCourse !== recorderCourse) return next(`/record/${firstCourse}`)
-      if (!firstCourse) return next({ name: 'RecordRoom' })
-      // firstCourse === recorderCourse but canAccessCourse false — shouldn't happen; fall through
+      return next(homeRoom)
     }
 
     // Landed at /record with no course but exactly one assigned — take them straight in
-    if (!recorderCourse && firstCourse) {
+    if (!recorderCourse && courseList.length === 1) {
       return next(`/record/${firstCourse}`)
     }
 
