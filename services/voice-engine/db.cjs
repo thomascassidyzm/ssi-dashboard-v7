@@ -2,8 +2,13 @@
  * voice-engine/db.cjs — all Supabase reads/writes the engine performs,
  * isolated so tests can inject a plain-object fake.
  *
- * READS are paginated (PostgREST max-rows silently truncates un-paginated
- * selects — the INF PLAY lesson).
+ * READS: count + one unordered fetch, ordered-pager fallback. ORDER BY +
+ * OFFSET pagination re-scans and re-sorts the whole match set on every page,
+ * and PostgREST's parameterized statements get generic plans — on big
+ * courses that hit the DB statement timeout (live 2026-06-11, fra_for_eng
+ * coverage). A single unordered fetch is one cheap scan; the exact count
+ * makes max-rows truncation DETECTABLE (the INF PLAY lesson — never trust
+ * an un-checked big select), and only then do we pay for the ordered pager.
  * WRITES: course_audio upsert only (origin='human', conflict on the live
  * 5-column unique index that phase8 upserts against), plus the existing
  * link pass (link_all_audio_ids RPC). NO DDL.
@@ -27,6 +32,24 @@ async function pageThrough(buildQuery) {
   return all
 }
 
+/**
+ * Fetch every row matching a filter.
+ * @param {() => any} countQuery  builder returning select(..., {count:'exact', head:true}) + filters
+ * @param {() => any} dataQuery   builder returning the unordered filtered select (no order/range)
+ * @param {(from,to) => any} pagedQuery  ordered+ranged fallback builder
+ */
+async function fetchAll(countQuery, dataQuery, pagedQuery) {
+  const { count, error: countError } = await countQuery()
+  if (countError) throw new Error(countError.message)
+  const expected = count ?? 0
+  if (expected === 0) return []
+  const { data, error } = await dataQuery().limit(expected + PAGE_SIZE)
+  if (!error && data && data.length >= expected) return data
+  // max-rows truncated the single fetch (or it errored) — correctness over
+  // speed: fall back to the ordered pager.
+  return pageThrough(pagedQuery)
+}
+
 async function loadCourse(supabase, courseCode) {
   const { data, error } = await supabase
     .from('courses')
@@ -39,31 +62,42 @@ async function loadCourse(supabase, courseCode) {
 
 /** New LEGOs only — the splice universe (matches the planner). */
 async function loadNewLegos(supabase, courseCode) {
-  return pageThrough((from, to) => supabase
-    .from('course_legos')
-    .select('lego_id, target_text, known_text, type, is_new, seed_number, lego_index')
-    .eq('course_code', courseCode)
-    .eq('is_new', true)
-    .order('lego_id', { ascending: true })
-    .range(from, to))
+  return fetchAll(
+    () => supabase.from('course_legos').select('lego_id', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('is_new', true),
+    () => supabase.from('course_legos')
+      .select('lego_id, target_text, known_text, type, is_new, seed_number, lego_index')
+      .eq('course_code', courseCode).eq('is_new', true),
+    (from, to) => supabase.from('course_legos')
+      .select('lego_id, target_text, known_text, type, is_new, seed_number, lego_index')
+      .eq('course_code', courseCode).eq('is_new', true)
+      .order('lego_id', { ascending: true }).range(from, to))
 }
 
 async function loadPhrases(supabase, courseCode) {
-  return pageThrough((from, to) => supabase
-    .from('course_practice_phrases')
-    .select('id, target_text, known_text, phrase_role, seed_number, lego_index')
-    .eq('course_code', courseCode)
-    .order('id', { ascending: true })
-    .range(from, to))
+  return fetchAll(
+    () => supabase.from('course_practice_phrases').select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode),
+    () => supabase.from('course_practice_phrases')
+      .select('id, target_text, known_text, phrase_role, seed_number, lego_index')
+      .eq('course_code', courseCode),
+    (from, to) => supabase.from('course_practice_phrases')
+      .select('id, target_text, known_text, phrase_role, seed_number, lego_index')
+      .eq('course_code', courseCode)
+      .order('id', { ascending: true }).range(from, to))
 }
 
 async function loadSeeds(supabase, courseCode) {
-  return pageThrough((from, to) => supabase
-    .from('course_seeds')
-    .select('id, target_text, known_text, seed_number')
-    .eq('course_code', courseCode)
-    .order('seed_number', { ascending: true })
-    .range(from, to))
+  return fetchAll(
+    () => supabase.from('course_seeds').select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode),
+    () => supabase.from('course_seeds')
+      .select('id, target_text, known_text, seed_number')
+      .eq('course_code', courseCode),
+    (from, to) => supabase.from('course_seeds')
+      .select('id, target_text, known_text, seed_number')
+      .eq('course_code', courseCode)
+      .order('seed_number', { ascending: true }).range(from, to))
 }
 
 /**
@@ -73,17 +107,15 @@ async function loadSeeds(supabase, courseCode) {
  * (.has() keeps working for the splice planner.)
  */
 async function fetchExistingAudioTexts(supabase, { courseCode, role, voiceId }) {
-  const rows = await pageThrough((from, to) => {
-    let q = supabase
-      .from('course_audio')
-      .select('text_normalized, s3_key')
-      .eq('course_code', courseCode)
-      .eq('role', role)
-      .order('id', { ascending: true })
-      .range(from, to)
-    if (voiceId) q = q.eq('voice_id', voiceId)
-    return q
-  })
+  const filters = (q) => {
+    q = q.eq('course_code', courseCode).eq('role', role)
+    return voiceId ? q.eq('voice_id', voiceId) : q
+  }
+  const rows = await fetchAll(
+    () => filters(supabase.from('course_audio').select('id', { count: 'exact', head: true })),
+    () => filters(supabase.from('course_audio').select('text_normalized, s3_key')),
+    (from, to) => filters(supabase.from('course_audio').select('text_normalized, s3_key'))
+      .order('id', { ascending: true }).range(from, to))
   const map = new Map()
   for (const r of rows) {
     if (r.text_normalized) map.set(r.text_normalized, r.s3_key ?? null)
@@ -93,13 +125,14 @@ async function fetchExistingAudioTexts(supabase, { courseCode, role, voiceId }) 
 
 /** All audio rows for a role (any voice) — used by /coverage. */
 async function fetchAudioRowsForRole(supabase, { courseCode, role }) {
-  return pageThrough((from, to) => supabase
-    .from('course_audio')
-    .select('text_normalized, voice_id, origin')
-    .eq('course_code', courseCode)
-    .eq('role', role)
-    .order('id', { ascending: true })
-    .range(from, to))
+  return fetchAll(
+    () => supabase.from('course_audio').select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode).eq('role', role),
+    () => supabase.from('course_audio').select('text_normalized, voice_id, origin')
+      .eq('course_code', courseCode).eq('role', role),
+    (from, to) => supabase.from('course_audio').select('text_normalized, voice_id, origin')
+      .eq('course_code', courseCode).eq('role', role)
+      .order('id', { ascending: true }).range(from, to))
 }
 
 /**
@@ -157,6 +190,7 @@ async function linkCourseAudio(supabase, courseCode) {
 module.exports = {
   PAGE_SIZE,
   pageThrough,
+  fetchAll,
   loadCourse,
   loadNewLegos,
   loadPhrases,
