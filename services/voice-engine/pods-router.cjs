@@ -14,9 +14,18 @@
  * Endpoints:
  *   GET /cast                 current podCast + character inventory with line
  *                             counts (+ solver proposal when ?voices=N)
- *   PUT /cast                 { podCast: { speaker: {voiceId,name?,email?} | null } }
+ *   POST /cast/propose        { people: [{name, gender?, email?, guide?}] } →
+ *                             PEOPLE-FIRST solve: assignments per person,
+ *                             plain-language warnings, feasibility
+ *                             (GET variant takes ?people=<JSON> for tooling)
+ *   PUT /cast                 { podCast: { speaker: {voiceId,name?,email?,gender?} | null } }
  *                             → surgical additive merge into
  *                             courses.voice_config.podCast (voices.* untouched)
+ *                             + AUTO-PROVISIONING: cast entries carrying an
+ *                             email get dashboard access (create recorder row
+ *                             mirroring the invite-redeem shape, or add this
+ *                             course to an existing courses[] — role/voice_id
+ *                             of existing users NEVER touched)
  *   GET /recording-plan       ?voiceId= → ordered autocue queue with cues,
  *                             glue grouping, explainer queue, estimated minutes
  *
@@ -35,6 +44,8 @@ const {
   speakerInventory,
   hasGenerationColouring,
   buildSentenceEditPatch,
+  proposePeopleCast,
+  provisionPlanFor,
 } = require('./pods-cast.cjs')
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 
@@ -193,6 +204,135 @@ module.exports = function createPodsCastRouter({
     }
   })
 
+  // ── POST /cast/propose — PEOPLE-FIRST solve (Tom's design 2026-06-11) ─────
+  // The leader declares WHO can record; the people drive the colouring.
+  // Generation-side colouring never blocks this (keystone addendum, softened):
+  // it stays available as a default suggestion for the 5-person case.
+  async function handlePropose(req, res) {
+    const { courseCode } = req.params
+    let people = req.body && req.body.people
+    if (!people && req.query.people) {
+      try { people = JSON.parse(String(req.query.people)) } catch {
+        return res.status(400).json({ error: 'people query parameter must be JSON' })
+      }
+    }
+    if (!Array.isArray(people) || people.length === 0) {
+      return res.status(400).json({ error: 'Body must be { people: [{ name, gender?, email?, guide? }] } with at least one person' })
+    }
+    try {
+      const db = getDb()
+      const [{ found, voiceConfig }, pods] = await Promise.all([
+        fetchVoiceConfig(db, courseCode),
+        fetchPods(db, courseCode),
+      ])
+      if (!found) return res.status(404).json({ error: `Course ${courseCode} not found` })
+
+      const sentences = await fetchAllSentences(db, pods.map(p => p.id))
+      const inventory = speakerInventory({ pods, sentences })
+      const genderBySpeaker = {}
+      for (const sp of inventory.speakers) genderBySpeaker[sp.speaker] = sp.gender
+
+      let proposal
+      try {
+        proposal = proposePeopleCast({
+          people,
+          sentences,
+          courseCode,
+          genderBySpeaker,
+          existingCast: (voiceConfig && voiceConfig.podCast) || null,
+          explainerWorkload: inventory.explainer,
+        })
+      } catch (err) {
+        return res.status(400).json({ error: err.message })
+      }
+
+      res.json({
+        course_code: courseCode,
+        ...proposal,
+        // Informational only — a people-first solve is never blocked by it.
+        generationColouring: hasGenerationColouring(pods),
+      })
+    } catch (err) {
+      logger.error(`[PodsCast] propose failed for ${courseCode}:`, err)
+      res.status(500).json({ error: 'Failed to work out the parts' })
+    }
+  }
+  router.post('/cast/propose', handlePropose)
+  router.get('/cast/propose', handlePropose)
+
+  // ── Auto-provisioning (PUT /cast) ─────────────────────────────────────────
+  // A saved cast entry carrying an email grants that person dashboard access:
+  //  - no dashboard_users row → CREATE { email, name, role:'recorder',
+  //    courses:[courseCode], voice_id } — mirrors the invite-redeem row shape
+  //    (production-api.cjs POST /api/auth/invite-codes/redeem), no code involved
+  //  - existing row → NEVER touch role/voice_id; append courseCode to
+  //    courses[] only when it's an array missing it ('*' and weird shapes
+  //    untouched). Idempotent: a re-PUT is all no-ops.
+  async function provisionCastMembers(db, courseCode, entries, actorEmail) {
+    // One decision per email (a person may play several characters).
+    const byEmail = new Map()
+    for (const entry of entries) {
+      if (!entry || !entry.email || !entry.voiceId) continue
+      const email = String(entry.email).trim().toLowerCase()
+      if (email && !byEmail.has(email)) byEmail.set(email, entry)
+    }
+
+    const results = []
+    for (const [email, entry] of byEmail) {
+      try {
+        const { data: row, error } = await db
+          .from('dashboard_users')
+          .select('email, name, role, courses, voice_id')
+          .eq('email', email)
+          .maybeSingle()
+        if (error) throw new Error(error.message)
+
+        const plan = provisionPlanFor(row || null, courseCode)
+        if (plan.action === 'create') {
+          // Supabase Auth account so they can log in with OTP (same tolerant
+          // pattern as the redeem endpoint — "already exists" is fine).
+          try {
+            await db.auth.admin.createUser({ email, email_confirm: true })
+          } catch (authErr) {
+            if (!authErr.message?.includes('already') && !authErr.message?.includes('exists')) {
+              logger.warn(`[PodsCast] Failed to create auth account for ${email}: ${authErr.message}`)
+            }
+          }
+          const { error: insertError } = await db
+            .from('dashboard_users')
+            .insert({
+              email,
+              name: entry.name || email.split('@')[0],
+              role: 'recorder',
+              courses: [courseCode],
+              voice_id: entry.voiceId,
+              invited_by: actorEmail || null,
+              invited_at: new Date().toISOString(),
+            })
+          if (insertError) throw new Error(insertError.message)
+          logger.info(`[PodsCast] Provisioned ${email} as recorder on ${courseCode} (voice ${entry.voiceId}) — cast save by ${actorEmail || '?'}`)
+          results.push({ email, action: 'create', role: 'recorder', voice_id: entry.voiceId })
+        } else if (plan.action === 'add-course') {
+          const { error: updateError } = await db
+            .from('dashboard_users')
+            .update({ courses: plan.courses, updated_by: actorEmail || null, updated_at: new Date().toISOString() })
+            .eq('email', email)
+          if (updateError) throw new Error(updateError.message)
+          logger.info(`[PodsCast] Added ${courseCode} to ${email}'s courses (role ${row.role} untouched) — cast save by ${actorEmail || '?'}`)
+          results.push({ email, action: 'add-course' })
+        } else {
+          logger.info(`[PodsCast] Provisioning no-op for ${email} on ${courseCode} (${plan.reason})`)
+          results.push({ email, action: 'no-op', reason: plan.reason })
+        }
+      } catch (err) {
+        // A provisioning hiccup never un-saves the cast — report it instead.
+        logger.warn(`[PodsCast] Provisioning failed for ${email} on ${courseCode}: ${err.message}`)
+        results.push({ email, action: 'error', error: err.message })
+      }
+    }
+    return results
+  }
+
   // ── PUT /cast — surgical additive merge into voice_config.podCast ─────────
   router.put('/cast', async (req, res) => {
     const { courseCode } = req.params
@@ -221,8 +361,17 @@ module.exports = function createPodsCastRouter({
       // No bumpCourseVersion: podCast is an additive key TTS serving never
       // reads (keystone §1) — learner-facing output is byte-identical.
 
+      // Auto-provision dashboard access for the SAVED entries that carry an
+      // email (merged state, so an update that only changed a voiceId still
+      // sees the entry's existing email/name). Idempotent; never un-saves.
+      const savedEntries = Object.keys(updates)
+        .filter(speaker => updates[speaker] !== null)
+        .map(speaker => merged.podCast[speaker])
+      const provisioning = await provisionCastMembers(
+        db, courseCode, savedEntries, req.dashboardUser?.email || null)
+
       logger.info(`[PodsCast] ${req.dashboardUser?.email || 'unknown'} updated podCast for ${courseCode} (${Object.keys(updates).length} speaker(s))`)
-      res.json({ success: true, course_code: courseCode, podCast: merged.podCast })
+      res.json({ success: true, course_code: courseCode, podCast: merged.podCast, provisioning })
     } catch (err) {
       logger.error(`[PodsCast] PUT cast failed for ${courseCode}:`, err)
       res.status(500).json({ error: 'Failed to save pod cast' })

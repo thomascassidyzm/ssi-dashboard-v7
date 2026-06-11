@@ -22,7 +22,8 @@
 
 'use strict'
 
-const { canonicalSpeakerName, extractGenderMarker } = require('../../tools/pod-voice-colour-n.cjs')
+const { canonicalSpeakerName, extractGenderMarker, proposeHumanCast } = require('../../tools/pod-voice-colour-n.cjs')
+const { emailLocalPart, targetLangFromCourseCode } = require('./voice-slots.cjs')
 
 /** Reserved cast key for the explainer voice (keystone §1). */
 const EXPLAINER_SPEAKER = '__explainer__'
@@ -30,6 +31,19 @@ const EXPLAINER_SPEAKER = '__explainer__'
 /** Deep-clone helper (voice_config objects are plain JSON). */
 function clone(obj) {
   return obj == null ? obj : JSON.parse(JSON.stringify(obj))
+}
+
+/**
+ * Speaking-time heuristic — single source is pods-plan.cjs#estimateSeconds.
+ * Lazy require: pods-plan requires THIS module at its top level, so a
+ * top-level require back would create a CJS cycle with half-built exports.
+ */
+function estimateItemSeconds(text) {
+  return require('./pods-plan.cjs').estimateSeconds(text)
+}
+/** Continuation rows of a glue chain add reading time but no per-item overhead. */
+function continuationSeconds(text) {
+  return estimateItemSeconds(text) - estimateItemSeconds('')
 }
 
 /**
@@ -63,8 +77,10 @@ function mergePodCast(voiceConfig, updates) {
     }
     const existing = config.podCast[speaker] || {}
     const next = { ...existing, voiceId: entry.voiceId.trim() }
-    // name/email: only touched when present in the update; empty string clears.
-    for (const key of ['name', 'email']) {
+    // name/email/gender: only touched when present in the update; empty string
+    // clears. (gender is the leader's SOFT f/m preference for the person —
+    // ridden through so the people-first panel can prefill on reload.)
+    for (const key of ['name', 'email', 'gender']) {
       if (key in entry) {
         if (entry[key]) next[key] = String(entry[key])
         else delete next[key]
@@ -126,19 +142,30 @@ function speakerInventory({ pods, sentences }) {
   const byCanon = new Map()
   let knownLines = 0
   let explainerLines = 0
+  let explainerSeconds = 0
   let prev = null
   for (const s of rows) {
     const canon = canonicalSpeakerName(s.speaker)
     const continuesGlue = prev && prev.pod_id === s.pod_id && prev.glue_to_next === true &&
       canonicalSpeakerName(prev.speaker) === canon
-    if (!continuesGlue && (s.known_text || '').trim()) knownLines++
-    if ((s.explainer_text || '').trim()) explainerLines++
+    const knownText = (s.known_text || '').trim()
+    if (knownText) {
+      if (!continuesGlue) knownLines++
+      explainerSeconds += continuesGlue ? continuationSeconds(knownText) : estimateItemSeconds(knownText)
+    }
+    const explainerText = (s.explainer_text || '').trim()
+    if (explainerText) {
+      explainerLines++
+      explainerSeconds += estimateItemSeconds(explainerText)
+    }
     if (canon) {
-      if (!byCanon.has(canon)) byCanon.set(canon, { variants: new Set(), lineCount: 0, podIds: new Set() })
+      if (!byCanon.has(canon)) byCanon.set(canon, { variants: new Set(), lineCount: 0, podIds: new Set(), seconds: 0 })
       const rec = byCanon.get(canon)
       rec.variants.add(s.speaker)
       rec.podIds.add(s.pod_id)
       if (!continuesGlue) rec.lineCount++
+      const targetText = (s.target_text || '').trim()
+      rec.seconds += continuesGlue ? continuationSeconds(targetText) : estimateItemSeconds(targetText)
     }
     prev = s
   }
@@ -157,10 +184,14 @@ function speakerInventory({ pods, sentences }) {
       variants: [...rec.variants],
       lineCount: rec.lineCount,
       podIds: [...rec.podIds],
+      estimatedSeconds: Math.round(rec.seconds * 10) / 10,
     }
   }).sort((a, b) => b.lineCount - a.lineCount || (a.speaker < b.speaker ? -1 : 1))
 
-  return { speakers, explainer: { knownLines, explainerLines } }
+  return {
+    speakers,
+    explainer: { knownLines, explainerLines, estimatedSeconds: Math.round(explainerSeconds * 10) / 10 },
+  }
 }
 
 /**
@@ -206,6 +237,314 @@ function buildSentenceEditPatch(body = {}) {
   return Object.keys(patch).length ? patch : null
 }
 
+// ---------------------------------------------------------------------------
+// PEOPLE-FIRST CASTING (Tom's design 2026-06-11): the leader declares WHO can
+// record — { name, gender (soft f/m preference), email (optional) } — and the
+// solver works out the parts. The number of actual voice actors drives the
+// colouring; generation-side colouring is demoted to a default suggestion
+// (keystone addendum, softened 2026-06-11).
+// ---------------------------------------------------------------------------
+
+/** Sanitised slug from a person's display name: "Siân O'Neil" → "si_n_o_neil". */
+function nameSlug(name) {
+  const slug = String(name || '').replace(/[^a-z0-9]/gi, '_').replace(/^_+|_+$/g, '').toLowerCase()
+  return slug || 'voice'
+}
+
+/**
+ * Validate + normalise the leader's people rows.
+ * Each person needs a name or an email; gender is SOFT — anything outside
+ * f/m collapses to null (no preference). `guide: true` marks the bilingual
+ * guide row. Throws on an empty/invalid list (router 400s).
+ */
+function normalizePeople(people) {
+  if (!Array.isArray(people) || people.length === 0) {
+    throw new Error('people must be a non-empty array of { name, gender?, email?, guide? }')
+  }
+  return people.map((p, i) => {
+    const name = String((p && p.name) || '').trim()
+    const email = String((p && p.email) || '').trim().toLowerCase()
+    if (!name && !email) throw new Error(`person ${i + 1} needs a name or an email`)
+    const g = String((p && p.gender) || '').trim().toLowerCase()
+    return {
+      name: name || email.split('@')[0],
+      email: email || null,
+      gender: g === 'f' || g === 'm' ? g : null,
+      guide: !!(p && p.guide),
+    }
+  })
+}
+
+/**
+ * Mint a human voice id per person, per the voice-slots convention:
+ *   human_{email-localpart-or-name-slug}_{target lang}, collision-suffixed.
+ *
+ * Stability across re-solves: a person whose EMAIL already holds a voiceId in
+ * the saved podCast keeps that id (their recorded takes stay theirs); ids
+ * already saved for OTHER emails are never re-minted onto someone else.
+ *
+ * @param {object} args
+ * @param {Array} args.people - normalised people (normalizePeople output)
+ * @param {string} args.courseCode
+ * @param {object|null} [args.existingCast] - saved voice_config.podCast
+ * @returns {Array} people, each with a `voiceId` added
+ */
+function mintPeopleVoiceIds({ people, courseCode, existingCast = null }) {
+  const targetLang = targetLangFromCourseCode(courseCode)
+  const savedByEmail = new Map()   // email → voiceId (first entry wins)
+  const savedTaken = new Map()     // voiceId → email|null (reserved for that person)
+  for (const entry of Object.values(existingCast || {})) {
+    if (!entry || !entry.voiceId) continue
+    const email = entry.email ? String(entry.email).toLowerCase() : null
+    if (email && !savedByEmail.has(email)) savedByEmail.set(email, entry.voiceId)
+    if (!savedTaken.has(entry.voiceId)) savedTaken.set(entry.voiceId, email)
+  }
+
+  const taken = new Set()
+  return people.map(person => {
+    let voiceId = person.email ? savedByEmail.get(person.email) : null
+    if (!voiceId || taken.has(voiceId)) {
+      const local = person.email ? emailLocalPart(person.email) : nameSlug(person.name)
+      const base = `human_${local}_${targetLang}`
+      voiceId = base
+      let n = 1
+      // Taken = already minted in this pool, or saved in the cast for a
+      // DIFFERENT person's email (never silently adopt someone else's takes).
+      const isTaken = (id) =>
+        taken.has(id) || (savedTaken.has(id) && savedTaken.get(id) !== person.email)
+      while (isTaken(voiceId)) {
+        n += 1
+        if (n > 1000) throw new Error(`Could not mint a unique voice id from ${base}`)
+        voiceId = `${base}_${n}`
+      }
+    }
+    taken.add(voiceId)
+    return { ...person, voiceId }
+  })
+}
+
+/**
+ * PEOPLE-FIRST cast proposal: who plays which characters, line counts,
+ * estimated minutes, plain-language warnings, and feasibility.
+ *
+ * The pool handed to proposeHumanCast is built FROM the people (voice ids
+ * minted per the voice-slots convention); gender stays soft (mismatches are
+ * reported, never blocking); doubling — one person playing several
+ * characters, or the guide also voicing dialogue — is allowed.
+ *
+ * @param {object} args
+ * @param {Array} args.people - raw rows from the panel: { name, gender?, email?, guide? }
+ * @param {Array} args.sentences - listening_pod_sentences rows across all pods
+ * @param {string} args.courseCode
+ * @param {Object<string,'f'|'m'|'n'>} [args.genderBySpeaker] - character genders
+ * @param {object|null} [args.existingCast] - saved voice_config.podCast (id stability)
+ * @param {{knownLines:number, explainerLines:number, estimatedSeconds:number}|null}
+ *   [args.explainerWorkload] - from speakerInventory().explainer
+ *
+ * @returns {{
+ *   people: Array,            // normalised, each with voiceId
+ *   assignments: Array<{name, email, gender, voiceId, characters:string[],
+ *                       lineCount:number, estimatedMinutes:number,
+ *                       isGuide:boolean, guideSuggested:boolean}>,
+ *   podCast: object,          // speaker → {voiceId,name,email,gender} incl. __explainer__ — ready for PUT /cast
+ *   warnings: Array<{type:string, message:string}>,
+ *   feasibility: { minimumActors:number, collisions:{count:number, pairs:number,
+ *                  turns:number, details:Array} },
+ *   explainer: { person:string|null, suggested:boolean, knownLines:number,
+ *                explainerLines:number, estimatedMinutes:number },
+ *   report: object,           // raw solver report (solver-literate callers)
+ * }}
+ */
+function proposePeopleCast({
+  people,
+  sentences,
+  courseCode,
+  genderBySpeaker = null,
+  existingCast = null,
+  explainerWorkload = null,
+}) {
+  const normalized = normalizePeople(people)
+  const pool = mintPeopleVoiceIds({ people: normalized, courseCode, existingCast })
+  const personByVoiceId = new Map(pool.map(p => [p.voiceId, p]))
+
+  const { castBySpeaker, report } = proposeHumanCast({
+    sentences,
+    voices: pool.map(p => ({ voiceId: p.voiceId, name: p.name, email: p.email, gender: p.gender })),
+    genderBySpeaker,
+  })
+
+  // Feasibility: the smallest pool with NO forced same-scene reuse — probe
+  // neutral synthetic pools of growing size (the solver load-balances, so its
+  // voicesUsed over-counts; "first N with zero forced" is the honest answer).
+  // Character counts per course are tiny, so this stays cheap.
+  const characterCount = Object.keys(castBySpeaker).length
+  let minimumActors = 0
+  for (let n = 1; n <= characterCount; n++) {
+    const synthetic = Array.from({ length: n }, (_, i) => ({
+      voiceId: `feasibility_probe_${i + 1}`, gender: null,
+    }))
+    if (proposeHumanCast({ sentences, voices: synthetic }).report.forced.length === 0) {
+      minimumActors = n
+      break
+    }
+  }
+
+  // Per-character estimated seconds (target lines, glue chains = one item).
+  const secondsBySpeaker = new Map()
+  for (const sp of speakerInventory({ pods: [], sentences }).speakers) {
+    secondsBySpeaker.set(sp.speaker, sp.estimatedSeconds)
+  }
+
+  // Per-person dialogue allocation.
+  const assignments = pool.map(person => {
+    const characters = Object.entries(castBySpeaker)
+      .filter(([, entry]) => entry.voiceId === person.voiceId)
+      .map(([speaker]) => speaker)
+      .sort((a, b) => (secondsBySpeaker.get(b) || 0) - (secondsBySpeaker.get(a) || 0))
+    const lineCount = characters.reduce((sum, sp) => sum + (report.lineCounts.bySpeaker[sp] || 0), 0)
+    const seconds = characters.reduce((sum, sp) => sum + (secondsBySpeaker.get(sp) || 0), 0)
+    return {
+      name: person.name,
+      email: person.email,
+      gender: person.gender,
+      voiceId: person.voiceId,
+      characters,
+      lineCount,
+      estimatedMinutes: Math.round((seconds / 60) * 10) / 10,
+      isGuide: false,
+      guideSuggested: false,
+      _seconds: seconds,
+    }
+  })
+
+  // The bilingual guide (__explainer__): the leader's marked row wins;
+  // default suggestion is the lightest-loaded person. Doubling with a
+  // dialogue voice is ALLOWED (a distinct voice is just nicer).
+  const markedIdx = pool.findIndex(p => p.guide)
+  let guideIdx = markedIdx
+  if (guideIdx < 0 && assignments.length) {
+    guideIdx = assignments.reduce((best, a, i) =>
+      a._seconds < assignments[best]._seconds ? i : best, 0)
+  }
+  const exWork = explainerWorkload || { knownLines: 0, explainerLines: 0, estimatedSeconds: 0 }
+  if (guideIdx >= 0) {
+    assignments[guideIdx].isGuide = true
+    assignments[guideIdx].guideSuggested = markedIdx < 0
+    assignments[guideIdx].estimatedMinutes =
+      Math.round(((assignments[guideIdx]._seconds + (exWork.estimatedSeconds || 0)) / 60) * 10) / 10
+  }
+  for (const a of assignments) delete a._seconds
+
+  // The saveable cast: every character entry + the guide's __explainer__.
+  const podCast = {}
+  for (const [speaker, entry] of Object.entries(castBySpeaker)) {
+    const person = personByVoiceId.get(entry.voiceId)
+    podCast[speaker] = {
+      voiceId: entry.voiceId,
+      name: person ? person.name : entry.name,
+      email: (person && person.email) || null,
+      gender: (person && person.gender) || null,
+    }
+  }
+  if (guideIdx >= 0) {
+    const guide = pool[guideIdx]
+    podCast[EXPLAINER_SPEAKER] = {
+      voiceId: guide.voiceId, name: guide.name, email: guide.email || null, gender: guide.gender || null,
+    }
+  }
+
+  // Plain-language warnings — community leaders read these, not engineers.
+  const warnings = []
+  if (report.forced.length > 0) {
+    const short = Math.max(1, minimumActors - pool.length)
+    warnings.push({
+      type: 'need-more-people',
+      message: `You need ${short} more ${short === 1 ? 'person' : 'people'} — with ${pool.length}, ` +
+        `${report.forced.length} ${report.forced.length === 1 ? 'character' : 'characters'} would share a voice ` +
+        `with someone they talk to, so those exchanges would talk to themselves. ` +
+        `These dialogues need at least ${minimumActors} different voices.`,
+    })
+  }
+  for (const mm of report.genderMismatches) {
+    // mm.voice is the solver's display handle (person name, else voice id).
+    const person = pool.find(p => p.name === mm.voice || p.voiceId === mm.voice)
+    const personName = (person && person.name) || mm.voice
+    warnings.push({
+      type: 'gender-mismatch',
+      message: `${mm.speaker} reads as ${mm.speakerGender === 'f' ? 'female' : 'male'} but would be ` +
+        `voiced by ${personName} — absolutely fine if you're happy with it.`,
+    })
+  }
+  const guideAssignment = guideIdx >= 0 ? assignments[guideIdx] : null
+  if (guideAssignment && guideAssignment.characters.length > 0) {
+    warnings.push({
+      type: 'guide-doubles',
+      message: `${guideAssignment.name} is the bilingual guide and also plays ` +
+        `${guideAssignment.characters.join(', ')} — that works fine, though a separate ` +
+        `voice for the guide is nicer when you have someone spare.`,
+    })
+  }
+
+  return {
+    people: pool,
+    assignments,
+    podCast,
+    warnings,
+    feasibility: {
+      minimumActors,
+      collisions: {
+        count: report.forced.length,
+        pairs: report.adjacentCollisions.pairs,
+        turns: report.adjacentCollisions.turns,
+        details: report.forced,
+      },
+    },
+    explainer: {
+      person: guideIdx >= 0 ? pool[guideIdx].name : null,
+      suggested: guideIdx >= 0 && markedIdx < 0,
+      knownLines: exWork.knownLines || 0,
+      explainerLines: exWork.explainerLines || 0,
+      estimatedMinutes: Math.round(((exWork.estimatedSeconds || 0) / 60) * 10) / 10,
+    },
+    report,
+  }
+}
+
+// ---------------------------------------------------------------------------
+// AUTO-PROVISIONING decision (pure): what PUT /cast should do for a cast
+// entry that carries an email. The row shape for 'create' mirrors the
+// invite-redeem endpoint exactly (production-api.cjs
+// POST /api/auth/invite-codes/redeem) — no invite code involved.
+// ---------------------------------------------------------------------------
+
+/**
+ * Decide how to provision dashboard access for a cast member.
+ *
+ * NEVER-DOWNGRADE CONTRACT: an existing user's role and voice_id are never
+ * touched (an admin stays admin, an editor stays editor); courses '*' (admin
+ * all-access) is left alone; only a concrete courses[] array missing this
+ * course gains it. Unrecognised courses shapes are left untouched (no-op) —
+ * provisioning must never make access narrower or weirder than it found it.
+ *
+ * @param {{email?:string, role?:string, courses?:any}|null} existingRow
+ *   dashboard_users row for the email, or null when none exists
+ * @param {string} courseCode
+ * @returns {{action:'create'}|{action:'add-course', courses:string[]}|{action:'no-op', reason:string}}
+ */
+function provisionPlanFor(existingRow, courseCode) {
+  if (!courseCode || typeof courseCode !== 'string') {
+    throw new Error('provisionPlanFor: courseCode required')
+  }
+  if (!existingRow) return { action: 'create' }
+  const courses = existingRow.courses
+  if (courses === '*') return { action: 'no-op', reason: 'holds-all-courses' }
+  if (Array.isArray(courses)) {
+    if (courses.includes(courseCode)) return { action: 'no-op', reason: 'already-holds-course' }
+    return { action: 'add-course', courses: [...courses, courseCode] }
+  }
+  return { action: 'no-op', reason: 'unrecognised-courses-shape' }
+}
+
 module.exports = {
   EXPLAINER_SPEAKER,
   mergePodCast,
@@ -213,4 +552,10 @@ module.exports = {
   speakerInventory,
   hasGenerationColouring,
   buildSentenceEditPatch,
+  // people-first casting + auto-provisioning
+  normalizePeople,
+  nameSlug,
+  mintPeopleVoiceIds,
+  proposePeopleCast,
+  provisionPlanFor,
 }

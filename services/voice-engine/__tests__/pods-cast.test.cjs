@@ -134,7 +134,10 @@ describe('speakerInventory', () => {
   it('counts lines per canonical character + explainer workload', () => {
     const inv = speakerInventory({ pods, sentences })
     expect(inv.speakers.map(s => [s.speaker, s.lineCount])).toEqual([['Anna', 2], ['Waiter', 1]])
-    expect(inv.explainer).toEqual({ knownLines: 3, explainerLines: 1 }) // '' = deliberately none
+    expect(inv.explainer).toMatchObject({ knownLines: 3, explainerLines: 1 }) // '' = deliberately none
+    // Sitting-size estimates ride along (people-first panel shows minutes).
+    expect(inv.explainer.estimatedSeconds).toBeGreaterThan(0)
+    for (const s of inv.speakers) expect(s.estimatedSeconds).toBeGreaterThan(0)
   })
 
   it('gender: generation-side speakers entry wins, marker is fallback', () => {
