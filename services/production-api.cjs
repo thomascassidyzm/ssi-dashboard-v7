@@ -27,6 +27,7 @@ const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext } = require('./recording-upload-helpers.cjs')
+const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const { resolvePoptyIdentity } = require('./shared/popty-identity.cjs')
 
 // =============================================================================
@@ -392,6 +393,27 @@ app.use('/api/production/:courseCode/team',
     logger,
     bumpCourseVersion: require('./shared/course-version.cjs').bumpCourseVersion,
   }))
+
+// Pod recording coverage (keystone §5): per cast voice (voice_config.podCast)
+// lines recorded / remaining + per-pod breakdown, human-vs-tts per sentence.
+// REGISTERED BEFORE the pods router on purpose: this read-only route relies on
+// the app.param gate alone (which keeps the same-host loopback bypass); the
+// router's per-route requireDashboardUser has no such bypass and would 401
+// mesh/local tooling.
+app.get('/api/production/:courseCode/pods/coverage', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const { computePodsCoverage } = require('./voice-engine/pods-coverage.cjs')
+    const coverage = await computePodsCoverage(
+      { supabase: supabaseClient.getClient(), logger }, req.params.courseCode)
+    res.json(coverage)
+  } catch (err) {
+    logger.error(`[PodsCoverage] ${err.message}`)
+    res.status(err.status || 500).json({ error: err.message })
+  }
+})
 
 // Pod casting + per-voice recording plans (human pod recording keystone).
 // Same gate coverage as the voice-engine mounts above. Writes touch ONLY
@@ -4154,9 +4176,12 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
 
     // Script-mode takes (new-course autocue) have no pre-existing audio identity;
     // regeneration-mode takes re-record an existing course_audio row by real uuid.
-    const isScriptMode = isScriptModeUpload(uuid, metadata)
+    // Pod-mode takes (dialogue autocue) carry pod identity in metadata — a NEW
+    // course_audio row is minted and the pod sentence FK re-pointed at commit.
+    const isPodMode = podsRegistration.isPodModeUpload(metadata)
+    const isScriptMode = !isPodMode && isScriptModeUpload(uuid, metadata)
 
-    if (!audioData || (!uuid && !isScriptMode)) {
+    if (!audioData || (!uuid && !isScriptMode && !isPodMode)) {
       return res.status(400).json({ error: 'uuid and audioData required' })
     }
 
@@ -4167,14 +4192,30 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     // Every take gets a FRESH object key — an existing S3 object is never PUT over.
     // Regeneration mode: the course_audio row keeps its id; its s3_key moves to the
     // fresh key after upload (the old object stays at the old key for reversibility).
-    const audioId = isScriptMode ? crypto.randomUUID().toUpperCase() : uuid
+    const audioId = (isScriptMode || isPodMode) ? crypto.randomUUID().toUpperCase() : uuid
     const s3KeyUuid = isScriptMode ? audioId : crypto.randomUUID().toUpperCase()
     const s3Key = `mastered/${s3KeyUuid}.mp3`
+
+    // Pod mode: validate identity + resolve the cast voice BEFORE the S3 PUT
+    // (same principle as the regeneration lookup below — a bad sentenceId must
+    // never orphan bytes). voice_id resolves SERVER-side from
+    // voice_config.podCast (client metadata.voiceId advisory).
+    let podContext = null
+    if (isPodMode) {
+      if (!supabaseClient.isInitialized()) {
+        return res.status(503).json({ error: 'Supabase not initialized — pod recordings cannot be registered' })
+      }
+      const prep = await podsRegistration.preparePodRegistration({
+        supabase: supabaseClient.getClient(), courseCode, metadata, logger
+      })
+      if (prep.error) return res.status(prep.status || 400).json({ error: prep.error })
+      podContext = prep.context
+    }
 
     // Regeneration mode re-records an existing course_audio row — look it up
     // BEFORE the S3 PUT so a bad uuid can't orphan bytes.
     let existingRow = null
-    if (!isScriptMode && supabaseClient.isInitialized()) {
+    if (!isScriptMode && !isPodMode && supabaseClient.isInitialized()) {
       const { data: row, error: rowError } = await supabaseClient.getClient()
         .from('course_audio')
         .select('id, s3_key, origin')
@@ -4253,6 +4294,24 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       logger.log(`[Upload] course_audio ${uuid} repointed ${existingRow.s3_key} -> ${s3Key} (origin=human)`)
     }
 
+    // Pod mode: register the human take (course_audio upsert, origin='human',
+    // role per kind — recon §1) and re-point the sentence's audio FK explicitly
+    // (recon §2: the autolink trigger never touches listening_pod_sentences).
+    // Re-record = new/repointed row + re-point; the old take's row and S3
+    // object are kept (replaced ids recorded in provenance below).
+    let podResult = null
+    if (isPodMode && podContext) {
+      podResult = await podsRegistration.commitPodRegistration({
+        supabase: supabaseClient.getClient(),
+        courseCode,
+        context: podContext,
+        s3Key,
+        durationMs: (audioMeta.processed && audioMeta.durationMs) ? audioMeta.durationMs : null,
+        fileSizeBytes: processedBuffer.length,
+        logger
+      })
+    }
+
     // Who recorded this take: the authenticated user's email when a session token
     // is presented, else the client-sent recorded_by. Clients send snake_case
     // provenance keys; the old camelCase-only gate meant recording_provenance was
@@ -4273,8 +4332,9 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     // Regeneration mode only: script-mode takes have no sample_flags row (their
     // identity is server-minted) and the insert here used to 500 the upload AFTER
     // the S3 PUT succeeded. QA-state failures must never fail an uploaded take.
+    // Pod-mode takes also skip — pod sentences have no sample_flags row.
     if (supabaseClient.isInitialized()) {
-      if (!isScriptMode) {
+      if (!isScriptMode && !isPodMode) {
         try {
           await supabaseClient.updateRecordingStatus(
             uuid,
@@ -4297,29 +4357,45 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       // the client's metadata.voiceId is advisory (used only when the slot has
       // no human voice assigned yet, e.g. recording ahead of roster assignment).
       let slotVoiceId = null
-      try {
-        const slotRole = metadata?.role || null
-        if (slotRole) {
-          const { data: courseRow } = await supabaseClient.getClient()
-            .from('courses').select('voice_config').eq('course_code', courseCode).single()
-          slotVoiceId = courseRow?.voice_config?.voices?.[slotRole]?.voiceId || null
-          if (metadata?.voiceId && slotVoiceId && metadata.voiceId !== slotVoiceId) {
-            logger.warn(`[Recording] client voiceId ${metadata.voiceId} disagrees with voice_config ${slotRole}=${slotVoiceId} — server value wins`)
+      if (isPodMode && podContext) {
+        // Pod mode already resolved the cast voice server-side in prepare
+        // (voice_config.podCast[speaker] / podCast.__explainer__).
+        slotVoiceId = podContext.voiceId
+      } else {
+        try {
+          const slotRole = metadata?.role || null
+          if (slotRole) {
+            const { data: courseRow } = await supabaseClient.getClient()
+              .from('courses').select('voice_config').eq('course_code', courseCode).single()
+            slotVoiceId = courseRow?.voice_config?.voices?.[slotRole]?.voiceId || null
+            if (metadata?.voiceId && slotVoiceId && metadata.voiceId !== slotVoiceId) {
+              logger.warn(`[Recording] client voiceId ${metadata.voiceId} disagrees with voice_config ${slotRole}=${slotVoiceId} — server value wins`)
+            }
           }
+        } catch (voiceResolveError) {
+          logger.warn('[Recording] voice_config resolve failed, falling back to client voiceId:', voiceResolveError.message)
         }
-      } catch (voiceResolveError) {
-        logger.warn('[Recording] voice_config resolve failed, falling back to client voiceId:', voiceResolveError.message)
+        if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
       }
-      if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
       const provenanceContext = buildProvenanceContext({
         courseCode,
         isScriptMode,
         metadata,
         provenance: prov,
         s3Key,
-        courseAudioId: existingRow ? uuid : null,
-        replacedS3Key: existingRow ? existingRow.s3_key : null,
-        voiceId: slotVoiceId
+        courseAudioId: isPodMode
+          ? (podResult ? podResult.audioRow.id : null)
+          : (existingRow ? uuid : null),
+        replacedS3Key: isPodMode
+          ? (podResult ? podResult.replacedS3Key : null)
+          : (existingRow ? existingRow.s3_key : null),
+        voiceId: slotVoiceId,
+        pod: (isPodMode && podContext) ? {
+          podId: podContext.podId,
+          sentenceId: podContext.sentenceId,
+          kind: podContext.kind,
+          replacedAudioId: podResult ? podResult.replacedAudioId : podContext.replacedAudioId
+        } : null
       })
       try {
         await supabaseClient.insertRecordingProvenance({
@@ -4348,10 +4424,14 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       }
     }
 
+    // Pod mode: the take's canonical identity is the course_audio row the
+    // sentence FK now points at (clients carry this, not the minted s3 uuid).
+    const responseUuid = (isPodMode && podResult) ? podResult.audioRow.id : audioId
+
     // Emit recording_completed event
     io.to(`course:${courseCode}`).emit('recording_completed', {
       courseCode,
-      uuid: audioId,
+      uuid: responseUuid,
       metadata: {
         recordedAt: prov.recordedAt || new Date().toISOString(),
         recordedBy,
@@ -4363,7 +4443,18 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     res.json({
       success: true,
       // Script mode: the server-minted identity — clients must carry this, not script-N
-      uuid: audioId,
+      // Pod mode: the course_audio row id now linked on the pod sentence
+      uuid: responseUuid,
+      ...(isPodMode && podResult ? {
+        pod: {
+          podId: podContext.podId,
+          sentenceId: podContext.sentenceId,
+          kind: podContext.kind,
+          audioId: podResult.audioRow.id,
+          replacedAudioId: podResult.replacedAudioId,
+          voiceId: podContext.voiceId
+        }
+      } : {}),
       s3Key: s3Key || null,
       uploaded: true,
       audioProcessing: audioMeta.processed ? {

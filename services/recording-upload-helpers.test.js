@@ -116,6 +116,66 @@ describe('buildProvenanceContext', () => {
     expect(ctx.seed_number).toBe(0)
     expect(ctx.phrase_index).toBe(0)
   })
+
+  it('pod mode: carries pod identity + replaced audio id, mode=pod (additive)', () => {
+    const ctx = buildProvenanceContext({
+      courseCode: 'cym_n_for_eng',
+      isScriptMode: false,
+      metadata: { mode: 'pod', text: 'Bore da', role: 'target1' },
+      provenance: { sessionId: 'session_pod_1' },
+      s3Key: 'mastered/TAKE.mp3',
+      courseAudioId: 'NEW-ROW-UUID',
+      replacedS3Key: null,
+      voiceId: 'human_catrin_cym',
+      pod: {
+        podId: 'cym_n_for_eng:pod-0',
+        sentenceId: 'cym_n_for_eng:pod-0:SC01-S001',
+        kind: 'target',
+        replacedAudioId: 'OLD-TTS-UUID'
+      }
+    })
+    expect(ctx.mode).toBe('pod')
+    expect(ctx.pod_id).toBe('cym_n_for_eng:pod-0')
+    expect(ctx.sentence_id).toBe('cym_n_for_eng:pod-0:SC01-S001')
+    expect(ctx.kind).toBe('target')
+    expect(ctx.replaced_audio_id).toBe('OLD-TTS-UUID')
+    // existing fields keep their exact names/values (additive extension)
+    expect(ctx.course_code).toBe('cym_n_for_eng')
+    expect(ctx.role).toBe('target1')
+    expect(ctx.voice_id).toBe('human_catrin_cym')
+    expect(ctx.text).toBe('Bore da')
+    expect(ctx.course_audio_id).toBe('NEW-ROW-UUID')
+    expect(ctx.s3_key).toBe('mastered/TAKE.mp3')
+    expect(ctx.script_session_id).toBe('session_pod_1')
+  })
+
+  it('pod fields round-trip through JSON (quality_notes is the live transport)', () => {
+    const ctx = buildProvenanceContext({
+      courseCode: 'cym_n_for_eng',
+      isScriptMode: false,
+      metadata: { mode: 'pod', text: 'Bore da' },
+      s3Key: 'mastered/TAKE.mp3',
+      pod: { podId: 'p', sentenceId: 's', kind: 'explainer', replacedAudioId: null }
+    })
+    const back = JSON.parse(JSON.stringify(ctx))
+    expect(back.mode).toBe('pod')
+    expect(back.pod_id).toBe('p')
+    expect(back.sentence_id).toBe('s')
+    expect(back.kind).toBe('explainer')
+    expect(back.replaced_audio_id).toBeNull()
+  })
+
+  it('non-pod calls are byte-identical to before (no pod keys, modes unchanged)', () => {
+    const script = buildProvenanceContext({ courseCode: 'c', isScriptMode: true, metadata: {}, s3Key: 'k' })
+    expect(script.mode).toBe('script')
+    expect('pod_id' in script).toBe(false)
+    expect('sentence_id' in script).toBe(false)
+    expect('kind' in script).toBe(false)
+    expect('replaced_audio_id' in script).toBe(false)
+    const regen = buildProvenanceContext({ courseCode: 'c', isScriptMode: false, metadata: {}, s3Key: 'k' })
+    expect(regen.mode).toBe('regeneration')
+    expect('pod_id' in regen).toBe(false)
+  })
 })
 
 describe('toS3Metadata', () => {

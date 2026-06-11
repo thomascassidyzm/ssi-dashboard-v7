@@ -5390,3 +5390,6 @@ module.exports.S3_BUCKET = S3_BUCKET
 // Human-first FK link pass (G2 pre-pass + RPC) — the voice engine's link
 // step calls this instead of the bare RPC so fresh human rows win links.
 module.exports.linkAudioIds = linkAudioIds
+// PRECIOUS-AUDIO GUARD helper (G1) — exported so the pods recording stream can
+// unit-test that TTS paths refuse to write over human pod rows (additive).
+module.exports.humanRowAtAudioKey = humanRowAtAudioKey
