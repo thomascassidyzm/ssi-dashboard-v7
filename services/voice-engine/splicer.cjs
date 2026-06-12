@@ -203,8 +203,11 @@ function crossfadeConcatToLame(inputFiles, outputPath, { crossfadeMs = CROSSFADE
  * Steps (cloned from splice-legos.cjs core, re-keyed and iOS-safe):
  * 1. Normalize each segment to −16 LUFS (consistent volume across takes);
  *    on loudnorm failure for very short clips, fall back to the raw clip.
- * 2. Crossfade concat (20 ms tri/tri) → lame encode.
- *    On crossfade failure, fall back to plain concat (still via lame).
+ * 2. Plain concat (concat demuxer) → lame encode, then VERIFY the output
+ *    duration against the summed inputs (≥95%) — short output throws.
+ *    The former acrossfade chain is retired: ffmpeg 7's threaded CLI drops
+ *    whole segments from it nondeterministically (see crossfadeConcatToLame,
+ *    kept only for reference/future re-evaluation on a fixed ffmpeg).
  *
  * @param {string[]} inputFiles - local per-chunk MP3 paths, in phrase order
  * @param {string} outputPath - output MP3 path
@@ -240,17 +243,28 @@ async function spliceSegmentsToFile(inputFiles, outputPath, { audioProcessor, cr
       // Single chunk — re-encode through the safe pipe for a consistent format.
       await audioProcessor.ffmpegFilterToLameMp3(workFiles[0], outputPath, {})
     } else {
-      try {
-        await crossfadeConcatToLame(workFiles, outputPath, { crossfadeMs })
-      } catch {
-        fallbackUsed = true
-        // Plain concat via the concat demuxer, still ffmpeg→lame.
-        const listPath = path.join(tempDir, 'concat.txt')
-        fs.writeFileSync(listPath, workFiles.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'))
-        await audioProcessor.ffmpegFilterToLameMp3(null, outputPath, {
-          ffmpegInputArgs: ['-f', 'concat', '-safe', '0'],
-          inputOverride: listPath,
-        })
+      // ffmpeg 7's threaded CLI makes acrossfade chains drop whole segments
+      // nondeterministically (observed: 11 healthy pieces totalling 12.7s
+      // spliced to anywhere between 1.5s and 12.1s across identical runs,
+      // always exit 0). Even "good" runs silently lost a 2s speech piece.
+      // The concat demuxer — one input, no filter graph — is deterministic,
+      // so it is the ONLY splice path; output is verified against the
+      // summed input durations and a short result fails the splice honestly.
+      const probedMs = []
+      for (const f of workFiles) {
+        const meta = await audioProcessor.getAudioMetadata(f)
+        probedMs.push((meta.duration || 0) * 1000)
+      }
+      const expectedMs = probedMs.reduce((a, b) => a + b, 0)
+      const listPath = path.join(tempDir, 'concat.txt')
+      fs.writeFileSync(listPath, workFiles.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'))
+      await audioProcessor.ffmpegFilterToLameMp3(null, outputPath, {
+        ffmpegInputArgs: ['-f', 'concat', '-safe', '0'],
+        inputOverride: listPath,
+      })
+      const got = ((await audioProcessor.getAudioMetadata(outputPath)).duration || 0) * 1000
+      if (got < expectedMs * 0.95) {
+        throw new Error(`splice truncated: ${Math.round(got)}ms vs expected ~${Math.round(expectedMs)}ms`)
       }
     }
 
