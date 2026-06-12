@@ -79,12 +79,57 @@ assembling audio. (It does NOT substitute for per-rung clips: rung narrations
 differ in content and order, and seek-segment playback has the same jitter
 problem as stitching.)
 
+## Option D — derive pieces FROM the whole-clause rendition (Tom, 2026-06-12 — the direction)
+
+Invert the source of pieces: render (or record) the WHOLE clause once with
+natural prosody, then CUT the atom/part pieces out of it at aligned word
+boundaries, persist the pieces, and reuse them everywhere — part-by-part
+introduction, explainer composites (stitched with known-language gloss TTS),
+and exact reassembly back to the whole.
+
+What it buys:
+- **Fully realizes the composite doctrine** ("the learner hears each chunk as
+  THE CHARACTER ACTUALLY SAYS IT"). Today chunks are a *second* TTS rendering
+  in the same voice — it can drift in prosody from the sentence rendition.
+  A derived cut IS the utterance: same coarticulation, sandhi, lenition,
+  liaison, tone contour.
+- **Exact recomposition**: "pieces, then the whole" rungs reassemble
+  sample-exactly into the sentence the learner then hears — the ladder's grok
+  moment becomes literal.
+- **One synthesis per sentence**; the per-piece Azure edge-padding problem
+  disappears entirely (padding exists only at clause edges).
+- **Pieces persist for free** as `course_audio` rows with provenance to the
+  parent clip — and the cut map IS the timing map (option C falls out), and
+  option B (app-fetchable atoms) becomes free.
+- **Unifies TTS and human pipelines**: the voice engine already does
+  align→segment→splice for human recordings (`services/voice-engine/`).
+  Welsh human audio and TTS courses flow through the SAME derivation
+  machinery.
+
+Infrastructure already in place: `tts-service.cjs` captures Azure
+`wordBoundary` events; phase8 persists `course_audio.word_boundaries`;
+`voice-engine/align.cjs` does forced alignment for human audio. Gap found
+2026-06-12: existing pod sentence clips have `word_boundaries = NULL` (they
+predate/bypass the capture path) — so derivation needs either a re-synthesis
+pass over pod sentences (cheap, captures boundaries) or forced alignment of
+the existing clips.
+
+Caveat to design around: connected-speech cuts of reduced function words can
+be unclear played in isolation (the "na" in flowing speech is not citation
+"na"). Mitigations: the glue rule already makes atoms multi-word ("na posao");
+cut at lowest-energy points with 5–10ms micro-fades; per-piece fallback to
+citation TTS where a cut is too reduced (duration/energy heuristic, confirmed
+by ear on samples).
+
 ## Recommended package
 
-**A + C:** per-rung baked clips, rung-keyed jsonb with ids + timing maps,
-`explainer_audio_id` aliased to r1, app selects by `{stage, iter}`, rungs 4/5
-resolve to the row's existing target/known audio. Option B stays on the shelf
-until an interactivity feature asks for it.
+**D as the source of pieces; A + C as the app contract.** Per-rung baked
+clips remain what the app plays (rung-keyed jsonb ids + timing maps,
+`explainer_audio_id` aliased to r1, selection by `{stage, iter}`, rungs 4/5
+resolve to the row's existing target/known audio) — but the pieces inside
+those bakes are derived cuts of the natural clause rendition rather than
+isolated TTS calls, persisted with their cut maps. Option B stops being a
+trade-off and becomes a byproduct.
 
 ## Status / sequencing
 
