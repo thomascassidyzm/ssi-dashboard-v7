@@ -5,9 +5,11 @@
 > inventory pass (see *Atom granularity*). This document is the contract between
 > the dashboard (Popty) content pipeline and the learning app.
 >
-> **v2 (2026-06-12)** folds in four decisions taken after the original draft:
+> **v2 (2026-06-12)** folds in the decisions taken after the original draft:
 > the note taxonomy, *atom = LEGO*, the persisted corpus-first pod-LEGO
-> inventory, and the target/explainer dedup split. Changes are marked **[v2]**.
+> inventory, the target/explainer dedup split, and — following from those —
+> app-side assembly with the per-clause explainer "walk" file dissolved into
+> inventory clips + `note_audio`. Changes are marked **[v2]**.
 
 ## The problem
 
@@ -113,39 +115,51 @@ course.
 
 ## Data contract (Popty → app)
 
-Per `listening_pod_sentences` row, **three audio files + one atom map**:
+Per `listening_pod_sentences` row, **two per-clause audio files + one atom map**,
+plus the inventory-owned per-atom explainer audio (shared, not per-clause):
 
-| Asset | What | Sliced? |
-|---|---|---|
-| `target_clause` | whole clause, target language (the natural take) | yes — at atom offsets |
-| `known_clause` | whole clause, known language (holistic meaning) | no — played whole |
-| `explainer` | the per-atom "X means …, Y means …" walk | yes — at atom offsets |
+| Asset | What | Per-clause? | Sliced? |
+|---|---|---|---|
+| `target_clause` | whole clause, target language (the natural take) | yes | yes — at atom offsets |
+| `known_clause` | whole clause, known language (holistic meaning) | yes | no — played whole |
+| `note_audio` | clause-specific clarifying asides only (often absent) | yes | yes — at note offsets |
+| *(per-atom explainer)* | "X means …" for each atom | **no — inventory-owned, cited by `lego_key`** | n/a — whole canonical clip |
+
+**The per-clause explainer "walk" file is gone [v2].** Because per-atom explainer
+audio is canonical and owned by the inventory (see *dedup split*), the app
+assembles meet-the-atoms by citing each atom's inventory explainer clip — it
+never plays a baked per-clause walk. The only genuinely clause-specific explainer
+audio left is the **notes**, which get their own small `note_audio` file (only
+when notes exist). This *tightens* "few files forever" rather than breaking it.
 
 **Atom map** — ordered, one entry per atom. Each entry *references* a pod-LEGO
-inventory unit and carries this clause's physical offsets:
+inventory unit and carries this clause's physical target offsets:
 
 ```jsonc
 atoms: [
   {
-    "lego_key": "na_posao",         // → pod-LEGO inventory (canonical identity)
+    "lego_key": "na_posao",         // → pod-LEGO inventory (identity + its explainer clip)
     "kind": "atom",                 // atom | passthrough | note   [v2]
     "gloss": "to work",             // known-language text (for the screen)
     "target_start_ms": 0,           // offset into target_clause (this clause)
-    "target_end_ms":   620,
-    "explainer_start_ms": 0,        // offset into explainer (this clause)
-    "explainer_end_ms":   1900,
-    "spans": [2, 3]                 // note only: atom-index range it highlights
+    "target_end_ms":   620
+    // no explainer offsets: the atom cites the inventory's canonical
+    // explainer clip for `na_posao`, played whole.   [v2]
   }
 ]
 ```
 
-- **Offsets are the only genuinely new clip-level data.** The stitcher already
-  knows the atom boundaries (it assembled the explainer from the atom pieces) —
-  this is a *persistence* step, not new generation.
-- **Identity vs. position split [v2].** The *gloss*, canonical mapping, and
-  first-encounter status live in the **persisted inventory** (taught once); the
-  *offsets* live per-sentence (physical positions in this clause's audio). This
-  mirrors `course_legos` (canonical) vs. practice phrases (instances).
+- **Atoms carry only target offsets** — the explainer audio is the inventory's
+  whole canonical clip, cited by `lego_key`, not a slice. Notes are the only
+  entries with explainer offsets (into `note_audio`).
+- **Offsets are the only genuinely new clip-level data.** The extraction pass
+  already knows the atom boundaries — this is a *persistence* step, not new
+  generation.
+- **Identity vs. position split [v2].** The *gloss*, canonical mapping,
+  first-encounter status, and the *canonical explainer clip* live in the
+  **persisted inventory** (taught once); the *target offsets* live per-sentence
+  (physical positions in this clause's audio). This mirrors `course_legos`
+  (canonical) vs. practice phrases (instances).
 
 ### Entry kinds [v2]
 
@@ -156,7 +170,7 @@ distinct jobs:
 |---|---|---|---|---|
 | `atom` | yes | yes | yes | the normal teachable unit |
 | `passthrough` | yes | yes | no | names (*Maria*) + units taught in an earlier sentence (first-encounter discipline) |
-| `note` | **no** | **no** | yes (plays in the walk) | a clarifying aside; no target audio of its own |
+| `note` | **no** | **no** | yes (plays from `note_audio`) | a clarifying aside; no target audio of its own |
 
 - The **fusion ladder** includes `atom` + `passthrough` (anything with clause
   audio). **Meet-the-atoms** includes `atom` + `note`.
@@ -169,8 +183,8 @@ not at the single word (`azul` = blue is not a teaching problem; *why colour
 follows the noun* is). A note:
 
 - has **no target span** and **never enters fusion** — it is pure commentary;
-- is **still just an offset into the existing `explainer` file** plus a `spans`
-  range, so it costs **no new asset** (three-files-forever holds);
+- is **just an offset into the per-clause `note_audio` file** plus a `spans`
+  range — the one genuinely clause-specific explainer asset, kept small;
 - uses `spans` to do two jobs at once — **highlight** the on-screen atoms it is
   about, **and** place itself in the ladder:
   - `spans` length 1 → a longer explanation of one word; plays in
@@ -181,9 +195,9 @@ follows the noun* is). A note:
 ```jsonc
 { "kind": "note",
   "gloss": "in Spanish the colour comes after the noun — 'thing blue'",
-  "explainer_start_ms": 4200,
+  "explainer_start_ms": 4200,    // offset into note_audio (this clause)
   "explainer_end_ms":   7300,
-  "spans": [2, 3] }            // no target audio of its own
+  "spans": [2, 3] }              // no target audio of its own
 ```
 
 This puts *some* meaning back into the fusion tier — deliberately, and within a
@@ -213,7 +227,7 @@ rebuilding the wall of explanation we are retiring.
    span in the known clause. Composite glosses would be combinatorial *and*
    wrong.
 
-This cut is what keeps the asset set at exactly three files, forever.
+This cut is part of what keeps the asset set tiny.
 
 ### Which audio dedupes — explainer yes, target no [v2]
 
@@ -228,9 +242,16 @@ This cut is what keeps the asset set at exactly three files, forever.
   reused across every clause the unit appears in.
 
 So "taught once, reused everywhere" means the **teaching** (gloss + explainer
-slice) is consistent and cached — not the audio of the word *in this mouth in
+clip) is consistent and cached — not the audio of the word *in this mouth in
 this sentence*, which should not be. Caching lands where it is free; it is not
 paid where it would jar.
+
+**Consequence — the per-clause explainer file dissolves [v2].** Once the
+explainer clip per atom is inventory-owned, and assembly is app-side (it always
+was — the atom map exists so the app composes the ladder), there is no per-clause
+explainer *walk* to bake: the app cites inventory clips for atoms and plays
+`note_audio` for the (rare) clause-specific asides. So the per-clause asset set is
+`target_clause` + `known_clause` + optional `note_audio`.
 
 ## The Stage-one ladder (app)
 
@@ -238,11 +259,12 @@ Computed from the atom map + a few config knobs. For a clause of N atoms
 (example: *Ideš na posao, Maria?* → `[Ideš] [na posao] [Maria]`):
 
 1. **Orientation** — whole `target_clause` once. The destination.
-2. **Meet the atoms** — for each teachable atom: target slice → its explainer
-   slice → (optionally) target slice again. Screen highlights the atom + shows
-   its gloss. Lowest cognitive load: one tiny meaning at a time. A second,
-   lighter pass fades the scaffold (target + explainer once, no echo).
-   Single-atom notes play here, after the atom they span.
+2. **Meet the atoms** — for each teachable atom: target slice (from this clause's
+   take) → its explainer clip (cited from the inventory by `lego_key`) →
+   (optionally) target slice again. Screen highlights the atom + shows its gloss.
+   Lowest cognitive load: one tiny meaning at a time. A second, lighter pass
+   fades the scaffold (target + explainer once, no echo). Single-atom notes play
+   here (from `note_audio`), after the atom they span.
 3. **Fuse** — adjacent atoms join, **target-only**, the inserted gaps shrinking
    each tier: `[Ideš·na posao]` → `[Ideš·na posao·Maria]`. Screen: the chunks
    visually merge. A multi-atom note plays at the tier where its atoms first
@@ -335,27 +357,33 @@ actively anti-acquisition. The value is parsing *in context*, which the ladder
 delivers.
 
 **Transition:** keep the baked clip until the atom-driven version is proven, then
-remove it. Before retiring, decide **who owns assembly long-term** — today
-`pod-explainer-composite.cjs` assembles from atom pieces; if the app also
-composes from slices, the breakdown logic lives in two places during the
-overlap.
+remove it. **Assembly is app-side** — the atom map exists precisely so the app
+composes the ladder live (the config knobs stay tunable like
+`algorithm_config.pods`). So there is no long-term competing assembler: today's
+`pod-explainer-composite.cjs` baked walk is the transitional artifact, removed
+once the ladder is proven, and the per-clause explainer walk is not replaced —
+it dissolves into inventory explainer clips + `note_audio` (see *dedup split*).
 
-## Open decisions
+## Resolved decisions
 
-1. **Fusion rule** — pairwise-adjacent confirmed; odd-count = leave-then-join.
-   *(Resolved v2.)*
+1. **Fusion rule** — pairwise-adjacent; odd-count = leave-then-join. *(v2)*
 2. **Offset source** — recorded + forced-align is the contract; TTS timings
-   (Azure only) a shortcut. *(Resolved v2.)*
-3. **Assembly ownership** after retiring the monolith — Popty stitcher vs. app
-   composition. *(Open — decide before retiring the baked clip.)*
+   (Azure only) a shortcut; the xAI clone gives none. *(v2)*
+3. **Assembly** — app-side, from the atom map. The per-clause explainer walk
+   dissolves into inventory clips + `note_audio`. *(v2)*
+
+No open decisions outstanding at the design level. Remaining work is build +
+calibration (gap curve, scaffold fade by ear; how cleanly real pod corpora tile
+against their extracted inventory).
 
 ## Division of labour
 
 - **Popty:** the corpus-first pod-LEGO extraction (Pass 1) + per-clause
-  allocation (Pass 2); persist the inventory (identity + canonical explainer
-  audio + first-appearance order) and the three files + per-sentence atom map
-  (offsets + gloss + kind + spans). Dedupe explainer audio by text; keep target
-  slices in-context.
+  allocation (Pass 2); persist the inventory (identity + canonical per-atom
+  explainer audio + first-appearance order) and the per-clause assets
+  (`target_clause`, `known_clause`, optional `note_audio`) + per-sentence atom
+  map (target offsets + gloss + kind + spans, notes' explainer offsets). Dedupe
+  explainer audio by text; keep target slices in-context.
 - **App:** the Stage-one introduction ladder (computed from the atom map + the
   config knobs), the slice/insert-gap playback, and the visual atom highlight.
   Stages 2–9 untouched.
