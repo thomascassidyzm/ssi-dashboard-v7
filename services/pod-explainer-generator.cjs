@@ -100,9 +100,12 @@ function shouldSkipCourse(courseCode) {
  *     ...
  *   ]
  *
- * Chunks are LEGO-sized — meaningful semantic units, NOT one word per
- * chunk (compound concepts like "come stai" stay together). Keeps the
- * methodology consistent with the course-side phrase decomposition.
+ * Chunks are ATOM-sized (Tom 2026-06-12, from Aran's explainer guide):
+ * the smallest piece that carries meaning alone — usually one word. Glue
+ * words attach to their neighbour ("na posao"); fixed expressions stay
+ * whole ("come stai"); a clause is never one chunk. Clause-level pairing
+ * returns later as the FINAL rung of the Stage-0 ladder, not as the
+ * default decomposition.
  */
 function buildBatchPrompt({ sentences, targetLang, learnerLang, connector }) {
   const inputBlock = sentences
@@ -125,8 +128,15 @@ For EACH sentence below produce a JSON object with:
                     audio), or "" if no explainer is warranted
 
 Each chunk object in "decomposition" has:
-  "chunk_target"  — the target fragment (LEGO-sized: a meaningful unit, e.g.
-                    "come stai" stays whole; NOT forced one-word-per-chunk)
+  "chunk_target"  — ONE ATOM: the smallest piece that still carries meaning on
+                    its own — usually ONE word. GLOSS ALONE ONLY WHAT MEANS
+                    ALONE: a function word, particle, or fused ending that
+                    means nothing by itself either GLUES to its neighbour as
+                    one atom ("na posao" = "to work") or becomes a one-line
+                    job note. Multi-word atoms are allowed ONLY for that glue
+                    and for genuine fixed expressions whose pieces would
+                    mislead ("come stai"). A CLAUSE OR VERB PHRASE IS NEVER
+                    ONE ATOM — always split it.
   "chunk_known"   — its known-language gloss, following the CALIBRATED RULE below
   "primitives"    — OPTIONAL array of finer {target, known} word-pieces inside
                     this chunk, INCLUDING form-as-job glosses (see rule). Omit
@@ -187,6 +197,23 @@ Each chunk object in "decomposition" has:
 8. NEVER use grammar terms (genitive, accusative, reflexive, dative,
    nominative, conjugation, declension...). NO asides. NO alternatives. NO
    "you could also say". Short, plain, kind, once.
+
+================  GRANULARITY CALIBRATION (match this exactly)  ================
+
+This is the bar, from the team's explainer guide — atom-level, every time:
+
+  "Kako ste?"             → "Kako ${connector} how, ste ${connector} are-you — politely."
+  "Običnu, molim."        → "Običnu ${connector} regular, molim ${connector} please — literally 'I ask'."
+  "Iz Splita sam"         → "Iz ${connector} from, Splita is Split, sam ${connector} I am — so 'from Split I am'."
+  "Onda kilogram rajčica" → "Onda ${connector} then, kilogram ${connector} a kilo, rajčica ${connector} of tomatoes."
+  "Izvolite"              → "Izvolite — a waiter's polite 'go ahead, what'll it be?'"
+  "Dobro jutro"           → "Dobro ${connector} good, jutro ${connector} morning."
+
+WRONG — clause-sized chunk; the learner can map nothing inside it:
+  { "chunk_target": "Ideš na posao", "chunk_known": "are you going to work" }
+RIGHT — atoms, glue-words glued:
+  { "chunk_target": "Ideš",     "chunk_known": "you're going" },
+  { "chunk_target": "na posao", "chunk_known": "to work" }
 
 ================  WORKED EXAMPLES  ================
 

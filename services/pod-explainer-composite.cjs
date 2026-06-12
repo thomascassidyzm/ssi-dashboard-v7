@@ -47,7 +47,11 @@ const { canonicalSpeakerName } = require('../tools/pod-sync.cjs')
 
 const POD_SLUG = 'pod-0'
 const EXPLAINER_ROLE = 'pod_explainer'
-const GAP_CHUNK_TO_GLOSS_MS = 250   // breath between a target chunk and its gloss
+// Pieces are edge-trimmed to 40ms (EDGE_TRIM_FILTER), so these constants are
+// the REAL pacing. Before the trim, Azure's ~140ms lead / ~870ms tail padding
+// made chunk→gloss play ~1.3s regardless of the constant (Tom's ear,
+// 2026-06-12). Calibrate both by ear on sample renders.
+const GAP_CHUNK_TO_GLOSS_MS = 180   // breath between a target chunk and its gloss
 const GAP_BETWEEN_PAIRS_MS = 420    // breath between one pair and the next
 
 const supabase = createClient(
@@ -126,6 +130,15 @@ function buildTTSConfig(voice) {
  *  silence pieces (48k mono CBR): the splicer's crossfade chain and its
  *  concat fallback both require UNIFORM formats, and raw provider mp3s
  *  (Azure = 24k) mixed with 48k silences truncated multi-pair splices. */
+/** Strip provider edge-padding, keeping 40ms of natural breath each side.
+ *  Internal pauses are untouched (only the first/last silence run goes). */
+const EDGE_TRIM_FILTER = [
+  'silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.04',
+  'areverse',
+  'silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.04',
+  'areverse',
+].join(',')
+
 async function renderPiece(cache, tempDir, text, voice) {
   const key = `${voice.provider}|${voice.voice_id}|${text}`
   if (cache.has(key)) return cache.get(key)
@@ -134,7 +147,9 @@ async function renderPiece(cache, tempDir, text, voice) {
   const rawFile = path.join(tempDir, `raw-${cache.size}.mp3`)
   fs.writeFileSync(rawFile, audioBuffer)
   const file = path.join(tempDir, `piece-${cache.size}.mp3`)
-  await audioProcessor.ffmpegFilterToLameMp3(rawFile, file, {})
+  // Edge-trim voiced pieces only — the ensureSilence gap pieces must keep
+  // their full authored length.
+  await audioProcessor.ffmpegFilterToLameMp3(rawFile, file, { filterChain: EDGE_TRIM_FILTER })
   cache.set(key, file)
   return file
 }
