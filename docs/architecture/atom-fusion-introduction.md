@@ -388,6 +388,31 @@ against their extracted inventory).
   config knobs), the slice/insert-gap playback, and the visual atom highlight.
   Stages 2–9 untouched.
 
+## Implementation status (Popty)
+
+First crack at the **cost-free data layer** — no TTS, no audio, no money:
+
+| Piece | File | Status |
+|---|---|---|
+| Schema: `pod_legos` + `atom_map`/`note_audio_id` | `database/migrations/20260612_pod_legos_and_atom_map.sql` | built |
+| Pass 1 fold + Pass 2 atom maps (pure core) | `services/pod-lego-extractor.cjs` | built |
+| Unit tests (fold/ZUT/first-encounter/tiling/notes) | `services/pod-lego-extractor.test.cjs` | built, 14 green |
+| CLI runner (`node … pod-lego-extractor.cjs <course> [--commit]`) | same file | built, **dry-run default** |
+
+The extractor reuses each sentence's existing `explainer_decomposition` (the
+chunk pairs the explainer generator already produces) as Pass-1 raw material, so
+it spends nothing. It delivers the consistency wins that are safe to automate —
+**canonical gloss (ZUT-resolved), first-encounter ordering, name detection,
+total-tiling validation** — and flags the rest (`needs_review`) for the QA Mode.
+
+**Deliberately deferred (cost-gated / language-aware):**
+- **Cross-occurrence re-tiling** — the current build keeps each clause's own
+  segmentation and flags *drift* rather than forcing a greedy re-tile (which
+  needs language-aware tokenisation; whitespace splitting is wrong for CJK).
+- **Audio** — the inventory's canonical per-atom explainer clips, per-clause
+  `note_audio`, and forced-aligned target offsets are a separate pass requiring
+  TTS spend + sign-off. Atom/note offsets are left `null`.
+
 ---
 
-*Last updated: 2026-06-12 (v2)*
+*Last updated: 2026-06-12 (v2 + Popty data-layer first crack)*
