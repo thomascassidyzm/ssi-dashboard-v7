@@ -78,6 +78,25 @@ async function fetchDashboardUser(email) {
       if (fetchError) console.warn('[Auth] Direct dashboard_users query failed, trying API:', fetchError.message)
     }
 
+    // Same-origin serverless /api/auth/me (Vercel) — deployed WITH the
+    // frontend, so it's reachable whenever the site itself is, with no
+    // dependency on any production machine or tunnel. Only exists on
+    // popty.app (vite dev would 404 this with HTML, which must not count
+    // as an authoritative "no row").
+    if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') {
+      try {
+        const resp = await fetch(`/api/auth/me?email=${encodeURIComponent(email)}`)
+        if (resp.ok) {
+          lastLookupAuthoritative = true
+          return await resp.json()
+        }
+        if (resp.status === 404) {
+          lastLookupAuthoritative = true
+          return null
+        }
+      } catch { /* fall through to the machine API */ }
+    }
+
     // Fallback: production-api. 200 and 404 are both authoritative;
     // anything else (network error, 5xx) means "couldn't reach it".
     const { getApiUrl } = await import('../services/api.js')
@@ -123,13 +142,21 @@ async function signInWithPassword(email, password) {
       session.value = data.session
 
       const dbUser = await fetchDashboardUser(email)
-      if (dbUser) {
-        dashboardUser.value = dbUser
-        cacheUser(dbUser)
+      const rescue = !dbUser && !lastLookupAuthoritative ? loadCachedUser(email) : null
+      if (dbUser || rescue) {
+        // Identity is already proven (password verified); the cache only
+        // carries role/courses from a previous successful lookup. Using it
+        // when every access source is unreachable keeps admins working
+        // through an outage instead of locking them out.
+        dashboardUser.value = dbUser || rescue
+        if (dbUser) cacheUser(dbUser)
       } else {
         error.value = accessLookupFailureMessage()
         dashboardUser.value = null
-        clearCachedUser()
+        // Only forget the cached row on a definite "no row" — wiping it on
+        // a network failure destroys the one thing that keeps the user
+        // working while the machine is unreachable.
+        if (lastLookupAuthoritative) clearCachedUser()
       }
     }
 
@@ -214,9 +241,12 @@ async function verifyOTP(email, token) {
 
       // Look up dashboard access by email
       const dbUser = await fetchDashboardUser(email)
-      if (dbUser) {
-        dashboardUser.value = dbUser
-        cacheUser(dbUser)
+      const rescue = !dbUser && !lastLookupAuthoritative ? loadCachedUser(email) : null
+      if (dbUser || rescue) {
+        // Cache rescue: identity proven by OTP; a previously-verified
+        // role/courses row beats locking the user out during an outage.
+        dashboardUser.value = dbUser || rescue
+        if (dbUser) cacheUser(dbUser)
       } else {
         // OTP verified but no usable answer — distinguish "no access"
         // from "couldn't reach the machine" (never invite-code-wall admins
@@ -368,6 +398,10 @@ export function useAuth() {
     logout,
     getAccessToken,
     canAccessCourse,
+    // True only when the last access lookup got a definite answer (row or
+    // confirmed no-row). LoginForm must check this before invite-walling:
+    // a network miss means "machine unreachable", not "no access".
+    accessLookupWasAuthoritative: () => lastLookupAuthoritative,
     refreshAccess: async (email) => {
       const dbUser = await fetchDashboardUser(email)
       if (dbUser) {

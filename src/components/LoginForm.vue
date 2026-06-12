@@ -197,7 +197,7 @@ import { useAuth } from '../composables/useAuth'
 import { getApiUrl } from '../services/api'
 
 const router = useRouter()
-const { sendOTP, verifyOTP, signInWithPassword, loading, error, hasDashboardAccess, refreshAccess } = useAuth()
+const { sendOTP, verifyOTP, signInWithPassword, loading, error, hasDashboardAccess, refreshAccess, accessLookupWasAuthoritative } = useAuth()
 
 const step = ref('email')
 const email = ref('')
@@ -231,6 +231,11 @@ async function handlePasswordLogin() {
   try {
     await signInWithPassword(email.value, password.value)
     if (!hasDashboardAccess.value) {
+      // Only invite-wall on a DEFINITE "no row". A failed lookup (machine
+      // unreachable) keeps the useAuth error visible on this step so the
+      // user can retry — an admin must never be asked for an invite code
+      // because a tunnel was down.
+      if (!accessLookupWasAuthoritative()) return
       error.value = null
       step.value = 'invite-code'
       inviteCode.value = ''
@@ -280,6 +285,8 @@ async function handleVerifyOTP() {
   try {
     await verifyOTP(email.value, code.value)
     if (!hasDashboardAccess.value) {
+      // Same guard as the password path: network miss ≠ no access.
+      if (!accessLookupWasAuthoritative()) return
       error.value = null
       step.value = 'invite-code'
       inviteCode.value = ''
