@@ -119,13 +119,29 @@
                   bilingual guide{{ a.guideSuggested ? ' (suggested)' : '' }}
                 </span>
               </div>
-              <button
-                @click="copyRecordLink(a.voiceId)"
-                class="text-[11px] px-2 py-1 rounded border border-slate-600 text-slate-300 hover:border-emerald-500 flex-shrink-0"
-                :title="recordLink(a.voiceId)"
-              >
-                {{ copiedVoiceId === a.voiceId ? 'Copied ✓' : 'Copy record link' }}
-              </button>
+              <div class="flex items-center gap-1.5 flex-shrink-0">
+                <template v-if="savedVoiceIds.has(a.voiceId)">
+                  <button
+                    @click="copyRecordLink(a.voiceId)"
+                    class="text-[11px] px-2 py-1 rounded border border-slate-600 text-slate-300 hover:border-emerald-500"
+                    :title="recordLink(a.voiceId)"
+                  >
+                    {{ copiedVoiceId === a.voiceId ? 'Copied ✓' : 'Copy record link' }}
+                  </button>
+                  <a
+                    :href="recordLink(a.voiceId)"
+                    target="_blank"
+                    class="text-[11px] px-2 py-1 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500"
+                  >Open ↗</a>
+                </template>
+                <span
+                  v-else
+                  class="text-[11px] px-2 py-1 rounded border border-slate-700/60 text-slate-500"
+                  title="Record links only work once the cast is saved"
+                >
+                  Save cast to get the link
+                </span>
+              </div>
             </div>
             <div class="text-[11px] text-slate-400 mt-1">
               Plays: {{ a.characters.length ? a.characters.join(', ') : (a.isGuide ? 'just the guide lines' : '—') }}
@@ -141,6 +157,7 @@
         </div>
         <p class="text-[11px] text-slate-500 mt-2">
           Each record link opens that person's lines, with the conversation shown around them for context.
+          Links go live when you save the cast.
         </p>
       </div>
       <div v-else-if="!speakerCount" class="text-xs text-slate-500 mt-4">
@@ -189,6 +206,13 @@ const rosterVoices = ref([])      // [{ voiceId, name, email }]
 const savedCast = ref({})         // server's podCast
 const generationColouring = ref(false)
 const provisioningNotes = ref([])
+
+// Record links only exist once the cast is SAVED — the Record Room reads the
+// saved cast, so a link copied from an unsaved proposal lands on "Casting not
+// set up yet" (Tom, 2026-06-12). Gate the link UI on membership here.
+const savedVoiceIds = computed(() => new Set(
+  Object.values(savedCast.value || {}).map(v => v?.voiceId).filter(Boolean)
+))
 
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
