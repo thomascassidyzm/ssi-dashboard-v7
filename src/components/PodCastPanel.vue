@@ -159,6 +159,17 @@
           Each record link opens that person's lines, with the conversation shown around them for context.
           Links go live when you save the cast.
         </p>
+        <!-- Save where the user actually is after reviewing the parts — the
+             header button is off-screen at this point (and the first casualty
+             of a phone viewport: Tom's mobile test, 2026-06-12). -->
+        <button
+          v-if="proposal"
+          :disabled="saving || !dirty"
+          @click="saveCast"
+          class="mt-3 text-xs px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-medium"
+        >
+          {{ saving ? 'Saving…' : 'Save cast — make the links live' }}
+        </button>
       </div>
       <div v-else-if="!speakerCount" class="text-xs text-slate-500 mt-4">
         No dialogue characters yet — generate or sync a pod first.
