@@ -167,6 +167,9 @@ Each chunk object in "decomposition" has:
      "Iz Splita sam"  → "...sam ${connector} I am — so 'from Split I am'"
      "molim"          → "please — literally 'I ask'"
    If reading the pieces in order is clear, NO tail. Most lines have none.
+   AT MOST ONE tail per row, and it goes at the VERY END of explainer_text,
+   after ALL chunks — NEVER mid-narration. A row with several sentences gets
+   the one tail that helps most (usually none), not one per clause.
 
 4. REGISTER FLAG — one word, only when it matters. If the target is marked
    formal/polite (e.g. the vous / -ste / formal-or-plural form), append the
