@@ -117,8 +117,14 @@ Learner language: ${learnerLang}
 
 This explainer fires ONCE, the first time a learner meets a target sentence. It
 sits between the target audio and its meaning. It must be SHORT and
-NON-INTERRUPTIVE — a quick, friendly "here's how this breaks down", never a
-grammar lesson. The learner just wants to get on with hearing the language.
+NON-INTERRUPTIVE — a quick, friendly "here's how this breaks down". Never a
+grammar lesson with TERMINOLOGY — but its whole PURPOSE is to reveal what the
+target language is DOING with its grammar: when the target builds a phrase
+differently from the known language (different word order, an object stranded
+after an adverb, a "have" where English has "be"), that divergence is THE THING
+TO SHOW, in plain words — keep the diverging pieces together and say what it
+does literally. The learner wants to understand how the language assembles
+meaning, not just what the words add up to.
 
 For EACH sentence below produce a JSON object with:
 
@@ -143,6 +149,17 @@ Each chunk object in "decomposition" has:
                     stay small enough to learn as one unit — a whole clause or a
                     long verb phrase is too big; split it at the next clean
                     gloss seam.
+                    WORD-ORDER DIVERGENCE OVERRIDES THE MERGE-UP DEFAULT: when a
+                    thin piece is thin because the target REORDERS it (an object
+                    pronoun stranded after an adverb, a verb thrown to the end),
+                    do NOT strand it and do NOT silently absorb it — KEEP the
+                    reordered span together as one chunk, gloss it for MEANING,
+                    and put the literal order in "literal" so the note can show
+                    what the language did. e.g. Irish "ar ball thú" → chunk_known
+                    "you later", literal "later you" (the explainer then says
+                    "...— literally 'later, you'"). Showing that reorder is the
+                    whole point; never split it into "ar ball = later" + a
+                    stranded "thú = you".
   "chunk_known"   — its known-language gloss, following the CALIBRATED RULE below
   "primitives"    — OPTIONAL array of finer {target, known} word-pieces inside
                     this chunk, INCLUDING form-as-job glosses (see rule). Omit
@@ -164,13 +181,17 @@ Each chunk object in "decomposition" has:
      veliku   → "large"            (just the meaning; the ending is silent)
    Put any finer form-job pieces in "primitives", but keep "chunk_known" plain.
 
-3. "SO / LITERALLY" TAIL — use SPARINGLY. Add the tail to explainer_text ONLY
-   where the word-by-word would MISLEAD the learner about how the phrase is
-   built — i.e. reading the pieces in order gives the wrong idea of the
-   construction. That covers have-for-be, "call yourself"-style reflexives, and
-   verb-on-the-end orders. It does NOT cover mild reordering that still reads
-   fine (e.g. "for me, a kir"): leave those bare.
+3. "SO / LITERALLY" TAIL — this is where the explainer DOES ITS JOB of showing
+   what the language is doing; fire it WHENEVER the word-by-word order would
+   mislead about how the phrase is built, and not otherwise. That covers
+   have-for-be, "call yourself"-style reflexives, verb-on-the-end orders, and
+   OBJECT-STRANDING (a pronoun thrown past an adverb). It does NOT cover mild
+   reordering that still reads fine (e.g. "for me, a kir"): leave those bare.
+   Frequency follows the language — a heavily-reordering language (Irish, German,
+   Japanese) earns more tails than a closely-matching one; don't force them, but
+   don't suppress a genuine construction either.
      "Iz Splita sam"  → "...sam ${connector} I am — so 'from Split I am'"
+     "ar ball thú"    → "ar ball thú ${connector} you later — so 'later, you'"
      "molim"          → "please — literally 'I ask'"
    If reading the pieces in order is clear, NO tail. Most lines have none.
    AT MOST ONE tail per row, and it goes at the VERY END of explainer_text,
