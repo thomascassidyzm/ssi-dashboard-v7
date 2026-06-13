@@ -1255,6 +1255,22 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
+      // 3a-FRAME. FRAME-COVERAGE (warn): each USE basket should vary along the axis
+      // that carries the new distinction (Principle 7), not just swap the slot filler.
+      // Convergence pairs are exempt by construction. Was enforced only on /lego.
+      for (const lego of legos) {
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+        if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
+        let basket = [];
+        if (usesBuildUseFormat(lego)) basket = [...(lego.build || []), ...(lego.use || [])];
+        else if (lego.phrases) basket = lego.phrases;
+        const fw = checkBasketFrameCoverage(basket, lego.target);
+        for (const w of fw) {
+          warnings.push({ type: 'frame_coverage', lego_id: legoId, lego_target: lego.target, ...w });
+          console.log(`⚠ ${legoId}: frame-coverage [${w.code}]`);
+        }
+      }
+
       // 3b. PHRASE LENGTH RATIO VALIDATION
       const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
       const isLogographic = LOGOGRAPHIC_LANGS.includes(targetLang) || LOGOGRAPHIC_LANGS.includes(knownLang);

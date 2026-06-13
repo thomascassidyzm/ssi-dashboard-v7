@@ -693,23 +693,30 @@ function checkBasketFrameCoverage(phrases, legoTarget) {
   });
   if (use.length < 3) return [];
 
-  const sigCounts = new Map();
-  let nakedSwaps = 0;
+  const stripT = s => (s || '').replace(/[？。，！、?!,.\s]/g, '');
+  // Count DISTINCT TARGETS per signature, not raw phrases — so CONVERGENCE PAIRS
+  // (same target, different English prompt = deliberate many-known→one-target
+  // teaching) collapse to one and can't read as monotony, while real pronoun/
+  // topic swaps (different targets sharing a collapsed signature) still flag.
+  const sigTargets = new Map();
   for (const p of use) {
     const sig = phraseFrameSignature(p.target, legoTarget);
     if (sig == null) continue;
-    sigCounts.set(sig, (sigCounts.get(sig) || 0) + 1);
-    if (/^Ⓟ*◇Ⓟ*$/.test(sig)) nakedSwaps++;
+    if (!sigTargets.has(sig)) sigTargets.set(sig, new Set());
+    sigTargets.get(sig).add(stripT(p.target));
   }
-  const n = [...sigCounts.values()].reduce((a, b) => a + b, 0);
-  if (!n) return [];
+  const distinctTotal = [...sigTargets.values()].reduce((a, s) => a + s.size, 0);
+  if (!distinctTotal) return [];
 
+  let nakedSwaps = 0;
   const warnings = [];
-  for (const [sig, count] of sigCounts) {
+  for (const [sig, targets] of sigTargets) {
+    const count = targets.size;
+    if (/^Ⓟ*◇Ⓟ*$/.test(sig)) nakedSwaps += count;
     if (count >= 3) {
       warnings.push({
         code: 'repeated_frame',
-        detail: `${count} USE phrases share one plug-in pattern "${sig}" — vary the frame (question/negation/time/embedding/connective), not the slot filler`,
+        detail: `${count} distinct USE phrases share one plug-in pattern "${sig}" — vary the frame (question/negation/time/embedding/connective), not the slot filler`,
       });
     }
   }
@@ -719,11 +726,11 @@ function checkBasketFrameCoverage(phrases, legoTarget) {
       detail: `${nakedSwaps} USE phrases are just [pronoun]+LEGO — subject variation is one pattern, worth at most 2 slots`,
     });
   }
-  const diversity = sigCounts.size / n;
-  if (n >= 4 && diversity < 0.6) {
+  const diversity = sigTargets.size / distinctTotal;
+  if (distinctTotal >= 4 && diversity < 0.6) {
     warnings.push({
       code: 'low_frame_diversity',
-      detail: `${sigCounts.size} distinct plug-in patterns across ${n} USE phrases (${diversity.toFixed(2)}) — each USE phrase should show a new way the LEGO combines with prior vocabulary`,
+      detail: `${sigTargets.size} distinct plug-in patterns across ${distinctTotal} USE phrases (${diversity.toFixed(2)}) — each USE phrase should show a new way the LEGO combines with prior vocabulary`,
     });
   }
   return warnings;
