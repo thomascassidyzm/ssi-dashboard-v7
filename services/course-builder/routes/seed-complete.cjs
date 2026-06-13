@@ -1217,6 +1217,33 @@ module.exports = function seedCompleteRoutes(ctx) {
         });
       }
 
+      // 3a-ZUT. PHRASE-LEVEL ZUT (production direction): the same English prompt must not map to a
+      // different target than the course already teaches. Previously enforced ONLY on /lego — wired
+      // here so the golden /seed/complete path enforces it too (the primary generation route).
+      if (!SKIP_VALIDATION) {
+        const zutPhrases = [];
+        for (const lego of legos) {
+          const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+          if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
+          if (usesBuildUseFormat(lego)) zutPhrases.push(...(lego.build || []), ...(lego.use || []));
+          else if (lego.phrases) zutPhrases.push(...lego.phrases);
+        }
+        if (zutPhrases.length > 0) {
+          const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, zutPhrases, seed_number);
+          if (zutCollisions.length > 0) {
+            errors.push({
+              type: 'zut',
+              message: 'ZUT violation (phrase) - same English prompt maps to a different target than the course already teaches',
+              collisions: zutCollisions.slice(0, 5),
+              total_collisions: zutCollisions.length,
+              hint: `One English prompt → one target (Zero Uncertainty). "${zutCollisions[0].known}" already maps to "${zutCollisions[0].existing_target}" (S${zutCollisions[0].existing_seed}); you submitted "${zutCollisions[0].new_target}". CONSOLIDATE to the existing target, or DIFFERENTIATE the English prompt so each maps uniquely.`,
+              methodology: METHODOLOGY_HINTS.zut,
+            });
+            console.log(`✗ ${seedId}: ZUT (phrase) - ${zutCollisions.length} collision(s)`);
+          }
+        }
+      }
+
       // 3b. PHRASE LENGTH RATIO VALIDATION
       const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
       const isLogographic = LOGOGRAPHIC_LANGS.includes(targetLang) || LOGOGRAPHIC_LANGS.includes(knownLang);
