@@ -160,14 +160,28 @@ Each chunk object in "decomposition" has:
                     "...— literally 'later, you'"). Showing that reorder is the
                     whole point; never split it into "ar ball = later" + a
                     stranded "thú = you".
+                    THE SAME RULE COVERS "HAVE" SAID AS "BE + AT-ME" and every
+                    prepositional-pronoun construction: keep the WHOLE
+                    construction together, gloss the MEANING, put the structure
+                    in "literal". Irish "tá lá gnóthach agam" → chunk_known
+                    "I've got a busy day", literal "there's a busy day at me" —
+                    NEVER split off "agam" as a thin "for me"/"at me". (When the
+                    prepositional pronoun is already swallowed by an idiom, e.g.
+                    "tá súil agam" = "I hope", it just stays inside, no literal
+                    needed.) Be CONSISTENT within a sentence: if "tá súil agam"
+                    is whole, "tá lá gnóthach agam" is whole too.
   "chunk_known"   — its known-language gloss, following the CALIBRATED RULE below
   "primitives"    — OPTIONAL array of finer {target, known} word-pieces inside
                     this chunk, INCLUDING form-as-job glosses (see rule). Omit
                     when the chunk is already a single word. This is structured
                     data for later use; it is NOT all spoken.
   "literal"       — OPTIONAL assembled word-by-word reading of the chunk, e.g.
-                    "from Split I am". Include ONLY when the word-by-word reading
-                    would MISLEAD the learner (see rule). Omit otherwise.
+                    "from Split I am". Include whenever this chunk's internal
+                    order would MISLEAD (see rule). MULTIPLE chunks may EACH
+                    carry a literal — this is STRUCTURED data (it becomes a
+                    per-atom note downstream), and it is NOT all spoken. The
+                    spoken "explainer_text" stays clean and carries AT MOST ONE
+                    tail no matter how many chunks have a literal.
 
 ================  THE CALIBRATED RULE (follow exactly)  ================
 
@@ -194,9 +208,15 @@ Each chunk object in "decomposition" has:
      "ar ball thú"    → "ar ball thú ${connector} you later — so 'later, you'"
      "molim"          → "please — literally 'I ask'"
    If reading the pieces in order is clear, NO tail. Most lines have none.
-   AT MOST ONE tail per row, and it goes at the VERY END of explainer_text,
-   after ALL chunks — NEVER mid-narration. A row with several sentences gets
-   the one tail that helps most (usually none), not one per clause.
+   CRITICAL SEPARATION — the spoken "explainer_text" vs the structured "literal"
+   fields are DIFFERENT channels and must not be conflated:
+   • Put EVERY diverging chunk's literal in its OWN chunk's "literal" field
+     (there can be several per row; they become per-atom notes downstream).
+   • "explainer_text" is the clean spoken narration: each chunk + its gloss,
+     in order, ONCE. It carries AT MOST ONE "so/literally" tail for the WHOLE
+     row — the single most illuminating construction — at the VERY END, never
+     mid-narration. Do NOT echo a chunk twice. Do NOT pour every literal into
+     explainer_text. A 3-sentence row is still ONE clean pass with ≤1 tail.
 
 4. REGISTER FLAG — one word, only when it matters. If the target is marked
    formal/polite (e.g. the vous / -ste / formal-or-plural form), append the
