@@ -1,5 +1,15 @@
 # Stage-0 Explainer Ladder — Audio Contract (pipeline ↔ app)
 
+> **SUPERSEDED (2026-06-13)** by `docs/architecture/atom-fusion-introduction.md`
+> (Atom-Fusion v2, design agreed Tom + Claude 2026-06-12). Key reversals there:
+> assembly is APP-SIDE from a per-sentence atom map (fusion tiers insert
+> shrinking gaps into the CONTINUOUS clause take, dissolving the jitter
+> objection below); the per-clause baked explainer walk is transitional and
+> retires; explainer audio becomes inventory-owned per-atom clips (deduped by
+> text) while target atom audio stays in-context (Option D derivation, now the
+> contract: forced-align recorded clauses, Azure timings as shortcut). This doc
+> is kept for the option analysis and the persistence findings.
+
 *2026-06-12 — written for the app-delivery agent, after Tom's question about
 whether explainer atoms are persisted. Pipeline side: `ssi-dashboard-v7-clean`
 (`services/pod-explainer-generator.cjs`, `services/pod-explainer-composite.cjs`).
