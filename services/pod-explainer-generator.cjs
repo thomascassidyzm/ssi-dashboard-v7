@@ -128,15 +128,21 @@ For EACH sentence below produce a JSON object with:
                     audio), or "" if no explainer is warranted
 
 Each chunk object in "decomposition" has:
-  "chunk_target"  — ONE ATOM: the smallest piece that still carries meaning on
-                    its own — usually ONE word. GLOSS ALONE ONLY WHAT MEANS
-                    ALONE: a function word, particle, or fused ending that
-                    means nothing by itself either GLUES to its neighbour as
-                    one atom ("na posao" = "to work") or becomes a one-line
-                    job note. Multi-word atoms are allowed ONLY for that glue
-                    and for genuine fixed expressions whose pieces would
-                    mislead ("come stai"). A CLAUSE OR VERB PHRASE IS NEVER
-                    ONE ATOM — always split it.
+  "chunk_target"  — ONE ATOM: the smallest piece that has an HONEST, NATURAL
+                    known-language gloss. The governing test is GLOSSABILITY +
+                    COGNITIVE LOAD, not minimal size — do NOT shred to single
+                    syllables. An atom may be SEVERAL WORDS when that is what
+                    glosses cleanly: "tú ag dul" = "you're going", "go raibh
+                    maith agat" = "thank you", "come stai" = "how are you". If a
+                    piece's only honest isolated gloss is awkward, empty, or a
+                    bare grammar-word ("are", "to", a particle), MERGE IT UP
+                    into the neighbouring chunk that DOES gloss cleanly rather
+                    than glossing it alone. These exercises repeat many times,
+                    so err toward slightly larger, cleanly-glossable chunks over
+                    maximal fragmentation. Still bounded ABOVE: a chunk must
+                    stay small enough to learn as one unit — a whole clause or a
+                    long verb phrase is too big; split it at the next clean
+                    gloss seam.
   "chunk_known"   — its known-language gloss, following the CALIBRATED RULE below
   "primitives"    — OPTIONAL array of finer {target, known} word-pieces inside
                     this chunk, INCLUDING form-as-job glosses (see rule). Omit
@@ -212,11 +218,20 @@ This is the bar, from the team's explainer guide — atom-level, every time:
   "Izvolite"              → "Izvolite — a waiter's polite 'go ahead, what'll it be?'"
   "Dobro jutro"           → "Dobro ${connector} good, jutro ${connector} morning."
 
-WRONG — clause-sized chunk; the learner can map nothing inside it:
+Two failure modes — avoid BOTH:
+
+TOO BIG (clause-sized; the learner can map nothing inside it):
   { "chunk_target": "Ideš na posao", "chunk_known": "are you going to work" }
-RIGHT — atoms, glue-words glued:
-  { "chunk_target": "Ideš",     "chunk_known": "you're going" },
-  { "chunk_target": "na posao", "chunk_known": "to work" }
+TOO SMALL (shredded to bare grammar-words with thin/awkward isolated glosses):
+  { "chunk_target": "An bhfuil", "chunk_known": "are" },
+  { "chunk_target": "tú",        "chunk_known": "you" },
+  { "chunk_target": "ag dul",    "chunk_known": "going" }
+RIGHT — each chunk has an honest, natural gloss; thin grammar-words merge up:
+  { "chunk_target": "Ideš",        "chunk_known": "you're going" },
+  { "chunk_target": "na posao",    "chunk_known": "to work" }
+and for "An bhfuil tú ag dul chun oibre?":
+  { "chunk_target": "An bhfuil tú ag dul", "chunk_known": "are you going" },
+  { "chunk_target": "chun oibre",           "chunk_known": "to work" }
 
 ================  WORKED EXAMPLES  ================
 
