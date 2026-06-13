@@ -1,0 +1,322 @@
+[
+ {
+  "target": "我觉得这个门很好",
+  "known": "I think this course is good",
+  "issue": "门 means 'door', not 'course' (course = 课/课程; 门 is only the MEASURE WORD as in 一门课). 这个门 reads as 'this door' — dishonest English gloss and wrong Mandarin."
+ },
+ {
+  "target": "她会学这个门",
+  "known": "she can study this course",
+  "issue": "学这个门 = 'study this door'. 门 does not mean 'course' and 这个门 is not a valid course reference (should be 这门课/这个课程). Gloss 'study this course' is dishonest; Mandarin is wrong."
+ },
+ {
+  "target": "她在放进包里",
+  "known": "she puts into the bag",
+  "issue": "在 (progressive) does not combine with the resultative/directional compound 放进...里, which denotes completion; '正在放进...里' is ungrammatical. Confusing/wrong Mandarin (should be 她在把…放进包里 or 她正把…往包里放)."
+ },
+ {
+  "target": "我觉得更多要学很重要",
+  "known": "I think more to learn is important",
+  "issue": "'更多要学' is not grammatical Mandarin for 'more to learn'. The string juxtaposes 更多 (more) + 要 (want/will) + 学 (study) without a valid structure; a native would say 还有更多要学的 or 要学的更多. As written it is confusing/ungrammatical. Same broken chunk recurs across several phrases."
+ },
+ {
+  "target": "我知道更多要学不容易",
+  "known": "I know more to learn is not easy",
+  "issue": "Same ungrammatical '更多要学' chunk. '我知道更多要学不容易' does not parse as 'I know more to learn is not easy'; needs e.g. 我知道还有更多要学并不容易 / 要学的还有很多，不容易."
+ },
+ {
+  "target": "因为更多要学，她很开心",
+  "known": "Because more to learn, she is happy",
+  "issue": "'因为更多要学，她很开心' is ungrammatical/confusing: '更多要学' is not a valid clause and 'because more to learn, she is happy' is itself broken English. Native: 因为还有很多要学，她很开心."
+ },
+ {
+  "target": "如果更多要学，我要练习",
+  "known": "If more to learn, I'm going to practise",
+  "issue": "Two problems: '更多要学' ungrammatical, AND the frame is labelled 'neg' but the sentence is a conditional with 如果 (if), not a negation — frame/content mismatch. Also '我要练习' for 'I'm going to practise' is fine, but the protasis is broken."
+ },
+ {
+  "target": "我不想更多要学",
+  "known": "I do not want more to learn",
+  "issue": "'更多要学' ungrammatical here too. 'I do not want more to learn' → natural Mandarin would be 我不想再多学 / 我不想学更多. As written it is confusing."
+ },
+ {
+  "target": "我觉得她想学，却睡",
+  "known": "I think she wants to study but sleep",
+  "issue": "'却睡' is unnatural/confusing: 却 (yet/but) needs a fuller predicate, a bare 却睡 is not idiomatic ('却睡着了'/'却去睡觉了'). Combined with the gloss 'wants to study but sleep' (broken English), this is confusing Mandarin. Recurs across multiple 却睡 phrases."
+ },
+ {
+  "target": "因为她累，她想回来，却睡",
+  "known": "Because she is tired, she wants to come back but sleep",
+  "issue": "Bare '却睡' is not idiomatic Mandarin (needs 却睡着了/却去睡了). Sentence reads as confusing/incomplete."
+ },
+ {
+  "target": "如果你累，你想回来，却睡",
+  "known": "If you are tired, you want to come back but sleep",
+  "issue": "Same bare '却睡' problem — unnatural/incomplete predicate. Confusing Mandarin."
+ },
+ {
+  "target": "我不想回来，却睡",
+  "known": "I do not want to come back but sleep",
+  "issue": "'我不想回来，却睡' is contradictory and ungrammatical: 却睡 is incomplete, and 'do not want to come back but sleep' is broken English. Confusing."
+ },
+ {
+  "target": "我在学，却睡",
+  "known": "I am studying but sleep",
+  "issue": "'我在学，却睡' is unnatural — bare 却睡 incomplete; also semantically odd ('I am studying but sleep'). Native: 我在学习，却睡着了."
+ },
+ {
+  "target": "我觉得这个足够",
+  "known": "I think this is enough",
+  "issue": "'我觉得这个足够' is stilted/incomplete: 足够 normally needs an object/complement or 了 (这个够了 / 这样就足够了). Bare 这个足够 is not idiomatic for 'this is enough'. Native: 我觉得这就够了 / 我觉得这样足够了."
+ },
+ {
+  "target": "我觉得它不足够",
+  "known": "I do not think it is enough",
+  "issue": "Two issues: (1) 不足够 is unnatural; the natural negation is 不够 (我觉得不够了), 足够 is rarely negated as 不足够. (2) The English gloss 'I do not think it is enough' is a dishonest gloss — the Mandarin 我觉得它不足够 means 'I think it is not enough' (negation inside the clause), not 'I do not think it is enough' (negation of believing). Gloss mismatch."
+ },
+ {
+  "target": "她会问我不认识的人",
+  "known": "She will ask people I don't know",
+  "issue": "Ambiguous/odd Mandarin: 她会问我不认识的人 most naturally parses as 'She will ask ME, the person I don't know' or is genuinely ambiguous between 'ask people I don't know' and 'ask me, [a person who] doesn't know'. The intended relative-clause reading 'ask people (whom) I don't know' is strained because 问 + 我 reads as object 'ask me'. The English gloss 'She will ask people I don't know' does not reliably map. Confusing structure."
+ },
+ {
+  "target": "我觉得你同意关于这个",
+  "known": "I think you agree about this",
+  "issue": "同意关于这个 is a calque of English 'agree about this' and is wrong/confusing Mandarin. 同意 takes a direct object or clause (同意这个/同意这一点); it does not pair with 关于. Natural: 同意这个观点 or 对这个表示同意."
+ },
+ {
+  "target": "你为什么不同意关于这个",
+  "known": "why don't you agree about this",
+  "issue": "Same 同意关于这个 calque error — ungrammatical collocation. Should be 不同意这个/这一点."
+ },
+ {
+  "target": "如果你同意关于这个就告诉我",
+  "known": "if you agree about this, tell me",
+  "issue": "Same 同意关于这个 calque error. Natural: 如果你同意这个就告诉我."
+ },
+ {
+  "target": "我们需要同意关于时间",
+  "known": "we need to agree about the time",
+  "issue": "同意关于时间 is a calque of 'agree about the time' and is wrong Mandarin. Natural: 我们需要就时间达成一致 / 我们需要商定时间."
+ },
+ {
+  "target": "你能同意关于这个",
+  "known": "you can agree about this",
+  "issue": "Same 同意关于这个 calque error. Natural: 你能同意这个吗 / 你可以接受这一点."
+ },
+ {
+  "target": "我今天需要做排",
+  "known": "I need to make the arrangements today",
+  "issue": "做排 is broken/non-existent Mandarin. 'Make arrangements' = 安排 (ānpái) or 做安排; 排 alone does not mean 'arrangements'. Looks like a faulty decomposition that peeled 排 off 安排, leaving a meaningless verb-object string a learner cannot reconstruct. Roman 'zuò pái' confirms the broken form."
+ },
+ {
+  "target": "她能帮排",
+  "known": "she can help with the arrangements",
+  "issue": "'pái' (排) does not mean 'arrangements'. 安排 (ānpái) is the noun for 'arrangements'. Standalone 排 means 'to arrange/row/queue' and is not a noun for 'the arrangements' — '她能帮排' reads as 'she can help arrange/queue' and is confusing/wrong as a rendering of 'she can help with the arrangements'."
+ },
+ {
+  "target": "我觉得排很好",
+  "known": "I think the arrangements are good",
+  "issue": "Same lego defect: 排 cannot stand for the noun 'the arrangements'. '我觉得排很好' is not natural Mandarin for 'I think the arrangements are good'; should use 安排. Confusing."
+ },
+ {
+  "target": "因为排，我想知道",
+  "known": "I want to know because of the arrangements",
+  "issue": "'因为排' is broken Mandarin — 排 alone is not 'the arrangements' and a bare '因为排' is ungrammatical/confusing. Needs 安排 and 因为 typically pairs with 所以 or restructuring."
+ },
+ {
+  "target": "我不知道排",
+  "known": "I don't know about the arrangements",
+  "issue": "'我不知道排' does not mean 'I don't know about the arrangements'; 排 is not the noun and 不知道 + bare 排 is confusing. Would need 我不知道安排 / 我不清楚安排。"
+ },
+ {
+  "target": "我觉得这是不同的完全方式",
+  "known": "I think this is a different completely way",
+  "issue": "Word order is wrong: adverb 完全 must precede 不同 (完全不同的方式 = 'a completely different way'). '不同的完全方式' is ungrammatical/confusing Mandarin and the gloss 'different completely way' is itself broken English mirroring the broken target."
+ },
+ {
+  "target": "我想学，但是用新的完全方式",
+  "known": "I want to learn, but in a new completely way",
+  "issue": "'新的完全方式' is unnatural/confusing — 完全 cannot post-modify like this. Should be 完全新的方式 or just 全新的方式. As written it is wrong Mandarin."
+ },
+ {
+  "target": "她能用不同的完全方式说",
+  "known": "she can speak in a different completely way",
+  "issue": "Same defect: 完全 misplaced — must be 完全不同的方式 ('a completely different way'). '不同的完全方式' is ungrammatical/confusing."
+ },
+ {
+  "target": "我不想要这个完全方式",
+  "known": "I don't want this completely way",
+  "issue": "'这个完全方式' is not natural Mandarin; 完全 cannot directly modify 方式 as an attributive adjective here. Confusing rendering of 'this completely way' (the English is also broken)."
+ },
+ {
+  "target": "你为什么想要不同的完全方式",
+  "known": "why do you want a different completely way",
+  "issue": "Same misplacement: should be 完全不同的方式 ('a completely different way'). '不同的完全方式' is ungrammatical Mandarin."
+ },
+ {
+  "target": "她不在外",
+  "known": "she is not outside",
+  "issue": "'在外' alone is unnatural/wrong for 'outside (a location)'. Standard Mandarin is 在外面/在外边. Bare 在外 means 'away from home/abroad' (adverbial), not 'is not outside'. Confusing Mandarin."
+ },
+ {
+  "target": "她现在为什么在外",
+  "known": "why is she outside now",
+  "issue": "Same 在外 problem: needs 在外面 for 'be outside'. Bare 在外 reads as 'away from home', mismatching gloss 'is she outside'."
+ },
+ {
+  "target": "我觉得她在外",
+  "known": "I think she is outside",
+  "issue": "Same 在外 issue; should be 在外面 for 'she is outside'."
+ },
+ {
+  "target": "我需要去外",
+  "known": "I need to go outside",
+  "issue": "'去外' is ungrammatical for 'go outside'. Must be 去外面. 外 cannot stand alone as the object of 去 here."
+ },
+ {
+  "target": "她没转",
+  "known": "she didn't go around",
+  "issue": "转 (zhuǎn) does not mean 'go around'. It means 'turn/rotate'. For 'go around' use 绕/转圈. Gloss is misleading/wrong."
+ },
+ {
+  "target": "她为什么想转",
+  "known": "why does she want to go around",
+  "issue": "Same: 转 = turn, not 'go around'. Dishonest gloss."
+ },
+ {
+  "target": "她会转",
+  "known": "she can go around",
+  "issue": "转 = turn, not 'go around'; also bare 会转 is bland but the gloss mismatch is the issue."
+ },
+ {
+  "target": "我们需要转",
+  "known": "we need to go around",
+  "issue": "转 = turn/transfer, not 'go around'. Gloss mismatch."
+ },
+ {
+  "target": "我能转",
+  "known": "I am able to go around",
+  "issue": "'wǒ néng zhuǎn' means 'I can turn/rotate', not 'I am able to go around'. 转 means turn, not go around. Dishonest gloss / wrong Mandarin for the intended meaning."
+ },
+ {
+  "target": "她不想卖掉那辆",
+  "known": "she doesn't want to sell off that vehicle",
+  "issue": "那辆 is incomplete — measure word 辆 requires a noun (那辆车). '那辆' alone meaning 'that vehicle' is ungrammatical/confusing; you cannot end on a bare measure word here."
+ },
+ {
+  "target": "我们为什么想卖掉那辆",
+  "known": "why do we want to sell off that vehicle",
+  "issue": "那辆 is a dangling measure word with no noun; '那辆' for 'that vehicle' is ungrammatical. Needs 那辆车 or similar."
+ },
+ {
+  "target": "她不知道排",
+  "known": "she doesn't know the arrangements",
+  "issue": "排 alone does not mean 'the arrangements'. 排 = 'to arrange/row'; 'arrangements' is 安排. '她不知道排' is not meaningful Mandarin for the gloss — confusing/wrong."
+ },
+ {
+  "target": "我们为什么需要改变排",
+  "known": "why do we need to change the arrangements",
+  "issue": "排 does not mean 'the arrangements' (that is 安排). '改变排' is not idiomatic/meaningful; wrong word for arrangements."
+ },
+ {
+  "target": "我觉得我们应该完成排",
+  "known": "I think we should finish the arrangements",
+  "issue": "排 ≠ 'arrangements' (安排). '完成排' is ungrammatical/confusing. Also 完成 (finish) + bare 排 does not parse."
+ },
+ {
+  "target": "如果你能改变排就好了",
+  "known": "if you can change the arrangements that would be good",
+  "issue": "排 ≠ 'arrangements' (安排); '改变排' is not meaningful Mandarin for the gloss."
+ },
+ {
+  "target": "她会改变排",
+  "known": "she can change the arrangements",
+  "issue": "排 ≠ 'arrangements' (安排); '改变排' is not meaningful Mandarin for the gloss."
+ },
+ {
+  "target": "我觉得我们需要增加多一点",
+  "known": "I think we need to add a little more",
+  "issue": "\"增加多一点\" is malformed Mandarin. \"增加\"(increase) clashes with \"多一点\"(a bit more) producing a redundant/ungrammatical construction. Natural: \"我觉得我们需要多加一点\" or \"再多加一点\". The current target is confusing/wrong, not merely stilted."
+ },
+ {
+  "target": "我知道那部",
+  "known": "I know that part",
+  "issue": "Measure word error. \"部\" cannot mean \"part\" as a generic noun here. \"that part\" = \"那部分\" (nà bùfen). \"那部\" reads as a fragment/measure-word for films or machines, so it is wrong/confusing for the gloss \"I know that part\". Roman \"nà bù\" also mismatches."
+ },
+ {
+  "target": "因为这部很重要",
+  "known": "because this part is important",
+  "issue": "Same defect: \"这部\" does not mean \"this part\". Should be \"这部分\" (zhè bùfen). As written it is an incomplete measure-word phrase, wrong for the gloss \"this part is important\"."
+ },
+ {
+  "target": "我觉得我想学新事",
+  "known": "I think I want to learn new things",
+  "issue": "\"新事\" is not idiomatic for \"new things\". Natural Mandarin is \"新事物\" or \"新东西\". \"学新事\" is wrong/confusing; \"学习新东西\"/\"学新事物\" expected."
+ },
+ {
+  "target": "因为我想学新事",
+  "known": "because I want to learn new things",
+  "issue": "Same \"新事\" defect: not idiomatic Mandarin for \"new things\". Should be \"新东西\"/\"新事物\"."
+ },
+ {
+  "target": "她从今天早上在找工作",
+  "known": "she is looking for work since this morning",
+  "issue": "\"从今天早上...在找\" is ungrammatical for \"since this morning\". Mandarin marks duration-since with \"从...就一直\" → \"她从今天早上就一直在找工作\". Bare \"从...在\" is wrong/confusing; the \"since\" durative reading is not licensed."
+ },
+ {
+  "target": "我很累，因为我从今天早上在学习",
+  "known": "I am tired because I am studying since this morning",
+  "issue": "Same \"从今天早上...在学习\" defect: missing \"就一直\". Correct: \"从今天早上就一直在学习\". As written the \"since this morning\" meaning is not properly expressed."
+ },
+ {
+  "target": "我从今天早上需要等",
+  "known": "I need to wait since this morning",
+  "issue": "\"我从今天早上需要等\" is ungrammatical for \"I need to wait since this morning\". \"从...\" needs a durative continuation (就一直在等 / 一直得等). As written it is confusing/wrong word order."
+ },
+ {
+  "target": "如果你从今天早上在工作，你应该很累",
+  "known": "if you are working since this morning, you should be tired",
+  "issue": "Same \"从今天早上...在工作\" defect: needs \"就一直\" → \"如果你从今天早上就一直在工作\". Bare \"从...在\" does not convey \"since this morning\"; wrong/confusing."
+ },
+ {
+  "target": "我知道你短时间里做了这么多",
+  "known": "I know you do so much in short time",
+  "issue": "Unnatural/confusing: '短时间里' needs the demonstrative '这么' (这么短时间内/在这么短的时间里) to mean 'in such a short time'. Bare '短时间里做了这么多' is awkward and the gloss 'in short time' is itself broken English, signaling the seed is malformed."
+ },
+ {
+  "target": "为什么她短时间里做了这么多",
+  "known": "Why did she do so much in short time",
+  "issue": "Same defect: '短时间里' is unnatural without 这么/在...里 framing. Natural would be '为什么她在这么短的时间里做了这么多'. Confusing as written."
+ },
+ {
+  "target": "我觉得我们应该等结束。",
+  "known": "I think we should wait to finish.",
+  "issue": "'等结束' is confusing/broken: 等 needs an object or 等到 to mean 'wait until it finishes'. '等结束' reads as 'wait [for] finishing' and is unnatural. Natural: '等它结束/等到结束'. The English 'wait to finish' is also ambiguous."
+ },
+ {
+  "target": "我需要等结束。",
+  "known": "I need to wait to finish.",
+  "issue": "Same '等结束' problem — needs 等到/等它结束. Unnatural as standalone Mandarin."
+ },
+ {
+  "target": "我能等结束。",
+  "known": "I can wait to finish.",
+  "issue": "Same '等结束' issue; additionally 能 here is less natural than 可以 for 'I can wait'. Core defect is '等结束'."
+ },
+ {
+  "target": "如果你想，我会等结束。",
+  "known": "If you want, I will wait to finish.",
+  "issue": "Same '等结束' defect; otherwise the if-frame is fine."
+ },
+ {
+  "target": "明天我会等结束。",
+  "known": "Tomorrow I will wait to finish.",
+  "issue": "Same '等结束' defect."
+ },
+ {
+  "target": "我觉得这个服务很重要。",
+  "known": "I think this service is important.",
+  "issue": "Measure-word/sense mismatch: '这个服务' with 服务 as a noun is fine in business contexts, but glossing 'this service is important' with 服务=fúwù as the abstract activity 'serving' (per the prior '服务社区' frame) conflates verb-服务 and count-noun-服务. Mild but the demonstrative 这个 forces a countable reading inconsistent with the 'serve the community' sense; borderline confusing."
+ }
+]
