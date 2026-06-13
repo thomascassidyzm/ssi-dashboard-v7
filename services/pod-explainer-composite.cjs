@@ -51,8 +51,22 @@ const EXPLAINER_ROLE = 'pod_explainer'
 // the REAL pacing. Before the trim, Azure's ~140ms lead / ~870ms tail padding
 // made chunk→gloss play ~1.3s regardless of the constant (Tom's ear,
 // 2026-06-12). Calibrate both by ear on sample renders.
-const GAP_CHUNK_TO_GLOSS_MS = 180   // breath between a target chunk and its gloss
-const GAP_BETWEEN_PAIRS_MS = 420    // breath between one pair and the next
+const GAP_CHUNK_TO_GLOSS_MS = 240   // breath between beats within a unit (target↔meaning↔target)
+const GAP_BETWEEN_PAIRS_MS = 620    // breath between one chunk's unit and the next
+const GAP_AFTER_INTRO_MS = 380      // settle after the one-time cue
+
+// One-time spoken cue at the head of the breakdown, so we DON'T repeat the
+// connector ("means") before every gloss (Tom 2026-06-13: the repeated "means"
+// grates). After this, each pair is just target · pause · gloss. Localised by
+// learner language; English is the only built cue for now (pods are mostly
+// _for_eng) — non-English learner courses fall back to it and should get a
+// translated cue before launch. Tweak the wording freely; it's heard once.
+const INTRO_CUE_BY_LEARNER = {
+  eng: 'Breaking it down...',
+}
+function introCueFor(learner) {
+  return INTRO_CUE_BY_LEARNER[learner] || INTRO_CUE_BY_LEARNER.eng
+}
 
 const supabase = createClient(
   (process.env.SUPABASE_URL || '').trim(),
@@ -101,10 +115,13 @@ function extractConstructionTail(explainerText) {
   return m[0].replace(/^[—–\-]\s*/, '').trim().replace(/[.\s]*$/, '.')
 }
 
-/** Canonical narration string — IDENTICAL form to buildExplainerNarration's
- *  P5 rebuild, so course_audio dedup keys are stable across re-runs. */
-function narrationText(chunks, tail, connector) {
-  let s = chunks.map(c => `"${c.chunk_target}". ${connector} ${c.chunk_known}.`).join(' ')
+/** Canonical narration string — the dedup key for the assembled clip. The
+ *  one-time intro cue replaces the per-pair connector ("means"); each pair is
+ *  just target then gloss. Changing this form re-keys the clips (intended when
+ *  the audio structure changes). */
+function narrationText(chunks, tail, introCue) {
+  let s = introCue ? `${introCue} ` : ''
+  s += chunks.map(c => `"${c.chunk_target}". ${c.chunk_known}. "${c.chunk_target}". "${c.chunk_target}".`).join(' ')
   if (tail) s += ` ${tail}`
   return s
 }
@@ -247,7 +264,8 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
           const chunks = activeChunks(row.explainer_decomposition)
           if (chunks.length === 0) continue // nothing narratable — leave unvoiced (player plays translation)
           const tail = extractConstructionTail(row.explainer_text)
-          const text = narrationText(chunks, tail, connector)
+          const introCue = introCueFor(learner)
+          const text = narrationText(chunks, tail, introCue)
           const chunkVoice = chunkVoiceFor(row.speaker)
           const voiceTag = `comp:${chunkVoice.voice_id}+${knownVoice.voice_id}`
 
@@ -255,13 +273,20 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
           const existing = await phase8.findExistingAudio(courseCode, text, target, EXPLAINER_ROLE, voiceTag)
           let audioId = existing
           if (!audioId) {
-            // Assemble the piece sequence: chunk · gap · gloss · gap · …
+            // Assemble: one-time cue, then for each chunk the pattern
+            // target · meaning · target · target (Tom 2026-06-13: hearing the
+            // target then its meaning ONCE locks the piece to awareness; two
+            // more targets reinforce the sound — no need to repeat the meaning).
+            // No "means" before each gloss — the cue set that up once.
             const files = []
+            files.push(await renderPiece(cache, tempDir, introCue, knownVoice))
+            files.push(await ensureSilence(cache, tempDir, GAP_AFTER_INTRO_MS))
             for (let i = 0; i < chunks.length; i++) {
               const c = chunks[i]
-              files.push(await renderPiece(cache, tempDir, c.chunk_target, chunkVoice))
-              files.push(await ensureSilence(cache, tempDir, GAP_CHUNK_TO_GLOSS_MS))
-              files.push(await renderPiece(cache, tempDir, `${connector} ${c.chunk_known}`, knownVoice))
+              const tgt = await renderPiece(cache, tempDir, c.chunk_target, chunkVoice)
+              const gls = await renderPiece(cache, tempDir, c.chunk_known, knownVoice)
+              const gap = await ensureSilence(cache, tempDir, GAP_CHUNK_TO_GLOSS_MS)
+              files.push(tgt, gap, gls, gap, tgt, gap, tgt)
               if (i < chunks.length - 1) files.push(await ensureSilence(cache, tempDir, GAP_BETWEEN_PAIRS_MS))
             }
             if (tail) {
