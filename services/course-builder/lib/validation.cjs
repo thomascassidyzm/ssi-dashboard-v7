@@ -729,9 +729,41 @@ function checkBasketFrameCoverage(phrases, legoTarget) {
   return warnings;
 }
 
+// ─── Metadata-gloss check (least-action-to-confidence) ─────────────────
+// A debut must hand the learner a producible communicative INTENTION, not a
+// grammatical label. "把 = object marker", "条 = measure word for long thin
+// objects", "吧 = softening particle" cost cognitive effort and yield zero
+// confidence — the learner can produce nothing from them. This is the
+// learner-facing form of the methodology's "honest whole-intention gloss, no
+// grammar metadata" principle, and it subsumes the older bare-particle idea:
+// classifiers and aspect/structural markers are construction-features too, and
+// belong INSIDE an M-LEGO (introduce:false), never as a bare debut.
+// WARN, not reject: some flags are an intention WITH a parenthetical note
+// (杯 "cup/glass (measure word)") that just needs the note stripped, vs pure
+// metadata (把 "object marker") that needs upchunking. A human/agent triages.
+const METADATA_GLOSS = /\b(marker|particle|classifier|measure word|copula|aspect|disposal|structural|grammatical|degree (?:particle|complement))\b|\((?:ba|de|le|guo|zhe|bei)\)|\((?:disposal|object|passive|progressive|perfective|measure word)\)/i;
+
+function checkMetadataGloss(legos) {
+  const warnings = [];
+  for (const lego of legos || []) {
+    const known = lego.known || lego.known_text || '';
+    if (METADATA_GLOSS.test(known)) {
+      warnings.push({
+        code: 'metadata_gloss',
+        lego_index: lego.idx ?? lego.lego_index,
+        target: lego.target || lego.target_text,
+        known,
+        detail: `Debut gloss "${known}" is grammar metadata, not a communicative intention. A learner can produce nothing from it (high action, zero confidence). Strip a parenthetical note if the intention is there (杯 "cup/glass"), or upchunk a true construction-feature into a whole-thought M-LEGO (把/条/吧).`,
+      });
+    }
+  }
+  return warnings;
+}
+
 module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
+  checkMetadataGloss,
   checkPhraseComplexity,
   checkVocabViolations,
   calculateLegoBalanceScores,

@@ -19,7 +19,7 @@ const {
 const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
-  checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage,
+  checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
@@ -1241,6 +1241,17 @@ module.exports = function seedCompleteRoutes(ctx) {
             });
             console.log(`✗ ${seedId}: ZUT (phrase) - ${zutCollisions.length} collision(s)`);
           }
+        }
+      }
+
+      // 3a-META. METADATA-GLOSS (warn): a debut must give a producible intention,
+      // not a grammar label (least action to confidence). Surfaces classifiers /
+      // markers / aspect-notes glossed as metadata for re-gloss-or-upchunk.
+      {
+        const metaWarnings = checkMetadataGloss(legos);
+        for (const w of metaWarnings) {
+          warnings.push({ type: 'metadata_gloss', ...w });
+          console.log(`⚠ ${seedId}L${String(w.lego_index).padStart(2, '0')}: metadata gloss "${w.known}"`);
         }
       }
 
