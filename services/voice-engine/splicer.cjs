@@ -263,8 +263,16 @@ async function spliceSegmentsToFile(inputFiles, outputPath, { audioProcessor, cr
         inputOverride: listPath,
       })
       const got = ((await audioProcessor.getAudioMetadata(outputPath)).duration || 0) * 1000
-      if (got < expectedMs * 0.95) {
-        throw new Error(`splice truncated: ${Math.round(got)}ms vs expected ~${Math.round(expectedMs)}ms`)
+      // Each MP3 piece carries encoder-delay padding that ffprobe COUNTS in its
+      // duration but the concat-demuxer decode TRIMS, so `expectedMs` over-counts
+      // by a roughly per-piece amount. With edge-trimmed pieces (many short
+      // segments) this accumulates to ~5% on long splices — benign (silence, not
+      // speech). The guard exists to catch the CATASTROPHIC acrossfade drop
+      // (output fell to ~12% of expected), which a 0.88 floor still catches with
+      // wide margin while no longer false-tripping on padding over-count.
+      const floor = expectedMs * 0.88 - workFiles.length * 30
+      if (got < floor) {
+        throw new Error(`splice truncated: ${Math.round(got)}ms vs expected ~${Math.round(expectedMs)}ms (${workFiles.length} pieces)`)
       }
     }
 

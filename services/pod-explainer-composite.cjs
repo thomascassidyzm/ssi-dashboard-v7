@@ -194,7 +194,7 @@ async function getCourseVoices(courseCode) {
  * that has explainer_text but no explainer_audio_id. Returns
  * { rendered, reused, failed }.
  */
-async function compositeExplainersForCourse(courseCode, { log = console.log, limit = 0 } = {}) {
+async function compositeExplainersForCourse(courseCode, { log = console.log, limit = 0, onlyOrders = null } = {}) {
   const { target, learner } = parseCourseCode(courseCode)
   const connector = getConnectorForLearnerLang(learner)
   const { targetVoice, knownVoice } = await getCourseVoices(courseCode)
@@ -214,14 +214,17 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
   }
   log(`[${courseCode}] composite explainers: chunk voices = per-speaker cast (fallback ${targetVoice.voice_id}), known=${knownVoice.voice_id}, connector="${connector}"`)
 
-  const { data: rows, error } = await supabase
+  let q = supabase
     .from('listening_pod_sentences')
     .select('id, global_order, speaker, explainer_text, explainer_decomposition')
     .eq('pod_id', `${courseCode}:${POD_SLUG}`)
     .not('explainer_text', 'is', null)
     .neq('explainer_text', '')
     .is('explainer_audio_id', null)
-    .order('global_order')
+  // onlyOrders: re-voice a specific set of global_orders (targeted re-voice
+  // after a decomposition edit) instead of the whole missing-audio backlog.
+  if (Array.isArray(onlyOrders) && onlyOrders.length) q = q.in('global_order', onlyOrders)
+  const { data: rows, error } = await q.order('global_order')
   if (error) throw new Error(`load rows: ${error.message}`)
   if (!rows || rows.length === 0) { log(`[${courseCode}] composite: nothing to render`); return { rendered: 0, reused: 0, failed: 0 } }
   const work = limit > 0 ? rows.slice(0, limit) : rows
@@ -328,7 +331,9 @@ if (require.main === module) {
   if (!course) { console.error('usage: node services/pod-explainer-composite.cjs <course_code>'); process.exit(1) }
   const limitArg = process.argv.find(a => a.startsWith('--limit='))
   const limit = limitArg ? parseInt(limitArg.split('=')[1], 10) : 0
-  compositeExplainersForCourse(course, { limit })
+  const ordersArg = process.argv.find(a => a.startsWith('--orders='))
+  const onlyOrders = ordersArg ? ordersArg.split('=')[1].split(',').map(n => parseInt(n, 10)).filter(Number.isFinite) : null
+  compositeExplainersForCourse(course, { limit, onlyOrders })
     .then(r => { console.log(JSON.stringify(r)); process.exit(r.failed > 0 ? 1 : 0) })
     .catch(e => { console.error('FATAL:', e.message); process.exit(1) })
 }
