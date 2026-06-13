@@ -180,6 +180,9 @@
         </div>
       </section>
 
+      <!-- ==================== TWO-FILE INTENTION MODEL (demo) ==================== -->
+      <TwoFileModelDemo />
+
       <!-- ==================== SCRIPT SHAPE ==================== -->
       <section v-if="drafts.script_shape" class="config-row">
         <RowHeader
@@ -274,6 +277,7 @@
 import { ref, computed, onMounted, reactive, defineComponent, h, toRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
+import TwoFileModelDemo from '../components/TwoFileModelDemo.vue'
 
 const router = useRouter()
 const { getAccessToken, isAdmin, learner: currentUser } = useAuth()
