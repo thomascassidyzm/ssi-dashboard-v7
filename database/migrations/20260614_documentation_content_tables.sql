@@ -66,6 +66,10 @@ CREATE INDEX IF NOT EXISTS idx_documentation_sections_document_id
 
 -- get_documentation: one document by slug, with its sections aggregated into a
 -- jsonb array (ordered). Returns a single-row set; the client takes data[0].
+-- NB: intentionally does NOT filter on is_published, to stay behaviourally
+-- identical to getDocumentationFallback() in supabase-client.cjs (the manual
+-- query the client uses when this RPC is absent). Publish-filtering happens only
+-- in the list RPC below.
 CREATE OR REPLACE FUNCTION get_documentation(p_slug TEXT)
 RETURNS TABLE (
   id               UUID,
@@ -102,8 +106,7 @@ AS $function$
       '[]'::jsonb
     ) AS sections
   FROM documentation_content d
-  WHERE d.slug = p_slug
-    AND d.is_published = TRUE;
+  WHERE d.slug = p_slug;
 $function$;
 
 -- get_documentation_list: published document summaries for nav, optionally
