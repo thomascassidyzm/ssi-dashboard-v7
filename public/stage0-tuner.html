@@ -1327,7 +1327,10 @@ const DEFAULTS = {
     // afterMeans is no longer a live gap — the means→gloss pause is now RECORDED
     // inside the single "means <gloss>" leo clip (part of the performance).
   },
-  targetRepeats:2,
+  // targetRepeats is PER-TIER (like visits): each stage holds its own T·M·T·T
+  // repeat count. Default 2 (= T M T T) for every tier — nothing changes until
+  // a tier is tuned. The bottom "Target repeats" stepper edits only the FOCUSED tier.
+  repeats:{ explainer:2, translation:2, pairs:2, intention:2 },
   visits:{ explainer:1, translation:1, pairs:2, intention:1 },
 };
 
@@ -1337,7 +1340,7 @@ const DEFAULTS = {
 const PER_EXAMPLE_CONFIG = {
   jpn: {
     gaps:{ targetMeaning:450, betweenRepeats:555, betweenChunks:1200, betweenIntentions:900, fusionPairs:0, afterCue:435, beforeMeans:40 },
-    targetRepeats:2,
+    repeats:{ explainer:2, translation:2, pairs:2, intention:2 },
     visits:{ explainer:1, translation:1, pairs:2, intention:2 },
   },
 };
@@ -1348,7 +1351,7 @@ function configFor(id){
   if(ov){
     if(ov.gaps) Object.assign(base.gaps, ov.gaps);
     if(ov.visits) Object.assign(base.visits, ov.visits);
-    if(ov.targetRepeats!=null) base.targetRepeats = ov.targetRepeats;
+    if(ov.repeats) Object.assign(base.repeats, ov.repeats);
   }
   return base;
 }
@@ -1414,9 +1417,11 @@ function unitsForStage(stage){
   }
   return units;
 }
-function unitBeats(){
+/* per-tier repeats: each stage's own targetRepeats (keyed by visitsKey). */
+function repeatsFor(stage){ return Math.max(0, P.repeats[stage.visitsKey]); }
+function unitBeats(stage){
   const beats=[ {t:'T'}, {t:'M'} ];
-  for(let r=0;r<P.targetRepeats;r++) beats.push({t:'T'});
+  for(let r=0;r<repeatsFor(stage);r++) beats.push({t:'T'});
   return beats;
 }
 function stageSequence(stage){
@@ -1428,7 +1433,7 @@ function stageSequence(stage){
   const units=unitsForStage(stage);
   const useMeans = !!stage.connector;   // explainer tier only: target · "means" · meaning
   units.forEach((u,ui)=>{
-    const beats=unitBeats();
+    const beats=unitBeats(stage);
     beats.forEach((b,bi)=>{
       if(b.t==='T'){
         u.targets.forEach((nm,ni)=>{
@@ -1588,7 +1593,7 @@ function renderTrack(){
     b.innerHTML='<span class="track-num">'+tierLabel(i)+'</span>'
       +'<span class="track-body"><span class="track-name">'+s.label+'</span><span class="track-desc">'+trackDesc(s)+'</span></span>'
       +'<span class="track-reps"><b>'+reps+'×</b><small>repeats</small></span>';
-    b.onclick=()=>{ if(FOCUS!==s.key){ FOCUS=s.key; stopAll(); } renderTrack(); renderStageMeta(); renderVisits(); renderTimeline(); };
+    b.onclick=()=>{ if(FOCUS!==s.key){ FOCUS=s.key; stopAll(); } renderTrack(); renderStageMeta(); renderPattern(); renderVisits(); renderTimeline(); };
     host.appendChild(b);
   });
 }
@@ -1757,13 +1762,16 @@ function renderBetweenInt(){
   st.querySelector('[data-d="1"]').onclick=()=>{ P.gaps.betweenIntentions=Math.min(1800,P.gaps.betweenIntentions+50); renderBetweenInt(); renderTimeline(); };
   host.appendChild(st);
 }
-function patternString(){ return ['T','M',...Array(P.targetRepeats).fill('T')].join(' '); }
+/* the bottom "Target repeats" stepper edits ONLY the focused tier (P.repeats by
+   the focused stage's key), exactly like the visits stepper. */
+function patternStringFor(reps){ return ['T','M',...Array(Math.max(0,reps)).fill('T')].join(' '); }
 function renderPattern(){
   const host=document.getElementById('patternBox'); host.innerHTML='';
+  const s=stageObj(FOCUS);
   const st=document.createElement('div'); st.className='stepper';
-  st.innerHTML=`<button data-d="-1">−</button><span class="v">${patternString()}</span><button data-d="1">+</button>`;
-  st.querySelector('[data-d="-1"]').onclick=()=>{ P.targetRepeats=Math.max(0,P.targetRepeats-1); renderPattern(); renderTimeline(); };
-  st.querySelector('[data-d="1"]').onclick=()=>{ P.targetRepeats=Math.min(4,P.targetRepeats+1); renderPattern(); renderTimeline(); };
+  st.innerHTML=`<button data-d="-1">−</button><span class="v">${patternStringFor(P.repeats[s.visitsKey])}</span><button data-d="1">+</button>`;
+  st.querySelector('[data-d="-1"]').onclick=()=>{ P.repeats[s.visitsKey]=Math.max(0,P.repeats[s.visitsKey]-1); renderPattern(); renderTimeline(); };
+  st.querySelector('[data-d="1"]').onclick=()=>{ P.repeats[s.visitsKey]=Math.min(4,P.repeats[s.visitsKey]+1); renderPattern(); renderTimeline(); };
   host.appendChild(st);
 }
 function renderVisits(){
@@ -1787,8 +1795,12 @@ function buildConfig(){
     sentence:EX.targetText, knownText:EX.knownText,
     intentions:INTENTIONS.map(it=>({ id:it.id, targetText:it.targetText, translation:it.translation,
       atoms:it.atomIdx.map(ai=>({target:ATOMS[ai].target, known:ATOMS[ai].known})) })),
-    stages:STAGES.map(s=>({ key:s.key, granularity:s.gran, meaning:s.meaning, cue:s.cue, visits:P.visits[s.visitsKey] })),
-    pattern:{ targetRepeats:P.targetRepeats, sequence:['T','M',...Array(P.targetRepeats).fill('T')] },
+    // per-tier targetRepeats/sequence live under each stage (like visits) — no
+    // single global pattern any more.
+    stages:STAGES.map(s=>({ key:s.key, granularity:s.gran, meaning:s.meaning, cue:s.cue,
+      visits:P.visits[s.visitsKey],
+      targetRepeats:P.repeats[s.visitsKey],
+      sequence:['T','M',...Array(Math.max(0,P.repeats[s.visitsKey])).fill('T')] })),
     gaps:{ ...P.gaps },
     voices:{ cast:EX.castVoice, castProvider:EX.provider, known:EX.knownVoice, knownProvider:(EX.knownProvider||'xai') },
     atomSource:'file2-slice', playbackSpeed:1.0,
