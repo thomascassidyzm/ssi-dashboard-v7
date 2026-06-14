@@ -94,6 +94,22 @@ body{
 .chip .pv{font-size:9px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-3);font-family:var(--mono);}
 .chip.on .pv{color:var(--accent);}
 
+/* course + sentence pickers (load real course pods) */
+.course-picker{display:flex;align-items:center;gap:7px;flex:none;}
+.ssel{
+  font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink-2);cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);border-radius:999px;
+  padding:6px 11px;max-width:200px;transition:all .14s;
+}
+.ssel:hover{border-color:var(--ink-3);color:var(--ink);}
+.ssel:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(96,165,250,.2);color:var(--ink);}
+.ssel:disabled{opacity:.45;cursor:default;}
+.ssel-wide{max-width:300px;}
+.ssel.loaded{border-color:var(--accent);color:var(--accent);}
+.ssel option{background:var(--surface);color:var(--ink);}
+.course-status{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-3);white-space:nowrap;}
+.course-status.err{color:#f87171;}
+
 .play-group{display:flex;align-items:center;gap:9px;margin-left:auto;flex:none;}
 .now{font-size:12px;color:var(--green);font-weight:600;max-width:230px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .now b{color:var(--ink);font-weight:680;}
@@ -128,6 +144,8 @@ body{
 }
 .track-row:hover{border-color:var(--ink-3);}
 .track-row.on{border-color:var(--accent);background:var(--accent-wash);}
+.track-row.disabled{opacity:.4;cursor:not-allowed;}
+.track-row.disabled:hover{border-color:var(--line);}
 .track-num{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--ink-2);flex:none;}
 .track-row.on .track-num{color:var(--accent);}
 .track-body{flex:1 1 auto;min-width:0;}
@@ -241,6 +259,11 @@ body.grabbing{cursor:ew-resize;user-select:none;}
     <span class="t">Stage&nbsp;0 Tuner</span>
   </div>
   <div class="langchips" id="langchips"></div>
+  <div class="course-picker">
+    <select id="courseSelect" class="ssel" title="Load a real course pod"></select>
+    <select id="sentenceSelect" class="ssel ssel-wide" title="Pick a pod sentence" disabled></select>
+    <span class="course-status" id="courseStatus"></span>
+  </div>
   <div class="play-group">
     <span class="now" id="nowPlaying">ready</span>
     <button class="pbtn sec" id="playAll">
@@ -1382,9 +1405,21 @@ async function decodeExample(ex){
   if(decoded[ex.id]) return;
   const a=ac();
   await Promise.all(Object.keys(ex.clips).map(async name=>{
-    const u=ex.clips[name].dataUri, bin=atob(u.split(',')[1]);
-    const arr=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
-    BUF[ex.id+'|'+name]=await a.decodeAudioData(arr.buffer);
+    const clip=ex.clips[name];
+    try{
+      let arrBuf;
+      if(clip.url){
+        // course-loaded clip: fetch the signed S3 URL → arrayBuffer
+        const r=await fetch(clip.url); if(!r.ok) throw new Error('fetch '+r.status);
+        arrBuf=await r.arrayBuffer();
+      } else {
+        // embedded demo clip: decode the base64 data URI
+        const bin=atob(clip.dataUri.split(',')[1]);
+        const u8=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) u8[i]=bin.charCodeAt(i);
+        arrBuf=u8.buffer;
+      }
+      BUF[ex.id+'|'+name]=await a.decodeAudioData(arrBuf);
+    }catch(e){ /* leave this clip undecoded; durMs()/play just skip it */ console.warn('decode failed for '+name+':',e&&e.message); }
   }));
   decoded[ex.id]=true;
 }
@@ -1509,6 +1544,7 @@ function stageSequence(stage){
 function buildArc(){
   const events=[];
   STAGES.forEach(stage=>{
+    if(!tierEnabled(stage)) return;   // course examples: explainer only
     const v=Math.max(1,P.visits[stage.visitsKey]);
     for(let i=0;i<v;i++){
       if(events.length) events.push({type:'gap', ms:P.gaps.betweenIntentions, gapKind:'stage', stage:stage.key});
@@ -1568,7 +1604,8 @@ function tick(){
 /* ====================== RENDER: top bar language chips ====================== */
 function renderChips(){
   const host=document.getElementById('langchips'); host.innerHTML='';
-  EXAMPLES.forEach(ex=>{
+  // only the embedded demos get chips; course examples are driven by the selects.
+  EXAMPLES.filter(ex=>!ex.courseLoaded).forEach(ex=>{
     const b=document.createElement('button'); b.type='button';
     b.className='chip'+(ex.id===EX.id?' on':'');
     b.innerHTML=`<span class="flag">${ex.flag}</span>${ex.label}<span class="pv">${ex.provider==='xai'?'xAI':'Azure'}</span>`;
@@ -1578,13 +1615,9 @@ function renderChips(){
 }
 async function selectExample(id){
   if(id===EX.id) return;
-  stopAll();
-  EX=EXAMPLES.find(e=>e.id===id); ATOMS=EX.atoms; INTENTIONS=EX.intentions; bufReady=false;
-  P=configFor(EX.id);   // load this example's tuned config (e.g. Japanese)
-  renderChips(); renderTrack(); renderStageMeta();
-  renderBetweenInt(); renderPattern(); renderVisits(); renderTimeline();
-  document.getElementById('nowPlaying').textContent='ready';
-  await ensureDecoded(); renderTimeline();
+  // selecting a demo chip clears the course-loaded selects
+  const ss=document.getElementById('sentenceSelect'); if(ss){ ss.value=''; ss.classList.remove('loaded'); }
+  await switchTo(id);
 }
 
 /* ====================== RENDER: the cross-tier TRACK overview ======================
@@ -1598,16 +1631,22 @@ function trackDesc(s){
   if(s.connector) return 'chunk · “means” · gloss';
   return 'chunk · gloss · repeats';
 }
+/* For COURSE-loaded examples only the EXPLAINER tier has audio yet, so the other
+   tiers are greyed/disabled and labelled "preview only". Embedded demos = all tiers. */
+function tierEnabled(stage){ return !EX.courseLoaded || stage.key==='explainer'; }
 function renderTrack(){
   const host=document.getElementById('trackRows'); host.innerHTML='';
   STAGES.forEach((s,i)=>{
     const reps=Math.max(1,P.visits[s.visitsKey]);
+    const enabled=tierEnabled(s);
     const b=document.createElement('button'); b.type='button';
-    b.className='track-row'+(s.key===FOCUS?' on':'');
+    b.className='track-row'+(s.key===FOCUS?' on':'')+(enabled?'':' disabled');
+    if(!enabled) b.disabled=true;
+    const desc=enabled?trackDesc(s):'preview: audio not generated yet';
     b.innerHTML='<span class="track-num">'+tierLabel(i)+'</span>'
-      +'<span class="track-body"><span class="track-name">'+s.label+'</span><span class="track-desc">'+trackDesc(s)+'</span></span>'
+      +'<span class="track-body"><span class="track-name">'+s.label+'</span><span class="track-desc">'+desc+'</span></span>'
       +'<span class="track-reps"><b>'+reps+'×</b><small>repeats</small></span>';
-    b.onclick=()=>{ if(FOCUS!==s.key){ FOCUS=s.key; stopAll(); } renderTrack(); renderStageMeta(); renderPattern(); renderVisits(); renderTimeline(); };
+    if(enabled) b.onclick=()=>{ if(FOCUS!==s.key){ FOCUS=s.key; stopAll(); } renderTrack(); renderStageMeta(); renderPattern(); renderVisits(); renderTimeline(); };
     host.appendChild(b);
   });
 }
@@ -1837,7 +1876,132 @@ document.getElementById('resetBtn').onclick=()=>{
 
 function escapeHtml(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+/* ====================== COURSE PICKER (load real pod sentences) ======================
+   Fetches /api/pod-content and builds an example-object per sentence in the SAME
+   contract the embedded demos use, so selectExample + the whole engine work
+   unchanged. The "Breaking it down" cue isn't persisted per course, so we REUSE
+   the cue already embedded in the demos. Only EXPLAINED atoms (kind:'atom') are
+   broken down; passthrough/name atoms are heard in the whole-take only. For
+   course examples only the explainer tier has audio (others greyed). */
+const COURSES = [
+  { code:'spa_for_eng', label:'Spanish (course)' },
+  // adding more is trivial: push { code, label } here
+];
+// reuse the embedded demos' cue clip (same "Breaking it down" leo take)
+function embeddedCueDataUri(){
+  for(const ex of EXAMPLES){ if(ex.clips && ex.clips.cue && ex.clips.cue.dataUri) return ex.clips.cue.dataUri; }
+  return null;
+}
+let _podCache={};   // courseCode -> sentences[]
+async function fetchPod(courseCode){
+  if(_podCache[courseCode]) return _podCache[courseCode];
+  const r=await fetch('/api/pod-content?course='+encodeURIComponent(courseCode)+'&slug=pod-0');
+  if(!r.ok) throw new Error('pod-content '+r.status);
+  const j=await r.json();
+  _podCache[courseCode]=j.sentences||[];
+  return _podCache[courseCode];
+}
+/* build an example-object (the demo contract) from one API sentence. */
+function sentenceToExample(courseCode, s){
+  const exId='course:'+courseCode+':'+s.id;
+  const apiAtoms=(s.intentions&&s.intentions[0]&&s.intentions[0].atoms)||[];
+  const explained=apiAtoms.filter(a=>a.kind==='atom' && a.atom_audio_url && a.means_audio_url);
+  // demo-contract atoms (only the explained ones are broken down in the ladder)
+  const atoms=explained.map(a=>({ target:a.target, known:a.known }));
+  const clips={};
+  const cueUri=embeddedCueDataUri();
+  if(cueUri) clips.cue={ dataUri:cueUri, voice:'leo', provider:'xai', role:'cue' };
+  // whole-intention take = the natural whole-sentence target take (signed URL)
+  if(s.whole_take_url) clips.intentionTake0={ url:s.whole_take_url, voice:'course', provider:'course', role:'intentionTake' };
+  if(s.translation_url) clips.intentionGloss0={ url:s.translation_url, voice:'leo', provider:'xai', role:'intentionGloss' };
+  explained.forEach((a,ai)=>{
+    clips['atomTarget'+ai]={ url:a.atom_audio_url, voice:'course', provider:'course', role:'target', source:'file2-slice' };
+    clips['atomMeansGloss'+ai]={ url:a.means_audio_url, displayText:'means '+a.known, voice:'leo', provider:'xai', role:'meansGloss' };
+    // standalone gloss for the translation tier (reuse the merged means clip's url is wrong; leave undefined → tier disabled anyway)
+  });
+  // single intention spanning all explained atoms; whole take + translation for the opener/intention tier
+  const intentions=[{
+    id:'I1', atomIdx:explained.map((_,i)=>i),
+    targetText:s.target_text, translation:s.known_text,
+    takeClip:'intentionTake0', glossClip:'intentionGloss0',
+  }];
+  return {
+    id:exId, label:(s.global_order+' · '+s.target_text), flag:'📘',
+    course:courseCode, courseLoaded:true,   // courseLoaded = built from the live API (vs the embedded demos, which also carry a `course` code)
+    provider:'course', castVoice:'course', knownVoice:'leo', knownProvider:'xai',
+    targetText:s.target_text, knownText:s.known_text,
+    atoms, intentions, clips,
+    courseSentence:{ id:s.id, global_order:s.global_order, speaker:s.speaker,
+      passthroughCount: apiAtoms.length-explained.length },
+  };
+}
+/* load a sentence: build the example, register it in EXAMPLES, select it. */
+async function loadCourseSentence(courseCode, s){
+  const ex=sentenceToExample(courseCode, s);
+  // de-dupe: replace any existing entry with the same id
+  const existing=EXAMPLES.findIndex(e=>e.id===ex.id);
+  if(existing>=0) EXAMPLES[existing]=ex; else EXAMPLES.push(ex);
+  // ensure FOCUS lands on the explainer (the only fully-playable tier for course)
+  FOCUS='explainer';
+  await switchTo(ex.id);
+}
+/* like selectExample but works for an id already in EXAMPLES (incl. course). */
+async function switchTo(id){
+  stopAll();
+  EX=EXAMPLES.find(e=>e.id===id); if(!EX) return;
+  ATOMS=EX.atoms; INTENTIONS=EX.intentions; bufReady=false;
+  P=configFor(EX.id);
+  renderChips(); renderTrack(); renderStageMeta();
+  renderBetweenInt(); renderPattern(); renderVisits(); renderTimeline();
+  document.getElementById('nowPlaying').textContent='ready';
+  await ensureDecoded(); renderTimeline();
+}
+/* expose loadCourseExample(courseCode) for the brief's verify hook: loads the
+   course + selects its FIRST sentence. */
+async function loadCourseExample(courseCode){
+  const st=document.getElementById('courseStatus');
+  try{
+    st.classList.remove('err'); st.textContent='loading…';
+    const sentences=await fetchPod(courseCode);
+    populateSentenceSelect(courseCode, sentences);
+    if(sentences.length){ await loadCourseSentence(courseCode, sentences[0]); }
+    st.textContent=sentences.length+' sentences';
+    return sentences;
+  }catch(e){ st.classList.add('err'); st.textContent='load failed'; console.warn('loadCourseExample:',e&&e.message); throw e; }
+}
+function populateSentenceSelect(courseCode, sentences){
+  const sel=document.getElementById('sentenceSelect');
+  sel.innerHTML='<option value="">— sentence —</option>';
+  sentences.forEach((s,idx)=>{
+    const o=document.createElement('option'); o.value=String(idx);
+    o.textContent=s.global_order+' · '+s.target_text;
+    sel.appendChild(o);
+  });
+  sel.disabled=sentences.length===0;
+  sel.dataset.course=courseCode;
+}
+function wireCoursePicker(){
+  const cs=document.getElementById('courseSelect');
+  cs.innerHTML='<option value="">demos</option>'+COURSES.map(c=>`<option value="${c.code}">${c.label}</option>`).join('');
+  cs.onchange=async ()=>{
+    const code=cs.value;
+    const ss=document.getElementById('sentenceSelect');
+    if(!code){ ss.innerHTML='<option value="">— sentence —</option>'; ss.disabled=true; ss.classList.remove('loaded'); document.getElementById('courseStatus').textContent=''; return; }
+    try{ const sentences=await fetchPod(code); populateSentenceSelect(code, sentences); document.getElementById('courseStatus').textContent=sentences.length+' sentences'; document.getElementById('courseStatus').classList.remove('err'); }
+    catch(e){ document.getElementById('courseStatus').textContent='load failed'; document.getElementById('courseStatus').classList.add('err'); }
+  };
+  const ss=document.getElementById('sentenceSelect');
+  ss.onchange=async ()=>{
+    const idx=ss.value; const code=ss.dataset.course;
+    if(idx===''||!code) return;
+    ss.classList.add('loaded');
+    const sentences=await fetchPod(code);
+    await loadCourseSentence(code, sentences[parseInt(idx,10)]);
+  };
+}
+
 /* ====================== init ====================== */
+wireCoursePicker();
 renderChips(); renderTrack(); renderStageMeta();
 renderBetweenInt(); renderPattern(); renderVisits(); renderTimeline(); setBtns();
 ensureDecoded().then(renderTimeline);

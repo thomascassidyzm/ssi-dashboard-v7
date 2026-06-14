@@ -13,6 +13,8 @@
  *   { sentences: [
  *       { id, global_order, speaker, target_text, known_text,
  *         target_audio_id, known_audio_id,
+ *         whole_take_url,   // signed S3 URL for target_audio_id (natural take)
+ *         translation_url,  // signed S3 URL for known_audio_id (translation)
  *         intentions: [ { id, atoms: [
  *           { lego_key, target, known, explained, kind,
  *             target_start_ms, target_end_ms,
@@ -104,6 +106,25 @@ export default async function handler(req, res) {
       if (typeof r.text === 'string' && r.text.startsWith('[atom] ')) targetRowByText.set(r.text, r)
     }
 
+    // 3b. whole-take (target_audio_id) + translation (known_audio_id) s3_keys for
+    //     EVERY sentence, in ONE .in() query. These rows are NOT in the comp:leo
+    //     pod_explainer set above (different role/voice), so fetch them by id.
+    //     The explainer opener plays the whole-take; the tuner can use the
+    //     translation for the whole-intention tier later.
+    const sentAudioIds = []
+    for (const s of sentences) {
+      if (s.target_audio_id) sentAudioIds.push(s.target_audio_id)
+      if (s.known_audio_id) sentAudioIds.push(s.known_audio_id)
+    }
+    if (sentAudioIds.length) {
+      const { data: sentCa, error: scErr } = await supabase
+        .from('course_audio')
+        .select('id, s3_key')
+        .in('id', sentAudioIds)
+      if (scErr) return res.status(500).json({ error: scErr.message })
+      for (const r of sentCa || []) s3KeyById.set(r.id, r.s3_key)
+    }
+
     const urlByKey = new Map()
     async function signKey(s3Key) {
       if (!s3Key) return null
@@ -154,6 +175,8 @@ export default async function handler(req, res) {
         known_text: s.known_text,
         target_audio_id: s.target_audio_id,
         known_audio_id: s.known_audio_id,
+        whole_take_url: await urlForId(s.target_audio_id),  // natural whole-sentence target take
+        translation_url: await urlForId(s.known_audio_id),  // known/English translation
         intentions: [{ id: 'all', atoms }],
       })
     }
