@@ -767,10 +767,114 @@ function checkMetadataGloss(legos) {
   return warnings;
 }
 
+// ─── Known-side reconstructability (both-sides tiling — Principle 1 in full) ───
+// Pure + POSITION-AGNOSTIC: callers pass currentPos + a compiled ctx whose maps
+// use the SAME unit (round for the reorder CLI, seed for generation). A prompt
+// must compose from introduced known-glosses + the free class (glue / inflection
+// / NPI-under-negation) + construction licenses whose carrier has debuted.
+function stemKnownGloss(tok) {
+  let x = (tok || '').toLowerCase().replace(/[^a-z']/g, '');
+  if (!x) return '';
+  for (const suf of ['ing', 'ed']) if (x.length > suf.length + 1 && x.endsWith(suf)) { x = x.slice(0, -suf.length); break; }
+  for (const suf of ['s', 'e', 'd']) if (x.length > 2 && x.endsWith(suf)) { x = x.slice(0, -1); break; }
+  return x;
+}
+// Expand English contractions so the base word + function word are checked
+// separately (shouldn't → should not; that's → that is; I've → I have).
+function expandContractions(s) {
+  return (s || '').toLowerCase()
+    .replace(/n['’]t\b/g, ' not')
+    .replace(/['’]ve\b/g, ' have').replace(/['’]re\b/g, ' are').replace(/['’]m\b/g, ' am')
+    .replace(/['’]ll\b/g, ' will').replace(/['’]d\b/g, ' would').replace(/['’]s\b/g, ' is');
+}
+const tokenizeKnown = (s) => expandContractions(s).split(/[^a-z']+/).filter(Boolean);
+// English machinery tokens → governing construction id(s). Known-language-specific
+// (valid for *_for_eng; a non-English-known contract restates this).
+const KNOWN_GRAMMAR = {
+  been: ['have-you-been'], got: ['have-got'], going: ['going-to'],
+  have: ['have-you-been', 'have-got', 'want-to-have'], "'ve": ['have-you-been', 'have-got', 'want-to-have'],
+  ve: ['have-you-been', 'have-got', 'want-to-have'],
+};
+// Dummy auxiliaries: always free at the token level. The do-support QUESTION
+// word-order is gated by its construction regex, not the bare token (so "do not"
+// from an expanded contraction never trips do-support).
+const DO_AUX = new Set(['do', 'does', 'did']);
+
+// Position-independent free-class sets compiled from a contract.
+function compileKnownContract(contract) {
+  return {
+    contract,
+    glue: new Set((contract.freeGlue || []).map(stemKnownGloss)),
+    npi: new Set((contract.npiTokens || []).map(stemKnownGloss)),
+    neg: new Set([...(contract.negationWords || []), ...(contract.negationWords || []).map(stemKnownGloss)]),
+    grammar: KNOWN_GRAMMAR,
+  };
+}
+
+// ctx = { ...compileKnownContract, stemFirstPos:Map(stem->pos), consPos:{id->pos}, unitPos:[{phrase,pos}] }
+function checkKnownSide(known, currentPos, ctx) {
+  const C = ctx.contract;
+  const probs = [];
+  const negRe = C.negationMarkers instanceof RegExp ? C.negationMarkers : new RegExp(C.negationMarkers, 'i');
+  const negated = negRe.test(known);
+  for (const con of C.constructions || []) {
+    const test = con.test instanceof RegExp ? con.test : new RegExp(con.test, 'i');
+    if (test.test(known)) {
+      const cp = ctx.consPos[con.id];
+      if (cp == null || currentPos < cp) probs.push(`construction '${con.id}' not licensed until ${cp === Infinity ? '∞' : cp}`);
+    }
+  }
+  let masked = ' ' + known.toLowerCase() + ' ';
+  for (const u of ctx.unitPos || []) {
+    const re = new RegExp('\\b' + u.phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g');
+    if (re.test(masked)) {
+      if (u.pos == null || currentPos < u.pos) probs.push(`gloss-unit "${u.phrase}" not introduced until ${u.pos === Infinity ? '∞' : u.pos}`);
+      masked = masked.replace(re, ' ');
+    }
+  }
+  for (const raw of tokenizeKnown(masked)) {
+    const s = stemKnownGloss(raw);
+    if (!s) continue;
+    if (ctx.glue.has(s)) continue;
+    if (DO_AUX.has(raw)) continue;
+    if (ctx.neg.has(raw) || ctx.neg.has(s)) {
+      const cp = ctx.consPos['negation'];
+      if (cp == null || currentPos < cp) probs.push(`negation "${raw}" not licensed until ${cp === Infinity ? '∞' : cp}`);
+      continue;
+    }
+    if (ctx.npi.has(s)) { if (negated) continue; probs.push(`NPI token "${raw}" without negation`); continue; }
+    if (ctx.grammar[raw] || ctx.grammar[s]) {
+      const govs = ctx.grammar[raw] || ctx.grammar[s];
+      const ok = govs.some((g) => currentPos >= (ctx.consPos[g] ?? Infinity));
+      if (!ok) probs.push(`machinery "${raw}" needs ${govs.join('/')} (unlicensed)`);
+      continue;
+    }
+    const fp = ctx.stemFirstPos.get(s);
+    if (fp == null) probs.push(`unknown gloss "${raw}"`);
+    else if (fp > currentPos) probs.push(`gloss "${raw}" not introduced until ${fp}`);
+  }
+  return probs;
+}
+
+// Load a pair-contract by course_code; null if none. Cached.
+const _contractCache = new Map();
+function loadPairContract(courseCode) {
+  if (_contractCache.has(courseCode)) return _contractCache.get(courseCode);
+  let contract = null;
+  try { contract = require(`../../../docs/pair-contracts/${courseCode}.contract.cjs`); } catch (_) { contract = null; }
+  _contractCache.set(courseCode, contract);
+  return contract;
+}
+
 module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
   checkMetadataGloss,
+  stemKnownGloss,
+  tokenizeKnown,
+  compileKnownContract,
+  checkKnownSide,
+  loadPairContract,
   checkPhraseComplexity,
   checkVocabViolations,
   calculateLegoBalanceScores,

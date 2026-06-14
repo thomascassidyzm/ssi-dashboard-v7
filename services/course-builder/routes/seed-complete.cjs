@@ -20,8 +20,52 @@ const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
   checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
+  loadPairContract, checkKnownSide, compileKnownContract, stemKnownGloss, tokenizeKnown,
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
+
+// Build a SEED-indexed known-side context (mirror of the round-indexed CLI ctx):
+// gloss-stems & construction/unit carriers keyed by debut SEED, from prior-seed
+// legos (DB) folded with the current submission's legos.
+async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentLegos, contract) {
+  const prior = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await supabase.from('course_legos')
+      .select('target_text,known_text,components,seed_number')
+      .eq('course_code', courseCode).lt('seed_number', currentSeed).range(from, from + 999);
+    if (error) throw new Error(error.message);
+    prior.push(...data);
+    if (data.length < 1000) break;
+  }
+  const cur = (currentLegos || []).map(l => ({
+    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: currentSeed,
+  }));
+  const all = [...prior, ...cur];
+  const stemFirstPos = new Map();
+  const addStem = (s, seed) => { const k = stemKnownGloss(s); if (!k) return; if (!stemFirstPos.has(k) || stemFirstPos.get(k) > seed) stemFirstPos.set(k, seed); };
+  for (const l of all) {
+    for (const t of tokenizeKnown(l.known_text)) addStem(t, l.seed_number);
+    for (const c of l.components || []) for (const t of tokenizeKnown(c.known)) addStem(t, l.seed_number);
+  }
+  const carrierSeed = (carrier) => {
+    let min = Infinity;
+    for (const l of all) {
+      const hit = l.target_text === carrier || (l.components || []).some(c => c.target === carrier);
+      if (hit && l.seed_number < min) min = l.seed_number;
+    }
+    return min;
+  };
+  for (const [carrier, syns] of Object.entries(contract.glossSynonyms || {})) {
+    const seed = carrierSeed(carrier);
+    if (seed < Infinity) for (const syn of syns) addStem(syn, seed);
+  }
+  const consPos = {};
+  for (const con of contract.constructions || []) {
+    consPos[con.id] = con.cluster ? (contract.clusterSeeds?.[con.cluster] ?? contract.clusterRounds?.[con.cluster] ?? Infinity) : carrierSeed(con.carrier);
+  }
+  const unitPos = (contract.glossUnits || []).map(u => ({ phrase: u.phrase, pos: carrierSeed(u.carrier) }));
+  return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos };
+}
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
@@ -1268,6 +1312,32 @@ module.exports = function seedCompleteRoutes(ctx) {
         for (const w of fw) {
           warnings.push({ type: 'frame_coverage', lego_id: legoId, lego_target: lego.target, ...w });
           console.log(`⚠ ${legoId}: frame-coverage [${w.code}]`);
+        }
+      }
+
+      // 3a-KNOWN. KNOWN-SIDE reconstructability (warn, contract-gated): every prompt
+      // must compose from introduced glosses + licensed constructions (Principle 1 in
+      // both languages). Fires ONLY when a pair-contract exists AND its known language
+      // matches — English machinery must not be applied to a non-English-known course.
+      {
+        const contract = loadPairContract(course_code);
+        if (contract && (!contract.known_lang || contract.known_lang === knownLang)) {
+          const knownCtx = await buildKnownSideSeedCtx(ctx.supabase, course_code, seed_number, legos, contract);
+          for (const lego of legos) {
+            const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+            if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
+            let basket = [];
+            if (usesBuildUseFormat(lego)) basket = [...(lego.build || []), ...(lego.use || [])];
+            else if (lego.phrases) basket = lego.phrases;
+            for (const phrase of basket) {
+              if (!phrase.known) continue;
+              const probs = checkKnownSide(phrase.known, seed_number, knownCtx);
+              if (probs.length) {
+                warnings.push({ type: 'known_side', lego_id: legoId, known: phrase.known, target: phrase.target, problems: probs.slice(0, 4) });
+                console.log(`⚠ ${legoId}: known-side "${phrase.known}" — ${probs[0]}`);
+              }
+            }
+          }
         }
       }
 

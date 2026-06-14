@@ -6,6 +6,11 @@
 module.exports = {
   course_code: 'zho_for_eng',
   ratified: '2026-06-13',
+  // KNOWN language this contract's free-class/NPI/machinery are written for. The
+  // generation gate only fires when the course's known language matches — English
+  // regexes must not be applied to a non-English-known course (a _for_jpn contract
+  // restates the free class / NPI / machinery in Japanese).
+  known_lang: 'eng',
 
   // Free class — never needs introduction on the known side.
   freeGlue: ['a', 'an', 'the', 'to', 'it', 'and', 'of', 'some', "'s", 'is', 'are', 'am', 'be'],
