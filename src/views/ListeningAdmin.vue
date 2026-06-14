@@ -1,13 +1,20 @@
 <template>
   <div class="listening-admin">
     <header class="admin-header">
-      <button class="back-btn" @click="goBack" title="Back">←</button>
-      <div>
-        <h1>Listening &amp; algorithm config</h1>
-        <p class="sub">
-          Global settings — applies to every course, every learner.
-          Changes propagate to new sessions within ~5 min (cache TTL).
-        </p>
+      <nav class="admin-crumbs">
+        <router-link to="/" class="crumb-link">Home</router-link>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-here">Listening Config</span>
+      </nav>
+      <div class="admin-head-main">
+        <div class="admin-head-titles">
+          <h1>Listening &amp; algorithm config</h1>
+          <p class="sub">
+            Global settings — applies to every course, every learner.
+            Changes propagate to new sessions within ~5 min (cache TTL).
+          </p>
+        </div>
+        <router-link class="stage0-link" :to="{ name: 'Stage0Tuner' }">Stage 0 Tuner →</router-link>
       </div>
       <span v-if="!isAdmin && currentUser" class="admin-warn">
         Signed in as {{ currentUser.email }} (not admin) — saves will fail.
@@ -177,46 +184,6 @@
             help="Between chunks marked glue_to_next (early stages)." />
           <NumField v-model="drafts.pods.gapBetweenMs" label="Gap: between" suffix="ms"
             help="Default chunk gap. Also intro→first play and last play→outro." />
-        </div>
-      </section>
-
-      <!-- ==================== STAGE 0 — POD INTRO (preview) ==================== -->
-      <section class="config-row">
-        <div class="row-header">
-          <div class="row-title-line"><h2>Stage 0 — pod intro (preview)</h2></div>
-          <p class="row-desc">
-            The gentle first-exposure introduction of a pod sentence: each chunk is heard,
-            then its meaning, then heard again, building up to the natural take of the whole
-            intention. Built from the two-file audio (chunks sliced from a slow recorded take,
-            so they keep natural body). Tune the repeats and pauses and audition.
-            Spanish · xAI example.
-          </p>
-        </div>
-
-        <div v-if="stage0Manifest" class="field-block">
-          <label>Example <span class="hint">{{ stage0Manifest.sentence }} — “{{ stage0Manifest.knownText }}”</span></label>
-          <div class="stage0-intents">
-            <div v-for="(intent, ii) in stage0Manifest.intentions" :key="ii" class="stage0-intent">
-              <span class="stage0-intent-label">{{ intent.gloss }}</span>
-              <span v-for="(atom, ai) in intent.atoms" :key="ai" class="stage0-atom">{{ atom.target }} <em>{{ atom.gloss }}</em></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="field-grid">
-          <NumField v-model="stage0.targetRepeats" label="Target repeats" suffix="× after meaning"
-            help="Extra plays of the chunk after its meaning. 2 = chunk · meaning · chunk · chunk." />
-          <NumField v-model="stage0.gapWithinMs" label="Pause: within a unit" suffix="ms" :step="20"
-            help="Breath between the chunk, its meaning, and the chunk repeats." />
-          <NumField v-model="stage0.gapBetweenAtomsMs" label="Pause: between chunks" suffix="ms" :step="20" />
-          <NumField v-model="stage0.gapBetweenIntentionsMs" label="Pause: between intentions" suffix="ms" :step="20" />
-        </div>
-
-        <div class="stage0-actions">
-          <button class="btn-primary" :disabled="!stage0Manifest" @click="playStage0Preview">
-            {{ stage0Playing ? '■ Stop' : '▶ Play preview' }}
-          </button>
-          <span v-if="!stage0Manifest" class="hint">loading audio…</span>
         </div>
       </section>
 
@@ -505,71 +472,6 @@ function auditionPodStage(stage) {
   playPodPlaylistForSentence(getStageList(stage), sentence)
 }
 
-// ============================================================================
-// Stage 0 — pod intro preview. Plays the validated two-file audio (chunks
-// sliced from a slow recorded take + the natural intention takes) with
-// adjustable repeats + pauses. Static clips under public/listening-demo/spa/,
-// described by manifest.json. Audition only — these become live config when
-// the Stage-0 player ships.
-// ============================================================================
-const STAGE0_BASE = '/listening-demo/spa/'
-const stage0 = reactive({
-  targetRepeats: 2,        // extra chunk plays after the meaning (2 = chunk·meaning·chunk·chunk)
-  gapWithinMs: 240,        // breath between beats in a unit
-  gapBetweenAtomsMs: 620,  // breath between chunks
-  gapBetweenIntentionsMs: 900,
-})
-const stage0Manifest = ref(null)
-const stage0Playing = ref(false)
-let stage0Audio = null
-
-function stage0Clip(role, ii, ai) {
-  const m = stage0Manifest.value
-  if (!m) return null
-  return m.clips.find(c => c.role === role && c.intentionIndex === ii && (ai == null || c.atomIndex === ai)) || null
-}
-function stopStage0() {
-  stage0Playing.value = false
-  if (stage0Audio) { try { stage0Audio.pause() } catch {} stage0Audio = null }
-}
-async function playStage0Preview() {
-  if (stage0Playing.value) { stopStage0(); return }
-  const m = stage0Manifest.value
-  if (!m) return
-  if (currentAudio) { try { currentAudio.pause() } catch {} }
-  stage0Playing.value = true
-  const within = Number(stage0.gapWithinMs) || 0
-  const betweenA = Number(stage0.gapBetweenAtomsMs) || 0
-  const betweenI = Number(stage0.gapBetweenIntentionsMs) || 0
-  const reps = Math.max(0, Number(stage0.targetRepeats) || 0)
-  const seq = []
-  m.intentions.forEach((intent, ii) => {
-    m.clips.filter(c => c.role === 'atom' && c.intentionIndex === ii).forEach((ac) => {
-      const tgt = STAGE0_BASE + ac.file
-      const gl = stage0Clip('atomGloss', ii, ac.atomIndex)
-      seq.push({ url: tgt, gap: within })
-      if (gl) seq.push({ url: STAGE0_BASE + gl.file, gap: within })
-      for (let r = 0; r < reps; r++) seq.push({ url: tgt, gap: within })
-      if (seq.length) seq[seq.length - 1].gap = betweenA
-    })
-    const take = stage0Clip('intentionTake', ii, null)
-    if (take) seq.push({ url: STAGE0_BASE + take.file, gap: betweenI })
-  })
-  for (const step of seq) {
-    if (!stage0Playing.value) break
-    await new Promise((resolve) => {
-      const a = new Audio(step.url)
-      stage0Audio = a
-      a.onended = resolve
-      a.onerror = resolve
-      a.play().catch(resolve)
-    })
-    if (!stage0Playing.value) break
-    if (step.gap) await new Promise((r) => setTimeout(r, step.gap))
-  }
-  stage0Playing.value = false
-  stage0Audio = null
-}
 
 // Port of usePodLapScheduler.podStageFor — admin-side cycle-count
 // estimate, no runtime dep. Returns the stage a pod sentence at
@@ -924,10 +826,6 @@ function goBack() { router.back() }
 onMounted(() => {
   loadAll()
   loadCourseList()
-  fetch(STAGE0_BASE + 'manifest.json')
-    .then(r => (r.ok ? r.json() : null))
-    .then(m => { stage0Manifest.value = m })
-    .catch(() => { /* preview audio absent — section shows "loading audio…" */ })
 })
 
 // ============================================================================
@@ -1122,13 +1020,17 @@ const RowHeader = defineComponent({
 
 .admin-header {
   margin-bottom: 1.5rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: start;
-  column-gap: 0.75rem;
-  row-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
-.admin-header > .admin-warn { grid-column: 1 / -1; }
+.admin-crumbs { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; }
+.admin-crumbs .crumb-link { color: #34d399; text-decoration: none; }
+.admin-crumbs .crumb-link:hover { color: #6ee7b7; }
+.admin-crumbs .crumb-sep { color: #475569; }
+.admin-crumbs .crumb-here { color: #94a3b8; }
+.admin-head-main { display: flex; align-items: flex-start; gap: 1rem; }
+.admin-head-titles { flex: 1; min-width: 0; }
 .back-btn {
   background: transparent;
   border: 1px solid var(--color-graphite, #475569);
@@ -1376,18 +1278,15 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   background: rgba(0, 0, 0, 0.15);
   border-radius: 6px;
 }
-.stage0-intents { display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.5rem; }
-.stage0-intent { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.45rem; }
-.stage0-intent-label {
-  font-size: 0.72rem; color: var(--color-paper-dim, #94a3b8);
-  min-width: 8.5rem; text-transform: uppercase; letter-spacing: 0.03em;
+.stage0-link {
+  margin-left: auto; align-self: center; white-space: nowrap;
+  font-family: ui-monospace, "IBM Plex Mono", Menlo, monospace;
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: #ffa630; text-decoration: none;
+  border: 1px solid #475569; border-radius: 999px; padding: 0.4rem 0.85rem;
+  transition: border-color 0.15s, color 0.15s;
 }
-.stage0-atom {
-  font-size: 0.85rem; background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--color-graphite, #334155); border-radius: 6px; padding: 2px 8px;
-}
-.stage0-atom em { color: var(--color-paper-dim, #94a3b8); font-style: normal; font-size: 0.78em; margin-left: 4px; }
-.stage0-actions { margin-top: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+.stage0-link:hover { border-color: #ffa630; color: #f7f7f2; }
 
 .stage-audition-btn {
   width: 28px; height: 28px;

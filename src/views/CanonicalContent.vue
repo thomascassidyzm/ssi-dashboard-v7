@@ -4,7 +4,7 @@
     <div class="page-header">
       <h1 class="page-title">Canonical Content</h1>
       <p class="page-subtitle">
-        Language-agnostic source data for all SSi courses - the 3-parameter input model
+        Language-agnostic canonical data for all SSi courses - the 3-parameter input model
       </p>
     </div>
 
@@ -35,14 +35,14 @@
         <div class="flex items-center justify-between mb-4">
           <div>
             <h2 class="text-2xl font-semibold text-emerald-400">Canonical Seeds</h2>
-            <p class="text-slate-400 mt-1">668 pedagogically-ordered seeds with {target} placeholders</p>
+            <p class="text-slate-400 mt-1">{{ totalSeeds || '…' }} pedagogically-ordered seeds with {target} placeholders</p>
           </div>
           <span class="text-xs text-slate-500 font-mono">Supabase · canonical_seeds</span>
         </div>
 
         <div class="bg-slate-900/50 rounded p-4 mb-4">
           <p class="text-sm text-slate-300 mb-2"><strong>Source:</strong> <code class="text-emerald-400">Supabase table: canonical_seeds (live)</code></p>
-          <p class="text-sm text-slate-300 mb-2"><strong>Total Seeds:</strong> <code class="text-emerald-400">668</code></p>
+          <p class="text-sm text-slate-300 mb-2"><strong>Total Seeds:</strong> <code class="text-emerald-400">{{ totalSeeds || '…' }}</code></p>
           <p class="text-sm text-slate-300"><strong>Optimization:</strong> <code class="text-emerald-400">16 years empirical refinement</code></p>
         </div>
 
@@ -67,7 +67,7 @@
           <p class="text-sm text-slate-300 mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/eng_encouragements.json</code></p>
           <p class="text-sm text-slate-300 mb-2"><strong>Pooled Encouragements:</strong> <code class="text-emerald-400">{{ encouragements.pooledEncouragements?.length || 0 }}</code> (random selection)</p>
           <p class="text-sm text-slate-300 mb-2"><strong>Ordered Encouragements:</strong> <code class="text-emerald-400">{{ encouragements.orderedEncouragements?.length || 0 }}</code> (sequential delivery)</p>
-          <p class="text-sm text-slate-300"><strong>Note:</strong> One file per source language (currently only English)</p>
+          <p class="text-sm text-slate-300"><strong>Note:</strong> One file per known language (currently only English)</p>
         </div>
 
         <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
@@ -90,7 +90,7 @@
         <div class="bg-slate-900/50 rounded p-4 mb-4">
           <p class="text-sm text-slate-300 mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/welcomes.json</code></p>
           <p class="text-sm text-slate-300 mb-2"><strong>Structure:</strong> Course-specific welcome per language pair</p>
-          <p class="text-sm text-slate-300"><strong>Spoken in:</strong> Known language (source language)</p>
+          <p class="text-sm text-slate-300"><strong>Spoken in:</strong> The known language</p>
         </div>
 
         <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
@@ -113,13 +113,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { getCanonicalSeeds } from '@/services/supabase.js'
 import { fetchJson } from '@/services/api.js'
 
 const canonicalSeeds = ref([])
 const encouragements = ref({})
 const welcomes = ref({})
+
+// Dynamic so the count tracks the live canonical_seeds table instead of a
+// hardcoded number that silently drifts when seeds are added/removed.
+const totalSeeds = computed(() => canonicalSeeds.value.length)
 
 onMounted(async () => {
   // Seeds are the live SSoT — read direct from Supabase. Encouragements/welcomes

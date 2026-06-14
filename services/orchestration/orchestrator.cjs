@@ -10445,6 +10445,12 @@ app.post('/api/import-course', async (req, res) => {
 
 // =============================================================================
 // DOCUMENTATION API
+// -----------------------------------------------------------------------------
+// DEPRECATED LOCATION: these routes now also live on production-api (port 3470),
+// which is the main entry point the frontend actually talks to. The copies here
+// are kept only for the optional standalone orchestrator. Treat production-api's
+// /api/docs/* as canonical; if you change behaviour, change it there too (or
+// retire these once nothing hits 3456 directly).
 // =============================================================================
 
 /**
