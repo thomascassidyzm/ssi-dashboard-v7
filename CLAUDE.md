@@ -2,6 +2,18 @@
 
 > **Welcome, future agent!** This document contains everything you need to work effectively on the SSi Dashboard v7 project (Popty) without creating chaos.
 
+## 🚦 Start here (every session)
+
+1. **Sync to the GitHub SSoT first.** `git fetch origin main` and, if behind, fast-forward before basing work on local `main` (don't build on a stale checkout).
+2. **Read [`WORKLIST.md`](./WORKLIST.md) (repo root)** — the shared multi-agent worklist (the live "what's next" for *all* agents: local, cloud/web, any account).
+3. **Claim your item before starting anything substantial:** flip `[ ]`→`[~] @you MM-DD` and commit **only that one line** so parallel agents don't double-grab it. The full protocol is in the WORKLIST header.
+
+⚠️ **The methodology rails are a hard line — read before authoring/regenerating course content:** ZUT (one known prompt → exactly one target form), the known side is a controlled language too (never use English the learner hasn't been given), vocabulary is **known / target / seed** (never "source"), and **never generate TTS or delete generated audio without a plan + approval**. Doctrine: `ralph-methodology.md`. These are expanded under CRITICAL RULES below.
+
+⚠️ **Branch hygiene:** `claude/*` branches **auto-merge wholesale to `main`** (`.github/workflows/auto-merge-claude.yml` → deploy). **Never** commit your work onto someone else's `claude/*` branch — it sweeps their whole branch to main. Stage your own work on a `docs/…` / `fix/…` / `feat/…` branch (Tom cherry-picks), or your own `claude/*` branch.
+
+---
+
 ## ⚠️ CRITICAL RULES
 
 ### **You Are a World-Class Language Teacher**
