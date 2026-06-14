@@ -389,6 +389,8 @@ module.exports = function seedCompleteRoutes(ctx) {
       const phraseCount = phrases?.length || 0;
       const legoId = `S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}`;
       const { MIN_PHRASES_PER_LEGO, MAX_PHRASES_PER_LEGO } = ctx.config;
+      let zutHeldOut = 0;            // phrase-granular ZUT: count held out of `phrases`
+      const zutCollisionsOut = [];   // surfaced in the response (never rejects the lego)
 
       let minRequired = MIN_PHRASES_PER_LEGO;
       if (seed === 1 && idx === 1) minRequired = 0;
@@ -501,21 +503,24 @@ module.exports = function seedCompleteRoutes(ctx) {
           });
         }
 
-        // ZUT gate (production-direction): same English prompt must not map to a
-        // different Chinese than the course already teaches. Forces consolidate-or-differentiate.
+        // ZUT gate (production-direction): same English prompt must not map to a different target
+        // than the course already teaches. PHRASE-GRANULAR (Tom 2026-06-14): hold out ONLY the
+        // transgressing phrase(s) from this lego's basket (so a known collision never enters the
+        // course) and still insert the lego + every conforming phrase. Surfaced, never rejected.
         if (!allowValidationBypass(req.body)) {
           const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, phrases, seed);
           if (zutCollisions.length > 0) {
-            console.log(`✗ ${legoId}: REJECTED - ZUT phrase collisions:`);
+            const nkZut = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+            const flaggedKnowns = new Set(zutCollisions.map(c => nkZut(c.known)));
+            for (let i = phrases.length - 1; i >= 0; i--) {
+              if (phrases[i] && phrases[i].known && flaggedKnowns.has(nkZut(phrases[i].known))) {
+                phrases.splice(i, 1);
+                zutHeldOut++;
+              }
+            }
+            zutCollisionsOut.push(...zutCollisions);
+            console.log(`⚠ ${legoId}: ZUT (phrase) — held out ${zutHeldOut} transgressing phrase(s), ${zutCollisions.length} collision(s); lego proceeds`);
             zutCollisions.forEach(c => console.log(`   "${c.known}" → new "${c.new_target}" vs existing "${c.existing_target}" (S${c.existing_seed})`));
-            return res.status(400).json({
-              error: 'ZUT violation (phrase)',
-              lego_id: legoId,
-              collisions: zutCollisions.slice(0, 5),
-              total_collisions: zutCollisions.length,
-              skills: ['ralph-methodology.md', 'synonym-choice-architecture.md'],
-              hint: `One English prompt → one Chinese answer (Zero Uncertainty). "${zutCollisions[0].known}" already maps to "${zutCollisions[0].existing_target}" (S${zutCollisions[0].existing_seed}); you submitted "${zutCollisions[0].new_target}". Either CONSOLIDATE (use the existing target) or DIFFERENTIATE (make the English prompt specific so each maps uniquely, e.g. "I know (a fact)" vs "I know (a person)").`,
-            });
           }
         }
       }
@@ -646,6 +651,11 @@ module.exports = function seedCompleteRoutes(ctx) {
         ...(frameWarnings.length > 0 ? {
           frame_warnings: frameWarnings,
           frame_hint: 'Non-blocking. 7th principle: vary along the axis that carries the new distinction — see ralph-methodology.md.',
+        } : {}),
+        ...(zutHeldOut > 0 ? {
+          zut_held_out: zutHeldOut,
+          zut_collisions: zutCollisionsOut.slice(0, 10),
+          zut_hint: 'ZUT (phrase) — these transgressing phrase(s) were held out (not inserted); the lego + conforming phrases were saved. CONSOLIDATE to the existing target or DIFFERENTIATE the English prompt, then resubmit the held-out phrase(s).',
         } : {}),
       });
 
@@ -1262,8 +1272,12 @@ module.exports = function seedCompleteRoutes(ctx) {
       }
 
       // 3a-ZUT. PHRASE-LEVEL ZUT (production direction): the same English prompt must not map to a
-      // different target than the course already teaches. Previously enforced ONLY on /lego — wired
-      // here so the golden /seed/complete path enforces it too (the primary generation route).
+      // different target than the course already teaches. PHRASE-GRANULAR (Tom 2026-06-14): a
+      // collision holds out ONLY the transgressing phrase(s) — they are not inserted, so a known
+      // collision never enters the course (the ZUT guarantee holds) — while the seed and every
+      // conforming phrase still insert. The held-out phrases are surfaced (not silently dropped) so
+      // the author can CONSOLIDATE (use the existing target) or DIFFERENTIATE (specialise the English
+      // prompt) and resubmit just those. NEVER rejects the whole seed.
       if (!SKIP_VALIDATION) {
         const zutPhrases = [];
         for (const lego of legos) {
@@ -1275,15 +1289,31 @@ module.exports = function seedCompleteRoutes(ctx) {
         if (zutPhrases.length > 0) {
           const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, zutPhrases, seed_number);
           if (zutCollisions.length > 0) {
-            errors.push({
-              type: 'zut',
-              message: 'ZUT violation (phrase) - same English prompt maps to a different target than the course already teaches',
-              collisions: zutCollisions.slice(0, 5),
+            const nkZut = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+            const flaggedKnowns = new Set(zutCollisions.map(c => nkZut(c.known)));
+            let heldOut = 0;
+            const holdOut = (arr) => {
+              if (!Array.isArray(arr)) return arr;
+              const kept = arr.filter(p => !(p && p.known && flaggedKnowns.has(nkZut(p.known))));
+              heldOut += arr.length - kept.length;
+              return kept;
+            };
+            for (const lego of legos) {
+              const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+              if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
+              if (usesBuildUseFormat(lego)) { lego.build = holdOut(lego.build); lego.use = holdOut(lego.use); }
+              else if (lego.phrases) lego.phrases = holdOut(lego.phrases);
+            }
+            warnings.push({
+              type: 'zut_phrase',
+              message: 'ZUT (phrase) — transgressing phrase(s) held out; the seed and all conforming phrases were inserted',
+              held_out: heldOut,
+              collisions: zutCollisions.slice(0, 10),
               total_collisions: zutCollisions.length,
-              hint: `One English prompt → one target (Zero Uncertainty). "${zutCollisions[0].known}" already maps to "${zutCollisions[0].existing_target}" (S${zutCollisions[0].existing_seed}); you submitted "${zutCollisions[0].new_target}". CONSOLIDATE to the existing target, or DIFFERENTIATE the English prompt so each maps uniquely.`,
+              hint: `One English prompt → one target (Zero Uncertainty). "${zutCollisions[0].known}" already maps to "${zutCollisions[0].existing_target}" (S${zutCollisions[0].existing_seed}); you submitted "${zutCollisions[0].new_target}". CONSOLIDATE to the existing target or DIFFERENTIATE the English prompt, then resubmit the held-out phrase(s).`,
               methodology: METHODOLOGY_HINTS.zut,
             });
-            console.log(`✗ ${seedId}: ZUT (phrase) - ${zutCollisions.length} collision(s)`);
+            console.log(`⚠ ${seedId}: ZUT (phrase) — held out ${heldOut} transgressing phrase(s) across ${zutCollisions.length} collision(s); seed proceeds`);
           }
         }
       }

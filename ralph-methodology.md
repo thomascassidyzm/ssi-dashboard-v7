@@ -486,8 +486,10 @@ Same KNOWN → same TARGET. Always.
 ### Violation Example
 ```
 Seed 10: "know" → 알다
-Seed 45: "know" → 알고 있다  ← REJECTED! Conflicts with seed 10
+Seed 45: "know" → 알고 있다  ← conflicts with seed 10
 ```
+
+> **Note on enforcement (granularity).** ZUT is enforced at the level of the thing that collides. A new **LEGO's** known→target that conflicts with an established mapping is the seed's *core wiring* (the seed's translation tiles from its LEGOs) — that is a hard reject; you fix the mapping and resubmit. A **practice phrase** whose known collides is enforced **per-phrase**: only the transgressing phrase is **held out** — never inserted, so a known collision can't reach a learner — while the seed and every conforming phrase still save. The held-out phrase is returned in the response (`zut_phrase` warning / `zut_held_out`) with the existing target and a consolidate-or-differentiate hint, so you fix just that one and resubmit it. ZUT is never a reason to lose a whole seed of good work. (Tom, 2026-06-14.)
 
 ### Fix: Use Different Natural Phrases
 ```
