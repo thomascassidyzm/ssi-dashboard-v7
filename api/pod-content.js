@@ -1,34 +1,37 @@
 /**
- * GET /api/pods/:courseCode/:slug
+ * GET /api/pod-content?course=<courseCode>&slug=<slug>
  *
  * Stage-0 course-preview backend for the listening pods. Returns the full
- * Atom-Fusion structure for one pod, ready for the tuner / preview UI:
+ * Atom-Fusion structure for one pod, ready for the tuner / preview UI.
+ *
+ * FLAT route (query params) on purpose: this repo's Vercel catch-all rewrite
+ * `/((?!vfs).*)` -> /index.html shadows NESTED-dynamic functions
+ * (api/<x>/[a]/[b].js fall through to index.html), but FLAT functions
+ * (api/<name>.js, like api/algorithm-config.js) are matched before the rewrite.
+ * So we serve this as a single flat function with query params.
  *
  *   { sentences: [
- *       { global_order, speaker, target_text, known_text,
+ *       { id, global_order, speaker, target_text, known_text,
  *         target_audio_id, known_audio_id,
- *         intentions: [ { id, clauseText, atoms: [
- *           { target, known, explained, kind,
+ *         intentions: [ { id, atoms: [
+ *           { lego_key, target, known, explained, kind,
+ *             target_start_ms, target_end_ms,
  *             // explained atoms only:
  *             means_audio_id, means_audio_url,
  *             atom_audio_id,  atom_audio_url } ] } ] } ] }
  *
- * The decomposition (intentions -> atoms) comes from
- * listening_pod_sentences.atom_map (the position layer); the per-atom explainer
- * + File-2 slice audio comes from pod_legos (the identity layer) joined on
- * lego_key. Each explained atom's two audio ids are resolved to a signed S3 URL
- * (1h) so the client can play them directly — no per-clip URL round-trips.
+ * The decomposition comes from listening_pod_sentences.atom_map (position
+ * layer); the per-atom explainer ("means, <gloss>") + File-2 slice audio comes
+ * from pod_legos + course_audio. Each explained atom's two audio ids resolve to
+ * a 1h signed S3 URL so the client plays them directly.
  *
- * Offsets (target_start_ms / target_end_ms) stay NULL until the forced-align
- * pass runs; the tuner plays the real File-2 slice so it doesn't need them.
- *
- * Auto-routed by Vercel file-based routing: api/pods/[courseCode]/[slug].js.
- *   e.g. /api/pods/spa_for_eng/pod-0
+ * Offsets stay NULL until the forced-align pass; the tuner plays the real
+ * File-2 slice so it doesn't need them.
  */
 
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
-import { getSupabase } from '../../lib/supabase.js'
+import { getSupabase } from './lib/supabase.js'
 
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1'
@@ -50,9 +53,10 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' })
 
-  const { courseCode, slug } = req.query
-  if (!courseCode || !slug) {
-    return res.status(400).json({ error: 'courseCode and slug are required' })
+  const courseCode = req.query.course
+  const slug = req.query.slug || 'pod-0'
+  if (!courseCode) {
+    return res.status(400).json({ error: 'course is required' })
   }
 
   const supabase = getSupabase()
@@ -72,7 +76,7 @@ export default async function handler(req, res) {
       return res.status(404).json({ error: `No sentences for pod ${podId}` })
     }
 
-    // 2. inventory (identity layer) — explainer + atom-target audio per lego_key.
+    // 2. inventory (identity layer) — explainer audio per lego_key.
     const { data: legos, error: lErr } = await supabase
       .from('pod_legos')
       .select('lego_key, target, known, explainer_audio_id')
@@ -80,12 +84,9 @@ export default async function handler(req, res) {
     if (lErr) return res.status(500).json({ error: lErr.message })
     const legoByKey = new Map((legos || []).map(l => [l.lego_key, l]))
 
-    // 3. resolve s3_key -> signed URL for every audio id we will hand back.
-    //    Pull this course's comp:leo pod-explainer rows in ONE small query (no
-    //    giant .in() filter — the 360 long "[atom] <target>" strings overflow
-    //    the GET URL). The atom-target slices are keyed by "[atom] <target>";
-    //    index them by text. The explainer (means-gloss) rows are referenced by
-    //    id from pod_legos; index s3_key by id from the same fetch.
+    // 3. this course's comp:leo pod-explainer rows in ONE small query.
+    //    means-gloss rows referenced by id from pod_legos; the File-2 atom-target
+    //    slices keyed by "[atom] <target>" text.
     const { data: caRows, error: caErr } = await supabase
       .from('course_audio')
       .select('id, text, s3_key')
@@ -94,14 +95,13 @@ export default async function handler(req, res) {
       .eq('voice_id', 'comp:leo')
     if (caErr) return res.status(500).json({ error: caErr.message })
 
-    const targetIdByText = new Map()   // "[atom] <target>" -> { id, s3_key }
+    const targetRowByText = new Map()  // "[atom] <target>" -> { id, s3_key }
     const s3KeyById = new Map()        // course_audio.id    -> s3_key
     for (const r of caRows || []) {
       s3KeyById.set(r.id, r.s3_key)
-      if (typeof r.text === 'string' && r.text.startsWith('[atom] ')) targetIdByText.set(r.text, r)
+      if (typeof r.text === 'string' && r.text.startsWith('[atom] ')) targetRowByText.set(r.text, r)
     }
 
-    // sign every distinct s3_key once.
     const urlByKey = new Map()
     async function signKey(s3Key) {
       if (!s3Key) return null
@@ -115,8 +115,7 @@ export default async function handler(req, res) {
       return signKey(s3KeyById.get(id))
     }
 
-    // 4. assemble the response. atom_map carries the ordered atoms; we group
-    //    them back into the intention shape the UI expects, attaching audio.
+    // 4. assemble.
     const out = []
     for (const s of sentences) {
       const atomMap = Array.isArray(s.atom_map) ? s.atom_map : []
@@ -135,7 +134,7 @@ export default async function handler(req, res) {
         }
         if (explained && lego) {
           const meansId = lego.explainer_audio_id || null
-          const targetRow = targetIdByText.get(`[atom] ${lego.target}`)
+          const targetRow = targetRowByText.get(`[atom] ${lego.target}`)
           const atomId = targetRow?.id || null
           atom.means_audio_id = meansId
           atom.atom_audio_id = atomId
@@ -153,15 +152,13 @@ export default async function handler(req, res) {
         known_text: s.known_text,
         target_audio_id: s.target_audio_id,
         known_audio_id: s.known_audio_id,
-        // single flat intention carrying the ordered atoms (the atom_map is
-        // already the flattened, ordered decomposition for this sentence).
         intentions: [{ id: 'all', atoms }],
       })
     }
 
     return res.json({ pod_id: podId, course_code: courseCode, slug, sentences: out })
   } catch (err) {
-    console.error(`[pods] ${podId} failed:`, err.message)
+    console.error(`[pod-content] ${podId} failed:`, err.message)
     return res.status(500).json({ error: 'Failed to build pod', message: err.message })
   }
 }
