@@ -1328,10 +1328,11 @@ const DEFAULTS = {
     // inside the single "means <gloss>" leo clip (part of the performance).
   },
   // targetRepeats is PER-TIER (like visits): each stage holds its own T·M·T·T
-  // repeat count. Default 2 (= T M T T) for every tier — nothing changes until
-  // a tier is tuned. The bottom "Target repeats" stepper edits only the FOCUSED tier.
-  repeats:{ explainer:2, translation:2, pairs:2, intention:2 },
-  visits:{ explainer:1, translation:1, pairs:2, intention:1 },
+  // repeat count. DEFAULT 0 for every tier (= target → meaning, ONCE — the
+  // ladder is much shorter). The per-tier stepper lets Tom bump a tier; it just
+  // starts at 0. Edits only the FOCUSED tier.
+  repeats:{ explainer:0, translation:0, pairs:0, intention:0 },
+  visits:{ explainer:1, translation:1, pairs:1, intention:1 },
 };
 
 /* Per-example tuned config overrides. When an example with an override is
@@ -1340,8 +1341,8 @@ const DEFAULTS = {
 const PER_EXAMPLE_CONFIG = {
   jpn: {
     gaps:{ targetMeaning:450, betweenRepeats:555, betweenChunks:1200, betweenIntentions:900, fusionPairs:0, afterCue:435, beforeMeans:40 },
-    repeats:{ explainer:2, translation:2, pairs:2, intention:2 },
-    visits:{ explainer:1, translation:1, pairs:2, intention:2 },
+    repeats:{ explainer:0, translation:0, pairs:0, intention:0 },
+    visits:{ explainer:1, translation:1, pairs:1, intention:2 },
   },
 };
 /* config for a given example id = DEFAULTS deep-merged with its override. */
@@ -1366,7 +1367,7 @@ const GAPKIND_MAX   = { tm:700, rep:700, chunk:1300, intent:1800, fusion:400, cu
 const GAP_MS_PER_PX = 1/0.10;   // inverse of GAPMS (drag px → ms at the base scale)
 
 const STAGES = [
-  { key:'explainer',   label:'Explainer',       gran:'atoms',     cue:true,  connector:true,  meaning:'“means” + atom gloss', visitsKey:'explainer'  },
+  { key:'explainer',   label:'Explainer',       gran:'atoms',     cue:true,  connector:true,  intentionOpener:true, meaning:'whole take → cue → atoms', visitsKey:'explainer'  },
   { key:'translation', label:'Translation',     gran:'atoms',     cue:false, connector:false, meaning:'plain translation',    visitsKey:'translation'},
   { key:'pairs',       label:'Pairs',           gran:'pairs',     cue:false, connector:false, meaning:'pair translation',     visitsKey:'pairs'      },
   { key:'intention',   label:'Whole intention', gran:'intention', cue:false, connector:false, meaning:'whole translation',    visitsKey:'intention'  },
@@ -1426,13 +1427,26 @@ function unitBeats(stage){
 }
 function stageSequence(stage){
   const seq=[]; const push=(e)=>seq.push(e);
-  if(stage.cue){
-    push({type:'clip', name:'cue', ms:durMs('cue'), role:'cue', blockKind:'m', label:'cue', stage:stage.key, intentionId:INTENTIONS[0].id});
-    push({type:'gap', ms:P.gaps.afterCue, gapKind:'cue', stage:stage.key});
-  }
   const units=unitsForStage(stage);
   const useMeans = !!stage.connector;   // explainer tier only: target · "means" · meaning
+  const leadWithIntention = !!stage.intentionOpener;  // explainer: each intention OPENS with its whole take, then the cue
   units.forEach((u,ui)=>{
+    // EXPLAINER per-intention opener: at the FIRST unit of each intention, play
+    // the WHOLE INTENTION in target (reuse the natural File-1 take), then the
+    // "breaking it down" cue, as the bridge into the atoms. Both are real clips
+    // → real blocks (visible===played holds).
+    const firstOfIntention = ui===0 || units[ui-1].intentionId!==u.intentionId;
+    if(leadWithIntention && firstOfIntention){
+      const it=INTENTIONS.find(x=>x.id===u.intentionId);
+      if(it && it.takeClip && EX.clips[it.takeClip]){
+        push({type:'clip', name:it.takeClip, ms:durMs(it.takeClip), role:'intentionTake', blockKind:'k', label:it.targetText, stage:stage.key, intentionId:u.intentionId});
+        push({type:'gap', ms:P.gaps.afterCue, gapKind:'cue', stage:stage.key});
+      }
+      if(stage.cue && EX.clips.cue){
+        push({type:'clip', name:'cue', ms:durMs('cue'), role:'cue', blockKind:'m', label:'cue', stage:stage.key, intentionId:u.intentionId});
+        push({type:'gap', ms:P.gaps.afterCue, gapKind:'cue', stage:stage.key});
+      }
+    }
     const beats=unitBeats(stage);
     beats.forEach((b,bi)=>{
       if(b.t==='T'){
@@ -1657,7 +1671,7 @@ function renderTimeline(){
         const bclass=(e.role==='meaning'||e.role==='cue'||e.role==='connector'||e.role==='note'||e.role==='meansGloss')?'m':(e.blockKind==='k'?'k':'t');
         blk.className='blk '+bclass+(e.role==='connector'?' connector':'')+(e.role==='note'?' note':'')+(e.role==='meansGloss'?' meansgloss':'')+(e.role==='cue'?' cue':'');
         blk.style.left=x+'px'; blk.style.width=w+'px';
-        const role=e.role==='cue'?'cue':(e.role==='meansGloss'?'meaning':e.role);
+        const role=e.role==='cue'?'cue':(e.role==='meansGloss'?'meaning':(e.role==='intentionTake'?'whole take':e.role));
         // the note's full text is long → show a short marker; full text in title
         const shownLabel = e.role==='note' ? '“literally …”' : escapeHtml(e.label);
         blk.innerHTML='<span class="bl">'+shownLabel+'</span><span class="br">'+role+'</span>';
