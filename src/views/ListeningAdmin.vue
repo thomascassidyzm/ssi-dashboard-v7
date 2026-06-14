@@ -1,15 +1,21 @@
 <template>
   <div class="listening-admin">
     <header class="admin-header">
-      <button class="back-btn" @click="goBack" title="Back">←</button>
-      <div>
-        <h1>Listening &amp; algorithm config</h1>
-        <p class="sub">
-          Global settings — applies to every course, every learner.
-          Changes propagate to new sessions within ~5 min (cache TTL).
-        </p>
+      <nav class="admin-crumbs">
+        <router-link to="/" class="crumb-link">Home</router-link>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-here">Listening Config</span>
+      </nav>
+      <div class="admin-head-main">
+        <div class="admin-head-titles">
+          <h1>Listening &amp; algorithm config</h1>
+          <p class="sub">
+            Global settings — applies to every course, every learner.
+            Changes propagate to new sessions within ~5 min (cache TTL).
+          </p>
+        </div>
+        <router-link class="stage0-link" :to="{ name: 'Stage0Tuner' }">Stage 0 Tuner →</router-link>
       </div>
-      <router-link class="stage0-link" :to="{ name: 'Stage0Tuner' }">Stage 0 Tuner →</router-link>
       <span v-if="!isAdmin && currentUser" class="admin-warn">
         Signed in as {{ currentUser.email }} (not admin) — saves will fail.
       </span>
@@ -1014,13 +1020,17 @@ const RowHeader = defineComponent({
 
 .admin-header {
   margin-bottom: 1.5rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: start;
-  column-gap: 0.75rem;
-  row-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
-.admin-header > .admin-warn { grid-column: 1 / -1; }
+.admin-crumbs { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; }
+.admin-crumbs .crumb-link { color: #34d399; text-decoration: none; }
+.admin-crumbs .crumb-link:hover { color: #6ee7b7; }
+.admin-crumbs .crumb-sep { color: #475569; }
+.admin-crumbs .crumb-here { color: #94a3b8; }
+.admin-head-main { display: flex; align-items: flex-start; gap: 1rem; }
+.admin-head-titles { flex: 1; min-width: 0; }
 .back-btn {
   background: transparent;
   border: 1px solid var(--color-graphite, #475569);
