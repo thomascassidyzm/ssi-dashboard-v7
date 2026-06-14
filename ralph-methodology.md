@@ -16,7 +16,7 @@ This methodology doc (ralph-methodology.md) is what to do once the target transl
 
 ## The World-Class Breakdown — Quality Bar
 
-A breakdown is world-class only if it satisfies all six. Each is both an audit dimension and a build-time check. (Distilled from the zho_for_eng particle/decomposition rebuild, 2026-06-07.)
+A breakdown is world-class only if it satisfies all seven. Each is both an audit dimension and a build-time check. (Distilled from the zho_for_eng particle/decomposition rebuild, 2026-06-07; Principle 7 + the doctrine sections that follow added 2026-06-13 from the reorder/encoding work.)
 
 1. **Reconstructability is sacred.** Every SEED must rebuild *perfectly, in both languages*, from its own decomposition plus already-taught vocabulary. This is the master rule — most other failures are special cases of breaking it.
 
@@ -29,6 +29,42 @@ A breakdown is world-class only if it satisfies all six. Each is both an audit d
 5. **Don't re-teach the known.** Already-introduced pieces are never re-narrated (non-greedy introduction / fuzzy-availability — a component already taught earlier carries `introduce:false`).
 
 6. **Idiomatic chunks are their own units.** Non-derivable combinations (准备好 = "ready", not "prepare"+"good"; 见过 = "have seen") are taught whole, not as a sum of parts that doesn't add up.
+
+7. **Vary along the axis that carries the new distinction.** A basket exists to make the *new* LEGO's contribution salient. Every USE phrase must vary along the axis the LEGO actually changes — the lateness-trigger for 才 (现在才 / 明天才 / 之后才), the verb for a new verb, the polarity for a negator — never along an axis carrying zero information about the new piece. Swapping only the subject pronoun (我→你→他) or the topic noun ([X]很有用 ×7) holds the frame constant and teaches nothing. **BUILD may repeat frames** — its job is to automatize the chunk. **USE must buy a new frame per phrase** — USE enters the eternal spaced-repetition pool, so a low-diversity USE basket pollutes review forever. *Convergence pairs (same target, different English) are exempt: they teach the unification, not monotony.*
+
+---
+
+## ZUT Outranks Naturalness — the decision lens
+
+**One English intention → exactly one target form, course-wide. Always.** This is the production-direction law (ZUT), and it outranks naturalness. We do not care if a mapping isn't the most natural way to say it in the target — the method optimises **confidence to interact, not native-likeness**. A learner with a deterministic production function interacts fearlessly; one juggling natural variants freezes. The reverse is not only allowed but useful: *many* English intentions converging on *one* target form (convergence pairs) teaches the unification cheaply.
+
+The general rule behind every methodology call: **decide by least action to confidence, not by truth.** When a question looks like "what's linguistically correct?", reframe it as "what gets the learner to confident production with the least cognitive action?" — that axis resolves what the truth axis cannot.
+
+---
+
+## The Known Side Is a Controlled Language
+
+Reconstructability (Principle 1) holds in **both** languages. The English prompt is **not** free natural English — it is a designed, controlled language. Every prompt must compose from: (a) the known-glosses of introduced LEGOs, (b) the **free class** — glue words, ‑s/‑ed/‑ing inflection, NPI ("any/ever") under negation, dummy auxiliaries (do/does/did), and (c) constructions **licensed by a debuted carrier** — do-support questions, "have you been V-ing", "want to have", etc.
+
+Slightly stilted but tileable English is **correct** — it is the known-side mirror of "ZUT over naturalness". A prompt using unlicensed English machinery is *unmappable*: it forks or stalls production exactly like a target-side ZUT violation. "How do you say it?" cannot appear before its do-support carrier is introduced; "would you like…" smuggles the want/'d-like convergence in early. Compose prompts from what the learner has been given, not from natural English.
+
+---
+
+## Conservative Suppression & Honest Glosses
+
+**A debut must hand the learner a producible intention, never a grammar label.** "把 = object marker", "条 = measure word for long thin objects", "吧 = softening particle" cost cognitive action and yield zero confidence — the learner can produce nothing from them. Glosses name the *whole communicative intention*; never grammar metadata. This subsumes the bare-particle rule: classifiers, markers and aspect are construction-features — they live *inside* an M-LEGO (`introduce:false`), never as a bare debut.
+
+**"Don't re-teach the known" (Principle 5) is a scalpel, not a cull.** Suppress a debut (`is_new:false`) *only* for a pure same-meaning re-statement — the identical intention and identical target, adding no new word, sense, idiom, or contrast. Everything else keeps its debut: **distinct words** (喝/买/准备 are not "components" of a chunk just because their characters appear inside it — that is the overlap mechanism working, not duplication), **idiomatic chunks** (准备好 ≠ 准备+好), **overlap-ladder rungs**, and **deliberate nuance re-debuts**. The lever is minor by design — in the zho audit, ~15 of ~1,100 rounds.
+
+---
+
+## The Pair-Contract
+
+Every language pair gets its own rule layer: `docs/pair-contracts/{course_code}.contract.cjs` — gloss-determinism forks, construction licenses, multi-gloss synonyms, bound gloss-units, the free class, and the **known language** it is written for. The Chinese rules (能/会 by collocation, the 很 split, the 了 cue-table) are **instances of categories, not universals** — do not copy them to another pair; derive that pair's contract on first contact.
+
+Crucially, the free class / NPI / inflection / machinery are **known-language-specific** — a `_for_jpn` contract restates them in Japanese; English regexes must never gate a non-English-known course.
+
+**Deriving a contract:** translate the seeds → find the forks (one English intention that would map to several natural targets) → decide each determinism rule (consolidate or differentiate) → mark silent construction-features → register multi-gloss synonyms and bound gloss-units → restate the free class for the known language → **adversarially verify every rule** (does a fork ever collapse two distinct intentions? does a "synonym" smuggle a ZUT violation?) before setting `ratified`. The gates read this file; if it is absent the known-side check silently skips, so an un-contracted course is never wrongly blocked.
 
 ---
 
