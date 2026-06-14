@@ -20,8 +20,11 @@
 - **The Welsh content looks already loaded** in Supabase (north + south), based on
   the cast-sheet snapshots. One read-only command confirms it (below).
 - **Objective is reachable in the two days:** cast → record → verify, per course.
-- **One real code task** is worth doing first for reusability: the north/south
-  single-`voice_id` collision (see Sharp Edges #1).
+- **No blocking code task.** (An earlier draft of this doc flagged a north/south
+  `voice_id` fix as "do first" — that was wrong; the pod flow already resolves voice
+  per-course by email and never touches that column. See Sharp Edges #1.) The only
+  thing gating the run is the live content/smoke check, which is yours to do at the
+  machine.
 
 ---
 
@@ -44,7 +47,10 @@ render empty and progress would always read 0 — and *no test catches it*. This
 resolved: `finalizeRecordingPlan()` (`pods-plan.cjs`) emits the canonical wire shape
 (`cues[].targetText/knownText`, flattened `sceneNumber`/`sceneTitle`) and stamps
 `recorded`/`audioId` per item; the router calls it. §2.B (coverage route mounted
-*above* the pods router) is also correct in `services/production-api.cjs`.
+*above* the pods router) is also correct in `services/production-api.cjs`. This fix is
+**regression-guarded**: `pods-plan-finalize.test.mjs` imports both `pods-plan.cjs` *and*
+the client `normalizeRecordingPlan`, asserting the full server→client round-trip (cues,
+line, scene, recorded) — i.e. the exact drift can't silently return.
 
 **Test status:** `npx vitest run services/voice-engine` → 188 pass, 9 skipped. The
 only failing suites in a bare environment are the two ffmpeg round-trip smoke tests,
@@ -97,15 +103,18 @@ Per course (`cym_n_for_eng`, then `cym_s_for_eng`):
 
 ## Sharp edges (so they don't surprise you mid-session)
 
-1. **North/south single-`voice_id` collision — your specific risk, fix first.**
-   `dashboard_users.voice_id` is a *single column*, but you have **two** Welsh courses
-   with the **same cast** (Aran/Catrin record both). Per-course casting
-   (`voice_config.podCast`) is fine; it's the **Record Room's slot resolution** via
-   `dashboard_users.voice_id` that's fragile — a recorder assigned across two courses
-   can show "Not yet assigned" in one room (documented in
-   `services/voice-engine/README.md` "Known limitation"). This is the one real piece
-   of *build* work standing between "works in a demo" and "reusable for every future
-   community course." **Recommend hardening this before the session.**
+1. **North/south single-`voice_id` collision — NOT a pod-recording risk (corrected).**
+   `dashboard_users.voice_id` is a single column and the same cast (Aran/Catrin) records
+   both Welsh courses, so on first read this looked like a collision. It isn't, for pods:
+   the dialogue flow resolves each recorder's voice **per-course, by email**, from
+   `voice_config.podCast` (`RecordRoom.vue` `myPodCastEntries`, ~lines 256-272) and never
+   reads `voice_id`. Even script-mode prefers the per-course `voices[slot].assignedEmail`
+   and uses `voice_id` only as a fallback (`assignedSlot`, ~lines 228-238) — the code was
+   deliberately designed around the single-column limit. The documented limitation
+   (`services/voice-engine/README.md`) only affects **script/speaking-slot** recording
+   with no `assignedEmail` — i.e. the already-done original Welsh *speaking* takes, not
+   the listening pods. **No action needed.** (Listed here only because an earlier draft
+   wrongly flagged it as "fix first.")
 
 2. **Coverage chips behind a tunnel.** The coverage fetch is unauthenticated → 401s
    through ngrok, so the chips silently hide (recording still works fine). Cosmetic
@@ -128,7 +137,6 @@ The recording itself is human-bound (real voices, real time). Agents are best us
 - **Per-course pre-flight + manifest**: one agent per cym course runs `pod-state-report`,
   cross-checks the cast sheet against the live rows, and produces a "voice X owes N
   lines across pods A-F" sheet so the humans walk in knowing the workload.
-- **The north/south hardening** (Sharp Edge #1) — verify + fix.
 - **Move `welsh-pod-recording-pack.cjs` into `tools/`** so it's version-controlled and
   cloud-runnable.
 - **Reusability pass**: once Welsh proves the loop, write the generic "community course
@@ -136,10 +144,9 @@ The recording itself is human-bound (real voices, real time). Agents are best us
 
 ---
 
-## Recommended first two moves
+## Recommended first move
 
-1. Run the **pre-flight** block → get real numbers.
-2. Greenlight the **north/south `voice_id` hardening** — it's the one defect between a
-   working demo and a reusable system, and it directly bites your two-Welsh-course setup.
-
-Everything else (the recording loop) is ready to drive the moment content is confirmed.
+Run the **pre-flight** block → get real numbers, then drive the recording loop. There is
+no code task gating the run: the tool is ready, the one fixed landmine is regression-
+guarded, and the per-course voice resolution is correct. The only thing between here and
+"final Welsh pods recorded" is the live, human-bound recording itself.
