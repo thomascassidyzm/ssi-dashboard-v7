@@ -33,7 +33,9 @@ import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { getSupabase } from './lib/supabase.js'
 
-const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
+// Audio bucket — NOT process.env.S3_BUCKET: on Vercel that is the LFS/course-data
+// bucket (popty-bach-lfs). Audio lives in ssi-audio-stage (s3-service.cjs hardcodes it).
+const S3_BUCKET = process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage'
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1'
 const URL_TTL = 3600
 
