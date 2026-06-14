@@ -9,11 +9,12 @@ Pick up from here. Everything below survives on disk + in the DB + in this commi
 - **Tuner course-picker** live at `popty.app/admin/stage0-tuner` (+ `/stage0-tuner.html`): course `<select>` + sentence `<select>` → preview the real explainer ladder. Spanish + Croatian selectable.
 - **The Stage-0 model** (in the tuner): explainer LEADS WITH the whole-intention natural take → "breaking it down" cue → per atom: target (File-2 slice) + merged "means, <gloss>". NO repeats. Pairs once. Intentions never fused. Popty-dark theme, dark stage.
 
-## 🔄 IN PROGRESS (interrupted)
-**Shared English known-store** — agent `a5ac9789a7b4f7a4d` was building it (DRY-RUN, no prod writes yet):
-- Goal: the English "means X" + bare-gloss clips become ONE shared store (`course_code='pod_known_en'`, `language='en'`), reused across ALL languages. A new language then records only its TARGET side. Collapses the per-course English duplication (spa + hrv each hold their own "means thank you").
-- **Tom's last feedback (must honour):** the current "means, <gloss>" **comma pause is TOO SHORT** — it runs on AND is too small to cleanly `silencedetect`-slice the bare gloss. So **RE-RENDER** the shared "means [BIGGER pause] <gloss>" clips fresh with a clean, detectable gap (~350–500 ms) — test ellipsis `means…` / period `means.` / em-dash `means —` on `leo`, pick the cleanest that still reads as one natural unit — THEN slice the bare gloss off it. Don't reuse the comma clips.
-- Files it was touching: `tools/build-shared-known-store.cjs` (new), `tools/persist-stage0-pod0.cjs` (now has `SHARED_KNOWN_COURSE='pod_known_en'` resolve logic), `api/pod-content.js` (to serve means + `bare_gloss_url` from the shared store).
+## ✅ BUILT — READY TO RUN (not executed; power loss)
+**Shared English known-store** — built + dry-run-verified (`tools/build-shared-known-store.cjs`). Nothing rendered/written/deployed yet.
+- **Pause chosen: ellipsis `means… <gloss>`** — punctuation test on `leo` measured a consistent **~450 ms** gap (comma was 177–493 ms / run-on; period gave a hard falling intonation on "means"; dash inconsistent). Slices clean (no residual "means", correct onset, 192k/48k/−16 LUFS), reads as one natural unit. Test clips: `/tmp/punctest/`.
+- **Plan**: 753 unique English glosses (spa 360 + hrv 521 → 847 per-course means collapse to **753 unique** — the reuse win). 753 `leo` `means… X` renders → 753 shared means-X rows (`course_code='pod_known_en'`, lang `en`) + 753 bare-X rows (text `· <gloss>`, **sliced from the same take**) + 881 `pod_legos` repointed → shared. ~8 glosses may have an undetectable pause → the tool FLAGS them (writes means-X, skips bare-X) for hand-fixing rather than mis-slicing.
+- **TO RUN (real):** `node tools/build-shared-known-store.cjs --execute` (≈753 xAI TTS + ~2259 S3/DB writes), then redeploy the endpoint: `git push origin HEAD:main && vercel --prod --yes`. Idempotent; `--dry-run` is the default (safe).
+- Files DONE (all `node --check` clean): `tools/build-shared-known-store.cjs` (new), `tools/persist-stage0-pod0.cjs` (new languages resolve known from `pod_known_en`; `POD_KNOWN_LOCAL=1` escape hatch), `api/pod-content.js` (serves means via `explainer_audio_id` + `bare_gloss_url` via the `· <gloss>` row).
 
 ## ⏭ NEXT
 1. Finish shared-known-store: bigger-pause means-X (render once, shared), slice bare-gloss, repoint every course's `pod_legos.explainer_audio_id` → shared, dry-run → **real run** → **deploy**. Then the **translation tier** plays (it needs the bare gloss).
