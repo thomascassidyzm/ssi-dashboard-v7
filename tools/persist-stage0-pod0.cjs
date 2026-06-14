@@ -57,6 +57,16 @@ const VOICE_ID = 'comp:leo'
 const ORIGIN = 'tts'
 const SRC_DIR = path.join(process.env.HOME || require('os').homedir(), 'Desktop', META.srcDir)
 
+// SHARED known-side store: the English "means, <gloss>" explainer audio is
+// identical across all languages, so it lives ONCE under course_code=pod_known_en
+// (language en) and is reused by every course. See tools/build-shared-known-store.cjs.
+// When persisting a NEW language we resolve each gloss's known clip from that
+// shared store (no per-course means upload) and only the TARGET atoms are
+// per-language. Set POD_KNOWN_LOCAL=1 to fall back to the legacy per-course means.
+const SHARED_KNOWN_COURSE = 'pod_known_en'
+const SHARED_KNOWN_LANG = 'en'
+const USE_SHARED_KNOWN = process.env.POD_KNOWN_LOCAL !== '1'
+
 const DRY_RUN = process.argv.includes('--dry-run')
 
 // Same flat S3 + service-role Supabase substrate every other service uses.
@@ -145,6 +155,28 @@ async function ensureAudio({ text, mp3File, durationMs }) {
   return { id: ins.id, reused: false, s3_key: ins.s3_key }
 }
 
+/** Resolve a gloss's known "means, <gloss>" clip from the SHARED store
+ *  (course_code=pod_known_en, language=en). Returns the shared row id if present,
+ *  else null (caller falls back to the per-course path). No upload — the shared
+ *  store is built/owned by tools/build-shared-known-store.cjs. */
+async function resolveSharedMeans(meansText) {
+  const textNorm = normalizeForAudio(meansText)
+  const textNormNoQ = textNorm.replace(/\?+$/, '')
+  const lookupNorms = textNorm === textNormNoQ ? [textNorm] : [textNorm, textNormNoQ]
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('id, s3_key')
+    .eq('course_code', SHARED_KNOWN_COURSE)
+    .in('text_normalized', lookupNorms)
+    .eq('language', SHARED_KNOWN_LANG)
+    .eq('role', ROLE)
+    .eq('voice_id', VOICE_ID)
+    .limit(1)
+  if (error) throw new Error(`shared means lookup "${meansText}": ${error.message}`)
+  const row = data && data[0]
+  return row ? { id: row.id, s3_key: row.s3_key } : null
+}
+
 async function main() {
   log(`persist-stage0-pod0 ${DRY_RUN ? '(DRY RUN)' : '(REAL RUN)'} — ${COURSE_CODE}/${POD_SLUG}`)
   log(`  source: ${SRC_DIR}`)
@@ -206,16 +238,30 @@ async function main() {
   log(`Inventory: ${legos.size} distinct pod_legos across ${sentences.length} sentences\n`)
 
   // ── pass 1b: persist audio + pod_legos for each inventory unit ──────────────
-  let caMeans = 0, caTarget = 0, caReused = 0
+  let caMeans = 0, caTarget = 0, caReused = 0, caShared = 0
   let legoRows = 0
   const legoAudioIds = new Map()  // lego_key -> { explainer_audio_id, atom_target_audio_id }
 
   for (const L of legos.values()) {
-    // 1. merged means-gloss audio (the explainer asset, owned by pod_legos)
+    // 1. merged means-gloss audio (the explainer asset, owned by pod_legos).
+    //    KNOWN side is English and identical across languages, so resolve it from
+    //    the SHARED store (pod_known_en/en) and reuse — no per-course upload. Only
+    //    if it's missing there (or POD_KNOWN_LOCAL=1) do we fall back to the
+    //    per-course means clip on disk.
     const meansText = L.meansClip.text  // already "means, <gloss>" in the manifest
     const meansFile = path.join(SRC_DIR, L.meansClip.file)
-    const means = await ensureAudio({ text: meansText, mp3File: meansFile, durationMs: L.meansClip.durMs })
-    if (means.reused) caReused++; else caMeans++
+    let means = null
+    if (USE_SHARED_KNOWN) {
+      const shared = await resolveSharedMeans(meansText)
+      if (shared) {
+        means = { id: shared.id, reused: true, s3_key: shared.s3_key, shared: true }
+        caShared++
+      }
+    }
+    if (!means) {
+      means = await ensureAudio({ text: meansText, mp3File: meansFile, durationMs: L.meansClip.durMs })
+      if (means.reused) caReused++; else caMeans++
+    }
 
     // 3. File-2 atom slice, DISTINCT text so the tuner plays the real slice
     const targetText = `[atom] ${L.target}`
@@ -249,7 +295,8 @@ async function main() {
     }
     legoRows++
   }
-  log(`\ncourse_audio: ${caMeans} means-gloss + ${caTarget} atom-target written, ${caReused} reused`)
+  log(`\ncourse_audio: ${caMeans} means-gloss + ${caTarget} atom-target written, ${caReused} reused` +
+      (USE_SHARED_KNOWN ? `, ${caShared} means resolved from SHARED store (${SHARED_KNOWN_COURSE})` : ''))
   log(`pod_legos: ${legoRows} upserted\n`)
 
   // ── pass 2: write per-sentence atom_map ─────────────────────────────────────
@@ -293,8 +340,8 @@ async function main() {
   log(`\nlistening_pod_sentences.atom_map: ${sentencesWithMap} sentences written`)
 
   log('\n=== SUMMARY ===')
-  log(`pod_legos:                 ${legoRows}`)
-  log(`course_audio (means-gloss): ${caMeans}`)
+  log(`pod_legos:                  ${legoRows}`)
+  log(`course_audio (means-gloss): ${caMeans}` + (USE_SHARED_KNOWN ? `  (+${caShared} from SHARED ${SHARED_KNOWN_COURSE})` : ''))
   log(`course_audio (atom-target): ${caTarget}`)
   log(`course_audio reused:        ${caReused}`)
   log(`sentences with atom_map:    ${sentencesWithMap}`)

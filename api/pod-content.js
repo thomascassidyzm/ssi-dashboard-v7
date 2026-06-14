@@ -19,13 +19,17 @@
  *           { lego_key, target, known, explained, kind,
  *             target_start_ms, target_end_ms,
  *             // explained atoms only:
- *             means_audio_id, means_audio_url,
- *             atom_audio_id,  atom_audio_url } ] } ] } ] }
+ *             means_audio_id, means_audio_url,   // "means, <gloss>" (SHARED en store)
+ *             atom_audio_id,  atom_audio_url,    // File-2 target slice (per-language)
+ *             bare_gloss_url } ] } ] } ] }       // bare English gloss (SHARED, sliced)
  *
  * The decomposition comes from listening_pod_sentences.atom_map (position
- * layer); the per-atom explainer ("means, <gloss>") + File-2 slice audio comes
- * from pod_legos + course_audio. Each explained atom's two audio ids resolve to
- * a 1h signed S3 URL so the client plays them directly.
+ * layer). The English KNOWN side ("means, <gloss>" + the bare-gloss slice) is a
+ * SHARED store: course_code=pod_known_en, recorded once and reused across all
+ * courses (pod_legos.explainer_audio_id points at the shared means-X row; the
+ * bare gloss is the "· <gloss>" row matched by gloss text). The File-2 target
+ * slice ("[atom] <target>") is per-language, owned by the course. Each audio id
+ * resolves to a 1h signed S3 URL so the client plays them directly.
  *
  * Offsets stay NULL until the forced-align pass; the tuner plays the real
  * File-2 slice so it doesn't need them.
@@ -89,8 +93,8 @@ export default async function handler(req, res) {
     const legoByKey = new Map((legos || []).map(l => [l.lego_key, l]))
 
     // 3. this course's comp:leo pod-explainer rows in ONE small query.
-    //    means-gloss rows referenced by id from pod_legos; the File-2 atom-target
-    //    slices keyed by "[atom] <target>" text.
+    //    These are the per-LANGUAGE assets: the File-2 atom-target slices keyed by
+    //    "[atom] <target>" text (and, for legacy courses, the per-course means-X).
     const { data: caRows, error: caErr } = await supabase
       .from('course_audio')
       .select('id, text, s3_key')
@@ -104,6 +108,29 @@ export default async function handler(req, res) {
     for (const r of caRows || []) {
       s3KeyById.set(r.id, r.s3_key)
       if (typeof r.text === 'string' && r.text.startsWith('[atom] ')) targetRowByText.set(r.text, r)
+    }
+
+    // 3a. SHARED English known-side store (pod_known_en/en) — the means-X clips
+    //     (recorded once, reused across all courses) and the bare-gloss slices
+    //     keyed by "· <gloss>" text. pod_legos.explainer_audio_id points at the
+    //     shared means-X row, so adding its s3_key to s3KeyById resolves the means
+    //     URL by id. The bare gloss is resolved by normalized gloss text.
+    const BARE_PREFIX = '· '
+    const norm = (t) => String(t || '').toLowerCase().trim().replace(/\s+/g, ' ').replace(/[.!。！]+$/, '')
+    const bareKeyByGloss = new Map()  // normalized gloss -> s3_key  (the "· <gloss>" rows)
+    const { data: sharedRows, error: shErr } = await supabase
+      .from('course_audio')
+      .select('id, text, s3_key')
+      .eq('course_code', 'pod_known_en')
+      .eq('language', 'en')
+      .eq('role', 'pod_explainer')
+      .eq('voice_id', 'comp:leo')
+    if (shErr) return res.status(500).json({ error: shErr.message })
+    for (const r of sharedRows || []) {
+      s3KeyById.set(r.id, r.s3_key)
+      if (typeof r.text === 'string' && r.text.startsWith(BARE_PREFIX)) {
+        bareKeyByGloss.set(norm(r.text.slice(BARE_PREFIX.length)), r.s3_key)
+      }
     }
 
     // 3b. whole-take (target_audio_id) + translation (known_audio_id) s3_keys for
@@ -159,10 +186,14 @@ export default async function handler(req, res) {
           const meansId = lego.explainer_audio_id || null
           const targetRow = targetRowByText.get(`[atom] ${lego.target}`)
           const atomId = targetRow?.id || null
+          // bare gloss: the "· <gloss>" slice from the SHARED store, matched by gloss text.
+          const glossText = atom.known ?? lego.known ?? null
+          const bareKey = glossText != null ? (bareKeyByGloss.get(norm(glossText)) || null) : null
           atom.means_audio_id = meansId
           atom.atom_audio_id = atomId
-          atom.means_audio_url = await urlForId(meansId)
-          atom.atom_audio_url = await urlForId(atomId)
+          atom.means_audio_url = await urlForId(meansId)   // "means, <gloss>" (shared)
+          atom.atom_audio_url = await urlForId(atomId)      // File-2 target slice (per-language)
+          atom.bare_gloss_url = await signKey(bareKey)       // bare English gloss (shared, sliced)
         }
         atoms.push(atom)
       }
