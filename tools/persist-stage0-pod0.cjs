@@ -41,14 +41,21 @@ const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
 const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')
 
-const COURSE_CODE = 'spa_for_eng'
+// Course-parameterized (default spa so the original spa path is intact):
+//   COURSE=hrv_for_eng node tools/persist-stage0-pod0.cjs
+const COURSE_CODE = (process.env.COURSE || 'spa_for_eng').trim()
+const COURSE_META = {
+  spa_for_eng: { language: 'es', srcDir: 'stage0-spa-pod0' },
+  hrv_for_eng: { language: 'hr', srcDir: 'stage0-hrv-pod0' },
+}
+const META = COURSE_META[COURSE_CODE] || { language: COURSE_CODE.split('_')[0], srcDir: `stage0-${COURSE_CODE.split('_')[0]}-pod0` }
 const POD_SLUG = 'pod-0'
 const POD_ID = `${COURSE_CODE}:${POD_SLUG}`
 const ROLE = 'pod_explainer'
-const LANGUAGE = 'es'
+const LANGUAGE = META.language
 const VOICE_ID = 'comp:leo'
 const ORIGIN = 'tts'
-const SRC_DIR = path.join(process.env.HOME || require('os').homedir(), 'Desktop', 'stage0-spa-pod0')
+const SRC_DIR = path.join(process.env.HOME || require('os').homedir(), 'Desktop', META.srcDir)
 
 const DRY_RUN = process.argv.includes('--dry-run')
 
