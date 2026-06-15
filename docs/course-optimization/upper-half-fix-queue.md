@@ -1,0 +1,400 @@
+# zho_for_eng — S351–668 (Kai old-way extension) fix-queue
+
+*Generated 2026-06-15 from the 4-gate lint + 16-agent adjudication. Read-only analysis; nothing changed.*
+
+## Summary
+- Raw gate flags: **1,499** across 488/573 baskets.
+- Adjudicated: **1499** → **REAL: 371** (25%); false positives stripped: 1128.
+- Real by gate: **known_side** 261 · **metadata_gloss** 19 · **zut_phrase** 90 · **frame_coverage** 1
+- Real by severity: high 7 · med 297 · low 67
+
+### Top collision/untaught words
+- ZUT collision words (raw 466 flags; 90 adjudicated real): one(54), not(29), do(15), good(14), very(12), that one(10), time(9), how(8), a(7), left(6), stop(6), leave(5), clear(5), hope(5), then(5)
+- Known-side (genuinely untaught English): please(14), could(6), exactly(5), thought(4), cup(4), truly(4), them(4), such(4), job(4), warmer(3), always(3), appear(3), nice(3), best(3), everybody(3)
+
+## zut_phrase — 90 real
+
+- [high] S473L1 — I want to know 我想要知道 vs 我想知道 @ S251 → **consolidate to 我想知道 (established at S251)**
+- [high] S512L2 — 'open the door' 把门打开 vs 打开门@336 → **consolidate to 打开门 (established S336) — same English 'open the door' should not vary 把-construction vs SVO; pick one**
+- [high] S553L2 — 'very beautiful' 非常美 vs 很漂亮@373 → **differentiate the English — 非常='extremely', 很='very'; here 'very beautiful' should map to 很漂亮 (established). Re-gloss 非常 to 'extremely' to break collision**
+- [high] S553L2 — 'very ugly' 非常丑 vs 很丑@551 → **differentiate the English — gloss 非常 as 'extremely' so 'very ugly' stays 很丑 (established S551)**
+- [high] S605L3 — 'nobody wanted to help' 没有人想帮助 vs 没有人想帮忙@491 → **consolidate to one of 帮助/帮忙 for 'help' (帮忙 established S491) OR differentiate — same intention split; help is high-freq**
+- [high] S631L1 — phrase_known 'want' 要 vs 想@1 → **differentiate the English (e.g. 要='will/need to', 想='want to') — bare 'want'→要 collides with established 想@1**
+- [high] S631L1 — phrase_known 'I need to go' 我要走了 vs 我需要去@156 → **consolidate to 我需要去 (established 'need'@156, target 需要) or differentiate**
+- [med] S362L1 — after: 后 vs 以后(S251) → **consolidate to 以后 (established earlier form for 'after')**
+- [med] S362L1 — leave: 走 vs 离开(S255) → **differentiate English: 走 here = 'left/went', reserve 'leave' for 离开**
+- [med] S362L1 — after: 后 vs 之后(S11) → **consolidate to 之后/以后 (established earlier forms for 'after')**
+- [med] S374L1 — zut 'very good' 非常好 vs 很好@13 → **differentiate the English: gloss 非常 as 'extremely/very much' (its lego_known), not bare 'very' (=很)**
+- [med] S375L1 — do -> 做 vs 办 (S157) → **differentiate the English or consolidate; 'do' high-frequency mapping to both 做 and 办 collides**
+- [med] S375L1 — do -> 做 vs 作 (S230) → **consolidate to 做 (or differentiate the English; 作/做 are near-homophone variants for same intention)**
+- [med] S384L1 — 'I just wanted to tell you something' 刚才 vs 只是@357 → **differentiate the English: 刚才='a moment ago' but here English 'just' = merely (只是@357); re-gloss this phrase to avoid 'just'-collision**
+- [med] S402L1 — stop ting vs ting-xia @ S402 → **consolidate to established earlier form (ting-xia S67) or differentiate the English**
+- [med] S402L1 — stop ting vs ting-zhi @ S402 → **consolidate to established earlier form (ting-zhi S240 / ting-xia S67)**
+- [med] S403L2 — long: 长 vs 久(S33) → **differentiate English or consolidate: 久 already glosses 'long' (time) at S33**
+- [med] S403L2 — time: 时间 vs 时(S62) → **differentiate or consolidate; 时 and 时间 both gloss 'time'**
+- [med] S419L1 — people who like 人们喜欢 vs 喜欢的人 (S286) → **differentiate the English or align word order; 'people who like' (relative clause) should follow established 喜欢的人 pattern**
+- [med] S426L1 — help each other 彼此帮助 vs 互相帮忙 @ S410 → **consolidate to 互相帮忙 (established at S410)**
+- [med] S431L1 — zut 'very' 很 vs 非常@147 → **differentiate the English: 很 and 非常 both glossed bare 'very'; partition (很='very', 非常='extremely')**
+- [med] S431L1 — zut 'very' 很 vs 太@148 → **differentiate the English: 很='very' vs 太='too'; bare 'very' collides**
+- [med] S431L1 — zut 'then' 就 vs 才@184 → **differentiate the English: 就 and 才 both surface as 'then'; partition (就='then/right away', 才='only then/not until')**
+- [med] S431L1 — zut 'then' 就 vs 再@251 → **differentiate the English: 就 vs 再 both 'then'; 再='again/then (next)' partition**
+- [med] S458L1 — much better: 好得多 vs 更好多了(S291) → **consolidate to established 更好多了 or differentiate; both gloss 'much better'**
+- [med] S469L2 — change: 改 vs 改变(S104) → **consolidate to established 改变 (this lego is also 改变 at S104)**
+- [med] S469L2 — change: 改 vs 变(S421) → **differentiate or consolidate; 改/变 both gloss 'change'**
+- [med] S475L1 — reason 理 vs 原因@105 → **differentiate or consolidate: 'reason' is established as 原因@105; new LEGO 理由 reuses gloss 'reason' (slice 理) creating a real two-target collision for the same English**
+- [med] S478L3 — very kind: 非常善良 vs 很友善(S147) → **consolidate to established 很友善 or differentiate 'kind'**
+- [med] S481L1 — this is the only way 唯一的方法 vs 唯一的办法 @ S94 → **consolidate to 唯一的办法 (established at S94)**
+- [med] S488L4 — phrase_known 'on the other side' 在另一边 vs 在对面@392 → **consolidate to 在对面 (established at S392) or differentiate the English**
+- [med] S507L1 — in the city 在城市里 vs 在市里 (S198) → **consolidate to 在市里 (established earlier form) or differentiate**
+- [med] S508L1 — zut 'don't worry' 不要担心 vs 不担心@46 → **consolidate to 不担心 (established S46) or differentiate by mood (不要担心=imperative, 不担心=statement)**
+- [med] S508L1 — zut 'worry about' 担心关于 vs 担心@100 → **consolidate to 担心 (established S100); 担心关于 is unidiomatic (担心 takes object directly)**
+- [med] S511L5 — measure 个 vs 张@411 → **re-gloss: drop bare 'measure' gloss — 个/张 are distinct classifiers; give each a producible intention or context**
+- [med] S521L1 — 'nobody wanted to stay' 没有人想留 vs 没有人想待着@367 → **consolidate to 待着 (established S367) OR differentiate the English — same 'nobody wanted to stay' maps to 留 here and 待着 at S367**
+- [med] S526L1 — I can't guess cai-bu-dao vs bu-hui-cai @ S526 → **consolidate to established (S12 form) or differentiate the English**
+- [med] S526L1 — can't guess cai-bu-dao vs bu-hui-cai @ S526 → **consolidate to established bu-hui-cai (S12)**
+- [med] S527L1 — that's very interesting: 那很有趣 vs 那个很有意思@163 → **consolidate to 有意思 (established earlier @163) OR differentiate: same English 'interesting' maps to 有趣 here vs 有意思 at S163 — learner can't know which to produce**
+- [med] S527L1 — nobody thought it was interesting: 有趣 vs 有意思@492 → **consolidate to one form for 'interesting' (有趣 vs 有意思@492) — same English, two targets**
+- [med] S531L1 — 'nobody wants to lose' 没有人不想赢得 vs 没有人想输@496 → **consolidate to 没有人想输 (established S496, direct 'lose'=输) — rendering 'lose' as 不想赢得 ('not want to win') is a confusing double-negative for same English**
+- [med] S533L2 — zut 'sentence' 句 vs 句子@10 → **differentiate the English: 句 (measure word / 'a line of speech') vs 句子='sentence'@10 — don't gloss both 'sentence'**
+- [med] S537L1 — but 但 vs 但是 @ S19 → **consolidate to 但是 (established at S19)**
+- [med] S540L2 — I don't mind at all 我完全不介意 vs 我一点也不介意 (S191) → **consolidate to 我一点也不介意 (established) or differentiate 'at all'**
+- [med] S541L3 — phrase_known 'good idea' 好主意 vs 好想法@259 → **consolidate 'good idea': 主意 vs 想法 both gloss 'idea' — learner can't know which to produce; pick one (差ize the English or consolidate)**
+- [med] S541L3 — phrase 'that's a good idea' 那是个好主意 vs 那是个好想法@259 → **consolidate 'idea' to one target (主意 vs 想法 collision, same as above)**
+- [med] S543L1 — I think you're right yi-wei vs jue-de @ S543 → **differentiate: yi-wei is 'thought (mistakenly)' not 'think'; consolidate to jue-de form (S303)**
+- [med] S543L1 — you're right ni-shi-dui-de vs ni-dui @ S543 → **consolidate to established ni-dui (S387)**
+- [med] S543L1 — she was right ta-shi-dui-de vs ta-dui @ S543 → **consolidate to established ta-dui (S387)**
+- [med] S545L1 — should: 该 vs 应该(S98) → **consolidate to established 应该 (should@S98) or differentiate**
+- [med] S569L1 — phrase_known 'I can't decide' 我决定不了 vs 我不能决定@438 → **consolidate to 我不能决定 (established at S438) or differentiate the English**
+- [med] S569L3 — nobody wants to pay 没有人愿意付 vs 没有人想付钱 @ S508 → **consolidate to 没有人想付钱 (established at S508)**
+- [med] S581L1 — I want to know more: 多了解 vs 知道更多@251 → **differentiate the English (e.g. 'know about' vs 'know') — 'I want to know more' maps to both 了解 and 知道**
+- [med] S583L1 — nobody knows what it's like 是什么样的 vs 那是什么样的@S581 → **consolidate to 没有人知道那是什么样的 (the established S581 form with 那)**
+- [med] S583L1 — what's it like to grow up here 是什么样的 vs 什么感觉@S582 → **consolidate to one rendering (S582 used 什么感觉 'what feeling'; pick one for 'what's it like')**
+- [med] S593L2 — nobody wanted to argue: 争论 vs 争吵@410 → **differentiate the English ('argue/debate' 争论 vs 'quarrel' 争吵) — same 'wanted to argue' maps to two targets**
+- [med] S593L3 — 'she's still waiting' 她还是在等待 vs 她还在等待@475 → **consolidate to 还在 (established S475) — 'still waiting' should not vary 还是/还; here 还是 (or/either sense) is the wrong rendering for 'still'**
+- [med] S597L3 — 'I want to know more about it' 597 vs S581 → **differentiate the English or consolidate; 我想多了解一点 (S581) and 我想多了解关于这件事 collide on 'know more about it'**
+- [med] S603L2 — phrase_known 'she used to live here' 住在这里 vs 住这里@128 → **consolidate to 她以前住这里 (established at S128) or differentiate — optional 在 yields two forms for one intention**
+- [med] S613L1 — she might come: 可能来 vs 可能会来@456 → **consolidate to 可能会来 (established at S456) — 'she might come' should map consistently**
+- [med] S614L3 — near here 离这里很近 vs 这里附近@S390 → **consolidate to 这里附近 (established S390 form for 'near here')**
+- [med] S623L3 — which one do you want? 你要这个还是那个 vs 你想要哪个@S492 → **consolidate to 你想要哪个 (established S492 'which one do you want')**
+- [med] S625L1 — some -> 点什么 vs 一些 (S350) → **differentiate the English: 'some' -> 一些 (S350) established; 点什么 = 'a little something', re-gloss it not as bare 'some'**
+- [med] S625L1 — a bit -> 点 vs 有点 (S39) → **differentiate the English: 有点 (S39) = 'a bit (adverbial)' vs 点 measure; same gloss 'a bit' -> two targets**
+- [med] S635L2 — put it in the bag 放进包里 vs 把它放进包里@S53 → **consolidate to 把它放进包里 (established S53 form with 把它 'put it')**
+- [med] S638L1 — to think 想 vs 觉得 (S41) → **differentiate the English; 想='to think/want (cogitate)' vs 觉得='to think (feel/opinion)'**
+- [med] S639L1 — zut 'with you' 和你 vs 跟你@88 → **differentiate or consolidate: 和你 vs 跟你 both 'with you' — pick one or distinguish register**
+- [med] S642L1 — what would you like? nin vs ni @ S642 → **differentiate the English (e.g. 'what would you like (formal)') - nin vs ni (S631)**
+- [med] S643L1 — would you like 您想要(formal) vs 你想(S222) → **differentiate the English (e.g. 'would you like (formal/polite)') so the 您 register is signalled; same English 'would you like to try' otherwise maps to two targets**
+- [med] S643L1 — do you want 您想要(formal) vs 你想要(S631) → **differentiate the English to mark formality (e.g. 'what would you like (formal)') vs 你想要 at S631**
+- [med] S644L1 — phrase_known 'she came again' 她再来了 vs 她又来了@546 → **consolidate to 她又来了 (established at S546) — 又 is the realized-repetition form for completed 'came again'**
+- [med] S645L1 — let me help you: 帮你 vs 帮助你@573 → **consolidate to one of 帮/帮助 for 'help [someone]' — 'let me help you' maps to both 让我帮你 and 让我帮助你**
+- [med] S646L1 — 'what are you doing right now?' 你正在做什么 vs 你现在在做什么@375 → **consolidate to S375 form (你现在在做什么) — same English question mapped to two progressive renderings (正在 vs 现在...在)**
+- [med] S647L1 — he works very hard 他工作得很努力 vs 他很努力工作@491 → **differentiate or consolidate: same English 'he works very hard' has two competing word-orders (得-complement vs adverbial); pick one canonical target per the pair-contract**
+- [med] S647L1 — he works very hard 他工作得很努力 vs 他工作很努力@610 → **consolidate: same English 'he works very hard' has 3 competing forms (this, S491, S610); converge to one canonical target**
+- [med] S651L1 — how 怎么样 vs 怎么 (S40) → **consolidate/differentiate: 怎么 and 怎么样 both gloss 'how'; clarify 怎么='how (do)' vs 怎么样='how (about/state)'**
+- [med] S652L1 — zut 'need' 需要 vs 要@97 → **differentiate: 需要='need' vs 要='want/will' — 要 should be glossed 'want' to break the 'need' collision**
+- [med] S653L1 — I don't mind at all -> 我一点都不介意 vs 我一点也不介意 (S191) → **consolidate to S191 form 我一点也不介意 (established earlier); 都/也 variant for same 'at all' intention**
+- [med] S653L1 — I don't mind at all -> 我一点都不介意 vs 我完全不介意 (S540) → **differentiate the English: 我完全不介意 = 'I completely don't mind' vs 我一点都不介意 'not at all'; consolidate or re-gloss one**
+- [med] S653L1 — do you mind? -> 介意吗？ vs 你介意吗？ (S540) → **consolidate to 你介意吗？(S540, includes subject 你); bare 介意吗？ drops the subject for same intention**
+- [med] S661L1 — 'what are you doing now?' 你正在做什么 vs 你现在在做什么(S642) → **consolidate to one progressive form (prefer established 你现在在做什么 at S642) OR differentiate the English; same 'what are you doing now?' maps to two targets**
+- [med] S662L1 — phrase_known 'she speaks very well' 她说得很好 vs 她会说得很好@285 → **differentiate the English — 她会说得很好 has 会 ('can/will'); for plain 'she speaks very well' drop 会, consolidate to 她说得很好**
+- [med] S664L1 — are you ready?: 准备好了吗 vs 准备好吗@88 → **consolidate 'are you ready?' to one form — 你准备好吗 (S88) vs 你准备好了吗 (here) differ by 了**
+- [med] S665L1 — 'do you all want to try?' 你们想试试吗 vs 你们想要试试吗@658 → **differentiate the English or align: same 'do you all want to try?' maps to 想 here and 想要 at S658 — pick one rendering for the question**
+- [low] S508L1 — zut 'there's no need to worry' 没有必要担心 vs 没必要担心@354 → **consolidate to 没必要担心 (established S354); 没有必要/没必要 free variants — pick one**
+- [low] S526L1 — try to guess shi-zhe-cai vs shi-shi-cai @ S526 → **consolidate to established S12 form**
+- [low] S556L2 — zut 'I put it there' 我放在那里了 vs 我把它放在那里@545 → **consolidate the 把-construction: same English maps to 把-marked vs unmarked; standardize on 把它放 form (S545)**
+- [low] S611L1 — ready to go: 准备去 vs 准备好走(S95) → **differentiate or consolidate; 准备去 vs 准备好走 both 'ready to go'**
+- [low] S642L1 — thank you very much fei-chang-xie-xie-nin vs fei-chang-gan-xie @ S642 → **consolidate to established fei-chang-gan-xie (S73) or differentiate (formal)**
+- [low] S642L1 — please sit down nin-qing-zuo vs qing-zuo-xia-lai @ S642 → **differentiate the English (mark formal) or consolidate to qing-zuo-xia-lai (S500)**
+
+## metadata_gloss — 19 real
+
+- [med] S411L2 — lego_known 'a table (measure word)' 一张 → **re-gloss 一张 to a producible intention e.g. 'a (flat-object measure: table/sheet/ticket)' or just 'a table'; strip the bare '(measure word)' label**
+- [med] S441L2 — lego 一种 glossed 'a (type/kind) measure word' → **re-gloss 一种 to a producible intention e.g. 'a kind of / a type of'**
+- [med] S478L1 — measure word for small round items ke → **re-gloss ke to a producible intention e.g. 'a (pill/bead/star)' bound to a concrete noun, or upchunk**
+- [med] S488L2 — measure word for long thin objects → 条 → **re-gloss 条 to a producible intention, e.g. 'a [long thin thing] / a strip / a line'**
+- [med] S505L1 — passive marker (bei) 被 → **re-gloss 被 to a producible intention, e.g. upchunk into a whole-thought passive M-LEGO (e.g. 被+verb 'to get [done to]') rather than the bare grammar label**
+- [med] S514L2 — measure word for buildings 所 → **re-gloss 所 to a producible intention e.g. 'one [building/house]' or upchunk into a whole-thought**
+- [med] S522L2 — 吧 'suggestion / softening particle' → **re-gloss 吧 to a producible intention e.g. '...okay? / let's / shall we (softener)'**
+- [med] S533L2 — lego 句 'sentence / spoken phrase (measure word)' → **re-gloss 句: strip '(measure word)' note — gloss as 'a line/utterance (of speech)' a producible intention, or upchunk into a counting M-LEGO**
+- [med] S545L2 — object marker (ba) 把 → **re-gloss 把 to a producible intention, e.g. upchunk into a whole-thought M-LEGO 把X拿走 'take X away' / 'take (object)'**
+- [med] S546L1 — 只 glossed 'measure word for animals' → **re-gloss 只 to a producible intention e.g. 'one [animal] / a (cat/dog)' shown with a noun, or upchunk into 一只猫 etc.**
+- [med] S549L1 — lego_known 'have to / must (de)' 得 → **re-gloss 得: strip the '(de)' phonetic note — keep producible 'have to / must'**
+- [med] S551L1 — measure word for buildings/mountains 座 → **re-gloss 座 to a producible intention, e.g. upchunk into 'one (building/mountain)' or a whole-thought M-LEGO like 那座山 'that mountain'**
+- [med] S567L2 — watching/gazing (progressive aspect) kan-zhe → **re-gloss kan-zhe to a producible intention e.g. 'watching / looking at'; strip the '(progressive aspect)' grammar note**
+- [med] S574L2 — 对 glossed 'for the purpose of / to / toward (object marker)' → **re-gloss 对 to a producible intention, e.g. 'toward / to (someone)' and strip '(object marker)' grammar note; or upchunk into a whole-thought phrase like 'nice to (someone)'**
+- [med] S622L2 — disposal marker / to take / put 把 → **re-gloss 把: keep producible part ('to take/put hold of') or upchunk into a whole-thought 把-construction M-LEGO; drop the bare 'disposal marker' label**
+- [med] S632L1 — 杯 'cup / glass (measure word)' → **re-gloss 杯 to a producible intention e.g. 'cup / glass' (strip the '(measure word)' parenthetical)**
+- [med] S644L2 — 遍 'time / occurrence (measure word)' → **re-gloss 遍 to a producible intention e.g. 'time(s) through / read-through' (strip '(measure word)')**
+- [med] S646L1 — lego 正在 glossed 'currently / in the process of (progressive)' → **re-gloss 正在 to a producible intention e.g. 'currently doing / in the middle of doing'; strip the '(progressive)' grammar label**
+- [med] S647L1 — 得 glossed 'degree particle (how one does something)' → **re-gloss 得 to a producible intention e.g. upchunk into a whole-thought M-LEGO like 说得很好 '(says it) well' / 跑得快 'runs fast'**
+
+## known_side — 261 real
+
+- [med] S352L2 — 'he told me he couldn't manage it' — could@432 → **defer or re-gloss 'could' (introduced S432, used at S352)**
+- [med] S354L1 — 'appear' in 'no need to appear like that' → **defer or re-gloss 'appear' (first introduced S538, after S354)**
+- [med] S354L2 — appear angry — 'appear' first @538 → **defer or re-gloss 'appear' (introduced S538, used here at S354)**
+- [med] S354L2 — didn't need to appear angry — 'appear' @538 → **defer or re-gloss 'appear' (S538 > S354)**
+- [med] S354L2 — he didn't need to appear angry — 'appear' @538 → **defer or re-gloss 'appear' (S538 > S354)**
+- [med] S357L1 — phrase_known='just wanted to send' — send → **defer or re-gloss 'send' (introduced S493, used at S357)**
+- [med] S357L1 — 'no she just wanted to send her a message' — send → **defer or re-gloss 'send' (introduced S493, used at S357)**
+- [med] S357L1 — 'no she just wanted to send her a message' — message → **defer or re-gloss 'message' (introduced S511, used at S357)**
+- [med] S362L1 — rather (unknown) → **re-gloss: drop 'rather' (not in controlled vocab)**
+- [med] S362L1 — sad until 548 → **defer or re-gloss 'sad' (introduced S548, used at S362)**
+- [med] S365L1 — 'I couldn't hear clearly what he was saying' — could@432 → **defer or re-gloss 'could' (introduced S432, used at S365)**
+- [med] S366L1 — food @ she wants to grow her own food → **defer or re-gloss 'food'**
+- [med] S374L1 — 'yes I thought it was very beautiful' — thought → **defer or re-gloss 'thought' (introduced S492, used at S374)**
+- [med] S379L2 — could until 432 → **defer or re-gloss 'could' (introduced S432, used at S379)**
+- [med] S380L1 — 'we need to include everyone' — everyone@396 → **defer or re-gloss 'everyone' (introduced S396, used at S380)**
+- [med] S390L1 — 'she told me she lives nearby' — lives → **defer or re-gloss 'lives' (live introduced S483, used at S390)**
+- [med] S392L3 — unknown 'whose' in 'nobody knew whose child it was' → **defer or re-gloss 'whose' (who introduced at S235 > 392; possessive 'whose' itself never taught) — re-gloss e.g. 'whose=of whom'**
+- [med] S393L1 — nice in 'she's wearing something nice' → **re-gloss: drop/swap 'nice' (not in controlled vocab)**
+- [med] S393L2 — 'that's a very nice green' — nice → **re-gloss: drop/swap 'nice' (untaught) — e.g. 'good'/'lovely'**
+- [med] S394L1 — 'nice' in 'that's a very nice yellow' → **re-gloss: drop/swap 'nice' (not in controlled vocab)**
+- [med] S394L1 — 'prefer' in 'do you prefer green or yellow?' → **re-gloss: drop/swap 'prefer' (not in vocab) — use 'like... more'**
+- [med] S394L2 — I love that yellow dress — 'love' @426 → **defer or re-gloss 'love' (S426 > S394)**
+- [med] S396L1 — until @ we don't need to wait until everyone is ready → **re-gloss: drop/swap 'until'**
+- [med] S398L1 — our in 'be more patient with our children' → **re-gloss: swap 'our' (not in controlled vocab) or use taught possessive**
+- [med] S399L1 — job in 'nobody wants to lose their job' → **defer or re-gloss 'job' (first at S610 >> 399); use a known noun or rephrase**
+- [med] S401L1 — 'tonight' in go straight home tonight → **defer or re-gloss 'tonight' (not in introduced vocab; use 'this evening' — evening@18 + this@18, or 'tonight' via taught parts)**
+- [med] S402L1 — nice @ S402 → **re-gloss: drop/swap 'nice' (use 'good' at S13)**
+- [med] S405L1 — advance @ book in advance → **defer or re-gloss 'advance'**
+- [med] S405L1 — advance @ can we book in advance? → **defer or re-gloss 'advance'**
+- [med] S405L1 — tonight @ I need to book for tonight → **re-gloss: swap 'tonight' (use night/evening)**
+- [med] S407L2 — 'habits' in 'she managed to establish good habits' → **re-gloss: drop/swap 'habits' (not in vocab); note target uses 好的东西 not 'habits' anyway**
+- [med] S407L2 — 'habits' in 'everyone should try to establish good habits' → **re-gloss: drop/swap 'habits' (not in vocab)**
+- [med] S407L2 — 'habits' in 'let's try to establish good habits' → **re-gloss: drop/swap 'habits' (not in vocab)**
+- [med] S407L2 — 'habits' in 'he wasn't able to establish good habits' → **re-gloss: drop/swap 'habits' (not in vocab)**
+- [med] S408L1 — situation @ a happy situation → **re-gloss: drop 'situation' (target 幸福地生活 means 'live happily', not 'a happy situation')**
+- [med] S408L1 — live @ live happily → **defer or re-gloss 'live' (introduced at S483 > 408)**
+- [med] S408L1 — deserves @ everyone deserves happiness → **re-gloss: drop/swap 'deserves' (use 'should have')**
+- [med] S408L2 — build not introduced until 514 (build a family) → **defer or re-gloss 'build' (establish @S332)**
+- [med] S408L2 — best (yes that's the best way to make a happy family) → **re-gloss: drop superlative 'best' (only 'better' @S29 taught)**
+- [med] S408L2 — building not introduced until 514 → **defer or re-gloss 'building' (establish @S332)**
+- [med] S408L2 — build not introduced until 514 (I want to build a happy family) → **defer or re-gloss 'build' (establish @S332)**
+- [med] S408L2 — best (a good family is the best thing) → **re-gloss: drop superlative 'best'**
+- [med] S410L1 — 'they didn't trust each other' — trust → **defer or re-gloss 'trust' (introduced S490, used at S410)**
+- [med] S410L1 — 'we need to support each other' — support → **re-gloss: drop/swap 'support' (never introduced); target uses 帮助=help so gloss as 'help'**
+- [med] S410L1 — 'I think we should respect each other' — respect → **defer or re-gloss 'respect' (introduced S428, used at S410); target is 帮忙=help anyway**
+- [med] S411L2 — tonight in 'reserve a table for four tonight' → **re-gloss: drop/swap 'tonight' (not in controlled vocab; only 'night'@42 exists)**
+- [med] S411L2 — please in 'please give us one table' → **re-gloss: drop 'please' (never introduced)**
+- [med] S411L2 — available in 'is there one table available?' → **re-gloss: drop/swap 'available' (never introduced)**
+- [med] S412L1 — 'could' in we couldn't allow them to win → **defer or re-gloss 'could' (introduced S432 > 412)**
+- [med] S412L1 — 'them' in we couldn't allow them to win → **defer or re-gloss 'them' (introduced S429 > 412)**
+- [med] S412L1 — 'could' in nobody could win everything → **defer or re-gloss 'could' (introduced S432 > 412)**
+- [med] S413L3 — could until 432 → **defer or re-gloss 'could' (introduced S432, used at S413)**
+- [med] S413L3 — careful until 565 → **defer or re-gloss 'careful' (introduced S565, used at S413)**
+- [med] S413L3 — almost until 449 → **defer or re-gloss 'almost' (introduced S449, used at S413)**
+- [med] S414L1 — please in 'one bottle please' → **re-gloss: drop 'please' (not in controlled vocab)**
+- [med] S414L1 — please in 'please give me a bottle' → **re-gloss: drop 'please' (not in controlled vocab)**
+- [med] S414L2 — 'could we have a bottle of red wine please?' — could@432 → **defer or re-gloss 'could' (introduced S432, used at S414)**
+- [med] S414L2 — 'could we have a bottle of red wine please?' — please → **re-gloss: drop 'please' (untaught)**
+- [med] S414L2 — 'she said she prefers red wine' — prefers → **re-gloss: swap 'prefers' (untaught) — e.g. 'likes ... more' (更喜欢)**
+- [med] S415L1 — thought @ nobody thought that was a problem → **defer or re-gloss 'thought'**
+- [med] S417L2 — there are ants everywhere — 'everywhere' → **re-gloss: drop/swap 'everywhere' (not in controlled vocab)**
+- [med] S418L2 — everybody not introduced until 424 (everybody should serve the community) → **defer or re-gloss 'everybody' (introduced S424)**
+- [med] S421L1 — lately in 'feeling tired lately' → **re-gloss: swap 'lately' for taught 'recently' (S648) is also late; use a taught time word**
+- [med] S425L2 — 'to understand / comprehend' — comprehend → **re-gloss: drop 'comprehend' (untaught) — keep 'understand'/'really understand'**
+- [med] S426L2 — truly (truly in love) → **defer or re-gloss 'truly' (introduced S576 > 426)**
+- [med] S426L2 — unhappy (it's hard to be in love when unhappy) → **defer or re-gloss 'unhappy' (introduced S548 > 426)**
+- [med] S427L1 — nobody wants to be thought of as boring — 'thought' @492 → **defer or re-gloss 'thought' (S492 > S427)**
+- [med] S434L2 — fewer in 'recruit fewer' → **re-gloss: swap 'fewer' (never introduced; only 'less'@256, 'least'@479) — but those are >434 too; rephrase**
+- [med] S434L2 — fewer in 'I think they should recruit fewer' → **re-gloss: swap 'fewer' (never introduced)**
+- [med] S434L2 — fewer in 'they agreed to recruit fewer' → **re-gloss: swap 'fewer' (never introduced)**
+- [med] S441L2 — 'proposed' in 'she proposed a new approach' → **re-gloss: drop/swap 'proposed' (propose introduced S604, after S441)**
+- [med] S443L2 — decided (she decided to continue) → **defer or re-gloss 'decided' (decide @S438)**
+- [med] S446L1 — through in 'break through' → **defer or re-gloss 'through' (introduced S548)**
+- [med] S446L1 — through in 'let's try to break through' → **defer or re-gloss 'through' (introduced S548)**
+- [med] S446L1 — through in 'he managed to break through' → **defer or re-gloss 'through' (introduced S548)**
+- [med] S446L2 — please in 'please open the window' → **re-gloss: drop 'please' (never introduced)**
+- [med] S447L3 — 'offered' not introduced until 604 → **defer or re-gloss 'offered' (offer first at S604 > 447) — e.g. rephrase 'nobody wanted to take us'**
+- [med] S450L2 — themselves @ no they have to catch the train themselves → **defer or re-gloss 'themselves'**
+- [med] S450L2 — miss @ let's hurry or we'll miss the train → **defer or re-gloss 'miss'**
+- [med] S454L1 — our @ our friends came round at about six o'clock → **re-gloss: swap 'our' (possessive of we not introduced; use already-taught pronoun)**
+- [med] S455L1 — easily (I get tired easily) → **re-gloss: drop/swap 'easily'**
+- [med] S457L3 — unknown 'large' in 'the quantity is too large' → **re-gloss: swap 'large' (untaught; 'big'@420 available but 'large' not in vocab) — e.g. use 'big'**
+- [med] S457L3 — unknown 'large' in 'the number of fields is large' → **re-gloss: swap 'large' for 'big' (large untaught; big@420)**
+- [med] S460L1 — 'a shop near the hotel' — hotel → **re-gloss: swap 'hotel' (untaught)**
+- [med] S460L1 — 'I want to find a shop near the hotel' — hotel → **re-gloss: swap 'hotel' (untaught)**
+- [med] S462L4 — NPI 'anyone' in 'do you know anyone in Italy?' → **add negation or re-gloss: 'anyone' in a question is an NPI but no negation; question-licensing is weaker — recommend re-gloss to 'someone' or confirm question-NPI policy**
+- [med] S464L1 — anyway (she forgot it but came anyway) → **re-gloss: drop/swap 'anyway'**
+- [med] S467L1 — 'hotel' in the car park is near the hotel → **re-gloss: drop/swap 'hotel' (not in introduced vocab)**
+- [med] S467L2 — hotel @ S467 → **re-gloss: drop/swap 'hotel' (untaught noun)**
+- [med] S469L1 — 'wrong' not introduced until 535 in 'it doesn't mean she's wrong' → **defer or re-gloss 'wrong' (first at S535 > 469) — e.g. 'she's not right'**
+- [med] S472L1 — 'nobody wants to face the facts' — face@568 → **defer or re-gloss 'face' (introduced S568, used at S472)**
+- [med] S476L2 — 'i'll wait until it ends' — until → **re-gloss: drop/swap 'until' (never introduced)**
+- [med] S477L1 — through in 'worked through the whole holiday' → **defer or re-gloss 'through' (introduced S548)**
+- [med] S478L3 — such until 615 → **defer or re-gloss 'such' (introduced S615, used at S478)**
+- [med] S481L1 — option @ I have only one option → **re-gloss: swap 'option' (use choice S116)**
+- [med] S481L3 — 'option' in 'that's the only real option' → **re-gloss: drop/swap 'option' (not in vocab) — use 'choice' (choice@116)**
+- [med] S483L1 — daily @ daily life → **re-gloss: drop 'daily' (target 生活的事 = 'matters of life', no 'daily')**
+- [med] S483L1 — meant @ life isn't easy but it's not meant to be easy → **re-gloss: drop/swap 'meant to' (mean:263 introduced after seed 483; sense is 'supposed to')**
+- [med] S483L2 — meant (not meant to be easy) → **re-gloss: drop/swap 'meant' (idiomatic, not mean@263)**
+- [med] S483L2 — meant (life isn't easy but it's not meant to be easy) → **re-gloss: drop/swap 'meant'**
+- [med] S485L1 — makes in 'makes me happy' → **defer or re-gloss 'makes' (causative 'makes' introduced S575)**
+- [med] S485L1 — makes in 'that makes me very happy' → **defer or re-gloss 'makes' (causative introduced S575)**
+- [med] S487L1 — unknown 'under' in 'under the bridge' → **re-gloss: swap 'under' (untaught; 'below'@465 available) — e.g. use 'below the bridge'**
+- [med] S487L1 — unknown 'under' in 'it's under the bridge' → **re-gloss: swap 'under' for 'below'@465 (under untaught)**
+- [med] S487L1 — unknown 'crossed' in 'she crossed the bridge' → **re-gloss: swap 'crossed/cross' (cross verb untaught; 'across'@392 is the adverb only) — e.g. 'went across the bridge'**
+- [med] S487L1 — unknown 'cross' in 'we need to cross the bridge' → **re-gloss: swap 'cross' (verb untaught) — e.g. 'go across'**
+- [med] S488L3 — crossed in 'she crossed the yellow line' → **re-gloss: drop/swap 'cross/crossed' (verb not in controlled vocab; only 'across' S392)**
+- [med] S488L3 — cross in 'don't cross the line' → **re-gloss: drop/swap 'cross' (verb not in controlled vocab)**
+- [med] S488L3 — cross in 'she said don't cross that yellow line' → **re-gloss: drop/swap 'cross' (verb not in controlled vocab)**
+- [med] S488L2 — rope (unknown) → **re-gloss: drop 'rope' (not in controlled vocab)**
+- [med] S488L2 — crossed (unknown) → **re-gloss: drop/swap 'crossed' (cross not in vocab)**
+- [med] S488L2 — cross (unknown) → **re-gloss: drop/swap 'cross' (not in vocab)**
+- [med] S489L1 — cup @ a cup of coffee → **defer or re-gloss 'cup'**
+- [med] S489L1 — cup @ can I have a cup of coffee? → **defer or re-gloss 'cup'**
+- [med] S491L1 — best @ I do try my best → **re-gloss: drop/swap 'best'**
+- [med] S492L1 — best in 'which one is best' → **re-gloss: swap 'best' (never introduced; only 'better'@29, 'good'@13)**
+- [med] S496L2 — 'I hate losing' — hate@503 → **defer or re-gloss 'hate' (introduced S503, used at S496)**
+- [med] S499L2 — please close the window — 'please' → **re-gloss: drop/swap 'please' (not in controlled vocab)**
+- [med] S500L1 — please @ please sit down → **re-gloss: drop 'please' (target 请 polite-please not glossed/introduced)**
+- [med] S500L2 — nice (she's a nice girl) → **re-gloss: swap 'nice' for 'good' (好)**
+- [med] S501L2 — please in 'please don't argue' → **re-gloss: drop/swap 'please' (not in controlled vocab)**
+- [med] S502L3 — please @ S502 → **re-gloss: drop/swap 'please' (untaught)**
+- [med] S502L4 — unknown 'instead' in 'turned left instead of right' → **re-gloss: drop/rephrase 'instead' (untaught) — e.g. 'turned left, not right'**
+- [med] S508L2 — figure in 'figure out how to pay' → **re-gloss: swap 'figure out' (not in vocab; use taught 'find out'@S101 / 'fix'@S146 / 'understand'@S49)**
+- [med] S512L2 — 'fetch' in 'can you hold the door open while I fetch the keys?' → **re-gloss: drop/swap 'fetch' (not in vocab) — use 'get' (get@22)**
+- [med] S512L2 — 'please' in 'please open this for me' → **re-gloss: drop 'please' (not in vocab)**
+- [med] S513L1 — please look up — 'please' → **re-gloss: drop/swap 'please' (not in controlled vocab)**
+- [med] S518L3 — issue @ S518 → **re-gloss: swap 'issue' for 'problem' (S134)**
+- [med] S518L4 — 'exactly' not introduced until 646 in 'exactly the same problem' → **defer or re-gloss 'exactly' (first at S646 > 518) — e.g. 'completely the same'**
+- [med] S518L4 — 'wrong' not introduced until 535 in 'that's completely wrong' → **defer or re-gloss 'wrong' (first at S535 > 518) — e.g. 'completely not right'**
+- [med] S518L4 — 'exactly' not introduced until 646 in 'that's exactly the same' → **defer or re-gloss 'exactly' (first at S646 > 518)**
+- [med] S518L4 — 'exactly' not introduced until 646 in 'imagine myself having exactly the same problem' → **defer or re-gloss 'exactly' (first at S646 > 518)**
+- [med] S518L5 — exactly until 646 → **defer or re-gloss 'exactly' (introduced S646, used at S518)**
+- [med] S520L3 — NPI anyone (can that happen to anyone?) → **add negation or re-gloss — 'anyone' in a question without negation is an unlicensed NPI/ambiguous**
+- [med] S522L2 — shall @ shall we? → **re-gloss: drop/swap 'shall' (use 'let's ...?' or 'okay?')**
+- [med] S522L3 — wrong not introduced until 535 (is it wrong to tell the truth?) → **defer or re-gloss 'wrong' (introduced S535)**
+- [med] S523L1 — 'instead of an excuse' — instead → **re-gloss: drop/swap 'instead' (never introduced)**
+- [med] S523L1 — 'instead of giving an excuse' — instead → **re-gloss: drop/swap 'instead' (never introduced)**
+- [med] S527L3 — funny in 'guess who told me that funny story' → **re-gloss: drop/swap 'funny' (not in controlled vocab; 'amusing' S527 is a different lexeme)**
+- [med] S527L3 — funny in 'he told me a very funny story' → **re-gloss: drop/swap 'funny' (not in controlled vocab)**
+- [med] S527L1 — unknown 'funny' in 'very funny' → **re-gloss: swap 'funny' (untaught; the LEGO is 'interesting/fun/amusing') — use 'amusing'/'fun'**
+- [med] S527L1 — unknown 'funny' in 'a funny one' → **re-gloss: swap 'funny' for 'amusing' (funny untaught)**
+- [med] S527L2 — funny (unknown) → **re-gloss: swap 'funny' (not in vocab; amusing@527/fun@64 exist)**
+- [med] S527L2 — funny (I heard) → **re-gloss: swap 'funny' (not in vocab)**
+- [med] S528L1 — 'the room is very nice' — nice → **re-gloss: drop/swap 'nice' (untaught) — e.g. 'good' (target 好)**
+- [med] S528L1 — 'i'm probably supposed to keep those things in another room' — probably → **re-gloss: swap 'probably' (untaught) — e.g. 'maybe' (maybe@456)**
+- [med] S533L1 — please @ please listen to me → **re-gloss: drop/swap 'please'**
+- [med] S533L1 — please @ I can't hear you, please speak → **re-gloss: drop/swap 'please'**
+- [med] S535L2 — 'job' not introduced until 610 in 'choose a job' → **defer or re-gloss 'job' (first at S610 > 535) — e.g. 'choose work'**
+- [med] S535L2 — unknown 'please' in 'please choose carefully' → **re-gloss: drop 'please' (untaught) — e.g. 'choose carefully'**
+- [med] S535L2 — 'job' not introduced until 610 in 'she chose that job' → **defer or re-gloss 'job' (first at S610 > 535) — e.g. 'work'**
+- [med] S535L3 — job until 610 → **defer or re-gloss 'job' (introduced S610, used at S535)**
+- [med] S535L3 — mistake until 617 → **defer or re-gloss 'mistake' (introduced S617; mistakes@46 exists though)**
+- [med] S535L3 — job until 610 (promised) → **defer or re-gloss 'job' (introduced S610, used at S535)**
+- [med] S538L1 — uncaring (I don't want to seem uncaring) → **re-gloss: drop/swap 'uncaring' (not in introduced vocabulary)**
+- [med] S539L3 — anymore (it's not early anymore) → **re-gloss: drop/swap 'anymore'**
+- [med] S541L1 — 'please go slowly' — please → **re-gloss: drop/swap 'please' (never introduced)**
+- [med] S541L2 — please in 'please breathe slowly' → **re-gloss: drop/swap 'please' (not in controlled vocab)**
+- [med] S549L2 — 'position' in she maintained her position → **re-gloss: drop/swap 'position' (not in introduced vocab)**
+- [med] S549L3 — please @ S549 → **re-gloss: drop/swap 'please' (untaught)**
+- [med] S556L2 — 'please put it here' — please → **re-gloss: drop/swap 'please' (never introduced)**
+- [med] S565L1 — please in 'please think more carefully' → **re-gloss: drop/swap 'please' (not in controlled vocab)**
+- [med] S566L1 — please in 'please think about it' → **re-gloss: drop 'please' (never introduced)**
+- [med] S567L4 — truly until 576 (truly lovely) → **defer or re-gloss 'truly' (introduced S576, used at S567)**
+- [med] S567L4 — truly until 576 (that's truly) → **defer or re-gloss 'truly' (introduced S576, used at S567)**
+- [med] S567L4 — truly until 576 (watching children) → **defer or re-gloss 'truly' (introduced S576, used at S567)**
+- [med] S573L2 — makes not introduced until 575 (makes the holidays) → **defer or re-gloss 'makes' (makes @S575)**
+- [med] S573L2 — please (please let me try) → **re-gloss: drop/swap 'please'**
+- [med] S574L2 — nice in 'she's nice to everyone' → **re-gloss: swap 'nice' (not in vocab; use taught 'good'@S13)**
+- [med] S574L2 — nice in 'nobody is nice to everyone' → **re-gloss: swap 'nice' (not in vocab; use taught 'good'@S13)**
+- [med] S586L1 — twenty @ twenty boiled eggs → **re-gloss: drop/swap 'twenty'**
+- [med] S586L1 — twenty @ I want twenty boiled eggs → **re-gloss: drop/swap 'twenty'**
+- [med] S586L1 — twenty @ nobody wants twenty boiled eggs → **re-gloss: drop/swap 'twenty'**
+- [med] S589L2 — seat @ S589 → **re-gloss: drop/swap 'seat' (untaught noun)**
+- [med] S596L1 — please (please close the window) → **re-gloss: drop/swap 'please'**
+- [med] S603L2 — 'nowhere to live' — nowhere → **re-gloss: swap 'nowhere' (untaught) — e.g. 'no place' (没有地方)**
+- [med] S604L1 — solution @ nobody offered a solution → **re-gloss: swap 'solution' (use way/method)**
+- [med] S608L3 — best in 'the best approach is to start early' → **re-gloss: swap 'best' (never introduced; only 'better'@29)**
+- [med] S613L2 — 'probably' in 'we probably would have bought a house there' → **re-gloss: drop/swap 'probably' (not in vocab) — note target uses 可能 ('maybe'@456); align gloss to 'maybe'**
+- [med] S613L2 — 'large' in 'the house is very large' → **re-gloss: swap 'large' for 'big' (big@420) — 'large' not in vocab**
+- [med] S615L2 — ahead (go ahead and say it) → **re-gloss: drop 'ahead' (idiom 'go ahead')**
+- [med] S615L3 — always @ she's always been like that → **re-gloss: drop/swap 'always'**
+- [med] S618L1 — 'describe' in the feeling is hard to describe → **re-gloss: drop/swap 'describe' (not in introduced vocab); note target uses 说 'say'**
+- [med] S623L4 — cup not introduced until 632 (cup of tea) → **defer or re-gloss 'cup' (cup @S632)**
+- [med] S623L4 — cup not introduced until 632 (do you want a cup of coffee or tea?) → **defer or re-gloss 'cup' (cup @S632)**
+- [med] S624L2 — 'yes, that would be great, please' — please → **re-gloss: drop/swap 'please' (never introduced)**
+- [med] S629L2 — unknown 'prefer' in 'I prefer it with milk' → **re-gloss: swap 'prefer' (untaught) — e.g. 'I like it with milk'**
+- [med] S630L1 — please in 'can I have something to drink please?' → **re-gloss: drop 'please' (not in controlled vocab)**
+- [med] S632L1 — please @ one more cup please → **re-gloss: drop 'please'**
+- [med] S633L1 — large (a large glass of water would be fine) → **re-gloss: swap 'large' (not in introduced vocab; use big@420)**
+- [med] S634L1 — 'prefers' in 'she prefers that one' → **re-gloss: drop/swap 'prefers' (prefer not in vocab) — use 'likes... more'**
+- [med] S635L2 — nice @ that's a nice bag → **re-gloss: swap 'nice' (target 好看 = 'good-looking'; use taught word)**
+- [med] S641L1 — 'please' in please sit on that chair → **re-gloss: drop/swap 'please' (not in introduced vocab); target 请 maps but English 'please' untaught**
+- [med] S642L1 — please @ S642 → **re-gloss: drop/swap 'please' (untaught)**
+- [med] S644L1 — 'please try again' — please → **re-gloss: drop 'please' (untaught)**
+- [med] S644L2 — please @ please read it one more time → **re-gloss: drop 'please'**
+- [med] S645L1 — NPI anyone (can anyone help?) → **add negation or re-gloss — 'anyone' in a positive question is an unlicensed NPI**
+- [med] S645L1 — always (i'm always happy to help) → **re-gloss: swap 'always' (not in introduced vocab)**
+- [med] S650L1 — shall (shall we go now?) → **re-gloss: swap 'shall' (use 'shall'→will or rephrase)**
+- [med] S655L1 — 'always' in she always does everything very well → **re-gloss: drop/swap 'always' (not in introduced vocab)**
+- [med] S668L2 — sometimes (we all need help sometimes) → **re-gloss: drop/swap 'sometimes'**
+- [low] S358L1 — could in 'couldn't reach the top' → **defer or re-gloss 'could' (introduced S432)**
+- [low] S358L1 — could in 'she couldn't reach the top' → **defer or re-gloss 'could' (introduced S432)**
+- [low] S358L2 — could in 'your friend said she couldn't reach the top' → **defer or re-gloss 'could' (first introduced S432 > 358); use 'can't' (can@9) or rephrase**
+- [low] S358L2 — could in 'she said she couldn't reach the top' → **defer or re-gloss 'could' (S432 > 358); 'can't' is available (can@9)**
+- [low] S358L2 — could in 'even if he wanted to, he couldn't reach the top' → **defer or re-gloss 'could' (S432 > 358); also 'even if' construction**
+- [low] S359L2 — could @ S359 → **defer or re-gloss 'could' (use 'can / be allowed to')**
+- [low] S359L2 — could @ S359 (stay) → **defer or re-gloss 'could' to 'can'**
+- [low] S363L1 — felt in 'yes he felt like talking a lot' → **defer or re-gloss 'felt': 'feel' not introduced until S343 (> 363)**
+- [low] S371L1 — could @ he said he could come on Wednesday → **defer or re-gloss 'could' (introduced S432)**
+- [low] S375L1 — right in 'what are you doing right now?' → **defer or re-gloss 'right' (introduced S387)**
+- [low] S390L2 — could in 'I couldn't find the entrance' → **defer or re-gloss 'could' (introduced S432)**
+- [low] S399L1 — their in 'nobody wants to lose their job' → **defer or re-gloss 'their' (first at S429 > 399); rephrase to avoid possessive**
+- [low] S402L1 — food @ S402 → **defer or re-gloss 'food' (introduced at S587)**
+- [low] S410L1 — 'everybody should help each other' — everybody → **defer or re-gloss 'everybody' (introduced S424, used at S410)**
+- [low] S411L1 — them in 'four of them' → **defer or re-gloss 'them' (introduced S429)**
+- [low] S413L1 — lives @ S413 → **defer or re-gloss 'lives' (live introduced at S483)**
+- [low] S413L1 — them @ S413 → **defer or re-gloss 'them' (introduced at S429)**
+- [low] S417L1 — 'them' in 'she said she didn't want to kill them' → **defer or re-gloss 'them' (introduced S429, after S417)**
+- [low] S417L1 — 'them' in 'I don't think we should kill them' → **defer or re-gloss 'them' (introduced S429, after S417)**
+- [low] S417L1 — 'thought' in 'he thought we should get rid of them' → **defer or re-gloss 'thought' (introduced S492, after S417)**
+- [low] S417L1 — 'them' in 'he thought we should get rid of them' → **defer or re-gloss 'them' (introduced S429, after S417)**
+- [low] S419L1 — them @ if they want people to like them → **defer or re-gloss 'them' (introduced S429)**
+- [low] S419L1 — everybody @ everybody wants people to like them → **defer or re-gloss 'everybody' (introduced S424)**
+- [low] S419L1 — them @ everybody wants people to like them → **defer or re-gloss 'them' (introduced S429)**
+- [low] S421L1 — everybody in 'everybody needs to care...' → **defer or re-gloss 'everybody' (introduced S424)**
+- [low] S423L1 — such @ S423 → **defer or re-gloss 'such' (introduced at S615)**
+- [low] S423L1 — thought @ S423 → **defer or re-gloss 'thought' (introduced at S492)**
+- [low] S426L3 — 'unhappy' in 'they would like to love each other but they're unhappy' → **defer or re-gloss 'unhappy' (introduced S548, after S426)**
+- [low] S428L2 — them @ I want to visit them → **defer or re-gloss 'them' (introduced at S429 > 428)**
+- [low] S433L1 — tonight in 'watch a film tonight' → **defer or re-gloss 'tonight' (compound not introduced; night@S42 + today@S7 exist but 'tonight' not glossed)**
+- [low] S434L4 — high @ S434 → **defer or re-gloss 'high' (introduced at S444)**
+- [low] S447L1 — 'dinner' in she said dinner is ready → **defer or re-gloss 'dinner' (introduced S587 > 447); use 'meal'/'food' for 饭**
+- [low] S447L1 — 'dinner' in he said dinner was good → **defer or re-gloss 'dinner' (introduced S587 > 447)**
+- [low] S462L4 — 'lived' in 'he lived in Italy for a long time' → **defer or re-gloss 'lived' (live introduced S483, after S462)**
+- [low] S466L1 — tall in 'the wall is very tall' → **defer or re-gloss 'tall' (introduced S470)**
+- [low] S466L1 — tall in 'that wall is very tall' → **defer or re-gloss 'tall' (introduced S470)**
+- [low] S475L2 — effort @ worth the effort → **defer or re-gloss 'effort' (introduced at S491 > 475)**
+- [low] S475L2 — thought @ nobody thought it was worth it → **defer or re-gloss 'thought' (introduced at S492 > 475)**
+- [low] S477L3 — 'beginning' in I got sick at the beginning → **defer or re-gloss 'beginning' (introduced S602 > 477); use 'start'@23**
+- [low] S484L2 — 'meant to be a challenge' — meant → **re-gloss idiom 'meant to be' to 'supposed to be' (mean@263 taught but idiomatic use unlicensed)**
+- [low] S484L2 — 'it's meant to be a challenge' — meant → **re-gloss idiom 'meant to be' to 'supposed to be' (mean@263 taught but idiomatic use)**
+- [low] S485L2 — makes in 'nothing makes me happier' → **defer or re-gloss 'makes' (first at S575 > 485); make introduced at 575 per flag**
+- [low] S489L3 — 'cup' in 'if you don't make me a strong cup of coffee right now' → **defer or re-gloss 'cup' (introduced S632, after S489)**
+- [low] S493L1 — step @ S493 → **defer or re-gloss 'step' (introduced at S568)**
+- [low] S513L2 — pain @ i'm in pain → **re-gloss: use 'it hurts' (pain noun not introduced; painful:513/ache:513 present as adj/verb)**
+- [low] S516L1 — herself in 'she did it herself' → **defer or re-gloss 'herself' (not in vocab; reflexives myself@173/yourself@65/themselves@516 exist but not herself)**
+- [low] S516L1 — himself in 'he said he came by himself' → **defer or re-gloss 'himself' (not in vocab)**
+- [low] S542L1 — 'makes' in whenever he makes a promise → **defer or re-gloss 'makes' (introduced S575 > 542); use 'make'@46 — actually make@46 exists**
+- [low] S547L1 — 'i've always thought so' — always → **re-gloss: drop/swap 'always' (never introduced); target 一直以为 fits 'all along' gloss**
+- [low] S557L2 — 'such' in such loud → **defer or re-gloss 'such' (introduced S615 > 557)**
+- [low] S557L2 — 'such' in such loud music → **defer or re-gloss 'such' (introduced S615 > 557)**
+- [low] S573L4 — '...makes the holidays very special' — makes → **defer or re-gloss 'makes' (introduced S575, used at S573)**
+- [low] S580L2 — warmer @ a little warmer → **re-gloss: warmer (warm S578 > S580, so comparative untaught here)**
+- [low] S580L2 — warmer @ we've often wanted to take the children somewhere a little warmer → **re-gloss: comparative 'warmer' (base warm S578)**
+- [low] S580L2 — warmer @ I want to go somewhere a little warmer → **re-gloss: comparative 'warmer' (base warm S578)**
+- [low] S580L2 — quieter @ she wants it to be a little quieter → **re-gloss: comparative 'quieter' (base quiet S34)**
+- [low] S606L2 — recently @ I learned all these things recently → **defer or re-gloss 'recently' (introduced at S648 > 606)**
+- [low] S615L4 — 'it takes courage to say that' — courage → **defer or re-gloss 'courage' (introduced S621, used at S615)**
+- [low] S618L2 — exactly @ S618 → **defer or re-gloss 'exactly' (introduced at S646)**
+- [low] S644L2 — twice @ she watched it two times → **re-gloss: swap 'twice' (use 'two times')**
+
+## frame_coverage — 1 real
+
+- [low] S529L2 — 举起来 3 USE phrases share Ⓟ把手◇了 → **vary the frame across the 3 USE phrases (question/negation/time/embedding) not just the slot filler**
+
+## Coverage note
+- Batches: b0:88/87 b1:106/96 b2:103/95 b3:87/85 b4:96/91 b5:99/90 b6:82/81 b7:92/88 b8:84/78 b9:93/91 b10:74/73 b11:117/99 b12:83/79 b13:109/110 b14:87/84 b15:99/93
+- Adjudicated 1499 of 1499 raw (0 not returned — re-run those batches if completeness matters).
