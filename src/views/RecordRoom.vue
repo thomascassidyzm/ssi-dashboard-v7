@@ -88,7 +88,7 @@
           </div>
 
           <section class="room-studio">
-            <PodDialogueStudio
+            <PodLongTakeStudio
               :course-code="courseCode"
               :voice-id="podVoiceId"
               @progress="dialogueProgress = $event"
@@ -172,7 +172,10 @@ import { useAutocueState } from '@/composables/useAutocueState'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { getApiUrl } from '@/services/api'
 import AutocueStudio from '@/components/production/autocue/AutocueStudio.vue'
-import PodDialogueStudio from '@/components/production/autocue/PodDialogueStudio.vue'
+// Dialogue mode uses the long-take recorder: one continuous lossless take,
+// tap-to-advance autocue, sliced per line into the proven upload pipeline.
+// (PodDialogueStudio — the older per-line VAD studio — remains in the repo.)
+import PodLongTakeStudio from '@/components/production/autocue/PodLongTakeStudio.vue'
 
 const props = defineProps({
   courseCode: { type: String, default: null }
