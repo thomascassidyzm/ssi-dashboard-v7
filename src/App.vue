@@ -2,9 +2,10 @@
   <AppNavbar />
   <router-view />
 
-  <!-- Light/dark theme toggle (prototype). Floats so it's reachable on every page. -->
+  <!-- Light/dark theme toggle. Floats top-right so it's reachable on every page incl. login. -->
   <button class="theme-toggle" type="button" @click="toggleTheme" :title="`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`">
-    {{ theme === 'light' ? '🌙' : '☀️' }}
+    <span class="theme-toggle__icon">{{ theme === 'light' ? '🌙' : '☀️' }}</span>
+    <span class="theme-toggle__label">{{ theme === 'light' ? 'Dark' : 'Light' }} mode</span>
   </button>
 
   <div class="build-label">
@@ -33,20 +34,23 @@ function toggleTheme() {
   position: fixed;
   top: 12px;
   right: 12px;
-  width: 38px;
-  height: 38px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  gap: 7px;
+  height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
   border-radius: 9999px;
   border: 1px solid var(--line);
   background: var(--surface);
+  color: var(--ink);
   cursor: pointer;
   z-index: 10000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 .theme-toggle:hover { background: var(--surface-2); }
+.theme-toggle__icon { font-size: 15px; line-height: 1; }
 
 .build-label {
   position: fixed;
