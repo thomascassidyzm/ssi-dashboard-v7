@@ -6,13 +6,13 @@
         class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
         @click.self="close"
       >
-        <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+        <div class="modal-content bg-surface rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
           <!-- Header -->
-          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700">
-            <h3 class="text-lg font-semibold text-white">{{ mode === 'lego' ? 'Edit LEGO' : 'Edit Phrase' }}</h3>
+          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-line">
+            <h3 class="text-lg font-semibold text-ink">{{ mode === 'lego' ? 'Edit LEGO' : 'Edit Phrase' }}</h3>
             <button
               @click="close"
-              class="text-slate-400 hover:text-white transition-colors"
+              class="text-muted hover:text-ink transition-colors"
               title="Close (Esc)"
             >
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,28 +25,28 @@
           <div class="modal-body px-6 py-4 space-y-4">
             <!-- Known Text Field -->
             <div class="known-text-field space-y-2">
-              <label for="known-text" class="block text-sm font-medium text-slate-300">
+              <label for="known-text" class="block text-sm font-medium text-ink">
                 Known Text
               </label>
               <textarea
                 id="known-text"
                 v-model="localKnownText"
                 rows="2"
-                class="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
+                class="w-full px-3 py-2 bg-surface-2 border border-line rounded-lg text-ink placeholder-muted focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
                 placeholder="Enter known language text..."
               />
             </div>
 
             <!-- Target Text Field -->
             <div class="target-text-field space-y-2">
-              <label for="target-text" class="block text-sm font-medium text-slate-300">
+              <label for="target-text" class="block text-sm font-medium text-ink">
                 Target Text
               </label>
               <textarea
                 id="target-text"
                 v-model="localTargetText"
                 rows="2"
-                class="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
+                class="w-full px-3 py-2 bg-surface-2 border border-line rounded-lg text-ink placeholder-muted focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
                 placeholder="Enter target language text..."
               />
             </div>
@@ -54,12 +54,12 @@
             <!-- Audio Regeneration Section -->
             <div class="regeneration-section space-y-3">
               <div class="section-header flex items-center justify-between">
-                <label class="block text-sm font-medium text-slate-300">
+                <label class="block text-sm font-medium text-ink">
                   Which roles to regenerate
                 </label>
                 <button
                   @click="toggleAllFlags"
-                  class="text-xs text-slate-400 hover:text-white transition-colors"
+                  class="text-xs text-muted hover:text-ink transition-colors"
                 >
                   {{ allFlagsSelected ? 'Deselect All' : 'Select All' }}
                 </button>
@@ -70,17 +70,17 @@
                 v-if="phrase?.known_audio_uuid"
                 class="audio-flag-row flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                 :class="regenFlags.known
-                  ? 'border-slate-500 bg-slate-500 bg-opacity-10'
-                  : 'border-slate-600 hover:border-slate-500'"
+                  ? 'border-line bg-surface-3 bg-opacity-10'
+                  : 'border-line hover:border-line'"
               >
                 <input
                   v-model="regenFlags.known"
                   type="checkbox"
-                  class="w-4 h-4 text-slate-400 bg-slate-700 border-slate-600 rounded focus:ring-slate-500 focus:ring-offset-slate-800"
+                  class="w-4 h-4 text-muted bg-surface-2 border-line rounded focus:ring-line focus:ring-offset-surface"
                 />
                 <div class="flex-1 flex items-center gap-2">
-                  <span class="text-sm font-medium text-slate-300">Known</span>
-                  <span class="text-xs text-slate-500 truncate">{{ localKnownText }}</span>
+                  <span class="text-sm font-medium text-ink">Known</span>
+                  <span class="text-xs text-faint truncate">{{ localKnownText }}</span>
                 </div>
               </label>
 
@@ -90,17 +90,17 @@
                 class="audio-flag-row flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                 :class="regenFlags.target1
                   ? 'border-pink-500 bg-pink-500 bg-opacity-10'
-                  : 'border-slate-600 hover:border-slate-500'"
+                  : 'border-line hover:border-line'"
               >
                 <input
                   v-model="regenFlags.target1"
                   type="checkbox"
-                  class="w-4 h-4 text-pink-500 bg-slate-700 border-slate-600 rounded focus:ring-pink-500 focus:ring-offset-slate-800"
+                  class="w-4 h-4 text-pink-500 bg-surface-2 border-line rounded focus:ring-pink-500 focus:ring-offset-surface"
                 />
                 <div class="flex-1 flex items-center gap-2">
                   <span class="text-sm font-medium text-pink-400">Target 1</span>
                   <span class="voice-badge text-xs text-pink-400 px-1.5 py-0.5 bg-pink-500 bg-opacity-20 rounded">F</span>
-                  <span class="text-xs text-slate-500 truncate">{{ localTargetText }}</span>
+                  <span class="text-xs text-faint truncate">{{ localTargetText }}</span>
                 </div>
               </label>
 
@@ -110,30 +110,30 @@
                 class="audio-flag-row flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                 :class="regenFlags.target2
                   ? 'border-blue-500 bg-blue-500 bg-opacity-10'
-                  : 'border-slate-600 hover:border-slate-500'"
+                  : 'border-line hover:border-line'"
               >
                 <input
                   v-model="regenFlags.target2"
                   type="checkbox"
-                  class="w-4 h-4 text-blue-500 bg-slate-700 border-slate-600 rounded focus:ring-blue-500 focus:ring-offset-slate-800"
+                  class="w-4 h-4 text-blue-500 bg-surface-2 border-line rounded focus:ring-blue-500 focus:ring-offset-surface"
                 />
                 <div class="flex-1 flex items-center gap-2">
                   <span class="text-sm font-medium text-blue-400">Target 2</span>
                   <span class="voice-badge text-xs text-blue-400 px-1.5 py-0.5 bg-blue-500 bg-opacity-20 rounded">M</span>
-                  <span class="text-xs text-slate-500 truncate">{{ localTargetText }}</span>
+                  <span class="text-xs text-faint truncate">{{ localTargetText }}</span>
                 </div>
               </label>
 
               <!-- No audio warning -->
               <div
                 v-if="!phrase?.known_audio_uuid && !phrase?.target1_audio_uuid && !phrase?.target2_audio_uuid"
-                class="text-sm text-slate-500 italic p-3 bg-slate-700 bg-opacity-50 rounded-lg"
+                class="text-sm text-faint italic p-3 bg-surface-2 bg-opacity-50 rounded-lg"
               >
                 No audio files available for this phrase yet.
               </div>
 
               <!-- Hint text -->
-              <p class="text-xs text-slate-500">
+              <p class="text-xs text-faint">
                 Defaults to the role(s) whose text you changed. Saving regenerates the
                 checked role(s) directly to new audio (auto-approved) — audition below.
               </p>
@@ -142,13 +142,13 @@
             <!-- Inline Audition Area (auto-approve preview) -->
             <div
               v-if="auditionActive"
-              class="audition-section space-y-2 pt-2 border-t border-slate-700"
+              class="audition-section space-y-2 pt-2 border-t border-line"
             >
-              <label class="block text-sm font-medium text-slate-300">Fresh audio</label>
+              <label class="block text-sm font-medium text-ink">Fresh audio</label>
               <div
                 v-for="role in auditionRoles"
                 :key="role.key"
-                class="audition-row flex items-center gap-3 p-2 rounded-lg bg-slate-700 bg-opacity-40"
+                class="audition-row flex items-center gap-3 p-2 rounded-lg bg-surface-2 bg-opacity-40"
               >
                 <span
                   class="text-xs font-medium px-1.5 py-0.5 rounded"
@@ -158,7 +158,7 @@
                 <!-- Regenerating -->
                 <span
                   v-if="role.state === 'regenerating'"
-                  class="flex items-center gap-2 text-xs text-slate-400"
+                  class="flex items-center gap-2 text-xs text-muted"
                 >
                   <svg class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -176,7 +176,7 @@
                   </span>
                   <button
                     @click="playAudition(role.key)"
-                    class="flex items-center gap-1.5 px-2 py-1 text-xs font-medium bg-slate-600 text-white rounded hover:bg-slate-500 transition-colors"
+                    class="flex items-center gap-1.5 px-2 py-1 text-xs font-medium bg-surface-3 text-ink rounded hover:bg-surface-3 transition-colors"
                     title="Play preview"
                   >
                     <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -184,7 +184,7 @@
                     </svg>
                     preview
                   </button>
-                  <span v-if="role.durationMs" class="text-xs text-slate-500">{{ (role.durationMs / 1000).toFixed(1) }}s</span>
+                  <span v-if="role.durationMs" class="text-xs text-faint">{{ (role.durationMs / 1000).toFixed(1) }}s</span>
                 </template>
 
                 <!-- Ready but no preview URL (regen ok, signed-URL fetch failed) -->
@@ -205,7 +205,7 @@
           </div>
 
           <!-- Footer -->
-          <div class="modal-footer px-6 py-4 border-t border-slate-700">
+          <div class="modal-footer px-6 py-4 border-t border-line">
             <!-- Success state -->
             <div v-if="saveSuccess" class="flex items-center justify-between">
               <div class="flex items-center gap-2 text-emerald-400">
@@ -217,13 +217,13 @@
               <div class="flex items-center gap-3">
                 <button
                   @click="() => { window.location.reload(); }"
-                  class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                  class="px-4 py-2 text-sm font-medium text-ink hover:text-ink transition-colors"
                 >
                   Refresh page
                 </button>
                 <button
                   @click="close"
-                  class="px-4 py-2 text-sm font-medium bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
+                  class="px-4 py-2 text-sm font-medium bg-surface-3 text-ink rounded-lg hover:bg-surface-3 transition-colors"
                 >
                   Close
                 </button>
@@ -240,7 +240,7 @@
               </div>
               <button
                 @click="saveError = null"
-                class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                class="px-4 py-2 text-sm font-medium text-ink hover:text-ink transition-colors"
               >
                 Try again
               </button>
@@ -248,7 +248,7 @@
 
             <!-- Default state -->
             <div v-else class="flex items-center justify-between">
-              <div class="regen-summary text-xs text-slate-400">
+              <div class="regen-summary text-xs text-muted">
                 <span v-if="selectedRegenCount > 0">
                   {{ selectedRegenCount }} role{{ selectedRegenCount !== 1 ? 's' : '' }} will be regenerated
                 </span>
@@ -259,14 +259,14 @@
               <div class="flex items-center gap-3">
                 <button
                   @click="close"
-                  class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                  class="px-4 py-2 text-sm font-medium text-ink hover:text-ink transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   @click="save"
                   :disabled="!hasChanges || isSaving"
-                  class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  class="px-4 py-2 text-sm font-medium bg-emerald-500 text-ink rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   <svg v-if="isSaving" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -350,7 +350,7 @@ const auditionRoles = ref<AuditionRole[]>([]);
 const auditionAudioEl = ref<HTMLAudioElement | null>(null);
 
 const ROLE_LABELS: Record<RoleKey, { label: string; badgeClass: string }> = {
-  known: { label: 'Known', badgeClass: 'text-slate-300 bg-slate-500 bg-opacity-20' },
+  known: { label: 'Known', badgeClass: 'text-ink bg-surface-3 bg-opacity-20' },
   target1: { label: 'Target 1 · F', badgeClass: 'text-pink-400 bg-pink-500 bg-opacity-20' },
   target2: { label: 'Target 2 · M', badgeClass: 'text-blue-400 bg-blue-500 bg-opacity-20' },
 };

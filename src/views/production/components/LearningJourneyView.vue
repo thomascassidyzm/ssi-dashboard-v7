@@ -1,15 +1,15 @@
 <template>
   <div class="learning-journey-view">
     <!-- Stats Header -->
-    <div v-if="stats" class="stats-bar bg-slate-700 rounded-lg p-4 mb-6">
+    <div v-if="stats" class="stats-bar bg-surface-2 rounded-lg p-4 mb-6">
       <div class="flex flex-wrap gap-6">
         <div class="stat-item">
-          <span class="text-slate-400 text-sm">Rounds</span>
-          <span class="text-white font-bold text-lg ml-2">{{ stats.roundsGenerated }}</span>
+          <span class="text-muted text-sm">Rounds</span>
+          <span class="text-ink font-bold text-lg ml-2">{{ stats.roundsGenerated }}</span>
         </div>
         <div class="stat-item">
-          <span class="text-slate-400 text-sm">Total Items</span>
-          <span class="text-white font-bold text-lg ml-2">{{ stats.totalItems }}</span>
+          <span class="text-muted text-sm">Total Items</span>
+          <span class="text-ink font-bold text-lg ml-2">{{ stats.totalItems }}</span>
         </div>
         <div class="stat-item">
           <span class="text-emerald-400 text-sm">With Audio</span>
@@ -27,8 +27,8 @@
           </span>
         </div>
         <div class="stat-item ml-auto">
-          <span class="text-slate-400 text-sm">Generated in</span>
-          <span class="text-slate-300 text-lg ml-2">{{ stats.generationTimeMs }}ms</span>
+          <span class="text-muted text-sm">Generated in</span>
+          <span class="text-ink text-lg ml-2">{{ stats.generationTimeMs }}ms</span>
         </div>
       </div>
     </div>
@@ -39,23 +39,23 @@
       <div class="legend flex flex-wrap gap-4 text-sm">
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-purple-500"></span>
-          <span class="text-slate-300">Intro</span>
+          <span class="text-ink">Intro</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-          <span class="text-slate-300">LEGO</span>
+          <span class="text-ink">LEGO</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-          <span class="text-slate-300">BUILD</span>
+          <span class="text-ink">BUILD</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-          <span class="text-slate-300">REVIEW</span>
+          <span class="text-ink">REVIEW</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
-          <span class="text-slate-300">CONSOLIDATE</span>
+          <span class="text-ink">CONSOLIDATE</span>
         </div>
       </div>
 
@@ -63,13 +63,13 @@
       <div v-if="!hideControls" class="expand-collapse-btns flex gap-2">
         <button
           @click="collapseAll"
-          class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+          class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
         >
           Collapse All
         </button>
         <button
           @click="expandAll"
-          class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+          class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
         >
           Expand All
         </button>
@@ -81,11 +81,11 @@
       <div
         v-for="round in rounds"
         :key="round.roundNumber"
-        class="round-card bg-slate-800 rounded-lg overflow-hidden"
+        class="round-card bg-surface rounded-lg overflow-hidden"
       >
         <!-- Round Header -->
         <div
-          class="round-header px-4 py-3 bg-slate-700 flex items-center justify-between cursor-pointer"
+          class="round-header px-4 py-3 bg-surface-2 flex items-center justify-between cursor-pointer"
           @click="toggleRound(round.roundNumber)"
         >
           <div class="flex items-center gap-4">
@@ -94,8 +94,8 @@
               v-if="hasPlayableItems(round)"
               class="play-round-btn w-8 h-8 flex items-center justify-center rounded-full transition-colors"
               :class="isRoundPlaying(round.roundNumber)
-                ? 'bg-emerald-500 text-white'
-                : 'bg-slate-500 bg-opacity-50 text-slate-300 hover:bg-emerald-500 hover:text-white'"
+                ? 'bg-emerald-500 text-ink'
+                : 'bg-surface-3 bg-opacity-50 text-ink hover:bg-emerald-500 hover:text-ink'"
               :title="`Play Round ${round.roundNumber}`"
               @click.stop="playRound(round)"
             >
@@ -107,17 +107,17 @@
               </svg>
             </button>
 
-            <div class="round-number bg-slate-600 text-white px-3 py-1 rounded-full text-sm font-mono">
+            <div class="round-number bg-surface-3 text-ink px-3 py-1 rounded-full text-sm font-mono">
               R{{ round.roundNumber }}
             </div>
             <div class="lego-info">
               <span class="text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
             </div>
             <!-- LEGO Text: known = target -->
-            <div class="lego-text text-slate-300 text-sm">
-              <span class="text-slate-400">{{ getLegoKnownText(round) }}</span>
-              <span class="text-slate-500 mx-2">=</span>
-              <span class="text-white">{{ getLegoTargetText(round) }}</span>
+            <div class="lego-text text-ink text-sm">
+              <span class="text-muted">{{ getLegoKnownText(round) }}</span>
+              <span class="text-faint mx-2">=</span>
+              <span class="text-ink">{{ getLegoTargetText(round) }}</span>
             </div>
           </div>
 
@@ -134,18 +134,18 @@
               </span>
               <span
                 v-if="round.spacedRepReviews.length > 5"
-                class="px-2 py-0.5 bg-slate-600 text-slate-400 text-xs rounded"
+                class="px-2 py-0.5 bg-surface-3 text-muted text-xs rounded"
               >
                 +{{ round.spacedRepReviews.length - 5 }}
               </span>
             </div>
 
-            <div class="item-count text-slate-400 text-sm">
+            <div class="item-count text-muted text-sm">
               {{ round.itemCount }} items
             </div>
 
             <svg
-              class="w-5 h-5 text-slate-400 transition-transform"
+              class="w-5 h-5 text-muted transition-transform"
               :class="{ 'rotate-180': expandedRounds.has(round.roundNumber) }"
               fill="none"
               stroke="currentColor"
@@ -166,7 +166,7 @@
               class="item-row flex items-center gap-3 p-3 rounded-lg transition-all"
               :class="[
                 getItemBgClass(item),
-                isItemPlaying(round.roundNumber, idx) ? 'ring-2 ring-emerald-400 bg-emerald-900 bg-opacity-20' : 'hover:bg-slate-700'
+                isItemPlaying(round.roundNumber, idx) ? 'ring-2 ring-emerald-400 bg-emerald-900 bg-opacity-20' : 'hover:bg-surface-2'
               ]"
             >
               <!-- Play Item Button -->
@@ -174,8 +174,8 @@
                 v-if="item.hasAudio"
                 class="play-item-btn w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full transition-colors"
                 :class="isItemPlaying(round.roundNumber, idx)
-                  ? 'bg-emerald-500 text-white'
-                  : 'bg-slate-600 text-slate-400 hover:bg-emerald-500 hover:text-white'"
+                  ? 'bg-emerald-500 text-ink'
+                  : 'bg-surface-3 text-muted hover:bg-emerald-500 hover:text-ink'"
                 :title="isItemPlaying(round.roundNumber, idx) ? 'Playing...' : 'Play from here'"
                 @click="playFromItem(round, idx)"
               >
@@ -200,7 +200,7 @@
               <!-- Review Badge - shows which round is being reviewed -->
               <div
                 v-if="item.type === 'review'"
-                class="review-badge px-2 py-1 bg-amber-600 text-white text-xs rounded font-mono font-bold"
+                class="review-badge px-2 py-1 bg-amber-600 text-ink text-xs rounded font-mono font-bold"
                 :title="`Reviewing Round ${item.reviewOf}`"
               >
                 R{{ item.reviewOf }}
@@ -209,9 +209,9 @@
               <!-- Content: known → target -->
               <div class="item-content flex-1 min-w-0">
                 <div class="flex gap-4">
-                  <span class="text-slate-400 truncate flex-1">{{ item.known_text }}</span>
-                  <span class="text-slate-500">&rarr;</span>
-                  <span class="text-white truncate flex-1">{{ item.target_text }}</span>
+                  <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
+                  <span class="text-faint">&rarr;</span>
+                  <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
                 </div>
               </div>
 
@@ -220,7 +220,7 @@
                 <!-- Pencil edit button — LEGO text (debut) is NOT editable; only phrases -->
                 <button
                   v-if="item.type !== 'debut'"
-                  class="w-6 h-6 flex items-center justify-center rounded text-slate-500 hover:text-white hover:bg-slate-600 transition-colors"
+                  class="w-6 h-6 flex items-center justify-center rounded text-faint hover:text-ink hover:bg-surface-3 transition-colors"
                   title="Edit text"
                   @click.stop="emit('item-edit', item)"
                 >
@@ -231,7 +231,7 @@
                 <!-- Presentation (intro narration) edit + regen -->
                 <button
                   v-if="item.type === 'intro'"
-                  class="w-6 h-6 flex items-center justify-center rounded text-purple-400 hover:text-white hover:bg-purple-500 hover:bg-opacity-30 transition-colors"
+                  class="w-6 h-6 flex items-center justify-center rounded text-purple-400 hover:text-ink hover:bg-purple-500 hover:bg-opacity-30 transition-colors"
                   title="Edit intro narration & regenerate audio"
                   @click.stop="emit('presentation-edit', item)"
                 >
@@ -243,7 +243,7 @@
                 <button
                   v-if="item.target1_audio_uuid"
                   class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'bg-pink-500 text-white' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
+                  :class="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'bg-pink-500 text-ink' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
                   :title="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'Unflag target1 (F) audio' : 'Flag target1 (F) audio'"
                   @click.stop="emit('audio-flag', item, 'target1')"
                 >F</button>
@@ -260,7 +260,7 @@
                 <button
                   v-if="item.target2_audio_uuid"
                   class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
+                  :class="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'bg-blue-500 text-ink' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
                   :title="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'Unflag target2 (M) audio' : 'Flag target2 (M) audio'"
                   @click.stop="emit('audio-flag', item, 'target2')"
                 >M</button>
@@ -277,7 +277,7 @@
                 <button
                   v-if="item.phrase_id"
                   class="w-6 h-6 flex items-center justify-center rounded text-xs transition-colors"
-                  :class="flaggedPhraseIds.has(item.phrase_id!) ? 'bg-red-500 text-white' : 'text-red-400 hover:bg-red-500 hover:bg-opacity-20'"
+                  :class="flaggedPhraseIds.has(item.phrase_id!) ? 'bg-red-500 text-ink' : 'text-red-400 hover:bg-red-500 hover:bg-opacity-20'"
                   :title="flaggedPhraseIds.has(item.phrase_id!) ? 'Unflag phrase' : 'Flag phrase for deletion'"
                   @click.stop="emit('phrase-flag', item)"
                 >
@@ -293,7 +293,7 @@
                   v-for="phase in ['prompt', 'pause', 'voice1', 'voice2']"
                   :key="phase"
                   class="w-2 h-2 rounded-full transition-colors"
-                  :class="player.currentPhase.value === phase ? 'bg-emerald-400' : 'bg-slate-600'"
+                  :class="player.currentPhase.value === phase ? 'bg-emerald-400' : 'bg-surface-3'"
                   :title="phase"
                 ></span>
               </div>
@@ -323,7 +323,7 @@
               <!-- LEGO Badge (for review items showing which LEGO) -->
               <div
                 v-if="item.type === 'review' && item.legoId !== round.legoId"
-                class="lego-badge px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono"
+                class="lego-badge px-2 py-1 bg-surface-3 text-ink text-xs rounded font-mono"
               >
                 {{ item.legoId }}
               </div>
@@ -335,11 +335,11 @@
 
     <!-- Empty State -->
     <div v-if="rounds.length === 0 && !isLoading" class="empty-state text-center py-12">
-      <svg class="w-16 h-16 mx-auto text-slate-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-16 h-16 mx-auto text-faint mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
       </svg>
-      <h3 class="text-lg font-medium text-slate-400">No Learning Journey Data</h3>
-      <p class="text-slate-500 mt-2">This course may not have any LEGOs or practice phrases yet.</p>
+      <h3 class="text-lg font-medium text-muted">No Learning Journey Data</h3>
+      <p class="text-faint mt-2">This course may not have any LEGOs or practice phrases yet.</p>
     </div>
   </div>
 </template>
@@ -708,12 +708,12 @@ const getTypeBadgeClass = (type: string): string => {
     case 'build': return 'bg-blue-500 bg-opacity-30 text-blue-300'
     case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'
     case 'consolidate': return 'bg-cyan-500 bg-opacity-40 text-cyan-300'
-    default: return 'bg-slate-600 text-slate-400'
+    default: return 'bg-surface-3 text-muted'
   }
 }
 
 const getItemBgClass = (item: ScriptItem): string => {
-  if (item.type === 'intro') return 'bg-slate-800'
+  if (item.type === 'intro') return 'bg-surface'
   if (!item.hasAudio && item.type !== 'intro') return 'bg-amber-900 bg-opacity-10'
   return ''
 }

@@ -1,11 +1,11 @@
 <template>
-  <div class="script-viewer flex flex-col h-screen bg-slate-900">
+  <div class="script-viewer flex flex-col h-screen bg-canvas">
     <!-- Header -->
-    <div class="script-header bg-slate-800 border-b border-slate-700 px-6 py-4">
+    <div class="script-header bg-surface border-b border-line px-6 py-4">
       <div class="flex items-center justify-between">
         <div class="header-left flex items-center gap-4">
-          <h1 class="text-xl font-bold text-white">Script Viewer</h1>
-          <div v-if="totalSeeds > 0" class="stats text-sm text-slate-400">
+          <h1 class="text-xl font-bold text-ink">Script Viewer</h1>
+          <div v-if="totalSeeds > 0" class="stats text-sm text-muted">
             <template v-if="viewMode === 'journey'">
               <span v-if="journeySearching" class="text-emerald-400">Searching...</span>
               <span v-else-if="journeySearch.trim() && journeySearchResults !== null">
@@ -25,7 +25,7 @@
               v-model="journeySearch"
               type="text"
               placeholder="Search text, seed, LEGO..."
-              class="w-56 px-3 py-1.5 pl-8 text-sm bg-slate-700 text-white placeholder-slate-400 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              class="w-56 px-3 py-1.5 pl-8 text-sm bg-surface-2 text-ink placeholder-muted rounded border border-line focus:border-emerald-500 focus:outline-none"
               @keydown.escape="journeySearch = ''"
             />
             <!-- Spinner while searching, magnifying glass otherwise -->
@@ -33,13 +33,13 @@
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <svg v-else class="absolute left-2.5 top-2 w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg v-else class="absolute left-2.5 top-2 w-3.5 h-3.5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
             <button
               v-if="journeySearch"
               @click="journeySearch = ''"
-              class="absolute right-2 top-1.5 text-slate-400 hover:text-white"
+              class="absolute right-2 top-1.5 text-muted hover:text-ink"
             >&times;</button>
           </div>
         </div>
@@ -48,7 +48,7 @@
           <!-- View Mode Toggle Buttons -->
           <button
             @click="viewMode = 'journey'; if (!learningJourneyData) { journeyOffset = 0; loadLearningJourney(); }"
-            class="px-4 py-2 text-sm rounded-lg flex items-center gap-2 transition-colors bg-emerald-500 text-white"
+            class="px-4 py-2 text-sm rounded-lg flex items-center gap-2 transition-colors bg-emerald-500 text-ink"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
@@ -60,7 +60,7 @@
           <template v-if="viewMode === 'script'">
             <button
               @click="collapseAll"
-              class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
+              class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors flex items-center gap-1"
               title="Collapse all seeds"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,7 +71,7 @@
 
             <button
               @click="expandAll"
-              class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
+              class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors flex items-center gap-1"
               title="Expand all seeds"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,25 +87,25 @@
                 :disabled="seedPageStart <= 1"
                 class="px-2 py-1 text-sm rounded transition-colors"
                 :class="seedPageStart <= 1
-                  ? 'text-slate-500 cursor-not-allowed'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+                  ? 'text-faint cursor-not-allowed'
+                  : 'text-ink hover:text-ink hover:bg-surface-3'"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
               </button>
-              <span class="text-sm text-slate-300">
-                <span class="font-medium text-white">{{ seedPageStart }}-{{ seedPageEnd }}</span>
-                <span class="text-slate-500"> of </span>
-                <span class="text-white">{{ totalSeeds }}</span>
+              <span class="text-sm text-ink">
+                <span class="font-medium text-ink">{{ seedPageStart }}-{{ seedPageEnd }}</span>
+                <span class="text-faint"> of </span>
+                <span class="text-ink">{{ totalSeeds }}</span>
               </span>
               <button
                 @click="nextSeedPage"
                 :disabled="seedPageEnd >= totalSeeds"
                 class="px-2 py-1 text-sm rounded transition-colors"
                 :class="seedPageEnd >= totalSeeds
-                  ? 'text-slate-500 cursor-not-allowed'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+                  ? 'text-faint cursor-not-allowed'
+                  : 'text-ink hover:text-ink hover:bg-surface-3'"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -117,7 +117,7 @@
             <button
               v-if="!selectionMode"
               @click="toggleSelectionMode"
-              class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
+              class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors flex items-center gap-1"
               title="Select phrases for batch delete"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,13 +133,13 @@
             <div class="flex gap-2">
               <button
                 @click="collapseAllJourney"
-                class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+                class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
               >
                 Collapse All
               </button>
               <button
                 @click="expandAllJourney"
-                class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+                class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
               >
                 Expand All
               </button>
@@ -149,7 +149,7 @@
                    renumbered — generateLearningScript.ts:816-823 port). -->
               <button
                 @click="toggleLearnerAudioView"
-                :class="learnerAudioView ? 'bg-emerald-700 text-emerald-100 hover:bg-emerald-600' : 'text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600'"
+                :class="learnerAudioView ? 'bg-emerald-700 text-emerald-100 hover:bg-emerald-600' : 'text-ink hover:text-ink bg-surface-2 hover:bg-surface-3'"
                 class="px-3 py-1.5 text-sm rounded transition-colors"
                 :title="learnerAudioView
                   ? 'Learner view: LEGOs & phrases awaiting audio are dropped and rounds are renumbered — exactly what the learner hears. Click for the production view.'
@@ -160,7 +160,7 @@
               <button
                 @click="exportLearnerScript"
                 :disabled="!learningJourneyData"
-                class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
+                class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors flex items-center gap-1"
                 :class="{ 'opacity-50 cursor-not-allowed': !learningJourneyData }"
                 title="Export learner script as markdown"
               >
@@ -178,24 +178,24 @@
                 :disabled="journeyOffset === 0"
                 class="px-2 py-1 text-sm rounded transition-colors"
                 :class="journeyOffset === 0
-                  ? 'text-slate-500 cursor-not-allowed'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+                  ? 'text-faint cursor-not-allowed'
+                  : 'text-ink hover:text-ink hover:bg-surface-3'"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
               </button>
-              <span class="text-sm text-slate-300">
-                <span class="font-medium text-white">{{ journeyPageStart }}-{{ journeyPageEnd }}</span>
-                <span class="text-slate-500"> rounds</span>
+              <span class="text-sm text-ink">
+                <span class="font-medium text-ink">{{ journeyPageStart }}-{{ journeyPageEnd }}</span>
+                <span class="text-faint"> rounds</span>
               </span>
               <button
                 @click="nextPage"
                 :disabled="!journeyHasMore"
                 class="px-2 py-1 text-sm rounded transition-colors"
                 :class="!journeyHasMore
-                  ? 'text-slate-500 cursor-not-allowed'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+                  ? 'text-faint cursor-not-allowed'
+                  : 'text-ink hover:text-ink hover:bg-surface-3'"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -228,7 +228,7 @@
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
-          <p class="text-slate-400">{{ loadingProgress || 'Loading course data...' }}</p>
+          <p class="text-muted">{{ loadingProgress || 'Loading course data...' }}</p>
         </div>
       </div>
 
@@ -238,11 +238,11 @@
           <svg class="w-12 h-12 mx-auto mb-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <h3 class="text-lg font-semibold text-white mb-2">Error Loading Course</h3>
-          <p class="text-slate-400 mb-4">{{ error }}</p>
+          <h3 class="text-lg font-semibold text-ink mb-2">Error Loading Course</h3>
+          <p class="text-muted mb-4">{{ error }}</p>
           <button
             @click="loadCourseData"
-            class="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+            class="px-4 py-2 bg-emerald-500 text-ink rounded-lg hover:bg-emerald-600 transition-colors"
           >
             Retry
           </button>
@@ -255,11 +255,11 @@
           <svg class="w-12 h-12 mx-auto mb-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <h3 class="text-lg font-semibold text-white mb-2">Regen Queue Empty</h3>
-          <p class="text-slate-400 mb-4">No audio marked for regeneration</p>
+          <h3 class="text-lg font-semibold text-ink mb-2">Regen Queue Empty</h3>
+          <p class="text-muted mb-4">No audio marked for regeneration</p>
           <button
             @click="clearFilters"
-            class="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
+            class="px-4 py-2 bg-surface-2 text-ink rounded-lg hover:bg-surface-3 transition-colors"
           >
             Clear Filters
           </button>
@@ -269,7 +269,7 @@
       <!-- Regen Queue Items View -->
       <div v-else-if="filterFlaggedOnly" class="flagged-items-list space-y-3">
         <div class="flagged-header flex items-center justify-between mb-4">
-          <div class="text-sm text-slate-400">
+          <div class="text-sm text-muted">
             <span class="text-amber-400 font-semibold">{{ flatFlaggedItems.length }}</span>
             item{{ flatFlaggedItems.length !== 1 ? 's' : '' }} in regen queue
             <span v-if="orphanedFlagCount > 0" class="text-red-400 ml-2">
@@ -321,7 +321,7 @@
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <p class="text-slate-400">Generating learning journey...</p>
+            <p class="text-muted">Generating learning journey...</p>
           </div>
         </div>
 
@@ -331,11 +331,11 @@
             <svg class="w-12 h-12 mx-auto mb-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 class="text-lg font-semibold text-white mb-2">Error Generating Journey</h3>
-            <p class="text-slate-400 mb-4">{{ journeyError }}</p>
+            <h3 class="text-lg font-semibold text-ink mb-2">Error Generating Journey</h3>
+            <p class="text-muted mb-4">{{ journeyError }}</p>
             <button
               @click="reloadLearningJourney"
-              class="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+              class="px-4 py-2 bg-emerald-500 text-ink rounded-lg hover:bg-emerald-600 transition-colors"
             >
               Retry
             </button>
@@ -369,14 +369,14 @@
         <!-- Empty State (standard) -->
         <div v-if="filteredSeeds.length === 0" class="empty-state flex items-center justify-center h-64">
           <div class="text-center">
-            <svg class="w-12 h-12 mx-auto mb-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-12 h-12 mx-auto mb-4 text-faint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 class="text-lg font-semibold text-white mb-2">No Results</h3>
-            <p class="text-slate-400 mb-4">No seeds match your current filters</p>
+            <h3 class="text-lg font-semibold text-ink mb-2">No Results</h3>
+            <p class="text-muted mb-4">No seeds match your current filters</p>
             <button
               @click="clearFilters"
-              class="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
+              class="px-4 py-2 bg-surface-2 text-ink rounded-lg hover:bg-surface-3 transition-colors"
             >
               Clear Filters
             </button>
@@ -398,15 +398,15 @@
         </div>
 
         <!-- Selection Toolbar -->
-        <div v-if="selectionMode" class="selection-toolbar sticky top-0 z-20 bg-slate-900 border-b border-slate-700 px-4 py-3 mb-4 rounded-lg flex items-center justify-between">
+        <div v-if="selectionMode" class="selection-toolbar sticky top-0 z-20 bg-canvas border-b border-line px-4 py-3 mb-4 rounded-lg flex items-center justify-between">
           <div class="flex items-center gap-4">
-            <span class="text-slate-300">
-              <span class="font-medium text-white">{{ selectedCount }}</span> phrase{{ selectedCount !== 1 ? 's' : '' }} selected
+            <span class="text-ink">
+              <span class="font-medium text-ink">{{ selectedCount }}</span> phrase{{ selectedCount !== 1 ? 's' : '' }} selected
             </span>
             <button
               v-if="selectedCount > 0"
               @click="clearSelection"
-              class="text-sm text-slate-400 hover:text-white transition-colors"
+              class="text-sm text-muted hover:text-ink transition-colors"
             >
               Clear selection
             </button>
@@ -415,7 +415,7 @@
             <button
               v-if="selectedCount > 0"
               @click="showDeleteConfirmModal = true"
-              class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+              class="px-4 py-2 bg-red-600 hover:bg-red-500 text-ink text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -424,7 +424,7 @@
             </button>
             <button
               @click="toggleSelectionMode"
-              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors"
+              class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm font-medium rounded-lg transition-colors"
             >
               Exit Selection
             </button>
@@ -452,12 +452,12 @@
 
         <!-- Progressive loading indicator (shown while chunks are still arriving) -->
         <div v-if="isLoading && seeds.length > 0" class="loading-more text-center py-6">
-          <div class="inline-flex items-center gap-3 px-4 py-2 bg-slate-800 rounded-lg">
+          <div class="inline-flex items-center gap-3 px-4 py-2 bg-surface rounded-lg">
             <svg class="w-5 h-5 animate-spin text-emerald-500" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <span class="text-sm text-slate-400">{{ loadingProgress }}</span>
+            <span class="text-sm text-muted">{{ loadingProgress }}</span>
           </div>
         </div>
 
@@ -465,7 +465,7 @@
         <div v-if="!isLoading && hasMoreSeeds" class="load-more text-center py-8">
           <button
             @click="loadMoreSeeds"
-            class="px-6 py-3 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
+            class="px-6 py-3 bg-surface-2 text-ink rounded-lg hover:bg-surface-3 transition-colors"
           >
             Load More Seeds
           </button>
@@ -476,11 +476,11 @@
 
     <!-- Playback Bar (Sticky Bottom) -->
     <Transition name="slide-up">
-      <div v-if="currentPlayingSample" class="playback-bar bg-slate-800 border-t border-slate-700 px-6 py-4">
+      <div v-if="currentPlayingSample" class="playback-bar bg-surface border-t border-line px-6 py-4">
         <div class="flex items-center justify-between gap-4">
           <div class="playback-info flex-1">
-            <div class="text-sm font-medium text-white mb-1">{{ currentPlayingSample.text }}</div>
-            <div class="text-xs text-slate-400">
+            <div class="text-sm font-medium text-ink mb-1">{{ currentPlayingSample.text }}</div>
+            <div class="text-xs text-muted">
               <span class="font-mono">{{ currentPlayingSample.uuid }}</span>
               <span class="mx-2">•</span>
               <span>{{ currentPlayingSample.role }} ({{ currentPlayingSample.cadence }})</span>
@@ -497,7 +497,7 @@
 
           <button
             @click="closePlaybackBar"
-            class="p-2 text-slate-400 hover:text-white transition-colors"
+            class="p-2 text-muted hover:text-ink transition-colors"
             title="Close playback bar"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -509,11 +509,11 @@
     </Transition>
 
     <!-- Journey Playback Bar (4-Phase) — fixed bottom of viewport in journey mode -->
-    <div v-if="journeyPlayerActive" class="journey-playback-bar fixed bottom-0 left-0 right-0 z-40 bg-slate-800 border-t border-slate-700 px-6 py-3">
+    <div v-if="journeyPlayerActive" class="journey-playback-bar fixed bottom-0 left-0 right-0 z-40 bg-surface border-t border-line px-6 py-3">
       <div class="flex items-center gap-4">
         <template v-if="journeyPlayback?.currentItem">
           <!-- Position Info -->
-          <div v-if="journeyPlayingRoundInfo" class="position-info text-xs text-slate-400 font-mono min-w-24">
+          <div v-if="journeyPlayingRoundInfo" class="position-info text-xs text-muted font-mono min-w-24">
             R{{ journeyPlayingRoundInfo.roundNumber }}, {{ journeyPlayingRoundInfo.itemIndex }}/{{ journeyPlayingRoundInfo.itemCount }}
           </div>
 
@@ -534,9 +534,9 @@
           <!-- Current Item Text -->
           <div class="item-text flex-1 min-w-0">
             <div class="flex items-center gap-2 text-sm">
-              <span class="text-slate-400 truncate">{{ journeyPlayback.currentItem.known_text || '' }}</span>
-              <span class="text-slate-600 flex-shrink-0">&rarr;</span>
-              <span class="text-white truncate">{{ journeyPlayback.currentItem.target_text || '' }}</span>
+              <span class="text-muted truncate">{{ journeyPlayback.currentItem.known_text || '' }}</span>
+              <span class="text-faint flex-shrink-0">&rarr;</span>
+              <span class="text-ink truncate">{{ journeyPlayback.currentItem.target_text || '' }}</span>
             </div>
           </div>
 
@@ -547,15 +547,15 @@
               :key="phase"
               class="phase-segment px-2 py-0.5 rounded text-xs font-mono transition-colors"
               :class="journeyPlayback?.currentPhase === phase
-                ? 'bg-emerald-500 text-white'
-                : 'bg-slate-700 text-slate-500'"
+                ? 'bg-emerald-500 text-ink'
+                : 'bg-surface-2 text-faint'"
             >
               {{ journeyPhaseLabel(phase) }}
             </div>
           </div>
 
           <!-- Progress Bar -->
-          <div class="progress-bar w-24 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+          <div class="progress-bar w-24 h-1.5 bg-surface-2 rounded-full overflow-hidden">
             <div
               class="h-full bg-emerald-500 rounded-full transition-all duration-100"
               :style="{ width: (journeyPlayback?.progress || 0) + '%' }"
@@ -567,7 +567,7 @@
             <!-- Previous -->
             <button
               @click="journeyPlayerPrevious"
-              class="p-2 text-slate-400 hover:text-white transition-colors"
+              class="p-2 text-muted hover:text-ink transition-colors"
               title="Previous"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -578,7 +578,7 @@
             <!-- Play/Pause -->
             <button
               @click="journeyPlayback?.isPlaying ? journeyPlayerPause() : journeyPlayerPlay()"
-              class="p-2 text-white hover:text-emerald-400 transition-colors"
+              class="p-2 text-ink hover:text-emerald-400 transition-colors"
               :title="journeyPlayback?.isPlaying ? 'Pause' : 'Play'"
             >
               <svg v-if="journeyPlayback?.isPlaying" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -592,7 +592,7 @@
             <!-- Next -->
             <button
               @click="journeyPlayerSkip"
-              class="p-2 text-slate-400 hover:text-white transition-colors"
+              class="p-2 text-muted hover:text-ink transition-colors"
               title="Next"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -603,7 +603,7 @@
             <!-- Stop -->
             <button
               @click="journeyPlayerStop"
-              class="p-2 text-slate-400 hover:text-red-400 transition-colors"
+              class="p-2 text-muted hover:text-red-400 transition-colors"
               title="Stop"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -613,19 +613,19 @@
           </div>
 
           <!-- Item Counter -->
-          <div class="text-xs text-slate-500 font-mono">
+          <div class="text-xs text-faint font-mono">
             {{ (journeyPlayback?.currentIndex || 0) + 1 }}/{{ journeyPlayback?.totalItems || 0 }}
           </div>
         </template>
 
         <!-- Idle state — nothing playing yet -->
         <template v-else>
-          <div class="text-sm text-slate-500 flex-1">Click play on any item or round to start preview</div>
+          <div class="text-sm text-faint flex-1">Click play on any item or round to start preview</div>
           <div class="phase-indicator flex gap-1 items-center">
             <div
               v-for="phase in ['prompt', 'pause', 'voice1', 'voice2']"
               :key="phase"
-              class="phase-segment px-2 py-0.5 rounded text-xs font-mono bg-slate-700 text-slate-500"
+              class="phase-segment px-2 py-0.5 rounded text-xs font-mono bg-surface-2 text-faint"
             >
               {{ journeyPhaseLabel(phase) }}
             </div>
@@ -660,17 +660,17 @@
           class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
           @click.self="closePresentationModal"
         >
-          <div class="bg-slate-800 rounded-lg shadow-xl max-w-2xl w-full">
+          <div class="bg-surface rounded-lg shadow-xl max-w-2xl w-full">
             <!-- Header -->
-            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-700">
-              <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-line">
+              <h3 class="text-lg font-semibold text-ink flex items-center gap-2">
                 <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
                 </svg>
                 Intro Narration
-                <span class="text-sm font-mono text-slate-400">{{ presentationLegoId }}</span>
+                <span class="text-sm font-mono text-muted">{{ presentationLegoId }}</span>
               </h3>
-              <button @click="closePresentationModal" class="text-slate-400 hover:text-white">
+              <button @click="closePresentationModal" class="text-muted hover:text-ink">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -679,14 +679,14 @@
 
             <!-- Body -->
             <div class="px-6 py-5 space-y-4">
-              <div class="text-sm text-slate-400">
-                <span class="text-slate-300">{{ presentationKnownText }}</span>
-                <span class="mx-2 text-slate-600">&rarr;</span>
-                <span class="text-white">{{ presentationTargetText }}</span>
+              <div class="text-sm text-muted">
+                <span class="text-ink">{{ presentationKnownText }}</span>
+                <span class="mx-2 text-faint">&rarr;</span>
+                <span class="text-ink">{{ presentationTargetText }}</span>
               </div>
 
               <!-- Loading current text -->
-              <div v-if="presentationLoading" class="flex items-center gap-3 text-slate-400 text-sm py-6">
+              <div v-if="presentationLoading" class="flex items-center gap-3 text-muted text-sm py-6">
                 <svg class="w-5 h-5 animate-spin text-purple-400" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -695,16 +695,16 @@
               </div>
 
               <template v-else>
-                <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide">
+                <label class="block text-xs font-medium text-muted uppercase tracking-wide">
                   Presentation text (spoken in the known language)
                 </label>
                 <textarea
                   v-model="presentationText"
                   rows="4"
-                  class="w-full px-3 py-2 text-sm bg-slate-900 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none resize-y"
+                  class="w-full px-3 py-2 text-sm bg-canvas text-ink rounded border border-line focus:border-purple-500 focus:outline-none resize-y"
                   placeholder="The Chinese for 'to want', is: ... '想' ... '想'"
                 ></textarea>
-                <p class="text-xs text-slate-500">
+                <p class="text-xs text-faint">
                   This is the authoritative store for the intro audio. Saving regenerates only this LEGO's clip.
                 </p>
 
@@ -728,17 +728,17 @@
             </div>
 
             <!-- Footer -->
-            <div class="flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-700">
+            <div class="flex items-center justify-end gap-3 px-6 py-4 border-t border-line">
               <button
                 @click="closePresentationModal"
-                class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors"
+                class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm font-medium rounded-lg transition-colors"
               >
                 Close
               </button>
               <button
                 @click="savePresentationAndRegen"
                 :disabled="presentationBusy || presentationLoading || !presentationText.trim()"
-                class="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                class="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900 disabled:cursor-not-allowed text-ink text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
               >
                 <svg v-if="presentationBusy" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -760,10 +760,10 @@
           class="delete-confirm-modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
           @click.self="showDeleteConfirmModal = false"
         >
-          <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-md w-full">
+          <div class="modal-content bg-surface rounded-lg shadow-xl max-w-md w-full">
             <!-- Header -->
-            <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700">
-              <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+            <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-line">
+              <h3 class="text-lg font-semibold text-ink flex items-center gap-2">
                 <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
@@ -771,7 +771,7 @@
               </h3>
               <button
                 @click="showDeleteConfirmModal = false"
-                class="text-slate-400 hover:text-white transition-colors"
+                class="text-muted hover:text-ink transition-colors"
               >
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -781,9 +781,9 @@
 
             <!-- Body -->
             <div class="modal-body px-6 py-5">
-              <p class="text-slate-300 mb-4">
+              <p class="text-ink mb-4">
                 You are about to permanently delete
-                <span class="font-semibold text-white">{{ selectedCount }}</span>
+                <span class="font-semibold text-ink">{{ selectedCount }}</span>
                 phrase{{ selectedCount !== 1 ? 's' : '' }} from this course.
               </p>
               <div class="bg-red-900 bg-opacity-20 border border-red-800 rounded-lg p-4 text-sm text-red-300">
@@ -792,17 +792,17 @@
             </div>
 
             <!-- Footer -->
-            <div class="modal-footer flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-700">
+            <div class="modal-footer flex items-center justify-end gap-3 px-6 py-4 border-t border-line">
               <button
                 @click="showDeleteConfirmModal = false"
-                class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors"
+                class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm font-medium rounded-lg transition-colors"
               >
                 Cancel
               </button>
               <button
                 @click="handleBatchDelete"
                 :disabled="isDeleting"
-                class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-ink text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
               >
                 <svg v-if="isDeleting" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -830,11 +830,11 @@
         </span>
         <button
           @click="journeyFlaggedPhraseIds.clear()"
-          class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+          class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
         >Clear</button>
         <button
           @click="showJourneyDeleteStep = 1"
-          class="px-4 py-1.5 text-sm text-white bg-red-600 hover:bg-red-500 rounded font-medium transition-colors flex items-center gap-2"
+          class="px-4 py-1.5 text-sm text-ink bg-red-600 hover:bg-red-500 rounded font-medium transition-colors flex items-center gap-2"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
@@ -852,39 +852,39 @@
           class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
           @click.self="showJourneyDeleteStep = 0"
         >
-          <div class="bg-slate-800 rounded-lg shadow-xl max-w-lg w-full">
+          <div class="bg-surface rounded-lg shadow-xl max-w-lg w-full">
             <!-- Step 1: Review flagged phrases -->
             <template v-if="showJourneyDeleteStep === 1">
-              <div class="px-6 py-4 border-b border-slate-700">
-                <h3 class="text-lg font-semibold text-white">Review Flagged Phrases</h3>
+              <div class="px-6 py-4 border-b border-line">
+                <h3 class="text-lg font-semibold text-ink">Review Flagged Phrases</h3>
               </div>
               <div class="px-6 py-4 max-h-80 overflow-y-auto space-y-2">
                 <div
                   v-for="item in journeyFlaggedPhraseDetails"
                   :key="item.phrase_id"
-                  class="flex items-center gap-3 p-2 bg-slate-700 rounded text-sm"
+                  class="flex items-center gap-3 p-2 bg-surface-2 rounded text-sm"
                 >
-                  <span class="text-slate-400 truncate flex-1">{{ item.known_text }}</span>
-                  <span class="text-slate-500">&rarr;</span>
-                  <span class="text-white truncate flex-1">{{ item.target_text }}</span>
+                  <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
+                  <span class="text-faint">&rarr;</span>
+                  <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
                   <button
                     @click="onRemoveJourneyFlaggedPhrase(item.phrase_id)"
-                    class="text-slate-500 hover:text-red-400 flex-shrink-0"
+                    class="text-faint hover:text-red-400 flex-shrink-0"
                     title="Remove from list"
                   >&times;</button>
                 </div>
-                <p v-if="journeyFlaggedPhraseDetails.length === 0" class="text-slate-500 text-sm">No phrases flagged.</p>
+                <p v-if="journeyFlaggedPhraseDetails.length === 0" class="text-faint text-sm">No phrases flagged.</p>
               </div>
-              <div class="px-6 py-4 border-t border-slate-700 flex justify-end gap-3">
-                <button @click="showJourneyDeleteStep = 0" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm rounded-lg transition-colors">Cancel</button>
-                <button @click="showJourneyDeleteStep = 2" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors">Confirm Delete</button>
+              <div class="px-6 py-4 border-t border-line flex justify-end gap-3">
+                <button @click="showJourneyDeleteStep = 0" class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm rounded-lg transition-colors">Cancel</button>
+                <button @click="showJourneyDeleteStep = 2" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-ink text-sm font-medium rounded-lg transition-colors">Confirm Delete</button>
               </div>
             </template>
 
             <!-- Step 2: Final confirmation -->
             <template v-if="showJourneyDeleteStep === 2">
-              <div class="px-6 py-4 border-b border-slate-700">
-                <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+              <div class="px-6 py-4 border-b border-line">
+                <h3 class="text-lg font-semibold text-ink flex items-center gap-2">
                   <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                   </svg>
@@ -892,20 +892,20 @@
                 </h3>
               </div>
               <div class="px-6 py-5">
-                <p class="text-slate-300 mb-4">
-                  Delete <span class="font-semibold text-white">{{ journeyFlaggedPhraseIds.size }}</span>
+                <p class="text-ink mb-4">
+                  Delete <span class="font-semibold text-ink">{{ journeyFlaggedPhraseIds.size }}</span>
                   phrase{{ journeyFlaggedPhraseIds.size !== 1 ? 's' : '' }}? This cannot be undone.
                 </p>
                 <div class="bg-red-900 bg-opacity-20 border border-red-800 rounded-lg p-4 text-sm text-red-300">
                   <strong>Warning:</strong> The phrases will be permanently removed from the database.
                 </div>
               </div>
-              <div class="px-6 py-4 border-t border-slate-700 flex justify-end gap-3">
-                <button @click="showJourneyDeleteStep = 0" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm rounded-lg transition-colors">Cancel</button>
+              <div class="px-6 py-4 border-t border-line flex justify-end gap-3">
+                <button @click="showJourneyDeleteStep = 0" class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm rounded-lg transition-colors">Cancel</button>
                 <button
                   @click="handleJourneyBatchDelete"
                   :disabled="isDeletingJourneyPhrases"
-                  class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                  class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-ink text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
                 >
                   <svg v-if="isDeletingJourneyPhrases" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -928,10 +928,10 @@
           class="shortcuts-modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
           @click.self="showShortcutsHelp = false"
         >
-          <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-lg w-full p-6">
+          <div class="modal-content bg-surface rounded-lg shadow-xl max-w-lg w-full p-6">
             <div class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-semibold text-white">Keyboard Shortcuts</h3>
-              <button @click="showShortcutsHelp = false" class="text-slate-400 hover:text-white">
+              <h3 class="text-lg font-semibold text-ink">Keyboard Shortcuts</h3>
+              <button @click="showShortcutsHelp = false" class="text-muted hover:text-ink">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -939,9 +939,9 @@
             </div>
 
             <div class="shortcuts-list space-y-3">
-              <div v-for="shortcut in keyboardShortcuts" :key="shortcut.key" class="shortcut-item flex items-center justify-between py-2 border-b border-slate-700">
-                <span class="text-slate-300">{{ shortcut.description }}</span>
-                <kbd class="px-2 py-1 bg-slate-700 text-slate-300 rounded text-sm font-mono">{{ shortcut.key }}</kbd>
+              <div v-for="shortcut in keyboardShortcuts" :key="shortcut.key" class="shortcut-item flex items-center justify-between py-2 border-b border-line">
+                <span class="text-ink">{{ shortcut.description }}</span>
+                <kbd class="px-2 py-1 bg-surface-2 text-ink rounded text-sm font-mono">{{ shortcut.key }}</kbd>
               </div>
             </div>
           </div>
@@ -953,7 +953,7 @@
     <div class="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
       <button
         @click="scrollUp"
-        class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white shadow-lg flex items-center justify-center transition-colors"
+        class="w-10 h-10 rounded-full bg-surface-2 hover:bg-surface-3 text-ink shadow-lg flex items-center justify-center transition-colors"
         title="Scroll up"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -962,7 +962,7 @@
       </button>
       <button
         @click="scrollDown"
-        class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white shadow-lg flex items-center justify-center transition-colors"
+        class="w-10 h-10 rounded-full bg-surface-2 hover:bg-surface-3 text-ink shadow-lg flex items-center justify-center transition-colors"
         title="Scroll down"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2769,15 +2769,15 @@ onBeforeUnmount(() => {
 }
 
 .script-content::-webkit-scrollbar-track {
-  background: #1e293b; /* slate-800 */
+  background: var(--surface); /* slate-800 */
 }
 
 .script-content::-webkit-scrollbar-thumb {
-  background: #475569; /* slate-600 */
+  background: var(--surface-3); /* slate-600 */
   border-radius: 4px;
 }
 
 .script-content::-webkit-scrollbar-thumb:hover {
-  background: #64748b; /* slate-500 */
+  background: var(--faint); /* slate-500 */
 }
 </style>

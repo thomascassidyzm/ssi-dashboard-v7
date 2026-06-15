@@ -6,13 +6,13 @@
         class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
         @click.self="close"
       >
-        <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+        <div class="modal-content bg-surface rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
           <!-- Header -->
-          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700">
-            <h3 class="text-lg font-semibold text-white">Flag Audio Sample</h3>
+          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-line">
+            <h3 class="text-lg font-semibold text-ink">Flag Audio Sample</h3>
             <button
               @click="close"
-              class="text-slate-400 hover:text-white transition-colors"
+              class="text-muted hover:text-ink transition-colors"
               title="Close (Esc)"
             >
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -24,8 +24,8 @@
           <!-- Body -->
           <div class="modal-body px-6 py-4 space-y-4">
             <!-- Sample Info -->
-            <div v-if="sample" class="sample-info bg-slate-700 rounded-lg p-4">
-              <div class="text-sm text-slate-300 space-y-1">
+            <div v-if="sample" class="sample-info bg-surface-2 rounded-lg p-4">
+              <div class="text-sm text-ink space-y-1">
                 <div><span class="font-medium">Text:</span> {{ sample.text }}</div>
                 <div><span class="font-medium">UUID:</span> <code class="text-xs">{{ sample.uuid }}</code></div>
                 <div><span class="font-medium">Voice:</span> {{ sample.voice_id }}</div>
@@ -34,7 +34,7 @@
 
             <!-- Flag Type Selection -->
             <div class="flag-type-selection space-y-3">
-              <label class="block text-sm font-medium text-slate-300">What needs to be done?</label>
+              <label class="block text-sm font-medium text-ink">What needs to be done?</label>
 
               <div class="space-y-2">
                 <!-- Text Edit -->
@@ -42,17 +42,17 @@
                   class="flag-option flex items-start gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                   :class="selectedFlagType === 'text_edit'
                     ? 'border-amber-500 bg-amber-500 bg-opacity-10'
-                    : 'border-slate-600 hover:border-slate-500'"
+                    : 'border-line hover:border-line'"
                 >
                   <input
                     v-model="selectedFlagType"
                     type="radio"
                     value="text_edit"
-                    class="mt-0.5 w-4 h-4 text-amber-500 focus:ring-amber-500 focus:ring-offset-slate-800"
+                    class="mt-0.5 w-4 h-4 text-amber-500 focus:ring-amber-500 focus:ring-offset-surface"
                   />
                   <div class="flex-1">
-                    <div class="font-medium text-white">Text Edit Needed</div>
-                    <div class="text-sm text-slate-400">The text contains an error or needs correction</div>
+                    <div class="font-medium text-ink">Text Edit Needed</div>
+                    <div class="text-sm text-muted">The text contains an error or needs correction</div>
                   </div>
                 </label>
 
@@ -61,17 +61,17 @@
                   class="flag-option flex items-start gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                   :class="selectedFlagType === 'regen_tts'
                     ? 'border-emerald-500 bg-emerald-500 bg-opacity-10'
-                    : 'border-slate-600 hover:border-slate-500'"
+                    : 'border-line hover:border-line'"
                 >
                   <input
                     v-model="selectedFlagType"
                     type="radio"
                     value="regen_tts"
-                    class="mt-0.5 w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800"
+                    class="mt-0.5 w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-surface"
                   />
                   <div class="flex-1">
-                    <div class="font-medium text-white">Regenerate TTS</div>
-                    <div class="text-sm text-slate-400">Audio quality issues - regenerate with TTS</div>
+                    <div class="font-medium text-ink">Regenerate TTS</div>
+                    <div class="text-sm text-muted">Audio quality issues - regenerate with TTS</div>
                   </div>
                 </label>
 
@@ -80,17 +80,17 @@
                   class="flag-option flex items-start gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                   :class="selectedFlagType === 'human_needed'
                     ? 'border-red-500 bg-red-500 bg-opacity-10'
-                    : 'border-slate-600 hover:border-slate-500'"
+                    : 'border-line hover:border-line'"
                 >
                   <input
                     v-model="selectedFlagType"
                     type="radio"
                     value="human_needed"
-                    class="mt-0.5 w-4 h-4 text-red-500 focus:ring-red-500 focus:ring-offset-slate-800"
+                    class="mt-0.5 w-4 h-4 text-red-500 focus:ring-red-500 focus:ring-offset-surface"
                   />
                   <div class="flex-1">
-                    <div class="font-medium text-white">Human Recording Needed</div>
-                    <div class="text-sm text-slate-400">TTS not suitable - needs human voice recording</div>
+                    <div class="font-medium text-ink">Human Recording Needed</div>
+                    <div class="text-sm text-muted">TTS not suitable - needs human voice recording</div>
                   </div>
                 </label>
               </div>
@@ -98,31 +98,31 @@
 
             <!-- Notes Field -->
             <div class="notes-field space-y-2">
-              <label for="flag-notes" class="block text-sm font-medium text-slate-300">
-                Notes <span class="text-slate-500">(optional but recommended)</span>
+              <label for="flag-notes" class="block text-sm font-medium text-ink">
+                Notes <span class="text-faint">(optional but recommended)</span>
               </label>
               <textarea
                 id="flag-notes"
                 v-model="notes"
                 rows="3"
-                class="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
+                class="w-full px-3 py-2 bg-surface-2 border border-line rounded-lg text-ink placeholder-muted focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
                 placeholder="Describe the issue (e.g., 'Pronunciation of quiero sounds unnatural')"
               />
             </div>
           </div>
 
           <!-- Footer -->
-          <div class="modal-footer flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-700">
+          <div class="modal-footer flex items-center justify-end gap-3 px-6 py-4 border-t border-line">
             <button
               @click="close"
-              class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+              class="px-4 py-2 text-sm font-medium text-ink hover:text-ink transition-colors"
             >
               Cancel
             </button>
             <button
               @click="submit"
               :disabled="!selectedFlagType || isSubmitting"
-              class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              class="px-4 py-2 text-sm font-medium bg-emerald-500 text-ink rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               <svg v-if="isSubmitting" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

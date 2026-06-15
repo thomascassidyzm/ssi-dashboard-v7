@@ -10,6 +10,11 @@ import { installAuthFetch } from './services/authFetch'
 // any component fires its first request.
 installAuthFetch()
 
+// Apply the saved light/dark theme before mount (dark is the default = no attribute).
+try {
+  if (localStorage.getItem('popty-theme') === 'light') document.documentElement.dataset.theme = 'light'
+} catch { /* private mode — stay on default dark */ }
+
 const pinia = createPinia()
 const app = createApp(App)
 

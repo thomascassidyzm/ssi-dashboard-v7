@@ -2,14 +2,14 @@
   <div class="seed-row mb-6">
     <!-- Seed Header -->
     <div
-      class="seed-header bg-slate-800 border border-slate-700 rounded-lg p-5 cursor-pointer hover:bg-slate-700 hover:border-slate-600 transition-all shadow-md"
+      class="seed-header bg-surface border border-line rounded-lg p-5 cursor-pointer hover:bg-surface-2 hover:border-line transition-all shadow-md"
       @click="toggleExpand"
     >
       <div class="flex items-center justify-between">
         <div class="seed-info flex items-center gap-4 flex-1">
           <!-- Expand/Collapse Icon -->
           <svg
-            class="w-6 h-6 text-slate-400 transition-transform flex-shrink-0"
+            class="w-6 h-6 text-muted transition-transform flex-shrink-0"
             :class="{ 'rotate-90': seed.expanded }"
             fill="none"
             stroke="currentColor"
@@ -27,15 +27,15 @@
 
           <!-- Seed Details -->
           <div class="seed-details flex-1 min-w-0">
-            <div class="seed-id text-lg font-bold text-white mb-1">
+            <div class="seed-id text-lg font-bold text-ink mb-1">
               {{ seed.seed_id }}
             </div>
 
             <div class="seed-texts space-y-1">
-              <div class="target-text text-base text-white font-medium truncate">
+              <div class="target-text text-base text-ink font-medium truncate">
                 {{ seed.target_text }}
               </div>
-              <div class="known-text text-sm text-slate-400 truncate">
+              <div class="known-text text-sm text-muted truncate">
                 {{ seed.known_text }}
               </div>
             </div>
@@ -43,7 +43,7 @@
         </div>
 
         <!-- Stats Badge -->
-        <div class="seed-stats flex items-center gap-4 text-sm text-slate-400 flex-shrink-0">
+        <div class="seed-stats flex items-center gap-4 text-sm text-muted flex-shrink-0">
           <div class="lego-count flex items-center gap-1">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
@@ -73,7 +73,7 @@
       <div v-if="seed.expanded" class="seed-content mt-4 pl-4">
         <!-- Introduction Phrases -->
         <div v-if="seed.introduction_phrases.length > 0" class="introduction-section mb-6">
-          <div class="section-label text-sm font-medium text-slate-400 mb-3 flex items-center gap-2">
+          <div class="section-label text-sm font-medium text-muted mb-3 flex items-center gap-2">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
             </svg>
@@ -103,7 +103,7 @@
 
         <!-- LEGOs Section -->
         <div v-if="seed.legos.length > 0" class="legos-section">
-          <div class="section-label text-sm font-medium text-slate-400 mb-3 flex items-center gap-2">
+          <div class="section-label text-sm font-medium text-muted mb-3 flex items-center gap-2">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
             </svg>
@@ -131,7 +131,7 @@
         </div>
 
         <!-- Empty State -->
-        <div v-if="seed.legos.length === 0 && seed.introduction_phrases.length === 0" class="empty-state text-center py-8 text-slate-500">
+        <div v-if="seed.legos.length === 0 && seed.introduction_phrases.length === 0" class="empty-state text-center py-8 text-faint">
           <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
           </svg>

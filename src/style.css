@@ -33,12 +33,50 @@
   --font-display: 'Crimson Pro', serif;
   --font-ui: 'Josefin Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
+
+  /* ── SEMANTIC THEME TOKENS (dark = default) ──────────────────────────────
+     Tailwind utilities bg-canvas / bg-surface / text-ink / text-muted / border-line …
+     map to these (tailwind.config.js). Light values below under [data-theme="light"]. */
+  --canvas:    #0f172a;  /* slate-900  page bg            */
+  --surface:   #1e293b;  /* slate-800  cards / panels     */
+  --surface-2: #334155;  /* slate-700  raised / inputs    */
+  --surface-3: #475569;  /* slate-600  hover / active      */
+  --line:      #334155;  /* slate-700  borders            */
+  --ink:       #f1f5f9;  /* slate-100  primary text       */
+  --muted:     #94a3b8;  /* slate-400  secondary text     */
+  --faint:     #64748b;  /* slate-500  tertiary text      */
+  --accent:    #ffa630;  /* brand orange                  */
+  --accent-2:  #34d399;  /* brand green                   */
+  --success:   #34d399;
+  --danger:    #f87171;
+}
+
+/* ── LIGHT THEME ── set <html data-theme="light"> to flip. Re-tuned, not inverted:
+   white surfaces, slate-50 canvas, accents darkened for contrast on light backgrounds. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  color: #0f172a;
+  background-color: #f8fafc;
+  --canvas:    #f8fafc;  /* slate-50                      */
+  --surface:   #ffffff;  /* white cards                   */
+  --surface-2: #f1f5f9;  /* slate-100 inputs              */
+  --surface-3: #e2e8f0;  /* slate-200 hover               */
+  --line:      #e2e8f0;  /* slate-200 borders             */
+  --ink:       #0f172a;  /* slate-900 primary text        */
+  --muted:     #475569;  /* slate-600 secondary text      */
+  --faint:     #64748b;  /* slate-500 tertiary text       */
+  --accent:    #d97706;  /* amber-600 (orange on light)   */
+  --accent-2:  #059669;  /* emerald-600                   */
+  --success:   #059669;
+  --danger:    #dc2626;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--canvas);
+  color: var(--ink);
 }
 
 #app {

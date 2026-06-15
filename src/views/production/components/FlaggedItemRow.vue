@@ -1,14 +1,14 @@
 <template>
   <div
-    class="flagged-item-row bg-slate-800 rounded-lg border border-slate-700 p-4 hover:border-amber-500 transition-colors"
+    class="flagged-item-row bg-surface rounded-lg border border-line p-4 hover:border-amber-500 transition-colors"
   >
     <!-- Context Header -->
-    <div class="item-context flex items-center gap-3 mb-3 text-xs text-slate-500">
+    <div class="item-context flex items-center gap-3 mb-3 text-xs text-faint">
       <span class="font-mono">{{ item.seedId }}</span>
-      <span class="text-slate-600">→</span>
+      <span class="text-faint">→</span>
       <span class="font-mono">{{ item.legoId }}</span>
-      <span class="text-slate-600">→</span>
-      <span class="text-slate-400">{{ item.phraseId }}</span>
+      <span class="text-faint">→</span>
+      <span class="text-muted">{{ item.phraseId }}</span>
     </div>
 
     <!-- Main Content -->
@@ -24,7 +24,7 @@
       </div>
 
       <!-- Text -->
-      <div class="item-text flex-1 text-white font-medium">
+      <div class="item-text flex-1 text-ink font-medium">
         {{ item.text }}
       </div>
 
@@ -38,7 +38,7 @@
         <!-- Play Button -->
         <button
           @click="$emit('play', item)"
-          class="p-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white transition-colors"
+          class="p-2 rounded-lg bg-surface-2 hover:bg-surface-3 text-ink hover:text-ink transition-colors"
           title="Play audio"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,7 +50,7 @@
         <!-- Edit Button -->
         <button
           @click="$emit('edit', item)"
-          class="p-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white transition-colors"
+          class="p-2 rounded-lg bg-surface-2 hover:bg-surface-3 text-ink hover:text-ink transition-colors"
           title="Edit phrase"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@
     </div>
 
     <!-- Notes (if any) -->
-    <div v-if="item.notes" class="item-notes mt-2 text-xs text-slate-500 italic">
+    <div v-if="item.notes" class="item-notes mt-2 text-xs text-faint italic">
       {{ item.notes }}
     </div>
   </div>
@@ -119,10 +119,10 @@ const trackLabel = computed(() => {
 
 const trackBadgeClass = computed(() => {
   switch (props.item.track) {
-    case 'known': return 'bg-slate-600 text-slate-300';
+    case 'known': return 'bg-surface-3 text-ink';
     case 'target1': return 'bg-pink-500 bg-opacity-20 text-pink-400';
     case 'target2': return 'bg-blue-500 bg-opacity-20 text-blue-400';
-    default: return 'bg-slate-600 text-slate-300';
+    default: return 'bg-surface-3 text-ink';
   }
 });
 

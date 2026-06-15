@@ -1,21 +1,21 @@
 <template>
-  <div class="audio-player inline-flex items-center gap-2 bg-slate-700 rounded-lg px-3 py-2">
+  <div class="audio-player inline-flex items-center gap-2 bg-surface-2 rounded-lg px-3 py-2">
     <!-- Play/Pause Button -->
     <button
       @click="togglePlayPause"
       class="audio-player-button flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-all"
-      :class="isPlaying ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-slate-600 hover:bg-slate-500'"
+      :class="isPlaying ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-surface-3 hover:bg-surface-3'"
       :disabled="!audioUrl || isLoading"
       :title="isPlaying ? 'Pause' : 'Play'"
     >
-      <svg v-if="isLoading" class="w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+      <svg v-if="isLoading" class="w-4 h-4 animate-spin text-ink" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
       </svg>
-      <svg v-else-if="isPlaying" class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+      <svg v-else-if="isPlaying" class="w-4 h-4 text-ink" fill="currentColor" viewBox="0 0 20 20">
         <path d="M6 4h3v12H6V4zm5 0h3v12h-3V4z"/>
       </svg>
-      <svg v-else class="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+      <svg v-else class="w-4 h-4 text-ink ml-0.5" fill="currentColor" viewBox="0 0 20 20">
         <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
       </svg>
     </button>
@@ -25,7 +25,7 @@
       <div
         v-for="(peak, index) in visiblePeaks"
         :key="index"
-        class="waveform-bar bg-slate-400 rounded-full transition-all"
+        class="waveform-bar bg-surface-3 rounded-full transition-all"
         :class="{ 'bg-emerald-400': isPlaying && progress >= (index / visiblePeaks.length) }"
         :style="{
           width: '2px',
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Simple Progress Bar (fallback if no waveform) -->
-    <div v-else-if="!showWaveform" class="progress-bar flex-grow h-1 bg-slate-600 rounded-full overflow-hidden min-w-0 max-w-48">
+    <div v-else-if="!showWaveform" class="progress-bar flex-grow h-1 bg-surface-3 rounded-full overflow-hidden min-w-0 max-w-48">
       <div
         class="progress-fill h-full bg-emerald-500 transition-all"
         :style="{ width: `${progress * 100}%` }"
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Duration Display -->
-    <div class="duration text-xs text-slate-300 font-mono whitespace-nowrap">
+    <div class="duration text-xs text-ink font-mono whitespace-nowrap">
       <span v-if="duration">{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</span>
       <span v-else>--:--</span>
     </div>
