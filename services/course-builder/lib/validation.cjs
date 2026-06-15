@@ -674,16 +674,44 @@ async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber =
 // topic-swaps ([X]很有用 ×N — unique signatures, one frame). Those need the
 // language-aware frame-family analysis in tools/audit-frame-diversity.cjs,
 // run per-course as an audit, not per-submission here.
-const FRAME_PRONOUNS = ['我们', '你们', '他们', '她们', '大家', '我', '你', '他', '她', '它'];
+const FRAME_PRONOUNS_CJK = ['我们', '你们', '他们', '她们', '大家', '我', '你', '他', '她', '它'];
+// Latin-script subject/clitic pronouns across the major _for_eng target families, so the
+// frame lens collapses subject-swaps in space-separated languages too (was CJK-only, which
+// is why frame-coverage read 0 on French). Union is safe — pronoun collisions across langs
+// are harmless for a frame signature.
+const FRAME_PRONOUNS_LATIN = new Set([
+  'je', 'j', 'tu', 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles', 'me', 'te', 'se',          // fr
+  'yo', 'tú', 'él', 'ella', 'usted', 'nosotros', 'nosotras', 'vosotros', 'vosotras', 'ellos', 'ellas', 'ustedes', // es
+  'io', 'lui', 'lei', 'noi', 'voi', 'loro',                                                         // it
+  'eu', 'você', 'voce', 'ele', 'ela', 'nós', 'nos', 'eles', 'elas',                                 // pt
+  'ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr',                                                     // de
+  'i', 'you', 'he', 'she', 'we', 'they', 'it',                                                      // en
+]);
+const FRAME_CJK_RE = /[㐀-鿿぀-ヿ가-힯]/;
 
 function phraseFrameSignature(target, legoTarget) {
-  let s = (target || '').replace(/[？。，！、?!,.\s]/g, '');
-  const lego = (legoTarget || '').replace(/[？。，！、?!,.\s]/g, '');
-  const i = s.indexOf(lego);
-  if (i === -1) return null;
-  s = s.slice(0, i) + '◇' + s.slice(i + lego.length);
-  for (const p of FRAME_PRONOUNS) s = s.split(p).join('Ⓟ');
-  return s;
+  const t = target || '', lg = legoTarget || '';
+  if (FRAME_CJK_RE.test(t)) {
+    // char-based (CJK): strip spaces, slot out the LEGO, collapse pronoun chars (original behaviour)
+    let s = t.replace(/[？。，！、?!,.\s]/g, '');
+    const lego = lg.replace(/[？。，！、?!,.\s]/g, '');
+    const i = s.indexOf(lego);
+    if (i === -1) return null;
+    s = s.slice(0, i) + '◇' + s.slice(i + lego.length);
+    for (const p of FRAME_PRONOUNS_CJK) s = s.split(p).join('Ⓟ');
+    return s;
+  }
+  // space-separated (latin etc.): token-based — slot out the LEGO token-span, collapse pronoun WORDS
+  const norm = x => x.toLowerCase().replace(/[.,!?;:'"¿¡()«»]/g, '').trim();
+  const toks = t.split(/\s+/).map(norm).filter(Boolean);
+  const ltoks = lg.split(/\s+/).map(norm).filter(Boolean);
+  if (!ltoks.length) return null;
+  let idx = -1;
+  for (let i = 0; i + ltoks.length <= toks.length; i++) { if (ltoks.every((w, j) => toks[i + j] === w)) { idx = i; break; } }
+  if (idx === -1) return null;
+  const out = [...toks.slice(0, idx), '◇', ...toks.slice(idx + ltoks.length)]
+    .map(w => (w === '◇' ? '◇' : (FRAME_PRONOUNS_LATIN.has(w) ? 'Ⓟ' : w)));
+  return out.join('·');
 }
 
 function checkBasketFrameCoverage(phrases, legoTarget) {
@@ -712,7 +740,7 @@ function checkBasketFrameCoverage(phrases, legoTarget) {
   const warnings = [];
   for (const [sig, targets] of sigTargets) {
     const count = targets.size;
-    if (/^Ⓟ*◇Ⓟ*$/.test(sig)) nakedSwaps += count;
+    if (/^Ⓟ*◇Ⓟ*$/.test(sig.replace(/·/g, ''))) nakedSwaps += count;
     if (count >= 3) {
       warnings.push({
         code: 'repeated_frame',
