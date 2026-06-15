@@ -29,7 +29,7 @@
       </div>
 
       <!-- Flag Status Badge -->
-      <div class="flag-status px-2 py-1 bg-amber-500 bg-opacity-20 text-amber-400 rounded text-xs font-medium">
+      <div class="flag-status px-2 py-1 bg-amber-600 text-white rounded text-xs font-medium">
         {{ formatStatus(item.status) }}
       </div>
 
@@ -120,8 +120,8 @@ const trackLabel = computed(() => {
 const trackBadgeClass = computed(() => {
   switch (props.item.track) {
     case 'known': return 'bg-surface-3 text-ink';
-    case 'target1': return 'bg-pink-500 bg-opacity-20 text-pink-400';
-    case 'target2': return 'bg-blue-500 bg-opacity-20 text-blue-400';
+    case 'target1': return 'bg-pink-600 text-white';
+    case 'target2': return 'bg-blue-600 text-white';
     default: return 'bg-surface-3 text-ink';
   }
 });

@@ -127,7 +127,7 @@
               <span
                 v-for="reviewIdx in round.spacedRepReviews.slice(0, 5)"
                 :key="reviewIdx"
-                class="px-2 py-0.5 bg-amber-500 bg-opacity-20 text-amber-400 text-xs rounded font-mono"
+                class="px-2 py-0.5 bg-amber-600 text-white text-xs rounded font-mono"
                 :title="`Reviewing R${reviewIdx}`"
               >
                 R{{ reviewIdx }}
@@ -703,11 +703,13 @@ const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?
 
 const getTypeBadgeClass = (type: string): string => {
   switch (type) {
-    case 'intro': return 'bg-purple-500 bg-opacity-30 text-purple-300'
-    case 'debut': return 'bg-emerald-500 bg-opacity-30 text-emerald-300'
-    case 'build': return 'bg-blue-500 bg-opacity-30 text-blue-300'
-    case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'
-    case 'consolidate': return 'bg-cyan-500 bg-opacity-40 text-cyan-300'
+    // Solid badge + white text reads in BOTH themes (the tint+light-text pattern washed out on
+    // white). White stays white here regardless of theme — high contrast on a saturated -600.
+    case 'intro': return 'bg-purple-600 text-white'
+    case 'debut': return 'bg-emerald-600 text-white'
+    case 'build': return 'bg-blue-600 text-white'
+    case 'review': return 'bg-amber-600 text-white'
+    case 'consolidate': return 'bg-cyan-600 text-white'
     default: return 'bg-surface-3 text-muted'
   }
 }

@@ -281,7 +281,7 @@
               v-if="orphanedFlagCount > 0"
               @click="deleteOrphanedFlags"
               :disabled="isDeletingOrphans"
-              class="flex items-center gap-2 px-4 py-2 bg-red-500 bg-opacity-20 text-red-400 hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+              class="flex items-center gap-2 px-4 py-2 bg-red-600 text-white hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
             >
               <svg v-if="isDeletingOrphans" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -292,7 +292,7 @@
             <router-link
               v-if="flatFlaggedItems.length > 0"
               :to="`/production/${courseCode}/pipeline?mode=flagged`"
-              class="flex items-center gap-2 px-4 py-2 bg-emerald-500 bg-opacity-20 text-emerald-400 hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors"
+              class="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors"
             >
               Regenerate Queue
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -521,11 +521,11 @@
           <div
             class="type-badge px-2 py-0.5 rounded text-xs font-medium uppercase"
             :class="{
-              'bg-purple-500 bg-opacity-30 text-purple-300': journeyPlayback.currentItem.type === 'intro',
-              'bg-emerald-500 bg-opacity-30 text-emerald-300': journeyPlayback.currentItem.type === 'debut',
-              'bg-blue-500 bg-opacity-30 text-blue-300': journeyPlayback.currentItem.type === 'build',
-              'bg-amber-500 bg-opacity-30 text-amber-300': journeyPlayback.currentItem.type === 'review',
-              'bg-cyan-500 bg-opacity-30 text-cyan-300': journeyPlayback.currentItem.type === 'consolidate',
+              'bg-purple-600 text-white': journeyPlayback.currentItem.type === 'intro',
+              'bg-emerald-600 text-white': journeyPlayback.currentItem.type === 'debut',
+              'bg-blue-600 text-white': journeyPlayback.currentItem.type === 'build',
+              'bg-amber-600 text-white': journeyPlayback.currentItem.type === 'review',
+              'bg-cyan-600 text-white': journeyPlayback.currentItem.type === 'consolidate',
             }"
           >
             {{ journeyPlayback.currentItem.type }}
