@@ -323,6 +323,7 @@ body.grabbing{cursor:ew-resize;user-select:none;}
       <span class="draghint">↔ drag any gap in the timeline to set its length</span>
       <button class="tbtn" id="resetBtn">Reset</button>
       <button class="tbtn" id="exportBtn">Export</button>
+      <button class="tbtn" id="saveBtn">Save to app</button>
     </div>
 
   </div>
@@ -1343,8 +1344,8 @@ const DEFAULTS = {
     targetMeaning:500,      // target -> meaning (and meaning -> target)
     betweenRepeats:600,     // between consecutive target repeats (T·T·T)
     betweenChunks:1000,     // between chunk-units in a stage
-    betweenIntentions:900,  // between the two intentions
-    fusionPairs:0,          // fusing two atoms into a pair
+    betweenIntentions:500,  // between intentions (Tom 2026-06-15)
+    fusionPairs:200,        // LOOSE chunk gap — chunked bookend (tier 1) + pairs·200 (tier 3); pairs·0 tier overrides to 0
     afterCue:500,           // settle after the spoken "Breaking it down…"
     beforeMeans:0,          // LIVE pause before the "means <gloss>" clip (explainer; real cast→leo voice change)
     // afterMeans is no longer a live gap — the means→gloss pause is now RECORDED
@@ -1354,8 +1355,8 @@ const DEFAULTS = {
   // repeat count. DEFAULT 0 for every tier (= target → meaning, ONCE — the
   // ladder is much shorter). The per-tier stepper lets Tom bump a tier; it just
   // starts at 0. Edits only the FOCUSED tier.
-  repeats:{ explainer:0, translation:0, pairs:0, intention:0 },
-  visits:{ explainer:1, translation:1, pairs:1, intention:1 },
+  repeats:{ explainer:0, translation:0, pairs200:0, pairs0:0, intention:0 },
+  visits:{ explainer:1, translation:1, pairs200:1, pairs0:1, intention:1 },
 };
 
 /* Per-example tuned config overrides. When an example with an override is
@@ -1363,9 +1364,9 @@ const DEFAULTS = {
    Japanese carries Tom's exported tuning (2026-06-14). */
 const PER_EXAMPLE_CONFIG = {
   jpn: {
-    gaps:{ targetMeaning:450, betweenRepeats:555, betweenChunks:1200, betweenIntentions:900, fusionPairs:0, afterCue:435, beforeMeans:40 },
-    repeats:{ explainer:0, translation:0, pairs:0, intention:0 },
-    visits:{ explainer:1, translation:1, pairs:1, intention:2 },
+    gaps:{ targetMeaning:450, betweenRepeats:555, betweenChunks:1200, betweenIntentions:900, fusionPairs:200, afterCue:435, beforeMeans:40 },
+    repeats:{ explainer:0, translation:0, pairs200:0, pairs0:0, intention:0 },
+    visits:{ explainer:1, translation:1, pairs200:1, pairs0:1, intention:2 },
   },
 };
 /* config for a given example id = DEFAULTS deep-merged with its override. */
@@ -1389,11 +1390,17 @@ const GAPKIND_LABEL = { tm:'target ↔ meaning', rep:'between repeats', chunk:'b
 const GAPKIND_MAX   = { tm:700, rep:700, chunk:1300, intent:1800, fusion:400, cue:900, beforeMeans:400 };
 const GAP_MS_PER_PX = 1/0.10;   // inverse of GAPMS (drag px → ms at the base scale)
 
+/* 5-tier ladder (Tom 2026-06-15). The smooth whole-take is the DESTINATION (tier 5),
+   not the doorway: first exposure is the SLOW CHUNKED phrase (atoms @ loose gap),
+   and the ladder fuses tighter (200ms → 0ms) before the real continuous take.
+   Tier 1 (Explainer) bookends the chunked phrase around the breakdowns — it does NOT
+   play the smooth whole take. */
 const STAGES = [
-  { key:'explainer',   label:'Explainer',       gran:'atoms',     cue:true,  connector:true,  intentionOpener:true, meaning:'whole take → cue → atoms', visitsKey:'explainer'  },
-  { key:'translation', label:'Translation',     gran:'atoms',     cue:false, connector:false, meaning:'plain translation',    visitsKey:'translation'},
-  { key:'pairs',       label:'Pairs',           gran:'pairs',     cue:false, connector:false, meaning:'pair translation',     visitsKey:'pairs'      },
-  { key:'intention',   label:'Whole intention', gran:'intention', cue:false, connector:false, meaning:'whole translation',    visitsKey:'intention'  },
+  { key:'explainer',   label:'Explainer',       gran:'atoms',     cue:false, connector:true,  chunkedBookend:true, meaning:'chunked → atoms → chunked (no spoken cue)', visitsKey:'explainer'  },
+  { key:'translation', label:'Translation',     gran:'atoms',     cue:false, connector:false, meaning:'atoms + translation',  visitsKey:'translation'},
+  { key:'pairs200',    label:'Pairs · 200ms',   gran:'pairs',     cue:false, connector:false, meaning:'pairs @200 + translation', visitsKey:'pairs200' },
+  { key:'pairs0',      label:'Pairs · 0ms',     gran:'pairs',     cue:false, connector:false, fusionGap:0, meaning:'pairs @0 (clunky-clear) + translation', visitsKey:'pairs0' },
+  { key:'intention',   label:'Whole intention', gran:'intention', cue:false, connector:false, meaning:'smooth whole take + translation', visitsKey:'intention'  },
 ];
 let FOCUS = 'explainer';   // which stage is shown in the hero
 
@@ -1442,7 +1449,7 @@ function unitsForStage(stage){
     INTENTIONS.forEach(it=>{
       units.push({ targets:it.atomIdx.map(ai=>`atomTarget${ai}`),
         targetLabels:it.atomIdx.map(ai=>ATOMS[ai].target),   // per-atom labels
-        fusion:P.gaps.fusionPairs, meaningName:it.glossClip,
+        fusion:(stage.fusionGap ?? P.gaps.fusionPairs), meaningName:it.glossClip,
         mLabel:it.translation, intentionId:it.id, kind:'t', fused:true });
     });
   } else {
@@ -1462,6 +1469,69 @@ function unitBeats(stage){
 }
 function stageSequence(stage){
   const seq=[]; const push=(e)=>seq.push(e);
+
+  // ── EXPLAINER (tier 1): the SLOW + CLEAR first exposure. Per intention:
+  //    chunked phrase (atoms @ loose gap) → "breaking it down" cue → per-atom
+  //    breakdown (target + merged "means <gloss>") → chunked phrase again. The
+  //    smooth whole take NEVER plays here — it's the destination (tier 5). The
+  //    chunked bookend replaces BOTH the old whole-take opener and the per-atom
+  //    target repeats. (Tom 2026-06-15)
+  if(stage.chunkedBookend){
+    const chunkGap = (stage.fusionGap ?? P.gaps.fusionPairs);
+    // Each event carries a PHASE tag `seg` (o=opener chunked, k=known, b<i>=breakdown
+    // of intention i, c=closer) so the visual segments by PHASE — the whole-phrase
+    // opener/closer span every intention, so segmenting by intention would shatter.
+    const pushWholeChunked = (seg)=>{
+      INTENTIONS.forEach((it,ii)=>{
+        if(ii>0) push({type:'gap', ms:P.gaps.betweenIntentions, gapKind:'intent', stage:stage.key, seg});
+        it.atomIdx.forEach((ai,k)=>{
+          const nm=`atomTarget${ai}`;
+          push({type:'clip', name:nm, ms:durMs(nm), role:'target', blockKind:'t', label:ATOMS[ai].target, stage:stage.key, intentionId:it.id, seg});
+          if(k<it.atomIdx.length-1) push({type:'gap', ms:chunkGap, gapKind:'fusion', stage:stage.key, seg});
+        });
+      });
+    };
+    const pushWholeKnown = (seg)=>{
+      INTENTIONS.forEach((it,ii)=>{
+        if(ii>0) push({type:'gap', ms:P.gaps.betweenChunks, gapKind:'chunk', stage:stage.key, seg});
+        push({type:'clip', name:it.glossClip, ms:durMs(it.glossClip), role:'meaning', blockKind:'m', label:it.translation, stage:stage.key, intentionId:it.id, seg});
+      });
+    };
+    // OPENER: whole phrase (chunked target) + whole phrase (known) — gestalt + meaning
+    // BEFORE the breakdown. (Tom 2026-06-15)
+    pushWholeChunked('o');
+    push({type:'gap', ms:P.gaps.targetMeaning, gapKind:'tm', stage:stage.key, seg:'k'});
+    pushWholeKnown('k');
+    push({type:'gap', ms:P.gaps.betweenChunks, gapKind:'chunk', stage:stage.key, seg:'b0'});
+    // BREAKDOWNS: per atom — target + merged "means <gloss>". One row per intention.
+    INTENTIONS.forEach((it,ii)=>{
+      const seg='b'+ii;
+      it.atomIdx.forEach((ai,j)=>{
+        const nm=`atomTarget${ai}`;
+        push({type:'clip', name:nm, ms:durMs(nm), role:'target', blockKind:'t', label:ATOMS[ai].target, stage:stage.key, intentionId:it.id, seg});
+        const mg=`atomMeansGloss${ai}`;
+        if(EX.clips[mg]){
+          push({type:'gap', ms:P.gaps.beforeMeans, gapKind:'beforeMeans', stage:stage.key, seg});
+          push({type:'clip', name:mg, ms:durMs(mg), role:'meansGloss', blockKind:'m', label:'means '+ATOMS[ai].known, stage:stage.key, intentionId:it.id, seg});
+        } else {
+          push({type:'gap', ms:P.gaps.targetMeaning, gapKind:'tm', stage:stage.key, seg});
+          push({type:'clip', name:`atomGloss${ai}`, ms:durMs(`atomGloss${ai}`), role:'meaning', blockKind:'m', label:ATOMS[ai].known, stage:stage.key, intentionId:it.id, seg});
+        }
+        const lastAtom=(j===it.atomIdx.length-1), lastAll=(ii===INTENTIONS.length-1)&&lastAtom;
+        if(!lastAll) push({type:'gap', ms:(lastAtom?P.gaps.betweenIntentions:P.gaps.betweenChunks), gapKind:(lastAtom?'intent':'chunk'), stage:stage.key, seg});
+      });
+    });
+    // CLOSER: the whole phrase again (chunked target) — solidify.
+    push({type:'gap', ms:P.gaps.betweenChunks, gapKind:'chunk', stage:stage.key, seg:'c'});
+    pushWholeChunked('c');
+    if(stage.connector && EX.literalNote && EX.clips[EX.literalNote.clip]){
+      push({type:'gap', ms:P.gaps.betweenChunks, gapKind:'chunk', stage:stage.key});
+      push({type:'clip', name:EX.literalNote.clip, ms:durMs(EX.literalNote.clip), role:'note', blockKind:'m', label:EX.literalNote.text, stage:stage.key, intentionId:INTENTIONS[INTENTIONS.length-1].id});
+    }
+    seq.forEach((e,i)=>{ e.seqIdx=`${stage.key}#${i}`; });
+    return seq;
+  }
+
   const units=unitsForStage(stage);
   const useMeans = !!stage.connector;   // explainer tier only: target · "means" · meaning
   const leadWithIntention = !!stage.intentionOpener;  // explainer: each intention OPENS with its whole take, then the cue
@@ -1675,11 +1745,13 @@ function renderTimeline(){
 
   // split the sequence into segments by intention (cue rides intention 0).
   // Each segment becomes its own fit-to-width row so labels stay legible.
-  const segs=[]; let curId=null, cur=null;
+  const segs=[]; let curKey=null, cur=null;
   seq.forEach(e=>{
-    const id = e.intentionId || (cur?cur.id:INTENTIONS[0].id);
-    if(e.type==='gap' && e.gapKind==='intent'){ return; } // the between-intentions gap separates rows
-    if(id!==curId){ cur={id, items:[]}; segs.push(cur); curId=id; }
+    // legacy (untagged) tiers: the between-intentions gap separates rows. PHASE-tagged
+    // (explainer whole-part-whole): keep it — rows split by phase `seg`, not intention.
+    if(e.type==='gap' && e.gapKind==='intent' && e.seg==null){ return; }
+    const key = e.seg || e.intentionId || (cur?cur.key:INTENTIONS[0].id);
+    if(key!==curKey){ cur={key, id:e.intentionId, items:[]}; segs.push(cur); curKey=key; }
     cur.items.push(e);
   });
 
@@ -1698,7 +1770,10 @@ function renderTimeline(){
     // build row
     const line=document.createElement('div'); line.className='tl-line';
     const lab=document.createElement('div'); lab.className='tl-intent-label';
-    lab.innerHTML = it.id+' · '+escapeHtml(it.translation)+(stage.gran==='intention'?' · <b>whole take</b>':'');
+    lab.innerHTML = seg.key==='o' ? '<b>whole phrase</b> · chunked'
+      : seg.key==='k' ? '<b>what it means</b>'
+      : seg.key==='c' ? '<b>whole phrase</b> · again'
+      : (it.id+' · '+escapeHtml(it.translation)+(stage.gran==='intention'?' · <b>whole take</b>':''));
     line.appendChild(lab);
     const track=document.createElement('div'); track.className='tl-track';
     let x=0;
@@ -1861,6 +1936,42 @@ function buildConfig(){
 }
 const overlay=document.getElementById('overlay');
 document.getElementById('exportBtn').onclick=()=>{ document.getElementById('exportBox').value=JSON.stringify(buildConfig(),null,2); overlay.classList.add('open'); };
+
+/* ====================== SAVE → algorithm_config['stage0'] (GLOBAL) ======================
+   Writes ONLY the global knobs (gaps + per-tier visits/repeats + structure) — not the
+   per-example content — so the app reads one global Stage-0 config live (~5-min TTL).
+   Auth: the popty Supabase session token from localStorage (admin must be logged in).
+   Global only (Tom 2026-06-15: per-language would be too fiddly). */
+function buildGlobalConfig(){
+  return {
+    model:'whole-part-whole-v1',
+    gaps:{ ...P.gaps },
+    tiers:STAGES.map(s=>({ key:s.key, granularity:s.gran, fusionGap:(s.fusionGap??null),
+      visits:P.visits[s.visitsKey], targetRepeats:P.repeats[s.visitsKey] })),
+    playbackSpeed:1.0,
+  };
+}
+function supabaseToken(){
+  for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i);
+    if(k && /^sb-.*-auth-token$/.test(k)){
+      try{ const v=JSON.parse(localStorage.getItem(k)); return v.access_token || (v.currentSession&&v.currentSession.access_token) || null; }catch(e){}
+    }
+  }
+  return null;
+}
+document.getElementById('saveBtn').onclick=async (e)=>{
+  const b=e.currentTarget, tok=supabaseToken();
+  if(!tok){ b.textContent='Log into popty first'; setTimeout(()=>b.textContent='Save to app',2200); return; }
+  b.textContent='Saving…';
+  try{
+    const r=await fetch('/api/algorithm-config',{ method:'PATCH',
+      headers:{ 'Content-Type':'application/json', 'Authorization':'Bearer '+tok },
+      body:JSON.stringify({ key:'stage0', config:buildGlobalConfig() }) });
+    if(r.ok){ b.textContent='Saved ✓'; b.classList.add('copied'); }
+    else { const j=await r.json().catch(()=>({})); b.textContent='Error: '+(j.error||r.status); }
+  }catch(err){ b.textContent='Error: '+err.message; }
+  setTimeout(()=>{ b.textContent='Save to app'; b.classList.remove('copied'); },2400);
+};
 document.getElementById('closeBtn').onclick=()=>overlay.classList.remove('open');
 overlay.onclick=(e)=>{ if(e.target===overlay) overlay.classList.remove('open'); };
 document.getElementById('copyBtn').onclick=()=>{
