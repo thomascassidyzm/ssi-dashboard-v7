@@ -457,14 +457,14 @@
             </div>
             <div class="flex items-center gap-3">
               <span v-if="stageComplete('gender')" class="stage-badge-complete">Done</span>
-              <span v-else-if="stageLocked('gender')" class="stage-badge-locked">Locked</span>
+              <span v-if="stageLocked('gender')" class="stage-badge-locked">Locked</span>
               <button
                 v-else
                 @click="startGenderPrep"
                 :disabled="genderStarting || genderSpawned"
                 class="px-3 py-1 bg-pink-600/20 border border-pink-500/50 text-pink-400 hover:border-pink-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
-                {{ genderStarting ? 'Starting...' : genderSpawned ? 'Agent working...' : 'Start Gender Prep' }}
+                {{ genderStarting ? 'Starting...' : genderSpawned ? 'Agent working...' : stageComplete('gender') ? 'Rerun Gender Prep' : 'Start Gender Prep' }}
               </button>
             </div>
           </div>
@@ -1261,7 +1261,8 @@ async function startBuildTeam() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/build/team-start/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ targetSeeds: seedCount.value })
     })
     if (result.ok) {
       buildTeamSpawned.value = true
