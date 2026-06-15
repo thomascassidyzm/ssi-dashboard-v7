@@ -34,7 +34,7 @@
       <ol class="how-to">
         <li>Tap <strong>Start</strong> and read the highlighted line aloud.</li>
         <li>Finish the line, take a breath, then tap <strong>Next</strong> (or press <kbd>Space</kbd>).</li>
-        <li>Keep going — the mic stays on the whole time. Tap <strong>Again</strong> to re-read a line.</li>
+        <li>Keep going — tap <strong>Again</strong> to re-read a line.</li>
         <li>Tap <strong>Done</strong> at the end. It saves itself.</li>
       </ol>
 
@@ -75,10 +75,7 @@
       <!-- the script as a calm scrolling autocue -->
       <div class="autocue" ref="autocueEl">
         <template v-for="(it, i) in items" :key="it.sentenceId || i">
-          <div
-            v-if="showScene(i)"
-            class="scene-head"
-          >{{ it.sceneTitle || it.podTitle }}</div>
+          <div v-if="showScene(i)" class="scene-head">{{ it.sceneTitle || it.podTitle }}</div>
           <div
             class="cue-line"
             :data-idx="i"
@@ -98,10 +95,10 @@
 
       <!-- controls: thumb-reachable -->
       <div class="lt-controls">
-        <button class="ctl-again" @click="onAgain">Again</button>
-        <button class="ctl-next" @click="onNext">{{ hasNext ? 'Next ▶' : 'Done ✓' }}</button>
+        <button class="ctl-again" :disabled="advancing" @click="onAgain">Again</button>
+        <button class="ctl-next" :disabled="advancing" @click="onNext">{{ hasNext ? 'Next ▶' : 'Done ✓' }}</button>
       </div>
-      <button class="btn-finish" @click="onFinish">Finish &amp; save</button>
+      <button class="btn-finish" :disabled="advancing" @click="onFinish">Finish &amp; save</button>
       <p class="kbd-hint"><kbd>Space</kbd> next · <kbd>R</kbd> again</p>
     </section>
 
@@ -115,7 +112,7 @@
         <div class="sum-stat" v-if="uploadQueue.failedIndices.size > 0"><span class="sum-value failed">{{ uploadQueue.failedIndices.size }}</span><span class="sum-label">Failed</span></div>
       </div>
       <p v-if="uploadQueue.pendingCount.value > 0" class="resume-note">Keep this page open until everything has saved.</p>
-      <p v-if="skippedShort > 0" class="resume-note">{{ skippedShort }} very short tap(s) were ignored.</p>
+      <p v-if="skippedEmpty > 0" class="resume-note">{{ skippedEmpty }} empty/very-short take(s) were skipped (nothing captured).</p>
       <div class="summary-actions">
         <button class="btn-ghost" @click="reloadAfterSession">Back to my lines</button>
       </div>
@@ -135,19 +132,19 @@ import {
   speakerColor
 } from '@/utils/podRecordingPlan'
 import { useUploadQueue } from '@/composables/useAudioUpload'
-import { useWavRecorder, encodeWav, zeroGuard } from '@/composables/useWavRecorder'
+import { useTapRecorder } from '@/composables/useTapRecorder'
 
-// Long-take pod recorder: ONE continuous lossless take, tap-to-advance autocue.
-// Boundaries come from the human's taps (exact by construction), so the take is
-// sliced client-side into per-line WAVs and fed to the proven per-line upload
-// path (server masters -16 LUFS + registers each line, origin=human).
+// Long-take pod recorder: continuous autocue, tap-to-advance. Each line is its own
+// MediaRecorder take (reliable) — on tap we close the current line's take, upload it
+// to the proven per-line route (server transcodes + masters -16 LUFS, origin=human),
+// and open the next line's take. An empty/too-short blob is never uploaded.
 const props = defineProps({
   courseCode: { type: String, required: true },
   voiceId: { type: String, required: true }
 })
 const emit = defineEmits(['progress'])
 
-const recorder = useWavRecorder()
+const recorder = useTapRecorder()
 const uploadQueue = useUploadQueue()
 
 const phase = ref('loading') // loading | no-plan | error | ready | recording | done
@@ -155,11 +152,10 @@ const loadError = ref(null)
 const micError = ref(null)
 const plan = ref(null)
 
-// An actor records their own CHARACTER (target) lines. A voice that is also cast
-// as the explainer gets every known/English line in the plan too — but the English
-// narration is recorded separately (here it already exists), so we show the actor's
-// target lines when they have any, and fall back to the full queue only for a
-// pure-explainer voice (one with no character lines of its own).
+// An actor records their own CHARACTER (target) lines. A voice that is also cast as
+// the explainer gets every known/English line too — but the English narration is
+// recorded separately (here it already exists), so we show the actor's target lines
+// when they have any, and fall back to the full queue only for a pure-explainer voice.
 const items = computed(() => {
   const all = plan.value?.items || []
   const target = all.filter(it => it.kind === 'target')
@@ -175,16 +171,12 @@ const planSpeakers = computed(() => {
 const includeRecorded = ref(false)
 const selectedDeviceId = ref(null)
 const currentIndex = ref(0)
-const sessionRecorded = ref(new Set())   // sentenceIds committed this session
+const sessionRecorded = ref(new Set())
 const committedCount = ref(0)
-const skippedShort = ref(0)
+const readThisSession = ref(0)
+const skippedEmpty = ref(0)
+const advancing = ref(false)        // guards the async tap handlers
 let sessionId = null
-
-// boundary bookkeeping (sample offsets into the continuous take)
-let segments = []        // { itemIndex, start, end }
-let guardOffsets = []    // tap offsets to zero (click guard)
-let segStart = 0         // start sample of the line currently being read
-let lastTapAt = 0        // wall-clock ms of last tap (debounce)
 
 const autocueEl = ref(null)
 
@@ -194,11 +186,9 @@ function isDone(it) {
 const combinedRecordedCount = computed(() =>
   items.value.reduce((n, it) => n + (isDone(it) ? 1 : 0), 0)
 )
-// How many lines this session will actually read (respecting include-recorded).
 const toRecordCount = computed(() =>
   includeRecorded.value ? totals.value.total : (totals.value.total - combinedRecordedCount.value)
 )
-const readThisSession = ref(0)
 
 const startIndex = computed(() =>
   includeRecorded.value
@@ -235,18 +225,13 @@ async function beginSession() {
     micError.value = friendlyMicError(err)
     return
   }
-  // labels are populated only after permission — refresh the picker for next time
   recorder.listDevices()
-  if (recorder.appliedSettings.value && recorder.appliedSettings.value.autoGainControl) {
-    // non-fatal: warn but proceed (some Chrome builds refuse to disable AGC)
-    console.warn('[long-take] browser kept auto-gain on:', recorder.appliedSettings.value)
-  }
   sessionId = `pod_longtake_${Date.now()}`
-  segments = []; guardOffsets = []; segStart = 0; lastTapAt = 0
-  committedCount.value = 0; skippedShort.value = 0; readThisSession.value = 0
+  committedCount.value = 0; readThisSession.value = 0; skippedEmpty.value = 0
   currentIndex.value = startIndex.value
   phase.value = 'recording'
   scrollToCurrent()
+  recorder.beginLine()
 }
 
 function friendlyMicError(err) {
@@ -258,86 +243,85 @@ function friendlyMicError(err) {
 }
 
 // ── Tap to advance ───────────────────────────────────────────────────────────
+let lastTapAt = 0
 function debounced() {
   const now = Date.now()
-  if (now - lastTapAt < 300) return false  // ignore double-taps / key repeat
+  if (now - lastTapAt < 250) return false
   lastTapAt = now
   return true
 }
 
-function onNext() {
-  if (phase.value !== 'recording') return
-  if (!debounced()) return
-  const off = recorder.getSampleOffset()
-  segments.push({ itemIndex: currentIndex.value, start: segStart, end: off })
-  guardOffsets.push(off)
-  segStart = off
-  readThisSession.value++
-
-  const next = nextRecordableIndex(items.value, currentIndex.value, {
-    extraRecorded: sessionRecorded.value,
-    includeRecorded: includeRecorded.value
+// Upload the current line's take (guarding against empty/too-short blobs).
+function commitLine(index, blob) {
+  const item = items.value[index]
+  if (!item) return
+  if (!blob || blob.size < 1200) { skippedEmpty.value++; return } // empty/near-empty: never save silence
+  uploadQueue.queueUpload({
+    blob,
+    courseCode: props.courseCode,
+    uuid: null,
+    metadata: buildPodUploadMetadata(item, { voiceId: props.voiceId, sessionId }),
+    provenance: {
+      recorded_by: 'pod-long-take',
+      recorded_at: new Date().toISOString(),
+      session_id: sessionId,
+      mode: 'long-take'
+    },
+    itemIndex: index
   })
-  if (next === -1) { onFinish(); return }
-  currentIndex.value = next
-  scrollToCurrent()
+  sessionRecorded.value.add(item.sentenceId)
+  sessionRecorded.value = new Set(sessionRecorded.value)
+  committedCount.value++
+  readThisSession.value++
 }
 
-function onAgain() {
-  if (phase.value !== 'recording') return
+async function onNext() {
+  if (phase.value !== 'recording' || advancing.value) return
   if (!debounced()) return
-  // Abandon the current line's audio so far; the re-read starts now.
-  const off = recorder.getSampleOffset()
-  guardOffsets.push(off)
-  segStart = off
+  advancing.value = true
+  try {
+    const blob = await recorder.endLine()
+    commitLine(currentIndex.value, blob)
+    const next = nextRecordableIndex(items.value, currentIndex.value, {
+      extraRecorded: sessionRecorded.value,
+      includeRecorded: includeRecorded.value
+    })
+    if (next === -1) { await finishAfterLine(); return }
+    currentIndex.value = next
+    scrollToCurrent()
+    recorder.beginLine()
+  } finally {
+    advancing.value = false
+  }
+}
+
+async function onAgain() {
+  if (phase.value !== 'recording' || advancing.value) return
+  if (!debounced()) return
+  advancing.value = true
+  try {
+    await recorder.discardLine()
+    recorder.beginLine()
+  } finally {
+    advancing.value = false
+  }
 }
 
 async function onFinish() {
-  if (phase.value !== 'recording') return
-  // Close out the line in progress.
-  const off = recorder.getSampleOffset()
-  if (off > segStart) {
-    segments.push({ itemIndex: currentIndex.value, start: segStart, end: off })
-    readThisSession.value++
-  }
-  phase.value = 'done'
-
-  let pcm, sampleRate
+  if (phase.value !== 'recording' || advancing.value) return
+  advancing.value = true
   try {
-    const res = await recorder.stop()
-    pcm = res.pcm; sampleRate = res.sampleRate
-  } catch (err) {
-    micError.value = (err && err.message) || 'Could not finalise the recording.'
-    return
+    const blob = await recorder.endLine()
+    commitLine(currentIndex.value, blob)
+    await finishAfterLine()
+  } finally {
+    advancing.value = false
   }
+}
 
-  // Mute click windows around every tap, then slice each line and queue it.
-  zeroGuard(pcm, guardOffsets, sampleRate)
-  const minSamples = Math.round(sampleRate * 0.2) // skip < 200ms (mis-taps)
-
-  for (const seg of segments) {
-    const item = items.value[seg.itemIndex]
-    if (!item) continue
-    if (seg.end - seg.start < minSamples) { skippedShort.value++; continue }
-    const slice = pcm.subarray(seg.start, seg.end)
-    const blob = encodeWav(slice, sampleRate)
-    uploadQueue.queueUpload({
-      blob,
-      courseCode: props.courseCode,
-      uuid: null, // server mints identity per take (new row + re-point)
-      metadata: buildPodUploadMetadata(item, { voiceId: props.voiceId, sessionId }),
-      provenance: {
-        recorded_by: 'pod-long-take',
-        recorded_at: new Date().toISOString(),
-        session_id: sessionId,
-        mode: 'long-take'
-      },
-      itemIndex: seg.itemIndex
-    })
-    sessionRecorded.value.add(item.sentenceId)
-    committedCount.value++
-  }
-  sessionRecorded.value = new Set(sessionRecorded.value) // reactivity
+async function finishAfterLine() {
+  await recorder.stop()
+  phase.value = 'done'
 }
 
 // ── Autocue scroll ───────────────────────────────────────────────────────────
@@ -407,7 +391,6 @@ watch(() => [props.courseCode, props.voiceId], () => {
 
 onUnmounted(() => {
   if (recorder.isRecording.value) recorder.stop()
-  // Upload queue is a shared singleton — only clear when nothing is in flight.
   if (uploadQueue.pendingCount.value === 0) uploadQueue.resetQueue()
 })
 </script>
@@ -509,7 +492,7 @@ kbd {
   height: 48vh; min-height: 260px; overflow-y: auto;
   background: var(--color-void, #0f172a);
   border: 1px solid var(--color-graphite, #475569); border-radius: 12px;
-  padding: 30vh 1.25rem; /* generous top/bottom so the current line can centre */
+  padding: 30vh 1.25rem;
   scroll-behavior: smooth;
 }
 .scene-head {
@@ -547,6 +530,7 @@ kbd {
   border-radius: 14px; border: none; cursor: pointer;
   background: var(--color-emerald, #06ffa5); color: var(--color-void, #0f172a);
 }
+.ctl-again:disabled, .ctl-next:disabled, .btn-finish:disabled { opacity: 0.5; cursor: default; }
 .btn-finish {
   align-self: center; font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem;
   color: var(--color-paper-dim, #c1c1bb); background: transparent;
