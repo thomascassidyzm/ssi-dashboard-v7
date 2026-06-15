@@ -128,6 +128,7 @@ import { ref, computed, watch, nextTick, onMounted, onBeforeUnmount, onUnmounted
 import { getApiUrl } from '@/services/api'
 import {
   normalizeRecordingPlan,
+  planTotals,
   firstUnrecordedIndex,
   nextRecordableIndex,
   buildPodUploadMetadata,
@@ -154,8 +155,17 @@ const loadError = ref(null)
 const micError = ref(null)
 const plan = ref(null)
 
-const items = computed(() => plan.value?.items || [])
-const totals = computed(() => plan.value?.totals || { total: 0, recorded: 0, remaining: 0 })
+// An actor records their own CHARACTER (target) lines. A voice that is also cast
+// as the explainer gets every known/English line in the plan too — but the English
+// narration is recorded separately (here it already exists), so we show the actor's
+// target lines when they have any, and fall back to the full queue only for a
+// pure-explainer voice (one with no character lines of its own).
+const items = computed(() => {
+  const all = plan.value?.items || []
+  const target = all.filter(it => it.kind === 'target')
+  return target.length ? target : all
+})
+const totals = computed(() => planTotals(items.value))
 const planSpeakers = computed(() => {
   const s = plan.value?.speakers
   return Array.isArray(s) && s.length > 0 ? s.filter(x => x !== '__explainer__').join(', ') : null
