@@ -58,8 +58,8 @@
 
     <!-- Password Modal -->
     <div v-if="showPasswordModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50" @click.self="closePasswordModal">
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 w-full max-w-sm">
-        <h3 class="text-lg font-semibold text-slate-100 mb-4">{{ hasPassword ? 'Change Password' : 'Set Password' }}</h3>
+      <div class="bg-surface border border-line rounded-lg p-6 w-full max-w-sm">
+        <h3 class="text-lg font-semibold text-ink mb-4">{{ hasPassword ? 'Change Password' : 'Set Password' }}</h3>
 
         <div v-if="passwordSuccess" class="text-emerald-400 text-center py-4">
           Password updated!
@@ -70,7 +70,7 @@
             v-model="newPassword"
             type="password"
             placeholder="New password (min 8 chars)"
-            class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-sm"
+            class="w-full bg-canvas border border-line rounded-lg px-4 py-2.5 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none text-sm"
             @keyup.enter="$refs.confirmPw?.focus()"
           />
           <input
@@ -78,19 +78,19 @@
             v-model="confirmPassword"
             type="password"
             placeholder="Confirm password"
-            class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-sm"
+            class="w-full bg-canvas border border-line rounded-lg px-4 py-2.5 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none text-sm"
             @keyup.enter="handleSetPassword"
           />
           <p v-if="passwordError" class="text-red-400 text-xs">{{ passwordError }}</p>
           <div class="flex gap-2 pt-1">
             <button
               @click="closePasswordModal"
-              class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm font-medium rounded-lg transition-colors"
+              class="flex-1 px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm font-medium rounded-lg transition-colors"
             >Cancel</button>
             <button
               @click="handleSetPassword"
               :disabled="passwordSaving"
-              class="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors"
+              class="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 text-ink text-sm font-medium rounded-lg transition-colors"
             >{{ passwordSaving ? 'Saving...' : 'Save' }}</button>
           </div>
         </div>
@@ -484,7 +484,7 @@ onMounted(() => {
   width: 100%;
   padding: 0.5rem 1rem;
   font-size: 0.8125rem;
-  color: #94a3b8;
+  color: var(--muted);
   background: none;
   border: none;
   text-align: left;
@@ -496,7 +496,7 @@ onMounted(() => {
 
 .user-dropdown-item:hover {
   background: rgba(148, 163, 184, 0.1);
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .user-dropdown-logout {
@@ -504,7 +504,7 @@ onMounted(() => {
   width: 100%;
   padding: 0.5rem 1rem;
   font-size: 0.8125rem;
-  color: #ef4444;
+  color: var(--danger);
   background: none;
   border: none;
   text-align: left;

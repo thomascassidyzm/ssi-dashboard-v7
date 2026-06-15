@@ -16,18 +16,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Cinematic Dark Palette - Production Suite (Harmonized with Tailwind Slate) */
-  --color-void: #0f172a;      /* slate-900 - Main background */
-  --color-shadow: #1e293b;    /* slate-800 - Elevated surfaces */
-  --color-slate: #334155;     /* slate-700 - Cards & panels */
-  --color-graphite: #475569;  /* slate-600 - Borders & dividers */
+  /* Legacy "cinematic" palette — now ALIASES the semantic theme tokens (defined below) so any
+     component using var(--color-*) re-themes automatically. Dark values are unchanged; light
+     values flow from [data-theme="light"]. Resolution is at use-time, so order doesn't matter. */
+  --color-void: var(--canvas);      /* was slate-900 - Main background */
+  --color-shadow: var(--surface);   /* was slate-800 - Elevated surfaces */
+  --color-slate: var(--surface-2);  /* was slate-700 - Cards & panels */
+  --color-graphite: var(--surface-3); /* was slate-600 - Borders & dividers */
 
-  --color-film-red: #e63946;
-  --color-tungsten: #ffa630;
-  --color-emerald: #06ffa5;
+  --color-film-red: var(--danger);
+  --color-tungsten: var(--accent);
+  --color-emerald: var(--accent-2);
 
-  --color-paper: #f7f7f2;
-  --color-paper-dim: #c1c1bb;
+  --color-paper: var(--ink);        /* was #f7f7f2 near-white text */
+  --color-paper-dim: var(--muted);
+  --color-paper-muted: var(--faint);
 
   /* Typography */
   --font-display: 'Crimson Pro', serif;
