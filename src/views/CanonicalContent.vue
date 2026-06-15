@@ -12,9 +12,9 @@
     <main class="content-area">
 
       <!-- Overview -->
-      <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8 mb-8">
+      <div class="bg-surface/50 rounded-lg border border-line/20 p-8 mb-8">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-4">3-Parameter Input Model</h2>
-        <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
+        <div class="prose prose-invert prose-emerald max-w-none text-ink">
           <p class="mb-4">
             All SSi courses are generated from <strong>3 inputs</strong>:
           </p>
@@ -31,78 +31,78 @@
       </div>
 
       <!-- Canonical Seeds -->
-      <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8 mb-8">
+      <div class="bg-surface/50 rounded-lg border border-line/20 p-8 mb-8">
         <div class="flex items-center justify-between mb-4">
           <div>
             <h2 class="text-2xl font-semibold text-emerald-400">Canonical Seeds</h2>
-            <p class="text-slate-400 mt-1">{{ totalSeeds || '…' }} pedagogically-ordered seeds with {target} placeholders</p>
+            <p class="text-muted mt-1">{{ totalSeeds || '…' }} pedagogically-ordered seeds with {target} placeholders</p>
           </div>
-          <span class="text-xs text-slate-500 font-mono">Supabase · canonical_seeds</span>
+          <span class="text-xs text-faint font-mono">Supabase · canonical_seeds</span>
         </div>
 
-        <div class="bg-slate-900/50 rounded p-4 mb-4">
-          <p class="text-sm text-slate-300 mb-2"><strong>Source:</strong> <code class="text-emerald-400">Supabase table: canonical_seeds (live)</code></p>
-          <p class="text-sm text-slate-300 mb-2"><strong>Total Seeds:</strong> <code class="text-emerald-400">{{ totalSeeds || '…' }}</code></p>
-          <p class="text-sm text-slate-300"><strong>Optimization:</strong> <code class="text-emerald-400">16 years empirical refinement</code></p>
+        <div class="bg-canvas/50 rounded p-4 mb-4">
+          <p class="text-sm text-ink mb-2"><strong>Source:</strong> <code class="text-emerald-400">Supabase table: canonical_seeds (live)</code></p>
+          <p class="text-sm text-ink mb-2"><strong>Total Seeds:</strong> <code class="text-emerald-400">{{ totalSeeds || '…' }}</code></p>
+          <p class="text-sm text-ink"><strong>Optimization:</strong> <code class="text-emerald-400">16 years empirical refinement</code></p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+        <div class="bg-canvas/80 border border-line/20 rounded p-4">
           <h3 class="text-sm font-semibold text-emerald-300 mb-2">Sample Seeds (First 10)</h3>
-          <pre class="text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap" v-if="canonicalSeeds.length > 0">{{ JSON.stringify(canonicalSeeds.slice(0, 10), null, 2) }}</pre>
-          <p v-else class="text-slate-400 text-sm">Loading...</p>
+          <pre class="text-xs text-ink overflow-x-auto whitespace-pre-wrap" v-if="canonicalSeeds.length > 0">{{ JSON.stringify(canonicalSeeds.slice(0, 10), null, 2) }}</pre>
+          <p v-else class="text-muted text-sm">Loading...</p>
         </div>
       </div>
 
       <!-- Encouragements -->
-      <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8 mb-8">
+      <div class="bg-surface/50 rounded-lg border border-line/20 p-8 mb-8">
         <div class="flex items-center justify-between mb-4">
           <div>
             <h2 class="text-2xl font-semibold text-emerald-400">Encouragements</h2>
-            <p class="text-slate-400 mt-1">Motivational content spoken in known language</p>
+            <p class="text-muted mt-1">Motivational content spoken in known language</p>
           </div>
-          <span class="text-xs text-slate-500 font-mono">{lang}_encouragements.json</span>
+          <span class="text-xs text-faint font-mono">{lang}_encouragements.json</span>
         </div>
 
-        <div class="bg-slate-900/50 rounded p-4 mb-4">
-          <p class="text-sm text-slate-300 mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/eng_encouragements.json</code></p>
-          <p class="text-sm text-slate-300 mb-2"><strong>Pooled Encouragements:</strong> <code class="text-emerald-400">{{ encouragements.pooledEncouragements?.length || 0 }}</code> (random selection)</p>
-          <p class="text-sm text-slate-300 mb-2"><strong>Ordered Encouragements:</strong> <code class="text-emerald-400">{{ encouragements.orderedEncouragements?.length || 0 }}</code> (sequential delivery)</p>
-          <p class="text-sm text-slate-300"><strong>Note:</strong> One file per known language (currently only English)</p>
+        <div class="bg-canvas/50 rounded p-4 mb-4">
+          <p class="text-sm text-ink mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/eng_encouragements.json</code></p>
+          <p class="text-sm text-ink mb-2"><strong>Pooled Encouragements:</strong> <code class="text-emerald-400">{{ encouragements.pooledEncouragements?.length || 0 }}</code> (random selection)</p>
+          <p class="text-sm text-ink mb-2"><strong>Ordered Encouragements:</strong> <code class="text-emerald-400">{{ encouragements.orderedEncouragements?.length || 0 }}</code> (sequential delivery)</p>
+          <p class="text-sm text-ink"><strong>Note:</strong> One file per known language (currently only English)</p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+        <div class="bg-canvas/80 border border-line/20 rounded p-4">
           <h3 class="text-sm font-semibold text-emerald-300 mb-2">Pooled Encouragements (First 5)</h3>
-          <pre class="text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap" v-if="encouragements.pooledEncouragements">{{ JSON.stringify(encouragements.pooledEncouragements.slice(0, 5), null, 2) }}</pre>
-          <p v-else class="text-slate-400 text-sm">Loading...</p>
+          <pre class="text-xs text-ink overflow-x-auto whitespace-pre-wrap" v-if="encouragements.pooledEncouragements">{{ JSON.stringify(encouragements.pooledEncouragements.slice(0, 5), null, 2) }}</pre>
+          <p v-else class="text-muted text-sm">Loading...</p>
         </div>
       </div>
 
       <!-- Welcomes -->
-      <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8 mb-8">
+      <div class="bg-surface/50 rounded-lg border border-line/20 p-8 mb-8">
         <div class="flex items-center justify-between mb-4">
           <div>
             <h2 class="text-2xl font-semibold text-emerald-400">Welcome Messages</h2>
-            <p class="text-slate-400 mt-1">Course introduction templates (one per language pair)</p>
+            <p class="text-muted mt-1">Course introduction templates (one per language pair)</p>
           </div>
-          <span class="text-xs text-slate-500 font-mono">welcomes.json</span>
+          <span class="text-xs text-faint font-mono">welcomes.json</span>
         </div>
 
-        <div class="bg-slate-900/50 rounded p-4 mb-4">
-          <p class="text-sm text-slate-300 mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/welcomes.json</code></p>
-          <p class="text-sm text-slate-300 mb-2"><strong>Structure:</strong> Course-specific welcome per language pair</p>
-          <p class="text-sm text-slate-300"><strong>Spoken in:</strong> The known language</p>
+        <div class="bg-canvas/50 rounded p-4 mb-4">
+          <p class="text-sm text-ink mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/welcomes.json</code></p>
+          <p class="text-sm text-ink mb-2"><strong>Structure:</strong> Course-specific welcome per language pair</p>
+          <p class="text-sm text-ink"><strong>Spoken in:</strong> The known language</p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+        <div class="bg-canvas/80 border border-line/20 rounded p-4">
           <h3 class="text-sm font-semibold text-emerald-300 mb-2">Welcomes Template</h3>
-          <pre class="text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap">{{ JSON.stringify(welcomes, null, 2) }}</pre>
+          <pre class="text-xs text-ink overflow-x-auto whitespace-pre-wrap">{{ JSON.stringify(welcomes, null, 2) }}</pre>
         </div>
       </div>
 
       <!-- Future: Editing Note -->
       <div class="bg-amber-900/20 border border-amber-500/30 rounded-lg p-6">
         <h3 class="text-lg font-semibold text-amber-400 mb-2">📝 Future Enhancement</h3>
-        <p class="text-slate-300 text-sm">
+        <p class="text-ink text-sm">
           In-browser editing of canonical content is planned for a future release. For now, edit the JSON files directly in:
           <code class="text-emerald-400 text-xs">/public/vfs/canonical/</code>
         </p>
@@ -158,7 +158,7 @@ onMounted(async () => {
 }
 
 .page-subtitle {
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0;
 }
 

@@ -357,7 +357,7 @@ const poolClass = computed(() => {
 
 <style scoped>
 .uptime-panel {
-  color: #e2e8f0;
+  color: var(--ink);
   margin-bottom: 48px;
 }
 .section-title {
@@ -367,7 +367,7 @@ const poolClass = computed(() => {
 }
 .section-blurb {
   font-size: 14px;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0 0 24px 0;
   line-height: 1.6;
 }
@@ -384,7 +384,7 @@ const poolClass = computed(() => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 28px 0 12px 0;
 }
 .subsection-title-spaced {
@@ -392,7 +392,7 @@ const poolClass = computed(() => {
 }
 .subsection-blurb {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0 0 16px 0;
   line-height: 1.6;
 }
@@ -407,12 +407,12 @@ const poolClass = computed(() => {
 }
 .loading {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 24px;
 }
 .empty-inline {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   padding: 14px;
   text-align: center;
   border: 1px dashed rgba(148, 163, 184, 0.2);
@@ -430,18 +430,18 @@ const poolClass = computed(() => {
 .setup-cta-title {
   font-size: 14px;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--ink);
   margin-bottom: 8px;
 }
 .setup-cta-body {
   font-size: 13px;
-  color: #cbd5e1;
+  color: var(--ink);
   margin: 0 0 10px 0;
   line-height: 1.6;
 }
 .setup-cta-list {
   font-size: 13px;
-  color: #cbd5e1;
+  color: var(--ink);
   margin: 0 0 10px 18px;
   line-height: 1.7;
 }
@@ -471,16 +471,16 @@ const poolClass = computed(() => {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #64748b;
+  background: var(--faint);
   box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.15);
 }
 .dot-up { background: #22c55e; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18); }
 .dot-down { background: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.22); }
-.dot-paused { background: #94a3b8; }
+.dot-paused { background: var(--muted); }
 .dot-pending,
 .dot-validating { background: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18); }
 .monitor-name {
-  color: #f1f5f9;
+  color: var(--ink);
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -491,7 +491,7 @@ const poolClass = computed(() => {
   font-size: 11px;
   letter-spacing: 0.05em;
   font-weight: 600;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .status-up { color: #86efac; }
 .status-down { color: #fca5a5; }
@@ -499,7 +499,7 @@ const poolClass = computed(() => {
 .status-validating { color: #fbbf24; }
 .monitor-last,
 .monitor-rt {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
@@ -519,7 +519,7 @@ const poolClass = computed(() => {
   font-size: 13px;
 }
 .availability-label {
-  color: #cbd5e1;
+  color: var(--ink);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -536,12 +536,12 @@ const poolClass = computed(() => {
   transition: width 0.4s ease;
 }
 .availability-pct {
-  color: #f1f5f9;
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
   font-weight: 500;
 }
 .availability-incidents {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 12px;
 }
 
@@ -555,7 +555,7 @@ const poolClass = computed(() => {
   text-align: left;
   padding: 8px 10px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-  color: #94a3b8;
+  color: var(--muted);
   font-weight: 500;
   text-transform: uppercase;
   font-size: 11px;
@@ -564,10 +564,10 @@ const poolClass = computed(() => {
 .incident-table td {
   padding: 8px 10px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.08);
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .incident-cause {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 12px;
 }
 
@@ -601,7 +601,7 @@ const poolClass = computed(() => {
 }
 .metric-label {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 6px;
@@ -609,17 +609,17 @@ const poolClass = computed(() => {
 .metric-value {
   font-size: 22px;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 .metric-sublabel {
   font-size: 11px;
-  color: #64748b;
+  color: var(--faint);
   margin-top: 4px;
 }
 .db-meta {
   font-size: 11px;
-  color: #64748b;
+  color: var(--faint);
   margin-top: 4px;
   font-variant-numeric: tabular-nums;
 }

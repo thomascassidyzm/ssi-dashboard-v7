@@ -1,6 +1,6 @@
 <template>
-  <section class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
-    <h2 class="text-xl font-semibold text-slate-100 mb-4 flex items-center gap-2">
+  <section class="bg-surface/50 rounded-lg border border-line/20 p-6">
+    <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
       <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
       </svg>
@@ -12,7 +12,7 @@
       <button
         @click="$emit('start')"
         :disabled="!canStart || isRunning"
-        class="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-lg hover:shadow-emerald-500/20 flex items-center gap-2"
+        class="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-surface-2 disabled:to-surface-3 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-lg hover:shadow-emerald-500/20 flex items-center gap-2"
       >
         <svg v-if="isRunning" class="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -53,7 +53,7 @@
       <button
         @click="$emit('plan')"
         :disabled="isRunning"
-        class="px-6 py-3 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:cursor-not-allowed rounded-lg font-semibold transition-all flex items-center gap-2"
+        class="px-6 py-3 bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:cursor-not-allowed rounded-lg font-semibold transition-all flex items-center gap-2"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
@@ -95,6 +95,6 @@ const statusClass = computed(() => {
   if (props.hasFailed) {
     return 'bg-red-900/20 border border-red-500/50 text-red-300'
   }
-  return 'bg-slate-900/20 border border-slate-500/50 text-slate-300'
+  return 'bg-canvas/20 border border-line/50 text-ink'
 })
 </script>

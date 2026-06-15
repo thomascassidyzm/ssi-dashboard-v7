@@ -140,7 +140,7 @@ function isLastPhase(key) {
 
 <style scoped>
 .pipeline-progress {
-  background: var(--elevated, #334155);
+  background: var(--elevated, var(--surface-2));
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
@@ -162,14 +162,14 @@ function isLastPhase(key) {
 .phase-box {
   width: 140px;
   padding: 0.75rem;
-  background: var(--void, #0f172a);
-  border: 2px solid var(--border, #334155);
+  background: var(--void, var(--canvas));
+  border: 2px solid var(--border, var(--surface-2));
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .phase-box.phase-pending {
-  border-color: var(--border, #334155);
+  border-color: var(--border, var(--surface-2));
   opacity: 0.6;
 }
 
@@ -189,7 +189,7 @@ function isLastPhase(key) {
 }
 
 .phase-box.phase-skipped {
-  border-color: var(--border, #334155);
+  border-color: var(--border, var(--surface-2));
   opacity: 0.4;
 }
 
@@ -208,7 +208,7 @@ function isLastPhase(key) {
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, var(--faint));
 }
 
 .phase-running .phase-name {
@@ -222,12 +222,12 @@ function isLastPhase(key) {
 .phase-label {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text, #f1f5f9);
+  color: var(--text, var(--ink));
 }
 
 .phase-progress-bar {
   height: 4px;
-  background: var(--border, #334155);
+  background: var(--border, var(--surface-2));
   border-radius: 2px;
   overflow: hidden;
   margin-bottom: 0.5rem;
@@ -257,7 +257,7 @@ function isLastPhase(key) {
 .phase-status-text {
   font-size: 0.6875rem;
   font-weight: 500;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, var(--faint));
 }
 
 .phase-running .phase-status-text {
@@ -267,7 +267,7 @@ function isLastPhase(key) {
 .phase-job-id {
   font-size: 0.625rem;
   font-family: 'SF Mono', Monaco, monospace;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, var(--faint));
   opacity: 0.7;
 }
 
@@ -282,7 +282,7 @@ function isLastPhase(key) {
 .phase-connector svg {
   width: 20px;
   height: 20px;
-  color: var(--border-light, #475569);
+  color: var(--border-light, var(--surface-3));
 }
 
 /* Responsive: stack on small screens */

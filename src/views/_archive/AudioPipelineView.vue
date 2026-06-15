@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100">
+  <div class="min-h-screen bg-canvas text-ink">
     <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
+    <header class="bg-surface/50 border-b border-line/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <button
           @click="$router.back()"
@@ -13,7 +13,7 @@
           Back to Course Editor
         </button>
         <h1 class="text-3xl font-bold text-emerald-400">Audio Generation Pipeline</h1>
-        <p class="mt-2 text-slate-400">{{ courseCode }}</p>
+        <p class="mt-2 text-muted">{{ courseCode }}</p>
       </div>
     </header>
 
@@ -23,13 +23,13 @@
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
         <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500 mx-auto"></div>
-        <p class="mt-4 text-slate-400">Loading course data...</p>
+        <p class="mt-4 text-muted">Loading course data...</p>
       </div>
 
       <!-- Error State -->
       <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
         <h2 class="text-xl font-bold text-red-400 mb-2">Error</h2>
-        <p class="text-slate-300">{{ error }}</p>
+        <p class="text-ink">{{ error }}</p>
       </div>
 
       <!-- Pipeline View -->
@@ -57,10 +57,10 @@
                 }">
                   {{ statusLabel }}
                 </h3>
-                <p class="text-sm text-slate-400">{{ statusDescription }}</p>
+                <p class="text-sm text-muted">{{ statusDescription }}</p>
               </div>
             </div>
-            <div v-if="jobData?.startedAt" class="text-sm text-slate-500">
+            <div v-if="jobData?.startedAt" class="text-sm text-faint">
               Started: {{ formatTime(jobData.startedAt) }}
             </div>
           </div>
@@ -68,7 +68,7 @@
           <!-- Real-time Progress (when running) -->
           <div v-if="jobStatus === 'running' && progressData" class="mt-4 space-y-4">
             <!-- Progress Bar -->
-            <div class="w-full bg-slate-800 rounded-full h-4 overflow-hidden">
+            <div class="w-full bg-surface rounded-full h-4 overflow-hidden">
               <div
                 class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-500"
                 :style="{ width: progressData.progress?.percentage + '%' }"
@@ -77,34 +77,34 @@
 
             <!-- Progress Stats -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+              <div class="bg-canvas/50 rounded-lg p-3 text-center">
                 <div class="text-2xl font-bold text-blue-400">
                   {{ progressData.progress?.current || 0 }} / {{ progressData.progress?.total || '?' }}
                 </div>
-                <div class="text-xs text-slate-400">Samples Generated</div>
+                <div class="text-xs text-muted">Samples Generated</div>
               </div>
-              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+              <div class="bg-canvas/50 rounded-lg p-3 text-center">
                 <div class="text-2xl font-bold text-cyan-400">
                   {{ progressData.progress?.percentage || 0 }}%
                 </div>
-                <div class="text-xs text-slate-400">Complete</div>
+                <div class="text-xs text-muted">Complete</div>
               </div>
-              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+              <div class="bg-canvas/50 rounded-lg p-3 text-center">
                 <div class="text-2xl font-bold text-emerald-400">
                   {{ progressData.progress?.rate || 0 }}/sec
                 </div>
-                <div class="text-xs text-slate-400">Generation Rate</div>
+                <div class="text-xs text-muted">Generation Rate</div>
               </div>
-              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+              <div class="bg-canvas/50 rounded-lg p-3 text-center">
                 <div class="text-2xl font-bold text-yellow-400">
                   {{ progressData.progress?.etaFormatted || '--' }}
                 </div>
-                <div class="text-xs text-slate-400">Remaining</div>
+                <div class="text-xs text-muted">Remaining</div>
               </div>
             </div>
 
             <!-- Elapsed Time -->
-            <div class="text-center text-sm text-slate-500">
+            <div class="text-center text-sm text-faint">
               Elapsed: {{ progressData.progress?.elapsedFormatted || '--' }}
               <span v-if="progressData.phase" class="ml-4">
                 Phase: {{ progressData.phase }}
@@ -114,7 +114,7 @@
         </section>
 
         <!-- QC Review Section (when at checkpoint) -->
-        <section v-if="jobStatus === 'qc_checkpoint' && qcReport" class="bg-slate-800/50 rounded-lg border border-yellow-500/30 p-6">
+        <section v-if="jobStatus === 'qc_checkpoint' && qcReport" class="bg-surface/50 rounded-lg border border-yellow-500/30 p-6">
           <h2 class="text-2xl font-semibold text-yellow-400 mb-4 flex items-center gap-2">
             <span>🔍</span>
             QC Review Required
@@ -122,55 +122,55 @@
 
           <!-- QC Summary -->
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-slate-700">
-              <div class="text-3xl font-bold text-slate-100">{{ qcReport.total || 0 }}</div>
-              <div class="text-sm text-slate-400">Total Samples</div>
+            <div class="bg-canvas/50 rounded-lg p-4 text-center border border-line">
+              <div class="text-3xl font-bold text-ink">{{ qcReport.total || 0 }}</div>
+              <div class="text-sm text-muted">Total Samples</div>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-red-500/30">
+            <div class="bg-canvas/50 rounded-lg p-4 text-center border border-red-500/30">
               <div class="text-3xl font-bold text-red-400">{{ qcReport.flagged?.high || 0 }}</div>
-              <div class="text-sm text-slate-400">High Priority</div>
+              <div class="text-sm text-muted">High Priority</div>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-yellow-500/30">
+            <div class="bg-canvas/50 rounded-lg p-4 text-center border border-yellow-500/30">
               <div class="text-3xl font-bold text-yellow-400">{{ qcReport.flagged?.medium || 0 }}</div>
-              <div class="text-sm text-slate-400">Medium Priority</div>
+              <div class="text-sm text-muted">Medium Priority</div>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-slate-600">
-              <div class="text-3xl font-bold text-slate-400">{{ qcReport.flagged?.low || 0 }}</div>
-              <div class="text-sm text-slate-400">Low Priority</div>
+            <div class="bg-canvas/50 rounded-lg p-4 text-center border border-line">
+              <div class="text-3xl font-bold text-muted">{{ qcReport.flagged?.low || 0 }}</div>
+              <div class="text-sm text-muted">Low Priority</div>
             </div>
           </div>
 
           <!-- Flagged Samples List -->
           <div v-if="qcReport.samples && qcReport.samples.length > 0" class="mb-6">
-            <h3 class="text-lg font-semibold text-slate-100 mb-3">Flagged Samples</h3>
-            <div class="max-h-96 overflow-y-auto space-y-2 bg-slate-900/30 rounded-lg p-4">
+            <h3 class="text-lg font-semibold text-ink mb-3">Flagged Samples</h3>
+            <div class="max-h-96 overflow-y-auto space-y-2 bg-canvas/30 rounded-lg p-4">
               <div
                 v-for="sample in qcReport.samples"
                 :key="sample.uuid"
-                class="flex items-center gap-4 p-3 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-slate-600"
+                class="flex items-center gap-4 p-3 bg-surface/50 rounded-lg border border-line hover:border-line"
               >
                 <input
                   type="checkbox"
                   :checked="selectedForRegeneration.includes(sample.uuid)"
                   @change="toggleRegeneration(sample.uuid)"
-                  class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-emerald-500 focus:ring-emerald-500"
+                  class="w-5 h-5 rounded border-line bg-surface-2 text-emerald-500 focus:ring-emerald-500"
                 />
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-1">
                     <span class="px-2 py-0.5 rounded text-xs font-semibold" :class="{
                       'bg-red-500/20 text-red-400': sample.priority === 'high',
                       'bg-yellow-500/20 text-yellow-400': sample.priority === 'medium',
-                      'bg-slate-500/20 text-slate-400': sample.priority === 'low'
+                      'bg-surface-3/20 text-muted': sample.priority === 'low'
                     }">{{ sample.priority }}</span>
-                    <span class="px-2 py-0.5 rounded text-xs bg-slate-700 text-slate-300">{{ sample.role }}</span>
-                    <span class="text-xs text-slate-500">{{ sample.flag }}</span>
+                    <span class="px-2 py-0.5 rounded text-xs bg-surface-2 text-ink">{{ sample.role }}</span>
+                    <span class="text-xs text-faint">{{ sample.flag }}</span>
                   </div>
-                  <p class="text-sm text-slate-300 truncate">{{ sample.text }}</p>
+                  <p class="text-sm text-ink truncate">{{ sample.text }}</p>
                 </div>
                 <button
                   v-if="sample.audioUrl"
                   @click="playAudio(sample.audioUrl)"
-                  class="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition"
+                  class="p-2 bg-surface-2 hover:bg-surface-3 rounded-lg transition"
                   title="Play sample"
                 >
                   <span v-if="currentlyPlaying === sample.audioUrl">⏹️</span>
@@ -185,7 +185,7 @@
             <button
               @click="approveAllAndContinue"
               :disabled="processingAction"
-              class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:cursor-not-allowed rounded-lg font-semibold transition flex items-center gap-2"
+              class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:cursor-not-allowed rounded-lg font-semibold transition flex items-center gap-2"
             >
               <span v-if="processingAction">⏳</span>
               <span v-else>✅</span>
@@ -195,7 +195,7 @@
               v-if="selectedForRegeneration.length > 0"
               @click="regenerateSelected"
               :disabled="processingAction"
-              class="px-6 py-3 bg-yellow-600 hover:bg-yellow-500 disabled:bg-slate-700 disabled:cursor-not-allowed rounded-lg font-semibold transition flex items-center gap-2"
+              class="px-6 py-3 bg-yellow-600 hover:bg-yellow-500 disabled:bg-surface-2 disabled:cursor-not-allowed rounded-lg font-semibold transition flex items-center gap-2"
             >
               <span v-if="processingAction">⏳</span>
               <span v-else>🔄</span>
@@ -203,7 +203,7 @@
             </button>
             <button
               @click="selectAllFlagged"
-              class="px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold transition"
+              class="px-4 py-3 bg-surface-2 hover:bg-surface-3 rounded-lg font-semibold transition"
             >
               Select All Flagged
             </button>
@@ -211,14 +211,14 @@
         </section>
 
         <!-- Prerequisites Check (when idle) -->
-        <section v-if="jobStatus === 'idle' && !audioPlan" class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
-          <h2 class="text-2xl font-semibold text-slate-100 mb-4 flex items-center gap-2">
+        <section v-if="jobStatus === 'idle' && !audioPlan" class="bg-surface/50 rounded-lg border border-line/20 p-6">
+          <h2 class="text-2xl font-semibold text-ink mb-4 flex items-center gap-2">
             <span>📋</span>
             Prerequisites
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div
-              class="bg-slate-900/50 rounded-lg p-4 border transition"
+              class="bg-canvas/50 rounded-lg p-4 border transition"
               :class="isManifestComplete
                 ? 'border-emerald-500/50 shadow-emerald-500/10'
                 : 'border-red-500/50'"
@@ -226,29 +226,29 @@
               <div class="flex items-center gap-2 mb-2">
                 <span v-if="isManifestComplete" class="text-emerald-400">✓</span>
                 <span v-else class="text-red-400">✗</span>
-                <span class="font-semibold text-slate-100">Manifest Complete</span>
+                <span class="font-semibold text-ink">Manifest Complete</span>
               </div>
-              <p class="text-sm text-slate-400">Course manifest compiled</p>
+              <p class="text-sm text-muted">Course manifest compiled</p>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-600">
+            <div class="bg-canvas/50 rounded-lg p-4 border border-line">
               <div class="flex items-center gap-2 mb-2">
                 <span>🎙️</span>
-                <span class="font-semibold text-slate-100">Voice Configs</span>
+                <span class="font-semibold text-ink">Voice Configs</span>
               </div>
-              <p class="text-sm text-slate-400">Azure TTS + ElevenLabs</p>
+              <p class="text-sm text-muted">Azure TTS + ElevenLabs</p>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-600">
+            <div class="bg-canvas/50 rounded-lg p-4 border border-line">
               <div class="flex items-center gap-2 mb-2">
                 <span>☁️</span>
-                <span class="font-semibold text-slate-100">S3 Access</span>
+                <span class="font-semibold text-ink">S3 Access</span>
               </div>
-              <p class="text-sm text-slate-400">Upload bucket ready</p>
+              <p class="text-sm text-muted">Upload bucket ready</p>
             </div>
           </div>
         </section>
 
         <!-- Audio Plan Review (after getting plan) -->
-        <section v-if="audioPlan && jobStatus === 'idle'" class="bg-slate-800/50 rounded-lg border border-emerald-500/30 p-6">
+        <section v-if="audioPlan && jobStatus === 'idle'" class="bg-surface/50 rounded-lg border border-emerald-500/30 p-6">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4 flex items-center gap-2">
             <span>📊</span>
             Audio Generation Plan
@@ -256,69 +256,69 @@
 
           <!-- Plan Summary -->
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-slate-700">
+            <div class="bg-canvas/50 rounded-lg p-4 text-center border border-line">
               <div class="text-3xl font-bold text-emerald-400">{{ audioPlan.analysis?.alreadyInMAR || 0 }}</div>
-              <div class="text-sm text-slate-400">Already Exist</div>
+              <div class="text-sm text-muted">Already Exist</div>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-yellow-500/30">
+            <div class="bg-canvas/50 rounded-lg p-4 text-center border border-yellow-500/30">
               <div class="text-3xl font-bold text-yellow-400">{{ audioPlan.analysis?.toGenerate || 0 }}</div>
-              <div class="text-sm text-slate-400">To Generate</div>
+              <div class="text-sm text-muted">To Generate</div>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-blue-500/30">
+            <div class="bg-canvas/50 rounded-lg p-4 text-center border border-blue-500/30">
               <div class="text-3xl font-bold text-blue-400">{{ audioPlan.estimates?.estimatedCost || '$0' }}</div>
-              <div class="text-sm text-slate-400">Est. Cost</div>
+              <div class="text-sm text-muted">Est. Cost</div>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-slate-600">
-              <div class="text-3xl font-bold text-slate-300">{{ audioPlan.estimates?.estimatedTime || '--' }}</div>
-              <div class="text-sm text-slate-400">Est. Time</div>
+            <div class="bg-canvas/50 rounded-lg p-4 text-center border border-line">
+              <div class="text-3xl font-bold text-ink">{{ audioPlan.estimates?.estimatedTime || '--' }}</div>
+              <div class="text-sm text-muted">Est. Time</div>
             </div>
           </div>
 
           <!-- Voice Selection -->
           <div class="mb-6">
-            <h3 class="text-lg font-semibold text-slate-100 mb-3 flex items-center gap-2">
+            <h3 class="text-lg font-semibold text-ink mb-3 flex items-center gap-2">
               <span>🎙️</span>
               Voice Assignments
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-                <label class="block text-sm text-slate-400 mb-2">Target 1 (Primary Target Language)</label>
+              <div class="bg-canvas/50 rounded-lg p-4 border border-line">
+                <label class="block text-sm text-muted mb-2">Target 1 (Primary Target Language)</label>
                 <select
                   v-model="selectedVoices.target1"
-                  class="w-full bg-slate-800 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="w-full bg-surface text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 >
                   <option v-for="voice in availableVoices.target" :key="voice.id" :value="voice.id">
                     {{ voice.display_name || voice.id }}
                   </option>
                 </select>
               </div>
-              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-                <label class="block text-sm text-slate-400 mb-2">Target 2 (Alternate Target Language)</label>
+              <div class="bg-canvas/50 rounded-lg p-4 border border-line">
+                <label class="block text-sm text-muted mb-2">Target 2 (Alternate Target Language)</label>
                 <select
                   v-model="selectedVoices.target2"
-                  class="w-full bg-slate-800 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="w-full bg-surface text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 >
                   <option v-for="voice in availableVoices.target" :key="voice.id" :value="voice.id">
                     {{ voice.display_name || voice.id }}
                   </option>
                 </select>
               </div>
-              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-                <label class="block text-sm text-slate-400 mb-2">Source (Known Language)</label>
+              <div class="bg-canvas/50 rounded-lg p-4 border border-line">
+                <label class="block text-sm text-muted mb-2">Source (Known Language)</label>
                 <select
                   v-model="selectedVoices.source"
-                  class="w-full bg-slate-800 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="w-full bg-surface text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 >
                   <option v-for="voice in availableVoices.source" :key="voice.id" :value="voice.id">
                     {{ voice.display_name || voice.id }}
                   </option>
                 </select>
               </div>
-              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-                <label class="block text-sm text-slate-400 mb-2">Presentation (English Narrator)</label>
+              <div class="bg-canvas/50 rounded-lg p-4 border border-line">
+                <label class="block text-sm text-muted mb-2">Presentation (English Narrator)</label>
                 <select
                   v-model="selectedVoices.presentation"
-                  class="w-full bg-slate-800 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="w-full bg-surface text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 >
                   <option v-for="voice in availableVoices.source" :key="voice.id" :value="voice.id">
                     {{ voice.display_name || voice.id }}
@@ -330,27 +330,27 @@
 
           <!-- Breakdown by Role -->
           <div v-if="audioPlan.analysis?.byRole" class="mb-4">
-            <h3 class="text-sm font-semibold text-slate-400 mb-2">Breakdown by Role:</h3>
+            <h3 class="text-sm font-semibold text-muted mb-2">Breakdown by Role:</h3>
             <div class="flex flex-wrap gap-2">
               <span v-for="(count, role) in audioPlan.analysis.byRole" :key="role"
-                class="px-3 py-1 bg-slate-700 rounded-full text-sm">
+                class="px-3 py-1 bg-surface-2 rounded-full text-sm">
                 {{ role }}: {{ count }}
               </span>
             </div>
           </div>
 
           <!-- Refresh Cost Button -->
-          <div class="mt-4 pt-4 border-t border-slate-700">
+          <div class="mt-4 pt-4 border-t border-line">
             <button
               @click="refreshCostEstimate"
               :disabled="loadingPlan"
-              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 border border-slate-600 rounded-lg text-sm transition-all flex items-center gap-2"
+              class="px-4 py-2 bg-surface-2 hover:bg-surface-3 border border-line rounded-lg text-sm transition-all flex items-center gap-2"
             >
               <span v-if="loadingPlan">⏳</span>
               <span v-else>🔄</span>
               {{ loadingPlan ? 'Refreshing...' : 'Refresh Cost Estimate' }}
             </button>
-            <p class="text-xs text-slate-500 mt-2">Click after changing voices to update cost estimate</p>
+            <p class="text-xs text-faint mt-2">Click after changing voices to update cost estimate</p>
           </div>
         </section>
 
@@ -361,21 +361,21 @@
             Total Pipeline Output
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-slate-900/70 rounded-lg p-4 text-center border border-slate-700">
+            <div class="bg-canvas/70 rounded-lg p-4 text-center border border-line">
               <div class="text-3xl font-bold text-teal-400 mb-1">{{ phaseASamples }}</div>
-              <div class="text-sm text-slate-400">Phase A Samples</div>
+              <div class="text-sm text-muted">Phase A Samples</div>
             </div>
-            <div class="bg-slate-900/70 rounded-lg p-4 text-center border border-slate-700">
+            <div class="bg-canvas/70 rounded-lg p-4 text-center border border-line">
               <div class="text-3xl font-bold text-blue-400 mb-1">{{ phaseBSamples }}</div>
-              <div class="text-sm text-slate-400">Phase B Samples</div>
+              <div class="text-sm text-muted">Phase B Samples</div>
             </div>
-            <div class="bg-slate-900/70 rounded-lg p-4 text-center border border-slate-700">
-              <div class="text-3xl font-bold text-slate-400 mb-1">77</div>
-              <div class="text-sm text-slate-400">System Samples</div>
+            <div class="bg-canvas/70 rounded-lg p-4 text-center border border-line">
+              <div class="text-3xl font-bold text-muted mb-1">77</div>
+              <div class="text-sm text-muted">System Samples</div>
             </div>
-            <div class="bg-slate-900/70 rounded-lg p-4 text-center border border-emerald-700 shadow-emerald-500/10">
+            <div class="bg-canvas/70 rounded-lg p-4 text-center border border-emerald-700 shadow-emerald-500/10">
               <div class="text-3xl font-bold text-emerald-400 mb-1">{{ totalSamples }}</div>
-              <div class="text-sm text-slate-400">Total Files</div>
+              <div class="text-sm text-muted">Total Files</div>
             </div>
           </div>
         </section>
@@ -384,7 +384,7 @@
         <div v-if="jobStatus === 'idle'" class="flex gap-4 justify-center pt-4">
           <button
             @click="$router.back()"
-            class="px-6 py-3 bg-slate-700 hover:bg-slate-600 border border-slate-600 rounded-lg font-semibold transition-all text-slate-100"
+            class="px-6 py-3 bg-surface-2 hover:bg-surface-3 border border-line rounded-lg font-semibold transition-all text-ink"
           >
             Cancel
           </button>
@@ -394,7 +394,7 @@
             v-if="!audioPlan"
             @click="getPlan"
             :disabled="!isManifestComplete || loadingPlan"
-            class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed disabled:border-slate-700 border border-blue-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-blue-500/20 flex items-center gap-2 text-white"
+            class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 disabled:from-surface-2 disabled:to-surface-3 disabled:cursor-not-allowed disabled:border-line border border-blue-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-blue-500/20 flex items-center gap-2 text-ink"
           >
             <span v-if="loadingPlan">⏳</span>
             <span v-else>📋</span>
@@ -406,7 +406,7 @@
             v-if="audioPlan"
             @click="startPhaseA"
             :disabled="generating"
-            class="px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed disabled:border-slate-700 border border-emerald-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-emerald-500/20 flex items-center gap-2 text-white"
+            class="px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-surface-2 disabled:to-surface-3 disabled:cursor-not-allowed disabled:border-line border border-emerald-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-emerald-500/20 flex items-center gap-2 text-ink"
           >
             <span v-if="generating">⏳</span>
             <span v-else>🚀</span>
@@ -418,7 +418,7 @@
             v-if="audioPlan && phaseAComplete"
             @click="startPhaseB"
             :disabled="generating"
-            class="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed disabled:border-slate-700 border border-purple-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-purple-500/20 flex items-center gap-2 text-white"
+            class="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-surface-2 disabled:to-surface-3 disabled:cursor-not-allowed disabled:border-line border border-purple-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-purple-500/20 flex items-center gap-2 text-ink"
           >
             <span v-if="generating">⏳</span>
             <span v-else>🎬</span>

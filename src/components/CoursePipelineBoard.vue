@@ -436,7 +436,7 @@ function cycleLegacyStatus(course) {
 <style scoped>
 .pipeline-board {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -449,8 +449,8 @@ function cycleLegacyStatus(course) {
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid var(--color-graphite, #475569);
-  background: var(--color-slate, #334155);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
+  background: var(--color-slate, var(--surface-2));
   flex-wrap: wrap;
   gap: 0.5rem;
 }
@@ -463,7 +463,7 @@ function cycleLegacyStatus(course) {
 
 .course-count {
   font-size: 0.9375rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -474,7 +474,7 @@ function cycleLegacyStatus(course) {
 .clear-all {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.75rem;
   font-family: inherit;
   padding: 0.125rem 0.5rem;
@@ -485,7 +485,7 @@ function cycleLegacyStatus(course) {
 
 .clear-all:hover {
   background: rgba(255, 255, 255, 0.15);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 /* Sort buttons */
@@ -506,7 +506,7 @@ function cycleLegacyStatus(course) {
   background: none;
   border: none;
   border-radius: 4px;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.75rem;
   font-family: inherit;
   font-weight: 500;
@@ -517,12 +517,12 @@ function cycleLegacyStatus(course) {
 
 .sort-btn:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .sort-btn.active {
   background: rgba(255, 255, 255, 0.12);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .sort-arrow {
@@ -580,7 +580,7 @@ function cycleLegacyStatus(course) {
 .chip-target.active {
   background: rgba(255, 166, 48, 0.18);
   border-color: rgba(255, 166, 48, 0.5);
-  color: #ffa630;
+  color: var(--accent);
 }
 
 /* Known — blue/cyan */
@@ -642,8 +642,8 @@ function cycleLegacyStatus(course) {
   min-width: 180px;
   max-height: 320px;
   overflow-y: auto;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
   z-index: 100;
@@ -659,7 +659,7 @@ function cycleLegacyStatus(course) {
   background: none;
   border: none;
   border-radius: 4px;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.8125rem;
   font-family: inherit;
   cursor: pointer;
@@ -669,13 +669,13 @@ function cycleLegacyStatus(course) {
 
 .dropdown-option:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 /* Selected option inherits parent chip color */
 .dropdown-target .dropdown-option.selected {
   background: rgba(255, 166, 48, 0.15);
-  color: #ffa630;
+  color: var(--accent);
 }
 .dropdown-known .dropdown-option.selected {
   background: rgba(56, 189, 248, 0.15);
@@ -717,18 +717,18 @@ function cycleLegacyStatus(course) {
   gap: 0.5rem;
   padding: 0.25rem 0.625rem;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 6px;
   transition: all 0.2s;
 }
 
 .search-box.focused {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 0 2px rgba(255, 166, 48, 0.15);
 }
 
 .search-icon {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   flex-shrink: 0;
 }
 
@@ -736,14 +736,14 @@ function cycleLegacyStatus(course) {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   font-size: 0.875rem;
   font-family: inherit;
   width: 140px;
 }
 
 .search-box input::placeholder {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 /* Course grid */
@@ -796,7 +796,7 @@ function cycleLegacyStatus(course) {
 .course-name-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
@@ -808,7 +808,7 @@ function cycleLegacyStatus(course) {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.6875rem;
   font-weight: 400;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   letter-spacing: 0.01em;
   opacity: 0.6;
 }
@@ -839,14 +839,14 @@ function cycleLegacyStatus(course) {
 
 .app-badge.inactive:hover {
   border-color: rgba(255, 255, 255, 0.15);
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 /* New App colors */
 .app-badge.status-testing {
   background: rgba(148, 163, 184, 0.15);
   border-color: rgba(148, 163, 184, 0.3);
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .app-badge.status-beta {
@@ -865,7 +865,7 @@ function cycleLegacyStatus(course) {
 .app-badge.legacy.status-testing {
   background: rgba(148, 163, 184, 0.1);
   border-color: rgba(6, 182, 212, 0.25);
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .app-badge.legacy.status-beta {
@@ -890,7 +890,7 @@ function cycleLegacyStatus(course) {
   align-items: center;
   justify-content: center;
   padding: 3rem 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .empty-text {
@@ -904,8 +904,8 @@ function cycleLegacyStatus(course) {
   justify-content: center;
   gap: 2rem;
   padding: 0.625rem 1.25rem;
-  background: var(--color-slate, #334155);
-  border-top: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .footer-stat {
@@ -919,13 +919,13 @@ function cycleLegacyStatus(course) {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   font-variant-numeric: tabular-nums;
 }
 
 .footer-label {
   font-size: 0.6875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -937,7 +937,7 @@ function cycleLegacyStatus(course) {
 .footer-divider {
   width: 1px;
   height: 24px;
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
 }
 
 /* Row transitions */

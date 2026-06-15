@@ -1,23 +1,23 @@
 <template>
-  <div class="audio-recorder bg-slate-800 border border-slate-700 rounded-lg p-6">
+  <div class="audio-recorder bg-surface border border-line rounded-lg p-6">
     <!-- Recording Status -->
     <div class="flex items-center justify-between mb-4">
       <div class="flex items-center gap-3">
         <div
           class="w-4 h-4 rounded-full"
-          :class="isRecording ? 'bg-red-500 animate-pulse' : 'bg-slate-600'"
+          :class="isRecording ? 'bg-red-500 animate-pulse' : 'bg-surface-3'"
         ></div>
-        <span class="text-slate-300">
+        <span class="text-ink">
           {{ isRecording ? 'Recording...' : hasRecording ? 'Recording ready' : 'Ready to record' }}
         </span>
       </div>
-      <span v-if="duration" class="text-slate-400 font-mono text-sm">
+      <span v-if="duration" class="text-muted font-mono text-sm">
         {{ formatDuration(duration) }}
       </span>
     </div>
 
     <!-- Waveform Visualization (simple bars) -->
-    <div class="waveform h-20 bg-slate-900 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+    <div class="waveform h-20 bg-canvas rounded-lg mb-4 flex items-center justify-center overflow-hidden">
       <div v-if="isRecording" class="flex items-end gap-1 h-full py-2">
         <div
           v-for="i in 20"
@@ -26,11 +26,11 @@
           :style="{ height: `${audioLevels[i % audioLevels.length] || 20}%` }"
         ></div>
       </div>
-      <div v-else-if="hasRecording" class="text-slate-500">
+      <div v-else-if="hasRecording" class="text-faint">
         <audio ref="audioPreview" :src="recordingUrl" class="hidden"></audio>
         Click Play to preview
       </div>
-      <div v-else class="text-slate-600">
+      <div v-else class="text-faint">
         Click Record to start
       </div>
     </div>
@@ -44,7 +44,7 @@
         class="w-16 h-16 bg-red-600 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors"
         title="Start Recording"
       >
-        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <svg class="w-8 h-8 text-ink" fill="currentColor" viewBox="0 0 20 20">
           <circle cx="10" cy="10" r="6"/>
         </svg>
       </button>
@@ -53,10 +53,10 @@
       <button
         v-if="isRecording"
         @click="stopRecording"
-        class="w-16 h-16 bg-slate-600 hover:bg-slate-500 rounded-full flex items-center justify-center transition-colors"
+        class="w-16 h-16 bg-surface-3 hover:bg-surface-3 rounded-full flex items-center justify-center transition-colors"
         title="Stop Recording"
       >
-        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <svg class="w-6 h-6 text-ink" fill="currentColor" viewBox="0 0 20 20">
           <rect x="5" y="5" width="10" height="10" rx="1"/>
         </svg>
       </button>
@@ -68,27 +68,27 @@
           class="w-12 h-12 bg-emerald-600 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors"
           title="Play"
         >
-          <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-5 h-5 text-ink ml-0.5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M6 4l10 6-10 6V4z"/>
           </svg>
         </button>
 
         <button
           @click="reRecord"
-          class="w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition-colors"
+          class="w-12 h-12 bg-surface-2 hover:bg-surface-3 rounded-full flex items-center justify-center transition-colors"
           title="Re-record"
         >
-          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
           </svg>
         </button>
 
         <button
           @click="clearRecording"
-          class="w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition-colors"
+          class="w-12 h-12 bg-surface-2 hover:bg-surface-3 rounded-full flex items-center justify-center transition-colors"
           title="Clear"
         >
-          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
           </svg>
         </button>

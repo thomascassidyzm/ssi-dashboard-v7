@@ -53,7 +53,7 @@
         :title="`Drag to reorder mapping for ${mapping.targetChunk}`"
       >
         <div
-          class="w-4 h-4 rounded-full border-2 bg-slate-800 cursor-move transition-transform hover:scale-125"
+          class="w-4 h-4 rounded-full border-2 bg-surface cursor-move transition-transform hover:scale-125"
           :style="{ borderColor: mapping.color.primary }"
         ></div>
       </div>

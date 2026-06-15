@@ -871,7 +871,7 @@ onMounted(() => {
 <style scoped>
 .maintenance-page {
   padding: 32px 28px;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 .maintenance-inner {
   width: 100%;
@@ -883,7 +883,7 @@ onMounted(() => {
 }
 .section-blurb {
   font-size: 14px;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0 0 24px 0;
   line-height: 1.6;
 }
@@ -920,7 +920,7 @@ onMounted(() => {
 }
 .stat-label {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 6px;
@@ -928,7 +928,7 @@ onMounted(() => {
 .stat-value {
   font-size: 22px;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--ink);
 }
 .stale-tag {
   display: inline-block;
@@ -944,7 +944,7 @@ onMounted(() => {
 }
 .loading {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 24px;
 }
 .cleanup-row {
@@ -958,7 +958,7 @@ onMounted(() => {
 }
 .days-input {
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--ink);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -967,7 +967,7 @@ onMounted(() => {
   width: 64px;
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #f1f5f9;
+  color: var(--ink);
   padding: 6px 8px;
   border-radius: 4px;
   font-size: 14px;
@@ -988,7 +988,7 @@ onMounted(() => {
 }
 .cleanup-btn:disabled {
   background: rgba(148, 163, 184, 0.2);
-  color: #64748b;
+  color: var(--faint);
   cursor: not-allowed;
 }
 .result-line {
@@ -1006,7 +1006,7 @@ onMounted(() => {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 12px;
   line-height: 1.5;
-  color: #cbd5e1;
+  color: var(--ink);
   white-space: pre-wrap;
   word-break: break-word;
   max-height: 360px;
@@ -1021,9 +1021,9 @@ onMounted(() => {
   border-radius: 4px;
   font-size: 12.5px;
   line-height: 1.55;
-  color: #cbd5e1;
+  color: var(--ink);
 }
-.auto-prune-note strong { color: #f1f5f9; }
+.auto-prune-note strong { color: var(--ink); }
 
 .modal-backdrop {
   position: fixed;
@@ -1035,7 +1035,7 @@ onMounted(() => {
   z-index: 50;
 }
 .modal {
-  background: #1e293b;
+  background: var(--surface);
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 8px;
   padding: 20px 24px;
@@ -1048,7 +1048,7 @@ onMounted(() => {
 }
 .modal p {
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--ink);
   line-height: 1.6;
   margin: 0 0 20px 0;
 }
@@ -1067,7 +1067,7 @@ onMounted(() => {
 }
 .modal-cancel {
   background: rgba(148, 163, 184, 0.2);
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .modal-confirm {
   background: #b91c1c;
@@ -1088,7 +1088,7 @@ onMounted(() => {
 .filter-row .search-input {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #f1f5f9;
+  color: var(--ink);
   padding: 6px 10px;
   border-radius: 4px;
   font-size: 13px;
@@ -1112,7 +1112,7 @@ onMounted(() => {
 
 .empty {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   padding: 24px;
   text-align: center;
   border: 1px dashed rgba(148, 163, 184, 0.2);
@@ -1128,7 +1128,7 @@ onMounted(() => {
   text-align: left;
   padding: 8px 10px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-  color: #94a3b8;
+  color: var(--muted);
   font-weight: 500;
   text-transform: uppercase;
   font-size: 11px;
@@ -1150,7 +1150,7 @@ onMounted(() => {
   background: rgba(30, 41, 59, 0.5);
 }
 .cell-time {
-  color: #cbd5e1;
+  color: var(--ink);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -1160,10 +1160,10 @@ onMounted(() => {
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 12px;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .cell-by {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 12px;
   max-width: 200px;
   overflow: hidden;
@@ -1172,7 +1172,7 @@ onMounted(() => {
 }
 .cell-expand {
   text-align: right;
-  color: #64748b;
+  color: var(--faint);
   width: 20px;
 }
 .op-tag {
@@ -1199,7 +1199,7 @@ onMounted(() => {
 .diff-error {
   padding: 14px;
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
 }
 .diff-error { color: #fca5a5; }
 .diff-container {
@@ -1219,7 +1219,7 @@ onMounted(() => {
 }
 .diff-header {
   font-weight: 500;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 0.05em;
@@ -1228,17 +1228,17 @@ onMounted(() => {
   margin-bottom: 4px;
 }
 .diff-col-label {
-  color: #94a3b8;
+  color: var(--muted);
 }
 .diff-field-name {
   font-family: 'Geist Mono', ui-monospace, monospace;
-  color: #cbd5e1;
+  color: var(--ink);
   font-size: 11px;
   padding-top: 2px;
 }
 .diff-value {
   font-family: 'Geist Mono', ui-monospace, monospace;
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 11px;
   word-break: break-word;
   white-space: pre-wrap;
@@ -1253,7 +1253,7 @@ onMounted(() => {
   color: #fca5a5;
 }
 .diff-row.diff-changed .diff-field-name {
-  color: #f1f5f9;
+  color: var(--ink);
   font-weight: 500;
 }
 .missing-tag {
@@ -1281,7 +1281,7 @@ onMounted(() => {
   padding: 6px 12px;
   background: rgba(30, 41, 59, 0.6);
   border: 1px solid rgba(148, 163, 184, 0.2);
-  color: #cbd5e1;
+  color: var(--ink);
   border-radius: 4px;
   font-size: 13px;
   cursor: pointer;
@@ -1295,7 +1295,7 @@ onMounted(() => {
 }
 .page-info {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1313,7 +1313,7 @@ onMounted(() => {
 }
 .selection-bar > span {
   font-weight: 500;
-  color: #f1f5f9;
+  color: var(--ink);
 }
 .bulk-restore-btn {
   padding: 6px 14px;
@@ -1354,7 +1354,7 @@ onMounted(() => {
 }
 .modal-note {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   font-style: italic;
   margin-top: -8px !important;
   margin-bottom: 16px !important;
@@ -1368,7 +1368,7 @@ onMounted(() => {
   font-size: 13px;
 }
 .restore-ok { color: #86efac; }
-.restore-skipped { color: #94a3b8; margin-top: 4px; }
+.restore-skipped { color: var(--muted); margin-top: 4px; }
 .restore-failed { color: #fca5a5; margin-top: 4px; }
 .restore-failed ul {
   margin: 4px 0 0 18px;
@@ -1394,12 +1394,12 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .course-select select {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #f1f5f9;
+  color: var(--ink);
   padding: 6px 10px;
   border-radius: 4px;
   font-size: 13px;
@@ -1431,7 +1431,7 @@ onMounted(() => {
 }
 .decomp-sample-title {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 10px;
@@ -1453,10 +1453,10 @@ onMounted(() => {
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 11px;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .decomp-target {
-  color: #f1f5f9;
+  color: var(--ink);
   font-weight: 500;
 }
 .decomp-blocks {
@@ -1481,7 +1481,7 @@ onMounted(() => {
   border-color: rgba(148, 163, 184, 0.4);
 }
 .decomp-block-target {
-  color: #f1f5f9;
+  color: var(--ink);
   font-weight: 500;
   white-space: pre;
 }
@@ -1493,7 +1493,7 @@ onMounted(() => {
   letter-spacing: 0.02em;
 }
 .decomp-ghost-tag {
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .decomp-failures {

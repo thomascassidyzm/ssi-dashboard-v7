@@ -803,9 +803,9 @@ onUnmounted(() => {
   --cc-border: #1e3a5f;
   --cc-border-subtle: rgba(59, 130, 246, 0.12);
 
-  --cc-text: #f1f5f9;
-  --cc-text-secondary: #94a3b8;
-  --cc-text-muted: #64748b;
+  --cc-text: var(--ink);
+  --cc-text-secondary: var(--muted);
+  --cc-text-muted: var(--faint);
 
   --cc-accent: #3b82f6;
   --cc-accent-glow: rgba(59, 130, 246, 0.25);

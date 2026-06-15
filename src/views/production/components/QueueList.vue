@@ -1,21 +1,21 @@
 <template>
-  <section class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
+  <section class="bg-surface/50 rounded-lg border border-line/20 p-6">
     <div class="flex items-center justify-between mb-4">
-      <h2 class="text-xl font-semibold text-slate-100 flex items-center gap-2">
+      <h2 class="text-xl font-semibold text-ink flex items-center gap-2">
         <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
         </svg>
         Generation Queue
-        <span class="text-sm text-slate-400 font-normal">({{ filteredItems.length }} items)</span>
+        <span class="text-sm text-muted font-normal">({{ filteredItems.length }} items)</span>
       </h2>
 
       <!-- Status Filter -->
       <div class="flex items-center gap-2">
-        <label class="text-sm text-slate-400">Filter:</label>
+        <label class="text-sm text-muted">Filter:</label>
         <select
           :value="statusFilter"
           @change="$emit('update-filter', ($event.target as HTMLSelectElement).value)"
-          class="bg-slate-700 text-slate-100 px-3 py-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none text-sm"
+          class="bg-surface-2 text-ink px-3 py-2 rounded border border-line focus:border-emerald-500 focus:outline-none text-sm"
         >
           <option value="all">All Items</option>
           <option value="queued">Queued</option>
@@ -28,10 +28,10 @@
 
     <!-- Empty State -->
     <div v-if="filteredItems.length === 0" class="text-center py-12">
-      <svg class="w-16 h-16 text-slate-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-16 h-16 text-faint mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
       </svg>
-      <p class="text-slate-400">No items in queue</p>
+      <p class="text-muted">No items in queue</p>
     </div>
 
     <!-- Virtualized Queue List -->
@@ -47,7 +47,7 @@
     <div v-if="hasMore" class="mt-4 text-center">
       <button
         @click="loadMore"
-        class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm transition"
+        class="px-4 py-2 bg-surface-2 hover:bg-surface-3 rounded-lg text-sm transition"
       >
         Load More
       </button>

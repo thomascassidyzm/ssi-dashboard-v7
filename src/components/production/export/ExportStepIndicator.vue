@@ -67,7 +67,7 @@ function getStepClass(stepNumber: number): string {
   if (stepNumber === props.currentStep) {
     return 'bg-blue-500 text-white ring-2 ring-blue-300'
   }
-  return 'bg-slate-600 text-slate-400'
+  return 'bg-surface-3 text-muted'
 }
 
 function getLabelClass(stepNumber: number): string {
@@ -77,14 +77,14 @@ function getLabelClass(stepNumber: number): string {
   if (stepNumber === props.currentStep) {
     return 'text-blue-400'
   }
-  return 'text-slate-500'
+  return 'text-faint'
 }
 
 function getConnectorClass(stepNumber: number): string {
   if (props.completedSteps.includes(stepNumber)) {
     return 'bg-emerald-500'
   }
-  return 'bg-slate-600'
+  return 'bg-surface-3'
 }
 </script>
 

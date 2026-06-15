@@ -366,8 +366,8 @@ onMounted(loadRoom)
 <style scoped>
 .record-room {
   min-height: 100vh;
-  background: var(--color-void, #0f172a);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-void, var(--canvas));
+  color: var(--color-paper, var(--ink));
   padding: 1.5rem 2rem;
 }
 
@@ -377,7 +377,7 @@ onMounted(loadRoom)
   align-items: center;
   padding-bottom: 1.25rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .room-title h1 {
@@ -392,7 +392,7 @@ onMounted(loadRoom)
 .room-course {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0.25rem 0 0;
 }
 
@@ -404,15 +404,15 @@ onMounted(loadRoom)
 
 .user-name {
   font-size: 0.875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .btn-signout {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.8125rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   background: transparent;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 6px;
   padding: 0.4rem 0.85rem;
   cursor: pointer;
@@ -420,15 +420,15 @@ onMounted(loadRoom)
 }
 
 .btn-signout:hover {
-  color: var(--color-paper, #f7f7f2);
-  border-color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper, var(--ink));
+  border-color: var(--color-paper-dim, var(--muted));
 }
 
 .room-mode-switch {
   display: inline-flex;
   gap: 0;
   margin-bottom: 1.25rem;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 10px;
   overflow: hidden;
 }
@@ -438,7 +438,7 @@ onMounted(loadRoom)
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.03em;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   background: transparent;
   border: none;
   padding: 0.65rem 1.25rem;
@@ -448,11 +448,11 @@ onMounted(loadRoom)
 }
 
 .mode-tab + .mode-tab {
-  border-left: 1px solid var(--color-graphite, #475569);
+  border-left: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .mode-tab.active {
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
   background: var(--color-emerald, #06ffa5);
 }
 
@@ -472,8 +472,8 @@ onMounted(loadRoom)
 }
 
 .room-card {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
 }
@@ -492,7 +492,7 @@ onMounted(loadRoom)
 }
 
 .room-card.center p {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.9rem;
   line-height: 1.6;
   margin: 0;
@@ -503,7 +503,7 @@ onMounted(loadRoom)
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin-bottom: 0.5rem;
 }
 
@@ -519,11 +519,11 @@ onMounted(loadRoom)
 }
 
 .slot-missing {
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
 }
 
 .value-dim {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-weight: 400;
   font-size: 1rem;
 }
@@ -531,7 +531,7 @@ onMounted(loadRoom)
 .card-hint {
   display: block;
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin-top: 0.5rem;
   line-height: 1.5;
 }
@@ -540,8 +540,8 @@ onMounted(loadRoom)
   width: 40px;
   height: 40px;
   margin: 0 auto 1rem;
-  border: 3px solid var(--color-graphite, #475569);
-  border-top-color: var(--color-tungsten, #ffa630);
+  border: 3px solid var(--color-graphite, var(--surface-3));
+  border-top-color: var(--color-tungsten, var(--accent));
   border-radius: 50%;
   animation: room-spin 1s linear infinite;
 }
@@ -592,15 +592,15 @@ onMounted(loadRoom)
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 1.1rem;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 10px;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   text-decoration: none;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .room-list-item:hover {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   transform: translateY(-1px);
 }
 
@@ -609,6 +609,6 @@ onMounted(loadRoom)
 }
 
 .room-list-arrow {
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
 }
 </style>

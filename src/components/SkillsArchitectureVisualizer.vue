@@ -1,20 +1,20 @@
 <template>
-  <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
-    <h2 class="text-2xl font-semibold text-slate-100 mb-6">Skills Architecture</h2>
+  <div class="bg-surface/50 rounded-lg border border-line/20 p-8">
+    <h2 class="text-2xl font-semibold text-ink mb-6">Skills Architecture</h2>
 
     <!-- Legend -->
     <div class="flex gap-6 mb-8 text-sm">
       <div class="flex items-center gap-2">
         <div class="w-4 h-4 bg-emerald-500 rounded"></div>
-        <span class="text-slate-300">Uses Skill</span>
+        <span class="text-ink">Uses Skill</span>
       </div>
       <div class="flex items-center gap-2">
         <div class="w-4 h-4 bg-blue-500 rounded"></div>
-        <span class="text-slate-300">Phase</span>
+        <span class="text-ink">Phase</span>
       </div>
       <div class="flex items-center gap-2">
         <div class="w-4 h-4 bg-purple-500 rounded"></div>
-        <span class="text-slate-300">Orchestrator</span>
+        <span class="text-ink">Orchestrator</span>
       </div>
     </div>
 
@@ -137,38 +137,38 @@
 
     <!-- Stats -->
     <div class="mt-8 grid grid-cols-4 gap-4 text-center">
-      <div class="bg-slate-900/50 rounded-lg p-4">
+      <div class="bg-canvas/50 rounded-lg p-4">
         <div class="text-3xl font-bold text-emerald-400">4</div>
-        <div class="text-sm text-slate-400 mt-1">Skills</div>
+        <div class="text-sm text-muted mt-1">Skills</div>
       </div>
-      <div class="bg-slate-900/50 rounded-lg p-4">
+      <div class="bg-canvas/50 rounded-lg p-4">
         <div class="text-3xl font-bold text-purple-400">4</div>
-        <div class="text-sm text-slate-400 mt-1">Orchestrators</div>
+        <div class="text-sm text-muted mt-1">Orchestrators</div>
       </div>
-      <div class="bg-slate-900/50 rounded-lg p-4">
+      <div class="bg-canvas/50 rounded-lg p-4">
         <div class="text-3xl font-bold text-blue-400">45+</div>
-        <div class="text-sm text-slate-400 mt-1">Sub-Agents</div>
+        <div class="text-sm text-muted mt-1">Sub-Agents</div>
       </div>
-      <div class="bg-slate-900/50 rounded-lg p-4">
+      <div class="bg-canvas/50 rounded-lg p-4">
         <div class="text-3xl font-bold text-emerald-400">90%</div>
-        <div class="text-sm text-slate-400 mt-1">Token Reduction</div>
+        <div class="text-sm text-muted mt-1">Token Reduction</div>
       </div>
     </div>
 
     <!-- Explanation -->
-    <div class="mt-8 bg-slate-900/50 rounded-lg p-6 space-y-4 text-sm text-slate-300">
+    <div class="mt-8 bg-canvas/50 rounded-lg p-6 space-y-4 text-sm text-ink">
       <div>
         <strong class="text-emerald-400">How it works:</strong>
       </div>
       <ol class="space-y-2 ml-6 list-decimal">
-        <li><strong class="text-slate-100">Dashboard</strong> displays Phase Intelligence (orchestrator prompts) and Skills Library</li>
-        <li><strong class="text-slate-100">Phase Orchestrators</strong> read their intelligence and spawn multiple sub-agents</li>
-        <li><strong class="text-slate-100">Skills</strong> are referenced by orchestrators (not embedded) → 90% token reduction</li>
-        <li><strong class="text-slate-100">Sub-agents</strong> receive skill instructions with required reading order</li>
-        <li><strong class="text-slate-100">Progressive Disclosure</strong>: Agents load only what they need from skills</li>
-        <li><strong class="text-slate-100">Outputs</strong> merge into complete course package</li>
+        <li><strong class="text-ink">Dashboard</strong> displays Phase Intelligence (orchestrator prompts) and Skills Library</li>
+        <li><strong class="text-ink">Phase Orchestrators</strong> read their intelligence and spawn multiple sub-agents</li>
+        <li><strong class="text-ink">Skills</strong> are referenced by orchestrators (not embedded) → 90% token reduction</li>
+        <li><strong class="text-ink">Sub-agents</strong> receive skill instructions with required reading order</li>
+        <li><strong class="text-ink">Progressive Disclosure</strong>: Agents load only what they need from skills</li>
+        <li><strong class="text-ink">Outputs</strong> merge into complete course package</li>
       </ol>
-      <div class="pt-4 border-t border-slate-700">
+      <div class="pt-4 border-t border-line">
         <strong class="text-emerald-400">Benefits:</strong>
         <ul class="space-y-1 ml-6 mt-2 list-disc">
           <li>Orchestrator prompts: 50 lines (vs 1000+ lines with embedded methodology)</li>

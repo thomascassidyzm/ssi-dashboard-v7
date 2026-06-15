@@ -29,7 +29,7 @@ defineProps({
 <style scoped>
 .production-layout {
   min-height: 100vh;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
 }
 
 .production-header {
@@ -37,24 +37,24 @@ defineProps({
   align-items: center;
   gap: 1rem;
   padding: 1rem 2rem;
-  background: var(--color-shadow, #1e293b);
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .back-link {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-decoration: none;
 }
 
 .back-link:hover {
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .course-title {
   font-family: var(--font-display, 'Crimson Pro', serif);
   font-size: 1.5rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   flex: 1;
   margin: 0;
 }
@@ -70,7 +70,7 @@ defineProps({
 
 .connection-status.connected {
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
 }
 
 .production-content {

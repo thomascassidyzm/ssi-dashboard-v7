@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
+  <div class="min-h-screen bg-canvas">
     <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
+    <header class="bg-surface/50 border-b border-line/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <router-link to="/courses" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
           <span>←</span>
@@ -10,7 +10,7 @@
         <h1 class="text-3xl font-bold text-emerald-400">
           Create New Course
         </h1>
-        <p class="mt-2 text-slate-400">
+        <p class="mt-2 text-muted">
           Build a new language course from scratch
         </p>
       </div>
@@ -35,7 +35,7 @@
                     ? 'bg-emerald-600 text-white'
                     : currentStep === index
                     ? 'bg-emerald-500 text-white ring-4 ring-emerald-500/30'
-                    : 'bg-slate-700 text-slate-400'
+                    : 'bg-surface-2 text-muted'
                 ]"
               >
                 <span v-if="currentStep > index">✓</span>
@@ -45,12 +45,12 @@
                 <div
                   :class="[
                     'text-sm font-medium',
-                    currentStep >= index ? 'text-slate-200' : 'text-slate-500'
+                    currentStep >= index ? 'text-ink' : 'text-faint'
                   ]"
                 >
                   {{ step.title }}
                 </div>
-                <div class="text-xs text-slate-500">{{ step.subtitle }}</div>
+                <div class="text-xs text-faint">{{ step.subtitle }}</div>
               </div>
             </div>
             <!-- Connector Line -->
@@ -58,7 +58,7 @@
               v-if="index < steps.length - 1"
               :class="[
                 'w-12 h-0.5 mx-4',
-                currentStep > index ? 'bg-emerald-600' : 'bg-slate-700'
+                currentStep > index ? 'bg-emerald-600' : 'bg-surface-2'
               ]"
             ></div>
           </div>
@@ -66,23 +66,23 @@
       </div>
 
       <!-- Wizard Content -->
-      <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
+      <div class="bg-surface/50 rounded-lg border border-line/20 p-8">
         <!-- Step 1: Language Selection -->
         <div v-if="currentStep === 0">
-          <h2 class="text-2xl font-semibold text-slate-100 mb-6">Select Languages</h2>
+          <h2 class="text-2xl font-semibold text-ink mb-6">Select Languages</h2>
 
           <div class="space-y-6">
             <!-- Language Selection -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <!-- Known Language -->
               <div>
-                <label class="block text-sm font-medium text-slate-300 mb-2">
+                <label class="block text-sm font-medium text-ink mb-2">
                   Known Language (Learning FROM) <span class="text-red-400">*</span>
                 </label>
                 <select
                   v-model="formData.sourceLanguage"
                   :disabled="languagesLoading"
-                  class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                  class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
                   :class="{ 'border-red-500': errors.sourceLanguage }"
                   @change="onLanguageChange"
                 >
@@ -98,20 +98,20 @@
                 <p v-if="errors.sourceLanguage" class="mt-1 text-sm text-red-400">
                   {{ errors.sourceLanguage }}
                 </p>
-                <p v-else class="mt-1 text-xs text-slate-500">
+                <p v-else class="mt-1 text-xs text-faint">
                   The language learners already know
                 </p>
               </div>
 
               <!-- Target Language -->
               <div>
-                <label class="block text-sm font-medium text-slate-300 mb-2">
+                <label class="block text-sm font-medium text-ink mb-2">
                   Target Language (Learning TO) <span class="text-red-400">*</span>
                 </label>
                 <select
                   v-model="formData.targetLanguage"
                   :disabled="languagesLoading"
-                  class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                  class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
                   :class="{ 'border-red-500': errors.targetLanguage }"
                   @change="onLanguageChange"
                 >
@@ -127,7 +127,7 @@
                 <p v-if="errors.targetLanguage" class="mt-1 text-sm text-red-400">
                   {{ errors.targetLanguage }}
                 </p>
-                <p v-else class="mt-1 text-xs text-slate-500">
+                <p v-else class="mt-1 text-xs text-faint">
                   The language learners want to learn
                 </p>
               </div>
@@ -139,9 +139,9 @@
                 <span class="text-emerald-400 text-xl">✨</span>
                 <div>
                   <p class="text-emerald-300 font-medium">Course will be created as:</p>
-                  <p class="text-slate-300 mt-1">
+                  <p class="text-ink mt-1">
                     <span class="font-mono text-emerald-400">{{ computedCourseCode }}</span>
-                    <span class="text-slate-500 mx-2">→</span>
+                    <span class="text-faint mx-2">→</span>
                     <span>{{ computedDisplayName }}</span>
                   </p>
                 </div>
@@ -152,15 +152,15 @@
 
         <!-- Step 2: Configuration -->
         <div v-if="currentStep === 1">
-          <h2 class="text-2xl font-semibold text-slate-100 mb-6">Configuration</h2>
+          <h2 class="text-2xl font-semibold text-ink mb-6">Configuration</h2>
 
           <div class="space-y-6">
             <!-- Course Mode Selection -->
             <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
+              <label class="block text-sm font-medium text-ink mb-2">
                 Course Mode <span class="text-red-400">*</span>
               </label>
-              <div v-if="modesLoading" class="text-slate-400 text-sm">Loading modes...</div>
+              <div v-if="modesLoading" class="text-muted text-sm">Loading modes...</div>
               <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <button
                   v-for="mode in modes"
@@ -171,21 +171,21 @@
                     'p-4 rounded-lg border-2 text-left transition-all',
                     selectedMode === mode.id
                       ? 'border-emerald-500 bg-emerald-900/30'
-                      : 'border-slate-600 bg-slate-800/50 hover:border-slate-500'
+                      : 'border-line bg-surface/50 hover:border-line'
                   ]"
                 >
                   <div class="flex items-center justify-between mb-1">
-                    <span :class="['font-medium', selectedMode === mode.id ? 'text-emerald-400' : 'text-slate-200']">
+                    <span :class="['font-medium', selectedMode === mode.id ? 'text-emerald-400' : 'text-ink']">
                       {{ mode.name }}
                     </span>
-                    <span class="text-xs text-slate-500">~{{ mode.estimatedMinutes }}min</span>
+                    <span class="text-xs text-faint">~{{ mode.estimatedMinutes }}min</span>
                   </div>
-                  <div class="text-sm text-slate-400 mb-2">{{ mode.description }}</div>
+                  <div class="text-sm text-muted mb-2">{{ mode.description }}</div>
                   <div class="flex items-center gap-2">
-                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-slate-700 text-emerald-400">
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-surface-2 text-emerald-400">
                       {{ mode.seeds }} seeds
                     </span>
-                    <span v-if="mode.pattern" class="text-xs text-slate-500">{{ mode.pattern }}</span>
+                    <span v-if="mode.pattern" class="text-xs text-faint">{{ mode.pattern }}</span>
                   </div>
                 </button>
               </div>
@@ -193,53 +193,53 @@
 
             <!-- Seed Range (Advanced) -->
             <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
+              <label class="block text-sm font-medium text-ink mb-2">
                 Seed Range
-                <span class="text-xs text-slate-500 ml-2">(auto-set by mode, can be customized)</span>
+                <span class="text-xs text-faint ml-2">(auto-set by mode, can be customized)</span>
               </label>
               <div class="flex items-center gap-3">
                 <div class="flex-1">
-                  <label class="block text-xs text-slate-500 mb-1">Start</label>
+                  <label class="block text-xs text-faint mb-1">Start</label>
                   <input
                     v-model.number="formData.seedStart"
                     type="number"
                     min="1"
                     max="668"
-                    class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
+                    class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
                   />
                 </div>
-                <span class="text-slate-500 pt-5">→</span>
+                <span class="text-faint pt-5">→</span>
                 <div class="flex-1">
-                  <label class="block text-xs text-slate-500 mb-1">End</label>
+                  <label class="block text-xs text-faint mb-1">End</label>
                   <input
                     v-model.number="formData.seedEnd"
                     type="number"
                     min="1"
                     max="668"
-                    class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
+                    class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
                   />
                 </div>
                 <div class="pt-5">
-                  <span class="text-slate-400 text-sm">({{ seedCount }} seeds)</span>
+                  <span class="text-muted text-sm">({{ seedCount }} seeds)</span>
                 </div>
               </div>
-              <p class="mt-2 text-xs text-slate-500">
+              <p class="mt-2 text-xs text-faint">
                 Seed range is set automatically based on the selected mode. Customize if needed.
               </p>
             </div>
 
             <!-- Version -->
             <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
+              <label class="block text-sm font-medium text-ink mb-2">
                 Version
               </label>
               <input
                 v-model="formData.version"
                 type="text"
                 placeholder="e.g., 1.0"
-                class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink placeholder-faint focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
               />
-              <p class="mt-1 text-xs text-slate-500">
+              <p class="mt-1 text-xs text-faint">
                 Course version identifier
               </p>
             </div>
@@ -250,7 +250,7 @@
                 <span class="text-blue-400 text-xl">ℹ️</span>
                 <div class="text-sm">
                   <p class="text-blue-300 font-medium mb-1">Additional Configuration</p>
-                  <p class="text-slate-400">
+                  <p class="text-muted">
                     More advanced options (audio settings, pipeline configuration) can be added later through the course editor.
                   </p>
                 </div>
@@ -261,55 +261,55 @@
 
         <!-- Step 3: Review & Create -->
         <div v-if="currentStep === 2">
-          <h2 class="text-2xl font-semibold text-slate-100 mb-6">Review & Create</h2>
+          <h2 class="text-2xl font-semibold text-ink mb-6">Review & Create</h2>
 
           <div class="space-y-6">
             <!-- Summary -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6">
-              <h3 class="text-lg font-medium text-slate-200 mb-4">Course Summary</h3>
+            <div class="bg-canvas/50 border border-line rounded-lg p-6">
+              <h3 class="text-lg font-medium text-ink mb-4">Course Summary</h3>
 
               <div class="space-y-3">
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Course Code:</span>
+                  <span class="text-muted">Course Code:</span>
                   <span class="text-emerald-400 font-mono">{{ computedCourseCode }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Display Name:</span>
-                  <span class="text-slate-200">{{ computedDisplayName }}</span>
+                  <span class="text-muted">Display Name:</span>
+                  <span class="text-ink">{{ computedDisplayName }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Known Language:</span>
-                  <span class="text-slate-200">{{ getLanguageName(formData.sourceLanguage) }}</span>
+                  <span class="text-muted">Known Language:</span>
+                  <span class="text-ink">{{ getLanguageName(formData.sourceLanguage) }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Target Language:</span>
-                  <span class="text-slate-200">{{ getLanguageName(formData.targetLanguage) }}</span>
+                  <span class="text-muted">Target Language:</span>
+                  <span class="text-ink">{{ getLanguageName(formData.targetLanguage) }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Course Mode:</span>
+                  <span class="text-muted">Course Mode:</span>
                   <span class="text-emerald-400">{{ getModeName(selectedMode) }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Seed Range:</span>
-                  <span class="text-slate-200">
+                  <span class="text-muted">Seed Range:</span>
+                  <span class="text-ink">
                     <span class="font-mono">S{{ String(formData.seedStart).padStart(4, '0') }}</span>
-                    <span class="text-slate-500 mx-1">→</span>
+                    <span class="text-faint mx-1">→</span>
                     <span class="font-mono">S{{ String(formData.seedEnd).padStart(4, '0') }}</span>
-                    <span class="text-slate-400 ml-2">({{ seedCount }} seeds)</span>
+                    <span class="text-muted ml-2">({{ seedCount }} seeds)</span>
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Version:</span>
-                  <span class="text-slate-200">{{ formData.version }}</span>
+                  <span class="text-muted">Version:</span>
+                  <span class="text-ink">{{ formData.version }}</span>
                 </div>
               </div>
             </div>
 
             <!-- Existence Check Result -->
-            <div v-if="existenceCheck.checking" class="bg-slate-700/50 border border-slate-600 rounded-lg p-4">
+            <div v-if="existenceCheck.checking" class="bg-surface-2/50 border border-line rounded-lg p-4">
               <div class="flex items-center gap-3">
                 <div class="animate-spin w-5 h-5 border-2 border-emerald-500 border-t-transparent rounded-full"></div>
-                <span class="text-slate-300">Checking if course already exists...</span>
+                <span class="text-ink">Checking if course already exists...</span>
               </div>
             </div>
 
@@ -318,7 +318,7 @@
                 <span class="text-amber-400 text-xl">⚠️</span>
                 <div class="text-sm flex-1">
                   <p class="text-amber-300 font-medium mb-2">Course already exists!</p>
-                  <p class="text-slate-400 mb-3">
+                  <p class="text-muted mb-3">
                     A course with code <span class="font-mono text-amber-400">{{ computedCourseCode }}</span> already exists
                     <span v-if="existenceCheck.existsLocal && existenceCheck.existsS3">(locally and in S3)</span>
                     <span v-else-if="existenceCheck.existsLocal">(locally)</span>
@@ -333,7 +333,7 @@
                     </button>
                     <router-link
                       :to="`/production/${computedCourseCode}`"
-                      class="bg-slate-600 hover:bg-slate-500 text-white text-sm px-4 py-2 rounded transition"
+                      class="bg-surface-3 hover:bg-surface-3 text-ink text-sm px-4 py-2 rounded transition"
                     >
                       View existing course
                     </router-link>
@@ -348,7 +348,7 @@
                 <span class="text-emerald-400 text-xl">✨</span>
                 <div class="text-sm">
                   <p class="text-emerald-300 font-medium mb-2">What happens next?</p>
-                  <ul class="text-slate-400 space-y-1">
+                  <ul class="text-muted space-y-1">
                     <li>• Course will be created in the database</li>
                     <li>• You'll be redirected to the course editor</li>
                     <li>• Use Course Builder to add seeds, LEGOs and phrases</li>
@@ -366,7 +366,7 @@
         <button
           v-if="currentStep > 0"
           @click="previousStep"
-          class="bg-slate-700 hover:bg-slate-600 text-slate-300 font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
+          class="bg-surface-2 hover:bg-surface-3 text-ink font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
         >
           Previous
         </button>
@@ -377,7 +377,7 @@
           v-if="currentStep < steps.length - 1"
           @click="nextStep"
           :disabled="!canProceed"
-          class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
+          class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-3 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
         >
           Next
         </button>
@@ -385,7 +385,7 @@
           v-else
           @click="createCourse"
           :disabled="creating || existenceCheck.checking || existenceCheck.exists"
-          class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-8 py-3 rounded-lg transition hover:-translate-y-0.5"
+          class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-3 disabled:cursor-not-allowed text-white font-semibold px-8 py-3 rounded-lg transition hover:-translate-y-0.5"
         >
           <span v-if="creating">Creating...</span>
           <span v-else-if="existenceCheck.checking">Checking...</span>

@@ -177,15 +177,15 @@ onUnmounted(() => {
 /* Status colors */
 .status-not_available {
   background: rgba(100, 116, 139, 0.15);
-  color: #64748b;
+  color: var(--faint);
 }
-.status-not_available .status-dot { background: #64748b; }
+.status-not_available .status-dot { background: var(--faint); }
 
 .status-draft {
   background: rgba(148, 163, 184, 0.15);
-  color: #94a3b8;
+  color: var(--muted);
 }
-.status-draft .status-dot { background: #94a3b8; }
+.status-draft .status-dot { background: var(--muted); }
 
 .status-submitted {
   background: rgba(234, 179, 8, 0.15);
@@ -261,8 +261,8 @@ onUnmounted(() => {
   top: calc(100% + 4px);
   right: 0;
   min-width: 120px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: var(--surface);
+  border: 1px solid var(--surface-2);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 100;
@@ -278,19 +278,19 @@ onUnmounted(() => {
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 0.75rem;
   text-align: left;
   transition: background 0.15s;
 }
 
 .dropdown-option:hover {
-  background: #334155;
+  background: var(--surface-2);
 }
 
 .dropdown-option.active {
   background: rgba(59, 130, 246, 0.2);
-  color: #f1f5f9;
+  color: var(--ink);
 }
 
 .option-dot {
@@ -299,8 +299,8 @@ onUnmounted(() => {
   border-radius: 50%;
 }
 
-.option-dot.status-not_available { background: #64748b; }
-.option-dot.status-draft { background: #94a3b8; }
+.option-dot.status-not_available { background: var(--faint); }
+.option-dot.status-draft { background: var(--muted); }
 .option-dot.status-submitted { background: #eab308; }
 .option-dot.status-testing { background: #3b82f6; }
 .option-dot.status-beta { background: #3b82f6; }

@@ -309,7 +309,7 @@ onMounted(loadSeeds)
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0;
   white-space: nowrap;
 }
@@ -317,7 +317,7 @@ onMounted(loadSeeds)
 .progress-bar-container {
   width: 120px;
   height: 6px;
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
   border-radius: 3px;
   overflow: hidden;
 }
@@ -332,7 +332,7 @@ onMounted(loadSeeds)
 .progress-label {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   white-space: nowrap;
 }
 
@@ -346,9 +346,9 @@ onMounted(loadSeeds)
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.8rem;
   padding: 0.4rem 0.75rem;
-  background: var(--color-shadow, #1e293b);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 4px;
   cursor: pointer;
 }
@@ -357,14 +357,14 @@ onMounted(loadSeeds)
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.8rem;
   padding: 0.4rem 0.75rem;
-  background: var(--color-shadow, #1e293b);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 4px;
   width: 160px;
 }
 .search-input::placeholder {
-  color: var(--color-graphite, #475569);
+  color: var(--color-graphite, var(--surface-3));
 }
 
 .btn-approve {
@@ -373,7 +373,7 @@ onMounted(loadSeeds)
   font-weight: 600;
   padding: 0.4rem 1rem;
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -390,7 +390,7 @@ onMounted(loadSeeds)
 
 /* Table */
 .table-container {
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   overflow: hidden;
 }
@@ -401,7 +401,7 @@ onMounted(loadSeeds)
 }
 
 .seed-table thead {
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
 }
 
 .seed-table th {
@@ -410,16 +410,16 @@ onMounted(loadSeeds)
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   padding: 0.75rem 1rem;
   text-align: left;
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .seed-table td {
   padding: 0.6rem 1rem;
   font-size: 0.85rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   border-bottom: 1px solid rgba(71, 85, 105, 0.3);
   vertical-align: middle;
 }
@@ -440,7 +440,7 @@ onMounted(loadSeeds)
 .seed-number {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   margin-right: 0.5rem;
 }
 
@@ -450,12 +450,12 @@ onMounted(loadSeeds)
   height: 8px;
   border-radius: 50%;
 }
-.status-dot.green { background: #34d399; }
+.status-dot.green { background: var(--accent-2); }
 .status-dot.yellow { background: #fbbf24; }
 .status-dot.red { background: #f87171; }
 
 .col-canonical {
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
   font-style: italic;
 }
 
@@ -468,7 +468,7 @@ onMounted(loadSeeds)
 }
 
 .editable .empty {
-  color: var(--color-graphite, #475569);
+  color: var(--color-graphite, var(--surface-3));
 }
 
 .cell-wrap {
@@ -478,7 +478,7 @@ onMounted(loadSeeds)
 }
 
 .save-tick {
-  color: #34d399;
+  color: var(--accent-2);
   font-size: 1rem;
   font-weight: 700;
   flex-shrink: 0;
@@ -503,9 +503,9 @@ onMounted(loadSeeds)
   font-family: inherit;
   font-size: 0.85rem;
   padding: 0.25rem 0.4rem;
-  background: var(--color-void, #0f172a);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-tungsten, #ffa630);
+  background: var(--color-void, var(--canvas));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-tungsten, var(--accent));
   border-radius: 3px;
   outline: none;
 }
@@ -513,7 +513,7 @@ onMounted(loadSeeds)
 .loading-cell {
   text-align: center;
   padding: 2rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-style: italic;
 }
 
@@ -530,9 +530,9 @@ onMounted(loadSeeds)
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.8rem;
   padding: 0.4rem 0.75rem;
-  background: var(--color-slate, #334155);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 4px;
   cursor: pointer;
 }
@@ -541,13 +541,13 @@ onMounted(loadSeeds)
   cursor: not-allowed;
 }
 .pagination button:hover:not(:disabled) {
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
 }
 
 .page-info {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 @media (max-width: 800px) {

@@ -134,8 +134,8 @@ function getSeedSymbol(seedId) {
 
 <style scoped>
 .seed-grid-container {
-  background: var(--void, #0f172a);
-  border: 1px solid var(--border, #334155);
+  background: var(--void, var(--canvas));
+  border: 1px solid var(--border, var(--surface-2));
   border-radius: 8px;
   padding: 1rem;
 }
@@ -153,7 +153,7 @@ function getSeedSymbol(seedId) {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, var(--faint));
 }
 
 .status-summary {
@@ -196,12 +196,12 @@ function getSeedSymbol(seedId) {
 }
 
 .summary-item.pending .indicator {
-  background: var(--elevated, #334155);
-  color: var(--text-muted, #64748b);
+  background: var(--elevated, var(--surface-2));
+  color: var(--text-muted, var(--faint));
 }
 
 .summary-item .count {
-  color: var(--text-dim, #94a3b8);
+  color: var(--text-dim, var(--muted));
 }
 
 /* Grid */
@@ -259,12 +259,12 @@ function getSeedSymbol(seedId) {
 }
 
 .seed-cell.seed-pending {
-  background: var(--elevated, #334155);
-  color: var(--text-muted, #64748b);
+  background: var(--elevated, var(--surface-2));
+  color: var(--text-muted, var(--faint));
 }
 
 .seed-cell.seed-pending:hover {
-  background: var(--border-light, #475569);
+  background: var(--border-light, var(--surface-3));
 }
 
 @keyframes pulse {
@@ -281,7 +281,7 @@ function getSeedSymbol(seedId) {
   display: flex;
   gap: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border, #334155);
+  border-top: 1px solid var(--border, var(--surface-2));
 }
 
 .legend-item {
@@ -317,12 +317,12 @@ function getSeedSymbol(seedId) {
 }
 
 .legend-indicator.pending {
-  background: var(--elevated, #334155);
-  color: var(--text-muted, #64748b);
+  background: var(--elevated, var(--surface-2));
+  color: var(--text-muted, var(--faint));
 }
 
 .legend-label {
   font-size: 0.6875rem;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, var(--faint));
 }
 </style>

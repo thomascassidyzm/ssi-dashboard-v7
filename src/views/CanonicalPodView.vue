@@ -1,17 +1,17 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-4xl mx-auto">
       <!-- Breadcrumb -->
       <div class="flex items-center gap-3 mb-4 text-sm">
         <router-link to="/" class="text-emerald-400 hover:text-emerald-300">Home</router-link>
-        <span class="text-slate-600">/</span>
+        <span class="text-faint">/</span>
         <router-link :to="`/production/${courseCode}/pods`" class="text-emerald-400 hover:text-emerald-300">Pods</router-link>
-        <span class="text-slate-600">/</span>
-        <span class="text-slate-400">Canonical · {{ slug }}</span>
+        <span class="text-faint">/</span>
+        <span class="text-muted">Canonical · {{ slug }}</span>
       </div>
 
       <h1 class="text-3xl font-bold text-emerald-400 mb-1">Canonical scenarios</h1>
-      <p class="text-slate-400 text-sm mb-1">
+      <p class="text-muted text-sm mb-1">
         The language-neutral <strong>English master</strong> for <code class="text-emerald-400">{{ slug }}</code>.
         Edit these and every course's generated pod flexes from them.
       </p>
@@ -19,29 +19,29 @@
         Shared across all courses — edits here change the source, not any generated pod (regenerate a pod to pull changes).
       </p>
 
-      <div v-if="loading" class="text-slate-500 py-12 text-center">Loading…</div>
+      <div v-if="loading" class="text-faint py-12 text-center">Loading…</div>
       <div v-else-if="error" class="bg-red-900/40 border border-red-700 rounded-lg p-4 text-red-200">{{ error }}</div>
 
       <div v-else class="space-y-6">
-        <div class="text-xs text-slate-500 -mt-3">{{ scenes.length }} scenes · {{ scenes.reduce((a, s) => a + s.lines.length, 0) }} lines</div>
-        <div v-for="(scene, idx) in scenes" :key="scene.number" class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
-          <div class="px-5 py-3 border-b border-slate-700 flex items-baseline gap-3">
-            <span class="text-xs font-mono text-emerald-400/70 bg-slate-700/40 px-1.5 py-0.5 rounded flex-shrink-0" title="position in the pod">{{ idx + 1 }}/{{ scenes.length }}</span>
-            <span class="text-xs font-mono text-slate-500" title="canonical scenario label">{{ scene.label || ('Scene ' + scene.number) }}</span>
-            <span class="font-semibold text-slate-100">{{ scene.title }}</span>
-            <span v-if="scene.subtitle" class="text-xs italic text-slate-500">{{ scene.subtitle }}</span>
-            <span class="ml-auto text-xs text-slate-600">{{ scene.lines.length }} lines</span>
+        <div class="text-xs text-faint -mt-3">{{ scenes.length }} scenes · {{ scenes.reduce((a, s) => a + s.lines.length, 0) }} lines</div>
+        <div v-for="(scene, idx) in scenes" :key="scene.number" class="bg-surface border border-line rounded-lg overflow-hidden">
+          <div class="px-5 py-3 border-b border-line flex items-baseline gap-3">
+            <span class="text-xs font-mono text-emerald-400/70 bg-surface-2/40 px-1.5 py-0.5 rounded flex-shrink-0" title="position in the pod">{{ idx + 1 }}/{{ scenes.length }}</span>
+            <span class="text-xs font-mono text-faint" title="canonical scenario label">{{ scene.label || ('Scene ' + scene.number) }}</span>
+            <span class="font-semibold text-ink">{{ scene.title }}</span>
+            <span v-if="scene.subtitle" class="text-xs italic text-faint">{{ scene.subtitle }}</span>
+            <span class="ml-auto text-xs text-faint">{{ scene.lines.length }} lines</span>
           </div>
-          <div class="divide-y divide-slate-700/60">
-            <div v-for="line in scene.lines" :key="line.id" class="px-5 py-2.5 flex items-start gap-3 hover:bg-slate-700/20">
-              <span class="text-xs font-mono text-slate-600 w-6 flex-shrink-0 pt-2">{{ line.global_order }}</span>
-              <span class="text-xs text-slate-400 w-32 flex-shrink-0 truncate pt-2" :title="line.speaker">{{ line.speaker }}</span>
+          <div class="divide-y divide-line/60">
+            <div v-for="line in scene.lines" :key="line.id" class="px-5 py-2.5 flex items-start gap-3 hover:bg-surface-2/20">
+              <span class="text-xs font-mono text-faint w-6 flex-shrink-0 pt-2">{{ line.global_order }}</span>
+              <span class="text-xs text-muted w-32 flex-shrink-0 truncate pt-2" :title="line.speaker">{{ line.speaker }}</span>
               <textarea
                 v-model="line.english_text"
                 rows="1"
                 @focus="line._orig = line.english_text"
                 @blur="saveLine(line)"
-                class="flex-1 bg-slate-900/60 border border-slate-700 focus:border-emerald-500 rounded px-2 py-1.5 text-sm text-slate-100 resize-y outline-none"
+                class="flex-1 bg-canvas/60 border border-line focus:border-emerald-500 rounded px-2 py-1.5 text-sm text-ink resize-y outline-none"
               />
               <span class="w-16 flex-shrink-0 text-right pt-2 text-xs">
                 <span v-if="line._saving" class="text-amber-400">saving…</span>

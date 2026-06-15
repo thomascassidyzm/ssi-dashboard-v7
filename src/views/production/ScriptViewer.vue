@@ -48,7 +48,7 @@
           <!-- View Mode Toggle Buttons -->
           <button
             @click="viewMode = 'journey'; if (!learningJourneyData) { journeyOffset = 0; loadLearningJourney(); }"
-            class="px-4 py-2 text-sm rounded-lg flex items-center gap-2 transition-colors bg-emerald-500 text-ink"
+            class="px-4 py-2 text-sm rounded-lg flex items-center gap-2 transition-colors bg-emerald-500 text-white"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
@@ -242,7 +242,7 @@
           <p class="text-muted mb-4">{{ error }}</p>
           <button
             @click="loadCourseData"
-            class="px-4 py-2 bg-emerald-500 text-ink rounded-lg hover:bg-emerald-600 transition-colors"
+            class="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
           >
             Retry
           </button>
@@ -335,7 +335,7 @@
             <p class="text-muted mb-4">{{ journeyError }}</p>
             <button
               @click="reloadLearningJourney"
-              class="px-4 py-2 bg-emerald-500 text-ink rounded-lg hover:bg-emerald-600 transition-colors"
+              class="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
             >
               Retry
             </button>
@@ -415,7 +415,7 @@
             <button
               v-if="selectedCount > 0"
               @click="showDeleteConfirmModal = true"
-              class="px-4 py-2 bg-red-600 hover:bg-red-500 text-ink text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+              class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -547,7 +547,7 @@
               :key="phase"
               class="phase-segment px-2 py-0.5 rounded text-xs font-mono transition-colors"
               :class="journeyPlayback?.currentPhase === phase
-                ? 'bg-emerald-500 text-ink'
+                ? 'bg-emerald-500 text-white'
                 : 'bg-surface-2 text-faint'"
             >
               {{ journeyPhaseLabel(phase) }}
@@ -738,7 +738,7 @@
               <button
                 @click="savePresentationAndRegen"
                 :disabled="presentationBusy || presentationLoading || !presentationText.trim()"
-                class="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900 disabled:cursor-not-allowed text-ink text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                class="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
               >
                 <svg v-if="presentationBusy" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -802,7 +802,7 @@
               <button
                 @click="handleBatchDelete"
                 :disabled="isDeleting"
-                class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-ink text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
               >
                 <svg v-if="isDeleting" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -834,7 +834,7 @@
         >Clear</button>
         <button
           @click="showJourneyDeleteStep = 1"
-          class="px-4 py-1.5 text-sm text-ink bg-red-600 hover:bg-red-500 rounded font-medium transition-colors flex items-center gap-2"
+          class="px-4 py-1.5 text-sm text-white bg-red-600 hover:bg-red-500 rounded font-medium transition-colors flex items-center gap-2"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
@@ -877,7 +877,7 @@
               </div>
               <div class="px-6 py-4 border-t border-line flex justify-end gap-3">
                 <button @click="showJourneyDeleteStep = 0" class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm rounded-lg transition-colors">Cancel</button>
-                <button @click="showJourneyDeleteStep = 2" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-ink text-sm font-medium rounded-lg transition-colors">Confirm Delete</button>
+                <button @click="showJourneyDeleteStep = 2" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors">Confirm Delete</button>
               </div>
             </template>
 
@@ -905,7 +905,7 @@
                 <button
                   @click="handleJourneyBatchDelete"
                   :disabled="isDeletingJourneyPhrases"
-                  class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-ink text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                  class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
                 >
                   <svg v-if="isDeletingJourneyPhrases" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

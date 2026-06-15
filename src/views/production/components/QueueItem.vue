@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-slate-900/50 rounded-lg p-4 border transition-all hover:border-slate-600"
+    class="bg-canvas/50 rounded-lg p-4 border transition-all hover:border-line"
     :class="borderClass"
   >
     <div class="flex items-center justify-between gap-4">
@@ -16,13 +16,13 @@
           </span>
 
           <!-- Voice Badge -->
-          <span class="px-2 py-0.5 rounded text-xs bg-slate-700 text-slate-300">
+          <span class="px-2 py-0.5 rounded text-xs bg-surface-2 text-ink">
             {{ item.voiceId }}
           </span>
         </div>
 
         <!-- Text Being Generated -->
-        <p class="text-sm text-slate-300 truncate" :title="item.text">
+        <p class="text-sm text-ink truncate" :title="item.text">
           {{ item.text }}
         </p>
 
@@ -38,7 +38,7 @@
         <button
           v-if="item.status === 'complete' && item.audioUrl"
           @click="toggleAudio"
-          class="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition flex items-center justify-center"
+          class="p-2 bg-surface-2 hover:bg-surface-3 rounded-lg transition flex items-center justify-center"
           title="Play/Pause audio"
         >
           <svg v-if="isPlaying" class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
@@ -71,7 +71,7 @@
 
         <!-- Queued Icon -->
         <div v-if="item.status === 'queued'" class="p-2">
-          <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-faint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
         </div>
@@ -117,7 +117,7 @@ const isPlaying = ref(false)
 const statusBadgeClass = computed(() => {
   switch (props.item.status) {
     case 'queued':
-      return 'bg-slate-500/20 text-slate-400'
+      return 'bg-surface-3/20 text-muted'
     case 'generating':
       return 'bg-blue-500/20 text-blue-400'
     case 'complete':
@@ -125,7 +125,7 @@ const statusBadgeClass = computed(() => {
     case 'failed':
       return 'bg-red-500/20 text-red-400'
     default:
-      return 'bg-slate-500/20 text-slate-400'
+      return 'bg-surface-3/20 text-muted'
   }
 })
 
@@ -138,7 +138,7 @@ const borderClass = computed(() => {
     case 'failed':
       return 'border-red-500/30'
     default:
-      return 'border-slate-700'
+      return 'border-line'
   }
 })
 

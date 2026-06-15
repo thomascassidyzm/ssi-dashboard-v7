@@ -168,14 +168,14 @@ function updateFilters() {
 
 .queue-header {
   padding: 1.5rem;
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .queue-title {
   font-family: var(--font-display, 'Crimson Pro', serif);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 0.5rem 0;
 }
 
@@ -190,17 +190,17 @@ function updateFilters() {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .filter-select {
   flex: 1;
   min-width: 120px;
   padding: 0.5rem 0.75rem;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 6px;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.875rem;
   cursor: pointer;
@@ -223,21 +223,21 @@ function updateFilters() {
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 0.5rem;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .queue-item:hover {
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
   border-color: var(--color-emerald, #06ffa5);
 }
 
 .queue-item.active {
-  background: var(--color-graphite, #475569);
-  border-color: var(--color-tungsten, #ffa630);
+  background: var(--color-graphite, var(--surface-3));
+  border-color: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 20px rgba(255, 166, 48, 0.2);
 }
 
@@ -260,7 +260,7 @@ function updateFilters() {
 }
 
 .status-dot.pending {
-  background: var(--color-paper-dim, #c1c1bb);
+  background: var(--color-paper-dim, var(--muted));
 }
 
 .status-dot.recorded {
@@ -269,7 +269,7 @@ function updateFilters() {
 }
 
 .status-dot.uploaded {
-  background: var(--color-tungsten, #ffa630);
+  background: var(--color-tungsten, var(--accent));
 }
 
 .item-content {
@@ -280,7 +280,7 @@ function updateFilters() {
 .item-text {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.9375rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 0.5rem 0;
   white-space: nowrap;
   overflow: hidden;
@@ -295,11 +295,11 @@ function updateFilters() {
 
 .meta-badge {
   padding: 0.125rem 0.5rem;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
   border-radius: 4px;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.6875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -319,13 +319,13 @@ function updateFilters() {
 
 .queue-empty p {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0;
 }
 
 .queue-footer {
   padding: 1rem 1.5rem;
-  border-top: 1px solid var(--color-graphite, #475569);
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
   display: flex;
   justify-content: space-around;
 }
@@ -338,7 +338,7 @@ function updateFilters() {
   display: block;
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.25rem;

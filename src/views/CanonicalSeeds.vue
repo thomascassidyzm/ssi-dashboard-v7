@@ -49,8 +49,8 @@
             v-model="searchQuery"
             type="text"
             placeholder="Search seeds by ID or text..."
-            class="flex-1 px-4 py-2 bg-slate-800 border border-slate-600 rounded text-slate-300 placeholder-slate-500 focus:border-emerald-500 focus:outline-none">
-          <div class="text-slate-400">
+            class="flex-1 px-4 py-2 bg-surface border border-line rounded text-ink placeholder-faint focus:border-emerald-500 focus:outline-none">
+          <div class="text-muted">
             {{ filteredSeeds.length }} of {{ totalSeeds }} seeds
           </div>
         </div>
@@ -60,7 +60,7 @@
           <div
             v-for="seed in paginatedSeeds"
             :key="seed.seed_id"
-            class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-5 hover:border-emerald-500/50 transition">
+            class="bg-surface/50 border border-line/20 rounded-lg p-5 hover:border-emerald-500/50 transition">
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0">
                 <div class="font-mono text-sm text-emerald-400 font-semibold px-3 py-1 bg-emerald-500/10 rounded">
@@ -68,15 +68,15 @@
                 </div>
               </div>
               <div class="flex-1">
-                <div v-if="!editing" class="text-slate-300">
+                <div v-if="!editing" class="text-ink">
                   {{ seed.source }}
                 </div>
                 <textarea
                   v-else
                   v-model="seed.source"
                   rows="2"
-                  class="w-full px-3 py-2 bg-slate-900 border border-slate-600 rounded text-slate-300 focus:border-emerald-500 focus:outline-none resize-none"></textarea>
-                <div class="mt-1 text-xs text-slate-500">
+                  class="w-full px-3 py-2 bg-canvas border border-line rounded text-ink focus:border-emerald-500 focus:outline-none resize-none"></textarea>
+                <div class="mt-1 text-xs text-faint">
                   Canonical ID: {{ seed.canonical_id }}
                 </div>
               </div>
@@ -86,23 +86,23 @@
 
         <!-- Pagination -->
         <div class="mt-8 flex items-center justify-between">
-          <div class="text-slate-400 text-sm">
+          <div class="text-muted text-sm">
             Showing {{ (currentPage - 1) * pageSize + 1 }} - {{ Math.min(currentPage * pageSize, filteredSeeds.length) }} of {{ filteredSeeds.length }}
           </div>
           <div class="flex items-center gap-2">
             <button
               @click="currentPage--"
               :disabled="currentPage === 1"
-              class="px-4 py-2 bg-slate-800 border border-slate-600 rounded text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed hover:border-emerald-500 transition">
+              class="px-4 py-2 bg-surface border border-line rounded text-ink disabled:opacity-50 disabled:cursor-not-allowed hover:border-emerald-500 transition">
               Previous
             </button>
-            <div class="px-4 py-2 bg-slate-800 border border-emerald-500/50 rounded text-emerald-400">
+            <div class="px-4 py-2 bg-surface border border-emerald-500/50 rounded text-emerald-400">
               Page {{ currentPage }} of {{ totalPages }}
             </div>
             <button
               @click="currentPage++"
               :disabled="currentPage === totalPages"
-              class="px-4 py-2 bg-slate-800 border border-slate-600 rounded text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed hover:border-emerald-500 transition">
+              class="px-4 py-2 bg-surface border border-line rounded text-ink disabled:opacity-50 disabled:cursor-not-allowed hover:border-emerald-500 transition">
               Next
             </button>
           </div>
@@ -112,13 +112,13 @@
         <div class="mt-12">
           <button
             @click="showAbout = !showAbout"
-            class="w-full flex items-center justify-between bg-slate-800/50 border border-slate-400/20 rounded-lg p-4 hover:border-emerald-500/50 transition">
+            class="w-full flex items-center justify-between bg-surface/50 border border-line/20 rounded-lg p-4 hover:border-emerald-500/50 transition">
             <h2 class="text-xl font-semibold text-emerald-400">About Canonical Seeds</h2>
-            <span class="text-slate-400">{{ showAbout ? '▼' : '▶' }}</span>
+            <span class="text-muted">{{ showAbout ? '▼' : '▶' }}</span>
           </button>
 
-          <div v-show="showAbout" class="mt-4 bg-slate-800/50 border border-slate-400/20 rounded-lg p-8">
-            <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
+          <div v-show="showAbout" class="mt-4 bg-surface/50 border border-line/20 rounded-lg p-8">
+            <div class="prose prose-invert prose-emerald max-w-none text-ink">
               <p>The {{ totalSeeds }} canonical seeds represent 16 years of empirical optimization in language course design. Each seed is a foundational language concept expressed in English (not because English is special, but because they need to be expressed in something).</p>
 
               <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Concept: Language-Agnostic Foundation</h3>
@@ -127,7 +127,7 @@
                 <li><strong>Target Language:</strong> The language being learned (e.g., Irish, Italian, Spanish)</li>
                 <li><strong>Known Language:</strong> The learner's language (e.g., English, French, German)</li>
               </ul>
-              <p class="text-sm text-slate-400 mt-2"><em>Note: If one of the course languages happens to be English, that translation is not required.</em></p>
+              <p class="text-sm text-muted mt-2"><em>Note: If one of the course languages happens to be English, that translation is not required.</em></p>
 
               <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Seed Characteristics</h3>
               <ul class="space-y-2">
@@ -285,7 +285,7 @@ console.log('🌱 Canonical Seeds (SSoT) Loaded')
 }
 
 .page-subtitle {
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0;
 }
 
@@ -311,7 +311,7 @@ console.log('🌱 Canonical Seeds (SSoT) Loaded')
 .btn-save {
   padding: 0.5rem 1rem;
   background: #10b981;
-  color: #0f172a;
+  color: var(--canvas);
   font-weight: 600;
   border: none;
   border-radius: 0.375rem;
@@ -325,8 +325,8 @@ console.log('🌱 Canonical Seeds (SSoT) Loaded')
 
 .btn-cancel {
   padding: 0.5rem 1rem;
-  background: #475569;
-  color: #cbd5e1;
+  background: var(--surface-3);
+  color: var(--ink);
   border: none;
   border-radius: 0.375rem;
   cursor: pointer;
@@ -334,7 +334,7 @@ console.log('🌱 Canonical Seeds (SSoT) Loaded')
 }
 
 .btn-cancel:hover {
-  background: #334155;
+  background: var(--surface-2);
 }
 
 .content-area {

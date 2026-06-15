@@ -632,8 +632,8 @@ onUnmounted(() => {
 <style scoped>
 .mission-control {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #e2e8f0;
+  background: linear-gradient(135deg, var(--canvas) 0%, var(--surface) 100%);
+  color: var(--ink);
   padding: 2rem;
 }
 
@@ -653,7 +653,7 @@ onUnmounted(() => {
 }
 
 .back-link:hover {
-  color: #34d399;
+  color: var(--accent-2);
 }
 
 .header-content {
@@ -688,13 +688,13 @@ onUnmounted(() => {
 .course-selector label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .course-select {
   padding: 0.5rem 1rem;
   background: rgb(15 23 42);
-  color: #e2e8f0;
+  color: var(--ink);
   border: 1px solid rgb(51 65 85);
   border-radius: 0.5rem;
   font-size: 0.875rem;
@@ -721,7 +721,7 @@ onUnmounted(() => {
   background: rgb(51 65 85 / 0.3);
   border-radius: 9999px;
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .ws-status.connected {
@@ -733,7 +733,7 @@ onUnmounted(() => {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 9999px;
-  background: #94a3b8;
+  background: var(--muted);
 }
 
 .ws-status.connected .ws-indicator {
@@ -788,7 +788,7 @@ onUnmounted(() => {
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
   background: #10b981;
-  color: #0f172a;
+  color: var(--canvas);
   border: none;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -810,7 +810,7 @@ onUnmounted(() => {
 }
 
 .help-text {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
 }
@@ -830,7 +830,7 @@ onUnmounted(() => {
 }
 
 .help-note {
-  color: #64748b;
+  color: var(--faint);
   font-size: 0.8rem;
   margin: 0;
 }
@@ -845,7 +845,7 @@ onUnmounted(() => {
 .back-btn {
   padding: 0.75rem 1.5rem;
   background: rgb(51 65 85);
-  color: #e2e8f0;
+  color: var(--ink);
   border: none;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -928,7 +928,7 @@ onUnmounted(() => {
 }
 
 .stat-value.audio {
-  color: #f1f5f9;
+  color: var(--ink);
 }
 
 .stat-value.generated {
@@ -941,7 +941,7 @@ onUnmounted(() => {
 
 .stat-label {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -959,7 +959,7 @@ onUnmounted(() => {
 .section-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--ink);
   margin: 0 0 1rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1055,7 +1055,7 @@ onUnmounted(() => {
 }
 
 .status-indicator.status-pending {
-  background: #94a3b8;
+  background: var(--muted);
   animation: none;
 }
 
@@ -1110,7 +1110,7 @@ onUnmounted(() => {
 .progress-percent {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .job-stats {
@@ -1120,13 +1120,13 @@ onUnmounted(() => {
 .job-course {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--ink);
   margin-bottom: 0.25rem;
 }
 
 .job-operation {
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 0.75rem;
 }
 
@@ -1144,7 +1144,7 @@ onUnmounted(() => {
 .stat-item .stat-value {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .stat-item .stat-value.success {
@@ -1157,14 +1157,14 @@ onUnmounted(() => {
 
 .stat-item .stat-label {
   font-size: 0.625rem;
-  color: #64748b;
+  color: var(--faint);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .job-current-item {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--faint);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1172,7 +1172,7 @@ onUnmounted(() => {
 }
 
 .job-current-item .item-text {
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .job-actions {

@@ -73,16 +73,16 @@ const statusClass = computed(() => [
 /* Status colors - cinematic palette */
 .status-pending {
   background: rgba(52, 56, 74, 0.5);
-  color: #c1c1bb;
+  color: var(--muted);
 }
-.status-pending .status-dot { background: #c1c1bb; }
+.status-pending .status-dot { background: var(--muted); }
 
 .status-flagged {
   background: rgba(255, 166, 48, 0.15);
-  color: #ffa630;
+  color: var(--accent);
 }
 .status-flagged .status-dot {
-  background: #ffa630;
+  background: var(--accent);
   box-shadow: 0 0 8px rgba(255, 166, 48, 0.6);
 }
 

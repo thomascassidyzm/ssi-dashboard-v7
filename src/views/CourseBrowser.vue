@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -9,7 +9,7 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Library</h1>
-            <p class="text-slate-400">Browse and edit existing courses</p>
+            <p class="text-muted">Browse and edit existing courses</p>
           </div>
           <router-link
             to="/production/new/text"
@@ -27,14 +27,14 @@
           v-model="searchQuery"
           type="text"
           placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Basket Generation')..."
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+          class="w-full bg-surface border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
         />
       </div>
 
       <!-- Filter Pills -->
       <div class="mb-6 flex flex-wrap items-center gap-3">
         <!-- Status filters -->
-        <span class="text-xs text-slate-500 uppercase tracking-wider">Status</span>
+        <span class="text-xs text-faint uppercase tracking-wider">Status</span>
         <button
           v-for="s in statusFilters"
           :key="s.value"
@@ -43,16 +43,16 @@
             'px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
             activeStatusFilters.has(s.value)
               ? s.activeClass
-              : 'border-slate-600 text-slate-500 hover:border-slate-400 hover:text-slate-300'
+              : 'border-line text-faint hover:border-line hover:text-ink'
           ]"
         >
           {{ s.label }}
         </button>
 
-        <span class="text-slate-700 mx-1">|</span>
+        <span class="text-faint mx-1">|</span>
 
         <!-- Pricing filters -->
-        <span class="text-xs text-slate-500 uppercase tracking-wider">Pricing</span>
+        <span class="text-xs text-faint uppercase tracking-wider">Pricing</span>
         <button
           v-for="p in pricingFilters"
           :key="p.value"
@@ -61,7 +61,7 @@
             'px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
             activePricingFilters.has(p.value)
               ? p.activeClass
-              : 'border-slate-600 text-slate-500 hover:border-slate-400 hover:text-slate-300'
+              : 'border-line text-faint hover:border-line hover:text-ink'
           ]"
         >
           {{ p.label }}
@@ -69,28 +69,28 @@
       </div>
 
       <!-- Stats loading indicator -->
-      <div v-if="loadingStats" class="mb-4 flex items-center gap-2 text-sm text-slate-500">
-        <div class="w-3 h-3 border-2 border-slate-500 border-t-emerald-400 rounded-full animate-spin"></div>
+      <div v-if="loadingStats" class="mb-4 flex items-center gap-2 text-sm text-faint">
+        <div class="w-3 h-3 border-2 border-line border-t-emerald-400 rounded-full animate-spin"></div>
         Loading course stats...
       </div>
 
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
-        <div class="text-slate-400">Loading courses...</div>
+        <div class="text-muted">Loading courses...</div>
       </div>
 
       <!-- Error State -->
       <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
         <h3 class="text-red-400 font-semibold mb-2">Error Loading Courses</h3>
-        <p class="text-slate-300">{{ error }}</p>
+        <p class="text-ink">{{ error }}</p>
       </div>
 
       <!-- Empty State -->
       <div v-else-if="filteredCourses.length === 0" class="text-center py-12">
-        <div v-if="searchQuery" class="text-slate-400 mb-4">
+        <div v-if="searchQuery" class="text-muted mb-4">
           No courses matching "{{ searchQuery }}"
         </div>
-        <div v-else class="text-slate-400 mb-4">No courses found</div>
+        <div v-else class="text-muted mb-4">No courses found</div>
         <router-link
           v-if="!searchQuery"
           to="/production/new/text"
@@ -107,10 +107,10 @@
           :key="course.course_code"
           :to="`/production/${course.course_code}`"
           :class="[
-            'bg-slate-800 rounded-lg p-5 transition-all cursor-pointer hover:bg-slate-750 hover:shadow-lg hover:shadow-emerald-500/10 group',
+            'bg-surface rounded-lg p-5 transition-all cursor-pointer hover:bg-surface-2 hover:shadow-lg hover:shadow-emerald-500/10 group',
             highlightedCourses.has(course.course_code)
               ? 'border-2 border-emerald-500 shadow-lg shadow-emerald-500/20'
-              : 'border border-slate-700 hover:border-emerald-500/50'
+              : 'border border-line hover:border-emerald-500/50'
           ]"
         >
           <!-- Header -->
@@ -127,7 +127,7 @@
                   NEW
                 </span>
               </div>
-              <p class="text-sm text-slate-400">
+              <p class="text-sm text-muted">
                 {{ getFullCourseName(course.course_code) }}
               </p>
             </div>
@@ -150,29 +150,29 @@
           <!-- Stats Grid -->
           <div class="grid grid-cols-2 gap-2 text-sm">
             <!-- Seeds -->
-            <div class="bg-slate-700/50 rounded px-3 py-2">
-              <div class="text-slate-500 text-xs mb-1">Seeds</div>
+            <div class="bg-surface-2/50 rounded px-3 py-2">
+              <div class="text-faint text-xs mb-1">Seeds</div>
               <div class="font-mono">
                 <span class="text-emerald-400">{{ course.seed_pairs || 0 }}</span>
-                <span v-if="course.seed_count" class="text-slate-500"> / {{ course.seed_count }}</span>
+                <span v-if="course.seed_count" class="text-faint"> / {{ course.seed_count }}</span>
               </div>
             </div>
             <!-- LEGOs -->
-            <div class="bg-slate-700/50 rounded px-3 py-2">
-              <div class="text-slate-500 text-xs mb-1">LEGOs</div>
+            <div class="bg-surface-2/50 rounded px-3 py-2">
+              <div class="text-faint text-xs mb-1">LEGOs</div>
               <div class="font-mono text-emerald-400">{{ course.lego_pairs || 0 }}</div>
             </div>
             <!-- Phrases -->
-            <div class="bg-slate-700/50 rounded px-3 py-2">
-              <div class="text-slate-500 text-xs mb-1">Phrases</div>
+            <div class="bg-surface-2/50 rounded px-3 py-2">
+              <div class="text-faint text-xs mb-1">Phrases</div>
               <div class="font-mono text-emerald-400">{{ (course.phrases || 0).toLocaleString() }}</div>
             </div>
             <!-- Audio coverage available per-course in Production Suite -->
           </div>
 
           <!-- Click hint -->
-          <div class="mt-3 pt-3 border-t border-slate-700 text-center">
-            <span class="text-xs text-slate-500 group-hover:text-emerald-400 transition-colors">
+          <div class="mt-3 pt-3 border-t border-line text-center">
+            <span class="text-xs text-faint group-hover:text-emerald-400 transition-colors">
               Click to open Production Suite →
             </span>
           </div>
@@ -205,7 +205,7 @@ const activeStatusFilters = ref(new Set())
 const activePricingFilters = ref(new Set())
 
 const statusFilters = [
-  { value: 'draft', label: 'Testing', activeClass: 'bg-slate-600/30 border-slate-400 text-slate-300' },
+  { value: 'draft', label: 'Testing', activeClass: 'bg-surface-3/30 border-line text-ink' },
   { value: 'beta', label: 'Beta', activeClass: 'bg-yellow-600/20 border-yellow-500 text-yellow-400' },
   { value: 'released', label: 'Live', activeClass: 'bg-emerald-600/20 border-emerald-500 text-emerald-400' },
 ]
@@ -393,7 +393,7 @@ function getStatusClass(status) {
   } else if (status === 'in_progress') {
     return 'bg-yellow-600 text-white'
   } else {
-    return 'bg-slate-600 text-slate-300'
+    return 'bg-surface-3 text-ink'
   }
 }
 

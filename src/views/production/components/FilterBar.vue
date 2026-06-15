@@ -69,7 +69,7 @@
         @click="toggleFlaggedOnly"
         class="px-3 py-2 rounded-lg font-medium text-sm transition-all"
         :class="showFlaggedOnly
-          ? 'bg-amber-500 text-ink hover:bg-amber-600'
+          ? 'bg-amber-500 text-white hover:bg-amber-600'
           : 'bg-surface-2 text-ink hover:bg-surface-3'"
         title="Show only items pending regeneration"
       >

@@ -1,23 +1,23 @@
 <template>
   <div class="step-content space-y-4">
-    <h4 class="text-lg font-semibold text-white">Step 1: Generate Manifest</h4>
+    <h4 class="text-lg font-semibold text-ink">Step 1: Generate Manifest</h4>
 
     <!-- Options (when not generated) -->
     <div v-if="!state.manifestGenerated" class="space-y-4">
-      <p class="text-slate-300 text-sm">
+      <p class="text-ink text-sm">
         Generate a legacy-format manifest for the old learning app.
       </p>
 
       <!-- Combined audio option -->
-      <label class="option-item flex items-start gap-3 p-4 bg-slate-700 rounded-lg cursor-pointer hover:bg-slate-600 transition-colors border border-slate-600">
+      <label class="option-item flex items-start gap-3 p-4 bg-surface-2 rounded-lg cursor-pointer hover:bg-surface-3 transition-colors border border-line">
         <input
           v-model="withAudio"
           type="checkbox"
-          class="mt-1 w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+          class="mt-1 w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-surface rounded"
         />
         <div>
-          <div class="text-white font-medium">Generate combined presentation audio</div>
-          <div class="text-sm text-slate-400 mt-1">
+          <div class="text-ink font-medium">Generate combined presentation audio</div>
+          <div class="text-sm text-muted mt-1">
             Creates narration + target1 + target2 combined files for each LEGO introduction.
             This runs in the background after the manifest downloads.
           </div>
@@ -32,9 +32,9 @@
         <input
           v-model="useAsIs"
           type="checkbox"
-          class="mt-0.5 w-3.5 h-3.5 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+          class="mt-0.5 w-3.5 h-3.5 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-surface rounded"
         />
-        <span class="text-xs text-slate-400">
+        <span class="text-xs text-muted">
           Use existing presentations as-is (skip target concatenation)
         </span>
       </label>
@@ -58,13 +58,13 @@
           <span class="spinner w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></span>
           <span>Generating combined presentation audio...</span>
         </div>
-        <div class="progress-bar-container w-full bg-slate-700 rounded-full h-2 overflow-hidden">
+        <div class="progress-bar-container w-full bg-surface-2 rounded-full h-2 overflow-hidden">
           <div
             class="progress-bar-fill h-full bg-blue-500 transition-all duration-300"
             :style="{ width: audioProgressPercent + '%' }"
           ></div>
         </div>
-        <div class="text-sm text-slate-400 mt-2">
+        <div class="text-sm text-muted mt-2">
           {{ audioProgress.completed }} / {{ audioProgress.total }} audio files
         </div>
       </div>
@@ -86,11 +86,11 @@
             </svg>
             <span>{{ audioProgress.skipped.length }} presentation{{ audioProgress.skipped.length > 1 ? 's' : '' }} skipped</span>
           </div>
-          <div class="text-sm text-slate-300 space-y-1 max-h-48 overflow-y-auto">
+          <div class="text-sm text-ink space-y-1 max-h-48 overflow-y-auto">
             <div v-for="skip in audioProgress.skipped.slice(0, 10)" :key="skip.legoId" class="font-mono text-xs">
               <span class="text-amber-400">{{ skip.legoId }}</span>: missing <span class="text-red-400">{{ skip.missing.join(', ') }}</span>
             </div>
-            <div v-if="audioProgress.skipped.length > 10" class="text-slate-400 italic">
+            <div v-if="audioProgress.skipped.length > 10" class="text-muted italic">
               ... and {{ audioProgress.skipped.length - 10 }} more
             </div>
           </div>
@@ -103,11 +103,11 @@
             </svg>
             <span>{{ audioProgress.errors.length }} concatenation error{{ audioProgress.errors.length > 1 ? 's' : '' }}</span>
           </div>
-          <div class="text-sm text-slate-300 space-y-1 max-h-48 overflow-y-auto">
+          <div class="text-sm text-ink space-y-1 max-h-48 overflow-y-auto">
             <div v-for="err in audioProgress.errors.slice(0, 5)" :key="err.legoId" class="font-mono text-xs">
               <span class="text-red-400">{{ err.legoId }}</span>: {{ err.error }}
             </div>
-            <div v-if="audioProgress.errors.length > 5" class="text-slate-400 italic">
+            <div v-if="audioProgress.errors.length > 5" class="text-muted italic">
               ... and {{ audioProgress.errors.length - 5 }} more
             </div>
           </div>
@@ -133,14 +133,14 @@
           <span>Generated: {{ formatDate(state.manifestGeneratedAt) }}</span>
         </div>
         <!-- Show machine name and pending path -->
-        <div v-if="state.generatedOnMachine" class="mt-2 text-sm text-slate-400">
+        <div v-if="state.generatedOnMachine" class="mt-2 text-sm text-muted">
           <div class="flex items-center gap-1">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <span>Generated on <strong class="text-slate-300">{{ state.generatedOnMachine }}</strong></span>
+            <span>Generated on <strong class="text-ink">{{ state.generatedOnMachine }}</strong></span>
           </div>
-          <div v-if="state.pendingManifestPath" class="mt-1 font-mono text-xs text-slate-500">
+          <div v-if="state.pendingManifestPath" class="mt-1 font-mono text-xs text-faint">
             {{ state.pendingManifestPath }}
           </div>
         </div>
@@ -148,16 +148,16 @@
 
       <!-- Stats -->
       <div v-if="stats" class="stats-grid grid grid-cols-3 gap-3 text-sm">
-        <div class="stat-item flex flex-col p-3 bg-slate-700 rounded">
-          <span class="text-slate-400">Seeds</span>
+        <div class="stat-item flex flex-col p-3 bg-surface-2 rounded">
+          <span class="text-muted">Seeds</span>
           <span class="text-emerald-400 font-semibold text-lg">{{ stats.seeds?.toLocaleString() }}</span>
         </div>
-        <div class="stat-item flex flex-col p-3 bg-slate-700 rounded">
-          <span class="text-slate-400">Ordered Enc.</span>
+        <div class="stat-item flex flex-col p-3 bg-surface-2 rounded">
+          <span class="text-muted">Ordered Enc.</span>
           <span class="text-emerald-400 font-semibold text-lg">{{ stats.orderedEncouragements?.toLocaleString() }}</span>
         </div>
-        <div class="stat-item flex flex-col p-3 bg-slate-700 rounded">
-          <span class="text-slate-400">Pooled Enc.</span>
+        <div class="stat-item flex flex-col p-3 bg-surface-2 rounded">
+          <span class="text-muted">Pooled Enc.</span>
           <span class="text-emerald-400 font-semibold text-lg">{{ stats.pooledEncouragements?.toLocaleString() }}</span>
         </div>
       </div>
@@ -184,14 +184,14 @@
         <button
           @click="handleRedownload"
           :disabled="isLoading"
-          class="flex-1 px-4 py-2 text-sm font-medium bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors disabled:opacity-50"
+          class="flex-1 px-4 py-2 text-sm font-medium bg-surface-3 text-ink rounded-lg hover:bg-surface-3 transition-colors disabled:opacity-50"
         >
           Re-download Manifest
         </button>
         <button
           @click="handleRegenerate"
           :disabled="isLoading"
-          class="flex-1 px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50"
+          class="flex-1 px-4 py-2 text-sm font-medium border border-line text-ink rounded-lg hover:bg-surface-2 transition-colors disabled:opacity-50"
         >
           Regenerate
         </button>
@@ -259,7 +259,7 @@ function handleRegenerate() {
 }
 
 .stat-item {
-  border: 1px solid #475569;
+  border: 1px solid var(--surface-3);
 }
 
 input[type="checkbox"] {

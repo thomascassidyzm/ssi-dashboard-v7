@@ -28,7 +28,7 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  background: #0f172a;
+  background: var(--canvas);
 }
 .s0-header {
   flex: 0 0 auto;
@@ -37,8 +37,8 @@
   gap: 0.9rem;
   height: 56px;
   padding: 0 1.25rem;
-  background: #1e293b;
-  border-bottom: 1px solid #475569;
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface-3);
 }
 .s0-crumbs {
   display: flex;
@@ -47,29 +47,29 @@
   font-size: 0.875rem;
   min-width: 0;
 }
-.s0-crumbs .crumb-link { color: #34d399; text-decoration: none; white-space: nowrap; }
+.s0-crumbs .crumb-link { color: var(--accent-2); text-decoration: none; white-space: nowrap; }
 .s0-crumbs .crumb-link:hover { color: #6ee7b7; }
-.s0-crumbs .crumb-sep { color: #475569; }
-.s0-crumbs .crumb-here { color: #94a3b8; white-space: nowrap; }
+.s0-crumbs .crumb-sep { color: var(--surface-3); }
+.s0-crumbs .crumb-here { color: var(--muted); white-space: nowrap; }
 .s0-open {
   margin-left: auto;
   font-family: ui-monospace, "IBM Plex Mono", Menlo, monospace;
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #ffa630;
+  color: var(--accent);
   text-decoration: none;
   white-space: nowrap;
-  border: 1px solid #475569;
+  border: 1px solid var(--surface-3);
   border-radius: 999px;
   padding: 0.35rem 0.8rem;
   transition: border-color 0.15s, color 0.15s;
 }
-.s0-open:hover { border-color: #ffa630; color: #f7f7f2; }
+.s0-open:hover { border-color: var(--accent); color: var(--ink); }
 .s0-frame {
   flex: 1 1 auto;
   width: 100%;
   border: 0;
-  background: #0f172a;
+  background: var(--canvas);
 }
 </style>

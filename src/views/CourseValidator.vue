@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -9,7 +9,7 @@
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">
           Course Analyzer
         </h1>
-        <p class="text-slate-400">
+        <p class="text-muted">
           Analyze content quality, completeness, and identify missing components across all pipeline phases
         </p>
       </div>
@@ -17,13 +17,13 @@
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
         <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500"></div>
-        <p class="mt-4 text-slate-400">Loading course analysis...</p>
+        <p class="mt-4 text-muted">Loading course analysis...</p>
       </div>
 
       <!-- Error State -->
       <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
         <h3 class="text-red-400 font-semibold mb-2">Error Loading Validation Data</h3>
-        <p class="text-slate-300">{{ error }}</p>
+        <p class="text-ink">{{ error }}</p>
         <button @click="loadData" class="mt-4 px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg transition">
           Retry
         </button>
@@ -31,12 +31,12 @@
 
       <!-- Course Selection -->
       <div v-else class="space-y-6">
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <label class="block text-sm font-medium text-slate-300 mb-2">Select Course</label>
+        <div class="bg-surface border border-line rounded-lg p-6">
+          <label class="block text-sm font-medium text-ink mb-2">Select Course</label>
           <select
             v-model="selectedCourse"
             @change="onCourseChange"
-            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none"
+            class="w-full bg-canvas border border-line rounded-lg px-4 py-2 text-ink focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none"
           >
             <option value="">-- All Courses Overview --</option>
             <option v-for="courseCode in availableCourses" :key="courseCode" :value="courseCode">
@@ -51,10 +51,10 @@
             v-for="(validation, courseCode) in allValidation.courses"
             :key="courseCode"
             @click="selectCourse(courseCode)"
-            class="bg-slate-800 border border-slate-700 rounded-lg p-6 cursor-pointer hover:border-emerald-500 transition-all hover:-translate-y-0.5 group"
+            class="bg-surface border border-line rounded-lg p-6 cursor-pointer hover:border-emerald-500 transition-all hover:-translate-y-0.5 group"
           >
             <div class="flex items-start justify-between mb-4">
-              <h3 class="text-lg font-semibold text-slate-100 group-hover:text-emerald-400 transition">{{ courseCode }}</h3>
+              <h3 class="text-lg font-semibold text-ink group-hover:text-emerald-400 transition">{{ courseCode }}</h3>
               <span
                 v-if="validation.canProgress"
                 class="px-2 py-1 bg-yellow-900/30 text-yellow-400 text-xs rounded-full border border-yellow-400/20"
@@ -71,11 +71,11 @@
 
             <!-- Progress Bar -->
             <div class="mb-3">
-              <div class="flex justify-between text-xs text-slate-400 mb-1">
+              <div class="flex justify-between text-xs text-muted mb-1">
                 <span>Progress</span>
                 <span>{{ validation.completedPhases.length }} / 4 phases</span>
               </div>
-              <div class="w-full bg-slate-700 rounded-full h-2">
+              <div class="w-full bg-surface-2 rounded-full h-2">
                 <div
                   class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2 rounded-full transition-all"
                   :style="{ width: `${(validation.completedPhases.length / 4) * 100}%` }"
@@ -91,15 +91,15 @@
                 class="flex items-center gap-2"
               >
                 <span v-if="validation.completedPhases.includes(phase)" class="text-emerald-400">✓</span>
-                <span v-else class="text-slate-600">○</span>
-                <span :class="validation.completedPhases.includes(phase) ? 'text-slate-300' : 'text-slate-500'">
+                <span v-else class="text-faint">○</span>
+                <span :class="validation.completedPhases.includes(phase) ? 'text-ink' : 'text-faint'">
                   {{ getPhaseLabel(phase) }}
                 </span>
               </div>
             </div>
 
             <!-- Next Action -->
-            <div v-if="validation.nextPhase" class="mt-4 pt-4 border-t border-slate-700">
+            <div v-if="validation.nextPhase" class="mt-4 pt-4 border-t border-line">
               <p class="text-xs text-emerald-400">
                 Next: {{ getPhaseLabel(validation.nextPhase) }}
               </p>
@@ -110,7 +110,7 @@
         <!-- Single Course Detail -->
         <div v-else-if="selectedCourse && courseReport" class="space-y-6">
           <!-- Summary Card -->
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+          <div class="bg-surface border border-line rounded-lg p-6">
             <div class="flex items-center justify-between mb-6">
               <div class="flex items-center gap-4">
                 <h2 class="text-2xl font-bold text-emerald-400">{{ courseReport.courseCode }}</h2>
@@ -136,40 +136,40 @@
             </div>
 
             <div class="grid grid-cols-4 gap-4">
-              <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+              <div class="bg-canvas/50 border border-line rounded-lg p-4 text-center">
                 <div class="text-3xl font-bold text-emerald-400">{{ courseReport.summary.completed }}</div>
-                <div class="text-xs text-slate-400 mt-1">Phases Completed</div>
+                <div class="text-xs text-muted mt-1">Phases Completed</div>
               </div>
-              <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+              <div class="bg-canvas/50 border border-line rounded-lg p-4 text-center">
                 <div class="text-3xl font-bold text-yellow-400">{{ courseReport.summary.missing }}</div>
-                <div class="text-xs text-slate-400 mt-1">Components Missing</div>
+                <div class="text-xs text-muted mt-1">Components Missing</div>
               </div>
-              <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+              <div class="bg-canvas/50 border border-line rounded-lg p-4 text-center">
                 <div class="text-3xl font-bold text-blue-400">{{ courseReport.summary.progress_percentage }}%</div>
-                <div class="text-xs text-slate-400 mt-1">Overall Progress</div>
+                <div class="text-xs text-muted mt-1">Overall Progress</div>
               </div>
-              <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                <div class="text-3xl font-bold text-slate-400">{{ courseReport.summary.total_phases }}</div>
-                <div class="text-xs text-slate-400 mt-1">Total Phases</div>
+              <div class="bg-canvas/50 border border-line rounded-lg p-4 text-center">
+                <div class="text-3xl font-bold text-muted">{{ courseReport.summary.total_phases }}</div>
+                <div class="text-xs text-muted mt-1">Total Phases</div>
               </div>
             </div>
           </div>
 
           <!-- LUT Check & Basket Management -->
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <h3 class="text-xl font-semibold text-slate-100 mb-4">🔬 Quality Control & Basket Management</h3>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <h3 class="text-xl font-semibold text-ink mb-4">🔬 Quality Control & Basket Management</h3>
 
             <div class="grid grid-cols-2 gap-4">
               <!-- LUT Check -->
-              <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <div class="bg-canvas/50 border border-line rounded-lg p-4">
                 <h4 class="font-semibold text-emerald-400 mb-2">LUT Check (Phase 3.6)</h4>
-                <p class="text-sm text-slate-400 mb-4">
+                <p class="text-sm text-muted mb-4">
                   Check for LEGO collisions (same KNOWN → different TARGETs)
                 </p>
                 <button
                   @click="runLUTCheck"
                   :disabled="lutCheckLoading"
-                  class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+                  class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint rounded-lg transition text-white flex items-center justify-center gap-2"
                 >
                   <span v-if="lutCheckLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                   <span v-else>🔍</span>
@@ -191,22 +191,22 @@
                       {{ lutCheckResult.status === 'pass' ? 'No Collisions' : `${lutCheckResult.collisions} Collisions Found` }}
                     </span>
                   </div>
-                  <p v-if="lutCheckResult.manifest" class="text-xs text-slate-400">
+                  <p v-if="lutCheckResult.manifest" class="text-xs text-muted">
                     Affected seeds: {{ lutCheckResult.manifest.affected_seeds?.length || 0 }}
                   </p>
                 </div>
               </div>
 
               <!-- Basket Gap Analysis -->
-              <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <div class="bg-canvas/50 border border-line rounded-lg p-4">
                 <h4 class="font-semibold text-emerald-400 mb-2">Basket Gap Analysis</h4>
-                <p class="text-sm text-slate-400 mb-4">
+                <p class="text-sm text-muted mb-4">
                   Identify missing baskets and deprecated baskets
                 </p>
                 <button
                   @click="runBasketGapAnalysis"
                   :disabled="gapAnalysisLoading"
-                  class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+                  class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-surface-2 disabled:text-faint rounded-lg transition text-white flex items-center justify-center gap-2"
                 >
                   <span v-if="gapAnalysisLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                   <span v-else>📊</span>
@@ -217,19 +217,19 @@
                 <div v-if="gapAnalysisResult" class="mt-4 p-3 rounded-lg bg-blue-900/20 border border-blue-500/50">
                   <div class="text-xs space-y-1">
                     <div class="flex justify-between">
-                      <span class="text-slate-400">Keep:</span>
+                      <span class="text-muted">Keep:</span>
                       <span class="text-emerald-400 font-semibold">{{ gapAnalysisResult.analysis.baskets_to_keep }}</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-slate-400">Delete:</span>
+                      <span class="text-muted">Delete:</span>
                       <span class="text-red-400 font-semibold">{{ gapAnalysisResult.analysis.baskets_to_delete }}</span>
                     </div>
                     <div class="flex justify-between">
-                      <span class="text-slate-400">Missing:</span>
+                      <span class="text-muted">Missing:</span>
                       <span class="text-yellow-400 font-semibold">{{ gapAnalysisResult.analysis.baskets_missing }}</span>
                     </div>
-                    <div class="flex justify-between pt-1 border-t border-slate-700">
-                      <span class="text-slate-400">Coverage:</span>
+                    <div class="flex justify-between pt-1 border-t border-line">
+                      <span class="text-muted">Coverage:</span>
                       <span class="text-blue-400 font-semibold">{{ gapAnalysisResult.coverage_percentage }}%</span>
                     </div>
                   </div>
@@ -238,14 +238,14 @@
             </div>
 
             <!-- Action Buttons -->
-            <div v-if="gapAnalysisResult && (gapAnalysisResult.analysis.baskets_to_delete > 0 || gapAnalysisResult.analysis.baskets_missing > 0)" class="mt-6 pt-6 border-t border-slate-700">
-              <h4 class="text-sm font-semibold text-slate-300 mb-3">Actions Required:</h4>
+            <div v-if="gapAnalysisResult && (gapAnalysisResult.analysis.baskets_to_delete > 0 || gapAnalysisResult.analysis.baskets_missing > 0)" class="mt-6 pt-6 border-t border-line">
+              <h4 class="text-sm font-semibold text-ink mb-3">Actions Required:</h4>
               <div class="flex gap-3">
                 <button
                   v-if="gapAnalysisResult.analysis.baskets_missing > 0"
                   @click="regenerateBaskets"
                   :disabled="regenerationLoading"
-                  class="flex-1 px-4 py-2 bg-yellow-600 hover:bg-yellow-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+                  class="flex-1 px-4 py-2 bg-yellow-600 hover:bg-yellow-500 disabled:bg-surface-2 disabled:text-faint rounded-lg transition text-white flex items-center justify-center gap-2"
                 >
                   <span v-if="regenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                   <span v-else>🔄</span>
@@ -259,7 +259,7 @@
                   <span class="text-emerald-400">✓</span>
                   <div class="flex-1">
                     <p class="font-semibold text-emerald-400 mb-2">{{ regenerationResult.message }}</p>
-                    <div class="text-xs text-slate-400 space-y-1">
+                    <div class="text-xs text-muted space-y-1">
                       <p>Deleted old baskets: {{ regenerationResult.cleanup?.deletedOldBaskets || 0 }}</p>
                       <p>Browsers spawned: {{ regenerationResult.segmentation?.browsersNeeded || 0 }}</p>
                       <p>Estimated time: {{ regenerationResult.segmentation?.estimatedTime || 'Unknown' }}</p>
@@ -273,22 +273,22 @@
 
           <!-- Recommendations -->
           <div v-if="courseReport.recommendations && courseReport.recommendations.length > 0" class="space-y-3">
-            <h3 class="text-xl font-semibold text-slate-100">Recommendations</h3>
+            <h3 class="text-xl font-semibold text-ink">Recommendations</h3>
             <div
               v-for="(rec, idx) in courseReport.recommendations"
               :key="idx"
-              class="bg-slate-800 border rounded-lg p-4"
+              class="bg-surface border rounded-lg p-4"
               :class="{
                 'border-yellow-500/50': rec.priority === 'high',
                 'border-blue-500/50': rec.priority === 'info',
-                'border-slate-700': rec.priority !== 'high' && rec.priority !== 'info'
+                'border-line': rec.priority !== 'high' && rec.priority !== 'info'
               }"
             >
               <div class="flex items-start justify-between mb-2">
                 <h4 class="font-semibold" :class="{
                   'text-yellow-400': rec.priority === 'high',
                   'text-blue-400': rec.priority === 'info',
-                  'text-slate-100': rec.priority !== 'high' && rec.priority !== 'info'
+                  'text-ink': rec.priority !== 'high' && rec.priority !== 'info'
                 }">
                   {{ rec.name }}
                 </h4>
@@ -302,13 +302,13 @@
                   {{ rec.priority }}
                 </span>
               </div>
-              <p class="text-sm text-slate-300 mb-3">{{ rec.message }}</p>
+              <p class="text-sm text-ink mb-3">{{ rec.message }}</p>
 
-              <div v-if="rec.missing && rec.missing.length > 0" class="mb-3 bg-slate-900/50 border border-slate-700 rounded p-3">
-                <p class="text-xs text-slate-400 mb-2">Missing components:</p>
-                <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+              <div v-if="rec.missing && rec.missing.length > 0" class="mb-3 bg-canvas/50 border border-line rounded p-3">
+                <p class="text-xs text-muted mb-2">Missing components:</p>
+                <ul class="list-disc list-inside text-sm text-ink space-y-1">
                   <li v-for="item in rec.missing" :key="item.name">
-                    {{ item.name }} <span class="text-slate-500">({{ item.type }})</span>
+                    {{ item.name }} <span class="text-faint">({{ item.type }})</span>
                   </li>
                 </ul>
               </div>
@@ -326,41 +326,41 @@
           <!-- Deep Validation Results -->
           <div v-if="showDeepValidation && deepValidation" class="space-y-3">
             <div class="flex items-center justify-between">
-              <h3 class="text-xl font-semibold text-slate-100">🔬 Deep Content Analysis</h3>
+              <h3 class="text-xl font-semibold text-ink">🔬 Deep Content Analysis</h3>
               <button
                 @click="showDeepValidation = false"
-                class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-sm rounded-lg transition text-slate-200"
+                class="px-3 py-1 bg-surface-2 hover:bg-surface-3 text-sm rounded-lg transition text-ink"
               >
                 Hide Analysis
               </button>
             </div>
 
             <!-- Summary -->
-            <div v-if="deepValidation.summary" class="bg-slate-800 border rounded-lg p-6"
+            <div v-if="deepValidation.summary" class="bg-surface border rounded-lg p-6"
               :class="{
                 'border-red-500/50': deepValidation.summary.totalIssues > 0,
                 'border-emerald-500/50': deepValidation.summary.totalIssues === 0
               }"
             >
               <div class="grid grid-cols-3 gap-4">
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                <div class="bg-canvas/50 border border-line rounded-lg p-4 text-center">
                   <div class="text-2xl font-bold" :class="{
                     'text-red-400': deepValidation.summary.totalIssues > 0,
                     'text-emerald-400': deepValidation.summary.totalIssues === 0
                   }">
                     {{ deepValidation.summary.totalIssues }}
                   </div>
-                  <div class="text-xs text-slate-400 mt-1">Critical Issues</div>
+                  <div class="text-xs text-muted mt-1">Critical Issues</div>
                 </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                <div class="bg-canvas/50 border border-line rounded-lg p-4 text-center">
                   <div class="text-2xl font-bold text-yellow-400">{{ deepValidation.summary.totalWarnings }}</div>
-                  <div class="text-xs text-slate-400 mt-1">Warnings</div>
+                  <div class="text-xs text-muted mt-1">Warnings</div>
                 </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                <div class="bg-canvas/50 border border-line rounded-lg p-4 text-center">
                   <div class="text-2xl font-bold text-blue-400">
                     {{ Object.keys(deepValidation.phases).filter(p => deepValidation.phases[p].valid).length }}
                   </div>
-                  <div class="text-xs text-slate-400 mt-1">Valid Phases</div>
+                  <div class="text-xs text-muted mt-1">Valid Phases</div>
                 </div>
               </div>
             </div>
@@ -370,16 +370,16 @@
               v-for="(phaseData, phaseKey) in deepValidation.phases"
               :key="phaseKey"
               v-if="phaseData.exists"
-              class="bg-slate-800 border rounded-lg p-4"
+              class="bg-surface border rounded-lg p-4"
               :class="{
                 'border-red-500/50': phaseData.issues && phaseData.issues.length > 0,
                 'border-yellow-500/50': phaseData.warnings && phaseData.warnings.length > 0 && (!phaseData.issues || phaseData.issues.length === 0),
                 'border-emerald-500/50': phaseData.valid,
-                'border-slate-700': !phaseData.valid && (!phaseData.issues || phaseData.issues.length === 0) && (!phaseData.warnings || phaseData.warnings.length === 0)
+                'border-line': !phaseData.valid && (!phaseData.issues || phaseData.issues.length === 0) && (!phaseData.warnings || phaseData.warnings.length === 0)
               }"
             >
               <div class="flex items-center justify-between mb-3">
-                <h4 class="font-semibold text-slate-100">{{ getPhaseLabel(phaseKey) }}</h4>
+                <h4 class="font-semibold text-ink">{{ getPhaseLabel(phaseKey) }}</h4>
                 <span
                   class="px-2 py-1 text-xs rounded-full border"
                   :class="{
@@ -392,10 +392,10 @@
               </div>
 
               <!-- Stats -->
-              <div v-if="phaseData.stats" class="mb-3 bg-slate-900/50 border border-slate-700 rounded p-3 grid grid-cols-2 gap-2 text-sm">
+              <div v-if="phaseData.stats" class="mb-3 bg-canvas/50 border border-line rounded p-3 grid grid-cols-2 gap-2 text-sm">
                 <div v-for="(value, key) in phaseData.stats" :key="key" class="flex justify-between">
-                  <span class="text-slate-400">{{ formatStatKey(key) }}:</span>
-                  <span class="text-slate-200 font-mono">{{ value }}</span>
+                  <span class="text-muted">{{ formatStatKey(key) }}:</span>
+                  <span class="text-ink font-mono">{{ value }}</span>
                 </div>
               </div>
 
@@ -408,7 +408,7 @@
                   class="bg-red-900/20 border border-red-500/30 rounded p-3 text-sm"
                 >
                   <p class="text-red-300">{{ issue.message }}</p>
-                  <div v-if="issue.examples" class="mt-2 text-xs text-slate-400 bg-slate-900/50 rounded p-2 font-mono">
+                  <div v-if="issue.examples" class="mt-2 text-xs text-muted bg-canvas/50 rounded p-2 font-mono">
                     {{ JSON.stringify(issue.examples).substring(0, 100) }}...
                   </div>
                 </div>
@@ -430,21 +430,21 @@
 
           <!-- Phase Details -->
           <div class="space-y-3">
-            <h3 class="text-xl font-semibold text-slate-100">Phase Details</h3>
+            <h3 class="text-xl font-semibold text-ink">Phase Details</h3>
             <div
               v-for="(phase, phaseKey) in courseReport.validation.phases"
               :key="phaseKey"
-              class="bg-slate-800 border rounded-lg p-4"
+              class="bg-surface border rounded-lg p-4"
               :class="{
                 'border-emerald-500/50': phase.complete,
                 'border-red-500/50': !phase.complete && !phase.blockedBy,
-                'border-slate-600': phase.blockedBy
+                'border-line': phase.blockedBy
               }"
             >
               <div class="flex items-center justify-between mb-2">
-                <h4 class="font-semibold text-slate-100">{{ phase.name }}</h4>
+                <h4 class="font-semibold text-ink">{{ phase.name }}</h4>
                 <div class="flex items-center gap-2">
-                  <span v-if="phase.blockedBy" class="px-2 py-1 bg-slate-700 text-slate-400 text-xs rounded-full border border-slate-600">
+                  <span v-if="phase.blockedBy" class="px-2 py-1 bg-surface-2 text-muted text-xs rounded-full border border-line">
                     Blocked by {{ phase.blockedBy.join(', ') }}
                   </span>
                   <span
@@ -459,17 +459,17 @@
                 </div>
               </div>
 
-              <p class="text-sm text-slate-400 mb-3">{{ phase.description }}</p>
+              <p class="text-sm text-muted mb-3">{{ phase.description }}</p>
 
               <!-- Files -->
-              <div v-if="Object.keys(phase.files).length > 0" class="mb-2 bg-slate-900/50 border border-slate-700 rounded p-3">
-                <p class="text-xs font-semibold text-slate-400 mb-2">Files:</p>
+              <div v-if="Object.keys(phase.files).length > 0" class="mb-2 bg-canvas/50 border border-line rounded p-3">
+                <p class="text-xs font-semibold text-muted mb-2">Files:</p>
                 <div class="space-y-1">
                   <div v-for="(fileInfo, fileName) in phase.files" :key="fileName" class="flex items-center gap-2 text-sm">
                     <span v-if="fileInfo.exists" class="text-emerald-400">✓</span>
                     <span v-else class="text-red-400">✗</span>
-                    <span class="text-slate-300">{{ fileName }}</span>
-                    <span v-if="fileInfo.exists" class="text-slate-500 text-xs">
+                    <span class="text-ink">{{ fileName }}</span>
+                    <span v-if="fileInfo.exists" class="text-faint text-xs">
                       ({{ formatBytes(fileInfo.size) }})
                     </span>
                   </div>
@@ -477,14 +477,14 @@
               </div>
 
               <!-- Directories -->
-              <div v-if="Object.keys(phase.directories).length > 0" class="bg-slate-900/50 border border-slate-700 rounded p-3">
-                <p class="text-xs font-semibold text-slate-400 mb-2">Directories:</p>
+              <div v-if="Object.keys(phase.directories).length > 0" class="bg-canvas/50 border border-line rounded p-3">
+                <p class="text-xs font-semibold text-muted mb-2">Directories:</p>
                 <div class="space-y-1">
                   <div v-for="(dirInfo, dirName) in phase.directories" :key="dirName" class="flex items-center gap-2 text-sm">
                     <span v-if="dirInfo.exists" class="text-emerald-400">✓</span>
                     <span v-else class="text-red-400">✗</span>
-                    <span class="text-slate-300">{{ dirName }}</span>
-                    <span v-if="dirInfo.exists" class="text-slate-500 text-xs">
+                    <span class="text-ink">{{ dirName }}</span>
+                    <span v-if="dirInfo.exists" class="text-faint text-xs">
                       ({{ dirInfo.itemCount }} items)
                     </span>
                   </div>

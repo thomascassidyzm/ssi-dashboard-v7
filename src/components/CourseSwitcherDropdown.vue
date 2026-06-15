@@ -128,26 +128,26 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.375rem 0.75rem;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .course-button:hover {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
 }
 
 .course-code {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.8125rem;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
 }
 
 .course-name {
   font-size: 0.8125rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .create-mode {
@@ -155,7 +155,7 @@ onUnmounted(() => {
 }
 
 .dropdown-arrow {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   transition: transform 0.2s;
 }
 
@@ -168,8 +168,8 @@ onUnmounted(() => {
   top: calc(100% + 4px);
   right: 0;
   width: 300px;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   z-index: 9999;
@@ -179,16 +179,16 @@ onUnmounted(() => {
 .search-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
   border: none;
-  border-bottom: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
   font-size: 0.875rem;
   outline: none;
 }
 
 .search-input::placeholder {
-  color: var(--color-paper-muted, #64748b);
+  color: var(--color-paper-muted, var(--faint));
 }
 
 .course-list {
@@ -212,34 +212,34 @@ onUnmounted(() => {
 }
 
 .course-option:hover {
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
 }
 
 .course-option.current {
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
 }
 
 .option-code {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.8125rem;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
 }
 
 .option-name {
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .no-results {
   padding: 1rem;
   text-align: center;
-  color: var(--color-paper-muted, #64748b);
+  color: var(--color-paper-muted, var(--faint));
   font-size: 0.875rem;
 }
 
 .course-list-divider {
   height: 1px;
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
   margin: 0.25rem 0;
 }
 

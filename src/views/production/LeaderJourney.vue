@@ -378,13 +378,13 @@ const currentStepKey = computed(() => {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 0.4rem;
 }
 
 .journey-intro {
   font-size: 0.9rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0;
   max-width: 60ch;
 }
@@ -402,8 +402,8 @@ const currentStepKey = computed(() => {
   display: flex;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 10px;
   transition: border-color 0.15s;
 }
@@ -422,10 +422,10 @@ const currentStepKey = computed(() => {
   font-weight: 700;
   flex-shrink: 0;
   margin-top: 0.1rem;
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper-dim, #94a3b8);
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper-dim, var(--muted));
 }
-.step-marker.done { background: rgba(52, 211, 153, 0.15); border-color: #34d399; color: #34d399; }
+.step-marker.done { background: rgba(52, 211, 153, 0.15); border-color: var(--accent-2); color: var(--accent-2); }
 .step-marker.active { border-color: var(--color-emerald, #06ffa5); color: var(--color-emerald, #06ffa5); }
 .step-marker.attention { border-color: #fb7185; color: #fb7185; }
 .step-marker.pending { border-style: dashed; }
@@ -444,23 +444,23 @@ const currentStepKey = computed(() => {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0;
 }
 
 .step-status {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.72rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   white-space: nowrap;
 }
-.step-status.done { color: #34d399; }
+.step-status.done { color: var(--accent-2); }
 .step-status.attention { color: #fb7185; }
 .step-status.pending { font-style: italic; }
 
 .step-blurb {
   font-size: 0.84rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0.35rem 0 0;
   max-width: 64ch;
 }
@@ -484,20 +484,20 @@ const currentStepKey = computed(() => {
 .slot-name {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.72rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   background: rgba(255, 255, 255, 0.06);
   border-radius: 4px;
   padding: 0.1rem 0.45rem;
   white-space: nowrap;
 }
 
-.slot-assignment { color: var(--color-paper-dim, #94a3b8); }
+.slot-assignment { color: var(--color-paper-dim, var(--muted)); }
 .slot-assignment.unassigned { color: #fbbf24; }
 
 .slot-coverage {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.72rem;
-  color: #34d399;
+  color: var(--accent-2);
 }
 
 .step-links {
@@ -509,11 +509,11 @@ const currentStepKey = computed(() => {
 
 .step-link {
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
-.step-link:hover { color: var(--color-paper, #f7f7f2); }
+.step-link:hover { color: var(--color-paper, var(--ink)); }
 .step-link.primary { color: var(--color-emerald, #06ffa5); }
 .step-link.primary:hover { border-bottom-color: var(--color-emerald, #06ffa5); }
 

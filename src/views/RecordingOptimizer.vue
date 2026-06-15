@@ -1,34 +1,34 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100">
+  <div class="min-h-screen bg-canvas text-ink">
     <div class="max-w-[1600px] mx-auto p-6 lg:p-8">
 
       <!-- Header -->
       <header class="mb-8">
         <div class="flex items-center gap-3 mb-6">
-          <router-link :to="`/production/${courseCode}`" class="text-slate-400 hover:text-emerald-400 transition-colors text-sm">
+          <router-link :to="`/production/${courseCode}`" class="text-muted hover:text-emerald-400 transition-colors text-sm">
             &larr; Production Suite
           </router-link>
-          <span class="text-slate-600">|</span>
-          <h1 class="text-xl font-semibold text-slate-100">Recording Optimizer</h1>
+          <span class="text-faint">|</span>
+          <h1 class="text-xl font-semibold text-ink">Recording Optimizer</h1>
           <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded text-sm font-medium">
             {{ courseCode }}
           </span>
           <div class="ml-auto flex items-center gap-6 text-sm">
             <div class="text-right">
-              <span class="text-slate-500 uppercase tracking-wider text-xs">Phrases</span>
+              <span class="text-faint uppercase tracking-wider text-xs">Phrases</span>
               <div class="text-lg font-semibold">
                 <span class="text-emerald-400">{{ recordedCount }}</span>
-                <span class="text-slate-500"> / </span>
-                <span class="text-slate-300">{{ totalRecordings }}</span>
+                <span class="text-faint"> / </span>
+                <span class="text-ink">{{ totalRecordings }}</span>
               </div>
             </div>
             <div class="text-right">
-              <span class="text-slate-500 uppercase tracking-wider text-xs">Coverage</span>
+              <span class="text-faint uppercase tracking-wider text-xs">Coverage</span>
               <div class="text-lg font-semibold text-emerald-400">{{ totalCoverage }}%</div>
             </div>
           </div>
         </div>
-        <div class="h-px bg-gradient-to-r from-emerald-500/50 via-slate-700 to-transparent"></div>
+        <div class="h-px bg-gradient-to-r from-emerald-500/50 via-surface-2 to-transparent"></div>
       </header>
 
       <!-- Main Grid -->
@@ -38,15 +38,15 @@
         <div class="space-y-6">
 
           <!-- Algorithm Results -->
-          <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
-            <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
-              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+          <section class="rounded-xl border border-line bg-surface/50 overflow-hidden">
+            <div class="px-6 py-4 border-b border-line flex items-center justify-between">
+              <h2 class="text-sm font-semibold text-ink uppercase tracking-wider">
                 Your reading plan
               </h2>
               <button @click="runAlgorithm"
                       :disabled="isCalculating"
-                      class="text-sm px-4 py-1.5 bg-slate-700 text-slate-300 rounded
-                             hover:bg-slate-600 transition-colors disabled:opacity-50">
+                      class="text-sm px-4 py-1.5 bg-surface-2 text-ink rounded
+                             hover:bg-surface-3 transition-colors disabled:opacity-50">
                 {{ isCalculating ? 'Calculating...' : 'Recalculate' }}
               </button>
             </div>
@@ -54,35 +54,35 @@
             <div class="p-6">
               <!-- Stats Grid -->
               <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
-                  <div class="text-2xl font-bold text-slate-100">{{ stats.totalLegos }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Building blocks</div>
+                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
+                  <div class="text-2xl font-bold text-ink">{{ stats.totalLegos }}</div>
+                  <div class="text-xs text-faint uppercase tracking-wider mt-1">Building blocks</div>
                 </div>
-                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
                   <div class="text-2xl font-bold text-emerald-400">{{ stats.phrasesToRecord }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Phrases</div>
+                  <div class="text-xs text-faint uppercase tracking-wider mt-1">Phrases</div>
                 </div>
-                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
                   <div class="text-2xl font-bold text-amber-400">{{ stats.directRecord }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Direct</div>
+                  <div class="text-xs text-faint uppercase tracking-wider mt-1">Direct</div>
                 </div>
-                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
-                  <div class="text-2xl font-bold text-slate-100">~{{ stats.estimatedMinutes }}m</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Est. Time</div>
+                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
+                  <div class="text-2xl font-bold text-ink">~{{ stats.estimatedMinutes }}m</div>
+                  <div class="text-xs text-faint uppercase tracking-wider mt-1">Est. Time</div>
                 </div>
-                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
                   <div class="text-2xl font-bold text-emerald-400">{{ stats.reductionPercent }}%</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Reduction</div>
+                  <div class="text-xs text-faint uppercase tracking-wider mt-1">Reduction</div>
                 </div>
               </div>
 
               <!-- Efficiency Bar -->
-              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+              <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
                 <div class="flex items-center justify-between mb-2 text-sm">
-                  <span class="text-slate-400">Recording Efficiency</span>
-                  <span class="text-slate-300">{{ totalRecordings }} recordings &rarr; {{ stats.totalPhrases.toLocaleString() }} phrases</span>
+                  <span class="text-muted">Recording Efficiency</span>
+                  <span class="text-ink">{{ totalRecordings }} recordings &rarr; {{ stats.totalPhrases.toLocaleString() }} phrases</span>
                 </div>
-                <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-2 bg-surface-2 rounded-full overflow-hidden">
                   <div class="h-full bg-emerald-500 rounded-full" :style="{ width: stats.reductionPercent + '%' }"></div>
                 </div>
               </div>
@@ -94,7 +94,7 @@
             <div class="flex items-center justify-between">
               <div>
                 <h2 class="text-lg font-semibold text-emerald-400">Ready to Record?</h2>
-                <p class="text-slate-400 text-sm mt-1">
+                <p class="text-muted text-sm mt-1">
                   Open the teleprompter-style Recording Studio to flow through all {{ totalRecordings }} phrases
                 </p>
               </div>
@@ -118,7 +118,7 @@
                 <span class="text-2xl">🧬</span>
                 <div>
                   <h2 class="text-lg font-semibold text-violet-300">How phrases get stitched</h2>
-                  <p class="text-sm text-slate-400">New phrases are built from pieces your voices already recorded</p>
+                  <p class="text-sm text-muted">New phrases are built from pieces your voices already recorded</p>
                 </div>
               </div>
             </div>
@@ -126,15 +126,15 @@
             <div class="p-6 space-y-6">
               <!-- Target phrase with audio -->
               <div class="text-center">
-                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Stitched phrase</p>
-                <p class="text-xl text-slate-100 font-medium">{{ currentExample.welsh }}</p>
-                <p class="text-sm text-slate-400 mt-1">"{{ currentExample.english }}"</p>
+                <p class="text-xs text-faint uppercase tracking-wider mb-2">Stitched phrase</p>
+                <p class="text-xl text-ink font-medium">{{ currentExample.welsh }}</p>
+                <p class="text-sm text-muted mt-1">"{{ currentExample.english }}"</p>
                 <!-- Play button for target -->
                 <div class="mt-3 flex justify-center">
                   <button v-if="demoAudio[currentExample.seed]"
                           @click="playDemoAudio(currentExample.seed)"
                           :class="[
-                            'flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors',
+                            'flex items-center gap-2 px-4 py-2 text-ink rounded-lg transition-colors',
                             currentlyPlaying === currentExample.seed
                               ? 'bg-violet-700 ring-2 ring-violet-400'
                               : 'bg-violet-600 hover:bg-violet-500'
@@ -148,13 +148,13 @@
                     </svg>
                     {{ currentlyPlaying === currentExample.seed ? 'Playing...' : 'Play the stitched result' }}
                   </button>
-                  <span v-else class="text-sm text-slate-500 italic">Loading audio...</span>
+                  <span v-else class="text-sm text-faint italic">Loading audio...</span>
                 </div>
               </div>
 
               <!-- Build visualization -->
-              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
-                <p class="text-xs text-slate-500 uppercase tracking-wider mb-4 text-center">Built from these recorded phrases:</p>
+              <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
+                <p class="text-xs text-faint uppercase tracking-wider mb-4 text-center">Built from these recorded phrases:</p>
 
                 <div class="flex flex-wrap justify-center gap-2 mb-6">
                   <span v-for="(word, idx) in currentExample.buildOrder" :key="idx"
@@ -186,13 +186,13 @@
                                     currentlyPlaying === source.seed ? 'ring-2 ring-white/50' : '',
                                     source.playBtnClass
                                   ]">
-                            <svg class="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-3 h-3 text-ink ml-0.5" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
                             </svg>
                           </button>
                         </div>
-                        <p class="text-sm text-slate-200 mt-1">{{ source.welsh }}</p>
-                        <p class="text-xs text-slate-500">"{{ source.english }}"</p>
+                        <p class="text-sm text-ink mt-1">{{ source.welsh }}</p>
+                        <p class="text-xs text-faint">"{{ source.english }}"</p>
                       </div>
                       <div class="flex flex-wrap gap-1 ml-4">
                         <span v-for="lego in sourceProvides[source.seed]" :key="lego"
@@ -210,8 +210,8 @@
                 <div class="flex items-start gap-3">
                   <span class="text-xl">💡</span>
                   <div>
-                    <p class="text-sm text-slate-200 font-medium">The Magic</p>
-                    <p class="text-sm text-slate-400 mt-1">
+                    <p class="text-sm text-ink font-medium">The Magic</p>
+                    <p class="text-sm text-muted mt-1">
                       By recording just <span class="text-emerald-400 font-semibold">{{ totalRecordings }} phrases</span>,
                       we can stitch together audio for all <span class="text-violet-400 font-semibold">{{ stats.totalPhrases.toLocaleString() }} phrases</span> in the course.
                       That's a <span class="text-amber-400 font-semibold">{{ stats.reductionPercent }}% reduction</span> in recording effort.
@@ -226,18 +226,18 @@
           </section>
 
           <!-- Recording Script Preview -->
-          <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
-            <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
-              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+          <section class="rounded-xl border border-line bg-surface/50 overflow-hidden">
+            <div class="px-6 py-4 border-b border-line flex items-center justify-between">
+              <h2 class="text-sm font-semibold text-ink uppercase tracking-wider">
                 Recording Script Preview
               </h2>
               <div class="flex items-center gap-3">
-                <span class="text-xs text-slate-500">{{ filteredPhrases.length }} phrases</span>
+                <span class="text-xs text-faint">{{ filteredPhrases.length }} phrases</span>
                 <button @click="exportPDF"
                         disabled
                         title="Not implemented yet"
-                        class="text-sm px-4 py-1.5 bg-slate-700 text-slate-300 rounded
-                               hover:bg-slate-600 transition-colors disabled:opacity-50">
+                        class="text-sm px-4 py-1.5 bg-surface-2 text-ink rounded
+                               hover:bg-surface-3 transition-colors disabled:opacity-50">
                   Export PDF
                 </button>
               </div>
@@ -246,24 +246,24 @@
             <!-- Phrase List -->
             <div class="max-h-[400px] overflow-y-auto">
               <div v-for="(phrase, index) in filteredPhrases.slice(0, 20)" :key="phrase.id"
-                   class="px-6 py-3 border-b border-slate-700/50">
+                   class="px-6 py-3 border-b border-line/50">
                 <div class="flex items-start justify-between gap-4">
                   <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-3 mb-1">
-                      <span class="text-slate-600 text-xs font-mono">{{ String(index + 1).padStart(3, '0') }}</span>
-                      <span class="text-xs text-slate-500">{{ phrase.legoCount }} building blocks</span>
+                      <span class="text-faint text-xs font-mono">{{ String(index + 1).padStart(3, '0') }}</span>
+                      <span class="text-xs text-faint">{{ phrase.legoCount }} building blocks</span>
                     </div>
-                    <p class="text-sm text-slate-100">{{ phrase.target }}</p>
-                    <p class="text-xs text-slate-500 mt-0.5">{{ phrase.source }}</p>
+                    <p class="text-sm text-ink">{{ phrase.target }}</p>
+                    <p class="text-xs text-faint mt-0.5">{{ phrase.source }}</p>
                   </div>
                 </div>
               </div>
 
-              <div v-if="filteredPhrases.length > 20" class="px-6 py-4 text-center text-slate-500 text-sm">
+              <div v-if="filteredPhrases.length > 20" class="px-6 py-4 text-center text-faint text-sm">
                 + {{ filteredPhrases.length - 20 }} more phrases...
               </div>
 
-              <div v-if="filteredPhrases.length === 0" class="p-12 text-center text-slate-500">
+              <div v-if="filteredPhrases.length === 0" class="p-12 text-center text-faint">
                 Run the algorithm to generate the recording script
               </div>
             </div>
@@ -274,9 +274,9 @@
         <div class="space-y-6">
 
           <!-- Coverage Overview -->
-          <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
-            <div class="px-6 py-4 border-b border-slate-700">
-              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+          <section class="rounded-xl border border-line bg-surface/50 overflow-hidden">
+            <div class="px-6 py-4 border-b border-line">
+              <h2 class="text-sm font-semibold text-ink uppercase tracking-wider">
                 Coverage
               </h2>
             </div>
@@ -286,7 +286,7 @@
                 <div class="relative w-32 h-32">
                   <svg class="w-32 h-32 -rotate-90" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor"
-                            class="text-slate-700" stroke-width="8"/>
+                            class="text-faint" stroke-width="8"/>
                     <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor"
                             class="text-emerald-500" stroke-width="8"
                             :stroke-dasharray="`${recordedPercent * 2.51} 251`"
@@ -298,8 +298,8 @@
                             stroke-linecap="round"/>
                   </svg>
                   <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <span class="text-2xl font-bold text-slate-100">{{ totalCoverage }}%</span>
-                    <span class="text-xs text-slate-500 uppercase tracking-wider">Audio</span>
+                    <span class="text-2xl font-bold text-ink">{{ totalCoverage }}%</span>
+                    <span class="text-xs text-faint uppercase tracking-wider">Audio</span>
                   </div>
                 </div>
               </div>
@@ -309,60 +309,60 @@
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
                     <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                    <span class="text-sm text-slate-400">Recorded</span>
+                    <span class="text-sm text-muted">Recorded</span>
                   </div>
-                  <span class="text-sm text-slate-200">{{ recordedCount }}</span>
+                  <span class="text-sm text-ink">{{ recordedCount }}</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
                     <div class="w-3 h-3 rounded-full bg-violet-500"></div>
-                    <span class="text-sm text-slate-400">Spliced</span>
+                    <span class="text-sm text-muted">Spliced</span>
                   </div>
-                  <span class="text-sm text-slate-200">{{ splicedCount }}</span>
+                  <span class="text-sm text-ink">{{ splicedCount }}</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
-                    <div class="w-3 h-3 rounded-full bg-slate-600"></div>
-                    <span class="text-sm text-slate-400">Pending</span>
+                    <div class="w-3 h-3 rounded-full bg-surface-3"></div>
+                    <span class="text-sm text-muted">Pending</span>
                   </div>
-                  <span class="text-sm text-slate-200">{{ pendingCount }}</span>
+                  <span class="text-sm text-ink">{{ pendingCount }}</span>
                 </div>
               </div>
             </div>
           </section>
 
           <!-- Progressive Quality -->
-          <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
-            <div class="px-6 py-4 border-b border-slate-700">
-              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+          <section class="rounded-xl border border-line bg-surface/50 overflow-hidden">
+            <div class="px-6 py-4 border-b border-line">
+              <h2 class="text-sm font-semibold text-ink uppercase tracking-wider">
                 Quality Progression
               </h2>
             </div>
             <div class="p-6 space-y-4">
-              <p class="text-sm text-slate-400">
+              <p class="text-sm text-muted">
                 Start with spliced audio, add human recordings over time:
               </p>
               <div class="space-y-3 text-sm">
                 <div class="flex items-center gap-3">
                   <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                  <span class="text-slate-300">Day 1: {{ totalRecordings }} recorded &rarr; {{ stats.totalPhrases.toLocaleString() }} spliced</span>
+                  <span class="text-ink">Day 1: {{ totalRecordings }} recorded &rarr; {{ stats.totalPhrases.toLocaleString() }} spliced</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <div class="w-2 h-2 rounded-full bg-slate-600"></div>
-                  <span class="text-slate-500">Community adds more over time</span>
+                  <div class="w-2 h-2 rounded-full bg-surface-3"></div>
+                  <span class="text-faint">Community adds more over time</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <div class="w-2 h-2 rounded-full bg-slate-600"></div>
-                  <span class="text-slate-500">Priority: flagged splices first</span>
+                  <div class="w-2 h-2 rounded-full bg-surface-3"></div>
+                  <span class="text-faint">Priority: flagged splices first</span>
                 </div>
               </div>
             </div>
           </section>
 
           <!-- Priority Queue -->
-          <section class="rounded-xl border border-dashed border-slate-600 bg-slate-800/30 overflow-hidden">
-            <div class="px-6 py-4 border-b border-slate-700">
-              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+          <section class="rounded-xl border border-dashed border-line bg-surface/30 overflow-hidden">
+            <div class="px-6 py-4 border-b border-line">
+              <h2 class="text-sm font-semibold text-ink uppercase tracking-wider">
                 Flagged Splices
               </h2>
               <p class="text-xs text-emerald-400 mt-1">
@@ -372,24 +372,24 @@
 
             <div class="max-h-[250px] overflow-y-auto">
               <div v-for="flag in flaggedPhrases" :key="flag.id"
-                   class="px-6 py-3 border-b border-slate-700/50">
+                   class="px-6 py-3 border-b border-line/50">
                 <div class="flex items-start gap-3">
                   <div :class="[
                     'w-6 h-6 rounded flex items-center justify-center text-xs font-semibold',
                     flag.priority === 'high' ? 'bg-red-500/20 text-red-400' :
                     flag.priority === 'medium' ? 'bg-amber-500/20 text-amber-400' :
-                    'bg-slate-700 text-slate-400'
+                    'bg-surface-2 text-muted'
                   ]">
                     {{ flag.score }}
                   </div>
                   <div class="min-w-0 flex-1">
-                    <p class="text-sm text-slate-200 truncate">{{ flag.phrase }}</p>
-                    <p class="text-xs text-slate-500">{{ flag.reason }}</p>
+                    <p class="text-sm text-ink truncate">{{ flag.phrase }}</p>
+                    <p class="text-xs text-faint">{{ flag.reason }}</p>
                   </div>
                 </div>
               </div>
 
-              <div v-if="flaggedPhrases.length === 0" class="p-6 text-center text-slate-500 text-sm">
+              <div v-if="flaggedPhrases.length === 0" class="p-6 text-center text-faint text-sm">
                 No flagged splices yet
               </div>
             </div>

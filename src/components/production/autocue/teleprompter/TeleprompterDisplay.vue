@@ -80,8 +80,8 @@ onMounted(() => {
 <style scoped>
 .teleprompter-viewport {
   position: relative;
-  background: var(--color-void, #0f172a);
-  border: 3px solid var(--color-graphite, #475569);
+  background: var(--color-void, var(--canvas));
+  border: 3px solid var(--color-graphite, var(--surface-3));
   border-radius: 20px;
   padding: 2rem;
   height: 500px;
@@ -91,7 +91,7 @@ onMounted(() => {
 }
 
 .teleprompter-viewport.recording {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   box-shadow:
     inset 0 0 60px rgba(0, 0, 0, 0.8),
     0 0 40px rgba(255, 166, 48, 0.3);
@@ -105,7 +105,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, transparent, var(--color-tungsten, #ffa630), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-tungsten, var(--accent)), transparent);
   animation: shimmer 3s linear infinite;
   z-index: 10;
 }
@@ -136,11 +136,11 @@ onMounted(() => {
 
 .gradient-top {
   top: 0;
-  background: linear-gradient(to bottom, var(--color-void, #0f172a), transparent);
+  background: linear-gradient(to bottom, var(--color-void, var(--canvas)), transparent);
 }
 
 .gradient-bottom {
   bottom: 0;
-  background: linear-gradient(to top, var(--color-void, #0f172a), transparent);
+  background: linear-gradient(to top, var(--color-void, var(--canvas)), transparent);
 }
 </style>

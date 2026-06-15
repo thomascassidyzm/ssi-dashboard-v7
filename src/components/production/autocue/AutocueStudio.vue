@@ -413,20 +413,20 @@ onUnmounted(() => {
 <style scoped>
 .autocue-studio {
   min-height: 100vh;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
   padding: 2rem;
   position: relative;
 
   /* CSS Variables for the cinematic theme */
-  --color-void: #0f172a;
-  --color-shadow: #1e293b;
-  --color-slate: #334155;
-  --color-graphite: #475569;
+  --color-void: var(--canvas);
+  --color-shadow: var(--surface);
+  --color-slate: var(--surface-2);
+  --color-graphite: var(--surface-3);
   --color-film-red: #e63946;
-  --color-tungsten: #ffa630;
+  --color-tungsten: var(--accent);
   --color-emerald: #06ffa5;
-  --color-paper: #f7f7f2;
-  --color-paper-dim: #c1c1bb;
+  --color-paper: var(--ink);
+  --color-paper-dim: var(--muted);
 }
 
 /* Film grain overlay */

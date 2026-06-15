@@ -103,7 +103,7 @@ onUnmounted(() => {
 
 <style scoped>
 .waveform-visualizer {
-  background: var(--color-slate, #334155);
+  background: var(--color-slate, var(--surface-2));
   border-radius: 8px;
   padding: 1.5rem;
   min-height: 200px;
@@ -141,7 +141,7 @@ onUnmounted(() => {
 }
 
 .waveform-playback .waveform-bar {
-  background: var(--color-tungsten, #ffa630);
+  background: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 8px rgba(255, 166, 48, 0.3);
   opacity: 0.6;
 }
@@ -173,13 +173,13 @@ onUnmounted(() => {
 }
 
 .idle-message .icon {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .idle-message p {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0;
 }
 
@@ -192,7 +192,7 @@ onUnmounted(() => {
 .meter-bar {
   flex: 1;
   height: 8px;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
   border-radius: 4px;
   overflow: hidden;
 }
@@ -204,11 +204,11 @@ onUnmounted(() => {
 }
 
 .meter-fill.level-low {
-  background: var(--color-paper-dim, #c1c1bb);
+  background: var(--color-paper-dim, var(--muted));
 }
 
 .meter-fill.level-medium {
-  background: var(--color-tungsten, #ffa630);
+  background: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 10px rgba(255, 166, 48, 0.5);
 }
 

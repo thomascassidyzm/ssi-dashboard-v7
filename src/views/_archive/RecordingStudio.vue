@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -9,13 +9,13 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Recording Studio</h1>
-            <p class="text-slate-400">Record audio samples for phrases that need human voice</p>
+            <p class="text-muted">Record audio samples for phrases that need human voice</p>
           </div>
           <!-- Voice ID Badge -->
           <div v-if="voiceId" class="text-right">
-            <span class="text-xs text-slate-500">Recording as</span>
+            <span class="text-xs text-faint">Recording as</span>
             <div class="text-emerald-400 font-mono text-sm">{{ voiceId }}</div>
-            <button @click="changeRecorder" class="text-xs text-slate-500 hover:text-slate-400">
+            <button @click="changeRecorder" class="text-xs text-faint hover:text-muted">
               change
             </button>
           </div>
@@ -24,24 +24,24 @@
 
       <!-- Name Prompt Modal -->
       <div v-if="showNamePrompt" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-8 max-w-md w-full mx-4">
+        <div class="bg-surface border border-line rounded-lg p-8 max-w-md w-full mx-4">
           <h2 class="text-2xl font-bold text-emerald-400 mb-4">Welcome to Recording Studio</h2>
-          <p class="text-slate-400 mb-6">Enter your name to identify your recordings:</p>
+          <p class="text-muted mb-6">Enter your name to identify your recordings:</p>
           <input
             v-model="recorderName"
             type="text"
             placeholder="e.g., Maria"
-            class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 mb-4 focus:border-emerald-500 focus:outline-none"
+            class="w-full bg-canvas border border-line rounded-lg px-4 py-3 text-ink mb-4 focus:border-emerald-500 focus:outline-none"
             @keyup.enter="setRecorderName"
             autofocus
           />
-          <p class="text-xs text-slate-500 mb-4">
+          <p class="text-xs text-faint mb-4">
             Your voice ID will be: <span class="text-emerald-400 font-mono">human_{{ recorderName || 'name' }}_[lang]</span>
           </p>
           <button
             @click="setRecorderName"
             :disabled="!recorderName.trim()"
-            class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
+            class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
           >
             Start Recording
           </button>
@@ -56,7 +56,7 @@
             <span class="text-2xl">🧪</span>
             <div>
               <p class="text-amber-400 font-semibold">Test Mode Active</p>
-              <p class="text-slate-400 text-sm">Using sample phrases. Select "Test Course" to try the recording flow.</p>
+              <p class="text-muted text-sm">Using sample phrases. Select "Test Course" to try the recording flow.</p>
             </div>
           </div>
         </div>
@@ -67,21 +67,21 @@
             v-model="searchQuery"
             type="text"
             placeholder="Search courses..."
-            class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            class="w-full bg-surface border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
           />
         </div>
 
         <!-- Loading State -->
         <div v-if="loadingCourses" class="text-center py-12">
-          <div class="text-slate-400">Loading courses...</div>
+          <div class="text-muted">Loading courses...</div>
         </div>
 
         <!-- Empty State -->
         <div v-else-if="filteredCourses.length === 0" class="text-center py-12">
-          <div v-if="searchQuery" class="text-slate-400 mb-4">
+          <div v-if="searchQuery" class="text-muted mb-4">
             No courses matching "{{ searchQuery }}"
           </div>
-          <div v-else class="text-slate-400 mb-4">No courses available for recording</div>
+          <div v-else class="text-muted mb-4">No courses available for recording</div>
         </div>
 
         <!-- Courses Grid -->
@@ -91,10 +91,10 @@
             :key="course.course_code"
             @click="selectCourse(course.course_code)"
             :class="[
-              'bg-slate-800 rounded-lg p-6 transition-all hover:-translate-y-0.5 cursor-pointer border',
+              'bg-surface rounded-lg p-6 transition-all hover:-translate-y-0.5 cursor-pointer border',
               course.course_code === 'test_course'
                 ? 'border-amber-500/50 hover:border-amber-400'
-                : 'border-slate-700 hover:border-emerald-500/50'
+                : 'border-line hover:border-emerald-500/50'
             ]"
           >
             <div class="flex items-start justify-between mb-4">
@@ -105,7 +105,7 @@
                   </h3>
                   <span v-if="course.course_code === 'test_course'" class="text-xs bg-amber-500 text-black px-2 py-0.5 rounded">TEST</span>
                 </div>
-                <p class="text-xs text-slate-500 mb-1">
+                <p class="text-xs text-faint mb-1">
                   {{ getFullCourseName(course.course_code) }}
                 </p>
               </div>
@@ -119,25 +119,25 @@
 
             <!-- Recording Stats -->
             <div class="grid grid-cols-2 gap-3 mb-4 text-sm">
-              <div class="bg-slate-900/50 rounded p-3">
-                <div class="text-slate-400 text-xs mb-1">PHRASES</div>
+              <div class="bg-canvas/50 rounded p-3">
+                <div class="text-muted text-xs mb-1">PHRASES</div>
                 <div class="text-amber-400 font-semibold">{{ course.total_phrases || 0 }}</div>
               </div>
-              <div class="bg-slate-900/50 rounded p-3">
-                <div class="text-slate-400 text-xs mb-1">RECORDED</div>
+              <div class="bg-canvas/50 rounded p-3">
+                <div class="text-muted text-xs mb-1">RECORDED</div>
                 <div class="text-emerald-400 font-semibold">{{ course.recorded || 0 }}</div>
               </div>
             </div>
 
             <!-- Progress Bar -->
             <div class="mb-4">
-              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+              <div class="h-2 bg-surface-2 rounded-full overflow-hidden">
                 <div
                   class="h-full bg-emerald-500 transition-all duration-300"
                   :style="{ width: `${getRecordingProgress(course)}%` }"
                 ></div>
               </div>
-              <div class="text-xs text-slate-500 mt-1 text-right">
+              <div class="text-xs text-faint mt-1 text-right">
                 {{ getRecordingProgress(course) }}% complete
               </div>
             </div>
@@ -165,14 +165,14 @@
         </button>
 
         <!-- Course Info Header -->
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-4 mb-6">
+        <div class="bg-surface border border-line rounded-lg p-4 mb-6">
           <div class="flex items-center justify-between">
             <div>
               <h2 class="text-2xl font-bold text-emerald-400">{{ selectedCourse }}</h2>
-              <p class="text-slate-400">{{ getFullCourseName(selectedCourse) }}</p>
+              <p class="text-muted">{{ getFullCourseName(selectedCourse) }}</p>
             </div>
             <div class="text-right">
-              <span class="text-slate-500 text-sm">
+              <span class="text-faint text-sm">
                 {{ recordedCount }} / {{ phrases.length }} recorded
               </span>
             </div>
@@ -182,24 +182,24 @@
         <!-- Phrase to Record -->
         <div v-if="currentPhrase" class="space-y-6">
           <!-- Phrase Display -->
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+          <div class="bg-surface border border-line rounded-lg p-6">
             <div class="flex items-start justify-between mb-4">
               <div>
-                <span class="text-xs text-slate-500 uppercase tracking-wide">
+                <span class="text-xs text-faint uppercase tracking-wide">
                   {{ currentPhrase.role }} • {{ currentPhrase.language }} • {{ currentPhrase.cadence }}
                 </span>
                 <h2 class="text-3xl font-bold text-emerald-400 mt-2">
                   {{ currentPhrase.text }}
                 </h2>
-                <p v-if="currentPhrase.translation" class="text-slate-400 mt-2">
+                <p v-if="currentPhrase.translation" class="text-muted mt-2">
                   {{ currentPhrase.translation }}
                 </p>
               </div>
               <div class="text-right">
-                <span class="text-slate-500 text-sm">
+                <span class="text-faint text-sm">
                   {{ currentIndex + 1 }} of {{ phrases.length }}
                 </span>
-                <div class="text-xs text-slate-600 font-mono mt-1">
+                <div class="text-xs text-faint font-mono mt-1">
                   {{ currentPhrase.uuid?.slice(0, 8) }}...
                 </div>
               </div>
@@ -215,7 +215,7 @@
 
             <!-- Reference Audio (if exists) -->
             <div v-if="currentPhrase.ttsUrl" class="mt-4">
-              <p class="text-xs text-slate-500 mb-2">Reference (TTS):</p>
+              <p class="text-xs text-faint mb-2">Reference (TTS):</p>
               <audio :src="currentPhrase.ttsUrl" controls class="w-full h-10"></audio>
             </div>
           </div>
@@ -232,7 +232,7 @@
             <button
               @click="prevPhrase"
               :disabled="currentIndex === 0"
-              class="px-6 py-2 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
+              class="px-6 py-2 bg-surface-2 hover:bg-surface-3 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
             >
               ← Previous
             </button>
@@ -248,7 +248,7 @@
 
             <button
               @click="skipPhrase"
-              class="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+              class="px-6 py-2 bg-surface-2 hover:bg-surface-3 rounded-lg transition-colors"
             >
               Skip →
             </button>
@@ -256,11 +256,11 @@
 
           <!-- Progress Bar -->
           <div class="mt-8">
-            <div class="flex justify-between text-sm text-slate-500 mb-2">
+            <div class="flex justify-between text-sm text-faint mb-2">
               <span>Progress</span>
               <span>{{ recordedCount }} / {{ phrases.length }} recorded</span>
             </div>
-            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+            <div class="h-2 bg-surface rounded-full overflow-hidden">
               <div
                 class="h-full bg-emerald-500 transition-all duration-300"
                 :style="{ width: `${(recordedCount / phrases.length) * 100}%` }"
@@ -276,21 +276,21 @@
           </div>
 
           <!-- Keyboard Shortcuts Help -->
-          <div class="mt-6 bg-slate-800/50 border border-slate-700/50 rounded-lg p-4">
-            <p class="text-xs text-slate-500 mb-2 font-semibold">KEYBOARD SHORTCUTS</p>
-            <div class="flex flex-wrap gap-4 text-xs text-slate-400">
-              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">SPACE</kbd> Record</span>
-              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">ENTER</kbd> Save & Next</span>
-              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">S</kbd> Skip</span>
-              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">P</kbd> Play</span>
-              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">R</kbd> Re-record</span>
-              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">←/→</kbd> Navigate</span>
+          <div class="mt-6 bg-surface/50 border border-line/50 rounded-lg p-4">
+            <p class="text-xs text-faint mb-2 font-semibold">KEYBOARD SHORTCUTS</p>
+            <div class="flex flex-wrap gap-4 text-xs text-muted">
+              <span><kbd class="bg-surface-2 px-2 py-0.5 rounded text-ink">SPACE</kbd> Record</span>
+              <span><kbd class="bg-surface-2 px-2 py-0.5 rounded text-ink">ENTER</kbd> Save & Next</span>
+              <span><kbd class="bg-surface-2 px-2 py-0.5 rounded text-ink">S</kbd> Skip</span>
+              <span><kbd class="bg-surface-2 px-2 py-0.5 rounded text-ink">P</kbd> Play</span>
+              <span><kbd class="bg-surface-2 px-2 py-0.5 rounded text-ink">R</kbd> Re-record</span>
+              <span><kbd class="bg-surface-2 px-2 py-0.5 rounded text-ink">←/→</kbd> Navigate</span>
             </div>
           </div>
         </div>
 
         <!-- Loading -->
-        <div v-else-if="loading" class="text-center py-12 text-slate-500">
+        <div v-else-if="loading" class="text-center py-12 text-faint">
           Loading phrases...
         </div>
 
@@ -300,7 +300,7 @@
           <p class="text-emerald-400 text-xl">All phrases recorded!</p>
           <button
             @click="selectedCourse = ''"
-            class="mt-4 px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+            class="mt-4 px-6 py-2 bg-surface-2 hover:bg-surface-3 rounded-lg transition-colors"
           >
             Back to Course Selection
           </button>
@@ -588,7 +588,7 @@ function getRecordingStatusClass(course) {
   const progress = getRecordingProgress(course)
   if (progress === 100) return 'bg-emerald-600 text-white'
   if (progress > 0) return 'bg-yellow-600 text-white'
-  return 'bg-slate-600 text-slate-300'
+  return 'bg-surface-3 text-ink'
 }
 
 function getRecordingProgress(course) {

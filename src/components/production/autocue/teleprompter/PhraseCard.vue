@@ -104,7 +104,7 @@ const displayChunks = computed(() => {
 }
 
 .phrase-card.done .phrase-text {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-decoration: line-through;
   text-decoration-color: var(--color-emerald, #06ffa5);
   text-decoration-thickness: 1px;
@@ -114,12 +114,12 @@ const displayChunks = computed(() => {
 .phrase-card.current {
   opacity: 1;
   background: linear-gradient(90deg, transparent, rgba(255, 166, 48, 0.1), transparent);
-  border-left-color: var(--color-tungsten, #ffa630);
+  border-left-color: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 20px rgba(255, 166, 48, 0.2);
 }
 
 .phrase-card.current .phrase-marker {
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   font-size: 1.5rem;
 }
 
@@ -127,7 +127,7 @@ const displayChunks = computed(() => {
 .phrase-card.current .phrase-with-gaps {
   font-size: 2rem;
   font-weight: 600;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   text-shadow: 0 0 20px rgba(255, 186, 92, 0.4);
 }
 
@@ -137,7 +137,7 @@ const displayChunks = computed(() => {
 }
 
 .phrase-card.upcoming .phrase-marker {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .phrase-content {
@@ -148,7 +148,7 @@ const displayChunks = computed(() => {
   font-family: 'Crimson Pro', serif;
   font-size: 1.6rem;
   font-weight: 500;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   line-height: 1.4;
   transition: all 0.5s ease;
 }
@@ -157,7 +157,7 @@ const displayChunks = computed(() => {
   font-family: 'Crimson Pro', serif;
   font-size: 1.6rem;
   font-weight: 500;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   line-height: 1.9;
 }
 
@@ -190,7 +190,7 @@ const displayChunks = computed(() => {
   display: inline-block;
   width: 40px;
   height: 4px;
-  background: var(--color-tungsten, #ffa630);
+  background: var(--color-tungsten, var(--accent));
   margin: 0 0.75rem;
   border-radius: 2px;
   vertical-align: middle;
@@ -207,7 +207,7 @@ const displayChunks = computed(() => {
 .cadence-label {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: 0.25rem;
@@ -215,7 +215,7 @@ const displayChunks = computed(() => {
 }
 
 .slow-cadence {
-  color: var(--color-tungsten, #ffa630) !important;
+  color: var(--color-tungsten, var(--accent)) !important;
 }
 
 .phrase-card.current .slow-cadence {
@@ -237,7 +237,7 @@ const displayChunks = computed(() => {
 .phrase-translation {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-style: italic;
   margin-top: 0.5rem;
 }

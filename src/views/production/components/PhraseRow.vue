@@ -1,6 +1,6 @@
 <template>
   <div
-    class="phrase-row bg-slate-800 border-l-4 rounded-lg p-4 transition-all"
+    class="phrase-row bg-surface border-l-4 rounded-lg p-4 transition-all"
     :class="[borderClass, { 'bg-red-900 bg-opacity-30': isSelected, 'opacity-50': phrase.introduce === false }]"
   >
     <!-- Header -->
@@ -17,27 +17,27 @@
               type="checkbox"
               :checked="isSelected"
               @change="toggleSelection"
-              class="w-4 h-4 rounded border-slate-500 bg-slate-700 text-red-500 focus:ring-red-500 focus:ring-offset-0 cursor-pointer"
+              class="w-4 h-4 rounded border-line bg-surface-2 text-red-500 focus:ring-red-500 focus:ring-offset-0 cursor-pointer"
             />
           </label>
-          <span class="position-badge px-2 py-0.5 text-xs font-medium bg-slate-600 text-slate-200 rounded">
+          <span class="position-badge px-2 py-0.5 text-xs font-medium bg-surface-3 text-ink rounded">
             {{ position }}
           </span>
-          <span class="phrase-id text-xs font-mono text-slate-500">{{ phrase.phrase_id }}</span>
+          <span class="phrase-id text-xs font-mono text-faint">{{ phrase.phrase_id }}</span>
           <span
             v-if="phrase.introduce === false"
-            class="px-1.5 py-0.5 text-xs font-medium bg-slate-600 bg-opacity-50 text-slate-500 rounded line-through"
+            class="px-1.5 py-0.5 text-xs font-medium bg-surface-3 bg-opacity-50 text-faint rounded line-through"
             title="Tiling only — not presented to learner"
           >CMP</span>
         </div>
 
         <div class="phrase-texts space-y-1">
-          <div class="known-text text-slate-300">
-            <span class="text-xs text-slate-500 mr-2">Known:</span>
+          <div class="known-text text-ink">
+            <span class="text-xs text-faint mr-2">Known:</span>
             {{ phrase.known_text }}
           </div>
-          <div class="target-text text-white font-medium">
-            <span class="text-xs text-slate-500 mr-2">Target:</span>
+          <div class="target-text text-ink font-medium">
+            <span class="text-xs text-faint mr-2">Target:</span>
             {{ phrase.target_text }}
           </div>
         </div>
@@ -58,7 +58,7 @@
         <button
           @click="playTargetAudio"
           class="play-button p-2 rounded-lg transition-all"
-          :class="isPlaying ? 'bg-red-500 text-white' : 'bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-white'"
+          :class="isPlaying ? 'bg-red-500 text-white' : 'bg-surface-2 text-muted hover:bg-surface-3 hover:text-ink'"
           :disabled="isLoading"
           title="Play target audio"
         >
@@ -77,7 +77,7 @@
         <!-- Edit Button -->
         <button
           @click="onEdit"
-          class="edit-button p-2 rounded-lg transition-all bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-white"
+          class="edit-button p-2 rounded-lg transition-all bg-surface-2 text-muted hover:bg-surface-3 hover:text-ink"
           title="Edit phrase text"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@
         <!-- Delete Button -->
         <button
           @click="onDelete"
-          class="delete-button p-2 rounded-lg transition-all bg-slate-700 text-slate-400 hover:bg-red-600 hover:text-white"
+          class="delete-button p-2 rounded-lg transition-all bg-surface-2 text-muted hover:bg-red-600 hover:text-white"
           title="Delete phrase"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,11 +102,11 @@
     <!-- Individual Audio Controls (always show if UUIDs available) -->
     <div v-if="phrase.known_audio_uuid || phrase.target1_audio_uuid || phrase.target2_audio_uuid" class="audio-controls mt-3 space-y-2">
       <!-- Known-language audio -->
-      <div v-if="phrase.known_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-slate-700 bg-opacity-50 rounded-lg">
+      <div v-if="phrase.known_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 bg-opacity-50 rounded-lg">
         <button
           @click="playSingleAudio('known')"
           class="play-single p-1.5 rounded transition-all"
-          :class="currentlyPlayingTrack === 'known' ? 'bg-red-500 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-white'"
+          :class="currentlyPlayingTrack === 'known' ? 'bg-red-500 text-white' : 'bg-surface-3 text-ink hover:bg-surface-3 hover:text-ink'"
           title="Play known audio"
         >
           <svg v-if="currentlyPlayingTrack === 'known'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -116,13 +116,13 @@
             <path d="M8 5v14l11-7z" />
           </svg>
         </button>
-        <span class="audio-label text-xs text-slate-400 w-16">Known</span>
-        <span class="audio-text flex-1 text-sm text-slate-300 truncate">{{ phrase.known_text }}</span>
+        <span class="audio-label text-xs text-muted w-16">Known</span>
+        <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.known_text }}</span>
         <AudioStatusBadge :status="getAudioStatus('known')" />
         <button
           @click="flagSingleAudio('known')"
           class="flag-single p-1.5 rounded transition-all"
-          :class="isAudioFlagged('known') ? 'bg-amber-500 text-white' : 'bg-slate-600 text-slate-400 hover:bg-slate-500 hover:text-amber-400'"
+          :class="isAudioFlagged('known') ? 'bg-amber-500 text-white' : 'bg-surface-3 text-muted hover:bg-surface-3 hover:text-amber-400'"
           title="Flag known audio"
         >
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -132,11 +132,11 @@
       </div>
 
       <!-- Target Audio 1 (Female Voice) -->
-      <div v-if="phrase.target1_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-slate-700 bg-opacity-50 rounded-lg">
+      <div v-if="phrase.target1_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 bg-opacity-50 rounded-lg">
         <button
           @click="playSingleAudio('target1')"
           class="play-single p-1.5 rounded transition-all"
-          :class="currentlyPlayingTrack === 'target1' ? 'bg-red-500 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-white'"
+          :class="currentlyPlayingTrack === 'target1' ? 'bg-red-500 text-white' : 'bg-surface-3 text-ink hover:bg-surface-3 hover:text-ink'"
           title="Play target audio (female)"
         >
           <svg v-if="currentlyPlayingTrack === 'target1'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -147,13 +147,13 @@
           </svg>
         </button>
         <span class="audio-label text-xs text-pink-400 w-16">Target 1</span>
-        <span class="audio-text flex-1 text-sm text-white truncate">{{ phrase.target_text }}</span>
+        <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.target_text }}</span>
         <span class="voice-badge text-xs text-pink-400 px-1.5 py-0.5 bg-pink-500 bg-opacity-20 rounded">F</span>
         <AudioStatusBadge :status="getAudioStatus('target1')" />
         <button
           @click="flagSingleAudio('target1')"
           class="flag-single p-1.5 rounded transition-all"
-          :class="isAudioFlagged('target1') ? 'bg-amber-500 text-white' : 'bg-slate-600 text-slate-400 hover:bg-slate-500 hover:text-amber-400'"
+          :class="isAudioFlagged('target1') ? 'bg-amber-500 text-white' : 'bg-surface-3 text-muted hover:bg-surface-3 hover:text-amber-400'"
           title="Flag target1 audio"
         >
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -163,11 +163,11 @@
       </div>
 
       <!-- Target Audio 2 (Male Voice) -->
-      <div v-if="phrase.target2_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-slate-700 bg-opacity-50 rounded-lg">
+      <div v-if="phrase.target2_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 bg-opacity-50 rounded-lg">
         <button
           @click="playSingleAudio('target2')"
           class="play-single p-1.5 rounded transition-all"
-          :class="currentlyPlayingTrack === 'target2' ? 'bg-red-500 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-white'"
+          :class="currentlyPlayingTrack === 'target2' ? 'bg-red-500 text-white' : 'bg-surface-3 text-ink hover:bg-surface-3 hover:text-ink'"
           title="Play target audio (male)"
         >
           <svg v-if="currentlyPlayingTrack === 'target2'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -178,13 +178,13 @@
           </svg>
         </button>
         <span class="audio-label text-xs text-blue-400 w-16">Target 2</span>
-        <span class="audio-text flex-1 text-sm text-white truncate">{{ phrase.target_text }}</span>
+        <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.target_text }}</span>
         <span class="voice-badge text-xs text-blue-400 px-1.5 py-0.5 bg-blue-500 bg-opacity-20 rounded">M</span>
         <AudioStatusBadge :status="getAudioStatus('target2')" />
         <button
           @click="flagSingleAudio('target2')"
           class="flag-single p-1.5 rounded transition-all"
-          :class="isAudioFlagged('target2') ? 'bg-amber-500 text-white' : 'bg-slate-600 text-slate-400 hover:bg-slate-500 hover:text-amber-400'"
+          :class="isAudioFlagged('target2') ? 'bg-amber-500 text-white' : 'bg-surface-3 text-muted hover:bg-surface-3 hover:text-amber-400'"
           title="Flag target2 audio"
         >
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -195,9 +195,9 @@
     </div>
 
     <!-- Flag Notes (if flagged) -->
-    <div v-if="phrase.is_flagged && flagNotes" class="flag-notes mt-3 p-3 bg-slate-700 rounded-lg border-l-2 border-amber-500">
-      <div class="text-xs text-slate-400 mb-1">Flag Notes:</div>
-      <div class="text-sm text-slate-200">{{ flagNotes }}</div>
+    <div v-if="phrase.is_flagged && flagNotes" class="flag-notes mt-3 p-3 bg-surface-2 rounded-lg border-l-2 border-amber-500">
+      <div class="text-xs text-muted mb-1">Flag Notes:</div>
+      <div class="text-sm text-ink">{{ flagNotes }}</div>
     </div>
   </div>
 </template>
@@ -220,18 +220,18 @@ const AudioStatusBadge = defineComponent({
       if (!props.status) return null;
 
       const statusColors: Record<string, string> = {
-        approved: 'bg-emerald-500 bg-opacity-20 text-emerald-400',
-        complete: 'bg-emerald-500 bg-opacity-20 text-emerald-400',
-        flagged_regen_tts: 'bg-amber-500 bg-opacity-20 text-amber-400',
-        flagged_human_needed: 'bg-orange-500 bg-opacity-20 text-orange-400',
-        flagged_text_edit: 'bg-yellow-500 bg-opacity-20 text-yellow-400',
-        needs_review: 'bg-blue-500 bg-opacity-20 text-blue-400',
-        rejected: 'bg-red-500 bg-opacity-20 text-red-400',
-        tts_failed: 'bg-red-500 bg-opacity-20 text-red-400',
-        pending: 'bg-slate-500 bg-opacity-20 text-slate-400',
+        approved: 'bg-emerald-600 text-white',
+        complete: 'bg-emerald-600 text-white',
+        flagged_regen_tts: 'bg-amber-600 text-white',
+        flagged_human_needed: 'bg-orange-600 text-white',
+        flagged_text_edit: 'bg-yellow-600 text-white',
+        needs_review: 'bg-blue-600 text-white',
+        rejected: 'bg-red-600 text-white',
+        tts_failed: 'bg-red-600 text-white',
+        pending: 'bg-surface-3 bg-opacity-20 text-muted',
       };
 
-      const colorClass = statusColors[props.status] || 'bg-slate-500 bg-opacity-20 text-slate-400';
+      const colorClass = statusColors[props.status] || 'bg-surface-3 bg-opacity-20 text-muted';
       const label = props.status.split('_').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
       return h('span', {
@@ -291,18 +291,18 @@ const statusBadgeClass = computed(() => {
 
   const status = props.phrase.flag_status;
   if (status === 'approved' || status === 'complete') {
-    return 'bg-emerald-500 bg-opacity-20 text-emerald-300';
+    return 'bg-emerald-600 text-white';
   }
   if (status.startsWith('flagged')) {
-    return 'bg-amber-500 bg-opacity-20 text-amber-300';
+    return 'bg-amber-600 text-white';
   }
   if (status === 'needs_review') {
-    return 'bg-blue-500 bg-opacity-20 text-blue-300';
+    return 'bg-blue-600 text-white';
   }
   if (status.includes('failed') || status === 'rejected') {
-    return 'bg-red-500 bg-opacity-20 text-red-300';
+    return 'bg-red-600 text-white';
   }
-  return 'bg-slate-500 bg-opacity-20 text-slate-300';
+  return 'bg-surface-3 bg-opacity-20 text-ink';
 });
 
 // Methods
@@ -572,6 +572,6 @@ const playTargetAudio = async () => {
 }
 
 .phrase-row:hover {
-  @apply bg-slate-700;
+  @apply bg-surface-2;
 }
 </style>

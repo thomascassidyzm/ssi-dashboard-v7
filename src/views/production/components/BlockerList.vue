@@ -54,7 +54,7 @@ defineEmits<{
 .blocker-list-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--ink);
   margin: 0 0 1rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -109,7 +109,7 @@ defineEmits<{
 
 .blocker-message {
   font-size: 1rem;
-  color: #e2e8f0;
+  color: var(--ink);
   margin-bottom: 0.75rem;
   line-height: 1.5;
 }
@@ -117,7 +117,7 @@ defineEmits<{
 .blocker-action-btn {
   padding: 0.5rem 1rem;
   background: #10b981;
-  color: #0f172a;
+  color: var(--canvas);
   border: none;
   border-radius: 0.5rem;
   font-size: 0.875rem;
@@ -135,7 +135,7 @@ defineEmits<{
 .blocker-count {
   font-size: 2rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--ink);
   opacity: 0.5;
   min-width: 4rem;
   text-align: right;

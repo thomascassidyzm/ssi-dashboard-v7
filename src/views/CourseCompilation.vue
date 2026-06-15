@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -9,80 +9,80 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Compilation</h1>
-            <p class="text-slate-400">{{ courseCode }} • Prepare course for app deployment</p>
+            <p class="text-muted">{{ courseCode }} • Prepare course for app deployment</p>
           </div>
         </div>
       </div>
 
       <!-- Progress Steps -->
-      <div class="mb-8 bg-slate-800 border border-slate-700 rounded-lg p-6">
+      <div class="mb-8 bg-surface border border-line rounded-lg p-6">
         <div class="flex items-center justify-between">
           <!-- Step 1: Compile JSON -->
           <div class="flex-1">
             <div class="flex items-center gap-3">
               <div
                 class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold"
-                :class="compilationStep >= 1 ? 'bg-emerald-600 text-white' : 'bg-slate-700 text-slate-400'"
+                :class="compilationStep >= 1 ? 'bg-emerald-600 text-white' : 'bg-surface-2 text-muted'"
               >
                 {{ compilationStep > 1 ? '✓' : '1' }}
               </div>
               <div>
-                <div class="font-semibold text-slate-200">Compile Course JSON</div>
-                <div class="text-xs text-slate-400">Generate final course structure</div>
+                <div class="font-semibold text-ink">Compile Course JSON</div>
+                <div class="text-xs text-muted">Generate final course structure</div>
               </div>
             </div>
           </div>
 
-          <div class="text-slate-600">→</div>
+          <div class="text-faint">→</div>
 
           <!-- Step 2: Check Audio -->
           <div class="flex-1">
             <div class="flex items-center gap-3">
               <div
                 class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold"
-                :class="compilationStep >= 2 ? 'bg-emerald-600 text-white' : 'bg-slate-700 text-slate-400'"
+                :class="compilationStep >= 2 ? 'bg-emerald-600 text-white' : 'bg-surface-2 text-muted'"
               >
                 {{ compilationStep > 2 ? '✓' : '2' }}
               </div>
               <div>
-                <div class="font-semibold text-slate-200">Check Audio Status</div>
-                <div class="text-xs text-slate-400">Verify audio in S3</div>
+                <div class="font-semibold text-ink">Check Audio Status</div>
+                <div class="text-xs text-muted">Verify audio in S3</div>
               </div>
             </div>
           </div>
 
-          <div class="text-slate-600">→</div>
+          <div class="text-faint">→</div>
 
           <!-- Step 3: Generate Audio -->
           <div class="flex-1">
             <div class="flex items-center gap-3">
               <div
                 class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold"
-                :class="compilationStep >= 3 ? 'bg-emerald-600 text-white' : 'bg-slate-700 text-slate-400'"
+                :class="compilationStep >= 3 ? 'bg-emerald-600 text-white' : 'bg-surface-2 text-muted'"
               >
                 {{ compilationStep > 3 ? '✓' : '3' }}
               </div>
               <div>
-                <div class="font-semibold text-slate-200">Generate Missing Audio</div>
-                <div class="text-xs text-slate-400">Create audio samples</div>
+                <div class="font-semibold text-ink">Generate Missing Audio</div>
+                <div class="text-xs text-muted">Create audio samples</div>
               </div>
             </div>
           </div>
 
-          <div class="text-slate-600">→</div>
+          <div class="text-faint">→</div>
 
           <!-- Step 4: Deploy -->
           <div class="flex-1">
             <div class="flex items-center gap-3">
               <div
                 class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold"
-                :class="compilationStep >= 4 ? 'bg-emerald-600 text-white' : 'bg-slate-700 text-slate-400'"
+                :class="compilationStep >= 4 ? 'bg-emerald-600 text-white' : 'bg-surface-2 text-muted'"
               >
                 4
               </div>
               <div>
-                <div class="font-semibold text-slate-200">Ready for App</div>
-                <div class="text-xs text-slate-400">Deploy to production</div>
+                <div class="font-semibold text-ink">Ready for App</div>
+                <div class="text-xs text-muted">Deploy to production</div>
               </div>
             </div>
           </div>
@@ -91,34 +91,34 @@
 
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
-        <div class="text-slate-400">Loading course data...</div>
+        <div class="text-muted">Loading course data...</div>
       </div>
 
       <!-- Error State -->
       <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
         <h3 class="text-red-400 font-semibold mb-2">Error</h3>
-        <p class="text-slate-300">{{ error }}</p>
+        <p class="text-ink">{{ error }}</p>
       </div>
 
       <!-- Step 1: Compile JSON Structure -->
       <div v-else-if="compilationStep === 0" class="space-y-6">
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-8">
+        <div class="bg-surface border border-line rounded-lg p-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Step 1: Compile Course JSON</h2>
-          <p class="text-slate-300 mb-6">
+          <p class="text-ink mb-6">
             Convert your course data (SEED_PAIRS, LEGO_PAIRS, LEGO_BASKETS) into the final JSON structure required by the app.
           </p>
 
           <div class="grid grid-cols-3 gap-4 mb-6">
-            <div class="bg-slate-900/50 rounded p-4">
-              <div class="text-sm text-slate-400 mb-1">SEED_PAIRS</div>
+            <div class="bg-canvas/50 rounded p-4">
+              <div class="text-sm text-muted mb-1">SEED_PAIRS</div>
               <div class="text-2xl font-bold text-emerald-400">{{ courseStats.seeds }}</div>
             </div>
-            <div class="bg-slate-900/50 rounded p-4">
-              <div class="text-sm text-slate-400 mb-1">LEGO_PAIRS</div>
+            <div class="bg-canvas/50 rounded p-4">
+              <div class="text-sm text-muted mb-1">LEGO_PAIRS</div>
               <div class="text-2xl font-bold text-emerald-400">{{ courseStats.legos }}</div>
             </div>
-            <div class="bg-slate-900/50 rounded p-4">
-              <div class="text-sm text-slate-400 mb-1">LEGO_BASKETS</div>
+            <div class="bg-canvas/50 rounded p-4">
+              <div class="text-sm text-muted mb-1">LEGO_BASKETS</div>
               <div class="text-2xl font-bold text-emerald-400">{{ courseStats.baskets }}</div>
             </div>
           </div>
@@ -126,7 +126,7 @@
           <button
             @click="compileCourseJSON"
             :disabled="compiling"
-            class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white px-8 py-3 rounded-lg transition-colors font-semibold"
+            class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 text-white px-8 py-3 rounded-lg transition-colors font-semibold"
           >
             {{ compiling ? 'Compiling...' : 'Compile Course JSON' }}
           </button>
@@ -135,9 +135,9 @@
 
       <!-- Step 2: Audio Status Check -->
       <div v-else-if="compilationStep === 1" class="space-y-6">
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-8">
+        <div class="bg-surface border border-line rounded-lg p-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Step 2: Audio Status Check</h2>
-          <p class="text-slate-300 mb-6">
+          <p class="text-ink mb-6">
             Course JSON compiled successfully! Now let's check which audio samples are available in AWS S3.
           </p>
 
@@ -164,7 +164,7 @@
           <button
             @click="checkAudioStatus"
             :disabled="checkingAudio"
-            class="bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 text-white px-8 py-3 rounded-lg transition-colors font-semibold"
+            class="bg-blue-600 hover:bg-blue-500 disabled:bg-surface-2 text-white px-8 py-3 rounded-lg transition-colors font-semibold"
           >
             {{ checkingAudio ? 'Checking S3...' : 'Check Audio Status in S3' }}
           </button>
@@ -173,7 +173,7 @@
 
       <!-- Step 3: Generate Missing Audio -->
       <div v-else-if="compilationStep === 2" class="space-y-6">
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-8">
+        <div class="bg-surface border border-line rounded-lg p-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Step 3: Audio Generation</h2>
 
           <!-- S3 Status Summary -->
@@ -203,7 +203,7 @@
 
           <div v-else class="mb-6 p-4 bg-yellow-900/20 border border-yellow-700/50 rounded">
             <div class="text-yellow-400 font-semibold mb-2">⚠️ Missing Audio Samples</div>
-            <p class="text-slate-300 text-sm">
+            <p class="text-ink text-sm">
               {{ audioStatus.missing }} audio files need to be generated before deployment. Click below to start generation.
             </p>
           </div>
@@ -213,14 +213,14 @@
               v-if="audioStatus.missing > 0"
               @click="generateMissingAudio"
               :disabled="generatingAudio"
-              class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white px-8 py-3 rounded-lg transition-colors font-semibold"
+              class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 text-white px-8 py-3 rounded-lg transition-colors font-semibold"
             >
               {{ generatingAudio ? 'Generating...' : `Generate Missing Audio (${audioStatus.missing})` }}
             </button>
 
             <button
               @click="viewMissingAudioDetails"
-              class="bg-slate-700 hover:bg-slate-600 text-slate-300 px-8 py-3 rounded-lg transition-colors"
+              class="bg-surface-2 hover:bg-surface-3 text-ink px-8 py-3 rounded-lg transition-colors"
             >
               View Missing Audio Details
             </button>
@@ -228,7 +228,7 @@
         </div>
 
         <!-- Missing Audio Details (if expanded) -->
-        <div v-if="showMissingDetails" class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+        <div v-if="showMissingDetails" class="bg-surface border border-line rounded-lg p-6">
           <h3 class="text-lg font-semibold text-red-400 mb-4">Missing Audio Files</h3>
           <div class="space-y-2 max-h-96 overflow-y-auto">
             <div
@@ -239,10 +239,10 @@
               <div class="flex items-start justify-between">
                 <div class="flex-1">
                   <div class="text-sm font-mono text-red-400 mb-1">{{ missing.id }}.mp3</div>
-                  <div class="text-xs text-slate-400 mb-1">{{ missing.text }}</div>
+                  <div class="text-xs text-muted mb-1">{{ missing.text }}</div>
                   <div class="flex gap-2 text-xs">
-                    <span class="text-slate-500">Role: {{ missing.role }}</span>
-                    <span class="text-slate-500">Cadence: {{ missing.cadence }}</span>
+                    <span class="text-faint">Role: {{ missing.role }}</span>
+                    <span class="text-faint">Cadence: {{ missing.cadence }}</span>
                   </div>
                 </div>
               </div>
@@ -258,25 +258,25 @@
             <div class="text-6xl">🎉</div>
             <div class="flex-1">
               <h2 class="text-3xl font-semibold text-emerald-400 mb-4">Course Ready for Deployment!</h2>
-              <p class="text-slate-300 mb-6">
+              <p class="text-ink mb-6">
                 All audio files have been generated and are available in S3. Your course is ready to be deployed to the app.
               </p>
 
               <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="bg-slate-900/50 rounded p-4">
-                  <div class="text-sm text-slate-400 mb-1">Course JSON</div>
+                <div class="bg-canvas/50 rounded p-4">
+                  <div class="text-sm text-muted mb-1">Course JSON</div>
                   <div class="text-lg font-semibold text-emerald-400">✓ Compiled</div>
                 </div>
-                <div class="bg-slate-900/50 rounded p-4">
-                  <div class="text-sm text-slate-400 mb-1">Audio Files</div>
+                <div class="bg-canvas/50 rounded p-4">
+                  <div class="text-sm text-muted mb-1">Audio Files</div>
                   <div class="text-lg font-semibold text-emerald-400">✓ Complete ({{ audioStatus.total }})</div>
                 </div>
-                <div class="bg-slate-900/50 rounded p-4">
-                  <div class="text-sm text-slate-400 mb-1">S3 Bucket</div>
+                <div class="bg-canvas/50 rounded p-4">
+                  <div class="text-sm text-muted mb-1">S3 Bucket</div>
                   <div class="text-lg font-semibold text-emerald-400">✓ Synced</div>
                 </div>
-                <div class="bg-slate-900/50 rounded p-4">
-                  <div class="text-sm text-slate-400 mb-1">Status</div>
+                <div class="bg-canvas/50 rounded p-4">
+                  <div class="text-sm text-muted mb-1">Status</div>
                   <div class="text-lg font-semibold text-emerald-400">✓ Ready</div>
                 </div>
               </div>
@@ -298,7 +298,7 @@
 
                 <router-link
                   :to="`/courses/${courseCode}`"
-                  class="bg-slate-700 hover:bg-slate-600 text-slate-300 px-8 py-3 rounded-lg transition-colors inline-block"
+                  class="bg-surface-2 hover:bg-surface-3 text-ink px-8 py-3 rounded-lg transition-colors inline-block"
                 >
                   Back to Course Editor
                 </router-link>
@@ -311,20 +311,20 @@
       <!-- Generation Progress Overlay -->
       <div
         v-if="generationProgress.active"
-        class="fixed bottom-4 right-4 bg-slate-800 border border-emerald-500/30 rounded-lg p-6 w-96 shadow-2xl z-50"
+        class="fixed bottom-4 right-4 bg-surface border border-emerald-500/30 rounded-lg p-6 w-96 shadow-2xl z-50"
       >
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-lg font-semibold text-emerald-400">Generating Audio</h3>
         </div>
 
         <div class="mb-3">
-          <div class="w-full bg-slate-700 rounded-full h-2">
+          <div class="w-full bg-surface-2 rounded-full h-2">
             <div
               class="bg-emerald-500 h-2 rounded-full transition-all duration-300"
               :style="{ width: generationProgress.progress + '%' }"
             ></div>
           </div>
-          <div class="text-xs text-slate-400 mt-1 text-right">
+          <div class="text-xs text-muted mt-1 text-right">
             {{ generationProgress.completed }} / {{ generationProgress.total }} files
           </div>
         </div>

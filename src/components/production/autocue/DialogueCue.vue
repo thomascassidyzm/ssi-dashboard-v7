@@ -105,8 +105,8 @@ function chipStyle(speaker) {
 <style scoped>
 .dialogue-cue {
   position: relative;
-  background: var(--color-void, #0f172a);
-  border: 3px solid var(--color-graphite, #475569);
+  background: var(--color-void, var(--canvas));
+  border: 3px solid var(--color-graphite, var(--surface-3));
   border-radius: 20px;
   padding: 1.5rem 1.25rem 2rem;
   min-height: 380px;
@@ -119,7 +119,7 @@ function chipStyle(speaker) {
 }
 
 .dialogue-cue.recording {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   box-shadow:
     inset 0 0 60px rgba(0, 0, 0, 0.8),
     0 0 40px rgba(255, 166, 48, 0.25);
@@ -132,7 +132,7 @@ function chipStyle(speaker) {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, transparent, var(--color-tungsten, #ffa630), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-tungsten, var(--accent)), transparent);
   animation: cue-shimmer 3s linear infinite;
 }
 
@@ -152,14 +152,14 @@ function chipStyle(speaker) {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .cue-pod-title h2 {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0.25rem 0 0;
 }
 
@@ -174,13 +174,13 @@ function chipStyle(speaker) {
 .scene-rule {
   flex: 1;
   height: 1px;
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
 }
 
 .scene-text {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.8rem;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   white-space: nowrap;
 }
 
@@ -215,14 +215,14 @@ function chipStyle(speaker) {
 .cue-target {
   font-size: 1rem;
   line-height: 1.45;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0;
 }
 
 .cue-gloss {
   font-size: 0.8rem;
   line-height: 1.4;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0.15rem 0 0;
   font-style: italic;
 }
@@ -243,8 +243,8 @@ function chipStyle(speaker) {
 
 /* Their line */
 .my-line {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-tungsten, #ffa630);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-tungsten, var(--accent));
   border-radius: 14px;
   padding: 1rem 1.15rem 1.15rem;
   box-shadow: 0 0 24px rgba(255, 166, 48, 0.12);
@@ -270,13 +270,13 @@ function chipStyle(speaker) {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .my-line-text {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   line-height: 1.3;
   margin: 0;
   overflow-wrap: break-word;
@@ -292,7 +292,7 @@ function chipStyle(speaker) {
 
 .my-line-gloss {
   font-size: 0.9rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-style: italic;
   margin: 0.55rem 0 0;
   line-height: 1.45;

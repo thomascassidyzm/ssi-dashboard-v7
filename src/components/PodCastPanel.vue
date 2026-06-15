@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-slate-800 border border-slate-700 rounded-lg p-5 mb-6">
+  <div class="bg-surface border border-line rounded-lg p-5 mb-6">
     <!-- Header -->
     <div class="flex items-center justify-between gap-4 flex-wrap mb-1">
       <div>
-        <h2 class="text-sm font-semibold text-slate-200">Cast — who can record voices?</h2>
-        <p class="text-xs text-slate-400 mt-0.5">
+        <h2 class="text-sm font-semibold text-ink">Cast — who can record voices?</h2>
+        <p class="text-xs text-muted mt-0.5">
           List the real people who can record, then let us work out the parts. One person can play
           several characters — we just make sure two characters in the same conversation never share a voice.
         </p>
@@ -30,7 +30,7 @@
 
     <div v-if="status" class="text-xs mt-2" :class="statusIsError ? 'text-red-300' : 'text-emerald-300'">{{ status }}</div>
 
-    <div v-if="loading" class="text-slate-500 text-xs py-4">Loading cast…</div>
+    <div v-if="loading" class="text-faint text-xs py-4">Loading cast…</div>
 
     <template v-else>
       <!-- People rows -->
@@ -39,16 +39,16 @@
           <div
             v-for="(person, i) in people"
             :key="i"
-            class="flex items-center gap-2 flex-wrap bg-slate-900/60 border border-slate-700 rounded p-2"
+            class="flex items-center gap-2 flex-wrap bg-canvas/60 border border-line rounded p-2"
           >
             <input
               v-model.trim="person.name"
               placeholder="Name"
-              class="bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-xs text-slate-200 w-36"
+              class="bg-canvas border border-line rounded px-2 py-1.5 text-xs text-ink w-36"
             />
             <select
               v-model="person.gender"
-              class="bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-xs text-slate-200"
+              class="bg-canvas border border-line rounded px-2 py-1.5 text-xs text-ink"
               title="Only a preference — it never blocks the casting"
             >
               <option value="">Voice: no preference</option>
@@ -58,11 +58,11 @@
             <input
               v-model.trim="person.email"
               placeholder="Email (optional — gives them access automatically)"
-              class="bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-xs text-slate-200 flex-1 min-w-[14rem]"
+              class="bg-canvas border border-line rounded px-2 py-1.5 text-xs text-ink flex-1 min-w-[14rem]"
             />
             <label
               class="flex items-center gap-1.5 text-[11px] cursor-pointer select-none"
-              :class="person.guide ? 'text-sky-300' : 'text-slate-400'"
+              :class="person.guide ? 'text-sky-300' : 'text-muted'"
               title="The bilingual guide reads the translations and explanations"
             >
               <input type="radio" name="pod-guide" :checked="person.guide" @change="setGuide(i)" class="accent-sky-500" />
@@ -70,7 +70,7 @@
             </label>
             <button
               @click="removePerson(i)"
-              class="text-slate-500 hover:text-red-300 text-sm px-1.5"
+              class="text-faint hover:text-red-300 text-sm px-1.5"
               title="Remove this person"
             >✕</button>
           </div>
@@ -78,9 +78,9 @@
         <div class="flex items-center gap-3 mt-2">
           <button
             @click="addPerson"
-            class="text-[11px] px-2.5 py-1 rounded border border-slate-600 text-slate-300 hover:border-emerald-500"
+            class="text-[11px] px-2.5 py-1 rounded border border-line text-ink hover:border-emerald-500"
           >+ Add a person</button>
-          <span class="text-[11px] text-slate-500">
+          <span class="text-[11px] text-faint">
             The bilingual guide reads the English lines. If nobody's marked, we'll suggest whoever has the lightest load
             — a guide can also play a character, though a separate voice is nicer.
           </span>
@@ -88,7 +88,7 @@
       </div>
 
       <!-- Generation-side colouring: demoted to a default suggestion -->
-      <div v-if="generationColouring" class="text-[11px] text-slate-500 mt-3">
+      <div v-if="generationColouring" class="text-[11px] text-faint mt-3">
         This course came with a ready-made 5-voice plan from generation — a handy default when you have
         5 people. Your list above always wins.
       </div>
@@ -101,19 +101,19 @@
           class="text-xs rounded px-3 py-2 border"
           :class="w.type === 'need-more-people'
             ? 'bg-amber-900/30 border-amber-700 text-amber-200'
-            : 'bg-slate-900/60 border-slate-700 text-slate-300'"
+            : 'bg-canvas/60 border-line text-ink'"
         >{{ w.message }}</div>
       </div>
 
       <!-- The allocation: who plays what -->
-      <div v-if="allocation.length" class="mt-5 border-t border-slate-700 pt-4">
-        <h3 class="text-xs font-semibold text-slate-300 mb-2">
+      <div v-if="allocation.length" class="mt-5 border-t border-line pt-4">
+        <h3 class="text-xs font-semibold text-ink mb-2">
           {{ proposal ? 'The parts — review, then Save cast' : 'Saved cast' }}
         </h3>
         <div class="grid gap-2 sm:grid-cols-2">
-          <div v-for="a in allocation" :key="a.voiceId" class="bg-slate-900/60 border border-slate-700 rounded p-3">
+          <div v-for="a in allocation" :key="a.voiceId" class="bg-canvas/60 border border-line rounded p-3">
             <div class="flex items-center justify-between gap-2">
-              <div class="text-sm text-slate-200 font-medium truncate">
+              <div class="text-sm text-ink font-medium truncate">
                 {{ a.name }}
                 <span v-if="a.isGuide" class="text-[10px] text-sky-300 border border-sky-700 rounded-full px-1.5 py-0.5 ml-1 align-middle">
                   bilingual guide{{ a.guideSuggested ? ' (suggested)' : '' }}
@@ -123,7 +123,7 @@
                 <template v-if="savedVoiceIds.has(a.voiceId)">
                   <button
                     @click="copyRecordLink(a.voiceId)"
-                    class="text-[11px] px-2 py-1 rounded border border-slate-600 text-slate-300 hover:border-emerald-500"
+                    class="text-[11px] px-2 py-1 rounded border border-line text-ink hover:border-emerald-500"
                     :title="recordLink(a.voiceId)"
                   >
                     {{ copiedVoiceId === a.voiceId ? 'Copied ✓' : 'Copy record link' }}
@@ -136,26 +136,26 @@
                 </template>
                 <span
                   v-else
-                  class="text-[11px] px-2 py-1 rounded border border-slate-700/60 text-slate-500"
+                  class="text-[11px] px-2 py-1 rounded border border-line/60 text-faint"
                   title="Record links only work once the cast is saved"
                 >
                   Save cast to get the link
                 </span>
               </div>
             </div>
-            <div class="text-[11px] text-slate-400 mt-1">
+            <div class="text-[11px] text-muted mt-1">
               Plays: {{ a.characters.length ? a.characters.join(', ') : (a.isGuide ? 'just the guide lines' : '—') }}
             </div>
-            <div class="text-[11px] text-slate-500 mt-1">
+            <div class="text-[11px] text-faint mt-1">
               {{ a.lineCount }} line{{ a.lineCount === 1 ? '' : 's' }}
               <span v-if="a.estimatedMinutes != null"> · about {{ a.estimatedMinutes }} min of recording</span>
             </div>
-            <div v-if="a.email" class="text-[11px] text-slate-500 mt-1.5 truncate">
-              Send the link to <span class="text-slate-400">{{ a.email }}</span> — they'll get access automatically when you save.
+            <div v-if="a.email" class="text-[11px] text-faint mt-1.5 truncate">
+              Send the link to <span class="text-muted">{{ a.email }}</span> — they'll get access automatically when you save.
             </div>
           </div>
         </div>
-        <p class="text-[11px] text-slate-500 mt-2">
+        <p class="text-[11px] text-faint mt-2">
           Each record link opens that person's lines, with the conversation shown around them for context.
           Links go live when you save the cast.
         </p>
@@ -171,13 +171,13 @@
           {{ saving ? 'Saving…' : 'Save cast — make the links live' }}
         </button>
       </div>
-      <div v-else-if="!speakerCount" class="text-xs text-slate-500 mt-4">
+      <div v-else-if="!speakerCount" class="text-xs text-faint mt-4">
         No dialogue characters yet — generate or sync a pod first.
       </div>
 
       <!-- Provisioning results after a save -->
       <div v-if="provisioningNotes.length" class="mt-3 grid gap-1">
-        <div v-for="(n, i) in provisioningNotes" :key="i" class="text-[11px] text-slate-400">{{ n }}</div>
+        <div v-for="(n, i) in provisioningNotes" :key="i" class="text-[11px] text-muted">{{ n }}</div>
       </div>
     </template>
   </div>

@@ -6,13 +6,13 @@
         class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
         @click.self="close"
       >
-        <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="modal-content bg-surface rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <!-- Header -->
-          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700">
-            <h3 class="text-lg font-semibold text-white">Import Legacy Course</h3>
+          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-line">
+            <h3 class="text-lg font-semibold text-ink">Import Legacy Course</h3>
             <button
               @click="close"
-              class="text-slate-400 hover:text-white transition-colors"
+              class="text-muted hover:text-ink transition-colors"
               title="Close (Esc)"
               :disabled="isImporting || isValidating"
             >
@@ -23,7 +23,7 @@
           </div>
 
           <!-- Step Indicators -->
-          <div class="step-indicators flex justify-center gap-2 px-6 py-3 bg-slate-900">
+          <div class="step-indicators flex justify-center gap-2 px-6 py-3 bg-canvas">
             <div
               v-for="(label, idx) in stepLabels"
               :key="idx"
@@ -34,7 +34,7 @@
                 :class="{
                   'bg-emerald-500 text-white': idx + 1 === currentStep,
                   'bg-emerald-600 text-white': idx + 1 < currentStep,
-                  'bg-slate-700 text-slate-400': idx + 1 > currentStep
+                  'bg-surface-2 text-muted': idx + 1 > currentStep
                 }"
               >
                 <svg v-if="idx + 1 < currentStep" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -46,10 +46,10 @@
                 class="text-sm hidden sm:inline"
                 :class="{
                   'text-emerald-400': idx + 1 <= currentStep,
-                  'text-slate-500': idx + 1 > currentStep
+                  'text-faint': idx + 1 > currentStep
                 }"
               >{{ label }}</span>
-              <svg v-if="idx < stepLabels.length - 1" class="w-4 h-4 text-slate-600 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg v-if="idx < stepLabels.length - 1" class="w-4 h-4 text-faint mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </div>
@@ -61,7 +61,7 @@
               class="drop-zone border-2 border-dashed rounded-xl p-8 text-center transition-all cursor-pointer"
               :class="{
                 'border-emerald-500 bg-emerald-500 bg-opacity-10': isDragging,
-                'border-slate-600 hover:border-slate-500': !isDragging && !selectedFile,
+                'border-line hover:border-line': !isDragging && !selectedFile,
                 'border-emerald-600 bg-emerald-900 bg-opacity-30': selectedFile
               }"
               @dragenter.prevent="isDragging = true"
@@ -72,10 +72,10 @@
             >
               <div v-if="!selectedFile" class="upload-prompt">
                 <div class="upload-icon text-5xl mb-4">📁</div>
-                <p class="text-lg font-medium text-slate-200 mb-2">
+                <p class="text-lg font-medium text-ink mb-2">
                   {{ isDragging ? 'Drop your manifest here' : 'Drag & drop course manifest' }}
                 </p>
-                <p class="text-sm text-slate-400 mb-4">or click to browse (JSON file, up to 50MB)</p>
+                <p class="text-sm text-muted mb-4">or click to browse (JSON file, up to 50MB)</p>
                 <input
                   ref="fileInput"
                   type="file"
@@ -88,10 +88,10 @@
               <div v-else class="file-selected" @click.stop>
                 <div class="file-icon text-5xl mb-4">📄</div>
                 <p class="text-lg font-medium text-emerald-400 mb-1">{{ selectedFile.name }}</p>
-                <p class="text-sm text-slate-400 mb-4">{{ formatFileSize(selectedFile.size) }}</p>
+                <p class="text-sm text-muted mb-4">{{ formatFileSize(selectedFile.size) }}</p>
                 <button
                   @click.stop="clearFile"
-                  class="px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors"
+                  class="px-4 py-2 text-sm text-muted hover:text-ink transition-colors"
                 >
                   Choose different file
                 </button>
@@ -108,9 +108,9 @@
           <div v-if="currentStep === 2" class="modal-body px-6 py-6">
             <!-- Validating State -->
             <div v-if="isValidating" class="validating-state text-center py-8">
-              <div class="spinner w-12 h-12 mx-auto mb-4 border-4 border-slate-600 border-t-emerald-500 rounded-full animate-spin"></div>
-              <p class="text-lg font-medium text-white">Validating Manifest...</p>
-              <p class="text-sm text-slate-400 mt-1">Checking structure and analyzing content</p>
+              <div class="spinner w-12 h-12 mx-auto mb-4 border-4 border-line border-t-emerald-500 rounded-full animate-spin"></div>
+              <p class="text-lg font-medium text-ink">Validating Manifest...</p>
+              <p class="text-sm text-muted mt-1">Checking structure and analyzing content</p>
             </div>
 
             <!-- Validation Error -->
@@ -118,7 +118,7 @@
               <div class="error-header text-center">
                 <div class="error-icon text-5xl mb-4">❌</div>
                 <p class="text-xl font-semibold text-red-400">Validation Failed</p>
-                <p class="text-sm text-slate-400 mt-1">{{ validationError }}</p>
+                <p class="text-sm text-muted mt-1">{{ validationError }}</p>
               </div>
               <div class="p-4 bg-red-900 bg-opacity-30 border border-red-700 rounded-lg">
                 <p class="text-red-300 text-sm">The manifest could not be validated. Please check the file format and try again.</p>
@@ -139,76 +139,76 @@
               </div>
 
               <!-- Course Info -->
-              <div class="course-info bg-slate-700 rounded-lg p-4">
-                <h4 class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-3">Course Details</h4>
+              <div class="course-info bg-surface-2 rounded-lg p-4">
+                <h4 class="text-sm font-medium text-muted uppercase tracking-wider mb-3">Course Details</h4>
                 <div class="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span class="text-slate-400">Legacy ID:</span>
-                    <span class="text-white ml-2">{{ validationResult.legacyId }}</span>
+                    <span class="text-muted">Legacy ID:</span>
+                    <span class="text-ink ml-2">{{ validationResult.legacyId }}</span>
                   </div>
                   <div>
-                    <span class="text-slate-400">Course Code:</span>
+                    <span class="text-muted">Course Code:</span>
                     <span class="text-emerald-400 ml-2 font-mono">{{ validationResult.courseCode }}</span>
                   </div>
                   <div>
-                    <span class="text-slate-400">Known Language:</span>
-                    <span class="text-white ml-2">{{ validationResult.knownLang }}</span>
+                    <span class="text-muted">Known Language:</span>
+                    <span class="text-ink ml-2">{{ validationResult.knownLang }}</span>
                   </div>
                   <div>
-                    <span class="text-slate-400">Target Language:</span>
-                    <span class="text-white ml-2">{{ validationResult.targetLang }}</span>
+                    <span class="text-muted">Target Language:</span>
+                    <span class="text-ink ml-2">{{ validationResult.targetLang }}</span>
                   </div>
                   <div class="col-span-2">
-                    <span class="text-slate-400">Display Name:</span>
-                    <span class="text-white ml-2">{{ validationResult.displayName }}</span>
+                    <span class="text-muted">Display Name:</span>
+                    <span class="text-ink ml-2">{{ validationResult.displayName }}</span>
                   </div>
                 </div>
               </div>
 
               <!-- Import Plan -->
-              <div class="import-plan bg-slate-700 rounded-lg p-4">
-                <h4 class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-3">Import Plan</h4>
-                <p class="text-slate-300 text-sm mb-3">The following records will be created or updated:</p>
+              <div class="import-plan bg-surface-2 rounded-lg p-4">
+                <h4 class="text-sm font-medium text-muted uppercase tracking-wider mb-3">Import Plan</h4>
+                <p class="text-ink text-sm mb-3">The following records will be created or updated:</p>
                 <div class="stats-grid grid grid-cols-2 gap-3">
-                  <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
-                    <span class="text-slate-400">Course Record</span>
+                  <div class="stat-item flex justify-between p-2 bg-surface rounded">
+                    <span class="text-muted">Course Record</span>
                     <span class="text-emerald-400 font-medium">1</span>
                   </div>
-                  <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
-                    <span class="text-slate-400">Audio Samples</span>
+                  <div class="stat-item flex justify-between p-2 bg-surface rounded">
+                    <span class="text-muted">Audio Samples</span>
                     <span class="text-emerald-400 font-medium">{{ validationResult.sampleCount?.toLocaleString() }}</span>
                   </div>
-                  <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
-                    <span class="text-slate-400">Seeds</span>
+                  <div class="stat-item flex justify-between p-2 bg-surface rounded">
+                    <span class="text-muted">Seeds</span>
                     <span class="text-emerald-400 font-medium">{{ validationResult.seedCount?.toLocaleString() }}</span>
                   </div>
-                  <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
-                    <span class="text-slate-400">LEGOs</span>
+                  <div class="stat-item flex justify-between p-2 bg-surface rounded">
+                    <span class="text-muted">LEGOs</span>
                     <span class="text-emerald-400 font-medium">{{ validationResult.legoCount?.toLocaleString() }}</span>
                   </div>
-                  <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
-                    <span class="text-slate-400">Practice Phrases</span>
+                  <div class="stat-item flex justify-between p-2 bg-surface rounded">
+                    <span class="text-muted">Practice Phrases</span>
                     <span class="text-emerald-400 font-medium">{{ validationResult.phraseCount?.toLocaleString() }}</span>
                   </div>
-                  <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
-                    <span class="text-slate-400">Shared Audio</span>
+                  <div class="stat-item flex justify-between p-2 bg-surface rounded">
+                    <span class="text-muted">Shared Audio</span>
                     <span class="text-emerald-400 font-medium">{{ (validationResult.orderedEncouragements || 0) + (validationResult.pooledEncouragements || 0) }}</span>
                   </div>
                 </div>
               </div>
 
               <!-- Options -->
-              <div class="import-options bg-slate-700 rounded-lg p-4">
-                <h4 class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-3">Import Options</h4>
+              <div class="import-options bg-surface-2 rounded-lg p-4">
+                <h4 class="text-sm font-medium text-muted uppercase tracking-wider mb-3">Import Options</h4>
                 <label class="flex items-start gap-3 cursor-pointer">
                   <input
                     v-model="clearFirst"
                     type="checkbox"
-                    class="mt-1 w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+                    class="mt-1 w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-surface rounded"
                   />
                   <div>
-                    <div class="text-white font-medium">Clear existing data first</div>
-                    <div class="text-sm text-slate-400">Delete all existing data for this course before importing. Recommended for re-imports.</div>
+                    <div class="text-ink font-medium">Clear existing data first</div>
+                    <div class="text-sm text-muted">Delete all existing data for this course before importing. Recommended for re-imports.</div>
                   </div>
                 </label>
               </div>
@@ -231,19 +231,19 @@
             <!-- Progress -->
             <div v-if="isImporting" class="import-progress space-y-4">
               <div class="progress-header text-center">
-                <div class="spinner w-12 h-12 mx-auto mb-4 border-4 border-slate-600 border-t-emerald-500 rounded-full animate-spin"></div>
-                <p class="text-lg font-medium text-white">Importing Course...</p>
-                <p class="text-sm text-slate-400 mt-1">{{ importStatus.message || 'Starting import...' }}</p>
+                <div class="spinner w-12 h-12 mx-auto mb-4 border-4 border-line border-t-emerald-500 rounded-full animate-spin"></div>
+                <p class="text-lg font-medium text-ink">Importing Course...</p>
+                <p class="text-sm text-muted mt-1">{{ importStatus.message || 'Starting import...' }}</p>
               </div>
 
-              <div class="progress-bar-container bg-slate-700 rounded-full h-2 overflow-hidden">
+              <div class="progress-bar-container bg-surface-2 rounded-full h-2 overflow-hidden">
                 <div
                   class="progress-bar bg-emerald-500 h-full transition-all duration-300"
                   :style="{ width: `${(importStatus.step / 8) * 100}%` }"
                 ></div>
               </div>
 
-              <p class="text-center text-sm text-slate-500">Step {{ importStatus.step || 1 }} of 8</p>
+              <p class="text-center text-sm text-faint">Step {{ importStatus.step || 1 }} of 8</p>
             </div>
 
             <!-- Results -->
@@ -252,42 +252,42 @@
               <div v-if="importResult.success" class="result-header text-center">
                 <div class="success-icon text-5xl mb-4">🎉</div>
                 <p class="text-xl font-semibold text-emerald-400">Import Complete!</p>
-                <p class="text-sm text-slate-400 mt-1">{{ importResult.courseCode }} - {{ importResult.displayName }}</p>
+                <p class="text-sm text-muted mt-1">{{ importResult.courseCode }} - {{ importResult.displayName }}</p>
               </div>
 
               <!-- Error -->
               <div v-else class="result-header text-center">
                 <div class="error-icon text-5xl mb-4">❌</div>
                 <p class="text-xl font-semibold text-red-400">Import Failed</p>
-                <p class="text-sm text-slate-400 mt-1">{{ importResult.error }}</p>
+                <p class="text-sm text-muted mt-1">{{ importResult.error }}</p>
               </div>
 
               <!-- Import Stats -->
-              <div v-if="importResult.success && importResult.statistics" class="result-stats bg-slate-700 rounded-lg p-4">
-                <h4 class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-3">Imported Records</h4>
+              <div v-if="importResult.success && importResult.statistics" class="result-stats bg-surface-2 rounded-lg p-4">
+                <h4 class="text-sm font-medium text-muted uppercase tracking-wider mb-3">Imported Records</h4>
                 <div class="stats-list space-y-2 text-sm">
                   <div class="flex justify-between">
-                    <span class="text-slate-400">Courses</span>
+                    <span class="text-muted">Courses</span>
                     <span class="text-emerald-400">{{ importResult.statistics.courses }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-slate-400">Audio Samples</span>
+                    <span class="text-muted">Audio Samples</span>
                     <span class="text-emerald-400">{{ importResult.statistics.course_audio?.toLocaleString() }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-slate-400">Seeds</span>
+                    <span class="text-muted">Seeds</span>
                     <span class="text-emerald-400">{{ importResult.statistics.course_seeds?.toLocaleString() }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-slate-400">LEGOs</span>
+                    <span class="text-muted">LEGOs</span>
                     <span class="text-emerald-400">{{ importResult.statistics.course_legos?.toLocaleString() }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-slate-400">Practice Phrases</span>
+                    <span class="text-muted">Practice Phrases</span>
                     <span class="text-emerald-400">{{ importResult.statistics.course_practice_phrases?.toLocaleString() }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-slate-400">LEGO Introductions</span>
+                    <span class="text-muted">LEGO Introductions</span>
                     <span class="text-emerald-400">{{ importResult.statistics.lego_introductions?.toLocaleString() }}</span>
                   </div>
                 </div>
@@ -296,11 +296,11 @@
           </div>
 
           <!-- Footer -->
-          <div class="modal-footer flex items-center justify-between px-6 py-4 border-t border-slate-700">
+          <div class="modal-footer flex items-center justify-between px-6 py-4 border-t border-line">
             <button
               v-if="currentStep > 1 && !isImporting && !isValidating && !importResult?.success"
               @click="prevStep"
-              class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+              class="px-4 py-2 text-sm font-medium text-ink hover:text-ink transition-colors"
             >
               Back
             </button>
@@ -310,7 +310,7 @@
               <button
                 v-if="!isImporting && !isValidating && !importResult?.success"
                 @click="close"
-                class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                class="px-4 py-2 text-sm font-medium text-ink hover:text-ink transition-colors"
               >
                 Cancel
               </button>
@@ -333,7 +333,7 @@
                 <button
                   v-if="validationError"
                   @click="runValidation"
-                  class="px-4 py-2 text-sm font-medium bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
+                  class="px-4 py-2 text-sm font-medium bg-surface-3 text-ink rounded-lg hover:bg-surface-3 transition-colors"
                 >
                   Retry Validation
                 </button>
@@ -662,15 +662,15 @@ onUnmounted(() => {
 <style scoped>
 /* Import Modal Theme - Matching Mission Control aesthetic */
 .modal-overlay {
-  --mc-void: #0f172a;
-  --mc-deep: #1e293b;
-  --mc-surface: #1e293b;
-  --mc-elevated: #334155;
-  --mc-border: #334155;
-  --mc-border-light: #475569;
-  --mc-text: #f1f5f9;
-  --mc-text-dim: #94a3b8;
-  --mc-text-muted: #64748b;
+  --mc-void: var(--canvas);
+  --mc-deep: var(--surface);
+  --mc-surface: var(--surface);
+  --mc-elevated: var(--surface-2);
+  --mc-border: var(--surface-2);
+  --mc-border-light: var(--surface-3);
+  --mc-text: var(--ink);
+  --mc-text-dim: var(--muted);
+  --mc-text-muted: var(--faint);
   --mc-import: #f97316;
   --mc-import-dim: #ea580c;
   --mc-import-glow: rgba(249, 115, 22, 0.15);

@@ -90,7 +90,7 @@
             <button
               @click="handleSetPassword"
               :disabled="passwordSaving"
-              class="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 text-ink text-sm font-medium rounded-lg transition-colors"
+              class="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 text-white text-sm font-medium rounded-lg transition-colors"
             >{{ passwordSaving ? 'Saving...' : 'Save' }}</button>
           </div>
         </div>
@@ -309,8 +309,8 @@ onMounted(() => {
   top: 0;
   z-index: 100;
   height: 56px;
-  background: var(--color-shadow, #1e293b);
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
   padding: 0 1.5rem;
 }
 
@@ -332,7 +332,7 @@ onMounted(() => {
 }
 
 .back-link {
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   text-decoration: none;
   font-size: 0.875rem;
   white-space: nowrap;
@@ -340,14 +340,14 @@ onMounted(() => {
 }
 
 .back-link:hover {
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .navbar-title {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0;
   white-space: nowrap;
 }
@@ -369,7 +369,7 @@ onMounted(() => {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.875rem;
   padding: 0.5rem 0.875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.2s ease;
@@ -380,19 +380,19 @@ onMounted(() => {
 }
 
 .tab-item:hover {
-  color: var(--color-paper, #f7f7f2);
-  background: var(--color-slate, #334155);
+  color: var(--color-paper, var(--ink));
+  background: var(--color-slate, var(--surface-2));
 }
 
 .tab-item.active {
-  color: var(--color-tungsten, #ffa630);
-  background: var(--color-slate, #334155);
+  color: var(--color-tungsten, var(--accent));
+  background: var(--color-slate, var(--surface-2));
 }
 
 .tab-badge {
   font-size: 0.6875rem;
   font-weight: 700;
-  color: var(--color-shadow, #1e293b);
+  color: var(--color-shadow, var(--surface));
   background: #8b5cf6;
   border-radius: 9px;
   padding: 0 0.375rem;
@@ -418,13 +418,13 @@ onMounted(() => {
 
 .course-summary {
   font-size: 0.75rem;
-  color: var(--color-paper-muted, #64748b);
+  color: var(--color-paper-muted, var(--faint));
   white-space: nowrap;
 }
 
 .summary-value {
   font-weight: 700;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-variant-numeric: tabular-nums;
 }
 
@@ -442,9 +442,9 @@ onMounted(() => {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper-dim, #c1c1bb);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper-dim, var(--muted));
   font-weight: 700;
   font-size: 0.8125rem;
   cursor: pointer;
@@ -455,16 +455,16 @@ onMounted(() => {
 }
 
 .avatar-btn:hover {
-  border-color: var(--color-tungsten, #ffa630);
-  color: var(--color-paper, #f7f7f2);
+  border-color: var(--color-tungsten, var(--accent));
+  color: var(--color-paper, var(--ink));
 }
 
 .user-dropdown {
   position: absolute;
   top: 40px;
   right: 0;
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   padding: 0.5rem 0;
   min-width: 180px;
@@ -475,8 +475,8 @@ onMounted(() => {
 .user-dropdown-name {
   padding: 0.5rem 1rem;
   font-size: 0.8125rem;
-  color: var(--color-paper-dim, #c1c1bb);
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  color: var(--color-paper-dim, var(--muted));
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .user-dropdown-item {
@@ -551,7 +551,7 @@ onMounted(() => {
     width: 100%;
     justify-content: center;
     padding: 0.25rem 0;
-    border-top: 1px solid var(--color-graphite, #475569);
+    border-top: 1px solid var(--color-graphite, var(--surface-3));
     margin-top: 0.375rem;
   }
 

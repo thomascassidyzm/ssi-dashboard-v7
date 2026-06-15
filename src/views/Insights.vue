@@ -115,7 +115,7 @@ function relTime(iso) {
 .iv-story { margin: 0.4rem 0 0; color: #d1d5db; font-size: 0.92rem; }
 .iv-annotate { margin: 0.3rem 0 0; color: #9ca3af; font-size: 0.82rem; }
 .iv-actions { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.5rem; }
-.iv-action { font-size: 0.82rem; color: #cbd5e1; }
+.iv-action { font-size: 0.82rem; color: var(--ink); }
 .iv-action strong { color: #a5b4fc; font-weight: 600; }
 .iv-tags { display: inline-block; margin-top: 0.5rem; font-size: 0.72rem; color: #6b7280; }
 .tone-alarm { border-left-color: #ef4444; } .tone-alarm .iv-badge { background: #7f1d1d; color: #fecaca; }

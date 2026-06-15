@@ -54,7 +54,7 @@ defineEmits<{
 .quick-actions-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--ink);
   margin: 0 0 1rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -104,13 +104,13 @@ defineEmits<{
 .action-label {
   font-size: 1rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--ink);
   margin-bottom: 0.25rem;
 }
 
 .action-description {
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: var(--muted);
   line-height: 1.4;
 }
 

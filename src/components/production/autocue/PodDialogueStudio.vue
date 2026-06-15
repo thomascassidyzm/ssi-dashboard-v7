@@ -484,13 +484,13 @@ onUnmounted(() => {
   max-width: 760px;
   margin: 0 auto;
   padding: 1rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 /* Cards */
 .studio-card {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 16px;
   padding: 2rem 1.5rem;
 }
@@ -508,7 +508,7 @@ onUnmounted(() => {
 }
 
 .studio-card p {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.9rem;
   line-height: 1.6;
 }
@@ -517,8 +517,8 @@ onUnmounted(() => {
   width: 40px;
   height: 40px;
   margin: 0 auto 1rem;
-  border: 3px solid var(--color-graphite, #475569);
-  border-top-color: var(--color-tungsten, #ffa630);
+  border: 3px solid var(--color-graphite, var(--surface-3));
+  border-top-color: var(--color-tungsten, var(--accent));
   border-radius: 50%;
   animation: pod-spin 1s linear infinite;
 }
@@ -543,8 +543,8 @@ onUnmounted(() => {
 .sum-stat {
   text-align: center;
   padding: 0.85rem 1rem;
-  background: var(--color-void, #0f172a);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-void, var(--canvas));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   min-width: 86px;
 }
@@ -557,7 +557,7 @@ onUnmounted(() => {
   color: var(--color-emerald, #06ffa5);
 }
 
-.sum-value.pending { color: var(--color-tungsten, #ffa630); }
+.sum-value.pending { color: var(--color-tungsten, var(--accent)); }
 .sum-value.failed { color: var(--color-film-red, #e63946); }
 
 .sum-label {
@@ -565,7 +565,7 @@ onUnmounted(() => {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin-top: 0.3rem;
 }
 
@@ -575,7 +575,7 @@ onUnmounted(() => {
   padding: 0;
   max-height: 200px;
   overflow-y: auto;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
 }
 
@@ -584,7 +584,7 @@ onUnmounted(() => {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.55rem 0.85rem;
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
   font-size: 0.85rem;
 }
 
@@ -598,7 +598,7 @@ onUnmounted(() => {
 
 .pod-count {
   font-family: 'IBM Plex Mono', monospace;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   flex-shrink: 0;
 }
 
@@ -606,7 +606,7 @@ onUnmounted(() => {
 
 .resume-note {
   font-size: 0.8rem;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
 }
 
 .resume-note.all-done { color: var(--color-emerald, #06ffa5); }
@@ -642,7 +642,7 @@ onUnmounted(() => {
 .toggle-row small {
   display: block;
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   line-height: 1.45;
   margin-top: 0.15rem;
 }
@@ -660,7 +660,7 @@ onUnmounted(() => {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
   background: var(--color-emerald, #06ffa5);
   border: none;
   border-radius: 8px;
@@ -677,9 +677,9 @@ onUnmounted(() => {
 .btn-ghost {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.9rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   background: transparent;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   padding: 0.7rem 1.4rem;
   cursor: pointer;
@@ -709,8 +709,8 @@ onUnmounted(() => {
 .progress-total,
 .progress-upload {
   flex: 1;
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 10px;
   padding: 0.6rem 0.9rem;
 }
@@ -720,7 +720,7 @@ onUnmounted(() => {
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -732,11 +732,11 @@ onUnmounted(() => {
   color: var(--color-emerald, #06ffa5);
 }
 
-.progress-count.pending { color: var(--color-tungsten, #ffa630); }
+.progress-count.pending { color: var(--color-tungsten, var(--accent)); }
 
 .vad-strip {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   padding: 0.45rem 0.9rem;
   display: flex;
@@ -756,15 +756,15 @@ onUnmounted(() => {
 .vad-status {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   white-space: nowrap;
   margin-left: auto;
 }
 
 /* Take review bar */
 .take-review {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-tungsten, #ffa630);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-tungsten, var(--accent));
   border-radius: 12px;
   padding: 0.85rem 1rem;
   text-align: center;
@@ -773,7 +773,7 @@ onUnmounted(() => {
 .take-label {
   display: block;
   font-size: 0.8rem;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   margin-bottom: 0.6rem;
 }
 
@@ -791,9 +791,9 @@ onUnmounted(() => {
   padding: 0.65rem 1.1rem;
   cursor: pointer;
   min-height: 44px;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   background: transparent;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .btn-take.redo {
@@ -804,14 +804,14 @@ onUnmounted(() => {
 .btn-take.keep {
   background: var(--color-emerald, #06ffa5);
   border-color: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
 }
 
 .take-hint {
   display: block;
   margin-top: 0.5rem;
   font-size: 0.7rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 /* Controls */
@@ -828,9 +828,9 @@ onUnmounted(() => {
   border-radius: 50%;
   font-size: 1.6rem;
   line-height: 1;
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
   cursor: pointer;
 }
 
@@ -852,21 +852,21 @@ onUnmounted(() => {
   border: none;
   cursor: pointer;
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
 }
 
 .ctl-record.live {
   background: var(--color-film-red, #e63946);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .btn-finish {
   align-self: center;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.85rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   background: transparent;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   padding: 0.6rem 1.3rem;
   cursor: pointer;

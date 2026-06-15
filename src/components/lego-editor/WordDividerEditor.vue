@@ -15,8 +15,8 @@
 
     <!-- Live LEGO Counter -->
     <div class="mb-4 text-center">
-      <div class="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 border-2 border-emerald-500 rounded-lg">
-        <span class="text-slate-400 text-sm">Current LEGOs:</span>
+      <div class="inline-flex items-center gap-2 px-6 py-3 bg-surface border-2 border-emerald-500 rounded-lg">
+        <span class="text-muted text-sm">Current LEGOs:</span>
         <span class="text-3xl font-bold text-emerald-400">{{ currentLegoCount }}</span>
       </div>
     </div>
@@ -26,7 +26,7 @@
       <div class="text-sm font-semibold text-blue-400 mb-2">
         Step 1: Target Language - Click between words to create LEGOs
       </div>
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <div class="bg-surface border border-line rounded-lg p-4">
         <div class="flex flex-wrap items-center gap-1">
           <template v-for="(word, index) in targetWords" :key="`target-${index}`">
             <!-- Word in LEGO Container -->
@@ -66,14 +66,14 @@
         <button
           :disabled="currentTargetLego === 0"
           @click="currentTargetLego--"
-          class="px-3 py-1 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-slate-300 text-sm rounded transition-colors"
+          class="px-3 py-1 bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint disabled:cursor-not-allowed text-ink text-sm rounded transition-colors"
         >
           ← Previous LEGO
         </button>
         <button
           :disabled="currentTargetLego >= targetLegoPairs.length - 1"
           @click="currentTargetLego++"
-          class="px-3 py-1 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-slate-300 text-sm rounded transition-colors"
+          class="px-3 py-1 bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint disabled:cursor-not-allowed text-ink text-sm rounded transition-colors"
         >
           Next LEGO →
         </button>
@@ -82,10 +82,10 @@
 
     <!-- Known Language Section (clickable words) -->
     <div class="mb-4">
-      <div class="text-sm font-semibold text-slate-400 mb-2">
+      <div class="text-sm font-semibold text-muted mb-2">
         Step 2: Known Language - Click words to assign to target LEGO #{{ currentTargetLego + 1 }}
       </div>
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+      <div class="bg-surface border border-line rounded-lg p-4">
         <div class="flex flex-wrap items-center gap-2">
           <button
             v-for="(word, index) in knownWords"
@@ -129,7 +129,7 @@
           >
             <div class="flex items-start justify-between mb-2">
               <div class="flex items-center gap-2">
-                <div class="text-xs font-mono text-slate-400">
+                <div class="text-xs font-mono text-muted">
                   LEGO #{{ index + 1 }}
                   <span v-if="currentTargetLego === index" class="ml-2 text-purple-400">← Editing</span>
                 </div>
@@ -138,7 +138,7 @@
                   class="text-xs px-2 py-0.5 rounded transition-colors"
                   :class="legoTypes[index] === 'COMPOSITE'
                     ? 'bg-purple-600 text-purple-100 hover:bg-purple-500'
-                    : 'bg-slate-700 text-slate-400 hover:bg-slate-600'"
+                    : 'bg-surface-2 text-muted hover:bg-surface-3'"
                 >
                   {{ legoTypes[index] === 'COMPOSITE' ? '⚡ COMPOSITE' : 'BASE' }}
                 </button>
@@ -152,7 +152,7 @@
               <div :class="lego.color.text" class="font-medium">
                 {{ lego.targetChunk }}
               </div>
-              <div class="text-slate-300 text-sm">
+              <div class="text-ink text-sm">
                 {{ lego.knownChunk || '(no known words mapped yet)' }}
               </div>
               <div v-if="!lego.knownChunk" class="text-xs text-yellow-400">
@@ -453,7 +453,7 @@ function getKnownWordClasses(wordIndex) {
 
   if (assignedLegoIndex === null) {
     // Unassigned
-    return 'bg-slate-700 border-slate-600 text-slate-300 hover:border-yellow-500 cursor-pointer'
+    return 'bg-surface-2 border-line text-ink hover:border-yellow-500 cursor-pointer'
   }
 
   const colorClasses = getColorClasses(assignedLegoIndex)
@@ -601,7 +601,7 @@ defineExpose({
 
 <style scoped>
 .word-divider-editor {
-  @apply text-slate-100;
+  @apply text-ink;
 }
 
 .lego-container {

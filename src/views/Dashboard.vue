@@ -1,17 +1,17 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
+  <div class="min-h-screen bg-canvas">
     <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
+    <header class="bg-surface/50 border-b border-line/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-3xl font-bold text-emerald-400">
               Popty v14
             </h1>
-            <p class="mt-2 text-slate-400">
+            <p class="mt-2 text-muted">
               SSi Course Production Dashboard
             </p>
-            <p class="mt-1 text-xs text-slate-500">
+            <p class="mt-1 text-xs text-faint">
               APML v14 | Course Builder → Phase 8 (Audio) → Phase 9 (Manifest)
             </p>
           </div>
@@ -19,8 +19,8 @@
             <SchemaHealth />
             <EnvironmentSwitcher />
             <div class="flex items-center gap-4">
-              <span class="text-slate-400 text-sm">{{ user?.name || user?.email }}</span>
-              <button @click="handleLogout" class="text-slate-500 hover:text-slate-300 text-sm">
+              <span class="text-muted text-sm">{{ user?.name || user?.email }}</span>
+              <button @click="handleLogout" class="text-faint hover:text-ink text-sm">
                 Logout
               </button>
             </div>
@@ -40,12 +40,12 @@
           <router-link to="/course" class="block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-2xl font-bold text-white mb-2">Course Manager</h3>
+                <h3 class="text-2xl font-bold text-ink mb-2">Course Manager</h3>
                 <p class="text-emerald-100 text-sm">
                   Create new courses or manage existing ones through the Course Builder pipeline
                 </p>
               </div>
-              <div class="text-white">
+              <div class="text-ink">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
@@ -54,11 +54,11 @@
           </router-link>
 
           <!-- Browse Existing Courses -->
-          <router-link to="/courses" class="block bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 border border-slate-500/30 rounded-lg p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-slate-500/20">
+          <router-link to="/courses" class="block bg-gradient-to-r from-surface-2 to-surface hover:from-surface-3 hover:to-surface-2 border border-line/30 rounded-lg p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-slate-500/20">
             <div class="flex items-center justify-between">
               <div>
                 <h3 class="text-2xl font-bold text-emerald-400 mb-2">📚 Browse & Compile Courses</h3>
-                <p class="text-slate-300 text-sm">
+                <p class="text-ink text-sm">
                   View, edit, compile courses and generate audio for app deployment
                 </p>
               </div>
@@ -74,12 +74,12 @@
           <router-link to="/record" class="block bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 rounded-lg border border-red-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-red-500/20">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-2xl font-bold text-white mb-2">🎙️ Recording Studio</h3>
+                <h3 class="text-2xl font-bold text-ink mb-2">🎙️ Recording Studio</h3>
                 <p class="text-red-100 text-sm">
                   Record human voice samples for phrases that need authentic pronunciation
                 </p>
               </div>
-              <div class="text-white">
+              <div class="text-ink">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
                 </svg>
@@ -91,12 +91,12 @@
           <router-link to="/production/courses" class="block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-lg border border-purple-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-purple-500/20">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-2xl font-bold text-white mb-2">🎛️ Production Suite</h3>
+                <h3 class="text-2xl font-bold text-ink mb-2">🎛️ Production Suite</h3>
                 <p class="text-purple-100 text-sm">
                   Mission Control, Script Viewer, Audio Pipeline & Recording Studio (v2.1)
                 </p>
               </div>
-              <div class="text-white">
+              <div class="text-ink">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path>
                 </svg>
@@ -108,12 +108,12 @@
           <router-link to="/monitor" class="block bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 rounded-lg border border-cyan-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-cyan-500/20">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-2xl font-bold text-white mb-2">📡 Agent Monitor</h3>
+                <h3 class="text-2xl font-bold text-ink mb-2">📡 Agent Monitor</h3>
                 <p class="text-cyan-100 text-sm">
                   Real-time pipeline agent swimlane - track Masters & Workers
                 </p>
               </div>
-              <div class="text-white">
+              <div class="text-ink">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0-6v6m18-6v6"></path>
                 </svg>
@@ -125,42 +125,42 @@
 
       <!-- Pipeline Architecture -->
       <section class="mt-12">
-        <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
-          <h2 class="text-2xl font-semibold text-slate-100 mb-6">Pipeline Architecture</h2>
+        <div class="bg-surface/50 rounded-lg border border-line/20 p-8">
+          <h2 class="text-2xl font-semibold text-ink mb-6">Pipeline Architecture</h2>
 
           <div class="space-y-6">
             <!-- Architecture Description -->
-            <div class="bg-slate-900/50 rounded-lg p-6">
-              <p class="text-slate-300 mb-4">
+            <div class="bg-canvas/50 rounded-lg p-6">
+              <p class="text-ink mb-4">
                 Linear microservice architecture with sequential phase progression and integrated post-processing.
               </p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div class="space-y-2">
                   <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Linear phase progression (1 → 2 → 3 → Manifest → Audio)</span>
+                    <div class="w-2 h-2 bg-surface-3 rounded-full"></div>
+                    <span class="text-ink">Linear phase progression (1 → 2 → 3 → Manifest → Audio)</span>
                   </div>
                   <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">A phase triggers agents. Scripts run instantly.</span>
+                    <div class="w-2 h-2 bg-surface-3 rounded-full"></div>
+                    <span class="text-ink">A phase triggers agents. Scripts run instantly.</span>
                   </div>
                   <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">VFS-based atomic file operations</span>
+                    <div class="w-2 h-2 bg-surface-3 rounded-full"></div>
+                    <span class="text-ink">VFS-based atomic file operations</span>
                   </div>
                 </div>
                 <div class="space-y-2">
                   <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Orchestrator coordinates microservices</span>
+                    <div class="w-2 h-2 bg-surface-3 rounded-full"></div>
+                    <span class="text-ink">Orchestrator coordinates microservices</span>
                   </div>
                   <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Sequential validation gates</span>
+                    <div class="w-2 h-2 bg-surface-3 rounded-full"></div>
+                    <span class="text-ink">Sequential validation gates</span>
                   </div>
                   <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Real-time dashboard monitoring</span>
+                    <div class="w-2 h-2 bg-surface-3 rounded-full"></div>
+                    <span class="text-ink">Real-time dashboard monitoring</span>
                   </div>
                 </div>
               </div>
@@ -207,62 +207,62 @@
 
       <!-- Reference Materials -->
       <section>
-        <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
-          <h2 class="text-2xl font-semibold text-slate-100 mb-2">Reference Materials</h2>
-          <p class="text-slate-400 mb-6">Supporting documentation and data sources:</p>
+        <div class="bg-surface/50 rounded-lg border border-line/20 p-8">
+          <h2 class="text-2xl font-semibold text-ink mb-2">Reference Materials</h2>
+          <p class="text-muted mb-6">Supporting documentation and data sources:</p>
 
           <div class="space-y-4">
             <!-- Complete Process Overview -->
-            <router-link to="/reference/overview" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+            <router-link to="/reference/overview" class="flex items-center gap-4 p-4 bg-canvas/80 border border-line/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📚</div>
               <div>
-                <h3 class="font-semibold text-slate-100">Complete Process Overview</h3>
-                <p class="text-sm text-slate-400">Comprehensive documentation of the entire SSI Course Production pipeline - all phases in detail</p>
+                <h3 class="font-semibold text-ink">Complete Process Overview</h3>
+                <p class="text-sm text-muted">Comprehensive documentation of the entire SSI Course Production pipeline - all phases in detail</p>
               </div>
             </router-link>
 
             <!-- Phase Intelligence -->
-            <router-link to="/intelligence" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-emerald-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+            <router-link to="/intelligence" class="flex items-center gap-4 p-4 bg-canvas/80 border border-emerald-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">🧠</div>
               <div>
                 <h3 class="font-semibold text-emerald-400">Phase Intelligence Modules</h3>
-                <p class="text-sm text-slate-400">Live methodology for each phase - the single source of truth with embedded inline prompts</p>
+                <p class="text-sm text-muted">Live methodology for each phase - the single source of truth with embedded inline prompts</p>
               </div>
             </router-link>
 
             <!-- Canonical Content -->
-            <router-link to="/reference/canonical" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+            <router-link to="/reference/canonical" class="flex items-center gap-4 p-4 bg-canvas/80 border border-line/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">🌱</div>
               <div>
-                <h3 class="font-semibold text-slate-100">Canonical Content</h3>
-                <p class="text-sm text-slate-400">All 668 canonical seeds (16 years empirical optimization) + welcomes + encouragements</p>
+                <h3 class="font-semibold text-ink">Canonical Content</h3>
+                <p class="text-sm text-muted">All 668 canonical seeds (16 years empirical optimization) + welcomes + encouragements</p>
               </div>
             </router-link>
 
             <!-- APML v14.0 Specification -->
-            <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+            <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-canvas/80 border border-line/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📋</div>
               <div>
-                <h3 class="font-semibold text-slate-100">APML v14.0 Specification</h3>
-                <p class="text-sm text-slate-400">Course Builder consolidation - simplified pipeline (Course Builder → Audio → Manifest)</p>
+                <h3 class="font-semibold text-ink">APML v14.0 Specification</h3>
+                <p class="text-sm text-muted">Course Builder consolidation - simplified pipeline (Course Builder → Audio → Manifest)</p>
               </div>
             </router-link>
 
             <!-- Terminology Glossary -->
-            <router-link to="/reference/terminology" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+            <router-link to="/reference/terminology" class="flex items-center gap-4 p-4 bg-canvas/80 border border-line/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📖</div>
               <div>
-                <h3 class="font-semibold text-slate-100">Terminology Glossary</h3>
-                <p class="text-sm text-slate-400">SEED_PAIRS, LEGO_PAIRS, LEGO_BASKETS - single source of truth for all terminology</p>
+                <h3 class="font-semibold text-ink">Terminology Glossary</h3>
+                <p class="text-sm text-muted">SEED_PAIRS, LEGO_PAIRS, LEGO_BASKETS - single source of truth for all terminology</p>
               </div>
             </router-link>
 
             <!-- Pedagogical Model -->
-            <router-link to="/reference/pedagogy" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+            <router-link to="/reference/pedagogy" class="flex items-center gap-4 p-4 bg-canvas/80 border border-line/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">🎓</div>
               <div>
-                <h3 class="font-semibold text-slate-100">Pedagogical Model</h3>
-                <p class="text-sm text-slate-400">LEGOs, Baskets, Eternal vs Debut - the "why" behind the SSi teaching system</p>
+                <h3 class="font-semibold text-ink">Pedagogical Model</h3>
+                <p class="text-sm text-muted">LEGOs, Baskets, Eternal vs Debut - the "why" behind the SSi teaching system</p>
               </div>
             </router-link>
           </div>
@@ -270,7 +270,7 @@
       </section>
 
       <!-- Footer Note -->
-      <div class="mt-12 text-center text-slate-400 text-sm">
+      <div class="mt-12 text-center text-muted text-sm">
         <p>SSi Course Production Dashboard v14.0.0 • Supabase is the SINGLE SOURCE OF TRUTH</p>
         <p class="mt-1">Course Builder → Phase 8 (Audio) → Phase 9 (Manifest)</p>
       </div>

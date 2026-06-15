@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -13,12 +13,12 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">{{ seedId }}</h1>
-            <p class="text-slate-400">Attempt {{ currentAttemptIndex + 1 }} of {{ attempts.length }}</p>
+            <p class="text-muted">Attempt {{ currentAttemptIndex + 1 }} of {{ attempts.length }}</p>
           </div>
 
           <!-- Quality Score -->
           <div class="text-center">
-            <div class="text-sm text-slate-400 mb-1">Quality Score</div>
+            <div class="text-sm text-muted mb-1">Quality Score</div>
             <div
               class="text-6xl font-bold mb-2"
               :class="getQualityColor(currentAttempt.quality_score)"
@@ -36,12 +36,12 @@
       </div>
 
       <!-- Navigation between attempts -->
-      <div v-if="attempts.length > 1" class="bg-slate-800 border border-slate-700 rounded-lg p-4 mb-6">
+      <div v-if="attempts.length > 1" class="bg-surface border border-line rounded-lg p-4 mb-6">
         <div class="flex items-center justify-between">
           <button
             @click="previousAttempt"
             :disabled="currentAttemptIndex === 0"
-            class="px-4 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 text-slate-300 rounded transition-colors"
+            class="px-4 py-2 bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint text-ink rounded transition-colors"
           >
             ← Previous Attempt
           </button>
@@ -49,7 +49,7 @@
           <!-- Timeline -->
           <div class="flex-1 mx-8">
             <div class="relative">
-              <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-700"></div>
+              <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-surface-2"></div>
               <div class="relative flex justify-between">
                 <button
                   v-for="(attempt, idx) in attempts"
@@ -61,7 +61,7 @@
                     class="w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all"
                     :class="idx === currentAttemptIndex
                       ? 'bg-emerald-600 border-emerald-400 scale-125'
-                      : 'bg-slate-800 border-slate-600 hover:border-emerald-500'"
+                      : 'bg-surface border-line hover:border-emerald-500'"
                   >
                     <span class="text-xs font-bold">{{ idx + 1 }}</span>
                   </div>
@@ -69,7 +69,7 @@
                     <div :class="getQualityColor(attempt.quality_score)">
                       {{ attempt.quality_score.toFixed(1) }}
                     </div>
-                    <div class="text-slate-500">
+                    <div class="text-faint">
                       {{ new Date(attempt.timestamp).toLocaleDateString() }}
                     </div>
                   </div>
@@ -81,7 +81,7 @@
           <button
             @click="nextAttempt"
             :disabled="currentAttemptIndex === attempts.length - 1"
-            class="px-4 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 text-slate-300 rounded transition-colors"
+            class="px-4 py-2 bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint text-ink rounded transition-colors"
           >
             Next Attempt →
           </button>
@@ -93,9 +93,9 @@
         <div
           v-for="criterion in currentAttempt.quality_breakdown"
           :key="criterion.name"
-          class="bg-slate-800 border border-slate-700 rounded-lg p-4"
+          class="bg-surface border border-line rounded-lg p-4"
         >
-          <div class="text-sm text-slate-400 mb-2">{{ criterion.name }}</div>
+          <div class="text-sm text-muted mb-2">{{ criterion.name }}</div>
           <div class="flex items-end justify-between">
             <div
               class="text-2xl font-bold"
@@ -103,9 +103,9 @@
             >
               {{ criterion.score.toFixed(1) }}
             </div>
-            <div class="text-xs text-slate-500">/10</div>
+            <div class="text-xs text-faint">/10</div>
           </div>
-          <div class="mt-2 w-full bg-slate-700 rounded-full h-2">
+          <div class="mt-2 w-full bg-surface-2 rounded-full h-2">
             <div
               class="h-2 rounded-full transition-all"
               :class="getQualityColor(criterion.score).replace('text-', 'bg-')"
@@ -116,19 +116,19 @@
       </div>
 
       <!-- Agent's Self-Assessment -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Agent's Self-Assessment</h3>
         <div class="space-y-4">
           <div>
-            <div class="text-sm text-slate-400 mb-2">Overall Assessment</div>
-            <div class="text-slate-300 bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+            <div class="text-sm text-muted mb-2">Overall Assessment</div>
+            <div class="text-ink bg-canvas/50 rounded-lg p-4 border border-line">
               {{ currentAttempt.agent_assessment }}
             </div>
           </div>
 
           <!-- Concerns -->
           <div v-if="currentAttempt.concerns && currentAttempt.concerns.length > 0">
-            <div class="text-sm text-slate-400 mb-2">Identified Concerns</div>
+            <div class="text-sm text-muted mb-2">Identified Concerns</div>
             <div class="space-y-2">
               <div
                 v-for="concern in currentAttempt.concerns"
@@ -139,8 +139,8 @@
                   <div class="text-yellow-400 text-xl">⚠️</div>
                   <div class="flex-1">
                     <div class="text-yellow-400 font-semibold mb-1">{{ concern.type }}</div>
-                    <div class="text-slate-300 text-sm mb-2">{{ concern.description }}</div>
-                    <div v-if="concern.suggestion" class="text-slate-400 text-sm italic">
+                    <div class="text-ink text-sm mb-2">{{ concern.description }}</div>
+                    <div v-if="concern.suggestion" class="text-muted text-sm italic">
                       Suggestion: {{ concern.suggestion }}
                     </div>
                   </div>
@@ -151,8 +151,8 @@
 
           <!-- Suggestions -->
           <div v-if="currentAttempt.suggestions && currentAttempt.suggestions.length > 0">
-            <div class="text-sm text-slate-400 mb-2">Improvement Suggestions</div>
-            <ul class="list-disc list-inside space-y-1 text-slate-300 bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+            <div class="text-sm text-muted mb-2">Improvement Suggestions</div>
+            <ul class="list-disc list-inside space-y-1 text-ink bg-canvas/50 rounded-lg p-4 border border-line">
               <li v-for="suggestion in currentAttempt.suggestions" :key="suggestion">
                 {{ suggestion }}
               </li>
@@ -162,14 +162,14 @@
       </div>
 
       <!-- Side-by-side Comparison -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-lg font-semibold text-emerald-400">LEGO Extraction Comparison</h3>
           <div v-if="attempts.length > 1" class="flex gap-2">
-            <label class="text-sm text-slate-400">Compare with:</label>
+            <label class="text-sm text-muted">Compare with:</label>
             <select
               v-model="compareWithIndex"
-              class="bg-slate-900 border border-slate-700 rounded px-3 py-1 text-sm text-slate-300"
+              class="bg-canvas border border-line rounded px-3 py-1 text-sm text-ink"
             >
               <option :value="null">None (current only)</option>
               <option
@@ -191,17 +191,17 @@
               <div class="text-sm font-medium text-emerald-400">
                 Current: Attempt {{ currentAttemptIndex + 1 }}
               </div>
-              <div class="text-xs text-slate-400">
+              <div class="text-xs text-muted">
                 {{ currentAttempt.legos.length }} LEGOs
               </div>
             </div>
 
             <!-- Original Sentence -->
             <div class="mb-4">
-              <div class="text-xs text-slate-500 mb-1">Source</div>
-              <div class="text-slate-300 mb-2">{{ seed.source }}</div>
-              <div class="text-xs text-slate-500 mb-1">Target</div>
-              <div class="text-slate-300">{{ seed.target }}</div>
+              <div class="text-xs text-faint mb-1">Source</div>
+              <div class="text-ink mb-2">{{ seed.source }}</div>
+              <div class="text-xs text-faint mb-1">Target</div>
+              <div class="text-ink">{{ seed.target }}</div>
             </div>
 
             <!-- LEGO Visualization -->
@@ -218,17 +218,17 @@
               <div class="text-sm font-medium text-blue-400">
                 Compare: Attempt {{ compareWithIndex + 1 }}
               </div>
-              <div class="text-xs text-slate-400">
+              <div class="text-xs text-muted">
                 {{ attempts[compareWithIndex].legos.length }} LEGOs
               </div>
             </div>
 
             <!-- Original Sentence (same) -->
             <div class="mb-4">
-              <div class="text-xs text-slate-500 mb-1">Source</div>
-              <div class="text-slate-300 mb-2">{{ seed.source }}</div>
-              <div class="text-xs text-slate-500 mb-1">Target</div>
-              <div class="text-slate-300">{{ seed.target }}</div>
+              <div class="text-xs text-faint mb-1">Source</div>
+              <div class="text-ink mb-2">{{ seed.source }}</div>
+              <div class="text-xs text-faint mb-1">Target</div>
+              <div class="text-ink">{{ seed.target }}</div>
             </div>
 
             <!-- LEGO Visualization -->
@@ -239,8 +239,8 @@
             />
 
             <!-- Diff Summary -->
-            <div class="mt-4 p-3 bg-slate-900/50 border border-slate-700 rounded-lg">
-              <div class="text-xs text-slate-400 mb-2">Changes</div>
+            <div class="mt-4 p-3 bg-canvas/50 border border-line rounded-lg">
+              <div class="text-xs text-muted mb-2">Changes</div>
               <div class="flex gap-4 text-sm">
                 <div>
                   <span class="text-emerald-400">+{{ diffStats.added }}</span> added
@@ -258,27 +258,27 @@
 
         <!-- LEGO Details Table -->
         <div class="mt-6">
-          <div class="text-sm font-medium text-slate-400 mb-3">LEGO Details</div>
-          <div class="bg-slate-900/50 border border-slate-700 rounded-lg overflow-hidden">
+          <div class="text-sm font-medium text-muted mb-3">LEGO Details</div>
+          <div class="bg-canvas/50 border border-line rounded-lg overflow-hidden">
             <table class="w-full text-sm">
-              <thead class="bg-slate-800">
+              <thead class="bg-surface">
                 <tr>
-                  <th class="text-left p-3 text-slate-400 font-medium">#</th>
-                  <th class="text-left p-3 text-slate-400 font-medium">Text</th>
-                  <th class="text-left p-3 text-slate-400 font-medium">Span</th>
-                  <th class="text-left p-3 text-slate-400 font-medium">Type</th>
-                  <th class="text-left p-3 text-slate-400 font-medium">Confidence</th>
+                  <th class="text-left p-3 text-muted font-medium">#</th>
+                  <th class="text-left p-3 text-muted font-medium">Text</th>
+                  <th class="text-left p-3 text-muted font-medium">Span</th>
+                  <th class="text-left p-3 text-muted font-medium">Type</th>
+                  <th class="text-left p-3 text-muted font-medium">Confidence</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-700">
+              <tbody class="divide-y divide-line">
                 <tr
                   v-for="(lego, idx) in currentAttempt.legos"
                   :key="idx"
-                  class="hover:bg-slate-800/50"
+                  class="hover:bg-surface/50"
                 >
-                  <td class="p-3 text-slate-500">{{ idx + 1 }}</td>
+                  <td class="p-3 text-faint">{{ idx + 1 }}</td>
                   <td class="p-3 text-emerald-400 font-medium">"{{ lego.text }}"</td>
-                  <td class="p-3 text-slate-400 font-mono text-xs">[{{ lego.start }}:{{ lego.end }}]</td>
+                  <td class="p-3 text-muted font-mono text-xs">[{{ lego.start }}:{{ lego.end }}]</td>
                   <td class="p-3">
                     <span class="px-2 py-1 rounded text-xs bg-blue-900/50 text-blue-400">
                       {{ lego.type }}
@@ -286,13 +286,13 @@
                   </td>
                   <td class="p-3">
                     <div class="flex items-center gap-2">
-                      <div class="flex-1 bg-slate-700 rounded-full h-2">
+                      <div class="flex-1 bg-surface-2 rounded-full h-2">
                         <div
                           class="h-2 rounded-full bg-emerald-600"
                           :style="{ width: `${lego.confidence * 100}%` }"
                         ></div>
                       </div>
-                      <span class="text-xs text-slate-400">{{ (lego.confidence * 100).toFixed(0) }}%</span>
+                      <span class="text-xs text-muted">{{ (lego.confidence * 100).toFixed(0) }}%</span>
                     </div>
                   </td>
                 </tr>
@@ -303,43 +303,43 @@
       </div>
 
       <!-- Prompt Version Used -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Extraction Context</h3>
         <div class="grid grid-cols-2 gap-4 text-sm">
           <div>
-            <div class="text-slate-400 mb-1">Prompt Version</div>
-            <div class="text-slate-300 font-mono">{{ currentAttempt.prompt_version }}</div>
+            <div class="text-muted mb-1">Prompt Version</div>
+            <div class="text-ink font-mono">{{ currentAttempt.prompt_version }}</div>
           </div>
           <div>
-            <div class="text-slate-400 mb-1">Model</div>
-            <div class="text-slate-300 font-mono">{{ currentAttempt.model }}</div>
+            <div class="text-muted mb-1">Model</div>
+            <div class="text-ink font-mono">{{ currentAttempt.model }}</div>
           </div>
           <div>
-            <div class="text-slate-400 mb-1">Timestamp</div>
-            <div class="text-slate-300">{{ formatTimestamp(currentAttempt.timestamp) }}</div>
+            <div class="text-muted mb-1">Timestamp</div>
+            <div class="text-ink">{{ formatTimestamp(currentAttempt.timestamp) }}</div>
           </div>
           <div>
-            <div class="text-slate-400 mb-1">Processing Time</div>
-            <div class="text-slate-300">{{ currentAttempt.processing_time }}ms</div>
+            <div class="text-muted mb-1">Processing Time</div>
+            <div class="text-ink">{{ currentAttempt.processing_time }}ms</div>
           </div>
         </div>
 
         <!-- View Prompt Button -->
         <button
           @click="showPrompt = !showPrompt"
-          class="mt-4 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-sm transition-colors"
+          class="mt-4 px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink rounded text-sm transition-colors"
         >
           {{ showPrompt ? 'Hide' : 'View' }} Full Prompt
         </button>
 
         <!-- Prompt Display -->
-        <div v-if="showPrompt" class="mt-4 bg-slate-900 border border-slate-700 rounded-lg p-4 font-mono text-xs text-slate-300 overflow-x-auto">
+        <div v-if="showPrompt" class="mt-4 bg-canvas border border-line rounded-lg p-4 font-mono text-xs text-ink overflow-x-auto">
           <pre>{{ currentAttempt.prompt_text }}</pre>
         </div>
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex items-center justify-between gap-4 sticky bottom-8 bg-slate-800 border border-slate-700 rounded-lg p-6 shadow-xl">
+      <div class="flex items-center justify-between gap-4 sticky bottom-8 bg-surface border border-line rounded-lg p-6 shadow-xl">
         <div class="flex gap-3">
           <button
             @click="acceptAttempt"
@@ -372,7 +372,7 @@
             @click="removeFromCorpus"
             disabled
             title="Not implemented yet"
-            class="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-lg font-medium transition-colors"
+            class="px-6 py-3 bg-surface-2 hover:bg-surface-3 text-ink rounded-lg text-lg font-medium transition-colors"
           >
             🗑 Remove from Corpus
           </button>
@@ -380,10 +380,10 @@
       </div>
 
       <!-- Keyboard Shortcuts Hint -->
-      <div class="mt-4 text-center text-xs text-slate-500">
-        Press <kbd class="px-2 py-1 bg-slate-800 rounded border border-slate-700">a</kbd> to accept,
-        <kbd class="px-2 py-1 bg-slate-800 rounded border border-slate-700">r</kbd> to re-run,
-        <kbd class="px-2 py-1 bg-slate-800 rounded border border-slate-700">←/→</kbd> to navigate attempts
+      <div class="mt-4 text-center text-xs text-faint">
+        Press <kbd class="px-2 py-1 bg-surface rounded border border-line">a</kbd> to accept,
+        <kbd class="px-2 py-1 bg-surface rounded border border-line">r</kbd> to re-run,
+        <kbd class="px-2 py-1 bg-surface rounded border border-line">←/→</kbd> to navigate attempts
       </div>
     </div>
   </div>
@@ -449,7 +449,7 @@ function getStatusBadgeClass(status) {
     accepted: 'bg-emerald-900/50 text-emerald-400 border border-emerald-600/50',
     rejected: 'bg-red-900/50 text-red-400 border border-red-600/50'
   }
-  return classes[status] || 'bg-slate-700 text-slate-300'
+  return classes[status] || 'bg-surface-2 text-ink'
 }
 
 function formatTimestamp(timestamp) {

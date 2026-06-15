@@ -214,7 +214,7 @@ watch(() => store.jobStatus, (newStatus) => {
 <style scoped>
 .audio-pipeline {
   padding: 1.5rem;
-  background: #0f172a;
+  background: var(--canvas);
   min-height: 100vh;
 }
 
@@ -224,14 +224,14 @@ watch(() => store.jobStatus, (newStatus) => {
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #475569;
+  border-bottom: 1px solid var(--surface-3);
 }
 
 .header-title h1 {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.75rem;
   font-weight: 700;
-  color: #f7f7f2;
+  color: var(--ink);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -240,7 +240,7 @@ watch(() => store.jobStatus, (newStatus) => {
 .queue-count {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.85rem;
-  color: #c1c1bb;
+  color: var(--muted);
 }
 
 .header-actions {
@@ -250,10 +250,10 @@ watch(() => store.jobStatus, (newStatus) => {
 
 .action-btn {
   padding: 0.6rem 1.25rem;
-  background: #334155;
-  border: 1px solid #475569;
+  background: var(--surface-2);
+  border: 1px solid var(--surface-3);
   border-radius: 8px;
-  color: #f7f7f2;
+  color: var(--ink);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
@@ -262,13 +262,13 @@ watch(() => store.jobStatus, (newStatus) => {
 }
 
 .action-btn:hover {
-  background: #475569;
+  background: var(--surface-3);
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #ffa630, #e6951c);
-  border-color: #ffa630;
-  color: #0f172a;
+  background: linear-gradient(135deg, var(--accent), #e6951c);
+  border-color: var(--accent);
+  color: var(--canvas);
 }
 
 .action-btn.primary:hover {
@@ -289,8 +289,8 @@ watch(() => store.jobStatus, (newStatus) => {
 }
 
 .stat {
-  background: #1e293b;
-  border: 1px solid #475569;
+  background: var(--surface);
+  border: 1px solid var(--surface-3);
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
@@ -301,7 +301,7 @@ watch(() => store.jobStatus, (newStatus) => {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 2rem;
   font-weight: 600;
-  color: #f7f7f2;
+  color: var(--ink);
 }
 
 .stat-value.processing { color: #06b6d4; }
@@ -311,7 +311,7 @@ watch(() => store.jobStatus, (newStatus) => {
 .stat-label {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.75rem;
-  color: #c1c1bb;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -326,10 +326,10 @@ watch(() => store.jobStatus, (newStatus) => {
 
 .filter-btn {
   padding: 0.5rem 1rem;
-  background: #1e293b;
-  border: 1px solid #475569;
+  background: var(--surface);
+  border: 1px solid var(--surface-3);
   border-radius: 20px;
-  color: #c1c1bb;
+  color: var(--muted);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.85rem;
   cursor: pointer;
@@ -337,13 +337,13 @@ watch(() => store.jobStatus, (newStatus) => {
 }
 
 .filter-btn:hover {
-  border-color: #ffa630;
+  border-color: var(--accent);
 }
 
 .filter-btn.active {
-  background: #ffa630;
-  border-color: #ffa630;
-  color: #0f172a;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--canvas);
 }
 
 /* Queue List */
@@ -357,13 +357,13 @@ watch(() => store.jobStatus, (newStatus) => {
 .empty-state {
   text-align: center;
   padding: 3rem;
-  color: #c1c1bb;
+  color: var(--muted);
 }
 
 /* Add Section */
 .add-section {
-  background: #1e293b;
-  border: 1px solid #ffa630;
+  background: var(--surface);
+  border: 1px solid var(--accent);
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
@@ -372,14 +372,14 @@ watch(() => store.jobStatus, (newStatus) => {
 .add-section h3 {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
-  color: #f7f7f2;
+  color: var(--ink);
   margin: 0 0 0.5rem 0;
 }
 
 .flagged-count {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.85rem;
-  color: #ffa630;
+  color: var(--accent);
   margin: 0 0 1rem 0;
 }
 

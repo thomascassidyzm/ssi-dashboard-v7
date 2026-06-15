@@ -94,8 +94,8 @@
               v-if="hasPlayableItems(round)"
               class="play-round-btn w-8 h-8 flex items-center justify-center rounded-full transition-colors"
               :class="isRoundPlaying(round.roundNumber)
-                ? 'bg-emerald-500 text-ink'
-                : 'bg-surface-3 bg-opacity-50 text-ink hover:bg-emerald-500 hover:text-ink'"
+                ? 'bg-emerald-500 text-white'
+                : 'bg-surface-3 bg-opacity-50 text-white hover:bg-emerald-500 hover:text-white'"
               :title="`Play Round ${round.roundNumber}`"
               @click.stop="playRound(round)"
             >
@@ -174,8 +174,8 @@
                 v-if="item.hasAudio"
                 class="play-item-btn w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full transition-colors"
                 :class="isItemPlaying(round.roundNumber, idx)
-                  ? 'bg-emerald-500 text-ink'
-                  : 'bg-surface-3 text-muted hover:bg-emerald-500 hover:text-ink'"
+                  ? 'bg-emerald-500 text-white'
+                  : 'bg-surface-3 text-muted hover:bg-emerald-500 hover:text-white'"
                 :title="isItemPlaying(round.roundNumber, idx) ? 'Playing...' : 'Play from here'"
                 @click="playFromItem(round, idx)"
               >
@@ -200,7 +200,7 @@
               <!-- Review Badge - shows which round is being reviewed -->
               <div
                 v-if="item.type === 'review'"
-                class="review-badge px-2 py-1 bg-amber-600 text-ink text-xs rounded font-mono font-bold"
+                class="review-badge px-2 py-1 bg-amber-600 text-white text-xs rounded font-mono font-bold"
                 :title="`Reviewing Round ${item.reviewOf}`"
               >
                 R{{ item.reviewOf }}
@@ -231,7 +231,7 @@
                 <!-- Presentation (intro narration) edit + regen -->
                 <button
                   v-if="item.type === 'intro'"
-                  class="w-6 h-6 flex items-center justify-center rounded text-purple-400 hover:text-ink hover:bg-purple-500 hover:bg-opacity-30 transition-colors"
+                  class="w-6 h-6 flex items-center justify-center rounded text-purple-400 hover:text-white hover:bg-purple-500 hover:bg-opacity-30 transition-colors"
                   title="Edit intro narration & regenerate audio"
                   @click.stop="emit('presentation-edit', item)"
                 >
@@ -243,7 +243,7 @@
                 <button
                   v-if="item.target1_audio_uuid"
                   class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'bg-pink-500 text-ink' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
+                  :class="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'bg-pink-500 text-white' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
                   :title="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'Unflag target1 (F) audio' : 'Flag target1 (F) audio'"
                   @click.stop="emit('audio-flag', item, 'target1')"
                 >F</button>
@@ -260,7 +260,7 @@
                 <button
                   v-if="item.target2_audio_uuid"
                   class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'bg-blue-500 text-ink' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
+                  :class="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
                   :title="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'Unflag target2 (M) audio' : 'Flag target2 (M) audio'"
                   @click.stop="emit('audio-flag', item, 'target2')"
                 >M</button>
@@ -277,7 +277,7 @@
                 <button
                   v-if="item.phrase_id"
                   class="w-6 h-6 flex items-center justify-center rounded text-xs transition-colors"
-                  :class="flaggedPhraseIds.has(item.phrase_id!) ? 'bg-red-500 text-ink' : 'text-red-400 hover:bg-red-500 hover:bg-opacity-20'"
+                  :class="flaggedPhraseIds.has(item.phrase_id!) ? 'bg-red-500 text-white' : 'text-red-400 hover:bg-red-500 hover:bg-opacity-20'"
                   :title="flaggedPhraseIds.has(item.phrase_id!) ? 'Unflag phrase' : 'Flag phrase for deletion'"
                   @click.stop="emit('phrase-flag', item)"
                 >

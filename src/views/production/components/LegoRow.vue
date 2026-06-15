@@ -2,14 +2,14 @@
   <div class="lego-row ml-6 mb-4">
     <!-- LEGO Header -->
     <div
-      class="lego-header bg-slate-700 rounded-lg p-4 cursor-pointer hover:bg-slate-600 transition-all"
+      class="lego-header bg-surface-2 rounded-lg p-4 cursor-pointer hover:bg-surface-3 transition-all"
       @click="toggleExpand"
     >
       <div class="flex items-center justify-between">
         <div class="lego-info flex items-center gap-3 flex-1">
           <!-- Expand/Collapse Icon -->
           <svg
-            class="w-5 h-5 text-slate-400 transition-transform"
+            class="w-5 h-5 text-muted transition-transform"
             :class="{ 'rotate-90': lego.expanded }"
             fill="none"
             stroke="currentColor"
@@ -28,21 +28,21 @@
           <!-- LEGO Details -->
           <div class="lego-details flex-1">
             <div class="flex items-center gap-2 mb-1">
-              <span class="lego-id text-sm font-mono text-slate-300">{{ lego.lego_id }}</span>
+              <span class="lego-id text-sm font-mono text-ink">{{ lego.lego_id }}</span>
               <span
                 class="type-badge px-2 py-0.5 text-xs font-medium rounded"
                 :class="typeBadgeClass"
               >
                 {{ lego.type }}-type
               </span>
-              <span v-if="lego.is_new" class="new-badge px-2 py-0.5 text-xs font-medium bg-emerald-500 bg-opacity-20 text-emerald-300 rounded">
+              <span v-if="lego.is_new" class="new-badge px-2 py-0.5 text-xs font-medium bg-emerald-600 text-white rounded">
                 NEW
               </span>
             </div>
 
             <div class="lego-texts text-sm space-y-0.5">
-              <div class="target-text text-white font-medium">{{ lego.target }}</div>
-              <div class="known-text text-slate-400">{{ lego.known }}</div>
+              <div class="target-text text-ink font-medium">{{ lego.target }}</div>
+              <div class="known-text text-muted">{{ lego.known }}</div>
             </div>
           </div>
         </div>
@@ -50,7 +50,7 @@
         <!-- Actions -->
         <div class="lego-actions flex items-center gap-3">
           <!-- Phrase Count Badge -->
-          <div class="phrase-count text-sm text-slate-400">
+          <div class="phrase-count text-sm text-muted">
             {{ lego.phrases.length }} phrase{{ lego.phrases.length !== 1 ? 's' : '' }}
           </div>
         </div>
@@ -78,7 +78,7 @@
           @pause="onPhrasePause"
         />
 
-        <div v-if="lego.phrases.length === 0" class="no-phrases text-sm text-slate-500 italic py-4 text-center">
+        <div v-if="lego.phrases.length === 0" class="no-phrases text-sm text-faint italic py-4 text-center">
           No phrases for this LEGO
         </div>
       </div>
@@ -121,9 +121,9 @@ const onToggleSelection = (phraseId: string) => {
 // Computed
 const typeBadgeClass = computed(() => {
   if (props.lego.type === 'A') {
-    return 'bg-blue-500 bg-opacity-20 text-blue-300';
+    return 'bg-blue-600 text-white';
   } else {
-    return 'bg-purple-500 bg-opacity-20 text-purple-300';
+    return 'bg-purple-600 text-white';
   }
 });
 

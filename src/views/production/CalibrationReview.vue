@@ -3,27 +3,27 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-6">
       <div class="flex items-center gap-4">
-        <h2 class="text-lg font-semibold text-slate-100">Calibration Review</h2>
-        <span class="px-3 py-1 bg-slate-700/50 border border-slate-600/50 rounded text-sm font-mono text-emerald-400">
+        <h2 class="text-lg font-semibold text-ink">Calibration Review</h2>
+        <span class="px-3 py-1 bg-surface-2/50 border border-line/50 rounded text-sm font-mono text-emerald-400">
           {{ courseCode }}
         </span>
       </div>
       <div class="flex items-center gap-3 text-sm">
         <span class="text-emerald-400 font-mono">{{ summary.approved }}</span>
-        <span class="text-slate-500">approved</span>
-        <span class="text-slate-600">|</span>
+        <span class="text-faint">approved</span>
+        <span class="text-faint">|</span>
         <span class="text-amber-400 font-mono">{{ summary.pending }}</span>
-        <span class="text-slate-500">pending</span>
-        <span class="text-slate-600">|</span>
+        <span class="text-faint">pending</span>
+        <span class="text-faint">|</span>
         <span class="text-red-400 font-mono">{{ summary.redo }}</span>
-        <span class="text-slate-500">redo</span>
-        <span class="text-slate-600">|</span>
-        <span class="text-slate-400 font-mono">{{ summary.approved }}/{{ goldenSeedCount }}</span>
+        <span class="text-faint">redo</span>
+        <span class="text-faint">|</span>
+        <span class="text-muted font-mono">{{ summary.approved }}/{{ goldenSeedCount }}</span>
       </div>
     </div>
 
     <!-- Progress bar -->
-    <div class="h-1.5 bg-slate-700/50 rounded-full overflow-hidden mb-6 flex">
+    <div class="h-1.5 bg-surface-2/50 rounded-full overflow-hidden mb-6 flex">
       <div class="h-full bg-emerald-500 transition-all duration-500"
         :style="{ width: `${goldenSeedCount > 0 ? (summary.approved / goldenSeedCount * 100) : 0}%` }">
       </div>
@@ -46,21 +46,21 @@
       <button
         v-for="n in unsubmittedSeeds"
         :key="'empty-' + n"
-        class="w-8 h-8 rounded text-xs font-mono font-medium bg-slate-800/50 text-slate-600 cursor-default"
+        class="w-8 h-8 rounded text-xs font-mono font-medium bg-surface/50 text-faint cursor-default"
       >
         {{ n }}
       </button>
     </div>
 
     <!-- Loading state -->
-    <div v-if="loading" class="text-center py-12 text-slate-500">
+    <div v-if="loading" class="text-center py-12 text-faint">
       Loading review queue...
     </div>
 
     <!-- Empty state -->
     <div v-else-if="drafts.length === 0" class="text-center py-12">
-      <div class="text-slate-500 mb-2">No seeds submitted for review yet.</div>
-      <div class="text-sm text-slate-600">The calibration agent will submit seeds here as it works.</div>
+      <div class="text-faint mb-2">No seeds submitted for review yet.</div>
+      <div class="text-sm text-faint">The calibration agent will submit seeds here as it works.</div>
     </div>
 
     <!-- Selected seed review -->
@@ -68,9 +68,9 @@
       <!-- Left: Seed content (2 cols) -->
       <div class="col-span-2 space-y-4">
         <!-- Seed sentence -->
-        <div class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-5">
-          <div class="text-xs text-slate-500 uppercase tracking-wide mb-2">Seed {{ selectedDraft.seed_number }}</div>
-          <div class="text-slate-300 mb-1">{{ selectedDraft.known_text }}</div>
+        <div class="bg-surface/30 border border-line/50 rounded-lg p-5">
+          <div class="text-xs text-faint uppercase tracking-wide mb-2">Seed {{ selectedDraft.seed_number }}</div>
+          <div class="text-ink mb-1">{{ selectedDraft.known_text }}</div>
           <div class="text-lg text-emerald-400 font-medium">{{ selectedDraft.target_text }}</div>
           <div v-if="selectedDraft.attempt_number > 1" class="mt-2 text-xs text-amber-400">
             Attempt {{ selectedDraft.attempt_number }}
@@ -81,8 +81,8 @@
         <div
           v-for="(lego, idx) in selectedLegos"
           :key="idx"
-          class="bg-slate-800/30 border rounded-lg p-5"
-          :class="lego.is_new === false ? 'border-slate-700/30 opacity-70' : 'border-slate-700/50'"
+          class="bg-surface/30 border rounded-lg p-5"
+          :class="lego.is_new === false ? 'border-line/30 opacity-70' : 'border-line/50'"
         >
           <div class="flex items-center gap-3 mb-3">
             <span class="px-2 py-0.5 rounded text-xs font-mono font-bold"
@@ -90,40 +90,40 @@
             >
               {{ lego.type }}
             </span>
-            <span class="text-slate-400 text-sm">{{ lego.known }}</span>
-            <span class="text-slate-600">&rarr;</span>
-            <span class="text-slate-200 font-medium">{{ lego.target }}</span>
-            <span v-if="lego.is_new === false" class="text-xs text-slate-500 ml-auto">reused</span>
+            <span class="text-muted text-sm">{{ lego.known }}</span>
+            <span class="text-faint">&rarr;</span>
+            <span class="text-ink font-medium">{{ lego.target }}</span>
+            <span v-if="lego.is_new === false" class="text-xs text-faint ml-auto">reused</span>
           </div>
 
           <!-- Components (M-LEGO) -->
           <div v-if="lego.components && lego.components.length" class="mb-3 pl-4 border-l-2 border-purple-500/20">
-            <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Components</div>
-            <div v-for="(comp, ci) in lego.components" :key="ci" class="text-sm text-slate-400">
-              {{ comp.known }} &rarr; <span class="text-slate-300">{{ comp.target }}</span>
+            <div class="text-xs text-faint uppercase tracking-wide mb-1">Components</div>
+            <div v-for="(comp, ci) in lego.components" :key="ci" class="text-sm text-muted">
+              {{ comp.known }} &rarr; <span class="text-ink">{{ comp.target }}</span>
             </div>
           </div>
 
           <!-- BUILD phrases -->
           <div v-if="buildPhrases(lego).length" class="mb-3">
-            <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">BUILD</div>
+            <div class="text-xs text-faint uppercase tracking-wide mb-1">BUILD</div>
             <div v-for="(p, pi) in buildPhrases(lego)" :key="'b-'+pi" class="text-sm py-0.5">
-              <span class="text-slate-400">{{ p.known_text }}</span>
-              <span class="text-slate-600 mx-1">&rarr;</span>
-              <span class="text-slate-200">{{ p.target_text }}</span>
+              <span class="text-muted">{{ p.known_text }}</span>
+              <span class="text-faint mx-1">&rarr;</span>
+              <span class="text-ink">{{ p.target_text }}</span>
             </div>
           </div>
 
           <!-- USE phrases -->
           <div v-if="usePhrases(lego).length">
-            <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">
-              USE <span class="text-slate-600">({{ usePhrases(lego).length }})</span>
+            <div class="text-xs text-faint uppercase tracking-wide mb-1">
+              USE <span class="text-faint">({{ usePhrases(lego).length }})</span>
             </div>
             <div v-for="(p, pi) in usePhrases(lego)" :key="'u-'+pi" class="text-sm py-0.5">
-              <span class="text-slate-400">{{ p.known_text }}</span>
-              <span class="text-slate-600 mx-1">&rarr;</span>
-              <span class="text-slate-200">{{ p.target_text }}</span>
-              <span v-if="p.score" class="text-xs text-slate-600 ml-2">{{ p.score }}</span>
+              <span class="text-muted">{{ p.known_text }}</span>
+              <span class="text-faint mx-1">&rarr;</span>
+              <span class="text-ink">{{ p.target_text }}</span>
+              <span v-if="p.score" class="text-xs text-faint ml-2">{{ p.score }}</span>
             </div>
           </div>
         </div>
@@ -132,8 +132,8 @@
       <!-- Right: Review controls (1 col) -->
       <div class="space-y-4">
         <!-- Status -->
-        <div class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-5">
-          <div class="text-xs text-slate-500 uppercase tracking-wide mb-3">Review</div>
+        <div class="bg-surface/30 border border-line/50 rounded-lg p-5">
+          <div class="text-xs text-faint uppercase tracking-wide mb-3">Review</div>
 
           <div v-if="selectedDraft.review_status === 'approved'" class="text-emerald-400 font-medium mb-3">
             Approved
@@ -141,13 +141,13 @@
           <div v-else-if="selectedDraft.review_status === 'redo'" class="text-amber-400 font-medium mb-3">
             Redo requested
           </div>
-          <div v-else class="text-slate-400 text-sm mb-4">
+          <div v-else class="text-muted text-sm mb-4">
             Awaiting your review
           </div>
 
           <!-- Previous reviewer notes -->
-          <div v-if="selectedDraft.reviewer_notes && selectedDraft.review_status !== 'pending_review'" class="mb-4 p-3 bg-slate-700/30 rounded text-sm text-slate-400">
-            <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Previous notes</div>
+          <div v-if="selectedDraft.reviewer_notes && selectedDraft.review_status !== 'pending_review'" class="mb-4 p-3 bg-surface-2/30 rounded text-sm text-muted">
+            <div class="text-xs text-faint uppercase tracking-wide mb-1">Previous notes</div>
             {{ selectedDraft.reviewer_notes }}
           </div>
 
@@ -155,7 +155,7 @@
           <textarea
             v-model="reviewNotes"
             placeholder="Notes for the agent (optional for approve, recommended for redo)..."
-            class="w-full bg-slate-700/30 border border-slate-600/50 rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-emerald-500/50 resize-none"
+            class="w-full bg-surface-2/30 border border-line/50 rounded-lg px-3 py-2 text-sm text-ink placeholder-faint focus:outline-none focus:border-emerald-500/50 resize-none"
             rows="4"
           ></textarea>
 
@@ -179,10 +179,10 @@
         </div>
 
         <!-- Keyboard shortcuts -->
-        <div class="text-xs text-slate-600 space-y-1">
-          <div><kbd class="px-1.5 py-0.5 bg-slate-700/50 rounded">A</kbd> Approve</div>
-          <div><kbd class="px-1.5 py-0.5 bg-slate-700/50 rounded">R</kbd> Redo</div>
-          <div><kbd class="px-1.5 py-0.5 bg-slate-700/50 rounded">&larr;</kbd> <kbd class="px-1.5 py-0.5 bg-slate-700/50 rounded">&rarr;</kbd> Navigate seeds</div>
+        <div class="text-xs text-faint space-y-1">
+          <div><kbd class="px-1.5 py-0.5 bg-surface-2/50 rounded">A</kbd> Approve</div>
+          <div><kbd class="px-1.5 py-0.5 bg-surface-2/50 rounded">R</kbd> Redo</div>
+          <div><kbd class="px-1.5 py-0.5 bg-surface-2/50 rounded">&larr;</kbd> <kbd class="px-1.5 py-0.5 bg-surface-2/50 rounded">&rarr;</kbd> Navigate seeds</div>
         </div>
       </div>
     </div>
@@ -236,11 +236,11 @@ function usePhrases(lego) {
 
 function seedPillClass(draft) {
   const isSelected = draft.seed_number === selectedSeed.value
-  const base = isSelected ? 'ring-2 ring-offset-1 ring-offset-slate-900' : ''
+  const base = isSelected ? 'ring-2 ring-offset-1 ring-offset-surface' : ''
   if (draft.review_status === 'approved') return `${base} bg-emerald-500/20 text-emerald-400 ${isSelected ? 'ring-emerald-500' : 'hover:bg-emerald-500/30'}`
   if (draft.review_status === 'redo') return `${base} bg-amber-500/20 text-amber-400 ${isSelected ? 'ring-amber-500' : 'hover:bg-amber-500/30'}`
   if (draft.review_status === 'pending_review') return `${base} bg-cyan-500/20 text-cyan-400 ${isSelected ? 'ring-cyan-500' : 'hover:bg-cyan-500/30'} animate-pulse`
-  return `${base} bg-slate-700/50 text-slate-400 hover:bg-slate-700/70`
+  return `${base} bg-surface-2/50 text-muted hover:bg-surface-2/70`
 }
 
 function selectSeed(n) {

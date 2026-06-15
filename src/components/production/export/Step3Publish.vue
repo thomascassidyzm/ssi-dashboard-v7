@@ -1,11 +1,11 @@
 <template>
   <div class="step-content space-y-4">
-    <h4 class="text-lg font-semibold text-white">Step 3: Publish Manifest</h4>
+    <h4 class="text-lg font-semibold text-ink">Step 3: Publish Manifest</h4>
 
     <!-- Download manifest button (always visible) -->
     <button
       @click="handleDownloadManifest"
-      class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors flex items-center justify-center gap-2"
+      class="w-full px-4 py-2 text-sm font-medium border border-line text-ink rounded-lg hover:bg-surface-2 transition-colors flex items-center justify-center gap-2"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -15,7 +15,7 @@
 
     <!-- Not yet published -->
     <div v-if="!state.manifestPublished" class="space-y-4">
-      <p class="text-slate-300 text-sm">
+      <p class="text-ink text-sm">
         Publish the manifest to course-configs repo and apidev server.
       </p>
 
@@ -41,13 +41,13 @@
             Publishing Blocked: Duration verification required
           </span>
         </div>
-        <p v-if="verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0" class="text-sm text-slate-300">
+        <p v-if="verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0" class="text-sm text-ink">
           Step 2 is currently auto-fixing {{ verification.durationsFixed }} duration mismatches. Please wait for it to complete and verify.
         </p>
-        <p v-else-if="!verificationOverride" class="text-sm text-slate-300">
+        <p v-else-if="!verificationOverride" class="text-sm text-ink">
           Go back to Step 2 and verify that all audio durations match the manifest before publishing.
         </p>
-        <p v-if="!verificationOverride" class="text-xs text-slate-400 mt-2">
+        <p v-if="!verificationOverride" class="text-xs text-muted mt-2">
           This ensures the learning app receives accurate duration metadata.
         </p>
         <!-- Override option -->
@@ -57,7 +57,7 @@
             type="checkbox"
             class="w-4 h-4 rounded"
           />
-          <span class="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
+          <span class="text-xs text-faint group-hover:text-muted transition-colors">
             I understand the risks — publish without duration verification
           </span>
         </label>
@@ -66,8 +66,8 @@
       <!-- Manifest Diff Summary -->
       <div v-if="manifestDiff" class="diff-summary p-4 rounded-lg border space-y-3"
         :class="manifestDiff.isNewCourse ? 'bg-blue-900/20 border-blue-700' :
-                manifestDiff.suggestedBump === 'none' ? 'bg-slate-700 border-slate-600' :
-                'bg-slate-700 border-slate-600'"
+                manifestDiff.suggestedBump === 'none' ? 'bg-surface-2 border-line' :
+                'bg-surface-2 border-line'"
       >
         <!-- New course -->
         <template v-if="manifestDiff.isNewCourse">
@@ -77,29 +77,29 @@
             </svg>
             New Course — first publish
           </div>
-          <p class="text-slate-400 text-sm">No published version found. Starting at v1.0.0.</p>
+          <p class="text-muted text-sm">No published version found. Starting at v1.0.0.</p>
         </template>
 
         <!-- No changes -->
         <template v-else-if="manifestDiff.suggestedBump === 'none'">
-          <div class="flex items-center gap-2 text-slate-400 font-medium">
+          <div class="flex items-center gap-2 text-muted font-medium">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             No changes detected
           </div>
-          <p class="text-slate-400 text-sm">Pending manifest matches v{{ manifestDiff.existingVersion }}.</p>
+          <p class="text-muted text-sm">Pending manifest matches v{{ manifestDiff.existingVersion }}.</p>
         </template>
 
         <!-- Changes detected -->
         <template v-else>
           <div class="flex items-center justify-between">
-            <span class="text-slate-300 font-medium text-sm">Changes from v{{ manifestDiff.existingVersion }}</span>
+            <span class="text-ink font-medium text-sm">Changes from v{{ manifestDiff.existingVersion }}</span>
             <span class="text-xs px-2 py-0.5 rounded font-medium"
               :class="{
                 'bg-red-900/50 text-red-400': manifestDiff.suggestedBump === 'major',
                 'bg-amber-900/50 text-amber-400': manifestDiff.suggestedBump === 'minor',
-                'bg-slate-600 text-slate-300': manifestDiff.suggestedBump === 'patch'
+                'bg-surface-3 text-ink': manifestDiff.suggestedBump === 'patch'
               }"
             >
               {{ manifestDiff.suggestedBump }} bump → v{{ manifestDiff.suggestedVersion }}
@@ -117,15 +117,15 @@
               <span class="text-amber-400">{{ manifestDiff.minor.length }} minor</span>
             </span>
             <span v-if="manifestDiff.patch.length" class="flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-slate-400"></span>
-              <span class="text-slate-400">{{ manifestDiff.patch.length }} patch</span>
+              <span class="w-2 h-2 rounded-full bg-surface-3"></span>
+              <span class="text-muted">{{ manifestDiff.patch.length }} patch</span>
             </span>
           </div>
 
           <!-- Collapsible details -->
           <button
             @click="showDiffDetails = !showDiffDetails"
-            class="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1"
+            class="text-xs text-faint hover:text-ink transition-colors flex items-center gap-1"
           >
             <svg class="w-3 h-3 transition-transform" :class="showDiffDetails ? 'rotate-90' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -139,7 +139,7 @@
               <div class="text-red-400 font-medium uppercase tracking-wider">Major</div>
               <div
                 v-for="(item, i) in manifestDiff.major" :key="'major-' + i"
-                class="text-slate-300 pl-3 border-l-2 border-red-800"
+                class="text-ink pl-3 border-l-2 border-red-800"
               >{{ item.detail }}</div>
             </div>
 
@@ -148,19 +148,19 @@
               <div class="text-amber-400 font-medium uppercase tracking-wider">Minor</div>
               <div
                 v-for="(item, i) in manifestDiff.minor.slice(0, 20)" :key="'minor-' + i"
-                class="text-slate-300 pl-3 border-l-2 border-amber-800"
+                class="text-ink pl-3 border-l-2 border-amber-800"
               >{{ item.detail }}</div>
-              <div v-if="manifestDiff.minor.length > 20" class="text-slate-500 pl-3">
+              <div v-if="manifestDiff.minor.length > 20" class="text-faint pl-3">
                 ...and {{ manifestDiff.minor.length - 20 }} more
               </div>
             </div>
 
             <!-- PATCH details (aggregated counts) -->
             <div v-if="manifestDiff.patch.length" class="space-y-1">
-              <div class="text-slate-400 font-medium uppercase tracking-wider">Patch</div>
+              <div class="text-muted font-medium uppercase tracking-wider">Patch</div>
               <div
                 v-for="(item, i) in manifestDiff.patch" :key="'patch-' + i"
-                class="text-slate-400 pl-3 border-l-2 border-slate-700"
+                class="text-muted pl-3 border-l-2 border-line"
               >{{ formatPatchItem(item) }}</div>
             </div>
           </div>
@@ -168,19 +168,19 @@
       </div>
 
       <!-- Version and Status picker (always visible) -->
-      <div class="version-info p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-4">
+      <div class="version-info p-4 bg-surface-2 rounded-lg border border-line space-y-4">
         <!-- Course ID -->
         <div class="flex justify-between items-center">
-          <span class="text-slate-400 text-sm">Course ID</span>
-          <span v-if="versionInfo" class="text-white font-mono">{{ versionInfo.courseConfigsId }}</span>
+          <span class="text-muted text-sm">Course ID</span>
+          <span v-if="versionInfo" class="text-ink font-mono">{{ versionInfo.courseConfigsId }}</span>
           <span v-else class="text-amber-400 font-mono text-sm">New Course</span>
         </div>
 
         <!-- Version section -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-slate-400 text-sm">Version</span>
-            <span class="text-slate-500 text-xs">
+            <span class="text-muted text-sm">Version</span>
+            <span class="text-faint text-xs">
               current: {{ versionInfo?.existingVersion || '(none)' }}
             </span>
           </div>
@@ -192,17 +192,17 @@
                 v-for="level in (['patch', 'minor', 'major'] as const)" :key="level"
                 @click="version = nextVersions[level]"
                 :class="[
-                  version === nextVersions[level] ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500',
+                  version === nextVersions[level] ? 'bg-emerald-600 border-emerald-500' : 'bg-surface border-line hover:border-line',
                   suggestedBump === level && version !== nextVersions[level] ? 'ring-1 ring-emerald-500/40' : ''
                 ]"
                 class="flex-1 px-3 py-2 text-sm border rounded transition-colors relative"
               >
-                <div class="text-slate-400 text-xs capitalize">{{ level }}</div>
-                <div class="text-white font-mono">{{ nextVersions[level] }}</div>
+                <div class="text-muted text-xs capitalize">{{ level }}</div>
+                <div class="text-ink font-mono">{{ nextVersions[level] }}</div>
                 <div v-if="suggestedBump === level && manifestDiff?.suggestedBump !== 'none'" class="text-[10px] text-emerald-400/70 mt-0.5">suggested</div>
               </button>
             </div>
-            <div v-if="suggestedReason" class="text-[11px] text-slate-500 text-center">
+            <div v-if="suggestedReason" class="text-[11px] text-faint text-center">
               {{ suggestedReason }}
             </div>
           </div>
@@ -213,16 +213,16 @@
               v-model="version"
               type="text"
               placeholder="e.g., 3.0.1"
-              class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              class="flex-1 px-3 py-1.5 text-sm bg-surface border border-line rounded text-ink placeholder-faint focus:outline-none focus:border-blue-500"
             />
-            <button @click="showCustomVersion = false" class="text-slate-400 hover:text-white text-xs">
+            <button @click="showCustomVersion = false" class="text-muted hover:text-ink text-xs">
               cancel
             </button>
           </div>
 
           <!-- Toggle custom input -->
           <div v-if="!showCustomVersion" class="text-center">
-            <button @click="showCustomVersion = true" class="text-slate-500 hover:text-slate-300 text-xs">
+            <button @click="showCustomVersion = true" class="text-faint hover:text-ink text-xs">
               or enter custom version
             </button>
           </div>
@@ -230,26 +230,26 @@
 
         <!-- Status section with buttons -->
         <div class="space-y-2">
-          <span class="text-slate-400 text-sm">Status</span>
+          <span class="text-muted text-sm">Status</span>
           <div class="flex gap-2">
             <button
               @click="status = 'alpha'"
-              :class="status === 'alpha' ? 'bg-amber-600 border-amber-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-white"
+              :class="status === 'alpha' ? 'bg-amber-600 border-amber-500' : 'bg-surface border-line hover:border-line'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-ink"
             >
               alpha
             </button>
             <button
               @click="status = 'beta'"
-              :class="status === 'beta' ? 'bg-blue-600 border-blue-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-white"
+              :class="status === 'beta' ? 'bg-blue-600 border-blue-500' : 'bg-surface border-line hover:border-line'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-ink"
             >
               beta
             </button>
             <button
               @click="status = 'published'"
-              :class="status === 'published' ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
-              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-white"
+              :class="status === 'published' ? 'bg-emerald-600 border-emerald-500' : 'bg-surface border-line hover:border-line'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-ink"
             >
               published
             </button>
@@ -266,27 +266,27 @@
 
       <!-- Publish options -->
       <div class="options space-y-2">
-        <label class="flex items-center gap-3 p-3 bg-slate-700 rounded-lg cursor-pointer border border-slate-600">
+        <label class="flex items-center gap-3 p-3 bg-surface-2 rounded-lg cursor-pointer border border-line">
           <input
             v-model="commitToCourseConfigs"
             type="checkbox"
-            class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+            class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-surface rounded"
           />
           <div>
-            <span class="text-white text-sm">Commit to course-configs</span>
-            <span class="text-slate-400 text-xs ml-2">(author branch)</span>
+            <span class="text-ink text-sm">Commit to course-configs</span>
+            <span class="text-muted text-xs ml-2">(author branch)</span>
           </div>
         </label>
 
-        <label class="flex items-center gap-3 p-3 bg-slate-700 rounded-lg cursor-pointer border border-slate-600">
+        <label class="flex items-center gap-3 p-3 bg-surface-2 rounded-lg cursor-pointer border border-line">
           <input
             v-model="scpToApidev"
             type="checkbox"
-            class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+            class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-surface rounded"
           />
           <div>
-            <span class="text-white text-sm">Upload to apidev via SCP</span>
-            <span class="text-slate-400 text-xs ml-2">(requires VPN)</span>
+            <span class="text-ink text-sm">Upload to apidev via SCP</span>
+            <span class="text-muted text-xs ml-2">(requires VPN)</span>
           </div>
         </label>
       </div>
@@ -295,7 +295,7 @@
       <button
         @click="handlePublish"
         :disabled="isPublishing || !version || !canPublish"
-        class="w-full px-4 py-3 text-sm font-medium text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        class="w-full px-4 py-3 text-sm font-medium text-ink rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         :class="verificationOverride && !durationsVerified ? 'bg-amber-600 hover:bg-amber-700' : 'bg-purple-500 hover:bg-purple-600'"
       >
         <span v-if="isPublishing" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
@@ -316,25 +316,25 @@
           <span>Published v{{ state.manifestVersion }} ({{ state.manifestStatus }})</span>
         </div>
 
-        <div v-if="state.publishCourseConfigsPath" class="text-sm text-slate-400">
-          Course-configs: <span class="text-slate-300 font-mono text-xs">{{ state.publishCourseConfigsPath }}</span>
+        <div v-if="state.publishCourseConfigsPath" class="text-sm text-muted">
+          Course-configs: <span class="text-ink font-mono text-xs">{{ state.publishCourseConfigsPath }}</span>
         </div>
 
-        <div v-if="state.publishApidevFilename" class="text-sm text-slate-400">
-          Apidev: <span class="text-slate-300 font-mono text-xs">{{ state.publishApidevFilename }}</span>
+        <div v-if="state.publishApidevFilename" class="text-sm text-muted">
+          Apidev: <span class="text-ink font-mono text-xs">{{ state.publishApidevFilename }}</span>
         </div>
 
-        <p class="text-xs text-slate-500">
+        <p class="text-xs text-faint">
           Published: {{ formatDate(state.manifestPublishedAt) }}
         </p>
       </div>
 
       <!-- Push to Remote button -->
-      <div v-if="state.publishCourseConfigsPath" class="push-remote-box p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-3">
+      <div v-if="state.publishCourseConfigsPath" class="push-remote-box p-4 bg-surface-2 rounded-lg border border-line space-y-3">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-white text-sm font-medium">Push to Remote</p>
-            <p class="text-slate-400 text-xs">Push course-configs commits to GitHub</p>
+            <p class="text-ink text-sm font-medium">Push to Remote</p>
+            <p class="text-muted text-xs">Push course-configs commits to GitHub</p>
           </div>
           <button
             @click="handlePushToRemote"
@@ -357,7 +357,7 @@
       <div v-if="!showRepublish">
         <button
           @click="showRepublish = true"
-          class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors"
+          class="w-full px-4 py-2 text-sm font-medium border border-line text-ink rounded-lg hover:bg-surface-2 transition-colors"
         >
           Publish New Version
         </button>
@@ -366,16 +366,16 @@
       <!-- Re-publish workflow (EXPANDED when showRepublish = true) -->
       <div v-else class="space-y-4">
         <!-- Version info -->
-        <div v-if="versionInfo" class="version-info p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-3">
+        <div v-if="versionInfo" class="version-info p-4 bg-surface-2 rounded-lg border border-line space-y-3">
           <div class="flex justify-between items-center">
-            <span class="text-slate-400 text-sm">Course ID</span>
-            <span class="text-white font-mono">{{ versionInfo.courseConfigsId }}</span>
+            <span class="text-muted text-sm">Course ID</span>
+            <span class="text-ink font-mono">{{ versionInfo.courseConfigsId }}</span>
           </div>
 
           <div class="space-y-2">
             <div class="flex items-center justify-between">
-              <span class="text-slate-400 text-sm">New Version</span>
-              <span class="text-slate-500 text-xs">current: {{ versionInfo.existingVersion }}</span>
+              <span class="text-muted text-sm">New Version</span>
+              <span class="text-faint text-xs">current: {{ versionInfo.existingVersion }}</span>
             </div>
 
             <!-- Version bump buttons -->
@@ -385,17 +385,17 @@
                   v-for="level in (['patch', 'minor', 'major'] as const)" :key="level"
                   @click="republishVersion = nextVersions[level]"
                   :class="[
-                    republishVersion === nextVersions[level] ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500',
+                    republishVersion === nextVersions[level] ? 'bg-emerald-600 border-emerald-500' : 'bg-surface border-line hover:border-line',
                     suggestedBump === level && republishVersion !== nextVersions[level] ? 'ring-1 ring-emerald-500/40' : ''
                   ]"
                   class="flex-1 px-3 py-2 text-sm border rounded transition-colors relative"
                 >
-                  <div class="text-slate-400 text-xs capitalize">{{ level }}</div>
-                  <div class="text-white font-mono">{{ nextVersions[level] }}</div>
+                  <div class="text-muted text-xs capitalize">{{ level }}</div>
+                  <div class="text-ink font-mono">{{ nextVersions[level] }}</div>
                   <div v-if="suggestedBump === level && manifestDiff?.suggestedBump !== 'none'" class="text-[10px] text-emerald-400/70 mt-0.5">suggested</div>
                 </button>
               </div>
-              <div v-if="suggestedReason" class="text-[11px] text-slate-500 text-center">
+              <div v-if="suggestedReason" class="text-[11px] text-faint text-center">
                 {{ suggestedReason }}
               </div>
             </div>
@@ -406,26 +406,26 @@
                 v-model="republishVersion"
                 type="text"
                 placeholder="e.g., 3.0.2"
-                class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                class="flex-1 px-3 py-1.5 text-sm bg-surface border border-line rounded text-ink placeholder-faint focus:outline-none focus:border-blue-500"
               />
-              <button @click="showCustomRepublishVersion = false" class="text-slate-400 hover:text-white text-xs">
+              <button @click="showCustomRepublishVersion = false" class="text-muted hover:text-ink text-xs">
                 cancel
               </button>
             </div>
 
             <!-- Toggle custom input -->
             <div v-if="!showCustomRepublishVersion" class="text-center">
-              <button @click="showCustomRepublishVersion = true" class="text-slate-500 hover:text-slate-300 text-xs">
+              <button @click="showCustomRepublishVersion = true" class="text-faint hover:text-ink text-xs">
                 or enter custom version
               </button>
             </div>
           </div>
 
           <div class="flex items-center gap-3">
-            <span class="text-slate-400 text-sm flex-shrink-0">Status</span>
+            <span class="text-muted text-sm flex-shrink-0">Status</span>
             <select
               v-model="republishStatus"
-              class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white focus:outline-none focus:border-blue-500"
+              class="flex-1 px-3 py-1.5 text-sm bg-surface border border-line rounded text-ink focus:outline-none focus:border-blue-500"
             >
               <option value="alpha">alpha</option>
               <option value="beta">beta</option>
@@ -446,7 +446,7 @@
             <span v-if="verificationOverride">Override active — publishing without full verification</span>
             <span v-else>Publishing Blocked: Re-verify durations first</span>
           </div>
-          <p v-if="!verificationOverride" class="text-sm text-slate-300">
+          <p v-if="!verificationOverride" class="text-sm text-ink">
             Go back to Step 2 and re-verify S3 to ensure durations match before publishing.
           </p>
           <label v-if="!verificationOverride" class="flex items-center gap-2 mt-3 pt-3 border-t border-red-800/50 cursor-pointer group">
@@ -455,7 +455,7 @@
               type="checkbox"
               class="w-4 h-4 rounded"
             />
-            <span class="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
+            <span class="text-xs text-faint group-hover:text-muted transition-colors">
               I understand the risks — publish without duration verification
             </span>
           </label>
@@ -463,27 +463,27 @@
 
         <!-- Publish options -->
         <div class="options space-y-2">
-          <label class="flex items-center gap-3 p-3 bg-slate-700 rounded-lg cursor-pointer border border-slate-600">
+          <label class="flex items-center gap-3 p-3 bg-surface-2 rounded-lg cursor-pointer border border-line">
             <input
               v-model="republishToCourseConfigs"
               type="checkbox"
-              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-surface rounded"
             />
             <div>
-              <span class="text-white text-sm">Commit to course-configs</span>
-              <span class="text-slate-400 text-xs ml-2">(author branch)</span>
+              <span class="text-ink text-sm">Commit to course-configs</span>
+              <span class="text-muted text-xs ml-2">(author branch)</span>
             </div>
           </label>
 
-          <label class="flex items-center gap-3 p-3 bg-slate-700 rounded-lg cursor-pointer border border-slate-600">
+          <label class="flex items-center gap-3 p-3 bg-surface-2 rounded-lg cursor-pointer border border-line">
             <input
               v-model="republishToApidev"
               type="checkbox"
-              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-surface rounded"
             />
             <div>
-              <span class="text-white text-sm">Upload to apidev via SCP</span>
-              <span class="text-slate-400 text-xs ml-2">(requires VPN)</span>
+              <span class="text-ink text-sm">Upload to apidev via SCP</span>
+              <span class="text-muted text-xs ml-2">(requires VPN)</span>
             </div>
           </label>
         </div>
@@ -492,14 +492,14 @@
         <div class="flex gap-2">
           <button
             @click="showRepublish = false"
-            class="flex-1 px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors"
+            class="flex-1 px-4 py-2 text-sm font-medium border border-line text-ink rounded-lg hover:bg-surface-2 transition-colors"
           >
             Cancel
           </button>
           <button
             @click="handleRepublish"
             :disabled="isPublishing || !republishVersion || !canPublish"
-            class="flex-1 px-4 py-3 text-sm font-medium text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            class="flex-1 px-4 py-3 text-sm font-medium text-ink rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             :class="verificationOverride && !durationsVerified ? 'bg-amber-600 hover:bg-amber-700' : 'bg-purple-500 hover:bg-purple-600'"
           >
             <span v-if="isPublishing" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>

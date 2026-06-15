@@ -381,12 +381,12 @@ watch(() => props.knownText + props.targetText, async () => {
 .audio-preview-player {
   --accent: #10b981;
   --accent-glow: rgba(16, 185, 129, 0.3);
-  --bg: #1e293b;
-  --bg-elevated: #334155;
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
+  --bg: var(--surface);
+  --bg-elevated: var(--surface-2);
+  --text: var(--ink);
+  --text-muted: var(--muted);
   --known-color: #a78bfa;
-  --target-color: #34d399;
+  --target-color: var(--accent-2);
 
   background: var(--bg);
   border-radius: 0 0 12px 12px;

@@ -646,15 +646,15 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 
 <style scoped>
 .generation-monitor {
-  --void: #0f172a;
-  --deep: #1e293b;
-  --surface: #1e293b;
-  --elevated: #334155;
-  --border: #334155;
-  --border-light: #475569;
-  --text: #f1f5f9;
-  --text-dim: #94a3b8;
-  --text-muted: #64748b;
+  --void: var(--canvas);
+  --deep: var(--surface);
+  --surface: var(--surface);
+  --elevated: var(--surface-2);
+  --border: var(--surface-2);
+  --border-light: var(--surface-3);
+  --text: var(--ink);
+  --text-dim: var(--muted);
+  --text-muted: var(--faint);
   --accent: #10b981;
   --accent-dim: #059669;
   --accent-glow: rgba(16, 185, 129, 0.15);

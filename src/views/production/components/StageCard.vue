@@ -137,7 +137,7 @@ const statusLabel = computed(() => {
 .stage-name {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--ink);
   margin: 0 0 0.25rem 0;
 }
 
@@ -145,7 +145,7 @@ const statusLabel = computed(() => {
   display: flex;
   gap: 1rem;
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .stage-count {
@@ -178,7 +178,7 @@ const statusLabel = computed(() => {
 
 .badge-idle {
   background: rgb(100 116 139 / 0.2);
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .stage-progress {
@@ -206,7 +206,7 @@ const statusLabel = computed(() => {
 .progress-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--ink);
   min-width: 3rem;
   text-align: right;
 }
@@ -235,7 +235,7 @@ const statusLabel = computed(() => {
   width: 100%;
   padding: 0.75rem;
   background: rgb(51 65 85);
-  color: #e2e8f0;
+  color: var(--ink);
   border: 1px solid rgb(71 85 105);
   border-radius: 0.5rem;
   font-size: 0.875rem;

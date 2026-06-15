@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
-    <h3 class="text-xl font-semibold text-slate-100 mb-4">Progress Monitor</h3>
+  <div class="bg-surface/50 rounded-lg border border-line/20 p-6">
+    <h3 class="text-xl font-semibold text-ink mb-4">Progress Monitor</h3>
 
     <!-- Execution Mode Badge -->
     <div class="mb-4">
@@ -23,11 +23,11 @@
           <div class="text-emerald-400 animate-pulse text-xl">●</div>
           <div>
             <div class="text-lg font-semibold text-emerald-400">{{ getPhaseTitle(liveProgress.currentPhase) }}</div>
-            <div class="text-xs text-slate-400">Started {{ formatRelativeTime(liveProgress.startTime) }}</div>
+            <div class="text-xs text-muted">Started {{ formatRelativeTime(liveProgress.startTime) }}</div>
           </div>
         </div>
         <div v-if="currentPhaseData && currentPhaseData.eta" class="text-right">
-          <div class="text-xs text-slate-400">ETA</div>
+          <div class="text-xs text-muted">ETA</div>
           <div class="text-sm font-medium text-emerald-400">{{ currentPhaseData.etaHuman }}</div>
         </div>
       </div>
@@ -36,15 +36,15 @@
       <div v-if="currentPhaseData && (currentPhaseData.seedsTotal || currentPhaseData.legosTotal)" class="mb-3">
         <div class="flex items-center justify-between text-xs mb-1">
           <!-- Legacy Phase 5 (now Phase 3): Show LEGOs and seeds -->
-          <span v-if="liveProgress.currentPhase === 5 && currentPhaseData.legosTotal" class="text-slate-300">
+          <span v-if="liveProgress.currentPhase === 5 && currentPhaseData.legosTotal" class="text-ink">
             {{ currentPhaseData.legosCompleted || 0 }} / {{ currentPhaseData.legosTotal }} LEGOs
-            <span class="text-slate-500 ml-2">({{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds)</span>
+            <span class="text-faint ml-2">({{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds)</span>
           </span>
           <!-- Other phases: Show agent breakdown or seeds -->
-          <span v-else-if="currentPhaseData.agentCount" class="text-slate-300">
+          <span v-else-if="currentPhaseData.agentCount" class="text-ink">
             {{ currentPhaseData.agentCount }} agents × {{ currentPhaseData.seedsPerAgent }} seeds/agent
           </span>
-          <span v-else class="text-slate-300">{{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds</span>
+          <span v-else class="text-ink">{{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds</span>
 
           <!-- Percentage: Use LEGOs for Phase 5, seeds for others -->
           <span class="text-emerald-400 font-medium">
@@ -54,7 +54,7 @@
             }}%
           </span>
         </div>
-        <div class="w-full bg-slate-700 rounded-full h-2.5">
+        <div class="w-full bg-surface-2 rounded-full h-2.5">
           <div
             class="bg-emerald-500 h-2.5 rounded-full transition-all duration-500"
             :style="{ width: `${
@@ -67,10 +67,10 @@
       </div>
 
       <!-- Recent Activity -->
-      <div v-if="liveProgress.recentLogs && liveProgress.recentLogs.length > 0" class="bg-slate-900/50 rounded p-2 max-h-32 overflow-y-auto">
-        <div class="text-xs font-medium text-slate-400 mb-1.5">Recent Activity</div>
-        <div v-for="(log, i) in liveProgress.recentLogs.slice(0, 5)" :key="i" class="text-xs text-slate-300 py-0.5">
-          <span class="text-slate-500">{{ formatTime(log.time) }}</span>
+      <div v-if="liveProgress.recentLogs && liveProgress.recentLogs.length > 0" class="bg-canvas/50 rounded p-2 max-h-32 overflow-y-auto">
+        <div class="text-xs font-medium text-muted mb-1.5">Recent Activity</div>
+        <div v-for="(log, i) in liveProgress.recentLogs.slice(0, 5)" :key="i" class="text-xs text-ink py-0.5">
+          <span class="text-faint">{{ formatTime(log.time) }}</span>
           <span class="mx-1">•</span>
           <span>{{ log.message }}</span>
         </div>
@@ -78,7 +78,7 @@
     </div>
 
     <!-- Simple status message when not running -->
-    <div v-else class="text-center py-8 text-slate-400">
+    <div v-else class="text-center py-8 text-muted">
       <div class="text-sm">No active pipeline running</div>
       <div class="text-xs mt-2">Start a course generation to see live progress</div>
     </div>

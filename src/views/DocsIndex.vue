@@ -286,22 +286,22 @@ console.log('Documentation Hub Loaded')
    ============================================ */
 
 .docs-hub {
-  --doc-void: #0f172a;
-  --doc-deep: #1e293b;
-  --doc-surface: #1e293b;
-  --doc-elevated: #334155;
-  --doc-border: #334155;
-  --doc-border-light: #475569;
-  --doc-text: #f1f5f9;
-  --doc-text-dim: #94a3b8;
-  --doc-text-muted: #64748b;
+  --doc-void: var(--canvas);
+  --doc-deep: var(--surface);
+  --doc-surface: var(--surface);
+  --doc-elevated: var(--surface-2);
+  --doc-border: var(--surface-2);
+  --doc-border-light: var(--surface-3);
+  --doc-text: var(--ink);
+  --doc-text-dim: var(--muted);
+  --doc-text-muted: var(--faint);
 
   /* Card accent colors */
   --doc-apml: #10b981;
   --doc-apml-glow: rgba(16, 185, 129, 0.15);
   --doc-pedagogy: #f59e0b;
   --doc-pedagogy-glow: rgba(245, 158, 11, 0.15);
-  --doc-glossary: #64748b;
+  --doc-glossary: var(--faint);
   --doc-glossary-glow: rgba(100, 116, 139, 0.15);
   --doc-seeds: #10b981;
   --doc-seeds-glow: rgba(16, 185, 129, 0.15);
@@ -395,7 +395,7 @@ console.log('Documentation Hub Loaded')
 }
 
 .back-link:hover {
-  color: #34d399;
+  color: var(--accent-2);
 }
 
 .back-link svg {

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -13,14 +13,14 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Prompt Evolution</h1>
-            <p class="text-slate-400">Self-healing prompt learning system</p>
+            <p class="text-muted">Self-healing prompt learning system</p>
           </div>
 
           <div class="text-right space-y-2">
             <div>
-              <div class="text-sm text-slate-400 mb-1">Current Version</div>
+              <div class="text-sm text-muted mb-1">Current Version</div>
               <div class="text-3xl font-bold text-emerald-400">{{ currentVersion }}</div>
-              <div class="text-xs text-slate-500 mt-1">{{ learnedRules.length }} learned rules</div>
+              <div class="text-xs text-faint mt-1">{{ learnedRules.length }} learned rules</div>
             </div>
             <router-link
               :to="`/quality/${courseCode}/learned-rules`"
@@ -34,39 +34,39 @@
 
       <!-- Stats Overview -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <div class="text-sm text-slate-400 mb-1">Success Rate</div>
+        <div class="bg-surface border border-line rounded-lg p-6">
+          <div class="text-sm text-muted mb-1">Success Rate</div>
           <div class="text-3xl font-bold text-emerald-400">{{ successRate }}%</div>
-          <div class="text-xs text-slate-500 mt-1">
+          <div class="text-xs text-faint mt-1">
             <span class="text-emerald-400">+{{ improvementRate }}%</span> from v1.0
           </div>
         </div>
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <div class="text-sm text-slate-400 mb-1">Learned Rules</div>
+        <div class="bg-surface border border-line rounded-lg p-6">
+          <div class="text-sm text-muted mb-1">Learned Rules</div>
           <div class="text-3xl font-bold text-blue-400">{{ learnedRules.length }}</div>
-          <div class="text-xs text-slate-500 mt-1">{{ experimentalRules.length }} experimental</div>
+          <div class="text-xs text-faint mt-1">{{ experimentalRules.length }} experimental</div>
         </div>
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <div class="text-sm text-slate-400 mb-1">Avg Quality</div>
+        <div class="bg-surface border border-line rounded-lg p-6">
+          <div class="text-sm text-muted mb-1">Avg Quality</div>
           <div class="text-3xl font-bold text-lime-400">{{ avgQuality.toFixed(1) }}</div>
-          <div class="text-xs text-slate-500 mt-1">Latest 100 extractions</div>
+          <div class="text-xs text-faint mt-1">Latest 100 extractions</div>
         </div>
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <div class="text-sm text-slate-400 mb-1">Re-run Rate</div>
+        <div class="bg-surface border border-line rounded-lg p-6">
+          <div class="text-sm text-muted mb-1">Re-run Rate</div>
           <div class="text-3xl font-bold text-yellow-400">{{ rerunRate.toFixed(1) }}%</div>
-          <div class="text-xs text-slate-500 mt-1">
+          <div class="text-xs text-faint mt-1">
             <span class="text-emerald-400">-{{ rerunReduction }}%</span> improvement
           </div>
         </div>
       </div>
 
       <!-- Version Timeline -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Version History</h3>
 
         <div class="relative">
           <!-- Timeline line -->
-          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-700"></div>
+          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-surface-2"></div>
 
           <!-- Version entries -->
           <div class="space-y-6">
@@ -81,15 +81,15 @@
                 class="absolute left-6 w-5 h-5 rounded-full border-2 transition-all"
                 :class="selectedVersion === version.version
                   ? 'bg-emerald-600 border-emerald-400 scale-125'
-                  : 'bg-slate-800 border-slate-600 group-hover:border-emerald-500'"
+                  : 'bg-surface border-line group-hover:border-emerald-500'"
               ></div>
 
               <!-- Version card -->
               <div
-                class="bg-slate-900/50 border rounded-lg p-4 transition-all"
+                class="bg-canvas/50 border rounded-lg p-4 transition-all"
                 :class="selectedVersion === version.version
                   ? 'border-emerald-500 shadow-lg shadow-emerald-500/20'
-                  : 'border-slate-700 group-hover:border-slate-600'"
+                  : 'border-line group-hover:border-line'"
               >
                 <div class="flex items-start justify-between mb-2">
                   <div>
@@ -102,30 +102,30 @@
                         Current
                       </span>
                     </div>
-                    <div class="text-sm text-slate-400 mt-1">{{ formatDate(version.timestamp) }}</div>
+                    <div class="text-sm text-muted mt-1">{{ formatDate(version.timestamp) }}</div>
                   </div>
                   <div class="text-right">
                     <div class="text-2xl font-bold" :class="getQualityColor(version.avgQuality)">
                       {{ version.avgQuality.toFixed(1) }}
                     </div>
-                    <div class="text-xs text-slate-500">avg quality</div>
+                    <div class="text-xs text-faint">avg quality</div>
                   </div>
                 </div>
 
-                <div class="text-sm text-slate-300 mb-3">{{ version.description }}</div>
+                <div class="text-sm text-ink mb-3">{{ version.description }}</div>
 
                 <div class="flex items-center gap-4 text-xs">
                   <div class="flex items-center gap-1">
                     <span class="text-emerald-400">+{{ version.rulesAdded }}</span>
-                    <span class="text-slate-500">rules</span>
+                    <span class="text-faint">rules</span>
                   </div>
                   <div class="flex items-center gap-1">
                     <span class="text-blue-400">{{ version.seedsTested }}</span>
-                    <span class="text-slate-500">tested</span>
+                    <span class="text-faint">tested</span>
                   </div>
                   <div class="flex items-center gap-1">
                     <span class="text-yellow-400">{{ version.successRate }}%</span>
-                    <span class="text-slate-500">success</span>
+                    <span class="text-faint">success</span>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@
       </div>
 
       <!-- Learned Rules -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-lg font-semibold text-emerald-400">Learned Rules</h3>
           <div class="flex gap-2">
@@ -146,7 +146,7 @@
               class="px-3 py-1 rounded text-sm transition-colors"
               :class="ruleFilter === filter.value
                 ? 'bg-emerald-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'"
+                : 'bg-surface-2 text-ink hover:bg-surface-3'"
             >
               {{ filter.label }}
             </button>
@@ -157,7 +157,7 @@
           <div
             v-for="rule in filteredRules"
             :key="rule.id"
-            class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
+            class="bg-canvas/50 border border-line rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
           >
             <div class="flex items-start justify-between mb-3">
               <div class="flex-1">
@@ -169,10 +169,10 @@
                   >
                     {{ rule.status }}
                   </span>
-                  <span class="text-xs text-slate-500">Added in {{ rule.version }}</span>
+                  <span class="text-xs text-faint">Added in {{ rule.version }}</span>
                 </div>
-                <div class="text-sm text-slate-300 mb-2">{{ rule.description }}</div>
-                <div class="text-xs text-slate-400 font-mono bg-slate-900 rounded px-3 py-2 border border-slate-700">
+                <div class="text-sm text-ink mb-2">{{ rule.description }}</div>
+                <div class="text-xs text-muted font-mono bg-canvas rounded px-3 py-2 border border-line">
                   {{ rule.rule }}
                 </div>
               </div>
@@ -182,28 +182,28 @@
                 <div class="text-2xl font-bold text-emerald-400 mb-1">
                   +{{ rule.improvement }}%
                 </div>
-                <div class="text-xs text-slate-500">improvement</div>
-                <div class="text-xs text-slate-400 mt-2">
+                <div class="text-xs text-faint">improvement</div>
+                <div class="text-xs text-muted mt-2">
                   {{ rule.appliedCount }} applications
                 </div>
               </div>
             </div>
 
             <!-- Before/After Stats -->
-            <div class="grid grid-cols-2 gap-4 mt-3 pt-3 border-t border-slate-700">
+            <div class="grid grid-cols-2 gap-4 mt-3 pt-3 border-t border-line">
               <div>
-                <div class="text-xs text-slate-500 mb-1">Before Rule</div>
+                <div class="text-xs text-faint mb-1">Before Rule</div>
                 <div class="flex items-center gap-2">
-                  <div class="text-sm text-slate-400">{{ rule.beforeStats.avgQuality.toFixed(1) }} avg</div>
-                  <div class="text-sm text-slate-500">|</div>
-                  <div class="text-sm text-slate-400">{{ rule.beforeStats.successRate }}% success</div>
+                  <div class="text-sm text-muted">{{ rule.beforeStats.avgQuality.toFixed(1) }} avg</div>
+                  <div class="text-sm text-faint">|</div>
+                  <div class="text-sm text-muted">{{ rule.beforeStats.successRate }}% success</div>
                 </div>
               </div>
               <div>
-                <div class="text-xs text-slate-500 mb-1">After Rule</div>
+                <div class="text-xs text-faint mb-1">After Rule</div>
                 <div class="flex items-center gap-2">
                   <div class="text-sm text-emerald-400">{{ rule.afterStats.avgQuality.toFixed(1) }} avg</div>
-                  <div class="text-sm text-slate-500">|</div>
+                  <div class="text-sm text-faint">|</div>
                   <div class="text-sm text-emerald-400">{{ rule.afterStats.successRate }}% success</div>
                 </div>
               </div>
@@ -222,13 +222,13 @@
                 <div
                   v-for="seed in rule.exampleSeeds.slice(0, 3)"
                   :key="seed.id"
-                  class="bg-slate-900 border border-slate-700 rounded p-3 text-xs"
+                  class="bg-canvas border border-line rounded p-3 text-xs"
                 >
-                  <div class="text-slate-400 mb-1">{{ seed.id }}</div>
-                  <div class="text-slate-300">{{ seed.text }}</div>
+                  <div class="text-muted mb-1">{{ seed.id }}</div>
+                  <div class="text-ink">{{ seed.text }}</div>
                   <div class="flex items-center gap-2 mt-2">
                     <span class="text-red-400">{{ seed.beforeQuality.toFixed(1) }}</span>
-                    <span class="text-slate-500">→</span>
+                    <span class="text-faint">→</span>
                     <span class="text-emerald-400">{{ seed.afterQuality.toFixed(1) }}</span>
                   </div>
                 </div>
@@ -236,7 +236,7 @@
             </div>
 
             <!-- Rule Actions -->
-            <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-700">
+            <div class="flex items-center gap-2 mt-3 pt-3 border-t border-line">
               <button
                 v-if="rule.status === 'active'"
                 @click="disableRule(rule.id)"
@@ -259,7 +259,7 @@
                 @click="viewRuleDetails(rule.id)"
                 disabled
                 title="Not implemented yet"
-                class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-xs transition-colors"
+                class="px-3 py-1 bg-surface-2 hover:bg-surface-3 text-ink rounded text-xs transition-colors"
               >
                 View Details
               </button>
@@ -269,10 +269,10 @@
       </div>
 
       <!-- Experimental Rules (A/B Testing) -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-purple-400 mb-4">Experimental Rules (A/B Testing)</h3>
 
-        <div v-if="experimentalRules.length === 0" class="text-center py-8 text-slate-400">
+        <div v-if="experimentalRules.length === 0" class="text-center py-8 text-muted">
           No experimental rules currently being tested
         </div>
 
@@ -280,7 +280,7 @@
           <div
             v-for="rule in experimentalRules"
             :key="rule.id"
-            class="bg-slate-900/50 border border-purple-700/50 rounded-lg p-4"
+            class="bg-canvas/50 border border-purple-700/50 rounded-lg p-4"
           >
             <div class="flex items-start justify-between mb-3">
               <div class="flex-1">
@@ -290,29 +290,29 @@
                     Testing
                   </span>
                 </div>
-                <div class="text-sm text-slate-300 mb-2">{{ rule.hypothesis }}</div>
+                <div class="text-sm text-ink mb-2">{{ rule.hypothesis }}</div>
               </div>
             </div>
 
             <!-- A/B Test Results -->
             <div class="grid grid-cols-2 gap-4 mb-3">
-              <div class="bg-slate-900 border border-slate-700 rounded p-3">
-                <div class="text-xs text-slate-400 mb-2">Control (Without Rule)</div>
+              <div class="bg-canvas border border-line rounded p-3">
+                <div class="text-xs text-muted mb-2">Control (Without Rule)</div>
                 <div class="flex items-center justify-between">
                   <div>
-                    <div class="text-2xl font-bold text-slate-300">{{ rule.controlStats.avgQuality.toFixed(1) }}</div>
-                    <div class="text-xs text-slate-500">{{ rule.controlStats.sampleSize }} samples</div>
+                    <div class="text-2xl font-bold text-ink">{{ rule.controlStats.avgQuality.toFixed(1) }}</div>
+                    <div class="text-xs text-faint">{{ rule.controlStats.sampleSize }} samples</div>
                   </div>
-                  <div class="text-sm text-slate-400">{{ rule.controlStats.successRate }}%</div>
+                  <div class="text-sm text-muted">{{ rule.controlStats.successRate }}%</div>
                 </div>
               </div>
 
-              <div class="bg-slate-900 border border-purple-700/50 rounded p-3">
+              <div class="bg-canvas border border-purple-700/50 rounded p-3">
                 <div class="text-xs text-purple-400 mb-2">Treatment (With Rule)</div>
                 <div class="flex items-center justify-between">
                   <div>
                     <div class="text-2xl font-bold text-purple-400">{{ rule.treatmentStats.avgQuality.toFixed(1) }}</div>
-                    <div class="text-xs text-slate-500">{{ rule.treatmentStats.sampleSize }} samples</div>
+                    <div class="text-xs text-faint">{{ rule.treatmentStats.sampleSize }} samples</div>
                   </div>
                   <div class="text-sm text-purple-400">{{ rule.treatmentStats.successRate }}%</div>
                 </div>
@@ -320,11 +320,11 @@
             </div>
 
             <!-- Statistical Significance -->
-            <div class="bg-slate-900 border border-slate-700 rounded p-3 mb-3">
+            <div class="bg-canvas border border-line rounded p-3 mb-3">
               <div class="flex items-center justify-between">
-                <div class="text-xs text-slate-400">Statistical Confidence</div>
+                <div class="text-xs text-muted">Statistical Confidence</div>
                 <div class="flex items-center gap-2">
-                  <div class="w-32 bg-slate-700 rounded-full h-2">
+                  <div class="w-32 bg-surface-2 rounded-full h-2">
                     <div
                       class="h-2 rounded-full transition-all"
                       :class="rule.confidence >= 95 ? 'bg-emerald-600' : 'bg-yellow-600'"
@@ -344,7 +344,7 @@
                 @click="promoteRule(rule.id)"
                 disabled
                 title="Not implemented yet"
-                class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded text-sm transition-colors"
+                class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white rounded text-sm transition-colors"
               >
                 Promote to Production
               </button>
@@ -370,7 +370,7 @@
       </div>
 
       <!-- Quality Trend Chart -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Quality Improvement Over Time</h3>
 
         <div class="h-64 flex items-end gap-2">
@@ -385,7 +385,7 @@
             >
               <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
             </div>
-            <div class="absolute -bottom-6 left-0 right-0 text-center text-xs text-slate-500">
+            <div class="absolute -bottom-6 left-0 right-0 text-center text-xs text-faint">
               {{ point.label }}
             </div>
             <div class="absolute -top-8 left-0 right-0 text-center text-xs font-semibold text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -393,11 +393,11 @@
             </div>
           </div>
         </div>
-        <div class="mt-8 text-xs text-slate-500 text-center">Average quality score by version</div>
+        <div class="mt-8 text-xs text-faint text-center">Average quality score by version</div>
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex items-center justify-between gap-4 sticky bottom-8 bg-slate-800 border border-slate-700 rounded-lg p-6 shadow-xl">
+      <div class="flex items-center justify-between gap-4 sticky bottom-8 bg-surface border border-line rounded-lg p-6 shadow-xl">
         <div>
           <button
             @click="rollbackVersion"
@@ -414,7 +414,7 @@
             @click="exportPromptHistory"
             disabled
             title="Not implemented yet"
-            class="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-lg font-medium transition-colors"
+            class="px-6 py-3 bg-surface-2 hover:bg-surface-3 text-ink rounded-lg text-lg font-medium transition-colors"
           >
             Export History
           </button>
@@ -602,10 +602,10 @@ function getQualityColor(score) {
 function getRuleStatusClass(status) {
   const classes = {
     active: 'bg-emerald-900/50 text-emerald-400 border border-emerald-600/50',
-    disabled: 'bg-slate-700 text-slate-400 border border-slate-600',
+    disabled: 'bg-surface-2 text-muted border border-line',
     testing: 'bg-purple-900/50 text-purple-400 border border-purple-600/50'
   }
-  return classes[status] || 'bg-slate-700 text-slate-300'
+  return classes[status] || 'bg-surface-2 text-ink'
 }
 
 function formatDate(timestamp) {

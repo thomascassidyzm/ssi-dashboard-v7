@@ -343,7 +343,7 @@ watch(courseCode, () => {
 <style scoped>
 .recording-studio {
   min-height: 100vh;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
   padding: 2rem;
 }
 
@@ -353,7 +353,7 @@ watch(courseCode, () => {
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .header-left {
@@ -364,14 +364,14 @@ watch(courseCode, () => {
   font-family: var(--font-display, 'Crimson Pro', serif);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 0.25rem 0;
 }
 
 .studio-subtitle {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0;
 }
 
@@ -388,7 +388,7 @@ watch(courseCode, () => {
   display: block;
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.25rem;
@@ -416,15 +416,15 @@ watch(courseCode, () => {
 }
 
 .queue-panel {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 12px;
   overflow: hidden;
 }
 
 .no-phrase-message {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 12px;
   padding: 4rem 2rem;
   text-align: center;
@@ -437,7 +437,7 @@ watch(courseCode, () => {
 .no-phrase-message p {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1.125rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0;
 }
 
@@ -455,7 +455,7 @@ watch(courseCode, () => {
 
 .upload-toast.success {
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
 }
 
 .upload-toast.error {
@@ -499,10 +499,10 @@ watch(courseCode, () => {
   align-items: center;
   gap: 0.75rem;
   padding: 0.875rem 1.5rem;
-  background: var(--color-slate, #334155);
-  border: 2px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 2px solid var(--color-graphite, var(--surface-3));
   border-radius: 50px;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1rem;
   font-weight: 600;
@@ -511,14 +511,14 @@ watch(courseCode, () => {
 }
 
 .flow-btn:hover {
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
   border-color: var(--color-emerald, #06ffa5);
 }
 
 .flow-btn.active {
   background: var(--color-emerald, #06ffa5);
   border-color: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
   box-shadow: 0 0 20px rgba(6, 255, 165, 0.3);
 }
 
@@ -551,14 +551,14 @@ watch(courseCode, () => {
 .flow-hint {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0;
   opacity: 0.7;
 }
 
 .flow-level-bar {
   height: 4px;
-  background: var(--color-slate, #334155);
+  background: var(--color-slate, var(--surface-2));
   border-radius: 2px;
   margin-bottom: 1rem;
   position: relative;
@@ -567,7 +567,7 @@ watch(courseCode, () => {
 
 .level-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-emerald, #06ffa5), var(--color-tungsten, #ffa630));
+  background: linear-gradient(90deg, var(--color-emerald, #06ffa5), var(--color-tungsten, var(--accent)));
   border-radius: 2px;
   transition: width 0.05s linear;
 }

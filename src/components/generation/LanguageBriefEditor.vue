@@ -567,12 +567,12 @@ onMounted(() => {
 
 <style scoped>
 .brief-editor {
-  --surface: #1e293b;
-  --elevated: #334155;
-  --border: #475569;
-  --text: #f1f5f9;
-  --text-dim: #94a3b8;
-  --text-muted: #64748b;
+  --surface: var(--surface);
+  --elevated: var(--surface-2);
+  --border: var(--surface-3);
+  --text: var(--ink);
+  --text-dim: var(--muted);
+  --text-muted: var(--faint);
   --accent: #10b981;
   --accent-dim: rgba(16, 185, 129, 0.15);
 

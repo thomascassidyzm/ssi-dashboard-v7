@@ -1,10 +1,10 @@
 <template>
   <div class="lego-visualizer">
     <!-- Header Controls -->
-    <div class="controls-section bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <div class="controls-section bg-surface border border-line rounded-lg p-6 mb-6">
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold text-emerald-400">LEGO Amino Acids</h2>
-        <div class="text-sm text-slate-400">
+        <div class="text-sm text-muted">
           {{ filteredLegos.length }} LEGOs
           <span v-if="totalLegos !== filteredLegos.length" class="text-emerald-400">
             (filtered from {{ totalLegos }})
@@ -16,18 +16,18 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Search -->
         <div class="col-span-full">
-          <label class="block text-sm font-medium text-slate-300 mb-2">Search Text</label>
+          <label class="block text-sm font-medium text-ink mb-2">Search Text</label>
           <input
             v-model="filters.searchText"
             type="text"
             placeholder="Search LEGO text..."
-            class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-slate-100 focus:outline-none focus:border-emerald-500"
+            class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink focus:outline-none focus:border-emerald-500"
           />
         </div>
 
         <!-- FCFS Range -->
         <div>
-          <label class="block text-sm font-medium text-slate-300 mb-2">
+          <label class="block text-sm font-medium text-ink mb-2">
             Min FCFS Score ({{ filters.fcfsMin }})
           </label>
           <input
@@ -41,7 +41,7 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-slate-300 mb-2">
+          <label class="block text-sm font-medium text-ink mb-2">
             Max FCFS Score ({{ filters.fcfsMax }})
           </label>
           <input
@@ -56,7 +56,7 @@
 
         <!-- Utility Range -->
         <div>
-          <label class="block text-sm font-medium text-slate-300 mb-2">
+          <label class="block text-sm font-medium text-ink mb-2">
             Min Utility Score ({{ filters.utilityMin }})
           </label>
           <input
@@ -69,7 +69,7 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-slate-300 mb-2">
+          <label class="block text-sm font-medium text-ink mb-2">
             Max Utility Score ({{ filters.utilityMax }})
           </label>
           <input
@@ -83,10 +83,10 @@
 
         <!-- Sort By -->
         <div class="col-span-full md:col-span-1">
-          <label class="block text-sm font-medium text-slate-300 mb-2">Sort By</label>
+          <label class="block text-sm font-medium text-ink mb-2">Sort By</label>
           <select
             v-model="sortBy"
-            class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-slate-100 focus:outline-none focus:border-emerald-500"
+            class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink focus:outline-none focus:border-emerald-500"
           >
             <option value="fcfs-desc">FCFS Score (High to Low)</option>
             <option value="fcfs-asc">FCFS Score (Low to High)</option>
@@ -100,7 +100,7 @@
         <div class="col-span-full md:col-span-1 flex items-end">
           <button
             @click="resetFilters"
-            class="w-full bg-slate-700 hover:bg-slate-600 text-slate-300 px-4 py-2 rounded transition-colors"
+            class="w-full bg-surface-2 hover:bg-surface-3 text-ink px-4 py-2 rounded transition-colors"
           >
             Reset Filters
           </button>
@@ -110,25 +110,25 @@
 
     <!-- Loading State -->
     <div v-if="loading" class="text-center py-12">
-      <div class="text-slate-400">Loading LEGOs...</div>
+      <div class="text-muted">Loading LEGOs...</div>
     </div>
 
     <!-- Error State -->
     <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
       <h3 class="text-red-400 font-semibold mb-2">Error Loading LEGOs</h3>
-      <p class="text-slate-300">{{ error }}</p>
+      <p class="text-ink">{{ error }}</p>
     </div>
 
     <!-- LEGO Cards -->
     <div v-else class="space-y-4">
-      <div v-if="paginatedLegos.length === 0" class="text-center py-12 text-slate-400">
+      <div v-if="paginatedLegos.length === 0" class="text-center py-12 text-muted">
         No LEGOs match your filters
       </div>
 
       <div
         v-for="lego in paginatedLegos"
         :key="lego.uuid"
-        class="lego-card bg-slate-800 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-colors"
+        class="lego-card bg-surface border border-line rounded-lg p-5 hover:border-emerald-500/50 transition-colors"
       >
         <!-- LEGO Text -->
         <div class="mb-4">
@@ -138,7 +138,7 @@
           <div v-else class="space-y-2 mb-2">
             <textarea
               v-model="editingLego.editedText"
-              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-emerald-400 text-lg font-medium focus:outline-none focus:border-emerald-500"
+              class="w-full bg-canvas border border-line rounded px-4 py-2 text-emerald-400 text-lg font-medium focus:outline-none focus:border-emerald-500"
               rows="2"
               placeholder="LEGO text (known language)"
             ></textarea>
@@ -148,7 +148,7 @@
         <!-- Provenance Chain -->
         <div class="mb-3">
           <div class="flex items-center gap-2 text-sm">
-            <span class="text-slate-400">Provenance:</span>
+            <span class="text-muted">Provenance:</span>
             <div class="flex items-center gap-1 flex-wrap">
               <button
                 v-for="(prov, idx) in lego.provenance"
@@ -159,7 +159,7 @@
               >
                 {{ prov.provenance }}
               </button>
-              <span v-if="lego.provenance.length > 1" class="text-slate-500 text-xs ml-1">
+              <span v-if="lego.provenance.length > 1" class="text-faint text-xs ml-1">
                 ({{ lego.provenance.length }} sources)
               </span>
             </div>
@@ -169,21 +169,21 @@
         <!-- Scores -->
         <div class="flex items-center gap-6 mb-4 text-sm">
           <div class="flex items-center gap-2">
-            <span class="text-slate-400">FCFS:</span>
+            <span class="text-muted">FCFS:</span>
             <span class="font-semibold text-emerald-400">{{ formatScore(lego.fcfs_score) }}</span>
             <div class="score-bar">
               <div class="score-bar-fill bg-emerald-500" :style="{ width: `${lego.fcfs_score}%` }"></div>
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-slate-400">Utility:</span>
+            <span class="text-muted">Utility:</span>
             <span class="font-semibold text-emerald-400">{{ lego.utility_score }}</span>
             <div class="score-bar">
               <div class="score-bar-fill bg-blue-500" :style="{ width: `${lego.utility_score}%` }"></div>
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-slate-400">Pedagogical:</span>
+            <span class="text-muted">Pedagogical:</span>
             <span class="font-semibold text-emerald-400">{{ lego.pedagogical_score }}</span>
             <div class="score-bar">
               <div class="score-bar-fill bg-purple-500" :style="{ width: `${lego.pedagogical_score}%` }"></div>
@@ -192,7 +192,7 @@
         </div>
 
         <!-- Metadata -->
-        <div class="flex items-center gap-4 text-xs text-slate-500 mb-4">
+        <div class="flex items-center gap-4 text-xs text-faint mb-4">
           <span>UUID: {{ lego.uuid.substring(0, 8) }}...</span>
           <span v-if="lego.metadata?.duplicate_count">
             Duplicates: {{ lego.metadata.duplicate_count }}
@@ -221,7 +221,7 @@
           <button
             v-if="editingLego && editingLego.uuid === lego.uuid"
             @click="cancelEdit"
-            class="bg-slate-700 hover:bg-slate-600 text-slate-300 px-4 py-2 rounded text-sm transition-colors"
+            class="bg-surface-2 hover:bg-surface-3 text-ink px-4 py-2 rounded text-sm transition-colors"
           >
             Cancel
           </button>
@@ -235,16 +235,16 @@
       </div>
 
       <!-- Pagination -->
-      <div class="pagination bg-slate-800 border border-slate-700 rounded-lg p-4 mt-6">
+      <div class="pagination bg-surface border border-line rounded-lg p-4 mt-6">
         <div class="flex items-center justify-between">
-          <div class="text-sm text-slate-400">
+          <div class="text-sm text-muted">
             Showing {{ startIndex + 1 }}-{{ Math.min(endIndex, filteredLegos.length) }} of {{ filteredLegos.length }}
           </div>
           <div class="flex items-center gap-2">
             <button
               @click="previousPage"
               :disabled="currentPage === 1"
-              class="bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 text-slate-300 px-4 py-2 rounded transition-colors"
+              class="bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint text-ink px-4 py-2 rounded transition-colors"
             >
               Previous
             </button>
@@ -257,7 +257,7 @@
                   'px-3 py-2 rounded transition-colors',
                   currentPage === page
                     ? 'bg-emerald-600 text-white'
-                    : 'bg-slate-700 hover:bg-slate-600 text-slate-300'
+                    : 'bg-surface-2 hover:bg-surface-3 text-ink'
                 ]"
               >
                 {{ page }}
@@ -266,7 +266,7 @@
             <button
               @click="nextPage"
               :disabled="currentPage === totalPages"
-              class="bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 text-slate-300 px-4 py-2 rounded transition-colors"
+              class="bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint text-ink px-4 py-2 rounded transition-colors"
             >
               Next
             </button>
@@ -281,56 +281,56 @@
       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
       @click.self="closeProvenanceModal"
     >
-      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-        <div class="flex items-center justify-between p-6 border-b border-slate-700">
+      <div class="bg-surface border border-line rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between p-6 border-b border-line">
           <h2 class="text-2xl font-bold text-emerald-400">Provenance Chain</h2>
           <button
             @click="closeProvenanceModal"
-            class="text-slate-400 hover:text-slate-300 text-2xl"
+            class="text-muted hover:text-ink text-2xl"
           >
             ×
           </button>
         </div>
 
         <div class="p-6 space-y-4">
-          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+          <div class="bg-canvas/50 border border-line rounded-lg p-4">
             <div class="text-emerald-400 font-semibold mb-2">Current LEGO</div>
-            <div class="text-slate-300 text-lg">"{{ provenanceModal.lego?.text }}"</div>
+            <div class="text-ink text-lg">"{{ provenanceModal.lego?.text }}"</div>
           </div>
 
           <div v-if="provenanceModal.provenance" class="space-y-3">
-            <div class="text-sm font-semibold text-slate-300">Source Information:</div>
+            <div class="text-sm font-semibold text-ink">Source Information:</div>
             <div class="bg-emerald-900/20 border border-emerald-500/50 rounded-lg p-4 space-y-2 text-sm">
               <div>
-                <span class="text-slate-400">Provenance ID:</span>
+                <span class="text-muted">Provenance ID:</span>
                 <span class="text-emerald-400 ml-2 font-mono">{{ provenanceModal.provenance.provenance }}</span>
               </div>
               <div>
-                <span class="text-slate-400">Source SEED ID:</span>
+                <span class="text-muted">Source SEED ID:</span>
                 <span class="text-emerald-400 ml-2 font-mono">{{ provenanceModal.provenance.source_seed_id }}</span>
               </div>
               <div>
-                <span class="text-slate-400">Translation UUID:</span>
+                <span class="text-muted">Translation UUID:</span>
                 <span class="text-emerald-400 ml-2 font-mono text-xs">{{ provenanceModal.provenance.source_translation_uuid }}</span>
               </div>
               <div>
-                <span class="text-slate-400">Original UUID:</span>
+                <span class="text-muted">Original UUID:</span>
                 <span class="text-emerald-400 ml-2 font-mono text-xs">{{ provenanceModal.provenance.original_uuid }}</span>
               </div>
             </div>
           </div>
 
-          <div class="text-xs text-slate-500 bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+          <div class="text-xs text-faint bg-canvas/50 border border-line rounded-lg p-4">
             <strong class="text-emerald-400">Provenance Tracking:</strong> This LEGO was generated from SEED
             <span class="font-mono text-emerald-400">{{ provenanceModal.provenance?.source_seed_id }}</span>
             during the LEGO generation phase. Click through the chain to trace back to the original translation.
           </div>
         </div>
 
-        <div class="flex items-center justify-end gap-3 p-6 border-t border-slate-700">
+        <div class="flex items-center justify-end gap-3 p-6 border-t border-line">
           <button
             @click="closeProvenanceModal"
-            class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
+            class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink rounded transition-colors"
           >
             Close
           </button>
@@ -611,11 +611,11 @@ defineExpose({
 
 <style scoped>
 .lego-visualizer {
-  @apply text-slate-100;
+  @apply text-ink;
 }
 
 .score-bar {
-  @apply w-24 h-2 bg-slate-700 rounded-full overflow-hidden;
+  @apply w-24 h-2 bg-surface-2 rounded-full overflow-hidden;
 }
 
 .score-bar-fill {
@@ -632,14 +632,14 @@ input[type="range"] {
 }
 
 .overflow-y-auto::-webkit-scrollbar-track {
-  @apply bg-slate-800;
+  @apply bg-surface;
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb {
-  @apply bg-slate-600 rounded;
+  @apply bg-surface-3 rounded;
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-500;
+  @apply bg-surface-3;
 }
 </style>

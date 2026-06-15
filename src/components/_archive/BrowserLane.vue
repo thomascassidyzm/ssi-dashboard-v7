@@ -166,8 +166,8 @@ function timeDiff(start, end) {
 
 <style scoped>
 .browser-lane {
-  background: var(--void, #0f172a);
-  border: 1px solid var(--border, #334155);
+  background: var(--void, var(--canvas));
+  border: 1px solid var(--border, var(--surface-2));
   border-radius: 8px;
   padding: 1rem;
   transition: all 0.2s;
@@ -206,7 +206,7 @@ function timeDiff(start, end) {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, var(--faint));
 }
 
 .browser-icon.status-complete {
@@ -246,7 +246,7 @@ function timeDiff(start, end) {
 .idle-dot {
   width: 8px;
   height: 8px;
-  background: var(--border-light, #475569);
+  background: var(--border-light, var(--surface-3));
   border-radius: 50%;
 }
 
@@ -269,14 +269,14 @@ function timeDiff(start, end) {
 .browser-name {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--text, #f1f5f9);
+  color: var(--text, var(--ink));
 }
 
 .browser-status {
   font-size: 0.6875rem;
   font-weight: 500;
   text-transform: uppercase;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, var(--faint));
 }
 
 .status-running .browser-status {
@@ -286,14 +286,14 @@ function timeDiff(start, end) {
 .seed-count {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--text-dim, #94a3b8);
+  color: var(--text-dim, var(--muted));
   font-family: 'SF Mono', Monaco, monospace;
 }
 
 /* Progress Bar */
 .lane-progress {
   height: 4px;
-  background: var(--border, #334155);
+  background: var(--border, var(--surface-2));
   border-radius: 2px;
   overflow: hidden;
   margin-bottom: 0.75rem;
@@ -323,8 +323,8 @@ function timeDiff(start, end) {
 }
 
 .agent-card {
-  background: var(--elevated, #334155);
-  border: 1px solid var(--border, #334155);
+  background: var(--elevated, var(--surface-2));
+  border: 1px solid var(--border, var(--surface-2));
   border-radius: 6px;
   padding: 0.625rem;
 }
@@ -352,14 +352,14 @@ function timeDiff(start, end) {
 .agent-id {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--text-dim, #94a3b8);
+  color: var(--text-dim, var(--muted));
 }
 
 .agent-status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--border-light, #475569);
+  background: var(--border-light, var(--surface-3));
 }
 
 .agent-status-dot.status-running {
@@ -391,8 +391,8 @@ function timeDiff(start, end) {
   font-size: 0.625rem;
   font-weight: 600;
   border-radius: 3px;
-  background: var(--void, #0f172a);
-  color: var(--text-muted, #64748b);
+  background: var(--void, var(--canvas));
+  color: var(--text-muted, var(--faint));
 }
 
 .seed-indicator.seed-complete {
@@ -435,11 +435,11 @@ function timeDiff(start, end) {
   gap: 1rem;
   margin-top: 0.75rem;
   padding-top: 0.5rem;
-  border-top: 1px solid var(--border, #334155);
+  border-top: 1px solid var(--border, var(--surface-2));
 }
 
 .timing-item {
   font-size: 0.6875rem;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, var(--faint));
 }
 </style>

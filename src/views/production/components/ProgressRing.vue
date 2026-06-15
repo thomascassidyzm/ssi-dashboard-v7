@@ -102,14 +102,14 @@ const progressClass = computed(() => {
 .progress-ring-value {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--ink);
   line-height: 1;
 }
 
 .progress-ring-text {
   margin-top: 0.25rem;
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }

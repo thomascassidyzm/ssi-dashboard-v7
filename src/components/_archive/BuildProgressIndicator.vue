@@ -227,7 +227,7 @@ onUnmounted(() => {
   display: flex;
   height: 6px;
   width: 48px;
-  background: #1e293b;
+  background: var(--surface);
   border-radius: 3px;
   overflow: hidden;
   gap: 1px;
@@ -251,12 +251,12 @@ onUnmounted(() => {
 }
 
 .segment.empty {
-  background: #334155;
+  background: var(--surface-2);
 }
 
 .progress-label {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: var(--muted);
   white-space: nowrap;
 }
 </style>
@@ -267,8 +267,8 @@ onUnmounted(() => {
   position: fixed;
   z-index: 10000;
   min-width: 200px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: var(--surface);
+  border: 1px solid var(--surface-2);
   border-radius: 8px;
   padding: 0;
   pointer-events: none;
@@ -280,13 +280,13 @@ onUnmounted(() => {
 
 .build-tooltip .tooltip-header {
   padding: 8px 12px;
-  background: #0f172a;
-  border-bottom: 1px solid #334155;
+  background: var(--canvas);
+  border-bottom: 1px solid var(--surface-2);
   font-weight: 600;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .build-tooltip .tooltip-rows {
@@ -320,30 +320,30 @@ onUnmounted(() => {
 }
 
 .build-tooltip .segment-indicator.empty {
-  background: #334155;
+  background: var(--surface-2);
 }
 
 .build-tooltip .segment-name {
-  color: #e2e8f0;
+  color: var(--ink);
   font-weight: 500;
 }
 
 .build-tooltip .segment-count {
-  color: #94a3b8;
+  color: var(--muted);
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
 .build-tooltip .segment-pct {
-  color: #64748b;
+  color: var(--faint);
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
 .build-tooltip .tooltip-footer {
   padding: 8px 12px;
-  border-top: 1px solid #334155;
-  background: #0f172a;
+  border-top: 1px solid var(--surface-2);
+  background: var(--canvas);
 }
 
 .build-tooltip .status-badge {
@@ -358,7 +358,7 @@ onUnmounted(() => {
 
 .build-tooltip .status-badge.status-empty {
   background: rgba(100, 116, 139, 0.2);
-  color: #64748b;
+  color: var(--faint);
 }
 
 .build-tooltip .status-badge.status-decomposing {

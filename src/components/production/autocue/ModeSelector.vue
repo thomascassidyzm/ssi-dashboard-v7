@@ -95,8 +95,8 @@ function goToPods() {
 }
 
 .mode-card {
-  background: linear-gradient(135deg, var(--color-shadow, #1e293b), var(--color-slate, #334155));
-  border: 2px solid var(--color-graphite, #475569);
+  background: linear-gradient(135deg, var(--color-shadow, var(--surface)), var(--color-slate, var(--surface-2)));
+  border: 2px solid var(--color-graphite, var(--surface-3));
   border-radius: 16px;
   padding: 2rem;
   cursor: pointer;
@@ -118,7 +118,7 @@ function goToPods() {
 }
 
 .mode-card:hover {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   transform: translateY(-4px);
   box-shadow: 0 8px 32px rgba(255, 166, 48, 0.3);
 }
@@ -128,7 +128,7 @@ function goToPods() {
 }
 
 .mode-card.selected {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 40px rgba(255, 166, 48, 0.4);
 }
 
@@ -142,14 +142,14 @@ function goToPods() {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 0.75rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .mode-description {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.95rem;
   line-height: 1.7;
   margin-bottom: 1rem;
@@ -166,14 +166,14 @@ function goToPods() {
   position: relative;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .mode-features li::before {
   content: '▸';
   position: absolute;
   left: 0;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   font-weight: bold;
 }
 

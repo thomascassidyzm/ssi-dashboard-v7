@@ -443,26 +443,26 @@ watch(() => props.courseCode, () => {
 .status-pill {
   padding: 0.4rem 0.875rem;
   border-radius: 16px;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   background: transparent;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
 }
-.status-pill:hover:not(:disabled) { border-color: var(--color-paper-dim, #94a3b8); }
+.status-pill:hover:not(:disabled) { border-color: var(--color-paper-dim, var(--muted)); }
 .status-pill:disabled { opacity: 0.5; cursor: not-allowed; }
-.status-pill.active.testing { background: rgba(148,163,184,0.2); border-color: #94a3b8; color: #94a3b8; }
+.status-pill.active.testing { background: rgba(148,163,184,0.2); border-color: var(--muted); color: var(--muted); }
 .status-pill.active.beta { background: rgba(251,191,36,0.15); border-color: #fbbf24; color: #fbbf24; }
-.status-pill.active.live { background: rgba(52,211,153,0.15); border-color: #34d399; color: #34d399; }
+.status-pill.active.live { background: rgba(52,211,153,0.15); border-color: var(--accent-2); color: var(--accent-2); }
 
 /* Pricing Tier Pills */
 .pricing-pills {
   display: flex;
   gap: 0.5rem;
 }
-.status-pill.pricing-tier.active.free { background: rgba(52,211,153,0.15); border-color: #34d399; color: #34d399; }
+.status-pill.pricing-tier.active.free { background: rgba(52,211,153,0.15); border-color: var(--accent-2); color: var(--accent-2); }
 .status-pill.pricing-tier.active.premium { background: rgba(251,191,36,0.15); border-color: #fbbf24; color: #fbbf24; }
 .status-pill.pricing-tier.active.community { background: rgba(59,130,246,0.15); border-color: #3b82f6; color: #3b82f6; }
 
@@ -482,30 +482,30 @@ watch(() => props.courseCode, () => {
 .mini-value {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 .mini-total {
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
 }
 .mini-label {
   font-size: 0.65rem;
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
   text-transform: uppercase;
   margin-left: 0.125rem;
 }
 
-.mini-stat.primary .mini-value { color: #34d399; }
-.mini-stat.accent .mini-value { color: var(--color-tungsten, #ffa630); }
-.mini-stat.good .mini-value { color: #34d399; }
+.mini-stat.primary .mini-value { color: var(--accent-2); }
+.mini-stat.accent .mini-value { color: var(--color-tungsten, var(--accent)); }
+.mini-stat.good .mini-value { color: var(--accent-2); }
 .mini-stat.ok .mini-value { color: #fbbf24; }
 .mini-stat.low .mini-value { color: #f87171; }
 
 /* Language-Pair Learnings */
 .learnings-section {
   margin-bottom: 1rem;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   overflow: hidden;
 }
@@ -543,7 +543,7 @@ watch(() => props.courseCode, () => {
   flex: 1;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .learnings-toggle {
@@ -552,14 +552,14 @@ watch(() => props.courseCode, () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 1.1rem;
   font-weight: 300;
 }
 
 .learnings-content {
   padding: 0 1rem 1rem;
-  border-top: 1px solid var(--color-graphite, #475569);
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .learning-category {
@@ -589,14 +589,14 @@ watch(() => props.courseCode, () => {
   position: relative;
   padding: 0.25rem 0;
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   line-height: 1.4;
 }
 .learning-item::before {
   content: "•";
   position: absolute;
   left: -0.75rem;
-  color: var(--color-graphite, #475569);
+  color: var(--color-graphite, var(--surface-3));
 }
 
 /* Blockers */
@@ -631,7 +631,7 @@ watch(() => props.courseCode, () => {
 .blocker-text {
   flex: 1;
   font-size: 0.875rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .btn-resolve {
@@ -657,16 +657,16 @@ watch(() => props.courseCode, () => {
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.15s;
 }
 .workflow-card:hover {
-  background: var(--color-graphite, #475569);
-  border-color: var(--color-paper-dim, #64748b);
+  background: var(--color-graphite, var(--surface-3));
+  border-color: var(--color-paper-dim, var(--faint));
 }
 
 .workflow-card.action {
@@ -686,7 +686,7 @@ watch(() => props.courseCode, () => {
   flex-shrink: 0;
 }
 
-.card-icon.journey { background: #34d399; color: #0f172a; }
+.card-icon.journey { background: var(--accent-2); color: var(--canvas); }
 .card-icon.seeds { background: #06b6d4; color: white; }
 .card-icon.text { background: #3b82f6; color: white; }
 .card-icon.script { background: #f59e0b; color: white; }
@@ -695,7 +695,7 @@ watch(() => props.courseCode, () => {
 .card-icon.record { background: #10b981; color: white; }
 .card-icon.pods { background: #a855f7; color: white; }
 .card-icon.listening-config { background: #ec4899; color: white; }
-.card-icon.launch { background: var(--color-graphite, #475569); color: var(--color-tungsten, #ffa630); }
+.card-icon.launch { background: var(--color-graphite, var(--surface-3)); color: var(--color-tungsten, var(--accent)); }
 
 .card-content {
   flex: 1;
@@ -705,13 +705,13 @@ watch(() => props.courseCode, () => {
 .card-content h3 {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 0.125rem;
 }
 
 .card-content p {
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
   margin: 0;
 }
 
@@ -727,7 +727,7 @@ watch(() => props.courseCode, () => {
 }
 
 .card-arrow {
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
   font-size: 1rem;
 }
 
@@ -736,12 +736,12 @@ watch(() => props.courseCode, () => {
   display: flex;
   gap: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-graphite, #334155);
+  border-top: 1px solid var(--color-graphite, var(--surface-2));
 }
 
 .tool-link {
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
   text-decoration: none;
   background: none;
   border: none;
@@ -749,7 +749,7 @@ watch(() => props.courseCode, () => {
   padding: 0;
 }
 .tool-link:hover {
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   text-decoration: underline;
 }
 
@@ -784,7 +784,7 @@ watch(() => props.courseCode, () => {
   width: 14px;
   height: 14px;
   border: 2px solid rgba(255, 166, 48, 0.3);
-  border-top-color: var(--color-tungsten, #ffa630);
+  border-top-color: var(--color-tungsten, var(--accent));
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }

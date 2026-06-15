@@ -73,8 +73,8 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 <style scoped>
 .production-layout {
   min-height: 100vh;
-  background: var(--color-shadow, #1e293b);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-shadow, var(--surface));
+  color: var(--color-paper, var(--ink));
 }
 
 .production-content {
@@ -96,8 +96,8 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 .spinner {
   width: 3rem;
   height: 3rem;
-  border: 3px solid var(--color-graphite, #475569);
-  border-top-color: var(--color-tungsten, #ffa630);
+  border: 3px solid var(--color-graphite, var(--surface-3));
+  border-top-color: var(--color-tungsten, var(--accent));
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -109,7 +109,7 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 .loading-state p,
 .error-state p {
   margin-top: 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .error-icon {
@@ -127,15 +127,15 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 }
 
 .error-state h2 {
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 0.5rem;
 }
 
 .retry-btn {
   margin-top: 1.5rem;
   padding: 0.625rem 1.5rem;
-  background: var(--color-tungsten, #ffa630);
-  color: var(--color-shadow, #1e293b);
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-shadow, var(--surface));
   border: none;
   border-radius: 4px;
   font-weight: 500;
@@ -144,6 +144,6 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 }
 
 .retry-btn:hover {
-  background: var(--color-paper, #f7f7f2);
+  background: var(--color-paper, var(--ink));
 }
 </style>

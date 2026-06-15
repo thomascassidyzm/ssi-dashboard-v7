@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -12,7 +12,7 @@
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">
               Recursive Up-Regulation
             </h1>
-            <p class="text-slate-400">AI Operating System: Self-Learning & Self-Healing</p>
+            <p class="text-muted">AI Operating System: Self-Learning & Self-Healing</p>
           </div>
         </div>
       </div>
@@ -25,14 +25,14 @@
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <!-- Quality Score Card -->
-          <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-2">Quality Score</div>
+          <div class="bg-surface/50 border border-line/20 rounded-lg p-6">
+            <div class="text-sm text-muted mb-2">Quality Score</div>
             <div class="text-3xl font-bold" :class="{
               'text-emerald-400': qualityClass === 'excellent',
               'text-green-400': qualityClass === 'good',
               'text-yellow-400': qualityClass === 'fair',
               'text-red-400': qualityClass === 'poor',
-              'text-slate-500': !latestMetrics
+              'text-faint': !latestMetrics
             }">
               {{ latestMetrics?.quality_score?.toFixed(1) || 'N/A' }}%
             </div>
@@ -42,8 +42,8 @@
           </div>
 
           <!-- FCFS Violations Card -->
-          <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-2">FCFS Violations</div>
+          <div class="bg-surface/50 border border-line/20 rounded-lg p-6">
+            <div class="text-sm text-muted mb-2">FCFS Violations</div>
             <div class="text-3xl font-bold" :class="{
               'text-emerald-400': fcfsClass === 'excellent',
               'text-green-400': fcfsClass === 'good',
@@ -58,23 +58,23 @@
           </div>
 
           <!-- Training Examples Card -->
-          <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-2">Training Examples</div>
+          <div class="bg-surface/50 border border-line/20 rounded-lg p-6">
+            <div class="text-sm text-muted mb-2">Training Examples</div>
             <div class="text-3xl font-bold text-purple-400">
               {{ trainingDatasetSize }}
             </div>
-            <div class="text-sm text-slate-400 mt-2">
+            <div class="text-sm text-muted mt-2">
               {{ baselineExamples }} baseline + {{ correctionsAdded }} corrections
             </div>
           </div>
 
           <!-- Human Intervention Card -->
-          <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-2">Human Intervention</div>
+          <div class="bg-surface/50 border border-line/20 rounded-lg p-6">
+            <div class="text-sm text-muted mb-2">Human Intervention</div>
             <div class="text-3xl font-bold text-blue-400">
               {{ interventionRate?.toFixed(1) || 'N/A' }}%
             </div>
-            <div class="text-sm text-slate-400 mt-2">
+            <div class="text-sm text-muted mt-2">
               Target: Decreasing
             </div>
           </div>
@@ -104,15 +104,15 @@
 
       <!-- Fine-Tuning In Progress -->
       <section v-if="fineTuningInProgress" class="mb-8">
-        <div class="bg-slate-800/50 border border-blue-400/30 rounded-lg p-8">
+        <div class="bg-surface/50 border border-blue-400/30 rounded-lg p-8">
           <div class="flex items-center gap-4 mb-4">
             <div class="animate-spin text-3xl">⚙️</div>
             <div>
               <h3 class="text-2xl font-bold text-blue-400">Fine-Tuning in Progress</h3>
-              <p class="text-slate-400">Generation {{ currentGeneration + 1 }} training via Claude Code</p>
+              <p class="text-muted">Generation {{ currentGeneration + 1 }} training via Claude Code</p>
             </div>
           </div>
-          <div class="text-sm text-slate-400">
+          <div class="text-sm text-muted">
             Status: {{ fineTuningStatus }} • Check Warp terminal for progress
           </div>
         </div>
@@ -121,23 +121,23 @@
       <!-- Prerequisites Checklist -->
       <section v-if="!readyToFineTune" class="mb-8">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Prerequisites</h2>
-        <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
+        <div class="bg-surface/50 border border-line/20 rounded-lg p-6">
           <div class="space-y-3">
             <div class="flex items-center gap-3">
-              <div :class="hasBaseline ? 'text-emerald-400' : 'text-slate-500'">
+              <div :class="hasBaseline ? 'text-emerald-400' : 'text-faint'">
                 {{ hasBaseline ? '✅' : '⬜' }}
               </div>
-              <span class="text-slate-300">Generation 0 baseline measured</span>
+              <span class="text-ink">Generation 0 baseline measured</span>
             </div>
             <div class="flex items-center gap-3">
-              <div :class="hasCorrections ? 'text-emerald-400' : 'text-slate-500'">
+              <div :class="hasCorrections ? 'text-emerald-400' : 'text-faint'">
                 {{ hasCorrections ? '✅' : '⬜' }}
               </div>
-              <span class="text-slate-300">Training data with corrections ready</span>
+              <span class="text-ink">Training data with corrections ready</span>
             </div>
             <div class="flex items-center gap-3">
               <div class="text-emerald-400">✅</div>
-              <span class="text-slate-300">Claude Code configured with API access</span>
+              <span class="text-ink">Claude Code configured with API access</span>
             </div>
           </div>
         </div>
@@ -150,20 +150,20 @@
           <div
             v-for="pattern in selfHealingData"
             :key="pattern.name"
-            class="bg-slate-800/50 border rounded-lg p-6"
+            class="bg-surface/50 border rounded-lg p-6"
             :class="{
               'border-emerald-400/50': pattern.healed,
               'border-yellow-400/50': pattern.gen1_count < pattern.gen0_count && !pattern.healed,
-              'border-slate-400/20': pattern.gen1_count >= pattern.gen0_count
+              'border-line/20': pattern.gen1_count >= pattern.gen0_count
             }">
-            <div class="text-lg font-semibold text-slate-100 mb-3">
+            <div class="text-lg font-semibold text-ink mb-3">
               {{ pattern.name }}
             </div>
             <div class="space-y-2 text-sm">
-              <div class="text-slate-400">
+              <div class="text-muted">
                 Gen 0: <span class="text-red-400">{{ pattern.gen0_count }} violations</span>
               </div>
-              <div class="text-slate-400">
+              <div class="text-muted">
                 Gen 1: <span class="text-emerald-400">{{ pattern.gen1_count }} violations</span>
               </div>
               <div v-if="pattern.healed" class="text-emerald-400 font-semibold mt-3">
@@ -181,23 +181,23 @@
       <section v-if="comparisonData" class="mb-8">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">A/B Comparison Results</h2>
 
-        <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-8 mb-6">
+        <div class="bg-surface/50 border border-line/20 rounded-lg p-8 mb-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <div class="text-sm text-slate-400 mb-2">Quality Improvement</div>
+              <div class="text-sm text-muted mb-2">Quality Improvement</div>
               <div class="text-4xl font-bold text-emerald-400">
                 +{{ comparisonData.improvement?.quality?.improvement?.toFixed(1) }}%
               </div>
-              <div class="text-slate-400 mt-2">
+              <div class="text-muted mt-2">
                 {{ comparisonData.generation_0?.quality }}% → {{ comparisonData.generation_1?.quality }}%
               </div>
             </div>
             <div>
-              <div class="text-sm text-slate-400 mb-2">FCFS Violations Reduced</div>
+              <div class="text-sm text-muted mb-2">FCFS Violations Reduced</div>
               <div class="text-4xl font-bold text-emerald-400">
                 -{{ comparisonData.improvement?.fcfs_violations?.reduction }}
               </div>
-              <div class="text-slate-400 mt-2">
+              <div class="text-muted mt-2">
                 {{ comparisonData.generation_0?.fcfs_violations }} → {{ comparisonData.generation_1?.fcfs_violations }}
               </div>
             </div>
@@ -212,11 +212,11 @@
               v-for="criterion in comparisonData.success_criteria"
               :key="criterion.name"
               class="flex items-center gap-3">
-              <div :class="criterion.met ? 'text-emerald-400' : 'text-slate-500'">
+              <div :class="criterion.met ? 'text-emerald-400' : 'text-faint'">
                 {{ criterion.met ? '✅' : '❌' }}
               </div>
-              <span class="text-slate-300">{{ criterion.name }}</span>
-              <span class="text-slate-500 text-sm ml-auto">
+              <span class="text-ink">{{ criterion.name }}</span>
+              <span class="text-faint text-sm ml-auto">
                 {{ criterion.actual?.toFixed(1) }}
               </span>
             </div>

@@ -217,8 +217,8 @@ function formatTime(seconds) {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
-  border-top: 1px solid #334155;
+  background: linear-gradient(to bottom, var(--canvas) 0%, var(--surface) 100%);
+  border-top: 1px solid var(--surface-2);
   padding: 16px 24px 20px;
   z-index: 100;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
@@ -243,7 +243,7 @@ function formatTime(seconds) {
 
 .now-playing-label {
   font-size: 11px;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -263,7 +263,7 @@ function formatTime(seconds) {
 }
 
 .arrow {
-  color: #64748b;
+  color: var(--faint);
   font-weight: 300;
 }
 
@@ -293,8 +293,8 @@ function formatTime(seconds) {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #334155;
-  border: 2px solid #475569;
+  background: var(--surface-2);
+  border: 2px solid var(--surface-3);
   transition: all 0.3s ease;
 }
 
@@ -314,7 +314,7 @@ function formatTime(seconds) {
 
 .phase-dot.upcoming::before {
   background: transparent;
-  border-color: #475569;
+  border-color: var(--surface-3);
 }
 
 @keyframes pulse {
@@ -328,7 +328,7 @@ function formatTime(seconds) {
 
 .phase-label {
   font-size: 9px;
-  color: #64748b;
+  color: var(--faint);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -356,7 +356,7 @@ function formatTime(seconds) {
 .control-btn {
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: var(--muted);
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
@@ -367,7 +367,7 @@ function formatTime(seconds) {
 }
 
 .control-btn:hover:not(:disabled) {
-  color: #f1f5f9;
+  color: var(--ink);
   background: rgba(148, 163, 184, 0.1);
   transform: scale(1.05);
 }
@@ -419,7 +419,7 @@ function formatTime(seconds) {
   right: 24px;
   width: 36px;
   height: 36px;
-  background: #475569;
+  background: var(--surface-3);
   color: white;
 }
 
@@ -436,7 +436,7 @@ function formatTime(seconds) {
 /* Item Counter */
 .item-counter {
   font-size: 13px;
-  color: #cbd5e1;
+  color: var(--ink);
   font-weight: 500;
   padding: 6px 12px;
   background: rgba(51, 65, 85, 0.5);
@@ -473,7 +473,7 @@ function formatTime(seconds) {
 
 .timeline-bar {
   height: 8px;
-  background: #334155;
+  background: var(--surface-2);
   border-radius: 4px;
   cursor: pointer;
   position: relative;
@@ -516,7 +516,7 @@ function formatTime(seconds) {
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: #64748b;
+  color: var(--faint);
   font-variant-numeric: tabular-nums;
 }
 

@@ -1,17 +1,17 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8 flex items-center justify-between">
         <div>
           <h1 class="text-4xl font-bold text-emerald-400 mb-2">Introductions Editor</h1>
-          <p class="text-slate-400">Edit LEGO introduction presentations</p>
+          <p class="text-muted">Edit LEGO introduction presentations</p>
         </div>
         <div class="flex gap-3">
           <button
             @click="recompileManifest"
             :disabled="!selectedCourseCode || recompilingManifest"
-            class="bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
+            class="bg-purple-600 hover:bg-purple-500 disabled:bg-surface-2 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
           >
             {{ recompilingManifest ? 'Recompiling...' : 'Recompile Manifest' }}
           </button>
@@ -19,12 +19,12 @@
       </div>
 
       <!-- Course Selector -->
-      <div class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-4">
-        <label class="block text-sm font-medium text-slate-300 mb-2">Select Course</label>
+      <div class="mb-6 bg-surface border border-line rounded-lg p-4">
+        <label class="block text-sm font-medium text-ink mb-2">Select Course</label>
         <select
           v-model="selectedCourseCode"
           @change="loadIntroductions"
-          class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-slate-100"
+          class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink"
         >
           <option value="">-- Select a course --</option>
           <option v-for="course in availableCourses" :key="course" :value="course">
@@ -35,60 +35,60 @@
 
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
-        <div class="text-slate-400">Loading introductions...</div>
+        <div class="text-muted">Loading introductions...</div>
       </div>
 
       <!-- Error State -->
       <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
         <h3 class="text-red-400 font-semibold mb-2">Error Loading Introductions</h3>
-        <p class="text-slate-300">{{ error }}</p>
+        <p class="text-ink">{{ error }}</p>
       </div>
 
       <!-- Introductions List -->
       <div v-else-if="introductionsList.length > 0">
         <!-- Search/Filter -->
-        <div class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-4">
-          <label class="block text-sm font-medium text-slate-300 mb-2">Search</label>
+        <div class="mb-6 bg-surface border border-line rounded-lg p-4">
+          <label class="block text-sm font-medium text-ink mb-2">Search</label>
           <input
             v-model="searchQuery"
             type="text"
             placeholder="Search by LEGO ID or introduction text..."
-            class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-slate-100"
+            class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink"
           />
         </div>
 
         <!-- Stats -->
         <div class="mb-6 grid grid-cols-3 gap-4">
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-            <div class="text-slate-400 text-sm mb-1">Total Introductions</div>
+          <div class="bg-surface border border-line rounded-lg p-4">
+            <div class="text-muted text-sm mb-1">Total Introductions</div>
             <div class="text-2xl font-bold text-emerald-400">{{ introductionsList.length }}</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-            <div class="text-slate-400 text-sm mb-1">Filtered Results</div>
+          <div class="bg-surface border border-line rounded-lg p-4">
+            <div class="text-muted text-sm mb-1">Filtered Results</div>
             <div class="text-2xl font-bold text-emerald-400">{{ filteredIntroductions.length }}</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-            <div class="text-slate-400 text-sm mb-1">Modified</div>
+          <div class="bg-surface border border-line rounded-lg p-4">
+            <div class="text-muted text-sm mb-1">Modified</div>
             <div class="text-2xl font-bold text-yellow-400">{{ modifiedCount }}</div>
           </div>
         </div>
 
         <!-- Introductions Table -->
-        <div class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
+        <div class="bg-surface border border-line rounded-lg overflow-hidden">
           <div class="overflow-x-auto max-h-[600px] overflow-y-auto">
             <table class="w-full">
-              <thead class="bg-slate-900 sticky top-0">
+              <thead class="bg-canvas sticky top-0">
                 <tr>
-                  <th class="text-left px-4 py-3 text-slate-300 font-medium">LEGO ID</th>
-                  <th class="text-left px-4 py-3 text-slate-300 font-medium">Introduction Text</th>
-                  <th class="px-4 py-3 text-slate-300 font-medium w-32">Actions</th>
+                  <th class="text-left px-4 py-3 text-ink font-medium">LEGO ID</th>
+                  <th class="text-left px-4 py-3 text-ink font-medium">Introduction Text</th>
+                  <th class="px-4 py-3 text-ink font-medium w-32">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr
                   v-for="intro in filteredIntroductions"
                   :key="intro.id"
-                  class="border-t border-slate-700 hover:bg-slate-700/50"
+                  class="border-t border-line hover:bg-surface-2/50"
                   :class="{ 'bg-yellow-900/20': intro.modified }"
                 >
                   <td class="px-4 py-3">
@@ -98,7 +98,7 @@
                     <div v-if="editingId === intro.id">
                       <textarea
                         v-model="editText"
-                        class="w-full bg-slate-900 border border-emerald-500 rounded px-3 py-2 text-slate-100 font-mono text-sm min-h-[80px]"
+                        class="w-full bg-canvas border border-emerald-500 rounded px-3 py-2 text-ink font-mono text-sm min-h-[80px]"
                         @keydown.ctrl.enter="saveEdit(intro.id)"
                         @keydown.meta.enter="saveEdit(intro.id)"
                         @keydown.escape="cancelEdit"
@@ -112,13 +112,13 @@
                         </button>
                         <button
                           @click="cancelEdit"
-                          class="bg-slate-600 hover:bg-slate-500 text-white px-3 py-1 rounded text-sm"
+                          class="bg-surface-3 hover:bg-surface-3 text-ink px-3 py-1 rounded text-sm"
                         >
                           Cancel (Esc)
                         </button>
                       </div>
                     </div>
-                    <div v-else class="font-mono text-sm text-slate-300">
+                    <div v-else class="font-mono text-sm text-ink">
                       {{ intro.text }}
                     </div>
                   </td>
@@ -142,19 +142,19 @@
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-yellow-400 font-semibold mb-1">Unsaved Changes</h3>
-              <p class="text-slate-300 text-sm">You have {{ modifiedCount }} modified introduction(s)</p>
+              <p class="text-ink text-sm">You have {{ modifiedCount }} modified introduction(s)</p>
             </div>
             <div class="flex gap-3">
               <button
                 @click="discardChanges"
-                class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded-lg transition-colors"
+                class="bg-surface-2 hover:bg-surface-3 text-ink px-6 py-2 rounded-lg transition-colors"
               >
                 Discard Changes
               </button>
               <button
                 @click="saveAllChanges"
                 :disabled="saving"
-                class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
+                class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
               >
                 {{ saving ? 'Saving...' : 'Save All Changes' }}
               </button>
@@ -164,7 +164,7 @@
       </div>
 
       <!-- Empty State -->
-      <div v-else class="text-center py-12 text-slate-400">
+      <div v-else class="text-center py-12 text-muted">
         Select a course to view introductions
       </div>
     </div>

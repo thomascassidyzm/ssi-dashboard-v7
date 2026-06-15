@@ -119,8 +119,8 @@ const emit = defineEmits<{
 
 <style scoped>
 .recording-controls {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 12px;
   padding: 2rem;
   display: flex;
@@ -182,7 +182,7 @@ const emit = defineEmits<{
 }
 
 .record-btn.paused {
-  background: var(--color-tungsten, #ffa630);
+  background: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 20px rgba(255, 166, 48, 0.3);
 }
 
@@ -196,17 +196,17 @@ const emit = defineEmits<{
 }
 
 .stop-btn {
-  background: var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
 }
 
 .stop-btn:hover {
-  background: var(--color-slate, #334155);
+  background: var(--color-slate, var(--surface-2));
 }
 
 .play-btn {
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
 }
 
 .play-btn:hover {
@@ -215,19 +215,19 @@ const emit = defineEmits<{
 }
 
 .re-record-btn {
-  background: var(--color-slate, #334155);
-  color: var(--color-paper-dim, #c1c1bb);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  color: var(--color-paper-dim, var(--muted));
+  border: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .re-record-btn:hover {
-  background: var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
 }
 
 .upload-btn {
-  background: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0f172a);
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
   box-shadow: 0 0 20px rgba(255, 166, 48, 0.3);
 }
 
@@ -266,21 +266,21 @@ const emit = defineEmits<{
   align-items: center;
   gap: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-graphite, #475569);
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
   flex-wrap: wrap;
 }
 
 .hint {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 kbd {
   display: inline-block;
   padding: 0.25rem 0.5rem;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 4px;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;

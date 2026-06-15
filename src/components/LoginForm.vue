@@ -20,7 +20,7 @@
       <button
         @click="goToAuth"
         :disabled="loading || !email"
-        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-ink py-3 rounded-lg font-semibold transition-colors"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
       >
         <span v-if="loading">Sending code...</span>
         <span v-else>Send Login Code</span>
@@ -61,7 +61,7 @@
       <button
         @click="handlePasswordLogin"
         :disabled="loading || !password"
-        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-ink py-3 rounded-lg font-semibold transition-colors"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
       >
         <span v-if="loading">Signing in...</span>
         <span v-else>Sign In</span>
@@ -111,7 +111,7 @@
       <button
         @click="handleVerifyOTP"
         :disabled="loading || code.length < 6"
-        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-ink py-3 rounded-lg font-semibold transition-colors"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
       >
         <span v-if="loading">Verifying...</span>
         <span v-else>Sign In</span>
@@ -168,7 +168,7 @@
       <button
         @click="handleRedeemCode"
         :disabled="redeemLoading || inviteCode.length < 4"
-        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-ink py-3 rounded-lg font-semibold transition-colors"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
       >
         <span v-if="redeemLoading">Redeeming...</span>
         <span v-else>Redeem Code</span>

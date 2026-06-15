@@ -238,11 +238,11 @@ onUnmounted(() => {
 .seed-progress-grid {
   --void: #0a0f1a;
   --surface: #111827;
-  --elevated: #1e293b;
-  --border: #334155;
-  --text-dim: #64748b;
-  --text-muted: #94a3b8;
-  --text-bright: #e2e8f0;
+  --elevated: var(--surface);
+  --border: var(--surface-2);
+  --text-dim: var(--faint);
+  --text-muted: var(--muted);
+  --text-bright: var(--ink);
 
   /* Phase Colors */
   --p1: #3b82f6;
@@ -252,8 +252,8 @@ onUnmounted(() => {
   --p3: #10b981;
   --p3-dim: rgba(16, 185, 129, 0.15);
 
-  --pending: #1e293b;
-  --pending-border: #334155;
+  --pending: var(--surface);
+  --pending-border: var(--surface-2);
 
   position: relative;
   background: var(--void);

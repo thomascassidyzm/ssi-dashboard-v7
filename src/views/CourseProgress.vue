@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100">
+  <div class="min-h-screen bg-canvas text-ink">
     <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
+    <header class="bg-surface/50 border-b border-line/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex items-center justify-between">
           <div>
@@ -11,7 +11,7 @@
             <h1 class="text-3xl font-bold text-emerald-400">
               Course Progress: {{ courseCode }}
             </h1>
-            <p class="mt-2 text-slate-400" v-if="progress">
+            <p class="mt-2 text-muted" v-if="progress">
               Status: <span :class="statusColor">{{ progress.overallStatus }}</span>
             </p>
           </div>
@@ -24,10 +24,10 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
       <!-- Loading State -->
-      <div v-if="loading && !progress" class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8 text-center">
+      <div v-if="loading && !progress" class="bg-surface/50 rounded-lg border border-line/20 p-8 text-center">
         <div class="animate-pulse">
           <div class="text-4xl mb-4">⏳</div>
-          <p class="text-slate-300">Loading progress...</p>
+          <p class="text-ink">Loading progress...</p>
         </div>
       </div>
 
@@ -64,7 +64,7 @@
         />
 
         <!-- Completion Card (shown when complete) -->
-        <div v-if="progress.overallStatus === 'complete'" class="bg-slate-800/50 rounded-lg border border-emerald-500/30 p-8">
+        <div v-if="progress.overallStatus === 'complete'" class="bg-surface/50 rounded-lg border border-emerald-500/30 p-8">
           <div class="flex items-center gap-4 mb-4">
             <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
               <svg class="w-6 h-6 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
@@ -73,7 +73,7 @@
             </div>
             <div>
               <h2 class="text-2xl font-semibold text-emerald-400">Course Ready!</h2>
-              <p class="text-slate-400">{{ courseCode }} generated successfully</p>
+              <p class="text-muted">{{ courseCode }} generated successfully</p>
             </div>
           </div>
           <router-link
@@ -89,7 +89,7 @@
 
         <!-- Technical Details (collapsible) -->
         <details class="group" open>
-          <summary class="cursor-pointer text-slate-400 hover:text-slate-300 text-sm mb-4 flex items-center gap-2">
+          <summary class="cursor-pointer text-muted hover:text-ink text-sm mb-4 flex items-center gap-2">
             <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
@@ -132,16 +132,16 @@
         </div>
 
         <!-- Live Logs -->
-        <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
-          <h2 class="text-xl font-semibold text-slate-100 mb-4">Live Logs</h2>
-          <div class="bg-slate-900/80 rounded p-4 font-mono text-sm max-h-96 overflow-y-auto">
+        <div class="bg-surface/50 rounded-lg border border-line/20 p-6">
+          <h2 class="text-xl font-semibold text-ink mb-4">Live Logs</h2>
+          <div class="bg-canvas/80 rounded p-4 font-mono text-sm max-h-96 overflow-y-auto">
             <div v-if="progress.recentLogs && progress.recentLogs.length > 0" class="space-y-1">
               <div v-for="(log, index) in progress.recentLogs" :key="index" class="flex gap-3">
-                <span class="text-slate-500">{{ formatLogTime(log.time) }}</span>
+                <span class="text-faint">{{ formatLogTime(log.time) }}</span>
                 <span :class="logLevelColor(log.level)">{{ log.message }}</span>
               </div>
             </div>
-            <div v-else class="text-slate-500 text-center py-8">
+            <div v-else class="text-faint text-center py-8">
               No logs yet...
             </div>
           </div>
@@ -178,8 +178,8 @@ const statusColor = computed(() => {
     'running': 'text-emerald-400',
     'complete': 'text-green-400',
     'error': 'text-red-400',
-    'idle': 'text-slate-400'
-  }[status] || 'text-slate-400'
+    'idle': 'text-muted'
+  }[status] || 'text-muted'
 })
 
 const statusBadgeClass = computed(() => {
@@ -189,8 +189,8 @@ const statusBadgeClass = computed(() => {
     'running': 'bg-emerald-600 text-white',
     'complete': 'bg-green-600 text-white',
     'error': 'bg-red-600 text-white',
-    'idle': 'bg-slate-600 text-white'
-  }[status] || 'bg-slate-600 text-white'
+    'idle': 'bg-surface-3 text-ink'
+  }[status] || 'bg-surface-3 text-ink'
 })
 
 // For PipelineProgress component
@@ -271,10 +271,10 @@ function formatLogTime(isoString) {
 // Log level color
 function logLevelColor(level) {
   return {
-    'info': 'text-slate-300',
+    'info': 'text-ink',
     'warning': 'text-yellow-400',
     'error': 'text-red-400'
-  }[level] || 'text-slate-300'
+  }[level] || 'text-ink'
 }
 
 // Lifecycle
@@ -324,7 +324,7 @@ const PhaseCard = defineComponent({
         teal: 'border-teal-500',
         emerald: 'border-emerald-500'
       }
-      return colors[this.color] || 'border-slate-500'
+      return colors[this.color] || 'border-line'
     },
     bgColor() {
       const colors = {
@@ -334,7 +334,7 @@ const PhaseCard = defineComponent({
         teal: 'bg-teal-500/10',
         emerald: 'bg-emerald-500/10'
       }
-      return colors[this.color] || 'bg-slate-500/10'
+      return colors[this.color] || 'bg-surface-3/10'
     }
   },
   template: `
@@ -342,15 +342,15 @@ const PhaseCard = defineComponent({
       <div class="flex items-center justify-between mb-3">
         <div>
           <div class="text-2xl font-bold">{{ phase }}</div>
-          <div class="text-sm text-slate-400">{{ title }}</div>
+          <div class="text-sm text-muted">{{ title }}</div>
         </div>
         <div class="text-3xl">{{ statusIcon }}</div>
       </div>
 
       <div class="text-sm">
-        <div class="text-slate-300 font-semibold mb-2">{{ statusText }}</div>
+        <div class="text-ink font-semibold mb-2">{{ statusText }}</div>
 
-        <div v-if="data && data.status === 'complete'" class="space-y-1 text-xs text-slate-400">
+        <div v-if="data && data.status === 'complete'" class="space-y-1 text-xs text-muted">
           <div v-if="data.seedsComplete">Seeds: {{ data.seedsComplete }}</div>
           <div v-if="data.legoCount">LEGOs: {{ data.legoCount }}</div>
           <div v-if="data.introCount">Intros: {{ data.introCount }}</div>

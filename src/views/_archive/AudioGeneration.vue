@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -9,21 +9,21 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Audio Generation</h1>
-            <p class="text-slate-400">Generate TTS audio for all course content with customizable parameters</p>
+            <p class="text-muted">Generate TTS audio for all course content with customizable parameters</p>
           </div>
         </div>
       </div>
 
       <!-- Course Selection -->
-      <div class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-6">
-        <h2 class="text-xl font-semibold text-slate-200 mb-4">Select Course</h2>
+      <div class="mb-6 bg-surface border border-line rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-ink mb-4">Select Course</h2>
         <div class="flex gap-4 items-end">
           <div class="flex-1">
-            <label class="block text-sm text-slate-400 mb-2">Course Code</label>
+            <label class="block text-sm text-muted mb-2">Course Code</label>
             <select
               v-model="selectedCourse"
               @change="loadCourseManifest"
-              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              class="w-full bg-surface-2 text-ink p-3 rounded border border-line focus:border-emerald-500 focus:outline-none"
             >
               <option value="">Select a course...</option>
               <option v-for="course in availableCourses" :key="course" :value="course">
@@ -35,7 +35,7 @@
             v-if="selectedCourse"
             @click="loadCourseManifest"
             :disabled="loadingManifest"
-            class="bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 text-white px-6 py-3 rounded transition-colors"
+            class="bg-blue-600 hover:bg-blue-500 disabled:bg-surface-2 text-white px-6 py-3 rounded transition-colors"
           >
             {{ loadingManifest ? 'Loading...' : 'Load Manifest' }}
           </button>
@@ -43,23 +43,23 @@
       </div>
 
       <!-- Course Manifest Stats -->
-      <div v-if="manifest" class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-6">
+      <div v-if="manifest" class="mb-6 bg-surface border border-line rounded-lg p-6">
         <h2 class="text-xl font-semibold text-emerald-400 mb-4">Course Manifest Statistics</h2>
         <div class="grid grid-cols-4 gap-4">
-          <div class="bg-slate-900/50 rounded p-4">
-            <div class="text-sm text-slate-400 mb-1">Slices</div>
+          <div class="bg-canvas/50 rounded p-4">
+            <div class="text-sm text-muted mb-1">Slices</div>
             <div class="text-2xl font-bold text-emerald-400">{{ manifest.slices?.length || 0 }}</div>
           </div>
-          <div class="bg-slate-900/50 rounded p-4">
-            <div class="text-sm text-slate-400 mb-1">Seeds</div>
+          <div class="bg-canvas/50 rounded p-4">
+            <div class="text-sm text-muted mb-1">Seeds</div>
             <div class="text-2xl font-bold text-emerald-400">{{ totalSeeds }}</div>
           </div>
-          <div class="bg-slate-900/50 rounded p-4">
-            <div class="text-sm text-slate-400 mb-1">Unique Phrases</div>
+          <div class="bg-canvas/50 rounded p-4">
+            <div class="text-sm text-muted mb-1">Unique Phrases</div>
             <div class="text-2xl font-bold text-emerald-400">{{ uniquePhrases }}</div>
           </div>
-          <div class="bg-slate-900/50 rounded p-4">
-            <div class="text-sm text-slate-400 mb-1">Total Audio Files</div>
+          <div class="bg-canvas/50 rounded p-4">
+            <div class="text-sm text-muted mb-1">Total Audio Files</div>
             <div class="text-2xl font-bold text-emerald-400">{{ totalAudioFiles }}</div>
           </div>
         </div>
@@ -69,7 +69,7 @@
           <button
             @click="checkS3Status"
             :disabled="checkingS3"
-            class="bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 text-white px-6 py-3 rounded transition-colors"
+            class="bg-blue-600 hover:bg-blue-500 disabled:bg-surface-2 text-white px-6 py-3 rounded transition-colors"
           >
             {{ checkingS3 ? 'Checking S3...' : 'Check Audio Status in S3' }}
           </button>
@@ -103,12 +103,12 @@
       />
 
       <!-- TTS Service Configuration (Legacy - will be replaced by VoiceConfiguration) -->
-      <div v-if="manifest && !useNewVoiceConfig" class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-6">
+      <div v-if="manifest && !useNewVoiceConfig" class="mb-6 bg-surface border border-line rounded-lg p-6">
         <h2 class="text-xl font-semibold text-emerald-400 mb-4">TTS Service Configuration (Legacy)</h2>
 
         <!-- Service Provider Selection -->
         <div class="mb-6">
-          <label class="block text-sm text-slate-400 mb-2">TTS Provider</label>
+          <label class="block text-sm text-muted mb-2">TTS Provider</label>
           <div class="flex gap-4">
             <button
               @click="config.ttsProvider = 'elevenlabs'"
@@ -116,7 +116,7 @@
                 'px-6 py-3 rounded border-2 transition-colors',
                 config.ttsProvider === 'elevenlabs'
                   ? 'border-emerald-500 bg-emerald-500/20 text-emerald-400'
-                  : 'border-slate-600 bg-slate-700 text-slate-300 hover:border-slate-500'
+                  : 'border-line bg-surface-2 text-ink hover:border-line'
               ]"
             >
               ElevenLabs
@@ -127,7 +127,7 @@
                 'px-6 py-3 rounded border-2 transition-colors',
                 config.ttsProvider === 'azure'
                   ? 'border-emerald-500 bg-emerald-500/20 text-emerald-400'
-                  : 'border-slate-600 bg-slate-700 text-slate-300 hover:border-slate-500'
+                  : 'border-line bg-surface-2 text-ink hover:border-line'
               ]"
             >
               Azure TTS
@@ -138,40 +138,40 @@
         <!-- ElevenLabs Configuration -->
         <div v-if="config.ttsProvider === 'elevenlabs'" class="space-y-4">
           <div>
-            <label class="block text-sm text-slate-400 mb-2">ElevenLabs API Key</label>
+            <label class="block text-sm text-muted mb-2">ElevenLabs API Key</label>
             <input
               v-model="config.elevenlabs.apiKey"
               type="password"
               placeholder="Enter your ElevenLabs API key"
-              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              class="w-full bg-surface-2 text-ink p-3 rounded border border-line focus:border-emerald-500 focus:outline-none"
             />
           </div>
 
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Voice Mapping ({{ manifest.target }} → {{ manifest.known }})</label>
+            <label class="block text-sm text-muted mb-2">Voice Mapping ({{ manifest.target }} → {{ manifest.known }})</label>
             <div class="space-y-3">
               <div class="flex gap-4 items-center">
-                <div class="w-32 text-slate-300">target1 ({{ manifest.target }})</div>
+                <div class="w-32 text-ink">target1 ({{ manifest.target }})</div>
                 <input
                   v-model="config.elevenlabs.voiceMapping.target1"
                   placeholder="Voice ID for primary target voice"
-                  class="flex-1 bg-slate-700 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="flex-1 bg-surface-2 text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 />
               </div>
               <div class="flex gap-4 items-center">
-                <div class="w-32 text-slate-300">target2 ({{ manifest.target }})</div>
+                <div class="w-32 text-ink">target2 ({{ manifest.target }})</div>
                 <input
                   v-model="config.elevenlabs.voiceMapping.target2"
                   placeholder="Voice ID for alternate target voice"
-                  class="flex-1 bg-slate-700 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="flex-1 bg-surface-2 text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 />
               </div>
               <div class="flex gap-4 items-center">
-                <div class="w-32 text-slate-300">source ({{ manifest.known }})</div>
+                <div class="w-32 text-ink">source ({{ manifest.known }})</div>
                 <input
                   v-model="config.elevenlabs.voiceMapping.source"
                   placeholder="Voice ID for known language voice"
-                  class="flex-1 bg-slate-700 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="flex-1 bg-surface-2 text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -179,25 +179,25 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm text-slate-400 mb-2">Stability (0-1)</label>
+              <label class="block text-sm text-muted mb-2">Stability (0-1)</label>
               <input
                 v-model.number="config.elevenlabs.stability"
                 type="number"
                 min="0"
                 max="1"
                 step="0.1"
-                class="w-full bg-slate-700 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                class="w-full bg-surface-2 text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
               />
             </div>
             <div>
-              <label class="block text-sm text-slate-400 mb-2">Similarity Boost (0-1)</label>
+              <label class="block text-sm text-muted mb-2">Similarity Boost (0-1)</label>
               <input
                 v-model.number="config.elevenlabs.similarityBoost"
                 type="number"
                 min="0"
                 max="1"
                 step="0.1"
-                class="w-full bg-slate-700 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                class="w-full bg-surface-2 text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
               />
             </div>
           </div>
@@ -206,49 +206,49 @@
         <!-- Azure TTS Configuration -->
         <div v-else-if="config.ttsProvider === 'azure'" class="space-y-4">
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Azure Speech Key</label>
+            <label class="block text-sm text-muted mb-2">Azure Speech Key</label>
             <input
               v-model="config.azure.subscriptionKey"
               type="password"
               placeholder="Enter your Azure Speech subscription key"
-              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              class="w-full bg-surface-2 text-ink p-3 rounded border border-line focus:border-emerald-500 focus:outline-none"
             />
           </div>
 
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Azure Region</label>
+            <label class="block text-sm text-muted mb-2">Azure Region</label>
             <input
               v-model="config.azure.region"
               placeholder="e.g., eastus"
-              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              class="w-full bg-surface-2 text-ink p-3 rounded border border-line focus:border-emerald-500 focus:outline-none"
             />
           </div>
 
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Voice Mapping ({{ manifest.target }} → {{ manifest.known }})</label>
+            <label class="block text-sm text-muted mb-2">Voice Mapping ({{ manifest.target }} → {{ manifest.known }})</label>
             <div class="space-y-3">
               <div class="flex gap-4 items-center">
-                <div class="w-32 text-slate-300">target1 ({{ manifest.target }})</div>
+                <div class="w-32 text-ink">target1 ({{ manifest.target }})</div>
                 <input
                   v-model="config.azure.voiceMapping.target1"
                   placeholder="Voice name (e.g., it-IT-IsabellaNeural)"
-                  class="flex-1 bg-slate-700 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="flex-1 bg-surface-2 text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 />
               </div>
               <div class="flex gap-4 items-center">
-                <div class="w-32 text-slate-300">target2 ({{ manifest.target }})</div>
+                <div class="w-32 text-ink">target2 ({{ manifest.target }})</div>
                 <input
                   v-model="config.azure.voiceMapping.target2"
                   placeholder="Voice name (e.g., it-IT-DiegoNeural)"
-                  class="flex-1 bg-slate-700 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="flex-1 bg-surface-2 text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 />
               </div>
               <div class="flex gap-4 items-center">
-                <div class="w-32 text-slate-300">source ({{ manifest.known }})</div>
+                <div class="w-32 text-ink">source ({{ manifest.known }})</div>
                 <input
                   v-model="config.azure.voiceMapping.source"
                   placeholder="Voice name (e.g., en-US-JennyNeural)"
-                  class="flex-1 bg-slate-700 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                  class="flex-1 bg-surface-2 text-ink p-2 rounded border border-line focus:border-emerald-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -257,53 +257,53 @@
       </div>
 
       <!-- Generation Parameters -->
-      <div v-if="manifest" class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-6">
+      <div v-if="manifest" class="mb-6 bg-surface border border-line rounded-lg p-6">
         <h2 class="text-xl font-semibold text-emerald-400 mb-4">Generation Parameters</h2>
 
         <div class="grid grid-cols-3 gap-6">
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Batch Size</label>
+            <label class="block text-sm text-muted mb-2">Batch Size</label>
             <input
               v-model.number="config.batchSize"
               type="number"
               min="1"
               max="100"
-              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              class="w-full bg-surface-2 text-ink p-3 rounded border border-line focus:border-emerald-500 focus:outline-none"
             />
-            <p class="text-xs text-slate-500 mt-1">Files to generate per batch</p>
+            <p class="text-xs text-faint mt-1">Files to generate per batch</p>
           </div>
 
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Concurrency</label>
+            <label class="block text-sm text-muted mb-2">Concurrency</label>
             <input
               v-model.number="config.concurrency"
               type="number"
               min="1"
               max="10"
-              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              class="w-full bg-surface-2 text-ink p-3 rounded border border-line focus:border-emerald-500 focus:outline-none"
             />
-            <p class="text-xs text-slate-500 mt-1">Parallel TTS requests</p>
+            <p class="text-xs text-faint mt-1">Parallel TTS requests</p>
           </div>
 
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Max Retries</label>
+            <label class="block text-sm text-muted mb-2">Max Retries</label>
             <input
               v-model.number="config.maxRetries"
               type="number"
               min="0"
               max="5"
-              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+              class="w-full bg-surface-2 text-ink p-3 rounded border border-line focus:border-emerald-500 focus:outline-none"
             />
-            <p class="text-xs text-slate-500 mt-1">Retry failed generations</p>
+            <p class="text-xs text-faint mt-1">Retry failed generations</p>
           </div>
         </div>
 
         <div class="mt-4">
-          <label class="flex items-center gap-2 text-slate-300">
+          <label class="flex items-center gap-2 text-ink">
             <input
               v-model="config.skipExisting"
               type="checkbox"
-              class="w-5 h-5 rounded bg-slate-700 border-slate-600"
+              class="w-5 h-5 rounded bg-surface-2 border-line"
             />
             <span>Skip existing files in S3 (only generate missing)</span>
           </label>
@@ -311,16 +311,16 @@
       </div>
 
       <!-- Regenerate by Role (v13) -->
-      <div v-if="selectedCourse" class="mb-6 bg-slate-800 border border-amber-500/30 rounded-lg p-6">
+      <div v-if="selectedCourse" class="mb-6 bg-surface border border-amber-500/30 rounded-lg p-6">
         <h2 class="text-xl font-semibold text-amber-400 mb-4">Regenerate Audio by Role</h2>
-        <p class="text-slate-400 mb-4">Regenerate all audio for a specific role using the configured voice. This will replace existing audio files.</p>
+        <p class="text-muted mb-4">Regenerate all audio for a specific role using the configured voice. This will replace existing audio files.</p>
 
         <div class="flex gap-4 items-end">
           <div class="flex-1">
-            <label class="block text-sm text-slate-400 mb-2">Select Role</label>
+            <label class="block text-sm text-muted mb-2">Select Role</label>
             <select
               v-model="regenerateRole"
-              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-amber-500 focus:outline-none"
+              class="w-full bg-surface-2 text-ink p-3 rounded border border-line focus:border-amber-500 focus:outline-none"
             >
               <option value="">Select a role...</option>
               <option value="presentation">Presentation (LEGO introductions)</option>
@@ -335,7 +335,7 @@
           <button
             @click="previewRegenerateRole"
             :disabled="!regenerateRole || regeneratingRole"
-            class="bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 text-white px-6 py-3 rounded transition-colors"
+            class="bg-blue-600 hover:bg-blue-500 disabled:bg-surface-2 text-white px-6 py-3 rounded transition-colors"
           >
             Preview
           </button>
@@ -343,25 +343,25 @@
           <button
             @click="executeRegenerateRole"
             :disabled="!regenerateRole || regeneratingRole"
-            class="bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 text-white px-6 py-3 rounded transition-colors"
+            class="bg-amber-600 hover:bg-amber-500 disabled:bg-surface-2 text-white px-6 py-3 rounded transition-colors"
           >
             {{ regeneratingRole ? 'Regenerating...' : 'Regenerate' }}
           </button>
         </div>
 
         <!-- Preview/Result -->
-        <div v-if="regeneratePreview" class="mt-4 bg-slate-900/50 rounded p-4">
+        <div v-if="regeneratePreview" class="mt-4 bg-canvas/50 rounded p-4">
           <div class="flex justify-between items-center mb-2">
             <span class="text-amber-400 font-semibold">{{ regeneratePreview.dryRun ? 'Preview' : 'Result' }}</span>
-            <span class="text-slate-400">{{ regeneratePreview.count || regeneratePreview.total }} items</span>
+            <span class="text-muted">{{ regeneratePreview.count || regeneratePreview.total }} items</span>
           </div>
-          <div class="text-sm text-slate-300">
+          <div class="text-sm text-ink">
             <div>Voice: <span class="font-mono text-amber-300">{{ regeneratePreview.voiceId }}</span></div>
             <div>Language: <span class="font-mono">{{ regeneratePreview.language }}</span></div>
           </div>
           <div v-if="regeneratePreview.sample" class="mt-2">
-            <div class="text-xs text-slate-500 mb-1">Sample texts:</div>
-            <div v-for="(s, idx) in regeneratePreview.sample" :key="idx" class="text-xs text-slate-400 truncate">
+            <div class="text-xs text-faint mb-1">Sample texts:</div>
+            <div v-for="(s, idx) in regeneratePreview.sample" :key="idx" class="text-xs text-muted truncate">
               {{ s.text }}...
             </div>
           </div>
@@ -377,7 +377,7 @@
           <button
             @click="startGeneration"
             :disabled="generating || !isConfigValid"
-            class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white px-8 py-4 rounded-lg transition-colors font-semibold text-lg"
+            class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white px-8 py-4 rounded-lg transition-colors font-semibold text-lg"
           >
             {{ generating ? 'Generating...' : `Generate Audio (${s3Status?.missing || totalAudioFiles} files)` }}
           </button>
@@ -399,27 +399,27 @@
       <!-- Generation Progress -->
       <div
         v-if="generationProgress.active"
-        class="mb-6 bg-slate-800 border border-emerald-500/30 rounded-lg p-6"
+        class="mb-6 bg-surface border border-emerald-500/30 rounded-lg p-6"
       >
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-xl font-semibold text-emerald-400">Audio Generation Progress</h3>
-          <span class="text-slate-400">{{ generationProgress.completed }} / {{ generationProgress.total }}</span>
+          <span class="text-muted">{{ generationProgress.completed }} / {{ generationProgress.total }}</span>
         </div>
 
         <div class="mb-4">
-          <div class="w-full bg-slate-700 rounded-full h-4">
+          <div class="w-full bg-surface-2 rounded-full h-4">
             <div
               class="bg-emerald-500 h-4 rounded-full transition-all duration-300"
               :style="{ width: generationProgress.progress + '%' }"
             ></div>
           </div>
-          <div class="text-sm text-slate-400 mt-2">
+          <div class="text-sm text-muted mt-2">
             {{ generationProgress.progress.toFixed(1) }}% complete
           </div>
         </div>
 
-        <div v-if="generationProgress.currentFile" class="text-sm text-slate-400 mb-2">
-          Currently generating: <span class="text-slate-300 font-mono">{{ generationProgress.currentFile }}</span>
+        <div v-if="generationProgress.currentFile" class="text-sm text-muted mb-2">
+          Currently generating: <span class="text-ink font-mono">{{ generationProgress.currentFile }}</span>
         </div>
 
         <div v-if="generationProgress.errors.length > 0" class="mt-4">
@@ -440,20 +440,20 @@
         </div>
 
         <div class="grid grid-cols-4 gap-4 mt-4 text-sm">
-          <div class="bg-slate-900/50 rounded p-3">
-            <div class="text-slate-400">Successful</div>
+          <div class="bg-canvas/50 rounded p-3">
+            <div class="text-muted">Successful</div>
             <div class="text-emerald-400 font-semibold">{{ generationProgress.successful }}</div>
           </div>
-          <div class="bg-slate-900/50 rounded p-3">
-            <div class="text-slate-400">Failed</div>
+          <div class="bg-canvas/50 rounded p-3">
+            <div class="text-muted">Failed</div>
             <div class="text-red-400 font-semibold">{{ generationProgress.failed }}</div>
           </div>
-          <div class="bg-slate-900/50 rounded p-3">
-            <div class="text-slate-400">Skipped</div>
+          <div class="bg-canvas/50 rounded p-3">
+            <div class="text-muted">Skipped</div>
             <div class="text-yellow-400 font-semibold">{{ generationProgress.skipped }}</div>
           </div>
-          <div class="bg-slate-900/50 rounded p-3">
-            <div class="text-slate-400">Est. Time</div>
+          <div class="bg-canvas/50 rounded p-3">
+            <div class="text-muted">Est. Time</div>
             <div class="text-blue-400 font-semibold">{{ estimatedTimeRemaining }}</div>
           </div>
         </div>
@@ -465,21 +465,21 @@
           <div class="text-6xl">🎉</div>
           <div class="flex-1">
             <h2 class="text-3xl font-semibold text-emerald-400 mb-4">Audio Generation Complete!</h2>
-            <p class="text-slate-300 mb-6">
+            <p class="text-ink mb-6">
               All audio files have been generated and uploaded to S3. Your course is ready for deployment.
             </p>
 
             <div class="grid grid-cols-3 gap-4 mb-6">
-              <div class="bg-slate-900/50 rounded p-4">
-                <div class="text-sm text-slate-400 mb-1">Total Generated</div>
+              <div class="bg-canvas/50 rounded p-4">
+                <div class="text-sm text-muted mb-1">Total Generated</div>
                 <div class="text-2xl font-bold text-emerald-400">{{ generationProgress.successful }}</div>
               </div>
-              <div class="bg-slate-900/50 rounded p-4">
-                <div class="text-sm text-slate-400 mb-1">Failed</div>
+              <div class="bg-canvas/50 rounded p-4">
+                <div class="text-sm text-muted mb-1">Failed</div>
                 <div class="text-2xl font-bold text-red-400">{{ generationProgress.failed }}</div>
               </div>
-              <div class="bg-slate-900/50 rounded p-4">
-                <div class="text-sm text-slate-400 mb-1">Total Time</div>
+              <div class="bg-canvas/50 rounded p-4">
+                <div class="text-sm text-muted mb-1">Total Time</div>
                 <div class="text-2xl font-bold text-blue-400">{{ totalGenerationTime }}</div>
               </div>
             </div>
@@ -501,7 +501,7 @@
 
               <button
                 @click="resetGeneration"
-                class="bg-slate-700 hover:bg-slate-600 text-slate-300 px-6 py-3 rounded-lg transition-colors"
+                class="bg-surface-2 hover:bg-surface-3 text-ink px-6 py-3 rounded-lg transition-colors"
               >
                 Generate Another Course
               </button>

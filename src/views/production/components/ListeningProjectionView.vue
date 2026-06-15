@@ -4,7 +4,7 @@
     <div class="mb-4">
       <button
         @click="controlsOpen = !controlsOpen"
-        class="flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors mb-2"
+        class="flex items-center gap-2 text-sm text-ink hover:text-ink transition-colors mb-2"
       >
         <svg
           class="w-4 h-4 transition-transform"
@@ -16,128 +16,128 @@
         Parameters
       </button>
 
-      <div v-show="controlsOpen" class="bg-slate-800 rounded-lg p-4 border border-slate-700">
+      <div v-show="controlsOpen" class="bg-surface rounded-lg p-4 border border-line">
         <!-- Row 1: Course shape -->
-        <div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Course shape</div>
+        <div class="text-xs text-faint uppercase tracking-wider mb-2">Course shape</div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Total LEGOs (rounds)</label>
+            <label class="block text-xs text-muted mb-1">Total LEGOs (rounds)</label>
             <input
               v-model.number="params.totalLegos"
               type="number" min="1" max="700"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">LEGOs per seed</label>
+            <label class="block text-xs text-muted mb-1">LEGOs per seed</label>
             <input
               v-model.number="params.legosPerSeed"
               type="number" min="1" max="5" step="0.1"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
-            <span class="text-xs text-slate-500">{{ derivedSeedCount }} seeds in course</span>
+            <span class="text-xs text-faint">{{ derivedSeedCount }} seeds in course</span>
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">New content items/round</label>
+            <label class="block text-xs text-muted mb-1">New content items/round</label>
             <input
               v-model.number="params.avgNewContentItems"
               type="number" min="5" max="25"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Target round time (s)</label>
+            <label class="block text-xs text-muted mb-1">Target round time (s)</label>
             <input
               v-model.number="params.roundTimeTarget"
               type="number" min="120" max="600" step="30"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
           </div>
         </div>
 
         <!-- Row 2: Listening parameters -->
-        <div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Listening</div>
+        <div class="text-xs text-faint uppercase tracking-wider mb-2">Listening</div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Graduation offset: {{ params.listeningOffset }}</label>
+            <label class="block text-xs text-muted mb-1">Graduation offset: {{ params.listeningOffset }}</label>
             <input
               v-model.number="params.listeningOffset"
               type="range" min="30" max="150"
               class="w-full accent-purple-500"
             />
-            <span class="text-xs text-slate-500">rounds after last LEGO</span>
+            <span class="text-xs text-faint">rounds after last LEGO</span>
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Batch size</label>
+            <label class="block text-xs text-muted mb-1">Batch size</label>
             <input
               v-model.number="params.batchSize"
               type="number" min="5" max="50"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Batch count</label>
+            <label class="block text-xs text-muted mb-1">Batch count</label>
             <input
               v-model.number="params.batchCount"
               type="number" min="1" max="10"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
-            <span class="text-xs text-slate-500">{{ params.batchSize * params.batchCount }} seeds total</span>
+            <span class="text-xs text-faint">{{ params.batchSize * params.batchCount }} seeds total</span>
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Fibonacci max: {{ params.fibMax }}</label>
+            <label class="block text-xs text-muted mb-1">Fibonacci max: {{ params.fibMax }}</label>
             <input
               v-model.number="params.fibMax"
               type="range" min="21" max="144" :step="1"
               class="w-full accent-purple-500"
             />
-            <span class="text-xs text-slate-500">{{ activeFibonacci.join(', ') }}</span>
+            <span class="text-xs text-faint">{{ activeFibonacci.join(', ') }}</span>
           </div>
         </div>
 
         <!-- Row 3: Timing -->
-        <div class="text-xs text-slate-500 uppercase tracking-wider mb-2">Item timing</div>
+        <div class="text-xs text-faint uppercase tracking-wider mb-2">Item timing</div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Productive phrase (s)</label>
+            <label class="block text-xs text-muted mb-1">Productive phrase (s)</label>
             <input
               v-model.number="params.productivePhraseTime"
               type="number" min="5" max="30"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Listening normal (s)</label>
+            <label class="block text-xs text-muted mb-1">Listening normal (s)</label>
             <input
               v-model.number="params.listeningNormalTime"
               type="number" min="2" max="10"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Listening double (s)</label>
+            <label class="block text-xs text-muted mb-1">Listening double (s)</label>
             <input
               v-model.number="params.listeningFastTime"
               type="number" min="1" max="8"
-              class="w-full px-2 py-1.5 text-sm bg-slate-700 text-white rounded border border-slate-600 focus:border-purple-500 focus:outline-none"
+              class="w-full px-2 py-1.5 text-sm bg-surface-2 text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
             />
           </div>
         </div>
 
         <!-- Speed progression + trigger info -->
-        <div class="flex flex-wrap gap-6 text-xs text-slate-400">
+        <div class="flex flex-wrap gap-6 text-xs text-muted">
           <div>
-            <span class="text-slate-500 uppercase tracking-wider">Speed progression</span>
+            <span class="text-faint uppercase tracking-wider">Speed progression</span>
             <div class="flex gap-2 mt-1">
-              <span class="bg-slate-700 px-2 py-1 rounded">1-3: normal</span>
-              <span class="bg-slate-700 px-2 py-1 rounded">4-6: normal + double</span>
-              <span class="bg-slate-700 px-2 py-1 rounded">7-9: double + double</span>
-              <span class="bg-slate-700 px-2 py-1 rounded">10+: double only</span>
+              <span class="bg-surface-2 px-2 py-1 rounded">1-3: normal</span>
+              <span class="bg-surface-2 px-2 py-1 rounded">4-6: normal + double</span>
+              <span class="bg-surface-2 px-2 py-1 rounded">7-9: double + double</span>
+              <span class="bg-surface-2 px-2 py-1 rounded">10+: double only</span>
             </div>
           </div>
           <div>
-            <span class="text-slate-500 uppercase tracking-wider">Trigger</span>
-            <div class="mt-1 text-slate-300">Each seed graduation triggers listening (one batch per trigger, rotating)</div>
+            <span class="text-faint uppercase tracking-wider">Trigger</span>
+            <div class="mt-1 text-ink">Each seed graduation triggers listening (one batch per trigger, rotating)</div>
           </div>
         </div>
       </div>
@@ -145,34 +145,34 @@
 
     <!-- Summary Stats -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3 mb-4">
-      <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
-        <div class="text-xs text-slate-400">Avg round</div>
-        <div class="text-lg font-bold text-white">{{ formatTime(summaryStats.avgRoundTime) }}</div>
+      <div class="bg-surface rounded-lg p-3 border border-line">
+        <div class="text-xs text-muted">Avg round</div>
+        <div class="text-lg font-bold text-ink">{{ formatTime(summaryStats.avgRoundTime) }}</div>
       </div>
-      <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
-        <div class="text-xs text-slate-400">Max round</div>
-        <div class="text-lg font-bold text-white">{{ formatTime(summaryStats.maxRoundTime) }}</div>
-        <div class="text-xs text-slate-500">Round {{ summaryStats.maxRoundNumber }}</div>
+      <div class="bg-surface rounded-lg p-3 border border-line">
+        <div class="text-xs text-muted">Max round</div>
+        <div class="text-lg font-bold text-ink">{{ formatTime(summaryStats.maxRoundTime) }}</div>
+        <div class="text-xs text-faint">Round {{ summaryStats.maxRoundNumber }}</div>
       </div>
-      <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
-        <div class="text-xs text-slate-400">Listening starts</div>
+      <div class="bg-surface rounded-lg p-3 border border-line">
+        <div class="text-xs text-muted">Listening starts</div>
         <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.firstListeningRound || '—' }}</div>
       </div>
-      <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
-        <div class="text-xs text-slate-400">S80 graduates</div>
+      <div class="bg-surface rounded-lg p-3 border border-line">
+        <div class="text-xs text-muted">S80 graduates</div>
         <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.lastListeningSeedRound || '—' }}</div>
-        <div class="text-xs text-slate-500">all {{ params.batchSize * params.batchCount }} in batches</div>
+        <div class="text-xs text-faint">all {{ params.batchSize * params.batchCount }} in batches</div>
       </div>
-      <div class="bg-slate-800 rounded-lg p-3 border border-slate-700">
-        <div class="text-xs text-slate-400">Batch rotation</div>
+      <div class="bg-surface rounded-lg p-3 border border-line">
+        <div class="text-xs text-muted">Batch rotation</div>
         <div class="text-sm font-bold text-purple-400">~{{ summaryStats.avgRoundsBetweenBatchReplay }} rounds</div>
-        <div class="text-xs text-slate-500">between replays of same batch</div>
+        <div class="text-xs text-faint">between replays of same batch</div>
       </div>
       <div v-for="milestone in summaryStats.milestones" :key="milestone.round"
-        class="bg-slate-800 rounded-lg p-3 border border-slate-700">
-        <div class="text-xs text-slate-400">Round {{ milestone.round }}</div>
-        <div class="text-sm font-bold text-white">{{ formatTime(milestone.totalTime) }}</div>
-        <div class="text-xs text-slate-500">
+        class="bg-surface rounded-lg p-3 border border-line">
+        <div class="text-xs text-muted">Round {{ milestone.round }}</div>
+        <div class="text-sm font-bold text-ink">{{ formatTime(milestone.totalTime) }}</div>
+        <div class="text-xs text-faint">
           {{ milestone.productive }}p
           <template v-if="milestone.isListeningRound">
             + B{{ milestone.batchPlayed }} ({{ milestone.listeningSeeds }}s)
@@ -182,12 +182,12 @@
     </div>
 
     <!-- Chart -->
-    <div class="bg-slate-800 rounded-lg border border-slate-700 p-4">
+    <div class="bg-surface rounded-lg border border-line p-4">
       <div ref="chartContainer" class="chart-container"></div>
     </div>
 
     <!-- Legend -->
-    <div class="flex items-center gap-6 mt-3 text-xs text-slate-400 justify-center">
+    <div class="flex items-center gap-6 mt-3 text-xs text-muted justify-center">
       <span class="flex items-center gap-1.5">
         <span class="w-3 h-3 rounded-sm bg-blue-500 inline-block"></span>
         New content

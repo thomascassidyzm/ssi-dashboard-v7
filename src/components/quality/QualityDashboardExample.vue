@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
+  <div class="min-h-screen bg-canvas">
     <!-- Navigation Tabs -->
-    <div class="bg-slate-800 border-b border-slate-700">
+    <div class="bg-surface border-b border-line">
       <div class="max-w-7xl mx-auto px-8">
         <div class="flex gap-1">
           <button
@@ -11,7 +11,7 @@
             class="px-6 py-4 text-sm font-medium transition-colors relative"
             :class="currentView === view.id
               ? 'text-emerald-400'
-              : 'text-slate-400 hover:text-slate-300'"
+              : 'text-muted hover:text-ink'"
           >
             {{ view.label }}
             <div
@@ -57,8 +57,8 @@
       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
       @click="showHelp = false"
     >
-      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
-        <div class="p-6 border-b border-slate-700">
+      <div class="bg-surface border border-line rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+        <div class="p-6 border-b border-line">
           <h2 class="text-2xl font-bold text-emerald-400">Quality Review Dashboard Guide</h2>
         </div>
 
@@ -66,7 +66,7 @@
           <!-- Dashboard View -->
           <div>
             <h3 class="text-lg font-semibold text-emerald-400 mb-3">Dashboard View</h3>
-            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+            <ul class="list-disc list-inside space-y-2 text-sm text-ink">
               <li>View quality overview for all {{ totalSeeds }} SEEDs</li>
               <li>Filter by quality score, status, or concerns</li>
               <li>Use quick actions to accept or re-run SEEDs</li>
@@ -78,7 +78,7 @@
           <!-- Detailed Review -->
           <div>
             <h3 class="text-lg font-semibold text-emerald-400 mb-3">Detailed Review</h3>
-            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+            <ul class="list-disc list-inside space-y-2 text-sm text-ink">
               <li>Compare multiple extraction attempts side-by-side</li>
               <li>View agent's self-assessment and concerns</li>
               <li>See visual LEGO boundaries in context</li>
@@ -90,7 +90,7 @@
           <!-- Prompt Evolution -->
           <div>
             <h3 class="text-lg font-semibold text-emerald-400 mb-3">Prompt Evolution</h3>
-            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+            <ul class="list-disc list-inside space-y-2 text-sm text-ink">
               <li>Track prompt version history</li>
               <li>View learned rules and their impact</li>
               <li>Monitor A/B tests for experimental rules</li>
@@ -102,7 +102,7 @@
           <!-- Health Report -->
           <div>
             <h3 class="text-lg font-semibold text-emerald-400 mb-3">Health Report</h3>
-            <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+            <ul class="list-disc list-inside space-y-2 text-sm text-ink">
               <li>Overall health score and trends</li>
               <li>Phase completion status</li>
               <li>Re-run statistics and reasons</li>
@@ -116,34 +116,34 @@
             <h3 class="text-lg font-semibold text-emerald-400 mb-3">Keyboard Shortcuts</h3>
             <div class="grid grid-cols-2 gap-3 text-sm">
               <div class="flex items-center gap-2">
-                <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">j/k</kbd>
-                <span class="text-slate-400">Navigate</span>
+                <kbd class="px-2 py-1 bg-canvas rounded border border-line">j/k</kbd>
+                <span class="text-muted">Navigate</span>
               </div>
               <div class="flex items-center gap-2">
-                <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">Enter</kbd>
-                <span class="text-slate-400">View details</span>
+                <kbd class="px-2 py-1 bg-canvas rounded border border-line">Enter</kbd>
+                <span class="text-muted">View details</span>
               </div>
               <div class="flex items-center gap-2">
-                <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">a</kbd>
-                <span class="text-slate-400">Accept</span>
+                <kbd class="px-2 py-1 bg-canvas rounded border border-line">a</kbd>
+                <span class="text-muted">Accept</span>
               </div>
               <div class="flex items-center gap-2">
-                <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">r</kbd>
-                <span class="text-slate-400">Re-run</span>
+                <kbd class="px-2 py-1 bg-canvas rounded border border-line">r</kbd>
+                <span class="text-muted">Re-run</span>
               </div>
               <div class="flex items-center gap-2">
-                <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">x</kbd>
-                <span class="text-slate-400">Toggle selection</span>
+                <kbd class="px-2 py-1 bg-canvas rounded border border-line">x</kbd>
+                <span class="text-muted">Toggle selection</span>
               </div>
               <div class="flex items-center gap-2">
-                <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">?</kbd>
-                <span class="text-slate-400">Show help</span>
+                <kbd class="px-2 py-1 bg-canvas rounded border border-line">?</kbd>
+                <span class="text-muted">Show help</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="p-6 border-t border-slate-700 flex justify-end">
+        <div class="p-6 border-t border-line flex justify-end">
           <button
             @click="showHelp = false"
             class="px-6 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded transition-colors"

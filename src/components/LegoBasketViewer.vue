@@ -1,11 +1,11 @@
 <template>
   <div class="lego-basket-viewer">
     <!-- Header -->
-    <div v-if="!courseCode" class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <div v-if="!courseCode" class="bg-surface border border-line rounded-lg p-6 mb-6">
       <!-- Back to Dashboard -->
       <router-link
         to="/"
-        class="inline-flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors mb-4"
+        class="inline-flex items-center gap-2 text-muted hover:text-emerald-400 transition-colors mb-4"
       >
         <span class="text-xl">←</span>
         <span class="text-sm">Back to Dashboard</span>
@@ -15,11 +15,11 @@
 
       <!-- Course Selector -->
       <div class="mb-4">
-        <label class="text-sm font-medium text-slate-300 mb-2 block">Select Course:</label>
+        <label class="text-sm font-medium text-ink mb-2 block">Select Course:</label>
         <select
           v-model="selectedCourseCode"
           @change="onCourseChange"
-          class="w-full px-4 py-2 bg-slate-700 text-slate-200 border border-slate-600 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          class="w-full px-4 py-2 bg-surface-2 text-ink border border-line rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
         >
           <option value="">-- Select a course --</option>
           <option
@@ -33,25 +33,25 @@
       </div>
 
       <!-- Course Context Header -->
-      <div v-if="currentCourse" class="mb-4 pb-4 border-b border-slate-700">
-        <h2 class="text-xl font-semibold text-slate-200">
+      <div v-if="currentCourse" class="mb-4 pb-4 border-b border-line">
+        <h2 class="text-xl font-semibold text-ink">
           {{ currentCourse.target_language }} for {{ currentCourse.source_language }}
-          <span class="text-slate-500 text-sm ml-2">({{ currentCourse.course_code }})</span>
+          <span class="text-faint text-sm ml-2">({{ currentCourse.course_code }})</span>
         </h2>
       </div>
 
     </div>
 
     <!-- Batch Navigation (Always visible when course is loaded) -->
-    <div v-if="selectedCourseCode" class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <div v-if="selectedCourseCode" class="bg-surface border border-line rounded-lg p-6 mb-6">
       <div class="mb-4 space-y-3">
         <div class="flex items-center justify-between">
           <div>
-            <label class="text-sm font-medium text-slate-300">Viewing Batch:</label>
+            <label class="text-sm font-medium text-ink">Viewing Batch:</label>
             <span class="ml-2 text-emerald-400 font-bold">
               Seeds {{ currentBatchStart }}-{{ Math.min(currentBatchStart + 9, availableSeeds.length) }}
             </span>
-            <span class="ml-2 text-slate-500 text-sm">
+            <span class="ml-2 text-faint text-sm">
               ({{ loadedSeeds.length }} loaded)
             </span>
           </div>
@@ -83,14 +83,14 @@
             <button
               @click="previousBatch"
               :disabled="currentBatchStart <= 1"
-              class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              class="px-3 py-2 bg-surface-2 hover:bg-surface-3 text-ink rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               ← Previous 10
             </button>
             <button
               @click="nextBatch"
               :disabled="currentBatchStart + 10 > availableSeeds.length"
-              class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              class="px-3 py-2 bg-surface-2 hover:bg-surface-3 text-ink rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Next 10 →
             </button>
@@ -107,7 +107,7 @@
               'px-3 py-1 rounded text-xs font-medium transition-colors',
               currentBatchStart === groupStart
                 ? 'bg-emerald-600 text-white'
-                : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
+                : 'bg-surface-2 text-muted hover:bg-surface-3'
             ]"
           >
             {{ groupStart }}-{{ Math.min(groupStart + 9, availableSeeds.length) }}
@@ -117,7 +117,7 @@
     </div>
 
     <!-- Loading State -->
-    <div v-if="loading" class="text-center py-12 text-slate-400">
+    <div v-if="loading" class="text-center py-12 text-muted">
       <div class="text-lg">Loading batch...</div>
     </div>
 
@@ -132,28 +132,28 @@
       <div
         v-for="seedData in loadedSeeds"
         :key="seedData.seedId"
-        class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-emerald-500/50 transition-all"
+        class="bg-surface border border-line rounded-lg overflow-hidden hover:border-emerald-500/50 transition-all"
       >
         <!-- Collapsed Header (Always Visible) -->
         <div
           @click="toggleSeed(seedData.seedId)"
-          class="p-4 cursor-pointer hover:bg-slate-700/50 transition-colors"
+          class="p-4 cursor-pointer hover:bg-surface-2/50 transition-colors"
         >
           <div class="flex items-center justify-between">
             <div class="flex-1">
               <div class="flex items-center gap-3 mb-2">
                 <h3 class="text-xl font-bold text-emerald-400">{{ seedData.seedId }}</h3>
-                <span class="text-xs px-2 py-1 rounded bg-slate-700 text-slate-400">
+                <span class="text-xs px-2 py-1 rounded bg-surface-2 text-muted">
                   {{ getLegoCount(seedData.basket) }} LEGOs
                 </span>
-                <span class="text-xs px-2 py-1 rounded bg-slate-700 text-slate-400">
+                <span class="text-xs px-2 py-1 rounded bg-surface-2 text-muted">
                   {{ getTotalPhrases(seedData.basket) }} phrases
                 </span>
                 <span v-if="hasUnsavedChanges[seedData.seedId]" class="text-xs px-2 py-1 rounded bg-orange-600 text-white font-bold">
                   UNSAVED
                 </span>
               </div>
-              <div class="text-sm text-slate-300">{{ seedData.basket?.seed_pair?.known || 'Loading...' }}</div>
+              <div class="text-sm text-ink">{{ seedData.basket?.seed_pair?.known || 'Loading...' }}</div>
               <div class="text-sm text-emerald-400">{{ seedData.basket?.seed_pair?.target || '' }}</div>
             </div>
             <div class="flex items-center gap-3">
@@ -176,7 +176,7 @@
               >
                 💾 Save
               </button>
-              <div class="text-slate-400">
+              <div class="text-muted">
                 <span v-if="expandedSeeds[seedData.seedId]" class="text-2xl">▼</span>
                 <span v-else class="text-2xl">▶</span>
               </div>
@@ -185,23 +185,23 @@
         </div>
 
         <!-- Expanded Content -->
-        <div v-if="expandedSeeds[seedData.seedId] && seedData.basket" class="border-t border-slate-700">
+        <div v-if="expandedSeeds[seedData.seedId] && seedData.basket" class="border-t border-line">
           <div class="p-6 space-y-6">
             <!-- Seed Info Card -->
-            <div class="bg-slate-700/30 rounded-lg p-4">
+            <div class="bg-surface-2/30 rounded-lg p-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span class="text-slate-400">Generation Stage:</span>
+                  <span class="text-muted">Generation Stage:</span>
                   <span class="ml-2 text-emerald-400">{{ seedData.basket.generation_stage || 'COMPLETE' }}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400">LEGOs in Seed:</span>
-                  <span class="ml-2 text-slate-300">{{ getLegoCount(seedData.basket) }}</span>
+                  <span class="text-muted">LEGOs in Seed:</span>
+                  <span class="ml-2 text-ink">{{ getLegoCount(seedData.basket) }}</span>
                 </div>
               </div>
 
               <!-- Recent Seeds Context (Phase 5 v6.1) -->
-              <div v-if="seedData.basket.recent_seed_pairs" class="mt-4 pt-4 border-t border-slate-600">
+              <div v-if="seedData.basket.recent_seed_pairs" class="mt-4 pt-4 border-t border-line">
                 <button
                   @click.stop="togglePatternDetails(seedData.seedId)"
                   class="flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300"
@@ -215,28 +215,28 @@
                   <div
                     v-for="(seedPair, seedId) in seedData.basket.recent_seed_pairs"
                     :key="seedId"
-                    class="text-xs py-1 px-2 bg-slate-800/50 rounded"
+                    class="text-xs py-1 px-2 bg-surface/50 rounded"
                   >
                     <span class="text-emerald-400 font-mono">{{ seedId }}:</span>
-                    <span class="text-slate-300 ml-2">{{ seedPair[0][1] }}</span>
+                    <span class="text-ink ml-2">{{ seedPair[0][1] }}</span>
                   </div>
                 </div>
               </div>
 
               <!-- OLD FORMAT FALLBACK: Pattern tracking -->
-              <div v-else-if="seedData.basket.cumulative_patterns" class="mt-4 pt-4 border-t border-slate-600">
+              <div v-else-if="seedData.basket.cumulative_patterns" class="mt-4 pt-4 border-t border-line">
                 <div class="grid grid-cols-3 gap-4 text-sm">
                   <div>
-                    <span class="text-slate-400">Pattern:</span>
+                    <span class="text-muted">Pattern:</span>
                     <span class="ml-2 text-emerald-400">{{ formatPattern(seedData.basket.pattern_introduced) || 'None' }}</span>
                   </div>
                   <div>
-                    <span class="text-slate-400">Patterns:</span>
-                    <span class="ml-2 text-slate-300">{{ seedData.basket.cumulative_patterns.length }}</span>
+                    <span class="text-muted">Patterns:</span>
+                    <span class="ml-2 text-ink">{{ seedData.basket.cumulative_patterns.length }}</span>
                   </div>
                   <div>
-                    <span class="text-slate-400">Cumulative:</span>
-                    <span class="ml-2 text-slate-300">{{ seedData.basket.cumulative_legos }}</span>
+                    <span class="text-muted">Cumulative:</span>
+                    <span class="ml-2 text-ink">{{ seedData.basket.cumulative_legos }}</span>
                   </div>
                 </div>
               </div>
@@ -248,24 +248,24 @@
               <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="text-center">
                   <div class="text-2xl font-bold text-emerald-400">{{ getQualityMetrics(seedData.basket).conversationalCount }}</div>
-                  <div class="text-xs text-slate-400 mt-1">Conversational</div>
-                  <div class="text-xs text-slate-500">(5+ LEGOs)</div>
+                  <div class="text-xs text-muted mt-1">Conversational</div>
+                  <div class="text-xs text-faint">(5+ LEGOs)</div>
                 </div>
                 <div class="text-center">
                   <div class="text-2xl font-bold text-blue-400">{{ getQualityMetrics(seedData.basket).conjunctionCount }}</div>
-                  <div class="text-xs text-slate-400 mt-1">Conjunctions</div>
+                  <div class="text-xs text-muted mt-1">Conjunctions</div>
                 </div>
                 <div class="text-center">
                   <div class="text-2xl font-bold" :class="getQualityMetrics(seedData.basket).conversationalPct >= 40 ? 'text-green-400' : 'text-yellow-400'">
                     {{ getQualityMetrics(seedData.basket).conversationalPct }}%
                   </div>
-                  <div class="text-xs text-slate-400 mt-1">Conv. Rate</div>
+                  <div class="text-xs text-muted mt-1">Conv. Rate</div>
                 </div>
                 <div class="text-center">
                   <div class="text-2xl font-bold" :class="getQualityMetrics(seedData.basket).avgLegoCount >= 4 ? 'text-green-400' : 'text-yellow-400'">
                     {{ getQualityMetrics(seedData.basket).avgLegoCount }}
                   </div>
-                  <div class="text-xs text-slate-400 mt-1">Avg LEGOs</div>
+                  <div class="text-xs text-muted mt-1">Avg LEGOs</div>
                 </div>
               </div>
             </div>
@@ -274,21 +274,21 @@
             <div
               v-for="(legoData, legoKey) in getLegoBaskets(seedData.basket)"
               :key="legoKey"
-              class="bg-slate-700/30 border border-slate-600 rounded-lg p-4"
+              class="bg-surface-2/30 border border-line rounded-lg p-4"
             >
               <!-- LEGO Header -->
-              <div class="mb-3 pb-3 border-b border-slate-600">
+              <div class="mb-3 pb-3 border-b border-line">
                 <div class="flex items-center justify-between">
                   <div class="flex-1">
-                    <div class="text-xs text-slate-400">{{ legoKey }}</div>
+                    <div class="text-xs text-muted">{{ legoKey }}</div>
                     <div class="text-lg font-bold">
-                      <span class="text-slate-300">{{ Array.isArray(legoData.lego) ? legoData.lego[0] : legoData.lego.known }}</span>
-                      <span class="mx-2 text-slate-600">→</span>
+                      <span class="text-ink">{{ Array.isArray(legoData.lego) ? legoData.lego[0] : legoData.lego.known }}</span>
+                      <span class="mx-2 text-faint">→</span>
                       <span class="text-emerald-400">{{ Array.isArray(legoData.lego) ? legoData.lego[1] : legoData.lego.target }}</span>
                     </div>
                   </div>
                   <div class="text-right text-xs space-y-1">
-                    <div class="text-slate-400">
+                    <div class="text-muted">
                       Type:
                       <span :class="getLegoType(legoData) === 'M' ? 'text-blue-400 font-bold' : 'text-emerald-400'">
                         {{ getLegoType(legoData) }}
@@ -297,11 +297,11 @@
                     <div v-if="legoData.is_final_lego" class="text-emerald-400 font-semibold">
                       ⭐ Final LEGO
                     </div>
-                    <div v-if="legoData.current_seed_legos_available !== undefined" class="text-slate-400">
-                      Prev: <span class="text-slate-300">{{ legoData.current_seed_legos_available.length }}</span>
+                    <div v-if="legoData.current_seed_legos_available !== undefined" class="text-muted">
+                      Prev: <span class="text-ink">{{ legoData.current_seed_legos_available.length }}</span>
                     </div>
-                    <div v-else-if="legoData.available_legos !== undefined" class="text-slate-400">
-                      Available: <span class="text-slate-300">{{ legoData.available_legos }}</span>
+                    <div v-else-if="legoData.available_legos !== undefined" class="text-muted">
+                      Available: <span class="text-ink">{{ legoData.available_legos }}</span>
                     </div>
                   </div>
                 </div>
@@ -321,11 +321,11 @@
                     <div
                       v-for="(component, idx) in getLegoComponentsFromData(legoData)"
                       :key="idx"
-                      class="flex items-center gap-2 py-1 px-2 bg-slate-800/50 rounded text-xs"
+                      class="flex items-center gap-2 py-1 px-2 bg-surface/50 rounded text-xs"
                     >
                       <span class="text-blue-300">{{ idx + 1 }}.</span>
-                      <span class="text-slate-200">{{ Array.isArray(component) ? component[0] : component.known }}</span>
-                      <span class="text-slate-600">→</span>
+                      <span class="text-ink">{{ Array.isArray(component) ? component[0] : component.known }}</span>
+                      <span class="text-faint">→</span>
                       <span class="text-emerald-400">{{ Array.isArray(component) ? component[1] : component.target }}</span>
                     </div>
                   </div>
@@ -340,8 +340,8 @@
                   v-show="!isDeleted(seedData.seedId, legoKey, idx)"
                   :class="[
                     'p-2 rounded text-sm transition-all',
-                    getPhraseLegoCount(phrase) >= 5 ? 'bg-emerald-900/20 border border-emerald-700/30' : 'bg-slate-800/50',
-                    editMode[seedData.seedId] ? 'hover:bg-slate-700/50' : ''
+                    getPhraseLegoCount(phrase) >= 5 ? 'bg-emerald-900/20 border border-emerald-700/30' : 'bg-surface/50',
+                    editMode[seedData.seedId] ? 'hover:bg-surface-2/50' : ''
                   ]"
                 >
                   <div class="flex items-start justify-between gap-2">
@@ -352,21 +352,21 @@
                           v-model="getEditedPhrase(seedData.seedId, legoKey, idx).known"
                           @blur="savePhrase(seedData.seedId, legoKey, idx)"
                           @keyup.enter="savePhrase(seedData.seedId, legoKey, idx)"
-                          class="w-full px-2 py-1 mb-2 bg-slate-700 text-slate-200 border border-slate-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          class="w-full px-2 py-1 mb-2 bg-surface-2 text-ink border border-line rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="English"
                         />
                         <input
                           v-model="getEditedPhrase(seedData.seedId, legoKey, idx).target"
                           @blur="savePhrase(seedData.seedId, legoKey, idx)"
                           @keyup.enter="savePhrase(seedData.seedId, legoKey, idx)"
-                          class="w-full px-2 py-1 bg-slate-700 text-emerald-400 border border-slate-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          class="w-full px-2 py-1 bg-surface-2 text-emerald-400 border border-line rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Spanish"
                         />
                       </div>
                       <!-- Display Mode -->
                       <div v-else @click="editMode[seedData.seedId] && startEditing(seedData.seedId, legoKey, idx, phrase)" :class="editMode[seedData.seedId] ? 'cursor-pointer' : ''">
-                        <div class="text-slate-300">
-                          <span class="text-slate-500 text-xs mr-2">{{ idx + 1 }}.</span>
+                        <div class="text-ink">
+                          <span class="text-faint text-xs mr-2">{{ idx + 1 }}.</span>
                           {{ getDisplayPhrase(seedData.seedId, legoKey, idx, phrase, 0) }}
                         </div>
                         <div class="text-emerald-400 mt-1">
@@ -411,8 +411,8 @@
               </div>
 
               <!-- Phrase Distribution (Phase 5 v6.1) -->
-              <div v-if="legoData.phrase_distribution" class="mt-3 pt-3 border-t border-slate-600">
-                <div class="text-xs text-slate-400 mb-2 uppercase font-semibold">Phrase Distribution:</div>
+              <div v-if="legoData.phrase_distribution" class="mt-3 pt-3 border-t border-line">
+                <div class="text-xs text-muted mb-2 uppercase font-semibold">Phrase Distribution:</div>
                 <div class="grid grid-cols-4 gap-2">
                   <div class="bg-green-900/40 px-2 py-1 rounded text-center">
                     <div class="text-green-300 font-bold">{{ legoData.phrase_distribution.really_short_1_2 }}</div>
@@ -434,7 +434,7 @@
               </div>
 
               <!-- Summary -->
-              <div class="mt-3 pt-3 border-t border-slate-600 text-xs text-slate-400">
+              <div class="mt-3 pt-3 border-t border-line text-xs text-muted">
                 <span class="mr-3">{{ legoData.practice_phrases.length }} phrases</span>
                 <span class="mr-3">Min: <span class="text-green-300">{{ Math.min(...legoData.practice_phrases.map(p => getPhraseLegoCount(p))) }}</span></span>
                 <span>Max: <span class="text-orange-300">{{ Math.max(...legoData.practice_phrases.map(p => getPhraseLegoCount(p))) }}</span></span>
@@ -446,7 +446,7 @@
     </div>
 
     <!-- Empty State -->
-    <div v-else class="text-center py-12 text-slate-400">
+    <div v-else class="text-center py-12 text-muted">
       <div class="text-lg">Select a batch to view seeds</div>
     </div>
 
@@ -456,7 +456,7 @@
         <div class="audio-preview-modal">
           <div class="modal-header">
             <h3 class="text-lg font-bold text-emerald-400">Audio Preview</h3>
-            <button @click="closeAudioPreview" class="text-slate-400 hover:text-white text-xl">✕</button>
+            <button @click="closeAudioPreview" class="text-muted hover:text-ink text-xl">✕</button>
           </div>
           <div class="modal-content">
             <AudioPreviewPlayer
@@ -1039,8 +1039,8 @@ table {
 }
 
 .audio-preview-modal {
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: var(--surface);
+  border: 1px solid var(--surface-2);
   border-radius: 16px;
   width: min(90vw, 440px);
   max-height: 90vh;
@@ -1053,7 +1053,7 @@ table {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid var(--surface-2);
 }
 
 .modal-content {
