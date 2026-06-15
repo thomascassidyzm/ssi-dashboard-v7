@@ -112,7 +112,7 @@ function getLangFamily(courseCode) {
 function isChinese(courseCode) {
   const parts = courseCode.split('_for_');
   const targetLang = parts[0] || '';
-  const characterBasedLangs = ['zho', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
+  const characterBasedLangs = ['zho', 'cmn', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
   return characterBasedLangs.includes(targetLang);
 }
 
