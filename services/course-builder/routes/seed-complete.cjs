@@ -271,8 +271,14 @@ async function analyzePatternRecency(ctx, courseCode, windowSize) {
 /**
  * Initialize course_seeds from canonical_seeds for a new course.
  */
+// Versioned-course support: a trailing "_vN" isolates a regenerated course in its own DB
+// partition (the FULL course_code stays the partition key everywhere) while inheriting the
+// base pair's language config + pair-contract. Strip the suffix ONLY for language derivation
+// and contract lookup — NEVER for DB keys.
+const baseCourseCode = (c) => (c || '').replace(/_v\d+$/, '');
+
 async function initializeCourseSeeds(ctx, courseCode) {
-  const parts = courseCode.split('_for_');
+  const parts = baseCourseCode(courseCode).split('_for_');
   const targetLang = parts[0] || '';
   const knownLang = parts[1] || '';
   const knownIsEng = knownLang === 'eng';
@@ -950,7 +956,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
-      const courseParts = course_code?.split('_for_') || [];
+      const courseParts = baseCourseCode(course_code).split('_for_');
       const targetLang = courseParts[0] || '';
       const knownLang = courseParts[1] || '';
       const knownIsEng = knownLang === 'eng';

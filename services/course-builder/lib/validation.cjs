@@ -861,7 +861,10 @@ const _contractCache = new Map();
 function loadPairContract(courseCode) {
   if (_contractCache.has(courseCode)) return _contractCache.get(courseCode);
   let contract = null;
-  try { contract = require(`../../../docs/pair-contracts/${courseCode}.contract.cjs`); } catch (_) { contract = null; }
+  // Strip a trailing "_vN" so a versioned course (e.g. zho_for_eng_v2) inherits the base
+  // pair's contract. The full course_code stays the DB partition key elsewhere.
+  const contractCode = courseCode.replace(/_v\d+$/, '');
+  try { contract = require(`../../../docs/pair-contracts/${contractCode}.contract.cjs`); } catch (_) { contract = null; }
   _contractCache.set(courseCode, contract);
   return contract;
 }
