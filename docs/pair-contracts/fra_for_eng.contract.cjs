@@ -13,23 +13,12 @@ module.exports = {
 
   // ── KNOWN-SIDE SCAFFOLD — shared across ALL _for_eng pairs (verbatim from zho_for_eng) ──
   freeGlue: ['a', 'an', 'the', 'to', 'it', 'and', 'of', 'some', "'s", 'is', 'are', 'am', 'be'],
-  stemStrip: ['ing', 'ed', 's', 'd'],
   npiTokens: ['any', 'anyone', 'anything', 'anywhere', 'ever', 'yet', 'either'],
   negationMarkers: /\b(not|n't|don't|doesn't|didn't|won't|can't|never|no)\b/i,
   negationWords: ['not', 'never', "don't", "doesn't", "didn't", "won't", "can't", 'dont', 'doesnt', 'didnt', 'wont', 'cant'],
-  // English tense/inflection constructions — introduce-once-then-free (known-side mirror of
-  // any target aspect-contract). RENDERING column differs per target; for French most carry
-  // through real verb morphology (parlé / parlais / parlerai) so the demonstration differs
-  // from Chinese, but the SET of English forms to introduce is the same.
-  knownTenseConstructions: [
-    { id: 'past',          englishForm: '-ed + irregular past (tried, went, saw)', semantics: 'introduce-once-then-free' },
-    { id: 'progressive',   englishForm: "-ing (I'm trying)",                        semantics: 'introduce-once-then-free' },
-    { id: 'perfect',       englishForm: 'have/has V-ed (I have tried)',             semantics: 'introduce-once-then-free' },
-    { id: 'future',        englishForm: 'will / going to (I will try)',             semantics: 'introduce-once-then-free' },
-    { id: 'agreement_3sg', englishForm: '3sg -s (she wants)',                       semantics: 'introduce-once-then-free' },
-    { id: 'comparative',   englishForm: '-er / -est (harder, best)',                semantics: 'introduce-once-then-free' },
-    { id: 'plural',        englishForm: 'noun -s (words)',                          semantics: 'introduce-once-then-free' },
-  ],
+  // NO INFLECTION ALLOWANCE (Tom 2026-06-15): a known form is usable only if introduced as a
+  // LEGO/component (exact form, no stemming, no tense-class licensing). Enforced by the gate's
+  // exact stemKnownGloss. Same rule for every _for_eng pair.
 
   // ── TARGET-SPECIFIC (French) — EMPTY; to be derived from the lint flags ──
   glossSynonyms: {},   // e.g. one French target legitimately carrying several English glosses

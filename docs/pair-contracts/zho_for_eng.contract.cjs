@@ -14,26 +14,13 @@ module.exports = {
 
   // Free class — never needs introduction on the known side.
   freeGlue: ['a', 'an', 'the', 'to', 'it', 'and', 'of', 'some', "'s", 'is', 'are', 'am', 'be'],
-  // Crude English stemming: a prompt token and a known-gloss token match if equal after this.
-  stemStrip: ['ing', 'ed', 's', 'd'],
 
-  // ── KNOWN-SIDE TENSE/INFLECTION CONSTRUCTIONS (Tom 2026-06-15) ──
-  // CORRECTION to the blanket stemStrip above: English tense/agreement forms are NOT free.
-  // Chinese carries tense via adverbs/aspect (了/过/在/会/更/最), never the verb itself — so each
-  // English form must be INTRODUCED ONCE to demonstrate that mapping, then it is free thereafter
-  // (convergence-once; principle 5). Carved by where the Chinese RENDERING differs (irregular past
-  // folds into 'past' — Chinese is identical). BUILD STEP: wire these into the gate as constructions
-  // licensed at a carrier/cluster debut (replacing the silent stemStrip), the known-side mirror of
-  // the target-side 了-contract. Until wired, this records the decided model.
-  knownTenseConstructions: [
-    { id: 'past',          englishForm: '-ed + irregular past (tried, went, saw)', chinese: 'verb unchanged + 了 / time-adverb (昨天)', semantics: 'introduce-once-then-free' },
-    { id: 'progressive',   englishForm: "-ing (I'm trying)",                        chinese: '在 / 正在 + verb',                       semantics: 'introduce-once-then-free' },
-    { id: 'perfect',       englishForm: 'have/has V-ed (I have tried)',             chinese: '了 (completion) / 过 (experiential)',     semantics: 'introduce-once-then-free' },
-    { id: 'future',        englishForm: 'will / going to (I will try)',             chinese: '会 / 要 + verb / time-adverb (明天)',     semantics: 'introduce-once-then-free' },
-    { id: 'agreement_3sg', englishForm: '3sg -s (she wants)',                       chinese: 'verb unchanged (no agreement marker)',   semantics: 'introduce-once-then-free' },
-    { id: 'comparative',   englishForm: '-er / -est (harder, best)',                chinese: '更 / 最 + adjective',                    semantics: 'introduce-once-then-free' },
-    { id: 'plural',        englishForm: 'noun -s (words)',                          chinese: 'noun unchanged / 些 / measure word',     semantics: 'introduce-once-then-free' },
-  ],
+  // ── NO INFLECTION ALLOWANCE (Tom 2026-06-15) ──
+  // A known form is usable ONLY if it was introduced as a LEGO or a COMPONENT of an M-LEGO —
+  // EXACT form, no stemming. "tried" / "wants" / "going" each need their own LEGO/component debut
+  // before use; they are NOT licensed by an introduced "try"/"want"/"go". The gate enforces this:
+  // stemKnownGloss is now an exact normaliser (no suffix stripping); there is NO stemStrip and NO
+  // tense-construction class-licensing. (Genuine glue above + NPI-under-negation below stay free.)
 
   // NPI (rule 4): these tokens are FREE, but only when the phrase is negated.
   npiTokens: ['any', 'anyone', 'anything', 'anywhere', 'ever', 'yet', 'either'],

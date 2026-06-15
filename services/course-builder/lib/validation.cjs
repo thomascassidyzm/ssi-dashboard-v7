@@ -801,11 +801,11 @@ function checkMetadataGloss(legos) {
 // must compose from introduced known-glosses + the free class (glue / inflection
 // / NPI-under-negation) + construction licenses whose carrier has debuted.
 function stemKnownGloss(tok) {
-  let x = (tok || '').toLowerCase().replace(/[^a-z']/g, '');
-  if (!x) return '';
-  for (const suf of ['ing', 'ed']) if (x.length > suf.length + 1 && x.endsWith(suf)) { x = x.slice(0, -suf.length); break; }
-  for (const suf of ['s', 'e', 'd']) if (x.length > 2 && x.endsWith(suf)) { x = x.slice(0, -1); break; }
-  return x;
+  // EXACT-FORM normaliser (Tom 2026-06-15): NO inflection allowance. A form is usable only if it
+  // was introduced as a LEGO or a COMPONENT of an M-LEGO — exact form. Previously this stripped
+  // ing/ed/s/e/d, which wrongly let any inflection through; that is expressly disallowed. Lowercase
+  // + strip non-letters only. (Genuine glue/NPI stay free via the contract's freeGlue/npiTokens.)
+  return (tok || '').toLowerCase().replace(/[^a-z']/g, '');
 }
 // Expand English contractions so the base word + function word are checked
 // separately (shouldn't → should not; that's → that is; I've → I have).
