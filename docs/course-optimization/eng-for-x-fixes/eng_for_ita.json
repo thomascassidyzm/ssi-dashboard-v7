@@ -1,0 +1,260 @@
+{
+ "course_code": "eng_for_ita",
+ "total_collisions": 113,
+ "counts": {
+  "fp_subgloss": 53,
+  "fp_inflection": 26,
+  "real_consolidate": 27,
+  "real_differentiate": 6,
+  "fp_wrong_data": 1
+ },
+ "release_blocker_count": 3,
+ "notes": "Clean, well-decomposed course: the large majority of flags are false positives — bare function words/particles (non, di, da, al, mi, ci, che, per, a, in, con) sub-glossed contextually inside larger LEGOs (53 fp_subgloss), plus English target morphology of one lemma (have/was/want/speak inflections, a/an) (26 fp_inflection). The two real, systemic, learner-facing issues are Italian intonation-questions ('parli X' = both 'you speak X' and 'do you speak X?', recurring 10x — needs the statement->question convergence) and gender-ambiguous 'suo' (his/her name, recurring 6x); fare (make vs do) is the only other genuine semantic overload.",
+ "real_fixes": [
+  {
+   "known": "parli (and the whole parli-family: parli?, parli inglese?, parli inglese tutto il giorno?, parli inglese molto bene, parli molto bene?, parli inglese con me?, parli un po' di inglese, parli inglese con qualcun altro, parli inglese dopo che finisci?)",
+   "targets": [
+    "you speak",
+    "do you speak?",
+    "you speak English / do you speak English?",
+    "...all the declarative-vs-interrogative pairs"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Systematic Italian intonation-question collision: identical 'parli X' maps to BOTH the English statement ('you speak X') and the do-question ('do you speak X?'). Pick ONE canonical surface per drilled item via the statement->question convergence (render declarative 'you speak X', let the question be the same prompt) so each Italian prompt has one English answer.",
+   "canonical_english": "you speak X (declarative; do-question converges to same prompt)",
+   "severity": "high"
+  },
+  {
+   "known": "il suo nome (+ imparare/voglio/vuoi ricordare/mi piacerebbe scoprire il suo nome)",
+   "targets": [
+    "his name",
+    "her name"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Italian 'suo' is gender-ambiguous (his OR her). The identical drilled prompt maps to both 'his name' and 'her name', so the learner cannot know which to say. Differentiate the prompt (use possessor context, e.g. add the named referent) or fix the decomposition so each Italian prompt resolves to one English answer; recurs across ~6 seed pairs.",
+   "canonical_english": "",
+   "severity": "high"
+  },
+  {
+   "known": "fare",
+   "targets": [
+    "to make",
+    "making",
+    "to do",
+    "doing",
+    "do"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Single drilled verb 'fare' is glossed as both MAKE and DO (genuinely distinct intentions). Split: keep make-senses on phrases meaning produce/create and do-senses on phrases meaning perform/act, so each phrase's Italian context maps 1:1; or differentiate the prompt.",
+   "canonical_english": "",
+   "severity": "high"
+  },
+  {
+   "known": "parlare",
+   "targets": [
+    "to speak",
+    "speaking",
+    "speak",
+    "to talk",
+    "talking"
+   ],
+   "verdict": "real_consolidate",
+   "action": "speak and talk are the same intention for 'parlare'; collapse to one English verb (speak) across drilled items.",
+   "canonical_english": "to speak / speak",
+   "severity": "med"
+  },
+  {
+   "known": "molto",
+   "targets": [
+    "very",
+    "a lot",
+    "much"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same quantity-intensifier intention; pick one canonical English for the drilled 'molto' (much) and re-gloss the others to it where it is the standalone prompt.",
+   "canonical_english": "very",
+   "severity": "med"
+  },
+  {
+   "known": "mi piace",
+   "targets": [
+    "I like",
+    "I enjoy",
+    "I'm enjoying"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same intention (like/enjoy); re-gloss to the drilled canonical 'I like'.",
+   "canonical_english": "I like",
+   "severity": "med"
+  },
+  {
+   "known": "dire",
+   "targets": [
+    "to say",
+    "to tell",
+    "say"
+   ],
+   "verdict": "real_consolidate",
+   "action": "say/tell are the same intention for 'dire'; collapse to the drilled canonical 'say'.",
+   "canonical_english": "to say / say",
+   "severity": "med"
+  },
+  {
+   "known": "dobbiamo",
+   "targets": [
+    "we need to",
+    "need to",
+    "we must"
+   ],
+   "verdict": "real_consolidate",
+   "action": "'we need to' vs 'we must' are the same obligation intention; re-gloss to the drilled canonical.",
+   "canonical_english": "we need to",
+   "severity": "med"
+  },
+  {
+   "known": "lavoro (+ il lavoro più importante)",
+   "targets": [
+    "work",
+    "job",
+    "the most important job",
+    "the most important work"
+   ],
+   "verdict": "real_consolidate",
+   "action": "job/work both render 'lavoro'; pick one canonical for the drilled noun and apply to the 'most important job/work' phrase too.",
+   "canonical_english": "job",
+   "severity": "med"
+  },
+  {
+   "known": "tutto",
+   "targets": [
+    "all",
+    "everything"
+   ],
+   "verdict": "real_consolidate",
+   "action": "all/everything same intention; re-gloss to the drilled canonical 'everything' (component 'all' to match).",
+   "canonical_english": "everything",
+   "severity": "med"
+  },
+  {
+   "known": "dobbiamo lavorare sodo",
+   "targets": [
+    "we need to work hard",
+    "we must work hard"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same sentence intention (need to/must); pick one canonical surface.",
+   "canonical_english": "we need to work hard",
+   "severity": "low"
+  },
+  {
+   "known": "non c'era",
+   "targets": [
+    "wasn't",
+    "there wasn't"
+   ],
+   "verdict": "real_consolidate",
+   "action": "'non c'era' = there wasn't; the bare 'wasn't' drops the existential 'there'. Consolidate to 'there wasn't'.",
+   "canonical_english": "there wasn't",
+   "severity": "low"
+  },
+  {
+   "known": "non sei più felice",
+   "targets": [
+    "not happy any more",
+    "are you not happy any more?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Statement vs question of identical Italian; converge to one canonical declarative surface.",
+   "canonical_english": "not happy any more",
+   "severity": "low"
+  },
+  {
+   "known": "no non è un problema",
+   "targets": [
+    "no it's not a problem",
+    "no that's not a problem"
+   ],
+   "verdict": "real_consolidate",
+   "action": "it's/that's are meaning-equivalent renderings of 'è' here; pick one canonical.",
+   "canonical_english": "no it's not a problem",
+   "severity": "low"
+  },
+  {
+   "known": "sai cosa intendo?",
+   "targets": [
+    "you know what I mean",
+    "do you know what I mean?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Italian intonation-question collision (statement vs do-question of identical prompt); converge to one canonical surface.",
+   "canonical_english": "you know what I mean",
+   "severity": "low"
+  },
+  {
+   "known": "non sono ancora pronto ad andare",
+   "targets": [
+    "I'm not ready yet to go",
+    "I'm not ready to leave yet"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same intention (go/leave + 'yet' placement) for identical Italian; pick one canonical English.",
+   "canonical_english": "I'm not ready to go yet",
+   "severity": "low"
+  },
+  {
+   "known": "non voglio scoprirlo fino a quando non finiamo",
+   "targets": [
+    "I don't want to find out until we finish",
+    "I don't want to find out until after we finish"
+   ],
+   "verdict": "real_consolidate",
+   "action": "'until' vs 'until after' same intention for identical Italian; pick one canonical.",
+   "canonical_english": "I don't want to find out until we finish",
+   "severity": "low"
+  },
+  {
+   "known": "non capiva la domanda",
+   "targets": [
+    "she didn't understand the question",
+    "she didn't understand the question before"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Identical Italian but one English adds 'before' (no 'prima' in the Italian); drop the spurious 'before' (or correct the known if it should contain 'prima').",
+   "canonical_english": "she didn't understand the question",
+   "severity": "low"
+  },
+  {
+   "known": "È utile rispondere il prima possibile",
+   "targets": [
+    "it's useful to answer as soon as you can",
+    "it's useful to answer as soon as I can"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Italian 'il prima possibile' is impersonal ('as soon as possible'); injecting 'you can'/'I can' creates two answers for one prompt. Render the impersonal canonical so it maps 1:1.",
+   "canonical_english": "it's useful to answer as soon as possible",
+   "severity": "med"
+  },
+  {
+   "known": "non riuscirò a parlare",
+   "targets": [
+    "I'm not going to be able to speak",
+    "I won't be able to speak"
+   ],
+   "verdict": "real_consolidate",
+   "action": "going-to vs won't are the same future intention; pick one canonical surface.",
+   "canonical_english": "I won't be able to speak",
+   "severity": "low"
+  },
+  {
+   "known": "non mi piace",
+   "targets": [
+    "I don't like",
+    "I don't like to go"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "'I don't like to go' carries extra material ('to go'/andare) not present in the bare Italian 'non mi piace' — the known_text is truncated/mis-aligned. Correct that single row's known to 'non mi piace andare' (or drop the extra English).",
+   "canonical_english": "",
+   "severity": "med"
+  }
+ ]
+}

@@ -1,0 +1,313 @@
+{
+ "course_code": "eng_for_hin",
+ "seeds": "1-150",
+ "prompts_checked": 3348,
+ "totals": {
+  "prompts_checked": 3348,
+  "vocab_uncontrolled": 12,
+  "npi_violation": 4,
+  "machinery_unlicensed": 0,
+  "gloss_rule_violation": 21
+ },
+ "findings": [
+  {
+   "seed": 4,
+   "known": "कुछ भी (intro)",
+   "en": "something",
+   "category": "npi_violation",
+   "severity": "med",
+   "detail": "Inventory seed-4 introduces NPI कुछ भी glossed 'something' and it is then used positively (non-negated) in ~19 prompts e.g. 'मैं कुछ भी कहना चाहता हूँ' => 'I want to say something'. Per brief कुछ भी is free ONLY under negation; natural positive 'something' = कुछ, while कुछ भी = 'anything (at all)'. Systematic, propagates from the inventory debut across the batch."
+  },
+  {
+   "seed": 4,
+   "known": "मैं कुछ भी कोशिश कर रहा हूँ।",
+   "en": "I'm trying something",
+   "category": "npi_violation",
+   "severity": "low",
+   "detail": "Representative non-negated USE prompt with NPI कुछ भी glossed positively ('something'). 12 positive USE prompts of this shape exist; flagged once here as the clearest standalone instance. कुछ (not कुछ भी) is the correct positive form."
+  },
+  {
+   "seed": 10,
+   "known": "मुझे कि",
+   "en": "I'm ... if",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Degenerate component: 'मुझे कि' is not a meaningful Hindi unit and 'I'm ... if' (ellipsis gloss) is not an answerable target. Decomposition artifact of मुझे यकीन नहीं है कि = 'I'm not sure if'; a learner cannot produce 'I'm ... if'."
+  },
+  {
+   "seed": 5,
+   "known": "वाला हूँ",
+   "en": "I'm ... to",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Ellipsis component gloss 'I'm ... to' (from करने वाला हूँ = 'I'm going to') is unanswerable as a standalone target; the future periphrasis should be taught as the whole करने वाला हूँ chunk, not split into a gapped fragment."
+  },
+  {
+   "seed": 12,
+   "known": "लगाना",
+   "en": "to put",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Stray component gloss: लगाना here is the light verb of अंदाज़ा लगाना = 'to guess'. Glossing the bare component as 'to put' teaches an English word ('put') that never appears in any prompt and mis-cues the learner; the meaning is never used elsewhere in the batch."
+  },
+  {
+   "seed": 33,
+   "known": "कितने समय से यह कर रहे हैं?",
+   "en": "how long have you been doing this?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "यह ('this') is not introduced as a known LEGO until S49 (यह ऐसा है); only यहाँ ('here', S34) and the कुछ भी/कोई items exist earlier, so the demonstrative यह is untaught at S33, making 'doing this' unanswerable on the यह element. (कर रहे हैं is recoverable from सीख रहे हैं S21 + करना.)"
+  },
+  {
+   "seed": 54,
+   "known": "मुझे थोड़ा और समय चाहिए",
+   "en": "I need a little more time",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "चाहिए (dative modal 'need/should') is NOT in the introduced inventory and NOT in freeClass; the brief itself flags it as unclassified rank-66. 'I need to' was taught only as मुझे ज़रूरत है (seed 44), so चाहिए is a second untaught Hindi form. Recurs 8x (s54,s55,s56,s59,s60,s69,s73). Guessable from the dative frame but uncontrolled per the known-side controlled-language rule."
+  },
+  {
+   "seed": 54,
+   "known": "क्या आपको थोड़ा और समय चाहिए?",
+   "en": "do you need a little more time?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Same untaught चाहिए modal in a polar-question frame; learner has not been given चाहिए='need' (only ज़रूरत है)."
+  },
+  {
+   "seed": 55,
+   "known": "मुझे जागना पसंद नहीं जब मुझे थोड़ा और समय चाहिए",
+   "en": "I don't enjoy waking up when I need a little more time",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Untaught चाहिए again inside a subordinate clause."
+  },
+  {
+   "seed": 56,
+   "known": "तो मुझे थोड़ा और समय चाहिए",
+   "en": "so I need a little more time",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Untaught चाहिए modal; ज़रूरत है is the taught form for 'need'."
+  },
+  {
+   "seed": 59,
+   "known": "मुझे थोड़ा और समय अगले हफ्ते चाहिए",
+   "en": "I need a little more time next week",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Untaught चाहिए modal."
+  },
+  {
+   "seed": 60,
+   "known": "मुझे थोड़ा और समय अभी तक चाहिए",
+   "en": "I need a little more time yet",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Untaught चाहिए; also English 'yet' in an affirmative declarative is unnatural (अभी तक is NPI-flavoured)."
+  },
+  {
+   "seed": 69,
+   "known": "मुझे पूरी दोपहर थोड़ा और समय चाहिए",
+   "en": "I need a little more time all afternoon",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Untaught चाहिए; the English is also semantically odd ('need ... all afternoon')."
+  },
+  {
+   "seed": 73,
+   "known": "बहुत बहुत शुक्रिया लेकिन मुझे थोड़ा और समय चाहिए",
+   "en": "thank you very much but I need a little more time",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Untaught चाहिए modal."
+  },
+  {
+   "seed": 55,
+   "known": "रात को",
+   "en": "very well",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Component gloss is plainly wrong: रात को = 'at night', not 'very well'. A learner seeing this bare component cannot produce the listed English; the 'very well' belongs to अच्छी नींद. Also recurs as the seed-55 inventory component."
+  },
+  {
+   "seed": 60,
+   "known": "तक",
+   "en": "not",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Bare component तक (='until/up to') glossed 'not'. The 'not' actually comes from नहीं. Unanswerable in isolation and mis-attributes negation to तक."
+  },
+  {
+   "seed": 60,
+   "known": "आता",
+   "en": "I",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component आता (3sg 'comes', part of कहना नहीं आता='I don't know how to say') glossed simply 'I'. Meaningless slice; learner cannot map आता→'I'."
+  },
+  {
+   "seed": 51,
+   "known": "लगता है",
+   "en": "I",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component लगता है (='seems/feels', here part of अच्छा लगता है='I enjoy') glossed 'I'. Misattributed slice; the dative-experiencer frame (मुझे ... अच्छा लगता है) is not surfaced and the bare gloss is unanswerable."
+  },
+  {
+   "seed": 62,
+   "known": "साथ",
+   "en": "at the time",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component साथ (='with/together', from एक साथ='at the same time') glossed 'at the time'. Wrong English for the bare postposition."
+  },
+  {
+   "seed": 57,
+   "known": "नहीं",
+   "en": "I can't",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Negator नहीं glossed as content phrase 'I can't' (from याद नहीं='I can't remember'). Per negation-nahin rule, नहीं is a construction feature, not a standalone gloss word; bare component is unanswerable."
+  },
+  {
+   "seed": 63,
+   "known": "कोई",
+   "en": "don't",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "NPI कोई (='any/some') glossed 'don't' (the 'don't' is from नहीं in कोई आपत्ति नहीं). Misattributed; bare component unanswerable."
+  },
+  {
+   "seed": 63,
+   "known": "मैं आपसे मुझे मदद करना चाहता हूँ",
+   "en": "I want you to start helping me",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Hindi↔English mismatch makes the prompt unanswerable: Hindi has no शुरू ('start') yet English says 'to start', and मुझे मदद करना = 'to help me' not 'you ... helping me'. The English contains material with no Hindi source."
+  },
+  {
+   "seed": 71,
+   "known": "हम किसी को भी देना नहीं चाहते थे दिलचस्प काम",
+   "en": "we didn't want to let anyone interesting things",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "English is ungrammatical ('let anyone interesting things' has no verb) and देना='give/let' is rendered 'let' while the object 'interesting things' dangles. Target not cleanly producible. (Parallel s71 'a little more time' variant has the same defect.)"
+  },
+  {
+   "seed": 70,
+   "known": "क्या आप जानते हैं कि वह कहाँ था?",
+   "en": "do you know where it was?",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "जानना was introduced (seed 17) glossed 'to find out'; here glossed 'know'. Same lemma so still answerable, but the find-out/know gloss is inconsistent with the introduced gloss — aspect-to-tense rule's spirit (one Hindi shape → fixed English) not held for this verb."
+  },
+  {
+   "seed": 70,
+   "known": "वह कहाँ था",
+   "en": "where it was",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "वah here = inanimate 'it' (correlative), whereas the vah-collapse rule scopes वह to he/she. Renders fine ('where it was') so answerable, but वह is being used outside its taught he/she sense across seed 70."
+  },
+  {
+   "seed": 93,
+   "known": "अब जाने का समय है",
+   "en": "it's time to go now",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "अब 'now' is a distinct lexeme never introduced; the taught word for 'now' is अभी (S1). Recurs in S93 (x3) and S95 (अब जाने का समय है घर). Structurally uncontrolled but trivially understood by an L1 Hindi learner, so not answer-blocking."
+  },
+  {
+   "seed": 87,
+   "known": "वे ऐसे लोग हैं जिन्हें मैं नहीं जानता",
+   "en": "they are people I don't know",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Relative-oblique pronoun जिन्हें 'whom/which people' is never introduced (only जो appears in inventory). Recurs S87 (x3) and S88 (…बात करने के लिए तैयार नहीं हूँ जिन्हें मैं नहीं जानता). Comprehensible to a native speaker; not answer-blocking but outside the controlled known vocabulary."
+  },
+  {
+   "seed": 99,
+   "known": "मुझे खुद से पूछना चाहिए अभी",
+   "en": "I should ask yourself now",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Dative-experiencer मुझे ('I') with reflexive खुद से is glossed 'ask yourself' — the reflexive should agree with the subject ('ask myself'). The same mis-render recurs in 'मुझे आज खुद से पूछना चाहिए क्यों नहीं कर रहा' → 'I should ask yourself today…'. Learner cannot know whether to produce myself/yourself."
+  },
+  {
+   "seed": 99,
+   "known": "आपको आपके साथ बोलना चाहिए",
+   "en": "you should speak with you",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Incoherent concatenation: 'you should speak with you'. आपके साथ ('with you', formal-you collapse) stacked onto an आपको-subject yields a nonsense English target the learner cannot produce."
+  },
+  {
+   "seed": 99,
+   "known": "आपको आज खुद से पूछना चाहिए",
+   "en": "you should ask yourself today with me",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Gloss adds 'with me' that has no counterpart in the Hindi (आपको आज खुद से पूछना चाहिए = 'you should ask yourself today'). Authoring/concatenation artifact; English target is over-specified."
+  },
+  {
+   "seed": 80,
+   "known": "मैं तैयार होऊँगा जो करना है",
+   "en": "I'll be ready what I need to do",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Ungrammatical English gloss 'I'll be ready what I need to do' — two clauses concatenated with no connective. The learner cannot derive a single producible English sentence."
+  },
+  {
+   "seed": 78,
+   "known": "क्या आपने जो कहा वह बहुत दिलचस्प था",
+   "en": "what you said was very interesting",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Sentence-initial क्या marks a yes/no question in Hindi ('was what you said very interesting?'), but the gloss is a declarative statement. क्या/do-support machinery mismatched to the intended English; either drop क्या or gloss as a question."
+  },
+  {
+   "seed": 76,
+   "known": "मैंने पहले ही सीख लिया अंग्रेज़ी बोलना",
+   "en": "I've learnt English speaking already",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Awkward English word order 'I've learnt English speaking already' (expected 'I've already learnt to speak English'). Aspect/lemma all introduced; this is a gloss-naturalness/order artifact, not a vocab gap."
+  },
+  {
+   "seed": 116,
+   "known": "मैं सबसे अच्छा विकल्प बनाना चाहता हूँ",
+   "en": "I want to make the best choice",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Verb बनाना ('to make') is never introduced; the only 'make' lemma taught is करना (seed 47, 'to make'). A learner reading बनाना has not been given its English, so strictly the prompt's 'make' element is uncontrolled (context विकल्प बनाना makes it guessable, hence med not high)."
+  },
+  {
+   "seed": 132,
+   "known": "यह उससे कम रोमांचक है जो हम कर रहे हैं",
+   "en": "this isn't less exciting than what we're doing",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Polarity mismatch: the Hindi is affirmative (यह ... है, no negator) yet the English target is negated ('this ISN'T'); reading affirmative Hindi the learner cannot produce a negated answer. The negated copula form (यह ... नहीं है) is what 'isn't' requires."
+  }
+ ],
+ "assessment": {
+  "totals": {
+   "prompts_checked": 3348,
+   "vocab_uncontrolled": 12,
+   "npi_violation": 4,
+   "machinery_unlicensed": 0,
+   "gloss_rule_violation": 21
+  },
+  "top_issues": [
+   "Component-fragment mis-glosses are the dominant defect (21 gloss violations, the largest bucket): bare components carry English that belongs to an adjacent component, e.g. S55 रात को -> 'very well' ('very well' is अच्छी नींद), S60 तक -> 'not' (negation is नहीं), S55 साथ -> 'at the time', and the S98-99 'should' family concatenation/reflexive-agreement artifacts ('ask yourself','speak with you','with me'). Unanswerable in isolation and mis-attributes meaning.",
+   "चाहिए ('need/should') leaks un-introduced 8x in seeds 51-75 — neither a LEGO nor free-class (the brief itself leaves it unclassified), while 'need' was taught only as ज़रूरत है. This single item is the bulk of the 12 vocab leaks; the rest are scattered low-severity slips (S33 यह, अब vs taught अभी, जिन्हें, बनाना, बनाना at S116).",
+   "NPI कुछ भी surfaced positively as 'something' where कुछ is correct (seeds 1-25) — the one systematic NPI pattern; positive/affirmative use of an NPI item.",
+   "Hindi<->English answerability mismatches in USE prompts: S63 English says 'to start' with no शुरू in the Hindi; S132 affirmative Hindi (यह...है) glossed as negated English ('this ISN'T'); S71 verbless 'let anyone X'. The English contains material with no Hindi source, so the target is unproducible.",
+   "Calibration inconsistency on कुछ भी between batches: counted as an NPI violation in 1-25 but explicitly NOT counted in 51-75 (treated as free-choice licensed under 'want'). The 'want'-licensing rule needs to be written into the brief so the agent applies it uniformly."
+  ],
+  "gate_verdict": "PASS — the agent produces sound, learner-facing, actionable findings at acceptably low noise (37 findings / 3348 prompts = 1.1%), and reads as a credible replacement for the regex gate. Strengths: machinery licensing is fully checked and clean (0 unlicensed across all 6 batches — ने/क्या/आप/रहे/सकता all correctly gated by debut seed); vocab checking is inflection-aware (चाहता/चाहती/चाहते, मैंने perfective, सीख रहे हैं map to lemmas); and findings cite seed, category, the exact string, and a reproducible reason. Crucially it shows good restraint — it declines to flag natural positive Hindi (किसी और), distinct constructions (पसंद करते हैं vs dative मुझे पसंद है), and legitimate dual glosses (चाहिए noun-object 'need'), and it correctly scopes naturalness/content-quality defects (broken syntax, 'to speak mistakes', doubled मैं) OUT of this answerability check rather than inflating counts. WEAKNESSES: (1) calibration drift on कुछ भी across batches (NPI in 1-25, not-NPI under 'want' in 51-75) — same item, two rulings; (2) it leans on its own judgement where the brief is silent (चाहिए unclassified, 'want'-licensing of NPIs) and notes this honestly, but that means the brief, not the agent, is the gap; (3) high_findings is populated unevenly — batches 1-25/26-50/76-100/101-125 surface real issues only in notes with empty high_findings, so a consumer reading only high_findings would miss the कुछ भी NPI and the S98-99 gloss cluster. Severity tiering needs to be made consistent.",
+  "scale_recommendation": "Yes — scale to all 7 India briefs and the full 668 seeds, but make three calibration fixes to the brief/prompt FIRST so noise stays low and counts are comparable across briefs. (1) Codify the NPI rule explicitly: कुछ भी/कोई/कहीं/कभी/किसी under licensing operators ('want', free-choice, questions, negation) is permitted; positive declarative use is the violation — this resolves the 1-25 vs 51-75 inconsistency and prevents per-language drift. (2) Classify चाहिए in every brief (introduce it as a LEGO or add to free-class with its dual 'need/should' gloss) — it leaked 8x here purely because the brief left it unclassified; audit each of the 7 briefs for similarly unclassified high-frequency function words before the run. (3) Require high_findings to capture every systematic/recurring issue (not just the most egregious 1-3) and add an explicit severity field, so the gate can threshold on high_findings alone rather than parsing prose notes. Also add a thin content-quality side-channel (out of scope here but repeatedly observed: 'to speak mistakes', doubled मैं, S46 nonsensical authoring) so those defects are captured somewhere instead of dropped. Run the full 668 as batches of ~25 as piloted; the ~1.1% finding rate is tractable for human triage at 7x scale.",
+  "summary": "The pilot validates the agent-driven known-side check: across 3,348 prompts in 6 batches it found 37 issues (12 vocab leaks, 4 NPI, 0 unlicensed machinery, 21 gloss-rule breaks) — sound, learner-facing, and low-noise (1.1%), with machinery licensing fully clean and vocab checking correctly inflection-aware. The standout systematic problems are component-fragment mis-glosses (bare components carrying meaning that belongs to an adjacent component, e.g. रात को→'very well', तक→'not'), the un-introduced चाहिए leaking 8x in seeds 51-75 because the brief never classified it, the NPI कुछ भी used positively as 'something', and a handful of Hindi↔English answerability mismatches (S63 'start' with no शुरू, S132 affirmative Hindi glossed as negated English). The agent's judgement is good — it rightly declines to flag natural positive Hindi, distinct constructions, and naturalness defects — but it drifts on कुछ भी between batches and leans on unwritten rules, so before scaling we should codify the NPI-licensing rule, classify चाहिए (and audit all 7 briefs for unclassified function words), and require high_findings to carry every recurring issue with a severity tag. Recommend proceeding to all 7 India briefs and the full 668 seeds after those three brief/prompt fixes."
+ }
+}

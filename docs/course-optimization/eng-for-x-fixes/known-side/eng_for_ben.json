@@ -1,0 +1,906 @@
+{
+ "course_code": "eng_for_ben",
+ "totals": {
+  "prompts_checked": 6843,
+  "vocab_uncontrolled": 45,
+  "npi_violation": 0,
+  "machinery_unlicensed": 0,
+  "gloss_rule_violation": 4,
+  "content_quality": 84
+ },
+ "release_grade": "light",
+ "systematic_issues": [
+  "Person-agreement breakage: 3sg subject সে paired with 1sg verb forms (পারিনি/চাইনি/পান করেছিলাম instead of 3sg পারেনি/চায়নি/পান করেছিল) — recurs at S127, S148, S217. One agreement-correction pass fixes all of these.",
+  "Pronoun mismatch তোমার সাথে ('with you') glossed as 'with me' — recurs at S33 and S40. Single with-you/with-me gloss fix clears the cluster.",
+  "জানতে ('knew' / 'to know') mistranslated as 'wanted to' (should be চাইতে) — recurs at S247 and S248. One verb-gloss correction fixes both.",
+  "Untaught lexeme cluster in S76-100: চেনা (know-a-person, vs taught জানা), অপরিচিত (stranger), অল্প (short-time, vs taught কম), কিছুক্ষণ (a while, vs taught একটু সময়ের জন্য) — each leaks across multiple prompts; remapping to the taught equivalents fixes ~12 vocab flags at once.",
+  "Honorific-register breaches against the you-register-fixed-tumi rule: আপনার at S108 (should be তোমার) and a newly-introduced honorific -েন verb form at S239/S240 — the course is তুমি-tier only. One register sweep fixes the gloss_rule_violations.",
+  "S40 'how do you feel' (কেমন অনুভব করছ) stacking: adjectives/PPs (ক্লান্ত, একটু ক্লান্ত, তোমার সাথে) glued onto the fixed chunk with no syntactic link, producing broken Bengali and non-sentences like 'how do you feel tired'. Recurring authoring template defect within S40.",
+  "Negation-source mismatch: কেউ + positive verb glossed as 'nobody' without a negator (S225 কেউ … দিত → 'nobody would give') — learner would produce 'someone', not 'nobody'.",
+  "English material with no Bengali source (trailing/added clauses): 'what I wanted to say' (S57), 'you' with no তোমাকে (S127), duplicated relative clause (S262), 'more'/'already'/'too'/'now'/'at all' phantoms — recurring authoring pattern of over-glossing.",
+  "Recurring uncontrolled synonym leaks duplicating taught words: এবং (taught আর), বিষয়ে/সম্পর্কে/নিয়ে (taught নিয়ে), ব্যাখ্যা (taught বোঝানো), লাগবে/দরকার, অনুশীলন — known-side ZUT consistency issue across many batches."
+ ],
+ "summary": "Across 6,843 prompts in 14 batches, eng_for_ben is exceptionally clean on the high-value answerability axes: zero NPI violations, zero unlicensed-machinery violations, and only 4 gloss-rule violations (the তুমি/আপনি honorific-register breaches at S108 and S239/S240). The 45 uncontrolled-vocab flags are concentrated in one S76-100 untaught-lexeme cluster (চেনা/অপরিচিত/অল্প/কিছুক্ষণ) plus scattered synonym leaks that duplicate already-taught words, so they remap cleanly to existing inventory. The dominant issue is content quality (84 flags) — chiefly systematic, fix-once-fix-many defects: সে+1sg person-agreement (S127/S148/S217), তোমার সাথে→'with me' (S33/S40), জানতে→'wanted to' (S247/S248), the S40 'how do you feel' stacking template, and over-glossed English with no Bengali source. Excluding content_quality, only 49 real issues remain (45 vocab + 0 NPI + 0 machinery + 4 gloss-rule), and most collapse under a handful of targeted corrections, putting this course at a light-cleanup release grade.",
+ "findings": [
+  {
+   "seed": 19,
+   "known": "কথা বলতে থাকা বন্ধ করতে চাই না",
+   "en": "I don't want to stop talking at all",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two defects in one BUILD prompt. (1) বন্ধ করা 'to stop/close' is a different lexeme from the introduced থামানো 'to stop' (S19) — it is never introduced, so on a strict reading the verb is uncontrolled; but more to the point it is an authoring slip (a synonym swapped for থামাতে). (2) The English adds 'at all' with NO source in the Bengali (কথা বলতে থাকা বন্ধ করতে চাই না = 'I don't want to stop talking', no scalar/emphatic particle). The unproducible 'at all' is the real bug. Fix: কথা বলতে থাকা থামাতে চাই না → 'I don't want to stop talking'."
+  },
+  {
+   "seed": 19,
+   "known": "কথা বলতে থাকা বন্ধ করতে চাই না",
+   "en": "I don't want to stop talking at all",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "বন্ধ (in বন্ধ করা 'to close/stop') is a content element not present in the inventory through S19 — only থামানো 'to stop' was introduced. Logged as low because it is really the same authoring slip captured under content_quality above (a synonym substituted for the taught থামাতে); flagging once for the vocab lane per the requirement to record systematic uncontrolled content."
+  },
+  {
+   "seed": 12,
+   "known": "কাল অন্য কারো সাথে কথা বলার চেষ্টা করব।",
+   "en": "I'm trying to speak with someone else tomorrow",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Tense mismatch. The Bengali verb is future চেষ্টা করব 'I will try' (paired with কাল 'tomorrow'), but the English is present progressive 'I'm trying'. Every other 'I'm trying' prompt in the batch uses চেষ্টা করছি (progressive); here করব = 'will try'. English should read 'I'm going to try to speak with someone else tomorrow' (or the Bengali should be চেষ্টা করছি). Authoring inconsistency, not an answerability gap."
+  },
+  {
+   "seed": 14,
+   "known": "তুমি কি ইংরেজি বলো?",
+   "en": "do you speak English now?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English adds 'now' with no Bengali source. The prompt তুমি কি ইংরেজি বলো? = 'do you speak English?' — there is no এখন 'now' token. The trailing 'now' is unproducible. Fix the gloss to 'do you speak English?'."
+  },
+  {
+   "seed": 20,
+   "known": "দ্রুত ইংরেজি শেখার জন্য যাচ্ছি",
+   "en": "I'm going to learn English quickly",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Bengali. শেখার জন্য যাচ্ছি is malformed for 'going to learn' — it literally reads 'going for the-purpose-of learning' (জন্য 'for' wrongly inserted). The taught near-future is the bare infinitive + যাচ্ছি, i.e. দ্রুত ইংরেজি শিখতে যাচ্ছি. As written, a Bengali speaker would not produce 'I'm going to learn English quickly' from this. Authoring defect (BUILD row)."
+  },
+  {
+   "seed": 23,
+   "known": "আমরা শীঘ্রই সবার সাথে দেখা করতে চাই।",
+   "en": "we want to meet everyone else soon",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Postposition dropped in the gloss. সবার সাথে = 'with everyone else' (introduced S16 with সাথে 'with'), but the English renders 'meet everyone else' (no 'with'), so the সাথে postposition has no counterpart. Either keep 'with' ('meet with everyone else') or drop সাথে on the Bengali side. Minor mirror-order inconsistency, not an answerability bug."
+  },
+  {
+   "seed": 10,
+   "known": "নিশ্চিত না কীভাবে ইংরেজিতে কথা বলা শেখা যায়।",
+   "en": "not sure how to learn speaking English",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Uses the impersonal-passive শেখা যায় 'how one learns / how it is learned' rather than the taught কীভাবে...শিখতে হয় pattern; all content lemmas (শেখা, কথা বলা, ইংরেজি) are introduced so it is answerable, but the যায় impersonal is a new construction relative to the rest of the batch's কীভাবে...হয়/শিখতে হয় frame. Stylistic drift only; record for consistency."
+  },
+  {
+   "seed": 33,
+   "known": "তুমি কি তোমার সাথে শিখছিলে?",
+   "en": "have you been learning with me?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Bengali তোমার সাথে = 'with you/with yourself', but the English says 'with me'. The prompt is also nonsensical in Bengali ('have you been learning with yourself'). The learner reading the Bengali could never produce 'with me' — the pronoun is wrong AND the sentence is incoherent. Recurs from a with-you/with-me confusion."
+  },
+  {
+   "seed": 40,
+   "known": "তোমার সাথে কেমন অনুভব করছ?",
+   "en": "how do you feel with me?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "তোমার সাথে = 'with you', not 'with me' — same pronoun mismatch as S33. Also 'how do you feel with me' bolts তোমার সাথে onto কেমন অনুভব করছ with no grammatical link; the Bengali reads as broken/non-idiomatic."
+  },
+  {
+   "seed": 40,
+   "known": "তুমি কি ক্লান্ত কেমন অনুভব করছ",
+   "en": "how do you feel tired",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Syntactically broken Bengali: the adjective ক্লান্ত ('tired') is stacked directly before কেমন অনুভব করছ ('how do you feel') with no link, and the polar কি is stranded. 'How do you feel tired' is not a real English sentence either. Unproducible / nonsensical authoring."
+  },
+  {
+   "seed": 40,
+   "known": "তুমি একটু ক্লান্ত কেমন অনুভব করছ?",
+   "en": "how do you feel a little tired?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Same broken pattern as the other S40 BUILD: একটু ক্লান্ত ('a little tired') jammed before কেমন অনুভব করছ with no syntactic relation. Neither the Bengali nor the English 'how do you feel a little tired?' is coherent. Recurring S40 defect from gluing adjectives/PPs onto the fixed how-do-you-feel chunk."
+  },
+  {
+   "seed": 38,
+   "known": "প্রায় এক সপ্তাহ ধরে কতদিন ধরে শিখছি।",
+   "en": "I've been learning how long for about a week",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Word-salad: two incompatible time adverbials stacked — কতদিন ধরে ('how long') and প্রায় এক সপ্তাহ ধরে ('for about a week') — yielding the nonsensical 'I've been learning how long for about a week'. কতদিন ধরে is an interrogative phrase used here in a declarative. Unproducible."
+  },
+  {
+   "seed": 42,
+   "known": "আমি গতকাল রাত থেকে ভালো অনুভব করছি",
+   "en": "I feel better today, not like last night",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "The English fabricates 'today, not like last night' which has no Bengali source. গতকাল রাত থেকে = 'since last night'; the natural gloss is 'I've been feeling better since last night'. The English is an unproducible re-paraphrase that diverges from the Bengali."
+  },
+  {
+   "seed": 27,
+   "known": "দেরিতে দেখা করতে ভালো লাগে না",
+   "en": "I don't like to meet with everyone else",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Total Bengali/English mismatch: দেরিতে = 'late' (দেরিতে দেখা করতে = 'to meet late'), but the English says 'with everyone else'. Neither 'late' nor 'with everyone else' is present in the other side. Compound defect — see also the vocab finding for দেরিতে."
+  },
+  {
+   "seed": 35,
+   "known": "মেয়েটি যেকোনো কিছু পড়তে চায় না।",
+   "en": "she doesn't want to read anything else",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English 'else' has no Bengali source — যেকোনো কিছু = 'anything', with no অন্য/আর ('else'). The NPI itself is fine (licensed under চায় না negation), but 'else' is added material the learner cannot produce from the prompt."
+  },
+  {
+   "seed": 29,
+   "known": "যত তাড়াতাড়ি পারি শেখার জন্য অপেক্ষায় আছি।",
+   "en": "I'm looking forward to learning more as soon as you can",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two mismatches: Bengali has no আরো ('more'), yet English adds 'more'; and পারি = 'I can' (1sg) but English says 'you can'. The correct gloss would be '...learning as soon as I can'. Person + added-word divergence."
+  },
+  {
+   "seed": 26,
+   "known": "শীঘ্রই এই অনুভূতি ভালো লাগবে।",
+   "en": "I like this feeling soon",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ভালো লাগবে is future ('will like'), but the English gloss is present 'I like ... soon', which reads oddly ('I like this feeling soon' is not idiomatic). Tense/naturalness defect; low priority."
+  },
+  {
+   "seed": 26,
+   "known": "হচ্ছে",
+   "en": "as if",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss হচ্ছে → 'as if' is wrong; হচ্ছে is the progressive copula 'is happening/becoming', not 'as if'. A stray/mis-glossed component (and অনুভূতি/অনুভব are inconsistently glossed 'feeling' vs the component লাগে → 'I'). Minor component-gloss noise, not learner-facing answerability."
+  },
+  {
+   "seed": 27,
+   "known": "দেরিতে দেখা করতে ভালো লাগে না",
+   "en": "I don't like to meet with everyone else",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "দেরিতে ('late') is a content adverb not present in inventory_through S27 nor in freeClass. The learner has not been taught its English, so it is unanswerable as a content element (compounded by the English not even glossing it)."
+  },
+  {
+   "seed": 48,
+   "known": "তুমি কি ইংরেজি শেখার বিষয়ে পরোয়া করো?",
+   "en": "do you care about learning English?",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "বিষয়ে ('about/regarding') is a distinct lemma from নিয়ে ('about', introduced S43) and is not in the inventory or freeClass; S48 uses both নিয়ে and বিষয়ে for the same English 'about'. The English target is still answerable, so low severity, but it is an uncontrolled known-side synonym (consistency/ZUT pressure)."
+  },
+  {
+   "seed": 69,
+   "known": "ছোট মানুষ",
+   "en": "young and good",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken authoring: the Bengali ছোট মানুষ means 'young person/people' (ছোট 'young' + মানুষ 'person/people'), but the English gloss reads 'young and good' — there is no 'and' (আর) and no 'good' (ভালো) in the prompt, and মানুষ 'person' is dropped entirely. The English is unproducible from this Bengali and the Bengali is mis-glossed. Not an answerability bug per se (ছোট is introduced s69), but the build phrase is corrupt."
+  },
+  {
+   "seed": 57,
+   "known": "আমি কীভাবে বলতে হয় তা মনে রাখতে পারি না",
+   "en": "I can't remember how to say what I wanted to say",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English carries trailing material 'what I wanted to say' that has NO source in the Bengali. The Bengali only says 'I can't remember how to say (it)' (কীভাবে বলতে হয় তা মনে রাখতে পারি না). The clause 'what I wanted to say' (≈ আমি যা বলতে চেয়েছিলাম) is absent. Unproducible English target — a learner reading the Bengali would never generate the trailing clause."
+  },
+  {
+   "seed": 55,
+   "known": "যখন আমি ভালো অনুভব করি তখন শিখতে ভালো লাগে",
+   "en": "I enjoy doing things when I feel good",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Gloss mismatch: the Bengali main clause is শিখতে ভালো লাগে 'I like learning / it's nice to learn' (শিখতে = 'to learn'), but the English says 'I enjoy doing things' — 'doing things' (জিনিস করতে) has no Bengali source and 'learn' is dropped. Also ভালো লাগে is glossed elsewhere as 'I like' (s26) but rendered as 'enjoy' here. The English is not producible from this prompt."
+  },
+  {
+   "seed": 51,
+   "known": "আমি আমার বন্ধুর সাথে উপভোগ করি",
+   "en": "I enjoy doing things with my friends",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English inserts 'doing things' with no Bengali source — the prompt is just আমি আমার বন্ধুর সাথে উপভোগ করি 'I enjoy with my friend'. উপভোগ করা is glossed 'enjoy doing' but here there is no nominal object in the Bengali to license 'things'. The bare উপভোগ করি without a complement is also slightly odd Bengali; the English over-specifies 'things'."
+  },
+  {
+   "seed": 73,
+   "known": "সময়ের জন্য অনেক ধন্যবাদ",
+   "en": "thank you very much for time",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Unnatural English gloss: সময়ের জন্য = 'for the time' / 'for your time', not bare 'for time'. The definite/possessive sense of সময়ের is dropped, yielding ungrammatical-sounding English 'thank you very much for time'. Authoring naturalness defect, not an answerability bug."
+  },
+  {
+   "seed": 52,
+   "known": "গত সপ্তাহে আমি আমার বন্ধুর সাথে কথা বলছিলাম",
+   "en": "I was speaking with my friends last week",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Number mismatch: বন্ধুর is singular 'friend' (genitive), glossed 'friends' (plural) here while the parallel s52 prompts gloss the same বন্ধুর সাথে as 'my friend'. Bengali does not force plural so this is recoverable/ambiguous, but inconsistent within the batch; flagging as a low naturalness/consistency defect, not an answerability problem."
+  },
+  {
+   "seed": 85,
+   "known": "তুমি কি ওই মানুষদের চেনো?",
+   "en": "do you know those people?",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "চেনা 'to know/recognise (a person)' (চিনি/চেনো) is a DISTINCT lemma from the taught জানা 'know' (S45) — Bengali lexically splits recognition-acquaintance (চেনা) from propositional knowing (জানা). চেনা is never introduced, so the learner cannot produce 'know those people' from it. Same problem in 'আমি ওই মানুষদের চিনি না' = I don't know those people (S85). Recurring across 2 prompts."
+  },
+  {
+   "seed": 88,
+   "known": "অপরিচিত মানুষদের সাথে কথা বলা",
+   "en": "talk to people I don't know",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "অপরিচিত 'unfamiliar / stranger' is an untaught content adjective used to render 'people you/I don't know'. It is not in the inventory or freeClass. Appears in 3 prompts at S88 ('talk to people I don't know', 'do you want to talk to people you don't know?', 'I'm not ready to talk to people I don't know'). The learner has no source for this lexeme."
+  },
+  {
+   "seed": 89,
+   "known": "অল্প সময়ে",
+   "en": "in a short time",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "অল্প 'little/small (amount)' is untaught and used pervasively in 'অল্প সময়ে' = 'in a short time' (7 prompts at S89). The taught word for 'short' is কম (S89 = 'short') and 'a little' is একটু (S9); অল্প is a separate lexeme that appears nowhere in the inventory. Highly recurring — the whole 'in a short time' frame is unanswerable."
+  },
+  {
+   "seed": 92,
+   "known": "কিছুক্ষণের জন্য",
+   "en": "for a while",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "কিছুক্ষণ 'a while / some time' is untaught. The seed's own taught LEGO for 'for a while' is একটু সময়ের জন্য (S92), yet 7 prompts render 'for a while' with the unintroduced কিছুক্ষণ / কিছুক্ষণের জন্য instead. The learner is given একটু সময়ের জন্য but tested on কিছুক্ষণ — a different lexeme. Recurring."
+  },
+  {
+   "seed": 83,
+   "known": "আমি তোমার বন্ধু সম্পর্কে তুমি যা বলেছিলে তার সাথে একমত",
+   "en": "I agree with what you said about your friend",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "সম্পর্কে 'about / concerning' is an untaught postposition used for English 'about'. The taught 'about' is নিয়ে (S43 নিয়ে ভাবা = think about; নিয়ে is also freeClass). সম্পর্কে is a distinct lexeme not introduced. Also at S84 ('আমার বন্ধু সম্পর্কে সে যা বলেছিল...'). 2 prompts."
+  },
+  {
+   "seed": 76,
+   "known": "আমি শেখার বিষয়ে খুব খুশি",
+   "en": "I'm very happy about learning",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "বিষয়ে 'about / regarding' is an untaught postposition. The taught rendering of 'about' is নিয়ে (freeClass / S43). বিষয়ে is a separate lexeme not in the inventory, used in 2 prompts at S76 ('happy about learning', 'happy about learning English')."
+  },
+  {
+   "seed": 76,
+   "known": "আমি এখন পর্যন্ত কতটুকু শিখেছি তাতে আমি খুব খুশি",
+   "en": "I'm very happy with how much I've learnt already",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "পর্যন্ত 'until / up to / so far' (in এখন পর্যন্ত 'so far') is untaught — not in inventory or freeClass. Used to convey the English 'already'/'so far' nuance, but the learner has no source for this lexeme."
+  },
+  {
+   "seed": 77,
+   "known": "আমি অবাক হচ্ছি যে আমি ইতিমধ্যে এত কিছু শিখেছি",
+   "en": "I'm surprised at how much I've already learnt",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "এত (in এত কিছু 'so much / this much') is an untaught degree word. The inventory teaches কতটুকু 'how much' (S76) and অনেক 'a lot' (S89) but not এত 'so much'. The learner has no source for the 'so much/this much' quantifier here."
+  },
+  {
+   "seed": 90,
+   "known": "এটা মজার এবং দারুণ",
+   "en": "it's fun and great",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "এবং 'and' is an untaught (more formal/written) synonym. The taught conjunction 'and' is আর (S15, also freeClass). Using এবং introduces a second Bengali form for 'and' that the learner was never given — a ZUT/vocab leak."
+  },
+  {
+   "seed": 97,
+   "known": "হ্যাঁ আমি সম্মত",
+   "en": "yes I agree",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "সম্মত 'agree(d)' is an untaught synonym for the taught একমত (S83 একমত হওয়া = 'agree with'). The learner has only ever been given একমত; সম্মত is a different lexeme appearing nowhere in the inventory."
+  },
+  {
+   "seed": 96,
+   "known": "না আমি এখনো তৈরি নই, আমার আরেকটু সময় দরকার",
+   "en": "no I'm not ready yet, I need a little more time",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "আরেকটু 'a little more / another bit' is a fused lexeme (আরেক 'another' + একটু) that is not introduced; আরেক 'another' never appears in the inventory. The learner has আরো 'more' (S23) and একটু 'a little' (S9) separately but not this fused 'a little more' form."
+  },
+  {
+   "seed": 94,
+   "known": "এটা দারুণভাবে কাজ করবে",
+   "en": "this will work great",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "দারুণভাবে 'greatly / wonderfully' uses the adverbialiser -ভাবে on দারুণ. দারুণ (S90) is taught but only as the adjective 'great'; the derived adverb দারুণভাবে and the -ভাবে morpheme are not introduced (কীভাবে 'how' S3 is an unrelated lexicalised whole). Minor — derivational, learner could plausibly bridge."
+  },
+  {
+   "seed": 76,
+   "known": "আমি কতটুকু শিখেছি তা নিয়ে খুশি",
+   "en": "I'm happy about how much I've learnt already",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English 'already' has no source in the Bengali — the prompt is 'how much I've learnt' (কতটুকু শিখেছি তা নিয়ে খুশি) with no ইতিমধ্যে. Unproducible 'already' on the English side."
+  },
+  {
+   "seed": 96,
+   "known": "আমার একটু সময় দরকার",
+   "en": "I need a little more time",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English says 'a little more time' but the Bengali একটু সময় = 'a little time' (no 'more' marker). Compare the parallel correct prompt 'আমার আরেকটু সময় দরকার' which does carry আরেকটু 'a little more'. The 'more' here has no Bengali source. Same defect in the BUILD 'একটু সময় দরকার' → 'need a little more time'."
+  },
+  {
+   "seed": 90,
+   "known": "যদি তুমি আস্তে কথা বলতে পারো তাহলে দারুণ হয়",
+   "en": "if you can speak more slowly that would be great",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English 'more slowly' (comparative) but Bengali আস্তে = plain 'slowly' (S61) with no comparative/আরো marker. The 'more' is unproducible from the prompt."
+  },
+  {
+   "seed": 76,
+   "known": "তুমি কি ইতিমধ্যে শুরু করেছো?",
+   "en": "are you learning already?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Meaning mismatch: the Bengali শুরু করেছো = 'have you started' (perfect of শুরু করা), so the prompt means 'have you already started?', but the English target is 'are you learning already?' (progressive 'learning', not 'started'). Known and target diverge in both lexical verb and aspect."
+  },
+  {
+   "seed": 80,
+   "known": "শেখা হবো",
+   "en": "I'll be learning",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Broken Bengali syntax: শেখা (verbal noun 'to learn/learning') + হবো ('I'll be') is not a grammatical way to say 'I'll be learning' — it reads literally as 'I'll become a-learning'. Bengali would use শিখব / শিখতে থাকব. Authoring defect in a BUILD prompt."
+  },
+  {
+   "seed": 108,
+   "known": "আমি আশা করি আপনার সাথে অনুশীলন করতে।",
+   "en": "I hope to practise with you",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Uses the HONORIFIC আপনার ('your', formal-you paradigm). The brief's you-register-fixed-tumi glossRule states the course uses ONLY the তুমি tier and that আপনি/আপনার NEVER appear in the corpus; the inventory only ever introduces তুমি/তোমার/তোমাকে (e.g. তোমার S83). আপনার is both an unintroduced pronoun form and a direct register-rule breach — the prompt should be তোমার সাথে. Same prompt also carries the vocab issue below (অনুশীলন)."
+  },
+  {
+   "seed": 108,
+   "known": "আমি আশা করি আপনার সাথে অনুশীলন করতে।",
+   "en": "I hope to practise with you",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'practise' is rendered with অনুশীলন, but the taught LEGO for 'to practise' is অভ্যাস করা (S5); অনুশীলন is a distinct content lemma never introduced. Also appears at S118 (পাবে অনুশীলন করতে, পাবে ইংরেজি অনুশীলন করা সহজ). It is the learner's L1 so it is comprehensible, but it is a known-side ZUT consistency defect — one English target 'practise' should map back to a single Bengali rendering (অভ্যাস করা)."
+  },
+  {
+   "seed": 110,
+   "known": "আমরা বন্ধুরা এবং আমরা সাহায্য করতে চাই",
+   "en": "we're friends and we want to help",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'and' rendered as এবং (5 prompts: 4 at S110, 1 at S122 'এটা সহজ হতে শুরু করছে এবং আমি উত্তেজিত'). The taught conjunction 'and' is আর (S15, freeClass); এবং is a separate (more formal) conjunction lemma not in freeClass or inventory. L1-comprehensible, but a known-side consistency defect — 'and' should consistently surface as আর."
+  },
+  {
+   "seed": 121,
+   "known": "একটা গাড়ি লাগবে",
+   "en": "I need a car",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'need' rendered with the necessity verb লাগবে ('is needed/will be needed'), a construction/lemma not introduced. 'need' was taught as দরকার (S96) / করতে হবে (S44). L1-comprehensible but a known-side ZUT consistency slip; would read more in-controlled-language as আমার একটা গাড়ি দরকার."
+  },
+  {
+   "seed": 105,
+   "known": "আমি জানত না",
+   "en": "I didn't know",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Subject-verb agreement is broken Bengali. জানত is the 3rd-person past ('সে জানত' = he knew); the S105 LEGO জানত না was authored as 3sg but is then reused with 1st/2nd-person subjects across 5 prompts: 'আমি জানত না' (should be জানতাম না), 'তুমি জানত না' (should be জানতে না), 'তুমি কি জানত না?', 'আমি জানত না কীভাবে বলতে হয়', 'আমি জানত না কী বলব'. The English glosses are correct, but the Bengali prompts a native learner reads are agreement-mismatched (an authoring defect inherited from a 3sg LEGO, not an answerability bug)."
+  },
+  {
+   "seed": 118,
+   "known": "পাবে",
+   "en": "in the pub",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The 'pub' material at S118 is awkward authoring: পাবে (pub + locative -এ) is a wholesale English loanword carrying no real Bengali content, and is a homograph of the common verb form পাবে ('will get', পাওয়া fut-2/3sg), so a native learner reading bare 'পাবে' (glossed 'in the pub') sees an ambiguous form. The component split পাব ('the pub') + এ ('in') compounds the artificiality. Comprehension-degrading but not unanswerable."
+  },
+  {
+   "seed": 114,
+   "known": "হচ্ছে না",
+   "en": "don't as if",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Recurring across the batch: component-role glosses are fragmentary, ungrammatical English with no clean standalone meaning — e.g. S114 'হচ্ছে না' = 'don't as if', S107 'করেছিলাম' = 'to' and 'কর' = 'doing', S105 'জন্যই' = 'is why'. These are decomposition artifacts of M-LEGOs (মনে হচ্ছে, আশা করেছিলাম, সেইজন্যই) and are inherent to the component tier, so low priority, but recorded as a systematic content_quality pattern."
+  },
+  {
+   "seed": 130,
+   "known": "সে আমার বন্ধু এবং আমি খুব খুশি",
+   "en": "he's my friend and I'm so happy",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "এবং 'and' is uncontrolled known-side vocabulary: the ONLY conjunction 'and' introduced is আর (S15). এবং is a more formal/literary synonym never introduced. Recurs in 8 prompts (S130 ×2, S136, S137, S142 ×2, S147 ×2). Low severity — the English target 'and' is producible and এবং is a function word — but it breaks the controlled-known-language rule (a known form the learner was never given). Recommend swapping এবং → আর for consistency with the taught conjunction."
+  },
+  {
+   "seed": 131,
+   "known": "সেইজন্যই এটা আমার মাথার মধ্যে",
+   "en": "that is why it's in my head",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "মধ্যে 'in/inside' is a postposition used as content but never introduced as a standalone item — it appears only fused inside ইতিমধ্যে 'already' (S76). The S131 LEGO for 'in my head' is কিছু মাথায় (locative clitic -য়, glossed 'in my head'), so these মাথার মধ্যে prompts introduce an unlicensed new postposition. Recurs in 3 prompts (সেইজন্যই এটা আমার মাথার মধ্যে; আমার মাথার মধ্যে অনেক কিছু; সে আমার মাথার মধ্যে). Use the locative form মাথায় already taught at this seed."
+  },
+  {
+   "seed": 131,
+   "known": "তোমার মাথায় কী চলছে?",
+   "en": "what is going on in your head?",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "চলছে 'is going on / running' is the progressive of the verb চলা, which is NOT introduced. চলে যাওয়া 'leave' (S119) is a distinct phrasal compound and does not license চলা 'go on/happen'. The learner has no English mapping taught for this verb-event. The parallel prompt তোমার মাথায় কী আছে? ('what is in your head?', using introduced আছে) is the controlled alternative."
+  },
+  {
+   "seed": 143,
+   "known": "এটা একই রকম বিষয় যা আমরা আগে কথা বলছিলাম",
+   "en": "it's the same thing as we were talking about earlier",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "বিষয় 'thing / matter / topic' is a new noun not introduced; the noun taught for 'thing(s)' is জিনিস (S51) and 'things' এর variants. বিষয় is uncontrolled known-side content. Single occurrence."
+  },
+  {
+   "seed": 131,
+   "known": "সে আমার মাথার মধ্যে",
+   "en": "it's in my head",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "সে is the ANIMATE 3sg personal pronoun (he/she), glossed here as inanimate 'it's'. The gender-neutral-3sg gloss rule covers he↔she for সে, but সে does not extend to inanimate 'it' — Bengali uses এটা/সেটা for inanimate 'it' (and এটা is the form used everywhere else in this very seed, e.g. 'সে আমার মাথার মধ্যে' should be এটা আমার মাথার মধ্যে). Mapping সে→'it' is a wrong-pronoun gloss, not the licensed he/she collapse. Also overlaps the মধ্যে vocab issue above."
+  },
+  {
+   "seed": 127,
+   "known": "আমি পাবে যেতে দেখতে চাইনি",
+   "en": "I didn't want to see you at the pub",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken/word-salad Bengali. পাবে (introduced S118 as the idiom 'in the pub', but literally the future 'will get') + যেতে 'to go' + দেখতে 'to see' do not form a grammatical clause — there is no syntax meaning 'see you at the pub'. The English target also contains 'you' which has NO source in the Bengali (no তোমাকে). Unproducible/incoherent prompt."
+  },
+  {
+   "seed": 148,
+   "known": "সে উত্তর দিতে পারিনি",
+   "en": "he couldn't answer",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Person-agreement error: পারিনি is the FIRST-PERSON-singular negative past ('I couldn't'), but the subject is সে 'he/she'. For 'he couldn't answer' Bengali needs the 3sg form পারেনি (সে উত্তর দিতে পারেনি). সে + পারিনি is ungrammatical. Recurs at S148 (সে উত্তর দিতে পারিনি; সে উত্তর দিতে পারিনি কারণ) and S127 (সেইজন্যই সে দেখতে চাইনি — সে 'he' with 1sg চাইনি 'I didn't want'). 3 prompts total."
+  },
+  {
+   "seed": 145,
+   "known": "না",
+   "en": "more",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component decomposition error: না is glossed as BOTH 'more' and 'not' at S145. না only ever means 'not/no' (the negator); the 'more' meaning belongs to আর ('any more'). In আমি আর না 'I don't want any more', 'more' comes from আর and negation from না. Glossing না='more' is a wrong component gloss that would mis-teach the learner."
+  },
+  {
+   "seed": 144,
+   "known": "ছিলাম",
+   "en": "I",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component mis-gloss: ছিলাম is the 1sg past-copula/past-tense suffix 'was' (জেগেছিলাম = 'I woke'), not the pronoun 'I' (আমি). Glossing the verbal suffix ছিলাম as 'I' is a wrong decomposition — the 'I' is carried by আমি/the verb subject, the ছিলাম fragment carries past tense."
+  },
+  {
+   "seed": 137,
+   "known": "বলতে হয়",
+   "en": "to",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component mis-segmentation: বলতে হয় glossed as bare 'to'. বলতে হয় is 'have to speak / need to talk' (the করতে হবে / হয় obligation light-verb construction); reducing it to the English particle 'to' loses the whole verbal event and mis-teaches the fragment."
+  },
+  {
+   "seed": 128,
+   "known": "জানতাম",
+   "en": "know",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss for জানতাম is 'know', but জানতাম is the 1sg PAST-HABITUAL of জানা = 'I used to know / I knew' (the matched build/use prompts at this seed correctly gloss চিনতাম/জানতাম as 'used to know'). The bare 'know' gloss drops the past/used-to aspect and conflicts with the seed's own renderings."
+  },
+  {
+   "seed": 136,
+   "known": "সে আমার বান্ধবী বলেই আমি জানতাম",
+   "en": "I used to know she's my friend",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two problems. (1) বলেই 'precisely because / for the reason that' is uncontrolled known-side vocabulary (not introduced; the causal taught is কারণ S22/বলেই never given). (2) Meaning mismatch: the Bengali reads 'precisely BECAUSE she's my friend, I knew/used-to-know', a causal clause, but the English 'I used to know she's my friend' is a complement clause ('I knew THAT she's my friend'). The Bengali and English do not denote the same proposition — unproducible mapping."
+  },
+  {
+   "seed": 159,
+   "known": "আমি ব্যাখ্যা করতে চাই যা আমি বলছি",
+   "en": "I want to explain what I'm trying to say",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ব্যাখ্যা করা ('to explain') is an uncontrolled synonym not in the inventory. 'Explain' was already taught as বোঝানো (S8 'to explain'), and S159 even uses বোঝাতে ('আমি তোমাকে বোঝাতে চাই' => 'I want to explain to you'). Using BOTH বোঝানো-family and ব্যাখ্যা for the same English 'explain' within one seed is a ZUT-style split; ব্যাখ্যা is unanswerable from taught vocab. Recurs 3× in S159 (lines: ব্যাখ্যা করা কঠিন, পক্ষে ব্যাখ্যা করা সহজ নয়, ব্যাখ্যা করতে চাই)."
+  },
+  {
+   "seed": 158,
+   "known": "আসুন অন্য বিষয়ে কথা বলি",
+   "en": "let's talk about something different",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "বিষয় ('topic/subject') is an uncontrolled content noun, never introduced. The taught form for 'something else/different' is অন্য কিছু (used everywhere else in S158). বিষয়ে = 'about [a] topic' has no taught source, and the English 'something different' doesn't map to it cleanly. Learner cannot produce this from introduced vocabulary."
+  },
+  {
+   "seed": 173,
+   "known": "না ধন্যবাদ আমাকে সাহায্য লাগবে না",
+   "en": "no thank you I don't need help",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "লাগবে ('will be needed / need') is an uncontrolled verb. 'Need' is taught as দরকার / দরকার নেই (S96, S45/S106) and the very next prompt in this same seed uses the controlled form: 'না ধন্যবাদ আমার সাহায্য দরকার নেই' => 'I don't need any help'. লাগবে is an unnecessary uncontrolled synonym creating an inconsistent 'need' rendering."
+  },
+  {
+   "seed": 159,
+   "known": "যা আমি বলছি তা আমার পক্ষে ব্যাখ্যা করা সহজ নয়",
+   "en": "it's not easy for me to explain what I'm trying to say",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "পক্ষে ('for/on behalf of', rendering 'for me') is an uncontrolled postposition, not in freeClass (which lists সাথে/জন্য/নিয়ে) and not introduced. The taught 'for' is জন্য (তোমার জন্য / আমার জন্য). Recurs at S160 ('এই শব্দটা শেখা আমার পক্ষে কঠিন' => 'it's difficult for me to learn this word'). Low: a function word and the English 'for me' is producible, but the known-side form is uncontrolled."
+  },
+  {
+   "seed": 160,
+   "known": "কীভাবে বলে এই শব্দটা একটু ধীরে?",
+   "en": "how do you say this word more slowly?",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "ধীরে ('slowly') is an uncontrolled synonym; the taught adverb for 'slowly' is আস্তে (S61). ধীরে is a distinct lexeme, not an inflection of আস্তে. Recurs at S170 ('আমি চাই তুমি আরও ধীরে বলো' => 'I'd like you to speak more slowly'). Low: the English 'slowly' is producible and the concept is taught, but the Bengali form is uncontrolled."
+  },
+  {
+   "seed": 159,
+   "known": "যা আমি বলছি",
+   "en": "what I'm trying to say",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Systematic across S159 (9 prompts): বলছি ('I'm saying') is glossed 'I'm TRYING TO say' — the English adds 'trying to' with NO Bengali source (no চেষ্টা করছি). This is internally inconsistent: S159's own component 'আমি বলছি' => 'I'm saying' (no 'trying to'), and the controlled 'trying to say' form বলার চেষ্টা করছি appears at S159 'সেটা আমি বলার চেষ্টা করছিলাম না'. S174 also renders identical বলছি correctly as 'saying' ('তুমি বুঝতে পারছ আমি কী বলছি' => 'what I'm saying'). The unsourced 'trying to' originates in the S159 inventory gloss itself, so the whole seed propagates it."
+  },
+  {
+   "seed": 151,
+   "known": "সেইজন্যই আশা করেছিলাম যে হবে",
+   "en": "that is why I was hoping would happen",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Seed-level awkward/incomplete English. 'I was hoping would happen' is missing its object ('...what I was hoping would happen'). The Bengali আশা করেছিলাম যে হবে = 'I had hoped that [it] would happen'; the inventory gloss 'hoping would happen' is itself ungrammatical and the use-rows inherit it ('this is what I was hoping would happen', 'that is why I was hoping would happen'). Not an answerability bug but a naturalness/authoring defect on the S151 carrier."
+  },
+  {
+   "seed": 153,
+   "known": "বলতাম",
+   "en": "said",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss aspect mismatch: বলতাম is the past-habitual/conditional ('I would say / used to say'), the base of the counterfactual বলতাম না 'wouldn't have said' that the rest of S153 builds. Glossing it as plain 'said' (which is বললাম/বলেছিলাম, cf. S78 বললে='said') mislabels the form. Component-level only; the BUILD/USE rows ('wouldn't have said') are correct."
+  },
+  {
+   "seed": 181,
+   "known": "আমার মাকে ডাক্তারের কাছে নিয়ে যেতে হবে",
+   "en": "I need to take my mother to the doctor",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "The relational postposition কাছে ('to/at/near', here directional 'to the doctor') is the carrier for English 'to the doctor / to see the doctor' across ~12 seed-181 prompts (ডাক্তারের কাছে যেতে চায়, কাছে নিয়ে যেতে হবে, কাছে গিয়েছিলে, ডাক্তার কোথায় আছেন etc.), yet কাছে is never introduced. The only prior occurrence is the fixed idiom তোমার কাছ থেকে খুব ভালো (s142, 'very kind of you'), where কাছ is bound inside a single M-LEGO and the learner is never given কাছে as an independent 'to/at someone' postposition. Recurring, high-value gap; the learner has no cue to produce কাছে."
+  },
+  {
+   "seed": 177,
+   "known": "আমি মনে করি যে সে কোথায় যেতে চায় তা সঠিক",
+   "en": "I think that where she wants to go is good",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Content adjective সঠিক ('correct/right'), glossed here loosely as 'good', is the predicate of the prompt but is never in the inventory. 'good' was taught only as ভালো (s47); the English 'is good' gives the learner no cue to produce the untaught সঠিক rather than ভালো. Both an answerability gap and a slight gloss mismatch (সঠিক = 'correct/right', not 'good')."
+  },
+  {
+   "seed": 182,
+   "known": "তুমি কি এই ধরনের কিছু দেখেছ?",
+   "en": "have you seen anything like this?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ধরনের ('kind/type of', here এই ধরনের 'this kind of / like this') is never introduced. 'like this' was taught as এরকম (s49); the learner cannot be expected to produce the untaught ধরনের from the English 'like this'. Single prompt but a genuine untaught content morpheme."
+  },
+  {
+   "seed": 197,
+   "known": "সে একজন ভালো শিক্ষক",
+   "en": "he is a good teacher",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "The animate classifier একজন ('a/one (person)') is used as the indefinite article for human nouns (একজন শিক্ষক, একজন ছেলে, একজন মেয়ে, একজন বন্ধু at s197/198/194) but only একটা is in the free class. Borderline/defensible: by the brief's no-articles rule English 'a' = একটা ('one'+classifier), and একজন is just the animate allomporph of the same 'one+classifier' indefinite device, so a learner who has the একটা pattern can plausibly map 'a (teacher/son)' onto একজন. Flagged low for completeness; recommend adding একজন (or noting it free) to remove ambiguity."
+  },
+  {
+   "seed": 181,
+   "known": "আমার মা সেখানে আছেন",
+   "en": "my mother is there",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The 3sg existential verb is in the HONORIFIC form আছেন (-এন agreement) rather than the plain আছে that the corpus/free-class uses everywhere else (আছেন also in 'ডাক্তার কোথায় আছেন'). Natural Bengali deference to mother/doctor, but it is a register inflection the learner has not been shown (the brief fixes register at plain তুমি and says honorific forms never appear). Not an answerability bug — the English is unchanged — but worth recording as a register-consistency wrinkle."
+  },
+  {
+   "seed": 181,
+   "known": "তুমি কি ডাক্তারের কাছে যেতে চাও?",
+   "en": "do you want to see the doctor?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Gloss looseness around 'see the doctor': Bengali says যেতে চাও / গিয়েছিলে = 'want to GO to the doctor' / 'did you GO', but English renders 'want to SEE the doctor' / 'did you go to SEE the doctor' (go vs see). Also গিয়েছিলে is the perfect-past of যাওয়া — a natural inflection, not a new gap. Minor authoring naturalness defect, no answerability impact."
+  },
+  {
+   "seed": 225,
+   "known": "কেউ তোমাকে উত্তর দিত",
+   "en": "nobody would give you an answer",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Bengali কেউ with the POSITIVE verb দিত ('would give') means 'someone would give you an answer', not 'nobody'. 'Nobody' requires a negator (কেউ … দিত না / কেউ দিত না). The English negation 'nobody' has NO source in the Bengali, so a learner reading this prompt would never produce 'nobody' — they'd produce 'someone'. Unproducible / negation-form mismatch."
+  },
+  {
+   "seed": 217,
+   "known": "সে এক-দুই গ্লাস পানি পান করেছিলাম।",
+   "en": "she had a glass or two of water",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Subject-verb person agreement is broken: 3sg subject সে takes 1sg verb পান করেছিলাম ('I had'). Correct 3sg form is পান করেছিল. Systematic in this seed — also at 'সে গতরাতে … পান করেছিলাম' ('she had … last night') and 'সে এক-দুই গ্লাস পানি পান করেছিলাম' glossed 'he had …'. Three broken-agreement prompts in seed 217. Broken Bengali, though the target English is still recoverable."
+  },
+  {
+   "seed": 214,
+   "known": "সপ্তাহান্তে কী করার পরিকল্পনা আছে?",
+   "en": "what are you going to do at the weekend?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "পরিকল্পনা 'plan' is not in the introduced inventory (≤214). The Bengali literally asks 'what plan is there to do at the weekend' but the English drops 'plan' entirely and renders it as future 'going to do' — so the prompt is also a content mismatch (পরিকল্পনা আছে has no echo in the English). Both unanswerable-vocab and gloss-mismatch."
+  },
+  {
+   "seed": 216,
+   "known": "কয়েকটা মিনিটে তৈরি হব",
+   "en": "I'll be ready in a few minutes",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "মিনিট 'minute' is not in the introduced inventory through 216 (the corpus uses কিছুক্ষণ = 'a few minutes' at seed 155, a different lemma). Obvious cognate, but strictly the learner has not been given 'minute'. Low severity."
+  },
+  {
+   "seed": 221,
+   "known": "তুমি কি সব কিছু করেছিলে এবং তারপর বিশ্রাম নিয়েছিলে?",
+   "en": "did you do everything and then go out?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Bengali says বিশ্রাম নিয়েছিলে = 'did you relax', but the English gloss says 'go out'. The English target ('go out') has no source in the Bengali stimulus (which carries 'relax'); the two halves describe different actions. Authoring mismatch."
+  },
+  {
+   "seed": 207,
+   "known": "যা করা দরকার ছিল সব কিছু",
+   "en": "what you needed to do with everything",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The English adds 'with' ('with everything') but the Bengali সব কিছু = 'everything' carries no postposition (no সাথে/নিয়ে) — 'with' is unsourced. The Bengali reads more like 'everything that needed to be done'. Minor mismatch."
+  },
+  {
+   "seed": 225,
+   "known": "সে",
+   "en": "would",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Misleading component decomposition: সে is the 3sg pronoun 'he/she', glossed here as 'would'. The conditional/irrealis 'would' lives in the verb inflection দিত, not in the pronoun. Sibling component যদি glossed 'if he' (যদি = just 'if') and পারলে glossed 'if he could' similarly smuggle the pronoun into the gloss. Decompositional artifacts, low value."
+  },
+  {
+   "seed": 216,
+   "known": "হয়েছিল",
+   "en": "I",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Misleading component gloss: হয়েছিল = 'happened/was' (3sg past of হওয়া) in the impersonal দেখা করা হয়েছিল construction, but it is glossed 'I'. The '-I/saw' meaning emerges from the whole phrase, not from হয়েছিল. Companion component দেখা করা glossed 'saw' (lit. 'to meet'). Decomposition defect only; the build/use phrases themselves are answerable."
+  },
+  {
+   "seed": 207,
+   "known": "তুমি",
+   "en": "you've",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component তুমি = 'you' is glossed 'you've'; the perfect ''ve' belongs to the verb করেছ, not the pronoun. Minor decomposition artifact (same pattern as the seed-225 components)."
+  },
+  {
+   "seed": 239,
+   "known": "আমার মা পড়তে পছন্দ করেন যেমন আমি টেলিভিশন দেখতে",
+   "en": "my mother likes to read just like I like to watch",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "যেমন 'just like / as' is not in the inventory through this seed (no entry for যেমন anywhere up to S250) and there is no freeClass token for it, so the learner has never been taught the English 'just like / as'. The comparative-of-manner is unanswerable. (Distinct from চেয়ে 'than' S42, which is a different relation.)"
+  },
+  {
+   "seed": 248,
+   "known": "সে আমার টাকা ফেরত দিতে রাজি ছিল না।",
+   "en": "she was not ready to give my money back",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "রাজি 'willing / ready (to agree)' is never introduced. তৈরি 'ready (to go)' (S26) is a different lemma/sense and was glossed 'ready to go', not 'ready to'. The learner has no taught route to produce 'ready/willing' here, so the predicate is unanswerable."
+  },
+  {
+   "seed": 249,
+   "known": "তুমি যাওয়ার আগে আমাকে সাহায্য করা জরুরি।",
+   "en": "it is important to help me before you go",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "জরুরি 'important / urgent' is not in the inventory. The course teaches গুরুত্বপূর্ণ 'important' (S65/S137), a different lemma; জরুরি itself was never introduced, so mapping it to 'important' is untaught for this learner."
+  },
+  {
+   "seed": 239,
+   "known": "তোমার মা কি পড়তে পছন্দ করেন?",
+   "en": "your mother likes to read?",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Polar particle কি marks a yes/no question, which per the ki-vs-kii rule licenses English do-support. The gloss renders a flat declarative + '?' instead of 'does your mother like to read?'. Breaks ki-question → do-support."
+  },
+  {
+   "seed": 240,
+   "known": "তোমার বাবা কি পড়তে পছন্দ করেন?",
+   "en": "your father likes to read?",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Same defect as S239: polar কি question glossed as 'your father likes to read?' instead of do-support 'does your father like to read?'. These are the only two ki-polar questions in the batch that drop the auxiliary; all others render do/does/did/can correctly."
+  },
+  {
+   "seed": 239,
+   "known": "আমার মা পড়তে পছন্দ করেন যেমন আমি টেলিভিশন দেখতে",
+   "en": "my mother likes to read just like I like to watch",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "The second clause আমি টেলিভিশন দেখতে is broken Bengali: it has no finite verb and no 'like' (পছন্দ করি), literally 'I television to-watch'. The English 'I like to watch (television)' has no source for 'like', and the English truncates 'television'. Unproducible/garbled prompt on top of the যেমন vocab gap."
+  },
+  {
+   "seed": 247,
+   "known": "মনে করতাম তুমি জানতে",
+   "en": "I thought you wanted to",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "জানতে is the verb জানা 'know' (= 'you knew / to know'), not চাইতে 'want to'. The English 'wanted to' has no Bengali source here and mis-glosses জানতে. Recurring authoring error (see S248)."
+  },
+  {
+   "seed": 248,
+   "known": "এটা বাজে ছিল এবং তুমি জানতে",
+   "en": "it was rubbish and you wanted to",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Same জানতে → 'wanted to' mistranslation as S247. জানতে = 'knew', not 'wanted to' (চাইতে). The 'wanted to' material is unsourced; the BUILD pair is incoherent."
+  },
+  {
+   "seed": 229,
+   "known": "একজন মহিলা আমাকে সাহায্য করছে",
+   "en": "a woman is trying to help me",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "করছে is the plain progressive 'is helping' (no চেষ্টা 'try'). English adds 'trying to' with no Bengali source — should be 'a woman is helping me'. (Note: the parallel S226 line 'একজন লোক আমাকে সাহায্য করছে' is correctly glossed 'a man is helping me', confirming the error here.)"
+  },
+  {
+   "seed": 240,
+   "known": "আমার বাবা একটা দলে কাজ করেন",
+   "en": "my father works in a group",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Register inconsistency: S239/S240 newly conjugate 3sg verbs for parents in the honorific -েন form (করেন, পছন্দ করেন, শিখছেন), e.g. বাবা ... কাজ করেন / শিখছেন. Earlier seeds and the brief's fixed-register rule use the plain 3sg (সে চায়, ইংরেজি শিখছে). The honorific verb morphology was never introduced and both forms gloss to the same English, so the -েন conjugation is uncontrolled/inconsistent machinery the learner hasn't been given. Affects all S239/S240 parent sentences."
+  },
+  {
+   "seed": 262,
+   "known": "তুমি কার সাথে কথা বলছিলে",
+   "en": "that man you were talking to earlier",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Bengali/English mismatch. কার সাথে = 'with WHOM', so the Bengali literally asks 'who were you talking to' — but the English gloss is the declarative noun phrase 'that man you were talking to earlier'. The English adds 'man' (no Bengali লোক) and 'earlier' (no Bengali source), and the Bengali interrogative কার ('whom') has no counterpart in the English. The intended carrier phrase is যে লোকের সাথে কথা বলছিলে (correct in the sibling build/use rows); this build row's Bengali is wrong for its gloss."
+  },
+  {
+   "seed": 262,
+   "known": "তুমি কতক্ষণ ধরে যে লোকের সাথে কথা বলছিলে?",
+   "en": "how long were you talking to that man you were talking to?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Garbled English with a duplicated relative clause. The Bengali means 'how long were you talking to the man' (কতক্ষণ ধরে = how long), but the gloss tacks on a redundant '...that man you were talking to' producing 'how long were you talking to that man you were talking to?'. Unnatural/nonsensical English; the trailing relative clause has no distinct Bengali source."
+  },
+  {
+   "seed": 262,
+   "known": "লোকের সাথে",
+   "en": "man you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Incoherent component gloss. লোকের সাথে = 'with the man' (genitive লোকের + postposition সাথে 'with'). Glossing it 'man you' is a broken fragment that teaches the learner an English string that is neither the meaning nor a usable chunk."
+  },
+  {
+   "seed": 271,
+   "known": "আসতে",
+   "en": "you like",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Wrong component gloss. আসতে is the infinitive 'to come' (inflection of আসা, introduced S16/S271 = 'come'). It is glossed 'you like', which is simply incorrect — 'you like' has no relation to আসতে. The adjacent component আসা→'come' is correct, so this row mis-labels the same lemma."
+  },
+  {
+   "seed": 271,
+   "known": "চাও",
+   "en": "would",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Misleading component gloss. চাও is 2sg of চাওয়া 'want' (cf. তুমি চাও S20 = 'you want'). It is glossed 'would' to back-fit the M-LEGO 'would you like', but in isolation 'would' is not a faithful gloss of the want-verb and could confuse the component drill. The whole-phrase 'would like' rendering of want is fine elsewhere; only this stripped component label is off."
+  },
+  {
+   "seed": 270,
+   "known": "এটা নিয়ে আমি চিন্তা করছি।",
+   "en": "I'm worried about this thing",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Extra word in English. এটা নিয়ে = 'about this/it' (এটা 'it/this' + নিয়ে 'about'); the gloss adds 'thing' ('about this thing') which has no Bengali source (no জিনিস). Should be 'I'm worried about this/it'. Answerable but the English contains unsourced material."
+  },
+  {
+   "seed": 270,
+   "known": "আমি চিন্তা করছি যে",
+   "en": "I'm worried that something",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Dangling/placeholder English. The Bengali is just 'I'm worried that...' (আমি চিন্তা করছি যে), a clause fragment ending in the complementizer যে. The gloss appends 'something' to fill the clause, but there is no Bengali word for 'something' here; the build fragment's English should end at 'that' to mirror the Bengali."
+  },
+  {
+   "seed": 264,
+   "known": "সে একজন বয়স্ক লোক ছিল যে আমাকে সাহায্য করেছিল।",
+   "en": "he was an old man who wanted to help me",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Verb mismatch. সাহায্য করেছিল = 'helped' (past of সাহায্য করা), but the English says 'wanted to help'. There is no want-verb (চাওয়া) in the Bengali — 'wanted to' is unsourced; the gloss should read 'who helped me'."
+  },
+  {
+   "seed": 266,
+   "known": "আমার বাবার পুরনো বন্ধু আমাকে দেখতে এসেছিল।",
+   "en": "an old friend of my father wanted to see me",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Verb mismatch. দেখতে এসেছিল = 'came to see' (এসেছিল = came, past of আসা). The English 'wanted to see me' has no want-verb in the Bengali; it should be 'came to see me'. (Note also S259 'আমার মাথায় একটা ধারণা আসছে' → 'there is an idea in my head' uses আসছে 'is coming' rendered as the unintroduced existential 'there is' — same family of loose come/exist glossing, recorded here.)"
+  },
+  {
+   "seed": 281,
+   "known": "তুমি শুরু করার আগে আমি কি আমার কফি শেষ করতে পারি?",
+   "en": "do you mind if I finish my coffee before you start?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Bengali↔English mismatch. The Bengali literally reads 'before you start, CAN I finish my coffee?' (আমি কি ... পারি = 'can I'), but the English target is 'do you mind if I finish my coffee...'. 'Do you mind' has no source in this Bengali, and the Bengali 'can I' maps to a different English. The seed's LEGO is তোমার আপত্তি আছে কি = 'do you mind if'; this prompt drops আপত্তি আছে entirely and substitutes a পারি ability question. Unproducible as glossed."
+  },
+  {
+   "seed": 281,
+   "known": "তোমার আপত্তি আছে কি আমি শুরু করার আগে?",
+   "en": "do you mind if I do this before you start?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Elliptical/broken prompt. Bengali is 'do you mind if I [verb-gap] before starting?' — there is no Bengali for 'do this' (no এটা করি) and শুরু করার আগে is subject-less ('before starting'), yet the English supplies both 'do this' and 'you' ('before YOU start'). The English 'do this' has no Bengali source; the Bengali has a dangling আগে with no main verb. Authoring defect."
+  },
+  {
+   "seed": 290,
+   "known": "সেই বয়স্ক লোকটা উত্তরটা জানে।",
+   "en": "that old man knows the answer too",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Phantom 'too'. The English ends with 'too' but there is NO ও/'also' suffix in the Bengali (লোকটা, not লোকটাও). Compare the parallel S285 সেই বয়স্ক লোকটাও (correctly carries ও='too'). Here the additive 'too' is unproducible — material in the English with no Bengali source."
+  },
+  {
+   "seed": 277,
+   "known": "সে আগামী সপ্তাহের শুরুতে আসবে।",
+   "en": "she will be here early next week",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring rendering split for the verb আসা 'to come'. আসা is taught only as 'come' (S16 'to come back', S271 'come with us', S292 'come to the party'), but আসবে is rendered 'will be here' here and at S289 (আমি ভাবছি সে কি আসবে = 'I wonder if she will be here'), S291 (সে আসবে = 'she will be here', তোমার বন্ধু আসবে = 'will be here'), and S293 (সে কখন আসবে = 'when he will be here') — yet ALSO 'will come' at S283/S291. One Bengali verb → two inconsistent English lemmas ('come' vs 'be here'). A learner who knows আসা='come' would answer 'will come', not the intended 'will be here'. Consistency/ZUT-adjacent defect (answerable as 'come', but target English diverges)."
+  },
+  {
+   "seed": 297,
+   "known": "আমি এমন বেশি মানুষকে চিনি না যারা ইংরেজি বলে।",
+   "en": "I don't know many people who speak English",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Untranslated filler. এমন ('such/like-this', S128) appears in the Bengali but has no reflection in the English 'many people' — the other S297 USE prompts of this seed omit এমন. Minor inconsistency; এমন is essentially silent here. Not unanswerable."
+  },
+  {
+   "seed": 287,
+   "known": "আমরা সবাই টেলিভিশন দেখতে পছন্দ করি।",
+   "en": "we all like watching television",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Borderline vocab: সবাই ('all/everyone') is not introduced as a standalone item; closest taught forms are সব 'everything' (S45) and সবার 'everyone' (S16 সবার সাথে). সবাই is same-family (সব-), so 'all' is plausibly recoverable — not a hard vocab flag, but the 'we all' rendering leans on an inflectional cousin rather than an introduced lemma. Recorded as low content_quality for awareness."
+  }
+ ]
+}

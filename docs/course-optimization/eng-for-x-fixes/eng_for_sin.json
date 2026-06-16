@@ -1,0 +1,385 @@
+{
+ "course_code": "eng_for_sin",
+ "total_collisions": 132,
+ "counts": {
+  "fp_subgloss": 88,
+  "fp_inflection": 10,
+  "real_consolidate": 30,
+  "real_differentiate": 2,
+  "fp_wrong_data": 2
+ },
+ "release_blocker_count": 0,
+ "notes": "Clean course dominated by false positives: most collisions are a single agglutinative Sinhala token (pronouns ඒ/මම/ඔයා, negator නෑ, intensifier ගොඩක්, modal ඕනේ) glossed many ways as 'component' slices inside larger LEGOs, plus routine English morphology (word/words, speak/speaks, going/is going). The high-frequency tokens are all FP, so there are zero release-blockers. The real fixes are nearly all low-severity BUILD-fragment-vs-USE-sentence near-duplicates and it/that demonstrative wobble that should be consolidated; only two genuine meaning splits (counterfactual vs past කිව්වේ නෑ, progressive vs habitual කතා කරනවා) and two garbled/mis-glossed data rows.",
+ "real_fixes": [
+  {
+   "known": "ප්‍රමාද වෙනවා",
+   "targets": [
+    "late",
+    "going to be late"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "going to be late",
+   "action": "Both drilled (lego+build) for the same future-tardiness intention; pick one English form and re-gloss the other.",
+   "severity": "low"
+  },
+  {
+   "known": "ඉරිදා උදේ",
+   "targets": [
+    "sunday morning",
+    "on Sunday morning"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "on Sunday morning",
+   "action": "Same time expression with/without preposition, both drilled; align to one.",
+   "severity": "low"
+  },
+  {
+   "known": "සෙනසුරාදා රෑ",
+   "targets": [
+    "saturday night",
+    "on Saturday night"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "on Saturday night",
+   "action": "Same time expression with/without preposition, both drilled; align to one.",
+   "severity": "low"
+  },
+  {
+   "known": "බලාගෙන ඉන්න",
+   "targets": [
+    "to wait for",
+    "waiting"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "to wait for",
+   "action": "Same verb 'wait', infinitive vs gerund, both build-drilled; pick one canonical form.",
+   "severity": "low"
+  },
+  {
+   "known": "යාළුවෙකු",
+   "targets": [
+    "friend",
+    "a friend"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "a friend",
+   "action": "friend vs a friend, both drilled; align article.",
+   "severity": "low"
+  },
+  {
+   "known": "බස් එක",
+   "targets": [
+    "bus",
+    "the bus"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "the bus",
+   "action": "bus vs the bus (definite බස් එක), both drilled; align to 'the bus'.",
+   "severity": "low"
+  },
+  {
+   "known": "ශාලාවේ",
+   "targets": [
+    "pub",
+    "the pub"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "the pub",
+   "action": "pub vs the pub (locative ශාලාවේ), both drilled; align to 'the pub'.",
+   "severity": "low"
+  },
+  {
+   "known": "හිතුවේ නෑ",
+   "targets": [
+    "expecting",
+    "not expecting"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "not expecting",
+   "action": "Phrase is negative (හිතුවේ නෑ); the lego 'expecting' drops the negation. Re-gloss to 'not expecting'.",
+   "severity": "med"
+  },
+  {
+   "known": "වෙනස් වෙනවා",
+   "targets": [
+    "changes",
+    "it changes"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it changes",
+   "action": "changes vs it changes, both drilled; align to one.",
+   "severity": "low"
+  },
+  {
+   "known": "මට උදව් කරන්නෙ කමක් නෑද",
+   "targets": [
+    "I don't mind helping?",
+    "don't mind helping me"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't mind helping?",
+   "action": "Same intention (don't-mind-helping), use vs build wording; align.",
+   "severity": "low"
+  },
+  {
+   "known": "මගේ සල්ලි මේස පිට",
+   "targets": [
+    "my money is on the table",
+    "my money on the table"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "my money is on the table",
+   "action": "USE sentence vs BUILD fragment of same; align copula.",
+   "severity": "low"
+  },
+  {
+   "known": "මගේ යතුරු මේස පිට",
+   "targets": [
+    "my keys are on the table",
+    "my keys on the table"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "my keys are on the table",
+   "action": "USE sentence vs BUILD fragment of same; align copula.",
+   "severity": "low"
+  },
+  {
+   "known": "මම කියන දේ ඔයාට තේරෙනවාද?",
+   "targets": [
+    "can you understand what I'm saying?",
+    "do you understand what I'm saying?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "do you understand what I'm saying?",
+   "action": "Same question, can vs do auxiliary; pick one canonical.",
+   "severity": "med"
+  },
+  {
+   "known": "මම ඒ ගැන අසාමාන්‍ය",
+   "targets": [
+    "that is very unusual",
+    "that is unusual"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "that is unusual",
+   "action": "Both build; differ only by stray 'very'; align.",
+   "severity": "low"
+  },
+  {
+   "known": "මම ගොඩ බිස්ස",
+   "targets": [
+    "I'm very busy",
+    "very busy"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm very busy",
+   "action": "USE sentence vs BUILD fragment; align.",
+   "severity": "low"
+  },
+  {
+   "known": "මගේ සල්ලි ළිහිල් කරලා",
+   "targets": [
+    "I left my money",
+    "left my money"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I left my money",
+   "action": "USE sentence vs BUILD fragment; align subject.",
+   "severity": "low"
+  },
+  {
+   "known": "මගේ යතුරු වැඩේදී අමතකවෙලා",
+   "targets": [
+    "left my keys at work",
+    "I left my keys at work"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I left my keys at work",
+   "action": "USE sentence vs BUILD fragment; align subject.",
+   "severity": "low"
+  },
+  {
+   "known": "මම ලබන සතියේ බිස්ස",
+   "targets": [
+    "I'm going to be busy next week",
+    "busy next week"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm going to be busy next week",
+   "action": "USE sentence vs BUILD fragment; align.",
+   "severity": "low"
+  },
+  {
+   "known": "මගේ යාළුවා ගේ නම ගැන අමතකවෙලා",
+   "targets": [
+    "I've forgotten about my friend's name",
+    "I've forgotten my friend's name"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I've forgotten my friend's name",
+   "action": "Differ only by stray 'about'; align.",
+   "severity": "low"
+  },
+  {
+   "known": "ඔහු ඉවසිලිවන්ත නෑ",
+   "targets": [
+    "he isn't patient",
+    "he wasn't very patient"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "he isn't patient",
+   "action": "Sinhala is present-negative; BUILD adds past+very. Align to present 'he isn't patient'.",
+   "severity": "low"
+  },
+  {
+   "known": "ඒ ගැන කිසිම දෙයක් ක්‍රියා",
+   "targets": [
+    "nothing seems to be working about that",
+    "nothing seems to be working well about that"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "nothing seems to be working about that",
+   "action": "Differ only by stray 'well'; align.",
+   "severity": "low"
+  },
+  {
+   "known": "ඒ ගැන කතා කරමු",
+   "targets": [
+    "let's talk about something else",
+    "let's talk about something else now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "let's talk about something else",
+   "action": "Differ only by stray 'now'; align.",
+   "severity": "low"
+  },
+  {
+   "known": "ඒක මගේ හිසේ වටේට යනවා",
+   "targets": [
+    "it is going around in my head",
+    "that is going around in my head"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it is going around in my head",
+   "action": "ඒක glossed it vs that; pick one canonical demonstrative.",
+   "severity": "low"
+  },
+  {
+   "known": "ළිහිල් කරගෙන ඉන්නවා හොඳ",
+   "targets": [
+    "it's nice to relax",
+    "nice to relax"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's nice to relax",
+   "action": "USE sentence vs BUILD fragment; align.",
+   "severity": "low"
+  },
+  {
+   "known": "ශාලාවේ ඉන්නකොට මම ලෑස්ති",
+   "targets": [
+    "I'm ready when we were in the pub",
+    "I'm definitely ready when we were in the pub"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm ready when we were in the pub",
+   "action": "Differ only by stray 'definitely'; align.",
+   "severity": "low"
+  },
+  {
+   "known": "ඒ ගැන ක්‍රියා",
+   "targets": [
+    "seems okay about that",
+    "that seems okay to me"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "that seems okay to me",
+   "action": "BUILD fragment vs USE sentence of same; align.",
+   "severity": "low"
+  },
+  {
+   "known": "මම බාගය ගෙවන්නයි ඕනේ",
+   "targets": [
+    "I want to pay half now",
+    "I want to pay half"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to pay half",
+   "action": "Differ only by stray 'now'; align.",
+   "severity": "low"
+  },
+  {
+   "known": "මම අද ගොඩක් බිස්ස",
+   "targets": [
+    "too busy today",
+    "I'm too busy today"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm too busy today",
+   "action": "BUILD fragment vs USE sentence; align.",
+   "severity": "low"
+  },
+  {
+   "known": "ආයෙ කියන්න පුළුවන්ද",
+   "targets": [
+    "could you say again?",
+    "could you say it again?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "could you say it again?",
+   "action": "Differ only by 'it'; align.",
+   "severity": "low"
+  },
+  {
+   "known": "ඒක වැදගත්",
+   "targets": [
+    "it is important",
+    "that's important"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's important",
+   "action": "ඒක glossed it vs that across build/use; pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "මම ... කිව්වේ නෑ",
+   "targets": [
+    "I wouldn't have said",
+    "I didn't say that"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Same drilled Sinhala maps to counterfactual 'wouldn't have said' vs simple past 'didn't say that' — genuinely different meanings; differentiate the Sinhala or add a cue so each maps 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "ඔහු කතා කරනවා",
+   "targets": [
+    "he's talking",
+    "he speaks"
+   ],
+   "verdict": "real_differentiate",
+   "action": "කරනවා present covers progressive and habitual; same drilled prompt yields 'he's talking' vs 'he speaks'. Differentiate (progressive vs habitual) so prompt maps 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "හොඳයි",
+   "targets": [
+    "okay",
+    "I'd like"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "හොඳයි = good/okay; the gloss 'I'd like' is wrong (that is කැමති/ඕනේ). Correct the single mis-glossed component row.",
+   "severity": "low"
+  },
+  {
+   "known": "ඒ නිසා මම ඒ ගැන ආශා කළා",
+   "targets": [
+    "that is why I hoped for our brain",
+    "that is why I hoped about our brain"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "English is garbled — ඒ ගැන = 'about that', not 'our brain'; ආශා කළා = 'desired/hoped'. Fix the seed's English glosses.",
+   "severity": "low"
+  }
+ ]
+}

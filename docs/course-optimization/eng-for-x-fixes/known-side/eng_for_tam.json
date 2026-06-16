@@ -1,0 +1,1011 @@
+{
+ "course_code": "eng_for_tam",
+ "totals": {
+  "prompts_checked": 6318,
+  "vocab_uncontrolled": 27,
+  "npi_violation": 1,
+  "machinery_unlicensed": 0,
+  "gloss_rule_violation": 32,
+  "content_quality": 129
+ },
+ "release_grade": "heavy",
+ "systematic_issues": [
+  "INTERLINEAR GLOSS-CHAIN M-LEGOs (one-fix-fixes-~250+): seeds 151-175 encode target clauses as token-by-token English-ordered calques (e.g. 'நான் இருந்தேன் நம்பிக்கை நடக்கும்'->'I was hoping would happen'), then mechanically concatenate a pronoun/adverb, yielding ungrammatical, unproducible English AND word-salad Tamil. By far the largest single defect (~250+ of 522 prompts in S151-175). Root cause = the gloss-chain authoring template; replacing it with natural reformulations (which already exist correctly, e.g. 'அது நடக்கும் என்று நம்பிக்கை வைத்திருந்தேன்') fixes the whole band.",
+  "BARE NOUN/LEMMA + FRAME-ADVERB DRILL TEMPLATE (one-fix-fixes-hundreds): across S154/156/157/161/164/165/172/173, S226-250, S256-275, S289-300 the build/use generator emits a bare citation-form noun prefixed with a pronoun and/or suffixed with 'well/now/here/today' ('night well', 'hour well', 'day here', 'I woman', 'young man work'->'young man who wants to work'). Produces non-sentences in both languages with finite verbs/relativisers/modals stripped from Tamil but carried in fluent English. Single generator fix (require a finite clause) removes the dominant content_quality tail across the back half of the course.",
+  "PAST TAMIL VERB GLOSSED AS PRESENT ENGLISH (glossRule tenseInVerbNotAuxiliary, ~20+ prompts): fused finite past forms (பேசினேன்/சந்தித்தேன்/செய்தேன்/கற்கினேன்/வைத்தேன்/தூங்கினேன்/எழுதினேன்) glossed as bare present ('I speak last week', 'I learn last month'), giving ungrammatical English. Recurs in S37-38 and S52-55. One rule fix: map each fused past Tamil form to English past.",
+  "வேண்டும் ('need to/have to') MIS-GLOSSED AS PAST 'wanted to' (~8 prompts, S61/62/66/69): collides present deontic modal with the distinct past LEGO விரும்பினார். One Tamil form must map 1:1 to 'need to/have to', never 'wanted to' (ZUT + tenseInVerbNotAuxiliary).",
+  "PRONOUN-VERB AGREEMENT / GENDER CLASH FROM அவன்-PREFIX TEMPLATE (heHonorificSplit/genderNeutral3rd + ZUT, ~25+ prompts across S201/204/206/207/212/223/224/225/229/236/268/299): a leading pronoun is glued to a verb that agrees with a different person/gender (அவன் 'he' + உதவுவாள்/அனுப்பினாள் feminine -ாள், நான் 'I' + போகிறான் -ான், நீங்கள் 'you' glossed 'she'). Mechanical prefix template injects a pronoun contradicting the verb's baked agreement, breaking the known-side person/gender mapping.",
+  "'say' (சொல்) LEAKING AS UN-INTRODUCED PRODUCIBLE VOCAB (~12 prompts, S27/35/36/37): சொல் only ever debuts bound inside fixed M-chunks (S4 'how to say', S8 'what I mean', S43 'how to answer') but is used as a free standalone verb ('say a story', 'say anything', 'say about it'). The target verb 'say' has no debut as its own LEGO.",
+  "SINGLE-LEMMA SPLIT/WRONG GLOSSES to fake English-auxiliary tiling (glossRule, S151 நடக்கும்->'would', S166 மிகவும்->'is', S199 வேலை->'used to', S126 மாற்று->'of', S138 இது->'was', S142 இதன்->'of'): one Tamil lemma carries an unrelated second English gloss purely to fill a copula/modal slot in the interlinear chain, breaking one-Tamil->one-English.",
+  "ENGLISH OVER-SPECIFIES THE TAMIL (unproducible, dominant in S63-71, S200, S290/294/297/300): the English gloss invents whole clauses/negation/verbs/dates ('I don't know...', 'they say they want to', 'with you', 'here', 'everything') absent from the Tamil source, so the learner cannot derive the answer from the prompt shown.",
+  "VOCAB SWAPS away from the taught LEGO (~few but answerability-hard): S20 பதில் for 'answer' instead of taught விடை (~8 prompts); S289 மாலை ('evening', S18) mis-glossed 'afternoon' while the taught LEGO மதியம் never appears; S22 இன்றிரவு 'tonight' untaught; plus untaught lemmas மகிழ்ச்சி/கேட்டுக்கொள்ள (S63/S65).",
+  "எவரும் NPI DRILLED BARE (S202, ~8 fragments): the -உம்-series negative-concord item 'nobody/anyone' is run through the M/A-LEGO drill template as bare positive fragments ('I nobody', 'nobody now') with no verbal negation/clitic/conditional licenser. An NPI lemma should never be drilled bare; the only licensed S202 uses are the negated naturals ('யாரும் நிச்சயமில்லை')."
+ ],
+ "summary": "Across 6,318 prompts in 13 batches, answerability licensing is genuinely strong: only 1 NPI violation (எவரும் drilled bare at S202), 0 unlicensed machinery, and just 27 vocab-uncontrolled cases (mostly a handful of taught-LEGO swaps like S20 பதில்/விடை and S289 மாலை/மதியம், plus a few untaught lemmas). The damage is overwhelmingly authoring quality (129 content_quality + 32 gloss_rule = 161 non-trivial issues, far over the 50+ heavy threshold), heavily concentrated in two systematic generator templates: the interlinear gloss-chain M-LEGOs in S151-175 (~250+ ungrammatical/unproducible English + word-salad Tamil) and the bare-noun-plus-frame-adverb drill template running through S154 onward and S226-300 (hundreds of non-sentences). Secondary systematic faults are past-Tamil-glossed-as-present-English tense flips (S37-55), வேண்டும்->'wanted to' modal collisions (S61-69), and an அவன்-prefix template injecting pronouns that clash with the verb's baked gender/person agreement (S201-299). Because a small number of root-cause template fixes would resolve the large majority of these issues, this is a not-ready-for-release course needing heavy cleanup focused on the two drill-generation templates first.",
+ "findings": [
+  {
+   "seed": 20,
+   "known": "நான் அவரது பதில் நன்றாக நினைவில் வைக்கிறேன்",
+   "en": "I remember his answer well",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "'answer' here is பதில் (lemma பதில்), an UNTAUGHT word. 'answer' was introduced as விடை (S17 'விடை'→'the answer'). பதில் is a distinct lemma the learner has never been given, so 'his answer' is unproducible. Recurs across ~8 S20 prompts (நான் அவரது பதில் கண்டுபிடிக்க முயற்சிக்கிறேன் 'find out his answer', நான் அவரது பதில் நினைவில் வைக்க விரும்புகிறேன் 'remember his answer', etc.). Systematic: the S20 batch swapped விடை→பதில் for 'answer'. Should use விடை."
+  },
+  {
+   "seed": 22,
+   "known": "நான் இன்றிரவு சந்திக்க விரும்புகிறேன்",
+   "en": "I want to meet tonight",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "இன்றிரவு 'tonight' (lemma இன்றிரவு / இன்று+இரவு) is never introduced in the inventory through S22. 'today' is இன்று (S7) and 'this evening' is இந்த மாலை (S18), but 'tonight'/இன்றிரவு is a new untaught content word — the learner cannot produce 'tonight'."
+  },
+  {
+   "seed": 20,
+   "known": "நான் அவரது பதில் நன்றாக நினைவில் வைக்கிறேன்",
+   "en": "I remember his answer well",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "The S20 batch also realises 'remember' as நினைவில் வைக்க (வை-stem) rather than the taught நினைவில் கொள்ள (கொள்-stem, S6). Both gloss 'remember' so the concept is taught, but it is an inconsistent second rendering of one English form (a ZUT-style split on the KNOWN side: same English 'remember' ↔ two Tamil verbs கொள்/வை). Flagged low because it is still answerable, but it is a systematic inconsistency worth tightening."
+  },
+  {
+   "seed": 25,
+   "known": "உதவ நல்லா",
+   "en": "help well",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'well' is rendered colloquially as நல்லா; the taught lemma for 'well' is நன்றாக (S13 'நன்றாக'→'well'). நல்லா is the spoken-register variant, not the introduced form, so it is technically an uncontrolled rendering — one-off, low severity (clearly recoverable)."
+  },
+  {
+   "seed": 12,
+   "known": "நாளை என்ன நடக்கும் என்று யூகிக்க விரும்புவதில்லை",
+   "en": "what's going to happen tomorrow?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Tamil is a full negative declarative 'I wouldn't like to guess what's going to happen tomorrow', but the English gloss is a bare question 'what's going to happen tomorrow?'. The English has NO source for the question form and DROPS the whole யூகிக்க விரும்புவதில்லை 'wouldn't like to guess' clause. Severe Tamil/English mismatch — unproducible as paired."
+  },
+  {
+   "seed": 11,
+   "known": "என்னால் என்ன சொல்கிறேன் என்று விளக்க முடியும்",
+   "en": "I'm trying to be able to explain what I mean",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Tamil = 'I can explain what I say' (முடியும் = ability, declarative). English = 'I'm trying to be able to explain what I mean' — adds 'trying to' (முயற்சி) with no Tamil source and shifts சொல்கிறேன் 'I say' to 'what I mean'. Recurs as a pattern in S11: என்னால் ஆங்கிலம் பேச முடியும்→'I want to be able to speak English' (Tamil 'I can speak English', en adds 'want to'); நான் அடிக்கடி பயிற்சி செய்ய முடியும்→'I'm going to be able to practise as often as possible' (Tamil 'I can practise often', en adds 'going to'). The S11 'be able to' batch systematically pairs a plain Tamil முடியும் ability clause with an English modal it doesn't contain."
+  },
+  {
+   "seed": 13,
+   "known": "நான் நன்றாக விளக்க முடியும்",
+   "en": "I can be able to explain well",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English gloss 'I can be able to explain well' is ungrammatical (double modal 'can be able to'). The Tamil முடியும் is a single ability form; should be 'I can explain well' or 'I'm able to explain well'."
+  },
+  {
+   "seed": 25,
+   "known": "முன் நான் ஏதாவது சொல்ல விரும்புகிறேன்",
+   "en": "before I want to say something",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "'before I want to say something' is broken English (before + a want-clause). The முன் 'before' subordinator is stranded clause-initially; Tamil முன் should attach to a non-finite verb (cf. correct S25 நான் சொல்வதற்கு முன் 'before I speak'). Recurs: முன் நான் போக வேண்டும்→'before I have to go', முன் நான் உதவ விரும்புகிறேன்→'before I want to help' — the bare-முன் + finite-clause authoring pattern produces unnatural English across S25."
+  },
+  {
+   "seed": 22,
+   "known": "மக்களை யாரோவடன் சந்திக்க விரும்புகிறேன்",
+   "en": "I want to meet people now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Tamil contains யாரோவடன் 'with someone else' but the English gloss says 'now' — neither word matches the other (no 'now'/இப்போது in Tamil; யாரோவடன் dropped). Mismatched pair. (Same en string 'I want to meet people now' is also attached to நான் இப்போது மக்களை சந்திக்க விரும்புகிறேன் which is correct — this duplicate is the defective one.)"
+  },
+  {
+   "seed": 20,
+   "known": "நீங்கள் விரும்புகிறீர்கள் கற்க அவரது பெயர்",
+   "en": "you want to learn his name today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English adds 'today' with no Tamil source (இன்று absent). Also part of a wider S20 oddity: many 'you want to' prompts use a marked verb-medial Tamil order நீங்கள் விரும்புகிறீர்கள் + non-finite (e.g. நீங்கள் விரும்புகிறீர்கள் கற்க 'you want to learn'), which is unnatural head-final Tamil though still answerable."
+  },
+  {
+   "seed": 20,
+   "known": "நான் விரைவாக கற்க முயற்சிக்கிறேன்",
+   "en": "I'm trying to learn quickly today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English adds 'today' with no இன்று in the Tamil; Tamil = 'I'm trying to learn quickly'. Stray-adverb authoring defect (same pattern as several S16/S12 build rows where en has a trailing 'now'/'today'/'after' with no Tamil source)."
+  },
+  {
+   "seed": 36,
+   "known": "நான் கதை சொல்ல விரும்புகிறேன்",
+   "en": "I want to say a story",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "SYSTEMATIC: the verb சொல் ('say') is used as a standalone, producible content verb here and across seeds 27 (பதில் சொல்ல 'say the answer'), 35 (எதுவும் சொல்ல 'say anything'), 36 (கதை சொல்ல 'say a story'), 37 (அதைப் பற்றி சொல்ல / கவனமாக சொல்ல 'say about it/say carefully'). But 'say' was NEVER introduced as its own LEGO — சொல் appears in the inventory ONLY bound inside fixed M-chunks: S4 எப்படி சொல்வது='how to say', S8 என்ன சொல்ல வேண்டும் என்று='what I mean', S43 பதிலை எப்படி சொல்வது='how to answer'. The learner reading the Tamil knows the word, but the English target verb 'say' is unanswerable as an introduced item — it's being treated as free vocab without a debut. ~12 prompts affected (seeds 27/35/36/37). (Note 'say a story' is also unnatural English = secondary content_quality.)"
+  },
+  {
+   "seed": 37,
+   "known": "நான் கடந்த மாதம் கவனமாக கற்கினேன்",
+   "en": "I learn carefully last month",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "SYSTEMATIC tenseInVerbNotAuxiliary violation: the Tamil verb is fused PAST (கற்கினேன் 'I learned' — itself a nonstandard form, standard கற்றேன்) but the English gloss is bare PRESENT 'I learn' with a past adverbial 'last month', yielding ungrammatical English ('I learn ... last month'). Recurs 11x across seeds 37-38: கற்கினேன்→'I learn', பேசினேன்→'I speak last month', சந்தித்தேன்→'I meet last month', செய்தேன்→'I practise last month/for about a week'. The brief requires each English tense to be rendered against the matching fused Tamil finite form; here past Tamil is mapped to present English. Should be 'I learned ... last month'."
+  },
+  {
+   "seed": 33,
+   "known": "நீங்கள் எவ்வளவு காலம் கற்கிறீர்கள்?",
+   "en": "how long you learn?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "SYSTEMATIC broken English question (4 prompts at S33: 'how long you practise?', 'how long you learn?', 'how long you learn English?', 'how long you speak English?'). English wh-questions need do-support or an aux — 'how long do you learn?' / 'how long have you been learning?'. The Tamil (எவ்வளவு காலம் + present கற்கிறீர்கள்) is well-formed; the English target is ungrammatical. questionByClitic machinery exists (S14 நீங்களா) so the fix is authoring, not licensing."
+  },
+  {
+   "seed": 27,
+   "known": "நான் அதிக ஏதாவது விரும்பவில்லை",
+   "en": "I don't want too much something",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Nonsensical English with no coherent source structure: 'too much something' (also as a BUILD fragment அதிக ஏதாவது='too much something', and அதிக நேரம் ஆகிறது='too much time now'). அதிక ('too much', S27) + ஏதாவது ('something') do not compose to a sayable English phrase. Authoring defect — the prompt is unproducible as natural English."
+  },
+  {
+   "seed": 34,
+   "known": "எப்போது நீங்கள் ஆங்கிலம் பேசுகிறீர்கள்",
+   "en": "when you speak English",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Wrong 'when' form: எப்போது is the INTERROGATIVE 'when?' (inventory S34) but here it heads a declarative subordinate clause ('when you speak English', and எப்போது நான் கற்கிறேன்='when I learn', எப்போது பேச='when speak'). Tamil subordinate 'when' must use the bound -போது form (cf. correct S34 இருக்கும்போது / S40 கற்கும்போது). Broken Tamil syntax; recurs ~4x at S34."
+  },
+  {
+   "seed": 34,
+   "known": "அவர் மற்ற மக்கள் இருக்கும்போது அமைதியாக இருக்க விரும்புவதில்லை",
+   "en": "he doesn't want to be quiet when other people",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Dangling/incomplete prompt — English ends 'when other people' with no predicate (the இருக்கும்போது 'when ... are' clause is dropped from the gloss). Same defect class: மற்ற மக்கள் இங்கே இருக்கிறார்கள்→'other people here now' (verb இருக்கிறார்கள் 'are' dropped, 'here now' has no source for 'now'). Truncated/verbless English targets."
+  },
+  {
+   "seed": 47,
+   "known": "நான் நினைக்கிறேன் ஏனென்றால்",
+   "en": "I think that because",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Nonsensical prompt: 'I think that because' is not a complete English sentence (complementizer 'that' + 'because' with no clause). The Tamil நினைக்கிறேன் + ஏனென்றால் is equally a non-sentence. Authoring junk; same set includes S47 நான் ஒரு விஷயம் மேம்படுத்த விரும்புகிறேன்='I want to improve a thing' and 'I want to learn a good thing' (unnatural)."
+  },
+  {
+   "seed": 46,
+   "known": "தவறுகள் கவலை",
+   "en": "mistakes worry",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Many BUILD fragments are bare word-concatenations that are not English phrases (~22 across the batch): 'mistakes worry', 'worry mistakes', 'know mistakes', 'care not', 'care mistakes', 'good learn', 'good speak', 'learn improve', 'answer say', 'say story', 'better learn'. These are scaffolding stubs but if surfaced to a learner they are unproducible; low-priority side-channel."
+  },
+  {
+   "seed": 26,
+   "known": "நான் கிட்டத்தட்ட விரைவில் தயாராக இருக்கிறேன்",
+   "en": "I'm nearly ready soon",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Semantically incoherent: 'nearly ready' + 'soon' contradict ('I'm nearly ready soon'). கிட்டத்தட்ட (nearly) + விரைவில் (soon) shouldn't co-occur. Minor naturalness/authoring defect."
+  },
+  {
+   "seed": 63,
+   "known": "நான் உதவுவதில் மகிழ்ச்சி",
+   "en": "I enjoy helping you again",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "மகிழ்ச்சி ('happiness/joy') is never introduced anywhere in the inventory through S75. The taught LEGO for 'enjoy' is ரசிக்கிறேன் (S51 component); மகிழ்ச்சி is a different lemma the learner has not been given, so the English 'enjoy' here is unanswerable from this prompt. (The English also adds 'you again' with no Tamil source — separate content defect.)"
+  },
+  {
+   "seed": 65,
+   "known": "நீங்கள் உங்களையே கேட்டுக்கொள்ள வேண்டும் மீண்டும்",
+   "en": "you need to ask yourself again",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "கேட்டுக்கொள்ள ('to ask oneself', reflexive of கேள்) is not in the inventory. The introduced 'ask' LEGO is கேட்க (S30, 'ask') — கேட்டுக்கொள்ள is a distinct reflexive lemma not taught, so 'ask yourself' is not producible. Recurs at the build row 'நீங்கள் உங்களையே கேட்டுக்கொள்ள வேண்டும்' = 'you need to ask yourself'."
+  },
+  {
+   "seed": 69,
+   "known": "இளம் ஆகிறது",
+   "en": "it's young",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ஆகிறது ('becomes / is', finite verb of ஆகு) is never introduced. Copular/existential 'is' in this course is otherwise carried by இருக்கிறது (S73) or the quotative என்று; ஆகிறது is an untaught lemma. The learner cannot map this verb. (The sibling row 'நாய் இருக்கிறது' = 'a dog is here' uses the introduced இருக்கிறது, but that LEGO debuts only at S73 — see gloss/machinery note.)"
+  },
+  {
+   "seed": 52,
+   "known": "நான் கடந்த வாரம் என்னுடைய நண்பர்களுடன் பேசினேன்",
+   "en": "I speak with my friends last week",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Systematic past→present tense mismatch violating glossRule tenseInVerbNotAuxiliary. The Tamil verb is a fused finite PAST (பேசினேன் 'I spoke'), but the English gloss is simple present 'I speak'. The learner reading a past portmanteau form cannot produce a present-tense English answer. Same defect across S52: ரசித்தேன்→'I enjoy', கற்கினேன்→'I learn' (×2), பயிற்சி செய்தேன்→'I practise', சந்தித்தேன்→'I meet', எழுதினேன்→'I write'; S53 வைத்தேன்→'I put'; S55 தூங்கினேன்→'I sleep well' and 'I sleep very well'. ~10 prompts total, all the 'last week / last night + past verb' rows."
+  },
+  {
+   "seed": 61,
+   "known": "அவர் அது சொல்ல வேண்டும்",
+   "en": "he wanted to say that",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Systematic modal/tense collision: present deontic modal வேண்டும் ('need to / have to', introduced S25/S59) is glossed as PAST 'wanted to' — which is the distinct LEGO விரும்பினார் (S52, past of 'want'). One Tamil form வேண்டும் must map to 'need to/have to', never 'wanted to' (ZUT + tenseInVerbNotAuxiliary). Recurs: S61 புரிந்துகொள்ள வேண்டும்→'he wanted to understand', சொல்ல வேண்டும்→'he wanted to say'(×2), பேச வேண்டும்→'he wanted to speak'; S62 கற்க வேண்டும்→'he wanted to learn'(×2); S66 தேட வேண்டும்→'he wanted to find'; S69 கவனிக்க வேண்டும்→'he wanted to look after', பேச வேண்டும்→'he wanted to speak'. ~8 prompts. Same root error also turns present முயற்சிக்கிறேன் ('I'm trying') into 'I want to try' (S61)."
+  },
+  {
+   "seed": 63,
+   "known": "நான் உறுதியாக இல்லை கொஞ்சம் மெதுவாக",
+   "en": "I'm not sure I can say that a little more slowly",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Pervasive across S63-S71: the English gloss contains a whole clause with NO source in the Tamil, making the prompt unproducible. Here Tamil = 'I'm not sure, a little slowly' but English invents 'I can say that'. Same pattern S63: 'உறுதியாக இல்லை மீண்டும்'→'I'm not sure I need to try again', 'உறுதியாக இல்லை அதே நேரத்தில்'→'I'm not sure I can help at the same time', 'உதவுவதில் வேண்டும்'→'you need to start helping me' (no 'start'/'me' in Tamil). The Tamil is a loose concatenation; the English is a fluent sentence built from material the prompt never supplies."
+  },
+  {
+   "seed": 66,
+   "known": "அது கஷ்டம் இல்லை தேட என்னால்",
+   "en": "it's not difficult to find it here",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English adds 'here' with no Tamil source (என்னால் = 'by me/I can', not 'here'; 'here' is இங்கே, S34, which is absent). Broken/under-specified Tamil glossed to a fluent but unrelated English. Sibling rows in S66 repeatedly inject 'it' as object with no Tamil pronoun and reorder adverbs freely (e.g. 'கற்பது கஷ்டம் எளிது இல்லை'→'learning is difficult but isn't easy' — the Tamil literally says 'learning difficult easy not', incoherent)."
+  },
+  {
+   "seed": 64,
+   "known": "உதவுவது எளிதல்ல மெதுவாக",
+   "en": "helping isn't easy slowly again",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Adverb stacking produces nonsensical English with material not in the Tamil: Tamil = 'helping isn't easy, slowly' but English appends 'again' (no மீண்டும் present). Recurs throughout S64: 'கற்பது வேடிக்கையானது மெதுவாக'→'learning is fun again slowly' (no 'again'), 'உதவுவது வேடிக்கையானது'→'helping is fun again slowly' (adds 'again slowly'), 'கற்பது கொஞ்சம் மெதுவாக'→'learning slowly is good' (adds 'is good'). The build/use rows append free adverbs and copular predicates with no Tamil licensor."
+  },
+  {
+   "seed": 71,
+   "known": "யாரும் உண்மை சொல்ல வேண்டும்",
+   "en": "I need to tell anyone the truth",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Semantically odd/unproducible: positive 'I need to tell anyone the truth' is unnatural English and the NPI யாரும் ('anyone') sits in a non-licensed positive modal clause in the Tamil too (சொல்ல வேண்டும் is positive obligation). Borderline — not flagged as a hard NPI_violation because வேண்டும் desiderative/obligation contexts are listed as -உம் licensers in the brief, but the resulting prompt reads as broken authoring (negation was likely intended). Recurs in S71 yes-row variants mixing யாரும் with positive 'I need to tell'."
+  },
+  {
+   "seed": 51,
+   "known": "நான் சுவாரஸ்யமான விஷயம் ரசிக்கிறேன்",
+   "en": "I enjoy a interesting thing",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English article defect 'a interesting' (should be 'an interesting'); English-side grammar only, no Tamil-side answerability problem (ஒரு is freeClass and absent here anyway). Recurs S52 'I enjoy a interesting thing last week'. Low priority cosmetic."
+  },
+  {
+   "seed": 76,
+   "known": "நான் மிகவும் மகிழ்ச்சி கற்றேன் ஏற்கனவே மிகவும் நன்றாக",
+   "en": "I'm very happy learnt already very well",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Seed-76-wide authoring defect. The Tamil is an ungrammatical word-stack: மகிழ்ச்சி ('happiness/happy', a noun) is used as a bare predicate with no copula இருக்கிறேன், and கற்றேன் ('I learnt') is jammed in with no complementizer (என்று). The English gloss mirrors the breakage ('very happy learnt already very well'). The root is the inventory seed itself (S76 M = 'very happy learnt already'). This pattern recurs across nearly all S76 BUILD/USE prompts (e.g. 'I'm very happy learnt already', 'I'm very happy learnt already again'). Both sides are unnatural and would confuse a learner; not an answerability bug but a systematic quality defect."
+  },
+  {
+   "seed": 76,
+   "known": "நான் ஏற்கனவே கற்றேன் கொஞ்சம்",
+   "en": "I already learnt a little more",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring mis-gloss (9 occurrences across S76/S77/S78/S80/S82): கொஞ்சம் is introduced at S9 as 'a little', but is glossed 'a little more' — the 'more' (அதிகமாக, S23) has NO source token in the Tamil. The learner producing from கொஞ்சம் would say 'a little', not 'a little more'. (Note: the separate inventory unit தேவை கொஞ்ச நேரம் 'need a little more time' legitimately contains 'more' as a fixed M-LEGO; this finding is only the bare கொஞ்சம் cases.)"
+  },
+  {
+   "seed": 76,
+   "known": "நான் ஏற்கனவே மிகவும் மகிழ்ச்சியாக கற்றேன்",
+   "en": "I'm very happy learnt already with you",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English contains 'with you' (உங்களுடன், S1) with NO source in the Tamil — the prompt is unproducible from the Tamil shown. Same seed also has 'நான் ஏற்கனவே மிகவும் மகிழ்ச்சி' → 'I'm already very happy with this' ('with this' absent) and 'நான் மிகவும் மகிழ்ச்சி' → \"I'm very happy again\" ('again'/மீண்டும் absent). The English tail material appears mechanically appended without a Tamil counterpart."
+  },
+  {
+   "seed": 82,
+   "known": "நான் காத்திருக்க முயற்சிக்கிறேன்",
+   "en": "I'm going to wait",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Vocab/gloss mismatch (×2 in S82). முயற்சிக்கிறேன் is introduced at S2 as 'I'm trying to'; here the Tamil literally says 'I'm trying to wait' but the English says 'I'm going to wait'. 'going to' is போகிறேன் (S5). The Tamil and English describe different modalities — the learner reading 'trying to' cannot answer 'going to'. Recurs at 'நான் காத்திருக்க மீண்டும் முயற்சிக்கிறேன்' → 'I'm going to wait again'."
+  },
+  {
+   "seed": 82,
+   "known": "நீங்கள் காத்திருக்க மாட்டீர்களா",
+   "en": "I'm not going to wait that slowly again?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Severe Tamil↔English disconnect. The Tamil நீங்கள் … மாட்டீர்களா is a 2nd-person negative-future polar question 'won't you wait?'; the English is a 1st-person statement 'I'm not going to wait that slowly again?' with extra material ('that slowly', 'again') that has no Tamil source and the wrong subject/person. The S82 set has several of these (e.g. 'நீங்கள் காத்திருக்க வேண்டும்' → 'you need to wait again' [மீண்டும் absent]; 'நான் காத்திருக்க மாட்டேன் மெதுவாக' → 'I'm not going to wait slowly here' [இங்கே absent]; 'நான் காத்திருக்க மாட்டேன் ஏன்?' → 'I'm not going to wait and why not?')."
+  },
+  {
+   "seed": 82,
+   "known": "நான் காத்திருக்க மாட்டேன் உங்களுக்காக",
+   "en": "I'm not going to wait here",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "உங்களுக்காக means 'for you' (dative + காக postposition), not 'here' (இங்கே). The English drops the 'for you' span and substitutes an unrelated 'here'. Doubly broken: wrong rendering AND உங்களுக்காக as a unit is not an introduced gloss."
+  },
+  {
+   "seed": 78,
+   "known": "அவர் சொன்னது ஆச்சரியம்",
+   "en": "what he said surprised me",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ஆச்சரியம் is the noun 'surprise/surprised' (S77); the Tamil is a noun-stack 'what he said — surprise'. The English renders it as a finite verb with an object ('surprised me'), introducing a verbal predicate + 'me' that the Tamil does not contain. Mild naturalness/source mismatch."
+  },
+  {
+   "seed": 89,
+   "known": "நிறைய நேரம்",
+   "en": "a lot time",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Ungrammatical English BUILD scaffolds in S89: 'a lot time', 'a lot people', 'a lot learning' (should be 'a lot of time/people/learning'). The Tamil நிறைய + N is fine; the English is the defect. Low severity as these are component/build scaffolds, but they model broken English to the learner."
+  },
+  {
+   "seed": 95,
+   "known": "நான் பஸ்ஸில் செல்ல வேண்டும்",
+   "en": "I need to go on the bus",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "செல்ல is a different verb lemma for 'go' than the introduced போக (S93/S95). Both gloss 'go', so it is a ZUT/synonym wobble (one English 'go' now has two Tamil renderings, போக and செல்ல) rather than an answerability failure. Flagging low so the authoring uses போக consistently."
+  },
+  {
+   "seed": 86,
+   "known": "இது சாத்தியம் என்று உறுதியாக இல்லை",
+   "en": "I'm not sure this is possible",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "The positive bare form சாத்தியம் ('is possible', used in S86/S89/S94 positive declaratives) is the stem of the only introduced item சாத்தியமில்லை (S86), which is glossed 'possible' but is the NEGATIVE form 'wasn't possible'. By lemma the root சாத்திய- is introduced, so this is NOT a true unanswerable-vocab failure; but the learner has only ever seen the negated 'wasn't possible' gloss and the positive 'is possible' rendering is never demonstrated. Treat as a gloss/rendering wobble to clean up, not a hard vocab gate. (உறுதியாக = adverbial of உறுதி 'sure' S63, போதுமான = adnominal of போதும் 'enough' S58 — both introduced lemmas, NOT flagged.)"
+  },
+  {
+   "seed": 102,
+   "known": "நாங்கள் கடினமாக உழைக்க முயற்சிக்கிறோம்",
+   "en": "we're trying to work hard",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Uses உழை 'labour/work' (in உழைக்க) — a lemma never introduced anywhere in the inventory; the course's word for 'work' is வேலை செய் which debuts only at S94/S106, i.e. AFTER S102. The 'hard' gloss (கடினமாக ~ கஷ்டமாக) also isn't taught until S106. At S102 the learner has been given no source for either 'work' or 'hard', so 'we're trying to work hard' is unproducible. The same English ('work hard') is correctly carried by வேலை செய்/கஷ்டமாக from S106 onward, so this is a premature/synonym leak."
+  },
+  {
+   "seed": 102,
+   "known": "நாங்கள் அது மாதிரி இல்லை என்று சொல்ல முயற்சிக்கிறோம்",
+   "en": "we're trying to say that it's not like that",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Uses மாதிரி 'like/sort-of' for 'like that'. The brief explicitly lists மாதிரி (top_token 64) as NOT free-class and reserved for per-carrier licensing; the carrier the learner WAS given for 'like that' is அப்படி (S102 component). மாதிரி is an uncontrolled synonym never introduced. Meaning is recoverable, hence low."
+  },
+  {
+   "seed": 111,
+   "known": "புதிய ஒன்று மாற்றுகிறது",
+   "en": "something new changes",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'something new' is rendered with the bare numeral/indefinite ஒன்று / புதிது (idx 240, 242, 246, 250, 269, 270). ஒன்று ('one/something') is never introduced and புதிது is a non-lemma surface variant of புதிய 'new' (S109). The course's 'something' lemma is ஏதாவது (S4). Cross-clause meaning is still recoverable from புதிய + context, so low; flagged because it recurs across the S111 basket as an uncontrolled way to say 'something'."
+  },
+  {
+   "seed": 117,
+   "known": "அவன் பேசினோம் ஒருவருக்கொருவர்",
+   "en": "he talked to each other",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken Tamil: subject அவன் '(singular) he' with the 1st-person-plural verb பேசினோம் 'we talked' — agreement clash. The English is equally nonsensical: a singular 'he' cannot take the reciprocal 'each other'. Same defect at idx 388 (நீங்கள் 'you' + 1pl பேசினோம், 'you talked to each other today')."
+  },
+  {
+   "seed": 119,
+   "known": "அவன் கிளம்புவதற்கு முன்பு நான் கேட்கலாம்",
+   "en": "I can ask before you leave now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Tamil subject of the 'before … leave' clause is அவன் 'he' (before HE leaves), but the English says 'before YOU leave'. Subject mismatch between known and en. Also a stray 'now' in English with no Tamil source."
+  },
+  {
+   "seed": 112,
+   "known": "அவன் மிகவும் சுவாரஸ்யமானது விரும்புகிறான் எதிர்பார்க்கவில்லை",
+   "en": "he like very interesting not expecting",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Both sides are word-salad: Tamil strings 'he very interesting wants not-expecting' with no coherent clause structure, and the English 'he like very interesting not expecting' is ungrammatical (wrong agreement 'he like', no object). Not a producible prompt."
+  },
+  {
+   "seed": 112,
+   "known": "நான் எதிர்பார்க்கவில்லை அதை நன்றாக",
+   "en": "I not expecting it well",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English is ungrammatical ('I not expecting it well') and the trailing 'well' (நன்றாக) is a basket-filler with no semantic role. Tamil 'I didn't expect it well' is also odd. Same filler-'well'/'good' tail appears across this batch (idx 43 'we're trying well', 307 'doing worse not good', 515/522)."
+  },
+  {
+   "seed": 114,
+   "known": "நான் இன்று மோசமாக செய்கிறேன்",
+   "en": "doing worse today is not good",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Known/en mismatch: Tamil literally = 'I do worse today' (1sg subject, present), but the English is an unrelated sentence 'doing worse today is not good'. The learner reading the Tamil cannot produce this English. Parallel defect at idx 307 (known 'I feel I'm doing worse' + trailing நன்றாக, en 'I feel as if doing worse not good')."
+  },
+  {
+   "seed": 121,
+   "known": "நீங்கள் காரை",
+   "en": "you need car",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English supplies 'need' with no Tamil source: the prompt is just 'நீங்கள் காரை' (you + car-ACC), no வேண்டும்/தேவை. Recurs throughout the S121 'car' basket: idx 484 'you need car', 495 'I need car today', 501 'I need car', and conversely idx 491/499 ('நீங்கள்/நான் ஒரு காரை வேண்டும்' glossed 'you/I need a car' — here வேண்டும் is present but means 'should/want', and the dative experiencer for 'need a car' would be அவளுக்கு…வேண்டும், cf. idx 473). Inconsistent treatment of வேண்டும்."
+  },
+  {
+   "seed": 123,
+   "known": "நீங்கள் நல்ல யோசனை",
+   "en": "you need a good idea",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "'need' has no Tamil source — the prompt is only 'நீங்கள் நல்ல யோசனை' (you + good idea). Unproducible as glossed; the Tamil supports at most 'your good idea / you, a good idea'."
+  },
+  {
+   "seed": 125,
+   "known": "நான் நினைக்கிறேன் உங்கள் யோசனை மிகவும் நல்லது",
+   "en": "I think I believe that your idea very good",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English contains a phantom second verb: Tamil has only நினைக்கிறேன் 'I think', but the en reads 'I think I believe …'. 'believe' (நம்புகிறேன், S125) has no source here. Also the English is missing the copula ('your idea very good')."
+  },
+  {
+   "seed": 125,
+   "known": "நீங்கள் நம்புகிறீர்களா?",
+   "en": "you believe today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Polar-question Tamil (நம்புகிறீர்களா, clitic -ஆ) is glossed as a flat declarative with a phantom 'today' (no இன்று). Should be 'do you believe?'. Recurs: idx 568 'நீங்கள் நினைத்தீர்களா' → 'you thought today?', idx 322/346 add a phantom 'today' to -ஆ questions."
+  },
+  {
+   "seed": 124,
+   "known": "நான் இப்போது நினைத்தேன்",
+   "en": "I thought about it now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English adds 'about it' with no Tamil source (Tamil = 'I thought now', இப்போது = 'now'). Minor phantom material."
+  },
+  {
+   "seed": 122,
+   "known": "நான் இப்போது பேருந்தில்",
+   "en": "I'm on bus very soon",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English 'very soon' has no Tamil source (இப்போது = 'now', not 'very soon'). Tail-word mismatch; meaning roughly recoverable."
+  },
+  {
+   "seed": 111,
+   "known": "நமது மூளை புதிய வார்த்தைகள் கற்றுக்கொள்கிறது",
+   "en": "our brain learn new words",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English agreement broken ('our brain learn' should be 'learns'). Same defect cluster across S111: idx 253 'he hear about brain', 257 'our friends good' (missing copula), 244 'we find out brain' (missing article/preposition). Tamil is fine; the English glosses are systematically ungrammatical."
+  },
+  {
+   "seed": 107,
+   "known": "நாங்கள் நம்பிக்கை வைத்தோம் பார்க்க என்ன நீங்கள் செய்கிறீர்கள்",
+   "en": "we hoped to see what you were doing",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Aspect drift in the embedded clause: Tamil நீங்கள் செய்கிறீர்கள் is present ('what you ARE doing') but the en past-shifts to 'what you WERE doing'. This is the inventory's own gloss for என்ன நீங்கள் செய்கிறீர்கள் (S107), so it is consistent course-wide; noting it as a low-priority aspect-rendering wobble, not an answerability bug."
+  },
+  {
+   "seed": 126,
+   "known": "மாற்று",
+   "en": "of",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component row mis-glosses the verb stem மாற்று ('change/changing') as English 'of'. The 'of' in 'shape of my brain' is carried by the genitive suffix -இன் (மூளையின்), not by மாற்று. This component actively mis-teaches: a learner drilling மாற்று=of would produce wrong output. மாற்றுகிறது is correctly 'changes' (S111) / 'work is changing' (S126 build) elsewhere."
+  },
+  {
+   "seed": 138,
+   "known": "இது",
+   "en": "was",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component row glosses the demonstrative இது ('this/it', freeClass) as 'was'. The English 'was' in 'this was where...' is the copula/past of the matrix, not a meaning of இது. Mis-gloss; the same இது is glossed 'thats'/'its' inconsistently across S142/S143 components."
+  },
+  {
+   "seed": 142,
+   "known": "இதன்",
+   "en": "of",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Component row glosses இதன் ('of this / its') as bare 'of'. Like the S126 மாற்று→of row, it pins a standalone English preposition 'of' onto a demonstrative-genitive form; 'of' here is genitive glue, not a content LEGO. Inconsistent with S142 இது→'thats'."
+  },
+  {
+   "seed": 126,
+   "known": "இந்த வேலை என் மூளையின் வடிவத்தை மாற்றுகிறது",
+   "en": "this work is changing shape of my brain now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English appends 'now' with no Tamil source (no இப்போது in the prompt). Recurring pattern: trailing 'now/here/well/today' added to the English of build/use prompts where the Tamil has no matching adverb (~14+ instances incl. S126 'changes now', S133 'we work together well now', S135 'so good now', S127 'see you now'/'see you today'). Makes the English unproducible from the Tamil. Answerability of the core clause is fine."
+  },
+  {
+   "seed": 127,
+   "known": "நாங்கள் விரும்பினேன் பார்க்க உங்களை",
+   "en": "we wanted to see you well",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Subject–verb agreement broken: subject நாங்கள் ('we', 1pl) takes the 1SG verb விரும்பினேன் ('I wanted'); correct would be விரும்பினோம். Same defect with அவன்/நீங்கள் + -ேன் forms across S127 (e.g. 'அவன் விரும்பினேன் பார்க்க'='he wanted to see you', 'நீங்கள் ... விரும்பினேன்'). Also 'well' here has no Tamil source. Broken Tamil morphology — a real learner would be confused by the mismatched person."
+  },
+  {
+   "seed": 131,
+   "known": "இன்று நல்ல யோசனைகள் நுக்கிறது",
+   "en": "good ideas today",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "நுக்கிறது is not a Tamil word (likely a corrupted/typo verb); the prompt is not parseable Tamil and the English 'good ideas today' does not correspond to it. Authoring defect — nonsensical Tamil source."
+  },
+  {
+   "seed": 134,
+   "known": "அந்த பிரச்னை இல்லை",
+   "en": "that problem not here",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English gloss 'that problem not here' is broken English and 'here' has no Tamil source (no இங்கே). The Tamil அந்த பிரச்னை இல்லை means 'that's not a problem / there's no such problem'. Recurring across S134 are telegraphic English glosses ('that work difficult', 'that not difficult', 'this very difficult') that read as word-for-word token strings rather than producible sentences."
+  },
+  {
+   "seed": 143,
+   "known": "இருந்தோம்",
+   "en": "were",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component glosses இருந்தோம் ('we were', 1pl past of 'be') as bare 'were'; together with S143 components அந்த→'the', போல→'as', இது→'its', பேசு→'talking' these expose the build/use prompts as English-ordered token chains. Defensible as glue individually, but the cluster signals the same author pattern producing scrambled Tamil."
+  },
+  {
+   "seed": 145,
+   "known": "இருக்கிறீர்கள் நீங்கள் இல்லை மகிழ்ச்சி எந்த",
+   "en": "are you not happy any more",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Word-salad Tamil: 'இருக்கிறீர்கள் நீங்கள் இல்லை மகிழ்ச்சி எந்த' is English word order transliterated into Tamil tokens (are-you-not-happy-any), ungrammatical as Tamil. Note S145 ALSO contains the clean natural rendering நீங்கள் இனி மகிழ்ச்சியாக இல்லையா? for the same English — two competing renderings of one prompt, one broken. Vocab is all introduced (எந்த/இனி S145), so answerable, but the scrambled variants would confuse. The NPI எந்த/இனி sit under negation இல்லை/question, correctly licensed."
+  },
+  {
+   "seed": 142,
+   "known": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன் இன்று",
+   "en": "thats very kind of you and im grateful today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Long S142 build/use strings concatenate two clauses ('thats very kind of you and im' + 'grateful') as a flat token chain with English contractions (im/thats) left unglossed in the source LEGO too; trailing 'today/here/yesterday' often lack a Tamil counterpart. Authoring/naturalness defect, not an answerability gap — all content lemmas (கருணையான, நன்றியுள்ளவன், உதவி) are introduced at S142."
+  },
+  {
+   "seed": 146,
+   "known": "இன்று எதுவும் வேலை செய்கிறது இல்லை",
+   "en": "nothing is working today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Tamil places இல்லை stranded clause-finally after the finite வேலை செய்கிறது, which is ungrammatical ordering (should be வேலை செய்யவில்லை). The -உம் NPI எதுவும் is correctly licensed (negation இல்லை present), so NOT an NPI violation; flagged only as a Tamil word-order/naturalness defect. The S146 set is otherwise vocab-clean ('since'=முயன்றதிலிருந்து -இலிருந்து suffix, 'seems'=தெரியவில்லை all introduced)."
+  },
+  {
+   "seed": 131,
+   "known": "உன் யோசனைகள் நன்றாக இருக்கின்றன",
+   "en": "your ideas work well",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "உன் ('your', familiar 2sg) appears, but the course uses only honorific உங்கள் for 'your' (per honorificYouCollapse / honorific_you construction — no familiar நீ/உன் in the inventory). Minor register leak (uncontrolled familiar form) rather than a missing-vocab gap; English 'your ideas work well' is producible. Low severity, flagged for consistency with the honorific-only policy."
+  },
+  {
+   "seed": 151,
+   "known": "நான் நம்பிக்கை நடக்கும் இன்று",
+   "en": "I hoping would happen today",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "SYSTEMATIC, batch-dominant (well over half of all use/build prompts). The course encodes target clauses as interlinear gloss-CHAINS where each Tamil token maps 1:1 to an English token in English order (canonical M-LEGO S151 'என்ன நான் இருந்தேன் நம்பிக்கை நடக்கும்' = 'what I was hoping would happen'). The generator then concatenates a pronoun/adverb onto the chain, yielding ungrammatical, UNPRODUCIBLE English: 'I hoping would happen today', 'you hoping would happen', 'today what I was hoping would happen', 'I feel what I was hoping would happen'. A learner cannot produce this — it is not a sentence. Recurs at S151,152,153,159,162,167,169,174,175 and the temporal-tail builds everywhere. Representative only; ~250+ prompts affected."
+  },
+  {
+   "seed": 154,
+   "known": "நான் சனிக்கிழமை ராத்திரி",
+   "en": "I saturday night now / night well / night here",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "SYSTEMATIC bare-fragment builds: a noun LEGO ('night'/'restaurant'/'book'/'sunday'/'month'/'helpful'/'minutes') is prefixed with a pronoun and/or suffixed with 'well'/'now'/'here'/'today' to manufacture a prompt, producing non-sentences with no verb: 'I saturday night now', 'night well', 'restaurant well', 'book now', 'sunday here', 'I month', 'you restaurant', 'minutes well', 'helpful now'. Both the English AND the Tamil ('நான் சனிக்கிழமை ராத்திரி' = 'I saturday night') are broken non-clauses. Hundreds of build rows in S154,156,157,161,164,165,172,173 follow this template. Representative."
+  },
+  {
+   "seed": 151,
+   "known": "நான் இருந்தேன் நம்பிக்கை நடக்கும்",
+   "en": "I was hoping would happen",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "The Tamil itself is word-salad, not grammatical Tamil. 'நான் இருந்தேன் நம்பிக்கை நடக்கும்' is a token-by-token calque of English 'I was hoping would happen' with finite இருந்தேன் ('I was') stranded before a bare noun நம்பிக்கை and a bare future நடக்கும் — no Tamil speaker produces this; the natural form is 'அது நடக்கும் என்று நம்பிக்கை வைத்திருந்தேன்' (which DOES appear, correctly, at idx 6). Because the known side is the learner's L1, broken Tamil prompts are unreadable as cues. Pervasive wherever the gloss-chain LEGOs are reused (S151,152,153)."
+  },
+  {
+   "seed": 166,
+   "known": "மிகவும்",
+   "en": "is",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Outright WRONG lemma gloss. Component S166 glosses 'மிகவும்' as English 'is'. மிகவும் means 'very/much' (and is correctly glossed 'very' in the very next component row, and at S13/S55). It is glossed 'is' only to fill the copula slot in the interlinear chain 'என் பெயர் மிகவும் அசாதாரணமில்லை' = 'my name is not very unusual'. One Tamil lemma must not carry two unrelated English glosses, and 'is' is simply not a meaning of மிகவும். Confuses the ZUT mapping."
+  },
+  {
+   "seed": 151,
+   "known": "நடக்கும்",
+   "en": "would",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Same lemma split-glossed for chain alignment: component 'நடக்கும்' is glossed 'happen' (×2) AND 'would' within S151. நடக்கும் is the future of 'happen' ('will happen'); it never means the bare modal 'would'. 'would' here is a stranded piece of the English 'would happen' chain assigned to the wrong token. Breaks one-Tamil->one-English."
+  },
+  {
+   "seed": 152,
+   "known": "இருக்கும்",
+   "en": "have",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component 'இருக்கும்' glossed 'have' (also at S153). இருக்கும் is 'will be / there is', not the auxiliary 'have' of the English perfect 'would have done'. It is assigned 'have' purely to tile the English auxiliary, which glossRule tenseInVerbNotAuxiliary explicitly forbids (English auxiliaries must NOT be tiled as separate Tamil tokens). Same defect for 'இருந்தேன் = had/was' (S152/S151)."
+  },
+  {
+   "seed": 152,
+   "known": "செய்தேன்",
+   "en": "done",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component 'செய்தேன்' (finite past 1sg, 'I did/made') glossed as bare participle 'done' (×2, S152), to fit 'would have done it'. செய்தேன் is a fully-inflected finite verb, not the participle 'done'; the gloss strips its person/tense to serve the English auxiliary chain — aspect/tense mismatch and a misleading lemma gloss for the learner."
+  },
+  {
+   "seed": 152,
+   "known": "நான் வேறு மாதிரி செய்வேன்",
+   "en": "I do differently",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Answerability/tense mismatch: செய்வேன் is the Tamil FUTURE 1sg ('I will do'), but the English target is 'I do differently' (present, and odd English). The learner reading the Tamil future would produce 'I will do (it) differently'; the supplied English neither matches the Tamil tense nor is natural. Borderline unproducible."
+  },
+  {
+   "seed": 156,
+   "known": "நான் இன்று இரவு உணவகம் செல்லப் போகிறேன்",
+   "en": "I'm going to go to a restaurant tonight",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "POSITIVE marker — this is one of the SCATTERED well-formed natural-Tamil reformulations (also idx 3 'I was hoping to meet you', idx 20 'she is hoping to finish soon', idx 108 natural 'I want to meet on saturday night', S160 'I don't know how to say this word in English'). These are grammatical Tamil with answerable English and use only finite forms a learner can map. They prove the broken majority is a generation defect, not a vocabulary gap. Recorded for contrast, not as an error."
+  },
+  {
+   "seed": 174,
+   "known": "புரிந்துகொள்கிறீர்களா நான் சொல்வதை நேற்று",
+   "en": "understand what I'm saying yesterday?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Temporal-adverb tails are slapped onto clauses regardless of tense coherence, producing contradictions: 'understand what I'm saying yesterday?', 'I'm going to go to a restaurant ... ' with 'tonight'/'today'/'yesterday' swapped freely, 'you hoping would happen' + 'yesterday/today/now/here'. The adverb does not agree with the (already broken) verb form. Systematic across the '+இன்று/நேற்று/இப்போது/இங்கே/நன்றாக' build family in every seed."
+  },
+  {
+   "seed": 199,
+   "known": "வேலை",
+   "en": "used to",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Component LEGO glosses வேலை ('work/job') as English 'used to'. வேலை never means the habitual-past 'used to'; the habitual reading must come from a verb form, not the noun வேலை. This is a mis-gloss: the same Tamil வேலை is elsewhere 'work' (S106/S126/S146) and here 'works' (S197/S198) — pinning it to 'used to' at S199 is wrong and confuses the known-side mapping."
+  },
+  {
+   "seed": 199,
+   "known": "நண்பர் வேலை அலுவலகத்தில்",
+   "en": "used to work in an office",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken Tamil and unproducible English. Tamil literally reads 'friend work in-office' (நண்பர் = 'friend', a stray content word with NO counterpart in the English) and contains NO element for habitual-past 'used to'. The natural English 'used to work in an office' cannot be derived from this Tamil; conversely the Tamil's நண்பர் is unrendered. Authoring defect."
+  },
+  {
+   "seed": 200,
+   "known": "நேரத்தில் முடிக்க உறுதிப்படுத்த வேண்டும்",
+   "en": "they say they want to make sure we finish everything in time",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English contains large spans with no Tamil source: 'they say they want to' and 'everything' have no exponent in நேரத்தில் முடிக்க உறுதிப்படுத்த வேண்டும் (lit. 'in time finish make-sure need'). Learner cannot produce this English from the prompt; unproducible material."
+  },
+  {
+   "seed": 197,
+   "known": "என் மகன் வேலை ஆசிரியர்",
+   "en": "my son works as a teacher",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Degenerate frame variant has broken Tamil syntax: 'my son work teacher' — no finite verb agreement and no exponent for 'works as a'. The natural sibling prompt என் மகன் ஆசிரியராக வேலை செய்கிறான் (also present) is correct; the stripped frame versions (மகன் இங்கே 'son here', ஆசிரியர் நன்றாக 'teacher well', etc.) are naturalness artifacts of the USE/BUILD frame generator, not real sentences."
+  },
+  {
+   "seed": 198,
+   "known": "மகள் வேலை கவுன்சில்",
+   "en": "works for the council",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Same pattern as S197: மகள் வேலை கவுன்சில் = 'daughter work council' is ungrammatical (no finite verb, no 'for the'); the well-formed sibling அவள் கவுன்சிலில் வேலை செய்கிறாள் exists. Plus the M-LEGO drops மகள்/அவள் ('daughter/she') from the English 'works for the council', leaving subject unmapped in the headword gloss."
+  },
+  {
+   "seed": 190,
+   "known": "மனது கேட்கலாமா நான் சில கேள்விகள்",
+   "en": "mind if I ask you some questions",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Word-salad Tamil: மனது ('mind', noun) + கேட்கலாமா ('may-ask?') + நான் சில கேள்விகள் ('I some questions') is not a grammatical Tamil sentence ('mind may-ask I some questions') and lacks the conditional 'if'. The natural sibling சில கேள்விகள் கேட்கலாமா என்று நினைக்கிறீர்களா is fine; the headword/frame versions are authoring defects."
+  },
+  {
+   "seed": 191,
+   "known": "நான் மனம் இல்லை எல்லாம்",
+   "en": "I don't mind at all",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Ungrammatical Tamil 'I mind no all'; எல்லாம் ('everything/all') is not the idiom for 'at all', and மனம் இல்லை is not the natural way to say 'don't mind' (cf. பரவாயில்லை / ஆட்சேபனை இல்லை used earlier S63/S155). Producible only by rote; naturalness defect."
+  },
+  {
+   "seed": 183,
+   "known": "பயம்",
+   "en": "afraid",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "பயம் is the noun 'fear', glossed as the adjective 'afraid'. Frame prompts then read பயம் இங்கே = 'fear here' for 'afraid here'. The adjectival 'afraid' would be பயமாக/பயப்படு; noun-for-adjective gloss is a minor known-side mismatch (still L1-recoverable, hence low)."
+  },
+  {
+   "seed": 178,
+   "known": "ஆனாலும் விரும்பினேன் பார்க்க கிளம்ப வேண்டியிருந்தது",
+   "en": "although wanted to see you I had to leave",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "USE prompt introduces கிளம்ப வேண்டியிருந்தது ('had to leave') content beyond the carrier; the headword M-LEGO 'although wanted to see you' drops 'you' from its bare form. Mild over-reach / subject-object drop in the frame, recoverable but slightly inconsistent."
+  },
+  {
+   "seed": 202,
+   "known": "நான் எவரும் / எவரும் இன்று / எவரும் இங்கே / எவரும் நன்றாக / நீங்கள் எவரும் / எவரும் இப்போது / எவரும் நேற்று / எவரும்",
+   "en": "I nobody / nobody today / nobody here / nobody well / you nobody / nobody now / nobody yesterday / nobody",
+   "category": "npi_violation",
+   "severity": "high",
+   "detail": "எவரும் is a -உம்-series negative-concord item ('nobody/anyone') that the brief flags as a true NPI: ungrammatical in a plain positive declarative with no licenser. These ~8 templated echo fragments stand bare with NO verbal negation (-வில்லை/-ாது/இல்லை), no polar clitic, no conditional and no 'want' — pure positive fragments. In real Tamil 'nobody' obligatorily requires verbal negation (யாரும் வரவில்லை). The only LICENSED uses of எவரும்/யாரும் in this batch are the two authored naturals at S202 ('யாரும் நிச்சயமில்லை' = 'nobody was sure', negated copula) which are fine. The bare fragments are the violation. Systematic — it is the M/A-LEGO drill template applied to an NPI lemma that should never be drilled bare."
+  },
+  {
+   "seed": 204,
+   "known": "ஏற்பாடுகள் (=arrangements) + நடத்த (=deal) vs M-frame விரும்பினேன் அவளை உதவ (=wanted her to help)",
+   "en": "arrangements / deal  vs  wanted her to help",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Seed 204 is internally incoherent: its two A-LEGOs are 'arrangements' (ஏற்பாடுகள்) and 'deal' (நடத்த), but the seed's M-LEGO frame is the unrelated 'wanted her to help' (விரும்பினேன் அவளை உதவ). The original sentence (something like 'wanted her to help make arrangements to deal with...') has been shredded into unrelated fragments stitched under one seed, so half the prompts are about helping-her and half about arrangements/deal with no shared sentence. Authoring defect, not an answerability bug."
+  },
+  {
+   "seed": 201,
+   "known": "அவன் விரும்பினோம் தெரிந்துகொள்ள என்ன / நான் விரும்பினோம்... ; நான் போகிறான்... (S225) ; நான் கொடுப்பான்... (S225)",
+   "en": "he wanted to know what / I think wanted to know what / ...",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Pervasive pronoun-verb agreement clash in the combinatorial template prompts (~17 cases across S201/204/206/207/212/223/224/225): a leading pronoun is glued to a verb that agrees with a different person/number, e.g. அவன் 'he' + விரும்பினோம் '-ோம் we-wanted', நான் 'I' + போகிறான் '-ான் he-is-going', நான் 'I' + கொடுப்பான் '-ான் he-will-give', அவன் 'he' + செய்தீர் '-ீர் you've'. The portmanteau verb agreement (a licensed construction) directly contradicts the prefixed pronoun, producing ungrammatical Tamil. Mechanical template artifact."
+  },
+  {
+   "seed": 201,
+   "known": "அவன் விரும்பினோம் தெரிந்துகொள்ள என்ன நன்றாக => 'wanted to know what well'  vs  அவன் விரும்பினோம் தெரிந்துகொள்ள என்ன => 'he wanted to know what'",
+   "en": "wanted to know what well / he wanted to know what",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Inconsistent pronoun rendering in the build/use templates: the same leading pronoun (அவன்/நான்) is silently DROPPED from the English in BUILD forms ('...well', '...now', '...here') but KEPT in USE forms ('he wanted to know what', 'I think...'). One Tamil pronoun must map to one English rendering (ZUT); the gate-template is collapsing it non-deterministically depending on the appended adverb slot. Recurs across nearly every seed's drill block (201,202,204,205,206,209,213,214,217,222,223,224,225)."
+  },
+  {
+   "seed": 207,
+   "known": "செய்தீர் => \"you've\" ; S213 அவர்கள் => \"they're\" ; S223/224 அவன் => \"he's\"",
+   "en": "you've / they're / he's",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component glosses bake an English auxiliary/copula contraction onto a bare token: செய்தீர்='you've', அவர்கள்='they're', அவன்='he's'. This violates tenseInVerbNotAuxiliary / quotativeEnruNotCopula spirit — the English perfect/copula ('ve, 're, 's) is being tiled as part of a single pronoun or verb-stem component rather than carried by the fused Tamil finite verb. அவன்/அவர்கள் are freeClass pronouns ('he'/'they'), so glossing them as the contracted 'he's'/'they're' over-specifies and will mis-tile in any reuse. Low-to-medium; the natural full prompts gloss these correctly."
+  },
+  {
+   "seed": 217,
+   "known": "நான் ஒரு கிளாஸ் இரண்டு தண்ணீர் குடித்தேன் => 'I had a glass or two of water' ; அவள்...குடித்தாள் => 'she had...'; ...குடித்தீர்களா? => 'did you have...?'",
+   "en": "I had a glass or two of water",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "The Tamil verb குடித்தேன்/குடித்தாள்/குடித்தீர்கள் means 'drank' (lemma குடி 'drink'), but it is glossed as English 'had'. 'drink' is never introduced anywhere in the inventory, and 'have/had' is only introduced as the possessive என்னிடம் இருக்கிறது 'I've got' (S73), not as the consumption sense. So the learner reads 'drank' and must produce 'had' — a verb-lemma mismatch; whichever way, the consumption verb is untaught. Low severity (a glass of water is producible-ish) but it is a genuine untaught-lemma / ZUT slip."
+  },
+  {
+   "seed": 207,
+   "known": "நான் செய்தீர் => 'I you've' ; நீங்கள் செய்தீர் => 'you you've' ; செய்தீர் இங்கே => 'you've here' ; செய்தீர் முடித்தாய்... => 'you've done...'",
+   "en": "I you've / you you've / you've here",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Seed 207 drill template is broken English word-salad: 'I you've', 'you you've', 'you've here', 'you've now', 'you've yesterday'. The component செய்தீர் is mis-segmented (it carries 2nd-person agreement 'you've' yet is prefixed with நான் 'I'/நீங்கள் 'you'), producing nonsensical bilingual fragments. Same template defect inflates S211 (சொன்னு 'told' bare drilled as 'I told'/'you told' with a non-standard spelling சொன்னு for சொன்னேன்/சொன்னது)."
+  },
+  {
+   "seed": 213,
+   "known": "அவர்கள் முயற்சி சாதிக்க (=raw frame) vs natural அவர்கள் சாதிக்க முயற்சிப்பது",
+   "en": "what they're trying to achieve",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The raw combinatorial frame 'அவர்கள் முயற்சி சாதிக்க' (lit. 'they effort achieve') is glossed 'what they're trying to achieve' but contains no Tamil source for 'what' and no finite 'trying' verb — it is a degraded bag-of-stems. The seed's own authored naturals ('அவர்கள் சாதிக்க முயற்சிப்பது...') are well-formed and DO contain the material. Same pattern (degraded stem-frame glossed with extra English 'what/me/he' having no Tamil source) recurs at S201 (...என்ன => 'know what'), S222 ('முயற்சி சொல்ல என்ன வேண்டும்' => 'trying to tell ME what HE wants' — no source for me/he), S225. Unproducible material in the raw frames."
+  },
+  {
+   "seed": 211,
+   "known": "சொன்னு => 'told'",
+   "en": "told",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "சொன்னு is a non-standard/colloquial truncation; standard finite past would be சொன்னேன் (I told) / சொன்னார் (he told) / சொன்னது (it). Drilled bare and combined as 'I told'/'you told'/'told today' with no agreement marking, so the 1sg/2hon distinction the rest of the course relies on is lost. Minor spelling/normalisation defect (cf. the odd S221 token 'பார்த்தேன்_திரை' carrying a literal underscore = pipeline artifact glossed 'watched')."
+  },
+  {
+   "seed": 229,
+   "known": "அவன் உதவுவாள் முடிந்தால் நன்றாக",
+   "en": "would help you if she could well",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "heHonorificSplit/genderNeutral3rd break. The prompt prefixes அவன் ('he', masculine familiar) but the verb உதவுவாள் is overtly FEMININE (-ாள்) and the English says 'she'. The Tamil contains a contradictory he+she-verb pair; the masculine pronoun has no source in the English and clashes with the feminine subject. Same அவன்-vs-feminine clash recurs at seed 229 'அவன் உதவுவாள் முடிந்தால்' => 'he would help you if she could' (now the English carries BOTH 'he' and 'she'). Systematic templating defect prepending அவன் regardless of the row's actual subject/gloss."
+  },
+  {
+   "seed": 236,
+   "known": "அவன் ஒருவர் சொன்னது உதவ",
+   "en": "he someone who said she'd help",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "The mechanically-prepended அவன् surfaces in the English as a stray leading 'he' on a non-sentence ('he someone who said she'd help'), and the same row family glosses the help-clause subject as 'she' (she'd help) with no feminine marking in the Tamil. Pronoun/gender rendering is incoherent: neither the 'he' nor the 'she' has a clean Tamil source. genderNeutral3rd / heHonorificSplit violation produced by the அவன् prefix template."
+  },
+  {
+   "seed": 241,
+   "known": "அவன் கொடுக்க அதை அவனிடம் நேற்று",
+   "en": "he wanted to give it to him yesterday",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "tenseInVerbNotAuxiliary break. கொடுக்க is the bare infinitive 'to give' (no finite/past form anywhere in the row), yet the English is past 'wanted to give'. Across this seed the SAME bare கொடுக்க is glossed as present 'I want to give it to him' (நான் கொடுக்க அதை அவனிடம்), present 'he wants to give it to him now', and past 'he wanted to give it to him yesterday' — one uninflected Tamil stem rendered with three different English tenses/persons, none of which is fused into the verb. Tense is not recoverable from the prompt."
+  },
+  {
+   "seed": 242,
+   "known": "நான் நினை கொடுக்க அவளுக்கு நேரம்",
+   "en": "I think I should give her more time",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "ZUT/rendering break: நேரம் = 'time' but is glossed 'more time' throughout the seed (no அதிகமாக/மேலும் 'more' in the Tamil), and the modal 'should' appears in the English with no வேண்டும்/deontic form in the Tamil (கொடுக்க is bare 'give'). English material (should, more) has no Tamil source; the learner cannot know to add it."
+  },
+  {
+   "seed": 226,
+   "known": "ஆண் முயற்சி உதவ என்னை",
+   "en": "the man is trying to help me",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Pervasive batch-wide defect: build/use rows are bare citation-form lemma strings, not grammatical Tamil. Here முயற்சி is the NOUN 'effort/try' and உதவ the infinitive 'to help' — literally 'man try help me' — with no finite verb, no progressive, no relative marking, yet the English is fully inflected 'the man is trying to help me'. The producible-English target is unreachable from this fragment. Affects the large majority of build/use rows across seeds 226-250 (e.g. 'ஆண் முயற்சி உதவ என்னை இங்கே' => 'the man is trying to help me here')."
+  },
+  {
+   "seed": 229,
+   "known": "பெண் நேற்று",
+   "en": "woman yesterday",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Adverb-on-a-bare-noun template produces non-sentences in BOTH languages: 'பெண் நேற்று' => 'woman yesterday', plus 'I woman' (நான் பெண்), 'you woman' (நீங்கள் பெண்), 'woman well' (பெண் நன்றாக), 'woman now/here/today'. Same generator runs over seeds 231 (old yesterday / I old / old well), 233 (sister well / I sister), 234 (brother well), 239 (father now / father well), 243 (eat well / I eat), 248 (rubbish well / complete well). These are drill scaffolds, not utterances; not answerability bugs but authoring defects worth capturing."
+  },
+  {
+   "seed": 230,
+   "known": "இளம் ஆண் வேலை",
+   "en": "young man who wants to work",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Relative clauses ('who wants to work', 'who can remember', 'who knows', 'who said') are carried entirely in the English with NO Tamil relative/finite machinery in the build/use fragments: 'இளம் ஆண் வேலை' is literally 'young man work' (வேலை = noun 'work'). The full grammatical Tamil only appears in the headline use rows (e.g. 'வேலை செய்ய விரும்பும் இளம் ஆண் ஒருவன் இருக்கிறான்'); the derived drill rows strip the verb and relativiser, leaving the English unproducible. Recurs at seeds 232, 233, 235, 236."
+  },
+  {
+   "seed": 247,
+   "known": "மிகவும்_நல்ல",
+   "en": "fairly",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Synthetic underscore-joined placeholder token மிகவும்_நல்ல ('very_good') used as the LEGO for 'fairly' across the whole seed. The underscore is a build artifact (not Tamil orthography) and the gloss is semantically off — மிகவும் நல்ல reads 'very good', not 'fairly'. The learner is shown a non-word and an inaccurate gloss; needs a real adverb (e.g. ஓரளவு) before use."
+  },
+  {
+   "seed": 227,
+   "known": "அந்த ஆண் புதிய ஏதாவது சொல்வான்",
+   "en": "that man is going to tell me something new",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Future agreement form சொல்வான் ('he will say', 3sg-m) is used but the form is NOT in the inventory (no சொல்வான்/சொல்வாள் debut) and the gloss adds 'me' (சொல்ல 'tell' has no என்னை here). Minor: future tense + dative 'me' carried only in English. Same pattern 'அவள் புதிய ஏதாவது சொல்வாள்' => 'she is going to tell me something new'. Inflection of introduced சொல் so not a vocab block, but the 'me' is unsourced."
+  },
+  {
+   "seed": 249,
+   "known": "போவதற்கு முன்பு என்னை உதவ வேண்டும்",
+   "en": "I need you to help me before you go",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Exact-duplicate prompt row: this (known,en) pair appears twice in seed 249. Seed 250 also duplicates 'பதில் சொல்வதற்கு முன்பு வேறு ஏதாவது சொல்லுங்கள்' => 'tell me something else before I answer', and seed 233 duplicates the component 'சகோதரி' => 'sister'. De-dupe before publishing."
+  },
+  {
+   "seed": 268,
+   "known": "அவன் அனுப்பினாள் மின்னஞ்சல் கடந்த வாரம்",
+   "en": "he sent me emails last week",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "genderNeutral3rd / agreement violation: the prompt pairs the MASCULINE pronoun அவன் ('he') with the overtly FEMININE finite verb அனுப்பினாள் (-ாள் = 'she sent'). Tamil 3sg verbs agree in gender, so அவன்...அனுப்பினாள் is internally contradictory — the subject says 'he', the verb says 'she'. English collapses to 'he sent', masking a broken agreement that a Tamil reader will trip on. The same mismatch recurs in the s268 build rows ('அவன் அனுப்பினாள் ... நன்றாக' = 'sent me ... well'). Either the pronoun should be அவள் or the verb should be அனுப்பினான்."
+  },
+  {
+   "seed": 252,
+   "known": "தொடங்க தயாராவது எப்போது என்று சொல்லுங்கள்",
+   "en": "tell me when will you be ready to start",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "questionByClitic / quotativeEnru: the embedded interrogative is rendered with MAIN-CLAUSE question inversion inside a complement ('tell me WHEN WILL YOU BE ready to start' instead of 'when you will be ready'). The Tamil என்று-complement is a subordinate clause (no inversion), so the English target teaches ungrammatical embedded-question word order. Recurs at the s252 headlines 'she wants to know when will you be ready to start' and 'I don't know when will you be ready to start', and at s271 'I wanted to know would you like to come with us' / 'tell me would you like to come with us'."
+  },
+  {
+   "seed": 266,
+   "known": "இவர் என் அப்பாவின் பழைய நண்பர்",
+   "en": "that was an old friend of my father",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "heHonorificSplit / pronoun rendering: இவர் is the proximal HONORIFIC animate pronoun ('this person / he-here'), yet it is glossed 'that was' — collapsing an animate honorific subject to an inanimate distal demonstrative + invented past copula. The sibling row 'அவர் என் அப்பாவின் பழைய நண்பர்' is correctly glossed 'he was an old friend', so இவர்→'that was' is an inconsistent, wrong rendering of the same pronoun class."
+  },
+  {
+   "seed": 251,
+   "known": "நீங்கள் வரை",
+   "en": "you until",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Mechanical templated NON-SENTENCE: the new LEGO வரை ('until') is glued to bare frame words producing ungrammatical fragments — 'you until', 'I until', 'until well', 'until here', 'until now'. வரை is a postposition that needs a complement; standing alone with a pronoun/adverb it is not producible language. Answerable token-by-token but pedagogically empty. This filler pattern (content word + I/you/today/yesterday/now/here/well) saturates the batch."
+  },
+  {
+   "seed": 256,
+   "known": "மணி_நேரம் நன்றாக",
+   "en": "hour well",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Systematic across single-word A-LEGO seeds (256 மணி_நேரம் 'hour', 257 நீலம் 'blue', 258 மேலே 'over', 260 மிகவும்_இல்லை 'faintest', 261 ஆகலாம் 'might', 263 பொருள் 'mean', 272 தோன்றுகிறது 'sounds', 273 துரதிர்ஷ்டம் 'unfortunately', 274 நாட்கள் 'days', 275 நீண்டது 'longer'): EVERY use/build row is the bare word + a frame adverb/pronoun, yielding non-sentences like 'hour well', 'blue today', 'over here', 'faintest now', 'might yesterday', 'mean here', 'sounds well', 'unfortunately now', 'days here', 'longer well', 'you blue', 'I might'. These are not utterances a learner would ever say; ~10 seeds are almost entirely this filler."
+  },
+  {
+   "seed": 268,
+   "known": "அவள் கடந்த வாரம் சில மின்னஞ்சல்கள் அனுப்பினாள்",
+   "en": "she recently sent me emails last week",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English contains material with no Tamil source: 'recently' has no source — சில means 'a few/some' (it is glossed 'few' at s56/s155), not 'recently'. The English also drops 'a few' entirely. So the target string ('she recently sent me emails last week') is partly unproducible from the Tamil and mis-renders சில."
+  },
+  {
+   "seed": 252,
+   "known": "தயார்",
+   "en": "will you be ready?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Inconsistent component glossing of the same lemma தயார் ('ready') within one batch: glossed 'will you be ready?' (s252 component), 'ready' (s253/s254 component), and 'you'll be ready' (s255 component). The bare A-LEGO is just 'ready'; attaching tense/person/question to a bare component gloss is an authoring inconsistency (the finite forms தயாராவது/இருப்பீர்களா carry those features, not the bare stem)."
+  },
+  {
+   "seed": 270,
+   "known": "தாமதமாக",
+   "en": "going to be late",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss overload: தாமதமாக is the adverb 'late' (cf. s140 'tired/late' usage), but the s270 component is glossed 'going to be late' — folding the future-copula 'going to be' (carried by the finite verb வருவேன்/வருவாள்/வருவார் elsewhere in the same seed) into a bare adverb component. Minor gloss-attribution defect, not an answerability bug."
+  },
+  {
+   "seed": 297,
+   "known": "நான் பலர் பேசும் ஆங்கிலம்",
+   "en": "I don't know many people who speak English",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "PERVASIVE: English injects material with NO source in the Tamil (unproducible). The Tamil is bare 'I many-people who-speak English' (no verb, no negation: தெரியாது/இல்லை absent), yet the gloss is 'I don't know many people who speak English'. The whole 'I don't know …' verb+negation is fabricated. Same pattern across the seed (S297 use rows) and elsewhere: S290 'ஆர்வம் அவன் பதில்' → 'wonder if he knows the answer' (no 'knows'/'if' source), S279 already-licensed but S294 'போதும் நேரம் அழைக்க' → 'I don't have enough time to call' (no negation in Tamil), S300 'அவள் தோன்ற நட்பற்று' → 'she doesn't want to seem unfriendly' (no want/negation). Learner reading the Tamil cannot produce the negated/embedded English. This is the dominant defect of the batch."
+  },
+  {
+   "seed": 295,
+   "known": "நாள் இங்கே",
+   "en": "day here",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "PERVASIVE templated padding: the bulk of build/use rows are mechanical noun/adverb fragments that are nonsensical in both languages — 'day here', 'day now', 'day well', 'job here', 'most well', 'which now', 'which here', 'wonder well', 'half here', 'half now', 'early well', 'unfriendly here', 'coffee well', 'party well', etc., plus bare-pronoun stubs 'I day', 'you day', 'I most', 'you which', 'I half', 'I job'. These are auto-generated slot-fills, not sayable prompts; they teach nothing and would confuse a learner. Affects a large majority of the 306 rows."
+  },
+  {
+   "seed": 289,
+   "known": "மாலை இன்று",
+   "en": "afternoon today",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "Wrong word for the introduced LEGO + inconsistent gloss. S289 introduces மதியம் = 'afternoon', but EVERY S289 prompt uses மாலை instead, which the inventory established as 'evening' (S18 இந்த மாலை = 'this evening'). மாலை is glossed 'afternoon' six times (மாலை இன்று/நேற்று/இங்கே/இப்போது/நன்றாக, நீங்கள் மாலை) yet 'evening' once (bare மாலை). The taught word மதியம் never appears in any prompt, and மாலை (evening) is mis-rendered as 'afternoon'. ZUT/answerability break: one Tamil word → two English renderings, and the learner is asked to produce 'afternoon' from the word meaning 'evening'."
+  },
+  {
+   "seed": 299,
+   "known": "நீங்கள் வேண்டும் செலுத்த பாதி",
+   "en": "she wants to pay half today",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "PERVASIVE subject-pronoun person mismatch between the Tamil free-class pronoun and the English subject. Here நீங்கள் ('you') is glossed 'she'. Same breakage throughout: S299 'நான் வேண்டும் செலுத்த பாதி இப்போது' (நான்='I') → 'wants to pay half now'; S296 'நீங்கள் சொன்னேன் வேண்டும் மேலும் நேரம்' (நீங்கள்='you') → 'I said I need…'; S276 'அவன் இங்கே நிற்க நீண்டது நன்றாக' (அவன்='he') → 'stay here for a little longer well' (he dropped); S287 'நான் நினை மக்கள் பார்க்க தொலைக்காட்சி' → 'I know…' (நினை='think'). The prompt pronoun the learner sees does not license the English person — a true answerability/ZUT failure, not a register collapse."
+  },
+  {
+   "seed": 292,
+   "known": "நான் நம்புகிறேன் வர விருந்து நேற்று",
+   "en": "I hope you'll come to the party tomorrow",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Date/time-word mismatches between the Tamil temporal adverb and the English. நேற்று = 'yesterday' but rendered 'tomorrow'. Recurs: S290 'ஆர்வம் அவன் பதில் இன்று' (இன்று='today') → 'do you wonder … now?'; S291 'நம்புகிறேன் பேச சிறப்பாக நேற்று' (நேற்று='yesterday') → 'I hope to speak better now'; S294 'போதும் நேரம் அழைக்க இன்று' inconsistencies. The slot adverb and its gloss disagree, so the learner cannot reliably produce the stated English time word."
+  },
+  {
+   "seed": 299,
+   "known": "அவன் வேண்டும் செலுத்க பாதி நன்றாக",
+   "en": "wants to pay half well",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Tamil spelling error: செலுத்க is a typo for செலுத்த ('pay'). Garbles the prompt token. (Also illustrates the அவன்='he' dropped from the English, per the pronoun-mismatch finding.)"
+  },
+  {
+   "seed": 281,
+   "known": "அவன் முன்பு தொடங்க",
+   "en": "he wants to finish before you start",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Fabricated clause material with no Tamil source. 'முன்பு தொடங்க' = 'before you start' only; the gloss adds 'he wants to finish' with nothing in the Tamil. Same seed: 'நான் நினை முன்பு தொடங்க' → 'I want to finish before you start' (want/finish injected); 'அவள் என் காபி முடிக்கலாம் என்று சொன்னாள்' → 'she doesn't mind if I finish my coffee' (சொன்னாள்='said'/முடிக்கலாம்='may finish' → a negated 'doesn't mind' is invented). Unproducible from the prompt."
+  },
+  {
+   "seed": 290,
+   "known": "ஆர்வம் அவன் பதில் இன்று",
+   "en": "do you wonder if he knows the answer today?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Mood/sentence-type mismatch: a plain declarative Tamil fragment (no interrogative -ஆ clitic, no நீங்கள்) is glossed as a yes/no question 'do you wonder…?'. Recurs where bare M-LEGO strings are arbitrarily rendered as questions vs statements across S290/S288/S293 use rows. The question form has no clitic source in the Tamil, so the learner cannot know to produce a question."
+  },
+  {
+   "seed": 278,
+   "known": "முடிக்க எல்லாவற்றையும் இரவு இங்கே",
+   "en": "finish everything last night here",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Padding appended to a coherent M-LEGO produces incoherent English: 'finish everything last night' + slot 'here'/'well'/'now' → 'finish everything last night here', '…well', '…now'. The genuine seed sentences (e.g. 'I had to finish everything last night', 'did you have to finish everything last night?') are fine; only the templated build rows are broken. Same shape across nearly every seed's build rows."
+  }
+ ]
+}

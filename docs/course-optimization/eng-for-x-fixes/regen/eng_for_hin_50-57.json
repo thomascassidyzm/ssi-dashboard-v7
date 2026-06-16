@@ -1,0 +1,848 @@
+{
+ "authored": {
+  "seeds": [
+   {
+    "seed": 50,
+    "hindi": "मैं जितनी जल्दी मुमकिन हो खत्म करने की कोशिश नहीं कर रहा।",
+    "rerendered": true,
+    "applied": "ZUT split: the old build glossed जितनी जल्दी हो सके as 'as quickly as possible', but that exact Hindi already = 'as soon as you can' (seed 28) — one Hindi→two English. Re-rendered with जितनी जल्दी मुमकिन हो for the distinct gloss, and taught करने की कोशिश नहीं कर रहा as ONE 'not trying to' chunk instead of the word-salad कोशिश नहीं='not trying' + कर रहा='doing'.",
+    "legos": [
+     {
+      "type": "M",
+      "known": "जितनी जल्दी मुमकिन हो",
+      "en": "as quickly as possible",
+      "components": [
+       {
+        "known": "जल्दी",
+        "en": "quickly"
+       },
+       {
+        "known": "मुमकिन हो",
+        "en": "possible"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "खत्म करने की कोशिश नहीं कर रहा",
+      "en": "not trying to finish",
+      "components": [
+       {
+        "known": "खत्म करना",
+        "en": "to finish"
+       },
+       {
+        "known": "करने की कोशिश नहीं कर रहा",
+        "en": "not trying to"
+       }
+      ]
+     }
+    ],
+    "phrases": [
+     {
+      "role": "component",
+      "known": "जल्दी",
+      "en": "quickly"
+     },
+     {
+      "role": "component",
+      "known": "मुमकिन हो",
+      "en": "possible"
+     },
+     {
+      "role": "build",
+      "known": "जितनी जल्दी मुमकिन हो",
+      "en": "as quickly as possible"
+     },
+     {
+      "role": "build",
+      "known": "जितनी जल्दी मुमकिन हो बोलना",
+      "en": "to speak as quickly as possible"
+     },
+     {
+      "role": "build",
+      "known": "जितनी जल्दी मुमकिन हो सीखना",
+      "en": "to learn as quickly as possible"
+     },
+     {
+      "role": "use",
+      "known": "मैं जितनी जल्दी मुमकिन हो अंग्रेज़ी सीखना चाहता हूँ",
+      "en": "I want to learn English as quickly as possible"
+     },
+     {
+      "role": "use",
+      "known": "वह जितनी जल्दी मुमकिन हो वापस आना चाहता है",
+      "en": "he wants to come back as quickly as possible"
+     },
+     {
+      "role": "component",
+      "known": "खत्म करना",
+      "en": "to finish"
+     },
+     {
+      "role": "build",
+      "known": "खत्म करने की कोशिश नहीं कर रहा",
+      "en": "not trying to finish"
+     },
+     {
+      "role": "build",
+      "known": "बोलने की कोशिश नहीं कर रहा",
+      "en": "not trying to speak"
+     },
+     {
+      "role": "use",
+      "known": "मैं जितनी जल्दी मुमकिन हो खत्म करने की कोशिश नहीं कर रहा",
+      "en": "I'm not trying to finish as quickly as possible"
+     },
+     {
+      "role": "use",
+      "known": "मैं अंग्रेज़ी सीखने की कोशिश नहीं कर रहा",
+      "en": "I'm not trying to learn English"
+     },
+     {
+      "role": "use",
+      "known": "वह कुछ भी कहने की कोशिश नहीं कर रहा",
+      "en": "he's not trying to say anything"
+     }
+    ]
+   },
+   {
+    "seed": 51,
+    "hindi": "मुझे अपने दोस्तों के साथ दिलचस्प काम करना अच्छा लगता है।",
+    "rerendered": false,
+    "applied": "Killed the worst word-salad in the old build: अच्छा लगता है was split अच्छा='enjoy' + लगता है='I'. It is ONE idiomatic experiencer M-LEGO अच्छा लगता है='I enjoy' (the लगना frame from glossRules), dative मुझे. Also caught काम='things' (not 'work' here) and taught अपने दोस्तों के साथ as 'with my friends' (अपना subject-bound to मैं).",
+    "legos": [
+     {
+      "type": "M",
+      "known": "अच्छा लगता है",
+      "en": "I enjoy",
+      "components": []
+     },
+     {
+      "type": "M",
+      "known": "दिलचस्प काम",
+      "en": "interesting things",
+      "components": [
+       {
+        "known": "दिलचस्प",
+        "en": "interesting"
+       },
+       {
+        "known": "काम",
+        "en": "things"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "अपने दोस्तों के साथ",
+      "en": "with my friends",
+      "components": [
+       {
+        "known": "अपने दोस्तों",
+        "en": "my friends"
+       },
+       {
+        "known": "के साथ",
+        "en": "with"
+       }
+      ]
+     }
+    ],
+    "phrases": [
+     {
+      "role": "component",
+      "known": "दिलचस्प",
+      "en": "interesting"
+     },
+     {
+      "role": "component",
+      "known": "काम",
+      "en": "things"
+     },
+     {
+      "role": "build",
+      "known": "दिलचस्प काम",
+      "en": "interesting things"
+     },
+     {
+      "role": "build",
+      "known": "अपने दोस्तों के साथ",
+      "en": "with my friends"
+     },
+     {
+      "role": "build",
+      "known": "अंग्रेज़ी सीखना अच्छा लगता है",
+      "en": "I enjoy learning English"
+     },
+     {
+      "role": "build",
+      "known": "दिलचस्प काम करना अच्छा लगता है",
+      "en": "I enjoy doing interesting things"
+     },
+     {
+      "role": "use",
+      "known": "मुझे अपने दोस्तों के साथ बोलना अच्छा लगता है",
+      "en": "I enjoy speaking with my friends"
+     },
+     {
+      "role": "use",
+      "known": "मुझे अपने दोस्तों के साथ दिलचस्प काम करना अच्छा लगता है",
+      "en": "I enjoy doing interesting things with my friends"
+     },
+     {
+      "role": "use",
+      "known": "मुझे अंग्रेज़ी सीखना अच्छा नहीं लगता",
+      "en": "I don't enjoy learning English"
+     },
+     {
+      "role": "use",
+      "known": "क्या आपको दिलचस्प काम करना अच्छा लगता है?",
+      "en": "do you enjoy doing interesting things?"
+     }
+    ]
+   },
+   {
+    "seed": 52,
+    "hindi": "वह पिछले हफ्ते अपने दोस्त को एक चिट्ठी लिखना चाहता था।",
+    "rerendered": false,
+    "applied": "Agreement fixed: subject वह + masculine → चाहता था glossed precisely 'he wanted' (not the bare 'wanted to'). अपने दोस्त को = 'to his friend' (अपना subject-bound to वह=he). Frame diversity: USE phrases vary tense and person rather than repeating the chtrain चाहता था.",
+    "legos": [
+     {
+      "type": "M",
+      "known": "पिछले हफ्ते",
+      "en": "last week",
+      "components": [
+       {
+        "known": "पिछले",
+        "en": "last"
+       },
+       {
+        "known": "हफ्ते",
+        "en": "week"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "एक चिट्ठी लिखना",
+      "en": "to write a letter",
+      "components": [
+       {
+        "known": "चिट्ठी",
+        "en": "letter"
+       },
+       {
+        "known": "लिखना",
+        "en": "to write"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "अपने दोस्त को",
+      "en": "to his friend",
+      "components": [
+       {
+        "known": "अपने दोस्त",
+        "en": "his friend"
+       },
+       {
+        "known": "को",
+        "en": "to"
+       }
+      ]
+     }
+    ],
+    "phrases": [
+     {
+      "role": "component",
+      "known": "चिट्ठी",
+      "en": "letter"
+     },
+     {
+      "role": "component",
+      "known": "लिखना",
+      "en": "to write"
+     },
+     {
+      "role": "build",
+      "known": "एक चिट्ठी लिखना",
+      "en": "to write a letter"
+     },
+     {
+      "role": "build",
+      "known": "पिछले हफ्ते",
+      "en": "last week"
+     },
+     {
+      "role": "build",
+      "known": "अपने दोस्त को एक चिट्ठी लिखना",
+      "en": "to write a letter to his friend"
+     },
+     {
+      "role": "use",
+      "known": "वह अपने दोस्त को एक चिट्ठी लिखना चाहता था",
+      "en": "he wanted to write a letter to his friend"
+     },
+     {
+      "role": "use",
+      "known": "वह पिछले हफ्ते अपने दोस्त को एक चिट्ठी लिखना चाहता था",
+      "en": "he wanted to write a letter to his friend last week"
+     },
+     {
+      "role": "use",
+      "known": "मैं पिछले हफ्ते एक चिट्ठी लिखना चाहता था",
+      "en": "I wanted to write a letter last week"
+     },
+     {
+      "role": "use",
+      "known": "क्या आप पिछले हफ्ते एक चिट्ठी लिखना चाहते थे?",
+      "en": "did you want to write a letter last week?"
+     }
+    ]
+   },
+   {
+    "seed": 53,
+    "hindi": "वह उसकी चिट्ठी अपने बैग में रखना चाहती थी।",
+    "rerendered": false,
+    "applied": "The keystone contrast the old build flattened: उसकी चिट्ठी = 'his letter' (possessor is the FRIEND, not the subject → उसकी, agreeing with fem चिट्ठी) vs अपने बैग में = 'in her bag' (अपना, subject-bound to वह=she). Old build mislabelled both as 'her'. Subject वह + fem → रखना चाहती थी = 'she wanted to put'.",
+    "legos": [
+     {
+      "type": "M",
+      "known": "उसकी चिट्ठी",
+      "en": "his letter",
+      "components": [
+       {
+        "known": "उसकी",
+        "en": "his"
+       },
+       {
+        "known": "चिट्ठी",
+        "en": "letter"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "अपने बैग में",
+      "en": "in her bag",
+      "components": [
+       {
+        "known": "बैग",
+        "en": "bag"
+       },
+       {
+        "known": "में",
+        "en": "in"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "रखना चाहती थी",
+      "en": "she wanted to put",
+      "components": [
+       {
+        "known": "रखना",
+        "en": "to put"
+       },
+       {
+        "known": "चाहती थी",
+        "en": "she wanted"
+       }
+      ]
+     }
+    ],
+    "phrases": [
+     {
+      "role": "component",
+      "known": "बैग",
+      "en": "bag"
+     },
+     {
+      "role": "component",
+      "known": "रखना",
+      "en": "to put"
+     },
+     {
+      "role": "build",
+      "known": "अपने बैग में",
+      "en": "in her bag"
+     },
+     {
+      "role": "build",
+      "known": "उसकी चिट्ठी",
+      "en": "his letter"
+     },
+     {
+      "role": "build",
+      "known": "अपने बैग में रखना",
+      "en": "to put in her bag"
+     },
+     {
+      "role": "use",
+      "known": "वह उसकी चिट्ठी अपने बैग में रखना चाहती थी",
+      "en": "she wanted to put his letter in her bag"
+     },
+     {
+      "role": "use",
+      "known": "वह एक चिट्ठी अपने बैग में रखना चाहती थी",
+      "en": "she wanted to put a letter in her bag"
+     },
+     {
+      "role": "use",
+      "known": "मैं उसकी चिट्ठी अपने दोस्त को देना चाहता था",
+      "en": "I wanted to give his letter to my friend"
+     },
+     {
+      "role": "use",
+      "known": "क्या आप उसकी चिट्ठी अपने बैग में रखना चाहते थे?",
+      "en": "did you want to put his letter in your bag?"
+     }
+    ]
+   },
+   {
+    "seed": 54,
+    "hindi": "हम आपको थोड़ा और समय देना चाहते थे।",
+    "rerendered": false,
+    "applied": "ZUT guard: चाहते थे also = 'you wanted' (seed 31). Disambiguated by keeping the overt subject हम in every phrase so चाहते थे here reliably reads 'we wanted'; the standalone form is one agreement lemma keyed by the pronoun. आपको = dative 'you'. Frame diversity varies the recipient (you / me / someone else) not just the verb.",
+    "legos": [
+     {
+      "type": "M",
+      "known": "थोड़ा और समय",
+      "en": "a little more time",
+      "components": [
+       {
+        "known": "थोड़ा और",
+        "en": "a little more"
+       },
+       {
+        "known": "समय",
+        "en": "time"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "देना चाहते थे",
+      "en": "we wanted to give",
+      "components": [
+       {
+        "known": "देना",
+        "en": "to give"
+       },
+       {
+        "known": "चाहते थे",
+        "en": "we wanted"
+       }
+      ]
+     }
+    ],
+    "phrases": [
+     {
+      "role": "component",
+      "known": "समय",
+      "en": "time"
+     },
+     {
+      "role": "component",
+      "known": "देना",
+      "en": "to give"
+     },
+     {
+      "role": "build",
+      "known": "थोड़ा और समय",
+      "en": "a little more time"
+     },
+     {
+      "role": "build",
+      "known": "थोड़ा और समय देना",
+      "en": "to give a little more time"
+     },
+     {
+      "role": "build",
+      "known": "हम देना चाहते थे",
+      "en": "we wanted to give"
+     },
+     {
+      "role": "use",
+      "known": "हम आपको थोड़ा और समय देना चाहते थे",
+      "en": "we wanted to give you a little more time"
+     },
+     {
+      "role": "use",
+      "known": "हम आपको थोड़ा और समय देना चाहते हैं",
+      "en": "we want to give you a little more time"
+     },
+     {
+      "role": "use",
+      "known": "हम किसी और के साथ थोड़ा और समय बोलना चाहते थे",
+      "en": "we wanted to speak a little more time with someone else"
+     },
+     {
+      "role": "use",
+      "known": "मैं आपको थोड़ा और समय देना चाहता हूँ",
+      "en": "I want to give you a little more time"
+     }
+    ]
+   },
+   {
+    "seed": 55,
+    "hindi": "मुझे जागना अच्छा नहीं लगता जब मैंने अच्छी नींद नहीं ली।",
+    "rerendered": true,
+    "applied": "Two big fixes. (1) रात को was glossed 'very well' in the old build — it actually means 'at night', and 'at night' is UNSOURCED in the English 'I didn't sleep very well', so I dropped it and teach अच्छी नींद नहीं ली = 'didn't sleep well' as one M-LEGO. (2) 'enjoy' must be the लगना frame (seed 51), not पसंद ('like'): re-rendered जागना पसंद नहीं → जागना अच्छा नहीं लगता = 'I don't enjoy waking up', keeping enjoy=लगना ZUT-consistent. मैंने...ली = ergative ने-subject (perfective, fem object नींद).",
+    "legos": [
+     {
+      "type": "M",
+      "known": "जागना अच्छा नहीं लगता",
+      "en": "I don't enjoy waking up",
+      "components": [
+       {
+        "known": "जागना",
+        "en": "waking up"
+       },
+       {
+        "known": "अच्छा नहीं लगता",
+        "en": "I don't enjoy"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "अच्छी नींद नहीं ली",
+      "en": "didn't sleep well",
+      "components": [
+       {
+        "known": "अच्छी नींद",
+        "en": "sleep well"
+       },
+       {
+        "known": "नहीं ली",
+        "en": "didn't"
+       }
+      ]
+     }
+    ],
+    "phrases": [
+     {
+      "role": "component",
+      "known": "जागना",
+      "en": "waking up"
+     },
+     {
+      "role": "component",
+      "known": "अच्छी नींद",
+      "en": "sleep well"
+     },
+     {
+      "role": "build",
+      "known": "जागना अच्छा नहीं लगता",
+      "en": "I don't enjoy waking up"
+     },
+     {
+      "role": "build",
+      "known": "अच्छी नींद नहीं ली",
+      "en": "didn't sleep well"
+     },
+     {
+      "role": "build",
+      "known": "जब मैंने अच्छी नींद नहीं ली",
+      "en": "when I didn't sleep well"
+     },
+     {
+      "role": "use",
+      "known": "मुझे जागना अच्छा नहीं लगता जब मैंने अच्छी नींद नहीं ली",
+      "en": "I don't enjoy waking up when I didn't sleep well"
+     },
+     {
+      "role": "use",
+      "known": "मुझे जागना अच्छा नहीं लगता जब मैं थका हुआ हूँ",
+      "en": "I don't enjoy waking up when I'm tired"
+     },
+     {
+      "role": "use",
+      "known": "मुझे लगता है मैंने अच्छी नींद नहीं ली",
+      "en": "I think I didn't sleep well"
+     },
+     {
+      "role": "use",
+      "known": "वह अच्छी नींद नहीं ली",
+      "en": "she didn't sleep well"
+     }
+    ]
+   },
+   {
+    "seed": 56,
+    "hindi": "तो मैं कुछ शब्द कहना याद कर सकता हूँ।",
+    "rerendered": false,
+    "applied": "NPI guard: this is a positive declarative, so 'a few words' is the bare existential कुछ शब्द, NOT कुछ भी (which is the licensed 'anything'). कहना याद कर सकता हूँ taught as the 'I can remember how to say' chunk built on याद कर सकता हूँ (seed 10) — no new synonym for remember.",
+    "legos": [
+     {
+      "type": "A",
+      "known": "तो",
+      "en": "so",
+      "components": []
+     },
+     {
+      "type": "M",
+      "known": "कुछ शब्द",
+      "en": "a few words",
+      "components": [
+       {
+        "known": "कुछ",
+        "en": "a few"
+       },
+       {
+        "known": "शब्द",
+        "en": "words"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "कहना याद कर सकता हूँ",
+      "en": "I can remember how to say",
+      "components": [
+       {
+        "known": "कहना",
+        "en": "to say"
+       },
+       {
+        "known": "याद कर सकता हूँ",
+        "en": "I can remember"
+       }
+      ]
+     }
+    ],
+    "phrases": [
+     {
+      "role": "component",
+      "known": "कुछ",
+      "en": "a few"
+     },
+     {
+      "role": "component",
+      "known": "शब्द",
+      "en": "words"
+     },
+     {
+      "role": "build",
+      "known": "कुछ शब्द",
+      "en": "a few words"
+     },
+     {
+      "role": "build",
+      "known": "कुछ शब्द कहना",
+      "en": "to say a few words"
+     },
+     {
+      "role": "build",
+      "known": "कुछ शब्द कहना याद कर सकता हूँ",
+      "en": "I can remember how to say a few words"
+     },
+     {
+      "role": "use",
+      "known": "तो मैं कुछ शब्द कहना याद कर सकता हूँ",
+      "en": "so I can remember how to say a few words"
+     },
+     {
+      "role": "use",
+      "known": "मैं अंग्रेज़ी में कुछ शब्द कहना याद कर सकता हूँ",
+      "en": "I can remember how to say a few words in English"
+     },
+     {
+      "role": "use",
+      "known": "तो मैं कुछ शब्द सीखना चाहता हूँ",
+      "en": "so I want to learn a few words"
+     },
+     {
+      "role": "use",
+      "known": "मैं कुछ शब्द कहना याद नहीं कर सकता",
+      "en": "I can't remember how to say a few words"
+     }
+    ]
+   },
+   {
+    "seed": 57,
+    "hindi": "मुझे याद नहीं कि मैं जो कहना चाहता था वह कैसे कहें।",
+    "rerendered": false,
+    "applied": "Killed the word-salad याद='remember' + नहीं='I can't': taught मुझे याद नहीं as ONE dative-experiencer M-LEGO = 'I can't remember' (नहीं is the all-purpose negator per glossRules, not a standalone 'I can't'). जो कहना चाहता था = 'what I wanted to say' and वह कैसे कहें = 'how to say' as whole relative chunks.",
+    "legos": [
+     {
+      "type": "M",
+      "known": "मुझे याद नहीं",
+      "en": "I can't remember",
+      "components": []
+     },
+     {
+      "type": "M",
+      "known": "जो कहना चाहता था",
+      "en": "what I wanted to say",
+      "components": [
+       {
+        "known": "जो",
+        "en": "what"
+       },
+       {
+        "known": "कहना चाहता था",
+        "en": "I wanted to say"
+       }
+      ]
+     },
+     {
+      "type": "M",
+      "known": "वह कैसे कहें",
+      "en": "how to say",
+      "components": [
+       {
+        "known": "कैसे",
+        "en": "how"
+       },
+       {
+        "known": "कहें",
+        "en": "to say"
+       }
+      ]
+     }
+    ],
+    "phrases": [
+     {
+      "role": "component",
+      "known": "कैसे",
+      "en": "how"
+     },
+     {
+      "role": "component",
+      "known": "जो",
+      "en": "what"
+     },
+     {
+      "role": "build",
+      "known": "मुझे याद नहीं",
+      "en": "I can't remember"
+     },
+     {
+      "role": "build",
+      "known": "जो कहना चाहता था",
+      "en": "what I wanted to say"
+     },
+     {
+      "role": "build",
+      "known": "वह कैसे कहें",
+      "en": "how to say"
+     },
+     {
+      "role": "use",
+      "known": "मुझे याद नहीं कि मैं जो कहना चाहता था वह कैसे कहें",
+      "en": "I can't remember how to say what I wanted to say"
+     },
+     {
+      "role": "use",
+      "known": "मुझे याद नहीं वह कैसे कहें",
+      "en": "I can't remember how to say"
+     },
+     {
+      "role": "use",
+      "known": "मुझे याद है जो मैं कहना चाहता था",
+      "en": "I remember what I wanted to say"
+     },
+     {
+      "role": "use",
+      "known": "क्या आपको याद है कि वह कैसे कहें?",
+      "en": "do you remember how to say?"
+     }
+    ]
+   }
+  ],
+  "summary": "Regenerated decomposition + representative phrases for eng_for_hin seeds 50-57, holding each English intention fixed and applying the full SSi methodology against docs/pair-contracts/eng_for_hin.contract.cjs.\n\nRe-rendered Hindi (2 seeds):\n- Seed 50: जितनी जल्दी हो सके → जितनी जल्दी मुमकिन हो. The old gloss 'as quickly as possible' collided with the already-taught जितनी जल्दी हो सके='as soon as you can' (seed 28) — one Hindi→two English ZUT conflict. New rendering gives 'as quickly as possible' its own Hindi.\n- Seed 55: dropped रात को (it means 'at night', mis-glossed 'very well' in the naive build, and 'at night' is unsourced in the English 'I didn't sleep very well'); re-rendered जागना पसंद नहीं → जागना अच्छा नहीं लगता so 'enjoy' stays on the लगना frame (seed 51) rather than पसंद='like'.\n\nSeeds 51,52,53,54,56,57 kept their Hindi (rerendered=false) — only the decomposition/glossing was rebuilt.\n\nKey intelligence applied vs the naive build:\n- Idiomatic M-LEGOs kept WHOLE with one gloss: अच्छा लगता है='I enjoy', मुझे याद नहीं='I can't remember', अच्छी नींद नहीं ली='didn't sleep well' — replacing word-salad splits like अच्छा='enjoy'+लगता है='I', याद='remember'+नहीं='I can't', and the रात को='very well' error.\n- Agreement honoured to the real subject/gender: वह+masc→चाहता था='he wanted' (52); वह+fem→रखना चाहती थी='she wanted to put' (53).\n- अपना vs उसका contrast surfaced in seed 53: उसकी चिट्ठी='his letter' (possessor=friend, fem-agreeing) vs अपने बैग में='in her bag' (subject-bound) — the old build flattened both to 'her'.\n- ZUT: 'we wanted' (हम...चाहते थे, 54) disambiguated from 'you wanted' (आप...चाहते थे, seed 31) by keeping the overt pronoun; 'enjoy'=लगना held distinct from 'like'=पसंद.\n- NPI: seed 56 'a few words' is the bare existential कुछ शब्द (positive declarative), not the licensed कुछ भी; negation rendered with नहीं (declarative), never मत.\n- No unsourced English (dropped 'at night'); every Hindi content morpheme is a prior-inventory/earlier-slice LEGO or free class; no new Hindi synonym introduced for an already-taught gloss (reused कहना, याद करना, याद कर सकता हूँ, के साथ, देना, etc.).\n- Frame diversity (P7): each new LEGO's USE phrases vary along the new axis — tense (wanted/want), person (I/he/she/you/we), and polarity (enjoy/don't enjoy, can/can't remember) — rather than repeating one carrier frame; convergence pairs exempt."
+ },
+ "diff": {
+  "family_scores": [
+   {
+    "family": "unsourced English (Hindi content with no English source)",
+    "old_problem": "Seed 55 OLD glossed रात को as 'very well' (component: रात को='very well'), but रात को actually means 'at night'. The English target 'I didn't sleep very well' contains NO 'at night', so रात को was an UNSOURCED Hindi morpheme smuggled into the M-LEGO रात को अच्छी नींद नहीं ली='didn't sleep very well'. The phantom 'very well' gloss was a fabrication to launder the unsourced word.",
+    "new_handling": "NEW seed 55 (rerendered=true) drops रात को entirely and teaches अच्छी नींद नहीं ली='didn't sleep well' as the M-LEGO, with components अच्छी नींद='sleep well' / नहीं ली='didn't'. Every Hindi morpheme now traces to an English source; the summary explicitly states 'No unsourced English (dropped at night)'.",
+    "improved": true
+   },
+   {
+    "family": "untaught-synonym leaks (new Hindi word for an already-taught gloss)",
+    "old_problem": "Seed 55 OLD rendered 'enjoy' as जागना पसंद नहीं ('I don't enjoy waking up' via पसंद). But पसंद is the taught lemma for 'like' (prior_inventory seed 26 मुझे पसंद है='I like', seed 27 मुझे पसंद नहीं=\"I don't like\"), while 'enjoy' was established on the लगना frame at seed 51 (अच्छा लगता है='I enjoy'). OLD thus leaked पसंद as a second Hindi vehicle for 'enjoy', colliding 'like' and 'enjoy' onto one shape.",
+    "new_handling": "NEW seed 55 re-renders जागना पसंद नहीं → जागना अच्छा नहीं लगता='I don't enjoy waking up', keeping 'enjoy'=लगना (the glossRules 'लगता' experiencer frame) distinct from 'like'=पसंद. No new synonym; the summary confirms 'enjoy=लगना held distinct from like=पसंद'. Contract glossRules id 'लगता' explicitly licenses अच्छा लगता है='I enjoy'.",
+    "improved": true
+   },
+   {
+    "family": "component word-salad (decomposing idioms into nonsense pieces)",
+    "old_problem": "Pervasive in OLD. Seed 50: कोशिश नहीं कर रहा='not trying' split into कोशिश नहीं='not trying' + कर रहा='doing'. Seed 51: अच्छा लगता है='I enjoy' split into अच्छा='enjoy' + लगता है='I' (a component literally glossing the verb-auxiliary as the pronoun 'I'). Seed 55: रात को='very well'. Seed 57: याद नहीं=\"I can't remember\" split into याद='remember' + नहीं=\"I can't\" (नहीं, the all-purpose negator, glossed as a standalone 'I can't').",
+    "new_handling": "NEW keeps the experiencer idioms WHOLE with one gloss and empty/sane components: seed 51 अच्छा लगता है='I enjoy' (components: []); seed 57 मुझे याद नहीं='I can't remember' (components: []); seed 50 करने की कोशिश नहीं कर रहा='not trying to' as one chunk. Negation नहीं is treated as a construction feature (contract glossRules 'negation-nahin-vs-mat'), never a standalone 'I can't'.",
+    "improved": true
+   },
+   {
+    "family": "agreement/gender reuse (gloss ignores subject/gender)",
+    "old_problem": "OLD was actually mostly OK here for 52/53/54 (चाहता था='he wanted' contextually, चाहती थी='she wanted'), BUT it shipped a hard agreement error in seed 55: OLD USE 'वह रात को अच्छी नींद नहीं ली' = 'she didn't sleep very well' uses bare वह with the perfective ली, where the ने-ergative subject is required (cf. its own correct मैंने...नहीं ली).",
+    "new_handling": "NEW seeds 52/53 sharpen the glosses to the real subject (वह+masc → चाहता था='he wanted'; वह+fem → रखना चाहती थी='she wanted to put') rather than the bare infinitival 'wanted to'. HOWEVER the seed-55 ergative error is REPRODUCED, not fixed: NEW seed 55 still has the USE phrase 'वह अच्छी नींद नहीं ली'='she didn't sleep well' — bare वह with perfective ली, missing the उसने ने-ergative the NEW build itself flags as required ('मैंने...ली = ergative ने-subject'). The very seed whose 'applied' note brags about ergative awareness leaves a non-ergative subject in a sister phrase.",
+    "improved": true
+   },
+   {
+    "family": "अपना mis-binding (reflexive possessive resolved to wrong possessor)",
+    "old_problem": "Seed 53 is the keystone case. OLD flattened उसकी चिट्ठी and अपने बैग में both to 'her': there is NO lego/build pairing उसकी चिट्ठी='his letter' in OLD (the contrast is simply absent), and the seed gloss treats the letter's possessor as the subject. उसकी (possessed-noun agreement, possessor=the friend) vs अपना (subject-bound) was never surfaced.",
+    "new_handling": "NEW seed 53 surfaces the contrast explicitly as two LEGOs: उसकी चिट्ठी='his letter' (possessor=friend, उसकी agreeing with fem चिट्ठी per contract glossRules 'uska-uski-possessed-agreement') vs अपने बैग में='in her bag' (अपना subject-bound to वह=she, per contract construction 'oblique-possessive-apna'). The 'applied' note names this as 'the keystone contrast the old build flattened'.",
+    "improved": true
+   },
+   {
+    "family": "dative-experiencer breaks (experiencer predicate glossed as nominative/word-salad)",
+    "old_problem": "Seed 57 OLD broke मुझे याद नहीं into याद='remember' + नहीं=\"I can't\", severing the dative-experiencer मुझे...याद predicate into a content verb plus a fake modal. Similarly seed 51's अच्छा लगता है (a मुझे-dative experiencer) was split अच्छा='enjoy'+लगता है='I'.",
+    "new_handling": "NEW treats both as whole dative-experiencer M-LEGOs: seed 57 मुझे याद नहीं='I can't remember' (components []) and seed 51 अच्छा लगता है='I enjoy', both tied to contract glossRules 'ko-dative-experiencer'. The dative subject मुझे is preserved across phrases (e.g. seed 51 मुझे अंग्रेज़ी सीखना अच्छा नहीं लगता).",
+    "improved": true
+   },
+   {
+    "family": "positive-copula-glossed-negated (and the NPI/polarity boundary)",
+    "old_problem": "OLD's worst polarity handling is in seed 56's neighbours and seed 50: OLD freely used कुछ भी (licensed NPI 'anything') inside positive declaratives/desideratives without care, e.g. seed 51 OLD USE 'मैं अपने दोस्तों के साथ कुछ भी कहना चाहता हूँ'='I want to say anything with my friends' — कुछ भी in a positive want-assertion. Also generally OLD mapped 'I can't' onto bare नहीं as if नहीं were a positive→negative flip word (seed 57 component नहीं=\"I can't\").",
+    "new_handling": "NEW seed 56 explicitly guards NPI/existential: 'a few words'=bare existential कुछ शब्द in the positive declarative, NOT कुछ भी (matching contract npiLicensing: positive declarative = bare कुछ). NEW keeps कुछ भी only under negation (seed 50 USE वह कुछ भी कहने की कोशिश नहीं कर रहा='he's not trying to say anything'). नहीं is treated as the construction-level negator, never a standalone modal.",
+    "improved": true
+   }
+  ],
+  "frame_diversity": "Markedly improved and now P7-disciplined. OLD's USE sets were carrier-frame repetition: seed 50 OLD piled up ~7 near-identical ...कोशिश नहीं कर रहा / ...खत्म करना चाहता हूँ phrases (including the contradictory pair 'not trying to finish' AND 'I'm trying to finish'), and OLD seed 54 cycled थोड़ा और समय देना चाहते थे with only the object swapped. NEW deliberately varies along the axis each new LEGO introduces: tense (52/54 wanted vs want — चाहता था / चाहता हूँ), person (I/he/she/you/we across 52-54), and polarity (51 enjoy/don't-enjoy, 56 can/can't remember, 50 trying/not-trying). It also keeps the convergence-pair carriers (सीखना/बोलना) without flooding. Two minor regressions: (a) NEW prunes hard — typically 4 USE phrases per seed vs OLD's ~6-8, so coverage of person/tense combos is thinner per seed; (b) NEW occasionally reuses the same carrier sentence shape across the two LEGOs of one seed (seed 50 both USE blocks lean on सीखना/कहना), but this is cosmetic next to OLD's outright duplication.",
+  "zut": "Substantially tightened, and this is the headline win. The two re-renderings both exist to PREVENT one-Hindi-to-two-English collisions: (1) Seed 50 — OLD reused जितनी जल्दी हो सके for 'as quickly as possible', but prior_inventory seed 28 already binds that exact Hindi to 'as soon as you can'. NEW re-renders to जितनी जल्दी मुमकिन हो, giving 'as quickly as possible' its own distinct Hindi. Confirmed against prior_inventory (seed 28 जितनी जल्दी हो सके='as soon as you can'). (2) Seed 55 — 'enjoy' is held on लगना and not allowed to leak onto पसंद='like', and the spurious रात को='very well' (one Hindi→a phantom English) is removed. (3) Seed 54 — चाहते थे also surfaces as 'you wanted' (prior_inventory seed 31), so NEW keeps the overt subject हम in every phrase to force the 'we wanted' reading; this is a sound disambiguation-by-context move. One residual ZUT wrinkle: NEW treats the bare agreement-inflected चाहते थे form as 'one lemma keyed by the pronoun' rather than truly distinct Hindi for 'we wanted' vs 'you wanted' — so the disambiguation is contextual (correct in-phrase) but the standalone shape is still many-to-one; acceptable given Hindi agreement, but it is a managed collision, not an eliminated one.",
+  "examples": [
+   {
+    "seed": 55,
+    "old": "रात को = 'very well'  (component); M-LEGO रात को अच्छी नींद नहीं ली = \"didn't sleep very well\"",
+    "new": "अच्छी नींद नहीं ली = 'didn't sleep well' (रात को dropped entirely)",
+    "why_better": "Kills an unsourced Hindi morpheme: रात को means 'at night', which appears nowhere in the English 'I didn't sleep very well'. OLD invented the gloss 'very well' to hide it. NEW leaves every Hindi morpheme traceable to the English."
+   },
+   {
+    "seed": 51,
+    "old": "अच्छा लगता है = 'I enjoy', decomposed अच्छा = 'enjoy' + लगता है = 'I'",
+    "new": "अच्छा लगता है = 'I enjoy' (components: []) — kept whole on the लगना experiencer frame",
+    "why_better": "OLD's component लगता है='I' literally glosses a verb+auxiliary as the pronoun 'I' — pure word-salad. NEW keeps the idiomatic dative-experiencer LEGO atomic, matching contract glossRules 'लगता' and 'ko-dative-experiencer'."
+   },
+   {
+    "seed": 53,
+    "old": "no उसकी चिट्ठी='his letter' lego; both possessives flattened to 'her' in the seed gloss",
+    "new": "two LEGOs: उसकी चिट्ठी='his letter' (possessor=friend, fem-agreeing) vs अपने बैग में='in her bag' (अपना subject-bound to she)",
+    "why_better": "Surfaces the अपना(subject-bound) vs उसकी(possessed-noun agreement) contrast that is the whole grammatical point of the sentence. OLD collapsed both to 'her', teaching a falsehood; NEW matches contract 'oblique-possessive-apna' + 'uska-uski-possessed-agreement'."
+   },
+   {
+    "seed": 57,
+    "old": "याद नहीं = \"I can't remember\", decomposed याद='remember' + नहीं=\"I can't\"",
+    "new": "मुझे याद नहीं = 'I can't remember' (components: []) — one dative-experiencer M-LEGO",
+    "why_better": "OLD glossed the all-purpose negator नहीं as a standalone modal 'I can't', and stripped the dative subject मुझे. NEW keeps the experiencer predicate whole with मुझे; नहीं reverts to a construction-level negator per contract 'negation-nahin-vs-mat'."
+   },
+   {
+    "seed": 50,
+    "old": "जितनी जल्दी हो सके = 'as quickly as possible'",
+    "new": "जितनी जल्दी मुमकिन हो = 'as quickly as possible' (Hindi re-rendered)",
+    "why_better": "OLD's जितनी जल्दी हो सके is already bound to 'as soon as you can' at prior_inventory seed 28 — a one-Hindi→two-English ZUT collision. NEW gives 'as quickly as possible' its own Hindi, resolving the collision."
+   },
+   {
+    "seed": 56,
+    "old": "freely used कुछ भी in positive want-assertions across the slice (e.g. seed 51 OLD मैं...कुछ भी कहना चाहता हूँ)",
+    "new": "कुछ शब्द = 'a few words' as the bare existential in the positive declarative; कुछ भी kept only under negation (seed 50 ...कहने की कोशिश नहीं कर रहा)",
+    "why_better": "Respects the NPI/existential split in contract npiLicensing: भी-marked कुछ भी needs a non-veridical licensor; a positive declarative takes bare कुछ. OLD let the licensed NPI stand in positive assertions."
+   }
+  ],
+  "verdict": "The NEW build is a clear, substantial improvement across all seven flagged families — every family is genuinely fixed at the decomposition level, with the fixes traceable to the eng_for_hin contract (glossRules 'लगता', 'ko-dative-experiencer', 'negation-nahin-vs-mat', 'uska-uski-possessed-agreement'; constructions 'oblique-possessive-apna', 'postpositional-case'; npiLicensing) and to prior_inventory (seed 28 collision, seed 31 'you wanted', seed 26/27 पसंद='like', seed 10 याद कर सकता हूँ). The two re-renderings (seeds 50, 55) are well-justified ZUT moves, not cosmetic. Word-salad idiom-splitting — the single worst OLD pathology (अच्छा='enjoy'+लगता है='I', याद='remember'+नहीं=\\\"I can't\\\", रात को='very well') — is comprehensively eliminated, and the seed-53 अपना/उसकी keystone contrast is now taught correctly instead of flattened. Frame diversity and ZUT both move from poor to disciplined. BE CRITICAL flags, two of them real: (1) NEW seed 55 reproduces an ergative agreement error — the USE phrase 'वह अच्छी नींद नहीं ली'='she didn't sleep well' uses bare वह with the perfective transitive ली, where the ने-ergative उसने is required; this is doubly damning because the same seed's 'applied' note explicitly invokes ergative ने-marking, so the build knew the rule and broke it in a sister phrase. (2) NEW seed 54 USE 'हम किसी और के साथ थोड़ा और समय बोलना चाहते थे'='we wanted to speak a little more time with someone else' is ungrammatical on BOTH sides — समय बोलना ('to speak time') is not idiomatic Hindi, and 'speak a little more time' is not English; this phrase was forced to reuse the समय LEGO where देना (give) was needed and should be cut or rewritten. A lesser nit: NEW leans on contextual disambiguation for चाहते थे (we/you) rather than distinct Hindi, an acceptable managed collision but worth noting. Net: strong promote-worthy quality, but seeds 54 and 55 each need one phrase corrected before voicing.",
+  "recommend_full_course": true
+ }
+}

@@ -1,0 +1,1441 @@
+{
+ "course_code": "eng_for_pan",
+ "totals": {
+  "prompts_checked": 5583,
+  "vocab_uncontrolled": 32,
+  "npi_violation": 3,
+  "machinery_unlicensed": 1,
+  "gloss_rule_violation": 6,
+  "content_quality": 141
+ },
+ "release_grade": "cleanup",
+ "systematic_issues": [
+  "'well/very well' rendered as the never-introduced adverbial ਚੰਗੀ ਤਰ੍ਹਾਂ across the entire S55 sleep cluster (~12 prompts: #127,129,134,135,136,139,141,142,143,147,148,149). The course's only taught 'very well' is ਬਹੁਤ ਵਧੀਆ (S13); ਚੰਗੀ (S47 ਚੰਗੀ ਗੱਲ) and ਤਰ੍ਹਾਂ (S49 ਇਸ ਤਰ੍ਹਾਂ) only exist inside other LEGOs. ONE FIX: re-gloss the S55 'well' device to ਬਹੁਤ ਵਧੀਆ (or introduce ਚੰਗੀ ਤਰ੍ਹਾਂ as a LEGO) clears the largest single vocab_uncontrolled cluster.",
+  "Ungrammatical periphrastic future V-noun + ਹੋਵਾਂਗਾ ('I'll be to-speak') across S80 (ਬੋਲਣਾ ਹੋਵਾਂਗਾ idx53/56, ਸਮਝਣਾ ਹੋਵਾਂਗਾ idx49, ਕਰਨਾ ਹੋਵਾਂਗਾ idx57). Native future is the synthetic ਮੈਂ ਬੋਲਾਂਗਾ. ONE FIX: regenerate the S80 future as the synthetic -ਾਂਗਾ form instead of stitching ਹੋਵਾਂਗਾ onto a verbal noun.",
+  "Mis-segmented component (sub-LEGO) glosses where the English fragment has no source morpheme in the Punjabi, concentrated in S107-S124: ਕੀਤੀ ਸੀ glossed 'we' (S107) and 'to each other' (S117) when it is perfective 'did/had done'; ਚਾਹੀਦੀ ਹੈ glossed 'we' (S109) when it is the necessity modal; ਕਿ glossed 'I' (S124) when it is complementizer 'that'; ਪਹਿਲਾਂ glossed 'you' (S119) when it is 'before/first'. ONE FIX: re-run component alignment for the S107-124 build ladder so each fragment's English maps to its actual morpheme.",
+  "Broken Punjabi 'ready to go' as bare juxtaposition ਤਿਆਰ ਜਾਣਾ across 7 S26 prompts (e.g. ਕੀ ਤੁਸੀਂ ਤਿਆਰ ਜਾਣਾ ਹੋ?, ਮੈਂ ਤਿਆਰ ਜਾਣਾ ਹਾਂ ਹੁਣ); native Punjabi needs ਜਾਣ ਲਈ ਤਿਆਰ ('ready for going'). ONE FIX: re-render the S26 'ready to go' construction.",
+  "New possessive postposition ਕੋਲ ('have/at') used for 'have got' across S277/S294/S298 (ਮੇਰੇ ਕੋਲ / ਤੁਹਾਡੇ ਕੋਲ), but the have-got construction was taught exclusively via the dative ਮੈਨੂੰ ਹੈ / ਤੁਹਾਨੂੰ ਹੈ (S73/S75). ONE FIX: normalise possession to the taught dative form (or introduce ਕੋਲ as a LEGO before S277).",
+  "'be able to' realised with the never-introduced ਯੋਗ (ਯੋਗ ਹੋਣਾ / ਬੋਲਣ ਦੇ ਯੋਗ) across S291 (#170,171,172) and S292 (#180,181,185); ability was taught only via the ਸਕ- (sakna) potential auxiliary. ONE FIX: re-render S291/S292 ability with ਸਕ-.",
+  "Recurring uncontrolled known-side synonyms that duplicate already-taught lemmas — ਮਹੱਤਵਪੂਰਨ vs taught ਜ਼ਰੂਰੀ ('important', S101/S176/S201), ਮੁਕੰਮਲ vs ਖਤਮ ('finish'), ਜ਼ਰੂਰਤ vs ਲੋੜ ('need'), ਖੇਦ vs ਮਾਫ਼ ਕਰਨਾ ('sorry'). ONE FIX: a synonym-collapse pass mapping each to its introduced lemma clears several vocab_uncontrolled hits at once.",
+  "Pervasive content_quality authoring defects (141 total, the dominant non-answerability problem): English glosses that don't render their Punjabi — polarity/negation drops that invert meaning (S157, S165, S236, S256, S270), question->declarative flattening with spurious 'now/today' (S243, S251, S274), invented English material with no Punjabi source ('try to', 'remember/time', 'here', 'I hope to meet you' at S51, S181, S201, S277, S294), and subject/agreement/tense mismatches (S173, S184, S268). Densest in S153-175, S226-275, and S277/S281/S294. ONE FIX: a dedicated EN<->PAN authoring/alignment pass on these seed clusters."
+ ],
+ "summary": "Across 5,583 known-side (Punjabi L1) prompts in 12 batches, answerability is fundamentally sound: NPI licensing (3), machinery licensing (1), and gloss-rule adherence (6) are near-clean, and vocabulary control is mostly watertight with 32 genuine uncontrolled-lemma leaks — most of which collapse into a handful of one-fix-fixes-many clusters (ਚੰਗੀ ਤਰ੍ਹਾਂ 'well' across the S55 sleep set; ਯੋਗ 'able' at S291-292; ਕੋਲ possession at S277+; and recurring taught-synonym duplicates like ਮਹੱਤਵਪੂਰਨ/ਜ਼ਰੂਰਤ/ਮੁਕੰਮਲ). The 42 real (non-content_quality) issues put this in the cleanup band. The overwhelming bulk of defects, however, is content_quality (141): English glosses that mistranslate or invent material absent from the Punjabi — dropped negations that invert meaning, question->declarative flattening, ungrammatical V-noun+ਹੋਵਾਂਗਾ futures (S80), broken ਤਿਆਰ ਜਾਣਾ syntax (S26), and mis-segmented component glosses (S107-124). The course needs a targeted authoring/alignment pass on the high-density seed clusters (S26, S80, S107-124, S153-175, S226-275, S277-294) plus the synonym-collapse and adverbial-vocab fixes before release.",
+ "findings": [
+  {
+   "seed": 3,
+   "known": "ਮੈਂ ਜਾਣਨਾ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿਵੇਂ",
+   "en": "I want to learn how",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "ਜਾਣਨਾ ('to know') is a content verb that has NEVER been introduced — the inventory teaches ਸਿੱਖਣਾ ('to learn', S2) and ਪਤਾ ਕਰਨਾ ('to find out', S17), but not the lemma ਜਾਣਨਾ. The learner reading this Punjabi prompt has no English mapping for ਜਾਣਨਾ, so the prompt is unanswerable. Compounding it, the English gloss says 'learn' (= ਸਿੱਖਣਾ), not 'know' — so even the authored answer mismatches the Punjabi verb. This is the only genuine uncontrolled lemma in the batch; lemma-control is otherwise watertight (every other surface token resolves to an introduced lemma under inflection)."
+  },
+  {
+   "seed": 2,
+   "known": "ਮੈਂ ਇੱਥੇ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣ ਦੀ ਤੁਹਾਡੇ ਨਾਲ",
+   "en": "I'm trying to speak English with you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "The Punjabi carries an orphan token ਇੱਥੇ ('here') that has NO counterpart in the English 'I'm trying to speak English with you'. ਇੱਥੇ is also not in the inventory. It is not strictly an answerability bug (the learner produces the English fine, just under-translating the Punjabi), but it is an authoring defect: extra Punjabi material with no source in the target, which will confuse a learner who knows the word."
+  },
+  {
+   "seed": 8,
+   "known": "ਮੇਰਾ",
+   "en": "what",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Representative of a PERVASIVE, BY-DESIGN pattern across ~90 'component' prompts: molecular LEGOs are split into sub-pieces whose partial English glosses only make sense inside the parent molecule, not standalone. Examples: ਮੇਰਾ='what' (it means 'my'; the molecule ਮੇਰਾ ਮਤਲਬ ਕੀ ਹੈ='what I mean'), ਕਰਨਾ='out' and ਪਤਾ='find' (from ਪਤਾ ਕਰਨਾ='to find out', S17), ਅੱਜ='this' (from ਅੱਜ ਸ਼ਾਮ='this evening', S18, though ਅੱਜ alone='today'), ਮੈਨੂੰ='I', ਕੀ='are/do'. These are decomposition artifacts shown alongside the full molecule, expected by the methodology — captured once as a single low finding rather than flagged 90×. Not an answerability bug."
+  },
+  {
+   "seed": 25,
+   "known": "ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ",
+   "en": "before have to go",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss 'before have to go' is broken English and the 'have to' (compulsion modal) has no overt source in the Punjabi ਜਾਣ ('going/to go') — the parent molecule ਮੈਨੂੰ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ='before I have to go' (S25) is a frozen unit so the full prompt is answerable, but the isolated component is a low-quality, ungrammatical fragment. Decomposition artifact, low priority."
+  },
+  {
+   "seed": 26,
+   "known": "ਮੈਨੂੰ ਇੰਝ ਮਹਿਸੂਸ ਕਰਨਾ ਚੰਗਾ ਲੱਗਦਾ ਹੈ ਜਿਵੇਂ ਕਿ ਮੈਂ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਕੁਝ ਸਮਝਾ ਸਕਦਾ ਹਾਂ",
+   "en": "I like feeling as if I can explain something in English",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "Stray over-built S26 sentence introduces THREE untaught content elements: ਇੰਝ ('thus/like-this', never introduced), the whole ਚੰਗਾ ਲੱਗਦਾ 'like/feels-good' construction (ਲੱਗਦਾ never appears anywhere in the inventory; the course's 'like' is ਪਸੰਦ ਹੈ), and ਸਮਝਾ(ਉਣਾ) 'to explain' (never introduced; 'to explain' was taught as ਦੱਸਣਾ at S8). All three glosses are unrecoverable for the learner. Note this prompt also breaks ZUT: the rest of S26 renders 'I like' as ਮੈਨੂੰ ਪਸੰਦ ਹੈ, but here 'like' is suddenly ਚੰਗਾ ਲੱਗਦਾ."
+  },
+  {
+   "seed": 42,
+   "known": "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਬੋਲ ਕੇ ਬਿਹਤਰ ਮਹਿਸੂਸ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰ ਰਿਹਾ ਸੀ",
+   "en": "I was starting to feel better speaking with you",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Uses the conjunctive-participle (converb) ਬੋਲ ਕੇ 'having spoken / by speaking' — the ਕੇ converb is machinery never introduced in the inventory and absent from the contract's knownConstructions. The English '...speaking with you' has no clean introduced source; the learner cannot produce this form."
+  },
+  {
+   "seed": 42,
+   "known": "ਮੈਂ ਸ਼ੁਰੂ ਕਰ ਰਿਹਾ ਸੀ ਵਧੀਆ ਬੋਲਣਾ",
+   "en": "I was starting to speak well",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "ਵਧੀਆ here glosses standalone 'well', but the inventory only introduced ਵਧੀਆ inside the molecule ਬਹੁਤ ਵਧੀਆ='very well' (S13). The bare adverb 'well' (ਵਧੀਆ alone) was not taught as its own item. Borderline — the lemma did appear — so low severity."
+  },
+  {
+   "seed": 42,
+   "known": "ਮੈਂ ਕੱਲ੍ਹ ਰਾਤ ਨਾਲੋਂ ਬਿਹਤਰ ਬੋਲ ਸਕਦਾ ਹਾਂ",
+   "en": "I can speak better than last night",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Uses the ability auxiliary ਬੋਲ ਸਕਦਾ ਹਾਂ 'I can speak'. ਸਕ- is described in the contract (ability-sakna) and treated as licensed machinery, but no ਸਕ-/'can/could' carrier is actually debuted in inventory_through_hi (S26-50 window has no introduced 'can'). The English 'I can speak' is unproducible from taught items. Low severity because the contract explicitly licenses ਸਕ- as machinery."
+  },
+  {
+   "seed": 44,
+   "known": "ਜਾਂ ਕਿ ਮੈਨੂੰ ਇਸ ਬਾਰੇ ਸੋਚਣਾ ਚਾਹੀਦਾ ਹੈ",
+   "en": "or if I need to think about it",
+   "category": "machinery_unlicensed",
+   "severity": "low",
+   "detail": "Uses the necessity modal ਚਾਹੀਦਾ ('need/should'), which is a contract knownConstruction but is NEVER introduced in inventory_through_hi (the necessity item the learner WAS given at S44 is ਲੋੜ ਹੈ). ਚਾਹੀਦਾ is a distinct surface form/paradigm from ਲੋੜ and from ਚਾਹੁੰਦਾ; appearing here before any debut. The English 'need to' is itself answerable (also rendered via ਲੋੜ), so impact is low, but the specific machinery form is unlicensed at this point."
+  },
+  {
+   "seed": 26,
+   "known": "ਮੈਨੂੰ ਪਸੰਦ ਹੈ ਮਹਿਸੂਸ ਕਰਨਾ ਹੁਣ",
+   "en": "I like feeling now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring pattern (16 prompts at S26/27): ਮੈਨੂੰ ਪਸੰਦ ਹੈ ਮਹਿਸੂਸ ਕਰਨਾ + time/degree adverb glossed 'I like feeling now / this evening / later on / soon / more'. The English is unproducible/ungrammatical (a bare gerund 'feeling' with no complement after 'like' + a time adverb). The Punjabi tiles to introduced items, so it is answerable, but the target English is defective authoring across the whole S26 USE set."
+  },
+  {
+   "seed": 39,
+   "known": "ਉਹ ਹੋਰ ਲੋਕਾਂ ਨੂੰ ਮਿਲਣਾ ਚਾਹੁੰਦਾ ਹੈ ਪਰ ਬਹੁਤ ਥੱਕਿਆ ਹੈ",
+   "en": "he wants to meet other people but feeling very tired",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring pattern (13 prompts at S39/40): Punjabi ਪਰ ... ਥੱਕਿਆ ਹੈ ('but ... is tired') is rendered as English 'but feeling tired'. The English is ungrammatical (dangling participle 'but feeling tired' where the Punjabi is a finite copular clause 'but he is tired'). Answerable on the Punjabi side but the target English is consistently malformed."
+  },
+  {
+   "seed": 26,
+   "known": "ਤਿਆਰ ਜਾਣਾ ਹੁਣ",
+   "en": "ready to go now",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken Punjabi syntax in 7 S26 prompts using ਤਿਆਰ ਜਾਣਾ for 'ready to go' (e.g. ਕੀ ਤੁਸੀਂ ਤਿਆਰ ਜਾਣਾ ਹੋ?, ਮੈਂ ਤਿਆਰ ਜਾਣਾ ਹਾਂ ਹੁਣ). 'ready to go' cannot be the bare juxtaposition ਤਿਆਰ ਜਾਣਾ in Punjabi — it requires ਜਾਣ ਲਈ ਤਿਆਰ ('ready for going') or similar. As written the Punjabi is non-native/ungrammatical, so the prompt is unreliable as a learner stimulus."
+  },
+  {
+   "seed": 36,
+   "known": "ਉਹ ਕੁਝ ਵੀ ਵਿੱਚ ਵਿਘਨ ਪਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+   "en": "he doesn't want to interrupt anything",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Punjabi (2 prompts at S36): ਕੁਝ ਵੀ ਵਿੱਚ for 'interrupt anything' is ungrammatical — ਵਿਘਨ ਪਾਉਣਾ takes ਵਿੱਚ on a noun ('interrupt IN the story'), but with the NPI it should be ਕਿਸੇ ਵੀ ਚੀਜ਼ ਵਿੱਚ ('in anything'), not ਕੁਝ ਵੀ ਵਿੱਚ. Native speakers would not produce this string."
+  },
+  {
+   "seed": 40,
+   "known": "ਕਿਵੇਂ ਮਹਿਸੂਸ ਕਰਦੇ ਹੋ ਇਸ ਵੇਲੇ?",
+   "en": "how do you feel here?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring adverb mismatch cluster (~7 BUILD prompts at S35/39/40/41) where the Punjabi-final adverb disagrees with the English-final adverb: here ਇਸ ਵੇਲੇ='at the moment' is glossed 'here'; also S40 ਕਿਵੇਂ ਮਹਿਸੂਸ ਕਰਦੇ ਹੋ ਇੱਥੇ?='here' glossed 'now'; S41 ...ਜਦੋਂ glossed 'now', ...ਇਸ ਵੇਲੇ glossed 'here'; S39 ...ਅੱਜ glossed 'when', ...ਇਸ ਸਵੇਰੇ glossed 'here'; S35 ...ਇੱਥੇ glossed 'this afternoon'. The known and target carry different adverbs, so the prompt is internally inconsistent."
+  },
+  {
+   "seed": 48,
+   "known": "ਕੋਈ",
+   "en": "don't care",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component-gloss defect: the bare NPI ਕੋਈ ('any/anyone') is glossed 'don't care', and ਪਰਵਾਹ ਨਹੀਂ ('care not') is glossed 'about' (S48 components). The English glosses are scrambled relative to the Punjabi pieces (negation and the noun 'care' are mis-assigned to the wrong tokens). Not an answerability bug but a mis-segmented component set."
+  },
+  {
+   "seed": 47,
+   "known": "ਉਹ ਗਲਤੀਆਂ ਕਰਨਾ ਚੰਗੀ ਗੱਲ ਚੰਗੀ ਗੱਲ ਹੈ ਜਦੋਂ ਬੋਲਣਾ ਚਾਹੁੰਦੀ ਹੈ",
+   "en": "she wants to make mistakes when she wants to speak",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Authoring artifact: the molecule ਗਲਤੀਆਂ ਕਰਨਾ ਚੰਗੀ ਗੱਲ ('to make mistakes') leaks its literal pieces into the surface string, producing a doubled/garbled Punjabi sentence (ਚੰਗੀ ਗੱਲ ਚੰਗੀ ਗੱਲ ਹੈ) that does not match the clean English 'she wants to make mistakes when she wants to speak'. Several S47/S49 USE prompts repeat the doubled ਚੰਗੀ ਗੱਲ pattern."
+  },
+  {
+   "seed": 55,
+   "known": "ਚੰਗੀ ਤਰ੍ਹਾਂ",
+   "en": "sleep very well / very well / well",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "The entire S55 sleep cluster (#127 ਚੰਗੀ ਤਰ੍ਹਾਂ ਸੁੱਤਾ, #129, #134, #135, #136, #139, #141, #142, #143, #147, #148, #149) renders 'well/very well' as ਚੰਗੀ ਤਰ੍ਹਾਂ, but that adverbial is never introduced. ਚੰਗੀ exists only inside ਚੰਗੀ ਗੱਲ 'good thing' (S47) and ਤਰ੍ਹਾਂ only inside ਇਸ ਤਰ੍ਹਾਂ 'like this' (S49); neither lemma-combination glossing 'well' is taught. The course's only 'very well' is ਬਹੁਤ ਵਧੀਆ (S13). Reading the Punjabi ਚੰਗੀ ਤਰ੍ਹਾਂ, the learner has not been given the English 'well' for it — systematic and recurring across ~12 prompts in the seed that owns the device."
+  },
+  {
+   "seed": 64,
+   "known": "ਕੀ ਤੁਹਾਨੂੰ ਇਹ ਮਜ਼ੇਦਾਰ ਲੱਗਦਾ ਹੈ?",
+   "en": "do you find it fun?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "The dative-experiencer 'find/seem' verb ਲੱਗ- (ਲੱਗਦਾ ਹੈ = 'find it ...') is used in #301, #339 (ਕੀ ਤੁਹਾਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਇਹ ਜ਼ਰੂਰੀ ਹੈ?) and #350, but ਲੱਗ-/ਲੱਗਦਾ has no debut in the inventory through S75. The brief names it as a dative-experiencer construction but it is never introduced as vocabulary here, so the learner has no English for ਲੱਗਦਾ ਹੈ. Recurring across three seeds."
+  },
+  {
+   "seed": 69,
+   "known": "ਉਹ ਆਪਣੇ ਛੋਟੇ ਕੁੱਤੇ ਨਾਲ ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+   "en": "he wanted to go out with his young dog",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਬਾਹਰ 'out' (in 'go out') appears in #397 and #404 (ਮੈਂ ਆਪਣੇ ਕੁੱਤੇ ਨਾਲ ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦਾ ਹਾਂ) but is never introduced in the inventory. The learner reading ਬਾਹਰ ਜਾਣਾ has not been taught the 'out' particle that the English target requires."
+  },
+  {
+   "seed": 60,
+   "known": "ਮੈਂ ਵੱਖਰੇ ਤਰੀਕੇ ਨਾਲ ਸਿੱਖਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "en": "I want to learn something different",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "ਤਰੀਕੇ 'way/manner' (ਵੱਖਰੇ ਤਰੀਕੇ ਨਾਲ 'in a different way') is not introduced. Compounded by content_quality: the English target 'something different' does not correspond to the Punjabi 'in a different way' at all, so the prompt is also a mismatch."
+  },
+  {
+   "seed": 62,
+   "known": "ਮੈਂ ਉਸੇ ਵੇਲੇ ਦੋ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "en": "I want to do interesting things at the same time",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "ਦੋ 'two' (ਦੋ ਕੰਮ 'two things') is never introduced. Also a content mismatch: the English says 'interesting things' (no 'two') while the Punjabi says 'two things' (no 'interesting'), so neither side tiles to the other."
+  },
+  {
+   "seed": 73,
+   "known": "ਮੈਨੂੰ ਅਜੇ ਤੱਕ ਕਾਫ਼ੀ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖਣਾ ਹੈ",
+   "en": "I've got enough English to learn yet",
+   "category": "npi_violation",
+   "severity": "med",
+   "detail": "ਅਜੇ ਤੱਕ 'yet' is an NPI licensed only under negation/question per the brief. Here it stands in a plain positive possession declarative ('I've got ... to learn') with no negation or interrogative — an NPI in a positive assertion, where the positive counterpart (ਹਾਲੇ/ਹੁਣੇ 'still') would be required. The English 'to learn yet' is itself unidiomatic, reflecting the same defect."
+  },
+  {
+   "seed": 55,
+   "known": "ਮੇਰੇ ਦੋਸਤਾਂ ਨੇ ਚੰਗੀ ਤਰ੍ਹਾਂ ਨਹੀਂ ਸੁੱਤਾ",
+   "en": "my friends did not sleep very well",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Ergative ਨੇ is attached to the subject (ਦੋਸਤਾਂ ਨੇ) with the verb ਸੁੱਤਾ 'slept', but ਸੌਣਾ 'to sleep' is INTRANSITIVE, so the ergative-in-past-transitive rule does not apply — the subject should stay nominative and the verb agree with it (ਮੇਰੇ ਦੋਸਤ ... ਨਹੀਂ ਸੁੱਤੇ). #142 (ਉਸਨੇ ਵੀ ਨਹੀਂ ਸੁੱਤਾ) commits the same ergative-on-intransitive error. Misapplication of the ergative gloss rule."
+  },
+  {
+   "seed": 51,
+   "known": "ਮੈਂ ਮੇਰੀ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+   "en": "I want to try to remember my time",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Gross mismatch: the Punjabi means 'I am trying to learn my English' but the English target is 'I want to try to remember my time'. The English contains 'remember' and 'time' with no source in the Punjabi, and omits 'learn/English'. Unproducible."
+  },
+  {
+   "seed": 51,
+   "known": "ਮੈਂ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਕੁਝ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "en": "I enjoy doing things in English with you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi = 'I want to do something in English' but the English = 'I enjoy doing things in English with you': verb wrong (want vs enjoy), and 'with you' (ਤੁਹਾਡੇ ਨਾਲ) has no source in the Punjabi. Mismatch."
+  },
+  {
+   "seed": 55,
+   "known": "ਉਹ ਜਾਗਣਾ ਸ਼ੁਰੂ ਕਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦੀ ਸੀ",
+   "en": "she wanted to stop waking up",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi = 'she did not want to start waking up' (ਸ਼ੁਰੂ ਕਰਨਾ ... ਨਹੀਂ) but English = 'she wanted to stop waking up'. The negation is dropped and ਸ਼ੁਰੂ 'start' is mistranslated as 'stop'. Companion #145 (ਉਹ ਜਾਗਣਾ ਚਾਹੁੰਦੀ ਸੀ 'she wanted to wake up' rendered as 'she wanted to START waking up') shows the same start/stop instability."
+  },
+  {
+   "seed": 57,
+   "known": "ਮੈਂ ਕਈ ਵਾਰ ਯਾਦ ਨਹੀਂ ਕਰ ਸਕਦਾ",
+   "en": "I can't remember how to do interesting things",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi = 'sometimes I can't remember' (ਕਈ ਵਾਰ 'sometimes', itself an uncontrolled item) but the English = 'I can't remember how to do interesting things'. 'how to do interesting things' has no source in the Punjabi; ਕਈ ਵਾਰ 'sometimes' has no English. Two-way mismatch."
+  },
+  {
+   "seed": 58,
+   "known": "ਮੈਨੂੰ ਸਮਝਣਾ ਪਸੰਦ ਹੈ",
+   "en": "I enjoy to understand",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English target 'I enjoy to understand' is ungrammatical (should be 'I enjoy understanding'). Same defect at #430 'I enjoy to hear truth'. Authoring defect on the produced English."
+  },
+  {
+   "seed": 58,
+   "known": "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਕੁਝ ਸਮਝਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "en": "I want to understand something with you?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Declarative Punjabi (no ਕੀ, no question) but the English target carries a stray '?'. Punctuation/authoring defect."
+  },
+  {
+   "seed": 66,
+   "known": "ਜਵਾਬ ਲੱਭਣਾ ਔਖਾ ਨਹੀਂ",
+   "en": "it's not difficult to find answer",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Missing article in the English target ('to find answer' -> 'to find the/an answer'). Same dropped-article defect at #370 'are you looking for answer?' and #355 'to find answer'. Minor but recurring English-side defect."
+  },
+  {
+   "seed": 70,
+   "known": "ਮੇਰੇ ਦੋਸਤ ਮੈਨੂੰ ਦੱਸਣਾ ਚਾਹੁੰਦੀ ਹਨ",
+   "en": "my friends want to tell me",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Gender/number agreement error inside the Punjabi: plural masc subject ਦੋਸਤ takes feminine-singular ਚਾਹੁੰਦੀ instead of plural ਚਾਹੁੰਦੇ. Broken Punjabi syntax (the S70 cluster carried over the feminine 'she' agreement from ਦੱਸਣਾ ਚਾਹੁੰਦੀ). Does not affect English answerability but is an authoring defect."
+  },
+  {
+   "seed": 71,
+   "known": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "en": "I want to tell anyone something",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ਕਿਸੇ ਨੂੰ glossed 'anyone' but used affirmatively here means 'someone'; the natural English is 'I want to tell someone something', not 'tell anyone'. Same at #443/#462. NPI is licensed under the want-complement so not an npi_violation, but the fixed 'anyone' gloss collides with the positive 'someone' reading — a gloss-consistency/quality issue."
+  },
+  {
+   "seed": 51,
+   "known": "ਕੁਝ",
+   "en": "things / something",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ਕੁਝ is glossed both 'something' (S4 inventory, #6) and 'things' (S51 component #21) and 'doing things' contexts throughout. This many-English-for-one-Punjabi is mostly handled by context, but #356/#304/#305 etc. render bare ਇਹ/ਕੁਝ as 'things' inconsistently (e.g. #304 ਇਹ ਕਰਨਾ ਆਸਾਨ ਨਹੀਂ -> 'doing things isn't easy' where ਇਹ='it'). Low-severity consistency noise rather than an answerability blocker."
+  },
+  {
+   "seed": 65,
+   "known": "ਇਹ ਜ਼ਰੂਰੀ ਹੈ ਕਿ ਅਸੀਂ ਸਮਾਂ ਕੱਢੀਏ",
+   "en": "it's important to take time for this",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Subjunctive ਕੱਢੀਏ 'that we take' is fine Punjabi, but the English 'for this' has no source and the ਅਸੀਂ 'we' subject is dropped in the English ('to take time'). Minor mismatch."
+  },
+  {
+   "seed": 99,
+   "known": "ਤੁਹਾਨੂੰ ਆਪਣੇ ਆਪ ਤੋਂ ਪੁੱਛਣਾ ਚਾਹੀਦਾ ਹੈ ਕੀ ਇਹ ਸਹੀ ਹੈ",
+   "en": "you should ask yourself if it's okay",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਸਹੀ ('right/correct', glossed here as 'okay') is not in the inventory through this batch. The only 'okay' taught is ਠੀਕ (S41), a distinct lemma. The learner reads ਕੀ ਇਹ ਸਹੀ ਹੈ and must produce 'if it's okay' but the content word ਸਹੀ has never been introduced — unanswerable."
+  },
+  {
+   "seed": 87,
+   "known": "ਉਹ ਲੋਕ ਹਨ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣ ਵਾਲੇ",
+   "en": "they are people who speak English",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "The agentive participle construction ਬੋਲਣ ਵਾਲੇ ('the speaking-ones / people who speak') uses the nominalizer ਵਾਲੇ, which is not in freeClass and never introduced. The parallel relative-clause form ਜੋ ਅੰਗਰੇਜ਼ੀ ਬੋਲਦੇ ਹਨ (S22) is the taught way to say 'who speak English'; the ਵਾਲੇ agentive is new content. English target is still producible, so low severity."
+  },
+  {
+   "seed": 96,
+   "known": "ਮੈਨੂੰ ਅਜੇ ਥੋੜਾ ਸਮਾਂ ਚਾਹੀਦਾ ਹੈ",
+   "en": "I need a little more time yet",
+   "category": "npi_violation",
+   "severity": "low",
+   "detail": "ਅਜੇ ('yet') sits in an affirmative clause (ਚਾਹੀਦਾ ਹੈ, no ਨਹੀਂ). Per the brief, 'yet' (ਅਜੇ/ਅਜੇ ਤੱਕ) is licensed only under negation/question; its positive counterpart is ਹੁਣੇ/ਹਾਲੇ. BORDERLINE: the brief also lists ਚਾਹੀਦਾ-necessity scope as a non-veridical licenser, so this is defensible — recorded as low. (English gloss 'a little more time yet' is also slightly off; 'still need' would be natural.)"
+  },
+  {
+   "seed": 96,
+   "known": "ਨਹੀਂ, ਮੈਨੂੰ ਅਜੇ ਹੋਰ ਸਮਾਂ ਚਾਹੀਦਾ ਹੈ",
+   "en": "no, I need more time yet",
+   "category": "npi_violation",
+   "severity": "low",
+   "detail": "Same pattern as the other S96 case: ਅਜੇ 'yet' in a positive ਚਾਹੀਦਾ-necessity assertion (the leading standalone 'ਨਹੀਂ/no' does not negate this clause). Positive 'still' = ਹਾਲੇ/ਹੁਣੇ. Borderline given ਚਾਹੀਦਾ is a listed licenser; low severity."
+  },
+  {
+   "seed": 78,
+   "known": "ਉਹ ਕੀ ਕਿਹਾ",
+   "en": "what he said",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Ergative-in-past-transitive violation: past transitive 'he said' must take ਨੇ — ਉਸਨੇ ਕਿਹਾ (the brief states explicitly 'he said'=ਉਸਨੇ ਕਿਹਾ, not ਉਹ ਕਿਹਾ). This prompt uses bare nominative ਉਹ + ਕਿਹਾ, which is ungrammatical and inconsistent with the correctly-ergative siblings in the same seed (ਉਸਨੇ...ਕਿਹਾ idx34, ਦੋਸਤ ਨੇ...ਕਿਹਾ idx36, ਉਸਨੇ ਕਿਹਾ idx37)."
+  },
+  {
+   "seed": 77,
+   "known": "ਇਹ ਮੈਨੂੰ ਹੈਰਾਨ ਕਰਦਾ ਹੈ",
+   "en": "it surprised me",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Aspect→tense mismatch: the Punjabi ਕਰਦਾ ਹੈ is present habitual ('it surprises me'), but the English target is past 'it surprised me'. The learner reading present-tense Punjabi would produce the present; the past gloss is inconsistent."
+  },
+  {
+   "seed": 80,
+   "known": "ਮੈਂ ਬੋਲਣਾ ਹੋਵਾਂਗਾ",
+   "en": "I'll speak",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Ungrammatical future. ਹੋਵਾਂਗਾ ('I'll be') was introduced (S80) as a bare token, but stitching it onto a verbal noun (ਬੋਲਣਾ ਹੋਵਾਂਗਾ = lit. 'I'll be to-speak') is not native Punjabi — the future of 'I'll speak' is ਮੈਂ ਬੋਲਾਂਗਾ. Systematic across S80: also idx49 ਸਮਝਣਾ ਹੋਵਾਂਗਾ, idx53/56 ਬੋਲਣਾ ਹੋਵਾਂਗਾ, idx57 ਕਰਨਾ ਹੋਵਾਂਗਾ. Reads as broken to a native ear."
+  },
+  {
+   "seed": 82,
+   "known": "ਮੈਂ ਤੁਹਾਡੀ ਉਡੀਕ ਕਰਨਾ ਨਹੀਂ ਕਰਾਂਗਾ",
+   "en": "I'm not going to wait for you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Doubled/broken verb: ਉਡੀਕ ਕਰਨਾ ... ਕਰਾਂਗਾ stacks two ਕਰ light-verbs. Native form is ਮੈਂ ਤੁਹਾਡੀ ਉਡੀਕ ਨਹੀਂ ਕਰਾਂਗਾ. The infinitive ਕਰਨਾ should not co-occur with the finite ਕਰਾਂਗਾ."
+  },
+  {
+   "seed": 76,
+   "known": "ਮੈਂ ਖੁਸ਼ ਹਾਂ ਕਿ ਮੈਂ ਹੁਣ ਤੱਕ ਸਿੱਖਿਆ",
+   "en": "I'm happy with what I've learnt already",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken English target glosses (the production goal). Cluster where a ਕਿ-complement is rendered with a defective 'happy/interesting what...' relativizer: idx10 'are you happy what I've learnt already?', idx13 'it's interesting what I've learnt already', idx16 'my friends are happy too what I've learnt already'. Should be 'happy with what...' / 'interesting that...'. Punjabi reads fine; the English the learner must say is ungrammatical."
+  },
+  {
+   "seed": 98,
+   "known": "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਖੇਡਣਾ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+   "en": "I'm trying playing with you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Non-native English target: 'I'm trying playing with you' should be 'I'm trying to play with you'. Same defect at idx353 'it's difficult playing something else' (→ 'to play'). The Punjabi verbal-noun ਖੇਡਣਾ is fine but the English gerund-after-try/difficult is wrong."
+  },
+  {
+   "seed": 84,
+   "known": "ਮੇਰੇ ਦੋਸਤ",
+   "en": "about my friend",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss mismatch: ਮੇਰੇ ਦੋਸਤ is just 'my friend(s)' — there is no ਬਾਰੇ ('about') in the Punjabi, yet the English target includes 'about'. The 'about' has no source in the prompt, so the component is mis-glossed (the seed's full phrase ਮੇਰੇ ਦੋਸਤ ਬਾਰੇ does carry 'about')."
+  },
+  {
+   "seed": 97,
+   "known": "ਵੀ ਤੁਸੀਂ ਚਾਹੋ",
+   "en": "you want",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Broken Punjabi fragment: the component starts with an orphaned ਵੀ ('even/at-all') detached from its ਜਦੋਂ host. ਵੀ ਤੁਸੀਂ ਚਾਹੋ is not a well-formed unit on its own; the meaningful chunk is ਜਦੋਂ ਵੀ ਤੁਸੀਂ ਚਾਹੋ ('whenever you want')."
+  },
+  {
+   "seed": 86,
+   "known": "ਬਦਕਿਸਮਤੀ ਨਾਲ ਅਜੇ ਤੱਕ",
+   "en": "unfortunately yet",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Fragment with no clause and a meaningless English target ('unfortunately yet'). ਅਜੇ ਤੱਕ ('yet') needs a negated/interrogative host to be both grammatical (NPI licensing) and translatable; standing alone it produces nonsense on the English side."
+  },
+  {
+   "seed": 116,
+   "known": "ਇਹ ਇੱਕ ਮੁਸ਼ਕਲ ਚੋਣ ਹੈ",
+   "en": "this is a difficult choice",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਮੁਸ਼ਕਲ ('difficult') is not in the introduced vocabulary; 'difficult' was taught as ਔਖਾ (S91, S64 ਆਸਾਨ ਨਹੀਂ / ਔਖਾ). Using an untaught synonym for an already-established LEGO breaks controlled-vocab/ZUT consistency on the known side (it is L1-answerable but inconsistent)."
+  },
+  {
+   "seed": 116,
+   "known": "ਇਹ ਕਰਨ ਲਈ ਇੱਕ ਮਹੱਤਵਪੂਰਨ ਚੋਣ ਹੈ",
+   "en": "it's an important choice to make",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਮਹੱਤਵਪੂਰਨ ('important') is not introduced; 'important' was taught as ਜ਼ਰੂਰੀ (S65). Untaught synonym for an established meaning — controlled-language consistency violation."
+  },
+  {
+   "seed": 115,
+   "known": "ਮੈਂ ਇਸ ਗੱਲਬਾਤ ਦਾ ਆਨੰਦ ਲੈ ਰਿਹਾ ਹਾਂ",
+   "en": "I'm enjoying this conversation",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਆਨੰਦ ਲੈ ('enjoy/take pleasure') is not the introduced rendering of 'enjoy'; the whole batch (S101) establishes 'enjoying' = ਪਸੰਦ ਆ ਰਿਹਾ. Switching to ਆਨੰਦ ਲੈਣਾ for the same English 'enjoying' is an uncontrolled-vocab / ZUT inconsistency."
+  },
+  {
+   "seed": 122,
+   "known": "ਇਹ ਮੈਨੂੰ ਮੁੜ ਯਾਦ ਆਉਣਾ ਸ਼ੁਰੂ ਹੋ ਰਿਹਾ ਹੈ",
+   "en": "it's starting to come back to me",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਮੁੜ ('again/back') and the ਯਾਦ ਆਉਣਾ ('come to mind') predicate are not introduced; 'again' was taught as ਦੁਬਾਰਾ (S61) and 'to come back' as ਵਾਪਸ ਆਉਣਾ (S16). Untaught content for the 'come back to me' idiom."
+  },
+  {
+   "seed": 113,
+   "known": "ਕਿਉਂ ਨਹੀਂ ਕਰ ਸਕਦਾ",
+   "en": "can't I",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Build gloss 'can't I' has no overt verb in the English, but the Punjabi ਕਰ ਸਕਦਾ contains the light-verb 'do'. Worse, the component breakdown for S113 maps ਕਿਉਂ='why' but the build en drops 'why'; and the seed's 'can't I' inverts oddly. Authoring/word-order defect in the build ladder."
+  },
+  {
+   "seed": 107,
+   "known": "ਕੀਤੀ ਸੀ",
+   "en": "we",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Component gloss is wrong: ਕੀਤੀ ਸੀ is the perfective 'did/had done', not 'we'. The English 'we' has no source in this fragment (the subject ਅਸੀਂ is absent). Mis-segmented component."
+  },
+  {
+   "seed": 107,
+   "known": "ਉਮੀਦ",
+   "en": "hope",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Fine as a component, but S107 also gloss-maps ਕਰ='doing' and ਰਹੇ ਸੀ='were' as separate components while the same line maps ਕੀਤੀ ਸੀ='we' — the component decomposition for this seed is internally inconsistent (subject/aux/verb mis-assigned)."
+  },
+  {
+   "seed": 109,
+   "known": "ਚਾਹੀਦੀ ਹੈ",
+   "en": "we",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Component gloss wrong: ਚਾਹੀਦੀ ਹੈ is the necessity modal 'must/should/need' (machinery), not 'we'. The subject 'we' is ਸਾਨੂੰ/ਅਸੀਂ. Mis-segmented; the English 'we' is unsourced in this fragment."
+  },
+  {
+   "seed": 109,
+   "known": "ਕਰਨੀ",
+   "en": "must",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ਕਰਨੀ is the verbal-noun 'to do/work' (agreeing fem), glossed 'must' here, but in S106 the very same ਕਰਨੀ is glossed 'work' (ਮਿਹਨਤ ਕਰਨੀ='work hard'). The necessity 'must' actually lives in ਚਾਹੀਦੀ. Component label collides across seeds."
+  },
+  {
+   "seed": 105,
+   "known": "ਕਾਰਨ",
+   "en": "is why",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component ਕਾਰਨ ('reason/cause') glossed 'is why' and ਇਸੇ ('this/same') glossed 'that' — the 'that is why' molecule is split into oddly-glossed pieces ('that' + 'is why') that don't correspond to the Punjabi morpheme boundaries (ਇਸੇ='this/same', ਕਾਰਨ='reason'). Mis-glossed component split."
+  },
+  {
+   "seed": 124,
+   "known": "ਕਿ",
+   "en": "I",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Component gloss wrong: ਕਿ is the complementizer 'that' (free glue), not 'I'. The English 'I' comes from ਮੈਂ, which is absent here. Mis-assigned component gloss."
+  },
+  {
+   "seed": 124,
+   "known": "ਸੋਚਿਆ ਕਿ",
+   "en": "I thought",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Build 'I thought' = ਸੋਚਿਆ ਕਿ, but ਸੋਚਿਆ='thought' and ਕਿ='that' (complementizer); there is no ਮੈਂ for 'I', and 'that' is dropped from the English. The pieces don't tile to 'I thought'."
+  },
+  {
+   "seed": 125,
+   "known": "ਮੰਨਣਾ ਹੈ",
+   "en": "believe",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component ਮੰਨਣਾ ਹੈ='believe' fine, but paired component ਮੇਰਾ glossed 'I' whereas ਮੇਰਾ is the genitive 'my' (the construction ਮੇਰਾ ਮੰਨਣਾ ਹੈ lit. 'my believing is'=dative-subject idiom for 'I believe'). Labelling ਮੇਰਾ as 'I' mis-states the morpheme."
+  },
+  {
+   "seed": 117,
+   "known": "ਕੀਤੀ ਸੀ",
+   "en": "to each other",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Component ਕੀਤੀ ਸੀ ('did/had done', past of ਕਰਨਾ) glossed 'to each other'. 'to each other' is a reciprocal-idiom artifact of the English gloss for ਗੱਲ ਕੀਤੀ; it has NO Punjabi source morpheme. Mis-segmented component; same fragment glossed 'we' in S107."
+  },
+  {
+   "seed": 118,
+   "known": "ਉਸ ਨਾਲੋਂ",
+   "en": "than I felt",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component ਉਸ ਨਾਲੋਂ = 'than that' (ਉਸ='that' + ਨਾਲੋਂ='than'); glossed 'than I felt' — 'I felt' has no source (no ਮਹਿਸੂਸ ਕੀਤਾ here). The 'I felt' is borrowed from the parent molecule's English. Mis-aligned component gloss."
+  },
+  {
+   "seed": 119,
+   "known": "ਪਹਿਲਾਂ",
+   "en": "you",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Component ਪਹਿਲਾਂ ('before/first') glossed 'you'. 'you' has no source morpheme in ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ (lit. 'before going'); the honorific subject is implied, not lexical. Mis-assigned component gloss (ਜਾਣ ਤੋਂ='before leaving', ਪਹਿਲਾਂ='before')."
+  },
+  {
+   "seed": 121,
+   "known": "ਮੈਂ ਆਪਣੀ ਕਾਰ ਲੈਣੀ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "en": "I like my car",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Punjabi means 'I want to take my car' (ਲੈਣੀ ਚਾਹੁੰਦਾ ='want to take'), but the English gloss says 'I like my car'. Meaning mismatch between known and en — wrong English gloss."
+  },
+  {
+   "seed": 121,
+   "known": "ਮੈਂ ਆਪਣੀ ਕਾਰ ਦੀ ਉਡੀਕ ਕਰਾਂਗਾ",
+   "en": "I'll wait for my car",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Punjabi uses ਆਪਣੀ ('one's own'), correctly rendered, but 'wait for' here uses the bare future ਉਡੀਕ ਕਰਾਂਗਾ; the established 'wait' LEGO is ਉਡੀਕ ਕਰਨਾ (S82) and future -ਗਾ is licensed, so answerable. Flag only as a naturalness/consistency note (possessive ਆਪਣੀ vs taught ਮੇਰੀ for 'my' is a minor known-side wobble)."
+  },
+  {
+   "seed": 104,
+   "known": "ਸਾਨੂੰ ਹੋਰ ਸਮਾਂ ਦੀ ਲੋੜ ਹੈ",
+   "en": "we need more time",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Mild morphology defect: ਸਮਾਂ (direct) before the postposition ਦੀ should be oblique (ਸਮੇਂ ਦੀ); 'ਸਮਾਂ ਦੀ ਲੋੜ' is slightly ungrammatical Punjabi. Answerable, but a known-side authoring blemish."
+  },
+  {
+   "seed": 108,
+   "known": "ਨੂੰ",
+   "en": "in",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component ਨੂੰ glossed 'in', but ਨੂੰ is the dative/accusative postposition ('to/at'); the temporal 'in the middle of the night' uses ਨੂੰ here non-canonically. Borderline gloss; free-class glue so not a vocab fault, but the 'in' label is imprecise."
+  },
+  {
+   "seed": 108,
+   "known": "ਅੱਧੀ ਰਾਤ",
+   "en": "middle of the night",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component split: ਅੱਧੀ ਰਾਤ glossed 'middle of the night' and ਨੂੰ glossed 'in' — the English determiner 'the' has no source; acceptable for L1 but the component decomposition double-counts the locative."
+  },
+  {
+   "seed": 102,
+   "known": "ਅਸੀਂ ਕਹਿਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਾਂ ਇਹ ਉਸ ਤਰ੍ਹਾਂ ਨਹੀਂ",
+   "en": "we're trying to say it's not like that",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "The Punjabi is a juxtaposed run-on ('...trying to say this not like that') with no complementizer ਕਿ before the embedded clause, where parallel S102 lines do use it; mildly broken syntax for the embedded 'that it's not like that'. Answerable but ungainly."
+  },
+  {
+   "seed": 111,
+   "known": "ਜਦੋਂ ਅਸੀਂ ਅੱਜ",
+   "en": "when we today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Build fragment ਜਦੋਂ ਅਸੀਂ ਅੱਜ = 'when we today' is a non-sentence (dangling subordinator + subject + adverb, no verb) on both sides; scaffolding artifact rather than a usable prompt."
+  },
+  {
+   "seed": 105,
+   "known": "ਇਸੇ ਕਾਰਨ ਔਖਾ",
+   "en": "that is why difficult",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Build 'that is why difficult' is a fragment with no copula/verb on either side; scaffolding stub, low usefulness as a learner prompt."
+  },
+  {
+   "seed": 102,
+   "known": "ਉਸ ਤਰ੍ਹਾਂ ਨਹੀਂ ਕੰਮ ਕਰੇਗਾ",
+   "en": "not like that will work",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Word order 'not like that will work' (ਉਸ ਤਰ੍ਹਾਂ ਨਹੀਂ ਕੰਮ ਕਰੇਗਾ) is a topicalised fragment; understandable but the subject 'it' is omitted on both sides. Minor naturalness."
+  },
+  {
+   "seed": 107,
+   "known": "ਅਸੀਂ ਉਮੀਦ ਕੀਤੀ ਸੀ ਦੇਖਣਾ ਤੁਹਾਨੂੰ",
+   "en": "we hoped to see you",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Punjabi word order is calqued from English (ਦੇਖਣਾ ਤੁਹਾਨੂੰ 'to-see you' with object after the verbal noun); natural Punjabi is ਤੁਹਾਨੂੰ ਦੇਖਣਾ. SOV order violated — known-side naturalness defect, recurs in several S107/S108 'hoped to see' lines."
+  },
+  {
+   "seed": 133,
+   "known": "ਕੀ ਤੁਸੀਂ ਉਸ ਵਿਅਕਤੀ ਨੂੰ ਜਾਣ ਲੈਂਦੇ ਹੋ?",
+   "en": "do you get to know that person?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਵਿਅਕਤੀ ('person') is never introduced anywhere in inventory_through_hi. It is an untaught content noun — the known side is a controlled language. Inconsistent within the same seed: S133's other USE prompt (ਤੁਸੀਂ ਕਿਸੇ ਨੂੰ ਜਾਣ ਲੈਂਦੇ ਹੋ = 'you get to know a person') renders 'person' with the already-taught ਕਿਸੇ ਨੂੰ. Use ਕਿਸੇ/ਉਸ ਨੂੰ rather than the new lexeme ਵਿਅਕਤੀ."
+  },
+  {
+   "seed": 142,
+   "known": "ਬਹੁਤ ਧੰਨਵਾਦ ਮਦਦ ਕਰਨ ਲਈ",
+   "en": "thank you very much for helping",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਧੰਨਵਾਦ ('thanks') is never introduced. The English 'thank you' was taught only as ਸ਼ੁਕਰੀਆ (S73 ਬਹੁਤ ਬਹੁਤ ਸ਼ੁਕਰੀਆ, S74 ਮਦਦ ਕਰਨ ਲਈ ਸ਼ੁਕਰੀਆ). Introducing a second un-taught synonym ਧੰਨਵਾਦ for the same English breaks the controlled-known-side rule and is a ZUT inconsistency (one English 'thank you' → two Punjabi forms). Should be ਸ਼ੁਕਰੀਆ."
+  },
+  {
+   "seed": 150,
+   "known": "ਕੀ ਤੁਸੀਂ ਦੱਸ ਸਕਦੇ ਹੋ ਕਿ ਉਹ ਕੌਣ ਹੈ?",
+   "en": "can you tell me who she is?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Interrogative ਕੌਣ ('who') is never introduced. Only relative ਜੋ ('who' in 'who speak English', S22) was taught; the wh-word ਕੌਣ is new content. The other wh-tail prompts in S150 (ਕੀ ਹੈ 'what is', ਕਿਉਂ 'why', ਕਦੋਂ 'when', ਕਿੱਥੇ 'where') all use introduced wh-words, but ਕੌਣ is not among them."
+  },
+  {
+   "seed": 137,
+   "known": "ਮੈਂ ਯਕੀਨ ਕਰਦਾ ਹਾਂ ਕਿ ਗੱਲ ਕਰਨਾ ਜ਼ਿਆਦਾ ਜ਼ਰੂਰੀ ਹੈ ਸੰਪੂਰਣ ਹੋਣ ਨਾਲੋਂ",
+   "en": "I believe talking is more important than to be perfect",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "The affirmative predicate ਯਕੀਨ ਕਰਦਾ ਹਾਂ ('I believe') is a new use of ਯਕੀਨ. ਯਕੀਨ was introduced only in the fixed negative/adverbial forms ਯਕੀਨ ਨਹੀਂ ('not sure', S10) and ਯਕੀਨਨ ('definitely', S117); 'believe' itself was taught as ਮੇਰਾ ਮੰਨਣਾ ਹੈ (S125). So 'believe' → ਯਕੀਨ ਕਰਨਾ here is both an un-introduced affirmative form and a ZUT split with ਮੰਨਣਾ. Low because answerable from English."
+  },
+  {
+   "seed": 129,
+   "known": "ਤੁਸੀਂ ਇੰਨਾ ਵਧੀਆ ਬਦਲ ਰਿਹਾ ਹੈ",
+   "en": "that's changing so well",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken/mismatched prompt. Punjabi subject is ਤੁਸੀਂ ('you', 2nd-person honorific) but the verb is 3sg-masc ਬਦਲ ਰਿਹਾ ਹੈ and the English gloss is 'that's changing' (3rd person). Subject, agreement and gloss all disagree — the Punjabi is ungrammatical and does not mean the English. Authoring defect."
+  },
+  {
+   "seed": 129,
+   "known": "ਤੁਸੀਂ ਇੰਨਾ ਵਧੀਆ ਅੱਜ",
+   "en": "you so well today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Verbless fragment on both sides; the English 'you so well today' is not a phrase. A BUILD scaffold for ਇੰਨਾ ਵਧੀਆ ('so well') but the carrier reads as broken. Naturalness/authoring defect."
+  },
+  {
+   "seed": 135,
+   "known": "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿਉਂ",
+   "en": "I don't know why yet",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English gloss contains 'yet' with no source in the Punjabi (no ਅਜੇ/ਅਜੇ ਤੱਕ present). Unproducible material: a learner reading ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿਉਂ has no cue to add 'yet'. The plain reading is 'I don't know why'."
+  },
+  {
+   "seed": 143,
+   "known": "ਇਹ ਬਿਲਕੁਲ ਉਹੀ ਗੱਲ ਹੈ ਜਿਸ ਬਾਰੇ ਅਸੀਂ ਸੋਚਿਆ",
+   "en": "it's the same thing that we thought about",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ਬਿਲਕੁਲ ('exactly/absolutely') appears in the Punjabi but has no counterpart in the English gloss ('it's the same thing...'), and ਬਿਲਕੁਲ is itself never introduced. Mismatch: extra Punjabi material with no English source; the learner cannot reverse-derive the silent intensifier."
+  },
+  {
+   "seed": 136,
+   "known": "ਉਹ ਮੇਰੀ ਦੋਸਤ ਹੈ ਅਤੇ ਮੈਂ ਉਨ੍ਹਾਂ ਨਾਲ ਗੱਲਬਾਤ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "en": "she's my friend and I want to have conversation with them",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English 'have conversation with them' is unnatural (missing article 'a'/'the'). Also note the referent shifts singular→plural ('she's my friend ... with them'), mirroring the Punjabi ਉਹ→ਉਨ੍ਹਾਂ honorific-plural, but the English reads awkwardly. Naturalness defect, not an answerability bug."
+  },
+  {
+   "seed": 126,
+   "known": "ਅੰਗਰੇਜ਼ੀ ਬੋਲਣਾ ਮੇਰੇ ਦਿਮਾਗ਼ ਬਦਲ ਰਿਹਾ ਹੈ",
+   "en": "speaking English is changing my brain",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Case marking on the object is off: 'my brain' as the changed object should be ਮੇਰੇ ਦਿਮਾਗ਼ ਨੂੰ (or nominative ਮੇਰਾ ਦਿਮਾਗ਼); the oblique ਮੇਰੇ ਦਿਮਾਗ਼ with no postposition is ungrammatical. Minor authoring/morphology defect; meaning still recoverable."
+  },
+  {
+   "seed": 157,
+   "known": "ਅਗਲੇ ਮਹੀਨੇ ਮੈਂ ਇੱਥੇ ਹੋਵਾਂਗਾ",
+   "en": "next month I won't be able to come",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "[157] Polarity inversion: the Punjabi is POSITIVE ('next month I will be here' — ਮੈਂ ਇੱਥੇ ਹੋਵਾਂਗਾ, no negator) but the English is NEGATIVE ('I won't be able to come'). The learner reading this prompt would produce the opposite meaning. Authoring defect — EN does not render the Punjabi."
+  },
+  {
+   "seed": 173,
+   "known": "ਉਹ ਆਪਣੇ ਆਪ ਸੰਭਾਲ ਸਕਦੀ ਹੈ ਅੱਜ",
+   "en": "I can manage on my own better than that",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "[378] Fully mismatched pair. Punjabi = 'she can manage on her own today' (ਉਹ ... ਸਕਦੀ ਹੈ ਅੱਜ, 3rd-person feminine + 'today'). English = 'I can manage on my own better than that' (1st-person + 'better than that', which has NO Punjabi source). Subject, comparison and time-word all disagree."
+  },
+  {
+   "seed": 165,
+   "known": "ਇਹ ਸੱਚ ਨਹੀਂ",
+   "en": "it's true it's not",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "[281] Garbled English. Punjabi ਇਹ ਸੱਚ ਨਹੀਂ = 'it's not true' (or 'this isn't true'). EN 'it's true it's not' is word-salad — concatenates the affirmative gloss 'it's true' (seed-165 LEGO ਇਹ ਸੱਚ) with a trailing 'it's not'. Unproducible as written."
+  },
+  {
+   "seed": 153,
+   "known": "ਮੈਂ ਇਹ ਬਿਲਕੁਲ ਇੱਕੋ ਤਰੀਕੇ ਨਾਲ ਨਹੀਂ ਕਰਦਾ",
+   "en": "this is not in exactly the same way to do",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "[54] Broken English. Punjabi = 'I don't do it in exactly the same way' (ਮੈਂ ... ਕਰਦਾ, 1st-person verb 'do'). EN reorders into 'this is not in exactly the same way to do' — loses the 'I', misplaces the verb, and reads as a fragment. Nonsensical target."
+  },
+  {
+   "seed": 153,
+   "known": "ਉਹ ਬਿਲਕੁਲ ਖੁਸ਼ ਸੀ",
+   "en": "she was exactly happy",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "[51] Unnatural English. 'she was exactly happy' is not idiomatic English; ਬਿਲਕੁਲ here = 'completely/perfectly' ('she was perfectly happy') not 'exactly'. ਬਿਲਕੁਲ debuts seed 153 glossed 'exactly', but this carrier sentence forces a non-natural reading."
+  },
+  {
+   "seed": 170,
+   "known": "ਉਸਨੇ ਕਿਹਾ ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ",
+   "en": "she said tell me what you need to know",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "[353] 'to know' has no Punjabi source — ਚਾਹੀਦਾ ਹੈ = 'what you need', there is no ਜਾਣਨ/'know' in the prompt. Trailing 'to know' is spurious material (recurs with the ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ template, cf. [342] 'need to say', [343] 'need to do' — the same Punjabi gets three different English tails)."
+  },
+  {
+   "seed": 170,
+   "known": "ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ",
+   "en": "tell me what you need to say",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "[342]/[343] ZUT instability on the same template: identical Punjabi ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ is glossed 'what you need to say' [342] vs 'what you need to do today' [343] vs 'what you need' [349]. The 'to say'/'to do' verbs have no Punjabi source; one known prompt should map to one English target."
+  },
+  {
+   "seed": 157,
+   "known": "ਮੈਂ ਨਹੀਂ ਹੋ ਸਕਾਂਗਾ ਇੱਥੇ",
+   "en": "I won't be able to do this",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "[153] ਇੱਥੇ = 'here', not 'do this'. EN substitutes an unrelated 'do this' for the locative. Mismatch between the Punjabi adverb and the English object."
+  },
+  {
+   "seed": 157,
+   "known": "ਮੈਂ ਅਗਲੇ ਮਹੀਨੇ ਕੀ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ?",
+   "en": "I want to do something next month",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "[160] Mood mismatch: Punjabi is a wh-QUESTION (ਕੀ ... ਚਾਹੁੰਦਾ ਹਾਂ? with question mark = 'what do I want to do next month?') but the English is a positive declarative 'I want to do something next month'. Interrogative ਕੀ rendered as 'something'."
+  },
+  {
+   "seed": 156,
+   "known": "ਅੱਜ",
+   "en": "to",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "[131] Component gloss wrong: ਅੱਜ = 'today' (so glossed everywhere else, e.g. inventory seed 7). Here the component ਅੱਜ is glossed 'to'. Mis-segmentation of ਅੱਜ ਰਾਤ 'tonight' (ਅੱਜ='today/to-' + ਰਾਤ='night') leaving a meaningless 'to'."
+  },
+  {
+   "seed": 174,
+   "known": "ਕੀ ਉਹ ਸਮਝ ਸਕਦੇ ਹੋ ਕਿ ਅਸੀਂ ਕੀ ਕਹਿੰਦੇ ਹਾਂ?",
+   "en": "can you understand what we're saying?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "[392] Broken Punjabi agreement: ਉਹ ('he/she/they', 3rd person) is paired with ਸਕਦੇ ਹੋ (2nd-person-honorific 'you can'). Subject and verb agreement clash; should be ਤੁਸੀਂ for the 'you' reading the English requires. Malformed prompt."
+  },
+  {
+   "seed": 174,
+   "known": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਕਿ ਮੈਂ ਕੀ ਕਹਿ ਰਿਹਾ ਹਾਂ",
+   "en": "I know exactly what I'm saying",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "[396] 'exactly' has no Punjabi source — ਬਿਲਕੁਲ ('exactly') is absent from the prompt; Punjabi is plain 'I know what I'm saying'. Spurious intensifier in the English."
+  },
+  {
+   "seed": 175,
+   "known": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਐਤਵਾਰ ਸਵੇਰੇ ਕੀ ਕਰਨਾ ਹੈ ਅਤੇ ਕੁਝ ਕਹਿਣਾ ਹੈ",
+   "en": "I think about what to do on Sunday morning and want to say something",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "[414] 'want to' in the second clause has no Punjabi source: ...ਅਤੇ ਕੁਝ ਕਹਿਣਾ ਹੈ = '...and (there is) something to say', not 'and want to say something'. The English inserts a desiderative 'want' absent from the Punjabi."
+  },
+  {
+   "seed": 159,
+   "known": "ਚਾਹੁੰਦਾ",
+   "en": "trying to",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "[184] Component ਚਾਹੁੰਦਾ glossed 'trying to'. ਚਾਹੁੰਦਾ is the established 'want' verb (inventory seed 1 'I want', seed 11 'i'd like'). Seed 159 renders the molecule ਕਹਿਣਾ ਚਾਹੁੰਦਾ as 'trying to say' (an idiomatic choice), but exposing the bare component as 'trying to' detaches the gloss from its lemma and risks ZUT drift with the dominant 'want' gloss."
+  },
+  {
+   "seed": 159,
+   "known": "ਚਾਹੁੰਦਾ",
+   "en": "trying to",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "[184] glossRule want-vs-would-like-vs-will keeps ਚਾਹੁੰਦਾ = 'want' / 'would like' distinct. Glossing the same form as 'trying to' (seed-159 'trying to say' template, also [195] ਕਹਿਣਾ ਚਾਹੁੰਦਾ) introduces a third English mapping for ਚਾਹੁੰਦਾ that the brief does not sanction. Borderline: the molecule reading is idiomatic, but the bare-component 'trying to' gloss is the rule-tension to record."
+  },
+  {
+   "seed": 178,
+   "known": "ਮੈਂ ਖੇਦ ਹੈ ਕਿ ਮੇਰੇ ਕੋਲ ਸਮਾਂ ਨਹੀਂ ਸੀ",
+   "en": "I'm sorry I didn't have time",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਖੇਦ ('regret/sorry') is a content word never introduced anywhere in the inventory. 'I'm sorry' was taught as ਮਾਫ਼ ਕਰਨਾ (S139) and the related ਅਫ਼ਸੋਸ='afraid' (S183). ਖੇਦ is an unintroduced third synonym for the same English 'sorry'. Compounds the broken syntax (see content_quality)."
+  },
+  {
+   "seed": 178,
+   "known": "ਮੇਰੇ ਕੋਲ ਸਮਾਂ ਨਹੀਂ ਸੀ ਕਿਉਂਕਿ ਇਹ ਜ਼ਰੂਰੀ ਸੀ",
+   "en": "I didn't have time because it was important",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Possessive ਕੋਲ ('ਮੇਰੇ ਕੋਲ ... ਹੈ' = 'I have') appears ~13x across S178/S180 but is never introduced and is not in freeClass. The course taught possession ('i've got') only as the dative ਮੈਨੂੰ ਹੈ (S73); the seed-178 LEGO itself is ਸਮਾਂ ਨਹੀਂ ਸੀ (no ਕੋਲ). ਕੋਲ is the load-bearing 'have' morpheme. Low because it is L1 function-word-like and the English is taught, but it is the deliberately-different possession machinery leaking in unannounced."
+  },
+  {
+   "seed": 190,
+   "known": "ਮੇਰੇ ਸਵਾਲ ਬਹੁਤ ਮਹੱਤਵਪੂਰਨ ਹਨ",
+   "en": "my questions are very important",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਮਹੱਤਵਪੂਰਨ ('important') is an unintroduced synonym. 'important' was taught as ਜ਼ਰੂਰੀ (S65) / ਜ਼ਿਆਦਾ ਜ਼ਰੂਰੀ (S137). Same English 'important' should reuse ਜ਼ਰੂਰੀ (ZUT one-known->one-target); ਮਹੱਤਵਪੂਰਨ is uncontrolled vocabulary."
+  },
+  {
+   "seed": 192,
+   "known": "ਉਹ ਕੱਲ੍ਹ ਰਾਤ ਰੁੱਝਿਆ ਹੋਇਆ ਸੀ",
+   "en": "she was busy yesterday night",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "neutral-3rd-person-gender rule: the verb agreement is MASCULINE (ਰੁੱਝਿਆ ਹੋਇਆ), which fixes the referent as 'he', but the English gloss says 'she'. A masc-agreeing target must gloss 'he'; 'she' requires fem ਰੁੱਝੀ ਹੋਈ. (Also 'yesterday night' is an odd rendering of ਕੱਲ੍ਹ ਰਾਤ, glossed 'tomorrow night' elsewhere in the same seed.)"
+  },
+  {
+   "seed": 189,
+   "known": "ਉਹ ਸੋਚਦੀ ਹੈ ਕਿ ਇਹ ਵਧੀਆ ਵਿਚਾਰ ਹੈ",
+   "en": "she said that's a good idea",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Verb/gloss mismatch: ਸੋਚਦੀ ਹੈ = 'she thinks' (present, ਸੋਚਣਾ 'to think'), but the English says 'she said'. Should be 'she thinks that's a good idea'. The Punjabi has no past/say verb."
+  },
+  {
+   "seed": 181,
+   "known": "ਕੀ ਤੁਸੀਂ ਆਪਣੀ ਮਾਂ ਦੀ ਮਦਦ ਕਰ ਸਕਦੇ ਹੋ?",
+   "en": "could you say if you can help your mother?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English contains 'could you say if' with NO source in the Punjabi, which simply says 'can you help your mother?' (ਕੀ ਤੁਸੀਂ ... ਮਦਦ ਕਰ ਸਕਦੇ ਹੋ). Unproducible English material grafted on; the gloss should be 'can you help your mother?'."
+  },
+  {
+   "seed": 184,
+   "known": "ਮੈਂ ਮੇਰੀਆਂ ਚਾਬੀਆਂ ਦਫ਼ਤਰ ਵਿੱਚ ਥੋੜੀ ਦੇਰ ਪਹਿਲਾਂ ਦੇਖੀਆਂ ਸੀ",
+   "en": "I was in the office with my keys a while ago",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Gross Punjabi/English mismatch. The Punjabi means 'I SAW my keys in the office a while ago' (ਦੇਖੀਆਂ ਸੀ = 'had seen / saw'). The English 'I was in the office with my keys' drops the seeing verb and invents a copular 'was with'. Mismatched gloss."
+  },
+  {
+   "seed": 178,
+   "known": "ਮੈਂ ਖੇਦ ਹੈ ਕਿ ਮੇਰੇ ਕੋਲ ਸਮਾਂ ਨਹੀਂ ਸੀ",
+   "en": "I'm sorry I didn't have time",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Punjabi syntax: ਮੈਂ ਖੇਦ ਹੈ pairs the nominative ਮੈਂ with a dative-experiencer predicate; it must be ਮੈਨੂੰ ਖੇਦ ਹੈ (subject-as-dative rule, like ਮੈਨੂੰ ਅਫ਼ਸੋਸ ਹੈ). Ungrammatical as authored."
+  },
+  {
+   "seed": 195,
+   "known": "ਕੀ ਲੱਭ ਰਹੇ ਹੋ?",
+   "en": "looking for money",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Mismatch: Punjabi ਕੀ ਲੱਭ ਰਹੇ ਹੋ? = 'what are you looking for?' (a question). The English 'looking for money' is a declarative fragment and adds 'money' (ਪੈਸੇ), which is absent from the Punjabi. Neither the question form nor 'money' aligns."
+  },
+  {
+   "seed": 196,
+   "known": "ਸਭ ਤੋਂ ਨਵਾਂ ਵਿਚਾਰ ਸੁਣਿਆ",
+   "en": "the latest idea here",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Build-fragment gloss mismatch: ਸੁਣਿਆ = 'heard', but the English says 'here' and drops the verb. Punjabi ='heard the latest idea'; English ='the latest idea here'. Stray 'here' with no ਇੱਥੇ in the Punjabi, and 'heard' unrendered."
+  },
+  {
+   "seed": 189,
+   "known": "ਵਿਚਾਰ ਹੈ",
+   "en": "that's a idea",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss is ungrammatical English ('that's a idea') and over-tiles 'that's a' onto bare ਵਿਚਾਰ ਹੈ ('is an idea'). Authoring artifact in a component row."
+  },
+  {
+   "seed": 182,
+   "known": "ਕੀ ਤੁਸੀਂ ਕਿਤੇ ਮੇਰਾ ਦੋਸਤ ਦੇਖੀਆਂ ਹਨ?",
+   "en": "have you seen my friend anywhere?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Agreement defect: ਦੇਖੀਆਂ ਹਨ is fem-plural (it agrees with ਚਾਬੀਆਂ 'keys' in sibling prompts) but here the object is masc-sg ਮੇਰਾ ਦੋਸਤ 'my friend'; should be ਦੇਖਿਆ ਹੈ. Copy-paste of the keys frame without re-agreeing the verb. English is fine; Punjabi is malformed."
+  },
+  {
+   "seed": 207,
+   "known": "ਤੁਸੀਂ ਕਰ ਲਿਆ ਕੁਝ ਮਹੱਤਵਪੂਰਨ",
+   "en": "you've done something important",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਮਹੱਤਵਪੂਰਨ ('important') is never introduced. The course teaches 'important' as ਜ਼ਰੂਰੀ (S65). The learner must produce 'important' from an untaught synonym — an uncontrolled-vocab / ZUT inconsistency (same English 'important' now has two unrelated Punjabi renderings)."
+  },
+  {
+   "seed": 210,
+   "known": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਸਭ ਕੁਝ ਮੁਕੰਮਲ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ",
+   "en": "they think that we need to finish everything",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਮੁਕੰਮਲ ('finish/complete') is never introduced. 'to finish' is taught as ਖਤਮ ਕਰਨਾ (S50, used consistently through S149). ਮੁਕੰਮਲ is an untaught synonym for the same English 'finish' — uncontrolled vocab / ZUT split."
+  },
+  {
+   "seed": 210,
+   "known": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਹੋਰ ਜ਼ਰੂਰਤ ਹੈ",
+   "en": "they think that we need more",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਜ਼ਰੂਰਤ ('need') is never introduced (also in S210 component ਸਾਨੂੰ ਜ਼ਰੂਰਤ ਹੈ='that we need'). The taught necessity predicates are ਲੋੜ (S44/S104) and ਚਾਹੀਦਾ (S96). ਜ਼ਰੂਰਤ is an untaught third synonym for 'need' — uncontrolled vocab; same seed even mixes it with ਚਾਹੀਦਾ, so 'need' maps to two forms in one seed."
+  },
+  {
+   "seed": 201,
+   "known": "ਸਾਨੂੰ ਪਤਾ ਨਹੀਂ ਸੀ ਕੀ ਹੋਣ ਵਾਲਾ ਸੀ",
+   "en": "we wanted to know what was going to happen here",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English gloss does not match the Punjabi. ਸਾਨੂੰ ਪਤਾ ਨਹੀਂ ਸੀ = 'we didn't know'; the EN says 'we wanted to know' and also adds 'here' with no Punjabi source. Unproducible mapping."
+  },
+  {
+   "seed": 203,
+   "known": "ਜੇ ਮੈਂ ਤੁਹਾਨੂੰ ਕਹਿੰਦਾ ਮਦਦ ਕਰਨ ਲਈ ਤੁਸੀਂ ਕੀ ਕਹਿੰਦੇ?",
+   "en": "if I asked you to help me what would you do?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi ends ਤੁਸੀਂ ਕੀ ਕਹਿੰਦੇ = 'what would you SAY', but the English says 'what would you DO'. Verb mismatch (ਕਹਿਣਾ vs ਕਰਨਾ)."
+  },
+  {
+   "seed": 204,
+   "known": "ਮੈਂ ਸੋਚਿਆ ਕਿ ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ",
+   "en": "I think I wanted her to help you",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ਸੋਚਿਆ is past ('I thought', cf. S124 ਸੋਚਿਆ ਕਿ='I thought'); EN renders it present 'I think'. Tense mismatch with the Punjabi perfective."
+  },
+  {
+   "seed": 207,
+   "known": "ਕੀ ਤੁਸੀਂ ਕਰ ਲਿਆ ਸਮੇਂ ਸਿਰ?",
+   "en": "you've done it in time",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Punjabi opens with ਕੀ (yes/no question particle) so this is 'have you done it in time?', but the English gloss is a flat declarative. Question/declarative mismatch."
+  },
+  {
+   "seed": 209,
+   "known": "ਅਸੀਂ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਦਾ ਮੌਕਾ ਚਾਹੁੰਦੇ ਹਾਂ",
+   "en": "we want a chance meeting as a group",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi = 'we want a chance TO MEET as a group'. The English 'a chance meeting as a group' reads as 'an accidental meeting', a different meaning — authoring defect."
+  },
+  {
+   "seed": 209,
+   "known": "ਕੀ ਤੁਸੀਂ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ ਵੀ ਆਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+   "en": "do you want to enjoy meeting as a group?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ਵੀ ਆਉਣਾ = 'to also come'; the English substitutes 'enjoy', which has no source in the Punjabi. Unproducible."
+  },
+  {
+   "seed": 209,
+   "known": "ਅਸੀਂ ਇੱਕ ਦੂਜੇ ਨਾਲ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਾਂ",
+   "en": "we want to spend more time together",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ਇੱਕ ਦੂਜੇ ਨਾਲ = 'with each other' (untaught phrase; 'together' was taught as ਇਕੱਠੇ at S133). The Punjabi here uses an uncontrolled rendering of 'together'; minor consistency defect."
+  },
+  {
+   "seed": 217,
+   "known": "ਮੈਂ ਪਾਣੀ ਦੇ ਇੱਕ-ਦੋ ਗਲਾਸ ਮੰਗਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "en": "I need a glass or two water",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi = 'I WANT TO ASK FOR a glass or two of water' (ਮੰਗਣਾ ਚਾਹੁੰਦਾ ਹਾਂ); the English collapses this to 'I need', dropping the ask-for verb and swapping want→need. Mismatch."
+  },
+  {
+   "seed": 220,
+   "known": "ਟੀਵੀ ਦੇਖਣਾ",
+   "en": "television here",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ਟੀਵੀ ਦੇਖਣਾ = 'to watch television'; the English 'television here' has no source for 'here' and drops the verb. Broken gloss."
+  },
+  {
+   "seed": 220,
+   "known": "ਥੋੜਾ ਟੀਵੀ",
+   "en": "a television",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ਥੋੜਾ ਟੀਵੀ = 'a bit of television' (cf. component ਥੋੜਾ ਟੀਵੀ='a bit of television' same seed); glossing it 'a television' loses ਥੋੜਾ and is inconsistent within the seed."
+  },
+  {
+   "seed": 221,
+   "known": "ਫੁੱਟਬਾਲ ਚੰਗਾ ਸੀ",
+   "en": "football it was nice",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English is ungrammatical ('football it was nice'). Punjabi means 'the football was nice/good'. Broken English authoring."
+  },
+  {
+   "seed": 221,
+   "known": "ਚੰਗਾ ਲੱਗਿਆ ਫੁੱਟਬਾਲ ਦੇਖਣਾ",
+   "en": "it was nice I watched football",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi ਚੰਗਾ ਲੱਗਿਆ ... ਦੇਖਣਾ = 'it was nice TO WATCH football'; the English 'it was nice I watched football' is ungrammatical (recurs at S221 'it was nice I watched a film')."
+  },
+  {
+   "seed": 226,
+   "known": "ਬੰਦਾ ਮਦਦ ਕਰਦਾ ਹੈ",
+   "en": "man is here",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Known/en mismatch: the Punjabi means 'man helps' (ਮਦਦ ਕਰਦਾ ਹੈ = helps), but the English gloss says 'man is here'. The two are unrelated; the English is unproducible from this prompt and a learner asked to produce 'man is here' has no source for it."
+  },
+  {
+   "seed": 226,
+   "known": "ਉਹ ਬੰਦਾ ਮੇਰੀ ਮਦਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਸੀ",
+   "en": "that man is trying to help me now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Aspect/tense mismatch + invented word: Punjabi ਕਰ ਰਿਹਾ ਸੀ is PAST progressive ('was trying'), but the English is present 'is trying'; additionally 'now' has no Punjabi source. Correct gloss would be 'that man was trying to help me'."
+  },
+  {
+   "seed": 229,
+   "known": "ਉਹ ਔਰਤ ਮੈਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦੀ ਸੀ",
+   "en": "that woman wanted to tell me something new",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English 'new' has no source: Punjabi ਕੁਝ = 'something' (not ਕੁਝ ਨਵਾਂ 'something new'). The adjective in the English is unproducible from the prompt."
+  },
+  {
+   "seed": 235,
+   "known": "ਉਹ ਬੰਦਾ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+   "en": "that man he wanted to tell you something",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken English: doubled subject 'that man he wanted...'. The Punjabi is a clean single clause ('that man wanted to tell you something'); the gloss is ungrammatical authoring."
+  },
+  {
+   "seed": 235,
+   "known": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਕੱਲ੍ਹ ਰਾਤ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+   "en": "I met someone who said that he wanted to tell you something last night",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Word-order/placement defect: ਕੱਲ੍ਹ ਰਾਤ ('last night') sits next to ਮਿਲਿਆ in the Punjabi (modifies 'met'), but the English strands 'last night' at the very end where it reads as modifying 'tell'. Content all present, but the English is awkward/misleading."
+  },
+  {
+   "seed": 236,
+   "known": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਮਦਦ ਕਰੇਗੀ",
+   "en": "I know someone who said that she was going to try to help",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English adds unproducible 'try to' and mistenses: Punjabi ਮਦਦ ਕਰੇਗੀ = 'she will help' (plain future, no ਕੋਸ਼ਿਸ਼/'try'). The gloss 'was going to try to help' invents both 'try' and the past framing."
+  },
+  {
+   "seed": 236,
+   "known": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਰੁਕਣਾ ਨਹੀਂ ਚਾਹੁੰਦੀ ਸੀ",
+   "en": "I know someone who said that she was going to try to stop",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Meaning inverted: Punjabi ਰੁਕਣਾ ਨਹੀਂ ਚਾਹੁੰਦੀ ਸੀ = 'did NOT want to stop'. The English 'was going to try to stop' drops the negation and invents 'try', producing the opposite sense. Unproducible and contradictory."
+  },
+  {
+   "seed": 241,
+   "known": "ਮੈਂ ਉਸਨੂੰ ਹੁਣ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+   "en": "I don't want to give it to him yet",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Adverb mismatch: Punjabi ਹੁਣ = 'now', English says 'yet'. Different word; the English temporal adverb has no matching source ('yet' would be ਅਜੇ)."
+  },
+  {
+   "seed": 241,
+   "known": "ਮੈਂ ਉਸਨੂੰ ਇਹ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਇੱਥੇ",
+   "en": "I don't want to give it to him at the moment",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Adverb mismatch: Punjabi ਇੱਥੇ = 'here' (locative), English says 'at the moment' (temporal). The English adverbial is unproducible from the prompt."
+  },
+  {
+   "seed": 241,
+   "known": "ਮੈਂ ਉਸਨੂੰ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+   "en": "I don't want to give it to him here",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English adds 'here' with no Punjabi source: the prompt has no ਇੱਥੇ. The trailing 'here' is unproducible (this looks like a swap with the previous item, whose ਇੱਥੇ was glossed 'at the moment')."
+  },
+  {
+   "seed": 242,
+   "known": "ਉਸਨੂੰ ਹੋਰ ਸਮਾਂ ਦੇਣਾ ਚਾਹੀਦਾ",
+   "en": "give her more time here",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two defects: Punjabi ਚਾਹੀਦਾ ('should') is left unrendered in the English, and the English 'here' has no source (no ਇੱਥੇ). Gloss should be roughly 'should give her more time'."
+  },
+  {
+   "seed": 243,
+   "known": "ਕੀ ਤੁਸੀਂ ਉਹੀ ਚੀਜ਼ ਮੰਗਣ ਵਾਲੇ ਹੋ",
+   "en": "going to ask for the same thing you want",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken gloss: the Punjabi is a clean yes/no question 'are you going to ask for the same thing?' (ਕੀ...ਮੰਗਣ ਵਾਲੇ ਹੋ). The English drops the question and tacks on 'you want', which has no source — ungrammatical and unproducible."
+  },
+  {
+   "seed": 226,
+   "known": "ਉਹ ਬੰਦਾ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਹੈ",
+   "en": "that man wants to tell something",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Minor English grammaticality: 'wants to tell something' is non-idiomatic ('tell someone something' / 'say something'). Content maps fine (ਕੁਝ='something', ਦੱਸਣਾ='to tell'); authoring polish only."
+  },
+  {
+   "seed": 245,
+   "known": "ਅਸੀਂ ਖੁਸ਼ ਹਾਂ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਇੱਥੇ",
+   "en": "we're happy with how much I've done here",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Person clash within one sentence: subject is ਅਸੀਂ ('we're happy') but the embedded clause keeps the inherited seed gloss 'how much I've done' (1sg). 'we...I' is awkward; inherited from the ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ unit gloss rather than a vocab gap. Low."
+  },
+  {
+   "seed": 256,
+   "known": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਇਹ ਇੱਕ ਘੰਟੇ ਤੋਂ ਵੱਧ ਨਾ ਲਵੇ",
+   "en": "I want this to take more than an hour",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Negation dropped in the English. The Punjabi has ਨਾ (preverbal negator) on ਲਵੇ — it means 'I want this NOT to take more than an hour'. The keyed English asserts the opposite ('to take more than an hour'). A learner reading the Punjabi would produce the negative; the answer is unproducible/contradictory."
+  },
+  {
+   "seed": 268,
+   "known": "ਉਸਨੇ ਮੈਨੂੰ ਕੁਝ ਭੇਜਿਆ ਜੋ ਮੇਰੇ ਲਈ ਸੀ",
+   "en": "she sent us something last week",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Wholesale mismatch. Punjabi = 'she sent me something that was for me' (ਮੈਨੂੰ=me, ਜੋ ਮੇਰੇ ਲਈ ਸੀ='that was for me'). English has 'us' (should be me) and 'last week' (no source in Punjabi) and drops the relative clause. Different sentence."
+  },
+  {
+   "seed": 274,
+   "known": "ਕੀ ਅਸੀਂ ਕੁਝ ਦਿਨਾਂ ਵਿੱਚ ਫਿਰ ਮਿਲ ਸਕਦੇ ਹਾਂ?",
+   "en": "would you like to meet us in a few days?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Wholesale mismatch. Punjabi = 'can we meet again in a few days?' (ਅਸੀਂ='we', ਫਿਰ='again', ਮਿਲ ਸਕਦੇ ਹਾਂ='can meet'). The keyed English is a 'would you like to' invitation with 'us' — different subject, modality and meaning. Unproducible from the prompt."
+  },
+  {
+   "seed": 251,
+   "known": "ਕੀ ਤੁਸੀਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦੇ",
+   "en": "don't want to find out now",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Question rendered as declarative + spurious 'now'. Punjabi is a yes/no question (clause-initial ਕੀ) = 'don't you want to find out'. English drops the question entirely and adds 'now' (ਹੁਣ) which is not in the prompt."
+  },
+  {
+   "seed": 270,
+   "known": "ਚਿੰਤਾ ਨਾ ਕਰੋ",
+   "en": "not worried",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Mismatch of clause type. Punjabi ਚਿੰਤਾ ਨਾ ਕਰੋ is a negative imperative 'don't worry'. The keyed English 'not worried' is a predicate adjective. A learner cannot produce 'not worried' from an imperative."
+  },
+  {
+   "seed": 270,
+   "known": "ਉਹ ਬਹੁਤ ਚਿੰਤਾ ਵਿੱਚ ਦਿੱਖ ਰਹੀ ਹੈ",
+   "en": "I think she is very worried",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi = 'she looks/appears very worried' (ਦਿੱਖ ਰਹੀ ਹੈ = looks/is appearing). The keyed English inserts 'I think' (no source) and replaces 'looks' with a plain copula. Different proposition."
+  },
+  {
+   "seed": 270,
+   "known": "ਮੈਂ ਤੁਹਾਡੇ ਬਾਰੇ ਚਿੰਤਤ ਹਾਂ",
+   "en": "I'm worried about that",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ਤੁਹਾਡੇ ਬਾਰੇ = 'about you', not 'about that' (that = ਇਸ ਬਾਰੇ, as correctly used in the sibling prompt 'ਮੈਂ ਇਸ ਬਾਰੇ ਚਿੰਤਤ ਹਾਂ' → 'about it'). Wrong referent."
+  },
+  {
+   "seed": 256,
+   "known": "ਕੀ ਤੁਸੀਂ ਸੋਚਦੇ ਹੋ ਕਿ ਅਸੀਂ ਇੱਕ ਘੰਟੇ ਤੋਂ ਘੱਟ ਵਿੱਚ ਖਤਮ ਕਰ ਸਕਦੇ ਹਾਂ?",
+   "en": "do you think that we need to finish in less than an hour?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ਕਰ ਸਕਦੇ ਹਾਂ = 'can finish' (ability ਸਕ-), not 'need to finish'. Modality is wrong (can vs need)."
+  },
+  {
+   "seed": 271,
+   "known": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਦੇਖਣਾ ਚਾਹੋਗੇ?",
+   "en": "would you like to see something interesting?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi = 'would you like to see something?' (ਕੁਝ = something). 'interesting' (ਦਿਲਚਸਪ) has no source in the prompt — added material."
+  },
+  {
+   "seed": 275,
+   "known": "ਮੈਂ ਇੱਥੇ ਥੋੜਾ ਹੋਰ ਲੰਮਾ ਰਹਿ ਸਕਦਾ ਹਾਂ",
+   "en": "I need to wait here a little longer",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ਰਹਿ ਸਕਦਾ ਹਾਂ = 'can stay' (ability + ਰਹਿ='stay'). The keyed English says 'need to wait' — wrong verb (stay vs wait) and wrong modality (can vs need)."
+  },
+  {
+   "seed": 260,
+   "known": "ਕੋਈ ਵੀ ਅੰਦਾਜ਼ਾ ਨਹੀਂ",
+   "en": "the faintest idea at all",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Negation dropped. Punjabi ਨਹੀਂ negates the clause = 'not the faintest idea (at all)'. The keyed positive fragment 'the faintest idea at all' is non-sensical as a standalone answer. (NPI ਕੋਈ ਵੀ is correctly under ਨਹੀਂ — licensed; the defect is the English gloss.)"
+  },
+  {
+   "seed": 251,
+   "known": "ਉਹ ਵੀ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+   "en": "don't want to find out at all",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Punjabi = 'he too/either doesn't want to find out' (ਉਹ='he', ਵੀ='too/either'). The keyed English drops the subject 'he' and the additive ਵੀ, and adds 'at all'. Mismatch."
+  },
+  {
+   "seed": 251,
+   "known": "ਮੈਂ ਉਡੀਕ ਕਰਾਂਗਾ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+   "en": "I want to wait until after we finish",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ਉਡੀਕ ਕਰਾਂਗਾ is future 'I will wait' (-ਗਾ suffix), not desiderative 'I want to wait'. want = ਚਾਹੁੰਦਾ. Modality/tense mismatch."
+  },
+  {
+   "seed": 251,
+   "known": "ਮੈਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਕੱਲ੍ਹ",
+   "en": "I don't want to find out yet",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ਕੱਲ੍ਹ = 'tomorrow/yesterday', not 'yet'. 'yet' is taught as ਅਜੇ/ਅਜੇ ਤੱਕ (S60/S96). Wrong time-word; also the post-verbal placement of ਕੱਲ੍ਹ is unnatural."
+  },
+  {
+   "seed": 252,
+   "known": "ਤੁਸੀਂ ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ ਸ਼ੁਰੂ ਕਰਨ ਲਈ?",
+   "en": "when will you be ready to start today?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "'today' (ਅੱਜ) has no source in the Punjabi; the prompt is identical to the sibling glossed 'when will you be ready to start?'. Added material."
+  },
+  {
+   "seed": 252,
+   "known": "ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅੱਜ",
+   "en": "when will you be ready to start this morning?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ਅੱਜ = 'today', not 'this morning' (which is ਅੱਜ ਸਵੇਰੇ). Also the trailing time-adverbial after the verb is unnatural Punjabi word order (a recurring pattern in this batch: e.g. seeds 253/254/255 '...ਇੱਥੇ/ਅੱਜ/ਕੱਲ੍ਹ' tacked on the end)."
+  },
+  {
+   "seed": 270,
+   "known": "ਉਹ ਦੇਰ ਨਾਲ ਆਵੇਗਾ",
+   "en": "going to be late again",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "'again' (ਫਿਰ/ਦੁਬਾਰਾ) has no source in the Punjabi, which is simply 'he will come late / be late'. Added material."
+  },
+  {
+   "seed": 267,
+   "known": "ਮਿਲਣਾ",
+   "en": "from",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Decomposition artifact: the component ਮਿਲਣਾ ('to meet/to get') is glossed 'from'. 'from' is carried by the postposition ਤੋਂ, not ਮਿਲਣਾ. Splitting the M-LEGO ਖ਼ਬਰ ਮਿਲਣਾ ('heard from') this way produces a misleading atom gloss."
+  },
+  {
+   "seed": 291,
+   "known": "ਬਿਹਤਰ ਬੋਲਣਾ ਯੋਗ ਹੋਣਾ",
+   "en": "be able to speak better",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "NEW content word ਯੋਗ ('able', in ਯੋਗ ਹੋਣਾ / ਬੋਲਣ ਦੇ ਯੋਗ) is never introduced anywhere in the inventory. 'Be able to' was taught ONLY via the ਸਕ- (sakna) potential auxiliary (ability-sakna construction). ਯੋਗ is a distinct lexical realisation the learner has not been given — it recurs across S291 (#170,171,172) and S292 (#180,181,185). Unanswerable as ਯੋਗ."
+  },
+  {
+   "seed": 277,
+   "known": "ਅਗਲੇ ਹਫ਼ਤੇ ਸ਼ੁਰੂ ਵਿੱਚ ਮੀਟਿੰਗ",
+   "en": "an important meeting early next week",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "Content noun ਮੀਟਿੰਗ ('meeting') is never introduced in the inventory. It appears in S277 builds (#11) and uses (#16,17). The learner has no English for ਮੀਟਿੰਗ — unanswerable. (Note: meeting-the-verb was taught as ਮਿਲਣਾ at S18/S127, but the noun ਮੀਟਿੰਗ is new.)"
+  },
+  {
+   "seed": 277,
+   "known": "ਕੀ ਤੁਹਾਡੇ ਕੋਲ ਅਗਲੇ ਹਫ਼ਤੇ ਦੇ ਸ਼ੁਰੂ ਵਿੱਚ ਕੋਈ ਮੀਟਿੰਗ ਹੈ?",
+   "en": "have you got a meeting early next week?",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "The possessive 'have got' here is rendered with ਤੁਹਾਡੇ ਕੋਲ ('you have/at you'), but ਕੋਲ is never introduced — the have-got construction was taught exclusively as the dative ਮੈਨੂੰ ਹੈ / ਤੁਹਾਨੂੰ ਹੈ (S73/S75). ਕੋਲ recurs as ਮੇਰੇ ਕੋਲ / ਤੁਹਾਡੇ ਕੋਲ across S294 (#201,207,208) and S298 (#250). A new possessive postposition the learner hasn't been shown."
+  },
+  {
+   "seed": 281,
+   "known": "ਕੀ ਤੁਸੀਂ ਕੌਫ਼ੀ ਪੀਣਾ ਚਾਹੋਗੇ?",
+   "en": "would you like a coffee?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Verb ਪੀਣਾ ('to drink') is never introduced in the inventory. Learner has no English target for ਪੀਣਾ. (ਖਾਣਾ 'eat' was introduced at S243, but its counterpart ਪੀਣਾ 'drink' is new.) Unanswerable."
+  },
+  {
+   "seed": 295,
+   "known": "ਮੈਂ ਨਹੀਂ ਕਿਹਾ ਕਿ ਇਹ ਮੁਸ਼ਕਲ ਸੀ",
+   "en": "I didn't say that it was difficult",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਮੁਸ਼ਕਲ ('difficult') is never introduced; 'difficult' was taught as ਔਖਾ (S91, also ਔਖਾ ਨਹੀਂ S66 / ਬਹੁਤਾ ਔਖਾ ਨਹੀਂ S149). ਮੁਸ਼ਕਲ is an untaught synonym — the learner cannot map it. ZUT/answerability concern."
+  },
+  {
+   "seed": 295,
+   "known": "ਮੈਂ ਨਹੀਂ ਕਿਹਾ ਕਿ ਉਹ ਸਹੀ ਸੀ",
+   "en": "I didn't say that it was good",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ਸਹੀ ('right/correct') is never introduced, and the English 'good' does not even match it (ਸਹੀ = correct/right, not good). The learner has no taught target for ਸਹੀ. Untaught content word + mistranslation."
+  },
+  {
+   "seed": 279,
+   "known": "ਜ਼ਿਆਦਾ ਸਮਾਂ ਨਹੀਂ ਬਚਿਆ",
+   "en": "wasn't much time left",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "English past 'wasn't' but the Punjabi carries no past copula ਸੀ (contrast #32 ਨਹੀਂ ਬਚਿਆ ਸੀ which does). Present-form Punjabi glossed as English past — an aspect/tense mismatch (the brief's aspect→tense / copula rule). Minor; recurs at S279 #31 (ਸਮਾਂ ਨਹੀਂ ਬਚਿਆ glossed 'much time left', dropping the ਨਹੀਂ negation entirely)."
+  },
+  {
+   "seed": 277,
+   "known": "ਉਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਅਗਲੇ ਹਫ਼ਤੇ ਦੇ ਸ਼ੁਰੂ ਵਿੱਚ ਆਵੇਗੀ",
+   "en": "I hope to meet you early next week",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Total English/Punjabi mismatch. Punjabi = 'she said she will come early next week' (ਉਸਨੇ ਕਿਹਾ = she said, ਆਵੇਗੀ = she'll come). The English 'I hope to meet you' has NO source in the Punjabi and the whole reported-speech clause is dropped. Unproducible."
+  },
+  {
+   "seed": 294,
+   "known": "ਮੈਂ ਤੁਹਾਨੂੰ ਅੱਜ ਰਾਤ ਫ਼ੋਨ ਕਰਾਂਗਾ",
+   "en": "I'll ask her where she wants to call you tonight",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Total mismatch. Punjabi = 'I'll call you tonight' (ਮੈਂ ਤੁਹਾਨੂੰ ਅੱਜ ਰਾਤ ਫ਼ੋਨ ਕਰਾਂਗਾ). The English 'I'll ask her where she wants to' is entirely absent from the Punjabi. Unproducible authoring defect."
+  },
+  {
+   "seed": 281,
+   "known": "ਕੀ ਤੁਸੀਂ ਮੇਰੀ ਕੌਫ਼ੀ ਨੂੰ ਦੇਖ ਸਕਦੇ ਹੋ?",
+   "en": "do you know where my coffee is?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Mismatch. Punjabi = 'can you look at/watch my coffee?' (ਦੇਖ ਸਕਦੇ ਹੋ = can you look). The English 'do you know where ... is' is a different proposition with no Punjabi source. Unproducible."
+  },
+  {
+   "seed": 281,
+   "known": "ਕੀ ਮੈਂ ਤੁਹਾਨੂੰ ਕੌਫ਼ੀ ਦਿੱਤੀ?",
+   "en": "do you mind if I ask about coffee?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Mismatch. Punjabi = 'did I give you coffee?' (ਦਿੱਤੀ = gave, past). English 'do you mind if I ask about coffee' is unrelated. Also ਦਿੱਤੀ ('gave') is itself an untaught form. Unproducible."
+  },
+  {
+   "seed": 278,
+   "known": "ਕੀ ਤੁਸੀਂ ਸੋਚਦੇ ਹੋ ਕਿ ਅਸੀਂ ਸਭ ਕੁਝ ਖਤਮ ਕਰ ਸਕਦੇ ਹਾਂ?",
+   "en": "do you think we need to finish everything?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Modal mismatch: Punjabi ਕਰ ਸਕਦੇ ਹਾਂ = 'we CAN finish' (ability ਸਕ-), but English says 'we NEED to finish'. can vs need — different modal; mistranslation."
+  },
+  {
+   "seed": 293,
+   "known": "ਮੈਨੂੰ ਜਾਣਨਾ ਪਵੇਗਾ ਕਿ ਉਹ ਕਿੱਥੇ ਮਿਲਣਾ ਚਾਹੁੰਦਾ ਹੈ",
+   "en": "I need to find out where he's going to",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Tail mismatch: Punjabi = '...where he wants to MEET' (ਮਿਲਣਾ ਚਾਹੁੰਦਾ ਹੈ), English = '...where he's GOING TO' (dangling, and 'going to'≠'wants to meet'). The English clause is truncated and mistranslated."
+  },
+  {
+   "seed": 294,
+   "known": "ਅਸੀਂ ਫ਼ੋਨ ਕਰਨ ਲਈ ਕਾਫ਼ੀ ਸਮਾਂ ਲੱਭਾਂਗੇ",
+   "en": "I want to find enough time to call",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Subject/modal mismatch: Punjabi = 'WE'LL find enough time to call' (ਅਸੀਂ ... ਲੱਭਾਂਗੇ, future, 1pl), English = 'I WANT to find' (1sg, want). Both subject and modal wrong."
+  },
+  {
+   "seed": 295,
+   "known": "ਉਸਨੇ ਨਹੀਂ ਕਿਹਾ ਕਿ ਉਹ ਆਵੇਗਾ",
+   "en": "he didn't say that he was going to come with us",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English appends 'with us' (ਸਾਡੇ ਨਾਲ) which has no source in the Punjabi (ਉਹ ਆਵੇਗਾ = 'he'll come'). Extra material unproducible from the prompt."
+  },
+  {
+   "seed": 277,
+   "known": "ਅਗਲੇ ਹਫ਼ਤੇ ਸ਼ੁਰੂ ਵਿੱਚ ਮੀਟਿੰਗ",
+   "en": "an important meeting early next week",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "'important' has no source in the Punjabi (ਜ਼ਿਆਦਾ/ਜ਼ਰੂਰੀ absent). And the sibling build #13 ਅਗਲੇ ਹਫ਼ਤੇ ਜਲਦੀ ('early/soon next week') is glossed 'early next week meeting' — 'meeting' has no source there. The S277 build set is internally inconsistent (jaldi vs shuru both glossed 'early')."
+  },
+  {
+   "seed": 294,
+   "known": "ਕਾਫ਼ੀ ਸਮਾਂ ਨਹੀਂ",
+   "en": "enough time to call you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Negation dropped and material added: Punjabi = 'NOT enough time' (ਨਹੀਂ), English = positive 'enough time to call you' (no negation, plus 'to call you' has no source here). Sibling #210 ਕਾਫ਼ੀ ਸਮਾਂ ਫ਼ੋਨ ਕਰਨ ਲਈ glossed 'enough time to call tonight' adds 'tonight' with no source."
+  },
+  {
+   "seed": 283,
+   "known": "ਕਿਹੜਾ ਬੰਦਾ ਇਹ ਕਿਹਾ?",
+   "en": "which man said that?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Punjabi: a past transitive ('said') with subject 'which man' must take ergative ਨੇ and oblique (ਕਿਹੜੇ ਬੰਦੇ ਨੇ ... ਕਿਹਾ), per the ergative-in-past-transitive rule. As authored (ਕਿਹੜਾ ਬੰਦਾ ਇਹ ਕਿਹਾ) it is ungrammatical (missing ਨੇ; ਇਹ misplaced). Authoring defect on the Punjabi side."
+  },
+  {
+   "seed": 283,
+   "known": "ਕਿਹੜੀ ਕਿਤਾਬ ਤੁਹਾਨੂੰ ਚੰਗੀ ਲੱਗਦੀ ਹੈ?",
+   "en": "which book do you think is interesting?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Loose gloss: Punjabi = 'which book seems good to you / do you like?' (ਚੰਗੀ ਲੱਗਦੀ ਹੈ). English substitutes 'do you think is interesting'. Sibling #100 ਕਿਹੜਾ ਵਿਚਾਰ ਬਿਹਤਰ ਲੱਗਦਾ ਹੈ ('which idea seems better') glossed 'which idea sounds like a good idea' — same loose pattern."
+  },
+  {
+   "seed": 300,
+   "known": "ਉਸਨੂੰ ਅਣਮਿੱਤਰਾਨਾ ਲੱਗਣਾ ਪਸੰਦ ਨਹੀਂ",
+   "en": "she doesn't like to seem unfriendly",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Dative-experiencer ਉਸਨੂੰ is gender-neutral, but the English fixes 'she'; the sibling #271 ਉਹ ... ਚਾਹੁੰਦੀ uses fem agreement for 'she'. Acceptable per the neutral-3rd-person rule, but flag for consistency: the gender is set lexically here only by the English, not by Punjabi agreement (ਲੱਗਣਾ ਪਸੰਦ carries no gender)."
+  }
+ ]
+}

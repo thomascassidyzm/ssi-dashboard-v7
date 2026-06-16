@@ -1,0 +1,1101 @@
+{
+ "course_code": "eng_for_urd",
+ "totals": {
+  "prompts_checked": 5480,
+  "vocab_uncontrolled": 47,
+  "npi_violation": 6,
+  "machinery_unlicensed": 1,
+  "gloss_rule_violation": 8,
+  "content_quality": 72
+ },
+ "release_grade": "heavy",
+ "systematic_issues": [
+  "اہم 'important' uncontrolled — appears across S111, S131/132, S261, S151, S176 cluster glossed as 'important', but 'important' is taught ONLY via ضروری (S65) / زیادہ ضروری (S137). Single biggest leak: globally replacing اہم with ضروری (e.g. کم ضروری for 'less important') fixes ~5+ seeds at once.",
+  "لگنا 'seem / think / feel-as-if' (مجھے لگتا ہے, X لگ رہا ہے) never introduced through S125 yet used for 'I think / it feels / starting to feel' at S101/102/106/114/122 (~9 prompts) and S300 (لگنا 'seem'); 'think' is taught via میرے خیال میں (S47) and سوچنا (S37), 'feel' via محسوس کرنا (S40). Either introduce لگنا as a carrier or re-gloss to the taught equivalents — one fix clears the whole S101-122 cluster.",
+  "چیز / چیزیں 'thing(s)' used as a content noun (S88, S94, S131/132) but never introduced in the inventory; recurs across multiple seeds. Needs a single LEGO intro for 'thing'.",
+  "سونا 'to sleep' used at S55, S108 but the only taught lexeme is نیند لینا 'to take sleep' (and جاگنا 'wake' S55); سویا/سونا are a different, untaught lexeme. Re-gloss to نیند لینا or introduce سونا once.",
+  "ابھی تک / کوئی بھی 'yet'/'any' used as NPIs in PLAIN POSITIVE declaratives with no licensor (S93 'it's time to go yet', plus S55/S65 cluster and S251-275 slip) — 6 total NPI violations. Per npiLicensing these require negation/question; fix is to drop the NPI in positive frames (the clean positive 'so far' reading at S187 shows the correct handling).",
+  "Dative-subject experiencer rule broken with NOMINATIVE subjects: یقین ہے 'believe' written میں یقین ہے / کیا آپ یقین ہے instead of مجھے یقین ہے / آپ کو یقین ہے (S125, 5 of 8 prompts); امید 'hoping' written میں امید تھی / آپ امید تھی instead of مجھے/آپ کو امید تھی (S151, recurs 7×). Both are the same dative_subject_experiencer rule — adding the dative مجھے/آپ کو fixes both seed clusters.",
+  "Synonym-substitution against the taught controlled form: مزید vs taught زیادہ/اور 'more' (S96), سکون/مگر vs taught آرام/لیکن (S161 batch), بتانا vs taught کہنا 'say' (S8/S20), سوچنا used at S28 nine seeds before its S37 intro (the lone machinery_unlicensed early-use). Pin glosses to the first-taught lemma.",
+  "مشکل 'difficult' mis-glossed as 'something' (S34, S36, S45) — a broken template where کچھ (the taught 'something') was intended; recurs 3×, one template fix.",
+  "Double-postposition / split-modal broken Urdu: S88 ان لوگوں سے کسی سے (stacked سے, 5+ prompts) and S161 split-modal دینا … سکتے ہیں word order (دے سکتے ہیں correct, 3 prompts). Authoring-template defects affecting whole seeds.",
+  "Reflexive خود کو not resolved to the clause subject — glossed 'yourself' under a 1sg میں subject (should be 'myself'), S65; systematic reflexive-gloss defect.",
+  "Unsourced English material in glosses (no Urdu source): S64 'isn't easy but', S65 'test yourself', S161 'want'/'more', S111 mangled glosses — English carries content the Urdu prompt cannot produce.",
+  "Possessive 'have' (کے پاس … ہے) used at S161 but the possessive frame is in neither inventory nor freeClass through S175 — unanswerable construction; needs a carrier intro before use."
+ ],
+ "summary": "Across 5,480 prompts in 12 batches the eng_for_urd known-side is broadly answerable but carries 62 real (non-content-quality) issues, dominated by 47 vocab_uncontrolled leaks, plus 8 gloss-rule, 6 NPI, and 1 machinery violation, and 72 lower-severity content-quality defects. The damage is concentrated and highly clusterable: a handful of untaught lemmas (اہم 'important', لگنا 'seem/think/feel', چیز/چیزیں 'thing', سونا 'sleep') recur across many seeds, so global re-glossing to the taught equivalents (ضروری, میرے خیال میں/سوچنا, etc.) collapses a large share of the count. Two systematic grammar faults — dative-experiencer predicates given nominative subjects (یقین/امید: میں یقین ہے → مجھے یقین ہے at S125/S151) and positive-declarative NPIs (ابھی تک 'yet' without a licensor) — plus broken authoring templates (double-postposition سے کسی سے at S88, split-modal at S161, مشکل-for-'something' at S34/36/45) each fix many prompts at once. Grade is heavy on the raw 62 real-issue count, but the underlying fixes are a short, one-fix-fixes-many worklist rather than scattered defects.",
+ "findings": [
+  {
+   "seed": 8,
+   "known": "میں بتانا چاہتا ہوں کہ میرا مطلب کیا ہے",
+   "en": "I want to say what I mean",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Content verb بتانا 'to tell/say' is NOT in the inventory at all (verified: zero matches through hi). The only introduced verb for 'say' is کہنا (S4). بتانا is a distinct lemma (batānā 'to tell'), not an inflection of کہنا, so the Urdu prompt contains an untaught content word — the learner reading the known side meets vocabulary never given. Authoring should use کہنا (کہنا چاہتا ہوں). Same leak recurs at S20."
+  },
+  {
+   "seed": 20,
+   "known": "وہ اس کا نام بتانا چاہتا ہے",
+   "en": "he wants to say his name",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Same untaught lemma بتانا 'to tell/say' as S8 — not introduced anywhere; the taught 'say' verb is کہنا (S4), and indeed the sibling build prompt 'اس کا نام کہنا = to say his name' uses کہنا correctly. The USE prompt should match (نام کہنا چاہتا ہے)."
+  },
+  {
+   "seed": 4,
+   "known": "میں کہنا کی کوشش کر رہا ہوں",
+   "en": "I'm trying to say",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Broken Urdu morphology: a verb before کی کوشش must be the oblique infinitive کہنے, not the direct کہنا (cf. the correct 'کہنے کی کوشش کر رہا ہوں = I'm trying to say something' elsewhere in S4). Recurs at the sibling 'کیسے کہنا کی کوشش کر رہا ہوں'. Answerable but ungrammatical known-side authoring."
+  },
+  {
+   "seed": 4,
+   "known": "میں آپ کے ساتھ کہنا چاہتا ہوں",
+   "en": "I want to say with you",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Nonsensical English/Urdu pairing: 'say with you' is not idiomatic English and the Urdu is an odd combination (کہنا 'to say' takes content, not a comitative). Authoring artifact from mechanical LEGO recombination."
+  },
+  {
+   "seed": 5,
+   "known": "میں کچھ سیکھنے کی بولنے کی مشق کرنے والا ہوں",
+   "en": "I'm going to practise speaking to learn",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Broken Urdu: stacked double-genitive infinitive chain (سیکھنے کی … بولنے کی مشق) is ungrammatical and the meaning is garbled; the English 'practise speaking to learn' does not cleanly map back. Mechanical-recombination defect."
+  },
+  {
+   "seed": 6,
+   "known": "یاد کرنا کیسے ہے",
+   "en": "how to remember, how",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Gloss has a doubled trailing 'how' ('how to remember, how'); the English is malformed and the Urdu word order (یاد کرنا کیسے ہے) is an awkward authored fragment rather than a natural prompt."
+  },
+  {
+   "seed": 9,
+   "known": "میں بولتا ہوں، آج",
+   "en": "I speak, today now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English gloss contains 'now' with no source in the Urdu (آج = 'today' only; no ابھی present). Unproducible trailing material — 'today now' is also not natural English. Authoring/gloss defect."
+  },
+  {
+   "seed": 17,
+   "known": "معلوم",
+   "en": "out",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss assigns معلوم the English 'out' in isolation. معلوم is the bound element of معلوم کرنا 'to find out'; alone it does not mean 'out'. Misleading fragment gloss (cosmetic — the full M-LEGO معلوم کرنا = 'to find out' is correct)."
+  },
+  {
+   "seed": 12,
+   "known": "لگانا",
+   "en": "to make",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component لگانا glossed 'to make' in isolation, but it is the bound light-verb of اندازہ لگانا 'to guess' and is not introduced as a standalone 'make' lemma. Fragment gloss; no standalone producibility intended."
+  },
+  {
+   "seed": 21,
+   "known": "کیوں، ابھی",
+   "en": "why now after",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Gloss 'why now after' contains a stray 'after' with no source in the Urdu (کیوں 'why' + ابھی 'now' only). Truncated/garbled authoring."
+  },
+  {
+   "seed": 22,
+   "known": "وہ لوگ جو انگریزی بولتے ہیں ملنا",
+   "en": "to meet people who speak English",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Leading وہ 'those' is unglossed and the clause order (relative clause fronted before the bare infinitive ملنا) is an unnatural authored fragment; reads as a mechanically assembled build line rather than a clean prompt. Answerable but low-quality."
+  },
+  {
+   "seed": 25,
+   "known": "مدد کرنا",
+   "en": "going to help",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component مدد کرنا glossed 'going to help' (future/prospective), but the bare infinitive مدد کرنا is 'to help' — the 'going to' belongs to the کریں گے future frame, not to this component. Aspect mismatch in the component gloss (the sibling build 'مدد کرنا، کیسے = to help, how' glosses it correctly as 'to help')."
+  },
+  {
+   "seed": 28,
+   "known": "یہ فائدہ مند ہے، کیا آپ نہیں سوچتے؟",
+   "en": "it's useful, don't you think?",
+   "category": "machinery_unlicensed",
+   "severity": "high",
+   "detail": "Uses the verb سوچنا 'to think' (سوچتے), but سوچنا is not introduced until seed 37 — nine seeds later. At seed 28 the learner has no English 'think', so 'don't you think?' is unanswerable. The only early-introduction violation in the batch (جب 'when' at seed 28 is fine — it is free-class)."
+  },
+  {
+   "seed": 27,
+   "known": "آپ جواب دینا پسند کرتے ہیں",
+   "en": "you like to answer",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Uses the ACTIVE nominative-subject frame پسند کرنا (پسند کرتا/کرتے/کرتی, پسند نہیں کرتا) — but only the dative-experiencer مجھے پسند ہے = 'I like' was introduced (seed 26, and the gloss rule explicitly treats پسند as a dative-subject predicate). The active 'X likes to…' verb is a different, un-introduced construction. Recurring x7 across seeds 27/34/36/37 (وہ خاموش رہنا پسند نہیں کرتا, دوسرے لوگ بولنا پسند کرتے ہیں, وہ خلل ڈالنا پسند نہیں کرتی, میں سوچنا پسند کرتا ہوں, کیا آپ سوچنا پسند کرتے ہیں؟)."
+  },
+  {
+   "seed": 34,
+   "known": "خاموش رہنا مشکل",
+   "en": "to be quiet, something",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "مشکل means 'difficult/hard', glossed as 'something' (the taught word for 'something' is کچھ). The gloss is simply wrong, مشکل is never introduced, and the Urdu is a copula-less non-sentence. Recurring x3: also s36 کہانی میں خلل ڈالنا مشکل => 'to interrupt the story, something' and s45 سب کچھ جاننا مشکل => 'to know everything, something'. These look like a template where کچھ was meant but مشکل was inserted."
+  },
+  {
+   "seed": 34,
+   "known": "وہ دوسرے لوگوں کے سامنے خاموش رہنا نہیں چاہتا",
+   "en": "he doesn't want to be quiet with other people",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "سامنے 'in front of / before' is an un-introduced postposition (the comitative کے ساتھ 'with' is licensed machinery, but سامنے is not). It is also mis-glossed as 'with' — the gloss erases the 'in front of' meaning. Parallel prompts in the same seed correctly use کے ساتھ for 'with' (دوسرے لوگوں کے ساتھ بولنا)."
+  },
+  {
+   "seed": 46,
+   "known": "میں اپنی غلطیوں سے سیکھ سکتا ہوں",
+   "en": "I can learn from my mistakes",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "اپنی (reflexive possessive 'one's own / my') is not introduced; freeClass has میرے/میری (the میرا possessive) but not اپنا/اپنی. The ability modal سکتا and ablative سے are licensed; only اپنی is uncontrolled. Single occurrence."
+  },
+  {
+   "seed": 38,
+   "known": "میں بہت غور سے سیکھتا رہا ہوں",
+   "en": "I've been learning very carefully",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Standalone degree word بہت 'very' is used to modify a fresh phrase, but بہت was only ever introduced glued inside the M-LEGO بہت اچھی طرح 'very well' (seed 13) and inside بہت زیادہ وقت لینا (seed 27) — never atomised as a recombinable 'very'. Also s39 میں بہت تھکا ہوا ہوں / میں ابھی بہت تھکا ہوا ہوں 'I'm (very) tired'. Borderline (high-frequency function-like word), so low severity."
+  },
+  {
+   "seed": 44,
+   "known": "وہ انگریزی بہتر کرنا چاہتا ہے",
+   "en": "he wants to improve his English",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English gloss contains the possessive 'his' with no Urdu source (no اس کا in the prompt). Same defect at s44 میں بولنا بہتر کرنا چاہتا ہوں => 'I want to improve my speaking' ('my' unsourced). The possessive is unproducible from the prompt."
+  },
+  {
+   "seed": 44,
+   "known": "یا کہ مجھے بہتر کرنا ہے",
+   "en": "or if I need to improve",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Urdu یا کہ = 'or that' and مجھے بہتر کرنا ہے = 'I have to improve' (dative obligation); the English adds 'if' with no اگر in the prompt. The conditional reading is unsourced (the genuine conditional sibling یا اگر مجھے ضرورت ہے = 'or if I need' is correct)."
+  },
+  {
+   "seed": 40,
+   "known": "آپ کیوں کیسا محسوس کر رہے ہیں؟",
+   "en": "why how do you feel?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Nonsensical stacked-WH English 'why how do you feel?' and a marginal Urdu prompt stacking کیوں + کیسا. Authoring defect, not an answerability bug. Compare s43 میں جواب کیسے دوں کوشش کر رہا ہوں => 'I'm trying how to answer' (also broken English)."
+  },
+  {
+   "seed": 45,
+   "known": "سب کچھ سیکھنا ضروری نہیں",
+   "en": "you don't need to learn everything",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Subjectless dative-necessity prompt glossed with 'you', but every parallel prompt in the seed renders the silent dative subject as 'I' (مجھے سب کچھ جاننا ضروری نہیں => 'I don't need'). The 'you' is arbitrary and inconsistent. Also s45 مجھے جلدی ضروری نہیں => 'I don't need quickly' reads oddly in English."
+  },
+  {
+   "seed": 69,
+   "known": "میں کتا پالنا چاہتا ہوں",
+   "en": "I want a dog",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "پالنا 'to keep/raise (a pet)' is the lexical head of the prompt and is never introduced in the inventory (≤S69) nor in freeClass. The learner has no English for it. Also note the Urdu literally means 'I want to keep a dog', not 'I want a dog' — but the answerability bug is that پالنا is untaught vocabulary."
+  },
+  {
+   "seed": 55,
+   "known": "میں بہت کم سویا",
+   "en": "I didn't sleep much",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "Two unintroduced content lemmas: سونا 'to sleep' (the corpus only ever gives نیند لینا 'to sleep/take sleep', a different lexeme — سویا is the perfective of سونا) and کم 'little/few/less'. Neither is in inventory or freeClass, so 'I didn't sleep much' is unanswerable."
+  },
+  {
+   "seed": 63,
+   "known": "مجھے اعتراض نہیں کہ میں مدد کرتے ہوئے وقت گزاروں",
+   "en": "I don't mind helping at the same time",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "گزارنا 'to spend/pass (time)' (subjunctive گزاروں) is never introduced and not freeClass. The learner cannot map this verb. (The en gloss also drops it entirely — see content_quality.)"
+  },
+  {
+   "seed": 62,
+   "known": "رکنا ایک ہی وقت میں",
+   "en": "to stop at the same time",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "رکنا 'to stop' is an unintroduced lemma. The course taught بند کرنا / بات کرنا بند کرنا 'to stop (talking)' (S19) but رکنا is a distinct intransitive verb with no inventory entry and is not freeClass — 'to stop' here is unteachable from prior vocab."
+  },
+  {
+   "seed": 55,
+   "known": "مجھے آج جاگنا اچھا لگتا ہے",
+   "en": "I enjoy waking up today",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "لگنا 'to seem/feel/please' (اچھا لگتا ہے 'it feels good / I enjoy') is not introduced; the course gives محسوس کرنا for 'feel' and پسند ہے for 'enjoy/like', but the experiencer-light-verb لگنا is a separate lemma with no inventory entry. Same gap at S72 مجھے لگتا ہے 'I think'."
+  },
+  {
+   "seed": 61,
+   "known": "آپ آہستہ اور احتیاط سے بولتے ہیں",
+   "en": "you speak slowly and carefully",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "احتیاط سے 'carefully' is unintroduced. The course already taught غور سے = 'carefully' (S37); using a different lemma احتیاط for the same English 'carefully' is both untaught vocab and a synonym-collision against the established rendering."
+  },
+  {
+   "seed": 60,
+   "known": "میں مختلف چیزیں سیکھنا چاہتا ہوں",
+   "en": "I want to learn different things",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "چیزیں 'things' is not introduced; the inventory taught کام = 'things' (S51 دلچسپ کام کرنا). چیزیں is a near-synonym glossing the same English 'things' (also at S64 آسان چیزیں, مزیدار چیزیں). Borderline — learner may infer — but it is untaught vocab AND a second Urdu form for one English word."
+  },
+  {
+   "seed": 71,
+   "known": "کوئی بھی بولنا چاہتا ہے",
+   "en": "anyone wants to speak",
+   "category": "npi_violation",
+   "severity": "med",
+   "detail": "کوئی بھی 'anyone' stands in a plain POSITIVE veridical declarative asserting that someone wants to speak — no negation, no question, no modal/free-choice licensor. Per npiLicensing this is the canonical violation (a bare 'anyone wants' needs free-choice سکنا 'anyone CAN speak' or plain کوئی 'someone'). Same at the S71 use 'کوئی بھی انگریزی بولنا چاہتا ہے'."
+  },
+  {
+   "seed": 73,
+   "known": "مجھے ابھی اور سیکھنا ہے ابھی تک",
+   "en": "I've got more to learn yet",
+   "category": "npi_violation",
+   "severity": "med",
+   "detail": "ابھی تک glossed 'yet' inside an affirmative dative-necessity declarative ('I've got more to learn') with no negation or question to license it. Per the brief, positive 'still' must be ابھی/اب بھی, not ابھی تک 'yet'; 'yet' is licensed only by negation/questions. The Urdu is also degenerate (ابھی … ابھی تک stacked)."
+  },
+  {
+   "seed": 51,
+   "known": "مجھے انگریزی بولنا پسند ہے",
+   "en": "I like to speak English",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "ZUT collision on the known side: the frame مجھے … پسند ہے is glossed 'I enjoy' throughout S51 (پسند ہے = 'I enjoy', مجھے دلچسپ کام کرنا پسند ہے = 'I enjoy…') yet the SAME frame is rendered 'I like' here and at 'مجھے بولنا پسند ہے'='I like to speak'. One Urdu known prompt maps to two English verbs (enjoy/like) within the same seed — violates one-known→one-target. Decide a single rendering per frame."
+  },
+  {
+   "seed": 64,
+   "known": "انگریزی سیکھنا مزیدار ہے",
+   "en": "learning English isn't easy but it's fun",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "The English contains 'isn't easy but' which has NO source in the Urdu — the Urdu only says 'learning English is fun' (انگریزی سیکھنا مزیدار ہے). Unproducible gloss; the learner could never derive 'isn't easy but' from the prompt."
+  },
+  {
+   "seed": 65,
+   "known": "میں خود کو آزمانا چاہتا ہوں لیکن ابھی تک تیار نہیں",
+   "en": "I want to test yourself but I'm not ready yet",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Pronoun mismatch: 'I want to test yourself' should be 'test myself' (خود کو agrees with the 1sg subject میں). The reflexive خود کو is glossed elsewhere as 'yourself' (S65 خود کو آزمانا='test yourself'), so the reflexive is not being resolved to the clause subject — a systematic reflexive-gloss defect when the subject is 'I'."
+  },
+  {
+   "seed": 51,
+   "known": "میرے دوستوں کے ساتھ دلچسپ کام کرنا اچھی بات ہے",
+   "en": "doing interesting things with my friends it's a good thing",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken English: dangling 'it's a good thing' tacked onto a fronted gerund ('doing… with my friends it's a good thing'). Recurs across the batch wherever اچھی بات ہے / فائدہ مند ہے follows a gerund (e.g. S53 'to put in her bag it's a good thing', S54 'a little more time it's useful', S57 'what I wanted to say it's a good thing'). Authoring defect, not answerability."
+  },
+  {
+   "seed": 71,
+   "known": "کیا آپ کوئی بھی کو جانے دیں گے؟",
+   "en": "do you want to let anyone go?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two defects: (1) Urdu کوئی بھی کو is ungrammatical — the oblique+کو form must be کسی کو بھی (as correctly used elsewhere in S71), so the prompt is broken Urdu; (2) the verb is future دیں گے 'will you let', but the en is glossed 'do you want to let' — aspect/modal mismatch (future→want)."
+  },
+  {
+   "seed": 63,
+   "known": "مجھے اعتراض نہیں کہ میں مدد کرتے ہوئے وقت گزاروں",
+   "en": "I don't mind helping at the same time",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "The en 'at the same time' has no source in the Urdu (the Urdu means 'I don't mind that I spend time while helping'). Conversely گزاروں 'spend (time)' is dropped from the gloss. Unproducible/mismatched rendering on top of the گزارنا vocab gap."
+  },
+  {
+   "seed": 57,
+   "known": "مجھے یاد نہیں کہ میں جو کہنا چاہتا تھا وہ",
+   "en": "I can't remember it, what I wanted to say",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Garbled English ('I can't remember it, what I wanted to say') — the comma-spliced dangling 'it' does not correspond to the Urdu relative structure. Several S57 relative-clause prompts have unnatural English (e.g. 'what I wanted to say it's a good thing'), an authoring-quality cluster around the جو…وہ relativiser."
+  },
+  {
+   "seed": 73,
+   "known": "بہت کچھ سیکھنا ہے مجھے",
+   "en": "I've got more to learn today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "'today' in the en has no source in the Urdu (بہت کچھ سیکھنا ہے مجھے = 'I've got a lot to learn'). Also بہت کچھ 'a lot' is glossed as 'more', drifting from the seed's اور='more'. Unproducible adverb."
+  },
+  {
+   "seed": 51,
+   "known": "ہے",
+   "en": "I",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The copula ہے (a freeClass function word, 'is/am/are') is presented as a standalone component glossed 'I'. This mis-labels a copula as the pronoun — a defective component card (the 'I' belongs to مجھے/میں, not ہے)."
+  },
+  {
+   "seed": 96,
+   "known": "نہیں، میں ابھی تیار نہیں، مجھے مزید سیکھنا ہے",
+   "en": "no I'm not ready yet I've got more to learn",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "مزید 'more' is a distinct lemma never introduced. The word for 'more' taught in the inventory is زیادہ (seed 23), and اور (seed 15) is used as 'more' in compounds elsewhere in THIS very batch (تھوڑا اور وقت, کچھ دیر اور). مزید is uncontrolled — the learner has no source for it. ZUT-adjacent too (two Urdu words, مزید and زیادہ, both gloss 'more')."
+  },
+  {
+   "seed": 94,
+   "known": "یہی واحد چیز ہے جو میں سیکھنا چاہتا ہوں",
+   "en": "it's the only thing I want to learn",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "چیز 'thing' is never introduced in the inventory (appears as 'only thing' build at seed 94 and twice in USE prompts). No source for the learner to produce 'thing'. Recurs in واحد چیز / یہی واحد چیز ہے جو مجھے یاد ہے."
+  },
+  {
+   "seed": 78,
+   "known": "مجھے لگتا ہے کہ میں نہیں سمجھتا",
+   "en": "I think that I don't understand",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "The dative-experiencer frame مجھے لگتا ہے 'I think / it seems to me' (verb لگنا) is not introduced. The taught renderings of 'I think' are میرے خیال میں (seed 47) and سوچنا 'to think' (seed 37) — لگنا is a different lemma. Recurs across seeds 78, 89, 90, 93 (مجھے/آپ کو لگتا ہے). Construction itself is fine under dative_subject_experiencer, but the lexical verb لگنا is uncontrolled."
+  },
+  {
+   "seed": 92,
+   "known": "کچھ دیر رکنا",
+   "en": "wait for a while",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "رکنا 'to wait/stop' is not introduced; 'wait' was taught as انتظار کرنا (seed 82) and 'stop' as بند کرنا (seed 19). رکنا is a separate lemma and is glossed BOTH 'wait' (seed 92) and 'stop' (seed 100, رکنا/رکیں 'you shouldn't stop'), so it is both uncontrolled vocab and a 1-Urdu→2-English ZUT split."
+  },
+  {
+   "seed": 93,
+   "known": "جانے کا وقت ہے ابھی تک",
+   "en": "it's time to go yet",
+   "category": "npi_violation",
+   "severity": "high",
+   "detail": "ابھی تک 'yet' is an NPI licensed only by negation/questions (npiLicensing). Here it stands in a plain POSITIVE declarative ('it's time to go yet') with no licensor — unlicensed NPI, and the English is also nonsensical ('it's time to go yet')."
+  },
+  {
+   "seed": 89,
+   "known": "مجھے بہت کچھ کرنا ہے ابھی تک",
+   "en": "I've got a lot to do yet",
+   "category": "npi_violation",
+   "severity": "med",
+   "detail": "ابھی تک 'yet' used in an affirmative, veridical declarative (no negation, not a question). Per the licensing rule positive 'still' should be ابھی/اب بھی, not the 'yet'-glossed NPI. Unlicensed."
+  },
+  {
+   "seed": 89,
+   "known": "بہت کچھ ابھی تک",
+   "en": "a lot yet",
+   "category": "npi_violation",
+   "severity": "low",
+   "detail": "Bare positive fragment 'a lot yet' with ابھی تک and no negative/interrogative licensor; NPI outside its licensing environment (also a degenerate/contentless prompt)."
+  },
+  {
+   "seed": 88,
+   "known": "ان لوگوں سے کسی سے بات کرنا",
+   "en": "talk to those people",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Systematic broken Urdu across seed 88: the component کسی سے 'to' is stacked on top of an explicit object that already carries سے, producing a double-postposition (ان لوگوں سے کسی سے, لوگوں سے کسی سے, مجھ سے کسی سے). Correct would be ان لوگوں سے بات کرنا. Ungrammatical and recurs in 5+ prompts (talk to people / those people / me)."
+  },
+  {
+   "seed": 98,
+   "known": "کھیلنا بہت بہترین ہے",
+   "en": "playing it's very great",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring broken English gloss pattern 'playing it's...' (also 'playing it's fun', 'playing it's very fun' in seed 98) — ungrammatical run-on. Additionally بہت بہترین is awkward Urdu (بہترین is already superlative 'great/best', so 'very great' doubles up)."
+  },
+  {
+   "seed": 84,
+   "known": "میں میرے دوست کے بارے میں اس نے کیا کہا سے متفق نہیں",
+   "en": "I don't agree with what he said about my friend yet",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English contains 'yet' with NO source in the Urdu (no ابھی تک present) — unproducible material. The learner would have no token mapping to 'yet'. Also the Urdu word order میرے دوست کے بارے میں ... اس نے کیا کہا سے is strained/marginal."
+  },
+  {
+   "seed": 76,
+   "known": "آپ پہلے سے بہت اچھا بول رہے ہیں",
+   "en": "you're already doing very well",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Gloss mismatch: the Urdu بول رہے ہیں is 'are speaking' (progressive of بولنا 'speak'), but the English says 'doing very well' — 'doing' has no source (کر/کرنا is not present). Should be 'you're already speaking very well' or the Urdu should use کر رہے ہیں."
+  },
+  {
+   "seed": 96,
+   "known": "نہیں، میں ابھی تیار نہیں، تھوڑا اور وقت لگے گا",
+   "en": "no I'm not ready yet I need a little more time soon",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two defects: (1) the verb لگے گا 'will take' (لگنا future) is not introduced and the English drops it, rendering 'I need ...' which is unsourced (مجھے ... چاہیے is absent here); (2) the English appends 'soon' with no Urdu source. Conflated/unproducible gloss."
+  },
+  {
+   "seed": 92,
+   "known": "مجھے کچھ دیر اور وقت چاہیے",
+   "en": "I need a little more time for a while",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Conflated gloss: کچھ دیر 'for a while' and اور وقت 'more time' are stacked, yielding the awkward English 'a little more time for a while'. 'a little' also has weak source (تھوڑا absent; کچھ دیر = 'a while'). Marginal authoring."
+  },
+  {
+   "seed": 102,
+   "known": "مجھے لگتا ہے کہ یہ ایسا نہیں ہے",
+   "en": "I think that it's not like that",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "RECURRING + HIGHEST VALUE. The verb لگنا in its 'seem / think / feel-as-if' sense (forms مجھے لگتا ہے 'I think/it seems', X لگ رہا ہے 'it feels/seems X') is NEVER introduced anywhere through seed 125. 'I think' is taught only via میرے خیال میں (S47) and سوچنا (S37); 'feel' via محسوس کرنا (S40). The learner cannot produce 'I think / it feels / it's starting to feel' from لگنا. Affects S102 (مجھے لگتا ہے = I think), S106 (مجھے لگتا ہے = I think), S114 (مجھے لگتا ہے = I feel as if), S122 (آسان تر لگ رہا ہے ×4 = starting to feel easier; کیا آپ کو آسان تر لگ رہا ہے = are you finding it easier), S101 (اچھا لگتا ہے = I enjoy). ~9 prompts share this unintroduced lemma."
+  },
+  {
+   "seed": 108,
+   "known": "رات کو سونا",
+   "en": "sleep at night",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "سونا 'to sleep' is not in the inventory. جاگنا 'to wake / waking up' is introduced (S55) but its antonym 'sleep' is not. The English 'sleep' is unanswerable. Affects S108: رات کو سونا (build), رات کو سونا بہتر ہے (use), کیا آپ رات کو سو سکتے ہیں؟ (use)."
+  },
+  {
+   "seed": 111,
+   "known": "ہمارا دماغ بہت اہم ہے",
+   "en": "it's very important for our brain",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "اہم 'important' is a distinct lemma never introduced. 'Important' is taught exclusively via ضروری (S65) and the ضروری ہے frame. The learner has no path from اہم to 'important'. Affects S111: ہمارے الفاظ بہت اہم ہیں, ہمارا دماغ بہت اہم ہے. (Both English glosses are also mangled — see content_quality.)"
+  },
+  {
+   "seed": 101,
+   "known": "زبان ایک ایسی چیز ہے جس سے آپ لطف اٹھا سکتے ہیں",
+   "en": "a language is something you can enjoy",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "چیز / چیزوں 'thing(s)' is never introduced; the relativiser جو/جس ('which/that') as a free relative is also unintroduced (S47's 'a good thing' uses بات, not چیز). Affects S101: ...ایک ایسی چیز ہے جس سے..., نئی چیزوں کے بارے میں, کسی چیز کو انگریزی میں. The learner cannot produce 'thing/things' or the relative-clause frame."
+  },
+  {
+   "seed": 101,
+   "known": "مجھے نئی چیزوں کے بارے میں پتا چلانا اچھا لگتا ہے",
+   "en": "I enjoy finding out about new things",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "اچھا لگتا ہے ('to enjoy / like', lit. 'seems good to me') is a new construction on the unintroduced verb لگنا; 'enjoy' is taught as لطف اٹھانا (S101) / پسند ہے (S51). Compounds with the چیزوں gap. Same prompt also contains ہمیشہ (see next)."
+  },
+  {
+   "seed": 101,
+   "known": "مزید پتا چلانا ہمیشہ ایک اچھی بات ہے",
+   "en": "finding out more is always a good thing",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ہمیشہ 'always' is not in the inventory; the learner cannot produce 'always'. (مزید 'more' here is an inflectional/register variant of the taught اور/زیادہ 'more', so not flagged.)"
+  },
+  {
+   "seed": 106,
+   "known": "بس سیکھنا جاری رکھو",
+   "en": "just keep on learning",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "جاری رکھنا 'to keep on / continue' (and the bare imperative رکھو form) is not introduced. 'Keep on' is taught as کرتا رہنا (S92). The learner cannot map 'keep on' to جاری رکھو."
+  },
+  {
+   "seed": 120,
+   "known": "میں بس سے جانا پسند کرتا ہوں",
+   "en": "I like to go by bus",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "پسند کرنا as an ACTIVE transitive verb 'to like (to do)' with a nominative subject (میں...پسند کرتا ہوں, آپ...پسند کرتے ہیں) is a different construction from the only taught form, the dative-experiencer مجھے پسند ہے (S26). Same lemma پسند but unintroduced nominative-subject frame; also conflicts with the dative_subject_experiencer gloss rule. Affects S120 (×3) and S121 (آپ اسے استعمال کرنا پسند نہیں کرتے ×several)."
+  },
+  {
+   "seed": 119,
+   "known": "چھوڑنا پڑے گا",
+   "en": "need to leave",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "The پڑنا necessity construction (X-نا پڑے گا 'will have to X') is not introduced; 'need to' is taught via ضرورت / چاہیے / ہوگا. Single occurrence (S119 build)."
+  },
+  {
+   "seed": 105,
+   "known": "اس لیے وہ نہیں جانتا",
+   "en": "that is why he didn't know",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "aspect_progressive_vs_habitual / aspect→tense violation: نہیں جانتا is present habitual ('doesn't know'), but the English is past 'didn't know'. The Urdu carries no past marker (تھا) and no نے. Should gloss 'that is why he doesn't know' to stay one-to-one with the habitual form."
+  },
+  {
+   "seed": 125,
+   "known": "میں یقین ہے",
+   "en": "I believe",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "dative_subject_experiencer violation + broken Urdu, RECURRING across S125. یقین ہے 'believe/be sure' is a dative-experiencer predicate: the subject MUST be dative (مجھے یقین ہے, آپ کو یقین ہے) — as S10/S123 correctly do (مجھے یقین). But S125 systematically uses a NOMINATIVE subject with the dative predicate: میں یقین ہے ('I believe'), کیا آپ یقین ہے ('do you believe'), میں یقیناً یقین ہے, میں یقین نہیں ہے. These are ungrammatical Urdu — must be مجھے یقین ہے / کیا آپ کو یقین ہے / مجھے یقین نہیں. 5 of the 8 S125 prompts are affected."
+  },
+  {
+   "seed": 116,
+   "known": "مجھے انتخاب کرنا نہیں آتا",
+   "en": "I don't want to make a choice",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Mismatch: the Urdu مجھے انتخاب کرنا نہیں آتا means 'I don't know how to make a choice' (آنا = know how to), NOT 'I don't want to make a choice'. The English 'want' has no source in the Urdu and the actual Urdu meaning (نہیں آتا) is unproducible from the gloss."
+  },
+  {
+   "seed": 111,
+   "known": "ہمارے الفاظ بہت اہم ہیں",
+   "en": "it's important for our words",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken gloss / mismatch. ہمارے الفاظ بہت اہم ہیں literally = 'our words are very important', but English reads 'it's important for our words'. Likewise ہمارا دماغ بہت اہم ہے ('our brain is very important') glossed 'it's very important for our brain'. The English 'it's important FOR' has no source (no کے لیے in the Urdu); subject/predicate scrambled."
+  },
+  {
+   "seed": 101,
+   "known": "میں لطف اٹھا رہا ہوں بھی کہ آپ یہ کر رہے ہیں",
+   "en": "I'm enjoying that you are doing this",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Broken Urdu word order: the focus particle بھی is stranded after the verb phrase (لطف اٹھا رہا ہوں بھی) where it does not belong; natural Urdu would place بھی on the focused constituent or omit it. Reads unnaturally."
+  },
+  {
+   "seed": 112,
+   "known": "مجھے توقع نہ تھی کہ یہ اتنا مزیدار ہے",
+   "en": "I wasn't expecting that it's so fun",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "اتنا 'so/that much' is not introduced (minor unintroduced intensifier) and a past-matrix / present-complement tense clash appears across S112 ('I wasn't expecting' + 'that it's so fun / that it's easy'); the complement should be past-shifted ('that it would be...'). Low-priority authoring polish."
+  },
+  {
+   "seed": 118,
+   "known": "میں پب میں ایسے محسوس نہیں ہوتا تھا",
+   "en": "I didn't feel like that in the pub",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ایسے 'like that/like this' (oblique of ایسا) appears unintroduced as an adverbial here; minor. Flagged for completeness — borderline inflection of ایسا (introduced S102 component), so low severity and not counted as a hard vocab gap."
+  },
+  {
+   "seed": 131,
+   "known": "مجھے میرے سر میں کچھ اہم ہے",
+   "en": "I've got something important in my head",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "اہم 'important' is never introduced. 'important' was taught only as ضروری (S65) and زیادہ ضروری 'more important' (S137). The learner has no way to map the new lemma اہم to English 'important' — unanswerable. Recurs at S132 'یہ کم اہم ہے = that's less important'. Use ضروری (e.g. کم ضروری) to stay in controlled vocab."
+  },
+  {
+   "seed": 131,
+   "known": "وہاں ہیں بہت سی چیزیں",
+   "en": "there are many things",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "چیزیں 'things' (sg چیز) is never introduced anywhere in the inventory. Learner cannot produce 'things'. Recurs at S132 'دلچسپ چیزیں = exciting things'. No source LEGO for this content noun."
+  },
+  {
+   "seed": 130,
+   "known": "مجھے خوشی ہے کیونکہ وہ میرا دوست ہے",
+   "en": "I'm happy because he's my friend",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "خوشی (the dative-experiencer noun 'gladness', مجھے خوشی ہے = 'I'm happy/glad') is never introduced. 'happy' was taught as the adjective خوش (S76, S129). خوشی is a distinct lemma/construction (dative-subject) the learner has not been shown to gloss as 'happy'. Recurs S136, S141 ('I'm happy about it'), S146 ('I'm often happy'). The introduced خوش form (میں خوش ہوں) would be answerable; مجھے خوشی ہے is not."
+  },
+  {
+   "seed": 144,
+   "known": "میں ہر صبح جاگا اور بات کی",
+   "en": "I woke every morning and talked",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ہر 'every' is never introduced (only آج صبح 'this morning' S39, آج دوپہر S35). The quantifier ہر carries the English 'every', which the learner has not been given — unanswerable for the 'every morning' span."
+  },
+  {
+   "seed": 143,
+   "known": "یہ وہی بات ہے جو ہم بات کر رہے تھے پہلے",
+   "en": "it's the same thing as we were talking about earlier",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "وہی 'the same' (emphatic demonstrative) carries English 'same', which is never introduced. Same gap at S143 'یہی ہے جو... = this is what...' where یہی glosses 'this is (the very thing)'. 'same'/emphatic-identity vocabulary is untaught; learner cannot reliably produce 'the same thing'."
+  },
+  {
+   "seed": 140,
+   "known": "میں نہیں دیکھ پا رہا جو آپ مجھے دکھانا چاہتے ہیں",
+   "en": "I can't see what you're trying to show me",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "The potential auxiliary پانا (دیکھ پا رہا 'manage/be able to see') is never introduced as machinery. دیکھنا 'see' (S107) is known, but the پا-رہا ability frame rendering 'can('t)' is a separate construction from the licensed سکنا ability modal; the learner has not been shown پانا→'can'. Recurs in the longer S140 prompt. Use the licensed سکنا frame (نہیں دیکھ سکتا) instead."
+  },
+  {
+   "seed": 132,
+   "known": "یہ کم دلچسپ ہے",
+   "en": "that's less interesting",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "دلچسپ is glossed inconsistently within one seed: 'یہ کم دلچسپ ہے' appears twice glossed 'less interesting', while sibling prompts gloss دلچسپ as 'exciting' (کم دلچسپ = 'less exciting', یہ دلچسپ نہیں تھا = 'wasn't exciting'). Inventory itself splits دلچسپ across 'interesting' (S51/S58) and 'exciting' (S132). Same Urdu word → two English targets = known-side ZUT/answerability smell; learner cannot deterministically choose exciting vs interesting."
+  },
+  {
+   "seed": 148,
+   "known": "وہ بہت صبر سے ملا جب میں گھبراہٹ میں تھا",
+   "en": "he was very patient when I was nervous",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Urdu: ملا means 'met/was found', not 'was patient'. 'صبر سے ملا' does not mean 'was patient'; the natural form is وہ بہت صبر والا تھا / صبر سے پیش آیا. The English has no clean source. Sibling S148 'وہ بہت صبر والی تھی' (patient, fem) is fine."
+  },
+  {
+   "seed": 148,
+   "known": "کیا آپ نہیں دے سکا جواب جب آپ گھبراہٹ میں تھے؟",
+   "en": "couldn't you answer when you were feeling nervous?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Agreement defect: نہیں دے سکا is frozen 1sg/3sg-masc ('I/he couldn't', from S148), but the subject here is honorific آپ, which requires نہیں دے سکے. The frozen unit is being reused with a mismatched subject. Awkward/ungrammatical prompt."
+  },
+  {
+   "seed": 150,
+   "known": "آپ کا نام کیا ہے یہ",
+   "en": "this is what your name is",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Word-salad: 'آپ کا نام کیا ہے یہ' is not natural Urdu for 'this is what your name is' (یہ کیا ہے... ordering is broken). Same trailing-یہ/یہاں defect in 'آپ مجھے بتائیں آپ کا نام کیا ہے یہاں'. Authoring artifact from tiling the frozen 'آپ کا نام کیا ہے' onto یہ."
+  },
+  {
+   "seed": 127,
+   "known": "کیا آپ جانتے ہیں یہ وجہ نہیں کیا ہے؟",
+   "en": "do you know that isn't why?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Broken Urdu: 'یہ وجہ نہیں کیا ہے' is not grammatical for 'that isn't why'. The negator نہیں and interrogative کیا collide; natural would be یہ وجہ نہیں ہے. Authoring defect, though all content lemmas are introduced."
+  },
+  {
+   "seed": 161,
+   "known": "کیا آپ کے پاس ایک کتاب ہے؟",
+   "en": "do you have a book?",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "Possessive 'have' is rendered with the کے پاس … ہے construction, but پاس (and the whole کے پاس possessive frame for English 'have') is in neither the inventory nor freeClass. The learner has never been taught how to produce 'have' (possession), so this prompt is unanswerable. Possession appears nowhere up to seed 175."
+  },
+  {
+   "seed": 161,
+   "known": "اتوار کی صبح سکون کرنا اچھا ہے",
+   "en": "it's good to relax on Sunday morning",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'relax' is rendered سکون کرنا, but the taught lemma for 'relax' is آرام کرنا (seed 110). سکون is an uncontrolled synonym never introduced; the learner cannot map it to 'relax'."
+  },
+  {
+   "seed": 174,
+   "known": "کیا آپ سمجھ سکتے ہیں کہ یہ اہم ہے؟",
+   "en": "can you understand that it's important?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'important' is rendered اہم, but the taught lemma for 'important' is ضروری (seed 65; 'more important' = زیادہ ضروری seed 137). اہم is an uncontrolled synonym not in the inventory or freeClass."
+  },
+  {
+   "seed": 163,
+   "known": "مجھے لگتا ہے دلچسپ ہے مگر مشکل",
+   "en": "I think that it's interesting but difficult",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'but' is rendered مگر, but the taught lemma for 'but' is لیکن (seed 19), which is used correctly elsewhere in this very batch (seeds 157, 165, 166). مگر is an uncontrolled synonym never introduced."
+  },
+  {
+   "seed": 152,
+   "known": "شاید میں اسے مختلف طریقے سے کروں گا",
+   "en": "I would do it differently",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "شاید ('maybe/perhaps') is not in the inventory or freeClass and has no counterpart in the English gloss (the conditional 'would' comes from کروں گا). The learner sees an unintroduced function word carrying no glossed content."
+  },
+  {
+   "seed": 151,
+   "known": "میں امید تھی آپ جلد ختم کریں گے",
+   "en": "I was hoping you'll finish soon",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Systematic dative-experiencer violation across seed 151: امید/امید تھی ('hoping/was hoping') is an experiencer predicate that the inventory itself teaches with the dative subject مجھے (مجھے امید تھی), per the dative_subject_experiencer gloss rule. Many prompts instead use a nominative subject — میں امید تھی / آپ امید تھی — which is ungrammatical Urdu. Recurs in 'یہ نہیں جو میں امید تھی', 'میں امید تھی کیا', 'یہ وہی ہے جو میں امید تھی', 'یہ وہ نہیں تھا جو میں امید تھی', 'یہ وہ نہیں تھا جو میں امید تھی ہوگا', and 'کیا یہ وہی ہے جو آپ امید تھی؟' (آپ instead of آپ کو). Should be مجھے/آپ کو throughout."
+  },
+  {
+   "seed": 151,
+   "known": "یہ وہ تھا جو مجھے امید تھی نہیں",
+   "en": "that wasn't what I was hoping",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Urdu: an affirmative clause یہ وہ تھا … مجھے امید تھی with a stranded trailing نہیں. The negation is misplaced (should be یہ وہ نہیں تھا جو مجھے امید تھی). English gloss is negative ('wasn't') but the Urdu reads as a positive statement with a dangling 'no'."
+  },
+  {
+   "seed": 161,
+   "known": "کیا آپ مجھے دینا تھوڑا وقت سکتے ہیں؟",
+   "en": "can you give me a little more time?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Split-modal word order broken: the ability modal سکتے ہیں is stranded after the object, with the infinitive دینا preceding it (دینا تھوڑا وقت … سکتے ہیں). Correct Urdu is کیا آپ مجھے تھوڑا وقت دے سکتے ہیں؟. Same defect recurs in 'کیا آپ مجھے دینا وہ کتاب سکتے ہیں؟' and 'کیا آپ مجھے دینا وہ کتاب اتوار کی صبح سکتے ہیں؟'. Also the English says 'a little MORE time' but the Urdu تھوڑا وقت has no 'more' (اور)."
+  },
+  {
+   "seed": 161,
+   "known": "میں آپ کو مجھے دینا کچھ",
+   "en": "I want you to give me something",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Unproducible: the English contains 'want' but the Urdu has no چاہتا/چاہنا anywhere (literally 'I you-to me-to give something'). The prompt is also broken Urdu syntax (no finite verb)."
+  },
+  {
+   "seed": 170,
+   "known": "مجھے بتائیں جب آپ کو کیا چاہیے",
+   "en": "tell me when you know what you need",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Unproducible material: the English contains 'you know' but the Urdu has no جانتے/معلوم ('know'). The Urdu reads 'tell me when what you need', missing the 'know' predicate."
+  },
+  {
+   "seed": 165,
+   "known": "کیا یہ درست ہے؟",
+   "en": "do you think that's true?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Unproducible material: the English adds 'do you think', but the Urdu کیا یہ درست ہے؟ is a plain yes/no question 'is this true?' (کیا = yes/no particle). No سوچتے/لگتا ('think') in the source. Gloss should be 'is it true?'."
+  },
+  {
+   "seed": 171,
+   "known": "مجھے ڈھونڈنے میں مدد کروں کی ضرورت ہے",
+   "en": "I need someone to help you look for it",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two defects: (1) the English adds 'someone' with no کوئی in the Urdu (unproducible); (2) broken Urdu — مدد کروں کی ضرورت is ungrammatical (subjunctive کروں before genitive کی); should be مدد کرنے کی ضرورت."
+  },
+  {
+   "seed": 161,
+   "known": "اتوار کی صبح سکون کرنا اچھا ہے",
+   "en": "it's good to relax on Sunday morning",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Besides the uncontrolled سکون, the construction سکون کرنا is not idiomatic for 'relax' (would be آرام کرنا); reads as a malformed authoring artifact."
+  },
+  {
+   "seed": 158,
+   "known": "چلیں بات کریں کچھ اور کے بارے میں پوری طرح",
+   "en": "let's talk about something else together",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "پوری طرح means 'completely/fully', not 'together' (which is مل کر, seed 133). The gloss 'together' has no correct Urdu source — mis-glossed and the phrase پوری طرح is itself not an introduced unit."
+  },
+  {
+   "seed": 156,
+   "known": "ہم ریستوران میں ملنا چاہتے تھے ہفتے کی رات",
+   "en": "we wanted to go to a restaurant on Saturday night",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Gloss inconsistency: ملنا ('to meet', seed 18) is glossed 'go' here, while the same root ملنا is glossed 'meet' in sibling prompt 'ریستوران میں ملنا چاہتے تھے' = 'wanted to meet at a restaurant'. 'go' should map to جانا (seed 26). Same Urdu lemma drifting across two English verbs."
+  },
+  {
+   "seed": 153,
+   "known": "مجھے ٹھیک اسی طرح معلوم نہیں تھا",
+   "en": "I didn't know exactly the same",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Nonsensical: 'I didn't know exactly the same' is not coherent English; ٹھیک اسی طرح ('in exactly the same way') does not combine with معلوم ('know'). Authoring defect, not an answerability bug."
+  },
+  {
+   "seed": 176,
+   "known": "میں اس سے پوچھوں گا کہ آیا وہ مدد کر سکتا ہے",
+   "en": "I'll ask him if he can help",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "آیا 'whether/if' (embedded-question complementizer) is never introduced in the inventory. Also used at seed 177 (کہ آیا وہ مدد کر سکتی ہے). It is a function word and the English 'if' is independently producible — sibling prompts render embedded 'if' via the کیا route (کیا وہ مدد کر پائے گا) — so answerability is intact; flagged only as an untaught Urdu prompt-token for consistency."
+  },
+  {
+   "seed": 177,
+   "known": "مجھے نہیں پتہ وہ کہاں جانا چاہتی ہے",
+   "en": "I don't know where she wants to go",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "پتہ (in مجھے نہیں پتہ 'I don't know') is not introduced; 'know' is taught only as معلوم (مجھے معلوم ہے, S59) and جاننا (S45). The prompt substitutes an untaught lexeme for an already-taught meaning. English 'I don't know' remains answerable, but the learner meets uncontrolled Urdu vocabulary."
+  },
+  {
+   "seed": 178,
+   "known": "میں نے کچھ نہیں کہا، حالانکہ مجھے لگا یہ اہم ہے",
+   "en": "I didn't say anything, although I thought it was important",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "اہم 'important' is not introduced; 'important' is taught as ضروری (S65, S137). Synonym substitution with an untaught form. (لگا here is the past dative-experiencer of the introduced لگنا lemma — لگتا ہے S135/146/163 — so it is an inflection, not a violation.) English answerable."
+  },
+  {
+   "seed": 183,
+   "known": "مجھے ڈر ہے کہ مجھے وقت نہیں ملا",
+   "en": "I'm afraid I didn't have time",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ملا 'got/received' (مجھے وقت نہیں ملا 'I didn't get time') is a new verb not introduced; 'didn't have time' is taught as وقت نہیں تھا (S178, used in the sibling prompts of this very batch). Uncontrolled lexical substitution; English 'I didn't have time' remains answerable."
+  },
+  {
+   "seed": 193,
+   "known": "معاف کیجیے لیکن میں آج بہت مصروف ہوں",
+   "en": "I'm sorry but I'm too busy today",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "معاف کیجیے 'I'm sorry/excuse me' is not introduced; 'sorry' is taught as معذرت (S139). Untaught alternative form for an already-taught meaning. English answerable."
+  },
+  {
+   "seed": 176,
+   "known": "میں اس سے پوچھوں گا کہ وہ کب آنا چاہتا ہے",
+   "en": "I'll ask him when he wants to go",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Verb mismatch: Urdu آنا چاہتا ہے = 'wants to COME' but English says 'wants to go'. The English 'go' has no Urdu source (should be 'come', or the Urdu should be جانا چاہتا ہے). Authoring slip — the same seed-176/177 family renders جانا correctly as 'go' elsewhere (S177 جانا چاہتی ہے = 'wants to go')."
+  },
+  {
+   "seed": 181,
+   "known": "مجھے ہے",
+   "en": "I have to",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component fragment مجھے ہے is glossed two different ways across the batch: 'I have to' here (S181) vs 'I'm' at S183. Both are partial component-role glosses of a bare dative fragment, so neither is wrong in isolation, but the inconsistent English for the identical Urdu fragment is a minor authoring wobble worth noting."
+  },
+  {
+   "seed": 185,
+   "known": "آپ نے انہیں کام پر چھوڑ آئے",
+   "en": "you left them at work",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Mild grammatical wobble: ergative آپ نے co-occurs with the motion compound چھوڑ آئے ('left-and-came'); canonical Urdu would prefer آپ … چھوڑ آئے without نے (the motion آنا blocks ergative agreement) or چھوڑ دیے with نے. Recurs across several S185 'you left' prompts; comprehensible and internally consistent, so low severity."
+  },
+  {
+   "seed": 208,
+   "known": "میں اسے نہیں پوچھنا چاہتا تھا",
+   "en": "I didn't want to ask her / I didn't want to ask him",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "ZUT collision: the IDENTICAL Urdu sentence is glossed two ways in the same seed — build = 'I didn't want to ask her', use = 'I didn't want to ask him'. اسے is gender-neutral (اس+کو) and carries no agreement morphology (the masc -تا agrees with the speaker 'I', not the object), so per gender_neutral_3sg neither he nor she is forced — but one known prompt must map to exactly one target. Pick one (e.g. 'her') for both."
+  },
+  {
+   "seed": 210,
+   "known": "ہمیں مسئلے پر بات کرنی چاہیے",
+   "en": "we need to discuss the problem",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "چاہیے is glossed 'need to' here, but the inventory established چاہیے = 'should' (S98) / 'shouldn't' (S100), and S212 'آپ کو مدد مانگنا چاہیے' correctly renders چاہیے = 'should'. The same dative-necessity modal چاہیے now splits should/need across this batch. Per future_modal_many_to_one, keep one English rendering for the چاہیے frame (the inventory precedent is 'should'); reserve 'need' for the ضرورت/ضروری frame."
+  },
+  {
+   "seed": 209,
+   "known": "مجھے زیادہ وقت گزارنا ہے",
+   "en": "I need to spend more time",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "The '...نا ہے' obligation frame is rendered 'need to' here, but S204 'مجھے انتظامات سنبھالنے ہیں' renders the same frame 'I have to', and the inventory precedent S181 'مجھے لے جانا ہے' = 'i have to take'. Same obligation construction splitting have-to / need-to. Pick one English modal for the dative '...نا ہے' frame (precedent = 'have to')."
+  },
+  {
+   "seed": 204,
+   "known": "میں نے انتظامات سنبھالنے کی کوشش کرنی ہے",
+   "en": "I need to try to deal with the arrangements",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Companion to the S209 issue: the '...کرنی ہے' obligation is glossed 'I need to' while the parallel 'سنبھالنے ہیں' in the same seed is 'I have to'. Inconsistent English modal for one Urdu obligation frame within a single seed."
+  },
+  {
+   "seed": 202,
+   "known": "کوئی نہیں جانتا تھا کیسے جواب دینا ہے",
+   "en": "nobody was sure how to answer",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Gloss mismatch: Urdu کوئی نہیں جانتا تھا literally = 'nobody knew' (جاننا 'to know', S45), but English = 'nobody was sure'. 'sure' is the یقین frame ('مجھے یقین نہیں' = 'I'm not sure', S10), not جاننا. The learner producing English from this Urdu would say 'nobody knew', so the English does not track the prompt. Recurs across S202 ('was sure how to answer the question', 'was sure what was going to happen')."
+  },
+  {
+   "seed": 202,
+   "known": "کوئی نہیں سمجھ سکتا تھا کہ کیا ہو رہا ہے",
+   "en": "nobody was sure what was going to happen",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Double mismatch: (a) سمجھ سکتا تھا = 'could understand' (سمجھنا 'to understand', S58) glossed 'was sure' (no یقین source); (b) aspect/tense — کیا ہو رہا ہے is present progressive 'what is happening' but English says 'what was going to happen' (والا/future). Both the verb choice and the aspect→tense mapping diverge from the Urdu (cf. aspect_progressive_vs_habitual)."
+  },
+  {
+   "seed": 220,
+   "known": "میری بیٹی تھوڑا ٹیلی ویژن دیکھنا پسند کرتی ہے",
+   "en": "my daughter wants to watch a bit of television",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Gloss mismatch: پسند کرتی ہے = 'likes' (پسند, S26 'مجھے پسند ہے' = 'I like', S51 'پسند ہے' = 'I enjoy'), not 'wants' (چاہنا). English 'wants' has no source in this Urdu; it should read 'my daughter likes to watch...'. Note S221 'کیا آپ فٹبال دیکھنا پسند کرتے ہیں؟' correctly glosses پسند کرتے = 'do you like to watch', so S220 is the inconsistent one."
+  },
+  {
+   "seed": 217,
+   "known": "میں پانی پینا چاہتا ہوں",
+   "en": "I want some water",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Urdu literally = 'I want to drink water' (پینا 'to drink' — a verb never introduced/glossed; inventory has only پیا = 'had', S217). The English drops the verb 'drink' entirely and adds 'some' (no Urdu source). Mismatch between the Urdu (contains a drink-verb) and the English (a bare possess/want-water). Not an answerability bug (English target is producible) but the prompt/answer don't correspond."
+  },
+  {
+   "seed": 217,
+   "known": "ایک گلاس پانی لینا چاہوں گا",
+   "en": "I'd like a glass of water",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Urdu contains لینا 'to take' ('I'd like to take a glass of water'); English renders 'I'd like a glass of water', dropping the لینا verb. Minor Urdu/English non-correspondence; لینا is only marginally introduced (S181 لے جانا = 'take'). Same seed also has 'I've got some water' / 'do you want some water' where 'some' has no Urdu source — a recurring low-grade addition."
+  },
+  {
+   "seed": 218,
+   "known": "میرا بیٹا زیادہ کچھ نہیں کیا",
+   "en": "my son didn't do much",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Broken Urdu ergativity: a past transitive with کیا requires نے on the subject (and oblique 'میرے بیٹے نے'); the prompt reads نومinative 'میرا بیٹا ... کیا' with no نے. The parallel build 'میری بیٹی نے زیادہ کچھ نہیں کیا' is correctly ergative-marked, so this is an authoring slip. Known-side L1 grammar defect; does not block producing the English."
+  },
+  {
+   "seed": 249,
+   "known": "کیا آپ جانے سے پہلے رک سکتے ہیں؟",
+   "en": "can you stop before you go?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "رکنا was introduced glossed 'waiting' (S155 رکنا = waiting); here رک سکتے is glossed 'stop'. Meanwhile 'stop' was earlier rendered with بند کرنا (S19 بات کرنا بند کرنا = to stop talking). The lemma رکنا IS introduced (so not unanswerable), but this is a new English sense ('stop' vs prior 'waiting') and a known-side ZUT wobble — 'stop' now has two Urdu carriers (رکنا / بند کرنا). Gloss-consistency note, not an answerability gap."
+  },
+  {
+   "seed": 243,
+   "known": "مجھے وہی چیز ملی جو پہلے تھی",
+   "en": "I got the same thing as before",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ملنا is introduced only as 'to meet' (S18) and inside 'the chance to' (S206 موقع ملنا); here ملی is glossed 'got'. New English sense of an introduced lemma. Also 'as before' is rendered by the relative جو پہلے تھی (lit. 'which was before'), a loosely-sourced construction for the English 'as before'. Lemmas are all present (وہی/چیز/پہلے introduced), so producible, but the sense extension is worth flagging."
+  },
+  {
+   "seed": 244,
+   "known": "مجھے خوشی ہے کہ میں نے پہلے سے بہت کچھ کیا",
+   "en": "I'm happy I've done a lot already",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Uses the derived noun خوشی (happiness) in the dative-experiencer frame مجھے خوشی ہے glossed 'I'm happy'; the introduced lemma is the adjective خوش (happy, S76). Same root and the dative-experiencer rendering is brief-sanctioned, so answerable; minor derivational/consistency note. Same pattern recurs at S245 مجھے حیرت ہے ('I'm surprised', noun حیرت S130 vs adj حیران S77)."
+  },
+  {
+   "seed": 234,
+   "known": "میں آپ کے بھائی کو جانتا ہوں",
+   "en": "I know your brother",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Authoring/role inconsistency: this is tagged role 'use' for بھائی's seed (234) but the component gloss آپ کے = 'your' (i=125) and بھائی = 'brother' (i=117) appear as components in the SAME seed, i.e. the build-up debuts the pieces and a full 'use' sentence in the same basket. Not an answerability problem (all of آپ کے/بھائی/جانتا/کو introduced or licensed) — flagged only as a basket-ordering/quality observation."
+  },
+  {
+   "seed": 261,
+   "known": "کچھ اہم ہو سکتا ہے",
+   "en": "might be something important",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "اہم 'important' is never introduced. The taught word for 'important' is ضروری (S65) / more important زیادہ ضروری (S137). اہم is a distinct lemma the learner has not been given, so 'important' is unanswerable from this prompt. Recurs in all three S261 'important' prompts (build 'might be something important', use 'something important might be...', use 'I think it might be something important')."
+  },
+  {
+   "seed": 265,
+   "known": "صرف ایک دوست",
+   "en": "just a friend",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "صرف 'just/only' is not introduced. The course teaches 'only' as واحد (S94) and 'just' as بس (S106). صرف is a different lexeme the learner has not seen, so the restrictive 'just' is unanswerable here."
+  },
+  {
+   "seed": 266,
+   "known": "ایک پرانا میرے والد کا دوست",
+   "en": "an old friend of my father",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "پرانا 'old (of things/relationships)' is not introduced. The only 'old' the learner has is بوڑھا (S231/232/264 'an old man/woman'), which is the human-age sense; پرانا is a separate lemma. 'An old friend' is therefore unproducible. Recurs in the S266 use prompt 'he was an old friend of my father'."
+  },
+  {
+   "seed": 263,
+   "known": "آپ کا مطلب کون سے شخص سے ہے",
+   "en": "who you mean is",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "شخص 'person' appears in two S263 prompts (build 'who you mean is', use 'I don't know who you mean') but is never introduced in the inventory. It is also not rendered in the English at all, so it is both untaught and dangling material (see paired content_quality finding)."
+  },
+  {
+   "seed": 267,
+   "known": "کوئی آپ کے دوست کی خبر",
+   "en": "anything from your friend",
+   "category": "npi_violation",
+   "severity": "low",
+   "detail": "Bare کوئی glossed as the NPI 'anything' in an isolated BUILD fragment with no licensor inside the fragment. Not a true positive-declarative violation — the parent USE sentences are all downward-entailing (negation 'I've heard nothing', yes/no question 'have you heard...?'), so کوئی='any' is licensed in context. Flagged low only because the standalone fragment carries the NPI gloss without a visible licensor."
+  },
+  {
+   "seed": 258,
+   "known": "وہ",
+   "en": "over",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken component decomposition: وہاں 'over there' is split into a component 'وہ = over'. وہ never means 'over'; it is the demonstrative/3rd-person pronoun 'that/they/he/she'. The 'over' of 'over there' is not separable in Urdu (وہاں is a single locative adverb), so this component is linguistically nonsensical and teaches a false mapping."
+  },
+  {
+   "seed": 260,
+   "known": "اندازہ نہیں ہے",
+   "en": "have the idea",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component 'اندازہ نہیں ہے' is glossed 'have the idea' — but the Urdu is NEGATED (نہیں), so it actually means 'have no idea / don't have the idea'. Glossing a negative form as an affirmative 'have the idea' is a defect; the rest of the S260 basket correctly treats it as negative ('don't have the faintest idea')."
+  },
+  {
+   "seed": 262,
+   "known": "کل صبح آپ کل بات کر رہے تھے",
+   "en": "you were talking to someone yesterday morning",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "کل 'yesterday' is duplicated (کل صبح 'yesterday morning' + a second کل), giving broken/redundant Urdu. Additionally several S262 prompts gloss the bare بات کر رہے تھے as 'talking to someone', inserting 'someone' (کسی) with no source in the Urdu — e.g. 'I saw that you were talking to someone yesterday', 'you were talking to someone in the office yesterday'."
+  },
+  {
+   "seed": 263,
+   "known": "آپ کا مطلب کون سے شخص سے ہے",
+   "en": "who you mean is",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The Urdu contains شخص 'person' (… کون سے شخص سے ہے) but the English renders only 'who you mean is' / 'I don't know who you mean', so شخص is unrendered, dangling Urdu material. The build gloss 'who you mean is' is also a non-sentence fragment."
+  },
+  {
+   "seed": 268,
+   "known": "اس نے مجھے کل بھیجا",
+   "en": "she sent me this yesterday",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring object/agreement mismatch in S268. English inserts 'this' with no Urdu source: 'اس نے مجھے کل بھیجا' = 'she sent me this yesterday' and 'اس نے مجھے آج صبح بھیجا' = 'she sent me this morning' (no یہ present). Conversely 'اس نے مجھے پچھلے ہفتے بھیجی' is glossed 'she sent me last week' but بھیجی carries feminine object agreement with no stated feminine object — the prompts are authored with a missing/implied object the learner cannot recover."
+  },
+  {
+   "seed": 300,
+   "known": "وہ کبھی غیر دوستانہ نہیں لگنا چاہتی",
+   "en": "she doesn't want to seem unfriendly at all",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "کبھی ('ever / at all') is never introduced anywhere through seed 300 (confirmed absent from the full inventory). It is the source of English 'at all' in this prompt — an uncontrolled content morpheme the learner has not been taught, so the gloss is unanswerable from introduced vocab. Note: کبھی IS correctly licensed here as an NPI under negation (نہیں), so this is NOT an NPI violation — only the lexical item is uncontrolled. The plain frame وہ غیر دوستانہ نہیں لگنا چاہتی (#425) already exists without کبھی and is clean."
+  },
+  {
+   "seed": 293,
+   "known": "کہ",
+   "en": "where",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component pairs the complementizer کہ with the English gloss 'where'. کہ is the 'that'-complementizer (and is correctly glossed 'that' in the seed-291/295/296 components); it never means 'where' — the 'where' in this seed comes from کہاں. Isolating کہ and labelling it 'where' is a mislabeled decomposition that, if drilled, teaches a wrong word↔gloss mapping. The full USE prompts (#302, #310) correctly source 'where' from کہاں."
+  },
+  {
+   "seed": 283,
+   "known": "آپ کے دوستوں میں سے کون جانتا ہے؟",
+   "en": "which of your friends knows?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Systematic across all 13 seed-283 کون prompts: کون is the animate interrogative 'who', and the inventory itself declares کون='which' at s283, so prompts are internally consistent — but rendering an animate human referent as 'which' ('which is here?', 'which of your friends knows?', 'which is the most important?') is unnatural English; the idiomatic gloss is 'who' (or 'which of your friends' for the partitive). Not an answerability bug (the gloss is what was taught) — flagged as a recurring authoring/gloss-naturalness defect affecting the whole seed."
+  },
+  {
+   "seed": 283,
+   "known": "آپ کے دوستوں میں سے کون انگریزی بولتا ہے؟",
+   "en": "which of your friends speak English?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Number/agreement mismatch: Urdu بولتا ہے is 3sg masculine habitual ('speaks', singular referent), but the English gloss uses plural 'speak'. Either the verb should agree with a plural referent (بولتے ہیں) or the English should read 'speaks'. Minor authoring inconsistency; cf. the parallel #146 which uses plural بولتے ہیں / 'speak' correctly."
+  },
+  {
+   "seed": 294,
+   "known": "آپ کو فون کرنے کے لیے کافی وقت نہیں ابھی",
+   "en": "not enough time to call you yet",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ابھی is taught as 'now' (s1) and is glossed 'now' in the sibling build #328 ('...کافی وقت نہیں ہے' = 'not enough time to call you now'). Here the same ابھی is glossed 'yet'. 'yet' is properly ابھی تک (s60). ZUT/gloss inconsistency — the one Urdu token ابھی alternates between 'now' and 'yet' across two builds in the same seed."
+  },
+  {
+   "seed": 290,
+   "known": "وہ بہت کچھ جانتا ہے، اسے معلوم ہے",
+   "en": "he knows a lot",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The Urdu carries two clauses ('he knows a lot, he knows') but the English gloss only renders the first ('he knows a lot'); the trailing اسے معلوم ہے has no English source — extra/unproducible Urdu material stitched on (likely to surface the seed's اسے معلوم ہے LEGO). Also note 7 exact-duplicate prompts in the batch (e.g. #310≡#311 in s293; #98≡#99 in s280; dups in s276/s281/s287/s298) — low-priority authoring redundancy in the same family."
+  }
+ ]
+}

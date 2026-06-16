@@ -1,0 +1,70 @@
+{
+ "course_code": "eng_for_ara",
+ "total_collisions": 117,
+ "counts": {
+  "fp_subgloss": 52,
+  "fp_inflection": 60,
+  "real_consolidate": 4,
+  "real_differentiate": 0,
+  "fp_wrong_data": 1
+ },
+ "release_blocker_count": 0,
+ "notes": "Templatic/clitic-heavy course: the vast majority of flags are Arabic clitics and inflected verb stems (ل، بـ، ي، ها، ه، في، من، أن، كان) glossed contextually as role='component' inside larger LEGOs (52 fp_subgloss), or English target morphology of one lemma — infinitive 'to'-marker, subject prefix, copula, article a/an, tense (60 fp_inflection). Only 5 are learner-facing real issues: 4 drilled USE/BUILD sentences where one Arabic word (speak/talk, find out/know) got two English answers (consolidate), plus one genuine mistranslation (صحيحاً 'true' glossed 'the same thing'); none high-frequency enough to block release.",
+ "real_fixes": [
+  {
+   "known": "أي من أصدقائك أردت أن تتحدث معه الليلة الماضية؟",
+   "targets": [
+    "which of your friends did you want to speak to last night?",
+    "which of your friends did you want to talk to last night?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "which of your friends did you want to talk to last night?",
+   "action": "تتحدث glossed as both 'speak to' and 'talk to' on the SAME drilled USE sentence; pick one (talk to) and re-gloss the duplicate to match.",
+   "severity": "med"
+  },
+  {
+   "known": "لا أريد أن أتوقف عن الكلام بالإنجليزية",
+   "targets": [
+    "I don't want to stop talking in English",
+    "I don't want to stop speaking in English"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't want to stop talking in English",
+   "action": "الكلام glossed as both 'talking' and 'speaking' on the same drilled USE sentence; choose one (talking) and re-gloss the other to match the course's الكلام→'talking' convention.",
+   "severity": "med"
+  },
+  {
+   "known": "أريد أن أعرف",
+   "targets": [
+    "I want to find out",
+    "I want to know"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to find out",
+   "action": "أعرف drilled (BUILD) as both 'find out' and 'know' for the identical prompt أريد أن أعرف; pick one register (find out) and re-gloss the other so the learner gets one consistent answer.",
+   "severity": "med"
+  },
+  {
+   "known": "لم نكن نأمل في الاستيقاظ بهذه السرعة",
+   "targets": [
+    "we didn't hope to wake that quickly",
+    "we didn't hope to wake so quickly"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "we didn't hope to wake so quickly",
+   "action": "بهذه السرعة glossed 'that quickly' vs 'so quickly' on the same drilled sentence (USE/BUILD); pick one (so quickly).",
+   "severity": "low"
+  },
+  {
+   "known": "لكنني لست متأكداً إذا كان ذلك صحيحاً",
+   "targets": [
+    "but I'm not sure if it's the same thing",
+    "but I'm not sure if it's true"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "but I'm not sure if it's true",
+   "action": "ذلك صحيحاً means 'that is true/correct'; the gloss 'the same thing' (نفس الشيء) is a mistranslation. Correct that single BUILD row to 'true'.",
+   "severity": "med"
+  }
+ ]
+}

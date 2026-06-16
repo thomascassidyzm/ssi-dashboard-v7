@@ -1,0 +1,588 @@
+{
+ "course_code": "eng_for_tam",
+ "total_collisions": 117,
+ "counts": {
+  "fp_subgloss": 61,
+  "fp_inflection": 4,
+  "real_consolidate": 48,
+  "real_differentiate": 0,
+  "fp_wrong_data": 4
+ },
+ "release_blocker_count": 0,
+ "notes": "Heavily artifact-driven course: the dominant pattern is SSi USE/BUILD decoration drift — the SAME Tamil sentence glossed once plain and once with a trailing now/today/again/more/slowly that has no Tamil counterpart, or with a dropped is/are/it/I (48 of these = real_consolidate, all low/med, none high-frequency). Most single-word flags (61) are agglutinative roots sliced as 'component' inside larger LEGOs (only one drilled lego/build form each) so they're not learner-facing. A small recurring med-severity thread is inconsistent glossing of the desire verb விரும்புகிறேன் (want vs I'd like) and the modal வேண்டும் (have to/need to/should) across drilled phrases — worth a single course-wide policy. 4 genuine data errors (மாலை→afternoon, நமது→good, முக்கியம்→good more, ஆங்கிலம் dropped to 'more'). No genuine one-prompt-two-meanings overloads and no release blockers.",
+ "real_fixes": [
+  {
+   "known": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள்",
+   "targets": [
+    "you're doing very well",
+    "you doing so well now",
+    "you doing so well today"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "you're doing very well",
+   "action": "Re-gloss the two USE/BUILD variants to canonical; drop the spurious now/today decoration not present in Tamil.",
+   "severity": "med"
+  },
+  {
+   "known": "ஒரே வழி வேலை செய்யும்",
+   "targets": [
+    "only way it will work",
+    "only way will work"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "only way it will work",
+   "action": "Re-gloss USE variant to include 'it'.",
+   "severity": "low"
+  },
+  {
+   "known": "நாங்கள் பேசியது பற்றி முன்பே",
+   "targets": [
+    "we were talking about earlier",
+    "we talking about earlier"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "we were talking about earlier",
+   "action": "Re-gloss USE variant to include 'were'.",
+   "severity": "low"
+  },
+  {
+   "known": "புரியவில்லை நீங்கள் சொன்னது",
+   "targets": [
+    "don't understand what you said",
+    "I don't understand what you said"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't understand what you said",
+   "action": "Re-gloss BUILD variant to include leading 'I'.",
+   "severity": "low"
+  },
+  {
+   "known": "அது ஒரு வியப்பு",
+   "targets": [
+    "that is a surprise",
+    "that a surprise"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "that is a surprise",
+   "action": "Re-gloss BUILD variant to include 'is'.",
+   "severity": "low"
+  },
+  {
+   "known": "நீங்கள் இனி மகிழ்ச்சியாக இல்லையா?",
+   "targets": [
+    "are you not happy any more with this?",
+    "are you not happy any more?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "are you not happy any more?",
+   "action": "Drop the spurious 'with this' (no Tamil counterpart).",
+   "severity": "low"
+  },
+  {
+   "known": "எங்கே அது?",
+   "targets": [
+    "where is it?",
+    "where is it now?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "where is it?",
+   "action": "Drop the spurious 'now'.",
+   "severity": "low"
+  },
+  {
+   "known": "அது இல்லை ஏன் நான் விரும்பினேன் பார்க்க",
+   "targets": [
+    "that isn't why I wanted to see well",
+    "that isn't why I wanted to see you today"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "that isn't why I wanted to see you today",
+   "action": "Drop the stray 'well' variant; both are decoration artifacts of the same intention.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் காரை பயன்படுத்த விரும்பவில்லை",
+   "targets": [
+    "I don't use your car",
+    "I don't use your car today"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't use your car",
+   "action": "Drop the spurious 'today'.",
+   "severity": "low"
+  },
+  {
+   "known": "அவர் அதே நேரத்தில் கற்க வேண்டும்",
+   "targets": [
+    "he wanted to learn at the same time again",
+    "he wanted to learn at the same time"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "he wanted to learn at the same time",
+   "action": "Drop the spurious 'again'.",
+   "severity": "low"
+  },
+  {
+   "known": "அவர் விரும்பவில்லை கவனிக்க மீண்டும்",
+   "targets": [
+    "he didn't want to look after it again",
+    "he didn't want to look after again"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "he didn't want to look after it again",
+   "action": "Re-gloss BUILD variant to include 'it'.",
+   "severity": "low"
+  },
+  {
+   "known": "நீங்கள் மெதுவாக பேச வேண்டும்",
+   "targets": [
+    "you need to speak more slowly",
+    "you need to speak slowly"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "you need to speak slowly",
+   "action": "Drop the spurious 'more' (no Tamil counterpart).",
+   "severity": "low"
+  },
+  {
+   "known": "நீங்கள் காரை பயன்படுத்த விரும்பவில்லை",
+   "targets": [
+    "you don't use your car",
+    "you don't use your car now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "you don't use your car",
+   "action": "Drop the spurious 'now'.",
+   "severity": "low"
+  },
+  {
+   "known": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள் மெதுவாக",
+   "targets": [
+    "you're doing very well again slowly",
+    "you're doing very well slowly"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "you're doing very well slowly",
+   "action": "Drop the spurious 'again'.",
+   "severity": "low"
+  },
+  {
+   "known": "மிகவும் இளம் நாய்",
+   "targets": [
+    "a very young dog",
+    "a very young dog again"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "a very young dog",
+   "action": "Drop the spurious 'again'.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் காத்திருக்க மாட்டேன் கொஞ்சம்",
+   "targets": [
+    "I'm not going to wait a little more",
+    "I'm not going to wait a little"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm not going to wait a little",
+   "action": "Drop the spurious 'more'.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் பேருந்தில் செல்ல விரும்புகிறேன்",
+   "targets": [
+    "I like to go by bus now",
+    "I like to go by bus"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I like to go by bus",
+   "action": "Drop the spurious 'now'.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் முன்பு அறிந்தேன் அதை",
+   "targets": [
+    "I used to know that well",
+    "I used to know that"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I used to know that",
+   "action": "Drop the spurious 'well'.",
+   "severity": "low"
+  },
+  {
+   "known": "முக்கியம் நேரம் எடுக்க கொஞ்சம்",
+   "targets": [
+    "it's important to take time a little",
+    "it's important to take time a little more"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's important to take time a little",
+   "action": "Drop the spurious 'more'.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் தவறுகள் பற்றி கவலை செய்வதில்லை",
+   "targets": [
+    "I don't think about mistakes",
+    "I don't worry about mistakes"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't worry about mistakes",
+   "action": "Re-gloss 'think' variant to 'worry' (கவலை=worry); same intention.",
+   "severity": "med"
+  },
+  {
+   "known": "நான் ஏதாவது நினைவில் கொள்ள விரும்புகிறேன்",
+   "targets": [
+    "I want to remember something",
+    "I'd like to remember something"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'd like to remember something",
+   "action": "Pick one gloss for விரும்புகிறேன் (want vs I'd like); apply course-wide.",
+   "severity": "med"
+  },
+  {
+   "known": "பதில் சொல்வதற்கு முன்பு வேறு ஏதாவது சொல்லுங்கள்",
+   "targets": [
+    "tell me something else before I answer",
+    "can you tell me something else before I answer?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "tell me something else before I answer",
+   "action": "Pick one framing (imperative vs polite question) for the same imperative Tamil.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் உரையாடல் செய்ய விரும்புகிறேன்",
+   "targets": [
+    "I want to have a conversation",
+    "I'd like to have a conversation"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'd like to have a conversation",
+   "action": "Pick one gloss for விரும்புகிறேன் (want vs I'd like); apply course-wide.",
+   "severity": "med"
+  },
+  {
+   "known": "நான் நேரம் இல்லை மீதம் இப்போது",
+   "targets": [
+    "I don't have much time left now",
+    "much time left now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't have much time left now",
+   "action": "Re-gloss BUILD fragment to the full sentence.",
+   "severity": "low"
+  },
+  {
+   "known": "தெரியவில்லை என்னால் உதவ முடியுமா இப்போது",
+   "targets": [
+    "I'm not sure if I can help now",
+    "I'm not sure if I can help you slowly again"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm not sure if I can help now",
+   "action": "Drop spurious 'you slowly again' (no Tamil counterpart; இப்போது=now).",
+   "severity": "low"
+  },
+  {
+   "known": "அவர் உதவுவதில் விரும்பினார்",
+   "targets": [
+    "he wanted to start helping",
+    "he wanted to start helping me again"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "he wanted to start helping",
+   "action": "Drop the spurious 'me again'.",
+   "severity": "low"
+  },
+  {
+   "known": "என்னிடம் இருக்கிறது மீண்டும்",
+   "targets": [
+    "I've got it again",
+    "I've got it well"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I've got it again",
+   "action": "Re-gloss 'well' variant to 'again' (மீண்டும்=again).",
+   "severity": "low"
+  },
+  {
+   "known": "பேசுவது கஷ்டம் இல்லை",
+   "targets": [
+    "speaking is not difficult again",
+    "speaking is not difficult"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "speaking is not difficult",
+   "action": "Drop the spurious 'again'.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் காத்திருக்க மாட்டேன் மீண்டும்",
+   "targets": [
+    "I'm not going to wait again",
+    "I'm not going to wait again slowly"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm not going to wait again",
+   "action": "Drop the spurious 'slowly'.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் நினைத்தேன் நல்ல யோசனை",
+   "targets": [
+    "I thought that was a good idea",
+    "I thought that was a good idea now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I thought that was a good idea",
+   "action": "Drop the spurious 'now'.",
+   "severity": "low"
+  },
+  {
+   "known": "ஆமாம், அது நல்லது",
+   "targets": [
+    "yes, that is good",
+    "yes that good"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "yes, that is good",
+   "action": "Re-gloss BUILD variant to include 'is'.",
+   "severity": "low"
+  },
+  {
+   "known": "நான் உறுதியாக இல்லை மீண்டும்",
+   "targets": [
+    "I'm not sure I need to try again",
+    "I'm not sure again"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm not sure again",
+   "action": "Drop spurious 'I need to try' (not in Tamil; மீண்டும்=again).",
+   "severity": "low"
+  },
+  {
+   "known": "அவர்கள் கற்றுக்கொள்கிறார்கள்",
+   "targets": [
+    "they learning",
+    "they are learning"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "they are learning",
+   "action": "Re-gloss BUILD variant to include 'are'.",
+   "severity": "low"
+  },
+  {
+   "known": "இது இப்போது வேலை செய்யவில்லை",
+   "targets": [
+    "it's not working now",
+    "not working today"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's not working now",
+   "action": "Re-gloss BUILD variant to full sentence with 'now' (இப்போது=now, not today).",
+   "severity": "low"
+  },
+  {
+   "known": "இப்போது போக நேரம்",
+   "targets": [
+    "it is time to go now",
+    "now time to go"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it is time to go now",
+   "action": "Re-gloss BUILD variant to full grammatical sentence.",
+   "severity": "low"
+  },
+  {
+   "known": "இது ஒரே வழி வேலை செய்யும்",
+   "targets": [
+    "this is only way it will work",
+    "this only way it will work"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "this is only way it will work",
+   "action": "Re-gloss BUILD variant to include 'is'.",
+   "severity": "low"
+  },
+  {
+   "known": "இது அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+   "targets": [
+    "it's unusual that you don't use car",
+    "it's unusual that you don't use car now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's unusual that you don't use car",
+   "action": "Drop the spurious 'now'.",
+   "severity": "low"
+  },
+  {
+   "known": "தெரியவில்லை என்னால் உதவ முடியுமா மீண்டும்",
+   "targets": [
+    "I'm not sure if I can help you again slowly",
+    "I'm not sure if I can help again"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm not sure if I can help again",
+   "action": "Drop spurious 'you...slowly' (மீண்டும்=again only).",
+   "severity": "low"
+  },
+  {
+   "known": "போவதற்கு முன்பு என்னை உதவ வேண்டும்",
+   "targets": [
+    "I need you to help me before you go",
+    "I want you to help me before you go"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I need you to help me before you go",
+   "action": "Pick one gloss for வேண்டும் (need vs want); apply course-wide.",
+   "severity": "med"
+  },
+  {
+   "known": "இப்போது போக வேண்டும்",
+   "targets": [
+    "have to go now",
+    "I need to go now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I need to go now",
+   "action": "Pick one gloss for வேண்டும் (have to vs need to) and add subject consistently.",
+   "severity": "med"
+  },
+  {
+   "known": "நான் ஏற்கனவே மகிழ்ச்சி",
+   "targets": [
+    "I'm already happy",
+    "I'm already very happy"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm already happy",
+   "action": "Drop the spurious 'very' (no மிகவும் in Tamil).",
+   "severity": "low"
+  },
+  {
+   "known": "நான் இன்றிரவு சந்திக்க விரும்புகிறேன்",
+   "targets": [
+    "I want to meet this evening",
+    "I want to meet tonight"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to meet tonight",
+   "action": "Re-gloss to 'tonight' (இன்றிரவு=tonight, not this evening).",
+   "severity": "low"
+  },
+  {
+   "known": "அவள் சொன்னதை விட குறைவாக சுவாரஸ்யமாக உள்ளது",
+   "targets": [
+    "that's less exciting than what she was saying",
+    "this is less exciting than what she was saying"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "that's less exciting than what she was saying",
+   "action": "Pick one demonstrative (that's vs this is) for the same subjectless Tamil.",
+   "severity": "low"
+  },
+  {
+   "known": "நீங்கள் அதே நேரத்தில் உதவ வேண்டும்",
+   "targets": [
+    "you need to help me at the same time",
+    "you need to help at the same time"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "you need to help at the same time",
+   "action": "Drop the spurious 'me' (no என்னை in Tamil).",
+   "severity": "low"
+  },
+  {
+   "known": "நான் விரும்பினேன் பார்க்க உங்களை",
+   "targets": [
+    "I wanted to see you here",
+    "I wanted to see you now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I wanted to see you",
+   "action": "Drop the differing here/now decoration (neither is in Tamil).",
+   "severity": "low"
+  },
+  {
+   "known": "நான் இப்போது போக வேண்டும்",
+   "targets": [
+    "I have to go now",
+    "I should go now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I have to go now",
+   "action": "Pick one gloss for வேண்டும் (have to vs should); apply course-wide.",
+   "severity": "med"
+  },
+  {
+   "known": "நான் ஆங்கிலம் கற்க விரும்புகிறேன்",
+   "targets": [
+    "I want to learn English",
+    "I'd like to learn English"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'd like to learn English",
+   "action": "Pick one gloss for விரும்புகிறேன் (want vs I'd like); apply course-wide.",
+   "severity": "med"
+  },
+  {
+   "known": "நீங்கள் இருக்கிறீர்களா மீண்டும்",
+   "targets": [
+    "have you got more again?",
+    "have you got more?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "have you got more again?",
+   "action": "Drop the spurious/missing 'again' inconsistency (மீண்டும்=again).",
+   "severity": "low"
+  },
+  {
+   "known": "ஆங்கிலம் பேசுவது பயனுள்ளது",
+   "targets": [
+    "it's useful speaking more",
+    "it's useful speaking English"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "it's useful speaking English",
+   "action": "Fix the 'speaking more' gloss — ஆங்கிலம்=English; 'more' is a mistranslation.",
+   "severity": "med"
+  },
+  {
+   "known": "நமது மூளை",
+   "targets": [
+    "good brain",
+    "our brain"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "our brain",
+   "action": "Fix 'good brain' — நமது=our, not good.",
+   "severity": "med"
+  },
+  {
+   "known": "கற்பது முக்கியம்",
+   "targets": [
+    "learning is good more",
+    "learning is important"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "learning is important",
+   "action": "Fix 'learning is good more' — முக்கியம்=important; gloss is garbled.",
+   "severity": "med"
+  },
+  {
+   "known": "மாலை",
+   "targets": [
+    "evening",
+    "afternoon"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "evening",
+   "action": "Fix the drilled USE gloss 'afternoon' — மாலை=evening (afternoon=பிற்பகல்).",
+   "severity": "med"
+  }
+ ]
+}

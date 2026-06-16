@@ -1,0 +1,1247 @@
+{
+ "course_code": "eng_for_sin",
+ "totals": {
+  "prompts_checked": 5545,
+  "vocab_uncontrolled": 69,
+  "npi_violation": 1,
+  "machinery_unlicensed": 3,
+  "gloss_rule_violation": 8,
+  "content_quality": 84
+ },
+ "release_grade": "heavy",
+ "systematic_issues": [
+  "Uncontrolled untaught synonyms dominate (69 vocab leaks): the same English meaning is rendered with a lexeme the learner was never given, while a correctly-introduced synonym exists. Recurring offenders: ආශා='hope' (~57 prompts, S111-S121/S126; taught form is බලාපොරොත්තු @S107/108), ලෑස්ති='ready' (~52 prompts, S105/S111-S121; only ලෑස්තිව ඉන්නවා වගේ @S26 was taught), ලිහිල්='relax' (~24 prompts; taught විවේක ගන්න @S110), මිතුරා='friend' (taught යාළුවා @S52), මිනිස්සු='people' (taught අය @S22), තවත්='more' (taught වැඩිය @S23), එය='it' (taught ඒක @S47), මුණ ගැහෙ='meet' (taught හම්බවෙන්න @S18), තේරුම් ගන්න='understand' (taught තේරෙනවා @S58), මීට පෙර/පෙර='earlier' (taught ඊට කලිං @S143), ඉස්සර/ගොඩ ඉස්සර='longer' (taught වඩා දිගු @S275), ඉතා='very' (taught ගොඩක් @S13). One fix per lemma (release the synonym OR re-author to the taught word) clears each whole cluster.",
+  "Dative-subject want gloss-rule failure (datSubjectWant): NOMINATIVE subject + ඕනේ instead of dative -ට, ~19 prompts across S52/S53/S70/S71/S74 (ඔහු/ඇය/ඔයා/මම + ඕනේ should be ඔහුට/ඇයට/ඔයාට/මට). Contradicts the inventory's own S16/S17/S20 which teach the correct dative. Single rule fix (force dative subject under ඕනේ/ආසයි) repairs all instances.",
+  "Object-control / ECM 'want X to do Y' machinery unlicensed (S15/S25): overt embedded subject ඔයා inside a dative-want frame; only PRO-control single-subject 'I want to V' is sanctioned. Same ECM-into-going-to defect produces the broken English glosses too.",
+  "Latin/foreign-script contamination on the known side (hard authoring defect, recurs as content_quality): English determiners embedded in Sinhala (all 8 S226 prompts 'the/that/a මිනිහා'; 'for a while' @S219), Devanagari මම→ममा (S233/S241), Telugu మమా (S151), Roman 'MA' in මMA (S118), and non-word tokens ඥග/ෂෙත්/ෙමෙක. The known side must be pure Sinhala — strip/replace these.",
+  "Broken-generation blocks where telegraphic Sinhala fragments carry full unsupported English question/modal frames (S142, S146, S154-S158): 'speak', 'want', 'do you', 'with us' have no Sinhala source token. Looks like a generation/alignment failure for these specific seed blocks rather than isolated defects.",
+  "Single genuine NPI violation: S182 කොහෙවත් ('anywhere') in a plain positive declarative with no negator/-ද/conditional licensor (npiLicensing breach); all other -වත්/කිසිම indefinites in the course are negation- or question-licensed."
+ ],
+ "summary": "Across 5,545 prompts in 12 batches, eng_for_sin shows 81 real (non-content) issues plus 84 content-quality defects, putting it firmly in the heavy band. The NPI lane is essentially clean (1 violation, S182) and machinery is nearly so (3, mostly the unlicensed ECM 'want X to do Y' frame at S15/S25), but uncontrolled vocabulary is the systematic killer: 69 leaks driven by a handful of untaught synonyms (ආශා='hope', ලෑස්ති='ready', ලිහිල්='relax', මිතුරා='friend' and friends) where a correctly-introduced word already exists, so most clear with one fix-per-lemma. Two further structural patterns recur — a dative-subject gloss-rule failure (nominative + ඕනේ, ~19 prompts contradicting the inventory's own S16/17/20) and pervasive non-Sinhala-script/Latin contamination on the known side (S226 determiners, Devanagari/Telugu/Roman corruptions of මම, non-word tokens). Several whole seed blocks (S142, S146, S154-158) read as generation failures where Sinhala fragments carry unsupported English frames; these need re-authoring, not patching.",
+ "findings": [
+  {
+   "seed": 15,
+   "known": "මට ඔයා මා එක්ක ඉංග්‍රීසි කතා කරන්න ඕනේ",
+   "en": "I want you to speak English with me",
+   "category": "machinery_unlicensed",
+   "severity": "high",
+   "detail": "SYSTEMATIC: object-control / ECM 'want/like SOMEONE to do Y' construction — an overt embedded subject (ඔයා 'you') sitting inside a dative-want frame (මට ... ඕනේ / මට ආසයි ... කරන්න). No knownConstruction licenses this; the only sanctioned dative-subject frame (datative-subject, S1) is PRO-control 'I want to V', where the wanter and the doer are the same. Recurs across S15 (මට ආසයි ඔයා මා එක්ක කතා කරන්න => 'I'd like you to speak with me'; සහ මට ... ඔයා මා එක්ක ... ඕනේ => 'and I want you to speak ... with me') and S25 (මට ආසයි ඔයා මට උදව් කරන්න => 'I'd like you to help me'; ඔයාට මට උදව් කරන්න ඕනේ => 'you want to help me'). The Sinhala itself is marginal/broken: overt ඔයා + infinitive -න්න does not express 'I want YOU to do' in natural Sinhala (it reads as a single-subject 'I want to speak with you-and-me'), so this is both an unlicensed English construction and an authoring defect."
+  },
+  {
+   "seed": 12,
+   "known": "කියලා",
+   "en": "going to",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Violates the quotativeComplementiser glossRule: කියලා is the structural quotative/complementiser 'that' and the rule states 'never surface a bare standalone content word from it'. Here the component decomposition surfaces it as the future aux 'going to' (S12, from මොකද වෙන්නේ කියලා => 'what's going to happen', where 'going to happen' actually lives in වෙන්නේ), and at S17 the same කියලා is component-glossed as the copula 'is' (පිළිතුර මොකද කියලා => 'what the answer is'). The complementiser is being split into English aux/copula material it does not carry — two instances of the same gloss-rule breach."
+  },
+  {
+   "seed": 15,
+   "known": "මම ඔයා මා එක්ක ඉංග්‍රීසි කතා කරන්න හදනවා",
+   "en": "I'm going you to speak English with me",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken English gloss: 'I'm going you to speak English with me' is ungrammatical (the ECM-into-going-to frame produces a word salad). The intended sense is unclear ('I'm going to speak English with you'?), and the Sinhala overt ඔයා + මා එක්ක + කරන්න is equally malformed. Unproducible prompt."
+  },
+  {
+   "seed": 25,
+   "known": "ඔයා මට ඉංග්‍රීසි උදව් කරනවාද?",
+   "en": "are you going to help me English?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken English gloss: 'help me English' is ungrammatical (help does not take a bare object like that). The Sinhala ඉංග්‍රීසි උදව් කරනවාද ('help with English'?) does not produce the gloss either; the ඉංග්‍රීසි is stranded. Unproducible / nonsensical prompt."
+  },
+  {
+   "seed": 21,
+   "known": "ඔයා ඉංග්‍රීසි ඉගෙනගන්නේ ඇයි ඔයා එක්ක?",
+   "en": "why are you learning English with you?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Self-contradictory prompt: subject is ඔයා 'you' and the comitative is also ඔයා එක්ක 'with you' — 'you ... with you'. The Sinhala ඔයා ... ඔයා එක්ක is contradictory; the English 'learning English with you' with the same referent as the subject is nonsensical. Mechanical recombination artifact."
+  },
+  {
+   "seed": 10,
+   "known": "පූර්ණය",
+   "en": "whole",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Mis-decomposition: the M-LEGO ඒ වාක්‍යයම => 'the whole sentence' carries 'whole' via the emphatic suffix -ම on වාක්‍යය (වාක්‍යයම), NOT via the standalone literary word පූර්ණය. පූර්ණය appears in exactly ONE place in the whole batch — this component prompt — and in zero actual LEGO/USE phrases (all 12 use වාක්‍යයම). The component teaches a token disconnected from the phrases it is meant to break down; the learner is shown පූර්ණය='whole' but never meets it again."
+  },
+  {
+   "seed": 5,
+   "known": "කතා කිරීම ඕනේ",
+   "en": "want speaking",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken on both sides: English 'want speaking' is ungrammatical, and the Sinhala කතා කිරීම ඕනේ is a subjectless fragment (no dative මට) — 'speaking want'. A degenerate BUILD stub from mechanical LEGO recombination."
+  },
+  {
+   "seed": 7,
+   "known": "මට අද ඕනේ",
+   "en": "I want today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "RECURRING stub-BUILD class: dative-want frame with only a bare time/place adverbial and no verb/object complement — answerable and ZUT-clean but pragmatically empty. Same pattern at S16 ඔහුට පස්සේ ඕනේ => 'he wants later on', S18 අපට හයට ඕනේ => 'we want at six o'clock', S11 මට ආසයි ඔයා ඉවර වෙච්චාට පස්සේ => 'I'd like after you finish'. Also S20/S21 මම දන්නේ නෑ ඔහුගේ/ඇගේ නම => 'I'm not sure his/her name' is mildly non-idiomatic ('not sure OF his name'). Authoring naturalness, not an answerability bug."
+  },
+  {
+   "seed": 49,
+   "known": "ඒ විදිහෙ ඒ ඉතා හොඳ දෙයක් ඔයාට තේරෙනවා",
+   "en": "you know that it's a very good thing like this",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "ඉතා ('very/extremely') is never introduced. The only 'very' the learner has been given is ගොඩක් (S13, 'very well'/'very tired'). ඉතා is a distinct, untaught lexeme — the learner cannot produce 'a very good thing' from it. Recurs in several S49 prompts ('a very good thing'). Use ගොඩක් (or rework the gloss) instead of ඉතා."
+  },
+  {
+   "seed": 41,
+   "known": "මම ටිකක් ගොඩ දැනෙන්නේ ගන්නවා",
+   "en": "I'm starting to feel a little better",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ගොඩ glossed 'better' is not an introduced lemma; the taught 'better' is හොඳට (S29). ගොඩ දැනෙනවා for 'feel better' is also non-standard/colloquial-at-best — the learner has no path to 'better' from this token. (Compounds with the malformed දැනෙන්නේ ගන්නවā construction flagged separately.)"
+  },
+  {
+   "seed": 47,
+   "known": "ඇය වැරදි කරන්න ගැන කරදර වෙනවා",
+   "en": "she worry about to make mistakes",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "thirdPersonGender rule: Sinhala has no 3sg agreement so the produced English MUST add 3sg -s. ඇය ... කරදර වෙනවā should gloss 'she worries', not 'she worry'. (This prompt also carries the කරන්න ගැන Sinhala defect — see content_quality.)"
+  },
+  {
+   "seed": 26,
+   "known": "මට ආසයි දැනෙන්න ඉංග්‍රීසි ඉගෙනගන්න",
+   "en": "I like feeling to learn English",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Systematic (5 USE prompts at S26): මට ආසයි දැනෙන්න X කරන්න is glossed 'I like feeling to learn English' / 'I like feeling to speak more' etc. 'I like feeling to <verb>' is ungrammatical English (unproducible). The seed's natural reading needs the 'as if I'm nearly ready' tail (ලෑස්තිව ඉන්නවā වගේ) which is dropped here, leaving a broken target. Affects: 'to speak more', 'to be able to speak English', 'to speak English very well', 'to learn English', 'to learn quickly'."
+  },
+  {
+   "seed": 29,
+   "known": "ඉදිරිය ගැන ආශාවෙනවා ඉංග්‍රීසි ඉගෙනගන්න",
+   "en": "I'm looking forward to to learn English",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Systematic (5 prompts at S29): the looking-forward-to carrier (ඉදිරිය ගැන ආශාවෙනවා = 'I'm looking forward to') is concatenated with a to-infinitive complement (ඉගෙනගන්න = 'to learn'), yielding a double 'to to': 'I'm looking forward to to learn / to practise / to meet'. The complement after 'looking forward to' must be a gerund ('to learning English' → 'learning English'). Broken/unproducible English."
+  },
+  {
+   "seed": 41,
+   "known": "මම ඉංග්‍රීසි ඉගෙනගන්නේ ගැන හොඳ දැනෙන්නේ ගන්නවා",
+   "en": "I'm starting to feel okay about learning English",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Whole S41 'starting to feel' block uses malformed Sinhala. (1) දැනෙන්නේ ගන්නවා is ungrammatical — 'starting to' takes the infinitive දැනෙන්න ගන්නවා (cf. S42's correct දැනෙන්න ගත්තā), not the focus/emphatic -ේ form දැනෙන්නේ. (2) ඉගෙනගන්නේ ගැන / කතා කරන්නේ ගැන ('about learning/speaking') wrongly attaches ගැන to a -ේ verb form; natural is ඉගෙනගන්න එක ගැन. Recurs across the S41 USE/BUILD prompts; the Sinhala the learner reads is not well-formed."
+  },
+  {
+   "seed": 49,
+   "known": "ඒ විදිහෙ ඉගෙනගන්නෙ ඉංග්‍රීසිය",
+   "en": "learning English is like this",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "S49 is a pervasively defective block. Mis-segmented components: ඒ is glossed 'like' (ඒ = 'that/the', never 'like') and විදිහට is glossed 'this' (විදිහට = 'way/manner'); the 'like this' sense lives in විදිහට as a unit, so both component glosses are wrong. Several USE prompts are word-salad Sinhala with floating -ේ focus forms and post-posed nouns (ඒ විදිහෙ ඉගෙනගන්නෙ ඉංග්‍රීසිය; ඔයාට මට ඒ ගැන කතා කරන්නෙ ඕනේ දෙය තේරෙනවා). Also pulls in untaught ඉතා ('very') and an untaught 'what'-embedding (දෙය). Unproducible."
+  },
+  {
+   "seed": 47,
+   "known": "වැරදි කරන්න ගැන කරදර වෙන්න ඕනේ නෑ",
+   "en": "I don't want to worry about to make mistakes",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Systematic (S47 x3, plus S40 x1): වැරදි කරන්න ගැන / ඉගෙනගන්න ගැන attaches ගැන ('about') to a to-infinitive, producing the broken English 'about to make mistakes' / 'about to learn English'. The taught nominal form is වැරදි කිරීම ගැන ('about making mistakes', S46) and the gerund 'about learning'. The Sinhala the learner reads (infinitive + ගැන) is itself malformed."
+  },
+  {
+   "seed": 26,
+   "known": "ආසන්නෙන්",
+   "en": "nearly",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Orphan/mis-decomposed component: the S26 'nearly' component is given as ආසන්නෙන්, but ආසන්නෙන් appears in NO S26 build/use prompt — every actual prompt expresses 'nearly ready' idiomatically via ලෑස්තිව ඉන්නවā වගේ ('as if ready'). The component the learner is shown does not match the material that produces 'nearly' in the seed, and it is an unrelated root to ලෑස්ති ('ready')."
+  },
+  {
+   "seed": 42,
+   "known": "මට හොඳයි දැනෙනවා ඊයේ රෑ වඩා",
+   "en": "I feel okay better than last night",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Single comparative slip: 'okay better than last night' is broken English. The Sinhala uses හොඳයි ('okay') where the comparative හොඳ වඩā ('better than', as elsewhere in S42) was intended — should be 'I feel better than last night'. Isolated authoring error, not systematic."
+  },
+  {
+   "seed": 52,
+   "known": "ඔහු ඔහුගේ යාළුවාට ලියුමක් ලියන්නෙ ඕනේ",
+   "en": "he wants to write a letter to his friend",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "datSubjectWant: the want/ඕනේ predicate is a dative-subject construction, so the subject MUST be dative ඔහුට, but the prompt uses NOMINATIVE ඔහු ('he wants' should be ඔහුට ඕනේ). Systematic across the batch: S52 (ඔහු x4), S53 (ඔහු), S70 (මම මගේ යාළුවාට පවසන්න ඕනේ -> 'I want', should be මට; ඇය -> ඇයට), S71 (ඔහු/ඇය/ඔයා + ඇහෙනවා ඕනේ, ~10 prompts), S74 (ඔහු ඉංග්‍රීසිය තේරෙනවා ඕනේ). ~19 prompts. The inventory ITSELF teaches the correct dative at S16 ඔහුට ඕනේ / S17 ඇයට ඕනේ / S20 ඔයාට ඕනේ, so these nominative subjects are broken Sinhala a native speaker would never produce. NOTE: the S67 want-question set (ඔයා ... ඕනේ ඇයි, 10 prompts) is separately sanctioned by the inventory's own S67 entry ඔයා ඕනේ ඇයි, which is itself an authoring inconsistency vs S20."
+  },
+  {
+   "seed": 73,
+   "known": "මට තවත් ඉගෙනගන්න තියෙනවා",
+   "en": "I've got more to learn",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "තවත් ('more') is NOT introduced anywhere up to S73; the 'more' lemma taught is වැඩිය (S23). Used as 'more' in ~8 S73 prompts (I've got more to learn/do/write/find; thank you ... but I want to learn more). The learner has not been given තවත් -> English, so these are unanswerable on the 'more' content word. (S75 correctly uses වැඩිය for 'more'.)"
+  },
+  {
+   "seed": 75,
+   "known": "ඔයාට තිබෙනවාද එය මට පෙන්නන්න",
+   "en": "have you got it to show me?",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "එය ('it', literary/formal) is NOT introduced; the inanimate 'it' taught is ඒක (S47, glossRule ඒක) / ඒ. Appears in 2 S75 prompts (එය = 'it'). Uncontrolled vocab — learner cannot map එය. Should be ඒක."
+  },
+  {
+   "seed": 75,
+   "known": "ඔයාට තිබෙනවාද දැන් කාලය?",
+   "en": "have you got time now?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "කාලය ('time') is NOT introduced; the 'time' lemma taught is වෙලාව (S27 ගොඩක් වෙලාව, S62 ඒ එකම වෙලාවේ). S14 දවල් කාලේ used කාල- but glossed 'all day', not 'time'. So කාලය='time' is uncontrolled (2 S75 prompts)."
+  },
+  {
+   "seed": 69,
+   "known": "ලිහිල්ල මිනිස්සු එක්ක කතා කරන්න ආසාවෙන්නවා",
+   "en": "it is fun to speak with young people",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "මිනිස්සු ('people') is NOT introduced; S69 only introduces ලිහිල්ල ('young') and බල්ලා ('dog'). The earlier 'people' was අය (S22 ...කරන අය), a different lemma. ~4 S69 prompts use ලිහිල්ල මිනිස්සු -> 'young people' with the unanswerable content word මිනිස්සු."
+  },
+  {
+   "seed": 51,
+   "known": "මට මගේ යාළුවන් ගැන ඉතා හොඳ දෙයක් ආසාවෙනවා",
+   "en": "I enjoy my friends as a very good thing",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ඉතා ('very') is NOT introduced; the intensifier taught is ගොඩක් (glossRule intensifierGloss; S13 ගොඩක් හොඳට). Also appears S51 ඒ ඉතා රසවත් දේවල් කරන්නෙ -> 'doing very interesting things'. ඉතා is a distinct lemma the learner has not been given."
+  },
+  {
+   "seed": 73,
+   "known": "මට කීපයක් වචන ඉගෙනගන්න තියෙනවා",
+   "en": "I've got a few words to learn",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "කීපයක් ('a few') is NOT introduced; the 'a few'/'a little' lemma taught is ටිකක් (S9; S56 ටිකක් වචන = 'a few words'). කීපයක් is uncontrolled. (S56 correctly uses ටිකක් for the same English.)"
+  },
+  {
+   "seed": 51,
+   "known": "මට ඉංග්‍රීසිය ඒ ගැන රසවත් දේවල් කරන්නෙ",
+   "en": "English is doing interesting things",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken/nonsensical Sinhala -> unproducible English. Prompt = මට (dative 'to me') + ඉංග්‍රීසිය + ඒ ගැන ('about that') + රසවත් දේවල් කරන්නෙ, with NO predicate/ආසාවෙනවා. The English silently drops මට and ඒ ගැන and recasts ඉංග්‍රීසිය as the subject 'English'. Recurs across S51's ආසාවෙනවා set: 'මට ඉංග්‍රීසිය ඉගෙනගන්නෙ රසවත් දේවල් කරන්නෙ' -> 'learning English is doing interesting things'; 'මට මගේ යාළුවන් ගැන ඒ ගැන ආසාවෙනවා' -> 'I enjoy thinking about my friends' (no source for 'thinking'); 'මට මගේ යාළුවන් ගැන ඒ ගැන කතා කරන්නෙ ආසාවෙනවා' (double ගැන, stray ඒ ගැන). Authoring defect, not a learner-vocab gap."
+  },
+  {
+   "seed": 52,
+   "known": "මට ලියන්නෙ ආසාවෙනවා",
+   "en": "I enjoy to write",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Ungrammatical English on the produced side: 'enjoy to write' / 'I enjoy to write a letter' (S52) — English 'enjoy' takes a gerund ('enjoy writing'). Two S52 prompts. Also S52 'ඔහු ඔහුගේ යාළුවාට ලියන්නෙ ආසාවෙනවා' glosses ආසාවෙනවා (enjoy) as 'he is going to write' — inconsistent gloss of the same lexeme."
+  },
+  {
+   "seed": 71,
+   "known": "ඇය කිසිම කෙනෙකුට සත්‍ය ඇහෙනවා දෙනවා",
+   "en": "she didn't let anyone hear the truth",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English negation 'didn't' has NO source in the Sinhala: the prompt is POSITIVE (...ඇහෙනවා දෙනවා = 'let ... hear', no negator නෑ/බෑ/නැත). Same positive string elsewhere is correctly glossed 'let anyone hear the truth'. Two S71 prompts affected (ඇය... / ඔහු... 'he didn't let anyone hear about that'). The unsourced 'didn't' is the defect (and it spuriously makes 'anyone' look NPI-licensed); it is a broken gloss, not an NPI issue."
+  },
+  {
+   "seed": 75,
+   "known": "ඔයාට ඉගෙනගන්න තිබෙනවාද වැඩිය?",
+   "en": "have you got more to learn?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Non-native Sinhala word order: the -ද question clitic sits clause-medially on තිබෙනවාද with the infinitive ඉගෙනගන්න before it and වැඩිය ('more') stranded clause-finally. Natural Sinhala = ඔයාට වැඩිය ඉගෙනගන්න තියෙනවද? Recurs in several S75 prompts (ඊළඟ සතියට සිදු කරන්න ... වැඩිය; කියන්න ... වැඩිය). Producible but unidiomatic; scrambled authoring."
+  },
+  {
+   "seed": 64,
+   "known": "ඉංග්‍රීසි ඉගෙනගන්න ඒක නැත ලේසි",
+   "en": "learning English isn't easy",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Non-native negation placement: Sinhala negation is clause-FINAL, so 'isn't easy' should be ලේසි නෑ/නැහැ; the prompt preposes නැත before the adjective (ඒක නැත ලේසි). Sanctioned by the inventory's own S64 entries (නැත='isn''t', ඒක නැත ලේසි, ඒක නැත රසවත්, ඒක නැත හොඳ) so flagged once as an inventory-level stylistic defect rather than per-prompt; note the same batch also has the correct order ලේසි නෑ ('not easy'), so the two patterns coexist inconsistently."
+  },
+  {
+   "seed": 73,
+   "known": "ස්තුතියි ගොඩක් ඔයාට මට උදව් කරන",
+   "en": "thank you very much helping me",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Sinhala: stacked datives ඔයාට මට plus a bare participle උදව් කරන with no finite frame; English 'thank you ... helping me' is also ungrammatical (missing 'for'). Recurs S73: 'ස්තුතියි ඔයාට මට කතා කරන' -> 'thank you speaking with me'; 'ස්තුතියි මට ඒ ගැන පවසන්න' -> 'thank you to tell me about it'. Authoring defects in the S73 'thank you ...' set."
+  },
+  {
+   "seed": 83,
+   "known": "ඔයාගේ මිතුරා",
+   "en": "your friend",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "'friend' = මිතුරා here, but the course only ever taught 'friend' as the colloquial lemma යාළුවා (S52 ඔහුගේ යාළුවා 'his friend', S51 මගේ යාළුවන් 'my friends'). මිතුරා is a different (Sanskritic) lexeme, not an inflection of යාළුවා, so the learner has no English for the content noun. The S83 LEGO is ඔයාගේ 'your' — 'friend' is assumed-known but was given as a different word. Recurs through S83 (many prompts), S88 (කතාබහ කරන්න ඔයාගේ මිතුරා එක්ක), and S99 (විමසන්න ඔයාගේ මිතුරාට). Systematic synonym swap."
+  },
+  {
+   "seed": 85,
+   "known": "අර මිනිස්සු",
+   "en": "those people",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'people' = මිනිස්සු, but the only 'people' lemma introduced is අය (S22 ...කතා කරන අය 'people who speak English'; reused S87 ඒ අය 'they', S87 build ඒ අය මිනිස්සු). මිනිස්සු is a distinct lexeme never glossed. The S85 LEGO is අර 'those' — the head noun 'people' is unanswerable as මිනිස්සු. Recurs across S85 (අර මිනිස්සු, මිනිස්සුන්ව), S87 (...මිනිස්සු), S88 (...මිනිස්සු එක්ක)."
+  },
+  {
+   "seed": 79,
+   "known": "ඔයා කළාද ඔයාව පරීක්ෂා කරගන්න?",
+   "en": "did you test yourself?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'test yourself' = පරීක්ෂා කරගන්න, but it was taught as ටෙස්ට් කරගන්න (S65 'to test yourself', an English loan). පරීක්ෂා is a different (native) lexeme never introduced. Recurs at S95 (ඔයාව පරීක්ෂා කරගන්න). Synonym swap, not inflection."
+  },
+  {
+   "seed": 100,
+   "known": "ඔයා ඕනේ නෑ වද වෙන්න",
+   "en": "you shouldn't worry",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'worry' = වද වෙන්න, but 'worry' was taught as කරදර වෙන්න (S46). වද is a different lexeme (vs කරදර); only the වෙන්න 'become' helper is shared. Recurs across the S100 USE set (you shouldn't worry / worry about it / worry about it very much). Content verb the learner has no English for under this form."
+  },
+  {
+   "seed": 86,
+   "known": "අවාසනාවකට ඒක ඉතා අමාරුයි තේරුම් ගන්න",
+   "en": "unfortunately it is very difficult to understand",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Two recurring uncontrolled items: (a) ඉතා 'very' — the only intensifier taught is ගොඩක් (S73/S13; glossRule intensifierGloss is written for ගොඩක්). ඉතා is a distinct literary intensifier appearing heavily from S86 onward (ඉතා අමාරුයි, ඉතා හොඳට, ඉතා කෙටි, ඉතා සමාන, ඉතා නියමයි). (b) තේරුම් ගන්න infinitival 'to understand' — only the finite intransitive තේරෙනවා was taught (S74 'understand', S58 'you understand'); තේරුම් ගන්න (= 'grasp the meaning') is a new construction. Both recur S79/S86/S90/S99 (තේරුම් ගන්න) and S86–S90 (ඉතා)."
+  },
+  {
+   "seed": 98,
+   "known": "ඔයාට ඕනේද ක්‍රීඩා කරන මොකක්හරි වෙනස්",
+   "en": "do you want playing something else?",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'different'/'else' = වෙනස්, but 'different' was taught as විවිධ (S60). වෙනස් is a separate lexeme. Recurs S98 (මොකක්හරි වෙනස්, ක්‍රමයකින් වෙනස්) and S100. Lower value because 'else' is often supplied by English, but the content adjective itself is untaught."
+  },
+  {
+   "seed": 83,
+   "known": "මම ඔයාගේ මිතුරා හමුවෙන්න ඕනේ",
+   "en": "I want to meet your friend",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'to meet' = හමුවෙන්න, taught as හම්බවෙන්න (S18). Same verbal root (හමු/හම්බ 'meet') in colloquial-vs-formal register, so this is a borderline variant rather than a fresh lemma — flagging low only for consistency. Recurs S83/S85/S87 (හමුවෙන්න vs the established හම්බවෙන්න)."
+  },
+  {
+   "seed": 76,
+   "known": "මම ඔයා සමඟ කතා කරන්නේ ගොඩක් සතුටු",
+   "en": "I'm very happy to speak with you",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'with' = සමඟ (one-off), but the comitative is the free-class එක්ක (the knownConstructions comitative marker). සමඟ is the formal synonym, never introduced and not in freeClass. Single occurrence; low value."
+  },
+  {
+   "seed": 92,
+   "known": "මට ඕනේ දිගටම කරන්න මේක",
+   "en": "I want to keep on doing this",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'this' = මේක (inanimate proximal pronoun), which is the proximal counterpart of the heavily-used anaphor ඒක 'it/that' (glossRule ඒක). මේ 'this' exists (S31/S40) but මේක as a standalone pronoun is not introduced and ඒක's gloss rule does not cover it. Recurs S92 (මේක) and S94. Borderline since මේ-root is present; low. Also note one-offs in this batch: පහදන්න 'explain' vs taught පැහැදිලි කරන්න (S81), එයාට 'her' vs taught ඇයට (S82), පසුගිය 'last' vs taught පසු (S79/S89), මතක තියාගන්න 'remember' vs taught මතක් කරගන්න (S80/S85/S89) — all same-family or single-occurrence, recorded here rather than as separate findings."
+  },
+  {
+   "seed": 77,
+   "known": "මම ඉංග්‍රීසිය ඉතිරිව ඉගෙනගන්නේ ඉක්මනට ගැන පුදුමයි",
+   "en": "I'm surprised at how quickly I'm starting to understand",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Sinhala: ඉතිරිව means 'remaining/left over', which is nonsensical here, and the English 'starting to understand' has no source (no දැනෙන්නේ ගන්නවා/පටන්, no තේරෙනවා). The prompt does not parse as the intended sentence. Authoring defect, not an answerability bug per se."
+  },
+  {
+   "seed": 78,
+   "known": "ඔයා ඒ ගැන කිව්ව තේරෙනවා",
+   "en": "I understand what you said",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "The whole S78 USE set glosses 'I understand what you said' but the Sinhala has NO experiencer subject මට — තේරෙනවා is a dative-subject predicate (per glossRule datSubject/caseIsSuffixal) and 'I understand' should be මට ... තේරෙනවා. The English subject 'I' is unsourced and the first item (...තේරෙනවා ඕනේ → 'I want to understand') stacks a finite verb + ඕනේ ungrammatically. Recurs across all 6 understand-prompts in S78. Structural alignment defect."
+  },
+  {
+   "seed": 79,
+   "known": "ඔයා කළාද සිදු කරන්න?",
+   "en": "did you want to do it?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English 'want' has no source in the Sinhala (ඔයා කළාද සිදු කරන්න = 'did you do it'); ඕනේ 'want' is absent. The 'want to' in the gloss is unproducible from this prompt."
+  },
+  {
+   "seed": 92,
+   "known": "අපි කතාබහ කරමු ටිකක් වෙලාවක්",
+   "en": "we want to talk for a while",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "කරමු is the hortative 'let's talk', not 'we want to talk'; the dative-subject want form would be අපිට ඕනේ. Two prompts in S92 use this කරමු/යමු hortative but gloss it as 'we want to' (cf. S95 අපි බස් එකෙන් ගෙදර යමු → 'we want to go home on the bus'). Mild aspect/mood mismatch."
+  },
+  {
+   "seed": 94,
+   "known": "මම එකම එකා ඉංග්‍රීසි කතා කරන",
+   "en": "I'm the only one who speak English",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English gloss has a subject-verb agreement error ('the only one who speak' → should be 'speaks'); 3sg-s rule (thirdPersonGender) mis-applied. Authoring/English-quality defect, not a Sinhala answerability issue."
+  },
+  {
+   "seed": 98,
+   "known": "ඔයාට ඕනේද ක්‍රීඩා කරන මොකක්හරි වෙනස්",
+   "en": "do you want playing something else?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English is ungrammatical ('do you want playing' → 'do you want to play'); ක්‍රීඩා කරන is the participle 'playing' (S98) being forced after 'want', which English does not allow. Several S98 prompts mix 'playing' as gerund vs the want-frame awkwardly."
+  },
+  {
+   "seed": 90,
+   "known": "නියමයි ඒක",
+   "en": "great it is",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Word-salad gloss 'great it is' for a build item; the natural English is 'it is great' (cf. the seed's other prompts). Minor authoring defect in an isolated build phrase."
+  },
+  {
+   "seed": 76,
+   "known": "මම ඉගෙනගත්ත ගෙදර ගිහිල්ලා ගොඩාක් ඕනේ",
+   "en": "I've learnt that and I want very much to do more",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Misaligned: ගෙදර ගිහිල්ලා = 'having gone home' (uses ගෙදර, only introduced at S95, two seeds AHEAD of S76) yet the English says 'and I want very much to do more' with no 'home'/'gone' and no source for 'more'. Both a forward-reference and a content mismatch in a single S76 USE prompt."
+  },
+  {
+   "seed": 111,
+   "known": "ඒ නිසා මම ඒ ගැන ආශා කළා",
+   "en": "that is why I hoped for our brain",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "SYSTEMATIC (~57 prompts, S111-S121): bare ආශා / ආශා කළා glossed 'hope / hoped (for)' is NOT an introduced lemma. The only ආශා-family entry is S29 ඉදිරිය ගැන ආශාවෙනවා = 'I'm looking forward to'; bare ආශා='hope' was never taught and collides with the actually-taught 'hope/hoped' = බලාපොරොත්තු වෙන්න/වුණා (S107/108). Learner cannot produce 'hope/hoped' from ආශා. Add a release for ආශා='hope' or re-author these prompts to use බලාපොරොත්තු."
+  },
+  {
+   "seed": 111,
+   "known": "මම නව දෙයක් ඉගෙනගත්තාම මම ලෑස්ති",
+   "en": "when I learn something new I'm ready",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "SYSTEMATIC (~52 prompts, S105/S111-S121): bare ලෑස්ති glossed 'ready' is not introduced. Inventory only has S26 M-LEGO ලෑස්තිව ඉන්නවා වගේ = 'as if I'm nearly ready'; standalone ලෑස්ති='ready' (used as predicate 'I'm ready', 'ready to use the car', etc.) was never debuted. Learner has no taught route from ලෑස්ති to English 'ready'."
+  },
+  {
+   "seed": 111,
+   "known": "මම ඒ ගැන ඉගෙනගත්තාම මම ලිහිල් වෙනවා",
+   "en": "when I learn about that I relax",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "SYSTEMATIC (~24 prompts, S111-S121): ලිහිල් / ලිහිල් වෙනවා glossed 'relax' is not introduced as 'relax'. The taught word for 'relax' is විවේක ගන්න (S110); the only ලිහිල්-family inventory entry is S69 ලිහිල්ල='young'. ලිහිල්='relax' was never taught, so the prompt is unanswerable and also conflicts with the established 'relax'=විවේක ගන්න."
+  },
+  {
+   "seed": 103,
+   "known": "ගොඩාක් මිනිස්සු ඉංග්‍රීසි කතා කරනවා",
+   "en": "many people speak English",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "SYSTEMATIC (7 prompts, S103): මිනිස්සු glossed 'people' is not introduced. 'people' was only taught inside the relative-clause head අය (S22 ...කරන අය, S34 වෙන අය) and as 'new people' මිනිස්සු appears in S109's inventory entry අලුත් මිනිස්සු='new people' — but S103 (where these prompts live) precedes S109, so bare මිනිස්සු='people' is not yet available at S103. Use අය or move to >=S109."
+  },
+  {
+   "seed": 110,
+   "known": "අපි මිතුරෝ ඉවර කළාට පස්සේ මට ආසයි විවේක ගන්න",
+   "en": "we're friends and after we finish I'd like to relax",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "මිතුරෝ glossed 'friends' is not introduced; the taught word for 'friends' is යාළුවන් (S51 මගේ යාළුවන්='my friends'). Learner cannot produce 'friends' from මිතුරෝ."
+  },
+  {
+   "seed": 106,
+   "known": "මම විතරයි ඕනේ තේරුම් ගන්න",
+   "en": "I just need to understand",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "තේරුම් ගන්න glossed 'understand' is not an introduced lemma; the taught form for 'understand' is තේරෙනවා (S74) / ඔයාට තේරෙන (S58). තේරුම් ගන්න is a distinct lexicalisation never debuted (also recurs S122 තේරුම් ගන්න පහසු). Use the taught තේරෙනවා family."
+  },
+  {
+   "seed": 103,
+   "known": "මම හමුවුණා ගොඩාක් මිනිස්සු",
+   "en": "I've done many things",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Sinhala = 'I met many people' (හමුවුණා 'met', මිනිස්සු 'people'); the English 'I've done many things' is a completely different sentence. Gross known/target mismatch — the English is unproducible from the prompt and vice versa. (හමුවුණා also not in inventory.)"
+  },
+  {
+   "seed": 111,
+   "known": "ළමා ඒ ගැන ඒ ගැන ආශා කළේ නෑ",
+   "en": "I didn't hope for our brain",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken/nonsensical Sinhala: opens with ළමා ('child', wrong subject for English 'I'), and contains a doubled ඒ ගැන ඒ ගැන. No coherent source for the English 'I didn't hope for our brain'."
+  },
+  {
+   "seed": 118,
+   "known": "මMA ශාලාවේ ඉන්නකොට හොඳ දැනෙනවාට",
+   "en": "I felt better when we were in the pub",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Latin-letter contamination: the prompt token 'මMA' contains the Roman letters 'MA' embedded in Sinhala script (corrupted 'මම'). Broken Sinhala text."
+  },
+  {
+   "seed": 121,
+   "known": "ෙමෙක ගාඩිය ආශා නෑ කියලා අසාමාන්‍ය",
+   "en": "it's unusual that you don't like the car",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Malformed Sinhala: 'ෙමෙක' has free-floating/duplicated vowel signs (ePREFIX rendering error) and is not a valid word; the English supplies a subject 'you' with no Sinhala source. Broken prompt."
+  },
+  {
+   "seed": 109,
+   "known": "ඔයා කළ යුතුයි ඉගෙනගන්න ඉංග්‍රීසි",
+   "en": "you must want to learn English",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "SYSTEMATIC across S109 (~3 prompts): කළ යුතුයි = 'must' and the verb follows directly (= 'you must learn English'), but the English inserts an unsourced 'want' ('you must WANT to learn/see/change'). The 'want' has no Sinhala carrier — unproducible material."
+  },
+  {
+   "seed": 111,
+   "known": "මම ඒ ගැන ආශා කළා කියලා ඔයා දන්නවාද?",
+   "en": "do you know I hoped for our brain?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "SYSTEMATIC in S111: the English injects 'our brain' (the S111 LEGO මොළය) where the Sinhala only has ඒ ගැන = 'about that'. Throughout S111, ඒ ගැන is glossed 'for/about our brain' with no මොළය token in the prompt — the English carries material absent from the Sinhala."
+  },
+  {
+   "seed": 123,
+   "known": "අදහසක් ඕනේ",
+   "en": "I want a idea",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "SYSTEMATIC English-article defect in S123: 'a idea' (S123), 'a unusual idea' (ඒක අසාමාන්‍ය අදහසක්), 'a easier idea' (ඒක පහසු අදහසක්) — ungrammatical 'a' before vowel-initial words; should be 'an'. Authoring/naturalness defect on the produced English side."
+  },
+  {
+   "seed": 126,
+   "known": "මම ඒ ගැන මොළේ ගැන ලිහිල් වෙනවා",
+   "en": "I relax with my brain about that",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "ලිහිල් වෙනවා is glossed 'relax' but 'relax' was taught only as විවේක ගන්න (S110). The lemma ලිහිල් is not introduced (S69 ලිහිල්ල = 'young', unrelated sense), so the learner has no taught English for this — unanswerable. Recurs across 5 S126 prompts."
+  },
+  {
+   "seed": 126,
+   "known": "මම ඒ ගැන හැඩය ගැන ආශා කළා",
+   "en": "I hoped about the shape of that",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "ආශා/ආශා කළා is glossed 'hope/hoped', but the only taught form of this lemma is S29 ඉදිරිය ගැන ආශාවෙනවා = 'I'm looking forward to' (and S51 ආසාවෙනවා = 'enjoy'). 'hope/hoped' was taught as a different lemma බලාපොරොත්තු (S107/S108). The mapping ආශා→'hope' is both untaught and a ZUT-style collision with බලාපොරොත්තු→'hope'. Recurs across ~8 S126 prompts; also pulls in 'ask' from ඇහෙන්නේ (untaught in that slot)."
+  },
+  {
+   "seed": 133,
+   "known": "මට ලැබෙනවා කෙනෙක් මුණ ගැහෙන්න",
+   "en": "I get to meet someone",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "මුණ ගැහෙන්න is glossed 'to meet', but 'to meet' was taught as හම්බවෙන්න (S18). The lemma මුණ ගැහෙ- is not in the inventory, so the learner has no taught English for it. Recurs across 7 prompts (S133, S138)."
+  },
+  {
+   "seed": 128,
+   "known": "අපි කලිං එහෙම වැඩ කළා",
+   "en": "we used to work like that",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "එහෙම is glossed variously 'like that / that' but is never introduced in the inventory. No taught English for the learner to produce. Recurs across 9 prompts (S128, S147)."
+  },
+  {
+   "seed": 148,
+   "known": "මට තේරුම් ගන්න බැරි වුණා",
+   "en": "I couldn't understand",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "තේරුම් ගන්න is glossed 'understand', but 'understand' was taught only as තේරෙනවා/තේරෙන (S58/S74). The phrasal තේරුම් ගන්න is a distinct (active) lemma not introduced. Recurs across 4 prompts (S141, S148, S149)."
+  },
+  {
+   "seed": 144,
+   "known": "මම අවදි වුණා මීට පෙර",
+   "en": "I woke earlier",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "මීට පෙර is glossed 'earlier', but 'earlier' was taught as ඊට කලිං (S143). The lemma පෙර is never introduced. Recurs across 5 prompts (S144, S147, S148)."
+  },
+  {
+   "seed": 132,
+   "known": "ඒක පෙරට වඩා අඩුවෙන් අමාරු",
+   "en": "that's less difficult than before",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "පෙරට වඩා is glossed 'than before'; වඩා='than' is taught (S42) but පෙර='before' is not (before was taught as කලිං, S25). Untaught content word. Recurs in 2 S132 prompts."
+  },
+  {
+   "seed": 147,
+   "known": "ඔයා මොනවද දිටුවේ",
+   "en": "what did you saw",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "The WH word මොනවද 'what' is not introduced — 'what' was taught as මොකද/මොකක්ද (S12/S22/S132). මොනවද is a distinct untaught form. Recurs in 3 prompts (S147, S150)."
+  },
+  {
+   "seed": 144,
+   "known": "ඔයා කවදා අවදි වුණේ?",
+   "en": "when did you woke?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "WH word කවදා 'when' is not introduced anywhere in the inventory; the only taught time/WH words are කොහොමද/කොහේද/ඇයි/මොකද. Unanswerable WH. Recurs in 2 prompts (S144, S150)."
+  },
+  {
+   "seed": 131,
+   "known": "සියල්ල වටේට යනවා",
+   "en": "everything is going around",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "සියල්ල 'everything' is not introduced — 'everything' was taught as ඔක්කොම (S45). Untaught synonym. Recurs in 2 prompts (S131, S141)."
+  },
+  {
+   "seed": 136,
+   "known": "ඇත්තෙන්ම ඔයාට ඇගෙන් අහන්න පුළුවන්",
+   "en": "of course you can ask her",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ඇගෙන් 'from her' (ablative of ඇය) is the source of English 'ask her', but no ablative pronoun form has been introduced (only genitive ඇගේ S21, dative ඇයට S17). The 'her' object here has no taught carrier. 2 prompts (S136)."
+  },
+  {
+   "seed": 142,
+   "known": "මම ස්තූතිවන්ත ඒ ගැන ඉගෙනීම",
+   "en": "I'm grateful to you for helping me learn that",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "The deverbal noun ඉගෙනීම 'learning' is glossed as part of 'helping me learn / learning'; 'to learn' was taught as ඉගෙනගන්න (S2, a verb). The nominalised ඉගෙනීම is not introduced as its own item. Recurs across ~7 prompts (S142, S146)."
+  },
+  {
+   "seed": 138,
+   "known": "ඔයාට අපිට ඉගෙන්වන්න පුළුවන්ද",
+   "en": "can you to help us to learn?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ඉගෙන්වන්න 'to teach' is not introduced (causative of learn). The English 'help us to learn' has no taught carrier for the teach/help-learn element. Single prompt but a clear gap (English is also ungrammatical, see content_quality)."
+  },
+  {
+   "seed": 131,
+   "known": "එතැන කවුරුහරි කතා කරනවා",
+   "en": "there is someone talking",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "කවුරුහරි 'someone' (free-choice indefinite) is not introduced; the taught 'someone' is the molecular වෙන කෙනෙක්/කෙනෙක් (S5). Single prompt."
+  },
+  {
+   "seed": 137,
+   "known": "කවුරුත් පරිපූර්ණ නෑ",
+   "en": "no one is perfect",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "කවුරුත් 'no one' (the -වත්/-ත් universal/negative indefinite) is not introduced. It is licensed by the negator නෑ so it is NOT an NPI violation, but the lemma itself has no taught English gloss for the learner. Single prompt."
+  },
+  {
+   "seed": 139,
+   "known": "කලින් ආරම්භ කරන්න ඕනේ",
+   "en": "I want to start early",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "ආරම්භ කරන්න 'to start' is not introduced — 'to start' was taught as පටන් ගන්න (S23). Untaught synonym. Single prompt."
+  },
+  {
+   "seed": 144,
+   "known": "ඔයා අවදි වුණාද ඊයේ රාත්‍රියේ?",
+   "en": "did you woke last night?",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "රාත්‍රිය 'night' is not introduced — 'night/tonight' was taught with රෑ (S31 මේ රෑ, S42 ඊයේ රෑ). රාත්‍රි is an untaught literary synonym. Single prompt."
+  },
+  {
+   "seed": 128,
+   "known": "මම කලිං ඒක වැඩිපුර කළා",
+   "en": "I used to do that more",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "වැඩිපුර 'more' is not introduced — 'more' was taught as වැඩිය (S23) and 'than'=වඩා. Untaught synonym. Single prompt."
+  },
+  {
+   "seed": 150,
+   "known": "ඔයාට මට කියන්න පුළුවන්ද ඔයා කොහෙන්ද",
+   "en": "can you tell me where you are?",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "කොහෙන්ද 'where (from)' is the ablative WH; 'where' was taught as කොහේද (S70). The ablative form is untaught, and it is mis-glossed as locative 'where you are'. Single prompt."
+  },
+  {
+   "seed": 144,
+   "known": "මම අවදි වුණා ඒත් නැවත නිදා ගත්තා",
+   "en": "I woke but I didn't sleep well",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "නැවත 'again' is not introduced — 'again' was taught as ආයෙ (S61). Untaught synonym. (Also note the English gloss 'didn't sleep well' has no source for 'well' and contradicts නිදා ගත්තා which is affirmative 'slept' — content defect.) Single prompt."
+  },
+  {
+   "seed": 149,
+   "known": "මේක ඉතා අමාරු නෑ ඒ නිසා මම බලාපොරොත්තු වෙනවා ඔයා ඉක්මනට ඉවර කරයි වේවි",
+   "en": "this isn't very difficult so I hope you'll finish soon",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "මේක 'this' (and ඉතා 'very') are not introduced — 'very' was taught via ගොඩක්, and there is no taught demonstrative 'this'. The S126 'this work' (මේ වැඩ) prompts share the same untaught මේ='this'/වැඩ='work'. Low because peripheral."
+  },
+  {
+   "seed": 147,
+   "known": "ඇය මාව ළිහිල් නෑ ලෙස ඉන්නවා දිටුවා කරුණාවන්ත",
+   "en": "she was very kind when she saw me feeling nervous",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "කරුණාවන්ත 'kind' is not introduced — 'kind' was taught as ගොඩක් හොඳ (S142). Untaught synonym (and the Sinhala of this prompt is also garbled — see content_quality). Single prompt."
+  },
+  {
+   "seed": 142,
+   "known": "මම ස්තූතිවන්ත ඉංග්‍රීසි",
+   "en": "I'm so grateful that you speak English with me",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Systematic across the S142 USE set: the Sinhala is a 2-3 word fragment (ස්තූතිවන්ත + ඉංග්‍රීසි / ඒ ගාවෙ / ඒ ගෙදර / ඒ ගැන) while the English is a full authored sentence ('that you speak English with me', 'for working with them', 'that you can go home with us', 'for helping me learn that'). Most of the English has NO source token in the Sinhala — unproducible. ~10 S142 prompts affected. Also note ඒ ගාවෙ is being used as 'with them/you/working' with no taught gloss (ගාවෙ not in inventory)."
+  },
+  {
+   "seed": 146,
+   "known": "ඒ ගැන ක්‍රියා",
+   "en": "that seems okay to me",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Systematic across the S146 set: Sinhala fragments (ඒ ගැන ක්‍රියා, ඉංග්‍රීසි ක්‍රියා ඒ ගැන, ක්‍රියා ඒ ගෙදර) map to long English sentences with unsupported material ('seems okay to me', 'seems to be working okay', 'going home seems good'). ගාවෙ recurs untranslated, and ක්‍රියා alone is stretched to 'seems to be working'. ~15 prompts have English far exceeding the Sinhala. Unproducible."
+  },
+  {
+   "seed": 147,
+   "known": "ඇය මාව ළිහිල් නෑ ලෙස ඉන්නවා දිටුවා කරුණාවන්ත",
+   "en": "she was very kind when she saw me feeling nervous",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken Sinhala syntax: word order is scrambled (verb දිටුවා precedes the predicate adjective කරුණාවන්ත clause-finally with no connective), ළිහිල් නෑ ලෙස is not idiomatic, and the clause does not parse as a native sentence. Nonsensical prompt."
+  },
+  {
+   "seed": 130,
+   "known": "ඒක අසාමාන්‍ය පුදුම දෙයක්",
+   "en": "that is a unusual surprise",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English article-allomorphy errors recur on the target side: 'a unusual' (S130), 'a interesting' (S130), 'a exciting surprise'/'a exciting idea' (S132) — should be 'an'. Authoring defect in the produced English, ~4 prompts."
+  },
+  {
+   "seed": 144,
+   "known": "ඔයා කවදා අවදි වුණේ?",
+   "en": "when did you woke?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English past-question agreement errors recur: 'did you woke' (S144 x3), 'did you saw' (S147 x2), 'did you used to feel' (S128) — should use the base form after 'did' ('did you wake/see'). ~6 prompts. Target-side authoring defect."
+  },
+  {
+   "seed": 127,
+   "known": "මස්තිෂ්කයට විවේක ඕනේ",
+   "en": "the brain want to relax",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English 3sg agreement error: 'the brain want to relax' should be 'wants'. Also S132 'that's less easier' (double comparative) and S138 'can you to help us to learn' (ungrammatical) are isolated produced-English defects."
+  },
+  {
+   "seed": 154,
+   "known": "සෙනසුරාදා ඒ ගාවෙ ඉගෙනීම",
+   "en": "do you want to learn with them on saturday?",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "The postposition ගාවෙ ('near/at/with') is never introduced and is not in freeClass. It is glossed across these prompts as 'with them'/'with us'/'with you' — but the learner has only been given එක්ක for comitative 'with' (S1) and ඒ අය/ඔවුන් සමග for 'them' (S87/S134). ගාවෙ recurs in 24 prompts across seeds 154,155,156,158, every one glossing a 'with X' the learner cannot produce. Systematic unanswerable vocab gap (also a content defect — see content_quality)."
+  },
+  {
+   "seed": 154,
+   "known": "සෙනසුරාදා රෑ ඉගෙනීම ගෙ",
+   "en": "do you want to learn that on saturday night?",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "The nominal/gerund ඉගෙනීම ('learning' as a noun) is never introduced — only the infinitive ඉගෙනගන්න 'to learn' (S2) and ඉගෙනගන්නවා 'I've been learning' (S38) exist. ඉගෙනීම is glossed 'learning'/'to learn'/'learn that' across 8 prompts (seeds 154,155,158). A distinct nominal lemma the learner has not been given."
+  },
+  {
+   "seed": 156,
+   "known": "රෙස්ටෝරන්ට් ගෙ ඒ ගාවෙ ඒ ගෙ",
+   "en": "do you want to go to a restaurant with them tonight?",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "The bare fragment ඒ ගෙ has no inventory mapping (it is neither ගෙදර 'home' S95 nor a known lego) and is glossed wildly inconsistently — 'tonight' (S156), 'us'/'together' (S154,S158), 'with you' (S156). It is incoherent Sinhala carrying English material (tonight / us / together) with no taught source. Recurs in seeds 154,156,158."
+  },
+  {
+   "seed": 154,
+   "known": "සෙනසුරාදා ඉංග්‍රීසි ඒ ගාවෙ",
+   "en": "do you want to speak English with us on saturday",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Seeds 154–158 USE prompts are systematically broken: the Sinhala is a telegraphic, ungrammatical fragment (here literally 'saturday English with-them') while the English gloss carries an entire 'do you want to speak ... with us?' question frame — the verb 'speak', the modal 'want', the question machinery and 'us' all have NO source token in the Sinhala. These prompts are unproducible/unanswerable as authored. Affects the bulk of the USE rows in 154,155,156,158 (e.g. 'සෙනසුරාදා ඒ ගාවෙ ඒ ගැන' → 'do you want to work on that on saturday?'; 'රෙස්ටෝරන්ට් ගෙ ඒ ගෙදර' → 'do you want to go to a restaurant or go home?'). Looks like a generation/alignment failure for this block of seeds."
+  },
+  {
+   "seed": 151,
+   "known": "මම ආශා කළ දේ మమා ඔයාව දිකිනකොට",
+   "en": "what I was hoping was when I saw you",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Foreign-script contamination: the token మమా is written in TELUGU letters (LETTER MA), not Sinhala — a corrupt rendering of මම 'I'. Additionally දිකින is a malformed spelling of the verb 'see' (should be දකින/දැක). The prompt is garbled and cannot be reliably read by a Sinhala learner."
+  },
+  {
+   "seed": 174,
+   "known": "මම කියන දේ ඒක නෙවෙයි",
+   "en": "that isn't what I'm saying",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Negator/copula spelling drift within the batch: 'isn't/wasn't' is rendered three different ways — නෙමේ (introduced S159, glossed 'that isn't'), නෙමෙයි (seeds 151,159), and නෙවෙයි (seed 174). Also seed 174 introduces මේක/මේකට/මේකයි ('this'/'this'-dat/'this is') and uses them in build/use rows, but the proximal demonstrative 'this' lemma is not in the inventory (only ඒක 'it/that' S123). Minor answerability risk; mostly an authoring-consistency defect."
+  },
+  {
+   "seed": 163,
+   "known": "මමතා හිතන්නේ",
+   "en": "I think that",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Spelling/decomposition oddity: 'I think that' is authored as the fused string මමතා (= මම 'I' + spurious තා) rather than plain මම. It is introduced as a molecular lego at S163 so it is answerable, but the component row glosses මමතා='I' and the form is a non-standard spelling of the pronoun. Recurs cleanly in seeds 163,164,165,166,172,173."
+  },
+  {
+   "seed": 151,
+   "known": "මමා ඒ ගෙදරදී ආශා කළ දේ ඒ නෙමෙයි",
+   "en": "that wasn't what I was hoping at home",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The pronoun 'I' is intermittently spelled මමා instead of මම (7 prompts across seeds 151,155,158). Answerable (reads as 'I') but an inconsistent-spelling authoring defect worth flagging alongside the seed 154–158 generation problems."
+  },
+  {
+   "seed": 182,
+   "known": "මම කොහෙවත් හොයනවා මගේ යතුරු",
+   "en": "I'm looking for my keys anywhere",
+   "category": "npi_violation",
+   "severity": "high",
+   "detail": "NPI කොහෙවත් 'anywhere' used in a PLAIN POSITIVE DECLARATIVE — no clause-final negator (නෑ/බෑ), no -ද question clitic, no conditional/DE licensor anywhere in the clause. Per npiLicensing the ONLY violation type is exactly this: a -වත් indefinite in a positive declarative. Sinhala would use a bare indefinite (කොහේ හරි) here, and the English 'looking for my keys anywhere' is itself unidiomatic. Contrast the well-formed S182 USE rows where කොහෙවත් sits under දැකලා තියෙනවාද (-ද) or under ඕනේ නෑ."
+  },
+  {
+   "seed": 196,
+   "known": "මේක තමයි අලුත්ම අදහස",
+   "en": "this is the latest idea",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Deictic මේක 'this' is not introduced — the nearest taught anaphor is ඒක 'it/that's' (S123); 'this' as a proximal demonstrative is new content the learner has no English peg for. Recurs in S196 'ඔයා මේක අහලා තියෙනවාද' (have you heard this) and 'මේක තමයි අලුත්ම අදහස කියලා මම හිතනවා'. (The focus clitic තමයi is function-class and the copula 'is' is English-supplied, so the gap is මේක specifically.)"
+  },
+  {
+   "seed": 197,
+   "known": "එයා ගුරුවරයෙක් හැටියට වැඩ කරනවා",
+   "en": "he works as a teacher",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Colloquial 3rd-person pronoun එයා 'he/she' is not in the inventory — the taught 3sg pronouns are ඔහු 'he's' (S130) and ඇය 'she's' (S136). එයා recurs across S197/S198 ('එයා ගුරුවරයෙක්...', 'එයා දැන් සභාව...'). Low because it is a closed-class pronoun (the learner's L1) glossed to an already-taught English 'he', so answerability is not really at risk; flagged for consistency."
+  },
+  {
+   "seed": 200,
+   "known": "අපි හැමදේම ඉක්මනින් ඉවර කරනවා",
+   "en": "we finish everything in time",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "හැමදේම 'everything' is not introduced — 'everything' was taught only via ඔක්කොම (S45). Different lexeme for an already-taught English word; recurs in several S200 rows ('ඒ අය හැමදේම ඉක්මනින් ඉවර කරනවා', 'ඒ අය කියනවා ඒ අය ඕනේ කරන්න හැමදේම...'). Low: the English gloss is already in the learner's repertoire, only the Sinhala surface is novel."
+  },
+  {
+   "seed": 199,
+   "known": "මගේ දුව ඔෆිස් එකක වැඩ කරනවා",
+   "en": "my daughter wants to work in an office",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English adds 'wants to' with NO Sinhala source — the prompt is plain වැඩ කරනවා 'works', with no ඕනේ/desiderative anywhere. Systematic across S199: 'මගේ පුතා ... වැඩ කරනවා' → 'my son wants to work', 'මගේ අම්මව ...' → 'my mother wants to work', 'මගේ යාළුවා ...' → 'my friend wants to work'. Compare S197/S198 where the identical frame X වැඩ කරනවා is correctly glossed 'X works'. Unproducible material in the target English."
+  },
+  {
+   "seed": 199,
+   "known": "මගේ දුව ඔෆිස් එකක වැඩ",
+   "en": "my daughter work in an office",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Ungrammatical English gloss 'my daughter work in an office' (missing 3sg -s) on the BUILD rows of S199 ('මගේ පුතා ... වැඩ' → 'my son work in an office', 'මගේ යාළුවා ... වැඩ' → 'my friend work in an office'). The bare-LEGO BUILD strips the verb but leaves a 3sg subject, producing a defective sentence."
+  },
+  {
+   "seed": 195,
+   "known": "මගේ සල්ලි ළිහිල් කරලා",
+   "en": "I left my money",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Wrong lexeme: ළිහිල් කරලා is used to mean 'leave/left', but ළිහිල් was taught as 'nervous' (S147 ළිහිල් නෑ) and ලිහිල්ල as 'young' (S69); 'leave/left' is යන්නට (S119) / අමතකවෙලා (S185). Systematic in S195 ('මගේ සල්ලි ළිහිල් කරලා ගිය මේස පිට' → 'I left my money on the table', 'මගේ සල්ලි ලබන සතියේ ළිහිල් කරලා' → 'I'll leave my money next week'). The English is also broken in 'ඔොළා ගේ සල්ලි ළිහිල්' → 'your money left there'."
+  },
+  {
+   "seed": 200,
+   "known": "ඒ අය කියනවා ඒ අය ඕනේ මම ඥග ඉන්න්න",
+   "en": "they say they want to be with me",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "ඥග is not a Sinhala word — it is garbled text standing in for the comitative 'with X' (එක්ක). Recurs across S200: 'ඒ අය ... මගේ පුතා ඥග' → 'with my son', 'ඒ අය ... ඔොගා ඥග' → 'with you'. Also the verb is mistyped ඉන්න්න (for ඉන්න 'to be') and ගේදරදී (for ගෙදරදී 'at home'). These rows are unreadable as Sinhala and unanswerable."
+  },
+  {
+   "seed": 183,
+   "known": "මම ඔොළා ගේ යතුරු දැකලා නෑ",
+   "en": "I haven't seen your keys",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ඔොළා / ඔොළා ගේ is a recurring misspelling of ඔයා 'you' / ඔයාගේ 'your'. Systematic across S183, S185, S187, S190, S191, S192, S193, S195 (e.g. 'ඔොළා දැන් දක්වා ලෑස්තිද?', 'ඔොළා ගේ අම්මව ළඟ ...', 'ඔොළා හෙට රෑ බිස්සද?', 'ඔොළා ගේ සල්ලි කොහෙද?'). Not an answerability bug (the intended word is taught) but a pervasive Sinhala spelling defect that should be normalised to ඔයා/ඔයාගේ."
+  },
+  {
+   "seed": 176,
+   "known": "මමතා හිතන්නේ ලබන අවුරුද්දේ හොඳ වෙනවා",
+   "en": "I think that next year will be good",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "මමතා is garbled for මම + the complementiser — the inventory's own S163 entry 'මමතා හිතන්නේ' = 'I think that' carries the same corruption (should be මම ... හිතන්නේ ... කියලා). Appears twice in S176 ('මමතා හිතන්නේ ඔහුට පුළුවන්ද ඒක කරන්න' → 'I think he'll be able to do it'). Sinhala surface is malformed; the complementiser 'that' has no clean source token."
+  },
+  {
+   "seed": 213,
+   "known": "අපිට වැටහෙන්නේ නෑ ඒ අය ලබා ගන්නයි උත්සාහ කරන්නේ කියලා",
+   "en": "we don't know what they're trying to achieve",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "වැටහෙනවා (to grasp/understand) is used to render 'know', but that lemma is NOT in the introduced inventory. The learner has only තේරෙනවා 'understand' (s74), දන්නවා/දන්නේ 'know' (s59/s10) and වැටහෙනවා is a distinct unintroduced verb. Every parallel S213 prompt for the same English uses දන්නේ නෑ (line 'ඒ අය ලබා ගන්නයි උත්සාහ කරන්නේ කියලා මම දන්නේ නෑ'), so this one line is an isolated unanswerable swap. Single occurrence."
+  },
+  {
+   "seed": 219,
+   "known": "for a while ළිහිල් කරගෙන ඉන්නවා හොඳ",
+   "en": "it was nice to relax for a while",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Untranslated English 'for a while' is embedded verbatim INSIDE the Sinhala known prompt (Latin script leaking into the known side). The learner would see English text in their L1 prompt. This is the only Latin-in-known leak in the batch but it is a hard authoring defect — the Sinhala should read e.g. ටිකක් වෙලාවක්."
+  },
+  {
+   "seed": 209,
+   "known": "මගේ දුව ගොඩ වෙලාවක් ගත කරන්නට ඕනේ ඉගෙන ගන්න / ඇය ගොඩ වෙලාවක් ගත කරන්නට ඕනේ / කණ්ඩායමක් ලෙස හමු වෙන්න ඕනේ",
+   "en": "my daughter want to spend more time learning / she want to spend more time / want meeting as a group",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring English-target authoring defects in S209 (~6 prompts): (a) 3sg agreement missing — 'my daughter want', 'she want' (should be 'wants'); (b) ungrammatical 'want meeting as a group' — bare ඕනේ + gerund yields 'want meeting' instead of 'want to meet'. Sinhala is answerable; the English glosses are broken. The 3sg-add rule (thirdPersonGender) is being dropped on these subjects."
+  },
+  {
+   "seed": 208,
+   "known": "මම ඕනෑකමින් නෙමේ ළිහිල් / මම ළිහිල් ඕනෑකමින් නෙමේ / මම ළිහිල් නෑ ඕනෑකමින් නෙමේ",
+   "en": "I didn't want to nervous / I was nervous but didn't want to / I'm not nervous didn't want to",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Several S208 BUILD/USE prompts are agrammatical on BOTH sides: 'I didn't want to nervous' (no verb), 'I'm not nervous didn't want to' (two clauses fused with no connective). The Sinhala මම ඕනෑකමින් නෙමේ ළිහිල් is also word-salad (predicate-adjective stranded after the negator). These look like mechanical concatenations of fragments rather than authored sentences."
+  },
+  {
+   "seed": 213,
+   "known": "ඒ ලබා ගන්නයි ඒ අය ලබා ගන්නයි උත්සාහ කරන්නේ",
+   "en": "that's what they're trying to achieve",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "ලබා ගන්නයi is duplicated in the Sinhala ('ඒ ලබා ගන්නයි ඒ අය ලබා ගන්නයි...'), producing garbled known text. Same doubling appears in the sibling build 'ඒ ලබා ගන්නයි ඒ අය ඕනේ' => 'they want to achieve that'. Concatenation artifact; the cleft 'that's what' has no clean Sinhala source."
+  },
+  {
+   "seed": 205,
+   "known": "මගේ ප්‍රශ්නෙට ළිහිල් නෑ, අමතකවෙලා",
+   "en": "not nervous, I've forgotten",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Stray dative ප්‍රශ්නෙට ('to the question') sits in front of ළිහිල් නෑ with no counterpart in the English 'not nervous, I've forgotten'. Reads as an accidental token insertion; the sentence is also a bare comma-spliced fragment. Answerable but defective."
+  },
+  {
+   "seed": 211,
+   "known": "ඒයා අපිට කිව්වා ඒයා දන්නේ නෑ කියලා",
+   "en": "he told us that he don't know",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "3sg agreement error in the English target: 'he don't know' (should be 'he doesn't know'). The Sinhala is well-formed and answerable; defect is on the produced English. (Sinhala has no 3sg agreement, so the 3sg -s/does must be supplied by the gloss and was dropped.)"
+  },
+  {
+   "seed": 221,
+   "known": "ඔයා ෆුට්බෝල් බැලුවාද",
+   "en": "did you watched the football",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English do-support agreement error: 'did you watched' (should be 'did you watch'). The -ද question converges onto English 'did you watch...' correctly per questionNoDoSupport, but the lexical verb was left in past tense. Sinhala is answerable; English gloss is malformed. Similar minor S203 issue: bare ඔයා මොකද කරන්නේ glossed 'what would you do' carries conditional 'would' with no conditional marker present in the standalone build (the -ොත් licensor only appears in the longer USE forms)."
+  },
+  {
+   "seed": 226,
+   "known": "the මිනිහා මාව ලවා කිව්වා / that මිනිහා ... / a මිනිහා ...",
+   "en": "the man told me / that man ... / a man ...",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "ALL 8 seed-226 prompts embed LITERAL English determiners (Latin-script 'the', 'that', 'a') inside the Sinhala known text (e.g. 'the මිනිහා', 'that මිනිහා', 'a මිනිහා'). The known side must be pure Sinhala: 'that man' = ඒ මිනිහා, 'a man' = මිනිහෙක් (indefinite -ක්), and English a/the/that are SILENT on the known side per noArticleNoTo. By S227 the author correctly switches to ඒ මිනිහා, confirming this is a seed-226 authoring defect. Systematic across the whole seed."
+  },
+  {
+   "seed": 233,
+   "known": "ඔයාගේ අක්කාව දන්නා මිනිහෙකු ममා දන්නවා",
+   "en": "I know a man who knows your sister",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "The pronoun 'I' is written as ममා — two DEVANAGARI characters (U+092E मम) instead of Sinhala මම. Mixed-script corruption; the token is unreadable as Sinhala. Same corruption recurs at S241 ('ममා ඒක ඔහු ලවා දෙන්නේ ඕනේ')."
+  },
+  {
+   "seed": 241,
+   "known": "ममා ඒක ඔහු ලවා දෙන්නේ ඕනේ",
+   "en": "I want to give it to him",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Subject 'I' written as ममා (Devanagari मम), not Sinhala මම. Same mixed-script defect as S233. (Also note the build gloss drops the leading 'I' for 'I want to give it to him' — the subject is corrupted, not present.)"
+  },
+  {
+   "seed": 238,
+   "known": "ඊයේ ඔයා මාව ලවා කියන්නයි ඔහු ඔයා ලවා ඕනේ කළේ",
+   "en": "he wanted you to tell me yesterday",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Garbled / doubled Sinhala: the clause contains BOTH 'ඔයා මාව ලවා කියන්නයි' AND 'ඔහු ඔයා ලවා ඕනේ කළේ' mashed together with redundant duplicated causative constituents (ලවා appears twice with conflicting arguments). Reads as machine-assembled, not natural Sinhala; the intended 'he wanted you to tell me yesterday' would be ඊයේ ඔහු ඔයා මාව ලවා කියන්නයි ඕනේ කළේ."
+  },
+  {
+   "seed": 232,
+   "known": "ස්ත්‍රියක්",
+   "en": "an woman",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Component gloss for ස්ත්‍රියක් is 'an woman' — ungrammatical English article (should be 'a woman'). The indefinite suffix -ක් renders 'a/an' by frame (indefiniteSuffix rule); before a consonant it must be 'a'. Authoring defect in the English gloss."
+  },
+  {
+   "seed": 243,
+   "known": "කන්නයි දෙයක් / මම ඒකම කන්නයි ඉල්ලනවා / මම කන්නයි යන්නට කලිං ඉගෙන ගන්නයි ඕනේ",
+   "en": "something to eat / I ask for the same thing to eat / I want to learn before I go to eat",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Several seed-243 prompts have broken Sinhala constituent order around the infinitive කන්නයි 'to eat'. 'කන්නයි දෙයක්' is reversed (natural = දෙයක් කන්න 'something to eat'); 'ඒකම කන්නයි ඉල්ලනවා' places the infinitive between object and verb unnaturally; 'මම කන්නයි යන්නට කලිං ඉගෙන ගන්නයි ඕනේ' is jumbled (to-eat ... before going). Meaning is roughly recoverable but the Sinhala is not idiomatic — machine-assembled feel."
+  },
+  {
+   "seed": 245,
+   "known": "නනිකු කාලේ (component නනිකු => short)",
+   "en": "in a short time / short",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "නනිකු is not a standard Sinhala word for 'short' — appears to be a garbled/misspelt lexeme (the standard word is කෙටි, already taught as 'short' at S89, or පොඩි). It originates in the inventory itself (S245 නනිකු කාලේ) and propagates through 9 seed-245 prompts. Both a corrupted lexeme AND a known-side consistency clash with කෙටි=short. Learner CAN still produce 'short/in a short time' so it is answerable, but the Sinhala is defective."
+  },
+  {
+   "seed": 246,
+   "known": "හැබැයි (used as 'but' across S246/S247/S248)",
+   "en": "but",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "හැබැයි 'but' appears 7 times (S246, S247, S248) but is NOT in the introduced inventory; 'but' was taught via ඒත් (S19). Known-side synonym drift — a new untaught Sinhala connective. English 'but' is producible (L1 side), so answerable, but it breaks controlled-known consistency."
+  },
+  {
+   "seed": 230,
+   "known": "තරුණ (used as 'young' in S230/S233/S235)",
+   "en": "young / a young man / a young woman",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "තරුණ 'young' (4 prompts: S230 තරුණ මිනිහෙක්, S233 තරුණ කෙනෙකු/ස්ත්‍රියක්, S235 තරුණ කෙනෙකු) is not introduced; 'young' was taught via ලිහිල්ල (S69). Known-side synonym drift — different Sinhala lemma for an already-glossed English word. English producible; answerability intact, consistency only."
+  },
+  {
+   "seed": 230,
+   "known": "එයා / ඒයා (used as he/him in S230/S234/S237/S238/S239)",
+   "en": "he / him",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Informal 3rd-person pronoun එයා/ඒයා appears in 7 prompts but is not in the introduced inventory; 'he/him' was taught via ඔහු (S16, S176). Known-side synonym drift between the neutral ඔහු and colloquial එයා. English he/him producible; flagged as a consistency note, not an unanswerable gap."
+  },
+  {
+   "seed": 232,
+   "known": "කවුන්සිලේ (used as 'council' in S232/S234)",
+   "en": "the council",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "කවුන්සිලේ (English loan 'council') used in 'කවුන්සිලේ වෙනුවෙන් වැඩ කරනවා' = 'works for the council' (S232, S234), but 'council' was taught via සභාව (S198). Known-side synonym drift (native vs loanword). English producible; consistency note."
+  },
+  {
+   "seed": 240,
+   "known": "නිකම්ම (used as 'just' in S240)",
+   "en": "has just started",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "නිකම්ම 'just' in S240 ('මගේ තාත්තා නිකම්ම ... පටන් ගත්ත') is not introduced; 'just' for 'has just started' was taught via දැන් (S224/S228) and 'just'=විතරයි (S106). Other prompts in the same span correctly use දැන් for 'just'. Synonym drift; English producible."
+  },
+  {
+   "seed": 243,
+   "known": "සූදානම් (used as 'ready' in S243)",
+   "en": "ready to eat / I'm ready to eat",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "සූදානම් 'ready' (2 prompts, S243) is not introduced; 'ready' was previously glossed via ලෑස්ති(ව) ('nearly ready', S26). Known-side new lemma for an already-seen English concept. English 'ready' producible; consistency note only."
+  },
+  {
+   "seed": 226,
+   "known": "මාව ලවා කිව්වා / මාව ලවා ... (causative ලවා used from S226)",
+   "en": "told me / is trying to help me",
+   "category": "machinery_unlicensed",
+   "severity": "low",
+   "detail": "The causative/permissive ලවා ('have/make someone V') is used in seed-226 prompts ('මිනිහා මාව ලවා කිව්වා' = 'the man told me') but its first inventory debut is S237 (මාව ලවා ඕනේ කළේ). It is transparent causative morphology and the produced English ('told me', 'wanted me to tell you') is recoverable, so this is borderline rather than a hard unanswerable; flagged low because the carrier is introduced 11 seeds after its first prompt use."
+  },
+  {
+   "seed": 275,
+   "known": "ඔයා ගොඩ ඉස්සර වැඩ කරන්නයි ඕනේද?",
+   "en": "do you want to work longer?",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "The S275 LEGO introduced for 'longer' is වඩා දිගු (A-type, this seed). But EVERY S275 prompt renders 'longer' as ගොඩ ඉස්සර — neither වඩා nor දිගු appears anywhere. ගොඩ glosses 'too much' (S273) and ඉස්සර is not in the inventory at all (and as Sinhala means 'earlier/in front of', not 'longer'). The learner has been taught වඩා දිගු for 'longer' and is now shown an entirely different, untaught lexeme, so 'longer' is unanswerable from the introduced vocabulary. Affects all 8 S275 prompts (ටිකක් ගොඩ ඉස්සර, ගොඩ ඉස්සර, ගොඩ ඉස්සර බලා ඉන්නයි, etc.)."
+  },
+  {
+   "seed": 257,
+   "known": "ඒ නිල් දේ මම ලෙයිකයි",
+   "en": "I like that blue thing",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "'like' (the verb) is rendered with the English loanword ලෙයික- (ලෙයිකයි 'I like', ලෙයිකද 'do you like') in 3 S257 prompts. This loanword is nowhere in the inventory; 'like' was taught only as කැමති ('like to', S27/S271). The learner has no source mapping ලෙයික- → 'like', so the prompt is unanswerable, and the transliterated English loan is poor authoring for a controlled known side."
+  },
+  {
+   "seed": 252,
+   "known": "ඔයා පටන් ගන්නයි සූදානම් වෙන්නේ කවදාද",
+   "en": "when will you be ready to start",
+   "category": "machinery_unlicensed",
+   "severity": "med",
+   "detail": "The WH-question word කවදාද ('when') is used here and in two S255 prompts (සූදානම් වෙන්නේ කවදාද). The inventory introduces WH words කොහොමද/ඇයි/කොහේද/මොකද/කවුද/කීයෙද but NOT the interrogative 'when'. 'When' as a conjunction was given only as නම් (S55) and ඉන්නකොට (S34); the interrogative කවදාද is a new WH machinery item the learner has not been licensed to produce."
+  },
+  {
+   "seed": 258,
+   "known": "මට අර පැත්තේ මොකක් හරි පේනවා",
+   "en": "I can see something over there",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'can see' is rendered පේනවා (the experiential 'is visible / appears to one'). 'see' was introduced as බලන්න (S107), දකිනවා (S140), දැකලා (S182). පේනවා is a distinct lemma not in the inventory, so 'I can see' has no taught source here."
+  },
+  {
+   "seed": 257,
+   "known": "මම ඒ නිල් දේ ලෙයිකයි හැබැයි මට ඒක ඕනේ නෑ",
+   "en": "I like that blue thing but I don't want it",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'but' is rendered හැබැයි, which is not in the inventory; 'but' was introduced as ඒත් (S19). A novel untaught synonym for an already-established connective — the learner has no source for හැබැයි."
+  },
+  {
+   "seed": 257,
+   "known": "ඔහු ඒ නිල් දේ ඕනේ",
+   "en": "he wants that blue thing",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "datSubjectWant rule: the want-construction takes a DATIVE subject (ඔහුට ඕනේ 'he wants', as introduced S16). Here the subject is nominative ඔහු ('ඔහු ... ඕනේ'), so the dative-experiencer marking the construction relies on is dropped. Inconsistent with the S16/S34 ඔහුට ඕනේ pattern used everywhere else."
+  },
+  {
+   "seed": 275,
+   "known": "ගොඩ ඉස්සර",
+   "en": "longer",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "ගොඩ ඉස්සර is not valid Sinhala for 'longer' (it reads roughly 'too-much earlier/in-front'). The phrase is broken/nonsensical as a rendering of 'longer' independent of the vocab problem — a native speaker would not produce ගොඩ ඉස්සර to mean 'for longer'."
+  },
+  {
+   "seed": 254,
+   "known": "මම පෙරවරු ඉඳලා සූදානම්",
+   "en": "I've been ready since the afternoon",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "පෙරවරු means 'forenoon / a.m. / before noon', not 'the afternoon' (which is දවල් / පස්වරු; cf. අද දවල් 'this afternoon' S35). The English gloss contradicts the Sinhala. Also පෙරවරු is not in the inventory."
+  },
+  {
+   "seed": 251,
+   "known": "කලිං මම",
+   "en": "until after",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "This component splits the S251 LEGO incoherently: කලිං මම literally is 'before I' (කලිං 'before' + මම 'I'), but it is glossed 'until after'. The segmentation is meaningless as a standalone unit and the gloss does not correspond to the Sinhala. (The sibling component ඉවර කරන්නට 'to finish' glossed 'we finish' is also a loose split, lower severity.)"
+  },
+  {
+   "seed": 258,
+   "known": "එහා",
+   "en": "over",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "එහා ('over') is listed as a component for S258 but never appears in any S258 prompt — the prompts all use අර පැත්තේ ('over there'). It is an orphan component, and එහා is not in the inventory, so it teaches nothing the prompts exercise."
+  },
+  {
+   "seed": 253,
+   "known": "එයා මිනිත්තු කිහිපයකින් සූදානම් වෙනවා",
+   "en": "she will be ready in a few minutes",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "'she' is rendered එයා, a colloquial gender-NEUTRAL 3sg pronoun, while the gloss specifies 'she'. The inventory uses ඇය for 'she' (gender recoverable, S17/S136); එයා does not encode gender and is not introduced. Minor consistency/authoring wobble (the parallel S253 'I/we' prompts use the expected pronouns)."
+  },
+  {
+   "seed": 276,
+   "known": "ඉන්නත් පුළුවන් ගොඩ ඉස්සර",
+   "en": "can stay here for longer",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "ඉස්සර is not in the inventory by any lemma and is glossed here as 'longer'/'for longer'. 'Longer' was taught at S275 as වඩා දිගු; 'before/early' as කලිං/කලින්. ඉස්සර (lit. 'in front / before') is an unintroduced word AND a semantic mismatch for 'longer'. Recurs across S276 (ගොඩ ඉස්සර = 'for longer'/'for a little longer') — learner cannot map it. Should be වඩා දිගු."
+  },
+  {
+   "seed": 277,
+   "known": "වැදගත් රැස්වීමක් තිබෙනවා ඉස්සර",
+   "en": "got an important meeting early",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "Same unintroduced ඉස්සර re-used in S277 glossed 'early' (and 'early next week' in the long USE row). 'Early' is කලින් (S139). ඉස්සර is uncontrolled and inconsistent with the inventory's word for 'early'."
+  },
+  {
+   "seed": 277,
+   "known": "මම ගාව වැදගත් රැස්වීමක් තිබෙනවා",
+   "en": "I've got an important meeting",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "The possessive postposition ගාව ('in my possession / at me') is never introduced (0 inventory hits). The 'got' gloss sits on තිබෙනවා (S277 component='got'), but every USE row prepends subject+ගාව (මම ගාව / ඔහු ගාව / ඇය ගාව) to produce 'I've/he's/she's got'. ගාว is an unannounced new possessive carrier; introduces the 'have got' possessive construction without a debut. Recurs 5x in S277."
+  },
+  {
+   "seed": 295,
+   "known": "මම ඔව් දවසක් ඇතුළේ ඉවර කරන්නයි ඕනේ කළා කිව්වේ නෑ",
+   "en": "I didn't say that I wanted to finish in a day",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "'in a day' = දවසක් ඇතුළේ: neither දවසක් ('a day') nor the postposition ඇතුළේ ('within/in') is in the inventory by lemma (0 hits). Also recurs at S296 ('I didn't want to finish in a day'). Unanswerable adverbial. (Same row also has a stray ඔව් 'yes' with no English source — see content_quality.)"
+  },
+  {
+   "seed": 289,
+   "known": "මම ඔච්චරක් හිතනවා ඔහු ෂෙත්",
+   "en": "I wonder if he will be ready",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "ෂෙත් is not a Sinhala word (garbled/non-word). 'ready' is සූදානම් (S252/254/255). The build-row Sinhala is non-producible and the learner has no source for 'ready'. Treat as broken authoring; should use සූදානම්."
+  },
+  {
+   "seed": 285,
+   "known": "මම ඒ ජනයා ව දන්නේ නෑ කතා කරනවා",
+   "en": "she speaks very well",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Severe Sinhala↔English mismatch. The Sinhala reads ~'I don't know those people speak'; the gloss is 'she speaks very well'. The English 'very well' has no Sinhala source and the Sinhala negation/subject have no English counterpart. Nonsensical build scaffold."
+  },
+  {
+   "seed": 289,
+   "known": "මම ඔච්චරක් හිතනවා ඇය ඒ ගැන",
+   "en": "I wonder if she's going to come",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Build fragment 'I wonder if ... she about that' glossed as 'I wonder if she's going to come'. 'going to come' (එනවා/එන්නට) has no Sinhala source; ඒ ගැන ('about that') has no English counterpart. Incoherent assembled scaffold."
+  },
+  {
+   "seed": 290,
+   "known": "ඔහු ඒ ගැන ඔච්චරක්",
+   "en": "he knows something about it",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "'knows' (දන්නවා) is absent from the Sinhala, yet the gloss is 'he knows something about it'. ඔච්චරක් is the 'wonder if' minimizer (S289), not 'something'. Fragment does not support its gloss."
+  },
+  {
+   "seed": 295,
+   "known": "මම ඉවර කිව්වේ නෑ",
+   "en": "I didn't say that I wanted to finish",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "'wanted' (ඕනේ කළා) has no source in the Sinhala fragment 'මම ඉවර කිව්වේ නෑ' ('I didn't say finish'). Build scaffold under-supplies the embedded clause its gloss claims."
+  },
+  {
+   "seed": 296,
+   "known": "මම ඒ ගැන කිව්වා",
+   "en": "I said that I needed that",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "'needed' (ඕනේ/අවශ්‍ය) has no Sinhala source; Sinhala is 'I said about that'. Gloss adds an unproduced 'I needed that'. Mirror defect of S295."
+  },
+  {
+   "seed": 300,
+   "known": "මම ඔයාට සෙනෙහස් නෑ කියලා මම ව දකිනවාද?",
+   "en": "do you see me as unfriendly?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Subject/object are scrambled: Sinhala has මම ('I' nom) twice plus dative ඔයාට, but the gloss is 'do YOU see ME...'. The accusative experiencer is mis-assembled (should be ඔයා ... මාව දකිනවාද). Broken dative-experiencer scaffold; recurs in several S300 USE rows with double-accusative ඔයාව ව / මම ව."
+  },
+  {
+   "seed": 280,
+   "known": "විතරක්",
+   "en": "only the",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Component gloss 'only the' for විතරක්. විතරක් = 'only/just'; the article 'the' has no Sinhala source (noArticleNoTo: articles are silent/English-supplied, never tiled into a component gloss). Should gloss as 'only'."
+  },
+  {
+   "seed": 281,
+   "known": "පටන් ගන්නට",
+   "en": "you start",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Component gloss 'you start' for පටන් ගන්නට ('to start'). The subject 'you' is not in this component (it comes from the surrounding ඔයා ... කලිං frame); component should gloss 'start'/'to start', not carry a tiled subject pronoun."
+  }
+ ]
+}

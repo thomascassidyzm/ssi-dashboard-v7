@@ -1,0 +1,235 @@
+{
+ "course_code": "eng_for_urd",
+ "total_collisions": 151,
+ "counts": {
+  "fp_subgloss": 102,
+  "fp_inflection": 29,
+  "real_consolidate": 19,
+  "real_differentiate": 1,
+  "fp_wrong_data": 0
+ },
+ "release_blocker_count": 0,
+ "notes": "Clean course: ~67% of flags are component-only sub-glosses (Urdu function words/postpositions like میں, سے, کو, نہیں, وہ and compound-verb stems like کرنا glossed contextually inside larger LEGOs, never drilled bare), and ~19% are legitimate English target morphology (infinitive 'to X'/bare X, article the-X/X, number, subject agreement). The 20 real fixes are almost all drilled USE/build sentence pairs that say the same thing two ways — chiefly a dummy-'it's' inclusion split on '...ضروری ہے', a پسند=like/enjoy split, a بہت=very/so split, دلچسپ=interesting/exciting, ڈر=afraid/worried, and fragment-vs-full clauses; the one real_differentiate is gender-neutral اسے forcing both him/her on one drilled sentence. All low-frequency, so no release blockers.",
+ "real_fixes": [
+  {
+   "known": "جواب دینا",
+   "targets": [
+    "to answer",
+    "give an answer"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Re-gloss the 'give an answer' build to 'to answer' so جواب دینا maps 1:1.",
+   "canonical_english": "to answer",
+   "severity": "med"
+  },
+  {
+   "known": "کوئی مسئلہ نہیں",
+   "targets": [
+    "not a problem",
+    "no problem"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Pick one fixed expression; re-gloss the other to 'no problem'.",
+   "canonical_english": "no problem",
+   "severity": "med"
+  },
+  {
+   "known": "صرف کام کرنا تھا",
+   "targets": [
+    "only had to do",
+    "only had to do the work"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same phrase glossed with/without the object کام (work); use the full form everywhere.",
+   "canonical_english": "only had to do the work",
+   "severity": "med"
+  },
+  {
+   "known": "تھوڑا اور وقت",
+   "targets": [
+    "a little more time",
+    "for a little longer time"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Re-gloss the second drilled build to match the first.",
+   "canonical_english": "a little more time",
+   "severity": "med"
+  },
+  {
+   "known": "بہت خوش",
+   "targets": [
+    "very happy",
+    "so happy"
+   ],
+   "verdict": "real_consolidate",
+   "action": "بہت = very/so split; fix بہت to one canonical intensifier across drilled phrases.",
+   "canonical_english": "so happy",
+   "severity": "med"
+  },
+  {
+   "known": "میں اسے نہیں پوچھنا چاہتا تھا",
+   "targets": [
+    "I didn't want to ask her",
+    "I didn't want to ask him"
+   ],
+   "verdict": "real_differentiate",
+   "action": "اسے is gender-neutral (him/her); one identical drilled prompt yields both — differentiate the Urdu (use اُس کو / اُس لڑکی کو vs masculine) or fix to one canonical gender so it maps 1:1.",
+   "canonical_english": "I didn't want to ask him",
+   "severity": "med"
+  },
+  {
+   "known": "ایک لفظ یاد کرنا",
+   "targets": [
+    "a word to remember",
+    "to remember a word"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same intention, two word orders across build/use; pick one canonical English.",
+   "canonical_english": "a word to remember",
+   "severity": "med"
+  },
+  {
+   "known": "کوشش کرنے کی کوشش کر رہا ہوں",
+   "targets": [
+    "trying to try",
+    "I'm trying to try"
+   ],
+   "verdict": "real_consolidate",
+   "action": "build drops the subject; align build and use to the full form.",
+   "canonical_english": "I'm trying to try",
+   "severity": "med"
+  },
+  {
+   "known": "مجھے بولنا پسند ہے",
+   "targets": [
+    "I like to speak",
+    "I enjoy speaking"
+   ],
+   "verdict": "real_consolidate",
+   "action": "پسند ہے glossed like vs enjoy at sentence level; pick one canonical rendering of پسند.",
+   "canonical_english": "I like to speak",
+   "severity": "med"
+  },
+  {
+   "known": "وقت نکالنا ضروری ہے",
+   "targets": [
+    "it's important to take time",
+    "important to take time"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same intention, dummy 'it's' dropped in build; standardise.",
+   "canonical_english": "it's important to take time",
+   "severity": "med"
+  },
+  {
+   "known": "خود کو آزمانا ضروری ہے",
+   "targets": [
+    "it's important to test yourself",
+    "important to test yourself"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same '...ضروری ہے' = 'it's important to...' frame; standardise to include 'it's'.",
+   "canonical_english": "it's important to test yourself",
+   "severity": "med"
+  },
+  {
+   "known": "آپ نے کیا کہا دوست کے بارے میں",
+   "targets": [
+    "I remember what you said about your friend",
+    "what you said about your friend"
+   ],
+   "verdict": "real_consolidate",
+   "action": "build is the embedded clause of the use; the Urdu has no 'I remember' (یاد) — gloss to the clause only.",
+   "canonical_english": "what you said about your friend",
+   "severity": "med"
+  },
+  {
+   "known": "مجھے انگریزی بولنا پسند ہے",
+   "targets": [
+    "I like to speak English",
+    "I enjoy speaking English"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same پسند like/enjoy split at sentence level; align both USE rows.",
+   "canonical_english": "I like to speak English",
+   "severity": "med"
+  },
+  {
+   "known": "کیا آپ مجھے کچھ دکھانا چاہتے ہیں",
+   "targets": [
+    "do you want to show me something?",
+    "do you want to show me something now?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Second adds 'now' but Urdu has no ابھی; drop 'now' so both USE rows match.",
+   "canonical_english": "do you want to show me something?",
+   "severity": "med"
+  },
+  {
+   "known": "میں بہت خوش ہوں",
+   "targets": [
+    "I'm very happy",
+    "I'm so happy"
+   ],
+   "verdict": "real_consolidate",
+   "action": "بہت = very/so again; align the use and build to one intensifier.",
+   "canonical_english": "I'm so happy",
+   "severity": "med"
+  },
+  {
+   "known": "یہ کم دلچسپ ہے",
+   "targets": [
+    "that's less interesting",
+    "that's less exciting"
+   ],
+   "verdict": "real_consolidate",
+   "action": "دلچسپ glossed interesting vs exciting; fix دلچسپ to one canonical adjective.",
+   "canonical_english": "that's less interesting",
+   "severity": "med"
+  },
+  {
+   "known": "یہ کام نہیں کر رہا ابھی تک",
+   "targets": [
+    "not working yet",
+    "it's not working yet"
+   ],
+   "verdict": "real_consolidate",
+   "action": "build drops dummy 'it's'; standardise to include it.",
+   "canonical_english": "it's not working yet",
+   "severity": "med"
+  },
+  {
+   "known": "کیا میں کچھ پوچھ سکتا ہوں؟",
+   "targets": [
+    "can I ask you something?",
+    "can I ask something?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "First adds 'you' but Urdu has no آپ; drop 'you' so both USE rows match.",
+   "canonical_english": "can I ask something?",
+   "severity": "med"
+  },
+  {
+   "known": "کہا کہ وہ مدد کرنے کی کوشش کرنے والی ہے",
+   "targets": [
+    "she said that she was going to try to help",
+    "said that she was going to try to help"
+   ],
+   "verdict": "real_consolidate",
+   "action": "build drops the leading 'she'; align build to the full use.",
+   "canonical_english": "she said that she was going to try to help",
+   "severity": "med"
+  },
+  {
+   "known": "مجھے ڈر ہے کہ میں دیر سے پہنچ جاؤں گا",
+   "targets": [
+    "I'm worried that I'm going to be late",
+    "I'm afraid I'm going to be late"
+   ],
+   "verdict": "real_consolidate",
+   "action": "مجھے ڈر ہے glossed worried vs afraid; pick one canonical rendering.",
+   "canonical_english": "I'm afraid I'm going to be late",
+   "severity": "med"
+  }
+ ]
+}

@@ -1,0 +1,235 @@
+{
+ "course_code": "eng_for_deu",
+ "total_collisions": 117,
+ "counts": {
+  "fp_subgloss": 65,
+  "fp_inflection": 32,
+  "real_consolidate": 15,
+  "real_differentiate": 1,
+  "fp_wrong_data": 4
+ },
+ "release_blocker_count": 0,
+ "notes": "Very clean course: ~83% false positives. Most flags are atomic English function words/articles/prepositions and verb forms glossed as 'component' slices inside larger LEGOs (fp_subgloss, 65) or pure English morphology of one lemma — speak/speaking, to help/help, said/say, pay/to pay (fp_inflection, 32); none of the high-frequency drilled tokens are overloaded. The real issues are all multi-word drilled phrases: a recurring möchte (want vs I'd like) and anderes (else vs different) rendering split, several drops of nicht/es/darüber/stecken (4 fp_wrong_data), to/bare infinitive inconsistencies, and one genuine wenn = when/if overload. No high-severity learner-constant collisions, so 0 release blockers.",
+ "real_fixes": [
+  {
+   "known": "ich habe jemanden getroffen",
+   "targets": [
+    "I saw someone",
+    "I met someone"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I met someone",
+   "action": "Re-gloss the 'I saw someone' lego/build rows to 'I met someone' so treffen maps 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "über etwas anderes reden",
+   "targets": [
+    "talk about something else",
+    "talk about something different"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "talk about something else",
+   "action": "Pick one rendering of anderes (else) and re-gloss the 'different' build to match.",
+   "severity": "med"
+  },
+  {
+   "known": "ich möchte über etwas anderes reden",
+   "targets": [
+    "I want to talk about something else",
+    "I want to talk about something different"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to talk about something else",
+   "action": "Same anderes=else/different split at sentence level; align both USE rows to 'else'.",
+   "severity": "med"
+  },
+  {
+   "known": "ich bin bereit zu gehen, wenn du bereit bist",
+   "targets": [
+    "I'm ready to go when you are ready",
+    "I'm ready to leave when you are ready"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm ready to go when you are ready",
+   "action": "Standardise gehen here to 'go' (or 'leave') across both USE rows.",
+   "severity": "med"
+  },
+  {
+   "known": "ich möchte jetzt gehen",
+   "targets": [
+    "I want to go now",
+    "I'd like to go now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to go now",
+   "action": "möchte rendered as want vs I'd like; pick one canonical möchte gloss course-wide.",
+   "severity": "med"
+  },
+  {
+   "known": "ich möchte, dass du mir hilfst, bevor du los gehst",
+   "targets": [
+    "I'd like you to help me before you go",
+    "I want you to help me before you go"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want you to help me before you go",
+   "action": "Same möchte want/would-like split; align to the canonical möchte gloss.",
+   "severity": "med"
+  },
+  {
+   "known": "das ist nicht schwierig",
+   "targets": [
+    "this is not difficult",
+    "that isn't difficult"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "this is not difficult",
+   "action": "das rendered this/that and nicht as not/isn't; pick one (this is not difficult).",
+   "severity": "low"
+  },
+  {
+   "known": "ich denke, dass es gut ist",
+   "targets": [
+    "I think that it's a good thing",
+    "I think that it's good"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I think that it's good",
+   "action": "Drop the added noun 'thing'; gut=good so both builds should read 'it's good'.",
+   "severity": "low"
+  },
+  {
+   "known": "ich mag es nicht",
+   "targets": [
+    "I don't like",
+    "I don't like it"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't like it",
+   "action": "es=it is dropped in one rendering; canonicalise to 'I don't like it'.",
+   "severity": "low"
+  },
+  {
+   "known": "ich habe nicht darüber nachgedacht",
+   "targets": [
+    "I wasn't thinking about",
+    "I wasn't thinking about it"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I wasn't thinking about it",
+   "action": "darüber=about it dropped in one build; canonicalise to include 'it'.",
+   "severity": "low"
+  },
+  {
+   "known": "solltest dir keine Sorgen darum machen",
+   "targets": [
+    "shouldn't worry about",
+    "shouldn't worry about that"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "shouldn't worry about that",
+   "action": "darum=about that dropped in one build; canonicalise to include 'that'.",
+   "severity": "low"
+  },
+  {
+   "known": "sie fragen, wo sie hingehen möchte",
+   "targets": [
+    "ask her where she wants to go",
+    "to ask her where she wants to go"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "ask her where she wants to go",
+   "action": "Builds differ only by leading 'to'; pick one infinitive form.",
+   "severity": "low"
+  },
+  {
+   "known": "meine Mutter bringen",
+   "targets": [
+    "take my mother",
+    "to take my mother"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "take my mother",
+   "action": "Builds differ only by leading 'to'; pick one infinitive form.",
+   "severity": "low"
+  },
+  {
+   "known": "ins Restaurant gehen",
+   "targets": [
+    "go to a restaurant",
+    "to go to a restaurant"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "go to a restaurant",
+   "action": "Builds differ only by leading 'to'; pick one infinitive form.",
+   "severity": "low"
+  },
+  {
+   "known": "ich versuche zu",
+   "targets": [
+    "I'm trying to",
+    "I'm trying"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm trying to",
+   "action": "Drilled lego/build differ by trailing 'to'; keep 'I'm trying to' since German has zu.",
+   "severity": "low"
+  },
+  {
+   "known": "wenn ich spreche",
+   "targets": [
+    "when I speak",
+    "if I speak"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "wenn is genuinely when/if; one identical drilled prompt maps to two meanings — differentiate the German cue (e.g. wann vs falls) or split into two seeds so each maps 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "nicht genug Zeit",
+   "targets": [
+    "enough time",
+    "not enough time"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "not enough time",
+   "action": "'enough time' drops the nicht; correct that build row to 'not enough time'.",
+   "severity": "med"
+  },
+  {
+   "known": "sie wollte etwas in ihre Tasche stecken",
+   "targets": [
+    "she wants something in her bag",
+    "she wanted to put something in her bag"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "she wanted to put something in her bag",
+   "action": "'she wants something in her bag' loses past tense (wollte) and the verb stecken=put; fix that USE row.",
+   "severity": "med"
+  },
+  {
+   "known": "sie wollte etwas Interessantes in ihre Tasche stecken",
+   "targets": [
+    "she wanted to put something interesting in her bag",
+    "she wanted something interesting in her bag"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "she wanted to put something interesting in her bag",
+   "action": "'she wanted something interesting in her bag' drops stecken=put; correct that USE row.",
+   "severity": "med"
+  },
+  {
+   "known": "ich möchte wissen, wonach du suchst",
+   "targets": [
+    "I want to know what are you looking for",
+    "I want to know what you are looking for"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "I want to know what you are looking for",
+   "action": "First USE row has ungrammatical embedded inversion ('what are you looking for'); fix to declarative order.",
+   "severity": "med"
+  }
+ ]
+}

@@ -1,0 +1,230 @@
+{
+ "course_code": "eng_for_hin",
+ "total_collisions": 148,
+ "counts": {
+  "fp_subgloss": 65,
+  "fp_inflection": 63,
+  "real_consolidate": 13,
+  "real_differentiate": 5,
+  "fp_wrong_data": 2
+ },
+ "release_blocker_count": 0,
+ "notes": "Clean course, dominated by false positives: ~86% are component sub-glosses of agglutinative verb stems/postpositions (करना, कि, नहीं, से) or pure English inflection/article/contraction of one lemma (I/I'm/I'll, word/words, friend/friends, the answer/an answer). The real fixes cluster in two systemic patterns: (1) the SSi literal-order 'build' row vs natural-order 'use' row of the same sentence (consolidate to natural English), and (2) genuine Hindi ambiguities surfacing as overloaded prompts — बहुत (very/too), वह (he/she), and कल (yesterday/tomorrow). No high-frequency drilled token is overloaded, so nothing is release-blocking.",
+ "real_fixes": [
+  {
+   "known": "रविवार सुबह",
+   "targets": [
+    "on Sunday morning",
+    "Sunday morning"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "on Sunday morning",
+   "action": "Re-gloss the bare 'Sunday morning' build row to 'on Sunday morning' so the time-phrase prompt maps 1:1.",
+   "severity": "low"
+  },
+  {
+   "known": "आप चाहते हैं पढ़ना कुछ भी?",
+   "targets": [
+    "do you want to read anything?",
+    "do you want to read something?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "do you want to read anything?",
+   "action": "Both are USE sentences for one Hindi question; pick 'anything?' (negative-polarity question) and re-gloss the 'something?' twin.",
+   "severity": "low"
+  },
+  {
+   "known": "जवाब ढूँढना ज़रूरी है",
+   "targets": [
+    "to find the answer it's important",
+    "it's important to find the answer"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's important to find the answer",
+   "action": "Build row uses literal Hindi word order, use row uses natural order; consolidate to the natural English so one prompt has one answer.",
+   "severity": "low"
+  },
+  {
+   "known": "जवाब ढूँढना मुश्किल नहीं है",
+   "targets": [
+    "it's not difficult to find the answer",
+    "to find the answer it's not difficult"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's not difficult to find the answer",
+   "action": "Same literal-order build vs natural-use split; consolidate to the natural English ordering.",
+   "severity": "low"
+  },
+  {
+   "known": "रुकना ज़रूरी है",
+   "targets": [
+    "to stop it's important",
+    "it's important to stop"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's important to stop",
+   "action": "Literal-order build collides with natural use; consolidate to the natural English ordering.",
+   "severity": "low"
+  },
+  {
+   "known": "बहुत बहुत शुक्रिया मुझे मदद करने के लिए",
+   "targets": [
+    "thank you very much for helping me",
+    "thank you very much to help me"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "thank you very much for helping me",
+   "action": "Same intention; 'to help me' is an awkward literal scaffold. Re-gloss the build row to 'for helping me'.",
+   "severity": "low"
+  },
+  {
+   "known": "मुझे लगता है यह एक अच्छा विचार है",
+   "targets": [
+    "I think that's a good idea",
+    "I think it's a good idea"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I think it's a good idea",
+   "action": "यह = this/it, not that; consolidate the build twin 'that's' to 'it's' to match यह elsewhere in the course.",
+   "severity": "low"
+  },
+  {
+   "known": "वह पसंद नहीं करते पढ़ना।",
+   "targets": [
+    "he doesn't like to read",
+    "doesn't like to read"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "he doesn't like to read",
+   "action": "Build row drops the subject; consolidate to the full 'he doesn't like to read' since वह supplies 'he'.",
+   "severity": "low"
+  },
+  {
+   "known": "वह अमित्र नहीं दिखना चाहती।",
+   "targets": [
+    "she doesn't want to be unfriendly",
+    "she doesn't want to seem unfriendly"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "she doesn't want to seem unfriendly",
+   "action": "दिखना = to seem/appear; both USE rows; consolidate to 'seem unfriendly' (more faithful to दिखना).",
+   "severity": "low"
+  },
+  {
+   "known": "क्या आप चाहते थे दिखाना कुछ भी?",
+   "targets": [
+    "did you want to show something?",
+    "did you want to show me something?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "did you want to show something?",
+   "action": "The Hindi has no मुझे; drop the added 'me' so both rows match. Consolidate to 'did you want to show something?'.",
+   "severity": "low"
+  },
+  {
+   "known": "सच सुनना ज़रूरी है",
+   "targets": [
+    "to hear the truth it's important",
+    "it's important to hear the truth"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's important to hear the truth",
+   "action": "Literal-order build vs natural use; consolidate to the natural English ordering.",
+   "severity": "low"
+  },
+  {
+   "known": "वह पसंद नहीं करते काम करना।",
+   "targets": [
+    "he doesn't like to work",
+    "doesn't like to work"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "he doesn't like to work",
+   "action": "Build row drops subject; consolidate to 'he doesn't like to work' since वह supplies 'he'.",
+   "severity": "low"
+  },
+  {
+   "known": "मुझे आश्चर्य है कि यह ज़रूरी है।",
+   "targets": [
+    "I wonder if it's important",
+    "I wonder if this is important"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I wonder if it's important",
+   "action": "यह = this/it; consolidate the build twin to 'it's important' to match the use form.",
+   "severity": "low"
+  },
+  {
+   "known": "बहुत व्यस्त",
+   "targets": [
+    "very busy",
+    "too busy"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "very busy",
+   "action": "बहुत = very/a lot, not 'too' (excessive). 'too busy' overloads the LEGO; either re-gloss to 'very busy' or change the Hindi to बहुत ज़्यादा व्यस्त for the 'too busy' sense.",
+   "severity": "med"
+  },
+  {
+   "known": "मैं आज बहुत व्यस्त हूँ",
+   "targets": [
+    "I'm very busy today",
+    "i'm too busy today"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "I'm very busy today",
+   "action": "Same बहुत = very/too overload at sentence level (downstream of बहुत व्यस्त); align to 'very busy today' or differentiate the Hindi for the 'too busy' reading.",
+   "severity": "med"
+  },
+  {
+   "known": "जाने के लिए तैयार होंगे",
+   "targets": [
+    "will you be ready to go?",
+    "you'll be ready to leave"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Two genuinely different drilled renderings of one prompt: a question vs a statement, and go vs leave (जाना). Differentiate the Hindi (e.g. interrogation marker / जाना vs निकलना) so each maps 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "जिसने कहा कि वह",
+   "targets": [
+    "who said that he",
+    "who said that she"
+   ],
+   "verdict": "real_differentiate",
+   "action": "वह is gender-neutral 3rd-person; same prompt yields he and she. Inherent Hindi ambiguity overloads the prompt — either accept both as valid answers or supply disambiguating context.",
+   "severity": "med"
+  },
+  {
+   "known": "कल रात",
+   "targets": [
+    "last night",
+    "tomorrow night"
+   ],
+   "verdict": "real_differentiate",
+   "action": "कल = yesterday OR tomorrow; कल रात is genuinely ambiguous (last night vs tomorrow night), both drilled. Differentiate via बीती रात (last night) vs कल रात (tomorrow night) or context.",
+   "severity": "med"
+  },
+  {
+   "known": "रात को",
+   "targets": [
+    "very well",
+    "at night"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "रात को = 'at night'; the 'very well' gloss (seed 55 component) is a data error with no path from the Hindi. Correct that single row.",
+   "severity": "med"
+  },
+  {
+   "known": "एक विचार",
+   "targets": [
+    "that's a idea",
+    "an idea"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "एक विचार = 'an idea'; the 'that's a idea' gloss is ungrammatical ('a idea') and adds 'that's'. Fix that single component row to 'an idea'.",
+   "severity": "low"
+  }
+ ]
+}

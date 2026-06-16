@@ -1,0 +1,290 @@
+{
+ "course_code": "eng_for_por",
+ "total_collisions": 132,
+ "counts": {
+  "fp_subgloss": 85,
+  "fp_inflection": 22,
+  "real_consolidate": 18,
+  "real_differentiate": 6,
+  "fp_wrong_data": 1
+ },
+ "release_blocker_count": 0,
+ "notes": "Very clean course: ~81% of flags are false positives (85 fp_subgloss + 22 fp_inflection) — overwhelmingly Portuguese tokens sliced as 'component' inside larger LEGOs (negation pieces of 'não', the 'muito/que/de/a' function words, verb infinitive↔gerund↔bare forms) and never drilled bare. The real fixes (24 consolidate/differentiate + 1 data error) cluster in two patterns: (a) full sentence build/use pairs that differ only by a dangling 'to'/'it'/'you'/'it is' — easy re-gloss consolidations, mostly low severity; and (b) the intentional SSi do-support statement↔question convergence ('falas inglês' etc.) and genuine PT pronoun ambiguity ('o' = you-formal/him, subjunctive 'precise' = I/you) flagged as real_differentiate — confirm the do-support cases are the designed pattern before splitting. No high-frequency single drilled token is overloaded, so zero release blockers.",
+ "real_fixes": [
+  {
+   "known": "agora",
+   "targets": [
+    "now",
+    "far"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "now",
+   "action": "'far' is wrong for 'agora' (never means far) — correct the seed-187 component slice (likely a mis-slice of a longer phrase).",
+   "severity": "low"
+  },
+  {
+   "known": "queria que ela o ajudasse",
+   "targets": [
+    "I wanted her to help you",
+    "I wanted her to help him"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "'o' is genuinely ambiguous (formal 'you' vs 'him'); both forms are drilled BUILD. Differentiate the PT (e.g. ...que ela o/lhe ajudasse) so each maps 1:1, or pick one canonical reading.",
+   "severity": "med"
+  },
+  {
+   "known": "lamento que precise de sair tão cedo",
+   "targets": [
+    "I'm sorry that I need to leave so early",
+    "I'm sorry that you need to leave so early"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "subjunctive 'precise' is I/you-formal ambiguous; both drilled (use vs build). Differentiate subject in the PT (eu precise / você precise) so each maps 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "falas inglês",
+   "targets": [
+    "you speak English",
+    "do you speak English"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "statement vs question both drilled BUILD — likely the intentional SSi do-support statement↔question convergence; confirm it's the designed pattern, otherwise add a '?' / intonation cue to split the prompts.",
+   "severity": "med"
+  },
+  {
+   "known": "falas inglês muito bem agora?",
+   "targets": [
+    "you speak English very well now",
+    "do you speak English very well now?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "statement vs question both drilled USE (same do-support convergence) — confirm intentional or split the prompt; one PT maps to two speech acts.",
+   "severity": "low"
+  },
+  {
+   "known": "querias mostrar-me algo ontem?",
+   "targets": [
+    "did you want to show me something yesterday?",
+    "you wanted to show me something yesterday"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "question vs statement both drilled USE (do-support convergence) — confirm intentional or split; one PT, two speech acts.",
+   "severity": "low"
+  },
+  {
+   "known": "falas inglês muito bem?",
+   "targets": [
+    "you speak English very well",
+    "do you speak English very well?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "statement vs question both drilled BUILD (do-support convergence) — confirm intentional or split.",
+   "severity": "low"
+  },
+  {
+   "known": "parece uma ótima ideia",
+   "targets": [
+    "sounds like a good idea",
+    "that sounds like a good idea"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "sounds like a good idea",
+   "action": "Same intention, differ only by 'that'; both drilled BUILD — re-gloss to one canonical form.",
+   "severity": "low"
+  },
+  {
+   "known": "não se importa de",
+   "targets": [
+    "don't mind",
+    "you don't mind"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "you don't mind",
+   "action": "Same intention, differ only by 'you'; both drilled — pick one canonical gloss.",
+   "severity": "low"
+  },
+  {
+   "known": "como dizer",
+   "targets": [
+    "how to say",
+    "how to say it"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "how to say it",
+   "action": "Same intention, differ only by object 'it'; both drilled BUILD — align to one canonical form.",
+   "severity": "low"
+  },
+  {
+   "known": "não é problema",
+   "targets": [
+    "it's not a problem",
+    "not a problem"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's not a problem",
+   "action": "Same intention, differ by 'it's'; both drilled BUILD — re-gloss to canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "cometer erros",
+   "targets": [
+    "making mistakes",
+    "to make mistakes"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "making mistakes",
+   "action": "Same intention, differ by making/to make aspect; both drilled BUILD — pick one to match the bare-LEGO 'cometer' gloss.",
+   "severity": "med"
+  },
+  {
+   "known": "infelizmente não",
+   "targets": [
+    "unfortunately not",
+    "I'm afraid I"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm afraid not",
+   "action": "Both drilled BUILD as the apologetic-negative; 'I'm afraid I' is a loose dangling gloss — consolidate to one canonical (e.g. 'I'm afraid not' / 'unfortunately not').",
+   "severity": "med"
+  },
+  {
+   "known": "mais tempo",
+   "targets": [
+    "more time",
+    "longer"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "more time",
+   "action": "Both drilled BUILD for 'mais tempo'; 'longer' is a free rendering — re-gloss to the literal 'more time'.",
+   "severity": "med"
+  },
+  {
+   "known": "não teria dito",
+   "targets": [
+    "wouldn't have said it",
+    "I wouldn't have said it"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I wouldn't have said it",
+   "action": "Same intention, differ by 'I'; both drilled BUILD — align to one.",
+   "severity": "low"
+  },
+  {
+   "known": "acordei mais cedo do que queria esta manhã",
+   "targets": [
+    "I woke earlier than I wanted to this morning",
+    "I woke earlier than I wanted this morning"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I woke earlier than I wanted this morning",
+   "action": "Differ only by dangling 'to'; both drilled (build/use) — pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "não se devia preocupar em fazer algo parecido",
+   "targets": [
+    "you shouldn't worry about doing something similar",
+    "shouldn't worry about doing something similar"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "you shouldn't worry about doing something similar",
+   "action": "Differ only by 'you'; both drilled (use/build) — align to one.",
+   "severity": "low"
+  },
+  {
+   "known": "foi uma surpresa ouvir o que disseste",
+   "targets": [
+    "it was a surprise to hear what you said",
+    "that was a surprise to hear what you said"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it was a surprise to hear what you said",
+   "action": "'foi' = it was / that was; both drilled USE — pick one canonical to keep the foi-gloss consistent.",
+   "severity": "low"
+  },
+  {
+   "known": "vi um pouco de televisão",
+   "targets": [
+    "I saw a bit of television",
+    "I watched a bit of television"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I watched a bit of television",
+   "action": "'vi' = I saw / I watched; both drilled BUILD — 'watched' is natural for TV, consolidate to it.",
+   "severity": "low"
+  },
+  {
+   "known": "é interessante que goste de ir de autocarro",
+   "targets": [
+    "it is interesting that you like going by bus",
+    "interesting that you like going by bus"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it is interesting that you like going by bus",
+   "action": "Differ only by 'it is'; both drilled BUILD — align to one.",
+   "severity": "low"
+  },
+  {
+   "known": "esqueci como dizer",
+   "targets": [
+    "I've forgotten how to say",
+    "I've forgotten how to say it"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I've forgotten how to say it",
+   "action": "Differ only by object 'it'; both drilled BUILD — align to one (mirror the 'como dizer' choice).",
+   "severity": "low"
+  },
+  {
+   "known": "precisamos de trabalhar muito",
+   "targets": [
+    "we need to work hard",
+    "we must work hard"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "we need to work hard",
+   "action": "need/must same intention for 'precisamos'; both drilled (build/use) — pick one (matches the 'precisamos' bare-LEGO choice).",
+   "severity": "med"
+  },
+  {
+   "known": "estou muito satisfeito",
+   "targets": [
+    "I'm very happy",
+    "I'm very happy with it"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm very happy with it",
+   "action": "Differ only by 'with it'; both drilled BUILD — align to the form matching 'satisfeito (com it)'.",
+   "severity": "low"
+  },
+  {
+   "known": "muito obrigado por me ajudar a falar inglês",
+   "targets": [
+    "thank you very much for helping me speak English",
+    "thank you very much for helping me to speak English"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "thank you very much for helping me to speak English",
+   "action": "Differ only by 'to'; both drilled USE — pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "pode dizer-me qual é o seu nome?",
+   "targets": [
+    "can you tell me what your name is?",
+    "tell me what your name is"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "can you tell me what your name is?",
+   "action": "Differ by 'can you' (question vs imperative); both drilled (build/use) — 'pode' = can you, consolidate to the question.",
+   "severity": "low"
+  }
+ ]
+}

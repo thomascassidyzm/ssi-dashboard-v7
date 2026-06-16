@@ -1,0 +1,1314 @@
+[
+ {
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "thin",
+    "note": "All phrases repeat 'I want to speak [English/with you] now' — only object slot varies in identical subject-verb frame."
+   },
+   {
+    "lego_en": "with everyone else",
+    "frame_rating": "diverse",
+    "note": "Causative ('I want you to'), different verbs (return vs speak), present vs want, shifts in person and tense show genuine variety."
+   },
+   {
+    "lego_en": "as soon as you can",
+    "frame_rating": "diverse",
+    "note": "Question, two 'it's useful' frames, and three 'I want' frames with different embedded clause types — multiple matrix predicates."
+   },
+   {
+    "lego_en": "I wasn't thinking",
+    "frame_rating": "thin",
+    "note": "All five follow identical past-continuous negation 'I wasn't thinking about [X]' — only the object slot varies."
+   },
+   {
+    "lego_en": "what I wanted to say",
+    "frame_rating": "diverse",
+    "note": "Ignorance, explanation, tense shift, copular topic assertion, memory frame — multiple semantic relations."
+   },
+   {
+    "lego_en": "we didn't want to",
+    "frame_rating": "thin",
+    "note": "All repeat 'we didn't want to [infinitive]' — only the infinitive complement varies; negation and subject stay fixed."
+   },
+   {
+    "lego_en": "this is the only way",
+    "frame_rating": "diverse",
+    "note": "Relative clause, doubt/negation, concessive, infinitive purpose, embedding — multiple subordination patterns."
+   },
+   {
+    "lego_en": "when we learn something new",
+    "frame_rating": "diverse",
+    "note": "Evaluative, emotional, volitional consequence frames, with variation in embedding; different response types."
+   },
+   {
+    "lego_en": "that was a surprise",
+    "frame_rating": "diverse",
+    "note": "Causal explanation, conjoined ignorance, conjoined negation, concessive contrast — multiple connective/logical relations."
+   },
+   {
+    "lego_en": "what your name is",
+    "frame_rating": "thin",
+    "note": "Memory/imperative/question/volitional show some variety but only 4 phrases total with mostly similar matrix predicates."
+   },
+   {
+    "lego_en": "can you understand",
+    "frame_rating": "diverse",
+    "note": "Questions (temporal/object-focused), embedded assertions, embedded questions, uncertainty — varied question/assertion frames."
+   },
+   {
+    "lego_en": "my daughter works",
+    "frame_rating": "diverse",
+    "note": "Locative, manner/duration, role predicate, conjoined vs embedded evaluation — varied specification types."
+   },
+   {
+    "lego_en": "a bit of television",
+    "frame_rating": "monotonous",
+    "note": "All four are identical questions 'did you watch a bit of TV [on date X]?' — only temporal slot varies, no real frame variety."
+   },
+   {
+    "lego_en": "my father",
+    "frame_rating": "diverse",
+    "note": "Relative clause, negation/preference, embedded volition, preference+activity, communication+past — multiple predicate types."
+   },
+   {
+    "lego_en": "why don't you want to wait",
+    "frame_rating": "thin",
+    "note": "Mostly question frame with temporal/conditional slots; grammar issues in 3–4 suggest rushed translation; limited genuine frame variety."
+   }
+  ],
+  "course_code": "eng_for_ara",
+  "pct_need_rework": 47,
+  "course_note": "Nearly half the sampled baskets show thin or monotonous frame diversity — heavy clustering around slot-swap patterns and repeated question templates; English side of the course would benefit from deliberate frame rewriting (question/statement/negation/embedding variation) before TTS.\">\n"
+ },
+ {
+  "course_code": "eng_for_ben",
+  "pct_need_rework": 70,
+  "course_note": "eng_for_ben has significant frame diversity issues: 70% of sampled baskets are thin or monotonous, dominated by slot-swaps within one sentence shape per LEGO. Only 5 of 15 baskets show genuine frame variation (question/negation/embedding/tense/person); the rest repeat the same backbone structure. Priority rework areas: \"with you\", \"agree with\", \"we're not trying to\", \"didn't do much\" (monotonous); \"to ask\", \"know\", \"same\", \"to talk\", \"used to work\", \"doesn't like to stop talking\", \"old friend of my father\" (thin, mostly subject-swaps).",
+  "baskets": [
+   {
+    "lego_en": "with you",
+    "frame_rating": "monotonous",
+    "note": "All three phrases follow 'I want [infinitive/object] with you' structure; no frame variation beyond slot-swaps."
+   },
+   {
+    "lego_en": "later on",
+    "frame_rating": "diverse",
+    "note": "Mixed persons (he/I), varied modal verbs (want, like, going to), different tenses; each phrase shows different intent/mood."
+   },
+   {
+    "lego_en": "to ask",
+    "frame_rating": "thin",
+    "note": "Strong tense and time variation but 4/5 phrases follow 'I/I want to ask [object/time]' template; temporal clause in #5 provides variety but insufficient to overcome repetition."
+   },
+   {
+    "lego_en": "know",
+    "frame_rating": "thin",
+    "note": "Question vs statements provide some frame variety, but #2-5 all follow 'I want to know [object/embedded clause]' pattern; mostly object-slot swaps."
+   },
+   {
+    "lego_en": "same",
+    "frame_rating": "thin",
+    "note": "Polarity variation (negation/positive) and questions vs statements, but 4/5 phrases follow 'can/can't [action] at the same time' backbone; #2 breaks away but insufficient for diversity rating."
+   },
+   {
+    "lego_en": "agree with",
+    "frame_rating": "monotonous",
+    "note": "All five follow 'I/you agree with [target]' frame; minimal variation between questions and statements; no negation, embedding, or temporal variation."
+   },
+   {
+    "lego_en": "we're not trying to",
+    "frame_rating": "monotonous",
+    "note": "Identical frame 'we're not trying to [infinitive] [modifier]' across all five; no person/tense/polarity variation; pure infinitive-slot swaps."
+   },
+   {
+    "lego_en": "felt",
+    "frame_rating": "diverse",
+    "note": "Strong variation across uncertainty, comparison, condition, contrast, and causality frames; different conjunction types (when/than/as if/but/as soon as); each phrase shows different discourse context."
+   },
+   {
+    "lego_en": "to talk",
+    "frame_rating": "thin",
+    "note": "Mixed frame types (copular, impersonal, necessity) but limited density; #3-4 are near-duplicates ('we need to talk' vs 'that is why we need to talk'); only 4 phrases total."
+   },
+   {
+    "lego_en": "restaurant",
+    "frame_rating": "diverse",
+    "note": "Tense variation (want/will/gerund), modal/polarity shifts, embedding in causal structure, subject type variation (gerund vs pronoun subjects)."
+   },
+   {
+    "lego_en": "where she wants to go",
+    "frame_rating": "diverse",
+    "note": "Each phrase embeds the relative clause in different meta-linguistic context: epistemic need, evaluation, information request, comprehension, uncertainty; not mere slot-swaps."
+   },
+   {
+    "lego_en": "used to work",
+    "frame_rating": "thin",
+    "note": "All four follow 'X used to work [location/role]' structure; persons vary (I/my daughter/she/my son) but no question forms, negation, temporal embedding, or modal variation."
+   },
+   {
+    "lego_en": "didn't do much",
+    "frame_rating": "monotonous",
+    "note": "All five follow 'X didn't do much [time]' negation frame; #1 and #4 are near-duplicates; no positive frames, questions, embedding, or modal variation."
+   },
+   {
+    "lego_en": "doesn't like to stop talking",
+    "frame_rating": "thin",
+    "note": "Consistently negative preference frame; #1, #2, #5 are pure subject-slot swaps; #3 adds indirect speech embedding and #4 adds conjunction+contrast, providing some variety but insufficient overall."
+   },
+   {
+    "lego_en": "old friend of my father",
+    "frame_rating": "thin",
+    "note": "Variation between copular (#1, #2, #5) and action frames (#3, #4), but within each subset structure repeats; mostly subject/auxiliary/tense swaps; noun phrase used in different positions with limited frame diversity."
+   }
+  ]
+ },
+ {
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "monotonous",
+    "note": "All 5 phrases identical frame (simple present statement). Only slot-swap variation (jetzt/position + object swaps). Zero real frame diversity."
+   },
+   {
+    "lego_en": "to come back",
+    "frame_rating": "diverse",
+    "note": "4/5 unique frames: includes presence/absence of temporal (später/tomorrow/none), modal strength variation (wants/would like). Genuine combining patterns."
+   },
+   {
+    "lego_en": "as soon as possible",
+    "frame_rating": "monotonous",
+    "note": "All 5 use identical frame: 'it's useful to [VERB] as soon as possible'. Perfect slot-swap template—noun/verb variation only, zero frame diversity."
+   },
+   {
+    "lego_en": "than…",
+    "frame_rating": "thin",
+    "note": "2/5 unique frames. Mostly 'I feel/speak better than [TIME]' with temporal variations. One negation pair but otherwise repetitive comparative shape. Limited real diversification."
+   },
+   {
+    "lego_en": "I don't know yet",
+    "frame_rating": "thin",
+    "note": "3/5 unique frames. Most share 'I don't know yet + embedded clause' shape. Temporal and modal variations exist but core frame is rigid. More variety than S28/S1 but still slot-heavy."
+   },
+   {
+    "lego_en": "did you start",
+    "frame_rating": "thin",
+    "note": "2/5 unique frames. Four of five open with 'when/did you start'; temporal variation present but sentence shape constant. Limited embedding variety (mostly infinitive complements)."
+   },
+   {
+    "lego_en": "why it's not working",
+    "frame_rating": "diverse",
+    "note": "4/5 unique frames. Varies subject (I/you/it), mood (simple present/should/want to), embedding (clausal vs. matrix). Shows LEGO combining with different subjects and evaluative attitudes."
+   },
+   {
+    "lego_en": "last time",
+    "frame_rating": "thin",
+    "note": "2/5 unique frames. Three of five are negation+temporal repetitions ('I/it was not/didn't X last time'). Light temporal variation but core shape borrowed-time-reference rigid."
+   },
+   {
+    "lego_en": "I'm grateful to you",
+    "frame_rating": "thin",
+    "note": "3/5 unique frames. Four of five open with 'I'm grateful to you [for/that] ...'. Modal and embedding vary but opening frame near-identical. Repetitive as core use case."
+   },
+   {
+    "lego_en": "how do you say",
+    "frame_rating": "diverse",
+    "note": "4/5 unique frames. Varies question-clause content (in English/when/if/best)—each shows LEGO in genuinely different use: asking for translation, asking for alternatives, asking conditionally."
+   },
+   {
+    "lego_en": "my keys",
+    "frame_rating": "diverse",
+    "note": "4/5 unique frames. Mixes statement (looking/where are) vs. question (can you help), varies polarity (positive/negative), shows LEGO in active search vs. knowledge expression."
+   },
+   {
+    "lego_en": "what was going to happen",
+    "frame_rating": "thin",
+    "note": "3/5 unique frames. Four of five are 'I/she/we didn't know what was going to happen [±temporal]'. Subject and temporal variation present but core structure borrowed-future-reference identical."
+   },
+   {
+    "lego_en": "he's trying",
+    "frame_rating": "thin",
+    "note": "3/5 unique frames. Three of five are 'he's trying to [VERB]' (straight slot-swap). One adds embedding (what I'm saying), one adds different construction (explain what). Mostly single-pattern."
+   },
+   {
+    "lego_en": "after",
+    "frame_rating": "thin",
+    "note": "2/5 unique frames. Four of five are 'after [CLAUSE], I'm going to/want to [ACTION]'. One question (before or after). Temporal-clause-opening shape dominates; very little real frame diversity."
+   },
+   {
+    "lego_en": "for a little longer",
+    "frame_rating": "diverse",
+    "note": "4/5 unique frames. Varies from trying (continuous) to can/want (modal) to response context ('no I can stay'). Shows LEGO in permission/preference/refusal contexts, not just slot-swaps."
+   }
+  ],
+  "course_code": "eng_for_deu",
+  "pct_need_rework": 60,
+  "course_note": "Severe frame homogeneity. 9/15 baskets are thin or monotonous—most USE sets rely on identical sentence shape with only noun/verb slot-swaps, not genuine frame variety. S1 and S28 are worst (perfectly rigid templates). Diverse baskets (S16, S99, S160, S182, S276) show what good looks like: question vs. statement, different subjects/modality, varied embedding. Need rework on monotonous/thin sets to show LEGO combining with genuinely different grammatical contexts.\""
+ },
+ {
+  "course_code": "eng_for_fra",
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "thin",
+    "note": "Slot-swaps on fixed frame want to speak [object] now; no real structural variety"
+   },
+   {
+    "lego_en": "this evening",
+    "frame_rating": "diverse",
+    "note": "Different verbs (meet, come back, find out, speak), embedded questions, subject variation"
+   },
+   {
+    "lego_en": "he doesn't want to be quiet",
+    "frame_rating": "thin",
+    "note": "Constant skeleton he doesn't want to be quiet [modifier]; temporal/prepositional slot-swaps only"
+   },
+   {
+    "lego_en": "she wanted to put",
+    "frame_rating": "monotonous",
+    "note": "All follow she wanted to put [thing] [time period]; pure temporal slot variation"
+   },
+   {
+    "lego_en": "she didn't want",
+    "frame_rating": "thin",
+    "note": "Frame locked to didn't want to [infinitive]; infinitive objects vary but frame is rigid"
+   },
+   {
+    "lego_en": "if you can",
+    "frame_rating": "diverse",
+    "note": "Conditional frames vary: some with consequences, some with emotion, embedded content clauses"
+   },
+   {
+    "lego_en": "to see",
+    "frame_rating": "diverse",
+    "note": "Variation across polarity (need/like/should), modality (obligation/preference/hope), embedding depth"
+   },
+   {
+    "lego_en": "I believe that",
+    "frame_rating": "diverse",
+    "note": "Excellent variety: comparatives, nested that-clauses, evaluatives, inchoatives, possibility combinations"
+   },
+   {
+    "lego_en": "I woke up",
+    "frame_rating": "diverse",
+    "note": "Variation across coordination, comparison, temporal embedding, reason clauses, polarity"
+   },
+   {
+    "lego_en": "what do you think about that",
+    "frame_rating": "thin",
+    "note": "Base question repeated with temporal variants and discourse markers; mostly slot-fillers"
+   },
+   {
+    "lego_en": "I'm afraid",
+    "frame_rating": "thin",
+    "note": "All follow I'm afraid I can't/don't [action]; variations are in negated action only"
+   },
+   {
+    "lego_en": "the arrangements",
+    "frame_rating": "diverse",
+    "note": "Variation across polarity (question/statement), modality (want/can/need), time (past/conditional)"
+   },
+   {
+    "lego_en": "if he could",
+    "frame_rating": "thin",
+    "note": "Mostly conditional statements with different objects; one negated variant but core structure is rigid"
+   },
+   {
+    "lego_en": "before you go",
+    "frame_rating": "thin",
+    "note": "All follow I want/trying to [verb] before you go; different verbs but same syntactic frame"
+   },
+   {
+    "lego_en": "in a few days",
+    "frame_rating": "diverse",
+    "note": "Variation across polarity (question/statement), modality (like/want/think/have to), different predicates"
+   }
+  ],
+  "pct_need_rework": 46.67,
+  "course_note": "eng_for_fra sample shows heavy reliance on syntactic scaffolding with minimal true frame diversity; 7 of 15 baskets are thin/monotonous."
+ },
+ {
+  "course_code": "eng_for_guj",
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "thin",
+    "note": "All declarative '[I want to] [verb] [now]' — slot-swapping verbs/objects only"
+   },
+   {
+    "lego_en": "what the answer is",
+    "frame_rating": "diverse",
+    "note": "Varies across saying, uncertainty, discovery, future attempt; different subjects & tense"
+   },
+   {
+    "lego_en": "yesterday",
+    "frame_rating": "thin",
+    "note": "Pure '[Subject wanted to [verb] [object] yesterday]' repetition across five phrases"
+   },
+   {
+    "lego_en": "know",
+    "frame_rating": "diverse",
+    "note": "Negation, modality (need/want/sure), subject, conditionals all vary meaningfully"
+   },
+   {
+    "lego_en": "yet",
+    "frame_rating": "monotonous",
+    "note": "Four of five '[Subject doesn't [want/know] [infinitive] yet]' — minimal polarity variation"
+   },
+   {
+    "lego_en": "I'm very happy",
+    "frame_rating": "diverse",
+    "note": "That-clauses, infinitives, temporal all vary; embedding type & semantic relationship shift"
+   },
+   {
+    "lego_en": "on the next bus",
+    "frame_rating": "diverse",
+    "note": "Modal (can/want/ready), interrogative vs declarative, comitative/locative participants all vary"
+   },
+   {
+    "lego_en": "relax",
+    "frame_rating": "thin",
+    "note": "Bare '[I/you like/should relax [time]]' — only temporal/duration adverbials swap"
+   },
+   {
+    "lego_en": "I used to know",
+    "frame_rating": "thin",
+    "note": "Relative clause embedding + comparison vs identification only variation; no polarity/tense shifts"
+   },
+   {
+    "lego_en": "since we tried to fix it",
+    "frame_rating": "diverse",
+    "note": "Cognition, state-change, negation+aspect, comparative predicates all differ meaningfully"
+   },
+   {
+    "lego_en": "I'll be able to",
+    "frame_rating": "diverse",
+    "note": "Locative, motion, speech, embedded hope, benefactive vary; temporal expressions shift"
+   },
+   {
+    "lego_en": "too busy",
+    "frame_rating": "thin",
+    "note": "Copular '[I'm too busy [temporal/consequential]]' frame; discourse markers only variation"
+   },
+   {
+    "lego_en": "what they're trying to achieve",
+    "frame_rating": "diverse",
+    "note": "Interrogative, cognitive assertion, past desire, negation, predicate all vary; polarity shifts"
+   },
+   {
+    "lego_en": "she was going to",
+    "frame_rating": "thin",
+    "note": "Mostly '[she was going to [verb] [object]]'; only frame 4 adds embedding/interrogative"
+   },
+   {
+    "lego_en": "he was",
+    "frame_rating": "diverse",
+    "note": "Embedding (cognitive/none), descriptors (adjective/relative), locative vs identity all vary"
+   }
+  ],
+  "pct_need_rework": 46.67,
+  "course_note": "Moderate diversity issues; 53% of baskets show genuine frame variation, but 47% are repetitive slot-swap templates lacking polarity, tense, modality, or syntactic embedding shifts.\""
+ },
+ {
+  "course_code": "eng_for_hin",
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "monotonous",
+    "note": "All three USE phrases share identical structure: 'I want to speak [+ optional object] now' — no real frame variation, only slot-filling with different objects."
+   },
+   {
+    "lego_en": "what the answer is",
+    "frame_rating": "thin",
+    "note": "Most phrases cluster around 'want/like to find out what the answer is' with time/location modifiers; clause-embedding varies (direct vs embedded) but dominant frame repeated."
+   },
+   {
+    "lego_en": "you wanted",
+    "frame_rating": "thin",
+    "note": "All USE share 'you wanted to [VERB]' frame; variation is only in different verbs (learn/speak/ask) and modifiers, no change in person/tense/negation/embedding."
+   },
+   {
+    "lego_en": "mistakes",
+    "frame_rating": "thin",
+    "note": "Three of four phrases share 'I don't want mistakes' with time/connective modifiers; only phrase [0] uses different structure ('don't need' vs 'don't want')."
+   },
+   {
+    "lego_en": "at the same time",
+    "frame_rating": "diverse",
+    "note": "Genuine frame variety: negation (not trying), affirmation (want), coordination (want...and), embedded clause (I think we want), question form (do you want)."
+   },
+   {
+    "lego_en": "he said",
+    "frame_rating": "diverse",
+    "note": "Strong frame diversity: memory failure (can't remember), knowledge (know), disagreement (don't agree), predication (was interesting), emotion (surprised) — different embedding+predicate types."
+   },
+   {
+    "lego_en": "that is why",
+    "frame_rating": "monotonous",
+    "note": "All five phrases repeat 'that is why + [SUBJECT] + [MODAL/VERB]' frame; only subject/verb slot-swaps, no connective/subordination/question variation."
+   },
+   {
+    "lego_en": "use your car",
+    "frame_rating": "thin",
+    "note": "Phrases [0-2] cluster around 'you like/don't like to use your car'; [3-4] shift to 'I' + modals (should/want), but overlap and limited embedding variation."
+   },
+   {
+    "lego_en": "need to leave so early",
+    "frame_rating": "diverse",
+    "note": "Different embeddings: simple statement, yes/no question, why-question, apology frame; person varies (I vs you); predicate frames change."
+   },
+   {
+    "lego_en": "there next month",
+    "frame_rating": "monotonous",
+    "note": "All five phrases share '[SUBJECT] + [EMOTION/COGNITION VERB] + there next month'; only emotion/cognition verb slot-swaps (is interesting/happy/think/hope), no tense/negation/question variation."
+   },
+   {
+    "lego_en": "I didn't have time",
+    "frame_rating": "thin",
+    "note": "All phrases maintain core frame with time adverbials (yesterday/today) or embedded clauses (I think); two near-duplicates (phrases [0] and [4] both 'I'm sorry...')."
+   },
+   {
+    "lego_en": "for the council",
+    "frame_rating": "diverse",
+    "note": "Person/subject varies (my daughter/I/my son/she/you); verbs differ (works/want to work); question form present; person+voice variety across frames."
+   },
+   {
+    "lego_en": "a glass or two of water",
+    "frame_rating": "diverse",
+    "note": "Different tenses (want/do you want/wanted to ask/going to ask/had); question form; agent varies; real temporal/modal variation across phrases."
+   },
+   {
+    "lego_en": "weekend",
+    "frame_rating": "diverse",
+    "note": "Frame variety: question (work at), temporal boundary (before/after), purpose (tell you), future (going to work); person/tense/connective all vary."
+   },
+   {
+    "lego_en": "old",
+    "frame_rating": "thin",
+    "note": "Phrases mostly predicate adjectives or relative clauses; variation in gender (woman/man/friend) and knowledge state (is/know/going to meet) but limited structural diversity."
+   }
+  ],
+  "pct_need_rework": 60,
+  "course_note": "eng_for_hin shows weak frame diversity overall (60% baskets thin or monotonous). Stronger baskets (at the same time, he said, for the council, weekend) show question forms, negation, embedding, and tense variation. Weaker baskets cluster slots within a single frame skeleton—particularly 'now', 'that is why', 'there next month' rely on lexical slot-swaps only. Recommend reworking the monotonous/thin clusters to add yes/no questions, subordination, temporal contrast, and embedding variety.\""
+ },
+ {
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "thin",
+    "note": "All three phrases are \"I want to X + now\" slots; minimal variation beyond object swapping (with/without, English or not)."
+   },
+   {
+    "lego_en": "to come back",
+    "frame_rating": "diverse",
+    "note": "Spans negation, modality (want/like/unsure), person (I/he), time (today/tomorrow/indefinite), and purpose clauses (after you finish)."
+   },
+   {
+    "lego_en": "to ask you",
+    "frame_rating": "diverse",
+    "note": "Shows variety in person (I/he), modality (not able/like/want), embedding depth (how/what/to), and impersonal structures."
+   },
+   {
+    "lego_en": "I don't need to",
+    "frame_rating": "monotonous",
+    "note": "All six phrases repeat identical frame: \"I don't need to [VERB] [ADVERBIAL TIME]\" with only infinitive and time-slot variation."
+   },
+   {
+    "lego_en": "next week",
+    "frame_rating": "thin",
+    "note": "Modality varies (need/want/looking forward) but all place temporal phrase in same syntactic slot; mostly fronted adverbial complement."
+   },
+   {
+    "lego_en": "very happy",
+    "frame_rating": "diverse",
+    "note": "Spans negation+contrast (but you're going well), with-phrases, gratitude+affective, and progressive embedding (to be learning)."
+   },
+   {
+    "lego_en": "I'm ready",
+    "frame_rating": "diverse",
+    "note": "Conditional-temporal (as soon as), multi-object embedding (with people), duration (for a while), spatial (home on bus), and past-present contrast."
+   },
+   {
+    "lego_en": "worse",
+    "frame_rating": "thin",
+    "note": "Five phrases all follow \"I feel as if I'm doing worse [REASON/TIME]\" — same core structure repeated with subordination-clause variation only."
+   },
+   {
+    "lego_en": "there are too many ideas",
+    "frame_rating": "diverse",
+    "note": "Existential statement combines with varied subordination: and-consequence, believe-embedding, should-embedding, and evaluation (would be great)."
+   },
+   {
+    "lego_en": "what your name is",
+    "frame_rating": "diverse",
+    "note": "Spans negation+coordination (don't know + wanted), imperative+reason, third-person+temporal, conditional, and apology—varied person, mood, and subordination."
+   },
+   {
+    "lego_en": "on my own",
+    "frame_rating": "thin",
+    "note": "Core frame \"I [MODAL] [VERB] on my own [OPTIONAL TIME]\" repeated; modality varies but syntactic structure stays constant."
+   },
+   {
+    "lego_en": "on the table",
+    "frame_rating": "diverse",
+    "note": "Mood varies (interrogative, imperative, declarative); objects are simple or relative-clause-embedded; shows realis vs elicited knowledge."
+   },
+   {
+    "lego_en": "went out",
+    "frame_rating": "diverse",
+    "note": "Varies in person (they/nobody/she/he/I), modality (reported, negation, purpose), and embedding structure (purpose clauses, relative clauses)."
+   },
+   {
+    "lego_en": "I don't want to give it to him",
+    "frame_rating": "thin",
+    "note": "All five repeat \"I don't want to give it to him [REASON/CONDITION]\" with only subordination clauses (temporal, causal, conditional) differing."
+   },
+   {
+    "lego_en": "heard from",
+    "frame_rating": "diverse",
+    "note": "Spans simple past (various objects), negation+present-perfect, embedded relative clauses (man you were talking to), and varying agent-relatedness."
+   }
+  ],
+  "course_code": "eng_for_ita",
+  "pct_need_rework": 40,
+  "course_note": "Course shows strong diversity in 60% of sampled baskets; five thin patterns (now, next week, worse, on my own, I don't want) rely heavily on slot-filling in fixed syntactic frames, and one fully monotonous frame (I don't need to) that needs USE-phrase redistribution.\""
+ },
+ {
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "thin",
+    "note": "All three phrases repeat want-to-speak frame with minimal scope variation"
+   },
+   {
+    "lego_en": "later on",
+    "frame_rating": "diverse",
+    "note": "Multiple subjects, verbs (speak/return), temporal scope, and companion variation across statements"
+   },
+   {
+    "lego_en": "it's useful",
+    "frame_rating": "diverse",
+    "note": "Gerundive constructions show genuine activity variety (speak/remember/practice/learn) across contexts"
+   },
+   {
+    "lego_en": "about",
+    "frame_rating": "diverse",
+    "note": "Temporal anchors (tomorrow/tonight), subjects, verbs vary; includes question frame"
+   },
+   {
+    "lego_en": "know",
+    "frame_rating": "monotonous",
+    "note": "Heavy repetition of concessive frame: know-but-can't/difficulty with only phrase content swapped"
+   },
+   {
+    "lego_en": "truth",
+    "frame_rating": "diverse",
+    "note": "Want/say/negate/question frames; agent/tense/causation variation across statements"
+   },
+   {
+    "lego_en": "it's time to go now",
+    "frame_rating": "monotonous",
+    "note": "All phrases repeat time-clause + concessive with only consequence swapped"
+   },
+   {
+    "lego_en": "new",
+    "frame_rating": "diverse",
+    "note": "Verbs vary (do/find/make/speak/understand) with new in different positions"
+   },
+   {
+    "lego_en": "ideas",
+    "frame_rating": "thin",
+    "note": "Dominated by possess/evaluate frames (have ideas, ideas are good) with subject/count slot-swaps"
+   },
+   {
+    "lego_en": "I hope you'll finish soon",
+    "frame_rating": "thin",
+    "note": "All four repeat time-clause + consequential state; only consequence varies"
+   },
+   {
+    "lego_en": "I'm not sure if it's true",
+    "frame_rating": "thin",
+    "note": "Uncertainty-frame repetition with temporal/evaluative continuations; mostly additive variation"
+   },
+   {
+    "lego_en": "change",
+    "frame_rating": "monotonous",
+    "note": "Pure subject-verb-object slot-filling: [subject] change [object]; no frame diversity"
+   },
+   {
+    "lego_en": "we don't know what they're trying to achieve",
+    "frame_rating": "monotonous",
+    "note": "Identical negation core with only temporal/intensifier adverbs varying; pure slot-filling"
+   },
+   {
+    "lego_en": "met",
+    "frame_rating": "diverse",
+    "note": "Relative clause constructions show varied person types and clause content"
+   },
+   {
+    "lego_en": "might be",
+    "frame_rating": "diverse",
+    "note": "Person/role variation with relative clause diversity across predicate meanings"
+   }
+  ],
+  "course_code": "eng_for_jpn",
+  "pct_need_rework": 40,
+  "course_note": "Course shows strong diversity in 9/15 baskets (60%); 6 baskets (40%) need rework—mostly concessive/question frames over-used, or pure slot-filling with adverbial/subject swaps replacing genuine frame variation."
+ },
+ {
+  "course_code": "eng_for_kor",
+  "baskets": [
+   {
+    "lego_en": "how to speak",
+    "frame_rating": "thin",
+    "note": "All five phrases share identical frame: want/try to learn how to speak [±modifier]; pure slot-swap of predicate and object"
+   },
+   {
+    "lego_en": "with everyone else",
+    "frame_rating": "diverse",
+    "note": "Spans predicate variation (speak, come back, practise), person shift (he/I), embedding (want you to) + time modifiers"
+   },
+   {
+    "lego_en": "taking too much time",
+    "frame_rating": "monotonous",
+    "note": "Identical frame repeated five times: I don't like taking too much time [verb+ing]; zero structural variation"
+   },
+   {
+    "lego_en": "or",
+    "frame_rating": "diverse",
+    "note": "Three distinct coordination types: time (today or tomorrow), action (speak or learn), manner (quickly or carefully) across different moods"
+   },
+   {
+    "lego_en": "again",
+    "frame_rating": "diverse",
+    "note": "Mixes request verbs (explain, say, show) with adverbial modification, question form, and varied infinitival framing"
+   },
+   {
+    "lego_en": "do you want to start",
+    "frame_rating": "monotonous",
+    "note": "Five identical questions differing only in time-expression slot: do you want to start [temporal adverbial]?"
+   },
+   {
+    "lego_en": "you should ask",
+    "frame_rating": "thin",
+    "note": "Base frame 'you should ask [object]' repeated with minimal variation; U4 (time) and U5 (prepositional) add marginal structural shifts"
+   },
+   {
+    "lego_en": "definitely",
+    "frame_rating": "diverse",
+    "note": "LEGO modifies five different predicate types (ready, know, agree, ready, doing) with varying complementation and modality"
+   },
+   {
+    "lego_en": "with them",
+    "frame_rating": "thin",
+    "note": "Frame 'I want/enjoy [verb] together with them' repeated via object-slot swaps; zero embedding, negation, or connective variation"
+   },
+   {
+    "lego_en": "what your name is",
+    "frame_rating": "diverse",
+    "note": "Spans question (indirect U1, direct U5), negated declarative (U2, U3), epistemic (U4); shows embedding in interrogative and doxastic contexts"
+   },
+   {
+    "lego_en": "look for it",
+    "frame_rating": "diverse",
+    "note": "Modality varies: desire (want), preference (like), future capacity (will be able); mixing purpose clauses and embedded infinitives"
+   },
+   {
+    "lego_en": "what are you looking for",
+    "frame_rating": "thin",
+    "note": "Direct wh-question frame repeated; only U1 shifts to indirect question (I'd like to know); location/time slot-swaps only"
+   },
+   {
+    "lego_en": "they didn't want to explain",
+    "frame_rating": "thin",
+    "note": "Core structure repeated as embedded complement; higher predicates (told us, think, I'm afraid) add surface variation but frame unchanged"
+   },
+   {
+    "lego_en": "brother",
+    "frame_rating": "diverse",
+    "note": "Spans tense (present perfect, past, present), negation (don't know), embedding (relative/wh-question), agent shift (I/you)"
+   },
+   {
+    "lego_en": "an old man",
+    "frame_rating": "diverse",
+    "note": "Visual (can see), past encounter (met), knowledge predication with relative clauses; tense, modality, and embedding all vary"
+   }
+  ],
+  "pct_need_rework": 40,
+  "course_note": "eng_for_kor has weak frame diversity overall; 6/15 baskets (40%) rated thin or monotonous show repetitive slot-swaps without genuine structural variety. Strongest baskets show LEGO combining across predicate types, modality shifts, and embedding contexts; weakest rely on object/adverbial substitution only."
+ },
+ {
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "thin",
+    "note": "All statements with identical shape 'I want to [VERB] now'; variation only via slot-swaps (add/remove object, add/remove listener)"
+   },
+   {
+    "lego_en": "he wants",
+    "frame_rating": "thin",
+    "note": "Five statements, all 'he wants to [VERB]'; frame constant, variation only on verb choice and optional modifiers"
+   },
+   {
+    "lego_en": "it's useful",
+    "frame_rating": "thin",
+    "note": "All five copular statements 'it's useful to [VERB]'; slot-swaps on infinitive only, no variation in question/negation/subordination"
+   },
+   {
+    "lego_en": "a little tired",
+    "frame_rating": "diverse",
+    "note": "Statement/question (one question), person variation (I/she/he/you), temporal reference (morning/week/when), connectives (but/when), negation; each genuinely distinct frame"
+   },
+   {
+    "lego_en": "a letter",
+    "frame_rating": "diverse",
+    "note": "Question vs statement, bare infinitive vs embedded, temporal (tomorrow), locative (in English) vs goal (to someone/friends); frames are clearly distinct"
+   },
+   {
+    "lego_en": "where",
+    "frame_rating": "diverse",
+    "note": "Statement/question mix, negation/affirmation variation, past tense in one, person shifts (I/you/she), embedded vs root interrogative; genuine structural variety"
+   },
+   {
+    "lego_en": "way",
+    "frame_rating": "monotonous",
+    "note": "Core shape '[SUBJECT] [VERB] this way' repeated; slot-swaps on verb (want/difficult/trying/know) but no question, negation, temporal reference, or connectives"
+   },
+   {
+    "lego_en": "wasn't expecting",
+    "frame_rating": "monotonous",
+    "note": "All five '[I] wasn't expecting [OBJECT]'; negation and past tense constant throughout; variation only on object type (pronoun/noun/adverbial/clause)"
+   },
+   {
+    "lego_en": "there are",
+    "frame_rating": "thin",
+    "note": "All existential statements 'there are [QUANTITY] [NOUN] [MODIFIER]'; variation purely adverbial/adjectival slot-filling with no structural variety"
+   },
+   {
+    "lego_en": "nothing seems to be working",
+    "frame_rating": "diverse",
+    "note": "Embedded vs root clauses, varying introductory verbs (feel/think/nothing-fronted), connectives (and/when), temporal subordination; each adds distinct combination frame"
+   },
+   {
+    "lego_en": "but I'm not sure",
+    "frame_rating": "thin",
+    "note": "Core pattern '... but I'm not sure if [PREDICATE]'; 'but' and embedded-question structure constant; variation only on predicate slot-swaps"
+   },
+   {
+    "lego_en": "I don't mind at all",
+    "frame_rating": "diverse",
+    "note": "Varies from pure statement to emotional embedding to modal+report verb; time shifts (present/past), person variation (I/you/she), different embedding types"
+   },
+   {
+    "lego_en": "they wanted to ask for",
+    "frame_rating": "thin",
+    "note": "All past-tense statements '[they/someone] wanted to ask for [OBJECT]'; structure constant; variation via adverbial/object slot-swaps and embedding choice"
+   },
+   {
+    "lego_en": "I met someone last night",
+    "frame_rating": "thin",
+    "note": "All past-tense statements 'I met someone last night [MODIFIER]'; three use relative clauses with slot-swaps, one comitative; frame predominantly constant"
+   },
+   {
+    "lego_en": "friend of my father",
+    "frame_rating": "diverse",
+    "note": "Statement/question split, past/present tense variation, identifying vs existential vs know-verb copula; adjectives add frame nuance; clear structural breaks"
+   }
+  ],
+  "course_code": "eng_for_pan",
+  "pct_need_rework": 60,
+  "course_note": "9 of 15 sampled baskets need rework (60%) — thin/monotonous USEs dominated by slot-swaps within a single frame; diverse baskets show question/statement shifts, tense variation, connectives, or embedding type differences. Pattern: early baskets (1-3, 7-9, 11, 13-14) concentrate on simple statements with minimal structural variety; later baskets (4-6, 10, 12, 15) achieve diversity through statement/question alternation and temporal/person shifts. Recommendation: audit thin baskets for connectives (but/when/because), question forms, negation, and temporal markers; rebalance composition around these frame-expanding dimensions.\""
+ },
+ {
+  "course_code": "eng_for_por",
+  "baskets": [
+   {
+    "lego_en": "to learn",
+    "frame_rating": "monotonous",
+    "note": "All three USE phrases are progressive slot-swaps of 'quero aprender inglês' with optional modifiers—no real frame variety."
+   },
+   {
+    "lego_en": "everyone else",
+    "frame_rating": "diverse",
+    "note": "Spans question form, desire types (quero/gostaria), negation with uncertainty, subjunctive vs. infinitive embedding, different tense/modality levels."
+   },
+   {
+    "lego_en": "better",
+    "frame_rating": "diverse",
+    "note": "Causation (porque), time references (em breve/agora), person shift (ela/eu), modality levels (desire, possibility, uncertainty), different infinitive constructions."
+   },
+   {
+    "lego_en": "to know",
+    "frame_rating": "thin",
+    "note": "All five vary '[desire/need] to know how to [verb]'—different infinitives (melhorar/dizer/responder) and temporal/manner modifiers but identical grammatical frame."
+   },
+   {
+    "lego_en": "could you",
+    "frame_rating": "monotonous",
+    "note": "All five are the same polite request template 'podia [verb] [+ modifier]?'—pure slot-swaps with no negation, polarity shift, or embedding."
+   },
+   {
+    "lego_en": "I've learnt",
+    "frame_rating": "diverse",
+    "note": "Embedded in belief (acho que), standalone statement, used in social formula, with complex object clause, and coordinated with continuation (mas)—genuinely different frames."
+   },
+   {
+    "lego_en": "when you want",
+    "frame_rating": "thin",
+    "note": "Most are permission statements '[subject] pode [verb] quando quiser' with slot-swaps on verb/object; one has belief embedding—shallow variation."
+   },
+   {
+    "lego_en": "I wasn't expecting that",
+    "frame_rating": "diverse",
+    "note": "Spans coordination (and at front vs. back), conditional clauses vs. temporal, different subjects in embedded clauses—genuinely varied embedding."
+   },
+   {
+    "lego_en": "there are too many ideas",
+    "frame_rating": "diverse",
+    "note": "Appears in initial position, embedded after time clauses, coordinated with negation/difficulty, as base for purpose infinitive—different embedding depths and types."
+   },
+   {
+    "lego_en": "earlier than I wanted to",
+    "frame_rating": "diverse",
+    "note": "Spans consequence coordination, regret embedding (lamento), causation (porque), nominal embedding (foi surpresa), bare statement—different verbs and grammatical structures."
+   },
+   {
+    "lego_en": "I think that it's interesting",
+    "frame_rating": "thin",
+    "note": "Base structure 'eu acho que é interessante [X]' where X varies—some WH-question embedding and negation but mostly different infinitive-objects; shallow frame-variety."
+   },
+   {
+    "lego_en": "something different",
+    "frame_rating": "diverse",
+    "note": "Want + infinitive, belief + necessity, future + interrogative subordination, desire + infinitive, direct question—different sentence types and embedding depths."
+   },
+   {
+    "lego_en": "what you needed to do",
+    "frame_rating": "monotonous",
+    "note": "Four of five are '[main verb] o que precisava de fazer'—identical subordinate clause with only main-verb slot-swaps; no real frame diversity."
+   },
+   {
+    "lego_en": "has just started",
+    "frame_rating": "thin",
+    "note": "All are '[subject] acabou de começar a [infinitive]' with slot-swaps on infinitive and subject form; one has reported-speech embedding but structure remains almost identical."
+   },
+   {
+    "lego_en": "that blue thing",
+    "frame_rating": "thin",
+    "note": "Most are 'want [NP]' or 'said that want [NP]' with only reported-speech wrapping or coordination varying; one breaks frame but limited genuine variety."
+   }
+  ],
+  "pct_need_rework": 46.67,
+  "course_note": "eng_for_por shows scattered frame diversity—6 diverse, 5 thin, 3 monotonous baskets. Monotonous patterns: aprender, podia, o que precisava de fazer. Strongest: foram, espera, ideias à mais. Thin spots (saber, quando quiser, começar, coisa azul) use repetitive infinitive-object or permission slots without varying embedding/polarity/tense enough. ~47% need rework to create genuinely different frames.\""
+ },
+ {
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "thin",
+    "note": "All five are 'I want [object/activity] now'—slot-swaps only (±English, ±companion). Zero variation in polarity, tense, embedding, or connectives."
+   },
+   {
+    "lego_en": "do you speak",
+    "frame_rating": "diverse",
+    "note": "Yes-no questions with varied modifiers: one clause-embedded ('after you finish'), three adverbial adjuncts (manner, temporal). Genuine frame extension."
+   },
+   {
+    "lego_en": "I like feeling",
+    "frame_rating": "thin",
+    "note": "All follow 'I like feeling to [VERB-PHRASE]'—slot-swaps in embedded clause only. No negation, polarity, or connective variety."
+   },
+   {
+    "lego_en": "I'm tired",
+    "frame_rating": "diverse",
+    "note": "Mix of concessive contrast ('but'), negation in 2nd clause, and adverbial-enriched statements. The tired core appears in different syntactic contexts."
+   },
+   {
+    "lego_en": "bag",
+    "frame_rating": "thin",
+    "note": "All '[SUBJECT] want[s] to [ACTION in/about bag]'—no negation, no embedding beyond infinitive, no connectives. Slot-swaps only."
+   },
+   {
+    "lego_en": "where",
+    "frame_rating": "diverse",
+    "note": "High frame variety: polite conditional, tag-question, opinion-embedding, desire-frames, past refusal, unknowing, progressive. Multiple tenses and polarity shifts."
+   },
+   {
+    "lego_en": "enough to",
+    "frame_rating": "diverse",
+    "note": "Mix of predicate-sufficiency frames ('it is [ADJ] enough to') and achievement frames ('I've/know enough to'). Tenses vary; phrase 1 nests infinitival complements."
+   },
+   {
+    "lego_en": "must",
+    "frame_rating": "diverse",
+    "note": "Deontic obligation paired with varied complements: desire, motion, continuative action, interrogative introspection. Not slot-swaps; genuine frame variety."
+   },
+   {
+    "lego_en": "surprise",
+    "frame_rating": "thin",
+    "note": "Mostly copular '[subject] is [modifier?] surprise [for beneficiary?]'—adjectives and benefactives as slot-swaps. Tight copular frame."
+   },
+   {
+    "lego_en": "you'll",
+    "frame_rating": "thin",
+    "note": "All future statements 'you'll [VERB-PHRASE]'—complements vary but auxiliary frame is uniform. Slot-swaps of verb only."
+   },
+   {
+    "lego_en": "do you want me to help you",
+    "frame_rating": "thin",
+    "note": "Fixed yes-no question 'do you want me to help you [OBJECT/TEMPORAL]?' LEGO in identical slot; only final adjunct varies."
+   },
+   {
+    "lego_en": "money",
+    "frame_rating": "thin",
+    "note": "Two frame types (state/action) with locative/temporal adjuncts only. No negation, no embedding, no connectives. Slot-swap variation."
+   },
+   {
+    "lego_en": "a good time",
+    "frame_rating": "thin",
+    "note": "Two structures: 'did you have a good time [WHEN]?' (temporal variants) and desire-frames. LEGO in same NP position always. No embedding or connectives."
+   },
+   {
+    "lego_en": "wanted you to tell me",
+    "frame_rating": "monotonous",
+    "note": "Rigid '[AGENT] wanted you to tell me [TEMPORAL?]'—subject-slot only, temporal optional. Zero polarity, connective, embedding, or tense variety."
+   },
+   {
+    "lego_en": "sent me two emails",
+    "frame_rating": "thin",
+    "note": "Telic past '[AGENT] sent me two emails [WHEN?]'—temporal adjuncts and discourse particle 'yes' only. No polarity or embedding variety."
+   }
+  ],
+  "pct_need_rework": 66.7,
+  "course_code": "eng_for_sin",
+  "course_note": "Over two-thirds of sampled baskets show thin or monotonous frames—the course tends to repeat the same syntactic structure with only filler variation (subject, temporal, object adjuncts). Genuine frame diversity appears in only 5 of 15 baskets (2, 4, 6, 7, 8). The pattern suggests USE phrases are generated mechanically from a template rather than crafted to show the LEGO recombining in genuinely different grammatical contexts (polarity, embedding, connectives, tense shifts, clause structures). Recommend: audit generator prompt for connective/embedding variety; add negation, questions, and subordinate clauses to break the statement-with-adjunct pattern.\""
+ },
+ {
+  "baskets": [
+   {
+    "lego_en": "now",
+    "frame_rating": "monotonous",
+    "note": "All four phrases follow 'quiero hablar [X] ahora' — only object slot varies, zero structural diversity."
+   },
+   {
+    "lego_en": "to come back",
+    "frame_rating": "diverse",
+    "note": "Multiple frames: desire, conditional preference, near-future intention, with different temporal/subordinate structures and time references."
+   },
+   {
+    "lego_en": "better",
+    "frame_rating": "thin",
+    "note": "Mostly 'quiero/es útil' + 'mejor' repetition; phrases 2 & 4 near-identical structure, only phrase 5 breaks pattern."
+   },
+   {
+    "lego_en": "improve",
+    "frame_rating": "thin",
+    "note": "Four of five are 'quiero mejorar [time phrase]' — just morning/afternoon/night slots; only 'es útil' variant offers change."
+   },
+   {
+    "lego_en": "next week",
+    "frame_rating": "diverse",
+    "note": "Multiple frames: future intention, desire, future progressive, conditional belief — varied aspect and modality across phrases."
+   },
+   {
+    "lego_en": "how much I've learnt already",
+    "frame_rating": "thin",
+    "note": "Four of five restate 'estado/es [adjective] con lo mucho que ya he aprendido' — adjective-swapping only, minimal variation."
+   },
+   {
+    "lego_en": "something similar",
+    "frame_rating": "diverse",
+    "note": "Clear frame variety: question, prohibition, desire, conditional advice, desire-with-topic — different sentence types and modalities."
+   },
+   {
+    "lego_en": "last time",
+    "frame_rating": "diverse",
+    "note": "Memory + past, negated past, comparison, predicate adjective, evaluation — good tense and structural variation."
+   },
+   {
+    "lego_en": "them",
+    "frame_rating": "thin",
+    "note": "Predominantly 'es/no es problema + infinitive con ellos' (4 of 5) — only phrase 5 breaks the pattern; mostly repetitive."
+   },
+   {
+    "lego_en": "I hope you'll finish",
+    "frame_rating": "monotonous",
+    "note": "All five use identical subjunctive frame 'espero que termines [when/time]' — pure temporal/conditional slot-swapping."
+   },
+   {
+    "lego_en": "and then",
+    "frame_rating": "diverse",
+    "note": "Varied: negation, possibility + infinitive, imperative, different verb types — shows multiple modalities."
+   },
+   {
+    "lego_en": "so I don't need to",
+    "frame_rating": "monotonous",
+    "note": "Exact pattern repeated: 'así que no necesito [infinitive]' across all five — zero frame diversity, pure verb-slot repetition."
+   },
+   {
+    "lego_en": "discuss the problem",
+    "frame_rating": "diverse",
+    "note": "Multiple frames: belief + necessity, desire, negated past desire, simple necessity, polite conditional — varied modalities and tense."
+   },
+   {
+    "lego_en": "old",
+    "frame_rating": "thin",
+    "note": "Demonstrative + adjective + gender patterns ('conozco a', 'ese/esa', 'el'); mostly gender/determiner variation, not real frame diversity."
+   },
+   {
+    "lego_en": "I don't have",
+    "frame_rating": "thin",
+    "note": "All five follow 'no tengo [object]' — only object slot changes (much to say, time, what you need, etc.), zero structural variety."
+   }
+  ],
+  "pct_need_rework": 60,
+  "course_code": "eng_for_spa",
+  "course_note": "eng_for_spa shows a pronounced thin/monotonous pattern: 60% of baskets rely on slot-swapping rather than genuine frame diversity, particularly common with temporal/modal phrases and dative constructions where learners need to see LEGO recombine across different sentence types (questions vs statements, negation, aspect change, embedding).\""
+ },
+ {
+  "course_code": "eng_for_tam",
+  "baskets": [
+   {
+    "lego_en": "with you",
+    "frame_rating": "thin",
+    "note": "Two frames (want-to vs simple present); phrases 2-3 are identical shape with slot swaps on object."
+   },
+   {
+    "lego_en": "this evening",
+    "frame_rating": "diverse",
+    "note": "Varies across simple present, future intent (going to), want-to; different verbs and complements (meet/speak/find/return)."
+   },
+   {
+    "lego_en": "tonight",
+    "frame_rating": "monotonous",
+    "note": "Four of five phrases are identical: 'I want to [VERB] tonight'; only one variant (future intent) breaks the slot-swap monotony."
+   },
+   {
+    "lego_en": "worry",
+    "frame_rating": "thin",
+    "note": "All negation + worry; phrases 1 & 4 share frame (about-object); mostly person/object slot swaps on one structure."
+   },
+   {
+    "lego_en": "different",
+    "frame_rating": "thin",
+    "note": "Three of five are identical 'I want to [VERB] different [NOUN]'; copula and think-about add minimal real variety."
+   },
+   {
+    "lego_en": "more to learn",
+    "frame_rating": "diverse",
+    "note": "Varies across temporal (now), concessive (but-clauses), embedded (I think), adverbial (slowly), and direct statement frames."
+   },
+   {
+    "lego_en": "for a while",
+    "frame_rating": "monotonous",
+    "note": "Four of five follow '[PERSON] [VERB] for a while'; only inverted copula variant ('for a while it is difficult') provides frame break."
+   },
+   {
+    "lego_en": "happy",
+    "frame_rating": "diverse",
+    "note": "Varies across need-to-infinitive, consider+gerund, want-to, and negated need-to; includes adjective and gerund structures."
+   },
+   {
+    "lego_en": "car",
+    "frame_rating": "monotonous",
+    "note": "Three of four are 'X needs a car' (person slot swaps); only one verb variant (see) breaks the pattern."
+   },
+   {
+    "lego_en": "talk",
+    "frame_rating": "thin",
+    "note": "Mostly '[PERSON] talk [MODIFIER]' with manner/with-object/time/frequency; two phrases identical (talk + time)."
+   },
+   {
+    "lego_en": "patient",
+    "frame_rating": "diverse",
+    "note": "Varies across copula-past (was + intensifier), need-to-be, with-complement (patient with me), and temporal clauses."
+   },
+   {
+    "lego_en": "what do you need to do",
+    "frame_rating": "monotonous",
+    "note": "Identical question frame repeated with subject/time markers; phrases 2 & 4 differ only by time (yesterday/today)."
+   },
+   {
+    "lego_en": "money",
+    "frame_rating": "monotonous",
+    "note": "Noun fragments barely forming phrases; two patterns (noun+time, pronoun+noun) repeated with person/time slot swaps."
+   },
+   {
+    "lego_en": "television",
+    "frame_rating": "monotonous",
+    "note": "Noun fragments; identical patterns to 'money' basket (pronoun+noun or noun+time) with minimal variation."
+   },
+   {
+    "lego_en": "hour",
+    "frame_rating": "monotonous",
+    "note": "Noun fragments identical to 'money' and 'television'; noun+time and pronoun+noun repeated with person/time slot swaps."
+   }
+  ],
+  "pct_need_rework": 80,
+  "course_note": "80% of sampled baskets need rework; terminal nouns (money/TV/hour) lack real frames; even verb baskets (tonight, for-a-while, car) rely heavily on person/object slot swaps rather than structural variety.\""
+ },
+ {
+  "baskets": [
+   {
+    "lego_en": "with you",
+    "frame_rating": "monotonous",
+    "note": "All three phrases identical frame (I want to speak X with you); phrase 2 drops 'I' but repeats subject+want+speak pattern."
+   },
+   {
+    "lego_en": "to come back",
+    "frame_rating": "diverse",
+    "note": "Question form (do you want), past tense (he wanted), time adverbial variation (now, today), person shift (I→he→you)."
+   },
+   {
+    "lego_en": "I don't like",
+    "frame_rating": "thin",
+    "note": "All five phrases follow 'I don't like to X' slot-fill pattern (speak/go/meet/say/this); no polarity, time, or embedding variation."
+   },
+   {
+    "lego_en": "this morning",
+    "frame_rating": "diverse",
+    "note": "Varies across predicates (be useful, be tired, want to speak), embedding (connective 'but'), tense (past, habitual), inversion."
+   },
+   {
+    "lego_en": "to put",
+    "frame_rating": "thin",
+    "note": "All five phrases (I want, she wanted, she wanted+adverb, I want+time, do you want) are want/want-to-put variants; no other frame."
+   },
+   {
+    "lego_en": "young",
+    "frame_rating": "diverse",
+    "note": "Simple assertion, conjunction (but you speak well, but you want to learn), negation (I'm not sure), question (are you yet?), time markers."
+   },
+   {
+    "lego_en": "great",
+    "frame_rating": "thin",
+    "note": "Mostly slot-swaps within 'it's great [connective X]' pattern; phrase 1 adds 'I think'; phrase 5 awkward conjunction."
+   },
+   {
+    "lego_en": "hope",
+    "frame_rating": "thin",
+    "note": "Four phrases all follow 'I/we hope (not) that X' frame; minimal person/tense/polarity variety; mostly slot-fill with different embedded clauses."
+   },
+   {
+    "lego_en": "so happy",
+    "frame_rating": "diverse",
+    "note": "Question, reason clause (that you're doing X), perception embedding (to see), multiple embedded that-clauses with different content/aspect."
+   },
+   {
+    "lego_en": "couldn't",
+    "frame_rating": "thin",
+    "note": "All frames center on 'I couldn't [verb]'; some embedding (when I was nervous, so he wasn't patient) but mostly same negated-ability shape."
+   },
+   {
+    "lego_en": "can you understand",
+    "frame_rating": "monotonous",
+    "note": "All five phrases identical interrogative (can you understand?) with only object/embedded clause variation; same question form repeated."
+   },
+   {
+    "lego_en": "latest",
+    "frame_rating": "diverse",
+    "note": "Question (do you know), infinitive (want to understand), perfect (have you heard), present (he wants), statement (I heard); varied predicates and aspects."
+   },
+   {
+    "lego_en": "to relax",
+    "frame_rating": "thin",
+    "note": "Frames: 'it was nice to relax X', 'it's nice to relax X', 'I'm going to relax X', 'I want to relax'; mostly want/be-nice-to variants."
+   },
+   {
+    "lego_en": "she was too busy",
+    "frame_rating": "diverse",
+    "note": "Contrastive (wanted to help but), causal (so she couldn't), question, fear embedding (I'm afraid that), relative embedding (I wanted her to help)."
+   },
+   {
+    "lego_en": "important meeting",
+    "frame_rating": "thin",
+    "note": "All five phrases 'I/you/she have got an important meeting [time/circumstance]'; same possessive-existential frame with minor adverbial variation."
+   }
+  ],
+  "course_code": "eng_for_urd",
+  "pct_need_rework": 46.67,
+  "course_note": "Frame diversity inconsistent across course: 7 of 15 sampled baskets are thin or monotonous, mostly simple predicates (want/have/be) repeated with slot-fills and time/person variants but no genuine sentence-structure change or embedding."
+ },
+ {
+  "baskets": [
+   {
+    "lego_en": "Now",
+    "frame_rating": "thin",
+    "note": "All five phrases follow 'I want to [action] now' pattern; mostly slot-swaps of object/action with no real frame variation (only position shift in #5)."
+   },
+   {
+    "lego_en": "And",
+    "frame_rating": "diverse",
+    "note": "Varies across statement vs question, different predicate types (negation, positive, question), embedded in 'and' at start vs mid-sentence (#5), multiple time references, multiple persons."
+   },
+   {
+    "lego_en": "To go",
+    "frame_rating": "thin",
+    "note": "Four of five are 'want/doesn't want to go'; only real variation is negation (#1), question form (#2), and person/time swaps (#4-5). Limited frame diversity."
+   },
+   {
+    "lego_en": "This afternoon",
+    "frame_rating": "diverse",
+    "note": "Varies across intention (looking forward), negation (doesn't want), evaluation (useful), question form, with different main verbs (want, expect, is useful, come back). Good frame coverage."
+   },
+   {
+    "lego_en": "Know",
+    "frame_rating": "diverse",
+    "note": "Wide variation: conditional ('if you know'), interrogative ('do you know'), embedded in doubt structures, contrastive ('I think you know but I'm not sure'). Different embeddings and frames."
+   },
+   {
+    "lego_en": "Easy",
+    "frame_rating": "diverse",
+    "note": "Alternates negation vs affirmation, varied subjects (it, I), both 'hard to X' and 'easy to X' evaluations, different main actions (remember, finish, explain, learn, speak). Solid frame diversity."
+   },
+   {
+    "lego_en": "Those people",
+    "frame_rating": "thin",
+    "note": "Three phrases follow 'I [verb] those people' pattern with slight variation; questions and statement negation present but mostly template-filling with person/action swaps."
+   },
+   {
+    "lego_en": "What we're doing",
+    "frame_rating": "diverse",
+    "note": "Varies across evaluation ('is not working'), knowledge status ('don't know'), necessity ('need to change'), uncertainty ('not sure if...'), and interrogative. Strong frame coverage."
+   },
+   {
+    "lego_en": "Think that's a good idea",
+    "frame_rating": "thin",
+    "note": "Four of five are parallel 'I/you think that's a good idea' with polarity swaps (affirmative/negative/uncertain); only question form (#2) breaks the mold. Mostly pronoun/polarity swaps."
+   },
+   {
+    "lego_en": "To leave so early",
+    "frame_rating": "diverse",
+    "note": "Rich variation: contrastive (but I thought), evaluative (unusual), causal (why), apologetic (sorry), and negation. Different embeddings and pragmatic frames despite same core phrase."
+   },
+   {
+    "lego_en": "Can you give me that book",
+    "frame_rating": "diverse",
+    "note": "All questions with 'can you give me that book' but each adds different pragmatic frame: conditional (if you don't mind), temporal (before you leave), duration (tomorrow), apologetic, causal (because I want to read). Frame-rich despite surface similarity."
+   },
+   {
+    "lego_en": "Ago",
+    "frame_rating": "thin",
+    "note": "Mostly 'I saw X a while ago' repetition (#1, 4, 5 are nearly identical); only real variations are time scope ('long time ago' vs 'a while ago') and one contrastive structure (#3). Heavy slot-filling."
+   },
+   {
+    "lego_en": "Didn't want to ask you how to say it",
+    "frame_rating": "thin",
+    "note": "All five are parallel 'didn't want to ask' sentences with only connective variation (so/but/because/although). Person swaps (we/he/I/she) but core frame unchanged."
+   },
+   {
+    "lego_en": "Who wanted to ask for help",
+    "frame_rating": "thin",
+    "note": "Relative clause structure repeated across all five with only subject variation (woman/man/person) and embedding type (told us, know, is someone, there is). Same frame throughout."
+   },
+   {
+    "lego_en": "Over there",
+    "frame_rating": "diverse",
+    "note": "Interrogative (have you seen), evaluative (woman is looking), narrative (man said), and more interrogatives with different targets (keys, thing, man). Good pragmatic and structural variety."
+   }
+  ],
+  "pct_need_rework": 46.67,
+  "course_code": "eng_for_zho",
+  "course_note": "7 of 15 baskets (46.67%) are thin or monotonous; problematic LEGOs are mostly high-frequency connectives/time markers (Now, To go, Those people, Think that's a good idea, Ago, Didn't want to ask, Who wanted to ask) where USE phrases gravitate to same structural template with only pronoun/polarity swaps rather than exploring different frames the LEGO actually combines with.\""
+ }
+]

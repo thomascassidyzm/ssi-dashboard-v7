@@ -1,0 +1,397 @@
+{
+ "course_code": "eng_for_zho",
+ "total_collisions": 172,
+ "counts": {
+  "fp_subgloss": 75,
+  "fp_inflection": 63,
+  "real_consolidate": 14,
+  "real_differentiate": 18,
+  "fp_wrong_data": 2
+ },
+ "release_blocker_count": 1,
+ "notes": "eng_for_zho is clean and dominated by false positives (~80%): English target morphology drives 63 inflection FPs (speak/speaks/speaking, word/words, want/wanted, think/thought, do/did) and 75 subgloss FPs where high-frequency Chinese function/content words (说,想,会,不,我,你,是) are sliced as 'component' inside larger LEGOs or whole-sentence legos, never drilled bare. Only one true release-blocker: 好 is drilled as Well/Yes/Good/Great (genuinely distinct intentions). Most real_differentiate items are USE/BUILD sentence rows that share a normalized known stem but carry mismatched English (verb/negation/adjunct swaps from seeds 66-73) — likely known-text truncation in flag extraction, worth a decomposition check rather than deep harm; and a recurring like/enjoy and quantifier (more/many) glossing choice runs course-wide.",
+ "real_fixes": [
+  {
+   "known": "好",
+   "targets": [
+    "Well",
+    "If you can speak more slowly",
+    "Great",
+    "Yes",
+    "Good",
+    "Good time",
+    "Nice"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Bare drilled 好 maps to distinct intentions (Well=lego, Yes=lego, Good); differentiate: keep 好=Good/Well, use 是的/对 for Yes, or split by context so each English maps 1:1.",
+   "canonical_english": "",
+   "severity": "high"
+  },
+  {
+   "known": "现在让任何人听到这个真相",
+   "targets": [
+    "I'm not sure if we want to let anyone hear the truth",
+    "To let anyone hear the truth now",
+    "We didn't want to let anyone hear the truth"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Same known sentence drilled (use/build) maps to three contradictory English (I'm-not-sure / to-let-now / we-didn't-want); known text mis-keyed/truncated — re-derive one English per stored known.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "我不确定我是否想听这个故事",
+   "targets": [
+    "I want to hear the answer",
+    "I'm not sure if I want to hear the story"
+   ],
+   "verdict": "real_differentiate",
+   "action": "'I want to hear the answer' does not match the known (I'm not sure if I want to hear this story); fix the mismatched USE row.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "在明天之前我还有更多要学",
+   "targets": [
+    "I've got more to learn and it's not easy",
+    "I've got more to learn before tomorrow"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known ='before tomorrow'; 'and it's not easy' is a different USE — re-key to match the known tail.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "同时做所有事情很难",
+   "targets": [
+    "It's not difficult to speak a little English",
+    "It's difficult to do everything at the same time"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known ='it's difficult to do everything at the same time'; the 'speak a little English' USE is wrong known→english pairing — correct it.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "我不确定我是否想照顾你",
+   "targets": [
+    "I'm not sure if I want to look after you",
+    "She wants to look after you"
+   ],
+   "verdict": "real_differentiate",
+   "action": "'She wants to look after you' contradicts the known (I'm not sure if I want to look after you); fix the mismatched USE row.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "你为什么现在想停下来",
+   "targets": [
+    "Why do you want to stop now?",
+    "Why do you want to stop learning English?"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known ='stop now'; 'stop learning English' is a different sentence — re-key the USE row to the stored known.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "想整个下午都照看那只小狗",
+   "targets": [
+    "I don't want to look after the young dog all afternoon",
+    "Want to look after the young dog all afternoon"
+   ],
+   "verdict": "real_differentiate",
+   "action": "USE adds negation ('I don't want') not present in the known stem (想=want); negation flip — verify known text / split build vs use cleanly.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "我不确定我想告诉你什么",
+   "targets": [
+    "I want to tell you something",
+    "I'm not sure what I want to tell you"
+   ],
+   "verdict": "real_differentiate",
+   "action": "'I want to tell you something' does not match the known (I'm not sure what I want to tell you); fix the mismatched USE row.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "我在找有趣的事情做",
+   "targets": [
+    "I'm looking for interesting things to do",
+    "I'm looking for something"
+   ],
+   "verdict": "real_differentiate",
+   "action": "'I'm looking for something' is a different shorter sentence than the known (interesting things to do); re-key the USE row.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "需要整个下午都照看那只小狗",
+   "targets": [
+    "Need to look after the young dog all afternoon",
+    "I didn't want to look after the young dog all afternoon"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known has 需要(need); the 'I didn't want' USE uses a different verb/negation — re-key to match stored known.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "下周我还有更多要学",
+   "targets": [
+    "I've got more to learn and it's important",
+    "I've got more to learn next week"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known ='next week'(下周); 'and it's important' is a different USE tail — correct the mismatched row.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "你为什么想停止学习",
+   "targets": [
+    "Why do you want to stop learning?",
+    "Why do you want to stop speaking with me?"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known =停止学习(stop learning); 'stop speaking with me' is a different USE — re-key to stored known.",
+   "canonical_english": "",
+   "severity": "med"
+  },
+  {
+   "known": "你现在表现得很好",
+   "targets": [
+    "You're doing very well now",
+    "You're doing very well with English"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known has 现在(now); 'with English' BUILD variant adds a tail not in the known — align to 'now'.",
+   "canonical_english": "",
+   "severity": "low"
+  },
+  {
+   "known": "好说",
+   "targets": [
+    "To speak well",
+    "Easy to say"
+   ],
+   "verdict": "real_differentiate",
+   "action": "好说 has two parses (speak well / easy to say) both drilled as BUILD; pick one reading or disambiguate the known so each maps 1:1.",
+   "canonical_english": "",
+   "severity": "low"
+  },
+  {
+   "known": "我今天还有更多要学",
+   "targets": [
+    "I've got more to learn today",
+    "I know I've got more to learn"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known has 今天(today); 'I know I've got...' USE drops today and adds 'I know' — align to the stored known.",
+   "canonical_english": "",
+   "severity": "low"
+  },
+  {
+   "known": "学起来不容易但很有趣",
+   "targets": [
+    "Isn't easy but it is fun to try",
+    "Isn't easy but it is fun to learn"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known 学(learn); 'fun to try' BUILD variant uses a different verb — align to 'learn'.",
+   "canonical_english": "Isn't easy but it is fun to learn",
+   "severity": "low"
+  },
+  {
+   "known": "今天找到答案不难",
+   "targets": [
+    "Not difficult to find the answer today",
+    "Not difficult to find the answer quickly"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Known has 今天(today); 'quickly' BUILD variant swaps the adjunct — align to 'today'.",
+   "canonical_english": "Not difficult to find the answer today",
+   "severity": "low"
+  },
+  {
+   "known": "喜欢",
+   "targets": [
+    "Like",
+    "Enjoy",
+    "People who like speaking English"
+   ],
+   "verdict": "real_consolidate",
+   "action": "喜欢 drilled as both Like(lego) and Enjoy; pick one canonical English for 喜欢 course-wide (recurring like/enjoy theme, see 不喜欢).",
+   "canonical_english": "Like",
+   "severity": "med"
+  },
+  {
+   "known": "不喜欢",
+   "targets": [
+    "Don't enjoy",
+    "Doesn't like"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same like/enjoy split on the negative; re-gloss to match the 喜欢 canonical (Like).",
+   "canonical_english": "Doesn't like",
+   "severity": "low"
+  },
+  {
+   "known": "不喜欢醒来",
+   "targets": [
+    "Don't like waking up",
+    "Don't enjoy waking up"
+   ],
+   "verdict": "real_consolidate",
+   "action": "BUILD variants differ only by like/enjoy; pick one per the 喜欢 canonical.",
+   "canonical_english": "Don't like waking up",
+   "severity": "low"
+  },
+  {
+   "known": "更多",
+   "targets": [
+    "More",
+    "Many",
+    "Many more"
+   ],
+   "verdict": "real_consolidate",
+   "action": "更多 drilled as Many(lego)/Many more(build) plus More(component); consolidate the drilled quantifier to one English.",
+   "canonical_english": "More",
+   "severity": "low"
+  },
+  {
+   "known": "多少",
+   "targets": [
+    "How much",
+    "Much"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Much(lego) and How much(component) are the same quantity question; re-gloss to one.",
+   "canonical_english": "How much",
+   "severity": "low"
+  },
+  {
+   "known": "不想",
+   "targets": [
+    "Wouldn't like",
+    "Doesn't want"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same negative-desire intention rendered two ways (one drilled); pick canonical.",
+   "canonical_english": "Doesn't want",
+   "severity": "low"
+  },
+  {
+   "known": "好像",
+   "targets": [
+    "As if",
+    "Seems"
+   ],
+   "verdict": "real_consolidate",
+   "action": "好像 = seems/as if, same intention; As if(lego) drilled — pick canonical.",
+   "canonical_english": "Seems",
+   "severity": "low"
+  },
+  {
+   "known": "必须",
+   "targets": [
+    "Have to",
+    "Must"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Obligation synonym pair (Have to=lego drilled); choose one canonical for 必须.",
+   "canonical_english": "Have to",
+   "severity": "low"
+  },
+  {
+   "known": "一点",
+   "targets": [
+    "A little",
+    "A bit of"
+   ],
+   "verdict": "real_consolidate",
+   "action": "A little(lego) vs A bit of(component), same intention; consolidate.",
+   "canonical_english": "A little",
+   "severity": "low"
+  },
+  {
+   "known": "有很多",
+   "targets": [
+    "There are a lot",
+    "There are many"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Two BUILD rows differ only a-lot/many; pick one (ties to 更多 quantifier canonical).",
+   "canonical_english": "There are a lot",
+   "severity": "low"
+  },
+  {
+   "known": "你能再说一遍慢一点吗",
+   "targets": [
+    "Could you say that again a little more slowly?",
+    "Could you say that again slowly?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "use/build variants differ only 'a little more slowly' vs 'slowly'; pick one.",
+   "canonical_english": "Could you say that again a little more slowly?",
+   "severity": "low"
+  },
+  {
+   "known": "今天花时间测试一下自己",
+   "targets": [
+    "Want to take time to test yourself",
+    "To take time to test yourself today"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Two BUILD framings of one intention; pick one canonical English.",
+   "canonical_english": "To take time to test yourself today",
+   "severity": "low"
+  },
+  {
+   "known": "我脑海里转来转去的想法太多了",
+   "targets": [
+    "There are too many ideas going around in my head",
+    "I've got too many ideas going around in my head"
+   ],
+   "verdict": "real_consolidate",
+   "action": "There are / I've got render the same intention; pick one.",
+   "canonical_english": "I've got too many ideas going around in my head",
+   "severity": "low"
+  },
+  {
+   "known": "你为什么想停止说话",
+   "targets": [
+    "Why do you want to stop talking?",
+    "Why do you want to stop speaking?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "talk/speak synonym for 说话; pick one canonical.",
+   "canonical_english": "Why do you want to stop speaking?",
+   "severity": "low"
+  },
+  {
+   "known": "去",
+   "targets": [
+    "To go",
+    "Restaurant"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "去 = to go; the drilled lego gloss 'Restaurant' is a wrong slice (likely from 去餐厅) — correct that single row.",
+   "canonical_english": "",
+   "severity": "low"
+  },
+  {
+   "known": "想告诉我它在哪里",
+   "targets": [
+    "Want to tell me where it was",
+    "Need to tell me where it was"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "Known 想=want; the BUILD 'Need to tell me...' is wrong (need=需要) — fix that row to 'want'.",
+   "canonical_english": "",
+   "severity": "low"
+  }
+ ]
+}

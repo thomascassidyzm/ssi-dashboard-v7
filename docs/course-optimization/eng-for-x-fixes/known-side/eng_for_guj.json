@@ -1,0 +1,890 @@
+{
+ "course_code": "eng_for_guj",
+ "totals": {
+  "prompts_checked": 6208,
+  "vocab_uncontrolled": 18,
+  "npi_violation": 4,
+  "machinery_unlicensed": 1,
+  "gloss_rule_violation": 9,
+  "content_quality": 74
+ },
+ "release_grade": "cleanup",
+ "systematic_issues": [
+  "Untaught 'important' lexeme: prompts use મહત્વનું while the inventory only teaches જરૂરી (seed 65) for 'important' — a ZUT split (two Gujarati words, one English) that is both vocab_uncontrolled and gloss-rule-adjacent. Recurs ~11+ times across seeds 91/92/94/99/100 and into 101-125. One fix (rebuild the મહત્વનું LEGOs as જરૂરી, or retire one form) clears the whole cluster.",
+  "Untaught 'know'/'don't know' idiom ખબર: surfaces as vocab_uncontrolled across seeds 76-100 (4x), 101-125, 139, and the recurring 'I don't know' idiom in 176-200 (6x), while the taught lemmas are જાણું/ઓળખું/સમજો. Standardize the 'know' family to the introduced forms in one pass.",
+  "Seed-261 LEGO mis-builds the bare NPI કંઈ as positive existential 'something' (component idx144 કંઈ='something'; debut idx146 કંઈ મહત્વનું). Per npi_positive_split the positive must be the -ક form કંઈક/કોઈક; bare કંઈ is licensed only under negation/yes-no Q. The bad LEGO propagates 'something' into plain affirmative declaratives (idx137/234/307). Rebuilding the one seed-261 LEGO as કંઈક fixes 1 npi_violation + 1 gloss split across ~11 prompts.",
+  "Untaught 'just'/'now' adverbs હમણાં (seeds 201-225, 226-250) used where the inventory does not introduce them — recurring vocab_uncontrolled; pick the taught form or debut હમણાં before first use.",
+  "Untaught synonym slippage જુદા જુદા ('different') and વસ્તુઓ ('things') against the taught forms (seeds 76-100, 101-125) — same one-fix-fixes-many synonym-standardization as મહત્વનું/ખબર.",
+  "Recurring meaning/polarity flips where the Gujarati and English disagree (counted as content_quality but template-systematic): negation dropped so a negated known clause is glossed positive (s55 'when I'm not tired'->'when I'm tired'; s151 missing નહોતું; s174 drops 'whether...clear'); come/past આવ્યા↔'wanted to'/present mismatches (s129/134/138); 'can't find' (શકતો/મળતા નથી) glossed as 'want to find' (s182/195); 'isn't clear' (સ્પષ્ટ નથી) glossed 'isn't difficult' (s213/222). These are authoring templates — fixing each template clears its sibling set.",
+  "Embedded wh-/yes-no clauses left in interrogative English (seed 194: relative 'what you're looking for' kept as 'what are you looking for'; clause-initial yes/no શું mis-read as wh-'what'). Fix the relativization/શું-disambiguation template once.",
+  "Seed-228 broken present-perfect: bare feminine perfective શરૂ કરી (no auxiliary, wrong agreement, component કરી glossed 'has') used for 'has started to' instead of the correct ergative શરૂ કર્યું છે (cf. seed 224). Rebuild the seed-228 'has started to' LEGO to fix the whole set.",
+  "BUILD-scaffold artifacts: English suffixes 'today'/'now'/'a little'/'had to'/'can' appended with no Gujarati source (seeds 276-300 and scattered) — a generator padding pattern, not per-prompt typos."
+ ],
+ "summary": "Across 12 batches (6,208 prompts, seeds 1-300), the eng_for_guj known side is broadly answerable: machinery is almost entirely licensed (1 machinery_unlicensed total), 'you' is uniformly formal તમે, and most NPIs sit correctly under negation or yes-no questions. The real (non-content-quality) defect load is 32 — 18 vocab_uncontrolled, 9 gloss_rule_violation, 4 npi_violation, 1 machinery_unlicensed — placing it in the cleanup band, but the count is misleading because the issues collapse into a few systematic, one-fix-fixes-many roots: the untaught synonyms મહત્વનું/'important' and ખબર/'know', the seed-261 bare-NPI કંઈ mis-built as positive 'something', the seed-228 broken present-perfect, and stray હમણાં/'just'. The 74 content_quality findings are dominated by recurring meaning/polarity-flip templates (dropped negation, આવ્યા-'came'↔'wanted to', 'can't find'↔'want to find', સ્પષ્ટ-'clear'↔'isn't difficult') plus embedded wh-clauses left interrogative — also template-level, so a handful of targeted LEGO rebuilds and gloss-template fixes would resolve the bulk of the queue before release.",
+ "findings": [
+  {
+   "seed": 25,
+   "known": "તે ટૂંક સમયમાં જતા માગે છે",
+   "en": "he wants to go soon",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Gujarati nonfinite: the માગવું ('want to') frame requires the infinitive જવા ('to go'), but the prompt uses the imperfective participle જતા ('going'). Recurs at 'તેણી મારી સાથે જતા માગે છે' ('she wants to go with me') — both should read ...જવા માગે છે. (જતા IS correct in the પહેલાં frame, e.g. 'મારે જતા પહેલાં' = 'before I have to go', so this is a frame-selection authoring slip, not a missing lemma.)"
+  },
+  {
+   "seed": 10,
+   "known": "મને હવે મારા અર્થ વિશે ખાતરી નથી",
+   "en": "I'm not sure what I mean now",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "વિશે ('about') is neither in the introduced inventory through seed 10 nor in freeClass — the learner has not been given it. The whole-mean idea is taught only as the unit મારો અર્થ = 'what I mean' (seed 8); rendering it here as મારા અર્થ વિશે ('about what I mean') introduces an untaught relational postposition. Low answerability risk since વિશે is function-word-like, but it is uncontrolled."
+  },
+  {
+   "seed": 8,
+   "known": "હું જેટલું થઈ શકે તેટલું સારી રીતે સમજાવવા માગું છું",
+   "en": "I want to explain as hard as I can",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "સારી રીતે ('well/properly') is extra Gujarati with NO correlate in the English gloss (English is just 'I want to explain as hard as I can'), so it is unproducible material. Compounded: સારું/સારી ('well') is first introduced only at seed 13 (ખૂબ સારું), so it is also unintroduced at seed 8."
+  },
+  {
+   "seed": 24,
+   "known": "તમે સહેલાઈથી તેણીનું નામ યાદ કરી શકો છો",
+   "en": "you want to remember her name easily",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Gloss/source mismatch: Gujarati શકો છો is the potential 'you CAN' (= 'you can remember her name easily'), but the English says 'you WANT to remember'. English 'want to' has no source in the Gujarati (no માગો છો), and Gujarati 'can' is unglossed. Authoring defect — gloss does not match the prompt."
+  },
+  {
+   "seed": 4,
+   "known": "હું હવે કંઈ કહેવા માગું છું",
+   "en": "I want to say now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Bare NPI કંઈ ('anything') is correctly LICENSED here (desiderative complement under માગું છું, per npiLicensing) — so NOT an npi_violation — but it is dropped from the English gloss: Gujarati = 'I want to say anything now', English = 'I want to say now'. The object word has no English correlate, a small answerability/consistency mismatch."
+  },
+  {
+   "seed": 18,
+   "known": "હું તમને મળવા માગું છું",
+   "en": "I want to meet",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Recurring gloss-drop pattern: free object/adverb present in Gujarati but omitted from English. Here તમને ('you', free) is dropped — Gujarati = 'I want to meet you', English = 'I want to meet'. Same shape at seed 20 'તે એનું નામ જલ્દી કહેવા માગે છે' → 'he wants to say his name' (drops જલ્દી 'quickly'). Low severity but consistent."
+  },
+  {
+   "seed": 41,
+   "known": "હું લાગ્યો છે",
+   "en": "I'm starting to",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "SYSTEMATIC copula-agreement defect in the 'I'm starting to' construction, inherited from the seed-41 inventory M-LEGO (હું લાગ્યો છે). The subject is 1sg હું, which selects the 1sg copula છું, but the prompt pairs it with 3sg છે — so it reads as a 1sg subject + 3sg 'to be'. Correct Gujarati = હું લાગ્યો છું. The defect propagates across most seed-41 prompts (e.g. હું થાકેલો લાગવા લાગ્યો છે, હું વાર્તા વાંચવા લાગ્યો છે, પણ હું ઠીક ઠીક લાગવા લાગ્યો છે) and into the seed-42 past variant (...લાગ્યું હતું is fine, but the present-perfect form is the broken one). Answerability is unaffected (gloss 'I'm starting to' is consistent and the construction is recognisable), but the source phrase is ungrammatical."
+  },
+  {
+   "seed": 42,
+   "known": "મને વાર્તા સમજવા લાગ્યું હતું",
+   "en": "I was starting to read the story",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Verb mismatch: the Gujarati verb is સમજવા ('to understand'), so the prompt means 'I was starting to UNDERSTAND the story', but the English gloss says 'read'. The introduced verb for 'read' is વાંચવા (seed 35); 'understand' (સમજવા) is not an introduced lemma at all (only સમજાવવા 'explain' seed 8 and સમજો 'know' seed 49 exist). The English ('read the story') is unproducible from this Gujarati, and conversely the Gujarati verb is uncontrolled — almost certainly an authoring slip where વાંચવા was intended."
+  },
+  {
+   "seed": 41,
+   "known": "તે અંગ્રેજી બોલતા ઠીક ઠીક લાગવા માગે છે",
+   "en": "he wants to feel okay",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Reverse-unproducible: the Gujarati carries extra material અંગ્રેજી બોલતા ('speaking English') that has NO source in the English gloss 'he wants to feel okay'. The Gujarati literally means 'he wants to feel okay (while) speaking English'. Either the gloss is missing 'speaking English' or the Gujarati has surplus content; as authored the prompt is internally inconsistent."
+  },
+  {
+   "seed": 42,
+   "known": "મને આ સવારે સારું કરતાં લાગે છે",
+   "en": "I feel better than this morning",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Malformed comparative. Natural Gujarati comparative is [comparand] કરતાં સારું ('than-X better'), as correctly authored in ગઈ રાત કરતાં સારું (seed 42, 'better than last night'). Here the comparand 'this morning' (આ સવારે) is placed BEFORE the predicate and સારું કરતાં is left as a bare, comparand-less 'good than', yielding broken word order that does not express 'better than this morning'. Same defect in the build મને આ સવારે... and in the use મને આજે ગઈ કાલે કરતાં... is fine but this one is not."
+  },
+  {
+   "seed": 42,
+   "known": "આજે સારું કરતાં",
+   "en": "better than today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Inverted/displaced comparative build fragment: 'today good than' (આજે સારું કરતાં) instead of the correct આજે કરતાં સારું ('than today, better'). The comparand should precede કરતાં; here it precedes સારું. Build fragment, but the order is ungrammatical and inconsistent with the correctly-ordered ગઈ રાત કરતાં સારું in the same seed."
+  },
+  {
+   "seed": 43,
+   "known": "હું એ વિષે વિચારતો નહોતો જ્યારે હું થાકેલો હતો",
+   "en": "I wasn't thinking about the answer when I was tired",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Gloss inconsistency: the Gujarati એ વિષે = 'about it' (introduced seed 37 with gloss 'about it'), but the English says 'the answer'. The sibling prompts in this seed correctly use જવાબ વિષે for 'about the answer' (e.g. હું જવાબ વિષે વિચારતો નહોતો). So the English 'the answer' has no source in this Gujarati; it should read 'about it'."
+  },
+  {
+   "seed": 41,
+   "known": "મને ઠીક ઠીક લાગે છે, પણ થાક લાગવા લાગ્યો છે",
+   "en": "I feel okay, but I'm starting to feel tired",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Lexeme variant: the second clause uses the noun થાક ('tiredness') in થાક લાગવા ('to feel tiredness') rather than the introduced adjective થાકેલો ('tired', seed 39), which every other seed-41 prompt uses (થાકેલો લાગવા). The gloss 'feel tired' matches the adjective form; the noun is an uncontrolled variant and also compounds the હું/છે agreement issue (logged separately). Minor."
+  },
+  {
+   "seed": 55,
+   "known": "મને ઊઠવું ગમે છે જ્યારે હું થાકેલો નથી",
+   "en": "I like waking up when I'm tired",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Negation dropped: the subordinate clause હું થાકેલો નથી = 'I'm NOT tired' (copular negator નથી), but the English glosses it 'when I'm tired' — the opposite polarity. Breaks negation_by_clause_type. The learner is required to produce a positive English clause from a negated Gujarati one, and would produce the wrong meaning. Correct: '...when I'm not tired'."
+  },
+  {
+   "seed": 71,
+   "known": "તે જવાબ સાંભળે માગે છે",
+   "en": "he wants to hear the answer",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Gujarati syntax (recurring x3: also 'હું જવાબ સાંભળે માગું છું', 'તેણી વાર્તા સાંભળે માગે છે'). માગે છે/માગું છું ('wants to/want to') requires an infinitive complement (સાંભળવા 'to hear', cf. વાંચવા/બોલવા), but the authored form is the subjunctive/finite સાંભળે — which is only correct inside the 'કે કોઈ સાંભળે' = 'let anyone hear' frame, not as a 'want to' complement. Note: the inventory introduced only સાંભળે (subjunctive, seed 71) and never an infinitive 'to hear', so a well-formed 'wants to hear' was not actually constructable. English en is fine; the Gujarati prompt is malformed."
+  },
+  {
+   "seed": 51,
+   "known": "મને કરવી ગમે છે / મને ... પ્રેક્ટિસ કરવું ગમે છે",
+   "en": "I enjoy doing / I like to practise",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "One-known→multiple-English inconsistency on the ગમે છે frame. Identical મને ... ગમે છે is glossed unpredictably as 'I enjoy' (51 'મને કરવી ગમે છે'='I enjoy doing') vs 'I like to' (51 'મને...પ્રેક્ટિસ કરવું ગમે છે'='I like to practise') vs 'I like' (64 'મને અંગ્રેજી શીખવું ગમે છે'='I like learning English'). Seed-64 outlier: 'મને બધા સાથે અંગ્રેજી શીખવું ગમે છે'='I enjoy learning English with everyone else' while every sibling = 'I like learning English'. The learner cannot deterministically choose like vs enjoy from the same Gujarati. Inventory itself seeds the split (s26 મને ગમે છે='I like' vs s51 મને કરવી ગમે છે='I enjoy doing')."
+  },
+  {
+   "seed": 75,
+   "known": "શું તમારે જવાનું છે? / શું તમારે હજી પ્રેક્ટિસ કરવાનું છે?",
+   "en": "do you have to go? / have you got to practise?",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "One-known→multiple-English on the obligation frame શું તમારે [V]વાનું છે?. Same construction is glossed both 'do you have to [V]?' (જવાનું છે='do you have to go?', 'do you have to go now?') and 'have you got ... to [V]?' (કરવાનું='have you got more to do?', વાંચવાનું='have you got the story to read?', પ્રેક્ટિસ='have you got to practise?'). The brief's have_to_vs_have_got rule treats obligation 'have to' and possession 'have got' as distinct constructions, yet the same Gujarati maps to both — and 'have you got the story to read?' shifts toward a possession reading. seed 73 keeps મારે...વાનું છે consistently 'I've got to', so the inconsistency is concentrated in the seed-75 questions."
+  },
+  {
+   "seed": 55,
+   "known": "ઊઠવું મને ગમતું નથી જ્યારે હું થાકેલો છું",
+   "en": "I don't enjoy waking up when I'm a little tired",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Unproducible material: 'a little' has no source in the Gujarati (થાકેલો છું = 'I'm tired'; 'a little' would be થોડો). The identical string is correctly glossed 'when I'm tired' in the adjacent USE row, so this is an isolated authoring slip rather than a vocabulary gap."
+  },
+  {
+   "seed": 91,
+   "known": "મહત્વનું",
+   "en": "it's important to learn in time",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "મહત્વનું ('important') is never introduced in inventory_through_hi. The only LEGO glossing 'important' is જરૂરી છે (seed 65, 'it's important to'). The learner is taught જરૂરી for 'important', so a prompt showing મહત્વનું and asking for 'important' is unanswerable AND a ZUT split (two Gujarati words for one English). Systematic: recurs across seeds 91 (4×: 'સમય પર શીખવું મહત્વનું છે', 'સમય પર જવાબ આપવો મહત્વનું છે', 'બીજા લોકો વિશે વિચારવું મહત્વનું છે', 'ઝડપથી વિચારવું મહત્વનું છે'), 92 (2×: 'આ કરતા રહેવું મારા માટે મહત્વનું છે', 'થોડા સમય માટે અંગ્રેજી શીખવું મહત્વનું છે'), 94 (3×: 'આ મહત્વનું છે', 'આ મારા માટે મહત્વનું છે', 'આ અંગ્રેજી શીખવા માટે મહત્વનું છે'), 99 ('પોતાને પૂછવું મહત્વનું છે'), 100 ('આ વિષે ચિંતા કરવી મહત્વનું નથી') — ~11 prompts total."
+  },
+  {
+   "seed": 90,
+   "known": "મને નથી ખબર કે જો તમે મને મદદ કરી શકો",
+   "en": "I don't know if you can help me",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ખબર ('know', in મને ખબર નથી / મને નથી ખબર = 'I don't know') is never introduced. The inventory teaches 'know' as જાણું છું (seed 59), જાણતો નથી (seed 60) and ઓળખતો નથી (seed 85). ખબર is an untaught third rendering. Recurs at seed 90 ('મને નથી ખબર કે જો તમે મને મદદ કરી શકો'), 91 ('મને ખબર નથી કે પૂરતું ઝડપથી કેવી રીતે વિચારવું'), 94 ('મને ખબર નથી કે આ કામ કરશે'), 99 ('મને ખબર નથી કે શા માટે કામ નથી કરતું') — 4 prompts. Also a ZUT inconsistency: sibling prompts in the same batch use the taught જાણતો/ખાતરી નથી for the same 'I don't know / I'm not sure' frame."
+  },
+  {
+   "seed": 100,
+   "known": "તમારે આટલી ઝડપથી જવું ન જોઈએ",
+   "en": "you shouldn't go so quickly",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "આટલી ('so', as in 'so quickly') is never introduced in the inventory. The learner has no taught rendering for the degree intensifier 'so'. Recurs in 2 seed-100 prompts: 'તમારે આટલી ઝડપથી જવું ન જોઈએ' and 'તમારે આટલી ઝડપથી બોલવું ન જોઈએ'. Both unanswerable from introduced vocab."
+  },
+  {
+   "seed": 91,
+   "known": "જુદા જુદા શબ્દો યાદ કરવા અઘરું છે",
+   "en": "it's difficult to remember different words",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "જુદા જુદા ('different') is not introduced. The inventory teaches 'different' as અલગ-અલગ શબ્દો (seed 60, 'different words'). જુદા જુદા is an untaught synonym → both a vocab gap for the learner and a ZUT split for English 'different'. Single occurrence in this batch but it directly collides with an introduced LEGO."
+  },
+  {
+   "seed": 100,
+   "known": "આ જ જેવું કંઈ",
+   "en": "something similar",
+   "category": "npi_violation",
+   "severity": "low",
+   "detail": "Bare NPI કંઈ is used as a plain positive existential 'something' in affirmative declaratives ('હું આ જ જેવું કંઈ કહેવા માગું છું' = 'I want to say something similar', 'આપણે આ જ જેવું કંઈ પ્રેક્ટિસ કરી શકીએ' = 'we can practise something similar'). Per the contract's npi_positive_split rule, positive 'something' must be the -ક form કંઈક, not bare કંઈ. Same pattern at seed 88 'હું બીજા કોઈ સાથે વાત કરવા જઈ રહ્યો છું' (positive 'someone else' on bare કોઈ). NOTE: both trace to the introduced inventory LEGOs themselves (આ જ જેવું કંઈ seed 100, બીજા કોઈ સાથે seed 5), so it is an inventory authoring choice rather than the prompt agent newly mis-licensing an NPI — hence low severity. Flag is for consistency with the brief's positive-split rule."
+  },
+  {
+   "seed": 91,
+   "known": "મારે આના વિશે વિચારવું છે",
+   "en": "I want to think about it",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "The dative-subject frame મારે ... છે is glossed as volitional 'I want to' here ('મારે આના વિશે વિચારવું છે' → 'I want to think about it'; also seed 92 'મારે થોડા સમય માટે વાત કરતા રહેવું છે' → 'I want to keep on talking for a while'). The brief's have_to_vs_have_got / dative_subject rules map મારે...જોઈએ → obligation 'have to/should/need to' and મારે છે → possession 'I've got'. Glossing મારે...છે as 'I want to' is a third reading not in the contract. The volitional-dative is a genuine Gujarati idiom so severity is low, but it is an undocumented gloss for the dative-subject construction."
+  },
+  {
+   "seed": 76,
+   "known": "હું તેનાથી ઘણું ખૂબ ખુશ છું જે મેં શીખ્યું",
+   "en": "I'm very happy with how much I've learnt today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "The English gloss contains 'today' but the Gujarati has no source for it (no આજે). Compare the parallel sibling 'હું આજે તેનાથી ઘણું ખૂબ ખુશ છું જે હું જાણું છું' → 'I'm very happy with how much I know today' which DOES contain આજે. Unproducible material: the learner cannot derive 'today' from the prompt."
+  },
+  {
+   "seed": 99,
+   "known": "આ કામ નથી કરતું",
+   "en": "this it's not working",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken English gloss: 'this it's not working' is ungrammatical (a build phrase that concatenated 'this' (આ) onto the existing 'it's not working' without repair). Should read 'this isn't working' / 'this is not working'."
+  },
+  {
+   "seed": 96,
+   "known": "ના, મને નથી લાગતું કે મારે જવું જોઈએ",
+   "en": "no, I don't want to go",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Gujarati/English mismatch. The Gujarati literally = 'no, I don't think that I should go' (મને નથી લાગતું કે = 'I don't think that', મારે જવું જોઈએ = 'I should go'). The English gloss 'no, I don't want to go' drops the 'I think that' matrix and swaps 'should' for 'want to'. The learner shown this Gujarati would not produce the given English; also the embedded should-clause is unproducible as 'want to'."
+  },
+  {
+   "seed": 87,
+   "known": "તેઓ એ લોકો છે જેમની હું રાહ જોઈ રહ્યો છું",
+   "en": "they are those people I'm looking for",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Verb mismatch: રાહ જોઈ રહ્યો છું = 'I'm waiting for' / (inventory seed 29) 'I'm looking forward to', NOT 'looking for'. 'Looking for' is taught as શોધી રહ્યા (seed 68, 'are you looking for'). The English asks for a different verb than the Gujarati supplies, so the prompt is mis-answerable for the intended gloss."
+  },
+  {
+   "seed": 101,
+   "known": "આ ભાષા વિષે વધારે જાણવું મહત્વનું છે / અમારે જે કરી રહ્યા છીએ તે બદલવું મહત્વનું છે / તે મારા માટે મહત્વનું હતું ...",
+   "en": "it's important to ...",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Recurring (~6×, seeds 101,104,111,112) uncontrolled known-side synonym: 'it's important (to)' is rendered મહત્વનું છે, but the introduced LEGO for 'it's important to' is જરૂરી છે (seed 65). મહત્વનું is a natural, never-introduced content word; the prompts are still answerable (learner reads Gujarati→produces 'important', which is taught), so severity is low — but it violates the known-side controlled-language discipline of one Gujarati rendering per English coverage. Pick one (જરૂરી છે vs મહત્વનું) and stay consistent."
+  },
+  {
+   "seed": 102,
+   "known": "મને ખબર નથી પણ આ રીતે નથી / મને ખબર નથી કે અમે જે કરી રહ્યા છીએ / મને ખબર નથી કે તમે શું કરી રહ્યા હતા ...",
+   "en": "I don't know ...",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Recurring (~6×, seeds 102,104,107,116,122) uncontrolled synonym: 'I don't know' rendered મને ખબર નથી, but 'I don't know' was introduced as હું જાણતો નથી (seed 60). ખબર is natural L1 and the prompt is answerable, but it is a second Gujarati rendering of an already-introduced English form — known-side ZUT slippage. Low severity (L1, answerable)."
+  },
+  {
+   "seed": 101,
+   "known": "મને જુદા જુદા શબ્દો શીખવામાં આનંદ આવે છે / જ્યારે આપણે જુદા જુદા શબ્દો શીખીએ ... / મને જુદા જુદા શબ્દો વાપરવા ગમે છે",
+   "en": "... different words",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Recurring (3×, seeds 101,111,121) synonym swap: 'different' rendered જુદા જુદા, but 'different words' was introduced as અલગ-અલગ શબ્દો (seed 60). Both natural and answerable; flag as known-side synonym-control inconsistency. Low."
+  },
+  {
+   "seed": 101,
+   "known": "મને રસપ્રદ વસ્તુઓ જાણવામાં આનંદ આવે છે",
+   "en": "I'm enjoying finding out interesting things",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "'interesting things' rendered રસપ્રદ વસ્તુઓ, but 'interesting things' was introduced as રસપ્રદ ચીજો (seed 51). વસ્તુઓ is a never-introduced synonym for 'things' (ચીજો). Answerable; low. Known-side synonym-control slip."
+  },
+  {
+   "seed": 111,
+   "known": "જ્યારે આપણે કંઈ નવું શીખીએ ત્યારે આપણું મગજ બદલાય છે",
+   "en": "when we learn something new it changes our brain",
+   "category": "npi_violation",
+   "severity": "low",
+   "detail": "Bare NPI કંઈ used and glossed positively as 'something new' inside a જ્યારે ('when') habitual clause. A bare જ્યારે habitual is not clearly one of the brief's licensing environments (no negation/polar-Q/conditional/modal), and the positive 'something' reading should take the -ક form કંઈક per the npi_positive_split rule. Sibling prompts in the same seed correctly use કંઈક નવું ('something new'). Soft inconsistency rather than a hard positive-declarative violation; recommend કંઈક નવું here. Low."
+  },
+  {
+   "seed": 111,
+   "known": "આપણું મગજ દરરોજ બદલાય છે",
+   "en": "our brain changes today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Meaning mismatch: દરરોજ means 'every day', not 'today'. The English 'today' should be આજે, and the Gujarati 'every day' is not reflected in the English at all. Either the Gujarati or the gloss is wrong; as written the pair is unproducible/misleading."
+  },
+  {
+   "seed": 118,
+   "known": "જ્યારે અમે પબમાં હતા ત્યારે",
+   "en": "when we were in the pub yesterday",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English contains 'yesterday' with no Gujarati source — ત્યારે means 'then/at that time', and 'yesterday' (ગઈ કાલે) is absent. The learner cannot produce 'yesterday' from this prompt. Drop 'yesterday' from the gloss (sibling 'when we were in the pub' is correct) or add ગઈ કાલે."
+  },
+  {
+   "seed": 104,
+   "known": "અમે જે કરી રહ્યા છીએ",
+   "en": "what we're doing now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English appends 'now' with no Gujarati source (હવે absent). The Gujarati is just 'what we're doing'. Unproducible extra word; the gloss should read 'what we're doing' (matching the identical 104 build/use prompts that lack 'now')."
+  },
+  {
+   "seed": 121,
+   "known": "હું પોતાની ગાડીમાં જવા માગું છું",
+   "en": "I want to go in your car",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Reflexive-possessive mismatch. પોતાની binds to the clause subject; with subject હું ('I'), પોતાની ગાડી = 'my own car', NOT 'your car'. The LEGO પોતાની ગાડી was glossed 'your car' (seed 121) only because its seed sentence had a 2nd-person (તમે) subject; reused here with a 1st-person subject the gloss is wrong. Should be 'I want to go in my own car' (or use તમારી ગાડી if 'your' is intended). The other seed-121 પોતાની ગાડી prompts all have તમે/તમને subjects and are correct."
+  },
+  {
+   "seed": 112,
+   "known": "તે અંગ્રેજી શીખવાનો સારો રસ્તો હતું",
+   "en": "that was the only way to learn English",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two defects. (1) સારો રસ્તો = 'good way', but the English says 'the ONLY way' — 'only' has no Gujarati source ('the only way' was introduced as એક જ રસ્તો, seed 94). (2) Gender-agreement error: રસ્તો is masculine, so the past copula must be હતો, not the neuter હતું. Pair is unproducible as glossed and grammatically broken."
+  },
+  {
+   "seed": 117,
+   "known": "જ્યારથી આપણે વાત કરી ત્યારથી હું વધારે સારું કરી રહ્યો છું",
+   "en": "I'm doing better than when we talked to each other",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Construction/gloss mismatch (recurring 2×, seed 117): the Gujarati uses the જ્યારથી...ત્યારથી ('since...') correlative ('since we talked, I'm doing better'), but the English renders it as a comparative 'better THAN WHEN we talked'. The 'than' (કરતાં) has no Gujarati source and the 'since' relation is dropped. The since-correlative is also not an introduced construction. Answerable in spirit but the English doesn't map to the Gujarati."
+  },
+  {
+   "seed": 111,
+   "known": "જ્યારે આપણે પ્રેક્ટિસ કરીને શીખીએ ત્યારે તે મહત્વનું છે",
+   "en": "when we learn it's important to practise",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Word-order/meaning mismatch: the Gujarati means 'when we learn BY practising, it is important', using the conjunctive participle કરીને ('by doing'). The English reshuffles to 'when we learn it's important to practise', which does not cleanly map to the Gujarati. Minor authoring defect."
+  },
+  {
+   "seed": 118,
+   "known": "પ્રેક્ટિસ કર્યા પછી મને સારું લાગે છે",
+   "en": "I feel better after we finish",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Mismatch (also seed 122 twice): પ્રેક્ટિસ કર્યા પછી = 'after practising', but glossed 'after we finish' (the introduced 'after we finish' is પૂરું કર્યા પછી, seed 110). 'we finish' has no source here and 'practise' is dropped from the English. Low; the કર્યા પછી machinery is taught, only the lexical content is mismatched."
+  },
+  {
+   "seed": 134,
+   "known": "જ્યારે તમે વસ્તુ પર કામ કરો ત્યારે ધીરજ રાખવી જોઈએ",
+   "en": "when you work at something you need to wait",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ધીરજ (lit. 'patience') is never introduced anywhere in the inventory, and it is glossed here as 'wait'. The taught form for 'wait' is રાહ જોવી (seed 29 'રાહ જોઈ', seed 82 'રાહ જોઉં'). The learner reads ધીરજ રાખવી and must produce 'wait' from a content word they have never been given. Recurs in seed 137 ('ધીરજ રાખવી' => 'it's more important to wait'). Also note ધૈર્ય ('patient') is introduced at seed 148 but ધીરજ ≠ ધૈર્ય."
+  },
+  {
+   "seed": 132,
+   "known": "મને ખબર નથી કે એ જે કહી રહી હતી",
+   "en": "I don't know what she was saying",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "ખબર ('knowledge/news') is a new content lexeme NOT in the inventory; 'I don't know' was previously taught only as હું જાણતો નથી (seed 60) and હું ઓળખતો નથી (seed 85/87). The મને ખબર નથી frame appears across seeds 132, 140, 146, 150. The negated dative frame softens it, but the learner still meets an untaught root."
+  },
+  {
+   "seed": 134,
+   "known": "જો તમે મોડા આવો તો કોઈ સમસ્યા નથી",
+   "en": "it's not a problem if you want to wait",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "મોડા ('late') is not introduced anywhere; and આવો (bare 'come' imperative) is only ever taught inside fixed LEGOs (પાછા આવવા 'come back', આનંદ આવે etc.), never as a standalone 'come'. So two unanswerable elements. Compounded by a meaning mismatch (see content_quality finding): Gujarati = 'if you come late', English = 'if you want to wait'."
+  },
+  {
+   "seed": 131,
+   "known": "તમારી પાસે ઘણા બધા વિચારો છે",
+   "en": "there are too many ideas for you",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "પાસે (possessive 'with/at' frame) is mentioned in the brief's dative_subject note but is never introduced in this course's inventory; here it is also glossed unusually as 'for you' (existential 'there are ... for you') rather than the possessive 'you have'. Parallel seed-131 prompt 'મારા માટે ઘણા બધા વિચારો છે' uses the already-taught માટે instead, which is the safer form."
+  },
+  {
+   "seed": 128,
+   "known": "તે કોઈ છે જેને હું ઓળખું છું",
+   "en": "that's someone I used to know",
+   "category": "npi_violation",
+   "severity": "low",
+   "detail": "Bare કોઈ glossed as positive 'someone' in plain positive declarative existentials ('that's/he's/she's someone I know', seeds 128/130/136). Per the brief's npi_positive_split rule, positive 'someone' should be કોઈક; bare કોઈ in a positive declarative is the violation. Mitigated because (a) the inventory itself deliberately introduces કોઈ='someone' at seed 128, and (b) most instances sit under want (માગું છું) or a restrictive જે...તે relative, which are licensing environments. Flagging the bare-existential 'X is someone' cases as a consistency note only."
+  },
+  {
+   "seed": 139,
+   "known": "ક્ષમા કરો કે મારે નીકળવું પડે છે",
+   "en": "I'm sorry that I need to leave",
+   "category": "machinery_unlicensed",
+   "severity": "med",
+   "detail": "The compulsion construction મારે + infinitive + પડે છે ('have to / need to') is used across seed 139 (નીકળવું પડે છે, જવું પડે છે, ઊઠવું પડે છે) but the પડવું obligation modal is never introduced. Obligation was taught only via the dative-jોઈએ frame (મારે જોઈએ, seeds 25/44/96). પડે છે is a distinct, unlicensed obligation construction the learner has not been given."
+  },
+  {
+   "seed": 134,
+   "known": "જો તમે મોડા આવો તો કોઈ સમસ્યા નથી",
+   "en": "it's not a problem if you want to wait",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Meaning mismatch: Gujarati literally = 'if you come late it's not a problem' (મોડા આવો = 'come late'); the English target = 'if you want to wait'. There is no source in the Gujarati for 'want to wait', and 'come late' has no echo in the English. Unproducible from the prompt."
+  },
+  {
+   "seed": 138,
+   "known": "તેઓ આજે અમને મળવા આવ્યા",
+   "en": "they wanted to meet us today",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Meaning mismatch: Gujarati = 'they CAME to meet us today' (આવ્યા = 'came', past of આવવું); the English says 'they WANTED TO meet us'. 'wanted to' (માગતા હતા) is not present in the Gujarati. The learner cannot derive 'wanted to' from આવ્યા."
+  },
+  {
+   "seed": 129,
+   "known": "હું ઘણો ખુશ છું કે તમે આવ્યા",
+   "en": "I'm so happy that you are here today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Mismatch: Gujarati = '...that you CAME' (આવ્યા); English = 'that you are here today'. 'today'/આજે is absent from the Gujarati and 'are here' is not the literal of આવ્યા ('came'). The matched build/use prompts elsewhere render 'you are here' as તમે અહીં છો (seed 130/136), so the gloss is inconsistent."
+  },
+  {
+   "seed": 128,
+   "known": "કોઈ જેને હું મળ્યો",
+   "en": "someone I meet",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Tense mismatch: Gujarati મળ્યો is past ('someone (whom) I met'); the English gloss is present 'someone I meet'. Should be 'someone I met' (or the Gujarati should be present). Minor but the gloss is wrong relative to the form."
+  },
+  {
+   "seed": 144,
+   "known": "હું તમે કરતાં વહેલા ઊઠ્યો",
+   "en": "I woke earlier than you",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Broken Gujarati: comparative 'than you' requires the oblique તમારા કરતાં, not the nominative તમે કરતાં. Same defect in seed 144 'હું ઈચ્છ્યા કરતાં વહેલા ઊઠ્યો' ('than I wanted to') which uses a non-standard ઈચ્છ્યા કરતાં. Authoring/agreement defect, not an answerability blocker."
+  },
+  {
+   "seed": 137,
+   "known": "છે",
+   "en": "it's to",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Bare copula છે is given three different component glosses in the same batch: 'it's to' (seed 137), 'there are' (seed 131), \"'s\" (seed 130/136), 'is okay' fragment etc. છે is free glue so this is not a vocab/ZUT failure, but glossing a copula as 'it's to'/'there are' as a standalone component is misleading authoring of the component cards."
+  },
+  {
+   "seed": 151,
+   "known": "એ જે હું કહેવા માગતો હતો",
+   "en": "that wasn't what I wanted to say",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "BROKEN PROMPT: the Gujarati lacks the negator નહોતું that every sibling 'that wasn't…' prompt in seed 151 carries (cf. તે એ નહોતું જે…). As written એ જે હું કહેવા માગતો હતો is POSITIVE ('that's what I wanted to say'), so a learner reading it would produce the affirmative, not the negative 'that wasn't…'. The English negation has no source in the known. Insert નહોતું."
+  },
+  {
+   "seed": 151,
+   "known": "એ જ હું આશા રાખી રહ્યો હતો",
+   "en": "what I was hoping would happen now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Phantom 'now' in the English with no Gujarati source (no હવે). The known એ જ હું આશા રાખી રહ્યો હતો = 'that's just what I was hoping for'; the trailing 'now' is spurious. Part of a recurring BUILD-prompt padding pattern (see also seeds 152, 159)."
+  },
+  {
+   "seed": 152,
+   "known": "તમે શું ઇચ્છતા હતા તે",
+   "en": "what you wanted now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Phantom 'now': trailing demonstrative તે ('that') is glossed as 'now'. No હવે in the known. Should read 'what you wanted'. Same padding defect as seed 151 and seed 159."
+  },
+  {
+   "seed": 159,
+   "known": "આ બરાબર એ છે જે હું કહેવાની કોશિશ કરી રહ્યો છું",
+   "en": "this is what I'm trying to say now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Phantom 'now' with no Gujarati source (no હવે). આ બરાબર એ છે જે… = 'this is exactly what I'm trying to say'. Recurring trailing-'now' authoring defect across BUILD/USE prompts in this batch."
+  },
+  {
+   "seed": 174,
+   "known": "મને ખબર નથી કે જે હું કહી રહ્યો છું તે સ્પષ્ટ છે",
+   "en": "I don't know what I'm saying",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "en/known MISMATCH: the Gujarati means 'I don't know whether what I'm saying is clear' (સ્પષ્ટ = 'clear'), but the English is 'I don't know what I'm saying' — it drops 'whether … is clear' entirely and mis-binds the embedded clause. Also સ્પષ્ટ ('clear') is not in the inventory, but because the en omits it this surfaces as a broken prompt rather than a clean vocab gap. Learner cannot produce the given English from this known."
+  },
+  {
+   "seed": 172,
+   "known": "તે ઘણું ઉપકારી રહેશે કે તમે મને કહો",
+   "en": "that would be very helpful for you to tell me",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Structural en/known mismatch: કે તમે મને કહો = 'that you tell me' (કે-complement), but the English renders it 'for you to tell me'. Meaning survives but the surface structure the learner is cued to produce is off; literal read is 'that would be very helpful that you tell me'."
+  },
+  {
+   "seed": 172,
+   "known": "હા, તે ઘણું ઉપકારી રહેશે",
+   "en": "yes, that would be very helpful for me",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Phantom 'for me' in the English with no Gujarati source (no મારા માટે / મને). The known is just 'yes, that would be very helpful'."
+  },
+  {
+   "seed": 155,
+   "known": "થોડી મિનિટ માટે",
+   "en": "just for a few minutes",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Phantom 'just' with no Gujarati source (no ફક્ત/માત્ર). થોડી મિનિટ માટે = 'for a few minutes'. The 'just' is unmotivated padding."
+  },
+  {
+   "seed": 161,
+   "known": "રવિવારની સવારે વહેલા ઊઠવાનો મને કોઈ વાંધો નથી",
+   "en": "I don't mind to wake early on Sunday morning",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Ungrammatical English gloss: 'I don't mind TO WAKE' should be 'I don't mind WAKING'. Vocabulary all introduced (ઊઠ- wake seeds 55/108/144; વાંધો seeds 63/155); purely an English-naturalness defect."
+  },
+  {
+   "seed": 179,
+   "known": "મને ખબર નથી કે તમે શું કરવા જઈ રહ્યા છો",
+   "en": "I don't know what are you going to do",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Embedded wh-clause keeps interrogative inversion. The Gujarati subordinate clause (કે તમે શું કરવા જઈ રહ્યા છો) is statement order; the English target must be 'what you're going to do', not 'what are you going to do'. Recurring authoring defect."
+  },
+  {
+   "seed": 179,
+   "known": "મને કહો કે તમે શું કરવા જઈ રહ્યા છો",
+   "en": "tell me what are you going to do",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Same embedded-question inversion defect: should be 'tell me what you're going to do'. The Gujarati is a correct statement-order complement clause."
+  },
+  {
+   "seed": 194,
+   "known": "મને કહો કે તમે શું શોધી રહ્યા છો",
+   "en": "tell me what are you looking for",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Embedded wh-clause inversion again: target should be 'tell me what you're looking for'. Gujarati complement (કે તમે શું શોધી રહ્યા છો) is statement order."
+  },
+  {
+   "seed": 194,
+   "known": "મને ખબર નથી કે તમે શું શોધી રહ્યા છો",
+   "en": "I don't know what are you looking for",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Embedded wh-clause inversion: should be 'I don't know what you're looking for'."
+  },
+  {
+   "seed": 194,
+   "known": "તમે જે શોધી રહ્યા છો તે અહીં છે",
+   "en": "what are you looking for is here",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken English in a relative-clause prompt. Gujarati (તમે જે શોધી રહ્યા છો તે અહીં છે) = 'what you're looking for is here', but the English keeps interrogative 'what are you looking for', producing an ungrammatical sentence."
+  },
+  {
+   "seed": 194,
+   "known": "શું તમે મારી ચાવી શોધી રહ્યા છો",
+   "en": "what are you looking for, my keys?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Mistranslation: clause-initial શું here is the yes/no marker, so the Gujarati = 'are you looking for my keys?'. The English wrongly reads શું as the wh-word 'what', yielding a garbled 'what are you looking for, my keys?'."
+  },
+  {
+   "seed": 182,
+   "known": "હું મારી ચાવી શોધી શકતો નથી",
+   "en": "I want to find my keys",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Semantic mismatch: Gujarati = 'I can't find my keys' (શોધી શકતો નથી = negated potential 'cannot find'); English asserts 'I want to find', the opposite content (unproducible from the source)."
+  },
+  {
+   "seed": 195,
+   "known": "મને પૈસા મળતા નથી",
+   "en": "I want to find the money",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Semantic mismatch: Gujarati = 'I can't find the money' / 'the money isn't turning up for me' (મળતા નથી = negated 'not found'); English says 'I want to find the money', a different meaning with no source."
+  },
+  {
+   "seed": 184,
+   "known": "મેં તેઓને કાલે જોયા",
+   "en": "I saw them tomorrow",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Nonsensical: past-tense 'I saw them' combined with 'tomorrow' is self-contradictory English. (Gujarati કાલે is ambiguous yesterday/tomorrow, but with the past જોયા the only coherent gloss is 'yesterday'.)"
+  },
+  {
+   "seed": 184,
+   "known": "મેં તેઓને રેસ્ટોરન્ટ પર જોયા",
+   "en": "I saw them on Sunday afternoon",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Total mismatch: Gujarati = 'I saw them at a/the restaurant' (રેસ્ટોરન્ટ પર), but the English says 'on Sunday afternoon'. The English contains material with no source and drops the locative."
+  },
+  {
+   "seed": 190,
+   "known": "મારે કેટલાક સવાલ પૂછવા છે?",
+   "en": "I want to ask some questions today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Multiple defects: (a) 'today' has no Gujarati source (no આજે); (b) the dative-obligation frame મારે...છે ('I have to/need to ask') is glossed as 'I want to'; (c) stray question mark on a declarative. Unproducible English."
+  },
+  {
+   "seed": 182,
+   "known": "મારી ચાવી અહીં છે",
+   "en": "my keys are here now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English adds 'now' with no Gujarati source (no હવે/અત્યારે). A duplicate build prompt for the same Gujarati correctly glosses it 'my keys are here'."
+  },
+  {
+   "seed": 200,
+   "known": "તેઓ ખાતરી કરવા ઈચ્છે છે",
+   "en": "they want to make sure now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English adds 'now' with no Gujarati source (no હવે). The Gujarati is just 'they want to make sure'."
+  },
+  {
+   "seed": 176,
+   "known": "મને ખબર નથી કે તે મદદ કરી શકશે કે નહીં",
+   "en": "I don't know if he'll be able to help",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "The content noun ખબર ('મને ખબર નથી' = 'I don't know') is not in the inventory; 'don't know' was previously taught only via જાણતો નથી (s60) and ઓળખતો નથી (s85/87). Recurs across 6 prompts (s176/177/179/183/194/196). Low severity: the negative dative idiom is fully transparent to a Gujarati native, so answerability holds — but it introduces a third uncontrolled form for 'I don't know' (ZUT/consistency drift on the known side)."
+  },
+  {
+   "seed": 213,
+   "known": "તેઓ શું મેળવવાની કોશિશ કરી રહ્યા છે એ સ્પષ્ટ નથી",
+   "en": "what they're trying to achieve isn't difficult",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "સ્પષ્ટ ('clear') is not in inventory_through_hi (no entry for it through seed 225; the nearest taught items are અઘરું='difficult' s64/66 and રસપ્રદ='interesting'). It is a genuine new content adjective, not an inflection of any introduced lemma, so the learner has no anchor for it. Same lexeme reused at seed 222 (તેને શું જોઈએ છે એ સ્પષ્ટ નથી). Counted once for the lexeme across both seeds."
+  },
+  {
+   "seed": 224,
+   "known": "એણે હમણાં જ બોલવાનું શરૂ કર્યું છે",
+   "en": "he's just started to speak",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "હમણાં ('just now / just') is not in inventory_through_hi. The temporal adverb supplies the English 'just' in the gloss but is an unintroduced content word (the only taught 'just' is ફક્ત s106 = restrictive 'just/only', a different lexeme). Reused at seed 224 એણે હમણાં જ શીખવાનું શરૂ કર્યું છે. The જ clitic is free glue; the issue is the unintroduced હમણાં. Counted once for the lexeme."
+  },
+  {
+   "seed": 213,
+   "known": "તેઓ શું મેળવવાની કોશિશ કરી રહ્યા છે એ સ્પષ્ટ નથી",
+   "en": "what they're trying to achieve isn't difficult",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Gloss mistranslation: સ્પષ્ટ નથી means 'isn't clear', but the English target says 'isn't difficult'. The learner reading the Gujarati would never produce 'difficult' (that is અઘરું); the prompt is internally inconsistent / unanswerable as authored. Identical defect at seed 222 (તેને શું જોઈએ છે એ સ્પષ્ટ નથી -> 'what he wants isn't difficult'). Recurring template, both should be 'isn't clear'. Counted once across the two."
+  },
+  {
+   "seed": 209,
+   "known": "મારે પ્રેક્ટિસ કરવામાં વધારે સમય ગાળવો જોઈએ",
+   "en": "I need to spend more time on this",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Content swap: the Gujarati explicitly says પ્રેક્ટિસ કરવામાં = 'on practising / practising', but the English replaces it with 'on this'. There is no આ ('this') token in the prompt, and 'practising' is dropped. The learner producing from the Gujarati would say '...more time practising', not 'on this'. Authoring mismatch."
+  },
+  {
+   "seed": 219,
+   "known": "બહાર જઈને થોડું પાણી લેવું સારું હતું",
+   "en": "it was nice to go out and have a glass of water",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Unsourced material in the English: the Gujarati is થોડું પાણી = 'a little water' (થોડું='a little' s9, પાણી='water' s217), but the gloss says 'a glass of water'. There is no ગ્લાસ ('glass') token in the prompt, so 'a glass of' has no source. Should be 'have a little water' (or 'a bit of water')."
+  },
+  {
+   "seed": 221,
+   "known": "મને ફૂટબોલ જોવામાં આનંદ આવે છે",
+   "en": "I'm enjoying the chance to watch football",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Unsourced material in the English: the Gujarati is ફૂટબોલ જોવામાં આનંદ આવે છે = 'I'm enjoying watching football' (the આનંદ આવે છે = 'I'm enjoying' frame from s101). The gloss inserts 'the chance to', but there is no કરવાની તક ('the chance to', s206) in the prompt. Should be 'I'm enjoying watching football'."
+  },
+  {
+   "seed": 228,
+   "known": "એ માણસે હમણાં જ બોલવાનું શરૂ કરી",
+   "en": "that man has just started to speak",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "હમણાં (temporal 'just/just now') is never introduced. The only 'just' taught is ફક્ત (seed 106), which is the restrictive 'just/only' — a different sense. The learner must produce 'has just started' but has no introduced source for temporal 'just'. Recurs in the seed-228 'that man has just started to practise speaking' use too."
+  },
+  {
+   "seed": 247,
+   "known": "ઠીક ઠીક સારું પુસ્તક",
+   "en": "a fairly good book",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "પુસ્તક ('book') is an uncontrolled synonym never introduced. The course's taught word for 'book' is ચોપડી (seeds 161/164/180, and used elsewhere in this very batch e.g. seed 247 'I thought that book was fairly good' uses ચોપડી). Two Gujarati words mapping to one English 'book' — vocab gap + ZUT-style inconsistency."
+  },
+  {
+   "seed": 248,
+   "known": "મને એ ફિલ્મ ગમી",
+   "en": "I like the film",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "ગમી is the perfective/past ('I liked the film'), but the English gloss is present 'I like the film'. Aspect→tense mismatch: the past-perfective form is glossed as English simple present, so the learner is cued to produce 'like' from a past form. Inconsistent with seed 26 ગમે છે = present 'I like'."
+  },
+  {
+   "seed": 248,
+   "known": "તે સાવ નકામી હતી, મને ગમી નહીં",
+   "en": "it was complete rubbish, I'm not happy",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "મને ગમી નહીં literally = 'I didn't like it' (negated past of ગમવું), not 'I'm not happy'. The English target invents a different proposition ('I'm not happy') with no matching Gujarati source; the learner cannot derive 'happy' from ગમ. Meaning/negation-form mismatch."
+  },
+  {
+   "seed": 228,
+   "known": "એ માણસે હમણાં જ બોલવાનું શરૂ કરી",
+   "en": "that man has just started to speak",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken present-perfect machinery, systematic across the whole seed-228 set. With ergative subject એ માણસે, 'has started to' should be શરૂ કર્યું છે (cf. seed 224 એણે શરૂ કર્યું છે = \"he's started to\"). Instead the bare feminine perfective શરૂ કરી (no auxiliary, wrong gender agreement) is used, and the component કરી is glossed 'has' — a nonsensical isolated gloss. Affects all 'has started to' build/use prompts in seed 228."
+  },
+  {
+   "seed": 248,
+   "known": "હું મારા પૈસા પાછા માગું છું",
+   "en": "I want my money back today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "The English gloss contains 'today' but there is no source token (no આજે) in the Gujarati. The Gujarati only says 'I want my money back'. Unproducible material — the learner cannot derive 'today'. (Other 'today' prompts in this batch, e.g. seed 244 આજે..., correctly include આજે.)"
+  },
+  {
+   "seed": 247,
+   "known": "ઠીક ઠીક",
+   "en": "quite",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "ઠીક ઠીક is glossed three different ways across the course: 'okay' (seed 41), 'quite' (this seed-247 component), and within the LEGO ઠીક ઠીક સારું = 'fairly good'. The 'quite' component gloss adds a third English mapping for one fixed token — gloss inconsistency."
+  },
+  {
+   "seed": 250,
+   "known": "હું જવાબ આપું એ પહેલાં મારે વિચારવું છે",
+   "en": "I want to think before I answer",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "મારે વિચારવું છે uses the dative-obligation/possession frame (મારે...છે), which the course elsewhere maps to 'I have to / I've got', not the volitional 'I want to' (= માગું/ઈચ્છું). Borderline conflation of have-to vs want-to per the have_to_vs_have_got distinction; producible but register-inconsistent."
+  },
+  {
+   "seed": 261,
+   "known": "કંઈ મહત્વનું",
+   "en": "something important",
+   "category": "npi_violation",
+   "severity": "high",
+   "detail": "SYSTEMATIC LEGO-level defect rooted in seed 261, which introduces the bare NPI કંઈ as the POSITIVE existential 'something' (component idx144 કંઈ='something'; debut idx146 કંઈ મહત્વનું='something important'). The brief is explicit (npiLicensing + glossRule npi_positive_split): positive 'something/someone' MUST be the -ક form કંઈક/કોઈક; bare કંઈ is an NPI free ONLY in a polarity-reversing/non-veridical environment. The mis-built LEGO propagates to plain POSITIVE AFFIRMATIVE DECLARATIVES where bare કંઈ is ungrammatical as 'something': idx137 'મને લાગે છે કે તમે કંઈ મહત્વનું શીખ્યા' (you learnt something important), idx234 'એણે મને કંઈ મહત્વનું મોકલ્યું' (she sent me something important), idx307 'એ કંઈ મહત્વનું લાગે' (that sounds like something important). These should use કંઈક. Contrast the correctly-licensed bare-NPI prompts in the batch glossed 'anything' (idx2 under નથી; idx218/221 under શું yes/no Q). Fix: rebuild the seed-261 LEGO as કંઈક for the positive cases."
+  },
+  {
+   "seed": 261,
+   "known": "કંઈ મહત્વનું",
+   "en": "something important",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "glossRule npi_positive_split: 'Do not gloss bare કંઈ/કોઈ as something/someone.' Even in the seed-261 instances where bare કંઈ SITS in a licensing environment (so it is grammatical), the gloss is still 'something' instead of the free-choice 'anything': idx127 under negation નથી ('remember something important... isn't easy'), idx130/142 under epistemic કદાચ 'might' ('it might be something important'), idx132/134/135 under desiderative માગે/માગું 'want to' ('want to say/tell something important'). Per the rule these bare-NPI tokens should be glossed 'anything', not 'something'. Same underlying LEGO mis-mapping as the npi_violation finding; grouped here for the gloss dimension across ~6 licensed instances."
+  },
+  {
+   "seed": 270,
+   "known": "જો હું હવે ન જાઉં તો હું મોડો પડી જઈશ",
+   "en": "if I wait I'll be late",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Gujarati↔English meaning mismatch. The Gujarati conditional is 'જો હું હવે ન જાઉં તો...' = 'if I DON'T GO NOW...' (હવે=now, ન જાઉં=don't go), but the English protasis is 'if I wait'. The learner reading the Gujarati would produce 'if I don't go now I'll be late', not 'if I wait I'll be late'. Unproducible target / authoring defect."
+  },
+  {
+   "seed": 259,
+   "known": "એક નવો વિચાર",
+   "en": "an idea now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Build prompt mismatch: Gujarati 'એક નવો વિચાર' = 'a NEW idea' (નવો=new), but the English is 'an idea now'. The adjective નવો 'new' has no reflex in the English, and 'now' has no source in the Gujarati. Likely a slipped gloss; should be 'a new idea'."
+  },
+  {
+   "seed": 259,
+   "known": "તે એક સારો વિચાર છે",
+   "en": "that's an idea",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Gujarati 'તે એક સારો વિચાર છે' = 'that's a GOOD idea' (સારો=good), but the English drops the adjective and reads 'that's an idea'. The content word સારો is unrepresented in the target. Should be 'that's a good idea'."
+  },
+  {
+   "seed": 262,
+   "known": "તમે જે સાથે વાત કરતા હતા",
+   "en": "you were talking to him",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Spurious 'him' with no Gujarati source: 'તમે જે સાથે વાત કરતા હતા' is the headless relative 'you were talking to' (જે=relativiser, no overt 'him'). The parallel build idx150 'જે સાથે વાત કરતા હતા' is correctly glossed 'you were talking to' (no 'him'), so idx147's trailing 'him' is an inconsistent authoring artifact."
+  },
+  {
+   "seed": 263,
+   "known": "તમે કોની વાત કરો છો એ",
+   "en": "who you're talking about now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The trailing nominaliser/correlate એ ('the one that') is glossed as 'now'. એ is the demonstrative 'that/it', never 'now', so the English 'now' has no source. Recurring trailing-એ→'now' slip (cf. seed 272 idx295). Should be 'who you're talking about'."
+  },
+  {
+   "seed": 272,
+   "known": "એ રસપ્રદ વાત એવું લાગે",
+   "en": "that sounds like an interesting thing now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Spurious 'now': 'એ રસપ્રદ વાત એવું લાગે' = 'that sounds like an interesting thing' (એ=that, રસપ્રદ=interesting, વાત=thing, એવું લાગે=sounds like). No હવે/extra એ to license 'now'. The parallel build idx299 'એ રસપ્રદ વાત લાગે' is correctly 'that sounds like an interesting thing' without 'now'."
+  },
+  {
+   "seed": 272,
+   "known": "તમારો ઉત્તમ વિચાર છે",
+   "en": "your idea is a great idea",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Awkward/doubled gloss. Gujarati 'તમારો ઉત્તમ વિચાર છે' = 'it's your great idea' / 'your great idea' (one વિચાર: તમારો=your, ઉત્તમ=great, વિચાર=idea), but the English 'your idea is a great idea' repeats 'idea' and restructures into a predication that isn't in the Gujarati. Natural target would be 'it's your great idea'."
+  },
+  {
+   "seed": 275,
+   "known": "લાંબું",
+   "en": "time",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss wrong: લાંબું means 'long/longer' (the seed LEGO વધારે લાંબું = 'longer'), but the component is glossed 'time'. Mismatched component gloss; should be 'long'/'longer'."
+  },
+  {
+   "seed": 279,
+   "known": "ઘણો ઓછો સમય બાકી હતો, તો હું ઝડપથી બોલ્યો",
+   "en": "there wasn't much time left, so I had to speak quickly",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English adds obligation 'I HAD TO speak' with no Gujarati source: હું ઝડપથી બોલ્યો = 'I spoke quickly' (simple past, no પડ્યું/જોઈએ). The sibling row line 54 correctly carries મારે...કરવું પડ્યું = 'I had to'. Also બોલ્યો is a past-tense form of 'speak' that doesn't match the cued infinitive gloss. Authoring/tiling mismatch."
+  },
+  {
+   "seed": 279,
+   "known": "બાકી હતો",
+   "en": "there wasn't left",
+   "category": "gloss_rule_violation",
+   "severity": "low",
+   "detail": "Negation-form gloss defect: બાકી હતો is positive ('was left/remained'). The negative reading in the idiom comes entirely from ઘણો ઓછો ('much less'); glossing the bare positive component as 'there wasn't left' attaches a negation that has no marker (no નથી/નહોતો) in this token. Component-decomposition artifact."
+  },
+  {
+   "seed": 279,
+   "known": "ઘણો ઓછો સમય",
+   "en": "much time",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss drops ઓછો ('less/little'): ઘણો ઓછો સમય is literally 'much LESS time', glossed only as 'much time'. The full LEGO (ઘણો ઓછો સમય બાકી હતો = 'there wasn't much time left') renders correctly, but this sub-component gloss misrepresents ઓછો."
+  },
+  {
+   "seed": 293,
+   "known": "એ ક્યાં મળવાનો છે એ",
+   "en": "where it's being held today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English suffix 'today' has no Gujarati source (no આજે in the prompt). BUILD-scaffold row where a fixed English suffix was appended that the Gujarati does not contain — unproducible from the cue."
+  },
+  {
+   "seed": 293,
+   "known": "મને ખબર નથી એ ક્યાં મળવાનો છે",
+   "en": "where it's being held now",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Two-way mismatch: the English drops મને ખબર નથી ('I don't know') AND adds 'now' (no હવે in the Gujarati). Gujarati means 'I don't know where it's being held'; English given is 'where it's being held now'. BUILD-scaffold suffix artifact."
+  },
+  {
+   "seed": 280,
+   "known": "મારે ફક્ત હવે કરવું પડ્યું",
+   "en": "I only had to do now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Naturalness defect recurring across seed 280: 'I only had to do now/today/(empty)' — bare transitive 'do' with no object reads as broken English (કરવું = 'do' here lacks an object). Affects three rows (…હવે…='do now', …આજે…='do today', bare='I only had to do'). Gujarati is well-formed; the English gloss is the awkward member."
+  },
+  {
+   "seed": 289,
+   "known": "મને થાય છે કે એ આવશે",
+   "en": "I wonder if he can come",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Modal mismatch: એ આવશે = 'he will come' (future), glossed with ability 'he CAN come'. No શકે/શકશે potential in the Gujarati; should read 'I wonder if he'll come'. Minor authoring slip in the I-wonder-if frame."
+  },
+  {
+   "seed": 282,
+   "known": "એ સમસ્યા નથી જો તમે મોડા આવો",
+   "en": "that's not a problem if you come a little late",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "'a little' has no Gujarati source: મોડા આવો = 'come late' (no થોડું). Also મોડા/મોડો ('late') was only introduced bound inside the unit મોડો પડી જઈશ ='I'll be late' (seed 270), so the bare adjectival 'late' here is on the edge of what's been taught. Minor."
+  }
+ ]
+}

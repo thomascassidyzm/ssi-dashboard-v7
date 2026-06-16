@@ -1,0 +1,103 @@
+{
+ "course_code": "eng_for_guj",
+ "total_collisions": 129,
+ "counts": {
+  "fp_subgloss": 78,
+  "fp_inflection": 43,
+  "real_consolidate": 4,
+  "real_differentiate": 2,
+  "fp_wrong_data": 2
+ },
+ "release_blocker_count": 2,
+ "notes": "Overwhelmingly clean: ~94% of flags are false positives because the auditor surfaces every sub-piece of a larger LEGO (Gujarati postpositions/pronoun-clitics like એ, છે, હું, માં glossed contextually as 'the/at/on/I'm/I'd' inside bigger phrases) plus English-target morphology (article a/an, tense said/started, number question(s), prep on-morning, subject ellipsis, Q/statement word-order) — none drilled bare. The only genuine learner-facing issues are the obligation construction (શું તમારે ...નું છે / મારે ...નું છે) drilled inconsistently as both 'have (got) to' and 'do you have to'/'I need to' (consolidate to one have-to form course-wide), the recurring find-out/know fork on જાણવા at BUILD and USE (differentiate), and two single-row mistranslations.",
+ "real_fixes": [
+  {
+   "known": "શું તમારે કરવાનું છે",
+   "targets": [
+    "have you got to do",
+    "do you have to"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "do you have to",
+   "action": "Re-gloss the 'have you got to do' BUILD row to the canonical 'do you have to' so the obligation-question construction maps 1:1.",
+   "severity": "high"
+  },
+  {
+   "known": "મારે કરવાનું છે",
+   "targets": [
+    "I need to do",
+    "I've got to do"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I've got to do",
+   "action": "Re-gloss the 'I need to do' component to the drilled 'I've got to do' (or vice-versa) — same obligation intention, pick one have-to form course-wide.",
+   "severity": "high"
+  },
+  {
+   "known": "શું તમારે હવે જવાનું છે?",
+   "targets": [
+    "have you got to go now?",
+    "do you have to go now?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "do you have to go now?",
+   "action": "Both are drilled USE sentences with identical Gujarati; collapse 'have you got to go now?' to 'do you have to go now?'.",
+   "severity": "med"
+  },
+  {
+   "known": "શું તમારે જવાનું છે?",
+   "targets": [
+    "have you got to go?",
+    "do you have to go?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "do you have to go?",
+   "action": "Two BUILD rows, same prompt; pick 'do you have to go?' as the single have-to rendering.",
+   "severity": "med"
+  },
+  {
+   "known": "હું જાણવા માગું છું",
+   "targets": [
+    "I want to find out",
+    "I want to know"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "I want to find out",
+   "action": "જાણવા is glossed both 'find out' and 'know' as drilled BUILD rows; differentiate the Gujarati (e.g. જાણવા=find out vs distinct verb for know) or pick one canonical so the identical prompt maps 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "મને ખાતરી નથી કે હું જાણી શકું",
+   "targets": [
+    "I'm not sure if I can find out",
+    "I'm not sure if I can know"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "I'm not sure if I can find out",
+   "action": "Same find-out/know fork at USE level on identical Gujarati; differentiate the known or fix the decomposition of જાણી so it picks one verb.",
+   "severity": "med"
+  },
+  {
+   "known": "તે ઑફિસમાં શિક્ષક તરીકે કામ કરે છે",
+   "targets": [
+    "he works as a teacher in the office",
+    "he works as a teacher today"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "he works as a teacher in the office",
+   "action": "ઑફિસમાં means 'in the office', not 'today' (=આજે); correct the second USE row's English — it is a mistranslation.",
+   "severity": "med"
+  },
+  {
+   "known": "શક્ય",
+   "targets": [
+    "possible",
+    "you"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "possible",
+   "action": "શક્ય means 'possible'; the 'you' component gloss is a data error — correct or remove it.",
+   "severity": "low"
+  }
+ ]
+}

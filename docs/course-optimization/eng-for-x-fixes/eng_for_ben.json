@@ -1,0 +1,566 @@
+{
+ "course_code": "eng_for_ben",
+ "total_collisions": 191,
+ "counts": {
+  "fp_subgloss": 90,
+  "fp_inflection": 51,
+  "real_consolidate": 35,
+  "real_differentiate": 15,
+  "fp_wrong_data": 0
+ },
+ "release_blocker_count": 0,
+ "notes": "eng_for_ben is clean and dominated by false positives: 90 fp_subgloss (one canonical LEGO plus many contextual component slices of pronouns, particles like না/করা, and verb roots glossed inside larger phrases) and 51 fp_inflection (English target morphology — to-speak/speak, learnt/I've learnt, friend/friends, watch/watched — Bengali agglutinative endings and the analytic English target produce these naturally). The 50 genuine fixes are NOT core-token overloads but two structural patterns: (1) Bengali's genderless 3rd person (তাকে=him/her, সে=he/she) and number-neutral nouns (বন্ধু) systematically producing two English answers per identical prompt, clustered on the 176/177 him-her and 51/52 friend-friends paired seeds, and (2) sentence-level build-vs-use paraphrase drift at a single seed (article, contraction, word-order, want/I'd-like, watch/see). All are count-1 or systematic-but-low-frequency, so no release blockers.",
+ "real_fixes": [
+  {
+   "known": "তাকে",
+   "targets": [
+    "him",
+    "her"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "তাকে is genderless; differentiate the known side (he/she context) or accept both — this recurs across the 176/177 him-her seed pair.",
+   "severity": "med"
+  },
+  {
+   "known": "আমি তাকে বলতে চাই",
+   "targets": [
+    "I want to tell him",
+    "I want to tell her"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless তাকে maps to both him and her; pin gender on the known prompt per seed (176 him / 177 her).",
+   "severity": "med"
+  },
+  {
+   "known": "তুমি কি তাকে সাহায্য করতে পারবে?",
+   "targets": [
+    "can you help him?",
+    "can you help her?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless তাকে → him/her; pin gender on the known prompt per seed.",
+   "severity": "med"
+  },
+  {
+   "known": "সে এক-দুই গ্লাস পানি পান করেছিলাম।",
+   "targets": [
+    "she had a glass or two of water",
+    "he had a glass or two of water"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless সে → she/he; pin gender per seed. (Bengali also has a verb-agreement error: পান করেছিলাম is 1st-person for a 3rd-person subject.)",
+   "severity": "low"
+  },
+  {
+   "known": "আমি তাকে জিজ্ঞেস করব সে কী করতে চায়",
+   "targets": [
+    "I'll ask him what he wants to do",
+    "I'll ask her what she wants to do"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless তাকে/সে → him-he / her-she; pin gender per seed.",
+   "severity": "med"
+  },
+  {
+   "known": "আমি তাকে জিজ্ঞেস করব সে কোথায় যেতে চায়",
+   "targets": [
+    "I'll ask him where he wants to go",
+    "I'll ask her where she wants to go"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless তাকে/সে → him-he / her-she; pin gender per seed.",
+   "severity": "med"
+  },
+  {
+   "known": "আমি তাকে বলতে চাই কী করতে হবে",
+   "targets": [
+    "I want to tell him what to do",
+    "I want to tell her what to do"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless তাকে → him/her; pin gender per seed.",
+   "severity": "med"
+  },
+  {
+   "known": "আমি তাকে দেখাতে চাই কীভাবে বলতে হয়",
+   "targets": [
+    "I want to show him how to say it",
+    "I want to show her how to say it"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless তাকে → him/her; pin gender per seed.",
+   "severity": "med"
+  },
+  {
+   "known": "আমি তাকে কাল বলব",
+   "targets": [
+    "I'll tell him tomorrow",
+    "I'll tell her tomorrow"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless তাকে → him/her; pin gender per seed.",
+   "severity": "med"
+  },
+  {
+   "known": "আমি তাকে জিজ্ঞেস করব",
+   "targets": [
+    "I'll ask him",
+    "I'll ask her"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless তাকে → him/her; pin gender per seed.",
+   "severity": "med"
+  },
+  {
+   "known": "সে সবে টেলিভিশন দেখা শুরু করেছে",
+   "targets": [
+    "she's just started to watch television",
+    "he has just started to watch television"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Genderless সে → she's / he has; pin gender per seed.",
+   "severity": "low"
+  },
+  {
+   "known": "খুব ভালো",
+   "targets": [
+    "very well",
+    "very good"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "ভালো spans good/well; split the known so the quality sense (very good) and the manner/health sense (very well) each map 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "ভালো অনুভব করা",
+   "targets": [
+    "feel better",
+    "feel good"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "ভালো = good, not the comparative; 'feel better' should use a comparative marker (আরও ভালো) on the known side so good vs better map 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "তুমি কি ভালো অনুভব করছো?",
+   "targets": [
+    "do you feel better?",
+    "do you feel good?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Same ভালো good-vs-better split at sentence level; differentiate the known (add আরও for 'better').",
+   "severity": "med"
+  },
+  {
+   "known": "আমি এখনো যথেষ্ট বুঝতে পারছি না",
+   "targets": [
+    "I can't understand enough now",
+    "I can't understand enough yet"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "এখনো = yet/still, not now; correct the seed-58 gloss from 'now' to 'yet'.",
+   "severity": "med"
+  },
+  {
+   "known": "আমি ইতিমধ্যে অনেক কিছু শিখেছি",
+   "targets": [
+    "I've already learnt everything",
+    "I've already learnt a lot",
+    "I've learnt a lot already"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I've already learnt a lot",
+   "action": "Same intention, three drilled phrasings ('everything' is wrong for অনেক কিছু = a lot); re-gloss all to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "তারা কী অর্জন করার চেষ্টা করছে",
+   "targets": [
+    "what they're trying to achieve",
+    "what are they trying to achieve?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "what they're trying to achieve",
+   "action": "Build (embedded) vs use (question) phrasing of one intention; re-gloss both to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "বাসে যাওয়া",
+   "targets": [
+    "go on the bus",
+    "go by bus"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "go by bus",
+   "action": "Same intention; re-gloss the build phrasing to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "অফিসে",
+   "targets": [
+    "in the office",
+    "in an office"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "in the office",
+   "action": "Definite vs indefinite article; pick one canonical for the bare locative.",
+   "severity": "low"
+  },
+  {
+   "known": "কীভাবে বলতে হয়",
+   "targets": [
+    "how to say",
+    "how to say it"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "how to say it",
+   "action": "Same intention; re-gloss the bare build to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "কিছুক্ষণের জন্য",
+   "targets": [
+    "for a while more",
+    "for a while"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "for a while",
+   "action": "'more' isn't in কিছুক্ষণের জন্য; re-gloss to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "অনেক কিছু শিখেছি",
+   "targets": [
+    "learnt a lot",
+    "i've learnt a lot"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "i've learnt a lot",
+   "action": "Same intention; re-gloss the bare build to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "লোকটা",
+   "targets": [
+    "man",
+    "the man"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "the man",
+   "action": "লোকটা is definite (-টা); re-gloss the bare 'man' to 'the man'.",
+   "severity": "low"
+  },
+  {
+   "known": "এখানে থাকা",
+   "targets": [
+    "be here",
+    "stay here"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "stay here",
+   "action": "থাকা = stay; re-gloss 'be here' to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "সবে শুরু করেছে",
+   "targets": [
+    "just started",
+    "has just started"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "has just started",
+   "action": "Same intention; re-gloss the bare build to the canonical present-perfect form.",
+   "severity": "low"
+  },
+  {
+   "known": "সে সবে শুরু করেছে",
+   "targets": [
+    "he's just started",
+    "he has just started"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "he's just started",
+   "action": "Contraction-only difference of one sentence; pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "উত্তরটা কী নিশ্চিত না",
+   "targets": [
+    "not sure what the answer is",
+    "I'm not sure what the answer is"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm not sure what the answer is",
+   "action": "Bare vs full subject phrasing; re-gloss build to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "আমি আমার বন্ধুর সাথে ভালো জিনিস করতে চাই",
+   "targets": [
+    "I want to do good things with my friends",
+    "I want to do good things with my friend"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to do good things with my friend",
+   "action": "বন্ধু is number-neutral; pick one canonical (singular) — recurs across the 51/52 friends/friend seed pair.",
+   "severity": "low"
+  },
+  {
+   "known": "আমার বন্ধু",
+   "targets": [
+    "my friends",
+    "my friend"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "my friend",
+   "action": "Number-neutral বন্ধু; pick one canonical for the bare LEGO.",
+   "severity": "low"
+  },
+  {
+   "known": "ইংরেজি শেখা সহজ নয়",
+   "targets": [
+    "learning English isn't easy",
+    "it's not easy to learn English"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's not easy to learn English",
+   "action": "Two paraphrases of one intention (build vs use); re-gloss to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "সাহায্যের জন্য অনেক ধন্যবাদ",
+   "targets": [
+    "thank you very much for help",
+    "thank you very much for the help"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "thank you very much for the help",
+   "action": "Article difference; pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "দুর্ভাগ্যবশত এটা সম্ভব ছিল না",
+   "targets": [
+    "this wasn't possible, unfortunately",
+    "unfortunately this wasn't possible"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "unfortunately this wasn't possible",
+   "action": "Word-order-only paraphrase; pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "এটা কাজ করছে না",
+   "targets": [
+    "this isn't working",
+    "not working now"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "this isn't working",
+   "action": "Build drops subject and adds 'now' (not in source); re-gloss to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "হ্যাঁ আমি তৈরি",
+   "targets": [
+    "yes I'm ready to go",
+    "yes I'm ready"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "yes I'm ready",
+   "action": "'to go' isn't in the source; re-gloss build to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "আমাদের মস্তিষ্ক পরিবর্তন করতে চাই",
+   "targets": [
+    "I want to change our brain",
+    "want to change our brain"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to change our brain",
+   "action": "Bare vs full subject; re-gloss build to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "আমি এটা প্রত্যাশা করিনি",
+   "targets": [
+    "I wasn't expecting this",
+    "I wasn't expecting it"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I wasn't expecting it",
+   "action": "this/it for এটা; pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "এটা কম উত্তেজনাপূর্ণ",
+   "targets": [
+    "that's less exciting",
+    "it's less exciting"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it's less exciting",
+   "action": "এটা = it/this not that; re-gloss the build to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "আমি চাই তুমি আমাকে সাহায্য করো",
+   "targets": [
+    "I'd like you to help me",
+    "I want you to help me"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want you to help me",
+   "action": "চাই = want; 'I'd like' drifts; re-gloss the build to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "এটা সমস্যা নয়",
+   "targets": [
+    "that's not a problem",
+    "it is not a problem"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it is not a problem",
+   "action": "এটা = it/this not that; pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "তুমি কি আমার বোনের বন্ধুকে চেনো?",
+   "targets": [
+    "you know my sister's friend",
+    "do you know my sister's friend?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "do you know my sister's friend?",
+   "action": "Build drops do-support/question form; re-gloss to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "সেটা মোটামুটি ভালো ছিল।",
+   "targets": [
+    "it was fairly good",
+    "that was fairly good"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "it was fairly good",
+   "action": "it/that for সেটা; pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "অন্য মানুষ থাকলে বাধা দিতে চাই না।",
+   "targets": [
+    "I don't want to interrupt when other people are here",
+    "we don't want to interrupt when other people are here"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't want to interrupt when other people are here",
+   "action": "Subject I/we drift (no pronoun in source); pick the canonical 1st-singular.",
+   "severity": "low"
+  },
+  {
+   "known": "আমি আমার বন্ধুর সাথে কথা বলতে চাই",
+   "targets": [
+    "I want to speak with my friends",
+    "I want to speak with my friend"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to speak with my friend",
+   "action": "Number-neutral বন্ধু (51/52 pair); pick the singular canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "তুমি কি সময়মতো শেষ করতে পারবে?",
+   "targets": [
+    "can you finish in time?",
+    "will you be able to finish in time?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "can you finish in time?",
+   "action": "Two phrasings of পারবে (can / will be able to); pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "আমি আজ একটা বই পড়তে চাই",
+   "targets": [
+    "I want to read a book today",
+    "I'd like to read a book today"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to read a book today",
+   "action": "চাই = want; 'I'd like' drifts; re-gloss the build to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "আমি আরও বেশি এখানে থাকতে চাই।",
+   "targets": [
+    "I want to be here longer",
+    "I want to stay here longer"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I want to stay here longer",
+   "action": "থাকা = stay; re-gloss 'be here' to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "আমি ভাবছি সে কি এই বিকেলে সেখানে থাকবে",
+   "targets": [
+    "I wonder if she is going to be there this afternoon",
+    "I wonder if she's going to be there this afternoon"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I wonder if she's going to be there this afternoon",
+   "action": "Contraction-only difference; pick one canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "এটা কোথায় ছিল?",
+   "targets": [
+    "where was this?",
+    "where this was?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "where was this?",
+   "action": "'where this was?' build is ungrammatical as a question; re-gloss to the canonical.",
+   "severity": "low"
+  },
+  {
+   "known": "সে কোথায় ছিল?",
+   "targets": [
+    "where was she?",
+    "where she was"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "where was she?",
+   "action": "'where she was' build is the embedded (non-question) order; re-gloss to the canonical interrogative.",
+   "severity": "low"
+  },
+  {
+   "known": "তুমি কি কিছুটা টেলিভিশন দেখতে চাও?",
+   "targets": [
+    "do you want to watch a bit of television?",
+    "do you want to see a bit of television?"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "do you want to watch a bit of television?",
+   "action": "দেখা = watch/see (synonyms here); pick the canonical 'watch' for TV.",
+   "severity": "low"
+  }
+ ]
+}

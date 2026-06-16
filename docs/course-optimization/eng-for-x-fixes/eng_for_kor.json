@@ -1,0 +1,181 @@
+{
+ "course_code": "eng_for_kor",
+ "total_collisions": 202,
+ "counts": {
+  "fp_subgloss": 86,
+  "fp_inflection": 101,
+  "real_consolidate": 11,
+  "real_differentiate": 1,
+  "fp_wrong_data": 3
+ },
+ "release_blocker_count": 7,
+ "notes": "Heavily agglutinative/particle-driven course: the bulk of flags are FPs — verb-endings and case particles (해요, 거예요, 없어요, 에, 를, 고, 는) sliced as 'component' sub-glosses with many contextual English faces (86 fp_subgloss), plus the LEGO-debut-vs-BUILD and statement-vs-question artifacts where the same English lemma just gains an article/object/time-filler or do-support (101 fp_inflection). The only genuine learner-facing ZUT issues are two recurring modal/desiderative overloads — 해야 obligation glossed need-to vs must, and 싶지 않아요 glossed don't-want-to vs wouldn't-like-to (7 high-severity, drilled across multiple seeds) — plus the 알다 know/find-out fork, 일 work/job, and three single-row wrong-data glosses (어떻게→'this word in English', 좋은→'more slowly', 다시→'could').",
+ "real_fixes": [
+  {
+   "known": "오늘 열심히 일해야 해요",
+   "targets": [
+    "need to work hard today",
+    "must work hard today"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Pick one English modal for the obligation ending 해야(해요); regloss so identical Korean obligation maps 1:1 (recommend 'have to'/'need to').",
+   "canonical_english": "need to work hard today",
+   "severity": "high"
+  },
+  {
+   "known": "우리는 열심히 일해야 해요",
+   "targets": [
+    "we need to work hard",
+    "we must work hard"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same 해야 obligation overloaded need to vs must; consolidate to the canonical modal chosen course-wide.",
+   "canonical_english": "we need to work hard",
+   "severity": "high"
+  },
+  {
+   "known": "열심히 일해야 해요",
+   "targets": [
+    "need to work hard",
+    "must work hard now"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate 해야 obligation modal (need to vs must) and drop the stray 'now' filler so the bare LEGO is stable.",
+   "canonical_english": "need to work hard",
+   "severity": "high"
+  },
+  {
+   "known": "저는 지금 열심히 일해야 해요",
+   "targets": [
+    "I need to work hard now",
+    "I must work hard now"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same 해야 need-to/must overload; consolidate to the canonical modal.",
+   "canonical_english": "I need to work hard now",
+   "severity": "high"
+  },
+  {
+   "known": "말하고 싶지 않아요",
+   "targets": [
+    "I wouldn't like to speak",
+    "I don't want to speak"
+   ],
+   "verdict": "real_consolidate",
+   "action": "싶지 않아요 = don't want to; consolidate 'wouldn't like to' to 'don't want to' (both BUILD-drilled at seeds 12 vs 19).",
+   "canonical_english": "I don't want to speak",
+   "severity": "high"
+  },
+  {
+   "known": "저는 지금 말하고 싶지 않아요",
+   "targets": [
+    "I wouldn't like to speak now",
+    "I don't want to speak now"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same 싶지 않아요 don't-want-to overload (USE seeds 12 vs 19); consolidate to 'don't want to'.",
+   "canonical_english": "I don't want to speak now",
+   "severity": "high"
+  },
+  {
+   "known": "저는 영어로 말하고 싶지 않아요",
+   "targets": [
+    "I wouldn't like to speak English",
+    "I don't want to speak English"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Same 싶지 않아요 overload; consolidate to 'don't want to'.",
+   "canonical_english": "I don't want to speak English",
+   "severity": "high"
+  },
+  {
+   "known": "저는 끝날 때까지 알고 싶지 않아요",
+   "targets": [
+    "I don't want to find out until after we finish",
+    "I don't want to know until after we finish"
+   ],
+   "verdict": "real_consolidate",
+   "action": "알다 splits know vs find out for one identical sentence (both USE, seed 251); pick one rendering (recommend 'find out' for the 'not until' sense) and regloss the other.",
+   "canonical_english": "I don't want to find out until after we finish",
+   "severity": "med"
+  },
+  {
+   "known": "알고",
+   "targets": [
+    "find out",
+    "know"
+   ],
+   "verdict": "real_consolidate",
+   "action": "알다 LEGO drilled as 'find out' (lego/build) while 'know' appears as component; align the 알다 know/find-out partition so the drilled prompt is single-valued.",
+   "canonical_english": "find out",
+   "severity": "med"
+  },
+  {
+   "known": "저는 누구를 말하는지 전혀 모르겠어요",
+   "targets": [
+    "I don't know who you mean at all",
+    "I don't have the faintest idea who you mean"
+   ],
+   "verdict": "real_consolidate",
+   "action": "전혀 모르겠어요 same intention rendered two ways (both USE, seed 263); consolidate to one.",
+   "canonical_english": "I don't have the faintest idea who you mean",
+   "severity": "low"
+  },
+  {
+   "known": "저는 동의하지 않아요",
+   "targets": [
+    "I don't agree with that",
+    "I don't agree with you"
+   ],
+   "verdict": "real_consolidate",
+   "action": "동의하지 않아요 = I don't agree; the trailing object differs (that vs you) across seeds 83/84 with no Korean object present. Fix the decomposition so the bare prompt doesn't carry an invented object, or differentiate the Korean.",
+   "canonical_english": "I don't agree",
+   "severity": "med"
+  },
+  {
+   "known": "그것이 가장 중요한 일이에요",
+   "targets": [
+    "that is the most important work to do",
+    "that is the most important job"
+   ],
+   "verdict": "real_differentiate",
+   "action": "일 genuinely covers work vs job; one identical Korean sentence (both USE, seed 280) gives two distinct English nouns. Differentiate the Korean (e.g. 일/직업) or fix the gloss so it maps 1:1.",
+   "canonical_english": "that is the most important work",
+   "severity": "med"
+  },
+  {
+   "known": "어떻게",
+   "targets": [
+    "how to",
+    "this word in English",
+    "what would you"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "어떻게 = 'how'; the drilled LEGO gloss 'this word in English' (seed 160) is nonsensical for this token — correct that single row.",
+   "canonical_english": "how",
+   "severity": "med"
+  },
+  {
+   "known": "좋은",
+   "targets": [
+    "good",
+    "more slowly"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "좋은 = 'good/nice'; the drilled LEGO gloss 'more slowly' (seed 90) is wrong — correct that single row.",
+   "canonical_english": "good",
+   "severity": "med"
+  },
+  {
+   "known": "다시",
+   "targets": [
+    "could",
+    "again"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "다시 = 'again'; the LEGO glossed 'could' (seed 61) is wrong (likely a mis-sliced 줄 수/again pair) — correct that single row.",
+   "canonical_english": "again",
+   "severity": "med"
+  }
+ ]
+}

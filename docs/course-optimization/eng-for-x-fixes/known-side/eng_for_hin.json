@@ -1,0 +1,954 @@
+{
+ "course_code": "eng_for_hin",
+ "totals": {
+  "prompts_checked": 5908,
+  "vocab_uncontrolled": 8,
+  "npi_violation": 0,
+  "machinery_unlicensed": 0,
+  "gloss_rule_violation": 14,
+  "content_quality": 117
+ },
+ "release_grade": "cleanup",
+ "systematic_issues": [
+  "apna (अपना) subject-binding NOT respected in the gloss inventory: अपने दोस्त was frozen as 'his friend' and अपने बैग as 'in her bag', then reused under मैं/आप/हम subjects where अपना must render 'my/your/our'. 6 gloss_rule_violations in seeds 52-53. ONE FIX: make the अपना render subject-relative (1sg→my, 2→your, 1pl→our) and the third-person glosses disappear.",
+  "Positive Hindi copulas frozen as NEGATED English in the inventory: यही है glossed 'that isn't what' (seed 159, ~8 prompts) and यह...कम रोमांचक है glossed 'this isn't less exciting' (S132) — the Hindi has no नहीं/न/मत so a negative English target is unproducible (negation-nahin-vs-mat). ONE FIX per inventory entry: drop the English negation or add the Hindi negator. नहीं itself is also mis-glossed as 'can't' at S113 (a modal with no सकना carrier).",
+  "USE-phrase generator stacks करना onto verbs that don't take it, producing doubled-infinitive prospectives: कॉल करना करने वाला हूँ (S294), भुगतान करना करने वाला है (S299), जाना करना था (S278), दिखना करूँगा (S300). Correct form drops the extra करना (कॉल करने वाला हूँ). ONE FIX: the 'going-to/had-to <verb>' template must use the oblique infinitive directly, and must not append करना to intransitive/already-infinitive verbs.",
+  "Templated agreement frames reused across subjects/heads without re-agreeing in gender/number: feminine-singular करती conditional apodosis pasted under मैं/हम/वे (S229); relative जो जानती है (fem) reused on masculine head आदमी (S233); habitual करते थे (pl) left under मैं (S199). ONE FIX: re-inflect the templated verb to the actual subject/head before emitting.",
+  "Doubled-subject / stranded-modal chunk tiling: the whole LEGO मैं चाहता हूँ ('I want') pasted at clause end after a subject is already present, yielding 'मैं ... मैं चाहता हूँ' (seed 42, multiple USE prompts) and broader SOV calque word-order where चाहता हूँ / time-adverbs land in non-final positions. ONE FIX: tile चाहता हूँ adjacent to the subject (drop the duplicate मैं) and keep the matrix verb clause-final.",
+  "USE-phrase generator concatenates two independent clauses with no connective or matrix verb, producing run-ons that are incoherent in BOTH Hindi and English: 'यह निश्चित रूप से इसीलिए'→'this definitely that is why' (S117), 'मुझे उम्मीद नहीं थी इसीलिए'→'I wasn't expecting it that is why' (S112), recurring across seeds 112/116/117/120/122/124/125. ONE FIX: the clause-glue step needs a connective/verb or should not weld these chunks.",
+  "Component (sub-LEGO) decomposition emits word-salad glosses for mid-LEGO fragments: लगता है→'I' (S51), रात को→'very well' (S55), लगाना→'out' (S251) — ~25+ such rows in seeds 51-74 alone. The whole-phrase glosses are correct; the component splits add no producible vocabulary and mis-teach. ONE FIX: suppress or correct component rows for idiomatic M-LEGOs (अच्छा लगता है, पता लगाना) rather than splitting them morphologically.",
+  "English target carries material with NO Hindi source — pervasive across batches: inserted 'want' with no चाह (S8), 'start' with no शुरू (S63), 'from you' with no आपसे (S73), comparative 'than' with no उससे/से/जितना (S137, also ahead of the seed-144 'than' debut), 'I think' with no लगता है on a polar question (S176), 'with this' with no source on a dangling कि (S245). ONE FIX class: the gloss must only contain English licensed by tokens present in the Hindi.",
+  "8 genuinely uncontrolled content words debut without being introduced: कौन 'who' (S201 — in freeClass but absent from inventory; reconcile the freeClass/inventory wh-word debut), पहुँचना 'arrive' (S270), बढ़िया 'great' (S272), रंग (S272 batch), अब 'now' vs taught अभी (S76-100), सिर्फ 'only' (S300). ONE FIX: either add inventory entries/debuts or re-render with the taught synonym (e.g. 'late' via देर without पहुँचना; 'great' via बहुत अच्छा)."
+ ],
+ "summary": "Across 5,908 known-side prompts in eng_for_hin (seeds 1-300), answerability machinery is clean: 0 NPI violations and 0 unlicensed-machinery violations in every batch, with all content lemmas introduced on schedule except 8 stragglers (कौन, पहुँचना, बढ़िया, रंग, अब, सिर्फ). The 14 gloss_rule_violations cluster into two inventory-level bugs that each fix many prompts at once — अपना subject-binding frozen as 'his/her' under I/you/we subjects (6 cases, seeds 52-53), and positive Hindi copulas (यही है, ...कम...है) glossed with English negation that has no नहीं source (negation-nahin-vs-mat, ~10 cases). The 117 content_quality defects are dominated by a handful of recurring generator/template bugs: doubled-infinitive करना prospectives, gender/number-agreement frames reused without re-agreeing, two-clause run-on concatenation, word-salad component-slice glosses, and English targets carrying unsourced 'want/start/than/I-think'. With 22 real (non-content_quality) issues this grades cleanup — but most are template/inventory fixes where one correction resolves a whole family, so the effective remediation is smaller than the count suggests.",
+ "findings": [
+  {
+   "seed": 8,
+   "known": "मैं समझाना मेरा मतलब क्या है।",
+   "en": "I want to explain what I mean",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English target contains 'want' with NO source in the Hindi: the prompt has no चाहता हूँ (want) and in fact has no finite matrix verb at all — it is 'I to-explain what my meaning is'. The learner reading this Hindi cannot know to produce 'want', and the Hindi itself is ungrammatical (bare infinitive समझाना with no चाहता हूँ/है to license it). Isolated authoring slip — every other 'want' gloss in the batch has a चाह source. Either the Hindi is missing चाहता हूँ or the English should drop 'want to'."
+  },
+  {
+   "seed": 19,
+   "known": "वह आज बात करना का अभ्यास करना चाहती है।",
+   "en": "she wants to practise talking today",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Hindi morphology: the infinitive before the postposition का must be in the OBLIQUE form (बात करने का अभ्यास), not the direct बात करना का अभ्यास. The corpus itself uses the correct oblique at seed 5 (बोलने का अभ्यास करना 'to practise speaking'), so this is an internally-inconsistent regression. Recurring: 4 prompts (seeds 19×3, 23×1) use the wrong direct infinitive + का अभ्यास. Fully answerable (vocab intact) but ungrammatical Hindi the learner reads."
+  },
+  {
+   "seed": 2,
+   "known": "मैं अंग्रेज़ी सीखना कोशिश कर रहा हूँ।",
+   "en": "I'm trying to learn English",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Recurring missing-oblique defect (~25 prompts, seeds 2-8): the infinitive complement of कोशिश करना should be genitive/oblique — सीखने की कोशिश कर रहा हूँ ('trying to learn'), not the bare-direct सीखना कोशिश कर रहा हूँ. Notably the SAME corpus authors the correct form at seed 19/23 (बात करने की कोशिश, बातें करना की कोशिश mixed), so the construction is known but applied inconsistently. Answerable but non-idiomatic/ungrammatical Hindi."
+  },
+  {
+   "seed": 16,
+   "known": "वह चाहता है वापस आना सबके साथ बाद में।",
+   "en": "he wants to come back with everyone else later on",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Systematic head-final (SOV) word-order calque from seed 15 onward (~73 use-prompts). Once चाहता है / और मैं चाहता हूँ / चाहते हैं are introduced as front-able standalone units, the embedded VP is placed AFTER the matrix verb (वह चाहता है वापस आना…) instead of natural Hindi वह … वापस आना चाहता है (verb-final). Early seeds 1-14 use the correct verb-final order (बोलना चाहता हूँ). Answerable but reads as English-ordered Hindi; deliberate teachability artifact, but worth flagging for naturalness."
+  },
+  {
+   "seed": 15,
+   "known": "और मैं चाहता हूँ बोलते हैं बहुत अच्छी।",
+   "en": "and I want you to speak very well",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Finite verb used as an infinitival complement: चाहता हूँ cannot take the finite habitual बोलते हैं ('[you] speak') as its complement — it requires the infinitive बोलना ('and I want you to speak'). 'मैं चाहता हूँ बोलते हैं' is ungrammatical. Related: the ECM 'I want you to speak' (मैं चाहता हूँ आप बोलना…, seeds 15) is itself non-idiomatic (natural Hindi uses a कि-clause: चाहता हूँ कि आप बोलें). Answerable but broken matrix-complement syntax."
+  },
+  {
+   "seed": 21,
+   "known": "क्यों क्या आप बोलते हैं बहुत अच्छी?",
+   "en": "why do you speak very well?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Redundant/ungrammatical stacking of the wh-word क्यों ('why') with the polar particle क्या: Hindi wh-questions do NOT also take क्या. क्यों क्या आप बोलते हैं is a calque of English do-support 'why DO you…'; natural Hindi is आप क्यों बोलते हैं or क्यों आप बोलते हैं (no क्या). Recurring: 2 prompts (seed 21). Answerable but the क्या is spurious."
+  },
+  {
+   "seed": 4,
+   "known": "मैं कुछ भी कोशिश कर रहा हूँ।",
+   "en": "I'm trying something",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Existential-vs-free-choice form mismatch flagged by the brief itself: positive 'something' should be the bare existential कुछ, whereas कुछ भी is the भी-marked free-choice/NPI form ('anything (at all)') requiring a licensor. The whole seed-4 family glosses कुछ भी as 'something' and uses it in positive frames. Most occurrences are under चाहना (want)/कोशिश (try) = non-veridical scope, so they pass NPI licensing — NOT counted as npi_violation. But 'मैं कुछ भी कोशिश कर रहा हूँ' ('I'm trying something', कुछ भी as bare object of a positive progressive) is the weakest case and, with the wrong form choice, reads oddly. Recommend authoring कुछ for the 'something' positives per the brief."
+  },
+  {
+   "seed": 26,
+   "known": "मुझे पसंद है बोलना जाने से पहले।",
+   "en": "I like to speak before I have to go",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "SYSTEMATIC across nearly all multi-LEGO USE prompts in the batch: prompts are assembled by concatenating LEGO chunks in English SVO order, producing non-idiomatic / broken Hindi. Hindi is head-final (SOV) with verb-final infinitive chains, so 'मुझे पसंद है बोलना जाने से पहले' is scrambled — natural Hindi is 'मुझे जाने से पहले बोलना पसंद है'. Same defect in 'मुझे पसंद है शुरू करना बोलना जल्द ही', 'उपयोगी है शुरू करना बात करना...', 'मैं इंतज़ार कर रहा हूँ बेहतर बोलने...', etc. NOT an answerability bug (the learner can still recover the English), and it appears to be an inherent property of the chunk-tiling approach, but the Hindi reads as agrammatical to a native speaker. Recorded ONCE as a systematic issue rather than flagging the ~hundreds of affected USE rows."
+  },
+  {
+   "seed": 42,
+   "known": "मैं अंग्रेज़ी में बोलना कल रात से बेहतर मैं चाहता हूँ।",
+   "en": "I want to speak in English better than last night",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "DOUBLED SUBJECT + stranded modal: the LEGO 'मैं चाहता हूँ' (=I want) is pasted whole at clause-END, yielding two 'मैं' ('मैं ... बोलना ... मैं चाहता हूँ') and an ungrammatical word order. Recurs across seed-42 USE prompts: 'मैं बोलना कल रात से बेहतर मैं चाहता हूँ', 'मैं बोलना कल रात से बेहतर अभी मैं चाहता हूँ', 'लेकिन मैं बोलना कल रात से बेहतर मैं चाहता हूँ'. Natural Hindi would drop the leading मैं or place चाहता हूँ adjacent to the subject. Worse than the generic word-order issue because of the duplicated pronoun. Answerable but conspicuously broken Hindi."
+  },
+  {
+   "seed": 26,
+   "known": "मुझे है",
+   "en": "I ... is",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "PLACEHOLDER component glosses from split copula LEGOs: 'मुझे है' => 'I ... is' (seeds 26, 44, 48), 'नहीं है' => \"don't ... is\" (seed 45), 'लगता है' => 'think is' (seed 47), 'ऐसा है' => 'like this is' (seed 49). These are component building-blocks (not freestanding USE prompts the learner produces), but the English glosses are non-productive fragments ('I ... is') that teach nothing usable. Low priority because they are scaffolding, but they should read as coherent English snippets."
+  },
+  {
+   "seed": 35,
+   "known": "वह नहीं चाहती पढ़ना कुछ भी आज।",
+   "en": "she doesn't want to read something today",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "INCONSISTENT कुछ भी gloss under a licensor: the SAME licensed NPI कुछ भी is glossed both 'anything' (e.g. 'she doesn't want to read anything') and 'something' ('she doesn't want to read something today'; seed-32 questions 'did you want to ask something?'). Under negation नहीं the natural English is 'anything', so 'doesn't want to read something' is unidiomatic. NOT an NPI violation — every कुछ भी here is correctly licensed (under चाहना / negation / question per the brief) — purely an English-side gloss-naturalness inconsistency for the same Hindi form."
+  },
+  {
+   "seed": 52,
+   "known": "मैं अपने दोस्त को समझाना चाहता हूँ",
+   "en": "I want to explain to his friend",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "oblique-possessive-apna violated. अपना is subject-bound: with subject मैं it renders 'my', not 'his'. The Hindi encodes 'my friend'; the English asks the learner to produce 'his friend', which the prompt does not license. SYSTEMATIC: the inventory froze अपने दोस्त='his friend' / अपने बैग में='in her bag' (correct only for a वह subject) and the prompts reuse that gloss under मैं/आप/हम subjects. 6 occurrences in this batch (seeds 52,53). Render should switch to my/your by subject."
+  },
+  {
+   "seed": 52,
+   "known": "क्या आप अपने दोस्त को बोलना चाहते हैं?",
+   "en": "do you want to speak to his friend?",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Subject आप → अपने दोस्त = 'your friend', not 'his friend' (apna subject-binding). Unanswerable as glossed: nothing in the Hindi yields a third-person possessor."
+  },
+  {
+   "seed": 53,
+   "known": "मैं एक चिट्ठी अपने बैग में रखना चाहता हूँ",
+   "en": "I want to put a letter in her bag",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "Subject मैं → अपने बैग = 'my bag', not 'her bag'. Frozen third-person gloss carried onto a first-person subject. Same defect at seed 53 'मैं कुछ भी अपने बैग में…'='in her bag' and 'क्या आप…रखना चाहते हैं?'='in her bag' (should be 'your bag')."
+  },
+  {
+   "seed": 51,
+   "known": "लगता है",
+   "en": "I",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken component decomposition: an arbitrary slice of the M-LEGO अच्छा लगता है ('I enjoy') is glossed 'I'. SYSTEMATIC across the batch — component rows assign word-salad English to mid-LEGO fragments. The full M-LEGO is glossed correctly elsewhere, so these add no producible vocabulary and would confuse a learner. Representative cases below; ~25+ such component rows in seeds 51-74."
+  },
+  {
+   "seed": 51,
+   "known": "अच्छा",
+   "en": "enjoy",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "अच्छा means 'good/well', not 'enjoy'. The 'enjoy' reading belongs to the whole frame अच्छा लगता है. Mis-glossed component slice."
+  },
+  {
+   "seed": 55,
+   "known": "रात को",
+   "en": "very well",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "रात को = 'at night', glossed 'very well' — flatly wrong. Comes from slicing रात को अच्छी नींद नहीं ली ('didn't sleep very well'): रात को carries 'at night' and अच्छी carries 'well', but the component split mis-assigns. Sibling component नींद नहीं ली='didn't sleep' then strands अच्छी ('well') unaccounted."
+  },
+  {
+   "seed": 55,
+   "known": "वह रात को अच्छी नींद नहीं ली",
+   "en": "she didn't sleep very well",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken ergativity: transitive perfective नींद ली with a third-person subject requires उसने (ergative ने), not bare वह. Cf. the parallel correct मैंने … नींद नहीं ली in the same seed. Hindi is ungrammatical as written."
+  },
+  {
+   "seed": 63,
+   "known": "मैं आपसे मुझे मदद करना चाहता हूँ",
+   "en": "I want you to start helping me",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English inserts 'start' with no Hindi source (no शुरू). Hindi itself is broken (मैं … मुझे मदद करना चाहता हूँ collapses subject and object; correct = मैं चाहता हूँ कि आप मेरी मदद करें). Unproducible."
+  },
+  {
+   "seed": 63,
+   "known": "हम मुझे मदद करना चाहते थे",
+   "en": "we wanted to be helping me",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Nonsensical: subject हम ('we') helping object मुझे ('me'). English 'we wanted to be helping me' is incoherent. Broken authoring."
+  },
+  {
+   "seed": 63,
+   "known": "मुझे मदद करना शुरू करने वाले हैं हम",
+   "en": "we're going to start helping me",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Scrambled word order (trailing हम) and same subject=object incoherence ('we … helping me'). Not a producible sentence."
+  },
+  {
+   "seed": 63,
+   "known": "कोई",
+   "en": "don't",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "कोई = 'any/some(one)', glossed 'don't'. The negation belongs to नहीं in कोई आपत्ति नहीं ('don't mind'). Mis-sliced component (also seed 63 'आपत्ति नहीं'='you mind', 'करना'='helping')."
+  },
+  {
+   "seed": 71,
+   "known": "हम किसी को भी देना नहीं चाहते थे दिलचस्प काम",
+   "en": "we didn't want to let anyone interesting things",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken English ('let anyone interesting things') and scrambled Hindi (object दिलचस्प काम stranded after the verb cluster). किसी को भी is correctly licensed under negation (NPI fine), but the sentence is not well-formed. Sibling seed 71 '…थोड़ा और समय'='let anyone a little more time' same defect."
+  },
+  {
+   "seed": 71,
+   "known": "सच सुनना मुश्किल नहीं है",
+   "en": "to hear the truth it's not difficult",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Calque word order in English ('to hear the truth it's not difficult'); natural English is 'it's not difficult to hear the truth'. Recurs for the X मुश्किल नहीं है / आसान नहीं है frame (seeds 64,66,71)."
+  },
+  {
+   "seed": 73,
+   "known": "और सीखना है अभी मुझे",
+   "en": "I've got more to learn now from you",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English 'from you' has no Hindi source (no आपसे). Also Hindi word order is scrambled (trailing मुझे). Extra unproducible material plus broken syntax."
+  },
+  {
+   "seed": 60,
+   "known": "तक",
+   "en": "not",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "तक (a postposition, here in अभी तक 'yet/so far') glossed 'not'. Wrong: negation is नहीं. Mis-sliced. Propagates: 'अभी तक नहीं'='not yet' leans on this bad component."
+  },
+  {
+   "seed": 60,
+   "known": "मैं अभी तक अंग्रेज़ी में बोलने का अभ्यास करना चाहता हूँ",
+   "en": "I want to practise speaking in English yet",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "'yet' in a positive declarative is ungrammatical English. अभी तक in a positive clause means 'still/so far', not 'yet'. The frozen gloss अभी तक='yet' (negative-polarity) is mis-applied to positive WANT-clauses. Recurs (seed 60 several, seed 73 'in English yet')."
+  },
+  {
+   "seed": 61,
+   "known": "दोबारा कह सकते हैं अगले हफ्ते नहीं?",
+   "en": "could you say that again not next week?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Nonsensical prompt ('could you say that again not next week?'). Build row stitches incompatible fragments. Sibling seed 61 'दोबारा कह सकते हैं पिछले हफ्ते जो?'='could you say that again what last week?' equally broken."
+  },
+  {
+   "seed": 61,
+   "known": "क्या आप वह दोबारा कह सकते हैं जो मैं समझते हैं?",
+   "en": "could you say that again so I understand?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Agreement error: मैं … समझते हैं (1sg subject with honorific-plural verb) is ungrammatical (should be समझूँ). English 'so I understand' also doesn't match जो ('what/which'). Broken relative clause."
+  },
+  {
+   "seed": 67,
+   "known": "क्यों रुकना?",
+   "en": "why to stop?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken English 'why to stop?' (infinitive question). Bare infinitive रुकना under क्यों does not form a well-formed question; natural form needs do-support ('why stop?')."
+  },
+  {
+   "seed": 53,
+   "known": "वह अपने दोस्त को कुछ भी रखना चाहती थी",
+   "en": "she wanted to put anything to his friend",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Semantically broken: 'put anything TO his friend' (रखना='to put' + दात्तिव को). The frame mixes रखना (put) with a recipient को (give/tell frame). Not a coherent sentence."
+  },
+  {
+   "seed": 58,
+   "known": "समझते हैं",
+   "en": "you understand",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Gloss-consistency wobble: inventory seed 49 maps आप समझते हैं='you know' but seed 58 maps समझते हैं='you understand'. Both defensible for समझना, but the same Hindi shape should render consistently (aspect-to-english-tense spirit). Low priority."
+  },
+  {
+   "seed": 72,
+   "known": "रहे हैं",
+   "en": "you're",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Progressive auxiliary रहे हैं glossed 'you're' (and seed 68 रहे हैं='for', seed 72 कर='doing', अच्छा='well') — more mis-sliced components assigning machinery/adjective fragments arbitrary English. Same systematic component-decomposition defect."
+  },
+  {
+   "seed": 93,
+   "known": "अब जाने का समय है",
+   "en": "it's time to go now",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "अब 'now' is not introduced and is not freeClass. The taught word for 'now' is अभी (seed 1). अब is a distinct content lexeme (near-synonym), so the prompt is still answerable (learner produces 'now', which they know the English for), but the known side is using an uncontrolled adverb. Recurs across the batch: S93 अब जाने का समय है / मुझे हैरानी है अब जाने का समय है / मुझे लगता है अब जाने का समय है क्योंकि, and S95 अब जाने का समय है घर. Authoring should reuse अभी for consistency. Lemma-aware: not an inflected form of अभी, a separate stem."
+  },
+  {
+   "seed": 99,
+   "known": "मुझे खुद से पूछना चाहिए अभी",
+   "en": "I should ask yourself now",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Reflexive खुद is subject-bound; with the dative-experiencer subject मुझे ('I/me') it must gloss as 'myself', not 'yourself'. The English 'ask yourself' mismatches the Hindi subject person. Also recurs at S99 'मुझे आज खुद से पूछना चाहिए क्यों नहीं कर रहा' => 'I should ask yourself today why it's not working'. The reflexive should agree with the clause subject (मुझे→myself / आपको→yourself); these two have मुझे but render 'yourself'. Likely template carry-over from the आपको ('you should ask yourself') frame."
+  },
+  {
+   "seed": 99,
+   "known": "आपको आज खुद से पूछना चाहिए",
+   "en": "you should ask yourself today with me",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "The English contains 'with me' with NO source in the Hindi (no मेरे साथ in the prompt). Unproducible material — the learner cannot derive 'with me' from आपको आज खुद से पूछना चाहिए ('you should ask yourself today'). Stray appended phrase, almost certainly a template/merge artifact."
+  },
+  {
+   "seed": 97,
+   "known": "हाँ मैं जाने के लिए तैयार हूँ जब आप चाहें",
+   "en": "yes I'm ready to go as soon as you want",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "जब आप चाहें literally = 'when you want' (चाहें is the subjunctive of the introduced lemma चाहना, so vocab is fine), but the English renders it 'as soon as you want' — 'as soon as' has no Hindi source (no जैसे ही / जल्द). Minor over-translation; the Hindi says 'when', the English says 'as soon as'."
+  },
+  {
+   "seed": 99,
+   "known": "आपको आपके साथ बोलना चाहिए",
+   "en": "you should speak with you",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Degenerate reflexive authoring: आपको ... आपके साथ ('you ... with you') is unnatural Hindi (should be खुद से / अपने आप से for 'with yourself'), and the English 'speak with you' is correspondingly broken. Gloss faithfully mirrors the Hindi, so not an answerability bug, but the prompt itself is a nonsensical sentence a learner would never want to say."
+  },
+  {
+   "seed": 97,
+   "known": "हाँ दुर्भाग्य से नहीं",
+   "en": "yes unfortunately no",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Nonsensical build fragment ('yes unfortunately no'). Hindi and English match token-for-token so it is answerable, but it is not a meaningful utterance — authoring defect from mechanical fragment concatenation."
+  },
+  {
+   "seed": 94,
+   "known": "एकमात्र तरीका जल्दी बोलना",
+   "en": "the only way speaking quickly",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Ungrammatical/broken English gloss ('the only way speaking quickly' — missing 'to' / 'is'). Recurs in the same family of degraded build fragments, e.g. S77 'समझने लगा हूँ अभी मुझे' => 'I'm starting to understand now for me', S95 'अगली बस से तैयार हैं' => 'ready on the next bus'. Token-salad build rows; answerable but unnatural authoring."
+  },
+  {
+   "seed": 95,
+   "known": "अगली बस से तैयार हैं",
+   "en": "ready on the next bus",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Word-salad build fragment: तैयार हैं ('are ready') with अगली बस से produces 'ready on the next bus', a fragment with no coherent meaning. Same pattern at S95 'घर जाना तैयार हैं' => 'ready to go home' and 'अगली बस से जाना तैयार' => 'ready to go on the next bus'. Mechanical recombination defects; answerable but low naturalness."
+  },
+  {
+   "seed": 113,
+   "known": "क्यों नहीं मैं अंग्रेज़ी बोलना अच्छी?",
+   "en": "why can't I speak English well?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Whole seed-113 USE set is broken. Hindi is क्यों नहीं + bare infinitive (बोलना/याद करना/समझना) = ungrammatical word salad ('why not I English to-speak fem-well'), with no सकना modal and a stray feminine अच्छी. The English 'why can't ...' has NO Hindi source for the ability modal 'can' (सकना never appears) and 'well' is mis-mapped from अच्छी. Unproducible on both sides; not an L1-parse issue, an authoring defect."
+  },
+  {
+   "seed": 113,
+   "known": "नहीं",
+   "en": "can't",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "negation-nahin-vs-mat: bare नहीं is glossed 'can't' (component नहीं||'can't'; build क्यों नहीं?||'why can't?'). नहीं is the all-purpose 'not/don't' negator; 'can't' is सकना negated. Glossing नहीं as 'can't' mis-teaches the negation→English mapping and licenses a modal that has no Hindi carrier."
+  },
+  {
+   "seed": 117,
+   "known": "यह निश्चित रूप से इसीलिए",
+   "en": "this definitely that is why",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "USE-phrase fragment concatenation: two clause pieces joined with no connective or verb on EITHER side. Hindi यह निश्चित रूप से इसीलिए ('this definitely that-is-why') is a non-sentence; English 'this definitely that is why' is incoherent. Recurs across seed 117 (यह निश्चित रूप से अच्छा लग रहा है||'this definitely I'm enjoying'; यह निश्चित रूप से वह बहुत दिलचस्प था||'this definitely that was very interesting')."
+  },
+  {
+   "seed": 112,
+   "known": "मुझे उम्मीद नहीं थी इसीलिए",
+   "en": "I wasn't expecting it that is why",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Same run-on defect: 'I wasn't expecting it that is why', 'I wasn't expecting it what we're doing' (मुझे उम्मीद नहीं थी जो हम कर रहे हैं), 'that was very interesting I'm enjoying', 'that was very interesting that is why'. Two independent clauses welded with no conjunction; both Hindi and English are nonsensical. Pervasive across seeds 112,116,120,122,124,125."
+  },
+  {
+   "seed": 116,
+   "known": "यह नहीं है जो मैं उम्मीद नहीं थी",
+   "en": "this isn't what I wasn't expecting it",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Malformed relative clause: जो ('what') heads a clause that already contains its own object resumption ('...it'), and the dative-experiencer मुझे has been replaced by nominative मैं inside an उम्मीद-frame. English 'this isn't what I wasn't expecting it' is ungrammatical (dangling 'it'). Unproducible."
+  },
+  {
+   "seed": 111,
+   "known": "यह बदलता है जो आप क्या कर रहे थे",
+   "en": "it changes what you were doing",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Double wh/relative: जो ... क्या ('what ... what') both present in one clause (जो आप क्या कर रहे थे) — ungrammatical Hindi; the relativizer जो and content-question क्या are stacked. English reads fine but has no clean Hindi source. Cf. seed 111 'यह बदलता है क्यों नहीं कर रहा'||'it changes why it's not working' (same clause-jamming)."
+  },
+  {
+   "seed": 117,
+   "known": "जब हमने बात की थी यह बदलता था",
+   "en": "when we talked to each other it changes",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "aspect-to-english-tense: बदलता था is past habitual/imperfect ('it used to change'/'it would change'), glossed as simple present 'it changes'. The other 30+ occurrences of बदलता है are correctly 'it changes'; this past-tense बदलता था must not collapse to present. Also हमने बात की थी is pluperfect."
+  },
+  {
+   "seed": 121,
+   "known": "मुझे अपनी गाड़ी इस्तेमाल करना चाहिए",
+   "en": "I should use your car",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "oblique-possessive-apna: अपनी is the subject-bound reflexive possessive. With dative-subject मुझे ('I should'), अपनी गाड़ी must mean 'my car', but it's glossed 'your car' (carried over from the seed-121 'you'-subject frame अपनी गाड़ी||'your car'). Subject-bound reflexive mis-rendered when the subject flips to 1sg."
+  },
+  {
+   "seed": 123,
+   "known": "एक विचार",
+   "en": "that's a idea",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component gloss broken: एक विचार ('an idea') glossed 'that's a idea' — ungrammatical English ('a idea'), and यह/वह ('that's') has no source token in एक विचार. Authoring artifact from splitting यह एक अच्छा विचार है."
+  },
+  {
+   "seed": 114,
+   "known": "लग रहा है जैसे बोलना",
+   "en": "I feel as if to speak",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Build phrase लग रहा है जैसे बोलना ('feel as-if to-speak') is a non-clause; जैसे ('as if') must take a finite clause, not a bare infinitive बोलना. English 'I feel as if to speak' is ungrammatical. Scaffolding fragment, not a learner-facing sentence."
+  },
+  {
+   "seed": 116,
+   "known": "मैं सबसे अच्छा विकल्प बनाना चाहता हूँ",
+   "en": "I want to make the best choice",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "Uses बनाना ('to make/build') which is not in the inventory; the course's taught lemma for 'make' is करना (seed 47, करना||'to make'). English target 'make' IS taught, and a Hindi native parses बनाना trivially, so answerability is intact — but it introduces an uncontrolled second Hindi verb for an already-rendered English gloss (ZUT hygiene). Low severity."
+  },
+  {
+   "seed": 132,
+   "known": "यह उससे कम रोमांचक है जो हम कर रहे हैं",
+   "en": "this isn't less exciting than what we're doing",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English gloss inserts a negation ('isn't') that has NO source in the Hindi. The Hindi यह ... है is a plain POSITIVE assertion (no नहीं), so it means 'this IS less exciting than what we're doing'. The expected English is unproducible from the prompt: a learner reading this Hindi would say 'this is...', not 'this isn't...'. Negation mismatch — fix the English to drop 'isn't' or add नहीं to the Hindi."
+  },
+  {
+   "seed": 137,
+   "known": "अक्सर बात करना ज़्यादा ज़रूरी है परफेक्ट होना",
+   "en": "to talk often more important than to be perfect",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "English contains a comparative 'than' with no Hindi source. There is no comparative marker (उससे / से / जितना) anywhere in the prompt — the Hindi is just two juxtaposed clauses ('to talk often is more important' + 'to be perfect'). 'than' is unproducible. Note: the 'than' marker उससे/जितना is not even introduced until seed 144, so this is both an authoring defect and ahead of vocabulary."
+  },
+  {
+   "seed": 137,
+   "known": "यह ज़्यादा ज़रूरी है अक्सर बात करना परफेक्ट होना",
+   "en": "it's more important to talk often than to be perfect",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Same defect as the sibling build: 'than' appears in the English with no comparative postposition (उससे/से/जितना) in the Hindi. The Hindi is a bare concatenation of three taught chunks; the comparison 'than to be perfect' is unproducible. Recurring within seed 137 (the comparative frame was authored without its Hindi marker)."
+  },
+  {
+   "seed": 135,
+   "known": "मुझे नहीं पता जो आप क्या कर रहे थे",
+   "en": "I don't know what you were doing",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Malformed Hindi: the embedded clause carries BOTH जो (relativizer 'what') and क्या (interrogative 'what') — 'जो आप क्या कर रहे थे' is ungrammatical (double 'what'). Should be either जो आप कर रहे थे or आप क्या कर रहे थे, not both. The English 'what you were doing' is answerable in meaning, but the Hindi prompt is broken."
+  },
+  {
+   "seed": 142,
+   "known": "यह है",
+   "en": "that's of you",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Nonsensical component fragment: bare यह है literally means 'this is', but it is glossed 'that's of you' — a carved-out slice of 'यह बहुत दयालुता है' = 'that's very kind of you' where the English 'of you' has no localized Hindi source. As a standalone component the known→en pair is meaningless on its own; harmless to answerability of the full units but a defective atom."
+  },
+  {
+   "seed": 145,
+   "known": "मुझे नहीं पता आप खुश क्यों नहीं हैं",
+   "en": "I don't know why are you not happy",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "English embedded-question word order is wrong: after 'I don't know' it should be the statement order 'why you are not happy', not the inverted question order 'why are you not happy'. The Hindi is well-formed and answerable; only the English rendering reads as a defect. Note the parallel item 'मुझे नहीं पता आप अब नहीं खुश क्यों हैं' = 'I don't know why you're not happy any more' uses correct statement order, so this one is inconsistent."
+  },
+  {
+   "seed": 159,
+   "known": "यही है",
+   "en": "that isn't what",
+   "category": "gloss_rule_violation",
+   "severity": "high",
+   "detail": "NEGATION-FORM mismatch, systematic across all seed-159 prompts. The Hindi यही है has NO negator (नहीं/न/मत absent) and literally asserts 'that IS what / that's it' (यही = 'that very (one)', है = 'is'). The English gloss negates it as 'that ISN'T what'. This violates negation-nahin-vs-mat (English negated forms must collapse onto नहीं; here a positive Hindi copula is glossed as a negative). The learner reading यही है cannot know to produce a NEGATIVE English clause — there is nothing negative on the known side. Recurs in 'यही है मुझे नहीं पता'=>'that isn't what I don't know', 'यही है अभी'=>'that isn't what now', 'यही है जो हम कर रहे हैं'=>'that isn't what we're doing', etc. The defect is inherited from the seed-159 inventory entry (यही है=that isn't what) so it propagates to ~8 prompts."
+  },
+  {
+   "seed": 159,
+   "known": "यही",
+   "en": "that what",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken English gloss: the component यही is glossed 'that what' — not a grammatical English string and unproducible. यही is the emphatic demonstrative 'that very (thing)/this is it'. A learner cannot map 'that what' to anything sayable."
+  },
+  {
+   "seed": 152,
+   "known": "करना",
+   "en": "done it",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Aspect/source mismatch, systematic across seed-152. करना is the bare infinitive 'to do / to make' (introduced s47 करना='to make'), but it is glossed 'done it' — a past participle plus an object pronoun 'it' that has NO source in the Hindi (no यह/इसे). Wrong aspect (infinitive->past 'done') and invented object. Recurs in 'अलग तरह से करना'=>'done it differently', 'अलग तरह से करना अभी'=>'done it differently now', 'अलग तरह से करना अगर मुझे पता होता'=>'done it differently if I had known'. Inherited from the seed-152 inventory entry. Answerable-as-authored but the English is unproducible from the Hindi as a standalone."
+  },
+  {
+   "seed": 154,
+   "known": "मैं उससे बेहतर महसूस किया शनिवार की रात",
+   "en": "I felt better than on Saturday night",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Glued cross-seed USE prompt that is semantically broken: 'I felt better than' (a comparative needing a complement) is concatenated with the time adverbial 'on Saturday night', yielding 'I felt better than on Saturday night' — a dangling comparative. Representative of the pervasive glue-two-chunks USE pattern in this batch; every token is introduced (answerable) but the result is not a natural sentence."
+  },
+  {
+   "seed": 155,
+   "known": "वह बहुत दिलचस्प था कल सुबह",
+   "en": "that was very interesting tomorrow morning",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Tense/time clash from chunk-gluing: past copula था ('was') combined with the future adverbial कल सुबह ('tomorrow morning') => 'that was very interesting tomorrow morning'. Same defect recurs at s161 'we talked to each other on Sunday morning', s167 'we talked to each other tomorrow afternoon', s155 'this work is tomorrow morning'. Answerable but incoherent — past-tense predicate with a future adverb."
+  },
+  {
+   "seed": 156,
+   "known": "मुझे उम्मीद है किसी रेस्टोरेंट में",
+   "en": "I hope to a restaurant",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Glue defect: 'I hope' (मुझे उम्मीद है) + a bare goal PP 'to a restaurant' (किसी रेस्टोरेंट में) => 'I hope to a restaurant', ungrammatical. Same shape as 'it's interesting to a restaurant', 'I believe to a restaurant', 'I think to a restaurant' in seed 156. The matrix verbs take a clausal complement, not a directional PP. Answerable token-wise; not a natural sentence."
+  },
+  {
+   "seed": 162,
+   "known": "क्या सोचते हैं",
+   "en": "what do think",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss 'what do think' drops the subject and is ungrammatical English (do-support without a subject). Minor authoring artifact of slicing आप ('you') off the wh-question क्या सोचते हैं; the full BUILD/USE forms ('what do you think') are correct, so this is a component-fragment defect only."
+  },
+  {
+   "seed": 176,
+   "known": "क्या वह अगले साल मदद कर पाएगा?",
+   "en": "I think he'll be able to help next year",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Hindi/English mismatch: the Hindi is a polar question (क्या ... ?) 'will he be able to help next year?', but the English is a declarative 'I think he'll be able to help next year'. The English 'I think' (मुझे लगता है) has NO source in the Hindi, and the question particle क्या is unrendered. Learner reading the Hindi would produce a question, not the target sentence — unproducible authoring defect."
+  },
+  {
+   "seed": 177,
+   "known": "कि",
+   "en": "where",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component mis-gloss: कि is the complementizer 'that/if', NOT 'where' (which is कहाँ, separately and correctly glossed 'where' in this same seed). Teaching कि => 'where' as a standalone component is a wrong known-side gloss; the learner is given a false vocabulary mapping. (English 'where she...' is carried by कहाँ in the full sentences.)"
+  },
+  {
+   "seed": 183,
+   "known": "कि",
+   "en": "I'm afraid",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Component mis-gloss: कि is the complementizer 'that', NOT 'I'm afraid' (which is मुझे डर है, correctly glossed elsewhere in this seed). The component decomposition attaches the matrix-clause meaning to the bare complementizer कि — a wrong standalone gloss."
+  },
+  {
+   "seed": 197,
+   "known": "वह काम करता है काम पर अगले हफ्ते।",
+   "en": "he works at work next week",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken Hindi syntax and odd semantics: the verb करता है sits clause-medially with the locative काम पर ('at work') and the time adverbial अगले हफ्ते stranded AFTER the verb (non-native, head-final language requires V-final). Meaning 'works at work next week' is also nonsensical. Unnatural prompt a learner cannot map cleanly."
+  },
+  {
+   "seed": 185,
+   "known": "काम पर काम करना",
+   "en": "to work at work",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Tautological/nonsensical build: 'to work at work' (काम पर काम करना) is a degenerate phrase produced by mechanically composing 'at work' (काम पर) + 'to work' (काम करना). Not something a learner would ever want to say."
+  },
+  {
+   "seed": 199,
+   "known": "मैं ऑफिस में काम करते थे।",
+   "en": "I used to work in an office",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Subject-verb agreement error: मैं (1sg) takes करते थे (masc.pl/honorific habitual-past); correct is करता था (masc.sg). The plural form करते थे was carried over unchanged from the 'my friend' (मेरे दोस्त) source frame. Grammatically wrong Hindi for the 'I' subject — recurring frame-substitution defect (same करते थे reused across बेटा/बेटी/मैं subjects without re-agreeing)."
+  },
+  {
+   "seed": 193,
+   "known": "कल भी मैं आज बहुत व्यस्त हूँ",
+   "en": "I'm too busy today and tomorrow",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Garbled Hindi: 'कल भी मैं आज बहुत व्यस्त हूँ' literally reads 'tomorrow too I am very busy today' — the time adverbs कल भी ('tomorrow too') and आज ('today') with a single present copula हूँ contradict each other and don't compose into 'today and tomorrow'. Broken authoring of the 'and tomorrow' extension."
+  },
+  {
+   "seed": 181,
+   "known": "आप उन्हें डॉक्टर के पास क्यों ले जाना है?",
+   "en": "why do you have to take her to the doctor?",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Dative-obligation (ko-dative-experiencer) construction malformed: the '...ना है' obligation ('have to') requires a dative subject आपको, but the prompt uses nominative आप ('आप उन्हें ... ले जाना है'). Parallel BUILD/USE rows in this seed correctly use आपको/मुझे (e.g. 'क्या आपको उन्हें ... ले जाना है?'). The nominative आप here breaks the dative-experiencer rule for obligation."
+  },
+  {
+   "seed": 187,
+   "known": "मैं अभी बोलकर खुश हूँ।",
+   "en": "I'm happy speaking now",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "The conjunctive-participle gerund frame (बोलकर / सीखकर 'by speaking / by learning' glossed as English '-ing': 'happy speaking', 'happy learning English') is a productive participle not previously surfaced in the inventory; mild, and the component verbs बोलना/सीखना are introduced, so answerable, but the -कर gerund-of-manner is a new construction used without debut. Low-priority consistency note."
+  },
+  {
+   "seed": 201,
+   "known": "हम जानना चाहते थे कि आप कौन हैं।",
+   "en": "we wanted to know who you are",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "कौन ('who') is never introduced anywhere in inventory_through_hi (seeds 1-225 contain no कौन entry). Both s201 USE prompts ('आप कौन हैं' / 'वह कौन है') require the learner to produce English 'who', a content interrogative whose Hindi carrier was never taught. Unanswerable. Also affects 'हम जानना चाहते थे कि वह कौन है।' = 'who that is'. NOTE: कौन IS in freeClass per the contract's wh-list under question-particle-kya, so by the brief it is a free function word — but it appears in NO inventory entry, so if the gate keys on inventory presence it will read as unintroduced; flag for reconciliation between freeClass and the wh-word debut."
+  },
+  {
+   "seed": 215,
+   "known": "वे बाहर गया आपके साथ।",
+   "en": "they went out with you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Hindi gender/number agreement: masculine-singular perfective गया used with plural/honorific subject वे ('they'); should be गए. Same defect at s215 'आप बाहर गया आज।' ('you went out today' — आप needs गए) and s218 'वे ज़्यादा कुछ नहीं किया।' ('they didn't do much' — किया should agree). Recurring agreement break where a fixed perfective LEGO is reused across subjects it doesn't agree with."
+  },
+  {
+   "seed": 204,
+   "known": "मैं चाहता था कि वह इंतज़ाम संभालना आपकी मदद करना।",
+   "en": "I wanted her to help you to deal with the arrangements",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Ungrammatical infinitive-stacking: two bare oblique-infinitive LEGOs (इंतज़ाम संभालना + आपकी मदद करना) glued into a finite 'I wanted her to...' frame with no finite verb / connective. Natural Hindi needs a subjunctive (...करे) or restructuring. Same authoring pattern recurs across the batch: s204 'वे आपकी मदद करना इंतज़ाम संभालना चाहते थे', 'मैं चाहता था कि वह आपकी मदद करना।'; s216 'मैं कुछ दोस्त मुलाकात करना चाहता हूँ'; s207 'आपने किया जो आपको करना था।' — LEGO concatenation rather than natural Hindi syntax."
+  },
+  {
+   "seed": 206,
+   "known": "मुझे मौका बोलने का अभ्यास करना आपके साथ अच्छा लगता है।",
+   "en": "I enjoy the chance to practise speaking with you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken Hindi: मौका ('the chance') is dropped in raw with no का/के connective to the following infinitive, and the experiencer frame 'मुझे ... अच्छा लगता है' is interrupted by stacked infinitives. Reads as glued LEGOs. Recurs at s206 'मुझे मौका अच्छा लगता है' (= 'I enjoy the chance') and 'मुझे मौका सीखना अच्छा लगता है'."
+  },
+  {
+   "seed": 214,
+   "known": "क्या आपने अच्छा समय बिताया आपके साथ?",
+   "en": "did you have a good time with them?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Gloss/source mismatch: Hindi आपके साथ = 'with you' (आप is the only 'you' per formal-you-collapse), but the English gloss says 'with them'. English 'them' has no Hindi source token. Same defect at s220 'क्या आपने देखा आपके साथ?' glossed 'did you watch with them?'. The learner producing English from आप would say 'with you', not 'with them' — inconsistent."
+  },
+  {
+   "seed": 222,
+   "known": "मुझे बताना है।",
+   "en": "there is something to tell me",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English gloss 'there is something to tell me' contains material ('there is something') with no source in the Hindi 'मुझे बताना है' (literally 'there is [obligation] to tell me' / 'to tell me'). Unproducible mapping; the bare infinitive LEGO 'मुझे बताना' has been turned into a finite clause and over-glossed."
+  },
+  {
+   "seed": 205,
+   "known": "मैं भूलना भूल गया।",
+   "en": "I've forgotten to forget",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Nonsensical filler sentence ('I've forgotten to forget') generated by mechanically combining the भूलना ('to forget') and भूल गया ('I've forgotten') LEGOs. Grammatically parseable but semantically vacuous — not something a real learner would want to say."
+  },
+  {
+   "seed": 202,
+   "known": "यकीन नहीं था",
+   "en": "was sure",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss inverts polarity: 'यकीन नहीं था' contains नहीं ('not') and means 'was NOT sure', but the component is glossed 'was sure'. The negation is silently dropped in the component gloss (the full prompts 'किसी को यकीन नहीं था' = 'nobody was sure' are coherent because nobody+not double-marks, but the isolated component gloss is wrong)."
+  },
+  {
+   "seed": 202,
+   "known": "किसी को",
+   "en": "nobody",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss mismatch: किसी को is the oblique of कोई = 'to anyone/someone (oblique)'; the 'nobody' reading only arises in combination with the clausal negation नहीं later in the sentence. Glossing the bare NPI component as 'nobody' mis-teaches it. (NPI usage itself is licensed — किसी under नहीं — so no npi_violation.)"
+  },
+  {
+   "seed": 214,
+   "known": "क्या आपने अच्छा समय बिताया बोलते हुए अंग्रेज़ी?",
+   "en": "did you have a good time speaking English?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Word-order defect: the adverbial participle phrase places the object after the verb (बोलते हुए अंग्रेज़ी) where natural Hindi is अंग्रेज़ी बोलते हुए. The हुए participle ('speaking'/'learning', also at 'सीखते हुए') is an inflected form of introduced lemmas बोलना/सीखना so it is answerable, but the surface order is unnatural."
+  },
+  {
+   "seed": 229,
+   "known": "वे आपकी मदद करती अगर वह कर सकती।",
+   "en": "they would help you if she could",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "SYSTEMATIC templating defect: the feminine-singular conditional apodosis 'आपकी मदद करती' (lit. 'she/that-woman would help') is glued onto every subject without re-agreeing in gender/number. वे (they) and हम (we) demand करते; मैं (male speaker) demands करता. The batch ships मैं/हम/वे + करती all as broken Hindi. Recurs at: 'हम आपकी मदद करती अगर वह कर सकती' (we+fem-sg), 'मैं आपकी मदद करती अगर वह कर सकती' (I+fem-sg). The English ('I would help you if SHE could' / 'they would help you if SHE could') is also semantically incoherent — protasis subject (she) ≠ apodosis subject. Answerable but the known-side Hindi morphology is wrong."
+  },
+  {
+   "seed": 233,
+   "known": "वह आदमी जो जानती है जवाब क्या है।",
+   "en": "the man who knows what the answer is",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "SYSTEMATIC agreement error: the relative clause 'जो जानती है' (feminine 'who knows') was templated once and reused regardless of head gender. Here the head is masculine आदमी ('the man') so it must be 'जो जानता है'. Same bug: 'वह एक जवान आदमी है जो जानती है आपका नाम' (young man + fem जानती है) and 'क्या आप किसी ऐसे को जानते हैं जो जानती है?' ('someone' + fem जानती है). Feminine heads (औरत/बहन) are correct; masculine/indefinite heads are wrong. Broken known-side Hindi."
+  },
+  {
+   "seed": 235,
+   "known": "मैं उस आदमी को जानता हूँ जिसने कहा कि वह काम पर मिलेगा।",
+   "en": "I know the man who said that he wanted to meet at work",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "Aspect/tense mismatch (aspect-to-english-tense): मिलेगा is FUTURE ('will meet'), but the English glosses it as past 'wanted to meet'. Neither 'wanted' nor 'to meet' (vs 'will be') has a faithful source in मिलेगा. Either the Hindi should be a past-desiderative (मिलना चाहता था) or the English should read 'would meet / was going to meet at work'. As written the learner reading the Hindi cannot produce the given English."
+  },
+  {
+   "seed": 245,
+   "known": "मैं खुश हूँ कि यह अच्छा है।",
+   "en": "I'm happy with how it's going",
+   "category": "gloss_rule_violation",
+   "severity": "med",
+   "detail": "कि is the complementizer 'that' everywhere else, but the seed-245 'खुश हूँ कि' frame reglosses it as 'happy WITH' and then drifts: 'यह अच्छा है' = 'it is good' is rendered 'how it's going' (no source for 'how/going'). Also 'मैं खुश हूँ कि मैंने कम समय में किया' → 'what I've done in a short time' silently turns कि into 'what'. The same Hindi कि is glossed 'that' / 'with' / 'how much' / 'what' across the batch — inconsistent rendering of one connective. Learner cannot deterministically map the prompt to the English."
+  },
+  {
+   "seed": 245,
+   "known": "मैं बहुत खुश हूँ कि।",
+   "en": "I'm very happy with this",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken Hindi: sentence ends on a dangling कि ('that') with no complement clause — 'मैं बहुत खुश हूँ कि।' is ungrammatical (कि must introduce a following clause). The English invents 'this' with no source. Authoring artifact from bolting the 'खुश हूँ कि' frame onto nothing."
+  },
+  {
+   "seed": 245,
+   "known": "मुझे नहीं पता कितना अच्छा है।",
+   "en": "I don't know how much good it is",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "English is ungrammatical: 'how much good it is'. कितना अच्छा = 'how good', not 'how much good'. The कितना='how much' gloss was applied mechanically before the adjective. Should read 'how good it is'. Hindi is fine; the English gloss is broken."
+  },
+  {
+   "seed": 235,
+   "known": "मैं आपको बताना करने वाला हूँ।",
+   "en": "I'm going to tell you",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Malformed vaalaa-prospective: 'going to' attaches to an oblique infinitive (बताने वाला हूँ), but the batch builds it as 'बताना करने वाला हूँ' = lit. 'going to DO the telling' — non-idiomatic/ungrammatical. Recurring pattern: seed237 'बताना करने वाला हूँ', seed241 'यह देना करने वाला हूँ', seed248 'पैसे वापस देना करने वाला हूँ'. Should be बताने/देने वाला हूँ. Answerable but stilted, wrong machinery shape."
+  },
+  {
+   "seed": 240,
+   "known": "मेरे पिता बोलना बंद करना वह पसंद नहीं करते।",
+   "en": "my father doesn't like to stop speaking",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken word order with a stray resumptive वह mid-sentence: 'मेरे पिता बोलना बंद करना वह पसंद नहीं करते' — the वह is ungrammatical here (subject is पिता). Idiomatic: 'मेरे पिता बोलना बंद करना पसंद नहीं करते'. Recurs at seed240 'मेरे पिता वह पसंद नहीं करते यह करना' (stray वह + scrambled यह करना). Looks like a 'वह पसंद नहीं करते' LEGO was spliced in whole, leaving a dangling pronoun."
+  },
+  {
+   "seed": 226,
+   "known": "वह आदमी कोशिश कर रहा है सीखना।",
+   "en": "the man is trying to learn",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Recurring non-idiomatic 'try + bare infinitive': कोशिश कर रहा है + सीखना/पूछना/बोलना/कहना, and seed235 'आपको बताना कोशिश कर रहा हूँ', all omit the genitive linker. Idiomatic Hindi is 'सीखने की कोशिश कर रहा है'. Fully answerable (the कोशिश कर रहा हूँ LEGO + the infinitive are taught) but the surface Hindi is stilted across the batch."
+  },
+  {
+   "seed": 235,
+   "known": "मैं किसी ऐसे व्यक्ति को जानता हूँ जिसने कहा कि वह आपको बताना चाहती थी।",
+   "en": "I know someone who said that she wanted to tell you",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "व्यक्ति ('person') is never introduced in the inventory and adds no English content — the whole 'किसी ऐसे व्यक्ति' is glossed simply 'someone' (किसी ऐसे already = 'someone such'). Not an answerability blocker (learner produces 'someone'), but it is unproducible extra Hindi material relative to the gloss. Minor; elsewhere the batch uses the cleaner 'किसी ऐसे/किसी ऐसी औरत' for 'someone'."
+  },
+  {
+   "seed": 230,
+   "known": "मैं काम करना आपके साथ चाहता हूँ।",
+   "en": "I want to work with you",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Awkward word order: 'काम करना आपके साथ चाहता हूँ' splits the infinitive object from चाहता हूँ and strands आपके साथ; idiomatic is 'मैं आपके साथ काम करना चाहता हूँ'. The neighbouring prompt 'काम करना आपके साथ' (build, 'to work with you') has the same scramble. Answerable; surface Hindi is non-native."
+  },
+  {
+   "seed": 270,
+   "known": "मुझे लगता है मैं देर से पहुँचूँगा।",
+   "en": "I think I'm going to be late",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "The verb पहुँचना 'to arrive/reach' (forms पहुँचना/पहुँचूँगा) is never introduced anywhere in the inventory through seed 275 — no पहुँच lemma exists. It debuts in seed 270's own BUILD/USE rows (देर से पहुँचना 'to be late', मैं देर से पहुँचूँगा 'I'm going to be late'). The learner has देर ('late', seed 92) and से but the carrier content verb पहुँचना is unanswerable. Affects ~4 seed-270 prompts (देर से पहुँचना, मैं देर से पहुँचूँगा, मुझे लगता है मैं देर से पहुँचूँगा, मुझे चिंता है कि मैं देर से पहुँचूँगा)."
+  },
+  {
+   "seed": 272,
+   "known": "यह एक बढ़िया विचार लगता है।",
+   "en": "that sounds like a great idea",
+   "category": "vocab_uncontrolled",
+   "severity": "high",
+   "detail": "बढ़िया 'great/excellent' is not in the inventory and is not an inflection of any introduced lemma (the course's 'great' is अच्छा/बहुत अच्छा; seed 90 'that would be great' = बहुत अच्छा होगा). It debuts unexplained across seed 272 (एक बढ़िया लगता है 'sounds like a great', यह एक बढ़िया विचार लगता है, यह एक बढ़िया काम लगता है). The learner was never given English for बढ़िया; unanswerable. ~3 prompts."
+  },
+  {
+   "seed": 257,
+   "known": "मुझे नीले रंग की चीज़ें पसंद हैं।",
+   "en": "I like blue things",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "रंग 'colour' is not introduced. नीले रंग की चीज़ें literally 'things of the blue colour' carries रंग as content with no counterpart in 'blue things'. The learner sees an untaught noun; it also has no English source in the gloss (extra material). Single prompt."
+  },
+  {
+   "seed": 251,
+   "known": "लगाना",
+   "en": "out",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken component decomposition of पता लगाना ('to find out'): पता glossed 'to find' and लगाना glossed 'out'. लगाना does not mean 'out' and पता (noun, 'knowledge/whereabouts') does not mean 'to find' — a nonsensical morpheme split of an idiom. लगाना→'out' is not a producible unit. Whole-phrase USE rows are fine; the component rows are the defect."
+  },
+  {
+   "seed": 270,
+   "known": "देर से पहुँचना",
+   "en": "to be late",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "पहुँचना means 'to arrive/reach', so देर से पहुँचना literally = 'to arrive late', glossed loosely as 'to be late'. Introduces an unneeded motion verb and a gloss that doesn't match the Hindi lemma. Compounds the vocab_uncontrolled issue above."
+  },
+  {
+   "seed": 270,
+   "known": "मुझे चिंता है कि मैं तैयार हो जाऊँगा नहीं।",
+   "en": "I'm worried that I should be ready",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken/contradictory Hindi: तैयार हो जाऊँगा नहीं puts नहीं after the verb (ungrammatical; should be नहीं हो जाऊँगा / तैयार नहीं हो पाऊँगा) and literally negates being ready, while the English gloss 'I should be ready' is positive and drops the negation. Unproducible prompt with a wrong gloss."
+  },
+  {
+   "seed": 271,
+   "known": "क्या आप हमारे साथ आना करने वाले हैं?",
+   "en": "are you going to come with us?",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "आना करने वाले हैं is ungrammatical: prospective वाला attaches to an oblique infinitive (आने वाले हैं 'going to come'), not आना + करने. Several seed-271 rows stack आना with another infinitive unnaturally (आना चाहेंगे 'would you like to', आना चाहेंगे पढ़ना, हमारे साथ आना करने वाले हैं). Reads machine-assembled."
+  },
+  {
+   "seed": 271,
+   "known": "हम चाहते हैं आप हमारे साथ आना।",
+   "en": "we want you to come with us",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "Broken subordinate syntax: natural Hindi is हम चाहते हैं कि आप हमारे साथ आएँ; the bare clause-final infinitive आना after आप is ungrammatical. Authoring defect."
+  },
+  {
+   "seed": 268,
+   "known": "उसने मुझे आज सुबह भेजे।",
+   "en": "she sent me this morning",
+   "category": "content_quality",
+   "severity": "med",
+   "detail": "भेजे is masc-plural agreement but no overt plural object is present (object दो ईमेल dropped), and 'she sent me this morning' is itself incomplete. Recurs (उसने मुझे भेजे 'she sent me'; उसने मुझे एक ईमेल भेजे where एक ईमेल is singular but भेजे agrees plural). Agreement/ellipsis mismatch."
+  },
+  {
+   "seed": 268,
+   "known": "उसने मुझे भेजे और मैं खुश हूँ।",
+   "en": "she sent me and I'm happy",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Padded USE sentence with a dropped object (भेजे agreeing with an absent plural); 'she sent me [what?] and I'm happy' is incomplete in both languages and not a natural thing a learner would want to say."
+  },
+  {
+   "seed": 258,
+   "known": "वह आदमी वहाँ क्या है?",
+   "en": "what's that man over there?",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "वह आदमी वहाँ क्या है? literally 'what is that man over there?' is odd for a person — you ask कौन है 'who is', not क्या है 'what is'. The क्या-है frame is reused mechanically on an animate noun."
+  },
+  {
+   "seed": 260,
+   "known": "अंदाज़ा नहीं",
+   "en": "the idea",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component gloss mismatch: अंदाज़ा नहीं glossed 'the idea' but literally 'no idea / no clue' (अंदाज़ा 'guess/estimate' + नहीं). Glossing a negated component as the bare positive noun is a decomposition error; whole-phrase USE rows (मुझे बिल्कुल भी अंदाज़ा नहीं है = 'I don't have the faintest idea') are fine."
+  },
+  {
+   "seed": 280,
+   "known": "मैं सिर्फ सबसे ज़रूरी काम करना था।",
+   "en": "I only had to do the most important job",
+   "category": "vocab_uncontrolled",
+   "severity": "med",
+   "detail": "सिर्फ 'only' is never introduced anywhere in the inventory through seed 300 (only सबसे 'most' is taught). The English gloss 'only' is therefore unproducible — the learner has no Hindi-prompt source for it. (Same prompt also has a syntax defect, see content_quality.)"
+  },
+  {
+   "seed": 279,
+   "known": "ज़्यादा समय नहीं बचा था इसलिए मैं गया।",
+   "en": "there wasn't much time left so I went",
+   "category": "vocab_uncontrolled",
+   "severity": "low",
+   "detail": "इसलिए 'so/therefore' is not in the inventory; only the near-homophone इसीलिए ('that is why', seed 105) was taught. Distinct lexeme/sense ('so' as result-clause connector vs 'that is why'). Near-miss — flagging low because the learner has seen the closely related इसीलिए."
+  },
+  {
+   "seed": 280,
+   "known": "मैं सिर्फ सबसे ज़रूरी काम करना था।",
+   "en": "I only had to do the most important job",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Broken Hindi: an obligation/past-necessity clause with करना था requires a dative subject मुझे (cf. correct sibling line मुझे सबसे ज़रूरी काम करना था 'I had to do the most important job'). Here it uses nominative मैं + करना था, which is ungrammatical. The whole prompt reads as malformed."
+  },
+  {
+   "seed": 294,
+   "known": "मैं आपको कॉल करना करने वाला हूँ।",
+   "en": "I'm going to call you",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Doubled verb 'करना करने वाला हूँ' is ungrammatical. The prospective वाला construction takes the oblique infinitive directly: कॉल करने वाला हूँ ('going to call'). 'कॉल करना करने वाला हूँ' stacks two infinitives of करना. Also appears as the build phrase कॉल करना करने वाला हूँ ('going to call'). Same authoring template defect."
+  },
+  {
+   "seed": 299,
+   "known": "वह कल भुगतान करना करने वाला है।",
+   "en": "he's going to pay tomorrow",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "Same doubled-infinitive defect as seed 294: भुगतान करना करने वाला है should be भुगतान करने वाला है ('going to pay'). Recurs in the build phrase भुगतान करना करने वाला है ('going to pay'). Systematic — the 'going to <verb-karna>' template wrongly keeps the full करना infinitive before करने वाला."
+  },
+  {
+   "seed": 300,
+   "known": "मैं अमित्र नहीं दिखना करूँगा।",
+   "en": "I'm not going to seem unfriendly",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "'दिखना करूँगा' is ungrammatical: दिखना ('to seem') is intransitive and does not take करना. Future of 'seem' is दिखूँगा, and 'going to seem' would be दिखने वाला हूँ. The verb दिखना has been wrongly forced into the करना 'going to/will' template."
+  },
+  {
+   "seed": 278,
+   "known": "क्या आपको सप्ताहांत से पहले जाना करना था?",
+   "en": "did you have to leave before the weekend?",
+   "category": "content_quality",
+   "severity": "high",
+   "detail": "'जाना करना था' is broken (two stacked infinitives जाना + करना). 'Did you have to leave...' is क्या आपको ... जाना था? — the obligation auxiliary is था on the bare infinitive जाना, with no करना. The करना was mechanically inserted from the seed's 'have to do' frame and does not belong on the intransitive जाना."
+  },
+  {
+   "seed": 294,
+   "known": "मैं आपको कॉल करना चाहता था कल।",
+   "en": "I wanted to call you yesterday",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Stranded कल ('yesterday') tacked onto the clause-final position after the verb is unnatural Hindi word order; natural form is मैं कल आपको कॉल करना चाहता था. Producible but reads as authoring artifact, not native syntax."
+  },
+  {
+   "seed": 291,
+   "known": "कि",
+   "en": "I",
+   "category": "content_quality",
+   "severity": "low",
+   "detail": "Component decomposition glosses कि as 'I' (while sibling component उम्मीद है is glossed 'hope'). कि means 'that/if', never 'I'. The split mis-assigns the English words across the two Hindi tokens; the full phrase उम्मीद है कि still reassembles to 'I hope', so answerability is unaffected, but the component gloss is wrong."
+  }
+ ]
+}

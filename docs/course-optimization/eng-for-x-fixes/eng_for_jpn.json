@@ -1,0 +1,1217 @@
+{
+ "course_code": "eng_for_jpn",
+ "total_collisions": 234,
+ "counts": {
+  "fp_subgloss": 70,
+  "fp_inflection": 54,
+  "real_consolidate": 89,
+  "real_differentiate": 15,
+  "fp_wrong_data": 6
+ },
+ "release_blocker_count": 2,
+ "notes": "Japanese-known course dominated by two artifact families. (1) Agglutinative endings/particles/copula/nominalisers (こと, です, ない, に, を, たい, つもりです, ました) glossed many contextual ways as role component -> most of the 70 fp_subgloss, including the top-6 mega-collisions at seeds 226-230 where one consistent drilled lego (man, that man, woman, trying to help, wants to work, is going to tell) is mis-keyed alongside dozens of USE sentences that merely embed it. (2) The bulk of the 89 real_consolidate are NOT vocabulary collisions but two near-identical English renderings of ONE whole Japanese sentence (that-drop I know that.../I know..., contraction it's/it is, want/I'd like, subject-drop, with/without a trailing clause) -- genuine ZUT but almost all low severity. Only 2 release blockers: わかりません (drilled lego split across understand/know/I'm not sure) and あまり (drilled very vs negative-polarity not much).",
+ "real_fixes": [
+  {
+   "known": "今朝したかったこと",
+   "targets": [
+    "all I wanted to this morning",
+    "less than I wanted to this morning",
+    "more than I wanted to this morning",
+    "what I wanted to this morning",
+    "not what I wanted to this morning",
+    "I wanted to this morning"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "Comparative-quantifier BUILD phrases (all/more/less than) mis-keyed under this nominalised clause; re-key each to its true source prompt",
+   "severity": "med"
+  },
+  {
+   "known": "少し",
+   "targets": [
+    "a little",
+    "little",
+    "a few minutes",
+    "a bit"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Differentiate: 少し as duration (a few minutes) vs amount (a little/a bit) needs distinct prompts",
+   "severity": "med"
+  },
+  {
+   "known": "前に",
+   "targets": [
+    "before",
+    "used to",
+    "earlier",
+    "earlier on"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate the drilled earlier/earlier on to one form; before/used to are separate component senses",
+   "severity": "med",
+   "canonical_english": "earlier"
+  },
+  {
+   "known": "わかりません",
+   "targets": [
+    "I don't understand",
+    "I'm not sure",
+    "don't know",
+    "I don't know"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Core phrase: drilled as understand/know/sure; pick one canonical and re-gloss the rest",
+   "severity": "high",
+   "canonical_english": "I don't understand"
+  },
+  {
+   "known": "私の名前を覚えていますか？",
+   "targets": [
+    "do you know my name or do you need me to tell you what it is again?",
+    "do you know my name or do you need me to tell you what it is?",
+    "do you know my name?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Three USE/BUILD paraphrases of one sentence; keep the short form canonical",
+   "severity": "low",
+   "canonical_english": "do you know my name?"
+  },
+  {
+   "known": "私の名前はあまり珍しくありません",
+   "targets": [
+    "my name is not very unusual and I think that a lot of people have it",
+    "my name is not very unusual but I think that it's a good name",
+    "my name is not very unusual"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Keep the bare BUILD canonical; the two USE expansions are paraphrases",
+   "severity": "low",
+   "canonical_english": "my name is not very unusual"
+  },
+  {
+   "known": "答えを知っている",
+   "targets": [
+    "know what the answer is",
+    "know the answer",
+    "who knows the answer"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Differentiate: who knows the answer (relative clause) differs from know the answer",
+   "severity": "med"
+  },
+  {
+   "known": "すべて",
+   "targets": [
+    "all",
+    "everything"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate all/everything to one drilled form",
+   "severity": "med",
+   "canonical_english": "everything"
+  },
+  {
+   "known": "わからない",
+   "targets": [
+    "I'm not sure if",
+    "at the moment we dont know what theyre trying to achieve at all"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "Long garbled BUILD mis-keyed under わからない; remove/re-key",
+   "severity": "med"
+  },
+  {
+   "known": "言ったこと",
+   "targets": [
+    "what you said",
+    "what said"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "Component gloss what said is malformed (dropped subject); fix to what you said",
+   "severity": "low"
+  },
+  {
+   "known": "頑張る",
+   "targets": [
+    "to try",
+    "work"
+   ],
+   "verdict": "real_differentiate",
+   "action": "頑張る = try/do one's best, not work; the work component gloss is a different sense",
+   "severity": "med"
+  },
+  {
+   "known": "気にしません",
+   "targets": [
+    "I don't care about",
+    "don't mind"
+   ],
+   "verdict": "real_differentiate",
+   "action": "気にしません vs 大丈夫 both glossed dont mind; pick distinct English",
+   "severity": "med"
+  },
+  {
+   "known": "大丈夫です",
+   "targets": [
+    "I feel okay",
+    "don't mind"
+   ],
+   "verdict": "real_differentiate",
+   "action": "大丈夫です = I feel okay; the dont mind gloss belongs to 気にしません",
+   "severity": "med"
+  },
+  {
+   "known": "こんなに早く",
+   "targets": [
+    "how quickly",
+    "so early"
+   ],
+   "verdict": "real_differentiate",
+   "action": "こんなに早く = how quickly (speed) vs so early (time); split prompts",
+   "severity": "med"
+  },
+  {
+   "known": "いつ準備ができるかわかりません",
+   "targets": [
+    "I'm not sure when I'll be ready",
+    "when I'm not sure when I'll be ready"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "Second gloss has a duplicated when; fix the BUILD gloss",
+   "severity": "low"
+  },
+  {
+   "known": "ある",
+   "targets": [
+    "there are",
+    "there are things here"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate there are / there are things here",
+   "severity": "low",
+   "canonical_english": "there are"
+  },
+  {
+   "known": "アイデア",
+   "targets": [
+    "ideas",
+    "there are ideas going around"
+   ],
+   "verdict": "real_consolidate",
+   "action": "there are ideas going around is a longer build of same lego",
+   "severity": "low",
+   "canonical_english": "ideas"
+  },
+  {
+   "known": "探している",
+   "targets": [
+    "what are you looking for",
+    "looking for"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Drilled as both statement looking for and question what are you looking for",
+   "severity": "med"
+  },
+  {
+   "known": "どう",
+   "targets": [
+    "how",
+    "what"
+   ],
+   "verdict": "real_differentiate",
+   "action": "どう = how/what overloaded as a drilled lego; high-traffic question word",
+   "severity": "med"
+  },
+  {
+   "known": "あまり",
+   "targets": [
+    "very",
+    "not much"
+   ],
+   "verdict": "real_differentiate",
+   "action": "あまり drilled very but also not much (negative-polarity); opposite sense, frequent",
+   "severity": "high"
+  },
+  {
+   "known": "私の頭の中に",
+   "targets": [
+    "in my head",
+    "it's in my head"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate in my head / it's in my head",
+   "severity": "low",
+   "canonical_english": "in my head"
+  },
+  {
+   "known": "あまり何もしませんでした",
+   "targets": [
+    "didn't do much",
+    "didn't do much at all"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate didn't do much / didn't do much at all",
+   "severity": "low",
+   "canonical_english": "didn't do much"
+  },
+  {
+   "known": "良かった",
+   "targets": [
+    "was good",
+    "was nice"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate good/nice",
+   "severity": "med",
+   "canonical_english": "was good"
+  },
+  {
+   "known": "だから彼は答えを知りませんでした",
+   "targets": [
+    "that is why he didn't know the answer",
+    "so that is why he didn't know the answer"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Drop the redundant so prefix variant",
+   "severity": "low",
+   "canonical_english": "that is why he didn't know the answer"
+  },
+  {
+   "known": "彼らが何を達成しようとしているかわかりません",
+   "targets": [
+    "we don't know what they're trying to achieve",
+    "we dont know what theyre trying to achieve"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "USE gloss missing apostrophes; fix punctuation",
+   "severity": "low"
+  },
+  {
+   "known": "多すぎる",
+   "targets": [
+    "too many",
+    "too many things"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate too many / too many things",
+   "severity": "low",
+   "canonical_english": "too many"
+  },
+  {
+   "known": "もっとゆっくり",
+   "targets": [
+    "a little more slowly",
+    "more slowly"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate more slowly / a little more slowly",
+   "severity": "low",
+   "canonical_english": "more slowly"
+  },
+  {
+   "known": "ぐるぐる回る",
+   "targets": [
+    "going around",
+    "going around in my head"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate going around / going around in my head",
+   "severity": "low",
+   "canonical_english": "going around"
+  },
+  {
+   "known": "見つける",
+   "targets": [
+    "find",
+    "money"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "見つける = find; the lego gloss money is simply wrong",
+   "severity": "med"
+  },
+  {
+   "known": "まだ十分な言葉がわかりません",
+   "targets": [
+    "I don't know enough words yet",
+    "I don't understand enough words yet"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate know/understand split",
+   "severity": "low",
+   "canonical_english": "I don't know enough words yet"
+  },
+  {
+   "known": "英語でそれを言う方法がわかりません",
+   "targets": [
+    "I don't know how to say that in English",
+    "I don't understand how to say that in English"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate know/understand split",
+   "severity": "low",
+   "canonical_english": "I don't know how to say that in English"
+  },
+  {
+   "known": "すでにどれだけ学んだかに驚いています",
+   "targets": [
+    "I'm surprised at how much I've learnt already",
+    "I'm surprised at how much I've already learnt"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate adverb-position already variants",
+   "severity": "low",
+   "canonical_english": "I'm surprised at how much I've learnt already"
+  },
+  {
+   "known": "いくつかある",
+   "targets": [
+    "there are some things here",
+    "have you got some?"
+   ],
+   "verdict": "real_differentiate",
+   "action": "there are some vs have you got some? are different speech acts",
+   "severity": "med"
+  },
+  {
+   "known": "もう一度言っていただけますか",
+   "targets": [
+    "could you say that again?",
+    "can you say that again?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate could/can polite-request variants",
+   "severity": "low",
+   "canonical_english": "can you say that again?"
+  },
+  {
+   "known": "今日の午後に何が必要か教えてください",
+   "targets": [
+    "can you tell me what you need this afternoon if you have time?",
+    "tell me what you need this afternoon and I'm going to come and help"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate two phrasings of the request",
+   "severity": "low",
+   "canonical_english": "tell me what you need this afternoon"
+  },
+  {
+   "known": "バスで行くのが好きなのは面白いと思います",
+   "targets": [
+    "I think it's interesting that you like to go by bus",
+    "I think that it's interesting that you like to go by bus"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate that-complementiser variant",
+   "severity": "low",
+   "canonical_english": "I think that it's interesting that you like to go by bus"
+  },
+  {
+   "known": "英語ですでにたくさん学びました",
+   "targets": [
+    "I've already learnt a lot in English",
+    "I've learnt a lot in English already"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate adverb-position variant",
+   "severity": "low",
+   "canonical_english": "I've already learnt a lot in English"
+  },
+  {
+   "known": "それは良いアイデアだと思います",
+   "targets": [
+    "I think that is a good idea",
+    "I think that it's a good idea"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate is/it's variant",
+   "severity": "low",
+   "canonical_english": "I think that is a good idea"
+  },
+  {
+   "known": "お手伝いいただきとても親切です",
+   "targets": [
+    "you are very kind to help me",
+    "that is very kind of you to help"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate two kindness phrasings",
+   "severity": "low",
+   "canonical_english": "you are very kind to help me"
+  },
+  {
+   "known": "それで大丈夫ですか",
+   "targets": [
+    "is that okay?",
+    "are you okay with that?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate is that okay / are you okay with that",
+   "severity": "low",
+   "canonical_english": "is that okay?"
+  },
+  {
+   "known": "それはあまり珍しくないと思います",
+   "targets": [
+    "I think that it's not very unusual and you shouldn't worry about it",
+    "I think that it is not very unusual and you shouldn't worry about it too much"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate is/it's + tail variants",
+   "severity": "low",
+   "canonical_english": "I think that it's not very unusual and you shouldn't worry about it"
+  },
+  {
+   "known": "それはあまり珍しくないと友達が言いました",
+   "targets": [
+    "my friend said that it's not very unusual and I think she's doing very well",
+    "my friend said that it is not very unusual and I'm happy she said it"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate is/it's + tail variants",
+   "severity": "low",
+   "canonical_english": "my friend said that it's not very unusual"
+  },
+  {
+   "known": "あなたがこんなにうまくやっていてとても嬉しいです、続けてください",
+   "targets": [
+    "I'm so happy that you're doing so well, I'd like to keep on doing this for a while",
+    "I'm so happy that you're doing so well and I'd like to keep on"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate keep-on tail variants",
+   "severity": "low",
+   "canonical_english": "I'm so happy that you're doing so well and I'd like to keep on"
+  },
+  {
+   "known": "別のことをすることが大事だと思います",
+   "targets": [
+    "I think playing something else is a good thing",
+    "I think it's important to do something else"
+   ],
+   "verdict": "real_differentiate",
+   "action": "One gloss says playing something else but 大事/別のこと has no play",
+   "severity": "med"
+  },
+  {
+   "known": "あまり珍しくないので心配しないでください",
+   "targets": [
+    "it is not very unusual so don't worry",
+    "it is not very unusual so you shouldn't worry about making mistakes"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate worry-tail variants",
+   "severity": "low",
+   "canonical_english": "it is not very unusual so don't worry"
+  },
+  {
+   "known": "彼女に話してほしかったです",
+   "targets": [
+    "I wanted her to tell me what was going to happen",
+    "I wanted her to tell me"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without trailing clause",
+   "severity": "low",
+   "canonical_english": "I wanted her to tell me"
+  },
+  {
+   "known": "今朝はあまり何もしませんでした",
+   "targets": [
+    "didn't do much this morning",
+    "I didn't do much this morning"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate subject-drop variant",
+   "severity": "low",
+   "canonical_english": "I didn't do much this morning"
+  },
+  {
+   "known": "いくつか質問してもいいですか",
+   "targets": [
+    "do you mind if I ask you some questions now?",
+    "do you mind if I ask some questions?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without now",
+   "severity": "low",
+   "canonical_english": "do you mind if I ask some questions?"
+  },
+  {
+   "known": "あなたに何か見せたいです",
+   "targets": [
+    "I want to show you something",
+    "I'd like to show you something"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate want/I'd like variant",
+   "severity": "med",
+   "canonical_english": "I want to show you something"
+  },
+  {
+   "known": "それは問題ありません",
+   "targets": [
+    "that is no problem",
+    "no problem with that"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate two no problem phrasings",
+   "severity": "low",
+   "canonical_english": "that is no problem"
+  },
+  {
+   "known": "他の人と話し始めたいです",
+   "targets": [
+    "I want to start talking with someone else",
+    "I'd like to start talking with someone else"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate want/I'd like",
+   "severity": "med",
+   "canonical_english": "I want to start talking with someone else"
+  },
+  {
+   "known": "他の人がここにいる時、彼は話したくありません",
+   "targets": [
+    "He doesn't want to speak when other people are here",
+    "when other people are here, he doesn't want to speak"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate clause-order variant",
+   "severity": "low",
+   "canonical_english": "he doesn't want to speak when other people are here"
+  },
+  {
+   "known": "もっとたくさんの言葉を聞こうとしているわけではないのは知っています",
+   "targets": [
+    "I know that we're not trying to hear many more words",
+    "I know we're not trying to hear many more words"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate that-drop variant",
+   "severity": "low",
+   "canonical_english": "I know we're not trying to hear many more words"
+  },
+  {
+   "known": "英語を話せるようになりたいです",
+   "targets": [
+    "I'd like to be able to speak English",
+    "I want to be able to speak English"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate want/I'd like",
+   "severity": "med",
+   "canonical_english": "I want to be able to speak English"
+  },
+  {
+   "known": "私たちは前にこれについて話していた",
+   "targets": [
+    "we were talking about this before",
+    "we were talking about this earlier"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate before/earlier",
+   "severity": "low",
+   "canonical_english": "we were talking about this earlier"
+  },
+  {
+   "known": "何が必要か聞くつもりです",
+   "targets": [
+    "going to ask what you need",
+    "I'm going to ask you what you need to do next week"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate lego vs longer use",
+   "severity": "low",
+   "canonical_english": "going to ask what you need"
+  },
+  {
+   "known": "昨日はあまり何もしませんでした",
+   "targets": [
+    "I didn't do much yesterday, not much at all",
+    "didn't do much yesterday"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate subject-drop + tail",
+   "severity": "low",
+   "canonical_english": "I didn't do much yesterday"
+  },
+  {
+   "known": "そうではないと言おうとしているのは知っています",
+   "targets": [
+    "I know that we're trying to say that it's not like that",
+    "I know we're trying to say that it's not like that"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate that-drop",
+   "severity": "low",
+   "canonical_english": "I know we're trying to say that it's not like that"
+  },
+  {
+   "known": "以前より早く起きました",
+   "targets": [
+    "she woke earlier than before",
+    "woke earlier than before"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate subject-drop",
+   "severity": "low",
+   "canonical_english": "she woke earlier than before"
+  },
+  {
+   "known": "私の名前を友達に知ってほしいです",
+   "targets": [
+    "I want my friend to know my name because I think it's important to her",
+    "I want my friend to know my name"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without reason clause",
+   "severity": "low",
+   "canonical_english": "I want my friend to know my name"
+  },
+  {
+   "known": "もう少しゆっくり言っていただけますか",
+   "targets": [
+    "can you say that again a little more slowly?",
+    "can you say that again a little more slowly so I can understand it?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without tail",
+   "severity": "low",
+   "canonical_english": "can you say that again a little more slowly?"
+  },
+  {
+   "known": "それはとても面白かったし、予想していませんでした",
+   "targets": [
+    "that was very interesting and I wasn't expecting it at all",
+    "that was very interesting and I wasn't expecting it"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate at-all tail",
+   "severity": "low",
+   "canonical_english": "that was very interesting and I wasn't expecting it"
+  },
+  {
+   "known": "あなたが終わったら話せるようになりたいです",
+   "targets": [
+    "I'd like to be able to speak after you finish",
+    "I'd like to be able to speak after you finish so I can speak better"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without tail",
+   "severity": "low",
+   "canonical_english": "I'd like to be able to speak after you finish"
+  },
+  {
+   "known": "昨日話していたあの男の人は父の古い友達でした",
+   "targets": [
+    "that man you were talking to yesterday, he was an old friend of my father",
+    "that man you were talking to yesterday was an old friend of my father"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate resumptive-pronoun variant",
+   "severity": "low",
+   "canonical_english": "that man you were talking to yesterday was an old friend of my father"
+  },
+  {
+   "known": "彼は私に何も教えたくありませんでした",
+   "targets": [
+    "He didn't want to tell me anything",
+    "He didn't want to tell me anything at all"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate at-all tail",
+   "severity": "low",
+   "canonical_english": "he didn't want to tell me anything"
+  },
+  {
+   "known": "彼が言ったことが本当かどうかわかりません",
+   "targets": [
+    "I'm not sure if it's true but I think that it's a good idea to ask someone",
+    "I don't know if what he said is true but I'm not sure if I agree with what he said"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Two glosses diverge in meaning (add agree/ask someone); decomposition unclear",
+   "severity": "med"
+  },
+  {
+   "known": "なぜ彼女は私に教えたくなかったのですか？",
+   "targets": [
+    "Why didn't she want to tell me?",
+    "I don't know why she didn't want to tell me about it"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Direct question vs I don't know why... statement are different speech acts",
+   "severity": "med"
+  },
+  {
+   "known": "あなたの友達が私たちに会いたかったのはここです",
+   "targets": [
+    "I think this was where your friend wanted to meet us",
+    "this is where your friend wanted to meet us"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate tense/framing variant",
+   "severity": "low",
+   "canonical_english": "this is where your friend wanted to meet us"
+  },
+  {
+   "known": "あなた自身をテストすることが大切です、英語を学ぶときに",
+   "targets": [
+    "test yourself when you want to learn English",
+    "it's important to test yourself when you want to learn English"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without it's important",
+   "severity": "low",
+   "canonical_english": "it's important to test yourself when you want to learn English"
+  },
+  {
+   "known": "私の名前を知っていましたか？",
+   "targets": [
+    "did you know my name before I said it or did you need someone to tell you?",
+    "do you know my name or do you need me to say it so you can remember?"
+   ],
+   "verdict": "real_differentiate",
+   "action": "Past 知っていましたか glossed once past, once present; tense overload",
+   "severity": "med"
+  },
+  {
+   "known": "誰にも本当のことを聞かせたくなかった",
+   "targets": [
+    "didn't want to let anyone hear the truth",
+    "we didn't want to let anyone hear the truth"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate subject-drop",
+   "severity": "low",
+   "canonical_english": "we didn't want to let anyone hear the truth"
+  },
+  {
+   "known": "今日違うことについて聞いてもいいですか",
+   "targets": [
+    "can I ask you something different today?",
+    "do you mind if I ask you something different today?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate can-I/do-you-mind",
+   "severity": "low",
+   "canonical_english": "can I ask you something different today?"
+  },
+  {
+   "known": "前に知っていた言葉がたくさんありました",
+   "targets": [
+    "I used to know a lot of new words",
+    "I used to know many words"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate a lot of new words / many words",
+   "severity": "low",
+   "canonical_english": "I used to know many words"
+  },
+  {
+   "known": "誰にも本当のことを聞かせない",
+   "targets": [
+    "didn't want to let anyone hear the truth",
+    "let anyone hear the truth"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate lego vs build slice",
+   "severity": "low",
+   "canonical_english": "didn't want to let anyone hear the truth"
+  },
+  {
+   "known": "彼女は誰にも知らせたくなかった",
+   "targets": [
+    "she didn't want to let anyone hear the truth",
+    "she didn't want to let anyone know"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate hear-the-truth/know variants",
+   "severity": "low",
+   "canonical_english": "she didn't want to let anyone know"
+  },
+  {
+   "known": "何かを言う",
+   "targets": [
+    "to say something",
+    "say anything"
+   ],
+   "verdict": "real_differentiate",
+   "action": "何かを言う say something vs say anything (polarity) on a drilled BUILD",
+   "severity": "med"
+  },
+  {
+   "known": "彼が答えを知っているかどうか気になります。彼女は英語を話しますので、答えを知っているかもしれません",
+   "targets": [
+    "I wonder if he knows the answer. she speaks English so she might know it",
+    "I wonder if he knows the answer. she speaks English so she might know"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without object it",
+   "severity": "low",
+   "canonical_english": "she might know it"
+  },
+  {
+   "known": "日曜日の午後に会えますか",
+   "targets": [
+    "can you meet me on Sunday afternoon?",
+    "can we meet on Sunday afternoon?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate meet-me/meet-we",
+   "severity": "low",
+   "canonical_english": "can we meet on Sunday afternoon?"
+  },
+  {
+   "known": "誰にも聞かせたくなかった",
+   "targets": [
+    "we didn't want to let anyone hear the truth",
+    "didn't want to let anyone hear"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate slice variants",
+   "severity": "low",
+   "canonical_english": "we didn't want to let anyone hear the truth"
+  },
+  {
+   "known": "週末はあまり何もしませんでした",
+   "targets": [
+    "I didn't do much at the weekend",
+    "didn't do much at the weekend"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate subject-drop",
+   "severity": "low",
+   "canonical_english": "I didn't do much at the weekend"
+  },
+  {
+   "known": "いいえ、まだ準備ができていません",
+   "targets": [
+    "no, I'm not ready yet, I need a little more time",
+    "no, I'm not ready yet"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without need more time tail",
+   "severity": "low",
+   "canonical_english": "no, I'm not ready yet"
+  },
+  {
+   "known": "それはあまり珍しくありません",
+   "targets": [
+    "it's not very unusual",
+    "that is not very unusual"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate it's/that-is",
+   "severity": "low",
+   "canonical_english": "it's not very unusual"
+  },
+  {
+   "known": "私に見せてほしい",
+   "targets": [
+    "I'd like you to show me",
+    "I want you to show me"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate want/I'd like",
+   "severity": "med",
+   "canonical_english": "I want you to show me"
+  },
+  {
+   "known": "英語で人々と話すことはとても楽しいです",
+   "targets": [
+    "it is fun to speak English with people who speak English",
+    "it is fun to speak English with people"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without relative clause",
+   "severity": "low",
+   "canonical_english": "it is fun to speak English with people"
+  },
+  {
+   "known": "手伝ってくれてどうもありがとうございます",
+   "targets": [
+    "thank you very much for helping",
+    "thank you very much for helping me"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without me",
+   "severity": "low",
+   "canonical_english": "thank you very much for helping me"
+  },
+  {
+   "known": "彼女は誰にも話を聞かれたくなかった",
+   "targets": [
+    "she didn't want to let anyone hear the story",
+    "she didn't want to let anyone hear the truth"
+   ],
+   "verdict": "real_consolidate",
+   "action": "story vs truth object — fix story to truth",
+   "severity": "low",
+   "canonical_english": "she didn't want to let anyone hear the truth"
+  },
+  {
+   "known": "彼女に一緒に来てほしかったです",
+   "targets": [
+    "I wanted her to come and help me with this",
+    "I wanted her to come and help"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without tail",
+   "severity": "low",
+   "canonical_english": "I wanted her to come and help"
+  },
+  {
+   "known": "助けを求めるつもりです",
+   "targets": [
+    "going to ask for help",
+    "I'm going to ask for help if I can't remember how to say it"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate lego vs longer use",
+   "severity": "low",
+   "canonical_english": "going to ask for help"
+  },
+  {
+   "known": "それはあまり難しくないと思います",
+   "targets": [
+    "I think that isn't very difficult",
+    "I think that it is not very difficult when you know what you want to do"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without tail",
+   "severity": "low",
+   "canonical_english": "I think that it is not very difficult"
+  },
+  {
+   "known": "それは面白いです",
+   "targets": [
+    "it's interesting that when we learn something new it changes our brain",
+    "that is interesting"
+   ],
+   "verdict": "real_consolidate",
+   "action": "The long changes our brain gloss is mis-keyed under それは面白いです",
+   "severity": "low",
+   "canonical_english": "that is interesting"
+  },
+  {
+   "known": "しばらく話す",
+   "targets": [
+    "talking for a while",
+    "talk for a while"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate talk/talking-for-a-while",
+   "severity": "low",
+   "canonical_english": "talk for a while"
+  },
+  {
+   "known": "どこかで見ましたか",
+   "targets": [
+    "seen it anywhere?",
+    "seen anywhere?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without it",
+   "severity": "low",
+   "canonical_english": "seen it anywhere?"
+  },
+  {
+   "known": "それはいい考えだと思います",
+   "targets": [
+    "I think that's a good idea and it will work",
+    "I think that's a good idea"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without and it will work",
+   "severity": "low",
+   "canonical_english": "I think that's a good idea"
+  },
+  {
+   "known": "とても感謝しています",
+   "targets": [
+    "so grateful",
+    "very grateful"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate so/very grateful",
+   "severity": "low",
+   "canonical_english": "very grateful"
+  },
+  {
+   "known": "私に何か見せてほしいです",
+   "targets": [
+    "I want you to show me something",
+    "I'd like you to show me something"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate want/I'd like",
+   "severity": "med",
+   "canonical_english": "I want you to show me something"
+  },
+  {
+   "known": "日曜日の朝に読みたいので、その本をもらえますか",
+   "targets": [
+    "can you give me that book on sunday morning because I want to read it?",
+    "can you give me that book on sunday morning because I'd like to read it?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate want/I'd like",
+   "severity": "low",
+   "canonical_english": "can you give me that book on Sunday morning because I want to read it?"
+  },
+  {
+   "known": "かばんに入れたかった",
+   "targets": [
+    "wanted to put something in her bag",
+    "wanted to put in her bag"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without something",
+   "severity": "low",
+   "canonical_english": "wanted to put something in her bag"
+  },
+  {
+   "known": "それは良かった",
+   "targets": [
+    "that was good",
+    "that was nice"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate good/nice",
+   "severity": "low",
+   "canonical_english": "that was good"
+  },
+  {
+   "known": "まだ準備ができていません",
+   "targets": [
+    "I'm not ready yet",
+    "I don't feel as if I'm ready to have a conversation at the moment"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate short vs long not ready build",
+   "severity": "low",
+   "canonical_english": "I'm not ready yet"
+  },
+  {
+   "known": "日曜日の午後に来てもらえますか",
+   "targets": [
+    "can you come on Sunday afternoon?",
+    "can you come and help on Sunday afternoon?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate with/without and help",
+   "severity": "low",
+   "canonical_english": "can you come on Sunday afternoon?"
+  },
+  {
+   "known": "やっていることを変える必要があるのは知っています",
+   "targets": [
+    "I know that we need to change what we're doing",
+    "I know we need to change what we're doing"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate that-drop",
+   "severity": "low",
+   "canonical_english": "I know we need to change what we're doing"
+  },
+  {
+   "known": "終わったらリラックスしたい",
+   "targets": [
+    "after we finish I'd like to relax",
+    "I'd like to relax after we finish"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate clause-order",
+   "severity": "low",
+   "canonical_english": "I'd like to relax after we finish"
+  },
+  {
+   "known": "彼は半分払いたいと知っています",
+   "targets": [
+    "I know that he wants to pay half",
+    "I know he wants to pay half"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate that-drop",
+   "severity": "low",
+   "canonical_english": "I know he wants to pay half"
+  },
+  {
+   "known": "言葉が十分わかると面白いことを知っています",
+   "targets": [
+    "you know it's interesting when you understand enough words",
+    "you know that it's interesting when you understand enough words"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate that-drop",
+   "severity": "low",
+   "canonical_english": "you know that it's interesting when you understand enough words"
+  },
+  {
+   "known": "明日の朝に会いましょう",
+   "targets": [
+    "meet tomorrow morning",
+    "I'd like to meet you tomorrow morning"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate meet/I'd-like-to-meet",
+   "severity": "low",
+   "canonical_english": "meet tomorrow morning"
+  },
+  {
+   "known": "答えたいです",
+   "targets": [
+    "I'd like to answer",
+    "I want to answer"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate want/I'd like",
+   "severity": "med",
+   "canonical_english": "I want to answer"
+  },
+  {
+   "known": "とても親切",
+   "targets": [
+    "so kind",
+    "very kind"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate so/very kind",
+   "severity": "low",
+   "canonical_english": "very kind"
+  },
+  {
+   "known": "それは同じことではありません",
+   "targets": [
+    "that isn't the same thing",
+    "it's not the same thing"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate that-isn't/it's-not",
+   "severity": "low",
+   "canonical_english": "it's not the same thing"
+  },
+  {
+   "known": "何をしたいですか",
+   "targets": [
+    "what do you want to?",
+    "what do you want to do?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "what do you want to? is truncated",
+   "severity": "low",
+   "canonical_english": "what do you want to do?"
+  },
+  {
+   "known": "話せる",
+   "targets": [
+    "be able to speak",
+    "can speak"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Consolidate be-able-to/can speak",
+   "severity": "med",
+   "canonical_english": "can speak"
+  }
+ ]
+}

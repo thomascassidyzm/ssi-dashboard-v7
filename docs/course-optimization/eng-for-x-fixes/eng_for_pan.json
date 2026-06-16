@@ -1,0 +1,198 @@
+{
+ "course_code": "eng_for_pan",
+ "total_collisions": 133,
+ "counts": {
+  "fp_subgloss": 90,
+  "fp_inflection": 26,
+  "real_consolidate": 13,
+  "real_differentiate": 0,
+  "fp_wrong_data": 4
+ },
+ "release_blocker_count": 0,
+ "notes": "Clean course, overwhelmingly false positives: 90/133 are sub-gloss slices (role 'component' contextual pieces never drilled bare) and 26 are pure English morphology on the same lemma (to-X/X, friend/friends, what is/what's, a/an, agreement/number). The few genuine fixes are all multi-word build/use sentence pairs where a fuller and a shorter rendering of the SAME Punjabi sentence were both drilled (consolidate to one canonical) plus 4 single-row data errors where an English gloss doesn't match the Punjabi (trying vs want, added 'to say'/'money', 'television here'); none are high-frequency core tokens, so no release blockers.",
+ "real_fixes": [
+  {
+   "known": "ਮਦਦ ਕਰਨ ਲਈ ਸ਼ੁਕਰੀਆ",
+   "targets": [
+    "for helping me",
+    "thank you for helping me"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Both drilled (build) for one prompt; re-gloss the partial 'for helping me' to the full canonical so one identical prompt maps to one answer.",
+   "canonical_english": "thank you for helping me",
+   "severity": "med"
+  },
+  {
+   "known": "ਬਿਹਤਰ ਬੋਲਣਾ",
+   "targets": [
+    "better speaking",
+    "speak better"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Both drilled (build/lego) for one prompt; re-gloss 'better speaking' to the natural canonical.",
+   "canonical_english": "speak better",
+   "severity": "med"
+  },
+  {
+   "known": "ਇਹ ਕੋਈ ਸਮੱਸਿਆ ਨਹੀਂ",
+   "targets": [
+    "it's no problem",
+    "not a problem"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Both drilled (use vs lego/build) same intention; pick one canonical and re-gloss the other.",
+   "canonical_english": "it's not a problem",
+   "severity": "med"
+  },
+  {
+   "known": "ਕਿਸੇ ਨੂੰ ਕੁਝ ਕਰਨ ਦੇਣਾ ਚਾਹੁੰਦੇ",
+   "targets": [
+    "let anyone do something",
+    "let someone do something"
+   ],
+   "verdict": "real_consolidate",
+   "action": "ਕਿਸੇ glossed 'anyone' (build) vs 'someone' (use) for one prompt; standardise to 'someone' in this affirmative context.",
+   "canonical_english": "let someone do something",
+   "severity": "med"
+  },
+  {
+   "known": "ਮੈਨੂੰ ਜਵਾਬ ਪਤਾ ਨਹੀਂ ਸੀ",
+   "targets": [
+    "didn't know answer",
+    "I didn't know answer"
+   ],
+   "verdict": "real_consolidate",
+   "action": "ਮੈਨੂੰ = 'I'; subject elided in one drilled gloss; re-gloss to include the subject consistently.",
+   "canonical_english": "I didn't know the answer",
+   "severity": "med"
+  },
+  {
+   "known": "ਕੀ ਤੁਸੀਂ ਸ਼ਨੀਵਾਰ ਮਿਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+   "targets": [
+    "do you want to meet this Saturday?",
+    "do you want to meet on Saturday?"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Two USE phrases, identical prompt; 'this Saturday' vs 'on Saturday' same intention; pick one canonical.",
+   "canonical_english": "do you want to meet on Saturday?",
+   "severity": "med"
+  },
+  {
+   "known": "ਮੈਂ ਕੁਝ ਸਵਾਲ ਸਮਝਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "targets": [
+    "I want to understand questions",
+    "I want to understand something about questions"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Two USE phrases, same prompt; the 'something about' padding diverges; pick one canonical rendering of ਕੁਝ ਸਵਾਲ.",
+   "canonical_english": "I want to understand some questions",
+   "severity": "med"
+  },
+  {
+   "known": "ਮੈਂ ਅੱਜ ਬਹੁਤ ਰੁੱਝਿਆ ਹੋਇਆ ਹਾਂ",
+   "targets": [
+    "I'm very busy today",
+    "I'm too busy today"
+   ],
+   "verdict": "real_consolidate",
+   "action": "ਬਹੁਤ = 'very'; both build phrases for one prompt; 'too' shifts meaning, standardise to 'very'.",
+   "canonical_english": "I'm very busy today",
+   "severity": "med"
+  },
+  {
+   "known": "ਮੈਂ ਕੁਝ ਮੇਜ਼ ਉੱਤੇ ਛੱਡੇ ਸਨ",
+   "targets": [
+    "something I left on the table",
+    "something I left on the table here"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Two drilled phrases, same prompt; trailing 'here' has no Punjabi source; drop it / pick one canonical.",
+   "canonical_english": "something I left on the table",
+   "severity": "med"
+  },
+  {
+   "known": "ਅਸੀਂ ਸਭ ਕੁਝ ਜਾਣਨਾ ਚਾਹੁੰਦੇ ਸੀ",
+   "targets": [
+    "we wanted to know everything",
+    "we wanted to know everything about it"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Two USE phrases, same prompt; 'about it' unsupported; pick one canonical.",
+   "canonical_english": "we wanted to know everything",
+   "severity": "low"
+  },
+  {
+   "known": "ਮੈਨੂੰ ਥੋੜਾ ਹੋਰ ਸਮਾਂ ਚਾਹੀਦਾ ਹੈ",
+   "targets": [
+    "I need a little more time",
+    "I need a little longer"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Two USE phrases, same prompt; ਸਮਾਂ = 'time'; standardise to the literal 'more time'.",
+   "canonical_english": "I need a little more time",
+   "severity": "low"
+  },
+  {
+   "known": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਅੰਦਾਜ਼ਾ ਲਗਾਉਣਾ ਕੱਲ੍ਹ ਕੀ ਹੋਵੇਗਾ",
+   "targets": [
+    "wouldn't like to guess what's going to happen tomorrow",
+    "I wouldn't like to guess what's going to happen tomorrow"
+   ],
+   "verdict": "real_consolidate",
+   "action": "ਮੈਂ = 'I'; subject elided in the build gloss; re-gloss to include 'I' consistently.",
+   "canonical_english": "I wouldn't like to guess what's going to happen tomorrow",
+   "severity": "low"
+  },
+  {
+   "known": "ਮੈਂ ਠੀਕ ਮਹਿਸੂਸ ਕਰਦਾ ਹਾਂ ਪਰ ਥੱਕਣਾ ਸ਼ੁਰੂ ਹੋ ਰਿਹਾ ਹਾਂ",
+   "targets": [
+    "I feel okay but feeling tired",
+    "I feel okay but I'm starting to feel tired"
+   ],
+   "verdict": "real_consolidate",
+   "action": "Two USE phrases, same prompt; ਸ਼ੁਰੂ ਹੋ ਰਿਹਾ = 'starting'; the shorter gloss drops it; standardise to the full one.",
+   "canonical_english": "I feel okay but I'm starting to feel tired",
+   "severity": "low"
+  },
+  {
+   "known": "ਟੀਵੀ ਦੇਖਣਾ",
+   "targets": [
+    "television here",
+    "watching television"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "ਟੀਵੀ ਦੇਖਣਾ = 'watch(ing) television'; 'television here' is a wrong/mismatched gloss on a build row; correct that single row.",
+   "severity": "med"
+  },
+  {
+   "known": "ਕੀ ਲੱਭ ਰਹੇ ਹੋ",
+   "targets": [
+    "what looking for",
+    "looking for money"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "Prompt contains ਕੀ ('what') and no ਪੈਸੇ ('money'); 'looking for money' (use) is a wrong/mismatched gloss; correct that row to 'what are you looking for'.",
+   "severity": "med"
+  },
+  {
+   "known": "ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ",
+   "targets": [
+    "tell me what you need to say",
+    "tell me what you need"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "Prompt has ਚਾਹੀਦਾ ('need') and no ਕਹਿਣਾ ('say'); 'tell me what you need to say' adds unsupported 'to say'; correct that build row.",
+   "severity": "med"
+  },
+  {
+   "known": "ਮੈਂ ਕਹਿਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "targets": [
+    "I want to say",
+    "I'm trying to say"
+   ],
+   "verdict": "fp_wrong_data",
+   "action": "ਚਾਹੁੰਦਾ = 'want', not 'trying' (ਕੋਸ਼ਿਸ਼); 'I'm trying to say' (build) is a wrong gloss; correct it to 'I want to say'.",
+   "severity": "med"
+  }
+ ]
+}

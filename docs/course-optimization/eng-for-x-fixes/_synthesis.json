@@ -1,0 +1,128 @@
+{
+ "ranked_courses": [
+  {
+   "course_code": "eng_for_ara",
+   "real_fix_count": 5,
+   "high_severity": 0,
+   "release_grade": "light"
+  },
+  {
+   "course_code": "eng_for_guj",
+   "real_fix_count": 8,
+   "high_severity": 2,
+   "release_grade": "light"
+  },
+  {
+   "course_code": "eng_for_fra",
+   "real_fix_count": 9,
+   "high_severity": 0,
+   "release_grade": "light"
+  },
+  {
+   "course_code": "eng_for_spa",
+   "real_fix_count": 14,
+   "high_severity": 0,
+   "release_grade": "light"
+  },
+  {
+   "course_code": "eng_for_kor",
+   "real_fix_count": 15,
+   "high_severity": 7,
+   "release_grade": "light"
+  },
+  {
+   "course_code": "eng_for_pan",
+   "real_fix_count": 17,
+   "high_severity": 0,
+   "release_grade": "cleanup"
+  },
+  {
+   "course_code": "eng_for_hin",
+   "real_fix_count": 20,
+   "high_severity": 0,
+   "release_grade": "cleanup"
+  },
+  {
+   "course_code": "eng_for_urd",
+   "real_fix_count": 20,
+   "high_severity": 0,
+   "release_grade": "cleanup"
+  },
+  {
+   "course_code": "eng_for_deu",
+   "real_fix_count": 20,
+   "high_severity": 0,
+   "release_grade": "cleanup"
+  },
+  {
+   "course_code": "eng_for_ita",
+   "real_fix_count": 21,
+   "high_severity": 3,
+   "release_grade": "cleanup"
+  },
+  {
+   "course_code": "eng_for_por",
+   "real_fix_count": 25,
+   "high_severity": 0,
+   "release_grade": "cleanup"
+  },
+  {
+   "course_code": "eng_for_sin",
+   "real_fix_count": 34,
+   "high_severity": 0,
+   "release_grade": "cleanup"
+  },
+  {
+   "course_code": "eng_for_zho",
+   "real_fix_count": 34,
+   "high_severity": 1,
+   "release_grade": "cleanup"
+  },
+  {
+   "course_code": "eng_for_ben",
+   "real_fix_count": 50,
+   "high_severity": 0,
+   "release_grade": "heavy"
+  },
+  {
+   "course_code": "eng_for_tam",
+   "real_fix_count": 52,
+   "high_severity": 0,
+   "release_grade": "heavy"
+  },
+  {
+   "course_code": "eng_for_jpn",
+   "real_fix_count": 110,
+   "high_severity": 2,
+   "release_grade": "heavy"
+  }
+ ],
+ "cross_course_patterns": [
+  "Universal false-positive engine (all 16 courses): the auditor surfaces every contextual 'component' sub-gloss of a larger LEGO plus pure English target morphology (to-X/X, friend/friends, a/an, said/say, speak/speaks/speaking) of one lemma. These are 65-90% of every course's flags and are NOT learner-facing because the token is never drilled bare. A single tightening of the flag-extractor (suppress role=component slices and same-lemma English inflection) would eliminate the bulk of every course's noise in one fix.",
+  "SSi USE/BUILD sentence-pair drift (every course, the single largest real-fix bucket): the SAME source sentence is glossed once literal/build-order and once natural/use-order, or differs only by a dangling 'to'/'it'/'is'/'now'/'again'. This is the dominant real_consolidate driver in tam (48), jpn (89), ben, sin (30), por, urd. One course-wide policy — pick the natural USE rendering as canonical, drop decorative adjuncts with no source counterpart — fixes many rows at once and is the highest-leverage single intervention across the whole batch.",
+  "Genderless/number-neutral 3rd-person pronoun forcing two English answers (Indo-Aryan + East Asian): Hindi वह (he/she), Bengali তাকে/সে (him/her, he/she), Urdu اسے (him/her), Italian suo (his/her), Bengali বন্ধু (friend/friends). Same prompt -> two valid English answers; needs prompt-side possessor/number disambiguation. Shared root cause across families; fixable with one disambiguation-cue convention.",
+  "Statement->question convergence flagged as a collision (Romance especially: spa hablas, por falas, ita parli x10, fra; also surfaces in zho seeds 66-73 and Korean do-support artifacts): identical declarative source maps to both 'you speak X' and 'do you speak X?'. This is the DESIGNED SSi convergence, not a bug — confirm-and-suppress, or attach an interrogative '¿...?'/'...?' cue. One policy decision resolves it everywhere; ita is the worst-hit (the parli-family alone is ~10 of its flags and drives its 3 high-severity blockers).",
+  "Obligation / desiderative modal overload (agglutinative + Indo-Aryan): Korean 해야 (need to vs must) and 싶지 않아요 (don't want to vs wouldn't like to), Japanese わかりません + たい renderings, Gujarati ...નું છે (have to vs do you have to vs I need to), Tamil வேண்டும்/விரும்புகிறேன், German möchte (want vs I'd like), plus a course-wide like/enjoy split in zho/urd/deu. Pick ONE canonical English modal/desiderative per construction course-wide — one policy fixes a cluster (this is what generates Korean's 7 high-severity rows from only 15 real fixes).",
+  "Find-out vs know fork on a single source verb (cross-family): Gujarati જાણવા, Korean 알다, Arabic, and historically zho. Same underlying 'come-to-know' verb split between 'know' and 'find out' at BUILD vs USE; one differentiate-by-context rule travels across courses.",
+  "Bare high-frequency token genuinely overloaded = the only true release blocker class: only zho 好 (Well/Yes/Good/Great) and jpn わかりません/あまり cross this bar. Korean's and Italy's 'high-severity' counts are repeated-modal/intonation patterns (one policy each), not distinct overloaded core tokens — so their blocker weight is lower than the raw number suggests."
+ ],
+ "recommended_release_sequence": [
+  "eng_for_guj",
+  "eng_for_hin",
+  "eng_for_urd",
+  "eng_for_pan",
+  "eng_for_ben",
+  "eng_for_tam",
+  "eng_for_zho",
+  "eng_for_kor",
+  "eng_for_jpn",
+  "eng_for_spa",
+  "eng_for_fra",
+  "eng_for_por",
+  "eng_for_ita",
+  "eng_for_deu",
+  "eng_for_ara",
+  "eng_for_sin"
+ ],
+ "summary": "All 16 eng_for_X courses are fundamentally clean: 65-90% of every flag is auditor noise (contextual component sub-glosses and same-lemma English inflection that's never drilled bare), and genuine release blockers exist in only three courses — zho (好), jpn (わかりません/あまり), and the policy-shaped clusters in kor/ita — so the batch is releasable with targeted cleanup rather than rework. The single highest-leverage move is one-fix-fixes-many: a course-wide USE/BUILD consolidation policy (prefer the natural rendering, drop decorative adjuncts) collapses the largest real-fix bucket everywhere, and it alone would lift Tamil (52) and most of Japanese (89 of 110) out of 'heavy'. Two more cross-cutting policy decisions clear the rest: confirm-and-suppress the designed statement->question convergence (kills Italian's blockers and most Romance noise) and pick one canonical modal/desiderative + one genderless-pronoun disambiguation cue (clears Korean's 7 high-severity rows and the Indo-Aryan he/she-him/her splits). Recommended order ships India first led by the cleanest (guj/hin/urd/pan), holds the heavy Indian pair (ben/tam) until the USE/BUILD policy lands, then East Asia with zho/kor/jpn gated on their genuine blockers, and finishes with the very clean European long-tail; Japanese should ship last as it carries by far the most real fixes (110)."
+}

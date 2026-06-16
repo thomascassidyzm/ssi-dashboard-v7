@@ -1,0 +1,169 @@
+{
+ "course_code": "eng_for_spa",
+ "total_collisions": 129,
+ "counts": {
+  "fp_subgloss": 86,
+  "fp_inflection": 29,
+  "real_consolidate": 6,
+  "real_differentiate": 8,
+  "fp_wrong_data": 0
+ },
+ "release_blocker_count": 0,
+ "notes": "Very clean course: the overwhelming majority (~86) are non-learner-facing sub-glosses where a Spanish function word (que, no, en, de, a, me, te, lo) is sliced inside larger LEGOs and glossed contextually, plus ~29 legitimate English inflection/infinitive/contraction variants of the same lemma. The only real signal is a systematic statement-vs-question pattern: identical declarative Spanish prompts (hablas, querías ... ) are drilled as both a statement and a do-support question — the SSi statement→question convergence — which collapses to one prompt string and should carry an interrogative cue (the bare '¿...?' marking) to restore 1:1 mapping; plus a handful of synonym pairs (well/okay, no thanks variants, a lot of/many) to consolidate. No high-severity (constant-hit) overloads and no wrong-data glosses.",
+ "real_fixes": [
+  {
+   "known": "tengo que irme",
+   "targets": [
+    "I have to go",
+    "I need to leave"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I need to leave",
+   "action": "Re-gloss the 'I have to go' (build) occurrence to the canonical 'I need to leave' so identical Spanish maps 1:1.",
+   "severity": "low"
+  },
+  {
+   "known": "antes de que te vayas",
+   "targets": [
+    "before you leave",
+    "before you go"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "before you go",
+   "action": "Re-gloss the 'before you leave' (build) occurrence to 'before you go' (the higher-count lego/build form).",
+   "severity": "low"
+  },
+  {
+   "known": "muchas palabras nuevas",
+   "targets": [
+    "a lot of new words",
+    "many new words"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "a lot of new words",
+   "action": "Re-gloss the 'many new words' (build) occurrence to 'a lot of new words' (the lego/build canonical, higher count).",
+   "severity": "low"
+  },
+  {
+   "known": "no, gracias",
+   "targets": [
+    "no, thank you",
+    "no thanks"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "no thanks",
+   "action": "Re-gloss the 'no, thank you' (build) occurrence to 'no thanks' (the lego/build form, higher count).",
+   "severity": "low"
+  },
+  {
+   "known": "me siento bien",
+   "targets": [
+    "I feel well",
+    "I feel okay"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I feel okay",
+   "action": "Two drilled BUILD forms for one prompt; pick one (recommend 'I feel okay', the natural rendering) and re-gloss the other.",
+   "severity": "med"
+  },
+  {
+   "known": "me siento bien esta noche",
+   "targets": [
+    "I feel well tonight",
+    "I feel okay tonight"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I feel okay tonight",
+   "action": "Two drilled USE forms for one prompt; align to the same 'okay' rendering chosen for 'me siento bien'.",
+   "severity": "med"
+  },
+  {
+   "known": "hablas",
+   "targets": [
+    "you speak",
+    "do you speak ...?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Identical Spanish prompt drilled as two distinct legos (statement vs question). Differentiate the Spanish prompt (e.g. add '¿...?' / question cue) so each maps 1:1, or split into two prompts.",
+   "severity": "med"
+  },
+  {
+   "known": "¿querías...?",
+   "targets": [
+    "you wanted",
+    "did you want...?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Same prompt yields a statement lego and a question lego. The question variant already carries '¿?'; ensure the statement variant's Spanish prompt is distinct (no leading '¿') so the two are not collapsed.",
+   "severity": "med"
+  },
+  {
+   "known": "querías aprender",
+   "targets": [
+    "you wanted to learn",
+    "did you want to learn?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Both drilled BUILD forms off one identical Spanish prompt (statement vs question). Add interrogative marking to the question prompt so each Spanish prompt maps to exactly one English.",
+   "severity": "med"
+  },
+  {
+   "known": "¿querías hablar?",
+   "targets": [
+    "you wanted to speak",
+    "did you want to speak?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Both BUILD; statement and question share one prompt string. Differentiate prompts (interrogative vs declarative) for 1:1 mapping.",
+   "severity": "med"
+  },
+  {
+   "known": "querías practicar",
+   "targets": [
+    "you wanted to practise",
+    "did you want to practise?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Both BUILD; statement vs question off one prompt. Mark the interrogative prompt distinctly so each maps 1:1.",
+   "severity": "med"
+  },
+  {
+   "known": "querías practicar hablar",
+   "targets": [
+    "you wanted to practise speaking",
+    "did you want to practise speaking?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Both USE; statement vs question off one prompt. Differentiate the Spanish prompts (declarative vs interrogative).",
+   "severity": "med"
+  },
+  {
+   "known": "querías aprender más",
+   "targets": [
+    "you wanted to learn more",
+    "did you want to learn more?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Both USE; statement vs question off one prompt. Differentiate the Spanish prompts so each maps to one English.",
+   "severity": "med"
+  },
+  {
+   "known": "hablas inglés muy bien",
+   "targets": [
+    "you speak English very well",
+    "do you speak English very well?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "",
+   "action": "Both USE; identical Spanish prompt drilled as both statement and question. Add interrogative marking to the question prompt for 1:1 mapping.",
+   "severity": "med"
+  }
+ ]
+}

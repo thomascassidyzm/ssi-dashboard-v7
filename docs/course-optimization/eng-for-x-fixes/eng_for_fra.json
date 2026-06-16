@@ -1,0 +1,114 @@
+{
+ "course_code": "eng_for_fra",
+ "total_collisions": 98,
+ "counts": {
+  "fp_subgloss": 76,
+  "fp_inflection": 13,
+  "real_consolidate": 6,
+  "real_differentiate": 2,
+  "fp_wrong_data": 1
+ },
+ "release_blocker_count": 0,
+ "notes": "Very clean course: ~78% of flags are false positives, dominated by fp_subgloss (76) — French function words and verb infinitives (de, que, ça, faire, à, c'est, en, sur, si, pour, depuis, etc.) sliced contextually inside larger LEGOs and never drilled bare, plus 13 fp_inflection pairs (parler/parle/speaks, voir/see, avoir/to have, une/a~an, regardé/watched). The handful of genuine fixes are all full-sentence drilled rows, not high-frequency tokens, so no release blockers: 6 consolidations (this/that and it's/that's demonstratives, need-to/have-to, hier-soir wording, partir go/leave, tout-ce-que everything/how-much) and 2 differentiations (present vs perfect aspect; statement vs question), plus one grammar typo ('my son work').",
+ "real_fixes": [
+  {
+   "known": "ce n'est pas très difficile",
+   "targets": [
+    "this isn't very difficult",
+    "that isn't very difficult"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "that isn't very difficult",
+   "action": "Both are drilled BUILD renderings of identical French (ce = this/that); re-gloss the 'this isn't' BUILD row to 'that isn't very difficult'.",
+   "severity": "med"
+  },
+  {
+   "known": "c'est une bonne idée",
+   "targets": [
+    "it's a good idea",
+    "that's a good idea"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "that's a good idea",
+   "action": "Both drilled BUILD; c'est maps to it's/that's. Pick one canonical demonstrative (recommend 'that's a good idea') and re-gloss the other.",
+   "severity": "med"
+  },
+  {
+   "known": "je dois partir",
+   "targets": [
+    "I need to leave",
+    "I have to leave"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I have to leave",
+   "action": "Two drilled BUILD seeds gloss devoir as need to / have to (same intention). Pick one canonical (recommend 'I have to leave') and re-gloss the other.",
+   "severity": "med"
+  },
+  {
+   "known": "je suis sortie hier soir",
+   "targets": [
+    "I went out yesterday evening",
+    "I went out last night"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I went out last night",
+   "action": "USE vs BUILD render 'hier soir' as 'yesterday evening' / 'last night' (same intention). Pick one canonical rendering of hier soir and re-gloss the other.",
+   "severity": "low"
+  },
+  {
+   "known": "je ne veux pas partir avant qu'on ait fini",
+   "targets": [
+    "I don't want to go until after we finish",
+    "I don't want to leave until after we finish"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I don't want to leave until after we finish",
+   "action": "Same seed (251) emits BUILD 'go' and USE 'leave' for partir. Align both to one verb (recommend 'leave').",
+   "severity": "low"
+  },
+  {
+   "known": "je suis contente de tout ce que j'ai fait",
+   "targets": [
+    "I'm happy with how much I've done",
+    "I'm happy with everything I've done"
+   ],
+   "verdict": "real_consolidate",
+   "canonical_english": "I'm happy with everything I've done",
+   "action": "Same seed (245) renders 'tout ce que' as 'how much' (BUILD) and 'everything' (USE). Consolidate to 'everything' to match the standard tout-ce-que gloss.",
+   "severity": "low"
+  },
+  {
+   "known": "je suis prête à commencer",
+   "targets": [
+    "I'm ready to start",
+    "I've been ready to start"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "I'm ready to start",
+   "action": "USE 'I'm ready to start' vs BUILD 'I've been ready to start' for an identical present-tense French clause. 'I've been ready' introduces an aspect not in the French; either correct it to 'I'm ready to start' or add an explicit cue (e.g. depuis) to license the perfect.",
+   "severity": "low"
+  },
+  {
+   "known": "tu comprends ce que j'essaie de dire",
+   "targets": [
+    "you understand what I'm trying to say",
+    "do you understand what I'm trying to say?"
+   ],
+   "verdict": "real_differentiate",
+   "canonical_english": "do you understand what I'm trying to say?",
+   "action": "Two USE rows, identical French, one statement one question (French marks this only by intonation). Differentiate the prompt (e.g. 'est-ce que tu comprends...?' for the question) so each maps 1:1.",
+   "severity": "low"
+  },
+  {
+   "known": "mon fils travaille",
+   "targets": [
+    "my son works",
+    "my son work"
+   ],
+   "verdict": "fp_wrong_data",
+   "canonical_english": "my son works",
+   "action": "Both drilled BUILD at seed 197; 'my son work' is ungrammatical English (missing 3rd-person -s). Correct that single row to 'my son works'.",
+   "severity": "med"
+  }
+ ]
+}

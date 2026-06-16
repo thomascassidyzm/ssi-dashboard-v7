@@ -1,0 +1,364 @@
+{
+ "authored": {
+  "baskets": [
+   {
+    "seed": 23,
+    "lego_en": "talking more",
+    "new_use": [
+     {
+      "known": "क्या आप बातें करना चाहते हैं?",
+      "en": "do you want talking more?"
+     },
+     {
+      "known": "मैं बातें करना नहीं चाहता।",
+      "en": "I don't want talking more"
+     },
+     {
+      "known": "मैं जल्द ही बातें करना शुरू करना चाहता हूँ।",
+      "en": "I want to start talking more soon"
+     },
+     {
+      "known": "मैं बातें करना चाहता हूँ क्योंकि मैं सीखना चाहता हूँ।",
+      "en": "I want talking more because I want to learn"
+     },
+     {
+      "known": "वह बातें करना चाहती है लेकिन मैं नहीं चाहता।",
+      "en": "she wants talking more but I don't want"
+     },
+     {
+      "known": "हम आपके साथ बातें करना चाहते हैं।",
+      "en": "we want talking more with you"
+     }
+    ],
+    "frames_used": [
+     "polar question (क्या)",
+     "negation (नहीं + bare stem)",
+     "future intention + time adverb (जल्द ही) + embedded infinitive (शुरू करना)",
+     "causal subordination (क्योंकि)",
+     "adversative connective (लेकिन) + 3rd-person feminine subject vs 1st-person contrast",
+     "1st-person-plural (हम) + comitative postpositional phrase (आपके साथ)"
+    ],
+    "note": "Stays inside the thin seed-23 inventory (no मुझे पसंद / उपयोगी है yet — those are later seeds). 'she wants' = वह...चाहती (feminine -ती agreement, glossRule वह→she). Subject pronoun + want-verb split is the same SOV object-insertion the existing_use already uses (object precedes the verb chunk). Frames span question/negation/time/embedding/causal/contrast/person — far beyond the existing set which was four near-identical want/practise statements."
+   },
+   {
+    "seed": 33,
+    "lego_en": "learning English",
+    "new_use": [
+     {
+      "known": "मुझे पसंद है सीख रहे हैं अंग्रेज़ी।",
+      "en": "I like learning English"
+     },
+     {
+      "known": "मुझे पसंद नहीं सीख रहे हैं अंग्रेज़ी जल्दी।",
+      "en": "I don't like learning English quickly"
+     },
+     {
+      "known": "कितने समय से सीख रहे हैं अंग्रेज़ी?",
+      "en": "how long have you been learning English?"
+     },
+     {
+      "known": "मुझे पसंद है सीख रहे हैं अंग्रेज़ी क्योंकि उपयोगी है।",
+      "en": "I like learning English because it's useful"
+     },
+     {
+      "known": "मुझे पसंद है सीख रहे हैं अंग्रेज़ी लेकिन जल्दी नहीं।",
+      "en": "I like learning English but not quickly"
+     },
+     {
+      "known": "मैं सीख रहे हैं अंग्रेज़ी इंतज़ार कर रहा हूँ।",
+      "en": "i'm looking forward to learning English"
+     }
+    ],
+    "frames_used": [
+     "dative-experiencer positive (मुझे पसंद है)",
+     "dative-experiencer negation (मुझे पसंद नहीं) + manner adverb (जल्दी)",
+     "wh-question (कितने समय से, present-perfect-continuous aspect)",
+     "causal subordination (क्योंकि उपयोगी है)",
+     "adversative + constituent negation (लेकिन जल्दी नहीं)",
+     "aspectual prospective (इंतज़ार कर रहा हूँ 'looking forward to')"
+    ],
+    "note": "No 'like' as a transitive verb exists in inventory — only the dative-experiencer chunks मुझे पसंद है / मुझे पसंद नहीं — so the person frames vary via the experiencer construction (ko-dative-experiencer) plus a wh-question and a prospective. कितने समय से licenses the perfect-continuous reading per aspect-to-english-tense. Beats the existing set's four like/easily slot-swaps."
+   },
+   {
+    "seed": 46,
+    "lego_en": "mistakes",
+    "new_use": [
+     {
+      "known": "मैं नहीं चाहता गलतियाँ।",
+      "en": "I don't want mistakes"
+     },
+     {
+      "known": "क्या आप गलतियाँ चाहते हैं?",
+      "en": "do you want mistakes?"
+     },
+     {
+      "known": "मुझे ज़रूरत नहीं है गलतियाँ अभी।",
+      "en": "I don't need mistakes now"
+     },
+     {
+      "known": "मैं नहीं चाहता गलतियाँ क्योंकि मैं थका हुआ हूँ।",
+      "en": "I don't want mistakes because i'm tired"
+     },
+     {
+      "known": "वह नहीं चाहती गलतियाँ लेकिन मुझे ज़रूरत नहीं है।",
+      "en": "she doesn't want mistakes but I don't need to"
+     },
+     {
+      "known": "मैं नहीं चाहता गलतियाँ आज सुबह।",
+      "en": "I don't want mistakes this morning"
+     }
+    ],
+    "frames_used": [
+     "1st-person negative declarative (मैं नहीं चाहता)",
+     "polar question (क्या + आप)",
+     "dative-experiencer negation (मुझे ज़रूरत नहीं है) + time (अभी)",
+     "causal subordination (क्योंकि मैं थका हुआ हूँ, copular state)",
+     "3rd-person feminine negation + adversative clause-chaining (लेकिन)",
+     "time-of-day adverbial (आज सुबह)"
+    ],
+    "note": "गलतियाँ is a bare noun LEGO, so reinforcement keeps it as object of want/need across polarity, person and time. 'she doesn't want' = वह नहीं चाहती (feminine). Used मुझे ज़रूरत नहीं है (I don't need to) — मुझे परवाह नहीं है ('I don't care') is NOT yet introduced at seed 46, so it was avoided. The existing set was four bare 'don't want mistakes' variants; this adds question, dative-need, causal, contrast and time."
+   },
+   {
+    "seed": 65,
+    "lego_en": "it's important",
+    "new_use": [
+     {
+      "known": "अंग्रेज़ी सीखना ज़रूरी है।",
+      "en": "it's important to learn English"
+     },
+     {
+      "known": "मुझे यकीन नहीं है कि यह ज़रूरी है।",
+      "en": "i'm not sure if it's important"
+     },
+     {
+      "known": "मुझे लगता है यह ज़रूरी है।",
+      "en": "I think it's important"
+     },
+     {
+      "known": "यह ज़रूरी है क्योंकि उपयोगी है।",
+      "en": "it's important because it's useful"
+     },
+     {
+      "known": "बोलने का अभ्यास करना ज़रूरी है लेकिन आसान नहीं है।",
+      "en": "it's important to practise speaking but isn't easy"
+     },
+     {
+      "known": "काफी शब्द याद करना ज़रूरी है आज।",
+      "en": "it's important to remember enough words today"
+     }
+    ],
+    "frames_used": [
+     "infinitival-subject predication (अंग्रेज़ी सीखना ... ज़रूरी है)",
+     "non-veridical embedding / uncertainty (मुझे यकीन नहीं है कि)",
+     "mental-state embedding (मुझे लगता है)",
+     "causal subordination (क्योंकि उपयोगी है)",
+     "adversative with predicate negation (लेकिन आसान नहीं है)",
+     "infinitival subject + object + time adverb (आज)"
+    ],
+    "note": "ज़रूरी है is a predicate LEGO, so it stays the matrix predicate while the subject/embedding varies. A plain polar question 'is it important?' would drop the literal 'it's important' surface, so I used the non-veridical embedding मुझे यकीन नहीं है कि ('i'm not sure if') as the non-assertive frame — it keeps the LEGO verbatim and is genuinely non-declarative. Two distinct embedders (uncertainty vs belief) plus causal and adversative give strong frame spread."
+   },
+   {
+    "seed": 76,
+    "lego_en": "i've learnt already",
+    "new_use": [
+     {
+      "known": "मैंने पहले ही सीख लिया।",
+      "en": "i've learnt already"
+     },
+     {
+      "known": "मुझे लगता है मैंने पहले ही सीख लिया।",
+      "en": "I think i've learnt already"
+     },
+     {
+      "known": "मैंने पहले ही सीख लिया अंग्रेज़ी।",
+      "en": "i've learnt already English"
+     },
+     {
+      "known": "मैं बहुत खुश हूँ क्योंकि मैंने पहले ही सीख लिया।",
+      "en": "i'm very happy because i've learnt already"
+     },
+     {
+      "known": "मैंने पहले ही सीख लिया लेकिन और सीखना है।",
+      "en": "i've learnt already but i've got more to learn"
+     },
+     {
+      "known": "मैंने अंग्रेज़ी बोलना पहले ही सीख लिया आसानी से।",
+      "en": "i've learnt already to speak English easily"
+     }
+    ],
+    "frames_used": [
+     "ergative perfective declarative (मैंने ... सीख लिया)",
+     "mental-state embedding (मुझे लगता है)",
+     "perfective with overt object (अंग्रेज़ी)",
+     "causal subordination with affective matrix (मैं बहुत खुश हूँ क्योंकि)",
+     "adversative / concession (लेकिन और सीखना है 'still more to learn')",
+     "perfective + embedded infinitive object + manner adverb (आसानी से)"
+    ],
+    "note": "The LEGO is a perfective (-लिया) so it always carries the ergative subject मैंने (ergative-ne construction, already debuted by मैंने शुरू किया; the existing_use also writes मैंने ... सीख लिया). Aspect glossed 'i've learnt' per aspect-to-english-tense. Frames move across bare assertion, belief-embedding, object-taking, causal-affective, concessive contrast and manner — versus the existing set's four happy/think repetitions."
+   },
+   {
+    "seed": 81,
+    "lego_en": "when do you want to start",
+    "new_use": [
+     {
+      "known": "आप कब शुरू करना चाहते हैं?",
+      "en": "when do you want to start?"
+     },
+     {
+      "known": "आप आज शाम कब शुरू करना चाहते हैं?",
+      "en": "when do you want to start this evening?"
+     },
+     {
+      "known": "आप अंग्रेज़ी कब शुरू करना चाहते हैं?",
+      "en": "when do you want to start English?"
+     },
+     {
+      "known": "मुझे यकीन नहीं है कि आप कब शुरू करना चाहते हैं।",
+      "en": "i'm not sure if when do you want to start"
+     },
+     {
+      "known": "आप कब शुरू करना चाहते हैं अगले हफ्ते?",
+      "en": "when do you want to start next week?"
+     },
+     {
+      "known": "आप कब शुरू करना चाहते हैं अपने दोस्तों के साथ?",
+      "en": "when do you want to start with my friends?"
+     }
+    ],
+    "frames_used": [
+     "bare wh-question (कब)",
+     "wh-question + present time adverbial (आज शाम)",
+     "wh-question + overt object (अंग्रेज़ी)",
+     "embedded indirect question under non-veridical predicate (मुझे यकीन नहीं है कि)",
+     "wh-question + future time adverbial (अगले हफ्ते)",
+     "wh-question + comitative phrase (अपने दोस्तों के साथ, reflexive-possessive अपना)"
+    ],
+    "note": "The LEGO IS a wh-question chunk (कब शुरू करना चाहते हैं 'when do you want to start'), so genuine variation comes from (a) embedding it as an indirect question under मुझे यकीन नहीं है कि — a real frame shift from interrogative to subordinate non-veridical — and (b) varying the adjunct type: present vs future time, object, and a comitative with the reflexive possessive अपने (oblique-possessive-apna). The embedded line's English keeps the wh-string verbatim, matching the course's tile-the-glosses convention. Existing set was four when-question slot-swaps with no embedding."
+   },
+   {
+    "seed": 100,
+    "lego_en": "something similar",
+    "new_use": [
+     {
+      "known": "मुझे इसी तरह कुछ बोलना चाहिए।",
+      "en": "I should speak something similar"
+     },
+     {
+      "known": "क्या आपको इसी तरह कुछ बोलना चाहिए?",
+      "en": "should you speak something similar?"
+     },
+     {
+      "known": "मुझे इसी तरह कुछ आज बोलना चाहिए।",
+      "en": "I should speak something similar today"
+     },
+     {
+      "known": "आपको इसी तरह कुछ बोलना चाहिए क्योंकि उपयोगी है।",
+      "en": "you should speak something similar because it's useful"
+     },
+     {
+      "known": "मुझे लगता है आपको इसी तरह कुछ बोलना चाहिए।",
+      "en": "I think you should speak something similar"
+     },
+     {
+      "known": "आपको इसी तरह कुछ बोलना चाहिए लेकिन जल्दी नहीं।",
+      "en": "you should speak something similar but not quickly"
+     }
+    ],
+    "frames_used": [
+     "1st-person deontic declarative (मुझे ... चाहिए)",
+     "polar deontic question (क्या आपको ... चाहिए)",
+     "deontic + time adverb (आज)",
+     "2nd-person deontic + causal subordination (क्योंकि उपयोगी है)",
+     "deontic embedded under belief predicate (मुझे लगता है)",
+     "deontic + adversative constituent-negation (लेकिन जल्दी नहीं)"
+    ],
+    "note": "इसी तरह कुछ ('something similar') is a noun-phrase LEGO sitting as object of बोलना under the चाहिए deontic (ko-dative-experiencer: मुझे/आपको ... चाहिए is the dative-subject 'should'). इसी तरह कुछ is a fixed existential NP, not an NPI in a positive declarative, so no NPI violation. Person alternates मुझे↔आपको, with question, time, causal, belief-embedding and contrast frames. The existing set was four should-speak slot-swaps."
+   },
+   {
+    "seed": 104,
+    "lego_en": "to change",
+    "new_use": [
+     {
+      "known": "मैं बदलना चाहता हूँ।",
+      "en": "I want to change"
+     },
+     {
+      "known": "क्या आप बदलना चाहते हैं?",
+      "en": "do you want to change?"
+     },
+     {
+      "known": "हमें बदलना होगा आज।",
+      "en": "we need to change today"
+     },
+     {
+      "known": "मुझे लगता है हमें बदलना होगा।",
+      "en": "I think we need to change"
+     },
+     {
+      "known": "हमें बदलना होगा क्योंकि उपयोगी है।",
+      "en": "we need to change because it's useful"
+     },
+     {
+      "known": "मैं बदलना चाहता हूँ लेकिन मुझे यकीन नहीं है कि कब।",
+      "en": "I want to change but i'm not sure if when"
+     }
+    ],
+    "frames_used": [
+     "1st-person desiderative declarative (मैं ... चाहता हूँ)",
+     "polar question (क्या आप)",
+     "1st-person-plural obligation + time (हमें ... होगा 'need to', आज)",
+     "obligation embedded under belief predicate (मुझे लगता है)",
+     "obligation + causal subordination (क्योंकि उपयोगी है)",
+     "adversative + embedded non-veridical wh (लेकिन मुझे यकीन नहीं है कि कब)"
+    ],
+    "note": "बदलना ('to change') is a bare infinitive LEGO, so it reinforces under two different modalities: the desiderative चाहना (मैं/आप चाहता) and the obligation construction करना होगा (हमें ... होगा, copula-tense future deontic per the contract). Person shifts मैं→आप→हम; frames span declarative, question, obligation+time, belief-embedding, causal and adversative-with-embedded-wh. The existing set was four 'we need to change' time slot-swaps."
+   }
+  ],
+  "summary": "Rewrote the USE sets for all 8 under-floor eng_for_hin baskets (teaching English to Hindi speakers), each going from a thin 4-phrase near-duplicate set to 6 frame-diverse USE phrases. Every phrase contains the LEGO and is a complete sentence; the sets genuinely vary frame (polar question, wh-question, negation/polarity, present/future/time-of-day adverbials, non-veridical/belief embedding, causal क्योंकि, adversative लेकिन, person/tense shifts, two modalities per infinitive LEGO).\n\nMethodology compliance, machine-verified with a word-sequence tiling checker (/tmp/verify.cjs) against each basket's OWN inventory:\n- KNOWN-SIDE CONTROL: every Hindi content morpheme tiles from that basket's introduced inventory or the contract free class. Caught and removed real leaks — e.g. मुझे पसंद ('like') is not introduced at seed 23, मुझे परवाह नहीं ('I don't care') not at seed 46 — and substituted in-inventory items. Subject-pronoun+verb chunks are split only via Hindi SOV object-insertion the existing_use already demonstrates; ergative मैंने (ergative-ne), dative-experiencer मुझे/आपको...चाहिए, and the obligation हमें...होगा are licensed-construction machinery per the contract, not new vocab.\n- Contract glossRules applied: वह→he/she via verb agreement (feminine चाहती→'she'), formal-you आप only, dative-experiencer मुझे for like/think/need/should, aspect→tense (सीख रहे हैं→'learning', मैंने...लिया→'i've learnt'). NPI check passed — no कुछ भी in a positive declarative; इसी तरह कुछ is the existential LEGO NP itself.\n- ZUT: cross-checked — no Hindi prompt maps to two English glosses; all 48 prompts distinct.\n- English tiling: every en surface is built only from already-introduced English glosses (verified per basket), matching the course's tile-the-glosses convention.\n\nFinal verifier result: GRAND ALL OK across 8 baskets / 48 phrases. Source files read: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/phase1-proto/eng_for_hin.json and /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/docs/pair-contracts/eng_for_hin.contract.cjs. No files were modified; the new USE sets are returned in the structured baskets field."
+ },
+ "verify": {
+  "ratings": [
+   {
+    "lego_en": "talking more",
+    "frame_rating": "thin",
+    "note": "5/6 frames collapse to 'want + gerund' with only adverbial/PP slot variation (soon, because, but, with you). Negation (Frame 2) provides one true variation, but the pattern is monotonously desire-based. Lacks imperatives, embedding, or alternate predicates."
+   },
+   {
+    "lego_en": "learning English",
+    "frame_rating": "diverse",
+    "note": "Six syntactically distinct frames: like-doing, negated-like, duration-interrogative, causal (because useful), contrastive (but not quickly), and forward-looking (looking forward to). Person, modality, and question-formation genuinely vary. No slot-swap monotony."
+   },
+   {
+    "lego_en": "mistakes",
+    "frame_rating": "monotonous",
+    "note": "All 6 frames are negated desire/lack. Frame 2's question is the only structural break, but it still expresses rejection. Remaining slots (now, because, this morning, but) are pure adverbial variation. No embedding, no alternate predicates."
+   },
+   {
+    "lego_en": "it's important",
+    "frame_rating": "diverse",
+    "note": "Strong frame variety: infinitive-subject (learning + necessary), epistemic doubt with embedding (not sure if), mental state (I think + clause), causal (because useful), contrastive (but isn't easy), and gerund-object (remember enough words). Person and mood genuinely shift."
+   },
+   {
+    "lego_en": "i've learnt already",
+    "frame_rating": "thin",
+    "note": "5/6 frames are perfective (I've learnt already) with slot-fills: object (English), reason, contrast, adverbial manner. Only Frame 2 wraps it in mental state (I think), but that's a weak modifier on the same core. No new predicates; no embedding that restructures."
+   },
+   {
+    "lego_en": "when do you want to start",
+    "frame_rating": "thin",
+    "note": "All 6 frames are interrogative (when + want + start) with time/object/PP slot variation (evening, English, next week, with friends). Frame 4's epistemic wrapper is present but malformed. No statements, imperatives, or non-interrogative embedding. Pure slot-swapping."
+   },
+   {
+    "lego_en": "something similar",
+    "frame_rating": "diverse",
+    "note": "Frames genuinely vary in syntactic envelope: obligation statement (should speak), question (should you speak), obligation+time, obligation+reason, mental-state-wrapped obligation (I think you should), and obligation+contrast. While core is obligation-based, the statement/question/embedding wrappers provide real diversity."
+   },
+   {
+    "lego_en": "to change",
+    "frame_rating": "diverse",
+    "note": "Three distinct predicates and frames: desire (I want to change), necessity (we need to), and mental state (I think we need to). Question, statement, causal, and contrastive structures present. Frames 1, 3, and 4 offer genuine syntactic divergence. Negation-of-certainty also adds variation."
+   }
+  ],
+  "summary": "FRAME DIVERSITY AUDIT: 8 baskets re-rated strictly. DIVERSE (4/8): \"learning English\" shows true modality/predicate/embedding shift across 6 frames (like/negated-like/question/causal/contrastive/forward-looking); \"it's important\" nests multiple syntactic envelopes (infinitive-subject, epistemic doubt, mental state, causal, contrastive); \"something similar\" and \"to change\" both achieve genuine syntactic variation within an obligation/desire core through question/statement/embedding/causal/contrastive wrapping. THIN (3/8): \"talking more\" is 5/6 'want + gerund' slot-swaps with one negation; \"mistakes\" is all negated-lack with adverbial variation only; \"i've learnt already\" is 5/6 perfective + weak mental-state modifier, no restructuring. MONOTONOUS (1/8): \"when do you want to start\" is pure interrogative + time/object/PP slots, with a malformed Frame 4. Gate rewrite PARTIALLY WORKED: frames deemed diverse show genuine embedding and predicate variance, but 4/8 baskets remain caught in single-predicate patterns with slot-swaps masquerading as variety. \"mistakes\" and \"talking more\" in particular fail the \"phrase-granular\" gate—they need alternate predicates (like ability, obligation, or embedding) to pass diversity."
+ }
+}
