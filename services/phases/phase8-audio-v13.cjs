@@ -813,6 +813,7 @@ const currentWork = {
   total: 0,
   success: 0,
   failed: 0,
+  timedOut: 0,          // Items that exceeded the per-item timeout (counted separately, not as failures)
   startedAt: null,
   lastItem: null,       // Last processed item (for display)
   errors: []            // Recent errors
@@ -828,6 +829,7 @@ function startWork(operation, courseCode, total, role = null) {
   currentWork.total = total
   currentWork.success = 0
   currentWork.failed = 0
+  currentWork.timedOut = 0
   currentWork.startedAt = new Date().toISOString()
   currentWork.lastItem = null
   currentWork.errors = []
@@ -843,10 +845,28 @@ function cancelWork() {
   return false
 }
 
-function updateWork(itemText, success = true, errorMsg = null) {
+// outcome: 'success' | 'failed' | 'timeout' (booleans accepted for back-compat: true→success, false→failed)
+function updateWork(itemText, outcome = 'success', errorMsg = null) {
+  if (outcome === true) outcome = 'success'
+  else if (outcome === false) outcome = 'failed'
+
+  // Defensive clamp: never report more items processed than the total. A late-completing
+  // promise (e.g. a TTS call that finishes after its timeout already settled the batch)
+  // must not push the counter past 100%. Update lastItem for display but don't double-count.
+  if (currentWork.total > 0 && currentWork.current >= currentWork.total) {
+    currentWork.lastItem = itemText?.substring(0, 40)
+    return
+  }
+
   currentWork.current++
-  if (success) {
+  if (outcome === 'success') {
     currentWork.success++
+  } else if (outcome === 'timeout') {
+    currentWork.timedOut++
+    if (errorMsg) {
+      currentWork.errors.push({ text: itemText?.substring(0, 50), error: errorMsg, timeout: true })
+      if (currentWork.errors.length > 10) currentWork.errors.shift() // Keep last 10
+    }
   } else {
     currentWork.failed++
     if (errorMsg) {
@@ -858,13 +878,45 @@ function updateWork(itemText, success = true, errorMsg = null) {
 
   // Log progress every 10 items or on completion
   if (currentWork.current % 10 === 0 || currentWork.current === currentWork.total) {
-    logger.info(`[PROGRESS] ${currentWork.current}/${currentWork.total} (${currentWork.success} ok, ${currentWork.failed} failed)`)
+    logger.info(`[PROGRESS] ${currentWork.current}/${currentWork.total} (${currentWork.success} ok, ${currentWork.failed} failed, ${currentWork.timedOut} timed out)`)
   }
 }
 
 function endWork() {
-  logger.info(`[PROGRESS] Completed: ${currentWork.success}/${currentWork.total} success, ${currentWork.failed} failed`)
+  const t = currentWork.timedOut ? `, ${currentWork.timedOut} timed out` : ''
+  logger.info(`[PROGRESS] Completed: ${currentWork.success}/${currentWork.total} success, ${currentWork.failed} failed${t}`)
   currentWork.active = false
+}
+
+// =============================================================================
+// IN-MEMORY JOB QUEUE (see services/phases/audio-job-queue.cjs)
+// =============================================================================
+// Heavy audio operations enqueue a job and return 202 immediately; a single
+// serial worker runs them one at a time, reusing currentWork + emitProgress.
+const { createJobQueue } = require('./audio-job-queue.cjs')
+const { enqueueJob, removeQueuedJob, queueSnapshot } = createJobQueue({
+  logger,
+  isWorkActive: () => currentWork.active,
+  releaseWork: () => { if (currentWork.active) endWork() }
+})
+
+// Wrap an async fn with a per-item timeout. On timeout the returned promise rejects with
+// an error tagged isTimeout=true. The underlying fn keeps running, but its late settlement
+// is swallowed so it can neither become an unhandledRejection nor double-count progress
+// after the batch has already moved on. Used by the generation loops so a flaky/slow
+// connection produces a clean "timed out" tally instead of inflating the processed count.
+function withTimeout(fn, ms = 120_000) {
+  const underlying = Promise.resolve().then(fn)
+  underlying.catch(() => {}) // swallow late rejection after the race has settled
+  let timer
+  const timeout = new Promise((_, reject) => {
+    timer = setTimeout(() => {
+      const err = new Error(`Timed out after ${ms / 1000}s`)
+      err.isTimeout = true
+      reject(err)
+    }, ms)
+  })
+  return Promise.race([underlying, timeout]).finally(() => clearTimeout(timer))
 }
 
 // =============================================================================
@@ -880,7 +932,27 @@ app.get('/health', (req, res) => {
 // =============================================================================
 
 app.get('/status', (req, res) => {
-  res.json({ ...currentWork })
+  // currentWork = the active (running) job; queue = jobs waiting behind it.
+  res.json({ ...currentWork, queue: queueSnapshot() })
+})
+
+// =============================================================================
+// QUEUE ENDPOINTS - Inspect and manage the in-memory job queue
+// =============================================================================
+
+// List queued (waiting) jobs. The running job is in /status (currentWork).
+app.get('/queue', (req, res) => {
+  res.json({ active: currentWork.active ? { courseCode: currentWork.courseCode, operation: currentWork.operation, role: currentWork.role, current: currentWork.current, total: currentWork.total } : null, queue: queueSnapshot() })
+})
+
+// Remove a still-queued job (one that hasn't started yet). A running job must be
+// stopped via /cancel — it cannot be removed from the queue.
+app.delete('/queue/:jobId', (req, res) => {
+  const removed = removeQueuedJob(req.params.jobId)
+  if (!removed) {
+    return res.status(404).json({ error: 'Job not found in queue (already running, finished, or never existed)', jobId: req.params.jobId })
+  }
+  res.json({ success: true, removed: req.params.jobId, queue: queueSnapshot() })
 })
 
 // =============================================================================
@@ -979,10 +1051,15 @@ async function linkAudioIdsBatch(courseCode) {
   const PAGE_SIZE = 1000
   const BATCH = 200
 
-  // Load audio map: "text_normalized|language|role" → course_audio.id
+  // Load audio map keyed by normalizeForAudio(raw text) — which PRESERVES ?/! —
+  // so question/exclamation intonation is significant for linking (a "...?" phrase
+  // must not relink to a "..." recording; it should stay unlinked → regenerated).
+  // This aligns linkAudioIdsBatch with getAudioNeeds (the /plan + /generate source of
+  // truth), which also keys by normalizeForAudio. We deliberately do NOT use the DB
+  // text_normalized column here (it strips ?/¿/! and would mis-link).
   const { data: audioRows, error: audioErr } = await supabase
     .from('course_audio')
-    .select('id, text_normalized, language, role, s3_key')
+    .select('id, text, language, role, s3_key')
     .eq('course_code', courseCode)
     .not('s3_key', 'like', 'pending/%')
     .limit(100000)
@@ -990,7 +1067,8 @@ async function linkAudioIdsBatch(courseCode) {
 
   const audioMap = new Map()
   for (const a of (audioRows || [])) {
-    if (a.text_normalized) audioMap.set(`${a.text_normalized}|${a.language}|${a.role}`, a.id)
+    const norm = normalizeForAudio(a.text)
+    if (norm) audioMap.set(`${norm}|${a.language}|${a.role}`, a.id)
   }
   logger.info(`linkAudioIdsBatch: loaded ${audioMap.size} audio entries for ${courseCode}`)
 
@@ -1015,13 +1093,11 @@ async function linkAudioIdsBatch(courseCode) {
       for (const row of rows) {
         const norm = normalizeForAudio(row[textCol])
         if (!norm) continue
-        const key = `${norm}|${lang}|${role}`
-        let audioId = audioMap.get(key)
-        // DB text_normalized may strip ?! while JS normalizeForAudio preserves them — try stripped form
-        if (!audioId) {
-          const stripped = norm.replace(/[!?！？]+$/, '')
-          if (stripped !== norm) audioId = audioMap.get(`${stripped}|${lang}|${role}`)
-        }
+        // Key preserves ?/! (via normalizeForAudio). A "...?" phrase will only match a
+        // "...?" recording; if none exists it stays unlinked and is regenerated with the
+        // correct question intonation. (We intentionally removed the old ?-stripping
+        // fallback that re-linked question phrases to flat statement audio.)
+        const audioId = audioMap.get(`${norm}|${lang}|${role}`)
         if (audioId) updates.push({ id: row[idCol], audioId })
       }
 
@@ -1556,6 +1632,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       })
     }
 
+    // Enqueue the heavy work; the serial queue worker runs it. Respond 202 now so
+    // the HTTP request isn't held open for the (possibly multi-hour) generation —
+    // progress comes from /status polling + emitProgress websocket beats.
+    const run = async (job) => {
     // Start progress tracking
     startWork('generate', courseCode, uniqueNeeded.length)
 
@@ -1568,10 +1648,12 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Process items in parallel with concurrency limit
     logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${concurrencyToUse}`)
 
-    const results = { success: 0, failed: 0, errors: [] }
+    const results = { success: 0, failed: 0, timedOut: 0, errors: [] }
 
     // Helper to generate a single audio item
     const generateItem = async (item) => {
+      // Show what's in flight immediately (counting happens once, in the batch loop)
+      currentWork.lastItem = item.text?.substring(0, 40)
       // -----------------------------------------------------------------------
       // Cross-course audio sharing: reuse S3 files from sibling courses
       // If another course already has audio for the same text+language+role+voice,
@@ -1625,7 +1707,6 @@ app.post('/generate/:courseCode', async (req, res) => {
                   .eq('lego_index', parseInt(legoMatch[2], 10))
               }
             }
-            updateWork(item.text, true)
             logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (reused from sibling course)`)
             return { success: true, item, shared: true }
           }
@@ -1750,7 +1831,6 @@ app.post('/generate/:courseCode', async (req, res) => {
         }
       }
 
-      updateWork(item.text, true)
       logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
       return { success: true, item }
     }
@@ -1769,33 +1849,36 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
 
-      // Wrap each item with a 120s timeout to prevent hung Supabase/TTS calls from blocking the batch
-      const withTimeout = (fn, ms = 120_000) => Promise.race([
-        fn(),
-        new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms / 1000}s`)), ms))
-      ])
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
 
       for (let j = 0; j < batchResults.length; j++) {
         const result = batchResults[j]
+        const item = batch[j]
         if (result.status === 'fulfilled') {
           results.success++
+          updateWork(item.text, 'success')
+        } else if (result.reason?.isTimeout) {
+          // Timed out (slow/flaky connection). Counted separately, NOT as a failure — the
+          // item simply wasn't confirmed within the window and will be retried next run.
+          results.timedOut++
+          updateWork(item.text, 'timeout', result.reason.message)
+          logger.warn(`Timeout: ${item.role} - "${item.text.substring(0, 30)}..." (will retry next run)`)
         } else {
           results.failed++
-          const item = batch[j]
           results.errors.push({
             text: item.text.substring(0, 50),
             role: item.role,
             error: result.reason?.message || 'Unknown error'
           })
-          updateWork(item.text, false, result.reason?.message)
+          updateWork(item.text, 'failed', result.reason?.message)
           logger.error(`Failed: ${item.role} - "${item.text.substring(0, 30)}...": ${result.reason?.message}`)
         }
       }
 
       // Emit progress every 10 batches
       if (batchNum % 10 === 0) {
-        emitProgress(supabase, courseCode, `Audio: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? ` (${results.failed} failed)` : ''}`, { phase: 'audio', action: 'generate', progress: results.success, total: uniqueNeeded.length, failed: results.failed })
+        const extra = [results.failed ? `${results.failed} failed` : '', results.timedOut ? `${results.timedOut} timed out` : ''].filter(Boolean).join(', ')
+        emitProgress(supabase, courseCode, `Audio: ${results.success}/${uniqueNeeded.length} generated${extra ? ` (${extra})` : ''}`, { phase: 'audio', action: 'generate', progress: results.success, total: uniqueNeeded.length, failed: results.failed, timedOut: results.timedOut })
       }
 
       // Periodically link audio IDs every 10 batches so progress is visible
@@ -1833,17 +1916,31 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     // Emit completion
     const statusWord = wasCancelled ? 'Audio generation cancelled' : 'Audio generation complete'
-    emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? `, ${results.failed} failed` : ''}${linked > 0 ? `, ${linked} audio IDs linked` : ''}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, linked })
+    const doneExtra = [results.failed ? `${results.failed} failed` : '', results.timedOut ? `${results.timedOut} timed out` : '', linked > 0 ? `${linked} audio IDs linked` : ''].filter(Boolean).join(', ')
+    emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${doneExtra ? `, ${doneExtra}` : ''}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, timedOut: results.timedOut, linked })
 
-    res.json({
+    job.result = {
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
       success: results.success,
       failed: results.failed,
+      timedOut: results.timedOut,
       cancelled: wasCancelled,
       errors: results.errors.slice(0, 10),
       linked
+    }
+    return job.result
+    } // end run
+
+    const q = enqueueJob({ courseCode, operation: 'generate', role: null, meta: { willGenerate: uniqueNeeded.length }, run })
+    return res.status(202).json({
+      status: q.alreadyQueued ? 'already_queued' : 'queued',
+      jobId: q.jobId,
+      position: q.position,
+      courseCode,
+      operation: 'generate',
+      willGenerate: uniqueNeeded.length
     })
 
   } catch (error) {
@@ -2007,6 +2104,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       })
     }
 
+    // Enqueue the heavy work; the serial queue worker runs it. Respond 202 now.
+    const run = async (job) => {
     // Start progress tracking
     startWork('regenerate-role', courseCode, audioToRegenerate.length, role)
 
@@ -2020,12 +2119,14 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // Process items in parallel with concurrency limit
     logger.info(`Regenerating ${audioToRegenerate.length} ${role} audio files with concurrency=${CONCURRENCY}`)
 
-    const results = { success: 0, failed: 0, errors: [] }
+    const results = { success: 0, failed: 0, timedOut: 0, errors: [] }
     // Use speed from voice config (everything is a parameter!)
     const speed = voiceSettings.settings?.speed || 1.0
 
     // Helper to regenerate a single audio item
     const regenerateItem = async (item) => {
+      // Show what's in flight immediately (counting happens once, in the batch loop)
+      currentWork.lastItem = item.text?.substring(0, 40)
       // Get regeneration attempt count for this item (Azure determinism workaround)
       const regenerationAttempt = (regenerationCounts[item.id] || 0) + 1
 
@@ -2101,7 +2202,6 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
       if (updateError) throw updateError
 
-      updateWork(item.text, true)
       logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..." (${durationMs}ms)`)
       return { success: true, item, audioId }
     }
@@ -2123,12 +2223,14 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
       logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
 
-      const batchResults = await Promise.allSettled(batch.map(regenerateItem))
+      const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => regenerateItem(item))))
 
       for (let j = 0; j < batchResults.length; j++) {
         const result = batchResults[j]
+        const item = batch[j]
         if (result.status === 'fulfilled') {
           results.success++
+          updateWork(item.text, 'success')
           // Track for review
           regeneratedItems.push({
             id: result.value.item.id,
@@ -2136,14 +2238,17 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
             text: result.value.item.text,
             role: result.value.item.role
           })
+        } else if (result.reason?.isTimeout) {
+          results.timedOut++
+          updateWork(item.text, 'timeout', result.reason.message)
+          logger.warn(`Timeout: ${role} - "${item.text.substring(0, 30)}..." (will retry next run)`)
         } else {
           results.failed++
-          const item = batch[j]
           results.errors.push({
             text: item.text.substring(0, 50),
             error: result.reason?.message || 'Unknown error'
           })
-          updateWork(item.text, false, result.reason?.message)
+          updateWork(item.text, 'failed', result.reason?.message)
           logger.error(`Failed: ${role} - "${item.text.substring(0, 30)}...": ${result.reason?.message}`)
         }
       }
@@ -2210,7 +2315,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     const wasCancelled = currentWork.cancelled
     endWork()
 
-    res.json({
+    job.result = {
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       role,
@@ -2218,9 +2323,23 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       total: audioToRegenerate.length,
       success: results.success,
       failed: results.failed,
+      timedOut: results.timedOut,
       cancelled: wasCancelled,
       errors: results.errors.slice(0, 10),
       regeneratedItems: regeneratedItems.slice(0, 50) // Return up to 50 for review
+    }
+    return job.result
+    } // end run
+
+    const q = enqueueJob({ courseCode, operation: 'regenerate-role', role, meta: { willRegenerate: audioToRegenerate.length, voiceId }, run })
+    return res.status(202).json({
+      status: q.alreadyQueued ? 'already_queued' : 'queued',
+      jobId: q.jobId,
+      position: q.position,
+      courseCode,
+      operation: 'regenerate-role',
+      role,
+      willRegenerate: audioToRegenerate.length
     })
 
   } catch (error) {
@@ -3338,13 +3457,6 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       ? Math.max(1, Math.min(20, parseInt(requestedConcurrency, 10) || CONCURRENCY))
       : CONCURRENCY
 
-    if (currentWork.active) {
-      return res.status(409).json({
-        error: 'Another job is already running',
-        activeJob: { operation: currentWork.operation, courseCode: currentWork.courseCode }
-      })
-    }
-
     // 1. Load course + voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
@@ -3537,7 +3649,8 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       })
     }
 
-    // 7. Start generation
+    // 7. Enqueue generation; the serial queue worker runs it. Respond 202 now.
+    const run = async (job) => {
     startWork('generate-components', courseCode, uniqueNeeded.length)
 
     // Load gender expansions if needed
@@ -3547,10 +3660,12 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
     }
 
-    const results = { success: 0, failed: 0, errors: [] }
+    const results = { success: 0, failed: 0, timedOut: 0, errors: [] }
 
     // Generate items using the same pattern as /generate
     const generateItem = async (item) => {
+      // Show what's in flight immediately (counting happens once, in the batch loop)
+      currentWork.lastItem = item.text?.substring(0, 40)
       // Cross-course sharing
       try {
         const { data: siblingAudio } = await supabase
@@ -3586,7 +3701,6 @@ app.post('/generate-components/:courseCode', async (req, res) => {
             .single()
 
           if (!insertError && insertedAudio) {
-            updateWork(item.text, true)
             logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (sibling)`)
             return { success: true, item, shared: true }
           }
@@ -3665,7 +3779,6 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 
       if (insertError) throw insertError
 
-      updateWork(item.text, true)
       logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
       return { success: true, item }
     }
@@ -3679,26 +3792,26 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       const totalBatches = Math.ceil(uniqueNeeded.length / concurrencyToUse)
       logger.info(`[Components] Batch ${batchNum}/${totalBatches} (${batch.length} items)`)
 
-      const withTimeout = (fn, ms = 120_000) => Promise.race([
-        fn(),
-        new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms / 1000}s`)), ms))
-      ])
-
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
 
       for (let j = 0; j < batchResults.length; j++) {
         const result = batchResults[j]
+        const item = batch[j]
         if (result.status === 'fulfilled') {
           results.success++
+          updateWork(item.text, 'success')
+        } else if (result.reason?.isTimeout) {
+          results.timedOut++
+          updateWork(item.text, 'timeout', result.reason.message)
+          logger.warn(`[Components] Timeout: ${item.role} - "${item.text.substring(0, 30)}..." (will retry next run)`)
         } else {
           results.failed++
-          const item = batch[j]
           results.errors.push({
             text: item.text.substring(0, 50),
             role: item.role,
             error: result.reason?.message || 'Unknown error'
           })
-          updateWork(item.text, false, result.reason?.message)
+          updateWork(item.text, 'failed', result.reason?.message)
         }
       }
     }
@@ -3716,20 +3829,33 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       await bumpCourseVersion(supabase, courseCode, 'patch')
     }
 
-    res.json({
+    job.result = {
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
       success: results.success,
       failed: results.failed,
+      timedOut: results.timedOut,
       cancelled: wasCancelled,
       errors: results.errors.slice(0, 10),
       linked: linkResult
+    }
+    return job.result
+    } // end run
+
+    const q = enqueueJob({ courseCode, operation: 'generate-components', role: null, meta: { willGenerate: uniqueNeeded.length }, run })
+    return res.status(202).json({
+      status: q.alreadyQueued ? 'already_queued' : 'queued',
+      jobId: q.jobId,
+      position: q.position,
+      courseCode,
+      operation: 'generate-components',
+      willGenerate: uniqueNeeded.length
     })
 
   } catch (error) {
     logger.error('Generate components error:', error)
-    endWork()
+    if (currentWork.active) endWork()
     res.status(500).json({ error: error.message })
   }
 })
@@ -3942,13 +4068,6 @@ app.post('/splice-components/:courseCode', async (req, res) => {
     const { courseCode } = req.params
     const { dryRun = false, roles = ['target1', 'target2'] } = req.body || {}
 
-    if (currentWork.active) {
-      return res.status(409).json({
-        error: 'Another job is already running',
-        activeJob: { operation: currentWork.operation, courseCode: currentWork.courseCode }
-      })
-    }
-
     // 1. Load course
     const { data: course, error: courseError } = await supabase
       .from('courses')
@@ -4092,7 +4211,8 @@ app.post('/splice-components/:courseCode', async (req, res) => {
       })
     }
 
-    // 6. Execute splices
+    // 6. Enqueue splice execution; the serial queue worker runs it. Respond 202 now.
+    const run = async (job) => {
     startWork('splice-components', courseCode, splicePlan.length)
 
     // Cache downloaded parent audio to avoid re-downloading the same file
@@ -4179,7 +4299,7 @@ app.post('/splice-components/:courseCode', async (req, res) => {
       await bumpCourseVersion(supabase, courseCode, 'patch')
     }
 
-    res.json({
+    job.result = {
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: splicePlan.length,
@@ -4187,10 +4307,22 @@ app.post('/splice-components/:courseCode', async (req, res) => {
       failed: results.failed,
       skipped,
       errors: results.errors.slice(0, 20)
+    }
+    return job.result
+    } // end run
+
+    const q = enqueueJob({ courseCode, operation: 'splice-components', role: null, meta: { willSplice: splicePlan.length }, run })
+    return res.status(202).json({
+      status: q.alreadyQueued ? 'already_queued' : 'queued',
+      jobId: q.jobId,
+      position: q.position,
+      courseCode,
+      operation: 'splice-components',
+      willSplice: splicePlan.length
     })
 
   } catch (err) {
-    endWork()
+    if (currentWork.active) endWork()
     logger.error('[Splice] Error:', err)
     res.status(500).json({ error: err.message })
   }

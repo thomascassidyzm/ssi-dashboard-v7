@@ -31,10 +31,19 @@ function claudeChat(prompt, options = {}) {
       args.push('--system', system)
     }
 
+    // Strip ANTHROPIC_API_KEY so the CLI authenticates via the Max Plan
+    // login, not the API key from .env (which would bill per-token and
+    // fail with "Credit balance is too low"). Same pattern as
+    // agent-spawner.cjs / gender-prep-detector.cjs. CLAUDECODE must also
+    // be removed (not set to '') for nested CLI calls to work.
+    const env = { ...process.env }
+    delete env.ANTHROPIC_API_KEY
+    delete env.CLAUDECODE
+
     const child = execFile('claude', args, {
       timeout,
       maxBuffer: 10 * 1024 * 1024, // 10MB
-      env: { ...process.env, CLAUDECODE: '' }
+      env
     }, (error, stdout, stderr) => {
       if (error) {
         // Surface the actual failure shape — execFile's error.message is

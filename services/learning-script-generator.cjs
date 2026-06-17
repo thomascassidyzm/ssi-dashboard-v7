@@ -804,6 +804,33 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
+    // Phase 5b: SURFACE MISMATCHES — a BUILD/USE phrase normally only appears if
+    // its target still contains the LEGO target as a contiguous substring
+    // (phraseContainsLegoChars). When a reviewer edits a phrase and the edit
+    // breaks that contiguous chunk (e.g. inserting words inside it), the phrase
+    // would otherwise be silently filtered out of its own round — reading to the
+    // reviewer as "my edit vanished". Instead we emit those phrases here with a
+    // legoMismatch flag so they stay visible and the view can show a warning.
+    const mismatchedPhrases = [...currentBuildPhrases, ...currentUsePhrases]
+      .filter(p => !phraseContainsLegoChars(p.target_text, legoTarget))
+    for (const phrase of mismatchedPhrases) {
+      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+      if (usedPhrasesInRound.has(phraseId)) continue
+      usedPhrasesInRound.add(phraseId)
+      roundItems.push({
+        ...baseItem,
+        type: 'build',
+        legoMismatch: true,
+        phrase_id: phrase.id,
+        known_text: phrase.known_text,
+        target_text: phrase.target_text,
+        known_audio_uuid: phrase.known_audio_uuid,
+        target1_audio_uuid: phrase.target1_audio_uuid,
+        target2_audio_uuid: phrase.target2_audio_uuid,
+        hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
+      })
+    }
+
     // Phase 6: Layer 1 — graduation tracking + dual-rotation cluster emission.
     // A seed graduates LISTENING_OFFSET rounds after its last LEGO. Active-10
     // fires every 3 rounds; reserve-50 fires every 13 rounds. When both fire

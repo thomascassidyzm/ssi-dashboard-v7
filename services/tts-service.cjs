@@ -133,11 +133,19 @@ async function generateAzure(text, config) {
     const speedPercent = Math.round((speed - 1) * 100);
     const rateString = speedPercent >= 0 ? `+${speedPercent}%` : `${speedPercent}%`;
 
+    // SSML passthrough: if the text already carries an inline pronunciation tag
+    // (e.g. <phoneme>, <sub>), embed it raw so the markup is honoured instead of
+    // being escaped into literal characters. Used for targeted pronunciation
+    // fixes (am/than phonemes, single-char <sub> readings). Plain text — the
+    // overwhelming majority — is still XML-escaped exactly as before.
+    const hasInlineSsml = /<(phoneme|sub|emphasis|say-as|break)\b/i.test(ttsText);
+    const innerSsml = hasInlineSsml ? ttsText : escapeXml(ttsText);
+
     const ssml = `
       <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
         <voice name="${voiceName}">
           <prosody rate="${rateString}">
-            ${escapeXml(ttsText)}
+            ${innerSsml}
           </prosody>
         </voice>
       </speak>

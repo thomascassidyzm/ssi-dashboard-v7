@@ -61,24 +61,42 @@
           </span>
         </div>
 
-        <!-- OTHER COURSE JOB BANNER (when audio job is active for a different course) -->
-        <div v-if="audioProgress.active && audioProgress.courseCode && audioProgress.courseCode !== courseCode" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-amber-500/30 rounded-xl p-5 flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+        <!-- AUDIO QUEUE PANEL — shows the running job (any course) + jobs waiting behind it.
+             Jobs run one at a time; new triggers queue instead of being blocked. -->
+        <div v-if="otherCourseJobActive || audioQueue.length > 0" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-amber-500/30 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-2 h-2 bg-amber-500 rounded-full animate-pulse flex-shrink-0"></div>
+            <div class="text-sm font-medium text-amber-300">Audio queue</div>
+            <div class="text-xs text-slate-500">Jobs run one at a time — new ones queue automatically</div>
           </div>
-          <div class="flex-1">
-            <div class="text-sm font-medium text-amber-300">Audio job running on another course</div>
-            <div class="text-xs text-slate-400 mt-1">
-              Only one audio job can run at a time. Currently
-              {{ audioProgress.operation === 'regenerate-role' ? 'regenerating' : 'generating' }}
-              audio for <span class="text-amber-400 font-medium">{{ audioProgress.courseCode }}</span>
-              — {{ audioProgress.current }}/{{ audioProgress.total }} processed.
+
+          <!-- Running job (when it belongs to a different course; this course's job shows in the live panel below) -->
+          <div v-if="otherCourseJobActive" class="flex items-center justify-between gap-3 py-2 border-t border-slate-700/40">
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-medium">running</span>
+              <span class="font-medium text-slate-100">{{ audioProgress.courseCode }}</span>
+              <span class="text-slate-400">{{ audioProgress.operation }}{{ audioProgress.role ? ' · ' + audioProgress.role : '' }}</span>
             </div>
+            <span class="text-xs text-slate-400">{{ audioProgress.current }}/{{ audioProgress.total }}</span>
           </div>
-          <div class="flex-shrink-0">
-            <div class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+
+          <!-- Queued jobs (waiting) -->
+          <div v-for="job in audioQueue" :key="job.jobId" class="flex items-center justify-between gap-3 py-2 border-t border-slate-700/40">
+            <div class="flex items-center gap-2 text-xs">
+              <span class="text-slate-500 tabular-nums">#{{ job.position }}</span>
+              <span class="font-medium" :class="job.courseCode === courseCode ? 'text-amber-300' : 'text-slate-200'">{{ job.courseCode }}</span>
+              <span class="text-slate-400">{{ job.operation }}{{ job.role ? ' · ' + job.role : '' }}</span>
+              <span v-if="job.willGenerate || job.willRegenerate || job.willSplice" class="text-slate-500">
+                ({{ job.willGenerate || job.willRegenerate || job.willSplice }} items)
+              </span>
+            </div>
+            <button
+              @click="removeFromQueue(job.jobId)"
+              :disabled="removingJobId === job.jobId"
+              class="text-xs text-red-400 hover:text-red-300 disabled:text-slate-600 transition-colors"
+            >
+              {{ removingJobId === job.jobId ? 'Removing…' : 'Remove' }}
+            </button>
           </div>
         </div>
 
@@ -120,7 +138,7 @@
               </div>
 
               <!-- Stats Row -->
-              <div class="grid grid-cols-4 gap-4">
+              <div class="grid grid-cols-5 gap-4">
                 <div>
                   <div class="text-2xl font-bold text-slate-100">{{ audioProgress.current }}</div>
                   <div class="text-xs text-slate-500 uppercase tracking-wide">Processed</div>
@@ -136,6 +154,10 @@
                 <div>
                   <div class="text-2xl font-bold" :class="audioProgress.failed > 0 ? 'text-red-400' : 'text-slate-600'">{{ audioProgress.failed }}</div>
                   <div class="text-xs text-slate-500 uppercase tracking-wide">Failed</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold" :class="audioProgress.timedOut > 0 ? 'text-amber-400' : 'text-slate-600'">{{ audioProgress.timedOut || 0 }}</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wide">Timed Out</div>
                 </div>
               </div>
 
@@ -257,14 +279,14 @@
               <div class="flex gap-3">
                 <button
                   @click="previewRegenerate"
-                  :disabled="!regenerateRole || regenerating || otherCourseJobActive"
+                  :disabled="!regenerateRole || regenerating"
                   class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
                 >
                   Preview
                 </button>
                 <button
                   @click="executeRegenerate"
-                  :disabled="!regenerateRole || regenerating || otherCourseJobActive"
+                  :disabled="!regenerateRole || regenerating"
                   class="flex-1 px-4 py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
                 >
                   {{ regenerating ? 'Working...' : 'Regenerate' }}
@@ -479,14 +501,14 @@
             <div class="flex gap-3">
               <button
                 @click="previewAllFlagged"
-                :disabled="regeneratingAll || otherCourseJobActive"
+                :disabled="regeneratingAll"
                 class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
               >
                 {{ loadingAllFlaggedQueue ? 'Loading...' : 'Preview Queue' }}
               </button>
               <button
                 @click="executeAllFlagged"
-                :disabled="regeneratingAll || otherCourseJobActive || !allFlaggedQueue?.total"
+                :disabled="regeneratingAll || !allFlaggedQueue?.total"
                 class="flex-1 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
               >
                 {{ regeneratingAll ? 'Working...' : 'Regenerate All' }}
@@ -512,7 +534,7 @@
                 Job ID: <code class="text-emerald-400 bg-slate-800 px-1.5 py-0.5 rounded">{{ allFlaggedResult.jobId }}</code>
               </div>
               <p v-if="!allFlaggedResult.error" class="mt-2 text-xs text-slate-500">
-                Watch the live progress panel above for real-time updates.
+                {{ allFlaggedResult.message || 'Watch the live progress panel above for real-time updates.' }}
               </p>
             </div>
           </div>
@@ -786,6 +808,7 @@ const statsLoaded = ref(false)  // Track if pipeline stats have loaded
 const startingGeneration = ref(false)
 const refreshingStats = ref(false)
 const linkResult = ref<{ linked: number } | null>(null)
+const removingJobId = ref<string | null>(null)  // queue job currently being removed
 
 // Concurrency control (1-20, stored in localStorage, default 20 for paid Azure tier)
 const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '20', 10))
@@ -1011,16 +1034,22 @@ onUnmounted(() => {
 // Computed properties
 const progressStats = computed(() => productionStore.pipelineStats)
 const isGenerating = computed(() => productionStore.jobStatus === 'running')
+// Another course currently has the running audio job. Jobs are now QUEUED rather
+// than blocked, so this no longer disables actions — it only drives messaging
+// (e.g. "Queue behind <course>") and the queue panel.
 const otherCourseJobActive = computed(() =>
   audioProgress.value.active && audioProgress.value.courseCode && audioProgress.value.courseCode !== courseCode.value
 )
+// Queued jobs waiting behind the running one (from Phase 8 /status).
+const audioQueue = computed(() => audioProgress.value.queue || [])
 const hasFailed = computed(() => progressStats.value.failed > 0)
 // Generate is allowed when:
 //  - There's TTS work (pending > 0), OR
 //  - There's link-only work (linkable > 0) — Generate runs the linker even with no TTS
 //  - AND presentation text is ready (LEGOs/components have pending course_audio rows)
 const canStartGeneration = computed(() => {
-  if (isGenerating.value || otherCourseJobActive.value) return false
+  // Note: another course running no longer blocks — the job simply queues.
+  if (isGenerating.value) return false
   const ps = progressStats.value
   const hasWork = (ps.pending > 0) || ((ps.linkable || 0) > 0)
   const ready = ps.readyForGenerate !== false  // default true if undefined
@@ -1029,7 +1058,7 @@ const canStartGeneration = computed(() => {
 const generateButtonLabel = computed(() => {
   if (isGenerating.value) return 'Generating...'
   if (startingGeneration.value) return 'Starting...'
-  if (otherCourseJobActive.value) return `Busy (${audioProgress.value.courseCode})`
+  if (otherCourseJobActive.value) return `Queue behind ${audioProgress.value.courseCode}`
   const ps = progressStats.value
   if (ps.readyForGenerate === false) return 'Presentation text required'
   if (ps.pending === 0 && (ps.linkable || 0) > 0) return `Link ${ps.linkable} audios (no TTS)`
@@ -1066,6 +1095,28 @@ const startGeneration = async () => {
 
 const cancelGeneration = async () => {
   await productionStore.cancelGeneration(courseCode.value)
+}
+
+// Remove a queued (not-yet-started) audio job from the Phase 8 queue.
+const removeFromQueue = async (jobId: string) => {
+  if (!jobId || removingJobId.value) return
+  removingJobId.value = jobId
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/audio/queue/${encodeURIComponent(jobId)}`, {
+      method: 'DELETE',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}))
+      error.value = data.error || 'Failed to remove job from queue'
+    }
+    // Refresh the queue immediately so the row disappears without waiting for the poll.
+    await pollAudioProgress()
+  } catch (err: any) {
+    error.value = err.message || 'Failed to remove job from queue'
+  } finally {
+    removingJobId.value = null
+  }
 }
 
 const retryFailed = async () => {
@@ -1457,28 +1508,20 @@ const executeAllFlagged = async () => {
     if (!response.ok) {
       allFlaggedResult.value = { error: data.error || 'Regeneration failed' }
     } else {
+      // Regeneration is now QUEUED (runs in the background, one role-job at a time).
+      // There are no regenerated items to preview synchronously — they appear once
+      // the queue processes them. The queue panel shows the pending jobs.
+      const jobCount = data.queuedJobs?.length || 0
       allFlaggedResult.value = {
-        success: true,
+        success: data.success !== false,
+        queued: true,
         count: data.count,
-        processed: data.processed,
-        failed: data.failed
+        message: `Queued ${jobCount} regeneration job${jobCount === 1 ? '' : 's'} (${data.count} samples). Running in the background — flags clear automatically when each job finishes.`
       }
-      // Populate regenerateResult with items for the review panel
-      if (data.regeneratedItems?.length > 0) {
-        regenerateResult.value = {
-          dryRun: false,
-          flaggedOnly: true,
-          status: 'completed',
-          total: data.count,
-          success: data.processed,
-          failed: data.failed,
-          regeneratedItems: data.regeneratedItems
-        }
-      }
-      // Clear the queue preview since items have been regenerated
+      // Clear the queue preview since the jobs are now enqueued.
       allFlaggedQueue.value = null
-      // Reload pipeline stats
-      await productionStore.loadCourse(courseCode.value)
+      // Refresh the queue panel immediately.
+      await pollAudioProgress()
     }
   } catch (err: any) {
     allFlaggedResult.value = { error: err.message }
