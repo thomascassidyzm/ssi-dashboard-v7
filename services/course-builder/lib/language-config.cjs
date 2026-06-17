@@ -13,6 +13,12 @@ const DIALECT_NAMES = {
   'spa_mx': 'Mexican Spanish',
   'cym_n': 'North Welsh',
   'cym_s': 'South Welsh',
+  // Arabic dialects — keep these distinct from plain `ara` (Modern Standard
+  // Arabic, resolved via the CSV). Without these, ara_eg/sy/lb would fall
+  // through to getName('ara') and be mislabelled "Modern Standard Arabic".
+  'ara_eg': 'Egyptian Arabic',
+  'ara_sy': 'Syrian Arabic',
+  'ara_lb': 'Lebanese Arabic',
 };
 
 // Deprecated: callers should use languageCodeService.getName() directly.

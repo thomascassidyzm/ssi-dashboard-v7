@@ -239,7 +239,10 @@ module.exports = function (ctx) {
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      // Opus (not sonnet): Indic/Sinhala scripts degrade under Sonnet (sonnet-indic-script-degradation).
+      // unset ANTHROPIC_API_KEY + CLAUDECODE so the spawned agent uses the Max subscription
+      // instead of hitting "Credit balance too low" and hanging (matches every other build route).
+      const claudeCmd = `cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       spawnInTerminal(ctx, claudeCmd, 'Redo', courseCode);
 
       // Post status to chat
