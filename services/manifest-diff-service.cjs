@@ -81,7 +81,56 @@ function compareManifests(published, pending) {
     major,
     minor,
     patch,
-    stats
+    stats,
+    progressPreservation: computeProgressPreservation(published, pending)
+  }
+}
+
+/**
+ * Estimate how much learner progress would survive this publish.
+ *
+ * The learning app tracks progress against seed IDs and introduction-item
+ * (LEGO) IDs in the manifest. A published ID that disappears from pending
+ * means anyone who'd progressed past it is reset; a pending ID not in
+ * published is brand-new structure with no prior progress to lose.
+ *
+ * Pure indicator — does not block publish.
+ */
+function computeProgressPreservation(published, pending) {
+  const pubSeeds = (published.slices?.[0]?.seeds) || []
+  const penSeedIds = new Set(((pending.slices?.[0]?.seeds) || []).map(s => s.id))
+
+  let pubSeedCount = 0
+  let seedsPreserved = 0
+  let pubLegoCount = 0
+  let legosPreserved = 0
+
+  // Collect pending lego IDs across all seeds (a lego could in theory move seed)
+  const penLegoIds = new Set()
+  for (const seed of (pending.slices?.[0]?.seeds) || []) {
+    for (const item of (seed.introduction_items || [])) penLegoIds.add(item.id)
+  }
+
+  for (const seed of pubSeeds) {
+    pubSeedCount++
+    if (penSeedIds.has(seed.id)) seedsPreserved++
+    for (const item of (seed.introduction_items || [])) {
+      pubLegoCount++
+      if (penLegoIds.has(item.id)) legosPreserved++
+    }
+  }
+
+  const totalPub = pubSeedCount + pubLegoCount
+  const totalPreserved = seedsPreserved + legosPreserved
+  const pct = totalPub === 0 ? 1 : totalPreserved / totalPub
+
+  return {
+    seedsPreserved,
+    seedsPublished: pubSeedCount,
+    legosPreserved,
+    legosPublished: pubLegoCount,
+    overallPct: pct,
+    overallPercent: Math.round(pct * 1000) / 10  // one decimal place
   }
 }
 

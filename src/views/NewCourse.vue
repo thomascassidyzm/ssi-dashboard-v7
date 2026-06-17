@@ -480,7 +480,7 @@ async function loadLanguages() {
     // Fallback to comprehensive list if API fails
     languages.value = [
       { code: 'afr', name: 'Afrikaans', native: 'Afrikaans' },
-      { code: 'ara', name: 'Arabic', native: 'العربية' },
+      { code: 'ara', name: 'Modern Standard Arabic', native: 'العربية الفصحى' },
       { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
       { code: 'cat', name: 'Catalan', native: 'Català' },
       { code: 'ces', name: 'Czech', native: 'Čeština' },

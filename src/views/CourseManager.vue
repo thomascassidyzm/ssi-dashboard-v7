@@ -1085,7 +1085,7 @@ const languages = ref([
   { code: 'zho', name: 'Mandarin Chinese' },
   { code: 'jpn', name: 'Japanese' },
   { code: 'kor', name: 'Korean' },
-  { code: 'ara', name: 'Arabic' }
+  { code: 'ara', name: 'Modern Standard Arabic' }
 ])
 
 const courseSizes = [

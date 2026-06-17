@@ -407,7 +407,7 @@ const languageNames = {
   cym: 'Welsh',
   nld: 'Dutch',
   rus: 'Russian',
-  ara: 'Arabic',
+  ara: 'Modern Standard Arabic',
   hin: 'Hindi'
 }
 

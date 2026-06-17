@@ -11,7 +11,7 @@ const fallbackNames = {
   'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'pol': 'Polish',
   'rus': 'Russian', 'cym': 'Welsh', 'gle': 'Irish', 'gla': 'Scottish Gaelic',
   'zho': 'Chinese', 'cmn': 'Mandarin', 'jpn': 'Japanese', 'kor': 'Korean',
-  'ara': 'Arabic', 'hin': 'Hindi', 'tur': 'Turkish', 'swa': 'Swahili',
+  'ara': 'Modern Standard Arabic', 'hin': 'Hindi', 'tur': 'Turkish', 'swa': 'Swahili',
   // Romance
   'ron': 'Romanian', 'cat': 'Catalan', 'eus': 'Basque', 'glg': 'Galician',
   // Germanic
@@ -34,7 +34,7 @@ const fallbackNames = {
   // Dialect variants
   'cym_n': 'Welsh (North)', 'cym_s': 'Welsh (South)',
   'por_br': 'Portuguese (Brazil)', 'spa_mx': 'Spanish (Mexico)',
-  'ara_eg': 'Arabic (Egypt)', 'ara_sy': 'Arabic (Syria)', 'ara_lb': 'Arabic (Lebanon)',
+  'ara_eg': 'Egyptian Arabic', 'ara_sy': 'Syrian Arabic', 'ara_lb': 'Lebanese Arabic',
   'deu_at': 'German (Austria)'
 }
 

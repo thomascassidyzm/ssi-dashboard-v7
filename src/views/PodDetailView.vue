@@ -205,7 +205,7 @@ const LANG_NAMES = {
   spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian',
   por: 'Portuguese', por_br: 'Brazilian Portuguese',
   zho: 'Chinese', jpn: 'Japanese', kor: 'Korean',
-  ara: 'Arabic', ara_sy: 'Syrian Arabic', ara_eg: 'Egyptian Arabic', ara_lb: 'Lebanese Arabic',
+  ara: 'Modern Standard Arabic', ara_sy: 'Syrian Arabic', ara_eg: 'Egyptian Arabic', ara_lb: 'Lebanese Arabic',
   gle: 'Irish', nld: 'Dutch', hrv: 'Croatian',
 }
 const [targetLang, knownLang] = String(courseCode).split('_for_')

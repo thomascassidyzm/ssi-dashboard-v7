@@ -167,7 +167,7 @@
           <div v-if="expandedRounds.has(round.roundNumber)" class="round-items p-4 space-y-2">
             <div
               v-for="(item, idx) in visibleItems(round)"
-              :key="`${round.roundNumber}-${idx}`"
+              :key="item.phrase_id ? `${round.roundNumber}-p${item.phrase_id}-${item.type}` : `${round.roundNumber}-${item.type}-${idx}`"
               :ref="el => setItemRef(round.roundNumber, idx, el)"
               class="item-row flex items-center gap-3 p-3 rounded-lg transition-all"
               :class="[
@@ -210,6 +210,16 @@
                 :title="`Reviewing Round ${item.reviewOf}`"
               >
                 R{{ item.reviewOf }}
+              </div>
+
+              <!-- LEGO Mismatch Warning - phrase no longer contains its LEGO chunk
+                   (usually because a recent edit broke the contiguous substring) -->
+              <div
+                v-if="item.legoMismatch"
+                class="lego-mismatch-badge px-2 py-1 bg-red-600 text-white text-xs rounded font-bold"
+                title="This phrase no longer contains its LEGO as a contiguous chunk — likely a recent edit broke it. The edit IS saved; check whether it still belongs in this round."
+              >
+                ⚠ LEGO?
               </div>
 
               <!-- Listening badges: speed + batch -->
