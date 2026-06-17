@@ -617,37 +617,108 @@ Action: Either generate more phrases via course builder, or accept the LEGO is i
 
 ### Step 4: Language spot-check with Haiku
 
-For EVERY seed in the course, pick 1 random phrase and ask Haiku to verify the languages are correct. This catches subtle issues regex misses (e.g., Portuguese words that look valid in English).
+**Default: full coverage — every phrase, no sampling.** A 1-per-seed sample misses 90%+ of phrase-level corruption: builder failures often hit specific phrases within a seed (e.g. 8 of 12 USE phrases corrupt, seed-level K fine). Sampling found 17 mixed-script phrases in `eng_for_hin` where full scanning found 174 — same family, 10× larger. Run full.
 
-Run this with `claude --print --model haiku`:
+Scale check before launching:
 
 ```
-For each batch of ~20 seeds, send a single Haiku prompt:
+total_phrases = sum(phrases per course)
+batches = ceil(total_phrases / 30)
+wall_clock ≈ batches × ~30s (sequential) or batches × ~30s / parallelism
+```
+
+A 6,000-phrase course is ~200 batches ≈ 1h40m sequential. For multi-course sweeps, parallelise one process per course (claude --print survives ~10 concurrent comfortably). For a single course, one process is fine.
+
+**Only sample (1-per-seed) when:**
+- The course has already passed full Step 4 once and you're spot-checking after a fix.
+- Wall clock is genuinely tight AND the user explicitly opts in to a faster, lower-fidelity check.
+
+Default to full. If you sample, say so out loud: "sampling 1 phrase per seed — this misses per-phrase corruption clusters."
+
+Run with `claude --print --model haiku`:
+
+```
+For each batch of ~30 phrases, send a single Haiku prompt:
 
 "You are checking whether text is written in the CORRECT LANGUAGE — nothing else. Do NOT judge grammar, spelling, naturalness, or meaning. Only check: is the known text actually in {KNOWN_LANGUAGE}? Is the target text actually in {TARGET_LANGUAGE}?
 
-For example, if known should be English but contains Japanese characters, that's WRONG. If known is English with a grammar mistake, that's FINE (correct language, bad grammar — not your problem).
+Wrong-language examples include:
+- known should be {KNOWN_LANGUAGE} but is in English/Latin (WRONG)
+- known mixes {KNOWN_LANGUAGE} with embedded English chunks (WRONG — this is the mixed-script failure mode and Haiku catches what regex misses)
+- known contains a wholly different script (WRONG)
+- target should be English but contains the known-language script (WRONG)
 
-Reply with ONLY the numbers of any pairs where the WRONG LANGUAGE is used, or ALL OK if all pairs use the correct languages.
+Grammatical errors in the correct language are FINE — not your problem.
+
+Reply with ONLY the numbers of pairs using the wrong language, each on its own line with a short reason. If all OK, reply ALL OK.
 
 1. known: {known_text} | target: {target_text}
 2. known: {known_text} | target: {target_text}
 ..."
 ```
 
-Batch them to keep Haiku calls reasonable (~15 calls for a 300-seed course).
+Batches of 30 are the sweet spot — bigger means Haiku starts mis-numbering responses, smaller wastes call overhead.
 
-Report: any flagged seed numbers + the phrases Haiku flagged.
+Report: every flagged phrase with seed/LEGO/role/phrase_id + Haiku's reason. Group by seed range so contiguous failures (the typical mode) are visible at a glance.
 
 **Important:** Unset `ANTHROPIC_API_KEY` before spawning `claude --print` to avoid billing the API key:
 
 ```javascript
-const { execSync } = require('child_process');
-const result = execSync('claude --print --model haiku', {
-  input: prompt,
-  env: { ...process.env, ANTHROPIC_API_KEY: '' }
+const { execSync, spawn } = require('child_process');
+// For long-running streams, prefer spawn with stdio:['pipe',...] so stdin closes deterministically
+const proc = spawn('claude', ['--print', '--model', 'haiku'], {
+  stdio: ['pipe', 'pipe', 'pipe'],
+  env: { ...process.env, ANTHROPIC_API_KEY: '', CLAUDECODE: '' },
 });
 ```
+
+(`CLAUDECODE=''` matters for nested CLI calls per `CLAUDE.md`. `stdio: ['pipe',...]` matters per `haiku-scan-stdin-timeout.md` — without it, batches fail with "no stdin in 3s" and the whole run dies silently.)
+
+**Detect silent CLI failures — exit code is necessary but not sufficient.** `claude --print` returns exit 0 with response text like "Credit balance is too low" / "usage limit reached" during subscription usage-limit windows. A script that only checks `exit !== 0` will silently record those batches as "no findings" and move on. Lost ~2h of clock to this on the 2026-06-02 South Asian scan — three courses came back with 0 findings despite known mechanical-Check-3 corruption.
+
+Required guards on every Haiku batch call:
+
+1. **Parse stdout for error markers** — `/credit balance is too low/i`, `/usage limit/i`, `/rate limit/i`, `/quota exceeded/i`, `/not authenticated/i`, `/please sign in|log in/i`, `/api error/i`. Treat any match as failure even when exit==0.
+
+2. **Validate response shape.** A success response is either the exact pattern you asked for (`ALL OK`) or a list of numbered findings (`/^\d+[.)]/m`). Free-form prose, apologies, or refusals are suspect — retry, don't accept.
+
+3. **Canary batch before the full run.** Send one batch first. If it returns an error marker, abort before launching the full scan — there's no point burning hours of clock generating fake "clean" results.
+
+4. **Abort the job after N consecutive batch failures** (5 is a sane default) and preserve the checkpoint. Better to bail loudly than to silently produce a 6,000-phrase "clean" report during a 4-hour usage-limit window.
+
+See `memory/haiku-print-usage-limit-silent.md` for full rationale.
+
+**Resume on failure.** A long full-coverage scan can be interrupted (rate-limit hit, network blip, parent process killed). Write batch results to a JSON file every 10 batches and resume from `completedBatches` on the next run — don't restart from zero.
+
+**Track retry-exhausted batches explicitly — don't just bump the counter.** When a batch fails all retries, append its index to a `pendingBatches: []` list in the checkpoint, don't silently `continue`. On the next resume, process `pendingBatches` first with another N attempts, then continue from `completedBatches`. Otherwise: a course that aborts after 5 consecutive failures permanently loses those 5 batches (75 phrases at batch-15), and the script reports 100% complete with the loss baked in. Lost ~525 phrases this way on the 2026-06-02 South Asian scan — surfaced because the lost regions happened to coincide with known corruption clusters, but a generally-clean course would have hidden the gap.
+
+Pseudocode for the correct shape:
+```
+for batchIdx in [...pendingBatches, ...range(completedBatches, total)]:
+  result = tryBatch(batchIdx)
+  if result.failedAllAttempts:
+    pendingBatches.push(batchIdx)   # don't silently skip
+    if (consecutiveFailures >= 5) abort()
+    continue
+  if (wasInPendingBatches) removeFromPending(batchIdx)
+  ...checkpoint every 10 OR after any pending success...
+
+# Don't call it "DONE" unless pendingBatches is empty.
+done = pendingBatches.length === 0
+```
+
+### Step 4b: Mechanical follow-up sweep on the failure class Haiku surfaces
+
+When Haiku flags a contiguous-seed mixed-script cluster (Devanagari + Latin, Sinhala + Latin, etc.), run a regex sweep across **every phrase** of the course to enumerate the full set:
+
+```javascript
+// Devanagari + 3+ consecutive Latin chars
+const scriptRe = /[ऀ-ॿ]/;            // adjust per known_lang
+const latinRun = /[a-zA-Z]{3,}/;
+const flagged = rows.filter(r => scriptRe.test(r.known_text) && latinRun.test(r.known_text));
+```
+
+Haiku's per-batch judgement is statistical — it surfaces the *class* of failure. A mechanical regex on the same predicate then captures *every* instance. Don't stop at "Haiku found N" — Haiku found N because it only looked at N. Use the regex to find the real count, then re-derive K from seed/LEGO text + regen K audio for all of them.
 
 ### Step 5: Print report
 
