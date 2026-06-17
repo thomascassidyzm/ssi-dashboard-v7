@@ -2,6 +2,9 @@
   <AppNavbar />
   <router-view />
 
+  <!-- Edit Guardian inline status (progress / accepted / flagged + urgent lane) -->
+  <GuardianStatus />
+
   <div class="build-label">
     {{ gitCommit }}
   </div>
@@ -9,6 +12,7 @@
 
 <script setup>
 import AppNavbar from './components/AppNavbar.vue'
+import GuardianStatus from './components/GuardianStatus.vue'
 
 const gitCommit = __GIT_COMMIT__
 
