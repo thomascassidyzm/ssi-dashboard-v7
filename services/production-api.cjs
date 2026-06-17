@@ -18,6 +18,7 @@ const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
+const editGuardian = require('./course-editor/guardian-runtime.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
 const audioProcessor = require('./audio-processor.cjs')
@@ -3902,6 +3903,12 @@ async function proxyToPhase8(method, path, body = null) {
   })
 }
 
+// Wait for a Phase 8 queue job to finish (see services/wait-for-phase8-job.cjs).
+// Used by background tasks that must act ON completion (e.g. clearing QA flags
+// after the audio is actually regenerated). Never blocks an HTTP request.
+const { createJobWaiter } = require('./wait-for-phase8-job.cjs')
+const waitForPhase8JobDone = createJobWaiter(async () => (await proxyToPhase8('GET', '/status')).data)
+
 // NOTE: Audio Pipeline routes are defined at the bottom of this file (lines ~940+)
 // They use axios with proper response transformation for the frontend
 
@@ -4133,22 +4140,20 @@ app.post('/api/production/:courseCode/regeneration/trigger', async (req, res) =>
       timestamp: new Date().toISOString()
     })
 
-    // Update status based on Phase 8 response
-    if (response.status === 200) {
-      // Mark flags as complete after successful regeneration
-      await supabaseClient.bulkUpdateFlagStatus(
-        uuids,
-        courseCode,
-        'complete',
-        'Regeneration completed'
-      )
-      res.json({
+    // Update status based on Phase 8 response. Phase 8 now ENQUEUES the work and
+    // returns 202; the actual regeneration runs later in the serial queue. So we
+    // leave the flags at 'in_pipeline' (set above) rather than marking 'complete'
+    // prematurely — the user reviews and marks done after the queued job runs.
+    if (response.status === 202 || response.status === 200) {
+      res.status(202).json({
         success: true,
+        queued: true,
         count: uuids.length,
-        jobId: response.data.jobId
+        jobId: response.data.jobId,
+        position: response.data.position
       })
     } else {
-      // If Phase 8 failed, update status back to flagged
+      // Phase 8 rejected the request — revert flags to flagged.
       await supabaseClient.bulkUpdateFlagStatus(
         uuids,
         courseCode,
@@ -4218,45 +4223,34 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
               flaggedOnly: true,
               limit: byRole[role].length
             })
-            return { role, success: response.status === 200, data: response.data }
+            // Phase 8 now enqueues and returns 202 (queued); 200 kept for back-compat.
+            return { role, success: response.status === 202 || response.status === 200, data: response.data }
           } catch (err) {
             return { role, success: false, error: err.message }
           }
         })
     )
 
-    // Check results
+    // Check results. Each role enqueues a separate job (returns 202 + jobId).
+    // The actual regeneration runs later in the serial queue, so there are no
+    // regeneratedItems to preview synchronously — the frontend shows the queued
+    // jobs and the items appear once the queue processes them.
     const allSuccess = roleResults.every(r => r.success)
-    const totalProcessed = roleResults.reduce((sum, r) => sum + (r.data?.success || 0), 0)
-    const totalFailed = roleResults.reduce((sum, r) => sum + (r.data?.failed || 0), 0)
-
-    // Aggregate regeneratedItems from all roles for inline preview
-    const allRegeneratedItems = roleResults.flatMap(r => r.data?.regeneratedItems || [])
+    const queuedJobs = roleResults
+      .filter(r => r.success)
+      .map(r => ({ role: r.role, jobId: r.data?.jobId, position: r.data?.position, willRegenerate: r.data?.willRegenerate }))
 
     // NOTE: Don't auto-resolve flags here - let user review and mark done manually
     // Flags stay at 'flagged' until user clicks "Done" after reviewing audio
 
-    if (allSuccess) {
-      res.json({
-        success: true,
-        count: uuids.length,
-        processed: totalProcessed,
-        failed: totalFailed,
-        regeneratedItems: allRegeneratedItems,
-        byRole: roleResults.map(r => ({ role: r.role, ...r.data }))
-      })
-    } else {
-      // Some roles failed
-      res.json({
-        success: false,
-        partial: true,
-        count: uuids.length,
-        processed: totalProcessed,
-        failed: totalFailed,
-        regeneratedItems: allRegeneratedItems,
-        byRole: roleResults.map(r => ({ role: r.role, success: r.success, ...r.data, error: r.error }))
-      })
-    }
+    res.status(202).json({
+      success: allSuccess,
+      queued: true,
+      partial: !allSuccess,
+      count: uuids.length,
+      queuedJobs,
+      byRole: roleResults.map(r => ({ role: r.role, success: r.success, ...r.data, error: r.error }))
+    })
   } catch (error) {
     logger.error('Error triggering bulk regeneration:', error)
     res.status(500).json({ error: error.message })
@@ -4275,6 +4269,17 @@ app.get('/api/audio/status', async (req, res) => {
   } catch (error) {
     // If Phase 8 is not running, return inactive status
     res.json({ active: false, error: 'Audio server not running' })
+  }
+})
+
+// Remove a queued (not-yet-started) audio job from the Phase 8 queue.
+// DELETE /api/audio/queue/:jobId
+app.delete('/api/audio/queue/:jobId', async (req, res) => {
+  try {
+    const response = await proxyToPhase8('DELETE', `/queue/${encodeURIComponent(req.params.jobId)}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    res.status(503).json({ error: 'Audio server not running' })
   }
 })
 
@@ -4388,7 +4393,11 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
       message: `Regeneration of ${uuids.length} ${role} samples started in background. Monitor progress via audio status.`
     })
 
-    // Run phase8 regeneration in background
+    // Run phase8 regeneration in background.
+    // Phase 8 now ENQUEUES the job and returns 202 immediately; the work runs
+    // later in the serial queue. We wait (in this already-backgrounded task, so
+    // no HTTP request is blocked) for the queued job to actually finish before
+    // clearing the QA flags — otherwise we'd clear them before the audio exists.
     ;(async () => {
       try {
         const response = await proxyToPhase8('POST', `/regenerate-role/${courseCode}`, {
@@ -4398,10 +4407,21 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
           ...(limit ? { limit } : {})
         })
 
-        if (response.status === 200) {
-          logger.log(`[Regenerate Role] Completed ${role} for ${courseCode}: ${response.data.success || uuids.length} success, ${response.data.failed || 0} failed`)
+        if (response.status === 202 || response.status === 200) {
+          const jobId = response.data?.jobId
+          logger.log(`[Regenerate Role] Queued ${role} for ${courseCode} (jobId=${jobId}, position=${response.data?.position}). Waiting for completion...`)
 
-          // Clear flags for regenerated audio
+          // Block (in background) until the queued job finishes.
+          const wait = await waitForPhase8JobDone(jobId, { courseCode, operation: 'regenerate-role', role })
+          if (!wait.done) {
+            logger.warn(`[Regenerate Role] Timed out waiting for ${role}/${courseCode} job to finish — leaving flags as-is`)
+            io.to(`course:${courseCode}`).emit('regeneration_error', { courseCode, role, error: 'Timed out waiting for queued job' })
+            return
+          }
+
+          logger.log(`[Regenerate Role] Completed ${role} for ${courseCode}`)
+
+          // Clear flags for regenerated audio (now that the job has actually run)
           if (flaggedOnly && uuids.length > 0) {
             try {
               const { error: delErr, count } = await supabaseClient.getClient()
@@ -4420,12 +4440,10 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
           io.to(`course:${courseCode}`).emit('regeneration_completed', {
             courseCode,
             role,
-            total: uuids.length,
-            success: response.data.success || uuids.length,
-            failed: response.data.failed || 0
+            total: uuids.length
           })
         } else {
-          logger.error(`[Regenerate Role] Failed ${role} for ${courseCode}: ${response.data.error || 'Unknown error'}`)
+          logger.error(`[Regenerate Role] Failed to queue ${role} for ${courseCode}: ${response.data.error || 'Unknown error'}`)
           io.to(`course:${courseCode}`).emit('regeneration_error', {
             courseCode,
             role,
@@ -4770,23 +4788,15 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
   const { options } = req.body
   try {
     invalidateAudioStatsCache(courseCode)
+    // Phase 8 /generate now enqueues the work and returns 202 immediately. The
+    // queue worker auto-links audio IDs when the job actually finishes, so we no
+    // longer link here (it would run before any audio was generated). Progress is
+    // tracked via /api/audio/status polling. Pass the 202 (queued) response through.
     const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, options || {}, {
-      timeout: 3600000 // 1 hour - audio generation can take a very long time for large courses
+      timeout: 120000 // 2 min — enqueue + needs-computation only; work runs async in the queue
     })
-    // After generation, trigger linking so audio IDs get set on content rows
-    let linkResult = null
-    try {
-      const linkResponse = await axios.post(`${PHASE8_URL}/link-audio-ids/${courseCode}`, {}, {
-        timeout: 600000 // 10 min for linking
-      })
-      linkResult = linkResponse.data
-    } catch (linkErr) {
-      logger.warn(`Audio linking after generation failed for ${courseCode}: ${linkErr.message}`)
-    }
     invalidateAudioStatsCache(courseCode)
-    const result = response.data
-    if (linkResult) result.linkResult = linkResult
-    res.json(result)
+    res.status(response.status).json(response.data)
   } catch (error) {
     logger.error(`Audio start error for ${courseCode}:`, error.message)
     if (error.code === 'ECONNREFUSED') {
@@ -5555,7 +5565,28 @@ app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
       return res.status(400).json({ error: `Invalid legoId format: ${legoId}` })
     }
 
+    // Capture the before-row for the Edit Guardian (inert unless enabled).
+    let beforeLego = null
+    if (editGuardian.isEnabled()) {
+      try {
+        const { data } = await supabaseClient.getClient()
+          .from('course_legos').select('*')
+          .eq('course_code', courseCode).eq('seed_number', seedNumber).eq('lego_index', legoIndex)
+          .single()
+        beforeLego = data
+      } catch { /* best-effort */ }
+    }
+
     const result = await courseDataService.updateLego(courseCode, seedNumber, legoIndex, updates)
+
+    if (beforeLego) {
+      editGuardian.enqueueEditReview({
+        courseCode, table: 'course_legos', pk: result?.id || beforeLego.id,
+        before: beforeLego, after: result,
+        editedBy: req.headers['x-user-email'] || null,
+      })
+    }
+
     res.json({
       success: true,
       lego: result
@@ -6531,6 +6562,16 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
       phraseId,
       phrase: finalPhrase
     })
+
+    // Edit Guardian — fire-and-forget background review of this edit (inert
+    // unless enabled). Never affects the edit response.
+    if (textChanged) {
+      editGuardian.enqueueEditReview({
+        courseCode, table: 'course_practice_phrases', pk: phraseId,
+        before: existingPhrase, after: finalPhrase,
+        editedBy: req.headers['x-user-email'] || null,
+      })
+    }
 
     res.json({
       success: true,
@@ -10889,6 +10930,18 @@ const PORT = process.env.PRODUCTION_API_PORT || 3470
 httpServer.listen(PORT, () => {
   logger.log(`Production API server running on port ${PORT}`)
   logger.log(`WebSocket path: /api/production/websocket`)
+  // Edit Guardian — inert unless EDIT_GUARDIAN_ENABLED=true (and the migration
+  // 20260617_edit_guardian.sql has been run). Streams inline review status to the
+  // editing client over the existing WebSocket.
+  try {
+    editGuardian.initGuardian({
+      supabase: supabaseClient.getClient(),
+      emit: (event, payload) => { try { io.emit(event, payload) } catch { /* best-effort */ } },
+      logger,
+    })
+  } catch (e) {
+    logger.warn?.(`[guardian] init skipped: ${e.message}`)
+  }
 })
 
 module.exports = { app, io, emitToRoom }
