@@ -804,14 +804,17 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // Phase 5b: SURFACE MISMATCHES — a BUILD/USE phrase normally only appears if
-    // its target still contains the LEGO target as a contiguous substring
+    // Phase 5b: SURFACE MISMATCHES — a USE phrase normally only appears if its
+    // target still contains the LEGO target as a contiguous substring
     // (phraseContainsLegoChars). When a reviewer edits a phrase and the edit
     // breaks that contiguous chunk (e.g. inserting words inside it), the phrase
     // would otherwise be silently filtered out of its own round — reading to the
     // reviewer as "my edit vanished". Instead we emit those phrases here with a
     // legoMismatch flag so they stay visible and the view can show a warning.
-    const mismatchedPhrases = [...currentBuildPhrases, ...currentUsePhrases]
+    // USE phrases only: BUILD phrases legitimately climb toward the LEGO and may
+    // not yet contain it as a contiguous chunk (e.g. "Este" under "este trabajo"),
+    // so flagging them would be noise rather than a real "vanished edit".
+    const mismatchedPhrases = currentUsePhrases
       .filter(p => !phraseContainsLegoChars(p.target_text, legoTarget))
     for (const phrase of mismatchedPhrases) {
       const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
