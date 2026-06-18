@@ -50,6 +50,9 @@
             <button @click="showPasswordModal = true; showUserMenu = false" class="user-dropdown-item">
               {{ hasPassword ? 'Change password' : 'Set password' }}
             </button>
+            <button @click="toggleTheme" class="user-dropdown-item">
+              {{ theme === 'light' ? '🌙 Dark mode' : '☀️ Light mode' }}
+            </button>
             <button @click="handleLogout" class="user-dropdown-logout">Sign out</button>
           </div>
         </div>
@@ -112,6 +115,16 @@ const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
 const { isAuthenticated, isAdmin, isRecorder, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken } = useAuth()
+
+// Theme: 'dark' (default) | 'light'. Persisted; applied on <html data-theme>.
+// Initial state set by main.js before mount; the menu item flips it here.
+const theme = ref(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark')
+function toggleTheme() {
+  theme.value = theme.value === 'light' ? 'dark' : 'light'
+  if (theme.value === 'light') document.documentElement.dataset.theme = 'light'
+  else delete document.documentElement.dataset.theme
+  try { localStorage.setItem('popty-theme', theme.value) } catch { /* private mode */ }
+}
 
 // Audit-log stale check — surfaces a numeric badge on the Maintenance tab
 // when the oldest audit row is older than 30 days, prompting a cleanup.
