@@ -1,6 +1,6 @@
 <template>
   <div class="login-form max-w-md mx-auto bg-surface border border-line rounded-lg p-8">
-    <h2 class="text-2xl font-bold text-emerald-400 mb-6 text-center">
+    <h2 class="text-2xl font-bold text-accent-2 mb-6 text-center">
       Sign In to Popty
     </h2>
 
@@ -26,14 +26,14 @@
         <span v-else>Send Login Code</span>
       </button>
 
-      <p v-if="error" class="text-red-400 text-sm text-center">
+      <p v-if="error" class="text-danger text-sm text-center">
         {{ error }}
       </p>
 
       <div v-if="email" class="text-center">
         <button
           @click="step = 'password'; nextTick(() => passwordInput?.focus())"
-          class="text-sm text-muted hover:text-emerald-400 transition-colors"
+          class="text-sm text-muted hover:text-accent-2 transition-colors"
         >
           Use password instead
         </button>
@@ -43,7 +43,7 @@
     <!-- Step 2: Password Entry -->
     <div v-else-if="step === 'password'" class="space-y-4">
       <p class="text-ink text-center mb-2">
-        <strong class="text-emerald-400">{{ email }}</strong>
+        <strong class="text-accent-2">{{ email }}</strong>
       </p>
 
       <div>
@@ -67,7 +67,7 @@
         <span v-else>Sign In</span>
       </button>
 
-      <p v-if="error" class="text-red-400 text-sm text-center">
+      <p v-if="error" class="text-danger text-sm text-center">
         {{ error }}
       </p>
 
@@ -75,7 +75,7 @@
         <button
           @click="switchToOTP"
           :disabled="loading"
-          class="text-muted hover:text-emerald-400 transition-colors"
+          class="text-muted hover:text-accent-2 transition-colors"
         >
           Use login code instead
         </button>
@@ -92,7 +92,7 @@
     <div v-else-if="step === 'code'" class="space-y-4">
       <p class="text-ink text-center mb-4">
         We sent a 6-digit code to<br/>
-        <strong class="text-emerald-400">{{ email }}</strong>
+        <strong class="text-accent-2">{{ email }}</strong>
       </p>
 
       <div>
@@ -117,7 +117,7 @@
         <span v-else>Sign In</span>
       </button>
 
-      <p v-if="error" class="text-red-400 text-sm text-center">
+      <p v-if="error" class="text-danger text-sm text-center">
         {{ error }}
       </p>
 
@@ -125,7 +125,7 @@
         <button
           @click="handleSendOTP"
           :disabled="loading"
-          class="text-muted hover:text-emerald-400 transition-colors"
+          class="text-muted hover:text-accent-2 transition-colors"
         >
           Resend code
         </button>
@@ -147,7 +147,7 @@
     <!-- Step 4: Invite Code (shown when authenticated but no dashboard access) -->
     <div v-else-if="step === 'invite-code'" class="space-y-4">
       <p class="text-ink text-center mb-2">
-        Signed in as <strong class="text-emerald-400">{{ email }}</strong>
+        Signed in as <strong class="text-accent-2">{{ email }}</strong>
       </p>
       <p class="text-muted text-sm text-center mb-4">
         Enter your invite code to get access.
@@ -174,7 +174,7 @@
         <span v-else>Redeem Code</span>
       </button>
 
-      <p v-if="redeemError" class="text-red-400 text-sm text-center">
+      <p v-if="redeemError" class="text-danger text-sm text-center">
         {{ redeemError }}
       </p>
 

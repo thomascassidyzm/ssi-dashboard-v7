@@ -380,7 +380,7 @@ onMounted(loadRoom)
   align-items: center;
   padding-bottom: 1.25rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
+  border-bottom: 1px solid var(--line);
 }
 
 .room-title h1 {
@@ -415,7 +415,7 @@ onMounted(loadRoom)
   font-size: 0.8125rem;
   color: var(--color-paper-dim, var(--muted));
   background: transparent;
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  border: 1px solid var(--line);
   border-radius: 6px;
   padding: 0.4rem 0.85rem;
   cursor: pointer;
@@ -431,7 +431,7 @@ onMounted(loadRoom)
   display: inline-flex;
   gap: 0;
   margin-bottom: 1.25rem;
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -451,7 +451,7 @@ onMounted(loadRoom)
 }
 
 .mode-tab + .mode-tab {
-  border-left: 1px solid var(--color-graphite, var(--surface-3));
+  border-left: 1px solid var(--line);
 }
 
 .mode-tab.active {
@@ -476,9 +476,14 @@ onMounted(loadRoom)
 
 .room-card {
   background: var(--color-shadow, var(--surface));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
+}
+
+/* Light mode: white cards on a slate canvas need a touch of shadow to lift */
+:root[data-theme="light"] .room-card {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
 .room-card.center {
@@ -543,7 +548,7 @@ onMounted(loadRoom)
   width: 40px;
   height: 40px;
   margin: 0 auto 1rem;
-  border: 3px solid var(--color-graphite, var(--surface-3));
+  border: 3px solid var(--line);
   border-top-color: var(--color-tungsten, var(--accent));
   border-radius: 50%;
   animation: room-spin 1s linear infinite;
@@ -595,7 +600,7 @@ onMounted(loadRoom)
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 1.1rem;
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  border: 1px solid var(--line);
   border-radius: 10px;
   color: var(--color-paper, var(--ink));
   text-decoration: none;

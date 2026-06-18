@@ -88,7 +88,7 @@ const stats = computed(() => {
 
 .review-header {
   background: var(--color-shadow, var(--surface));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -118,7 +118,8 @@ const stats = computed(() => {
   flex: 1;
   text-align: center;
   padding: 1rem;
-  background: var(--color-void, var(--canvas));
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--line);
   border-radius: 8px;
 }
 
@@ -155,7 +156,7 @@ const stats = computed(() => {
 /* Batch Actions */
 .batch-actions {
   background: var(--color-shadow, var(--surface));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -166,7 +167,7 @@ const stats = computed(() => {
 .batch-btn {
   flex: 1;
   background: var(--color-slate, var(--surface-2));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  border: 1px solid var(--line);
   color: var(--color-paper, var(--ink));
   padding: 0.75rem 1rem;
   border-radius: 8px;
@@ -208,12 +209,12 @@ const stats = computed(() => {
   gap: 1rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-graphite, var(--surface-3));
+  border-top: 1px solid var(--line);
 }
 
 .control-btn {
   background: var(--color-slate, var(--surface-2));
-  border: 2px solid var(--color-graphite, var(--surface-3));
+  border: 2px solid var(--line);
   color: var(--color-paper, var(--ink));
   padding: 0.75rem 1.5rem;
   border-radius: 12px;

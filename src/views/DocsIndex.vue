@@ -296,6 +296,15 @@ console.log('Documentation Hub Loaded')
   --doc-text-dim: var(--muted);
   --doc-text-muted: var(--faint);
 
+  /* Accent text colors used on tinted/glow badge fills.
+     Default (dark) keeps the bright hues; light mode darkens them
+     for contrast against the pale glow fills. */
+  --doc-apml-ink: var(--doc-apml);
+  --doc-pedagogy-ink: var(--doc-pedagogy);
+  --doc-seeds-ink: var(--doc-seeds);
+  --doc-content-ink: var(--doc-content);
+  --doc-architecture-ink: var(--doc-architecture);
+
   /* Card accent colors */
   --doc-apml: #10b981;
   --doc-apml-glow: rgba(16, 185, 129, 0.15);
@@ -316,6 +325,21 @@ console.log('Documentation Hub Loaded')
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   position: relative;
   overflow-x: hidden;
+}
+
+/* Light-mode overrides: dark mode is untouched.
+   - Visible card/divider borders (the global --line, not the near-white --surface-2).
+   - Elevated chips read on white cards via --surface-3.
+   - Badge text darkened so it passes AA on the pale glow fills. */
+:root[data-theme="light"] .docs-hub {
+  --doc-border: var(--line);
+  --doc-border-light: var(--muted);
+  --doc-elevated: var(--surface-3);
+  --doc-apml-ink: #047857;        /* emerald-700 on #d9f5ec ≈ 5.2:1 */
+  --doc-pedagogy-ink: #b45309;    /* amber-700 on #fef3dc ≈ 5.0:1 */
+  --doc-seeds-ink: #047857;
+  --doc-content-ink: #1d4ed8;     /* blue-700 on #dde9fd ≈ 6.0:1 */
+  --doc-architecture-ink: #7e22ce;/* purple-700 on #eddcfc ≈ 5.6:1 */
 }
 
 /* Ambient Background */
@@ -605,24 +629,24 @@ console.log('Documentation Hub Loaded')
 }
 
 .card-badge.apml { background: var(--doc-apml-glow); border-color: var(--doc-apml); }
-.card-badge.apml .badge-value { color: var(--doc-apml); }
-.card-badge.apml .badge-label { color: var(--doc-apml); }
+.card-badge.apml .badge-value { color: var(--doc-apml-ink); }
+.card-badge.apml .badge-label { color: var(--doc-apml-ink); }
 
 .card-badge.pedagogy { background: var(--doc-pedagogy-glow); border-color: var(--doc-pedagogy); }
-.card-badge.pedagogy .badge-label { color: var(--doc-pedagogy); }
+.card-badge.pedagogy .badge-label { color: var(--doc-pedagogy-ink); }
 
 .card-badge.glossary { background: var(--doc-glossary-glow); border-color: var(--doc-glossary); }
 .card-badge.glossary .badge-label { color: var(--doc-text-dim); }
 
 .card-badge.seeds { background: var(--doc-seeds-glow); border-color: var(--doc-seeds); }
-.card-badge.seeds .badge-value { color: var(--doc-seeds); }
-.card-badge.seeds .badge-label { color: var(--doc-seeds); }
+.card-badge.seeds .badge-value { color: var(--doc-seeds-ink); }
+.card-badge.seeds .badge-label { color: var(--doc-seeds-ink); }
 
 .card-badge.content { background: var(--doc-content-glow); border-color: var(--doc-content); }
-.card-badge.content .badge-label { color: var(--doc-content); }
+.card-badge.content .badge-label { color: var(--doc-content-ink); }
 
 .card-badge.architecture { background: var(--doc-architecture-glow); border-color: var(--doc-architecture); }
-.card-badge.architecture .badge-label { color: var(--doc-architecture); }
+.card-badge.architecture .badge-label { color: var(--doc-architecture-ink); }
 
 /* Card Body */
 .card-body {

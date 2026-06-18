@@ -75,7 +75,7 @@ function isActive(routeName) {
   gap: 0.5rem;
   padding: 1rem;
   background: var(--color-shadow, var(--surface));
-  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
+  border-bottom: 1px solid var(--line);
 }
 
 .nav-item {

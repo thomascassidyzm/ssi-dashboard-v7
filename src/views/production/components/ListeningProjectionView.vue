@@ -156,16 +156,16 @@
       </div>
       <div class="bg-surface rounded-lg p-3 border border-line">
         <div class="text-xs text-muted">Listening starts</div>
-        <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.firstListeningRound || '—' }}</div>
+        <div class="text-lg font-bold listening-accent">Round {{ summaryStats.firstListeningRound || '—' }}</div>
       </div>
       <div class="bg-surface rounded-lg p-3 border border-line">
         <div class="text-xs text-muted">S80 graduates</div>
-        <div class="text-lg font-bold text-purple-400">Round {{ summaryStats.lastListeningSeedRound || '—' }}</div>
+        <div class="text-lg font-bold listening-accent">Round {{ summaryStats.lastListeningSeedRound || '—' }}</div>
         <div class="text-xs text-faint">all {{ params.batchSize * params.batchCount }} in batches</div>
       </div>
       <div class="bg-surface rounded-lg p-3 border border-line">
         <div class="text-xs text-muted">Batch rotation</div>
-        <div class="text-sm font-bold text-purple-400">~{{ summaryStats.avgRoundsBetweenBatchReplay }} rounds</div>
+        <div class="text-sm font-bold listening-accent">~{{ summaryStats.avgRoundsBetweenBatchReplay }} rounds</div>
         <div class="text-xs text-faint">between replays of same batch</div>
       </div>
       <div v-for="milestone in summaryStats.milestones" :key="milestone.round"
@@ -498,6 +498,9 @@ function renderChart() {
 
   d3.select(container).selectAll('*').remove();
 
+  // Resolve theme-aware axis/grid color (--faint) so it themes light/dark.
+  const axisColor = getComputedStyle(container).getPropertyValue('--faint').trim() || '#94a3b8';
+
   const containerWidth = container.clientWidth;
   const margin = { top: 20, right: 30, bottom: 40, left: 55 };
   const width = containerWidth - margin.left - margin.right;
@@ -639,14 +642,14 @@ function renderChart() {
     .attr('transform', `translate(0,${height})`)
     .call(xAxis as any)
     .selectAll('text, line, path')
-    .attr('fill', '#94a3b8')
-    .attr('stroke', '#94a3b8');
+    .attr('fill', axisColor)
+    .attr('stroke', axisColor);
 
   svg.append('text')
     .attr('x', width / 2)
     .attr('y', height + 35)
     .attr('text-anchor', 'middle')
-    .attr('fill', '#94a3b8')
+    .attr('fill', axisColor)
     .attr('font-size', '12px')
     .text('Round number');
 
@@ -657,8 +660,8 @@ function renderChart() {
   svg.append('g')
     .call(yAxis as any)
     .selectAll('text, line, path')
-    .attr('fill', '#94a3b8')
-    .attr('stroke', '#94a3b8');
+    .attr('fill', axisColor)
+    .attr('stroke', axisColor);
 
   // Tooltip
   const tooltip = d3.select(container)
@@ -761,5 +764,13 @@ onBeforeUnmount(() => {
   position: relative;
   width: 100%;
   min-height: 500px;
+}
+
+/* Listening accent stat values: purple-400 in dark, darkened in light for AA. */
+.listening-accent {
+  color: #c084fc; /* purple-400 — dark mode default */
+}
+:global([data-theme='light']) .listening-accent {
+  color: #7e22ce; /* purple-700 — ~6.9:1 on white, keeps the purple hue */
 }
 </style>

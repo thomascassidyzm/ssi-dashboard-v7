@@ -298,6 +298,20 @@ function chipStyle(speaker) {
   line-height: 1.45;
 }
 
+/* Light mode: the heavy black inset "void" vignette is built for the dark
+   theme; on the light canvas it paints a muddy dark halo and hurts edge text.
+   Soften the inset to a faint neutral and lean on the visible border instead.
+   Dark mode is untouched. */
+:root[data-theme="light"] .dialogue-cue {
+  box-shadow: inset 0 0 40px rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .dialogue-cue.recording {
+  box-shadow:
+    inset 0 0 40px rgba(15, 23, 42, 0.04),
+    0 0 28px rgba(255, 166, 48, 0.3);
+}
+
 /* Phone-first tightening */
 @media (max-width: 480px) {
   .dialogue-cue {

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-surface/50 rounded-lg border border-line/20 p-6">
+  <div class="bg-surface rounded-lg border border-line shadow-sm p-6">
     <!-- Header -->
     <div class="flex items-center gap-3 mb-6">
       <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
@@ -23,15 +23,15 @@
       </div>
       <div class="flex justify-between mt-2 text-sm">
         <span class="text-muted">{{ progressText }}</span>
-        <span class="text-emerald-400 font-medium">{{ progressPercent }}%</span>
+        <span class="text-accent-2 font-medium">{{ progressPercent }}%</span>
       </div>
     </div>
 
     <!-- Status Message -->
-    <div class="flex items-center gap-3 mb-6 p-3 bg-canvas/50 rounded-lg">
+    <div class="flex items-center gap-3 mb-6 p-3 bg-surface-2 border border-line rounded-lg">
       <div class="relative">
-        <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
-        <div class="absolute inset-0 w-3 h-3 bg-emerald-400 rounded-full animate-ping"></div>
+        <div class="w-3 h-3 bg-accent-2 rounded-full"></div>
+        <div class="absolute inset-0 w-3 h-3 bg-accent-2 rounded-full animate-ping"></div>
       </div>
       <span class="text-ink">{{ statusMessage }}</span>
     </div>
@@ -55,21 +55,21 @@
             :class="getPhaseClasses(phase)"
           >
             <!-- Completed -->
-            <svg v-if="phase.status === 'completed'" class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg v-if="phase.status === 'completed'" class="w-6 h-6 text-accent-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <!-- Active -->
             <div v-else-if="phase.status === 'active'" class="flex gap-1">
-              <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
-              <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
-              <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+              <div class="w-1.5 h-1.5 bg-accent-2 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+              <div class="w-1.5 h-1.5 bg-accent-2 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+              <div class="w-1.5 h-1.5 bg-accent-2 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
             </div>
             <!-- Pending -->
             <div v-else class="w-2 h-2 bg-surface-3 rounded-full"></div>
           </div>
           <span
             class="text-xs mt-2 font-medium transition-colors"
-            :class="phase.status === 'active' ? 'text-emerald-400' : phase.status === 'completed' ? 'text-muted' : 'text-faint'"
+            :class="phase.status === 'active' ? 'text-accent-2' : phase.status === 'completed' ? 'text-muted' : 'text-faint'"
           >
             {{ phase.label }}
           </span>

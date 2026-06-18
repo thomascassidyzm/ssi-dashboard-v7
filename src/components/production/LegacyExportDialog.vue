@@ -50,7 +50,7 @@
 
               <!-- Error message -->
               <div v-if="workflow.error.value" class="error-box p-4 bg-red-900/30 border border-red-700 rounded-lg">
-                <p class="text-red-400 text-sm">{{ workflow.error.value }}</p>
+                <p class="error-box-text text-red-400 text-sm">{{ workflow.error.value }}</p>
               </div>
 
               <!-- Step 1: Generate Manifest -->
@@ -84,18 +84,18 @@
                 />
 
                 <!-- Override: skip verification and proceed to Step 3 -->
-                <div v-if="workflow.state.value.s3Verification && !s3VerificationPassing && !isVerifying" class="mt-4 p-3 border rounded-lg" :class="s3VerifyOverride ? 'bg-amber-900/20 border-amber-700' : 'border-line'">
+                <div v-if="workflow.state.value.s3Verification && !s3VerificationPassing && !isVerifying" class="mt-4 p-3 border rounded-lg" :class="s3VerifyOverride ? 'amber-box bg-amber-900/20 border-amber-700' : 'border-line'">
                   <label class="flex items-center gap-2 cursor-pointer group">
                     <input
                       v-model="s3VerifyOverride"
                       type="checkbox"
                       class="w-4 h-4 rounded"
                     />
-                    <span class="text-xs group-hover:text-ink transition-colors" :class="s3VerifyOverride ? 'text-amber-400' : 'text-faint'">
+                    <span class="text-xs group-hover:text-ink transition-colors" :class="s3VerifyOverride ? 'amber-text text-amber-400' : 'text-faint'">
                       Skip verification — proceed to publish anyway
                     </span>
                   </label>
-                  <p v-if="s3VerifyOverride" class="text-xs text-amber-500/70 mt-1.5 ml-6">
+                  <p v-if="s3VerifyOverride" class="amber-text-dim text-xs text-amber-500/70 mt-1.5 ml-6">
                     Duration metadata in the manifest may not match S3 audio files.
                   </p>
                 </div>
@@ -140,13 +140,13 @@
           </div>
 
           <!-- Unpushed commits warning -->
-          <div v-if="showPushWarning" class="px-6 py-3 bg-amber-900/40 border-t border-amber-700">
+          <div v-if="showPushWarning" class="push-warn px-6 py-3 bg-amber-900/40 border-t border-amber-700">
             <div class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="amber-text w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
               <div class="flex-1">
-                <p class="text-amber-400 text-sm font-medium">course-configs has unpushed commits</p>
+                <p class="amber-text text-amber-400 text-sm font-medium">course-configs has unpushed commits</p>
                 <p class="text-muted text-xs mt-1">Push to remote before deploying so the app picks up the new manifest.</p>
                 <div class="flex gap-2 mt-2">
                   <button
@@ -539,18 +539,18 @@ onUnmounted(() => {
 
 .modal-content {
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .modal-header {
   background: linear-gradient(180deg, var(--surface-2) 0%, transparent 100%);
-  border-bottom-color: var(--surface-2);
+  border-bottom-color: var(--line);
 }
 
 .modal-footer {
   background: var(--surface);
-  border-top-color: var(--surface-2);
+  border-top-color: var(--line);
 }
 
 /* Spinner */
@@ -589,5 +589,36 @@ onUnmounted(() => {
 /* Step panel */
 .step-panel {
   min-height: 200px;
+}
+
+/*
+ * Light-mode status-color overrides.
+ * The error/amber boxes use dark-tuned Tailwind classes (red-900/30, amber-900/40,
+ * text-red-400, text-amber-400) that have far-too-low contrast on light surfaces.
+ * These overrides are scoped to [data-theme="light"] only, so dark mode is untouched.
+ * Hues are kept in the same family (red / amber) and meet WCAG AA on light bg.
+ */
+:global([data-theme="light"]) .error-box {
+  background: #fef2f2; /* red-50 */
+  border-color: #fca5a5; /* red-300 — ~3:1 vs white */
+}
+:global([data-theme="light"]) .error-box-text {
+  color: #b91c1c; /* red-700 on red-50 ≈ 6.6:1 */
+}
+
+:global([data-theme="light"]) .amber-box {
+  background: #fffbeb; /* amber-50 */
+  border-color: #d97706; /* amber-600 */
+}
+:global([data-theme="light"]) .push-warn {
+  background: #fef3c7; /* amber-100 */
+  border-top-color: #d97706; /* amber-600 */
+}
+:global([data-theme="light"]) .amber-text {
+  color: #92400e; /* amber-800 — ≈ 7:1 on amber-50/100 */
+}
+:global([data-theme="light"]) .amber-text-dim {
+  color: #b45309; /* amber-700 — ≈ 4.8:1 on amber-50 */
+  opacity: 1;
 }
 </style>

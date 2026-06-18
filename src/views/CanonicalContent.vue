@@ -12,8 +12,8 @@
     <main class="content-area">
 
       <!-- Overview -->
-      <div class="bg-surface/50 rounded-lg border border-line/20 p-8 mb-8">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-4">3-Parameter Input Model</h2>
+      <div class="bg-surface rounded-lg border border-line shadow-sm p-8 mb-8">
+        <h2 class="text-2xl font-semibold text-accent-2 mb-4">3-Parameter Input Model</h2>
         <div class="prose prose-invert prose-emerald max-w-none text-ink">
           <p class="mb-4">
             All SSi courses are generated from <strong>3 inputs</strong>:
@@ -31,80 +31,80 @@
       </div>
 
       <!-- Canonical Seeds -->
-      <div class="bg-surface/50 rounded-lg border border-line/20 p-8 mb-8">
+      <div class="bg-surface rounded-lg border border-line shadow-sm p-8 mb-8">
         <div class="flex items-center justify-between mb-4">
           <div>
-            <h2 class="text-2xl font-semibold text-emerald-400">Canonical Seeds</h2>
+            <h2 class="text-2xl font-semibold text-accent-2">Canonical Seeds</h2>
             <p class="text-muted mt-1">{{ totalSeeds || '…' }} pedagogically-ordered seeds with {target} placeholders</p>
           </div>
           <span class="text-xs text-faint font-mono">Supabase · canonical_seeds</span>
         </div>
 
-        <div class="bg-canvas/50 rounded p-4 mb-4">
-          <p class="text-sm text-ink mb-2"><strong>Source:</strong> <code class="text-emerald-400">Supabase table: canonical_seeds (live)</code></p>
-          <p class="text-sm text-ink mb-2"><strong>Total Seeds:</strong> <code class="text-emerald-400">{{ totalSeeds || '…' }}</code></p>
-          <p class="text-sm text-ink"><strong>Optimization:</strong> <code class="text-emerald-400">16 years empirical refinement</code></p>
+        <div class="bg-surface-2 border border-line rounded p-4 mb-4">
+          <p class="text-sm text-ink mb-2"><strong>Source:</strong> <code class="text-accent-2">Supabase table: canonical_seeds (live)</code></p>
+          <p class="text-sm text-ink mb-2"><strong>Total Seeds:</strong> <code class="text-accent-2">{{ totalSeeds || '…' }}</code></p>
+          <p class="text-sm text-ink"><strong>Optimization:</strong> <code class="text-accent-2">16 years empirical refinement</code></p>
         </div>
 
-        <div class="bg-canvas/80 border border-line/20 rounded p-4">
-          <h3 class="text-sm font-semibold text-emerald-300 mb-2">Sample Seeds (First 10)</h3>
+        <div class="bg-surface-2 border border-line rounded p-4">
+          <h3 class="text-sm font-semibold text-accent-2 mb-2">Sample Seeds (First 10)</h3>
           <pre class="text-xs text-ink overflow-x-auto whitespace-pre-wrap" v-if="canonicalSeeds.length > 0">{{ JSON.stringify(canonicalSeeds.slice(0, 10), null, 2) }}</pre>
           <p v-else class="text-muted text-sm">Loading...</p>
         </div>
       </div>
 
       <!-- Encouragements -->
-      <div class="bg-surface/50 rounded-lg border border-line/20 p-8 mb-8">
+      <div class="bg-surface rounded-lg border border-line shadow-sm p-8 mb-8">
         <div class="flex items-center justify-between mb-4">
           <div>
-            <h2 class="text-2xl font-semibold text-emerald-400">Encouragements</h2>
+            <h2 class="text-2xl font-semibold text-accent-2">Encouragements</h2>
             <p class="text-muted mt-1">Motivational content spoken in known language</p>
           </div>
           <span class="text-xs text-faint font-mono">{lang}_encouragements.json</span>
         </div>
 
-        <div class="bg-canvas/50 rounded p-4 mb-4">
-          <p class="text-sm text-ink mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/eng_encouragements.json</code></p>
-          <p class="text-sm text-ink mb-2"><strong>Pooled Encouragements:</strong> <code class="text-emerald-400">{{ encouragements.pooledEncouragements?.length || 0 }}</code> (random selection)</p>
-          <p class="text-sm text-ink mb-2"><strong>Ordered Encouragements:</strong> <code class="text-emerald-400">{{ encouragements.orderedEncouragements?.length || 0 }}</code> (sequential delivery)</p>
+        <div class="bg-surface-2 border border-line rounded p-4 mb-4">
+          <p class="text-sm text-ink mb-2"><strong>Location:</strong> <code class="text-accent-2">/public/vfs/canonical/eng_encouragements.json</code></p>
+          <p class="text-sm text-ink mb-2"><strong>Pooled Encouragements:</strong> <code class="text-accent-2">{{ encouragements.pooledEncouragements?.length || 0 }}</code> (random selection)</p>
+          <p class="text-sm text-ink mb-2"><strong>Ordered Encouragements:</strong> <code class="text-accent-2">{{ encouragements.orderedEncouragements?.length || 0 }}</code> (sequential delivery)</p>
           <p class="text-sm text-ink"><strong>Note:</strong> One file per known language (currently only English)</p>
         </div>
 
-        <div class="bg-canvas/80 border border-line/20 rounded p-4">
-          <h3 class="text-sm font-semibold text-emerald-300 mb-2">Pooled Encouragements (First 5)</h3>
+        <div class="bg-surface-2 border border-line rounded p-4">
+          <h3 class="text-sm font-semibold text-accent-2 mb-2">Pooled Encouragements (First 5)</h3>
           <pre class="text-xs text-ink overflow-x-auto whitespace-pre-wrap" v-if="encouragements.pooledEncouragements">{{ JSON.stringify(encouragements.pooledEncouragements.slice(0, 5), null, 2) }}</pre>
           <p v-else class="text-muted text-sm">Loading...</p>
         </div>
       </div>
 
       <!-- Welcomes -->
-      <div class="bg-surface/50 rounded-lg border border-line/20 p-8 mb-8">
+      <div class="bg-surface rounded-lg border border-line shadow-sm p-8 mb-8">
         <div class="flex items-center justify-between mb-4">
           <div>
-            <h2 class="text-2xl font-semibold text-emerald-400">Welcome Messages</h2>
+            <h2 class="text-2xl font-semibold text-accent-2">Welcome Messages</h2>
             <p class="text-muted mt-1">Course introduction templates (one per language pair)</p>
           </div>
           <span class="text-xs text-faint font-mono">welcomes.json</span>
         </div>
 
-        <div class="bg-canvas/50 rounded p-4 mb-4">
-          <p class="text-sm text-ink mb-2"><strong>Location:</strong> <code class="text-emerald-400">/public/vfs/canonical/welcomes.json</code></p>
+        <div class="bg-surface-2 border border-line rounded p-4 mb-4">
+          <p class="text-sm text-ink mb-2"><strong>Location:</strong> <code class="text-accent-2">/public/vfs/canonical/welcomes.json</code></p>
           <p class="text-sm text-ink mb-2"><strong>Structure:</strong> Course-specific welcome per language pair</p>
           <p class="text-sm text-ink"><strong>Spoken in:</strong> The known language</p>
         </div>
 
-        <div class="bg-canvas/80 border border-line/20 rounded p-4">
-          <h3 class="text-sm font-semibold text-emerald-300 mb-2">Welcomes Template</h3>
+        <div class="bg-surface-2 border border-line rounded p-4">
+          <h3 class="text-sm font-semibold text-accent-2 mb-2">Welcomes Template</h3>
           <pre class="text-xs text-ink overflow-x-auto whitespace-pre-wrap">{{ JSON.stringify(welcomes, null, 2) }}</pre>
         </div>
       </div>
 
       <!-- Future: Editing Note -->
-      <div class="bg-amber-900/20 border border-amber-500/30 rounded-lg p-6">
-        <h3 class="text-lg font-semibold text-amber-400 mb-2">📝 Future Enhancement</h3>
+      <div class="note-box rounded-lg p-6">
+        <h3 class="note-title text-lg font-semibold mb-2">📝 Future Enhancement</h3>
         <p class="text-ink text-sm">
           In-browser editing of canonical content is planned for a future release. For now, edit the JSON files directly in:
-          <code class="text-emerald-400 text-xs">/public/vfs/canonical/</code>
+          <code class="text-accent-2 text-xs">/public/vfs/canonical/</code>
         </p>
       </div>
 
@@ -153,7 +153,7 @@ onMounted(async () => {
 .page-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #10b981;
+  color: var(--accent-2);
   margin: 0 0 0.5rem 0;
 }
 
@@ -164,5 +164,21 @@ onMounted(async () => {
 
 .content-area {
   max-width: 100%;
+}
+
+/* Note/warning box — amber hue, dark-mode defaults preserved */
+.note-box {
+  background-color: rgba(120, 53, 15, 0.2); /* amber-900/20 */
+  border: 1px solid rgba(245, 158, 11, 0.3); /* amber-500/30 */
+}
+.note-title {
+  color: #fbbf24; /* amber-400 */
+}
+:root[data-theme="light"] .note-box {
+  background-color: #fef3c7; /* amber-100 */
+  border-color: #f59e0b; /* amber-500 */
+}
+:root[data-theme="light"] .note-title {
+  color: #92400e; /* amber-800 — 6.9:1 on amber-100 */
 }
 </style>

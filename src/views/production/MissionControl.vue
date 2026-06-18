@@ -641,11 +641,11 @@ onUnmounted(() => {
 .mission-control-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgb(51 65 85);
+  border-bottom: 1px solid var(--line);
 }
 
 .back-link {
-  color: #10b981;
+  color: var(--accent-2);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
@@ -675,6 +675,10 @@ onUnmounted(() => {
   background-clip: text;
 }
 
+:root[data-theme="light"] .page-title {
+  background: linear-gradient(135deg, #059669, #047857);
+}
+
 .env-switcher {
   margin-left: auto;
 }
@@ -693,9 +697,9 @@ onUnmounted(() => {
 
 .course-select {
   padding: 0.5rem 1rem;
-  background: rgb(15 23 42);
+  background: var(--surface-2);
   color: var(--ink);
-  border: 1px solid rgb(51 65 85);
+  border: 1px solid var(--line);
   border-radius: 0.5rem;
   font-size: 0.875rem;
   cursor: pointer;
@@ -765,8 +769,8 @@ onUnmounted(() => {
 .spinner {
   width: 3rem;
   height: 3rem;
-  border: 3px solid rgb(51 65 85);
-  border-top-color: #10b981;
+  border: 3px solid var(--line);
+  border-top-color: var(--accent-2);
   border-radius: 9999px;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -787,7 +791,7 @@ onUnmounted(() => {
 .retry-btn {
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: #10b981;
+  background: var(--accent-2);
   color: var(--canvas);
   border: none;
   border-radius: 0.5rem;
@@ -796,15 +800,20 @@ onUnmounted(() => {
   transition: all 0.2s ease;
 }
 
+:root[data-theme="light"] .retry-btn {
+  color: #ffffff;
+}
+
 .retry-btn:hover {
-  background: #059669;
+  filter: brightness(1.1);
   transform: translateY(-1px);
 }
 
 .error-help {
   margin-top: 1.5rem;
   padding: 1.5rem;
-  background: rgb(51 65 85 / 0.3);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
   max-width: 500px;
 }
@@ -816,17 +825,21 @@ onUnmounted(() => {
 }
 
 .help-commands {
-  background: rgb(15 23 42);
-  border: 1px solid rgb(51 65 85);
+  background: var(--surface-3);
+  border: 1px solid var(--line);
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
 }
 
 .help-commands code {
-  color: #10b981;
+  color: var(--accent-2);
   font-family: 'Monaco', 'Menlo', monospace;
   font-size: 0.8rem;
+}
+
+:root[data-theme="light"] .help-commands code {
+  color: var(--ink);
 }
 
 .help-note {
@@ -844,9 +857,9 @@ onUnmounted(() => {
 
 .back-btn {
   padding: 0.75rem 1.5rem;
-  background: rgb(51 65 85);
+  background: var(--surface-2);
   color: var(--ink);
-  border: none;
+  border: 1px solid var(--line);
   border-radius: 0.5rem;
   font-weight: 600;
   text-decoration: none;
@@ -855,7 +868,7 @@ onUnmounted(() => {
 }
 
 .back-btn:hover {
-  background: rgb(71 85 105);
+  background: var(--surface-3);
   transform: translateY(-1px);
 }
 
@@ -886,8 +899,8 @@ onUnmounted(() => {
 
 /* Overall Progress */
 .overall-progress {
-  background: rgb(15 23 42 / 0.6);
-  border: 1px solid rgb(51 65 85);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 1rem;
   padding: 2rem;
   margin-bottom: 2rem;
@@ -939,6 +952,15 @@ onUnmounted(() => {
   color: #f59e0b;
 }
 
+:root[data-theme="light"] .stat-value,
+:root[data-theme="light"] .stat-value.generated {
+  color: var(--accent-2);
+}
+
+:root[data-theme="light"] .stat-value.pending {
+  color: var(--accent);
+}
+
 .stat-label {
   font-size: 0.75rem;
   color: var(--muted);
@@ -983,8 +1005,8 @@ onUnmounted(() => {
 }
 
 .job-card {
-  background: rgb(15 23 42 / 0.8);
-  border: 1px solid rgb(51 65 85);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 1rem;
   padding: 1.5rem;
   transition: all 0.2s ease;
@@ -998,6 +1020,16 @@ onUnmounted(() => {
 .job-card.job-build {
   border-color: rgb(99 102 241 / 0.4);
   background: linear-gradient(135deg, rgb(15 23 42 / 0.9), rgb(99 102 241 / 0.1));
+}
+
+:root[data-theme="light"] .job-card.job-audio {
+  border-color: rgb(5 150 105 / 0.5);
+  background: linear-gradient(135deg, var(--surface), rgb(16 185 129 / 0.08));
+}
+
+:root[data-theme="light"] .job-card.job-build {
+  border-color: rgb(99 102 241 / 0.5);
+  background: linear-gradient(135deg, var(--surface), rgb(99 102 241 / 0.08));
 }
 
 .job-header {
@@ -1024,6 +1056,16 @@ onUnmounted(() => {
 .badge-build {
   background: rgb(99 102 241 / 0.2);
   color: #6366f1;
+}
+
+:root[data-theme="light"] .badge-audio {
+  background: rgb(5 150 105 / 0.15);
+  color: var(--accent-2);
+}
+
+:root[data-theme="light"] .badge-build {
+  background: rgb(79 70 229 / 0.15);
+  color: #4338ca;
 }
 
 .job-status {
@@ -1063,6 +1105,10 @@ onUnmounted(() => {
   color: #10b981;
 }
 
+:root[data-theme="light"] .status-text {
+  color: var(--accent-2);
+}
+
 .job-content {
   display: flex;
   align-items: center;
@@ -1084,6 +1130,14 @@ onUnmounted(() => {
 
 .progress-bg {
   color: rgb(51 65 85);
+}
+
+:root[data-theme="light"] .progress-bg {
+  color: var(--surface-3);
+}
+
+:root[data-theme="light"] .progress-fill.fill-audio {
+  color: var(--accent-2);
 }
 
 .progress-fill {
@@ -1151,8 +1205,16 @@ onUnmounted(() => {
   color: #10b981;
 }
 
+:root[data-theme="light"] .stat-item .stat-value.success {
+  color: var(--accent-2);
+}
+
 .stat-item .stat-value.failed {
   color: #ef4444;
+}
+
+:root[data-theme="light"] .stat-item .stat-value.failed {
+  color: var(--danger);
 }
 
 .stat-item .stat-label {
@@ -1178,7 +1240,7 @@ onUnmounted(() => {
 .job-actions {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid rgb(51 65 85);
+  border-top: 1px solid var(--line);
   display: flex;
   justify-content: flex-end;
 }
@@ -1193,6 +1255,12 @@ onUnmounted(() => {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+:root[data-theme="light"] .btn-stop {
+  background: rgb(220 38 38 / 0.1);
+  color: var(--danger);
+  border-color: rgb(220 38 38 / 0.4);
 }
 
 .btn-stop:hover {

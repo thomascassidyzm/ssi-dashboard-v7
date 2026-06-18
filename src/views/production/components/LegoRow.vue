@@ -2,7 +2,7 @@
   <div class="lego-row ml-6 mb-4">
     <!-- LEGO Header -->
     <div
-      class="lego-header bg-surface-2 rounded-lg p-4 cursor-pointer hover:bg-surface-3 transition-all"
+      class="lego-header bg-surface border border-line rounded-lg p-4 cursor-pointer hover:bg-surface-3 transition-all"
       @click="toggleExpand"
     >
       <div class="flex items-center justify-between">
@@ -20,7 +20,7 @@
 
           <!-- LEGO Icon -->
           <div class="lego-icon w-8 h-8 flex items-center justify-center bg-purple-500 bg-opacity-20 rounded">
-            <svg class="w-5 h-5 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="lego-glyph w-5 h-5 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
               <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
             </svg>
           </div>
@@ -185,5 +185,12 @@ const getFlagNotes = (phrase: PhraseRowData): string | undefined => {
 
 .lego-header:hover {
   @apply shadow-lg;
+}
+
+/* Light mode: pale purple-300 icon fill is invisible on the tinted chip;
+   use a darker purple (purple-700 #7e22ce) for ~5.9:1 on the faint tint.
+   Dark mode keeps text-purple-300 untouched. */
+:root[data-theme='light'] .lego-glyph {
+  color: #7e22ce;
 }
 </style>

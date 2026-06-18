@@ -69,7 +69,7 @@
         @click="toggleFlaggedOnly"
         class="px-3 py-2 rounded-lg font-medium text-sm transition-all"
         :class="showFlaggedOnly
-          ? 'bg-amber-500 text-white hover:bg-amber-600'
+          ? 'regen-active bg-amber-500 text-white hover:bg-amber-600'
           : 'bg-surface-2 text-ink hover:bg-surface-3'"
         title="Show only items pending regeneration"
       >
@@ -275,5 +275,14 @@ watch(() => props.flaggedOnly, (newVal) => {
 
 .filter-tag button {
   @apply transition-colors;
+}
+
+/* Light mode: amber-500/white active pill fails WCAG AA (white on #f59e0b ~1.75:1).
+   Darken the fill to amber-700 so white text passes; dark mode untouched. */
+:root[data-theme="light"] .regen-active {
+  background-color: #b45309; /* amber-700 */
+}
+:root[data-theme="light"] .regen-active:hover {
+  background-color: #92400e; /* amber-800 */
 }
 </style>

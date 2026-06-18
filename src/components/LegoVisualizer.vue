@@ -3,10 +3,10 @@
     <!-- Header Controls -->
     <div class="controls-section bg-surface border border-line rounded-lg p-6 mb-6">
       <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-bold text-emerald-400">LEGO Amino Acids</h2>
+        <h2 class="text-2xl font-bold text-accent-2">LEGO Amino Acids</h2>
         <div class="text-sm text-muted">
           {{ filteredLegos.length }} LEGOs
-          <span v-if="totalLegos !== filteredLegos.length" class="text-emerald-400">
+          <span v-if="totalLegos !== filteredLegos.length" class="text-accent-2">
             (filtered from {{ totalLegos }})
           </span>
         </div>
@@ -21,7 +21,7 @@
             v-model="filters.searchText"
             type="text"
             placeholder="Search LEGO text..."
-            class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink focus:outline-none focus:border-emerald-500"
+            class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink focus:outline-none focus:border-accent-2"
           />
         </div>
 
@@ -86,7 +86,7 @@
           <label class="block text-sm font-medium text-ink mb-2">Sort By</label>
           <select
             v-model="sortBy"
-            class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink focus:outline-none focus:border-emerald-500"
+            class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink focus:outline-none focus:border-accent-2"
           >
             <option value="fcfs-desc">FCFS Score (High to Low)</option>
             <option value="fcfs-asc">FCFS Score (Low to High)</option>
@@ -114,8 +114,8 @@
     </div>
 
     <!-- Error State -->
-    <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
-      <h3 class="text-red-400 font-semibold mb-2">Error Loading LEGOs</h3>
+    <div v-else-if="error" class="bg-surface border border-danger/50 rounded-lg p-6">
+      <h3 class="text-danger font-semibold mb-2">Error Loading LEGOs</h3>
       <p class="text-ink">{{ error }}</p>
     </div>
 
@@ -128,17 +128,17 @@
       <div
         v-for="lego in paginatedLegos"
         :key="lego.uuid"
-        class="lego-card bg-surface border border-line rounded-lg p-5 hover:border-emerald-500/50 transition-colors"
+        class="lego-card bg-surface border border-line rounded-lg p-5 hover:border-accent-2/50 transition-colors"
       >
         <!-- LEGO Text -->
         <div class="mb-4">
-          <div v-if="!editingLego || editingLego.uuid !== lego.uuid" class="text-xl font-medium text-emerald-400 mb-2">
+          <div v-if="!editingLego || editingLego.uuid !== lego.uuid" class="text-xl font-medium text-accent-2 mb-2">
             "{{ lego.text }}"
           </div>
           <div v-else class="space-y-2 mb-2">
             <textarea
               v-model="editingLego.editedText"
-              class="w-full bg-canvas border border-line rounded px-4 py-2 text-emerald-400 text-lg font-medium focus:outline-none focus:border-emerald-500"
+              class="w-full bg-canvas border border-line rounded px-4 py-2 text-accent-2 text-lg font-medium focus:outline-none focus:border-accent-2"
               rows="2"
               placeholder="LEGO text (known language)"
             ></textarea>
@@ -154,7 +154,7 @@
                 v-for="(prov, idx) in lego.provenance"
                 :key="idx"
                 @click="showProvenance(prov, lego)"
-                class="text-emerald-400 hover:text-emerald-300 underline decoration-dotted transition-colors"
+                class="text-accent-2 hover:text-accent underline decoration-dotted transition-colors"
                 :title="formatProvenanceTooltip(prov)"
               >
                 {{ prov.provenance }}
@@ -170,21 +170,21 @@
         <div class="flex items-center gap-6 mb-4 text-sm">
           <div class="flex items-center gap-2">
             <span class="text-muted">FCFS:</span>
-            <span class="font-semibold text-emerald-400">{{ formatScore(lego.fcfs_score) }}</span>
+            <span class="font-semibold text-accent-2">{{ formatScore(lego.fcfs_score) }}</span>
             <div class="score-bar">
               <div class="score-bar-fill bg-emerald-500" :style="{ width: `${lego.fcfs_score}%` }"></div>
             </div>
           </div>
           <div class="flex items-center gap-2">
             <span class="text-muted">Utility:</span>
-            <span class="font-semibold text-emerald-400">{{ lego.utility_score }}</span>
+            <span class="font-semibold text-accent-2">{{ lego.utility_score }}</span>
             <div class="score-bar">
               <div class="score-bar-fill bg-blue-500" :style="{ width: `${lego.utility_score}%` }"></div>
             </div>
           </div>
           <div class="flex items-center gap-2">
             <span class="text-muted">Pedagogical:</span>
-            <span class="font-semibold text-emerald-400">{{ lego.pedagogical_score }}</span>
+            <span class="font-semibold text-accent-2">{{ lego.pedagogical_score }}</span>
             <div class="score-bar">
               <div class="score-bar-fill bg-purple-500" :style="{ width: `${lego.pedagogical_score}%` }"></div>
             </div>
@@ -283,7 +283,7 @@
     >
       <div class="bg-surface border border-line rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <div class="flex items-center justify-between p-6 border-b border-line">
-          <h2 class="text-2xl font-bold text-emerald-400">Provenance Chain</h2>
+          <h2 class="text-2xl font-bold text-accent-2">Provenance Chain</h2>
           <button
             @click="closeProvenanceModal"
             class="text-muted hover:text-ink text-2xl"
@@ -293,36 +293,36 @@
         </div>
 
         <div class="p-6 space-y-4">
-          <div class="bg-canvas/50 border border-line rounded-lg p-4">
-            <div class="text-emerald-400 font-semibold mb-2">Current LEGO</div>
+          <div class="bg-surface-2 border border-line rounded-lg p-4">
+            <div class="text-accent-2 font-semibold mb-2">Current LEGO</div>
             <div class="text-ink text-lg">"{{ provenanceModal.lego?.text }}"</div>
           </div>
 
           <div v-if="provenanceModal.provenance" class="space-y-3">
             <div class="text-sm font-semibold text-ink">Source Information:</div>
-            <div class="bg-emerald-900/20 border border-emerald-500/50 rounded-lg p-4 space-y-2 text-sm">
+            <div class="bg-surface-2 border border-accent-2/50 rounded-lg p-4 space-y-2 text-sm">
               <div>
                 <span class="text-muted">Provenance ID:</span>
-                <span class="text-emerald-400 ml-2 font-mono">{{ provenanceModal.provenance.provenance }}</span>
+                <span class="text-accent-2 ml-2 font-mono">{{ provenanceModal.provenance.provenance }}</span>
               </div>
               <div>
                 <span class="text-muted">Source SEED ID:</span>
-                <span class="text-emerald-400 ml-2 font-mono">{{ provenanceModal.provenance.source_seed_id }}</span>
+                <span class="text-accent-2 ml-2 font-mono">{{ provenanceModal.provenance.source_seed_id }}</span>
               </div>
               <div>
                 <span class="text-muted">Translation UUID:</span>
-                <span class="text-emerald-400 ml-2 font-mono text-xs">{{ provenanceModal.provenance.source_translation_uuid }}</span>
+                <span class="text-accent-2 ml-2 font-mono text-xs">{{ provenanceModal.provenance.source_translation_uuid }}</span>
               </div>
               <div>
                 <span class="text-muted">Original UUID:</span>
-                <span class="text-emerald-400 ml-2 font-mono text-xs">{{ provenanceModal.provenance.original_uuid }}</span>
+                <span class="text-accent-2 ml-2 font-mono text-xs">{{ provenanceModal.provenance.original_uuid }}</span>
               </div>
             </div>
           </div>
 
-          <div class="text-xs text-faint bg-canvas/50 border border-line rounded-lg p-4">
-            <strong class="text-emerald-400">Provenance Tracking:</strong> This LEGO was generated from SEED
-            <span class="font-mono text-emerald-400">{{ provenanceModal.provenance?.source_seed_id }}</span>
+          <div class="text-xs text-muted bg-surface-2 border border-line rounded-lg p-4">
+            <strong class="text-accent-2">Provenance Tracking:</strong> This LEGO was generated from SEED
+            <span class="font-mono text-accent-2">{{ provenanceModal.provenance?.source_seed_id }}</span>
             during the LEGO generation phase. Click through the chain to trace back to the original translation.
           </div>
         </div>

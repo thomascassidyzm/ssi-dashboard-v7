@@ -632,4 +632,71 @@ defineExpose({
     transform: scale(1.1);
   }
 }
+
+/*
+ * LIGHT MODE legibility overrides.
+ * The template uses dark-tuned Tailwind utilities (bg-{hue}-900/20 fills with
+ * light text-{hue}-200/300/400). On a light canvas the translucent dark fill
+ * becomes a faint tint and the light text drops far below WCAG AA. Re-tint here
+ * to legible same-hue values. Scoped under [data-theme="light"] so dark mode is
+ * byte-identical.
+ */
+:global([data-theme="light"]) .word-divider-editor :deep(.bg-blue-900\/20) {
+  background-color: #eff6ff;
+  border-color: #93c5fd;
+}
+:global([data-theme="light"]) .word-divider-editor :deep(.text-blue-200),
+:global([data-theme="light"]) .word-divider-editor :deep(.text-blue-300) {
+  color: #1e40af; /* blue-800 on #eff6ff -> ~8:1 */
+}
+:global([data-theme="light"]) .word-divider-editor :deep(.text-blue-400) {
+  color: #1d4ed8; /* blue-700 on white -> ~6.3:1 */
+}
+
+:global([data-theme="light"]) .word-divider-editor :deep(.bg-purple-900\/20) {
+  background-color: #faf5ff;
+  border-color: #c084fc;
+}
+:global([data-theme="light"]) .word-divider-editor :deep(.text-purple-100),
+:global([data-theme="light"]) .word-divider-editor :deep(.text-purple-300),
+:global([data-theme="light"]) .word-divider-editor :deep(.text-purple-400),
+:global([data-theme="light"]) .word-divider-editor :deep(.text-purple-400\/60) {
+  color: #6b21a8; /* purple-800 on light tint -> ~7:1 */
+}
+
+/* COMPONENTIZATION textarea (purple-900/30 fill + purple-100 text) */
+:global([data-theme="light"]) .word-divider-editor :deep(.bg-purple-900\/30) {
+  background-color: #faf5ff;
+  border-color: #c084fc;
+  color: #581c87; /* purple-900 -> ~9:1 on faint tint */
+}
+
+/* Emerald / green accents on white */
+:global([data-theme="light"]) .word-divider-editor :deep(.text-emerald-400) {
+  color: #047857; /* emerald-700 -> ~4.7:1 */
+}
+:global([data-theme="light"]) .word-divider-editor :deep(.text-green-400) {
+  color: #15803d; /* green-700 -> ~4.8:1 */
+}
+
+/* Warning yellows on white / light tint */
+:global([data-theme="light"]) .word-divider-editor :deep(.text-yellow-400),
+:global([data-theme="light"]) .word-divider-editor :deep(.text-yellow-300) {
+  color: #a16207; /* yellow-700 -> ~4.7:1 */
+}
+
+/* Validation status panels (green-900/20 & yellow-900/20 tints) */
+:global([data-theme="light"]) .word-divider-editor :deep(.bg-green-900\/20) {
+  background-color: #f0fdf4;
+  border-color: #4ade80 !important;
+}
+:global([data-theme="light"]) .word-divider-editor :deep(.bg-yellow-900\/20) {
+  background-color: #fefce8;
+  border-color: #facc15 !important;
+}
+
+/* COMPOSITE divider border + section fill */
+:global([data-theme="light"]) .word-divider-editor :deep(.border-purple-700\/50) {
+  border-color: #c084fc;
+}
 </style>

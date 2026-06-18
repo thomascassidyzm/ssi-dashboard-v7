@@ -5,7 +5,7 @@
       <!-- Header -->
       <header class="mb-8">
         <div class="flex items-center gap-3 mb-6">
-          <router-link :to="`/production/${courseCode}`" class="text-muted hover:text-emerald-400 transition-colors text-sm">
+          <router-link :to="`/production/${courseCode}`" class="text-muted hover:text-accent-2 transition-colors text-sm">
             &larr; Production Suite
           </router-link>
           <span class="text-faint">|</span>
@@ -17,14 +17,14 @@
             <div class="text-right">
               <span class="text-faint uppercase tracking-wider text-xs">Phrases</span>
               <div class="text-lg font-semibold">
-                <span class="text-emerald-400">{{ recordedCount }}</span>
+                <span class="text-accent-2">{{ recordedCount }}</span>
                 <span class="text-faint"> / </span>
                 <span class="text-ink">{{ totalRecordings }}</span>
               </div>
             </div>
             <div class="text-right">
               <span class="text-faint uppercase tracking-wider text-xs">Coverage</span>
-              <div class="text-lg font-semibold text-emerald-400">{{ totalCoverage }}%</div>
+              <div class="text-lg font-semibold text-accent-2">{{ totalCoverage }}%</div>
             </div>
           </div>
         </div>
@@ -54,30 +54,30 @@
             <div class="p-6">
               <!-- Stats Grid -->
               <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
+                <div class="bg-canvas rounded-lg p-4 border border-line">
                   <div class="text-2xl font-bold text-ink">{{ stats.totalLegos }}</div>
                   <div class="text-xs text-faint uppercase tracking-wider mt-1">Building blocks</div>
                 </div>
-                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
-                  <div class="text-2xl font-bold text-emerald-400">{{ stats.phrasesToRecord }}</div>
+                <div class="bg-canvas rounded-lg p-4 border border-line">
+                  <div class="text-2xl font-bold text-accent-2">{{ stats.phrasesToRecord }}</div>
                   <div class="text-xs text-faint uppercase tracking-wider mt-1">Phrases</div>
                 </div>
-                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
-                  <div class="text-2xl font-bold text-amber-400">{{ stats.directRecord }}</div>
+                <div class="bg-canvas rounded-lg p-4 border border-line">
+                  <div class="text-2xl font-bold text-accent">{{ stats.directRecord }}</div>
                   <div class="text-xs text-faint uppercase tracking-wider mt-1">Direct</div>
                 </div>
-                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
+                <div class="bg-canvas rounded-lg p-4 border border-line">
                   <div class="text-2xl font-bold text-ink">~{{ stats.estimatedMinutes }}m</div>
                   <div class="text-xs text-faint uppercase tracking-wider mt-1">Est. Time</div>
                 </div>
-                <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
-                  <div class="text-2xl font-bold text-emerald-400">{{ stats.reductionPercent }}%</div>
+                <div class="bg-canvas rounded-lg p-4 border border-line">
+                  <div class="text-2xl font-bold text-accent-2">{{ stats.reductionPercent }}%</div>
                   <div class="text-xs text-faint uppercase tracking-wider mt-1">Reduction</div>
                 </div>
               </div>
 
               <!-- Efficiency Bar -->
-              <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
+              <div class="bg-canvas rounded-lg p-4 border border-line">
                 <div class="flex items-center justify-between mb-2 text-sm">
                   <span class="text-muted">Recording Efficiency</span>
                   <span class="text-ink">{{ totalRecordings }} recordings &rarr; {{ stats.totalPhrases.toLocaleString() }} phrases</span>
@@ -93,7 +93,7 @@
           <section class="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="text-lg font-semibold text-emerald-400">Ready to Record?</h2>
+                <h2 class="text-lg font-semibold text-accent-2">Ready to Record?</h2>
                 <p class="text-muted text-sm mt-1">
                   Open the teleprompter-style Recording Studio to flow through all {{ totalRecordings }} phrases
                 </p>
@@ -117,7 +117,7 @@
               <div class="flex items-center gap-3">
                 <span class="text-2xl">🧬</span>
                 <div>
-                  <h2 class="text-lg font-semibold text-violet-300">How phrases get stitched</h2>
+                  <h2 class="text-lg font-semibold text-violet-300 lt-violet-strong">How phrases get stitched</h2>
                   <p class="text-sm text-muted">New phrases are built from pieces your voices already recorded</p>
                 </div>
               </div>
@@ -134,7 +134,7 @@
                   <button v-if="demoAudio[currentExample.seed]"
                           @click="playDemoAudio(currentExample.seed)"
                           :class="[
-                            'flex items-center gap-2 px-4 py-2 text-ink rounded-lg transition-colors',
+                            'flex items-center gap-2 px-4 py-2 text-ink lt-on-fill rounded-lg transition-colors',
                             currentlyPlaying === currentExample.seed
                               ? 'bg-violet-700 ring-2 ring-violet-400'
                               : 'bg-violet-600 hover:bg-violet-500'
@@ -153,7 +153,7 @@
               </div>
 
               <!-- Build visualization -->
-              <div class="bg-canvas/50 rounded-lg p-4 border border-line/50">
+              <div class="bg-canvas rounded-lg p-4 border border-line">
                 <p class="text-xs text-faint uppercase tracking-wider mb-4 text-center">Built from these recorded phrases:</p>
 
                 <div class="flex flex-wrap justify-center gap-2 mb-6">
@@ -186,7 +186,7 @@
                                     currentlyPlaying === source.seed ? 'ring-2 ring-white/50' : '',
                                     source.playBtnClass
                                   ]">
-                            <svg class="w-3 h-3 text-ink ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-3 h-3 text-ink lt-on-fill ml-0.5" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
                             </svg>
                           </button>
@@ -212,9 +212,9 @@
                   <div>
                     <p class="text-sm text-ink font-medium">The Magic</p>
                     <p class="text-sm text-muted mt-1">
-                      By recording just <span class="text-emerald-400 font-semibold">{{ totalRecordings }} phrases</span>,
-                      we can stitch together audio for all <span class="text-violet-400 font-semibold">{{ stats.totalPhrases.toLocaleString() }} phrases</span> in the course.
-                      That's a <span class="text-amber-400 font-semibold">{{ stats.reductionPercent }}% reduction</span> in recording effort.
+                      By recording just <span class="text-accent-2 font-semibold">{{ totalRecordings }} phrases</span>,
+                      we can stitch together audio for all <span class="text-violet-400 font-semibold lt-violet-strong">{{ stats.totalPhrases.toLocaleString() }} phrases</span> in the course.
+                      That's a <span class="text-accent font-semibold">{{ stats.reductionPercent }}% reduction</span> in recording effort.
                     </p>
                   </div>
                 </div>
@@ -365,7 +365,7 @@
               <h2 class="text-sm font-semibold text-ink uppercase tracking-wider">
                 Flagged Splices
               </h2>
-              <p class="text-xs text-emerald-400 mt-1">
+              <p class="text-xs text-accent-2 mt-1">
                 {{ flaggedPhrases.length }} need re-recording
               </p>
             </div>
@@ -648,3 +648,22 @@ onMounted(() => {
   fetchDemoAudio()
 })
 </script>
+
+<style scoped>
+/* Light-mode contrast lifts for the hardcoded Tailwind palette accents used as
+   foreground text / pill labels. Dark mode is untouched — these only apply under
+   [data-theme="light"]. Hues are preserved, darkened to pass WCAG AA on the light
+   pastel (/5–/20) fills and white/canvas surfaces. */
+:root[data-theme="light"] :deep(.lt-violet-strong) { color: #6d28d9; }      /* violet-700, 7.1:1 on white */
+:root[data-theme="light"] :deep(.text-emerald-400) { color: #047857; }       /* emerald-700 */
+:root[data-theme="light"] :deep(.text-emerald-300) { color: #047857; }
+:root[data-theme="light"] :deep(.text-amber-400)   { color: #92400e; }        /* amber-800 */
+:root[data-theme="light"] :deep(.text-amber-300)   { color: #92400e; }
+:root[data-theme="light"] :deep(.text-violet-400)  { color: #6d28d9; }        /* violet-700 */
+:root[data-theme="light"] :deep(.text-violet-300)  { color: #6d28d9; }
+:root[data-theme="light"] :deep(.text-red-400)     { color: #b91c1c; }        /* red-700 */
+/* Solid saturated (violet/emerald/amber-600) fills carry text-ink, which is
+   near-black in light mode → weak. Force white label/icon on those fills in light
+   only; dark mode keeps its light text-ink. */
+:root[data-theme="light"] :deep(.lt-on-fill) { color: #ffffff; }
+</style>

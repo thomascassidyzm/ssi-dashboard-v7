@@ -25,11 +25,11 @@
             <span class="text-muted">Total:</span>
             <span class="ml-1 font-medium">{{ stats.total }}</span>
           </div>
-          <div class="stat text-amber-400">
+          <div class="stat stat-unresolved text-amber-400">
             <span class="text-muted">Unresolved:</span>
             <span class="ml-1 font-medium">{{ stats.unresolved }}</span>
           </div>
-          <div class="stat text-emerald-400">
+          <div class="stat stat-resolved text-emerald-400">
             <span class="text-muted">Resolved:</span>
             <span class="ml-1 font-medium">{{ stats.resolved }}</span>
           </div>
@@ -120,7 +120,7 @@
         <div
           v-for="issue in issues"
           :key="`${issue.audio_id}-${issue.feedback_type}`"
-          class="issue-card bg-surface rounded-lg p-4 border-l-4"
+          class="issue-card bg-surface rounded-lg p-4 border border-line border-l-4"
           :class="getIssueBorderClass(issue.feedback_type)"
         >
           <div class="flex items-start justify-between gap-4">
@@ -516,5 +516,17 @@ onMounted(() => {
 .modal-enter-from .modal-content,
 .modal-leave-to .modal-content {
   transform: scale(0.95);
+}
+
+/* Light-mode-only contrast fixes (dark mode untouched) */
+:root[data-theme="light"] .stat-unresolved {
+  color: var(--accent); /* #a85508 on white = 6.4:1 (amber-400 was 1.6:1) */
+}
+:root[data-theme="light"] .stat-resolved {
+  color: var(--accent-2); /* #047857 on white = 8.9:1 (emerald-400 was 1.7:1) */
+}
+/* "confusing" type badge: white on yellow-600 #ca8a04 = 2.66:1 -> darken fill */
+:root[data-theme="light"] .type-badge.bg-yellow-600 {
+  background-color: #854d0e !important; /* white = 6.4:1 */
 }
 </style>

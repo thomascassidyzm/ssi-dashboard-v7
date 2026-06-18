@@ -512,4 +512,75 @@ function handleStop() {
 .progress-bar {
   background: linear-gradient(90deg, #3b82f6, #1d4ed8);
 }
+
+/*
+ * Light-mode contrast overrides.
+ * The template uses hardcoded Tailwind palette colors (bg-*-900/30 dark
+ * translucent fills + text-*-400 bright text + border-*-700) tuned for the
+ * dark canvas. In light mode those fills resolve near-white and the 400-weight
+ * text drops well below WCAG AA. Re-tone the status boxes (tinted light fills),
+ * darken the text to ~700 weight, and firm up the borders. Dark mode is
+ * untouched because every rule is scoped under [data-theme="light"].
+ */
+:root[data-theme='light'] .step-content {
+  /* Status box fills: light tints instead of dark/30 washes */
+  --st-amber-bg: #fef3c7;   /* amber-100 */
+  --st-amber-bd: #f59e0b;   /* amber-500 */
+  --st-amber-tx: #92400e;   /* amber-800 ~ 6.4:1 on amber-100 */
+  --st-red-bg: #fee2e2;     /* red-100 */
+  --st-red-bd: #ef4444;     /* red-500 */
+  --st-red-tx: #b91c1c;     /* red-700 ~ 5.1:1 on red-100 */
+  --st-emerald-bg: #d1fae5; /* emerald-100 */
+  --st-emerald-bd: #10b981; /* emerald-500 */
+  --st-emerald-tx: #047857; /* emerald-700 ~ 4.9:1 on emerald-100 */
+}
+
+/* Amber (warning) boxes */
+:root[data-theme='light'] .step-content .bg-amber-900\/30 {
+  background-color: var(--st-amber-bg) !important;
+}
+:root[data-theme='light'] .step-content .border-amber-700 {
+  border-color: var(--st-amber-bd) !important;
+}
+:root[data-theme='light'] .step-content .text-amber-400 {
+  color: var(--st-amber-tx) !important;
+}
+
+/* Red (error) boxes */
+:root[data-theme='light'] .step-content .bg-red-900\/30 {
+  background-color: var(--st-red-bg) !important;
+}
+:root[data-theme='light'] .step-content .border-red-700 {
+  border-color: var(--st-red-bd) !important;
+}
+:root[data-theme='light'] .step-content .text-red-400 {
+  color: var(--st-red-tx) !important;
+}
+
+/* Emerald (success) boxes + inline success text */
+:root[data-theme='light'] .step-content .bg-emerald-900\/30 {
+  background-color: var(--st-emerald-bg) !important;
+}
+:root[data-theme='light'] .step-content .border-emerald-700 {
+  border-color: var(--st-emerald-bd) !important;
+}
+:root[data-theme='light'] .step-content .text-emerald-400 {
+  color: var(--st-emerald-tx) !important;
+}
+
+/* Inline progress accents (on light surface, not in a tinted box) */
+:root[data-theme='light'] .step-content .text-blue-400 {
+  color: #1d4ed8 !important;   /* blue-700 ~ 5.8:1 on white */
+}
+:root[data-theme='light'] .step-content .text-purple-400 {
+  color: #6d28d9 !important;   /* violet-700 ~ 6.1:1 on white */
+}
+:root[data-theme='light'] .step-content .text-cyan-400 {
+  color: #0e7490 !important;   /* cyan-700 ~ 4.7:1 on white */
+}
+
+/* Stop button border: red-500 too pale on white */
+:root[data-theme='light'] .step-content .border-red-500 {
+  border-color: #dc2626 !important; /* red-600 */
+}
 </style>

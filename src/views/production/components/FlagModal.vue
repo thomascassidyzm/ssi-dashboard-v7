@@ -24,7 +24,7 @@
           <!-- Body -->
           <div class="modal-body px-6 py-4 space-y-4">
             <!-- Sample Info -->
-            <div v-if="sample" class="sample-info bg-surface-2 rounded-lg p-4">
+            <div v-if="sample" class="sample-info bg-surface-2 border border-line rounded-lg p-4">
               <div class="text-sm text-ink space-y-1">
                 <div><span class="font-medium">Text:</span> {{ sample.text }}</div>
                 <div><span class="font-medium">UUID:</span> <code class="text-xs">{{ sample.uuid }}</code></div>
@@ -41,8 +41,8 @@
                 <label
                   class="flag-option flex items-start gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                   :class="selectedFlagType === 'text_edit'
-                    ? 'border-amber-500 bg-amber-500 bg-opacity-10'
-                    : 'border-line hover:border-line'"
+                    ? 'border-amber-600 bg-amber-500 bg-opacity-10'
+                    : 'border-line hover:border-faint'"
                 >
                   <input
                     v-model="selectedFlagType"
@@ -60,8 +60,8 @@
                 <label
                   class="flag-option flex items-start gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                   :class="selectedFlagType === 'regen_tts'
-                    ? 'border-emerald-500 bg-emerald-500 bg-opacity-10'
-                    : 'border-line hover:border-line'"
+                    ? 'border-emerald-600 bg-emerald-500 bg-opacity-10'
+                    : 'border-line hover:border-faint'"
                 >
                   <input
                     v-model="selectedFlagType"
@@ -79,8 +79,8 @@
                 <label
                   class="flag-option flex items-start gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                   :class="selectedFlagType === 'human_needed'
-                    ? 'border-red-500 bg-red-500 bg-opacity-10'
-                    : 'border-line hover:border-line'"
+                    ? 'border-red-600 bg-red-500 bg-opacity-10'
+                    : 'border-line hover:border-faint'"
                 >
                   <input
                     v-model="selectedFlagType"
@@ -122,7 +122,7 @@
             <button
               @click="submit"
               :disabled="!selectedFlagType || isSubmitting"
-              class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              class="submit-btn px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               <svg v-if="isSubmitting" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -241,5 +241,15 @@ onUnmounted(() => {
 /* Custom Radio Buttons */
 input[type="radio"] {
   accent-color: currentColor;
+}
+
+/* Light mode: emerald-500 (#10b981) fails WCAG AA for white text (2.54:1).
+   Darken to emerald-700 (#047857 = 5.48:1) while keeping the green hue.
+   Scoped to light so dark mode's button is unchanged. */
+:global([data-theme="light"]) .submit-btn:not(:disabled) {
+  background-color: #047857;
+}
+:global([data-theme="light"]) .submit-btn:not(:disabled):hover {
+  background-color: #065f46;
 }
 </style>

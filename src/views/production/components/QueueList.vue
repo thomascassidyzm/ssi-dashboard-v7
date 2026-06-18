@@ -1,8 +1,8 @@
 <template>
-  <section class="bg-surface/50 rounded-lg border border-line/20 p-6">
+  <section class="bg-surface rounded-lg border border-line p-6 shadow-sm">
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-xl font-semibold text-ink flex items-center gap-2">
-        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-accent-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
         </svg>
         Generation Queue
@@ -15,7 +15,7 @@
         <select
           :value="statusFilter"
           @change="$emit('update-filter', ($event.target as HTMLSelectElement).value)"
-          class="bg-surface-2 text-ink px-3 py-2 rounded border border-line focus:border-emerald-500 focus:outline-none text-sm"
+          class="bg-surface-2 text-ink px-3 py-2 rounded border border-line focus:border-accent-2 focus:outline-none text-sm"
         >
           <option value="all">All Items</option>
           <option value="queued">Queued</option>
@@ -108,7 +108,7 @@ const loadMore = () => {
 <style scoped>
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgb(71, 85, 105) rgb(30, 41, 59);
+  scrollbar-color: var(--surface-3) var(--surface-2);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -116,16 +116,16 @@ const loadMore = () => {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgb(30, 41, 59);
+  background: var(--surface-2);
   border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgb(71, 85, 105);
+  background: var(--surface-3);
   border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgb(100, 116, 139);
+  background: var(--line);
 }
 </style>

@@ -232,7 +232,7 @@ defineExpose({
 
 .env-select {
   background: var(--color-slate, var(--surface-2));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  border: 1px solid var(--line);
   color: var(--color-paper-dim, var(--muted));
   font-size: 0.8125rem;
   padding: 0.375rem 2.5rem 0.375rem 0.75rem;
@@ -277,7 +277,7 @@ defineExpose({
   padding: 0.375rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--ink);
+  color: #ffffff;
   background: #1e40af;
   border: 1px solid #2563eb;
   border-radius: 6px;

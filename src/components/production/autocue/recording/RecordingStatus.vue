@@ -54,14 +54,15 @@ onUnmounted(() => {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  background: var(--color-shadow, var(--surface));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   z-index: 1000;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease;

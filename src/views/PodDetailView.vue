@@ -3,18 +3,18 @@
     <div class="max-w-6xl mx-auto">
       <!-- Breadcrumb -->
       <div class="flex items-center gap-3 mb-6 text-sm">
-        <router-link to="/" class="text-emerald-400 hover:text-emerald-300">Home</router-link>
+        <router-link to="/" class="link-emerald">Home</router-link>
         <span class="text-faint">/</span>
-        <router-link :to="`/production/${courseCode}`" class="text-emerald-400 hover:text-emerald-300">{{ courseCode }}</router-link>
+        <router-link :to="`/production/${courseCode}`" class="link-emerald">{{ courseCode }}</router-link>
         <span class="text-faint">/</span>
-        <router-link :to="`/production/${courseCode}/pods`" class="text-emerald-400 hover:text-emerald-300">Pods</router-link>
+        <router-link :to="`/production/${courseCode}/pods`" class="link-emerald">Pods</router-link>
         <span class="text-faint">/</span>
         <span class="text-muted">{{ slug }}</span>
       </div>
 
       <div v-if="loading" class="text-faint text-center py-12">Loading pod…</div>
 
-      <div v-else-if="error" class="bg-red-900/40 border border-red-700 rounded-lg p-4 text-red-200">
+      <div v-else-if="error" class="err-box rounded-lg p-4">
         {{ error }}
       </div>
 
@@ -22,18 +22,18 @@
         <!-- Pod header -->
         <div class="mb-8">
           <div class="flex items-center gap-3 mb-2">
-            <h1 class="text-3xl font-bold text-emerald-400">{{ pod.title }}</h1>
+            <h1 class="text-3xl font-bold text-emerald">{{ pod.title }}</h1>
             <span :class="podTypeClass(pod.pod_type)" class="text-xs px-2 py-0.5 rounded-full">{{ pod.pod_type }}</span>
           </div>
           <div class="text-muted text-sm">
-            <code class="text-emerald-400">{{ pod.id }}</code>
+            <code class="text-emerald">{{ pod.id }}</code>
             · {{ sentences.length }} sentences
             <span v-if="pod.source_file"> · from <code>{{ pod.source_file }}</code></span>
           </div>
         </div>
 
         <!-- Metadata (hosts / design notes) -->
-        <div v-if="hasMetadata" class="mb-6 bg-surface/60 border border-line rounded-lg p-4 text-sm">
+        <div v-if="hasMetadata" class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
           <details>
             <summary class="cursor-pointer text-ink font-semibold">Pod metadata</summary>
             <div class="mt-3 space-y-2 text-muted">
@@ -41,7 +41,7 @@
                 <span class="text-ink">Hosts:</span>
                 <ul class="ml-4 mt-1">
                   <li v-for="h in pod.metadata.hosts" :key="h.name">
-                    <span class="text-emerald-400">{{ h.name }}</span>
+                    <span class="text-emerald">{{ h.name }}</span>
                     <span v-if="h.description"> — {{ h.description }}</span>
                   </li>
                 </ul>
@@ -57,13 +57,13 @@
         </div>
 
         <!-- Speaker → voice mapping -->
-        <div class="mb-6 bg-surface/60 border border-line rounded-lg p-4 text-sm">
+        <div class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
           <details open>
             <summary class="cursor-pointer text-ink font-semibold">Speaker voice mapping</summary>
             <div class="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2">
-              <div v-for="(v, spk) in pod.speakers" :key="spk" class="flex justify-between px-2 py-1 bg-canvas/50 rounded">
+              <div v-for="(v, spk) in pod.speakers" :key="spk" class="flex justify-between px-2 py-1 bg-surface-2 border border-line rounded">
                 <span :class="spk === '_default' ? 'text-faint italic' : 'text-ink'">{{ spk }}</span>
-                <span class="text-emerald-400 font-mono text-xs">{{ v.voice_id }} <span class="text-faint">({{ v.provider }})</span></span>
+                <span class="text-emerald font-mono text-xs">{{ v.voice_id }} <span class="text-faint">({{ v.provider }})</span></span>
               </div>
             </div>
           </details>
@@ -74,7 +74,7 @@
              Generate the per-sentence narration text via Haiku (Max Plan),
              store on the row. Audio rendering is a separate pass once the
              text looks good. -->
-        <div class="mb-6 bg-surface/60 border border-line rounded-lg p-4 text-sm">
+        <div class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
           <div class="flex items-center justify-between gap-3">
             <div class="flex flex-col gap-1 min-w-0">
               <div class="text-ink font-semibold">Stage-1 explainer text</div>
@@ -107,9 +107,9 @@
             </div>
           </div>
           <div v-if="explainerStatus" class="mt-3 text-xs text-muted">{{ explainerStatus }}</div>
-          <div v-if="explainerError" class="mt-3 text-xs text-red-300 bg-red-900/30 border border-red-800 rounded px-2 py-1">{{ explainerError }}</div>
+          <div v-if="explainerError" class="mt-3 text-xs err-inline rounded px-2 py-1">{{ explainerError }}</div>
           <div v-if="explainerAudioStatus" class="mt-3 text-xs text-muted">{{ explainerAudioStatus }}</div>
-          <div v-if="explainerAudioError" class="mt-3 text-xs text-red-300 bg-red-900/30 border border-red-800 rounded px-2 py-1">{{ explainerAudioError }}</div>
+          <div v-if="explainerAudioError" class="mt-3 text-xs err-inline rounded px-2 py-1">{{ explainerAudioError }}</div>
         </div>
 
         <!-- Pod audio coverage + inline regeneration
@@ -117,14 +117,14 @@
              Phase 8. Optimistic: no confirm, runs in the background and reloads
              the pod when done so the new audio is playable right here. This is
              NOT the destructive text "Regenerate" — it never deletes audio. -->
-        <div class="mb-6 bg-surface/60 border border-line rounded-lg p-4 text-sm">
+        <div class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
           <div class="flex items-center justify-between gap-3">
             <div class="flex flex-col gap-1 min-w-0">
               <div class="text-ink font-semibold">Pod audio</div>
               <div class="text-faint text-xs">
                 {{ audioVoiced }}/{{ audioTotal }} clips voiced
                 <span v-if="audioMissing > 0"> · {{ audioMissing }} missing</span>
-                <span v-else class="text-emerald-400/70"> · fully voiced</span>
+                <span v-else class="text-emerald"> · fully voiced</span>
               </div>
             </div>
             <button
@@ -135,13 +135,13 @@
             >{{ audioBusy ? 'Regenerating…' : `Regenerate audio (${audioMissing})` }}</button>
           </div>
           <div v-if="audioStatus" class="mt-3 text-xs text-muted">{{ audioStatus }}</div>
-          <div v-if="audioError" class="mt-3 text-xs text-red-300 bg-red-900/30 border border-red-800 rounded px-2 py-1">{{ audioError }}</div>
+          <div v-if="audioError" class="mt-3 text-xs err-inline rounded px-2 py-1">{{ audioError }}</div>
         </div>
 
         <!-- Scenes and sentences -->
         <div v-for="scene in groupedScenes" :key="scene.number" class="mb-8">
           <h2 class="text-sm uppercase tracking-wide text-faint mb-2 flex items-center gap-3">
-            <span class="bg-surface px-2 py-0.5 rounded text-muted">{{ scene.number }}</span>
+            <span class="bg-surface border border-line px-2 py-0.5 rounded text-muted">{{ scene.number }}</span>
             <span>{{ scene.title || `Scene ${scene.number}` }}</span>
             <span class="text-faint text-xs">({{ scene.sentences.length }} sentences)</span>
           </h2>
@@ -154,7 +154,7 @@
                 {{ sent.beat_label }}
               </div>
               <!-- Sentence row -->
-              <div class="bg-surface/40 border border-line hover:border-line rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-start text-sm">
+              <div class="bg-surface border border-line rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-start text-sm row-sep">
                 <div class="text-faint font-mono text-xs tabular-nums pt-0.5">{{ sent.global_order }}</div>
                 <div class="text-muted text-xs truncate pt-0.5" :title="sent.speaker">{{ sent.speaker }}</div>
                 <div class="min-w-0">
@@ -165,10 +165,10 @@
                     <!-- Stage-1 explainer (inline, only when populated) -->
                     <div
                       v-if="sent.explainer_text"
-                      class="text-amber-300/80 text-xs mt-1 italic leading-snug"
+                      class="explainer-note text-xs mt-1 italic leading-snug"
                       :title="sent.explainer_text"
                     >
-                      <span class="text-amber-500/60 not-italic mr-1">ⓘ</span>{{ sent.explainer_text }}
+                      <span class="explainer-icon not-italic mr-1">ⓘ</span>{{ sent.explainer_text }}
                     </div>
                   </template>
                   <!-- Edit mode -->
@@ -181,7 +181,7 @@
                       <button :disabled="savingEdit" @click="saveSentence(sent)" class="text-xs px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white">{{ savingEdit ? 'Saving…' : 'Save' }}</button>
                       <button :disabled="savingEdit" @click="cancelEdit" class="text-xs px-2.5 py-1 rounded border border-line text-ink">Cancel</button>
                       <span class="text-[11px] text-faint">editing clears this line's audio</span>
-                      <span v-if="editError" class="text-[11px] text-red-400">{{ editError }}</span>
+                      <span v-if="editError" class="text-[11px] text-danger">{{ editError }}</span>
                     </div>
                   </div>
                 </div>
@@ -195,38 +195,38 @@
                   <button
                     v-if="sent.target_audio_id"
                     @click="playAudio(sent.target_audio_id)"
-                    :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.target_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-surface-2 hover:bg-emerald-700 text-white hover:text-emerald-100']"
+                    :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.target_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
                     :title="`Play target (${targetName})`"
                   >{{ targetFlag }}</button>
                   <span v-else class="px-2 py-1 text-xs text-faint" title="No target audio">{{ targetFlag }}</span>
                   <button
                     v-if="sent.known_audio_id"
                     @click="playAudio(sent.known_audio_id)"
-                    :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.known_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-surface-2 hover:bg-emerald-700 text-white hover:text-emerald-100']"
+                    :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.known_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
                     :title="`Play known (${knownName})`"
                   >{{ knownFlag }}</button>
                   <span v-else class="px-2 py-1 text-xs text-faint" title="No known audio">{{ knownFlag }}</span>
                   <button
                     v-if="sent.explainer_audio_id"
                     @click="playAudio(sent.explainer_audio_id)"
-                    :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.explainer_audio_id ? 'bg-amber-700 text-amber-100' : 'bg-surface-2 hover:bg-amber-700 text-white hover:text-amber-100']"
+                    :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.explainer_audio_id ? 'bg-amber-700 text-amber-100' : 'bg-surface-2 hover:bg-amber-700 text-ink hover:text-amber-100']"
                     title="Play Stage-1 explainer (mixed-language narration)"
                   >ⓘ</button>
                   <span
                     v-else-if="sent.explainer_text"
-                    class="px-2 py-1 text-xs text-amber-500/40"
+                    class="px-2 py-1 text-xs explainer-icon-dim"
                     title="Explainer text generated; audio not yet rendered"
                   >ⓘ</span>
                   <button
                     v-if="sent.target_audio_id && sent.known_audio_id"
                     @click="playPair(sent.target_audio_id, sent.known_audio_id)"
-                    :class="['px-2 py-1 text-xs rounded transition-colors bg-surface-2 hover:bg-emerald-700 text-white hover:text-emerald-100']"
+                    :class="['px-2 py-1 text-xs rounded transition-colors bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
                     title="Play target then known"
                   >⇉</button>
                   <button
                     v-if="editingId !== sent.id"
                     @click="startEdit(sent)"
-                    class="px-2 py-1 text-xs rounded bg-surface-2 hover:bg-sky-700 text-white hover:text-sky-100"
+                    class="px-2 py-1 text-xs rounded bg-surface-2 hover:bg-sky-700 text-ink hover:text-sky-100"
                     title="Edit target / known text"
                   >✎</button>
                 </div>
@@ -360,8 +360,8 @@ function getSceneTitle(sceneNum) {
 }
 
 function podTypeClass(type) {
-  if (type === 'core') return 'bg-emerald-900/40 text-emerald-300 border border-emerald-700'
-  return 'bg-purple-900/40 text-purple-300 border border-purple-700'
+  if (type === 'core') return 'pill-emerald'
+  return 'pill-purple'
 }
 
 async function getSignedUrl(audioId) {
@@ -633,10 +633,10 @@ function recChip(sent) {
   const title = Object.entries(kinds)
     .map(([kind, k]) => `${kind}: ${k.recorded ? 'human' : (k.origin || 'missing')}`)
     .join(' · ')
-  if (human === entries.length) return { text: `human ${human}/${entries.length}`, cls: 'bg-emerald-900/40 text-emerald-300 border border-emerald-800', title }
-  if (human > 0) return { text: `human ${human}/${entries.length}`, cls: 'bg-amber-900/30 text-amber-300 border border-amber-800', title }
+  if (human === entries.length) return { text: `human ${human}/${entries.length}`, cls: 'pill-emerald', title }
+  if (human > 0) return { text: `human ${human}/${entries.length}`, cls: 'pill-amber', title }
   if (tts > 0) return { text: 'tts', cls: 'bg-surface text-faint border border-line', title }
-  return { text: '—', cls: 'bg-surface/60 text-faint border border-line', title }
+  return { text: '—', cls: 'bg-surface text-faint border border-line', title }
 }
 
 onMounted(() => { loadPod(); loadRecordingStatus() })
@@ -645,3 +645,70 @@ onUnmounted(() => {
   if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' }
 })
 </script>
+
+<style scoped>
+/* Theme-aware helpers. Dark mode keeps the original emerald/amber/red palette;
+   light mode swaps to AA-legible equivalents (kept in the same hue family).
+   Dark is the default; light is scoped under [data-theme="light"]. */
+
+/* Emerald accent text (links, headings, ids, voice ids). Dark = emerald-400. */
+.text-emerald { color: #34d399; }
+.link-emerald { color: #34d399; }
+.link-emerald:hover { color: #6ee7b7; }
+
+/* Inline italic explainer note + its leading icon. Dark = amber-300/500. */
+.explainer-note { color: rgba(252, 211, 77, 0.8); }
+.explainer-icon { color: rgba(245, 158, 11, 0.6); }
+.explainer-icon-dim { color: rgba(245, 158, 11, 0.4); }
+
+/* Status pills. Dark = the original *-900/40 fill + *-300 text. */
+.pill-emerald { background: rgba(6, 78, 59, 0.4); color: #6ee7b7; border: 1px solid #047857; }
+.pill-purple { background: rgba(59, 7, 100, 0.4); color: #d8b4fe; border: 1px solid #7e22ce; }
+.pill-amber { background: rgba(120, 53, 15, 0.3); color: #fcd34d; border: 1px solid #92400e; }
+
+/* Big error banner + inline error rows. Dark = red-900/red-700/red-200/300. */
+.err-box { background: rgba(127, 29, 29, 0.4); border: 1px solid #b91c1c; color: #fecaca; }
+.err-inline { background: rgba(127, 29, 29, 0.3); border: 1px solid #991b1b; color: #fca5a5; }
+
+[data-theme="light"] .text-emerald,
+[data-theme="light"] .link-emerald {
+  /* emerald-700 #047857 on white surface = 5.0:1 (AA body). */
+  color: #047857;
+}
+[data-theme="light"] .link-emerald:hover { color: #065f46; }
+
+[data-theme="light"] .explainer-note {
+  /* amber-800 #92400e on white = 6.8:1; keeps the warm explainer identity. */
+  color: #92400e;
+}
+[data-theme="light"] .explainer-icon { color: #b45309; }
+[data-theme="light"] .explainer-icon-dim { color: #b45309; }
+
+[data-theme="light"] .pill-emerald {
+  /* emerald-50 fill, emerald-800 text #065f46 = 7.4:1, emerald-300 border. */
+  background: #ecfdf5; color: #065f46; border-color: #6ee7b7;
+}
+[data-theme="light"] .pill-purple {
+  background: #faf5ff; color: #6b21a8; border-color: #d8b4fe;
+}
+[data-theme="light"] .pill-amber {
+  background: #fffbeb; color: #92400e; border-color: #fcd34d;
+}
+
+[data-theme="light"] .err-box {
+  /* red-50 fill, red-700 text #b91c1c = 5.9:1, red-300 border. */
+  background: #fef2f2; color: #b91c1c; border-color: #fca5a5;
+}
+[data-theme="light"] .err-inline {
+  background: #fef2f2; color: #b91c1c; border-color: #fecaca;
+}
+
+/* Subtle shadow so white cards/rows lift off the slate-50 canvas in light mode
+   (the border carries separation in dark mode; no shadow needed there). */
+[data-theme="light"] .card-sep {
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+[data-theme="light"] .row-sep {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+</style>

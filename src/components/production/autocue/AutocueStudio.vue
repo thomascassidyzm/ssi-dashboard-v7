@@ -429,6 +429,19 @@ onUnmounted(() => {
   --color-paper-dim: var(--muted);
 }
 
+/*
+ * Light-mode legibility: the cinematic palette uses two hardcoded neon
+ * literals (emerald #06ffa5, film-red #e63946) that are unreadable on the
+ * light canvas/surface, and remaps borders to --surface-3 (too faint on
+ * white). Re-point these to the theme's accent-2/danger/line ONLY in light
+ * mode so dark mode keeps its neon identity untouched.
+ */
+:root[data-theme="light"] .autocue-studio {
+  --color-emerald: var(--accent-2);
+  --color-film-red: var(--danger);
+  --color-graphite: var(--line);
+}
+
 /* Film grain overlay */
 .film-grain {
   position: fixed;

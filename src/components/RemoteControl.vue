@@ -367,7 +367,7 @@ onBeforeUnmount(() => {
   right: 0;
   width: 22rem;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   padding: 0.75rem;
@@ -381,7 +381,7 @@ onBeforeUnmount(() => {
 .rc-close { background: transparent; border: 0; color: var(--muted); font-size: 1.25rem; cursor: pointer; line-height: 1; padding: 0 0.25rem; }
 .rc-close:hover { color: var(--ink); }
 
-.rc-section { border-top: 1px solid var(--surface-2); padding-top: 0.5rem; margin-top: 0.5rem; }
+.rc-section { border-top: 1px solid var(--line); padding-top: 0.5rem; margin-top: 0.5rem; }
 .rc-section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
 .rc-section-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.375rem; }
 .rc-refresh { background: transparent; border: 0; color: var(--muted); cursor: pointer; font-size: 0.875rem; }
@@ -397,7 +397,7 @@ onBeforeUnmount(() => {
 .rc-bar-fill.crit { background: #ef4444; }
 
 .rc-procs { list-style: none; margin: 0; padding: 0; max-height: 14rem; overflow-y: auto; }
-.rc-proc { display: flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0; border-bottom: 1px solid #273445; }
+.rc-proc { display: flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0; border-bottom: 1px solid var(--line); }
 .rc-proc:last-child { border-bottom: 0; }
 .rc-proc-main { flex: 1; display: flex; align-items: center; gap: 0.4rem; min-width: 0; }
 .rc-proc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); flex-shrink: 0; }
@@ -446,4 +446,11 @@ onBeforeUnmount(() => {
 
 .rc-message { margin-top: 0.5rem; font-size: 0.7rem; color: #86efac; padding: 0.375rem 0.5rem; background: #064e3b; border-radius: 4px; }
 .rc-message.error { color: #fca5a5; background: #7f1d1d; }
+
+/* Light-mode-only fixes: amber/red status text sits on light surfaces here
+   (in dark mode these light tints read fine, so scope these overrides to light). */
+:root[data-theme="light"] .rc-toggle.warn { color: #b45309; }
+:root[data-theme="light"] .rc-toggle.crit { color: #b91c1c; }
+:root[data-theme="light"] .rc-error { color: #b91c1c; }
+:root[data-theme="light"] .rc-fix-cmd { color: #92400e; }
 </style>

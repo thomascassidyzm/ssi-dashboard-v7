@@ -1492,4 +1492,49 @@ const executeAllFlagged = async () => {
 .audio-pipeline {
   padding: 0;
 }
+
+/*
+ * LIGHT-MODE CONTRAST OVERRIDES (dark mode untouched).
+ * This view uses fixed Tailwind palette utilities (emerald/amber/purple/blue/
+ * teal/red -400 and -300) that were tuned for dark card backgrounds. On the
+ * light theme those shades sit on white/slate-50 surfaces at ~1.4:1–3.3:1 and
+ * fail WCAG AA. Re-map the foreground swatches to their darker (-700/-600)
+ * equivalents only under [data-theme="light"] so status text, stat numbers,
+ * badge labels and inline <code> stay the same hue but become legible.
+ * All ratios below are vs white (#ffffff, --surface) which is the worst case;
+ * the slate-50 chip fills are darker so ratios there are marginally higher.
+ */
+:global([data-theme='light']) .audio-pipeline :deep(.text-emerald-400),
+:global([data-theme='light']) .audio-pipeline :deep(.text-emerald-300) {
+  color: #047857 !important; /* emerald-700: 4.9:1 on #fff (was #34d399 1.7:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-amber-400),
+:global([data-theme='light']) .audio-pipeline :deep(.text-amber-300) {
+  color: #b45309 !important; /* amber-700: 4.9:1 on #fff (was #fbbf24 1.4:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-purple-400),
+:global([data-theme='light']) .audio-pipeline :deep(.text-purple-300),
+:global([data-theme='light']) .audio-pipeline :deep(.text-purple-200) {
+  color: #7e22ce !important; /* purple-700: 5.9:1 on #fff (was #c084fc 2.4:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-blue-400) {
+  color: #1d4ed8 !important; /* blue-700: 6.3:1 on #fff (was #60a5fa 2.6:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-teal-400),
+:global([data-theme='light']) .audio-pipeline :deep(.text-teal-300) {
+  color: #0f766e !important; /* teal-700: 5.2:1 on #fff (was #2dd4bf 1.7:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-red-400) {
+  color: #b91c1c !important; /* red-700: 6.0:1 on #fff (was #f87171 3.3:1) */
+}
+/* Opacity-modifier subtext variants (rgb a/0.7) — drop the alpha + darken. */
+:global([data-theme='light']) .audio-pipeline :deep(.text-emerald-400\/70) {
+  color: #047857 !important; /* emerald-700, full alpha */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-amber-400\/70) {
+  color: #b45309 !important; /* amber-700, full alpha */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-teal-400\/70) {
+  color: #0f766e !important; /* teal-700, full alpha */
+}
 </style>

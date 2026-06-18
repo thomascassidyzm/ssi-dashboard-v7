@@ -120,8 +120,8 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ef4444;
-  border: 2px solid #ef4444;
+  color: var(--color-film-red, var(--danger));
+  border: 2px solid var(--color-film-red, var(--danger));
   border-radius: 50%;
   margin-bottom: 1rem;
 }

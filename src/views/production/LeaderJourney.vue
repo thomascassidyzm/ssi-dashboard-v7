@@ -407,6 +407,13 @@ const currentStepKey = computed(() => {
   border-radius: 10px;
   transition: border-color 0.15s;
 }
+/* Light mode: white cards on a near-white canvas need a stronger edge to
+   separate. Promote the border to --line and add a subtle shadow.
+   Scoped to light so the dark card edge is untouched. */
+:root[data-theme="light"] .journey-step {
+  border-color: var(--line);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+}
 .journey-step.current { border-color: var(--color-emerald, #06ffa5); }
 .journey-step.done { opacity: 0.75; }
 
@@ -429,6 +436,9 @@ const currentStepKey = computed(() => {
 .step-marker.active { border-color: var(--color-emerald, #06ffa5); color: var(--color-emerald, #06ffa5); }
 .step-marker.attention { border-color: #fb7185; color: #fb7185; }
 .step-marker.pending { border-style: dashed; }
+/* Light: faint marker ring + too-light rose; darken for legibility. */
+:root[data-theme="light"] .step-marker { border-color: var(--line); }
+:root[data-theme="light"] .step-marker.attention { border-color: #e11d48; color: #e11d48; }
 
 .step-body { flex: 1; min-width: 0; }
 
@@ -457,6 +467,7 @@ const currentStepKey = computed(() => {
 .step-status.done { color: var(--accent-2); }
 .step-status.attention { color: #fb7185; }
 .step-status.pending { font-style: italic; }
+:root[data-theme="light"] .step-status.attention { color: #be123c; }
 
 .step-blurb {
   font-size: 0.84rem;
@@ -490,9 +501,16 @@ const currentStepKey = computed(() => {
   padding: 0.1rem 0.45rem;
   white-space: nowrap;
 }
+/* Light: a white-tint chip is invisible on a white card — use a real surface. */
+:root[data-theme="light"] .slot-name {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
 
 .slot-assignment { color: var(--color-paper-dim, var(--muted)); }
 .slot-assignment.unassigned { color: #fbbf24; }
+/* Light: amber #fbbf24 is ~1.5:1 on white — unreadable. Darken the warning. */
+:root[data-theme="light"] .slot-assignment.unassigned { color: #b45309; }
 
 .slot-coverage {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
@@ -522,6 +540,7 @@ const currentStepKey = computed(() => {
   font-size: 0.78rem;
   color: #fbbf24;
 }
+:root[data-theme="light"] .journey-note { color: #b45309; }
 
 @media (max-width: 640px) {
   .step-head { flex-direction: column; gap: 0.2rem; }

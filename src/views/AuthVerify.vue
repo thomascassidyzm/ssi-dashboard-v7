@@ -8,15 +8,15 @@
 
       <div v-else-if="error" class="space-y-4">
         <div class="text-6xl">❌</div>
-        <p class="text-red-400">{{ error }}</p>
-        <router-link to="/login" class="text-emerald-400 hover:underline">
+        <p class="text-danger">{{ error }}</p>
+        <router-link to="/login" class="text-accent-2 hover:underline">
           Try again
         </router-link>
       </div>
 
       <div v-else class="space-y-4">
         <div class="text-6xl">✅</div>
-        <p class="text-emerald-400">Logged in successfully!</p>
+        <p class="text-accent-2">Logged in successfully!</p>
         <p class="text-muted">Redirecting...</p>
       </div>
     </div>

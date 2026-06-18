@@ -46,7 +46,7 @@
                     <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
                   </svg>
                 </div>
-                <div v-else-if="index < currentPhraseIndex" class="w-6 h-6 flex items-center justify-center text-emerald-400">
+                <div v-else-if="index < currentPhraseIndex" class="check-icon w-6 h-6 flex items-center justify-center text-emerald-400">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                   </svg>
@@ -67,7 +67,7 @@
                 <span class="arrow text-faint">&rarr;</span>
                 <span
                   class="target-text font-medium"
-                  :class="currentPhraseIndex === index ? 'text-amber-300' : 'text-ink'"
+                  :class="currentPhraseIndex === index ? 'text-amber-300 target-active' : 'text-ink'"
                 >
                   {{ phrase.target_text }}
                 </span>
@@ -385,5 +385,33 @@ onUnmounted(() => {
 .phrase-list::-webkit-scrollbar-thumb {
   background: var(--surface-3);
   border-radius: 3px;
+}
+
+/* Light-mode contrast fixes. Dark mode keeps the original Tailwind shades. */
+[data-theme="light"] .target-active {
+  /* amber-300 on white = 1.44:1 (fail). amber-700 = 5.02:1 (AA). */
+  color: #b45309;
+}
+[data-theme="light"] .check-icon {
+  /* emerald-400 on white = 1.92:1 (fail UI 3:1). emerald-700 = 5.48:1. */
+  color: #047857;
+}
+/* Status pills: white text on *-600 fails 4.5:1 on light (3.19-3.77:1).
+   Darken to *-700 (5.0-5.5:1) only in light mode. */
+[data-theme="light"] .type-badge.bg-cyan-600 {
+  background-color: #0e7490;
+}
+[data-theme="light"] .type-badge.bg-emerald-600 {
+  background-color: #047857;
+}
+[data-theme="light"] .type-badge.bg-amber-600 {
+  background-color: #b45309;
+}
+[data-theme="light"] .type-badge.bg-orange-600 {
+  background-color: #c2410c;
+}
+/* ROUND badge (amber-600 + white = 3.19:1) -> amber-700 in light. */
+[data-theme="light"] .round-badge {
+  background-color: #b45309;
 }
 </style>

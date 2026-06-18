@@ -5,7 +5,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex items-start justify-between">
           <div>
-            <h1 class="text-3xl font-bold text-emerald-400">
+            <h1 class="text-3xl font-bold text-accent-2">
               Popty v14
             </h1>
             <p class="mt-2 text-muted">
@@ -34,10 +34,10 @@
 
       <!-- User Workflow -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">User Workflow</h2>
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">User Workflow</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Create/Manage Course -->
-          <router-link to="/course" class="block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
+          <router-link to="/course" class="color-card block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
             <div class="flex items-center justify-between">
               <div>
                 <h3 class="text-2xl font-bold text-ink mb-2">Course Manager</h3>
@@ -54,15 +54,15 @@
           </router-link>
 
           <!-- Browse Existing Courses -->
-          <router-link to="/courses" class="block bg-gradient-to-r from-surface-2 to-surface hover:from-surface-3 hover:to-surface-2 border border-line/30 rounded-lg p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-slate-500/20">
+          <router-link to="/courses" class="block bg-gradient-to-r from-surface-2 to-surface hover:from-surface-3 hover:to-surface-2 border border-line rounded-lg p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-slate-500/20">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-2xl font-bold text-emerald-400 mb-2">📚 Browse & Compile Courses</h3>
+                <h3 class="text-2xl font-bold text-accent-2 mb-2">📚 Browse & Compile Courses</h3>
                 <p class="text-ink text-sm">
                   View, edit, compile courses and generate audio for app deployment
                 </p>
               </div>
-              <div class="text-emerald-400">
+              <div class="text-accent-2">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                 </svg>
@@ -71,7 +71,7 @@
           </router-link>
 
           <!-- Recording Studio -->
-          <router-link to="/record" class="block bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 rounded-lg border border-red-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-red-500/20">
+          <router-link to="/record" class="color-card block bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 rounded-lg border border-red-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-red-500/20">
             <div class="flex items-center justify-between">
               <div>
                 <h3 class="text-2xl font-bold text-ink mb-2">🎙️ Recording Studio</h3>
@@ -88,7 +88,7 @@
           </router-link>
 
           <!-- Production Suite -->
-          <router-link to="/production/courses" class="block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-lg border border-purple-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-purple-500/20">
+          <router-link to="/production/courses" class="color-card block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-lg border border-purple-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-purple-500/20">
             <div class="flex items-center justify-between">
               <div>
                 <h3 class="text-2xl font-bold text-ink mb-2">🎛️ Production Suite</h3>
@@ -105,7 +105,7 @@
           </router-link>
 
           <!-- Agent Monitor -->
-          <router-link to="/monitor" class="block bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 rounded-lg border border-cyan-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-cyan-500/20">
+          <router-link to="/monitor" class="color-card block bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 rounded-lg border border-cyan-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-cyan-500/20">
             <div class="flex items-center justify-between">
               <div>
                 <h3 class="text-2xl font-bold text-ink mb-2">📡 Agent Monitor</h3>
@@ -170,7 +170,7 @@
             <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4">
               <!-- Course Builder -->
               <div class="flex items-center flex-shrink-0">
-                <div class="w-40 h-28 rounded-lg border-2 border-emerald-500 bg-emerald-500/10 flex flex-col items-center justify-center">
+                <div class="flow-chip flow-emerald w-40 h-28 rounded-lg border-2 border-emerald-500 bg-emerald-500/10 flex flex-col items-center justify-center">
                   <div class="text-emerald-400 font-bold text-lg">Course Builder</div>
                   <div class="text-emerald-300 text-xs mt-1 px-2 text-center">Seeds + LEGOs + Phrases</div>
                   <div class="text-emerald-400/60 text-xs mt-1">Port 3471</div>
@@ -182,7 +182,7 @@
 
               <!-- Phase 8 Audio -->
               <div class="flex items-center flex-shrink-0">
-                <div class="w-32 h-28 rounded-lg border-2 border-purple-500 bg-purple-500/10 flex flex-col items-center justify-center">
+                <div class="flow-chip flow-purple w-32 h-28 rounded-lg border-2 border-purple-500 bg-purple-500/10 flex flex-col items-center justify-center">
                   <div class="text-purple-400 font-bold text-lg">Phase 8</div>
                   <div class="text-purple-300 text-xs mt-1 px-2 text-center">Audio Generation</div>
                   <div class="text-purple-400/60 text-xs mt-1">Port 3465</div>
@@ -194,7 +194,7 @@
 
               <!-- Phase 9 Manifest -->
               <div class="flex items-center flex-shrink-0">
-                <div class="w-32 h-28 rounded-lg border-2 border-amber-500 bg-amber-500/10 flex flex-col items-center justify-center">
+                <div class="flow-chip flow-amber w-32 h-28 rounded-lg border-2 border-amber-500 bg-amber-500/10 flex flex-col items-center justify-center">
                   <div class="text-amber-400 font-bold text-lg">Phase 9</div>
                   <div class="text-amber-300 text-xs mt-1 px-2 text-center">Manifest Compilation</div>
                   <div class="text-amber-400/60 text-xs mt-1">Port 3466</div>
@@ -225,7 +225,7 @@
             <router-link to="/intelligence" class="flex items-center gap-4 p-4 bg-canvas/80 border border-emerald-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">🧠</div>
               <div>
-                <h3 class="font-semibold text-emerald-400">Phase Intelligence Modules</h3>
+                <h3 class="font-semibold text-accent-2">Phase Intelligence Modules</h3>
                 <p class="text-sm text-muted">Live methodology for each phase - the single source of truth with embedded inline prompts</p>
               </div>
             </router-link>
@@ -292,3 +292,20 @@ function handleLogout() {
   router.push('/login')
 }
 </script>
+
+<style scoped>
+/* These cards always have a saturated colored background (identical in both
+   themes), so their title/icon must stay light. In dark mode text-ink is
+   already light; only light mode needs the override, scoped so dark is untouched. */
+:global([data-theme="light"]) .color-card .text-ink {
+  color: #ffffff;
+}
+
+/* Pipeline flow chips: hardcoded *-400/300 text sits on a pale 10% color tint
+   in light mode (~1.6:1, illegible). Darken to the 700/800 shade of the SAME
+   hue so they pass AA while staying recognizably emerald/purple/amber.
+   Scoped to light mode only; dark mode keeps its bright-on-dark chips. */
+:global([data-theme="light"]) .flow-emerald [class*="text-emerald"] { color: #047857; }
+:global([data-theme="light"]) .flow-purple [class*="text-purple"] { color: #6b21a8; }
+:global([data-theme="light"]) .flow-amber [class*="text-amber"] { color: #b45309; }
+</style>

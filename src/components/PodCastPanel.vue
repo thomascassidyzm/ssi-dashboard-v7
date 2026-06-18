@@ -13,7 +13,7 @@
         <button
           :disabled="proposing || loading || !canSolve"
           @click="workOutParts"
-          class="text-xs px-3 py-1.5 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500 disabled:opacity-50"
+          class="cast-outline-btn text-xs px-3 py-1.5 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500 disabled:opacity-50"
           title="Split the characters fairly across your people"
         >
           {{ proposing ? 'Working…' : 'Work out the parts' }}
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div v-if="status" class="text-xs mt-2" :class="statusIsError ? 'text-red-300' : 'text-emerald-300'">{{ status }}</div>
+    <div v-if="status" class="cast-status text-xs mt-2" :class="statusIsError ? 'text-red-300' : 'text-emerald-300'">{{ status }}</div>
 
     <div v-if="loading" class="text-faint text-xs py-4">Loading cast…</div>
 
@@ -39,7 +39,7 @@
           <div
             v-for="(person, i) in people"
             :key="i"
-            class="flex items-center gap-2 flex-wrap bg-canvas/60 border border-line rounded p-2"
+            class="cast-row flex items-center gap-2 flex-wrap bg-canvas/60 border border-line rounded p-2"
           >
             <input
               v-model.trim="person.name"
@@ -61,7 +61,7 @@
               class="bg-canvas border border-line rounded px-2 py-1.5 text-xs text-ink flex-1 min-w-[14rem]"
             />
             <label
-              class="flex items-center gap-1.5 text-[11px] cursor-pointer select-none"
+              class="cast-guide-label flex items-center gap-1.5 text-[11px] cursor-pointer select-none"
               :class="person.guide ? 'text-sky-300' : 'text-muted'"
               title="The bilingual guide reads the translations and explanations"
             >
@@ -100,8 +100,8 @@
           :key="i"
           class="text-xs rounded px-3 py-2 border"
           :class="w.type === 'need-more-people'
-            ? 'bg-amber-900/30 border-amber-700 text-amber-200'
-            : 'bg-canvas/60 border-line text-ink'"
+            ? 'cast-warn bg-amber-900/30 border-amber-700 text-amber-200'
+            : 'cast-row bg-canvas/60 border-line text-ink'"
         >{{ w.message }}</div>
       </div>
 
@@ -111,11 +111,11 @@
           {{ proposal ? 'The parts — review, then Save cast' : 'Saved cast' }}
         </h3>
         <div class="grid gap-2 sm:grid-cols-2">
-          <div v-for="a in allocation" :key="a.voiceId" class="bg-canvas/60 border border-line rounded p-3">
+          <div v-for="a in allocation" :key="a.voiceId" class="cast-row bg-canvas/60 border border-line rounded p-3">
             <div class="flex items-center justify-between gap-2">
               <div class="text-sm text-ink font-medium truncate">
                 {{ a.name }}
-                <span v-if="a.isGuide" class="text-[10px] text-sky-300 border border-sky-700 rounded-full px-1.5 py-0.5 ml-1 align-middle">
+                <span v-if="a.isGuide" class="cast-guide-pill text-[10px] text-sky-300 border border-sky-700 rounded-full px-1.5 py-0.5 ml-1 align-middle">
                   bilingual guide{{ a.guideSuggested ? ' (suggested)' : '' }}
                 </span>
               </div>
@@ -131,12 +131,12 @@
                   <a
                     :href="recordLink(a.voiceId)"
                     target="_blank"
-                    class="text-[11px] px-2 py-1 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500"
+                    class="cast-outline-btn text-[11px] px-2 py-1 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500"
                   >Open ↗</a>
                 </template>
                 <span
                   v-else
-                  class="text-[11px] px-2 py-1 rounded border border-line/60 text-faint"
+                  class="text-[11px] px-2 py-1 rounded border border-line text-faint"
                   title="Record links only work once the cast is saved"
                 >
                   Save cast to get the link
@@ -470,3 +470,45 @@ async function copyRecordLink(voiceId) {
 
 onMounted(loadCast)
 </script>
+
+<!--
+  Light-mode legibility overrides. Dark mode keeps its light-toned accents
+  (emerald-300 / sky-300 / amber-200 on dark fills) untouched — every rule
+  below is scoped under [data-theme="light"], where those pale tones drop
+  to ~1.4–1.9:1 on near-white. We pull them to the AA-passing, same-hue
+  tokens (green→--accent-2 #047857 4.66:1, red→--danger #dc2626 4.83:1,
+  sky→#0369a1 5.7:1) and give rows/pills a solid fill + readable border.
+-->
+<style scoped>
+:global([data-theme="light"]) .cast-outline-btn {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+:global([data-theme="light"]) .cast-status.text-emerald-300 {
+  color: var(--accent-2);
+}
+:global([data-theme="light"]) .cast-status.text-red-300 {
+  color: var(--danger);
+}
+/* Guide label/pill: sky family → darkened sky that passes AA on white. */
+:global([data-theme="light"]) .cast-guide-label.text-sky-300 {
+  color: #0369a1;
+}
+:global([data-theme="light"]) .cast-guide-pill {
+  color: #0369a1;
+  border-color: #7dd3fc;
+}
+/* Rows/cards: pale bg-canvas/60 barely separates from canvas — give them a
+   solid raised surface + a full-strength line so they read as cards. */
+:global([data-theme="light"]) .cast-row {
+  background-color: var(--surface-2);
+  border-color: var(--line);
+}
+/* Need-more-people warning: amber-200 on amber-900/30 ≈ 1.1:1 in light.
+   Same amber hue, light fill + dark text. */
+:global([data-theme="light"]) .cast-warn {
+  background-color: #fef3c7;
+  border-color: #d97706;
+  color: #78350f;
+}
+</style>

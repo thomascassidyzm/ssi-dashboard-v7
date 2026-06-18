@@ -1,7 +1,7 @@
 <template>
   <div class="learning-journey-view">
     <!-- Stats Header -->
-    <div v-if="stats" class="stats-bar bg-surface-2 rounded-lg p-4 mb-6">
+    <div v-if="stats" class="stats-bar bg-surface border border-line rounded-lg p-4 mb-6">
       <div class="flex flex-wrap gap-6">
         <div class="stat-item">
           <span class="text-muted text-sm">Rounds</span>
@@ -12,17 +12,17 @@
           <span class="text-ink font-bold text-lg ml-2">{{ stats.totalItems }}</span>
         </div>
         <div class="stat-item">
-          <span class="text-emerald-400 text-sm">With Audio</span>
-          <span class="text-emerald-300 font-bold text-lg ml-2">{{ stats.itemsWithAudio }}</span>
+          <span class="stat-label-audio text-emerald-400 text-sm">With Audio</span>
+          <span class="stat-val-audio text-emerald-300 font-bold text-lg ml-2">{{ stats.itemsWithAudio }}</span>
         </div>
         <div v-if="stats.itemsMissingAudio > 0" class="stat-item">
-          <span class="text-amber-400 text-sm">Missing Audio</span>
-          <span class="text-amber-300 font-bold text-lg ml-2">{{ stats.itemsMissingAudio }}</span>
+          <span class="stat-label-missing text-amber-400 text-sm">Missing Audio</span>
+          <span class="stat-val-missing text-amber-300 font-bold text-lg ml-2">{{ stats.itemsMissingAudio }}</span>
         </div>
         <!-- Learner view: how much content is hidden because audio is missing -->
         <div v-if="stats.learnerView" class="stat-item">
-          <span class="text-emerald-400 text-sm">Learner view</span>
-          <span class="text-emerald-300 text-sm ml-2">
+          <span class="stat-label-audio text-emerald-400 text-sm">Learner view</span>
+          <span class="stat-val-audio text-emerald-300 text-sm ml-2">
             {{ (stats.legosDroppedForAudio || 0) }} LEGOs + {{ (stats.phrasesDroppedForAudio || 0) }} phrases awaiting audio hidden, rounds renumbered
           </span>
         </div>
@@ -81,7 +81,7 @@
       <div
         v-for="round in rounds"
         :key="round.roundNumber"
-        class="round-card bg-surface rounded-lg overflow-hidden"
+        class="round-card bg-surface border border-line rounded-lg overflow-hidden"
       >
         <!-- Round Header -->
         <div
@@ -111,7 +111,7 @@
               R{{ round.roundNumber }}
             </div>
             <div class="lego-info">
-              <span class="text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
+              <span class="lego-id-text text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
             </div>
             <!-- LEGO Text: known = target -->
             <div class="lego-text text-ink text-sm">
@@ -302,7 +302,7 @@
               <div v-else class="audio-status flex gap-2">
                 <span
                   v-if="item.hasAudio"
-                  class="text-emerald-400"
+                  class="audio-ok-icon text-emerald-400"
                   title="Audio available"
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -311,7 +311,7 @@
                 </span>
                 <span
                   v-else
-                  class="text-amber-400"
+                  class="audio-missing-icon text-amber-400"
                   title="Audio missing"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -740,5 +740,21 @@ const getItemBgClass = (item: ScriptItem): string => {
 .slide-leave-from {
   max-height: 2000px;
   opacity: 1;
+}
+
+/* Light-mode legibility: the raw Tailwind emerald/amber-300/400 text and icons
+   fall to ~1.3–1.5:1 on the light surfaces. Re-tint to the darkened accent
+   tokens (same hue family) so they pass WCAG AA. Dark mode is untouched. */
+:root[data-theme="light"] .stat-label-audio,
+:root[data-theme="light"] .stat-val-audio,
+:root[data-theme="light"] .lego-id-text,
+:root[data-theme="light"] .audio-ok-icon {
+  color: var(--accent-2); /* #047857 emerald family, 4.9:1 on surface, 4.5:1 on surface-2 */
+}
+
+:root[data-theme="light"] .stat-label-missing,
+:root[data-theme="light"] .stat-val-missing,
+:root[data-theme="light"] .audio-missing-icon {
+  color: var(--accent); /* #a85508 amber/orange family, 5.4:1 on surface */
 }
 </style>

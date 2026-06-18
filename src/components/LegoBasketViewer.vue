@@ -5,13 +5,13 @@
       <!-- Back to Dashboard -->
       <router-link
         to="/"
-        class="inline-flex items-center gap-2 text-muted hover:text-emerald-400 transition-colors mb-4"
+        class="inline-flex items-center gap-2 text-muted hover:text-accent-2 transition-colors mb-4"
       >
         <span class="text-xl">←</span>
         <span class="text-sm">Back to Dashboard</span>
       </router-link>
 
-      <h2 class="text-2xl font-bold text-emerald-400 mb-4">LEGO Practice Basket Viewer</h2>
+      <h2 class="text-2xl font-bold text-accent-2 mb-4">LEGO Practice Basket Viewer</h2>
 
       <!-- Course Selector -->
       <div class="mb-4">
@@ -48,7 +48,7 @@
         <div class="flex items-center justify-between">
           <div>
             <label class="text-sm font-medium text-ink">Viewing Batch:</label>
-            <span class="ml-2 text-emerald-400 font-bold">
+            <span class="ml-2 text-accent-2 font-bold">
               Seeds {{ currentBatchStart }}-{{ Math.min(currentBatchStart + 9, availableSeeds.length) }}
             </span>
             <span class="ml-2 text-faint text-sm">
@@ -142,7 +142,7 @@
           <div class="flex items-center justify-between">
             <div class="flex-1">
               <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-xl font-bold text-emerald-400">{{ seedData.seedId }}</h3>
+                <h3 class="text-xl font-bold text-accent-2">{{ seedData.seedId }}</h3>
                 <span class="text-xs px-2 py-1 rounded bg-surface-2 text-muted">
                   {{ getLegoCount(seedData.basket) }} LEGOs
                 </span>
@@ -154,7 +154,7 @@
                 </span>
               </div>
               <div class="text-sm text-ink">{{ seedData.basket?.seed_pair?.known || 'Loading...' }}</div>
-              <div class="text-sm text-emerald-400">{{ seedData.basket?.seed_pair?.target || '' }}</div>
+              <div class="text-sm text-accent-2">{{ seedData.basket?.seed_pair?.target || '' }}</div>
             </div>
             <div class="flex items-center gap-3">
               <button
@@ -192,7 +192,7 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
                   <span class="text-muted">Generation Stage:</span>
-                  <span class="ml-2 text-emerald-400">{{ seedData.basket.generation_stage || 'COMPLETE' }}</span>
+                  <span class="ml-2 text-accent-2">{{ seedData.basket.generation_stage || 'COMPLETE' }}</span>
                 </div>
                 <div>
                   <span class="text-muted">LEGOs in Seed:</span>
@@ -217,7 +217,7 @@
                     :key="seedId"
                     class="text-xs py-1 px-2 bg-surface/50 rounded"
                   >
-                    <span class="text-emerald-400 font-mono">{{ seedId }}:</span>
+                    <span class="text-accent-2 font-mono">{{ seedId }}:</span>
                     <span class="text-ink ml-2">{{ seedPair[0][1] }}</span>
                   </div>
                 </div>
@@ -228,7 +228,7 @@
                 <div class="grid grid-cols-3 gap-4 text-sm">
                   <div>
                     <span class="text-muted">Pattern:</span>
-                    <span class="ml-2 text-emerald-400">{{ formatPattern(seedData.basket.pattern_introduced) || 'None' }}</span>
+                    <span class="ml-2 text-accent-2">{{ formatPattern(seedData.basket.pattern_introduced) || 'None' }}</span>
                   </div>
                   <div>
                     <span class="text-muted">Patterns:</span>
@@ -244,10 +244,10 @@
 
             <!-- Quality Metrics Card -->
             <div v-if="getQualityMetrics(seedData.basket)" class="bg-gradient-to-r from-emerald-900/30 to-blue-900/30 border border-emerald-700/50 rounded-lg p-4">
-              <h3 class="text-md font-bold text-emerald-400 mb-3">📊 Quality Metrics</h3>
+              <h3 class="text-md font-bold text-accent-2 mb-3">📊 Quality Metrics</h3>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="text-center">
-                  <div class="text-2xl font-bold text-emerald-400">{{ getQualityMetrics(seedData.basket).conversationalCount }}</div>
+                  <div class="text-2xl font-bold text-accent-2">{{ getQualityMetrics(seedData.basket).conversationalCount }}</div>
                   <div class="text-xs text-muted mt-1">Conversational</div>
                   <div class="text-xs text-faint">(5+ LEGOs)</div>
                 </div>
@@ -284,17 +284,17 @@
                     <div class="text-lg font-bold">
                       <span class="text-ink">{{ Array.isArray(legoData.lego) ? legoData.lego[0] : legoData.lego.known }}</span>
                       <span class="mx-2 text-faint">→</span>
-                      <span class="text-emerald-400">{{ Array.isArray(legoData.lego) ? legoData.lego[1] : legoData.lego.target }}</span>
+                      <span class="text-accent-2">{{ Array.isArray(legoData.lego) ? legoData.lego[1] : legoData.lego.target }}</span>
                     </div>
                   </div>
                   <div class="text-right text-xs space-y-1">
                     <div class="text-muted">
                       Type:
-                      <span :class="getLegoType(legoData) === 'M' ? 'text-blue-400 font-bold' : 'text-emerald-400'">
+                      <span :class="getLegoType(legoData) === 'M' ? 'text-blue-400 font-bold' : 'text-accent-2'">
                         {{ getLegoType(legoData) }}
                       </span>
                     </div>
-                    <div v-if="legoData.is_final_lego" class="text-emerald-400 font-semibold">
+                    <div v-if="legoData.is_final_lego" class="text-accent-2 font-semibold">
                       ⭐ Final LEGO
                     </div>
                     <div v-if="legoData.current_seed_legos_available !== undefined" class="text-muted">
@@ -326,7 +326,7 @@
                       <span class="text-blue-300">{{ idx + 1 }}.</span>
                       <span class="text-ink">{{ Array.isArray(component) ? component[0] : component.known }}</span>
                       <span class="text-faint">→</span>
-                      <span class="text-emerald-400">{{ Array.isArray(component) ? component[1] : component.target }}</span>
+                      <span class="text-accent-2">{{ Array.isArray(component) ? component[1] : component.target }}</span>
                     </div>
                   </div>
                 </div>
@@ -359,7 +359,7 @@
                           v-model="getEditedPhrase(seedData.seedId, legoKey, idx).target"
                           @blur="savePhrase(seedData.seedId, legoKey, idx)"
                           @keyup.enter="savePhrase(seedData.seedId, legoKey, idx)"
-                          class="w-full px-2 py-1 bg-surface-2 text-emerald-400 border border-line rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          class="w-full px-2 py-1 bg-surface-2 text-accent-2 border border-line rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Spanish"
                         />
                       </div>
@@ -369,7 +369,7 @@
                           <span class="text-faint text-xs mr-2">{{ idx + 1 }}.</span>
                           {{ getDisplayPhrase(seedData.seedId, legoKey, idx, phrase, 0) }}
                         </div>
-                        <div class="text-emerald-400 mt-1">
+                        <div class="text-accent-2 mt-1">
                           {{ getDisplayPhrase(seedData.seedId, legoKey, idx, phrase, 1) }}
                         </div>
                       </div>
@@ -428,7 +428,7 @@
                   </div>
                   <div class="bg-emerald-900/60 px-2 py-1 rounded text-center">
                     <div class="text-emerald-300 font-bold">{{ legoData.phrase_distribution.long_6_plus }}</div>
-                    <div class="text-emerald-400/70 text-xs">6+ LEGOs</div>
+                    <div class="text-accent-2/70 text-xs">6+ LEGOs</div>
                   </div>
                 </div>
               </div>
@@ -455,7 +455,7 @@
       <div v-if="showAudioPreview" class="audio-preview-modal-overlay" @click.self="closeAudioPreview">
         <div class="audio-preview-modal">
           <div class="modal-header">
-            <h3 class="text-lg font-bold text-emerald-400">Audio Preview</h3>
+            <h3 class="text-lg font-bold text-accent-2">Audio Preview</h3>
             <button @click="closeAudioPreview" class="text-muted hover:text-ink text-xl">✕</button>
           </div>
           <div class="modal-content">
@@ -1040,7 +1040,7 @@ table {
 
 .audio-preview-modal {
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 16px;
   width: min(90vw, 440px);
   max-height: 90vh;
@@ -1053,10 +1053,103 @@ table {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--surface-2);
+  border-bottom: 1px solid var(--line);
 }
 
 .modal-content {
   padding: 0;
+}
+
+/*
+ * LIGHT-MODE CONTRAST OVERRIDES (dark mode untouched).
+ * This component hardcodes many dark-tuned Tailwind color utilities
+ * (blue-400/300, green/yellow/orange-300, red-400, and bg-*-900/* pills)
+ * that fall below WCAG AA on the light canvas/surface. These rules only
+ * apply under [data-theme="light"], so dark mode keeps its exact colors.
+ */
+[data-theme="light"] .lego-basket-viewer .text-blue-400,
+[data-theme="light"] .lego-basket-viewer .text-blue-300,
+[data-theme="light"] .lego-basket-viewer .hover\:text-blue-300:hover {
+  color: #1d4ed8; /* blue-700: ~5.5:1 on #fff */
+}
+[data-theme="light"] .lego-basket-viewer .text-green-400,
+[data-theme="light"] .lego-basket-viewer .text-green-300 {
+  color: #047857; /* emerald-700: ~5.5:1 on #fff */
+}
+[data-theme="light"] .lego-basket-viewer .text-yellow-400,
+[data-theme="light"] .lego-basket-viewer .text-yellow-300 {
+  color: #a16207; /* yellow-700: ~4.9:1 on #fff */
+}
+[data-theme="light"] .lego-basket-viewer .text-orange-300 {
+  color: #c2410c; /* orange-700: ~4.8:1 on #fff */
+}
+[data-theme="light"] .lego-basket-viewer .text-red-400,
+[data-theme="light"] .lego-basket-viewer .hover\:text-red-300:hover {
+  color: #b91c1c; /* red-700: ~5.9:1 on #fff */
+}
+
+/* Status pills: dark-tuned bg-*-900/* + text-*-300 are illegible in light.
+   Re-skin to a light tint + dark ink, keeping the same hue family. */
+[data-theme="light"] .lego-basket-viewer .bg-green-900\/40 {
+  background-color: #dcfce7; /* green-100 */
+}
+[data-theme="light"] .lego-basket-viewer .bg-green-900\/40 .text-green-300,
+[data-theme="light"] .lego-basket-viewer .bg-green-900\/40 .text-green-400\/70 {
+  color: #15803d; /* green-700 on green-100 ~4.7:1 */
+}
+[data-theme="light"] .lego-basket-viewer .bg-yellow-900\/40 {
+  background-color: #fef9c3; /* yellow-100 */
+}
+[data-theme="light"] .lego-basket-viewer .bg-yellow-900\/40 .text-yellow-300,
+[data-theme="light"] .lego-basket-viewer .bg-yellow-900\/40 .text-yellow-400\/70 {
+  color: #854d0e; /* yellow-800 on yellow-100 ~5.3:1 */
+}
+[data-theme="light"] .lego-basket-viewer .bg-blue-900\/40 {
+  background-color: #dbeafe; /* blue-100 */
+}
+[data-theme="light"] .lego-basket-viewer .bg-blue-900\/40 .text-blue-300,
+[data-theme="light"] .lego-basket-viewer .bg-blue-900\/40 .text-blue-400\/70 {
+  color: #1d4ed8; /* blue-700 on blue-100 ~5.5:1 */
+}
+[data-theme="light"] .lego-basket-viewer .bg-emerald-900\/60 {
+  background-color: #d1fae5; /* emerald-100 */
+}
+[data-theme="light"] .lego-basket-viewer .bg-emerald-900\/60 .text-emerald-300,
+[data-theme="light"] .lego-basket-viewer .bg-emerald-900\/60 .text-emerald-400\/70 {
+  color: #047857; /* emerald-700 on emerald-100 ~5.0:1 */
+}
+
+/* Inline phrase-count badge variants (no wrapping bg-*-900 parent). */
+[data-theme="light"] .lego-basket-viewer .bg-green-900\/40.text-green-300 {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+[data-theme="light"] .lego-basket-viewer .bg-yellow-900\/40.text-yellow-300 {
+  background-color: #fef9c3;
+  color: #854d0e;
+}
+[data-theme="light"] .lego-basket-viewer .bg-emerald-900\/60.text-emerald-300 {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+/* Conversational phrase row tint + error box: dark-only bg/border. */
+[data-theme="light"] .lego-basket-viewer .bg-emerald-900\/20 {
+  background-color: #ecfdf5; /* emerald-50 */
+}
+[data-theme="light"] .lego-basket-viewer .bg-red-900\/20 {
+  background-color: #fef2f2; /* red-50 */
+}
+
+/* Quality-metrics gradient card: dark emerald/blue gradient reads muddy
+   on light; give it a clean light tint with a visible border. */
+[data-theme="light"] .lego-basket-viewer .from-emerald-900\/30.to-blue-900\/30 {
+  background-image: linear-gradient(to right, #ecfdf5, #eff6ff);
+}
+
+/* Translucent surface-2/30 sub-cards barely separate on the light canvas;
+   add a visible border (light only, so dark stays borderless). */
+[data-theme="light"] .lego-basket-viewer .bg-surface-2\/30 {
+  border: 1px solid var(--line);
 }
 </style>

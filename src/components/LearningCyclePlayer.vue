@@ -463,6 +463,37 @@ if (props.targetItem) {
   overflow: hidden;
 }
 
+/* Light-mode retheme: this widget is built on a self-contained dark palette
+   (--player-*). Override only those variables under the light theme so the
+   whole component re-themes without touching any dark-mode value. */
+:root[data-theme="light"] .learning-cycle-player {
+  --player-bg: var(--canvas);
+  --player-surface: var(--surface);
+  --player-border: var(--line);
+  --player-accent: #1d6fe0;        /* 4.6:1 on white (was #58a6ff = 2.0:1) */
+  --player-accent-glow: rgba(29, 111, 224, 0.25);
+  --player-success: #15803d;       /* darkened for legible dot fills */
+  --player-warning: #b45309;       /* border-only accent */
+  --player-text: var(--ink);
+  --player-text-muted: var(--muted);
+  --player-known: #7c3aed;         /* 5.3:1 on white (was #a371f7 = 2.6:1) */
+  --player-target: #047857;        /* 4.9:1 on white (was #7ee787 = 1.3:1) */
+
+  /* card separation: white cards on slate canvas need a visible edge */
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+/* Mode-toggle active pill on light: surface on canvas needs an edge */
+:root[data-theme="light"] .mode-toggle button.active {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+  border: 1px solid var(--player-border);
+}
+
+/* Content card separation on light */
+:root[data-theme="light"] .content-block:not(.pause-block) {
+  border: 1px solid var(--player-border);
+}
+
 .learning-cycle-player::before {
   content: '';
   position: absolute;

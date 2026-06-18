@@ -223,15 +223,20 @@ function updateFilters() {
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 0.5rem;
-  background: var(--color-slate, var(--surface-2));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
+/* Light mode: white card on slate canvas needs a shadow to separate */
+:root[data-theme="light"] .queue-item {
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
 .queue-item:hover {
-  background: var(--color-graphite, var(--surface-3));
+  background: var(--surface-2);
   border-color: var(--color-emerald, #06ffa5);
 }
 
@@ -295,7 +300,8 @@ function updateFilters() {
 
 .meta-badge {
   padding: 0.125rem 0.5rem;
-  background: var(--color-void, var(--canvas));
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 4px;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.6875rem;

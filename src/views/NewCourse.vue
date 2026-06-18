@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-screen bg-canvas">
     <!-- Header -->
-    <header class="bg-surface/50 border-b border-line/10 backdrop-blur-sm">
+    <header class="bg-surface/50 border-b border-line backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <router-link to="/courses" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
+        <router-link to="/courses" class="inline-flex items-center gap-2 text-accent-2 hover:opacity-80 transition mb-4">
           <span>←</span>
           <span>Back to Course Library</span>
         </router-link>
-        <h1 class="text-3xl font-bold text-emerald-400">
+        <h1 class="text-3xl font-bold text-accent-2">
           Create New Course
         </h1>
         <p class="mt-2 text-muted">
@@ -66,7 +66,7 @@
       </div>
 
       <!-- Wizard Content -->
-      <div class="bg-surface/50 rounded-lg border border-line/20 p-8">
+      <div class="bg-surface rounded-lg border border-line shadow-sm p-8">
         <!-- Step 1: Language Selection -->
         <div v-if="currentStep === 0">
           <h2 class="text-2xl font-semibold text-ink mb-6">Select Languages</h2>
@@ -77,13 +77,13 @@
               <!-- Known Language -->
               <div>
                 <label class="block text-sm font-medium text-ink mb-2">
-                  Known Language (Learning FROM) <span class="text-red-400">*</span>
+                  Known Language (Learning FROM) <span class="text-danger">*</span>
                 </label>
                 <select
                   v-model="formData.sourceLanguage"
                   :disabled="languagesLoading"
-                  class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-                  :class="{ 'border-red-500': errors.sourceLanguage }"
+                  class="w-full bg-surface-2 border border-line rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                  :class="{ 'border-danger': errors.sourceLanguage }"
                   @change="onLanguageChange"
                 >
                   <option value="" disabled selected>{{ languagesLoading ? 'Loading languages...' : 'Select known language' }}</option>
@@ -95,7 +95,7 @@
                     {{ lang.name }} ({{ lang.code }}) {{ lang.native ? `- ${lang.native}` : '' }}
                   </option>
                 </select>
-                <p v-if="errors.sourceLanguage" class="mt-1 text-sm text-red-400">
+                <p v-if="errors.sourceLanguage" class="mt-1 text-sm text-danger">
                   {{ errors.sourceLanguage }}
                 </p>
                 <p v-else class="mt-1 text-xs text-faint">
@@ -106,13 +106,13 @@
               <!-- Target Language -->
               <div>
                 <label class="block text-sm font-medium text-ink mb-2">
-                  Target Language (Learning TO) <span class="text-red-400">*</span>
+                  Target Language (Learning TO) <span class="text-danger">*</span>
                 </label>
                 <select
                   v-model="formData.targetLanguage"
                   :disabled="languagesLoading"
-                  class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-                  :class="{ 'border-red-500': errors.targetLanguage }"
+                  class="w-full bg-surface-2 border border-line rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                  :class="{ 'border-danger': errors.targetLanguage }"
                   @change="onLanguageChange"
                 >
                   <option value="" disabled selected>{{ languagesLoading ? 'Loading languages...' : 'Select target language' }}</option>
@@ -124,7 +124,7 @@
                     {{ lang.name }} ({{ lang.code }}) {{ lang.native ? `- ${lang.native}` : '' }}
                   </option>
                 </select>
-                <p v-if="errors.targetLanguage" class="mt-1 text-sm text-red-400">
+                <p v-if="errors.targetLanguage" class="mt-1 text-sm text-danger">
                   {{ errors.targetLanguage }}
                 </p>
                 <p v-else class="mt-1 text-xs text-faint">
@@ -134,13 +134,13 @@
             </div>
 
             <!-- Auto-computed Course Code Preview -->
-            <div v-if="formData.sourceLanguage && formData.targetLanguage" class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+            <div v-if="formData.sourceLanguage && formData.targetLanguage" class="tint-emerald rounded-lg p-4">
               <div class="flex items-center gap-3">
-                <span class="text-emerald-400 text-xl">✨</span>
+                <span class="tint-emerald-ink text-xl">✨</span>
                 <div>
-                  <p class="text-emerald-300 font-medium">Course will be created as:</p>
+                  <p class="tint-emerald-ink font-medium">Course will be created as:</p>
                   <p class="text-ink mt-1">
-                    <span class="font-mono text-emerald-400">{{ computedCourseCode }}</span>
+                    <span class="font-mono tint-emerald-ink">{{ computedCourseCode }}</span>
                     <span class="text-faint mx-2">→</span>
                     <span>{{ computedDisplayName }}</span>
                   </p>
@@ -158,7 +158,7 @@
             <!-- Course Mode Selection -->
             <div>
               <label class="block text-sm font-medium text-ink mb-2">
-                Course Mode <span class="text-red-400">*</span>
+                Course Mode <span class="text-danger">*</span>
               </label>
               <div v-if="modesLoading" class="text-muted text-sm">Loading modes...</div>
               <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -170,19 +170,19 @@
                   :class="[
                     'p-4 rounded-lg border-2 text-left transition-all',
                     selectedMode === mode.id
-                      ? 'border-emerald-500 bg-emerald-900/30'
-                      : 'border-line bg-surface/50 hover:border-line'
+                      ? 'border-accent-2 tint-emerald'
+                      : 'border-line bg-surface hover:border-line'
                   ]"
                 >
                   <div class="flex items-center justify-between mb-1">
-                    <span :class="['font-medium', selectedMode === mode.id ? 'text-emerald-400' : 'text-ink']">
+                    <span :class="['font-medium', selectedMode === mode.id ? 'tint-emerald-ink' : 'text-ink']">
                       {{ mode.name }}
                     </span>
                     <span class="text-xs text-faint">~{{ mode.estimatedMinutes }}min</span>
                   </div>
                   <div class="text-sm text-muted mb-2">{{ mode.description }}</div>
                   <div class="flex items-center gap-2">
-                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-surface-2 text-emerald-400">
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-surface-2 border border-line text-accent-2">
                       {{ mode.seeds }} seeds
                     </span>
                     <span v-if="mode.pattern" class="text-xs text-faint">{{ mode.pattern }}</span>
@@ -205,7 +205,7 @@
                     type="number"
                     min="1"
                     max="668"
-                    class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
+                    class="w-full bg-surface-2 border border-line rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
                   />
                 </div>
                 <span class="text-faint pt-5">→</span>
@@ -216,7 +216,7 @@
                     type="number"
                     min="1"
                     max="668"
-                    class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
+                    class="w-full bg-surface-2 border border-line rounded-lg px-4 py-3 text-ink focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
                   />
                 </div>
                 <div class="pt-5">
@@ -237,7 +237,7 @@
                 v-model="formData.version"
                 type="text"
                 placeholder="e.g., 1.0"
-                class="w-full bg-surface-2 border border-line/20 rounded-lg px-4 py-3 text-ink placeholder-faint focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                class="w-full bg-surface-2 border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
               />
               <p class="mt-1 text-xs text-faint">
                 Course version identifier
@@ -245,11 +245,11 @@
             </div>
 
             <!-- Info Box -->
-            <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+            <div class="tint-blue rounded-lg p-4">
               <div class="flex items-start gap-3">
-                <span class="text-blue-400 text-xl">ℹ️</span>
+                <span class="tint-blue-ink text-xl">ℹ️</span>
                 <div class="text-sm">
-                  <p class="text-blue-300 font-medium mb-1">Additional Configuration</p>
+                  <p class="tint-blue-ink font-medium mb-1">Additional Configuration</p>
                   <p class="text-muted">
                     More advanced options (audio settings, pipeline configuration) can be added later through the course editor.
                   </p>
@@ -271,7 +271,7 @@
               <div class="space-y-3">
                 <div class="flex justify-between">
                   <span class="text-muted">Course Code:</span>
-                  <span class="text-emerald-400 font-mono">{{ computedCourseCode }}</span>
+                  <span class="text-accent-2 font-mono">{{ computedCourseCode }}</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-muted">Display Name:</span>
@@ -287,7 +287,7 @@
                 </div>
                 <div class="flex justify-between">
                   <span class="text-muted">Course Mode:</span>
-                  <span class="text-emerald-400">{{ getModeName(selectedMode) }}</span>
+                  <span class="text-accent-2">{{ getModeName(selectedMode) }}</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-muted">Seed Range:</span>
@@ -313,13 +313,13 @@
               </div>
             </div>
 
-            <div v-else-if="existenceCheck.exists" class="bg-amber-900/20 border border-amber-500/30 rounded-lg p-4">
+            <div v-else-if="existenceCheck.exists" class="tint-amber rounded-lg p-4">
               <div class="flex items-start gap-3">
-                <span class="text-amber-400 text-xl">⚠️</span>
+                <span class="tint-amber-ink text-xl">⚠️</span>
                 <div class="text-sm flex-1">
-                  <p class="text-amber-300 font-medium mb-2">Course already exists!</p>
+                  <p class="tint-amber-ink font-medium mb-2">Course already exists!</p>
                   <p class="text-muted mb-3">
-                    A course with code <span class="font-mono text-amber-400">{{ computedCourseCode }}</span> already exists
+                    A course with code <span class="font-mono tint-amber-ink">{{ computedCourseCode }}</span> already exists
                     <span v-if="existenceCheck.existsLocal && existenceCheck.existsS3">(locally and in S3)</span>
                     <span v-else-if="existenceCheck.existsLocal">(locally)</span>
                     <span v-else-if="existenceCheck.existsS3">(in S3)</span>.
@@ -343,11 +343,11 @@
             </div>
 
             <!-- Next Steps Info (only show if no conflict) -->
-            <div v-else class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+            <div v-else class="tint-emerald rounded-lg p-4">
               <div class="flex items-start gap-3">
-                <span class="text-emerald-400 text-xl">✨</span>
+                <span class="tint-emerald-ink text-xl">✨</span>
                 <div class="text-sm">
-                  <p class="text-emerald-300 font-medium mb-2">What happens next?</p>
+                  <p class="tint-emerald-ink font-medium mb-2">What happens next?</p>
                   <ul class="text-muted space-y-1">
                     <li>• Course will be created in the database</li>
                     <li>• You'll be redirected to the course editor</li>
@@ -747,3 +747,44 @@ const createCourse = async () => {
   }
 }
 </script>
+
+<style scoped>
+/* Theme-aware tinted callout boxes.
+   Dark mode reproduces the original Tailwind bg-*-900/20 + border-*-500/30 + text-*-400.
+   Light mode uses a stronger fill, a readable border, and AA-passing ink. */
+.tint-emerald {
+  background-color: rgba(6, 78, 59, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.tint-emerald-ink { color: #34d399; }
+
+.tint-blue {
+  background-color: rgba(30, 58, 138, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+.tint-blue-ink { color: #60a5fa; }
+
+.tint-amber {
+  background-color: rgba(120, 53, 15, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.tint-amber-ink { color: #fbbf24; }
+
+:root[data-theme="light"] .tint-emerald {
+  background-color: #d1fae5;       /* emerald-100 */
+  border-color: #6ee7b7;           /* emerald-300 */
+}
+:root[data-theme="light"] .tint-emerald-ink { color: #047857; } /* 5.3:1 on #d1fae5 */
+
+:root[data-theme="light"] .tint-blue {
+  background-color: #dbeafe;       /* blue-100 */
+  border-color: #93c5fd;           /* blue-300 */
+}
+:root[data-theme="light"] .tint-blue-ink { color: #1d4ed8; }   /* 6.1:1 on #dbeafe */
+
+:root[data-theme="light"] .tint-amber {
+  background-color: #fef3c7;       /* amber-100 */
+  border-color: #fcd34d;           /* amber-300 */
+}
+:root[data-theme="light"] .tint-amber-ink { color: #92400e; }  /* 6.5:1 on #fef3c7 */
+</style>

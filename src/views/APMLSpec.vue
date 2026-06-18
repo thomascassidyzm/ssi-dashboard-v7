@@ -11,7 +11,7 @@
 
     <!-- Main Content -->
     <main class="content-area">
-      <div class="bg-surface/50 rounded-lg border border-line/20 p-8">
+      <div class="bg-surface rounded-lg border border-line p-8">
 
         <!-- Breaking Change Banner -->
         <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 mb-8">
@@ -30,51 +30,51 @@
           <p class="text-ink mb-4">APML v14 is guided by these architectural principles:</p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D01: Parameterization</h4>
               <p class="text-xs text-muted mt-1">Everything is a parameter. No magic numbers.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D02: Separation of Concerns</h4>
               <p class="text-xs text-muted mt-1">Each component does one thing well.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D03: Immutability of Source</h4>
               <p class="text-xs text-muted mt-1">Source data is never mutated, only extended.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D04: Idempotency</h4>
               <p class="text-xs text-muted mt-1">Same operation twice = same result.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D05: Store Raw, Compute Derived</h4>
               <p class="text-xs text-muted mt-1">Persist source of truth, compute the rest.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D06: Explicit over Implicit</h4>
               <p class="text-xs text-muted mt-1">Make relationships and dependencies visible.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D07: Context-Agnostic</h4>
               <p class="text-xs text-muted mt-1">Components work regardless of context.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D08: Explicit Feedback</h4>
               <p class="text-xs text-muted mt-1">Errors include reasons, not just status.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D09: Progressive Enhancement</h4>
               <p class="text-xs text-muted mt-1">Core works without optional features.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D10: Observability</h4>
               <p class="text-xs text-muted mt-1">Everything can be queried and inspected.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D11: Reversibility</h4>
               <p class="text-xs text-muted mt-1">Actions can be undone or understood.</p>
             </div>
-            <div class="bg-canvas/50 border border-line/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D12: Composition over Config</h4>
               <p class="text-xs text-muted mt-1">Build complex from simple, composable parts.</p>
             </div>
@@ -86,7 +86,7 @@
           <div class="prose prose-invert prose-emerald max-w-none text-ink">
             <p><strong>Core Principle:</strong> Courses own their audio. Simple is better.</p>
 
-            <div class="bg-canvas/50 border border-emerald-500/30 rounded p-4 my-4 font-mono text-xs">
+            <div class="bg-surface-2 border border-emerald-500/30 rounded p-4 my-4 font-mono text-xs">
               <pre class="text-ink">
 ┌─────────────────────────────────────────────────────────────────┐
 │                     SIMPLE OWNERSHIP                            │
@@ -101,7 +101,7 @@
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Database Schema (v13)</h3>
             <div class="space-y-3 mt-4">
-              <div class="bg-canvas/80 border border-line/20 rounded p-4">
+              <div class="bg-surface-2 border border-line rounded p-4">
                 <h4 class="font-semibold text-emerald-300">courses</h4>
                 <p class="text-sm text-muted mt-1">
                   Course metadata with voice configuration<br/>
@@ -109,7 +109,7 @@
                   <span class="text-xs text-amber-400">PRIMARY KEY(course_code)</span>
                 </p>
               </div>
-              <div class="bg-canvas/80 border border-line/20 rounded p-4">
+              <div class="bg-surface-2 border border-line rounded p-4">
                 <h4 class="font-semibold text-emerald-300">course_audio</h4>
                 <p class="text-sm text-muted mt-1">
                   Audio owned by courses (flat, no joins)<br/>
@@ -117,7 +117,7 @@
                   <span class="text-xs text-amber-400">UNIQUE(course_code, text_normalized, language, role)</span>
                 </p>
               </div>
-              <div class="bg-canvas/80 border border-line/20 rounded p-4">
+              <div class="bg-surface-2 border border-line rounded p-4">
                 <h4 class="font-semibold text-emerald-300">shared_audio</h4>
                 <p class="text-sm text-muted mt-1">
                   Shared content (encouragements, instructions only)<br/>
@@ -187,7 +187,7 @@
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Pipeline Architecture (v14)</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-ink">
 
-            <div class="bg-canvas/50 border border-emerald-500/30 rounded p-3 my-3">
+            <div class="bg-surface-2 border border-emerald-500/30 rounded p-3 my-3">
               <p class="text-xs text-muted">Pipeline v14: <span class="text-emerald-400">Course Builder (3471) → Phase 8 Audio (3465) → Phase 9 Manifest (3466)</span></p>
             </div>
 
@@ -230,7 +230,7 @@
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Course Builder Validation</h3>
-            <div class="bg-canvas/80 border border-line/20 rounded p-4 font-mono text-xs">
+            <div class="bg-surface-2 border border-line rounded p-4 font-mono text-xs">
               <pre class="text-ink">
 POST /api/seed/complete validates atomically:
 1. Tiling: Seed translation constructable from LEGO targets
@@ -243,7 +243,7 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Audio Generation Flow (v14)</h3>
-            <div class="bg-canvas/80 border border-line/20 rounded p-4 font-mono text-xs">
+            <div class="bg-surface-2 border border-line rounded p-4 font-mono text-xs">
               <pre class="text-ink">
 1. Get course voice_config from courses table
 2. Extract audio needs from course_practice_phrases (Supabase)
@@ -267,7 +267,7 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
                 <span class="text-emerald-400 text-xs">All content written by Course Builder API, read by Phase 8 & 9</span>
               </p>
             </div>
-            <div class="bg-canvas/80 border border-line/20 rounded p-4">
+            <div class="bg-surface-2 border border-line rounded p-4">
               <h4 class="font-semibold text-ink">course_manifest.json</h4>
               <p class="text-sm text-muted mt-1">
                 Phase 9 output: compiled manifest for learning app<br/>
@@ -287,26 +287,26 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Key Algorithms</h2>
           <div class="space-y-4">
-            <div class="bg-canvas/80 border border-line/20 rounded p-4">
+            <div class="bg-surface-2 border border-line rounded p-4">
               <h4 class="font-semibold text-emerald-300">get_missing_audio() / get_course_audio_summary()</h4>
               <p class="text-sm text-muted mt-2">
                 Database RPCs used by Phase 8: identify which audio still needs generation and verify course audio completeness.<br/>
                 <span class="text-xs text-amber-400">(Replaces deprecated v12 find_or_create_audio())</span>
               </p>
             </div>
-            <div class="bg-canvas/80 border border-line/20 rounded p-4">
+            <div class="bg-surface-2 border border-line rounded p-4">
               <h4 class="font-semibold text-emerald-300">FCFS vs Utility</h4>
               <p class="text-sm text-muted mt-2">
                 Balances First-Can-First-Say chronological order against pedagogical utility scores.
               </p>
             </div>
-            <div class="bg-canvas/80 border border-line/20 rounded p-4">
+            <div class="bg-surface-2 border border-line rounded p-4">
               <h4 class="font-semibold text-emerald-300">IRON RULE</h4>
               <p class="text-sm text-muted mt-2">
                 No LEGO begins or ends with a preposition. Absolute rule enforced in the Course Builder validation gates.
               </p>
             </div>
-            <div class="bg-canvas/80 border border-line/20 rounded p-4">
+            <div class="bg-surface-2 border border-line rounded p-4">
               <h4 class="font-semibold text-emerald-300">Graph Edge Coverage</h4>
               <p class="text-sm text-muted mt-2">
                 Pattern-aware basket construction maximizes unique LEGO adjacency edge coverage.
@@ -317,7 +317,7 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">LEGO Types</h2>
-          <div class="space-y-4 bg-canvas/80 border border-line/20 rounded p-4">
+          <div class="space-y-4 bg-surface-2 border border-line rounded p-4">
             <div>
               <p class="text-sm"><strong class="text-blue-300">"A" (A-type)</strong> = ATOMIC LEGO</p>
               <p class="text-xs text-muted mt-1 ml-4">Smallest teachable unit that passes ZUT (Zero Uncertainty Test). Can be single-word or multi-word. The learner hears the known text and produces the target with zero ambiguity.</p>
@@ -377,5 +377,56 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
 
 .content-area {
   max-width: 100%;
+}
+
+/*
+ * Light-mode contrast fixes. The template uses hardcoded Tailwind color
+ * utilities (text-emerald/red/amber/blue/purple-*) that do NOT re-theme and
+ * fail WCAG AA on light backgrounds (e.g. emerald-400 #34d399 = 1.66:1 on
+ * white). These overrides are scoped strictly to [data-theme="light"] so DARK
+ * MODE IS UNTOUCHED, and keep each hue family while reaching >=4.5:1 body.
+ */
+:root[data-theme="light"] .page-title {
+  color: var(--accent-2); /* #047857 on #eef2f6 canvas ~= 4.5:1 */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-emerald-400),
+:root[data-theme="light"] .apml-spec-view :deep(.text-emerald-300) {
+  color: #047857; /* ~4.7:1 on white */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-red-300) {
+  color: #b91c1c; /* ~5.9:1 on white */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-amber-400),
+:root[data-theme="light"] .apml-spec-view :deep(.text-amber-300) {
+  color: #b45309; /* ~4.9:1 on white */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-blue-300) {
+  color: #1d4ed8; /* ~6.3:1 on white */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-purple-400) {
+  color: #7e22ce; /* ~6.0:1 on white */
+}
+/* Colored row tints / banners: bg-*-900/20 and bg-*-500/10 read near-white in
+ * light mode. Give them a recognizable, slightly stronger hue wash so rows and
+ * callout banners separate, without disturbing the (now-darkened) text. */
+:root[data-theme="light"] .apml-spec-view :deep(.bg-emerald-900\/20) {
+  background-color: rgba(4, 120, 87, 0.10);
+}
+:root[data-theme="light"] .apml-spec-view :deep(.bg-purple-900\/20) {
+  background-color: rgba(126, 34, 206, 0.10);
+}
+:root[data-theme="light"] .apml-spec-view :deep(.bg-amber-900\/20),
+:root[data-theme="light"] .apml-spec-view :deep(.bg-amber-500\/10) {
+  background-color: rgba(180, 83, 9, 0.10);
+}
+:root[data-theme="light"] .apml-spec-view :deep(.bg-emerald-500\/10) {
+  background-color: rgba(4, 120, 87, 0.10);
+}
+/* Faint colored borders on banners become solid-enough in light mode. */
+:root[data-theme="light"] .apml-spec-view :deep(.border-emerald-500\/30) {
+  border-color: rgba(4, 120, 87, 0.45);
+}
+:root[data-theme="light"] .apml-spec-view :deep(.border-amber-500\/30) {
+  border-color: rgba(180, 83, 9, 0.45);
 }
 </style>

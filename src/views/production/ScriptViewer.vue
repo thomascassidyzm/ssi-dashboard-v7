@@ -2780,4 +2780,31 @@ onBeforeUnmount(() => {
 .script-content::-webkit-scrollbar-thumb:hover {
   background: var(--faint); /* slate-500 */
 }
+
+/*
+ * Light-mode legibility overrides.
+ * The pale Tailwind palette shades below are tuned for the dark canvas; on the
+ * light theme they sit on white/slate-50 surfaces and fall well under WCAG AA
+ * (e.g. emerald-400 1.75:1, amber-400 1.67:1, red-400 2.77:1, blue-300 1.44:1).
+ * Darken to the ~600/700 shade of the SAME hue so the status colour identity is
+ * preserved while text/icons become legible. Scoped to [data-theme="light"] so
+ * dark mode is completely untouched. Only applies to elements in THIS component
+ * (scoped style attribute), so the pale-on-dark-fill chips elsewhere are safe.
+ */
+:root[data-theme="light"] .text-emerald-400 { color: #047857; } /* emerald-700 */
+:root[data-theme="light"] .text-amber-400 { color: #b45309; }   /* amber-700 */
+:root[data-theme="light"] .text-red-400 { color: #dc2626; }     /* red-600 */
+:root[data-theme="light"] .text-blue-400 { color: #2563eb; }    /* blue-600 */
+:root[data-theme="light"] .text-blue-300 { color: #1d4ed8; }    /* blue-700 */
+:root[data-theme="light"] .text-purple-400 { color: #7c3aed; }  /* violet-600 */
+:root[data-theme="light"] .hover\:text-emerald-400:hover { color: #047857; }
+:root[data-theme="light"] .hover\:text-red-400:hover { color: #dc2626; }
+
+/* Performance-notice panel: blue-500 @ 10% over the light canvas is barely
+ * tinted (#dce7f6) and its border vanishes. Give it a readable light-blue fill
+ * and a visible border so the panel separates. */
+:root[data-theme="light"] .performance-notice {
+  background-color: #eff6ff; /* blue-50 */
+  border-color: #93c5fd;     /* blue-300 */
+}
 </style>

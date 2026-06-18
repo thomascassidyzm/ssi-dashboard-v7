@@ -324,7 +324,7 @@ onMounted(loadSeeds)
 
 .progress-bar {
   height: 100%;
-  background: var(--color-emerald, #06ffa5);
+  background: var(--accent-2);
   border-radius: 3px;
   transition: width 0.3s ease;
 }
@@ -366,6 +366,9 @@ onMounted(loadSeeds)
 .search-input::placeholder {
   color: var(--color-graphite, var(--surface-3));
 }
+:root[data-theme="light"] .search-input::placeholder {
+  color: var(--faint);
+}
 
 .btn-approve {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
@@ -387,12 +390,20 @@ onMounted(loadSeeds)
 .btn-approve:hover:not(:disabled) {
   opacity: 0.85;
 }
+:root[data-theme="light"] .btn-approve {
+  background: var(--accent-2);
+  color: #ffffff;
+}
 
 /* Table */
 .table-container {
   border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   overflow: hidden;
+}
+:root[data-theme="light"] .table-container {
+  border-color: var(--line);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .seed-table {
@@ -432,6 +443,13 @@ onMounted(loadSeeds)
   background: rgba(255, 255, 255, 0.055);
 }
 
+:root[data-theme="light"] .seed-row.row-alt {
+  background: var(--surface-2);
+}
+:root[data-theme="light"] .seed-row:hover {
+  background: var(--surface-3);
+}
+
 .col-num {
   width: 60px;
   white-space: nowrap;
@@ -453,6 +471,8 @@ onMounted(loadSeeds)
 .status-dot.green { background: var(--accent-2); }
 .status-dot.yellow { background: #fbbf24; }
 .status-dot.red { background: #f87171; }
+:root[data-theme="light"] .status-dot.yellow { background: #d97706; }
+:root[data-theme="light"] .status-dot.red { background: #dc2626; }
 
 .col-canonical {
   color: var(--color-paper-dim, var(--faint));
@@ -466,9 +486,15 @@ onMounted(loadSeeds)
 .editable:hover {
   background: rgba(255, 255, 255, 0.04);
 }
+:root[data-theme="light"] .editable:hover {
+  background: var(--surface-3);
+}
 
 .editable .empty {
   color: var(--color-graphite, var(--surface-3));
+}
+:root[data-theme="light"] .editable .empty {
+  color: var(--faint);
 }
 
 .cell-wrap {
@@ -548,6 +574,13 @@ onMounted(loadSeeds)
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.8rem;
   color: var(--color-paper-dim, var(--muted));
+}
+
+/* Light-mode: faint --surface-3 borders disappear on white inputs/buttons; use --line */
+:root[data-theme="light"] .filter-select,
+:root[data-theme="light"] .search-input,
+:root[data-theme="light"] .pagination button {
+  border-color: var(--line);
 }
 
 @media (max-width: 800px) {

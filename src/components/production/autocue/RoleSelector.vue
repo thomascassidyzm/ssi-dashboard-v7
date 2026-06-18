@@ -257,6 +257,13 @@ function beginSession() {
   cursor: not-allowed;
 }
 
+/* In light mode --ink flips to near-black, which would put dark text on the
+   saturated red CTA (muddy, ~4.3:1). Keep the button label light, as it is in
+   dark mode, for a crisp white-on-red CTA. Scoped so dark mode is untouched. */
+:root[data-theme="light"] .begin-btn {
+  color: #ffffff;
+}
+
 @media (max-width: 768px) {
   .role-options {
     grid-template-columns: 1fr;

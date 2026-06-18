@@ -79,7 +79,7 @@
         </div>
 
         <!-- Audio generation errors/warnings -->
-        <div v-if="audioProgress.skipped && audioProgress.skipped.length > 0" class="mt-3 p-3 bg-amber-900/30 border border-amber-700 rounded">
+        <div v-if="audioProgress.skipped && audioProgress.skipped.length > 0" class="warn-box mt-3 p-3 bg-amber-900/30 border border-amber-700 rounded">
           <div class="flex items-center gap-2 text-amber-400 font-medium mb-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -96,7 +96,7 @@
           </div>
         </div>
 
-        <div v-if="audioProgress.errors && audioProgress.errors.length > 0" class="mt-3 p-3 bg-red-900/30 border border-red-700 rounded">
+        <div v-if="audioProgress.errors && audioProgress.errors.length > 0" class="error-box mt-3 p-3 bg-red-900/30 border border-red-700 rounded">
           <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -259,10 +259,74 @@ function handleRegenerate() {
 }
 
 .stat-item {
-  border: 1px solid var(--surface-3);
+  border: 1px solid var(--line);
 }
 
 input[type="checkbox"] {
   accent-color: #10b981;
+}
+
+/*
+ * Light-mode overrides. Dark mode keeps the default Tailwind dark tints
+ * (bg-*-900/30 + text-*-400) untouched. In light mode those muddy dark
+ * fills with light-400 text fail WCAG badly (~1.0-1.5:1), so we repaint
+ * the status boxes with clean light tints + dark text (same hue family).
+ */
+:root[data-theme="light"] .stat-item {
+  background: var(--surface);
+}
+
+/* Emerald success boxes */
+:root[data-theme="light"] .success-box {
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+}
+:root[data-theme="light"] .success-box .text-emerald-400 {
+  color: #065f46; /* 7.29:1 on #ecfdf5 */
+}
+
+/* Emerald stat numbers (on surface-2 / surface) */
+:root[data-theme="light"] .stat-item .text-emerald-400 {
+  color: #047857; /* 5.01:1 on #f1f5f9 */
+}
+
+/* Blue progress box */
+:root[data-theme="light"] .progress-box {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+:root[data-theme="light"] .progress-box .text-blue-400 {
+  color: #1d4ed8; /* 6.16:1 on #eff6ff */
+}
+:root[data-theme="light"] .progress-box .spinner {
+  border-color: #1d4ed8;
+  border-top-color: transparent;
+}
+
+/* Amber warning boxes (validation, api warnings, skipped sub-box) */
+:root[data-theme="light"] .validation-warning,
+:root[data-theme="light"] .warnings-box,
+:root[data-theme="light"] .warn-box {
+  background: #fffbeb;
+  border-color: #fcd34d;
+}
+:root[data-theme="light"] .validation-warning .text-amber-400,
+:root[data-theme="light"] .warnings-box .text-amber-400,
+:root[data-theme="light"] .warn-box .text-amber-400 {
+  color: #92400e; /* 6.84:1 on #fffbeb */
+}
+
+/* Red error boxes (failed audio, concatenation errors sub-box) */
+:root[data-theme="light"] .error-box {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+:root[data-theme="light"] .error-box .text-red-400 {
+  color: #b91c1c; /* 5.91:1 on #fef2f2 */
+}
+
+/* Inline red IDs that appear inside an amber skipped-box in light mode */
+:root[data-theme="light"] .warn-box .text-red-400 {
+  color: #b91c1c;
 }
 </style>

@@ -41,8 +41,8 @@ async function run(demo) {
 }
 .idt-btn:disabled { opacity: 0.6; cursor: default; }
 .idt-btn--ghost { background: transparent; color: #4f46e5; border-color: #4f46e5; }
-.idt-status { font-size: 0.875rem; color: #374151; margin: 0; }
-.idt-status--err { color: #b91c1c; }
-.idt-hint { font-size: 0.75rem; color: #6b7280; margin: 0; }
-.idt-hint code { background: #f3f4f6; padding: 0.05rem 0.3rem; border-radius: 0.25rem; }
+.idt-status { font-size: 0.875rem; color: var(--ink); margin: 0; }
+.idt-status--err { color: var(--danger); }
+.idt-hint { font-size: 0.75rem; color: var(--muted); margin: 0; }
+.idt-hint code { background: var(--surface-2); color: var(--ink); padding: 0.05rem 0.3rem; border-radius: 0.25rem; border: 1px solid var(--line); }
 </style>

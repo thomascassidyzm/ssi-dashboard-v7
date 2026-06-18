@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-canvas text-ink p-8">
+  <div class="course-validator min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <router-link to="/" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
+        <router-link to="/" class="text-accent-2 hover:opacity-80 mb-4 inline-block">
           ← Back to Dashboard
         </router-link>
-        <h1 class="text-4xl font-bold text-emerald-400 mb-2">
+        <h1 class="text-4xl font-bold text-accent-2 mb-2">
           Course Analyzer
         </h1>
         <p class="text-muted">
@@ -801,3 +801,89 @@ onMounted(() => {
   loadData()
 })
 </script>
+
+<style>
+/*
+ * LIGHT-MODE ONLY overrides. Dark mode is the :root default and is untouched
+ * because every rule below is gated on [data-theme="light"]. These remap the
+ * hardcoded dark-tuned Tailwind color utilities used in this view to
+ * AA-passing values in the same hue family for light backgrounds.
+ */
+
+/* --- Accent (emerald) text/marks: emerald-400 #34d399 (~1.65:1 on white) -> emerald-700 #047857 (4.76:1) --- */
+[data-theme="light"] .course-validator .text-emerald-400 {
+  color: #047857;
+}
+[data-theme="light"] .course-validator .group:hover .group-hover\:text-emerald-400 {
+  color: #047857;
+}
+
+/* --- Yellow/amber text: yellow-400 #facc15 (~1.16:1 on white) -> amber-700 #b45309 (5.1:1) --- */
+[data-theme="light"] .course-validator .text-yellow-400 {
+  color: #b45309;
+}
+[data-theme="light"] .course-validator .text-yellow-300 {
+  color: #92400e; /* on pale amber pill bg */
+}
+
+/* --- Blue text: blue-400 #60a5fa (~2.2:1 on white) -> blue-700 #1d4ed8 (6.3:1) --- */
+[data-theme="light"] .course-validator .text-blue-400 {
+  color: #1d4ed8;
+}
+
+/* --- Red text: red-400 #f87171 (~3.0:1) / red-300 #fca5a5 -> red-600 #dc2626 (4.5:1) --- */
+[data-theme="light"] .course-validator .text-red-400,
+[data-theme="light"] .course-validator .text-red-300 {
+  color: #dc2626;
+}
+
+/* --- Status pills: dark translucent fills (bg-*-900/30) pale out to ~white on
+ *     light. Repaint as pale tints with darkened text + readable border. --- */
+[data-theme="light"] .course-validator .bg-emerald-900\/30,
+[data-theme="light"] .course-validator .bg-emerald-900\/20 {
+  background-color: #d1fae5;
+}
+[data-theme="light"] .course-validator .bg-yellow-900\/30,
+[data-theme="light"] .course-validator .bg-yellow-900\/20 {
+  background-color: #fef3c7;
+}
+[data-theme="light"] .course-validator .bg-blue-900\/30,
+[data-theme="light"] .course-validator .bg-blue-900\/20 {
+  background-color: #dbeafe;
+}
+[data-theme="light"] .course-validator .bg-red-900\/30,
+[data-theme="light"] .course-validator .bg-red-900\/20 {
+  background-color: #fee2e2;
+}
+
+/* Pill / panel borders: faint translucent borders -> visible same-hue borders */
+[data-theme="light"] .course-validator .border-emerald-400\/20,
+[data-theme="light"] .course-validator .border-emerald-500\/50 {
+  border-color: #6ee7b7;
+}
+[data-theme="light"] .course-validator .border-yellow-400\/20,
+[data-theme="light"] .course-validator .border-yellow-500\/50,
+[data-theme="light"] .course-validator .border-yellow-500\/30 {
+  border-color: #fcd34d;
+}
+[data-theme="light"] .course-validator .border-blue-400\/20,
+[data-theme="light"] .course-validator .border-blue-500\/50 {
+  border-color: #93c5fd;
+}
+[data-theme="light"] .course-validator .border-red-400\/20,
+[data-theme="light"] .course-validator .border-red-500\/50,
+[data-theme="light"] .course-validator .border-red-500\/30 {
+  border-color: #fca5a5;
+}
+
+/* --- Inner stat panels: bg-canvas/50 over white barely separates. Give them a
+ *     readable raised surface fill so cards/rows are clearly delineated. --- */
+[data-theme="light"] .course-validator .bg-canvas\/50 {
+  background-color: var(--surface-2);
+}
+
+/* Error banner: bg-red-900/20 on white is near-invisible -> pale red tint */
+[data-theme="light"] .course-validator .bg-red-900\/20 {
+  background-color: #fee2e2;
+}
+</style>

@@ -59,19 +59,23 @@
 :root[data-theme="light"] {
   color-scheme: light;
   color: #0f172a;
-  background-color: #f8fafc;
-  --canvas:    #f8fafc;  /* slate-50                      */
+  background-color: #eef2f6;
+  /* Re-tuned for crisp separation: canvas deepened off pure-white so white cards
+     pop; --line lifted to slate-300 (visible 1px frame); muted/faint darkened to
+     pass WCAG AA on BOTH white surface and the canvas; accents darkened so colored
+     text/IDs/pills stay >=4.5:1 on white while keeping their hue family. */
+  --canvas:    #eef2f6;  /* slate-100-ish, deeper than slate-50 so white cards separate */
   --surface:   #ffffff;  /* white cards                   */
   --surface-2: #f1f5f9;  /* slate-100 inputs              */
   --surface-3: #e2e8f0;  /* slate-200 hover               */
-  --line:      #e2e8f0;  /* slate-200 borders             */
-  --ink:       #0f172a;  /* slate-900 primary text        */
-  --muted:     #475569;  /* slate-600 secondary text      */
-  --faint:     #64748b;  /* slate-500 tertiary text       */
-  --accent:    #d97706;  /* amber-600 (orange on light)   */
-  --accent-2:  #059669;  /* emerald-600                   */
-  --success:   #059669;
-  --danger:    #dc2626;
+  --line:      #cbd5e1;  /* slate-300 borders (clearly visible on white & canvas) */
+  --ink:       #0f172a;  /* slate-900 primary text  (17.9:1 / 15.9:1)             */
+  --muted:     #475569;  /* slate-600 secondary text (7.6:1 / 6.7:1)              */
+  --faint:     #586573;  /* darkened slate-500 tertiary (6.0:1 / 5.3:1)           */
+  --accent:    #a85508;  /* darkened amber (5.3:1 white / 4.7:1 canvas)           */
+  --accent-2:  #047857;  /* emerald-700 (5.5:1 / 4.9:1)                           */
+  --success:   #047857;
+  --danger:    #dc2626;  /* red-600 (4.8:1 / 4.3:1)                               */
 }
 
 body {

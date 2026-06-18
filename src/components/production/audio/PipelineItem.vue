@@ -105,7 +105,7 @@ function formatTime(timestamp) {
 <style scoped>
 .pipeline-item {
   background: var(--surface);
-  border: 1px solid var(--surface-3);
+  border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -237,7 +237,7 @@ function formatTime(timestamp) {
 .item-details {
   padding: 1rem;
   background: var(--canvas);
-  border-top: 1px solid var(--surface-3);
+  border-top: 1px solid var(--line);
 }
 
 .detail-row {
@@ -275,7 +275,7 @@ function formatTime(timestamp) {
 .action-btn {
   padding: 0.4rem 0.75rem;
   background: var(--surface-2);
-  border: 1px solid var(--surface-3);
+  border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--ink);
   font-family: 'Josefin Sans', sans-serif;
@@ -301,6 +301,26 @@ function formatTime(timestamp) {
 .action-btn.remove:hover {
   background: rgba(230, 57, 70, 0.2);
   border-color: #e63946;
+}
+
+/* Light mode: darken neon state colors so text/icons/borders stay legible on white.
+   Dark mode keeps the cinematic neon values defined above. */
+:root[data-theme="light"] .pipeline-item.status-complete {
+  border-color: #047857;
+}
+:root[data-theme="light"] .pipeline-item.status-processing {
+  border-color: #0e7490;
+}
+:root[data-theme="light"] .icon-processing,
+:root[data-theme="light"] .progress-text {
+  color: #0e7490;
+}
+:root[data-theme="light"] .icon-complete {
+  color: #047857;
+}
+:root[data-theme="light"] .icon-failed,
+:root[data-theme="light"] .detail-value.error {
+  color: #b91c1c;
 }
 
 /* Transition */

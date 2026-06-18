@@ -147,6 +147,7 @@ function toggleSlowMode() {
 
 .current-phrase {
   background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -192,6 +193,7 @@ function toggleSlowMode() {
   margin: 0 0.5rem;
   padding: 0.25rem 0.5rem;
   background: var(--color-void, var(--canvas));
+  border: 1px solid var(--line);
   border-radius: 4px;
   animation: wordPulse 2s ease-in-out infinite;
 }
@@ -296,6 +298,7 @@ function toggleSlowMode() {
 .uuid-display {
   padding: 0.25rem 0.5rem;
   background: var(--color-void, var(--canvas));
+  border: 1px solid var(--line);
   border-radius: 4px;
 }
 

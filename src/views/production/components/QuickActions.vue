@@ -71,8 +71,8 @@ defineEmits<{
   align-items: center;
   gap: 1rem;
   padding: 1.25rem;
-  background: rgb(15 23 42 / 0.6);
-  border: 1px solid rgb(51 65 85);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
   text-align: left;
   cursor: pointer;
@@ -80,10 +80,10 @@ defineEmits<{
 }
 
 .action-card:not(.disabled):hover {
-  border-color: #10b981;
-  background: rgb(16 185 129 / 0.05);
+  border-color: var(--accent-2);
+  background: color-mix(in srgb, var(--accent-2) 5%, var(--surface));
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.15);
 }
 
 .action-card.disabled {
@@ -121,5 +121,10 @@ defineEmits<{
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 700;
+}
+
+:root[data-theme="light"] .action-badge {
+  background: color-mix(in srgb, var(--accent-2) 14%, var(--surface));
+  color: var(--accent-2);
 }
 </style>

@@ -12,7 +12,7 @@
         <h2 class="text-xl font-semibold text-emerald-300 mb-4">🎯 Quick Reference</h2>
         <div class="grid md:grid-cols-3 gap-4 text-sm">
           <div>
-            <p class="text-emerald-400 font-semibold mb-2">The shape of a course</p>
+            <p class="text-accent-2 font-semibold mb-2">The shape of a course</p>
             <ul class="text-ink space-y-1">
               <li>• A <strong>seed</strong> (one English sentence)</li>
               <li>• decomposed into <strong>LEGOs</strong></li>
@@ -20,7 +20,7 @@
             </ul>
           </div>
           <div>
-            <p class="text-amber-400 font-semibold mb-2">LEGO types</p>
+            <p class="text-accent font-semibold mb-2">LEGO types</p>
             <ul class="text-ink space-y-1">
               <li>• <strong>A:</strong> a single meaningful word</li>
               <li>• <strong>M:</strong> a multi-word chunk, with components</li>
@@ -51,7 +51,7 @@
 
       <!-- The shape of a course -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">The shape of a course</h2>
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">The shape of a course</h2>
         <p class="text-ink mb-6">
           A course is not a pile of files. It is built one <strong>seed</strong> at a time, through a single
           atomic call to the Course Builder. Each seed becomes a handful of <strong>LEGOs</strong>, and each LEGO
@@ -92,7 +92,7 @@
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-muted">Created by:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Course Builder, <code class="text-xs">POST /api/seed/complete</code></span>
+              <span class="text-accent-2 ml-2 font-medium">Course Builder, <code class="text-xs">POST /api/seed/complete</code></span>
             </div>
             <div>
               <span class="text-muted">Stored in:</span>
@@ -114,11 +114,11 @@
             <span class="text-sm font-medium text-muted">The two things every LEGO has to do:</span>
             <div class="bg-canvas p-4 rounded mt-2 space-y-3">
               <div>
-                <p class="text-emerald-400 font-semibold text-sm">1. Remove uncertainty</p>
+                <p class="text-accent-2 font-semibold text-sm">1. Remove uncertainty</p>
                 <p class="text-ink text-xs">Hear the known phrase → zero ambiguity about the target phrase. That's ZUT, below.</p>
               </div>
               <div>
-                <p class="text-amber-400 font-semibold text-sm">2. Maximise patterns with minimum vocabulary</p>
+                <p class="text-accent font-semibold text-sm">2. Maximise patterns with minimum vocabulary</p>
                 <p class="text-ink text-xs">Overlapping chunks let each LEGO recombine into many sentences. A small vocabulary, taught well, says a great deal.</p>
               </div>
             </div>
@@ -136,7 +136,7 @@
               <p class="text-muted mb-1">Known: "I want to speak Spanish with you now."</p>
               <p class="text-muted mb-3">Target: "Quiero hablar español contigo ahora."</p>
 
-              <p class="text-emerald-400 mb-2">Decomposes into LEGOs such as:</p>
+              <p class="text-accent-2 mb-2">Decomposes into LEGOs such as:</p>
               <ul class="space-y-1 text-ink ml-4">
                 <li>• <strong>S0001L01:</strong> "quiero" = "I want" <span class="text-xs text-blue-400">(A — single word)</span></li>
                 <li>• <strong>S0001L02:</strong> "hablar" = "to speak" <span class="text-xs text-blue-400">(A — single word)</span></li>
@@ -145,7 +145,7 @@
                 <li>• <strong>S0001L05:</strong> "ahora" = "now" <span class="text-xs text-blue-400">(A — single word)</span></li>
               </ul>
 
-              <p class="text-emerald-400 mt-3 text-xs">✓ These LEGOs <strong>tile</strong> the seed — together they reconstruct the whole target sentence.</p>
+              <p class="text-accent-2 mt-3 text-xs">✓ These LEGOs <strong>tile</strong> the seed — together they reconstruct the whole target sentence.</p>
             </div>
           </div>
 
@@ -162,7 +162,7 @@
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-muted">Created by:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Course Builder, within the seed submission</span>
+              <span class="text-accent-2 ml-2 font-medium">Course Builder, within the seed submission</span>
             </div>
             <div>
               <span class="text-muted">Stored in:</span>
@@ -200,7 +200,7 @@
                   <p class="text-muted text-xs">Eternal: the only role that comes back through spaced repetition and consolidation.</p>
                 </div>
               </div>
-              <p class="text-amber-400 text-xs mt-3">Build is the training wheels; use is cycling on the open road. The learner climbs from one to the other.</p>
+              <p class="text-accent text-xs mt-3">Build is the training wheels; use is cycling on the open road. The learner climbs from one to the other.</p>
             </div>
           </div>
 
@@ -217,7 +217,7 @@
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-muted">Created by:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Course Builder, within the seed submission</span>
+              <span class="text-accent-2 ml-2 font-medium">Course Builder, within the seed submission</span>
             </div>
             <div>
               <span class="text-muted">Stored in:</span>
@@ -232,7 +232,7 @@
 
       <!-- LEGO Types Section -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">LEGO types — A and M</h2>
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">LEGO types — A and M</h2>
         <p class="text-ink mb-6">
           There are exactly two kinds of LEGO. The difference is not about size in the abstract — it's about whether
           the chunk bundles structure the learner can't yet take apart and put back together on their own. One word, or
@@ -270,7 +270,7 @@
               <p class="text-emerald-300 text-sm font-semibold">Definition:</p>
               <p class="text-ink text-sm">A multi-word chunk that bundles structure the learner can't yet recombine. It must declare a non-empty list of <strong>components</strong> — its word-level pieces.</p>
             </div>
-            <p class="text-amber-400 text-sm font-semibold mb-2">An M-LEGO earns its place when:</p>
+            <p class="text-accent text-sm font-semibold mb-2">An M-LEGO earns its place when:</p>
             <ul class="list-disc list-inside text-ink space-y-2 text-sm mb-4">
               <li><strong>Glue holds it together:</strong> some parts can't stand alone (idiomatic or grammatical pieces)</li>
               <li><strong>The order differs:</strong> the learner knows the pieces but the target arranges them differently</li>
@@ -279,13 +279,13 @@
             <div class="mt-4 bg-canvas p-3 rounded space-y-3">
               <p class="text-sm text-muted mb-2">Examples needing an M-LEGO:</p>
               <div>
-                <p class="text-ink text-sm">"blue thing" = "cosa azul" <span class="text-xs text-amber-400">(order reversed)</span></p>
+                <p class="text-ink text-sm">"blue thing" = "cosa azul" <span class="text-xs text-accent">(order reversed)</span></p>
               </div>
               <div>
-                <p class="text-ink text-sm">"想学" = "want to learn" <span class="text-xs text-amber-400">(components: 想 + 学)</span></p>
+                <p class="text-ink text-sm">"想学" = "want to learn" <span class="text-xs text-accent">(components: 想 + 学)</span></p>
               </div>
               <div>
-                <p class="text-ink text-sm">"tengo ganas de" = "I feel like" <span class="text-xs text-amber-400">(idiomatic glue)</span></p>
+                <p class="text-ink text-sm">"tengo ganas de" = "I feel like" <span class="text-xs text-accent">(idiomatic glue)</span></p>
               </div>
             </div>
             <div class="mt-3 bg-canvas/60 border border-emerald-700 rounded p-3">
@@ -319,7 +319,7 @@
           <p class="text-ink mb-4">M-LEGOs are shown <strong>component by component</strong>, with literal translations. The learner doesn't get a grammar lecture — they get transparent pieces, and they <em>see</em> the pattern.</p>
 
           <div class="bg-canvas p-4 rounded-lg">
-            <p class="text-emerald-400 font-semibold mb-3">Example: "as often as possible"</p>
+            <p class="text-accent-2 font-semibold mb-3">Example: "as often as possible"</p>
 
             <div class="space-y-3">
               <div>
@@ -330,9 +330,9 @@
               <div>
                 <p class="text-amber-300 text-sm font-medium">Literal component breakdown:</p>
                 <div class="ml-4 space-y-1 text-ink text-sm">
-                  <p><span class="text-emerald-400">lo más</span> = <span class="text-ink">the most</span></p>
-                  <p><span class="text-emerald-400">frecuentemente</span> = <span class="text-ink">often</span></p>
-                  <p><span class="text-emerald-400">posible</span> = <span class="text-ink">possible</span></p>
+                  <p><span class="text-accent-2">lo más</span> = <span class="text-ink">the most</span></p>
+                  <p><span class="text-accent-2">frecuentemente</span> = <span class="text-ink">often</span></p>
+                  <p><span class="text-accent-2">posible</span> = <span class="text-ink">possible</span></p>
                 </div>
               </div>
 
@@ -353,7 +353,7 @@
 
       <!-- Core mechanisms -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Core mechanisms</h2>
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">Core mechanisms</h2>
 
         <!-- ZUT -->
         <div class="bg-surface border border-line rounded-lg p-6 mb-6">
@@ -453,7 +453,7 @@ fra_for_eng:S0042L03U05
 
       <!-- The pipeline -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">The pipeline — who builds what</h2>
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">The pipeline — who builds what</h2>
         <p class="text-ink mb-6">
           There is no numbered file-pipeline anymore. Content is created by a single human-initiated build, and audio
           and the manifest follow once the content is approved. Here are the words for each stage.
@@ -501,22 +501,22 @@ fra_for_eng:S0042L03U05
               <tbody class="text-ink">
                 <tr class="border-b border-line">
                   <td class="py-2 pr-4">Seeds</td>
-                  <td class="py-2 pr-4 font-mono text-xs text-emerald-400">course_seeds</td>
+                  <td class="py-2 pr-4 font-mono text-xs text-accent-2">course_seeds</td>
                   <td class="py-2 font-mono text-xs text-faint">seed_pairs.json</td>
                 </tr>
                 <tr class="border-b border-line">
                   <td class="py-2 pr-4">LEGOs</td>
-                  <td class="py-2 pr-4 font-mono text-xs text-emerald-400">course_legos</td>
+                  <td class="py-2 pr-4 font-mono text-xs text-accent-2">course_legos</td>
                   <td class="py-2 font-mono text-xs text-faint">lego_pairs.json</td>
                 </tr>
                 <tr class="border-b border-line">
                   <td class="py-2 pr-4">Practice phrases</td>
-                  <td class="py-2 pr-4 font-mono text-xs text-emerald-400">course_practice_phrases</td>
+                  <td class="py-2 pr-4 font-mono text-xs text-accent-2">course_practice_phrases</td>
                   <td class="py-2 font-mono text-xs text-faint">lego_baskets.json</td>
                 </tr>
                 <tr class="border-b border-line">
                   <td class="py-2 pr-4">Audio</td>
-                  <td class="py-2 pr-4 font-mono text-xs text-emerald-400">course_audio</td>
+                  <td class="py-2 pr-4 font-mono text-xs text-accent-2">course_audio</td>
                   <td class="py-2 font-mono text-xs text-faint">audio_index.json / audio_samples (legacy table)</td>
                 </tr>
                 <tr>
@@ -535,7 +535,7 @@ fra_for_eng:S0042L03U05
 
       <!-- Reference Formats -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Reference formats</h2>
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">Reference formats</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="bg-surface border border-line rounded-lg p-6">
@@ -569,18 +569,18 @@ fra_for_eng:S0042L03U05
 
       <!-- Terminology to Avoid -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-red-400 mb-6">Deprecated terminology — recognise it, then drop it</h2>
+        <h2 class="text-2xl font-semibold text-danger mb-6">Deprecated terminology — recognise it, then drop it</h2>
 
         <div class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
           <p class="text-sm text-red-300 mb-4 font-semibold">Words that no longer describe the system</p>
           <ul class="space-y-2 text-ink mb-6">
-            <li>❌ <strong>"BASE" and "COMPOSITE"</strong> → use <span class="text-emerald-400">A (atomic)</span> and <span class="text-emerald-400">M (molecular)</span></li>
-            <li>❌ <strong>"B", "C", "F" type codes</strong> → use <span class="text-emerald-400">"A"</span> and <span class="text-emerald-400">"M"</span> for LEGO types</li>
+            <li>❌ <strong>"BASE" and "COMPOSITE"</strong> → use <span class="text-accent-2">A (atomic)</span> and <span class="text-accent-2">M (molecular)</span></li>
+            <li>❌ <strong>"B", "C", "F" type codes</strong> → use <span class="text-accent-2">"A"</span> and <span class="text-accent-2">"M"</span> for LEGO types</li>
             <li>❌ <strong>"FEEDER"</strong> → gone; componentization replaced it</li>
-            <li>❌ <strong>"LUT" (Learner Uncertainty Test)</strong> → use <span class="text-emerald-400">ZUT (Zero Uncertainty Test)</span></li>
-            <li>❌ <strong>"BASKET"</strong> → phrases live in <span class="text-emerald-400">course_practice_phrases</span> with explicit roles; the runtime assembles a <span class="text-emerald-400">round</span></li>
+            <li>❌ <strong>"LUT" (Learner Uncertainty Test)</strong> → use <span class="text-accent-2">ZUT (Zero Uncertainty Test)</span></li>
+            <li>❌ <strong>"BASKET"</strong> → phrases live in <span class="text-accent-2">course_practice_phrases</span> with explicit roles; the runtime assembles a <span class="text-accent-2">round</span></li>
             <li>❌ <strong>"Amino acids"</strong> → never use (old metaphor)</li>
-            <li>❌ <strong>"D-phrases" / "E-phrases"</strong> → use <span class="text-emerald-400">component / build / use</span> roles</li>
+            <li>❌ <strong>"D-phrases" / "E-phrases"</strong> → use <span class="text-accent-2">component / build / use</span> roles</li>
           </ul>
 
           <p class="text-sm text-red-300 mb-4 font-semibold">JSON files (all deprecated as sources of truth)</p>
@@ -593,7 +593,7 @@ fra_for_eng:S0042L03U05
           <ul class="space-y-2 text-ink mb-6">
             <li>❌ <strong>"Phase 1 / 2 / 3" file pipeline</strong> → there is no numbered content pipeline; conflicts are caught atomically at submission by ZUT and fixed by upchunking inline</li>
             <li>❌ <strong>"draft" then "final" JSON passes, upchunk_resolutions.json</strong> → no such files; the seed validates or it doesn't, in one call</li>
-            <li>❌ <strong>"audio_samples" table</strong> → use <span class="text-emerald-400">course_audio</span></li>
+            <li>❌ <strong>"audio_samples" table</strong> → use <span class="text-accent-2">course_audio</span></li>
           </ul>
 
           <p class="text-sm text-emerald-300 mt-4 mb-2 font-semibold">The current pipeline, in the right words</p>
@@ -640,4 +640,54 @@ fra_for_eng:S0042L03U05
   color: var(--faint);
   margin-top: 0.5rem;
 }
+
+/* ---------------------------------------------------------------------------
+   LIGHT-MODE COLOR FIXES (dark mode untouched).
+   This view hardcodes many Tailwind color utilities (emerald/blue/amber/red at
+   300/400 + *-900/xx tinted callout boxes + faint *-500/50 borders) tuned for a
+   dark canvas. On the light theme they fail WCAG AA and the tint boxes/borders
+   nearly vanish on white. The rules below apply ONLY under [data-theme="light"]
+   (the scope hash lands on the text/bg/border element, which lives in
+   this template), so the dark appearance is completely unchanged.
+--------------------------------------------------------------------------- */
+:root[data-theme="light"] .page-title {
+  color: var(--accent-2); /* was hardcoded #10b981 (1.84:1) -> emerald-700 5.5:1 */
+}
+
+/* Accent text -> AA on near-white */
+:root[data-theme="light"] .text-emerald-300 { color: #047857; } /* emerald-700 5.5:1 */
+:root[data-theme="light"] .text-blue-400,
+:root[data-theme="light"] .text-blue-300    { color: #1d4ed8; } /* blue-700 8.0:1 */
+:root[data-theme="light"] .text-amber-300,
+:root[data-theme="light"] .text-amber-200   { color: #92400e; } /* amber-800 6.9:1 */
+:root[data-theme="light"] .text-red-300     { color: #b91c1c; } /* red-700 6.5:1 */
+
+/* Tinted callout boxes -> real light tint */
+:root[data-theme="light"] .bg-emerald-900\/20,
+:root[data-theme="light"] .bg-emerald-900\/30 { background-color: #ecfdf5; } /* emerald-50 */
+:root[data-theme="light"] .bg-blue-900\/20     { background-color: #eff6ff; } /* blue-50 */
+:root[data-theme="light"] .bg-amber-900\/20,
+:root[data-theme="light"] .bg-amber-900\/30    { background-color: #fffbeb; } /* amber-50 */
+:root[data-theme="light"] .bg-red-900\/20      { background-color: #fef2f2; } /* red-50 */
+
+/* Gradient callout panels -> solid readable tint */
+:root[data-theme="light"] .from-amber-900\/30.to-orange-900\/30 {
+  background-image: none;
+  background-color: #fffbeb; /* amber-50 */
+}
+:root[data-theme="light"] .from-emerald-900\/30.to-blue-900\/30 {
+  background-image: none;
+  background-color: #ecfdf5; /* emerald-50 */
+}
+
+/* Faint colored borders -> visible saturated borders (>=3:1 vs tint bg) */
+:root[data-theme="light"] .border-emerald-500\/50,
+:root[data-theme="light"] .border-emerald-500,
+:root[data-theme="light"] .border-emerald-600,
+:root[data-theme="light"] .border-emerald-700 { border-color: #059669; } /* emerald-600 */
+:root[data-theme="light"] .border-blue-500\/50,
+:root[data-theme="light"] .border-blue-500     { border-color: #2563eb; } /* blue-600 */
+:root[data-theme="light"] .border-amber-500\/50,
+:root[data-theme="light"] .border-amber-600    { border-color: #d97706; } /* amber-600 */
+:root[data-theme="light"] .border-red-500\/50  { border-color: #dc2626; } /* red-600 */
 </style>

@@ -580,4 +580,27 @@ watch(courseCode, () => {
   background: var(--color-film-red, #e63946);
   opacity: 0.5;
 }
+
+/* ============================================================
+   LIGHT MODE: separation fixes (dark mode untouched)
+   - In light, --surface-3 (#e2e8f0) borders are ~1.10:1 on the
+     #eef2f6 canvas / white cards = invisible. Promote borders to
+     --line (#cbd5e1, ~1.32:1) so cards/rows read as framed.
+   - The flow-mode pill sat on --surface-2 (#f1f5f9 ≈ 1.03:1 on
+     canvas) = washed-out; make it a white --surface card so its
+     --line frame gives clear separation.
+   ============================================================ */
+:root[data-theme="light"] .studio-header {
+  border-bottom-color: var(--line);
+}
+
+:root[data-theme="light"] .queue-panel,
+:root[data-theme="light"] .no-phrase-message {
+  border-color: var(--line);
+}
+
+:root[data-theme="light"] .flow-btn {
+  background: var(--surface);
+  border-color: var(--line);
+}
 </style>

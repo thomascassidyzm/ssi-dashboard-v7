@@ -262,7 +262,7 @@ onUnmounted(() => {
   right: 0;
   min-width: 120px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 100;
@@ -307,4 +307,31 @@ onUnmounted(() => {
 .option-dot.status-live { background: #10b981; }
 .option-dot.status-released { background: #10b981; }
 .option-dot.status-deprecated { background: #ef4444; }
+
+/* Light mode: the dark-tuned status hues fail WCAG AA as pill text on the
+   pale 15% tint over white. Darken the text/dot hues (same hue family) so
+   they pass; dark mode keeps the original brighter hues untouched. */
+:root[data-theme="light"] .status-submitted { color: #8a6300; }
+:root[data-theme="light"] .status-submitted .status-dot { background: #8a6300; }
+
+:root[data-theme="light"] .status-testing { color: #1d4ed8; }
+:root[data-theme="light"] .status-testing .status-dot { background: #1d4ed8; }
+
+:root[data-theme="light"] .status-beta { color: #1d4ed8; }
+:root[data-theme="light"] .status-beta .status-dot { background: #1d4ed8; }
+
+:root[data-theme="light"] .status-live,
+:root[data-theme="light"] .status-released { color: #047857; }
+:root[data-theme="light"] .status-live .status-dot,
+:root[data-theme="light"] .status-released .status-dot { background: #047857; }
+
+:root[data-theme="light"] .status-deprecated { color: #b91c1c; }
+:root[data-theme="light"] .status-deprecated .status-dot { background: #b91c1c; }
+
+:root[data-theme="light"] .option-dot.status-submitted { background: #8a6300; }
+:root[data-theme="light"] .option-dot.status-testing { background: #1d4ed8; }
+:root[data-theme="light"] .option-dot.status-beta { background: #1d4ed8; }
+:root[data-theme="light"] .option-dot.status-live,
+:root[data-theme="light"] .option-dot.status-released { background: #047857; }
+:root[data-theme="light"] .option-dot.status-deprecated { background: #b91c1c; }
 </style>

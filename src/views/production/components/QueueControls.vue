@@ -1,7 +1,7 @@
 <template>
-  <section class="bg-surface/50 rounded-lg border border-line/20 p-6">
+  <section class="queue-controls bg-surface/50 rounded-lg border border-line p-6">
     <h2 class="text-xl font-semibold text-ink mb-4 flex items-center gap-2">
-      <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5 text-accent-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
       </svg>
       Queue Controls
@@ -90,11 +90,31 @@ defineEmits<{
 
 const statusClass = computed(() => {
   if (props.isRunning) {
-    return 'bg-blue-900/20 border border-blue-500/50 text-blue-300'
+    return 'status-pill status-running bg-blue-900/20 border border-blue-500/50 text-blue-300'
   }
   if (props.hasFailed) {
-    return 'bg-red-900/20 border border-red-500/50 text-red-300'
+    return 'status-pill status-failed bg-red-900/20 border border-red-500/50 text-red-300'
   }
-  return 'bg-canvas/20 border border-line/50 text-ink'
+  return 'status-pill status-idle bg-surface-2 border border-line text-ink'
 })
 </script>
+
+<style scoped>
+/* Light mode: dark-tinted status pills (blue-900/red-900 @20% + 300-level text)
+   lose contrast on the near-white canvas, so retint them to legible AA values.
+   Dark mode is untouched. */
+:root[data-theme='light'] .status-pill.status-running {
+  background-color: #eff6ff; /* blue-50 */
+  border-color: #93c5fd; /* blue-300 */
+  color: #1e40af; /* blue-800 -> ~8.3:1 on blue-50 */
+}
+:root[data-theme='light'] .status-pill.status-failed {
+  background-color: #fef2f2; /* red-50 */
+  border-color: #fca5a5; /* red-300 */
+  color: #b91c1c; /* red-700 -> ~6.4:1 on red-50 */
+}
+/* Subtle shadow so the translucent card lifts off the canvas in light mode. */
+:root[data-theme='light'] .queue-controls {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+</style>

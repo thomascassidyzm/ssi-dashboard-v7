@@ -134,8 +134,8 @@ function getSeedSymbol(seedId) {
 
 <style scoped>
 .seed-grid-container {
-  background: var(--void, var(--canvas));
-  border: 1px solid var(--border, var(--surface-2));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 1rem;
 }
@@ -187,12 +187,12 @@ function getSeedSymbol(seedId) {
 
 .summary-item.failed .indicator {
   background: rgba(239, 68, 68, 0.2);
-  color: var(--error, #ef4444);
+  color: var(--danger);
 }
 
 .summary-item.processing .indicator {
   background: rgba(16, 185, 129, 0.2);
-  color: var(--accent, #10b981);
+  color: var(--accent-2);
 }
 
 .summary-item.pending .indicator {
@@ -241,7 +241,7 @@ function getSeedSymbol(seedId) {
 
 .seed-cell.seed-failed {
   background: rgba(239, 68, 68, 0.2);
-  color: var(--error, #ef4444);
+  color: var(--danger);
 }
 
 .seed-cell.seed-failed:hover {
@@ -250,7 +250,7 @@ function getSeedSymbol(seedId) {
 
 .seed-cell.seed-processing {
   background: rgba(16, 185, 129, 0.2);
-  color: var(--accent, #10b981);
+  color: var(--accent-2);
   animation: pulse 1.5s ease-in-out infinite;
 }
 
@@ -281,7 +281,7 @@ function getSeedSymbol(seedId) {
   display: flex;
   gap: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border, var(--surface-2));
+  border-top: 1px solid var(--line);
 }
 
 .legend-item {
@@ -308,12 +308,12 @@ function getSeedSymbol(seedId) {
 
 .legend-indicator.failed {
   background: rgba(239, 68, 68, 0.2);
-  color: var(--error, #ef4444);
+  color: var(--danger);
 }
 
 .legend-indicator.processing {
   background: rgba(16, 185, 129, 0.2);
-  color: var(--accent, #10b981);
+  color: var(--accent-2);
 }
 
 .legend-indicator.pending {
@@ -324,5 +324,30 @@ function getSeedSymbol(seedId) {
 .legend-label {
   font-size: 0.6875rem;
   color: var(--text-muted, var(--faint));
+}
+
+/* Light mode: deepen translucent pill fills so dark status text stays legible.
+   Dark mode untouched (these only apply under [data-theme="light"]). */
+:root[data-theme="light"] .summary-item.complete .indicator,
+:root[data-theme="light"] .seed-cell.seed-complete,
+:root[data-theme="light"] .legend-indicator.complete {
+  background: rgba(4, 120, 87, 0.16);
+}
+:root[data-theme="light"] .summary-item.failed .indicator,
+:root[data-theme="light"] .seed-cell.seed-failed,
+:root[data-theme="light"] .legend-indicator.failed {
+  background: rgba(220, 38, 38, 0.16);
+}
+:root[data-theme="light"] .summary-item.processing .indicator,
+:root[data-theme="light"] .seed-cell.seed-processing,
+:root[data-theme="light"] .legend-indicator.processing {
+  background: rgba(4, 120, 87, 0.16);
+}
+:root[data-theme="light"] .seed-cell.seed-complete:hover,
+:root[data-theme="light"] .seed-cell.seed-processing:hover {
+  background: rgba(4, 120, 87, 0.28);
+}
+:root[data-theme="light"] .seed-cell.seed-failed:hover {
+  background: rgba(220, 38, 38, 0.28);
 }
 </style>

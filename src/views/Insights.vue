@@ -91,35 +91,38 @@ function relTime(iso) {
 </script>
 
 <style scoped>
-.insights-view { max-width: 1100px; margin: 0 auto; padding: 1.5rem; color: #e5e7eb; }
+.insights-view { max-width: 1100px; margin: 0 auto; padding: 1.5rem; color: var(--ink); }
 .iv-head h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.25rem; }
-.iv-sub { color: #9ca3af; font-size: 0.9rem; margin: 0 0 1.25rem; max-width: 70ch; }
-.iv-sub code { background: #1f2937; padding: 0.05rem 0.35rem; border-radius: 0.25rem; }
+.iv-sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 1.25rem; max-width: 70ch; }
+.iv-sub code { background: var(--surface-2); border: 1px solid var(--line); padding: 0.05rem 0.35rem; border-radius: 0.25rem; }
 .iv-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
 .iv-btn { padding: 0.5rem 1rem; border-radius: 0.5rem; border: 1px solid transparent; background: #4f46e5; color: #fff; font-weight: 600; cursor: pointer; }
 .iv-btn:disabled { opacity: 0.55; cursor: default; }
-.iv-btn--ghost { background: transparent; color: #a5b4fc; border-color: #4f46e5; }
-.iv-status { font-size: 0.85rem; color: #9ca3af; }
-.iv-status--err { color: #f87171; }
-.iv-relnotes { background: #0d1424; border: 1px solid #1f2937; border-radius: 0.6rem; padding: 1rem 1.1rem; margin-bottom: 1.25rem; }
+.iv-btn--ghost { background: transparent; color: #4f46e5; border-color: #4f46e5; }
+.iv-status { font-size: 0.85rem; color: var(--muted); }
+.iv-status--err { color: var(--danger); }
+.iv-relnotes { background: var(--surface); border: 1px solid var(--line); border-radius: 0.6rem; padding: 1rem 1.1rem; margin-bottom: 1.25rem; }
 .iv-relnotes-h { font-size: 1.05rem; font-weight: 650; margin: 0 0 0.25rem; }
-.iv-relnotes-sub { color: #9ca3af; font-size: 0.82rem; margin: 0 0 0.75rem; max-width: 70ch; }
-.iv-relnotes-sub code { background: #1f2937; padding: 0.05rem 0.35rem; border-radius: 0.25rem; }
-.iv-meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.75rem; }
+.iv-relnotes-sub { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.75rem; max-width: 70ch; }
+.iv-relnotes-sub code { background: var(--surface-2); border: 1px solid var(--line); padding: 0.05rem 0.35rem; border-radius: 0.25rem; }
+.iv-meta { font-size: 0.8rem; color: var(--faint); margin-bottom: 0.75rem; }
 .iv-feed { display: flex; flex-direction: column; gap: 0.75rem; }
-.iv-empty { color: #9ca3af; }
-.iv-card { background: #111827; border: 1px solid #1f2937; border-left-width: 3px; border-radius: 0.6rem; padding: 0.9rem 1rem; }
+.iv-empty { color: var(--muted); }
+.iv-card { background: var(--surface); border: 1px solid var(--line); border-left-width: 3px; border-radius: 0.6rem; padding: 0.9rem 1rem; }
 .iv-card-top { display: flex; align-items: baseline; gap: 0.6rem; }
 .iv-card-top h3 { font-size: 1.02rem; font-weight: 650; margin: 0; }
-.iv-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.1rem 0.4rem; border-radius: 0.25rem; background: #1f2937; color: #9ca3af; }
-.iv-story { margin: 0.4rem 0 0; color: #d1d5db; font-size: 0.92rem; }
-.iv-annotate { margin: 0.3rem 0 0; color: #9ca3af; font-size: 0.82rem; }
+.iv-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.1rem 0.4rem; border-radius: 0.25rem; background: var(--surface-2); border: 1px solid var(--line); color: var(--muted); }
+.iv-story { margin: 0.4rem 0 0; color: var(--ink); font-size: 0.92rem; }
+.iv-annotate { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.82rem; }
 .iv-actions { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.5rem; }
 .iv-action { font-size: 0.82rem; color: var(--ink); }
-.iv-action strong { color: #a5b4fc; font-weight: 600; }
-.iv-tags { display: inline-block; margin-top: 0.5rem; font-size: 0.72rem; color: #6b7280; }
-.tone-alarm { border-left-color: #ef4444; } .tone-alarm .iv-badge { background: #7f1d1d; color: #fecaca; }
-.tone-warn  { border-left-color: #f59e0b; } .tone-warn .iv-badge  { background: #78350f; color: #fde68a; }
-.tone-good  { border-left-color: #10b981; } .tone-good .iv-badge  { background: #064e3b; color: #a7f3d0; }
-.tone-neutral { border-left-color: #4b5563; }
+.iv-action strong { color: #4f46e5; font-weight: 600; }
+.iv-tags { display: inline-block; margin-top: 0.5rem; font-size: 0.72rem; color: var(--faint); }
+.tone-alarm { border-left-color: var(--danger); } .tone-alarm .iv-badge { background: #7f1d1d; border-color: #7f1d1d; color: #fecaca; }
+.tone-warn  { border-left-color: var(--accent); } .tone-warn .iv-badge  { background: #78350f; border-color: #78350f; color: #fde68a; }
+.tone-good  { border-left-color: var(--accent-2); } .tone-good .iv-badge  { background: #064e3b; border-color: #064e3b; color: #a7f3d0; }
+.tone-neutral { border-left-color: var(--line); }
+
+/* Tone pills use dark saturated fills with light text; keep that recipe in BOTH themes
+   (dark fill + light text reads fine on a white card, ~9:1+, and matches dark-mode hue identity). */
 </style>

@@ -236,24 +236,27 @@ onUnmounted(() => {
    ================================================ */
 
 .seed-progress-grid {
-  --void: #0a0f1a;
-  --surface: #111827;
-  --elevated: var(--surface);
-  --border: var(--surface-2);
+  /* Theme-aware aliases — resolve per theme via semantic tokens.
+     Dark mode keeps its dark panel; light mode flips to white cards on slate canvas. */
+  --void: var(--canvas);
+  --elevated: var(--surface-3);
+  --border: var(--line);
   --text-dim: var(--faint);
   --text-muted: var(--muted);
   --text-bright: var(--ink);
 
-  /* Phase Colors */
+  /* Phase Colors (non-text fills) */
   --p1: #3b82f6;
   --p1-dim: rgba(59, 130, 246, 0.15);
   --p2: #8b5cf6;
   --p2-dim: rgba(139, 92, 246, 0.15);
   --p3: #10b981;
   --p3-dim: rgba(16, 185, 129, 0.15);
+  /* Text-safe phase-3 (for colored text/labels) — AA on light & dark */
+  --p3-text: var(--p3);
 
-  --pending: var(--surface);
-  --pending-border: var(--surface-2);
+  --pending: var(--surface-2);
+  --pending-border: var(--line);
 
   position: relative;
   background: var(--void);
@@ -261,6 +264,12 @@ onUnmounted(() => {
   border-radius: 8px;
   overflow: hidden;
   font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+}
+
+/* Light mode: darken phase-3 where it carries TEXT so it passes WCAG AA on white.
+   #10b981 on #ffffff ≈ 1.95:1 (fail) → --accent-2 #047857 ≈ 4.54:1 (pass). */
+:root[data-theme="light"] .seed-progress-grid {
+  --p3-text: var(--accent-2);
 }
 
 /* Scan line effect */
@@ -347,7 +356,7 @@ onUnmounted(() => {
 
 .stat-divider {
   font-size: 10px;
-  color: var(--border);
+  color: var(--text-dim);
 }
 
 .stat-value {
@@ -360,7 +369,7 @@ onUnmounted(() => {
 }
 
 .stat-value.complete {
-  color: var(--p3);
+  color: var(--p3-text);
 }
 
 .stat-total {
@@ -469,12 +478,18 @@ onUnmounted(() => {
   flex-direction: column;
   gap: 1px;
   padding: 2px;
-  background: var(--surface);
+  background: var(--pending);
   border-radius: 2px;
   cursor: default;
   transition: transform 0.15s, background 0.15s;
   min-width: 12px;
   aspect-ratio: 1;
+}
+
+/* Light mode: pending cells are near-canvas (#f1f5f9 on #eef2f6); a 1px inset
+   border restores the grid structure. Dark mode left untouched. */
+:root[data-theme="light"] .seed-cell {
+  box-shadow: inset 0 0 0 1px var(--border);
 }
 
 .seed-cell:hover,

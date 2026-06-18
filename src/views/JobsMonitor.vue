@@ -483,7 +483,7 @@ onUnmounted(() => {
 .am-header {
   position: relative;
   z-index: 1;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  border-bottom: 1px solid var(--line);
 }
 
 .header-inner {
@@ -627,7 +627,7 @@ onUnmounted(() => {
 .empty-state-small {
   text-align: center;
   padding: 1.5rem 1rem;
-  color: var(--surface-3);
+  color: var(--faint);
   font-size: 0.8rem;
 }
 
@@ -638,8 +638,8 @@ onUnmounted(() => {
   gap: 0;
   margin-bottom: 0.625rem;
   border-radius: 10px;
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--line);
   text-decoration: none;
   color: inherit;
   transition: all 0.2s;
@@ -648,10 +648,14 @@ onUnmounted(() => {
 }
 
 .course-row:hover {
-  background: rgba(30, 41, 59, 0.85);
-  border-color: rgba(255, 166, 48, 0.25);
+  background: var(--surface-3);
+  border-color: var(--accent);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transform: translateY(-1px);
+}
+
+:root[data-theme="light"] .course-row:hover {
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
 }
 
 /* Left accent bar */
@@ -659,7 +663,7 @@ onUnmounted(() => {
   content: '';
   width: 3px;
   flex-shrink: 0;
-  background: var(--surface-2);
+  background: var(--line);
   border-radius: 10px 0 0 10px;
 }
 
@@ -735,7 +739,7 @@ onUnmounted(() => {
 }
 
 .stat-sep {
-  color: var(--surface-2);
+  color: var(--faint);
   font-size: 0.5rem;
 }
 
@@ -778,6 +782,19 @@ onUnmounted(() => {
   color: #38bdf8;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-weight: 500;
+}
+
+/* Light-mode: darken hardcoded status hues for AA contrast on white rows */
+:root[data-theme="light"] .last-change.green {
+  color: #047857;
+}
+
+:root[data-theme="light"] .last-change.amber {
+  color: #b45309;
+}
+
+:root[data-theme="light"] .audio-badge {
+  color: #0369a1;
 }
 
 /* Responsive */

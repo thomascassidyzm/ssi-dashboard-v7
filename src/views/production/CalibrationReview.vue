@@ -344,4 +344,46 @@ kbd {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
 }
+
+/*
+  Light-mode-only contrast fixes. The template uses hardcoded Tailwind palette
+  utilities (emerald/amber/red/purple/cyan -400 text on low-opacity fills) that are
+  identical in both themes; the -400 shades are illegible on light surfaces.
+  Scoped under [data-theme="light"] so DARK MODE IS UNTOUCHED.
+*/
+:root[data-theme="light"] .calibration-review .text-emerald-400 { color: #047857; }   /* emerald-700, ~5.0:1 on white */
+:root[data-theme="light"] .calibration-review .text-amber-400 { color: #b45309; }      /* amber-700, ~4.9:1 on white */
+:root[data-theme="light"] .calibration-review .text-red-400 { color: #dc2626; }        /* red-600, ~4.5:1 on white */
+:root[data-theme="light"] .calibration-review .text-purple-400 { color: #7e22ce; }     /* purple-700, ~5.9:1 on white */
+:root[data-theme="light"] .calibration-review .text-cyan-400 { color: #0e7490; }       /* cyan-700, ~4.6:1 on white */
+
+/* Tinted pill fills: the low-opacity /20 fills over light become near-white;
+   deepen to a solid hue at ~0.14 alpha and pair with the darkened text above. */
+:root[data-theme="light"] .calibration-review .bg-emerald-500\/20,
+:root[data-theme="light"] .calibration-review .bg-emerald-600\/20 { background-color: rgba(5, 150, 105, 0.14); }
+:root[data-theme="light"] .calibration-review .bg-amber-500\/20,
+:root[data-theme="light"] .calibration-review .bg-amber-600\/20 { background-color: rgba(180, 83, 9, 0.14); }
+:root[data-theme="light"] .calibration-review .bg-purple-500\/20 { background-color: rgba(126, 34, 206, 0.12); }
+:root[data-theme="light"] .calibration-review .bg-cyan-500\/20 { background-color: rgba(14, 116, 144, 0.13); }
+
+/* Action-button borders: -500/50 borders vanish on white; deepen them. */
+:root[data-theme="light"] .calibration-review .border-emerald-500\/50 { border-color: rgba(4, 120, 87, 0.55); }
+:root[data-theme="light"] .calibration-review .border-amber-500\/50 { border-color: rgba(180, 83, 9, 0.55); }
+
+/* Card surfaces: bg-surface/30 + border-line/50 barely separate from canvas in
+   light mode. Make cards solid white with a full-strength line + subtle shadow. */
+:root[data-theme="light"] .calibration-review .bg-surface\/30 {
+  background-color: var(--surface);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+:root[data-theme="light"] .calibration-review .border-line\/50,
+:root[data-theme="light"] .calibration-review .border-line\/30 { border-color: var(--line); }
+
+/* Raised input/note/kbd chips sit on white cards; lift them off it. */
+:root[data-theme="light"] .calibration-review .bg-surface-2\/30,
+:root[data-theme="light"] .calibration-review .bg-surface-2\/50,
+:root[data-theme="light"] .calibration-review .bg-surface-2\/70 { background-color: var(--surface-2); }
+
+/* Faded faint tags ("reused", header chip border) — restore readable strength. */
+:root[data-theme="light"] .calibration-review .bg-surface-2\/50.border-line\/50 { border-color: var(--line); }
 </style>

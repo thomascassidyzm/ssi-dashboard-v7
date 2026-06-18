@@ -4,15 +4,15 @@
     <div class="flex items-center justify-between mb-6">
       <div class="flex items-center gap-4">
         <h2 class="text-lg font-semibold text-ink">QA Review</h2>
-        <span class="px-3 py-1 bg-surface-2/50 border border-line/50 rounded text-sm font-mono text-emerald-400">
+        <span class="px-3 py-1 bg-surface-2 border border-line rounded text-sm font-mono text-accent-2 qa-code">
           {{ courseCode }}
         </span>
       </div>
       <div class="flex items-center gap-3 text-sm">
-        <span class="text-red-400 font-mono">{{ summary.errors }}</span>
+        <span class="text-danger font-mono">{{ summary.errors }}</span>
         <span class="text-faint">errors</span>
         <span class="text-faint">|</span>
-        <span class="text-amber-400 font-mono">{{ summary.warnings }}</span>
+        <span class="text-amber-400 qa-warn font-mono">{{ summary.warnings }}</span>
         <span class="text-faint">warnings</span>
         <span class="text-faint">|</span>
         <span class="text-muted font-mono">{{ flags.length }}</span>
@@ -26,7 +26,7 @@
         <span>Phrase checks: {{ phraseProgress.checked }}/{{ phraseProgress.total }}</span>
         <span>{{ phraseProgress.percent }}%</span>
       </div>
-      <div class="h-1.5 bg-surface-2/50 rounded-full overflow-hidden">
+      <div class="h-1.5 bg-surface-2 border border-line rounded-full overflow-hidden">
         <div class="h-full bg-emerald-500 transition-all duration-500"
           :style="{ width: phraseProgress.percent + '%' }">
         </div>
@@ -41,8 +41,8 @@
         @click="activeFilter = tab.key"
         class="px-3 py-1.5 rounded text-xs font-medium transition-all"
         :class="activeFilter === tab.key
-          ? 'bg-surface-3/50 text-ink'
-          : 'bg-surface/30 text-faint hover:text-muted'"
+          ? 'bg-surface-3 border border-line text-ink'
+          : 'bg-surface border border-line text-muted hover:text-ink'"
       >
         {{ tab.label }}
         <span class="ml-1 font-mono">{{ tab.count }}</span>
@@ -56,7 +56,7 @@
 
     <!-- Empty state -->
     <div v-else-if="flags.length === 0" class="text-center py-12">
-      <div class="text-emerald-400 text-lg mb-2">No flags found</div>
+      <div class="text-accent-2 text-lg mb-2">No flags found</div>
       <div class="text-sm text-faint">All phrases passed QA checks.</div>
     </div>
 
@@ -65,13 +65,13 @@
       <div
         v-for="flag in filteredFlags"
         :key="flag.id"
-        class="bg-surface/30 border rounded-lg px-5 py-3 flex items-start gap-4"
-        :class="dismissed.has(flag.id) ? 'border-line/20 opacity-40' : 'border-line/50'"
+        class="bg-surface border rounded-lg px-5 py-3 flex items-start gap-4 shadow-sm"
+        :class="dismissed.has(flag.id) ? 'border-line opacity-40' : 'border-line'"
       >
         <!-- Severity badge -->
         <div class="pt-0.5">
           <span class="inline-block w-2 h-2 rounded-full"
-            :class="flag.severity === 'error' ? 'bg-red-400' : flag.severity === 'warning' ? 'bg-amber-400' : 'bg-surface-3'">
+            :class="flag.severity === 'error' ? 'bg-red-500 qa-dot-error' : flag.severity === 'warning' ? 'bg-amber-500 qa-dot-warn' : 'bg-surface-3'">
           </span>
         </div>
 
@@ -103,14 +103,14 @@
         <button
           v-if="!dismissed.has(flag.id)"
           @click="toggleDismiss(flag.id)"
-          class="shrink-0 px-2.5 py-1 text-xs bg-surface-2/30 border border-line/50 text-muted rounded hover:bg-surface-2/50 hover:text-ink transition-colors"
+          class="shrink-0 px-2.5 py-1 text-xs bg-surface-2 border border-line text-muted rounded hover:bg-surface-3 hover:text-ink transition-colors"
         >
           Dismiss
         </button>
         <button
           v-else
           @click="toggleDismiss(flag.id)"
-          class="shrink-0 px-2.5 py-1 text-xs bg-surface-2/30 border border-line/30 text-faint rounded hover:text-muted transition-colors"
+          class="shrink-0 px-2.5 py-1 text-xs bg-surface-2 border border-line text-faint rounded hover:text-muted transition-colors"
         >
           Undo
         </button>
@@ -119,15 +119,15 @@
 
     <!-- Approve bar -->
     <div v-if="flags.length > 0 && !loading"
-      class="sticky bottom-0 mt-6 -mx-6 -mb-6 px-6 py-4 bg-canvas/95 border-t border-line/50 flex items-center justify-between backdrop-blur">
+      class="sticky bottom-0 mt-6 -mx-6 -mb-6 px-6 py-4 bg-canvas/95 border-t border-line flex items-center justify-between backdrop-blur">
       <div class="text-sm text-muted">
-        <span class="text-emerald-400 font-mono">{{ dismissed.size }}</span> dismissed (false positive),
-        <span class="text-red-400 font-mono">{{ flags.length - dismissed.size }}</span> to delete
+        <span class="text-accent-2 font-mono">{{ dismissed.size }}</span> dismissed (false positive),
+        <span class="text-danger font-mono">{{ flags.length - dismissed.size }}</span> to delete
       </div>
       <button
         @click="approveAll"
         :disabled="approving"
-        class="px-6 py-2.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 rounded-lg hover:bg-emerald-600/30 transition-colors font-medium text-sm disabled:opacity-50"
+        class="qa-approve px-6 py-2.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 rounded-lg hover:bg-emerald-600/30 transition-colors font-medium text-sm disabled:opacity-50"
       >
         {{ approving ? 'Approving...' : 'Approve & Continue Pipeline' }}
       </button>
@@ -277,4 +277,47 @@ onUnmounted(() => {
 .qa-review {
   padding: 1.5rem;
 }
+
+/*
+ * Light-mode contrast overrides. Dark mode (default) is untouched — these
+ * selectors only apply under [data-theme="light"]. The Tailwind -400 text
+ * shades and /20 tint fills are tuned for dark surfaces and fail WCAG AA on
+ * the light canvas/surface, so we darken text to -700 shades and lift the
+ * tint fills while preserving each pill's hue identity.
+ */
+:root[data-theme="light"] .qa-code {
+  /* course code: emerald-400 (#34d399, ~1.5:1 on surface-2) -> emerald-700 */
+  color: #047857; /* 6.0:1 on #f1f5f9 */
+}
+:root[data-theme="light"] .qa-warn {
+  /* warnings count: amber-400 (#fbbf24, ~1.6:1) -> amber-700 */
+  color: #b45309; /* 4.7:1 on canvas */
+}
+:root[data-theme="light"] .qa-dot-error { background-color: #dc2626; }
+:root[data-theme="light"] .qa-dot-warn { background-color: #b45309; }
+
+/* Approve button: emerald-400 text on a 20%-emerald tint is invisible in light */
+:root[data-theme="light"] .qa-approve {
+  background-color: #d1fae5;
+  border-color: #6ee7b7;
+  color: #065f46; /* 7.1:1 on #d1fae5 */
+}
+:root[data-theme="light"] .qa-approve:hover {
+  background-color: #a7f3d0;
+}
+
+/* Type pills (typeClass): darken text to -700 and lift the tint fill so text
+   stays >=4.5:1 while the hue family is recognisably the same as dark mode. */
+:root[data-theme="light"] :deep(.text-red-400)    { color: #b91c1c; }
+:root[data-theme="light"] :deep(.text-amber-400)  { color: #b45309; }
+:root[data-theme="light"] :deep(.text-purple-400) { color: #7e22ce; }
+:root[data-theme="light"] :deep(.text-cyan-400)   { color: #0e7490; }
+:root[data-theme="light"] :deep(.text-orange-400) { color: #c2410c; }
+:root[data-theme="light"] :deep(.text-emerald-400){ color: #047857; }
+
+:root[data-theme="light"] :deep(.bg-red-500\/20)    { background-color: #fee2e2; }
+:root[data-theme="light"] :deep(.bg-amber-500\/20)  { background-color: #fef3c7; }
+:root[data-theme="light"] :deep(.bg-purple-500\/20) { background-color: #f3e8ff; }
+:root[data-theme="light"] :deep(.bg-cyan-500\/20)   { background-color: #cffafe; }
+:root[data-theme="light"] :deep(.bg-orange-500\/20) { background-color: #ffedd5; }
 </style>

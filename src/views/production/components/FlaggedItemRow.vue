@@ -61,7 +61,7 @@
         <!-- Clear Flag Button -->
         <button
           @click="$emit('unflag', item)"
-          class="p-2 rounded-lg bg-emerald-500 bg-opacity-20 hover:bg-opacity-40 text-emerald-400 hover:text-emerald-300 transition-colors"
+          class="clear-flag-btn p-2 rounded-lg bg-emerald-500 bg-opacity-20 hover:bg-opacity-40 text-emerald-400 hover:text-emerald-300 transition-colors"
           title="Clear flag (mark as approved)"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,5 +141,15 @@ const formatStatus = (status: string): string => {
 <style scoped>
 .flagged-item-row:hover {
   box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.3);
+}
+
+/* Light mode: the emerald-400/300 button text is too pale on the
+   translucent emerald fill over a white card (~1.4:1, fails AA).
+   Darken to the accessible success green; dark mode keeps emerald. */
+:root[data-theme='light'] .clear-flag-btn {
+  color: var(--success);
+}
+:root[data-theme='light'] .clear-flag-btn:hover {
+  color: var(--accent-2);
 }
 </style>

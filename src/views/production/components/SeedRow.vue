@@ -20,7 +20,7 @@
 
           <!-- Seed Icon -->
           <div class="seed-icon w-10 h-10 flex items-center justify-center bg-emerald-500 bg-opacity-20 rounded-lg flex-shrink-0">
-            <svg class="w-6 h-6 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-6 h-6 seed-icon-glyph" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
             </svg>
           </div>
@@ -58,7 +58,7 @@
             <span>{{ totalPhraseCount }} phrases</span>
           </div>
 
-          <div v-if="flaggedCount > 0" class="flagged-count flex items-center gap-1 text-amber-400">
+          <div v-if="flaggedCount > 0" class="flagged-count flex items-center gap-1 text-accent">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
@@ -257,5 +257,14 @@ const getFlagNotes = (phrase: PhraseRowData): string | undefined => {
 
 .seed-header:hover {
   @apply shadow-lg;
+}
+
+/* Seed icon glyph: keep light emerald in dark mode (reads on the dark tint),
+   use a dark emerald in light mode so it reads on the pale-mint tinted fill. */
+.seed-icon-glyph {
+  color: #6ee7b7; /* emerald-300, dark-mode default */
+}
+:root[data-theme='light'] .seed-icon-glyph {
+  color: #047857; /* emerald-700, ~4.0:1 on the pale-mint fill */
 }
 </style>

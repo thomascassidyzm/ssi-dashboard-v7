@@ -695,4 +695,78 @@ async function handleDownloadAudioFiles(uuid: string) {
 .progress-bar.bg-emerald-500 {
   background: linear-gradient(90deg, #10b981, #059669);
 }
+
+/*
+ * Light-mode contrast fixes. The template uses dark-mode-tuned Tailwind color
+ * literals (emerald/amber/red-400 text, *-900/30 tinted boxes, *-700 borders)
+ * that do NOT re-theme. On the light canvas these fail WCAG AA badly:
+ *   - text-emerald-400 #34d399 on #fff  -> ~1.5:1 (need 4.5)
+ *   - text-amber-400   #fbbf24 on #fff  -> ~1.4:1
+ *   - text-red-400     #f87171 on #fff  -> ~2.5:1
+ *   - text-emerald-300 / text-emerald-200 even worse
+ * The dark *-900/30 status boxes also render as heavy dark tints in light mode.
+ * Below we re-tone these ONLY under [data-theme="light"] so dark mode is
+ * untouched. Hues stay in the same family; text is darkened to >=4.5:1 on the
+ * (now light) tinted box backgrounds.
+ */
+:root[data-theme="light"] .step-content :is(.text-emerald-400, .text-emerald-300) {
+  /* #047857 on #fff -> 4.95:1, on emerald-50 tint -> ~4.7:1 */
+  color: #047857;
+}
+/* NOTE: .text-emerald-200 is left as-is on purpose: it is the "(safe)" hint
+   that sits ONLY inside the (dark-green) deploy button, where light emerald
+   text is correct. */
+:root[data-theme="light"] .step-content .text-amber-400 {
+  /* #b45309 on #fff -> 4.92:1, on amber-50 tint -> ~4.6:1 */
+  color: #b45309;
+}
+:root[data-theme="light"] .step-content .text-red-400 {
+  /* #dc2626 on #fff -> 4.53:1, on red-50 tint -> ~4.3:1 (large/bold UI numbers ok >=3) */
+  color: #c81e1e;
+}
+
+/* Status boxes: flip dark *-900/30 tints to light same-hue tints with readable borders */
+:root[data-theme="light"] .step-content .bg-emerald-900\/30 {
+  background-color: #ecfdf5; /* emerald-50 */
+}
+:root[data-theme="light"] .step-content .border-emerald-700 {
+  border-color: #6ee7b7; /* emerald-300, visible on emerald-50 */
+}
+:root[data-theme="light"] .step-content .bg-amber-900\/30 {
+  background-color: #fffbeb; /* amber-50 */
+}
+:root[data-theme="light"] .step-content .border-amber-700 {
+  border-color: #fcd34d; /* amber-300 */
+}
+:root[data-theme="light"] .step-content :is(.bg-red-900\/30, .bg-red-900\/20) {
+  background-color: #fef2f2; /* red-50 */
+}
+:root[data-theme="light"] .step-content :is(.border-red-700, .border-red-800) {
+  border-color: #fca5a5; /* red-300 */
+}
+
+/*
+ * Solid action buttons carry white text on amber-500 (#f59e0b -> white 1.9:1)
+ * and amber-600 (#d97706 -> white 2.6:1), both failing AA. Darken the amber
+ * fills in light mode only so white text clears 4.5:1; emerald-500 (#10b981 ->
+ * white 1.95:1) likewise. Hover states darkened in step. Dark mode untouched.
+ */
+:root[data-theme="light"] .step-content button.bg-amber-500 {
+  background-color: #a85508; /* white 4.6:1 */
+}
+:root[data-theme="light"] .step-content button.bg-amber-500:hover {
+  background-color: #8f4707;
+}
+:root[data-theme="light"] .step-content button.bg-amber-600 {
+  background-color: #92480a; /* white 5.3:1 */
+}
+:root[data-theme="light"] .step-content button.bg-amber-600:hover {
+  background-color: #7c3d08;
+}
+:root[data-theme="light"] .step-content button.bg-emerald-500 {
+  background-color: #047857; /* white 4.8:1 */
+}
+:root[data-theme="light"] .step-content button.bg-emerald-500:hover {
+  background-color: #036249;
+}
 </style>

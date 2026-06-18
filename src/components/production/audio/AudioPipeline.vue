@@ -224,7 +224,7 @@ watch(() => store.jobStatus, (newStatus) => {
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--surface-3);
+  border-bottom: 1px solid var(--line);
 }
 
 .header-title h1 {
@@ -251,7 +251,7 @@ watch(() => store.jobStatus, (newStatus) => {
 .action-btn {
   padding: 0.6rem 1.25rem;
   background: var(--surface-2);
-  border: 1px solid var(--surface-3);
+  border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--ink);
   font-family: 'Josefin Sans', sans-serif;
@@ -275,6 +275,13 @@ watch(() => store.jobStatus, (newStatus) => {
   box-shadow: 0 0 16px rgba(255, 166, 48, 0.4);
 }
 
+/* Light mode: the lighter gradient stop (#e6951c) drops white-text contrast
+   below AA, so use a solid darkened accent. Dark mode keeps its gradient. */
+:root[data-theme="light"] .action-btn.primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
 .action-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -290,7 +297,7 @@ watch(() => store.jobStatus, (newStatus) => {
 
 .stat {
   background: var(--surface);
-  border: 1px solid var(--surface-3);
+  border: 1px solid var(--line);
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
@@ -307,6 +314,13 @@ watch(() => store.jobStatus, (newStatus) => {
 .stat-value.processing { color: #06b6d4; }
 .stat-value.complete { color: #06ffa5; }
 .stat-value.failed { color: #e63946; }
+
+/* Light mode: the dark-mode neon status colors wash out on the white stat
+   card (cyan ~2.3:1, neon green ~1.4:1, red ~4:1). Darken to AA-legible
+   members of the same hue family. Dark mode is untouched. */
+:root[data-theme="light"] .stat-value.processing { color: #0e7490; }
+:root[data-theme="light"] .stat-value.complete { color: var(--success); }
+:root[data-theme="light"] .stat-value.failed { color: var(--danger); }
 
 .stat-label {
   font-family: 'Josefin Sans', sans-serif;
@@ -327,7 +341,7 @@ watch(() => store.jobStatus, (newStatus) => {
 .filter-btn {
   padding: 0.5rem 1rem;
   background: var(--surface);
-  border: 1px solid var(--surface-3);
+  border: 1px solid var(--line);
   border-radius: 20px;
   color: var(--muted);
   font-family: 'Josefin Sans', sans-serif;

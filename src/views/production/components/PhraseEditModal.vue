@@ -555,4 +555,49 @@ onUnmounted(() => {
 input[type="checkbox"] {
   accent-color: currentColor;
 }
+
+/* ── Light-mode legibility overrides (dark mode untouched) ──
+   The pink/blue/emerald/red -400 utilities are tuned for dark surfaces
+   and lose contrast on white in light mode. Darken text + saturate the
+   chip fills so they pass WCAG AA while keeping the same hue family. */
+:root[data-theme="light"] .modal-content .text-pink-400 {
+  color: #be185d; /* pink-700 ~5.9:1 on white */
+}
+:root[data-theme="light"] .modal-content .text-blue-400 {
+  color: #1d4ed8; /* blue-700 ~6.3:1 on white */
+}
+:root[data-theme="light"] .modal-content .text-emerald-400 {
+  color: #047857; /* emerald-700 ~4.9:1 on white */
+}
+:root[data-theme="light"] .modal-content .text-red-400 {
+  color: #b91c1c; /* red-700 ~5.9:1 on white */
+}
+/* Voice/role chips: deepen the translucent tints so the (now darker)
+   text remains legible on the chip fill. */
+:root[data-theme="light"] .modal-content .voice-badge.bg-pink-500.bg-opacity-20,
+:root[data-theme="light"] .modal-content .bg-pink-500.bg-opacity-20 {
+  background-color: rgba(190, 24, 93, 0.14);
+}
+:root[data-theme="light"] .modal-content .voice-badge.bg-blue-500.bg-opacity-20,
+:root[data-theme="light"] .modal-content .bg-blue-500.bg-opacity-20 {
+  background-color: rgba(29, 78, 216, 0.14);
+}
+/* Selected audio-flag rows: the -500/opacity-10 tints are near-invisible
+   on light. Give the active row a readable hue-matched fill + border. */
+:root[data-theme="light"] .modal-content .border-pink-500.bg-pink-500 {
+  border-color: #be185d;
+  background-color: rgba(190, 24, 93, 0.08);
+}
+:root[data-theme="light"] .modal-content .border-blue-500.bg-blue-500 {
+  border-color: #1d4ed8;
+  background-color: rgba(29, 78, 216, 0.08);
+}
+/* Primary Save button: emerald-500 white text is ~2.5:1. Use the deeper
+   accent-2-aligned green so white text passes AA. */
+:root[data-theme="light"] .modal-content .bg-emerald-500 {
+  background-color: #047857; /* matches --accent-2; white text ~4.9:1 */
+}
+:root[data-theme="light"] .modal-content .bg-emerald-500.hover\:bg-emerald-600:hover {
+  background-color: #065f46;
+}
 </style>

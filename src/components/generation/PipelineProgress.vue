@@ -162,14 +162,15 @@ function isLastPhase(key) {
 .phase-box {
   width: 140px;
   padding: 0.75rem;
-  background: var(--void, var(--canvas));
-  border: 2px solid var(--border, var(--surface-2));
+  background: var(--surface);
+  border: 2px solid var(--line);
   border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
   transition: all 0.3s ease;
 }
 
 .phase-box.phase-pending {
-  border-color: var(--border, var(--surface-2));
+  border-color: var(--line);
   opacity: 0.6;
 }
 
@@ -189,7 +190,7 @@ function isLastPhase(key) {
 }
 
 .phase-box.phase-skipped {
-  border-color: var(--border, var(--surface-2));
+  border-color: var(--line);
   opacity: 0.4;
 }
 
@@ -227,7 +228,7 @@ function isLastPhase(key) {
 
 .phase-progress-bar {
   height: 4px;
-  background: var(--border, var(--surface-2));
+  background: var(--surface-3);
   border-radius: 2px;
   overflow: hidden;
   margin-bottom: 0.5rem;
@@ -267,8 +268,7 @@ function isLastPhase(key) {
 .phase-job-id {
   font-size: 0.625rem;
   font-family: 'SF Mono', Monaco, monospace;
-  color: var(--text-muted, var(--faint));
-  opacity: 0.7;
+  color: var(--muted);
 }
 
 .phase-connector {
@@ -282,7 +282,7 @@ function isLastPhase(key) {
 .phase-connector svg {
   width: 20px;
   height: 20px;
-  color: var(--border-light, var(--surface-3));
+  color: var(--muted);
 }
 
 /* Responsive: stack on small screens */

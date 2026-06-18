@@ -923,7 +923,7 @@ function handleRecommendation(rec) {
   --deep: var(--surface);
   --surface: var(--surface);
   --elevated: var(--surface-2);
-  --border: var(--surface-2);
+  --border: var(--line);
   --border-light: var(--surface-3);
   --text: var(--ink);
   --text-dim: var(--muted);
@@ -931,6 +931,9 @@ function handleRecommendation(rec) {
   --accent: #10b981;
   --accent-dim: #059669;
   --accent-glow: rgba(16, 185, 129, 0.15);
+  --warning: #eab308;
+  --error: #ef4444;
+  --success: #22c55e;
 
   min-height: 100vh;
   background: var(--void);
@@ -1921,6 +1924,74 @@ function handleRecommendation(rec) {
   display: flex;
   gap: 1rem;
   justify-content: center;
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES (dark mode untouched)
+   Fixes: invisible green accent text, washed-out
+   borders, low-contrast warn/error pill text.
+   ============================================ */
+:root[data-theme="light"] .generate-page {
+  /* Hardcoded #10b981 fails as text on white (1.85:1).
+     Re-point the local accent to the theme's darker green
+     so pill text / links / badges pass AA. */
+  --accent: var(--accent-2);          /* #047857 -> on white 5.0:1 */
+  --accent-dim: #065f46;
+  --accent-glow: rgba(4, 120, 87, 0.12);
+  /* Raised sub-panels need to read against white cards. */
+  --elevated: #e2e8f0;
+  --border-light: #94a3b8;
+}
+
+/* Give cards a clearly visible edge + lift on the light canvas. */
+:root[data-theme="light"] .generate-page .lang-card,
+:root[data-theme="light"] .generate-page .state-card,
+:root[data-theme="light"] .generate-page .mode-selection-card,
+:root[data-theme="light"] .generate-page .spawner-selection-card,
+:root[data-theme="light"] .generate-page .progress-panel {
+  border-color: #cbd5e1;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+/* Inputs / raised rows: stronger border so they read on white. */
+:root[data-theme="light"] .generate-page .select-wrapper select,
+:root[data-theme="light"] .generate-page .phase-status,
+:root[data-theme="light"] .generate-page .rec-item,
+:root[data-theme="light"] .generate-page .mode-option,
+:root[data-theme="light"] .generate-page .spawner-option,
+:root[data-theme="light"] .generate-page .spec-tag {
+  border-color: #94a3b8;
+}
+
+/* preview-badge / monitor-link / progress-badge: keep green hue but
+   readable. accent now #047857 (5.0:1 on the tint below). */
+:root[data-theme="light"] .generate-page .preview-badge,
+:root[data-theme="light"] .generate-page .monitor-link,
+:root[data-theme="light"] .generate-page .spec-tag.good,
+:root[data-theme="light"] .generate-page .progress-badge {
+  border-color: rgba(4, 120, 87, 0.35);
+}
+
+/* WARN pill: #f59e0b text on tint ~1.9:1 -> darken text + border. */
+:root[data-theme="light"] .generate-page .spec-tag.warn {
+  background: rgba(180, 83, 9, 0.12);
+  border-color: rgba(180, 83, 9, 0.35);
+  color: #92400e;                     /* on the tint ~5.6:1 */
+}
+
+/* ERROR banner + retry: #f87171 text fails on light tint. */
+:root[data-theme="light"] .generate-page .error-banner,
+:root[data-theme="light"] .generate-page .btn-retry {
+  color: #b91c1c;                     /* on red tint ~5.9:1 */
+}
+:root[data-theme="light"] .generate-page .btn-retry {
+  border-color: rgba(220, 38, 38, 0.35);
+}
+
+/* Glow orbs are near-invisible noise on a light canvas; mute them
+   so they don't tint cards. */
+:root[data-theme="light"] .generate-page .glow-orb {
+  opacity: 0.04;
 }
 
 /* Responsive */

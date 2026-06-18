@@ -44,7 +44,7 @@
         class="w-16 h-16 bg-red-600 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors"
         title="Start Recording"
       >
-        <svg class="w-8 h-8 text-ink" fill="currentColor" viewBox="0 0 20 20">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
           <circle cx="10" cy="10" r="6"/>
         </svg>
       </button>
@@ -68,7 +68,7 @@
           class="w-12 h-12 bg-emerald-600 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors"
           title="Play"
         >
-          <svg class="w-5 h-5 text-ink ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M6 4l10 6-10 6V4z"/>
           </svg>
         </button>
@@ -96,7 +96,7 @@
     </div>
 
     <!-- Error Message -->
-    <p v-if="error" class="text-red-400 text-sm text-center mt-4">
+    <p v-if="error" class="text-danger text-sm text-center mt-4">
       {{ error }}
     </p>
   </div>

@@ -873,4 +873,69 @@ input[type="checkbox"] {
 .result-header .text-emerald-400 {
   color: var(--mc-success) !important;
 }
+
+/* ============================================================
+   LIGHT MODE CONTRAST FIXES (dark mode untouched)
+   The import-theme accent literals (--mc-import #f97316,
+   --mc-success #10b981) and the hardcoded red/amber/emerald-*
+   Tailwind status colors are tuned for a dark background and
+   fail WCAG AA on the light canvas/white surfaces. Darken them
+   under [data-theme="light"] only, preserving hue identity.
+   ============================================================ */
+:root[data-theme="light"] .modal-overlay {
+  /* --mc-border was var(--surface-2) #f1f5f9 = invisible as a border on
+     white cards. Use the real border token so cards separate. */
+  --mc-border: var(--line);
+  --mc-border-light: var(--faint);
+  /* --mc-elevated (stat-item / progress track) was surface-2; keep it but
+     pair with the visible border above so the chip reads. */
+  /* orange #f97316 -> 2.34:1 on white; #b3490a -> ~4.9:1 */
+  --mc-import: #b3490a;
+  --mc-import-dim: #9a3d06;
+  --mc-import-glow: rgba(179, 73, 10, 0.10);
+  /* green #10b981 -> 2.0:1 on white; #047857 -> ~4.7:1 (matches --accent-2) */
+  --mc-success: #047857;
+  --mc-success-glow: rgba(4, 120, 87, 0.10);
+  --mc-error: #b91c1c;
+  --mc-warning: #b45309;
+}
+
+/* Validation success secondary line (was rgba(249,115,22,0.8)) */
+:root[data-theme="light"] .validation-status .text-emerald-300 {
+  color: #9a3d06 !important;
+}
+
+/* Status text on tinted boxes: darken to readable shades, keep hue */
+:root[data-theme="light"] .modal-overlay .text-red-400,
+:root[data-theme="light"] .modal-overlay .text-red-300 {
+  color: #b91c1c !important; /* red-700, ~5.9:1 on near-white */
+}
+:root[data-theme="light"] .modal-overlay .text-amber-400,
+:root[data-theme="light"] .modal-overlay .text-amber-300 {
+  color: #b45309 !important; /* amber-700, ~4.9:1 on near-white */
+}
+
+/* Status box fills: the bg-*-900/30 literals read as near-white in
+   light mode. Give a clearly-tinted fill + a visible same-hue border. */
+:root[data-theme="light"] .modal-overlay .bg-red-900 {
+  background-color: #fef2f2 !important; /* red-50 */
+  border-color: #fca5a5 !important;     /* red-300, ~visible on white */
+}
+:root[data-theme="light"] .modal-overlay .border-red-700 {
+  border-color: #fca5a5 !important;
+}
+:root[data-theme="light"] .warning-box.bg-amber-900 {
+  background-color: #fffbeb !important; /* amber-50 */
+  border-color: #fcd34d !important;
+}
+:root[data-theme="light"] .modal-overlay .border-amber-700 {
+  border-color: #fcd34d !important;
+}
+
+/* Inactive step dot: bg-surface-2 (#f1f5f9) on bg-canvas (#eef2f6)
+   ~1.0:1 = invisible. Lift to white + a visible ring. */
+:root[data-theme="light"] .step-indicators .bg-surface-2 {
+  background-color: var(--surface) !important;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
 </style>

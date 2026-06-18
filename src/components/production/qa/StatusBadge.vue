@@ -129,4 +129,61 @@ const statusClass = computed(() => [
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.8); }
 }
+
+/* Light-mode overrides: the dark-mode neon text + faint tints fail WCAG on white.
+   Darken text/dot and use a slightly stronger tint per hue family so each pill
+   stays recognizably the same colour while passing AA. Dark mode is untouched. */
+:root[data-theme="light"] .status-pending {
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+:root[data-theme="light"] .status-pending .status-dot { background: var(--muted); }
+
+:root[data-theme="light"] .status-flagged {
+  background: rgba(168, 85, 8, 0.12);
+  color: var(--accent); /* #a85508 */
+}
+:root[data-theme="light"] .status-flagged .status-dot {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+:root[data-theme="light"] .status-flagged-human {
+  background: rgba(185, 28, 28, 0.12);
+  color: #b91c1c;
+}
+:root[data-theme="light"] .status-flagged-human .status-dot {
+  background: #b91c1c;
+  box-shadow: none;
+}
+
+:root[data-theme="light"] .status-in-progress {
+  background: rgba(14, 116, 144, 0.12);
+  color: #0e7490;
+}
+:root[data-theme="light"] .status-in-progress .status-dot {
+  background: #0e7490;
+}
+
+:root[data-theme="light"] .status-review {
+  background: rgba(180, 83, 9, 0.12);
+  color: #b45309;
+}
+:root[data-theme="light"] .status-review .status-dot { background: #b45309; }
+
+:root[data-theme="light"] .status-approved {
+  background: rgba(4, 120, 87, 0.12);
+  color: var(--accent-2); /* #047857 */
+}
+:root[data-theme="light"] .status-approved .status-dot {
+  background: var(--accent-2);
+  box-shadow: none;
+}
+
+:root[data-theme="light"] .status-rejected {
+  background: rgba(185, 28, 28, 0.12);
+  color: #b91c1c;
+}
+:root[data-theme="light"] .status-rejected .status-dot { background: #b91c1c; }
 </style>

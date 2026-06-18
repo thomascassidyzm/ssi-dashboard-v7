@@ -544,4 +544,33 @@ kbd {
   .autocue { height: 44vh; padding: 28vh 1rem; }
   .kbd-hint { display: none; }
 }
+
+/* ── Light-mode legibility ──────────────────────────────────────────────────
+   Dark mode is the base above and is left untouched. In light mode the shared
+   --color-graphite border token (= --surface-3 #e2e8f0) is far too faint
+   against the white surface / light canvas (~1.1:1), so cards, insets and
+   wells look flat. Promote borders to the dedicated --line token (#cbd5e1)
+   and add a subtle shadow to the main cards/wells for clear separation. */
+:root[data-theme="light"] .lt-card {
+  border-color: var(--line);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 1px rgba(15, 23, 42, 0.04);
+}
+:root[data-theme="light"] .sum-stat,
+:root[data-theme="light"] kbd,
+:root[data-theme="light"] .mic-select,
+:root[data-theme="light"] .meter,
+:root[data-theme="light"] .btn-ghost,
+:root[data-theme="light"] .btn-finish,
+:root[data-theme="light"] .ctl-again {
+  border-color: var(--line);
+}
+:root[data-theme="light"] .scene-head {
+  border-bottom-color: var(--line);
+}
+/* The autocue is a recessed well sitting inside a white card; give it a clear
+   border plus a faint inset so the read zone reads as a distinct surface. */
+:root[data-theme="light"] .autocue {
+  border-color: var(--line);
+  box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.05);
+}
 </style>

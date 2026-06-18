@@ -101,8 +101,8 @@ const statusLabel = computed(() => {
 
 <style scoped>
 .stage-card {
-  background: rgb(15 23 42 / 0.6);
-  border: 1px solid rgb(51 65 85);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
   padding: 1.5rem;
   transition: all 0.3s ease;
@@ -181,6 +181,28 @@ const statusLabel = computed(() => {
   color: var(--muted);
 }
 
+/* Light mode: darken pill text/fill so it passes AA on the pale tint.
+   Hue families preserved (green / amber / green / slate). */
+:root[data-theme="light"] .badge-processing {
+  background: rgb(4 120 87 / 0.14);
+  color: #047857;
+}
+
+:root[data-theme="light"] .badge-warning {
+  background: rgb(180 83 9 / 0.14);
+  color: #b45309;
+}
+
+:root[data-theme="light"] .badge-success {
+  background: rgb(4 120 87 / 0.14);
+  color: #047857;
+}
+
+:root[data-theme="light"] .badge-idle {
+  background: rgb(71 85 105 / 0.14);
+  color: var(--muted);
+}
+
 .stage-progress {
   margin-bottom: 1rem;
   display: flex;
@@ -191,7 +213,7 @@ const statusLabel = computed(() => {
 .progress-bar {
   flex: 1;
   height: 0.5rem;
-  background: rgb(51 65 85);
+  background: var(--surface-3);
   border-radius: 9999px;
   overflow: hidden;
 }
@@ -231,12 +253,22 @@ const statusLabel = computed(() => {
   color: #fbbf24;
 }
 
+/* Light mode: amber blocker panel + text need to read on a pale tint. */
+:root[data-theme="light"] .stage-blockers {
+  background: rgb(180 83 9 / 0.1);
+  border-color: rgb(180 83 9 / 0.35);
+}
+
+:root[data-theme="light"] .blocker-text {
+  color: #b45309;
+}
+
 .stage-action-btn {
   width: 100%;
   padding: 0.75rem;
-  background: rgb(51 65 85);
+  background: var(--surface-2);
   color: var(--ink);
-  border: 1px solid rgb(71 85 105);
+  border: 1px solid var(--line);
   border-radius: 0.5rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -245,8 +277,8 @@ const statusLabel = computed(() => {
 }
 
 .stage-action-btn:hover {
-  background: rgb(71 85 105);
-  border-color: #10b981;
-  color: #10b981;
+  background: var(--surface-3);
+  border-color: var(--accent-2);
+  color: var(--accent-2);
 }
 </style>

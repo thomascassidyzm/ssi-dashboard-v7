@@ -7,13 +7,13 @@
       :class="statusClasses"
     >
       <span v-if="loading" class="animate-pulse">...</span>
-      <span v-else-if="error" class="text-red-400">Schema Error</span>
+      <span v-else-if="error" class="text-danger">Schema Error</span>
       <span v-else-if="validation?.valid" class="flex items-center gap-1">
-        <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+        <span class="w-2 h-2 bg-success rounded-full"></span>
         Schema OK
       </span>
       <span v-else class="flex items-center gap-1">
-        <span class="w-2 h-2 bg-red-400 rounded-full"></span>
+        <span class="w-2 h-2 bg-danger rounded-full"></span>
         Schema Drift
       </span>
     </button>
@@ -25,19 +25,19 @@
     >
       <div class="flex items-center justify-between mb-3">
         <h4 class="font-semibold text-ink">Schema Validation</h4>
-        <button @click="runValidation" class="text-xs text-emerald-400 hover:text-emerald-300">
+        <button @click="runValidation" class="text-xs text-success hover:opacity-80">
           Refresh
         </button>
       </div>
 
-      <div v-if="error" class="text-red-400 text-sm">
+      <div v-if="error" class="text-danger text-sm">
         {{ error }}
       </div>
 
       <div v-else-if="validation" class="space-y-3">
         <!-- Overall status -->
         <div class="flex items-center gap-2">
-          <span :class="validation.valid ? 'text-emerald-400' : 'text-red-400'" class="font-medium">
+          <span :class="validation.valid ? 'text-success' : 'text-danger'" class="font-medium">
             {{ validation.valid ? 'VALID' : 'DRIFT DETECTED' }}
           </span>
           <span class="text-faint text-xs">
@@ -48,10 +48,10 @@
         <!-- Summary -->
         <div class="text-xs text-muted space-y-1">
           <div>Tables: {{ validation.summary.matched }}/{{ validation.summary.total }} matched</div>
-          <div v-if="validation.summary.missing > 0" class="text-red-400">
+          <div v-if="validation.summary.missing > 0" class="text-danger">
             Missing: {{ validation.summary.missing }}
           </div>
-          <div v-if="validation.summary.columnIssues > 0" class="text-yellow-400">
+          <div v-if="validation.summary.columnIssues > 0" class="schema-warn">
             Column issues: {{ validation.summary.columnIssues }}
           </div>
         </div>
@@ -90,16 +90,16 @@ const validation = ref(null)
 const showDetails = ref(false)
 
 const statusClasses = computed(() => {
-  if (loading.value) return 'bg-surface-2 text-muted'
-  if (error.value) return 'bg-red-900/50 text-red-400 hover:bg-red-900/70'
-  if (validation.value?.valid) return 'bg-emerald-900/30 text-emerald-400 hover:bg-emerald-900/50'
-  return 'bg-red-900/30 text-red-400 hover:bg-red-900/50'
+  if (loading.value) return 'bg-surface-2 text-muted border border-line'
+  if (error.value) return 'schema-pill schema-pill-error bg-red-900/50 text-red-400 hover:bg-red-900/70'
+  if (validation.value?.valid) return 'schema-pill schema-pill-ok bg-emerald-900/30 text-emerald-400 hover:bg-emerald-900/50'
+  return 'schema-pill schema-pill-drift bg-red-900/30 text-red-400 hover:bg-red-900/50'
 })
 
 function getStatusClass(status) {
-  if (status === 'OK') return 'text-emerald-400'
-  if (status === 'MISSING') return 'text-red-400'
-  return 'text-yellow-400'
+  if (status === 'OK') return 'text-success'
+  if (status === 'MISSING') return 'text-danger'
+  return 'schema-warn'
 }
 
 function formatTime(isoString) {
@@ -136,3 +136,33 @@ onMounted(() => {
   runValidation()
 })
 </script>
+
+<style scoped>
+/* Warning hue: dark mode keeps amber-yellow; light mode uses the darkened
+   accent token (#a85508 -> 5.3:1 on white) so it stays legible. */
+.schema-warn { color: #facc15; }
+:root[data-theme="light"] .schema-warn { color: var(--accent); }
+
+/* Status pills: dark-mode tints (set via utility classes in markup) are
+   left untouched. In light mode the dark alpha tints collapse to near-white
+   with low-contrast text, so override fill + token text for legibility. */
+:root[data-theme="light"] .schema-pill { border: 1px solid transparent; }
+:root[data-theme="light"] .schema-pill-error,
+:root[data-theme="light"] .schema-pill-drift {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: var(--danger);
+}
+:root[data-theme="light"] .schema-pill-error:hover,
+:root[data-theme="light"] .schema-pill-drift:hover {
+  background-color: #fee2e2;
+}
+:root[data-theme="light"] .schema-pill-ok {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+  color: var(--success);
+}
+:root[data-theme="light"] .schema-pill-ok:hover {
+  background-color: #d1fae5;
+}
+</style>

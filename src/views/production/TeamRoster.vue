@@ -288,13 +288,13 @@ onMounted(loadTeam)
 }
 
 .subtitle {
-  color: #6b7280;
+  color: var(--muted);
   margin: 0;
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 10px;
   padding: 1.25rem;
   margin-bottom: 1.25rem;
@@ -307,7 +307,7 @@ onMounted(loadTeam)
 }
 
 .hint {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 0.875rem;
   margin: 0 0 0.75rem;
 }
@@ -322,14 +322,15 @@ onMounted(loadTeam)
 }
 
 .btn {
-  border: 1px solid #d1d5db;
-  background: #fff;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
   border-radius: 8px;
   padding: 0.45rem 0.9rem;
   font-size: 0.875rem;
   cursor: pointer;
 }
-.btn:hover:not(:disabled) { background: #f3f4f6; }
+.btn:hover:not(:disabled) { background: var(--surface-2); }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn.primary {
   background: #2563eb;
@@ -349,7 +350,7 @@ onMounted(loadTeam)
 }
 
 .slot-card {
-  border: 1px dashed #d1d5db;
+  border: 1px dashed var(--line);
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -359,8 +360,8 @@ onMounted(loadTeam)
 }
 .slot-card.filled {
   border-style: solid;
-  border-color: #86efac;
-  background: #f0fdf4;
+  border-color: color-mix(in srgb, var(--accent-2) 45%, var(--line));
+  background: color-mix(in srgb, var(--accent-2) 8%, var(--surface));
 }
 
 .slot-title { font-weight: 600; }
@@ -368,16 +369,17 @@ onMounted(loadTeam)
 .slot-voice-id {
   font-family: ui-monospace, monospace;
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--muted);
 }
-.slot-empty { color: #9ca3af; font-size: 0.875rem; }
+.slot-empty { color: var(--faint); font-size: 0.875rem; }
 .slot-select {
   width: 100%;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 0.4rem 0.6rem;
   font-size: 0.875rem;
-  background: #fff;
+  background: var(--surface);
+  color: var(--ink);
 }
 
 /* Members table */
@@ -388,14 +390,14 @@ onMounted(loadTeam)
 }
 .members-table th {
   text-align: left;
-  color: #6b7280;
+  color: var(--muted);
   font-weight: 500;
   padding: 0.5rem 0.6rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--line);
 }
 .members-table td {
   padding: 0.55rem 0.6rem;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--line);
 }
 .row-actions { text-align: right; }
 
@@ -404,8 +406,8 @@ onMounted(loadTeam)
   padding: 0.1rem 0.55rem;
   border-radius: 999px;
   font-size: 0.75rem;
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--surface-2);
+  color: var(--ink);
 }
 .role-chip.admin { background: #ede9fe; color: #5b21b6; }
 .role-chip.recorder { background: #ecfdf5; color: #047857; }
@@ -419,10 +421,10 @@ onMounted(loadTeam)
   color: #1e40af;
 }
 
-.muted { color: #9ca3af; }
+.muted { color: var(--faint); }
 
 /* Invite */
-.invite-card { border-color: #bfdbfe; }
+.invite-card { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
 .invite-result {
   margin-top: 1rem;
   display: flex;
@@ -431,20 +433,22 @@ onMounted(loadTeam)
   align-items: flex-start;
 }
 .invite-row { display: flex; gap: 0.6rem; align-items: baseline; }
-.invite-label { color: #6b7280; font-size: 0.8rem; width: 7.5rem; }
+.invite-label { color: var(--muted); font-size: 0.8rem; width: 7.5rem; }
 .invite-code {
   font-family: ui-monospace, monospace;
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  background: #f3f4f6;
+  color: var(--ink);
+  background: var(--surface-2);
   border-radius: 6px;
   padding: 0.2rem 0.6rem;
 }
 .invite-link {
   font-family: ui-monospace, monospace;
   font-size: 0.8rem;
-  background: #f3f4f6;
+  color: var(--ink);
+  background: var(--surface-2);
   border-radius: 6px;
   padding: 0.2rem 0.6rem;
   word-break: break-all;

@@ -1,7 +1,7 @@
 <template>
-  <section class="bg-surface/50 rounded-lg border border-line/20 p-6">
+  <section class="bg-surface rounded-lg border border-line p-6 shadow-sm">
     <div class="flex items-center gap-3 mb-6">
-      <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-6 h-6 shared-audio-icon text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
       </svg>
       <div>
@@ -11,14 +11,14 @@
     </div>
 
     <div v-if="loading" class="text-faint text-sm">Loading shared audio status...</div>
-    <div v-else-if="error" class="text-red-400 text-sm">{{ error }}</div>
+    <div v-else-if="error" class="text-danger text-sm">{{ error }}</div>
     <div v-else-if="status" class="space-y-3">
       <!-- Welcome — single audio, prominent listen button -->
-      <div class="bg-canvas/40 rounded-lg p-4 border border-line/40">
+      <div class="bg-surface-2 rounded-lg p-4 border border-line">
         <div class="flex items-center justify-between gap-3">
           <div class="flex items-center gap-3">
-            <span class="inline-block w-2.5 h-2.5 rounded-full"
-                  :class="status.welcome.populated ? 'bg-emerald-400' : 'bg-amber-400'"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full shared-audio-pip"
+                  :class="status.welcome.populated ? 'pip-ok bg-emerald-400' : 'pip-warn bg-amber-400'"></span>
             <div>
               <div class="text-ink font-medium">Welcome</div>
               <div class="text-xs text-faint">
@@ -30,7 +30,7 @@
             <button v-if="status.welcome.populated && status.welcome.s3_key"
                     @click="playWelcome"
                     :disabled="playingWelcome"
-                    class="px-3 py-1.5 bg-cyan-600/80 hover:bg-cyan-600 disabled:bg-surface-2 rounded text-xs text-white">
+                    class="shared-audio-listen px-3 py-1.5 bg-cyan-600/80 hover:bg-cyan-600 disabled:bg-surface-2 rounded text-xs text-white">
               {{ playingWelcome ? 'Playing…' : '▶ Listen' }}
             </button>
           </div>
@@ -59,9 +59,9 @@
       />
 
       <!-- Paywall — render for ALL courses; show "Not required" for non-paid -->
-      <div v-if="!status.paywall.applies" class="bg-canvas/40 rounded-lg p-4 border border-line/40 opacity-60">
+      <div v-if="!status.paywall.applies" class="bg-surface-2 rounded-lg p-4 border border-line opacity-70">
         <div class="flex items-center gap-3">
-          <span class="inline-block w-2.5 h-2.5 rounded-full bg-surface-3"></span>
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-faint"></span>
           <div class="flex-1">
             <div class="flex items-center justify-between">
               <span class="text-ink font-medium">Paywall Encouragements</span>
@@ -160,11 +160,11 @@ const SharedBucketRow = defineComponent({
     sub: { type: String, default: '' }
   },
   setup(p) {
-    return () => h('div', { class: 'bg-canvas/40 rounded-lg p-4 border border-line/40' }, [
+    return () => h('div', { class: 'bg-surface-2 rounded-lg p-4 border border-line' }, [
       h('div', { class: 'flex items-center gap-3' }, [
         h('span', {
-          class: 'inline-block w-2.5 h-2.5 rounded-full',
-          style: { background: p.complete ? '#34d399' : (p.populated > 0 ? '#fbbf24' : '#f87171') }
+          class: 'inline-block w-2.5 h-2.5 rounded-full shared-audio-pip ' +
+            (p.complete ? 'pip-ok' : (p.populated > 0 ? 'pip-warn' : 'pip-bad'))
         }),
         h('div', { class: 'flex-1' }, [
           h('div', { class: 'flex items-center justify-between' }, [
@@ -179,3 +179,21 @@ const SharedBucketRow = defineComponent({
   }
 })
 </script>
+
+<style scoped>
+/* Status pips — keep the original dark-mode hues; darken for legibility on light surfaces. */
+.shared-audio-pip.pip-ok   { background: #34d399; }
+.shared-audio-pip.pip-warn { background: #fbbf24; }
+.shared-audio-pip.pip-bad  { background: #f87171; }
+
+:root[data-theme="light"] .shared-audio-pip.pip-ok   { background: #059669; }
+:root[data-theme="light"] .shared-audio-pip.pip-warn { background: #b45309; }
+:root[data-theme="light"] .shared-audio-pip.pip-bad  { background: #dc2626; }
+
+/* Header icon: cyan reads fine on dark; needs a darker cyan to hit ~3:1 on white. */
+:root[data-theme="light"] .shared-audio-icon { color: #0e7490; }
+
+/* Listen button: cyan-600/80 leaves white text under AA on light; solidify + darken. */
+:root[data-theme="light"] .shared-audio-listen:not(:disabled) { background-color: #0e7490; }
+:root[data-theme="light"] .shared-audio-listen:hover:not(:disabled) { background-color: #155e75; }
+</style>

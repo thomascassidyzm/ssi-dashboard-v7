@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-surface/50 rounded-lg border border-line/20 p-6">
+  <div class="progress-monitor bg-surface/50 rounded-lg border border-line/20 p-6">
     <h3 class="text-xl font-semibold text-ink mb-4">Progress Monitor</h3>
 
     <!-- Execution Mode Badge -->
@@ -175,3 +175,55 @@ onUnmounted(() => {
   if (interval) clearInterval(interval)
 })
 </script>
+
+<style scoped>
+/* Light-mode only: dark mode is untouched (no rules outside this selector). */
+
+/* Card separation: faint border/half-opacity surface vanish on slate canvas.
+   Give the card a solid white surface, a visible --line border and a subtle shadow. */
+:root[data-theme="light"] .progress-monitor {
+  background-color: var(--surface);
+  border-color: var(--line);
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.06), 0 1px 2px rgb(15 23 42 / 0.04);
+}
+
+/* Emerald accents (phase title / ETA / percentage / live dot):
+   emerald-400 #34d399 on white ≈ 1.6:1. Use emerald-700 #047857 ≈ 4.95:1. */
+:root[data-theme="light"] .progress-monitor :deep(.text-emerald-400) {
+  color: #047857;
+}
+/* Progress fill + live gradient panel: keep emerald hue but ensure the fill
+   and the tinted live panel read against white. */
+:root[data-theme="light"] .progress-monitor :deep(.bg-emerald-500) {
+  background-color: #059669;
+}
+:root[data-theme="light"] .progress-monitor :deep(.border-emerald-500\/30),
+:root[data-theme="light"] .progress-monitor :deep(.border-emerald-500\/50) {
+  border-color: #059669;
+}
+
+/* Execution-mode pill (web=emerald, local=blue, hybrid=purple):
+   *-400 text on a *-500/20 fill is washed out on white. Darken text to AA
+   and give the fill a touch more saturation while keeping the hue family. */
+:root[data-theme="light"] .progress-monitor :deep(.text-blue-400) {
+  color: #1d4ed8; /* blue-700 ≈ 5.2:1 on white */
+}
+:root[data-theme="light"] .progress-monitor :deep(.text-purple-400) {
+  color: #7e22ce; /* purple-700 ≈ 5.0:1 on white */
+}
+:root[data-theme="light"] .progress-monitor :deep(.bg-emerald-500\/20) {
+  background-color: rgb(16 185 129 / 0.14);
+}
+:root[data-theme="light"] .progress-monitor :deep(.bg-blue-500\/20) {
+  background-color: rgb(59 130 246 / 0.14);
+}
+:root[data-theme="light"] .progress-monitor :deep(.bg-purple-500\/20) {
+  background-color: rgb(168 85 247 / 0.14);
+}
+:root[data-theme="light"] .progress-monitor :deep(.border-blue-500\/50) {
+  border-color: #2563eb;
+}
+:root[data-theme="light"] .progress-monitor :deep(.border-purple-500\/50) {
+  border-color: #9333ea;
+}
+</style>

@@ -4,15 +4,15 @@
       <!-- Header -->
       <div class="mb-8">
         <div class="flex items-center gap-4 mb-4 text-sm">
-          <router-link to="/" class="text-emerald-400 hover:text-emerald-300">Home</router-link>
+          <router-link to="/" class="text-accent-2 hover:opacity-80">Home</router-link>
           <span class="text-faint">/</span>
-          <router-link :to="`/production/${courseCode}`" class="text-emerald-400 hover:text-emerald-300">
+          <router-link :to="`/production/${courseCode}`" class="text-accent-2 hover:opacity-80">
             {{ formatCourseCode(courseCode) }}
           </router-link>
           <span class="text-faint">/</span>
           <span class="text-muted">Listening Pods</span>
         </div>
-        <h1 class="text-3xl font-bold text-emerald-400 mb-2">Listening Pods</h1>
+        <h1 class="text-3xl font-bold text-accent-2 mb-2">Listening Pods</h1>
         <p class="text-muted text-sm">
           Layer 2 podcast content · {{ courseCode }}
         </p>
@@ -34,14 +34,14 @@
             <div class="text-xs text-muted mt-0.5">
               {{ pod0.sentence_count }} sentences · audio {{ pod0.audio_coverage.target }}/{{ pod0.audio_coverage.total_sentences }} target, {{ pod0.audio_coverage.known }}/{{ pod0.audio_coverage.total_sentences }} known.
               Edit sentences in the pod below, or re-flex the English in <span class="text-ink">Edit canonical</span>.
-              <span class="text-amber-300/90">Regenerate replaces all sentences{{ pod0HasAudio ? ' and clears their audio' : '' }}.</span>
+              <span class="pv-warn text-amber-300/90">Regenerate replaces all sentences{{ pod0HasAudio ? ' and clears their audio' : '' }}.</span>
             </div>
           </template>
-          <div v-if="genStatus" class="text-xs mt-2" :class="genError ? 'text-red-300' : 'text-emerald-300'">{{ genStatus }}</div>
-          <div v-if="genError" class="text-xs text-red-300 mt-1">{{ genError }}</div>
+          <div v-if="genStatus" class="text-xs mt-2" :class="genError ? 'text-danger' : 'text-accent-2'">{{ genStatus }}</div>
+          <div v-if="genError" class="text-xs text-danger mt-1">{{ genError }}</div>
         </div>
         <div class="flex items-center gap-2 flex-shrink-0">
-          <router-link :to="`/production/${courseCode}/canonical/pod-0`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-emerald-500">Edit canonical</router-link>
+          <router-link :to="`/production/${courseCode}/canonical/pod-0`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
           <!-- Create (green) only when there's no pod-0 -->
           <button
             v-if="!pod0"
@@ -57,7 +57,7 @@
             :disabled="generating"
             @click="regenerate"
             :title="pod0HasAudio ? 'Wipe all sentences + audio and re-flex from canonical' : 'Wipe all sentences and re-flex from canonical'"
-            class="text-sm px-4 py-2 rounded border border-amber-700 text-amber-300 hover:border-amber-500 disabled:opacity-50 font-medium"
+            class="pv-regen text-sm px-4 py-2 rounded border border-amber-700 text-amber-300 hover:border-amber-500 disabled:opacity-50 font-medium"
           >
             {{ generating ? 'Regenerating…' : 'Regenerate' }}
           </button>
@@ -71,14 +71,14 @@
       <div v-if="loading" class="text-faint text-center py-12">Loading pods…</div>
 
       <!-- Error -->
-      <div v-else-if="error" class="bg-red-900/40 border border-red-700 rounded-lg p-4 text-red-200">
+      <div v-else-if="error" class="pv-errorbox bg-red-900/40 border border-red-700 rounded-lg p-4 text-red-200">
         {{ error }}
       </div>
 
       <!-- Empty -->
       <div v-else-if="pods.length === 0" class="bg-surface border border-line rounded-lg p-8 text-center">
         <p class="text-muted mb-2">No pods for this course yet.</p>
-        <p class="text-faint text-sm">Author a pod markdown file then run <code class="text-emerald-400">node tools/pod-sync.cjs</code> to populate.</p>
+        <p class="text-faint text-sm">Author a pod markdown file then run <code class="text-accent-2">node tools/pod-sync.cjs</code> to populate.</p>
       </div>
 
       <!-- Pod cards -->
@@ -87,7 +87,7 @@
           v-for="pod in pods"
           :key="pod.id"
           :to="`/production/${courseCode}/pods/${pod.slug}`"
-          class="block bg-surface border border-line rounded-lg p-6 hover:border-emerald-500 transition-colors"
+          class="block bg-surface border border-line rounded-lg p-6 hover:border-accent-2 transition-colors"
         >
           <div class="flex items-start justify-between gap-6">
             <div class="flex-1 min-w-0">
@@ -98,7 +98,7 @@
                 </span>
               </div>
               <div class="text-sm text-muted mb-3">
-                <code class="text-emerald-400">{{ pod.slug }}</code>
+                <code class="text-accent-2">{{ pod.slug }}</code>
                 · {{ pod.sentence_count }} sentences
                 <span v-if="pod.metadata?.hosts?.length">
                   · hosts: {{ pod.metadata.hosts.map(h => h.name).join(', ') }}
@@ -224,15 +224,15 @@ function formatCourseCode(code) {
 }
 
 function podTypeClass(type) {
-  if (type === 'core') return 'bg-emerald-900/40 text-emerald-300 border border-emerald-700'
-  return 'bg-purple-900/40 text-purple-300 border border-purple-700'
+  if (type === 'core') return 'pv-pill-core bg-emerald-900/40 text-emerald-300 border border-emerald-700'
+  return 'pv-pill-aux bg-purple-900/40 text-purple-300 border border-purple-700'
 }
 
 function coverageClass(covered, total) {
   if (total === 0) return 'text-faint'
-  if (covered === total) return 'text-emerald-400'
+  if (covered === total) return 'text-accent-2'
   if (covered === 0) return 'text-faint'
-  return 'text-amber-400'
+  return 'pv-cov-partial text-amber-400'
 }
 
 async function loadPods() {
@@ -254,3 +254,36 @@ async function loadPods() {
 
 onMounted(loadPods)
 </script>
+
+<style>
+/* Light-mode-only fixes. Dark mode is untouched (raw Tailwind classes still apply
+   under dark; these selectors only fire when data-theme="light"). */
+:root[data-theme="light"] .pv-warn {
+  color: #92400e; /* amber-800 on white = 7.0:1 */
+}
+:root[data-theme="light"] .pv-regen {
+  color: #92400e;          /* amber-800 text = 7.0:1 */
+  border-color: #b45309;   /* amber-700 border ~3.4:1 */
+}
+:root[data-theme="light"] .pv-regen:hover {
+  border-color: #92400e;
+}
+:root[data-theme="light"] .pv-errorbox {
+  background-color: #fef2f2; /* red-50 */
+  border-color: #dc2626;     /* danger, 4.5:1 vs white */
+  color: #991b1b;            /* red-800 on red-50 ~8:1 */
+}
+:root[data-theme="light"] .pv-pill-core {
+  background-color: #d1fae5; /* emerald-100 */
+  border-color: #6ee7b7;     /* emerald-300 */
+  color: #065f46;            /* emerald-800 ~7:1 on emerald-100 */
+}
+:root[data-theme="light"] .pv-pill-aux {
+  background-color: #f3e8ff; /* purple-100 */
+  border-color: #d8b4fe;     /* purple-300 */
+  color: #6b21a8;            /* purple-800 ~7:1 on purple-100 */
+}
+:root[data-theme="light"] .pv-cov-partial {
+  color: #b45309; /* amber-700 = 4.6:1 on white card */
+}
+</style>

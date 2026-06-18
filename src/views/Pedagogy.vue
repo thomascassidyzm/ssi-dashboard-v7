@@ -760,4 +760,111 @@ onMounted(async () => {
   color: var(--faint);
   margin-top: 0.5rem;
 }
+
+/*
+ * LIGHT-MODE OVERRIDES (dark mode untouched).
+ * The template uses Tailwind dark-tuned utilities (bg-*-900/xx translucent fills
+ * and light *-300/*-400 text) that were designed to sit on a dark canvas. On the
+ * light canvas those translucent dark fills render near-white and the light text
+ * collapses to ~1.5-2:1. These overrides re-tint the panels to pale fills with
+ * dark, AA-passing text while keeping each panel's hue identity. Scoped to this
+ * view via .pedagogy-view so nothing else is affected.
+ */
+:root[data-theme="light"] .pedagogy-view .page-title {
+  color: #047857; /* emerald-700, 4.6:1 on white */
+}
+:root[data-theme="light"] .pedagogy-view .db-indicator {
+  background: #ecfdf5;          /* emerald-50 */
+  border-color: #047857;
+}
+:root[data-theme="light"] .pedagogy-view .db-text {
+  color: #065f46;               /* emerald-800, 6.9:1 on emerald-50 */
+}
+
+/* ---- panel fills: translucent dark -> pale tint ---- */
+:root[data-theme="light"] .pedagogy-view [class*="bg-blue-900\\/"] {
+  background-color: #eff6ff;    /* blue-50 */
+}
+:root[data-theme="light"] .pedagogy-view [class*="bg-emerald-900\\/"] {
+  background-color: #ecfdf5;    /* emerald-50 */
+}
+:root[data-theme="light"] .pedagogy-view [class*="bg-amber-900\\/"] {
+  background-color: #fffbeb;    /* amber-50 */
+}
+:root[data-theme="light"] .pedagogy-view [class*="bg-red-900\\/"] {
+  background-color: #fef2f2;    /* red-50 */
+}
+:root[data-theme="light"] .pedagogy-view [class*="bg-blue-500\\/"] {
+  background-color: #dbeafe;    /* blue-100 chip fill */
+}
+:root[data-theme="light"] .pedagogy-view [class*="bg-emerald-500\\/"] {
+  background-color: #d1fae5;    /* emerald-100 chip fill */
+}
+
+/* gradient header panels -> readable pale gradients (keep the dual-hue feel) */
+:root[data-theme="light"] .pedagogy-view .bg-gradient-to-r.from-emerald-900\/30.to-blue-900\/30 {
+  background-image: linear-gradient(to right, #ecfdf5, #eff6ff);
+}
+:root[data-theme="light"] .pedagogy-view .bg-gradient-to-r.from-amber-900\/30.to-orange-900\/30 {
+  background-image: linear-gradient(to right, #fffbeb, #fff7ed);
+}
+:root[data-theme="light"] .pedagogy-view .bg-gradient-to-r.from-emerald-900\/30.to-purple-900\/30 {
+  background-image: linear-gradient(to right, #ecfdf5, #f5f3ff);
+}
+:root[data-theme="light"] .pedagogy-view .bg-gradient-to-r.from-purple-900\/30.to-pink-900\/30 {
+  background-image: linear-gradient(to right, #f5f3ff, #fdf2f8);
+}
+
+/* nested solid-ish dark fills used inside panels (bg-*-900/30 / /40) already
+ * caught by the [class*="bg-*-900\/"] rules above. Borders: lighten the heavy
+ * dark borders so they read as crisp tinted hairlines, not muddy. */
+:root[data-theme="light"] .pedagogy-view [class*="border-blue-5"],
+:root[data-theme="light"] .pedagogy-view [class*="border-blue-6"] {
+  border-color: #3b82f6;        /* blue-500 */
+}
+:root[data-theme="light"] .pedagogy-view [class*="border-emerald-5"],
+:root[data-theme="light"] .pedagogy-view [class*="border-emerald-6"],
+:root[data-theme="light"] .pedagogy-view [class*="border-emerald-7"] {
+  border-color: #059669;        /* emerald-600 */
+}
+:root[data-theme="light"] .pedagogy-view [class*="border-amber-5"],
+:root[data-theme="light"] .pedagogy-view [class*="border-amber-6"] {
+  border-color: #d97706;        /* amber-600 */
+}
+:root[data-theme="light"] .pedagogy-view [class*="border-red-6"],
+:root[data-theme="light"] .pedagogy-view [class*="border-red-7"] {
+  border-color: #dc2626;        /* red-600 */
+}
+:root[data-theme="light"] .pedagogy-view [class*="border-purple-5"] {
+  border-color: #9333ea;        /* purple-600 */
+}
+
+/* ---- text colours: light *-300/*-400 -> AA-dark equivalents ---- */
+:root[data-theme="light"] .pedagogy-view .text-blue-300,
+:root[data-theme="light"] .pedagogy-view .text-blue-400 {
+  color: #1d4ed8;               /* blue-700, >=6:1 on pale blue */
+}
+:root[data-theme="light"] .pedagogy-view .text-emerald-300,
+:root[data-theme="light"] .pedagogy-view .text-emerald-400 {
+  color: #047857;               /* emerald-700 */
+}
+:root[data-theme="light"] .pedagogy-view .text-emerald-500 {
+  color: #047857;
+}
+:root[data-theme="light"] .pedagogy-view .text-amber-200,
+:root[data-theme="light"] .pedagogy-view .text-amber-300,
+:root[data-theme="light"] .pedagogy-view .text-amber-400 {
+  color: #b45309;               /* amber-700 */
+}
+:root[data-theme="light"] .pedagogy-view .text-red-300,
+:root[data-theme="light"] .pedagogy-view .text-red-400 {
+  color: #b91c1c;               /* red-700 */
+}
+:root[data-theme="light"] .pedagogy-view .text-purple-300,
+:root[data-theme="light"] .pedagogy-view .text-purple-400 {
+  color: #7e22ce;               /* purple-700 */
+}
+:root[data-theme="light"] .pedagogy-view .text-pink-400 {
+  color: #be185d;               /* pink-700 */
+}
 </style>

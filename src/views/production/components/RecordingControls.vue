@@ -297,4 +297,25 @@ kbd {
     width: 100%;
   }
 }
+
+/* Light-mode separation/border legibility.
+   Dark mode keeps the original --color-graphite (--surface-3) borders untouched.
+   In light mode --surface-3 (#e2e8f0) borders are ~1.02:1 vs the canvas/card and
+   read as invisible, so promote them to --line (#cbd5e1, ~1.2:1) and lift the card. */
+:root[data-theme="light"] .recording-controls {
+  border-color: var(--line);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .re-record-btn {
+  border-color: var(--line);
+}
+
+:root[data-theme="light"] .keyboard-hints {
+  border-top-color: var(--line);
+}
+
+:root[data-theme="light"] kbd {
+  border-color: var(--line);
+}
 </style>

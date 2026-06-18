@@ -784,4 +784,59 @@ select {
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
 }
+
+/*
+ * LIGHT-MODE CONTRAST OVERRIDES
+ * The template uses dark-tuned literal Tailwind color utilities (bg-*-900/30,
+ * text-*-400, etc.) that do not re-theme. On the light canvas the tinted dark
+ * fills resolve to muddy mid-tones and the -400 text drops well below WCAG AA.
+ * These overrides are scoped to [data-theme="light"] ONLY, so dark mode is
+ * completely untouched. They repaint the same hue families with light-mode
+ * tints (-50/-100 fills, -700/-800 text/borders) that pass AA.
+ */
+/* RED / danger blocker box */
+:root[data-theme="light"] .step-content .bg-red-900\/30 { background-color: #fef2f2; } /* red-50 */
+:root[data-theme="light"] .step-content .border-red-700 { border-color: #fca5a5; }     /* red-300 */
+:root[data-theme="light"] .step-content .border-red-800 { border-color: #f87171; }     /* red-400 */
+:root[data-theme="light"] .step-content .border-red-800\/50 { border-color: #fca5a5; }
+:root[data-theme="light"] .step-content .text-red-400 { color: #b91c1c; }              /* red-700: ~6.4:1 on red-50 */
+:root[data-theme="light"] .step-content .bg-red-900\/50 { background-color: #fee2e2; } /* red-100 pill */
+:root[data-theme="light"] .step-content .bg-red-500 { background-color: #dc2626; }     /* dot stays vivid */
+
+/* AMBER / warning */
+:root[data-theme="light"] .step-content .bg-amber-900\/20,
+:root[data-theme="light"] .step-content .bg-amber-900\/30 { background-color: #fffbeb; } /* amber-50 */
+:root[data-theme="light"] .step-content .border-amber-700 { border-color: #fcd34d; }     /* amber-300 */
+:root[data-theme="light"] .step-content .border-amber-800 { border-color: #fbbf24; }     /* amber-400 */
+:root[data-theme="light"] .step-content .text-amber-400 { color: #b45309; }              /* amber-700: ~5.4:1 on amber-50 */
+:root[data-theme="light"] .step-content .bg-amber-900\/50 { background-color: #fef3c7; } /* amber-100 pill */
+:root[data-theme="light"] .step-content .bg-amber-500 { background-color: #f59e0b; }
+
+/* BLUE / info */
+:root[data-theme="light"] .step-content .bg-blue-900\/20 { background-color: #eff6ff; }  /* blue-50 */
+:root[data-theme="light"] .step-content .border-blue-700 { border-color: #93c5fd; }      /* blue-300 */
+:root[data-theme="light"] .step-content .text-blue-400 { color: #1d4ed8; }               /* blue-700: ~6.3:1 on blue-50 */
+
+/* EMERALD / success */
+:root[data-theme="light"] .step-content .bg-emerald-900\/30 { background-color: #ecfdf5; } /* emerald-50 */
+:root[data-theme="light"] .step-content .border-emerald-700 { border-color: #6ee7b7; }     /* emerald-300 */
+:root[data-theme="light"] .step-content .text-emerald-400 { color: #047857; }              /* emerald-700: ~4.8:1 on emerald-50 */
+:root[data-theme="light"] .step-content .text-emerald-400\/70 { color: #059669; }          /* "suggested" hint on surface */
+
+/* Selected version/status buttons — darken fills so white/ink text is legible */
+:root[data-theme="light"] .step-content .bg-emerald-600 { background-color: #047857; }
+:root[data-theme="light"] .step-content .border-emerald-500 { border-color: #047857; }
+:root[data-theme="light"] .step-content .bg-amber-600 { background-color: #b45309; }
+:root[data-theme="light"] .step-content .border-amber-500 { border-color: #b45309; }
+:root[data-theme="light"] .step-content .bg-blue-600 { background-color: #1d4ed8; }
+:root[data-theme="light"] .step-content .border-blue-500 { border-color: #1d4ed8; }
+:root[data-theme="light"] .step-content .bg-blue-500 { background-color: #2563eb; }
+:root[data-theme="light"] .step-content .bg-purple-500 { background-color: #7c3aed; }
+
+/* These filled buttons carry text-ink (near-black) in markup; on the dark fills
+   above that is unreadable in light mode, so force white text. */
+:root[data-theme="light"] .step-content button.bg-emerald-600,
+:root[data-theme="light"] .step-content button.bg-amber-600,
+:root[data-theme="light"] .step-content button.bg-blue-600,
+:root[data-theme="light"] .step-content button.bg-purple-500 { color: #ffffff; }
 </style>

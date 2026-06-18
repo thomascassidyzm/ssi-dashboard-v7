@@ -140,4 +140,48 @@ defineEmits<{
   min-width: 4rem;
   text-align: right;
 }
+
+/* Light-mode adjustments: dark translucent card base + faint green button
+   text don't survive the theme flip, so re-scope them here. Dark mode is
+   untouched. */
+:root[data-theme="light"] .blocker-card {
+  background: var(--surface);
+}
+
+:root[data-theme="light"] .blocker-card.severity-high {
+  background: rgb(239 68 68 / 0.08);
+}
+
+:root[data-theme="light"] .blocker-card.severity-medium {
+  background: rgb(245 158 11 / 0.1);
+}
+
+:root[data-theme="light"] .blocker-card.severity-low {
+  background: rgb(59 130 246 / 0.08);
+}
+
+/* Darken severity borders so the hue reads as a meaningful 2px border on
+   light backgrounds (amber especially is too faint at #f59e0b). */
+:root[data-theme="light"] .blocker-card.severity-medium {
+  border-color: #b45309;
+}
+
+:root[data-theme="light"] .blocker-card.severity-low {
+  border-color: #2563eb;
+}
+
+:root[data-theme="light"] .blocker-card:hover {
+  box-shadow: 0 4px 6px -1px rgb(15 23 42 / 0.12);
+}
+
+/* var(--canvas) text is near-white in light mode and fails on #10b981.
+   Use a darker green fill with white text (white on #047857 ~4.9:1). */
+:root[data-theme="light"] .blocker-action-btn {
+  background: var(--accent-2);
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .blocker-action-btn:hover {
+  background: #065f46;
+}
 </style>

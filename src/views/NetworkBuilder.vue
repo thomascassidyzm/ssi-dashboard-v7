@@ -324,7 +324,7 @@ onMounted(() => {
   padding: 1rem;
   max-width: 1600px;
   margin: 0 auto;
-  color: #e0e0e0;
+  color: var(--ink);
 }
 
 .header {
@@ -333,11 +333,11 @@ onMounted(() => {
 
 .header h1 {
   margin: 0;
-  color: #4fc3f7;
+  color: var(--accent);
 }
 
 .subtitle {
-  color: #888;
+  color: var(--muted);
   margin: 0.25rem 0;
 }
 
@@ -347,16 +347,17 @@ onMounted(() => {
   align-items: center;
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #1a1a2e;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 8px;
 }
 
 .stat {
-  color: #aaa;
+  color: var(--muted);
 }
 
 .stat strong {
-  color: #4fc3f7;
+  color: var(--accent);
   font-size: 1.2em;
 }
 
@@ -369,13 +370,14 @@ onMounted(() => {
 }
 
 .reset-btn {
-  background: #c62828;
-  color: white;
+  background: var(--danger);
+  color: #fff;
 }
 
 .refresh-btn {
-  background: #37474f;
-  color: white;
+  background: var(--surface-3);
+  color: var(--ink);
+  border: 1px solid var(--line);
   margin-left: 0.5rem;
 }
 
@@ -386,8 +388,8 @@ onMounted(() => {
 }
 
 .network-panel, .side-panel > div {
-  background: #0d1117;
-  border: 1px solid #30363d;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 1rem;
 }
@@ -395,40 +397,41 @@ onMounted(() => {
 .network-panel h2, .side-panel h2 {
   margin: 0 0 0.5rem 0;
   font-size: 1rem;
-  color: #8b949e;
+  color: var(--muted);
 }
 
 .network-container {
-  background: #161b22;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .edge {
-  stroke: #4fc3f7;
+  stroke: var(--accent);
   stroke-width: 2;
-  stroke-opacity: 0.4;
+  stroke-opacity: 0.5;
 }
 
 .node circle {
-  fill: #1a1a2e;
-  stroke: #4fc3f7;
+  fill: var(--surface-2);
+  stroke: var(--accent);
   stroke-width: 2;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .node circle:hover {
-  fill: #2a2a4e;
+  fill: var(--surface-3);
 }
 
 .node circle.selected {
-  fill: #4fc3f7;
-  stroke: #fff;
+  fill: var(--accent);
+  stroke: var(--ink);
 }
 
 .node text {
-  fill: #e0e0e0;
+  fill: var(--ink);
   text-anchor: middle;
   font-size: 12px;
   pointer-events: none;
@@ -440,7 +443,7 @@ onMounted(() => {
 }
 
 .node text.id {
-  fill: #666;
+  fill: var(--faint);
   font-size: 9px;
 }
 
@@ -451,8 +454,8 @@ onMounted(() => {
 }
 
 .add-lego-panel {
-  background: #0d1117;
-  border: 1px solid #30363d;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 1rem;
 }
@@ -464,17 +467,17 @@ onMounted(() => {
 .form-group label {
   display: block;
   font-size: 0.85rem;
-  color: #8b949e;
+  color: var(--muted);
   margin-bottom: 0.25rem;
 }
 
 .form-group input, .form-group select {
   width: 100%;
   padding: 0.5rem;
-  background: #161b22;
-  border: 1px solid #30363d;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 4px;
-  color: #e0e0e0;
+  color: var(--ink);
 }
 
 .form-group select {
@@ -484,8 +487,8 @@ onMounted(() => {
 .add-btn {
   width: 100%;
   padding: 0.75rem;
-  background: #238636;
-  color: white;
+  background: var(--accent-2);
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -493,12 +496,13 @@ onMounted(() => {
 }
 
 .add-btn:hover {
-  background: #2ea043;
+  background: var(--success);
+  filter: brightness(1.1);
 }
 
 .legos-panel, .phrases-panel {
-  background: #0d1117;
-  border: 1px solid #30363d;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 1rem;
   max-height: 300px;
@@ -516,38 +520,47 @@ onMounted(() => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.5rem;
-  background: #161b22;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;
 }
 
 .lego-item:hover {
-  background: #21262d;
+  background: var(--surface-3);
 }
 
 .lego-item.selected {
-  background: #388e3c;
+  background: var(--accent-2);
+  color: #fff;
+}
+
+.lego-item.selected .lego-id,
+.lego-item.selected .lego-chinese,
+.lego-item.selected .lego-english,
+.lego-item.selected .lego-connections {
+  color: #fff;
 }
 
 .lego-id {
-  color: #666;
+  color: var(--faint);
   font-size: 0.8rem;
   min-width: 40px;
 }
 
 .lego-chinese {
   font-weight: bold;
-  color: #4fc3f7;
+  color: var(--accent);
 }
 
 .lego-english {
-  color: #aaa;
+  color: var(--muted);
   flex: 1;
 }
 
 .lego-connections {
-  color: #666;
+  color: var(--faint);
   font-size: 0.8rem;
 }
 
@@ -556,47 +569,48 @@ onMounted(() => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.3rem 0.5rem;
-  background: #161b22;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 4px;
   font-size: 0.85rem;
 }
 
 .phrase-chinese {
   font-weight: bold;
-  color: #fff;
+  color: var(--ink);
 }
 
 .phrase-arrow {
-  color: #666;
+  color: var(--faint);
 }
 
 .phrase-english {
-  color: #aaa;
+  color: var(--muted);
   flex: 1;
 }
 
 .phrase-count {
-  color: #666;
+  color: var(--faint);
   font-size: 0.75rem;
 }
 
-.phrase-item.lego-count-1 { border-left: 3px solid #666; }
-.phrase-item.lego-count-2 { border-left: 3px solid #4fc3f7; }
-.phrase-item.lego-count-3 { border-left: 3px solid #66bb6a; }
-.phrase-item.lego-count-4 { border-left: 3px solid #ffa726; }
-.phrase-item.lego-count-5 { border-left: 3px solid #ef5350; }
+.phrase-item.lego-count-1 { border-left: 3px solid var(--faint); }
+.phrase-item.lego-count-2 { border-left: 3px solid var(--accent); }
+.phrase-item.lego-count-3 { border-left: 3px solid var(--accent-2); }
+.phrase-item.lego-count-4 { border-left: 3px solid #d97706; }
+.phrase-item.lego-count-5 { border-left: 3px solid var(--danger); }
 
 .selected-panel {
   margin-top: 1rem;
   padding: 1rem;
-  background: #0d1117;
-  border: 1px solid #4fc3f7;
+  background: var(--surface);
+  border: 1px solid var(--accent);
   border-radius: 8px;
 }
 
 .selected-panel h3 {
   margin: 0 0 0.5rem 0;
-  color: #4fc3f7;
+  color: var(--accent);
 }
 
 .connections {
@@ -606,7 +620,7 @@ onMounted(() => {
 }
 
 .connections .none {
-  color: #666;
+  color: var(--faint);
   font-style: italic;
 }
 
@@ -616,7 +630,7 @@ onMounted(() => {
 
 .mini-phrase {
   font-size: 0.85rem;
-  color: #aaa;
+  color: var(--muted);
   padding: 0.2rem 0;
 }
 
@@ -630,8 +644,8 @@ onMounted(() => {
 
 .network-tab {
   padding: 0.5rem 1rem;
-  background: #161b22;
-  border: 1px solid #30363d;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
   cursor: pointer;
   display: flex;
@@ -642,44 +656,44 @@ onMounted(() => {
 }
 
 .network-tab:hover {
-  background: #21262d;
-  border-color: #4fc3f7;
+  background: var(--surface-3);
+  border-color: var(--accent);
 }
 
 .network-tab.active {
-  background: #1a365d;
-  border-color: #4fc3f7;
+  background: var(--surface-3);
+  border-color: var(--accent);
 }
 
 .network-tab .tab-name {
   font-weight: bold;
-  color: #e0e0e0;
+  color: var(--ink);
   text-transform: uppercase;
   font-size: 0.9rem;
 }
 
 .network-tab.active .tab-name {
-  color: #4fc3f7;
+  color: var(--accent);
 }
 
 .network-tab .tab-stats {
   font-size: 0.75rem;
-  color: #666;
+  color: var(--faint);
 }
 
 .network-tab.new-network {
-  background: #1a1a2e;
+  background: var(--surface-2);
   border-style: dashed;
-  color: #666;
+  color: var(--faint);
 }
 
 .network-tab.new-network:hover {
-  color: #4fc3f7;
+  color: var(--accent);
 }
 
 .network-label {
-  background: #4fc3f7;
-  color: #0d1117;
+  background: var(--accent);
+  color: var(--surface);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
   font-weight: bold;

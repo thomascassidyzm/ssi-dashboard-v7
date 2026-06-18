@@ -1644,4 +1644,99 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 :deep(.btn-secondary:hover:not(:disabled)) { border-color: var(--color-paper, var(--ink)); color: var(--color-paper, var(--ink)); }
 :deep(.btn-secondary:disabled) { opacity: 0.4; cursor: not-allowed; }
+
+/* ============================================================================
+   LIGHT MODE OVERRIDES
+   The base styles above were authored for dark mode and bake in dark-only
+   literals (rgba(255,255,255,.03) "card" fills, rgba(0,0,0,.25) input fills,
+   a hardcoded dark slate sticky bar, and faint --surface-2 borders). On the
+   light canvas those collapse to ~1.03:1 separation or, in the sticky bar's
+   case, a dark band that swallows the dark --ink text. These overrides are
+   scoped to [data-theme="light"] so DARK MODE IS UNTOUCHED.
+   ============================================================================ */
+
+/* Cards: opaque white surface + a visible border so they lift off the canvas
+   (was rgba(255,255,255,.03) on #eef2f6 ≈ 1.03:1, invisible). */
+[data-theme="light"] .config-row {
+  background: var(--surface);
+  border-color: var(--line);                 /* #cbd5e1 on #eef2f6 ≈ 1.3:1 edge, plus shadow */
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+/* Sticky preview bar: was rgba(15,23,42,.92) — a DARK band on a light page
+   that hid its own --muted/--ink children (≈1.4:1). Make it a frosted light
+   surface with a real bottom border. */
+[data-theme="light"] .preview-bar {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom-color: var(--line);
+}
+
+/* Inputs / selects: dark translucent fills (rgba(0,0,0,.25)/.3) → raised
+   surface-2 with a readable border. Text stays --ink. */
+[data-theme="light"] :deep(.num-input-wrap),
+[data-theme="light"] :deep(.num-list-input),
+[data-theme="light"] .picker-group select,
+[data-theme="light"] .picker-group input[type="number"],
+[data-theme="light"] .stage-rounds input {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+/* Inner panels (stage rows, seed cards, ratio/stage chips) used near-black
+   translucent fills that muddy on white → light raised surfaces + a border. */
+[data-theme="light"] .stage-row,
+[data-theme="light"] .preview-seed {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+[data-theme="light"] .preview-stats .cycle-ratio,
+[data-theme="light"] .seed-stage {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+/* pill-num counters sat on a dark rgba(0,0,0,.18) chip; on the bright pill
+   fills in light mode a translucent-dark token reads better as a hairline. */
+[data-theme="light"] :deep(.pill-num),
+[data-theme="light"] .preview-pill .pill-num {
+  background: rgba(15, 23, 42, 0.14);
+}
+
+/* "EN" / trans pill: #6b7280 fill with #f9fafb text = ~4.0:1. Bold ~12px is
+   below the 18.66px large-text threshold, so nudge the fill darker to clear
+   AA (#4b5563 + #f9fafb ≈ 7.0:1) while staying the same gray hue family. */
+[data-theme="light"] :deep(.role-pill.role-trans),
+[data-theme="light"] .preview-pill.role-trans {
+  background: #4b5563;
+}
+
+/* Light-blue accent TEXT (#93c5fd ≈ 1.6:1 on white = unreadable) → a darker
+   blue that clears AA on the light surfaces it sits on (#1d4ed8 ≈ 7.5:1).
+   Same blue hue family as dark mode. */
+[data-theme="light"] .stage-eternal,
+[data-theme="light"] .stage-rounds.eternal-spacer,
+[data-theme="light"] .preview-block-title,
+[data-theme="light"] .fib-pill.on {
+  color: #1d4ed8;
+}
+[data-theme="light"] .fib-pill.on {
+  background: rgba(37, 99, 235, 0.1);
+  border-color: #1d4ed8;
+}
+
+/* Preview block tint: the blue wash + faint blue border barely register on
+   the light canvas — give it a readable tinted panel. */
+[data-theme="light"] .preview-block {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+/* Inline warning/error banners used light-bg + light text (#fbbf24/#f87171)
+   on a translucent tint = washed out on white. Darken the text to clear AA. */
+[data-theme="light"] .admin-warn { color: #92400e; }
+[data-theme="light"] .err,
+[data-theme="light"] :deep(.save-err) { color: #b91c1c; }
+
+/* Crumb hover (#6ee7b7) is invisible on white → use the themed accent-2. */
+[data-theme="light"] .admin-crumbs .crumb-link:hover { color: var(--accent-2); }
 </style>

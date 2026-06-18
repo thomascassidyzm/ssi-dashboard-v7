@@ -105,6 +105,22 @@ function goToPods() {
   overflow: hidden;
 }
 
+/* Light mode: the graphite/surface-3 border is nearly invisible on the
+   slate canvas (~1.07:1). Use the stronger --line token plus a subtle
+   shadow so cards separate crisply. Dark mode keeps its original border. */
+:root[data-theme="light"] .mode-card {
+  border-color: var(--line);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+:root[data-theme="light"] .mode-card:hover {
+  box-shadow: 0 8px 32px rgba(168, 85, 8, 0.18);
+}
+
+:root[data-theme="light"] .mode-card.selected {
+  box-shadow: 0 0 0 1px var(--accent), 0 4px 24px rgba(168, 85, 8, 0.2);
+}
+
 .mode-card::before {
   content: '';
   position: absolute;

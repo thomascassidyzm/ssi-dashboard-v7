@@ -405,6 +405,9 @@ const poolClass = computed(() => {
   font-size: 13px;
   margin-bottom: 16px;
 }
+[data-theme="light"] .error-banner {
+  color: var(--danger);
+}
 .loading {
   font-size: 13px;
   color: var(--muted);
@@ -421,8 +424,8 @@ const poolClass = computed(() => {
 
 /* ─── Setup CTA ─── */
 .setup-cta {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px dashed rgba(148, 163, 184, 0.3);
+  background: var(--surface-2);
+  border: 1px dashed var(--line);
   border-radius: 8px;
   padding: 18px 20px;
   margin-bottom: 16px;
@@ -451,8 +454,8 @@ const poolClass = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: rgba(30, 41, 59, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 14px 18px;
 }
@@ -497,6 +500,10 @@ const poolClass = computed(() => {
 .status-down { color: #fca5a5; }
 .status-pending,
 .status-validating { color: #fbbf24; }
+[data-theme="light"] .status-up { color: var(--accent-2); }
+[data-theme="light"] .status-down { color: var(--danger); }
+[data-theme="light"] .status-pending,
+[data-theme="light"] .status-validating { color: #b45309; }
 .monitor-last,
 .monitor-rt {
   color: var(--muted);
@@ -582,8 +589,8 @@ const poolClass = computed(() => {
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .metric-card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line);
   padding: 14px 16px;
   border-radius: 8px;
 }
@@ -625,5 +632,8 @@ const poolClass = computed(() => {
 }
 .db-missing {
   color: #fbbf24;
+}
+[data-theme="light"] .db-missing {
+  color: #b45309;
 }
 </style>

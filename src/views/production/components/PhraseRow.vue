@@ -102,7 +102,7 @@
     <!-- Individual Audio Controls (always show if UUIDs available) -->
     <div v-if="phrase.known_audio_uuid || phrase.target1_audio_uuid || phrase.target2_audio_uuid" class="audio-controls mt-3 space-y-2">
       <!-- Known-language audio -->
-      <div v-if="phrase.known_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 bg-opacity-50 rounded-lg">
+      <div v-if="phrase.known_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 border border-line rounded-lg">
         <button
           @click="playSingleAudio('known')"
           class="play-single p-1.5 rounded transition-all"
@@ -132,7 +132,7 @@
       </div>
 
       <!-- Target Audio 1 (Female Voice) -->
-      <div v-if="phrase.target1_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 bg-opacity-50 rounded-lg">
+      <div v-if="phrase.target1_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 border border-line rounded-lg">
         <button
           @click="playSingleAudio('target1')"
           class="play-single p-1.5 rounded transition-all"
@@ -163,7 +163,7 @@
       </div>
 
       <!-- Target Audio 2 (Male Voice) -->
-      <div v-if="phrase.target2_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 bg-opacity-50 rounded-lg">
+      <div v-if="phrase.target2_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 border border-line rounded-lg">
         <button
           @click="playSingleAudio('target2')"
           class="play-single p-1.5 rounded transition-all"
@@ -573,5 +573,36 @@ const playTargetAudio = async () => {
 
 .phrase-row:hover {
   @apply bg-surface-2;
+}
+
+/* Light mode: the selected highlight uses a dark-red fill (bg-red-900/30) that
+   collides with near-black --ink text. Swap to a legible light-red tint + visible
+   ring so the row reads on a white card. Dark mode keeps the original fill. */
+:root[data-theme='light'] .phrase-row.bg-red-900 {
+  background-color: #fee2e2 !important; /* red-100 */
+  box-shadow: inset 0 0 0 1px #fca5a5; /* red-300 ring */
+}
+
+/* Light mode: pink/blue voice labels & badges (pink-400/blue-400) drop to ~2.5:1
+   on light surfaces. Darken to a higher-contrast same-hue tone (>=4.5:1). */
+:root[data-theme='light'] .audio-label.text-pink-400,
+:root[data-theme='light'] .voice-badge.text-pink-400 {
+  color: #be185d; /* pink-700 */
+}
+:root[data-theme='light'] .audio-label.text-blue-400,
+:root[data-theme='light'] .voice-badge.text-blue-400 {
+  color: #1d4ed8; /* blue-700 */
+}
+:root[data-theme='light'] .voice-badge.bg-pink-500 {
+  background-color: #fbcfe8 !important; /* pink-200, opacity utility unneeded */
+}
+:root[data-theme='light'] .voice-badge.bg-blue-500 {
+  background-color: #bfdbfe !important; /* blue-200 */
+}
+
+/* Light mode: the amber flag-hover (amber-400, ~1.4:1 on light) is barely visible.
+   Use amber-600 for a readable hover affordance. Dark mode keeps amber-400. */
+:root[data-theme='light'] .flag-single:hover {
+  color: #d97706 !important; /* amber-600 */
 }
 </style>

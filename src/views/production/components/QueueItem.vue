@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-canvas/50 rounded-lg p-4 border transition-all hover:border-line"
+    class="queue-item bg-surface rounded-lg p-4 border transition-all hover:border-line"
     :class="borderClass"
   >
     <div class="flex items-center justify-between gap-4">
@@ -27,7 +27,7 @@
         </p>
 
         <!-- Error Message (if failed) -->
-        <p v-if="item.error" class="text-xs text-red-400 mt-2">
+        <p v-if="item.error" class="text-xs text-danger mt-2">
           {{ item.error }}
         </p>
       </div>
@@ -41,10 +41,10 @@
           class="p-2 bg-surface-2 hover:bg-surface-3 rounded-lg transition flex items-center justify-center"
           title="Play/Pause audio"
         >
-          <svg v-if="isPlaying" class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+          <svg v-if="isPlaying" class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"></path>
           </svg>
-          <svg v-else class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+          <svg v-else class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"></path>
           </svg>
         </button>
@@ -53,17 +53,17 @@
         <button
           v-if="item.status === 'failed'"
           @click="$emit('retry', item.uuid)"
-          class="p-2 bg-yellow-600/80 hover:bg-yellow-600 rounded-lg transition flex items-center justify-center"
+          class="retry-btn p-2 bg-yellow-600/80 hover:bg-yellow-600 rounded-lg transition flex items-center justify-center"
           title="Retry generation"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="retry-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
           </svg>
         </button>
 
         <!-- Generating Spinner -->
         <div v-if="item.status === 'generating'" class="p-2">
-          <svg class="animate-spin h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24">
+          <svg class="spinner-icon animate-spin h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
@@ -117,15 +117,15 @@ const isPlaying = ref(false)
 const statusBadgeClass = computed(() => {
   switch (props.item.status) {
     case 'queued':
-      return 'bg-surface-3/20 text-muted'
+      return 'pill pill-queued bg-surface-3/20 text-muted'
     case 'generating':
-      return 'bg-blue-500/20 text-blue-400'
+      return 'pill pill-generating bg-blue-500/20 text-blue-400'
     case 'complete':
-      return 'bg-emerald-500/20 text-emerald-400'
+      return 'pill pill-complete bg-emerald-500/20 text-emerald-400'
     case 'failed':
-      return 'bg-red-500/20 text-red-400'
+      return 'pill pill-failed bg-red-500/20 text-red-400'
     default:
-      return 'bg-surface-3/20 text-muted'
+      return 'pill pill-queued bg-surface-3/20 text-muted'
   }
 })
 
@@ -157,7 +157,7 @@ const statusLabel = computed(() => {
   }
 })
 
-// Audio playback
+// Audio playback (defined below)
 const toggleAudio = () => {
   if (!audioElement.value) return
 
@@ -170,3 +170,33 @@ const toggleAudio = () => {
   }
 }
 </script>
+
+<!--
+  Light-mode color corrections. Dark mode is untouched: these overrides only
+  apply under [data-theme="light"]. Hardcoded Tailwind blue/emerald/red/yellow
+  utilities don't re-theme, so their pale-on-pale pairings fail WCAG on a white
+  card; we restore legible same-hue fills/text for light mode only.
+-->
+<style>
+[data-theme="light"] .queue-item .pill-generating {
+  background-color: #dbeafe; /* blue-100 */
+  color: #1d4ed8;            /* blue-700, 5.7:1 on bg */
+}
+[data-theme="light"] .queue-item .pill-complete {
+  background-color: #d1fae5; /* emerald-100 */
+  color: #047857;            /* emerald-700, 4.8:1 on bg */
+}
+[data-theme="light"] .queue-item .pill-failed {
+  background-color: #fee2e2; /* red-100 */
+  color: #b91c1c;            /* red-700, 5.9:1 on bg */
+}
+[data-theme="light"] .queue-item .spinner-icon {
+  color: #1d4ed8;            /* blue-700, 5.9:1 on white card */
+}
+[data-theme="light"] .queue-item .retry-btn {
+  background-color: #a16207; /* yellow-700, white icon = 4.3:1 */
+}
+[data-theme="light"] .queue-item .retry-icon {
+  color: #ffffff;            /* white stroke on yellow-700 = 4.3:1 */
+}
+</style>

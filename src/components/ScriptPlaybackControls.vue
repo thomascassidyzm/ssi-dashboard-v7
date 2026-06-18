@@ -231,7 +231,7 @@ function formatTime(seconds) {
   align-items: center;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+  border-bottom: 1px solid var(--line);
 }
 
 .text-info {
@@ -262,6 +262,10 @@ function formatTime(seconds) {
   font-weight: 500;
 }
 
+:root[data-theme="light"] .known-text {
+  color: #6d28d9;
+}
+
 .arrow {
   color: var(--faint);
   font-weight: 300;
@@ -270,6 +274,10 @@ function formatTime(seconds) {
 .target-text {
   color: #10b981;
   font-weight: 500;
+}
+
+:root[data-theme="light"] .target-text {
+  color: var(--accent-2);
 }
 
 /* Phase Dots */
@@ -339,6 +347,10 @@ function formatTime(seconds) {
   color: #10b981;
 }
 
+:root[data-theme="light"] .phase-dot.active .phase-label {
+  color: var(--accent-2);
+}
+
 /* Main Controls */
 .main-controls {
   display: flex;
@@ -389,6 +401,10 @@ function formatTime(seconds) {
   color: white;
 }
 
+:root[data-theme="light"] .control-btn.play-pause {
+  background: var(--accent-2);
+}
+
 .control-btn.play-pause svg {
   width: 24px;
   height: 24px;
@@ -419,7 +435,7 @@ function formatTime(seconds) {
   right: 24px;
   width: 36px;
   height: 36px;
-  background: var(--surface-3);
+  background: var(--danger);
   color: white;
 }
 
@@ -439,7 +455,8 @@ function formatTime(seconds) {
   color: var(--ink);
   font-weight: 500;
   padding: 6px 12px;
-  background: rgba(51, 65, 85, 0.5);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 12px;
 }
 
@@ -452,7 +469,7 @@ function formatTime(seconds) {
 
 .item-progress-bar {
   height: 3px;
-  background: rgba(51, 65, 85, 0.5);
+  background: var(--surface-3);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -481,7 +498,7 @@ function formatTime(seconds) {
 }
 
 .timeline-bar:hover {
-  background: #3f4e63;
+  background: var(--surface-3);
 }
 
 .timeline-progress {

@@ -173,6 +173,19 @@ const displayChunks = computed(() => {
   transition: all 0.4s ease;
 }
 
+/* Light mode: the dark-tuned white@3% fill + 8%-orange hairline give the
+   chunk tiles no separation on a light card. Use a real raised surface +
+   a visible border token so the tiles read. Dark mode is untouched. */
+:root[data-theme="light"] .chunk-segment {
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+:root[data-theme="light"] .phrase-card.current .chunk-segment {
+  background: rgba(168, 85, 8, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(168, 85, 8, 0.35);
+}
+
 .phrase-card.current .chunk-segment {
   background: rgba(255, 166, 48, 0.08);
   box-shadow: inset 0 0 0 1px rgba(255, 166, 48, 0.25);
@@ -212,6 +225,12 @@ const displayChunks = computed(() => {
   letter-spacing: 0.15em;
   margin-bottom: 0.25rem;
   opacity: 0.8;
+}
+
+/* Light mode: 0.8 opacity drops the small mono label below AA on the light
+   canvas (~4.0:1). Use the full accent token (5.6:1) instead. Dark untouched. */
+:root[data-theme="light"] .cadence-label {
+  opacity: 1;
 }
 
 .slow-cadence {

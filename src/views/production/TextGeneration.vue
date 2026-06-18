@@ -1855,6 +1855,14 @@ onUnmounted(() => {
   transition: all 0.2s;
 }
 
+/* Light mode: the dark translucent fill above reads as a muddy grey on a
+   white canvas. Use a true card surface with a visible border + subtle shadow
+   so each pipeline card separates from the page. Dark mode untouched. */
+:root[data-theme="light"] .pipeline-card {
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
 .stage-number {
   width: 1.5rem;
   height: 1.5rem;
@@ -1877,6 +1885,12 @@ onUnmounted(() => {
   background: rgba(16, 185, 129, 0.2);
   color: rgb(52, 211, 153);
 }
+/* Light: emerald-400 text (#34d399) on a pale pill is ~1.4:1 — illegible.
+   Deepen the fill + use a dark emerald ink (passes AA on the tinted pill). */
+:root[data-theme="light"] .stage-badge-complete {
+  background: rgba(5, 150, 105, 0.16);
+  color: #065f46;
+}
 
 .stage-badge-locked {
   font-size: 0.65rem;
@@ -1886,6 +1900,12 @@ onUnmounted(() => {
   border-radius: 0.25rem;
   background: rgba(71, 85, 105, 0.3);
   color: rgb(148, 163, 184);
+}
+/* Light: slate-400 text (#94a3b8) on a pale slate pill is ~2.3:1 — fails.
+   Use the muted token as ink on a faint surface tint. */
+:root[data-theme="light"] .stage-badge-locked {
+  background: rgba(71, 85, 105, 0.12);
+  color: #334155;
 }
 
 @keyframes pulse {
@@ -1936,4 +1956,32 @@ onUnmounted(() => {
 .seed-cell:hover::after {
   opacity: 1;
 }
+
+/* ── LIGHT MODE status-text contrast ──
+   Inline status pills/labels use bright Tailwind -400 (and a couple of -300)
+   hues over very pale translucent (/20) fills. On a white card those texts run
+   ~1.4–2.6:1 and fail WCAG AA. These light-scoped overrides deepen each to its
+   -700 shade — same hue family, but >=4.5:1 on the pale fill / white card.
+   Dark mode keeps the original -400/-300 utilities (these rules don't apply). */
+:root[data-theme="light"] .text-emerald-400 { color: #047857 !important; }
+:root[data-theme="light"] .text-blue-400    { color: #1d4ed8 !important; }
+:root[data-theme="light"] .text-cyan-400,
+:root[data-theme="light"] .text-cyan-300    { color: #0e7490 !important; }
+:root[data-theme="light"] .text-violet-400  { color: #6d28d9 !important; }
+:root[data-theme="light"] .text-amber-400   { color: #b45309 !important; }
+:root[data-theme="light"] .text-teal-400    { color: #0f766e !important; }
+:root[data-theme="light"] .text-rose-400    { color: #be123c !important; }
+:root[data-theme="light"] .text-pink-400    { color: #be185d !important; }
+:root[data-theme="light"] .text-orange-400  { color: #c2410c !important; }
+:root[data-theme="light"] .text-indigo-400  { color: #4338ca !important; }
+:root[data-theme="light"] .text-yellow-400  { color: #a16207 !important; }
+:root[data-theme="light"] .text-red-400,
+:root[data-theme="light"] .text-red-300     { color: #b91c1c !important; }
+
+/* Light mode: section panels use bg-surface/30 (≈#f5f7f9) over the #eef2f6
+   canvas with a 50%-alpha line border — ~1.04:1 fill separation and a barely
+   visible edge. Make these panels a solid card surface with the full --line
+   border so they read as distinct cards. Dark mode unaffected. */
+:root[data-theme="light"] .bg-surface\/30 { background-color: var(--surface) !important; }
+:root[data-theme="light"] .border-line\/50 { border-color: var(--line) !important; }
 </style>

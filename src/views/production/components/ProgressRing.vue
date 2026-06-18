@@ -72,26 +72,26 @@ const progressClass = computed(() => {
 
 .progress-ring-bg {
   fill: none;
-  stroke: rgb(51 65 85 / 0.3);
+  stroke: var(--line);
 }
 
 .progress-ring-fill {
   fill: none;
-  stroke: #10b981;
+  stroke: var(--success);
   transition: stroke-dashoffset 0.6s ease, stroke 0.3s ease;
   stroke-linecap: round;
 }
 
 .progress-ring-fill.progress-high {
-  stroke: #10b981;
+  stroke: var(--success);
 }
 
 .progress-ring-fill.progress-medium {
-  stroke: #f59e0b;
+  stroke: var(--accent);
 }
 
 .progress-ring-fill.progress-low {
-  stroke: #ef4444;
+  stroke: var(--danger);
 }
 
 .progress-ring-label {

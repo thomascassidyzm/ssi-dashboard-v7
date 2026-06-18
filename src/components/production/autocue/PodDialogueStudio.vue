@@ -874,6 +874,43 @@ onUnmounted(() => {
 }
 
 /* Phone-first */
+/* Light mode: the default surface-3 borders (#e2e8f0) are nearly invisible
+   on white cards over the slate canvas, and the raised stat tiles use --canvas
+   as their fill so they vanish. Darken borders to --line (#cbd5e1, ~1.3:1 vs
+   white = the most visible UI border the tokens offer) and add a soft shadow
+   for card separation. Dark mode is untouched. */
+[data-theme="light"] .studio-card,
+[data-theme="light"] .progress-pod,
+[data-theme="light"] .progress-total,
+[data-theme="light"] .progress-upload,
+[data-theme="light"] .vad-strip,
+[data-theme="light"] .ctl-nav,
+[data-theme="light"] .pod-breakdown,
+[data-theme="light"] .sum-stat,
+[data-theme="light"] .btn-ghost,
+[data-theme="light"] .btn-finish,
+[data-theme="light"] .btn-take {
+  border-color: var(--line);
+}
+
+[data-theme="light"] .pod-breakdown li {
+  border-bottom-color: var(--line);
+}
+
+[data-theme="light"] .studio-card,
+[data-theme="light"] .progress-pod,
+[data-theme="light"] .progress-total,
+[data-theme="light"] .progress-upload {
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+/* The stat tiles fill with --canvas (== page bg in light) so they don't read
+   as raised. Lift them onto the raised input surface so the border + fill
+   separate them from the white card behind. */
+[data-theme="light"] .sum-stat {
+  background: var(--surface-2);
+}
+
 @media (max-width: 480px) {
   .pod-dialogue-studio {
     padding: 0.5rem;

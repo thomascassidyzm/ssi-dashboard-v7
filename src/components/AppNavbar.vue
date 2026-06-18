@@ -64,7 +64,7 @@
       <div class="bg-surface border border-line rounded-lg p-6 w-full max-w-sm">
         <h3 class="text-lg font-semibold text-ink mb-4">{{ hasPassword ? 'Change Password' : 'Set Password' }}</h3>
 
-        <div v-if="passwordSuccess" class="text-emerald-400 text-center py-4">
+        <div v-if="passwordSuccess" class="text-accent-2 text-center py-4">
           Password updated!
         </div>
 
@@ -84,7 +84,7 @@
             class="w-full bg-canvas border border-line rounded-lg px-4 py-2.5 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none text-sm"
             @keyup.enter="handleSetPassword"
           />
-          <p v-if="passwordError" class="text-red-400 text-xs">{{ passwordError }}</p>
+          <p v-if="passwordError" class="text-danger text-xs">{{ passwordError }}</p>
           <div class="flex gap-2 pt-1">
             <button
               @click="closePasswordModal"
@@ -412,6 +412,12 @@ onMounted(() => {
   min-width: 18px;
   text-align: center;
   line-height: 18px;
+}
+
+/* Light mode: deepen the badge purple so white text clears AA on small bold
+   text (white on #8b5cf6 = 4.23:1 fail). #6d28d9 = 7.1:1, same violet hue. */
+:root[data-theme="light"] .tab-badge {
+  background: #6d28d9;
 }
 
 /* Right section */

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-surface/50 rounded-lg border border-line/20 p-8">
+  <div class="skills-arch bg-surface rounded-lg border border-line p-8">
     <h2 class="text-2xl font-semibold text-ink mb-6">Skills Architecture</h2>
 
     <!-- Legend -->
@@ -76,7 +76,7 @@
 
         <!-- Sub-agents (Fourth Row) -->
         <g transform="translate(50, 450)">
-          <text x="500" y="-20" text-anchor="middle" fill="#94a3b8" font-size="13" font-style="italic">
+          <text x="500" y="-20" text-anchor="middle" fill="var(--muted)" font-size="13" font-style="italic">
             Each orchestrator spawns sub-agents with skill instructions
           </text>
 
@@ -137,28 +137,28 @@
 
     <!-- Stats -->
     <div class="mt-8 grid grid-cols-4 gap-4 text-center">
-      <div class="bg-canvas/50 rounded-lg p-4">
-        <div class="text-3xl font-bold text-emerald-400">4</div>
+      <div class="bg-surface-2 border border-line rounded-lg p-4">
+        <div class="stat-emerald text-3xl font-bold text-emerald-400">4</div>
         <div class="text-sm text-muted mt-1">Skills</div>
       </div>
-      <div class="bg-canvas/50 rounded-lg p-4">
-        <div class="text-3xl font-bold text-purple-400">4</div>
+      <div class="bg-surface-2 border border-line rounded-lg p-4">
+        <div class="stat-purple text-3xl font-bold text-purple-400">4</div>
         <div class="text-sm text-muted mt-1">Orchestrators</div>
       </div>
-      <div class="bg-canvas/50 rounded-lg p-4">
-        <div class="text-3xl font-bold text-blue-400">45+</div>
+      <div class="bg-surface-2 border border-line rounded-lg p-4">
+        <div class="stat-blue text-3xl font-bold text-blue-400">45+</div>
         <div class="text-sm text-muted mt-1">Sub-Agents</div>
       </div>
-      <div class="bg-canvas/50 rounded-lg p-4">
-        <div class="text-3xl font-bold text-emerald-400">90%</div>
+      <div class="bg-surface-2 border border-line rounded-lg p-4">
+        <div class="stat-emerald text-3xl font-bold text-emerald-400">90%</div>
         <div class="text-sm text-muted mt-1">Token Reduction</div>
       </div>
     </div>
 
     <!-- Explanation -->
-    <div class="mt-8 bg-canvas/50 rounded-lg p-6 space-y-4 text-sm text-ink">
+    <div class="mt-8 bg-surface-2 border border-line rounded-lg p-6 space-y-4 text-sm text-ink">
       <div>
-        <strong class="text-emerald-400">How it works:</strong>
+        <strong class="stat-emerald text-emerald-400">How it works:</strong>
       </div>
       <ol class="space-y-2 ml-6 list-decimal">
         <li><strong class="text-ink">Dashboard</strong> displays Phase Intelligence (orchestrator prompts) and Skills Library</li>
@@ -169,7 +169,7 @@
         <li><strong class="text-ink">Outputs</strong> merge into complete course package</li>
       </ol>
       <div class="pt-4 border-t border-line">
-        <strong class="text-emerald-400">Benefits:</strong>
+        <strong class="stat-emerald text-emerald-400">Benefits:</strong>
         <ul class="space-y-1 ml-6 mt-2 list-disc">
           <li>Orchestrator prompts: 50 lines (vs 1000+ lines with embedded methodology)</li>
           <li>Enforced reading order → critical rules read first</li>
@@ -180,6 +180,14 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+/* Light mode: the bright Tailwind -400 accent shades fail WCAG on the near-white
+   canvas/surface. Darken them only under the light theme; dark mode keeps -400. */
+:global([data-theme="light"]) .skills-arch .stat-emerald { color: var(--accent-2); }
+:global([data-theme="light"]) .skills-arch .stat-purple { color: #7c3aed; }
+:global([data-theme="light"]) .skills-arch .stat-blue { color: #2563eb; }
+</style>
 
 <script setup>
 import { ref } from 'vue'

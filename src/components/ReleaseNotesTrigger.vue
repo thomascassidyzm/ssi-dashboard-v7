@@ -89,22 +89,27 @@ async function onPublish() {
 }
 .rnt-btn:disabled { opacity: 0.55; cursor: default; }
 .rnt-btn--ghost { background: transparent; color: #a5b4fc; border-color: #4f46e5; }
-.rnt-status { font-size: 0.85rem; color: #9ca3af; margin: 0; }
-.rnt-status--err { color: #f87171; }
-.rnt-hint { font-size: 0.78rem; color: #6b7280; margin: 0; max-width: 70ch; }
-.rnt-hint code { background: #1f2937; padding: 0.05rem 0.35rem; border-radius: 0.25rem; }
+.rnt-status { font-size: 0.85rem; color: var(--muted); margin: 0; }
+.rnt-status--err { color: var(--danger); }
+.rnt-hint { font-size: 0.78rem; color: var(--muted); margin: 0; max-width: 70ch; }
+.rnt-hint code { background: var(--surface-2); color: var(--ink); padding: 0.05rem 0.35rem; border-radius: 0.25rem; }
 .rnt-draft {
   display: flex; flex-direction: column; gap: 0.35rem;
-  background: #111827; border: 1px solid #1f2937; border-radius: 0.6rem; padding: 0.9rem 1rem; margin-top: 0.25rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 0.6rem; padding: 0.9rem 1rem; margin-top: 0.25rem;
 }
-.rnt-meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.25rem; }
-.rnt-meta code { background: #1f2937; padding: 0.05rem 0.35rem; border-radius: 0.25rem; color: #a5b4fc; }
-.rnt-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; color: #9ca3af; margin-top: 0.35rem; }
+.rnt-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.25rem; }
+.rnt-meta code { background: var(--surface-2); padding: 0.05rem 0.35rem; border-radius: 0.25rem; color: #a5b4fc; }
+.rnt-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; color: var(--muted); margin-top: 0.35rem; }
 .rnt-input, .rnt-textarea {
-  width: 100%; box-sizing: border-box; background: #0b1220; border: 1px solid #1f2937; border-radius: 0.4rem;
-  color: #e5e7eb; font: inherit; font-size: 0.9rem; padding: 0.45rem 0.6rem; resize: vertical;
+  width: 100%; box-sizing: border-box; background: var(--surface-2); border: 1px solid var(--line); border-radius: 0.4rem;
+  color: var(--ink); font: inherit; font-size: 0.9rem; padding: 0.45rem 0.6rem; resize: vertical;
 }
 .rnt-input:focus, .rnt-textarea:focus { outline: none; border-color: #4f46e5; }
-.rnt-published { font-size: 0.85rem; color: #a7f3d0; margin: 0.4rem 0 0; }
+.rnt-published { font-size: 0.85rem; color: var(--success); margin: 0.4rem 0 0; }
 .rnt-published a { color: #a5b4fc; }
+
+/* Light mode: ghost-button / link indigo needs darkening for AA on white */
+:root[data-theme="light"] .rnt-btn--ghost { color: #4f46e5; }
+:root[data-theme="light"] .rnt-meta code { color: #4338ca; }
+:root[data-theme="light"] .rnt-published a { color: #4338ca; }
 </style>

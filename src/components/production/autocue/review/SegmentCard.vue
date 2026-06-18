@@ -217,4 +217,31 @@ function getBarHeight(index) {
   background: var(--color-emerald, #06ffa5);
   border-color: var(--color-emerald, #06ffa5);
 }
+
+/* Light-mode refinements: dark mode untouched.
+   The confidence-badge backgrounds bake neon-tinted rgba that, in light mode,
+   sit pale under the re-themed (darker) token text and fail WCAG AA. Replace
+   with theme-token tints + darker borders, and lift the faint button border. */
+:root[data-theme="light"] .confidence-badge.high {
+  background: rgba(4, 120, 87, 0.14);
+  color: #03543c;
+}
+
+:root[data-theme="light"] .confidence-badge.medium {
+  background: rgba(168, 85, 8, 0.14);
+  color: #8a4607;
+}
+
+:root[data-theme="light"] .confidence-badge.low {
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
+}
+
+:root[data-theme="light"] .segment-btn {
+  border-color: var(--line);
+}
+
+:root[data-theme="light"] .segment-card:hover {
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+}
 </style>

@@ -4,7 +4,7 @@
       <!-- Header -->
       <div class="mb-8 flex items-center justify-between">
         <div>
-          <h1 class="text-4xl font-bold text-emerald-400 mb-2">Introductions Editor</h1>
+          <h1 class="text-4xl font-bold text-accent-2 mb-2">Introductions Editor</h1>
           <p class="text-muted">Edit LEGO introduction presentations</p>
         </div>
         <div class="flex gap-3">
@@ -39,8 +39,8 @@
       </div>
 
       <!-- Error State -->
-      <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
-        <h3 class="text-red-400 font-semibold mb-2">Error Loading Introductions</h3>
+      <div v-else-if="error" class="status-error rounded-lg p-6">
+        <h3 class="status-error-title font-semibold mb-2">Error Loading Introductions</h3>
         <p class="text-ink">{{ error }}</p>
       </div>
 
@@ -61,15 +61,15 @@
         <div class="mb-6 grid grid-cols-3 gap-4">
           <div class="bg-surface border border-line rounded-lg p-4">
             <div class="text-muted text-sm mb-1">Total Introductions</div>
-            <div class="text-2xl font-bold text-emerald-400">{{ introductionsList.length }}</div>
+            <div class="text-2xl font-bold text-accent-2">{{ introductionsList.length }}</div>
           </div>
           <div class="bg-surface border border-line rounded-lg p-4">
             <div class="text-muted text-sm mb-1">Filtered Results</div>
-            <div class="text-2xl font-bold text-emerald-400">{{ filteredIntroductions.length }}</div>
+            <div class="text-2xl font-bold text-accent-2">{{ filteredIntroductions.length }}</div>
           </div>
           <div class="bg-surface border border-line rounded-lg p-4">
             <div class="text-muted text-sm mb-1">Modified</div>
-            <div class="text-2xl font-bold text-yellow-400">{{ modifiedCount }}</div>
+            <div class="text-2xl font-bold modified-count">{{ modifiedCount }}</div>
           </div>
         </div>
 
@@ -89,16 +89,16 @@
                   v-for="intro in filteredIntroductions"
                   :key="intro.id"
                   class="border-t border-line hover:bg-surface-2/50"
-                  :class="{ 'bg-yellow-900/20': intro.modified }"
+                  :class="{ 'row-modified': intro.modified }"
                 >
                   <td class="px-4 py-3">
-                    <code class="text-emerald-400 font-mono text-sm">{{ intro.id }}</code>
+                    <code class="text-accent-2 font-mono text-sm">{{ intro.id }}</code>
                   </td>
                   <td class="px-4 py-3">
                     <div v-if="editingId === intro.id">
                       <textarea
                         v-model="editText"
-                        class="w-full bg-canvas border border-emerald-500 rounded px-3 py-2 text-ink font-mono text-sm min-h-[80px]"
+                        class="w-full bg-canvas border border-accent-2 rounded px-3 py-2 text-ink font-mono text-sm min-h-[80px]"
                         @keydown.ctrl.enter="saveEdit(intro.id)"
                         @keydown.meta.enter="saveEdit(intro.id)"
                         @keydown.escape="cancelEdit"
@@ -138,10 +138,10 @@
         </div>
 
         <!-- Save Changes -->
-        <div v-if="modifiedCount > 0" class="mt-6 bg-yellow-900/20 border border-yellow-500/50 rounded-lg p-6">
+        <div v-if="modifiedCount > 0" class="mt-6 status-warn rounded-lg p-6">
           <div class="flex items-center justify-between">
             <div>
-              <h3 class="text-yellow-400 font-semibold mb-1">Unsaved Changes</h3>
+              <h3 class="status-warn-title font-semibold mb-1">Unsaved Changes</h3>
               <p class="text-ink text-sm">You have {{ modifiedCount }} modified introduction(s)</p>
             </div>
             <div class="flex gap-3">
@@ -357,3 +357,39 @@ async function recompileManifest() {
   }
 }
 </script>
+
+<style scoped>
+/* Dark-mode defaults: preserve original yellow/red appearance */
+.modified-count { color: #facc15; } /* yellow-400 */
+
+.status-error {
+  background-color: rgba(127, 29, 29, 0.2); /* red-900/20 */
+  border: 1px solid rgba(239, 68, 68, 0.5); /* red-500/50 */
+}
+.status-error-title { color: #f87171; } /* red-400 */
+
+.status-warn {
+  background-color: rgba(113, 63, 18, 0.2); /* yellow-900/20 */
+  border: 1px solid rgba(234, 179, 8, 0.5); /* yellow-500/50 */
+}
+.status-warn-title { color: #facc15; } /* yellow-400 */
+
+.row-modified { background-color: rgba(113, 63, 18, 0.2); } /* yellow-900/20 */
+
+/* Light-mode overrides: AA-legible amber/red on light tint, same hue families */
+:root[data-theme="light"] .modified-count { color: #b45309; } /* amber-700 ~5.9:1 on white */
+
+:root[data-theme="light"] .status-error {
+  background-color: #fef2f2; /* red-50 */
+  border-color: #fca5a5; /* red-300 */
+}
+:root[data-theme="light"] .status-error-title { color: #b91c1c; } /* red-700 ~6.4:1 on red-50 */
+
+:root[data-theme="light"] .status-warn {
+  background-color: #fffbeb; /* amber-50 */
+  border-color: #fcd34d; /* amber-300 */
+}
+:root[data-theme="light"] .status-warn-title { color: #b45309; } /* amber-700 ~5.4:1 on amber-50 */
+
+:root[data-theme="light"] .row-modified { background-color: #fffbeb; } /* amber-50 */
+</style>

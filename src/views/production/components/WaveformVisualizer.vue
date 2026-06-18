@@ -103,7 +103,8 @@ onUnmounted(() => {
 
 <style scoped>
 .waveform-visualizer {
-  background: var(--color-slate, var(--surface-2));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 1.5rem;
   min-height: 200px;
@@ -130,7 +131,7 @@ onUnmounted(() => {
   flex: 1;
   min-width: 3px;
   max-width: 8px;
-  background: var(--color-emerald, #06ffa5);
+  background: var(--color-emerald, var(--accent-2));
   border-radius: 2px;
   transition: height 0.1s ease-out;
   box-shadow: 0 0 8px rgba(6, 255, 165, 0.4);
@@ -213,14 +214,14 @@ onUnmounted(() => {
 }
 
 .meter-fill.level-high {
-  background: var(--color-emerald, #06ffa5);
+  background: var(--color-emerald, var(--accent-2));
   box-shadow: 0 0 10px rgba(6, 255, 165, 0.5);
 }
 
 .meter-label {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.875rem;
-  color: var(--color-emerald, #06ffa5);
+  color: var(--color-emerald, var(--accent-2));
   min-width: 50px;
   text-align: right;
 }

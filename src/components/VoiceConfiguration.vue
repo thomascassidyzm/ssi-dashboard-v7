@@ -1024,7 +1024,7 @@ onMounted(() => {
 .config-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #10b981;
+  color: var(--accent-2);
   margin: 0 0 8px 0;
 }
 
@@ -1048,7 +1048,7 @@ onMounted(() => {
   width: 20px;
   height: 20px;
   border: 2px solid var(--surface-2);
-  border-top-color: #10b981;
+  border-top-color: var(--accent-2);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -1105,14 +1105,18 @@ onMounted(() => {
 
 .swim-lane {
   background: var(--canvas);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 16px;
   transition: all 0.2s;
 }
 
+:root[data-theme="light"] .swim-lane {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
 .swim-lane.expanded {
-  border-color: #10b981;
+  border-color: var(--accent-2);
 }
 
 .lane-header {
@@ -1121,7 +1125,7 @@ onMounted(() => {
   align-items: center;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid var(--surface-2);
+  border-bottom: 1px solid var(--line);
 }
 
 .lane-title {
@@ -1201,7 +1205,7 @@ onMounted(() => {
 }
 
 .speed-value {
-  color: #10b981;
+  color: var(--accent-2);
   font-weight: 600;
   font-family: monospace;
 }
@@ -1228,7 +1232,7 @@ onMounted(() => {
 .notch-mark {
   width: 3px;
   height: 12px;
-  background: var(--surface-2);
+  background: var(--line);
   border-radius: 2px;
   transition: all 0.15s;
 }
@@ -1239,7 +1243,7 @@ onMounted(() => {
 }
 
 .speed-notch.active .notch-mark {
-  background: #10b981;
+  background: var(--accent-2);
   height: 20px;
 }
 
@@ -1256,7 +1260,7 @@ onMounted(() => {
 }
 
 .speed-notch.active .notch-label {
-  color: #10b981;
+  color: var(--accent-2);
 }
 
 /* Preview Section */
@@ -1298,7 +1302,7 @@ onMounted(() => {
 
 .cycle-btn:hover {
   background: var(--surface-3);
-  color: #10b981;
+  color: var(--accent-2);
 }
 
 /* Buttons */
@@ -1318,7 +1322,7 @@ onMounted(() => {
 
 .test-btn {
   width: 100%;
-  background: #10b981;
+  background: var(--accent-2);
   color: var(--canvas);
 }
 
@@ -1328,13 +1332,13 @@ onMounted(() => {
 
 .change-btn {
   background: transparent;
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   color: var(--muted);
 }
 
 .change-btn:hover {
-  border-color: #10b981;
-  color: #10b981;
+  border-color: var(--accent-2);
+  color: var(--accent-2);
 }
 
 /* Lane Empty */
@@ -1347,7 +1351,7 @@ onMounted(() => {
 
 .select-voice-btn {
   padding: 16px 32px;
-  background: #10b981;
+  background: var(--accent-2);
   color: var(--canvas);
   border: none;
   border-radius: 8px;
@@ -1364,7 +1368,7 @@ onMounted(() => {
 .voice-browser {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid var(--surface-2);
+  border-top: 1px solid var(--line);
 }
 
 .browser-header {
@@ -1403,7 +1407,7 @@ onMounted(() => {
   flex: 1;
   padding: 8px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--muted);
   font-size: 0.75rem;
@@ -1412,8 +1416,8 @@ onMounted(() => {
 }
 
 .provider-btn.active {
-  background: #10b981;
-  border-color: #10b981;
+  background: var(--accent-2);
+  border-color: var(--accent-2);
   color: var(--canvas);
 }
 
@@ -1429,7 +1433,7 @@ onMounted(() => {
   flex: 1;
   padding: 8px 12px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--ink);
   font-size: 0.85rem;
@@ -1437,7 +1441,7 @@ onMounted(() => {
 
 .custom-preview-input:focus {
   outline: none;
-  border-color: #10b981;
+  border-color: var(--accent-2);
 }
 
 .custom-preview-input::placeholder {
@@ -1448,7 +1452,7 @@ onMounted(() => {
 .custom-preview-clear {
   padding: 6px 10px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--muted);
   cursor: pointer;
@@ -1481,7 +1485,7 @@ onMounted(() => {
   width: 100%;
   padding: 8px 12px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--ink);
   font-size: 0.85rem;
@@ -1489,7 +1493,7 @@ onMounted(() => {
 
 .search-input:focus {
   outline: none;
-  border-color: #10b981;
+  border-color: var(--accent-2);
 }
 
 .search-input::placeholder {
@@ -1505,7 +1509,7 @@ onMounted(() => {
   width: 100%;
   padding: 8px 12px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--ink);
   font-size: 0.8rem;
@@ -1520,7 +1524,7 @@ onMounted(() => {
 
 .locale-select:focus {
   outline: none;
-  border-color: #10b981;
+  border-color: var(--accent-2);
 }
 
 .voice-filter {
@@ -1533,7 +1537,7 @@ onMounted(() => {
   flex: 1;
   padding: 6px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 4px;
   color: var(--faint);
   font-size: 0.7rem;
@@ -1559,15 +1563,15 @@ onMounted(() => {
   align-items: center;
   padding: 10px 12px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.15s;
 }
 
 .voice-option:hover {
-  border-color: #10b981;
-  background: #10b981/10;
+  border-color: var(--accent-2);
+  background: var(--surface-3);
 }
 
 .voice-info {
@@ -1673,7 +1677,7 @@ onMounted(() => {
 .voice-input {
   padding: 10px;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--ink);
   font-size: 0.85rem;
@@ -1681,12 +1685,12 @@ onMounted(() => {
 
 .voice-input:focus {
   outline: none;
-  border-color: #10b981;
+  border-color: var(--accent-2);
 }
 
 .use-voice-btn {
   padding: 10px;
-  background: #10b981;
+  background: var(--accent-2);
   border: none;
   border-radius: 6px;
   color: var(--canvas);
@@ -1716,19 +1720,19 @@ onMounted(() => {
 
 .save-status.success {
   background: rgba(16, 185, 129, 0.2);
-  color: #10b981;
+  color: var(--accent-2);
 }
 
 .save-status.error {
   background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
+  color: var(--danger);
 }
 
 /* Learner Playback Section */
 .playback-section {
   margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px solid var(--surface-2);
+  border-top: 1px solid var(--line);
 }
 
 .playback-title {
@@ -1757,9 +1761,13 @@ onMounted(() => {
   gap: 16px;
   padding: 12px 16px;
   background: var(--canvas);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 10px;
   cursor: pointer;
+}
+
+:root[data-theme="light"] .playback-row {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .playback-info {
@@ -1795,7 +1803,7 @@ onMounted(() => {
 }
 
 .playback-toggle.active .playback-toggle-track {
-  background: #10b981;
+  background: var(--accent-2);
 }
 
 .playback-toggle-thumb {
@@ -1821,11 +1829,26 @@ onMounted(() => {
 }
 
 .global-speed-value {
-  color: #10b981;
+  color: var(--accent-2);
   font-weight: 600;
   font-family: monospace;
   font-size: 0.85rem;
   min-width: 3.5em;
   text-align: right;
+}
+
+/* Light-mode: darken fixed-hue brand pills so small white text meets WCAG AA.
+   Same hue family as dark; dark mode keeps the brighter fills above. */
+:root[data-theme="light"] .selection-provider.azure,
+:root[data-theme="light"] .voice-gender.male {
+  background: #1d4ed8; /* blue-700, white text 5.2:1 */
+}
+
+:root[data-theme="light"] .selection-provider.elevenlabs {
+  background: #6d28d9; /* violet-700, white text 5.7:1 */
+}
+
+:root[data-theme="light"] .voice-gender.female {
+  background: #be185d; /* pink-700, white text 5.9:1 */
 }
 </style>

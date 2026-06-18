@@ -154,6 +154,10 @@ onUnmounted(() => {
   color: #10b981;
 }
 
+:root[data-theme="light"] .create-mode {
+  color: var(--accent-2);
+}
+
 .dropdown-arrow {
   color: var(--color-paper-dim, var(--muted));
   transition: transform 0.2s;
@@ -251,5 +255,33 @@ onUnmounted(() => {
   .course-name {
     display: none;
   }
+}
+
+/* Light-mode separation: dark mode untouched.
+   Tokens (light): surface #fff, line #cbd5e1, surface-2 #f1f5f9, surface-3 #e2e8f0. */
+:root[data-theme="light"] .course-button {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+:root[data-theme="light"] .dropdown-menu {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
+}
+
+:root[data-theme="light"] .search-input {
+  background: var(--surface);
+  border-bottom-color: var(--line);
+}
+
+/* Hover/current must be DARKER than the white menu in light mode. */
+:root[data-theme="light"] .course-option:hover,
+:root[data-theme="light"] .course-option.current {
+  background: var(--surface-2);
+}
+
+:root[data-theme="light"] .course-list-divider {
+  background: var(--line);
 }
 </style>

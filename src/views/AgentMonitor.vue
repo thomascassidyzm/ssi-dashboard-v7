@@ -101,7 +101,7 @@
 .info-box {
   text-align: left;
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
@@ -169,12 +169,26 @@
 
 .btn-secondary {
   background: var(--surface);
-  border: 1px solid var(--surface-2);
+  border: 1px solid var(--line);
   color: var(--muted);
 }
 
 .btn-secondary:hover {
-  border-color: var(--surface-3);
+  border-color: var(--faint);
   color: var(--ink);
+}
+
+/* Light mode: the dark-tuned greens/ambers lose contrast on light surfaces.
+   Scope overrides here so dark mode is untouched. */
+:root[data-theme="light"] .deprecated-message strong {
+  color: var(--accent-2);
+}
+
+:root[data-theme="light"] .info-box h3 {
+  color: var(--accent);
+}
+
+:root[data-theme="light"] .info-box code {
+  color: var(--accent-2);
 }
 </style>

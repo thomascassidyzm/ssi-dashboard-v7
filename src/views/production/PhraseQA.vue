@@ -345,6 +345,9 @@ onMounted(() => {
 .flag-count.error { color: #f87171; background: rgba(248, 113, 113, 0.15); }
 .flag-count.warning { color: #fbbf24; background: rgba(251, 191, 36, 0.15); }
 .flag-count.info { color: #60a5fa; background: rgba(96, 165, 250, 0.15); }
+[data-theme="light"] .flag-count.error { color: #b91c1c; background: rgba(220, 38, 38, 0.12); }
+[data-theme="light"] .flag-count.warning { color: #92400e; background: rgba(180, 83, 9, 0.12); }
+[data-theme="light"] .flag-count.info { color: #1d4ed8; background: rgba(37, 99, 235, 0.12); }
 .all-clear { color: var(--accent-2); font-size: 0.875rem; }
 
 .header-right { display: flex; align-items: center; gap: 0.75rem; }
@@ -461,6 +464,7 @@ onMounted(() => {
   background: var(--color-shadow, var(--surface));
   border-radius: 8px;
   overflow: hidden;
+  border: 1px solid var(--line);
 }
 
 table {
@@ -487,10 +491,14 @@ td {
   border-bottom: 1px solid var(--color-graphite, var(--surface-2));
   vertical-align: top;
 }
+[data-theme="light"] td { border-bottom-color: var(--line); }
 
-tr:hover td { background: rgba(255,255,255,0.02); }
+tr:hover td { background: var(--color-graphite, var(--surface-3)); }
 tr.error td { border-left: 3px solid #f87171; }
 tr.warning td { border-left: 3px solid #fbbf24; }
+[data-theme="light"] tr:hover td { background: var(--surface-2); }
+[data-theme="light"] tr.error td { border-left-color: #dc2626; }
+[data-theme="light"] tr.warning td { border-left-color: #b45309; }
 
 .col-severity { width: 60px; }
 .col-seed { width: 60px; font-family: monospace; color: var(--color-paper-dim, var(--muted)); }
@@ -509,6 +517,9 @@ tr.warning td { border-left: 3px solid #fbbf24; }
 .severity-badge.error { color: #f87171; background: rgba(248,113,113,0.2); }
 .severity-badge.warning { color: #fbbf24; background: rgba(251,191,36,0.2); }
 .severity-badge.info { color: #60a5fa; background: rgba(96,165,250,0.2); }
+[data-theme="light"] .severity-badge.error { color: #b91c1c; background: rgba(220,38,38,0.13); }
+[data-theme="light"] .severity-badge.warning { color: #92400e; background: rgba(180,83,9,0.13); }
+[data-theme="light"] .severity-badge.info { color: #1d4ed8; background: rgba(37,99,235,0.13); }
 
 .issue-text { display: block; line-height: 1.4; }
 .check-type {
@@ -533,6 +544,7 @@ tr.warning td { border-left: 3px solid #fbbf24; }
 }
 .btn-sm:hover { background: var(--color-graphite, var(--surface-3)); color: var(--color-paper, var(--ink)); }
 .btn-sm.danger:hover { background: rgba(248,113,113,0.2); color: #f87171; border-color: #f87171; }
+[data-theme="light"] .btn-sm.danger:hover { background: rgba(220,38,38,0.1); color: #b91c1c; border-color: #dc2626; }
 
 /* Pagination */
 .pagination {

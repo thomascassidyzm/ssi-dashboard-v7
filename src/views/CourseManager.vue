@@ -2045,4 +2045,38 @@ watch(selectedMachineProfile, (newProfile) => {
 .overflow-y-auto::-webkit-scrollbar-thumb:hover {
   background: theme('colors.slate.600');
 }
+
+/* ── LIGHT-MODE CONTRAST FIXES (dark mode untouched) ──
+   The status/badge palette uses Tailwind -400 colored TEXT, tuned for dark
+   surfaces. On light's white/near-white surfaces those fail WCAG (1.4–2.8:1).
+   Remap the colored TEXT utilities to deeper shades only under light, which pass
+   on both #fff (≥5:1) and the tinted /10–/20 pills (≥4.3:1) while keeping the
+   same hue identity. Backgrounds/borders stay as-is (theme-aware tints). */
+:global([data-theme="light"]) .text-emerald-400 { color: #047857; }   /* 1.92 → 5.48 on #fff */
+:global([data-theme="light"]) .text-emerald-500 { color: #047857; }   /* 2.54 → 5.48 */
+:global([data-theme="light"]) .text-cyan-400    { color: #0e7490; }   /* 1.81 → 5.36 */
+:global([data-theme="light"]) .text-amber-400   { color: #b45309; }   /* 1.67 → 5.02 */
+:global([data-theme="light"]) .text-blue-400    { color: #1d4ed8; }   /* 2.54 → 6.70 */
+:global([data-theme="light"]) .text-purple-400  { color: #7e22ce; }   /* 2.64 → 6.98 */
+:global([data-theme="light"]) .text-red-400     { color: #b91c1c; }   /* 2.77 → 6.47 */
+
+/* Card separation: panels use bg-surface/30 + border-line/50, which over the
+   slate canvas barely separate in light (fill 1.04:1, border ~1.12:1). Make the
+   card fill solid --surface (white) and the border solid --line under light so
+   they read as crisp white cards on the slate canvas (the design target).
+   Dark mode keeps the translucent look (these overrides are light-gated). */
+:global([data-theme="light"]) .bg-surface\/30 { background-color: var(--surface); }
+:global([data-theme="light"]) .bg-surface\/20 { background-color: var(--surface-2); }
+:global([data-theme="light"]) .bg-surface\/50 { background-color: var(--surface); }
+:global([data-theme="light"]) .border-line\/50 { border-color: var(--line); }
+:global([data-theme="light"]) .border-line\/30 { border-color: var(--line); }
+
+/* Scrollbar thumb is a hardcoded dark slate (theme() resolves to a fixed value,
+   doesn't flip) — too dark on a light panel; lighten it for light mode. */
+:global([data-theme="light"]) .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: theme('colors.slate.400');
+}
+:global([data-theme="light"]) .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.slate.500');
+}
 </style>

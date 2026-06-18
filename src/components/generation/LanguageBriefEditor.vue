@@ -569,12 +569,12 @@ onMounted(() => {
 .brief-editor {
   --surface: var(--surface);
   --elevated: var(--surface-2);
-  --border: var(--surface-3);
+  --border: var(--line);
   --text: var(--ink);
   --text-dim: var(--muted);
   --text-muted: var(--faint);
-  --accent: #10b981;
-  --accent-dim: rgba(16, 185, 129, 0.15);
+  --accent: var(--accent-2);
+  --accent-dim: color-mix(in srgb, var(--accent-2) 15%, transparent);
 
   background: var(--surface);
   border: 1px solid var(--border);
@@ -634,12 +634,12 @@ onMounted(() => {
 .btn-paste {
   background: transparent;
   border: 1px solid var(--border);
-  color: var(--text-secondary);
+  color: var(--text-dim);
 }
 
 .btn-paste:hover {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
+  background: var(--elevated);
+  color: var(--text);
 }
 
 .btn-generate {
@@ -943,9 +943,9 @@ onMounted(() => {
 }
 
 .btn-remove:hover {
-  background: rgba(239, 68, 68, 0.2);
-  border-color: #ef4444;
-  color: #ef4444;
+  background: color-mix(in srgb, var(--danger) 18%, transparent);
+  border-color: var(--danger);
+  color: var(--danger);
 }
 
 .btn-add {
@@ -1038,8 +1038,8 @@ onMounted(() => {
 }
 
 .guidance-textarea.custom {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.3);
+  background: color-mix(in srgb, var(--accent) 10%, var(--elevated));
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
 }
 
 /* Responsive */

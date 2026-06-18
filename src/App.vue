@@ -32,4 +32,15 @@ const gitCommit = __GIT_COMMIT__
   text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
   box-shadow: 0 0 12px rgba(0, 255, 136, 0.15);
 }
+
+/* Light mode: the neon-green-on-black build label washes out on a light canvas
+   (#00ff88 on ~#eef2f6 ≈ 1.19:1). Re-tone to the green accent token (legible,
+   same hue family) and drop the dark-mode glow. Dark mode is untouched. */
+:root[data-theme="light"] .build-label {
+  color: var(--accent-2);
+  background: var(--surface);
+  border-color: var(--line);
+  text-shadow: none;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+}
 </style>

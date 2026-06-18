@@ -504,8 +504,8 @@ watch(() => props.courseCode, () => {
 /* Language-Pair Learnings */
 .learnings-section {
   margin-bottom: 1rem;
-  background: var(--color-slate, var(--surface-2));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -523,6 +523,9 @@ watch(() => props.courseCode, () => {
 }
 .learnings-header:hover {
   background: rgba(255, 255, 255, 0.03);
+}
+[data-theme="light"] .learnings-header:hover {
+  background: var(--surface-2);
 }
 
 .learnings-icon {
@@ -559,7 +562,7 @@ watch(() => props.courseCode, () => {
 
 .learnings-content {
   padding: 0 1rem 1rem;
-  border-top: 1px solid var(--color-graphite, var(--surface-3));
+  border-top: 1px solid var(--line);
 }
 
 .learning-category {
@@ -657,15 +660,15 @@ watch(() => props.courseCode, () => {
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: var(--color-slate, var(--surface-2));
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.15s;
 }
 .workflow-card:hover {
-  background: var(--color-graphite, var(--surface-3));
+  background: var(--surface-2);
   border-color: var(--color-paper-dim, var(--faint));
 }
 
@@ -736,7 +739,7 @@ watch(() => props.courseCode, () => {
   display: flex;
   gap: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-graphite, var(--surface-2));
+  border-top: 1px solid var(--line);
 }
 
 .tool-link {
@@ -796,5 +799,31 @@ watch(() => props.courseCode, () => {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* Light-mode contrast fixes — dark mode untouched.
+   The shared hues above (amber #fbbf24, blue #3b82f6, red #f87171/#f59e0b,
+   purple #a78bfa) read fine on dark surfaces but fail WCAG on light pills/cards.
+   Darken text (and tighten pill fills) for light only, keeping the same hue family. */
+[data-theme="light"] .status-pill.active.beta,
+[data-theme="light"] .status-pill.pricing-tier.active.premium {
+  background: rgba(180, 83, 9, 0.12);
+  border-color: #b45309;
+  color: #92400e; /* amber-800 on light pill ≈ 6.0:1 */
+}
+[data-theme="light"] .status-pill.pricing-tier.active.community {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: #1d4ed8;
+  color: #1d4ed8; /* blue-700 ≈ 6.3:1 on white */
+}
+[data-theme="light"] .mini-stat.ok .mini-value {
+  color: #b45309; /* amber-700 ≈ 5.2:1 on white */
+}
+[data-theme="light"] .mini-stat.low .mini-value {
+  color: #dc2626; /* red ≈ 4.5:1 on white */
+}
+[data-theme="light"] .category-label {
+  background: rgba(124, 58, 237, 0.12);
+  color: #6d28d9; /* violet-700 ≈ 6.2:1 */
 }
 </style>

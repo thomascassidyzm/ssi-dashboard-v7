@@ -1016,4 +1016,120 @@ function cycleLegacyStatus(course) {
     flex-wrap: wrap;
   }
 }
+
+/* ============================================================
+   LIGHT MODE OVERRIDES
+   Dark mode is the default above and is untouched by this block.
+   The component leans on rgba(255,255,255,X) white overlays and
+   neon literal colours that are designed for dark surfaces; on
+   light surfaces those vanish or fail WCAG contrast. We re-derive
+   each with theme-aware tokens / sufficiently-dark hues, scoped to
+   [data-theme="light"] so dark stays exactly as-is.
+   ============================================================ */
+:root[data-theme="light"] .clear-all {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+:root[data-theme="light"] .clear-all:hover {
+  background: var(--surface-3);
+}
+
+:root[data-theme="light"] .sort-buttons {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+:root[data-theme="light"] .sort-btn:hover {
+  background: var(--surface-3);
+}
+:root[data-theme="light"] .sort-btn.active {
+  background: var(--surface-3);
+}
+
+/* Filter chips: keep hue identity but darken text to pass AA on the
+   light tinted fills (white tints alone left text ~2:1). */
+:root[data-theme="light"] .chip-target {
+  color: #92400e; /* amber-800, 6.4:1 on chip fill */
+}
+:root[data-theme="light"] .chip-known {
+  color: #1d4ed8; /* blue-700, ~6.5:1 */
+}
+:root[data-theme="light"] .chip-known.active {
+  color: #1d4ed8;
+}
+:root[data-theme="light"] .chip-app {
+  color: #047857; /* emerald-700 */
+}
+:root[data-theme="light"] .chip-app.active {
+  color: #047857;
+}
+
+:root[data-theme="light"] .filter-chip.open {
+  border-color: var(--accent);
+}
+
+:root[data-theme="light"] .filter-dropdown {
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+}
+:root[data-theme="light"] .dropdown-option:hover {
+  background: var(--surface-3);
+}
+:root[data-theme="light"] .dropdown-known .dropdown-option.selected {
+  color: #1d4ed8;
+}
+:root[data-theme="light"] .dropdown-app .dropdown-option.selected {
+  color: #047857;
+}
+
+:root[data-theme="light"] .search-box {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+/* Cards: white-on-white hover overlay is invisible on a light board;
+   use a visible surface step plus a real border for separation. */
+:root[data-theme="light"] .course-card:hover,
+:root[data-theme="light"] .course-card.active {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+/* App badges: inactive uses white overlays (invisible) and the active
+   states use neon literals that fail AA on white fills. */
+:root[data-theme="light"] .app-badge.inactive {
+  border-color: var(--line);
+  color: var(--faint);
+}
+:root[data-theme="light"] .app-badge.inactive:hover {
+  border-color: var(--muted);
+  color: var(--muted);
+}
+:root[data-theme="light"] .app-badge.status-testing {
+  background: rgba(71, 85, 105, 0.12);
+  border-color: rgba(71, 85, 105, 0.35);
+  color: var(--muted);
+}
+:root[data-theme="light"] .app-badge.status-beta {
+  background: rgba(180, 83, 9, 0.12);
+  border-color: rgba(180, 83, 9, 0.4);
+  color: #b45309; /* amber-700, 5.0:1 */
+}
+:root[data-theme="light"] .app-badge.status-live {
+  background: rgba(4, 120, 87, 0.12);
+  border-color: rgba(4, 120, 87, 0.4);
+  color: #047857; /* emerald-700, 5.5:1 */
+}
+:root[data-theme="light"] .app-badge.legacy.status-beta {
+  background: rgba(14, 116, 144, 0.1);
+  border-color: rgba(14, 116, 144, 0.4);
+  color: #0e7490; /* cyan-700, 5.4:1 */
+}
+:root[data-theme="light"] .app-badge.legacy.status-live {
+  background: rgba(14, 116, 144, 0.14);
+  border-color: rgba(14, 116, 144, 0.45);
+  color: #0e7490;
+}
+
+:root[data-theme="light"] .footer-stat.highlight .footer-value {
+  color: #047857; /* emerald-700 instead of neon #10b981 */
+}
 </style>

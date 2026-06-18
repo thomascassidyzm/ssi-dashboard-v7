@@ -38,7 +38,7 @@ defineProps({
   gap: 1rem;
   padding: 1rem 2rem;
   background: var(--color-shadow, var(--surface));
-  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
+  border-bottom: 1px solid var(--line);
 }
 
 .back-link {

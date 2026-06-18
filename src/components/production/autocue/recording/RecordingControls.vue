@@ -142,6 +142,29 @@ kbd {
   font-size: 0.7rem;
 }
 
+/* Light mode: faint surface-3 borders (~1.1:1) are invisible on near-white
+   surfaces, so the buttons/keys lose their shape. Use the stronger --line
+   border token plus a subtle shadow for separation. Scoped to light so dark
+   mode keeps its original surface-3 borders untouched. */
+:root[data-theme="light"] .control-btn {
+  border-color: var(--line);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .control-btn.record,
+:root[data-theme="light"] .control-btn.record.recording {
+  border-color: var(--color-film-red, #e63946);
+  box-shadow: 0 4px 16px rgba(230, 57, 70, 0.3);
+}
+
+:root[data-theme="light"] .control-btn.record.recording {
+  border-color: var(--line);
+}
+
+:root[data-theme="light"] kbd {
+  border-color: var(--line);
+}
+
 @media (max-width: 768px) {
   .controls-row {
     flex-direction: column;
