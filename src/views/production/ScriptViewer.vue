@@ -190,9 +190,26 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
               </button>
-              <span class="text-sm text-slate-300">
+              <!-- Click the range to type a round number and jump to it -->
+              <input
+                v-if="editingRound"
+                ref="gotoRoundInputRef"
+                v-model="gotoRoundInput"
+                @keyup.enter="goToRound"
+                @keyup.esc="editingRound = false"
+                @blur="editingRound = false"
+                type="number"
+                min="1"
+                class="w-16 px-1 py-0.5 text-sm bg-slate-700 text-white rounded border border-emerald-500 focus:outline-none text-center"
+              />
+              <span
+                v-else
+                @click="startEditingRound"
+                class="text-sm text-slate-300 cursor-pointer hover:text-emerald-400 transition-colors"
+                title="Click to jump to a round"
+              >
                 <span class="font-medium text-white">{{ journeyPageStart }}-{{ journeyPageEnd }}</span>
-                <span class="text-slate-500"> rounds</span>
+                <span> rounds</span>
               </span>
               <button
                 @click="nextPage"
@@ -887,8 +904,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import FilterBar from './components/FilterBar.vue';
 import SeedRow from './components/SeedRow.vue';
 import AudioPlayer from './components/AudioPlayer.vue';
@@ -911,6 +928,7 @@ import type {
 
 // Route
 const route = useRoute();
+const router = useRouter();
 const courseCode = computed(() => route.params.courseCode as string || 'spa_for_eng');
 
 // Scroll refs
@@ -1197,6 +1215,41 @@ const nextPage = () => {
     journeyOffset.value += journeyPageSize;
     loadLearningJourney();
   }
+};
+
+// Jump directly to a specific round. The page-range label (e.g. "20-40") doubles
+// as a click-to-edit field — click it, type a round number, hit Enter.
+// Rounds are 1:1 with new-LEGO offsets, so round R lives on the page starting at
+// floor((R-1)/pageSize)*pageSize. We load that page if it isn't already loaded,
+// then expand + scroll the round into view.
+const gotoRoundInput = ref('');
+const editingRound = ref(false);
+const gotoRoundInputRef = ref<HTMLInputElement | null>(null);
+
+const startEditingRound = async () => {
+  gotoRoundInput.value = String(journeyPageStart.value);
+  editingRound.value = true;
+  await nextTick();
+  gotoRoundInputRef.value?.focus();
+  gotoRoundInputRef.value?.select();
+};
+
+const goToRound = async () => {
+  editingRound.value = false;
+  const target = parseInt(gotoRoundInput.value, 10);
+  if (!Number.isFinite(target) || target < 1) return;
+
+  // Clamp to the total number of rounds (≈ total new LEGOs) when known.
+  const totalRounds = learningJourneyData.value?.totalLegoCount || 0;
+  const roundNumber = totalRounds > 0 ? Math.min(target, totalRounds) : target;
+
+  const targetOffset = Math.floor((roundNumber - 1) / journeyPageSize) * journeyPageSize;
+  if (targetOffset !== journeyOffset.value) {
+    journeyOffset.value = targetOffset;
+    await loadLearningJourney();
+  }
+  await nextTick();
+  learningJourneyRef.value?.scrollToRound(roundNumber);
 };
 
 // Collapse/Expand all methods for journey view
@@ -2188,9 +2241,32 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     // Show success in modal (user can close or refresh)
     phraseEditModalRef.value?.onSaveComplete(true);
 
-    // Reload journey data if we edited from journey view
-    if (phraseEditMode.value === 'lego' || viewMode.value === 'journey') {
-      reloadLearningJourney();
+    // Update the journey view in place rather than re-fetching the whole page.
+    // A full reload replaces learningJourneyData wholesale, which rebuilds the
+    // rounds list from scratch and snaps the scroll back to the top — yanking
+    // the user away from where they were editing. Mutating the matching items
+    // keeps their position intact.
+    if (learningJourneyData.value) {
+      const isLego = phraseEditMode.value === 'lego';
+      const matches = (item: any) => isLego
+        ? item.legoId === phraseId && (item.type === 'intro' || item.type === 'debut')
+        : item.phrase_id === phraseId;
+
+      const applyToItem = (item: any) => {
+        if (!matches(item)) return;
+        item.known_text = data.known_text;
+        item.target_text = data.target_text;
+        if (phraseAfter.known_audio_id   !== undefined) item.known_audio_uuid   = phraseAfter.known_audio_id;
+        if (phraseAfter.target1_audio_id !== undefined) item.target1_audio_uuid = phraseAfter.target1_audio_id;
+        if (phraseAfter.target2_audio_id !== undefined) item.target2_audio_uuid = phraseAfter.target2_audio_id;
+      };
+
+      learningJourneyData.value.rounds?.forEach((round: any) => round.items?.forEach(applyToItem));
+      learningJourneyData.value.allItems?.forEach(applyToItem);
+
+      // Refresh flag highlighting (audio may have been flagged above) without
+      // rebuilding the list.
+      loadAudioFlags();
     }
   } catch (err) {
     console.error(`Error saving ${phraseEditMode.value}:`, err);
@@ -2441,9 +2517,14 @@ onMounted(() => {
   if (viewMode.value === 'journey' || viewMode.value === 'listening') {
     loadLearningJourney();
   }
-  // Check for filter query param (from QA link)
+  // Check for filter query param (from the "fix flagged samples" QA link).
+  // Consume it once, then strip it from the URL so a plain reload shows the
+  // unfiltered view — the regen queue should only open via an explicit click,
+  // not stick across refreshes.
   if (route.query.filter === 'flagged') {
     filterFlaggedOnly.value = true;
+    const { filter, ...rest } = route.query;
+    router.replace({ query: rest });
   }
   loadCourseData();
   window.addEventListener('keydown', handleKeydown);

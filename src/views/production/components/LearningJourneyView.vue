@@ -82,6 +82,7 @@
       <div
         v-for="round in rounds"
         :key="round.roundNumber"
+        :ref="el => setRoundRef(round.roundNumber, el)"
         class="round-card bg-slate-800 rounded-lg overflow-hidden"
       >
         <!-- Round Header -->
@@ -632,6 +633,17 @@ const setItemRef = (roundNumber: number, idx: number, el: any) => {
   }
 }
 
+// Store refs to round-card DOM elements (for jump-to-round)
+const roundRefs = new Map<number, HTMLElement>()
+
+const setRoundRef = (roundNumber: number, el: any) => {
+  if (el) {
+    roundRefs.set(roundNumber, el as HTMLElement)
+  } else {
+    roundRefs.delete(roundNumber)
+  }
+}
+
 // Watch for playing item changes to auto-expand round and scroll into view
 watch(currentPlayingLocation, async (loc) => {
   if (!loc) return
@@ -699,10 +711,22 @@ const collapseAll = () => {
   expandedRounds.value.clear()
 }
 
+// Expand a round and scroll it into view. Called by parent after a page load
+// when the user jumps to a specific round.
+const scrollToRound = async (roundNumber: number) => {
+  expandedRounds.value.add(roundNumber)
+  await nextTick()
+  const el = roundRefs.get(roundNumber)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
 // Expose methods + player for parent component
 defineExpose({
   expandAll,
   collapseAll,
+  scrollToRound,
   player
 })
 
