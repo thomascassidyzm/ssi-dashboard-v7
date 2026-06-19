@@ -98,100 +98,123 @@
       </div>
     </section>
 
-    <!-- Main Workflow Cards -->
-    <section class="workflow-grid">
-      <!-- Course Journey (guided step-by-step) -->
-      <router-link :to="`/production/${courseCode}/journey`" class="workflow-card">
-        <div class="card-icon journey">J</div>
-        <div class="card-content">
-          <h3>Course Journey</h3>
-          <p>Step-by-step guide from translation to publish</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
+    <!-- Main Workflow — grouped into pipeline stages -->
 
-      <!-- Seed Editor -->
-      <router-link :to="`/production/${courseCode}/seeds`" class="workflow-card">
-        <div class="card-icon seeds">Se</div>
-        <div class="card-content">
-          <h3>Seed Editor</h3>
-          <p>Review and approve translations</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
+    <!-- Guide -->
+    <section class="workflow-stage">
+      <div class="stage-head">
+        <span class="stage-label">Guide</span>
+        <div class="stage-line"></div>
+      </div>
+      <div class="workflow-grid">
+        <router-link :to="`/production/${courseCode}/journey`" class="workflow-card">
+          <div class="card-icon journey">J</div>
+          <div class="card-content">
+            <h3>Course Journey</h3>
+            <p>Step-by-step guide from translation to publish</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
+      </div>
+    </section>
 
-      <!-- Text Generation -->
-      <router-link :to="`/production/${courseCode}/text`" class="workflow-card">
-        <div class="card-icon text">T</div>
-        <div class="card-content">
-          <h3>Text Generation</h3>
-          <p>Build seeds, LEGOs, and phrases</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
+    <!-- 1 · Text generation -->
+    <section class="workflow-stage">
+      <div class="stage-head">
+        <span class="stage-num">1</span>
+        <span class="stage-label">Text</span>
+        <span class="stage-hint">Seeds &rarr; LEGOs &amp; phrases &middot; Pods are a separate track</span>
+        <div class="stage-line"></div>
+      </div>
+      <div class="workflow-grid">
+        <router-link :to="`/production/${courseCode}/seeds`" class="workflow-card">
+          <div class="card-icon seeds">Se</div>
+          <div class="card-content">
+            <h3>Seed Editor</h3>
+            <p>Review and approve translations</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
 
-      <!-- Script View (rounds-based phrase review) -->
-      <router-link
-        :to="{ name: 'ScriptViewer', params: { courseCode }, query: { view: 'journey' } }"
-        class="workflow-card"
-      >
-        <div class="card-icon script">S</div>
-        <div class="card-content">
-          <h3>Script View</h3>
-          <p>Review phrases in learning order</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
+        <router-link :to="`/production/${courseCode}/text`" class="workflow-card">
+          <div class="card-icon text">T</div>
+          <div class="card-content">
+            <h3>Text Generation</h3>
+            <p>Build seeds, LEGOs, and phrases</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
 
-      <!-- Audio Pipeline -->
-      <router-link :to="`/production/${courseCode}/pipeline`" class="workflow-card">
-        <div class="card-icon audio">A</div>
-        <div class="card-content">
-          <h3>Audio Generation</h3>
-          <p>TTS synthesis and processing</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
+        <router-link :to="`/production/${courseCode}/pods`" class="workflow-card">
+          <div class="card-icon pods">P</div>
+          <div class="card-content">
+            <h3>Listening Pods</h3>
+            <p>Layer 2 pod sentences (separate text track)</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
+      </div>
+    </section>
 
-      <!-- Recording (combined) -->
-      <router-link :to="`/production/${courseCode}/recording`" class="workflow-card">
-        <div class="card-icon record">H</div>
-        <div class="card-content">
-          <h3>Human Recording</h3>
-          <p>Record and optimize takes</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
+    <!-- 2 · Audio generation -->
+    <section class="workflow-stage">
+      <div class="stage-head">
+        <span class="stage-num">2</span>
+        <span class="stage-label">Audio</span>
+        <span class="stage-hint">All audio for the course &amp; pods</span>
+        <div class="stage-line"></div>
+      </div>
+      <div class="workflow-grid">
+        <router-link :to="`/production/${courseCode}/pipeline`" class="workflow-card">
+          <div class="card-icon audio">A</div>
+          <div class="card-content">
+            <h3>Audio Generation</h3>
+            <p>TTS synthesis for the course and pods</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
 
-      <!-- Listening Pods -->
-      <router-link :to="`/production/${courseCode}/pods`" class="workflow-card">
-        <div class="card-icon pods">P</div>
-        <div class="card-content">
-          <h3>Listening Pods</h3>
-          <p>Layer 2 podcast content</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
+        <router-link :to="`/production/${courseCode}/recording`" class="workflow-card">
+          <div class="card-icon record">H</div>
+          <div class="card-content">
+            <h3>Human Recording <span class="card-tag">optional</span></h3>
+            <p>Only for pairs without strong TTS voices</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
+      </div>
+    </section>
 
-      <!-- Listening Config (global) -->
-      <router-link to="/admin/listening" class="workflow-card">
-        <div class="card-icon listening-config">Lc</div>
-        <div class="card-content">
-          <h3>Listening Config</h3>
-          <p>Layer 1 / Layer 2 settings (global)</p>
-        </div>
-        <span class="card-arrow">&rarr;</span>
-      </router-link>
+    <!-- 3 · Review & QA -->
+    <section class="workflow-stage">
+      <div class="stage-head">
+        <span class="stage-num">3</span>
+        <span class="stage-label">Review &amp; QA</span>
+        <span class="stage-hint">The course as the learner hears it &mdash; fix text &amp; audio in place</span>
+        <div class="stage-line"></div>
+      </div>
+      <div class="workflow-grid">
+        <router-link
+          :to="{ name: 'ScriptViewer', params: { courseCode }, query: { view: 'journey' } }"
+          class="workflow-card"
+        >
+          <div class="card-icon script">S</div>
+          <div class="card-content">
+            <h3>Script View</h3>
+            <p>Read the learner journey; fix phrases &amp; regenerate audio inline</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
 
-      <!-- Launch Learning App -->
-      <button @click="launchLearningApp" class="workflow-card action">
-        <div class="card-icon launch">L</div>
-        <div class="card-content">
-          <h3>Open Learning App</h3>
-          <p>Preview course in app</p>
-        </div>
-        <span class="card-arrow">&nearr;</span>
-      </button>
+        <button @click="launchLearningApp" class="workflow-card action">
+          <div class="card-icon launch">L</div>
+          <div class="card-content">
+            <h3>Open Learning App</h3>
+            <p>Preview course in app</p>
+          </div>
+          <span class="card-arrow">&nearr;</span>
+        </button>
+      </div>
     </section>
 
     <!-- Secondary Tools -->
@@ -374,11 +397,13 @@ async function setPricingTier(tier) {
 }
 
 function handleBlocker(blocker) {
+  // Flagged-audio review is now handled in Script View (the QA / fix-in-place
+  // surface) rather than the standalone Audio page.
   const routes = {
     createRecordingQueue: { name: 'RecordingStudioProduction', query: { autoCreateQueue: 'true' } },
-    sendToAudioPipeline: { name: 'AudioPipelineProduction', query: { autoQueue: 'flagged' } },
-    reviewSamples: { name: 'ScriptViewer', query: { filter: 'flagged' } },
-    reviewFlaggedAudio: { name: 'ScriptViewer', query: { filter: 'flagged' } }
+    sendToAudioPipeline: { name: 'ScriptViewer', query: { view: 'journey', filter: 'flagged' } },
+    reviewSamples: { name: 'ScriptViewer', query: { view: 'journey', filter: 'flagged' } },
+    reviewFlaggedAudio: { name: 'ScriptViewer', query: { view: 'journey', filter: 'flagged' } }
   }
   const route = routes[blocker.action]
   if (route) router.push({ ...route, params: { courseCode: props.courseCode } })
@@ -647,12 +672,78 @@ watch(() => props.courseCode, () => {
   cursor: pointer;
 }
 
+/* Workflow stages */
+.workflow-stage {
+  margin-bottom: 1.5rem;
+}
+
+.stage-head {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+.stage-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.stage-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.stage-hint {
+  font-size: 0.75rem;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+.stage-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.card-tag {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--faint);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
 /* Workflow Grid */
 .workflow-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .stage-hint { display: none; }
 }
 
 .workflow-card {

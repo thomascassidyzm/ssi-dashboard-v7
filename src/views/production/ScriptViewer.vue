@@ -45,16 +45,6 @@
         </div>
 
         <div class="header-right flex items-center gap-3">
-          <!-- View Mode Toggle Buttons -->
-          <button
-            @click="viewMode = 'journey'; if (!learningJourneyData) { journeyOffset = 0; loadLearningJourney(); }"
-            class="px-4 py-2 text-sm rounded-lg flex items-center gap-2 transition-colors bg-emerald-500 text-white"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-            </svg>
-            Course Preview
-          </button>
 
           <!-- Collapse/Expand All (only in seed mode) -->
           <template v-if="viewMode === 'script'">
@@ -129,19 +119,17 @@
 
           <!-- Pagination for journey mode -->
           <template v-if="viewMode === 'journey'">
-            <!-- Collapse/Expand All Buttons (moved here from inside scroll area) -->
+            <!-- Single expand/collapse-all toggle -->
             <div class="flex gap-2">
               <button
-                @click="collapseAllJourney"
-                class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
+                @click="toggleExpandAllJourney"
+                class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors flex items-center gap-1.5"
               >
-                Collapse All
-              </button>
-              <button
-                @click="expandAllJourney"
-                class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
-              >
-                Expand All
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        :d="journeyAllExpanded ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'" />
+                </svg>
+                {{ journeyAllExpanded ? 'Collapse all' : 'Expand all' }}
               </button>
               <!-- Audio-gap toggle: production view (default) shows items awaiting
                    audio so QA can fix them; learner view applies the learner app's
@@ -1299,6 +1287,14 @@ const collapseAllJourney = () => {
 
 const expandAllJourney = () => {
   learningJourneyRef.value?.expandAll();
+};
+
+// Single expand/collapse-all toggle for the journey view.
+const journeyAllExpanded = ref(false);
+const toggleExpandAllJourney = () => {
+  journeyAllExpanded.value = !journeyAllExpanded.value;
+  if (journeyAllExpanded.value) expandAllJourney();
+  else collapseAllJourney();
 };
 
 // Audio-gap toggle. Default = production view: rows awaiting audio are SHOWN
@@ -2716,16 +2712,11 @@ const initDefaultSeedRange = async () => {
 
 // Lifecycle
 onMounted(async () => {
-  // Check for view query param ('listening' retired 2026-06-10 — listening
-  // work lives in the Listening Pods/Config views; old links get journey)
-  if (route.query.view === 'seed' || route.query.view === 'seed-view') {
-    viewMode.value = 'script';
-  } else if (route.query.view === 'journey' || route.query.view === 'script-view' || route.query.view === 'listening') {
-    viewMode.value = 'journey';
-  }
-  if (viewMode.value === 'journey') {
-    loadLearningJourney();
-  }
+  // Script View is the learner-order (journey) view only — the old seed-order
+  // mode was retired 2026-06-19 (authoring lives in Text Generation). All
+  // legacy ?view=* links resolve to the journey.
+  viewMode.value = 'journey';
+  loadLearningJourney();
   // Check for filter query param (from QA link)
   if (route.query.filter === 'flagged') {
     filterFlaggedOnly.value = true;
