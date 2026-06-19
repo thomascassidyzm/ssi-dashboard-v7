@@ -239,40 +239,22 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
                   </svg>
                 </button>
-                <!-- F (target1) quick-flag -->
+                <!-- F (target1) — play female voice -->
                 <button
                   v-if="item.target1_audio_uuid"
                   class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'bg-pink-500 text-white' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
-                  :title="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'Unflag target1 (F) audio' : 'Flag target1 (F) audio'"
-                  @click.stop="emit('audio-flag', item, 'target1')"
+                  :class="playingTrackUuid === item.target1_audio_uuid ? 'bg-pink-500 text-white' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
+                  title="Play target1 (F) audio"
+                  @click.stop="playTrack(item.target1_audio_uuid!)"
                 >F</button>
-                <!-- F regen button -->
-                <button
-                  v-if="item.target1_audio_uuid && flaggedAudioUuids.has(item.target1_audio_uuid!)"
-                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="regeneratingUuids.has(item.target1_audio_uuid!) ? 'text-pink-300 animate-spin' : 'text-pink-400 hover:bg-pink-500 hover:bg-opacity-20'"
-                  :disabled="regeneratingUuids.has(item.target1_audio_uuid!)"
-                  title="Regenerate target1 audio"
-                  @click.stop="emit('audio-regen', item, 'target1', item.target1_audio_uuid!)"
-                >↻</button>
-                <!-- M (target2) quick-flag -->
+                <!-- M (target2) — play male voice -->
                 <button
                   v-if="item.target2_audio_uuid"
                   class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
-                  :title="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'Unflag target2 (M) audio' : 'Flag target2 (M) audio'"
-                  @click.stop="emit('audio-flag', item, 'target2')"
+                  :class="playingTrackUuid === item.target2_audio_uuid ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
+                  title="Play target2 (M) audio"
+                  @click.stop="playTrack(item.target2_audio_uuid!)"
                 >M</button>
-                <!-- M regen button -->
-                <button
-                  v-if="item.target2_audio_uuid && flaggedAudioUuids.has(item.target2_audio_uuid!)"
-                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="regeneratingUuids.has(item.target2_audio_uuid!) ? 'text-blue-300 animate-spin' : 'text-blue-400 hover:bg-blue-500 hover:bg-opacity-20'"
-                  :disabled="regeneratingUuids.has(item.target2_audio_uuid!)"
-                  title="Regenerate target2 audio"
-                  @click.stop="emit('audio-regen', item, 'target2', item.target2_audio_uuid!)"
-                >↻</button>
                 <!-- Trash/flag phrase for deletion -->
                 <button
                   v-if="item.phrase_id"
@@ -409,8 +391,6 @@ const props = defineProps<{
   courseCode: string
   isLoading?: boolean
   hideControls?: boolean
-  flaggedAudioUuids?: Set<string>
-  regeneratingUuids?: Set<string>
   flaggedPhraseIds?: Set<string>
 }>()
 
@@ -426,16 +406,41 @@ const emit = defineEmits<{
   }]
   'item-edit': [item: ScriptItem]
   'presentation-edit': [item: ScriptItem]
-  'audio-flag': [item: ScriptItem, track: 'target1' | 'target2']
-  'audio-regen': [item: ScriptItem, track: 'target1' | 'target2', audioUuid: string]
   'phrase-flag': [item: ScriptItem]
 }>()
 
 // Default empty sets for optional props
 const emptySet = new Set<string>()
-const flaggedAudioUuids = computed(() => props.flaggedAudioUuids || emptySet)
-const regeneratingUuids = computed(() => props.regeneratingUuids || emptySet)
 const flaggedPhraseIds = computed(() => props.flaggedPhraseIds || emptySet)
+
+// Quick audition of a single voice track (F = target1, M = target2).
+const playingTrackUuid = ref<string | null>(null)
+let trackAudioEl: HTMLAudioElement | null = null
+async function playTrack(uuid: string) {
+  if (!uuid) return
+  // Toggle off if the same track is already playing.
+  if (trackAudioEl && playingTrackUuid.value === uuid) {
+    trackAudioEl.pause();
+    playingTrackUuid.value = null;
+    return;
+  }
+  try {
+    let url = `${apiBaseUrl}/api/production/${props.courseCode}/audio/${uuid}/url`
+    const s3Key = introS3KeyMap.value.get(uuid)
+    if (s3Key) url += `?s3Key=${encodeURIComponent(s3Key)}`
+    const resp = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    if (!resp.ok) return
+    const data = await resp.json()
+    if (!data.url) return
+    if (trackAudioEl) trackAudioEl.pause()
+    trackAudioEl = new Audio(data.url)
+    playingTrackUuid.value = uuid
+    trackAudioEl.onended = () => { playingTrackUuid.value = null }
+    await trackAudioEl.play()
+  } catch {
+    playingTrackUuid.value = null
+  }
+}
 
 // ============================================================================
 // PLAYER SETUP

@@ -45,15 +45,6 @@
 
       <!-- Status & Actions -->
       <div class="phrase-actions flex items-start gap-2">
-        <div v-if="phrase.flag_status" class="status-indicator">
-          <span
-            class="status-badge px-2 py-1 text-xs font-medium rounded-lg"
-            :class="statusBadgeClass"
-          >
-            {{ formatStatus(phrase.flag_status) }}
-          </span>
-        </div>
-
         <!-- Play Audio Button -->
         <button
           @click="playTargetAudio"
@@ -95,7 +86,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
           </svg>
         </button>
-        <!-- Per-audio flag buttons are below in audio-controls section -->
       </div>
     </div>
 
@@ -119,16 +109,6 @@
         <span class="audio-label text-xs text-muted w-16">Known</span>
         <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.known_text }}</span>
         <AudioStatusBadge :status="getAudioStatus('known')" />
-        <button
-          @click="flagSingleAudio('known')"
-          class="flag-single p-1.5 rounded transition-all"
-          :class="isAudioFlagged('known') ? 'bg-amber-500 text-white' : 'bg-surface-3 text-muted hover:bg-surface-3 hover:text-amber-400'"
-          title="Flag known audio"
-        >
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
-          </svg>
-        </button>
       </div>
 
       <!-- Target Audio 1 (Female Voice) -->
@@ -150,16 +130,6 @@
         <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.target_text }}</span>
         <span class="voice-badge text-xs text-pink-400 px-1.5 py-0.5 bg-pink-500 bg-opacity-20 rounded">F</span>
         <AudioStatusBadge :status="getAudioStatus('target1')" />
-        <button
-          @click="flagSingleAudio('target1')"
-          class="flag-single p-1.5 rounded transition-all"
-          :class="isAudioFlagged('target1') ? 'bg-amber-500 text-white' : 'bg-surface-3 text-muted hover:bg-surface-3 hover:text-amber-400'"
-          title="Flag target1 audio"
-        >
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
-          </svg>
-        </button>
       </div>
 
       <!-- Target Audio 2 (Male Voice) -->
@@ -181,23 +151,7 @@
         <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.target_text }}</span>
         <span class="voice-badge text-xs text-blue-400 px-1.5 py-0.5 bg-blue-500 bg-opacity-20 rounded">M</span>
         <AudioStatusBadge :status="getAudioStatus('target2')" />
-        <button
-          @click="flagSingleAudio('target2')"
-          class="flag-single p-1.5 rounded transition-all"
-          :class="isAudioFlagged('target2') ? 'bg-amber-500 text-white' : 'bg-surface-3 text-muted hover:bg-surface-3 hover:text-amber-400'"
-          title="Flag target2 audio"
-        >
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
-          </svg>
-        </button>
       </div>
-    </div>
-
-    <!-- Flag Notes (if flagged) -->
-    <div v-if="phrase.is_flagged && flagNotes" class="flag-notes mt-3 p-3 bg-surface-2 rounded-lg border-l-2 border-amber-500">
-      <div class="text-xs text-muted mb-1">Flag Notes:</div>
-      <div class="text-sm text-ink">{{ flagNotes }}</div>
     </div>
   </div>
 </template>
@@ -222,9 +176,6 @@ const AudioStatusBadge = defineComponent({
       const statusColors: Record<string, string> = {
         approved: 'bg-emerald-600 text-white',
         complete: 'bg-emerald-600 text-white',
-        flagged_regen_tts: 'bg-amber-600 text-white',
-        flagged_human_needed: 'bg-orange-600 text-white',
-        flagged_text_edit: 'bg-yellow-600 text-white',
         needs_review: 'bg-blue-600 text-white',
         rejected: 'bg-red-600 text-white',
         tts_failed: 'bg-red-600 text-white',
@@ -249,7 +200,6 @@ const QA_PAUSE_BETWEEN_TARGETS_MS = 500;
 const props = defineProps<{
   phrase: PhraseRowData;
   position: number;
-  flagNotes?: string;
   courseCode?: string;
   selectionMode?: boolean;
   isSelected?: boolean;
@@ -259,7 +209,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   phraseEdit: [phrase: PhraseRowData];
   phraseDelete: [phrase: PhraseRowData];
-  audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   play: [sample: AudioSample];
   pause: [];
   toggleSelection: [phraseId: string];
@@ -279,31 +228,7 @@ const currentlyPlayingTrack = ref<AudioTrack | null>(null);
 const getApiBaseUrl = (): string => getApiUrl();
 
 // Computed Classes
-const borderClass = computed(() => {
-  if (props.phrase.is_flagged) {
-    return 'border-l-amber-500';
-  }
-  return 'border-l-slate-700';
-});
-
-const statusBadgeClass = computed(() => {
-  if (!props.phrase.flag_status) return '';
-
-  const status = props.phrase.flag_status;
-  if (status === 'approved' || status === 'complete') {
-    return 'bg-emerald-600 text-white';
-  }
-  if (status.startsWith('flagged')) {
-    return 'bg-amber-600 text-white';
-  }
-  if (status === 'needs_review') {
-    return 'bg-blue-600 text-white';
-  }
-  if (status.includes('failed') || status === 'rejected') {
-    return 'bg-red-600 text-white';
-  }
-  return 'bg-surface-3 bg-opacity-20 text-ink';
-});
+const borderClass = computed(() => 'border-l-slate-700');
 
 // Methods
 const onEdit = () => {
@@ -320,12 +245,6 @@ const onPlay = (sample: AudioSample) => {
 
 const onPause = () => {
   emit('pause');
-};
-
-const formatStatus = (status: SampleStatus): string => {
-  return status.split('_').map(word =>
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join(' ');
 };
 
 // Per-audio status tracking (placeholder - would come from API in real impl)
@@ -358,25 +277,6 @@ const getS3KeyForTrack = (track: AudioTrack): string | null => {
 // Get status for a specific audio track
 const getAudioStatus = (track: AudioTrack): SampleStatus | null => {
   return audioStatuses.value[track];
-};
-
-// Check if specific audio is flagged (status === 'flagged')
-const isAudioFlagged = (track: AudioTrack): boolean => {
-  switch (track) {
-    case 'known': return props.phrase.known_flag?.status === 'flagged';
-    case 'target1': return props.phrase.target1_flag?.status === 'flagged';
-    case 'target2': return props.phrase.target2_flag?.status === 'flagged';
-    default: return false;
-  }
-};
-
-// Flag a single audio track (parent handles the toggle and API call)
-const flagSingleAudio = (track: AudioTrack) => {
-  const uuid = getUuidForTrack(track);
-  if (!uuid) return;
-
-  // Emit event for parent to handle API call and state update
-  emit('audioFlag', props.phrase, track, uuid);
 };
 
 // Play a single audio track
@@ -598,11 +498,5 @@ const playTargetAudio = async () => {
 }
 :root[data-theme='light'] .voice-badge.bg-blue-500 {
   background-color: #bfdbfe !important; /* blue-200 */
-}
-
-/* Light mode: the amber flag-hover (amber-400, ~1.4:1 on light) is barely visible.
-   Use amber-600 for a readable hover affordance. Dark mode keeps amber-400. */
-:root[data-theme='light'] .flag-single:hover {
-  color: #d97706 !important; /* amber-600 */
 }
 </style>

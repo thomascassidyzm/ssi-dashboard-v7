@@ -235,22 +235,6 @@
                   <option value="known">Known language</option>
                   <option value="presentation">Presentation (Introductions)</option>
                 </select>
-
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <div class="relative">
-                    <input
-                      type="checkbox"
-                      v-model="flaggedOnly"
-                      class="peer sr-only"
-                    />
-                    <div class="w-5 h-5 rounded border-2 border-line peer-checked:border-amber-500 peer-checked:bg-amber-500 transition-colors flex items-center justify-center">
-                      <svg class="w-3 h-3 text-ink opacity-0 peer-checked:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <span class="text-sm text-ink group-hover:text-ink transition-colors">Regen queue only</span>
-                </label>
               </div>
 
               <!-- Action Buttons -->
@@ -279,7 +263,6 @@
                     <span class="text-sm font-medium" :class="regenerateResult.error ? 'text-red-400' : regenerateResult.dryRun ? 'text-amber-400' : regenerateResult.status === 'running' ? 'text-blue-400' : 'text-emerald-400'">
                       {{ regenerateResult.error ? 'Error' : regenerateResult.dryRun ? 'Preview' : regenerateResult.status === 'running' ? 'Running...' : 'Complete' }}
                     </span>
-                    <span v-if="regenerateResult.flaggedOnly" class="text-xs text-amber-400">(queue)</span>
                   </div>
                   <div class="text-right">
                     <span class="text-xl font-bold text-ink">{{ regenerateResult.count || regenerateResult.total || 0 }}</span>
@@ -295,65 +278,6 @@
                 </div>
                 <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-sm text-emerald-400">
                   {{ regenerateResult.success }} generated, {{ regenerateResult.failed }} failed
-                </div>
-
-                <!-- Review Panel for Regenerated Items -->
-                <div v-if="regenerateResult.regeneratedItems?.length > 0" class="mt-4 pt-4 border-t border-line/50">
-                  <div class="flex items-center justify-between mb-3">
-                    <h4 class="text-sm font-medium text-ink">Review Regenerated Audio</h4>
-                    <span class="text-xs text-faint">{{ regenerateResult.regeneratedItems.length }} items</span>
-                  </div>
-                  <div class="space-y-2 max-h-64 overflow-y-auto">
-                    <div
-                      v-for="item in regenerateResult.regeneratedItems"
-                      :key="item.id"
-                      class="flex items-center gap-3 p-2 bg-surface/50 rounded-lg border border-line/30"
-                    >
-                      <!-- Play button (use item.id which is course_audio record ID) -->
-                      <button
-                        @click="playReviewAudio(item.id)"
-                        class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center hover:bg-emerald-500/20 transition-colors"
-                        :class="{ 'bg-emerald-500/30': playingAudioId === item.id }"
-                      >
-                        <svg v-if="playingAudioId !== item.id" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
-                        <svg v-else class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                        </svg>
-                      </button>
-                      <!-- Text -->
-                      <div class="flex-1 min-w-0">
-                        <p class="text-sm text-ink truncate">{{ item.text }}</p>
-                        <p class="text-xs text-faint">{{ item.role }}</p>
-                      </div>
-                      <!-- Done button (happy with this audio, delete flag) -->
-                      <button
-                        @click="markItemDone(item)"
-                        class="px-2 py-1 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
-                        title="Happy with audio - remove from regen queue"
-                      >
-                        ✓ Done
-                      </button>
-                    </div>
-                  </div>
-                  <!-- Bulk actions -->
-                  <div class="flex gap-2 mt-3 pt-3 border-t border-line/30">
-                    <button
-                      @click="markAllDone"
-                      class="flex-1 px-3 py-2 text-sm bg-emerald-500/10 text-emerald-400 rounded-lg border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
-                    >
-                      ✓ All Done
-                    </button>
-                    <button
-                      @click="clearReviewPanel"
-                      class="px-3 py-2 text-sm bg-surface-2/50 text-muted rounded-lg border border-line/30 hover:bg-surface-2 transition-colors"
-                      title="Close panel - items stay in regen queue"
-                    >
-                      Close
-                    </button>
-                  </div>
-                  <p class="text-xs text-faint mt-2 text-center">Not happy? Close and click Regenerate again</p>
                 </div>
               </div>
             </div>
@@ -431,91 +355,6 @@
             </div>
           </div>
 
-          <!-- Regenerate All Flagged Card -->
-          <div class="bg-gradient-to-br from-surface/60 to-surface/30 border border-line/50 rounded-xl p-6 lg:col-span-2">
-            <div class="flex items-start justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-ink">Regenerate All Flagged</h3>
-                  <p class="text-sm text-muted">Process entire regen queue across all roles</p>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20">
-                BATCH
-              </span>
-            </div>
-
-            <p class="text-sm text-muted mb-4">
-              Regenerate all samples in the queue in a single batch. Azure TTS handles concurrency internally,
-              so this processes known, target1, and target2 roles simultaneously.
-            </p>
-
-            <!-- Queue Summary -->
-            <div v-if="allFlaggedQueue" class="mb-4 grid grid-cols-4 gap-3">
-              <div class="bg-canvas/50 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-ink">{{ allFlaggedQueue.total }}</div>
-                <div class="text-xs text-faint uppercase">Total</div>
-              </div>
-              <div class="bg-canvas/50 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-amber-400">{{ allFlaggedQueue.byRole?.known || 0 }}</div>
-                <div class="text-xs text-faint uppercase">Known</div>
-              </div>
-              <div class="bg-canvas/50 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-emerald-400">{{ allFlaggedQueue.byRole?.target1 || 0 }}</div>
-                <div class="text-xs text-faint uppercase">Target1</div>
-              </div>
-              <div class="bg-canvas/50 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-teal-400">{{ allFlaggedQueue.byRole?.target2 || 0 }}</div>
-                <div class="text-xs text-faint uppercase">Target2</div>
-              </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex gap-3">
-              <button
-                @click="previewAllFlagged"
-                :disabled="regeneratingAll || otherCourseJobActive"
-                class="flex-1 px-4 py-2.5 bg-surface-2/50 hover:bg-surface-2 disabled:bg-surface disabled:text-faint text-ink rounded-lg transition-colors text-sm font-medium"
-              >
-                {{ loadingAllFlaggedQueue ? 'Loading...' : 'Preview Queue' }}
-              </button>
-              <button
-                @click="executeAllFlagged"
-                :disabled="regeneratingAll || otherCourseJobActive || !allFlaggedQueue?.total"
-                class="flex-1 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface disabled:text-faint text-white rounded-lg transition-colors text-sm font-medium"
-              >
-                {{ regeneratingAll ? 'Working...' : 'Regenerate All' }}
-              </button>
-            </div>
-
-            <!-- Result -->
-            <div v-if="allFlaggedResult" class="mt-4 p-4 bg-canvas/50 rounded-lg border border-line/30">
-              <div class="flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 rounded-full" :class="allFlaggedResult.error ? 'bg-red-500' : 'bg-emerald-500'"></div>
-                  <span class="text-sm font-medium" :class="allFlaggedResult.error ? 'text-red-400' : 'text-emerald-400'">
-                    {{ allFlaggedResult.error ? 'Error' : 'Triggered' }}
-                  </span>
-                </div>
-                <div v-if="!allFlaggedResult.error" class="text-right">
-                  <span class="text-xl font-bold text-ink">{{ allFlaggedResult.count }}</span>
-                  <span class="text-xs text-faint ml-1">samples</span>
-                </div>
-              </div>
-              <div v-if="allFlaggedResult.error" class="mt-2 text-sm text-red-400">{{ allFlaggedResult.error }}</div>
-              <div v-else-if="allFlaggedResult.jobId" class="mt-2 text-xs text-muted">
-                Job ID: <code class="text-emerald-400 bg-surface px-1.5 py-0.5 rounded">{{ allFlaggedResult.jobId }}</code>
-              </div>
-              <p v-if="!allFlaggedResult.error" class="mt-2 text-xs text-faint">
-                Watch the live progress panel above for real-time updates.
-              </p>
-            </div>
-          </div>
         </section>
 
         <!-- PIPELINE STATUS Section -->
@@ -762,19 +601,9 @@ const regenerating = ref(false)
 const regenerateResult = ref<any>(null)
 const flaggedOnly = ref(false)
 
-// Review panel state
-const playingAudioId = ref<string | null>(null)
-const reviewAudioElement = ref<HTMLAudioElement | null>(null)
-
 // Regenerate presentations state
 const regeneratingPresentations = ref(false)
 const presentationsResult = ref<any>(null)
-
-// Regenerate all flagged state
-const allFlaggedQueue = ref<any>(null)
-const loadingAllFlaggedQueue = ref(false)
-const regeneratingAll = ref(false)
-const allFlaggedResult = ref<any>(null)
 
 // Plan/dry run state (kept for plan panel compatibility)
 const planResult = ref<any>(null)
@@ -989,11 +818,6 @@ onMounted(async () => {
     // because /generate runs link first as Step A, and /audio-stats reports
     // toLink separately so the user can see linkable rows without doing them
     // first. Avoiding the extra Supabase RPC on every page load.
-
-    // Check for mode=flagged query param (from Script Viewer link)
-    if (route.query.mode === 'flagged') {
-      flaggedOnly.value = true
-    }
   } catch (err) {
     console.error('Failed to load pipeline:', err)
     error.value = 'Failed to load pipeline data. Please try again.'
@@ -1217,8 +1041,7 @@ const executeRegenerate = async () => {
         success: data.success,
         failed: data.failed,
         voiceId: data.voiceId,
-        language: data.language,
-        regeneratedItems: data.regeneratedItems || []
+        language: data.language
       }
       // Reload pipeline stats
       await productionStore.loadCourse(courseCode.value)
@@ -1228,99 +1051,6 @@ const executeRegenerate = async () => {
   } finally {
     regenerating.value = false
   }
-}
-
-// Review panel functions
-const playReviewAudio = async (audioId: string) => {
-  // Toggle if already playing
-  if (playingAudioId.value === audioId) {
-    reviewAudioElement.value?.pause()
-    playingAudioId.value = null
-    return
-  }
-
-  // Stop any currently playing audio
-  if (reviewAudioElement.value) {
-    reviewAudioElement.value.pause()
-  }
-
-  try {
-    // Get signed URL for the audio
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio/${audioId}/url`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (!response.ok) throw new Error('Failed to get audio URL')
-
-    const { url } = await response.json()
-
-    // Create and play audio
-    reviewAudioElement.value = new Audio(url)
-    reviewAudioElement.value.onended = () => {
-      playingAudioId.value = null
-    }
-    reviewAudioElement.value.onerror = () => {
-      playingAudioId.value = null
-    }
-
-    playingAudioId.value = audioId
-    await reviewAudioElement.value.play()
-  } catch (err) {
-    console.error('Error playing review audio:', err)
-    playingAudioId.value = null
-  }
-}
-
-const markItemDone = async (item: any) => {
-  try {
-    // Delete the flag using new audio-flags endpoint - user is happy with this audio
-    await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${item.id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-    // Remove from review list
-    if (regenerateResult.value?.regeneratedItems) {
-      regenerateResult.value.regeneratedItems = regenerateResult.value.regeneratedItems.filter(
-        (i: any) => i.id !== item.id
-      )
-    }
-  } catch (err) {
-    console.error('Error marking item done:', err)
-  }
-}
-
-const markAllDone = async () => {
-  if (!regenerateResult.value?.regeneratedItems?.length) return
-
-  try {
-    const uuids = regenerateResult.value.regeneratedItems.map((item: any) => item.id).filter(Boolean)
-    if (uuids.length > 0) {
-      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/bulk-delete`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
-        },
-        body: JSON.stringify({ audio_uuids: uuids })
-      })
-    }
-    // Clear review list
-    regenerateResult.value.regeneratedItems = []
-  } catch (err) {
-    console.error('Error marking all done:', err)
-  }
-}
-
-const clearReviewPanel = () => {
-  if (regenerateResult.value) {
-    regenerateResult.value.regeneratedItems = []
-  }
-  if (reviewAudioElement.value) {
-    reviewAudioElement.value.pause()
-  }
-  playingAudioId.value = null
 }
 
 // Presentation text regeneration functions
@@ -1385,105 +1115,6 @@ const executePresentations = async () => {
     presentationsResult.value = { error: err.message }
   } finally {
     regeneratingPresentations.value = false
-  }
-}
-
-// Regenerate All Flagged functions
-const previewAllFlagged = async () => {
-  loadingAllFlaggedQueue.value = true
-  allFlaggedResult.value = null
-
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/regeneration/queue`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    const data = await response.json()
-    if (!response.ok) {
-      allFlaggedQueue.value = null
-      allFlaggedResult.value = { error: data.error || 'Failed to load queue' }
-    } else {
-      // Count by role
-      const byRole: Record<string, number> = { known: 0, target1: 0, target2: 0, presentation: 0 }
-      for (const item of data.items || []) {
-        const role = item.audio?.role || 'unknown'
-        if (byRole[role] !== undefined) {
-          byRole[role]++
-        }
-      }
-
-      allFlaggedQueue.value = {
-        total: data.total || 0,
-        items: data.items || [],
-        byRole
-      }
-    }
-  } catch (err: any) {
-    allFlaggedQueue.value = null
-    allFlaggedResult.value = { error: err.message }
-  } finally {
-    loadingAllFlaggedQueue.value = false
-  }
-}
-
-const executeAllFlagged = async () => {
-  if (!allFlaggedQueue.value?.total) return
-
-  const confirmed = confirm(
-    `This will regenerate ${allFlaggedQueue.value.total} flagged samples across all roles.\n\n` +
-    `Breakdown:\n` +
-    `• Known: ${allFlaggedQueue.value.byRole?.known || 0}\n` +
-    `• Target1: ${allFlaggedQueue.value.byRole?.target1 || 0}\n` +
-    `• Target2: ${allFlaggedQueue.value.byRole?.target2 || 0}\n` +
-    `• Presentation: ${allFlaggedQueue.value.byRole?.presentation || 0}\n\n` +
-    `Existing audio files will be replaced.\n\n` +
-    `Continue?`
-  )
-  if (!confirmed) return
-
-  regeneratingAll.value = true
-  allFlaggedResult.value = null
-
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/regeneration/trigger-all`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-
-    const data = await response.json()
-    if (!response.ok) {
-      allFlaggedResult.value = { error: data.error || 'Regeneration failed' }
-    } else {
-      allFlaggedResult.value = {
-        success: true,
-        count: data.count,
-        processed: data.processed,
-        failed: data.failed
-      }
-      // Populate regenerateResult with items for the review panel
-      if (data.regeneratedItems?.length > 0) {
-        regenerateResult.value = {
-          dryRun: false,
-          flaggedOnly: true,
-          status: 'completed',
-          total: data.count,
-          success: data.processed,
-          failed: data.failed,
-          regeneratedItems: data.regeneratedItems
-        }
-      }
-      // Clear the queue preview since items have been regenerated
-      allFlaggedQueue.value = null
-      // Reload pipeline stats
-      await productionStore.loadCourse(courseCode.value)
-    }
-  } catch (err: any) {
-    allFlaggedResult.value = { error: err.message }
-  } finally {
-    regeneratingAll.value = false
   }
 }
 </script>

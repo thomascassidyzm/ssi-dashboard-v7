@@ -57,13 +57,6 @@
             </svg>
             <span>{{ totalPhraseCount }} phrases</span>
           </div>
-
-          <div v-if="flaggedCount > 0" class="flagged-count flex items-center gap-1 text-accent">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
-            <span>{{ flaggedCount }} pending</span>
-          </div>
         </div>
       </div>
     </div>
@@ -93,7 +86,6 @@
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
               @phrase-delete="onPhraseDelete"
-              @audio-flag="onAudioFlag"
               @toggle-selection="onToggleSelection"
               @play="onPhrasePlay"
               @pause="onPhrasePause"
@@ -122,7 +114,6 @@
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
               @phrase-delete="onPhraseDelete"
-              @audio-flag="onAudioFlag"
               @toggle-selection="onToggleSelection"
               @phrase-play="onPhrasePlay"
               @phrase-pause="onPhrasePause"
@@ -156,9 +147,6 @@ const props = defineProps<{
   selectedPhraseIds?: Set<string>;
 }>();
 
-// Audio track type (matches PhraseRow)
-type AudioTrack = 'known' | 'target1' | 'target2';
-
 // Emits
 const emit = defineEmits<{
   toggle: [seedId: string];
@@ -166,7 +154,6 @@ const emit = defineEmits<{
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
   phraseDelete: [phrase: PhraseRowData];
-  audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   toggleSelection: [phraseId: string];
   phrasePlay: [sample: AudioSample];
   phrasePause: [];
@@ -180,20 +167,6 @@ const onToggleSelection = (phraseId: string) => {
 const totalPhraseCount = computed(() => {
   const legoPhrasesCount = props.seed.legos.reduce((sum, lego) => sum + lego.phrases.length, 0);
   return props.seed.introduction_phrases.length + legoPhrasesCount;
-});
-
-const flaggedCount = computed(() => {
-  let count = 0;
-
-  // Count flagged introduction phrases
-  count += props.seed.introduction_phrases.filter(p => p.is_flagged).length;
-
-  // Count flagged LEGO phrases
-  props.seed.legos.forEach(lego => {
-    count += lego.phrases.filter(p => p.is_flagged).length;
-  });
-
-  return count;
 });
 
 // Methods
@@ -215,10 +188,6 @@ const onPhraseEdit = (phrase: PhraseRowData) => {
 
 const onPhraseDelete = (phrase: PhraseRowData) => {
   emit('phraseDelete', phrase);
-};
-
-const onAudioFlag = (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
-  emit('audioFlag', phrase, track, uuid);
 };
 
 const onPhrasePlay = (sample: AudioSample) => {

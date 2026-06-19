@@ -202,7 +202,6 @@
       v-model:seed-start="filterSeedStart"
       v-model:seed-end="filterSeedEnd"
       v-model:search-text="filterSearchText"
-      v-model:flagged-only="filterFlaggedOnly"
       :total-seeds="totalSeeds"
       @change="onFilterChange"
     />
@@ -210,7 +209,7 @@
     <!-- Main Content Area -->
     <div ref="scriptContentRef" class="script-content flex-1 overflow-y-auto p-6" :class="{ 'pb-24': journeyPlayerActive }">
       <!-- Loading State (only show full-screen spinner when no seeds loaded yet) -->
-      <div v-if="isLoading && seeds.length === 0 && directFlaggedItems.length === 0" class="loading-state flex items-center justify-center h-64">
+      <div v-if="isLoading && seeds.length === 0" class="loading-state flex items-center justify-center h-64">
         <div class="text-center">
           <svg class="w-12 h-12 mx-auto mb-4 animate-spin text-emerald-500" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -235,69 +234,6 @@
             Retry
           </button>
         </div>
-      </div>
-
-      <!-- Empty State for Regen Queue -->
-      <div v-else-if="filterFlaggedOnly && flatFlaggedItems.length === 0" class="empty-state flex items-center justify-center h-64">
-        <div class="text-center">
-          <svg class="w-12 h-12 mx-auto mb-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <h3 class="text-lg font-semibold text-ink mb-2">Regen Queue Empty</h3>
-          <p class="text-muted mb-4">No audio marked for regeneration</p>
-          <button
-            @click="clearFilters"
-            class="px-4 py-2 bg-surface-2 text-ink rounded-lg hover:bg-surface-3 transition-colors"
-          >
-            Clear Filters
-          </button>
-        </div>
-      </div>
-
-      <!-- Regen Queue Items View -->
-      <div v-else-if="filterFlaggedOnly" class="flagged-items-list space-y-3">
-        <div class="flagged-header flex items-center justify-between mb-4">
-          <div class="text-sm text-muted">
-            <span class="text-amber-400 font-semibold">{{ flatFlaggedItems.length }}</span>
-            item{{ flatFlaggedItems.length !== 1 ? 's' : '' }} in regen queue
-            <span v-if="orphanedFlagCount > 0" class="text-red-400 ml-2">
-              ({{ orphanedFlagCount }} orphaned)
-            </span>
-          </div>
-          <div class="flex items-center gap-2">
-            <button
-              v-if="orphanedFlagCount > 0"
-              @click="deleteOrphanedFlags"
-              :disabled="isDeletingOrphans"
-              class="flex items-center gap-2 px-4 py-2 bg-red-600 text-white hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
-            >
-              <svg v-if="isDeletingOrphans" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Remove {{ orphanedFlagCount }} Orphaned
-            </button>
-            <router-link
-              v-if="flatFlaggedItems.length > 0"
-              :to="`/production/${courseCode}/pipeline?mode=flagged`"
-              class="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors"
-            >
-              Regenerate Queue
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </router-link>
-          </div>
-        </div>
-
-        <FlaggedItemRow
-          v-for="item in flatFlaggedItems"
-          :key="item.uuid"
-          :item="item"
-          @play="playFlaggedItem"
-          @edit="editFlaggedItem"
-          @unflag="unflagItem"
-        />
       </div>
 
       <!-- Learning Journey View Mode -->
@@ -340,14 +276,10 @@
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
           :hide-controls="true"
-          :flagged-audio-uuids="flaggedAudioUuids"
-          :regenerating-uuids="regeneratingAudioUuids"
           :flagged-phrase-ids="journeyFlaggedPhraseIds"
           @playback-state="onJourneyPlaybackState"
           @item-edit="onJourneyItemEdit"
           @presentation-edit="onJourneyPresentationEdit"
-          @audio-flag="onJourneyAudioFlag"
-          @audio-regen="onJourneyAudioRegen"
           @phrase-flag="onJourneyPhraseFlag"
         />
       </template>
@@ -429,10 +361,8 @@
           :selected-phrase-ids="selectedPhraseIds"
           @toggle="toggleSeed"
           @lego-toggle="toggleLego"
-          @phrase-flag="openFlagModal"
           @phrase-edit="openPhraseEditModal"
           @phrase-delete="handlePhraseDelete"
-          @audio-flag="handleAudioFlag"
           @toggle-selection="togglePhraseSelection"
           @phrase-play="playAudioSample"
           @phrase-pause="pauseAudio"
@@ -621,14 +551,6 @@
         </template>
       </div>
     </div>
-
-    <!-- Flag Modal -->
-    <FlagModal
-      :visible="flagModalVisible"
-      :sample="selectedSample"
-      @close="closeFlagModal"
-      @submit="submitFlag"
-    />
 
     <!-- Phrase Edit Modal -->
     <PhraseEditModal
@@ -967,9 +889,7 @@ import { useRoute } from 'vue-router';
 import FilterBar from './components/FilterBar.vue';
 import SeedRow from './components/SeedRow.vue';
 import AudioPlayer from './components/AudioPlayer.vue';
-import FlagModal from './components/FlagModal.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
-import FlaggedItemRow from './components/FlaggedItemRow.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
 import { getApiUrl } from '@/services/api';
 import { useAuth } from '@/composables/useAuth.js';
@@ -980,7 +900,6 @@ import type {
   PhraseRowData,
   AudioSample,
   SampleStatus,
-  FlagType,
   KeyboardShortcut
 } from '@/types/production';
 
@@ -1008,7 +927,6 @@ const filterStatus = ref<SampleStatus | 'all' | 'flagged'>('all');
 const filterSeedStart = ref('S0001');
 const filterSeedEnd = ref('S' + String(DEFAULT_SEED_WINDOW).padStart(4, '0'));
 const filterSearchText = ref('');
-const filterFlaggedOnly = ref(false);
 
 // Track when seed range changes to trigger reload
 const lastLoadedRange = ref({ start: '', end: '' });
@@ -1019,11 +937,6 @@ const hasMoreSeeds = computed(() => visibleSeedCount.value < filteredSeeds.value
 
 // Playback State
 const currentPlayingSample = ref<AudioSample | null>(null);
-
-// Flag Modal State
-const flagModalVisible = ref(false);
-const selectedSample = ref<AudioSample | null>(null);
-const selectedPhrase = ref<PhraseRowData | null>(null);
 
 // Phrase Edit Modal State
 const phraseEditModalVisible = ref(false);
@@ -1467,16 +1380,6 @@ const filteredSeeds = computed(() => {
     });
   }
 
-  // Filter flagged only
-  if (filterFlaggedOnly.value) {
-    result = result.filter(seed => {
-      const hasFlags = (phrases: PhraseRowData[]) => phrases.some(p => p.is_flagged);
-      const introFlags = hasFlags(seed.introduction_phrases);
-      const legoFlags = seed.legos.some(lego => hasFlags(lego.phrases));
-      return introFlags || legoFlags;
-    });
-  }
-
   return result;
 });
 
@@ -1484,120 +1387,11 @@ const visibleSeeds = computed(() => {
   return filteredSeeds.value.slice(0, visibleSeedCount.value);
 });
 
-// Flat list of flagged audio items for "Flagged Only" view
-interface FlaggedItem {
-  uuid: string;
-  seedId: string;
-  legoId: string;
-  phraseId: string;
-  track: 'known' | 'target1' | 'target2';
-  text: string;
-  status: string;
-  notes?: string;
-  flaggedAt?: string;
-  flaggedBy?: string;
-}
-
-// Direct flagged items from fast endpoint (bypasses seed loading)
-const directFlaggedItems = ref<FlaggedItem[]>([]);
-
-const orphanedFlagCount = computed(() => {
-  return directFlaggedItems.value.filter(item => item.phraseId === '?').length;
-});
-
-const isDeletingOrphans = ref(false);
-
-async function deleteOrphanedFlags() {
-  isDeletingOrphans.value = true;
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/delete-orphaned`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
-    });
-    if (!response.ok) throw new Error('Failed to delete orphaned flags');
-    const result = await response.json();
-    // Reload flagged items
-    directFlaggedItems.value = directFlaggedItems.value.filter(item => item.phraseId !== '?');
-  } catch (error) {
-    console.error('Error deleting orphaned flags:', error);
-  } finally {
-    isDeletingOrphans.value = false;
-  }
-}
-
-const flatFlaggedItems = computed((): FlaggedItem[] => {
-  // If we have direct items from the fast endpoint, use those
-  if (directFlaggedItems.value.length > 0) {
-    return directFlaggedItems.value;
-  }
-
-  // Fallback: derive from loaded seeds (used in non-flagged mode)
-  const items: FlaggedItem[] = [];
-
-  seeds.value.forEach(seed => {
-    seed.legos.forEach(lego => {
-      lego.phrases.forEach(phrase => {
-        if (phrase.known_flag?.status === 'flagged' && phrase.known_audio_uuid) {
-          items.push({
-            uuid: phrase.known_audio_uuid,
-            seedId: seed.seed_id,
-            legoId: lego.lego_id,
-            phraseId: phrase.phrase_id,
-            track: 'known',
-            text: phrase.known_text,
-            status: phrase.known_flag.status,
-            notes: phrase.known_flag.notes,
-            flaggedAt: phrase.known_flag.flagged_at,
-            flaggedBy: phrase.known_flag.flagged_by,
-          });
-        }
-        if (phrase.target1_flag?.status === 'flagged' && phrase.target1_audio_uuid) {
-          items.push({
-            uuid: phrase.target1_audio_uuid,
-            seedId: seed.seed_id,
-            legoId: lego.lego_id,
-            phraseId: phrase.phrase_id,
-            track: 'target1',
-            text: phrase.target_text,
-            status: phrase.target1_flag.status,
-            notes: phrase.target1_flag.notes,
-            flaggedAt: phrase.target1_flag.flagged_at,
-            flaggedBy: phrase.target1_flag.flagged_by,
-          });
-        }
-        if (phrase.target2_flag?.status === 'flagged' && phrase.target2_audio_uuid) {
-          items.push({
-            uuid: phrase.target2_audio_uuid,
-            seedId: seed.seed_id,
-            legoId: lego.lego_id,
-            phraseId: phrase.phrase_id,
-            track: 'target2',
-            text: phrase.target_text,
-            status: phrase.target2_flag.status,
-            notes: phrase.target2_flag.notes,
-            flaggedAt: phrase.target2_flag.flagged_at,
-            flaggedBy: phrase.target2_flag.flagged_by,
-          });
-        }
-      });
-    });
-  });
-
-  // Deduplicate by UUID — same audio file can appear on multiple phrases
-  const seen = new Set<string>();
-  return items.filter(item => {
-    if (seen.has(item.uuid)) return false;
-    seen.add(item.uuid);
-    return true;
-  });
-});
-
 // Keyboard Shortcuts
 const keyboardShortcuts: KeyboardShortcut[] = [
   { key: 'Space', description: 'Play/Pause audio', action: () => {/* handled by audio player */} },
   { key: 'F', description: 'Flag selected sample', action: () => {/* TODO: implement */} },
-  { key: 'Esc', description: 'Close modals', action: () => { closeFlagModal(); closePhraseEditModal(); showShortcutsHelp.value = false; showDeleteConfirmModal.value = false; } },
+  { key: 'Esc', description: 'Close modals', action: () => { closePhraseEditModal(); showShortcutsHelp.value = false; showDeleteConfirmModal.value = false; } },
   { key: '?', description: 'Show keyboard shortcuts', action: () => { showShortcutsHelp.value = !showShortcutsHelp.value; } },
 ];
 
@@ -1616,61 +1410,48 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   try {
     const apiBaseUrl = getApiBaseUrl();
 
-    if (filterFlaggedOnly.value) {
-      // Fast path: use dedicated flagged-items endpoint instead of loading all seeds
-      const flagUrl = `${apiBaseUrl}/api/production/${courseCode.value}/flagged-items`;
-      const flagResponse = await fetch(flagUrl, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+    seeds.value = []; // Clear before progressive load
+
+    const startNum = parseInt((start || 'S0001').replace(/\D/g, '')) || 1;
+    const endNum = parseInt((end || 'S0050').replace(/\D/g, '')) || 50;
+
+    // Load in chunks of CHUNK_SIZE, appending results as they arrive
+    for (let chunkStart = startNum; chunkStart <= endNum; chunkStart += CHUNK_SIZE) {
+      const chunkEnd = Math.min(chunkStart + CHUNK_SIZE - 1, endNum);
+      const chunkStartStr = 'S' + String(chunkStart).padStart(4, '0');
+      const chunkEndStr = 'S' + String(chunkEnd).padStart(4, '0');
+
+      loadingProgress.value = `Loading seeds ${chunkStart}–${chunkEnd}...`;
+
+      const params = new URLSearchParams();
+      params.set('seedStart', chunkStartStr);
+      params.set('seedEnd', chunkEndStr);
+
+      const url = `${apiBaseUrl}/api/production/${courseCode.value}/script-view?${params.toString()}`;
+
+      const response = await fetch(url, {
+        headers: { 'ngrok-skip-browser-warning': 'true' },
+        signal: AbortSignal.timeout(60000) // 60s per chunk (not 5 min for everything)
       });
-      if (!flagResponse.ok) throw new Error('Failed to load flagged items');
-      const flagData = await flagResponse.json();
-      directFlaggedItems.value = flagData.items || [];
-      seeds.value = [];
-    } else {
-      directFlaggedItems.value = [];
-      seeds.value = []; // Clear before progressive load
 
-      const startNum = parseInt((start || 'S0001').replace(/\D/g, '')) || 1;
-      const endNum = parseInt((end || 'S0050').replace(/\D/g, '')) || 50;
-
-      // Load in chunks of CHUNK_SIZE, appending results as they arrive
-      for (let chunkStart = startNum; chunkStart <= endNum; chunkStart += CHUNK_SIZE) {
-        const chunkEnd = Math.min(chunkStart + CHUNK_SIZE - 1, endNum);
-        const chunkStartStr = 'S' + String(chunkStart).padStart(4, '0');
-        const chunkEndStr = 'S' + String(chunkEnd).padStart(4, '0');
-
-        loadingProgress.value = `Loading seeds ${chunkStart}–${chunkEnd}...`;
-
-        const params = new URLSearchParams();
-        params.set('seedStart', chunkStartStr);
-        params.set('seedEnd', chunkEndStr);
-
-        const url = `${apiBaseUrl}/api/production/${courseCode.value}/script-view?${params.toString()}`;
-
-        const response = await fetch(url, {
-          headers: { 'ngrok-skip-browser-warning': 'true' },
-          signal: AbortSignal.timeout(60000) // 60s per chunk (not 5 min for everything)
-        });
-
-        if (!response.ok) {
-          console.warn(`Failed to load chunk ${chunkStartStr}-${chunkEndStr}, skipping`);
-          continue;
-        }
-
-        const data = await response.json();
-        const chunkSeeds = transformScriptViewToSeeds(data);
-
-        // Append to existing seeds (progressive update)
-        seeds.value = [...seeds.value, ...chunkSeeds];
-
-        // Store total from first chunk's pagination
-        if (data.pagination && !totalSeedsInCourse.value) {
-          totalSeedsInCourse.value = data.pagination.total;
-        }
+      if (!response.ok) {
+        console.warn(`Failed to load chunk ${chunkStartStr}-${chunkEndStr}, skipping`);
+        continue;
       }
 
-      lastLoadedRange.value = { start, end };
+      const data = await response.json();
+      const chunkSeeds = transformScriptViewToSeeds(data);
+
+      // Append to existing seeds (progressive update)
+      seeds.value = [...seeds.value, ...chunkSeeds];
+
+      // Store total from first chunk's pagination
+      if (data.pagination && !totalSeedsInCourse.value) {
+        totalSeedsInCourse.value = data.pagination.total;
+      }
     }
+
+    lastLoadedRange.value = { start, end };
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Unknown error occurred';
     console.error('Error loading course data:', err);
@@ -1707,9 +1488,6 @@ const loadLearningJourney = async () => {
 
     // Detect if there are more pages
     journeyHasMore.value = (data.pagination?.returned || 0) >= journeyPageSize;
-
-    // Load existing audio flags to show flagged state in journey view
-    loadAudioFlags();
   } catch (err) {
     journeyError.value = err instanceof Error ? err.message : 'Unknown error occurred';
     console.error('Error loading learning journey:', err);
@@ -1725,9 +1503,6 @@ const toggleViewMode = () => {
     if (!learningJourneyData.value) {
       journeyOffset.value = 0;
       loadLearningJourney();
-    } else {
-      // Refresh flags in case they changed while in script view
-      loadAudioFlags();
     }
   } else {
     viewMode.value = 'script';
@@ -1946,90 +1721,10 @@ const clearFilters = () => {
   filterSeedStart.value = '';
   filterSeedEnd.value = '';
   filterSearchText.value = '';
-  filterFlaggedOnly.value = false;
 };
 
 const playAudioSample = (sample: AudioSample) => {
   currentPlayingSample.value = sample;
-};
-
-// Play flagged item audio
-const playFlaggedItem = async (item: FlaggedItem) => {
-  console.log('[playFlaggedItem] Called with item:', item);
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/audio/${item.uuid}/url`;
-    console.log('[playFlaggedItem] Fetching audio URL from:', url);
-
-    const response = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } });
-    if (!response.ok) throw new Error(`Failed to get audio URL: ${response.status}`);
-    const data = await response.json();
-
-    console.log('[playFlaggedItem] Got audio URL:', data.url?.substring(0, 100) + '...');
-
-    currentPlayingSample.value = {
-      uuid: item.uuid,
-      text: item.text,
-      role: item.track as any,
-      cadence: 'natural' as any,
-      voice_id: '',
-      url: data.url,
-    };
-  } catch (err) {
-    console.error('[playFlaggedItem] Error:', err);
-  }
-};
-
-// Edit flagged item - find the phrase and open edit modal
-const editFlaggedItem = (item: FlaggedItem) => {
-  // Find the phrase in the seeds data
-  for (const seed of seeds.value) {
-    for (const lego of seed.legos) {
-      const phrase = lego.phrases.find(p => p.phrase_id === item.phraseId);
-      if (phrase) {
-        openPhraseEditModal(phrase);
-        return;
-      }
-    }
-  }
-  console.warn(`Could not find phrase ${item.phraseId} for editing`);
-};
-
-// Unflag/clear flag from item
-const unflagItem = async (item: FlaggedItem) => {
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-    // Delete the flag using new audio-flags endpoint
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${item.uuid}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    });
-
-    if (!response.ok) throw new Error('Failed to clear flag');
-
-    // Update local state — remove from direct list or clear from seed data
-    if (directFlaggedItems.value.length > 0) {
-      directFlaggedItems.value = directFlaggedItems.value.filter(i => i.uuid !== item.uuid);
-    } else {
-      const audioUuidKey = `${item.track}_audio_uuid` as 'known_audio_uuid' | 'target1_audio_uuid' | 'target2_audio_uuid';
-      const flagKey = `${item.track}_flag` as 'known_flag' | 'target1_flag' | 'target2_flag';
-      for (const seed of seeds.value) {
-        for (const lego of seed.legos) {
-          for (const phrase of lego.phrases) {
-            if ((phrase as any)[audioUuidKey] === item.uuid) {
-              (phrase as any)[flagKey] = null;
-            }
-          }
-        }
-      }
-    }
-    console.log(`Cleared flag for ${item.uuid}`);
-  } catch (err) {
-    console.error('Error clearing flag:', err);
-  }
 };
 
 const pauseAudio = () => {
@@ -2050,95 +1745,7 @@ const onPlaybackError = (error: Error) => {
   // TODO: Show error toast
 };
 
-const openFlagModal = (phrase: PhraseRowData) => {
-  selectedPhrase.value = phrase;
-  // Create a synthetic AudioSample from the phrase's audio UUID
-  // Use target1 audio as the primary sample to flag
-  const uuid = phrase.target1_audio_uuid || phrase.known_audio_uuid || phrase.phrase_id;
-  selectedSample.value = {
-    uuid,
-    text: phrase.target_text,
-    role: 'target1' as any,
-    cadence: 'natural' as any,
-    voice_id: '',
-  };
-  flagModalVisible.value = true;
-};
-
-const closeFlagModal = () => {
-  flagModalVisible.value = false;
-  selectedSample.value = null;
-  selectedPhrase.value = null;
-};
-
 // Audio track type
-type AudioTrack = 'known' | 'target1' | 'target2';
-
-// Handle per-audio flagging from PhraseRow (toggle: flag if not flagged, unflag if flagged)
-const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
-  // Check if this track is currently flagged
-  const flagKey = `${track}_flag` as 'known_flag' | 'target1_flag' | 'target2_flag';
-  const currentFlag = phrase[flagKey];
-  const isCurrentlyMarked = currentFlag?.status === 'flagged';
-
-  const action = isCurrentlyMarked ? 'Clearing' : 'Marking for regen';
-  console.log(`${action}: ${track} (${uuid}) for phrase ${phrase.phrase_id}`);
-
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-
-    if (isCurrentlyMarked) {
-      // Delete the flag using new audio-flags endpoint (user is happy with audio)
-      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${uuid}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`Failed to delete flag: ${response.statusText}`);
-      }
-
-      // Clear local state
-      (phrase as any)[flagKey] = null;
-    } else {
-      // Create/update flag using new audio-flags endpoint
-      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
-        },
-        body: JSON.stringify({
-          audio_uuid: uuid,
-          status: 'flagged',
-          reason: `Marked ${track} audio for regeneration`,
-          flagged_by: 'dashboard_user'
-        })
-      });
-
-      if (!response.ok) {
-        const errText = await response.text();
-        throw new Error(`Failed to update flag: ${errText}`);
-      }
-
-      // Set local state
-      (phrase as any)[flagKey] = { status: 'flagged', notes: `Marked ${track} audio for regeneration` };
-    }
-
-    // Update is_flagged based on any flagged audio
-    const isFlagged = (flag: any) => flag?.status === 'flagged';
-    phrase.is_flagged = isFlagged(phrase.known_flag) || isFlagged(phrase.target1_flag) || isFlagged(phrase.target2_flag);
-
-    console.log(`Successfully ${isCurrentlyMarked ? 'cleared' : 'marked for regen'} ${track} audio for phrase ${phrase.phrase_id}`);
-
-  } catch (err) {
-    console.error('Error updating flag:', err);
-  }
-};
-
 // Phrase Edit Modal Methods
 const openPhraseEditModal = (phrase: PhraseRowData) => {
   phraseEditMode.value = 'phrase';
@@ -2474,101 +2081,6 @@ const savePresentationAndRegen = async () => {
   }
 };
 
-// Flagged audio UUID tracking for journey view
-const flaggedAudioUuids = ref<Set<string>>(new Set());
-
-// Load existing audio flags from server
-const loadAudioFlags = async () => {
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' },
-    });
-    if (!response.ok) return;
-    const data = await response.json();
-    const uuids = (data.flags || [])
-      .filter((f: any) => f.status === 'flagged')
-      .map((f: any) => f.audio_uuid);
-    flaggedAudioUuids.value = new Set(uuids);
-  } catch (err) {
-    console.error('Error loading audio flags:', err);
-  }
-};
-const regeneratingAudioUuids = ref<Set<string>>(new Set());
-
-// Journey view: toggle audio flag handler (flag if not flagged, unflag if flagged)
-const onJourneyAudioFlag = async (item: any, track: 'target1' | 'target2') => {
-  const uuid = track === 'target1' ? item.target1_audio_uuid : item.target2_audio_uuid;
-  if (!uuid) return;
-
-  const isCurrentlyFlagged = flaggedAudioUuids.value.has(uuid);
-
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-
-    if (isCurrentlyFlagged) {
-      // Unflag: DELETE the flag
-      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${uuid}`, {
-        method: 'DELETE',
-        headers: { 'ngrok-skip-browser-warning': 'true' },
-      });
-      flaggedAudioUuids.value = new Set([...flaggedAudioUuids.value].filter(id => id !== uuid));
-      console.log(`Unflagged ${track} audio ${uuid}`);
-    } else {
-      // Flag: POST new flag
-      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({
-          audio_uuid: uuid,
-          status: 'flagged',
-          reason: `Quick-flagged ${track} from journey view`,
-          flagged_by: 'dashboard_user'
-        })
-      });
-      flaggedAudioUuids.value = new Set([...flaggedAudioUuids.value, uuid]);
-      console.log(`Flagged ${track} audio ${uuid}`);
-    }
-  } catch (err) {
-    console.error('Error toggling audio flag:', err);
-  }
-};
-
-// Journey view: inline regenerate single audio
-const onJourneyAudioRegen = async (item: any, track: 'target1' | 'target2', audioUuid: string) => {
-  if (!audioUuid || regeneratingAudioUuids.value.has(audioUuid)) return;
-
-  // Mark as regenerating
-  regeneratingAudioUuids.value = new Set([...regeneratingAudioUuids.value, audioUuid]);
-
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-single/${courseCode.value}/${audioUuid}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-    });
-
-    if (!response.ok) {
-      const err = await response.json();
-      throw new Error(err.error || 'Regeneration failed');
-    }
-
-    const result = await response.json();
-    console.log(`Regenerated ${track} audio ${audioUuid} → ${result.newS3Key} (${result.durationMs}ms, attempt #${result.regenCount})`);
-
-    // Invalidate the audio URL cache so the player fetches the new S3 key
-    // The signed URL endpoint will now resolve the updated s3_key from course_audio
-    // Force a cache-bust by updating the item's duration (triggers reactivity)
-    const durationKey = track === 'target1' ? 'target1_duration_ms' : 'target2_duration_ms';
-    item[durationKey] = result.durationMs;
-
-  } catch (err) {
-    console.error('Error regenerating audio:', err);
-  } finally {
-    regeneratingAudioUuids.value = new Set([...regeneratingAudioUuids.value].filter(id => id !== audioUuid));
-  }
-};
-
 // Journey view: phrase flagging for deletion
 const journeyFlaggedPhraseIds = ref<Set<string>>(new Set());
 const showJourneyDeleteStep = ref(0); // 0=hidden, 1=review list, 2=final confirm
@@ -2627,41 +2139,6 @@ const handleJourneyBatchDelete = async () => {
   }
 };
 
-const submitFlag = async (data: { flagType: FlagType; notes: string }) => {
-  if (!selectedSample.value || !selectedPhrase.value) return;
-
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-    // Use new audio-flags endpoint
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        audio_uuid: selectedSample.value.uuid,
-        status: 'flagged',
-        reason: `${data.flagType}: ${data.notes}`,
-        flagged_by: 'reviewer',
-      })
-    });
-
-    if (!response.ok) throw new Error('Failed to submit flag');
-
-    // Update local state
-    selectedPhrase.value.is_flagged = true;
-    selectedPhrase.value.flag_status = `flagged_${data.flagType}` as SampleStatus;
-
-    // Close modal
-    closeFlagModal();
-
-    console.log(`[ScriptViewer] Flag submitted: ${selectedSample.value.uuid} -> flagged_${data.flagType}`);
-  } catch (err) {
-    console.error('Error submitting flag:', err);
-  }
-};
-
 // Keyboard event handler
 const handleKeydown = (event: KeyboardEvent) => {
   // Ignore if typing in input field
@@ -2676,17 +2153,11 @@ const handleKeydown = (event: KeyboardEvent) => {
       break;
     case 'Escape':
       event.preventDefault();
-      closeFlagModal();
       closePhraseEditModal();
       showShortcutsHelp.value = false;
       break;
   }
 };
-
-// Reload data when flagged filter changes (needs different seeds from backend)
-watch(filterFlaggedOnly, () => {
-  loadCourseData();
-});
 
 // Derive the default seed window from the course's ACTUAL seed range instead
 // of assuming the canonical S0001–S0050. Small community courses get their
@@ -2717,10 +2188,6 @@ onMounted(async () => {
   // legacy ?view=* links resolve to the journey.
   viewMode.value = 'journey';
   loadLearningJourney();
-  // Check for filter query param (from QA link)
-  if (route.query.filter === 'flagged') {
-    filterFlaggedOnly.value = true;
-  }
   window.addEventListener('keydown', handleKeydown);
   await initDefaultSeedRange();
   loadCourseData();

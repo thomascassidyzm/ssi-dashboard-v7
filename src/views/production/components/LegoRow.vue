@@ -72,7 +72,6 @@
           @phrase-flag="onPhraseFlag"
           @phrase-edit="onPhraseEdit"
           @phrase-delete="onPhraseDelete"
-          @audio-flag="onAudioFlag"
           @toggle-selection="onToggleSelection"
           @play="onPhrasePlay"
           @pause="onPhrasePause"
@@ -91,9 +90,6 @@ import { computed } from 'vue';
 import PhraseRow from './PhraseRow.vue';
 import type { LegoRowData, PhraseRowData, AudioSample, LegoType } from '@/types/production';
 
-// Audio track type (matches PhraseRow)
-type AudioTrack = 'known' | 'target1' | 'target2';
-
 // Props
 const props = defineProps<{
   lego: LegoRowData;
@@ -108,7 +104,6 @@ const emit = defineEmits<{
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
   phraseDelete: [phrase: PhraseRowData];
-  audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   toggleSelection: [phraseId: string];
   phrasePlay: [sample: AudioSample];
   phrasePause: [];
@@ -142,10 +137,6 @@ const onPhraseEdit = (phrase: PhraseRowData) => {
 
 const onPhraseDelete = (phrase: PhraseRowData) => {
   emit('phraseDelete', phrase);
-};
-
-const onAudioFlag = (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
-  emit('audioFlag', phrase, track, uuid);
 };
 
 const onPhrasePlay = (sample: AudioSample) => {

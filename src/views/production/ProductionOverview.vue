@@ -89,15 +89,6 @@
       </div>
     </section>
 
-    <!-- Blockers (if any) -->
-    <section v-if="store.blockers.length > 0" class="blockers-section">
-      <div v-for="blocker in store.blockers" :key="blocker.id" class="blocker-card">
-        <span class="blocker-icon">!</span>
-        <span class="blocker-text">{{ blocker.message || blocker.title }}</span>
-        <button @click="handleBlocker(blocker)" class="btn-resolve">Fix</button>
-      </div>
-    </section>
-
     <!-- Main Workflow — grouped into pipeline stages -->
 
     <!-- Guide -->
@@ -394,19 +385,6 @@ async function setPricingTier(tier) {
   } finally {
     isUpdatingTier.value = false
   }
-}
-
-function handleBlocker(blocker) {
-  // Flagged-audio review is now handled in Script View (the QA / fix-in-place
-  // surface) rather than the standalone Audio page.
-  const routes = {
-    createRecordingQueue: { name: 'RecordingStudioProduction', query: { autoCreateQueue: 'true' } },
-    sendToAudioPipeline: { name: 'ScriptViewer', query: { view: 'journey', filter: 'flagged' } },
-    reviewSamples: { name: 'ScriptViewer', query: { view: 'journey', filter: 'flagged' } },
-    reviewFlaggedAudio: { name: 'ScriptViewer', query: { view: 'journey', filter: 'flagged' } }
-  }
-  const route = routes[blocker.action]
-  if (route) router.push({ ...route, params: { courseCode: props.courseCode } })
 }
 
 function launchLearningApp() {
