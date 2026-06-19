@@ -230,8 +230,8 @@
                   class="w-full bg-canvas/50 text-ink px-4 py-3 rounded-lg border border-line/50 focus:border-amber-500/50 focus:outline-none focus:ring-1 focus:ring-amber-500/20 transition-colors"
                 >
                   <option value="">Select role...</option>
-                  <option value="target1">Target 1 (Primary voice)</option>
-                  <option value="target2">Target 2 (Secondary voice)</option>
+                  <option value="target1">Voice 1</option>
+                  <option value="target2">Voice 2</option>
                   <option value="known">Known language</option>
                   <option value="presentation">Presentation (Introductions)</option>
                 </select>

@@ -239,22 +239,28 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
                   </svg>
                 </button>
-                <!-- F (target1) — play female voice -->
+                <!-- Voice 1 (target1) — play -->
                 <button
                   v-if="item.target1_audio_uuid"
-                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="playingTrackUuid === item.target1_audio_uuid ? 'bg-pink-500 text-white' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
-                  title="Play target1 (F) audio"
+                  class="h-5 px-1.5 flex items-center gap-0.5 rounded text-xs font-semibold transition-colors"
+                  :class="playingTrackUuid === item.target1_audio_uuid ? 'bg-emerald-500 text-white' : 'text-muted hover:text-ink hover:bg-surface-3'"
+                  title="Play Voice 1"
                   @click.stop="playTrack(item.target1_audio_uuid!)"
-                >F</button>
-                <!-- M (target2) — play male voice -->
+                >
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>
+                  1
+                </button>
+                <!-- Voice 2 (target2) — play -->
                 <button
                   v-if="item.target2_audio_uuid"
-                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="playingTrackUuid === item.target2_audio_uuid ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
-                  title="Play target2 (M) audio"
+                  class="h-5 px-1.5 flex items-center gap-0.5 rounded text-xs font-semibold transition-colors"
+                  :class="playingTrackUuid === item.target2_audio_uuid ? 'bg-emerald-500 text-white' : 'text-muted hover:text-ink hover:bg-surface-3'"
+                  title="Play Voice 2"
                   @click.stop="playTrack(item.target2_audio_uuid!)"
-                >M</button>
+                >
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>
+                  2
+                </button>
                 <!-- Trash/flag phrase for deletion -->
                 <button
                   v-if="item.phrase_id"

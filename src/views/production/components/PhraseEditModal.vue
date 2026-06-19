@@ -84,42 +84,44 @@
                 </div>
               </label>
 
-              <!-- Target 1 Audio Checkbox (Female) -->
+              <!-- Voice 1 Audio Checkbox (target1) -->
               <label
                 v-if="phrase?.target1_audio_uuid"
                 class="audio-flag-row flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                 :class="regenFlags.target1
-                  ? 'border-pink-500 bg-pink-500 bg-opacity-10'
+                  ? 'border-emerald-500 bg-emerald-500 bg-opacity-10'
                   : 'border-line hover:border-line'"
               >
                 <input
                   v-model="regenFlags.target1"
                   type="checkbox"
-                  class="w-4 h-4 text-pink-500 bg-surface-2 border-line rounded focus:ring-pink-500 focus:ring-offset-surface"
+                  class="w-4 h-4 text-emerald-500 bg-surface-2 border-line rounded focus:ring-emerald-500 focus:ring-offset-surface"
                 />
                 <div class="flex-1 flex items-center gap-2">
-                  <span class="text-sm font-medium text-pink-400">Target 1</span>
-                  <span class="voice-badge text-xs text-pink-400 px-1.5 py-0.5 bg-pink-500 bg-opacity-20 rounded">F</span>
+                  <span class="voice-badge inline-flex items-center gap-0.5 text-xs font-medium text-muted px-1.5 py-0.5 bg-surface-3 rounded">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>Voice 1
+                  </span>
                   <span class="text-xs text-faint truncate">{{ localTargetText }}</span>
                 </div>
               </label>
 
-              <!-- Target 2 Audio Checkbox (Male) -->
+              <!-- Voice 2 Audio Checkbox (target2) -->
               <label
                 v-if="phrase?.target2_audio_uuid"
                 class="audio-flag-row flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
                 :class="regenFlags.target2
-                  ? 'border-blue-500 bg-blue-500 bg-opacity-10'
+                  ? 'border-emerald-500 bg-emerald-500 bg-opacity-10'
                   : 'border-line hover:border-line'"
               >
                 <input
                   v-model="regenFlags.target2"
                   type="checkbox"
-                  class="w-4 h-4 text-blue-500 bg-surface-2 border-line rounded focus:ring-blue-500 focus:ring-offset-surface"
+                  class="w-4 h-4 text-emerald-500 bg-surface-2 border-line rounded focus:ring-emerald-500 focus:ring-offset-surface"
                 />
                 <div class="flex-1 flex items-center gap-2">
-                  <span class="text-sm font-medium text-blue-400">Target 2</span>
-                  <span class="voice-badge text-xs text-blue-400 px-1.5 py-0.5 bg-blue-500 bg-opacity-20 rounded">M</span>
+                  <span class="voice-badge inline-flex items-center gap-0.5 text-xs font-medium text-muted px-1.5 py-0.5 bg-surface-3 rounded">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>Voice 2
+                  </span>
                   <span class="text-xs text-faint truncate">{{ localTargetText }}</span>
                 </div>
               </label>

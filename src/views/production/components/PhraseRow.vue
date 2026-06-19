@@ -111,13 +111,13 @@
         <AudioStatusBadge :status="getAudioStatus('known')" />
       </div>
 
-      <!-- Target Audio 1 (Female Voice) -->
+      <!-- Target Audio 1 (Voice 1) -->
       <div v-if="phrase.target1_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 border border-line rounded-lg">
         <button
           @click="playSingleAudio('target1')"
           class="play-single p-1.5 rounded transition-all"
           :class="currentlyPlayingTrack === 'target1' ? 'bg-red-500 text-white' : 'bg-surface-3 text-ink hover:bg-surface-3 hover:text-ink'"
-          title="Play target audio (female)"
+          title="Play Voice 1"
         >
           <svg v-if="currentlyPlayingTrack === 'target1'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
@@ -126,19 +126,21 @@
             <path d="M8 5v14l11-7z" />
           </svg>
         </button>
-        <span class="audio-label text-xs text-pink-400 w-16">Target 1</span>
+        <span class="audio-label text-xs text-muted w-16">Voice 1</span>
         <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.target_text }}</span>
-        <span class="voice-badge text-xs text-pink-400 px-1.5 py-0.5 bg-pink-500 bg-opacity-20 rounded">F</span>
+        <span class="voice-badge inline-flex items-center gap-0.5 text-xs text-muted px-1.5 py-0.5 bg-surface-3 rounded">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>1
+        </span>
         <AudioStatusBadge :status="getAudioStatus('target1')" />
       </div>
 
-      <!-- Target Audio 2 (Male Voice) -->
+      <!-- Target Audio 2 (Voice 2) -->
       <div v-if="phrase.target2_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-surface-2 border border-line rounded-lg">
         <button
           @click="playSingleAudio('target2')"
           class="play-single p-1.5 rounded transition-all"
           :class="currentlyPlayingTrack === 'target2' ? 'bg-red-500 text-white' : 'bg-surface-3 text-ink hover:bg-surface-3 hover:text-ink'"
-          title="Play target audio (male)"
+          title="Play Voice 2"
         >
           <svg v-if="currentlyPlayingTrack === 'target2'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
@@ -147,9 +149,11 @@
             <path d="M8 5v14l11-7z" />
           </svg>
         </button>
-        <span class="audio-label text-xs text-blue-400 w-16">Target 2</span>
+        <span class="audio-label text-xs text-muted w-16">Voice 2</span>
         <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.target_text }}</span>
-        <span class="voice-badge text-xs text-blue-400 px-1.5 py-0.5 bg-blue-500 bg-opacity-20 rounded">M</span>
+        <span class="voice-badge inline-flex items-center gap-0.5 text-xs text-muted px-1.5 py-0.5 bg-surface-3 rounded">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>2
+        </span>
         <AudioStatusBadge :status="getAudioStatus('target2')" />
       </div>
     </div>

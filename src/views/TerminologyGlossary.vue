@@ -449,6 +449,20 @@ fra_for_eng:S0042L03U05
             <p class="text-xs text-muted"><code>fra_for_eng:S0042L03U05</code> = the 5th use phrase of LEGO 3 in seed 42.</p>
           </div>
         </div>
+
+        <!-- Voice 1 / Voice 2 -->
+        <div class="bg-surface border border-line rounded-lg p-6 mb-6">
+          <h3 class="text-lg font-semibold text-emerald-300 mb-3">Voice 1 &amp; Voice 2</h3>
+
+          <div class="mb-4">
+            <span class="text-sm font-medium text-muted">Definition:</span>
+            <p class="text-ink mt-1">Every course is taught in <strong>two target voices</strong>, referred to everywhere as <strong>Voice 1</strong> and <strong>Voice 2</strong>. They are peers, distinguished only by index — <em>not</em> by gender and not by a primary/secondary ranking. A voice's gender is just an attribute of the specific TTS/human voice assigned to the slot; it is never part of the slot's name. (Older labels like "F/M" or "Primary/Secondary" are retired.)</p>
+          </div>
+
+          <div class="bg-canvas/60 border border-line rounded p-3">
+            <p class="text-xs text-muted">Data &amp; API use the role names <code>target1</code> and <code>target2</code>; the UI shows them as <strong>Voice 1</strong> / <strong>Voice 2</strong> (matching the learner app's 👤1 / 👤2). Map: <code>target1</code> → Voice 1, <code>target2</code> → Voice 2. The learner's own language is the separate <code>known</code> voice.</p>
+          </div>
+        </div>
       </section>
 
       <!-- The pipeline -->
