@@ -97,7 +97,24 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
               </button>
-              <span class="text-sm text-ink">
+              <!-- Click the range to type a round number and jump to it -->
+              <input
+                v-if="editingRound"
+                ref="gotoRoundInputRef"
+                v-model="gotoRoundInput"
+                @keyup.enter="goToRound"
+                @keyup.esc="editingRound = false"
+                @blur="editingRound = false"
+                type="number"
+                min="1"
+                class="w-16 px-1 py-0.5 text-sm bg-surface-2 text-ink rounded border border-emerald-500 focus:outline-none text-center"
+              />
+              <span
+                v-else
+                @click="startEditingRound"
+                class="text-sm text-ink cursor-pointer hover:text-emerald-400 transition-colors"
+                title="Click to jump to a round"
+              >
                 <span class="font-medium text-ink">{{ journeyPageStart }}-{{ journeyPageEnd }}</span>
                 <span class="text-faint"> rounds</span>
               </span>
@@ -690,8 +707,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import AudioPlayer from './components/AudioPlayer.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
@@ -707,6 +724,7 @@ import type {
 
 // Route
 const route = useRoute();
+const router = useRouter();
 const courseCode = computed(() => route.params.courseCode as string || 'spa_for_eng');
 
 // Scroll refs
@@ -965,6 +983,41 @@ const nextPage = () => {
     journeyOffset.value += journeyPageSize;
     loadLearningJourney();
   }
+};
+
+// Jump directly to a specific round. The page-range label (e.g. "20-40") doubles
+// as a click-to-edit field — click it, type a round number, hit Enter.
+// Rounds are 1:1 with new-LEGO offsets, so round R lives on the page starting at
+// floor((R-1)/pageSize)*pageSize. We load that page if it isn't already loaded,
+// then expand + scroll the round into view.
+const gotoRoundInput = ref('');
+const editingRound = ref(false);
+const gotoRoundInputRef = ref<HTMLInputElement | null>(null);
+
+const startEditingRound = async () => {
+  gotoRoundInput.value = String(journeyPageStart.value);
+  editingRound.value = true;
+  await nextTick();
+  gotoRoundInputRef.value?.focus();
+  gotoRoundInputRef.value?.select();
+};
+
+const goToRound = async () => {
+  editingRound.value = false;
+  const target = parseInt(gotoRoundInput.value, 10);
+  if (!Number.isFinite(target) || target < 1) return;
+
+  // Clamp to the total number of rounds (≈ total new LEGOs) when known.
+  const totalRounds = learningJourneyData.value?.totalLegoCount || 0;
+  const roundNumber = totalRounds > 0 ? Math.min(target, totalRounds) : target;
+
+  const targetOffset = Math.floor((roundNumber - 1) / journeyPageSize) * journeyPageSize;
+  if (targetOffset !== journeyOffset.value) {
+    journeyOffset.value = targetOffset;
+    await loadLearningJourney();
+  }
+  await nextTick();
+  learningJourneyRef.value?.scrollToRound(roundNumber);
 };
 
 // Collapse/Expand all methods for journey view
@@ -1444,9 +1497,12 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     if (data.regen_flags.target2 && phraseToEdit.value.target2_audio_uuid) roles.push('target2');
 
     // No roles selected → text-only save, no TTS cost. Done.
+    // applyLocalText() already updated the live journey row (sourceItem) in
+    // place, so we deliberately do NOT reloadLearningJourney() here — a full
+    // reload rebuilds the rounds list and snaps the user's scroll back to the
+    // top, away from where they were editing.
     if (roles.length === 0) {
       phraseEditModalRef.value?.onSaveComplete(true);
-      if (viewMode.value === 'journey') reloadLearningJourney();
       return;
     }
 
@@ -1506,8 +1562,9 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     console.log(`Regenerated phrase ${phraseId} roles [${roles.join(', ')}] → fresh audio`);
 
-    // Refresh the journey so rows pick up the rebound audio on next load.
-    if (viewMode.value === 'journey') reloadLearningJourney();
+    // The live journey row (sourceItem) already had its text and audio pointers
+    // rebound in place above, so we deliberately skip reloadLearningJourney()
+    // here — reloading would rebuild the list and lose the user's scroll spot.
   } catch (err) {
     console.error('Error saving phrase:', err);
     phraseEditModalRef.value?.onSaveComplete(false, err instanceof Error ? err.message : 'Save failed');
