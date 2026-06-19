@@ -6,18 +6,13 @@
         <div class="header-left flex items-center gap-4">
           <h1 class="text-xl font-bold text-ink">Script Viewer</h1>
           <div v-if="totalSeeds > 0" class="stats text-sm text-muted">
-            <template v-if="viewMode === 'journey'">
-              <span v-if="journeySearching" class="text-emerald-400">Searching...</span>
-              <span v-else-if="journeySearch.trim() && journeySearchResults !== null">
-                {{ filteredJourneyRounds.length }} results
-              </span>
-              <span v-else>
-                {{ filteredJourneyRounds.length }} rounds, {{ learningJourneyData?.stats?.totalItems || 0 }} items
-              </span>
-            </template>
-            <template v-else>
-              {{ loadedSeeds }} of {{ totalSeeds }} seeds, {{ totalPhrases.toLocaleString() }} phrases
-            </template>
+            <span v-if="journeySearching" class="text-emerald-400">Searching...</span>
+            <span v-else-if="journeySearch.trim() && journeySearchResults !== null">
+              {{ filteredJourneyRounds.length }} results
+            </span>
+            <span v-else>
+              {{ filteredJourneyRounds.length }} rounds, {{ learningJourneyData?.stats?.totalItems || 0 }} items
+            </span>
           </div>
           <!-- Search box -->
           <div class="relative">
@@ -45,77 +40,6 @@
         </div>
 
         <div class="header-right flex items-center gap-3">
-
-          <!-- Collapse/Expand All (only in seed mode) -->
-          <template v-if="viewMode === 'script'">
-            <button
-              @click="collapseAll"
-              class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors flex items-center gap-1"
-              title="Collapse all seeds"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-              </svg>
-              Collapse All
-            </button>
-
-            <button
-              @click="expandAll"
-              class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors flex items-center gap-1"
-              title="Expand all seeds"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-              Expand All
-            </button>
-
-            <!-- Pagination Controls for Seeds -->
-            <div v-if="totalSeeds > 0" class="flex items-center gap-2">
-              <button
-                @click="prevSeedPage"
-                :disabled="seedPageStart <= 1"
-                class="px-2 py-1 text-sm rounded transition-colors"
-                :class="seedPageStart <= 1
-                  ? 'text-faint cursor-not-allowed'
-                  : 'text-ink hover:text-ink hover:bg-surface-3'"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                </svg>
-              </button>
-              <span class="text-sm text-ink">
-                <span class="font-medium text-ink">{{ seedPageStart }}-{{ seedPageEnd }}</span>
-                <span class="text-faint"> of </span>
-                <span class="text-ink">{{ totalSeeds }}</span>
-              </span>
-              <button
-                @click="nextSeedPage"
-                :disabled="seedPageEnd >= totalSeeds"
-                class="px-2 py-1 text-sm rounded transition-colors"
-                :class="seedPageEnd >= totalSeeds
-                  ? 'text-faint cursor-not-allowed'
-                  : 'text-ink hover:text-ink hover:bg-surface-3'"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Select Phrases Button -->
-            <button
-              v-if="!selectionMode"
-              @click="toggleSelectionMode"
-              class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors flex items-center gap-1"
-              title="Select phrases for batch delete"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-              Select Phrases
-            </button>
-          </template>
 
           <!-- Pagination for journey mode -->
           <template v-if="viewMode === 'journey'">
@@ -195,17 +119,6 @@
       </div>
     </div>
 
-    <!-- Filter Bar (only in script mode) -->
-    <FilterBar
-      v-if="viewMode === 'script'"
-      v-model:status="filterStatus"
-      v-model:seed-start="filterSeedStart"
-      v-model:seed-end="filterSeedEnd"
-      v-model:search-text="filterSearchText"
-      :total-seeds="totalSeeds"
-      @change="onFilterChange"
-    />
-
     <!-- Main Content Area -->
     <div ref="scriptContentRef" class="script-content flex-1 overflow-y-auto p-6" :class="{ 'pb-24': journeyPlayerActive }">
       <!-- Loading State (only show full-screen spinner when no seeds loaded yet) -->
@@ -237,7 +150,7 @@
       </div>
 
       <!-- Learning Journey View Mode -->
-      <template v-else-if="viewMode === 'journey'">
+      <template v-else>
         <!-- Loading Journey -->
         <div v-if="isLoadingJourney" class="loading-state flex items-center justify-center h-64">
           <div class="text-center">
@@ -282,113 +195,6 @@
           @presentation-edit="onJourneyPresentationEdit"
           @phrase-flag="onJourneyPhraseFlag"
         />
-      </template>
-
-      <!-- Script View Mode (original) -->
-      <template v-else>
-        <!-- Empty State (standard) -->
-        <div v-if="filteredSeeds.length === 0" class="empty-state flex items-center justify-center h-64">
-          <div class="text-center">
-            <svg class="w-12 h-12 mx-auto mb-4 text-faint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h3 class="text-lg font-semibold text-ink mb-2">No Results</h3>
-            <p class="text-muted mb-4">No seeds match your current filters</p>
-            <button
-              @click="clearFilters"
-              class="px-4 py-2 bg-surface-2 text-ink rounded-lg hover:bg-surface-3 transition-colors"
-            >
-              Clear Filters
-            </button>
-          </div>
-        </div>
-
-        <!-- Seeds List (Virtualized) -->
-        <div v-else class="seeds-list space-y-4">
-        <!-- Show a message if using virtual scrolling would be beneficial -->
-        <div v-if="filteredSeeds.length > 50" class="performance-notice bg-blue-500 bg-opacity-10 border border-blue-500 border-opacity-30 rounded-lg p-4 mb-4">
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <div class="text-sm text-blue-300">
-              <strong>Performance Notice:</strong> Rendering {{ filteredSeeds.length }} seeds. Consider using more specific filters for better performance.
-            </div>
-          </div>
-        </div>
-
-        <!-- Selection Toolbar -->
-        <div v-if="selectionMode" class="selection-toolbar sticky top-0 z-20 bg-canvas border-b border-line px-4 py-3 mb-4 rounded-lg flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <span class="text-ink">
-              <span class="font-medium text-ink">{{ selectedCount }}</span> phrase{{ selectedCount !== 1 ? 's' : '' }} selected
-            </span>
-            <button
-              v-if="selectedCount > 0"
-              @click="clearSelection"
-              class="text-sm text-muted hover:text-ink transition-colors"
-            >
-              Clear selection
-            </button>
-          </div>
-          <div class="flex items-center gap-3">
-            <button
-              v-if="selectedCount > 0"
-              @click="showDeleteConfirmModal = true"
-              class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-              Delete {{ selectedCount }} phrase{{ selectedCount !== 1 ? 's' : '' }}
-            </button>
-            <button
-              @click="toggleSelectionMode"
-              class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm font-medium rounded-lg transition-colors"
-            >
-              Exit Selection
-            </button>
-          </div>
-        </div>
-
-        <!-- Seed Rows -->
-        <SeedRow
-          v-for="seed in visibleSeeds"
-          :key="seed.seed_id"
-          :seed="seed"
-          :course-code="courseCode"
-          :selection-mode="selectionMode"
-          :selected-phrase-ids="selectedPhraseIds"
-          @toggle="toggleSeed"
-          @lego-toggle="toggleLego"
-          @phrase-edit="openPhraseEditModal"
-          @phrase-delete="handlePhraseDelete"
-          @toggle-selection="togglePhraseSelection"
-          @phrase-play="playAudioSample"
-          @phrase-pause="pauseAudio"
-        />
-
-        <!-- Progressive loading indicator (shown while chunks are still arriving) -->
-        <div v-if="isLoading && seeds.length > 0" class="loading-more text-center py-6">
-          <div class="inline-flex items-center gap-3 px-4 py-2 bg-surface rounded-lg">
-            <svg class="w-5 h-5 animate-spin text-emerald-500" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            <span class="text-sm text-muted">{{ loadingProgress }}</span>
-          </div>
-        </div>
-
-        <!-- Load More (if using pagination) -->
-        <div v-if="!isLoading && hasMoreSeeds" class="load-more text-center py-8">
-          <button
-            @click="loadMoreSeeds"
-            class="px-6 py-3 bg-surface-2 text-ink rounded-lg hover:bg-surface-3 transition-colors"
-          >
-            Load More Seeds
-          </button>
-        </div>
-      </div>
       </template>
     </div>
 
@@ -886,8 +692,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import FilterBar from './components/FilterBar.vue';
-import SeedRow from './components/SeedRow.vue';
 import AudioPlayer from './components/AudioPlayer.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
@@ -896,10 +700,8 @@ import { useAuth } from '@/composables/useAuth.js';
 // CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,
-  LegoRowData,
   PhraseRowData,
   AudioSample,
-  SampleStatus,
   KeyboardShortcut
 } from '@/types/production';
 
@@ -923,17 +725,11 @@ const totalSeedsInCourse = ref(0);  // Total seeds in course (from API)
 // mount (initDefaultSeedRange); 50 is only the pre-fetch placeholder and the
 // performance cap for large courses.
 const DEFAULT_SEED_WINDOW = 50;
-const filterStatus = ref<SampleStatus | 'all' | 'flagged'>('all');
 const filterSeedStart = ref('S0001');
 const filterSeedEnd = ref('S' + String(DEFAULT_SEED_WINDOW).padStart(4, '0'));
-const filterSearchText = ref('');
 
 // Track when seed range changes to trigger reload
 const lastLoadedRange = ref({ start: '', end: '' });
-
-// Pagination (for rendering within loaded seeds)
-const visibleSeedCount = ref(50);
-const hasMoreSeeds = computed(() => visibleSeedCount.value < filteredSeeds.value.length);
 
 // Playback State
 const currentPlayingSample = ref<AudioSample | null>(null);
@@ -1041,28 +837,6 @@ const filteredJourneyAllItems = computed(() => {
 const selectionMode = ref(false);
 const selectedPhraseIds = ref<Set<string>>(new Set());
 const showDeleteConfirmModal = ref(false);
-
-// Selection methods
-const toggleSelectionMode = () => {
-  selectionMode.value = !selectionMode.value;
-  if (!selectionMode.value) {
-    selectedPhraseIds.value = new Set(); // Clear selection when exiting mode
-  }
-};
-
-const togglePhraseSelection = (phraseId: string) => {
-  const newSet = new Set(selectedPhraseIds.value);
-  if (newSet.has(phraseId)) {
-    newSet.delete(phraseId);
-  } else {
-    newSet.add(phraseId);
-  }
-  selectedPhraseIds.value = newSet;
-};
-
-const clearSelection = () => {
-  selectedPhraseIds.value = new Set();
-};
 
 const isDeleting = ref(false);
 
@@ -1301,88 +1075,7 @@ const loadedSeeds = computed(() => seeds.value.length);
 
 // Seed View pagination (server-side via filter range)
 const seedPageSize = 50;
-const seedPageStart = computed(() => {
-  const n = parseInt(filterSeedStart.value.replace(/\D/g, ''));
-  return isNaN(n) ? 1 : n;
-});
-const seedPageEnd = computed(() => {
-  const n = parseInt(filterSeedEnd.value.replace(/\D/g, ''));
-  return isNaN(n) ? seedPageSize : Math.min(n, totalSeeds.value);
-});
 const formatSeedNum = (n: number) => 'S' + String(n).padStart(4, '0');
-const prevSeedPage = () => {
-  const newStart = Math.max(1, seedPageStart.value - seedPageSize);
-  const newEnd = newStart + seedPageSize - 1;
-  filterSeedStart.value = formatSeedNum(newStart);
-  filterSeedEnd.value = formatSeedNum(newEnd);
-  loadCourseData(filterSeedStart.value, filterSeedEnd.value);
-};
-const nextSeedPage = () => {
-  const newStart = seedPageEnd.value + 1;
-  const newEnd = Math.min(newStart + seedPageSize - 1, totalSeeds.value);
-  if (newStart <= totalSeeds.value) {
-    filterSeedStart.value = formatSeedNum(newStart);
-    filterSeedEnd.value = formatSeedNum(newEnd);
-    loadCourseData(filterSeedStart.value, filterSeedEnd.value);
-  }
-};
-
-const totalPhrases = computed(() => {
-  return seeds.value.reduce((total, seed) => {
-    const introCount = seed.introduction_phrases.length;
-    const legoCount = seed.legos.reduce((sum, lego) => sum + lego.phrases.length, 0);
-    return total + introCount + legoCount;
-  }, 0);
-});
-
-const filteredSeeds = computed(() => {
-  let result = seeds.value;
-
-  // Filter by status
-  if (filterStatus.value !== 'all') {
-    result = result.filter(seed => {
-      // Check if any phrase in this seed matches the status filter
-      const hasMatchingStatus = (phrases: PhraseRowData[]) => {
-        return phrases.some(p => p.flag_status === filterStatus.value);
-      };
-
-      const introMatches = hasMatchingStatus(seed.introduction_phrases);
-      const legoMatches = seed.legos.some(lego => hasMatchingStatus(lego.phrases));
-
-      return introMatches || legoMatches;
-    });
-  }
-
-  // Note: Seed range filtering is now done server-side via API params
-  // No need to filter by range here since seeds are already pre-filtered
-
-  // Filter by search text
-  if (filterSearchText.value) {
-    const searchLower = filterSearchText.value.toLowerCase();
-    result = result.filter(seed => {
-      const seedMatches = (seed.target_text?.toLowerCase() || '').includes(searchLower)
-        || (seed.known_text?.toLowerCase() || '').includes(searchLower);
-
-      const phraseMatches = (phrases: PhraseRowData[]) => {
-        return phrases.some(p =>
-          (p.target_text?.toLowerCase() || '').includes(searchLower)
-          || (p.known_text?.toLowerCase() || '').includes(searchLower)
-        );
-      };
-
-      const introMatches = phraseMatches(seed.introduction_phrases);
-      const legoMatches = seed.legos.some(lego => phraseMatches(lego.phrases));
-
-      return seedMatches || introMatches || legoMatches;
-    });
-  }
-
-  return result;
-});
-
-const visibleSeeds = computed(() => {
-  return filteredSeeds.value.slice(0, visibleSeedCount.value);
-});
 
 // Keyboard Shortcuts
 const keyboardShortcuts: KeyboardShortcut[] = [
@@ -1490,19 +1183,6 @@ const loadLearningJourney = async () => {
     console.error('Error loading learning journey:', err);
   } finally {
     isLoadingJourney.value = false;
-  }
-};
-
-// Toggle between script view and learning journey view
-const toggleViewMode = () => {
-  if (viewMode.value === 'script') {
-    viewMode.value = 'journey';
-    if (!learningJourneyData.value) {
-      journeyOffset.value = 0;
-      loadLearningJourney();
-    }
-  } else {
-    viewMode.value = 'script';
   }
 };
 
@@ -1662,72 +1342,6 @@ const transformManifestToSeeds = (manifest: any): SeedRowData[] => {
   });
 };
 
-const toggleSeed = (seedId: string) => {
-  const seed = seeds.value.find(s => s.seed_id === seedId);
-  if (seed) {
-    seed.expanded = !seed.expanded;
-  }
-};
-
-const toggleLego = (legoId: string) => {
-  seeds.value.forEach(seed => {
-    const lego = seed.legos.find(l => l.lego_id === legoId);
-    if (lego) {
-      lego.expanded = !lego.expanded;
-    }
-  });
-};
-
-const collapseAll = () => {
-  seeds.value.forEach(seed => {
-    seed.expanded = false;
-    seed.legos.forEach(lego => {
-      lego.expanded = false;
-    });
-  });
-};
-
-const expandAll = () => {
-  seeds.value.forEach(seed => {
-    seed.expanded = true;
-    seed.legos.forEach(lego => {
-      lego.expanded = true;
-    });
-  });
-};
-
-const loadMoreSeeds = () => {
-  visibleSeedCount.value += 50;
-};
-
-const onFilterChange = () => {
-  // Reset pagination when filters change
-  visibleSeedCount.value = 50;
-
-  // Check if seed range changed - if so, reload from server
-  const rangeChanged = lastLoadedRange.value.start !== filterSeedStart.value
-    || lastLoadedRange.value.end !== filterSeedEnd.value;
-
-  if (rangeChanged) {
-    loadCourseData(filterSeedStart.value, filterSeedEnd.value);
-  }
-};
-
-const clearFilters = () => {
-  filterStatus.value = 'all';
-  filterSeedStart.value = '';
-  filterSeedEnd.value = '';
-  filterSearchText.value = '';
-};
-
-const playAudioSample = (sample: AudioSample) => {
-  currentPlayingSample.value = sample;
-};
-
-const pauseAudio = () => {
-  // Audio player handles pause internally
-};
-
 const closePlaybackBar = () => {
   currentPlayingSample.value = null;
 };
@@ -1742,55 +1356,10 @@ const onPlaybackError = (error: Error) => {
   // TODO: Show error toast
 };
 
-// Audio track type
 // Phrase Edit Modal Methods
-const openPhraseEditModal = (phrase: PhraseRowData) => {
-  phraseEditMode.value = 'phrase';
-  phraseToEdit.value = {
-    id: phrase.phrase_id,
-    known_text: phrase.known_text,
-    target_text: phrase.target_text,
-    known_audio_uuid: phrase.known_audio_uuid,
-    target1_audio_uuid: phrase.target1_audio_uuid,
-    target2_audio_uuid: phrase.target2_audio_uuid,
-    // Live seed-grid row → rebind audio pointers in-place after regen.
-    sourceItem: phrase,
-  };
-  phraseEditModalVisible.value = true;
-};
-
 const closePhraseEditModal = () => {
   phraseEditModalVisible.value = false;
   phraseToEdit.value = null;
-};
-
-// Handle phrase deletion
-const handlePhraseDelete = async (phrase: PhraseRowData) => {
-  // Confirm deletion
-  if (!confirm(`Delete phrase: "${phrase.known_text}" / "${phrase.target_text}"?\n\nThis will remove the phrase from the course. Audio files will NOT be deleted.`)) {
-    return;
-  }
-
-  try {
-    const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/phrases/${phrase.phrase_id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to delete phrase: ${response.statusText}`);
-    }
-
-    // Reload data to reflect the deletion
-    await loadCourseData();
-  } catch (err) {
-    console.error('Error deleting phrase:', err);
-    alert('Failed to delete phrase. Please try again.');
-  }
 };
 
 // RegenFlags type for per-audio regeneration
