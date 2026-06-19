@@ -11,7 +11,7 @@
           :class="{ active: currentStatus === status.value, [status.value]: true }"
           :disabled="isUpdating || store.isLoadingInfo"
         >
-          <span v-if="store.isLoadingInfo && status.value === 'testing'" class="loading-dot"></span>
+          <span v-if="store.isLoadingInfo && currentStatus === status.value" class="loading-dot"></span>
           {{ status.label }}
         </button>
       </div>
@@ -57,7 +57,7 @@
           <span class="mini-value" :class="{ 'loading-placeholder': isLoadingStats }">
             {{ isLoadingStats ? '--' : stats.ratio }}
           </span>
-          <span class="mini-label">ratio</span>
+          <span class="mini-label" title="Average practice phrases per LEGO">phrases/LEGO</span>
         </div>
         <div class="mini-stat accent">
           <template v-if="audioStats.total === 0 && !audioStatsLoaded">

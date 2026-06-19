@@ -54,28 +54,6 @@
         </div>
       </div>
 
-      <!-- Status Filter -->
-      <select
-        v-model="localStatus"
-        class="px-3 py-2 bg-surface-2 border border-line rounded-lg text-ink text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-        @change="onFilterChange"
-      >
-        <option value="all">All Samples</option>
-        <option value="flagged">Flagged</option>
-      </select>
-
-      <!-- Regen Queue Toggle -->
-      <button
-        @click="toggleFlaggedOnly"
-        class="px-3 py-2 rounded-lg font-medium text-sm transition-all"
-        :class="showFlaggedOnly
-          ? 'regen-active bg-amber-500 text-white hover:bg-amber-600'
-          : 'bg-surface-2 text-ink hover:bg-surface-3'"
-        title="Show only items pending regeneration"
-      >
-        Regen Queue
-      </button>
-
       <!-- Clear All Filters -->
       <button
         v-if="hasActiveFilters"
@@ -98,11 +76,6 @@
       <span v-if="localStatus !== 'all'" class="filter-tag">
         Status: {{ formatStatus(localStatus) }}
         <button @click="localStatus = 'all'; onFilterChange();" class="ml-1 hover:text-ink">×</button>
-      </span>
-
-      <span v-if="showFlaggedOnly" class="filter-tag">
-        Regen Queue
-        <button @click="toggleFlaggedOnly" class="ml-1 hover:text-ink">×</button>
       </span>
     </div>
   </div>

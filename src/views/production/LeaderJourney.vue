@@ -337,8 +337,7 @@ const steps = computed(() => {
       ? `${(audioStats.value.existing || 0).toLocaleString()} of ${audioStats.value.total.toLocaleString()} audio clips in place`
       : 'No audio yet',
     links: [
-      { label: 'Listen to the course', to: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } }, primary: true },
-      { label: 'See flagged audio', to: { name: 'ScriptViewer', params: { courseCode: code }, query: { filter: 'flagged' } } }
+      { label: 'Listen to the course', to: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } }, primary: true }
     ]
   }
 

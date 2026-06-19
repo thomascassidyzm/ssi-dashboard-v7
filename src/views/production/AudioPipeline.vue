@@ -599,7 +599,6 @@ const voiceConfig = ref<any>(null)
 const regenerateRole = ref('')
 const regenerating = ref(false)
 const regenerateResult = ref<any>(null)
-const flaggedOnly = ref(false)
 
 // Regenerate presentations state
 const regeneratingPresentations = ref(false)
@@ -962,8 +961,7 @@ const previewRegenerate = async () => {
       },
       body: JSON.stringify({
         role: regenerateRole.value,
-        dryRun: true,
-        flaggedOnly: flaggedOnly.value
+        dryRun: true
       })
     })
 
@@ -973,7 +971,6 @@ const previewRegenerate = async () => {
     } else {
       regenerateResult.value = {
         dryRun: true,
-        flaggedOnly: flaggedOnly.value,
         count: data.count,
         voiceId: data.voiceId,
         language: data.language,
@@ -990,11 +987,9 @@ const previewRegenerate = async () => {
 const executeRegenerate = async () => {
   if (!regenerateRole.value) return
 
-  const scope = flaggedOnly.value ? 'flagged' : 'all'
   const count = regenerateResult.value?.count || 'unknown number of'
   const confirmed = confirm(
     `This will regenerate ${count} ${regenerateRole.value} audio files for ${courseCode.value}.\n\n` +
-    `Scope: ${scope}\n` +
     `Existing audio files will be replaced.\n\n` +
     `Continue?`
   )
@@ -1012,8 +1007,7 @@ const executeRegenerate = async () => {
       },
       body: JSON.stringify({
         role: regenerateRole.value,
-        dryRun: false,
-        flaggedOnly: flaggedOnly.value
+        dryRun: false
       })
     })
 
@@ -1024,7 +1018,6 @@ const executeRegenerate = async () => {
       // Non-blocking: regeneration running in background
       regenerateResult.value = {
         dryRun: false,
-        flaggedOnly: flaggedOnly.value,
         status: 'running',
         total: data.total,
         voiceId: data.voiceId,
@@ -1035,7 +1028,6 @@ const executeRegenerate = async () => {
     } else {
       regenerateResult.value = {
         dryRun: false,
-        flaggedOnly: flaggedOnly.value,
         status: 'completed',
         total: data.total,
         success: data.success,

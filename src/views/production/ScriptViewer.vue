@@ -1343,9 +1343,6 @@ const filteredSeeds = computed(() => {
     result = result.filter(seed => {
       // Check if any phrase in this seed matches the status filter
       const hasMatchingStatus = (phrases: PhraseRowData[]) => {
-        if (filterStatus.value === 'flagged') {
-          return phrases.some(p => p.is_flagged);
-        }
         return phrases.some(p => p.flag_status === filterStatus.value);
       };
 

@@ -413,8 +413,8 @@ const globalSpeedOptions = [0.8, 0.85, 0.9, 0.95, 1.0, 1.05, 1.1]
 
 // Role definitions
 const roles = [
-  { id: 'target1', name: 'Target 1', icon: '🎯', description: 'Primary target voice', lang: 'target' },
-  { id: 'target2', name: 'Target 2', icon: '🎯', description: 'Secondary target voice', lang: 'target' },
+  { id: 'target1', name: 'Voice 1', icon: '🎯', description: 'Target language — Voice 1', lang: 'target' },
+  { id: 'target2', name: 'Voice 2', icon: '🎯', description: 'Target language — Voice 2', lang: 'target' },
   { id: 'known', name: 'Known', icon: '🏠', description: 'Known language voice', lang: 'known' },
   { id: 'presentation', name: 'Presentation', icon: '🎬', description: 'LEGO introductions', lang: 'known' }
 ]
