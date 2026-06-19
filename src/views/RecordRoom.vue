@@ -174,7 +174,6 @@ import { getApiUrl } from '@/services/api'
 import AutocueStudio from '@/components/production/autocue/AutocueStudio.vue'
 // Dialogue mode uses the long-take recorder: one continuous lossless take,
 // tap-to-advance autocue, sliced per line into the proven upload pipeline.
-// (PodDialogueStudio — the older per-line VAD studio — remains in the repo.)
 import PodLongTakeStudio from '@/components/production/autocue/PodLongTakeStudio.vue'
 
 const props = defineProps({
