@@ -190,6 +190,34 @@
             </div>
           </router-link>
 
+          <!-- Listening Pods -->
+          <router-link to="/docs/pods" class="doc-card card-pods">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                  </svg>
+                </div>
+                <div class="card-badge pods">
+                  <span class="badge-label">listening</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">Listening Pods</h2>
+                <p class="card-description">Conversational listening dialogues - canonical pod sentences and per-course generation</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">View Pods</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
           <!-- Process Overview -->
           <router-link to="/docs/pipeline" class="doc-card card-architecture">
             <div class="card-glow"></div>
@@ -253,7 +281,7 @@
       <section class="stats-section">
         <div class="stats-bar">
           <div class="stat-item">
-            <span class="stat-value">7</span>
+            <span class="stat-value">8</span>
             <span class="stat-label">Documents</span>
           </div>
           <div class="stat-divider"></div>
@@ -304,6 +332,7 @@ console.log('Documentation Hub Loaded')
   --doc-seeds-ink: var(--doc-seeds);
   --doc-content-ink: var(--doc-content);
   --doc-architecture-ink: var(--doc-architecture);
+  --doc-pods-ink: var(--doc-pods);
 
   /* Card accent colors */
   --doc-apml: #10b981;
@@ -318,6 +347,8 @@ console.log('Documentation Hub Loaded')
   --doc-content-glow: rgba(59, 130, 246, 0.15);
   --doc-architecture: #a855f7;
   --doc-architecture-glow: rgba(168, 85, 247, 0.15);
+  --doc-pods: #14b8a6;
+  --doc-pods-glow: rgba(20, 184, 166, 0.15);
 
   min-height: 100vh;
   background: var(--doc-void);
@@ -340,6 +371,7 @@ console.log('Documentation Hub Loaded')
   --doc-seeds-ink: #047857;
   --doc-content-ink: #1d4ed8;     /* blue-700 on #dde9fd ≈ 6.0:1 */
   --doc-architecture-ink: #7e22ce;/* purple-700 on #eddcfc ≈ 5.6:1 */
+  --doc-pods-ink: #0f766e;        /* teal-700 on #dcf3f0 ≈ 5.3:1 */
 }
 
 /* Ambient Background */
@@ -551,6 +583,7 @@ console.log('Documentation Hub Loaded')
 .card-seeds .card-glow { background: linear-gradient(180deg, var(--doc-seeds-glow) 0%, transparent 100%); }
 .card-content-ref .card-glow { background: linear-gradient(180deg, var(--doc-content-glow) 0%, transparent 100%); }
 .card-architecture .card-glow { background: linear-gradient(180deg, var(--doc-architecture-glow) 0%, transparent 100%); }
+.card-pods .card-glow { background: linear-gradient(180deg, var(--doc-pods-glow) 0%, transparent 100%); }
 
 .doc-card:hover .card-glow { opacity: 1; }
 
@@ -560,6 +593,7 @@ console.log('Documentation Hub Loaded')
 .card-seeds:hover { border-color: var(--doc-seeds); box-shadow: 0 20px 40px -20px var(--doc-seeds-glow); }
 .card-content-ref:hover { border-color: var(--doc-content); box-shadow: 0 20px 40px -20px var(--doc-content-glow); }
 .card-architecture:hover { border-color: var(--doc-architecture); box-shadow: 0 20px 40px -20px var(--doc-architecture-glow); }
+.card-pods:hover { border-color: var(--doc-pods); box-shadow: 0 20px 40px -20px var(--doc-pods-glow); }
 
 .card-content {
   position: relative;
@@ -599,6 +633,7 @@ console.log('Documentation Hub Loaded')
 .card-seeds .card-icon { color: var(--doc-seeds); }
 .card-content-ref .card-icon { color: var(--doc-content); }
 .card-architecture .card-icon { color: var(--doc-architecture); }
+.card-pods .card-icon { color: var(--doc-pods); }
 
 .card-apml:hover .card-icon { background: var(--doc-apml); border-color: var(--doc-apml); color: white; }
 .card-pedagogy:hover .card-icon { background: var(--doc-pedagogy); border-color: var(--doc-pedagogy); color: white; }
@@ -606,6 +641,7 @@ console.log('Documentation Hub Loaded')
 .card-seeds:hover .card-icon { background: var(--doc-seeds); border-color: var(--doc-seeds); color: white; }
 .card-content-ref:hover .card-icon { background: var(--doc-content); border-color: var(--doc-content); color: white; }
 .card-architecture:hover .card-icon { background: var(--doc-architecture); border-color: var(--doc-architecture); color: white; }
+.card-pods:hover .card-icon { background: var(--doc-pods); border-color: var(--doc-pods); color: white; }
 
 /* Badges */
 .card-badge {
@@ -647,6 +683,9 @@ console.log('Documentation Hub Loaded')
 
 .card-badge.architecture { background: var(--doc-architecture-glow); border-color: var(--doc-architecture); }
 .card-badge.architecture .badge-label { color: var(--doc-architecture-ink); }
+
+.card-badge.pods { background: var(--doc-pods-glow); border-color: var(--doc-pods); }
+.card-badge.pods .badge-label { color: var(--doc-pods-ink); }
 
 /* Card Body */
 .card-body {
@@ -693,6 +732,7 @@ console.log('Documentation Hub Loaded')
 .card-seeds:hover .card-action { color: var(--doc-seeds); }
 .card-content-ref:hover .card-action { color: var(--doc-content); }
 .card-architecture:hover .card-action { color: var(--doc-architecture); }
+.card-pods:hover .card-action { color: var(--doc-pods); }
 
 .card-arrow {
   width: 18px;
@@ -711,6 +751,7 @@ console.log('Documentation Hub Loaded')
 .card-seeds:hover .card-arrow { color: var(--doc-seeds); }
 .card-content-ref:hover .card-arrow { color: var(--doc-content); }
 .card-architecture:hover .card-arrow { color: var(--doc-architecture); }
+.card-pods:hover .card-arrow { color: var(--doc-pods); }
 
 /* Stats Bar */
 .stats-section {

@@ -4,7 +4,6 @@ import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import CanonicalContent from '../views/CanonicalContent.vue'
 import APMLSpec from '../views/APMLSpec.vue'
-import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
@@ -34,7 +33,6 @@ import AuthVerify from '../views/AuthVerify.vue'
 import { useAuth } from '../composables/useAuth'
 
 // Production Suite v2.1 Components (APML-generated) - Now the default
-const MissionControl = () => import('../views/production/MissionControl.vue')
 const ScriptViewer = () => import('../views/production/ScriptViewer.vue')
 const AudioPipeline = () => import('../views/production/AudioPipeline.vue')
 // RecordingStudio.vue (V2) is deprecated — its upload body shape always 400s.
@@ -108,6 +106,12 @@ const routes = [
         name: 'CanonicalContent',
         component: CanonicalContent,
         meta: { title: 'Canonical Content' }
+      },
+      {
+        path: 'pods',
+        name: 'PodsDoc',
+        component: () => import('../views/PodsDoc.vue'),
+        meta: { title: 'Listening Pods' }
       },
       {
         path: 'pipeline',

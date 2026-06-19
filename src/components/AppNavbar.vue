@@ -303,6 +303,7 @@ const tabs = computed(() => {
       { label: 'Glossary', to: '/docs/terminology', active: route.name === 'TerminologyGlossary' },
       { label: 'Seeds', to: '/docs/seeds', active: route.name === 'CanonicalSeeds' },
       { label: 'Content', to: '/docs/canonical', active: route.name === 'CanonicalContent' },
+      { label: 'Pods', to: '/docs/pods', active: route.name === 'PodsDoc' },
       { label: 'Pipeline', to: '/docs/pipeline', active: route.name === 'ProcessOverview' },
       { label: 'Intelligence', to: '/docs/intelligence', active: route.name === 'PhaseIntelligence' }
     ]

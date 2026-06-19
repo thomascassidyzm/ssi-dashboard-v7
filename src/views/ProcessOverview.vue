@@ -18,8 +18,8 @@
             <p>The SSi Course Production system uses APML v14 specification to generate complete language courses from canonical seed pairs. The Course Builder API consolidates content creation into a single atomic operation.</p>
 
             <div class="bg-surface-2 border border-accent-2/40 rounded p-4 my-4">
-              <p class="text-xs text-muted mb-1">Build: <span class="text-accent-2 font-mono">v14.0.0</span></p>
-              <p class="text-xs text-muted">APML: <span class="text-accent-2">v14.0.0</span> | Pipeline: <span class="text-accent-2">Course Builder (3471) → Phase 8 Audio (3465) → Phase 9 Manifest (3466)</span></p>
+              <p class="text-xs text-muted mb-1">Build: <span class="text-accent-2 font-mono">v14.1</span></p>
+              <p class="text-xs text-muted">APML: <span class="text-accent-2">v14.1</span> | Pipeline: <span class="text-accent-2">Course Builder (3471) → Phase 8 Audio (3465) → Phase 9 Manifest (3466)</span></p>
               <p class="text-xs text-accent-2 mt-1">Database-first with Supabase | Atomic validation (tiling, ZUT, vocabulary)</p>
             </div>
 
@@ -82,7 +82,7 @@
                   <div>
                     <h4 class="font-semibold text-accent-2">Course Builder API (Port 3471)</h4>
                     <p class="text-sm text-muted mt-1">POST /api/seed/complete → Supabase: course_seeds, course_legos, course_practice_phrases</p>
-                    <p class="text-xs text-accent-2 mt-1">Atomic validation: tiling, ZUT conflicts, vocabulary, phrase counts</p>
+                    <p class="text-xs text-accent-2 mt-1">Atomic validation gates (run before any insert): tiling, LEGO-level ZUT, vocabulary, and phrase-level ZUT</p>
                   </div>
                   <span class="text-accent-2 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -107,6 +107,13 @@
                   <span class="text-accent opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
+            </div>
+
+            <div class="bg-surface-2 border border-accent-2/40 rounded-lg p-4 my-4">
+              <h4 class="text-lg font-semibold text-accent-2 mb-2">Phrase-level ZUT <span class="text-xs text-muted font-normal">(new — 2026-06-14)</span></h4>
+              <p class="text-muted mb-2">The Course Builder's <span class="text-accent-2 font-mono">POST /api/seed/complete</span> gates run atomically before any insert. Phrase-level ZUT extends the "zero uncertainty" rule from LEGOs down to individual practice phrases, enforcing one English prompt → one target form across the whole course.</p>
+              <p class="text-muted mb-2">On a phrase-level collision the seed is <strong>not</strong> rejected: only the offending phrase(s) are held out, while the seed plus all conforming phrases are inserted. The collision is surfaced so the author can <span class="text-accent-2">consolidate</span> to the existing target or <span class="text-accent-2">differentiate</span> the English prompt, then resubmit the held-out phrase(s).</p>
+              <p class="text-xs text-muted">By contrast, a LEGO-level ZUT conflict rejects the entire seed.</p>
             </div>
 
             <div class="mt-4 p-3 bg-accent/10 border border-accent/30 rounded">

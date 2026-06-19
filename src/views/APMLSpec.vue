@@ -6,7 +6,7 @@
       <p class="page-subtitle">
         Course Builder Consolidation - Simplified content creation pipeline
       </p>
-      <p class="page-meta">Build: v14.0.0 | Jan 15, 2026</p>
+      <p class="page-meta">Build: v14.1 | Jun 2026</p>
     </div>
 
     <!-- Main Content -->
@@ -240,6 +240,43 @@ POST /api/seed/complete validates atomically:
 
 On failure: Nothing inserted, clear error with fix suggestions
 On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
+            </div>
+
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Phrase-Level ZUT <span class="text-xs text-amber-400">(new 2026-06-14)</span></h3>
+            <div class="space-y-3">
+              <p class="text-sm text-ink">
+                <strong class="text-accent-2">ZUT (Zero Uncertainty Translation):</strong> one known (English) prompt maps to exactly one target form.
+                LEGO-level ZUT (existing) checks this across LEGOs: if a LEGO's known text already maps to a different target in a prior seed,
+                the <strong>whole seed is REJECTED</strong>.
+              </p>
+              <p class="text-sm text-ink">
+                <strong class="text-accent-2">Phrase-level ZUT (new)</strong> extends the same rule to individual practice <strong>phrases</strong> across the
+                entire course history, not just LEGOs. Previously a decomposition could gloss e.g. &ldquo;I think&rdquo; as one target in one seed and a
+                different target in another &mdash; a ZUT violation invisible to the LEGO gate.
+              </p>
+              <div class="bg-surface-2 border border-line rounded p-4">
+                <h4 class="font-semibold text-emerald-300">Normalisation</h4>
+                <p class="text-sm text-muted mt-1">
+                  Matching normalises away punctuation/whitespace, so &ldquo;你准备好了吗？&rdquo; vs &ldquo;你准备好了吗&rdquo; is <strong>not</strong> a collision.
+                  Only a genuinely different target for the same English collides.
+                </p>
+              </div>
+              <div class="bg-amber-900/20 border border-amber-500/30 rounded p-4">
+                <h4 class="font-semibold text-amber-300">Hold-out, not rejection (by design)</h4>
+                <p class="text-sm text-muted mt-1">
+                  Unlike LEGO-level ZUT (which rejects the whole seed), a phrase-level conflict is a <strong>hold-out</strong>: the seed and all
+                  conforming phrases are still inserted, and only the transgressing phrase(s) are held out. The collision is surfaced with a hint to
+                  either <strong>consolidate</strong> to the existing target or <strong>differentiate</strong> the English prompt, then resubmit the
+                  held-out phrase(s).
+                </p>
+              </div>
+              <div class="bg-surface-2 border border-line rounded p-4">
+                <h4 class="font-semibold text-emerald-300">Implementation</h4>
+                <p class="text-sm text-muted mt-1">
+                  <code class="text-xs">checkPhraseZUT()</code> in <code class="text-xs">services/course-builder/lib/validation.cjs</code>,
+                  enforced in <code class="text-xs">routes/seed-complete.cjs</code> as gate #5 (after tiling and vocabulary).
+                </p>
+              </div>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Audio Generation Flow (v14)</h3>
