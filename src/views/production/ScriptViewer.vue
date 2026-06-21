@@ -69,6 +69,25 @@
               >
                 {{ learnerAudioView ? 'As the learner hears it' : 'Production view (incl. awaiting audio)' }}
               </button>
+              <!-- Missing-audio filter (edit-cascade Delta D): show ONLY items
+                   awaiting audio (intros included) so QA can review everything
+                   pending before running Generate Missing Audio. -->
+              <button
+                @click="toggleMissingAudioOnly"
+                :disabled="learnerAudioView"
+                :class="[
+                  missingAudioOnly ? 'bg-amber-700 text-amber-50 hover:bg-amber-600' : 'text-ink hover:text-ink bg-surface-2 hover:bg-surface-3',
+                  learnerAudioView ? 'opacity-50 cursor-not-allowed' : ''
+                ]"
+                class="px-3 py-1.5 text-sm rounded transition-colors"
+                :title="learnerAudioView
+                  ? 'Switch to the production view to filter by missing audio.'
+                  : (missingAudioOnly
+                    ? 'Showing only items awaiting audio (intros included). Click to show everything.'
+                    : 'Show only items awaiting audio (intros included) — review what Generate Missing Audio will render.')"
+              >
+                {{ missingAudioOnly ? 'Missing audio only ✓' : 'Missing audio only' }}
+              </button>
               <button
                 @click="exportLearnerScript"
                 :disabled="!learningJourneyData"
@@ -816,10 +835,19 @@ async function searchJourney(query: string) {
 
 // Use search results when searching, otherwise current page rounds
 const filteredJourneyRounds = computed(() => {
+  let rounds;
   if (journeySearch.value.trim() && journeySearchResults.value !== null) {
-    return journeySearchResults.value;
+    rounds = journeySearchResults.value;
+  } else {
+    rounds = learningJourneyData.value?.rounds || [];
   }
-  return learningJourneyData.value?.rounds || [];
+  if (missingAudioOnly.value) {
+    // Filter each round to its awaiting-audio items, drop rounds left empty.
+    rounds = rounds
+      .map((r) => ({ ...r, items: keepMissingAudio(r.items) }))
+      .filter((r) => r.items.length > 0);
+  }
+  return rounds;
 });
 
 // Player needs items for whichever rounds are currently displayed.
@@ -827,10 +855,13 @@ const filteredJourneyRounds = computed(() => {
 // (which may be outside the loaded page window) — use those so the player
 // can resolve audio for hits like R603 even when only R1-R20 are loaded.
 const filteredJourneyAllItems = computed(() => {
+  let items;
   if (journeySearch.value.trim() && journeySearchAllItems.value !== null) {
-    return journeySearchAllItems.value;
+    items = journeySearchAllItems.value;
+  } else {
+    items = learningJourneyData.value?.allItems || [];
   }
-  return learningJourneyData.value?.allItems || [];
+  return missingAudioOnly.value ? keepMissingAudio(items) : items;
 });
 
 // Batch Selection State
@@ -996,6 +1027,28 @@ const toggleLearnerAudioView = () => {
   journeyOffset.value = 0;
   loadLearningJourney();
 };
+
+// Missing-audio filter (edit-cascade Delta D). When ON, the journey is filtered
+// client-side to ONLY items awaiting audio (no known/target1/target2, or — for
+// intros — no presentation/target1) so QA can flick through every pending item
+// before triggering Generate Missing Audio. Unlike the learner view (which DROPS
+// awaiting-audio rows), this keeps only those rows, so the two are mutually
+// exclusive: turning this on forces the production data set.
+const missingAudioOnly = ref(false);
+const toggleMissingAudioOnly = () => {
+  missingAudioOnly.value = !missingAudioOnly.value;
+  // Missing-audio needs the production data (the learner view drops the very rows
+  // we want to surface), so flip back to production and refetch when needed.
+  if (missingAudioOnly.value && learnerAudioView.value) {
+    learnerAudioView.value = false;
+    journeyOffset.value = 0;
+    loadLearningJourney();
+  }
+};
+
+// Keep only items awaiting audio; intros are INCLUDED here (unlike the default
+// amber/stats view which exempts them, since intro audio has a fallback).
+const keepMissingAudio = (items) => (items || []).filter((it) => !it.hasAudio);
 
 // Export learner script as markdown download
 const exportLearnerScript = () => {
