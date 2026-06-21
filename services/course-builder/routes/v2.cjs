@@ -23,6 +23,94 @@ const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
 
+// ---------------------------------------------------------------------------
+// Validation-sweep helpers (extracted from the /v2/validate loop so the sweep
+// can be run over a prefix-skipped range — see POST /v2/validate fromSeed).
+//
+// These are intentionally pure (no closure over ctx) so the prefix-skip path
+// can be proven equivalent to the full walk for fromSeed=0.
+// ---------------------------------------------------------------------------
+
+// Add a seed's vocab contribution (its LEGO targets + M-LEGO component targets)
+// to a cumulative vocab Set. Adding is idempotent for a Set.
+function accumulate(seedLegos, cumulativeVocab, chinese) {
+  for (const l of seedLegos) {
+    extractVocab(l.target_text, chinese).forEach(v => cumulativeVocab.add(v));
+    if (l.type === 'M' && l.components) {
+      for (const c of l.components) {
+        extractVocab(c.target, chinese).forEach(v => cumulativeVocab.add(v));
+      }
+    }
+  }
+}
+
+// Run all per-seed checks (tiling, containment, phrase counts, vocab violations)
+// for a single seed against the cumulative vocab from PRIOR seeds.
+//
+// Ordering preserved from the original loop: tiling is checked against prior-seed
+// vocab only; the per-LEGO vocab check sees prior + this seed's own vocab. We build
+// that superset locally (vocabWithSeed) rather than mutating the caller's set
+// mid-seed, so the caller still controls accumulation order.
+function runSeedChecks(seed, seedLegos, phrasesByLegoKey, cumulativeVocab, courseCode, chinese) {
+  const issues = [];
+
+  // 1. Tiling check — against vocab from prior seeds only
+  const tilingLegos = seedLegos.map(l => ({ target: l.target_text, type: l.type, components: l.components }));
+  const tilingResult = checkTiling(seed.target_text, tilingLegos, courseCode, cumulativeVocab);
+  if (!tilingResult.valid) {
+    issues.push(`Tiling: ${tilingResult.message}`);
+  }
+
+  // Vocab available to this seed's phrases = prior seeds + this seed's own legos.
+  const vocabWithSeed = new Set(cumulativeVocab);
+  accumulate(seedLegos, vocabWithSeed, chinese);
+
+  // 2. Per-LEGO checks
+  for (const lego of seedLegos) {
+    if (!lego.is_new) continue; // Skip duplicates
+
+    const legoKey = `${lego.seed_number}:${lego.lego_index}`;
+    const legoPhrases = phrasesByLegoKey[legoKey] || [];
+    const legoLabel = `L${lego.lego_index}`;
+
+    // Containment check
+    const legoTargetNorm = normalizeForContainment(lego.target_text);
+    const buildUsePhrases = legoPhrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'use');
+    const containmentFails = buildUsePhrases.filter(p =>
+      !normalizeForContainment(p.target_text).includes(legoTargetNorm)
+    );
+    if (containmentFails.length > 0) {
+      issues.push(`${legoLabel}: ${containmentFails.length} phrase(s) fail containment`);
+    }
+
+    // Phrase count check
+    const buildPhrases = legoPhrases.filter(p => p.phrase_role === 'build');
+    const usePhrases = legoPhrases.filter(p => p.phrase_role === 'use');
+
+    const legoForCheck = {
+      idx: lego.lego_index,
+      type: lego.type,
+      known: lego.known_text,
+      target: lego.target_text,
+      build: buildPhrases.map(p => ({ known: p.known_text, target: p.target_text })),
+      use: usePhrases.map(p => ({ known: p.known_text, target: p.target_text }))
+    };
+    const countCheck = checkBuildUsePhrases(legoForCheck, courseCode, lego.seed_number);
+    if (!countCheck.valid) {
+      issues.push(`${legoLabel}: ${countCheck.error}`);
+    }
+
+    // Vocab check on phrases (against prior + this seed's vocab)
+    const phraseTargets = buildUsePhrases.map(p => ({ target: p.target_text }));
+    const vocabViolations = checkVocabViolations(phraseTargets, vocabWithSeed, courseCode);
+    if (vocabViolations.length > 0) {
+      issues.push(`${legoLabel}: vocab violations in ${vocabViolations.length} phrase(s)`);
+    }
+  }
+
+  return issues;
+}
+
 module.exports = function(ctx) {
   const router = Router();
 
@@ -816,7 +904,13 @@ module.exports = function(ctx) {
       const courseCode = req.params.courseCode;
       const chinese = isChinese(courseCode);
 
-      console.log(`[V2] Validate: ${courseCode}`);
+      // Optional scoped sweep: only re-check seeds at/after fromSeed. Seeds before
+      // it are provably unaffected by an edit at fromSeed, so we accumulate their
+      // vocab (to keep the cumulative set correct) but skip their checks.
+      // fromSeed = 0/undefined => full-course sweep (default, unchanged behaviour).
+      const fromSeed = Number(req.body?.fromSeed) || 0;
+
+      console.log(`[V2] Validate: ${courseCode}${fromSeed ? ` (fromSeed=${fromSeed})` : ''}`);
 
       // Load all seeds with decomposed_at
       const { data: seeds, error: seedErr } = await ctx.supabase
@@ -865,70 +959,23 @@ module.exports = function(ctx) {
 
       const failures = [];
       let seedsPassed = 0;
+      let seedsSkipped = 0;
 
       for (const seed of seeds || []) {
         const seedLegos = legosBySeed[seed.seed_number] || [];
-        const issues = [];
 
-        // 1. Tiling check
-        const tilingLegos = seedLegos.map(l => ({ target: l.target_text, type: l.type, components: l.components }));
-        const tilingResult = checkTiling(seed.target_text, tilingLegos, courseCode, cumulativeVocab);
-        if (!tilingResult.valid) {
-          issues.push(`Tiling: ${tilingResult.message}`);
+        // Prefix seeds (before fromSeed) are provably unaffected: accumulate their
+        // vocab to keep the cumulative set correct, but skip their checks.
+        if (fromSeed && seed.seed_number < fromSeed) {
+          accumulate(seedLegos, cumulativeVocab, chinese);
+          seedsSkipped++;
+          continue;
         }
 
-        // Add this seed's vocab to cumulative set
-        for (const l of seedLegos) {
-          extractVocab(l.target_text, chinese).forEach(v => cumulativeVocab.add(v));
-          if (l.type === 'M' && l.components) {
-            for (const c of l.components) {
-              extractVocab(c.target, chinese).forEach(v => cumulativeVocab.add(v));
-            }
-          }
-        }
+        const issues = runSeedChecks(seed, seedLegos, phrasesByLegoKey, cumulativeVocab, courseCode, chinese);
 
-        // 2. Per-LEGO checks
-        for (const lego of seedLegos) {
-          if (!lego.is_new) continue; // Skip duplicates
-
-          const legoKey = `${lego.seed_number}:${lego.lego_index}`;
-          const legoPhrases = phrasesByLegoKey[legoKey] || [];
-          const legoLabel = `L${lego.lego_index}`;
-
-          // Containment check
-          const legoTargetNorm = normalizeForContainment(lego.target_text);
-          const buildUsePhrases = legoPhrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'use');
-          const containmentFails = buildUsePhrases.filter(p =>
-            !normalizeForContainment(p.target_text).includes(legoTargetNorm)
-          );
-          if (containmentFails.length > 0) {
-            issues.push(`${legoLabel}: ${containmentFails.length} phrase(s) fail containment`);
-          }
-
-          // Phrase count check
-          const buildPhrases = legoPhrases.filter(p => p.phrase_role === 'build');
-          const usePhrases = legoPhrases.filter(p => p.phrase_role === 'use');
-
-          const legoForCheck = {
-            idx: lego.lego_index,
-            type: lego.type,
-            known: lego.known_text,
-            target: lego.target_text,
-            build: buildPhrases.map(p => ({ known: p.known_text, target: p.target_text })),
-            use: usePhrases.map(p => ({ known: p.known_text, target: p.target_text }))
-          };
-          const countCheck = checkBuildUsePhrases(legoForCheck, courseCode, lego.seed_number);
-          if (!countCheck.valid) {
-            issues.push(`${legoLabel}: ${countCheck.error}`);
-          }
-
-          // Vocab check on phrases
-          const phraseTargets = buildUsePhrases.map(p => ({ target: p.target_text }));
-          const vocabViolations = checkVocabViolations(phraseTargets, cumulativeVocab, courseCode);
-          if (vocabViolations.length > 0) {
-            issues.push(`${legoLabel}: vocab violations in ${vocabViolations.length} phrase(s)`);
-          }
-        }
+        // Preserve tile-then-add order: check this seed, then add its vocab for the next.
+        accumulate(seedLegos, cumulativeVocab, chinese);
 
         if (issues.length > 0) {
           failures.push({ seed: seed.seed_number, issues });
@@ -937,15 +984,17 @@ module.exports = function(ctx) {
         }
       }
 
+      const seedsChecked = (seeds || []).length - seedsSkipped;
       const valid = failures.length === 0;
-      console.log(`[V2] Validate ${courseCode}: ${seedsPassed}/${(seeds || []).length} passed, ${failures.length} failed`);
+      console.log(`[V2] Validate ${courseCode}: ${seedsPassed}/${seedsChecked} passed, ${failures.length} failed${fromSeed ? ` (${seedsSkipped} skipped before seed ${fromSeed})` : ''}`);
 
       res.json({
         valid,
         course_code: courseCode,
-        seeds_checked: (seeds || []).length,
+        seeds_checked: seedsChecked,
         seeds_passed: seedsPassed,
         seeds_failed: failures.length,
+        scope: fromSeed ? { fromSeed, seedsSkipped } : 'full',
         failures: failures.length > 0 ? failures : undefined
       });
 
@@ -1795,3 +1844,7 @@ You are running unattended. NEVER ask questions. Fix errors. Respawn failed agen
 
   return router;
 };
+
+// Exposed for unit testing the scoped-validation sweep (Delta A). Not used by
+// the running service, which only consumes the factory default export above.
+module.exports._test = { accumulate, runSeedChecks };
