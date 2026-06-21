@@ -98,6 +98,12 @@
                   <span :class="{ empty: !seed.target_text }">
                     {{ seed.target_text || '—' }}
                   </span>
+                  <button
+                    v-if="seed.target_text"
+                    class="rebuild-btn"
+                    title="Re-translate &amp; rebuild this seed (new breakdown + audio)"
+                    @click.stop="openCascade(seed)"
+                  >↻ rebuild</button>
                 </template>
                 <transition name="tick">
                   <span v-if="savedKey === `${seed.seed_number}-target_text`" class="save-tick">&#10003;</span>
@@ -114,6 +120,75 @@
       <button :disabled="page === 1" @click="page--; loadSeeds()">← Prev</button>
       <span class="page-info">Page {{ page }} of {{ totalPages }}</span>
       <button :disabled="page >= totalPages" @click="page++; loadSeeds()">Next →</button>
+    </div>
+
+    <!-- Re-translate & rebuild (edit-cascade) modal -->
+    <div v-if="cascade.open" class="cascade-overlay" @click.self="closeCascade">
+      <div class="cascade-modal">
+        <h3 class="cascade-title">Re-translate &amp; rebuild — Seed {{ cascade.seed?.seed_number }}</h3>
+        <p class="cascade-sub">
+          The known/English side stays fixed. Revising the target text rebuilds this
+          seed's LEGO breakdown, phrases, intros and the audio for the changed items.
+        </p>
+
+        <label class="cascade-label">Known (unchanged)</label>
+        <div class="cascade-readonly">{{ cascade.seed?.known_text || '—' }}</div>
+
+        <label class="cascade-label">New target translation</label>
+        <textarea v-model="cascade.target" class="cascade-input" rows="2"
+                  placeholder="Revised target-language translation…"></textarea>
+
+        <label class="cascade-checkbox">
+          <input type="checkbox" v-model="cascade.autoDecompose" />
+          Auto re-decompose (let the pipeline build the new breakdown)
+        </label>
+
+        <details class="cascade-advanced" v-if="!cascade.autoDecompose">
+          <summary>Provide breakdown (advanced)</summary>
+          <p class="cascade-hint">Paste a <code>legos</code> JSON array (same shape as a build submission).</p>
+          <textarea v-model="cascade.legosJson" class="cascade-input mono" rows="6"
+                    placeholder='[{"idx":1,"type":"A","known":"…","target":"…","phrases":[…]}]'></textarea>
+        </details>
+
+        <label class="cascade-checkbox">
+          <input type="checkbox" v-model="cascade.generateAudio" />
+          Generate the now-missing audio automatically
+        </label>
+
+        <!-- Result -->
+        <div v-if="cascade.result" class="cascade-result" :class="cascade.error ? 'err' : 'ok'">
+          <template v-if="cascade.error">
+            <strong>Failed:</strong> {{ cascade.error }}
+            <pre v-if="cascade.result.gate_errors">{{ JSON.stringify(cascade.result.gate_errors, null, 2) }}</pre>
+          </template>
+          <template v-else-if="cascade.result.mode === 'auto-decompose'">
+            <strong>Target updated.</strong> {{ cascade.result.message }}
+          </template>
+          <template v-else>
+            <strong>Done — {{ cascade.result.case }}.</strong>
+            <div>{{ cascade.result.message }}</div>
+            <div v-if="cascade.result.audio?.errors?.length" class="cascade-warn">
+              Audio issues: {{ cascade.result.audio.errors.join(', ') }}
+            </div>
+            <div v-if="cascade.result.blastRadius?.failures?.length" class="cascade-blast">
+              <strong>Blast radius — {{ cascade.result.blastRadius.failures.length }} seed(s) need attention:</strong>
+              <ul>
+                <li v-for="f in cascade.result.blastRadius.failures" :key="f.seed">
+                  Seed {{ f.seed }}: {{ f.issues.join('; ') }}
+                </li>
+              </ul>
+            </div>
+            <div v-else class="cascade-clear">No new validation failures downstream.</div>
+          </template>
+        </div>
+
+        <div class="cascade-actions">
+          <button class="btn-secondary" @click="closeCascade" :disabled="cascade.running">Close</button>
+          <button class="btn-approve" @click="runCascade" :disabled="cascade.running || !cascade.target.trim()">
+            {{ cascade.running ? 'Rebuilding…' : 'Re-translate & rebuild' }}
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -265,6 +340,85 @@ async function approveSeeds() {
     console.error('Failed to approve seeds:', err)
   } finally {
     approving.value = false
+  }
+}
+
+// ── Re-translate & rebuild (edit-cascade) ──────────────────────────────────
+const cascade = ref({
+  open: false,
+  seed: null,
+  target: '',
+  autoDecompose: true,
+  legosJson: '',
+  generateAudio: true,
+  running: false,
+  result: null,
+  error: null,
+})
+
+function openCascade(seed) {
+  cascade.value = {
+    open: true,
+    seed,
+    target: seed.target_text || '',
+    autoDecompose: true,
+    legosJson: '',
+    generateAudio: true,
+    running: false,
+    result: null,
+    error: null,
+  }
+}
+
+function closeCascade() {
+  if (cascade.value.running) return
+  cascade.value.open = false
+}
+
+async function runCascade() {
+  const c = cascade.value
+  c.running = true
+  c.result = null
+  c.error = null
+
+  const body = {
+    seed_number: c.seed.seed_number,
+    target_text: c.target.trim(),
+    autoDecompose: c.autoDecompose,
+    generateAudio: c.generateAudio,
+  }
+
+  // Optional hand-authored breakdown (only when not auto-decomposing).
+  if (!c.autoDecompose && c.legosJson.trim()) {
+    try {
+      const parsed = JSON.parse(c.legosJson)
+      if (!Array.isArray(parsed)) throw new Error('legos must be a JSON array')
+      body.legos = parsed
+    } catch (err) {
+      c.error = `Invalid breakdown JSON: ${err.message}`
+      c.running = false
+      return
+    }
+  }
+
+  try {
+    const resp = await fetch(`${apiBase}/api/course/${props.courseCode}/edit-cascade`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify(body),
+    })
+    const json = await resp.json().catch(() => ({}))
+    c.result = json
+    if (!resp.ok || json.error) {
+      c.error = json.error || `Request failed (${resp.status})`
+    } else if (json.mode === 'cascade') {
+      // Reflect the new target in the table.
+      c.seed.target_text = body.target_text
+    }
+  } catch (err) {
+    c.error = err.message
+  } finally {
+    c.running = false
   }
 }
 
@@ -587,4 +741,126 @@ onMounted(loadSeeds)
   .editor-header { flex-direction: column; align-items: flex-start; }
   .header-right { flex-wrap: wrap; }
 }
+
+/* Re-translate & rebuild trigger */
+.rebuild-btn {
+  margin-left: 0.5rem;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--color-paper-dim, var(--muted));
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.col-target:hover .rebuild-btn { opacity: 1; }
+.rebuild-btn:hover { color: var(--accent-2); border-color: var(--accent-2); }
+
+/* Cascade modal */
+.cascade-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.cascade-modal {
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+}
+.cascade-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-paper, var(--ink));
+  margin: 0 0 0.25rem;
+}
+.cascade-sub {
+  font-size: 0.8rem;
+  color: var(--color-paper-dim, var(--muted));
+  margin: 0 0 1rem;
+}
+.cascade-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-paper-dim, var(--muted));
+  margin: 0.75rem 0 0.25rem;
+}
+.cascade-readonly {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-graphite, var(--surface-3));
+  border-radius: 4px;
+  color: var(--color-paper, var(--ink));
+  font-size: 0.9rem;
+}
+.cascade-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--color-shadow, var(--surface-2));
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--color-paper, var(--ink));
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  resize: vertical;
+}
+.cascade-input.mono { font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: 0.8rem; }
+.cascade-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-paper, var(--ink));
+  margin: 0.75rem 0 0;
+  cursor: pointer;
+}
+.cascade-advanced { margin-top: 0.75rem; }
+.cascade-advanced summary { cursor: pointer; font-size: 0.85rem; color: var(--accent-2); }
+.cascade-hint { font-size: 0.75rem; color: var(--color-paper-dim, var(--muted)); margin: 0.5rem 0; }
+.cascade-result {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--color-paper, var(--ink));
+  background: var(--color-graphite, var(--surface-3));
+}
+.cascade-result.err { border: 1px solid #b91c1c; }
+.cascade-result.ok { border: 1px solid var(--accent-2); }
+.cascade-result pre { white-space: pre-wrap; font-size: 0.75rem; margin: 0.5rem 0 0; }
+.cascade-blast { margin-top: 0.5rem; }
+.cascade-blast ul { margin: 0.25rem 0 0; padding-left: 1.2rem; }
+.cascade-clear { margin-top: 0.5rem; color: var(--accent-2); }
+.cascade-warn { margin-top: 0.5rem; color: #d97706; }
+.cascade-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+.btn-secondary {
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--color-paper, var(--ink));
+  cursor: pointer;
+}
+.btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
 </style>
