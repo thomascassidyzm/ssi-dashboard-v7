@@ -10,7 +10,7 @@
 
 import { describe, it, expect } from 'vitest'
 
-const { _test: { computeSeedVocab, setsEqual } } = require('./edit-cascade.cjs')
+const { _test: { computeSeedVocab, setsEqual, buildValidateOverride, estimateAudio } } = require('./edit-cascade.cjs')
 
 const chinese = false
 
@@ -83,6 +83,55 @@ describe('Case 1 vs Case 2 discrimination', () => {
   it('Case 2: a word-form is removed', () => {
     const shorter = [{ type: 'A', target_text: 'wa' }]
     expect(setsEqual(computeSeedVocab(oldLegos, chinese), computeSeedVocab(shorter, chinese))).toBe(false)
+  })
+})
+
+describe('buildValidateOverride (dry-run simulation shape)', () => {
+  const legos = [
+    { idx: 1, type: 'A', known: 'I', target: 'wa', build: [{ known: 'I', target: 'wa' }] },
+    {
+      idx: 2, type: 'M', known: 'want to', target: 'wo to',
+      components: [{ known: 'want', target: 'wo' }, { known: 'to', target: 'to' }],
+      build: [{ known_text: 'I want to', target_text: 'wa wo to' }],
+      use: [{ known: 'I really want to', target: 'wa wo to' }],
+    },
+  ]
+
+  it('maps legos to validate shape with stable lego_index + is_new', () => {
+    const ov = buildValidateOverride(42, 'wa wo to', 'I want to', legos)
+    expect(ov.seed_number).toBe(42)
+    expect(ov.target_text).toBe('wa wo to')
+    expect(ov.known_text).toBe('I want to')
+    expect(ov.legos.map(l => l.lego_index)).toEqual([1, 2])
+    expect(ov.legos.every(l => l.is_new === true)).toBe(true)
+    expect(ov.legos[1].components).toHaveLength(2)
+  })
+
+  it('keys phrases by seed:lego_index and tags build/use roles', () => {
+    const ov = buildValidateOverride(42, 'wa wo to', 'I want to', legos)
+    expect(ov.phrases['42:1'].map(p => p.phrase_role)).toEqual(['build'])
+    expect(ov.phrases['42:2'].map(p => p.phrase_role)).toEqual(['build', 'use'])
+    // accepts both known/target and known_text/target_text
+    expect(ov.phrases['42:2'][0]).toMatchObject({ known_text: 'I want to', target_text: 'wa wo to' })
+  })
+
+  it('falls back to legacy phrases[] as build rows', () => {
+    const ov = buildValidateOverride(1, 't', 'k', [
+      { idx: 1, type: 'A', known: 'k', target: 't', phrases: [{ known: 'k', target: 't' }] },
+    ])
+    expect(ov.phrases['1:1']).toEqual([{ phrase_role: 'build', known_text: 'k', target_text: 't' }])
+  })
+})
+
+describe('estimateAudio', () => {
+  it('counts 3 clips per phrase + 1 presentation per LEGO', () => {
+    const est = estimateAudio([
+      { build: [{}], use: [{}, {}] },  // 3 phrases
+      { build: [{}] },                  // 1 phrase
+    ])
+    expect(est.legos).toBe(2)
+    expect(est.phrasesProvided).toBe(4)
+    expect(est.approxClips).toBe(4 * 3 + 2)
   })
 })
 

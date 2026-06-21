@@ -64,6 +64,55 @@ function setsEqual(a, b) {
   return true;
 }
 
+// Map a proposed breakdown (the /seed/complete lego shape, with build/use or
+// phrases) into the in-memory `override` the /v2/validate sweep accepts, so a dry
+// run can validate the simulated post-edit state without touching the DB.
+function buildValidateOverride(seedNumber, newTarget, knownText, legos) {
+  const ovLegos = [];
+  const phrases = {};
+  for (let i = 0; i < legos.length; i++) {
+    const l = legos[i];
+    const idx = l.idx || l.lego_index || i + 1;
+    ovLegos.push({
+      lego_index: idx,
+      known_text: l.known_text || l.known,
+      target_text: l.target_text || l.target,
+      type: l.type,
+      components: l.components || null,
+      is_new: true,
+    });
+    // Collect this lego's build/use (or legacy phrases[]) as validate-shape rows.
+    const buildArr = l.build || [];
+    const useArr = l.use || [];
+    const legacy = (!l.build && !l.use && Array.isArray(l.phrases)) ? l.phrases : [];
+    const rows = [
+      ...buildArr.map(p => ({ phrase_role: 'build', known_text: p.known_text || p.known, target_text: p.target_text || p.target })),
+      ...useArr.map(p => ({ phrase_role: 'use', known_text: p.known_text || p.known, target_text: p.target_text || p.target })),
+      ...legacy.map(p => ({ phrase_role: 'build', known_text: p.known_text || p.known, target_text: p.target_text || p.target })),
+    ];
+    if (rows.length) phrases[`${seedNumber}:${idx}`] = rows;
+  }
+  return { seed_number: Number(seedNumber), target_text: newTarget, known_text: knownText, legos: ovLegos, phrases };
+}
+
+// A lower-bound estimate of the audio that the cascade would (re)generate for the
+// edited seed: 3 voice clips (known/target1/target2) per provided phrase, plus one
+// presentation per LEGO. The real number is slightly higher (M-LEGO build-up
+// phrases are auto-generated), hence "≈".
+function estimateAudio(legos) {
+  let phraseCount = 0;
+  for (const l of legos) {
+    phraseCount += (l.build?.length || 0) + (l.use?.length || 0)
+      + ((!l.build && !l.use && Array.isArray(l.phrases)) ? l.phrases.length : 0);
+  }
+  return {
+    legos: legos.length,
+    phrasesProvided: phraseCount,
+    approxClips: phraseCount * 3 + legos.length,
+    note: '≈ 3 clips/phrase (known/target1/target2) + 1 presentation/LEGO; M-LEGO build-up adds a few more.',
+  };
+}
+
 async function postJson(url, body, { timeoutMs = 600000, headers = {} } = {}) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -94,6 +143,7 @@ module.exports = function(ctx) {
       legos,
       autoDecompose = false,
       generateAudio = true,
+      dryRun = false,
     } = req.body || {};
 
     if (!seed_number) {
@@ -128,6 +178,18 @@ module.exports = function(ctx) {
             hint: 'A new target text needs a new LEGO breakdown. Supply it, or request a brief.',
           });
         }
+        // Dry run on the auto-decompose path: report intent without mutating.
+        if (dryRun) {
+          return res.json({
+            ok: true,
+            mode: 'dry-run',
+            sub_mode: 'auto-decompose',
+            seed_number,
+            target_updated: false,
+            message: `DRY RUN — would set target to "${newTarget}" and request a re-decomposition `
+              + `(known side unchanged: "${seed.known_text}"). No write performed.`,
+          });
+        }
         await ctx.supabase
           .from('course_seeds')
           .update({ target_text: newTarget })
@@ -157,6 +219,45 @@ module.exports = function(ctx) {
       const newVocab = computeSeedVocab(legos, chinese);
       const vocabPreserving = setsEqual(oldVocab, newVocab);
       const editCase = vocabPreserving ? 'vocab-preserving' : 'vocab-changing';
+
+      // ── Dry run: report the full plan with ZERO mutation and ZERO TTS ──────
+      // Validates a simulated post-edit state via the /v2/validate `override`, so
+      // the downstream blast radius is exact without writing anything.
+      if (dryRun) {
+        const removed = [...oldVocab].filter(v => !newVocab.has(v));
+        const added = [...newVocab].filter(v => !oldVocab.has(v));
+
+        const override = buildValidateOverride(seed_number, newTarget, seed.known_text, legos);
+        const validation = await postJson(`${SELF_URL}/api/v2/validate/${courseCode}`, {
+          fromSeed: Number(seed_number),
+          override,
+        });
+
+        let failures = (validation.ok && validation.json?.failures) || [];
+        if (vocabPreserving) failures = failures.filter(f => f.seed === Number(seed_number));
+
+        return res.json({
+          ok: true,
+          mode: 'dry-run',
+          seed_number,
+          case: editCase,
+          vocabDelta: { added, removed, unchanged: removed.length === 0 && added.length === 0 },
+          wouldDelete: { legos: (oldLegos || []).length, phrases: (oldPhrases || []).length },
+          wouldGenerateAudio: generateAudio ? estimateAudio(legos) : { skipped: true },
+          blastRadius: {
+            fromSeed: Number(seed_number),
+            failures,
+            downstreamAffected: failures.some(f => f.seed !== Number(seed_number)),
+            note: validation.ok
+              ? (vocabPreserving
+                ? 'Case 1 (vocab-preserving): downstream provably unaffected; only the edited seed simulated.'
+                : 'Case 2 (vocab-changing): includes downstream phrases that would no longer tile.')
+              : `Validation sweep unavailable (status ${validation.status}).`,
+          },
+          message: `DRY RUN — nothing changed. ${editCase}; would delete ${(oldLegos || []).length} LEGO(s)/${(oldPhrases || []).length} phrase(s) and regenerate audio for the new breakdown. `
+            + `${failures.length ? `${failures.length} seed(s) would need attention.` : 'No downstream breakage predicted.'}`,
+        });
+      }
 
       const snapshot = {
         target_text: seed.target_text,
@@ -297,4 +398,4 @@ module.exports = function(ctx) {
   return router;
 };
 
-module.exports._test = { computeSeedVocab, setsEqual };
+module.exports._test = { computeSeedVocab, setsEqual, buildValidateOverride, estimateAudio };

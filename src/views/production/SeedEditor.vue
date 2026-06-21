@@ -164,6 +164,26 @@
           <template v-else-if="cascade.result.mode === 'auto-decompose'">
             <strong>Target updated.</strong> {{ cascade.result.message }}
           </template>
+          <template v-else-if="cascade.result.mode === 'dry-run'">
+            <strong>Preview — {{ cascade.result.case || cascade.result.sub_mode }} (no changes made).</strong>
+            <div>{{ cascade.result.message }}</div>
+            <div v-if="cascade.result.vocabDelta">
+              <span v-if="cascade.result.vocabDelta.removed?.length">Removed vocab: <code>{{ cascade.result.vocabDelta.removed.join(', ') }}</code>. </span>
+              <span v-if="cascade.result.vocabDelta.added?.length">Added vocab: <code>{{ cascade.result.vocabDelta.added.join(', ') }}</code>. </span>
+            </div>
+            <div v-if="cascade.result.wouldGenerateAudio && !cascade.result.wouldGenerateAudio.skipped">
+              Audio: {{ cascade.result.wouldGenerateAudio.approxClips }} clip(s) ({{ cascade.result.wouldGenerateAudio.note }})
+            </div>
+            <div v-if="cascade.result.blastRadius?.failures?.length" class="cascade-blast">
+              <strong>Predicted blast radius — {{ cascade.result.blastRadius.failures.length }} seed(s):</strong>
+              <ul>
+                <li v-for="f in cascade.result.blastRadius.failures" :key="f.seed">
+                  Seed {{ f.seed }}: {{ f.issues.join('; ') }}
+                </li>
+              </ul>
+            </div>
+            <div v-else class="cascade-clear">No downstream breakage predicted.</div>
+          </template>
           <template v-else>
             <strong>Done — {{ cascade.result.case }}.</strong>
             <div>{{ cascade.result.message }}</div>
@@ -184,7 +204,11 @@
 
         <div class="cascade-actions">
           <button class="btn-secondary" @click="closeCascade" :disabled="cascade.running">Close</button>
-          <button class="btn-approve" @click="runCascade" :disabled="cascade.running || !cascade.target.trim()">
+          <button class="btn-secondary" @click="runCascade(true)" :disabled="cascade.running || !cascade.target.trim()"
+                  title="Preview the plan (Case, blast radius, audio estimate) — no changes, no audio spend">
+            Preview (dry run)
+          </button>
+          <button class="btn-approve" @click="runCascade(false)" :disabled="cascade.running || !cascade.target.trim()">
             {{ cascade.running ? 'Rebuilding…' : 'Re-translate & rebuild' }}
           </button>
         </div>
@@ -375,7 +399,7 @@ function closeCascade() {
   cascade.value.open = false
 }
 
-async function runCascade() {
+async function runCascade(dryRun = false) {
   const c = cascade.value
   c.running = true
   c.result = null
@@ -386,6 +410,7 @@ async function runCascade() {
     target_text: c.target.trim(),
     autoDecompose: c.autoDecompose,
     generateAudio: c.generateAudio,
+    dryRun,
   }
 
   // Optional hand-authored breakdown (only when not auto-decomposing).

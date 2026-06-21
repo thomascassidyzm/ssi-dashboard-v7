@@ -14,6 +14,11 @@
 > - **Delta C** — "Re-translate & rebuild" modal in `src/views/production/SeedEditor.vue` (per-seed target cell), shows the Case 1/2 result + blast radius.
 > - **Delta D** — "Missing audio only" filter in `src/views/production/ScriptViewer.vue` (intros included).
 >
+> **Dry run:** `POST …/edit-cascade { dryRun: true, … }` reports the full plan — Case 1/2,
+> vocab added/removed, deletion footprint, an audio estimate, and the **exact** downstream blast
+> radius (via a non-mutating `override` on `/v2/validate`) — with zero DB writes and zero TTS.
+> Surfaced in the Seed Editor modal as a "Preview (dry run)" button.
+>
 > **Follow-up:** `autoDecompose` currently updates the target and returns a re-decomposition
 > brief for an agent/editor to resubmit with `legos`. One-click auto-spawn of the decomposition
 > agent (reusing the build pipeline) is the remaining piece; the ready-breakdown path is fully wired.

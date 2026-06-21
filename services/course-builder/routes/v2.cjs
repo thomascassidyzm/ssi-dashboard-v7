@@ -954,6 +954,48 @@ module.exports = function(ctx) {
         phrasesByLegoKey[key].push(p);
       }
 
+      // Optional in-memory override: substitute one seed's proposed LEGOs/phrases
+      // (and target) BEFORE the sweep, so a caller can validate a *simulated*
+      // post-edit state without mutating the DB (edit-cascade dry run). The
+      // downstream blast radius this produces is exact, because downstream seeds'
+      // own rows are unchanged — only the cumulative vocab from this seed shifts.
+      const override = req.body?.override;
+      let seedList = seeds || [];
+      if (override && override.seed_number != null) {
+        const ovSeed = Number(override.seed_number);
+        if (Array.isArray(override.legos)) {
+          legosBySeed[ovSeed] = override.legos.map(l => ({
+            seed_number: ovSeed,
+            lego_index: l.lego_index,
+            known_text: l.known_text,
+            target_text: l.target_text,
+            type: l.type,
+            components: l.components || null,
+            is_new: l.is_new !== false,
+          }));
+        }
+        // Replace this seed's phrases (drop existing keys, apply provided ones).
+        for (const key of Object.keys(phrasesByLegoKey)) {
+          if (key.startsWith(`${ovSeed}:`)) delete phrasesByLegoKey[key];
+        }
+        if (override.phrases && typeof override.phrases === 'object') {
+          for (const [key, arr] of Object.entries(override.phrases)) {
+            phrasesByLegoKey[key] = arr;
+          }
+        }
+        // Update (or inject) the seed row so tiling uses the new target.
+        seedList = seedList.map(s => s.seed_number === ovSeed
+          ? { ...s, target_text: override.target_text || s.target_text }
+          : s);
+        if (!seedList.some(s => s.seed_number === ovSeed)) {
+          seedList = [...seedList, {
+            seed_number: ovSeed,
+            known_text: override.known_text || '',
+            target_text: override.target_text || '',
+          }].sort((a, b) => a.seed_number - b.seed_number);
+        }
+      }
+
       // Build cumulative vocab as we walk seeds in order
       const cumulativeVocab = new Set();
 
@@ -961,7 +1003,7 @@ module.exports = function(ctx) {
       let seedsPassed = 0;
       let seedsSkipped = 0;
 
-      for (const seed of seeds || []) {
+      for (const seed of seedList) {
         const seedLegos = legosBySeed[seed.seed_number] || [];
 
         // Prefix seeds (before fromSeed) are provably unaffected: accumulate their
@@ -984,7 +1026,7 @@ module.exports = function(ctx) {
         }
       }
 
-      const seedsChecked = (seeds || []).length - seedsSkipped;
+      const seedsChecked = seedList.length - seedsSkipped;
       const valid = failures.length === 0;
       console.log(`[V2] Validate ${courseCode}: ${seedsPassed}/${seedsChecked} passed, ${failures.length} failed${fromSeed ? ` (${seedsSkipped} skipped before seed ${fromSeed})` : ''}`);
 
