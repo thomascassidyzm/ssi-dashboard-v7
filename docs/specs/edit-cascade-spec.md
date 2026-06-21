@@ -1,6 +1,24 @@
 # Build spec — Safe scoped editing of phrases / LEGOs / seeds (the "edit cascade")
 
-**Status:** ready to implement. Authored 2026-06-21 from a design session with Tom.
+**Status:** IMPLEMENTED 2026-06-21 (branch `claude/seed-editing-auto-regen-piej1g`). Authored 2026-06-21 from a design session with Tom.
+
+> **Implementation note (2026-06-21).** Scope refined with Tom: the edit revises **only the
+> seed's target translation** — the canonical/known (English) side never changes — which
+> necessarily triggers a fresh LEGO breakdown + phrases + intros + audio for that seed.
+> Audio regen runs **automatically** at the end of the cascade (same principle as the
+> phrase-level edit, so the course stays complete) — the TTS-approval rule is for manual/bulk
+> operations, not for keeping an edited item whole.
+>
+> - **Delta A** — `fromSeed` scope on `POST /api/v2/validate/:courseCode` (`services/course-builder/routes/v2.cjs`), with unit test `v2-validate-scope.test.cjs`.
+> - **Delta B** — orchestrator `POST /api/course/:courseCode/edit-cascade` (`services/course-builder/routes/edit-cascade.cjs`, registered in `course-builder-api.cjs`, reachable via the production-api `/api/course/*` proxy). Snapshots + **rolls back** on a failed re-decomposition so a bad edit never destroys the existing breakdown. Audio scoped via `/regenerate-presentations` (self-scoping to missing) + `/generate {seeds:[N]}`. Unit test `edit-cascade.test.cjs` covers the Case 1/2 discriminator.
+> - **Delta C** — "Re-translate & rebuild" modal in `src/views/production/SeedEditor.vue` (per-seed target cell), shows the Case 1/2 result + blast radius.
+> - **Delta D** — "Missing audio only" filter in `src/views/production/ScriptViewer.vue` (intros included).
+>
+> **Follow-up:** `autoDecompose` currently updates the target and returns a re-decomposition
+> brief for an agent/editor to resubmit with `legos`. One-click auto-spawn of the decomposition
+> agent (reusing the build pipeline) is the remaining piece; the ready-breakdown path is fully wired.
+
+**Status (original):** ready to implement. Authored 2026-06-21 from a design session with Tom.
 **Scope:** dashboard repo (`ssi-dashboard-v7-clean`) — course-builder service + production dashboard frontend.
 **Guiding principle:** an edit should trigger a *surgical, scoped* regeneration + re-validation — never a full-course rebuild. Almost everything needed already exists; this is mostly wiring + four small additive pieces.
 
