@@ -8,9 +8,15 @@
         <span class="crumb-sep">/</span>
         <span class="crumb-here">Stage 0 Tuner</span>
       </nav>
-      <a class="s0-open" href="/stage0-tuner.html" target="_blank" rel="noopener">Open in full tab ↗</a>
+      <a class="s0-open" :href="`/stage0-tuner.html?theme=${theme}`" target="_blank" rel="noopener">Open in full tab ↗</a>
     </header>
-    <iframe class="s0-frame" src="/stage0-tuner.html" title="Stage 0 Tuner" allow="autoplay"></iframe>
+    <iframe
+      ref="frame"
+      class="s0-frame"
+      :src="`/stage0-tuner.html?theme=${theme}`"
+      title="Stage 0 Tuner"
+      allow="autoplay"
+    ></iframe>
   </div>
 </template>
 
@@ -20,6 +26,29 @@
 // as a static asset and frame it so it lives as a real, addressable in-app page.
 // The breadcrumb mirrors the Listening Pods nav (Home / Listening Config / Stage 0
 // Tuner) so there's always a path back to the dashboard and the Listening Config.
+//
+// Theme: the iframe is a separate document and can't see the app's <html
+// data-theme>, so we hand it the theme two ways — the initial ?theme= on the src
+// (no dark flash on load), and a postMessage on every later toggle so the tuner
+// flips live without reloading (which would drop its in-page state). We watch
+// documentElement's data-theme attribute — the app's single source of truth —
+// rather than coupling to the navbar's local toggle.
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const frame = ref(null)
+const theme = ref(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark')
+
+let observer = null
+onMounted(() => {
+  observer = new MutationObserver(() => {
+    const next = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
+    if (next === theme.value) return
+    theme.value = next
+    frame.value?.contentWindow?.postMessage({ type: 'popty-theme', theme: next }, '*')
+  })
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+})
+onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <style scoped>

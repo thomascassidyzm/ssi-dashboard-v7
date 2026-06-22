@@ -53,6 +53,55 @@
   --sans:'Inter',system-ui,'Avenir','Helvetica',Arial,sans-serif;
   --mono:ui-monospace,'IBM Plex Mono',Menlo,monospace;  /* uppercase labels */
 }
+
+/* ============================================================================
+   LIGHT THEME — mirrors the popty dashboard light palette (src/style.css).
+   Triggered by <html data-theme="light">, which is set on load from the
+   ?theme= query param / shared localStorage('popty-theme') / a postMessage
+   from the parent app (see the head script + Stage0Tuner.vue wrapper). The
+   whole page is variable-driven, so re-tuned values here are enough; not a
+   raw inversion — contrast is tuned for white surfaces.
+   ============================================================================ */
+:root[data-theme="light"]{
+  --bg:#eef2f6;            /* page background — deeper than white so cards separate */
+  --surface:#ffffff;       /* top bar / slim control bars / cards */
+  --surface-2:#f1f5f9;     /* stage area / chips / track rows */
+  --ink:#0f172a;           /* primary text */
+  --ink-2:#475569;         /* muted text */
+  --ink-3:#586573;         /* faint / placeholder */
+  --line:#cbd5e1;          /* border / divider */
+  --line-2:#cbd5e1;
+  --line-soft:#e2e8f0;
+
+  --accent:#a85508;        /* darkened amber — readable on white */
+  --accent-soft:#a85508;
+  --accent-wash:rgba(168,85,8,0.10);
+
+  --green:#047857;         /* emerald-700 primary play */
+  --green-ink:#ffffff;     /* white label on green fill */
+  --blue:#2563eb;          /* input focus / slider accent */
+
+  /* block tints on light — soft fills, dark readable labels */
+  --target:#047857;
+  --target-bg:rgba(4,120,87,0.10);
+  --target-line:rgba(4,120,87,0.34);
+
+  --meaning:#92400e;
+  --meaning-bg:rgba(180,83,9,0.10);
+  --meaning-line:rgba(180,83,9,0.34);
+
+  --take:#1d4ed8;
+  --take-bg:rgba(37,99,235,0.10);
+  --take-line:rgba(37,99,235,0.34);
+
+  --violet:#6d28d9;
+  --violet-bg:rgba(109,40,217,0.10);
+  --violet-line:rgba(109,40,217,0.34);
+
+  --shadow:0 1px 2px rgba(15,23,42,.06), 0 8px 24px -12px rgba(15,23,42,.18);
+}
+:root[data-theme="light"] .course-status.err{color:#b91c1c;}
+
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;}
 body{
@@ -249,6 +298,37 @@ body.grabbing{cursor:ew-resize;user-select:none;}
 .sheet textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(96,165,250,.2);}
 .sheet .row{display:flex;gap:9px;justify-content:flex-end;margin-top:12px;}
 </style>
+<script>
+/* Theme bootstrap — runs during head parse, before first paint, so there's no
+   dark flash when the dashboard is in light mode. Default is dark (no attribute,
+   matching the app). Source of truth, in order: ?theme= query param (set by the
+   Stage0Tuner.vue iframe wrapper), then the shared same-origin localStorage key
+   the dashboard writes ('popty-theme'). The page also listens for live toggles:
+   a postMessage from the parent (same-tab) and storage events (other tabs). */
+(function () {
+  function apply(theme) {
+    if (theme === 'light') document.documentElement.dataset.theme = 'light';
+    else delete document.documentElement.dataset.theme;
+  }
+  function resolve() {
+    try {
+      var q = new URLSearchParams(location.search).get('theme');
+      if (q === 'light' || q === 'dark') return q;
+    } catch (e) {}
+    try { if (localStorage.getItem('popty-theme') === 'light') return 'light'; } catch (e) {}
+    return 'dark';
+  }
+  apply(resolve());
+  // Live toggle from the parent app while this page stays mounted in the iframe.
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.type === 'popty-theme') apply(e.data.theme === 'light' ? 'light' : 'dark');
+  });
+  // Toggle made in another tab.
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'popty-theme') apply(e.newValue === 'light' ? 'light' : 'dark');
+  });
+})();
+</script>
 </head>
 <body>
 
