@@ -3,8 +3,13 @@
     <div class="navbar-inner">
       <!-- Left: Back link + Title -->
       <div class="navbar-left">
-        <router-link v-if="backLink" :to="backLink.to" class="back-link">
-          {{ backLink.label }}
+        <router-link
+          v-for="link in escapeLinks"
+          :key="link.to"
+          :to="link.to"
+          class="back-link"
+        >
+          {{ link.label }}
         </router-link>
         <h1 class="navbar-title">{{ title }}</h1>
       </div>
@@ -41,6 +46,9 @@
           </button>
           <div v-if="showUserMenu" class="user-dropdown">
             <div class="user-dropdown-name">{{ learner?.name || user?.email }}</div>
+            <router-link v-if="isAdmin" to="/admin" class="user-dropdown-item" @click="showUserMenu = false">
+              Admin
+            </router-link>
             <router-link v-if="isAdmin" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
               Users
             </router-link>
@@ -220,7 +228,10 @@ const activeCourseCount = ref(0)
 const isHidden = computed(() => route.meta.public === true || isRecorder.value)
 
 // Context detection
-const isHome = computed(() => route.path === '/')
+const isHome = computed(() => route.path === '/')          // '/' is the Courses pipeline board
+const isHomeHub = computed(() => route.path === '/home')   // the new landing menu
+const isAdminHub = computed(() => route.path === '/admin')
+const isUsers = computed(() => route.path === '/users')
 const isJobs = computed(() => route.path === '/jobs')
 const isMaintenance = computed(() => route.path === '/maintenance')
 const isInsights = computed(() => route.path === '/insights')
@@ -229,21 +240,30 @@ const isProduction = computed(() => route.path.startsWith('/production/') && rou
 const courseCode = computed(() => route.params.courseCode || null)
 const isCreateMode = computed(() => courseCode.value === 'new')
 
-// Home-section tabs show on Courses, Activity, and Maintenance pages
-const inHomeSection = computed(() => isHome.value || isJobs.value || isMaintenance.value || isInsights.value)
+// The Admin section groups platform-wide tooling under one tab row.
+const isAdminSection = computed(() =>
+  route.path.startsWith('/admin') || isJobs.value || isMaintenance.value || isInsights.value || isUsers.value
+)
 
-// Show course summary only on home page
+// Show course summary only on the Courses board
 const showSummary = computed(() => isHome.value)
 
-// Back link
-const backLink = computed(() => {
-  if (isHome.value) return null
-  return { to: '/', label: 'Courses' }
+// Persistent escapes: Home and Courses are reachable from anywhere
+// (Courses is the most-needed, Home is the menu). Drop whichever is current.
+const escapeLinks = computed(() => {
+  const links = []
+  if (!isHomeHub.value) links.push({ to: '/home', label: '↑ Home' })
+  if (!isHome.value) links.push({ to: '/', label: 'Courses' })
+  return links
 })
 
 // Title
 const title = computed(() => {
-  if (isHome.value) return 'Popty'
+  if (isHomeHub.value) return 'Popty'
+  if (isHome.value) return 'Courses'
+  if (isAdminHub.value) return 'Admin'
+  if (isUsers.value) return 'Users'
+  if (isInsights.value) return 'Insights'
   if (isDocs.value) return 'Documentation'
   if (isJobs.value) return 'Activity'
   if (isMaintenance.value) return 'Maintenance'
@@ -254,23 +274,38 @@ const title = computed(() => {
 
 // Tabs
 const tabs = computed(() => {
-  if (inHomeSection.value) {
+  // The landing menu — the three main areas.
+  if (isHomeHub.value) {
     return [
-      { label: 'Courses', to: '/', active: isHome.value },
+      { label: 'Courses', to: '/', active: false },
+      { label: 'Docs', to: '/docs', active: false },
+      { label: 'Admin', to: '/admin', active: false }
+    ]
+  }
+
+  // Admin section — platform-wide tooling under one tab row.
+  if (isAdminSection.value) {
+    return [
+      { label: 'Admin', to: '/admin', active: isAdminHub.value },
+      {
+        label: 'Configs',
+        to: '/admin/listening',
+        active: route.path.startsWith('/admin/listening') || route.path.startsWith('/admin/stage0')
+      },
+      { label: 'Insights', to: '/insights', active: isInsights.value },
       {
         label: 'Activity',
         to: '/jobs',
         active: isJobs.value,
         badge: activeCourseCount.value > 0 ? activeCourseCount.value : null
       },
-      { label: 'Docs', to: '/docs', active: false },
       {
         label: 'Maintenance',
         to: '/maintenance',
         active: isMaintenance.value,
         badge: auditStaleDays.value ? `${auditStaleDays.value}d` : null
       },
-      { label: 'Insights', to: '/insights', active: isInsights.value }
+      { label: 'Users', to: '/users', active: isUsers.value }
     ]
   }
 

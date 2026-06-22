@@ -52,6 +52,22 @@ const routes = [
     component: MissionControlHub,
     meta: { title: 'Mission Control' }
   },
+  // Landing hub — the menu over the three main areas (Courses / Docs / Admin).
+  // Courses stays at '/' (most-needed); '/home' is the optional overview menu.
+  {
+    path: '/home',
+    name: 'Home',
+    component: () => import('../views/Home.vue'),
+    meta: { title: 'Home' }
+  },
+  // Admin hub — platform-wide tooling (Configs, Insights, Activity,
+  // Maintenance, Users). Not per-course; gating is RLS/component-level.
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('../views/Admin.vue'),
+    meta: { title: 'Admin' }
+  },
   {
     path: '/maintenance',
     name: 'Maintenance',

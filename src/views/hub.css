@@ -1,0 +1,143 @@
+/* ============================================
+   Shared hub layout — Home & Admin landing pages.
+   Mirrors the Documentation Hub (DocsIndex.vue) house style,
+   but card accents are driven by per-card --hub-accent / --hub-glow.
+   ============================================ */
+
+.hub {
+  --hub-void: var(--canvas);
+  --hub-deep: var(--surface);
+  --hub-surface: var(--surface);
+  --hub-elevated: var(--surface-2);
+  --hub-border: var(--surface-2);
+  --hub-border-light: var(--surface-3);
+  --hub-text: var(--ink);
+  --hub-text-dim: var(--muted);
+  --hub-text-muted: var(--faint);
+
+  min-height: 100vh;
+  background: var(--hub-void);
+  color: var(--hub-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Light-mode: visible borders on white cards (see DocsIndex rationale). */
+:root[data-theme="light"] .hub {
+  --hub-border: var(--line);
+  --hub-border-light: var(--muted);
+  --hub-elevated: var(--surface-3);
+}
+
+/* Ambient background */
+.ambient-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--hub-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hub-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.03;
+}
+
+.glow-orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: hub-float 20s ease-in-out infinite; }
+.glow-orb-1 { width: 500px; height: 500px; background: #10b981; top: -150px; right: -100px; opacity: 0.06; }
+.glow-orb-2 { width: 400px; height: 400px; background: #a855f7; bottom: -100px; left: 20%; opacity: 0.05; animation-delay: -10s; }
+
+@keyframes hub-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Header */
+.hub-header {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--hub-border);
+  background: linear-gradient(180deg, var(--hub-deep) 0%, transparent 100%);
+  padding: 1.5rem 2.5rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-titles { display: flex; align-items: center; gap: 1.25rem; }
+.page-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--hub-text); margin: 0; line-height: 1.2; }
+.page-subtitle { font-size: 0.9375rem; color: var(--hub-text-dim); margin: 0.25rem 0 0 0; letter-spacing: 0.01em; }
+
+/* Main */
+.hub-main { position: relative; z-index: 10; max-width: 1400px; margin: 0 auto; padding: 2.5rem 2.5rem 4rem; }
+
+/* Section */
+.hub-section { margin-bottom: 2.5rem; }
+.section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; color: var(--hub-text-muted); white-space: nowrap; }
+.section-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--hub-border) 0%, transparent 100%); }
+
+/* Grid */
+.hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+@media (max-width: 1024px) { .hub-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .hub-grid { grid-template-columns: 1fr; } }
+
+/* Cards — accent comes from per-card --hub-accent / --hub-glow */
+.hub-card {
+  position: relative;
+  display: block;
+  background: var(--hub-surface);
+  border: 1px solid var(--hub-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.hub-card:hover { transform: translateY(-4px); border-color: var(--hub-accent); box-shadow: 0 20px 40px -20px var(--hub-glow); }
+
+.card-glow {
+  position: absolute; top: 0; left: 0; right: 0; height: 80px;
+  background: linear-gradient(180deg, var(--hub-glow) 0%, transparent 100%);
+  opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+}
+.hub-card:hover .card-glow { opacity: 1; }
+
+.card-content { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 180px; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; }
+
+.card-icon {
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  background: var(--hub-elevated); border: 1px solid var(--hub-border); border-radius: 10px;
+  color: var(--hub-accent); transition: all 0.3s ease;
+}
+.card-icon svg { width: 22px; height: 22px; }
+.hub-card:hover .card-icon { background: var(--hub-accent); border-color: var(--hub-accent); color: white; }
+
+.card-badge {
+  display: flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.75rem;
+  background: var(--hub-glow); border: 1px solid var(--hub-accent); border-radius: 100px; font-size: 0.75rem;
+}
+.card-badge .badge-value { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--hub-accent); }
+.card-badge .badge-label { font-weight: 500; color: var(--hub-accent); }
+
+.card-body { flex: 1; }
+.card-title { font-size: 1.25rem; font-weight: 700; color: var(--hub-text); margin: 0 0 0.625rem 0; letter-spacing: -0.01em; }
+.card-description { font-size: 0.8125rem; color: var(--hub-text-dim); line-height: 1.5; margin: 0; }
+
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--hub-border);
+}
+.card-action { font-size: 0.75rem; font-weight: 600; color: var(--hub-text-muted); text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s ease; }
+.hub-card:hover .card-action { color: var(--hub-accent); }
+.card-arrow { width: 18px; height: 18px; color: var(--hub-text-muted); transition: all 0.2s ease; }
+.hub-card:hover .card-arrow { transform: translateX(4px); color: var(--hub-accent); }
+
+@media (max-width: 768px) {
+  .hub-header { padding: 1.25rem 1.5rem 1.5rem; }
+  .header-titles { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .page-title { font-size: 1.625rem; }
+  .hub-main { padding: 2rem 1.5rem 3rem; }
+}
