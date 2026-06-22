@@ -46,19 +46,28 @@ const routes = [
   // ============================================
   // Mission Control Hub - Main Entry Point
   // ============================================
+  // Nav unification (Option A): '/' is the Home hub; the persistent Courses
+  // tab covers the "courses one click away" need that previously kept the
+  // pipeline board at root.
   {
     path: '/',
-    name: 'MissionControl',
-    component: MissionControlHub,
-    meta: { title: 'Mission Control' }
-  },
-  // Landing hub — the menu over the three main areas (Courses / Docs / Admin).
-  // Courses stays at '/' (most-needed); '/home' is the optional overview menu.
-  {
-    path: '/home',
     name: 'Home',
     component: () => import('../views/Home.vue'),
     meta: { title: 'Home' }
+  },
+  // Legacy path kept working — redirects to the new root.
+  {
+    path: '/home',
+    redirect: '/'
+  },
+  // The pipeline board (formerly at '/') retained as a reachable surface.
+  // Its courses-list role is covered by the Courses library at '/courses';
+  // this preserves the board's import/pipeline widgets while the nav settles.
+  {
+    path: '/pipeline',
+    name: 'MissionControl',
+    component: MissionControlHub,
+    meta: { title: 'Pipeline Board' }
   },
   // Admin hub — platform-wide tooling (Configs, Insights, Activity,
   // Maintenance, Users). Not per-course; gating is RLS/component-level.

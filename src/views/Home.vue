@@ -25,7 +25,7 @@
 
         <div class="hub-grid">
           <!-- Courses -->
-          <router-link to="/" class="hub-card card-courses">
+          <router-link to="/courses" class="hub-card card-courses">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">

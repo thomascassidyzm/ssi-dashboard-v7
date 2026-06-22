@@ -1,30 +1,25 @@
 <template>
   <header v-if="!isHidden" class="app-navbar">
     <div class="navbar-inner">
-      <!-- Left: Back link + Title -->
+      <!-- Left: Popty brand (→ Home) + course breadcrumb -->
       <div class="navbar-left">
-        <router-link
-          v-for="link in escapeLinks"
-          :key="link.to"
-          :to="link.to"
-          class="back-link"
-        >
-          {{ link.label }}
-        </router-link>
-        <h1 class="navbar-title">{{ title }}</h1>
+        <router-link to="/" class="navbar-brand">Popty</router-link>
+        <span v-if="courseCrumb" class="navbar-crumb">
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current">{{ courseCrumb }}</span>
+        </span>
       </div>
 
-      <!-- Center: Tabs -->
-      <nav v-if="tabs.length" class="navbar-tabs">
+      <!-- Center: persistent primary nav -->
+      <nav class="navbar-tabs">
         <router-link
-          v-for="tab in tabs"
+          v-for="tab in primaryTabs"
           :key="tab.label"
           :to="tab.to"
           class="tab-item"
           :class="{ active: tab.active }"
         >
           {{ tab.label }}
-          <span v-if="tab.badge" class="tab-badge">{{ tab.badge }}</span>
         </router-link>
       </nav>
 
@@ -65,6 +60,22 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Contextual second row: per-section sub-navigation -->
+    <div v-if="sectionTabs.length" class="navbar-subbar">
+      <nav class="navbar-subtabs">
+        <router-link
+          v-for="tab in sectionTabs"
+          :key="tab.label"
+          :to="tab.to"
+          class="tab-item"
+          :class="{ active: tab.active }"
+        >
+          {{ tab.label }}
+          <span v-if="tab.badge" class="tab-badge">{{ tab.badge }}</span>
+        </router-link>
+      </nav>
     </div>
 
     <!-- Password Modal -->
@@ -227,62 +238,54 @@ const activeCourseCount = ref(0)
 // and never see the admin console chrome.
 const isHidden = computed(() => route.meta.public === true || isRecorder.value)
 
-// Context detection
-const isHome = computed(() => route.path === '/')          // '/' is the Courses pipeline board
-const isHomeHub = computed(() => route.path === '/home')   // the new landing menu
-const isAdminHub = computed(() => route.path === '/admin')
+// Context detection — route semantics after the nav unification:
+// '/' is the Home hub; the courses library lives at '/courses'.
+const courseCode = computed(() => route.params.courseCode || null)
+const isCreateMode = computed(() => courseCode.value === 'new')
+const isCoursesBoard = computed(() => route.path === '/courses')
+const isDocs = computed(() => route.path.startsWith('/docs'))
 const isUsers = computed(() => route.path === '/users')
 const isJobs = computed(() => route.path === '/jobs')
 const isMaintenance = computed(() => route.path === '/maintenance')
 const isInsights = computed(() => route.path === '/insights')
-const isDocs = computed(() => route.path.startsWith('/docs'))
+const isAdminHub = computed(() => route.path === '/admin')
 const isProduction = computed(() => route.path.startsWith('/production/') && route.params.courseCode)
-const courseCode = computed(() => route.params.courseCode || null)
-const isCreateMode = computed(() => courseCode.value === 'new')
+
+// "Courses" owns the whole course pipeline: the library, a course overview,
+// and every working surface under /production/:code.
+const isCourseSection = computed(() =>
+  route.path.startsWith('/courses') ||
+  route.path.startsWith('/course/') ||
+  (route.path.startsWith('/production/') && !!courseCode.value)
+)
 
 // The Admin section groups platform-wide tooling under one tab row.
 const isAdminSection = computed(() =>
   route.path.startsWith('/admin') || isJobs.value || isMaintenance.value || isInsights.value || isUsers.value
 )
 
-// Show course summary only on the Courses board
-const showSummary = computed(() => isHome.value)
+// Show the course-count chip only on the Courses library.
+const showSummary = computed(() => isCoursesBoard.value)
 
-// Persistent escapes: Home and Courses are reachable from anywhere
-// (Courses is the most-needed, Home is the menu). Drop whichever is current.
-const escapeLinks = computed(() => {
-  const links = []
-  if (!isHomeHub.value) links.push({ to: '/home', label: '↑ Home' })
-  if (!isHome.value) links.push({ to: '/', label: 'Courses' })
-  return links
-})
-
-// Title
-const title = computed(() => {
-  if (isHomeHub.value) return 'Popty'
-  if (isHome.value) return 'Courses'
-  if (isAdminHub.value) return 'Admin'
-  if (isUsers.value) return 'Users'
-  if (isInsights.value) return 'Insights'
-  if (isDocs.value) return 'Documentation'
-  if (isJobs.value) return 'Activity'
-  if (isMaintenance.value) return 'Maintenance'
+// Breadcrumb — on course-scoped routes, show the course name after the brand.
+// "Courses" itself is always one click away via the persistent primary tab.
+const courseCrumb = computed(() => {
   if (isCreateMode.value) return 'New Course'
-  if (isProduction.value) return getCourseName(courseCode.value)
-  return route.meta.title || 'Popty'
+  if (courseCode.value) return getCourseName(courseCode.value)
+  return null
 })
 
-// Tabs
-const tabs = computed(() => {
-  // The landing menu — the three main areas.
-  if (isHomeHub.value) {
-    return [
-      { label: 'Courses', to: '/', active: false },
-      { label: 'Docs', to: '/docs', active: false },
-      { label: 'Admin', to: '/admin', active: false }
-    ]
-  }
+// PRIMARY tabs — always visible everywhere. The persistent top-level nav,
+// with an active-state highlight driven by the current section.
+const primaryTabs = computed(() => [
+  { label: 'Courses', to: '/courses', active: isCourseSection.value },
+  { label: 'Docs', to: '/docs', active: isDocs.value },
+  { label: 'Admin', to: '/admin', active: isAdminSection.value }
+])
 
+// SECTION sub-tabs — contextual nav rendered as a second row under the
+// primary bar (the per-section tooling: admin tools, docs pages, course view).
+const sectionTabs = computed(() => {
   // Admin section — platform-wide tooling under one tab row.
   if (isAdminSection.value) {
     return [
@@ -357,7 +360,6 @@ onMounted(() => {
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 56px;
   background: var(--color-shadow, var(--surface));
   border-bottom: 1px solid var(--color-graphite, var(--surface-3));
   padding: 0 1.5rem;
@@ -366,7 +368,7 @@ onMounted(() => {
 .navbar-inner {
   max-width: 1400px;
   margin: 0 auto;
-  height: 100%;
+  height: 56px;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -376,20 +378,60 @@ onMounted(() => {
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
-.back-link {
-  color: var(--color-tungsten, var(--accent));
+.navbar-brand {
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-paper, var(--ink));
   text-decoration: none;
-  font-size: 0.875rem;
   white-space: nowrap;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
 }
 
-.back-link:hover {
-  color: var(--color-paper, var(--ink));
+.navbar-brand:hover {
+  opacity: 0.8;
+}
+
+.navbar-crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.crumb-sep {
+  color: var(--color-tungsten, var(--muted));
+}
+
+.crumb-current {
+  color: var(--color-paper-dim, var(--muted));
+}
+
+/* Contextual second row */
+.navbar-subbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
+}
+
+.navbar-subtabs {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navbar-subtabs::-webkit-scrollbar {
+  display: none;
 }
 
 .navbar-title {
@@ -578,6 +620,7 @@ onMounted(() => {
   }
 
   .navbar-inner {
+    height: auto;
     flex-wrap: wrap;
     padding: 0.5rem 0;
     gap: 0;
