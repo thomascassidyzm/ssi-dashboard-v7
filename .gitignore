@@ -163,3 +163,10 @@ seed*.json
 # Supabase temp
 # --------------------------
 supabase/.temp/
+
+# --------------------------
+# Course-optimization working output — keep the planning .md,
+# ignore the agent-generated JSON dumps (findings/fixes/regen/workflow
+# results). Same ephemeral category as docs/sessions/ above.
+# --------------------------
+docs/course-optimization/**/*.json
