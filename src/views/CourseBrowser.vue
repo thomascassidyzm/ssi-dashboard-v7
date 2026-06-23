@@ -31,42 +31,63 @@
         />
       </div>
 
-      <!-- Filter Pills -->
-      <div class="mb-6 flex flex-wrap items-center gap-3">
-        <!-- Status filters -->
-        <span class="text-xs text-faint uppercase tracking-wider">Status</span>
+      <!-- Filters -->
+      <div class="mb-2 flex flex-wrap items-center gap-2.5">
+        <!-- Release status (tri-state) -->
+        <span class="text-xs text-faint uppercase tracking-wider">Release</span>
         <button
           v-for="s in statusFilters"
           :key="s.value"
-          @click="toggleStatusFilter(s.value)"
-          :class="[
-            'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
-            activeStatusFilters.has(s.value)
-              ? s.activeClass
-              : 'border-line text-faint hover:border-line hover:text-ink'
-          ]"
+          @click="cycleFilter(statusState, s.value)"
+          :class="chipClass(statusState, s)"
         >
+          <span v-if="statusState[s.value] === 'exclude'" class="chip-no">⊘</span>
           {{ s.label }}
         </button>
 
         <span class="text-faint mx-1">|</span>
 
-        <!-- Pricing filters -->
+        <!-- Pricing (tri-state) -->
         <span class="text-xs text-faint uppercase tracking-wider">Pricing</span>
         <button
           v-for="p in pricingFilters"
           :key="p.value"
-          @click="togglePricingFilter(p.value)"
-          :class="[
-            'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
-            activePricingFilters.has(p.value)
-              ? p.activeClass
-              : 'border-line text-faint hover:border-line hover:text-ink'
-          ]"
+          @click="cycleFilter(pricingState, p.value)"
+          :class="chipClass(pricingState, p)"
         >
+          <span v-if="pricingState[p.value] === 'exclude'" class="chip-no">⊘</span>
           {{ p.label }}
         </button>
       </div>
+
+      <!-- Language dropdowns + reset -->
+      <div class="mb-5 flex flex-wrap items-center gap-2.5">
+        <span class="text-xs text-faint uppercase tracking-wider">Known</span>
+        <select v-model="knownFilter" class="filter-select">
+          <option value="">All</option>
+          <option v-for="l in knownLangs" :key="l" :value="l">{{ l }}</option>
+        </select>
+
+        <span class="text-xs text-faint uppercase tracking-wider ml-2">Target</span>
+        <select v-model="targetFilter" class="filter-select">
+          <option value="">All</option>
+          <option v-for="l in targetLangs" :key="l" :value="l">{{ l }}</option>
+        </select>
+
+        <button
+          v-if="hasActiveFilters"
+          @click="resetFilters"
+          class="ml-2 text-xs text-faint hover:text-ink underline underline-offset-2"
+        >
+          Reset filters
+        </button>
+        <span class="ml-auto text-xs text-faint">{{ filteredCourses.length }} of {{ accessibleCount }} courses</span>
+      </div>
+
+      <!-- Tri-state hint -->
+      <p class="mb-4 text-xs text-faint">
+        Tip: click a chip once to show <em>only</em> it, twice (⊘) to <em>hide</em> it, a third time to clear.
+      </p>
 
       <!-- Stats loading indicator -->
       <div v-if="loadingStats" class="mb-4 flex items-center gap-2 text-sm text-faint">
@@ -100,80 +121,43 @@
         </router-link>
       </div>
 
-      <!-- Courses Grid -->
-      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Courses Grid — compact cards -->
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
         <router-link
           v-for="course in filteredCourses"
           :key="course.course_code"
           :to="`/production/${course.course_code}`"
           :class="[
-            'bg-surface rounded-lg p-5 transition-all cursor-pointer hover:bg-surface-2 hover:shadow-lg shadow-sm group',
+            'course-card bg-surface rounded-lg px-4 py-3 transition-all cursor-pointer hover:bg-surface-2 hover:shadow-md group',
             highlightedCourses.has(course.course_code)
-              ? 'border-2 border-accent-2 shadow-lg'
+              ? 'border-2 border-accent-2 shadow-md'
               : 'border border-line hover:border-accent-2'
           ]"
         >
-          <!-- Header -->
-          <div class="flex items-start justify-between mb-3">
-            <div>
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="text-lg font-semibold text-accent-2 group-hover:opacity-80">
-                  {{ formatCourseCode(course.course_code) }}
-                </h3>
-                <span
-                  v-if="highlightedCourses.has(course.course_code)"
-                  class="px-2 py-0.5 bg-accent-2 text-white text-xs font-bold rounded-full animate-pulse"
-                >
-                  NEW
-                </span>
-              </div>
-              <p class="text-sm text-muted">
-                {{ getFullCourseName(course.course_code) }}
-              </p>
-            </div>
-            <div class="flex items-center gap-2 flex-shrink-0">
-              <span
-                class="pricing-pill px-2 py-0.5 rounded-full text-xs font-medium"
-                :class="getPricingClass(course.pricing_tier)"
-              >
-                {{ (course.pricing_tier || 'premium').toUpperCase() }}
-              </span>
-              <span
-                class="status-pill px-3 py-1 rounded-full text-xs font-medium"
-                :class="getStatusClass(course.status)"
-              >
-                {{ formatStatus(course.status) }}
-              </span>
-            </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-base font-semibold text-accent-2 group-hover:opacity-80 truncate font-mono">
+              {{ course.course_code }}
+            </h3>
+            <span
+              v-if="highlightedCourses.has(course.course_code)"
+              class="px-1.5 py-0.5 bg-accent-2 text-white text-[10px] font-bold rounded-full animate-pulse flex-shrink-0"
+            >NEW</span>
           </div>
-
-          <!-- Stats Grid -->
-          <div class="grid grid-cols-2 gap-2 text-sm">
-            <!-- Seeds -->
-            <div class="bg-surface-2 border border-line rounded px-3 py-2">
-              <div class="text-faint text-xs mb-1">Seeds</div>
-              <div class="font-mono">
-                <span class="text-accent-2">{{ course.seed_pairs || 0 }}</span>
-                <span v-if="course.seed_count" class="text-faint"> / {{ course.seed_count }}</span>
-              </div>
-            </div>
-            <!-- LEGOs -->
-            <div class="bg-surface-2 border border-line rounded px-3 py-2">
-              <div class="text-faint text-xs mb-1">LEGOs</div>
-              <div class="font-mono text-accent-2">{{ course.lego_pairs || 0 }}</div>
-            </div>
-            <!-- Phrases -->
-            <div class="bg-surface-2 border border-line rounded px-3 py-2">
-              <div class="text-faint text-xs mb-1">Phrases</div>
-              <div class="font-mono text-accent-2">{{ (course.phrases || 0).toLocaleString() }}</div>
-            </div>
-            <!-- Audio coverage available per-course in Production Suite -->
-          </div>
-
-          <!-- Click hint -->
-          <div class="mt-3 pt-3 border-t border-line text-center">
-            <span class="text-xs text-faint group-hover:text-accent-2 transition-colors">
-              Click to open Production Suite →
+          <p class="text-xs text-muted truncate mt-0.5 mb-2">
+            {{ getFullCourseName(course.course_code) }}
+          </p>
+          <div class="flex items-center gap-1.5">
+            <span
+              class="pricing-pill px-2 py-0.5 rounded-full text-[11px] font-medium"
+              :class="getPricingClass(course.pricing_tier)"
+            >
+              {{ (course.pricing_tier || 'premium').toUpperCase() }}
+            </span>
+            <span
+              class="status-pill px-2 py-0.5 rounded-full text-[11px] font-medium border"
+              :class="getStatusClass(course.status)"
+            >
+              {{ statusLabel(course.status) }}
             </span>
           </div>
         </router-link>
@@ -200,12 +184,15 @@ const error = ref(null)
 const searchQuery = ref('')
 const highlightedCourses = ref(new Set()) // Courses to highlight as new/updated
 
-// Filter state — empty Set means "show all"
-const activeStatusFilters = ref(new Set())
-const activePricingFilters = ref(new Set())
+// Tri-state filters: a value maps to 'include' (show only) or 'exclude' (hide).
+// Absent = neutral. Cycle: neutral → include → exclude → neutral.
+const statusState = ref({})
+const pricingState = ref({})
+const knownFilter = ref('')
+const targetFilter = ref('')
 
 const statusFilters = [
-  { value: 'draft', label: 'Testing', activeClass: 'bg-surface-3/30 border-line text-ink' },
+  { value: 'draft', label: 'Testing', activeClass: 'bg-surface-3/40 border-slate-400 text-ink' },
   { value: 'beta', label: 'Beta', activeClass: 'bg-yellow-600/20 border-yellow-500 text-yellow-400' },
   { value: 'released', label: 'Live', activeClass: 'bg-emerald-600/20 border-emerald-500 text-emerald-400' },
 ]
@@ -216,44 +203,77 @@ const pricingFilters = [
   { value: 'community', label: 'Community', activeClass: 'bg-blue-600/20 border-blue-500 text-blue-400' },
 ]
 
-function toggleStatusFilter(value) {
-  if (activeStatusFilters.value.has(value)) {
-    activeStatusFilters.value.delete(value)
-  } else {
-    activeStatusFilters.value.add(value)
-  }
-  activeStatusFilters.value = new Set(activeStatusFilters.value) // trigger reactivity
+function cycleFilter(stateRef, value) {
+  const cur = stateRef.value[value]
+  const next = { ...stateRef.value }
+  if (!cur) next[value] = 'include'
+  else if (cur === 'include') next[value] = 'exclude'
+  else delete next[value]
+  stateRef.value = next
 }
 
-function togglePricingFilter(value) {
-  if (activePricingFilters.value.has(value)) {
-    activePricingFilters.value.delete(value)
-  } else {
-    activePricingFilters.value.add(value)
-  }
-  activePricingFilters.value = new Set(activePricingFilters.value)
+function chipClass(stateRef, item) {
+  const st = stateRef.value[item.value]
+  const base = 'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer inline-flex items-center gap-1'
+  if (st === 'include') return `${base} ${item.activeClass}`
+  if (st === 'exclude') return `${base} bg-red-600/15 border-red-500/60 text-red-400 line-through`
+  return `${base} border-line text-faint hover:border-line hover:text-ink`
+}
+
+// Parse `{target}_for_{known}` (target may carry a region, e.g. ara_eg, por_br).
+function parseLangs(code) {
+  const i = code.indexOf('_for_')
+  if (i === -1) return { target: code, known: '' }
+  return { target: code.slice(0, i), known: code.slice(i + 5) }
+}
+
+const accessibleCourses = computed(() => courses.value.filter(c => canAccessCourse(c.course_code)))
+const accessibleCount = computed(() => accessibleCourses.value.length)
+
+const knownLangs = computed(() =>
+  [...new Set(accessibleCourses.value.map(c => parseLangs(c.course_code).known).filter(Boolean))].sort()
+)
+const targetLangs = computed(() =>
+  [...new Set(accessibleCourses.value.map(c => parseLangs(c.course_code).target).filter(Boolean))].sort()
+)
+
+const hasActiveFilters = computed(() =>
+  Object.keys(statusState.value).length > 0 ||
+  Object.keys(pricingState.value).length > 0 ||
+  !!knownFilter.value || !!targetFilter.value || !!searchQuery.value
+)
+
+function resetFilters() {
+  statusState.value = {}
+  pricingState.value = {}
+  knownFilter.value = ''
+  targetFilter.value = ''
+  searchQuery.value = ''
+}
+
+// One dimension's tri-state pass: includes are OR; excludes always remove.
+function passesTriState(state, value) {
+  const includes = Object.keys(state).filter(k => state[k] === 'include')
+  const excludes = Object.keys(state).filter(k => state[k] === 'exclude')
+  if (excludes.includes(value)) return false
+  if (includes.length > 0) return includes.includes(value)
+  return true
 }
 
 // Computed: Filtered courses based on search query + filters
 const filteredCourses = computed(() => {
-  // Filter by user's course access first
-  let result = courses.value.filter(c => canAccessCourse(c.course_code))
+  let result = accessibleCourses.value
 
-  // Apply status filter
-  if (activeStatusFilters.value.size > 0) {
-    result = result.filter(c => {
-      const status = c.status || 'draft'
-      return activeStatusFilters.value.has(status)
-    })
-  }
-
-  // Apply pricing filter
-  if (activePricingFilters.value.size > 0) {
-    result = result.filter(c => {
-      const tier = c.pricing_tier || 'premium'
-      return activePricingFilters.value.has(tier)
-    })
-  }
+  result = result.filter(c => {
+    const status = c.status || 'draft'
+    const tier = c.pricing_tier || 'premium'
+    const { known, target } = parseLangs(c.course_code)
+    if (!passesTriState(statusState.value, status)) return false
+    if (!passesTriState(pricingState.value, tier)) return false
+    if (knownFilter.value && known !== knownFilter.value) return false
+    if (targetFilter.value && target !== targetFilter.value) return false
+    return true
+  })
 
   // Apply search
   if (!searchQuery.value) return result
@@ -383,18 +403,21 @@ function getFullCourseName(courseCode) {
   return getCourseName(courseCode)
 }
 
-function formatStatus(status) {
-  return status?.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'Unknown'
+// Unified release vocabulary — same labels & colours as the filter chips.
+// draft → Testing, beta → Beta, released → Live.
+function statusLabel(status) {
+  const s = (status || 'draft').toLowerCase()
+  if (s === 'released' || s === 'live' || s === 'complete') return 'Live'
+  if (s === 'beta') return 'Beta'
+  if (s === 'draft' || s === 'in_progress') return 'Testing'
+  return status?.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'Testing'
 }
 
 function getStatusClass(status) {
-  if (status === 'complete' || status === 'ready_for_phase_2') {
-    return 'bg-emerald-600 text-white'
-  } else if (status === 'in_progress') {
-    return 'bg-yellow-600 text-white'
-  } else {
-    return 'bg-surface-3 text-ink'
-  }
+  const label = statusLabel(status)
+  if (label === 'Live') return 'sp-live bg-emerald-600/20 border-emerald-500 text-emerald-400'
+  if (label === 'Beta') return 'sp-beta bg-yellow-600/20 border-yellow-500 text-yellow-400'
+  return 'sp-testing bg-surface-3/40 border-slate-500 text-muted'
 }
 
 function getPricingClass(tier) {
@@ -414,6 +437,25 @@ function getPricingClass(tier) {
   text/fill to AA-passing values while keeping the same hue family.
 -->
 <style scoped>
+/* Language dropdowns */
+.filter-select {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent-2, var(--accent));
+}
+.chip-no {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
 /* Error panel — dark literals (bg-red-900/20, text-red-400) don't read on light */
 :root[data-theme="light"] .error-panel {
   background-color: #fef2f2 !important;   /* red-50 */
@@ -466,13 +508,27 @@ function getPricingClass(tier) {
   color: #854d0e !important;              /* 6.15:1 */
 }
 
-/* Status pills on cards: solid-fill variants.
-   bg-emerald-600/bg-yellow-600 are a touch light for white text in light mode. */
-:root[data-theme="light"] .status-pill.bg-emerald-600 {
-  background-color: #047857 !important;   /* white text = 5.48:1 */
+/* Release pills on cards (Testing/Beta/Live) — darken hue families for light. */
+:root[data-theme="light"] .status-pill.sp-live {
+  background-color: #d1fae5 !important;
+  border-color: #047857 !important;
+  color: #047857 !important;              /* 4.84:1 */
 }
-:root[data-theme="light"] .status-pill.bg-yellow-600 {
-  background-color: #b45309 !important;   /* amber-700 — white text = 5.02:1 */
+:root[data-theme="light"] .status-pill.sp-beta {
+  background-color: #fef3c7 !important;
+  border-color: #d97706 !important;
+  color: #854d0e !important;              /* 6.15:1 */
 }
-/* bg-surface-3 text-ink default status pill already 14.48:1 — no override. */
+:root[data-theme="light"] .status-pill.sp-testing {
+  background-color: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+  color: #475569 !important;              /* slate-600 — AA */
+}
+
+/* Excluded (tri-state) chips carry text-red-400 — darken for light. */
+:root[data-theme="light"] .filter-pill.text-red-400 {
+  background-color: #fee2e2 !important;   /* red-100 */
+  border-color: #dc2626 !important;
+  color: #b91c1c !important;              /* red-700 */
+}
 </style>
