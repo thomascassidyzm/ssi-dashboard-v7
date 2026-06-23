@@ -54,7 +54,10 @@ onBeforeUnmount(() => observer?.disconnect())
 <style scoped>
 .stage0-tuner-page {
   position: fixed;
-  inset: 0;
+  top: var(--app-navbar-height, 56px);
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   background: var(--canvas);

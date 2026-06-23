@@ -1,5 +1,5 @@
 <template>
-  <header v-if="!isHidden" class="app-navbar">
+  <header v-if="!isHidden" ref="navbarRef" class="app-navbar">
     <div class="navbar-inner">
       <!-- Left: Popty brand (→ Home) + course breadcrumb -->
       <div class="navbar-left">
@@ -122,7 +122,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useCourses } from '../composables/useCourses'
 import { useAuth } from '../composables/useAuth'
@@ -352,6 +352,27 @@ const sectionTabs = computed(() => {
 
 onMounted(() => {
   loadCourses()
+})
+
+// Publish the navbar's real height as --app-navbar-height so full-screen
+// takeover pages (e.g. Stage0Tuner, position:fixed inset:0) can offset below
+// it — robust to the one-row vs two-row (sub-tabs) height change.
+const navbarRef = ref(null)
+let navbarRO = null
+function syncNavbarHeight() {
+  const h = navbarRef.value ? navbarRef.value.offsetHeight : 0
+  document.documentElement.style.setProperty('--app-navbar-height', `${h}px`)
+}
+onMounted(() => {
+  navbarRO = new ResizeObserver(syncNavbarHeight)
+  watchEffect(() => {
+    if (navbarRef.value) { navbarRO.observe(navbarRef.value); syncNavbarHeight() }
+    else { navbarRO.disconnect(); syncNavbarHeight() }
+  })
+})
+onUnmounted(() => {
+  navbarRO?.disconnect()
+  document.documentElement.style.removeProperty('--app-navbar-height')
 })
 </script>
 
