@@ -38,8 +38,8 @@
         <button
           v-for="s in statusFilters"
           :key="s.value"
-          @click="cycleFilter(statusState, s.value)"
-          :class="chipClass(statusState, s)"
+          @click="cycleFilter('status', s.value)"
+          :class="chipClass('status', s)"
         >
           <span v-if="statusState[s.value] === 'exclude'" class="chip-no">⊘</span>
           {{ s.label }}
@@ -52,8 +52,8 @@
         <button
           v-for="p in pricingFilters"
           :key="p.value"
-          @click="cycleFilter(pricingState, p.value)"
-          :class="chipClass(pricingState, p)"
+          @click="cycleFilter('pricing', p.value)"
+          :class="chipClass('pricing', p)"
         >
           <span v-if="pricingState[p.value] === 'exclude'" class="chip-no">⊘</span>
           {{ p.label }}
@@ -203,7 +203,10 @@ const pricingFilters = [
   { value: 'community', label: 'Community', activeClass: 'bg-blue-600/20 border-blue-500 text-blue-400' },
 ]
 
-function cycleFilter(stateRef, value) {
+const filterGroups = { status: statusState, pricing: pricingState }
+
+function cycleFilter(group, value) {
+  const stateRef = filterGroups[group]
   const cur = stateRef.value[value]
   const next = { ...stateRef.value }
   if (!cur) next[value] = 'include'
@@ -212,8 +215,8 @@ function cycleFilter(stateRef, value) {
   stateRef.value = next
 }
 
-function chipClass(stateRef, item) {
-  const st = stateRef.value[item.value]
+function chipClass(group, item) {
+  const st = filterGroups[group].value[item.value]
   const base = 'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer inline-flex items-center gap-1'
   if (st === 'include') return `${base} ${item.activeClass}`
   if (st === 'exclude') return `${base} bg-red-600/15 border-red-500/60 text-red-400 line-through`
