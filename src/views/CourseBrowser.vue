@@ -31,6 +31,19 @@
         />
       </div>
 
+      <!-- Recents — the fast path back to what you were working on -->
+      <div v-if="recentCourses.length" class="mb-4 flex items-center gap-2 flex-wrap">
+        <span class="text-xs text-faint uppercase tracking-wider">Recent</span>
+        <button
+          v-for="code in recentCourses"
+          :key="code"
+          @click="openCourse(code)"
+          class="recent-chip font-mono"
+        >
+          {{ code }}
+        </button>
+      </div>
+
       <!-- Filters -->
       <div class="mb-2 flex flex-wrap items-center gap-2.5">
         <!-- Release status (tri-state) -->
@@ -121,53 +134,82 @@
         </router-link>
       </div>
 
-      <!-- Courses Grid — compact cards -->
-      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-        <router-link
-          v-for="course in filteredCourses"
-          :key="course.course_code"
-          :to="`/production/${course.course_code}`"
-          :class="[
-            'course-card bg-surface rounded-lg px-4 py-3 transition-all cursor-pointer hover:bg-surface-2 hover:shadow-md group',
-            highlightedCourses.has(course.course_code)
-              ? 'border-2 border-accent-2 shadow-md'
-              : 'border border-line hover:border-accent-2'
-          ]"
-        >
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="text-base font-semibold text-accent-2 group-hover:opacity-80 truncate font-mono">
-              {{ course.course_code }}
-            </h3>
-            <span
-              v-if="highlightedCourses.has(course.course_code)"
-              class="px-1.5 py-0.5 bg-accent-2 text-white text-[10px] font-bold rounded-full animate-pulse flex-shrink-0"
-            >NEW</span>
-          </div>
-          <p class="text-xs text-muted truncate mt-0.5 mb-2">
-            {{ getFullCourseName(course.course_code) }}
-          </p>
-          <div class="flex items-center gap-1.5">
-            <span
-              class="pricing-pill px-2 py-0.5 rounded-full text-[11px] font-medium"
-              :class="getPricingClass(course.pricing_tier)"
+      <!-- Courses table — dense, scannable, scales -->
+      <div v-else class="course-table-wrap border border-line rounded-lg overflow-x-auto">
+        <table class="course-table w-full text-sm">
+          <thead>
+            <tr class="text-faint text-xs uppercase tracking-wider">
+              <th class="w-9 px-3 py-2 text-center">
+                <input type="checkbox" :checked="allFilteredSelected" @change="toggleSelectAll" />
+              </th>
+              <th class="text-left px-3 py-2">Code</th>
+              <th class="text-left px-3 py-2">Name</th>
+              <th class="text-left px-3 py-2 hidden md:table-cell">Known</th>
+              <th class="text-left px-3 py-2 hidden md:table-cell">Target</th>
+              <th class="text-left px-3 py-2">Pricing</th>
+              <th class="text-left px-3 py-2">Stage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="course in filteredCourses"
+              :key="course.course_code"
+              class="course-row border-t border-line cursor-pointer transition-colors"
+              :class="{ 'row-selected': selected.has(course.course_code), 'row-new': highlightedCourses.has(course.course_code) }"
+              @click="openCourse(course.course_code)"
             >
-              {{ (course.pricing_tier || 'premium').toUpperCase() }}
-            </span>
-            <span
-              class="status-pill px-2 py-0.5 rounded-full text-[11px] font-medium border"
-              :class="getStatusClass(course.status)"
-            >
-              {{ statusLabel(course.status) }}
-            </span>
-          </div>
-        </router-link>
+              <td class="px-3 py-2 text-center" @click.stop>
+                <input
+                  type="checkbox"
+                  :checked="selected.has(course.course_code)"
+                  @change="toggleSelect(course.course_code)"
+                />
+              </td>
+              <td class="px-3 py-2 font-mono text-accent-2 whitespace-nowrap">
+                {{ course.course_code }}
+                <span v-if="highlightedCourses.has(course.course_code)" class="ml-1 text-[10px] text-accent-2 font-sans">• new</span>
+              </td>
+              <td class="px-3 py-2 text-muted max-w-xs truncate">{{ getFullCourseName(course.course_code) }}</td>
+              <td class="px-3 py-2 text-faint font-mono hidden md:table-cell">{{ parseLangs(course.course_code).known }}</td>
+              <td class="px-3 py-2 text-faint font-mono hidden md:table-cell">{{ parseLangs(course.course_code).target }}</td>
+              <td class="px-3 py-2">
+                <span class="pricing-pill px-2 py-0.5 rounded-full text-[11px] font-medium" :class="getPricingClass(course.pricing_tier)">
+                  {{ (course.pricing_tier || 'premium').toUpperCase() }}
+                </span>
+              </td>
+              <td class="px-3 py-2">
+                <span class="status-pill px-2 py-0.5 rounded-full text-[11px] font-medium border" :class="getStatusClass(course.status)">
+                  {{ statusLabel(course.status) }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
+
+    <!-- Bulk action bar -->
+    <div v-if="selected.size" class="bulk-bar">
+      <span class="font-medium text-ink">{{ selected.size }} selected</span>
+      <button @click="clearSelection" class="text-faint hover:text-ink text-sm">Clear</button>
+      <span class="bulk-sep"></span>
+      <span class="text-xs text-faint uppercase tracking-wider">Stage →</span>
+      <button v-for="s in statusFilters" :key="s.value" :disabled="bulkBusy" @click="applyBulkStatus(s.value)" class="bulk-action">
+        {{ s.label }}
+      </button>
+      <span class="bulk-sep"></span>
+      <span class="text-xs text-faint uppercase tracking-wider">Pricing →</span>
+      <button v-for="p in pricingFilters" :key="p.value" :disabled="bulkBusy" @click="applyBulkPricing(p.value)" class="bulk-action">
+        {{ p.label }}
+      </button>
+      <span v-if="bulkBusy" class="text-xs text-faint ml-2">Applying… {{ bulkDone }}/{{ bulkTotal }}</span>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import api, { getApiUrl } from '../services/api'
 import { isConfigured as isSupabaseConfigured, getAllCourses, getAllCourseStats } from '../services/supabase'
@@ -175,7 +217,8 @@ import { useCourses } from '../composables/useCourses'
 import { useAuth } from '../composables/useAuth'
 
 const toast = useToast()
-const { canAccessCourse } = useAuth()
+const router = useRouter()
+const { canAccessCourse, getAccessToken } = useAuth()
 const { getCourseName } = useCourses()
 const courses = ref([])
 const loading = ref(true)
@@ -254,6 +297,114 @@ function resetFilters() {
   searchQuery.value = ''
 }
 
+// ── Recents (the 90% path: get back to a course you were working on) ──
+const RECENTS_KEY = 'popty:recentCourses'
+const recentCourses = ref([])
+
+function loadRecents() {
+  try {
+    recentCourses.value = JSON.parse(localStorage.getItem(RECENTS_KEY) || '[]').slice(0, 8)
+  } catch { recentCourses.value = [] }
+}
+
+function pushRecent(code) {
+  const list = [code, ...recentCourses.value.filter(c => c !== code)].slice(0, 8)
+  recentCourses.value = list
+  try { localStorage.setItem(RECENTS_KEY, JSON.stringify(list)) } catch { /* private mode */ }
+}
+
+function openCourse(code) {
+  pushRecent(code)
+  router.push(`/production/${code}`)
+}
+
+// ── Multi-select + bulk course-level ops ──
+const selected = ref(new Set())
+
+function toggleSelect(code) {
+  const next = new Set(selected.value)
+  next.has(code) ? next.delete(code) : next.add(code)
+  selected.value = next
+}
+
+const allFilteredSelected = computed(() =>
+  filteredCourses.value.length > 0 && filteredCourses.value.every(c => selected.value.has(c.course_code))
+)
+
+function toggleSelectAll() {
+  const next = new Set(selected.value)
+  if (allFilteredSelected.value) filteredCourses.value.forEach(c => next.delete(c.course_code))
+  else filteredCourses.value.forEach(c => next.add(c.course_code))
+  selected.value = next
+}
+
+function clearSelection() {
+  selected.value = new Set()
+}
+
+const bulkBusy = ref(false)
+const bulkDone = ref(0)
+const bulkTotal = ref(0)
+
+async function authHeaders() {
+  const h = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+  try {
+    const token = await getAccessToken?.()
+    if (token) h.Authorization = `Bearer ${token}`
+  } catch { /* unauthenticated fetch still attempted */ }
+  return h
+}
+
+// kind: 'status' (value = draft|beta|released) or 'pricing' (value = free|premium|community)
+async function applyBulk(kind, value) {
+  const codes = [...selected.value]
+  if (!codes.length || bulkBusy.value) return
+
+  const label = kind === 'status' ? statusLabel(value) : value
+  const what = kind === 'status' ? 'stage' : 'pricing'
+  if (!window.confirm(`Set ${what} to "${label}" for ${codes.length} course${codes.length > 1 ? 's' : ''}?`)) return
+
+  bulkBusy.value = true
+  bulkTotal.value = codes.length
+  bulkDone.value = 0
+
+  const base = getApiUrl()
+  const headers = await authHeaders()
+  let ok = 0
+  const failed = []
+
+  for (const code of codes) {
+    try {
+      const url = kind === 'status'
+        ? `${base}/api/production/${code}/status`
+        : `${base}/api/production/${code}/pricing-tier`
+      const body = kind === 'status' ? { status: value } : { pricingTier: value }
+      const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) })
+      if (!res.ok) throw new Error(`${res.status}`)
+      const c = courses.value.find(x => x.course_code === code)
+      if (c) {
+        if (kind === 'status') c.status = value
+        else c.pricing_tier = value
+      }
+      ok++
+    } catch (e) {
+      failed.push(code)
+      console.warn(`Bulk ${kind} failed for ${code}:`, e.message)
+    }
+    bulkDone.value++
+  }
+
+  courses.value = [...courses.value] // trigger reactivity for updated pills
+  bulkBusy.value = false
+  clearSelection()
+
+  if (failed.length) toast.warning(`Updated ${ok}/${codes.length} — failed: ${failed.join(', ')}`)
+  else toast.success(`Updated ${ok} course${ok > 1 ? 's' : ''} → ${label}`)
+}
+
+function applyBulkStatus(value) { applyBulk('status', value) }
+function applyBulkPricing(value) { applyBulk('pricing', value) }
+
 // One dimension's tri-state pass: includes are OR; excludes always remove.
 function passesTriState(state, value) {
   const includes = Object.keys(state).filter(k => state[k] === 'include')
@@ -294,6 +445,7 @@ const filteredCourses = computed(() => {
 })
 
 onMounted(async () => {
+  loadRecents()
   await loadCourses()
 })
 
@@ -457,6 +609,85 @@ function getPricingClass(tier) {
 .chip-no {
   font-size: 0.7rem;
   line-height: 1;
+}
+
+/* Recents */
+.recent-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--accent-2, var(--accent));
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.recent-chip:hover {
+  border-color: var(--accent-2, var(--accent));
+  background: var(--surface-2);
+}
+
+/* Dense course table */
+.course-table-wrap {
+  background: var(--surface);
+}
+.course-table thead tr {
+  background: var(--surface-2);
+}
+.course-row:hover {
+  background: var(--surface-2);
+}
+.course-row.row-selected {
+  background: color-mix(in srgb, var(--accent-2, var(--accent)) 12%, transparent);
+}
+.course-row.row-new {
+  box-shadow: inset 3px 0 0 var(--accent-2, var(--accent));
+}
+.course-table input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--accent-2, var(--accent));
+}
+
+/* Bulk action bar — sticky at the bottom while a selection exists */
+.bulk-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  max-width: calc(100vw - 2rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.bulk-sep {
+  width: 1px;
+  height: 1.25rem;
+  background: var(--line);
+}
+.bulk-action {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.bulk-action:hover:not(:disabled) {
+  border-color: var(--accent-2, var(--accent));
+  color: var(--accent-2, var(--accent));
+}
+.bulk-action:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 /* Error panel — dark literals (bg-red-900/20, text-red-400) don't read on light */
