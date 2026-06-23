@@ -204,6 +204,38 @@
       </button>
       <span v-if="bulkBusy" class="text-xs text-faint ml-2">Applying… {{ bulkDone }}/{{ bulkTotal }}</span>
     </div>
+
+    <!-- Bulk confirm modal -->
+    <div v-if="pendingBulk" class="bulk-modal-overlay" @click.self="cancelBulk">
+      <div class="bulk-modal">
+        <h3 class="bulk-modal-title">
+          Set {{ pendingBulk.kind === 'status' ? 'stage' : 'pricing' }} →
+          <span class="text-accent-2">{{ pendingBulk.label }}</span>
+        </h3>
+        <p class="bulk-modal-body">
+          This will change <strong>{{ pendingBulk.count }}</strong>
+          course{{ pendingBulk.count > 1 ? 's' : '' }}.
+        </p>
+
+        <div v-if="pendingBulk.learnerVisible" class="bulk-modal-warn">
+          ⚠️ <strong>{{ pendingBulk.label }}</strong> makes {{ pendingBulk.count > 1 ? 'these courses' : 'this course' }}
+          <strong>visible to learners</strong> in the app
+          <template v-if="pendingBulk.value === 'beta'"> (Beta courses are shown to learners too)</template>.
+          Double-check the selection before confirming.
+        </div>
+
+        <div class="bulk-modal-actions">
+          <button @click="cancelBulk" class="bulk-modal-cancel">Cancel</button>
+          <button
+            @click="confirmBulk"
+            class="bulk-modal-confirm"
+            :class="{ 'bulk-modal-confirm-danger': pendingBulk.learnerVisible }"
+          >
+            {{ pendingBulk.learnerVisible ? `Yes, set ${pendingBulk.count} to ${pendingBulk.label}` : `Set ${pendingBulk.count} to ${pendingBulk.label}` }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -352,14 +384,35 @@ async function authHeaders() {
   return h
 }
 
+// Pending bulk action awaiting confirmation in the modal.
+const pendingBulk = ref(null) // { kind, value, label, count, learnerVisible }
+
 // kind: 'status' (value = draft|beta|released) or 'pricing' (value = free|premium|community)
-async function applyBulk(kind, value) {
+function requestBulk(kind, value) {
   const codes = [...selected.value]
   if (!codes.length || bulkBusy.value) return
+  pendingBulk.value = {
+    kind,
+    value,
+    label: kind === 'status' ? statusLabel(value) : value.charAt(0).toUpperCase() + value.slice(1),
+    count: codes.length,
+    // beta + released (Live) both make courses visible to learners in the app.
+    learnerVisible: kind === 'status' && (value === 'beta' || value === 'released'),
+  }
+}
 
-  const label = kind === 'status' ? statusLabel(value) : value
-  const what = kind === 'status' ? 'stage' : 'pricing'
-  if (!window.confirm(`Set ${what} to "${label}" for ${codes.length} course${codes.length > 1 ? 's' : ''}?`)) return
+function cancelBulk() {
+  pendingBulk.value = null
+}
+
+async function confirmBulk() {
+  const pending = pendingBulk.value
+  if (!pending || bulkBusy.value) return
+  const { kind, value, label } = pending
+  pendingBulk.value = null
+
+  const codes = [...selected.value]
+  if (!codes.length) return
 
   bulkBusy.value = true
   bulkTotal.value = codes.length
@@ -399,8 +452,8 @@ async function applyBulk(kind, value) {
   else toast.success(`Updated ${ok} course${ok > 1 ? 's' : ''} → ${label}`)
 }
 
-function applyBulkStatus(value) { applyBulk('status', value) }
-function applyBulkPricing(value) { applyBulk('pricing', value) }
+function applyBulkStatus(value) { requestBulk('status', value) }
+function applyBulkPricing(value) { requestBulk('pricing', value) }
 
 // One dimension's filter: no selection = all; otherwise must match one.
 function passesTriState(state, value) {
@@ -761,6 +814,82 @@ function getPricingClass(tier) {
 .bulk-action:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+/* Bulk confirm modal */
+.bulk-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.bulk-modal {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 30rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+.bulk-modal-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.bulk-modal-body {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.bulk-modal-warn {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: var(--ink);
+  border-radius: 0.6rem;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  margin-bottom: 1.1rem;
+}
+.bulk-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+.bulk-modal-cancel {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 0.55rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.bulk-modal-cancel:hover {
+  border-color: var(--muted);
+}
+.bulk-modal-confirm {
+  background: var(--accent-2, var(--accent));
+  border: 1px solid var(--accent-2, var(--accent));
+  color: #fff;
+  border-radius: 0.55rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bulk-modal-confirm:hover {
+  opacity: 0.9;
+}
+.bulk-modal-confirm-danger {
+  background: #d97706;
+  border-color: #d97706;
 }
 
 /* Error panel — dark literals (bg-red-900/20, text-red-400) don't read on light */
