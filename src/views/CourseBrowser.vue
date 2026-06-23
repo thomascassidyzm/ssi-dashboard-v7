@@ -54,7 +54,6 @@
           @click="cycleFilter('status', s.value)"
           :class="chipClass('status', s)"
         >
-          <span v-if="statusState[s.value] === 'exclude'" class="chip-no">⊘</span>
           {{ s.label }}
         </button>
 
@@ -68,7 +67,6 @@
           @click="cycleFilter('pricing', p.value)"
           :class="chipClass('pricing', p)"
         >
-          <span v-if="pricingState[p.value] === 'exclude'" class="chip-no">⊘</span>
           {{ p.label }}
         </button>
       </div>
@@ -94,13 +92,15 @@
         >
           Reset filters
         </button>
+        <button
+          @click="setSort('recent')"
+          class="recent-sort-btn"
+          :class="{ 'recent-sort-active': sortKey === 'recent' }"
+        >
+          ↻ Recently used
+        </button>
         <span class="ml-auto text-xs text-faint">{{ filteredCourses.length }} of {{ accessibleCount }} courses</span>
       </div>
-
-      <!-- Tri-state hint -->
-      <p class="mb-4 text-xs text-faint">
-        Tip: click a chip once to show <em>only</em> it, twice (⊘) to <em>hide</em> it, a third time to clear.
-      </p>
 
       <!-- Stats loading indicator -->
       <div v-if="loadingStats" class="mb-4 flex items-center gap-2 text-sm text-faint">
@@ -142,17 +142,17 @@
               <th class="w-9 px-3 py-2 text-center">
                 <input type="checkbox" :checked="allFilteredSelected" @change="toggleSelectAll" />
               </th>
-              <th class="text-left px-3 py-2">Code</th>
-              <th class="text-left px-3 py-2">Name</th>
-              <th class="text-left px-3 py-2 hidden md:table-cell">Known</th>
-              <th class="text-left px-3 py-2 hidden md:table-cell">Target</th>
-              <th class="text-left px-3 py-2">Pricing</th>
-              <th class="text-left px-3 py-2">Stage</th>
+              <th class="text-left px-3 py-2 th-sort" @click="setSort('code')">Code{{ sortIndicator('code') }}</th>
+              <th class="text-left px-3 py-2 th-sort" @click="setSort('name')">Name{{ sortIndicator('name') }}</th>
+              <th class="text-left px-3 py-2 th-sort hidden md:table-cell" @click="setSort('known')">Known{{ sortIndicator('known') }}</th>
+              <th class="text-left px-3 py-2 th-sort hidden md:table-cell" @click="setSort('target')">Target{{ sortIndicator('target') }}</th>
+              <th class="text-left px-3 py-2 th-sort" @click="setSort('pricing')">Pricing{{ sortIndicator('pricing') }}</th>
+              <th class="text-left px-3 py-2 th-sort" @click="setSort('stage')">Stage{{ sortIndicator('stage') }}</th>
             </tr>
           </thead>
           <tbody>
             <tr
-              v-for="course in filteredCourses"
+              v-for="course in sortedCourses"
               :key="course.course_code"
               class="course-row border-t border-line cursor-pointer transition-colors"
               :class="{ 'row-selected': selected.has(course.course_code), 'row-new': highlightedCourses.has(course.course_code) }"
@@ -248,22 +248,19 @@ const pricingFilters = [
 
 const filterGroups = { status: statusState, pricing: pricingState }
 
+// Simple on/off filter: a value is either included or not.
 function cycleFilter(group, value) {
   const stateRef = filterGroups[group]
-  const cur = stateRef.value[value]
   const next = { ...stateRef.value }
-  if (!cur) next[value] = 'include'
-  else if (cur === 'include') next[value] = 'exclude'
-  else delete next[value]
+  if (next[value]) delete next[value]
+  else next[value] = 'include'
   stateRef.value = next
 }
 
 function chipClass(group, item) {
-  const st = filterGroups[group].value[item.value]
+  const active = !!filterGroups[group].value[item.value]
   const base = 'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer inline-flex items-center gap-1'
-  if (st === 'include') return `${base} ${item.activeClass}`
-  if (st === 'exclude') return `${base} bg-red-600/15 border-red-500/60 text-red-400 line-through`
-  return `${base} border-line text-faint hover:border-line hover:text-ink`
+  return active ? `${base} ${item.activeClass}` : `${base} border-line text-faint hover:border-line hover:text-ink`
 }
 
 // Parse `{target}_for_{known}` (target may carry a region, e.g. ara_eg, por_br).
@@ -405,13 +402,10 @@ async function applyBulk(kind, value) {
 function applyBulkStatus(value) { applyBulk('status', value) }
 function applyBulkPricing(value) { applyBulk('pricing', value) }
 
-// One dimension's tri-state pass: includes are OR; excludes always remove.
+// One dimension's filter: no selection = all; otherwise must match one.
 function passesTriState(state, value) {
   const includes = Object.keys(state).filter(k => state[k] === 'include')
-  const excludes = Object.keys(state).filter(k => state[k] === 'exclude')
-  if (excludes.includes(value)) return false
-  if (includes.length > 0) return includes.includes(value)
-  return true
+  return includes.length === 0 || includes.includes(value)
 }
 
 // Computed: Filtered courses based on search query + filters
@@ -441,6 +435,57 @@ const filteredCourses = computed(() => {
     if (course.phase && course.phase.toLowerCase().includes(query)) return true
     if (course.format && course.format.toLowerCase().includes(query)) return true
     return false
+  })
+})
+
+// ── Column sorting ──
+const sortKey = ref('code')   // code | name | known | target | pricing | stage | recent
+const sortDir = ref('asc')
+
+const STAGE_RANK = { draft: 0, beta: 1, released: 2 }
+const PRICING_RANK = { free: 0, premium: 1, community: 2 }
+
+function setSort(key) {
+  if (sortKey.value === key) {
+    sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc'
+  } else {
+    sortKey.value = key
+    // Recent reads most-recent-first by default; everything else A→Z.
+    sortDir.value = key === 'recent' ? 'desc' : 'asc'
+  }
+}
+
+function sortIndicator(key) {
+  if (sortKey.value !== key) return ''
+  return sortDir.value === 'asc' ? ' ▲' : ' ▼'
+}
+
+function sortValue(course, key) {
+  const code = course.course_code
+  const { known, target } = parseLangs(code)
+  switch (key) {
+    case 'name': return getFullCourseName(code).toLowerCase()
+    case 'known': return known
+    case 'target': return target
+    case 'pricing': return PRICING_RANK[course.pricing_tier || 'premium'] ?? 9
+    case 'stage': return STAGE_RANK[course.status || 'draft'] ?? 9
+    case 'recent': {
+      const i = recentCourses.value.indexOf(code)
+      return i === -1 ? -1 : recentCourses.value.length - i  // higher = more recent
+    }
+    default: return code  // code
+  }
+}
+
+const sortedCourses = computed(() => {
+  const dir = sortDir.value === 'asc' ? 1 : -1
+  return [...filteredCourses.value].sort((a, b) => {
+    const va = sortValue(a, sortKey.value)
+    const vb = sortValue(b, sortKey.value)
+    if (va < vb) return -1 * dir
+    if (va > vb) return 1 * dir
+    // tie-break on code for stable, predictable ordering
+    return a.course_code < b.course_code ? -1 : a.course_code > b.course_code ? 1 : 0
   })
 })
 
@@ -627,12 +672,40 @@ function getPricingClass(tier) {
   background: var(--surface-2);
 }
 
+/* Recent sort button */
+.recent-sort-btn {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.recent-sort-btn:hover {
+  border-color: var(--accent-2, var(--accent));
+  color: var(--ink);
+}
+.recent-sort-active {
+  border-color: var(--accent-2, var(--accent)) !important;
+  color: var(--accent-2, var(--accent)) !important;
+}
+
 /* Dense course table */
 .course-table-wrap {
   background: var(--surface);
 }
 .course-table thead tr {
   background: var(--surface-2);
+}
+.th-sort {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.th-sort:hover {
+  color: var(--ink);
 }
 .course-row:hover {
   background: var(--surface-2);
