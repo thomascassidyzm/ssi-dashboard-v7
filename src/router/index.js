@@ -412,8 +412,8 @@ const routes = [
   // because it's not per-course.
   {
     path: '/admin/listening',
-    name: 'ListeningAdmin',
-    component: () => import('../views/ListeningAdmin.vue'),
+    name: 'ListeningConfig',
+    component: () => import('../views/ListeningConfig.vue'),
     meta: { title: 'Listening Config - Admin' }
   },
   // Stage 0 tuner — standalone in-app page that frames the self-contained
