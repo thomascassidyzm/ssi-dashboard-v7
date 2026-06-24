@@ -117,6 +117,26 @@
         </div>
       </section>
 
+      <!-- ==================== LAYER 1 (seed listening) ==================== -->
+      <section v-if="drafts.listening" class="config-row">
+        <RowHeader
+          title="Layer 1 — seed listening"
+          desc="The cup wheel: introduced seeds graduate into cups, one cup poured per round (per seed: target → known → target → target@2×). These four knobs drive useLayer1Scheduler live; the per-seed sandwich itself is fixed in code."
+          :row="rowMap.listening"
+          :dirty="isDirty('listening')"
+          :saving="savingKey === 'listening'"
+          :error="rowErrors.listening"
+          @save="save('listening')"
+          @reset="reset('listening')"
+        />
+        <div class="field-grid">
+          <NumField v-model="drafts.listening.cups" label="Cups in the wheel" suffix="cups" help="One cup poured per round. Batch size = cups." />
+          <NumField v-model="drafts.listening.activationCount" label="Activation count" suffix="seeds" help="Introduced-seed count before the first lap fires (also the one-seed-per-cup point)." />
+          <NumField v-model="drafts.listening.maxSeedsPerCup" label="Max seeds / cup" suffix="seeds" help="Cup-fill caps at cups × this (e.g. 30 × 20 = 600 introduced)." />
+          <NumField v-model="drafts.listening.clusterStep" label="Re-cluster every" suffix="seeds/cup" help="Re-cluster at each multiple of this many seeds per cup (5, 10, 15, 20…)." />
+        </div>
+      </section>
+
       <!-- ==================== STAGE 0 (pod breakdown ladder) ==================== -->
       <section v-if="drafts.stage0" class="config-row">
         <RowHeader
@@ -992,6 +1012,13 @@ async function loadAll() {
         // pods row is first saved against the new schema.
         drafts.pods.podActivationRound = drafts.listening?.podActivationRound ?? 6
       }
+    }
+    // Layer 1: ensure the four cup knobs the learner now reads exist on the
+    // listening row (it predates the cup model — legacy fields stay untouched).
+    if (!drafts.listening) drafts.listening = {}
+    {
+      const l1d = { cups: 30, activationCount: 30, maxSeedsPerCup: 20, clusterStep: 5 }
+      for (const k in l1d) if (drafts.listening[k] == null) drafts.listening[k] = l1d[k]
     }
     // Stage 0: ensure the gaps matrix + tiers array exist so the editor binds
     // to defined values (a row saved before a gap key existed backfills here).
