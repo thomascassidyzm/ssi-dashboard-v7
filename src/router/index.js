@@ -409,16 +409,31 @@ const routes = [
 
   // ===========================================
   // Global admin — algorithm_config tweaker. Lives outside /production
-  // because it's not per-course.
+  // because it's not per-course. Split by domain under /admin/configs:
+  // an index hub, then Listening + Speaking surfaces.
   {
-    path: '/admin/listening',
+    path: '/admin/configs',
+    name: 'ConfigsIndex',
+    component: () => import('../views/admin/ConfigsIndex.vue'),
+    meta: { title: 'Configs - Admin' }
+  },
+  {
+    path: '/admin/configs/listening',
     name: 'ListeningConfig',
     component: () => import('../views/ListeningConfig.vue'),
     meta: { title: 'Listening Config - Admin' }
   },
-  // (Stage 0 Tuner retired 2026-06-24 — absorbed into /admin/listening, which
-  // now sets Stage 0 structurally AND previews the full arc. The standalone
-  // public/stage0-tuner.html iframe tool is gone.)
+  {
+    path: '/admin/configs/speaking',
+    name: 'SpeakingConfig',
+    component: () => import('../views/admin/SpeakingConfig.vue'),
+    meta: { title: 'Speaking Config - Admin' }
+  },
+  // Legacy path — the old single Listening page lived here. Redirect bookmarks.
+  { path: '/admin/listening', redirect: '/admin/configs/listening' },
+  // (Stage 0 Tuner retired 2026-06-24 — absorbed into the Listening config,
+  // which now sets Stage 0 structurally AND previews the full arc. The
+  // standalone public/stage0-tuner.html iframe tool is gone.)
   // Production Suite v2.1 Routes (Default)
   // ===========================================
   {

@@ -292,8 +292,8 @@ const sectionTabs = computed(() => {
       { label: 'Admin', to: '/admin', active: isAdminHub.value },
       {
         label: 'Configs',
-        to: '/admin/listening',
-        active: route.path.startsWith('/admin/listening')
+        to: '/admin/configs',
+        active: route.path.startsWith('/admin/configs') || route.path.startsWith('/admin/listening')
       },
       { label: 'Insights', to: '/insights', active: isInsights.value },
       {

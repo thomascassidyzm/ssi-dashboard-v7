@@ -4,7 +4,9 @@
       <nav class="admin-crumbs">
         <router-link to="/" class="crumb-link">Home</router-link>
         <span class="crumb-sep">/</span>
-        <span class="crumb-here">Listening Config</span>
+        <router-link to="/admin/configs" class="crumb-link">Configs</router-link>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-here">Listening</span>
       </nav>
       <div class="admin-head-main">
         <div class="admin-head-titles">
@@ -284,112 +286,29 @@
         </div>
       </section>
 
-      <!-- ==================== SCRIPT SHAPE ==================== -->
-      <section v-if="drafts.script_shape" class="config-row">
-        <RowHeader
-          title="Script shape"
-          desc="Per-round phrase counts and the Fibonacci spaced-rep schedule. Changing these reshapes every round generated after the change."
-          :row="rowMap.script_shape"
-          :dirty="isDirty('script_shape')"
-          :saving="savingKey === 'script_shape'"
-          :error="rowErrors.script_shape"
-          @save="save('script_shape')"
-          @reset="reset('script_shape')"
-        />
-
-        <div class="field-block">
-          <label>Spaced-rep offsets <span class="hint">comma-separated, ascending</span></label>
-          <NumListField :modelValue="drafts.script_shape.spacedRepOffsets" @update:modelValue="drafts.script_shape.spacedRepOffsets = $event" />
-        </div>
-
-        <div class="field-grid">
-          <NumField v-model="drafts.script_shape.maxBuildPhrases" label="Max BUILD phrases" suffix="per round" />
-          <NumField v-model="drafts.script_shape.useConsolidationCount" label="USE consolidation count" suffix="per LEGO" />
-          <NumField v-model="drafts.script_shape.maxSpacedRepPhrases" label="Max spaced-rep phrases" suffix="per round" />
-          <NumField v-model="drafts.script_shape.n1PhraseCount" label="N-1 phrase count" suffix="reps"
-            help="Phrases at the N-1 review (1st-back). Other offsets get 1." />
-        </div>
-      </section>
-
-      <!-- ==================== TURBO ==================== -->
-      <section v-if="drafts.turbo_boost" class="config-row">
-        <RowHeader
-          title="Turbo boost"
-          desc="What Turbo culls (script side) and how it tightens timing (runtime). fibKeep gates which fib-offset spaced-rep cycles survive."
-          :row="rowMap.turbo_boost"
-          :dirty="isDirty('turbo_boost')"
-          :saving="savingKey === 'turbo_boost'"
-          :error="rowErrors.turbo_boost"
-          @save="save('turbo_boost')"
-          @reset="reset('turbo_boost')"
-        />
-
-        <div class="field-block" v-if="scriptShapeOffsets.length">
-          <label>Fib offsets Turbo keeps <span class="hint">tap to toggle</span></label>
-          <div class="fib-row">
-            <button
-              v-for="(off, idx) in scriptShapeOffsets" :key="idx"
-              class="fib-pill"
-              :class="{ on: (drafts.turbo_boost.fibKeep || []).includes(idx) }"
-              @click="toggleFib(idx)"
-            >N-{{ off }}</button>
-          </div>
-        </div>
-
-        <div class="field-grid">
-          <NumField v-model="drafts.turbo_boost.buildKeep" label="BUILD keep" suffix="phrases"
-            help="Turbo plays the first N BUILD phrases per LEGO; the rest get tagged for skip." />
-          <NumField v-model="drafts.turbo_boost.useKeep" label="USE keep" suffix="phrases"
-            help="Turbo plays the first N USE phrases per LEGO." />
-          <NumField v-model="drafts.turbo_boost.playback_speed" label="Playback speed" suffix="×" :step="0.05" />
-          <NumField v-model="drafts.turbo_boost.pause_base_ms" label="Pause base" suffix="ms" />
-          <NumField v-model="drafts.turbo_boost.pause_multiplier" label="Pause multiplier" suffix="× target dur" :step="0.05" />
-          <NumField v-model="drafts.turbo_boost.min_pause_ms" label="Pause floor" suffix="ms" />
-          <NumField v-model="drafts.turbo_boost.max_pause_ms" label="Pause ceiling" suffix="ms" />
-        </div>
-      </section>
-
-      <!-- ==================== NORMAL ==================== -->
-      <section v-if="drafts.normal_mode" class="config-row">
-        <RowHeader
-          title="Normal mode"
-          desc="Default playback timing — pauses are computed from these. The other ModeConfig fields aren't read in normal mode (kept for parity)."
-          :row="rowMap.normal_mode"
-          :dirty="isDirty('normal_mode')"
-          :saving="savingKey === 'normal_mode'"
-          :error="rowErrors.normal_mode"
-          @save="save('normal_mode')"
-          @reset="reset('normal_mode')"
-        />
-
-        <div class="field-grid">
-          <NumField v-model="drafts.normal_mode.playback_speed" label="Playback speed" suffix="×" :step="0.05" />
-          <NumField v-model="drafts.normal_mode.pause_base_ms" label="Pause base" suffix="ms" />
-          <NumField v-model="drafts.normal_mode.pause_multiplier" label="Pause multiplier" suffix="× target dur" :step="0.05" />
-          <NumField v-model="drafts.normal_mode.min_pause_ms" label="Pause floor" suffix="ms" />
-          <NumField v-model="drafts.normal_mode.max_pause_ms" label="Pause ceiling" suffix="ms" />
-        </div>
-      </section>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, reactive, defineComponent, h, toRef } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted, defineComponent, h } from 'vue'
 import { useAuth } from '../composables/useAuth'
 import { composeArc } from '../lib/podArcCompose'
 import CoursePicker from '../components/CoursePicker.vue'
+import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/algorithmConfigShared'
 
-const router = useRouter()
-const { getAccessToken, isAdmin, learner: currentUser } = useAuth()
+const { isAdmin, learner: currentUser } = useAuth()
 
+// The script/playback rows (script_shape, turbo_boost, normal_mode) live on a
+// SEPARATE page now (/admin/configs/speaking) — they govern the speaking
+// practice script, not listening. This page still LOADS them (the preview's
+// listening/speaking ratio reads script_shape) but renders no editor for them.
+//
 // 'listening' (the old L1 knobs row) was retired 2026-06-11: the live L1
 // scheduler (useLayer1Scheduler.ts in the learning app) is fixed in code and
 // never read it. The row stays in the DB untouched; this page just stopped
 // pretending to edit it. L1_FIXED below mirrors DEFAULT_LAYER1_CONFIG + the
 // hardcoded per-seed playlist — update BOTH if the app constants ever change.
-const KEYS = ['pods', 'script_shape', 'turbo_boost', 'normal_mode']
 const L1_FIXED = {
   offset: 90,          // LEGO-ordinals after a seed's last LEGO before it graduates
   interval: 50,        // a lap fires every N main rounds…
@@ -412,11 +331,14 @@ const ROLE_DESC = {
 // serve /api/audio so we hit the deployed learning-app endpoint directly.
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
 
-const rows = ref([])
-const loading = ref(true)
-const loadError = ref(null)
-const savingKey = ref(null)
-const rowErrors = reactive({})
+// Shared algorithm_config plumbing — drafts, dirty-tracking, keyed save.
+// onLoaded / onReset backfill the listening-specific defaults (pods, L1 cup
+// knobs, stage0 gaps) that may be absent on rows saved before those fields
+// existed.
+const {
+  rows, loading, loadError, savingKey, rowErrors,
+  drafts, rowMap, isDirty, reset, save, loadAll,
+} = useAlgorithmConfig({ onLoaded: backfillDefaults, onReset: onResetRow })
 
 // ============================================================================
 // Course preview state
@@ -767,57 +689,14 @@ async function loadCourseList() {
   }
 }
 
-// `drafts` mirrors each row's config and is what the form mutates.
-// `rowMap` is the pristine server state — used for dirty-checks and Reset.
-const drafts = reactive({})
-const rowMap = computed(() => Object.fromEntries(rows.value.map(r => [r.key, r])))
-
-const scriptShapeOffsets = computed(() => drafts.script_shape?.spacedRepOffsets || [])
-
-function deepClone(v) { return JSON.parse(JSON.stringify(v)) }
-
-function isDirty(key) {
-  if (!drafts[key] || !rowMap.value[key]) return false
-  return JSON.stringify(drafts[key]) !== JSON.stringify(rowMap.value[key].config)
-}
-
-function reset(key) {
-  if (!rowMap.value[key]) return
-  drafts[key] = deepClone(rowMap.value[key].config)
-  rowErrors[key] = null
-  // Mirror the load-time defaults backfill — keeps NumFields bound to
-  // defined values after a reset on rows saved before the field existed.
-  if (key === 'pods' && drafts.pods) {
-    if (drafts.pods.roundInterval == null) drafts.pods.roundInterval = 1
-    if (drafts.pods.podActivationRound == null) {
-      // Inherit from the legacy listening row if available, else default 6.
-      drafts.pods.podActivationRound = drafts.listening?.podActivationRound ?? 6
+// Reset fix-up: mirror the load-time backfill so a Reset on the pods row keeps
+// NumFields bound to defined values (rows saved before a field existed).
+function onResetRow(key, d) {
+  if (key === 'pods' && d.pods) {
+    if (d.pods.roundInterval == null) d.pods.roundInterval = 1
+    if (d.pods.podActivationRound == null) {
+      d.pods.podActivationRound = d.listening?.podActivationRound ?? 6
     }
-  }
-}
-
-async function save(key) {
-  savingKey.value = key
-  rowErrors[key] = null
-  try {
-    const token = await getAccessToken()
-    if (!token) throw new Error('Not signed in')
-    const res = await fetch('/api/algorithm-config', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({ key, config: deepClone(drafts[key]) }),
-    })
-    const data = await res.json().catch(() => ({}))
-    if (!res.ok) throw new Error(data.error || `${res.status} ${res.statusText}`)
-    const idx = rows.value.findIndex(r => r.key === key)
-    if (idx >= 0 && data.row) rows.value[idx] = data.row
-  } catch (e) {
-    rowErrors[key] = e.message || String(e)
-  } finally {
-    savingKey.value = null
   }
 }
 
@@ -907,15 +786,6 @@ function removeStage(stage) {
   shiftStageDurations(n => (n === stage ? null : n > stage ? n - 1 : n))
 }
 
-function toggleFib(idx) {
-  const tb = drafts.turbo_boost
-  if (!tb) return
-  const set = new Set(tb.fibKeep || [])
-  if (set.has(idx)) set.delete(idx)
-  else set.add(idx)
-  tb.fibKeep = [...set].sort((a, b) => a - b)
-}
-
 // ============================================================================
 // Stage 0 — structural tier editor (mirrors the stage0 algorithm_config shape
 // consumed by the learner: tiers[] in play order, each with a granularity +
@@ -992,53 +862,35 @@ async function playArc() {
   arcPlayingIdx.value = -1
 }
 
-async function loadAll() {
-  loading.value = true
-  loadError.value = null
-  try {
-    const res = await fetch('/api/algorithm-config')
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
-    const data = await res.json()
-    rows.value = data.rows || []
-    for (const r of rows.value) {
-      drafts[r.key] = deepClone(r.config)
-      rowErrors[r.key] = null
+// Backfill defaults for fields added after a row was last saved — keeps
+// NumFields bound to defined values, and the first save writes the field into
+// the DB row going forward. Runs once the rows land (onLoaded hook).
+function backfillDefaults(d) {
+  if (d.pods) {
+    if (d.pods.roundInterval == null) d.pods.roundInterval = 1
+    if (d.pods.podActivationRound == null) {
+      // Field used to live on drafts.listening — migrate the value across
+      // so existing courses keep their tuned activation round when the
+      // pods row is first saved against the new schema.
+      d.pods.podActivationRound = d.listening?.podActivationRound ?? 6
     }
-    // Backfill defaults for fields added after the row was last saved —
-    // keeps NumFields bound to defined values, and the first save writes
-    // the field into the DB row going forward.
-    if (drafts.pods) {
-      if (drafts.pods.roundInterval == null) drafts.pods.roundInterval = 1
-      if (drafts.pods.podActivationRound == null) {
-        // Field used to live on drafts.listening — migrate the value across
-        // so existing courses keep their tuned activation round when the
-        // pods row is first saved against the new schema.
-        drafts.pods.podActivationRound = drafts.listening?.podActivationRound ?? 6
-      }
-    }
-    // Layer 1: ensure the four cup knobs the learner now reads exist on the
-    // listening row (it predates the cup model — legacy fields stay untouched).
-    if (!drafts.listening) drafts.listening = {}
-    {
-      const l1d = { cups: 30, activationCount: 30, maxSeedsPerCup: 20, clusterStep: 5 }
-      for (const k in l1d) if (drafts.listening[k] == null) drafts.listening[k] = l1d[k]
-    }
-    // Stage 0: ensure the gaps matrix + tiers array exist so the editor binds
-    // to defined values (a row saved before a gap key existed backfills here).
-    if (drafts.stage0) {
-      if (!drafts.stage0.gaps || typeof drafts.stage0.gaps !== 'object') drafts.stage0.gaps = {}
-      const gd = { afterCue: 500, beforeMeans: 0, fusionPairs: 200, betweenChunks: 1000, targetMeaning: 500, betweenRepeats: 600, betweenIntentions: 500 }
-      for (const k in gd) if (drafts.stage0.gaps[k] == null) drafts.stage0.gaps[k] = gd[k]
-      if (!Array.isArray(drafts.stage0.tiers)) drafts.stage0.tiers = []
-    }
-  } catch (e) {
-    loadError.value = e.message || String(e)
-  } finally {
-    loading.value = false
+  }
+  // Layer 1: ensure the four cup knobs the learner now reads exist on the
+  // listening row (it predates the cup model — legacy fields stay untouched).
+  if (!d.listening) d.listening = {}
+  {
+    const l1d = { cups: 30, activationCount: 30, maxSeedsPerCup: 20, clusterStep: 5 }
+    for (const k in l1d) if (d.listening[k] == null) d.listening[k] = l1d[k]
+  }
+  // Stage 0: ensure the gaps matrix + tiers array exist so the editor binds
+  // to defined values (a row saved before a gap key existed backfills here).
+  if (d.stage0) {
+    if (!d.stage0.gaps || typeof d.stage0.gaps !== 'object') d.stage0.gaps = {}
+    const gd = { afterCue: 500, beforeMeans: 0, fusionPairs: 200, betweenChunks: 1000, targetMeaning: 500, betweenRepeats: 600, betweenIntentions: 500 }
+    for (const k in gd) if (d.stage0.gaps[k] == null) d.stage0.gaps[k] = gd[k]
+    if (!Array.isArray(d.stage0.tiers)) d.stage0.tiers = []
   }
 }
-
-function goBack() { router.back() }
 
 onMounted(() => {
   loadAll()
@@ -1126,103 +978,6 @@ const PlaylistEditor = defineComponent({
         h('button', { class: 'add-pill', title: 'Add', onClick: add }, '+'),
       ]
     )
-  },
-})
-
-// ============================================================================
-// NumField — labelled number input with suffix + tooltip help.
-// ============================================================================
-const NumField = defineComponent({
-  name: 'NumField',
-  props: {
-    modelValue: { type: [Number, String], default: 0 },
-    label: { type: String, required: true },
-    suffix: { type: String, default: '' },
-    step: { type: Number, default: 1 },
-    help: { type: String, default: '' },
-  },
-  emits: ['update:modelValue'],
-  setup(props, { emit }) {
-    return () => h('div', { class: 'num-field', title: props.help || undefined }, [
-      h('label', null, props.label),
-      h('div', { class: 'num-input-wrap' }, [
-        h('input', {
-          type: 'number',
-          step: props.step,
-          value: props.modelValue,
-          onInput: (e) => {
-            const n = Number(e.target.value)
-            emit('update:modelValue', Number.isNaN(n) ? e.target.value : n)
-          },
-        }),
-        props.suffix ? h('span', { class: 'suffix' }, props.suffix) : null,
-      ]),
-    ])
-  },
-})
-
-// ============================================================================
-// NumListField — comma-separated number list (for spacedRepOffsets).
-// ============================================================================
-const NumListField = defineComponent({
-  name: 'NumListField',
-  props: { modelValue: { type: Array, required: true } },
-  emits: ['update:modelValue'],
-  setup(props, { emit }) {
-    const text = ref(props.modelValue.join(', '))
-    return () => h('input', {
-      type: 'text',
-      class: 'num-list-input',
-      value: text.value,
-      onInput: (e) => {
-        text.value = e.target.value
-        const parts = e.target.value.split(',').map(s => s.trim()).filter(Boolean)
-        const nums = parts.map(s => Number(s)).filter(n => !Number.isNaN(n))
-        emit('update:modelValue', nums)
-      },
-    })
-  },
-})
-
-// ============================================================================
-// RowHeader — title + last-saved meta + Save/Reset buttons + error display.
-// ============================================================================
-const RowHeader = defineComponent({
-  name: 'RowHeader',
-  props: {
-    title: String,
-    desc: String,
-    row: Object,
-    dirty: Boolean,
-    saving: Boolean,
-    error: String,
-  },
-  emits: ['save', 'reset'],
-  setup(props, { emit }) {
-    function fmt(t) { try { return new Date(t).toLocaleString() } catch { return t } }
-    return () => h('div', { class: 'row-header' }, [
-      h('div', { class: 'row-title-line' }, [
-        h('h2', null, props.title),
-        h('div', { class: 'row-actions' }, [
-          h('button', {
-            class: 'btn-secondary',
-            disabled: !props.dirty || props.saving,
-            onClick: () => emit('reset'),
-          }, 'Reset'),
-          h('button', {
-            class: 'btn-primary',
-            disabled: !props.dirty || props.saving,
-            onClick: () => emit('save'),
-          }, props.saving ? 'Saving…' : 'Save'),
-        ]),
-      ]),
-      h('div', { class: 'row-meta' },
-        `Last saved: ${props.row ? fmt(props.row.updated_at) : '—'}` +
-        (props.row?.updated_by ? ` by ${props.row.updated_by}` : '')
-      ),
-      props.desc ? h('p', { class: 'row-desc' }, props.desc) : null,
-      props.error ? h('div', { class: 'save-err' }, ['Save failed: ', props.error]) : null,
-    ])
   },
 })
 </script>

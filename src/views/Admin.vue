@@ -64,9 +64,9 @@
 const cards = [
   {
     title: 'Configs',
-    to: '/admin/listening',
+    to: '/admin/configs',
     badge: 'global',
-    description: 'Listening & algorithm config and the Stage-0 tuner — applies to every course, every learner.',
+    description: 'Global algorithm config — Listening and Speaking surfaces, applied to every course, every learner.',
     action: 'Open Configs',
     accent: '#a855f7',
     glow: 'rgba(168, 85, 247, 0.15)',
