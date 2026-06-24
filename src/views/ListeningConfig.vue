@@ -26,10 +26,7 @@
       <div class="preview-bar-inner">
         <div class="picker-group">
           <label>Preview course</label>
-          <select v-model="selectedCourseCode" @change="onCourseChange">
-            <option value="">— pick —</option>
-            <option v-for="c in allCourses" :key="c.course_code" :value="c.course_code">{{ c.course_code }}</option>
-          </select>
+          <CoursePicker :modelValue="selectedCourseCode" @update:modelValue="onCoursePick" placeholder="Search courses…" />
         </div>
         <div class="picker-group round-group" v-if="selectedCourseCode">
           <label>Round</label>
@@ -382,6 +379,7 @@ import { ref, computed, onMounted, reactive, defineComponent, h, toRef } from 'v
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 import { composeArc } from '../lib/podArcCompose'
+import CoursePicker from '../components/CoursePicker.vue'
 
 const router = useRouter()
 const { getAccessToken, isAdmin, learner: currentUser } = useAuth()
@@ -742,6 +740,11 @@ async function loadCoursePreview(courseCode) {
   }
 }
 
+// CoursePicker emits the chosen code; set it then load the preview.
+function onCoursePick(code) {
+  selectedCourseCode.value = code || ''
+  onCourseChange()
+}
 async function onCourseChange() {
   if (selectedCourseCode.value) {
     await loadCoursePreview(selectedCourseCode.value)
