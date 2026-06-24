@@ -8,13 +8,13 @@
       </nav>
       <div class="admin-head-main">
         <div class="admin-head-titles">
-          <h1>Listening &amp; algorithm config</h1>
+          <h1>Listening config</h1>
           <p class="sub">
-            Global settings — applies to every course, every learner.
-            Changes propagate to new sessions within ~5 min (cache TTL).
+            One home for all listening behaviour — Layer 1 (seeds), Stage 0 (pod
+            breakdown), Stages 1-9 (pod escalation). Global: every course, every
+            learner. Changes propagate to new sessions within ~5 min (cache TTL).
           </p>
         </div>
-        <router-link class="stage0-link" :to="{ name: 'Stage0Tuner' }">Stage 0 Tuner →</router-link>
       </div>
       <span v-if="!isAdmin && currentUser" class="admin-warn">
         Signed in as {{ currentUser.email }} (not admin) — saves will fail.
@@ -114,6 +114,56 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- ==================== STAGE 0 (pod breakdown ladder) ==================== -->
+      <section v-if="drafts.stage0" class="config-row">
+        <RowHeader
+          title="Layer 2 · Stage 0 — breakdown ladder"
+          desc="The whole-part-whole tiers a pod sentence climbs BEFORE Stages 1-9: whole take → per-atom 'X means Y' → fused pairs → whole intention. Plays only where a sentence resolves to atoms."
+          :row="rowMap.stage0"
+          :dirty="isDirty('stage0')"
+          :saving="savingKey === 'stage0'"
+          :error="rowErrors.stage0"
+          @save="save('stage0')"
+          @reset="reset('stage0')"
+        />
+
+        <div class="field-block">
+          <label>Tiers <span class="hint">in play order · granularity = how the sentence is chunked · visits = times this tier repeats · T-reps = target reps after the known (1 = symmetric T·M·T) · fuse = pair fusion gap (ms, 'pairs' only) · reorder with ↑↓</span></label>
+          <div class="tier-grid">
+            <div v-for="(tier, idx) in stage0Tiers" :key="idx" class="tier-row">
+              <span class="tier-idx">0:{{ idx + 1 }}</span>
+              <input class="tier-key" v-model="tier.key" placeholder="key" title="Tier key — cosmetic label for the badge" />
+              <select class="tier-gran" v-model="tier.granularity" title="Chunking granularity">
+                <option v-for="g in GRANULARITIES" :key="g" :value="g">{{ g }}</option>
+              </select>
+              <label class="tier-num" title="Times this tier repeats">visits
+                <input type="number" min="1" v-model.number="tier.visits" />
+              </label>
+              <label class="tier-num" title="Target reps AFTER the known (1 = symmetric T·M·T)">T-reps
+                <input type="number" min="0" v-model.number="tier.targetRepeats" />
+              </label>
+              <label class="tier-num" title="Pair fusion gap (ms) — only meaningful for 'pairs' granularity. Blank = use the gaps matrix.">fuse
+                <input type="number" min="0" :value="tier.fusionGap ?? ''" @input="setTierFusion(idx, $event.target.value)" placeholder="—" />
+              </label>
+              <button class="tier-move" :disabled="idx === 0" @click="moveStage0Tier(idx, -1)" title="Move up">↑</button>
+              <button class="tier-move" :disabled="idx === stage0Tiers.length - 1" @click="moveStage0Tier(idx, 1)" title="Move down">↓</button>
+              <button class="tier-remove" :disabled="stage0Tiers.length <= 1" @click="removeStage0Tier(idx)" title="Remove tier">×</button>
+            </div>
+            <button class="stage-insert-btn" @click="addStage0Tier()">+ add tier</button>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <NumField v-model="drafts.stage0.gaps.afterCue" label="Gap: after cue" suffix="ms" help="After the 'breaking it down' cue, before the first breakdown." />
+          <NumField v-model="drafts.stage0.gaps.beforeMeans" label="Gap: before means" suffix="ms" help="Live cast→known voice change before the merged 'means …' clip. 0 = tight." />
+          <NumField v-model="drafts.stage0.gaps.targetMeaning" label="Gap: target→meaning" suffix="ms" help="Between an atom's target slice and its meaning." />
+          <NumField v-model="drafts.stage0.gaps.betweenRepeats" label="Gap: between repeats" suffix="ms" help="Between repeated target reps within a tier." />
+          <NumField v-model="drafts.stage0.gaps.betweenChunks" label="Gap: between chunks" suffix="ms" help="Between atoms/chunks in the breakdown." />
+          <NumField v-model="drafts.stage0.gaps.fusionPairs" label="Gap: fusion pairs" suffix="ms" help="Default gap inside a fused pair (per-tier 'fuse' overrides this)." />
+          <NumField v-model="drafts.stage0.gaps.betweenIntentions" label="Gap: between intentions" suffix="ms" help="Between whole-intention takes." />
         </div>
       </section>
 
@@ -790,6 +840,36 @@ function toggleFib(idx) {
   tb.fibKeep = [...set].sort((a, b) => a - b)
 }
 
+// ============================================================================
+// Stage 0 — structural tier editor (mirrors the stage0 algorithm_config shape
+// consumed by the learner: tiers[] in play order, each with a granularity +
+// visit/repeat counts. The runtime reads the key COUNT, not a fixed 5.)
+// ============================================================================
+const GRANULARITIES = ['atoms', 'pairs', 'intention']
+const stage0Tiers = computed(() => drafts.stage0?.tiers || [])
+function addStage0Tier() {
+  if (!drafts.stage0) return
+  if (!Array.isArray(drafts.stage0.tiers)) drafts.stage0.tiers = []
+  drafts.stage0.tiers.push({ key: 'tier' + (drafts.stage0.tiers.length + 1), granularity: 'atoms', visits: 1, targetRepeats: 1, fusionGap: null })
+}
+function removeStage0Tier(idx) {
+  if (drafts.stage0?.tiers) drafts.stage0.tiers.splice(idx, 1)
+}
+function moveStage0Tier(idx, dir) {
+  const t = drafts.stage0?.tiers
+  if (!t) return
+  const j = idx + dir
+  if (j < 0 || j >= t.length) return
+  const [m] = t.splice(idx, 1)
+  t.splice(j, 0, m)
+}
+function setTierFusion(idx, raw) {
+  const t = drafts.stage0?.tiers?.[idx]
+  if (!t) return
+  const v = String(raw).trim()
+  t.fusionGap = v === '' ? null : Number(v)
+}
+
 async function loadAll() {
   loading.value = true
   loadError.value = null
@@ -813,6 +893,14 @@ async function loadAll() {
         // pods row is first saved against the new schema.
         drafts.pods.podActivationRound = drafts.listening?.podActivationRound ?? 6
       }
+    }
+    // Stage 0: ensure the gaps matrix + tiers array exist so the editor binds
+    // to defined values (a row saved before a gap key existed backfills here).
+    if (drafts.stage0) {
+      if (!drafts.stage0.gaps || typeof drafts.stage0.gaps !== 'object') drafts.stage0.gaps = {}
+      const gd = { afterCue: 500, beforeMeans: 0, fusionPairs: 200, betweenChunks: 1000, targetMeaning: 500, betweenRepeats: 600, betweenIntentions: 500 }
+      for (const k in gd) if (drafts.stage0.gaps[k] == null) drafts.stage0.gaps[k] = gd[k]
+      if (!Array.isArray(drafts.stage0.tiers)) drafts.stage0.tiers = []
     }
   } catch (e) {
     loadError.value = e.message || String(e)
@@ -1277,6 +1365,36 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   padding: 0.4rem 0.5rem;
   background: rgba(0, 0, 0, 0.15);
   border-radius: 6px;
+}
+/* Stage 0 tier editor */
+.tier-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+.tier-row {
+  display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;
+  padding: 0.4rem 0.5rem; background: rgba(0, 0, 0, 0.15); border-radius: 6px;
+}
+.tier-idx {
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  font-size: 0.72rem; color: var(--accent); min-width: 30px;
+}
+.tier-key { width: 130px; }
+.tier-gran { min-width: 92px; }
+.tier-num {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--color-paper-dim, var(--muted));
+}
+.tier-num input { width: 48px; }
+.tier-move, .tier-remove {
+  width: 26px; height: 26px; border-radius: 6px;
+  border: 1px solid var(--surface-3); background: transparent;
+  color: var(--muted); cursor: pointer; font-size: 0.8rem;
+}
+.tier-move:hover:not(:disabled) { border-color: var(--accent-2); color: var(--accent-2); }
+.tier-remove:hover:not(:disabled) { border-color: #c0564a; color: #c0564a; }
+.tier-move:disabled, .tier-remove:disabled { opacity: 0.3; cursor: not-allowed; }
+.tier-row input, .tier-row select {
+  background: rgba(0,0,0,0.25); border: 1px solid var(--surface-3);
+  border-radius: 5px; color: var(--ink); padding: 0.25rem 0.4rem; font-size: 0.8rem;
 }
 .stage0-link {
   margin-left: auto; align-self: center; white-space: nowrap;
