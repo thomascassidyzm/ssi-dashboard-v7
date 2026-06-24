@@ -167,6 +167,36 @@
         </div>
       </section>
 
+      <!-- ==================== FULL-ARC PREVIEW ==================== -->
+      <section v-if="selectedCourseCode && coursePodSentences.length" class="config-row">
+        <RowHeader
+          title="Full escalation preview"
+          desc="Hear one real sentence climb the WHOLE arc — Stage-0 tiers → Stages 1-N — composed with the shared learner composer, so the preview can't drift from delivery. Uses the live UNSAVED config (edit above, hear it here)."
+        />
+        <div class="arc-controls">
+          <label class="arc-pick">Sentence
+            <select v-model.number="arcSentenceIdx">
+              <option v-for="(s, i) in coursePodSentences" :key="i" :value="i">{{ i + 1 }}. {{ s.target_text }}</option>
+            </select>
+          </label>
+          <button class="arc-play" :disabled="!arcPlays.length || arcPlayingIdx >= 0" @click="playArc">▶ Play full arc · {{ arcPlays.length }} plays</button>
+          <button class="arc-stop" :disabled="arcPlayingIdx < 0" @click="stopArc">■ Stop</button>
+          <span v-if="!arcPlays.length" class="arc-empty">No playable arc — this sentence has no resolvable atoms/clips.</span>
+        </div>
+        <div class="arc-strip">
+          <span
+            v-for="(p, i) in arcPlays" :key="i"
+            class="arc-chip"
+            :class="[String(p.stageLabel).startsWith('0') ? 'arc-chip--s0' : 'arc-chip--sn', { playing: arcPlayingIdx === i }]"
+            :title="`${p.stageLabel} · ${p.role} · ${p.speed}×`"
+          >
+            <span class="arc-chip-stage">{{ p.stageLabel }}</span>
+            <span class="arc-chip-label">{{ p.label }}</span>
+            <span v-if="p.speed !== 1" class="arc-chip-speed">{{ p.speed }}×</span>
+          </span>
+        </div>
+      </section>
+
       <!-- ==================== PODS ==================== -->
       <section v-if="drafts.pods" class="config-row">
         <RowHeader
@@ -331,6 +361,7 @@
 import { ref, computed, onMounted, reactive, defineComponent, h, toRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
+import { composeArc } from '../lib/podArcCompose'
 
 const router = useRouter()
 const { getAccessToken, isAdmin, learner: currentUser } = useAuth()
@@ -379,6 +410,13 @@ const courseLoading = ref(false)
 const courseLegos = ref([])           // is_new only, ordered by seed,lego_index
 const courseSeeds = ref([])           // course_seeds rows for picked course
 const coursePodSentences = ref([])    // listening_pod_sentences rows, ordered by global_order
+// Stage-0 clip maps for the full-arc preview (loaded per course in loadCoursePreview).
+const stage0GlossMap = ref(new Map())       // lego_key → merged "means" clip id
+const stage0TargetClipMap = ref(new Map())  // target surface → "[atom]" slice clip id
+// Full-arc preview state.
+const arcSentenceIdx = ref(0)               // index into coursePodSentences
+const arcPlayingIdx = ref(-1)               // currently-sounding play, -1 = idle
+const arcStopFlag = ref(false)
 
 const seedLastRound = computed(() => {
   // Mirrors generateLearningScript.ts: seeds processed in seed_number order;
@@ -654,13 +692,28 @@ async function loadCoursePreview(courseCode) {
     // exists. Courses without pods still preview L1 fine.
     const { data: podRows, error: podErr } = await sb
       .from('listening_pod_sentences')
-      .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id')
+      .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, atom_map')
       .eq('pod_id', `${courseCode}:pod-0`)
       .order('global_order', { ascending: true })
     if (podErr) {
       console.warn('[preview] pod load failed:', podErr)
     } else {
       coursePodSentences.value = podRows || []
+    }
+
+    // Stage-0 clip maps for the full-arc preview — the SAME course-wide lookups
+    // the learner's composer uses (lego_key→merged "means" clip, target surface→
+    // "[atom]" slice clip), so the preview resolves atoms identically.
+    stage0GlossMap.value = new Map()
+    stage0TargetClipMap.value = new Map()
+    const [legoRes, atomRes] = await Promise.all([
+      sb.from('pod_legos').select('lego_key, explainer_audio_id').eq('course_code', courseCode),
+      sb.from('course_audio').select('id, text').eq('course_code', courseCode).eq('role', 'pod_explainer').like('text', '[atom] %'),
+    ])
+    for (const l of (legoRes.data || [])) if (l.explainer_audio_id) stage0GlossMap.value.set(l.lego_key, l.explainer_audio_id)
+    for (const a of (atomRes.data || [])) {
+      const surface = a.text.slice('[atom] '.length)
+      if (!stage0TargetClipMap.value.has(surface)) stage0TargetClipMap.value.set(surface, a.id)
     }
   } catch (e) {
     console.warn('[preview] load failed:', e)
@@ -868,6 +921,52 @@ function setTierFusion(idx, raw) {
   if (!t) return
   const v = String(raw).trim()
   t.fusionGap = v === '' ? null : Number(v)
+}
+
+// ============================================================================
+// Full 0→9 arc preview — compose the WHOLE escalation (Stage-0 tiers → Stages
+// 1-N) for one real sentence with the SHARED composer, then play it through.
+// Uses the live DRAFT config, so structural edits show immediately.
+// ============================================================================
+const arcSentence = computed(() => coursePodSentences.value[arcSentenceIdx.value] || null)
+const arcPlays = computed(() => {
+  const s = arcSentence.value
+  if (!s) return []
+  try {
+    return composeArc(s, stage0GlossMap.value, stage0TargetClipMap.value, drafts.stage0, drafts.pods?.stagePlaylist || {})
+  } catch (e) {
+    console.warn('[arc] compose failed:', e)
+    return []
+  }
+})
+function stopArc() {
+  arcStopFlag.value = true
+  arcPlayingIdx.value = -1
+  if (currentAudio) { try { currentAudio.pause() } catch {} }
+}
+async function playArc() {
+  const plays = arcPlays.value
+  if (!plays.length) return
+  arcStopFlag.value = false
+  if (currentAudio) { try { currentAudio.pause() } catch {} }
+  for (let i = 0; i < plays.length; i++) {
+    if (arcStopFlag.value) break
+    const p = plays[i]
+    const url = audioUrl(p.audioId)
+    if (!url) continue
+    arcPlayingIdx.value = i
+    await new Promise((resolve) => {
+      const a = new Audio(url)
+      a.playbackRate = p.speed || 1
+      currentAudio = a
+      a.onended = resolve
+      a.onerror = resolve
+      a.play().catch(resolve)
+    })
+    const gap = Math.min(p.gapAfterMs || 0, 1500) // cap so the preview stays snappy
+    if (gap > 0 && !arcStopFlag.value) await new Promise((r) => setTimeout(r, gap))
+  }
+  arcPlayingIdx.value = -1
 }
 
 async function loadAll() {
@@ -1396,6 +1495,29 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   background: rgba(0,0,0,0.25); border: 1px solid var(--surface-3);
   border-radius: 5px; color: var(--ink); padding: 0.25rem 0.4rem; font-size: 0.8rem;
 }
+/* Full-arc preview */
+.arc-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.arc-pick { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--muted); }
+.arc-pick select { max-width: 420px; background: rgba(0,0,0,0.25); border: 1px solid var(--surface-3); border-radius: 5px; color: var(--ink); padding: 0.3rem 0.45rem; }
+.arc-play, .arc-stop {
+  border-radius: 6px; border: 1px solid var(--surface-3); background: transparent;
+  color: var(--ink); padding: 0.4rem 0.8rem; cursor: pointer; font-size: 0.82rem;
+}
+.arc-play:hover:not(:disabled) { border-color: var(--accent-2); color: var(--accent-2); }
+.arc-play:disabled, .arc-stop:disabled { opacity: 0.35; cursor: not-allowed; }
+.arc-empty { font-size: 0.78rem; color: var(--muted); }
+.arc-strip { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.arc-chip {
+  display: inline-flex; align-items: baseline; gap: 0.35rem;
+  padding: 0.2rem 0.45rem; border-radius: 5px; font-size: 0.74rem;
+  border: 1px solid transparent; max-width: 260px;
+}
+.arc-chip--s0 { background: rgba(120, 90, 160, 0.18); }
+.arc-chip--sn { background: rgba(70, 120, 90, 0.16); }
+.arc-chip.playing { border-color: var(--accent-2); box-shadow: 0 0 0 2px rgba(0,0,0,0.2); }
+.arc-chip-stage { font-family: var(--font-mono, ui-monospace, Menlo, monospace); color: var(--accent); font-size: 0.68rem; }
+.arc-chip-label { color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arc-chip-speed { color: var(--muted); font-size: 0.66rem; }
 .stage0-link {
   margin-left: auto; align-self: center; white-space: nowrap;
   font-family: ui-monospace, "IBM Plex Mono", Menlo, monospace;
