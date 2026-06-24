@@ -416,14 +416,9 @@ const routes = [
     component: () => import('../views/ListeningConfig.vue'),
     meta: { title: 'Listening Config - Admin' }
   },
-  // Stage 0 tuner — standalone in-app page that frames the self-contained
-  // public/stage0-tuner.html tool. Global/not per-course, like /admin/listening.
-  {
-    path: '/admin/stage0-tuner',
-    name: 'Stage0Tuner',
-    component: () => import('../views/Stage0Tuner.vue'),
-    meta: { title: 'Stage 0 Tuner - Admin' }
-  },
+  // (Stage 0 Tuner retired 2026-06-24 — absorbed into /admin/listening, which
+  // now sets Stage 0 structurally AND previews the full arc. The standalone
+  // public/stage0-tuner.html iframe tool is gone.)
   // Production Suite v2.1 Routes (Default)
   // ===========================================
   {
