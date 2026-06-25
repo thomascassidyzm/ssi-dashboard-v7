@@ -55,11 +55,11 @@
         </div>
       </section>
 
-      <!-- ==================== TURBO ==================== -->
+      <!-- ==================== TURBO (script-side culling) ==================== -->
       <section v-if="drafts.turbo_boost" class="config-row">
         <RowHeader
-          title="Turbo boost"
-          desc="What Turbo culls (script side) and how it tightens timing (runtime). fibKeep gates which fib-offset spaced-rep cycles survive."
+          title="Turbo boost — script culling"
+          desc="What Turbo drops on the script side. fibKeep gates which fib-offset spaced-rep cycles survive; BUILD/USE keep cap phrases per LEGO. (Turbo's pause timing lives in the Pause lab below.)"
           :row="rowMap.turbo_boost"
           :dirty="isDirty('turbo_boost')"
           :saving="savingKey === 'turbo_boost'"
@@ -85,33 +85,80 @@
             help="Turbo plays the first N BUILD phrases per LEGO; the rest get tagged for skip." />
           <NumField v-model="drafts.turbo_boost.useKeep" label="USE keep" suffix="phrases"
             help="Turbo plays the first N USE phrases per LEGO." />
-          <NumField v-model="drafts.turbo_boost.playback_speed" label="Playback speed" suffix="×" :step="0.05" />
-          <NumField v-model="drafts.turbo_boost.pause_base_ms" label="Pause base" suffix="ms" />
-          <NumField v-model="drafts.turbo_boost.pause_multiplier" label="Pause multiplier" suffix="× target dur" :step="0.05" />
-          <NumField v-model="drafts.turbo_boost.min_pause_ms" label="Pause floor" suffix="ms" />
-          <NumField v-model="drafts.turbo_boost.max_pause_ms" label="Pause ceiling" suffix="ms" />
         </div>
       </section>
 
-      <!-- ==================== NORMAL ==================== -->
-      <section v-if="drafts.normal_mode" class="config-row">
+      <!-- ==================== PAUSE LAB ==================== -->
+      <section v-if="labCfg" class="config-row">
         <RowHeader
-          title="Normal mode"
-          desc="Default playback timing — pauses are computed from these. The other ModeConfig fields aren't read in normal mode (kept for parity)."
-          :row="rowMap.normal_mode"
-          :dirty="isDirty('normal_mode')"
-          :saving="savingKey === 'normal_mode'"
-          :error="rowErrors.normal_mode"
-          @save="save('normal_mode')"
-          @reset="reset('normal_mode')"
+          :title="`Pause lab — ${labMode === 'normal_mode' ? 'Normal' : 'Turbo'} timing`"
+          desc="The learner 'say-it-yourself' gap. Tweak the knobs and watch the pause across sentence lengths (in syllables — a far better length proxy than words). pause = clamp(floor, ceiling, base + shaped(reference)), where the knee lets long sentences stop scaling at the full multiplier."
+          :row="rowMap[labMode]"
+          :dirty="isDirty(labMode)"
+          :saving="savingKey === labMode"
+          :error="rowErrors[labMode]"
+          @save="save(labMode)"
+          @reset="reset(labMode)"
         />
 
+        <div class="lab-modeswitch">
+          <button :class="{ on: labMode === 'normal_mode' }" @click="labMode = 'normal_mode'">Normal</button>
+          <button :class="{ on: labMode === 'turbo_boost' }" @click="labMode = 'turbo_boost'">Turbo</button>
+        </div>
+
+        <!-- Reference: what duration the pause scales with -->
+        <div class="field-block">
+          <label>Scale pause with <span class="hint">which spoken duration drives the gap</span></label>
+          <div class="seg-row">
+            <button class="seg-pill" :class="{ on: (labCfg.pause_reference || 'sum') === 'avg' }" @click="labCfg.pause_reference = 'avg'">Average of both voices</button>
+            <button class="seg-pill" :class="{ on: (labCfg.pause_reference || 'sum') === 'target1' }" @click="labCfg.pause_reference = 'target1'">target1 only</button>
+            <button class="seg-pill" :class="{ on: (labCfg.pause_reference || 'sum') === 'sum' }" @click="labCfg.pause_reference = 'sum'">Both summed (legacy)</button>
+          </div>
+        </div>
+
         <div class="field-grid">
-          <NumField v-model="drafts.normal_mode.playback_speed" label="Playback speed" suffix="×" :step="0.05" />
-          <NumField v-model="drafts.normal_mode.pause_base_ms" label="Pause base" suffix="ms" />
-          <NumField v-model="drafts.normal_mode.pause_multiplier" label="Pause multiplier" suffix="× target dur" :step="0.05" />
-          <NumField v-model="drafts.normal_mode.min_pause_ms" label="Pause floor" suffix="ms" />
-          <NumField v-model="drafts.normal_mode.max_pause_ms" label="Pause ceiling" suffix="ms" />
+          <NumField v-model="labCfg.min_pause_ms" label="Floor (boot / reaction)" suffix="ms"
+            help="Hard minimum — the pause can never go below this, however short the phrase." />
+          <NumField v-model="labCfg.pause_base_ms" label="Base" suffix="ms"
+            help="Flat amount added before the length-proportional part." />
+          <NumField v-model="labCfg.pause_multiplier" label="Multiplier (short/med)" suffix="× ref dur" :step="0.05"
+            help="Slope up to the knee — how much pause per ms of reference duration." />
+          <NumField v-model="labCfg.pause_knee_ms" label="Knee" suffix="ms ref"
+            help="Reference-duration point where the slope relaxes. Below it = full multiplier; above it = the gentler tail multiplier. Set very high for a straight line." />
+          <NumField v-model="labCfg.pause_tail_multiplier" label="Tail multiplier (long)" suffix="× ref dur" :step="0.05"
+            help="Gentler slope beyond the knee, so long sentences don't keep scaling at the full rate." />
+          <NumField v-model="labCfg.max_pause_ms" label="Ceiling" suffix="ms"
+            help="Hard maximum the pause is clamped to." />
+        </div>
+
+        <!-- Live preview across syllable buckets -->
+        <div class="lab-preview">
+          <div class="lab-preview-head">
+            <span class="lab-preview-title">Live preview · {{ labMode === 'normal_mode' ? 'Normal' : 'Turbo' }}</span>
+            <label class="lab-rate">~ms / syllable
+              <input type="number" min="50" step="10" v-model.number="msPerSyllable" />
+            </label>
+            <span class="lab-rate-note">at {{ (labCfg.playback_speed || 1) }}× playback · each voice ≈ syllables × this</span>
+          </div>
+
+          <div class="lab-buckets">
+            <div v-for="b in previewBuckets" :key="b.key" class="lab-bucket">
+              <div class="lab-bucket-label">{{ b.label }} <span class="lab-bucket-range">{{ b.range }}</span></div>
+              <div class="lab-rows">
+                <div v-for="r in b.rows" :key="r.syll" class="lab-bar-row">
+                  <span class="lab-syll">{{ r.syll }} syl</span>
+                  <div class="lab-track">
+                    <div class="lab-floor" :style="{ left: pct(labCfg.min_pause_ms) }" title="floor"></div>
+                    <div class="lab-bar" :class="{ atfloor: r.pause <= (labCfg.min_pause_ms || 0), atceil: r.pause >= (labCfg.max_pause_ms || Infinity) }" :style="{ width: pct(r.pause) }"></div>
+                  </div>
+                  <span class="lab-pause">{{ (r.pause / 1000).toFixed(1) }}s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lab-axis">
+            <span>0s</span><span>floor {{ ((labCfg.min_pause_ms||0)/1000).toFixed(1) }}s</span><span>{{ (labAxisMaxMs/1000).toFixed(0) }}s</span>
+          </div>
         </div>
       </section>
     </div>
@@ -119,16 +166,34 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorithmConfigShared'
+import { pauseFromRef, referenceMs, SYLLABLE_BUCKETS } from './pauseModel'
 
 const { isAdmin, learner: currentUser } = useAuth()
 
 const {
   loading, loadError, savingKey, rowErrors,
   drafts, rowMap, isDirty, reset, save, loadAll,
-} = useAlgorithmConfig()
+} = useAlgorithmConfig({ onLoaded: backfillPause, onReset: backfillPauseRow })
+
+// The pause model gained a knee + tail multiplier + reference selector
+// (2026-06-25). Rows saved before that lack the fields; backfill them to values
+// that REPRODUCE the old linear behaviour (knee huge, tail = multiplier,
+// reference = 'sum'), so the runtime is untouched until an admin deliberately
+// tunes in the lab and saves.
+function backfillPauseRow(key, d) {
+  const c = d[key]
+  if (!c) return
+  if (c.pause_reference == null) c.pause_reference = 'sum'
+  if (c.pause_knee_ms == null) c.pause_knee_ms = 99999
+  if (c.pause_tail_multiplier == null) c.pause_tail_multiplier = c.pause_multiplier ?? 0
+}
+function backfillPause(d) {
+  backfillPauseRow('normal_mode', d)
+  backfillPauseRow('turbo_boost', d)
+}
 
 // Turbo's fibKeep is an index list into the script-shape offsets, so the pills
 // read their labels off the live script_shape draft (same endpoint, same load).
@@ -140,6 +205,45 @@ function toggleFib(idx) {
   if (set.has(idx)) set.delete(idx)
   else set.add(idx)
   tb.fibKeep = [...set].sort((a, b) => a - b)
+}
+
+// ============================================================================
+// Pause lab — tweak a mode's pause knobs and see the resulting gap across
+// syllable-bucketed sentence lengths. msPerSyllable maps a syllable count to an
+// estimated per-voice audio duration (preview only; the runtime uses real clip
+// durations). Default ~280ms/syll for slow SSi learner audio — tunable.
+// ============================================================================
+const labMode = ref('normal_mode')
+const msPerSyllable = ref(280)
+const labCfg = computed(() => drafts[labMode.value] || null)
+
+// Per syllable count, estimate each answer voice's duration then run the live
+// (unsaved) config through the real pause formula.
+function pauseForSyllables(syll) {
+  const cfg = labCfg.value
+  if (!cfg) return 0
+  const perVoiceMs = syll * (msPerSyllable.value || 0)
+  const ref = referenceMs(perVoiceMs, perVoiceMs, cfg)
+  return pauseFromRef(ref, cfg)
+}
+
+const previewBuckets = computed(() =>
+  SYLLABLE_BUCKETS.map(b => ({
+    ...b,
+    rows: b.samples.map(syll => ({ syll, pause: pauseForSyllables(syll) })),
+  }))
+)
+
+// Axis scales to the longest previewed pause (or the ceiling, whichever the
+// bars actually reach), so the floor/ceiling markers stay meaningful.
+const labAxisMaxMs = computed(() => {
+  const cfg = labCfg.value
+  if (!cfg) return 10000
+  const maxPause = Math.max(...previewBuckets.value.flatMap(b => b.rows.map(r => r.pause)), cfg.min_pause_ms || 0)
+  return Math.max(maxPause * 1.05, 1000)
+})
+function pct(ms) {
+  return `${Math.max(0, Math.min(100, (100 * (ms || 0)) / labAxisMaxMs.value))}%`
 }
 
 onMounted(loadAll)
@@ -316,6 +420,56 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .fib-pill:hover { color: var(--color-paper, var(--ink)); border-color: var(--color-paper-dim, var(--muted)); }
 .fib-pill.on { background: rgba(96, 165, 250, 0.15); border-color: #60a5fa; color: #93c5fd; }
 
+/* Mode switch + segmented pills */
+.lab-modeswitch { display: inline-flex; gap: 0; border: 1px solid var(--color-graphite, var(--surface-3)); border-radius: 8px; overflow: hidden; margin-bottom: 1rem; }
+.lab-modeswitch button {
+  background: transparent; border: 0; color: var(--color-paper-dim, var(--muted));
+  padding: 0.4rem 1rem; font-size: 0.8125rem; cursor: pointer;
+}
+.lab-modeswitch button.on { background: #3b82f6; color: #fff; }
+.seg-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.seg-pill {
+  padding: 0.4rem 0.8rem; border-radius: 999px;
+  border: 1px solid var(--color-graphite, var(--surface-3)); background: transparent;
+  color: var(--color-paper-dim, var(--muted)); font-size: 0.75rem; cursor: pointer; transition: all 0.15s;
+}
+.seg-pill:hover { color: var(--color-paper, var(--ink)); border-color: var(--color-paper-dim, var(--muted)); }
+.seg-pill.on { background: rgba(96, 165, 250, 0.15); border-color: #60a5fa; color: #93c5fd; }
+
+/* Lab preview */
+.lab-preview {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(96, 165, 250, 0.06);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 8px;
+}
+.lab-preview-head { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+.lab-preview-title {
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #93c5fd;
+}
+.lab-rate { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-paper-dim, var(--muted)); }
+.lab-rate input {
+  width: 72px; background: rgba(0,0,0,0.25); border: 1px solid var(--color-graphite, var(--surface-2));
+  border-radius: 6px; color: var(--color-paper, var(--ink)); padding: 0.3rem 0.45rem;
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.8125rem; outline: none;
+}
+.lab-rate-note { font-size: 0.72rem; color: var(--color-paper-dim, var(--faint)); }
+.lab-buckets { display: flex; flex-direction: column; gap: 0.85rem; }
+.lab-bucket-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-paper-dim, var(--muted)); margin-bottom: 0.3rem; }
+.lab-bucket-range { text-transform: none; letter-spacing: 0; color: var(--color-paper-dim, var(--faint)); margin-left: 0.3rem; }
+.lab-rows { display: flex; flex-direction: column; gap: 0.25rem; }
+.lab-bar-row { display: grid; grid-template-columns: 52px 1fr 44px; align-items: center; gap: 0.5rem; }
+.lab-syll { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.72rem; color: var(--color-paper-dim, var(--muted)); text-align: right; }
+.lab-track { position: relative; height: 16px; background: rgba(0,0,0,0.22); border-radius: 4px; overflow: hidden; }
+.lab-bar { height: 100%; background: #3b82f6; border-radius: 4px; transition: width 0.12s ease; }
+.lab-bar.atfloor { background: #f59e0b; }
+.lab-bar.atceil { background: #ef4444; }
+.lab-floor { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px dashed rgba(255,255,255,0.45); z-index: 2; }
+.lab-pause { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.78rem; color: var(--color-paper, var(--ink)); }
+.lab-axis { display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.68rem; color: var(--color-paper-dim, var(--faint)); font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
+
 /* Buttons (primary / secondary) */
 :deep(.btn-primary), :deep(.btn-secondary) {
   padding: 0.45rem 0.9rem;
@@ -356,6 +510,12 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   background: rgba(37, 99, 235, 0.1);
   border-color: #1d4ed8;
 }
+[data-theme="light"] .seg-pill.on { color: #1d4ed8; background: rgba(37, 99, 235, 0.1); border-color: #1d4ed8; }
+[data-theme="light"] .lab-preview { background: rgba(37, 99, 235, 0.06); border-color: rgba(37, 99, 235, 0.28); }
+[data-theme="light"] .lab-preview-title { color: #1d4ed8; }
+[data-theme="light"] .lab-rate input,
+[data-theme="light"] .lab-track { background: var(--surface-2); border: 1px solid var(--line); }
+[data-theme="light"] .lab-floor { border-left-color: rgba(15, 23, 42, 0.4); }
 [data-theme="light"] .admin-warn { color: #92400e; }
 [data-theme="light"] .err,
 [data-theme="light"] :deep(.save-err) { color: #b91c1c; }
