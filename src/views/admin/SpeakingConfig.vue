@@ -160,6 +160,36 @@
             <span>0s</span><span>floor {{ ((labCfg.min_pause_ms||0)/1000).toFixed(1) }}s</span><span>{{ (labAxisMaxMs/1000).toFixed(0) }}s</span>
           </div>
         </div>
+
+        <!-- Audible preview — hear the gap on real sentences -->
+        <div class="lab-hear">
+          <div class="lab-hear-head">
+            <span class="lab-hear-title">Hear it</span>
+            <CoursePicker :modelValue="previewCourse" @update:modelValue="onPreviewCourse" placeholder="Pick a course to hear real sentences…" />
+            <span v-if="playingPhase" class="lab-phase" :class="`ph-${playingPhase}`">
+              {{ playingPhase === 'known' ? '▶ prompt' : playingPhase === 'pause' ? '● your turn — speak' : playingPhase === 'target1' ? '▶ answer 1' : '▶ answer 2' }}
+            </span>
+            <button v-if="playingPhase" class="lab-stop" @click="stopPreview">■ stop</button>
+          </div>
+          <div v-if="sampleLoading" class="lab-hear-note">Loading sentences…</div>
+          <div v-else-if="sampleError" class="lab-hear-err">{{ sampleError }}</div>
+          <div v-else-if="previewCourse && sampleSentences.length" class="lab-hear-rows">
+            <div v-for="b in sampleByBucket" :key="b.key" class="lab-hear-row">
+              <button
+                class="lab-play"
+                :class="{ playing: playingKey === b.key }"
+                :disabled="!b.sentence"
+                @click="playWithPause(b.sentence, b.key)"
+                :title="b.sentence ? 'Play known → pause → target1 → target2' : 'No sentence in this length range'"
+              >▶</button>
+              <span class="lab-hear-bucket">{{ b.label }} <span class="lab-bucket-range">{{ b.range }}</span></span>
+              <span class="lab-hear-sentence">{{ b.sentence ? b.sentence.text : '—' }}</span>
+              <span class="lab-hear-pause">{{ b.sentence ? (computePauseFor(b.sentence) / 1000).toFixed(1) + 's gap' : '' }}</span>
+            </div>
+          </div>
+          <div v-else-if="previewCourse" class="lab-hear-note">No playable sentences found for this course.</div>
+          <div v-else class="lab-hear-note">Pick a course to hear the configured pause on real sentences.</div>
+        </div>
       </section>
     </div>
   </div>
@@ -169,7 +199,8 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorithmConfigShared'
-import { pauseFromRef, referenceMs, SYLLABLE_BUCKETS } from './pauseModel'
+import { pauseFromRef, referenceMs, computePauseDuration, SYLLABLE_BUCKETS } from './pauseModel'
+import CoursePicker from '../../components/CoursePicker.vue'
 
 const { isAdmin, learner: currentUser } = useAuth()
 
@@ -244,6 +275,131 @@ const labAxisMaxMs = computed(() => {
 })
 function pct(ms) {
   return `${Math.max(0, Math.min(100, (100 * (ms || 0)) / labAxisMaxMs.value))}%`
+}
+
+// ============================================================================
+// Audible preview — hear the gap. Plays a real sentence as the learner does:
+// known prompt → THE LIVE-CONFIG PAUSE (computed from the real clip durations)
+// → target1 → target2. Pick a course, pick a length, press play, feel it.
+// The audio proxy lives on saysomethingin.app (CORS *); popty.app doesn't serve
+// /api/audio. (Same source ListeningConfig uses.)
+// ============================================================================
+const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
+const previewCourse = ref('')
+const sampleLoading = ref(false)
+const sampleError = ref('')
+const sampleSentences = ref([])   // { text, known_id, t1_id, t2_id, t1ms, t2ms, syll }
+const playingPhase = ref('')      // '', 'known', 'pause', 'target1', 'target2'
+const playingKey = ref('')        // which sample is sounding
+
+async function onPreviewCourse(code) {
+  previewCourse.value = code || ''
+  sampleSentences.value = []
+  sampleError.value = ''
+  if (!code) return
+  sampleLoading.value = true
+  try {
+    const sb = await import('../../services/supabase').then(m => m.supabase)
+    if (!sb) throw new Error('Supabase not configured')
+    const { data: seeds, error } = await sb
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text, target_text_roman, known_audio_id, target1_audio_id, target2_audio_id')
+      .eq('course_code', code)
+      .not('target1_audio_id', 'is', null)
+      .order('seed_number')
+      .limit(300)
+    if (error) throw error
+    // Pull target1/target2 durations (the pause is computed from these).
+    const ids = [...new Set((seeds || []).flatMap(s => [s.target1_audio_id, s.target2_audio_id]).filter(Boolean))]
+    const durMap = new Map()
+    for (let i = 0; i < ids.length; i += 200) {
+      const { data: aud } = await sb.from('course_audio').select('id, duration_ms').in('id', ids.slice(i, i + 200))
+      for (const a of (aud || [])) durMap.set(a.id, a.duration_ms)
+    }
+    sampleSentences.value = (seeds || [])
+      .map(s => {
+        const t1ms = durMap.get(s.target1_audio_id) || 0
+        const t2ms = durMap.get(s.target2_audio_id) || t1ms
+        return {
+          text: s.target_text_roman || s.target_text || s.known_text || `S${s.seed_number}`,
+          known_id: s.known_audio_id, t1_id: s.target1_audio_id, t2_id: s.target2_audio_id,
+          t1ms, t2ms,
+          syll: Math.max(1, Math.round(t1ms / (msPerSyllable.value || 280))),
+        }
+      })
+      .filter(s => s.t1ms > 0)
+  } catch (e) {
+    sampleError.value = e.message || String(e)
+  } finally {
+    sampleLoading.value = false
+  }
+}
+
+// One representative real sentence per syllable bucket (nearest to bucket centre).
+const sampleByBucket = computed(() =>
+  SYLLABLE_BUCKETS.map(b => {
+    const lo = b.samples[0], hi = b.samples[b.samples.length - 1]
+    const mid = (lo + hi) / 2
+    const inRange = sampleSentences.value.filter(s => s.syll >= lo && (b.key === 'vlong' ? true : s.syll <= hi))
+    const pool = inRange.length ? inRange : sampleSentences.value
+    let best = null, bestD = Infinity
+    for (const s of pool) { const d = Math.abs(s.syll - mid); if (d < bestD) { bestD = d; best = s } }
+    return { ...b, sentence: best }
+  })
+)
+
+// Live pause (ms) for a real sentence under the current unsaved config — for
+// the per-row readout next to each play button.
+function computePauseFor(sample) {
+  return labCfg.value ? computePauseDuration(sample.t1ms, sample.t2ms, labCfg.value) : 0
+}
+
+function audioUrl(id) {
+  return id && previewCourse.value ? `${AUDIO_BASE}/${id}?courseId=${encodeURIComponent(previewCourse.value)}` : null
+}
+let previewAudio = null
+let previewStop = false
+function stopPreview() {
+  previewStop = true
+  playingPhase.value = ''
+  playingKey.value = ''
+  if (previewAudio) { try { previewAudio.pause() } catch {} }
+}
+function playClip(id, rate) {
+  return new Promise((resolve) => {
+    const url = audioUrl(id)
+    if (!url) return resolve()
+    const a = new Audio(url)
+    a.playbackRate = rate || 1
+    previewAudio = a
+    a.onended = resolve
+    a.onerror = resolve
+    a.play().catch(resolve)
+  })
+}
+// Play one sentence as the learner hears it, with the LIVE (unsaved) pause.
+async function playWithPause(sample, key) {
+  if (!sample || !labCfg.value) return
+  stopPreview()
+  previewStop = false
+  playingKey.value = key
+  const rate = labCfg.value.playback_speed || 1
+  const pauseMs = computePauseDuration(sample.t1ms, sample.t2ms, labCfg.value)
+  playingPhase.value = 'known'
+  await playClip(sample.known_id, rate)
+  if (previewStop) return
+  playingPhase.value = 'pause'                       // the gap under test
+  await new Promise(r => setTimeout(r, pauseMs))
+  if (previewStop) return
+  playingPhase.value = 'target1'
+  await playClip(sample.t1_id, rate)
+  if (previewStop) return
+  await new Promise(r => setTimeout(r, 250))
+  if (previewStop) return
+  playingPhase.value = 'target2'
+  await playClip(sample.t2_id, rate)
+  playingPhase.value = ''
+  playingKey.value = ''
 }
 
 onMounted(loadAll)
@@ -469,6 +625,32 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .lab-floor { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px dashed rgba(255,255,255,0.45); z-index: 2; }
 .lab-pause { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.78rem; color: var(--color-paper, var(--ink)); }
 .lab-axis { display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.68rem; color: var(--color-paper-dim, var(--faint)); font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
+
+/* Audible preview */
+.lab-hear { margin-top: 1rem; padding-top: 0.85rem; border-top: 1px dashed var(--color-graphite, var(--surface-3)); }
+.lab-hear-head { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.lab-hear-title { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #93c5fd; }
+.lab-phase { font-size: 0.75rem; font-family: var(--font-mono, ui-monospace, Menlo, monospace); padding: 0.2rem 0.55rem; border-radius: 999px; }
+.lab-phase.ph-pause { background: rgba(245, 158, 11, 0.18); color: #fbbf24; animation: labpulse 1s ease-in-out infinite; }
+.lab-phase.ph-known, .lab-phase.ph-target1, .lab-phase.ph-target2 { background: rgba(96, 165, 250, 0.18); color: #93c5fd; }
+@keyframes labpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+.lab-stop { background: transparent; border: 1px solid var(--color-graphite, var(--surface-3)); color: var(--color-paper-dim, var(--muted)); border-radius: 6px; padding: 0.25rem 0.6rem; font-size: 0.75rem; cursor: pointer; }
+.lab-stop:hover { border-color: #f87171; color: #f87171; }
+.lab-hear-note, .lab-hear-err { font-size: 0.8rem; color: var(--color-paper-dim, var(--muted)); padding: 0.3rem 0; }
+.lab-hear-err { color: #f87171; }
+.lab-hear-rows { display: flex; flex-direction: column; gap: 0.35rem; }
+.lab-hear-row { display: grid; grid-template-columns: 32px 130px 1fr auto; align-items: center; gap: 0.6rem; }
+.lab-play {
+  width: 28px; height: 28px; border-radius: 999px;
+  border: 1px solid #60a5fa; background: rgba(96,165,250,0.12); color: #93c5fd;
+  cursor: pointer; font-size: 0.7rem; display: inline-flex; align-items: center; justify-content: center;
+}
+.lab-play:hover:not(:disabled) { background: #3b82f6; color: #fff; }
+.lab-play.playing { background: #3b82f6; color: #fff; }
+.lab-play:disabled { opacity: 0.3; cursor: not-allowed; }
+.lab-hear-bucket { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-paper-dim, var(--muted)); }
+.lab-hear-sentence { font-size: 0.85rem; color: var(--color-paper, var(--ink)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lab-hear-pause { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.75rem; color: var(--color-paper-dim, var(--muted)); white-space: nowrap; }
 
 /* Buttons (primary / secondary) */
 :deep(.btn-primary), :deep(.btn-secondary) {
