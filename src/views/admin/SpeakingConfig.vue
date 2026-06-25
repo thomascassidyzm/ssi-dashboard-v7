@@ -184,7 +184,10 @@
               >▶</button>
               <span class="lab-hear-bucket">{{ b.label }} <span class="lab-bucket-range">{{ b.range }}</span></span>
               <span class="lab-hear-sentence">{{ b.sentence ? b.sentence.text : '—' }}</span>
-              <span class="lab-hear-pause">{{ b.sentence ? (computePauseFor(b.sentence) / 1000).toFixed(1) + 's gap' : '' }}</span>
+              <span class="lab-hear-pause">
+                <span v-if="b.sentence" class="lab-hear-dur">{{ (b.sentence.t1ms / 1000).toFixed(1) }}s say</span>
+                <span v-if="b.sentence" class="lab-hear-gap">{{ (computePauseFor(b.sentence) / 1000).toFixed(1) }}s gap</span>
+              </span>
             </div>
           </div>
           <div v-else-if="previewCourse" class="lab-hear-note">No playable sentences found for this course.</div>
@@ -337,18 +340,26 @@ async function onPreviewCourse(code) {
   }
 }
 
-// One representative real sentence per syllable bucket (nearest to bucket centre).
-const sampleByBucket = computed(() =>
-  SYLLABLE_BUCKETS.map(b => {
+// One DISTINCT real sentence per length bucket. Buckets are defined by spoken
+// length; we map the syllable range to a target1-duration range via the rate,
+// then greedily assign each bucket the closest UNUSED sentence so no two
+// buckets show the same clip.
+const sampleByBucket = computed(() => {
+  const rate = msPerSyllable.value || 280
+  const used = new Set()
+  return SYLLABLE_BUCKETS.map(b => {
     const lo = b.samples[0], hi = b.samples[b.samples.length - 1]
-    const mid = (lo + hi) / 2
-    const inRange = sampleSentences.value.filter(s => s.syll >= lo && (b.key === 'vlong' ? true : s.syll <= hi))
-    const pool = inRange.length ? inRange : sampleSentences.value
+    const mid = ((lo + hi) / 2) * rate           // target centre duration (ms)
+    const loMs = lo * rate, hiMs = b.key === 'vlong' ? Infinity : hi * rate
+    const free = sampleSentences.value.filter(s => !used.has(s))
+    const inRange = free.filter(s => s.t1ms >= loMs && s.t1ms <= hiMs)
+    const pool = inRange.length ? inRange : free
     let best = null, bestD = Infinity
-    for (const s of pool) { const d = Math.abs(s.syll - mid); if (d < bestD) { bestD = d; best = s } }
+    for (const s of pool) { const d = Math.abs(s.t1ms - mid); if (d < bestD) { bestD = d; best = s } }
+    if (best) used.add(best)
     return { ...b, sentence: best }
   })
-)
+})
 
 // Live pause (ms) for a real sentence under the current unsaved config — for
 // the per-row readout next to each play button.
@@ -667,7 +678,9 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .lab-play:disabled { opacity: 0.3; cursor: not-allowed; }
 .lab-hear-bucket { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-paper-dim, var(--muted)); }
 .lab-hear-sentence { font-size: 0.85rem; color: var(--color-paper, var(--ink)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.lab-hear-pause { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.75rem; color: var(--color-paper-dim, var(--muted)); white-space: nowrap; }
+.lab-hear-pause { display: inline-flex; gap: 0.5rem; align-items: baseline; font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.75rem; white-space: nowrap; }
+.lab-hear-dur { color: var(--color-paper-dim, var(--faint)); }
+.lab-hear-gap { color: var(--color-paper, var(--ink)); }
 
 /* Buttons (primary / secondary) */
 :deep(.btn-primary), :deep(.btn-secondary) {
