@@ -201,6 +201,7 @@ import { useAuth } from '../../composables/useAuth'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorithmConfigShared'
 import { pauseFromRef, referenceMs, computePauseDuration, SYLLABLE_BUCKETS } from './pauseModel'
 import CoursePicker from '../../components/CoursePicker.vue'
+import { getApiBaseUrl } from '../../services/api'
 
 const { isAdmin, learner: currentUser } = useAuth()
 
@@ -281,10 +282,10 @@ function pct(ms) {
 // Audible preview — hear the gap. Plays a real sentence as the learner does:
 // known prompt → THE LIVE-CONFIG PAUSE (computed from the real clip durations)
 // → target1 → target2. Pick a course, pick a length, press play, feel it.
-// The audio proxy lives on saysomethingin.app (CORS *); popty.app doesn't serve
-// /api/audio. (Same source ListeningConfig uses.)
+// Audio plays via popty's own production API signed-URL endpoint
+// (/api/production/:course/audio/:uuid/url) — the SAME source ScriptView uses,
+// so it just works on popty.app (no external proxy / CORS).
 // ============================================================================
-const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
 const previewCourse = ref('')
 const sampleLoading = ref(false)
 const sampleError = ref('')
@@ -296,6 +297,7 @@ async function onPreviewCourse(code) {
   previewCourse.value = code || ''
   sampleSentences.value = []
   sampleError.value = ''
+  signedUrlCache.clear()
   if (!code) return
   sampleLoading.value = true
   try {
@@ -354,8 +356,23 @@ function computePauseFor(sample) {
   return labCfg.value ? computePauseDuration(sample.t1ms, sample.t2ms, labCfg.value) : 0
 }
 
-function audioUrl(id) {
-  return id && previewCourse.value ? `${AUDIO_BASE}/${id}?courseId=${encodeURIComponent(previewCourse.value)}` : null
+// Signed playback URL via popty's production API (same as ScriptView). Cached
+// per uuid for the session so replays don't refetch.
+const signedUrlCache = new Map()
+async function audioUrl(id) {
+  if (!id || !previewCourse.value) return null
+  if (signedUrlCache.has(id)) return signedUrlCache.get(id)
+  try {
+    const res = await fetch(
+      `${getApiBaseUrl()}/api/production/${previewCourse.value}/audio/${id}/url`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    )
+    if (!res.ok) return null
+    const data = await res.json()
+    const url = data.url || null
+    if (url) signedUrlCache.set(id, url)
+    return url
+  } catch { return null }
 }
 let previewAudio = null
 let previewStop = false
@@ -365,10 +382,10 @@ function stopPreview() {
   playingKey.value = ''
   if (previewAudio) { try { previewAudio.pause() } catch {} }
 }
-function playClip(id, rate) {
+async function playClip(id, rate) {
+  const url = await audioUrl(id)
+  if (!url || previewStop) return
   return new Promise((resolve) => {
-    const url = audioUrl(id)
-    if (!url) return resolve()
     const a = new Audio(url)
     a.playbackRate = rate || 1
     previewAudio = a
