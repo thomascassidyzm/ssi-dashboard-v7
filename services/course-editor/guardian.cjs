@@ -63,8 +63,16 @@ class Guardian {
 
     // 2. Cross-course shared audio: a text change means the old clip may be
     // reused by sibling courses (course_audio dedups by text/lang/role).
+    // Best-effort: this scans course_audio by raw text (currently unindexed →
+    // can statement-timeout on large datasets). A failure here must NOT abort
+    // the whole review — degrade to "no shared audio found" and keep going.
     onProgress('checking-audio')
-    review.crossCourseAudio = await this._findSharedAudio(courseCode, before, after, table)
+    try {
+      review.crossCourseAudio = await this._findSharedAudio(courseCode, before, after, table)
+    } catch (e) {
+      review.crossCourseAudio = []
+      review.findings.sharedAudioCheckError = e.message
+    }
 
     // 3. Parallel courses to investigate (same target language).
     onProgress('checking-similar-courses')
@@ -180,7 +188,12 @@ class Guardian {
     const { spawn } = require('child_process')
     return new Promise((resolve) => {
       const env = { ...process.env }
-      delete env.CLAUDECODE // unset so the nested CLI call runs cleanly
+      // Strip ANTHROPIC_API_KEY so the CLI authenticates via the Max Plan login,
+      // not the .env API key — otherwise it bills per-token and fails with
+      // "Credit balance is too low". CLAUDECODE must also be removed for nested
+      // CLI calls to run cleanly. (Same pattern as services/shared/claude-cli.cjs.)
+      delete env.ANTHROPIC_API_KEY
+      delete env.CLAUDECODE
       const child = spawn('claude', ['--print', '--model', 'sonnet', '--append-system-prompt', system], { env })
       let out = ''
       child.stdout.on('data', (d) => (out += d))
